@@ -846,18 +846,6 @@ and in relation to the signature mechanisms MUST be applied for the Entity State
 <p>Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it <strong>requires the presentation of the Wallet Attestation during the credential issuance and presentation phases</strong>.</p>
 <p>The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.</p>
 </div>
-<section id="establishing-trust-with-relying-parties">
-<h3>Establishing Trust with Relying Parties<a class="headerlink" href="#establishing-trust-with-relying-parties" title="Link to this heading">¶</a></h3>
-<p>The Relying Party is registered by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration.
-In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms
-and any other necessary information for the interoperability requirements.</p>
-<p>Any requests for User attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and SHOULD contain the verifiable
-Trust Chain regarding the Relying Party.</p>
-<p>The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active,
-proving that the Relying Party is still part of the Federation and not revoked.</p>
-<p>The Trust Chain MAY be contained within the signed request in the form of a JWS header parameter, or dynamically built through a Federation Entity Discovery process.</p>
-<p>In offline flows, Trust Chain verification enables the assessment of the reliability of Trust Marks and Attestations contained within.</p>
-</section>
 <section id="establishing-trust-with-credential-issuers">
 <h3>Establishing Trust with Credential Issuers<a class="headerlink" href="#establishing-trust-with-credential-issuers" title="Link to this heading">¶</a></h3>
 <p>In the issuance process, trust evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the trust evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.</p>
@@ -1013,7 +1001,6 @@ Trust Chain is close to expiration but the overall structure of the federation h
 </ul>
 </li>
 <li><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
-<li><a class="reference internal" href="#establishing-trust-with-relying-parties">Establishing Trust with Relying Parties</a></li>
 <li><a class="reference internal" href="#establishing-trust-with-credential-issuers">Establishing Trust with Credential Issuers</a></li>
 <li><a class="reference internal" href="#establishing-trust-with-relying-party">Establishing Trust with Relying Party</a></li>
 <li><a class="reference internal" href="#wallet-attestation">Wallet Attestation</a></li>
@@ -1058,7 +1045,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 20/10/2024.
+      Last updated on 25/10/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
