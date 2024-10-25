@@ -786,7 +786,8 @@ using the <code class="docutils literal notranslate"><span class="pre">cnf</span
 </tr>
 </tbody>
 </table>
-<p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS payload:</p>
+<p>When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the <cite>cnf</cite> parameter.
+The KB-JWT MUST contain the following parameters in the JWS payload:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -1374,7 +1375,7 @@ The details on the structure of mDoc Response are provided below.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 18/10/2024.
+      Last updated on 25/10/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
