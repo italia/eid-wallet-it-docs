@@ -604,24 +604,6 @@ The Trust Chains can also be verified offline, using one of the Trust Anchor's p
     The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
 
 
-Establishing Trust with Relying Parties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The Relying Party is registered by a Trust Anchor or its Intermediate and obtains a Trust Mark to be included in its Entity Configuration.
-In its Entity Configuration the Relying Party publishes its specific metadata, including the supported signature and encryption algorithms
-and any other necessary information for the interoperability requirements.
-
-Any requests for User attributes, such as PID or (Q)EAA, from the Relying Party to Wallet Instances are signed and SHOULD contain the verifiable
-Trust Chain regarding the Relying Party.
-
-The Wallet Instance verifies that the Trust Chain related to the Relying Party is still active,
-proving that the Relying Party is still part of the Federation and not revoked.
-
-The Trust Chain MAY be contained within the signed request in the form of a JWS header parameter, or dynamically built through a Federation Entity Discovery process.
-
-In offline flows, Trust Chain verification enables the assessment of the reliability of Trust Marks and Attestations contained within.
-
-
 Establishing Trust with Credential Issuers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
