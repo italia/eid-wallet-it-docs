@@ -52,13 +52,13 @@ The details of each step shown in the previous picture are described in the tabl
   * - **3**, **4**,
     - The Relying Party provides the Wallet Instance with a URL where the information about the Relying Party are provided, along with the information about where the signed request is available for download.
   * - **5**, **6**, **7**, **8**, **9**
-    - In the **Cross Device Flow**, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance, which retrieves a URL with the parameters ``client_id``, ``request_uri``, ``state``, ``client_id_scheme``, and ``request_uri_method``. Conversely, in the Same Device Flow, the Relying Party supplies identical information as in the Cross-Device flow, but directly through a URL.
+    - In the **Cross Device Flow**, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance, which retrieves a URL with the parameters ``client_id``, ``request_uri``, ``state``, ``client_id_scheme``, and ``request_uri_method``. Conversely, in the **Same Device Flow**, the Relying Party supplies identical information as in the Cross-Device flow, but directly through a URL.
   * - **10**, 
     - The Wallet Instance evaluates the trust with the Relying Party.
   * - **11**, **12**
     - The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object. If provided and it is equal to ``post``, the Wallet Instance provides its metadata to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.
   * - **13**
-    - When the Wallet Instance capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.
+    - When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance request the signed Request Object using the HTTP method GET.
   * - **14**
     - The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.wallet_relying_party.jwks`). The Wallet Instance obtains the signed Request Object.
   * - **15**, **16**, **17**
@@ -202,6 +202,13 @@ Device Flow Status Checks and Security
 Be the flow Same Device or Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint).
 This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode,
 then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).
+
+This means that whatever Device Flow is detected by the Relying Party (eg: by inspecting the user-agent),
+the page using the JavaScript code inspecting the status endpoint is always returned to the user-agent.
+
+In the Cross Device Flow the html page that checks the status endpoint also contains the QR Code.
+Using the Same Device Flow, the page that checks the status endpoint contains an ``href`` button
+or `http-equiv` meta header parameter, redirecting to the URL defined at the section "Authorization Request Details".
 
 Since the QRcode page and the status endpoint are implemented by the Relying Party,
 it is under the Relying Party responsability the implementation details of this solution,
