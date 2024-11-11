@@ -56,15 +56,15 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **response_modes_supported**
     - JSON array containing a list of the supported "response_mode" values, as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. The supported values MAY be *query* and *form_post.jwt* (see `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html#name-response-mode-form_postjwt>`__).
   * - **authorization_signing_alg_values_supported**
-    - JSON array containing a list of the JWS :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`Cryptographic algorithms`. See Section 4 of `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`__.
+    - JSON array containing a list of the :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`Cryptographic algorithms`. See Section 4 of `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`__.
   * - **grant_types_supported**
     - JSON array containing a list of the supported grant type values. The authorization server MUST support *authorization_code*. 
   * - **token_endpoint_auth_methods_supported**
     - JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support *attest_jwt_client_auth* as defined in `OAUTH-ATTESTATION-CLIENT-AUTH`_.
   * - **token_endpoint_auth_signing_alg_values_supported**
-    - JSON array containing a list of the JWS signing algorithms ("*alg*" values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See :rfc:`8414#section-2`.
+    - JSON array containing a list of the signing algorithms ("*alg*" values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See :rfc:`8414#section-2`.
   * - **request_object_signing_alg_values_supported**
-    - JSON array containing a list of the JWS signing algorithms ("*alg*" values) supported for Request Objects. See `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
+    - JSON array containing a list of the signing algorithms ("*alg*" values) supported for Request Objects. See `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
   * - **jwks**
     - JSON Web Key Set containing the cryptographic keys for the authorization server. See `OID-FED`_ Section 5.2.1 and `JWK`_.
 

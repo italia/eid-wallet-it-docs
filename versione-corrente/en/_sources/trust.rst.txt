@@ -205,7 +205,7 @@ All the endpoints listed below are defined in the `OID-FED`_ specs.
      - Trust Anchor, Intermediate
    * - fetch endpoint
      - **GET** /fetch?sub=https://rp.example.org
-     - Returns a signed document (JWS) about a specific subject, its Subordinate. It's called Entity Statement.
+     - Returns a signed JWT about a specific subject, its Subordinate. It's called Subordinate Statement.
      - Trust Anchor, Intermediate
    * - trust mark status
      - **POST** /status?sub=...&trust_mark_id=...
@@ -217,7 +217,7 @@ All the endpoints listed below are defined in the `OID-FED`_ specs.
      - Trust Anchor, Intermediate
 
 
-All the responses of the federation endpoints are in the form of JWS, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default.
+All the responses of the federation endpoints are in the form of signed JWT, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default.
 
 
 Configuration of the Federation
@@ -679,7 +679,7 @@ Below is an abstract representation of a Trust Chain.
         "EntityStatement-as-SignedJWT-issued-byTrustAnchor"
     ]
 
-Below is a non-normative example of a Trust Chain in its original format (JSON Array containing JWS as strings) with an Intermediate involved.
+Below is a non-normative example of a Trust Chain, composed by a JSON Array containing JWTs, with an Intermediate involved.
 
 .. code-block:: python
 
@@ -713,7 +713,7 @@ Offline Relying Party Metadata
 
 Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that the Relying Party may issue for a Wallet Instance.
 
-The Relying Party MUST sign the presentation request, the request SHOULD include the `trust_chain` claim in its JWS header parameters, containing the Federation Trust Chain related to itself.
+The Relying Party MUST sign the presentation request, the request SHOULD include the `trust_chain` claim in its JWT header parameters, containing the Federation Trust Chain related to itself.
 
 The Wallet Instance that verifies the request issued by the Relying Party MUST use the Trust Anchor's public keys to validate the entire Trust Chain related to the Relying Party before attesting its reliability.
 
@@ -736,7 +736,7 @@ The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys
 
 The details of this endpoint are defined in the `OID-FED`_ Section 7.6.
 
-Each JWS containing a Trust Chain in the form of a JWS header parameter can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.
+Each JWT containing a Trust Chain in the JWT headers can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.
 
 Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.
 
@@ -756,7 +756,7 @@ Considerations about Decentralization
 
 - There may be more than a single Trust Anchor.
 - In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate acts as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).
-- Trust attestations (Trust Chain) should be included in the JWS issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).
+- Trust attestations (Trust Chain) should be included in the JWT issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).
 - Since the credential presentation must be signed, storing the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. 
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The metadata policy contained within a Trust Chain must be applied to overload any information related to protocol specific metadata.

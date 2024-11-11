@@ -232,7 +232,7 @@ Each state represents a specific functional status and determines the actions th
 <section id="wallet-provider-metadata">
 <h3>Wallet Provider Metadata<a class="headerlink" href="#wallet-provider-metadata" title="Link to this heading">¶</a></h3>
 <p>An HTTP GET request to the <strong>/.well-known/openid-federation</strong> endpoint allows the retrieval of the Wallet Provider Entity Configuration.</p>
-<p>The Wallet Provider Entity Configuration is a JWS containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OpenID Connect Federation</a> and the Trust Model section outlined in this specification.</p>
+<p>The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the <a class="reference external" href="https://openid.net/specs/openid-connect-federation-1_0.html">OpenID Connect Federation</a> and the Trust Model section outlined in this specification.</p>
 <p>The returning Entity Configuration of the Wallet Provider MUST contain the attributes listed below:</p>
 </section>
 </section>
@@ -530,7 +530,7 @@ algorithms for the token endpoint.</p></td>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 07/11/2024.
+      Last updated on 11/11/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

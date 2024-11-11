@@ -121,7 +121,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 
 The PID/(Q)EAA Provider performs the following checks upon the receipt of the PAR request:
 
-    1. It MUST validate the signature of the Request Object using the algorithm specified in the ``alg`` header parameter (:rfc:`9126`, :rfc:`9101`) and the public key retrieved from the Wallet Attestation (``cnf.jwk``) referenced in the Request Object, using the ``kid`` JWS header parameter.
+    1. It MUST validate the signature of the Request Object using the algorithm specified in the ``alg`` header parameter (:rfc:`9126`, :rfc:`9101`) and the public key retrieved from the Wallet Attestation (``cnf.jwk``) referenced in the Request Object, using the ``kid`` JWT header parameter.
     2. It MUST check that the used algorithm for signing the request in the ``alg`` header is one of the listed within the Section `Cryptographic Algorithms <algorithms.html>`_.
     3. It MUST check that the ``client_id`` in the request body of the PAR request matches the ``client_id`` claim included in the Request Object.
     4. It MUST check that the ``iss`` claim in the Request Object matches the ``client_id`` claim in the Request Object (:rfc:`9126`, :rfc:`9101`).
@@ -318,7 +318,7 @@ A non-normative example of the Credential Request is provided below.
 
 
 Where a non-normative example of the decoded content of the ``jwt`` parameter is represented below,
-without encoding and signature. The JWS header:
+without encoding and signature. The JWT header:
 
 .. literalinclude:: ../../examples/credential-jwt-proof-header.json
   :language: JSON  
@@ -721,7 +721,7 @@ All the parameters listed below are REQUIRED:
       - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_.
 
 
-A **DPoP Proof JWT** is included in the HTTP request using the ``DPoP`` header parameter containing a DPoP JWS.
+A **DPoP Proof JWT** is included in the HTTP request using the ``DPoP`` header parameter containing a DPoP JWT.
 
 The JOSE header of a **DPoP JWT** MUST contain at least the following parameters:
 

@@ -467,7 +467,7 @@ The body of the Wallet Attestation Request JWT MUST contain:
       - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
       - :rfc:`8414`
     * - **request_object_signing_alg_values_supported**
-      - JSON array containing a list of the JWS signing algorithms (alg values) supported.
+      - JSON array containing a list of the signing algorithms (alg values) supported.
       -
     * - **presentation_definition_uri_supported**
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
@@ -540,7 +540,7 @@ The body of the Wallet Attestation JWT MUST contain:
       - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
       -
     * - **request_object_signing_alg_values_supported**
-      - JSON array containing a list of the JWS signing algorithms (alg values) supported.
+      - JSON array containing a list of the signing algorithms (alg values) supported.
       -
     * - **presentation_definition_uri_supported**
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.

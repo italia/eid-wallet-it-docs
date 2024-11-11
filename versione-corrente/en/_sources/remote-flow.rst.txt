@@ -62,7 +62,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **14**
     - The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.wallet_relying_party.jwks`). The Wallet Instance obtains the signed Request Object.
   * - **15**, **16**, **17**
-    - The Request Object JWS is verified by the Wallet Instance. The Wallet Instance processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.
+    - The Request Object, in the form of signed JWT, is verified by the Wallet Instance. The Wallet Instance processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.
   * - **18**, **19**
     - The Wallet Instance requests the User's consent for the release of the Credentials by showing the Relying Party's identity and the requested attributes. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.
   * - **20**
@@ -264,7 +264,7 @@ where a non-normative example in the form of decoded header and payload is shown
     "request_uri_method": "post"
   }
 
-The JWS header parameters are described below:
+The JWT header parameters are described below:
 
 .. list-table::
   :widths: 25 50
@@ -277,12 +277,12 @@ The JWS header parameters are described below:
   * - **typ**
     - Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt``.
   * - **kid**
-    - Key ID of the public key needed to verify the JWS signature, as defined in [:rfc:`7517`]. REQUIRED when ``trust_chain`` is used.
+    - Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`]. REQUIRED when ``trust_chain`` is used.
   * - **trust_chain**
     - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
 
 
-The JWS payload parameters are described herein:
+The JWT payload parameters are described herein:
 
 .. list-table::
   :widths: 25 50
@@ -462,7 +462,7 @@ To validate the signature on the Key Binding JWT, the Verifier MUST use the key 
 The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT,
 using the ``cnf`` parameter contained in the Issuer-Signed-JWT.
 
-When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWS header:
+When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header:
 
 .. list-table::
   :widths: 25 50
@@ -477,7 +477,7 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
 
 
 When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the `cnf` parameter. 
-The KB-JWT MUST contain the following parameters in the JWS payload:
+The KB-JWT MUST contain the following parameters in the JWT payload:
 
 .. list-table::
   :widths: 25 50
