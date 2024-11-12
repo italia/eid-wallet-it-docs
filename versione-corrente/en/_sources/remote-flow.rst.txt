@@ -33,7 +33,7 @@ Below a sequence diagram that summarizes the interactions between all the involv
 .. figure:: ../../images/cross_device_auth_seq_diagram.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/ZLPDRnit4BtpLmpKGst3Tftq9i157DUrdRIrQYdn8Gu4YZkIM5FabX-hk4N_UuQabk36EaG80fYQz-RDcnbIRvpdreUDOZnueyDcWPOnTY6yiJ3wuD2EW3i8Z2tCbtpmeuDViPC2tGX--5skrlwj2iXQuf52jbnx63rmfT33hIPwBJ1nR8SXWQXE-0grpnauGzq0PHc6tQDwbde54pfyJf4TCiQ5bnttIC82dFn2w34yu0AcQACoqBoJA-wbqLKePmtMG1wH7OxX7ly9w3nChF4eF3PquaomWZATdzCnEfAPw62ovWxX_BpmHZqTzbIN5kCPXwCZHmWyEeAEapsFUc42rUSDbC8z26EUv1wupOBcmKgmlPGE-qh_khyq3SBTFTpCPXCIsqXBkk7WvxFNXx2LVlseXPAKOIwRuvhj69AgO_XK7SutwDUc-GoV2cZkn1et-9aSg-kCdvKreIMXnlLp04QhvvsTOGpJjTc2NsCliwLQ1yxpRzf7iEqOxbhK2VRDx01lssDGHd05F520zbBarjQaXPFcR0kPSYgu9XKGPPJ3go_UKcnAHPF6gNYq3fRMRE9PYKVTi0B2s4GYT-1jS3vvdAABO_lCOrnva4juwJL81mvtF9ExwOm1VRRz6BJMTB91rtj18Dvmpy4RoZgS3zBP6gbzOgYR1VGfarLLK7diKMWPZHMyvGkff9Ve62g7to7x-ce6ne8s7jgy8QogeKVdV4wkD3Rz6PZ5toXyyNnlFRa17VRpiPVYnNo-RDZW0e4_UYUvRg0rIWg9hg0-efNBvvIA-s0HpBAIN-w9kvoxeBYIJRMs5FbnSk0ESq0O5zpIM116Hwlshi2bqKjfDzWC9xjO6WS5BW9rmif_qmeGjMiZ8ppgt9MkdNlpXBfiUblTNdCN5XlfN5oU_VVNrSwtM7QsG_A5mk4Tc18KK6L0DLeNtgFByQSaBlzP1qpoZ5iIBbtSHD-x_HlISKBITzIdlRU2T6doB7OafZcjrEnINLgYqLvo1RVE1RGmYwkxeooItptCODhtks8XUGAToqjUg1Ypb1N1T6WfZDw_s-kRsVNzrTMVR3zYpE1oZU89Reng2FGUd-6jr0sDP192A2gR_asCSvXQGv0J28uYyYKL5ZIcy4J0_8P87S_h0hs1BerkRjiaT-YKCPYjKGDMLruZdL36OGFSUoiNmQCRWqWIvHB8vRAHqb9KNXQBm3ikLPo5k9Z91LRPzQ4j0n1_8y2k53Z8Jno4z7rp26ouilrxCkKRh9-JQl7Z6_VJgzDNyFhi3ExUKmF_6zdyvAKROpI6jVUjWs1LtW6xMugvC0t2_xizvAJIPOarlDQp7VnQe3e7pzttwIk_Ayex_Muwtit0yFtA6me7aQ3SQwc0RDhXYntTbN6nZsObEzGPdWXZxUuO0iKfHIFGfdOQ2ow8EAVBe8Qlyh0ngVetz5_OgAy0
+    :target: https://www.plantuml.com/plantuml/svg/ZLN1RXit4BtpAmRgeOcHk4cF1bmaSLtRILkhiXmVwaAWk2E9DKLkoU4gQj5_xv3Khhcm0_GcSMVUU_DcE7mNI7gAMoDa96VZTebU2F5UaVCmkGte9o03H26Mxaiv-3R0ZzXfXM42t_oirnlwO2AAbd6qqgsq19CxQGmIN5c6jmepncuS4XdgjLoZfS8W1Te6c6KSDaEprtODKpxSvyWEXP2AT2S9MLY4rpzmzWdSuH9kq2TbO6MdrvAqirMe50tMYJ9bTdW2C_mhOY2OUaUe21i-2IvwnKodftoCWMLcE9XkP40uFHrmavuEUwWpZ-bCmj5Hu0myEe9EiZttTkaYrqSE7Wi7vTo3VYRT5q6Bw3Nu8gMEObjRrbaZqRvb3aPlaD8dvLq8_2UxuJm4kSNojm0LopQqDT0o0kmqRU2tsPbh4AvdiF6uOdLSjBPw3RH1YDxag7khZ6RAXMvUrK9VGIxu5VnU7IwsI1lN_54xd_ftC3-UmCt6xJ9-8Izgd0ScKG_fGz6oZ4JEZXee7rkm4sBjNMpPFnVwyGHdpLxi4i-EUPIqp06994sQI8DJFbstQ3FJU6eHPDlUM-EKDDbga96ZB6bL9cl0njHYIHY0V0nKp4o0WrD2I4EWL_3K6z010XwIfjStSm40iEjxtNhNwGP3BuwJP2D90Zcc68yAbzKwRIaZr7wd__tuL7BheWcLrQbI9Lkvr4QJnY3G1FmViY_EvwbdrX6qvRA8geO-k_05lRROz6VWbd-cULrvj_rgFQLV7VODUnRYoOWzxSveby0llPFIDj0wevN6C6HzHgzN-qmbANe4jwhbzolZkd0FMTBefhh17Fbv-YAyB07nSTMiqeWxcwqQBxC2TERiIlijDkETDLYQ1WNUypmwh_ykcsc6eKs8S6zBLxfsGUu1xN0pssgHBK9SRdK8_FChg-pyu5igkzYXvTBWU1rcWYgfDw0UhVT464hyCOihV-k0QPbnpy9rWBJ-UxT_GZxEcVoD-_JiDTKXJvx7ZiKqnvMQGfMsQfFkhJHm5K943_DqJmlae-IFTtEuwVjTeR0yXQ5ChngWXF3CYk0wz1p6J-7LnUNyOdP-_gjuFkD4mDa6UQjTEiDbmIVSmmTj6nx9B8Ipt2fLFdKXO6uDfxo663WYOxLnQRI21quipuakYwiga1nqUNHBswQbGyT2m7o35l0BUQcA-uqEohY03KWYhvUHC9o0oXBr2jZbuKPg9e1oMJo2xAGsQHRInSmkYCgkstOOWDk07Wwbm8losa7CtvkN8CPNjhxXb_FvzBktns_X-pTluFfJzLP_PF8RvNLBlTJnLYwp3hAKcFx4C2oIdY7A9nGy3FzCk4hjKUNjCqdF8xLXUFZ07oxOGha6uTyigc2jd367Pwo60EFwf-8TIuXRyny0
 
 
     Remote Protocol Flow
@@ -52,13 +52,13 @@ The details of each step shown in the previous picture are described in the tabl
   * - **3**, **4**,
     - The Relying Party provides the Wallet Instance with a URL where the information about the Relying Party are provided, along with the information about where the signed request is available for download.
   * - **5**, **6**, **7**, **8**, **9**
-    - In the **Cross Device Flow**, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance, which retrieves a URL with the parameters ``client_id``, ``request_uri``, ``state``, ``client_id_scheme``, and ``request_uri_method``. Conversely, in the Same Device Flow, the Relying Party supplies identical information as in the Cross-Device flow, but directly through a URL.
+    - In the **Cross Device Flow**, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance, which retrieves a URL with the parameters ``client_id``, ``request_uri``, ``state``, ``client_id_scheme``, and ``request_uri_method``. Conversely, in the **Same Device Flow**, the Relying Party supplies identical information as in the Cross-Device flow, but directly through a URL provided with an ``href`` in an html page or a HTTP Redirect (302) response.
   * - **10**, 
     - The Wallet Instance evaluates the trust with the Relying Party.
   * - **11**, **12**
     - The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object. If provided and it is equal to ``post``, the Wallet Instance provides its metadata to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.
   * - **13**
-    - When the Wallet Instance capabilities discovery is not supported by RP, the Wallet Instance request the signed Request Object using the HTTP method GET.
+    - When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance request the signed Request Object using the HTTP method GET.
   * - **14**
     - The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.wallet_relying_party.jwks`). The Wallet Instance obtains the signed Request Object.
   * - **15**, **16**, **17**
@@ -69,8 +69,8 @@ The details of each step shown in the previous picture are described in the tabl
     - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post.jwt").
   * - **21**, **22**, **23**, **24**, **25** 
     - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.
-  * - **26** (Same Device Flow only)
-    - The Relying Party provides to the Wallet Instance a redirect URI with a response code to be used by the Wallet Instance to finalize the authentication.
+  * - **26**
+    - The Relying Party provides to the Wallet Instance the response about the presentation.
   * - **27**, **28** and **29**
     - The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available to the User.
 
@@ -165,7 +165,7 @@ Below a non-normative example of the response containing the required parameters
 The value corresponding to the `request_uri` endpoint SHOULD be randomized, according to `RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR) <https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1>`_ Section 5.2.1.
 
 
-In the **Same Device Flow** the Relying Party uses an HTTP response redirect (with status code set to 302) as represented in the following non-normative example:
+In the **Same Device Flow** the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL represented in the following non-normative example:
 
 .. code:: text
 
@@ -196,21 +196,33 @@ Below is represented a non-normative example of the QR Code raw payload:
     The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured.
 
 
-Cross Device Flow Status Checks and Security
---------------------------------------------
+Device Flow Status Checks and Security
+--------------------------------------
 
-When the flow is Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint). This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode, then the user-agent checks the status with a polling strategy in seconds or a push strategy (eg: web socket).
+Be the flow Same Device or Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint).
+This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode or the href button pointing to the request URL.
+The JavaScript code makes the user-agent check the status endpoint using a polling strategy in seconds or a push strategy (eg: web socket).
 
-Since the QRcode page and the status endpoint are implemented by the Relying Party, it is under the Relying Party responsability the implementation details of this solution, since it is related to the Relying Party's internal API. However, the text below describes an implementation example.
+Whatever Device Flow is detected by the Relying Party (eg: by inspecting the user-agent),
+the page using the JavaScript code inspecting the status endpoint is always returned to the user-agent.
 
-The Relying Party binds the request of the user-agent, with a session cookie marked as ``Secure`` and ``HttpOnly``, with the issued request. The request url SHOULD include a parameter with a random value. The HTTP response returned by this specialized endpoint MAY contain the HTTP status codes listed below:
+In the Cross Device Flow the html page that checks the status endpoint also contains the QR Code.
+Using the Same Device Flow, the page that checks the status endpoint contains an ``href`` button
+or `http-equiv` meta header parameter, redirecting to the URL defined at the section "Authorization Request Details".
+
+Since the html page and the status endpoint are implemented by the Relying Party,
+it is under the Relying Party responsability the implementation details of this solution,
+because this is related to the Relying Party's internal API. However, the text below describes an implementation example.
+
+The Relying Party binds the request of the user-agent, with a session cookie marked as ``Secure`` and ``HttpOnly``, with the issued request.
+The request url SHOULD include a parameter with a random value. The HTTP response returned by this status endpoint MAY contain the HTTP status codes listed below:
 
 * **201 Created**. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the **request_uri** endpoint.
 * **202 Accepted**. This response is given when the signed Request Object was obtained by the Wallet Instance.
 * **200 OK**. The Wallet Instance has provided the presentation to the Relying Party's  **response_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.
 * **401 Unauthorized**. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.
 
-Below a non-normative example of the HTTP Request to this specialized endpoint, where the parameter ``id`` contains an opaque and random value:
+Below a non-normative example of the HTTP Request to the status endpoint, where the parameter ``id`` contains an opaque and random value:
 
 .. code::
 
@@ -218,6 +230,7 @@ Below a non-normative example of the HTTP Request to this specialized endpoint, 
   HTTP/1.1
   HOST: relying-party.example.org
 
+When the status endpoint returns **200 OK**, it means that the User authentication is successful and the JavaScript code will use the returned location where the user-agent will be redirect to continue the navigation.
 
 Request Object Details
 ----------------------
