@@ -176,6 +176,8 @@ This section includes the requirements necessary for the successful implementati
      - **Automated Compliance Monitoring**: the system should include automated tools for monitoring the compliance of entities with federation standards. This automation aids in the early detection of potential compliance issues.
    * - FR29
      - **Secure Protocol Capabilities Binding**: the secure protocol must enable the exchange of protocol-specific capabilities data as cryptographically-bound metadata attached to a specific identity. This metadata should define the technical capabilities associated with the identity, ensuring verifiable proof and tamper-proof association for robust trust establishment and access control.
+   * - FR30
+     - **Historical Capability**: The system should enable members to present historical trust attestations and signed artifacts, with the federation infrastructure capable of maintaining registry of historical keys to validate the historical data.
 
 
 Federation API endpoints
