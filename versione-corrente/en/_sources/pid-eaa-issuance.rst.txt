@@ -328,9 +328,9 @@ without encoding and signature. The JWT header:
 
 **Steps 19-21 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OpenID4VCI`_ Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
-    1. It MUST check that the PID Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
-    2. It MUST check the PID integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using using the ``kid`` header of the SD-JWT.
-    3. It MUST check that the received PID (in credential claim) matches the schema defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
+    1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
+    2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
+    3. It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
     4. It MUST process and verify the PID in SD-JWT VC format (according to `SD-JWT`_ Section 6.) or MDOC CBOR format. 
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID Provider is trusted.
 
