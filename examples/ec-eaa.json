@@ -103,7 +103,7 @@
             ],
             "credential_configurations_supported": {
                 "EuropeanDisabilityCard": {
-                    "format": "vc+sd-jwt",
+                    "format": "dc+sd-jwt",
                     "scope": "EuropeanDisabilityCard",
                     "cryptographic_binding_methods_supported": [
                         "jwk"
@@ -254,7 +254,7 @@
                     }
                 },
                 "MDL": {
-                    "format": "vc+sd-jwt",
+                    "format": "dc+sd-jwt",
                     "scope": "MDL",
                     "cryptographic_binding_methods_supported": [
                         "jwk"
@@ -509,7 +509,7 @@
                 "A256GCM"
             ],
             "vp_formats": {
-                "vc+sd-jwt": {
+                "dc+sd-jwt": {
                     "sd-jwt_alg_values": [
                         "ES256",
                         "ES384",
@@ -524,7 +524,7 @@
                         {
                             "id": "PersonIdentificationData",
                             "format": {
-                                "vc+sd-jwt": {
+                                "dc+sd-jwt": {
                                     "alg": [
                                         "ES256",
                                         "ES384",

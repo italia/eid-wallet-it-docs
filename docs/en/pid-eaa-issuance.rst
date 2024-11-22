@@ -897,10 +897,10 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - **Description**
     - **Reference**
   * - **format**
-    - Format of the Credential to be issued. This MUST be ``vc+sd-jwt`` or ``mso_mdoc``.
+    - Format of the Credential to be issued. This MUST be ``dc+sd-jwt`` or ``mso_mdoc``.
     - [`OpenID4VCI`_].
   * - **vct**
-    - CONDITIONAL. REQUIRED only if the *format* identifier is ``vc+sd-jwt``. 
+    - CONDITIONAL. REQUIRED only if the *format* identifier is ``dc+sd-jwt``. 
     - See Annex A3.4. of [`OpenID4VCI`_]
   * - **doctype**
     - CONDITIONAL. REQUIRED only if the *format* identifier is ``mso_mdoc``. 
@@ -969,7 +969,7 @@ The Credential Response contains the following parameters:
     - **Description**
     - **Reference**
   * - **credential**
-    - CONDITIONAL. REQUIRED if ``lead_time`` is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``vc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+    - CONDITIONAL. REQUIRED if ``lead_time`` is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
     - Section 7.3, Annex A2.5 and Annex A3.5 of [`OpenID4VCI`_].
   * - **lead_time**
     - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.

@@ -517,7 +517,7 @@ Below there is a non-normative example of an Entity Statement issued by an Regis
                       ]
                 },
                 "vp_formats": {
-                    "vc+sd-jwt": {
+                    "dc+sd-jwt": {
                         "sd-jwt_alg_values": [
                             "ES256",
                             "ES384"

@@ -114,7 +114,7 @@ A non-normative example of the HTTP request is represented below:
         "form_post.jwt"
       ],
       "vp_formats_supported": {
-        "vc+sd-jwt": {
+        "dc+sd-jwt": {
             "sd-jwt_alg_values": [
                 "ES256",
                 "ES384"
@@ -427,7 +427,7 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
             {
                 "id": "PersonIdentificationData",
                 "path": "$.vp_token[0]",
-                "format": "vc+sd-jwt"
+                "format": "dc+sd-jwt"
             },
             {
                 "id": "WalletAttestation",

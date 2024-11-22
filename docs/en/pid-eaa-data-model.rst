@@ -71,7 +71,7 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `SD-JWT-VC`_. 
+    - REQUIRED. It MUST be set to ``dc+sd-jwt`` as defined in `SD-JWT-VC`_. 
     - :rfc:`7515` Section 4.1.9.
   * - **alg**
     - REQUIRED. Signature Algorithm. 
@@ -165,8 +165,8 @@ The Metadata type document MUST be a JSON object and contains the following para
     * - **schema_uri**
       - CONDITIONAL. REQUIRED if **schema** is not present.
       - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema#integrity**
-      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
+    * - **schema_uri#integrity**
+      - CONDITIONAL. REQUIRED if **schema_uri** is present.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **data_source**
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
@@ -174,12 +174,34 @@ The Metadata type document MUST be a JSON object and contains the following para
           * ``trust_framework``: MUST cointain trust framework used for digital authentication towards authentic source system.
           * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` cliam related to name and code identifier of the authentic source.
       - This specification
-    * - **vc_claims**
-      - REQUIRED. Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:
+    * - **display**
+      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It MUST contain for each object the following properties:
 
-          * ``display``: MUST cointain name human-readable display name.
-          * ``graphics``: MUST contain position, font character, color, size.
-      - This specification
+          * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
+          * ``name``: human-readable label for the claim. [REQUIRED].
+          * ``description``: human-readable description for the claim. [REQUIRED].
+          * ``rendering``: object containing rendering methods supported by the Digital Credential type. Rendering method MAY be `simple` and `svg_template`.
+          If rendering method `simple` is supported, the object contains the following properties:
+             * ``logo``: object containing logo information to display. This property is OPTIONAL. The object contains the following properties:
+                * ``uri``: URI pointing to the logo image. [REQUIRED].
+                * ``uri#integrity``: integrity metadata as defined in `SD-JWT-VC`_ Section 7. [REQUIRED].
+                * ``alt_text``: A string containing alternative text to display instead of the logo image. [OPTIONAL].
+           If rendering method `svg_template` is supported, the object contains the following properties: 
+                * ``uri``: URI pointing to the SVG template. [REQUIRED].
+                * ``uri#integrity``: integrity metadata as defined in `SD-JWT-VC`_ Section 7. [REQUIRED].
+                * ``properties``: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in `SD-JWT-VC`_ Section 8.1.2.1.
+      - [`SD-JWT-VC`_] Section 8.
+    * - **claims**
+      - REQUIRED. Array of objects containing information for displaying and validating Digital credential claims. It MUST contain for each credential claim the following properties:
+
+          * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
+          * ``display``: array containing an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following properties:
+             * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
+             * ``label``: human-readable label for the claim. [REQUIRED].
+             * ``description``: human-readable description for the claim. [REQUIRED].
+          * ``sd``: string indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not. [REQUIRED].
+          * ``svg_id``: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [`SD-JWT-VC`_] Section 9. [OPTIONAL].
+      - [`SD-JWT-VC`_] Section 9.
 
 
 A non-normative Digital Credential metadata type is provided below.
