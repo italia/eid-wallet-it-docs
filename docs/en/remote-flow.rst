@@ -248,9 +248,17 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
 
 .. code-block:: javascript
 
-  GET /request_uri HTTP/1.1
-  HOST: relying-party.example.org
+  POST /request HTTP/1.1
+  Host: client.example.org
+  Content-Type: application/x-www-form-urlencoded
 
+  wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22form_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%20%22presentation_definition_uri_supported%22%3A%20false%7D
+  wallet_nonce=qPmxiNFCR3QTm19POc8u
+
+.. note::
+
+  The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that wants to prevent reply of their http requests to the Relying Parties. 
+  When present, the RTelying Party MUST evaluate it.
 
 Request URI Response
 --------------------
