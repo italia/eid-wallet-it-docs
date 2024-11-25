@@ -40,8 +40,11 @@
             "request_uris": [
                 "https://relying-party.example.org/request_uri"
             ],
-            "response_uris_supported": [
+            "response_uris": [
                 "https://relying-party.example.org/response_uri"
+            ],
+            "redirect_uris": [
+                "https://relying-party.example.org/cb"
             ],
             "authorization_signed_response_alg": "ES256",
             "vp_formats": {
