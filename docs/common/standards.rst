@@ -16,13 +16,13 @@ Technical References
     * - `EIDAS-ARF`_
       - EUDI Wallet - Architecture and Reference Framework.
     * - `OpenID4VP`_
-      - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", November 2023, Draft 20.
+      - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", October 2024, Draft 22.
     * - `PresentationExch`_
       - Presentation Exchange 2.0 for Presentation Definition.
     * - :rfc:`2119`
       - Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels" BCP 14, RFC 2119, March 1997.
     * - :rfc:`2616`
-      - Fielding, R., Gettys, J., Mogul, J., Frystyk, H., Masinter, L., Leach, P., and T. Berners-Lee, “Hypertext Transfer Protocol -- HTTP/1.1,” RFC 2616, June 1999.
+      - Fielding, R., Gettys, J., Mogul, J., Frystyk, H., Masinter, L., Leach, P., and T. Berners-Lee, “Hypertext Transfer Protocol -- HTTP/1.1”, RFC 2616, June 1999.
     * - :rfc:`3339`
       - Klyne, G. and C. Newman, "Date and Time on the Internet: Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002.
     * - :rfc:`3986`
@@ -71,8 +71,6 @@ Technical References
       - Sakimura, N., Bradley, J., Jones, M.,  de Medeiros, B., Mortimore, C., "OpenID Connect Core 1.0 incorporating errata set 2", December 2023.
     * - `SD-JWT`_
       - Fett, D., Yasuda, K., Campbell, B., "Selective Disclosure for JWTs (SD-JWT)".
-    * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
-      - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication".
     * - USASCII
       - American National Standards Institute, "Coded Character Set -- 7-bit American Standard Code for Information Interchange", 1986.
     * - `MODI`_
