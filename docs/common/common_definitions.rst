@@ -73,3 +73,4 @@
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
 .. _OIDC-IDA: https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
+.. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/
