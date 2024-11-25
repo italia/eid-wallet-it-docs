@@ -337,7 +337,7 @@ The JWT payload parameters are described herein:
   * - **response_mode**
     - It MUST be set to ``direct_post.jwt``.
   * - **dcql_query**
-    - Object representing a request for a presentation of one Credential, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
+    - Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **response_type**
     - It MUST be set to ``vp_token``.
   * - **response_uri**
@@ -451,7 +451,7 @@ Where the following parameters are used:
       - The requested Digital Credential (one or more, in format of SD-JWT VC)
       - The Wallet Attestation
       
-      When `presentation_definition` is used, the ``vp_token`` value is a JSON Array containing the Verifiable Presentation(s) and the `presentation_submission` MUST be also present within the reponse.
+      When `presentation_definition` is used, the ``vp_token`` value is a JSON Array containing the Verifiable Presentation(s) and the `presentation_submission` parameter MUST be also present within the response.
 
       When the DCQL query language is used, the ``vp_token`` format is a JSON Object which keys corresponds to the requested credential ids in the ``dcql_query`` used in the request, and the values to each presented Digital Credential.
 

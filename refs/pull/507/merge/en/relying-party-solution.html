@@ -500,7 +500,7 @@ where a non-normative example in the form of decoded header and payload is shown
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>dcql_query</strong></p></td>
-<td><p>Object representing a request for a presentation of one Credential, according to the DCQL query language defined in Section 6 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>.</p></td>
+<td><p>Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
@@ -613,7 +613,7 @@ The <cite>vp_token</cite> parameter value corresponds to the format used when th
 <li><p>The requested Digital Credential (one or more, in format of SD-JWT VC)</p></li>
 <li><p>The Wallet Attestation</p></li>
 </ul>
-<p>When <cite>presentation_definition</cite> is used, the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> value is a JSON Array containing the Verifiable Presentation(s) and the <cite>presentation_submission</cite> MUST be also present within the reponse.</p>
+<p>When <cite>presentation_definition</cite> is used, the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> value is a JSON Array containing the Verifiable Presentation(s) and the <cite>presentation_submission</cite> parameter MUST be also present within the response.</p>
 <p>When the DCQL query language is used, the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> format is a JSON Object which keys corresponds to the requested credential ids in the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> used in the request, and the values to each presented Digital Credential.</p>
 </td>
 </tr>
