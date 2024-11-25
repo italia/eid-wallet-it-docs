@@ -366,7 +366,7 @@ Below an non-normative example of the Wallet Attestation without encoding and si
       "form_post.jwt"
     ],
     "vp_formats_supported": {
-        "vc+sd-jwt": {
+        "dc+sd-jwt": {
             "sd-jwt_alg_values": [
                 "ES256",
                 "ES384"
@@ -545,7 +545,9 @@ The body of the Wallet Attestation JWT MUST contain:
     * - **presentation_definition_uri_supported**
       - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
       -
-
+    * - **client_id_schemes_supported**
+      - Array of JSON Strings containing the values of the Client Identifier schemes that the Wallet supports.
+      - `OpenID4VP`_
 
 Wallet Instance Lifecycle
 -----------------------------

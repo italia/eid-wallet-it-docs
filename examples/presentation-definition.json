@@ -9,7 +9,7 @@
                 "group1"
             ],
 			"format": {
-                "vc+sd-jwt": {
+                "dc+sd-jwt": {
                     "alg": [
                         "ES256",
                         "ES384",

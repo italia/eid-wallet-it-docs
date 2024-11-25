@@ -63,8 +63,6 @@ Technical References
       - De Marco, G., Steele, O., Marino, F., "OpenID4VC High Assurance Interoperability Profile with SD-JWT VC", June 2024, Draft 2.
     * - `OAUTH-ATTESTATION-CLIENT-AUTH`_
       - Looker, T., Bastian, P., "OAuth 2.0 Attestation-Based Client Authentication", May 2024, Draft 3.    
-    * - `OAUTH-V2-JARM-04`_
-      - Lodderstedt, T., Campbell, B., "JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)".
     * - `OAUTH-MULT-RESP-TYPE`_
       - de Medeiros, B., Scurtescu, M., Tarjan, P., Jones, M., "OAuth 2.0 Multiple Response Type Encoding Practices", February 2014.
     * - ISO18013-5
