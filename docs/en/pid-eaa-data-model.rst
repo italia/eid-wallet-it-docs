@@ -171,30 +171,33 @@ The Metadata type document MUST be a JSON object and contains the following para
     * - **data_source**
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
 
-          * ``trust_framework``: MUST cointain trust framework used for digital authentication towards authentic source system.
-          * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` cliam related to name and code identifier of the authentic source.
+          * ``trust_framework``: MUST contain trust framework used for digital authentication towards authentic source system.
+          * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` claim related to name and code identifier of the authentic source.
       - This specification
     * - **display**
-      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It MUST contain for each object the following properties:
+      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:
 
-          * ``lang``: language tag as defined in :rfc:`5646` Section 2.
-          * ``name``: human-readable label for the Digital Credential type.
-          * ``description``: human-readable description for the Digital Credential type.
-          * ``rendering``: object containing rendering methods supported by the Digital Credential type. Rendering method `simple` MUST be supported.
-          The ``simple`` object contains the following properties:
+          * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
+          * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
+          * ``description``: human-readable description for the Digital Credential type. [REQUIRED].
+          * ``rendering``: object containing rendering methods supported by the Digital Credential type. [REQUIRED].
+          Rendering method `svg_template` MUST be supported.
+           The ``svg_templates`` array of objects contains for each SVG template supported the following properties:
+                * ``uri``: URI pointing to the SVG template. [REQUIRED].
+                * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+                * ``properties``: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in `SD-JWT-VC`_ Section 8.1.2.1.           
+           If rendering method `simple` is also supported, the ``simple`` object contains the following properties: 
              * ``logo``: object containing information about the logo to display. This property is REQUIRED. The object contains the following sub-values:
                 * ``uri``: URI pointing to the logo image. [REQUIRED]
                 * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
                 * ``alt_text``: A string containing alternative text to display instead of the logo image. [OPTIONAL].
-             * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential.
-             * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential.
-           If rendering method `svg_template` is also supported, the ``svg_templates`` array of objects contains for each SVG template supported the following properties: 
-                * ``uri``: URI pointing to the SVG template. [REQUIRED].
-                * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
-                * ``properties``: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in `SD-JWT-VC`_ Section 8.1.2.1.
+             * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential. [OPTIONAL].
+             * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential. [OPTIONAL].
+          .. note::
+            The use of the SVG template is recommended for all applications that support it.
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**
-      - REQUIRED. Array of objects containing information for displaying and validating Digital credential claims. It MUST contain for each credential claim the following properties:
+      - REQUIRED. Array of objects containing information for displaying and validating Digital credential claims. It contains for each credential claim the following properties:
 
           * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
           * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following sub-values:
@@ -202,7 +205,7 @@ The Metadata type document MUST be a JSON object and contains the following para
              * ``label``: human-readable label for the claim. [REQUIRED].
              * ``description``: human-readable description for the claim. [REQUIRED].
           * ``sd``: string indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not. [REQUIRED].
-          * ``svg_id``: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [`SD-JWT-VC`_] Section 9. [OPTIONAL].
+          * ``svg_id``: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [`SD-JWT-VC`_] Section 9. [REQUIRED].
       - [`SD-JWT-VC`_] Section 9.
 
 
