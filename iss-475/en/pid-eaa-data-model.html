@@ -356,25 +356,31 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>REQUIRED. Object containing information about the data origin. It MUST contain the object <code class="docutils literal notranslate"><span class="pre">verification</span></code> with this following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: MUST cointain trust framework used for digital authentication towards authentic source system.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">authentic_source</span></code>: MUST contain <code class="docutils literal notranslate"><span class="pre">organization_name</span></code> and <code class="docutils literal notranslate"><span class="pre">organization_code</span></code> cliam related to name and code identifier of the authentic source.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: MUST contain trust framework used for digital authentication towards authentic source system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">authentic_source</span></code>: MUST contain <code class="docutils literal notranslate"><span class="pre">organization_name</span></code> and <code class="docutils literal notranslate"><span class="pre">organization_code</span></code> claim related to name and code identifier of the authentic source.</p></li>
 </ul>
 </div></blockquote>
 </td>
 <td><p>This specification</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>display</strong></p></td>
-<td><p>REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It MUST contain for each object the following properties:</p>
+<td><p>REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>: language tag as defined in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> Section 2.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: human-readable label for the Digital Credential type.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: human-readable description for the Digital Credential type.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">rendering</span></code>: object containing rendering methods supported by the Digital Credential type. Rendering method <cite>simple</cite> MUST be supported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>: language tag as defined in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> Section 2. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: human-readable label for the Digital Credential type. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: human-readable description for the Digital Credential type. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rendering</span></code>: object containing rendering methods supported by the Digital Credential type. [REQUIRED].</p></li>
 </ul>
-<dl>
-<dt>The <code class="docutils literal notranslate"><span class="pre">simple</span></code> object contains the following properties:</dt><dd><blockquote>
-<div><ul class="simple">
+<dl class="simple">
+<dt>Rendering method <cite>svg_template</cite> MUST be supported.</dt><dd><dl class="simple">
+<dt>The <code class="docutils literal notranslate"><span class="pre">svg_templates</span></code> array of objects contains for each SVG template supported the following properties:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: URI pointing to the SVG template. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>: integrity metadata as defined in Section 3 of <a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">properties</span></code>: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> Section 8.1.2.1.</p></li>
+</ul>
+</dd>
+<dt>If rendering method <cite>simple</cite> is also supported, the <code class="docutils literal notranslate"><span class="pre">simple</span></code> object contains the following properties:</dt><dd><ul class="simple">
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">logo</span></code>: object containing information about the logo to display. This property is REQUIRED. The object contains the following sub-values:</dt><dd><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: URI pointing to the logo image. [REQUIRED]</p></li>
@@ -384,26 +390,23 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </dd>
 </dl>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">background_color</span></code>: RGB color value as defined in <a class="reference external" href="https://www.w3.org/TR/css-color/">W3C.CSS-COLOR</a> for the background of the Digital Credential.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">text_color</span></code>: RGB color value as defined in <a class="reference external" href="https://www.w3.org/TR/css-color/">W3C.CSS-COLOR</a> for the text of the Digital Credential.</p></li>
-</ul>
-</div></blockquote>
-<dl class="simple">
-<dt>If rendering method <cite>svg_template</cite> is also supported, the <code class="docutils literal notranslate"><span class="pre">svg_templates</span></code> array of objects contains for each SVG template supported the following properties:</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: URI pointing to the SVG template. [REQUIRED].</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>: integrity metadata as defined in Section 3 of <a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>. [REQUIRED].</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">properties</span></code>: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> Section 8.1.2.1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">background_color</span></code>: RGB color value as defined in <a class="reference external" href="https://www.w3.org/TR/css-color/">W3C.CSS-COLOR</a> for the background of the Digital Credential. [OPTIONAL].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text_color</span></code>: RGB color value as defined in <a class="reference external" href="https://www.w3.org/TR/css-color/">W3C.CSS-COLOR</a> for the text of the Digital Credential. [OPTIONAL].</p></li>
 </ul>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The use of the SVG template is recommended for all applications that support it.</p>
+</div>
 </div></blockquote>
 </td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 8.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>claims</strong></p></td>
-<td><p>REQUIRED. Array of objects containing information for displaying and validating Digital credential claims. It MUST contain for each credential claim the following properties:</p>
+<td><p>REQUIRED. Array of objects containing information for displaying and validating Digital credential claims. It contains for each credential claim the following properties:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: array indicating the claim or claims that are being addressed. [REQUIRED].</p></li>
@@ -417,7 +420,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </dl>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sd</span></code>: string indicating whether the claim is selectively disclosable. It MUST be set to <cite>always</cite> if the claim is selectively disclosure or <cite>never</cite> if not. [REQUIRED].</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">svg_id</span></code>: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 9. [OPTIONAL].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">svg_id</span></code>: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 9. [REQUIRED].</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -1515,7 +1518,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/11/2024.
+      Last updated on 26/11/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
