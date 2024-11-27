@@ -172,7 +172,12 @@ The Metadata type document MUST be a JSON object and contains the following para
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
 
           * ``trust_framework``: MUST contain trust framework used for digital authentication towards authentic source system.
-          * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` claim related to name and code identifier of the authentic source.
+          * ``authentic_source``: MUST contain the following claims related to information about the authentic source:
+               * ``organization_name`` name of the authentic source.
+               * ``organization_code`` code identifier of the authentic source.
+               * ``homepage_uri`` uri pointing to the authentic source's homepage.
+               * ``contacts`` contact list for info and assistance.
+               * ``logo_uri`` URI pointing to the logo image.
       - This specification
     * - **display**
       - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:
