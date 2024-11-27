@@ -229,7 +229,7 @@ The configuration of the federation is published by the Trust Anchor within its 
 
 All the participants in the federation MUST obtain the federation configuration before entering the operational phase, and they
 MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the 
-public keys for signature operations and the maximum number of Intermediates allowed between a Leaf and the Trust Anchor (**max_path_length**).
+public keys for signature operations.
 
 Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Federation <OID-FED>`_ specification:
 
@@ -293,14 +293,14 @@ The Entity Configuration is the verifiable document that each Federation Entity 
 The Entity Configuration HTTP Response MUST set the media type to `application/entity-statement+jwt`.
 
 The Entity Configuration MUST be cryptographically signed. The public part of this key MUST be provided in the
-Entity Configuration and within the Entity Statement issued by a immediate superior and related to its subordinate Federation Entity.
+Entity Configuration and within the Subordinate Statement issued by a immediate superior and related to its subordinate Federation Entity.
 
 The Entity Configuration MAY also contain one or more Trust Marks.
 
 .. note::
   **Entity Configuration Signature**
 
-  All the signature-check operations regarding the Entity Configurations, Entity Statements and Trust Marks, are carried out with the Federation public keys. For the supported algorithms refer to Section `Cryptografic Algorithm`.
+  All the signature-check operations regarding the Entity Configurations, Subordinate Statements and Trust Marks, are carried out with the Federation public keys. For the supported algorithms refer to Section `Cryptografic Algorithm`.
 
 Entity Configurations Common Parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -343,10 +343,6 @@ The Trust Anchor Entity Configuration, in addition to the common parameters list
    * - **Claim**
      - **Description**
      - **Required**
-   * - **constraints**
-     - JSON Object that describes the trust evaluation mechanisms bounds. It MUST contain the attribute **max_path_length** that
-       defines the maximum number of Intermediates between a Leaf and the Trust Anchor.
-     - |check-icon|
    * - **trust_mark_issuers**
      - JSON Array that defines which Federation authorities are considered trustworthy
        for issuing specific Trust Marks, assigned with their unique identifiers.
@@ -372,7 +368,7 @@ In addition to the previously defined claims, the Entity Configuration of the Le
      - **Required**
    * - **authority_hints**
      - Array of URLs (String). It contains a list of URLs of the immediate superior entities, such as the Trust Anchor or
-       an Intermediate, that issues an Entity Statement related to this subject.
+       an Intermediate, that issues an Subordinate Statement related to this subject.
      - |check-icon|
    * - **trust_marks**
      - A JSON Array containing the Trust Marks.
@@ -466,20 +462,20 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
     - See `OID-FED`_ Draft 36 Section 5.1.1
 
 
-Entity Statements
------------------
+Subordinate Statements
+-----------------------
 
-Trust Anchors and Intermediates publish Entity Statements related to their immediate Subordinates.
-The Entity Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.
+Trust Anchors and Intermediates publish Subordinate Statements related to their immediate Subordinates.
+The Subordinate Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.
 
-The metadata policy, when applied, makes one or more changes to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Entity Statement issued by the Trust Anchor.
+The metadata policy, when applied, makes one or more changes to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor.
 
-Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where the Entity Statements are requested to validate the Leaf's Entity Configuration signature. 
+Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where the Subordinate Statements are requested to validate the Leaf's Entity Configuration signature. 
 
 .. note:: 
     The Federation Fetch endpoint MAY also publish X.509 certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 certificates via a RESTful service.
 
-Below there is a non-normative example of an Entity Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
+Below there is a non-normative example of an Subordinate Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
 .. code-block:: text
 
@@ -535,16 +531,16 @@ Below there is a non-normative example of an Entity Statement issued by an Regis
 
 .. note::
 
-  **Entity Statement Signature**
+  **Subordinate Statement Signature**
 
   The same considerations and requirements made for the Entity Configuration
-  and in relation to the signature mechanisms MUST be applied for the Entity Statements.
+  and in relation to the signature mechanisms MUST be applied for the Subordinate Statements.
 
 
-Entity Statement
-^^^^^^^^^^^^^^^^^^
+Subordinate Statement
+^^^^^^^^^^^^^^^^^^^^^
 
-The Entity Statement issued by Trust Anchors and Intermediates contains the following attributes:
+The Subordinate Statement issued by Trust Anchors and Intermediates contains the following attributes:
 
 
 .. list-table::
@@ -576,7 +572,7 @@ The Entity Statement issued by Trust Anchors and Intermediates contains the foll
      - JSON Array containing the Trust Marks issued by itself for the subordinate subject.
      - |uncheck-icon|
    * - **constraints**
-     - It MAY contain the **allowed_leaf_entity_types**, that restricts what types of metadata the subject is allowed to publish.
+     - It MAY contain the **allowed_leaf_entity_types**, that restricts what types of metadata the subject is allowed to publish. It MAY contain the maximum number of Intermediates allowed between a itself and the Leaf (**max_path_length**)
      - |check-icon|
 
 
@@ -585,16 +581,16 @@ Trust Evaluation Mechanism
 
 Trust Anchors MUST distribute their Federation Public Keys through secure out-of-band mechanisms, such as publishing them on a verified web page or storing them in a remote repository as part of a trust list. The rationale behind this requirement is that relying solely on the data provided within the Trust Anchor's Entity Configuration does not adequately mitigate risks associated with DNS and TLS manipulation attacks. To ensure security, all participants MUST obtain the Trust Anchor's public keys using these out-of-band methods. They should then compare these keys with those obtained from the Trust Anchor's Entity Configuration, discarding any keys that do not match. This process helps to ensure the integrity and authenticity of the Trust Anchor's public keys and the overall security of the federation.
 
-The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint) and the attestations of their metadata and public keys (Entity Statements).
+The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint) and the attestations of their metadata and public keys (Subordinate Statements).
 
 Each participant, including Trust Anchor, Intermediate, Credential Issuer, Wallet Provider, and Relying Party, publishes its own metadata and public keys (Entity Configuration endpoint) in the well-known web resource **.well-known/openid-federation**.
 
-Each of these can be verified using the Entity Statement issued by a superior, such as the Trust Anchor or an Intermediate.
+Each of these can be verified using the Subordinate Statement issued by a superior, such as the Trust Anchor or an Intermediate.
 
-Each Entity Statement is verifiable over time and MUST have an expiration date. The revocation of each statement is verifiable in real time and online (only for remote flows) through the federation endpoints.
+Each Subordinate Statement is verifiable over time and MUST have an expiration date. The revocation of each statement is verifiable in real time and online (only for remote flows) through the federation endpoints.
 
 .. note::
-    The revocation of an Entity is made with the unavailability of the Entity Statement related to it. If the Trust Anchor or its Intermediate doesn't publish a valid Entity Statement, or if it publishes an expired/invalid Entity Statement, the subject of the Entity Statement MUST be intended as not valid or revoked.
+    The revocation of an Entity is made with the unavailability of the Subordinate Statement related to it. If the Trust Anchor or its Intermediate doesn't publish a valid Subordinate Statement, or if it publishes an expired/invalid Subordinate Statement, the subject of the Subordinate Statement MUST be intended as not valid or revoked.
 
 The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, forms the Trust Chain.
 
@@ -748,7 +744,7 @@ Privacy Remarks
 
 - Wallet Instances MUST NOT publish their metadata through an online service.
 - The trust infrastructure MUST be public, with all endpoints publicly accessible without any client credentials that may disclose who is requesting access.
-- When a Wallet Instance requests the Entity Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet Instance is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.
+- When a Wallet Instance requests the Subordinate Statements to build the Trust Chain for a specific Relying Party or validates a Trust Mark online, issued for a specific Relying Party, the Trust Anchor or its Intermediate do not know that a particular Wallet Instance is inquiring about a specific Relying Party; instead, they only serve the statements related to that Relying Party as a public resource.
 - The Wallet Instance metadata MUST not contain information that may disclose technical information about the hardware used.
 - Leaf entity, Intermediate, and Trust Anchor metadata may include the necessary amount of data as part of administrative, technical, and security contact information. It is generally not recommended to use personal contact details in such cases. From a legal perspective, the publication of such information is needed for operational support concerning technical and security matters and the GDPR regulation.
 
