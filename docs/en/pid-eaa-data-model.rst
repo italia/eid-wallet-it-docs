@@ -245,7 +245,7 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **unique_id**
       - [SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to `ANPR rules <https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/>`_
       - 
-    * - **tax_id_code**
+    * - **personal_administrative_number**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - 
 
@@ -310,13 +310,13 @@ In the following the disclosure list is given
    ``MC0wMS0xMCJd``
 -  Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
 
-**Claim** ``tax_id_code``:
+**Claim** ``personal_administrative_number``:
 
--  SHA-256 Hash: ``ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E``
+-  SHA-256 Hash: ``4KfNcVziiuiktw8UMBaZQBRlLorpAhFz2ii37niYF2Q``
 -  Disclosure:
-   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ``
-   ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["AJx-095VPrpTtN4QMOqROA", "tax_id_code",``
+   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbmFsX2FkbWluaXN0``
+   ``cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0``
+-  Contents: ``["AJx-095VPrpTtN4QMOqROA", "personal_administrative_number",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 
@@ -325,33 +325,35 @@ The combined format for the PID issuance is given by
 
 .. code-block::
 
-  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  IkJvTUdrdFcxcmJpa250dzhGenhfQmVMNFliQW5kcjZBSHNkZ3BhdEZDaWciLCAiRU5O
-  bzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsICJWUUktUzFt
-  VDFLeGZxMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRl
-  eEVZdHFERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1hRlRh
-  dVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdHc0dw
-  U2tDUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJpc3MiOiAiaHR0cHM6Ly9waWRwcm92
-  aWRlci5leGFtcGxlLm9yZyIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXhwIjogMTg4MzAw
-  MDAwMCwgInN1YiI6ICJOemJMc1hoOHVEQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCAi
-  c3RhdHVzIjogeyJzdGF0dXNfYXNzZXJ0aW9uIjogeyJjcmVkZW50aWFsX2hhc2hfYWxn
-  IjogInNoYS0yNTYifX0sICJ2Y3QiOiAiaHR0cHM6Ly9waWRwcm92aWRlci5leGFtcGxl
-  Lm9yZy92MS4wL3BlcnNvbmlkZW50aWZpY2F0aW9uZGF0YSIsICJ2Y3QjaW50ZWdyaXR5
-  IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE1MTE4YWNjZTI4NmM5YmI1NmI2M2E0NDNkYzg1
-  YWY2NTNjZDczZjYwNzhiMWYiLCAidmVyaWZpY2F0aW9uIjogeyJ0cnVzdF9mcmFtZXdv
-  cmsiOiAiZWlkYXMiLCAiYXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2Ui
-  OiB7Im1ldGhvZCI6ICJjaWUifX0sICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjog
-  eyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5
-  WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdX
-  YlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.NE_Q2unPGzoh
-  rIyVI0kAZ8nz3DLhUXBBd-jji8302PyIU0xqLnGtcWrdM9NPE_-BfUe3H-XFahYOMI54
-  PUvdZw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~
-  WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4eC14
-  eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
-  lZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZG
-  hRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm
-  9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRT
-  U9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0IiwgImtpZCI6ICJk
+  QjY3Z0w3Y2szVEZpSUFmN042XzdTSHZxazBNRFlNRVFjb0dHbGtVQUF3In0.eyJfc2Qi
+  OiBbIjRLZk5jVnppaXVpa3R3OFVNQmFaUUJSbExvcnBBaEZ6MmlpMzduaVlGMlEiLCAi
+  Qm9NR2t0VzFyYmlrbnR3OEZ6eF9CZUw0WWJBbmRyNkFIc2RncGF0RkNpZyIsICJWUUkt
+  UzFtVDFLeGZxMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdT
+  cjRleEVZdHFERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1h
+  RlRhdVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdH
+  c0dwU2tDUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJleHAiOiAxODgzMDAwMDAwLCAi
+  aXNzIjogImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56
+  YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1
+  c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9fSwg
+  InZjdCI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3YxLjAvcGVyc29u
+  aWRlbnRpZmljYXRpb25kYXRhIiwgInZjdCNpbnRlZ3JpdHkiOiAiYzVmNzNlMjUwZmU4
+  NjlmMjRkMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ0M2RjODVhZjY1M2NkNzNmNjA3OGIx
+  ZiIsICJ2ZXJpZmljYXRpb24iOiB7InRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJh
+  c3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsibWV0aG9kIjogImNp
+  ZSJ9fSwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijog
+  IkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNW
+  b0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJ
+  aXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PdtnMhVkd9YzVtpnEG_qWj2Bj5fhB_cqk
+  edu1mehoWb1no-2eQQzsfDe9U83GAxJ-nIGqhTnbwHGld5UAgfcTg~WyIyR0xDNDJzS1
+  F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJO
+  EVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14e
+  Hh4eHh4eHh4eHgiXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbW
+  UiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1
+  lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGU
+  iLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbm
+  FsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl
+  0~
 
 (Q)EAA non-normative examples
 -----------------------------
@@ -419,13 +421,13 @@ In the following the disclosure list is given:
    ``MjQtMDEtMDEiXQ``
 -  Contents: ``["AJx-095VPrpTtN4QMOqROA", "expiry_date", "2024-01-01"]``
 
-**Claim** ``tax_id_code``:
+**Claim** ``personal_administrative_number``:
 
--  SHA-256 Hash: ``8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E``
+-  SHA-256 Hash: ``wgZ0suEkIh0U7lrsviuS-TaGhQIiO-h3CfG4Dd71ll8``
 -  Disclosure:
-   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
-   ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "tax_id_code",``
+   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBlcnNvbmFsX2FkbWluaXN0``
+   ``cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0``
+-  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "personal_administrative_number",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 **Claim** ``constant_attendance_allowance``:
@@ -443,37 +445,38 @@ The combined format for the (Q)EAA issuance is represented below:
 
 .. code-block::
 
-  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  IjhKam96QmZvdk1OdlEzSGZsbVBXeTRPMTlHcHhzNjFGV0hqWmViVTU4OUUiLCAiRHgt
-  NmhqdnJjeE56RjBzbFU2dWtObXpIb0wtWXZCTi10RmEwVDhYLWJZMCIsICJHRTNTanlf
-  ekFUMzRmOHdhNURVa1ZCMEZzbGFTSlJBQWM4STNsTjExRmZjIiwgIlZRSS1TMW1UMUt4
-  ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLCAiWXJjLXMtV1NyNGV4RVl0
-  cURFc21SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSIsICJhQlZkZmNueFQwWjVScndkeFpT
-  VWh1VXh6M2dNMnZjRVpMZVlJajYxS2FzIiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlw
-  eVFUSjZGTVVoYy1KWGZIcnhoTGsiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUha
-  NHU5b1dqMVNsSUJsQ2MxbyJdLCAiaXNzIjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUu
-  b3JnIiwgImlhdCI6IDE2ODMwMDAwMDAsICJleHAiOiAxODgzMDAwMDAwLCAic3ViIjog
-  Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0
-  YXR1c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9
-  fSwgInZjdCI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy92MS4wL2Rpc2FiaWxp
-  dHljYXJkIiwgInZjdCNpbnRlZ3JpdHkiOiAiMmU0MGJjZDY3OTkwMDgwODVmZmIxYTFm
-  MzUxN2VmZWUzMzUyOThmZDk3NmIzZTY1NWJmYjNmNGVhYTExZDE3MSIsICJ2ZXJpZmlj
-  YXRpb24iOiB7InRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJhc3N1cmFuY2VfbGV2
-  ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsibWV0aG9kIjogImNpZSJ9fSwgIl9zZF9h
-  bGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6
-  ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxz
-  N3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0
-  NGpUOUYySFpRIn19fQ.FAIV8Cncch43N07yBcWleJg4ZO9o_XdefgIejdShK1cCj8yT9
-  S022cvSpdxuV44x-c_XmTn3Db9t0jJJPtqebA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STj
-  l3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgI
-  mRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyI2SWo3dE0tYTVpVlBHYm9TN
-  XRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW
-  5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMD
-  hpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0T
-  jRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyJQYzMzSk0yTG
-  NoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWF
-  hYWFgiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGF
-  uY2VfYWxsb3dhbmNlIiwgdHJ1ZV0~
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0IiwgImtpZCI6ICJk
+  MTI2YTZhODU2Zjc3MjQ1NjA0ODRmYTlkYzU5ZDE5NSJ9.eyJfc2QiOiBbIkR4LTZoanZ
+  yY3hOekYwc2xVNnVrTm16SG9MLVl2Qk4tdEZhMFQ4WC1iWTAiLCAiR0UzU2p5X3pBVDM
+  0Zjh3YTVEVWtWQjBGc2xhU0pSQUFjOEkzbE4xMUZmYyIsICJWUUktUzFtVDFLeGZxMm8
+  4Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRleEVZdHFERXN
+  tUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiYUJWZGZjbnhUMFo1UnJ3ZHhaU1VodVV
+  4ejNnTTJ2Y0VaTGVZSWo2MUthcyIsICJzMVhLNWYycE0zLWFGVGF1WGhtdmQ5cHlRVEo
+  2Rk1VaGMtSlhmSHJ4aExrIiwgIndnWjBzdUVrSWgwVTdscnN2aXVTLVRhR2hRSWlPLWg
+  zQ2ZHNERkNzFsbDgiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1dqMVN
+  sSUJsQ2MxbyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRwczovL2lzc3V
+  lci5leGFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFp
+  zUkdDOVhzIiwgInN0YXR1cyI6IHsic3RhdHVzX2Fzc2VydGlvbiI6IHsiY3JlZGVudGl
+  hbF9oYXNoX2FsZyI6ICJzaGEtMjU2In19LCAidmN0IjogImh0dHBzOi8vaXNzdWVyLmV
+  4YW1wbGUub3JnL3YxLjAvZGlzYWJpbGl0eWNhcmQiLCAidmN0I2ludGVncml0eSI6ICI
+  yZTQwYmNkNjc5OTAwODA4NWZmYjFhMWYzNTE3ZWZlZTMzNTI5OGZkOTc2YjNlNjU1YmZ
+  iM2Y0ZWFhMTFkMTcxIiwgInZlcmlmaWNhdGlvbiI6IHsidHJ1c3RfZnJhbWV3b3JrIjo
+  gImVpZGFzIiwgImFzc3VyYW5jZV9sZXZlbCI6ICJoaWdoIiwgImV2aWRlbmNlIjogeyJ
+  tZXRob2QiOiAiY2llIn19LCAiX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiand
+  rIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTN
+  PSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVF
+  HSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19.Rm5wDXvZLENnHAqXxX
+  rohYdRU1hmhyu6CN2BUiwp8Q0Do3CYchAOwtY9O_FOXVC7--NY5vu9Rs_wNoyGjXuHVQ
+  ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbH
+  VWNU9nM2dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWF
+  hYIl0~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW
+  8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3N
+  pIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0
+  wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIj
+  IwMjQtMDEtMDEiXQ~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBlcnNvbmFsX2F
+  kbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0~WyJ
+  HMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3d
+  hbmNlIiwgdHJ1ZV0~
 
 MDOC-CBOR
 =========
@@ -656,7 +659,7 @@ Depending on the Digital Credential type, additional **elementIdentifier** data 
       - **unique_id**
       - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.it.1**
-      - **tax_id_code**
+      - **personal_administrative_number**
       - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
 
 
