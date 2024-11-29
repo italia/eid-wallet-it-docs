@@ -444,126 +444,182 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital version of Person Identification Data&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;template_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org/v1.0/templatepid&quot;</span><span class="p">,</span><span class="w">	</span>
 <span class="w">    </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org/schema/v1.0/mdl&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;schema#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;data_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pdnd&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;authentic_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministero degli Interni&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_it&quot;</span>
+<span class="w">            </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;m_it&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;protocollo@pec.example.it&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/img/logo.svg&quot;</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span><span class="w">	</span>
-<span class="w">    </span><span class="p">},</span><span class="w">					</span>
-<span class="w">    </span><span class="nt">&quot;vc_claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;unique_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">    </span><span class="p">},</span><span class="w">		</span>
+<span class="w">    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">      </span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dati di Identificazione Personale&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Versione Digitale dei Dati di Identificazione Personale&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rendering&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;simple&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;logo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/img/logo.png&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;alt_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Logo del Ministero dell&#39;interno&quot;</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#2e89d9&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#030303&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;svg_templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/svgtemplates/pid-credential-italian.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;landscape&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;light&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;contrast&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
 <span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;graphics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;font&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arial&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12pt&quot;</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital version of Person Identification Data&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;rendering&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;simple&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;logo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/img/logo.png&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;alt_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ministry of the Interior logo&quot;</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#2e89d9&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#030303&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;svg_templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/svgtemplates/pid-credential-english.svg&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;landscape&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;light&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;contrast&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
 <span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;graphics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;font&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arial&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12pt&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;value_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cognome&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Family Name&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;graphics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;font&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arial&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12pt&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;value_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di nascita (YYYY-MM-GG)&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of Birth (YYYY-MM-GG)&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;graphics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;font&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arial&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12pt&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;value_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luogo di Nascita&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place of Birth&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;graphics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;position&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;font&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arial&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;12pt&quot;</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome/i attuale/i dell&#39;utente a cui si riferiscono i dati di identificazione personale.&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Current first name(s), including middle name(s) of the user to whom the person identification data relates.&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;svg_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cognome&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cognome/i attuale/i dell&#39;utente a cui si riferiscono i dati di identificazione personale.&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Surname&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Current last name(s) or surname(s) of the user to whom the person identification data relates.&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;svg_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;birth_date&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">           </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di nascita&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Giorno, mese e anno di nascita dell&#39;utente a cui si riferiscono i dati identificativi.&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of birth&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Day, month, and year on which the user to whom the person identification data relates was born.&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;svg_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;unique_id&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ID ANPR&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identificativo unico nazionale attribuito ad ogni cittadino italiano all’atto della sua iscrizione in anagrafe e conseguente registrazione nel sistema ANPR.&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ID ANPR&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Unique national identifier attributed to each Italian citizen upon registration in the registry and subsequent registration in the ANPR system&quot;</span><span class="w"> </span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;svg_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_id&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;unique_id&quot;</span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ID ANPR&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identificativo unico nazionale attribuito ad ogni cittadino italiano all’atto della sua iscrizione in anagrafe e conseguente registrazione nel sistema ANPR.&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ID ANPR&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Unique national identifier attributed to each Italian citizen upon registration in the registry and subsequent registration in the ANPR system.&quot;</span><span class="w"> </span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;svg_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_id&quot;</span>
+<span class="w">        </span><span class="p">},</span><span class="w">        </span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;personal_administrative_number&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Codice fiscale&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Codice di identificazione fiscale nazionale della persona fisica.&quot;</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tax identification number&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;National tax identification code of natural person.&quot;</span><span class="w"> </span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;svg_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal_administrative_number&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -600,7 +656,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to <a class="reference external" href="https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/">ANPR rules</a></p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>tax_id_code</strong></p></td>
+<tr class="row-even"><td><p><strong>personal_administrative_number</strong></p></td>
 <td><p>[SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example <code class="docutils literal notranslate"><span class="pre">TINIT-&lt;ItalianTaxIdentificationNumber&gt;</span></code></p></td>
 <td></td>
 </tr>
@@ -634,7 +690,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">  </span><span class="nt">&quot;given_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mario&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
+<span class="w">  </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -653,15 +709,14 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;4KfNcVziiuiktw8UMBaZQBRlLorpAhFz2ii37niYF2Q&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o&quot;</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -731,43 +786,45 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <code class="docutils literal notranslate"><span class="pre">MC0wMS0xMCJd</span></code></p></li>
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;Qg_O64zqAxe412a108iroA&quot;,</span> <span class="pre">&quot;birth_date&quot;,</span> <span class="pre">&quot;1980-01-10&quot;]</span></code></p></li>
 </ul>
-<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">4KfNcVziiuiktw8UMBaZQBRlLorpAhFz2ii37niYF2Q</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
-<code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;AJx-095VPrpTtN4QMOqROA&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbmFsX2FkbWluaXN0</span></code>
+<code class="docutils literal notranslate"><span class="pre">cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;AJx-095VPrpTtN4QMOqROA&quot;,</span> <span class="pre">&quot;personal_administrative_number&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
 </ul>
 <p>The combined format for the PID issuance is given by</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0</span><span class="o">.</span><span class="n">eyJfc2QiOiBb</span>
-<span class="n">IkJvTUdrdFcxcmJpa250dzhGenhfQmVMNFliQW5kcjZBSHNkZ3BhdEZDaWciLCAiRU5O</span>
-<span class="n">bzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsICJWUUktUzFt</span>
-<span class="n">VDFLeGZxMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRl</span>
-<span class="n">eEVZdHFERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1hRlRh</span>
-<span class="n">dVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdHc0dw</span>
-<span class="n">U2tDUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJpc3MiOiAiaHR0cHM6Ly9waWRwcm92</span>
-<span class="n">aWRlci5leGFtcGxlLm9yZyIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXhwIjogMTg4MzAw</span>
-<span class="n">MDAwMCwgInN1YiI6ICJOemJMc1hoOHVEQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCAi</span>
-<span class="n">c3RhdHVzIjogeyJzdGF0dXNfYXNzZXJ0aW9uIjogeyJjcmVkZW50aWFsX2hhc2hfYWxn</span>
-<span class="n">IjogInNoYS0yNTYifX0sICJ2Y3QiOiAiaHR0cHM6Ly9waWRwcm92aWRlci5leGFtcGxl</span>
-<span class="n">Lm9yZy92MS4wL3BlcnNvbmlkZW50aWZpY2F0aW9uZGF0YSIsICJ2Y3QjaW50ZWdyaXR5</span>
-<span class="n">IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE1MTE4YWNjZTI4NmM5YmI1NmI2M2E0NDNkYzg1</span>
-<span class="n">YWY2NTNjZDczZjYwNzhiMWYiLCAidmVyaWZpY2F0aW9uIjogeyJ0cnVzdF9mcmFtZXdv</span>
-<span class="n">cmsiOiAiZWlkYXMiLCAiYXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2Ui</span>
-<span class="n">OiB7Im1ldGhvZCI6ICJjaWUifX0sICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjog</span>
-<span class="n">eyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5</span>
-<span class="n">WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdX</span>
-<span class="n">YlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0</span><span class="o">.</span><span class="n">NE_Q2unPGzoh</span>
-<span class="n">rIyVI0kAZ8nz3DLhUXBBd</span><span class="o">-</span><span class="n">jji8302PyIU0xqLnGtcWrdM9NPE_</span><span class="o">-</span><span class="n">BfUe3H</span><span class="o">-</span><span class="n">XFahYOMI54</span>
-<span class="n">PUvdZw</span><span class="o">~</span><span class="n">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span><span class="o">~</span>
-<span class="n">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4eC14</span>
-<span class="n">eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ</span><span class="o">~</span><span class="n">WyI2SWo3dE0tYTVpVlBHYm9TNXRtd</span>
-<span class="n">lZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJlSThaV205UW5LUHBOUGVOZW5IZG</span>
-<span class="n">hRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm</span>
-<span class="mi">9</span><span class="n">BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJBSngtMDk1VlBycFR0TjRRT</span>
-<span class="n">U9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span><span class="o">~</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0IiwgImtpZCI6ICJk</span>
+<span class="n">QjY3Z0w3Y2szVEZpSUFmN042XzdTSHZxazBNRFlNRVFjb0dHbGtVQUF3In0</span><span class="o">.</span><span class="n">eyJfc2Qi</span>
+<span class="n">OiBbIjRLZk5jVnppaXVpa3R3OFVNQmFaUUJSbExvcnBBaEZ6MmlpMzduaVlGMlEiLCAi</span>
+<span class="n">Qm9NR2t0VzFyYmlrbnR3OEZ6eF9CZUw0WWJBbmRyNkFIc2RncGF0RkNpZyIsICJWUUkt</span>
+<span class="n">UzFtVDFLeGZxMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdT</span>
+<span class="n">cjRleEVZdHFERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1h</span>
+<span class="n">RlRhdVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdH</span>
+<span class="n">c0dwU2tDUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJleHAiOiAxODgzMDAwMDAwLCAi</span>
+<span class="n">aXNzIjogImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56</span>
+<span class="n">YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1</span>
+<span class="n">c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9fSwg</span>
+<span class="n">InZjdCI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3YxLjAvcGVyc29u</span>
+<span class="n">aWRlbnRpZmljYXRpb25kYXRhIiwgInZjdCNpbnRlZ3JpdHkiOiAiYzVmNzNlMjUwZmU4</span>
+<span class="n">NjlmMjRkMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ0M2RjODVhZjY1M2NkNzNmNjA3OGIx</span>
+<span class="n">ZiIsICJ2ZXJpZmljYXRpb24iOiB7InRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJh</span>
+<span class="n">c3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsibWV0aG9kIjogImNp</span>
+<span class="n">ZSJ9fSwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijog</span>
+<span class="n">IkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNW</span>
+<span class="n">b0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJ</span>
+<span class="n">aXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ</span><span class="o">.</span><span class="n">PdtnMhVkd9YzVtpnEG_qWj2Bj5fhB_cqk</span>
+<span class="n">edu1mehoWb1no</span><span class="o">-</span><span class="mi">2</span><span class="n">eQQzsfDe9U83GAxJ</span><span class="o">-</span><span class="n">nIGqhTnbwHGld5UAgfcTg</span><span class="o">~</span><span class="n">WyIyR0xDNDJzS1</span>
+<span class="n">F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span><span class="o">~</span><span class="n">WyJlbHVWNU9nM2dTTklJO</span>
+<span class="n">EVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14e</span>
+<span class="n">Hh4eHh4eHh4eHgiXQ</span><span class="o">~</span><span class="n">WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbW</span>
+<span class="n">UiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1</span>
+<span class="n">lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGU</span>
+<span class="n">iLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbm</span>
+<span class="n">FsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl</span>
+<span class="mi">0</span><span class="o">~</span>
 </pre></div>
 </div>
 </section>
@@ -798,7 +855,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">  </span><span class="nt">&quot;family_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rossi&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;expiry_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;constant_attendance_allowance&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </pre></div>
@@ -818,17 +875,16 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;Dx-6hjvrcxNzF0slU6ukNmzHoL-YvBN-tFa0T8X-bY0&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;GE3Sjy_zAT34f8wa5DUkVB0FslaSJRAAc8I3lN11Ffc&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;aBVdfcnxT0Z5RrwdxZSUhuUxz3gM2vcEZLeYIj61Kas&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;wgZ0suEkIh0U7lrsviuS-TaGhQIiO-h3CfG4Dd71ll8&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o&quot;</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1683000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1883000000</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -906,13 +962,13 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <code class="docutils literal notranslate"><span class="pre">MjQtMDEtMDEiXQ</span></code></p></li>
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;AJx-095VPrpTtN4QMOqROA&quot;,</span> <span class="pre">&quot;expiry_date&quot;,</span> <span class="pre">&quot;2024-01-01&quot;]</span></code></p></li>
 </ul>
-<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">personal_administrative_number</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">wgZ0suEkIh0U7lrsviuS-TaGhQIiO-h3CfG4Dd71ll8</span></code></p></li>
 <li><p>Disclosure:
-<code class="docutils literal notranslate"><span class="pre">WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
-<code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
-<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;Pc33JM2LchcU_lHggv_ufQ&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBlcnNvbmFsX2FkbWluaXN0</span></code>
+<code class="docutils literal notranslate"><span class="pre">cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;Pc33JM2LchcU_lHggv_ufQ&quot;,</span> <span class="pre">&quot;personal_administrative_number&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
 </ul>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">constant_attendance_allowance</span></code>:</p>
@@ -926,37 +982,38 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <code class="docutils literal notranslate"><span class="pre">true]</span></code></p></li>
 </ul>
 <p>The combined format for the (Q)EAA issuance is represented below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0</span><span class="o">.</span><span class="n">eyJfc2QiOiBb</span>
-<span class="n">IjhKam96QmZvdk1OdlEzSGZsbVBXeTRPMTlHcHhzNjFGV0hqWmViVTU4OUUiLCAiRHgt</span>
-<span class="n">NmhqdnJjeE56RjBzbFU2dWtObXpIb0wtWXZCTi10RmEwVDhYLWJZMCIsICJHRTNTanlf</span>
-<span class="n">ekFUMzRmOHdhNURVa1ZCMEZzbGFTSlJBQWM4STNsTjExRmZjIiwgIlZRSS1TMW1UMUt4</span>
-<span class="n">ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLCAiWXJjLXMtV1NyNGV4RVl0</span>
-<span class="n">cURFc21SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSIsICJhQlZkZmNueFQwWjVScndkeFpT</span>
-<span class="n">VWh1VXh6M2dNMnZjRVpMZVlJajYxS2FzIiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlw</span>
-<span class="n">eVFUSjZGTVVoYy1KWGZIcnhoTGsiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUha</span>
-<span class="n">NHU5b1dqMVNsSUJsQ2MxbyJdLCAiaXNzIjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUu</span>
-<span class="n">b3JnIiwgImlhdCI6IDE2ODMwMDAwMDAsICJleHAiOiAxODgzMDAwMDAwLCAic3ViIjog</span>
-<span class="n">Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0</span>
-<span class="n">YXR1c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9</span>
-<span class="n">fSwgInZjdCI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy92MS4wL2Rpc2FiaWxp</span>
-<span class="n">dHljYXJkIiwgInZjdCNpbnRlZ3JpdHkiOiAiMmU0MGJjZDY3OTkwMDgwODVmZmIxYTFm</span>
-<span class="n">MzUxN2VmZWUzMzUyOThmZDk3NmIzZTY1NWJmYjNmNGVhYTExZDE3MSIsICJ2ZXJpZmlj</span>
-<span class="n">YXRpb24iOiB7InRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJhc3N1cmFuY2VfbGV2</span>
-<span class="n">ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsibWV0aG9kIjogImNpZSJ9fSwgIl9zZF9h</span>
-<span class="n">bGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6</span>
-<span class="n">ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxz</span>
-<span class="n">N3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0</span>
-<span class="n">NGpUOUYySFpRIn19fQ</span><span class="o">.</span><span class="n">FAIV8Cncch43N07yBcWleJg4ZO9o_XdefgIejdShK1cCj8yT9</span>
-<span class="n">S022cvSpdxuV44x</span><span class="o">-</span><span class="n">c_XmTn3Db9t0jJJPtqebA</span><span class="o">~</span><span class="n">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STj</span>
-<span class="n">l3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span><span class="o">~</span><span class="n">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgI</span>
-<span class="n">mRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0</span><span class="o">~</span><span class="n">WyI2SWo3dE0tYTVpVlBHYm9TN</span>
-<span class="n">XRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJlSThaV205UW5LUHBOUGVOZW</span>
-<span class="mi">5</span><span class="n">IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJRZ19PNjR6cUF4ZTQxMmExMD</span>
-<span class="n">hpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJBSngtMDk1VlBycFR0T</span>
-<span class="n">jRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ</span><span class="o">~</span><span class="n">WyJQYzMzSk0yTG</span>
-<span class="n">NoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWF</span>
-<span class="n">hYWFgiXQ</span><span class="o">~</span><span class="n">WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGF</span>
-<span class="n">uY2VfYWxsb3dhbmNlIiwgdHJ1ZV0</span><span class="o">~</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0IiwgImtpZCI6ICJk</span>
+<span class="n">MTI2YTZhODU2Zjc3MjQ1NjA0ODRmYTlkYzU5ZDE5NSJ9</span><span class="o">.</span><span class="n">eyJfc2QiOiBbIkR4LTZoanZ</span>
+<span class="n">yY3hOekYwc2xVNnVrTm16SG9MLVl2Qk4tdEZhMFQ4WC1iWTAiLCAiR0UzU2p5X3pBVDM</span>
+<span class="mi">0</span><span class="n">Zjh3YTVEVWtWQjBGc2xhU0pSQUFjOEkzbE4xMUZmYyIsICJWUUktUzFtVDFLeGZxMm8</span>
+<span class="mi">4</span><span class="n">Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRleEVZdHFERXN</span>
+<span class="n">tUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiYUJWZGZjbnhUMFo1UnJ3ZHhaU1VodVV</span>
+<span class="mi">4</span><span class="n">ejNnTTJ2Y0VaTGVZSWo2MUthcyIsICJzMVhLNWYycE0zLWFGVGF1WGhtdmQ5cHlRVEo</span>
+<span class="mi">2</span><span class="n">Rk1VaGMtSlhmSHJ4aExrIiwgIndnWjBzdUVrSWgwVTdscnN2aXVTLVRhR2hRSWlPLWg</span>
+<span class="n">zQ2ZHNERkNzFsbDgiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1dqMVN</span>
+<span class="n">sSUJsQ2MxbyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRwczovL2lzc3V</span>
+<span class="n">lci5leGFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFp</span>
+<span class="n">zUkdDOVhzIiwgInN0YXR1cyI6IHsic3RhdHVzX2Fzc2VydGlvbiI6IHsiY3JlZGVudGl</span>
+<span class="n">hbF9oYXNoX2FsZyI6ICJzaGEtMjU2In19LCAidmN0IjogImh0dHBzOi8vaXNzdWVyLmV</span>
+<span class="mi">4</span><span class="n">YW1wbGUub3JnL3YxLjAvZGlzYWJpbGl0eWNhcmQiLCAidmN0I2ludGVncml0eSI6ICI</span>
+<span class="n">yZTQwYmNkNjc5OTAwODA4NWZmYjFhMWYzNTE3ZWZlZTMzNTI5OGZkOTc2YjNlNjU1YmZ</span>
+<span class="n">iM2Y0ZWFhMTFkMTcxIiwgInZlcmlmaWNhdGlvbiI6IHsidHJ1c3RfZnJhbWV3b3JrIjo</span>
+<span class="n">gImVpZGFzIiwgImFzc3VyYW5jZV9sZXZlbCI6ICJoaWdoIiwgImV2aWRlbmNlIjogeyJ</span>
+<span class="n">tZXRob2QiOiAiY2llIn19LCAiX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiand</span>
+<span class="n">rIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTN</span>
+<span class="n">PSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVF</span>
+<span class="n">HSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19</span><span class="o">.</span><span class="n">Rm5wDXvZLENnHAqXxX</span>
+<span class="n">rohYdRU1hmhyu6CN2BUiwp8Q0Do3CYchAOwtY9O_FOXVC7</span><span class="o">--</span><span class="n">NY5vu9Rs_wNoyGjXuHVQ</span>
+<span class="o">~</span><span class="n">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd</span><span class="o">~</span><span class="n">WyJlbH</span>
+<span class="n">VWNU9nM2dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWF</span>
+<span class="n">hYIl0</span><span class="o">~</span><span class="n">WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW</span>
+<span class="mi">8</span><span class="n">iXQ</span><span class="o">~</span><span class="n">WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3N</span>
+<span class="n">pIl0</span><span class="o">~</span><span class="n">WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0</span>
+<span class="n">wMS0xMCJd</span><span class="o">~</span><span class="n">WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIj</span>
+<span class="n">IwMjQtMDEtMDEiXQ</span><span class="o">~</span><span class="n">WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBlcnNvbmFsX2F</span>
+<span class="n">kbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0</span><span class="o">~</span><span class="n">WyJ</span>
+<span class="n">HMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3d</span>
+<span class="n">hbmNlIiwgdHJ1ZV0</span><span class="o">~</span>
 </pre></div>
 </div>
 </section>
@@ -1199,7 +1256,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.it.1</strong></p></td>
-<td><p><strong>tax_id_code</strong></p></td>
+<td><p><strong>personal_administrative_number</strong></p></td>
 <td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
 </tr>
 </tbody>
@@ -1528,7 +1585,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 27/11/2024.
+      Last updated on 29/11/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
