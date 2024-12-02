@@ -174,10 +174,10 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections.</p>
 <section id="sd-jwt-vc-credential-format">
 <h2>SD-JWT-VC Credential Format<a class="headerlink" href="#sd-jwt-vc-credential-format" title="Link to this heading">¶</a></h2>
-<p>The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> as specified in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p>
-<p>SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>]. The payload MUST contain the <strong>_sd_alg</strong> claim described in the Section 5.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> and other claims specified in this section.</p>
-<p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a>. <strong>_sd_alg</strong>  MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
-<p>Claims that are not selectively disclosable MUST be included in the SD-JWT as they are.  The digests of the disclosures, along with any decoy if present,  MUST be contained in the  <strong>_sd</strong> array, as specified in Section 5.2.4.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a>.</p>
+<p>The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> as specified in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p>
+<p>SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>]. The payload MUST contain the <strong>_sd_alg</strong> claim described in the Section 4.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> and other claims specified in this section.</p>
+<p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests as described in Section 4.1.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>. <strong>_sd_alg</strong>  MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
+<p>Claims that are not selectively disclosable MUST be included in the SD-JWT as they are.  The digests of the disclosures, along with any decoy if present,  MUST be contained in the  <strong>_sd</strong> array, as specified in Section 4.2.4.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p>
 <p>Each digest value, calculated using a hash function over the disclosures, verifies the integrity and corresponds to a specific Disclosure. Each disclosure includes:</p>
 <blockquote>
 <div><ul class="simple">
@@ -187,7 +187,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </ul>
 </div></blockquote>
 <p>In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore <strong>_sd</strong> claim containing digests MAY appear multiple times at different level in the SD-JWT.</p>
-<p>For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 5.2.4.2 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a>.</p>
+<p>For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 4.2.4.2 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p>
 <p>In case of array elements, digest values are calculated using a hash function over the disclosures, containing:</p>
 <blockquote>
 <div><ul class="simple">
@@ -195,12 +195,12 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p>the array element</p></li>
 </ul>
 </div></blockquote>
-<p>In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also allowing the Holder to reveal each of those elements individually (Section 5.2.6 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a>). Both the entire array and the individuals entries can be selective disclosure.</p>
+<p>In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also allowing the Holder to reveal each of those elements individually (Section 4.2.6 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>). Both the entire array and the individuals entries can be selective disclosure.</p>
 <p>The Disclosures are provided to the Holder together with the SD-JWT in the <em>Combined Format for Issuance</em> that is an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Issuer</span><span class="o">-</span><span class="n">Signed</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">1</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">2</span><span class="o">&gt;~...~&lt;</span><span class="n">Disclosure</span> <span class="n">N</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>See <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> for additional details.</p>
+<p>See <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> for additional details.</p>
 <section id="pid-q-eaa-sd-jwt-parameters">
 <h3>PID/(Q)EAA SD-JWT parameters<a class="headerlink" href="#pid-q-eaa-sd-jwt-parameters" title="Link to this heading">¶</a></h3>
 <p>The JOSE header contains the following mandatory parameters:</p>
@@ -218,7 +218,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
 <td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.9.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
@@ -235,11 +235,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>OPTIONAL. Contains the X.509 public key certificate or certificate chain [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>] corresponding to the key used to digitally sign the JWT.</p></td>
-<td><p><span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8 and [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 3.5.</p></td>
+<td><p><span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8 and [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 3.5.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vctm</strong></p></td>
 <td><p>OPTIONAL. JSON array of base64url-encoded Type Metadata JSON documents. In case of extended type metadata, this claim contains the entire chain of JSON documents.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.3.5.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.3.5.</p></td>
 </tr>
 </tbody>
 </table>
@@ -275,19 +275,19 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 <tr class="row-even"><td><p><strong>status</strong></p></td>
 <td><p>[NSD]. It MUST be a valid JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member <em>status_assertion</em> set to a JSON Object containing the <em>credential_hash_alg</em> claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use <em>sha-256</em>.</p></td>
-<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> and Section 11 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
+<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> and Section 11 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>cnf</strong></p></td>
 <td><p>[NSD].JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
-<td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a> and Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p></td>
+<td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a> and Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vct</strong></p></td>
 <td><p>[NSD]. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>. It MUST contain also the number of version of the Credential type (for instance: <code class="docutils literal notranslate"><span class="pre">https://issuer.example.org/v1.0/personidentificationdata</span></code>).</p></td>
-<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>.</p></td>
+<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vct#integrity</strong></p></td>
 <td><p>[NSD].The value MUST be an &quot;integrity metadata&quot; string as defined in Section 3 of [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>]. <em>SHA-256</em>, <em>SHA-384</em> and <em>SHA-512</em> MUST be supported as cryptographic hash functions. <em>MD5</em> and <em>SHA-1</em> MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>].</p></td>
-<td><p>Section 6.1 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>, [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>]</p></td>
+<td><p>Section 6.1 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>, [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>verification</strong></p></td>
 <td><p>[NSD].Object containing user authentication information. It MUST contain the following sub-value:</p>
@@ -305,7 +305,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim <strong>vct</strong>, using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> the <strong>.well-known</strong> endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.</p>
+<p>Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim <strong>vct</strong>, using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> the <strong>.well-known</strong> endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.</p>
 </div>
 </section>
 <section id="digital-credential-metadata-type">
@@ -326,31 +326,31 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <tbody>
 <tr class="row-even"><td><p><strong>name</strong></p></td>
 <td><p>REQUIRED. Human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> (e.g. <em>name#it-IT</em>).</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>description</strong></p></td>
 <td><p>REQUIRED. A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>extends</strong></p></td>
 <td><p>OPTIONAL. String Identitifier of an exteded metadata type document.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>extends#integrity</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>extends</strong> is present.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>schema</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>schema_uri</strong> is not present.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>schema_uri</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>schema</strong> is not present.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>schema_uri#integrity</strong></p></td>
 <td><p>CONDITIONAL. REQUIRED if <strong>schema_uri</strong> is present.</p></td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 6.2.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_source</strong></p></td>
 <td><p>REQUIRED. Object containing information about the data origin. It MUST contain the object <code class="docutils literal notranslate"><span class="pre">verification</span></code> with this following sub-value:</p>
@@ -387,7 +387,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <dt>The <code class="docutils literal notranslate"><span class="pre">svg_templates</span></code> array of objects contains for each SVG template supported the following properties:</dt><dd><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: URI pointing to the SVG template. [REQUIRED].</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">uri#integrity</span></code>: integrity metadata as defined in Section 3 of <a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>. [REQUIRED].</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">properties</span></code>: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a> Section 8.1.2.1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">properties</span></code>: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> Section 8.1.2.1.</p></li>
 </ul>
 </dd>
 <dt>If rendering method <cite>simple</cite> is also supported, the <code class="docutils literal notranslate"><span class="pre">simple</span></code> object contains the following properties:</dt><dd><ul class="simple">
@@ -413,7 +413,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </div>
 </div></blockquote>
 </td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 8.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 8.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>claims</strong></p></td>
 <td><p>REQUIRED. Array of objects containing information for displaying and validating Digital credential claims. It contains for each credential claim the following properties:</p>
@@ -430,11 +430,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </dl>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sd</span></code>: string indicating whether the claim is selectively disclosable. It MUST be set to <cite>always</cite> if the claim is selectively disclosure or <cite>never</cite> if not. [REQUIRED].</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">svg_id</span></code>: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 9. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">svg_id</span></code>: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 9. [REQUIRED].</p></li>
 </ul>
 </div></blockquote>
 </td>
-<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/">SD-JWT-VC</a>] Section 9.</p></td>
+<td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 9.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1585,7 +1585,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 29/11/2024.
+      Last updated on 02/12/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

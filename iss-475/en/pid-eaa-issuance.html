@@ -553,7 +553,7 @@ without encoding and signature. The JWT header:</p>
 <li><p>It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to <a class="reference internal" href="#table-credential-response-claim"><span class="std std-ref">Table of the credential response parameters</span></a>.</p></li>
 <li><p>It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter of SD-JWT (<a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>) and the public key that is identified using the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header of the SD-JWT.</p></li>
 <li><p>It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in <a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>.</p></li>
-<li><p>It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> Section 6.) or MDOC CBOR format.</p></li>
+<li><p>It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> Section 5.) or MDOC CBOR format.</p></li>
 <li><p>It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID/(Q)EAA Provider is trusted.</p></li>
 </ol>
 </div></blockquote>
@@ -1522,7 +1522,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 29/11/2024.
+      Last updated on 02/12/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
