@@ -51,10 +51,10 @@
 .. _JWS: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-signature
 .. _EIDAS-ARF: https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html
-.. _SD-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10
+.. _SD-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14
 .. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html
 .. _SIOPv2: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
-.. _SD-JWT-VC: https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/
+.. _SD-JWT-VC: https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/
 .. _PresentationExch: https://identity.foundation/presentation-exchange/spec/v2.0.0
 .. _JARM: https://openid.net/specs/oauth-v2-jarm-final.html
 .. _RFC 9449: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
