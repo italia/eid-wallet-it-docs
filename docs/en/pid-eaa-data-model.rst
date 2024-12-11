@@ -12,7 +12,6 @@ The User attributes provided within the Italian PID are the ones listed below:
     - Current Family Name
     - Current First Name
     - Date of Birth
-    - Unique Identifier
     - Taxpayer identification number
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format. 
@@ -242,9 +241,6 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **birth_date**
       - [SD]. Date of Birth.
       - 
-    * - **unique_id**
-      - [SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to `ANPR rules <https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/>`_
-      - 
     * - **personal_administrative_number**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - 
@@ -277,46 +273,37 @@ In the following the disclosure list is given
    ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
 -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "iat", 1683000000]``
 
-**Claim** ``unique_id``:
-
--  SHA-256 Hash: ``BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig``
--  Disclosure:
-   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
-   ``eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ``
--  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "unique_id",``
-   ``"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]``
-
 **Claim** ``given_name``:
 
--  SHA-256 Hash: ``zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o``
+-  SHA-256 Hash: ``gHYi19frbD_i4BoaWENOjc3lCnMj4pbGNQcsBj_QM4Q``
 -  Disclosure:
-   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFy``
+   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImdpdmVuX25hbWUiLCAiTWFy``
    ``aW8iXQ``
--  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "given_name", "Mario"]``
+-  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "given_name", "Mario"]``
 
 **Claim** ``family_name``:
 
--  SHA-256 Hash: ``VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA``
+-  SHA-256 Hash: ``dZWjq7mJSSX-XTI_HWuE8B2x6IdM5lE-doD_yBpKJao``
 -  Disclosure:
-   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJv``
+   ``WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImZhbWlseV9uYW1lIiwgIlJv``
    ``c3NpIl0``
--  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
+-  Contents: ``["6Ij7tM-a5iVPGboS5tmvVA", "family_name", "Rossi"]``
 
 **Claim** ``birth_date``:
 
--  SHA-256 Hash: ``s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk``
+-  SHA-256 Hash: ``LER7wi8bDpmtSyU9jsDY7pqr6mDFfwBOBzZtJHg--EQ``
 -  Disclosure:
-   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4``
+   ``WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImJpcnRoX2RhdGUiLCAiMTk4``
    ``MC0wMS0xMCJd``
--  Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
+-  Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "birth_date", "1980-01-10"]``
 
 **Claim** ``personal_administrative_number``:
 
--  SHA-256 Hash: ``4KfNcVziiuiktw8UMBaZQBRlLorpAhFz2ii37niYF2Q``
+-  SHA-256 Hash: ``2ec_CnFUd8Lf_7dsZDZBUsT1z8MRjBiEREM1hdVZuWQ``
 -  Disclosure:
-   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbmFsX2FkbWluaXN0``
+   ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgInBlcnNvbmFsX2FkbWluaXN0``
    ``cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0``
--  Contents: ``["AJx-095VPrpTtN4QMOqROA", "personal_administrative_number",``
+-  Contents: ``["Qg_O64zqAxe412a108iroA", "personal_administrative_number",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 
@@ -326,34 +313,31 @@ The combined format for the PID issuance is given by
 .. code-block::
 
   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0IiwgImtpZCI6ICJk
-  QjY3Z0w3Y2szVEZpSUFmN042XzdTSHZxazBNRFlNRVFjb0dHbGtVQUF3In0.eyJfc2Qi
-  OiBbIjRLZk5jVnppaXVpa3R3OFVNQmFaUUJSbExvcnBBaEZ6MmlpMzduaVlGMlEiLCAi
-  Qm9NR2t0VzFyYmlrbnR3OEZ6eF9CZUw0WWJBbmRyNkFIc2RncGF0RkNpZyIsICJWUUkt
-  UzFtVDFLeGZxMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdT
-  cjRleEVZdHFERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1h
-  RlRhdVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdH
-  c0dwU2tDUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJleHAiOiAxODgzMDAwMDAwLCAi
-  aXNzIjogImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56
-  YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1
-  c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9fSwg
-  InZjdCI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3YxLjAvcGVyc29u
-  aWRlbnRpZmljYXRpb25kYXRhIiwgInZjdCNpbnRlZ3JpdHkiOiAiYzVmNzNlMjUwZmU4
-  NjlmMjRkMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ0M2RjODVhZjY1M2NkNzNmNjA3OGIx
-  ZiIsICJ2ZXJpZmljYXRpb24iOiB7InRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJh
-  c3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsibWV0aG9kIjogImNp
-  ZSJ9fSwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijog
-  IkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNW
-  b0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJ
-  aXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PdtnMhVkd9YzVtpnEG_qWj2Bj5fhB_cqk
-  edu1mehoWb1no-2eQQzsfDe9U83GAxJ-nIGqhTnbwHGld5UAgfcTg~WyIyR0xDNDJzS1
-  F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJO
-  EVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4eC14eHh4LXh4eHgteHh4eC14e
-  Hh4eHh4eHh4eHgiXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbW
-  UiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1
-  lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGU
-  iLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbm
-  FsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl
-  0~
+  MTI2YTZhODU2Zjc3MjQ1NjA0ODRmYTlkYzU5ZDE5NSJ9.eyJfc2QiOiBbIjJlY19DbkZ
+  VZDhMZl83ZHNaRFpCVXNUMXo4TVJqQmlFUkVNMWhkVlp1V1EiLCAiTEVSN3dpOGJEcG1
+  0U3lVOWpzRFk3cHFyNm1ERmZ3Qk9Celp0SkhnLS1FUSIsICJZcmMtcy1XU3I0ZXhFWXR
+  xREVzbVJsN3Nwb1ZmbUJ4aXhQMTJlNHN5cU5FIiwgImRaV2pxN21KU1NYLVhUSV9IV3V
+  FOEIyeDZJZE01bEUtZG9EX3lCcEtKYW8iLCAiZ0hZaTE5ZnJiRF9pNEJvYVdFTk9qYzN
+  sQ25NajRwYkdOUWNzQmpfUU00USJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJ
+  odHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnIiwgInN1YiI6ICJOemJMc1hoOHV
+  EQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCAic3RhdHVzIjogeyJzdGF0dXNfYXNzZXJ
+  0aW9uIjogeyJjcmVkZW50aWFsX2hhc2hfYWxnIjogInNoYS0yNTYifX0sICJ2Y3QiOiA
+  iaHR0cHM6Ly9waWRwcm92aWRlci5leGFtcGxlLm9yZy92MS4wL3BlcnNvbmlkZW50aWZ
+  pY2F0aW9uZGF0YSIsICJ2Y3QjaW50ZWdyaXR5IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE
+  1MTE4YWNjZTI4NmM5YmI1NmI2M2E0NDNkYzg1YWY2NTNjZDczZjYwNzhiMWYiLCAidmV
+  yaWZpY2F0aW9uIjogeyJ0cnVzdF9mcmFtZXdvcmsiOiAiZWlkYXMiLCAiYXNzdXJhbmN
+  lX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2UiOiB7Im1ldGhvZCI6ICJjaWUifX0sICJ
+  fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+  jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+  pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+  jQ0U2dDRqVDlGMkhaUSJ9fX0.4xjoZnToFZnPPAthfXDlDTxC3y-if0Tl15FWdtTdkAC
+  y9spTCPP_PMIf1I1SF0pI02DWQkzZwmlcS830BwsrAA~WyIyR0xDNDJzS1F2ZUNmR2Zy
+  eU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9
+  BIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZB
+  IiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJlSThaV205UW5LUHBOUGVOZW5IZGhR
+  IiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+  pcm9BIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFh
+  YWFhYWFhYWFhYWFhYIl0~
 
 (Q)EAA non-normative examples
 -----------------------------
@@ -655,9 +639,6 @@ Depending on the Digital Credential type, additional **elementIdentifier** data 
     * - **eu.europa.ec.eudiw.pid.1**
       - **birth_date**
       - *full-date (CBORTag 1004)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
-    * - **eu.europa.ec.eudiw.pid.1**
-      - **unique_id**
-      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.it.1**
       - **personal_administrative_number**
       - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.

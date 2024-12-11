@@ -126,41 +126,7 @@
           ],
           "sd": "always",
           "svg_id": "birth_date"
-        },
-        {
-          "path": ["unique_id"],
-          "display": [
-            {
-              "lang": "it-IT",
-              "label": "ID ANPR",
-              "description": "Identificativo unico nazionale attribuito ad ogni cittadino italiano all’atto della sua iscrizione in anagrafe e conseguente registrazione nel sistema ANPR."
-            },
-            {
-              "lang": "en-US",
-              "label": "ID ANPR",
-              "description": "Unique national identifier attributed to each Italian citizen upon registration in the registry and subsequent registration in the ANPR system" 
-            }
-          ],
-          "sd": "always",
-          "svg_id": "unique_id"
-        },
-        {
-          "path": ["unique_id"],
-          "display": [
-            {
-              "lang": "it-IT",
-              "label": "ID ANPR",
-              "description": "Identificativo unico nazionale attribuito ad ogni cittadino italiano all’atto della sua iscrizione in anagrafe e conseguente registrazione nel sistema ANPR."
-            },
-            {
-              "lang": "en-US",
-              "label": "ID ANPR",
-              "description": "Unique national identifier attributed to each Italian citizen upon registration in the registry and subsequent registration in the ANPR system." 
-            }
-          ],
-          "sd": "always",
-          "svg_id": "unique_id"
-        },        
+        },       
         {
             "path": ["personal_administrative_number"],
             "display": [
