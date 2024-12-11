@@ -992,9 +992,8 @@ The Credential Response contains the following parameters:
     - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present
     - Section 7.3 of [`OpenID4VCI`_].
   * - **transaction_id**
-    - CONDITIONAL. REQUIRED if ``credential`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the Credential Request as defined in Section :ref:`Credential Request`. It MUST NOT be present if the ``credential`` parameter is not present
+    - CONDITIONAL. REQUIRED if ``credential`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the Credential Request as defined in Section :ref:`Credential Request`. It MUST be invalidated after the User obtains the Credential.
     - Section 7.3 of [`OpenID4VCI`_].
-
 
 If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an error response as defined in Section 7.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
 
