@@ -7,7 +7,8 @@
     "authorization_details": [
       {
         "type": "openid_credential",
-        "credential_configuration_id": "DisabilityCard"
+        "credential_configuration_id": "DisabilityCard",
+        "credential_identifiers": [ "DisabilityCard_Mario_Rossi" ]
       }
     ]
 }

@@ -396,7 +396,7 @@ General Requirements
 Technical Flow
 ^^^^^^^^^^^^^^
 
-If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response cointaining the amount of time to wait before making a new Credential request. The HTTP status code MUST be *202* (see Section 15.3.3 of [:rfc:`9110`]). Below a non-normative example is given.
+If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response cointaining the amount of time to wait before making a new Credential request and an identifier of the deferred issuance transaction (*transaction_id*). The HTTP status code MUST be *202* (see Section 15.3.3 of [:rfc:`9110`]). Below a non-normative example is given.
 
 .. code-block:: http
 
@@ -409,7 +409,7 @@ If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue
 
 The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). PID/(Q)EAA Providers MAY send a notification to the User through a communication channel (e.g. email address), if available from the PID/(Q)EAA Provider.
 
-Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance and start the Issuance Flow again from the beginning as defined in the previous section. 
+Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance and start the Issuance Flow again from the beginning as defined in the previous section including *transaction_id* in the new Credential Request. 
 
 If the *lead_time* parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with the *c_nonce* provided in the Credential Response to perform a new Credential Request without requiring the User to submit a new authentication request.
 
@@ -794,7 +794,9 @@ If the Token Request is successfully validated, the Authorization Server provide
       - JSON integer, it represents the lifetime in seconds of the **c_nonce**.
       - [`OpenID4VCI`_].
     * - **authorization_details**
-      - Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued.
+      - Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued. In addition to the claim defined in :ref:`Table of the JWT Request parameters <table_jwt_request>` it MUST include the following claim:
+
+            - **credential_identifiers**: Array of strings, each uniquely identifying a credential dataset that is available for the issuance.
       - [`OpenID4VCI`_].
 
 If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`.
@@ -898,7 +900,10 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - **Reference**
   * - **format**
     - Format of the Credential to be issued. This MUST be ``vc+sd-jwt`` or ``mso_mdoc``.
-    - [`OpenID4VCI`_].
+    - Section 7.2 of [`OpenID4VCI`_].
+  * - **credential_identifier**
+    - This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response.
+    - Section 7.2 of [`OpenID4VCI`_].
   * - **vct**
     - CONDITIONAL. REQUIRED only if the *format* identifier is ``vc+sd-jwt``. 
     - See Annex A3.4. of [`OpenID4VCI`_]
@@ -911,6 +916,9 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
       - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
+  * - **transaction_id**
+    - REQUIRED in case of deferred flow. String identifying a deferred issuance transaction.
+    - Section 8.1 of [`OpenID4VCI`_].
 
 
 The JWT proof type MUST contain the following parameters for the JOSE header and the JWT body:
@@ -982,6 +990,9 @@ The Credential Response contains the following parameters:
     - Section 7.3 of [`OpenID4VCI`_].
   * - **notification_id**
     - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present
+    - Section 7.3 of [`OpenID4VCI`_].
+  * - **transaction_id**
+    - CONDITIONAL. REQUIRED if ``credential`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the Credential Request as defined in Section :ref:`Credential Request`. It MUST NOT be present if the ``credential`` parameter is not present
     - Section 7.3 of [`OpenID4VCI`_].
 
 
