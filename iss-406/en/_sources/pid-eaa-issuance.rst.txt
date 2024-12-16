@@ -99,7 +99,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/hPRVJoCt4CVV_LUCk8S6QIEggaz8Txe0wH7r12dan4kbbTcTP4TixAqzJYxzwsklazW9eLUa8WGRUtvy_PaPRpvRbeRTiXNIiLPk-On6YCwlKKMTL0ndtooQCv0Md13F-djS-Cc2NNghhj4Ap-33LreqVDKwFFIzCdgzTvU7Uq-oRP5Xehm4LM5linQeQl1PZZHC9pSNWp_EnwCHJ8rUKRsDISB_h67u2Tmbw6UMf62ZdO4RMX3B5guDrgYOP2iS3BtT-X8sQ8KmIZE2Ng61DNnukftCnk8-1k06eINBeEVzyymuorZ32H4swEr3UHd3Jrv4fTMSpB9tjDXYnQILZtJAMmZd9Nb5-kLGK46UwEJBxUpBmtXy9wuRh5vE1G2ou3djbVw6Vb7s6QMgTq28BIoHPIrPvdeXu00lsQ1aXEdlrsCllqRm6cXEQFeWJvFHSAgdMtlozjFH0ppWNmujm-1F1M3GTbfPB7dJOH5MgfPGSKbr_EI3bbKJwgqMU6AfzF8Q7OrDZ7mE_iEQk87xaUDcUDr778wO_MOwubkRGJ9iQtcBqcF90P_26zlnlw3TEbXQACdEuCva6-5OOi2_aYtLn1l8-0kA3Rad6Y72O4kWT8OAmEyT6RGbgVFOwg7NvIM4Ssj3V_TvKZaIUCZ2d0idUqzwjwEGBMTJ11y_XaOyW5cutG0v6vh69mZ6LPyXrb3rpzuT9pUZH_3EeS5gUAmQNABjELNXz8eJ8Mmj7gME_N_-tlHUyHifLBshWoTq32UL9BHh0Q6g_XzPkmUwVfTJcha5gj1E23UXKLzmy-PUPxIUvvC8SsrENWQiNr01ghhJf5Xa4plpEwdM0KaUU_1wOXT6Aix6MTVPsEwkXx1Yi2Q3LMoM_tra1KKcyGGvMrbLQ6tP7xc89uzoiu4fe2gLLXNk7yfycbvTW966_-sqjJvw43pOUlRcH_O9uPibgLBtfhhiov9w-qHjiXD6Rdd5KjoonZaf2W2B86CfkOXMhsUNBCYLf5O-jmWYqSrj4k9Ti9JhNu4MSQgtS-SRAIUSsAIhC9mfbDvPgCA5cfbRrWQpn1cpkop9djhjR3Q5wVtZ32vKlZyuabG0hb35TqiYFUf9nnOJfruJLr-_ZSK3BiYoNvLj2zpayeO6MybOWo0LgCNa_Wbyb7t-2uChlHMMtWDP5VAZfJhqP_lbvr_zDbnhnQXOfAinLVRkVfQg-uFIjYZhacc9FnYHZ8KhICmQXADlRGN8UGz5WLngf-BxqaS6ss4LB_dd3UmJzbLVDwY03IqMQE9-u1c-LlRNfM7RBynRlGQvaAGEB-pF_ezRjly0
+    :target: https://www.plantuml.com/plantuml/svg/hPRVJoCt4CVV_LUCk8S6QIEggaz8Txe0wH7r12dan4kbbTcTP4TixDGU9vV-zRNNoTe9eLUa8WGRUtvy_PaPRpvRbeRTiXNIiLPk-On6Y9LVeufMKZ6SVRDepa1QS48yw-znuISBTkcjLerMU0OVljAYuQlMuQ7lbT6RtbqUxZt9jaM6YV8IL8MTpKQWgi5dET8mdTnS3Fuu7uz6C3LwJVKk9Wd_iu7X9t2Ne9zPaeAjTWPkQ44iMxWsMADYagrmCFHscqlOeXN2ACq8Ueq6Dl3XwNOo6ulx680RX9OiWvvtppFZB6CD9qJOeBSBvMKCFtaHbLPpCilEqMAB5PDMFj8fRo6Sb-GLwPT3GGLvefCljxCl3-FndRXki7ev5G38WkVKA_qD_QBiCafLxu4GMrWYorgopFL2m05Uia792DFVhyTUVetWDT2Sq7H1dYQZuLHFT_RaxQUZ1tZ0lnnQXi6V2i2WNMbbiUJj2ekmKhM4YakguoSVjAoQK6-rm1DBfPVNw6XiOkHpy1ysn0tSZnmtm-ikud34x3VJ4T_Q399XLyjRb1vB3lWKtjYE_mNjpi7IGabs1lSckmZ74WF-jMof9jv2nbzGRCYUQ8G8Wns1qXag0B-loA0jIPt7LW-zBYyXd5iR-hlBaygHm4CMvbmusNdIkns5R3cR8lZuCJJY0Sp2xGV8sT0qFa4mhcA6heQgU_RkEBaPFO9t3WrMmsFLu19jnwaAfrUS265hyIXrxF_pzwRtYjz8eUfz7JoXOpYf9A5T2mXLzV_8sXxevbrEQUOMg48x8To4Hdt1xPjxAwFrF9z4c6jpyZ9W_O8AKDKhJOf5Dh4plvDg7P3aiGUl9tPXfE9id7MTZUt-UWWh1cioMCLc-Tz7Lb1a4a-GivLLXTQMtP6BUF8eDnkO0gfIQLLX_r1cq_Jw0emq_EzAM-kZ1y63dMTdVcIV4BvPaghltbINL9RKsoTgavqmSiihbkAMDSv9KG1O11bBoKMqUZsxP46k9RNokKKGYMvkan3lWwLS_mgqs4rrd3lVI3dXn2PTXU5CeVJEGXKkrCpSiZQO9SwOtML9UcgtizaKflUFCxXG-VxWI581k4QLtYsHwQWZ7LjCd7fDN7tzDXOFk23BVbMsBN2JoniQR2LZ3O9Kf1QI-oVmKVhy5mRNUYSilGUoAkH7ItNeplRBpx_wRRZMYb6nI5TZgkpT_InLzmUbRL7M9TCIVr1HDb9PMVK5pTYuWiJCKpZw5bU0d7UG5CYbTYg-Ftqci2kiugN_l8LUGDS5cmOLiA750atS3tp3rypk-ZHikuLvgpSW5vBKuGN-sVzno_OV
 
     PID/(Q)EAA Issuance - Detailed flow
 
@@ -899,7 +899,7 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - **Description**
     - **Reference**
   * - **format**
-    - Format of the Credential to be issued. This MUST be ``vc+sd-jwt`` or ``mso_mdoc``.
+    - CONDITIONAL. REQUIRED only if ``credential_identifier`` is not present. Format of the Credential to be issued. This MUST be ``vc+sd-jwt`` or ``mso_mdoc``.
     - Section 7.2 of [`OpenID4VCI`_].
   * - **credential_identifier**
     - This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response.
@@ -917,7 +917,7 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
   * - **transaction_id**
-    - REQUIRED in case of deferred flow. String identifying a deferred issuance transaction.
+    - CONDITIONAL. REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction.
     - Section 8.1 of [`OpenID4VCI`_].
 
 
@@ -977,11 +977,11 @@ The Credential Response contains the following parameters:
     - **Description**
     - **Reference**
   * - **credential**
-    - CONDITIONAL. REQUIRED if ``lead_time`` is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``vc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+    - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``vc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
     - Section 7.3, Annex A2.5 and Annex A3.5 of [`OpenID4VCI`_].
   * - **lead_time**
     - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.
-    - This Specification
+    - This Specification.
   * - **c_nonce**
     - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a Credential.
     - Section 7.3 of [`OpenID4VCI`_].
@@ -989,7 +989,7 @@ The Credential Response contains the following parameters:
     - REQUIRED. JSON integer corresponding to the ``c_nonce`` lifetime in seconds.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **notification_id**
-    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present
+    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present.
     - Section 7.3 of [`OpenID4VCI`_].
   * - **transaction_id**
     - CONDITIONAL. REQUIRED if ``credential`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the Credential Request as defined in Section :ref:`Credential Request`. It MUST be invalidated after the User obtains the Credential.

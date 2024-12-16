@@ -317,6 +317,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </ul>
 </div></blockquote>
 </li>
+<li><p><strong>order</strong>: Array of the claim name values in the order the Wallet MUST display them. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section A.3.2.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -595,7 +596,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                                </span><span class="p">}</span>
 <span class="w">                            </span><span class="p">]</span>
 <span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tax_id_code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;constant_attendance_allowance&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;link_qr_code&quot;</span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="nt">&quot;MDL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
@@ -798,7 +800,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                                </span><span class="p">}</span>
 <span class="w">                            </span><span class="p">]</span>
 <span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;order&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;place_of_birth&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_country&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges_details&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;restrictions_conditions&quot;</span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1013,7 +1016,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/12/2024.
+      Last updated on 16/12/2024.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
