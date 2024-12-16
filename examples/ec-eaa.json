@@ -251,7 +251,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "order" : ["document_number", "given_name", "family_name", "birth_date", "portrait", "tax_id_code", "expiry_date", "constant_attendance_allowance", "link_qr_code"]
                 },
                 "MDL": {
                     "format": "vc+sd-jwt",
@@ -454,7 +455,8 @@
                                 }
                             ]
                         }
-                    }
+                    },
+                    "order" : ["document_number", "given_name", "family_name", "birth_date", "place_of_birth", "portrait", "issue_date", "expiry_date", "issuing_country", "issuing_authority", "driving_privileges", "driving_privileges_details", "restrictions_conditions"]
                 }
             },
             "jwks": {

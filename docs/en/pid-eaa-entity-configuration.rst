@@ -118,6 +118,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 
                 - **name**: String value of a display name for the claim.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
+        - **order**: Array of the claim name values in the order the Wallet MUST display them. See `OpenID4VCI`_ Section A.3.2.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
 
