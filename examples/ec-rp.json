@@ -92,12 +92,7 @@
                                     },
                                     {
                                         "path": [
-                                            "$.unique_id"
-                                        ]
-                                    },
-                                    {
-                                        "path": [
-                                            "$.tax_id_code"
+                                            "$.personal_administrative_number"
                                         ]
                                     }
                                 ]

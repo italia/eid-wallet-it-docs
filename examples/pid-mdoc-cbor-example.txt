@@ -27,11 +27,10 @@
                           3: h'E2382149255AE8E955AF9B8984395…',                                        
                           4: h'BBC77E6CCA981A3AD0C3E544EDF86…',                                     
                           6: h'BB6E6C68D1B4B4EC5A2AE9206F5t4…',
-                          7: h'F8A5966E6DAC9970E0334D8F75E25…',              
-                          8: h'DEFDF1AA746718016EF1B94BFE5R6…'
+                          7: h'F8A5966E6DAC9970E0334D8F75E25…'
                       },
                       "eu.europa.ec.eudiw.pid.it.1": {  
-                          9: h'F9EE4D36F67DBD75E23311AC1C29…'
+                          8: h'F9EE4D36F67DBD75E23311AC1C29…'
                       }
                   },                             
                   "deviceKeyInfo": {                              
@@ -89,7 +88,7 @@
                   "elementIdentifier": "given_name",
                   "elementValue": "Mario"                             
                   }                         
-              >>)),            
+              >>),            
               24(<<                            
                   {                               
                   "digestID": 6,                             
@@ -104,24 +103,16 @@
                   "random": h'6059FF1CE27B4997B4ADE1DE7B01DC60',
                   "elementIdentifier": "birth_date",
                   "elementValue": 1004("1956-01-12")% the tag 1004 defines the value    
-                                                      is a full date 
+                    is a full date 
                   }  
-              >>),         
-              24(<<  
-                  {                              
-                  "digestID": 8,                              
-                  "random": h'53C15C57B3B076E788795829190220B4',
-                  "elementIdentifier": "unique_id",
-                  "elementValue": "xxxxxxxx-xxx-xxxx-xxxxxxxxxxxx" 
-                  }   
               >>)
               ],
               "eu.europa.ec.eudiw.pid.it.1": [
                   24(<<
                       {
-                      "digestID": 9, 
+                      "digestID": 8, 
                       "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
-                      "elementIdentifier": "tax_id_number", 
+                      "elementIdentifier": "personal_administrative_number", 
                       "elementValue": "TINIT-XXXXXXXXXXXXXXX"
                       }                         
                   >>)                    
