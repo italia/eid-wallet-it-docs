@@ -19,13 +19,6 @@
   },
   "vct": "https://issuer.example.org/v1.0/disabilitycard",
   "vct#integrity": "2e40bcd6799008085ffb1a1f3517efee335298fd976b3e655bfb3f4eaa11d171",
-  "verification": {
-    "trust_framework": "eidas",
-    "assurance_level": "high",
-    "evidence": {
-      "method": "cie"
-    }
-  },
   "_sd_alg": "sha-256",
   "cnf": {
     "jwk": {
