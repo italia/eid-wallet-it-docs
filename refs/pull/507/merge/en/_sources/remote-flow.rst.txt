@@ -417,7 +417,7 @@ Upon receiving an error response, the Wallet Instance SHOULD inform the User of 
 Authorization Response Details
 ------------------------------
 
-After getting the User authorization and consent for the presentation of the Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content SHOULD be encrypted according `OpenID4VP`_ Section 6.3, using the Relying Party public key.
+After getting the User authorization and consent for the presentation of the Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint, the content SHOULD be encrypted according `OpenID4VP`_ Section 7.3, using the Relying Party public key.
 
 .. note::
     **Why the response is encrypted?**
