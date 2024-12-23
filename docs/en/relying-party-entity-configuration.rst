@@ -50,7 +50,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `JARM`_ Section 3,  `OID-FED`_ Draft 36 Section 5.2.1 and `JWK`_.
 
 .. note::
-    The claims **response_uris_supported** are introduced in this Specification. 
+    The claims **response_uris_supported** are introduced in this specification. 
 
 Example of a Relying Party Entity Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
