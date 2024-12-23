@@ -94,18 +94,14 @@ provide to the Relying Party for interoperability.
 If both the Relying Party and the Wallet Instance
 support the ``request_uri_method`` with HTTP POST,
 the Wallet Instance capabilities (metadata) MUST 
-be provided using an HTTP request to the `request_uri` endpoint of the Relying Party, 
-with the method POST and content type set to `application/json`.
+be provided using an HTTP request to the `request_uri` endpoint of the Relying Party, with the method POST and content type set to `application/x-www-form-urlencoded`.
 
-A non-normative example of the HTTP request is represented below:
+A non-normative example of the request object encoded in JSON, prior to being encoded in `application/x-www-form-urlencoded` by the Wallet for the Relying Party.
     
-.. code:: http
-
-  POST /request-uri HTTP/1.1
-  HOST: relying-party.example.org
-  Content-Type: application/json
+.. code:: json
 
   {
+    "wallet_metadata": {
       "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
       "response_types_supported": [
         "vp_token"
@@ -125,7 +121,9 @@ A non-normative example of the HTTP request is represented below:
         "ES256"
       ],
       "presentation_definition_uri_supported": false,
-      "client_id_schemes_supported": ["https"]
+      "client_id_schemes_supported": ["https"],
+    },
+    "wallet_nonce": "qPmxiNFCR3QTm19POc8u"
   }
 
 The response of the Relying Party is defined in the section below.
