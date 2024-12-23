@@ -241,7 +241,7 @@ When the status endpoint returns **200 OK**, it means that the User authenticati
 Even if an adversary were to steal the random value used in the request to the status endpoint, their user-agent would be rejected due to the missing cookie in the request.
 
 
-Request Object Details
+Request URI Request
 ----------------------
 
 Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.
@@ -258,7 +258,7 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
 .. note::
 
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that wants to prevent reply of their http requests to the Relying Parties. 
-  When present, the RTelying Party MUST evaluate it.
+  When present, the Relying Party MUST evaluate it.
 
 Request URI Response
 --------------------
@@ -286,7 +286,7 @@ where a non-normative example in the form of decoded header and payload is shown
     "dcql_query": {
       "credentials": [
         {
-          "id": "perdonal id data",
+          "id": "personal id data",
           "format": "dc+sd-jwt",
           "meta": {
             "vct_values": [ "https://pidprovider.example.org/v1.0/personidentificationdata" ]
@@ -294,7 +294,7 @@ where a non-normative example in the form of decoded header and payload is shown
           "claims": [
               {"path": ["given_name"]},
               {"path": ["family_name"]},
-              {"path": ["tax_id_code", "personal_administrative_number"]}
+              {"path": ["personal_administrative_number"]}
           ]
         },
         {
