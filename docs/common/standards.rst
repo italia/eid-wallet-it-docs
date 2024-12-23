@@ -16,7 +16,7 @@ Technical References
     * - `EIDAS-ARF`_
       - EUDI Wallet - Architecture and Reference Framework.
     * - `OpenID4VP`_
-      - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", October 2024, Draft 22.
+      - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", December 2024, Draft 23.
     * - `PresentationExch`_
       - Presentation Exchange 2.0 for Presentation Definition.
     * - :rfc:`2119`
