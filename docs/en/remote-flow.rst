@@ -307,6 +307,7 @@ where a non-normative example in the form of decoded header and payload is shown
     },
     "response_uri": "https://relying-party.example.org/response_uri",
     "nonce": "2c128e4d-fc91-4cd3-86b8-18bdea0988cb",
+    "wallet_nonce": "qPmxiNFCR3QTm19POc8u",
     "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
     "iss": "https://relying-party.example.org",
     "iat": 1672418465,
