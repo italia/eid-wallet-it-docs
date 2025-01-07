@@ -397,7 +397,8 @@ HOST: relying-party.example.org
 </section>
 <section id="request-uri-request">
 <h3>Request URI Request<a class="headerlink" href="#request-uri-request" title="Link to this heading">¶</a></h3>
-<p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.</p>
+<p>The request and its parameters are defined in Section number 5 (Authorization Request) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>.
+Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">request</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
@@ -516,25 +517,28 @@ where a non-normative example in the form of decoded header and payload is shown
 <tr class="row-odd"><td><p><strong>response_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_uri</strong></p></td>
+<tr class="row-even"><td><p><strong>wallet_nonce</strong></p></td>
+<td><p>String value used to mitigate replay attacks of the response, as defined in Section 5.11 (Request URI Method) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>. It MUST be present if previously provided by Wallet Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>response_uri</strong></p></td>
 <td><p>The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
+<tr class="row-even"><td><p><strong>nonce</strong></p></td>
 <td><p>Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>state</strong></p></td>
+<tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>Unique identifier of the Authorization Request.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iss</strong></p></td>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>The entity that has issued the JWT. It will be populated with the Relying Party client id.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>Unix Timestamp, representing the time at which the JWT was issued.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>request_uri_method</strong></p></td>
+<tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
 <td><p>String determining the HTTP method to be used with the <cite>request_uri</cite> endpoint to provide the Wallet Instance metadata to the Relying Party. The value is case-insensitive and can be set to: <cite>get</cite> or <cite>post</cite>. The GET method, as defined in [&#64;RFC9101], involves the Wallet Instance  sending a GET request to retrieve a Request Object. The POST method involves the Wallet Instance requesting the creation of a new Request Object by sending an HTTP POST request, with its metadata, to the request URI of the Relying Party.</p></td>
 </tr>
 </tbody>

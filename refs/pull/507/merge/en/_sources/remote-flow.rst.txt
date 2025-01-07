@@ -242,6 +242,7 @@ Even if an adversary were to steal the random value used in the request to the s
 Request URI Request
 ----------------------
 
+The request and its parameters are defined in Section number 5 (Authorization Request) of `OpenID4VP`_.
 Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.
 
 .. code-block:: javascript
@@ -349,6 +350,8 @@ The JWT payload parameters are described herein:
     - Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **response_type**
     - It MUST be set to ``vp_token``.
+  * - **wallet_nonce**
+    - String value used to mitigate replay attacks of the response, as defined in Section 5.11 (Request URI Method) of `OpenID4VP`_. It MUST be present if previously provided by Wallet Instance.
   * - **response_uri**
     - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST.
   * - **nonce**
