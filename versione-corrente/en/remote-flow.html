@@ -272,7 +272,7 @@ with the method POST and content type set to <cite>application/json</cite>.</p>
 <span class="w">      </span><span class="s2">&quot;form_post.jwt&quot;</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;vp_formats_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;vc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">              </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">              </span><span class="s2">&quot;ES384&quot;</span>
@@ -510,7 +510,7 @@ where a non-normative example in the form of decoded header and payload is shown
 <span class="w">                </span><span class="s2">&quot;group1&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">			</span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;vc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
@@ -521,15 +521,6 @@ where a non-normative example in the form of decoded header and payload is shown
 <span class="w">            </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;limit_disclosure&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;preferred&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                    </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_id&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="s2">&quot;$.credentialSubject.unique_id&quot;</span>
-<span class="w">                        </span><span class="p">]</span>
-<span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="p">{</span>
 <span class="w">                        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                            </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
@@ -559,18 +550,18 @@ where a non-normative example in the form of decoded header and payload is shown
 <span class="w">                    </span><span class="p">},</span>
 <span class="w">                    </span><span class="p">{</span>
 <span class="w">                        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tax_id_code&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal_administrative_number&quot;</span><span class="p">,</span>
 <span class="w">                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
 <span class="w">                        </span><span class="p">},</span>
 <span class="w">                        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                            </span><span class="s2">&quot;$.credentialSubject.tax_id_code&quot;</span>
+<span class="w">                            </span><span class="s2">&quot;$.credentialSubject.personal_administrative_number&quot;</span>
 <span class="w">                        </span><span class="p">]</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">]</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">			</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WalletAttestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Attestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Authentication&quot;</span><span class="p">,</span>
 <span class="w">			</span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
@@ -715,7 +706,7 @@ where a non-normative example in the form of decoded header and payload is shown
           {
               &quot;id&quot;: &quot;PersonIdentificationData&quot;,
               &quot;path&quot;: &quot;$.vp_token[0]&quot;,
-              &quot;format&quot;: &quot;vc+sd-jwt&quot;
+              &quot;format&quot;: &quot;dc+sd-jwt&quot;
           },
           {
               &quot;id&quot;: &quot;WalletAttestation&quot;,

@@ -516,7 +516,7 @@ The <code class="docutils literal notranslate"><span class="pre">OAuth-Client-At
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;proof_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
@@ -553,8 +553,8 @@ without encoding and signature. The JWT header:</p>
 <li><p>It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to <a class="reference internal" href="#table-credential-response-claim"><span class="std std-ref">Table of the credential response parameters</span></a>.</p></li>
 <li><p>It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter of SD-JWT (<a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>) and the public key that is identified using the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header of the SD-JWT.</p></li>
 <li><p>It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in <a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>.</p></li>
-<li><p>It MUST process and verify the PID in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> Section 6.) or MDOC CBOR format.</p></li>
-<li><p>It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID Provider is trusted.</p></li>
+<li><p>It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> Section 5.) or MDOC CBOR format.</p></li>
+<li><p>It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID/(Q)EAA Provider is trusted.</p></li>
 </ol>
 </div></blockquote>
 <p>If the checks defined above are successful the Wallet Instance proceeds with the secure storage of the PID/(Q)EAA.</p>
@@ -1253,11 +1253,11 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>format</strong></p></td>
-<td><p>Format of the Credential to be issued. This MUST be <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> or <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>.</p></td>
+<td><p>Format of the Credential to be issued. This MUST be <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> or <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>.</p></td>
 <td><p>[<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vct</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED only if the <em>format</em> identifier is <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code>.</p></td>
+<td><p>CONDITIONAL. REQUIRED only if the <em>format</em> identifier is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>.</p></td>
 <td><p>See Annex A3.4. of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>doctype</strong></p></td>
@@ -1353,7 +1353,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>credential</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">lead_time</span></code> is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">vc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the issued Credential.</p></td>
+<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">lead_time</span></code> is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the issued Credential.</p></td>
 <td><p>Section 7.3, Annex A2.5 and Annex A3.5 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>lead_time</strong></p></td>

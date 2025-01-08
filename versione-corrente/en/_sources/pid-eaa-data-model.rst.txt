@@ -12,7 +12,6 @@ The User attributes provided within the Italian PID are the ones listed below:
     - Current Family Name
     - Current First Name
     - Date of Birth
-    - Unique Identifier
     - Taxpayer identification number
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format. 
@@ -24,11 +23,11 @@ SD-JWT-VC Credential Format
 
 The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is `SD-JWT`_ as specified in `SD-JWT-VC`_.
 
-SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 5.1.1 `SD-JWT`_ and other claims specified in this section. 
+SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [`SD-JWT-VC`_]. The payload MUST contain the **_sd_alg** claim described in the Section 4.1.1 `SD-JWT`_ and other claims specified in this section. 
 
-The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 5.1.1 of `SD-JWT`_. **_sd_alg**  MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
+The claim **_sd_alg** indicates the hash algorithm used by the Issuer to generate the digests as described in Section 4.1.1 of `SD-JWT`_. **_sd_alg**  MUST be set to one of the specified algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>`.
 
-Claims that are not selectively disclosable MUST be included in the SD-JWT as they are.  The digests of the disclosures, along with any decoy if present,  MUST be contained in the  **_sd** array, as specified in Section 5.2.4.1 of `SD-JWT`_. 
+Claims that are not selectively disclosable MUST be included in the SD-JWT as they are.  The digests of the disclosures, along with any decoy if present,  MUST be contained in the  **_sd** array, as specified in Section 4.2.4.1 of `SD-JWT`_. 
 
 Each digest value, calculated using a hash function over the disclosures, verifies the integrity and corresponds to a specific Disclosure. Each disclosure includes:
 
@@ -38,14 +37,14 @@ Each digest value, calculated using a hash function over the disclosures, verifi
 
 In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore **_sd** claim containing digests MAY appear multiple times at different level in the SD-JWT.
 
-For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 5.2.4.2 of `SD-JWT`_.
+For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 4.2.4.2 of `SD-JWT`_.
 
 In case of array elements, digest values are calculated using a hash function over the disclosures, containing:
 
   - a random salt, 
   - the array element
 
-In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also allowing the Holder to reveal each of those elements individually (Section 5.2.6 `SD-JWT`_). Both the entire array and the individuals entries can be selective disclosure.
+In case of multiple array elements, the Issuer may hide the value of the entire array or any of the entry contained within the array, the Holder can disclose both the entire array and any single entry within the array, as defined in Section 4.2.6 of `SD-JWT`_.
 
 The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that is an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
 
@@ -71,7 +70,7 @@ The JOSE header contains the following mandatory parameters:
     - **Description**
     - **Reference**
   * - **typ**
-    - REQUIRED. It MUST be set to ``vc+sd-jwt`` as defined in `SD-JWT-VC`_. 
+    - REQUIRED. It MUST be set to ``dc+sd-jwt`` as defined in `SD-JWT-VC`_. 
     - :rfc:`7515` Section 4.1.9.
   * - **alg**
     - REQUIRED. Signature Algorithm. 
@@ -123,11 +122,17 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - [NSD].Object containing user authentication information. It MUST contain the following sub-value:
+      - [SD]. Object containing User authentication and User data verification information. When the Credential type is set to `PersonIdentificationData`, the `verification` claim MUST be included by the Issuer. Whn present, the `verification` claim MUST include the following sub-value:
 
-          * ``trust_framework``: String identifying the trust framework used for user digital authetication.
-          * ``assurance_level``: String identifying the level of identity assurance guarateed during the authentication process.
-          * ``evidence``: It MUST contain ``method`` claim identifying the digital identity system used for the authentication.
+          * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
+          * ``evidence``: Each entry of the array MUST contain the following members:
+              - ``type``: It represents evidence type. It MUST be set to ``vouch``.
+              - ``time``: UNIX Timestamps with the time of the authentication or verification.
+              - ``attestation``: It MUST contain the following members:
+                  - ``type``: It MUST be set to ``digital_attestation``.
+                  - ``reference_number``: identifier of the authentication or verification response.
+                  - ``date_of_issuance``: date of issuance of the attestation.
+                  - ``voucher``: It MUST contains ``organization`` claim.
       - `OIDC-IDA`_.
 
 .. note::
@@ -165,21 +170,56 @@ The Metadata type document MUST be a JSON object and contains the following para
     * - **schema_uri**
       - CONDITIONAL. REQUIRED if **schema** is not present.
       - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema#integrity**
-      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
+    * - **schema_uri#integrity**
+      - CONDITIONAL. REQUIRED if **schema_uri** is present.
       - [`SD-JWT-VC`_] Section 6.2.
     * - **data_source**
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
 
-          * ``trust_framework``: MUST cointain trust framework used for digital authentication towards authentic source system.
-          * ``authentic_source``: MUST contain ``organization_name`` and ``organization_code`` cliam related to name and code identifier of the authentic source.
+          * ``trust_framework``: MUST contain trust framework used for digital authentication towards Authentic Source system.
+          * ``authentic_source``: MUST contain the following claims related to information about the Authentic Source:
+               * ``organization_name`` name of the Authentic Source.
+               * ``organization_code`` code identifier of the Authentic Source.
+               * ``homepage_uri`` uri pointing to the Authentic Source's homepage.
+               * ``contacts`` contact list for info and assistance.
+               * ``logo_uri`` URI pointing to the logo image.
       - This specification
-    * - **vc_claims**
-      - REQUIRED. Object containing useful information about the Digital credential graphical rappresentation. It MUST contain the for each credential claim the following objects:
+    * - **display**
+      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:
 
-          * ``display``: MUST cointain name human-readable display name.
-          * ``graphics``: MUST contain position, font character, color, size.
-      - This specification
+          * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
+          * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
+          * ``description``: human-readable description for the Digital Credential type. [REQUIRED].
+          * ``rendering``: object containing rendering methods supported by the Digital Credential type. [REQUIRED]. The rendering method `svg_template` MUST be supported.
+              The ``svg_templates`` array of objects contains for each SVG template supported the following properties:
+                  * ``uri``: URI pointing to the SVG template. [REQUIRED].
+                  * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+                  * ``properties``: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in `SD-JWT-VC`_ Section 8.1.2.1.
+                             
+              If rendering method `simple` is also supported, the ``simple`` object contains the following properties: 
+                  * ``logo``: object containing information about the logo to display. This property is REQUIRED. The object contains the following sub-values:
+                      * ``uri``: URI pointing to the logo image. [REQUIRED]
+                      * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+                      * ``alt_text``: A string containing alternative text to display instead of the logo image. [OPTIONAL].
+                  * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential. [OPTIONAL].
+                  * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential. [OPTIONAL].
+
+          .. note::
+
+            The use of the SVG template is recommended for all applications that support it.
+
+      - [`SD-JWT-VC`_] Section 8.
+    * - **claims**
+      - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:
+
+          * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
+          * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following members:
+             * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
+             * ``label``: human-readable label for the claim. [REQUIRED].
+             * ``description``: human-readable description for the claim. [REQUIRED].
+          * ``sd``: string indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not. [REQUIRED].
+          * ``svg_id``: alphanumeric string containing ID of the claim referenced in the SVG template as defined in [`SD-JWT-VC`_] Section 9. [REQUIRED].
+      - [`SD-JWT-VC`_] Section 9.
 
 
 A non-normative Digital Credential metadata type is provided below.
@@ -210,10 +250,7 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **birth_date**
       - [SD]. Date of Birth.
       - 
-    * - **unique_id**
-      - [SD]. Unique citizen identifier (ID ANPR) given by the National Register of the Resident Population (ANPR). It MUST be set according to `ANPR rules <https://www.anagrafenazionale.interno.it/anpr/notizie/identificativo-unico-nazionale-idanpr/>`_
-      - 
-    * - **tax_id_code**
+    * - **personal_administrative_number**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - 
 
@@ -245,14 +282,25 @@ In the following the disclosure list is given
    ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd``
 -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "iat", 1683000000]``
 
-**Claim** ``unique_id``:
+**Claim** ``verification``:
 
--  SHA-256 Hash: ``BoMGktW1rbikntw8Fzx_BeL4YbAndr6AHsdgpatFCig``
+-  SHA-256 Hash: ``egljN30TYCjSEtzVszDFWbryYskAOEmM3TKT2X2fdpA``
 -  Disclosure:
-   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4``
-   ``eHh4eC14eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ``
--  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "unique_id",``
-   ``"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]``
+   ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsi``
+   ``YXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2UiOiB7InR5cGUi``
+   ``OiAidm91Y2giLCAidGltZSI6ICIyMDIwLTAzLTE5VDEyOjQyWiIsICJhdHRl``
+   ``c3RhdGlvbiI6IHsidHlwZSI6ICJkaWdpdGFsX2F0dGVzdGF0aW9uIiwgInJl``
+   ``ZmVyZW5jZV9udW1iZXIiOiAiNjQ4NS0xNjE5LTM5NzYtNjY3MSIsICJkYXRl``
+   ``X29mX2lzc3VhbmNlIjogIjIwMjAtMDMtMTlUMTI6NDNaIiwgInZvdWNoZXIi``
+   ``OiB7Im9yZ2FuaXphdGlvbiI6ICJNaW5pc3Rlcm8gZGVsbCdpbnRlcm5vIn19``
+   ``fX1d``
+-  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "verification",``
+   ``{"assurance_level": "high", "evidence": {"type": "vouch",``
+   ``"time": "2020-03-19T12:42Z", "attestation": {"type":``
+   ``"digital_attestation", "reference_number":``
+   ``"6485-1619-3976-6671", "date_of_issuance":``
+   ``"2020-03-19T12:43Z", "voucher": {"organization": "Ministero``
+   ``dell'interno"}}}}]``
 
 **Claim** ``given_name``:
 
@@ -278,13 +326,13 @@ In the following the disclosure list is given
    ``MC0wMS0xMCJd``
 -  Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
 
-**Claim** ``tax_id_code``:
+**Claim** ``personal_administrative_number``:
 
--  SHA-256 Hash: ``ENNo31jfzFp8Y2DW0R-fIMeWwe7ELGvGoHMwMBpu14E``
+-  SHA-256 Hash: ``4KfNcVziiuiktw8UMBaZQBRlLorpAhFz2ii37niYF2Q``
 -  Disclosure:
-   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJ``
-   ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["AJx-095VPrpTtN4QMOqROA", "tax_id_code",``
+   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbmFsX2FkbWluaXN0``
+   ``cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0``
+-  Contents: ``["AJx-095VPrpTtN4QMOqROA", "personal_administrative_number",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 
@@ -293,33 +341,37 @@ The combined format for the PID issuance is given by
 
 .. code-block::
 
-  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  IkJvTUdrdFcxcmJpa250dzhGenhfQmVMNFliQW5kcjZBSHNkZ3BhdEZDaWciLCAiRU5O
-  bzMxamZ6RnA4WTJEVzBSLWZJTWVXd2U3RUxHdkdvSE13TUJwdTE0RSIsICJWUUktUzFt
-  VDFLeGZxMm84Sjlpbzd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRl
-  eEVZdHFERXNtUmw3c3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiczFYSzVmMnBNMy1hRlRh
-  dVhobXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdHc0dw
-  U2tDUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJpc3MiOiAiaHR0cHM6Ly9waWRwcm92
-  aWRlci5leGFtcGxlLm9yZyIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXhwIjogMTg4MzAw
-  MDAwMCwgInN1YiI6ICJOemJMc1hoOHVEQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCAi
-  c3RhdHVzIjogeyJzdGF0dXNfYXNzZXJ0aW9uIjogeyJjcmVkZW50aWFsX2hhc2hfYWxn
-  IjogInNoYS0yNTYifX0sICJ2Y3QiOiAiaHR0cHM6Ly9waWRwcm92aWRlci5leGFtcGxl
-  Lm9yZy92MS4wL3BlcnNvbmlkZW50aWZpY2F0aW9uZGF0YSIsICJ2Y3QjaW50ZWdyaXR5
-  IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE1MTE4YWNjZTI4NmM5YmI1NmI2M2E0NDNkYzg1
-  YWY2NTNjZDczZjYwNzhiMWYiLCAidmVyaWZpY2F0aW9uIjogeyJ0cnVzdF9mcmFtZXdv
-  cmsiOiAiZWlkYXMiLCAiYXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2Ui
-  OiB7Im1ldGhvZCI6ICJjaWUifX0sICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjog
-  eyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5
-  WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdX
-  YlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.NE_Q2unPGzoh
-  rIyVI0kAZ8nz3DLhUXBBd-jji8302PyIU0xqLnGtcWrdM9NPE_-BfUe3H-XFahYOMI54
-  PUvdZw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~
-  WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInVuaXF1ZV9pZCIsICJ4eHh4eHh4eC14
-  eHh4LXh4eHgteHh4eC14eHh4eHh4eHh4eHgiXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
-  lZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZG
-  hRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm
-  9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRT
-  U9xUk9BIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZEI2N2dM
+  N2NrM1RGaUlBZjdONl83U0h2cWswTURZTUVRY29HR2xrVUFBdyJ9.eyJfc2QiOiBbIjR
+  LZk5jVnppaXVpa3R3OFVNQmFaUUJSbExvcnBBaEZ6MmlpMzduaVlGMlEiLCAiVlFJLVM
+  xbVQxS3hmcTJvOEo5aW83eE1NWDJNSXhhRzlNOVBlSlZxck1jQSIsICJZcmMtcy1XU3I
+  0ZXhFWXRxREVzbVJsN3Nwb1ZmbUJ4aXhQMTJlNHN5cU5FIiwgImVnbGpOMzBUWUNqU0V
+  0elZzekRGV2JyeVlza0FPRW1NM1RLVDJYMmZkcEEiLCAiczFYSzVmMnBNMy1hRlRhdVh
+  obXZkOXB5UVRKNkZNVWhjLUpYZkhyeGhMayIsICJ6VmRnaGNtQ2xNVldsVWdHc0dwU2t
+  DUGtFSFo0dTlvV2oxU2xJQmxDYzFvIl0sICJleHAiOiAxODgzMDAwMDAwLCAiaXNzIjo
+  gImh0dHBzOi8vcGlkcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56YkxzWGg
+  4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0YXR1c19hc3N
+  lcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9fSwgInZjdCI
+  6ICJodHRwczovL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnL3YxLjAvcGVyc29uaWRlbnR
+  pZmljYXRpb25kYXRhIiwgInZjdCNpbnRlZ3JpdHkiOiAiYzVmNzNlMjUwZmU4NjlmMjR
+  kMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ0M2RjODVhZjY1M2NkNzNmNjA3OGIxZiIsICJ
+  fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+  jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+  pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+  jQ0U2dDRqVDlGMkhaUSJ9fX0.yjU0jPW4O4BZ8QBbeX6Lf227PH8MieTICJj10KUtooy
+  wCuB5uPpJa5gvF2NeH54QvDgEC8Ddvc1tdWKykDv5AA~WyIyR0xDNDJzS1F2ZUNmR2Zy
+  eU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9
+  BIiwgInZlcmlmaWNhdGlvbiIsIHsiYXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZ
+  pZGVuY2UiOiB7InR5cGUiOiAidm91Y2giLCAidGltZSI6ICIyMDIwLTAzLTE5VDEyOjQ
+  yWiIsICJhdHRlc3RhdGlvbiI6IHsidHlwZSI6ICJkaWdpdGFsX2F0dGVzdGF0aW9uIiw
+  gInJlZmVyZW5jZV9udW1iZXIiOiAiNjQ4NS0xNjE5LTM5NzYtNjY3MSIsICJkYXRlX29
+  mX2lzc3VhbmNlIjogIjIwMjAtMDMtMTlUMTI6NDNaIiwgInZvdWNoZXIiOiB7Im9yZ2F
+  uaXphdGlvbiI6ICJNaW5pc3Rlcm8gZGVsbCdpbnRlcm5vIn19fX1d~WyI2SWo3dE0tYT
+  VpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5
+  LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF
+  4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMD
+  k1VlBycFR0TjRRTU9xUk9BIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlci
+  IsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0~
 
 (Q)EAA non-normative examples
 -----------------------------
@@ -387,13 +439,13 @@ In the following the disclosure list is given:
    ``MjQtMDEtMDEiXQ``
 -  Contents: ``["AJx-095VPrpTtN4QMOqROA", "expiry_date", "2024-01-01"]``
 
-**Claim** ``tax_id_code``:
+**Claim** ``personal_administrative_number``:
 
--  SHA-256 Hash: ``8JjozBfovMNvQ3HflmPWy4O19Gpxs61FWHjZebU589E``
+-  SHA-256 Hash: ``wgZ0suEkIh0U7lrsviuS-TaGhQIiO-h3CfG4Dd71ll8``
 -  Disclosure:
-   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJ``
-   ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
--  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "tax_id_code",``
+   ``WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBlcnNvbmFsX2FkbWluaXN0``
+   ``cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0``
+-  Contents: ``["Pc33JM2LchcU_lHggv_ufQ", "personal_administrative_number",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 **Claim** ``constant_attendance_allowance``:
@@ -411,37 +463,36 @@ The combined format for the (Q)EAA issuance is represented below:
 
 .. code-block::
 
-  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImV4YW1wbGUrc2Qtand0In0.eyJfc2QiOiBb
-  IjhKam96QmZvdk1OdlEzSGZsbVBXeTRPMTlHcHhzNjFGV0hqWmViVTU4OUUiLCAiRHgt
-  NmhqdnJjeE56RjBzbFU2dWtObXpIb0wtWXZCTi10RmEwVDhYLWJZMCIsICJHRTNTanlf
-  ekFUMzRmOHdhNURVa1ZCMEZzbGFTSlJBQWM4STNsTjExRmZjIiwgIlZRSS1TMW1UMUt4
-  ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLCAiWXJjLXMtV1NyNGV4RVl0
-  cURFc21SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSIsICJhQlZkZmNueFQwWjVScndkeFpT
-  VWh1VXh6M2dNMnZjRVpMZVlJajYxS2FzIiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlw
-  eVFUSjZGTVVoYy1KWGZIcnhoTGsiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUha
-  NHU5b1dqMVNsSUJsQ2MxbyJdLCAiaXNzIjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUu
-  b3JnIiwgImlhdCI6IDE2ODMwMDAwMDAsICJleHAiOiAxODgzMDAwMDAwLCAic3ViIjog
-  Ik56YkxzWGg4dURDY2Q3bm9XWEZaQWZIa3hac1JHQzlYcyIsICJzdGF0dXMiOiB7InN0
-  YXR1c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiAic2hhLTI1NiJ9
-  fSwgInZjdCI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy92MS4wL2Rpc2FiaWxp
-  dHljYXJkIiwgInZjdCNpbnRlZ3JpdHkiOiAiMmU0MGJjZDY3OTkwMDgwODVmZmIxYTFm
-  MzUxN2VmZWUzMzUyOThmZDk3NmIzZTY1NWJmYjNmNGVhYTExZDE3MSIsICJ2ZXJpZmlj
-  YXRpb24iOiB7InRydXN0X2ZyYW1ld29yayI6ICJlaWRhcyIsICJhc3N1cmFuY2VfbGV2
-  ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsibWV0aG9kIjogImNpZSJ9fSwgIl9zZF9h
-  bGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6
-  ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxz
-  N3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0
-  NGpUOUYySFpRIn19fQ.FAIV8Cncch43N07yBcWleJg4ZO9o_XdefgIejdShK1cCj8yT9
-  S022cvSpdxuV44x-c_XmTn3Db9t0jJJPtqebA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STj
-  l3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgI
-  mRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyI2SWo3dE0tYTVpVlBHYm9TN
-  XRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW
-  5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMD
-  hpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0T
-  jRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyJQYzMzSk0yTG
-  NoY1VfbEhnZ3ZfdWZRIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWF
-  hYWFgiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGF
-  uY2VfYWxsb3dhbmNlIiwgdHJ1ZV0~
+  eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZDEyNmE2
+  YTg1NmY3NzI0NTYwNDg0ZmE5ZGM1OWQxOTUifQ.eyJfc2QiOiBbIkR4LTZoanZyY3hOe
+  kYwc2xVNnVrTm16SG9MLVl2Qk4tdEZhMFQ4WC1iWTAiLCAiR0UzU2p5X3pBVDM0Zjh3Y
+  TVEVWtWQjBGc2xhU0pSQUFjOEkzbE4xMUZmYyIsICJWUUktUzFtVDFLeGZxMm84Sjlpb
+  zd4TU1YMk1JeGFHOU05UGVKVnFyTWNBIiwgIllyYy1zLVdTcjRleEVZdHFERXNtUmw3c
+  3BvVmZtQnhpeFAxMmU0c3lxTkUiLCAiYUJWZGZjbnhUMFo1UnJ3ZHhaU1VodVV4ejNnT
+  TJ2Y0VaTGVZSWo2MUthcyIsICJzMVhLNWYycE0zLWFGVGF1WGhtdmQ5cHlRVEo2Rk1Va
+  GMtSlhmSHJ4aExrIiwgIndnWjBzdUVrSWgwVTdscnN2aXVTLVRhR2hRSWlPLWgzQ2ZHN
+  ERkNzFsbDgiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU5b1dqMVNsSUJsQ
+  2MxbyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRwczovL2lzc3Vlci5le
+  GFtcGxlLm9yZyIsICJzdWIiOiAiTnpiTHNYaDh1RENjZDdub1dYRlpBZkhreFpzUkdDO
+  VhzIiwgInN0YXR1cyI6IHsic3RhdHVzX2Fzc2VydGlvbiI6IHsiY3JlZGVudGlhbF9oY
+  XNoX2FsZyI6ICJzaGEtMjU2In19LCAidmN0IjogImh0dHBzOi8vaXNzdWVyLmV4YW1wb
+  GUub3JnL3YxLjAvZGlzYWJpbGl0eWNhcmQiLCAidmN0I2ludGVncml0eSI6ICIyZTQwY
+  mNkNjc5OTAwODA4NWZmYjFhMWYzNTE3ZWZlZTMzNTI5OGZkOTc2YjNlNjU1YmZiM2Y0Z
+  WFhMTFkMTcxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia
+  3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0V
+  zR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWU
+  TRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.iKHrYC-a3lVgxbmcOvJInYgVGr
+  NdxDbPW6yFuBu_dwM1p2bNLQX2azLvlrz9DWcG6Juacqb1od0weet4C1adpw~WyIyR0x
+  DNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2
+  dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~Wy
+  I2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJ
+  lSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJ
+  RZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJ
+  d~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMD
+  EtMDEiXQ~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBlcnNvbmFsX2FkbWluaXN
+  0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0~WyJHMDJOU3J
+  RZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiw
+  gdHJ1ZV0~
 
 MDOC-CBOR
 =========
@@ -620,11 +671,8 @@ Depending on the Digital Credential type, additional **elementIdentifier** data 
     * - **eu.europa.ec.eudiw.pid.1**
       - **birth_date**
       - *full-date (CBORTag 1004)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
-    * - **eu.europa.ec.eudiw.pid.1**
-      - **unique_id**
-      - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
     * - **eu.europa.ec.eudiw.pid.it.1**
-      - **tax_id_code**
+      - **personal_administrative_number**
       - *tstr (text string)*. See :ref:`PID Claims fields Section <sec-pid-user-claims>`.
 
 

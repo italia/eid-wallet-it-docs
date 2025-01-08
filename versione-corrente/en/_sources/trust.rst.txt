@@ -28,8 +28,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 .. note::
     The Wallet Instance, as a personal device, is certified as reliable through a verifiable attestation issued and signed by a trusted third party.
 
-    This is called *Wallet Attestation* and is documented in `the dedicated section  <Wallet Attestation>`_.
-
+    This is called *Wallet Attestation* and is documented in `the dedicated section  <wallet-attestation.html>`_.
 
 Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the `EIDAS-ARF`_.
 
@@ -513,7 +512,7 @@ Below there is a non-normative example of an Subordinate Statement issued by an 
                       ]
                 },
                 "vp_formats": {
-                    "vc+sd-jwt": {
+                    "dc+sd-jwt": {
                         "sd-jwt_alg_values": [
                             "ES256",
                             "ES384"

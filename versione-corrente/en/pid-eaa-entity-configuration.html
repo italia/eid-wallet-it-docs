@@ -288,7 +288,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Sections 11.2.3 and A.3.2.</p>
 <blockquote>
 <div><ul>
-<li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>vc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section A.3.1.</p></li>
+<li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>dc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section A.3.1.</p></li>
 <li><p><strong>scope</strong>: JSON String identifying the supported <em>scope</em> value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the <em>scope</em> values in the <em>scopes_supported</em> parameter of the Authorization Server. [See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html">OpenID4VCI</a> Section  11.2.3].</p></li>
 <li><p><strong>cryptographic_binding_methods_supported</strong>: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value &quot;<em>jwk</em>&quot;.</p></li>
 <li><p><strong>credential_signing_alg_values_supported</strong>: JSON Array of case sensitive strings that identify the algorithms that the PID/(Q)EAA Provider MUST support to sign the issued Credential. See Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details.</p></li>
@@ -447,7 +447,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;credential_configurations_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;EuropeanDisabilityCard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;jwk&quot;</span>
@@ -530,7 +530,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                                </span><span class="p">}</span>
 <span class="w">                            </span><span class="p">]</span>
 <span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                            </span><span class="nt">&quot;value_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
 <span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                                </span><span class="p">{</span>
@@ -538,7 +538,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
 <span class="w">                                </span><span class="p">},</span>
 <span class="w">                                </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tax Id Number&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tax Identification Number&quot;</span><span class="p">,</span>
 <span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
 <span class="w">                                </span><span class="p">}</span>
 <span class="w">                            </span><span class="p">]</span>
@@ -598,7 +598,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="nt">&quot;MDL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDL&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;jwk&quot;</span>
@@ -853,7 +853,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                </span><span class="s2">&quot;A256GCM&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;vp_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;vc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
@@ -868,7 +868,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                        </span><span class="p">{</span>
 <span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
 <span class="w">                            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;vc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                                </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">                                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
@@ -897,12 +897,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                                        </span><span class="p">},</span>
 <span class="w">                                        </span><span class="p">{</span>
 <span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                                </span><span class="s2">&quot;$.unique_id&quot;</span>
-<span class="w">                                            </span><span class="p">]</span>
-<span class="w">                                        </span><span class="p">},</span>
-<span class="w">                                        </span><span class="p">{</span>
-<span class="w">                                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                                </span><span class="s2">&quot;$.tax_id_code&quot;</span>
+<span class="w">                                                </span><span class="s2">&quot;$.personal_administrative_number&quot;</span>
 <span class="w">                                            </span><span class="p">]</span>
 <span class="w">                                        </span><span class="p">}</span>
 <span class="w">                                    </span><span class="p">]</span>

@@ -331,8 +331,8 @@ without encoding and signature. The JWT header:
     1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
     3. It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
-    4. It MUST process and verify the PID in SD-JWT VC format (according to `SD-JWT`_ Section 6.) or MDOC CBOR format. 
-    5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID Provider is trusted.
+    4. It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or MDOC CBOR format. 
+    5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID/(Q)EAA Provider is trusted.
 
 If the checks defined above are successful the Wallet Instance proceeds with the secure storage of the PID/(Q)EAA.
 
@@ -897,10 +897,10 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - **Description**
     - **Reference**
   * - **format**
-    - Format of the Credential to be issued. This MUST be ``vc+sd-jwt`` or ``mso_mdoc``.
+    - Format of the Credential to be issued. This MUST be ``dc+sd-jwt`` or ``mso_mdoc``.
     - [`OpenID4VCI`_].
   * - **vct**
-    - CONDITIONAL. REQUIRED only if the *format* identifier is ``vc+sd-jwt``. 
+    - CONDITIONAL. REQUIRED only if the *format* identifier is ``dc+sd-jwt``. 
     - See Annex A3.4. of [`OpenID4VCI`_]
   * - **doctype**
     - CONDITIONAL. REQUIRED only if the *format* identifier is ``mso_mdoc``. 
@@ -969,7 +969,7 @@ The Credential Response contains the following parameters:
     - **Description**
     - **Reference**
   * - **credential**
-    - CONDITIONAL. REQUIRED if ``lead_time`` is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``vc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+    - CONDITIONAL. REQUIRED if ``lead_time`` is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
     - Section 7.3, Annex A2.5 and Annex A3.5 of [`OpenID4VCI`_].
   * - **lead_time**
     - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.

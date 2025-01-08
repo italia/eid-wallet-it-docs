@@ -366,7 +366,7 @@ Below an non-normative example of the Wallet Attestation without encoding and si
       "form_post.jwt"
     ],
     "vp_formats_supported": {
-        "vc+sd-jwt": {
+        "dc+sd-jwt": {
             "sd-jwt_alg_values": [
                 "ES256",
                 "ES384"
