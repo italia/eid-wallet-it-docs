@@ -294,11 +294,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">assurance_level</span></code>: String identifying the level of identity assurance guaranteed during the User authentication process.</p></li>
 <li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">evidence</span></code>: Each entry of the array MUST contain the following sub-values:</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: It represents evidence type. IT MUST be set to <code class="docutils literal notranslate"><span class="pre">vouch</span></code>.</p></li>
+<dt><code class="docutils literal notranslate"><span class="pre">evidence</span></code>: Each entry of the array MUST contain the following members:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: It represents evidence type. It MUST be set to <code class="docutils literal notranslate"><span class="pre">vouch</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: UNIX Timestamps with the time of the authentication or verification.</p></li>
 <li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">attestation</span></code>: It MUST contain the following claims:</dt><dd><ul>
+<dt><code class="docutils literal notranslate"><span class="pre">attestation</span></code>: It MUST contain the following members:</dt><dd><ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: It MUST be set to <code class="docutils literal notranslate"><span class="pre">digital_attestation</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">reference_number</span></code>: identifier of the authentication or verification response.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">date_of_issuance</span></code>: date of issuance of the attestation.</p></li>
