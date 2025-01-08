@@ -190,8 +190,7 @@ The Metadata type document MUST be a JSON object and contains the following para
           * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
           * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
           * ``description``: human-readable description for the Digital Credential type. [REQUIRED].
-          * ``rendering``: object containing rendering methods supported by the Digital Credential type. [REQUIRED].
-          Rendering method `svg_template` MUST be supported.
+          * ``rendering``: object containing rendering methods supported by the Digital Credential type. [REQUIRED]. The rendering method `svg_template` MUST be supported.
            The ``svg_templates`` array of objects contains for each SVG template supported the following properties:
                 * ``uri``: URI pointing to the SVG template. [REQUIRED].
                 * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
