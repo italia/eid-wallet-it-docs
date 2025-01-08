@@ -122,7 +122,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [NSD].The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - [SD]. Object containing user authentication and user data verification information. It is REQUIRED only if the Credential type is PersonIdentificationData, and it MUST not be included in other Credential types. It MUST include the following sub-value:
+      - [SD]. Object containing User authentication and User data verification information. When the Credential type is set to `PersonIdentificationData`, the `verification` claim MUST be included by the Issuer. Whn present, the `verification` claim MUST include the following sub-value:
 
           * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
           * ``evidence``: Each entry of the array MUST contain the following sub-values:
