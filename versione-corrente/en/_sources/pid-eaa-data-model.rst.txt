@@ -81,7 +81,7 @@ The JOSE header contains the following mandatory parameters:
     - :rfc:`7515` Section 4.1.8.
   * - **trust_chain**
     - OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT. 
-    - [`OID-FED`_] Section 3.2.1.
+    - [`OID-FED`_] Section 4.3.
   * - **x5c**
     - OPTIONAL. Contains the X.509 public key certificate or certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWT. 
     - :rfc:`7515` Section 4.1.8 and [`SD-JWT-VC`_] Section 3.5.

@@ -449,17 +449,17 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
   * - **Claim**
     - **Description**
   * - **organization_name**
-    - See `OID-FED`_ Draft 36 Section 5.2.2
+    - See `OID-FED`_ Draft 41 Section 5.2.2
   * - **homepage_uri**
-    - See `OID-FED`_ Draft 36 Section 5.2.2
+    - See `OID-FED`_ Draft 41 Section 5.2.2
   * - **policy_uri**
-    - See `OID-FED`_ Draft 36 Section 5.2.2
+    - See `OID-FED`_ Draft 41 Section 5.2.2
   * - **logo_uri**
     - URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Draft 36 Section 5.2.2
   * - **contacts**
     - Institutional certified email address (PEC) of the entity. See `OID-FED`_ Draft 36 Section 5.2.2
   * - **federation_resolve_endpoint**
-    - See `OID-FED`_ Draft 36 Section 5.1.1
+    - See `OID-FED`_ Draft 41 Section 5.1.1
 
 
 Subordinate Statements
@@ -551,22 +551,22 @@ The Subordinate Statement issued by Trust Anchors and Intermediates contains the
      - **Description**
      - **Required**
    * - **iss**
-     - See `OID-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3 for further details.
      - |check-icon|
    * - **sub**
-     - See `OID-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3 for further details.
      - |check-icon|
    * - **iat**
-     - See `OID-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3 for further details.
      - |check-icon|
    * - **exp**
-     - See `OID-FED`_ Section 3.1 for further details.
+     - See `OID-FED`_ Section 3 for further details.
      - |check-icon|
    * - **jwks**
-     - Federation JWKS of the *sub* entity. See `OID-FED`_ Section 3.1 for further details.
+     - Federation JWKS of the *sub* entity. See `OID-FED`_ Section 3 for further details.
      - |check-icon|
    * - **metadata_policy**
-     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the `OID-FED`_ specifications, Section-5.1, for the implementation details.
+     - JSON Object that describes the Metadata policy. Each key of the JSON Object represents an identifier of the metadata type and each value MUST be a JSON Object that represents the metadata policy according to that metadata type. Please refer to the `OID-FED`_ specifications, Section 6.1, for the implementation details.
      - |uncheck-icon|
    * - **trust_marks**
      - JSON Array containing the Trust Marks issued by itself for the subordinate subject.
@@ -732,7 +732,7 @@ Non-repudiability of the Long Lived Attestations
 
 The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys endpoint, where are published all the public part of the Federation Entity Keys that are no longer used, whether expired or revoked.
 
-The details of this endpoint are defined in the `OID-FED`_ Section 7.6.
+The details of this endpoint are defined in the `OID-FED`_ Section 8.7.
 
 Each JWT containing a Trust Chain in the JWT headers can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.
 
