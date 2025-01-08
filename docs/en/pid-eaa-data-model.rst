@@ -44,7 +44,7 @@ In case of array elements, digest values are calculated using a hash function ov
   - a random salt, 
   - the array element
 
-In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also allowing the Holder to reveal each of those elements individually (Section 4.2.6 `SD-JWT`_). Both the entire array and the individuals entries can be selective disclosure.
+In case of multiple array elements, the Issuer may hide the value of the entire array or any of the entry contained within the array, the Holder can disclose both the entire array and any single entry within the array, as defined in Section 4.2.6 of `SD-JWT`_.
 
 The Disclosures are provided to the Holder together with the SD-JWT in the *Combined Format for Issuance* that is an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:
 
