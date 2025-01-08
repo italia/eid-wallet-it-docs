@@ -176,11 +176,11 @@ The Metadata type document MUST be a JSON object and contains the following para
     * - **data_source**
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with this following sub-value:
 
-          * ``trust_framework``: MUST contain trust framework used for digital authentication towards authentic source system.
-          * ``authentic_source``: MUST contain the following claims related to information about the authentic source:
-               * ``organization_name`` name of the authentic source.
-               * ``organization_code`` code identifier of the authentic source.
-               * ``homepage_uri`` uri pointing to the authentic source's homepage.
+          * ``trust_framework``: MUST contain trust framework used for digital authentication towards Authentic Source system.
+          * ``authentic_source``: MUST contain the following claims related to information about the Authentic Source:
+               * ``organization_name`` name of the Authentic Source.
+               * ``organization_code`` code identifier of the Authentic Source.
+               * ``homepage_uri`` uri pointing to the Authentic Source's homepage.
                * ``contacts`` contact list for info and assistance.
                * ``logo_uri`` URI pointing to the logo image.
       - This specification
