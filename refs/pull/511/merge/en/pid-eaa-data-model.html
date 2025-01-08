@@ -289,7 +289,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>Section 6.1 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>, [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>verification</strong></p></td>
-<td><p>[SD]. Object containing user authentication and user data verification information. It is REQUIRED only if the Credential type is PersonIdentificationData, and it MUST not be included in other Credential types. It MUST include the following sub-value:</p>
+<td><p>[SD]. Object containing User authentication and User data verification information. When the Credential type is set to <cite>PersonIdentificationData</cite>, the <cite>verification</cite> claim MUST be included by the Issuer. Whn present, the <cite>verification</cite> claim MUST include the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">assurance_level</span></code>: String identifying the level of identity assurance guaranteed during the User authentication process.</p></li>
