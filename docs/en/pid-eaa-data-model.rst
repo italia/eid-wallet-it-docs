@@ -210,7 +210,7 @@ The Metadata type document MUST be a JSON object and contains the following para
       - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:
 
           * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
-          * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following sub-values:
+          * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following members:
              * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
              * ``label``: human-readable label for the claim. [REQUIRED].
              * ``description``: human-readable description for the claim. [REQUIRED].
