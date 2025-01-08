@@ -207,7 +207,7 @@ The Metadata type document MUST be a JSON object and contains the following para
             The use of the SVG template is recommended for all applications that support it.
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**
-      - REQUIRED. Array of objects containing information for displaying and validating Digital credential claims. It contains for each credential claim the following properties:
+      - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:
 
           * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
           * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following sub-values:
