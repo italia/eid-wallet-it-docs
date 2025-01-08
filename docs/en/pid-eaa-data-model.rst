@@ -126,7 +126,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
 
           * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
           * ``evidence``: Each entry of the array MUST contain the following sub-values:
-              - ``type``: It represents evidence type. IT MUST be set to ``vouch``.
+              - ``type``: It represents evidence type. It MUST be set to ``vouch``.
               - ``time``: UNIX Timestamps with the time of the authentication or verification.
               - ``attestation``: It MUST contain the following claims:
                   - ``type``: It MUST be set to ``digital_attestation``.
