@@ -191,19 +191,23 @@ The Metadata type document MUST be a JSON object and contains the following para
           * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
           * ``description``: human-readable description for the Digital Credential type. [REQUIRED].
           * ``rendering``: object containing rendering methods supported by the Digital Credential type. [REQUIRED]. The rendering method `svg_template` MUST be supported.
-           The ``svg_templates`` array of objects contains for each SVG template supported the following properties:
-                * ``uri``: URI pointing to the SVG template. [REQUIRED].
-                * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
-                * ``properties``: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in `SD-JWT-VC`_ Section 8.1.2.1.           
-           If rendering method `simple` is also supported, the ``simple`` object contains the following properties: 
-             * ``logo``: object containing information about the logo to display. This property is REQUIRED. The object contains the following sub-values:
-                * ``uri``: URI pointing to the logo image. [REQUIRED]
-                * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
-                * ``alt_text``: A string containing alternative text to display instead of the logo image. [OPTIONAL].
-             * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential. [OPTIONAL].
-             * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential. [OPTIONAL].
+              The ``svg_templates`` array of objects contains for each SVG template supported the following properties:
+                  * ``uri``: URI pointing to the SVG template. [REQUIRED].
+                  * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+                  * ``properties``: object containing SVG template properties. This property is REQUIRED if more than one SVG template is present. The object MUST contain at least one of the properties defined in `SD-JWT-VC`_ Section 8.1.2.1.
+                             
+              If rendering method `simple` is also supported, the ``simple`` object contains the following properties: 
+                  * ``logo``: object containing information about the logo to display. This property is REQUIRED. The object contains the following sub-values:
+                      * ``uri``: URI pointing to the logo image. [REQUIRED]
+                      * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+                      * ``alt_text``: A string containing alternative text to display instead of the logo image. [OPTIONAL].
+                  * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential. [OPTIONAL].
+                  * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential. [OPTIONAL].
+
           .. note::
+
             The use of the SVG template is recommended for all applications that support it.
+
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**
       - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:
