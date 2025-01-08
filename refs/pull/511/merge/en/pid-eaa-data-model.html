@@ -194,7 +194,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p>the array element</p></li>
 </ul>
 </div></blockquote>
-<p>In case of multiple array elements, the Issuer may wish to conceal presence of any statement while also allowing the Holder to reveal each of those elements individually (Section 4.2.6 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>). Both the entire array and the individuals entries can be selective disclosure.</p>
+<p>In case of multiple array elements, the Issuer may hide the value of the entire array or any of the entry contained within the array, the Holder can disclose both the entire array and any single entry within the array, as defined in Section 4.2.6 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p>
 <p>The Disclosures are provided to the Holder together with the SD-JWT in the <em>Combined Format for Issuance</em> that is an ordered series of base64url-encoded values, each separated from the next by a single tilde ('~') character as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Issuer</span><span class="o">-</span><span class="n">Signed</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">1</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">2</span><span class="o">&gt;~...~&lt;</span><span class="n">Disclosure</span> <span class="n">N</span><span class="o">&gt;</span>
 </pre></div>
@@ -230,7 +230,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>OPTIONAL. JSON array containing the trust chain that proves the reliability of the issuer of the JWT.</p></td>
-<td><p>[<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a>] Section 3.2.1.</p></td>
+<td><p>[<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] Section 4.3.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>OPTIONAL. Contains the X.509 public key certificate or certificate chain [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>] corresponding to the key used to digitally sign the JWT.</p></td>
@@ -1548,7 +1548,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 19/12/2024.
+      Last updated on 08/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
