@@ -125,7 +125,7 @@ The following claims MUST be in the JWT payload. Some of these claims can be dis
       - [SD]. Object containing User authentication and User data verification information. When the Credential type is set to `PersonIdentificationData`, the `verification` claim MUST be included by the Issuer. Whn present, the `verification` claim MUST include the following sub-value:
 
           * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
-          * ``evidence``: Each entry of the array MUST contain the following sub-values:
+          * ``evidence``: Each entry of the array MUST contain the following members:
               - ``type``: It represents evidence type. It MUST be set to ``vouch``.
               - ``time``: UNIX Timestamps with the time of the authentication or verification.
               - ``attestation``: It MUST contain the following claims:
