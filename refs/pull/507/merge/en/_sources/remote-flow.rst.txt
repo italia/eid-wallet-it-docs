@@ -33,7 +33,7 @@ Below a sequence diagram that summarizes the interactions between all the involv
 .. figure:: ../../images/cross_device_auth_seq_diagram.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/ZLN1RXit4BtpAmRgeOcHk4cF1bmaSLtRILkhiXmVwaAWk2E9DKLkoU4gQj5_xv3Khhcm0_GcSMVUU_DcE7mNI7gAMoDa96VZTebU2F5UaVCmkGte9o03H26Mxaiv-3R0ZzXfXM42t_oirnlwO2AAbd6qqgsq19CxQGmIN5c6jmepncuS4XdgjLoZfS8W1Te6c6KSDaEprtODKpxSvyWEXP2AT2S9MLY4rpzmzWdSuH9kq2TbO6MdrvAqirMe50tMYJ9bTdW2C_mhOY2OUaUe21i-2IvwnKodftoCWMLcE9XkP40uFHrmavuEUwWpZ-bCmj5Hu0myEe9EiZttTkaYrqSE7Wi7vTo3VYRT5q6Bw3Nu8gMEObjRrbaZqRvb3aPlaD8dvLq8_2UxuJm4kSNojm0LopQqDT0o0kmqRU2tsPbh4AvdiF6uOdLSjBPw3RH1YDxag7khZ6RAXMvUrK9VGIxu5VnU7IwsI1lN_54xd_ftC3-UmCt6xJ9-8Izgd0ScKG_fGz6oZ4JEZXee7rkm4sBjNMpPFnVwyGHdpLxi4i-EUPIqp06994sQI8DJFbstQ3FJU6eHPDlUM-EKDDbga96ZB6bL9cl0njHYIHY0V0nKp4o0WrD2I4EWL_3K6z010XwIfjStSm40iEjxtNhNwGP3BuwJP2D90Zcc68yAbzKwRIaZr7wd__tuL7BheWcLrQbI9Lkvr4QJnY3G1FmViY_EvwbdrX6qvRA8geO-k_05lRROz6VWbd-cULrvj_rgFQLV7VODUnRYoOWzxSveby0llPFIDj0wevN6C6HzHgzN-qmbANe4jwhbzolZkd0FMTBefhh17Fbv-YAyB07nSTMiqeWxcwqQBxC2TERiIlijDkETDLYQ1WNUypmwh_ykcsc6eKs8S6zBLxfsGUu1xN0pssgHBK9SRdK8_FChg-pyu5igkzYXvTBWU1rcWYgfDw0UhVT464hyCOihV-k0QPbnpy9rWBJ-UxT_GZxEcVoD-_JiDTKXJvx7ZiKqnvMQGfMsQfFkhJHm5K943_DqJmlae-IFTtEuwVjTeR0yXQ5ChngWXF3CYk0wz1p6J-7LnUNyOdP-_gjuFkD4mDa6UQjTEiDbmIVSmmTj6nx9B8Ipt2fLFdKXO6uDfxo663WYOxLnQRI21quipuakYwiga1nqUNHBswQbGyT2m7o35l0BUQcA-uqEohY03KWYhvUHC9o0oXBr2jZbuKPg9e1oMJo2xAGsQHRInSmkYCgkstOOWDk07Wwbm8losa7CtvkN8CPNjhxXb_FvzBktns_X-pTluFfJzLP_PF8RvNLBlTJnLYwp3hAKcFx4C2oIdY7A9nGy3FzCk4hjKUNjCqdF8xLXUFZ07oxOGha6uTyigc2jd367Pwo60EFwf-8TIuXRyny0
+    :target: https://www.plantuml.com/plantuml/svg/ZLPDRnit4BtpLmpKGst3TfCU1RY8uxgsaxPM9IK-r8L0SKSIQufa-R6AMlI_PqXgDrpO0NBRvSwyUVFcW_l61-v2t2h6Op0wRfVe66EN8XW7emyUtGYuXyZOqdmg1zzx-1bRAT2FuBjVvNeJtgg8p1AE5D9o7M3qm9N207UQuBN0ZB4RcaI2EkDhrA54u0nr0nHbQ3P5jPTw3HCwt6VB5XdZ8iYM1oHY4Sv-8kynFE0IPkWICz2ybMiUfD6LAMSDreuyUROuXYd-4z47c3WJK0HiwCIRw0H5khYWO_H4CyF1PCCzmiL5ZvlujDX1NJbCPnnEJZnvuCa9j9paUTHB4oc_OE1BuY2CUP8lkBj2Q16T15Uer5OagoMUDLBOMuf1w0s6z4auupszP3MC0y-tM5uBK95i4xOAB270JeOD_36zCWt2_HGs3bV4ZfAMMguXR12YKzdgKGibAUH2DgSrqLF82P_2dzNXOejXOvg_QkLJ_GxYnp7CDcQNyKlmmiOue23YANqeN9On1AC71UIiVzunjdOcMjBF-AuzmMYrPxiKPqTn1DSK0rAGr6aiDKxvT6zHvqZ3haNWrZvgPGHNMMhWaQnqaA9qLe-DgSJ4mqDmqOSYPWBibMACgm1o1S-r0Ud1uy5fSZ-RCm20NLThwqmh6_GTENBY3GySWaaXQa2WjAoHEcI4Mk_qthTFHRTAEg3GCcKgkELBgMIGw1agZzz0--PwdcgcJG1RXeLLENJU9PwNQurDTmPc-NVgrvKpsw_cK-hLObUm5o6UjTZpwWns2VpMASbr0zPGlqdqlTT7T7Arpw5uY0x1h2hw_SguBx5xBwvaKqqmMNwS7FdZOX37lTygjRZHMQhXCYj0LqQlfDjYCznPlQIfKU2I-j4u-M_PJ5FqDY72eovLQUqYc2VK_MJQQf4jV5nkfVVq-9LLTdtGBQLTv91ygN2u3dE0tgaIe6gjon3G5_jp8bTUQuD9wN57nAM7jFuxjNz1EiwUz8tgzEAOIfyxps5BP9hpYaq9bRPga-QMAxZpFgA3UPhJ0sHF-Tt376PTlIiKeYVGb-uLFHHZZg8Yc1OTcT5LU7TpEx-PNb__pbxs63EusY1jjLkZ6d9wZtjuAtMJMZ8H8I-pIfbFZFUOIqCkPn1ziaXODYwfJU697Cjr8ilYgX8C1jhSkgLiarAXSyPWla4D-2auBehwZVH26OyDy12SNCQ0VWmYKvGh89NxYPGK0CgmE0JUSgbIBwJ1p2gmIguFjc-0zBi0XrJWgDns4FFtvhZin1dVuc1X0tmPzDlvVFB3w_FNyEEhLt3_dWhstuYO41kHDyGeNM71-lvo0dSOWeKm3SB_3A1C7YTUlf2g0HW3QB2wHm3g2wRiltAfV2F7XAYCiNddzhyOtUtsRZO-zC3mBYaJ2aS9hDiT9Q4YsZ63j0qBSXU-f7Nv4j1QjgWBG8PCQlXJY6Id53M1pGKr3dmKgLDNKGsLY7putdQNPfTHBsDt4Td-vwd_Otb3Bd6hFWC0
 
 
     Remote Protocol Flow
@@ -69,9 +69,11 @@ The details of each step shown in the previous picture are described in the tabl
     - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post.jwt").
   * - **21**, **22**, **23**, **24**, **25** 
     - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.
-  * - **26**
+  * - **26** (Same Device) or **28** (Cross Device)
     - The Relying Party provides to the Wallet Instance the response about the presentation.
-  * - **27**, **28** and **29**
+  * - **27** (Same Device) or **29** and **30** (Cross Device)
+    - The authentication flow is completed by following the redirection URIs provided by the Relying Party.
+  * - **31**
     - The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available to the User.
 
 
@@ -259,7 +261,7 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
   When present, the Relying Party MUST evaluate it.
 
 Request Object Details
---------------------
+----------------------
 
 The Relying Party issues the signed Request Object using the content type set to ``application/oauth-authz-req+jwt``,
 where a non-normative example in the form of decoded header and payload is shown below:
@@ -331,7 +333,7 @@ The JWT header parameters are described below:
   * - **kid**
     - Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`]. REQUIRED when ``trust_chain`` is used.
   * - **trust_chain**
-    - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
+    - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
 
 
 The JWT payload parameters are described herein:

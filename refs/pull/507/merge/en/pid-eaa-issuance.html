@@ -239,7 +239,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <li><p><strong>JWT Authorization Response Modes</strong> (JARM) [<a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>].</p></li>
 <li><p><strong>Rich Authorization Requests</strong> (RAR) [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9396.html"><strong>RFC 9396</strong></a>].</p></li>
 <li><p><strong>OAuth 2.0 Attestation-Based Client Authentication</strong> [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>].</p></li>
-<li><p><strong>OpenID Federation 1.0</strong> [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-36.html">OID-FED</a>].</p></li>
+<li><p><strong>OpenID Federation 1.0</strong> [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>].</p></li>
 </ul>
 </div></blockquote>
 <p>The PID/(Q)EAA Provider MUST use <em>OAuth 2.0 Authorization Server</em> based on <span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a> to authorize the User to obtain a Credential. PID/(Q)EAA Providers MUST support</p>
@@ -553,8 +553,8 @@ without encoding and signature. The JWT header:</p>
 <li><p>It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to <a class="reference internal" href="#table-credential-response-claim"><span class="std std-ref">Table of the credential response parameters</span></a>.</p></li>
 <li><p>It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter of SD-JWT (<a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>) and the public key that is identified using the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header of the SD-JWT.</p></li>
 <li><p>It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in <a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>.</p></li>
-<li><p>It MUST process and verify the PID in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10">SD-JWT</a> Section 6.) or MDOC CBOR format.</p></li>
-<li><p>It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID Provider is trusted.</p></li>
+<li><p>It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> Section 5.) or MDOC CBOR format.</p></li>
+<li><p>It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID/(Q)EAA Provider is trusted.</p></li>
 </ol>
 </div></blockquote>
 <p>If the checks defined above are successful the Wallet Instance proceeds with the secure storage of the PID/(Q)EAA.</p>
@@ -1522,7 +1522,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 07/01/2025.
+      Last updated on 09/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
