@@ -742,8 +742,7 @@ which is verified by the Wallet using the Verifier's public key and Trust Chain.
 Additionally, the Authorization Response is encrypted with the Verifier's public key, ensuring that only the intended recipient can decrypt and read the sensitive information,
 further securing the transmission.</p>
 <p>Another endpoint to be validated is the <strong>redirect_uri</strong>, which is used to redirect the User back to the Verifier after the Credential presentation is complete.
-In the IT-Wallet specification, the <strong>redirect_uri</strong> is registered and validated beforehand during the Verifier onboarding using OpenID Federation. During the presentation
-phase, the Wallet must validate this value by verifying the trust with the Verifier according to the Section <a class="reference external" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></p>
+In the IT-Wallet specification, the <strong>redirect_uri</strong> is registered and validated beforehand during the Verifier onboarding using OpenID Federation. During the presentation phase, the Wallet must validate this value by verifying the trust with the Verifier according to the Section <a class="reference external" href="trust.html#trust-evaluation-mechanism">Trust Evaluation Mechanism</a></p>
 <p>In order to be sure that the <strong>redirect_uri</strong> is received from a legit Wallet and not from the attacker, the Verifier response endpoint upon the recipient of a valid
 authorization response creates a fresh cryptographic value that is linked to the authorization response and attaches it to the <strong>redirect_uri</strong> that is sent to the Wallet.
 When the Verifier receives the redirect, it can extract the response code and check with its response endpoint whether the response code was associated with this Authorization
@@ -902,7 +901,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/11/2024.
+      Last updated on 09/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
