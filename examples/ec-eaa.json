@@ -186,7 +186,7 @@
                                 }
                             ]
                         },
-                        "tax_id_code": {
+                        "personal_administrative_number": {
                             "value_type": "string",
                             "display": [
                                 {
@@ -194,7 +194,7 @@
                                     "locale": "it-IT"
                                 },
                                 {
-                                    "name": "Tax Id Number",
+                                    "name": "Tax Identification Number",
                                     "locale": "en-US"
                                 }
                             ]

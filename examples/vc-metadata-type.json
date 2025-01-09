@@ -3,124 +3,146 @@
     "description": "Digital version of Person Identification Data",
     "template_uri": "https://pidprovider.example.org/v1.0/templatepid",	
     "schema_uri": "https://pidprovider.example.org/schema/v1.0/mdl",
-    "schema#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
+    "schema_uri#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
     "data_source": {
         "verification": {
         "trust_framework": "pdnd",
         "authentic_source": {
             "organization_name": "Ministero degli Interni",
-            "organization_code": "m_it"
+            "organization_code": "m_it",
+            "contacts": [
+                "informazioni@example.it",
+                "protocollo@pec.example.it"
+            ],
+            "homepage_uri": "https://authsource.example.com/",
+            "logo_uri": "https://authsource.example.com/img/logo.svg"
             }
         }	
-    },					
-    "vc_claims": {
-        "unique_id": {
-            "display": [
-                {
-                    "name": "Nome",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "First Name",
-                    "locale": "en-US"
+    },		
+    "display": [      
+        {
+          "lang": "it-IT",
+          "name": "Dati di Identificazione Personale",
+          "description": "Versione Digitale dei Dati di Identificazione Personale",
+          "rendering": {
+            "simple": {
+              "logo": {
+                "uri": "https://authsource.example.com/img/logo.png",
+                "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+                "alt_text": "Logo del Ministero dell'interno"
+              },
+              "background_color": "#2e89d9",
+              "text_color": "#030303"
+            },
+            "svg_templates": [
+              {
+                "uri": "https://authsource.example.com/svgtemplates/pid-credential-italian.svg",
+                "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+                "properties": {
+                  "orientation": "landscape",
+                  "color_scheme": "light",
+                  "contrast": "high"
                 }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 10
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
+              }
+            ]
+          }
         },
-        "given_name": {
-            "display": [
-                {
-                    "name": "Nome",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "First Name",
-                    "locale": "en-US"
+        {
+          "lang": "en-US",
+          "name": "Person Identification Data",
+          "description": "Digital version of Person Identification Data",
+          "rendering": {
+            "simple": {
+              "logo": {
+                "uri": "https://authsource.example.com/img/logo.png",
+                "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+                "alt_text": "Ministry of the Interior logo"
+              },
+              "background_color": "#2e89d9",
+              "text_color": "#030303"
+            },
+            "svg_templates": [
+              {
+                "uri": "https://authsource.example.com/svgtemplates/pid-credential-english.svg",
+                "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+                "properties": {
+                  "orientation": "landscape",
+                  "color_scheme": "light",
+                  "contrast": "high"
                 }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 20
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "family_name": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Cognome",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Family Name",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 30
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
-        },
-        "birth_date": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Data di nascita (YYYY-MM-GG)",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Date of Birth (YYYY-MM-GG)",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 40
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-                }
-        },
-        "tax_id_code": {
-            "value_type": "string",
-            "display": [
-                {
-                    "name": "Luogo di Nascita",
-                    "locale": "it-IT"
-                },
-                {
-                    "name": "Place of Birth",
-                    "locale": "en-US"
-                }
-            ],
-            "graphics": {
-                "position": {
-                    "x": 10,
-                    "y": 50
-                },
-                "font": "arial",
-                "color": "black",
-                "size": "12pt"
-            }
+              }
+            ]
+          }
         }
-    }
+      ],
+    "claims": [
+        {
+          "path": ["given_name"],
+          "display": [
+            {
+              "lang": "it-IT",
+              "label": "Nome",
+              "description": "Nome/i attuale/i dell'utente a cui si riferiscono i dati di identificazione personale."
+            },
+            {
+              "lang": "en-US",
+              "label": "Name",
+              "description": "Current first name(s), including middle name(s) of the user to whom the person identification data relates."
+            }
+          ],
+          "sd": "always",
+          "svg_id": "given_name"
+        },
+        {
+          "path": ["family_name"],
+          "display": [
+            {
+              "lang": "it-IT",
+              "label": "Cognome",
+              "description": "Cognome/i attuale/i dell'utente a cui si riferiscono i dati di identificazione personale."
+            },
+            {
+              "lang": "en-US",
+              "label": "Surname",
+              "description": "Current last name(s) or surname(s) of the user to whom the person identification data relates."
+            }
+          ],
+          "sd": "always",
+          "svg_id": "family_name"
+        },
+        {
+          "path": ["birth_date"],
+          "display": [
+           {
+              "lang": "it-IT",
+              "label": "Data di nascita",
+              "description": "Giorno, mese e anno di nascita dell'utente a cui si riferiscono i dati identificativi."
+            },
+            {
+              "lang": "en-US",
+              "label": "Date of birth",
+              "description": "Day, month, and year on which the user to whom the person identification data relates was born."
+            }
+          ],
+          "sd": "always",
+          "svg_id": "birth_date"
+        },       
+        {
+            "path": ["personal_administrative_number"],
+            "display": [
+              {
+                "lang": "it-IT",
+                "label": "Codice fiscale",
+                "description": "Codice di identificazione fiscale nazionale della persona fisica."
+              },
+              {
+                "lang": "en-US",
+                "label": "Tax identification number",
+                "description": "National tax identification code of natural person." 
+              }
+            ],
+            "sd": "always",
+            "svg_id": "personal_administrative_number"
+          }
+      ]
 }
