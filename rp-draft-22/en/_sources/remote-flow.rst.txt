@@ -261,7 +261,7 @@ Below a non-normative example of HTTP request made by the Wallet Instance to the
   When present, the Relying Party MUST evaluate it.
 
 Request Object Details
---------------------
+----------------------
 
 The Relying Party issues the signed Request Object using the content type set to ``application/oauth-authz-req+jwt``,
 where a non-normative example in the form of decoded header and payload is shown below:
