@@ -21,7 +21,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
   1. the Wallet Instance obtains an URL in the Same Device flow or a QR Code containing the URL in Cross Device flow;
   2. the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_method``;
   3. If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method and obtain the signed Request Object. If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter;
-  4. the Wallet Instance verifies the signature of the signed Request Object, using the public key identified within the Request Object JWT header parameter to select the correct RP's public key to be used for the verify the signature;
+  4. the Wallet Instance verifies the signature of the signed Request Object using the public key identified in the JWT header of the Request Object. Using that reference, the Wallet Instance is able to select the correct RP's public key for signature verification;
   5. the Wallet Instance verifies that the ``client_id`` contained in the Request Object issuer (RP) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the RP's Entity Configuration within the Trust Chain;
   6. the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the Trust Chain;
   7. the Wallet Instance asks User disclosure and consent by showing the Relying Party's identity and the requested attributes;
@@ -72,7 +72,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **26** (Same Device) or **28** (Cross Device)
     - The Relying Party provides to the Wallet Instance the response about the presentation.
   * - **27** (Same Device) or **29** and **30** (Cross Device)
-    - The authentication flow is completed by following the redirection URIs provided by the Relying Party.
+    - The authentication flow is completed by following the redirection URIs provided by Relying Party.
   * - **31**
     - The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available to the User.
 
