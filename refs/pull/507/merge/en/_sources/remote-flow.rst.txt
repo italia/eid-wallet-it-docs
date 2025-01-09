@@ -245,6 +245,34 @@ Request URI Request
 ----------------------
 
 The request and its parameters are defined in Section number 5 (Authorization Request) of `OpenID4VP`_.
+Below normative details and references about the parameters to be used by the Wallet Instance in the request.
+
+.. list-table:: Request URI Endpoint Parameters
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+   * - `wallet_metadata`
+     - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 9.1.
+   * - `wallet_nonce`
+     - RECOMMENDED. String used by Wallet Instance to prevent replay of the RP's responses. See `OpenID4VP`_, Section 9.
+   * - `presentation_definition_uri_supported`
+     - OPTIONAL. Boolean. When present it MUST be set to false, default is false.
+   * - `vp_formats_supported`
+     - REQUIRED. Object with Credential format identifiers. See `OpenID4VP`_ Appendix B.
+   * - `alg_values_supported`
+     - OPTIONAL. Array of cryptographic suites supported. See `OpenID4VP`_ Appendix B.
+   * - `client_id_schemes_supported`
+     - RECOMMENDED. Array of Client Identifier schemes. Default is `entity_id`.
+   * - `authorization_endpoint`
+     - URL of authorization server's endpoint. See `RFC6749`_, be this an universal link or a custom url-scheme.
+   * - `response_types_supported`
+     - OPTIONAL. JSON array of OAuth 2.0 "response_type" values. If present it MUST be set to `vp_token`. Default is `vp_token`.
+   * - `response_modes_supported`
+     - OPTIONAL. JSON array of OAuth 2.0 "response_mode" values. See `JARM`_.
+   * - `request_object_signing_alg_values_supported`
+     - OPTIONAL. See OpenID Connect Discovery.
+
 Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.
 
 .. code-block:: javascript

@@ -401,7 +401,48 @@ HOST: relying-party.example.org
 <section id="request-uri-request">
 <h3>Request URI Request<a class="headerlink" href="#request-uri-request" title="Link to this heading">¶</a></h3>
 <p>The request and its parameters are defined in Section number 5 (Authorization Request) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>.
-Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.</p>
+Below normative details and references about the parameters to be used by the Wallet Instance in the request.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Request URI Endpoint Parameters</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>wallet_metadata</cite></p></td>
+<td><p>OPTIONAL. JSON object with metadata parameters. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>, Section 9.1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>wallet_nonce</cite></p></td>
+<td><p>RECOMMENDED. String used by Wallet Instance to prevent replay of the RP's responses. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>, Section 9.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>presentation_definition_uri_supported</cite></p></td>
+<td><p>OPTIONAL. Boolean. When present it MUST be set to false, default is false.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>vp_formats_supported</cite></p></td>
+<td><p>REQUIRED. Object with Credential format identifiers. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Appendix B.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>alg_values_supported</cite></p></td>
+<td><p>OPTIONAL. Array of cryptographic suites supported. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Appendix B.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>client_id_schemes_supported</cite></p></td>
+<td><p>RECOMMENDED. Array of Client Identifier schemes. Default is <cite>entity_id</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>authorization_endpoint</cite></p></td>
+<td><p>URL of authorization server's endpoint. See <a href="#id5"><span class="problematic" id="id6">`RFC6749`_</span></a>, be this an universal link or a custom url-scheme.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>response_types_supported</cite></p></td>
+<td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_type&quot; values. If present it MUST be set to <cite>vp_token</cite>. Default is <cite>vp_token</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>response_modes_supported</cite></p></td>
+<td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_mode&quot; values. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>request_object_signing_alg_values_supported</cite></p></td>
+<td><p>OPTIONAL. See OpenID Connect Discovery.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">request</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
@@ -789,10 +830,10 @@ The established session MAY be terminated based on the conditions as detailed in
 During the communication subphase, the Verifier App has the option to request information from the Wallet using mDoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mDoc response using the session key and transmits it to the Verifier App via a session data message. This technical implementation profile only supports Bluetooth Low Energy (BLE) for the communication sub-phase.</p>
 </div></blockquote>
 <p>The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.</p>
-<figure class="align-center" id="id3" style="width: 100%">
+<figure class="align-center" id="id4" style="width: 100%">
 <span id="fig-high-level-flow-itwallet-presentation-iso"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/bL9BZnCn3BxFhx3A0H3q3_ImMlOXXBJYqGguzE9ct2RQn0bvJDb_ZoSP3QFI2xab_Xx-xDocZ34NPpiisNDn1ufT1t9GPH_XUw88cA3KjuF_3QlnwNM2dHDYq9vf1Q-Up4ddErkeme9KZ381ESFg9rfB6JwnEB4IiAYTAuou7nN_Al-WQ8xcVzHd2dm8eKeFI-cMfApNDpVd3Nm9n90rmKLBa3s4I8b441dSWrTm7wcNkq7RD3xxJE07CIhlXmqyq624-CWdF94RYQaSWiP4iAweRzjr1vLvRkOVYIcYY32TWO8c9rSBp_GYWKoSe88LzPtsvx5HKO5xtnCSVVpNibA6ATjE8IyfKr7aBgptVDry0WlPXIBOH2aPpoEcbgzDOJTXIEPui2PfrqROZogki56OfNuvcxkdHv5N9H8eZSnaPLRJwUPU95JTn9P-5J60Tn2AcAZQjJ_MiCljxndUN6texN8Dr-ErSjd0roZrNEUjFDSVaJqaZP6gOMpDK0-61UHglkcJjJL75Cx4NHflAKT30xLGH_41wnLQIDb7FD6C7URSAOZCSfCjxyjSWcHEZBb4slCuTQL9FJVsWDRq9akuxfQuByx-0G00"><img alt="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" src="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">High-Level Proximity Flow</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">High-Level Proximity Flow</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1-3</strong>: The Verifier requests the User to reveal certain attributes from their mDoc(s) stored in the Wallet Instance. The User initiates the Wallet Instance. The Wallet Instance MUST create a new temporary key pair (EDeviceKey.Priv, EDeviceKey.Pub), and incorporate the cipher suite identifier, the identifier of the elliptic curve for key agreement, and the EDeviceKey public point into the device engagement structure (refer to [ISO18013-5#9.1.1.4]). This key pair is temporary and MUST be invalidated immediately after the secure channel is established. Finally, the Wallet Instance displays the QR Code for Device Engagement.</p>
