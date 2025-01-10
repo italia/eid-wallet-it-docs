@@ -787,9 +787,9 @@ Content-Type: application/json
 </section>
 <section id="redirect-uri">
 <h3>Redirect URI<a class="headerlink" href="#redirect-uri" title="Link to this heading">¶</a></h3>
+<p>As defined in Section 7.2. (Response Mode &quot;direct_post&quot;)  of the OpenID4VP specification, if the Response URI has successfully been processed, the Relying Party MUST respond with an HTTP status code of 200, optionally with Content-Type of <code class="docutils literal notranslate"><span class="pre">application/json</span></code> and a JSON object in the response body containing the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter.</p>
 <p>When the Relying Party provides the redirect URI, the Wallet Instance MUST redirect the user-agent to the location defined in the redirect URI.
 The redirect URI allows the Relying Party to continue the interaction with the End-User on the device where the Wallet Instance resides after the Wallet Instance has sent the Authorization Response to the response URI.</p>
-<p>The response provided by Relying Party, and the parameters and values contained in it, are defined in Section 7.2. (Response Mode &quot;direct_post&quot;)  of the OpenID4VP specification.</p>
 <p>The Relying Party MUST include a response code within the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.</p>
 <p>The following is a non-normative example of the response from the Relying Party to the Wallet Instance upon receiving the Authorization Response at the Response Endpoint.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -1312,7 +1312,7 @@ The details on the structure of mDoc Response are provided below.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/01/2025.
+      Last updated on 10/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
