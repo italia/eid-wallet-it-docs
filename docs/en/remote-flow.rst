@@ -603,10 +603,11 @@ When the Wallet sends a response using ``direct_post.jwt`` to the Relying Party,
 Redirect URI
 ------------
 
+As defined in Section 7.2. (Response Mode "direct_post")  of the OpenID4VP specification, if the Response URI has successfully been processed, the Relying Party MUST respond with an HTTP status code of 200, optionally with Content-Type of ``application/json`` and a JSON object in the response body containing the ``redirect_uri`` parameter. 
+
 When the Relying Party provides the redirect URI, the Wallet Instance MUST redirect the user-agent to the location defined in the redirect URI.
 The redirect URI allows the Relying Party to continue the interaction with the End-User on the device where the Wallet Instance resides after the Wallet Instance has sent the Authorization Response to the response URI.
 
-The response provided by Relying Party, and the parameters and values contained in it, are defined in Section 7.2. (Response Mode "direct_post")  of the OpenID4VP specification.
 
 The Relying Party MUST include a response code within the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.
 
