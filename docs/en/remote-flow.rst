@@ -253,9 +253,15 @@ Below normative details and references about the parameters to be used by the Wa
    * - Parameter
      - Description
    * - `wallet_metadata`
-     - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 9.1.
+     - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 9.1 and the table below, "Wallet Metadata Parameters".
    * - `wallet_nonce`
      - RECOMMENDED. String used by Wallet Instance to prevent replay of the RP's responses. See `OpenID4VP`_, Section 9.
+
+.. list-table:: Wallet Metadata Parameters
+   :header-rows: 1
+
+   * - Parameter
+     - Description
    * - `presentation_definition_uri_supported`
      - OPTIONAL. Boolean. When present it MUST be set to false, default is false.
    * - `vp_formats_supported`
@@ -272,6 +278,7 @@ Below normative details and references about the parameters to be used by the Wa
      - OPTIONAL. JSON array of OAuth 2.0 "response_mode" values. See `JARM`_.
    * - `request_object_signing_alg_values_supported`
      - OPTIONAL. See OpenID Connect Discovery.
+
 
 Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.
 
