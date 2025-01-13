@@ -83,6 +83,8 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - The PID/(Q)EAA Provider identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 11.2.1 and 11.2.3.
   * - **credential_endpoint**
     - URL of the credential endpoint. See `OpenID4VCI`_ Section 11.2.3.
+  * - **nonce_endpoint**
+    - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
   * - **revocation_endpoint**
     - URL of the revocation endpoint. See :rfc:`8414#section-2`.
   * - **status_attestation_endpoint**
