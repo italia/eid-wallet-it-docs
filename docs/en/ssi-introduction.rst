@@ -12,7 +12,7 @@ The main difference between this new approach and the traditional IAM infrastruc
 
 Digital identity Wallet Architectures are significant in the field of data exchange and data governance. In accordance with the  eIDAS Regulation, a new digital identity paradigm is designed for European Users - be they citizens, public administrations, or companies - who want to access another Member State's services using their national authentication systems.
 
-The main roles in a Wallet ecosystem are are listed as follow:
+The main roles in a Wallet ecosystem are listed as follow:
 
  - Issuers: parties who can issue digital credentials about a person;
  - Verifiers: parties who request Holders' digital credentials for authentication and authorization purposes;

@@ -22,7 +22,7 @@
 
 .. _OAuthCrossDeviceSec: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-08
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
-.. _OID-FED: https://openid.net/specs/openid-federation-1_0-36.html
+.. _OID-FED: https://openid.net/specs/openid-federation-1_0-41.html
 .. _OIDC-FED#RP_metadata: https://openid.net/specs/openid-federation-1_0.html#Section-4.1
 .. _OIDC-FED#Federation_Entity: https://openid.net/specs/openid-federation-1_0.html#Section-4.6
 .. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
@@ -51,10 +51,10 @@
 .. _JWS: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-signature
 .. _EIDAS-ARF: https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework
 .. _OpenID4VCI: https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html
-.. _SD-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-10
+.. _SD-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14
 .. _OpenID4VP: https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html
 .. _SIOPv2: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
-.. _SD-JWT-VC: https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/04/
+.. _SD-JWT-VC: https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/
 .. _PresentationExch: https://identity.foundation/presentation-exchange/spec/v2.0.0
 .. _JARM: https://openid.net/specs/oauth-v2-jarm-final.html
 .. _RFC 9449: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-dpop
@@ -73,3 +73,4 @@
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
 .. _OIDC-IDA: https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
+.. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/

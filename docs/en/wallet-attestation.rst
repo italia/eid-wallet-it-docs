@@ -366,7 +366,7 @@ Below an non-normative example of the Wallet Attestation without encoding and si
       "form_post.jwt"
     ],
     "vp_formats_supported": {
-        "vc+sd-jwt": {
+        "dc+sd-jwt": {
             "sd-jwt_alg_values": [
                 "ES256",
                 "ES384"
@@ -498,7 +498,7 @@ The JOSE header of the Wallet Attestation JWT MUST contain:
       -  `OPENID4VC-HAIP`_
     * - **trust_chain**
       - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party.
-      - `OID-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
+      - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
 
 The body of the Wallet Attestation JWT MUST contain:
 

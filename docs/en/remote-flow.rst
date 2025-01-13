@@ -114,7 +114,7 @@ A non-normative example of the HTTP request is represented below:
         "form_post.jwt"
       ],
       "vp_formats_supported": {
-        "vc+sd-jwt": {
+        "dc+sd-jwt": {
             "sd-jwt_alg_values": [
                 "ES256",
                 "ES384"
@@ -292,7 +292,7 @@ The JWT header parameters are described below:
   * - **kid**
     - Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`]. REQUIRED when ``trust_chain`` is used.
   * - **trust_chain**
-    - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section *3.2.1. Trust Chain Header Parameter*.
+    - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
 
 
 The JWT payload parameters are described herein:
@@ -427,7 +427,7 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
             {
                 "id": "PersonIdentificationData",
                 "path": "$.vp_token[0]",
-                "format": "vc+sd-jwt"
+                "format": "dc+sd-jwt"
             },
             {
                 "id": "WalletAttestation",

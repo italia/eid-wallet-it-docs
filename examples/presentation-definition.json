@@ -9,7 +9,7 @@
                 "group1"
             ],
 			"format": {
-                "vc+sd-jwt": {
+                "dc+sd-jwt": {
                     "alg": [
                         "ES256",
                         "ES384",
@@ -20,15 +20,6 @@
             "constraints": {
                 "limit_disclosure": "preferred",
                 "fields": [
-                    {
-                        "filter": {
-                            "const": "unique_id",
-                            "type": "string"
-                        },
-                        "path": [
-                            "$.credentialSubject.unique_id"
-                        ]
-                    },
                     {
                         "filter": {
                             "const": "given_name",
@@ -58,18 +49,18 @@
                     },
                     {
                         "filter": {
-                            "const": "tax_id_code",
+                            "const": "personal_administrative_number",
                             "type": "string"
                         },
                         "path": [
-                            "$.credentialSubject.tax_id_code"
+                            "$.credentialSubject.personal_administrative_number"
                         ]
                     }
                 ]
             }
         },
         {
-			"id": "WalletAttestation",
+            "id": "WalletAttestation",
             "name": "Wallet Attestation",
             "purpose": "Wallet Authentication",
 			"format": "jwt",

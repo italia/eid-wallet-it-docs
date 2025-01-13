@@ -11,15 +11,24 @@
   "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
   "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
   "verification": {
-    "trust_framework": "eidas",
     "assurance_level": "high",
-    "evidence": {
-      "method": "cie"
+    "evidence": [
+    {
+      "type": "vouch",
+      "time": "2020-03-19T12:42Z",
+      "attestation": {
+        "type": "digital_attestation",
+        "reference_number": "6485-1619-3976-6671",
+        "date_of_issuance": "2020-03-19T12:43Z",
+        "voucher": {
+          "organization": "Ministero dell'interno"
+        }
+      }
     }
+    ]
   },
-  "unique_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "given_name": "Mario",
   "family_name": "Rossi",
   "birth_date": "1980-01-10",
-  "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"
+  "personal_administrative_number": "TINIT-XXXXXXXXXXXXXXXX"
 }

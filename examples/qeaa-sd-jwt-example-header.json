@@ -1,5 +1,5 @@
 {
-  "typ":"vc+sd-jwt",
+  "typ":"dc+sd-jwt",
   "alg":"ES256",
   "kid":"d126a6a856f7724560484fa9dc59d195",
   "trust_chain" : [

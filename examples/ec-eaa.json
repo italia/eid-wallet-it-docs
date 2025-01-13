@@ -103,7 +103,7 @@
             ],
             "credential_configurations_supported": {
                 "EuropeanDisabilityCard": {
-                    "format": "vc+sd-jwt",
+                    "format": "dc+sd-jwt",
                     "scope": "EuropeanDisabilityCard",
                     "cryptographic_binding_methods_supported": [
                         "jwk"
@@ -186,7 +186,7 @@
                                 }
                             ]
                         },
-                        "tax_id_code": {
+                        "personal_administrative_number": {
                             "value_type": "string",
                             "display": [
                                 {
@@ -194,7 +194,7 @@
                                     "locale": "it-IT"
                                 },
                                 {
-                                    "name": "Tax Id Number",
+                                    "name": "Tax Identification Number",
                                     "locale": "en-US"
                                 }
                             ]
@@ -255,7 +255,7 @@
                     "order" : ["document_number", "given_name", "family_name", "birth_date", "portrait", "tax_id_code", "expiry_date", "constant_attendance_allowance", "link_qr_code"]
                 },
                 "MDL": {
-                    "format": "vc+sd-jwt",
+                    "format": "dc+sd-jwt",
                     "scope": "MDL",
                     "cryptographic_binding_methods_supported": [
                         "jwk"
@@ -511,7 +511,7 @@
                 "A256GCM"
             ],
             "vp_formats": {
-                "vc+sd-jwt": {
+                "dc+sd-jwt": {
                     "sd-jwt_alg_values": [
                         "ES256",
                         "ES384",
@@ -526,7 +526,7 @@
                         {
                             "id": "PersonIdentificationData",
                             "format": {
-                                "vc+sd-jwt": {
+                                "dc+sd-jwt": {
                                     "alg": [
                                         "ES256",
                                         "ES384",
@@ -555,12 +555,7 @@
                                         },
                                         {
                                             "path": [
-                                                "$.unique_id"
-                                            ]
-                                        },
-                                        {
-                                            "path": [
-                                                "$.tax_id_code"
+                                                "$.personal_administrative_number"
                                             ]
                                         }
                                     ]

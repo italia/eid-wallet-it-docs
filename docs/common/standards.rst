@@ -8,7 +8,7 @@ Technical References
     :header-rows: 0
 
     * - `OID-FED`_
-      - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", May 2024, Draft 36.
+      - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", December 2024, Draft 41.
     * - `OpenID4VCI`_
       - Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Credential Issuance", February 2024, Draft 13.
     * - `SD-JWT-VC`_
@@ -23,6 +23,8 @@ Technical References
       - Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels" BCP 14, RFC 2119, March 1997.
     * - :rfc:`2616`
       - Fielding, R., Gettys, J., Mogul, J., Frystyk, H., Masinter, L., Leach, P., and T. Berners-Lee, “Hypertext Transfer Protocol -- HTTP/1.1,” RFC 2616, June 1999.
+    * - :rfc:`2898`
+      - Kaliski, B., "PKCS #5: Password-Based Cryptography Specification-Version 2.0", RFC 2898, September 2000.
     * - :rfc:`3339`
       - Klyne, G. and C. Newman, "Date and Time on the Internet: Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002.
     * - :rfc:`3986`

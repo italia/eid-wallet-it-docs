@@ -45,7 +45,7 @@
             ],
             "authorization_signed_response_alg": "ES256",
             "vp_formats": {
-                "vc+sd-jwt": {
+                "dc+sd-jwt": {
                     "sd-jwt_alg_values": [
                         "ES256",
                         "ES384",
@@ -62,7 +62,7 @@
                             "name": "Person Identification Data",
                             "purpose": "User Authentication",
                             "format": {
-                                "vc+sd-jwt": {
+                                "dc+sd-jwt": {
                                     "alg": [
                                         "ES256",
                                         "ES384",
@@ -92,12 +92,7 @@
                                     },
                                     {
                                         "path": [
-                                            "$.unique_id"
-                                        ]
-                                    },
-                                    {
-                                        "path": [
-                                            "$.tax_id_code"
+                                            "$.personal_administrative_number"
                                         ]
                                     }
                                 ]
