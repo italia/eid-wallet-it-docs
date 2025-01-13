@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>backup-restore.rst &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>Backup and Restore &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
@@ -141,7 +141,7 @@
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">backup-restore.rst</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
@@ -157,27 +157,101 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="backup-restore-rst">
-<span id="id1"></span><h1>backup-restore.rst<a class="headerlink" href="#backup-restore-rst" title="Link to this heading">¶</a></h1>
-<p>[What is it]</p>
-<p>[What it is usefull for]</p>
-<p>[Example]</p>
-<section id="general-properties">
-<h2>General Properties<a class="headerlink" href="#general-properties" title="Link to this heading">¶</a></h2>
-<p>[TODO]</p>
-</section>
-<section id="requirements">
-<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><p>req 1</p></li>
-<li><p>req 2</p></li>
+  <section id="backup-and-restore">
+<span id="backup-restore-rst"></span><h1>Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Link to this heading">¶</a></h1>
+<p>The <strong>Backup and Restore</strong> functionality becomes relevant when the User wants to change device and/or Wallet Solution in order to access the previously issued Digital Credentials again.</p>
+<ul class="simple">
+<li><p>The mobile device has been <strong>lost</strong>, <strong>stolen</strong>, <strong>damaged</strong>, or <strong>compromised</strong> (e.g., due to unauthorized access).</p></li>
+<li><p>The User replaces an existing Wallet Instance with a new instance of the same Wallet Solution.</p></li>
+<li><p>The User has changed their mobile device and needs to set up the Wallet Solution on the new device.</p></li>
+<li><p>The User performs a factory reset on the current phone and needs to set up the Wallet Solution again.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Wallet Solutions based on the IT Wallet technical specifications, the migration to a different Wallet Solution (known as data portability) can be supported following the backup and restore functionality described in this section.</p>
+</div>
+<section id="backup-flow">
+<h2>Backup Flow<a class="headerlink" href="#backup-flow" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="sequence-diagram-for-wallet-instance-backup">
+<span id="fig-backup-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/VP5HRzGm3CVVyodClMn8j1KmU9YcqxPZe8bDEkaqyG1eIbFlQaYJAd4uAhJlJj96WuvZUMhj_y_-spxrB1s7JejdP9GE3KBBtFlZgd9oLsw9sr07ZqvPmsYuLBQhUYrDOWhFZQQwMXqLwnIwkRwgEkaPNGpThY8XoQ0h-rHVICNMmKsi1TB38dqiXDWCKT_TdjjW6kc6mvtK6dbZTM2oviMaE_3m3d-GmiLp-2KWlltOfV4iZSA8VHe3a2CPpE_1sM6Wt24A6TsTJCezkbggxw4_wsc3Blc8rFaOWhFr9UHW9k_5dEriJHetR9tS9l1w_Cy3mPLLKaFE9fUvnhqG1t3nizUaY47BmGO6sNmBdZiq37VMGMyzfIsHsOfP5oW-jzGqQBuMIvYlHeXnt28c0i4nB4xgvSiIyZGhXv5YajgVLFLo8QBc96aVBs02NvNm0GqwoGWVSO1rwwJ7FsWYKxj9_ReSvzmZVLmT_j_og4mcKyCBezpGCpQGpRydZK_K2pHLU5F-Y-vp_8GKlXY8QTWHjx1sjkkdW_oL6-zQhRGDJRvkzlQm_ld5fePlInZ1ENAAfWcT_Wq0"><img alt="The figure illustrates the sequence diagram for backup flow, with the steps explained below." src="_images/Backup_flow.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Backup flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-backup" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 10</span></a>:</p>
+<p><strong>Step 1</strong>: The User selects the option to back up Credentials stored within the Wallet Instance.</p>
+<p><strong>Steps 2-3</strong>: The Wallet Instance using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User.
+The User MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As highlighted in the ARF, encryption is necessary because the backup file is considered sensitive. Even if an attacker only knows the Issuer identifiers, they can infer the different types of Digital Credentials, which constitutes a violation of User privacy.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on <a class="reference external" href="http://tools.ietf.org/html/rfc2898.html">RFC 2898</a> and it is recommended by the <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST 800-132</a>. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">here</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> hashing algorithim is 600000 iterations as stated in the <a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a>.</p>
+</div>
+<p><strong>Step 4</strong>: The Wallet Instance performs the operations below to create the backup JWT entry for the backup file.</p>
+<ul class="simple">
+<li><p>For each of the HW bound key Credentials, add the Credential Issuer identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> as an entry in the backup JWT.</p></li>
+<li><p>Sign the backup JWT using the private key that its public key is attested within the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim). The Wallet Instance MUST verify the validity of the Wallet Attestation before signing the backup JWT.</p></li>
+<li><p>Add the signed backup JWT as an entry to the backup file.</p></li>
+<li><p>Encrypt the backup file using the provided key phrase.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Backup JWT MAY contain transaction history for each Credential entry within the <code class="docutils literal notranslate"><span class="pre">credentials_backup</span></code> claim.</p>
+</div>
+<p><strong>Step 5</strong>: The User will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other.</p>
+<p><strong>Step 6</strong>: In the case where the User prefers the native storage, the backup file is stored on the User device.</p>
+<p>A non-normative example of the backup JWT is as the following:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;wallet-unit-credentials-backup+jwt&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="o">.</span>
+<span class="p">{</span>
+  <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2024-12-13T16:35:06+01:00&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;wallet_provider_id&quot;</span><span class="p">:</span><span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;wallet_instance_version&quot;</span><span class="p">:</span><span class="s2">&quot;v1.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;wallet_attestation&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;credentials_backup&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;https://issuer.example.org/v1.0/mdl&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;org.iso.18013-5.1.mDL&quot;</span><span class="p">],</span>
+      <span class="s2">&quot;https://eaa-provider.example.org/&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">]</span>
+   <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div></blockquote>
-</section>
-<section id="attributes">
-<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
-<p>[Table with parameters/attributes]</p>
+<p>The JOSE header of the backup JWT MUST contain the following REQUIRED parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>JOSE header</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
+<td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>typ</strong></p></td>
+<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet-unit-credentials-backup+jwt</span></code></p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+<p>The body of backup JWT contains the following REQUIRED claims:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -189,23 +263,46 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>key</p></td>
-<td><p>value</p></td>
+<tr class="row-even"><td><p><strong>timestamp</strong></p></td>
+<td><p>UNIX timestamp with the time of backup file creation. This value is updated every time a new credential entry is added to the backup file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_provider_id</strong></p></td>
+<td><p>It MUST be set to the unique identifier of the Wallet Provider.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_instance_version</strong></p></td>
+<td><p>It MUST be set to  the version of the Wallet Solution that has been backed up.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
+<td><p>It MUST be set to a value containing the Wallet Attestation JWT.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>credentials_backup</strong></p></td>
+<td><p>Object that describes specifics of the Credential that are backupped. This object contains a list of name/value pairs, where each name is a unique identifier of the Credential Issuer. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> that identifies the specific Digital Credential that was issued.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="implementation-considerations">
-<h2>Implementation considerations<a class="headerlink" href="#implementation-considerations" title="Link to this heading">¶</a></h2>
-<p>TODO</p>
-</section>
-<section id="libraries-and-code-snippets">
-<h2>Libraries and code snippets<a class="headerlink" href="#libraries-and-code-snippets" title="Link to this heading">¶</a></h2>
-<p>TODO</p>
-</section>
-<section id="external-references">
-<h2>External references<a class="headerlink" href="#external-references" title="Link to this heading">¶</a></h2>
-<p>TODO</p>
+<section id="restore-flow-for-hardware-binding-credential">
+<h2>Restore flow for Hardware Binding Credential<a class="headerlink" href="#restore-flow-for-hardware-binding-credential" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="sequence-diagram-for-wallet-instance-restore">
+<span id="fig-restore-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80"><img alt="The figure illustrates the sequence diagram for restore flow, with the steps explained below." src="_images/Restore_Flow.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Restore flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-restore" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Considering that the User has initialized the new Wallet Instance and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
+Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 11</span></a>:</p>
+<p><strong>Steps 1-6</strong>: The User wants to restore the Digital Credentials using the backup previously created with their Wallet Instance.
+The User selects <cite>restore Digital Credentials backup</cite> in the Wallet Instance app and a prompt with the import function is provided to the User. The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases.
+To check the authenticity of the file, the Wallet Instance MUST verify the backup JWT's signature to ensure its authenticity. To do this, it first extracts the Wallet Attestation JWT from <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim and obtains the related public key using the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim).</p>
+<p><strong>Steps 7-8</strong>: The Wallet Instance for each HW binding credentials entry in the payload of the backup JWT performs the following steps:</p>
+<ul class="simple">
+<li><p>It extracts the Credential Issuer identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the Credential Issuer.</p></li>
+<li><p>Using the Issuer identifier the Wallet Instance obtains the metadata of the Credential Issuer and makes a re-issuance request to the Credential Issuer by providing the new cryptographic binding with the Credential.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Wallet Instance MUST not check the expiration of the Wallet Attestation as its main purpose is to enable the Wallet Instance to verify the authenticity of the backup file by ensuring it has been created and signed by a Wallet Instance of a specific Wallet Provider.</p>
+</div>
 </section>
 </section>
 
@@ -223,13 +320,9 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">backup-restore.rst</a><ul>
-<li><a class="reference internal" href="#general-properties">General Properties</a></li>
-<li><a class="reference internal" href="#requirements">Requirements</a></li>
-<li><a class="reference internal" href="#attributes">Attributes</a></li>
-<li><a class="reference internal" href="#implementation-considerations">Implementation considerations</a></li>
-<li><a class="reference internal" href="#libraries-and-code-snippets">Libraries and code snippets</a></li>
-<li><a class="reference internal" href="#external-references">External references</a></li>
+<li><a class="reference internal" href="#">Backup and Restore</a><ul>
+<li><a class="reference internal" href="#backup-flow">Backup Flow</a></li>
+<li><a class="reference internal" href="#restore-flow-for-hardware-binding-credential">Restore flow for Hardware Binding Credential</a></li>
 </ul>
 </li>
 </ul>
@@ -259,7 +352,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/12/2024.
+      Last updated on 13/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
