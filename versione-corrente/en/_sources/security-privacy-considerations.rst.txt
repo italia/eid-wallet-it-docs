@@ -438,8 +438,7 @@ Additionally, the Authorization Response is encrypted with the Verifier's public
 further securing the transmission.
 
 Another endpoint to be validated is the **redirect_uri**, which is used to redirect the User back to the Verifier after the Credential presentation is complete. 
-In the IT-Wallet specification, the **redirect_uri** is registered and validated beforehand during the Verifier onboarding using OpenID Federation. During the presentation 
-phase, the Wallet must validate this value by verifying the trust with the Verifier according to the Section `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
+In the IT-Wallet specification, the **redirect_uri** is registered and validated beforehand during the Verifier onboarding using OpenID Federation. During the presentation phase, the Wallet must validate this value by verifying the trust with the Verifier according to the Section `Trust Evaluation Mechanism <trust.html#trust-evaluation-mechanism>`_
 
 
 In order to be sure that the **redirect_uri** is received from a legit Wallet and not from the attacker, the Verifier response endpoint upon the recipient of a valid 

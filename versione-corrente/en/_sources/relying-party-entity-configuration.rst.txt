@@ -9,7 +9,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 The Relying Parties MUST provide the following metadata types:
 
   - `federation_entity`
-  - `wallet_relying_party`
+  - `openid_credential_verifier`
 
 
 Metadata for federation_entity
@@ -17,10 +17,10 @@ Metadata for federation_entity
 
 The *federation_entity* metadata MUST contain the claims as defined in Section :ref:`Metadata of federation_entity Leaves`.
 
-Metadata for wallet_relying_party
+Metadata for openid_credential_verifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *wallet_relying_party* metadata MUST contain the following parameters.
+The *openid_credential_verifier* metadata MUST contain the following parameters.
 
 .. list-table:: 
   :widths: 20 60
@@ -39,16 +39,17 @@ The *wallet_relying_party* metadata MUST contain the following parameters.
   * - **response_uris_supported**
     - JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode ``direct_post`` and ``direct_post.jwt`` (see `OpenID4VP`_ Draft 20 Sections 6.2 and 6.3).
   * - **authorization_signed_response_alg**
-    - String representing the signing [:rfc:`7515`] *alg* algorithm that MUST be used for signing authorization responses. The algorithm *none* MUST NOT be used. See `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`_ Section 3.
+    - String representing the signing [:rfc:`7515`] *alg* algorithm that MUST be used for signing authorization responses. The algorithm *none* MUST NOT be used. See `JARM`_.
+  * - **authorization_encrypted_response_alg**
+    - Algorithm used to encrypt the authorization response. It specifies to the Wallet Instance the asymmetric encryption algorithm. See `JARM`_.
+  * - **authorization_encrypted_response_enc**
+    - Encryption algorithm used for the authorization response. It specifies to the Wallet Instance the symmetric encryption algorithm. See `JARM`_.
   * - **vp_formats**
-    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least "*dc+sd-jwt*" according to `OPENID4VC-HAIP`_ Draft 00 Section 7.2.7. The value associated with each name/value pair MUST be a JSON object "**sd-jwt_alg_values**" that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The *alg* JOSE header (as defined in :rfc:`7515`) of the presented SD-JWT MUST match one of the array values. See also `OpenID4VP`_ Draft 20 Section 9.1.
-  * - **presentation_definitions_supported**
-    - JSON Array of supported *presentation_definition* objects that MUST be compliant to the syntax defined in Section 5 of `[DIF.PresentationExchange] <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_ and Section 7.2.8 of `OPENID4VC-HAIP`_ Draft 00. For *presentation_definition* objects see also `OpenID4VP`_ Section 5.1.
+    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least "*dc+sd-jwt*". The value associated with each name/value pair MUST be a JSON object "**sd-jwt_alg_values**" that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The *alg* JOSE header (as defined in :rfc:`7515`) of the presented SD-JWT MUST match one of the array values. See also `OpenID4VP`_ Draft 20 Section 9.1.
   * - **jwks**
-    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `[oauth-v2-jarm-03] <https://openid.net/specs/oauth-v2-jarm-03.html>`_ Section 3,  `OID-FED`_ Draft 41 Section 5.2.1 and `JWK`_.
-
+    - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `JARM`_ Section 3, `OID-FED`_ Draft 41 Section 5.2.1 and `JWK`_.
 .. note::
-    The claims **response_uris_supported** and **presentation_definitions_supported** are introduced in this Specification. 
+    The claims **response_uris_supported** are introduced in this specification. 
 
 Example of a Relying Party Entity Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

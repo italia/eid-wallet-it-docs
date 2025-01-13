@@ -165,16 +165,16 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <blockquote>
 <div><ul class="simple">
 <li><p><cite>federation_entity</cite></p></li>
-<li><p><cite>wallet_relying_party</cite></p></li>
+<li><p><cite>openid_credential_verifier</cite></p></li>
 </ul>
 </div></blockquote>
 <section id="metadata-for-federation-entity">
 <h2>Metadata for federation_entity<a class="headerlink" href="#metadata-for-federation-entity" title="Link to this heading">¶</a></h2>
 <p>The <em>federation_entity</em> metadata MUST contain the claims as defined in Section <a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves"><span class="std std-ref">Metadata of federation_entity Leaves</span></a>.</p>
 </section>
-<section id="metadata-for-wallet-relying-party">
-<h2>Metadata for wallet_relying_party<a class="headerlink" href="#metadata-for-wallet-relying-party" title="Link to this heading">¶</a></h2>
-<p>The <em>wallet_relying_party</em> metadata MUST contain the following parameters.</p>
+<section id="metadata-for-openid-credential-verifier">
+<h2>Metadata for openid_credential_verifier<a class="headerlink" href="#metadata-for-openid-credential-verifier" title="Link to this heading">¶</a></h2>
+<p>The <em>openid_credential_verifier</em> metadata MUST contain the following parameters.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -202,22 +202,25 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>authorization_signed_response_alg</strong></p></td>
-<td><p>String representing the signing [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> algorithm that MUST be used for signing authorization responses. The algorithm <em>none</em> MUST NOT be used. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html">[oauth-v2-jarm-03]</a> Section 3.</p></td>
+<td><p>String representing the signing [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> algorithm that MUST be used for signing authorization responses. The algorithm <em>none</em> MUST NOT be used. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>authorization_encrypted_response_alg</strong></p></td>
+<td><p>Algorithm used to encrypt the authorization response. It specifies to the Wallet Instance the asymmetric encryption algorithm. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>authorization_encrypted_response_enc</strong></p></td>
+<td><p>Encryption algorithm used for the authorization response. It specifies to the Wallet Instance the symmetric encryption algorithm. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
-<td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least &quot;<em>dc+sd-jwt</em>&quot; according to <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a> Draft 00 Section 7.2.7. The value associated with each name/value pair MUST be a JSON object &quot;<strong>sd-jwt_alg_values</strong>&quot; that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The <em>alg</em> JOSE header (as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) of the presented SD-JWT MUST match one of the array values. See also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Draft 20 Section 9.1.</p></td>
+<td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least &quot;<em>dc+sd-jwt</em>&quot;. The value associated with each name/value pair MUST be a JSON object &quot;<strong>sd-jwt_alg_values</strong>&quot; that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The <em>alg</em> JOSE header (as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) of the presented SD-JWT MUST match one of the array values. See also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Draft 20 Section 9.1.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>presentation_definitions_supported</strong></p></td>
-<td><p>JSON Array of supported <em>presentation_definition</em> objects that MUST be compliant to the syntax defined in Section 5 of <a class="reference external" href="https://identity.foundation/presentation-exchange/spec/v2.0.0/">[DIF.PresentationExchange]</a> and Section 7.2.8 of <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a> Draft 00. For <em>presentation_definition</em> objects see also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Section 5.1.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>jwks</strong></p></td>
-<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-03.html">[oauth-v2-jarm-03]</a> Section 3,  <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+<tr class="row-odd"><td><p><strong>jwks</strong></p></td>
+<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> Section 3, <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The claims <strong>response_uris_supported</strong> and <strong>presentation_definitions_supported</strong> are introduced in this Specification.</p>
+<p>The claims <strong>response_uris_supported</strong> are introduced in this specification.</p>
 </div>
 </section>
 <section id="example-of-a-relying-party-entity-configuration">
@@ -259,7 +262,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org/public/privacy_policy.html&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org/public/logo.svg&quot;</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;wallet_relying_party&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;openid_credential_verifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;application_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;client_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization Name&quot;</span><span class="p">,</span>
@@ -270,8 +273,11 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <span class="w">            </span><span class="nt">&quot;request_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;https://relying-party.example.org/request_uri&quot;</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;response_uris_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="nt">&quot;response_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;https://relying-party.example.org/response_uri&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;redirect_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://relying-party.example.org/cb&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;authorization_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;vp_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -283,91 +289,6 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">&quot;presentation_definitions_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d76c51b7-ea90-49bb-8368-6b3d194fc131&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;input_descriptors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Person Identification Data&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User Authentication&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">                                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
-<span class="w">                                        </span><span class="s2">&quot;ES512&quot;</span>
-<span class="w">                                    </span><span class="p">]</span>
-<span class="w">                                </span><span class="p">}</span>
-<span class="w">                            </span><span class="p">},</span>
-<span class="w">                            </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;limit_disclosure&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;required&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                    </span><span class="p">{</span>
-<span class="w">                                        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                            </span><span class="nt">&quot;const&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PersonIdentificationData&quot;</span><span class="p">,</span>
-<span class="w">                                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
-<span class="w">                                        </span><span class="p">},</span>
-<span class="w">                                        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                            </span><span class="s2">&quot;$.vct&quot;</span>
-<span class="w">                                        </span><span class="p">]</span>
-<span class="w">                                    </span><span class="p">},</span>
-<span class="w">                                    </span><span class="p">{</span>
-<span class="w">                                        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span>
-<span class="w">                                        </span><span class="p">},</span>
-<span class="w">                                        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                            </span><span class="s2">&quot;$.cnf.jwk&quot;</span>
-<span class="w">                                        </span><span class="p">]</span>
-<span class="w">                                    </span><span class="p">},</span>
-<span class="w">                                    </span><span class="p">{</span>
-<span class="w">                                        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                            </span><span class="s2">&quot;$.personal_administrative_number&quot;</span>
-<span class="w">                                        </span><span class="p">]</span>
-<span class="w">                                    </span><span class="p">}</span>
-<span class="w">                                </span><span class="p">]</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span>
-<span class="w">                        </span><span class="p">},</span><span class="w">      </span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WalletAttestation&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Attestation&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;purpose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Authentication&quot;</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">                                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
-<span class="w">                                        </span><span class="s2">&quot;ES512&quot;</span>
-<span class="w">                                    </span><span class="p">]</span>
-<span class="w">                                </span><span class="p">}</span>
-<span class="w">                            </span><span class="p">},</span>
-<span class="w">                            </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">&quot;limit_disclosure&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;required&quot;</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                    </span><span class="p">{</span>
-<span class="w">                                        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span>
-<span class="w">                                        </span><span class="p">},</span>
-<span class="w">                                        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                            </span><span class="s2">&quot;$.iss&quot;</span>
-<span class="w">                                        </span><span class="p">]</span>
-<span class="w">                                    </span><span class="p">},</span>
-<span class="w">                                    </span><span class="p">{</span>
-<span class="w">                                        </span><span class="nt">&quot;filter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span>
-<span class="w">                                        </span><span class="p">},</span>
-<span class="w">                                        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                                            </span><span class="s2">&quot;$.cnf.jwk&quot;</span>
-<span class="w">                                        </span><span class="p">]</span>
-<span class="w">                                    </span><span class="p">}</span>
-<span class="w">                                </span><span class="p">]</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span>
-<span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span><span class="w"> </span>
-<span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                    </span><span class="p">{</span>
@@ -403,7 +324,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
                 <ul>
 <li><a class="reference internal" href="#">Entity Configuration of Relying Parties</a><ul>
 <li><a class="reference internal" href="#metadata-for-federation-entity">Metadata for federation_entity</a></li>
-<li><a class="reference internal" href="#metadata-for-wallet-relying-party">Metadata for wallet_relying_party</a></li>
+<li><a class="reference internal" href="#metadata-for-openid-credential-verifier">Metadata for openid_credential_verifier</a></li>
 <li><a class="reference internal" href="#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
@@ -434,7 +355,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 10/01/2025.
+      Last updated on 13/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
