@@ -10,7 +10,7 @@ Technical References
     * - `OID-FED`_
       - Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  "OpenID Federation 1.0", December 2024, Draft 41.
     * - `OpenID4VCI`_
-      - Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Credential Issuance", February 2024, Draft 13.
+      - Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Credential Issuance", December 2024, Draft 15.
     * - `SD-JWT-VC`_
       - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - `EIDAS-ARF`_

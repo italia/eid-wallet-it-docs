@@ -134,9 +134,9 @@
                         }
                     ],
                     "vct": "EuropeanDisabilityCard",
-                    "claims": {
-                        "document_number": {
-                            "value_type": "string",
+                    "claims": [
+                        {
+                            "path": ["document_number"],
                             "display": [
                                 {
                                     "name": "Numero Documento",
@@ -148,8 +148,8 @@
                                 }
                             ]
                         },
-                        "given_name": {
-                            "value_type": "string",
+                        {
+                            "path": ["given_name"],
                             "display": [
                                 {
                                     "name": "Nome",
@@ -161,8 +161,8 @@
                                 }
                             ]
                         },
-                        "family_name": {
-                            "value_type": "string",
+                        {
+                            "path": ["family_name"],
                             "display": [
                                 {
                                     "name": "Cognome",
@@ -174,8 +174,8 @@
                                 }
                             ]
                         },
-                        "birth_date": {
-                            "value_type": "string",
+                        {
+                            "path": ["birth_date"],
                             "display": [
                                 {
                                     "name": "Data di Nascita (YYYY-MM-GG)",
@@ -187,8 +187,8 @@
                                 }
                             ]
                         },
-                        "personal_administrative_number": {
-                            "value_type": "string",
+                        {
+                            "path": ["personal_administrative_number"],
                             "display": [
                                 {
                                     "name": "Codice Fiscale",
@@ -200,8 +200,8 @@
                                 }
                             ]
                         },
-                        "expiry_date": {
-                            "value_type": "string",
+                        {
+                            "path": ["expiry_date"],
                             "display": [
                                 {
                                     "name": "Data di Scadenza (YYYY-MM-GG)",
@@ -213,8 +213,8 @@
                                 }
                             ]
                         },
-                        "constant_attendance_allowance": {
-                            "value_type": "boolean",
+                        {
+                            "path": ["constant_attendance_allowance"],
                             "display": [
                                 {
                                     "name": "Diritto accompagnatore",
@@ -226,8 +226,8 @@
                                 }
                             ]
                         },
-                        "portrait": {
-                            "value_type": "string",
+                        {
+                            "path": ["portrait"],
                             "display": [
                                 {
                                     "name": "Foto codificata in base64",
@@ -239,8 +239,8 @@
                                 }
                             ]
                         },
-                        "link_qr_code": {
-                            "value_type": "string",
+                        {
+                            "path": ["link_qr_code"],
                             "display": [
                                 {
                                     "name": "Link QR Code",
@@ -252,8 +252,7 @@
                                 }
                             ]
                         }
-                    },
-                    "order" : ["document_number", "given_name", "family_name", "birth_date", "portrait", "tax_id_code", "expiry_date", "constant_attendance_allowance", "link_qr_code"]
+                    ]
                 },
                 "MDL": {
                     "format": "dc+sd-jwt",
@@ -286,9 +285,9 @@
                         }
                     ],
                     "vct": "MDL",
-                    "claims": {
-                        "given_name": {
-                            "value_type": "string",
+                    "claims": [
+                        {
+                            "path": ["given_name"],
                             "display": [
                                 {
                                     "name": "Nome",
@@ -300,8 +299,8 @@
                                 }
                             ]
                         },
-                        "family_name": {
-                            "value_type": "string",
+                        {
+                            "path": ["family_name"],
                             "display": [
                                 {
                                     "name": "Cognome",
@@ -313,8 +312,8 @@
                                 }
                             ]
                         },
-                        "birth_date": {
-                            "value_type": "string",
+                        {
+                            "path": ["birth_date"],
                             "display": [
                                 {
                                     "name": "Data di nascita (YYYY-MM-GG)",
@@ -326,8 +325,8 @@
                                 }
                             ]
                         },
-                        "place_of_birth": {
-                            "value_type": "string",
+                        {
+                            "path": ["place_of_birth"],
                             "display": [
                                 {
                                     "name": "Luogo di Nascita",
@@ -339,8 +338,8 @@
                                 }
                             ]
                         },
-                        "issue_date": {
-                            "value_type": "string",
+                        {
+                            "path": ["issue_date"],
                             "display": [
                                 {
                                     "name": "Data di rilascio (YYYY-MM-GG)",
@@ -352,8 +351,8 @@
                                 }
                             ]
                         },
-                        "expiry_date": {
-                            "value_type": "string",
+                        {   
+                            "path": ["expiry_date"],
                             "display": [
                                 {
                                     "name": "Data di scadenza (YYYY-MM-GG)",
@@ -365,8 +364,8 @@
                                 }
                             ]
                         },
-                        "issuing_country": {
-                            "value_type": "string",
+                        {
+                            "path": ["issuing_country"], 
                             "display": [
                                 {
                                     "name": "Paese di rilascio",
@@ -378,8 +377,8 @@
                                 }
                             ]
                         },
-                        "issuing_authority": {
-                            "value_type": "string",
+                        {
+                            "path": ["issuing_authority"],
                             "display": [
                                 {
                                     "name": "Autorità di rilascio",
@@ -391,8 +390,8 @@
                                 }
                             ]
                         },
-                        "document_number": {
-                            "value_type": "string",
+                        {
+                            "path": ["document_number"],
                             "display": [
                                 {
                                     "name": "Numero di documento",
@@ -404,8 +403,8 @@
                                 }
                             ]
                         },
-                        "portrait": {
-                            "value_type": "string",
+                        {
+                            "path": ["portrait"],
                             "display": [
                                 {
                                     "name": "Foto codificata in base64",
@@ -417,8 +416,8 @@
                                 }
                             ]
                         },
-                        "driving_privileges": {
-                            "value_type": "string",
+                        {
+                            "path": ["driving_privileges"],
                             "display": [
                                 {
                                     "name": "Elenco delle categorie di abilitazione separate da spazio",
@@ -430,8 +429,8 @@
                                 }
                             ]
                         },
-                        "restrictions_conditions": {
-                            "value_type": "string",
+                        {
+                            "path": ["restrictions_conditions"],
                             "display": [
                                 {
                                     "name": "Annotazioni/Restrizioni valide per tutte le categorie separate da spazio",
@@ -443,8 +442,8 @@
                                 }
                             ]
                         },
-                        "driving_privileges_details": {
-                            "value_type": "string",
+                        {
+                            "path": ["driving_privileges_details"],
                             "display": [
                                 {
                                     "name": "Dettagli delle categorie di abilitazione",
@@ -456,8 +455,7 @@
                                 }
                             ]
                         }
-                    },
-                    "order" : ["document_number", "given_name", "family_name", "birth_date", "place_of_birth", "portrait", "issue_date", "expiry_date", "issuing_country", "issuing_authority", "driving_privileges", "driving_privileges_details", "restrictions_conditions"]
+                    ]
                 }
             },
             "jwks": {

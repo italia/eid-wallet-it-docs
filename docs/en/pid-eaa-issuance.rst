@@ -99,7 +99,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/hLPTRs8t47tthnZjFZH85wMg-XHfLqiIka5T9JHXbPTAoDmxS4SnDhN7iFJNrxu6R0XH6wbH7i2UZpFdp8pvubXQzaibf6UZ_NA6LeXLEAEQLb8pVFZkq7u0wS0BCJC_qi5F3jmoMArQe_43VFn6YvQlbSTZtsjhDWTtUNptB9L2Xf4E47IDdSr6e6uWP3d1C1xTNbxyqHiE1Z2sPatDBYQ9yBU1_cVmLs1cB4d3rdWBjxGWbWfkB3QecQGI7lh1RdC5MtH2M6qOmQpHmWO-Fj-D9aFna09mYw38CPXvztbYlMDiu0m85_5seGAC_kS0eZPwJdRPEJfKM3CP7IATynR21qW1aNav1bHHO7JqzMxozN4ul1StBTOlvm80EGWy7P3-Xk5GTXcbRlQ443jO8ij6iYpnGgG30cIBaX76lzyC0_m68M2WEQ7jWZoF1lsn6U_iATYF1u_mY7zvT0mNVse0YsvbjCCfRrTOnPDQ4MgUKfE-XQ3JkerwwmMUEPe6UAr9nZP5xa7uiY5kuM7WkUtVT17x0-PmcKjywp92XfsMToW3BIN1v-XDxVXVgDqvE5feoTxYtcGNuHHYf7yj5JN4MoZu5vGQyi1e8X4kTWnClQKAyCUABBefwLvgzTZhyWfYtSRItrsUB4Sc7eemFU5bvqdlTXHISJ55yEbJRCGZCYk_7o3lOjE41D6uxZ8a3NNtERZZw7Rm1C4vDbW3JtMBItGTJtMiNdDc29N3azIf_tllJHyGlv52DtiTl8HJSh8aiLqhYAfY1UJSWT3Dkvpop2rGntP2k8sD-eBRD-zMrfXvEOamD_RiCc3pWXfGDoj3caKniPDmaxMEb9InBrvFxC9ApSKucwOOs_rwY2SM6x9OfsRvtqTMKE8aLL1oA-iQdPjs9LUfyWIt79Y2WNkZQpmmS3UPZ67yy3I1InqlSg9aM8euxInwh_Tb8Y_yhunpw1mPVMn-OfyPVrF1EZTxbl5GGnw5Cr8MX2IQIu5pt6c3Sz8K-QuYZANaAbcz7dLo8DUIb9mf194vAcqoKVjWELUrc_CqYQ6rIX9p-NavHjYn6Ro3EgxOmjoniLZ4BgKjafnNkBY_E85K0QvHfzScapdeo4nD9yuz7DVVlW_58ox8SJYLIW6t9Ro-HIKP6n2a4p4nUPGzH3dalxIuDZjW-MN8H9-MbgXEjVtoyw_X6cwCPjGiyhBCujq_JBA0_wAUGjbCcPPO0LkfdQmFcXNb-uh4f4Ku-UbMWPntF6YGI-DrUZH3C70hhDEcdstXaACJUjEY1hQqMA1Dzv72-DkosvcMNNSmLsO3SY597s_jBwWRlrJ_0000
+    :target: https://www.plantuml.com/plantuml/svg/hLRVJ-D647xVls9qzr0YEQAg-eHqfmkG7b5Fa49El5Io5djYZt1stVsHNFhNTtOtCPiGr28L8N1svySttpSppXVhf75-rGdfdLP-zOH6Y9xFgA9UAWSVlbiq7q1Qy48ywH_fu2SBTiLMVQiLVe2FtwXftMNdyT3tqkZDu2uFxnvbrw63cM88gi9ein6eQk0iHnZci-lpipz6qya4vaQlgTx59C4_6nX_1dy1-ib9Kh3Lti0rDUHa1rS6QrIEP2SyZDbkSm5Rj48OfHs2NgE13Nnyl9ajfk8k1N0jGaVMWLx6vuNnrc4D9q3OW3U6OXZZpmoYqcf9PXKTBNPOETAA8vto5i8p94Qadmy15SICphxUBBxUJwUtugh5wlbK020BpDE0z3VaGnapIbNl2I5dOOLErjB972y4Ee0X6vGEOVxxrPJXrmYCWPQ49WPvd4t6SptVsHFRpoVtS8z_URGEplvK00PjhvN5qcrxBC99rH4gLrATFd7Gicg3tgh14qSbmsjrCZOfyWZumuPS2tSJxzhnLOmudZZ7bqE9Rru6oB3JyWObqv8JV8hUr8x_XTgTWwL6IUSDxars4OuX1lhNigEQt1Oo_WMbXXmOJIJ2sOw1qXig07_qPD2Mf4QfrKElomi8TMj3VwSyWnmln4CMPYIyZ9xqRaSXEvTD4Npw51hnWCp2xmV8sz0qd20OLob3r535PtR7sVNa0TWvD5WD3rMBAxIHfofKhzmBGzXPF4gT-d_qtlIC-7GAVjZhm0mTaPD94jgrWA0g_oDh1q8txt7APgv1XOOlu3eqwZDktxphZTRBV19XgSt9PU3qCohWadfDN6GsiGk-6RHEb6InprvFR6EaSjauwpeRs_rw22Ui3XciKhFyxoChA76IAiYvbLM5rfQnv29Ldk3c0vCnSAjLXGC3Dul57EPt3miuL-4YIvGCCn7BQ35wlIyJUVpRQslHMjBgqFpGFcFyJGMheTap6OSQib5uBML6IA8v5_WbRadX8MrtdISiuukhyMd7XJv8pgyt05cGQqcTVEeGH4PTPfFnDnpQOZVtrJv5HcfEnx0ikOmuFjv25LPkPcwTDfZ1pwNEafnKFBy_Eu9K0AvHPM-VIECaafkQK9nwaLn--puLzzYGTNmgkmvScyCR6-oamne4AHP_bPBp4t2K8V-vmRNU0SlV50F3UMa3nwcsNtx-bQ_XIYiNDjohvKaMRkyMByhzYsmTohfqjC82d97AochGB2lV5oGMBSBHLxa2v3Boe42kj5Vf9Sh1mFPOfSt_j8KXHnHwqwBYNDGqQD9ze31yrumxr3WR3vQTte1i9Ad3BVw5__XLzmy0
 
     PID/(Q)EAA Issuance - Detailed flow
 
@@ -271,7 +271,7 @@ The non-normative example of the DPoP Access Token is given below.
 .. literalinclude:: ../../examples/at-dpop-payload.json
   :language: JSON
 
-**Step 16 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce`` that can be used to create the proof of possession of key material for the subsequent request to the Credential Endpoint.
+**Step 16 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce`` that can be used to create the proof of possession of key material for the subsequent request to the Credential Endpoint.
 
 Below is a non-normative example of a Nonce Request:
 
@@ -299,7 +299,7 @@ Below is a non-normative example of a Nonce Response:
 
 **Steps 18-19 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 17** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
 
-**Step 20 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
+**Step 20 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key). The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
 
  1. the JWT proof MUST include all required claims as specified in the table of Section :ref:`Token Request <sec_token_request>`;
  2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type;
@@ -351,7 +351,7 @@ without encoding and signature. The JWT header:
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
   :language: JSON  
 
-**Steps 21-23 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OpenID4VCI`_ Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
+**Steps 21-23 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
     1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
@@ -891,12 +891,12 @@ The JOSE header of a **DPoP JWT** MUST contain the following claims.
 Nonce endpoint
 --------------
 
-The Nonce Endpoint provides a ``c_nonce`` value useful to create a proof of possession of key material for the request to Credential Endpoint, as defined in Section 7 of `OpenID4VCI`_.
+The Nonce Endpoint provides a ``c_nonce`` value useful to create a proof of possession of key material for the request to the Credential Endpoint, as defined in Section 7 of `OpenID4VCI`_.
 
 Nonce Request
 ^^^^^^^^^^^^^^^^^^^
 
-The request for a nonce MUST be an HTTP POST without a body addressed to the PID/(Q)EAA Issuer Nonce Endpoint.
+The request for a nonce MUST be an HTTP POST without a body addressed to the PID/(Q)EAA Issuer Nonce Endpoint mapped in the Credential Issuer Metadata.
 
 
 Nonce Response
@@ -948,20 +948,20 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - **Description**
     - **Reference**
   * - **credential_identifier**
-    - REQUIRED when an Authorization Details of type openid_credential was returned from the Token Response. It MUST NOT be used otherwise. This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response. It MUST NOT be used if ``credential_configuration_id`` is present.
-    - Section 7.2 of [`OpenID4VCI`_].
+    - REQUIRED when an Authorization Details of type *openid_credential* was returned from the Token Response. It MUST NOT be used otherwise. This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response. It MUST NOT be used if ``credential_configuration_id`` is present.
+    - Section 8.2 of [`OpenID4VCI`_].
   * - **credential_configuration_id**
-    - JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **proof**
-    - JSON object containing proof of possession of the key material the issued credential shall be bound to. The proof object MUST contain the following mandatory claims:
+    - REQUIRED. JSON object containing proof of possession of the key material the issued credential shall be bound to. The proof object MUST contain the following mandatory claims:
 
       - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
   * - **transaction_id**
     - CONDITIONAL. REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction.
-    - Section 8.1 of [`OpenID4VCI`_].
+    - Section 9.1 of [`OpenID4VCI`_].
 
 
 The JWT proof type MUST contain the following parameters for the JOSE header and the JWT body:
@@ -1019,20 +1019,22 @@ The Credential Response contains the following parameters:
   * - **Claim**
     - **Description**
     - **Reference**
-  * - **credential**
-    - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``vc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
-    - Section 7.3, Annex A2.5 and Annex A3.5 of [`OpenID4VCI`_].
+  * - **credentials**
+    - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. It contains the following parameters:
+
+          - **credential**: REQUIRED. String Containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+    - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
   * - **lead_time**
-    - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.
+    - CONDITIONAL. REQUIRED if ``credentials`` is not present. The amount of time (in seconds) required before making a new Credential Request.
     - This Specification.
   * - **notification_id**
-    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present.
-    - Section 7.3 of [`OpenID4VCI`_].
+    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credentials`` parameter is not present.
+    - Section 8.3 of [`OpenID4VCI`_].
   * - **transaction_id**
-    - CONDITIONAL. REQUIRED if ``credential`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the Credential Request as defined in Section :ref:`Credential Request`. It MUST be invalidated after the User obtains the Credential.
-    - Section 7.3 of [`OpenID4VCI`_].
+    - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Flow`. It MUST be invalidated after the User obtains the Credential.
+    - Section 8.3 of [`OpenID4VCI`_].
 
-If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an error response as defined in Section 7.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an error response as defined in Section 8.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
