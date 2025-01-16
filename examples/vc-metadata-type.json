@@ -8,7 +8,7 @@
         "verification": {
         "trust_framework": "pdnd",
         "authentic_source": {
-            "organization_name": "Ministero degli Interni",
+            "organization_name": "Ministero dell'Interno",
             "organization_code": "m_it",
             "contacts": [
                 "informazioni@example.it",
@@ -29,7 +29,7 @@
               "logo": {
                 "uri": "https://authsource.example.com/img/logo.png",
                 "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
-                "alt_text": "Logo del Ministero dell'interno"
+                "alt_text": "Logo del Ministero dell'Interno"
               },
               "background_color": "#2e89d9",
               "text_color": "#030303"

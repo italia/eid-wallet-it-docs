@@ -27,10 +27,12 @@
                           3: h'E2382149255AE8E955AF9B8984395…',                                        
                           4: h'BBC77E6CCA981A3AD0C3E544EDF86…',                                     
                           6: h'BB6E6C68D1B4B4EC5A2AE9206F5t4…',
-                          7: h'F8A5966E6DAC9970E0334D8F75E25…'
+                          7: h'F8A5966E6DAC9970E0334D8F75E25…',
+                          8: h'1F1A0F7CCDD79b29EB4B22F96F54F…',
+                          9: h'1A0F7EEDB46B37AS4N22R96D83F3F…'
                       },
                       "eu.europa.ec.eudiw.pid.it.1": {  
-                          8: h'F9EE4D36F67DBD75E23311AC1C29…'
+                          10: h'F9EE4D36F67DBD75E23311AC1C29…'
                       }
                   },                             
                   "deviceKeyInfo": {                              
@@ -105,12 +107,28 @@
                   "elementValue": 1004("1956-01-12")% the tag 1004 defines the value    
                     is a full date 
                   }  
-              >>)
+              >>),
+              24(<<               
+                  {                          
+                  "digestID": 8, 
+                  "random": h'FX8VVN1YN6NBH3CKYPJTNPJIVJ5KDMFA',
+                  "elementIdentifier": "birth_place",
+                  "elementValue": "Roma"
+                  }  
+              >>),
+              24(<<               
+                  {                          
+                  "digestID": 9, 
+                  "random": h'RGLXZ5CHND8Y2UUMHXXMJWPCHNH9HVIX',
+                  "elementIdentifier": "nationality",
+                  "elementValue": "IT"
+                  }  
+              >>)			  
               ],
               "eu.europa.ec.eudiw.pid.it.1": [
                   24(<<
                       {
-                      "digestID": 8, 
+                      "digestID": 10, 
                       "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
                       "elementIdentifier": "personal_administrative_number", 
                       "elementValue": "TINIT-XXXXXXXXXXXXXXX"

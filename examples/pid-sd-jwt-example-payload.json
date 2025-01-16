@@ -1,15 +1,19 @@
 {
   "_sd": [
-    "4KfNcVziiuiktw8UMBaZQBRlLorpAhFz2ii37niYF2Q",
     "VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA",
     "Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE",
+    "_NGjjss3mqO258aYvT4tgIFeEt847FPTYtg30f0JDGY",
     "egljN30TYCjSEtzVszDFWbryYskAOEmM3TKT2X2fdpA",
+    "hP79TuWGBwIN0j9NH_fxn8Cvj-dNH_R7nFleeWCE2I4",
     "s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk",
+    "tSL-e1nLdWOU9sFMTCUu5P1tCzxA-TW-VWbHGzYtU7E",
     "zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o"
   ],
   "iss": "https://pidprovider.example.org",
   "exp": 1883000000,
   "sub": "NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs",
+  "issuing_authority": "Istituto Poligrafico e Zecca dello Stato",
+  "issuing_country": "IT",
   "status": {
     "status_assertion": {
       "credential_hash_alg": "sha-256"

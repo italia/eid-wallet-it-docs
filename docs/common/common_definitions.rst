@@ -73,3 +73,4 @@
 .. _OIDC-IDA: https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
 .. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/
+.. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
