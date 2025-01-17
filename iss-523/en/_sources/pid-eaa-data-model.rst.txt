@@ -252,10 +252,10 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
       - **Reference**
     * - **given_name**
       - [SD]. Current First Name.
-      - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
+      - Section 5.1 of `OIDC`_ and Commission Implementing Regulation `EU_2024/2977`_
     * - **family_name**
       - [SD]. Current Family Name.
-      - `[OpenID Connect Core 1.0, Section 5.1] <http://openid.net/specs/openid-connect-core-1_0.html>`_
+      - Section 5.1 of `OIDC`_ and Commission Implementing Regulation `EU_2024/2977`_
     * - **birth_date**
       - [SD]. Date of Birth.
       - Commission Implementing Regulation `EU_2024/2977`_
