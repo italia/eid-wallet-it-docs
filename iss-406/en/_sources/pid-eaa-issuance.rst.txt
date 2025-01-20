@@ -639,6 +639,40 @@ Below is a non-normative example of an error response.
 .. literalinclude:: ../../examples/par-error.json
   :language: JSON  
 
+In the following table are listed HTTP Status Codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_scope``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the requested scope is invalid or unknown. (:rfc:`6749#section-5.2`).
+    * - *401 Unauthorized* [REQUIRED]
+      - ``invalid_client``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid parameters Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
+    * - *405 Method not allowed* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request because POST method was not used in the request. (:rfc:`9126#section-2.3`).
+    * - *413 Payload Too Large* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of the size of the request is higher than permitted limit.(:rfc:`9126#section-2.3`).
+    * - *429 Too Many Requests* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of the numbers requests received is higher than permitted limit.(:rfc:`9126#section-2.3`).
+    * - *500 Internal Server Error* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem. (:rfc:`6749#section-4.1.2.1`).
+    * - *503 Service Unavailable* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable. (:rfc:`6749#section-4.1.2.1`).
+
 
 
 Authorization endpoint
