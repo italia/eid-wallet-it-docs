@@ -133,6 +133,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
     * - **verification**
       - [SD]. REQUIRED. Object containing User authentication and User data verification information. When the Credential type is set to `PersonIdentificationData`, the `verification` claim MUST be included by the Issuer. Whn present, the `verification` claim MUST include the following sub-value:
 
+          * ``trust_framework``: String identifying the trust framework used for user digital authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map in the Credential Issuer Metadata.
           * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
           * ``evidence``: Each entry of the array MUST contain the following members:
               - ``type``: It represents evidence type. It MUST be set to ``vouch``.
@@ -299,23 +300,23 @@ In the following the disclosure list is given
 
 **Claim** ``verification``:
 
--  SHA-256 Hash: ``egljN30TYCjSEtzVszDFWbryYskAOEmM3TKT2X2fdpA``
+-  SHA-256 Hash: ``jJRB4cwP375y6GC0tr5SBIVuOa7Cnh4Mod3ebDS-Gkg``
 -  Disclosure:
    ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsi``
-   ``YXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2UiOiB7InR5cGUi``
-   ``OiAidm91Y2giLCAidGltZSI6ICIyMDIwLTAzLTE5VDEyOjQyWiIsICJhdHRl``
-   ``c3RhdGlvbiI6IHsidHlwZSI6ICJkaWdpdGFsX2F0dGVzdGF0aW9uIiwgInJl``
-   ``ZmVyZW5jZV9udW1iZXIiOiAiNjQ4NS0xNjE5LTM5NzYtNjY3MSIsICJkYXRl``
-   ``X29mX2lzc3VhbmNlIjogIjIwMjAtMDMtMTlUMTI6NDNaIiwgInZvdWNoZXIi``
-   ``OiB7Im9yZ2FuaXphdGlvbiI6ICJNaW5pc3Rlcm8gZGVsbCdpbnRlcm5vIn19``
-   ``fX1d``
+   ``dHJ1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwi``
+   ``OiAiaGlnaCIsICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3VjaCIsICJ0aW1l``
+   ``IjogIjIwMjAtMDMtMTlUMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogeyJ0eXBl``
+   ``IjogImRpZ2l0YWxfYXR0ZXN0YXRpb24iLCAicmVmZXJlbmNlX251bWJlciI6``
+   ``ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImRhdGVfb2ZfaXNzdWFuY2UiOiAi``
+   ``MjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHsib3JnYW5pemF0aW9u``
+   ``IjogIk1pbmlzdGVybyBkZWxsJ2ludGVybm8ifX19fV0``
 -  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "verification",``
-   ``{"assurance_level": "high", "evidence": {"type": "vouch",``
+   ``{"trust_framework": "it_cie", "assurance_level": "high", "evidence": {"type": "vouch",``
    ``"time": "2020-03-19T12:42Z", "attestation": {"type":``
    ``"digital_attestation", "reference_number":``
    ``"6485-1619-3976-6671", "date_of_issuance":``
    ``"2020-03-19T12:43Z", "voucher": {"organization": "Ministero``
-   ``dell'interno"}}}}]``
+   ``dell'Interno"}}}}]``
 
 **Claim** ``given_name``:
 

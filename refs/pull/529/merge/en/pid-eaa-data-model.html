@@ -304,6 +304,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[SD]. REQUIRED. Object containing User authentication and User data verification information. When the Credential type is set to <cite>PersonIdentificationData</cite>, the <cite>verification</cite> claim MUST be included by the Issuer. Whn present, the <cite>verification</cite> claim MUST include the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: String identifying the trust framework used for user digital authentication. It MUST be set using one of the values described in the <cite>trust_frameworks_supported</cite> map in the Credential Issuer Metadata.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">assurance_level</span></code>: String identifying the level of identity assurance guaranteed during the User authentication process.</p></li>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">evidence</span></code>: Each entry of the array MUST contain the following members:</dt><dd><ul>
@@ -679,6 +680,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org/v1.0/personidentificationdata&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vct#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it_cie&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;evidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -722,8 +724,8 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">    </span><span class="s2">&quot;VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;_NGjjss3mqO258aYvT4tgIFeEt847FPTYtg30f0JDGY&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;egljN30TYCjSEtzVszDFWbryYskAOEmM3TKT2X2fdpA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;hP79TuWGBwIN0j9NH_fxn8Cvj-dNH_R7nFleeWCE2I4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;jJRB4cwP375y6GC0tr5SBIVuOa7Cnh4Mod3ebDS-Gkg&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;tSL-e1nLdWOU9sFMTCUu5P1tCzxA-TW-VWbHGzYtU7E&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;zVdghcmClMVWlUgGsGpSkCPkEHZ4u9oWj1SlIBlCc1o&quot;</span>
@@ -762,23 +764,23 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </ul>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">verification</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">egljN30TYCjSEtzVszDFWbryYskAOEmM3TKT2X2fdpA</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">jJRB4cwP375y6GC0tr5SBIVuOa7Cnh4Mod3ebDS-Gkg</span></code></p></li>
 <li><p>Disclosure:
 <code class="docutils literal notranslate"><span class="pre">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsi</span></code>
-<code class="docutils literal notranslate"><span class="pre">YXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2UiOiB7InR5cGUi</span></code>
-<code class="docutils literal notranslate"><span class="pre">OiAidm91Y2giLCAidGltZSI6ICIyMDIwLTAzLTE5VDEyOjQyWiIsICJhdHRl</span></code>
-<code class="docutils literal notranslate"><span class="pre">c3RhdGlvbiI6IHsidHlwZSI6ICJkaWdpdGFsX2F0dGVzdGF0aW9uIiwgInJl</span></code>
-<code class="docutils literal notranslate"><span class="pre">ZmVyZW5jZV9udW1iZXIiOiAiNjQ4NS0xNjE5LTM5NzYtNjY3MSIsICJkYXRl</span></code>
-<code class="docutils literal notranslate"><span class="pre">X29mX2lzc3VhbmNlIjogIjIwMjAtMDMtMTlUMTI6NDNaIiwgInZvdWNoZXIi</span></code>
-<code class="docutils literal notranslate"><span class="pre">OiB7Im9yZ2FuaXphdGlvbiI6ICJNaW5pc3Rlcm8gZGVsbCdpbnRlcm5vIn19</span></code>
-<code class="docutils literal notranslate"><span class="pre">fX1d</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">dHJ1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwi</span></code>
+<code class="docutils literal notranslate"><span class="pre">OiAiaGlnaCIsICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3VjaCIsICJ0aW1l</span></code>
+<code class="docutils literal notranslate"><span class="pre">IjogIjIwMjAtMDMtMTlUMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogeyJ0eXBl</span></code>
+<code class="docutils literal notranslate"><span class="pre">IjogImRpZ2l0YWxfYXR0ZXN0YXRpb24iLCAicmVmZXJlbmNlX251bWJlciI6</span></code>
+<code class="docutils literal notranslate"><span class="pre">ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImRhdGVfb2ZfaXNzdWFuY2UiOiAi</span></code>
+<code class="docutils literal notranslate"><span class="pre">MjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHsib3JnYW5pemF0aW9u</span></code>
+<code class="docutils literal notranslate"><span class="pre">IjogIk1pbmlzdGVybyBkZWxsJ2ludGVybm8ifX19fV0</span></code></p></li>
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;eluV5Og3gSNII8EYnsxA_A&quot;,</span> <span class="pre">&quot;verification&quot;,</span></code>
-<code class="docutils literal notranslate"><span class="pre">{&quot;assurance_level&quot;:</span> <span class="pre">&quot;high&quot;,</span> <span class="pre">&quot;evidence&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;vouch&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">{&quot;trust_framework&quot;:</span> <span class="pre">&quot;it_cie&quot;,</span> <span class="pre">&quot;assurance_level&quot;:</span> <span class="pre">&quot;high&quot;,</span> <span class="pre">&quot;evidence&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;vouch&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;time&quot;:</span> <span class="pre">&quot;2020-03-19T12:42Z&quot;,</span> <span class="pre">&quot;attestation&quot;:</span> <span class="pre">{&quot;type&quot;:</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;digital_attestation&quot;,</span> <span class="pre">&quot;reference_number&quot;:</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;6485-1619-3976-6671&quot;,</span> <span class="pre">&quot;date_of_issuance&quot;:</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;2020-03-19T12:43Z&quot;,</span> <span class="pre">&quot;voucher&quot;:</span> <span class="pre">{&quot;organization&quot;:</span> <span class="pre">&quot;Ministero</span></code>
-<code class="docutils literal notranslate"><span class="pre">dell'interno&quot;}}}}]</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">dell'Interno&quot;}}}}]</span></code></p></li>
 </ul>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">given_name</span></code>:</p>
 <ul class="simple">

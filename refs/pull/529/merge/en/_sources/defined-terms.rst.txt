@@ -251,4 +251,8 @@ Acronyms
     - Wallet Secure Cryptographic Device
   * - **WSCA**
     - Wallet Secure Cryptographic Application
+  * - **CIE**
+    - Electronic Identity Card
+  * - **SPID**
+    - Public Digital Identity System
 
