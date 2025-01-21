@@ -1214,10 +1214,10 @@ In the following table are listed HTTP Status Codes and related error codes that
       - ``invalid_transaction_id``
       - Only in case of deferred flow. The PID/(Q)EAA Issuer cannot fulfill the request because the Credential Request contains an invalid ``transaction_id``. Section 9.3 of [`OpenID4VCI`_].
     * - *500 Internal Server Error* [REQUIRED]
-      - `-`
+      - ``server_error``
       - The PID/(Q)EAA Issuer encountered an internal problem.
     * - *503 Service Unavailable* [REQUIRED]
-      - `-`
+      - ``temporarily_unavailable``
       - The PID/(Q)EAA Issuer is temporary unavailable.
     * - *504 Gateway Timeout* [OPTIONAL]
       - `-`
@@ -1302,10 +1302,10 @@ In the following table are listed HTTP Status Codes and related error codes that
       - ``invalid_notification_request``
       - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameter or request malformed. Section 10.3 of [`OpenID4VCI`_].
     * - *500 Internal Server Error* [REQUIRED]
-      - `-`
+      - ``server_error``
       - The PID/(Q)EAA Issuer encountered an internal problem.
     * - *503 Service Unavailable* [REQUIRED]
-      - `-`
+      - ``temporarily_unavailable``
       - The PID/(Q)EAA Issuer is temporary unavailable.
     * - *504 Gateway Timeout* [OPTIONAL]
       - `-`
