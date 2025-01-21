@@ -415,7 +415,7 @@ giving the references of the metadata protocol for each of these.
      - `OPENID4VCI`_
    * - Relying Party
      - Relying Party
-     - ``federation_entity``, ``wallet_relying_party``
+     - ``federation_entity``, ``openid_credential_verifier``
      - `OID-FED`_, `OpenID4VP`_
 
 
@@ -432,7 +432,7 @@ giving the references of the metadata protocol for each of these.
     Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the `authorization_servers` parameters, including the Authorization Server unique identifier.
     Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
     it could be necessary to include the relevant metadata type, either ``openid_relying_party`` 
-    or ``wallet_relying_party``.
+    or ``openid_credential_verifier``.
 
 
 Metadata of federation_entity Leaves
@@ -502,7 +502,7 @@ Below there is a non-normative example of an Subordinate Statement issued by an 
             ]
         },
         "metadata_policy": {
-            "wallet_relying_party": {
+            "openid_credential_verifier": {
                 "scope": {
                     "subset_of": [
                          "eu.europa.ec.eudiw.pid.1",

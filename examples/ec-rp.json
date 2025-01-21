@@ -29,7 +29,7 @@
             "policy_uri": "https://relying-party.example.org/public/privacy_policy.html",
             "logo_uri": "https://relying-party.example.org/public/logo.svg"
         },
-        "wallet_relying_party": {
+        "openid_credential_verifier": {
             "application_type": "web",
             "client_id": "https://relying-party.example.org",
             "client_name": "Organization Name",
@@ -40,8 +40,11 @@
             "request_uris": [
                 "https://relying-party.example.org/request_uri"
             ],
-            "response_uris_supported": [
+            "response_uris": [
                 "https://relying-party.example.org/response_uri"
+            ],
+            "redirect_uris": [
+                "https://relying-party.example.org/cb"
             ],
             "authorization_signed_response_alg": "ES256",
             "vp_formats": {
@@ -53,91 +56,6 @@
                     ]
                 }
             },
-            "presentation_definitions_supported": [
-                {
-                    "id": "d76c51b7-ea90-49bb-8368-6b3d194fc131",
-                    "input_descriptors": [
-                        {
-                            "id": "PersonIdentificationData",
-                            "name": "Person Identification Data",
-                            "purpose": "User Authentication",
-                            "format": {
-                                "dc+sd-jwt": {
-                                    "alg": [
-                                        "ES256",
-                                        "ES384",
-                                        "ES512"
-                                    ]
-                                }
-                            },
-                            "constraints": {
-                                "limit_disclosure": "required",
-                                "fields": [
-                                    {
-                                        "filter": {
-                                            "const": "PersonIdentificationData",
-                                            "type": "string"
-                                        },
-                                        "path": [
-                                            "$.vct"
-                                        ]
-                                    },
-                                    {
-                                        "filter": {
-                                            "type": "object"
-                                        },
-                                        "path": [
-                                            "$.cnf.jwk"
-                                        ]
-                                    },
-                                    {
-                                        "path": [
-                                            "$.personal_administrative_number"
-                                        ]
-                                    }
-                                ]
-                            }
-                        
-                        },      
-                        {
-                            "id": "WalletAttestation",
-                            "name": "Wallet Attestation",
-                            "purpose": "Wallet Authentication",
-                            "format": {
-                                "jwt": {
-                                    "alg": [
-                                        "ES256",
-                                        "ES384",
-                                        "ES512"
-                                    ]
-                                }
-                            },
-                            "constraints": {
-                                "limit_disclosure": "required",
-                                "fields": [
-                                    {
-                                        "filter": {
-                                            "type": "string"
-                                        },
-                                        "path": [
-                                            "$.iss"
-                                        ]
-                                    },
-                                    {
-                                        "filter": {
-                                            "type": "object"
-                                        },
-                                        "path": [
-                                            "$.cnf.jwk"
-                                        ]
-                                    }
-                                ]
-                            }
-                        }
-                    
-                    ]
-                } 
-            ],
             "jwks": {
                 "keys": [
                     {

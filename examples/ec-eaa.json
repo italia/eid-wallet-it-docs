@@ -470,7 +470,7 @@
                 ]
             }
         },
-        "wallet_relying_party": {
+        "openid_credential_verifier": {
             "application_type": "web",
             "client_id": "https://eaa-provider.example.org",
             "client_name": "Organization Name",
@@ -518,85 +518,6 @@
                     ]
                 }
             },
-            "presentation_definitions_supported": [
-                {
-                    "id": "d76c51b7-ea90-49bb-8368-6b3d194fc131",
-                    "input_descriptors": [
-                        {
-                            "id": "PersonIdentificationData",
-                            "format": {
-                                "dc+sd-jwt": {
-                                    "alg": [
-                                        "ES256",
-                                        "ES384",
-                                        "ES512"
-                                    ]
-                                },
-                                "constraints": {
-                                    "limit_disclosure": "required",
-                                    "fields": [
-                                        {
-                                            "filter": {
-                                                "const": "PersonIdentificationData",
-                                                "type": "string"
-                                            },
-                                            "path": [
-                                                "$.vct"
-                                            ]
-                                        },
-                                        {
-                                            "filter": {
-                                                "type": "object"
-                                            },
-                                            "path": [
-                                                "$.cnf.jwk"
-                                            ]
-                                        },
-                                        {
-                                            "path": [
-                                                "$.personal_administrative_number"
-                                            ]
-                                        }
-                                    ]
-                                }
-                            }
-                        },      
-                        {
-                            "id": "WalletAttestation",
-                            "format": {
-                                "jwt": {
-                                    "alg": [
-                                        "ES256",
-                                        "ES384",
-                                        "ES512"
-                                    ]
-                                },
-                                "constraints": {
-                                    "limit_disclosure": "required",
-                                    "fields": [
-                                        {
-                                            "filter": {
-                                                "type": "string"
-                                            },
-                                            "path": [
-                                                "$.iss"
-                                            ]
-                                        },
-                                        {
-                                            "filter": {
-                                                "type": "object"
-                                            },
-                                            "path": [
-                                                "$.cnf.jwk"
-                                            ]
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    ]
-                } 
-            ],
             "jwks": {
                 "keys": [
                     {
