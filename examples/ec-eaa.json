@@ -467,7 +467,16 @@
                         "y": "qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8"
                     }
                 ]
-            }
+            },
+            "trust_frameworks_supported": [
+                "it_cie",
+                "it_spid",
+                "it_wallet",
+                "eudi_wallet"
+            ],
+            "evidence_supported": [
+                "Vouch"
+            ]
         },
         "openid_credential_verifier": {
             "application_type": "web",

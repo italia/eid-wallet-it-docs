@@ -13,6 +13,7 @@
   "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
   "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
   "verification": {
+    "trust_framework": "it_cie",
     "assurance_level": "high",
     "evidence": [
     {
