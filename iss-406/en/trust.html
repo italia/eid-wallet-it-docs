@@ -651,7 +651,7 @@ giving the references of the metadata protocol for each of these.</p>
 </tr>
 <tr class="row-odd"><td><p>Relying Party</p></td>
 <td><p>Relying Party</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_relying_party</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code></p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a></p></td>
 </tr>
 </tbody>
@@ -669,7 +669,7 @@ it MUST incorporate both
 Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the <cite>authorization_servers</cite> parameters, including the Authorization Server unique identifier.
 Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
 it could be necessary to include the relevant metadata type, either <code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code>
-or <code class="docutils literal notranslate"><span class="pre">wallet_relying_party</span></code>.</p>
+or <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>.</p>
 </div>
 </section>
 </section>
@@ -743,7 +743,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
         ]
     },
     &quot;metadata_policy&quot;: {
-        &quot;wallet_relying_party&quot;: {
+        &quot;openid_credential_verifier&quot;: {
             &quot;scope&quot;: {
                 &quot;subset_of&quot;: [
                      &quot;eu.europa.ec.eudiw.pid.1&quot;,
