@@ -639,7 +639,7 @@ Below is a non-normative example of an error response.
 .. literalinclude:: ../../examples/par-error.json
   :language: JSON  
 
-In the following table are listed HTTP Status Codes that are supported for the error response:
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
 .. list-table:: 
     :widths: 20 20 60
@@ -656,7 +656,7 @@ In the following table are listed HTTP Status Codes that are supported for the e
       - The PID/(Q)EAA Issuer cannot fulfill the request because the requested scope is invalid or unknown. (:rfc:`6749#section-5.2`).
     * - *401 Unauthorized* [REQUIRED]
       - ``invalid_client``
-      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid parameters Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
     * - *405 Method not allowed* [OPTIONAL]
       - `-`
       - The PID/(Q)EAA Issuer cannot fulfill the request because POST method was not used in the request. (:rfc:`9126#section-2.3`).
@@ -672,6 +672,9 @@ In the following table are listed HTTP Status Codes that are supported for the e
     * - *503 Service Unavailable* [REQUIRED]
       - ``temporarily_unavailable``
       - The PID/(Q)EAA Issuer is temporary unavailable. (:rfc:`6749#section-4.1.2.1`).
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
 
 
@@ -732,10 +735,63 @@ If the authentication is successful the PID/(Q)EAA Issuer redirects the User by 
       - Unique identifier of the PID/(Q)EAA Issuer who created the Authentication Response. The Wallet Instance MUST validate this parameter.
       - [:rfc:`9207`], [:rfc:`7519`, Section 4.1.1.].
 
-If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`. The response MUST use *application/json* as the content type and MUST include the following parameters:
+If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`. 
+In case of invalid/missing ``redirect_uri`` or ``client_id`` Authorization Server MUST NOT redirect the User to the redirection URI and MUST inform him of the error.
+If any other error occurs the Authorization Server MUST redirect the User by adding the following query parameters as required to the *redirect_uri* using the *application/x-www-form-urlencoded* format:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+  - *state*. The exact value of ``state`` parameter contained in the Request Object.
+
+Below is a non-normative example of an error response.
+
+.. code:: http
+
+  HTTP/1.1 302 Found
+  Location: https://client.example.com/cb?
+  error=invalid_request
+  &error_description=Unsupported%20response_type%20value
+  &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+
+In case of Authorization Server redirects the user to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *302 Found* [REQUIRED]
+      - ``invalid_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. (:rfc:`6749#section-4.1.2.1`).
+    * - *302 Found* [REQUIRED]
+      - ``unauthorized_client``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the client is not authorized to request an authorization code. (:rfc:`6749#section-4.1.2.1`).
+    * - *302 Found* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem. (:rfc:`6749#section-4.1.2.1`).
+    * - *302 Found* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable. (:rfc:`6749#section-4.1.2.1`).
+
+In case of Authorization Server doesn't redirect the user to the *redirect_uri* the following HTTP Status Codes are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 80
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid/missing ``redirect_uri`` or ``client_id`` parameter.
+    * - *500 Internal Server Error* [REQUIRED]
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
+
 
 Token endpoint
 --------------
@@ -852,11 +908,17 @@ If the Token Request is successfully validated, the Authorization Server provide
             - **credential_identifiers**: Array of strings, each uniquely identifying a credential dataset that is available for the issuance.
       - [`OpenID4VCI`_].
 
-If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`.
+If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use *application/json* as the content type and MUST include the following parameters:
+
+  - *error*. The error code.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response.
+
 
 .. code:: http
 
-  HTTP/1.1 400 Bad Request
+  HTTP/1.1 401 Unauthorized
   Content-Type: application/json;charset=UTF-8
   Cache-Control: no-store
   Pragma: no-cache
@@ -864,6 +926,36 @@ If any errors occur during the validation of the Token Request, the Authorizatio
 .. literalinclude:: ../../examples/token-error.json
   :language: JSON  
 
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_grant``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the provided authorization code is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``unsupported_grant_type``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the authorization grant type is not supported. (:rfc:`6749#section-5.2`).  
+    * - *401 Unauthorized* [REQUIRED]
+      - ``invalid_client``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid parameters Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
+    * - *500 Internal Server Error* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
 Access Token
 ^^^^^^^^^^^^
@@ -1068,10 +1160,13 @@ The Credential Response contains the following parameters:
     - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Flow`. It MUST be invalidated after the User obtains the Credential.
     - Section 8.3 of [`OpenID4VCI`_].
 
-If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an error response as defined in Section 8.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+In case of the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
+If any other error occurs, the PID/(Q)EAA Provider MUST return an error response as defined in Section 8.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response.
 
 .. code:: http
 
@@ -1081,6 +1176,52 @@ If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an err
 
 .. literalinclude:: ../../examples/credential-error.json
   :language: JSON  
+
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_credential_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``unsupported_credential_type``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the requested Credential type is not supported. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``unsupported_credential_format``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the requested Credential Format is not supported. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_proof``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the ``proof`` parameter in the Credential Request is invalid or absent. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_nonce``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the ``proof`` parameter in the Credential Request uses an invalid nonce. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_encryption_parameters``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the encryption parameters in the Credential Request are invalid or missing. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``credential_request_denied``
+      - The Credential Request has not been accepted by the PID/(Q)EAA Issuer. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``issuance_pending``
+      - Only in case of deferred flow. The PID/(Q)EAA Issuer cannot fulfill the request because the Credential is not yet available for the issuance. Section 9.3 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_transaction_id``
+      - Only in case of deferred flow. The PID/(Q)EAA Issuer cannot fulfill the request because the Credential Request contains an invalid ``transaction_id``. Section 9.3 of [`OpenID4VCI`_].
+    * - *500 Internal Server Error* [REQUIRED]
+      - `-`
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - `-`
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
 Notification endpoint
 ---------------------
@@ -1127,4 +1268,46 @@ Notification Response
 The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 10.2 of [`OpenID4VCI`_]. 
 
 In case of errors, what is described in Section 10.3 of [`OpenID4VCI`_] MUST apply.
+
+In case of the Notification Request does not contain a valid Access Token, the Notification Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
+If any other error occurs, the PID/(Q)EAA Provider MUST return an error response as defined in Section 10.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+
+  - *error*. The error code.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response.
+
+.. code:: http
+
+  HTTP/1.1 400 Bad Request
+  Content-Type: application/json
+  Cache-Control: no-store
+
+.. literalinclude:: ../../examples/notification-error.json
+  :language: JSON  
+
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_notification_id``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid ``notification_id`` parameter. Section 10.3 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_notification_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameter or request malformed. Section 10.3 of [`OpenID4VCI`_].
+    * - *500 Internal Server Error* [REQUIRED]
+      - `-`
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - `-`
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
