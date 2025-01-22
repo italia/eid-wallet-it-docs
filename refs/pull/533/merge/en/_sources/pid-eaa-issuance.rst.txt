@@ -944,6 +944,9 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *400 Bad Request* [REQUIRED]
       - ``unsupported_grant_type``
       - The PID/(Q)EAA Issuer cannot fulfill the request because the authorization grant type is not supported. (:rfc:`6749#section-5.2`).  
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_dpop_proof``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 5 of [:rfc:`9449`].
     * - *401 Unauthorized* [REQUIRED]
       - ``invalid_client``
       - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid parameters Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
@@ -1059,8 +1062,6 @@ The Wallet Instance when requests the PID/(Q)EAA to the PID/(Q)EAA Credential en
 The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DPoP HTTP Header parameter, according to the steps defined in (:rfc:`9449`) Section 4.3. The *DPoP proof* in addition to the values that are defined in the Token Endpoint section MUST contain the following claim:
 
   - **ath**: hash value of the Access Token encoded in ASCII. The value MUST use the base64url encoding (as defined in Section 2 of :rfc:`7515`) with the SHA-256 algorithm.
-
-If the *DPoP proof* is invalid, the Credential endpoint returns an error response per Section 5.2 of [:rfc:`6749`] with `invalid_dpop_proof` as the value of the error parameter.
 
 .. warning::
   The Wallet Instance MUST create a **new DPoP proof** for the Credential request and MUST NOT use the previously created proof for the Token Endpoint.
@@ -1213,6 +1214,9 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_transaction_id``
       - Only in case of deferred flow. The PID/(Q)EAA Issuer cannot fulfill the request because the Credential Request contains an invalid ``transaction_id``. Section 9.3 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_dpop_proof``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 7 of [:rfc:`9449`].
     * - *500 Internal Server Error* [REQUIRED]
       - ``server_error``
       - The PID/(Q)EAA Issuer encountered an internal problem.
