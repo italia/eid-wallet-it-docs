@@ -884,7 +884,7 @@ The payload of a **DPoP JWT Proof** MUST contain the following claims:
 Token Response
 ^^^^^^^^^^^^^^^
 
-If the Token Request is successfully validated, the Authorization Server provides an HTTP Token Response with a *200 (OK)* status code. The Token Response contains the following mandatory claims.
+If the Token Request is successfully validated, the Authorization Server provides an HTTP Token Response with a *200 (OK)* status code. The Token Response contains the following claims.
 
 .. list-table::
     :widths: 20 60 20
