@@ -1077,7 +1077,7 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
     - REQUIRED when an Authorization Details of type *openid_credential* was returned from the Token Response. It MUST NOT be used otherwise. This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response. It MUST NOT be used if ``credential_configuration_id`` is present.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **credential_configuration_id**
-    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **proof**
     - REQUIRED. JSON object containing proof of possession of the key material the issued credential shall be bound to. The proof object MUST contain the following mandatory claims:
@@ -1148,7 +1148,7 @@ The Credential Response contains the following parameters:
   * - **credentials**
     - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. It contains the following parameters:
 
-          - **credential**: REQUIRED. String Containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+          - **credential**: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
   * - **lead_time**
     - CONDITIONAL. REQUIRED if ``credentials`` is not present. The amount of time (in seconds) required before making a new Credential Request.

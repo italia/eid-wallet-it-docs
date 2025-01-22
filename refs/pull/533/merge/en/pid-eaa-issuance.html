@@ -1480,7 +1480,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <td><p>Section 8.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_configuration_id</strong></p></td>
-<td><p>REQUIRED if <code class="docutils literal notranslate"><span class="pre">credential_identifiers</span></code> parameter is absent in the Token Response. It MUST NOT be used otherwise. JSON String. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
+<td><p>REQUIRED if <code class="docutils literal notranslate"><span class="pre">credential_identifiers</span></code> parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
 <td><p>Section 8.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>proof</strong></p></td>
@@ -1579,7 +1579,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">lead_time</span></code> and <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code> are not present. It contains the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>credential</strong>: REQUIRED. String Containing one issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the issued Credential.</p></li>
+<li><p><strong>credential</strong>: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the issued Credential.</p></li>
 </ul>
 </div></blockquote>
 </td>
