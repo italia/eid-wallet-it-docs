@@ -475,7 +475,7 @@
                 "eudi_wallet"
             ],
             "evidence_supported": [
-                "Vouch"
+                "vouch"
             ]
         },
         "openid_credential_verifier": {
