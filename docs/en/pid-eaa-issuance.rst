@@ -753,7 +753,7 @@ Below is a non-normative example of an error response.
   &error_description=Unsupported%20response_type%20value
   &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
 
-In case of Authorization Server redirects the user to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
+In case of Authorization Server redirects the User to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
 
 .. list-table:: 
     :widths: 20 20 60
