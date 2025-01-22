@@ -278,7 +278,7 @@ Below is a non-normative example of a Nonce Request:
 .. code-block:: http
 
     POST /nonce HTTP/1.1
-    Host: credential-issuer.example.com
+    Host: eaa-provider.example.org
     Content-Length: 0
 
 **Step 17 (Nonce Response)**: The PID/(Q)EAA Provider provides the `c_nonce` to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 20 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. 

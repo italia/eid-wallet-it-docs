@@ -482,7 +482,7 @@ The <code class="docutils literal notranslate"><span class="pre">OAuth-Client-At
 <p><strong>Step 16 (Nonce Request)</strong>: According to Section 7.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh <code class="docutils literal notranslate"><span class="pre">c_nonce</span></code> that can be used to create the proof of possession of key material for the subsequent request to the Credential Endpoint.</p>
 <p>Below is a non-normative example of a Nonce Request:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/nonce</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">credential-issuer.example.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">eaa-provider.example.org</span>
 <span class="na">Content-Length</span><span class="o">:</span> <span class="l">0</span>
 </pre></div>
 </div>
