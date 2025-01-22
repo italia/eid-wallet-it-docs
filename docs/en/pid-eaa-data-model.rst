@@ -269,6 +269,9 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **personal_administrative_number**
       - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - Commission Implementing Regulation `EU_2024/2977`_
+    * - **tax_id_code**
+      - [SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
+      - 
 
 The PID attribute schema, which encompasses all potential User data, is defined in `ARF v1.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#21-identification-and-authentication-to-access-online-services>`_, and furthermore detailed in the `PID Rulebook <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#23-pid-attributes>`_.
 
@@ -300,7 +303,7 @@ In the following the disclosure list is given
 
 **Claim** ``verification``:
 
--  SHA-256 Hash: ``jJRB4cwP375y6GC0tr5SBIVuOa7Cnh4Mod3ebDS-Gkg``
+-  SHA-256 Hash: ``h7Egl5H9gTPC_FCU845aadvsC--dTjy9Nrstxh-caRo``
 -  Disclosure:
    ``WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsi``
    ``dHJ1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwi``
@@ -309,7 +312,7 @@ In the following the disclosure list is given
    ``IjogImRpZ2l0YWxfYXR0ZXN0YXRpb24iLCAicmVmZXJlbmNlX251bWJlciI6``
    ``ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImRhdGVfb2ZfaXNzdWFuY2UiOiAi``
    ``MjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHsib3JnYW5pemF0aW9u``
-   ``IjogIk1pbmlzdGVybyBkZWxsJ2ludGVybm8ifX19fV0``
+   ``IjogIk1pbmlzdGVybyBkZWxsJ0ludGVybm8ifX19fV0``
 -  Contents: ``["eluV5Og3gSNII8EYnsxA_A", "verification",``
    ``{"trust_framework": "it_cie", "assurance_level": "high", "evidence": {"type": "vouch",``
    ``"time": "2020-03-19T12:42Z", "attestation": {"type":``
@@ -367,47 +370,59 @@ In the following the disclosure list is given
 -  Contents: ``["G02NSrQfjFXQ7Io09syajA", "personal_administrative_number",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
+**Claim** ``tax_id_code``:
+
+-  SHA-256 Hash: ``LqrtU2rlA51U97cMiYhqwa-is685bYiOJImp8a5KGNA``
+-  Disclosure:
+   ``WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgInRheF9pZF9jb2RlIiwgIlRJ``
+   ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
+-  Contents: ``["lklxF5jMYlGTPUovMNIvCA", "tax_id_code",``
+``"TINIT-XXXXXXXXXXXXXXXX"]``
+
+
 The combined format for the PID issuance is given by
 
 .. code-block::
 
   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZEI2N2dM
-  N2NrM1RGaUlBZjdONl83U0h2cWswTURZTUVRY29HR2xrVUFBdyJ9.eyJfc2QiOiBbIlZ
-  RSS1TMW1UMUt4ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLCAiWXJjLXM
-  tV1NyNGV4RVl0cURFc21SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSIsICJfTkdqanNzM21
-  xTzI1OGFZdlQ0dGdJRmVFdDg0N0ZQVFl0ZzMwZjBKREdZIiwgImVnbGpOMzBUWUNqU0V
-  0elZzekRGV2JyeVlza0FPRW1NM1RLVDJYMmZkcEEiLCAiaFA3OVR1V0dCd0lOMGo5Tkh
-  fZnhuOEN2ai1kTkhfUjduRmxlZVdDRTJJNCIsICJzMVhLNWYycE0zLWFGVGF1WGhtdmQ
-  5cHlRVEo2Rk1VaGMtSlhmSHJ4aExrIiwgInRTTC1lMW5MZFdPVTlzRk1UQ1V1NVAxdEN
-  6eEEtVFctVldiSEd6WXRVN0UiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU
-  5b1dqMVNsSUJsQ2MxbyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRwczo
-  vL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnIiwgInN1YiI6ICJOemJMc1hoOHVEQ2NkN25
-  vV1hGWkFmSGt4WnNSR0M5WHMiLCAiaXNzdWluZ19hdXRob3JpdHkiOiAiSXN0aXR1dG8
-  gUG9saWdyYWZpY28gZSBaZWNjYSBkZWxsbyBTdGF0byIsICJpc3N1aW5nX2NvdW50cnk
-  iOiAiSVQiLCAic3RhdHVzIjogeyJzdGF0dXNfYXNzZXJ0aW9uIjogeyJjcmVkZW50aWF
-  sX2hhc2hfYWxnIjogInNoYS0yNTYifX0sICJ2Y3QiOiAiaHR0cHM6Ly9waWRwcm92aWR
-  lci5leGFtcGxlLm9yZy92MS4wL3BlcnNvbmlkZW50aWZpY2F0aW9uZGF0YSIsICJ2Y3Q
-  jaW50ZWdyaXR5IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE1MTE4YWNjZTI4NmM5YmI1NmI
-  2M2E0NDNkYzg1YWY2NTNjZDczZjYwNzhiMWYiLCAiX3NkX2FsZyI6ICJzaGEtMjU2Iiw
-  gImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiA
-  iVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5Ijo
-  gIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19.pq
-  x24aAA6kVx5RzMcVW7bUgKDSBhCdJSktJsxoYtWzMJGC02e81OxzZECGKs-gaAl5JHin
-  xsfXj2_ejh_3dung~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODM
-  wMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIH
-  siYXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2UiOiB7InR5cGUiOiAidm
-  91Y2giLCAidGltZSI6ICIyMDIwLTAzLTE5VDEyOjQyWiIsICJhdHRlc3RhdGlvbiI6IH
-  sidHlwZSI6ICJkaWdpdGFsX2F0dGVzdGF0aW9uIiwgInJlZmVyZW5jZV9udW1iZXIiOi
-  AiNjQ4NS0xNjE5LTM5NzYtNjY3MSIsICJkYXRlX29mX2lzc3VhbmNlIjogIjIwMjAtMD
-  MtMTlUMTI6NDNaIiwgInZvdWNoZXIiOiB7Im9yZ2FuaXphdGlvbiI6ICJNaW5pc3Rlcm
-  8gZGVsbCdpbnRlcm5vIn19fX1d~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpd
-  mVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbW
-  lseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcn
-  RoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgI
-  mJpcnRoX3BsYWNlIiwgIlJvbWEiXQ~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgIm
-  5hdGlvbmFsaXR5IiwgIklUIl0~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcn
-  NvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWF
-  hYIl0~
+  N2NrM1RGaUlBZjdONl83U0h2cWswTURZTUVRY29HR2xrVUFBdyJ9.eyJfc2QiOiBbIkx
+  xcnRVMnJsQTUxVTk3Y01pWWhxd2EtaXM2ODViWWlPSkltcDhhNUtHTkEiLCAiVlFJLVM
+  xbVQxS3hmcTJvOEo5aW83eE1NWDJNSXhhRzlNOVBlSlZxck1jQSIsICJZcmMtcy1XU3I
+  0ZXhFWXRxREVzbVJsN3Nwb1ZmbUJ4aXhQMTJlNHN5cU5FIiwgIl9OR2pqc3MzbXFPMjU
+  4YVl2VDR0Z0lGZUV0ODQ3RlBUWXRnMzBmMEpER1kiLCAiaDdFZ2w1SDlnVFBDX0ZDVTg
+  0NWFhZHZzQy0tZFRqeTlOcnN0eGgtY2FSbyIsICJoUDc5VHVXR0J3SU4wajlOSF9meG4
+  4Q3ZqLWROSF9SN25GbGVlV0NFMkk0IiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlweVF
+  USjZGTVVoYy1KWGZIcnhoTGsiLCAidFNMLWUxbkxkV09VOXNGTVRDVXU1UDF0Q3p4QS1
+  UVy1WV2JIR3pZdFU3RSIsICJ6VmRnaGNtQ2xNVldsVWdHc0dwU2tDUGtFSFo0dTlvV2o
+  xU2xJQmxDYzFvIl0sICJleHAiOiAxODgzMDAwMDAwLCAiaXNzIjogImh0dHBzOi8vcGl
+  kcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZ
+  aQWZIa3hac1JHQzlYcyIsICJpc3N1aW5nX2F1dGhvcml0eSI6ICJJc3RpdHV0byBQb2x
+  pZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvIiwgImlzc3VpbmdfY291bnRyeSI6ICJ
+  JVCIsICJzdGF0dXMiOiB7InN0YXR1c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGF
+  zaF9hbGciOiAic2hhLTI1NiJ9fSwgInZjdCI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV
+  4YW1wbGUub3JnL3YxLjAvcGVyc29uaWRlbnRpZmljYXRpb25kYXRhIiwgInZjdCNpbnR
+  lZ3JpdHkiOiAiYzVmNzNlMjUwZmU4NjlmMjRkMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ
+  0M2RjODVhZjY1M2NkNzNmNjA3OGIxZiIsICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25
+  mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0F
+  FUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnh
+  qaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.wPDBBKU
+  e8MdDIefro4oZFHlwpKuoYPlE4FcMfeaxrI_YTLAvsyBAzKOku2PnzvavSR0_D-_s20j
+  sL_2vfWYN_Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAw
+  MDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsidHJ
+  1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCI
+  sICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3VjaCIsICJ0aW1lIjogIjIwMjAtMDMtMTl
+  UMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogeyJ0eXBlIjogImRpZ2l0YWxfYXR0ZXN0YXR
+  pb24iLCAicmVmZXJlbmNlX251bWJlciI6ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImR
+  hdGVfb2ZfaXNzdWFuY2UiOiAiMjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHs
+  ib3JnYW5pemF0aW9uIjogIk1pbmlzdGVybyBkZWxsJ0ludGVybm8ifX19fV0~WyI2SWo
+  3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSTha
+  V205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19P
+  NjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJ
+  BSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoX3BsYWNlIiwgIlJvbWEiXQ~WyJQ
+  YzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgIm5hdGlvbmFsaXR5IiwgIklUIl0~WyJHMDJO
+  U3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJl
+  ciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0~WyJsa2x4RjVqTVlsR1RQVW92TU5J
+  dkNBIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~
 
 (Q)EAA non-normative examples
 -----------------------------
