@@ -1148,7 +1148,7 @@ The Credential Response contains the following parameters:
   * - **credentials**
     - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. It contains the following parameters:
 
-          - **credential**: REQUIRED. String Containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+          - **credential**: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
   * - **lead_time**
     - CONDITIONAL. REQUIRED if ``credentials`` is not present. The amount of time (in seconds) required before making a new Credential Request.
