@@ -304,7 +304,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[SD]. REQUIRED. Object containing User authentication and User data verification information. When the Credential type is set to <cite>PersonIdentificationData</cite>, the <cite>verification</cite> claim MUST be included by the Issuer. When present, the <cite>verification</cite> claim MUST include the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the <cite>trust_frameworks_supported</cite> map in the Credential Issuer Metadata.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the <cite>trust_frameworks_supported</cite> map provided within the Credential Issuer Metadata.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">assurance_level</span></code>: String identifying the level of identity assurance guaranteed during the User authentication process.</p></li>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">evidence</span></code>: Each entry of the array MUST contain the following members:</dt><dd><ul>

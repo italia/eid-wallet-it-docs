@@ -133,7 +133,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
     * - **verification**
       - [SD]. REQUIRED. Object containing User authentication and User data verification information. When the Credential type is set to `PersonIdentificationData`, the `verification` claim MUST be included by the Issuer. When present, the `verification` claim MUST include the following sub-value:
 
-          * ``trust_framework``: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map in the Credential Issuer Metadata.
+          * ``trust_framework``: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
           * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
           * ``evidence``: Each entry of the array MUST contain the following members:
               - ``type``: It represents evidence type. It MUST be set to ``vouch``.
