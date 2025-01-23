@@ -254,5 +254,5 @@ Acronyms
   * - **CIE**
     - National Electronic Identity Card
   * - **SPID**
-    - Public Digital Identity System
+    - Italian Public Digital Identity System
 
