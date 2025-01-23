@@ -8,7 +8,7 @@ The `EIDAS-ARF`_ framework empowers Member States to establish the interfaces, t
     - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni" (`MODI`_);
     - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati" (`PDND`_).
 
-To leverage the PDND, entities must formally subscribe, becoming **Participants** (*Aderenti*). Within the PDND infrastructure, Participants can assume the following roles:
+To leverage the PDND, entities MUST formally be subscribed becoming **Participants** (*Aderenti*). Within the PDND infrastructure, Participants MUST assume at least one of the the following roles:
 
     - **Providers** (*Erogatori*): expose e-Services to other Participants.
     - **Consumers** (*Fruitori*): utilize e-Services offered by Providers within the PDND infrastructure.
@@ -49,7 +49,7 @@ This specification is based on the following set of requirements:
 
     * - **Security Pattern**
       - **Compliant With**
-    * - **[REST_JWS_2021_POP]** JWS POP Voucher Issuing Profile (*Annex 3 - Standards and technical details used for Voucher Authorization* [`PDND`_]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.
+    * - **[REST_JWS_2021_POP]** JWS POP Voucher Issuing Profile (*Annex 3 - Standards and technical details used for Voucher Authorization* [`PDND`_]): REQUIRED. It adds a proof of possession on the Voucher. The Consumer using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.
       - R2, R4
     * - **[ID_AUTH_CHANNEL_01]** Direct Trust Transport-Level Security (*Annex 2 - Security Patterns* [`MODI`_]): REQUIRED. It protects the communication between the Consumer and the Provider by ensuring confidentiality, integrity, identification of the Provider, and mitigation against replay attack and spoofing.
       - R1, R2
@@ -71,7 +71,7 @@ In addition, this specification defines and applies a custom security pattern:
       - R2
 
 
-Some security patterns defined in `PDND`_ and `MODI`_ are not applicable as they do not comply with the requirements defined above:
+The following security patterns defined in `PDND`_ and `MODI`_ MUST NOT be used as they do not comply with the requirements defined above:
 
     - The following patterns can only be used when the Consumer cannot subscribe to the PDND infrastructure (i.e., the trust between the Participants needs to be established in a direct form), thus not complying with **R1**:
 
@@ -796,7 +796,7 @@ The **Provider** MUST comply with the following prerequisites:
 
 .. note:: 
 
-    The key ring on the Provider's side is the reciprocal entity to the Client on the Consumer's side. This component serves as a store for cryptographic material, thus enabling Consumers to verify the integrity of responses transmitted by Providers.
+    The Provider's key ring is the counterpart to the Client on the Consumer's side. It stores cryptographic material, allowing Consumers to verify the integrity of responses from Providers.
 
 Flow
 -------
