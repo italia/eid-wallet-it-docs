@@ -242,7 +242,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 </tbody>
 </table>
-<p>The JWT payload contains the following parameters. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].</p>
+<p>The JWT payload contains the following claims. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -289,7 +289,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> and Section 11 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>cnf</strong></p></td>
-<td><p>[NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
+<td><p>[NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a <strong>cnf</strong> (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the <strong>cnf</strong> parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.</p></td>
 <td><p><a class="reference external" href="https://www.iana.org/go/rfc7800">[RFC7800, Section 3.1]</a> and Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vct</strong></p></td>
@@ -301,9 +301,10 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>Section 6.1 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>, [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>verification</strong></p></td>
-<td><p>[SD]. REQUIRED. Object containing User authentication and User data verification information. When the Credential type is set to <cite>PersonIdentificationData</cite>, the <cite>verification</cite> claim MUST be included by the Issuer. Whn present, the <cite>verification</cite> claim MUST include the following sub-value:</p>
+<td><p>[SD]. REQUIRED. Object containing User authentication and User data verification information. When the Credential type is set to <cite>PersonIdentificationData</cite>, the <cite>verification</cite> claim MUST be included by the Issuer. When present, the <cite>verification</cite> claim MUST include the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the <cite>trust_frameworks_supported</cite> map in the Credential Issuer Metadata.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">assurance_level</span></code>: String identifying the level of identity assurance guaranteed during the User authentication process.</p></li>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">evidence</span></code>: Each entry of the array MUST contain the following members:</dt><dd><ul>
@@ -657,6 +658,10 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example <code class="docutils literal notranslate"><span class="pre">TINIT-&lt;ItalianTaxIdentificationNumber&gt;</span></code></p></td>
 <td><p>Commission Implementing Regulation <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2977/">EU_2024/2977</a></p></td>
 </tr>
+<tr class="row-even"><td><p><strong>tax_id_code</strong></p></td>
+<td><p>[SD]. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example <code class="docutils literal notranslate"><span class="pre">TINIT-&lt;ItalianTaxIdentificationNumber&gt;</span></code></p></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p>The PID attribute schema, which encompasses all potential User data, is defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#21-identification-and-authentication-to-access-online-services">ARF v1.4</a>, and furthermore detailed in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#23-pid-attributes">PID Rulebook</a>.</p>
@@ -679,6 +684,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://pidprovider.example.org/v1.0/personidentificationdata&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vct#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;trust_framework&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it_cie&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;assurance_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;evidence&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -700,7 +706,8 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="w">  </span><span class="nt">&quot;birth_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1980-01-10&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;birth_place&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Roma&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;nationality&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
+<span class="w">  </span><span class="nt">&quot;personal_administrative_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tax_id_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -719,10 +726,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;LqrtU2rlA51U97cMiYhqwa-is685bYiOJImp8a5KGNA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;VQI-S1mT1Kxfq2o8J9io7xMMX2MIxaG9M9PeJVqrMcA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;_NGjjss3mqO258aYvT4tgIFeEt847FPTYtg30f0JDGY&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;egljN30TYCjSEtzVszDFWbryYskAOEmM3TKT2X2fdpA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;h7Egl5H9gTPC_FCU845aadvsC--dTjy9Nrstxh-caRo&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;hP79TuWGBwIN0j9NH_fxn8Cvj-dNH_R7nFleeWCE2I4&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;tSL-e1nLdWOU9sFMTCUu5P1tCzxA-TW-VWbHGzYtU7E&quot;</span><span class="p">,</span>
@@ -762,23 +770,23 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </ul>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">verification</span></code>:</p>
 <ul class="simple">
-<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">egljN30TYCjSEtzVszDFWbryYskAOEmM3TKT2X2fdpA</span></code></p></li>
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">h7Egl5H9gTPC_FCU845aadvsC--dTjy9Nrstxh-caRo</span></code></p></li>
 <li><p>Disclosure:
 <code class="docutils literal notranslate"><span class="pre">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsi</span></code>
-<code class="docutils literal notranslate"><span class="pre">YXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2UiOiB7InR5cGUi</span></code>
-<code class="docutils literal notranslate"><span class="pre">OiAidm91Y2giLCAidGltZSI6ICIyMDIwLTAzLTE5VDEyOjQyWiIsICJhdHRl</span></code>
-<code class="docutils literal notranslate"><span class="pre">c3RhdGlvbiI6IHsidHlwZSI6ICJkaWdpdGFsX2F0dGVzdGF0aW9uIiwgInJl</span></code>
-<code class="docutils literal notranslate"><span class="pre">ZmVyZW5jZV9udW1iZXIiOiAiNjQ4NS0xNjE5LTM5NzYtNjY3MSIsICJkYXRl</span></code>
-<code class="docutils literal notranslate"><span class="pre">X29mX2lzc3VhbmNlIjogIjIwMjAtMDMtMTlUMTI6NDNaIiwgInZvdWNoZXIi</span></code>
-<code class="docutils literal notranslate"><span class="pre">OiB7Im9yZ2FuaXphdGlvbiI6ICJNaW5pc3Rlcm8gZGVsbCdpbnRlcm5vIn19</span></code>
-<code class="docutils literal notranslate"><span class="pre">fX1d</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">dHJ1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwi</span></code>
+<code class="docutils literal notranslate"><span class="pre">OiAiaGlnaCIsICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3VjaCIsICJ0aW1l</span></code>
+<code class="docutils literal notranslate"><span class="pre">IjogIjIwMjAtMDMtMTlUMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogeyJ0eXBl</span></code>
+<code class="docutils literal notranslate"><span class="pre">IjogImRpZ2l0YWxfYXR0ZXN0YXRpb24iLCAicmVmZXJlbmNlX251bWJlciI6</span></code>
+<code class="docutils literal notranslate"><span class="pre">ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImRhdGVfb2ZfaXNzdWFuY2UiOiAi</span></code>
+<code class="docutils literal notranslate"><span class="pre">MjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHsib3JnYW5pemF0aW9u</span></code>
+<code class="docutils literal notranslate"><span class="pre">IjogIk1pbmlzdGVybyBkZWxsJ0ludGVybm8ifX19fV0</span></code></p></li>
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;eluV5Og3gSNII8EYnsxA_A&quot;,</span> <span class="pre">&quot;verification&quot;,</span></code>
-<code class="docutils literal notranslate"><span class="pre">{&quot;assurance_level&quot;:</span> <span class="pre">&quot;high&quot;,</span> <span class="pre">&quot;evidence&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;vouch&quot;,</span></code>
+<code class="docutils literal notranslate"><span class="pre">{&quot;trust_framework&quot;:</span> <span class="pre">&quot;it_cie&quot;,</span> <span class="pre">&quot;assurance_level&quot;:</span> <span class="pre">&quot;high&quot;,</span> <span class="pre">&quot;evidence&quot;:</span> <span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;vouch&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;time&quot;:</span> <span class="pre">&quot;2020-03-19T12:42Z&quot;,</span> <span class="pre">&quot;attestation&quot;:</span> <span class="pre">{&quot;type&quot;:</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;digital_attestation&quot;,</span> <span class="pre">&quot;reference_number&quot;:</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;6485-1619-3976-6671&quot;,</span> <span class="pre">&quot;date_of_issuance&quot;:</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;2020-03-19T12:43Z&quot;,</span> <span class="pre">&quot;voucher&quot;:</span> <span class="pre">{&quot;organization&quot;:</span> <span class="pre">&quot;Ministero</span></code>
-<code class="docutils literal notranslate"><span class="pre">dell'interno&quot;}}}}]</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">dell'Interno&quot;}}}}]</span></code></p></li>
 </ul>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">given_name</span></code>:</p>
 <ul class="simple">
@@ -829,44 +837,55 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;G02NSrQfjFXQ7Io09syajA&quot;,</span> <span class="pre">&quot;personal_administrative_number&quot;,</span></code>
 <code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p></li>
 </ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">LqrtU2rlA51U97cMiYhqwa-is685bYiOJImp8a5KGNA</span></code></p></li>
+<li><p>Disclosure:
+<code class="docutils literal notranslate"><span class="pre">WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgInRheF9pZF9jb2RlIiwgIlRJ</span></code>
+<code class="docutils literal notranslate"><span class="pre">TklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;lklxF5jMYlGTPUovMNIvCA&quot;,</span> <span class="pre">&quot;tax_id_code&quot;,</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;]</span></code></p>
 <p>The combined format for the PID issuance is given by</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZEI2N2dM</span>
-<span class="n">N2NrM1RGaUlBZjdONl83U0h2cWswTURZTUVRY29HR2xrVUFBdyJ9</span><span class="o">.</span><span class="n">eyJfc2QiOiBbIlZ</span>
-<span class="n">RSS1TMW1UMUt4ZnEybzhKOWlvN3hNTVgyTUl4YUc5TTlQZUpWcXJNY0EiLCAiWXJjLXM</span>
-<span class="n">tV1NyNGV4RVl0cURFc21SbDdzcG9WZm1CeGl4UDEyZTRzeXFORSIsICJfTkdqanNzM21</span>
-<span class="n">xTzI1OGFZdlQ0dGdJRmVFdDg0N0ZQVFl0ZzMwZjBKREdZIiwgImVnbGpOMzBUWUNqU0V</span>
-<span class="mi">0</span><span class="n">elZzekRGV2JyeVlza0FPRW1NM1RLVDJYMmZkcEEiLCAiaFA3OVR1V0dCd0lOMGo5Tkh</span>
-<span class="n">fZnhuOEN2ai1kTkhfUjduRmxlZVdDRTJJNCIsICJzMVhLNWYycE0zLWFGVGF1WGhtdmQ</span>
-<span class="mi">5</span><span class="n">cHlRVEo2Rk1VaGMtSlhmSHJ4aExrIiwgInRTTC1lMW5MZFdPVTlzRk1UQ1V1NVAxdEN</span>
-<span class="mi">6</span><span class="n">eEEtVFctVldiSEd6WXRVN0UiLCAielZkZ2hjbUNsTVZXbFVnR3NHcFNrQ1BrRUhaNHU</span>
-<span class="mi">5</span><span class="n">b1dqMVNsSUJsQ2MxbyJdLCAiZXhwIjogMTg4MzAwMDAwMCwgImlzcyI6ICJodHRwczo</span>
-<span class="n">vL3BpZHByb3ZpZGVyLmV4YW1wbGUub3JnIiwgInN1YiI6ICJOemJMc1hoOHVEQ2NkN25</span>
-<span class="n">vV1hGWkFmSGt4WnNSR0M5WHMiLCAiaXNzdWluZ19hdXRob3JpdHkiOiAiSXN0aXR1dG8</span>
-<span class="n">gUG9saWdyYWZpY28gZSBaZWNjYSBkZWxsbyBTdGF0byIsICJpc3N1aW5nX2NvdW50cnk</span>
-<span class="n">iOiAiSVQiLCAic3RhdHVzIjogeyJzdGF0dXNfYXNzZXJ0aW9uIjogeyJjcmVkZW50aWF</span>
-<span class="n">sX2hhc2hfYWxnIjogInNoYS0yNTYifX0sICJ2Y3QiOiAiaHR0cHM6Ly9waWRwcm92aWR</span>
-<span class="n">lci5leGFtcGxlLm9yZy92MS4wL3BlcnNvbmlkZW50aWZpY2F0aW9uZGF0YSIsICJ2Y3Q</span>
-<span class="n">jaW50ZWdyaXR5IjogImM1ZjczZTI1MGZlODY5ZjI0ZDE1MTE4YWNjZTI4NmM5YmI1NmI</span>
-<span class="mi">2</span><span class="n">M2E0NDNkYzg1YWY2NTNjZDczZjYwNzhiMWYiLCAiX3NkX2FsZyI6ICJzaGEtMjU2Iiw</span>
-<span class="n">gImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2IiwgIngiOiA</span>
-<span class="n">iVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsICJ5Ijo</span>
-<span class="n">gIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIWlEifX19</span><span class="o">.</span><span class="n">pq</span>
-<span class="n">x24aAA6kVx5RzMcVW7bUgKDSBhCdJSktJsxoYtWzMJGC02e81OxzZECGKs</span><span class="o">-</span><span class="n">gaAl5JHin</span>
-<span class="n">xsfXj2_ejh_3dung</span><span class="o">~</span><span class="n">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODM</span>
-<span class="n">wMDAwMDBd</span><span class="o">~</span><span class="n">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIH</span>
-<span class="n">siYXNzdXJhbmNlX2xldmVsIjogImhpZ2giLCAiZXZpZGVuY2UiOiB7InR5cGUiOiAidm</span>
-<span class="mi">91</span><span class="n">Y2giLCAidGltZSI6ICIyMDIwLTAzLTE5VDEyOjQyWiIsICJhdHRlc3RhdGlvbiI6IH</span>
-<span class="n">sidHlwZSI6ICJkaWdpdGFsX2F0dGVzdGF0aW9uIiwgInJlZmVyZW5jZV9udW1iZXIiOi</span>
-<span class="n">AiNjQ4NS0xNjE5LTM5NzYtNjY3MSIsICJkYXRlX29mX2lzc3VhbmNlIjogIjIwMjAtMD</span>
-<span class="n">MtMTlUMTI6NDNaIiwgInZvdWNoZXIiOiB7Im9yZ2FuaXphdGlvbiI6ICJNaW5pc3Rlcm</span>
-<span class="mi">8</span><span class="n">gZGVsbCdpbnRlcm5vIn19fX1d</span><span class="o">~</span><span class="n">WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpd</span>
-<span class="n">mVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbW</span>
-<span class="n">lseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcn</span>
-<span class="n">RoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgI</span>
-<span class="n">mJpcnRoX3BsYWNlIiwgIlJvbWEiXQ</span><span class="o">~</span><span class="n">WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgIm</span>
-<span class="mi">5</span><span class="n">hdGlvbmFsaXR5IiwgIklUIl0</span><span class="o">~</span><span class="n">WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcn</span>
-<span class="n">NvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWF</span>
-<span class="n">hYIl0</span><span class="o">~</span>
+<span class="n">N2NrM1RGaUlBZjdONl83U0h2cWswTURZTUVRY29HR2xrVUFBdyJ9</span><span class="o">.</span><span class="n">eyJfc2QiOiBbIkx</span>
+<span class="n">xcnRVMnJsQTUxVTk3Y01pWWhxd2EtaXM2ODViWWlPSkltcDhhNUtHTkEiLCAiVlFJLVM</span>
+<span class="n">xbVQxS3hmcTJvOEo5aW83eE1NWDJNSXhhRzlNOVBlSlZxck1jQSIsICJZcmMtcy1XU3I</span>
+<span class="mi">0</span><span class="n">ZXhFWXRxREVzbVJsN3Nwb1ZmbUJ4aXhQMTJlNHN5cU5FIiwgIl9OR2pqc3MzbXFPMjU</span>
+<span class="mi">4</span><span class="n">YVl2VDR0Z0lGZUV0ODQ3RlBUWXRnMzBmMEpER1kiLCAiaDdFZ2w1SDlnVFBDX0ZDVTg</span>
+<span class="mi">0</span><span class="n">NWFhZHZzQy0tZFRqeTlOcnN0eGgtY2FSbyIsICJoUDc5VHVXR0J3SU4wajlOSF9meG4</span>
+<span class="mi">4</span><span class="n">Q3ZqLWROSF9SN25GbGVlV0NFMkk0IiwgInMxWEs1ZjJwTTMtYUZUYXVYaG12ZDlweVF</span>
+<span class="n">USjZGTVVoYy1KWGZIcnhoTGsiLCAidFNMLWUxbkxkV09VOXNGTVRDVXU1UDF0Q3p4QS1</span>
+<span class="n">UVy1WV2JIR3pZdFU3RSIsICJ6VmRnaGNtQ2xNVldsVWdHc0dwU2tDUGtFSFo0dTlvV2o</span>
+<span class="n">xU2xJQmxDYzFvIl0sICJleHAiOiAxODgzMDAwMDAwLCAiaXNzIjogImh0dHBzOi8vcGl</span>
+<span class="n">kcHJvdmlkZXIuZXhhbXBsZS5vcmciLCAic3ViIjogIk56YkxzWGg4dURDY2Q3bm9XWEZ</span>
+<span class="n">aQWZIa3hac1JHQzlYcyIsICJpc3N1aW5nX2F1dGhvcml0eSI6ICJJc3RpdHV0byBQb2x</span>
+<span class="n">pZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvIiwgImlzc3VpbmdfY291bnRyeSI6ICJ</span>
+<span class="n">JVCIsICJzdGF0dXMiOiB7InN0YXR1c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGF</span>
+<span class="n">zaF9hbGciOiAic2hhLTI1NiJ9fSwgInZjdCI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV</span>
+<span class="mi">4</span><span class="n">YW1wbGUub3JnL3YxLjAvcGVyc29uaWRlbnRpZmljYXRpb25kYXRhIiwgInZjdCNpbnR</span>
+<span class="n">lZ3JpdHkiOiAiYzVmNzNlMjUwZmU4NjlmMjRkMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ</span>
+<span class="mi">0</span><span class="n">M2RjODVhZjY1M2NkNzNmNjA3OGIxZiIsICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25</span>
+<span class="n">mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0F</span>
+<span class="n">FUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnh</span>
+<span class="n">qaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0</span><span class="o">.</span><span class="n">wPDBBKU</span>
+<span class="n">e8MdDIefro4oZFHlwpKuoYPlE4FcMfeaxrI_YTLAvsyBAzKOku2PnzvavSR0_D</span><span class="o">-</span><span class="n">_s20j</span>
+<span class="n">sL_2vfWYN_Q</span><span class="o">~</span><span class="n">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAw</span>
+<span class="n">MDBd</span><span class="o">~</span><span class="n">WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsidHJ</span>
+<span class="mi">1</span><span class="n">c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCI</span>
+<span class="n">sICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3VjaCIsICJ0aW1lIjogIjIwMjAtMDMtMTl</span>
+<span class="n">UMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogeyJ0eXBlIjogImRpZ2l0YWxfYXR0ZXN0YXR</span>
+<span class="n">pb24iLCAicmVmZXJlbmNlX251bWJlciI6ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImR</span>
+<span class="n">hdGVfb2ZfaXNzdWFuY2UiOiAiMjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHs</span>
+<span class="n">ib3JnYW5pemF0aW9uIjogIk1pbmlzdGVybyBkZWxsJ0ludGVybm8ifX19fV0</span><span class="o">~</span><span class="n">WyI2SWo</span>
+<span class="mi">3</span><span class="n">dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ</span><span class="o">~</span><span class="n">WyJlSTha</span>
+<span class="n">V205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0</span><span class="o">~</span><span class="n">WyJRZ19P</span>
+<span class="n">NjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd</span><span class="o">~</span><span class="n">WyJ</span>
+<span class="n">BSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoX3BsYWNlIiwgIlJvbWEiXQ</span><span class="o">~</span><span class="n">WyJQ</span>
+<span class="n">YzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgIm5hdGlvbmFsaXR5IiwgIklUIl0</span><span class="o">~</span><span class="n">WyJHMDJO</span>
+<span class="n">U3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJl</span>
+<span class="n">ciIsICJUSU5JVC1YWFhYWFhYWFhYWFhYWFhYIl0</span><span class="o">~</span><span class="n">WyJsa2x4RjVqTVlsR1RQVW92TU5J</span>
+<span class="n">dkNBIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ</span><span class="o">~</span>
 </pre></div>
 </div>
 </section>
@@ -1629,7 +1648,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/01/2025.
+      Last updated on 23/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
