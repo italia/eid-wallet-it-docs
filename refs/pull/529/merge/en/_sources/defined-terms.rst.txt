@@ -252,7 +252,7 @@ Acronyms
   * - **WSCA**
     - Wallet Secure Cryptographic Application
   * - **CIE**
-    - Electronic Identity Card
+    - National Electronic Identity Card
   * - **SPID**
-    - Public Digital Identity System
+    - Italian Public Digital Identity System
 
