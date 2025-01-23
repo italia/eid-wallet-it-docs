@@ -20,7 +20,7 @@ In this section, state machines are presented to explain the Wallet Instance and
 .. note::
 
   We distinguish PID from (Q)EAA, as its issuance effects on the Wallet Instance's lifecycle, and additionally its revocation may have potential impacts on (Q)EAAs. 
-  When the distinction between PID and (Q)EAA is not needed, we use the general term Digital Credential.
+  When the distinction between PID and (Q)EAA is not needed, the term Digital Credential is used.
 
 .. note::
 
@@ -43,21 +43,20 @@ Each state represents a specific functional status and determines the actions th
 
 .. note::
 
-  The Wallet Provider MUST ensure the security and reliability of the Wallet Instances keeping them updated and compliant with security requirements. 
+  The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST keep the Wallet Instances updated and compliant with security requirements. 
 
 .. note::
 
-  Since for the IT Wallet specification a Wallet Attestation is short-lived and automatically re-issued as soon as it expires, the Wallet Instance expiration 
+  The Wallet Attestation is short-lived. It MUST be automatically re-issued before its expiration time. For this reason, the Wallet Instance expiration 
   transition is not considered in :numref:`fig_Wallet_Instance_States`.
 
 Transition to Installed
 ^^^^^^^^^^^^^^^^^^^^^^^
-The state machine begins with the Wallet Instance installation (**WI INST**) transition, where Users download and install a Wallet Instance provided by the Wallet Provider through the 
+The state machine begins with the Wallet Instance installation (**WI INST**) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the 
 official app store of their device's operating system (this ensures authenticity via system checks), leading to the **Installed** state.
 
-In this state, the Wallet Instance can interact only with the Wallet Provider to be activated. A Wallet Instance MUST go back to **Installed** state from **Operational** 
-or **Valid** states through the Wallet Instance revocation (**WI REV**), which is a process that marks the Wallet Cryptographic Hardware Key registered during activation 
-(see “Transition to Operational” section) as not usable. Revocation can occur in the following cases:
+When the state is **Installed**, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from **Operational** or **Valid** to **Installed**. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation 
+(see “Transition to Operational” section), as not usable anymore. Revocation can occur in the following cases:
 
   * for technical security reasons (e.g., relating to the compromise of cryptographic material); 
   * in case of explicit User requests (e.g., due to loss, theft of the Wallet Instance);
