@@ -81,7 +81,7 @@ revoke the Wallet Instance associated with that User.
 .. note::
 
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal. 
-  This specification mandates the use of at least a second-factor User authentication.  
+  This specification mandates the use of at least a second-factor for User authentication.  
 
 As part of the activation, the Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance 
 with the technical and security requirements, and the authenticity and integrity of the installed Wallet Instance. 
