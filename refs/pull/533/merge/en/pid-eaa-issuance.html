@@ -595,7 +595,7 @@ without encoding and signature. The JWT header:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the <em>Deferred Flow</em> (step 26) as specified in Section <a class="reference internal" href="#deferred-flow"><span class="std std-ref">Deferred Flow</span></a>.</p>
+<p>If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider SHOULD support the <em>Deferred Flow</em> (step 26) as specified in Section <a class="reference internal" href="#deferred-flow"><span class="std std-ref">Deferred Flow</span></a>.</p>
 </div>
 <p><strong>Step 24 (Notification Request)</strong>: According to Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>], the Wallet sends an HTTP POST request to the Notification Endpoint using the <em>application/json</em> media type as in the following non-normative example.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/notification</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1881,7 +1881,7 @@ If any other error occurs, the PID/(Q)EAA Provider MUST return an error response
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/01/2025.
+      Last updated on 24/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
