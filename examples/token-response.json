@@ -6,7 +6,7 @@
       {
         "type": "openid_credential",
         "credential_configuration_id": "EuropeanDisabilityCard",
-        "credential_identifiers": [ "DisabilityCard_Mario_Rossi" ]
+        "credential_identifiers": [ "DisabilityCard" ]
       }
     ]
 }
