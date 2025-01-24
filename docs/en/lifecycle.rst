@@ -5,26 +5,26 @@
 Wallet Instance and Digital Credential Lifecycle
 ++++++++++++++++++++++++++++++++++++++++++++++++
 
-A Credential Issuer is responsible for creating and issuing Digital Credentials, as well as managing their lifecycle and validity status. 
+The Credential Issuer is responsible for creating and issuing Digital Credentials, as well as managing their lifecycle and validity status. 
 
-An Authentic Source is the entity responsible for the management and provisioning of User's attributes to Credential Issuers. 
+The Authentic Source is the entity responsible for the management and provisioning of User's attributes to Credential Issuers. 
 There is a relationship between the lifecycle of the attributes managed by the Authentic Source and the Digital Credential lifecycle
 managed by the Credential Issuer. Indeed, one of the reasons for revocation or suspension of Digital Credentials is the update/revocation or 
 suspension of the attributes contained in the Digital Credential. In IT Wallet, the provisioning of User's attributes and the notification of 
 updates or changes in the state of the attributes are exchanged using the PDND infrastructure (see relative sections for more details).
 
-Finally, a Wallet Provider is in charge of the implementation and provision of Wallet Instances also handling their entire lifecycle. 
+The Wallet Provider is in charge of the implementation and provision of Wallet Instances also handling their entire lifecycle. 
 
 In this section, state machines are presented to explain the Wallet Instance and Digital Credential states and their transitions and relations.
 
 .. note::
 
-  We distinguish PID from (Q)EAA, as its issuance effects on the Wallet Instance's lifecycle, and additionally its revocation may have potential impacts on (Q)EAAs. 
+  PID is specialized Digital Credential type that produces impacts on the Wallet Instance's lifecycle. The revocation of the PID MAY also have potential impacts on (Q)EAAs, if these was issued using the presentation of the PID. 
   When the distinction between PID and (Q)EAA is not needed, the term Digital Credential is used.
 
 .. note::
 
-  In the current version of ARF v1.4.1, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first to prove that the keys used for key 
+  In the current version of `ARF`_, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first to prove that the keys used for key 
   binding of Digital Credentials reside in a trustworthy WSCD, the second to prove that the Wallet Instance is authentic. In this technical specification, a single attestation (Wallet Attestation) is 
   used as proof of both the Wallet Instance authenticity and WSCD trustworthiness. The future version of this specification will be updated accordingly. 
 
@@ -43,7 +43,7 @@ Each state represents a specific functional status and determines the actions th
 
 .. note::
 
-  The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST keep the Wallet Instances updated and compliant with security requirements. 
+  The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically checks the Wallet Instances security and compliance status. 
 
 .. note::
 
@@ -85,34 +85,32 @@ revoke the Wallet Instance associated with that User.
 
 As part of the activation, the Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance 
 with the technical and security requirements, and the authenticity and integrity of the installed Wallet Instance. 
-Upon successful verification, a Wallet Attestation MUST be issued and the Wallet Instance enters the **Operational** state. 
+Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state. 
 
-In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this can be accomplished by entering a 
-personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal 
-preferences and device's capabilities. Please refer to the relevant sections for further information about Wallet Instance activation.
+In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a 
+personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal 
+preferences and device's capabilities. Please refer to `Wallet Attestation`_.
 
-In this state, Users can request the issuance of a PID (**PID ISS** transition) or of (Q)EAAs if the PID is not required in the issuance phase 
-(**(Q)EEA ISS** transitions). In addition, if the credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented 
+In the **Operational** state, Users can request the issuance of PID (**PID ISS**) or (Q)EAAs if the PID is not required in the issuance 
+(**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented 
 without transitioning the Wallet Instance to another state (**(Q)EEA PRE** transition). 
 
-A **Valid** Wallet Instance MUST transition back to the **Operational** state due to **PID EXP/REV/DEL** transition, when the associated PID expires, or 
-revoked by its Provider or either deleted by the User. 
+A **Valid** Wallet Instance MUST transition back to the **Operational** state due to **PID EXP/REV/DEL** transition, when the associated PID expires, or is revoked by its Provider or either deleted by the User. 
 
 Transition to Valid
 ^^^^^^^^^^^^^^^^^^^
 A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**). In this state, Users can obtain and present 
-new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to the relevant sections for further information about PID and (Q)EAAs 
-issuance and presentation.
+new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to :ref:`PID/(Q)EAA Issuance` and :ref:`Relying Party Solution`.
 
 .. note::
 
   Users can have only one Wallet Instance in **Valid** state for the same Wallet Solution. Thus, when a User installs and obtains a PID on a new Wallet 
-  Instance of the same Wallet Solution from the same Wallet Provider, the PID in the previous Wallet Instance MUST be revoked and the Wallet Instance goes 
-  into **Operational** state.
+  Instance of the same Wallet Solution from the same Wallet Provider, the PID in the previous Wallet Instance MUST be revoked and the Wallet Instance became 
+  **Operational**.
 
 Transition to Uninstalled
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Across all states — **Installed**, **Actived**, **Operational**, or **Valid** — the Wallet Instance may be removed entirely through the Wallet Instance 
+Across all states, **Installed**, **Actived**, **Operational**, or **Valid**, the Wallet Instance can be removed entirely through the Wallet Instance 
 uninstall (**WI UNINST**) transition, leading to the **Uninstalled** state. If a Wallet Instance is **Uninstalled** it ends its lifecycle.
 
 Lifecycle Management
@@ -164,13 +162,13 @@ A Digital Credential in all states can be deleted (**PID/(Q)EAA DEL**) and this 
 .. note::
 
   While **Issued**, **Valid**, **Expired**, **Revoked** are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4), 
-  **Suspended** is implicitly present in the text. For clarity and completeness, in this specification we explicitly consider it.
+  **Suspended** is implicitly present in `ARF`_. This specification explicitly considers it.
 
 Transition to Issued
 ^^^^^^^^^^^^^^^^^^^^
-For the state machine to start, the Wallet Instance MUST be in either the **Operational** or **Valid** state, enabling credentials to be issued to it. 
+For the state machine to start, the Wallet Instance MUST be in either the **Operational** or **Valid** state, enabling Digital Credentials to be issued to it. 
 The state machine begins with the **Issued** state, when an issuance process is triggered and, as a result, a Digital Credential is issued to the 
-Wallet Instance (**PID/(Q)EAA ISS**). Please refer to the relevant sections for further information about PID and (Q)EAAs issuance process.
+Wallet Instance (**PID/(Q)EAA ISS**). Please refer to :ref:`PID/(Q)EAA Issuance`.
 
 Transition to Valid
 ^^^^^^^^^^^^^^^^^^^
@@ -179,7 +177,6 @@ A Digital Credential changes to **Valid** state when:
   * it reaches its start date of validity;
   * an unsuspension process is triggered if the (Q)EAA has been suspended. 
 
-Please refer to the relevant sections for further information about (Q)EAAs unsuspension process.
 
 Transition to Expired
 ^^^^^^^^^^^^^^^^^^^^^
@@ -192,7 +189,7 @@ This ends its lifecycle.
 Transition to Revoked
 ^^^^^^^^^^^^^^^^^^^^^
 A Digital Credential changes from **Issued**, **Valid** or **Suspended** states to **Revoked** state when it is actively revoked by the Credential Issuer 
-by a revocation process (**PID/(Q)EAA REV**), declaring that Relying Parties SHOULD no longer trust a particular Digital Credential, even though it is 
+by a revocation process (**PID/(Q)EAA REV**). The Relying Parties SHOULD no longer consider usable a particular Digital Credential when it is **Revoked**, even though it is 
 still valid temporally and contains a valid Credential Issuer signature. Revocation can occur in the following cases:
 
   * for technical security reasons relating to the compromise of cryptographic material; 
@@ -206,21 +203,20 @@ still valid temporally and contains a valid Credential Issuer signature. Revocat
 In the case of PID only, the following cases are in addition to those listed above:
 
   * detection of a breach of the digital identity issued by an Identity Provider and used to authenticate the User during the PID Issuance;
-  * as a result of obtaining a new PID on a new Wallet Instance from the same Wallet Provider that provided the Wallet Instance containing the previous PID.
+  * as a result of obtaining a new PID on a new Wallet Instance from the same Wallet Provider that has provided the Wallet Instance containing a PID previously issued.
 
 .. note::
 
  A (Q)EAA Provider MAY revoke a (Q)EAA in case of PID revocation.
 
-Please refer to the relevant sections for further details about Digital Credential Revocation.
 
 When a Digital Credential is **Revoked** it cannot transition back to **Valid**, the Wallet Instance SHOULD notify the User the Digital Credential 
 has been revoked and the User MAY delete it (**PID/(Q)EAA DEL**). This ends its lifecycle.
 
 Transition to Suspended
 ^^^^^^^^^^^^^^^^^^^^^^^
-A (Q)EAA changes from **Issued** or **Valid** states to **Suspended** state when it is suspended by the Credential Issuer (**(Q)EAA SUSP**), 
-it stays in this state until it is restored to the **Issued** or **Valid** state (**(Q)EAA UNSUSP**) depending on the previous state, i.e. 
+A (Q)EAA changes from **Issued** or **Valid** states to **Suspended** state when it is suspended by the Credential Issuer (**(Q)EAA SUSP**).
+The (Q)EAA remains **Suspended** until it is restored to the **Issued** or **Valid** state (**(Q)EAA UNSUSP**) depending on the previous state, i.e. 
 the conditions leading to its suspension are resolved, or it changes in **Revoked**, **Expired** or it is deleted. The suspension of a (Q)EAA MAY be: 
 
   * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA. 
@@ -246,7 +242,9 @@ Until the **Credential Deletion**, a Digital Credential can be presented to Rely
 A Credential Issuer instead is responsible for:
 
   * **Digital Credential Generation**: the Digital Credential is generated as a consequence of an issuance request and MUST be added to the local storage of the Credential Issuer after the successful issuance. 
-  * **Digital Credential Revocation/Suspension/Unsuspension** (**PID/(Q)EAA REV** and **(Q)EAA SUSP/UNSUSP**): for technical security reasons or triggered by  external entities (e.g., Users and Authentic Sources) the Digital Credential state MUST be locally updated.
+  * **Digital Credential Revocation/Suspension/Unsuspension** (**PID/(Q)EAA REV** and **(Q)EAA SUSP/UNSUSP**): for technical security reasons or triggered by external entities (e.g., Users and Authentic Sources) the Digital Credential state MUST be locally updated.
   * **Data Purging**: after reaching the **Expired** state, and based on the Credential Issuer retention policies, Digital Credentials MUST be removed from the local storage of the Credential Issuer.
+
+.. _Wallet Attestation: wallet-attestation.html
 
 
