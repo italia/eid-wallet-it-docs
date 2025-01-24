@@ -115,7 +115,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - **vct**: As defined in [:ref:`SD-JWT-VC Credential Format`].
         - **claims**: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
             
-            - **path**: It contains the pointer that specifies the path to a specific claim within the credential as defined in Appendix C of `OpenID4VCI`_.
+            - **path**: It contains the pointer that specifies the path to a specific claim within the Credential as defined in Appendix C of `OpenID4VCI`_.
             - **display**: Array of objects containing display language properties. The parameters that MUST be included are:   
                 
                 - **name**: String value of a display name for the claim.

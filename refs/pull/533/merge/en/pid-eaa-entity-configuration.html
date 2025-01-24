@@ -137,6 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Entity Configuration of PID/(Q)EAA Providers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
@@ -308,7 +309,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <li><p><strong>claims</strong>: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.2.</p>
 <blockquote>
 <div><ul>
-<li><p><strong>path</strong>: It contains the pointer that specifies the path to a specific claim within the credential as defined in Appendix C of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></li>
+<li><p><strong>path</strong>: It contains the pointer that specifies the path to a specific claim within the Credential as defined in Appendix C of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></li>
 <li><p><strong>display</strong>: Array of objects containing display language properties. The parameters that MUST be included are:</p>
 <blockquote>
 <div><ul class="simple">

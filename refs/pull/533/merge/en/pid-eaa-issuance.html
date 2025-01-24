@@ -137,6 +137,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
@@ -536,7 +537,7 @@ provides the Wallet Instance with a new <cite>c_nonce</cite> value.</p>
 </pre></div>
 </div>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;credential_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard_Mario_Rossi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;credential_identifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;proof_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJvcGVuaWQ0dmNpLXByb29mK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwiY3J2IjoiUC0yNTYiLCJ4IjoicFZVM2phdHU0YTN0azljOWFvd1ZnTHlCQl9ySjdNLTNXbGprMWVqVXoyRSIsInkiOiJUTDVPTnZSLUlnYXJuZ3J6NWpkdnNwb2ZmekZ3Y2pQUnRGVWtlbmVIRUkwIn19.eyJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsImF1ZCI6Imh0dHBzOi8vZWFhLXByb3ZpZGVyLndhbGxldC5pcHpzLml0L2NyZWRlbnRpYWwiLCJpYXQiOjE3MDU1NzAwNTUsImV4cCI6MTc3ODkxNDU2MCwibm9uY2UiOiJ0c19FdFVRczBpZWlJUzFOWU5CSEVRU295M2N0NGdweS00RlpLd0hpbGtZIn0.ILIEIk_mBJp8BHyngsPHIUyM3WGaOkt9hsdref3Qek4kYAtAfRRER6DgTeRURNAWKBem8m1mILYhBTNFfZcJjg&quot;</span>
@@ -566,10 +567,10 @@ without encoding and signature. The JWT header:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Steps 21-23 (Credential Response)</strong>: The PID/(Q)EAA Provider MUST validate the <em>DPoP JWT Proof</em> based on the steps defined in Section 4.3 of (<span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) and whether the <em>Access Token</em> is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:</p>
+<p><strong>Steps 21-23 (Credential Response)</strong>: The PID/(Q)EAA Provider MUST validate the <em>DPoP JWT Proof</em> based on the steps defined in Section 4.3 of (<span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>) and whether the <em>Access Token</em> is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to <a class="reference internal" href="#table-credential-response-claim"><span class="std std-ref">Table of the credential response parameters</span></a>.</p></li>
+<li><p>It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to <a class="reference internal" href="#table-credential-response-claim"><span class="std std-ref">Table of the Credential response parameters</span></a>.</p></li>
 <li><p>It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter of SD-JWT (<a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>) and the public key that is identified using the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header of the SD-JWT.</p></li>
 <li><p>It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in <a class="reference internal" href="pid-eaa-data-model.html#pid-eaa-data-model-rst"><span class="std std-ref">PID/(Q)EAA Data Model</span></a>.</p></li>
 <li><p>It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> Section 5.) or MDOC CBOR format.</p></li>
@@ -1244,7 +1245,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>access_token</strong></p></td>
-<td><p>REQUIRED. The <em>DPoP-bound Access Token</em>, in signed JWT format, allows accessing the PID/(Q)EAA Credential Endpoint for obtaining the credential.</p></td>
+<td><p>REQUIRED. The <em>DPoP-bound Access Token</em>, in signed JWT format, allows accessing the PID/(Q)EAA Credential Endpoint for obtaining the Credential.</p></td>
 <td><p><span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>token_type</strong></p></td>
@@ -1487,7 +1488,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <td><p>Section 8.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>proof</strong></p></td>
-<td><p>REQUIRED. JSON object containing proof of possession of the key material the issued credential shall be bound to. The proof object MUST contain the following mandatory claims:</p>
+<td><p>REQUIRED. JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:</p>
 <ul class="simple">
 <li><p><strong>proof_type</strong>: JSON string denoting the proof type. It MUST be <cite>jwt</cite>.</p></li>
 <li><p><strong>jwt</strong>: the JWT used as proof of possession.</p></li>
