@@ -24,7 +24,7 @@ In this section, state machines are presented to explain the Wallet Instance and
 
 .. note::
 
-  In the current version of `ARF`_, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first to prove that the keys used for key 
+  In the current version of `EIDAS-ARF`_, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first to prove that the keys used for key 
   binding of Digital Credentials reside in a trustworthy WSCD, the second to prove that the Wallet Instance is authentic. In this technical specification, a single attestation (Wallet Attestation) is 
   used as proof of both the Wallet Instance authenticity and WSCD trustworthiness. The future version of this specification will be updated accordingly. 
 
@@ -162,7 +162,7 @@ A Digital Credential in all states can be deleted (**PID/(Q)EAA DEL**) and this 
 .. note::
 
   While **Issued**, **Valid**, **Expired**, **Revoked** are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4), 
-  **Suspended** is implicitly present in `ARF`_. This specification explicitly considers it.
+  **Suspended** is implicitly present in `EIDAS-ARF`_. This specification explicitly considers it.
 
 Transition to Issued
 ^^^^^^^^^^^^^^^^^^^^
