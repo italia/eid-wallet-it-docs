@@ -439,7 +439,7 @@ Below normative details and references about the parameters to be used by the Wa
 <td><p>RECOMMENDED. Array of Client Identifier schemes. Default is <cite>entity_id</cite>.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>authorization_endpoint</cite></p></td>
-<td><p>URL of authorization server's endpoint. See <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>, be this an universal link or a custom url-scheme.</p></td>
+<td><p>URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using an universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>response_types_supported</cite></p></td>
 <td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_type&quot; values. If present it MUST be set to <cite>vp_token</cite>. Default is <cite>vp_token</cite>.</p></td>
@@ -464,6 +464,11 @@ Below normative details and references about the parameters to be used by the Wa
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> parameter is RECOMMENDED for Wallet Instances that wants to prevent reply of their http requests to the Relying Parties.
 When present, the Relying Party MUST evaluate it.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
+Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support custom url-schemes is also RECOMMENDED according to OpenID4VC High Assurance Interoperability Profile (HAIP)  <a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-sd-jwt-vc-1_0.html">OPENID4VC-HAIP</a>, and in particular using the custom url <code class="docutils literal notranslate"><span class="pre">haip://</span></code>.</p>
 </div>
 </section>
 <section id="request-object-details">
@@ -1322,7 +1327,7 @@ The details on the structure of mDoc Response are provided below.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/01/2025.
+      Last updated on 24/01/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
