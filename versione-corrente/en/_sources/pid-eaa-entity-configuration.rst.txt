@@ -122,6 +122,15 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
+  * - **trust_frameworks_supported**
+    - JSON array containing all supported trust frameworks. See `OIDC-IDA`_ Section 8. The supported values are:
+
+        - *it_cie*: CIE trust framework supported.
+        - *it_spid*: SPID trust framework supported.
+        - *it_wallet*: Italian EUDI Wallet trust framework supported.
+        - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
+  * - **evidence_supported**
+    -  JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.
 
 
 

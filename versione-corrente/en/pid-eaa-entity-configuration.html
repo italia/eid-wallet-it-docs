@@ -328,6 +328,21 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <tr class="row-odd"><td><p><strong>jwks</strong></p></td>
 <td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>trust_frameworks_supported</strong></p></td>
+<td><p>JSON array containing all supported trust frameworks. See <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html">OIDC-IDA</a> Section 8. The supported values are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>it_cie</em>: CIE trust framework supported.</p></li>
+<li><p><em>it_spid</em>: SPID trust framework supported.</p></li>
+<li><p><em>it_wallet</em>: Italian EUDI Wallet trust framework supported.</p></li>
+<li><p><em>eudi_wallet</em>: Member State EUDI Wallet trust framework supported.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>evidence_supported</strong></p></td>
+<td><p>JSON array containing all types of identity evidence supported by the Credential Issuer. See <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html">OIDC-IDA</a> Section 8. The supported value is <code class="docutils literal notranslate"><span class="pre">vouch</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -816,7 +831,16 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8&quot;</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                </span><span class="p">]</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;trust_frameworks_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;it_cie&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;it_spid&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;it_wallet&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;eudi_wallet&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;evidence_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;vouch&quot;</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;openid_credential_verifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;application_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">,</span>

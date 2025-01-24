@@ -251,4 +251,10 @@ Acronyms
     - Wallet Secure Cryptographic Device
   * - **WSCA**
     - Wallet Secure Cryptographic Application
+  * - **CIE**
+    - National Electronic Identity Card
+  * - **SPID**
+    - Italian Public Digital Identity System
+  * - **ANPR**
+    - Italian National Registry of the Resident Population
 
