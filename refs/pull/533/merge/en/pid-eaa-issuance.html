@@ -1259,7 +1259,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <td><p>REQUIRED when <code class="docutils literal notranslate"><span class="pre">authorization_details</span></code> parameter is used to request issuance of a Credential. OPTIONAL when <code class="docutils literal notranslate"><span class="pre">scope</span></code> parameter is used to request issuance of a Credential. Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued. In addition to the claim defined in <a class="reference internal" href="#table-jwt-request"><span class="std std-ref">Table of the JWT Request parameters</span></a> it MUST include the following claim:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>credential_identifiers</strong>: Array of strings, each uniquely identifying a credential dataset that is available for the issuance.</p></li>
+<li><p><strong>credential_identifiers</strong>: Array of strings, each uniquely identifying a Credential dataset that is available for the issuance.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -1267,7 +1267,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <em>application/json</em> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use the HTTP Content-Type set to <em>application/json</em> and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
