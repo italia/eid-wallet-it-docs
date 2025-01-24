@@ -736,7 +736,7 @@ If the authentication is successful the PID/(Q)EAA Issuer redirects the User by 
       - [:rfc:`9207`], [:rfc:`7519`, Section 4.1.1.].
 
 If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`. 
-In case of invalid/missing ``redirect_uri`` or ``client_id`` Authorization Server MUST NOT redirect the User to the redirection URI and MUST inform him of the error.
+In case of invalid/missing ``redirect_uri`` or ``client_id`` Authorization Server MUST inform the User with the error and MUST NOT redirect the User to the redirection URI.
 If any other error occurs the Authorization Server MUST redirect the User by adding the following query parameters as required to the *redirect_uri* using the *application/x-www-form-urlencoded* format:
 
   - *error*. The error code.
