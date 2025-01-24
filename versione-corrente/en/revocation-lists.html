@@ -137,6 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Credential Lifecycle</a></li>
@@ -261,7 +262,7 @@ The subsequent sections define the protocol interface between the Wallet Instanc
 <figure class="align-center" id="id3" style="width: 100%">
 <span id="fig-low-level-flow-revocation"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/LOz1IyKm383l_HNXuK4FubrG7dXwNbxHuIw2n2rYM9VK9dL_tpBHCUYb-RwFaACv5gzp2bXTfSxlL49k8nuuepWSUao974xIJ1de06YmyDuvcLKgA-8G5eRhU-1RYEVd3cuAVUj4KEYhaldbK6WaSSRqbZNVNJpy_wF6nxwx2k6lVy748pg1Vn9itgl4ele1xKKr8pDMsQgdtttxPiMDBwjWMSK8pbCuaepj-Xy0"><img alt="_images/Low-Level-Flow-Revocation.svg" src="_images/Low-Level-Flow-Revocation.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Wallet Instance Initiated Revocation Flow</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Wallet Instance Initiated Revocation Flow</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Credential Revocation Request)</strong>: The Wallet Instance initiates the process by creating a Credential Revocation Request. This request MUST be sent to the Credential Issuer who has previously issued that Credential. The Credential Revocation Request MUST contain a JSON object with the member <cite>revocation_requests</cite>.</p>
@@ -493,7 +494,7 @@ The <cite>error</cite> parameter for the Revocation Assertion Error object MUST 
 <figure class="align-center" id="id4" style="width: 100%">
 <img alt="_images/High-Level-Flow-Status-Attestation.svg" src="_images/High-Level-Flow-Status-Attestation.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">High-Level Status Assertion Flows</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">High-Level Status Assertion Flows</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="status-assertion-request-by-wallet-instance">
@@ -503,7 +504,7 @@ The <cite>error</cite> parameter for the Revocation Assertion Error object MUST 
 <figure class="align-center" id="id5" style="width: 100%">
 <span id="fig-low-level-flow-status-assertion"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/NP31Rk9038RlynGMsWD8mDwHTWM22tlOHWML2r8rIHmoQZ9EnnuGRryFeK0vsl_tErzcpcA3nBOnDWhvsEOOJAShLxZEUe71pZOD2gozahx00LY6a_l9h9aZXalqb2oYrEXrXWt5SArRDkRaOF8Nt0oobyqMVkjnYGm1FoEo38k0PQhPvhsZxi-lvMtEAFktsuwC-Uw_sSQLLX3k32W4IXdZIGCwOW0tjZo3ROtGomBbOfrdg0Are9Bmh0fxdzQnIzTBi2B1vL5G_NrvQHpJfvsSeRVN0bKfIFS2nKEj952K2LMJF9LQB6hh7RTZPOSuFKoLJE3bNBRwlu95jcRWCmks8xZ_vRB6uWCg2WyUUz-x9P-RoqCbO0etoKtPXGWcJqU-Vnlb53mf-OhSaMVKGUfh0PxvEVeojiqN"><img alt="_images/Low-Level-Flow-Revocation-Attestation.svg" src="_images/Low-Level-Flow-Revocation-Attestation.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Status Assertion Request Flow</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Status Assertion Request Flow</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Status Assertion Request)</strong>: The Wallet Instance sends the Status Assertion Request to the Credential Issuer, where:</p>
