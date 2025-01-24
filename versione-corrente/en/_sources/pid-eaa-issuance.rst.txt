@@ -99,7 +99,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/hPRVJoCt4CVV_LUCk8S6QIEggaz8Txe0wH7r12dan4kbbTcTP4TixAqzJYxzwsklazW9eLUa8WGRUtvy_PaPRpvRbeRTiXNIiLPk-On6YCwlKKMTL0ndtooQCv0Md13F-djS-Cc2NNghhj4Ap-33LreqVDKwFFIzCdgzTvU7Uq-oRP5Xehm4LM5linQeQl1PZZHC9pSNWp_EnwCHJ8rUKRsDISB_h67u2Tmbw6UMf62ZdO4RMX3B5guDrgYOP2iS3BtT-X8sQ8KmIZE2Ng61DNnukftCnk8-1k06eINBeEVzyymuorZ32H4swEr3UHd3Jrv4fTMSpB9tjDXYnQILZtJAMmZd9Nb5-kLGK46UwEJBxUpBmtXy9wuRh5vE1G2ou3djbVw6Vb7s6QMgTq28BIoHPIrPvdeXu00lsQ1aXEdlrsCllqRm6cXEQFeWJvFHSAgdMtlozjFH0ppWNmujm-1F1M3GTbfPB7dJOH5MgfPGSKbr_EI3bbKJwgqMU6AfzF8Q7OrDZ7mE_iEQk87xaUDcUDr778wO_MOwubkRGJ9iQtcBqcF90P_26zlnlw3TEbXQACdEuCva6-5OOi2_aYtLn1l8-0kA3Rad6Y72O4kWT8OAmEyT6RGbgVFOwg7NvIM4Ssj3V_TvKZaIUCZ2d0idUqzwjwEGBMTJ11y_XaOyW5cutG0v6vh69mZ6LPyXrb3rpzuT9pUZH_3EeS5gUAmQNABjELNXz8eJ8Mmj7gME_N_-tlHUyHifLBshWoTq32UL9BHh0Q6g_XzPkmUwVfTJcha5gj1E23UXKLzmy-PUPxIUvvC8SsrENWQiNr01ghhJf5Xa4plpEwdM0KaUU_1wOXT6Aix6MTVPsEwkXx1Yi2Q3LMoM_tra1KKcyGGvMrbLQ6tP7xc89uzoiu4fe2gLLXNk7yfycbvTW966_-sqjJvw43pOUlRcH_O9uPibgLBtfhhiov9w-qHjiXD6Rdd5KjoonZaf2W2B86CfkOXMhsUNBCYLf5O-jmWYqSrj4k9Ti9JhNu4MSQgtS-SRAIUSsAIhC9mfbDvPgCA5cfbRrWQpn1cpkop9djhjR3Q5wVtZ32vKlZyuabG0hb35TqiYFUf9nnOJfruJLr-_ZSK3BiYoNvLj2zpayeO6MybOWo0LgCNa_Wbyb7t-2uChlHMMtWDP5VAZfJhqP_lbvr_zDbnhnQXOfAinLVRkVfQg-uFIjYZhacc9FnYHZ8KhICmQXADlRGN8UGz5WLngf-BxqaS6ss4LB_dd3UmJzbLVDwY03IqMQE9-u1c-LlRNfM7RBynRlGQvaAGEB-pF_ezRjly0
+    :target: https://www.plantuml.com/plantuml/svg/hLRVJ-D647xVls9qzr0YEQAg-eHqfmkG7b5Fa49El5Io5djYZt1stVsHNFhNTtOtCPiGr28L8N1svySttpSppXVhf75-rGdfdLP-zOH6Y9xFgA9UAWSVlbiq7q1Qy48ywH_fu2SBTiLMVQiLVe2FtwXftMNdyT3tqkZDu2uFxnvbrw63cM88gi9ein6eQk0iHnZci-lpipz6qya4vaQlgTx59C4_6nX_1dy1-ib9Kh3Lti0rDUHa1rS6QrIEP2SyZDbkSm5Rj48OfHs2NgE13Nnyl9ajfk8k1N0jGaVMWLx6vuNnrc4D9q3OW3U6OXZZpmoYqcf9PXKTBNPOETAA8vto5i8p94Qadmy15SICphxUBBxUJwUtugh5wlbK020BpDE0z3VaGnapIbNl2I5dOOLErjB972y4Ee0X6vGEOVxxrPJXrmYCWPQ49WPvd4t6SptVsHFRpoVtS8z_URGEplvK00PjhvN5qcrxBC99rH4gLrATFd7Gicg3tgh14qSbmsjrCZOfyWZumuPS2tSJxzhnLOmudZZ7bqE9Rru6oB3JyWObqv8JV8hUr8x_XTgTWwL6IUSDxars4OuX1lhNigEQt1Oo_WMbXXmOJIJ2sOw1qXig07_qPD2Mf4QfrKElomi8TMj3VwSyWnmln4CMPYIyZ9xqRaSXEvTD4Npw51hnWCp2xmV8sz0qd20OLob3r535PtR7sVNa0TWvD5WD3rMBAxIHfofKhzmBGzXPF4gT-d_qtlIC-7GAVjZhm0mTaPD94jgrWA0g_oDh1q8txt7APgv1XOOlu3eqwZDktxphZTRBV19XgSt9PU3qCohWadfDN6GsiGk-6RHEb6InprvFR6EaSjauwpeRs_rw22Ui3XciKhFyxoChA76IAiYvbLM5rfQnv29Ldk3c0vCnSAjLXGC3Dul57EPt3miuL-4YIvGCCn7BQ35wlIyJUVpRQslHMjBgqFpGFcFyJGMheTap6OSQib5uBML6IA8v5_WbRadX8MrtdISiuukhyMd7XJv8pgyt05cGQqcTVEeGH4PTPfFnDnpQOZVtrJv5HcfEnx0ikOmuFjv25LPkPcwTDfZ1pwNEafnKFBy_Eu9K0AvHPM-VIECaafkQK9nwaLn--puLzzYGTNmgkmvScyCR6-oamne4AHP_bPBp4t2K8V-vmRNU0SlV50F3UMa3nwcsNtx-bQ_XIYiNDjohvKaMRkyMByhzYsmTohfqjC82d97AochGB2lV5oGMBSBHLxa2v3Boe42kj5Vf9Sh1mFPOfSt_j8KXHnHwqwBYNDGqQD9ze31yrumxr3WR3vQTte1i9Ad3BVw5__XLzmy0
 
     PID/(Q)EAA Issuance - Detailed flow
 
@@ -252,7 +252,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key that is created
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
     &redirect_uri=https://start.wallet.example.org/cb
 
-**Step 15 (Token Response)**: The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) and a fresh `c_nonce` are provided by the Issuer to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 18 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer provides the Wallet Instance with a new `c_nonce` value. 
+**Step 15 (Token Response)**: The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) is provided by the Issuer to the Wallet Instance.
 
 .. code-block:: http
 
@@ -271,10 +271,35 @@ The non-normative example of the DPoP Access Token is given below.
 .. literalinclude:: ../../examples/at-dpop-payload.json
   :language: JSON
 
+**Step 16 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce`` that can be used to create the proof of possession of key material for the subsequent request to the Credential Endpoint.
 
-**Steps 16-17 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 15** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
+Below is a non-normative example of a Nonce Request:
 
-**Step 18 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key), and format parameters. The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
+.. code-block:: http
+
+    POST /nonce HTTP/1.1
+    Host: eaa-provider.example.org
+    Content-Length: 0
+
+**Step 17 (Nonce Response)**: The PID/(Q)EAA Provider provides the `c_nonce` to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 20 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. 
+Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer 
+provides the Wallet Instance with a new `c_nonce` value.
+
+Below is a non-normative example of a Nonce Response:
+
+.. code-block:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+    Cache-Control: no-store
+
+.. literalinclude:: ../../examples/nonce-response.json
+  :language: JSON  
+
+
+**Steps 18-19 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 17** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
+
+**Step 20 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key). The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
 
  1. the JWT proof MUST include all required claims as specified in the table of Section :ref:`Token Request <sec_token_request>`;
  2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type;
@@ -326,9 +351,9 @@ without encoding and signature. The JWT header:
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
   :language: JSON  
 
-**Steps 19-21 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new credential SHALL be bound to, according to `OpenID4VCI`_ Section 7.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
+**Steps 21-23 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
-    1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the credential response parameters <table_credential_response_claim>`.
+    1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
     3. It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
     4. It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or MDOC CBOR format. 
@@ -348,9 +373,9 @@ If the checks defined above are successful the Wallet Instance proceeds with the
 
 .. note::
 
-  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider MAY support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Flow`.
+  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider SHOULD support the *Deferred Flow* (step 26) as specified in Section :ref:`Deferred Flow`.
 
-**Steps 22 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
+**Step 24 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
 
 .. code-block:: http
 
@@ -370,7 +395,7 @@ If the checks defined above are successful the Wallet Instance proceeds with the
   :language: JSON 
 
 
-**Steps 23 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
+**Step 25 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
 
 .. code-block:: http
 
@@ -396,7 +421,7 @@ General Requirements
 Technical Flow
 ^^^^^^^^^^^^^^
 
-If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response cointaining the amount of time to wait before making a new Credential request. The HTTP status code MUST be *202* (see Section 15.3.3 of [:rfc:`9110`]). Below a non-normative example is given.
+If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response cointaining the amount of time to wait before making a new Credential request and an identifier of the deferred issuance transaction (*transaction_id*). The HTTP status code MUST be *202* (see Section 15.3.3 of [:rfc:`9110`]). Below a non-normative example is given.
 
 .. code-block:: http
 
@@ -409,9 +434,9 @@ If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue
 
 The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). PID/(Q)EAA Providers MAY send a notification to the User through a communication channel (e.g. email address), if available from the PID/(Q)EAA Provider.
 
-Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance and start the Issuance Flow again from the beginning as defined in the previous section. 
+Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance and start the Issuance Flow again from the beginning as defined in the previous section including *transaction_id* in the new Credential Request. 
 
-If the *lead_time* parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with the *c_nonce* provided in the Credential Response to perform a new Credential Request without requiring the User to submit a new authentication request.
+If the *lead_time* parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with a fresh *c_nonce* requested at the Nonce Endpoint to perform a new Credential Request without requiring the User to submit a new authentication request.
 
 In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section :ref:`Authentic Sources` MUST apply.
 
@@ -614,6 +639,43 @@ Below is a non-normative example of an error response.
 .. literalinclude:: ../../examples/par-error.json
   :language: JSON  
 
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_scope``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the requested scope is invalid or unknown. (:rfc:`6749#section-5.2`).
+    * - *401 Unauthorized* [REQUIRED]
+      - ``invalid_client``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
+    * - *405 Method not allowed* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request because POST method was not used in the request. (:rfc:`9126#section-2.3`).
+    * - *413 Payload Too Large* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of the size of the request is higher than permitted limit.(:rfc:`9126#section-2.3`).
+    * - *429 Too Many Requests* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of the numbers requests received is higher than permitted limit.(:rfc:`9126#section-2.3`).
+    * - *500 Internal Server Error* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem. (:rfc:`6749#section-4.1.2.1`).
+    * - *503 Service Unavailable* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable. (:rfc:`6749#section-4.1.2.1`).
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
+
 
 
 Authorization endpoint
@@ -673,10 +735,63 @@ If the authentication is successful the PID/(Q)EAA Issuer redirects the User by 
       - Unique identifier of the PID/(Q)EAA Issuer who created the Authentication Response. The Wallet Instance MUST validate this parameter.
       - [:rfc:`9207`], [:rfc:`7519`, Section 4.1.1.].
 
-If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`. The response MUST use *application/json* as the content type and MUST include the following parameters:
+If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`. 
+In case of invalid/missing ``redirect_uri`` or ``client_id`` Authorization Server MUST inform the User with the error and MUST NOT redirect the User to the redirection URI.
+If any other error occurs the Authorization Server MUST redirect the User by adding the following query parameters as required to the *redirect_uri* using the *application/x-www-form-urlencoded* format:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+  - *state*. The exact value of ``state`` parameter contained in the Request Object.
+
+Below is a non-normative example of an error response.
+
+.. code:: http
+
+  HTTP/1.1 302 Found
+  Location: https://client.example.com/cb?
+  error=invalid_request
+  &error_description=Unsupported%20response_type%20value
+  &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+
+In case of Authorization Server redirects the User to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *302 Found* [REQUIRED]
+      - ``invalid_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. (:rfc:`6749#section-4.1.2.1`).
+    * - *302 Found* [REQUIRED]
+      - ``unauthorized_client``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the client is not authorized to request an authorization code. (:rfc:`6749#section-4.1.2.1`).
+    * - *302 Found* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem. (:rfc:`6749#section-4.1.2.1`).
+    * - *302 Found* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable. (:rfc:`6749#section-4.1.2.1`).
+
+In case of Authorization Server doesn't redirect the User to the *redirect_uri* the following HTTP Status Codes are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 80
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid/missing ``redirect_uri`` or ``client_id`` parameter.
+    * - *500 Internal Server Error* [REQUIRED]
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
+
 
 Token endpoint
 --------------
@@ -769,7 +884,7 @@ The payload of a **DPoP JWT Proof** MUST contain the following claims:
 Token Response
 ^^^^^^^^^^^^^^^
 
-If the Token Request is successfully validated, the Authorization Server provides an HTTP Token Response with a *200 (OK)* status code. The Token Response MUST contain the following mandatory claims.
+If the Token Request is successfully validated, the Authorization Server provides an HTTP Token Response with a *200 (OK)* status code. The Token Response contains the following claims.
 
 .. list-table::
     :widths: 20 60 20
@@ -779,29 +894,31 @@ If the Token Request is successfully validated, the Authorization Server provide
       - **Description**
       - **Reference**
     * - **access_token**
-      - The *DPoP-bound Access Token*, in signed JWT format, allows accessing the PID/(Q)EAA Credential Endpoint for obtaining the credential.
+      - REQUIRED. The *DPoP-bound Access Token*, in signed JWT format, allows accessing the PID/(Q)EAA Credential Endpoint for obtaining the Credential.
       - :rfc:`6749`.
     * - **token_type**
-      - Type of *Access Token* returned. It MUST be equal to ``DPoP``.
+      - REQUIRED. Type of *Access Token* returned. It MUST be equal to ``DPoP``.
       - :rfc:`6749`.
     * - **expires_in**
-      - Expiry time of the *Access Token* in seconds.
+      - REQUIRED. Expiry time of the *Access Token* in seconds.
       - :rfc:`6749`.
-    * - **c_nonce**
-      - JSON string containing a ``nonce`` value to be used to create a *proof of possession* of key material when requesting a Credential.
-      - [`OpenID4VCI`_].
-    * - **c_nonce_expires_in**
-      - JSON integer, it represents the lifetime in seconds of the **c_nonce**.
-      - [`OpenID4VCI`_].
     * - **authorization_details**
-      - Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued.
+      - REQUIRED when ``authorization_details`` parameter is used to request issuance of a Credential. OPTIONAL when ``scope`` parameter is used to request issuance of a Credential. Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued. In addition to the claim defined in :ref:`Table of the JWT Request parameters <table_jwt_request>` it MUST include the following claim:
+
+            - **credential_identifiers**: Array of strings, each uniquely identifying a Credential dataset that is available for the issuance.
       - [`OpenID4VCI`_].
 
-If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`.
+If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use the HTTP Content-Type set to *application/json* and MUST include the following parameters:
+
+  - *error*. The error code.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response.
+
 
 .. code:: http
 
-  HTTP/1.1 400 Bad Request
+  HTTP/1.1 401 Unauthorized
   Content-Type: application/json;charset=UTF-8
   Cache-Control: no-store
   Pragma: no-cache
@@ -809,6 +926,39 @@ If any errors occur during the validation of the Token Request, the Authorizatio
 .. literalinclude:: ../../examples/token-error.json
   :language: JSON  
 
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_grant``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the provided authorization code is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client. (:rfc:`6749#section-5.2`).
+    * - *400 Bad Request* [REQUIRED]
+      - ``unsupported_grant_type``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the authorization grant type is not supported. (:rfc:`6749#section-5.2`).  
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_dpop_proof``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 5 of [:rfc:`9449`].
+    * - *401 Unauthorized* [REQUIRED]
+      - ``invalid_client``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid parameters Client Authentication failed (for example in case of unknown client, no parameters Client Authentication included, or unsupported authentication method). (:rfc:`6749#section-5.2`).
+    * - *500 Internal Server Error* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
 Access Token
 ^^^^^^^^^^^^
@@ -867,6 +1017,36 @@ The JOSE header of a **DPoP JWT** MUST contain the following claims.
     - It MUST contain a **jkt** claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the *jkt* member MUST be the base64url encoding (as defined in [:rfc:`7515`]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.
     - [:rfc:`9449`. Section 6.1] and [:rfc:`7638`].
 
+Nonce endpoint
+--------------
+
+The Nonce Endpoint provides a ``c_nonce`` value useful to create a proof of possession of key material for the request to the Credential Endpoint, as defined in Section 7 of `OpenID4VCI`_.
+
+Nonce Request
+^^^^^^^^^^^^^^^^^^^
+
+The request for a nonce MUST be an HTTP POST without a body addressed to the PID/(Q)EAA Issuer Nonce Endpoint mapped in the Credential Issuer Metadata.
+
+
+Nonce Response
+^^^^^^^^^^^^^^^^^^^
+
+Nonce Response to the Wallet Instance MUST be sent using `application/json` media type. In case of Nonce Request successful, the PID/(Q)EAA Provider MUST return HTTP response with a *200 (OK)* status code. 
+
+As defined in Section 7.2 of `OpenID4VCI`_, the PID/(Q)EAA Issuer MUST make the response uncacheable by adding a ``Cache-Control`` header field valued with *no-store*.
+
+The Nonce Response contains the following parameter:
+
+.. list-table::
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Claim**
+    - **Description**
+    - **Reference**
+  * - **c_nonce**
+    - REQUIRED. String containing the nonce value. This value MUST be unpredictable.
+    - Section 7.2 of [`OpenID4VCI`_].
 
 Credential endpoint
 -------------------
@@ -883,8 +1063,6 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
 
   - **ath**: hash value of the Access Token encoded in ASCII. The value MUST use the base64url encoding (as defined in Section 2 of :rfc:`7515`) with the SHA-256 algorithm.
 
-If the *DPoP proof* is invalid, the Credential endpoint returns an error response per Section 5.2 of [:rfc:`6749`] with `invalid_dpop_proof` as the value of the error parameter.
-
 .. warning::
   The Wallet Instance MUST create a **new DPoP proof** for the Credential request and MUST NOT use the previously created proof for the Token Endpoint.
 
@@ -896,21 +1074,21 @@ If the *DPoP proof* is invalid, the Credential endpoint returns an error respons
   * - **Claim**
     - **Description**
     - **Reference**
-  * - **format**
-    - Format of the Credential to be issued. This MUST be ``dc+sd-jwt`` or ``mso_mdoc``.
-    - [`OpenID4VCI`_].
-  * - **vct**
-    - CONDITIONAL. REQUIRED only if the *format* identifier is ``dc+sd-jwt``. 
-    - See Annex A3.4. of [`OpenID4VCI`_]
-  * - **doctype**
-    - CONDITIONAL. REQUIRED only if the *format* identifier is ``mso_mdoc``. 
-    - See Annex A2.4. of [`OpenID4VCI`_]
+  * - **credential_identifier**
+    - REQUIRED when an Authorization Details of type *openid_credential* was returned from the Token Response. It MUST NOT be used otherwise. This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response. It MUST NOT be used if ``credential_configuration_id`` is present.
+    - Section 8.2 of [`OpenID4VCI`_].
+  * - **credential_configuration_id**
+    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+    - Section 8.2 of [`OpenID4VCI`_].
   * - **proof**
-    - JSON object containing proof of possession of the key material the issued credential shall be bound to. The proof object MUST contain the following mandatory claims:
+    - REQUIRED. JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:
 
       - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
+  * - **transaction_id**
+    - CONDITIONAL. REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction.
+    - Section 9.1 of [`OpenID4VCI`_].
 
 
 The JWT proof type MUST contain the following parameters for the JOSE header and the JWT body:
@@ -949,7 +1127,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
     - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
     - [`OpenID4VCI`_], [:rfc:`7519`. Section 4.1.6].
   * - **nonce**
-    - The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID/(Q)EAA Issuer in the Token response.
+    - The value type of this claim MUST be a string, where the value is a **c_nonce** provided by the PID/(Q)EAA Issuer in the Nonce Response.
     - [`OpenID4VCI`_].
 
 
@@ -968,27 +1146,28 @@ The Credential Response contains the following parameters:
   * - **Claim**
     - **Description**
     - **Reference**
-  * - **credential**
-    - CONDITIONAL. REQUIRED if ``lead_time`` is not present. String Containing the issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
-    - Section 7.3, Annex A2.5 and Annex A3.5 of [`OpenID4VCI`_].
+  * - **credentials**
+    - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. It contains the following parameters:
+
+          - **credential**: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+    - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
   * - **lead_time**
-    - CONDITIONAL. REQUIRED if ``credential`` is not present. The amount of time (in seconds) required before making a new Credential Request.
-    - This Specification
-  * - **c_nonce**
-    - REQUIRED. JSON string containing a ``nonce`` value to be used to create a *proof of possession* of the key material when requesting a further Credential or for the renewal of a Credential.
-    - Section 7.3 of [`OpenID4VCI`_].
-  * - **c_nonce_expires_in**
-    - REQUIRED. JSON integer corresponding to the ``c_nonce`` lifetime in seconds.
-    - Section 7.3 of [`OpenID4VCI`_].
+    - CONDITIONAL. REQUIRED if ``credentials`` is not present. The amount of time (in seconds) required before making a new Credential Request.
+    - This Specification.
   * - **notification_id**
-    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credential`` parameter is not present
-    - Section 7.3 of [`OpenID4VCI`_].
+    - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credentials`` parameter is not present.
+    - Section 8.3 of [`OpenID4VCI`_].
+  * - **transaction_id**
+    - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Flow`. It MUST be invalidated after the User obtains the Credential.
+    - Section 8.3 of [`OpenID4VCI`_].
 
-
-If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an error response as defined in Section 7.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+In case of the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
+If any other error occurs, the PID/(Q)EAA Provider MUST return an error response as defined in Section 8.3.1 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response.
 
 .. code:: http
 
@@ -998,6 +1177,55 @@ If the Credential Request is invalid, the PID/(Q)EAA Provider MUST return an err
 
 .. literalinclude:: ../../examples/credential-error.json
   :language: JSON  
+
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_credential_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``unsupported_credential_type``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the requested Credential type is not supported. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``unsupported_credential_format``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the requested Credential Format is not supported. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_proof``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the ``proof`` parameter in the Credential Request is invalid or absent. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_nonce``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the ``proof`` parameter in the Credential Request uses an invalid nonce. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_encryption_parameters``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the encryption parameters in the Credential Request are invalid or missing. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``credential_request_denied``
+      - The Credential Request has not been accepted by the PID/(Q)EAA Issuer. Section 8.3.1 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``issuance_pending``
+      - Only in case of deferred flow. The PID/(Q)EAA Issuer cannot fulfill the request because the Credential is not yet available for the issuance. Section 9.3 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_transaction_id``
+      - Only in case of deferred flow. The PID/(Q)EAA Issuer cannot fulfill the request because the Credential Request contains an invalid ``transaction_id``. Section 9.3 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_dpop_proof``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 7 of [:rfc:`9449`].
+    * - *500 Internal Server Error* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
 Notification endpoint
 ---------------------
@@ -1044,4 +1272,46 @@ Notification Response
 The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 10.2 of [`OpenID4VCI`_]. 
 
 In case of errors, what is described in Section 10.3 of [`OpenID4VCI`_] MUST apply.
+
+In case of the Notification Request does not contain a valid Access Token, the Notification Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
+If any other error occurs, the PID/(Q)EAA Provider MUST return an error response as defined in Section 10.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+
+  - *error*. The error code.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response.
+
+.. code:: http
+
+  HTTP/1.1 400 Bad Request
+  Content-Type: application/json
+  Cache-Control: no-store
+
+.. literalinclude:: ../../examples/notification-error.json
+  :language: JSON  
+
+In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **error code**
+      - **Description**
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_notification_id``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid ``notification_id`` parameter. Section 10.3 of [`OpenID4VCI`_].
+    * - *400 Bad Request* [REQUIRED]
+      - ``invalid_notification_request``
+      - The PID/(Q)EAA Issuer cannot fulfill the request because of missing parameters, invalid parameter or request malformed. Section 10.3 of [`OpenID4VCI`_].
+    * - *500 Internal Server Error* [REQUIRED]
+      - ``server_error``
+      - The PID/(Q)EAA Issuer encountered an internal problem.
+    * - *503 Service Unavailable* [REQUIRED]
+      - ``temporarily_unavailable``
+      - The PID/(Q)EAA Issuer is temporary unavailable.
+    * - *504 Gateway Timeout* [OPTIONAL]
+      - `-`
+      - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 

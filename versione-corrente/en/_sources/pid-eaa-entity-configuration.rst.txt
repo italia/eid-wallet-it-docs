@@ -83,6 +83,8 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - The PID/(Q)EAA Provider identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 11.2.1 and 11.2.3.
   * - **credential_endpoint**
     - URL of the credential endpoint. See `OpenID4VCI`_ Section 11.2.3.
+  * - **nonce_endpoint**
+    - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
   * - **revocation_endpoint**
     - URL of the revocation endpoint. See :rfc:`8414#section-2`.
   * - **status_attestation_endpoint**
@@ -104,16 +106,16 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. [See `OpenID4VCI`_ Section  11.2.3].
         - **cryptographic_binding_methods_supported**: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value "*jwk*".
         - **credential_signing_alg_values_supported**: JSON Array of case sensitive strings that identify the algorithms that the PID/(Q)EAA Provider MUST support to sign the issued Credential. See Section :ref:`Cryptographic algorithms` for more details.
-        - **proof_types_supported**: JSON object which provide detailed information about the key proof(s) supported by the PID/(Q)EAA Provider. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The PID/(Q)EAA Provider MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Section 7.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof. The PID/(Q)EAA Provider MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`Cryptographic algorithms` for more details about the supported algorithms).
+        - **proof_types_supported**: JSON object which provides detailed information about the key proof(s) supported by the PID/(Q)EAA Provider. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The PID/(Q)EAA Provider MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Section 8.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof. The PID/(Q)EAA Provider MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`Cryptographic algorithms` for more details about the supported algorithms).
         - **display**: Array of objects containing display language properties. The parameters that MUST be included are:   
                 
                 - **name**: String value of a display name for the Credential.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
 
         - **vct**: As defined in [:ref:`SD-JWT-VC Credential Format`].
-        - **claims**: JSON object comprising a collection of name/value pairs, where each name represents a claim related to the subject described in the Credential. The value associated with each name MAY be either another nested object or an array of objects. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
+        - **claims**: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
             
-            - **value_type**: String value determining the type of value of the claim. The values that MUST be supported by the PID/(Q)EAA Provider are *String* and *Boolean*.
+            - **path**: It contains the pointer that specifies the path to a specific claim within the Credential as defined in Appendix C of `OpenID4VCI`_.
             - **display**: Array of objects containing display language properties. The parameters that MUST be included are:   
                 
                 - **name**: String value of a display name for the claim.
