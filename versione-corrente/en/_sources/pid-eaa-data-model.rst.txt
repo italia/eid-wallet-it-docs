@@ -365,8 +365,8 @@ In the following the disclosure list is given
 
 -  SHA-256 Hash: ``6WLNc09rBr-PwEtnWzxGKdzImjrpDxbr4qoIx838a88``
 -  Disclosure:
-  ``WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcnNvbmFsX2FkbWluaXN0``
-  ``cmF0aXZlX251bWJlciIsICJYWDAwMDAwWFgiXQ``
+   ``WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcnNvbmFsX2FkbWluaXN0``
+   ``cmF0aXZlX251bWJlciIsICJYWDAwMDAwWFgiXQ``
 -  Contents: ``["G02NSrQfjFXQ7Io09syajA", "personal_administrative_number",``
    ``"XX00000XX"]``
 
@@ -377,7 +377,7 @@ In the following the disclosure list is given
    ``WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgInRheF9pZF9jb2RlIiwgIlRJ``
    ``TklULVhYWFhYWFhYWFhYWFhYWFgiXQ``
 -  Contents: ``["lklxF5jMYlGTPUovMNIvCA", "tax_id_code",``
-``"TINIT-XXXXXXXXXXXXXXXX"]``
+   ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
 
 The combined format for the PID issuance is given by
