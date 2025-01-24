@@ -379,8 +379,7 @@ In the following the disclosure list is given
 -  Contents: ``["lklxF5jMYlGTPUovMNIvCA", "tax_id_code",``
    ``"TINIT-XXXXXXXXXXXXXXXX"]``
 
-
-The combined format for the PID issuance is given by
+The combined format for the PID issuance is given by:
 
 .. code-block::
 
@@ -424,10 +423,11 @@ The combined format for the PID issuance is given by
   ciIsICJYWDAwMDAwWFgiXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgInRheF9pZ
   F9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~
 
+
 (Q)EAA non-normative examples
 -----------------------------
 
-In the following, we provide a non-normative example of (Q)EAA in JSON.
+Below a non-normative example of (Q)EAA in JSON.
 
 .. literalinclude:: ../../examples/qeaa-json-example-payload.json
   :language: JSON  

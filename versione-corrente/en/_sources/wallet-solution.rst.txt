@@ -45,39 +45,6 @@ serve to authenticate the Wallet Instance itself, ensuring its reliability when 
 
 To guarantee the utmost security, these cryptographic keys MUST be securely stored within the WSCD, which MAY be internal (device's Trusted Execution Environment (TEE)[3]), external, or hybrid. This ensures that only the User can access them, thus preventing unauthorized usage or tampering. For more detailed information, please refer to the `Wallet Attestation section`_ and the `Trust Model section`_ of this document.
 
-Wallet Instance Lifecycle
-^^^^^^^^^^^^^^^^^^^^^^^^^
-The Wallet Instance has three distinct states: Operational, Valid, and Deactivated.
-Each state represents a specific functional status and determines the actions that can be performed[2].
-
-Initialization Process
-~~~~~~~~~~~~~~~~~~~~~~
-To activate the Wallet Instance, Users MUST install the mobile Wallet application on their device and open it. Furthermore, Users will be asked to set their preferred method of unlocking their device; this can be accomplished by entering a personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to their personal preferences and device's capabilities.
-
-After completing these steps, the Wallet Instance enters the Operational state.
-
-Transition to Valid state
-~~~~~~~~~~~~~~~~~~~~~~~~~
-To transition from the Operational state to the Valid state, the Wallet Instance MUST obtain a valid Personal Identification (PID). Once a valid PID is acquired, the Wallet Instance becomes Valid.
-
-The Wallet Instance MUST demonstrate to the Credential Issuer adequate security compliance to maintain the Credential at the same LoA at which it was issued.
-
-Once the Wallet Instance is in the Valid state, Users can:
-
- - Obtain, view, and manage (Q)EAAs from trusted (Q)EAA Providers[1];
- - Authenticate to Relying Parties[1];
- - Authorize the presentation of their digital Credentials to Relying Parties.
-
-Please refer to the relevant sections for further information about PID and (Q)EAAs issuance and presentation.
-
-Return to Operational state
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A Valid Wallet Instance may revert to the Operational state under specific circumstances. These circumstances include the expiration or revocation of the associated PID by its PID Provider.
-
-Deactivation
-~~~~~~~~~~~~
-Users have the ability to deactivate the Wallet Instance voluntarily. This action removes the operational capabilities of the Wallet Instance and sets it to the Deactivated state. Deactivation provides Users with control over access and usage according to their preferences.
-
 Wallet Provider Endpoints
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 

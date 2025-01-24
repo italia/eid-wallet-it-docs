@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wallet Instance and Digital Credential Lifecycle &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Wallet Solution" href="wallet-solution.html" />
+    <link rel="prev" title="The Infrastructure of Trust" href="trust.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage"><img src="https://avatars.githubusercontent.com/u/15377824?s=48&v=4"/></a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="white" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance and Digital Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="wallet-instance-and-digital-credential-lifecycle">
+<span id="lifecycle-rst"></span><h1>Wallet Instance and Digital Credential Lifecycle<a class="headerlink" href="#wallet-instance-and-digital-credential-lifecycle" title="Link to this heading">¶</a></h1>
+<p>The Credential Issuer is responsible for creating and issuing Digital Credentials, as well as managing their lifecycle and validity status.</p>
+<p>The Authentic Source is the entity responsible for the management and provisioning of User's attributes to Credential Issuers.
+There is a relationship between the lifecycle of the attributes managed by the Authentic Source and the Digital Credential lifecycle
+managed by the Credential Issuer. Indeed, one of the reasons for revocation or suspension of Digital Credentials is the update/revocation or
+suspension of the attributes contained in the Digital Credential. In IT Wallet, the provisioning of User's attributes and the notification of
+updates or changes in the state of the attributes are exchanged using the PDND infrastructure (see relative sections for more details).</p>
+<p>The Wallet Provider is in charge of the implementation and provision of Wallet Instances also handling their entire lifecycle.</p>
+<p>In this section, state machines are presented to explain the Wallet Instance and Digital Credential states and their transitions and relations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>PID is specialized Digital Credential type that produces impacts on the Wallet Instance's lifecycle. The revocation of the PID MAY also have potential impacts on (Q)EAAs, if these was issued using the presentation of the PID.
+When the distinction between PID and (Q)EAA is not needed, the term Digital Credential is used.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the current version of <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first to prove that the keys used for key
+binding of Digital Credentials reside in a trustworthy WSCD, the second to prove that the Wallet Instance is authentic. In this technical specification, a single attestation (Wallet Attestation) is
+used as proof of both the Wallet Instance authenticity and WSCD trustworthiness. The future version of this specification will be updated accordingly.</p>
+</div>
+<section id="wallet-instance">
+<h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h2>
+<p>As shown in <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 2</span></a>, the Wallet Instance has four distinct states: <strong>Installed</strong>, <strong>Operational</strong>, <strong>Valid</strong>, and <strong>Uninstalled</strong>.
+Each state represents a specific functional status and determines the actions that can be performed.</p>
+<figure class="align-center" id="id3" style="width: 100%">
+<span id="fig-wallet-instance-states"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/XPBHIuH04CRVzwyOk9SAH8ipGaHESW-4kEpihg1wi7ElMzXRHLUY_lfMAvtMZlD5cUytttpZxgnMMQMQlI0xdZDW-r9zGCxgJSLBnGj9Y0OKWrZgjn0iXyby7hgEyrE_BLcLjM0cOBBLJw-iCy4rxJXNJbzRIJxuH9TJT-eI0W1FPozWvSMxj89XaWSFCSIBzBubXd8FjcOONIt-Wol-jbEQHa4xEhpkK5m_xcpWWctLAF6IhaUaET_V5AAel5VHiE3axfI68SHfQYTBwjkT51pCrltMlmv97BNjkFKR0wifZT5c7trCxDz6U9POrelO4RqvP3jU6n4egB4gnQlYiJWLKf7fyUF14bWQrHTBHwZv9_FEBmBVRhy2CcCorrV-2m00"><img alt="_images/Wallet_Instance_States.svg" src="_images/Wallet_Instance_States.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wallet Instance Lifecycle.</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically checks the Wallet Instances security and compliance status.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Wallet Attestation is short-lived. It MUST be automatically re-issued before its expiration time. For this reason, the Wallet Instance expiration
+transition is not considered in <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 2</span></a>.</p>
+</div>
+<section id="transition-to-installed">
+<h3>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h3>
+<p>The state machine begins with the Wallet Instance installation (<strong>WI INST</strong>) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the
+official app store of their device's operating system (this ensures authenticity via system checks), leading to the <strong>Installed</strong> state.</p>
+<p>When the state is <strong>Installed</strong>, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from <strong>Operational</strong> or <strong>Valid</strong> to <strong>Installed</strong>. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation
+(see “Transition to Operational” section), as not usable anymore. Revocation can occur in the following cases:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>for technical security reasons (e.g., relating to the compromise of cryptographic material);</p></li>
+<li><p>in case of explicit User requests (e.g., due to loss, theft of the Wallet Instance);</p></li>
+<li><p>death of the User;</p></li>
+<li><p>illegal activities reported by Judicial or Supervisory Bodies.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While for the ARF the revocation of the Wallet Instance is accomplished by revoking the Wallet Attestation (see Topic 9 and Topic 38 in Annex 2),
+in this specification the revocation is managed differently. Being the Wallet Attestation short-lived, it does not have a status management mechanism.
+For this reason, the Wallet Instance revocation transition is accomplished by deleting the Wallet Cryptographic Hardware Key from the WSCD of the Wallet
+Instance and from the account associated with the User. This transition is completed when the Wallet Instance is online.</p>
+</div>
+</section>
+<section id="transition-to-operational">
+<h3>Transition to Operational<a class="headerlink" href="#transition-to-operational" title="Link to this heading">¶</a></h3>
+<p>After installation, the User opens the Wallet Instance and an activation begins (<strong>WI ACT</strong>).
+At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
+Hardware Key Tag, subject to obtaining the User's consent (see the “Wallet Instance Initialization and Registration” section for more details).
+This association allows the User to directly request Wallet Instance revocation from the Wallet Provider, and it also allows the Wallet Provider to
+revoke the Wallet Instance associated with that User.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
+This specification mandates the use of at least a second-factor for User authentication.</p>
+</div>
+<p>As part of the activation, the Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance
+with the technical and security requirements, and the authenticity and integrity of the installed Wallet Instance.
+Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the <strong>Operational</strong> state.</p>
+<p>In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
+personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
+preferences and device's capabilities. Please refer to <a class="reference external" href="wallet-attestation.html">Wallet Attestation</a>.</p>
+<p>In the <strong>Operational</strong> state, Users can request the issuance of PID (<strong>PID ISS</strong>) or (Q)EAAs if the PID is not required in the issuance
+(<strong>(Q)EEA ISS</strong>). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
+without transitioning the Wallet Instance to another state (<strong>(Q)EEA PRE</strong> transition).</p>
+<p>A <strong>Valid</strong> Wallet Instance MUST transition back to the <strong>Operational</strong> state due to <strong>PID EXP/REV/DEL</strong> transition, when the associated PID expires, or is revoked by its Provider or either deleted by the User.</p>
+</section>
+<section id="transition-to-valid">
+<h3>Transition to Valid<a class="headerlink" href="#transition-to-valid" title="Link to this heading">¶</a></h3>
+<p>A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (<strong>PID ISS</strong>). In this state, Users can obtain and present
+new (Q)EAAs (<strong>(Q)EAA ISS/PRE</strong>), and present the PID (<strong>PID PRE</strong>). Please refer to <a class="reference internal" href="pid-eaa-issuance.html#pid-q-eaa-issuance"><span class="std std-ref">PID/(Q)EAA Issuance</span></a> and <a class="reference internal" href="relying-party-solution.html#relying-party-solution"><span class="std std-ref">Relying Party Solution</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users can have only one Wallet Instance in <strong>Valid</strong> state for the same Wallet Solution. Thus, when a User installs and obtains a PID on a new Wallet
+Instance of the same Wallet Solution from the same Wallet Provider, the PID in the previous Wallet Instance MUST be revoked and the Wallet Instance became
+<strong>Operational</strong>.</p>
+</div>
+</section>
+<section id="transition-to-uninstalled">
+<h3>Transition to Uninstalled<a class="headerlink" href="#transition-to-uninstalled" title="Link to this heading">¶</a></h3>
+<p>Across all states, <strong>Installed</strong>, <strong>Actived</strong>, <strong>Operational</strong>, or <strong>Valid</strong>, the Wallet Instance can be removed entirely through the Wallet Instance
+uninstall (<strong>WI UNINST</strong>) transition, leading to the <strong>Uninstalled</strong> state. If a Wallet Instance is <strong>Uninstalled</strong> it ends its lifecycle.</p>
+</section>
+<section id="lifecycle-management">
+<h3>Lifecycle Management<a class="headerlink" href="#lifecycle-management" title="Link to this heading">¶</a></h3>
+<p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle,
+<a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 3</span></a> shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
+and the effect on their local storage.</p>
+<figure class="align-center" id="id4" style="width: 100%">
+<span id="fig-wallet-instance-lifecycle"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00"><img alt="../../images/Wallet_Instance_Lifecycle.svg" src="../../images/Wallet_Instance_Lifecycle.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Wallet Instance Lifecycle Management.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Through a Wallet Instance in an <strong>Installed</strong> state, a User is able to start the <strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>).
+As a result, the Wallet Instance MUST create a Wallet Cryptographic Hardware Key pair. In addition, if not already done,
+Users MUST set their preferred method of unlocking their Wallet Instance. As a result of the <strong>Wallet Instance Revocation</strong> (<strong>WI REV</strong>), the Wallet Instance MUST
+delete the Wallet Cryptographic Hardware Key pairs.</p>
+<p>A Wallet Provider instead is responsible for:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.</p></li>
+<li><p><strong>Wallet Instance Revocation</strong> (<strong>WI REV</strong>): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.</p></li>
+<li><p><strong>Data Purging</strong>: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="digital-credential">
+<h2>Digital Credential<a class="headerlink" href="#digital-credential" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#fig-digitalcredential-states"><span class="std std-numref">Fig. 4</span></a> shows the states and transitions for Digital Credentials.
+It includes four distinct states: <strong>Issued</strong>, <strong>Valid</strong>, <strong>Expired</strong>, and <strong>Revoked</strong>. While, in case of (Q)EAAs there is an additional state: <strong>Suspended</strong>.
+A Digital Credential in all states can be deleted (<strong>PID/(Q)EAA DEL</strong>) and this ends its lifecycle.</p>
+<figure class="align-center" id="id5" style="width: 100%">
+<span id="fig-digitalcredential-states"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/RP9HRzCm4CVV_IbEtSC0AIAK5Q4ze4Lh2fK6b6MRa807BxwrLXmxifsDWFZks8udjr7xLF_kVtS_dN9XBDMsRmNPSOQ0RMS7O6XgpJlBbIHMTM0Lt2jhLGkCQwm39wUGPV0H9Meg7ATRJLimTX1SRbs9c8RBZdh8y87smgwKj1N_W_1clbUiBBLOQAsUBfLG6ku5hPkZzKz8MUX_EorVSOatErut4es1UNJxJ1k4McbdQ81A1iB539XMARj3VUYeLI_PPGZ3F8VuEmL1zHPr70EQCjwRr1P6sg53w9GO_2EszIOXFzkweqIj9JvuQBou2HB-7nH2L2EY1cRk1UDp1l2Nn4pLcmubGmOdgrMnoFF8h_5HDPuktvqjpXQHbhyxhXEDwsyqbOPRhcHO_ZnwRKoFxAk-euApe30IK1e2cpaD6Ar702Tv_Zvt3Wx_UFKBCistEvjzWDXu3flrylMBRo_BelWfrrK5168jPVsaQVJHCsu729-c8V-SvA5UnjIJTDtf7kVmt5tTLfjft4NZYIQhhiixE1AEbvk4o-yRGjBAhEzSzB0vQTn-yI8fFf7O5vY4qlAznK326T974a_WBp_HN9PNvCADwrln7m00"><img alt="_images/DigitalCredential_States.svg" src="_images/DigitalCredential_States.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Digital Credential Lifecycle.</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users MAY present a Digital Credential in any state, it is up to the Relying Party's policy to accept a not Valid Digital Credential.
+An example of this scenario is when a Relying Party needs to verify that the User is not a minor. In this case, even if the User presents an
+<strong>Issued/Expired/Revoked</strong> or <strong>Suspended</strong> Digital Credential, the age claim is still reliable.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While <strong>Issued</strong>, <strong>Valid</strong>, <strong>Expired</strong>, <strong>Revoked</strong> are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4),
+<strong>Suspended</strong> is implicitly present in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>. This specification explicitly considers it.</p>
+</div>
+<section id="transition-to-issued">
+<h3>Transition to Issued<a class="headerlink" href="#transition-to-issued" title="Link to this heading">¶</a></h3>
+<p>For the state machine to start, the Wallet Instance MUST be in either the <strong>Operational</strong> or <strong>Valid</strong> state, enabling Digital Credentials to be issued to it.
+The state machine begins with the <strong>Issued</strong> state, when an issuance process is triggered and, as a result, a Digital Credential is issued to the
+Wallet Instance (<strong>PID/(Q)EAA ISS</strong>). Please refer to <a class="reference internal" href="pid-eaa-issuance.html#pid-q-eaa-issuance"><span class="std std-ref">PID/(Q)EAA Issuance</span></a>.</p>
+</section>
+<section id="id1">
+<h3>Transition to Valid<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>A Digital Credential changes to <strong>Valid</strong> state when:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>it reaches its start date of validity;</p></li>
+<li><p>an unsuspension process is triggered if the (Q)EAA has been suspended.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="transition-to-expired">
+<h3>Transition to Expired<a class="headerlink" href="#transition-to-expired" title="Link to this heading">¶</a></h3>
+<p>A Digital Credential naturally transitions to the <strong>Expired</strong> state when it automatically expires upon reaching its end date of validity (<strong>PID/(Q)EAA EXP</strong>),
+indicating they are no longer valid for use.</p>
+<p>If a Digital Credential is <strong>Expired</strong> the Wallet Instance SHOULD notify the User the Digital Credential has expired and the User MAY delete it (<strong>PID/(Q)EAA DEL</strong>).
+This ends its lifecycle.</p>
+</section>
+<section id="transition-to-revoked">
+<h3>Transition to Revoked<a class="headerlink" href="#transition-to-revoked" title="Link to this heading">¶</a></h3>
+<p>A Digital Credential changes from <strong>Issued</strong>, <strong>Valid</strong> or <strong>Suspended</strong> states to <strong>Revoked</strong> state when it is actively revoked by the Credential Issuer
+by a revocation process (<strong>PID/(Q)EAA REV</strong>). The Relying Parties SHOULD no longer consider usable a particular Digital Credential when it is <strong>Revoked</strong>, even though it is
+still valid temporally and contains a valid Credential Issuer signature. Revocation can occur in the following cases:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>for technical security reasons relating to the compromise of cryptographic material;</p></li>
+<li><p>in case of explicit User requests;</p></li>
+<li><p>as a consequence of an attribute update by Authentic Sources;</p></li>
+<li><p>in case of a revocation of the attributes contained in the Digital Credential notified by the Authentic Source;</p></li>
+<li><p>death of the User;</p></li>
+<li><p>revocation of Wallet Instance to which the Digital Credential was issued;</p></li>
+<li><p>illegal activities of the User reported by Judicial or Supervisory Bodies.</p></li>
+</ul>
+</div></blockquote>
+<p>In the case of PID only, the following cases are in addition to those listed above:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>detection of a breach of the digital identity issued by an Identity Provider and used to authenticate the User during the PID Issuance;</p></li>
+<li><p>as a result of obtaining a new PID on a new Wallet Instance from the same Wallet Provider that has provided the Wallet Instance containing a PID previously issued.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A (Q)EAA Provider MAY revoke a (Q)EAA in case of PID revocation.</p>
+</div>
+<p>When a Digital Credential is <strong>Revoked</strong> it cannot transition back to <strong>Valid</strong>, the Wallet Instance SHOULD notify the User the Digital Credential
+has been revoked and the User MAY delete it (<strong>PID/(Q)EAA DEL</strong>). This ends its lifecycle.</p>
+</section>
+<section id="transition-to-suspended">
+<h3>Transition to Suspended<a class="headerlink" href="#transition-to-suspended" title="Link to this heading">¶</a></h3>
+<p>A (Q)EAA changes from <strong>Issued</strong> or <strong>Valid</strong> states to <strong>Suspended</strong> state when it is suspended by the Credential Issuer (<strong>(Q)EAA SUSP</strong>).
+The (Q)EAA remains <strong>Suspended</strong> until it is restored to the <strong>Issued</strong> or <strong>Valid</strong> state (<strong>(Q)EAA UNSUSP</strong>) depending on the previous state, i.e.
+the conditions leading to its suspension are resolved, or it changes in <strong>Revoked</strong>, <strong>Expired</strong> or it is deleted. The suspension of a (Q)EAA MAY be:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA.</p></li>
+<li><p>Explicitly requested by the User.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Lifecycle Management<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>While <a class="reference internal" href="#fig-digitalcredential-states"><span class="std std-numref">Fig. 4</span></a> shows the different states a Digital Credential may acquire during its lifecycle,
+<a class="reference internal" href="#fig-digitalcredential-lifecycle"><span class="std std-numref">Fig. 5</span></a> shows the point of view of Wallet Instances and Credential Issuers in managing the Digital Credential lifecycle
+and the effect on their local storage.</p>
+<figure class="align-default" id="id6" style="width: 100%">
+<span id="fig-digitalcredential-lifecycle"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/XP91Yzim48Nl_XMgsOC3sVMbfq9WKzjq0sbZR8UbK0YoDIW2MV9AetL3wN-lvBPkIbro2T7JzvxVY7cqI0swNaPlXEgaOq3EY8DzbwQ6ZWzSuDcrpeBfj49G-D3fFXqaLS5pRv59qQRPs_ioICUF-xId5i5uwPHv1nKApCCGyfzsUN6gcw8g3itdiaXMKLG_7PvFPL7LXq-dyb0rrNRN17tBM0MoeJo9MHkloHt2Lyoqr6OJQqCLXo1AdxqerdYHG3Oaf_OCRE-LPELJtskd63MNnBLh4ZzJAG79JbcagWFo-pPUaMyHYGYfBnQXJsZtukbSS85Kaim00uN2_zrsBqvOWKAhs1Fnwe-7WLpsv23Xok0TyoFbRJ9Qr6OTr_wNSfX3e-_HLVakbB-At5dhmFnTVox2GIqN-G0A35tgRk1rsLB1g-ucI_f5rSuEe6mu79MT3tFOzLZJL6GUwnya6LoupobIKZh3XU8JjBwpWn48czZeLgCtXOUeGFxi-2lsMERRfWY6QL4ejvkmDAi0XkGPp8jzyL-GWvh1h2gM4oToseVn5Xh8QGl6Mr-Vvnbl3VG8YhbU_W00"><img alt="_images/DigitalCredential_Lifecycle.svg" src="_images/DigitalCredential_Lifecycle.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Digital Credential Lifecycle Management.</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>A User, through the Wallet Instance, is able to acquire a new Digital Credential (<strong>Credential Acquisition</strong>) performing the <strong>PID/(Q)EAA ISS</strong> process. This MUST result in the storage of a
+Digital Credential in the <strong>Issued/Valid</strong> state, and delete it when it is not needed anymore or it is <strong>Expired/Revoked</strong> (<strong>Credential Deletion</strong>).
+Until the <strong>Credential Deletion</strong>, a Digital Credential can be presented to Relying Parties, this operation will not affect its lifecycle.</p>
+<p>A Credential Issuer instead is responsible for:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Digital Credential Generation</strong>: the Digital Credential is generated as a consequence of an issuance request and MUST be added to the local storage of the Credential Issuer after the successful issuance.</p></li>
+<li><p><strong>Digital Credential Revocation/Suspension/Unsuspension</strong> (<strong>PID/(Q)EAA REV</strong> and <strong>(Q)EAA SUSP/UNSUSP</strong>): for technical security reasons or triggered by external entities (e.g., Users and Authentic Sources) the Digital Credential state MUST be locally updated.</p></li>
+<li><p><strong>Data Purging</strong>: after reaching the <strong>Expired</strong> state, and based on the Credential Issuer retention policies, Digital Credentials MUST be removed from the local storage of the Credential Issuer.</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Wallet Instance and Digital Credential Lifecycle</a><ul>
+<li><a class="reference internal" href="#wallet-instance">Wallet Instance</a><ul>
+<li><a class="reference internal" href="#transition-to-installed">Transition to Installed</a></li>
+<li><a class="reference internal" href="#transition-to-operational">Transition to Operational</a></li>
+<li><a class="reference internal" href="#transition-to-valid">Transition to Valid</a></li>
+<li><a class="reference internal" href="#transition-to-uninstalled">Transition to Uninstalled</a></li>
+<li><a class="reference internal" href="#lifecycle-management">Lifecycle Management</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#digital-credential">Digital Credential</a><ul>
+<li><a class="reference internal" href="#transition-to-issued">Transition to Issued</a></li>
+<li><a class="reference internal" href="#id1">Transition to Valid</a></li>
+<li><a class="reference internal" href="#transition-to-expired">Transition to Expired</a></li>
+<li><a class="reference internal" href="#transition-to-revoked">Transition to Revoked</a></li>
+<li><a class="reference internal" href="#transition-to-suspended">Transition to Suspended</a></li>
+<li><a class="reference internal" href="#id2">Lifecycle Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="trust.html">
+                    <span class="icon">&lt;</span><span>The Infrastructure of Trust</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="wallet-solution.html"><span>Wallet Solution</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 24/01/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
