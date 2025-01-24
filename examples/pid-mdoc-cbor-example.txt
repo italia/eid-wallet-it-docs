@@ -131,7 +131,7 @@
                       "digestID": 10, 
                       "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
                       "elementIdentifier": "personal_administrative_number", 
-                      "elementValue": "TINIT-XXXXXXXXXXXXXXX"
+                      "elementValue": "XX00000XX"
                       }                         
                   >>)                    
               ]            
