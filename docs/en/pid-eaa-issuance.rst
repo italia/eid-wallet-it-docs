@@ -905,10 +905,10 @@ If the Token Request is successfully validated, the Authorization Server provide
     * - **authorization_details**
       - REQUIRED when ``authorization_details`` parameter is used to request issuance of a Credential. OPTIONAL when ``scope`` parameter is used to request issuance of a Credential. Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued. In addition to the claim defined in :ref:`Table of the JWT Request parameters <table_jwt_request>` it MUST include the following claim:
 
-            - **credential_identifiers**: Array of strings, each uniquely identifying a credential dataset that is available for the issuance.
+            - **credential_identifiers**: Array of strings, each uniquely identifying a Credential dataset that is available for the issuance.
       - [`OpenID4VCI`_].
 
-If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use *application/json* as the content type and MUST include the following parameters:
+If any errors occur during the validation of the Token Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use the HTTP Content-Type set to *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
