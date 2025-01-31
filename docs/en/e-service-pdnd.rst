@@ -624,6 +624,58 @@ The ``access_token`` JWT MUST include the following payload claims (unless other
       - MUST correspond to the value of the ``digest`` object contained in the Voucher Request. It is mandatory only when complying with ``AUDIT_REST_02``.
       - [`MODI`_]
 
+If any errors occur during the validation of the Voucher Request, the PDND Authorization Server Endpoint MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
+
+    - ``error``: The error code.
+    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+.. code-block:: http
+    :caption: Non-normative example of a Voucher Error Response
+    :name: code_Voucher_Endpoint_AuthorizationServer_Error
+    
+    HTTP/1.1 400 Bad Request
+    Content-Type: application/json
+    Cache-Control: no-store
+
+    {
+        "error": "invalid_request",
+        "error_description": "The client_assertion_type parameter is missing."
+    }
+
+
+The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Error Code**
+      - **Description**
+    * - ``400 Bad Request``
+      - ``invalid_request``
+      - The request cannot be fulfilled because it is missing required parameters, contains invalid parameters, or is otherwise malformed [:rfc:`6749#section-5.2`].
+    * - ``400 Bad Request``
+      - ``invalid_grant``
+      - The request cannot be fulfilled because the provided grant (i.e., ``client_assertion``) is expired, revoked, already used, or otherwise malformed [:rfc:`6749#section-5.2`].
+    * - ``400 Bad Request``
+      - ``unsupported_grant_type``
+      - The request cannot be fulfilled because the provided grant type is not supported by the PDND Authorization Server [:rfc:`6749#section-5.2`].
+    * - ``400 Bad Request``
+      - ``invalid_scope``
+      - The request cannot be fulfilled because the provided ``purposeId`` is invalid, unknown, malformed, or not associated to the Client [:rfc:`6749#section-5.2`].
+    * - ``400 Bad Request``
+      - ``invalid_dpop_proof``
+      - The request cannot be fulfilled because it contains an invalid *DPoP proof* [:rfc:`9449#section-5`].
+    * - ``401 Unauthorized``
+      - ``invalid_client``
+      - The request cannot be fulfilled because Client Authentication failed (i.e., the ``client_assertion`` is malformed, incorrectly signed, missing, or unverifiable) [:rfc:`6749#section-5.2`].
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - The request cannot be fulfilled because the PDND Authorization Server encountered an internal problem.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - The request cannot be fulfilled because the PDND Authorization Server is temporarily unavailable (e.g., due to maintenance or overload).
 
 Key Retrieval
 ==========================
@@ -748,7 +800,41 @@ The Keys Request is a ``GET`` HTTP request sent to the .well-known Endpoint. Thi
 Keys Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The .well-known Endpoint responds with a ``200`` OK status code and a ``JWK Set`` [:rfc:`7517`] containing the public keys employed by the PDND Authorization Server to sign Vouchers.
+The .well-known Endpoint responds with a ``200 OK`` status code and a ``JWK Set`` [:rfc:`7517`] containing the public keys employed by the PDND Authorization Server to sign Vouchers.
+
+If any errors occur during the retrieval of the keys, the .well-known Endpoint MUST return an error response. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
+
+    - ``error``: The error code.
+    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+.. code-block:: http
+    :caption: Non-normative example of a Keys Error Response
+    :name: code_Voucher_Endpoint_WellKnown_Error
+    
+    HTTP/1.1 500 Internal Server Error
+    Content-Type: application/json
+
+    {
+        "error": "server_error",
+        "error_description": "The server encountered an unexpected error."
+    }
+
+
+The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Error Code**
+      - **Description**
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - The request cannot be fulfilled because the .well-known Endpoint encountered an internal problem.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - The request cannot be fulfilled because the .well-known Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
 Interoperability API Endpoint
 -------------------------------------
@@ -776,7 +862,61 @@ The Key Request MUST include the following HTTP header parameters:
 Key Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Interoperability API Endpoint responds with a ``200`` OK status code and a ``JWK`` [:rfc:`7517`] representing the public key with the provided ``kid``.
+In case a public key with the provided ``kid`` exists, the Interoperability API Endpoint responds with a ``200 OK`` status code and a ``JWK`` [:rfc:`7517`] representing that key.
+
+If any errors occur during the retrieval of the key, the Interoperability API Endpoint MUST return an error response, whose structure depends on the nature of the error.
+
+In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in :rfc:`6750#section-3`, with specific reference to the use of the ``WWW-Authenticate`` header parameter.
+
+.. code-block:: http
+    :caption: Non-normative example of a Key Error Response in case of 401 errors
+    :name: code_Voucher_Endpoint_InteroperabilityAPI_Error_401
+    
+    HTTP/1.1 401 Unauthorized
+    WWW-Authenticate: Bearer error="invalid_token", error_description="The access token expired"
+
+For all other errors, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
+
+    - ``error``: The error code.
+    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+.. code-block:: http
+    :caption: Non-normative example of a Key Error Response in case of other errors
+    :name: code_Voucher_Endpoint_InteroperabilityAPI_Error_Others
+    
+    HTTP/1.1 400 Bad Request
+    Content-Type: application/json
+
+    {
+        "error": "invalid_request",
+        "error_description": "The kid parameter is missing."
+    }
+
+
+The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Error Code**
+      - **Description**
+    * - ``400 Bad Request``
+      - ``invalid_request``
+      - The request cannot be fulfilled because it is missing required parameters, contains invalid parameters or is otherwise malformed [:rfc:`6750#section-3.1`].
+    * - ``401 Unauthorized``
+      - ``invalid_token``
+      - The request cannot be fulfilled because the Voucher is expired, revoked, malformed, or otherwise invalid [:rfc:`6750#section-3.1`].
+    * - ``404 Not Found``
+      - ``not_found``
+      - The request cannot be fulfilled because no public key corresponding to the provided ``kid`` has been found.
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - The request cannot be fulfilled because the Interoperability API Endpoint encountered an internal problem.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - The request cannot be fulfilled because the Interoperability API Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
 
 e-Service Usage
@@ -1185,3 +1325,57 @@ The e-Service Response JWT MUST include the following payload claims:
       - [:rfc:`7523`]
 
 The e-Service Response JWT payload includes specific claims related to the data elements provided to the Consumer.
+
+If any errors occur during the validation of the e-Service Request, the e-Service Endpoint MUST return an error response, whose structure depends on the nature of the error.
+
+In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in :rfc:`6750#section-3` and :rfc:`9449#section-7.1`, with specific reference to the use of the ``WWW-Authenticate`` header parameter.
+
+.. code-block:: http
+    :caption: Non-normative example of an e-Service Error Response in case of 401 errors
+    :name: code_Voucher_Endpoint_eService_Error_401
+    
+    HTTP/1.1 401 Unauthorized
+    WWW-Authenticate: DPoP error="invalid_token", error_description="The access token expired"
+
+For all other errors, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
+
+    - ``error``: The error code.
+    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+.. code-block:: http
+    :caption: Non-normative example of an e-Service Error Response in case of other errors
+    :name: code_Voucher_Endpoint_eService_Error
+    
+    HTTP/1.1 400 Bad Request
+    Content-Type: application/json
+
+    {
+        "error": "invalid_request",
+        "error_description": "The Agid-JWT-Signature header parameter is missing."
+    }
+
+
+The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
+
+.. list-table:: 
+    :widths: 20 20 60
+    :header-rows: 1
+
+    * - **Status Code**
+      - **Error Code**
+      - **Description**
+    * - ``400 Bad Request``
+      - ``invalid_request``
+      - The request cannot be fulfilled because it is missing required parameters, contains invalid parameters, or is otherwise malformed [:rfc:`6750#section-3.1`].
+    * - ``400 Bad Request``
+      - ``invalid_dpop_proof``
+      - The request cannot be fulfilled because it contains an invalid *DPoP proof* [:rfc:`9449#section-5`].
+    * - ``401 Unauthorized``
+      - ``invalid_token``
+      - The request cannot be fulfilled because the Voucher is expired, revoked, or otherwise malformed [:rfc:`6750#section-3.1`].
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
