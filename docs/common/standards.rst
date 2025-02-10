@@ -89,3 +89,5 @@ Technical References
       - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
     * - `OpenID4VC-SecTrust`_
       - Fett, D., Lodderstedt, T.,  "Security and Trust in OpenID for Verifiable Credentials Ecosystems", March 2024.
+    * - `TOKEN-STATUS-LIST`_
+      - Tobias Looker and Paul Bastian and Christian Bormann,  "Token Status List", February 2025, Draft 7.

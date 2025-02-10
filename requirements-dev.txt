@@ -31,3 +31,4 @@ stevedore==5.2.0
 tomli==2.0.1
 urllib3==2.2.2
 piccolo_theme
+sphinxcontrib-redoc==1.6.0

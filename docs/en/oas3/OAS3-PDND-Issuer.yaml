@@ -1,0 +1,1037 @@
+openapi: 3.0.1
+info:
+  title: IT Wallet API - Issuer web services
+  version: 0.1.0
+servers:
+  - url: https://issuer.example.it
+    description: Credential Issuer API
+paths:
+  /v0.9.0/notifyWalletRevocation:
+    post:
+      tags:
+        - e-services PDND
+      summary: >-
+        Notify Wallet Instance Revocation
+      description: >- 
+        This service revokes all digital credentials associated with a specific
+        user
+      operationId: notifyWalletRevocation
+      parameters:
+        - name: Authorization
+          in: header
+          description: >-
+            JWT token obtained from <a target="blank"
+            href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
+            Interoperabilità.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiJ9.oyd-KZ4_aqDBmeebwjJ52Cdrj3D3BLNuRfj6JW4JttV-Bnhro2OvJ1VplKKRE9si7x80zRZFCoDB3T3ApOqRfg">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: Signed JWT
+            example: >-
+              DPoP
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiJ9.oyd-KZ4_aqDBmeebwjJ52Cdrj3D3BLNuRfj6JW4JttV-Bnhro2OvJ1VplKKRE9si7x80zRZFCoDB3T3ApOqRfg
+        - name: DPoP
+          in: header
+          description: >-
+            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
+            pattern. See also <a target="blank"
+            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
+            9449</a>.<br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImM1MmMzZTU4MmNjYTRhZTgyYTRhYWRjODA3MTIwZGZmODRlNmIzYjA5MTg3NjMwMmYxY2QyN2I0ODRmNmE1YjgiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.C--7xxs9hbF6eA6HM9gGvQ1FtlseiJ9hYFAsMnAsu-JtlzNXJXoAvrVOVkeYtkQ6beXveOern56_rLDoR4gmiw">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: >-
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImEyMWQxMzUzZGYwZTExOTQ4ODE1NDAwZGU2MjUxYzUwNjlhYTFhNjBjMDg5YWViYTQ2MTI1Y2JlNjhmNzQ1ZmYiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.bVf2E4qvHTNGAGXPNcOLrgI_QcXmx0k8Ays6d6gPuT6X1Pbwzz_ltYBxiT28O8ab2-ulk9Rg8TIHOG_H5ZCCSA
+        - name: Agid-JWT-Signature
+          in: header
+          description: >-
+            JWT containing the signature of the message headers whose integrity
+            needs to be guaranteed, to comply with the INTEGRITY_REST_02
+            security pattern. <a target="blank"
+            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9OWRkZGEwODZhM2I5MDI3NTA4YTk3MWYxNmUwYzQ0YWEyYzlkOGQ5MTMzNGYyZDRhZWRkMWNkNmEwYTJhZDNhOCIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.0zncFKgLgIAhcX7aTIjC44NWYBiQKM4ZmdHfBqZ0O-W38NkBanT1tz9Z7Z0OBqQqDNsehJQa4IKNzbTjAhoccA">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9OWRkZGEwODZhM2I5MDI3NTA4YTk3MWYxNmUwYzQ0YWEyYzlkOGQ5MTMzNGYyZDRhZWRkMWNkNmEwYTJhZDNhOCIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.0zncFKgLgIAhcX7aTIjC44NWYBiQKM4ZmdHfBqZ0O-W38NkBanT1tz9Z7Z0OBqQqDNsehJQa4IKNzbTjAhoccA
+        - name: Digest
+          in: header
+          description: >-
+            Digest of the message payload, to comply with the INTEGRITY_REST_02
+            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
+            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
+            digest output.
+          required: true
+          schema:
+            type: string
+            example: SHA-256=9ddda086a3b9027508a971f16e0c44aa2c9d8d91334f2d4aedd1cd6a0a2ad3a8
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevokeAllCredentials'
+        required: true
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/jwt:
+              schema:
+                $ref: '#/components/schemas/e-Service_Response'
+              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIn0.ExthZCx8LHMlTTtBm9qA8Y3FhlKvTl-_sWXq35e_vTRMmKukrLhBhNa-C1xfli8g_JBixYhsBzUWhE0ING_kIQ'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_request
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it is missing
+                          required parameters, contains invalid parameters, or
+                          is otherwise malformed.
+                    required:
+                      - error
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_dpop_proof
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it contains an
+                          invalid dpop proof.
+                    required:
+                      - error
+              examples:
+                invalid request:
+                  value:
+                    error: invalid_request
+                    error_description: >-
+                      The request cannot be fulfilled because it is missing
+                      required parameters, contains invalid parameters, or is
+                      otherwise malformed
+                invalid dpop proof:
+                  value:
+                    error: invalid_dpop_proof
+                    error_description: >-
+                      The request cannot be fulfilled because it contains an
+                      invalid dpop proof
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
+              schema:
+                type: string
+        '404':
+          description: Credentials not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error code
+                    example: not_found
+                  error_description:
+                    type: string
+                    description: >-
+                      Text in human-readable form providing further details to
+                      clarify the nature of the error encountered
+                    example: >-
+                      The issuer cannot fulfill the request because the
+                      credentials were not found
+                required:
+                  - error
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: server_error
+                  error_description:
+                    type: string
+                    description: >-
+                      The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                required:
+                  - error
+              example:
+                error: invalid_request
+                error_description: >-
+                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error code
+                  error_description:
+                    type: string
+                    description: >-
+                      Text in human-readable form providing further details to
+                      clarify the nature of the error encountered
+                required:
+                  - error
+              example:
+                error: 'temporarily_unavailable'
+                error_description: 'The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)'
+  /v0.9.0/notifyAvailableCredentials:
+    post:
+      tags:
+        - e-services PDND
+      summary: Notify Available Credential
+      description: >-
+        This service informs users when a specific credential has become
+        available to be entered into the Wallet
+      operationId: notifyAvailableCredentials
+      parameters:
+        - name: Authorization
+          in: header
+          description: >-
+            JWT token obtained from <a target="blank"
+            href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
+            Interoperabilità.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSJ9.FkaRKIEbnyUxfOB15hzgEmVMkH3JI9k7w03HZzNGwIiulIBMvjeY7cHCz0p2FLT_Cxs9OxV2J0h7r3x6ArLD0A">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: Signed JWT
+            example: >-
+              DPoP
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSJ9.FkaRKIEbnyUxfOB15hzgEmVMkH3JI9k7w03HZzNGwIiulIBMvjeY7cHCz0p2FLT_Cxs9OxV2J0h7r3x6ArLD0A
+        - name: DPoP
+          in: header
+          description: >-
+            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
+            pattern. See also <a target="blank"
+            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
+            9449</a>.<br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImM1MmMzZTU4MmNjYTRhZTgyYTRhYWRjODA3MTIwZGZmODRlNmIzYjA5MTg3NjMwMmYxY2QyN2I0ODRmNmE1YjgiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.4AZeYBrDkK7gOLsbXnVOCV8nNs44P24Kmvleje_e0o8F18JVpOxGiQPozJIrXPO5_7uhQQNme4iJPhNcTFXJXw">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: >-
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImM1MmMzZTU4MmNjYTRhZTgyYTRhYWRjODA3MTIwZGZmODRlNmIzYjA5MTg3NjMwMmYxY2QyN2I0ODRmNmE1YjgiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.4AZeYBrDkK7gOLsbXnVOCV8nNs44P24Kmvleje_e0o8F18JVpOxGiQPozJIrXPO5_7uhQQNme4iJPhNcTFXJXw
+        - name: Agid-JWT-Signature
+          in: header
+          description: >-
+            JWT containing the signature of the message headers whose integrity
+            needs to be guaranteed, to comply with the INTEGRITY_REST_02
+            security pattern. <a target="blank"
+            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9MTJiYzY1YTc5ODJiNmMwNTI3M2MyOTA4MDhiMGM1ZmQ3YWQ2YWYyZDY4YTNiMmQ0ZGE0YmEyYzRhMWViN2I1MSIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.FXeF6nv84W3Yeuup3tnF6hgYMsuUqkUESPVdcYuIRwDQ6-mUZABugVQcnSM4lRoVAf4BjW0S21zbM0uHFakBxw">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9MTJiYzY1YTc5ODJiNmMwNTI3M2MyOTA4MDhiMGM1ZmQ3YWQ2YWYyZDY4YTNiMmQ0ZGE0YmEyYzRhMWViN2I1MSIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.FXeF6nv84W3Yeuup3tnF6hgYMsuUqkUESPVdcYuIRwDQ6-mUZABugVQcnSM4lRoVAf4BjW0S21zbM0uHFakBxw
+        - name: Digest
+          in: header
+          description: >-
+            Digest of the message payload, to comply with the INTEGRITY_REST_02
+            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
+            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
+            digest output.
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: SHA-256=12bc65a7982b6c05273c290808b0c5fd7ad6af2d68a3b2d4da4ba2c4a1eb7b51
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailableCredentialsRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/jwt:
+              schema:
+                $ref: '#/components/schemas/e-Service_Response'
+              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsIm5iZiI6MTczNjg0NjY4OCwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImF1ZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6ImM4YmQ4YTJmLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCJ9.5DbB-OIi2eXz6Txm3UhCrvpq10aOkae1huR7VSa2dGRW7XeOeS5ELURHp1YY9wBdHD2zJWx882Vpq3NHlEGkyA'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_request
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it is missing
+                          required parameters, contains invalid parameters, or
+                          is otherwise malformed.
+                    required:
+                      - error
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_dpop_proof
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it contains an
+                          invalid dpop proof.
+                    required:
+                      - error
+              examples:
+                invalid request:
+                  value:
+                    error: invalid_request
+                    error_description: >-
+                      The request cannot be fulfilled because it is missing
+                      required parameters, contains invalid parameters, or is
+                      otherwise malformed
+                invalid dpop proof:
+                  value:
+                    error: invalid_dpop_proof
+                    error_description: >-
+                      The request cannot be fulfilled because it contains an
+                      invalid dpop proof
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: server_error
+                  error_description:
+                    type: string
+                    description: >-
+                      The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                required:
+                  - error
+              example:
+                error: invalid_request
+                error_description: >-
+                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error code
+                  error_description:
+                    type: string
+                    description: >-
+                      Text in human-readable form providing further details to clarify the nature of the error encountered
+                required:
+                  - error
+              example:
+                error: 'temporarily_unavailable'
+                error_description: 'The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)'
+  /v0.9.0/notifyUpdateCredentials/status/{vct}:
+    post:
+      tags:
+        - e-services PDND
+      summary: Notify Status Update
+      description: >-
+        The service is designed to receive from Authentic Source (AS), via PDND,
+        notification of a change of status of a specific attribute (e.g. MDL)
+        with which a digital document issued by the Credential Issuer is
+        associated.
+      operationId: notifyStatusCredentials
+      parameters:
+        - name: vct
+          in: path
+          required: true
+          description: Credential identifier
+          schema:
+            type: string
+            example: MDL
+            enum:
+              - EuropeanDisabilityCard
+              - MDL
+        - name: Authorization
+          in: header
+          description: >-
+            JWT token obtained from <a target="blank"
+            href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
+            Interoperabilità.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.7wfkG8UoCL8ilXPxahy80JAMR68886ng7IAFMOqt5iXK91ydGwcmXUwf3nYv1Y3ZsdPYpWKGepX3_KBgfMtq5g">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: Signed JWT
+            example: >-
+              DPoP
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.7wfkG8UoCL8ilXPxahy80JAMR68886ng7IAFMOqt5iXK91ydGwcmXUwf3nYv1Y3ZsdPYpWKGepX3_KBgfMtq5g
+        - name: DPoP
+          in: header
+          description: >-
+            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
+            pattern. See also <a target="blank"
+            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
+            9449</a>.<br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6Ijc3NGIwYWZkZmJhZmNhYjc5MjU1YzQzOTQ3MzFkZjIwMzRkODNlYmNmY2EzOWUyYjQ2N2YwODM0NDUwYjk5YjQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.h71sNCcJ1l_0kllASpGZ0l1whXwHCwM27hlkavx-qiel9Y5Qw37g4jLfBzNhjHZkG4AH7fKSwstuP9N4JK2qzw">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: >-
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6Ijc3NGIwYWZkZmJhZmNhYjc5MjU1YzQzOTQ3MzFkZjIwMzRkODNlYmNmY2EzOWUyYjQ2N2YwODM0NDUwYjk5YjQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.h71sNCcJ1l_0kllASpGZ0l1whXwHCwM27hlkavx-qiel9Y5Qw37g4jLfBzNhjHZkG4AH7fKSwstuP9N4JK2qzw-zTQyMn3I0Px3afw
+        - name: Agid-JWT-Signature
+          in: header
+          description: >-
+            JWT containing the signature of the message headers whose integrity
+            needs to be guaranteed, to comply with the INTEGRITY_REST_02
+            security pattern. <a target="blank"
+            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiNTdkMjEzNjItZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj01NDEyZDRhMGQ4NTFkODliNDc5ZTM3MDlhOTNkNTMzMzgzYjQ5MDI0NjdkYzU4ODg0OWU1ZDQ5YmE0ODMzZTg4IiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.9vHIePhOQ-RNKeM2MNc1q4Ht6iLHWoUu7a6Ey3B-I3cCLkhyV0Jb8qEXsyyjIFmy4d71Z4-EM2zYcuu3GJ02VA">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiNTdkMjEzNjItZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj01NDEyZDRhMGQ4NTFkODliNDc5ZTM3MDlhOTNkNTMzMzgzYjQ5MDI0NjdkYzU4ODg0OWU1ZDQ5YmE0ODMzZTg4IiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.9vHIePhOQ-RNKeM2MNc1q4Ht6iLHWoUu7a6Ey3B-I3cCLkhyV0Jb8qEXsyyjIFmy4d71Z4-EM2zYcuu3GJ02VA
+        - name: Digest
+          in: header
+          description: >-
+            Digest of the message payload, to comply with the INTEGRITY_REST_02
+            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
+            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
+            digest output.
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: SHA-256=5412d4a0d851d89b479e3709a93d533383b4902467dc588849e5d49ba4833e88
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotifyStatusCredRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/jwt:
+              schema:
+                $ref: '#/components/schemas/e-Service_Response'
+              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTkiLCJqdGkiOiJjOGJkOGEyZi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQifQ.iVMm66lcfOMve7wqB2yEsq6TFCDGEpAEvzCA7NYoZRHsHxMu8_5N4DGI8xWQ5BRG_fZMumNt-eO29ig1K_G3kA'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_request
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it is missing
+                          required parameters, contains invalid parameters, or
+                          is otherwise malformed.
+                    required:
+                      - error
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_dpop_proof
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it contains an
+                          invalid dpop proof.
+                    required:
+                      - error
+              examples:
+                invalid request:
+                  value:
+                    error: invalid_request
+                    error_description: >-
+                      The request cannot be fulfilled because it is missing
+                      required parameters, contains invalid parameters, or is
+                      otherwise malformed
+                invalid dpop proof:
+                  value:
+                    error: invalid_dpop_proof
+                    error_description: >-
+                      The request cannot be fulfilled because it contains an
+                      invalid dpop proof
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: server_error
+                  error_description:
+                    type: string
+                    description: >-
+                      The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                required:
+                  - error
+              example:
+                error: invalid_request
+                error_description: >-
+                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+  /v0.9.0/notifyUpdateCredentials/claims/{vct}:
+    post:
+      tags:
+        - e-services PDND
+      summary: Notify Attribute Update
+      description: >-
+        The service is designed to receive from Authentic Source (AS), via PDND,
+        notification of a change of claims of a specific attribute (e.g. MDL)
+        with which a digital document issued by the Credential Issuer is
+        associated.
+      operationId: notifyClaimsCredentials
+      parameters:
+        - name: vct
+          in: path
+          required: true
+          description: Credential identifier
+          schema:
+            type: string
+            example: MDL
+            enum:
+              - EuropeanDisabilityCard
+              - MDL
+        - name: Authorization
+          in: header
+          description: >-
+            JWT token obtained from <a target="blank"
+            href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
+            Interoperabilità.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.1PYyMx5xFVVr2hUmOiZC1tsY2LEfiSnOU1TPNDJpHqgm-UxOz1-2G6rBc97fETBRzohGJRUMhjZglFLnQW3Wdg">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: Signed JWT
+            example: >-
+              DPoP
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.1PYyMx5xFVVr2hUmOiZC1tsY2LEfiSnOU1TPNDJpHqgm-UxOz1-2G6rBc97fETBRzohGJRUMhjZglFLnQW3Wdg
+        - name: DPoP
+          in: header
+          description: >-
+            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
+            pattern. See also <a target="blank"
+            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
+            9449</a>.<br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6IjZhZTc1YWMzMDkzMWQ4MDhjMzI4OWYzY2JiMWYxMDVlYmUxNmQ0YTJkODFkMTNiMGFjYzRkYjJlYjRjMGFiOTkiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.ER9v1ItrFRuGgEoIWTNt5MGDiW00NVkYQS3yK-OW5_ZRSfAce8w8nn6Cbr-Q320eL5fXYjRtUQMDy7qIYGn8sg">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: >-
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6IjZhZTc1YWMzMDkzMWQ4MDhjMzI4OWYzY2JiMWYxMDVlYmUxNmQ0YTJkODFkMTNiMGFjYzRkYjJlYjRjMGFiOTkiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.ER9v1ItrFRuGgEoIWTNt5MGDiW00NVkYQS3yK-OW5_ZRSfAce8w8nn6Cbr-Q320eL5fXYjRtUQMDy7qIYGn8sg
+        - name: Agid-JWT-Signature
+          in: header
+          description: >-
+            JWT containing the signature of the message headers whose integrity
+            needs to be guaranteed, to comply with the INTEGRITY_REST_02
+            security pattern. <a target="blank"
+            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1jZWViZWYxYWI0YmE3YjkyZjBhZWFmMzEzNTMxYWJjOWNjZDYyZjM2M2FkZGI0Y2FjNDFkODQ1MzgxZjhhZmUyIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.NgLR9DF4LLBXeOWU0DbAI5MmvamUFhprYZjN1rLXy7k80_P-AATy-Q5x7aWgfBll55nDIKONzWgf4ghUyaMQGQ">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1jZWViZWYxYWI0YmE3YjkyZjBhZWFmMzEzNTMxYWJjOWNjZDYyZjM2M2FkZGI0Y2FjNDFkODQ1MzgxZjhhZmUyIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.NgLR9DF4LLBXeOWU0DbAI5MmvamUFhprYZjN1rLXy7k80_P-AATy-Q5x7aWgfBll55nDIKONzWgf4ghUyaMQGQ
+        - name: Digest
+          in: header
+          description: >-
+            Digest of the message payload, to comply with the INTEGRITY_REST_02
+            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
+            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
+            digest output.
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: SHA-256=ceebef1ab4ba7b92f0aeaf313531abc9ccd62f363addb4cac41d845381f8afe2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotifyClaimsCredRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/jwt:
+              schema:
+                $ref: '#/components/schemas/e-Service_Response'
+              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTkiLCJqdGkiOiJjOGJkOGEyZi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQifQ.iVMm66lcfOMve7wqB2yEsq6TFCDGEpAEvzCA7NYoZRHsHxMu8_5N4DGI8xWQ5BRG_fZMumNt-eO29ig1K_G3kA'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_request
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it is missing
+                          required parameters, contains invalid parameters, or
+                          is otherwise malformed.
+                    required:
+                      - error
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_dpop_proof
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it contains an
+                          invalid dpop proof.
+                    required:
+                      - error
+              examples:
+                invalid request:
+                  value:
+                    error: invalid_request
+                    error_description: >-
+                      The request cannot be fulfilled because it is missing
+                      required parameters, contains invalid parameters, or is
+                      otherwise malformed
+                invalid dpop proof:
+                  value:
+                    error: invalid_dpop_proof
+                    error_description: >-
+                      The request cannot be fulfilled because it contains an
+                      invalid dpop proof
+        '401':
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: server_error
+                  error_description:
+                    type: string
+                    description: >-
+                      The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                required:
+                  - error
+              example:
+                error: invalid_request
+                error_description: >-
+                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+  /v0.9.0/wallet-report/{api}:
+    get:
+      tags:
+        - e-services PDND
+      summary: Get Statistics
+      description: This service returns statistical data on issued Digital Credentials
+      operationId: walletGetReport
+      parameters:
+        - name: api
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: typesCredentials
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: typeData
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: fromData
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: toData
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: Authorization
+          in: header
+          description: >-
+            JWT token obtained from <a target="blank"
+            href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
+            Interoperabilità.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgifQ.6ra4rGRIHpiqgb4Z-jWrERRlMvkqQC7bkWXKD51zJa34WJIU-B0AXQADcAAxj_vPRVOtAATNj8fgFgLNGwY-TQ">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: Signed JWT
+            example: >-
+              DPoP
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgifQ.6ra4rGRIHpiqgb4Z-jWrERRlMvkqQC7bkWXKD51zJa34WJIU-B0AXQADcAAxj_vPRVOtAATNj8fgFgLNGwY-TQ
+        - name: DPoP
+          in: header
+          description: >-
+            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
+            pattern. See also <a target="blank"
+            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
+            9449</a>.<br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiYXRoIjoiNzFkZWY4MWYyZjE3MWI1MmFkYWMxNzg5ODI3NmFlZWU5OTlhZWUzZDNkZmE3NjkyMjJjODA0NDBmNDQ0ODgxYSIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNzYyMjYyNjE2fQ.H9r1N2s8xp_rcNr4Bs7_n-6vNKN4BPsvXzsV_UWwWiyr314xPMv4v6_8ac2SIbM-cJ-O4hlZysOUrjC7rewlag">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: >-
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiYXRoIjoiNzFkZWY4MWYyZjE3MWI1MmFkYWMxNzg5ODI3NmFlZWU5OTlhZWUzZDNkZmE3NjkyMjJjODA0NDBmNDQ0ODgxYSIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNzYyMjYyNjE2fQ.H9r1N2s8xp_rcNr4Bs7_n-6vNKN4BPsvXzsV_UWwWiyr314xPMv4v6_8ac2SIbM-cJ-O4hlZysOUrjC7rewlag
+        - name: Agid-JWT-Signature
+          in: header
+          description: >-
+            JWT containing the signature of the message headers whose integrity
+            needs to be guaranteed, to comply with the INTEGRITY_REST_02
+            security pattern. <a target="blank"
+            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDY2ODgsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImV4cCI6MTczNjg0NjkyOCwiaWF0IjoxNzM2ODQ2Njg4LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQiLCJzaWduZWRfaGVhZGVycyI6eyJkaWdlc3QiOiJTSEEtMjU2PTk2MGY2MTlhMWQ0ZWQ2ZThkN2Y0NTFlODU5YjFiMzIxY2UyYmIyNzlhMjk2NmNjZGRkOTc5NjYwZjE5YWEwZWIiLCJjb250ZW50LXR5cGUiOiJhcHBsaWNhdGlvbi9qc29uIn19.Bg9biNEt0IWazqwTvJdrzt2HswGYvKT6UCo6zN-JAopReZVQ8aM-XsU7r7QGthi9j_P66s3cluSdR6Tifa8DQw">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDY2ODgsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImV4cCI6MTczNjg0NjkyOCwiaWF0IjoxNzM2ODQ2Njg4LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQiLCJzaWduZWRfaGVhZGVycyI6eyJkaWdlc3QiOiJTSEEtMjU2PTk2MGY2MTlhMWQ0ZWQ2ZThkN2Y0NTFlODU5YjFiMzIxY2UyYmIyNzlhMjk2NmNjZGRkOTc5NjYwZjE5YWEwZWIiLCJjb250ZW50LXR5cGUiOiJhcHBsaWNhdGlvbi9qc29uIn19.Bg9biNEt0IWazqwTvJdrzt2HswGYvKT6UCo6zN-JAopReZVQ8aM-XsU7r7QGthi9j_P66s3cluSdR6Tifa8DQw
+        - name: Digest
+          in: header
+          description: >-
+            Digest of the message payload, to comply with the INTEGRITY_REST_02
+            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
+            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
+            digest output.
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: SHA-256=960f619a1d4ed6e8d7f451e859b1b321ce2bb279a2966ccddd979660f19aa0eb
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseReport'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+components:
+  schemas:
+    e-Service_Response:
+      properties:
+        Header:
+          type: object
+          properties:
+            alg:
+              description: A digital signature algorithm identifier.
+              type: string
+              example: RS256
+            kid:
+              description: Unique identifier of the JWK used by the Provider to sign the JWT.
+              type: string
+              example: 'cdb52532-dd94-40ef-824d-9c55b10e6bc9'
+            typ:
+              description: It MUST be set to 'JWT'.
+              type: string
+              example: 'JWT'
+            use:
+              description: Usage of the algorithm. If present, it MUST be 'sig'.
+              type: string
+              example: 'sig'
+          required : [alg, kid, typ]
+        Payload:
+          type: object
+          properties:
+            iss:
+              description: The identifier of the e-Service.
+              type: string
+              example: 'https://pre.api.gateway.ipzs.it/t/itwallet.api/utility-wallet/1.0.0/v1/revokeAll'
+            aud:
+              description: The identifier of the Consumer.
+              type: string
+              example: '31670092-eec0-4f95-88da-e1c7ce5e4505'
+            exp:
+              description: UNIX timestamp representing the JWT expiration time.
+              type: integer
+              example: 1736846928
+            iat:
+              description: UNIX timestamp representing the JWT issuance time.
+              type: integer
+              example: 1736846688
+            jti:
+              description: Unique identifier of the JWT to prevent replay attacks.
+              type: string
+              example: '8b971b43-e990-44fa-9013-1b353bfc5a0f'
+            nbf:
+              description: UNIX timestamp representing the JWT first validity time.
+              type: string
+              example: '1736846688'
+            result_code:
+              description: Response Code.
+              type: string
+              example: request_accepted
+              enum:
+                  - request_accepted
+                  - request_processed
+            result_description:
+              description: Response Description.
+              type: string
+              example: The service correctly received the request
+          required: [iss, aud, exp, iat, jti, result_code, result_description]
+    RevokeAllCredentials:
+      required:
+        - unique_id
+        - wallet_provider
+      type: object
+      properties:
+        unique_id:
+          type: string
+          description: ID ANPR or Tax identification number
+        wallet_provider:
+          type: string
+          description: URL identifier of the Wallet Provider
+    AvailableCredentials:
+      required:
+        - tax_id_codes
+      type: object
+      properties:
+        unique_ids:
+          type: array
+          items:
+            type: string
+          description: ID ANPR
+        tax_id_codes:
+          type: array
+          items:
+            type: string
+          description: Tax identification number
+    AvailableCredentialsRequest:
+      type: object
+      properties:
+        Available:
+          $ref: '#/components/schemas/AvailableCredentials'
+        Unavailable:
+          $ref: '#/components/schemas/AvailableCredentials'
+    ErrorDTO:
+      type: object
+      properties:
+        error:
+          type: string
+        error_description:
+          type: string
+    NotifyStatusCredRequest:
+      type: array
+      items:
+        required:
+          - uid
+          - owner
+          - validity
+        type: object
+        properties:
+          uid:
+            type: string
+            example: <document_id>
+            description: >-
+              The UUID of the request transmitted by the Credential Issuer to
+              the AS to download the attribute data used to create the digital
+              credential
+          owner:
+            type: string
+            description: >-
+              The ID ANPR or Tax Identification Number of the user to whom the
+              attribute refers (the digital credential issued by the Credential
+              Issuer presents this value as a claim in the disclosure list)
+          validity:
+            type: boolean
+            example: false
+            description: >-
+              Identifier of the new validity status of the attribute that is
+              reflected on all associated documents (both physical and
+              digital).The possible values of the validity field are as
+              follows:1=Valid, 0=Invalid
+          status_details:
+            type: object
+            properties:
+              state:
+                type: string
+                example: revoked
+                description: >-
+                  string indicating the status of the attribute (mandatory only
+                  for validity=0)
+              description:
+                type: string
+                example: credential revoked
+                description: >-
+                  description of attribute status (mandatory only for
+                  validity=0)
+    NotifyClaimsCredRequest:
+      type: array
+      items:
+        type: object
+        required:
+          - uid
+          - owner
+          - claims
+        properties:
+          uid:
+            type: string
+            example: <document_id>
+            description: >-
+              The UUID of the request transmitted by the Credential Issuer to
+              the AS to download the attribute data used to create the digital
+              credential
+          owner:
+            type: string
+            description: >-
+              The ID ANPR or Tax Identification NUmber of the user to whom the
+              attribute refers (the digital credential issued by the Credential
+              Issuer presents this value as a claim in the disclosure list)
+          claims:
+            type: array
+            description: >-
+              Names of attribute claims that have been updated that are
+              reflected on all associated documents (both physical and digital).
+              For digital documents only, the updating of at least one attribute
+              claim renders it invalid
+            items:
+              type: string
+    ResponseReport:
+      type: object
+      properties:
+        countEid:
+          type: integer
+          format: int64
+        count:
+          type: integer
+          format: int64
+        countPid:
+          $ref: '#/components/schemas/TotalCountCredential'
+        countMdl:
+          $ref: '#/components/schemas/TotalCountCredential'
+        countEdc:
+          $ref: '#/components/schemas/TotalCountCredential'
+        countTeam:
+          $ref: '#/components/schemas/TotalCountCredential'
+    TotalCountCredential:
+      type: object
+      properties:
+        credEmesse:
+          type: integer
+          format: int64
+        credValide:
+          type: integer
+          format: int64
+        credInvalide:
+          type: integer
+          format: int64

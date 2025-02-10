@@ -48,7 +48,24 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.ifconfig',
     'sphinx.ext.autosectionlabel',
+    'sphinxcontrib.redoc',
 ]
+
+redoc = [
+    {
+        'name': 'OAS3-PDND-Issuer',
+        'page': 'OAS3-PDND-Issuer',
+        'spec': './oas3/OAS3-PDND-Issuer.yaml',
+        'embed': True,
+    },
+]
+
+
+redoc_uri = 'https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js'
+rst_epilog = """
+.. _blank: target="_blank"
+"""
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
