@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>e-Service PDND &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="e-Service PDND Catalogue" href="e-service-pdnd-catalogue.html" />
+    <link rel="prev" title="Authentic Sources" href="authentic-sources.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage"><img src="https://avatars.githubusercontent.com/u/15377824?s=48&v=4"/></a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="white" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">e-Service PDND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="e-service-pdnd">
+<h1>e-Service PDND<a class="headerlink" href="#e-service-pdnd" title="Link to this heading">¶</a></h1>
+<p>The <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> framework empowers Member States to establish the interfaces, terms, and conditions governing communication between Credential Issuers and Authentic Sources. In the Italian context, interoperability is established by leveraging the following guidelines:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>&quot;Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>);</p></li>
+<li><p>&quot;Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>).</p></li>
+</ul>
+</div></blockquote>
+<p>To leverage the PDND, entities MUST formally be subscribed becoming <strong>Participants</strong> (<em>Aderenti</em>). Within the PDND infrastructure, Participants MUST assume at least one of the the following roles:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Providers</strong> (<em>Erogatori</em>): expose e-Services to other Participants.</p></li>
+<li><p><strong>Consumers</strong> (<em>Fruitori</em>): utilize e-Services offered by Providers within the PDND infrastructure.</p></li>
+</ul>
+</div></blockquote>
+<p>Access to an e-Service requires Consumers to obtain a specific Access Token, known within the PDND infrastructure as a Voucher.</p>
+<section id="requirements-and-security-patterns">
+<h2>Requirements and Security Patterns<a class="headerlink" href="#requirements-and-security-patterns" title="Link to this heading">¶</a></h2>
+<p>This specification is based on the following set of requirements:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 70.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>ID</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>R1</p></td>
+<td><p>The Consumer and the Provider have both subscribed to the PDND infrastructure.</p></td>
+<td><p>Architectural</p></td>
+</tr>
+<tr class="row-odd"><td><p>R2</p></td>
+<td><p>The communication between the Consumer and the Provider MUST ensure data integrity, authenticity, non-repudiation and replay protection.</p></td>
+<td><p>Security</p></td>
+</tr>
+<tr class="row-even"><td><p>R3</p></td>
+<td><p>The Provider MAY require the Consumer to provide tracked data to complement the request. In that case, there MUST be a correlation between the tracked data and the Voucher.</p></td>
+<td><p>Security</p></td>
+</tr>
+<tr class="row-odd"><td><p>R4</p></td>
+<td><p>The e-Services MUST be implemented in REST, thus SOAP protocol MUST NOT be used.</p></td>
+<td><p>Technical</p></td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> define several security patterns designed to enhance specific security properties in interactions between Participants. This specification adopts the following applicable security patterns:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 80.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Security Pattern</strong></p></th>
+<th class="head"><p><strong>Compliant With</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>[REST_JWS_2021_POP]</strong> JWS POP Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]): REQUIRED. It adds a proof of possession on the Voucher. The Consumer using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.</p></td>
+<td><p>R2, R4</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>[ID_AUTH_CHANNEL_01]</strong> Direct Trust Transport-Level Security (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It protects the communication between the Consumer and the Provider by ensuring confidentiality, integrity, identification of the Provider, and mitigation against replay attack and spoofing.</p></td>
+<td><p>R1, R2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>[INTEGRITY_REST_02]</strong> REST Payload Integrity in PDND (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It ensures the integrity of the payload of the REST Consumer request, within the PDND Infrastructure.</p></td>
+<td><p>R2, R4</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>[AUDIT_REST_02]</strong> Submission of audit data within the REST request with correlation (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPTIONAL. The Provider MAY request additional data tracked in the Consumer's domain, with a correlation between such data and the authentication method. In that case, this pattern MUST be used.</p></td>
+<td><p>R3, R4</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition, this specification defines and applies a custom security pattern:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 80.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Security Pattern</strong></p></th>
+<th class="head"><p><strong>Compliant With</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>REST Response Payload Integrity in PDND: REQUIRED. It ensures the integrity of the payload of the REST Provider response, within the PDND Infrastructure.</p></td>
+<td><p>R2</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following security patterns defined in <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> MUST NOT be used as they do not comply with the requirements defined above:</p>
+<blockquote>
+<div><ul>
+<li><p>The following patterns can only be used when the Consumer cannot subscribe to the PDND infrastructure (i.e., the trust between the Participants needs to be established in a direct form), thus not complying with <strong>R1</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>[ID_AUTH_CHANNEL_02]</strong> Direct Trust mutual Transport-Level Security (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>])</p></li>
+<li><p><strong>[ID_AUTH_REST_01]</strong> Direct Trust based on X.509 certificate with REST (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+<li><p><strong>[ID_AUTH_REST_02]</strong> Direct Trust based on X.509 certificate with REST and token/message uniqueness (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+<li><p><strong>[INTEGRITY_REST_01]</strong> REST Payload Integrity (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>The following pattern does not provide correlation between the tracked data and the Voucher, thus not complying with <strong>R3</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>[AUDIT_REST_01]</strong> Submission of audit data within the REST request (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>The following patterns are based on a SOAP architecture, thus not complying with <strong>R4</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>[ID_AUTH_SOAP_01]</strong> Direct Trust based on X.509 certificate with SOAP (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+<li><p><strong>[ID_AUTH_SOAP_02]</strong> Direct Trust based on X.509 certificate with SOAP and token/message uniqueness (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+<li><p><strong>[INTEGRITY_SOAP_01]</strong> SOAP Payload Integrity (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]).</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="voucher-issuance">
+<h2>Voucher Issuance<a class="headerlink" href="#voucher-issuance" title="Link to this heading">¶</a></h2>
+<p>The PDND infrastructure defines two different types of Vouchers:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>For e-Service</strong>: allow Consumers to request data from an e-Service.</p></li>
+<li><p><strong>For Interoperability API</strong>: allow Participants to request data from the Interoperability API, exposed by the PDND Infrastructure.</p></li>
+</ul>
+</div></blockquote>
+<p>The two flows are described below.</p>
+<section id="voucher-for-e-service">
+<h3>Voucher for e-Service<a class="headerlink" href="#voucher-for-e-service" title="Link to this heading">¶</a></h3>
+<section id="prerequisites">
+<h4>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h4>
+<p>The <strong>Consumer</strong> MUST comply with the following prerequisites:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has successfully subscribed to the PDND Infrastructure (as per R1).</p></li>
+<li><p>Has created a new <cite>Client e-service</cite> to interact with the intended e-Service. Upon creation, it has been assigned a <code class="docutils literal notranslate"><span class="pre">client_id</span></code> by the PDND Platform.</p></li>
+<li><p>Has registered a key pair associated with the <cite>Client e-service</cite>.</p></li>
+<li><p>Has requested to enroll in the intended e-Service.</p></li>
+<li><p>Has defined a new purpose for the e-Service. Upon definition, it has been assigned a <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> by the PDND Platform.</p></li>
+<li><p>Has associated the <cite>Client e-service</cite> with the defined purpose.</p></li>
+</ul>
+</div></blockquote>
+<p>The <strong>Provider</strong> MUST comply with the following prerequisites:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has successfully subscribed to the PDND Infrastructure (as per R1).</p></li>
+<li><p>Has created a new e-Service and published it within the PDND API Catalogue.</p></li>
+<li><p>Has approved the Consumer's request to enroll in the e-Service.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="flow">
+<h4>Flow<a class="headerlink" href="#flow" title="Link to this heading">¶</a></h4>
+<figure class="align-center" id="id7" style="width: 100%">
+<span id="fig-voucherissuance-eservice-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TT5HRzCm40VmTt-AK_QoHLH2a-1X3sXHkcf52AAbm6FakRV6Ik8pvtDPz-cnGxSYjBr4iMF_xd-Nwo2Q9KwZ4YiZmW-AfaU6TGXHEuEm05oqo7jhK2aTXLoSxf6LkgT7ACkQN8WJSbd2sNfFV500FedMMA-TG56MtweeFTIZHITbMO0EKAyKkYqaujbfbb-NsQYU8kDRHduGsoSjbXpaLCX7iMfF8dc15J5KtvVhJNTtqswwzvSAKjN5ftfrrJ0c7U7ppmtyjearDFaH9tIY-G1RBHhEYsB3sWpMxMxsTelEO55Sg1DIfpjH4DhRwlB3H-Xrw84UuBLh6Riz_t__8davibBF8gDEuBAX1WOyWDUMGQUUF1CzpAUgzkhb1ztXhuX1CcxcqNPsMnJlu6MfGq3EWtfzjvE3nx-VTgoT7DUfHtOa2BH7Xgg5iozsrqjZtP2Rxz4C8SUU3obLjOiv_2bLyEG2vbZQ60oX4nhmc26__biO7xrb39rrkV1rOkCq_W40"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Steps 1-2 (Preparation of Tracked Data):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>) containing the tracked data that have to be sent to the Provider. Finally, it computes the SHA-256 hash of <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-trackingevidence-header">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> header</span><a class="headerlink" href="#code-voucherissuance-eservice-trackingevidence-header" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-trackingevidence-payload">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-trackingevidence-payload" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1733052600</span><span class="p">,</span>
+    <span class="s2">&quot;nbf&quot;</span><span class="p">:</span> <span class="mi">1733036450</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1733036400</span><span class="p">,</span>
+    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;a4b5c6d7-e8f9-abcd-ef12-345678901234&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dnonce&quot;</span><span class="p">:</span> <span class="mi">6528424213685</span><span class="p">,</span>
+    <span class="s2">&quot;purposeId&quot;</span><span class="p">:</span> <span class="s2">&quot;b2c3d4e5-f6g7-h8i9-j0k1-lmno12345678&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;userID&quot;</span><span class="p">:</span> <span class="s2">&quot;a8b7c6d5-e4f3-g2h1-i9j0-klmnopqrstuv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;loa&quot;</span><span class="p">:</span> <span class="s2">&quot;substantial&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Steps 1-2 are required only when complying with the <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> security pattern.</p>
+</div>
+<p><strong>Step 3 (DPoP Key Pair and Proof)</strong>: The Consumer MUST create a new key pair for the DPoP and a fresh DPoP proof JWT following the instruction provided in the Section 4 of <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a> for the token request to the PDND Authorization Server.</p>
+<p><strong>Step 4 (Voucher Request)</strong>: The Consumer creates a Voucher Request and sends it to the PDND Authorization Server.</p>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-request">
+<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-eservice-request" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/authorization-server/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJhbGciOiJSUzI1NiIsImtpZCI6ImY0YzRmMjE3LWE4N2It.eyJodHRwIj...</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+
+<span class="nt">grant_type</span><span class="o">=</span><span class="s">client_credentials</span><span class="p">&amp;</span>
+<span class="nt">client_id</span><span class="o">=</span><span class="s">82914b3f-60b2-4529-b4d6-3d4e67f0a933</span><span class="p">&amp;</span>
+<span class="nt">client_assertion_type</span><span class="o">=</span><span class="s">urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer</span><span class="p">&amp;</span>
+<span class="nt">client_assertion</span><span class="o">=</span><span class="s">eyJhbGciOiJSUzI1NiIsImtpZCI6IjczYTQ3ZTQ5LTJhNDQtNDdjZS.eyJpc...</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-clientassertion-header">
+<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-clientassertion-header" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-clientassertion-payload">
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-clientassertion-payload" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;interop.pagopa.it/authorization-server&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1733041440</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1733037840</span><span class="p">,</span>
+    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;7e9f3a4d-c9b2-42f6-a6d4-38e12fb6b8ab&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;purposeId&quot;</span><span class="p">:</span> <span class="s2">&quot;d2b9a653-c497-45c6-b8f1-5bdf124c9d3a&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;digest&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA256&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5db26201b684761d2b970329ab8596773164ba1...&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> claim in the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload is required only when requesting a Voucher for e-Service.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">digest</span></code> claim in the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload is required only when complying with the <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> security pattern.</p>
+</div>
+<p>Upon the receipt of the Voucher Request, the PDND Authorization Server MUST perform the following checks on the Voucher Request body parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The claim <code class="docutils literal notranslate"><span class="pre">client_assertion_type</span></code> is set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</span></code>.</p></li>
+<li><p>The claim <code class="docutils literal notranslate"><span class="pre">grant_type</span></code> is set to <code class="docutils literal notranslate"><span class="pre">client_credentials</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>The PDND Authorization Server MUST also validate the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JWT as follows:</p>
+<blockquote>
+<div><p>Header:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">typ</span></code> claim is present and that its value is <code class="docutils literal notranslate"><span class="pre">jwt</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Signature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Obtain the Consumer's public key corresponding to the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header parameter, by interacting with the PDND Interoperability API.</p></li>
+<li><p>Validate the signature of the JWT using the retrieved Consumer's public key and the algorithm specified by the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter.</p></li>
+</ul>
+</div></blockquote>
+<p>Payload:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> claims MUST identify a Client registered in the PDND Infrastructure.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">aud</span></code> claim MUST represent the PDND Authorization Server.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">exp</span></code> claim MUST represent a time instant after the current time.</p></li>
+<li><p>If the <code class="docutils literal notranslate"><span class="pre">nbf</span></code> claim is present, it MUST represent a time instant prior to the current time.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iat</span></code> claim MUST represent a time instant prior to the current time.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">jti</span></code> claim MUST NOT have been previously used.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> claim MUST identify a purpose registered in the PDND Infrastructure and associated to the Client.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PDND Authorization Server does not need to perform any checks on the <code class="docutils literal notranslate"><span class="pre">digest</span></code> claim.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Verification of the <code class="docutils literal notranslate"><span class="pre">exp</span></code>, <code class="docutils literal notranslate"><span class="pre">nbf</span></code>, <code class="docutils literal notranslate"><span class="pre">iat</span></code>, and <code class="docutils literal notranslate"><span class="pre">jti</span></code> claims, as detailed above, MUST be performed for all JWTs described within this section. These checks will not be explicitly mentioned in subsequent references.</p>
+</div>
+<p><strong>Step 6 (Voucher Issuance)</strong>: In case of successful checks, the PDND Authorization Server issues a Voucher, which is included in the Voucher Response to the Consumer.</p>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-response">
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-eservice-response" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6IkFiY2Rl.eyJ5bG9hZA...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-accesstoken-header">
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-accesstoken-header" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;at+jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-accesstoken-payload">
+<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-accesstoken-payload" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;interop.pagopa.it&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1733042150</span><span class="p">,</span>
+    <span class="s2">&quot;nbf&quot;</span><span class="p">:</span> <span class="mi">1733041945</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1733041920</span><span class="p">,</span>
+    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;c4f5d7e2-b7c8-40f6-9b6a-dc9a4f5aeb57&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;purposeId&quot;</span><span class="p">:</span> <span class="s2">&quot;d2b9a653-c497-45c6-b8f1-5bdf124c9d3a&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;digest&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA256&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5db26201b684761d2b970329ab8596773164ba1...&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">digest</span></code> claim in the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload is required only when complying with the <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> security pattern. If present, it corresponds to the value of the <code class="docutils literal notranslate"><span class="pre">digest</span></code> claim contained in the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="voucher-for-interoperability-api">
+<h3>Voucher for Interoperability API<a class="headerlink" href="#voucher-for-interoperability-api" title="Link to this heading">¶</a></h3>
+<section id="id1">
+<h4>Prerequisites<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<p>The <strong>Participant</strong> MUST comply with the following prerequisites:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has successfully subscribed to the PDND Infrastructure.</p></li>
+<li><p>Has created a new <cite>Client interop api</cite> to interact with the Interoperability API. Upon creation, it has been assigned a <code class="docutils literal notranslate"><span class="pre">client_id</span></code> by the PDND Platform.</p></li>
+<li><p>Has registered a key pair associated with the <cite>Client interop api</cite>.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id2">
+<h4>Flow<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
+<figure class="align-center" id="id8" style="width: 100%">
+<span id="fig-voucher-interoperabilityapi-issuance-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TP51ozf048Rl-ok6UD7GqFOg4WmH8L3Qq41FXR36mIp6tNHcLjHVtrqDwk7xBY4px_Ay3xjh5atYJuCI8mF27-Ux7WagPgzjXv11PGN9ZKXwPmOZLoZgIYdjnLb_sY4fjNCNIDAq3YJJcL5RITE_TiNcXillt_9vwIpxKw0wMdsDs_mjhScTpHvfCKK9pAgpewi265_0oFzLUEcX70p6WWGqGxbLQFSG11uMGMBpSvEcC2jkdl0pHlmuCZSjnbbeaCv84x5eNiHoc-L5itnUoc_yvv45vadItIrQiq-IB_0SDJDIP7wyRUKwuYCwK12QveLIP9qWkA0H163smnnwgOqzAe2on-x8KUf-IAcYoRAyt2vVLZmwonYrTDSXSolkY9D3_7qlnije2BarDXQl0pOy_dy0"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1 (Voucher Request)</strong>: The Participant creates a Voucher Request and sends it to the PDND Authorization Server.</p>
+<div class="literal-block-wrapper docutils container" id="code-voucher-interoperabilityapi-issuance-request">
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucher-interoperabilityapi-issuance-request" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/authorization-server/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+
+<span class="nt">grant_type</span><span class="o">=</span><span class="s">client_credentials</span><span class="p">&amp;</span>
+<span class="nt">client_id</span><span class="o">=</span><span class="s">5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b</span><span class="p">&amp;</span>
+<span class="nt">client_assertion_type</span><span class="o">=</span><span class="s">urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer</span><span class="p">&amp;</span>
+<span class="nt">client_assertion</span><span class="o">=</span><span class="s">eyJhbGciOiJIUzI1NiIsImtpZCI6IjEyMzQ1Ng.eyJlcm5hbWU...</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucher-interoperabilityapi-issuance-clientassertion-header">
+<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucher-interoperabilityapi-issuance-clientassertion-header" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;9a4d8e3f-8b7d-4c98-926f-2745c6b1f832&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucher-interoperabilityapi-issuance-clientassertion-payload">
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucher-interoperabilityapi-issuance-clientassertion-payload" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;interop.pagopa.it/authorization-server&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1733233500</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1733232300</span><span class="p">,</span>
+    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;d2c9a7b4-3e81-4d27-b6f7-51a8c9f0a3c6&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Upon the receipt of the Voucher Request, the PDND Authorization Server MUST perform the following checks on the Voucher Request body parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The claim <code class="docutils literal notranslate"><span class="pre">client_assertion_type</span></code> is set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</span></code>.</p></li>
+<li><p>The claim <code class="docutils literal notranslate"><span class="pre">grant_type</span></code> is set to <code class="docutils literal notranslate"><span class="pre">client_credentials</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>The PDND Authorization Server MUST also validate the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JWT as follows:</p>
+<blockquote>
+<div><p>Header:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">typ</span></code> claim is present and that its value is <code class="docutils literal notranslate"><span class="pre">jwt</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Signature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Obtain the Participant's public key corresponding to the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header parameter, by interacting with the PDND Interoperability API.</p></li>
+<li><p>Validate the signature of the JWT using the retrieved Participant's public key and the algorithm specified by the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter.</p></li>
+</ul>
+</div></blockquote>
+<p>Payload:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> claims MUST identify a Client registered in the PDND Infrastructure.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">aud</span></code> claim MUST represent the PDND Authorization Server.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>Step 2 (Voucher Issuance)</strong>: In case of successful checks, the PDND Authorization Server issues a Voucher, which is included in the Voucher Response to the Participant.</p>
+<div class="literal-block-wrapper docutils container" id="code-voucher-interoperabilityapi-issuance-response">
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucher-interoperabilityapi-issuance-response" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJIUzI1NiIsImtpZCI6Ijg3Y2YxMjM.eyJ5bG9hZA...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucher-interoperabilityapi-issuance-accesstoken-header">
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucher-interoperabilityapi-issuance-accesstoken-header" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;at+jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-voucher-interoperabilityapi-issuance-accesstoken-payload">
+<div class="code-block-caption"><span class="caption-number">Listing 14 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucher-interoperabilityapi-issuance-accesstoken-payload" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;interop.pagopa.it&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://interop.pagopa.it/api/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1733236680</span><span class="p">,</span>
+    <span class="s2">&quot;nbf&quot;</span><span class="p">:</span> <span class="mi">1733233158</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1733233080</span><span class="p">,</span>
+    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;f87e2d5b-9f65-4f0f-8ad4-92e58e6b13c7&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="pdnd-authorization-server-endpoint">
+<h3>PDND Authorization Server Endpoint<a class="headerlink" href="#pdnd-authorization-server-endpoint" title="Link to this heading">¶</a></h3>
+<p>The PDND Authorization Server Endpoint issues Vouchers to Participants. These Vouchers allow Consumers to access e-Service resources and enable Participants to interact with the Interoperability API.</p>
+<section id="voucher-request">
+<h4>Voucher Request<a class="headerlink" href="#voucher-request" title="Link to this heading">¶</a></h4>
+<p>The request to the PDND Authorization Server Endpoint adheres to the Client Credentials Grant flow specified in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>. The client authenticates itself by presenting a JWT-based client assertion as defined in <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a> and <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>.</p>
+<p>Following the specifications above, the request MUST be an HTTP POST request with a body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
+<p>The Voucher Request MUST include the following HTTP header parameters (unless otherwise specified):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DPoP</strong></p></td>
+<td><p>DPoP proof JWT, to comply with the <code class="docutils literal notranslate"><span class="pre">REST_JWS_2021_POP</span></code> security pattern. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API).</p></td>
+<td><p>[<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The Voucher Request MUST include the following body parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>client_id</strong></p></td>
+<td><p>The unique identifier of the Participant Client, assigned by the PDND.</p></td>
+<td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>], [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>client_assertion</strong></p></td>
+<td><p>A JWT representing the client assertion.</p></td>
+<td><p>[<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>], [<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>client_assertion_type</strong></p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</span></code>.</p></td>
+<td><p>[<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>], [<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>grant_type</strong></p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">client_credentials</span></code>.</p></td>
+<td><p>[<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JWT MUST include the following JOSE header parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier.</p></td>
+<td><p>[<span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Unique identifier of the JWK used by the Participant to sign the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code>.</p></td>
+<td><p>[<span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
+<td><p>[<span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JWT MUST include the following payload claims (unless otherwise specified):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
+<td><p>[<span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
+<td><p>[<span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aud</strong></p></td>
+<td><p>The identifier of the PDND Authorization Server Endpoint.</p></td>
+<td><p>[<span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
+<td><p>[<span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nbf</strong></p></td>
+<td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
+<td><p>[<span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
+<td><p>[<span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>jti</strong></p></td>
+<td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
+<td><p>[<span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>purposeId</strong></p></td>
+<td><p>The identifier of the purpose registered in the PDND Platform, associated with the intended e-Service. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API).</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>digest</strong></p></td>
+<td><p>JSON object containing the digest of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API), and when complying with <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code>. If present, it MUST contain the following claims:</p>
+<ul class="simple">
+<li><p><strong>alg</strong>: JSON string representing the hashing algorithm;</p></li>
+<li><p><strong>value</strong>: JSON string representing the value of the digest.</p></li>
+</ul>
+</td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="voucher-response">
+<h4>Voucher Response<a class="headerlink" href="#voucher-response" title="Link to this heading">¶</a></h4>
+<p>The Voucher Response MUST include the following body parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>access_token</strong></p></td>
+<td><p>A JWT representing the access token issued by the PDND Authorization Server Endpoint.</p></td>
+<td><p>[<span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>token_type</strong></p></td>
+<td><p>It MUST be set to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DPoP</span></code> in case of Voucher for e-Service;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bearer</span></code> in case of Voucher for Interoperability API.</p></li>
+</ul>
+</td>
+<td><p>[<span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>expires_in</strong></p></td>
+<td><p>Number that represents the lifetime of the access token in seconds as a positive integer.</p></td>
+<td><p>[<span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JWT MUST include the following JOSE header parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier.</p></td>
+<td><p>[<span class="target" id="index-31"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Unique identifier of the JWK used by the PDND Authorization Server Endpoint to sign the <code class="docutils literal notranslate"><span class="pre">access_token</span></code>.</p></td>
+<td><p>[<span class="target" id="index-32"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">at+jwt</span></code>.</p></td>
+<td><p>[<span class="target" id="index-33"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JWT MUST include the following payload claims (unless otherwise specified):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>The identifier of the PDND Authorization Server.</p></td>
+<td><p>[<span class="target" id="index-34"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-35"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>The identifier of the Participant, corresponding to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> body parameter in the Voucher Request.</p></td>
+<td><p>[<span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-37"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aud</strong></p></td>
+<td><p>The identifier of the e-Service.</p></td>
+<td><p>[<span class="target" id="index-38"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-39"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
+<td><p>[<span class="target" id="index-40"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-41"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nbf</strong></p></td>
+<td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
+<td><p>[<span class="target" id="index-42"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
+<td><p>[<span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>jti</strong></p></td>
+<td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
+<td><p>[<span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>client_id</strong></p></td>
+<td><p>MUST correspond to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contained in the Voucher Request.</p></td>
+<td><p>[<span class="target" id="index-47"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8963.html"><strong>RFC 8963</strong></a>], [<span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>purposeId</strong></p></td>
+<td><p>MUST correspond to the value of the <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> claim contained in the Voucher Request. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API).</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>digest</strong></p></td>
+<td><p>MUST correspond to the value of the <code class="docutils literal notranslate"><span class="pre">digest</span></code> object contained in the Voucher Request. It is mandatory only when complying with <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code>.</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="key-retrieval">
+<h2>Key Retrieval<a class="headerlink" href="#key-retrieval" title="Link to this heading">¶</a></h2>
+<section id="pdnd-keys">
+<h3>PDND Keys<a class="headerlink" href="#pdnd-keys" title="Link to this heading">¶</a></h3>
+<figure class="align-center" id="id9" style="width: 100%">
+<span id="fig-keyretrieval-pdnd-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/PS_1IWCn58NXVPxYK7U1-01Tb1Pc8GWgcSMiq_Q8eMbIRsvc79_UgOWAtHxuF-xTLWsYxPoCHat48sTugaIE8S7XfNlgZ0bDIsxdFSMOVVc0jTVTMjpjFflG09T5YOTu2LcnilP-OahkbCkKhLqXL0o6-OWb_XMaZF58kIeF9NFkEDr2pxkcR_2ifSc1w2aZvOVq_P_fUxSPrl1yRwoAroBVf-F4kHepEBVn_VhVj5tAvUil"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1 (Keys Request)</strong>: The Provider requests for the keys used by the PDND to sign Vouchers.</p>
+<div class="literal-block-wrapper docutils container" id="code-keyretrieval-pdnd-request">
+<div class="code-block-caption"><span class="caption-number">Listing 15 </span><span class="caption-text">Non-normative example of the Keys Request</span><a class="headerlink" href="#code-keyretrieval-pdnd-request" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/jwks.json</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Step 2 (Keys Response)</strong>: The .well-known Endpoint returns the list of keys used by the PDND to sign Vouchers, as a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
+<div class="literal-block-wrapper docutils container" id="code-keyretrieval-pdnd-response">
+<div class="code-block-caption"><span class="caption-number">Listing 16 </span><span class="caption-text">Non-normative example of the Keys Response</span><a class="headerlink" href="#code-keyretrieval-pdnd-response" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qU2Bp7xgkXBQI2w2PZ5LZGo34TIjoir-ul0x4jZ_d9hN6q...&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;05VukHBwiE1W_kgUS0zkOyHCrRivgw5cfSTmcvD_phieEY...&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9432c16b-7aae-49df-b9c4-ea61b556652b&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="participants-keys">
+<h3>Participants' Keys<a class="headerlink" href="#participants-keys" title="Link to this heading">¶</a></h3>
+<section id="id3">
+<h4>Prerequisites<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h4>
+<p>The <strong>Participant</strong> who requests the key MUST comply with the following prerequisites:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has successfully subscribed to the PDND Infrastructure (as per R1).</p></li>
+<li><p>Has created a new <cite>Client api interop</cite> to interact with the PDND Interoperability API. Upon creation, it has been assigned a <code class="docutils literal notranslate"><span class="pre">client_id</span></code> by the PDND Platform.</p></li>
+<li><p>Has registered a key pair associated with the <cite>Client api interop</cite>.</p></li>
+<li><p>Has obtained a valid Voucher to query the PDND Interoperability API, related to the specific <cite>Client api interop</cite>.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="id4">
+<h4>Flow<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<figure class="align-center" id="id10" style="width: 100%">
+<span id="fig-keyretrieval-participant-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/fSp1IlGm5CNnVPxYa6_nGQ0lC8jXIbkm25fcxIPjx-XbqYGcDsfzUYk85Low_f_pEsMnIShYbB0umYsjE9CafXVhK67OAayShPUib2qIV5b6IagDuGt63ErTQmp-rUybaGBYleSsflT2AKHATcJ7ig8UUcCqR4QloC_Ob6zgltwADy7JsjBhR_I-BlA4nZ5v-SAQRjUQhZhsXpCz5yg2IqZu8V_FY6LqFE5AwuEVGagKO_0p-qT8G8uqyMNBMbzvrbf1zTMnwGv_CKxavxAu3m00"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1 (Key Request)</strong>: The Participant requests for the key used by another Participant, corresponding to a specific <code class="docutils literal notranslate"><span class="pre">kid</span></code>, to the PDND Interoperability API.</p>
+<div class="literal-block-wrapper docutils container" id="code-keyretrieval-participant-request">
+<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">Non-normative example of the Key Request</span><a class="headerlink" href="#code-keyretrieval-participant-request" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/keys/c7e3d6a4-5b99-4298-9b84-d8f3a61279f1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzd...</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Step 2 (Key Response)</strong>: The Interoperability API Endpoint returns the requested key, as a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
+<div class="literal-block-wrapper docutils container" id="code-keyretrieval-participant-response">
+<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">Non-normative example of the Key Response</span><a class="headerlink" href="#code-keyretrieval-participant-response" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RSA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v0GyA3SHrcHhTVxF0ItL64VThy2qG76KtIlptFyE4...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;e&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AQAB&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c7e3d6a4-5b99-4298-9b84-d8f3a61279f1&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Interoperability API includes an event notification endpoint that alerts subscribed Participants about changes within the PDND Infrastructure. Among these notifications, the <code class="docutils literal notranslate"><span class="pre">/events/keys</span></code> endpoint provides updates on modifications to cryptographic material, such as additions or deletions of keys. By leveraging this mechanism, Participants can implement a periodic polling strategy to retrieve all changed keys and update their local cache. This eliminates the need to request each key individually during the workflow.</p>
+</div>
+</section>
+</section>
+<section id="well-known-endpoint">
+<h3>.well-known Endpoint<a class="headerlink" href="#well-known-endpoint" title="Link to this heading">¶</a></h3>
+<p>The .well-known Endpoint is part of the PDND Infrastructure and used to retrieve the public keys used by the PDND Authorization Server to sign the Vouchers.</p>
+<section id="keys-request">
+<h4>Keys Request<a class="headerlink" href="#keys-request" title="Link to this heading">¶</a></h4>
+<p>The Keys Request is a <code class="docutils literal notranslate"><span class="pre">GET</span></code> HTTP request sent to the .well-known Endpoint. This endpoint allows Participants to retrieve the public keys necessary to verify digital signatures on Vouchers issued by the PDND Authorization Server.</p>
+</section>
+<section id="keys-response">
+<h4>Keys Response<a class="headerlink" href="#keys-response" title="Link to this heading">¶</a></h4>
+<p>The .well-known Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span></code> OK status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] containing the public keys employed by the PDND Authorization Server to sign Vouchers.</p>
+</section>
+</section>
+<section id="interoperability-api-endpoint">
+<h3>Interoperability API Endpoint<a class="headerlink" href="#interoperability-api-endpoint" title="Link to this heading">¶</a></h3>
+<p>The Interoperability API Endpoint is part of the PDND Infrastructure and used to retrieve the public keys of other parties enrolled in the PDND.</p>
+<section id="key-request">
+<h4>Key Request<a class="headerlink" href="#key-request" title="Link to this heading">¶</a></h4>
+<p>The Key Request is a <code class="docutils literal notranslate"><span class="pre">GET</span></code> HTTP request sent to the <code class="docutils literal notranslate"><span class="pre">/keys/&lt;kid&gt;</span></code> API. This request is used to retrieve a specific key identified by its unique <code class="docutils literal notranslate"><span class="pre">kid</span></code>.</p>
+<p>The Key Request MUST include the following HTTP header parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Authorization</strong></p></td>
+<td><p>Voucher released by the PDND Authorization Server.</p></td>
+<td><p>[<span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="key-response">
+<h4>Key Response<a class="headerlink" href="#key-response" title="Link to this heading">¶</a></h4>
+<p>The Interoperability API Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span></code> OK status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] representing the public key with the provided <code class="docutils literal notranslate"><span class="pre">kid</span></code>.</p>
+</section>
+</section>
+</section>
+<section id="e-service-usage">
+<h2>e-Service Usage<a class="headerlink" href="#e-service-usage" title="Link to this heading">¶</a></h2>
+<section id="id5">
+<h3>Prerequisites<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>The <strong>Consumer</strong> MUST comply with the following prerequisites:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has obtained a valid Voucher to interact with the intended e-Service, related to a specific <cite>Client e-service</cite>.</p></li>
+</ul>
+</div></blockquote>
+<p>The <strong>Provider</strong> MUST comply with the following prerequisites:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has created a new key ring associated with the specific e-Service.</p></li>
+<li><p>Has registered a key pair associated with the key ring.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Provider's key ring is the counterpart to the Client on the Consumer's side. It stores cryptographic material, allowing Consumers to verify the integrity of responses from Providers.</p>
+</div>
+</section>
+<section id="id6">
+<h3>Flow<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<figure class="align-center" id="id11" style="width: 100%">
+<span id="fig-usage-flow"></span><a class="reference external image-reference" href="https////www.plantuml.com/plantuml/svg/ZP1HRzCm4CVV_IbEtWjOgeHut0DQbQmmX5YLTF1OUSwHM4ryuNpkw3uzph8LAZJK5ykMx_-xd_vNKInB6debNde4NDJ8U-yGxg9jKIcRX48Qxf6LkgTVO4n18QO1sHYukDaJ7nJ0c27U-T460MtCxJ991qNlCOWn6co4OgKmD90HBvnr-RMS6Cl7nFWQOpg8_QCLJm4cD-HduhB-XyYqzyrizea27afyU0rSOQJ43a-PrL_COhNuKAmkrumPWF3v-mOUV4v6tmOhYH7UQ5s_FBH-Uun0mMW5eLpJ6aOc-Z5_LVKbb5PiNlupOPIPzusIwwPwEL0EKRR97d3nnRUTV6J4e02A3jqEj9wGMa-IJzFdXQnp6EDMQ8VX94oZm6te3xE8rikxycQphQxhpVRT-pm9y3_ydmKRjcxdGtizrHySFaMFQ_BbFCzZcIUILRsOMtrk3Hjeh5XrbKVIqFy6"><img alt="_images/Low-Level-Flow-AuthenticSource-Usage.svg" src="_images/Low-Level-Flow-AuthenticSource-Usage.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 1 (Signature Preparation):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) containing the signed headers of the message, to ensure integrity.</p>
+<div class="literal-block-wrapper docutils container" id="code-usage-signature-header">
+<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> header</span><a class="headerlink" href="#code-usage-signature-header" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-usage-signature-payload">
+<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> payload</span><a class="headerlink" href="#code-usage-signature-payload" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1733397840</span><span class="p">,</span>
+    <span class="s2">&quot;nbf&quot;</span><span class="p">:</span> <span class="mi">1733401628</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1733401440</span><span class="p">,</span>
+    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;d3f7b2c9-274a-42b7-8f8d-2e9d8b1734b0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;signed_headers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;digest&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA-256=cFfTOCesrWTLVzxn8fmHl4AcrUs40Lv5D275FmAZ96E=&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Step 1 is required to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern.</p>
+</div>
+<p><strong>Step 2 (DPoP Proof for e-Service Endpoint)</strong>: The Consumer MUST create a fresh DPoP Proof JWT following the instruction provided in the Section 4 of [<span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>] for the token presentation to the e-Service Endpoint.</p>
+<p><strong>Step 3 (e-Service Request):</strong> The Consumer sends an e-Service Request to the Provider, including the Voucher.</p>
+<div class="literal-block-wrapper docutils container" id="code-usage-request">
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">Non-normative example of the e-Service Request</span><a class="headerlink" href="#code-usage-request" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/ente-example/v1/hello/echo/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">erogatore.example</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJhbGciOiJSUzI1NiIsImtpZCI6ImYwOGYxNzY2LTlkZWEt.eyJpZCI6I...</span>
+<span class="na">Agid-JWT-Signature</span><span class="o">:</span> <span class="l">eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ5M2Q1YjE4LTM5.eyJhdWQiOiJl...</span>
+<span class="na">Digest</span><span class="o">:</span> <span class="l">SHA-256=cFfTOCesrWTLVzxn8fmHl4AcrUs40Lv5D275FmAZ96E=</span>
+<span class="na">Agid-JWT-TrackingEvidence</span><span class="o">:</span> <span class="l">eyJhbGciOiJSUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzY.eyJhdWQiOi...</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;parameter1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;parameter2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value2&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The Provider MUST validate the DPoP proof [<span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>].</p>
+<p>The Provider MUST validate the Voucher as follows:</p>
+<blockquote>
+<div><p>Header:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">typ</span></code> claim is present and that its value is <code class="docutils literal notranslate"><span class="pre">at+jwt</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Signature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Retrieve the collection of public keys published at the .well-known endpoint. From this collection, select the public key whose identifier corresponds to the value of the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header parameter in the Voucher.</p></li>
+<li><p>Validate the signature of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> using the retrieved public key and the algorithm specified by the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter.</p></li>
+</ul>
+</div></blockquote>
+<p>Payload:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim MUST identify the domain of the PDND Authorization Server.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">sub</span></code> claim MUST correspond to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> claim.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">aud</span></code> claim MUST match the intended e-Service.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the Provider requires additional context about the request, it can interact with the PDND Interoperability API by passing the value of the <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> as a parameter.</p>
+</div>
+<p>The Provider MUST validate the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT as follows:</p>
+<blockquote>
+<div><p>Header:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">typ</span></code> claim is present and that its value is <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Signature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Obtains the Consumer's public key corresponding to the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header parameter, by interacting with the PDND Interoperability API.</p></li>
+<li><p>Validate the signature of the JWT using the retrieved Consumer's public key and the algorithm specified by the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter.</p></li>
+</ul>
+</div></blockquote>
+<p>Payload:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim MUST identify the Consumer Client.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">aud</span></code> claim MUST identify the Provider.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>In addition, the Provider MUST ensure that the hash of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT matches the value of the <code class="docutils literal notranslate"><span class="pre">digest.value</span></code> claim contained in the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The validation of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT is required only when complying with the <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> security pattern.</p>
+</div>
+<p>The Provider MUST validate the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> JWT as follows:</p>
+<blockquote>
+<div><p>Header:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">typ</span></code> claim is present and that its value is <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Signature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Validate the signature of the JWT using the retrieved Consumer's public key and the algorithm specified by the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter.</p></li>
+</ul>
+</div></blockquote>
+<p>Payload:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> claims MUST identify the Consumer Client.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">aud</span></code> claim MUST identify the Provider.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>In addition, the Provider MUST validate the integrity of the e-Service Request, by checking that:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">signed_headers.content-type</span></code> claim matches the value of the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> HTTP header of the e-Service Request.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">signed_headers.digest</span></code> claim matches the value of the digest of the payload of the e-Service Request, as well as the value of the <code class="docutils literal notranslate"><span class="pre">Digest</span></code> HTTP header of the e-Service Request.</p></li>
+</ul>
+</div></blockquote>
+<p>If any of the previous checks fail, the Provider MUST reject the Request.</p>
+<p><strong>Step 4 (e-Service Response):</strong> Upon successful checks, the Provider provides the Consumer with the requested data.</p>
+<div class="literal-block-wrapper docutils container" id="code-usage-response">
+<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">Non-normative example of the e-Service Response</span><a class="headerlink" href="#code-usage-response" title="Link to this code">¶</a></div>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jwt</span>
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOi...
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-usage-response-jwt-header">
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">Non-normative example of the e-Service Response JWT header</span><a class="headerlink" href="#code-usage-response-jwt-header" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;2802a69-1604-4261-9246-21453e20658e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;JWT&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="code-usage-response-jwt-payload">
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">Non-normative example of the e-Service Response JWT payload</span><a class="headerlink" href="#code-usage-response-jwt-payload" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1733401785</span><span class="p">,</span>
+    <span class="s2">&quot;nbf&quot;</span><span class="p">:</span> <span class="mi">1733401387</span><span class="p">,</span>
+    <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1733401256</span><span class="p">,</span>
+    <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="s2">&quot;997532e-871a-4969-9999-123456789abc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;requestedField1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;requestedField2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;requestedField3&quot;</span><span class="p">:</span> <span class="s2">&quot;value3&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The Consumer MUST perform the following steps to validate the e-Service Response JWT:</p>
+<blockquote>
+<div><p>Header:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensure that the <code class="docutils literal notranslate"><span class="pre">typ</span></code> claim is present and that its value is <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>Signature:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Obtain the Provider's public key corresponding to the <code class="docutils literal notranslate"><span class="pre">kid</span></code> header parameter, by interacting with the PDND Interoperability API.</p></li>
+<li><p>Validate the signature of the JWT using the retrieved Provider's public key and the algorithm specified by the <code class="docutils literal notranslate"><span class="pre">alg</span></code> header parameter.</p></li>
+</ul>
+</div></blockquote>
+<p>Payload:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim MUST identify the Provider.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">aud</span></code> claim MUST identify the Consumer Client itself.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="e-service-endpoint">
+<h3>e-Service Endpoint<a class="headerlink" href="#e-service-endpoint" title="Link to this heading">¶</a></h3>
+<section id="e-service-request">
+<h4>e-Service Request<a class="headerlink" href="#e-service-request" title="Link to this heading">¶</a></h4>
+<p>The e-Service Request MUST include the following HTTP header parameters (unless otherwise specified):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Authorization</strong></p></td>
+<td><p>Voucher released by the PDND Authorization Server.</p></td>
+<td><p>[<span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DPoP</strong></p></td>
+<td><p>DPoP proof JWT, to comply with the <code class="docutils literal notranslate"><span class="pre">REST_JWS_2021_POP</span></code> security pattern.</p></td>
+<td><p>[<span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Agid-JWT-Signature</strong></p></td>
+<td><p>JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern.</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Digest</strong></p></td>
+<td><p>Digest of the message payload, to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern. According to <span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>, the format MUST be the following: <code class="docutils literal notranslate"><span class="pre">&lt;digest-algorithm&gt;=&lt;encoded</span> <span class="pre">digest</span> <span class="pre">output&gt;</span></code>.</p></td>
+<td><p>[<span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Agid-JWT-TrackingEvidence</strong></p></td>
+<td><p>JWT containing the data tracker in the Consumer's domain. It is mandatory only when complying with <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code>.</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">Signature</span></code> JWT, contained in the <code class="docutils literal notranslate"><span class="pre">Agid-JWT-Signature</span></code> HTTP header, MUST include the following JOSE header parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier.</p></td>
+<td><p>[<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Unique identifier of the JWK used by the Consumer to sign the JWT.</p></td>
+<td><p>[<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
+<td><p>[<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">Signature</span></code> JWT, contained in the <code class="docutils literal notranslate"><span class="pre">Agid-JWT-Signature</span></code> HTTP header, MUST include the following payload claims:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
+<td><p>[<span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
+<td><p>[<span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aud</strong></p></td>
+<td><p>The identifier of the Provider.</p></td>
+<td><p>[<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
+<td><p>[<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nbf</strong></p></td>
+<td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
+<td><p>[<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
+<td><p>[<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>jti</strong></p></td>
+<td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
+<td><p>[<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>signed_headers</strong></p></td>
+<td><p>JSON object containing the signed headers whose integrity needs to be protected, to with <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code>. It MUST contain the following claims:</p>
+<ul class="simple">
+<li><p><strong>digest</strong>: JSON string representing the signature of the <code class="docutils literal notranslate"><span class="pre">Digest</span></code> HTTP header</p></li>
+<li><p><strong>content-type</strong>: JSON string representing the signature of the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> HTTP header</p></li>
+</ul>
+</td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>If present, the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT, contained in the <code class="docutils literal notranslate"><span class="pre">Agid-JWT-TrackingEvidence</span></code> HTTP header, MUST include the following JOSE header parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier.</p></td>
+<td><p>[<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Unique identifier of the JWK used by the Consumer to sign the JWT.</p></td>
+<td><p>[<span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
+<td><p>[<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>If present, the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT, contained in the <code class="docutils literal notranslate"><span class="pre">Agid-JWT-TrackingEvidence</span></code> HTTP header, MUST include the following payload claims:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
+<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aud</strong></p></td>
+<td><p>The identifier of the Provider.</p></td>
+<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
+<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nbf</strong></p></td>
+<td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
+<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
+<td><p>[<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>jti</strong></p></td>
+<td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
+<td><p>[<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>purposeId</strong></p></td>
+<td><p>The identifier of the purpose registered in the PDND Platform, associated with the intended e-Service.</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dnonce</strong></p></td>
+<td><p>It MUST be a random string composed by integer numbers and with a length of 13 digits.</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> payload MUST also contains the tracked data agreed upon with the Provider.</p>
+</section>
+<section id="e-service-response">
+<h4>e-Service Response<a class="headerlink" href="#e-service-response" title="Link to this heading">¶</a></h4>
+<p>The e-Service Response is a JWT serialized in <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> format.</p>
+<p>The e-Service Response JWT MUST include the following JOSE header parameters:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>A digital signature algorithm identifier.</p></td>
+<td><p>[<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Unique identifier of the JWK used by the Consumer to sign the JWT.</p></td>
+<td><p>[<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
+<td><p>[<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The e-Service Response JWT MUST include the following payload claims:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>The identifier of the e-Service.</p></td>
+<td><p>[<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aud</strong></p></td>
+<td><p>The identifier of the Consumer.</p></td>
+<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
+<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
+<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nbf</strong></p></td>
+<td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
+<td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
+<td><p>[<span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>jti</strong></p></td>
+<td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
+<td><p>[<span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+</tr>
+</tbody>
+</table>
+<p>The e-Service Response JWT payload includes specific claims related to the data elements provided to the Consumer.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">e-Service PDND</a><ul>
+<li><a class="reference internal" href="#requirements-and-security-patterns">Requirements and Security Patterns</a></li>
+<li><a class="reference internal" href="#voucher-issuance">Voucher Issuance</a><ul>
+<li><a class="reference internal" href="#voucher-for-e-service">Voucher for e-Service</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#flow">Flow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#voucher-for-interoperability-api">Voucher for Interoperability API</a><ul>
+<li><a class="reference internal" href="#id1">Prerequisites</a></li>
+<li><a class="reference internal" href="#id2">Flow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pdnd-authorization-server-endpoint">PDND Authorization Server Endpoint</a><ul>
+<li><a class="reference internal" href="#voucher-request">Voucher Request</a></li>
+<li><a class="reference internal" href="#voucher-response">Voucher Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#key-retrieval">Key Retrieval</a><ul>
+<li><a class="reference internal" href="#pdnd-keys">PDND Keys</a></li>
+<li><a class="reference internal" href="#participants-keys">Participants' Keys</a><ul>
+<li><a class="reference internal" href="#id3">Prerequisites</a></li>
+<li><a class="reference internal" href="#id4">Flow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#well-known-endpoint">.well-known Endpoint</a><ul>
+<li><a class="reference internal" href="#keys-request">Keys Request</a></li>
+<li><a class="reference internal" href="#keys-response">Keys Response</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interoperability-api-endpoint">Interoperability API Endpoint</a><ul>
+<li><a class="reference internal" href="#key-request">Key Request</a></li>
+<li><a class="reference internal" href="#key-response">Key Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#e-service-usage">e-Service Usage</a><ul>
+<li><a class="reference internal" href="#id5">Prerequisites</a></li>
+<li><a class="reference internal" href="#id6">Flow</a></li>
+<li><a class="reference internal" href="#e-service-endpoint">e-Service Endpoint</a><ul>
+<li><a class="reference internal" href="#e-service-request">e-Service Request</a></li>
+<li><a class="reference internal" href="#e-service-response">e-Service Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="authentic-sources.html">
+                    <span class="icon">&lt;</span><span>Authentic Sources</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="e-service-pdnd-catalogue.html"><span>e-Service PDND Catalogue</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 10/02/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
