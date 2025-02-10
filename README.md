@@ -24,9 +24,9 @@ This repository hosts the sphinx project tree of IT-Wallet Technical Specificati
 
 ## Preview
 
-The stable release in different languages is published at the link below:
+Preview of the lates editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
 
- - [English](https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/)
+ - [Editor's Copy](https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/)
 
 ### Preview of a branch
 
