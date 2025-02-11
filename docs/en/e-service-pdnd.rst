@@ -15,6 +15,7 @@ To leverage the PDND, entities MUST formally be subscribed becoming **Participan
 
 Access to an e-Service requires Consumers to obtain a specific Access Token, known within the PDND infrastructure as a Voucher.
 
+.. _sec_Requirements:
 
 Requirements and Security Patterns
 ========================================
@@ -90,6 +91,7 @@ The following security patterns defined in `PDND`_ and `MODI`_ MUST NOT be used 
         - **[ID_AUTH_SOAP_02]** Direct Trust based on X.509 certificate with SOAP and token/message uniqueness (*Annex 2 - Security Patterns* [`MODI`_]).
         - **[INTEGRITY_SOAP_01]** SOAP Payload Integrity (*Annex 2 - Security Patterns* [`MODI`_]).
 
+.. _sec_VoucherIssuance:
 
 Voucher Issuance
 ==========================
@@ -102,8 +104,12 @@ The PDND infrastructure defines two different types of Vouchers:
 
 The two flows are described below.
 
+.. _sec_VoucherIssuance_eService:
+
 Voucher for e-Service
 --------------------------
+
+.. _sec_VoucherIssuance_eService_Prerequisites:
 
 Prerequisites
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -123,6 +129,8 @@ The **Provider** MUST comply with the following prerequisites:
     - Has created a new e-Service and published it within the PDND API Catalogue.
     - Has approved the Consumer's request to enroll in the e-Service.
 
+.. _sec_VoucherIssuance_eService_Flow:
+
 Flow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -139,7 +147,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``TrackingEvidence`` header
-    :name: code_VoucherIssuance_eService_TrackingEvidence_Header
+    :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Header
 
     {
         "alg": "ES256",
@@ -150,7 +158,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``TrackingEvidence`` payload
-    :name: code_VoucherIssuance_eService_TrackingEvidence_Payload
+    :name: code_VoucherIssuance_eService_Flow_TrackingEvidence_Payload
 
     {
         "iss": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
@@ -175,7 +183,7 @@ Flow
 
 .. code-block:: http
     :caption: Non-normative example of the Voucher Request
-    :name: code_VoucherIssuance_eService_Request
+    :name: code_VoucherIssuance_eService_Flow_Request
 
     POST /authorization-server/token HTTP/1.1
     Host: interop.pagopa.it
@@ -190,7 +198,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``client_assertion`` JOSE header
-    :name: code_VoucherIssuance_eService_ClientAssertion_Header
+    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Header
 
     {
         "alg": "ES256",
@@ -201,7 +209,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``client_assertion`` payload
-    :name: code_VoucherIssuance_eService_ClientAssertion_Payload
+    :name: code_VoucherIssuance_eService_Flow_ClientAssertion_Payload
 
     {
         "iss": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
@@ -263,7 +271,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. code-block:: http
     :caption: Non-normative example of the Voucher Response
-    :name: code_VoucherIssuance_eService_Response
+    :name: code_VoucherIssuance_eService_Flow_Response
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -277,7 +285,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. code-block::
     :caption: Non-normative example of the ``access_token`` JOSE header
-    :name: code_VoucherIssuance_eService_AccessToken_Header
+    :name: code_VoucherIssuance_eService_Flow_AccessToken_Header
 
     {
         "alg": "ES256",
@@ -287,7 +295,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. code-block::
     :caption: Non-normative example of the ``access_token`` payload
-    :name: code_VoucherIssuance_eService_AccessToken_Payload
+    :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
 
     {
         "iss": "interop.pagopa.it",
@@ -309,8 +317,12 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
     The ``digest`` claim in the ``access_token`` payload is required only when complying with the ``AUDIT_REST_02`` security pattern. If present, it corresponds to the value of the ``digest`` claim contained in the ``client_assertion``.
 
+.. _sec_VoucherIssuance_InteroperabilityAPI:
+
 Voucher for Interoperability API
 -----------------------------------
+
+.. _sec_VoucherIssuance_InteroperabilityAPI_Prerequisites:
 
 Prerequisites
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -321,10 +333,12 @@ The **Participant** MUST comply with the following prerequisites:
     - Has created a new `Client interop api` to interact with the Interoperability API. Upon creation, it has been assigned a ``client_id`` by the PDND Platform.
     - Has registered a key pair associated with the `Client interop api`.
 
+.. _sec_VoucherIssuance_InteroperabilityAPI_Flow:
+
 Flow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _fig_Voucher_InteroperabilityAPI_Issuance_Flow:
+.. _fig_VoucherIssuance_InteroperabilityAPI_Flow:
 
 .. figure:: ../../images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg
     :figwidth: 100%
@@ -337,7 +351,7 @@ Flow
 
 .. code-block:: http
     :caption: Non-normative example of the Voucher Request
-    :name: code_Voucher_InteroperabilityAPI_Issuance_Request
+    :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Request
 
     POST /authorization-server/token HTTP/1.1
     Host: interop.pagopa.it
@@ -350,7 +364,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``client_assertion`` JOSE header
-    :name: code_Voucher_InteroperabilityAPI_Issuance_ClientAssertion_Header
+    :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Header
 
     {
         "alg": "ES256",
@@ -360,7 +374,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``client_assertion`` payload
-    :name: code_Voucher_InteroperabilityAPI_Issuance_ClientAssertion_Payload
+    :name: code_VoucherIssuance_InteroperabilityAPI_Flow_ClientAssertion_Payload
 
     {
         "iss": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
@@ -397,7 +411,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. code-block:: http
     :caption: Non-normative example of the Voucher Response
-    :name: code_Voucher_InteroperabilityAPI_Issuance_Response
+    :name: code_VoucherIssuance_InteroperabilityAPI_Flow_Response
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -411,7 +425,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. code-block::
     :caption: Non-normative example of the ``access_token`` JOSE header
-    :name: code_Voucher_InteroperabilityAPI_Issuance_AccessToken_Header
+    :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Header
 
     {
         "alg": "ES256",
@@ -421,7 +435,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
 .. code-block::
     :caption: Non-normative example of the ``access_token`` payload
-    :name: code_Voucher_InteroperabilityAPI_Issuance_AccessToken_Payload
+    :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
 
     {
         "iss": "interop.pagopa.it",
@@ -434,10 +448,14 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
         "client_id": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b"
     }
 
+.. _sec_VoucherIssuance_Endpoint_AuthorizationServer:
+
 PDND Authorization Server Endpoint
 --------------------------------------
 
 The PDND Authorization Server Endpoint issues Vouchers to Participants. These Vouchers allow Consumers to access e-Service resources and enable Participants to interact with the Interoperability API.
+
+.. _sec_VoucherIssuance_Endpoint_AuthorizationServer_Request:
 
 Voucher Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -540,6 +558,8 @@ The ``client_assertion`` JWT MUST include the following payload claims (unless o
         - **value**: JSON string representing the value of the digest.
       - [`MODI`_]
 
+.. _sec_VoucherIssuance_Endpoint_AuthorizationServer_Response:
+
 Voucher Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -631,7 +651,7 @@ If any errors occur during the validation of the Voucher Request, the PDND Autho
 
 .. code-block:: http
     :caption: Non-normative example of a Voucher Error Response
-    :name: code_Voucher_Endpoint_AuthorizationServer_Error
+    :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
     
     HTTP/1.1 400 Bad Request
     Content-Type: application/json
@@ -677,8 +697,12 @@ The following table lists the HTTP Status Codes and related error codes that MUS
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the PDND Authorization Server is temporarily unavailable (e.g., due to maintenance or overload).
 
+.. _sec_KeyRetrieval:
+
 Key Retrieval
 ==========================
+
+.. _sec_KeyRetrieval_PDND:
 
 PDND Keys
 -----------
@@ -696,7 +720,7 @@ PDND Keys
 
 .. code-block:: http
     :caption: Non-normative example of the Keys Request
-    :name: _code_KeyRetrieval_PDND_Request
+    :name: _code_KeyRetrieval_PDND_Flow_Request
 
     GET /.well-known/jwks.json HTTP/1.1
     Host: interop.pagopa.it
@@ -705,7 +729,7 @@ PDND Keys
 
 .. code-block:: http
     :caption: Non-normative example of the Keys Response
-    :name: _code_KeyRetrieval_PDND_Response
+    :name: _code_KeyRetrieval_PDND_Flow_Response
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -729,9 +753,12 @@ PDND Keys
       ]
     }
 
+.. _sec_KeyRetrieval_Participant:
 
 Participants' Keys
 -------------------
+
+.. _sec_KeyRetrieval_Participant_Prerequisites:
 
 Prerequisites
 ^^^^^^^^^^^^^^^^
@@ -742,6 +769,8 @@ The **Participant** who requests the key MUST comply with the following prerequi
     - Has created a new `Client api interop` to interact with the PDND Interoperability API. Upon creation, it has been assigned a ``client_id`` by the PDND Platform.
     - Has registered a key pair associated with the `Client api interop`.
     - Has obtained a valid Voucher to query the PDND Interoperability API, related to the specific `Client api interop`.
+
+.. _sec_KeyRetrieval_Participant_Flow:
 
 Flow
 ^^^^^^^^^^^^^^^^
@@ -759,7 +788,7 @@ Flow
 
 .. code-block:: http
     :caption: Non-normative example of the Key Request
-    :name: _code_KeyRetrieval_Participant_Request
+    :name: _code_KeyRetrieval_Participant_Flow_Request
 
     GET /keys/c7e3d6a4-5b99-4298-9b84-d8f3a61279f1 HTTP/1.1
     Host: interop.pagopa.it
@@ -769,7 +798,7 @@ Flow
 
 .. code-block:: http
     :caption: Non-normative example of the Key Response
-    :name: _code_KeyRetrieval_Participant_Response
+    :name: _code_KeyRetrieval_Participant_Flow_Response
 
     HTTP/1.1 200 OK
     Content-Type: application/json
@@ -786,16 +815,21 @@ Flow
 
     The Interoperability API includes an event notification endpoint that alerts subscribed Participants about changes within the PDND Infrastructure. Among these notifications, the ``/events/keys`` endpoint provides updates on modifications to cryptographic material, such as additions or deletions of keys. By leveraging this mechanism, Participants can implement a periodic polling strategy to retrieve all changed keys and update their local cache. This eliminates the need to request each key individually during the workflow.
 
+.. _sec_KeyRetrieval_Endpoint_WellKnown:
 
 .well-known Endpoint
 -------------------------------------
 
 The .well-known Endpoint is part of the PDND Infrastructure and used to retrieve the public keys used by the PDND Authorization Server to sign the Vouchers.
 
+.. _sec_KeyRetrieval_Endpoint_WellKnown_Request:
+
 Keys Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Keys Request is a ``GET`` HTTP request sent to the .well-known Endpoint. This endpoint allows Participants to retrieve the public keys necessary to verify digital signatures on Vouchers issued by the PDND Authorization Server.
+
+.. _sec_KeyRetrieval_Endpoint_WellKnown_Response:
 
 Keys Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -809,7 +843,7 @@ If any errors occur during the retrieval of the keys, the .well-known Endpoint M
 
 .. code-block:: http
     :caption: Non-normative example of a Keys Error Response
-    :name: code_Voucher_Endpoint_WellKnown_Error
+    :name: code_KeyRetrieval_Endpoint_WellKnown_Error
     
     HTTP/1.1 500 Internal Server Error
     Content-Type: application/json
@@ -836,10 +870,14 @@ The following table lists the HTTP Status Codes and related error codes that MUS
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the .well-known Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
+.. _sec_KeyRetrieval_Endpoint_InteroperabilityAPI:
+
 Interoperability API Endpoint
 -------------------------------------
 
 The Interoperability API Endpoint is part of the PDND Infrastructure and used to retrieve the public keys of other parties enrolled in the PDND.
+
+.. _sec_KeyRetrieval_Endpoint_InteroperabilityAPI_Request:
 
 Key Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -859,6 +897,8 @@ The Key Request MUST include the following HTTP header parameters:
       - Voucher released by the PDND Authorization Server.
       - [:rfc:`9449`]
 
+.. _sec_KeyRetrieval_Endpoint_InteroperabilityAPI_Response:
+
 Key Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -870,7 +910,7 @@ In case of authentication issues (i.e., invalid or expired Voucher), the respons
 
 .. code-block:: http
     :caption: Non-normative example of a Key Error Response in case of 401 errors
-    :name: code_Voucher_Endpoint_InteroperabilityAPI_Error_401
+    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
     
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: Bearer error="invalid_token", error_description="The access token expired"
@@ -882,7 +922,7 @@ For all other errors, the response MUST adhere to the error format defined in :r
 
 .. code-block:: http
     :caption: Non-normative example of a Key Error Response in case of other errors
-    :name: code_Voucher_Endpoint_InteroperabilityAPI_Error_Others
+    :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
     
     HTTP/1.1 400 Bad Request
     Content-Type: application/json
@@ -918,9 +958,12 @@ The following table lists the HTTP Status Codes and related error codes that MUS
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the Interoperability API Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
+.. _sec_Usage:
 
 e-Service Usage
 ===================
+
+.. _sec_Usage_Prerequisites:
 
 Prerequisites
 ----------------------
@@ -938,6 +981,8 @@ The **Provider** MUST comply with the following prerequisites:
 
     The Provider's key ring is the counterpart to the Client on the Consumer's side. It stores cryptographic material, allowing Consumers to verify the integrity of responses from Providers.
 
+.. _sec_Usage_Flow:
+
 Flow
 -------
 
@@ -954,7 +999,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``Signature`` header
-    :name: _code_Usage_Signature_Header
+    :name: _code_Usage_Flow_Signature_Header
 
     {
         "alg": "ES256",
@@ -964,7 +1009,7 @@ Flow
 
 .. code-block::
     :caption: Non-normative example of the ``Signature`` payload
-    :name: _code_Usage_Signature_Payload
+    :name: _code_Usage_Flow_Signature_Payload
 
     {
         "iss": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
@@ -990,7 +1035,7 @@ Flow
 
 .. code-block:: http
     :caption: Non-normative example of the e-Service Request
-    :name: _code_Usage_Request
+    :name: _code_Usage_Flow_Request
 
     POST /ente-example/v1/hello/echo/ HTTP/1.1
     Host: erogatore.example
@@ -1078,7 +1123,7 @@ If any of the previous checks fail, the Provider MUST reject the Request.
 
 .. code-block:: http
     :caption: Non-normative example of the e-Service Response
-    :name: _code_Usage_Response
+    :name: _code_Usage_Flow_Response
 
     HTTP/1.1 200 OK
     Content-Type: application/jwt
@@ -1088,7 +1133,7 @@ If any of the previous checks fail, the Provider MUST reject the Request.
     
 .. code-block::
     :caption: Non-normative example of the e-Service Response JWT header
-    :name: _code_Usage_Response_JWT_Header
+    :name: _code_Usage_Flow_Response_JWT_Header
 
     {
         "alg": "ES256",
@@ -1098,7 +1143,7 @@ If any of the previous checks fail, the Provider MUST reject the Request.
 
 .. code-block::
     :caption: Non-normative example of the e-Service Response JWT payload
-    :name: _code_Usage_Response_JWT_Payload
+    :name: _code_Usage_Flow_Response_JWT_Payload
 
     {
         "iss": "https://erogatore.example/ente-example/v1",
@@ -1129,9 +1174,12 @@ The Consumer MUST perform the following steps to validate the e-Service Response
         - The ``iss`` claim MUST identify the Provider.
         - The ``aud`` claim MUST identify the Consumer Client itself.
 
+.. _sec_Usage_Endpoint_eService:
 
 e-Service Endpoint
 -------------------------------------
+
+.. _sec_Usage_Endpoint_eService_Request:
 
 e-Service Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1272,6 +1320,8 @@ If present, the ``TrackingEvidence`` JWT, contained in the ``Agid-JWT-TrackingEv
 
 The ``TrackingEvidence`` payload MUST also contains the tracked data agreed upon with the Provider.
 
+.. _sec_Usage_Endpoint_eService_Response:
+
 e-Service Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1332,7 +1382,7 @@ In case of authentication issues (i.e., invalid or expired Voucher), the respons
 
 .. code-block:: http
     :caption: Non-normative example of an e-Service Error Response in case of 401 errors
-    :name: code_Voucher_Endpoint_eService_Error_401
+    :name: code_Usage_Endpoint_eService_Error_401
     
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: DPoP error="invalid_token", error_description="The access token expired"
@@ -1344,7 +1394,7 @@ For all other errors, the response MUST adhere to the error format defined in :r
 
 .. code-block:: http
     :caption: Non-normative example of an e-Service Error Response in case of other errors
-    :name: code_Voucher_Endpoint_eService_Error
+    :name: code_Usage_Endpoint_eService_Error
     
     HTTP/1.1 400 Bad Request
     Content-Type: application/json
