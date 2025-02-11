@@ -1340,7 +1340,7 @@ The e-Service Response JWT MUST include the following JOSE header parameters:
       - A digital signature algorithm identifier.
       - [:rfc:`7515`]
     * - **kid**
-      - Unique identifier of the JWK used by the Consumer to sign the JWT.
+      - Unique identifier of the JWK used by the Provider to sign the JWT.
       - [:rfc:`7515`]
     * - **typ**
       - MUST be set to ``JWT``.
