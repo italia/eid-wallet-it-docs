@@ -71,7 +71,7 @@ Users MAY change their Digital Credential validity status by:
       - View and update validity status (revoke their Digital Credentials and, if it is supported by the Issuer, suspend them).
 
 .. note:: 
-  If a User activates another Wallet Instance from the same Provider and obtains a new PID, the previous PID MUST be revoked, and the previous Wallet Instance MUST transition to operational status.
+  If the User activates another Wallet Instance from the same Wallet Provider and using the same Wallet Solution and obtains a new PID, the previous PID MUST be revoked, and the previous Wallet Instance MUST transition to operational status.
 
 In case of the death of the User, Issuers and Wallet Provider MUST ensure that Digital Credentials and Wallet Instances owned by the User are revoked. 
 The User's death MUST be intended as a change of validity status of User identification attributes in the public registry (ANPR) and it MUST result in a PID revocation. Therefore, the Authentic Source of the PID (ANPR) MUST notify the PID Provider that the User's attributes are no longer valid due to the death of the User. The Authentic Source and the PID Provider MUST use the mechanisms provided in the Section :ref:`Status Update by Authentic Sources <Status Update by Authentic Sources>`.
