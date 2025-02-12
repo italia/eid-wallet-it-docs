@@ -89,7 +89,7 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 
   * **Authorization Code Flow**: The PID/(Q)EAA Provider requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.
-  * **Issuer Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider following the input from the latter.
+  * **Issuer Initiated Flow**: The Wallet Instance sends its request to the PID/(Q)EAA Provider, according to the input provided by the PID/(Q)EAA Provider.
   * **Same-device Issuance flow**: The User receives the Credential on the same device that initiated the flow. 
   * **Cross-device Issuance flow**: The User receives the Credential on another device than the one that initiated the flow. 
   * **Immediate Issuance flow**: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.
