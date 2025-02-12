@@ -139,8 +139,8 @@ Credential Issuers, once a Digital Credential has been generated and successfull
 
 Moreover, Credential Issuers MUST add the following parameters within their Metadata:
 
-  - status_assertion_endpoint
-  - credential_hash_alg_supported
+  - ``status_assertion_endpoint``
+  - ``credential_hash_alg_supported``
 
 
 Flow for status refresh
@@ -392,7 +392,7 @@ The Status Assertion MUST contain the parameters and claims defined below
       - `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
-      - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and `[RFC8747, Section 3.1] <https://www.iana.org/go/rfc7800>`_.
+      - Section 3.1 of :rfc:`7800` and Section 3.1 of :rfc:`8747`.
 
 
 
