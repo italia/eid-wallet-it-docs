@@ -17,7 +17,9 @@ Authentic Sources are responsible for the authenticity of the User's attributes 
     - The protocol flow MUST ensure integrity, authenticity, and non-repudiation of the exchanged data between the Authentic Source and the PID/(Q)EAA Provider. 
     - The e-services MUST be implemented in REST. SOAP protocol MUST NOT be used.
 
-In case of the PID/(Q)EAA Provider and the Authentic Source are separate entities, the Authentic Source MAY provide a Credential Offer related to its PID/(Q)EAA Provider as defined in the Section :ref:`Credential Offer`.
+.. note::
+  
+  In case of the PID/(Q)EAA Provider and the Authentic Source are separate entities, the Authentic Source MAY provide a Credential Offer related to its PID/(Q)EAA Provider as defined in the Section :ref:`Credential Offer`.
 
 
 Security Patterns
