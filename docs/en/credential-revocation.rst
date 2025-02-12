@@ -135,7 +135,7 @@ Flow during issuance
 Credential Issuers, once a Digital Credential has been generated and successfully issued, MUST:
 
   - Store it locally with minimum set of data required to manage its lifecycle, including the validity status of that Digital Credential;
-  - Include a specified hash algorithm in the Digital Credential using the credential_hash_alg claim within the status_assertion JSON member of the status claim
+  - Include a specified hash algorithm in the Digital Credential using the ``credential_hash_alg`` claim within the ``status_assertion`` JSON member of the status claim
 
 Moreover, Credential Issuers MUST add the following parameters within their Metadata:
 
