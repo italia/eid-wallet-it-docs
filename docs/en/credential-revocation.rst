@@ -77,7 +77,7 @@ In case of the death of the User, Issuers and Wallet Provider MUST ensure that D
 The User's death triggers a change in the validity status of the User's identification attributes contained in the public registry (ANPR). The User's death MUST produce the PID revocation. Therefore, the Authentic Source of the PID (ANPR) MUST notify the PID Provider that the User's attributes are no longer valid due to the death of the User. The Authentic Source and the PID Provider MUST use the mechanisms provided in the Section :ref:`Status Update by Authentic Sources <Status Update by Authentic Sources>`.
 
 .. note:: 
-  Future versions of this technical specification will define how to propagate this information to (Q)EAA Issuers and Wallet Providers who require it for security reasons and according to federation governance requirements. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
+  Future versions of this technical specification will define how the information to (Q)EAA Issuers and Wallet Providers are propagated, according to national regulation. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
 
 
 Status Update by Wallet Instance
