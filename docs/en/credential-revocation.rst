@@ -102,7 +102,7 @@ Authentic Sources manage and store attributes independently from Digital Credent
 Credential Issuers MUST provide a web service available via PDND for Credential update notification and validity status as defined in Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>`. For the protocol flow, please refer to the Section :ref:`e-Service PDND <e-Service PDND>`.
 Authentic Sources MUST use this notification service in the following cases:
 
-  - The value of one or more attributes contained in the Authentic Source's database has changed.
+  - The value of one or more Attributes contained in the Authentic Source's database has changed.
   - The validity status of the Attributes is updated (revocation or suspension).
 
 
