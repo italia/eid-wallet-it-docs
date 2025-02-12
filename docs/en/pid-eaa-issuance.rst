@@ -129,9 +129,6 @@ Below a non-normative example of a URL related to a Credential Offer that can be
 
   openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
 
-.. note::
-
-  For the Credential Offer Endpoint the use of custom URL scheme ``openid-credential-offer://`` is mandatory.
 
 The following diagram shows the *Issuance flow*.
 
