@@ -89,28 +89,72 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 
   * **Authorization Code Flow**: The PID/(Q)EAA Provider requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.
+  * **Issuer Initiated Flow**: The Wallet Instance sends its request to the PID/(Q)EAA Provider, according to the input provided by the PID/(Q)EAA Provider.
   * **Same-device Issuance flow**: The User receives the Credential on the same device that initiated the flow. 
+  * **Cross-device Issuance flow**: The User receives the Credential on another device than the one that initiated the flow. 
   * **Immediate Issuance flow**: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.
   * **Deferred Issuance flow**: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
 
+The entire Issuance flow can be divided into two sub-flows:
+
+  - **User Request flow**, describing the modes through which the User can request the Credential. It can be:
+
+      **1)** On the initiative of the User (**Wallet Initiated**)
+
+      **2)** Upon proposal of the PID/(Q)EAA Issuer (**Issuer Initiated**)
+
+  - **Issuance flow**, describing interactions between Wallet Instance and PID/(Q)EAA Provider.
+
+The following diagram shows the *User request flow*.
+
+.. _fig_Low-Level-Flow-ITWallet-PID-QEAA-User-Request:
+
+.. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-User-Request.svg
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/svg/hL9DJzj04BtFhnY5Gzi3eFIO0-8ZL8rKAL2ekFIojiVnYFMkjJiRmx_lhEsMX4QjaBYihDrv7-zvpgEO8AcrO99ubzg20ivFvW2TtdF9dN62in-HmWnDn0HG-AVnuaF4sEfKrtX7Cppwnfj6BcsYVUnbyFrlU17stnwCjIIuSch3bJJCz42kGbNPbw8deU2CnOgsN6QzTJ1kyqynUg7QcxfPBKy_tdwwlhZ0c-2tN4q81Z1Ma6lyOuo5ZL25Nwpl0H8Uds6_m7L73gKXV1K0JTVzTDQNnc9I7sYIJZbLDiBUWIc5jygd8VjCbHRe2p7iyDcdW4lUi2ZqAb2LKSPcnL7ocI90S5x1VglCFHuzV5tTNyCw4unkB4T1Nm_Vzo75RFn0rfXh6QW0-kCpDL5wLtDe1s0aIsLsgqo7q019BQaZ_mXGqKua81ifjxUACL5utTxkYdq-cKzjyjJcf7IwAuKz5P65WDzI5azbZRzIttsCk1osPZAIwV9wBB2Hrc9dDeGzIuEttwzyHRcEhCDkiyEEwxgc00gRpDmrlXyQcr2P9bjutnNfLQWqJaKmgm2yr7ndMZeOxAzSJQ3wFwccKANbyZ7x7Z554b5JyAwvylgDnxaUgRM_0000
+
+
+**Steps 1.1-1.4 (Wallet Initiated Flow):** The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities.
+
+**Steps 2.1-2.3 (Issuer Initiated Flow):** The User while browsing the PID/(Q)EAA Provider website finds a link to obtain a Digital Credential.
+
+**Steps 2.4-2.7 (Cross-Device):** The Credential Offer is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance which retrieves the parameters defined in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>`.
+
+**Steps 2.8-2.10 (Same-Device):** The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.
+
+Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:
+
+.. code-block:: http
+
+  openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
+
+
+The following diagram shows the *Issuance flow*.
 
 .. _fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance:
 
 .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/hLRVJ-D647xVls9qzr0YEQAg-eHqfmkG7b5Fa49El5Io5djYZt1stVsHNFhNTtOtCPiGr28L8N1svySttpSppXVhf75-rGdfdLP-zOH6Y9xFgA9UAWSVlbiq7q1Qy48ywH_fu2SBTiLMVQiLVe2FtwXftMNdyT3tqkZDu2uFxnvbrw63cM88gi9ein6eQk0iHnZci-lpipz6qya4vaQlgTx59C4_6nX_1dy1-ib9Kh3Lti0rDUHa1rS6QrIEP2SyZDbkSm5Rj48OfHs2NgE13Nnyl9ajfk8k1N0jGaVMWLx6vuNnrc4D9q3OW3U6OXZZpmoYqcf9PXKTBNPOETAA8vto5i8p94Qadmy15SICphxUBBxUJwUtugh5wlbK020BpDE0z3VaGnapIbNl2I5dOOLErjB972y4Ee0X6vGEOVxxrPJXrmYCWPQ49WPvd4t6SptVsHFRpoVtS8z_URGEplvK00PjhvN5qcrxBC99rH4gLrATFd7Gicg3tgh14qSbmsjrCZOfyWZumuPS2tSJxzhnLOmudZZ7bqE9Rru6oB3JyWObqv8JV8hUr8x_XTgTWwL6IUSDxars4OuX1lhNigEQt1Oo_WMbXXmOJIJ2sOw1qXig07_qPD2Mf4QfrKElomi8TMj3VwSyWnmln4CMPYIyZ9xqRaSXEvTD4Npw51hnWCp2xmV8sz0qd20OLob3r535PtR7sVNa0TWvD5WD3rMBAxIHfofKhzmBGzXPF4gT-d_qtlIC-7GAVjZhm0mTaPD94jgrWA0g_oDh1q8txt7APgv1XOOlu3eqwZDktxphZTRBV19XgSt9PU3qCohWadfDN6GsiGk-6RHEb6InprvFR6EaSjauwpeRs_rw22Ui3XciKhFyxoChA76IAiYvbLM5rfQnv29Ldk3c0vCnSAjLXGC3Dul57EPt3miuL-4YIvGCCn7BQ35wlIyJUVpRQslHMjBgqFpGFcFyJGMheTap6OSQib5uBML6IA8v5_WbRadX8MrtdISiuukhyMd7XJv8pgyt05cGQqcTVEeGH4PTPfFnDnpQOZVtrJv5HcfEnx0ikOmuFjv25LPkPcwTDfZ1pwNEafnKFBy_Eu9K0AvHPM-VIECaafkQK9nwaLn--puLzzYGTNmgkmvScyCR6-oamne4AHP_bPBp4t2K8V-vmRNU0SlV50F3UMa3nwcsNtx-bQ_XIYiNDjohvKaMRkyMByhzYsmTohfqjC82d97AochGB2lV5oGMBSBHLxa2v3Boe42kj5Vf9Sh1mFPOfSt_j8KXHnHwqwBYNDGqQD9ze31yrumxr3WR3vQTte1i9Ad3BVw5__XLzmy0
+    :target: https://www.plantuml.com/plantuml/svg/hLPVQ-D647_VJp7a7Xg3J4hfqy6LSnBtOdeaRk8ZBmMpNetj8TAkkd-iIpzzPrUEj8uTsi11YBKx_t-_cP4-Eo-j3tKbPF16Xtg5LeY6xqXH8xM7isyExHb81q68bVdUNVpamDMirMoDnZFuy9KsMtzP1JoqlRIcxStbeUnHLXLwc6bEGIjCEgr0NG97UPN3V7PzSVxdQ3gPmDoQ7PLxdoI4rSOZc1rQQ0lYJ6PVRXPVxgVJMt6rHVK49so174J_ODRWjmY_8rzAJqQ3vFXcvILf8E-WHYzBwMNCAqKIeeNnRz32Hr0MfKUO_t4r1MLA1Cw1reGsENcSJSPpCz_h4-lF9_TmZty7T1xE_z80gYBKVabb4K-s4uqW7bhoMxYR1ByTNoMjySHxblP9lYcCGO5qgki69HUMGtGAe8w8_mFEti3HHaiVBBwex3syJZ42k9CLbUIV8KDG48mZXZqchZ7Q8Ppl8LW6ImNWzuOikYNf4PkqoIJ8Zn3hDfR-IN46G0Sm8NCp4a4cItgteP2LXokB9Kj9Ll3fKsob0p2B01yURsQBgGWkqiu1ehBg8YGETNfcSvnTJnw0ZMEBbF2WjbYZIpYfMBts0q9OENmLkklWqNl3SyPlXD3b2m-Cq14uFIMniGk8hF8FETS3shxBQ9YQ3UhOJWZNiL6VyFbDMMEDMUUp16jZJuwpDq-eWKjg376HsSmjM39m7I79VP-OmesLVF3F3QOZLp8yB5y6FDumEsHHTSt2C_jZHrPGXqbNGOwjL0gTMwQIYwxoBjryO384RerMs2DmirZCONxti80B7GLPeAIOaxXC6gFZZTU1nt-DSOwJuH8ErG_rCyJVP53rpJxGsDUGZy8nbJaW2UQSuC7laj93siyc3xXKHgzf4xeT5_kWCpxU0EH0xYHLSbKXY06wN2V3hxzqnNxkrKk87DG1Zc5PSXbfV8835LTkfkwyiPYbdrET1Jd9U2u_pq-fQjoXJg-V3Dn90hThGd7gHNBvzTjKtEE6dETRMLNWjtbwOukLz5Y28CtarobSQWFsqiU_iBWp-yI6DqM6S5xQW76gxPUVVsKnN1djuuOxMfxauFPkCJ3t7xHLACkbfneBy5Pg9rNFMLP-A4WikD1N7p45o7N2GOEiJT3TIvITWMjGTPj_zGnzZ4HqkqNDiMYpGPla2SBubPLsgFKkNQmhquBSIDA7M_mp_mjrzIy0
 
     PID/(Q)EAA Issuance - Detailed flow
 
 
-**Steps 1-4 (Discovery):** The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities. The Wallet Instance then processes the Metadata for the selected PID/(Q)EAA Provider as defined in the `Trust Model section <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism>`_ of this specification.
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in Section :ref:`Trust Evaluation Mechanism <Trust Evaluation Mechanism>` .
 
 .. note::
 
     **Federation Check:** The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the PID/(Q)EAA Provider is represented within the section :ref:`Entity Configuration of PID/(Q)EAA Providers`.
 
-**Steps 5-6 (PAR Request)**: The Wallet Instance:
+In case of Issuer Initiated flow, in addition to the Federation Check defined above, the Wallet Instance MUST execute the following checks on the Credential Offer parameters:
+
+  * For each Credential identifier contained in the ``credential_configuration_ids`` array verify if it is supported by the PID/(Q)EAA Provider.
+  * The Authorization Server identifier (if present) is contained in the ``authorization_servers`` PID/(Q)EAA Provider metadata parameter.
+
+
+**Steps 1-2 (PAR Request)**: The Wallet Instance:
 
   * creates a fresh PKCE code verifier, Wallet Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request*.
   * provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the ``request`` parameter (hereafter Request Object) according to :rfc:`9126` Section 3 to prevent Request URI swapping attack. The Pushed Authorization Request enables client authentication prior to any user interaction. This step allows for the early rejection of illegitimate requests, effectively preventing spoofing attacks, tampering, and improper use of authorization requests.
@@ -173,7 +217,7 @@ Below an non-normative example of the signed Request Object without encoding and
    The PID/(Q)EAA Provider MUST validate the signature of the the Wallet Attestation and that it is not expired.
 
 
-**Step 7 (PAR Response)**:  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value must be bound to the client identifier (``client_id``) that was provided in the Request Object.
+**Step 3 (PAR Response)**:  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value MUST be bound to the client identifier (``client_id``) that was provided in the Request Object.
 
 
 .. note::
@@ -194,7 +238,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
   :language: JSON
 
 
-**Steps 8-9 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
+**Steps 4-5 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
 
     1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from :rfc:`9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
@@ -213,7 +257,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider.
 
 
-**Steps 10-11 (Authorization Response)**: The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
+**Steps 6-7 (Authorization Response)**: The PID/(Q)EAA Provider sends an authorization ``code`` together with ``state`` and ``iss`` parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:
 
     1. It MUST check the Authorization Response contains all the defined parameters according to :ref:`Table of the HTTP Response parameters <table_http_response_claim>`.
     2. It MUST check the returned value by the PID/(Q)EAA Provider for ``state`` parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
@@ -228,9 +272,9 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
     HTTP/1.1 302 Found
     Location: https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Feaa-provider.example.org
 
-**Steps 12-13 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in  the Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.
+**Steps 8-9 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in  the Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen Access Tokens at the Credential Endpoint.
 
-**Step 14 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT* and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP``). 
+**Step 10 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT* and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP``). 
 The ``OAuth-Client-Attestation`` is signed using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
 
    1. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
@@ -252,7 +296,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key that is created
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
     &redirect_uri=https://start.wallet.example.org/cb
 
-**Step 15 (Token Response)**: The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) is provided by the Issuer to the Wallet Instance.
+**Step 11 (Token Response)**: The PID/(Q)EAA Provider validates the request, if successful an *Access Token* (bound to the DPoP key) is provided by the Issuer to the Wallet Instance.
 
 .. code-block:: http
 
@@ -271,7 +315,7 @@ The non-normative example of the DPoP Access Token is given below.
 .. literalinclude:: ../../examples/at-dpop-payload.json
   :language: JSON
 
-**Step 16 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce`` that can be used to create the proof of possession of key material for the subsequent request to the Credential Endpoint.
+**Step 12 (Nonce Request)**: According to Section 7.1 of [`OpenID4VCI`_], the Wallet Instance sends an HTTP POST request to the Nonce Endpoint to obtain a fresh ``c_nonce`` that can be used to create the proof of possession of key material for the subsequent request to the Credential Endpoint.
 
 Below is a non-normative example of a Nonce Request:
 
@@ -281,7 +325,7 @@ Below is a non-normative example of a Nonce Request:
     Host: eaa-provider.example.org
     Content-Length: 0
 
-**Step 17 (Nonce Response)**: The PID/(Q)EAA Provider provides the `c_nonce` to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 20 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. 
+**Step 13 (Nonce Response)**: The PID/(Q)EAA Provider provides the `c_nonce` to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 16 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. 
 Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer 
 provides the Wallet Instance with a new `c_nonce` value.
 
@@ -297,9 +341,9 @@ Below is a non-normative example of a Nonce Response:
   :language: JSON  
 
 
-**Steps 18-19 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 17** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
+**Steps 14-15 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 13** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
 
-**Step 20 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key). The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
+**Step 16 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the PID/(Q)EAA Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, credential type, proof (which demonstrates possession of the key). The proof parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued PID/(Q)EAA Digital Credential will be bound. To verify the proof, the PID/(Q)EAA Provider conducts the following checks at the Credential endpoint:
 
  1. the JWT proof MUST include all required claims as specified in the table of Section :ref:`Token Request <sec_token_request>`;
  2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type;
@@ -351,7 +395,7 @@ without encoding and signature. The JWT header:
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
   :language: JSON  
 
-**Steps 21-23 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
+**Steps 17-19 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provide it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
     1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
@@ -373,9 +417,9 @@ If the checks defined above are successful the Wallet Instance proceeds with the
 
 .. note::
 
-  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider SHOULD support the *Deferred Flow* (step 26) as specified in Section :ref:`Deferred Flow`.
+  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider SHOULD support the *Deferred Flow* (step 22) as specified in Section :ref:`Deferred Flow`.
 
-**Step 24 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
+**Step 20 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
 
 .. code-block:: http
 
@@ -395,7 +439,7 @@ If the checks defined above are successful the Wallet Instance proceeds with the
   :language: JSON 
 
 
-**Step 25 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
+**Step 21 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
 
 .. code-block:: http
 
@@ -439,6 +483,41 @@ Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EA
 If the *lead_time* parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with a fresh *c_nonce* requested at the Nonce Endpoint to perform a new Credential Request without requiring the User to submit a new authentication request.
 
 In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section :ref:`Authentic Sources` MUST apply.
+
+Credential Offer Endpoint
+-------------------------------------
+The Credential Offer endpoint of a Wallet is used by PID/(Q)EAA Issuer to interact with the User to initiate a Credential Issuance. The custom URL scheme ``openid-credential-offer://`` MUST be used.
+
+Credential Offer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query parameter ``credential_offer``. The Credential Offer URL MAY be included in a QR Code or in an html page with an href button and MUST contain the following mandatory parameters:
+
+.. _table_credential_offer_claim:
+.. list-table::
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Claim**
+    - **Description**
+    - **Reference**
+  * - **credential_issuer**
+    - It MUST be set with an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet uses this parameter value to obtain the PID/(Q)EAA Issuer's metadata.
+    - Section 4.1.1 of [`OpenID4VCI`_].
+  * - **credential_configuration_ids**
+    - Array of Strings, each of them specifying a unique identifier of the Credential being described in the ``credential_configurations_supported`` map in the PID/(Q)EAA Issuer Metadata.
+    - Section 4.1.1 of [`OpenID4VCI`_].
+  * - **grants**
+    - It MUST contain ``authorization_code`` object with the following parameters:
+
+        - **issuer_state**: REQUIRED. Opaque string created by the PID/(Q)EAA Issuer used to bind the subsequent Authorization Request with the PID/(Q)EAA Issuer. The Wallet MUST include it in the subsequent Authorization Request.
+        - **authorization_server**: CONDITIONAL. String identifying the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the PID/(Q)EAA Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or has no multiple entries.
+    - Section 4.1.1 of [`OpenID4VCI`_].
+
+
+Credential Offer Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+No response is expected from the Wallet.
+
 
 Pushed Authorization Request Endpoint
 -------------------------------------
@@ -557,6 +636,9 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - See [`OIDC`_] Section 3.1.2.1.
     * - **jti**
       - Unique identifier of the JWT that, together with the value contained in the ``iss`` claim,  prevents the reuse of the JWT (replay attack). Since the `jti` value alone is not collision resistant, it MUST be identified uniquely together with its issuer.
+      - [:rfc:`7519`].
+    * - **issuer_state**
+      - It MUST be present only in case of issuer initiated flow. It MUST contain the same value contained in the Credential Offer.
       - [:rfc:`7519`].
 
 .. note::
