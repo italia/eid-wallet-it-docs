@@ -89,9 +89,9 @@ The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:
 
   * **Authorization Code Flow**: The PID/(Q)EAA Provider requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.
-  * **Issuer Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider following the input from the latter.
+  * **Issuer Initiated Flow**: The Wallet Instance sends its request to the PID/(Q)EAA Provider, according to the input provided by the PID/(Q)EAA Provider.
   * **Same-device Issuance flow**: The User receives the Credential on the same device that initiated the flow. 
-  * **Cross-device Issuance flow**: The User receives the Credential on another device tha the one that initiated the flow. 
+  * **Cross-device Issuance flow**: The User receives the Credential on another device than the one that initiated the flow. 
   * **Immediate Issuance flow**: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.
   * **Deferred Issuance flow**: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
 
@@ -103,7 +103,7 @@ The entire Issuance flow can be divided into two sub-flows:
 
       **2)** Upon proposal of the PID/(Q)EAA Issuer (**Issuer Initiated**)
 
-  - **Issuance flow**, describing interactions between Wallet Instance and PID/(Q)EAA Provider that lead to the minting of the Credential.
+  - **Issuance flow**, describing interactions between Wallet Instance and PID/(Q)EAA Provider.
 
 The following diagram shows the *User request flow*.
 
@@ -145,7 +145,7 @@ The following diagram shows the *Issuance flow*.
     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in the `Trust Model section <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism>`_ of this specification.
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in Section :ref:`Trust Evaluation Mechanism <Trust Evaluation Mechanism>` .
 
 .. note::
 
