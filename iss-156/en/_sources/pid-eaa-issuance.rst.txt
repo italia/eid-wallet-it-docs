@@ -121,7 +121,7 @@ The following diagram shows the *User request flow*.
 
 **Steps 2.4-2.7 (Cross-Device):** The Credential Offer is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance which retrieves the parameters defined in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>`.
 
-**Steps 2.8-2.10 (Same-Device):** The Credential Offer is presented as an href button containing the URL that allows the user to invoke the wallet instance using Wallet's Credential Offer Endpoint.
+**Steps 2.8-2.10 (Same-Device):** The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.
 
 Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:
 
@@ -220,7 +220,7 @@ Below an non-normative example of the signed Request Object without encoding and
    The PID/(Q)EAA Provider MUST validate the signature of the the Wallet Attestation and that it is not expired.
 
 
-**Step 3 (PAR Response)**:  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value must be bound to the client identifier (``client_id``) that was provided in the Request Object.
+**Step 3 (PAR Response)**:  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value MUST be bound to the client identifier (``client_id``) that was provided in the Request Object.
 
 
 .. note::
@@ -241,7 +241,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
   :language: JSON
 
 
-**Steps 4-5 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
+**Steps 4-5 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
 
     1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from :rfc:`9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
