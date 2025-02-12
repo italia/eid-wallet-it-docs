@@ -486,7 +486,7 @@ In the case where the Authentic Source and the PID/(Q)EAA Provider are both enab
 
 Credential Offer Endpoint
 -------------------------------------
-The Credential Offer endpoint of a Wallet is used by PID/(Q)EAA Issuer to interact with the User to initiate a Credential Issuance. The use of the following custom URL scheme is mandatory: ``openid-credential-offer://``.
+The Credential Offer endpoint of a Wallet is used by PID/(Q)EAA Issuer to interact with the User to initiate a Credential Issuance. The custom URL scheme ``openid-credential-offer://`` MUST be used.
 
 Credential Offer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
