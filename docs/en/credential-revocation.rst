@@ -165,7 +165,7 @@ The Status Assertion HTTP request can be sent to a single Credential Issuer rega
 
 The Credential Issuer that receives the Status Assertion Request object MUST:
 
-  - validate that the Wallet Instance making the request is authorized to request Status Assertions. If errors occur during this check, the Credential Issuer MUST provide a Status Assertion Error Response according to Section :ref:`<HTTP Status Assertion Response>`;
+  - validate that the Wallet Instance making the request is authorized to request Status Assertions. If errors occur during this check, the Credential Issuer MUST provide a Status Assertion Error Response according to Section :ref:`HTTP Status Assertion Response <HTTP Status Assertion Response>`;
   - verify the compliance of all elements in the `status_assertion_requests` object using the confirmation method contained within the Digital Credential where the Status Assertion Request object is referred to. In case of errors, a Status Assertion Error Response MUST be provided (see Section :ref:`<HTTP Status Assertion Response>`); 
   - verify that it is the legitimate Issuer of the Digital Credential to which each Status Assertion Request object refers;
   - check the validity status for the requested Credentials;
