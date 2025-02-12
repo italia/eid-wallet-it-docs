@@ -474,19 +474,19 @@ Below a non-normative example of a Revocation Assertion Error object in JWT form
 Flow during presentation
 ++++++++++++++++++++++++
 
-During the presentation flow, if a Status Assertion related to a Digital Credential is available, the Wallet Instance MUST include it along with the related Digital Credential in the vp_token JSON Array. 
-The Verifier who wants to rely on the mechanism provided by Status Assertion MUST extract the Status Assertion from the vp_token Array, and, in addition to the checks required in the Presentation Flow described in the Section :ref:`Remote Flow <Remote Flow>`, the Verifier MUST check the presence of status.status_assertion in the Digital Credential. If true, the Verifiers MUST:
+During the presentation flow, if a Status Assertion related to a Digital Credential is available, the Wallet Instance MUST include it along with the related Digital Credential in the ``vp_token`` JSON Array. 
+The Verifier who wants to rely on the mechanism provided by Status Assertion MUST extract the Status Assertion from the ``vp_token`` Array, and, in addition to the checks required in the Presentation Flow described in the Section :ref:`Remote Flow <Remote Flow>`, the Verifier MUST check the presence of ``status.status_assertion`` claim in the Digital Credential. If true, the Verifiers MUST:
 
   - validate the signature of the Status Assertion;
-  - decode the Status Assertion provided in the presentation, by matching the JWS Header parameter typ set to status-assertion+jwt and looking for the credential_hash value that matches with the hash of the Digital Credential's Issuer signed part using the hashing algorithm configured in status.status_assertion.credential_hash_alg;
+  - decode the Status Assertion provided in the presentation, by matching the JWS Header parameter typ set to ``status-assertion+jwt`` and looking for the ``credential_hash`` value that matches with the hash of the Digital Credential's Issuer signed part using the hashing algorithm configured in ``status.status_assertion.credential_hash_alg``;
   - evaluate the Status Assertion by checking the following items:
 
-    - the Issuer claim value MUST match the one in the Digital Credential;
-    - the iat claim value MUST be equal to or later than the iat claim value in the Digital Credential;
-    - the exp value MUST be later than the current time;
-    - the nbf claim value, if present, MUST be less than or equal to the current time;
-    - the cnf JSON Object MUST match the one included in the related Digital Credential;
-    - the credential_status_type and credential_status_detail values.
+    - the ``iss`` claim value MUST match the one in the Digital Credential;
+    - the ``iat`` claim value MUST be equal to or later than the ``iat`` claim value in the Digital Credential;
+    - the ``exp`` value MUST be later than the current time;
+    - the ``nbf`` claim value, if present, MUST be less than or equal to the current time;
+    - the ``cnf`` JSON Object MUST match the one included in the related Digital Credential;
+    - the ``credential_status_type`` and ``credential_status_detail`` values.
 
 
 
