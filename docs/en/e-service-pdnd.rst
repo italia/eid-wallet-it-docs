@@ -214,7 +214,7 @@ Flow
     {
         "iss": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
         "sub": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
-        "aud": "interop.pagopa.it/authorization-server",
+        "aud": "https://interop.pagopa.it/authorization-server",
         "exp": 1733041440,
         "iat": 1733037840,
         "jti": "7e9f3a4d-c9b2-42f6-a6d4-38e12fb6b8ab",
@@ -242,7 +242,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
     Header:
 
-        - Ensure that the ``typ`` claim is present and that its value is ``jwt``.
+        - Ensure that the ``typ`` claim is present and that its value is ``JWT``.
 
     Signature:
 
@@ -298,7 +298,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
     :name: code_VoucherIssuance_eService_Flow_AccessToken_Payload
 
     {
-        "iss": "interop.pagopa.it",
+        "iss": "https://interop.pagopa.it",
         "sub": "82914b3f-60b2-4529-b4d6-3d4e67f0a933",
         "aud": "https://erogatore.example/ente-example/v1",
         "exp": 1733042150,
@@ -379,7 +379,7 @@ Flow
     {
         "iss": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
         "sub": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
-        "aud": "interop.pagopa.it/authorization-server",
+        "aud": "https://interop.pagopa.it/authorization-server",
         "exp": 1733233500,
         "iat": 1733232300,
         "jti": "d2c9a7b4-3e81-4d27-b6f7-51a8c9f0a3c6"
@@ -394,7 +394,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
     Header:
 
-        - Ensure that the ``typ`` claim is present and that its value is ``jwt``.
+        - Ensure that the ``typ`` claim is present and that its value is ``JWT``.
 
     Signature:
 
@@ -438,7 +438,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
     :name: code_VoucherIssuance_InteroperabilityAPI_Flow_AccessToken_Payload
 
     {
-        "iss": "interop.pagopa.it",
+        "iss": "https://interop.pagopa.it",
         "sub": "5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b",
         "aud": "https://interop.pagopa.it/api/v1",
         "exp": 1733236680,
