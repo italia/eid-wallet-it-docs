@@ -145,7 +145,7 @@ The following diagram shows the *Issuance flow*.
     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in the `Trust Model section <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/trust.html#trust-evaluation-mechanism>`_ of this specification.
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in Section :ref:`Trust Evaluation Mechanism <Trust Evaluation Mechanism>` .
 
 .. note::
 
