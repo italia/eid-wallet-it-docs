@@ -92,7 +92,7 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 Status Update by Wallet Providers 
 +++++++++++++++++++++++++++++++++
 
-As reported in the Section :ref:`Wallet Instance and Digital Credential Lifecycle <Wallet Instance and Digital Credential Lifecycle>` a revocation of the Wallet Instance MUST lead to a revocation of the Digital Credentials contained therein. For this reason, the Credential Issuer MUST provide a web service (Wallet Instance Revocation endpoint) via PDND as specified in the Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>`.
+In addition to what already defined in :ref:`Wallet Instance and Digital Credential Lifecycle <Wallet Instance and Digital Credential Lifecycle>`, the Credential Issuer MUST provide a web service (Wallet Instance Revocation endpoint) defined using PDND, as specified in the Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>`.
 The Wallet Provider that for any reason revokes a Wallet Instance MUST send a notification to Issuers using this endpoint.
 
 Status Update by Authentic Sources
