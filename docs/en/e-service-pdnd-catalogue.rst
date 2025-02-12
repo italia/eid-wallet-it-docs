@@ -58,7 +58,7 @@ Notify Wallet Instance Revocation
     :stub-columns: 1
 
     * - **Description**
-      - This service revokes all digital credentials associated with a specific
+      - This service revokes all Digital Credentials associated with a specific
         User
     * - **Provider**
       - PID/(Q)EAA Provider
