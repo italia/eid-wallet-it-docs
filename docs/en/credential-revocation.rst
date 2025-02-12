@@ -99,7 +99,7 @@ Status Update by Authentic Sources
 
 Authentic Sources manage and store attributes independently from Digital Credentials which certify their authenticity and validity as physical documents do. If the Users lose a physical document attesting, for example, their driving privileges, they do not lose their privileges, they just cannot prove them to third parties. On the other hand, if the Users commit a serious infraction, they could lose their driving privileges and this would result in a revocation of the User's attributes from the Authentic Source. In this case, and more generally in all cases in which the attributes of a User, stored and managed by an Authentic Source within its databases, are updated, the Authentic Sources MUST notify the relevant Issuers of the update. They MUST accordingly update the validity status of a Digital Credential that may have been issued and which contains those same Attributes. 
 
-Credential Issuers MUST provide a web service available via PDND for Credential update notification and validity status as defined in Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>` For the protocol flow, please refer to the Section :ref:`e-Service PDND <e-Service PDND>`.
+Credential Issuers MUST provide a web service available via PDND for Credential update notification and validity status as defined in Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>`. For the protocol flow, please refer to the Section :ref:`e-Service PDND <e-Service PDND>`.
 Authentic Sources MUST use this notification service in the following cases:
 
   - The value of one or more attributes contained in the Authentic Source's database has changed.
