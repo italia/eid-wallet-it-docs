@@ -220,7 +220,7 @@ Below an non-normative example of the signed Request Object without encoding and
    The PID/(Q)EAA Provider MUST validate the signature of the the Wallet Attestation and that it is not expired.
 
 
-**Step 3 (PAR Response)**:  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value must be bound to the client identifier (``client_id``) that was provided in the Request Object.
+**Step 3 (PAR Response)**:  The PID/(Q)EAA Provider provides a one-time use ``request_uri`` value. The issued ``request_uri`` value MUST be bound to the client identifier (``client_id``) that was provided in the Request Object.
 
 
 .. note::
