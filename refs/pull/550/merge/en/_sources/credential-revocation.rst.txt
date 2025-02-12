@@ -328,17 +328,14 @@ A non-normative example of a HTTP Status Assertion Response is given below.
 
 .. code::
 
-    .. code-block:: http
 		HTTP/1.1 200 Ok
 		Content-Type: application/json
-
 		{
 			"status_assertion_responses": [
-        $status_assertion_response,
-        $status_assertion_response, ...
-       ]
+			  $status_assertion_response,
+			  $status_assertion_response, ...
+			]
 		}
-
 If the Digital Credential related to the Status Assertion Request object can be succesfully revoked, the **Status Assertion Response object** ($status_assertion_response) MUST contain the updated Status Assertion. The Status Assertion MUST contain the parameters and claims defined below
 
 
