@@ -336,7 +336,7 @@ A non-normative example of a HTTP Status Assertion Response is given below.
 			  $status_assertion_response, ...
 			]
 		}
-If the Digital Credential related to the Status Assertion Request object can be succesfully revoked, the **Status Assertion Response object** ($status_assertion_response) MUST contain the updated Status Assertion. The Status Assertion MUST contain the parameters and claims defined below
+The Status Assertion MUST contain the parameters and claims defined below
 
 
 .. list-table:: 
