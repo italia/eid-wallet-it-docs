@@ -9,7 +9,7 @@ As highlighted in Section :ref:`Wallet Instance and Digital Credential Lifecycle
 
   - The lifecycle of its storing Wallet Instance
   - The validity of Attributes managed by Authentic Sources
-  - For PIDs only, the status of the Digital Identity used for authentication
+  - For PIDs only, the status of the Digital Identity used for User authentication
 
 External user-related factors can also influence a Digital Credential's lifecycle, such as:
 
