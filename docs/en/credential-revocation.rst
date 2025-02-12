@@ -83,7 +83,7 @@ The User's death triggers a change in the validity status of the User's identifi
 Status Update by Wallet Instance
 ++++++++++++++++++++++++++++++++
 
-When a Digital Credential is deleted from the Wallet Instance, that Credential MUST be revoked by the Credential Issuer. In this case the Wallet Instance MUST use the *Notification Endpoint* described in Section :ref:`Notification Endpoint <Notification endpoint>` and it MUST use the value ``credential_deleted`` in the *event* claim parameter. 
+When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance MUST notify this event to the Credential Issuer and the Credential Issuer MUST revoke the Digital Credential. To notify this event, the Wallet Instance MUST use the *Notification Endpoint* described in Section :ref:`Notification Endpoint <Notification endpoint>` using the parameter ``event`` set with the value ``credential_deleted``. 
 
 After the revocation, the Credential Issuer MAY also send a notification to the User (e.g. using a User's email address, telephone number, or any other verified and secure communication channel), with all needed information related to the Credential revocation status update. This communication is out of scope of the current technical implementation profile. The Credential Issuer MUST update the status of the Digital Credential accordingly. The Wallet Instance SHOULD delete the Digital Credential only after the Notification Response is succesfully received by the Credential Issuer.  
 
