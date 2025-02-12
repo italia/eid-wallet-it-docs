@@ -490,7 +490,7 @@ The Credential Offer endpoint of a Wallet is used by PID/(Q)EAA Issuer to intera
 
 Credential Offer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query parameter ``credential_offer`` that can be included in a QR Code or in an html page with an href button. It MUST contain the following mandatory parameters:
+The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query parameter ``credential_offer``. The Credential Offer URL MAY be included in a QR Code or in an html page with an href button and MUST contain the following mandatory parameters:
 
 .. _table_credential_offer_claim:
 .. list-table::
