@@ -22,10 +22,9 @@ Entities involved
 
 While the Credential Issuer MUST directly manage the validity status of Digital Credentials it has issued, other actors MAY trigger the Digital Credential revocation/suspension process:
 
-Users, through:
-
-  - Their Wallet Instance
-  - Web service provided by the Issuer
+  - Users, through:
+      - Their Wallet Instance
+      - Web service provided by the Issuer
   - The Authentic Source when credential attributes are updated or change validity status
   - The Wallet Provider when revoking a Wallet Instance
   - The Identity Provider if the Digital Identity used for PID issuance is stolen or compromised
