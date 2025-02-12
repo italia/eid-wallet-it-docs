@@ -121,7 +121,7 @@ The following diagram shows the *User request flow*.
 
 **Steps 2.4-2.7 (Cross-Device):** The Credential Offer is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance which retrieves the parameters defined in the :ref:`Table of Credential Offer parameters <table_credential_offer_claim>`.
 
-**Steps 2.8-2.10 (Same-Device):** The Credential Offer is presented as an href button containing the URL that allows the user to invoke the wallet instance using Wallet's Credential Offer Endpoint.
+**Steps 2.8-2.10 (Same-Device):** The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.
 
 Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:
 
