@@ -425,13 +425,13 @@ Below a non-normative example of a Status Assertion Response object in JWT forma
     }
   }
 
-The Revocation Response Error object MUST contain the following parameters:
+The Status Assertion Error object MUST contain the following claims:
 
-  - *error*. The error code, as registerd in the table below;
+  - *error*. The error code, as registered in the table below;
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
 Errors are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
-The `error` parameter for the Revocation Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
+The `error` claim for the Status Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
 
 
 .. list-table::
