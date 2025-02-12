@@ -265,7 +265,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><strong>2)</strong> Upon proposal of the PID/(Q)EAA Issuer (<strong>Issuer Initiated</strong>)</p>
 </div></blockquote>
 </li>
-<li><p><strong>Issuance flow</strong>, describing interactions between Wallet Instance and PID/(Q)EAA Provider that lead to the minting of the Credential.</p></li>
+<li><p><strong>Issuance flow</strong>, describing interactions between Wallet Instance and PID/(Q)EAA Provider.</p></li>
 </ul>
 </div></blockquote>
 <p>The following diagram shows the <em>User request flow</em>.</p>
@@ -275,7 +275,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><strong>Steps 1.1-1.4 (Wallet Initiated Flow):</strong> The User, using the Wallet Instance, selects the PID/(Q)EAA Provider from those listed in the list of trustworthy entities.</p>
 <p><strong>Steps 2.1-2.3 (Issuer Initiated Flow):</strong> The User while browsing the PID/(Q)EAA Provider website finds a link to obtain a Digital Credential.</p>
 <p><strong>Steps 2.4-2.7 (Cross-Device):</strong> The Credential Offer is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance which retrieves the parameters defined in the <a class="reference internal" href="#table-credential-offer-claim"><span class="std std-ref">Table of Credential Offer parameters</span></a>.</p>
-<p><strong>Steps 2.8-2.10 (Same-Device):</strong> The Credential Offer is presented as an href button containing the URL that allows the user to invoke the wallet instance using Wallet's Credential Offer Endpoint.</p>
+<p><strong>Steps 2.8-2.10 (Same-Device):</strong> The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.</p>
 <p>Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="err">openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D</span>
 </pre></div>
