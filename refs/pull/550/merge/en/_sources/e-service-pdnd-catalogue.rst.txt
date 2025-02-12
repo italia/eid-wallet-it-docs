@@ -9,7 +9,7 @@ e-Service PDND Catalogue
 Credential Issuer Catalogue
 ---------------------------
 
-Credential Issuers MUST provide the following e-service through PDND to:
+Credential Issuers MUST provide the following e-services through PDND to:
 
     - manage data availability notifications and attribute updates coming from an Authentic Source;
     - revoke Digital Credentials issued to a revoked Wallet Instance
