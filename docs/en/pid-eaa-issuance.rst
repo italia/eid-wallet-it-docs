@@ -103,7 +103,7 @@ The entire Issuance flow can be divided into two sub-flows:
 
       **2)** Upon proposal of the PID/(Q)EAA Issuer (**Issuer Initiated**)
 
-  - **Issuance flow**, describing interactions between Wallet Instance and PID/(Q)EAA Provider that lead to the minting of the Credential.
+  - **Issuance flow**, describing interactions between Wallet Instance and PID/(Q)EAA Provider.
 
 The following diagram shows the *User request flow*.
 
