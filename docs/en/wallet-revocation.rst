@@ -47,6 +47,8 @@ The verification of the Wallet Instance validity MUST be performed:
 - **During Digital Credential issuance or presentation phase** by the Credential Issuers and Relying Parties, respectively. Only Wallet Instances in Operational or Valid state have valid Wallet Attestations. Thus, the verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers and Relying Parties by checking the presence of valid Wallet Attestation (i.e. not expired and signed by a trusted Wallet Provider). 
 
 - **During the validity period of the Digital Credential**  by the Credential Issuers. Indeed, if the Wallet Instance is revoked, the Digital Credential hosted within it must also be revoked. In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.
+
+
 .. note::
    With the introduction of the **Wallet Trust Evidence (WTE)**, this section will be updated accordingly.
 
