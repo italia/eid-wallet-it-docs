@@ -241,7 +241,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
   :language: JSON
 
 
-**Steps 4-5 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST only use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
+**Steps 4-5 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
 
     1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from :rfc:`9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
