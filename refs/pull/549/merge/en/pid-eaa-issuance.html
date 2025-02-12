@@ -699,7 +699,7 @@ without encoding and signature. The JWT header:</p>
 <p>The Credential Offer endpoint of a Wallet is used by PID/(Q)EAA Issuer to interact with the User to initiate a Credential Issuance. The custom URL scheme <code class="docutils literal notranslate"><span class="pre">openid-credential-offer://</span></code> MUST be used.</p>
 <section id="credential-offer">
 <h3>Credential Offer<a class="headerlink" href="#credential-offer" title="Link to this heading">¶</a></h3>
-<p>The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query parameter <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code> that can be included in a QR Code or in an html page with an href button. It MUST contain the following mandatory parameters:</p>
+<p>The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query parameter <code class="docutils literal notranslate"><span class="pre">credential_offer</span></code>. The Credential Offer URL MAY be included in a QR Code or in an html page with an href button and MUST contain the following mandatory parameters:</p>
 <table class="docutils align-default" id="table-credential-offer-claim">
 <colgroup>
 <col style="width: 20.0%" />
@@ -714,7 +714,7 @@ without encoding and signature. The JWT header:</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>credential_issuer</strong></p></td>
-<td><p>It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet uses it to obtains the PID/(Q)EAA Issuer's metadata.</p></td>
+<td><p>It MUST be set with an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet uses this parameter value to obtain the PID/(Q)EAA Issuer's metadata.</p></td>
 <td><p>Section 4.1.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_configuration_ids</strong></p></td>

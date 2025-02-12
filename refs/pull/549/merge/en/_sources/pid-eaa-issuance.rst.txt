@@ -490,7 +490,7 @@ The Credential Offer endpoint of a Wallet is used by PID/(Q)EAA Issuer to intera
 
 Credential Offer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query parameter ``credential_offer`` that can be included in a QR Code or in an html page with an href button. It MUST contain the following mandatory parameters:
+The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query parameter ``credential_offer``. The Credential Offer URL MAY be included in a QR Code or in an html page with an href button and MUST contain the following mandatory parameters:
 
 .. _table_credential_offer_claim:
 .. list-table::
@@ -501,7 +501,7 @@ The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query pa
     - **Description**
     - **Reference**
   * - **credential_issuer**
-    - It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet uses it to obtains the PID/(Q)EAA Issuer's metadata.
+    - It MUST be set with an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet uses this parameter value to obtain the PID/(Q)EAA Issuer's metadata.
     - Section 4.1.1 of [`OpenID4VCI`_].
   * - **credential_configuration_ids**
     - Array of Strings, each of them specifying a unique identifier of the Credential being described in the ``credential_configurations_supported`` map in the PID/(Q)EAA Issuer Metadata.
