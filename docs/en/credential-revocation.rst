@@ -25,7 +25,7 @@ While the Credential Issuer MUST directly manage the validity status of Digital 
   - Users, through:
       - Their Wallet Instance
       - Web service provided by the Issuer
-  - The Authentic Source when credential attributes are updated or change validity status
+  - The Authentic Source when Credential attributes are updated or change validity status
   - The Wallet Provider when revoking a Wallet Instance
   - The Identity Provider if the Digital Identity used for PID issuance is stolen or compromised
   - Legal authorities or the Supervisory Body in cases of proven illegal activities
