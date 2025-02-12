@@ -501,7 +501,7 @@ The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query pa
     - **Description**
     - **Reference**
   * - **credential_issuer**
-    - It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet uses it to obtains the PID/(Q)EAA Issuer's metadata.
+    - It MUST be set with an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet uses this parameter value to obtain the PID/(Q)EAA Issuer's metadata.
     - Section 4.1.1 of [`OpenID4VCI`_].
   * - **credential_configuration_ids**
     - Array of Strings, each of them specifying a unique identifier of the Credential being described in the ``credential_configurations_supported`` map in the PID/(Q)EAA Issuer Metadata.
