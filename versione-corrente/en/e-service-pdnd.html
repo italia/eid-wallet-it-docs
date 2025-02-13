@@ -134,6 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
@@ -324,7 +325,7 @@
 <figure class="align-center" id="id7" style="width: 100%">
 <span id="fig-voucherissuance-eservice-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TT5HRzCm40VmTt-AK_QoHLH2a-1X3sXHkcf52AAbm6FakRV6Ik8pvtDPz-cnGxSYjBr4iMF_xd-Nwo2Q9KwZ4YiZmW-AfaU6TGXHEuEm05oqo7jhK2aTXLoSxf6LkgT7ACkQN8WJSbd2sNfFV500FedMMA-TG56MtweeFTIZHITbMO0EKAyKkYqaujbfbb-NsQYU8kDRHduGsoSjbXpaLCX7iMfF8dc15J5KtvVhJNTtqswwzvSAKjN5ftfrrJ0c7U7ppmtyjearDFaH9tIY-G1RBHhEYsB3sWpMxMxsTelEO55Sg1DIfpjH4DhRwlB3H-Xrw84UuBLh6Riz_t__8davibBF8gDEuBAX1WOyWDUMGQUUF1CzpAUgzkhb1ztXhuX1CcxcqNPsMnJlu6MfGq3EWtfzjvE3nx-VTgoT7DUfHtOa2BH7Xgg5iozsrqjZtP2Rxz4C8SUU3obLjOiv_2bLyEG2vbZQ60oX4nhmc26__biO7xrb39rrkV1rOkCq_W40"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Steps 1-2 (Preparation of Tracked Data):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>) containing the tracked data that have to be sent to the Provider. Finally, it computes the SHA-256 hash of <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>.</p>
@@ -523,7 +524,7 @@
 <figure class="align-center" id="id8" style="width: 100%">
 <span id="fig-voucherissuance-interoperabilityapi-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TP51ozf048Rl-ok6UD7GqFOg4WmH8L3Qq41FXR36mIp6tNHcLjHVtrqDwk7xBY4px_Ay3xjh5atYJuCI8mF27-Ux7WagPgzjXv11PGN9ZKXwPmOZLoZgIYdjnLb_sY4fjNCNIDAq3YJJcL5RITE_TiNcXillt_9vwIpxKw0wMdsDs_mjhScTpHvfCKK9pAgpewi265_0oFzLUEcX70p6WWGqGxbLQFSG11uMGMBpSvEcC2jkdl0pHlmuCZSjnbbeaCv84x5eNiHoc-L5itnUoc_yvv45vadItIrQiq-IB_0SDJDIP7wyRUKwuYCwK12QveLIP9qWkA0H163smnnwgOqzAe2on-x8KUf-IAcYoRAyt2vVLZmwonYrTDSXSolkY9D3_7qlnije2BarDXQl0pOy_dy0"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Voucher Request)</strong>: The Participant creates a Voucher Request and sends it to the PDND Authorization Server.</p>
@@ -977,7 +978,7 @@
 <figure class="align-center" id="id9" style="width: 100%">
 <span id="fig-keyretrieval-pdnd-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/PS_1IWCn58NXVPxYK7U1-01Tb1Pc8GWgcSMiq_Q8eMbIRsvc79_UgOWAtHxuF-xTLWsYxPoCHat48sTugaIE8S7XfNlgZ0bDIsxdFSMOVVc0jTVTMjpjFflG09T5YOTu2LcnilP-OahkbCkKhLqXL0o6-OWb_XMaZF58kIeF9NFkEDr2pxkcR_2ifSc1w2aZvOVq_P_fUxSPrl1yRwoAroBVf-F4kHepEBVn_VhVj5tAvUil"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Keys Request)</strong>: The Provider requests for the keys used by the PDND to sign Vouchers.</p>
@@ -1035,7 +1036,7 @@
 <figure class="align-center" id="id10" style="width: 100%">
 <span id="fig-keyretrieval-participant-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/fSp1IlGm5CNnVPxYa6_nGQ0lC8jXIbkm25fcxIPjx-XbqYGcDsfzUYk85Low_f_pEsMnIShYbB0umYsjE9CafXVhK67OAayShPUib2qIV5b6IagDuGt63ErTQmp-rUybaGBYleSsflT2AKHATcJ7ig8UUcCqR4QloC_Ob6zgltwADy7JsjBhR_I-BlA4nZ5v-SAQRjUQhZhsXpCz5yg2IqZu8V_FY6LqFE5AwuEVGagKO_0p-qT8G8uqyMNBMbzvrbf1zTMnwGv_CKxavxAu3m00"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Key Request)</strong>: The Participant requests for the key used by another Participant, corresponding to a specific <code class="docutils literal notranslate"><span class="pre">kid</span></code>, to the PDND Interoperability API.</p>
@@ -1251,7 +1252,7 @@
 <figure class="align-center" id="id11" style="width: 100%">
 <span id="fig-usage-flow"></span><a class="reference external image-reference" href="https////www.plantuml.com/plantuml/svg/ZP1HRzCm4CVV_IbEtWjOgeHut0DQbQmmX5YLTF1OUSwHM4ryuNpkw3uzph8LAZJK5ykMx_-xd_vNKInB6debNde4NDJ8U-yGxg9jKIcRX48Qxf6LkgTVO4n18QO1sHYukDaJ7nJ0c27U-T460MtCxJ991qNlCOWn6co4OgKmD90HBvnr-RMS6Cl7nFWQOpg8_QCLJm4cD-HduhB-XyYqzyrizea27afyU0rSOQJ43a-PrL_COhNuKAmkrumPWF3v-mOUV4v6tmOhYH7UQ5s_FBH-Uun0mMW5eLpJ6aOc-Z5_LVKbb5PiNlupOPIPzusIwwPwEL0EKRR97d3nnRUTV6J4e02A3jqEj9wGMa-IJzFdXQnp6EDMQ8VX94oZm6te3xE8rikxycQphQxhpVRT-pm9y3_ydmKRjcxdGtizrHySFaMFQ_BbFCzZcIUILRsOMtrk3Hjeh5XrbKVIqFy6"><img alt="_images/Low-Level-Flow-AuthenticSource-Usage.svg" src="_images/Low-Level-Flow-AuthenticSource-Usage.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Signature Preparation):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) containing the signed headers of the message, to ensure integrity.</p>
@@ -1886,7 +1887,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 12/02/2025.
+      Last updated on 13/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Authentic Sources &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>Wallet Instance Revocation &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
@@ -15,8 +15,8 @@
     <script src="_static/js/petite-vue.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="e-Service PDND" href="e-service-pdnd.html" />
-    <link rel="prev" title="Entity Configuration of PID/(Q)EAA Providers" href="pid-eaa-entity-configuration.html" /> 
+    <link rel="next" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html" />
+    <link rel="prev" title="Wallet Attestation" href="wallet-attestation.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -134,11 +134,11 @@
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
@@ -160,46 +160,50 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="authentic-sources">
-<h1>Authentic Sources<a class="headerlink" href="#authentic-sources" title="Link to this heading">¶</a></h1>
-<p>Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the requested Credential. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them is accomplished in compliance with [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>] and [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>] and according to the rules defined within this specification. In particular,</p>
-<blockquote>
-<div><ul>
-<li><p>The Authentic Source MUST provide an e-service registered within the PDND catalogue which the PID/(Q)EAA Provider, as the recipient, MUST use to request the User's attributes.</p></li>
-<li><p>In case of unavailability of the User's attributes, the Authentic Source MUST provide a response to the PID/(Q)EAA Provider with an estimation time when a new request can be sent.</p></li>
-<li><p>The PID/(Q)EAA Provider MUST provide to the Authentic Source an evidence that:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>the request for Users attributes is related to data about themselves;</p></li>
-<li><p>the request for User attributes comes from a valid Wallet Instance.</p></li>
+  <section id="wallet-instance-revocation">
+<span id="wallet-revocation-rst"></span><h1>Wallet Instance Revocation<a class="headerlink" href="#wallet-instance-revocation" title="Link to this heading">¶</a></h1>
+<p>This section describes the involved entities and modalities to request a Wallet Instance revocation in the IT-Wallet system.</p>
+<p>The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements. When, for technical security reasons (e.g., relating to the compromise of cryptographic material) the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.</p>
+<p>As shown in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 6</span></a>, other actors MAY trigger the Wallet Instance revocation process:</p>
+<ul class="simple">
+<li><p><strong>Users</strong>, connecting to the Wallet Provider’s web portal from their Wallet Instance or using an external browser.</p></li>
+<li><p><strong>PID Providers</strong> when notified by the Authentic Source of the PID (ANPR) of the User’s death.</p></li>
+<li><p><strong>Legal Authorities or the Supervisory Body</strong> in cases of proven illegal activities.</p></li>
 </ul>
-</div></blockquote>
-</li>
-<li><p>The PID/(Q)EAA Provider MUST make available to the Authentic Source an e-service for notifications on attributes availability and validity status (revocation or updates). The Authentic Source MUST use this e-service to notify to the PID/(Q)EAA Provider the notifications on the availability of the User's attributes as well as those relating to the attributes updates.</p></li>
-<li><p>The protocol flow MUST ensure integrity, authenticity, and non-repudiation of the exchanged data between the Authentic Source and the PID/(Q)EAA Provider.</p></li>
-<li><p>The e-services MUST be implemented in REST. SOAP protocol MUST NOT be used.</p></li>
+<figure class="align-center" id="id1" style="width: 80%">
+<span id="fig-wallet-instance-revoc-entities"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/fL9TZn8z5BwVNt5URbusSPSRhxnQ5oOHuog1tHYJJIPbMk74JZksf-1e_E-UKmiguvqafFIXpyVvk8sa0gNELl-XQstI1lP4VNmncmLrlDaXxTCsHHDQxyWukcbzD-kjSiAvZgGjRcVpvzShWHxltymw5Sa4XfgvxthlXDEBVlLgkQYRpKEzhjyzV5ZLqwkgMfaGlPkA_ZEOFF8nuRDsX3I0FpfqEw2zWIVtNbbh29QEyxhMJ9XyvvFJAWpJO_wlYGCxTymlRpVvFhc2RnNmvnpdz1wBbZ0kr1cIxxroQcSYIBx_8ooGsw4ip8FHh8FAHixnL-q--0DghkealIh0IRhS8rnOWt8QZcOBR7d0reZ3zwhwPQ0IxSMyRQ9F8QT_UO9Waw6HXpGM5570RIA-ayzTNSQOJCYENQbKu8Eog6K0d8YI13YxD_MNdmbymAz6Drkl1mbmHY3F3aqyPTYaNWg9FWnmnw-ps-kaiKLbeH1fO9FVQiGSJ2fOBaQTowdZ7wdbcTnBr-Db0wjgRMpPiei1ZOSFQtFmhIBqZdz-PYyI2L4OSSUR9EHFvdAg4a84fB1_3J5UW7Extdh2ZuECMzRroMcZQ5-iHrCRPoZq9UCx6KvBU432dFxME9qw-mC0"><img alt="_images/wallet_instance_revocation.svg" src="_images/wallet_instance_revocation.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Entities involved in the Wallet Instance revocation process.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Detailed flows for <strong>PID Provider, Legal Authorities,</strong> and <strong>Supervisory Body</strong> will be covered in future versions of the technical specification.</p>
+</div>
+<section id="revocation-request-from-the-user">
+<h2>Revocation Request from the User<a class="headerlink" href="#revocation-request-from-the-user" title="Link to this heading">¶</a></h2>
+<p>Users MAY request the Wallet Instance revocation by:</p>
+<ul class="simple">
+<li><p><em>Selecting the revocation functionality from their Wallet Instance</em>: this functionality may be used by Users before changing their phone.</p></li>
+<li><p><em>Using an external user agent</em>: this covers cases where Users lose their device, and so their access to their Wallet Instance.</p></li>
 </ul>
-</div></blockquote>
-<section id="security-patterns">
-<h2>Security Patterns<a class="headerlink" href="#security-patterns" title="Link to this heading">¶</a></h2>
-<p>The following security patterns and profiles are applicable:</p>
-<blockquote>
-<div><ul>
-<li><p><strong>[REST_JWS_2021_POP]</strong> JWS POP Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.</p></li>
-<li><p><strong>[ID_AUTH_REST_02]</strong> Client Authentication with X.509 certificate with uniqueness of the token/message (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It guarantees trust between the Authentic Source and the PID/(Q)EAA Provider and provides a mitigation against replay attacks.</p></li>
-<li><p><strong>[INTEGRITY_REST_01]</strong> REST message payload integrity (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It adds message payload integrity of the HTTP POST request.</p></li>
-<li><p><strong>[AUDIT_REST_02]</strong> submission of audit data within the request (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid. In this case this pattern MUST be used.</p></li>
-<li><p><strong>[PROFILE_NON_REPUDIATION_01]</strong> Profile for non-repudiation of transmission (<em>Annex 3 - Interoperability Profile</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. This profile uses the following security patterns:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>ID_AUTH_CHANNEL_01</strong> or <strong>ID_AUTH_CHANNEL_02</strong></p></li>
-<li><p><strong>ID_AUTH_REST_02</strong></p></li>
-<li><p><strong>INTEGRITY_REST_01</strong></p></li>
+<p>In both cases, by using the Wallet Provider portal:</p>
+<ul class="simple">
+<li><p>Users MUST authenticate with at least a second-factor authentication mechanism, or have an active session that meets this requirement.</p></li>
+<li><p>The Wallet Provider MUST allow Users to view the state of all their Wallet Instances and ask for their revocation.</p></li>
 </ul>
-</div></blockquote>
-</li>
+</section>
+<section id="validity-verification-mechanisms">
+<h2>Validity Verification Mechanisms<a class="headerlink" href="#validity-verification-mechanisms" title="Link to this heading">¶</a></h2>
+<p>The verification of the Wallet Instance validity MUST be performed:</p>
+<ul class="simple">
+<li><p><strong>During Digital Credential issuance or presentation phase</strong> by the Credential Issuers and Relying Parties, respectively. Only Wallet Instances in Operational or Valid state have valid Wallet Attestations. Thus, the verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers and Relying Parties by checking the presence of valid Wallet Attestation (i.e. not expired and signed by a trusted Wallet Provider).</p></li>
+<li><p><strong>During the validity period of the Digital Credential</strong>  by the Credential Issuers. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.</p></li>
 </ul>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the introduction of the <strong>Wallet Trust Evidence (WTE)</strong>, this section will be updated accordingly.</p>
+</div>
 </section>
 </section>
 
@@ -217,8 +221,9 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">Authentic Sources</a><ul>
-<li><a class="reference internal" href="#security-patterns">Security Patterns</a></li>
+<li><a class="reference internal" href="#">Wallet Instance Revocation</a><ul>
+<li><a class="reference internal" href="#revocation-request-from-the-user">Revocation Request from the User</a></li>
+<li><a class="reference internal" href="#validity-verification-mechanisms">Validity Verification Mechanisms</a></li>
 </ul>
 </li>
 </ul>
@@ -233,14 +238,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="pid-eaa-entity-configuration.html">
-                    <span class="icon">&lt;</span><span>Entity Configuration of PID/(Q)EAA Providers</span></a>
+                <a href="wallet-attestation.html">
+                    <span class="icon">&lt;</span><span>Wallet Attestation</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="e-service-pdnd.html"><span>e-Service PDND</span><span class="icon">&gt;</span></a>
+                    <a href="pid-eaa-data-model.html"><span>PID/(Q)EAA Data Model</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

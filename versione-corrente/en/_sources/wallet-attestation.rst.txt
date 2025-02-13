@@ -549,34 +549,6 @@ The body of the Wallet Attestation JWT MUST contain:
       - Array of JSON Strings containing the values of the Client Identifier schemes that the Wallet supports.
       - `OpenID4VP`_
 
-Revocations
-~~~~~~~~~~~~~~~~~~
-As mentioned in the *Wallet Instance initialization and registration* section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
-The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.
-
-When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the `Operational` or `Valid` state.
-A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.
-
-The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.
-
-According to ARF, `Section 6.5.4 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management>`_ and more specifically in `Topic 38 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation>`_ the Wallet Instance can be revoked by the following entities:
-
-  1. Its owner, the User
-  2. Wallet Provider
-  3. PID Provider
-
-During the *Wallet Instance initialization and registration* phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
-When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.
-
-Regarding the reasons for revoking a Wallet Instance, the following scenarios may occur:
-
-- The smartphone is lost;
-- The smartphone has been compromised (e.g., a malicious actor gains control of the smartphone);
-- The smartphone has been reset to factory settings;
-- Any other scenarios where the User loses the control of the Wallet Instance.
-
-If any of the previous scenarios occur, the Wallet Instance **MUST** be revoked.
-To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) **MUST**  offer a remote service, such as a web page, where the User can authenticate and request the revocation of a previously activated Wallet Instance.
 
 .. _token endpoint: wallet-solution.html#wallet-attestation
 .. _Wallet Attestation Request: wallet-attestation.html#format-of-the-wallet-attestation-request
@@ -588,3 +560,5 @@ To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) **MUST
 .. _DeviceCheck: https://developer.apple.com/documentation/devicecheck
 .. _OAuth 2.0 Nonce Endpoint: https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/
 .. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
+
+
