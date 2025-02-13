@@ -134,14 +134,16 @@
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Authentic Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
@@ -161,7 +163,7 @@
             
   <section id="authentic-sources">
 <h1>Authentic Sources<a class="headerlink" href="#authentic-sources" title="Link to this heading">¶</a></h1>
-<p>Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by the PID/(Q)EAA Provider. During the Issuance Flow, PID/(Q)EAA Providers, after authenticating the User, request from Authentic Sources the attributes required to provide the requested Credential. If PID/(Q)EAA Providers and Authentic Sources are both allowed to use PDND, the communication between them is accomplished in compliance with [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>] and [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>] and according to the rules defined within this specification. In particular,</p>
+<p>Authentic Sources are responsible for the authenticity of the User's attributes provided as Digital Credentials by Credential Issuers. During the Issuance Flow, Credential Issuers request from Authentic Sources the attributes required to provide the requested Credential. Authentic Sources MAY also provide a Credential Offer related to their Credential Issuers as defined in Section <a class="reference internal" href="pid-eaa-issuance.html#credential-offer-endpoint"><span class="std std-ref">Credential Offer Endpoint</span></a>.</p>
 <blockquote>
 <div><ul>
 <li><p>The Authentic Source MUST provide an e-service registered within the PDND catalogue which the PID/(Q)EAA Provider, as the recipient, MUST use to request the User's attributes.</p></li>
@@ -179,25 +181,24 @@
 <li><p>The e-services MUST be implemented in REST. SOAP protocol MUST NOT be used.</p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>In case of the PID/(Q)EAA Provider and the Authentic Source are separate entities, the Authentic Source MAY provide a Credential Offer related to its PID/(Q)EAA Provider as defined in the Section <a class="reference internal" href="pid-eaa-issuance.html#credential-offer"><span class="std std-ref">Credential Offer</span></a>.</p>
+</div>
 <section id="security-patterns">
 <h2>Security Patterns<a class="headerlink" href="#security-patterns" title="Link to this heading">¶</a></h2>
-<p>The following security patterns and profiles are applicable:</p>
+<p>Authentic Sources MUST:</p>
 <blockquote>
 <div><ul>
-<li><p><strong>[REST_JWS_2021_POP]</strong> JWS POP Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]): REQUIRED. It adds a proof of possession on the Voucher. The client using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.</p></li>
-<li><p><strong>[ID_AUTH_REST_02]</strong> Client Authentication with X.509 certificate with uniqueness of the token/message (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It guarantees trust between the Authentic Source and the PID/(Q)EAA Provider and provides a mitigation against replay attacks.</p></li>
-<li><p><strong>[INTEGRITY_REST_01]</strong> REST message payload integrity (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It adds message payload integrity of the HTTP POST request.</p></li>
-<li><p><strong>[AUDIT_REST_02]</strong> submission of audit data within the request (<em>Annex 2 - Security Pattern</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPTIONAL. The Authentic Source MAY request an evidence about the User Authentication related to the User's attributes requested by the PID/(Q)EAA Provider and/or a proof that the Wallet Instance is valid. In this case this pattern MUST be used.</p></li>
-<li><p><strong>[PROFILE_NON_REPUDIATION_01]</strong> Profile for non-repudiation of transmission (<em>Annex 3 - Interoperability Profile</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. This profile uses the following security patterns:</p>
+<li><p>provide User's attributes when requested by the Credential Issuer authorized to issue the related Digital Credential attesting the attributes. Public Authentic Sources MUST use PDND to send User's attributes to their Credential Issuers. When the User's attributes is not available duting the Issuance Flow, Authentic Sources MUST provide Credential Issuers with an estimated time when the User's data will be available. Authentic Sources MAY require an evidence that:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>ID_AUTH_CHANNEL_01</strong> or <strong>ID_AUTH_CHANNEL_02</strong></p></li>
-<li><p><strong>ID_AUTH_REST_02</strong></p></li>
-<li><p><strong>INTEGRITY_REST_01</strong></p></li>
+<li><p>the request for Users attributes is related to data about themselves;</p></li>
+<li><p>the request for User attributes comes from a valid Wallet Instance;</p></li>
 </ul>
 </div></blockquote>
 </li>
+<li><p>cooperate with their Credential Issuers so that the attributes attested in a Digital Credential are always kept up to date. Public Authentic Sources MUST use PDND to notify their Credential Issuers of any update regarding attributes that have changed or are no longer valid.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -248,7 +249,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 12/02/2025.
+      Last updated on 13/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

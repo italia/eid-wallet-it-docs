@@ -40,14 +40,16 @@ Index of content
    lifecycle.rst
    wallet-solution.rst
    wallet-attestation.rst
+   wallet-revocation.rst
    pid-eaa-data-model.rst
    pid-eaa-issuance.rst
    pid-eaa-entity-configuration.rst
    authentic-sources.rst
    e-service-pdnd.rst
+   e-service-pdnd-catalogue.rst
    relying-party-solution.rst
    relying-party-entity-configuration.rst
-   revocation-lists.rst
+   credential-revocation.rst
    pseudonyms.rst
    backup-restore.rst
    algorithms.rst

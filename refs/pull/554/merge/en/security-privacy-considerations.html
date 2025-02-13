@@ -134,14 +134,16 @@
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
@@ -346,7 +348,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 </tr>
 </tbody>
 </table>
-<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 8</span></a>):</p>
+<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 9</span></a>):</p>
 <ul class="simple">
 <li><p>Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a secure eIDAS scheme or a valid PID, providing the Access Token to the User.</p></li>
 <li><p>Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.</p></li>
@@ -367,7 +369,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 </tbody>
 </table>
 <p>A trusted Wallet Attestation ensures that the Wallet Instance is secure and meets the required security standards before any Credentials are issued or stored.
-In Steps 5-6 of <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 8</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
+In Steps 5-6 of <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 9</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
 signed with the Wallet's private key. This attestation confirms that the Wallet Instance is genuine and has been verified by the Wallet Provider.</p>
 <p>The Issuer verifies this attestation before allowing the Wallet to participate in the issuance process, ensuring that the Wallet adheres to specific security standards.
 Afterward, all cryptographic keys generated and used in the process come from this attested Wallet Instance.</p>
@@ -607,7 +609,7 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 </tbody>
 </table>
 <p>The Verifier performing the Trust Evaluation about the Issuer of a Credential must not release any information to the Credential Issuer about the Wallet Instance it is interacting with. Using [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] the Issuer doesn't know who is the User presenting the Credential.
-In addition, privacy is protected also during the check of the Credential's status. By using Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>], the IT-Wallet specification ensures
+In addition, privacy is protected also during the check of the Credential's status. By using Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a>], the IT-Wallet specification ensures
 that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.</p>
 </section>
 <section id="pr-e-70">
@@ -694,7 +696,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 </tr>
 </tbody>
 </table>
-<p>The Credential lifecycle includes a Credential revocation mechanism based on Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>] that ensures that Credentials are properly revoked when compromised or outdated.</p>
+<p>The Credential lifecycle includes a Credential revocation mechanism based on Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a>] that ensures that Credentials are properly revoked when compromised or outdated.</p>
 <p>The revocation of a Federation Entity (i.e., Issuer, Verifier, Wallet Provider) is instead possible by not issuing the corresponding Subordinate Statement about that Entity and set a short expiration of the Trust Chain, thus preventing misuse during compromise.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -903,7 +905,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 12/02/2025.
+      Last updated on 13/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

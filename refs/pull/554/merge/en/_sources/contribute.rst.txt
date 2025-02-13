@@ -58,6 +58,9 @@ implementation profile and to the initial set of implementations.
 - Thomas Chiozzi
 - Torsten Lodderstedt
 - Vladimir Duzhinov
+- Marco Pernpruner
+- Zahra Ebadi Ansaroudi
+- Marco Basili
 
 
 If anyone has been forgotten, please accept our apologies with the 
