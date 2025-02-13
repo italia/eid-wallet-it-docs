@@ -3,7 +3,9 @@ document:
   description: |
     eIDAS Italian Wallet Technical Specifications
   tags:
-    - standard 
+    - eIDAS
+    - eudiw
+    - wallet
     - interoperabilità
     - spid
     - cie

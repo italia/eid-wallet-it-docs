@@ -16,7 +16,7 @@ import sys, os
 from recommonmark.transform import AutoStructify
 from recommonmark.parser import CommonMarkParser
 
-# -- RTD configuration ------------------------------------------------
+# -- RTD configuration -------------------------------------------------
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -141,7 +141,7 @@ html_theme_options = {
     'collapse_navigation': 'True',
     "show_theme_credit": False,
     "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
-    "source_icon": "gitlab",
+    "source_icon": "github",
 }
 
 # -- ReadTheDoc requirements and local template generation---------------------
@@ -159,6 +159,7 @@ else:
         'css_files': [
             '_static/css/theme.css',
             '_static/css/badge_only.css',
+            '' # TODO add a custom css div#top_nav nav { background-color: #0066CC } actually #3889CE
         ],
     }
 
