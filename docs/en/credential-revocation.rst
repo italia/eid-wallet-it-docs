@@ -110,7 +110,7 @@ Authentic Sources MUST use this notification service in the following cases:
 Validity Verification Mechanisms 
 --------------------------------
 
-The verification of the validity of a Digital Credential is based on the OAuth Status Assertions Specification (`OAUTH-STATUS-ASSERTION`_).
+The verification of the validity of a Digital Credential is based on the OAuth Status Assertions Specification (`OAUTH-STATUS-ASSERTION`_) with slight modifications [#]_.
 
 A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Credential Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials.
 
@@ -125,6 +125,9 @@ The Status Assertions have the following features:
     - it doesn't reveal any information about the Users or the content of their Digital Credentials.
   
   - MUST have a validity period not greater than 24 hours.
+
+.. note::
+  .. [#] This specification only support JWT format and the Status Assertion uses ``credential_status_type`` claim instead of ``credential_status_validity``.
 
 The following sections describe how the Digital Credential validation mechanism works through its key phases. 
 
@@ -152,7 +155,7 @@ A Wallet Instance MUST check periodically the validity status of the Digital Cre
 .. figure:: ../../images/High-Level-Flow-Status-Assertion-Request.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/VSt1IiDG48NX_Jp58RYiUO22KX71xaGBBjfIndOM5sucSMOkUNslYHR4qlNv3l_AWorAbubBz5gw3p4Qs28Tqy0QQDuvPmcijKezIWDsZEclUJGvYKRYZBLx4PjK8XeJRk-HbdWBZk9uS9VwwnNFcyqBNkMpY0Ts2f_0WN_1mURDSOVjpNm_ltz-UoAgWLeOhoHywDNbkz5SYCohDyiAjjK0_sEpMKnhsxQBY-p9hBUpsUcUQ2LwAbt-0W00
+    :target: https://www.plantuml.com/plantuml/svg/TOv1IyD048Nl-oiUYyUQ7z23L4Im9uiDU50fOpk7XSqapioIl--IQ27GdERmllU-sPcJUkboeEAzbEwRDGoadivf8774TygP7Nkff9mvWWnZMZ9FoXSMJvInDoki4vL261Fk7v2sEBmUMnoTl1WUpRYMUy5BsnxmnZ-5pV4fY3OH9_edJZg75h75HoM0ktdbEl9NtqnXqpJrVeKGghYQnwfUizhGY_6QTaujhcjdukhTtCIULNjT_hPZkPGk_m80
     
     Status Assertion Flow
 
@@ -203,7 +206,7 @@ The requests to the *Status Assertion endpoint* MUST be HTTP with method POST, u
       - **Description**
       - **Reference**
     * - **status_assertion_requests**
-      - It MUST be an array of strings, where each represents a *Status Assertion Request object*. Each element MUST contain a signed JWT, encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') characters, as a cryptographic proof of possession to which the Digital Credential to be revoked shall be bound according with the Status Assertion Request described in Section 7 of `OAUTH-STATUS-ASSERTION`_. See the table below for more details.
+      - It MUST be an array of strings, where each represents a *Status Assertion Request object*. Each element MUST contain a signed JWT, encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') characters, as a cryptographic proof of possession of the Digital Credential for which the Status Assertion is being requested, according with the Status Assertion Request described in Section 7 of `OAUTH-STATUS-ASSERTION`_. See the :ref:`Table <table_status_assertion_req_obj>` below for more details.
       - This Specification.
 
 Below a non-normative example representing a Status Assertion Request array with Status Assertion Request objects in JWT format.
@@ -223,6 +226,7 @@ Below a non-normative example representing a Status Assertion Request array with
 
 The **Status Assertion Request object** MUST be a JWT that MUST contain the parameters (Header and Payload) in the following table.
 
+.. _table_status_assertion_req_obj:
 .. list-table:: 
     :widths: 20 60 20
     :header-rows: 1
@@ -260,8 +264,8 @@ The **Status Assertion Request object** MUST be a JWT that MUST contain the para
     * - **jti**
       - Unique identifier for the proof of possession JWT. The value SHOULD be set using a *UUID v4* value according to [:rfc:`4122`].
       - :rfc:`7519#section-4.1.7`.
-    * - **credential_hash**
-      - It MUST contain the hash value of a Digital Credential, derived by computing the base64url encoded hash of the Digital Credential.
+    * - **credential_hash** 
+      - It MUST contain the hash value of the Digital Credential's Issuer signed part the Status Assertion is bound to.
       - `OAUTH-STATUS-ASSERTION`_.
     * - **credential_hash_alg**
       - It MUST contain the Algorithm used for hashing the Digital Credential. The value SHOULD be set to `sha-256`.
@@ -337,8 +341,8 @@ A non-normative example of a HTTP Status Assertion Response is given below.
 			  $status_assertion_response, ...
 			]
 		}
-The Status Assertion MUST contain the parameters and claims defined below
 
+The Status Assertion MUST contain the parameters and claims defined below
 
 .. list-table:: 
   :widths: 20 60 20
@@ -376,7 +380,7 @@ The Status Assertion MUST contain the parameters and claims defined below
     * - **credential_hash_alg**
       - The Algorithm used for hashing the Credential to which the Status Assertion is bound. The value SHOULD be set to ``sha-256``.
       - `OAUTH-STATUS-ASSERTION`_.
-    * - **credential_status_type**
+    * - **credential_status_type** [#]_
       - Numerical value indicating the validity of the Credential linked to the Status Assertion describing its state, mode, condition or stage. All values taken from IANA "OAuth Status Types" registry for Status List values (see Section 7 of `TOKEN-STATUS-LIST`_) MAY be supported. Values from ``0x00`` to ``0x02`` MUST be supported with the following meaning: 
         
         - ``0x00 - VALID``: The status of the Digital Credential is valid, correct or legal.
@@ -394,6 +398,8 @@ The Status Assertion MUST contain the parameters and claims defined below
       - JSON object containing confirmation methods. The sub-member contained within `cnf` member, such as `jwk` for JWT, MUST match with the one provided within the related Digital Credential. Other confirmation methods can be utilized when the referenced Digital Credential supports them, in accordance with the relevant standards.
       - Section 3.1 of :rfc:`7800` and Section 3.1 of :rfc:`8747`.
 
+.. warning::
+ .. [#] This specification uses ``credential_status_type`` instead of ``credential_status_validity`` currently supported in `OAUTH-STATUS-ASSERTION`_ as the value is semantically a status type and not a boolean.
 
 
 Below a non-normative example of a Status Assertion Response object in JWT format, with the headers and payload represented in JSON and without applying the signature.
