@@ -40,6 +40,7 @@ Index of content
    lifecycle.rst
    wallet-solution.rst
    wallet-attestation.rst
+   wallet-revocation.rst
    pid-eaa-data-model.rst
    pid-eaa-issuance.rst
    pid-eaa-entity-configuration.rst

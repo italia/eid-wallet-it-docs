@@ -134,6 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
@@ -178,10 +179,10 @@
 <figure class="align-default" id="sequence-diagram-for-wallet-instance-backup">
 <span id="fig-backup-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/VP5HRzGm3CVVyodClMn8j1KmU9YcqxPZe8bDEkaqyG1eIbFlQaYJAd4uAhJlJj96WuvZUMhj_y_-spxrB1s7JejdP9GE3KBBtFlZgd9oLsw9sr07ZqvPmsYuLBQhUYrDOWhFZQQwMXqLwnIwkRwgEkaPNGpThY8XoQ0h-rHVICNMmKsi1TB38dqiXDWCKT_TdjjW6kc6mvtK6dbZTM2oviMaE_3m3d-GmiLp-2KWlltOfV4iZSA8VHe3a2CPpE_1sM6Wt24A6TsTJCezkbggxw4_wsc3Blc8rFaOWhFr9UHW9k_5dEriJHetR9tS9l1w_Cy3mPLLKaFE9fUvnhqG1t3nizUaY47BmGO6sNmBdZiq37VMGMyzfIsHsOfP5oW-jzGqQBuMIvYlHeXnt28c0i4nB4xgvSiIyZGhXv5YajgVLFLo8QBc96aVBs02NvNm0GqwoGWVSO1rwwJ7FsWYKxj9_ReSvzmZVLmT_j_og4mcKyCBezpGCpQGpRydZK_K2pHLU5F-Y-vp_8GKlXY8QTWHjx1sjkkdW_oL6-zQhRGDJRvkzlQm_ld5fePlInZ1ENAAfWcT_Wq0"><img alt="The figure illustrates the sequence diagram for backup flow, with the steps explained below." src="_images/Backup_flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Backup flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-backup" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Backup flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-backup" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 18</span></a>:</p>
+<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 19</span></a>:</p>
 <p><strong>Step 1</strong>: The User selects the option to back up Credentials stored within the Wallet Instance.</p>
 <p><strong>Steps 2-3</strong>: The Wallet Instance using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User.
 The User MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup.</p>
@@ -289,11 +290,11 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 <figure class="align-default" id="sequence-diagram-for-wallet-instance-restore">
 <span id="fig-restore-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80"><img alt="The figure illustrates the sequence diagram for restore flow, with the steps explained below." src="_images/Restore_Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Restore flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-restore" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Restore flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-restore" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Considering that the User has initialized the new Wallet Instance and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
-Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 19</span></a>:</p>
+Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 20</span></a>:</p>
 <p><strong>Steps 1-6</strong>: The User wants to restore the Digital Credentials using the backup previously created with their Wallet Instance.
 The User selects <cite>restore Digital Credentials backup</cite> in the Wallet Instance app and a prompt with the import function is provided to the User. The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases.
 To check the authenticity of the file, the Wallet Instance MUST verify the backup JWT's signature to ensure its authenticity. To do this, it first extracts the Wallet Attestation JWT from <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim and obtains the related public key using the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim).</p>

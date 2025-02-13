@@ -15,7 +15,7 @@
     <script src="_static/js/petite-vue.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html" />
+    <link rel="next" title="Wallet Instance Revocation" href="wallet-revocation.html" />
     <link rel="prev" title="Wallet Solution" href="wallet-solution.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -134,6 +134,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Attestation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
@@ -752,33 +753,6 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 </tbody>
 </table>
 </section>
-<section id="revocations">
-<h3>Revocations<a class="headerlink" href="#revocations" title="Link to this heading">¶</a></h3>
-<p>As mentioned in the <em>Wallet Instance initialization and registration</em> section above, a Wallet Instance is bound to a Wallet Hardware Key and it's uniquely identified by it.
-The Wallet Instance SHOULD send its public Wallet Hardware Key with the Wallet Provider, thus the Wallet Provider MUST identify a Wallet Instance by its Wallet Hardware Key.</p>
-<p>When a Wallet Instance is not usable anymore, the Wallet Provider MUST revoke it. The revocation process is a unilateral action taken by the Wallet Provider, and it MUST be performed when the Wallet Instance is in the <cite>Operational</cite> or <cite>Valid</cite> state.
-A Wallet Instance becomes unusable for several reasons, such as: the User requests the revocation, the Wallet Provider detects a security issue, or the Wallet Instance is no longer compliant with the Wallet Provider's security requirements.</p>
-<p>The details of the revocation mechanism used by the Wallet Provider as well as the data model for maintaining the Wallet Instance references is delegated to the Wallet Provider's implementation.</p>
-<p>According to ARF, <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#654-wallet-instance-management">Section 6.5.4</a> and more specifically in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-2/annex-2-high-level-requirements.md#a2338-topic-38---wallet-instance-revocation">Topic 38</a> the Wallet Instance can be revoked by the following entities:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>Its owner, the User</p></li>
-<li><p>Wallet Provider</p></li>
-<li><p>PID Provider</p></li>
-</ol>
-</div></blockquote>
-<p>During the <em>Wallet Instance initialization and registration</em> phase the Wallet Provider MAY associate the Wallet Instance with a specific User, subject to obtaining the User's consent. The Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance with the technical and security requirements and to produce the Wallet Instance metadata.
-When the User consents to being linked with the Wallet Instance, they gain the ability to directly request Wallet revocation from the Wallet Provider, and it also allows the Wallet Provider to revoke the Wallet Instance associated with that User.</p>
-<p>Regarding the reasons for revoking a Wallet Instance, the following scenarios may occur:</p>
-<ul class="simple">
-<li><p>The smartphone is lost;</p></li>
-<li><p>The smartphone has been compromised (e.g., a malicious actor gains control of the smartphone);</p></li>
-<li><p>The smartphone has been reset to factory settings;</p></li>
-<li><p>Any other scenarios where the User loses the control of the Wallet Instance.</p></li>
-</ul>
-<p>If any of the previous scenarios occur, the Wallet Instance <strong>MUST</strong> be revoked.
-To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) <strong>MUST</strong>  offer a remote service, such as a web page, where the User can authenticate and request the revocation of a previously activated Wallet Instance.</p>
-</section>
 </section>
 </section>
 
@@ -804,7 +778,6 @@ To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) <stron
 <li><a class="reference internal" href="#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
 <li><a class="reference internal" href="#wallet-attestation-request">Wallet Attestation Request</a></li>
 <li><a class="reference internal" href="#table-wallet-attestation-claim">Wallet Attestation</a></li>
-<li><a class="reference internal" href="#revocations">Revocations</a></li>
 </ul>
 </li>
 </ul>
@@ -828,7 +801,7 @@ To allow the User to revoke the Wallet Instance, the Wallet Provider (WP) <stron
 
             <div class="right">
                 
-                    <a href="pid-eaa-data-model.html"><span>PID/(Q)EAA Data Model</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-revocation.html"><span>Wallet Instance Revocation</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
