@@ -140,9 +140,10 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
@@ -608,7 +609,7 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 </tbody>
 </table>
 <p>The Verifier performing the Trust Evaluation about the Issuer of a Credential must not release any information to the Credential Issuer about the Wallet Instance it is interacting with. Using [<a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>] the Issuer doesn't know who is the User presenting the Credential.
-In addition, privacy is protected also during the check of the Credential's status. By using Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>], the IT-Wallet specification ensures
+In addition, privacy is protected also during the check of the Credential's status. By using Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a>], the IT-Wallet specification ensures
 that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.</p>
 </section>
 <section id="pr-e-70">
@@ -695,7 +696,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 </tr>
 </tbody>
 </table>
-<p>The Credential lifecycle includes a Credential revocation mechanism based on Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/02/">OAUTH-STATUS-ASSERTION</a>] that ensures that Credentials are properly revoked when compromised or outdated.</p>
+<p>The Credential lifecycle includes a Credential revocation mechanism based on Status Assertion [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a>] that ensures that Credentials are properly revoked when compromised or outdated.</p>
 <p>The revocation of a Federation Entity (i.e., Issuer, Verifier, Wallet Provider) is instead possible by not issuing the corresponding Subordinate Statement about that Entity and set a short expiration of the Trust Chain, thus preventing misuse during compromise.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
