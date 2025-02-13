@@ -151,7 +151,7 @@ Flow for status refresh
 
 A Wallet Instance MUST check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Assertion for each Digital Credential. In this case, the Wallet Instance MUST send a *Status Assertion Request* to the Credential Issuer according to "OAuth Status Assertion Specification" (see `OAUTH-STATUS-ASSERTION`_ for more details) and it is depicted in the following diagram.
 
-.. _fig_entity-relation-credential-revocation:
+.. _fig_entity-relation-credential-revocation-2:
 .. figure:: ../../images/High-Level-Flow-Status-Assertion-Request.svg
     :figwidth: 100%
     :align: center
