@@ -515,7 +515,7 @@ If the request checks are successful, the PID/(Q)EAA Provider generates a new Ac
 Non-normative example of a successful response
 
 .. code::
-  
+
   HTTP/1.1 200 OK
   Content-Type: application/json
   Cache-Control: no-store
@@ -609,20 +609,19 @@ To ensure the integrity and security of the re-issuance process, the following s
 Deferred Endpoint
 -----------------
 
-The PID/(Q)EAA Providers MAY support a *Deferred Flow* which has the aim of handling the cases where an immediate issuance is not possible for some reasons due to errors during the communication between the PID/(Q)EAA Provider and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes that do not allow the Credential to be provided immediately.
+The PID/(Q)EAA Providers MAY support a *Deferred Endpoint* which has the aim of handling the cases where an immediate issuance is not possible for some reasons due to errors during the communication between the PID/(Q)EAA Provider and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes that do not allow the Digital Credential to be provided immediately.
+
+In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section :ref:`Authentic Sources` MUST apply.
 
 
-General Requirements
-^^^^^^^^^^^^^^^^^^^^
+The following requirements apply:
 
  1. The Deferred Credential request MAY also happen several days after the initial Credential request. 
  2. The User MUST be informed that the Credential is available and ready to be issued.
- 3. The Wallet Provider MUST NOT be informed about which Credential is available to be issued or which Credential Provider the User needs to contact. 
+ 3. The Wallet Provider MUST NOT be informed about which Credential is available to be issued or which Credential Issuer the User needs to contact. 
  4. The Wallet Instance MUST be informed about the amount of time to wait before making a new Credential request.
  5. As, in general, an unavailability may be an unexpected event, the PID/(Q)EAA Provider MUST be able to switch on the fly between a *immediate* and an *deferred* flow. This decision MUST be taken after the authorization step.
 
-Technical Flow
-^^^^^^^^^^^^^^
 
 If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue a requested Credential, they MUST provide the Wallet Instance with an HTTP Credential Response cointaining the amount of time to wait before making a new Credential request and an identifier of the deferred issuance transaction (*transaction_id*). The HTTP status code MUST be *202* (see Section 15.3.3 of [:rfc:`9110`]). Below a non-normative example is given.
 
@@ -637,11 +636,48 @@ If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue
 
 The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). PID/(Q)EAA Providers MAY send a notification to the User through a communication channel (e.g. email address), if available from the PID/(Q)EAA Provider.
 
-Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance and start the Issuance Flow again from the beginning as defined in the previous section including *transaction_id* in the new Credential Request. 
+Deferred Request
+^^^^^^^^^^^^^^^^
 
-If the *lead_time* parameter is less than the expiration time of the Access Token, the Wallet Instance MAY use it along with a fresh *c_nonce* requested at the Nonce Endpoint to perform a new Credential Request without requiring the User to submit a new authentication request.
+Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance. 
 
-In the case where the Authentic Source and the PID/(Q)EAA Provider are both enabled to use *PDND*, what is described in Section :ref:`Authentic Sources` MUST apply.
+The Wallet Instance MUST present to the Deferred Endpoint an Access Token that is valid for the issuance of the Digital Credential previously requested at the Credential Endpoint.
+
+
+If the lead_time parameter is less than the expiration time of the Access Token, the Wallet Instance can simply use this value. Otherwise,  the Wallet Instance MAY obtain a new Access Token following the Refresh Token flow (see Section :ref:`Refresh Token Flow <Refresh Token Flow>` for more details). If the Refresh Token flow fails, the Wallet Instance needs to submit a new authentication request.
+
+The Deferred Credential Request MUST be an HTTP POST request. It MUST be sent using the ``application/json`` media type.
+The following parameter is used in the Deferred Credential Request:
+
+  - ``transaction_id``: REQUIRED. String identifying a Deferred Issuance transaction
+
+The Credential Issuer MUST invalidate the transaction_id after the Credential for which it was meant has been obtained by the Wallet Instance.
+The following is a non-normative example of a Deferred Credential Request:
+
+.. code::
+
+  POST /credential HTTP/1.1
+  Host: eaa-provider.example.org
+  Content-Type: application/json
+  Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
+  DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
+      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
+      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
+      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
+      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
+      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
+      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
+      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
+
+
+  {
+    "transaction_id": "8xLOxBtZp8"
+  }
+
+Deferred Response
+^^^^^^^^^^^^^^^^^
+
+The Deferred Credential Response uses the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`Credential Response <Credential Response>`. 
 
 Credential Offer Endpoint
 -------------------------------------
