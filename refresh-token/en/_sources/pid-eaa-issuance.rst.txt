@@ -461,6 +461,97 @@ If the checks defined above are successful, the Wallet Instance asks the User fo
   HTTP/1.1 204 No Content
 
 
+Refresh Token Flow
+------------------
+
+To use the Deferred endpoint, Credential Request endpoint and the Notification endpoint the Wallet Instance MUST present to the Credential Issuer a valid DPoP Access Token. However, when these endpoints are used for the deferred flow, to re-issue a Digital Credential or to notify the deletion of a Digital Credential respectively, they may lead to the Access Token expiration as the validity of the Access Token MUST be short in time and these processes may happen several days after the release of the Access Token. To enable these scenarios, this specification requires the use of Refresh Tokens.
+
+An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
+
+  - the Deferred endpoint to obtain a new Digital Credential after the lead_time or when it is notified as ready to be issued;
+  - the Notification endpoint to notify the deletion of a Digital Credential to the Credential Issuer;
+  - the Credential endpoint to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`). 
+
+To limit the impact of a stolen Refresh Token, a Refresh Token MUST be a DPoP token and the solution MUST support the Refresh Token rotation. These aspects are detailed and discussed in section :ref:`Security Considerations <Security Considerations>`.
+
+Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh Token to the Token Endpoint.
+
+.. _fig_refresh_token_flow:
+.. figure:: ../../images/Refresh-Token-Flow.svg
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/svg/TPBFIiD048Vl-nH3lRJGqBi7QR05Up9AeHUXh9j9CvZEnDs9qRTtkzkA1Jrc_dpvviSkWrglmx4pTb3XuVYAtfW-riXHRrbXihDTXmeRZgFiS08sm7WzKcrMY-dJR5sMK7dve1fz6YDZHYZkO8HRE22ZjugmggI2teiqOBc6NLcS2eru-0C3Ac_8W5ptGgnd7aNUDZMUyNt0e32Ijh_9qnS6EFXejzUl7kUdJu-Dnz3k4t86iPIs7ij1s-A-8sGjIjM8iqh2oUw_Pd8c1cqHMhJHr1Ywd7fH2xrmG9XQvp24_D_vjSOy7vWb0JzxYhqzySoObaKHhFCI0jpi7ZRRTKIt24qd8pXX9OwtvoCi-7CIAacgnWQznteHATIGIzOB5ol8IhRxYVGSGrfY77E8sJYx6RECi_69V0C0
+    
+    Refresh Token Flow
+
+.. note::
+  The flow described in this section may be triggered by different actions (e.g., User deletion of a Digital Credential). In each case, we assume that the Wallet Instance is already opened and the corresponding cryptographic material unlocked.
+
+**Step 1.** The Wallet Instance MUST create a fresh DPoP Proof JWT and a fresh Wallet Attestation Proof of Possession for the token request of the PID/(Q)EAA Provider. 
+
+**Step 2.** To refresh a DPoP-bound Access Token, the Wallet Instance sends a token request with a grant_type of refresh_token, including the DPoP header and the OAuth Client Attestation headers.  
+Non-normative example of the token request for a DPoP Access Token using a Refresh Token.
+
+.. code::
+  POST /token HTTP/1.1
+  Host: eaa-provider.example.org
+  Content-Type: application/x-www-form-urlencoded
+  DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6Ik…
+  OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRW..
+  OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jb…
+
+  grant_type=refresh_token
+  &refresh_token=Q..Zkm29lexi8VnWg2zPW1x-tgGad0Ibc3s3EwM_Ni4-g
+
+**Step 3.** The PID/(Q)EAA Provider validates the request. It MUST check that:
+
+  - It MUST validate the OAuth-Client-Attestation-PoP parameter based on Section 4 of [OAUTH-ATTESTATION-CLIENT-AUTH].
+  - It MUST validate the DPoP Proof JWT, according to (RFC 9449) Section 4.3.
+  - It MUST check that the Refresh Token is not expired, not revoked and is bound to the same set of DPoP keys as the ones used in the DPoP Proof JWT.
+
+If the request checks are successful, the PID/(Q)EAA Provider generates a new Access Token and a new Refresh Token both bound to the DPoP key. Both the Access Token and the Refresh Token are then sent back to the Wallet Instance.
+
+Non-normative example of a successful response
+
+.. code::
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+  Cache-Control: no-store
+
+  {
+      "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
+      "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
+      "token_type": "DPoP",
+      "expires_in": 3600,
+  }
+
+If the Refresh Token is also no longer valid, the PID/(Q)EAA Provider will answer with an ``invalid_grant`` error and the only option to obtain the Digital Credential is to start a complete issuance flow. 
+
+
+Security Considerations
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To mitigate the risks of Refresh Token compromise, the following protections are required:
+
+  - **Confidentiality** of Refresh Tokens MUST be guaranteed in transit and storage.
+  - **TLS-protected** connections MUST be used for token transmission.
+  - Refresh tokens MUST be **unguessable and secure from modification**.
+  - Authorization Servers MUST implement the following mechanisms to **detect replay attacks**:
+
+    - **Sender-Constrained Tokens**: Crypto-graphically bind the Refresh Token to the Wallet Instance using RFC9449 “OAuth 2.0 Demonstrating Proof of Possession (DPoP)”, i.e. Access Tokens and Refresh Tokens MUST be bound to the same set of DPoP keys and a DPoP Proof is required to refresh an Access Token.The same DPoP keys MUST be used to generate DPoP Proofs in all the Credential Requests as a proof that they are coming from the same Wallet Instance.
+    - **Token Rotation**: Issue a new Refresh Token with each Access Token refresh and invalidate the previous one. If both the attacker and the legitimate Wallet Instance use the same token, one will be invalidated, signaling a breach.
+
+  - **Limiting the use of Refresh Token**: As specified in HAIP: “Issuers should be mindful of how long the usage of the refresh token is allowed to refresh a credential, as opposed to starting the issuance flow from the beginning. For example, if the User is trying to refresh a credential more than a year after its original issuance, the usage of the refresh tokens is NOT RECOMMENDED.” In this specification a new Digital Credential obtained performing the re-issuance flow will have the same expiration of the refreshed one. Thus, this specification does not allow for infinite refresh of Digital Credential with a Refresh Token. After the Digital Credential expiry, to obtain a new Digital Credential the User MUST perform the complete issuance flow with the User authentication. This specification recommends to set a Refresh Token expiration duration based on the sensitivity of the associated grant.
+
+.. note::
+	*Short-lived Wallet Attestations and DPoP*:  Following the specification draft *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), the Authorization Server MUST bind the Refresh Token to the Client Instance. To prove this binding the Client Instance MUST use the Client Attestation mechanism when refreshing the Access Token and the Client Instance MUST use the same key that was presented in the “cnf” claim of the Client Attestation that was used when the Refresh Token was issued.
+
+  However this requires that the Client Attestation MUST be valid until the refresh token request is performed, thus not allowing the use of short-lived Client Attestations.
+  In this specification, both `OAUTH-ATTESTATION-CLIENT-AUTH`_ and *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) MUST be used. 
+  Using DPoP guarantees the binding of the Refresh Token with the Client Instance as stated in section 5 of :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"*. 
+  Therefore, using DPoP ensures that the Refresh Token is bound to the Wallet Instance, and using the Wallet Attestation allows to authenticate the Wallet Instance and perform the trust/revocation checks.
+
+
 Re-Issuance Flow
 ----------------
 
