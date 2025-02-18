@@ -633,7 +633,7 @@ without encoding and signature. The JWT header:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider SHOULD support the <em>Deferred Flow</em> (step 22) as specified in Section <a class="reference internal" href="#deferred-flow"><span class="std std-ref">Deferred Flow</span></a>.</p>
+<p>If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider SHOULD support the <em>Deferred Flow</em> (step 22) as specified in Section <span class="xref std std-ref">Deferred Flow</span>.</p>
 </div>
 <p><strong>Step 20 (Notification Request)</strong>: According to Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>], the Wallet sends an HTTP POST request to the Notification Endpoint using the <em>application/json</em> media type as in the following non-normative example.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/notification</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -667,8 +667,8 @@ without encoding and signature. The JWT header:</p>
 <h3>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading">¶</a></h3>
 </section>
 </section>
-<section id="deferred-flow">
-<h2>Deferred Flow<a class="headerlink" href="#deferred-flow" title="Link to this heading">¶</a></h2>
+<section id="deferred-endpoint">
+<h2>Deferred Endpoint<a class="headerlink" href="#deferred-endpoint" title="Link to this heading">¶</a></h2>
 <p>The PID/(Q)EAA Providers MAY support a <em>Deferred Flow</em> which has the aim of handling the cases where an immediate issuance is not possible for some reasons due to errors during the communication between the PID/(Q)EAA Provider and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes that do not allow the Credential to be provided immediately.</p>
 <section id="general-requirements">
 <h3>General Requirements<a class="headerlink" href="#general-requirements" title="Link to this heading">¶</a></h3>
@@ -1691,7 +1691,7 @@ The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the 
 <td><p>Section 8.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_id</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">credentials</span></code> is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section <a class="reference internal" href="#deferred-flow"><span class="std std-ref">Deferred Flow</span></a>. It MUST be invalidated after the User obtains the Credential.</p></td>
+<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">credentials</span></code> is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section <span class="xref std std-ref">Deferred Flow</span>. It MUST be invalidated after the User obtains the Credential.</p></td>
 <td><p>Section 8.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 </tbody>
@@ -1914,7 +1914,7 @@ If any other error occurs, the PID/(Q)EAA Provider MUST return an error response
 <li><a class="reference internal" href="#security-considerations">Security Considerations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#deferred-flow">Deferred Flow</a><ul>
+<li><a class="reference internal" href="#deferred-endpoint">Deferred Endpoint</a><ul>
 <li><a class="reference internal" href="#general-requirements">General Requirements</a></li>
 <li><a class="reference internal" href="#technical-flow">Technical Flow</a></li>
 </ul>

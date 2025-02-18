@@ -452,8 +452,8 @@ Re-Issuance Flow
 Security Considerations
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Deferred Flow
--------------
+Deferred Endpoint
+-----------------
 
 The PID/(Q)EAA Providers MAY support a *Deferred Flow* which has the aim of handling the cases where an immediate issuance is not possible for some reasons due to errors during the communication between the PID/(Q)EAA Provider and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes that do not allow the Credential to be provided immediately.
 
