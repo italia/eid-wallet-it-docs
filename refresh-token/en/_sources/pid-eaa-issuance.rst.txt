@@ -464,8 +464,55 @@ If the checks defined above are successful, the Wallet Instance asks the User fo
 Re-Issuance Flow
 ----------------
 
+Re-issuance refers to the replacement of Digital Credentials already stored in a Wallet Instance with new Digital Credentials of the same document type. The new Digital Credentials MUST be issued by the same Credential Issuers that originally issued the existing ones to the same Wallet Instance storing them. 
+
+To facilitate this, particularly in scenarios where User authentication is not strictly required, a Refresh Token (RT) flow MAY be used (see Section :ref:`Refresh Token Flow <Refresh Token Flow>` for more details). An Access Token obtained as a result of a Refresh Token flow  MUST NOT be used to issue a Digital Credential that is not present in the Wallet Instance (first-time-issuance). The Refresh Token mechanism enables automated credential replacement, streamlining the process for both the Credential Issuer and the User.
+
+The re-issuance process outlined in this section is limited to the following scenarios:
+
+  - Data model/format technical update;
+  - User's attribute set update.
+
+In the first case, the new Digital Credential's Users attribute set will match the original one. For example, a Credential Issuer may need to update the Digital Credential metadata or data format without changing the User's attribute set. In this case, the direct involvement of the User is not mandatory for the replacement and storage of a Digital Credential. 
+
+In the second case, Credential Issuers may also need to modify one or more User's attribute values during re-issuance. In this case, the Wallet Instance MUST inform the User that the attribute data set has been changed and MUST then request the User's authorization to store the new Digital Credential. 
+
+In both cases, the newly issued Digital Credential MUST have the same expiry date as the previous one. 
+
+Re-issuance after Digital Credential expiration MUST always require User authentication.
+
+The following diagram describes the Digital Credential re-issuance flow.
+
+.. _fig_reissuance_flow:
+.. figure:: ../../images/Re-Issuance-Flow.svg
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/svg/ZLDVRzem47_FfxWzhPKAlEm9LArPqqb8xOGOh9gc2PdaGgoPS-OxbtMVVdPQt48pYJp5bz-VyzqlLopAYT-Qx9scqlWAeH5fUJmQERKRRhGqVkqPNMb9a6HOskseDOeYPy1I6RqUNNyOp69fUNSxsYeMTA6qAXv9RNKvRADwU3gdZAmWEBrf9Bjla411eOEBCd3ji48I7Lu9iM8G2si4trPAiBe0QV0rPihiqJ7SvT-1aIfG4BHrhKibsb9aHyQIqO5dJPi0SBZHiJsim7ePs7gmLe4PxhJrj2UMZI92CyoYQ6mtoyQTYcsH6EwLCIWm9HP59Kwoy7cEuZG-87mL9PuXvu2FOWorTHcBZPOlpVFazHpc-Dlh2DZ5WP251sLqbRtLmZ-QvLLRkeQp5z6z-ILCltpBRwV5ntEGg7ZsY7oUGNWYeKo45NU4LOMYj1d64uAc3lbZEIlonKrn0VbYCPz-MYvkLi-bdszrzzfvMI8pBEmlfATRz6FZamve6E6CRFgSvEPOE-JcD3s0SHY04pXaVJPsDpa0zli1iDZsgDGjwQW6JowAW73NfJ360EhWSupSQMcw0Bvdo7tiM_OXEuAcdHuLTPtrdz9BZ2OKCpk3W-6B1VSSoWGbtFNyR6aufwJZCXc_pSN_LpEE2KUMRXRT9ApJVxj1JFeYaRevm2FtE1oktpgCj-ovNT_g-vVVF_n4FDKnIMG9NQ11GMWTFcZhkPUJzRYbzfBc8Q3x-6pMlL-5Wz-QVm00
+    
+    Re-Issuance Flow Diagram
+
+
+1. The flow starts when the User opens the Wallet Instance: this step MAY be triggered by a notification sent by the Credential Issuer using one of the out-of-band communication contacts registered during the Issuance flow. 
+2. The Wallet Instance with no valid Status Assertions related to the stored Digital Credential MUST retrieve them according to the flow described in Section :ref:`Validity Verification Mechanisms <Validity Verification Mechanisms>`. If one or more Digital Credentials have the credential_status_type set to INVALID, the Wallet Instance MUST verify the credential_status_detail.state claim. If this claim is set to UPDATED or ATTRIBUTE_UPDATED, then the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped. 
+3. If the Access Token has expired and the Wallet Instance has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow according to Section :ref:`Refresh Token Flow <Refresh Token Flow>`. At the end of this flow, the Wallet Instance obtains a new Refresh Token and new Access Token DPoP to be used to obtain a new refreshed Digital Credential. If the Refresh Token is expired, then a new Issuance Flow with User fresh authentication is required.
+4. The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`Low-Level Issuance Flow <Low-Level Issuance Flow>`. When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one.
+
+.. note::
+	If the credential_status_detail.state is set to ATTRIBUTE_UPDATE, this means that the User's attribute set of the refreshed Digital Credential doesn't match with the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. If the credential_status_detail.state is set to UPDATED, only data model is changed and the Wallet Instance MAY store the new Digital Credential without User explicit authorization and consent. 
+
+
+
 Security Considerations
 ^^^^^^^^^^^^^^^^^^^^^^^
+
+To ensure the integrity and security of the re-issuance process, the following security considerations apply. 
+
+  - Access Token limitations: An Access Token obtained as a result of a Refresh Token flow MUST NOT be used for the first-time issuance of a Digital Credential. This is to ensure that only existing credentials in the Wallet Instance are updated.
+  - Credential expiry: The Credential Issuer MUST set the same expiry date for the re-issued Digital Credential as the previous one. This prevents indefinite credential renewals without proper User authentication.
+  - User consent: For re-issuance processes triggered by attribute changes, User consent MUST be obtained before storing the new Digital Credential. This ensures that the User is aware of and agrees to the updated information.
+  - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token. 
+  - Refresh Token Rotation: A new Refresh Token MUST be issued with each Access Token refresh, and the previous token MUST be invalidated. This detects and prevents replay attacks by ensuring that only one valid token exists at a time.
+
 
 Deferred Endpoint
 -----------------
