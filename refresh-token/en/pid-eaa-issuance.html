@@ -721,6 +721,17 @@ without encoding and signature. The JWT header:</p>
 <p><strong>Step 1.</strong> The Wallet Instance MUST create a fresh DPoP Proof JWT and a fresh Wallet Attestation Proof of Possession for the token request of the PID/(Q)EAA Provider.</p>
 <p><strong>Step 2.</strong> To refresh a DPoP-bound Access Token, the Wallet Instance sends a token request with a grant_type of refresh_token, including the DPoP header and the OAuth Client Attestation headers.
 Non-normative example of the token request for a DPoP Access Token using a Refresh Token.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /token HTTP/1.1
+Host: eaa-provider.example.org
+Content-Type: application/x-www-form-urlencoded
+DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6Ik…
+OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IkVVRzBFdlRW..
+OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jb…
+
+grant_type=refresh_token
+&amp;refresh_token=Q..Zkm29lexi8VnWg2zPW1x-tgGad0Ibc3s3EwM_Ni4-g
+</pre></div>
+</div>
 <p><strong>Step 3.</strong> The PID/(Q)EAA Provider validates the request. It MUST check that:</p>
 <blockquote>
 <div><ul class="simple">
@@ -731,6 +742,17 @@ Non-normative example of the token request for a DPoP Access Token using a Refre
 </div></blockquote>
 <p>If the request checks are successful, the PID/(Q)EAA Provider generates a new Access Token and a new Refresh Token both bound to the DPoP key. Both the Access Token and the Refresh Token are then sent back to the Wallet Instance.</p>
 <p>Non-normative example of a successful response</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+<span class="n">Cache</span><span class="o">-</span><span class="n">Control</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">store</span>
+<span class="p">{</span>
+    <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;eyC3fiLdCtqd3QiLCJhbGciOiCL3..&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;expires_in&quot;</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>If the Refresh Token is also no longer valid, the PID/(Q)EAA Provider will answer with an <code class="docutils literal notranslate"><span class="pre">invalid_grant</span></code> error and the only option to obtain the Digital Credential is to start a complete issuance flow.</p>
 <section id="security-considerations">
 <h3>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading">¶</a></h3>

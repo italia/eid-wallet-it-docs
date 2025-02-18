@@ -493,6 +493,7 @@ Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh 
 Non-normative example of the token request for a DPoP Access Token using a Refresh Token.
 
 .. code::
+
   POST /token HTTP/1.1
   Host: eaa-provider.example.org
   Content-Type: application/x-www-form-urlencoded
@@ -514,10 +515,10 @@ If the request checks are successful, the PID/(Q)EAA Provider generates a new Ac
 Non-normative example of a successful response
 
 .. code::
+  
   HTTP/1.1 200 OK
   Content-Type: application/json
   Cache-Control: no-store
-
   {
       "access_token": "eyJ0eXAiOiJhdCtqd3QiLCJhbGciOiJFU..",
       "refresh_token": "eyC3fiLdCtqd3QiLCJhbGciOiCL3..",
