@@ -89,6 +89,8 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
   * - **revocation_endpoint**
     - URL of the revocation endpoint. See :rfc:`8414#section-2`.
+  * - **deferred_credential_endpoint**
+    - URL of the deferred credential endpoint, as defined in Section 11.2.3 of `OpenID4VCI`_.
   * - **status_attestation_endpoint**
     - It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section :ref:`Credential Lifecycle` for more details.
   * - **notification_endpoint**
