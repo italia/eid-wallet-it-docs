@@ -1082,7 +1082,7 @@ The Token endpoint is protected with *OAuth 2.0 Attestation-based Client Authent
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters **OAuth-Client-Attestation** as **OAuth-Client-Attestation-PoP**
 as defined in the "Pushed Authorization Request (PAR) Endpoint".
 
-The Token endpoint issues DPoP tokens, therefore it is REQUIRED that the request incluides in its HTTP header the DPoP proof parameter.
+The Token endpoint issues DPoP tokens, therefore it is REQUIRED that the request includes in its HTTP header the DPoP proof parameter.
 The Token endpoint MUST validate the DPoP proof according to Section 4.3 of the DPoP specifications (:rfc:`9449`). This mitigates the misuse of leaked or stolen Access Tokens/Refresh Tokens at the Credential/Token endpoint. If the DPoP proof is invalid, the Token endpoint returns an error response, according to Section 5.2 of [:rfc:`6749`] with ``invalid_dpop_proof`` as the value of the error parameter.
 
 The token request contains the following claims:
@@ -1095,19 +1095,22 @@ The token request contains the following claims:
       - **Description**
       - **Reference**
     * - **grant_type**
-      - [REQUIRED]. It MUST be set to ``authorization_code`` or ``refresh_token``.
-      - [:rfc:`7521`].
+      - REQUIRED. It MUST be set to ``authorization_code`` or ``refresh_token``.
+      - [:rfc:`6749`].
     * - **code**
       - CONDITIONAL. REQUIRED only if the grant type is ``authorization_code``. Authorization code returned in the Authentication Response.
-      - [:rfc:`7521`].
+      - [:rfc:`6749`].
     * - **redirect_uri**
       - CONDITIONAL. REQUIRED only if the grant type is ``authorization_code``. It MUST be set as in the Request Object :ref:`Table of the JWT Request parameters <table_jwt_request>`.
-      - [:rfc:`7521`].
+      - [:rfc:`67491`].
     * - **code_verifier**
       - CONDITIONAL. REQUIRED only if the grant type is ``authorization_code``. Verification code of the **code_challenge**.
       - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_.
     * - **refresh_token**
       - CONDITIONAL. REQUIRED only if the grant type is ``refresh_token``. The Refresh Token previously issued to the Wallet Instance.
+      - [:rfc:`6749`].
+    * - **scope**
+      - CONDITIONAL. OPTIONAL only if the grant type is ``refresh_token``. The requested scope MUST NOT include any scope not originally granted by the User, and if omitted is treated as equal to the scope originally granted by the User.
       - [:rfc:`6749`].
 
 
@@ -1170,16 +1173,16 @@ If the Token Request is successfully validated, the Authorization Server provide
       - **Reference**
     * - **access_token**
       - REQUIRED. The *DPoP-bound Access Token*, in signed JWT format, allows accessing the PID/(Q)EAA Credential Endpoint for obtaining the Credential.
-      - :rfc:`6749`.
+      - [:rfc:`6749`].
     * - **refresh_token**
       - OPTIONAL. The *DPoP-bound Refresh Token*, in signed JWT format, which can be used to obtain a new Access Token at the PID/(Q)EAA Provider Token Endpoint.
-      - :rfc:`6749`.
+      - [:rfc:`6749`].
     * - **token_type**
       - REQUIRED. Type of *Access Token* returned. It MUST be equal to ``DPoP``.
-      - :rfc:`6749`.
+      - [:rfc:`6749`].
     * - **expires_in**
       - REQUIRED. Expiry time of the *Access Token* in seconds.
-      - :rfc:`6749`.
+      - [:rfc:`6749`].
     * - **authorization_details**
       - REQUIRED when ``authorization_details`` parameter is used to request issuance of a Credential. OPTIONAL when ``scope`` parameter is used to request issuance of a Credential. Array of JSON Objects, used to identify Credentials with the same metadata but different claimset/claim values and/or simplify the Credential request even when only one Credential is being issued. In addition to the claim defined in :ref:`Table of the JWT Request parameters <table_jwt_request>` it MUST include the following claim:
 
