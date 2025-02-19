@@ -472,7 +472,7 @@ An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
   - the Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer;
   - the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`). 
 
-To limit the impact of a stolen Refresh Token, a Refresh Token MUST be a DPoP token and the solution MUST support the Refresh Token rotation. These aspects are detailed and discussed in section :ref:`Security Considerations <Security Considerations>`.
+To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP, Credential Issuers and Wallet Solutions SHOULD support Refresh Token rotation. These aspects are detailed and discussed in section :ref:`Security Considerations <Security Considerations>`.
 
 Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh Token to the Token Endpoint.
 
