@@ -260,7 +260,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 .. note::
 
    **User Authentication and Consent**: The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance.
-   The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider. In addition, during this step PID/(Q)EAA Providers MAY ask the User for contact details (e.g., their email address).
+   The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider. In addition, during this step PID/(Q)EAA Providers MAY ask the User for contact details (e.g., their email address).
 
 
 
@@ -464,13 +464,13 @@ If the checks defined above are successful, the Wallet Instance asks the User fo
 Refresh Token Flow
 ------------------
 
-To use the Deferred endpoint, Credential Request endpoint and the Notification endpoint the Wallet Instance MUST present to the Credential Issuer a valid DPoP Access Token. However, when these endpoints are used for the deferred flow, to re-issue a Digital Credential or to notify the deletion of a Digital Credential respectively, they may lead to the Access Token expiration as the validity of the Access Token MUST be short in time and these processes may happen several days after the release of the Access Token. To enable these scenarios, this specification requires the use of Refresh Tokens.
+To use the the Deferred, Credential Request, and Notification endpoints, the Wallet Instance MUST present a valid DPoP Access Token to the Credential Issuer. However, when these endpoints are used in the Deferred Flow, for re-issuing or notifying the deletion of a Digital Credential, the Access Token might expire, as it is designed to be short-lived and these actions MAY occur days later. To address this, the specification RECOMMENDS the use of Refresh Tokens.
 
 An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
 
   - the Deferred endpoint to obtain a new Digital Credential after the lead_time or when it is notified as ready to be issued;
-  - the Notification endpoint to notify the deletion of a Digital Credential to the Credential Issuer;
-  - the Credential endpoint to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`). 
+  - the Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer;
+  - the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`). 
 
 To limit the impact of a stolen Refresh Token, a Refresh Token MUST be a DPoP token and the solution MUST support the Refresh Token rotation. These aspects are detailed and discussed in section :ref:`Security Considerations <Security Considerations>`.
 

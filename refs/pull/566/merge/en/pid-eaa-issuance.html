@@ -443,7 +443,7 @@ OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiJ9.eyJpc3MiOiIgaHR0cHM6Ly9jbGllb
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>User Authentication and Consent</strong>: The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance.
-The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>] to dynamically request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider. In addition, during this step PID/(Q)EAA Providers MAY ask the User for contact details (e.g., their email address).</p>
+The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>] to request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider. In addition, during this step PID/(Q)EAA Providers MAY ask the User for contact details (e.g., their email address).</p>
 </div>
 <p><strong>Steps 6-7 (Authorization Response)</strong>: The PID/(Q)EAA Provider sends an authorization <code class="docutils literal notranslate"><span class="pre">code</span></code> together with <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameters to the Wallet Instance. The Wallet Instance performs the following checks on the Authorization Response:</p>
 <blockquote>
@@ -697,13 +697,13 @@ without encoding and signature. The JWT header:</p>
 </section>
 <section id="refresh-token-flow">
 <h2>Refresh Token Flow<a class="headerlink" href="#refresh-token-flow" title="Link to this heading">¶</a></h2>
-<p>To use the Deferred endpoint, Credential Request endpoint and the Notification endpoint the Wallet Instance MUST present to the Credential Issuer a valid DPoP Access Token. However, when these endpoints are used for the deferred flow, to re-issue a Digital Credential or to notify the deletion of a Digital Credential respectively, they may lead to the Access Token expiration as the validity of the Access Token MUST be short in time and these processes may happen several days after the release of the Access Token. To enable these scenarios, this specification requires the use of Refresh Tokens.</p>
+<p>To use the the Deferred, Credential Request, and Notification endpoints, the Wallet Instance MUST present a valid DPoP Access Token to the Credential Issuer. However, when these endpoints are used in the Deferred Flow, for re-issuing or notifying the deletion of a Digital Credential, the Access Token might expire, as it is designed to be short-lived and these actions MAY occur days later. To address this, the specification RECOMMENDS the use of Refresh Tokens.</p>
 <p>An Access Token obtained as a result of a Refresh Token flow MUST be limited to:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>the Deferred endpoint to obtain a new Digital Credential after the lead_time or when it is notified as ready to be issued;</p></li>
-<li><p>the Notification endpoint to notify the deletion of a Digital Credential to the Credential Issuer;</p></li>
-<li><p>the Credential endpoint to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section <a class="reference internal" href="#re-issuance-flow"><span class="std std-ref">Re-Issuance Flow</span></a>).</p></li>
+<li><p>the Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer;</p></li>
+<li><p>the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section <a class="reference internal" href="#re-issuance-flow"><span class="std std-ref">Re-Issuance Flow</span></a>).</p></li>
 </ul>
 </div></blockquote>
 <p>To limit the impact of a stolen Refresh Token, a Refresh Token MUST be a DPoP token and the solution MUST support the Refresh Token rotation. These aspects are detailed and discussed in section <a class="reference internal" href="#id1"><span class="std std-ref">Security Considerations</span></a>.</p>
