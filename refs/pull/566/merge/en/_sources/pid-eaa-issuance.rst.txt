@@ -1570,7 +1570,7 @@ The following is a non-normative example of a Deferred Credential Request:
 Deferred Response
 ^^^^^^^^^^^^^^^^^
 
-The Deferred Credential Response MUST be sent using the `application/json`` media type. If the Digital Credential is available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`Credential Response <Credential Response>`. If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to Section 9.3 of `OID4VCI`_  
+The Deferred Credential Response MUST be sent using the `application/json`` media type. If the Digital Credential is available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`Credential Response <Credential Response>`. If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to Section 9.3 of `OpenID4VCI`_.  
 
 Notification endpoint
 ---------------------
