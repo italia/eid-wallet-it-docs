@@ -310,7 +310,7 @@ If an error occurs during ``nonce`` generation, the Wallet Provider MUST return 
   * Creates ``client_data``, a JSON object that includes the challenge and the thumbprint of ephemeral public ``jwk``.
   * Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
 
-Below a non-normative example of the ``client_data`` JSON object.
+Below is a non-normative example of the ``client_data`` JSON object.
 
 .. code-block:: json
 
@@ -332,7 +332,7 @@ Below a non-normative example of the ``client_data`` JSON object.
   * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>` below) and is signed using the private key of the initially generated ephemeral key pair.
   * Submits the Wallet Attestation Request to the wallet-attestation endpoint of the Wallet Provider Backend.
 
-Below an non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
+Below is a non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
 
 .. code-block::
 
@@ -406,7 +406,7 @@ The Wallet Instance MUST do an HTTP request to the Wallet Provider's `wallet-att
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Attestation valid for a maximum of 24 hours.
 
-Below an non-normative example of the Wallet Attestation without encoding and signature applied:
+Below is an non-normative example of the Wallet Attestation without encoding and signature applied:
 
 .. code-block::
 
