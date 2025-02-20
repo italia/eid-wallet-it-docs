@@ -88,18 +88,18 @@ The PID/(Q)EAA Issuance flow is based on [`OpenID4VCI`_] and the following main 
 The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. PID/(Q)EAA Providers MUST support: 
 
   * **Authorization Code Flow**: The PID/(Q)EAA Provider requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
-  * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the latter.
+  * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the PID/(Q)EAA Provider.
   * **Immediate Issuance flow**: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.
 
 In addition, the PID/(Q)EAA Providers MAY support: 
 
-  * **Issuer Initiated Flow**: The Wallet Instance sends its request to the PID/(Q)EAA Provider, according to the input provided by the PID/(Q)EAA Provider.
+  * **Issuer Initiated Flow**: The Wallet Instance sends its request to the PID/(Q)EAA Provider based on the input provided by the PID/(Q)EAA Provider.
     
-    * **Same-device Issuance flow**: The User receives the Credential on the same device that initiated the flow. 
+    * **Same-device Issuance flow**: The User receives the Credential on the same device used to initiate the flow. 
     * **Cross-device Issuance flow**: The User receives the Credential on another device than the one that initiated the flow. 
   
   * **Refresh Token flow**: The Wallet Instance requests a new Access Token at the Token Endpoint of the PID/(Q)EEA. 
-  * **Re-issuance flow**: Due to some updates of an already stored Digital Credential, the Wallet Instance requests a refresh of the Digital Credential at the Credential Endpoint of the PID/(Q)EEA Provider.  
+  * **Re-issuance flow**: Following updates to an already stored Digital Credential, the Wallet Instance requests a refresh of the Digital Credential at the Credential Endpoint of the PID/(Q)EAA Provider.
   * **Deferred Issuance flow**: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
 
 The entire Issuance flow can be divided into two sub-flows:
@@ -260,7 +260,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 .. note::
 
    **User Authentication and Consent**: The PID Provider performs the User authentication based on the requirements of eIDAS LoA High by means of national notified eIDAS scheme and requires the User consent for the PID issuance.
-   The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID. From a protocol perspective, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID obtained prior to start the transaction with the (Q)EAA Provider. In addition, during this step PID/(Q)EAA Providers MAY ask the User for contact details (e.g., their email address).
+   The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID, obtained beforehand, to initiate the transaction with the (Q)EAA Provider. During this step, PID/(Q)EAA Providers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
 
 
 
@@ -282,7 +282,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 **Steps 8-9 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in  the Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token, and optionally the Refresh Token, to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen tokens at the Credential Endpoint.
 
 **Step 10 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT* and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP``). 
-The ``OAuth-Client-Attestation`` is signed using the private key that is bound to the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
+The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wallet Instance. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
 
    1. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
    2. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
@@ -303,7 +303,7 @@ The ``OAuth-Client-Attestation`` is signed using the private key that is bound t
     &code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
     &redirect_uri=https://start.wallet.example.org/cb
 
-**Step 11 (Token Response)**: The PID/(Q)EAA Provider validates the request, if successful an *Access Token* and optionally a *Refresh Token* bound to the DPoP key are provided by the Issuer to the Wallet Instance.
+**Step 11 (Token Response)**: The PID/(Q)EAA Provider validates the request. If successful, the Issuer provides the Wallet Instance with an Access Token and, optionally, a Refresh Token, both bound to the DPoP key.
 
 .. code-block:: http
 
@@ -410,7 +410,7 @@ without encoding and signature. The JWT header:
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
   :language: JSON  
 
-**Steps 17-21 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. It also MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provides it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
+**Steps 17-21 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. The PID/(Q)EAA Provider MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provides it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
     1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
@@ -418,7 +418,7 @@ without encoding and signature. The JWT header:
     4. It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or MDOC CBOR format. 
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID/(Q)EAA Provider is trusted.
 
-If the checks defined above are successful, the Wallet Instance asks the User for consent to store the Digital Credential. If the User grants consent, the Wallet Instance proceeds with the secure storage of the PID/(Q)EAA.
+If the checks above are successful, the Wallet Instance requests the User's consent to store the Digital Credential. Upon receiving consent, the Wallet Instance securely stores the PID/(Q)EAA.
 
 .. code-block:: http
 
@@ -432,7 +432,7 @@ If the checks defined above are successful, the Wallet Instance asks the User fo
 
 .. note::
 
-  If the issuance of the requested Credential cannot be issued immediately and it requires more time to be issued, then the PID/(Q)EAA Provider SHOULD support the *Deferred Flow* (step 24) as specified in Section :ref:`Deferred Endpoint`.
+  If the requested Credential cannot be issued immediately and requires more time, the PID/(Q)EAA Provider SHOULD support the Deferred Flow (step 24) as specified in Section :ref:`Deferred Endpoint`.
 
 **Step 22 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
 
@@ -468,7 +468,7 @@ To use the the Deferred, Credential Request, and Notification endpoints, the Wal
 
 An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
 
-  - the Deferred endpoint to obtain a new Digital Credential after the lead_time or when it is notified as ready to be issued;
+  - the Deferred endpoint to obtain a new Digital Credential after time set in the parameter ``lead_time`` or when it is notified as ready to be issued;
   - the Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer;
   - the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`). 
 
@@ -490,7 +490,7 @@ Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh 
 **Step 1.** The Wallet Instance MUST create a fresh DPoP Proof JWT and a fresh Wallet Attestation proof of possession for the token request of the PID/(Q)EAA Provider. 
 
 **Step 2.** To refresh a DPoP-bound Access Token, the Wallet Instance sends a token request using the parameter ``grant_type`` set to ``refresh_token``, including the DPoP header and the OAuth Client Attestation headers.  
-Non-normative example of the token request for a DPoP Access Token using a Refresh Token.
+A non-normative example of the token request for a DPoP Access Token using a Refresh Token is shown below.
 
 .. code::
 
@@ -539,19 +539,19 @@ To mitigate the risks of Refresh Token compromise, the following protections are
   - Refresh tokens MUST be **unguessable and secure from modification**.
   - Authorization Servers MUST implement the following mechanisms to **detect replay attacks**:
 
-    - **Sender-Constrained Tokens**: Crypto-graphically bind the Refresh Token to the Wallet Instance according to :rfc:`9449`. Access Tokens and Refresh Tokens MUST be bound to the same set of DPoP keys. The DPoP Proof of the refresh token is required to refresh an Access Token. The same DPoP key MUST be used to generate DPoP Proofs in all the Credential Requests.
+    - **Sender-Constrained Tokens**: Crypto-graphically bind the Refresh Token to the Wallet Instance according to :rfc:`9449`. Access Tokens and Refresh Tokens MUST be bound to the same DPoP key. The DPoP Proof of the refresh token is required to refresh an Access Token. The same DPoP key MUST be used to generate Access Token DPoP Proofs in all the Credential Requests.
     - **Token Rotation**: With each Access Token refresh, a new Refresh Token is issued, and the previous one is invalidated. If both an attacker and the legitimate Wallet Instance attempt to use the same token, the second attempt will be invalidated, indicating a potential security breach.
 
   - **Limiting the use of Refresh Token**: As specified in `OPENID4VC-HAIP`_: “Credential Issuers should be mindful of how long the usage of the refresh token is allowed to refresh a Credential, as opposed to starting the issuance flow from the beginning. For example, if the User is trying to refresh a Credential more than a year after its original issuance, the usage of the refresh tokens is NOT RECOMMENDED.” In this specification a new Digital Credential obtained performing the re-issuance flow SHOULD have the same expiration of the refreshed one. Thus, this specification does not allow for infinite refresh of Digital Credential with a Refresh Token. Once a Digital Credential expires, the User MUST complete the entire issuance process again, to obtain a new Digital Credential. This specification recommends to set a Refresh Token expiration duration, based on the sensitivity of the associated grant.
 
 .. note::
-	*Short-lived Wallet Attestations and DPoP*:  Following the specification draft *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), the Authorization Server MUST bind the Refresh Token to the Client Instance. To prove this binding the Client Instance MUST use the Client Attestation mechanism when refreshing the Access Token and the Client Instance MUST use the same key that was presented in the ``cnf`` claim of the Client Attestation that was used when the Refresh Token was issued. However this requires that the Client Attestation MUST be valid until the refresh token request is performed, thus not allowing the use of short-lived Client Attestations. In this specification, both `OAUTH-ATTESTATION-CLIENT-AUTH`_ and *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) MUST be used. Using DPoP guarantees the binding of the Refresh Token with the Client Instance as stated in section 5 of :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"*. Therefore, using DPoP ensures that the Refresh Token is bound to the Wallet Instance, and using the Wallet Attestation allows to authenticate the Wallet Instance and perform the trust/revocation checks.
+	*Short-lived Wallet Attestations and DPoP*:  Following the specification draft *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), the Authorization Server MUST bind the Refresh Token to the Client Instance. To prove this binding the Client Instance MUST use the Client Attestation mechanism when refreshing the Access Token and the Client Instance MUST use the same key that was presented in the ``cnf`` claim of the Client Attestation that was used when the Refresh Token was issued. However this requires that the Client Attestation MUST be valid until the refresh token request is performed, thus not allowing the use of short-lived Client Attestations. In this specification, both `OAUTH-ATTESTATION-CLIENT-AUTH`_ and *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) MUST be used. Using DPoP guarantees the binding of the Refresh Token with the Client Instance as stated in section 5 of :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"*. DPoP ensures that the Refresh Token is bound to the Wallet Instance.
 
 
 Re-Issuance Flow
 ----------------
 
-Re-issuance refers to the replacement of Digital Credentials already stored in a Wallet Instance with new Digital Credentials of the same document type. The new Digital Credentials MUST be issued by the same Credential Issuers that originally issued the existing ones to the same Wallet Instance storing them. 
+Re-issuance involves replacing Digital Credentials already stored in a Wallet Instance with new ones of the same document type. The new Digital Credentials MUST be issued by the same Credential Issuers that originally provided the existing ones to the same Wallet Instance.
 
 To facilitate this, particularly in scenarios where User authentication is not strictly required, a Refresh Token (RT) flow MAY be used (see Section :ref:`Refresh Token Flow <Refresh Token Flow>` for more details). An Access Token obtained as a result of a Refresh Token flow  MUST NOT be used to issue a Digital Credential that is not present in the Wallet Instance (first-time-issuance). The Refresh Token mechanism enables automated Credential replacement, streamlining the process for both the Credential Issuer and the User.
 
@@ -581,11 +581,11 @@ The following diagram describes the Digital Credential re-issuance flow.
 
 1. The flow starts when the User opens the Wallet Instance: this step MAY be triggered by a notification sent by the Credential Issuer using one of the out-of-band communication contacts registered during the Issuance flow. 
 2. The Wallet Instance with no valid Status Assertions related to the stored Digital Credential MUST retrieve them according to the flow described in Section :ref:`Validity Verification Mechanisms <Validity Verification Mechanisms>`. If one or more Digital Credentials have the ``credential_status_type`` set to ``INVALID``, the Wallet Instance MUST verify the ``credential_status_detail.state claim``. If this claim is set to ``UPDATED`` or ``ATTRIBUTE_UPDATED``, then the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped. 
-3. If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section :ref:`Refresh Token Flow <Refresh Token Flow>`. The Refresh Token Flow makes the the Wallet Instance obtaining a new Refresh Token and new Access Token DPoP to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required.
+3. If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section :ref:`Refresh Token Flow <Refresh Token Flow>`. The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required.
 4. The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`Low-Level Issuance Flow <Low-Level Issuance Flow>`. When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one.
 
 .. note::
-	The ``credential_status_detail.state`` set to ``ATTRIBUTE_UPDATE`` demonstrates that the User's attribute set, about the refreshed Digital Credential, doesn't match with the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. If the ``credential_status_detail.state`` is set to ``UPDATED``, only data model is changed and the Wallet Instance MAY store the new Digital Credential without requesting User explicit authorization and consent. 
+	The ``credential_status_detail.state`` set to ``ATTRIBUTE_UPDATE`` demonstrates that the User's attribute set, about the refreshed Digital Credential, doesn't match with the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. If the ``credential_status_detail.state`` is set to ``UPDATED``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.
 
 
 
@@ -1527,12 +1527,12 @@ If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue
 .. literalinclude:: ../../examples/credential-response-deferred.json
   :language: JSON  
 
-The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). PID/(Q)EAA Providers MAY send a notification to the User through a communication channel (e.g. email address), if available from the PID/(Q)EAA Provider.
+The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). PID/(Q)EAA Providers MAY send a notification to the User through a communication channel (e.g. email address), if previously provided by the User to the PID/(Q)EAA Provider.
 
 Deferred Request
 ^^^^^^^^^^^^^^^^
 
-Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User opens the Wallet Instance. 
+Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User accesses the Wallet Instance. 
 
 The Wallet Instance MUST present to the Deferred Endpoint an Access Token that is valid for the issuance of the Digital Credential previously requested at the Credential Endpoint.
 
