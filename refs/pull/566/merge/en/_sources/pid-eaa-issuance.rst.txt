@@ -472,7 +472,7 @@ An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
   - the Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer;
   - the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`). 
 
-To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP, Credential Issuers and Wallet Solutions SHOULD support Refresh Token rotation. These aspects are detailed and discussed in section :ref:`Security Considerations <Security Considerations>`.
+To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP. These aspects are detailed and discussed in section :ref:`Security Considerations <Security Considerations>`.
 
 Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh Token to the Token Endpoint.
 
@@ -537,10 +537,9 @@ To mitigate the risks of Refresh Token compromise, the following protections are
   - **Confidentiality** of Refresh Tokens MUST be guaranteed in transit and storage.
   - **TLS-protected** connections MUST be used for token transmission.
   - Refresh tokens MUST be **unguessable and secure from modification**.
-  - Authorization Servers MUST implement the following mechanisms to **detect replay attacks**:
+  - Authorization Servers MUST implement the following mechanism to **detect replay attacks**:
 
     - **Sender-Constrained Tokens**: Crypto-graphically bind the Refresh Token to the Wallet Instance according to :rfc:`9449`. Access Tokens and Refresh Tokens MUST be bound to the same DPoP key. The DPoP Proof of the refresh token is required to refresh an Access Token. The same DPoP key MUST be used to generate Access Token DPoP Proofs in all the Credential Requests.
-    - **Token Rotation**: With each Access Token refresh, a new Refresh Token is issued, and the previous one is invalidated. If both an attacker and the legitimate Wallet Instance attempt to use the same token, the second attempt will be invalidated, indicating a potential security breach.
 
   - **Limiting the use of Refresh Token**: As specified in `OPENID4VC-HAIP`_: “Credential Issuers should be mindful of how long the usage of the refresh token is allowed to refresh a Credential, as opposed to starting the issuance flow from the beginning. For example, if the User is trying to refresh a Credential more than a year after its original issuance, the usage of the refresh tokens is NOT RECOMMENDED.” In this specification a new Digital Credential obtained performing the re-issuance flow SHOULD have the same expiration of the refreshed one. Thus, this specification does not allow for infinite refresh of Digital Credential with a Refresh Token. Once a Digital Credential expires, the User MUST complete the entire issuance process again, to obtain a new Digital Credential. This specification recommends to set a Refresh Token expiration duration, based on the sensitivity of the associated grant.
 
@@ -598,7 +597,6 @@ To ensure the integrity and security of the re-issuance process, the following s
   - Credential expiry: The Credential Issuer MUST set the same expiry date for the re-issued Digital Credential as the previous one. This prevents indefinite Credential renewals without proper User authentication.
   - User consent: For re-issuance processes triggered by attribute changes, User consent MUST be obtained before storing the new Digital Credential. This ensures that the User is aware of and agrees to the updated information.
   - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token. 
-  - Refresh Token Rotation: A new Refresh Token MUST be issued with each Access Token refresh, and the previous token MUST be invalidated. This detects and prevents replay attacks by ensuring that only one valid token exists at a time.
 
 
 Credential Offer Endpoint
@@ -1281,9 +1279,6 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
   * - **jti**
     - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP SHOULD use to prevent reuse by rejecting the Token ID if already processed.
     - [:rfc:`9068`], [:rfc:`7519`].
-  * - **ath**
-    - Hash of the Access Token. The value MUST be the base64url-encoded SHA-256 hash of the ASCII encoding of the associated Access Token's value.
-    - This specification, in analogy with [:rfc:`9449`. Section 4.2].
   * - **cnf**
     - It MUST contain a **jkt** claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the *jkt* member MUST be the base64url encoding (as defined in [:rfc:`7515`]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.
     - [:rfc:`9449`. Section 6.1] and [:rfc:`7638`].
