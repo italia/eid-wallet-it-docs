@@ -52,7 +52,7 @@ Notify Update Credential
 
 
 Notify Wallet Instance Revocation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :widths: 20 80 
@@ -80,8 +80,9 @@ Get Statistics
     * - **Consumer**
       - Authorized Third Party 
 
+.. _authentic_sopurce_catalogue:
 
 Authentic Source Catalogue
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ...

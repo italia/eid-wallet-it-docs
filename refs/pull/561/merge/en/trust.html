@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Infrastructure of Trust &#8212; Ciao</title>
+    <title>The Infrastructure of Trust &#8212; Italian EUDI Wallet Implementation Profile  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage"><img src="https://avatars.githubusercontent.com/u/15377824?s=48&v=4"/></a></h1>
+        <h1><a href="index.html" title="Go to homepage">Italian EUDI Wallet Implementation Profile  documentation</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -143,8 +143,8 @@
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 </ul>
 
         </div>
@@ -883,8 +883,8 @@ The trust evaluation mechanisms are distinct from protocol flows and are impleme
 <p>As shown in the figure, internet connection is required to update the Trust Chain about an RP and check its revocation status.</p>
 </div>
 </section>
-<section id="wallet-attestation">
-<h3>Wallet Attestation<a class="headerlink" href="#wallet-attestation" title="Link to this heading">¶</a></h3>
+<section id="evaluating-trust-with-wallets">
+<h3>Evaluating Trust with Wallets<a class="headerlink" href="#evaluating-trust-with-wallets" title="Link to this heading">¶</a></h3>
 <p>The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys.</p>
 <p>The Wallet Attestation MAY contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.</p>
 <p>The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).</p>
@@ -1001,7 +1001,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <li><a class="reference internal" href="#trust-evaluation-mechanism">Trust Evaluation Mechanism</a><ul>
 <li><a class="reference internal" href="#establishing-trust-with-credential-issuers">Establishing Trust with Credential Issuers</a></li>
 <li><a class="reference internal" href="#establishing-trust-with-relying-party">Establishing Trust with Relying Party</a></li>
-<li><a class="reference internal" href="#wallet-attestation">Wallet Attestation</a></li>
+<li><a class="reference internal" href="#evaluating-trust-with-wallets">Evaluating Trust with Wallets</a></li>
 <li><a class="reference internal" href="#trust-chain">Trust Chain</a></li>
 <li><a class="reference internal" href="#offline-trust-attestation-mechanisms">Offline Trust Attestation Mechanisms</a><ul>
 <li><a class="reference internal" href="#offline-wallet-trust-attestation">Offline Wallet Trust Attestation</a></li>
