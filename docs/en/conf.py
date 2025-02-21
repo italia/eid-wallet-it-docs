@@ -2,15 +2,13 @@
 # -*- coding: utf-8 -*-
 
 # -- PROJECT Variables ----------------------------------------------------
-settings_project_name = "The Italian EUDI Wallet implementation profile"
+settings_project_name = "Italian EUDI Wallet Implementation Profile"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
 settings_doc_version = 'version: latest'
 settings_doc_release = 'version: latest'
 settings_basename = 'eidas-it-wallet-docs'
 settings_file_name = 'eidas-it-wallet-docs'
-
-# -- No need to change below here
 
 import sys, os
 from recommonmark.transform import AutoStructify
@@ -142,6 +140,7 @@ html_theme_options = {
     "show_theme_credit": False,
     "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
     "source_icon": "github",
+    # "banner_text": 'We just launched a newletter, <a href="https://mynewsletter.com/">please subscribe</a>!'
 }
 
 # -- ReadTheDoc requirements and local template generation---------------------
@@ -170,10 +169,10 @@ html_css_files = [
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "Ciao" #settings_project_name
+#  html_title = "Ciao" #settings_project_name
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = "IT-Wallet"
+#  html_short_title = "IT-Wallet"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
