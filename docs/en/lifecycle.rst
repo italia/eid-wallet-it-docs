@@ -120,7 +120,7 @@ While :numref:`fig_Wallet_Instance_States` shows the different states a Wallet I
 and the effect on their local storage.
 
 .. _fig_Wallet_Instance_Lifecycle:
-.. figure:: ../../images/Wallet_Instance_Lifecycle.svg
+.. figure:: ../../images/wallet_instance_lifecycle.svg
     :figwidth: 100%
     :align: center
     :target: https://www.plantuml.com/plantuml/png/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00
@@ -164,27 +164,29 @@ A Digital Credential in all states can be deleted (**PID/(Q)EAA DEL**) and this 
   While **Issued**, **Valid**, **Expired**, **Revoked** are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4), 
   **Suspended** is implicitly present in `EIDAS-ARF`_. This specification explicitly considers it.
 
-Transition to Issued
-^^^^^^^^^^^^^^^^^^^^
+Credential Transition to Issued
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 For the state machine to start, the Wallet Instance MUST be in either the **Operational** or **Valid** state, enabling Digital Credentials to be issued to it. 
 The state machine begins with the **Issued** state, when an issuance process is triggered and, as a result, a Digital Credential is issued to the 
 Wallet Instance (**PID/(Q)EAA ISS**). Please refer to :ref:`PID/(Q)EAA Issuance`.
 
-Transition to Valid
-^^^^^^^^^^^^^^^^^^^
+Credential Transition to Valid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A Digital Credential changes to **Valid** state when: 
 
   * it reaches its start date of validity;
   * an unsuspension process is triggered if the (Q)EAA has been suspended. 
 
 
-Transition to Expired
-^^^^^^^^^^^^^^^^^^^^^
+Credential Transition to Expired
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A Digital Credential naturally transitions to the **Expired** state when it automatically expires upon reaching its end date of validity (**PID/(Q)EAA EXP**), 
 indicating they are no longer valid for use.
 
 If a Digital Credential is **Expired** the Wallet Instance SHOULD notify the User the Digital Credential has expired and the User MAY delete it (**PID/(Q)EAA DEL**). 
 This ends its lifecycle.
+
+.. _credential-revocation:
 
 Transition to Revoked
 ^^^^^^^^^^^^^^^^^^^^^
@@ -213,8 +215,8 @@ In the case of PID only, the following cases are in addition to those listed abo
 When a Digital Credential is **Revoked** it cannot transition back to **Valid**, the Wallet Instance SHOULD notify the User the Digital Credential 
 has been revoked and the User MAY delete it (**PID/(Q)EAA DEL**). This ends its lifecycle.
 
-Transition to Suspended
-^^^^^^^^^^^^^^^^^^^^^^^
+Credential Transition to Suspended
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A (Q)EAA changes from **Issued** or **Valid** states to **Suspended** state when it is suspended by the Credential Issuer (**(Q)EAA SUSP**).
 The (Q)EAA remains **Suspended** until it is restored to the **Issued** or **Valid** state (**(Q)EAA UNSUSP**) depending on the previous state, i.e. 
 the conditions leading to its suspension are resolved, or it changes in **Revoked**, **Expired** or it is deleted. The suspension of a (Q)EAA MAY be: 
@@ -222,8 +224,8 @@ the conditions leading to its suspension are resolved, or it changes in **Revoke
   * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA. 
   * Explicitly requested by the User. 
 
-Lifecycle Management
-^^^^^^^^^^^^^^^^^^^^
+Credential Lifecycle Management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 While :numref:`fig_DigitalCredential_States` shows the different states a Digital Credential may acquire during its lifecycle, 
 :numref:`fig_DigitalCredential_Lifecycle` shows the point of view of Wallet Instances and Credential Issuers in managing the Digital Credential lifecycle 
 and the effect on their local storage.

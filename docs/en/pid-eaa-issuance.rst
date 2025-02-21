@@ -125,7 +125,7 @@ The following diagram shows the *User request flow*.
 
 Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:
 
-.. code-block:: http
+.. code-block::
 
   openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
 
@@ -831,9 +831,9 @@ Below is a non-normative example of an error response.
 
   HTTP/1.1 302 Found
   Location: https://client.example.com/cb?
-  error=invalid_request
-  &error_description=Unsupported%20response_type%20value
-  &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+   error=invalid_request
+   &error_description=Unsupported%20response_type%20value
+   &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
 
 In case of Authorization Server redirects the User to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
 
@@ -1397,3 +1397,5 @@ In the following table are listed HTTP Status Codes and related error codes that
       - `-`
       - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
+
+.. include::    pid-eaa-entity-configuration.rst

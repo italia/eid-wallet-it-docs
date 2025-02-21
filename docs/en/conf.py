@@ -24,7 +24,7 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # This is used for linking and such so we link to the thing we're building
 rtd_version = os.environ.get('READTHEDOCS_VERSION', 'latest')
 if rtd_version not in ['stable', 'latest']:
-    rtd_version = 'stable'
+    rtd_version = 'latest'
 
 rtd_project = os.environ.get('READTHEDOCS_PROJECT', '')
 
@@ -137,8 +137,8 @@ html_theme = 'piccolo_theme'
 html_theme_options = {
     # This option can be used with docs-italia-theme to customise how the versions "badge" is shown:
     # 'False': default (alabaster) badge | 'True': custom (italia) badge
-    'custom_versions_badge': 'True',
-    'collapse_navigation': 'True',
+    # 'custom_versions_badge': True,
+    'collapse_navigation': True,
     "show_theme_credit": False,
     "source_url": 'https://github.com/italia/eudi-wallet-it-docs',
     "source_icon": "github",
@@ -147,29 +147,33 @@ html_theme_options = {
 # -- ReadTheDoc requirements and local template generation---------------------
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+#  on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-if not on_rtd:  # only import and set the theme if we're building docs locally
+#  if not on_rtd:  # only import and set the theme if we're building docs locally
     #  html_theme_path = [docs_italia_theme.get_html_theme_path()]
     #  html_theme = 'docs_italia_theme'
-    pass
-else:
-    # Override default css to get a larger width for ReadTheDoc build
-    html_context = {
-        'css_files': [
-            '_static/css/theme.css',
-            '_static/css/badge_only.css',
-            '' # TODO add a custom css div#top_nav nav { background-color: #0066CC } actually #3889CE
-        ],
-    }
+    #  pass
+#  else:
+    #  # Override default css to get a larger width for ReadTheDoc build
+    #  html_context = {
+        #  'css_files': [
+            #  '_static/css/theme.css',
+            #  '_static/css/badge_only.css',
+            #  '_static/css/itwallet-override.css' # div#top_nav nav { background-color: #0066CC } actually #3889CE
+        #  ],
+    #  }
+
+html_css_files = [
+    "itwallet-override.css"
+]
 
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#html_title = settings_project_name
+html_title = "Ciao" #settings_project_name
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-#html_short_title = None
+html_short_title = "IT-Wallet"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -178,7 +182,7 @@ html_logo = "https://avatars.githubusercontent.com/u/15377824?s=48&v=4"
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = None
+html_favicon = "https://avatars.githubusercontent.com/u/15377824?s=48&v=4"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -275,7 +279,6 @@ latex_documents = [
 # If false, no module index is generated.
 #latex_domain_indices = True
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
@@ -297,7 +300,8 @@ man_pages = [
 texinfo_documents = [
   ('index', settings_file_name, settings_project_name,
    settings_project_name, settings_project_name,
-   'Miscellaneous'),
+   'Miscellaneous'
+  )
 ]
 
 numfig = True

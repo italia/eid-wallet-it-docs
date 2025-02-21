@@ -17,3 +17,5 @@ Authentic Sources MUST:
 
     - cooperate with their Credential Issuers so that the attributes attested in a Digital Credential are always kept up to date. Public Authentic Sources MUST use PDND to notify their Credential Issuers of any update regarding attributes that have changed or are no longer valid. 
 
+.. include:: e-service-pdnd.rst
+.. include:: e-service-pdnd-catalogue.rst
