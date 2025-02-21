@@ -18,3 +18,4 @@ In this section the following flows are described:
 
 .. include:: proximity-flow.rst
 
+.. include:: relying-party-entity-configuration.rst

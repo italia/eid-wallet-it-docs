@@ -5,18 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Entity Configuration of PID/(Q)EAA Providers &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>Entity Configuration of PID/(Q)EAA Providers &#8212; Ciao</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Authentic Sources" href="authentic-sources.html" />
-    <link rel="prev" title="PID/(Q)EAA Issuance" href="pid-eaa-issuance.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -126,25 +126,18 @@
 
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper"><ul class="current">
+        <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Entity Configuration of PID/(Q)EAA Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -174,10 +167,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </ul>
 </div></blockquote>
 <p>In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for <em>openid_credential_verifier</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://github.com/italia/spid-cie-oidc-docs">SPID/CIE id OIDC Technical Specification</a>.</p>
-<section id="metadata-for-federation-entity">
-<h2>Metadata for federation_entity<a class="headerlink" href="#metadata-for-federation-entity" title="Link to this heading">¶</a></h2>
 <p>The <em>federation_entity</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves"><span class="std std-ref">Metadata of federation_entity Leaves</span></a>.</p>
-</section>
+<p>The <em>openid_credential_verifier</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="relying-party-solution.html#metadata-for-openid-credential-verifier"><span class="std std-ref">Metadata for openid_credential_verifier</span></a>.</p>
 <section id="metadata-for-oauth-authorization-server">
 <h2>Metadata for oauth_authorization_server<a class="headerlink" href="#metadata-for-oauth-authorization-server" title="Link to this heading">¶</a></h2>
 <p>The <em>oauth_authorization_server</em> metadata MUST contain the following parameters.</p>
@@ -276,7 +267,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>URL of the revocation endpoint. See <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>status_attestation_endpoint</strong></p></td>
-<td><p>It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section <span class="xref std std-ref">Credential Lifecycle</span> for more details.</p></td>
+<td><p>It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section <a class="reference internal" href="lifecycle.html#lifecycle-rst"><span class="std std-ref">Wallet Instance and Digital Credential Lifecycle</span></a> for more details.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>notification_endpoint</strong></p></td>
 <td><p>It MUST be an HTTPs URL indicating the notification endpoint. See Section 11.2.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
@@ -357,10 +348,6 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </tr>
 </tbody>
 </table>
-</section>
-<section id="metadata-for-openid-credential-verifier">
-<h2>Metadata for openid_credential_verifier<a class="headerlink" href="#metadata-for-openid-credential-verifier" title="Link to this heading">¶</a></h2>
-<p>The <em>openid_credential_verifier</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-openid-credential-verifier"><span class="std std-ref">Metadata for openid_credential_verifier</span></a>.</p>
 </section>
 <section id="example-of-a-q-eaa-provider-entity-configuration">
 <h2>Example of a (Q)EAA Provider Entity Configuration<a class="headerlink" href="#example-of-a-q-eaa-provider-entity-configuration" title="Link to this heading">¶</a></h2>
@@ -939,10 +926,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">Entity Configuration of PID/(Q)EAA Providers</a><ul>
-<li><a class="reference internal" href="#metadata-for-federation-entity">Metadata for federation_entity</a></li>
 <li><a class="reference internal" href="#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
 <li><a class="reference internal" href="#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
-<li><a class="reference internal" href="#metadata-for-openid-credential-verifier">Metadata for openid_credential_verifier</a></li>
 <li><a class="reference internal" href="#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
@@ -958,14 +943,9 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
         <div class="button_nav">
             <div class="left">
                 
-                <a href="pid-eaa-issuance.html">
-                    <span class="icon">&lt;</span><span>PID/(Q)EAA Issuance</span></a>
-                
             </div>
 
             <div class="right">
-                
-                    <a href="authentic-sources.html"><span>Authentic Sources</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -973,7 +953,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/02/2025.
+      Last updated on 21/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

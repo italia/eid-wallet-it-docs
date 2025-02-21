@@ -568,7 +568,7 @@ The KB-JWT MUST contain the following parameters in the JWT payload:
 Revocation Checks
 ~~~~~~~~~~~~~~~~~
 
-The revocation mechanisms that the Relying Parties MUST implement are defined in the section (:ref:`Revocations <revocation-lists.rst>`).
+The revocation mechanisms that the Relying Parties MUST implement are defined in the section (:ref:`Revocations <credential-revocation>`).
 
 In the context of Digital Credential evaluation, any Relying Parties (RPs) establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the holder.
 

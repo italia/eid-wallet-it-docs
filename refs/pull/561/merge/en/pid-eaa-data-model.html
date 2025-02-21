@@ -5,18 +5,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PID/(Q)EAA Data Model &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>PID/(Q)EAA Data Model &#8212; Ciao</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="PID/(Q)EAA Issuance" href="pid-eaa-issuance.html" />
-    <link rel="prev" title="Wallet Instance Revocation" href="wallet-revocation.html" /> 
+    <link rel="prev" title="Wallet Solution" href="wallet-solution.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -133,18 +135,11 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -163,6 +158,16 @@
             
   <section id="pid-q-eaa-data-model">
 <span id="pid-eaa-data-model-rst"></span><h1>PID/(Q)EAA Data Model<a class="headerlink" href="#pid-q-eaa-data-model" title="Link to this heading">¶</a></h1>
+<p>The Digital Credential Data Model structures Digital Credentials for secure, interoperable use. Key elements include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Credential Subject: The individual or entity receiving the Credential.</p></li>
+<li><p>Issuer: The PID/(Q)EAA Provider issuing and signing the Credential.</p></li>
+<li><p>Metadata: Details about the Credential, like type and validity.</p></li>
+<li><p>Claims: Information about the subject, such as identity or qualifications.</p></li>
+<li><p>Proof: Cryptographic verification of authenticity and legitimate ownership.</p></li>
+</ul>
+</div></blockquote>
 <p>The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural persons to be authenticated for the access to a service or to a protected resource.
 The User attributes provided within the Italian PID are the ones listed below:</p>
 <blockquote>
@@ -1637,8 +1642,8 @@ The User attributes provided within the Italian PID are the ones listed below:</
         <div class="button_nav">
             <div class="left">
                 
-                <a href="wallet-revocation.html">
-                    <span class="icon">&lt;</span><span>Wallet Instance Revocation</span></a>
+                <a href="wallet-solution.html">
+                    <span class="icon">&lt;</span><span>Wallet Solution</span></a>
                 
             </div>
 
@@ -1652,7 +1657,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/02/2025.
+      Last updated on 21/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

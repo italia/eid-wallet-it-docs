@@ -5,14 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Proximity Flow &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>Proximity Flow &#8212; Ciao</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
@@ -131,18 +133,11 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -160,7 +155,7 @@
           <div class="body" role="main">
             
   <section id="proximity-flow">
-<span id="proximity-flow-sec"></span><h1>Proximity Flow<a class="headerlink" href="#proximity-flow" title="Link to this heading">¶</a></h1>
+<span id="proximity-flow-sec-main"></span><h1>Proximity Flow<a class="headerlink" href="#proximity-flow" title="Link to this heading">¶</a></h1>
 <p>This section describes how a Verifier requests the presentation of an <em>mDoc-CBOR</em> Credential to a Wallet Instance according to the <em>ISO 18013-5 Specification</em>. Only <em>Supervised Device Retrieval flow</em> is supported in this technical implementation profile.</p>
 <p>The presentation phase is divided into three sub-phases:</p>
 <blockquote>
@@ -174,7 +169,7 @@ During the communication subphase, the Verifier App has the option to request in
 </div></blockquote>
 <p>The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.</p>
 <figure class="align-center" id="id1" style="width: 100%">
-<span id="fig-high-level-flow-itwallet-presentation-iso"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/bL9BZnCn3BxFhx3A0H3q3_ImMlOXXBJYqGguzE9ct2RQn0bvJDb_ZoSP3QFI2xab_Xx-xDocZ34NPpiisNDn1ufT1t9GPH_XUw88cA3KjuF_3QlnwNM2dHDYq9vf1Q-Up4ddErkeme9KZ381ESFg9rfB6JwnEB4IiAYTAuou7nN_Al-WQ8xcVzHd2dm8eKeFI-cMfApNDpVd3Nm9n90rmKLBa3s4I8b441dSWrTm7wcNkq7RD3xxJE07CIhlXmqyq624-CWdF94RYQaSWiP4iAweRzjr1vLvRkOVYIcYY32TWO8c9rSBp_GYWKoSe88LzPtsvx5HKO5xtnCSVVpNibA6ATjE8IyfKr7aBgptVDry0WlPXIBOH2aPpoEcbgzDOJTXIEPui2PfrqROZogki56OfNuvcxkdHv5N9H8eZSnaPLRJwUPU95JTn9P-5J60Tn2AcAZQjJ_MiCljxndUN6texN8Dr-ErSjd0roZrNEUjFDSVaJqaZP6gOMpDK0-61UHglkcJjJL75Cx4NHflAKT30xLGH_41wnLQIDb7FD6C7URSAOZCSfCjxyjSWcHEZBb4slCuTQL9FJVsWDRq9akuxfQuByx-0G00"><img alt="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" src="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" /></a>
+<span id="fig-high-level-flow-itwallet-presentation-iso-1"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/bL9BZnCn3BxFhx3A0H3q3_ImMlOXXBJYqGguzE9ct2RQn0bvJDb_ZoSP3QFI2xab_Xx-xDocZ34NPpiisNDn1ufT1t9GPH_XUw88cA3KjuF_3QlnwNM2dHDYq9vf1Q-Up4ddErkeme9KZ381ESFg9rfB6JwnEB4IiAYTAuou7nN_Al-WQ8xcVzHd2dm8eKeFI-cMfApNDpVd3Nm9n90rmKLBa3s4I8b441dSWrTm7wcNkq7RD3xxJE07CIhlXmqyq624-CWdF94RYQaSWiP4iAweRzjr1vLvRkOVYIcYY32TWO8c9rSBp_GYWKoSe88LzPtsvx5HKO5xtnCSVVpNibA6ATjE8IyfKr7aBgptVDry0WlPXIBOH2aPpoEcbgzDOJTXIEPui2PfrqROZogki56OfNuvcxkdHv5N9H8eZSnaPLRJwUPU95JTn9P-5J60Tn2AcAZQjJ_MiCljxndUN6texN8Dr-ErSjd0roZrNEUjFDSVaJqaZP6gOMpDK0-61UHglkcJjJL75Cx4NHflAKT30xLGH_41wnLQIDb7FD6C7URSAOZCSfCjxyjSWcHEZBb4slCuTQL9FJVsWDRq9akuxfQuByx-0G00"><img alt="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" src="_images/High-Level-Flow-ITWallet-Presentation-ISO.svg" /></a>
 <figcaption>
 <p><span class="caption-text">High-Level Proximity Flow</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -627,7 +622,7 @@ The details on the structure of mDoc Response are provided below.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/02/2025.
+      Last updated on 21/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

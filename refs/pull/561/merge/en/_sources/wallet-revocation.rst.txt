@@ -3,7 +3,7 @@
 .. _wallet-revocation.rst:
 
 Wallet Instance Revocation
-==========================
+----------------------------
 
 This section describes the involved entities and modalities to request a Wallet Instance revocation in the IT-Wallet system.
 
@@ -28,7 +28,7 @@ As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigg
    Detailed flows for **PID Provider, Legal Authorities,** and **Supervisory Body** will be covered in future versions of the technical specification.
 
 Revocation Request from the User
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Users MAY request the Wallet Instance revocation by:
 
@@ -41,7 +41,7 @@ In both cases, by using the Wallet Provider portal:
 - The Wallet Provider MUST allow Users to view the state of all their Wallet Instances and ask for their revocation.
 
 Validity Verification Mechanisms
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The verification of the Wallet Instance validity MUST be performed:
 
 - **During Digital Credential issuance or presentation phase** by the Credential Issuers and Relying Parties, respectively. Only Wallet Instances in Operational or Valid state have valid Wallet Attestations. Thus, the verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers and Relying Parties by checking the presence of valid Wallet Attestation (i.e. not expired and signed by a trusted Wallet Provider). 

@@ -3,14 +3,15 @@
 .. _wallet-attestation.rst:
 
 Wallet Attestation
-++++++++++++++++++
+------------------------------
+
 
 Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance.
 It primarily certifies the **authenticity**, **integrity**, **security**, **privacy**, and **trustworthiness** of a particular Wallet Instance.
 
 
-Requirements
-------------
+Wallet Attestation Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The requirements for the Wallet Attestation are defined below:
 
@@ -41,7 +42,7 @@ The requirements for the Wallet Attestation are defined below:
   At the current stage, the implementation profile defined in this document supports only the **Local Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL`.
 
 Static Component View
----------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../../images/static_view_wallet_instance_attestation.svg
    :name: Wallet Solution Schema
@@ -49,12 +50,12 @@ Static Component View
    :target: https://www.plantuml.com/plantuml/uml/VP8nJyCm48Lt_ugdTexOCw22OCY0GAeGOsMSerWuliY-fEg_9mrEPTAqw-VtNLxEtaJHGRh6AMs40rRlaS8AEgAB533H3-qS2Tu2zxPEWSF8TcrYv-mJzTOGNfzVnXXJ0wKCDorxydAUjMNNYMMVpug9OTrR7i22LlaesXlADPiOraToZWyBsgCsF-JhtFhyGyZJgNlbXVR1oX5R2YSoUdQYEzrQO1seLcfUeGXs_ot5_VzqYM6lQlRXMz6hsTccIbGHhGu2_hhfP1tBwHuZqdOUH6WuEmrKIeqtNonvXhq4ThY3Dc9xBNJv_rSwQeyfawhcZsTPIpKLKuFYSa_JyOPytJNk5m00
 
 Dynamic Component View
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Wallet Attestation acquisition flow can be divided into two main phases. The first phase involves device initialization and registration, which occurs only during the initial launch of the Wallet Instance (after installation). The second phase pertains to the actual acquisition of the Wallet Attestation.
 
 Wallet Instance Initialization and Registration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. figure:: ../../images/wallet_instance_initialization.svg
    :name: Sequence Diagram for Wallet Instance Initialization
@@ -188,7 +189,7 @@ If any errors occur during the Wallet Instance registration, the Wallet Provider
 
 
 Wallet Attestation Issuance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section describes the Wallet Attestation format and how the Wallet Provider issues it.
 
@@ -396,8 +397,8 @@ Below is a non-normative example of the response.
 
 .. _table_wallet_attestation_request_claim:
 
-Wallet Attestation Request
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Wallet Attestation Request JWT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The JOSE header of the Wallet Attestation Request JWT MUST contain:
 
@@ -475,8 +476,8 @@ The body of the Wallet Attestation Request JWT MUST contain:
 
 .. _table_wallet_attestation_claim:
 
-Wallet Attestation
-~~~~~~~~~~~~~~~~~~
+Wallet Attestation JWT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The JOSE header of the Wallet Attestation JWT MUST contain:
 

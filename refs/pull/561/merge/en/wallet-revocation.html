@@ -5,18 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Wallet Instance Revocation &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>Wallet Instance Revocation &#8212; Ciao</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html" />
-    <link rel="prev" title="Wallet Attestation" href="wallet-attestation.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -126,25 +126,18 @@
 
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper"><ul class="current">
+        <div class="sphinxsidebarwrapper"><ul>
 <li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -165,7 +158,7 @@
 <span id="wallet-revocation-rst"></span><h1>Wallet Instance Revocation<a class="headerlink" href="#wallet-instance-revocation" title="Link to this heading">¶</a></h1>
 <p>This section describes the involved entities and modalities to request a Wallet Instance revocation in the IT-Wallet system.</p>
 <p>The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements. When, for technical security reasons (e.g., relating to the compromise of cryptographic material) the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.</p>
-<p>As shown in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 6</span></a>, other actors MAY trigger the Wallet Instance revocation process:</p>
+<p>As shown in <a class="reference internal" href="wallet-solution.html#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 6</span></a>, other actors MAY trigger the Wallet Instance revocation process:</p>
 <ul class="simple">
 <li><p><strong>Users</strong>, connecting to the Wallet Provider’s web portal from their Wallet Instance or using an external browser.</p></li>
 <li><p><strong>PID Providers</strong> when notified by the Authentic Source of the PID (ANPR) of the User’s death.</p></li>
@@ -174,7 +167,7 @@
 <figure class="align-center" id="id1" style="width: 80%">
 <span id="fig-wallet-instance-revoc-entities"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/fL9TZn8z5BwVNt5URbusSPSRhxnQ5oOHuog1tHYJJIPbMk74JZksf-1e_E-UKmiguvqafFIXpyVvk8sa0gNELl-XQstI1lP4VNmncmLrlDaXxTCsHHDQxyWukcbzD-kjSiAvZgGjRcVpvzShWHxltymw5Sa4XfgvxthlXDEBVlLgkQYRpKEzhjyzV5ZLqwkgMfaGlPkA_ZEOFF8nuRDsX3I0FpfqEw2zWIVtNbbh29QEyxhMJ9XyvvFJAWpJO_wlYGCxTymlRpVvFhc2RnNmvnpdz1wBbZ0kr1cIxxroQcSYIBx_8ooGsw4ip8FHh8FAHixnL-q--0DghkealIh0IRhS8rnOWt8QZcOBR7d0reZ3zwhwPQ0IxSMyRQ9F8QT_UO9Waw6HXpGM5570RIA-ayzTNSQOJCYENQbKu8Eog6K0d8YI13YxD_MNdmbymAz6Drkl1mbmHY3F3aqyPTYaNWg9FWnmnw-ps-kaiKLbeH1fO9FVQiGSJ2fOBaQTowdZ7wdbcTnBr-Db0wjgRMpPiei1ZOSFQtFmhIBqZdz-PYyI2L4OSSUR9EHFvdAg4a84fB1_3J5UW7Extdh2ZuECMzRroMcZQ5-iHrCRPoZq9UCx6KvBU432dFxME9qw-mC0"><img alt="_images/wallet_instance_revocation.svg" src="_images/wallet_instance_revocation.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Entities involved in the Wallet Instance revocation process.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-text">Entities involved in the Wallet Instance revocation process.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -239,14 +232,9 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="wallet-attestation.html">
-                    <span class="icon">&lt;</span><span>Wallet Attestation</span></a>
-                
             </div>
 
             <div class="right">
-                
-                    <a href="pid-eaa-data-model.html"><span>PID/(Q)EAA Data Model</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -254,7 +242,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/02/2025.
+      Last updated on 21/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

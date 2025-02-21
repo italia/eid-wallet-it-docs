@@ -5,14 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Wallet Instance and Digital Credential Lifecycle &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>Wallet Instance and Digital Credential Lifecycle &#8212; Ciao</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Wallet Solution" href="wallet-solution.html" />
@@ -133,18 +135,11 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -186,10 +181,10 @@ used as proof of both the Wallet Instance authenticity and WSCD trustworthiness.
 <h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h2>
 <p>As shown in <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 2</span></a>, the Wallet Instance has four distinct states: <strong>Installed</strong>, <strong>Operational</strong>, <strong>Valid</strong>, and <strong>Uninstalled</strong>.
 Each state represents a specific functional status and determines the actions that can be performed.</p>
-<figure class="align-center" id="id3" style="width: 100%">
+<figure class="align-center" id="id1" style="width: 100%">
 <span id="fig-wallet-instance-states"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/XPBHIuH04CRVzwyOk9SAH8ipGaHESW-4kEpihg1wi7ElMzXRHLUY_lfMAvtMZlD5cUytttpZxgnMMQMQlI0xdZDW-r9zGCxgJSLBnGj9Y0OKWrZgjn0iXyby7hgEyrE_BLcLjM0cOBBLJw-iCy4rxJXNJbzRIJxuH9TJT-eI0W1FPozWvSMxj89XaWSFCSIBzBubXd8FjcOONIt-Wol-jbEQHa4xEhpkK5m_xcpWWctLAF6IhaUaET_V5AAel5VHiE3axfI68SHfQYTBwjkT51pCrltMlmv97BNjkFKR0wifZT5c7trCxDz6U9POrelO4RqvP3jU6n4egB4gnQlYiJWLKf7fyUF14bWQrHTBHwZv9_FEBmBVRhy2CcCorrV-2m00"><img alt="_images/Wallet_Instance_States.svg" src="_images/Wallet_Instance_States.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wallet Instance Lifecycle.</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wallet Instance Lifecycle.</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -267,10 +262,10 @@ uninstall (<strong>WI UNINST</strong>) transition, leading to the <strong>Uninst
 <p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle,
 <a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 3</span></a> shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
 and the effect on their local storage.</p>
-<figure class="align-center" id="id4" style="width: 100%">
-<span id="fig-wallet-instance-lifecycle"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00"><img alt="../../images/Wallet_Instance_Lifecycle.svg" src="../../images/Wallet_Instance_Lifecycle.svg" /></a>
+<figure class="align-center" id="id2" style="width: 100%">
+<span id="fig-wallet-instance-lifecycle"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00"><img alt="_images/wallet_instance_lifecycle.svg" src="_images/wallet_instance_lifecycle.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Wallet Instance Lifecycle Management.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Wallet Instance Lifecycle Management.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Through a Wallet Instance in an <strong>Installed</strong> state, a User is able to start the <strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>).
@@ -292,10 +287,10 @@ delete the Wallet Cryptographic Hardware Key pairs.</p>
 <p><a class="reference internal" href="#fig-digitalcredential-states"><span class="std std-numref">Fig. 4</span></a> shows the states and transitions for Digital Credentials.
 It includes four distinct states: <strong>Issued</strong>, <strong>Valid</strong>, <strong>Expired</strong>, and <strong>Revoked</strong>. While, in case of (Q)EAAs there is an additional state: <strong>Suspended</strong>.
 A Digital Credential in all states can be deleted (<strong>PID/(Q)EAA DEL</strong>) and this ends its lifecycle.</p>
-<figure class="align-center" id="id5" style="width: 100%">
+<figure class="align-center" id="id3" style="width: 100%">
 <span id="fig-digitalcredential-states"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/RP9HRzCm4CVV_IbEtSC0AIAK5Q4ze4Lh2fK6b6MRa807BxwrLXmxifsDWFZks8udjr7xLF_kVtS_dN9XBDMsRmNPSOQ0RMS7O6XgpJlBbIHMTM0Lt2jhLGkCQwm39wUGPV0H9Meg7ATRJLimTX1SRbs9c8RBZdh8y87smgwKj1N_W_1clbUiBBLOQAsUBfLG6ku5hPkZzKz8MUX_EorVSOatErut4es1UNJxJ1k4McbdQ81A1iB539XMARj3VUYeLI_PPGZ3F8VuEmL1zHPr70EQCjwRr1P6sg53w9GO_2EszIOXFzkweqIj9JvuQBou2HB-7nH2L2EY1cRk1UDp1l2Nn4pLcmubGmOdgrMnoFF8h_5HDPuktvqjpXQHbhyxhXEDwsyqbOPRhcHO_ZnwRKoFxAk-euApe30IK1e2cpaD6Ar702Tv_Zvt3Wx_UFKBCistEvjzWDXu3flrylMBRo_BelWfrrK5168jPVsaQVJHCsu729-c8V-SvA5UnjIJTDtf7kVmt5tTLfjft4NZYIQhhiixE1AEbvk4o-yRGjBAhEzSzB0vQTn-yI8fFf7O5vY4qlAznK326T974a_WBp_HN9PNvCADwrln7m00"><img alt="_images/DigitalCredential_States.svg" src="_images/DigitalCredential_States.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Digital Credential Lifecycle.</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Digital Credential Lifecycle.</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -309,14 +304,14 @@ An example of this scenario is when a Relying Party needs to verify that the Use
 <p>While <strong>Issued</strong>, <strong>Valid</strong>, <strong>Expired</strong>, <strong>Revoked</strong> are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4),
 <strong>Suspended</strong> is implicitly present in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>. This specification explicitly considers it.</p>
 </div>
-<section id="transition-to-issued">
-<h3>Transition to Issued<a class="headerlink" href="#transition-to-issued" title="Link to this heading">¶</a></h3>
+<section id="credential-transition-to-issued">
+<h3>Credential Transition to Issued<a class="headerlink" href="#credential-transition-to-issued" title="Link to this heading">¶</a></h3>
 <p>For the state machine to start, the Wallet Instance MUST be in either the <strong>Operational</strong> or <strong>Valid</strong> state, enabling Digital Credentials to be issued to it.
 The state machine begins with the <strong>Issued</strong> state, when an issuance process is triggered and, as a result, a Digital Credential is issued to the
 Wallet Instance (<strong>PID/(Q)EAA ISS</strong>). Please refer to <a class="reference internal" href="pid-eaa-issuance.html#pid-q-eaa-issuance"><span class="std std-ref">PID/(Q)EAA Issuance</span></a>.</p>
 </section>
-<section id="id1">
-<h3>Transition to Valid<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<section id="credential-transition-to-valid">
+<h3>Credential Transition to Valid<a class="headerlink" href="#credential-transition-to-valid" title="Link to this heading">¶</a></h3>
 <p>A Digital Credential changes to <strong>Valid</strong> state when:</p>
 <blockquote>
 <div><ul class="simple">
@@ -325,15 +320,15 @@ Wallet Instance (<strong>PID/(Q)EAA ISS</strong>). Please refer to <a class="ref
 </ul>
 </div></blockquote>
 </section>
-<section id="transition-to-expired">
-<h3>Transition to Expired<a class="headerlink" href="#transition-to-expired" title="Link to this heading">¶</a></h3>
+<section id="credential-transition-to-expired">
+<h3>Credential Transition to Expired<a class="headerlink" href="#credential-transition-to-expired" title="Link to this heading">¶</a></h3>
 <p>A Digital Credential naturally transitions to the <strong>Expired</strong> state when it automatically expires upon reaching its end date of validity (<strong>PID/(Q)EAA EXP</strong>),
 indicating they are no longer valid for use.</p>
 <p>If a Digital Credential is <strong>Expired</strong> the Wallet Instance SHOULD notify the User the Digital Credential has expired and the User MAY delete it (<strong>PID/(Q)EAA DEL</strong>).
 This ends its lifecycle.</p>
 </section>
 <section id="transition-to-revoked">
-<h3>Transition to Revoked<a class="headerlink" href="#transition-to-revoked" title="Link to this heading">¶</a></h3>
+<span id="credential-revocation"></span><h3>Transition to Revoked<a class="headerlink" href="#transition-to-revoked" title="Link to this heading">¶</a></h3>
 <p>A Digital Credential changes from <strong>Issued</strong>, <strong>Valid</strong> or <strong>Suspended</strong> states to <strong>Revoked</strong> state when it is actively revoked by the Credential Issuer
 by a revocation process (<strong>PID/(Q)EAA REV</strong>). The Relying Parties SHOULD no longer consider usable a particular Digital Credential when it is <strong>Revoked</strong>, even though it is
 still valid temporally and contains a valid Credential Issuer signature. Revocation can occur in the following cases:</p>
@@ -362,8 +357,8 @@ still valid temporally and contains a valid Credential Issuer signature. Revocat
 <p>When a Digital Credential is <strong>Revoked</strong> it cannot transition back to <strong>Valid</strong>, the Wallet Instance SHOULD notify the User the Digital Credential
 has been revoked and the User MAY delete it (<strong>PID/(Q)EAA DEL</strong>). This ends its lifecycle.</p>
 </section>
-<section id="transition-to-suspended">
-<h3>Transition to Suspended<a class="headerlink" href="#transition-to-suspended" title="Link to this heading">¶</a></h3>
+<section id="credential-transition-to-suspended">
+<h3>Credential Transition to Suspended<a class="headerlink" href="#credential-transition-to-suspended" title="Link to this heading">¶</a></h3>
 <p>A (Q)EAA changes from <strong>Issued</strong> or <strong>Valid</strong> states to <strong>Suspended</strong> state when it is suspended by the Credential Issuer (<strong>(Q)EAA SUSP</strong>).
 The (Q)EAA remains <strong>Suspended</strong> until it is restored to the <strong>Issued</strong> or <strong>Valid</strong> state (<strong>(Q)EAA UNSUSP</strong>) depending on the previous state, i.e.
 the conditions leading to its suspension are resolved, or it changes in <strong>Revoked</strong>, <strong>Expired</strong> or it is deleted. The suspension of a (Q)EAA MAY be:</p>
@@ -374,15 +369,15 @@ the conditions leading to its suspension are resolved, or it changes in <strong>
 </ul>
 </div></blockquote>
 </section>
-<section id="id2">
-<h3>Lifecycle Management<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<section id="credential-lifecycle-management">
+<h3>Credential Lifecycle Management<a class="headerlink" href="#credential-lifecycle-management" title="Link to this heading">¶</a></h3>
 <p>While <a class="reference internal" href="#fig-digitalcredential-states"><span class="std std-numref">Fig. 4</span></a> shows the different states a Digital Credential may acquire during its lifecycle,
 <a class="reference internal" href="#fig-digitalcredential-lifecycle"><span class="std std-numref">Fig. 5</span></a> shows the point of view of Wallet Instances and Credential Issuers in managing the Digital Credential lifecycle
 and the effect on their local storage.</p>
-<figure class="align-default" id="id6" style="width: 100%">
+<figure class="align-default" id="id4" style="width: 100%">
 <span id="fig-digitalcredential-lifecycle"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/XP91Yzim48Nl_XMgsOC3sVMbfq9WKzjq0sbZR8UbK0YoDIW2MV9AetL3wN-lvBPkIbro2T7JzvxVY7cqI0swNaPlXEgaOq3EY8DzbwQ6ZWzSuDcrpeBfj49G-D3fFXqaLS5pRv59qQRPs_ioICUF-xId5i5uwPHv1nKApCCGyfzsUN6gcw8g3itdiaXMKLG_7PvFPL7LXq-dyb0rrNRN17tBM0MoeJo9MHkloHt2Lyoqr6OJQqCLXo1AdxqerdYHG3Oaf_OCRE-LPELJtskd63MNnBLh4ZzJAG79JbcagWFo-pPUaMyHYGYfBnQXJsZtukbSS85Kaim00uN2_zrsBqvOWKAhs1Fnwe-7WLpsv23Xok0TyoFbRJ9Qr6OTr_wNSfX3e-_HLVakbB-At5dhmFnTVox2GIqN-G0A35tgRk1rsLB1g-ucI_f5rSuEe6mu79MT3tFOzLZJL6GUwnya6LoupobIKZh3XU8JjBwpWn48czZeLgCtXOUeGFxi-2lsMERRfWY6QL4ejvkmDAi0XkGPp8jzyL-GWvh1h2gM4oToseVn5Xh8QGl6Mr-Vvnbl3VG8YhbU_W00"><img alt="_images/DigitalCredential_Lifecycle.svg" src="_images/DigitalCredential_Lifecycle.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Digital Credential Lifecycle Management.</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Digital Credential Lifecycle Management.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>A User, through the Wallet Instance, is able to acquire a new Digital Credential (<strong>Credential Acquisition</strong>) performing the <strong>PID/(Q)EAA ISS</strong> process. This MUST result in the storage of a
@@ -424,12 +419,12 @@ Until the <strong>Credential Deletion</strong>, a Digital Credential can be pres
 </ul>
 </li>
 <li><a class="reference internal" href="#digital-credential">Digital Credential</a><ul>
-<li><a class="reference internal" href="#transition-to-issued">Transition to Issued</a></li>
-<li><a class="reference internal" href="#id1">Transition to Valid</a></li>
-<li><a class="reference internal" href="#transition-to-expired">Transition to Expired</a></li>
+<li><a class="reference internal" href="#credential-transition-to-issued">Credential Transition to Issued</a></li>
+<li><a class="reference internal" href="#credential-transition-to-valid">Credential Transition to Valid</a></li>
+<li><a class="reference internal" href="#credential-transition-to-expired">Credential Transition to Expired</a></li>
 <li><a class="reference internal" href="#transition-to-revoked">Transition to Revoked</a></li>
-<li><a class="reference internal" href="#transition-to-suspended">Transition to Suspended</a></li>
-<li><a class="reference internal" href="#id2">Lifecycle Management</a></li>
+<li><a class="reference internal" href="#credential-transition-to-suspended">Credential Transition to Suspended</a></li>
+<li><a class="reference internal" href="#credential-lifecycle-management">Credential Lifecycle Management</a></li>
 </ul>
 </li>
 </ul>
@@ -461,7 +456,7 @@ Until the <strong>Credential Deletion</strong>, a Digital Credential can be pres
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/02/2025.
+      Last updated on 21/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -1,7 +1,9 @@
 .. include:: ../common/common_definitions.rst
 
+.. _e-service-pdnd:
+
 e-Service PDND
-+++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The `EIDAS-ARF`_ framework empowers Member States to establish the interfaces, terms, and conditions governing communication between Credential Issuers and Authentic Sources. In the Italian context, interoperability is established by leveraging the following guidelines:
 
@@ -18,7 +20,7 @@ Access to an e-Service requires Consumers to obtain a specific Access Token, kno
 .. _sec_Requirements:
 
 Requirements and Security Patterns
-========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This specification is based on the following set of requirements:
 
@@ -94,7 +96,7 @@ The following security patterns defined in `PDND`_ and `MODI`_ MUST NOT be used 
 .. _sec_VoucherIssuance:
 
 Voucher Issuance
-==========================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PDND infrastructure defines two different types of Vouchers:
     
@@ -107,12 +109,12 @@ The two flows are described below.
 .. _sec_VoucherIssuance_eService:
 
 Voucher for e-Service
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _sec_VoucherIssuance_eService_Prerequisites:
 
 Prerequisites
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The **Consumer** MUST comply with the following prerequisites:
 
@@ -132,7 +134,7 @@ The **Provider** MUST comply with the following prerequisites:
 .. _sec_VoucherIssuance_eService_Flow:
 
 Flow
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _fig_VoucherIssuance_eService_Flow:
 
@@ -320,12 +322,12 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 .. _sec_VoucherIssuance_InteroperabilityAPI:
 
 Voucher for Interoperability API
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _sec_VoucherIssuance_InteroperabilityAPI_Prerequisites:
 
-Prerequisites
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+API Prerequisites
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The **Participant** MUST comply with the following prerequisites:
 
@@ -335,8 +337,8 @@ The **Participant** MUST comply with the following prerequisites:
 
 .. _sec_VoucherIssuance_InteroperabilityAPI_Flow:
 
-Flow
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+API Flow
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _fig_VoucherIssuance_InteroperabilityAPI_Flow:
 
@@ -451,14 +453,14 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 .. _sec_VoucherIssuance_Endpoint_AuthorizationServer:
 
 PDND Authorization Server Endpoint
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PDND Authorization Server Endpoint issues Vouchers to Participants. These Vouchers allow Consumers to access e-Service resources and enable Participants to interact with the Interoperability API.
 
 .. _sec_VoucherIssuance_Endpoint_AuthorizationServer_Request:
 
 Voucher Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The request to the PDND Authorization Server Endpoint adheres to the Client Credentials Grant flow specified in :rfc:`6749`. The client authenticates itself by presenting a JWT-based client assertion as defined in :rfc:`7521` and :rfc:`7523`.
 
@@ -561,7 +563,7 @@ The ``client_assertion`` JWT MUST include the following payload claims (unless o
 .. _sec_VoucherIssuance_Endpoint_AuthorizationServer_Response:
 
 Voucher Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Voucher Response MUST include the following body parameters:
 
@@ -700,12 +702,12 @@ The following table lists the HTTP Status Codes and related error codes that MUS
 .. _sec_KeyRetrieval:
 
 Key Retrieval
-==========================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _sec_KeyRetrieval_PDND:
 
 PDND Keys
------------
+~~~~~~~~~~~~~~
 
 .. _fig_KeyRetrieval_PDND_Flow:
 
@@ -756,12 +758,12 @@ PDND Keys
 .. _sec_KeyRetrieval_Participant:
 
 Participants' Keys
--------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _sec_KeyRetrieval_Participant_Prerequisites:
 
-Prerequisites
-^^^^^^^^^^^^^^^^
+Key Retrieval Prerequisites
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The **Participant** who requests the key MUST comply with the following prerequisites:
 
@@ -772,8 +774,8 @@ The **Participant** who requests the key MUST comply with the following prerequi
 
 .. _sec_KeyRetrieval_Participant_Flow:
 
-Flow
-^^^^^^^^^^^^^^^^
+Key Retrieval Flow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _fig_KeyRetrieval_Participant_Flow:
 
@@ -822,21 +824,21 @@ Flow
 .. _sec_KeyRetrieval_Endpoint_WellKnown:
 
 .well-known Endpoint
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The .well-known Endpoint is part of the PDND Infrastructure and used to retrieve the public keys used by the PDND Authorization Server to sign the Vouchers.
 
 .. _sec_KeyRetrieval_Endpoint_WellKnown_Request:
 
 Keys Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The Keys Request is a ``GET`` HTTP request sent to the .well-known Endpoint. This endpoint allows Participants to retrieve the public keys necessary to verify digital signatures on Vouchers issued by the PDND Authorization Server.
 
 .. _sec_KeyRetrieval_Endpoint_WellKnown_Response:
 
 Keys Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The .well-known Endpoint responds with a ``200 OK`` status code and a ``JWK Set`` [:rfc:`7517`] containing the public keys employed by the PDND Authorization Server to sign Vouchers.
 
@@ -877,14 +879,14 @@ The following table lists the HTTP Status Codes and related error codes that MUS
 .. _sec_KeyRetrieval_Endpoint_InteroperabilityAPI:
 
 Interoperability API Endpoint
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Interoperability API Endpoint is part of the PDND Infrastructure and used to retrieve the public keys of other parties enrolled in the PDND.
 
 .. _sec_KeyRetrieval_Endpoint_InteroperabilityAPI_Request:
 
 Key Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 The Key Request is a ``GET`` HTTP request sent to the ``/keys/<kid>`` API. This request is used to retrieve a specific key identified by its unique ``kid``.
 
@@ -904,7 +906,7 @@ The Key Request MUST include the following HTTP header parameters:
 .. _sec_KeyRetrieval_Endpoint_InteroperabilityAPI_Response:
 
 Key Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 In case a public key with the provided ``kid`` exists, the Interoperability API Endpoint responds with a ``200 OK`` status code and a ``JWK`` [:rfc:`7517`] representing that key.
 
@@ -965,12 +967,12 @@ The following table lists the HTTP Status Codes and related error codes that MUS
 .. _sec_Usage:
 
 e-Service Usage
-===================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _sec_Usage_Prerequisites:
 
-Prerequisites
-----------------------
+Usage Prerequisites
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The **Consumer** MUST comply with the following prerequisites:
 
@@ -987,8 +989,8 @@ The **Provider** MUST comply with the following prerequisites:
 
 .. _sec_Usage_Flow:
 
-Flow
--------
+Usage Flow
+~~~~~~~~~~~~~~~~~
 
 .. _fig_Usage_Flow:
 
@@ -1181,12 +1183,12 @@ The Consumer MUST perform the following steps to validate the e-Service Response
 .. _sec_Usage_Endpoint_eService:
 
 e-Service Endpoint
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _sec_Usage_Endpoint_eService_Request:
 
 e-Service Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 The e-Service Request MUST include the following HTTP header parameters (unless otherwise specified):
 

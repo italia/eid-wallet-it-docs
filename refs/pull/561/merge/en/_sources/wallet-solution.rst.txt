@@ -3,7 +3,7 @@
 .. _wallet-solution.rst:
 
 Wallet Solution
--------------------
+++++++++++++++++++++++++++++++++++++
 
 The Wallet Solution is issued by the Wallet Provider in the form of a mobile app and services, such as web interfaces.
 
@@ -21,8 +21,8 @@ By supporting the mobile app, the Wallet Provider enusers the security and relia
 as it is responsible for issuing the Wallet Attestation,
 which is a cryptographic proof about the authenticity and integrity of the Wallet Instance.
 
-Requirements
-^^^^^^^^^^^^
+Wallet Solution Requirements
+-----------------------------
 
 This section lists the requirements that are be met by Wallet Providers and Wallet Solutions.
 
@@ -34,7 +34,8 @@ This section lists the requirements that are be met by Wallet Providers and Wall
  - The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
 
 Wallet Instance
-^^^^^^^^^^^^^^^
+------------------------------
+
 The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem.
 It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.
 
@@ -54,12 +55,19 @@ Wallet Provider Metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~
 An HTTP GET request to the **/.well-known/openid-federation** endpoint allows the retrieval of the Wallet Provider Entity Configuration.
 
-The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Provider metadata definition. It is structured in accordance with the `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_ and the Trust Model section outlined in this specification.
+The returning Entity Configuration of the Wallet Provider MUST contain the attributes described in the sections below.
 
-The returning Entity Configuration of the Wallet Provider MUST contain the attributes listed below:
+Wallet Provider Entity Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Header
-^^^^^^
+The Wallet Provider Entity Configuration is a signed JWT containing the
+public keys and supported algorithms of the Wallet Provider metadata definition.
+It is structured in accordance with the `OpenID Connect Federation <https://openid.net/specs/openid-connect-federation-1_0.html>`_
+and the Trust Model section outlined in this specification.
+
+
+Wallet Provider Entity Configuration JWT Header
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. list-table::
     :widths: 20 80
     :header-rows: 1
@@ -73,8 +81,8 @@ Header
     * - typ
       - Media type, set to ``entity-statement+jwt``.
 
-Payload
-^^^^^^^
+Wallet Provider Entity Configuration JWT Payload
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. list-table::
     :widths: 20 80
     :header-rows: 1
@@ -223,11 +231,8 @@ Below a non-normative example of the Entity Configuration.
   }
 
 
-Wallet Attestation
-~~~~~~~~~~~~~~~~~~
-
-Please refer to the `Wallet Attestation section`_.
-
+.. include:: wallet-attestation.rst
+.. include:: wallet-revocation.rst
 
 External references
 ^^^^^^^^^^^^^^^^^^^^

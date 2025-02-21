@@ -5,14 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Italian EUDI Wallet implementation profile &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>The Italian EUDI Wallet Implementation Profile &#8212; Ciao</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=edb75691"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The Digital Identity Wallet Paradigm" href="ssi-introduction.html" /> 
@@ -132,18 +134,11 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -161,7 +156,7 @@
           <div class="body" role="main">
             
   <section id="the-italian-eudi-wallet-implementation-profile">
-<h1>The Italian EUDI Wallet implementation profile<a class="headerlink" href="#the-italian-eudi-wallet-implementation-profile" title="Link to this heading">¶</a></h1>
+<h1>The Italian EUDI Wallet Implementation Profile<a class="headerlink" href="#the-italian-eudi-wallet-implementation-profile" title="Link to this heading">¶</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>The European Parliament <a class="reference external" href="https://www.europarl.europa.eu/doceo/document/A-9-2023-0038_EN.html#_section1">has adopted</a> the revision of the eIDAS Regulation concerning electronic identification and trust services, introducing a significant innovation: the <a class="reference external" href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/europe-fit-digital-age/european-digital-identity_en">European Digital Identity Wallet</a>. This update marks a pivotal advancement in the EU's digital strategy, aiming to enhance the security, interoperability, and usability of digital identities across Member States. For further details, resources, and notes on this legislative development, please refer to the official EU Commission and Parliament websites.</p>
@@ -237,48 +232,38 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lifecycle.html#digital-credential">Digital Credential</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#transition-to-issued">Transition to Issued</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#id1">Transition to Valid</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#transition-to-expired">Transition to Expired</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-issued">Credential Transition to Issued</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-valid">Credential Transition to Valid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-expired">Credential Transition to Expired</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lifecycle.html#transition-to-revoked">Transition to Revoked</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#transition-to-suspended">Transition to Suspended</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#id2">Lifecycle Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-suspended">Credential Transition to Suspended</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-lifecycle-management">Credential Lifecycle Management</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-metadata">Wallet Provider Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-solution-requirements">Wallet Solution Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance">Wallet Instance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-provider-entity-configuration">Wallet Provider Entity Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#header">Header</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#payload">Payload</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#id1">wallet_provider metadata</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#payload-federation-entity">Payload <cite>federation_entity</cite></a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-attestation">Wallet Attestation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation-requirements">Wallet Attestation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#static-component-view">Static Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#dynamic-component-view">Dynamic Component View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation-jwt">Wallet Attestation JWT</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-instance-revocation">Wallet Instance Revocation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#revocation-request-from-the-user">Revocation Request from the User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#validity-verification-mechanisms">Validity Verification Mechanisms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#external-references">External references</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#static-component-view">Static Component View</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation.html#dynamic-component-view">Dynamic Component View</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#wallet-attestation-request">Wallet Attestation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-attestation.html#table-wallet-attestation-claim">Wallet Attestation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-revocation.html#revocation-request-from-the-user">Revocation Request from the User</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-revocation.html#validity-verification-mechanisms">Validity Verification Mechanisms</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a><ul>
@@ -343,49 +328,89 @@
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#notification-response">Notification Response</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#metadata-for-openid-credential-verifier">Metadata for openid_credential_verifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-entity-configuration.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#requirements-and-security-patterns">Requirements and Security Patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#voucher-issuance">Voucher Issuance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#voucher-for-e-service">Voucher for e-Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#voucher-for-interoperability-api">Voucher for Interoperability API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-authorization-server-endpoint">PDND Authorization Server Endpoint</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#key-retrieval">Key Retrieval</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-keys">PDND Keys</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#participants-keys">Participants' Keys</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#well-known-endpoint">.well-known Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#interoperability-api-endpoint">Interoperability API Endpoint</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#e-service-usage">e-Service Usage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#sec-usage-prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#sec-usage-flow">Flow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#e-service-endpoint">e-Service Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-of-pid-q-eaa-providers">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-catalogue.html#credential-issuer-catalogue">Credential Issuer Catalogue</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-catalogue.html#notify-available-credential">Notify Available Credential</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-catalogue.html#notify-update-credential">Notify Update Credential</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-catalogue.html#notify-wallet-instance-revocation">Notify Wallet Instance Revocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-catalogue.html#get-statistics">Get Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html#entities-involved">Entities involved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html#status-update-flows">Status Update Flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-related-to-the-user">Status Update related to the User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-by-wallet-instance">Status Update by Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-by-wallet-providers">Status Update by Wallet Providers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-by-authentic-sources">Status Update by Authentic Sources</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-catalogue.html#authentic-source-catalogue">Authentic Source Catalogue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms">Validity Verification Mechanisms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#flow-during-issuance">Flow during issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#flow-for-status-refresh">Flow for status refresh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#flow-during-presentation">Flow during presentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#e-service-pdnd">e-Service PDND</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#requirements-and-security-patterns">Requirements and Security Patterns</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#voucher-issuance">Voucher Issuance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#voucher-for-e-service">Voucher for e-Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#flow">Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#voucher-for-interoperability-api">Voucher for Interoperability API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#api-prerequisites">API Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#api-flow">API Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#pdnd-authorization-server-endpoint">PDND Authorization Server Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#voucher-request">Voucher Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#voucher-response">Voucher Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#key-retrieval">Key Retrieval</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#pdnd-keys">PDND Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#participants-keys">Participants' Keys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#key-retrieval-prerequisites">Key Retrieval Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#key-retrieval-flow">Key Retrieval Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#well-known-endpoint">.well-known Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#keys-request">Keys Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#keys-response">Keys Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#interoperability-api-endpoint">Interoperability API Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#key-request">Key Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#key-response">Key Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#e-service-usage">e-Service Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#usage-prerequisites">Usage Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#usage-flow">Usage Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#e-service-endpoint">e-Service Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#e-service-request">e-Service Request</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#e-service-response">e-Service Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#e-service-pdnd-catalogue">e-Service PDND Catalogue</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#credential-issuer-catalogue">Credential Issuer Catalogue</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#notify-available-credential">Notify Available Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#notify-update-credential">Notify Update Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#notify-wallet-instance-revocation">Notify Wallet Instance Revocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#get-statistics">Get Statistics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
@@ -408,37 +433,11 @@
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#session-termination">Session Termination</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#entity-configuration-of-relying-parties">Entity Configuration of Relying Parties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#metadata-for-openid-credential-verifier">Metadata for openid_credential_verifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-federation-entity">Metadata for federation_entity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-openid-credential-verifier">Metadata for openid_credential_verifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html#entities-involved">Entities involved</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html#status-update-flows">Status Update Flows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-related-to-the-user">Status Update related to the User</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-by-wallet-instance">Status Update by Wallet Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-by-wallet-providers">Status Update by Wallet Providers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#status-update-by-authentic-sources">Status Update by Authentic Sources</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms">Validity Verification Mechanisms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#flow-during-issuance">Flow during issuance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#flow-for-status-refresh">Flow for status refresh</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#flow-during-presentation">Flow during presentation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#what-it-is-useful-for">What it is useful for</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#example">Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#general-properties">General Properties</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pseudonyms.html#implementation-considerations">Implementation Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a><ul>
@@ -516,7 +515,7 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">The Italian EUDI Wallet implementation profile</a><ul>
+<li><a class="reference internal" href="#">The Italian EUDI Wallet Implementation Profile</a><ul>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
 <li><a class="reference internal" href="#index-of-content">Index of content</a></li>
 </ul>
@@ -545,7 +544,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/02/2025.
+      Last updated on 21/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

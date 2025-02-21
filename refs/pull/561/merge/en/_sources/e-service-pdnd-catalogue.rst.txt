@@ -4,10 +4,10 @@
    :format: html
 
 e-Service PDND Catalogue
-========================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Credential Issuer Catalogue
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Credential Issuers MUST provide the following e-services through PDND to:
 
@@ -19,7 +19,8 @@ Credential Issuers MUST provide the following e-services through PDND to:
     A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-Issuer.html" target="_blank">here</a>`.
 
 Notify Available Credential
-+++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. list-table::
     :widths: 20 80 
     :stub-columns: 1
@@ -33,7 +34,7 @@ Notify Available Credential
       - Authentic Source
 
 Notify Update Credential
-++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :widths: 20 80 
@@ -51,7 +52,7 @@ Notify Update Credential
 
 
 Notify Wallet Instance Revocation
-++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :widths: 20 80 
@@ -66,7 +67,7 @@ Notify Wallet Instance Revocation
       - Wallet Provider
 
 Get Statistics
-++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
     :widths: 20 80 
@@ -83,3 +84,4 @@ Get Statistics
 Authentic Source Catalogue
 ---------------------------
 
+...
