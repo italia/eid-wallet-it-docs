@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. include:: ../common/symbols.rst
 
 .. _security-privacy-considerations.rst:
 
