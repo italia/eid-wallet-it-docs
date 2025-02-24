@@ -80,7 +80,7 @@ Get Statistics
     * - **Consumer**
       - Authorized Third Party 
 
-.. _authentic_sopurce_catalogue:
+.. _authentic_source_catalogue:
 
 Authentic Source Catalogue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
