@@ -169,7 +169,7 @@ html_css_files = [
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#  html_title = "Ciao" #settings_project_name
+#  html_title = settings_project_name
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #  html_short_title = "IT-Wallet"
