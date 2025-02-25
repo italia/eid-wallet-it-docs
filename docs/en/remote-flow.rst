@@ -729,7 +729,7 @@ Be the flow Same Device or Cross Device, the user-agent needs to check the sessi
 This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode or the href button pointing to the request URL.
 The JavaScript code makes the user-agent check the status endpoint using a polling strategy in seconds or a push strategy (e.g. web socket).
 
-Whatever Device Flow is detected by the Relying Party (eg: by inspecting the user-agent),
+Whatever Device Flow is detected by the Relying Party (e.g. by inspecting the user-agent),
 the page using the JavaScript code inspecting the status endpoint is always returned to the user-agent.
 
 In the Cross Device Flow the html page that checks the status endpoint also contains the QR Code.
