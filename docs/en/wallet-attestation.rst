@@ -528,7 +528,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
      - The ``iss`` parameter does not match the Wallet Provider’s expected URL identifier.
    * - ``404 Not Found`` 
      - ``not_found``
-     - The wallet instance was not found.
+     - The Wallet Instance was not found.
    * - ``422 Unprocessable Content`` [OPTIONAL]
      - ``validation_error``
      - The request does not adhere to the required format.
