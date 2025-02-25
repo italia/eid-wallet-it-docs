@@ -417,7 +417,7 @@ The following is an example of an error response from ``request_uri`` endpoint:
    "error_description": "The request_uri cannot be retrieved due to an internal server error."
   }
 
-Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. Additionally, the Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is server_error, the Wallet Instance MAY prompt the User to re-enter or scan a new QR code, if applicable.
+Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. Additionally, the Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is ``server_error``, the Wallet Instance MAY prompt the User to re-enter or scan a new QR code, if applicable.
 
 Authorization Error Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
