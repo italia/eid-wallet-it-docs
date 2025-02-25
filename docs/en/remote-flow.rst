@@ -21,8 +21,8 @@ A High-Level description of the remote flow, from the User's perspective, is giv
   1. the Wallet Instance obtains an URL in the Same Device flow or a QR Code containing the URL in Cross Device flow;
   2. the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_method``;
   3. If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method and obtain the signed Request Object. If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter;
-  4. the Wallet Instance verifies the signature of the signed Request Object using the public key identified in the JWT header of the Request Object. Using that reference, the Wallet Instance is able to select the correct RP's public key for signature verification;
-  5. the Wallet Instance verifies that the ``client_id`` contained in the Request Object issuer (RP) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the RP's Entity Configuration within the Trust Chain;
+  4. the Wallet Instance verifies the signature of the signed Request Object using the public key identified in the JWT header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification;
+  5. the Wallet Instance verifies that the ``client_id`` contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the Relying Party's Entity Configuration within the Trust Chain;
   6. the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the Trust Chain;
   7. the Wallet Instance asks User disclosure and consent by showing the Relying Party's identity and the requested attributes;
   8. the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;
@@ -213,7 +213,7 @@ Below normative details and references about the parameters to be used by the Wa
    * - `wallet_metadata`
      - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 9.1 and the table below, "Wallet Metadata Parameters".
    * - `wallet_nonce`
-     - RECOMMENDED. String used by Wallet Instance to prevent replay of the RP's responses. See `OpenID4VP`_, Section 9.
+     - RECOMMENDED. String used by Wallet Instance to prevent replay of the Relying Party's responses. See `OpenID4VP`_, Section 9.
 
 .. list-table:: Wallet Metadata Parameters
    :header-rows: 1
@@ -297,7 +297,7 @@ where a non-normative example in the form of decoded header and payload is shown
           ]
         },
         {
-          "id": "wallet unit attestation",
+          "id": "wallet attestation",
           "format": "jwt",
           "claims": [
               {"path": ["iss"]},
@@ -502,7 +502,7 @@ The `vp_token` parameter value corresponds to the format used when the DCQL quer
     "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
     "vp_token": {
         "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
-        "wallet unit attestation": $WalletAttestation-JWT
+        "wallet attestation": $WalletAttestation-JWT
     }
   }
 
@@ -581,9 +581,9 @@ Revocation Checks
 
 The revocation mechanisms that the Relying Parties MUST implement are defined in `Digital Credential Revocation and Suspension section`_.
 
-In the context of Digital Credential evaluation, any Relying Parties (RPs) establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the holder.
+In the context of Digital Credential evaluation, any Relying Party establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the holder.
 
-The process begins with the RP requesting specific Credentials from the Holder. This request should align with the Relying Party's requirements and the context in which the Credentials will be used. The Holder then responds by releasing the requested Credentials.
+The process begins with the Relying Party requesting specific Credentials from the Holder. This request should align with the Relying Party's requirements and the context in which the Credentials will be used. The Holder then responds by releasing the requested Credentials.
 
 Upon receiving the Credentials, the Relying Party evaluates their validity and value based on its internal policies. This evaluation considers the current status of the Credential (e.g., active, suspended, revoked) and the specific use case for which the Credential is being presented.
 
@@ -685,7 +685,7 @@ The following is a non-normative example of the response from the Relying Party 
     "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
   }
 
-The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to a specific RP's endpoint in order to complete the process. The value can be added as a path component, as a fragment or as a parameter to the URL according to Section 6.2 of `OpenID4VP`_. In general, the specific entity that performs this action depends on whether the flow is Same device or Cross device; however, in the case described above, the redirection will always be performed by the user-agent.
+The ``redirect_uri`` value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to a specific Relying Party's endpoint in order to complete the process. The value can be added as a path component, as a fragment or as a parameter to the URL according to Section 6.2 of `OpenID4VP`_. In general, the specific entity that performs this action depends on whether the flow is Same device or Cross device; however, in the case described above, the redirection will always be performed by the user-agent.
 
 .. warning::
     For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``redirect_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``redirect_uris`` parameter, obtained from the Trust Chain about the Relying Party.
@@ -727,9 +727,9 @@ This specification introduces the Relying Party Presentation Request Status Endp
 
 Be the flow Same Device or Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint).
 This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode or the href button pointing to the request URL.
-The JavaScript code makes the user-agent check the status endpoint using a polling strategy in seconds or a push strategy (e.g. web socket).
+The JavaScript code makes the user-agent check the status endpoint using a polling strategy in seconds or a push strategy (e.g., web socket).
 
-Whatever Device Flow is detected by the Relying Party (e.g. by inspecting the user-agent),
+Whatever Device Flow is detected by the Relying Party (e.g., by inspecting the user-agent),
 the page using the JavaScript code inspecting the status endpoint is always returned to the user-agent.
 
 In the Cross Device Flow the html page that checks the status endpoint also contains the QR Code.
