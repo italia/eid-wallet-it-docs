@@ -226,10 +226,10 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>JSON array containing a list of the supported &quot;response_mode&quot; values, as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAuth 2.0 Multiple Response Type Encoding Practices</a>. The supported values MAY be <em>query</em> and <em>form_post.jwt</em> (see <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
-<td><p>JSON array containing a list of the supported &quot;response_type&quot; values, as specified in :rfc: <cite>8414</cite>. The supported value MUST be <em>code</em>.</p></td>
+<td><p>JSON array containing a list of the supported &quot;response_type&quot; values, as specified in <span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a>. The supported value MUST be <em>code</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authorization_signing_alg_values_supported</strong></p></td>
-<td><p>JSON array containing a list of the <span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> supported signing algorithms (<em>alg</em> values). The values MUST be set according to Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>. See Section 4 of <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<td><p>JSON array containing a list of the <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> supported signing algorithms (<em>alg</em> values). The values MUST be set according to Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>. See Section 4 of <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>grant_types_supported</strong></p></td>
 <td><p>JSON array containing a list of the supported grant type values. The authorization server MUST support <em>authorization_code</em>.</p></td>
@@ -238,7 +238,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support <em>attest_jwt_client_auth</em> as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>token_endpoint_auth_signing_alg_values_supported</strong></p></td>
-<td><p>JSON array containing a list of the signing algorithms (&quot;<em>alg</em>&quot; values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
+<td><p>JSON array containing a list of the signing algorithms (&quot;<em>alg</em>&quot; values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
 <td><p>JSON array containing a list of the signing algorithms (&quot;<em>alg</em>&quot; values) supported for Request Objects. See <a class="reference external" href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">[openid-connect-discovery-1_0]</a>.</p></td>
@@ -273,7 +273,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>URL of the Nonce Endpoint, as defined in Section 7 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>revocation_endpoint</strong></p></td>
-<td><p>URL of the revocation endpoint. See <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
+<td><p>URL of the revocation endpoint. See <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>deferred_credential_endpoint</strong></p></td>
 <td><p>URL of the deferred credential endpoint, as defined in Section 11.2.3 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
@@ -285,14 +285,14 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>It MUST be an HTTPs URL indicating the notification endpoint. See Section 11.2.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>authorization_servers</strong></p></td>
-<td><p>OPTIONAL. Array of strings, where each string is an identifier of the OAuth 2.0 Authorization Server (as defined in [<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a>]) the PID/(Q)EAA Provider relies on for authorization. If this parameter is omitted, the entity providing the PID/(Q)EAA Provider is also acting as the Authorization Server.</p></td>
+<td><p>OPTIONAL. Array of strings, where each string is an identifier of the OAuth 2.0 Authorization Server (as defined in [<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a>]) the PID/(Q)EAA Provider relies on for authorization. If this parameter is omitted, the entity providing the PID/(Q)EAA Provider is also acting as the Authorization Server.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>display</strong></p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section 11.2.3. Array of objects containing display language properties. The parameters that MUST be included are:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>name</strong>: String value of a display name for the PID/(Q)EAA Provider.</p></li>
-<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
+<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -310,7 +310,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>name</strong>: String value of a display name for the Credential.</p></li>
-<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
+<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -323,7 +323,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>name</strong>: String value of a display name for the claim.</p></li>
-<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
+<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -515,7 +515,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/v1.0/disabilitycard&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="p">{</span>
 <span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;document_number&quot;</span><span class="p">],</span>
@@ -666,7 +666,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/v1.0/mdl&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="p">{</span>
 <span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">],</span>

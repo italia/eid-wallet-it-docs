@@ -56,7 +56,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **response_modes_supported**
     - JSON array containing a list of the supported "response_mode" values, as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. The supported values MAY be *query* and *form_post.jwt* (see `JARM`_).
   * - **response_types_supported**
-    - JSON array containing a list of the supported "response_type" values, as specified in :rfc: `8414`. The supported value MUST be *code*.
+    - JSON array containing a list of the supported "response_type" values, as specified in :rfc:`8414`. The supported value MUST be *code*.
   * - **authorization_signing_alg_values_supported**
     - JSON array containing a list of the :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`Cryptographic algorithms`. See Section 4 of `JARM`_.
   * - **grant_types_supported**
