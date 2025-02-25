@@ -422,7 +422,7 @@ Upon receiving an error response, the Wallet Instance SHOULD inform the User of 
 Authorization Error Response
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the request_uri but fails validation checks by the Wallet Instance. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of its issuer (Relying Party).
+There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the ``request_uri`` but fails validation checks by the Wallet Instance. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of its issuer (Relying Party).
 
 If the Wallet Instance encounters any error during the evaluation of the Authorization Request, it MUST notify the Relying Party according to [:rfc:`9101`] and `OpenID4VP`_. The response MUST use *application/json* as the content type and MUST include the following parameters:
 
