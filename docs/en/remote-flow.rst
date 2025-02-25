@@ -426,8 +426,8 @@ There are cases where the Wallet Instance cannot validate the Request Object or 
 
 If the Wallet Instance encounters any error during the evaluation of the Authorization Request, it MUST notify the Relying Party according to [:rfc:`9101`] and `OpenID4VP`_. The response MUST use *application/json* as the content type and MUST include the following parameters:
 
-  - *error*. The error code.
-  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+  - ``error``. The error code.
+  - ``error_description``. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
 .. warning::
   The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests. For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.
