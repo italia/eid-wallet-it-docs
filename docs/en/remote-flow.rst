@@ -67,7 +67,7 @@ The details of each step shown in the previous picture are described in the tabl
   * - **20**
     - The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post.jwt").
   * - **21**, **22**, **23**, **24**, **25** 
-    - The Relying Party verifies the Authorization Response, extracts the Wallet Unit Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials. If all previous verifications yelded positive result, the Relying Party updates the User session.
+    - The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials. If all previous verifications yelded positive result, the Relying Party updates the User session.
   * - **26**
     - The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.
   * - **27**, **28**
