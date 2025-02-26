@@ -72,7 +72,7 @@ Wallet Instance Initialization and Registration
 
     **Federation Check**: The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol-specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Wallet Provider is represented within the section `Wallet Provider metadata`_.
 
-**Steps 3-5**: The Wallet Instance sends a request to the nonce endpoint of the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
+**Steps 3-5**: The Wallet Instance sends a request to the `nonce endpoint`_ of the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
 
 .. code-block:: http
 
@@ -146,7 +146,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifieable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
-**Step 9**: The Wallet Instance sends the ``challenge`` with Key Attestation and Cryptographic Hardware Key Tag to the Wallet Provider Backend in order to register the Wallet Instance identified with the Cryptographic Hardware Key public key.
+**Step 9**: The Wallet Instance sends the ``challenge`` with Key Attestation and Cryptographic Hardware Key Tag to the `wallet-instance endpoint`_ of the Wallet Provider Backend to register the Wallet Instance identified by the Cryptographic Hardware Key public key.
 
 In order to register the Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method. The parameters MUST be encoded using the `application/json` format and included in the message body. The following parameters MUST be provided:
 
@@ -188,7 +188,7 @@ Below is a non-normative example of the request.
 
 .. warning::
   During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate it with a specific user
-  uniquely identifiable by the Wallet Provider. This association is at the discretion of the Wallet PRovider and will not be addressed
+  uniquely identifiable by the Wallet Provider. This association is at the discretion of the Wallet Provider and will not be addressed
   within these guidelines as each Wallet Provider may or may not have a user identification system already implemented.
 
 
@@ -227,7 +227,7 @@ Below is a non-normative example of an error response:
      "error_description": "The provided challenge is invalid, expired, or already used."
    }
 
-The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response:
+The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:
 
 .. list-table::
    :widths: 20 20 50
@@ -284,7 +284,7 @@ This section describes the Wallet Attestation format and how the Wallet Provider
   3. Verify the Wallet Provider's federation membership and retrieve its metadata.
 
 
-**Steps 4-6**: The Wallet Instance solicits a one-time "challenge" from the Wallet Provide Backend. This "challenge" takes the form of a ``nonce``, which is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6**: The Wallet Instance solicits a one-time "challenge" from the `nonce endpoint`_ of the Wallet Provider Backend. This "challenge" takes the form of a ``nonce``, which is required to be unpredictable and serves as the main defense against replay attacks. 
 The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
 
 .. code-block:: http
@@ -406,7 +406,7 @@ The Wallet Instance MUST do an HTTP request to the Wallet Provider's `wallet-att
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Attestation valid for a maximum of 24 hours.
 
-Below is an non-normative example of the Wallet Attestation without encoding and signature applied:
+Below is a non-normative example of the Wallet Attestation without encoding and signature applied:
 
 .. code-block::
 
@@ -473,7 +473,7 @@ Below is a non-normative example of the response.
 
 .. _table_wallet_attestation_request_claim:
 
-If any error occur during the Wallet Attestation Request Verification, the Wallet Provider MUST return an error response as defined in :rfc:`7231` (additional details available in :rfc:`7807`). The response MUST use the content type set to *application/json* and MUST include the following parameters:
+If any errors occur during the Wallet Attestation Request Verification, the Wallet Provider MUST return an error response as defined in :rfc:`7231` (additional details available in :rfc:`7807`). The response MUST use the content type set to *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
@@ -692,8 +692,9 @@ The body of the Wallet Attestation JWT MUST contain the following parameters:
       - Array of JSON Strings containing the values of the Client Identifier schemes that the Wallet supports.
       - `OpenID4VP`_
 
-
-.. _wallet-attestation endpoint: wallet-solution.html#wallet-attestation
+.. _wallet-instance endpoint: wallet-solution.html#wallet-provider-endpoints
+.. _nonce endpoint: wallet-solution.html#wallet-provider-endpoints
+.. _wallet-attestation endpoint: wallet-solution.html#wallet-provider-endpoints
 .. _Wallet Attestation Request: wallet-attestation.html#format-of-the-wallet-attestation-request
 .. _Wallet Attestation: wallet-attestation.html#format-of-the-wallet-attestation
 .. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
