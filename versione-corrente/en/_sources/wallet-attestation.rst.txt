@@ -72,7 +72,7 @@ Wallet Instance Initialization and Registration
 
     **Federation Check**: The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol-specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Wallet Provider is represented within the section `Wallet Provider metadata`_.
 
-**Steps 3-5**: The Wallet Instance sends a request to the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
+**Steps 3-5**: The Wallet Instance sends a request to the `nonce endpoint`_ of the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which MUST be unpredictable to serve as the main defense against replay attacks. The backend MUST generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
 
 .. code-block:: http
 
@@ -88,6 +88,31 @@ Wallet Instance Initialization and Registration
       "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
     }
 
+.. _Nonce Error Handling:
+
+If any errors occur during the nonce generation, the Wallet Provider MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use *application/json* as the content type and MUST include the following parameters:
+
+  - *error*. The error code.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response:
+
+.. list-table::
+   :widths: 30 20 50
+   :header-rows: 1
+
+   * - **HTTP Status Code**
+     - **Error Code**
+     - **Description**
+   * - ``500 Internal Server Error`` 
+     - ``server_error``
+     - An internal server error occurred while processing the request.
+   * - ``503 Service Unavailable`` 
+     - ``temporarily_unavailable``
+     - Service unavailable. Please try again later.
+
+
+
 **Step 6**: The Wallet Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:
 
    1. It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Wallet is in the initialization phase, they MUST be deleted.
@@ -97,7 +122,9 @@ Wallet Instance Initialization and Registration
 
 .. note::
 
-    **WSCD**: The Wallet Instance MAY use a local WSCD for key generation on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.
+    **WSCD**: The Wallet Instance MAY use a local WSCD for cryptographic operations, including key generation, secure storage, and cryptographic processing,  on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.
+
+    If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Wallet Instance (e.g., see `TEE Client API Errors <TEE Client API Errors_>`_). The Wallet Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Wallet Instance implementation.
 
 **Step 7**: The Wallet Instance uses the Device Integrity Service, providing the "challenge" and the Cryptographic Hardware Key Tag to acquire the Key Attestation.
 
@@ -110,13 +137,16 @@ Wallet Instance Initialization and Registration
     *Secure Enclave* has been available on Apple devices since the iPhone 5s (2013).
     For Android devices, the inclusion of **Strongbox Keymaster** may vary by manufacturer, who decides whether to include it or not.
 
+    If any errors occur in any DIS process, such as device integrity verification, for example, due to an unavailable DIS, an internal error, or an invalid nonce in the integrity request, the DIS raises an error response (e.g., see  `Play Integrity API Errors <Play Integrity API Errors_>`_). The Wallet Instance MUST process these errors accordingly. Details on error handling are left to the Wallet Instance implementation.
+ 
+
 **Step 8**: The Device Integrity Service performs the following actions:
 
 * Creates a Key Attestation that is linked with the provided "challenge" and the public key of the Wallet Hardware.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifieable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
-**Step 9**: The Wallet Instance sends the ``challenge`` with Key Attestation and Cryptographic Hardware Key Tag to the Wallet Provider Backend in order to register the Wallet Instance identified with the Cryptographic Hardware Key public key.
+**Step 9**: The Wallet Instance sends the ``challenge`` with Key Attestation and Cryptographic Hardware Key Tag to the `wallet-instance endpoint`_ of the Wallet Provider Backend to register the Wallet Instance identified by the Cryptographic Hardware Key public key.
 
 In order to register the Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method. The parameters MUST be encoded using the `application/json` format and included in the message body. The following parameters MUST be provided:
 
@@ -158,7 +188,7 @@ Below is a non-normative example of the request.
 
 .. warning::
   During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate it with a specific user
-  uniquely identifiable by the Wallet Provider. This association is at the discretion of the Wallet PRovider and will not be addressed
+  uniquely identifiable by the Wallet Provider. This association is at the discretion of the Wallet Provider and will not be addressed
   within these guidelines as each Wallet Provider may or may not have a user identification system already implemented.
 
 
@@ -177,10 +207,58 @@ Below is a non-normative example of the response.
 
     HTTP/1.1 204 No content
 
-If any errors occur during the Wallet Instance registration, the Wallet Provider MUST return an error response. The response MUST use the content type set to *application/json* and MUST include the following parameters:
+If any errors occur during the Wallet Instance registration, the Wallet Provider MUST return an error response as defined in :rfc:`7231`, with additional details available in :rfc:`7807`. The response MUST use the content type set to *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response:
+
+.. code:: http
+
+   HTTP/1.1 403 Forbidden
+   Content-Type: application/json
+   Cache-Control: no-store
+
+.. code:: json
+
+   {
+     "error": "forbidden",
+     "error_description": "The provided challenge is invalid, expired, or already used."
+   }
+
+The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:
+
+.. list-table::
+   :widths: 20 20 50
+   :header-rows: 1
+
+   * - **HTTP Status Code**
+     - **Error Code**
+     - **Description**
+   * - ``400 Bad Request`` 
+     - ``bad_request``
+     - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
+   * - ``403 Forbidden`` 
+     - ``integrity_check_error``
+     - The device does not meet the Wallet Provider’s minimum security requirements.
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The provided challenge is invalid, expired, or already used.
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The signature of the Key Attestation is invalid.
+   * - ``422 Unprocessable Content`` [OPTIONAL]
+     - ``validation_error``
+     - The request does not adhere to the required format.
+   * - ``500 Internal Server Error`` 
+     - ``server_error``
+     - An internal server error occurred while processing the request.
+   * - ``503 Service Unavailable`` 
+     - ``temporarily_unavailable``
+     - Service unavailable. Please try again later.
+
+
 
 **Steps 13-14**: The Wallet Instance has been initialized and becomes operational.
 
@@ -199,14 +277,15 @@ This section describes the Wallet Attestation format and how the Wallet Provider
 
 **Step 1**: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.
 
-**Steps 2-3**: The Wallet Instance checks if a Cryptographic Hardware Key exists and generates an ephemeral asymmetric key pair. The Wallet Instance also:
+**Steps 2-3**: The Wallet Instance MUST:
 
-  1. MUST ensure that Cryptographic Hardware Keys exist. If they do not exist, it is necessary to reinitialize the Wallet.
-  2. MUST generates an ephemeral asymmetric key pair whose public key will be linked with the Wallet Attestation.
-  3. MUST check if Wallet Provider is part of the federation and obtain its metadata.
+  1. Verify the existence of Cryptographic Hardware Keys. If none exist, Wallet Instance re-initialization is required.
+  2. Generate an ephemeral asymmetric key pair for Wallet Attestation, linking the public key to the attestation.
+  3. Verify the Wallet Provider's federation membership and retrieve its metadata.
 
 
-**Steps 4-6**: The Wallet Instance solicits a one-time "challenge" from the Wallet Provider Backend. This "challenge" takes the form of a "nonce," which is required to be unpredictable and serves as the main defense against replay attacks. The backend MUST produce the "nonce" in a manner that ensures its single-use within a predetermined time frame.
+**Steps 4-6**: The Wallet Instance solicits a one-time "challenge" from the `nonce endpoint`_ of the Wallet Provider Backend. This "challenge" takes the form of a ``nonce``, which is required to be unpredictable and serves as the main defense against replay attacks. 
+The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
 
 .. code-block:: http
 
@@ -222,12 +301,16 @@ This section describes the Wallet Attestation format and how the Wallet Provider
       "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
     }
 
+
+If an error occurs during ``nonce`` generation, the Wallet Provider MUST return an error response (see `Nonce Error Handling`_ for details on possible errors).
+
+
 **Step 7**: The Wallet Instance performs the following actions:
 
-  * Creates a ``client_data``, a JSON structure that includes the challenge and the thumbprint of ephemeral public ``jwk``.
-  * Computes a ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
+  * Creates ``client_data``, a JSON object that includes the challenge and the thumbprint of ephemeral public ``jwk``.
+  * Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
 
-Below a non-normative example of the ``client_data``.
+Below is a non-normative example of the ``client_data`` JSON object.
 
 .. code-block:: json
 
@@ -236,20 +319,20 @@ Below a non-normative example of the ``client_data``.
     "jwk_thumbprint": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
   }
 
-**Steps 8-10**: The Wallet Instance takes the following steps:
+**Steps 8-10**: The Wallet Instance:
 
-  *  It produces an hardware_signature by signing the ``client_data_hash`` with the Wallet Hardware's private key, serving as a proof of possession for the Cryptographic Hardware Keys.
-  *  It requests the Device Integrity Service to create an ``integrity_assertion`` linked to the ``client_data_hash``.
-  *  It receives a signed ``integrity_assertion`` from the Device Integrity Service, authenticated by the OEM.
+  *  produces an ``hardware_signature`` value by signing the ``client_data_hash`` with the Wallet Hardware's private key, serving as a proof of possession for the Cryptographic Hardware Keys.
+  *  requests the Device Integrity Service to create an ``integrity_assertion`` value linked to the ``client_data_hash``.
+  *  receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
 
 .. note:: ``integrity_assertion`` is a custom payload generated by Device Integrity Service, signed by device OEM and encoded in base64 to have uniformity between different devices.
 
 **Steps 11-12**: The Wallet Instance:
 
   * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>` below) and is signed using the private key of the initially generated ephemeral key pair.
-  * Submits the Wallet Attestation Request to the token endpoint of the Wallet Provider Backend.
+  * Submits the Wallet Attestation Request to the `wallet-attestation endpoint`_ of the Wallet Provider Backend.
 
-Below an non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
+Below is a non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
 
 .. code-block::
 
@@ -298,38 +381,32 @@ Below an non-normative example of the Wallet Attestation Request JWT without enc
     "exp": 1686652315
   }
 
-The Wallet Instance MUST do an HTTP request to the Wallet Provider's `token endpoint`_,
-using the method `POST <https://datatracker.ietf.org/doc/html/rfc6749#section-3.2>`__.
-
-The **token** endpoint (as defined in `RFC 7523 section 4`_) requires the following parameters
-encoded in ``application/x-www-form-urlencoded`` format:
-
-* ``grant_type`` set to ``urn:ietf:params:oauth:grant-type:jwt-bearer``;
-* ``assertion`` containing the signed JWT of the Wallet Attestation Request.
+The Wallet Instance MUST send an HTTP request to the Wallet Provider's `wallet-attestation endpoint`_, using the `POST` method with ``Content-Type`` ``application/json``. The request body MUST contain an ``assertion`` parameter whose value is the signed JWT of the Wallet Attestation Request.
 
 .. code-block:: http
 
-    POST /token HTTP/1.1
+    POST /wallet-attestation HTTP/1.1
     Host: wallet-provider.example.org
-    Content-Type: application/x-www-form-urlencoded
+    Content-Type: application/json
 
-    grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
-    &assertion=eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...
+    {
+      "assertion": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG..."
+    }
 
-**Steps 13-17**: The Wallet Provider Backend assesses the Wallet Attestation Request and issues a Wallet Attestation, if the requirements described below are satisfied:
+**Steps 13-17**: The Wallet Provider Backend evaluates the Wallet Attestation Request and MUST perform the following checks:
 
-    1. It MUST check the Wallet Attestation Request contains all the defined HTTP Request header parameters according to :ref:`Table of the Wallet Attestation Request Header <table_wallet_attestation_request_claim>`.
-    2. It MUST verify that the signature of the received Wallet Attestation Request is valid and associated with public ``jwk``.
-    3. It MUST verify that the ``challenge`` was generated by  Wallet Provider and has not already been used.
-    4. It MUST check that there is a Wallet Instance registered with that ``hardware_key_tag`` and that it is still valid.
-    5. It MUST reconstruct the ``client_data`` via the ``challenge`` and the ``jwk`` public key, to validate ``hardware_signature`` via the Cryptographic Hardware Key public key registered and associated with the Wallet Instance.
-    6. It MUST validate the ``integrity_assertion`` as defined by the device manufacturers' guidelines. The list of checks that the Wallet Provider MUST perform are defined by the operating system manufacturers documentation.
-    7. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Wallet Provider.
-    8. It MUST check that the URL in ``iss`` parameter is equal to the URL identifier of Wallet Provider.
+    1. The request MUST include all required HTTP header parameters as defined in :ref:`Table of the Wallet Attestation Request Header <table_wallet_attestation_request_claim>`.
+    2. The signature of the Wallet Attestation Request MUST be valid and verifiable using the provided ``jwk``.
+    3. The ``challenge`` value MUST have been generated by the Wallet Provider and not previously used.
+    4. A valid and currently registered Wallet Instance associated with the provided MUST exist.
+    5. The ``client_data`` MUST be reconstructed using the ``challenge`` and the ``jwk`` public key.  The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Wallet Instance.
+    6. The ``integrity_assertion`` MUST be validated according to the device manufacturer's guidelines.  The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation.
+    7. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
+    8. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier.
 
-If all checks are passed, Wallet Provider issues a Wallet Attestation with an expiration limited to 24 hours.
+Upon successful completion of all checks, the Wallet Provider issues a Wallet Attestation valid for a maximum of 24 hours.
 
-Below an non-normative example of the Wallet Attestation without encoding and signature applied:
+Below is a non-normative example of the Wallet Attestation without encoding and signature applied:
 
 .. code-block::
 
@@ -381,7 +458,7 @@ Below an non-normative example of the Wallet Attestation without encoding and si
     "exp": 1687288395
   }
 
-**Step 18**: The response is returned by the Wallet Provider. If successful, the HTTP response code MUST be set with the value ``200 OK`` and contain the Wallet Attestation signed by the Wallet Provider. The Wallet Instance therefore performs security, integrity and trust verification about the Wallet Attestation and its issuer.
+**Step 18**: Upon successful completion, the Wallet Provider MUST return an HTTP response with a status code of ``200 OK``, containing the Wallet Attestation signed by the Wallet Provider. The Wallet Instance will then perform security, integrity, and trust verification of the Wallet Attestation and its issuer.
 
 
 Below is a non-normative example of the response.
@@ -396,10 +473,76 @@ Below is a non-normative example of the response.
 
 .. _table_wallet_attestation_request_claim:
 
+If any errors occur during the Wallet Attestation Request Verification, the Wallet Provider MUST return an error response as defined in :rfc:`7231` (additional details available in :rfc:`7807`). The response MUST use the content type set to *application/json* and MUST include the following parameters:
+
+  - *error*. The error code.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+
+Below is a non-normative example of an error response:
+
+.. code:: http
+
+   HTTP/1.1 403 Forbidden
+   Content-Type: application/json
+   Cache-Control: no-store
+
+.. code:: json
+
+   {
+     "error": "integrity_check_error",
+     "error_description": "The device does not meet the Wallet Provider’s minimum security requirements."
+   }
+
+The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:
+
+.. list-table::
+   :widths: 30 20 50
+   :header-rows: 1
+
+   * - **HTTP Status Code**
+     - **Error Code**
+     - **Description**
+   * - ``400 Bad Request`` 
+     - ``bad_request``
+     - The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The wallet instance was revoked.
+   * - ``403 Forbidden`` 
+     - ``integrity_check_error``
+     - The device does not meet the Wallet Provider’s minimum security requirements.
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The signature of the Wallet Attestation Request is invalid or does not match the associated public key (JWK).
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The integrity assertion validation failed; the integrity assertion is tampered with or improperly signed.
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The provided challenge is invalid, expired, or already used.
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The Proof of Possession (``hardware_signature``) is invalid.
+   * - ``403 Forbidden`` 
+     - ``invalid_request``
+     - The ``iss`` parameter does not match the Wallet Provider’s expected URL identifier.
+   * - ``404 Not Found`` 
+     - ``not_found``
+     - The Wallet Instance was not found.
+   * - ``422 Unprocessable Content`` [OPTIONAL]
+     - ``validation_error``
+     - The request does not adhere to the required format.
+   * - ``500 Internal Server Error`` 
+     - ``server_error``
+     - An internal server error occurred while processing the request.
+   * - ``503 Service Unavailable`` 
+     - ``temporarily_unavailable``
+     - Service unavailable. Please try again later.
+
 Wallet Attestation Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The JOSE header of the Wallet Attestation Request JWT MUST contain:
+The JOSE header of the Wallet Attestation Request JWT MUST contain the following parameters:
 
 .. list-table::
     :widths: 20 60 20
@@ -418,7 +561,7 @@ The JOSE header of the Wallet Attestation Request JWT MUST contain:
       -  It MUST be set to ``var+jwt``
       -
 
-The body of the Wallet Attestation Request JWT MUST contain:
+The body of the Wallet Attestation Request JWT MUST contain the following parameters:
 
 .. list-table::
     :widths: 20 60 20
@@ -478,7 +621,7 @@ The body of the Wallet Attestation Request JWT MUST contain:
 Wallet Attestation
 ~~~~~~~~~~~~~~~~~~
 
-The JOSE header of the Wallet Attestation JWT MUST contain:
+The JOSE header of the Wallet Attestation JWT MUST contain the following parameters:
 
 .. list-table::
     :widths: 20 60 20
@@ -500,7 +643,7 @@ The JOSE header of the Wallet Attestation JWT MUST contain:
       - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
 
-The body of the Wallet Attestation JWT MUST contain:
+The body of the Wallet Attestation JWT MUST contain the following parameters:
 
 .. list-table::
     :widths: 20 60 20
@@ -549,8 +692,9 @@ The body of the Wallet Attestation JWT MUST contain:
       - Array of JSON Strings containing the values of the Client Identifier schemes that the Wallet supports.
       - `OpenID4VP`_
 
-
-.. _token endpoint: wallet-solution.html#wallet-attestation
+.. _wallet-instance endpoint: wallet-solution.html#wallet-provider-endpoints
+.. _nonce endpoint: wallet-solution.html#wallet-provider-endpoints
+.. _wallet-attestation endpoint: wallet-solution.html#wallet-provider-endpoints
 .. _Wallet Attestation Request: wallet-attestation.html#format-of-the-wallet-attestation-request
 .. _Wallet Attestation: wallet-attestation.html#format-of-the-wallet-attestation
 .. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
@@ -560,5 +704,7 @@ The body of the Wallet Attestation JWT MUST contain:
 .. _DeviceCheck: https://developer.apple.com/documentation/devicecheck
 .. _OAuth 2.0 Nonce Endpoint: https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/
 .. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
+.. _Play Integrity API Errors: https://developer.android.com/google/play/integrity/error-codes
+.. _TEE Client API Errors: https://globalplatform.org/wp-content/uploads/2010/07/TEE_Client_API_Specification-V1.0.pdf
 
 

@@ -174,7 +174,7 @@
 <p>In this flow the Relying Party MUST provide the URL where the signed presentation Request Object is available for download.</p>
 <p>Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows:</p>
 <ul class="simple">
-<li><p><strong>Same Device</strong>, the Relying Party MUST provide a HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page;</p></li>
+<li><p><strong>Same Device</strong>, the Relying Party MUST provide an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page;</p></li>
 <li><p><strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance.</p></li>
 </ul>
 <p>Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request,
@@ -182,20 +182,20 @@ the User gives the consent for the disclosure of the Digital Credentials, in the
 <p>A High-Level description of the remote flow, from the User's perspective, is given below:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>the Wallet Instance obtains an URL in the Same Device flow or a QR Code containing the URL in Cross Device flow;</p></li>
+<li><p>the Wallet Instance obtains a URL in the Same Device flow or a QR Code containing the URL in Cross Device flow;</p></li>
 <li><p>the Wallet Instance extracts from the payload the following parameters: <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>;</p></li>
 <li><p>If <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> is provided and set with the value <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance SHOULD transmit its metadata to the Relying Party's <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint using the HTTP POST method and obtain the signed Request Object. If <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> is set with the value <code class="docutils literal notranslate"><span class="pre">get</span></code> or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter;</p></li>
-<li><p>the Wallet Instance verifies the signature of the signed Request Object using the public key identified in the JWT header of the Request Object. Using that reference, the Wallet Instance is able to select the correct RP's public key for signature verification;</p></li>
-<li><p>the Wallet Instance verifies that the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contained in the Request Object issuer (RP) matches with the one obtained at the step number 2 and with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> parameter contained in the RP's Entity Configuration within the Trust Chain;</p></li>
-<li><p>the Wallet Instance evaluates the requested Digital Credentials and checks the elegibility of the Relying Party in asking these by applying the policies related to that specific Relying Party, obtained with the Trust Chain;</p></li>
+<li><p>the Wallet Instance verifies the signature of the signed Request Object using the public key identified in the JWT header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification;</p></li>
+<li><p>the Wallet Instance verifies that the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> parameter contained in the Relying Party's Entity Configuration within the Trust Chain;</p></li>
+<li><p>the Wallet Instance evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain;</p></li>
 <li><p>the Wallet Instance asks User disclosure and consent by showing the Relying Party's identity and the requested attributes;</p></li>
-<li><p>the Wallet Instance presents the requested information to the Relying Party along with the Wallet Attestation. The Relying Party validates the presented Credentials checking the trust with their Issuers, and validates the Wallet Attestation by also checking that the Wallet Provider is trusted;</p></li>
-<li><p>the Wallet Instance informs the User about the successfull authentication with the Relying Party, the User continues the navigation.</p></li>
+<li><p>the Wallet Instance presents the requested information to the Relying Party, along with the Wallet Attestation. The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the Wallet Attestation to ensure the Wallet Provider is trusted;</p></li>
+<li><p>the Wallet Instance informs the User about the successful authentication with the Relying Party, and the User continues the navigation.</p></li>
 </ol>
 </div></blockquote>
-<p>Below a sequence diagram that summarizes the interactions between all the involved parties.</p>
+<p>Below is a sequence diagram that summarizes the interactions between all the involved parties.</p>
 <figure class="align-center" id="id2" style="width: 100%">
-<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZLPDRnit4BtpLmpKGst3TfCU1RY8uxgsaxPM9IK-r8L0SKSIQufa-R6AMlI_PqXgDrpO0NBRvSwyUVFcW_l61-v2t2h6Op0wRfVe66EN8XW7emyUtGYuXyZOqdmg1zzx-1bRAT2FuBjVvNeJtgg8p1AE5D9o7M3qm9N207UQuBN0ZB4RcaI2EkDhrA54u0nr0nHbQ3P5jPTw3HCwt6VB5XdZ8iYM1oHY4Sv-8kynFE0IPkWICz2ybMiUfD6LAMSDreuyUROuXYd-4z47c3WJK0HiwCIRw0H5khYWO_H4CyF1PCCzmiL5ZvlujDX1NJbCPnnEJZnvuCa9j9paUTHB4oc_OE1BuY2CUP8lkBj2Q16T15Uer5OagoMUDLBOMuf1w0s6z4auupszP3MC0y-tM5uBK95i4xOAB270JeOD_36zCWt2_HGs3bV4ZfAMMguXR12YKzdgKGibAUH2DgSrqLF82P_2dzNXOejXOvg_QkLJ_GxYnp7CDcQNyKlmmiOue23YANqeN9On1AC71UIiVzunjdOcMjBF-AuzmMYrPxiKPqTn1DSK0rAGr6aiDKxvT6zHvqZ3haNWrZvgPGHNMMhWaQnqaA9qLe-DgSJ4mqDmqOSYPWBibMACgm1o1S-r0Ud1uy5fSZ-RCm20NLThwqmh6_GTENBY3GySWaaXQa2WjAoHEcI4Mk_qthTFHRTAEg3GCcKgkELBgMIGw1agZzz0--PwdcgcJG1RXeLLENJU9PwNQurDTmPc-NVgrvKpsw_cK-hLObUm5o6UjTZpwWns2VpMASbr0zPGlqdqlTT7T7Arpw5uY0x1h2hw_SguBx5xBwvaKqqmMNwS7FdZOX37lTygjRZHMQhXCYj0LqQlfDjYCznPlQIfKU2I-j4u-M_PJ5FqDY72eovLQUqYc2VK_MJQQf4jV5nkfVVq-9LLTdtGBQLTv91ygN2u3dE0tgaIe6gjon3G5_jp8bTUQuD9wN57nAM7jFuxjNz1EiwUz8tgzEAOIfyxps5BP9hpYaq9bRPga-QMAxZpFgA3UPhJ0sHF-Tt376PTlIiKeYVGb-uLFHHZZg8Yc1OTcT5LU7TpEx-PNb__pbxs63EusY1jjLkZ6d9wZtjuAtMJMZ8H8I-pIfbFZFUOIqCkPn1ziaXODYwfJU697Cjr8ilYgX8C1jhSkgLiarAXSyPWla4D-2auBehwZVH26OyDy12SNCQ0VWmYKvGh89NxYPGK0CgmE0JUSgbIBwJ1p2gmIguFjc-0zBi0XrJWgDns4FFtvhZin1dVuc1X0tmPzDlvVFB3w_FNyEEhLt3_dWhstuYO41kHDyGeNM71-lvo0dSOWeKm3SB_3A1C7YTUlf2g0HW3QB2wHm3g2wRiltAfV2F7XAYCiNddzhyOtUtsRZO-zC3mBYaJ2aS9hDiT9Q4YsZ63j0qBSXU-f7Nv4j1QjgWBG8PCQlXJY6Id53M1pGKr3dmKgLDNKGsLY7putdQNPfTHBsDt4Td-vwd_Otb3Bd6hFWC0"><img alt="_images/cross_device_auth_seq_diagram.svg" src="_images/cross_device_auth_seq_diagram.svg" /></a>
+<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZLR1RXit4BtpAmRgeJ6Gk4cF1bp4KLtRILkhjX8VgaAWk2E9zOhSaiDLrAB_tY6ffIb70MhuikJCUuzlPaYzzIGTXKqhP21hmcQ1JWXneSWw67tqw4OWFGGX5lPpNlZMmu_OQuL-1D_yh5ThUjS651tZQAKxQGX63x9jaU36CBnHc32sXo61eLx95HhA35AWQO1PzbHtsEwqMS64atPVPJeCcvaNjnU1rZ1kDGEV9EJ-MGPBek21sJghz-mU2pl_IKMwbuGGH81NFx2sCtZ01ToZY-S68tkzagIjgKAbQB1Eb36pnpEumxy2UeA9iuIAiE4LRuDJACJvEI-ZPwq93YPhwH7EpmjkLD_Z03Ls6DSaU4fxaksOcOKDh9qiF5aAojf7VIJLPJ7pu3IuBAEEue9rhB56ebt778pUO9GFobdl-ICvOHrukS7ycO6oNMlQjD0n0cmrr-Etkx5jKlZQuPBL6PBQw1NG6Y6uDaNDZ4fbc-lcPItqPJxkI_YzMfnlaDQs-QDsdRqIU-F36TolxJRXP_AiXXKmYNfC6qdB8X1PSr0y-MJ_LeYLiw5Z_wmV6X-iQNTY6tcspAEaOGvWajH58ZPDthhjq2IcP_C0ikjcfhLAjibga86Z36cLkwfWNyOIHntaWgVaKi8hHWaXMmAzX2-j0HtxUfyqkRsV2W20xL1gRiTUDqKQvyX6aWIoYQ72AwEI02gtqtTfdYAsFZ6XCZeUKybEBdIhIQCNs7hy7wAlBgUnOCOIT7bAH7M2CbYHpkkLmMO01BluC_RgqjdDrq-JQjNZKAoZ4C_QwqXb3YuW-6MmKPe6Eikjfj6Nf4_ez7ANc2G5Xs2NbVfoeDjCNR9agvjgU3doq-I5Fya1uSc8PUnkQv9HXtTO1XfRizHkWytXLLKCZKq2yVwqJl-TEf6XVHSHOMPoJVfkJlOHJHdAhhg_vZuiDjhxsCErRSTx9DkXvQB5mrim4LH9nO2giIw8qEVuKnQNFwk0eRyT2zSUuWimkFqJydBAv3skqz49rJxrdSEUnJIdbPezrTWnZ24jMxZnFg23QPpHFMIH_FvX2lT3lIiKbgVG-ppD1Ke8nwm8jaV7OVpgtLnTJw_kBYz_5SSppWIyWl4QrIDSsxRXj0-uWtVQDDoKIGhdyS7vVsAznrGS23xkWW18S5rOSAV28sVcnqIRj5wTaIpqgNjpvIQvIASYqbz-9YTLTh_HNhNMOmEIoEb58FH9XaeQzHBOw3AJcWaWpuj3aBtKRMo7qpYRoGbHMVQnAqqGVuV0S9WN-R63aFQR4r5FzVLqEldkpUaR-FxrQxZzy7oUgy_jy7PuveBtBEPUETrHLdxsx8xExGypfeyKmspc8Sc2JiJH9yMZy5bUa5_eOxn_HcoATgZITJMARobrlhoIuFOZELUsmNyF7wxworUl8HFTxK672xuhFqVAxu2tx7hOjFy1"><img alt="_images/cross_same_device_auth_seq_diagram.svg" src="_images/cross_same_device_auth_seq_diagram.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">Remote Protocol Flow</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
@@ -215,44 +215,44 @@ the User gives the consent for the disclosure of the Digital Credentials, in the
 <tr class="row-even"><td><p><strong>1</strong>, <strong>2</strong></p></td>
 <td><p>The User requests to access to a protected resource of the Relying Party.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>3</strong>, <strong>4</strong>,</p></td>
-<td><p>The Relying Party provides the Wallet Instance with a URL where the information about the Relying Party are provided, along with the information about where the signed request is available for download.</p></td>
+<tr class="row-odd"><td><p><strong>3</strong>, <strong>4</strong>, <strong>5</strong></p></td>
+<td><p>The Relying Party creates a state value bound to the user-agent (e.g., using an HTTP secured cookie), the Request Object available for download at the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> location and inspects the user-agent to determine whether the flow occurs on the same device of the user-agent or not.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>5</strong>, <strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong></p></td>
-<td><p>In the <strong>Cross Device Flow</strong>, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance, which retrieves a URL with the parameters <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>. Conversely, in the <strong>Same Device Flow</strong>, the Relying Party supplies identical information as in the Cross-Device flow, but directly through a URL provided with an <code class="docutils literal notranslate"><span class="pre">href</span></code> in an html page or a HTTP Redirect (302) response.</p></td>
+<tr class="row-even"><td><p><strong>6</strong>, <strong>7</strong>, <strong>8</strong>, <strong>9</strong></p></td>
+<td><p>The Relying Party provides the user-agent with a JavaScript page inspecting the status endpoint and the Wallet Instance with a URL containing the Authorization Request. In the <strong>Cross Device Flow</strong>, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL with the parameters <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>. Conversely, in the <strong>Same Device Flow</strong>, the Relying Party initiates the request using a link (e.g., an HTML anchor element with an <code class="docutils literal notranslate"><span class="pre">href</span></code> attribute) that points to the request URL, providing the same information as in the Cross-Device Flow.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>10</strong>,</p></td>
 <td><p>The Wallet Instance evaluates the trust with the Relying Party.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>11</strong>, <strong>12</strong></p></td>
-<td><p>The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object. If provided and it is equal to <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance provides its metadata to the Relying Party. The Relying Party returns a signed Request Object compliant to the Wallet technical capabilities.</p></td>
+<td><p>The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object. If it is provided and is equal to <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>13</strong></p></td>
 <td><p>When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance requests the signed Request Object using the HTTP method GET.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>14</strong></p></td>
-<td><p>The RP issues the Request Object signin it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (<cite>metadata.openid_credential_verifier.jwks</cite>). The Wallet Instance obtains the signed Request Object.</p></td>
+<td><p>The Relying Party issues the Request Object signing it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (<cite>metadata.openid_credential_verifier.jwks</cite>). The Wallet Instance obtains the signed Request Object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>15</strong>, <strong>16</strong>, <strong>17</strong></p></td>
 <td><p>The Request Object, in the form of signed JWT, is verified by the Wallet Instance. The Wallet Instance processes the Relying Party metadata and applies the policies related to the Relying Party, attesting whose Digital Credentials and User data the Relying Party is granted to request.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>18</strong>, <strong>19</strong></p></td>
-<td><p>The Wallet Instance requests the User's consent for the release of the Credentials by showing the Relying Party's identity and the requested attributes. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.</p></td>
+<td><p>The Wallet Instance requests the User's consent to disclose the requested Credentials by showing the Relying Party's identity and the requested attributes. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>20</strong></p></td>
 <td><p>The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode &quot;direct_post.jwt&quot;).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>21</strong>, <strong>22</strong>, <strong>23</strong>, <strong>24</strong>, <strong>25</strong></p></td>
-<td><p>The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials.</p></td>
+<td><p>The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish the trust with the Wallet Solution. The Relying Party extracts the Digital Credentials and attests the trust to the Credentials Issuer and the proof of possession of the Wallet Instance about the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials. If all previous verifications yelded positive result, the Relying Party updates the User session.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>26</strong> (Same Device) or <strong>28</strong> (Cross Device)</p></td>
-<td><p>The Relying Party provides to the Wallet Instance the response about the presentation.</p></td>
+<tr class="row-odd"><td><p><strong>26</strong></p></td>
+<td><p>The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>27</strong> (Same Device) or <strong>29</strong> and <strong>30</strong> (Cross Device)</p></td>
-<td><p>The authentication flow is completed by following the redirection URIs provided by Relying Party.</p></td>
+<tr class="row-even"><td><p><strong>27</strong>, <strong>28</strong></p></td>
+<td><p>The JavaScript page inspecting the status endpoint has the redirection URI with ''response_code'' returned by the Relying Party.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>31</strong></p></td>
-<td><p>The User is informed by the Wallet Instance that the Autentication succeded, then the protected resource is made available to the User.</p></td>
+<tr class="row-odd"><td><p><strong>29</strong></p></td>
+<td><p>The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User.</p></td>
 </tr>
 </tbody>
 </table>
@@ -326,7 +326,7 @@ response, containing the request URI, are described in the Table below.</p>
 <td><p>REQUIRED. Unique identifier of the Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
-<td><p>REQUIRED. The HTTPs URL where the Relying Party provides the signed Request Object to the Wallet Instance.</p></td>
+<td><p>REQUIRED. The HTTP URL where the Relying Party provides the signed Request Object to the Wallet Instance.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>state</strong></p></td>
 <td><p>RECOMMENDED. A unique identifier for the current transaction generated by the Relying Party. The value SHOULD be opaque to the Wallet Instance.</p></td>
@@ -342,9 +342,9 @@ response, containing the request URI, are described in the Table below.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter in an OAuth request is optional, but it is highly recommended. It is primarily used to prevent Cross-Site Request Forgery (CSRF) attacks by including a unique and unpredictable value that the Relying Party can verify upon receiving the response. Additionally, it helps maintain state between the request and response, such as session information or other data the Relying Party needs after the authorization process.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">state</span></code> parameter in an OAuth request is optional, but it is highly recommended. It is primarily used to prevent Cross-Site Request Forgery (CSRF) attacks by including a unique and unpredictable value that the Relying Party can verify upon receiving the response. Additionally, it helps maintain the state between the request and response, such as session information or other data the Relying Party needs after the authorization process.</p>
 </div>
-<p>Below a non-normative example of the response containing the required parameters previously described.</p>
+<p>Below is a non-normative example of the response containing the required parameters previously described.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">https</span><span class="o">:</span><span class="c1">//wallet-solution.digital-strategy.europa.eu/authorization?client_id=...&amp;request_uri=...&amp;request_uri_method=post</span>
 </pre></div>
 </div>
@@ -371,41 +371,10 @@ client_id=https%3A%2F%2Frelying-party.example.org%2Fcb
 <p>The <em>error correction level</em> chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured.</p>
 </div>
 </section>
-<section id="device-flow-status-checks-and-security">
-<h3>Device Flow Status Checks and Security<a class="headerlink" href="#device-flow-status-checks-and-security" title="Link to this heading">¶</a></h3>
-<p>This specification introduces the Relying Party Presentation Request Status Endpoint for implementations that want to use it, as this endpoint is an internal feature for the security of the implementation and is not required for interoperability.</p>
-<p>Be the flow Same Device or Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint).
-This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode or the href button pointing to the request URL.
-The JavaScript code makes the user-agent check the status endpoint using a polling strategy in seconds or a push strategy (eg: web socket).</p>
-<p>Whatever Device Flow is detected by the Relying Party (eg: by inspecting the user-agent),
-the page using the JavaScript code inspecting the status endpoint is always returned to the user-agent.</p>
-<p>In the Cross Device Flow the html page that checks the status endpoint also contains the QR Code.
-Using the Same Device Flow, the page that checks the status endpoint contains an <code class="docutils literal notranslate"><span class="pre">href</span></code> button
-or <cite>http-equiv</cite> meta header parameter, redirecting to the URL defined at the section &quot;Authorization Request Details&quot;.</p>
-<p>Since the html page and the status endpoint are implemented by the Relying Party,
-it is under the Relying Party responsability the implementation details of this solution,
-because this is related to the Relying Party's internal API. However, the text below describes an implementation example.</p>
-<p>The Relying Party binds the request of the user-agent, with a session cookie marked as <code class="docutils literal notranslate"><span class="pre">Secure</span></code> and <code class="docutils literal notranslate"><span class="pre">HttpOnly</span></code>, with the issued request.
-The request url SHOULD include a parameter with a random value. The HTTP response returned by this status endpoint MAY contain the HTTP status codes listed below:</p>
-<ul class="simple">
-<li><p><strong>201 Created</strong>. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
-<li><p><strong>202 Accepted</strong>. This response is given when the signed Request Object was obtained by the Wallet Instance.</p></li>
-<li><p><strong>200 OK</strong>. The Wallet Instance has provided the presentation to the Relying Party's  <strong>response_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. An URL is provided carrying the location where the user-agent is intended to navigate.</p></li>
-<li><p><strong>401 Unauthorized</strong>. The Wallet Instance or its User have rejected the request, or the request is expired. The QRCode page SHOULD be updated with an error message.</p></li>
-</ul>
-<p>Below a non-normative example of the HTTP Request to the status endpoint, where the parameter <code class="docutils literal notranslate"><span class="pre">id</span></code> contains an opaque and random value:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03
-HTTP/1.1
-HOST: relying-party.example.org
-</pre></div>
-</div>
-<p>When the status endpoint returns <strong>200 OK</strong>, it means that the User authentication is successful and the JavaScript code will use the returned location where the user-agent will be redirect to continue the navigation.</p>
-<p>Even if an adversary were to steal the random value used in the request to the status endpoint, their user-agent would be rejected due to the missing cookie in the request.</p>
-</section>
 <section id="request-uri-request">
 <h3>Request URI Request<a class="headerlink" href="#request-uri-request" title="Link to this heading">¶</a></h3>
 <p>The request and its parameters are defined in Section number 5 (Authorization Request) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>.
-Below normative details and references about the parameters to be used by the Wallet Instance in the request.</p>
+Below are the normative details and references about the parameters to be used by the Wallet Instance in the request.</p>
 <table class="docutils align-default" id="id3">
 <caption><span class="caption-number">Table 5 </span><span class="caption-text">Request URI Endpoint Parameters</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <thead>
@@ -418,7 +387,7 @@ Below normative details and references about the parameters to be used by the Wa
 <td><p>OPTIONAL. JSON object with metadata parameters. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>, Section 9.1 and the table below, &quot;Wallet Metadata Parameters&quot;.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>wallet_nonce</cite></p></td>
-<td><p>RECOMMENDED. String used by Wallet Instance to prevent replay of the RP's responses. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>, Section 9.</p></td>
+<td><p>RECOMMENDED. String used by Wallet Instance to prevent replay of the Relying Party's responses. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>, Section 9.</p></td>
 </tr>
 </tbody>
 </table>
@@ -456,7 +425,7 @@ Below normative details and references about the parameters to be used by the Wa
 </tr>
 </tbody>
 </table>
-<p>Below a non-normative example of HTTP request made by the Wallet Instance to the Relying Party.</p>
+<p>Below is a non-normative example of an HTTP request made by the Wallet Instance to the Relying Party.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">POST</span><span class="w"> </span><span class="o">/</span><span class="nx">request</span><span class="w"> </span><span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
 <span class="nx">Host</span><span class="o">:</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">example</span><span class="p">.</span><span class="nx">org</span>
 <span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="o">:</span><span class="w"> </span><span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
@@ -466,7 +435,7 @@ Below normative details and references about the parameters to be used by the Wa
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> parameter is RECOMMENDED for Wallet Instances that wants to prevent reply of their http requests to the Relying Parties.
+<p>The <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
 When present, the Relying Party MUST evaluate it.</p>
 </div>
 <div class="admonition note">
@@ -509,7 +478,7 @@ where a non-normative example in the form of decoded header and payload is shown
         ]
       },
       {
-        &quot;id&quot;: &quot;wallet unit attestation&quot;,
+        &quot;id&quot;: &quot;wallet attestation&quot;,
         &quot;format&quot;: &quot;jwt&quot;,
         &quot;claims&quot;: [
             {&quot;path&quot;: [&quot;iss&quot;]},
@@ -621,18 +590,38 @@ where a non-normative example in the form of decoded header and payload is shown
 </div>
 <section id="request-uri-endpoint-errors">
 <h4>Request URI Endpoint Errors<a class="headerlink" href="#request-uri-endpoint-errors" title="Link to this heading">¶</a></h4>
-<p>When the Relying Party encounters errors while issuing the Request Object from the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint, the error responses defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>, Section 7.5. (Error Response) are applicable.</p>
+<p>When the Relying Party encounters errors while issuing the Request Object from the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint, it MUST return an error response with <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
+</ul>
+</div></blockquote>
+<p>The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Request URI Endpoint encountered an internal problem. (<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Request URI Endpoint is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+</tbody>
+</table>
 <p>The following is an example of an error response from <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="n">Bad</span> <span class="n">Request</span>
-<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
-
-<span class="p">{</span>
- <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;invalid_request&quot;</span><span class="p">,</span>
- <span class="s2">&quot;error_description&quot;</span><span class="p">:</span> <span class="s2">&quot;The request_uri is malformed or does not point to a valid Request Object.&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Another example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">500</span> <span class="n">Internal</span> <span class="n">Server</span> <span class="n">Error</span>
 <span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
 
@@ -642,23 +631,71 @@ where a non-normative example in the form of decoded header and payload is shown
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> but fails validation checks by the Wallet Instance. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of its issuer (Relying Party).</p>
-<p>Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. Additionally, the Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is <code class="docutils literal notranslate"><span class="pre">server_error</span></code>, the Wallet Instance MAY prompt the User to re-enter or scan a new QR code, if applicable.</p>
+<p>Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. The Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is <code class="docutils literal notranslate"><span class="pre">server_error</span></code>, the Wallet Instance SHOULD prompt the User to re-enter or scan a new QR code, if applicable.</p>
+</section>
+<section id="authorization-error-response">
+<h4>Authorization Error Response<a class="headerlink" href="#authorization-error-response" title="Link to this heading">¶</a></h4>
+<p>There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the url provided in the parameter <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> but fails the validation checks. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of the Relying Party.</p>
+<p>If the Wallet Instance encounters any error during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response.
+The Wallet Instance sends the Authorization Error Response to the Relying Party  <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint using an HTTP POST request.
+The Authorization Error Response MUST be encoded in the request body using the format defined by the <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> content type.</p>
+<p>Below is a non-normative example of an Authorization Error Response.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">response_uri</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="n">HOST</span><span class="p">:</span> <span class="n">relying</span><span class="o">-</span><span class="n">party</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">urlencoded</span>
+
+<span class="n">state</span><span class="o">=</span><span class="mi">3</span><span class="n">be39b69</span><span class="o">-</span><span class="mi">6</span><span class="n">ac1</span><span class="o">-</span><span class="mi">41</span><span class="n">aa</span><span class="o">-</span><span class="mi">921</span><span class="n">b</span><span class="o">-</span><span class="mf">3e6</span><span class="n">c07ddcb03</span><span class="o">&amp;</span>
+<span class="n">error</span><span class="o">=</span><span class="n">invalid_request</span><span class="o">&amp;</span>
+<span class="n">error_description</span><span class="o">=...</span>
+</pre></div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests. For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.</p>
 </div>
+<p>In the following table are listed error codes and descriptions that are supported for the Authorization Error Response:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_object</span></code></p></td>
+<td><p>The Request Object contains invalid parameters or is otherwise malformed. <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_uri</span></code></p></td>
+<td><p>The <cite>request_uri</cite> in the authorization request returns an error, contains invalid data, or is otherwise malformed. <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_not_supported</span></code></p></td>
+<td><p>The Wallet Instance does not support any of the vp formats required by the Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The Wallet Instance does not support any of the signing algorithms required by the Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">access_denied</span></code></p></td>
+<td><p>The Wallet did not have the requested credential, the User did not consent, or the Wallet failed to authenticate the User. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_client</span></code></p></td>
+<td><p>The Relying Party cannot be authorized due to trust validation failures or is not a valid participant of the federation. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="authorization-response-details">
 <h3>Authorization Response Details<a class="headerlink" href="#authorization-response-details" title="Link to this heading">¶</a></h3>
-<p>After getting the User authorization and consent for the presentation of the Credentials, the Wallet Instance sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content SHOULD be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Section 7.3, using the Relying Party public key.</p>
+<p>After obtaining the User authorization and consent for the presentation of the Credentials, the Wallet Instance sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint, the content SHOULD be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Section 7.3, using the Relying Party public key.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
 <p>The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS termination</a>. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.</p>
 </div>
-<p>Below a non-normative example of the request:</p>
+<p>Below is a non-normative example of the request:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/response_uri</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
@@ -672,7 +709,7 @@ The <cite>vp_token</cite> parameter value corresponds to the format used when th
   &quot;state&quot;: &quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;,
   &quot;vp_token&quot;: {
       &quot;personal id data&quot;: &quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;,
-      &quot;wallet unit attestation&quot;: $WalletAttestation-JWT
+      &quot;wallet attestation&quot;: $WalletAttestation-JWT
   }
 }
 </pre></div>
@@ -765,25 +802,78 @@ The KB-JWT MUST contain the following parameters in the JWT payload:</p>
 </table>
 <section id="revocation-checks">
 <h4>Revocation Checks<a class="headerlink" href="#revocation-checks" title="Link to this heading">¶</a></h4>
-<p>The revocation mechanisms that the Relying Parties MUST implement are defined in the section (<span class="xref std std-ref">Revocations</span>).</p>
-<p>In the context of Digital Credential evaluation, any Relying Parties (RPs) establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the holder.</p>
-<p>The process begins with the RP requesting specific Credentials from the Holder. This request should align with the Relying Party's requirements and the context in which the Credentials will be used. The Holder then responds by releasing the requested Credentials.</p>
+<p>The revocation mechanisms that the Relying Parties MUST implement are defined in <a class="reference external" href="credential-revocation.html">Digital Credential Revocation and Suspension section</a>.</p>
+<p>In the context of Digital Credential evaluation, any Relying Party establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the Holder.</p>
+<p>The process begins with the Relying Party requesting specific Credentials to the Holder. This request should align with the Relying Party's requirements and the context in which the Credentials will be used. The Holder then responds by releasing the requested Credentials.</p>
 <p>Upon receiving the Credentials, the Relying Party evaluates their validity and value based on its internal policies. This evaluation considers the current status of the Credential (e.g., active, suspended, revoked) and the specific use case for which the Credential is being presented.</p>
 <p>Relying Parties should develop comprehensive internal policies that outline how different types of Credentials are to be evaluated. These policies should address scenarios where a Credential may be partially valid or have limited applicability. Flexibility in evaluation processes is important to accommodate various use cases. For instance, a Credential that is suspended for driving purposes might still be acceptable for age verification.</p>
 </section>
-<section id="authorization-response-errors">
-<h4>Authorization Response Errors<a class="headerlink" href="#authorization-response-errors" title="Link to this heading">¶</a></h4>
-<p>When the Wallet sends a response using <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> to the Relying Party, several errors may occur, including:</p>
+<section id="relying-party-response">
+<h4>Relying Party Response<a class="headerlink" href="#relying-party-response" title="Link to this heading">¶</a></h4>
+<p>If any validation check performed by the Relying Party on the Authorization Response from the Wallet Instance fails, the Response URI endpoint MUST return an error response. The structure of this error response should be determined by the specific nature of the error encountered. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Invalid Credential</strong>: This error occurs when one or more Credentials or VPs, included in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, fail validation because they are malformed. The correct HTTP status code for this error is 400 (Bad Request). The error should be set to <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>, and the <code class="docutils literal notranslate"><span class="pre">error_description</span></code> SHOULD identify the malformed Credentials.</p></li>
-<li><p><strong>Issuer Credential Trust Failure</strong>: This error arises when the Relying Party cannot establish trust with the issuer of a presented Credential, included in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>. The appropriate HTTP status code for this error is 403 (Forbidden). The <code class="docutils literal notranslate"><span class="pre">error</span></code> should be labeled as <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>, and the <code class="docutils literal notranslate"><span class="pre">error_description</span></code> SHOULD specify the issuer for which trust could not be established.</p></li>
-<li><p><strong>Invalid Nonce</strong>: This error happens when the nonce provided in the request is incorrect. The HTTP status code for this error should be 403 (Forbidden). The error SHOULD be labeled as <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>, with an <code class="docutils literal notranslate"><span class="pre">error_description</span></code> indicating that the nonce is incorrect.</p></li>
-<li><p><strong>Invalid Wallet Attestation</strong>: This error occours when it's not possible to establish trust with the Wallet Attestation's issuer (Wallet Provider), or if the Wallet Attestation is invalid or does not meet the Relying Party's minimum security criteria. The correct HTTP status code for this error is 403 (Forbidden). The <code class="docutils literal notranslate"><span class="pre">error</span></code> SHOULD be marked as <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>, and the <code class="docutils literal notranslate"><span class="pre">error_description</span></code> should clarify that the issue stems from the Wallet Attestation's failure to establish trust with its issuer or its non-compliance with required security standards.</p></li>
-<li><p><strong>Invalid Presentation Submission</strong>: This error occurs when the presentation submission is not valid. The appropriate HTTP status code for this error is 400 Bad Request. The <code class="docutils literal notranslate"><span class="pre">error</span></code> should be labeled as <code class="docutils literal notranslate"><span class="pre">invalid_request</span></code>, and the <code class="docutils literal notranslate"><span class="pre">error_description</span></code> should specify the invalid aspects of the presentation submission.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
 </ul>
-<p>To enhance clarity and ensure proper error handling, it's crucial to provide detailed error responses. Below are two examples of HTTP responses using <code class="docutils literal notranslate"><span class="pre">application/json</span></code> that include both the <code class="docutils literal notranslate"><span class="pre">error</span></code> and <code class="docutils literal notranslate"><span class="pre">error_description</span></code> members:</p>
 </div></blockquote>
+<p>The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The response cannot be processed because it is missing required parameters, contains invalid parameters or is otherwise malformed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The Credentials presented are malformed, invalid or revoked.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The credential presentation, contained in the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> object, is malformed, doesn't have the required parameters or is incorrectly formatted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The &quot;sd-jwt&quot; returned is malformed, missing required parameters or incorrectly formatted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The signature of the KB-JWT is invalid or does not match the associated public key (JWK) referenced in the Issuer signed SD-JWT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The nonce value provided is incorrect or otherwise malformed.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The signature of the Wallet Attestation is not valid or trust cannot be established with its Issuer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>Trust could not be established with the Credential Issuer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Response URI Endpoint encountered an internal problem.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Response URI Endpoint is temporarily unavailable (e.g., due to maintenance or overload).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below there are two examples of HTTP responses using <code class="docutils literal notranslate"><span class="pre">application/json</span></code> that include both the <code class="docutils literal notranslate"><span class="pre">error</span></code> and <code class="docutils literal notranslate"><span class="pre">error_description</span></code> members:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>HTTP/1.1 403 Forbidden
 Content-Type: application/json
 
@@ -798,7 +888,7 @@ Content-Type: application/json
 
 {
   &quot;error&quot;: &quot;invalid_request&quot;,
-  &quot;error_description&quot;: &quot;The following Credentials/VP are malformed: [CredentialX, vp_token[2]]&quot;
+  &quot;error_description&quot;: &quot;The vp_token is malformed, missing required parameters or incorrectly formatted&quot;
 }
 </pre></div>
 </div>
@@ -806,10 +896,14 @@ Content-Type: application/json
 </section>
 <section id="redirect-uri">
 <h3>Redirect URI<a class="headerlink" href="#redirect-uri" title="Link to this heading">¶</a></h3>
-<p>As defined in Section 7.2. (Response Mode &quot;direct_post&quot;)  of the OpenID4VP specification, if the Response URI has successfully been processed, the Relying Party MUST respond with an HTTP status code of 200 and a JSON object in the response body containing the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter. The Content-Type of the response SHOULD be set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
-<p>When the Relying Party provides the redirect URI, the Wallet Instance MUST redirect the user-agent to the location defined in the redirect URI.
-The redirect URI allows the Relying Party to continue the interaction with the End-User on the device where the Wallet Instance resides after the Wallet Instance has sent the Authorization Response to the response URI.</p>
-<p>The Relying Party MUST include a response code within the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.</p>
+<p>As defined in Section 7.2. (Response Mode &quot;direct_post&quot;) of the <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> specification, if the Response URI has successfully processed the Authorization Response or Authorization Error Response, it MUST respond with an HTTP status code of 200 with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> of <code class="docutils literal notranslate"><span class="pre">application/json</span></code> and a JSON object in the response body. If the User has been correctly authenticated, the Relying Party MUST add the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter to the JSON object in the response body.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the <strong>Cross Device Flow</strong> the Relying Party uses the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter to the user-agent, whereas in the <strong>Same Device Flow</strong> it may also pass the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> to the Wallet Instance. When the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> is passed through the user-agent and the response sent to the Wallet Instance does not contain the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter, the Wallet Instance is not required to perform any further step.</p>
+</div>
+<p>Upon receiving the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> from the Relying Party, the receiver (either the user-agent or the Wallet Instance) MUST perform a redirect to the URL specified by the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.  This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow, after the Wallet Instance has transmitted the Authorization Response to the designated <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>.</p>
+<p>The Relying Party MUST include a response code within the redirect URI. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.
+Even if an adversary manages to steal the random value used in the request to the status endpoint, their user-agent would be rejected due to the missing cookie in the request.</p>
 <p>The following is a non-normative example of the response from the Relying Party to the Wallet Instance upon receiving the Authorization Response at the Response Endpoint.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
@@ -819,20 +913,112 @@ The redirect URI allows the Relying Party to continue the interaction with the E
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to a specific RP's endpoint in order to complete the process. The value can be added as a path component, as a fragment or as a parameter to the URL according to Section 6.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>. The specific entity that performs this action depends on whether the flow is Same device or Cross device.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> value MUST be used with an HTTP method GET by either the Wallet Instance or the user-agent to redirect the User to a specific Relying Party's endpoint in order to complete the process. The value can be added as a path component, as a fragment or as a parameter to the URL according to Section 6.2 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>. In general, the specific entity that performs this action depends on whether the flow is Same device or Cross device; however, in the case described above, the redirection will always be performed by the user-agent.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>For security reasons and to prevent endpoint mix-up attacks, the value contained in the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter MUST be one of those attested by a trusted third party, such as those provided in the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata within the <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> parameter, obtained from the Trust Chain about the Relying Party.</p>
 </div>
-</section>
 <section id="redirect-uri-errors">
-<h3>Redirect URI Errors<a class="headerlink" href="#redirect-uri-errors" title="Link to this heading">¶</a></h3>
-<p>When the Wallet Instance sends the user-agent to the Redirect URI provided by the Relying Party, several errors may occur that prevent the successful completion of the process. These errors are critical as they directly impact the User experience by hindering the seamless flow of information between the Wallet Instance and the Relying Party. Below are potential errors related to the Redirect URI and their implications:</p>
-<ul class="simple">
-<li><p><strong>Mismatched Redirect URI</strong>: This error occurs when the Redirect URI provided by the Relying Party does not match any of the URIs linked with the User session. This mismatch can lead to a HTTP status error code set to 403 (Forbidden), indicating that the request cannot be processed due session/URI mismatch.</p></li>
-<li><p><strong>Redirect URI Security Issues</strong>: If the Relying Party incurs in security issues when evaluating the User session with the provided URI, the Relying Party MUST raise an error. In such cases, an HTTP status code set to 403 (Forbidden) MUST be returned, indicating that the request is valid but the server is refusing action due to security precautions.</p></li>
+<h4>Redirect URI Errors<a class="headerlink" href="#redirect-uri-errors" title="Link to this heading">¶</a></h4>
+<p>When the user-agent is redirected to the Redirect URI provided by the Relying Party, several errors may occur that prevent the successful completion of the process. These errors are critical as they directly impact the User experience by hindering the seamless flow of information between the Wallet Instance and the Relying Party. Handling these errors requires clear communication to the User within the returned navigation web page. Relying Party MUST implement the error handling and validation mechanisms for Redirect URIs defined in this specification. Below are potential errors related to the Redirect URI, the error response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
 </ul>
-<p>Handling these errors requires clear communication to the User within the returned navigation web page. It is crucial for the Relying Party to implement robust error handling and validation mechanisms for Redirect URIs to ensure a secure implementation.</p>
+</div></blockquote>
+<p>The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The Redirect URI provided by the Relying Party does not match any of the URIs linked with the User session. (<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The User session is invalid or expired.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>The request cannot be fulfilled due to an intenal server error. (<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>The request cannot be fulfilled because the service is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="device-flow-status-checks-and-security">
+<h3>Device Flow Status Checks and Security<a class="headerlink" href="#device-flow-status-checks-and-security" title="Link to this heading">¶</a></h3>
+<p>This specification introduces the Relying Party Presentation Request Status Endpoint for implementations that want to use it, as this endpoint is an internal feature for the security of the implementation and is not required for interoperability.</p>
+<p>Be the flow Same Device or Cross Device, the user-agent needs to check the session status to the endpoint made available by Relying Party (status endpoint).
+This check MAY be implemented in the form of JavaScript code, within the page that shows the QRCode or the href button pointing to the request URL.
+The JavaScript code makes the user-agent check the status endpoint using a polling strategy in seconds or a push strategy (e.g., web socket).</p>
+<p>Whatever Device Flow is detected by the Relying Party (e.g., by inspecting the user-agent),
+the page using the JavaScript code inspecting the status endpoint is always returned to the user-agent.</p>
+<p>In the Cross Device Flow the html page that checks the status endpoint also contains the QR Code.
+Using the Same Device Flow, the page that checks the status endpoint contains an <code class="docutils literal notranslate"><span class="pre">href</span></code> button
+or <code class="docutils literal notranslate"><span class="pre">http-equiv</span></code> meta header parameter, redirecting to the URL defined at the section &quot;Authorization Request Details&quot;.</p>
+<p>Since the html page and the status endpoint are implemented by the Relying Party,
+it is under the Relying Party responsability the implementation details of this solution,
+because this is related to the Relying Party's internal API. However, the text below describes an implementation example.</p>
+<p>The Relying Party binds the request of the user-agent, with a session cookie marked as <code class="docutils literal notranslate"><span class="pre">Secure</span></code> and <code class="docutils literal notranslate"><span class="pre">HttpOnly</span></code>, with the issued request.
+The request url SHOULD include a parameter with a random value. The HTTP response returned by this status endpoint MAY contain the HTTP status codes listed below:</p>
+<ul class="simple">
+<li><p><strong>201 Created</strong>. The signed Request Object was issued by the Relying Party that waits to be downloaded by the Wallet Instance at the <strong>request_uri</strong> endpoint.</p></li>
+<li><p><strong>202 Accepted</strong>. This response is given when the signed Request Object was obtained by the Wallet Instance.</p></li>
+<li><p><strong>200 OK</strong>. The Wallet Instance has provided the presentation to the Relying Party's  <strong>response_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. A redirect URL is provided carrying the location where the user-agent is intended to navigate.</p></li>
+</ul>
+<p>If instead any validation check performed by the Relying Party fails, the QRCode page SHOULD be updated with an error message. Moreover, the Response URI endpoint MUST return an error response, whose structure depends on the nature of the error. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
+</ul>
+</div></blockquote>
+<p>The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">authentication_failed</span></code></p></td>
+<td><p>The Wallet Instance or its User have rejected the request, the request is expired, or other errors prevented the authentication.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_session</span></code></p></td>
+<td><p>Either the session id provided in the request is invalid.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below is a non-normative example of the HTTP Request to the status endpoint, where the parameter <code class="docutils literal notranslate"><span class="pre">id</span></code> contains an opaque and random value:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03
+HTTP/1.1
+HOST: relying-party.example.org
+</pre></div>
+</div>
 </section>
 </section>
 <section id="proximity-flow">
@@ -1279,20 +1465,23 @@ The details on the structure of mDoc Response are provided below.</p>
 <li><a class="reference internal" href="#remote-flow">Remote Flow</a><ul>
 <li><a class="reference internal" href="#request-uri-with-http-post">Request URI with HTTP POST</a></li>
 <li><a class="reference internal" href="#authorization-request-details">Authorization Request Details</a></li>
-<li><a class="reference internal" href="#device-flow-status-checks-and-security">Device Flow Status Checks and Security</a></li>
 <li><a class="reference internal" href="#request-uri-request">Request URI Request</a></li>
 <li><a class="reference internal" href="#request-object-details">Request Object Details</a><ul>
 <li><a class="reference internal" href="#request-uri-endpoint-errors">Request URI Endpoint Errors</a></li>
+<li><a class="reference internal" href="#authorization-error-response">Authorization Error Response</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#authorization-response-details">Authorization Response Details</a></li>
 <li><a class="reference internal" href="#sd-jwt-presentation">SD-JWT Presentation</a><ul>
 <li><a class="reference internal" href="#revocation-checks">Revocation Checks</a></li>
-<li><a class="reference internal" href="#authorization-response-errors">Authorization Response Errors</a></li>
+<li><a class="reference internal" href="#relying-party-response">Relying Party Response</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#redirect-uri">Redirect URI</a></li>
+<li><a class="reference internal" href="#redirect-uri">Redirect URI</a><ul>
 <li><a class="reference internal" href="#redirect-uri-errors">Redirect URI Errors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#device-flow-status-checks-and-security">Device Flow Status Checks and Security</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#proximity-flow">Proximity Flow</a><ul>
@@ -1331,7 +1520,7 @@ The details on the structure of mDoc Response are provided below.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/02/2025.
+      Last updated on 26/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
