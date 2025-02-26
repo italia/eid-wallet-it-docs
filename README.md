@@ -62,7 +62,7 @@ reason it is the reference platform for displaying this standard.
 
 HTML
 ````
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 
 sphinx-build -b html -d html/en/doctrees docs/en/ html/en
 ````
