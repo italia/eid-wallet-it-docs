@@ -188,8 +188,8 @@ This ends its lifecycle.
 
 .. _credential-revocation:
 
-Transition to Revoked
-^^^^^^^^^^^^^^^^^^^^^
+Credential Transition to Revoked
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 A Digital Credential changes from **Issued**, **Valid** or **Suspended** states to **Revoked** state when it is actively revoked by the Credential Issuer 
 by a revocation process (**PID/(Q)EAA REV**). The Relying Parties SHOULD no longer consider usable a particular Digital Credential when it is **Revoked**, even though it is 
 still valid temporally and contains a valid Credential Issuer signature. Revocation can occur in the following cases:

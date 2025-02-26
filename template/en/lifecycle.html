@@ -327,8 +327,8 @@ indicating they are no longer valid for use.</p>
 <p>If a Digital Credential is <strong>Expired</strong> the Wallet Instance SHOULD notify the User the Digital Credential has expired and the User MAY delete it (<strong>PID/(Q)EAA DEL</strong>).
 This ends its lifecycle.</p>
 </section>
-<section id="transition-to-revoked">
-<span id="credential-revocation"></span><h3>Transition to Revoked<a class="headerlink" href="#transition-to-revoked" title="Link to this heading">¶</a></h3>
+<section id="credential-transition-to-revoked">
+<span id="credential-revocation"></span><h3>Credential Transition to Revoked<a class="headerlink" href="#credential-transition-to-revoked" title="Link to this heading">¶</a></h3>
 <p>A Digital Credential changes from <strong>Issued</strong>, <strong>Valid</strong> or <strong>Suspended</strong> states to <strong>Revoked</strong> state when it is actively revoked by the Credential Issuer
 by a revocation process (<strong>PID/(Q)EAA REV</strong>). The Relying Parties SHOULD no longer consider usable a particular Digital Credential when it is <strong>Revoked</strong>, even though it is
 still valid temporally and contains a valid Credential Issuer signature. Revocation can occur in the following cases:</p>
@@ -422,7 +422,7 @@ Until the <strong>Credential Deletion</strong>, a Digital Credential can be pres
 <li><a class="reference internal" href="#credential-transition-to-issued">Credential Transition to Issued</a></li>
 <li><a class="reference internal" href="#credential-transition-to-valid">Credential Transition to Valid</a></li>
 <li><a class="reference internal" href="#credential-transition-to-expired">Credential Transition to Expired</a></li>
-<li><a class="reference internal" href="#transition-to-revoked">Transition to Revoked</a></li>
+<li><a class="reference internal" href="#credential-transition-to-revoked">Credential Transition to Revoked</a></li>
 <li><a class="reference internal" href="#credential-transition-to-suspended">Credential Transition to Suspended</a></li>
 <li><a class="reference internal" href="#credential-lifecycle-management">Credential Lifecycle Management</a></li>
 </ul>
@@ -456,7 +456,7 @@ Until the <strong>Credential Deletion</strong>, a Digital Credential can be pres
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/02/2025.
+      Last updated on 26/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
