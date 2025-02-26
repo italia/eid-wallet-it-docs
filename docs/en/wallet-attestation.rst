@@ -72,7 +72,7 @@ Wallet Instance Initialization and Registration
 
     **Federation Check**: The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol-specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Wallet Provider is represented within the section `Wallet Provider metadata`_.
 
-**Steps 3-5**: The Wallet Instance sends a request to the `nonce endpoint`_ of the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which must be unpredictable to serve as the main defense against replay attacks. The backend must generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
+**Steps 3-5**: The Wallet Instance sends a request to the `nonce endpoint`_ of the Wallet Provider Backend and receives a one-time ``challenge``. This "challenge" is a ``nonce``, which MUST be unpredictable to serve as the main defense against replay attacks. The backend MUST generate the ``nonce`` value in a manner that ensures it is single-use and valid only within a specific time frame. This endpoint is compliant with the specification `OAuth 2.0 Nonce Endpoint`_.
 
 .. code-block:: http
 
