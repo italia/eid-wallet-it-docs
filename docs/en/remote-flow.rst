@@ -426,7 +426,7 @@ There are cases where the Wallet Instance cannot validate the Request Object or 
 
 If the Wallet Instance encounters any error during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response. 
 The Wallet Instance sends the Authorization Error Response to the Relying Party  ``response_uri`` endpoint using an HTTP POST request. 
-The Authorization Error Response MUST be encoded in the request body using the format defined by the ``application/x-www-form-urlencoded`` content type and the content SHOULD be encrypted according `OpenID4VP`_ Section 7.3, using the Relying Party public key.
+The Authorization Error Response MUST be encoded in the request body using the format defined by the ``application/x-www-form-urlencoded`` content type.
 
 Below is a non-normative example of an Authorization Error Response.
 
@@ -436,17 +436,9 @@ Below is a non-normative example of an Authorization Error Response.
   HOST: relying-party.example.org
   Content-Type: application/x-www-form-urlencoded
 
-  response=eyJhbGciOiJFUzI1NiIs...9t2LQ
-
-Below is a non-normative example of the decrypted payload of the JWT contained in the ``response``, before base64url encoding.
-
-.. code-block:: 
-
-  {
-    "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
-    "error": "invalid_request",
-    "error_description": "The Wallet Instance does not support any of the signing algorithms required by the Relying Party"
-  }
+  state=3be39b69-6ac1-41aa-921b-3e6c07ddcb03&
+  error=invalid_request&
+  error_description=...
 
 .. warning::
   The current OpenID4VP specification outlines various error responses that a Wallet Instance may return to the Relying Party (Verifier) in case of faulty requests. For privacy enhancement, Wallet Instances SHOULD NOT notify the Relying Party of faulty requests in certain scenarios. This is to prevent any potential misuse of error responses that could lead to gather informations that could be exploited.

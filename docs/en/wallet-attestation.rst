@@ -381,7 +381,7 @@ Below is a non-normative example of the Wallet Attestation Request JWT without e
     "exp": 1686652315
   }
 
-The Wallet Instance MUST do an HTTP request to the Wallet Provider's `wallet-attestation endpoint`_, using the `POST` method with ``Content-Type`` ``application/json``. The request body MUST contain an ``assertion`` parameter whose value is the signed JWT of the Wallet Attestation Request.
+The Wallet Instance MUST send an HTTP request to the Wallet Provider's `wallet-attestation endpoint`_, using the `POST` method with ``Content-Type`` ``application/json``. The request body MUST contain an ``assertion`` parameter whose value is the signed JWT of the Wallet Attestation Request.
 
 .. code-block:: http
 
