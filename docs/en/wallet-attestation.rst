@@ -84,7 +84,7 @@ The ``nonce`` MUST be produced in a manner that ensures its single-use within a 
     }
 
 
-If an error occurs during ``nonce`` generation, the Wallet Provider MUST return an error response (see `Nonce Error Handling`_ for details on possible errors).
+If an error occurs during ``nonce`` generation, the Wallet Provider MUST return an error response.
 
 
 **Step 7**: The Wallet Instance performs the following actions:
