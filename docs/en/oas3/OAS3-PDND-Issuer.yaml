@@ -23,7 +23,7 @@ paths:
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
             Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiJ9.oyd-KZ4_aqDBmeebwjJ52Cdrj3D3BLNuRfj6JW4JttV-Bnhro2OvJ1VplKKRE9si7x80zRZFCoDB3T3ApOqRfg">EXAMPLE
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiIsImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.fn94DTQT2aVj5tpIkvA5ajLTp2RmzwiQ0kvex1vmmSl2iAh_XvEOMcqL-ZW72SBy_4o8YBFunNbDNkL8EcLlig">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -31,7 +31,7 @@ paths:
             format: Signed JWT
             example: >-
               DPoP
-              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiJ9.oyd-KZ4_aqDBmeebwjJ52Cdrj3D3BLNuRfj6JW4JttV-Bnhro2OvJ1VplKKRE9si7x80zRZFCoDB3T3ApOqRfg
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiIsImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.fn94DTQT2aVj5tpIkvA5ajLTp2RmzwiQ0kvex1vmmSl2iAh_XvEOMcqL-ZW72SBy_4o8YBFunNbDNkL8EcLlig
         - name: DPoP
           in: header
           description: >-
@@ -40,14 +40,14 @@ paths:
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImM1MmMzZTU4MmNjYTRhZTgyYTRhYWRjODA3MTIwZGZmODRlNmIzYjA5MTg3NjMwMmYxY2QyN2I0ODRmNmE1YjgiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.C--7xxs9hbF6eA6HM9gGvQ1FtlseiJ9hYFAsMnAsu-JtlzNXJXoAvrVOVkeYtkQ6beXveOern56_rLDoR4gmiw">EXAMPLE
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImNiZGJmNmZlZWY0ODA2MjI4ZGJmNDY0Yjc1MGE5NGMyOGQ4ZTUzMDFhNzE1ZmZjM2U2Y2QyZjk0YjZlOGUxNTQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.uL017GdfXzJ-9jhs6AUpwtkWLgyBgDWOtlrFvMltLp0C0NFwwMpOGnv-FxxwfYdJj--cteyCjGnmJZhekEKIEA">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
             type: string
             format: JWT
             example: >-
-              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImEyMWQxMzUzZGYwZTExOTQ4ODE1NDAwZGU2MjUxYzUwNjlhYTFhNjBjMDg5YWViYTQ2MTI1Y2JlNjhmNzQ1ZmYiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.bVf2E4qvHTNGAGXPNcOLrgI_QcXmx0k8Ays6d6gPuT6X1Pbwzz_ltYBxiT28O8ab2-ulk9Rg8TIHOG_H5ZCCSA
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImNiZGJmNmZlZWY0ODA2MjI4ZGJmNDY0Yjc1MGE5NGMyOGQ4ZTUzMDFhNzE1ZmZjM2U2Y2QyZjk0YjZlOGUxNTQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.uL017GdfXzJ-9jhs6AUpwtkWLgyBgDWOtlrFvMltLp0C0NFwwMpOGnv-FxxwfYdJj--cteyCjGnmJZhekEKIEA
         - name: Agid-JWT-Signature
           in: header
           description: >-
@@ -217,7 +217,7 @@ paths:
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
             Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSJ9.FkaRKIEbnyUxfOB15hzgEmVMkH3JI9k7w03HZzNGwIiulIBMvjeY7cHCz0p2FLT_Cxs9OxV2J0h7r3x6ArLD0A">EXAMPLE
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSIsImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.RQrkQvSrlJ0i3zxRuqxrs31FzGAy5yCR54VBR_v597R19OjiD4LR1u6H1_HK6GbhjJJJoENGG1fhV6MThqXMyw">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -225,7 +225,7 @@ paths:
             format: Signed JWT
             example: >-
               DPoP
-              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSJ9.FkaRKIEbnyUxfOB15hzgEmVMkH3JI9k7w03HZzNGwIiulIBMvjeY7cHCz0p2FLT_Cxs9OxV2J0h7r3x6ArLD0A
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSIsImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.RQrkQvSrlJ0i3zxRuqxrs31FzGAy5yCR54VBR_v597R19OjiD4LR1u6H1_HK6GbhjJJJoENGG1fhV6MThqXMyw
         - name: DPoP
           in: header
           description: >-
@@ -234,14 +234,14 @@ paths:
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImM1MmMzZTU4MmNjYTRhZTgyYTRhYWRjODA3MTIwZGZmODRlNmIzYjA5MTg3NjMwMmYxY2QyN2I0ODRmNmE1YjgiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.4AZeYBrDkK7gOLsbXnVOCV8nNs44P24Kmvleje_e0o8F18JVpOxGiQPozJIrXPO5_7uhQQNme4iJPhNcTFXJXw">EXAMPLE
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImE1OWU3YTQ3YjExOWIxYTRiY2RiNGU1MzE2Y2IxYWM1ZmJjOThiZjk4YmE4OTBjM2E4NThmNTM3MDIyZTNjNmEiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.Htc8JQ2v63SO-yyoFfsnX_zNNUymCV4OGEGTVsqofpHhxniw7N1PyMRrHYj9PlRGaU7_uPR0BGAHjrQQ1IlMow">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
             type: string
             format: JWT
             example: >-
-              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImM1MmMzZTU4MmNjYTRhZTgyYTRhYWRjODA3MTIwZGZmODRlNmIzYjA5MTg3NjMwMmYxY2QyN2I0ODRmNmE1YjgiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.4AZeYBrDkK7gOLsbXnVOCV8nNs44P24Kmvleje_e0o8F18JVpOxGiQPozJIrXPO5_7uhQQNme4iJPhNcTFXJXw
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImE1OWU3YTQ3YjExOWIxYTRiY2RiNGU1MzE2Y2IxYWM1ZmJjOThiZjk4YmE4OTBjM2E4NThmNTM3MDIyZTNjNmEiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.Htc8JQ2v63SO-yyoFfsnX_zNNUymCV4OGEGTVsqofpHhxniw7N1PyMRrHYj9PlRGaU7_uPR0BGAHjrQQ1IlMow
         - name: Agid-JWT-Signature
           in: header
           description: >-
@@ -374,7 +374,7 @@ paths:
               example:
                 error: 'temporarily_unavailable'
                 error_description: 'The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)'
-  /v0.9.0/notifyUpdateCredentials/status/{vct}:
+  /v0.9.0/notifyUpdateCredentials/status/{attribute_type}:
     post:
       tags:
         - e-services PDND
@@ -386,10 +386,10 @@ paths:
         associated.
       operationId: notifyStatusCredentials
       parameters:
-        - name: vct
+        - name: attribute_type
           in: path
           required: true
-          description: Credential identifier
+          description: Identifier of attribute claims set
           schema:
             type: string
             example: MDL
@@ -402,7 +402,7 @@ paths:
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
             Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.7wfkG8UoCL8ilXPxahy80JAMR68886ng7IAFMOqt5iXK91ydGwcmXUwf3nYv1Y3ZsdPYpWKGepX3_KBgfMtq5g">EXAMPLE
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.IrCeQjd3kyTXwdhrT2zv_8PE_MUCnbVn1jaNF5S2PfxlM_vzKDUiKxFIKkZ6M8Epj5M-dFbfvrdAe-B2vbAuXw">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -410,7 +410,7 @@ paths:
             format: Signed JWT
             example: >-
               DPoP
-              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.7wfkG8UoCL8ilXPxahy80JAMR68886ng7IAFMOqt5iXK91ydGwcmXUwf3nYv1Y3ZsdPYpWKGepX3_KBgfMtq5g
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.IrCeQjd3kyTXwdhrT2zv_8PE_MUCnbVn1jaNF5S2PfxlM_vzKDUiKxFIKkZ6M8Epj5M-dFbfvrdAe-B2vbAuXw
         - name: DPoP
           in: header
           description: >-
@@ -419,14 +419,14 @@ paths:
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6Ijc3NGIwYWZkZmJhZmNhYjc5MjU1YzQzOTQ3MzFkZjIwMzRkODNlYmNmY2EzOWUyYjQ2N2YwODM0NDUwYjk5YjQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.h71sNCcJ1l_0kllASpGZ0l1whXwHCwM27hlkavx-qiel9Y5Qw37g4jLfBzNhjHZkG4AH7fKSwstuP9N4JK2qzw">EXAMPLE
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6IjQ4NGMzMzRiMWZjNTExMGRiYTlmZmNkMDJiNDI1ZTk5ODBlNTczYWQ1NDMzYTg4ZjkwZDFmMDZkYTdlZTVkNjIiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.pfeYZtHqrach0IESBrKHnpI08P4LQpQG6Lmqt-I7Tddk2MKeO4BOc3NZjzNRX6Jpv2iWz4HdsEflL4SVdT6y-Q">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
             type: string
             format: JWT
             example: >-
-              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6Ijc3NGIwYWZkZmJhZmNhYjc5MjU1YzQzOTQ3MzFkZjIwMzRkODNlYmNmY2EzOWUyYjQ2N2YwODM0NDUwYjk5YjQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.h71sNCcJ1l_0kllASpGZ0l1whXwHCwM27hlkavx-qiel9Y5Qw37g4jLfBzNhjHZkG4AH7fKSwstuP9N4JK2qzw-zTQyMn3I0Px3afw
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6IjQ4NGMzMzRiMWZjNTExMGRiYTlmZmNkMDJiNDI1ZTk5ODBlNTczYWQ1NDMzYTg4ZjkwZDFmMDZkYTdlZTVkNjIiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.pfeYZtHqrach0IESBrKHnpI08P4LQpQG6Lmqt-I7Tddk2MKeO4BOc3NZjzNRX6Jpv2iWz4HdsEflL4SVdT6y-Q
         - name: Agid-JWT-Signature
           in: header
           description: >-
@@ -540,7 +540,7 @@ paths:
                 error: invalid_request
                 error_description: >-
                   TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
-  /v0.9.0/notifyUpdateCredentials/claims/{vct}:
+  /v0.9.0/notifyUpdateCredentials/claims/{attribute_type}:
     post:
       tags:
         - e-services PDND
@@ -552,10 +552,10 @@ paths:
         associated.
       operationId: notifyClaimsCredentials
       parameters:
-        - name: vct
+        - name: attribute_type
           in: path
           required: true
-          description: Credential identifier
+          description: Identifier of attribute claims set
           schema:
             type: string
             example: MDL
@@ -568,7 +568,7 @@ paths:
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
             Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.1PYyMx5xFVVr2hUmOiZC1tsY2LEfiSnOU1TPNDJpHqgm-UxOz1-2G6rBc97fETBRzohGJRUMhjZglFLnQW3Wdg">EXAMPLE
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.xQl8Nb8S-j-gHFn5O90N14i1HYWnK4HfzjCXFXKHAzpZZ8ErrYopUcZ3FqOb4cSSPs2Bo7ZR2UNFwQD8tkgGzA">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -576,7 +576,7 @@ paths:
             format: Signed JWT
             example: >-
               DPoP
-              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEifQ.1PYyMx5xFVVr2hUmOiZC1tsY2LEfiSnOU1TPNDJpHqgm-UxOz1-2G6rBc97fETBRzohGJRUMhjZglFLnQW3Wdg
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.xQl8Nb8S-j-gHFn5O90N14i1HYWnK4HfzjCXFXKHAzpZZ8ErrYopUcZ3FqOb4cSSPs2Bo7ZR2UNFwQD8tkgGzA
         - name: DPoP
           in: header
           description: >-
@@ -585,14 +585,14 @@ paths:
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6IjZhZTc1YWMzMDkzMWQ4MDhjMzI4OWYzY2JiMWYxMDVlYmUxNmQ0YTJkODFkMTNiMGFjYzRkYjJlYjRjMGFiOTkiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.ER9v1ItrFRuGgEoIWTNt5MGDiW00NVkYQS3yK-OW5_ZRSfAce8w8nn6Cbr-Q320eL5fXYjRtUQMDy7qIYGn8sg">EXAMPLE
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImI1MTNiYzI0MjgzOGZmYTEzMDk4N2M3MzBjMTBiMDg5YTUzOTA5MmZiZTAwMDk1Zjg2MWU1NGJlMmQyYWEwNTMiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.jApDgx5xK5xmpuM1CnzLniYVUzvll722NstOHuCiPWAF4-0IrDpuAMcQOpg-3rKUdKYXw5wlVZu7_wjRHezugQ">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
             type: string
             format: JWT
             example: >-
-              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6IjZhZTc1YWMzMDkzMWQ4MDhjMzI4OWYzY2JiMWYxMDVlYmUxNmQ0YTJkODFkMTNiMGFjYzRkYjJlYjRjMGFiOTkiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.ER9v1ItrFRuGgEoIWTNt5MGDiW00NVkYQS3yK-OW5_ZRSfAce8w8nn6Cbr-Q320eL5fXYjRtUQMDy7qIYGn8sg
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImI1MTNiYzI0MjgzOGZmYTEzMDk4N2M3MzBjMTBiMDg5YTUzOTA5MmZiZTAwMDk1Zjg2MWU1NGJlMmQyYWEwNTMiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.jApDgx5xK5xmpuM1CnzLniYVUzvll722NstOHuCiPWAF4-0IrDpuAMcQOpg-3rKUdKYXw5wlVZu7_wjRHezugQ
         - name: Agid-JWT-Signature
           in: header
           description: >-
@@ -749,7 +749,7 @@ paths:
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
             Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgifQ.6ra4rGRIHpiqgb4Z-jWrERRlMvkqQC7bkWXKD51zJa34WJIU-B0AXQADcAAxj_vPRVOtAATNj8fgFgLNGwY-TQ">EXAMPLE
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.mhy3gsKKcstrk9lbD6ia97KqPvPS4xZ7hggsUAk7SkkTNV1af9t9xh7yic_sxUORoYbwQi_J1IVAtOiEN_Gysw">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -757,7 +757,7 @@ paths:
             format: Signed JWT
             example: >-
               DPoP
-              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgifQ.6ra4rGRIHpiqgb4Z-jWrERRlMvkqQC7bkWXKD51zJa34WJIU-B0AXQADcAAxj_vPRVOtAATNj8fgFgLNGwY-TQ
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.mhy3gsKKcstrk9lbD6ia97KqPvPS4xZ7hggsUAk7SkkTNV1af9t9xh7yic_sxUORoYbwQi_J1IVAtOiEN_Gysw
         - name: DPoP
           in: header
           description: >-
@@ -774,33 +774,6 @@ paths:
             format: JWT
             example: >-
               eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiYXRoIjoiNzFkZWY4MWYyZjE3MWI1MmFkYWMxNzg5ODI3NmFlZWU5OTlhZWUzZDNkZmE3NjkyMjJjODA0NDBmNDQ0ODgxYSIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNzYyMjYyNjE2fQ.H9r1N2s8xp_rcNr4Bs7_n-6vNKN4BPsvXzsV_UWwWiyr314xPMv4v6_8ac2SIbM-cJ-O4hlZysOUrjC7rewlag
-        - name: Agid-JWT-Signature
-          in: header
-          description: >-
-            JWT containing the signature of the message headers whose integrity
-            needs to be guaranteed, to comply with the INTEGRITY_REST_02
-            security pattern. <a target="blank"
-            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
-
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDY2ODgsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImV4cCI6MTczNjg0NjkyOCwiaWF0IjoxNzM2ODQ2Njg4LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQiLCJzaWduZWRfaGVhZGVycyI6eyJkaWdlc3QiOiJTSEEtMjU2PTk2MGY2MTlhMWQ0ZWQ2ZThkN2Y0NTFlODU5YjFiMzIxY2UyYmIyNzlhMjk2NmNjZGRkOTc5NjYwZjE5YWEwZWIiLCJjb250ZW50LXR5cGUiOiJhcHBsaWNhdGlvbi9qc29uIn19.Bg9biNEt0IWazqwTvJdrzt2HswGYvKT6UCo6zN-JAopReZVQ8aM-XsU7r7QGthi9j_P66s3cluSdR6Tifa8DQw">EXAMPLE
-            ON JWT.IO</a>
-          required: true
-          schema:
-            type: string
-            format: JWT
-            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDY2ODgsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImV4cCI6MTczNjg0NjkyOCwiaWF0IjoxNzM2ODQ2Njg4LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQiLCJzaWduZWRfaGVhZGVycyI6eyJkaWdlc3QiOiJTSEEtMjU2PTk2MGY2MTlhMWQ0ZWQ2ZThkN2Y0NTFlODU5YjFiMzIxY2UyYmIyNzlhMjk2NmNjZGRkOTc5NjYwZjE5YWEwZWIiLCJjb250ZW50LXR5cGUiOiJhcHBsaWNhdGlvbi9qc29uIn19.Bg9biNEt0IWazqwTvJdrzt2HswGYvKT6UCo6zN-JAopReZVQ8aM-XsU7r7QGthi9j_P66s3cluSdR6Tifa8DQw
-        - name: Digest
-          in: header
-          description: >-
-            Digest of the message payload, to comply with the INTEGRITY_REST_02
-            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
-            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
-            digest output.
-          required: true
-          schema:
-            type: string
-            format: JWT
-            example: SHA-256=960f619a1d4ed6e8d7f451e859b1b321ce2bb279a2966ccddd979660f19aa0eb
       responses:
         '200':
           description: 200 OK

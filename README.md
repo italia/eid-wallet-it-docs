@@ -38,6 +38,7 @@ Preview of other branches can be navigated by adding the branch name in the webp
 
 Released versions can be navigated by adding the tag in the webpath leaded by a _v_, as follows:
 
+ - [https://italia.github.io/eudi-wallet-it-docs/v0.9.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.9.1/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.9.0/en/](https://italia.github.io/eudi-wallet-it-docs/v0.9.0/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.8.2/en/](https://italia.github.io/eudi-wallet-it-docs/v0.8.2/en/)
  - [https://italia.github.io/eudi-wallet-it-docs/v0.8.1/en/](https://italia.github.io/eudi-wallet-it-docs/v0.8.1/en/)

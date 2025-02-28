@@ -92,6 +92,7 @@
             "credential_issuer": "https://eaa-provider.example.org",
             "credential_endpoint": "https://eaa-provider.example.org/credential",
             "nonce_endpoint": "https://eaa-provider.example.org/nonce-endpoint",
+            "deferred_credential_endpoint": "https://eaa-provider.example.org/deferred-credential",
             "revocation_endpoint": "https://eaa-provider.example.org/revoke",
             "status_attestation_endpoint": "https://eaa-provider.example.org/status",
             "notification_endpoint": "https://eaa-provider.example.org/notification",
@@ -136,7 +137,7 @@
                             "locale": "en-US"
                         }
                     ],
-                    "vct": "EuropeanDisabilityCard",
+                    "vct": "https://eaa-provider.example.org/v1.0/disabilitycard",
                     "claims": [
                         {
                             "path": ["document_number"],
@@ -287,7 +288,7 @@
                             "locale": "en-US"
                         }
                     ],
-                    "vct": "MDL",
+                    "vct": "https://eaa-provider.example.org/v1.0/mdl",
                     "claims": [
                         {
                             "path": ["given_name"],
