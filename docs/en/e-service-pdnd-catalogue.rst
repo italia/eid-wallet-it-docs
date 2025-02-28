@@ -19,7 +19,7 @@ Credential Issuers MUST provide the following e-services through PDND to:
     A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-Issuer.html" target="_blank">here</a>`.
 
 Notify Available Credential
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................................
 
 .. list-table::
     :widths: 20 80 
@@ -34,7 +34,7 @@ Notify Available Credential
       - Authentic Source
 
 Notify Update Credential
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................................
 
 .. list-table::
     :widths: 20 80 
@@ -52,7 +52,7 @@ Notify Update Credential
 
 
 Notify Wallet Instance Revocation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................................
 
 .. list-table::
     :widths: 20 80 
@@ -66,8 +66,9 @@ Notify Wallet Instance Revocation
     * - **Consumer**
       - Wallet Provider
 
+
 Get Statistics
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................................
 
 .. list-table::
     :widths: 20 80 
@@ -83,7 +84,7 @@ Get Statistics
 .. _authentic_source_catalogue:
 
 Authentic Source Catalogue
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.  
 
@@ -91,7 +92,7 @@ Public Authentic Sources MUST provide the following e-service through PDND to pr
     A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">here</a>`.
 
 Get Attribute Claims
-+++++++++++++++++++++
+...........................................
 
 .. list-table::
     :widths: 20 80 

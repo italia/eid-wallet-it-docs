@@ -1425,7 +1425,7 @@ The Credential Response contains the following parameters:
     - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credentials`` parameter is not present.
     - Section 8.3 of [`OpenID4VCI`_].
   * - **transaction_id**
-    - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Flow`. It MUST be invalidated after the User obtains the Credential.
+    - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Endpoint`. It MUST be invalidated after the User obtains the Credential.
     - Section 8.3 of [`OpenID4VCI`_].
 
 In case of the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
