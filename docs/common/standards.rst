@@ -77,7 +77,7 @@ Digital Credential Data Format
     * - `SD-JWT-VC`_
       - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - ISO18013-5
-      - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application. International Organization for Standardization.
+      - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
     * - W3C-VC-DT-1.1
       - "Verifiable Credentials Data Model 1.1.", W3C Recommendation, 3 March 2022.
     * - ISO-IEC_7367
@@ -252,7 +252,7 @@ Other Specifications
     * - :rfc:`3986`
       - Uniform Resource Identifier (URI): Generic Syntax.
     * - :rfc:`7159`
-      - Bray, T., “The JavaScript Object Notation (JSON) Data Interchange Format” RFC 7159, March 2014.
+      - Bray, T., "The JavaScript Object Notation (JSON) Data Interchange Format" RFC 7159, March 2014.
     * - :rfc:`8174`
       - Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words", RFC 8174, DOI 10.17487/RFC8174, May 2017.
     * - USASCII
