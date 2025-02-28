@@ -134,7 +134,6 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#external-references">External references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
@@ -762,6 +761,9 @@ Below is a non-normative example of the response.</p>
 <span id="wallet-attestation-rst"></span><h2>Wallet Attestation<a class="headerlink" href="#wallet-attestation" title="Link to this heading">¶</a></h2>
 <p>Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance.
 It primarily certifies the <strong>authenticity</strong>, <strong>integrity</strong>, <strong>security</strong>, <strong>privacy</strong>, and <strong>trustworthiness</strong> of a particular Wallet Instance.</p>
+<figure class="align-default" id="wallet-solution-schema">
+<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/VP8nJyCm48Lt_ugdTexOCw22OCY0GAeGOsMSerWuliY-fEg_9mrEPTAqw-VtNLxEtaJHGRh6AMs40rRlaS8AEgAB533H3-qS2Tu2zxPEWSF8TcrYv-mJzTOGNfzVnXXJ0wKCDorxydAUjMNNYMMVpug9OTrR7i22LlaesXlADPiOraToZWyBsgCsF-JhtFhyGyZJgNlbXVR1oX5R2YSoUdQYEzrQO1seLcfUeGXs_ot5_VzqYM6lQlRXMz6hsTccIbGHhGu2_hhfP1tBwHuZqdOUH6WuEmrKIeqtNonvXhq4ThY3Dc9xBNJv_rSwQeyfawhcZsTPIpKLKuFYSa_JyOPytJNk5m00"><img alt="The image illustrates the containment of Wallet Provider and Wallet Instances within the Wallet Solution, managed by the Wallet Provider." src="_images/static_view_wallet_instance_attestation.svg" /></a>
+</figure>
 <section id="wallet-attestation-requirements">
 <h3>Wallet Attestation Requirements<a class="headerlink" href="#wallet-attestation-requirements" title="Link to this heading">¶</a></h3>
 <p>The requirements for the Wallet Attestation are defined below:</p>
@@ -794,16 +796,6 @@ It primarily certifies the <strong>authenticity</strong>, <strong>integrity</str
 <p class="admonition-title">Warning</p>
 <p>At the current stage, the implementation profile defined in this document supports only the <strong>Local Internal WSCD</strong>. Future versions of this specification MAY include other approaches depending on the required <cite>AAL</cite>.</p>
 </div>
-</section>
-<section id="static-component-view">
-<h3>Static Component View<a class="headerlink" href="#static-component-view" title="Link to this heading">¶</a></h3>
-<figure class="align-default" id="wallet-solution-schema">
-<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/VP8nJyCm48Lt_ugdTexOCw22OCY0GAeGOsMSerWuliY-fEg_9mrEPTAqw-VtNLxEtaJHGRh6AMs40rRlaS8AEgAB533H3-qS2Tu2zxPEWSF8TcrYv-mJzTOGNfzVnXXJ0wKCDorxydAUjMNNYMMVpug9OTrR7i22LlaesXlADPiOraToZWyBsgCsF-JhtFhyGyZJgNlbXVR1oX5R2YSoUdQYEzrQO1seLcfUeGXs_ot5_VzqYM6lQlRXMz6hsTccIbGHhGu2_hhfP1tBwHuZqdOUH6WuEmrKIeqtNonvXhq4ThY3Dc9xBNJv_rSwQeyfawhcZsTPIpKLKuFYSa_JyOPytJNk5m00"><img alt="The image illustrates the containment of Wallet Provider and Wallet Instances within the Wallet Solution, managed by the Wallet Provider." src="_images/static_view_wallet_instance_attestation.svg" /></a>
-</figure>
-</section>
-<section id="dynamic-component-view">
-<h3>Dynamic Component View<a class="headerlink" href="#dynamic-component-view" title="Link to this heading">¶</a></h3>
-<p>The Wallet Attestation acquisition flow can be divided into two main phases. The first phase involves device initialization and registration, which occurs only during the initial launch of the Wallet Instance (after installation). The second phase pertains to the actual acquisition of the Wallet Attestation.</p>
 <section id="wallet-attestation-issuance">
 <h4>Wallet Attestation Issuance<a class="headerlink" href="#wallet-attestation-issuance" title="Link to this heading">¶</a></h4>
 <p>This section describes the Wallet Attestation format and how the Wallet Provider issues it.</p>
@@ -1338,9 +1330,8 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 </div>
 </section>
 </section>
-</section>
 <section id="external-references">
-<h1>External references<a class="headerlink" href="#external-references" title="Link to this heading">¶</a></h1>
+<h2>External references<a class="headerlink" href="#external-references" title="Link to this heading">¶</a></h2>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id60" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
@@ -1355,6 +1346,7 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <p>Depending on the device operating system, TEE is defined by <a class="reference external" href="https://source.android.com/docs/security/features/trusty">Trusty</a> or <a class="reference external" href="https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web">Secure Enclave</a> for Android and iOS devices, respectively.</p>
 </aside>
 </aside>
+</section>
 </section>
 
 
@@ -1396,9 +1388,7 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 </li>
 <li><a class="reference internal" href="#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
 <li><a class="reference internal" href="#wallet-attestation">Wallet Attestation</a><ul>
-<li><a class="reference internal" href="#wallet-attestation-requirements">Wallet Attestation Requirements</a></li>
-<li><a class="reference internal" href="#static-component-view">Static Component View</a></li>
-<li><a class="reference internal" href="#dynamic-component-view">Dynamic Component View</a><ul>
+<li><a class="reference internal" href="#wallet-attestation-requirements">Wallet Attestation Requirements</a><ul>
 <li><a class="reference internal" href="#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
 <li><a class="reference internal" href="#wallet-attestation-request">Wallet Attestation Request</a></li>
 <li><a class="reference internal" href="#wallet-attestation-jwt">Wallet Attestation JWT</a></li>
@@ -1411,9 +1401,9 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <li><a class="reference internal" href="#revocation-check-mechanisms">Revocation Check Mechanisms</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#external-references">External references</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#external-references">External references</a></li>
 </ul>
 
             </div>
