@@ -137,6 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html#get-attribute-claims">Get Attribute Claims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
@@ -259,7 +260,28 @@ User</p></td>
 </section>
 <section id="authentic-source-catalogue">
 <span id="id1"></span><h1>Authentic Source Catalogue<a class="headerlink" href="#authentic-source-catalogue" title="Link to this heading">¶</a></h1>
-<p>...</p>
+<p>Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">here</a></span>.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>Authentic Source</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>PID/(Q)EAA Provider</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 
 
@@ -307,7 +329,7 @@ User</p></td>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 24/02/2025.
+      Last updated on 28/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

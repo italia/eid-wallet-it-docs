@@ -55,7 +55,7 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **response_modes_supported**
     - JSON array containing a list of the supported "response_mode" values, as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. The supported values MAY be *query* and *form_post.jwt* (see `JARM`_).
   * - **response_types_supported**
-    - JSON array containing a list of the supported "response_type" values, as specified in :rfc: `8414`. The supported value MUST be *code*.
+    - JSON array containing a list of the supported "response_type" values, as specified in :rfc:`8414`. The supported value MUST be *code*.
   * - **authorization_signing_alg_values_supported**
     - JSON array containing a list of the :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`Cryptographic algorithms`. See Section 4 of `JARM`_.
   * - **grant_types_supported**
@@ -88,6 +88,8 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
   * - **revocation_endpoint**
     - URL of the revocation endpoint. See :rfc:`8414#section-2`.
+  * - **deferred_credential_endpoint**
+    - URL of the deferred credential endpoint, as defined in Section 11.2.3 of `OpenID4VCI`_.
   * - **status_attestation_endpoint**
     - It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section :ref:`lifecycle.rst` for more details.
   * - **notification_endpoint**

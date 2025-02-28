@@ -139,6 +139,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#get-attribute-claims">Get Attribute Claims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
@@ -159,7 +160,7 @@
   <section id="authentic-sources">
 <h1>Authentic Sources<a class="headerlink" href="#authentic-sources" title="Link to this heading">¶</a></h1>
 <p>Authentic Sources provide Users attributes to the Credential Issuers enabling them in the issuance of the Digital Credentials. During the Issuance Flow, Credential Issuers request from Authentic Sources the attributes required to provide the requested Credential. Authentic Sources MAY also provide a Credential Offer related to their Credential Issuers as defined in Section <a class="reference internal" href="pid-eaa-issuance.html#credential-offer-endpoint"><span class="std std-ref">Credential Offer Endpoint</span></a>.</p>
-<p>Public Authentic Sources MUST interact with Credential Issuers via PDND according to the rules defined in Section <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a> and in Section <a class="reference internal" href="credential-revocation.html#status-update-by-authentic-sources"><span class="std std-ref">Status Update by Authentic Sources</span></a>. See also Section <span class="xref std std-ref">Authentic Source Catalogue</span> for additional details.</p>
+<p>Public Authentic Sources MUST interact with Credential Issuers via PDND according to the rules defined in Section <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a> and in Section <a class="reference internal" href="credential-revocation.html#status-update-by-authentic-sources"><span class="std std-ref">Status Update by Authentic Sources</span></a>. See also Section <a class="reference internal" href="e-service-pdnd-catalogue.html#authentic-source-catalogue"><span class="std std-ref">Authentic Source Catalogue</span></a> for additional details.</p>
 <p>Authentic Sources MUST:</p>
 <blockquote>
 <div><ul>
@@ -243,7 +244,7 @@
 <tr class="row-odd"><td><p><strong>[ID_AUTH_CHANNEL_01]</strong> Direct Trust Transport-Level Security (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It protects the communication between the Consumer and the Provider by ensuring confidentiality, integrity, identification of the Provider, and mitigation against replay attack and spoofing.</p></td>
 <td><p>R1, R2</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>[INTEGRITY_REST_02]</strong> REST Payload Integrity in PDND (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It ensures the integrity of the payload of the REST Consumer request, within the PDND Infrastructure.</p></td>
+<tr class="row-even"><td><p><strong>[INTEGRITY_REST_02]</strong> REST Payload Integrity in PDND (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): CONDITIONAL. It ensures the integrity of the payload of the REST Consumer request, within the PDND Infrastructure. It is REQUIRED whenever the request carries a payload.</p></td>
 <td><p>R2, R4</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>[AUDIT_REST_02]</strong> Submission of audit data within the REST request with correlation (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): OPTIONAL. The Provider MAY request additional data tracked in the Consumer's domain, with a correlation between such data and the authentication method. In that case, this pattern MUST be used.</p></td>
@@ -341,7 +342,7 @@
 <figure class="align-center" id="id113" style="width: 100%">
 <span id="fig-voucherissuance-eservice-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TT5HRzCm40VmTt-AK_QoHLH2a-1X3sXHkcf52AAbm6FakRV6Ik8pvtDPz-cnGxSYjBr4iMF_xd-Nwo2Q9KwZ4YiZmW-AfaU6TGXHEuEm05oqo7jhK2aTXLoSxf6LkgT7ACkQN8WJSbd2sNfFV500FedMMA-TG56MtweeFTIZHITbMO0EKAyKkYqaujbfbb-NsQYU8kDRHduGsoSjbXpaLCX7iMfF8dc15J5KtvVhJNTtqswwzvSAKjN5ftfrrJ0c7U7ppmtyjearDFaH9tIY-G1RBHhEYsB3sWpMxMxsTelEO55Sg1DIfpjH4DhRwlB3H-Xrw84UuBLh6Riz_t__8davibBF8gDEuBAX1WOyWDUMGQUUF1CzpAUgzkhb1ztXhuX1CcxcqNPsMnJlu6MfGq3EWtfzjvE3nx-VTgoT7DUfHtOa2BH7Xgg5iozsrqjZtP2Rxz4C8SUU3obLjOiv_2bLyEG2vbZQ60oX4nhmc26__biO7xrb39rrkV1rOkCq_W40"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id113" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id113" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Steps 1-2 (Preparation of Tracked Data):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>) containing the tracked data that have to be sent to the Provider. Finally, it computes the SHA-256 hash of <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>.</p>
@@ -382,7 +383,7 @@
 <div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/authorization-server/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
-<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJhbGciOiJSUzI1NiIsImtpZCI6ImY0YzRmMjE3LWE4N2It.eyJodHRwIj...</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiI1NTBlODQwMC1lMjliLTQxZDQtYTcxNi00NDY2NTU0NDAwMDAiLCJodG0iOiJQT1NUIiwiaHR1IjoiaHR0cHM6Ly9pbnRlcm9wLnBhZ29wYS5pdC9hdXRob3JpemF0aW9uLXNlcnZlciIsImlhdCI6MTc2MjI2MDYxNn0.D0ZUDkfGHx_rQBdYi_3VSXkdbJM-7FSWN88LWICQImMWtIWd2mbxGb7v8udfM_c4_ase8x7I3I1JZm01Us3QEA</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 
 <span class="nt">grant_type</span><span class="o">=</span><span class="s">client_credentials</span><span class="p">&amp;</span>
@@ -479,7 +480,7 @@
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
 
 <span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImF1ZCI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiZXhwIjoxNzMzMDQyMTUwLCJuYmYiOjE3MzMwNDE5NDUsImlhdCI6MTczMzA0MTkyMCwianRpIjoiYzRmNWQ3ZTItYjdjOC00MGY2LTliNmEtZGM5YTRmNWFlYjU3IiwiY2xpZW50X2lkIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwicHVycG9zZUlkIjoiZDJiOWE2NTMtYzQ5Ny00NWM2LWI4ZjEtNWJkZjEyNGM5ZDNhIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiOTkwOGQ5NGI4ZmViMjY4YzAzNzEwNmQ3Yzg5ZTcwNjBjMmNjMWY2YjJiNGViY2I4MDViZmVlNTNhNTM5MzA3YiJ9fQ.9e3dwxSa5fSTPolA2NG7kpa0IEpNY0rM9Wc6cczsKwRlv1fEpKKtjcxnUyRG8fqo5Ajbun_39AqMUqOqCIcCVg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImF1ZCI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiZXhwIjoxNzMzMDQyMTUwLCJuYmYiOjE3MzMwNDE5NDUsImlhdCI6MTczMzA0MTkyMCwianRpIjoiYzRmNWQ3ZTItYjdjOC00MGY2LTliNmEtZGM5YTRmNWFlYjU3IiwiY2xpZW50X2lkIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwicHVycG9zZUlkIjoiZDJiOWE2NTMtYzQ5Ny00NWM2LWI4ZjEtNWJkZjEyNGM5ZDNhIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiOTkwOGQ5NGI4ZmViMjY4YzAzNzEwNmQ3Yzg5ZTcwNjBjMmNjMWY2YjJiNGViY2I4MDViZmVlNTNhNTM5MzA3YiJ9LCJjbmYiOnsiamt0IjoiMFpjT0NPUlpOWXktRFdwcXEzMGpaeUpHSFROMGQySGdsQlYzdWlndUE0SSJ9fQ.sGhaHEOfMTB7r4_8ZILM_a9eTBGawWn3kL-dxYoZggFIzyrXDOZcQWt0zr00lMk2iYAMWxS32e4cUedmAsBXGw&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DPoP&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span>
 <span class="p">}</span>
@@ -510,7 +511,10 @@
     <span class="s2">&quot;purposeId&quot;</span><span class="p">:</span> <span class="s2">&quot;d2b9a653-c497-45c6-b8f1-5bdf124c9d3a&quot;</span><span class="p">,</span>
     <span class="s2">&quot;digest&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA256&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;5db26201b684761d2b970329ab8596773164ba1...&quot;</span>
+        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;9c7894a0a5a910580b967f384cdfba17b1ab6f86670e5b0df18a0c453b5eb215&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;cnf&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;jkt&quot;</span><span class="p">:</span> <span class="s2">&quot;0ZcOCORZNYy-DWpqq30jZyJGHTN0d2HglBV3uiguA4I&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -540,7 +544,7 @@
 <figure class="align-center" id="id114" style="width: 100%">
 <span id="fig-voucherissuance-interoperabilityapi-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TP51ozf048Rl-ok6UD7GqFOg4WmH8L3Qq41FXR36mIp6tNHcLjHVtrqDwk7xBY4px_Ay3xjh5atYJuCI8mF27-Ux7WagPgzjXv11PGN9ZKXwPmOZLoZgIYdjnLb_sY4fjNCNIDAq3YJJcL5RITE_TiNcXillt_9vwIpxKw0wMdsDs_mjhScTpHvfCKK9pAgpewi265_0oFzLUEcX70p6WWGqGxbLQFSG11uMGMBpSvEcC2jkdl0pHlmuCZSjnbbeaCv84x5eNiHoc-L5itnUoc_yvv45vadItIrQiq-IB_0SDJDIP7wyRUKwuYCwK12QveLIP9qWkA0H163smnnwgOqzAe2on-x8KUf-IAcYoRAyt2vVLZmwonYrTDSXSolkY9D3_7qlnije2BarDXQl0pOy_dy0"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id114" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id114" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Voucher Request)</strong>: The Participant creates a Voucher Request and sends it to the PDND Authorization Server.</p>
@@ -914,9 +918,13 @@
 <td><p>MUST correspond to the value of the <code class="docutils literal notranslate"><span class="pre">digest</span></code> object contained in the Voucher Request. It is mandatory only when complying with <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code>.</p></td>
 <td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
+<td><p>It MUST contain a <strong>jkt</strong> claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the <em>jkt</em> member MUST be the base64url encoding (as defined in [<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.</p></td>
+<td><p>[<span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>. Section 6.1] and [<span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html"><strong>RFC 7638</strong></a>].</p></td>
+</tr>
 </tbody>
 </table>
-<p>If any errors occur during the validation of the Voucher Request, the PDND Authorization Server Endpoint MUST return an error response as defined in <span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<p>If any errors occur during the validation of the Voucher Request, the PDND Authorization Server Endpoint MUST return an error response as defined in <span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
@@ -952,27 +960,27 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The request cannot be fulfilled because it is missing required parameters, contains invalid parameters, or is otherwise malformed [<span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because it is missing required parameters, contains invalid parameters, or is otherwise malformed [<span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_grant</span></code></p></td>
-<td><p>The request cannot be fulfilled because the provided grant (i.e., <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code>) is expired, revoked, already used, or otherwise malformed [<span class="target" id="index-52"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because the provided grant (i.e., <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code>) is expired, revoked, already used, or otherwise malformed [<span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unsupported_grant_type</span></code></p></td>
-<td><p>The request cannot be fulfilled because the provided grant type is not supported by the PDND Authorization Server [<span class="target" id="index-53"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because the provided grant type is not supported by the PDND Authorization Server [<span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_scope</span></code></p></td>
-<td><p>The request cannot be fulfilled because the provided <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> is invalid, unknown, malformed, or not associated to the Client [<span class="target" id="index-54"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because the provided <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> is invalid, unknown, malformed, or not associated to the Client [<span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_dpop_proof</span></code></p></td>
-<td><p>The request cannot be fulfilled because it contains an invalid <em>DPoP proof</em> [<span class="target" id="index-55"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-5"><strong>RFC 9449#section-5</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because it contains an invalid <em>DPoP proof</em> [<span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-5"><strong>RFC 9449#section-5</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_client</span></code></p></td>
-<td><p>The request cannot be fulfilled because Client Authentication failed (i.e., the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> is malformed, incorrectly signed, missing, or unverifiable) [<span class="target" id="index-56"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because Client Authentication failed (i.e., the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> is malformed, incorrectly signed, missing, or unverifiable) [<span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
@@ -993,7 +1001,7 @@
 <figure class="align-center" id="id115" style="width: 100%">
 <span id="fig-keyretrieval-pdnd-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/PS_1IWCn58NXVPxYK7U1-01Tb1Pc8GWgcSMiq_Q8eMbIRsvc79_UgOWAtHxuF-xTLWsYxPoCHat48sTugaIE8S7XfNlgZ0bDIsxdFSMOVVc0jTVTMjpjFflG09T5YOTu2LcnilP-OahkbCkKhLqXL0o6-OWb_XMaZF58kIeF9NFkEDr2pxkcR_2ifSc1w2aZvOVq_P_fUxSPrl1yRwoAroBVf-F4kHepEBVn_VhVj5tAvUil"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id115" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id115" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Keys Request)</strong>: The Provider requests for the keys used by the PDND to sign Vouchers.</p>
@@ -1004,7 +1012,7 @@
 </pre></div>
 </div>
 </div>
-<p><strong>Step 2 (Keys Response)</strong>: The .well-known Endpoint returns the list of keys used by the PDND to sign Vouchers, as a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-57"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
+<p><strong>Step 2 (Keys Response)</strong>: The .well-known Endpoint returns the list of keys used by the PDND to sign Vouchers, as a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-pdnd-flow-response">
 <div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">Non-normative example of the Keys Response</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -1052,7 +1060,7 @@
 <figure class="align-center" id="id116" style="width: 100%">
 <span id="fig-keyretrieval-participant-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/fSp1IlGm5CNnVPxYa6_nGQ0lC8jXIbkm25fcxIPjx-XbqYGcDsfzUYk85Low_f_pEsMnIShYbB0umYsjE9CafXVhK67OAayShPUib2qIV5b6IagDuGt63ErTQmp-rUybaGBYleSsflT2AKHATcJ7ig8UUcCqR4QloC_Ob6zgltwADy7JsjBhR_I-BlA4nZ5v-SAQRjUQhZhsXpCz5yg2IqZu8V_FY6LqFE5AwuEVGagKO_0p-qT8G8uqyMNBMbzvrbf1zTMnwGv_CKxavxAu3m00"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id116" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id116" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Key Request)</strong>: The Participant requests for the key used by another Participant, corresponding to a specific <code class="docutils literal notranslate"><span class="pre">kid</span></code>, to the PDND Interoperability API.</p>
@@ -1064,7 +1072,7 @@
 </pre></div>
 </div>
 </div>
-<p><strong>Step 2 (Key Response)</strong>: The Interoperability API Endpoint returns the requested key, as a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-58"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
+<p><strong>Step 2 (Key Response)</strong>: The Interoperability API Endpoint returns the requested key, as a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-participant-flow-response">
 <div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">Non-normative example of the Key Response</span><a class="headerlink" href="#code-keyretrieval-participant-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -1098,7 +1106,7 @@
 </section>
 <section id="keys-response">
 <span id="sec-keyretrieval-endpoint-wellknown-response"></span><h3>Keys Response<a class="headerlink" href="#keys-response" title="Link to this heading">¶</a></h3>
-<p>The .well-known Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-59"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] containing the public keys employed by the PDND Authorization Server to sign Vouchers.</p>
+<p>The .well-known Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] containing the public keys employed by the PDND Authorization Server to sign Vouchers.</p>
 <p>If any errors occur during the retrieval of the keys, the .well-known Endpoint MUST return an error response. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
@@ -1166,16 +1174,16 @@
 <tbody>
 <tr class="row-even"><td><p><strong>Authorization</strong></p></td>
 <td><p>Voucher released by the PDND Authorization Server.</p></td>
-<td><p>[<span class="target" id="index-60"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>]</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="key-response">
 <span id="sec-keyretrieval-endpoint-interoperabilityapi-response"></span><h3>Key Response<a class="headerlink" href="#key-response" title="Link to this heading">¶</a></h3>
-<p>In case a public key with the provided <code class="docutils literal notranslate"><span class="pre">kid</span></code> exists, the Interoperability API Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] representing that key.</p>
+<p>In case a public key with the provided <code class="docutils literal notranslate"><span class="pre">kid</span></code> exists, the Interoperability API Endpoint responds with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>] representing that key.</p>
 <p>If any errors occur during the retrieval of the key, the Interoperability API Endpoint MUST return an error response, whose structure depends on the nature of the error.</p>
-<p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-62"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
+<p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-endpoint-interoperabilityapi-error-401">
 <div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">Non-normative example of a Key Error Response in case of 401 errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-401" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
@@ -1183,7 +1191,7 @@
 </pre></div>
 </div>
 </div>
-<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
@@ -1218,11 +1226,11 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The request cannot be fulfilled because it is missing required parameters, contains invalid parameters or is otherwise malformed [<span class="target" id="index-64"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because it is missing required parameters, contains invalid parameters or is otherwise malformed [<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_token</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Voucher is expired, revoked, malformed, or otherwise invalid [<span class="target" id="index-65"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because the Voucher is expired, revoked, malformed, or otherwise invalid [<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">not_found</span></code></p></td>
@@ -1267,7 +1275,7 @@
 <figure class="align-center" id="id117" style="width: 100%">
 <span id="fig-usage-flow"></span><a class="reference external image-reference" href="https////www.plantuml.com/plantuml/svg/ZP1HRzCm4CVV_IbEtWjOgeHut0DQbQmmX5YLTF1OUSwHM4ryuNpkw3uzph8LAZJK5ykMx_-xd_vNKInB6debNde4NDJ8U-yGxg9jKIcRX48Qxf6LkgTVO4n18QO1sHYukDaJ7nJ0c27U-T460MtCxJ991qNlCOWn6co4OgKmD90HBvnr-RMS6Cl7nFWQOpg8_QCLJm4cD-HduhB-XyYqzyrizea27afyU0rSOQJ43a-PrL_COhNuKAmkrumPWF3v-mOUV4v6tmOhYH7UQ5s_FBH-Uun0mMW5eLpJ6aOc-Z5_LVKbb5PiNlupOPIPzusIwwPwEL0EKRR97d3nnRUTV6J4e02A3jqEj9wGMa-IJzFdXQnp6EDMQ8VX94oZm6te3xE8rikxycQphQxhpVRT-pm9y3_ydmKRjcxdGtizrHySFaMFQ_BbFCzZcIUILRsOMtrk3Hjeh5XrbKVIqFy6"><img alt="_images/Low-Level-Flow-AuthenticSource-Usage.svg" src="_images/Low-Level-Flow-AuthenticSource-Usage.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id117" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id117" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Signature Preparation):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) containing the signed headers of the message, to ensure integrity.</p>
@@ -1303,14 +1311,14 @@
 <p class="admonition-title">Note</p>
 <p>Step 1 is required to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern.</p>
 </div>
-<p><strong>Step 2 (DPoP Proof for e-Service Endpoint)</strong>: The Consumer MUST create a fresh DPoP Proof JWT following the instruction provided in the Section 4 of [<span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>] for the token presentation to the e-Service Endpoint.</p>
+<p><strong>Step 2 (DPoP Proof for e-Service Endpoint)</strong>: The Consumer MUST create a fresh DPoP Proof JWT following the instruction provided in the Section 4 of [<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>] for the token presentation to the e-Service Endpoint.</p>
 <p><strong>Step 3 (e-Service Request):</strong> The Consumer sends an e-Service Request to the Provider, including the Voucher.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-request">
 <div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">Non-normative example of the e-Service Request</span><a class="headerlink" href="#code-usage-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/ente-example/v1/hello/echo/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">erogatore.example</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...</span>
-<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJhbGciOiJSUzI1NiIsImtpZCI6ImYwOGYxNzY2LTlkZWEt.eyJpZCI6I...</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImF1ZCI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiZXhwIjoxNzMzMDQyMTUwLCJuYmYiOjE3MzMwNDE5NDUsImlhdCI6MTczMzA0MTkyMCwianRpIjoiYzRmNWQ3ZTItYjdjOC00MGY2LTliNmEtZGM5YTRmNWFlYjU3IiwiY2xpZW50X2lkIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwicHVycG9zZUlkIjoiZDJiOWE2NTMtYzQ5Ny00NWM2LWI4ZjEtNWJkZjEyNGM5ZDNhIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiOTkwOGQ5NGI4ZmViMjY4YzAzNzEwNmQ3Yzg5ZTcwNjBjMmNjMWY2YjJiNGViY2I4MDViZmVlNTNhNTM5MzA3YiJ9LCJjbmYiOnsiamt0IjoiMFpjT0NPUlpOWXktRFdwcXEzMGpaeUpHSFROMGQySGdsQlYzdWlndUE0SSJ9fQ.sGhaHEOfMTB7r4_8ZILM_a9eTBGawWn3kL-dxYoZggFIzyrXDOZcQWt0zr00lMk2iYAMWxS32e4cUedmAsBXGw</span>
+<span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiIyYzc2ZmNhMy1jYjRlLTQzMTItOGI2ZS05NzQ5NDYyZjQyMGQiLCJodG0iOiJQT1NUIiwiYXRoIjoiM2UwOGRlMWQwYTNkZjIzNWZjZmNjZjYyNjdmYTUwYTU5YmEyYTk1NTI2YzdjZTY3MDY1YjhlMjZkYmI5NDQ1MSIsImh0dSI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiaWF0IjoxNzYyMjYyNjE2fQ.kvXh8H9B5DWCNlWyNB_PzRH217j1NHnIkE_55WnEixt2RbQTGrCS6AFAznREA85dzqwAAaHb_qHtDc5BR0lLmQ</span>
 <span class="na">Agid-JWT-Signature</span><span class="o">:</span> <span class="l">eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI5YThiN2M2ZC1lNWY0LWczaDItaTFqMC1rbG1ub3BxcnN0dXYiLCJzdWIiOiI5YThiN2M2ZC1lNWY0LWczaDItaTFqMC1rbG1ub3BxcnN0dXYiLCJhdWQiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.DpuBNo2UgQhL7WLin4mpdZrbIpQq3tPvCX6HfktkxG7L5mk6a8OK1Hg0mQcZfFi3gelS-aL9kFS-6MoSy4csBg</span>
 <span class="na">Digest</span><span class="o">:</span> <span class="l">SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41</span>
 <span class="na">Agid-JWT-TrackingEvidence</span><span class="o">:</span> <span class="l">eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.bhb3f3aWEuK-bZWjyKRWrJ4hYUWhw2SQ-yRz0kUFjPQTVagjXuTqyhxsHO4KXeSX9SivgaLSvw4n9BeZa7APbQ</span>
@@ -1323,7 +1331,7 @@
 </pre></div>
 </div>
 </div>
-<p>The Provider MUST validate the DPoP proof [<span class="target" id="index-67"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>].</p>
+<p>The Provider MUST validate the DPoP proof [<span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>].</p>
 <p>The Provider MUST validate the Voucher as follows:</p>
 <blockquote>
 <div><p>Header:</p>
@@ -1345,6 +1353,7 @@
 <li><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim MUST identify the domain of the PDND Authorization Server.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">sub</span></code> claim MUST correspond to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> claim.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">aud</span></code> claim MUST match the intended e-Service.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">cnf.jkt</span></code> claim MUST correspond to the SHA-256 Thumbprint of the DPoP public key in the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> claim in the DPoP proof.</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -1491,19 +1500,19 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>Authorization</strong></p></td>
 <td><p>Voucher released by the PDND Authorization Server.</p></td>
-<td><p>[<span class="target" id="index-68"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>DPoP</strong></p></td>
 <td><p>DPoP proof JWT, to comply with the <code class="docutils literal notranslate"><span class="pre">REST_JWS_2021_POP</span></code> security pattern.</p></td>
-<td><p>[<span class="target" id="index-69"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Agid-JWT-Signature</strong></p></td>
 <td><p>JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern.</p></td>
 <td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Digest</strong></p></td>
-<td><p>Digest of the message payload, to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern. According to <span class="target" id="index-70"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>, the format MUST be the following: <code class="docutils literal notranslate"><span class="pre">&lt;digest-algorithm&gt;=&lt;encoded</span> <span class="pre">digest</span> <span class="pre">output&gt;</span></code>.</p></td>
-<td><p>[<span class="target" id="index-71"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
+<td><p>Digest of the message payload, to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern. According to <span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>, the format MUST be the following: <code class="docutils literal notranslate"><span class="pre">&lt;digest-algorithm&gt;=&lt;encoded</span> <span class="pre">digest</span> <span class="pre">output&gt;</span></code>.</p></td>
+<td><p>[<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3230.html"><strong>RFC 3230</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Agid-JWT-TrackingEvidence</strong></p></td>
 <td><p>JWT containing the data tracker in the Consumer's domain. It is mandatory only when complying with <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code>.</p></td>
@@ -1527,15 +1536,15 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier.</p></td>
-<td><p>[<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the JWK used by the Consumer to sign the JWT.</p></td>
-<td><p>[<span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
-<td><p>[<span class="target" id="index-74"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-75"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 </tbody>
 </table>
@@ -1555,31 +1564,31 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
-<td><p>[<span class="target" id="index-76"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
 <td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
-<td><p>[<span class="target" id="index-77"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>aud</strong></p></td>
 <td><p>The identifier of the Provider.</p></td>
-<td><p>[<span class="target" id="index-78"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX timestamp representing the JWT expiration time.</p></td>
-<td><p>[<span class="target" id="index-79"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nbf</strong></p></td>
 <td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
-<td><p>[<span class="target" id="index-80"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX timestamp representing the JWT issuance time.</p></td>
-<td><p>[<span class="target" id="index-81"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>jti</strong></p></td>
 <td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
-<td><p>[<span class="target" id="index-82"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>signed_headers</strong></p></td>
 <td><p>JSON object containing the signed headers whose integrity needs to be protected, to with <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code>. It MUST contain the following claims:</p>
@@ -1608,15 +1617,15 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier.</p></td>
-<td><p>[<span class="target" id="index-83"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the JWK used by the Consumer to sign the JWT.</p></td>
-<td><p>[<span class="target" id="index-84"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
-<td><p>[<span class="target" id="index-85"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-86"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 </tbody>
 </table>
@@ -1636,27 +1645,27 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>MUST be set to the same value as <code class="docutils literal notranslate"><span class="pre">client_id</span></code>.</p></td>
-<td><p>[<span class="target" id="index-87"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>The identifier of the Provider.</p></td>
-<td><p>[<span class="target" id="index-88"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX timestamp representing the JWT expiration time.</p></td>
-<td><p>[<span class="target" id="index-89"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nbf</strong></p></td>
 <td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
-<td><p>[<span class="target" id="index-90"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX timestamp representing the JWT issuance time.</p></td>
-<td><p>[<span class="target" id="index-91"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>jti</strong></p></td>
 <td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
-<td><p>[<span class="target" id="index-92"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>purposeId</strong></p></td>
 <td><p>The identifier of the purpose registered in the PDND Platform, associated with the intended e-Service.</p></td>
@@ -1690,15 +1699,15 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
 <td><p>A digital signature algorithm identifier.</p></td>
-<td><p>[<span class="target" id="index-93"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
 <td><p>Unique identifier of the JWK used by the Provider to sign the JWT.</p></td>
-<td><p>[<span class="target" id="index-94"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
 <td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">JWT</span></code>.</p></td>
-<td><p>[<span class="target" id="index-95"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-96"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>], [<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 </tbody>
 </table>
@@ -1718,33 +1727,33 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>The identifier of the e-Service.</p></td>
-<td><p>[<span class="target" id="index-97"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>The identifier of the Consumer.</p></td>
-<td><p>[<span class="target" id="index-98"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>UNIX timestamp representing the JWT expiration time.</p></td>
-<td><p>[<span class="target" id="index-99"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>nbf</strong></p></td>
 <td><p>UNIX timestamp representing the JWT first validity time (optional).</p></td>
-<td><p>[<span class="target" id="index-100"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
 <td><p>UNIX timestamp representing the JWT issuance time.</p></td>
-<td><p>[<span class="target" id="index-101"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-104"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>jti</strong></p></td>
 <td><p>Unique identifier of the JWT to prevent replay attacks.</p></td>
-<td><p>[<span class="target" id="index-102"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
+<td><p>[<span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>]</p></td>
 </tr>
 </tbody>
 </table>
 <p>The e-Service Response JWT payload includes specific claims related to the data elements provided to the Consumer.</p>
 <p>If any errors occur during the validation of the e-Service Request, the e-Service Endpoint MUST return an error response, whose structure depends on the nature of the error.</p>
-<p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-103"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a> and <span class="target" id="index-104"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1"><strong>RFC 9449#section-7.1</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
+<p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a> and <span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1"><strong>RFC 9449#section-7.1</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-endpoint-eservice-error-401">
 <div class="code-block-caption"><span class="caption-number">Listing 29 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of 401 errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error-401" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
@@ -1752,7 +1761,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </pre></div>
 </div>
 </div>
-<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-105"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<p>For all other errors, the response MUST adhere to the error format defined in <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-5.2"><strong>RFC 6749#section-5.2</strong></a>. The response MUST use <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
@@ -1787,15 +1796,15 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The request cannot be fulfilled because it is missing required parameters, contains invalid parameters, or is otherwise malformed [<span class="target" id="index-106"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because it is missing required parameters, contains invalid parameters, or is otherwise malformed [<span class="target" id="index-109"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_dpop_proof</span></code></p></td>
-<td><p>The request cannot be fulfilled because it contains an invalid <em>DPoP proof</em> [<span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-5"><strong>RFC 9449#section-5</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because it contains an invalid <em>DPoP proof</em> [<span class="target" id="index-110"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-5"><strong>RFC 9449#section-5</strong></a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_token</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Voucher is expired, revoked, or otherwise malformed [<span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
+<td><p>The request cannot be fulfilled because the Voucher is expired, revoked, or otherwise malformed [<span class="target" id="index-111"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3.1"><strong>RFC 6750#section-3.1</strong></a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
@@ -1913,8 +1922,32 @@ User</p></td>
 </section>
 <section id="authentic-source-catalogue">
 <span id="id112"></span><h2>Authentic Source Catalogue<a class="headerlink" href="#authentic-source-catalogue" title="Link to this heading">¶</a></h2>
-<p>...</p>
+<p>Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">here</a></span>.</p>
+</div>
 </section>
+</section>
+<section id="get-attribute-claims">
+<h1>Get Attribute Claims<a class="headerlink" href="#get-attribute-claims" title="Link to this heading">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>Authentic Source</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>PID/(Q)EAA Provider</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 
 
@@ -1992,6 +2025,7 @@ User</p></td>
 <li><a class="reference internal" href="#authentic-source-catalogue">Authentic Source Catalogue</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#get-attribute-claims">Get Attribute Claims</a></li>
 </ul>
 
             </div>
@@ -2019,7 +2053,7 @@ User</p></td>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 24/02/2025.
+      Last updated on 28/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -138,6 +138,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html#get-attribute-claims">Get Attribute Claims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
@@ -235,7 +236,7 @@
 <li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-issued">Credential Transition to Issued</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-valid">Credential Transition to Valid</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-expired">Credential Transition to Expired</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#transition-to-revoked">Transition to Revoked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-revoked">Credential Transition to Revoked</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-transition-to-suspended">Credential Transition to Suspended</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lifecycle.html#credential-lifecycle-management">Credential Lifecycle Management</a></li>
 </ul>
@@ -287,9 +288,12 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-pid-flow">High-Level PID flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#high-level-q-eaa-flow">High-Level (Q)EAA flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#low-level-issuance-flow">Low-Level Issuance Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#deferred-flow">Deferred Flow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#general-requirements">General Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#technical-flow">Technical Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#refresh-token-flow">Refresh Token Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#security-considerations">Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#re-issuance-flow">Re-Issuance Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#id1">Security Considerations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-offer-endpoint">Credential Offer Endpoint</a><ul>
@@ -311,6 +315,7 @@
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-request">Token Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#token-response">Token Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#access-token">Access Token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#refresh-token">Refresh Token</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#nonce-endpoint">Nonce endpoint</a><ul>
@@ -321,6 +326,11 @@
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#credential-endpoint">Credential endpoint</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-request">Credential Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#credential-response">Credential Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#deferred-endpoint">Deferred Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#deferred-request">Deferred Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#deferred-response">Deferred Response</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#notification-endpoint">Notification endpoint</a><ul>
@@ -414,17 +424,17 @@
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#authentic-source-catalogue">Authentic Source Catalogue</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html#get-attribute-claims">Get Attribute Claims</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#remote-flow">Remote Flow</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-request-details">Authorization Request Details</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-flow-status-checks-and-security">Device Flow Status Checks and Security</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-uri-request">Request URI Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#request-object-details">Request Object Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#authorization-response-details">Authorization Response Details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#sd-jwt-presentation">SD-JWT Presentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri">Redirect URI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#redirect-uri-errors">Redirect URI Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#device-flow-status-checks-and-security">Device Flow Status Checks and Security</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#proximity-flow">Proximity Flow</a><ul>
@@ -545,7 +555,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 24/02/2025.
+      Last updated on 28/02/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
