@@ -1,6 +1,7 @@
 .. _OAuthCrossDeviceSec: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-08
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OID-FED: https://openid.net/specs/openid-federation-1_0-41.html
+.. _OID-FED-WALLET: https://openid.net/specs/openid-federation-wallet-1_0.html
 .. _OIDC-FED#RP_metadata: https://openid.net/specs/openid-federation-1_0.html#Section-4.1
 .. _OIDC-FED#Federation_Entity: https://openid.net/specs/openid-federation-1_0.html#Section-4.6
 .. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
