@@ -64,8 +64,7 @@ Infrastructure of Trust
     * - DTS/ESI-0019602
       - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model
     * - REN/ESI-0019411-1v151
-      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements
-Policy requirements for certification authorities issuing public key certificates
+      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates
 
 
 Digital Credential Data Format
