@@ -4,9 +4,9 @@
 Technical References
 ++++++++++++++++++++
 
-This section details the technical references, grouped by scope, that are foundamental for the implementation profile.
-It includes international and national standards, draft specifications, architecture reference frameworks, and other relevant technical documents.
-These references are the foundation of our system's robustness, interoperability, and compliance with industry standards.
+This section details the technical references, grouped by scope, that are part of the current implementation profile or for its future milestones.
+It includes international and national standards, draft specifications, architecture references and other relevant technical documents
+foundational for the interoperability and the compliance with industry standards.
 
 
 European Digital Identity Wallet Architecture Reference Framework
