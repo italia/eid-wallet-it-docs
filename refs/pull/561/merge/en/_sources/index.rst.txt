@@ -37,7 +37,6 @@ Index of content
    ssi-introduction.rst
    defined-terms.rst
    trust.rst
-   lifecycle.rst
    wallet-solution.rst
    pid-eaa-data-model.rst
    pid-eaa-issuance.rst
