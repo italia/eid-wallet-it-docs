@@ -5,17 +5,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PID/(Q)EAA Issuance &#8212; The Italian EUDI Wallet implementation profile version: latest documentation</title>
+    <title>PID/(Q)EAA Issuance &#8212; Italian EUDI Wallet Implementation Profile  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
-    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Entity Configuration of PID/(Q)EAA Providers" href="pid-eaa-entity-configuration.html" />
+    <link rel="next" title="Digital Credential Lifecycle" href="credential-revocation.html" />
     <link rel="prev" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -30,11 +32,11 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage"><img src="https://avatars.githubusercontent.com/u/15377824?s=48&v=4"/></a></h1>
+        <h1><a href="index.html" title="Go to homepage">Italian EUDI Wallet Implementation Profile  documentation</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path fill="white" d="M503.5 204.6L502.8 202.8L433.1 21.02C431.7 17.45 429.2 14.43 425.9 12.38C423.5 10.83 420.8 9.865 417.9 9.57C415 9.275 412.2 9.653 409.5 10.68C406.8 11.7 404.4 13.34 402.4 15.46C400.5 17.58 399.1 20.13 398.3 22.9L351.3 166.9H160.8L113.7 22.9C112.9 20.13 111.5 17.59 109.6 15.47C107.6 13.35 105.2 11.72 102.5 10.7C99.86 9.675 96.98 9.295 94.12 9.587C91.26 9.878 88.51 10.83 86.08 12.38C82.84 14.43 80.33 17.45 78.92 21.02L9.267 202.8L8.543 204.6C-1.484 230.8-2.72 259.6 5.023 286.6C12.77 313.5 29.07 337.3 51.47 354.2L51.74 354.4L52.33 354.8L158.3 434.3L210.9 474L242.9 498.2C246.6 500.1 251.2 502.5 255.9 502.5C260.6 502.5 265.2 500.1 268.9 498.2L300.9 474L353.5 434.3L460.2 354.4L460.5 354.1C482.9 337.2 499.2 313.5 506.1 286.6C514.7 259.6 513.5 230.8 503.5 204.6z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
         </svg>
     
 </a>
@@ -131,25 +133,17 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lifecycle.html">Wallet Instance and Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-attestation.html">Wallet Attestation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-revocation.html">Wallet Instance Revocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-entity-configuration.html">Entity Configuration of PID/(Q)EAA Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">e-Service PDND Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">Entity Configuration of Relying Parties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Revocation and Suspension</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">Pseudonyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 </ul>
 
         </div>
@@ -185,11 +179,11 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p>The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.</p>
 <section id="high-level-pid-flow">
 <h2>High-Level PID flow<a class="headerlink" href="#high-level-pid-flow" title="Link to this heading">¶</a></h2>
-<p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-pid-issuance"><span class="std std-numref">Fig. 7</span></a> shows a general architecture and highlights the main operations involved in the issuance of a PID.</p>
-<figure class="align-center" id="id4" style="width: 100%">
+<p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-pid-issuance"><span class="std std-numref">Fig. 5</span></a> shows a general architecture and highlights the main operations involved in the issuance of a PID.</p>
+<figure class="align-center" id="id59" style="width: 100%">
 <span id="fig-high-level-flow-itwallet-pid-issuance"></span><img alt="_images/High-Level-Flow-ITWallet-PID-Issuance.svg" src="_images/High-Level-Flow-ITWallet-PID-Issuance.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">PID Issuance - General architecture and high level flow.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">PID Issuance - General architecture and high level flow.</span><a class="headerlink" href="#id59" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below the description of the steps represented in the previous picture:</p>
@@ -207,17 +201,17 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </section>
 <section id="high-level-q-eaa-flow">
 <h2>High-Level (Q)EAA flow<a class="headerlink" href="#high-level-q-eaa-flow" title="Link to this heading">¶</a></h2>
-<p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-qeaa-issuance"><span class="std std-numref">Fig. 8</span></a> shows a general architecture and highlights the main operations involved in the issuance of a (Q)EAA, following the assumptions listed below:</p>
+<p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-qeaa-issuance"><span class="std std-numref">Fig. 6</span></a> shows a general architecture and highlights the main operations involved in the issuance of a (Q)EAA, following the assumptions listed below:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>the User has a valid PID stored in their own Wallet Instance;</p></li>
 <li><p>the (Q)EAA requires a high security implementation profile.</p></li>
 </ul>
 </div></blockquote>
-<figure class="align-center" id="id5" style="width: 70%">
+<figure class="align-center" id="id60" style="width: 70%">
 <span id="fig-high-level-flow-itwallet-qeaa-issuance"></span><img alt="_images/High-Level-Flow-ITWallet-QEAA-Issuance.svg" src="_images/High-Level-Flow-ITWallet-QEAA-Issuance.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">(Q)EAA Issuance - General architecture and high level flow</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">(Q)EAA Issuance - General architecture and high level flow</span><a class="headerlink" href="#id60" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below the description of the most relevant operations involved in the (Q)EAA issuance:</p>
@@ -289,20 +283,20 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><strong>Steps 2.4-2.7 (Cross-Device):</strong> The Credential Offer is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance which retrieves the parameters defined in the <a class="reference internal" href="#table-credential-offer-claim"><span class="std std-ref">Table of Credential Offer parameters</span></a>.</p>
 <p><strong>Steps 2.8-2.10 (Same-Device):</strong> The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.</p>
 <p>Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="err">openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
 </pre></div>
 </div>
 <p>The following diagram shows the <em>Issuance flow</em>.</p>
-<figure class="align-center" id="id6" style="width: 100%">
+<figure class="align-center" id="id61" style="width: 100%">
 <span id="fig-low-level-flow-itwallet-pid-qeaa-issuance"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/hLPVQ-D647_VJp7a7Xg3JKhfqy6LSnBtOdeaRiv7NWfYinfBG-HTTVzOvtxwxevih-npQ4CB8P9s_lz-CxF-wBoqFgmR8OCtEgoVqGhHnZDIr4hjuUAhGti1qa4Gujbywmz-SE3MKQkjZSOBUFUPgjfVDm6FRQ-jwGxcybZs99i6FSoryr8hP9rEe2uXHZd9OJ6_lRhyVJIRJc5XpORAdKyImchZ4Sm6BNHZYfdCFzqjFptEPlVYfaRr0cTiWHma_s1Mu6k4Np4UIaz6WupnpRENf86yWpLwMKelKruSIOWE9hz01-z1MPGUOV7RpGoKAH5Y3hGYjEpaQJwTBCnYfqzHVp5zX4VyCw3pSFc71b0DeVO5bUFqPNlH2D97Hxw6XsdmzUI6jIPJxwCq9_cQC0K5qbpN7SfOs12YSm3rHFmRS7O6ZYejVR2uLzbvE4cH0Tp8XahoMnWWA0WcZE4U4zSQxH0kTn0KmT8Oy5jB5br1UXHDEZO9yZsakesblpXE1ZI32GCt8n4aMzAR3OLiFDnOBAEKP0CVFgHMEW9p7E3TqzryEHF19TfZWAIiE4BFeURtQ8xps-aNYCQfHKfmgiOrEiP9fUfrJCMqlNApZMSHKkL9Ln1utfAMbygxKKOI6uSdAVQTFdfhch6o_vYABlUy1WcdO6UAqw2C8NL9V91p1uAwDndbAQnGeuq2k4sD_uBRLsMjDMOrd4rO6NjsFNZpWXfYIQqXxSLWXfTHadk7eHluvgckhDI-yDiMUQnZxlcbsA-8tSINP55nl_7O_wzJBuXXo4aVu9HAeNC5LvcQVcNHrVjFVd3wnoEOCRWtMk41WxlbSW6BXozBkD99aEFk5JED1MkClj-XFNpnhpNEeNDazB7wYNx6_5KELHwB0v6vXZmqPyWSuiEe3odEVWlY5zxuPXYmK4Qlg0hzrkJDmiRVxnHo83UI6ldS88WCtL0duvSZkF5kawXzY26e6OwyVcCPF431WKfBVASUehfqBunYkjVt2q240-Bz0NWJxOr5Rh6SIGxBuXDHRfcSxFdE6SWlJqeR0svGyyKu86dA9FMzBSvTSTUVlyx48rRaV3oLJNEI-SHY8psM84Z7yjSSZe68NWxnhonkp2wnV8TbfevAornnRJ_z-7CKmutHFa6QrtLc__vXcJlW7-XlK9Q5fpMEmLkfdLG7xWVbXp69POrmylDg37B5E6YGQnCqN-_96RWMLNydFM_X48CRfgjHWxTKLMXPdY3aFk5jRBtZWrLZEf2L97ry7toC_yAw-Hi0"><img alt="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" src="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id61" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Once <em>User Request flow</em> is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in Section <a class="reference internal" href="trust.html#trust-evaluation-mechanism"><span class="std std-ref">Trust Evaluation Mechanism</span></a> .</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check:</strong> The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the PID/(Q)EAA Provider is represented within the section <a class="reference internal" href="pid-eaa-entity-configuration.html#entity-configuration-of-pid-q-eaa-providers"><span class="std std-ref">Entity Configuration of PID/(Q)EAA Providers</span></a>.</p>
+<p><strong>Federation Check:</strong> The Wallet Instance must verify whether the PID/(Q)EAA Provider is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint <strong>.well-known/openid-federation</strong> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the PID/(Q)EAA Provider is represented within the section <a class="reference internal" href="#entity-configuration-of-pid-q-eaa-providers"><span class="std std-ref">Entity Configuration of PID/(Q)EAA Providers</span></a>.</p>
 </div>
 <p>In case of Issuer Initiated flow, in addition to the Federation Check defined above, the Wallet Instance MUST execute the following checks on the Credential Offer parameters:</p>
 <blockquote>
@@ -431,7 +425,7 @@ OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdH
 <p><strong>Steps 4-5 (Authorization Request)</strong>: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the <code class="docutils literal notranslate"><span class="pre">code_challenge</span></code> parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST use a <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> value once (<span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>It MUST treat <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from <span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>).</p></li>
+<li><p>It MUST treat <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a User reloading/refreshing their user-agent (derived from <span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>).</p></li>
 <li><p>It MUST identify the request as a result of the submitted PAR (derived from <span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>).</p></li>
 <li><p>It MUST reject all the Authorization Requests that do not contain the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from <span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>).</p></li>
 </ol>
@@ -709,10 +703,10 @@ without encoding and signature. The JWT header:</p>
 </div></blockquote>
 <p>To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP. These aspects are detailed and discussed in section <a class="reference internal" href="#id1"><span class="std std-ref">Security Considerations</span></a>.</p>
 <p>Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh Token to the Token Endpoint.</p>
-<figure class="align-center" id="id7" style="width: 100%">
+<figure class="align-center" id="id62" style="width: 100%">
 <span id="fig-refresh-token-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TPBFIiD048Vl-nH3lRJGqBi7QR05Up9AeHUXh9j9CvZEnDs9qRTtkzkA1Jrc_dpvviSkWrglmx4pTb3XuVYAtfW-riXHRrbXihDTXmeRZgFiS08sm7WzKcrMY-dJR5sMK7dve1fz6YDZHYZkO8HRE22ZjugmggI2teiqOBc6NLcS2eru-0C3Ac_8W5ptGgnd7aNUDZMUyNt0e32Ijh_9qnS6EFXejzUl7kUdJu-Dnz3k4t86iPIs7ij1s-A-8sGjIjM8iqh2oUw_Pd8c1cqHMhJHr1Ywd7fH2xrmG9XQvp24_D_vjSOy7vWb0JzxYhqzySoObaKHhFCI0jpi7ZRRTKIt24qd8pXX9OwtvoCi-7CIAacgnWQznteHATIGIzOB5ol8IhRxYVGSGrfY77E8sJYx6RECi_69V0C0"><img alt="_images/Refresh-Token-Flow.svg" src="_images/Refresh-Token-Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Refresh Token Flow</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Refresh Token Flow</span><a class="headerlink" href="#id62" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -793,15 +787,15 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <p>In both cases, the newly issued Digital Credential MUST have the same expiry date as the previous one.</p>
 <p>Re-issuance after Digital Credential expiration MUST always require User authentication.</p>
 <p>The following diagram describes the Digital Credential re-issuance flow.</p>
-<figure class="align-center" id="id8" style="width: 100%">
+<figure class="align-center" id="id63" style="width: 100%">
 <span id="fig-reissuance-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZLDVRzem47_FfxWzhPKAlEm9LArPqqb8xOGOh9gc2PdaGgoPS-OxbtMVVdPQt48pYJp5bz-VyzqlLopAYT-Qx9scqlWAeH5fUJmQERKRRhGqVkqPNMb9a6HOskseDOeYPy1I6RqUNNyOp69fUNSxsYeMTA6qAXv9RNKvRADwU3gdZAmWEBrf9Bjla411eOEBCd3ji48I7Lu9iM8G2si4trPAiBe0QV0rPihiqJ7SvT-1aIfG4BHrhKibsb9aHyQIqO5dJPi0SBZHiJsim7ePs7gmLe4PxhJrj2UMZI92CyoYQ6mtoyQTYcsH6EwLCIWm9HP59Kwoy7cEuZG-87mL9PuXvu2FOWorTHcBZPOlpVFazHpc-Dlh2DZ5WP251sLqbRtLmZ-QvLLRkeQp5z6z-ILCltpBRwV5ntEGg7ZsY7oUGNWYeKo45NU4LOMYj1d64uAc3lbZEIlonKrn0VbYCPz-MYvkLi-bdszrzzfvMI8pBEmlfATRz6FZamve6E6CRFgSvEPOE-JcD3s0SHY04pXaVJPsDpa0zli1iDZsgDGjwQW6JowAW73NfJ360EhWSupSQMcw0Bvdo7tiM_OXEuAcdHuLTPtrdz9BZ2OKCpk3W-6B1VSSoWGbtFNyR6aufwJZCXc_pSN_LpEE2KUMRXRT9ApJVxj1JFeYaRevm2FtE1oktpgCj-ovNT_g-vVVF_n4FDKnIMG9NQ11GMWTFcZhkPUJzRYbzfBc8Q3x-6pMlL-5Wz-QVm00"><img alt="_images/Re-Issuance-Flow.svg" src="_images/Re-Issuance-Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Re-Issuance Flow Diagram</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Re-Issuance Flow Diagram</span><a class="headerlink" href="#id63" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
 <li><p>The flow starts when the User opens the Wallet Instance: this step MAY be triggered by a notification sent by the Credential Issuer, using one of the out-of-band communication contacts registered during the Issuance flow.</p></li>
-<li><p>A Wallet Instance without valid Status Assertions for a stored Digital Credential MUST retrieve them following the flow described in Section <a class="reference internal" href="wallet-revocation.html#validity-verification-mechanisms"><span class="std std-ref">Validity Verification Mechanisms</span></a>. If one or more Digital Credentials have the <code class="docutils literal notranslate"><span class="pre">credential_status_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, the Wallet Instance MUST verify the <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span> <span class="pre">claim</span></code>. If this claim is set to <code class="docutils literal notranslate"><span class="pre">UPDATED</span></code> or <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATED</span></code>, then the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped.</p></li>
+<li><p>A Wallet Instance without valid Status Assertions for a stored Digital Credential MUST retrieve them following the flow described in Section <a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms"><span class="std std-ref">Validity Verification Mechanisms</span></a>. If one or more Digital Credentials have the <code class="docutils literal notranslate"><span class="pre">credential_status_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, the Wallet Instance MUST verify the <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span> <span class="pre">claim</span></code>. If this claim is set to <code class="docutils literal notranslate"><span class="pre">UPDATED</span></code> or <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATED</span></code>, then the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped.</p></li>
 <li><p>If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section <a class="reference internal" href="#refresh-token-flow"><span class="std std-ref">Refresh Token Flow</span></a>. The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required.</p></li>
 <li><p>The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section <a class="reference internal" href="#low-level-issuance-flow"><span class="std std-ref">Low-Level Issuance Flow</span></a>. When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one.</p></li>
 </ol>
@@ -874,8 +868,8 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <h3>Pushed Authorization Request (PAR) Request<a class="headerlink" href="#pushed-authorization-request-par-request" title="Link to this heading">¶</a></h3>
 <p>The request to the PID/(Q)EAA authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.</p>
 <p>The HTTP POST method MUST use the parameters in the message body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
-<span id="table-http-request-claim"></span><table class="docutils align-default" id="id9">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<span id="table-http-request-claim"></span><table class="docutils align-default" id="id64">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id64" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -900,8 +894,8 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 </table>
 <p>The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>], therefore
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters:</p>
-<span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id10">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id65">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id65" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -987,8 +981,8 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <td><p>See [<a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>] and [<a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>It MUST be set as in the <a class="reference internal" href="wallet-solution.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>See <a class="reference internal" href="wallet-solution.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>Unique session identifier at the client side. This value will be returned to the client in the response, at the end of the authentication. It MUST be a random string composed by alphanumeric characters and with a minimum length of 32 digits. Special characters MUST be considered non-alphanumeric characters as defined in <a class="reference external" href="https://csrc.nist.gov/glossary/term/special_character">[NIST]</a>.</p></td>
@@ -1212,8 +1206,8 @@ The authorization server MUST first verify the identity of the User that own the
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>It MUST be set as in the <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
-<td><p>See <a class="reference internal" href="wallet-attestation.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>It MUST be set as in the <a class="reference internal" href="wallet-solution.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
+<td><p>See <a class="reference internal" href="wallet-solution.html#table-http-request-claim"><span class="std std-ref">Table of the HTTP parameters</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
 <td><p>It MUST be set to the same value as obtained by PAR Response. See <a class="reference internal" href="#table-http-response-claim"><span class="std std-ref">Table of the HTTP PAR Response parameters</span></a>.</p></td>
@@ -1270,9 +1264,9 @@ If any other error occurs the Authorization Server MUST redirect the User by add
 <p>Below is a non-normative example of an error response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
 <span class="na">Location</span><span class="o">:</span> <span class="l">https://client.example.com/cb?</span>
-<span class="err">error=invalid_request</span>
-&amp;error_description=Unsupported%20response_type%20value
-&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+ <span class="l">error=invalid_request</span>
+ <span class="l">&amp;error_description=Unsupported%20response_type%20value</span>
+ <span class="l">&amp;state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd</span>
 </pre></div>
 </div>
 <p>In case of Authorization Server redirects the User to the <em>redirect_uri</em> HTTP status code <em>302 (Found)</em> MUST be used. The following error codes are supported for the error response:</p>
@@ -1906,7 +1900,7 @@ The Authorization Server MUST validate the DPoP proof received at the Token endp
 <td><p>Section 8.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_id</strong></p></td>
-<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">credentials</span></code> is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section <span class="xref std std-ref">Deferred Flow</span>. It MUST be invalidated after the User obtains the Credential.</p></td>
+<td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">credentials</span></code> is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section <a class="reference internal" href="#deferred-endpoint"><span class="std std-ref">Deferred Endpoint</span></a>. It MUST be invalidated after the User obtains the Credential.</p></td>
 <td><p>Section 8.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 </tbody>
@@ -2171,6 +2165,766 @@ If any other error occurs, the PID/(Q)EAA Provider MUST return an error response
 </table>
 </section>
 </section>
+<section id="entity-configuration-of-pid-q-eaa-providers">
+<span id="entity-configuration-credential-issuer"></span><h2>Entity Configuration of PID/(Q)EAA Providers<a class="headerlink" href="#entity-configuration-of-pid-q-eaa-providers" title="Link to this heading">¶</a></h2>
+<p>The PID/(Q)EAA Providers, as Federation Entity, are required to adhere to the guidelines outlined in Section <a class="reference internal" href="trust.html#configuration-of-the-federation"><span class="std std-ref">Configuration of the Federation</span></a>. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
+The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters defined in the Sections <a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates"><span class="std std-ref">Entity Configuration Leaves and Intermediates</span></a> and <a class="reference internal" href="trust.html#entity-configurations-common-parameters"><span class="std std-ref">Entity Configurations Common Parameters</span></a>.</p>
+<p>The PID/(Q)EAA Providers MUST provide the following metadata types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>federation_entity</cite></p></li>
+<li><p><cite>oauth_authorization_server</cite></p></li>
+<li><p><cite>openid_credential_issuer</cite></p></li>
+</ul>
+</div></blockquote>
+<p>In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for <em>openid_credential_verifier</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://github.com/italia/spid-cie-oidc-docs">SPID/CIE id OIDC Technical Specification</a>.</p>
+<p>The <em>federation_entity</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves"><span class="std std-ref">Metadata of federation_entity Leaves</span></a>.</p>
+<p>The <em>openid_credential_verifier</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="relying-party-solution.html#metadata-for-openid-credential-verifier"><span class="std std-ref">Metadata for openid_credential_verifier</span></a>.</p>
+<section id="metadata-for-oauth-authorization-server">
+<h3>Metadata for oauth_authorization_server<a class="headerlink" href="#metadata-for-oauth-authorization-server" title="Link to this heading">¶</a></h3>
+<p>The <em>oauth_authorization_server</em> metadata MUST contain the following parameters.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>issuer</strong></p></td>
+<td><p>It MUST contain an HTTPS URL that uniquely identifies the PID/(Q)EAA Provider.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>pushed_authorization_request_endpoint</strong></p></td>
+<td><p>The URL of the pushed authorization request endpoint is where a Wallet Instance MUST submit an authorization request to obtain a <em>request_uri</em> value, which can then be used at the authorization endpoint. See <span class="target" id="index-185"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html#as_metadata"><strong>RFC 9126#as_metadata</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>authorization_endpoint</strong></p></td>
+<td><p>URL of the authorization server's authorization endpoint. See <span class="target" id="index-186"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>token_endpoint</strong></p></td>
+<td><p>URL of the authorization server's token endpoint. See <span class="target" id="index-187"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>client_registration_types_supported</strong></p></td>
+<td><p>Array specifying the registration types supported. The authorization server MUST support <em>automatic</em>. See  <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.1.3.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>code_challenge_methods_supported</strong></p></td>
+<td><p>JSON array containing a list of Proof Key for Code Exchange (PKCE) <span class="target" id="index-188"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html"><strong>RFC 7636</strong></a> code challenge methods supported by the authorization server. The authorization server MUST support <em>S256</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>acr_values_supported</strong></p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">OpenID Connect Discovery 1.0 Section 3</a>. The supported values are:</p>
+<ul class="simple">
+<li><p><cite>https://www.spid.gov.it/SpidL1</cite></p></li>
+<li><p><cite>https://www.spid.gov.it/SpidL2</cite></p></li>
+<li><p><cite>https://www.spid.gov.it/SpidL3</cite></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>scopes_supported</strong></p></td>
+<td><p>JSON array containing a list of the supported <em>scope</em> values. See <span class="target" id="index-189"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>response_modes_supported</strong></p></td>
+<td><p>JSON array containing a list of the supported &quot;response_mode&quot; values, as specified in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAuth 2.0 Multiple Response Type Encoding Practices</a>. The supported values MAY be <em>query</em> and <em>form_post.jwt</em> (see <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>response_types_supported</strong></p></td>
+<td><p>JSON array containing a list of the supported &quot;response_type&quot; values, as specified in <span class="target" id="index-190"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a>. The supported value MUST be <em>code</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>authorization_signing_alg_values_supported</strong></p></td>
+<td><p>JSON array containing a list of the <span class="target" id="index-191"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> supported signing algorithms (<em>alg</em> values). The values MUST be set according to Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>. See Section 4 of <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>grant_types_supported</strong></p></td>
+<td><p>JSON array containing a list of the supported grant type values. The authorization server MUST support <em>authorization_code</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>token_endpoint_auth_methods_supported</strong></p></td>
+<td><p>JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support <em>attest_jwt_client_auth</em> as defined in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>token_endpoint_auth_signing_alg_values_supported</strong></p></td>
+<td><p>JSON array containing a list of the signing algorithms (&quot;<em>alg</em>&quot; values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See <span class="target" id="index-192"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>request_object_signing_alg_values_supported</strong></p></td>
+<td><p>JSON array containing a list of the signing algorithms (&quot;<em>alg</em>&quot; values) supported for Request Objects. See <a class="reference external" href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">[openid-connect-discovery-1_0]</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>jwks</strong></p></td>
+<td><p>JSON Web Key Set containing the cryptographic keys for the authorization server. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-for-openid-credential-issuer">
+<h3>Metadata for openid_credential_issuer<a class="headerlink" href="#metadata-for-openid-credential-issuer" title="Link to this heading">¶</a></h3>
+<p>The <em>openid_credential_issuer</em> metadata MUST contain the following claims.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>credential_issuer</strong></p></td>
+<td><p>The PID/(Q)EAA Provider identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Sections 11.2.1 and 11.2.3.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>credential_endpoint</strong></p></td>
+<td><p>URL of the credential endpoint. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section 11.2.3.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nonce_endpoint</strong></p></td>
+<td><p>URL of the Nonce Endpoint, as defined in Section 7 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>revocation_endpoint</strong></p></td>
+<td><p>URL of the revocation endpoint. See <span class="target" id="index-193"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html#section-2"><strong>RFC 8414#section-2</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>deferred_credential_endpoint</strong></p></td>
+<td><p>URL of the deferred credential endpoint, as defined in Section 11.2.3 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>status_attestation_endpoint</strong></p></td>
+<td><p>It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Assertions. See Section <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a> for more details.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>notification_endpoint</strong></p></td>
+<td><p>It MUST be an HTTPs URL indicating the notification endpoint. See Section 11.2.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>authorization_servers</strong></p></td>
+<td><p>OPTIONAL. Array of strings, where each string is an identifier of the OAuth 2.0 Authorization Server (as defined in [<span class="target" id="index-194"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8414.html"><strong>RFC 8414</strong></a>]) the PID/(Q)EAA Provider relies on for authorization. If this parameter is omitted, the entity providing the PID/(Q)EAA Provider is also acting as the Authorization Server.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>display</strong></p></td>
+<td><p>See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section 11.2.3. Array of objects containing display language properties. The parameters that MUST be included are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>name</strong>: String value of a display name for the PID/(Q)EAA Provider.</p></li>
+<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-195"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>credential_configurations_supported</strong></p></td>
+<td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Sections 11.2.3 and A.3.2.</p>
+<blockquote>
+<div><ul>
+<li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>dc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.1.</p></li>
+<li><p><strong>scope</strong>: JSON String identifying the supported <em>scope</em> value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the <em>scope</em> values in the <em>scopes_supported</em> parameter of the Authorization Server. [See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section  11.2.3].</p></li>
+<li><p><strong>cryptographic_binding_methods_supported</strong>: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value &quot;<em>jwk</em>&quot;.</p></li>
+<li><p><strong>credential_signing_alg_values_supported</strong>: JSON Array of case sensitive strings that identify the algorithms that the PID/(Q)EAA Provider MUST support to sign the issued Credential. See Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details.</p></li>
+<li><p><strong>proof_types_supported</strong>: JSON object which provides detailed information about the key proof(s) supported by the PID/(Q)EAA Provider. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The PID/(Q)EAA Provider MUST support at least &quot;<em>jwt</em>&quot; as defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section 8.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof. The PID/(Q)EAA Provider MUST support at least the parameter <strong>proof_signing_alg_values_supported</strong> which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details about the supported algorithms).</p></li>
+<li><p><strong>display</strong>: Array of objects containing display language properties. The parameters that MUST be included are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>name</strong>: String value of a display name for the Credential.</p></li>
+<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-196"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>vct</strong>: As defined in [<a class="reference internal" href="pid-eaa-data-model.html#sd-jwt-vc-credential-format"><span class="std std-ref">SD-JWT-VC Credential Format</span></a>].</p></li>
+<li><p><strong>claims</strong>: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.2.</p>
+<blockquote>
+<div><ul>
+<li><p><strong>path</strong>: It contains the pointer that specifies the path to a specific claim within the Credential as defined in Appendix C of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></li>
+<li><p><strong>display</strong>: Array of objects containing display language properties. The parameters that MUST be included are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>name</strong>: String value of a display name for the claim.</p></li>
+<li><p><strong>locale</strong>: String value that identifies the language of this object represented as a language tag taken from values defined in <em>BCP47</em> <span class="target" id="index-197"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>. There MUST be only one object for each language identifier.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>jwks</strong></p></td>
+<td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_frameworks_supported</strong></p></td>
+<td><p>JSON array containing all supported trust frameworks. See <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html">OIDC-IDA</a> Section 8. The supported values are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>it_cie</em>: CIE trust framework supported.</p></li>
+<li><p><em>it_spid</em>: SPID trust framework supported.</p></li>
+<li><p><em>it_wallet</em>: Italian EUDI Wallet trust framework supported.</p></li>
+<li><p><em>eudi_wallet</em>: Member State EUDI Wallet trust framework supported.</p></li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>evidence_supported</strong></p></td>
+<td><p>JSON array containing all types of identity evidence supported by the Credential Issuer. See <a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html">OIDC-IDA</a> Section 8. The supported value is <code class="docutils literal notranslate"><span class="pre">vouch</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>status_assertion_endpoint</strong></p></td>
+<td><p>URL of the Status Assertion Endpoint. See <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a> Section 11.1.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>credential_hash_alg_supported</strong></p></td>
+<td><p>The supported algorithm used by the Wallet Instance to hash the Digital Credential for which the Status Assertion is requested. It is RECOMMENDED to use <em>sha-256</em>. See <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a> Section 11.1.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-of-a-q-eaa-provider-entity-configuration">
+<h3>Example of a (Q)EAA Provider Entity Configuration<a class="headerlink" href="#example-of-a-q-eaa-provider-entity-configuration" title="Link to this heading">¶</a></h3>
+<p>Below is a non-normative example of an Entity Configuration of a (Q)EAA Provider containing a metadata for</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>federation_entity</cite></p></li>
+<li><p><cite>oauth_authorization_server</cite></p></li>
+<li><p><cite>openid_credential_issuer</cite></p></li>
+<li><p><cite>openid_credential_verifier</cite></p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1749743216</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authority_hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;https://trust-anchor.example.org&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FANFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;federation_entity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization Name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;protocollo@pec.example.it&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/public/info_policy.html&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/public/privacy_policy.html&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/public/logo.svg&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;oauth_authorization_server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;pushed_authorization_request_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/as/par&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/authorize&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;token_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/token&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;client_registration_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;automatic&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;code_challenge_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;S256&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;acr_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL3&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;scopes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;MDL&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;response_modes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;form_post.jwt&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;query&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;response_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;code&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;authorization_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;grant_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;authorization_code&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;token_endpoint_auth_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;attest_jwt_client_auth&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;token_endpoint_auth_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f10aca0992694b3581f6f699bfc8a2c6cc687725&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;openid_credential_issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;credential_issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;credential_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/credential&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;nonce_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/nonce-endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;deferred_credential_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/deferred-credential&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;revocation_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/revoke&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;status_attestation_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/status&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;notification_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/notification&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EAA Provider&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EAA Provider&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;credential_configurations_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;EuropeanDisabilityCard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;jwk&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;credential_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;proof_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;proof_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Carta della disabilità europea&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;European Disability Card&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/v1.0/disabilitycard&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;document_number&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Numero Documento&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document Number&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cognome&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Family Name&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;birth_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di Nascita (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of Birth (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;personal_administrative_number&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Codice Fiscale&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tax Identification Number&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;expiry_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di Scadenza (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Expiration Date (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;constant_attendance_allowance&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Diritto accompagnatore&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Constant attendance allowance&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;portrait&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Foto codificata in base64&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Portrait base64 encoded&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;link_qr_code&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Link QR Code&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Link QR Code&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;MDL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;jwk&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;credential_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;proof_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;proof_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                                </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mobile Driver&#39;s License&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/v1.0/mdl&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cognome&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Family Name&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;birth_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di nascita (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of Birth (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;place_of_birth&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luogo di Nascita&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place of Birth&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;issue_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di rilascio (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Issue Date (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;expiry_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di scadenza (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Expiry Date (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;issuing_country&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Paese di rilascio&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Issuing Country&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Autorità di rilascio&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Issuing Authority&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;document_number&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Numero di documento&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document Number&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;portrait&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Foto codificata in base64&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Portrait base64 encoded&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elenco delle categorie di abilitazione separate da spazio&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Driving Privileges separated by space&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;restrictions_conditions&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Annotazioni/Restrizioni valide per tutte le categorie separate da spazio&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Restriction/Condition for all driving privileges separated by space &quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;driving_privileges_details&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Dettagli delle categorie di abilitazione&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Driving privilege details&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f10aca0992694b3581f6f699bfc8a2c6cc687725&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;trust_frameworks_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;it_cie&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;it_spid&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;it_wallet&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;eudi_wallet&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;evidence_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;vouch&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;openid_credential_verifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;application_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;web&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;client_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization Name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;protocollo@pec.example.it&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;request_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://eaa-provider.example.org/request_uri&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;response_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://eaa-provider.example.org/response_uri&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;default_acr_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL3&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;authorization_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;authorization_encrypted_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;RSA-OAEP-256&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;authorization_encrypted_response_enc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;A128CBC-HS256&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;A192CBC-HS384&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;A256CBC-HS512&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;A128GCM&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;A192GCM&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;A256GCM&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;vp_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f10aca0992694b3581f6f699bfc8a2c6cc687725&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jE2RpcQbFQxKpMqehahgZv6smmXD0i/LTP2QRzMADk4&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qkMx5iqt5PhPu5tfctS6HsP+FmLgrxfrzUV2GwMQuh8&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -2241,6 +2995,12 @@ If any other error occurs, the PID/(Q)EAA Provider MUST return an error response
 <li><a class="reference internal" href="#notification-response">Notification Response</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#entity-configuration-of-pid-q-eaa-providers">Entity Configuration of PID/(Q)EAA Providers</a><ul>
+<li><a class="reference internal" href="#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
+<li><a class="reference internal" href="#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
+<li><a class="reference internal" href="#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2262,7 +3022,7 @@ If any other error occurs, the PID/(Q)EAA Provider MUST return an error response
 
             <div class="right">
                 
-                    <a href="pid-eaa-entity-configuration.html"><span>Entity Configuration of PID/(Q)EAA Providers</span><span class="icon">&gt;</span></a>
+                    <a href="credential-revocation.html"><span>Digital Credential Lifecycle</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

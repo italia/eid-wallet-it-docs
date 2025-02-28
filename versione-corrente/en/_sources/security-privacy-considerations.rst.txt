@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. include:: ../common/symbols.rst
 
 .. _security-privacy-considerations.rst:
 
@@ -59,7 +60,7 @@ SR-CF-20
    :widths: 8 92
 
    * - |check-icon|
-     - For any presentation, the Credential format must ensure that the data that is tied to the original Credential cannot be altered. (E.g., by using a cryptographic signature.)
+     - For any presentation, the Credential format must ensure that the data that is tied to the original Credential cannot be altered (e.g., by using a cryptographic signature.)
 
 The cryptographic signature included in the Credential format ensures that any tampering with the Credential will result in a failed verification.
 
@@ -286,8 +287,7 @@ SR-W-20
    * - |check-icon|
      - The Wallet must provide trustworthy and complete information about Issuers to the User.
 
-The Wallet Instance discovers the trusted Issuers using trusted third party resources, such as the Federation API (e.g., using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), 
-inspecting the Issuer metadata and Trust Marks for filtering the PID Provider.
+The Wallet Instance discovers the trusted Issuers using trusted third party resources, such as the Federation API (e.g., using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), inspecting the Issuer metadata and Trust Marks for filtering the PID Provider.
 
 The Issuer's information is displayed to the User during the issuance process and can be subsequently read by the User as it is inside the issued Credential. 
 In addition to the Issuer's information, the Digital Credential Metadata Type also contains information on the Authentic Source.

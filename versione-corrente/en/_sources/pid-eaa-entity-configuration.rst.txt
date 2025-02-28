@@ -16,10 +16,9 @@ The PID/(Q)EAA Providers MUST provide the following metadata types:
 In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for *openid_credential_verifier* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE id OIDC Technical Specification <https://github.com/italia/spid-cie-oidc-docs>`_.
 
 
-Metadata for federation_entity
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 The *federation_entity* metadata MUST contain the parameters as defined in Section :ref:`Metadata of federation_entity Leaves`.
+
+The *openid_credential_verifier* metadata MUST contain the parameters as defined in Section :ref:`Metadata for openid_credential_verifier`.
 
 
 Metadata for oauth_authorization_server
@@ -92,7 +91,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **deferred_credential_endpoint**
     - URL of the deferred credential endpoint, as defined in Section 11.2.3 of `OpenID4VCI`_.
   * - **status_attestation_endpoint**
-    - It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Attestations. See Section :ref:`Credential Lifecycle` for more details.
+    - It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Assertions. See Section :ref:`Digital Credential Lifecycle <Digital Credential Lifecycle>` for more details.
   * - **notification_endpoint**
     - It MUST be an HTTPs URL indicating the notification endpoint. See Section 11.2.3 of [`OpenID4VCI`_].
   * - **authorization_servers**
@@ -139,12 +138,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     -  URL of the Status Assertion Endpoint. See `OAUTH-STATUS-ASSERTION`_ Section 11.1.
   * - **credential_hash_alg_supported**
     -  The supported algorithm used by the Wallet Instance to hash the Digital Credential for which the Status Assertion is requested. It is RECOMMENDED to use *sha-256*. See `OAUTH-STATUS-ASSERTION`_ Section 11.1.
-
-
-Metadata for openid_credential_verifier
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The *openid_credential_verifier* metadata MUST contain the parameters as defined in Section :ref:`Metadata for openid_credential_verifier`.
 
 
 Example of a (Q)EAA Provider Entity Configuration

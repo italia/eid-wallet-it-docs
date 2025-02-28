@@ -132,7 +132,7 @@ The following diagram shows the *User request flow*.
 
 Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:
 
-.. code-block:: http
+.. code-block::
 
   openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
 
@@ -246,7 +246,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 
 **Steps 4-5 (Authorization Request)**: The Wallet Instance sends an authorization request to the PID/(Q)EAA Provider Authorization Endpoint. Since parts of this Authorization Request content, e.g., the ``code_challenge`` parameter value, are unique to a particular Authorization Request, the Wallet Instance MUST use a ``request_uri`` value once (:rfc:`9126`); The  PID/(Q)EAA Provider performs the following checks upon the receipt of the Authorization Request:
 
-    1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a user reloading/refreshing their user-agent (derived from :rfc:`9126`).
+    1. It MUST treat ``request_uri`` values as one-time use and MUST reject an expired request. However, it MAY allow for duplicate requests due to a User reloading/refreshing their user-agent (derived from :rfc:`9126`).
     2. It MUST identify the request as a result of the submitted PAR (derived from :rfc:`9126`).
     3. It MUST reject all the Authorization Requests that do not contain the ``request_uri`` parameter as the PAR is the only way to pass the Authorization Request from the Wallet Instance (derived from :rfc:`9126`).
 
@@ -946,9 +946,9 @@ Below is a non-normative example of an error response.
 
   HTTP/1.1 302 Found
   Location: https://client.example.com/cb?
-  error=invalid_request
-  &error_description=Unsupported%20response_type%20value
-  &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
+   error=invalid_request
+   &error_description=Unsupported%20response_type%20value
+   &state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd
 
 In case of Authorization Server redirects the User to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
 
@@ -1425,7 +1425,7 @@ The Credential Response contains the following parameters:
     - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credentials`` parameter is not present.
     - Section 8.3 of [`OpenID4VCI`_].
   * - **transaction_id**
-    - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Flow`. It MUST be invalidated after the User obtains the Credential.
+    - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Endpoint`. It MUST be invalidated after the User obtains the Credential.
     - Section 8.3 of [`OpenID4VCI`_].
 
 In case of the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
@@ -1654,3 +1654,5 @@ In the following table are listed HTTP Status Codes and related error codes that
       - `-`
       - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
+
+.. include::    pid-eaa-entity-configuration.rst

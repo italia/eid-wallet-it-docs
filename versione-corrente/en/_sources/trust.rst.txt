@@ -1,4 +1,5 @@
 .. include:: ../common/common_definitions.rst
+.. include:: ../common/symbols.rst
 
 .. _trust.rst:
 
@@ -652,8 +653,8 @@ In the process depicted in the sequence diagram below, the Wallet Instance uses 
 .. note::
   As shown in the figure, internet connection is required to update the Trust Chain about an RP and check its revocation status.
 
-Wallet Attestation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Evaluating Trust with Wallets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys. 
 

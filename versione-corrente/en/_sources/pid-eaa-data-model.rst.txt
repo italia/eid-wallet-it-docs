@@ -6,6 +6,14 @@
 PID/(Q)EAA Data Model
 +++++++++++++++++++++
 
+The Digital Credential Data Model structures Digital Credentials for secure, interoperable use. Key elements include:
+
+    - Credential Subject: The individual or entity receiving the Credential.
+    - Issuer: The PID/(Q)EAA Provider issuing and signing the Credential.
+    - Metadata: Details about the Credential, like type and validity.
+    - Claims: Information about the subject, such as identity or qualifications.
+    - Proof: Cryptographic verification of authenticity and legitimate ownership.
+
 The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural persons to be authenticated for the access to a service or to a protected resource. 
 The User attributes provided within the Italian PID are the ones listed below:
 

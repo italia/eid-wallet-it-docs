@@ -1,6 +1,6 @@
+.. include:: ../common/common_definitions.rst
 
-
-.. _proximity_flow_sec:
+.. _proximity_flow_sec_main:
 
 Proximity Flow
 ==============
@@ -22,7 +22,7 @@ The presentation phase is divided into three sub-phases:
 
 The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.
 
-.. _fig_High-Level-Flow-ITWallet-Presentation-ISO:
+.. _fig_High-Level-Flow-ITWallet-Presentation-ISO-1:
 .. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO.svg
     :figwidth: 100%
     :align: center

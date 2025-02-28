@@ -1,11 +1,132 @@
 .. include:: ../common/common_definitions.rst
 
+Digital Credential Lifecycle
+===================================
+
+The Credential Issuer is responsible for creating and issuing Digital Credentials, as well as managing their lifecycle and validity status. 
+
+The Authentic Source is the entity responsible for the management and provisioning of User's attributes to Credential Issuers. 
+There is a relationship between the lifecycle of the attributes managed by the Authentic Source and the Digital Credential lifecycle
+managed by the Credential Issuer. Indeed, one of the reasons for revocation or suspension of Digital Credentials is the update/revocation or 
+suspension of the attributes contained in the Digital Credential. In IT Wallet, the provisioning of User's attributes and the notification of 
+updates or changes in the state of the attributes are exchanged using the PDND infrastructure (see relative sections for more details).
+
+
+:numref:`fig_DigitalCredential_States` shows the states and transitions for Digital Credentials. 
+It includes four distinct states: **Issued**, **Valid**, **Expired**, and **Revoked**. While, in case of (Q)EAAs there is an additional state: **Suspended**. 
+A Digital Credential in all states can be deleted (**PID/(Q)EAA DEL**) and this ends its lifecycle.
+
+.. _fig_DigitalCredential_States:
+.. figure:: ../../images/DigitalCredential_States.svg
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/png/RP9HRzCm4CVV_IbEtSC0AIAK5Q4ze4Lh2fK6b6MRa807BxwrLXmxifsDWFZks8udjr7xLF_kVtS_dN9XBDMsRmNPSOQ0RMS7O6XgpJlBbIHMTM0Lt2jhLGkCQwm39wUGPV0H9Meg7ATRJLimTX1SRbs9c8RBZdh8y87smgwKj1N_W_1clbUiBBLOQAsUBfLG6ku5hPkZzKz8MUX_EorVSOatErut4es1UNJxJ1k4McbdQ81A1iB539XMARj3VUYeLI_PPGZ3F8VuEmL1zHPr70EQCjwRr1P6sg53w9GO_2EszIOXFzkweqIj9JvuQBou2HB-7nH2L2EY1cRk1UDp1l2Nn4pLcmubGmOdgrMnoFF8h_5HDPuktvqjpXQHbhyxhXEDwsyqbOPRhcHO_ZnwRKoFxAk-euApe30IK1e2cpaD6Ar702Tv_Zvt3Wx_UFKBCistEvjzWDXu3flrylMBRo_BelWfrrK5168jPVsaQVJHCsu729-c8V-SvA5UnjIJTDtf7kVmt5tTLfjft4NZYIQhhiixE1AEbvk4o-yRGjBAhEzSzB0vQTn-yI8fFf7O5vY4qlAznK326T974a_WBp_HN9PNvCADwrln7m00
+    
+    Digital Credential Lifecycle.
+
+.. note::
+
+  Users MAY present a Digital Credential in any state, it is up to the Relying Party's policy to accept a not Valid Digital Credential. 
+  An example of this scenario is when a Relying Party needs to verify that the User is not a minor. In this case, even if the User presents an 
+  **Issued/Expired/Revoked** or **Suspended** Digital Credential, the age claim is still reliable.
+
+.. note::
+
+  While **Issued**, **Valid**, **Expired**, **Revoked** are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4), 
+  **Suspended** is implicitly present in `EIDAS-ARF`_. This specification explicitly considers it.
+
+Credential Transition to Issued
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+For the state machine to start, the Wallet Instance MUST be in either the **Operational** or **Valid** state, enabling Digital Credentials to be issued to it. 
+The state machine begins with the **Issued** state, when an issuance process is triggered and, as a result, a Digital Credential is issued to the 
+Wallet Instance (**PID/(Q)EAA ISS**). Please refer to :ref:`PID/(Q)EAA Issuance`.
+
+Credential Transition to Valid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A Digital Credential changes to **Valid** state when: 
+
+  * it reaches its start date of validity;
+  * an unsuspension process is triggered if the (Q)EAA has been suspended. 
+
+
+Credential Transition to Expired
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A Digital Credential naturally transitions to the **Expired** state when it automatically expires upon reaching its end date of validity (**PID/(Q)EAA EXP**), 
+indicating they are no longer valid for use.
+
+If a Digital Credential is **Expired** the Wallet Instance SHOULD notify the User the Digital Credential has expired and the User MAY delete it (**PID/(Q)EAA DEL**). 
+This ends its lifecycle.
+
+.. _credential-revocation:
+
+Credential Transition to Revoked
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A Digital Credential changes from **Issued**, **Valid** or **Suspended** states to **Revoked** state when it is actively revoked by the Credential Issuer 
+by a revocation process (**PID/(Q)EAA REV**). The Relying Parties SHOULD no longer consider usable a particular Digital Credential when it is **Revoked**, even though it is 
+still valid temporally and contains a valid Credential Issuer signature. Revocation can occur in the following cases:
+
+  * for technical security reasons relating to the compromise of cryptographic material; 
+  * in case of explicit User requests;
+  * as a consequence of an attribute update by Authentic Sources;
+  * in case of a revocation of the attributes contained in the Digital Credential notified by the Authentic Source;
+  * death of the User;
+  * revocation of Wallet Instance to which the Digital Credential was issued;
+  * illegal activities of the User reported by Judicial or Supervisory Bodies.
+
+In the case of PID only, the following cases are in addition to those listed above:
+
+  * detection of a breach of the digital identity issued by an Identity Provider and used to authenticate the User during the PID Issuance;
+  * as a result of obtaining a new PID on a new Wallet Instance from the same Wallet Provider that has provided the Wallet Instance containing a PID previously issued.
+
+.. note::
+
+ A (Q)EAA Provider MAY revoke a (Q)EAA in case of PID revocation.
+
+
+When a Digital Credential is **Revoked** it cannot transition back to **Valid**, the Wallet Instance SHOULD notify the User the Digital Credential 
+has been revoked and the User MAY delete it (**PID/(Q)EAA DEL**). This ends its lifecycle.
+
+Credential Transition to Suspended
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A (Q)EAA changes from **Issued** or **Valid** states to **Suspended** state when it is suspended by the Credential Issuer (**(Q)EAA SUSP**).
+The (Q)EAA remains **Suspended** until it is restored to the **Issued** or **Valid** state (**(Q)EAA UNSUSP**) depending on the previous state, i.e. 
+the conditions leading to its suspension are resolved, or it changes in **Revoked**, **Expired** or it is deleted. The suspension of a (Q)EAA MAY be: 
+
+  * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA. 
+  * Explicitly requested by the User. 
+
+Credential Lifecycle Management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+While :numref:`fig_DigitalCredential_States` shows the different states a Digital Credential may acquire during its lifecycle, 
+:numref:`fig_DigitalCredential_Lifecycle` shows the point of view of Wallet Instances and Credential Issuers in managing the Digital Credential lifecycle 
+and the effect on their local storage.
+
+.. _fig_DigitalCredential_Lifecycle:
+.. figure:: ../../images/DigitalCredential_Lifecycle.svg
+    :figwidth: 100%
+    :target: https://www.plantuml.com/plantuml/svg/XP91Yzim48Nl_XMgsOC3sVMbfq9WKzjq0sbZR8UbK0YoDIW2MV9AetL3wN-lvBPkIbro2T7JzvxVY7cqI0swNaPlXEgaOq3EY8DzbwQ6ZWzSuDcrpeBfj49G-D3fFXqaLS5pRv59qQRPs_ioICUF-xId5i5uwPHv1nKApCCGyfzsUN6gcw8g3itdiaXMKLG_7PvFPL7LXq-dyb0rrNRN17tBM0MoeJo9MHkloHt2Lyoqr6OJQqCLXo1AdxqerdYHG3Oaf_OCRE-LPELJtskd63MNnBLh4ZzJAG79JbcagWFo-pPUaMyHYGYfBnQXJsZtukbSS85Kaim00uN2_zrsBqvOWKAhs1Fnwe-7WLpsv23Xok0TyoFbRJ9Qr6OTr_wNSfX3e-_HLVakbB-At5dhmFnTVox2GIqN-G0A35tgRk1rsLB1g-ucI_f5rSuEe6mu79MT3tFOzLZJL6GUwnya6LoupobIKZh3XU8JjBwpWn48czZeLgCtXOUeGFxi-2lsMERRfWY6QL4ejvkmDAi0XkGPp8jzyL-GWvh1h2gM4oToseVn5Xh8QGl6Mr-Vvnbl3VG8YhbU_W00
+    
+    Digital Credential Lifecycle Management.
+
+A User, through the Wallet Instance, is able to acquire a new Digital Credential (**Credential Acquisition**) performing the **PID/(Q)EAA ISS** process. This MUST result in the storage of a 
+Digital Credential in the **Issued/Valid** state, and delete it when it is not needed anymore or it is **Expired/Revoked** (**Credential Deletion**). 
+Until the **Credential Deletion**, a Digital Credential can be presented to Relying Parties, this operation will not affect its lifecycle.
+
+A Credential Issuer instead is responsible for:
+
+  * **Digital Credential Generation**: the Digital Credential is generated as a consequence of an issuance request and MUST be added to the local storage of the Credential Issuer after the successful issuance. 
+  * **Digital Credential Revocation/Suspension/Unsuspension** (**PID/(Q)EAA REV** and **(Q)EAA SUSP/UNSUSP**): for technical security reasons or triggered by external entities (e.g., Users and Authentic Sources) the Digital Credential state MUST be locally updated.
+  * **Data Purging**: after reaching the **Expired** state, and based on the Credential Issuer retention policies, Digital Credentials MUST be removed from the local storage of the Credential Issuer.
+
+.. _Wallet Attestation: wallet-attestation.html
+.. _Wallet Attestation: wallet-attestation.html
+
 Digital Credential Revocation and Suspension
-============================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section describes the flows to request a Digital Credential status update (i.e. revocation or suspension), involved entities, and validation mechanisms for Digital Credentials in the IT-Wallet system.
 
-As highlighted in Section :ref:`Wallet Instance and Digital Credential Lifecycle <Wallet Instance and Digital Credential Lifecycle>`, a Digital Credential's lifecycle is affected by:
+As highlighted in Section :ref:`Digital Credential Lifecycle <Digital Credential Lifecycle>`, a Digital Credential's lifecycle is affected by:
 
   - The lifecycle of its storing Wallet Instance
   - The validity of Attributes managed by Authentic Sources
@@ -17,8 +138,8 @@ External user-related factors can also influence a Digital Credential's lifecycl
   - User's death
   - Illegal activities
 
-Entities involved
------------------
+Entities Involved
+---------------------------------
 
 While the Credential Issuer MUST directly manage the validity status of Digital Credentials it has issued, other actors MAY trigger the Digital Credential revocation/suspension process:
 
@@ -42,7 +163,7 @@ The following figure shows an entity relationships diagram relating to the Updat
 
 
 Status Update Flows
--------------------
+----------------------------
 
 This section describes the main flows for managing Digital Credential Status Updates by the Issuer, in particular Status Update:
 
@@ -56,7 +177,7 @@ This section describes the main flows for managing Digital Credential Status Upd
 
 
 Status Update related to the User
-+++++++++++++++++++++++++++++++++
+.......................................
 
 Users MAY change their Digital Credential validity status by:
 
@@ -81,7 +202,7 @@ The User's death triggers a change in the validity status of the User's identifi
 
 
 Status Update by Wallet Instance
-++++++++++++++++++++++++++++++++
+.......................................
 
 When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance MUST notify this event to the Credential Issuer and the Credential Issuer MUST revoke the Digital Credential. To notify this event, the Wallet Instance MUST use the *Notification Endpoint* described in Section :ref:`Notification Endpoint <Notification endpoint>` using the parameter ``event`` set with the value ``credential_deleted``. 
 
@@ -90,13 +211,13 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 
 
 Status Update by Wallet Providers 
-+++++++++++++++++++++++++++++++++
+.........................................
 
-In addition to what already defined in :ref:`Wallet Instance and Digital Credential Lifecycle <Wallet Instance and Digital Credential Lifecycle>`, the Credential Issuer MUST provide a web service (Wallet Instance Revocation endpoint) defined using PDND, as specified in the Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>`.
+In addition to what already defined in :ref:`Digital Credential Lifecycle <Digital Credential Lifecycle>`, the Credential Issuer MUST provide a web service (Wallet Instance Revocation endpoint) defined using PDND, as specified in the Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>`.
 The Wallet Provider that for any reason revokes a Wallet Instance MUST send a notification to Issuers using this endpoint.
 
 Status Update by Authentic Sources
-++++++++++++++++++++++++++++++++++
+.........................................
 
 Authentic Sources manage attributes separately from Digital Credentials, which verify authenticity like physical documents. Losing a physical document doesn't mean losing the privileges it represents; it just means the User can't prove them. However, if a User loses privileges due to a serious infraction, the Authentic Source will revoke the related attributes. In such cases, when a User's attributes are updated, Authentic Sources MUST notify Credential Issuers to update the validity status of any Digital Credential containing those attributes.
 
@@ -132,8 +253,8 @@ The Status Assertions have the following features:
 The following sections describe how the Digital Credential validation mechanism works through its key phases. 
 
 
-Flow during issuance
-++++++++++++++++++++
+Credential Issuers Handling Credential Status 
+...................................................
 
 Credential Issuers, once a Digital Credential has been generated and successfully issued, MUST:
 
@@ -146,8 +267,8 @@ Moreover, Credential Issuers MUST add the following parameters within their Meta
   - ``credential_hash_alg_supported``
 
 
-Flow for status refresh
-+++++++++++++++++++++++
+Wallet Instance Checking Credentials Statuses
+...................................................
 
 A Wallet Instance MUST check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Assertion for each Digital Credential. In this case, the Wallet Instance MUST send a *Status Assertion Request* to the Credential Issuer according to "OAuth Status Assertion Specification" (see `OAUTH-STATUS-ASSERTION`_ for more details) and it is depicted in the following diagram.
 
@@ -192,7 +313,7 @@ Technical details about the HTTP Status Assertion Response is provided in the Se
 
 
 HTTP Status Assertion Request
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+_____________________________________
 
 The *Status Assertion endpoint* MUST be provided by the Credential Issuer within its Metadata. 
 The requests to the *Status Assertion endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/json`` format. 
@@ -294,7 +415,7 @@ Below, is given a non-normative example of a single *Status Assertion Request ob
 
 
 HTTP Status Assertion Response
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+__________________________________________
 
 In case of succesfully Status Assertion Request validation, the *Credential Issuer* MUST return an HTTP response with the status code set to *200 OK*. If the *Credential Issuer* is able to provide a valid Status Assertion for a requested Credential, the response MUST contain a Status Assertion object within a JSON Array. Otherwise, a Status Assertion Errors related to that Credential MUST be included in the Response JSON Array as an entry.
 
@@ -477,8 +598,8 @@ Below a non-normative example of a Revocation Assertion Error object in JWT form
     "error_description": "The hash algorithm is not supported"
   }
 
-Flow during presentation
-++++++++++++++++++++++++
+Relying Party Checking Credential Status
+...................................................
 
 During the presentation flow, if a Status Assertion related to a Digital Credential is available, the Wallet Instance MUST include it along with the related Digital Credential in the ``vp_token`` JSON Array. 
 The Verifier who wants to rely on the mechanism provided by Status Assertion MUST extract the Status Assertion from the ``vp_token`` Array, and, in addition to the checks required in the Presentation Flow described in the Section :ref:`Remote Flow <Remote Flow>`, the Verifier MUST check the presence of ``status.status_assertion`` claim in the Digital Credential. If true, the Verifiers MUST:

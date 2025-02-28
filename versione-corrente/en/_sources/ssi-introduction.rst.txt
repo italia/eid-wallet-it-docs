@@ -19,7 +19,7 @@ The main roles in a Wallet ecosystem are listed as follow:
  - Holders: individuals who own a Wallet and have control over the digital credentials they can request, acquire, store, and present to verifiers;
  - Verifiable Data Registries: Authorities that publish certificates, attestations, metadata, and schemes needed for allowing the trust establishment between the parties.
 
-In this model, the credential issuer (e.g., an educational institution) provides digital credentials to the user, who can store them in their digital Wallet.
+In this model, the Credential Issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their digital Wallet.
 The Wallet typically comes in the form of an application on the User's mobile phone.
 
 Other key elements that characterize an SSI system include:
