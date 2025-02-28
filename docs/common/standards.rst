@@ -191,6 +191,27 @@ Onboarding and Interfaces
     * - ETSI_Wallet_Interfaces
       - ETSI: Wallet interfaces for trust services
 
+Wallet Certification Standards
+-------------------------------
+
+.. list-table::
+    :widths: 25 75
+    :header-rows: 0
+
+    * - ISO_17020
+      - Conformity assessment — Requirements for the operation of various types of bodies performing inspection
+    * - ISO_17021
+      - Conformity assessment — Requirements for bodies providing audit and certification of management systems
+    * - ISO_17025
+      - General requirements for the competence of testing and calibration laboratories
+    * - ISO_17029
+      - Conformity assessment — General principles and requirements for validation and verification bodies
+    * - ISO_17065
+      - Conformity assessment — Requirements for bodies certifying products, processes, and services
+    * - ISO_17067
+      - Conformity assessment — Fundamentals of product certification and guidelines for product certification schemes
+
+
 Identity Management on Personal Devices
 ----------------------------------------
 
