@@ -9,8 +9,8 @@ It includes international and national standards, draft specifications, architec
 foundational for the interoperability and the compliance with industry standards.
 
 
-European Digital Identity Wallet Architecture Reference Framework
------------------------------------------------------------------
+Wallet Paradigm Frameworks
+--------------------------
 
 .. list-table::
     :widths: 25 75
