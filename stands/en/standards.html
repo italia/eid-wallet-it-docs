@@ -7,7 +7,7 @@
 
     <title>Technical References &#8212; Italian EUDI Wallet Implementation Profile  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=59943e95" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
     <script src="_static/documentation_options.js?v=5929fcd5"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -157,11 +157,11 @@
             
   <section id="technical-references">
 <h1>Technical References<a class="headerlink" href="#technical-references" title="Link to this heading">¶</a></h1>
-<p>This section details the technical references, grouped by scope, that are foundamental for the implementation profile.
-It includes international and national standards, draft specifications, architecture reference frameworks, and other relevant technical documents.
-These references are the foundation of our system's robustness, interoperability, and compliance with industry standards.</p>
-<section id="european-digital-identity-wallet-architecture-reference-framework">
-<h2>European Digital Identity Wallet Architecture Reference Framework<a class="headerlink" href="#european-digital-identity-wallet-architecture-reference-framework" title="Link to this heading">¶</a></h2>
+<p>This section details the technical references, grouped by scope, that are part of the current implementation profile or for its future milestones.
+It includes international and national standards, draft specifications, architecture references and other relevant technical documents
+foundational for the interoperability and the compliance with industry standards.</p>
+<section id="wallet-paradigm-frameworks">
+<h2>Wallet Paradigm Frameworks<a class="headerlink" href="#wallet-paradigm-frameworks" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -223,7 +223,7 @@ These references are the foundation of our system's robustness, interoperability
 <tr class="row-odd"><td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
 <td><p>Hedberg, R., Jones, M.B., Solberg, A.Å., Bradley, J., De Marco, G., Dzhuvinov, V.,  &quot;OpenID Federation 1.0&quot;, December 2024, Draft 41.</p></td>
 </tr>
-<tr class="row-even"><td><p><a href="#id1"><span class="problematic" id="id2">`OID-FED-WALLET`_</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://openid.net/specs/openid-federation-wallet-1_0.html">OID-FED-WALLET</a></p></td>
 <td><p>De Marco, G., Hedberg, R., Jones, M.B., Bradley, J., Dzhuvinov, V., &quot;OpenID Federation Wallet Architectures 1.0&quot;, October 2024, Draft 03.</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a></p></td>
@@ -236,11 +236,10 @@ These references are the foundation of our system's robustness, interoperability
 <td><p>Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model</p></td>
 </tr>
 <tr class="row-even"><td><p>REN/ESI-0019411-1v151</p></td>
-<td><p>Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements</p></td>
+<td><p>Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates</p></td>
 </tr>
 </tbody>
 </table>
-<p>Policy requirements for certification authorities issuing public key certificates</p>
 </section>
 <section id="digital-credential-data-format">
 <h2>Digital Credential Data Format<a class="headerlink" href="#digital-credential-data-format" title="Link to this heading">¶</a></h2>
@@ -257,12 +256,15 @@ These references are the foundation of our system's robustness, interoperability
 </td>
 </tr>
 <tr class="row-even"><td><p>ISO18013-5</p></td>
-<td><p>ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application. International Organization for Standardization.</p></td>
+<td><p>ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.</p></td>
 </tr>
 <tr class="row-odd"><td><p>W3C-VC-DT-1.1</p></td>
 <td><p>&quot;Verifiable Credentials Data Model 1.1.&quot;, W3C Recommendation, 3 March 2022.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISO-IEC_7367</p></td>
+<tr class="row-even"><td><p>W3C_VCDM_v2_0</p></td>
+<td><p>Verifiable Credentials Data Model v2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO-IEC_7367</p></td>
 <td><p>ISO Compliant Mobile Vehicle Registration Certificates, Logical Data Structure</p></td>
 </tr>
 </tbody>
@@ -319,7 +321,7 @@ These references are the foundation of our system's robustness, interoperability
 <td><p>Fett, D., Lodderstedt, T.,  &quot;Security and Trust in OpenID for Verifiable Credentials Ecosystems&quot;, March 2024.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISO18013-5</p></td>
-<td><p>ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application. International Organization for Standardization.</p></td>
+<td><p>ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application</p></td>
 </tr>
 <tr class="row-odd"><td><p>ISO/IEC 18013-7</p></td>
 <td><p>Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024</p></td>
@@ -335,6 +337,15 @@ These references are the foundation of our system's robustness, interoperability
 </tr>
 <tr class="row-odd"><td><p>DTS/ESI-0019472-1</p></td>
 <td><p>Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestations of Attributes; Part 1: General requirements Profiles for EAA - General requirements</p></td>
+</tr>
+<tr class="row-even"><td><p>W3C_Digital_Credentials_API</p></td>
+<td><p>Digital Credentials API</p></td>
+</tr>
+<tr class="row-odd"><td><p>W3C_WebAuthn</p></td>
+<td><p>Web Authentication, An API for accessing Public Key Credentials Level 2</p></td>
+</tr>
+<tr class="row-even"><td><p>CTAP</p></td>
+<td><p>Client to Authenticator Protocol (CTAP) Review Draft</p></td>
 </tr>
 </tbody>
 </table>
@@ -407,6 +418,23 @@ These references are the foundation of our system's robustness, interoperability
 </tbody>
 </table>
 </section>
+<section id="biometric-data">
+<h2>Biometric Data<a class="headerlink" href="#biometric-data" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>ISO_19794_5</p></td>
+<td><p>Biometric data interchange formats</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO_39794</p></td>
+<td><p>Information technology — Extensible biometric data interchange formats</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="onboarding-and-interfaces">
 <h2>Onboarding and Interfaces<a class="headerlink" href="#onboarding-and-interfaces" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -424,6 +452,47 @@ These references are the foundation of our system's robustness, interoperability
 </tbody>
 </table>
 </section>
+<section id="general-certification-and-conformity">
+<h2>General Certification and Conformity<a class="headerlink" href="#general-certification-and-conformity" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>ISO_17020</p></td>
+<td><p>Conformity assessment — Requirements for the operation of various types of bodies performing inspection</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO_17021</p></td>
+<td><p>Conformity assessment — Requirements for bodies providing audit and certification of management systems</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO_17025</p></td>
+<td><p>General requirements for the competence of testing and calibration laboratories</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO_17029</p></td>
+<td><p>Conformity assessment — General principles and requirements for validation and verification bodies</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO_17065</p></td>
+<td><p>Conformity assessment — Requirements for bodies certifying products, processes, and services</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO_17067</p></td>
+<td><p>Conformity assessment — Fundamentals of product certification and guidelines for product certification schemes</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO_IEC_30111_2019</p></td>
+<td><p>Vulnerability management policy and procedures</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO_IEC_27001_2022</p></td>
+<td><p>ISMS (IA1-CER)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISO_IEC_15408_3_2022</p></td>
+<td><p>Evaluation criteria for IT security (IA1-CER)</p></td>
+</tr>
+<tr class="row-even"><td><p>ISO_IEC_17000_2020</p></td>
+<td><p>Conformity assessment — Vocabulary and general principles</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="identity-management-on-personal-devices">
 <h2>Identity Management on Personal Devices<a class="headerlink" href="#identity-management-on-personal-devices" title="Link to this heading">¶</a></h2>
 <table class="docutils align-default">
@@ -437,6 +506,41 @@ These references are the foundation of our system's robustness, interoperability
 </tr>
 <tr class="row-even"><td><p>ISO_Mobile_Identity_Management</p></td>
 <td><p>ISO JTC1 SC17: Identity management via mobile devices &amp; mobile driving license</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="electronic-signatures-and-infrastructures">
+<h2>Electronic Signatures and Infrastructures<a class="headerlink" href="#electronic-signatures-and-infrastructures" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>ETSI_TS_119_431_1</p></td>
+<td><p>Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev.</p></td>
+</tr>
+<tr class="row-even"><td><p>ETSI_TS_119_431_2</p></td>
+<td><p>Policy and security requirements for trust service providers; Part 2: TSP service components supporting AdES digital signature creation</p></td>
+</tr>
+<tr class="row-odd"><td><p>ETSI_TS_119_432</p></td>
+<td><p>Protocols for remote digital signature creation</p></td>
+</tr>
+<tr class="row-even"><td><p>ETSI_EN_319_132_1</p></td>
+<td><p>XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures (XAdES)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ETSI_TS_119_182_1</p></td>
+<td><p>JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures</p></td>
+</tr>
+<tr class="row-even"><td><p>ETSI_EN_319_122_1</p></td>
+<td><p>CAdES digital signatures; Part 1: Building blocks and CAdES baseline signatures</p></td>
+</tr>
+<tr class="row-odd"><td><p>ETSI_EN_319_162_1</p></td>
+<td><p>Associated Signature Containers (ASiC); Part 1: Building blocks and ASiC baseline containers</p></td>
+</tr>
+<tr class="row-even"><td><p>ETSI_EN_319_142</p></td>
+<td><p>PAdES digital signatures; Part 1: Building blocks and PAdES baseline signatures</p></td>
 </tr>
 </tbody>
 </table>
@@ -472,14 +576,40 @@ These references are the foundation of our system's robustness, interoperability
 <col style="width: 75.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>ENISA_To_Be_Advised</p></td>
-<td><p>ENISA: (to be advised)</p></td>
-</tr>
-<tr class="row-even"><td><p>CEN_Protection_Profiles</p></td>
+<tr class="row-odd"><td><p>CEN_Protection_Profiles</p></td>
 <td><p>CEN TC224 WG17: Common Criteria Protection Profiles for the EU Digital Identity Wallet</p></td>
 </tr>
-<tr class="row-odd"><td><p>GlobalPlatform_Secure_Element</p></td>
-<td><p>GlobalPlatform: PP for secure element</p></td>
+</tbody>
+</table>
+</section>
+<section id="globalplatform-and-secure-elements">
+<h2>GlobalPlatform and Secure Elements<a class="headerlink" href="#globalplatform-and-secure-elements" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>GPC_GUI_217</p></td>
+<td><p>GlobalPlatform SAM Configuration Technical specification for implementation of Secured Applications for Mobile</p></td>
+</tr>
+<tr class="row-even"><td><p>GP_CS_GPC_SPE_034</p></td>
+<td><p>GPC_SPE_034 Card Specification, v2.3.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>GPC_SPE_007</p></td>
+<td><p>GlobalPlatform Amendment A Confidential Card Content Management v1.2 2019-07</p></td>
+</tr>
+<tr class="row-even"><td><p>GPC_SPE_013</p></td>
+<td><p>GlobalPlatform Amendment D Secure Channel Protocol 03 v1.2 2020-04</p></td>
+</tr>
+<tr class="row-odd"><td><p>GPC_SPE_093</p></td>
+<td><p>GlobalPlatform Amendment F Secure Channel Protocol 11 v1.4 2024-03</p></td>
+</tr>
+<tr class="row-even"><td><p>GP_OMAPI_GPD_SPE_075</p></td>
+<td><p>Device Secure elements access</p></td>
+</tr>
+<tr class="row-odd"><td><p>GSMA_SAM_01</p></td>
+<td><p>Secured Applications for Mobile – Requirements for supporting 3rd party Applets on eSIM and eSE via SAM</p></td>
 </tr>
 </tbody>
 </table>
@@ -508,7 +638,7 @@ These references are the foundation of our system's robustness, interoperability
 <td><p>Uniform Resource Identifier (URI): Generic Syntax.</p></td>
 </tr>
 <tr class="row-even"><td><p><span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7159.html"><strong>RFC 7159</strong></a></p></td>
-<td><p>Bray, T., “The JavaScript Object Notation (JSON) Data Interchange Format” RFC 7159, March 2014.</p></td>
+<td><p>Bray, T., &quot;The JavaScript Object Notation (JSON) Data Interchange Format&quot; RFC 7159, March 2014.</p></td>
 </tr>
 <tr class="row-odd"><td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8174.html"><strong>RFC 8174</strong></a></p></td>
 <td><p>Leiba, B., &quot;Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words&quot;, RFC 8174, DOI 10.17487/RFC8174, May 2017.</p></td>
@@ -545,7 +675,7 @@ These references are the foundation of our system's robustness, interoperability
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">Technical References</a><ul>
-<li><a class="reference internal" href="#european-digital-identity-wallet-architecture-reference-framework">European Digital Identity Wallet Architecture Reference Framework</a></li>
+<li><a class="reference internal" href="#wallet-paradigm-frameworks">Wallet Paradigm Frameworks</a></li>
 <li><a class="reference internal" href="#json-web-token-standards">Json Web Token Standards</a></li>
 <li><a class="reference internal" href="#infrastructure-of-trust">Infrastructure of Trust</a></li>
 <li><a class="reference internal" href="#digital-credential-data-format">Digital Credential Data Format</a></li>
@@ -554,10 +684,14 @@ These references are the foundation of our system's robustness, interoperability
 <li><a class="reference internal" href="#national-data-interoperability-platform-specifications">National Data Interoperability Platform Specifications</a></li>
 <li><a class="reference internal" href="#national-digital-identity-platform-specifications">National Digital Identity Platform Specifications</a></li>
 <li><a class="reference internal" href="#identity-proofing">Identity Proofing</a></li>
+<li><a class="reference internal" href="#biometric-data">Biometric Data</a></li>
 <li><a class="reference internal" href="#onboarding-and-interfaces">Onboarding and Interfaces</a></li>
+<li><a class="reference internal" href="#general-certification-and-conformity">General Certification and Conformity</a></li>
 <li><a class="reference internal" href="#identity-management-on-personal-devices">Identity Management on Personal Devices</a></li>
+<li><a class="reference internal" href="#electronic-signatures-and-infrastructures">Electronic Signatures and Infrastructures</a></li>
 <li><a class="reference internal" href="#remote-signatures-and-trust-services">Remote Signatures and Trust Services</a></li>
 <li><a class="reference internal" href="#security-and-protection-profiles">Security and Protection Profiles</a></li>
+<li><a class="reference internal" href="#globalplatform-and-secure-elements">GlobalPlatform and Secure Elements</a></li>
 <li><a class="reference internal" href="#other-specifications">Other Specifications</a></li>
 </ul>
 </li>
@@ -588,7 +722,7 @@ These references are the foundation of our system's robustness, interoperability
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 28/02/2025.
+      Last updated on 01/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
