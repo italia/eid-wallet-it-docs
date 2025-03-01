@@ -85,6 +85,7 @@ Digital Credential Data Format
     * - ISO-IEC_7367
       - ISO Compliant Mobile Vehicle Registration Certificates, Logical Data Structure
 
+
 Digital Credential Interoperability
 -----------------------------------
 
@@ -119,7 +120,7 @@ Digital Credential Interoperability
     * - `OpenID4VC-SecTrust`_
       - Fett, D., Lodderstedt, T.,  "Security and Trust in OpenID for Verifiable Credentials Ecosystems", March 2024.
     * - ISO18013-5
-      - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application. International Organization for Standardization.
+      - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application
     * - ISO/IEC 18013-7
       - Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024
     * - ISO/IEC 23220-3
@@ -131,12 +132,13 @@ Digital Credential Interoperability
     * - DTS/ESI-0019472-1
       - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestations of Attributes; Part 1: General requirements Profiles for EAA - General requirements 
     * - W3C_Digital_Credentials_API
-      - Digital Credentials API (ARF) - Obbligatoria/Raccomandata
+      - Digital Credentials API
     * - W3C_WebAuthn
-      - Web Authentication, An API for accessing Public Key Credentials Level 2 (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+      - Web Authentication, An API for accessing Public Key Credentials Level 2
     * - CTAP
-      - Client to Authenticator Protocol (CTAP) Review Draft (ARF)
-    
+      - Client to Authenticator Protocol (CTAP) Review Draft
+
+
 Digital Credential Revocation Check Mechanisms
 ----------------------------------------------
 
@@ -260,24 +262,22 @@ Electronic Signatures and Infrastructures
     :widths: 25 75
     :header-rows: 0
 
-    * - ETSI_TS_119_612
-      - Electronic Signatures and Infrastructures (ESI); Trusted Lists (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
     * - ETSI_TS_119_431_1
-      - Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev. (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+      - Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev.
     * - ETSI_TS_119_431_2
-      - Policy and security requirements for trust service providers; Part 2: TSP service components supporting AdES digital signature creation (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+      - Policy and security requirements for trust service providers; Part 2: TSP service components supporting AdES digital signature creation
     * - ETSI_TS_119_432
-      - Protocols for remote digital signature creation (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+      - Protocols for remote digital signature creation
     * - ETSI_EN_319_132_1
-      - XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures (XAdES) (IA1-INT) - Obbligatoria
+      - XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures (XAdES)
     * - ETSI_TS_119_182_1
-      - JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures (IA1-INT) - Obbligatoria
+      - JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures
     * - ETSI_EN_319_122_1
-      - CAdES digital signatures; Part 1: Building blocks and CAdES baseline signatures (IA1-INT) - Obbligatoria
+      - CAdES digital signatures; Part 1: Building blocks and CAdES baseline signatures
     * - ETSI_EN_319_162_1
-      - Associated Signature Containers (ASiC); Part 1: Building blocks and ASiC baseline containers (IA1-INT) - Obbligatoria
+      - Associated Signature Containers (ASiC); Part 1: Building blocks and ASiC baseline containers
     * - ETSI_EN_319_142
-      - PAdES digital signatures; Part 1: Building blocks and PAdES baseline signatures (IA1-INT) - Obbligatoria
+      - PAdES digital signatures; Part 1: Building blocks and PAdES baseline signatures
 
 
 Remote Signatures and Trust Services
@@ -325,7 +325,7 @@ GlobalPlatform and Secure Elements
     * - GPC_SPE_093
       - GlobalPlatform Amendment F Secure Channel Protocol 11 v1.4 2024-03
     * - GP_OMAPI_GPD_SPE_075
-      - Accesso ai secure elements su dispositivi
+      - Device Secure elements access
     * - GSMA_SAM_01
       - Secured Applications for Mobile – Requirements for supporting 3rd party Applets on eSIM and eSE via SAM
 
