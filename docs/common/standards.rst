@@ -80,6 +80,8 @@ Digital Credential Data Format
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
     * - W3C-VC-DT-1.1
       - "Verifiable Credentials Data Model 1.1.", W3C Recommendation, 3 March 2022.
+    * - W3C_VCDM_v2_0
+      - Verifiable Credentials Data Model v2.0
     * - ISO-IEC_7367
       - ISO Compliant Mobile Vehicle Registration Certificates, Logical Data Structure
 
@@ -128,7 +130,12 @@ Digital Credential Interoperability
       - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestations of Attributes Part 2: Profiles for Relying party interface to EUDI Wallet
     * - DTS/ESI-0019472-1
       - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestations of Attributes; Part 1: General requirements Profiles for EAA - General requirements 
-
+    * - W3C_Digital_Credentials_API
+      - Digital Credentials API (ARF) - Obbligatoria/Raccomandata
+    * - W3C_WebAuthn
+      - Web Authentication, An API for accessing Public Key Credentials Level 2 (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+    * - CTAP
+      - Client to Authenticator Protocol (CTAP) Review Draft (ARF)
     
 Digital Credential Revocation Check Mechanisms
 ----------------------------------------------
@@ -179,6 +186,19 @@ Identity Proofing
     * - CEN_Biometric_Requirements
       - CEN: European Requirements for Biometric Products
 
+Biometric Data
+--------------
+
+.. list-table::
+    :widths: 25 75
+    :header-rows: 0
+
+    * - ISO_19794_5
+      - Biometric data interchange formats
+    * - ISO_39794
+      - Information technology — Extensible biometric data interchange formats
+
+
 Onboarding and Interfaces
 -------------------------
 
@@ -191,8 +211,9 @@ Onboarding and Interfaces
     * - ETSI_Wallet_Interfaces
       - ETSI: Wallet interfaces for trust services
 
-Wallet Certification Standards
--------------------------------
+
+General Certification and Conformity
+------------------------------------
 
 .. list-table::
     :widths: 25 75
@@ -210,6 +231,14 @@ Wallet Certification Standards
       - Conformity assessment — Requirements for bodies certifying products, processes, and services
     * - ISO_17067
       - Conformity assessment — Fundamentals of product certification and guidelines for product certification schemes
+    * - ISO_IEC_30111_2019
+      - Vulnerability management policy and procedures
+    * - ISO_IEC_27001_2022
+      - ISMS (IA1-CER)
+    * - ISO_IEC_15408_3_2022
+      - Evaluation criteria for IT security (IA1-CER)
+    * - ISO_IEC_17000_2020
+      - Conformity assessment — Vocabulary and general principles
 
 
 Identity Management on Personal Devices
@@ -223,6 +252,33 @@ Identity Management on Personal Devices
       - Cards and securioty devices for personal identification - Building blocks for Identity Management via Mobile Devices - Part 2: data objects and encoding rules for generic eID systems.
     * - ISO_Mobile_Identity_Management
       - ISO JTC1 SC17: Identity management via mobile devices & mobile driving license
+
+Electronic Signatures and Infrastructures
+-----------------------------------------
+
+.. list-table::
+    :widths: 25 75
+    :header-rows: 0
+
+    * - ETSI_TS_119_612
+      - Electronic Signatures and Infrastructures (ESI); Trusted Lists (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+    * - ETSI_TS_119_431_1
+      - Policy and security requirements for trust service providers; Part 1: TSP service components operating a remote QSCD / SCDev. (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+    * - ETSI_TS_119_431_2
+      - Policy and security requirements for trust service providers; Part 2: TSP service components supporting AdES digital signature creation (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+    * - ETSI_TS_119_432
+      - Protocols for remote digital signature creation (ARF) - Obbligatorio secondo ARF, non legalmente vincolante
+    * - ETSI_EN_319_132_1
+      - XAdES digital signatures; Part 1: Building blocks and XAdES baseline signatures (XAdES) (IA1-INT) - Obbligatoria
+    * - ETSI_TS_119_182_1
+      - JAdES digital signatures; Part 1: Building blocks and JAdES baseline signatures (IA1-INT) - Obbligatoria
+    * - ETSI_EN_319_122_1
+      - CAdES digital signatures; Part 1: Building blocks and CAdES baseline signatures (IA1-INT) - Obbligatoria
+    * - ETSI_EN_319_162_1
+      - Associated Signature Containers (ASiC); Part 1: Building blocks and ASiC baseline containers (IA1-INT) - Obbligatoria
+    * - ETSI_EN_319_142
+      - PAdES digital signatures; Part 1: Building blocks and PAdES baseline signatures (IA1-INT) - Obbligatoria
+
 
 Remote Signatures and Trust Services
 ------------------------------------
@@ -247,12 +303,31 @@ Security and Protection Profiles
     :widths: 25 75
     :header-rows: 0
 
-    * - ENISA_To_Be_Advised
-      - ENISA: (to be advised)
     * - CEN_Protection_Profiles
       - CEN TC224 WG17: Common Criteria Protection Profiles for the EU Digital Identity Wallet
-    * - GlobalPlatform_Secure_Element
-      - GlobalPlatform: PP for secure element
+
+
+GlobalPlatform and Secure Elements
+----------------------------------
+
+.. list-table::
+    :widths: 25 75
+    :header-rows: 0
+
+    * - GPC_GUI_217
+      - GlobalPlatform SAM Configuration Technical specification for implementation of Secured Applications for Mobile
+    * - GP_CS_GPC_SPE_034
+      - GPC_SPE_034 Card Specification, v2.3.1
+    * - GPC_SPE_007
+      - GlobalPlatform Amendment A Confidential Card Content Management v1.2 2019-07
+    * - GPC_SPE_013
+      - GlobalPlatform Amendment D Secure Channel Protocol 03 v1.2 2020-04
+    * - GPC_SPE_093
+      - GlobalPlatform Amendment F Secure Channel Protocol 11 v1.4 2024-03
+    * - GP_OMAPI_GPD_SPE_075
+      - Accesso ai secure elements su dispositivi
+    * - GSMA_SAM_01
+      - Secured Applications for Mobile – Requirements for supporting 3rd party Applets on eSIM and eSE via SAM
 
 
 Other Specifications
