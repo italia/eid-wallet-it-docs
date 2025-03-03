@@ -5,7 +5,7 @@ Technical References
 ++++++++++++++++++++
 
 This section details the technical references, grouped by scope, that are part of the current implementation profile or for its future milestones.
-It includes international and national standards, draft specifications, architecture references and other relevant technical documents
+This section includes international and national standards, draft specifications, architecture references and other relevant technical documents
 foundational for the interoperability and the compliance with industry standards.
 
 
