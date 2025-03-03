@@ -182,7 +182,7 @@ Identity Proofing
     * - `ETSI TS 119 461`_
       - ETSI: Policy and security requirements for trust service components for identity proofing
     * - CEN/TS 18099:2024
-      - CEN: Biometric injection attack detection for remote registration (`link <https://conto.uni.com/en/cen-ts-18099-2024>`_)
+      - CEN: Biometric injection attack detection for remote registration (`CEN/TS 18099:2024 <https://conto.uni.com/en/cen-ts-18099-2024>`_)
     * - CEN_Biometric_Requirements
       - CEN: European requirements for biometric products. Personal identification — European requirements for biometric products — Part 2: Interoperability tests. (Replaces: N 2588 CEN/TC 224/WG 18 European requirements for biometric products Part 2)
 
@@ -285,7 +285,7 @@ Remote Signatures and Trust Services
     :header-rows: 0
 
     * - ETSI TS 119 431-1
-      - Policy and security requirements for trust service providers used for remote signatures. (`link <https://www.etsi.org/deliver/etsi_ts/119400_119499/11943101/01.03.01_60/ts_11943101v010301p.pdf>`_)
+      - Policy and security requirements for trust service providers used for remote signatures. (`ETSI TS 119 431-1 <https://www.etsi.org/deliver/etsi_ts/119400_119499/11943101/01.03.01_60/ts_11943101v010301p.pdf>`_)
     * - EN 419241-2:2019
       - Trustworthy Systems Supporting Server Signing - Part 2: Protection profile for QSCD for Server Signing
     * - CSC_Remote_Signature_Protocols
@@ -323,7 +323,7 @@ GlobalPlatform and Secure Elements
     * - GPC_SPE_093
       - GlobalPlatform Amendment F Secure Channel Protocol 11 v1.4 2024-03
     * - GP_OMAPI_GPD_SPE_075
-      - Open Mobile API Specification v3.3, Device Secure elements access (`link <https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/>`_)
+      - Open Mobile API Specification v3.3, Device Secure elements access (`GP_OMAPI_GPD_SPE_075 <https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/>`_)
     * - GSMA_SAM_01
       - Secured Applications for Mobile – Requirements for supporting 3rd party Applets on eSIM and eSE via SAM
 
