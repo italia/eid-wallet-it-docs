@@ -195,7 +195,7 @@ Biometric Data
     :header-rows: 0
 
     * - ISO/IEC 19794-5
-      - Information technology — Biometric data interchange formatsPart 5: Face image data
+      - Information technology — Biometric data interchange formats - Part 5: Face image data
     * - ISO/IEC 39794-2:2023
       - Information technology — Extensible biometric data interchange formats
 
@@ -207,10 +207,8 @@ Onboarding and Interfaces
     :widths: 25 75
     :header-rows: 0
 
-    * - CEN_Onboarding_Guidelines
+    * - prCEN/TS 18098
       - CEN: Guidelines for the onboarding of user personal identification data within European Digital Identity Wallets
-    * - ETSI_Wallet_Interfaces
-      - ETSI: Wallet interfaces for trust services
 
 
 General Certification and Conformity
@@ -250,9 +248,9 @@ Identity Management on Personal Devices
     :header-rows: 0
 
     * - ISO-IEC DTS 23220-2
-      - Cards and securioty devices for personal identification - Building blocks for Identity Management via Mobile Devices - Part 2: data objects and encoding rules for generic eID systems.
-    * - ISO_Mobile_Identity_Management
-      - ISO JTC1 SC17: Identity management via mobile devices & mobile driving license
+      - Cards and security devices for personal identification - Building blocks for Identity Management via Mobile Devices - Part 2: data objects and encoding rules for generic eID systems.
+    * - ISO/IEC JTC 1/SC 17
+      - Cards and security devices for personal identification
 
 Electronic Signatures and Infrastructures
 -----------------------------------------
@@ -286,14 +284,15 @@ Remote Signatures and Trust Services
     :widths: 25 75
     :header-rows: 0
 
-    * - ETSI_Remote_Signature_Requirements
-      - ETSI: Policy and security requirements for trust service providers used for remote signatures.
-    * - CEN_Server_Signing_Systems
-      - CEN: Trustworthy Systems supporting server signing
+    * - ETSI TS 119 431-1
+      - Policy and security requirements for trust service providers used for remote signatures. (`link <https://www.etsi.org/deliver/etsi_ts/119400_119499/11943101/01.03.01_60/ts_11943101v010301p.pdf>`_)
+    * - EN 419241-2:2019
+      - Trustworthy Systems Supporting Server Signing - Part 2: Protection profile for QSCD for Server Signing
     * - CSC_Remote_Signature_Protocols
-      - CSC: Cloud Signature Consortium Architectures and protocols for remote signature applications (CSC API v2)
-    * - ETSI_Signing_Interfaces
-      - ETSI: Wallet interfaces for signing
+      - Cloud Signature Consortium Architectures and protocols for remote signature applications (CSC API v2)
+    * - TS 119 462
+      - ETSI: Wallet interfaces for trust services and signing
+
 
 Security and Protection Profiles
 --------------------------------
@@ -303,7 +302,7 @@ Security and Protection Profiles
     :header-rows: 0
 
     * - CEN_Protection_Profiles
-      - CEN TC224 WG17: Common Criteria Protection Profiles for the EU Digital Identity Wallet
+      - CEN TC224 WG17: Protection Profiles in the context of SSCD
 
 
 GlobalPlatform and Secure Elements
@@ -324,7 +323,7 @@ GlobalPlatform and Secure Elements
     * - GPC_SPE_093
       - GlobalPlatform Amendment F Secure Channel Protocol 11 v1.4 2024-03
     * - GP_OMAPI_GPD_SPE_075
-      - Device Secure elements access
+      - Open Mobile API Specification v3.3, Device Secure elements access (`link <https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/>`_)
     * - GSMA_SAM_01
       - Secured Applications for Mobile – Requirements for supporting 3rd party Applets on eSIM and eSE via SAM
 
