@@ -179,12 +179,12 @@ Identity Proofing
     :widths: 25 75
     :header-rows: 0
 
-    * - ETSI_Identity_Proofing
+    * - `ETSI TS 119 461`_
       - ETSI: Policy and security requirements for trust service components for identity proofing
-    * - CEN_Biometric_Attack_Detection
-      - CEN: Biometric injection attack detection for remote registration
+    * - CEN/TS 18099:2024
+      - CEN: Biometric injection attack detection for remote registration (`link <https://conto.uni.com/en/cen-ts-18099-2024>`_)
     * - CEN_Biometric_Requirements
-      - CEN: European Requirements for Biometric Products
+      - CEN: European requirements for biometric products. Personal identification — European requirements for biometric products — Part 2: Interoperability tests. (Replaces: N 2588 CEN/TC 224/WG 18 European requirements for biometric products Part 2)
 
 Biometric Data
 --------------
