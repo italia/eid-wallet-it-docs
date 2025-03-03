@@ -132,11 +132,9 @@ Digital Credential Interoperability
     * - DTS/ESI-0019472-1
       - Electronic Signatures and Trust Infrastructures (ESI); Profiles for Electronic Attestations of Attributes; Part 1: General requirements Profiles for EAA - General requirements 
     * - W3C_Digital_Credentials_API
-      - Digital Credentials API
+      - Digital Credentials API (`draft <https://wicg.github.io/digital-credentials/>`_)
     * - W3C_WebAuthn
-      - Web Authentication, An API for accessing Public Key Credentials Level 2
-    * - CTAP
-      - Client to Authenticator Protocol (CTAP) Review Draft
+      - Web Authentication, An API for accessing Public Key Credentials Level 3 (`draft <https://www.w3.org/TR/webauthn-3/>`_)
 
 
 Digital Credential Revocation Check Mechanisms
