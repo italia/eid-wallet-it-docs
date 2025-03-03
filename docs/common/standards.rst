@@ -186,6 +186,7 @@ Identity Proofing
     * - CEN_Biometric_Requirements
       - CEN: European requirements for biometric products. Personal identification — European requirements for biometric products — Part 2: Interoperability tests. (Replaces: N 2588 CEN/TC 224/WG 18 European requirements for biometric products Part 2)
 
+
 Biometric Data
 --------------
 
@@ -193,9 +194,9 @@ Biometric Data
     :widths: 25 75
     :header-rows: 0
 
-    * - ISO_19794_5
-      - Biometric data interchange formats
-    * - ISO_39794
+    * - ISO/IEC 19794-5
+      - Information technology — Biometric data interchange formatsPart 5: Face image data
+    * - ISO/IEC 39794-2:2023
       - Information technology — Extensible biometric data interchange formats
 
 
