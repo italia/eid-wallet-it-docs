@@ -59,12 +59,12 @@ Infrastructure of Trust
       - De Marco, G., Hedberg, R., Jones, M.B., Bradley, J., Dzhuvinov, V., "OpenID Federation Wallet Architectures 1.0", October 2024, Draft 03.
     * - :rfc:`5280`
       - Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, "Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile", RFC 5280, May 2008.
-    * - RTS/ESI-0019612v231 (TS 119 612)
+    * - `ETSI TS 119 612`_
       - Electronic Signatures and Trust Infrastructures (ESI); Trusted Lists
     * - DTS/ESI-0019602
-      - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model
-    * - REN/ESI-0019411-1v151
-      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates
+      - Electronic Signatures and Trust Infrastructures (ESI); Trusted lists; Data model. _(Trusted lists in other formats, such as JSON, CBOR or ASN.1., Not Ready For Download)_
+    * - ETSI EN 319 411-1
+      - Electronic Signatures and Trust Infrastructures (ESI); Policy and security requirements for Trust Service Providers issuing certificates; Part 1: General requirements Policy requirements for certification authorities issuing public key certificates; Part 1: General requirements (`Draft <https://portal.etsi.org/webapp/WorkProgram/Report_WorkItem.asp?WKI_ID=72980&curItemNr=47&totalNrItems=213&optDisplay=100000&qSORT=TB&qETSI_ALL=&SearchPage=TRUE&qINCLUDE_SUB_TB=&qINCLUDE_MOVED_ON=&qEND_CURRENT_STATUS_CODE=11+WI%3BM58&qSTOP_FLG=N&qKEYWORD_BOOLEAN=&qCLUSTER_BOOLEAN=&qCLUSTER=17&qFREQUENCIES_BOOLEAN=&qSTOPPING_OUTDATED=&butExpertSearch=Search&includeNonActiveTB=FALSE&includeSubProjectCode=&qREPORT_TYPE=>`_)
 
 
 Digital Credential Data Format
