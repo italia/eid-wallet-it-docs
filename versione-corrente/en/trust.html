@@ -910,6 +910,15 @@ The trust evaluation mechanisms are distinct from protocol flows and are impleme
 <p class="admonition-title">Note</p>
 <p>The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.</p>
 </div>
+<p>There are events where keys are unavailable to verify the entire trust chain:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Key Change by Credential Issuer</strong>: The Credential Issuer MAY update its cryptographic keys. The cryptographic keys MUST be considered valid if evaluated within their originally designated validity period unless a security reason makes them unusable. The revocation reason MUST be published. Historical cryptographic keys, i.e. unused or revoked public cryptographic keys, MUST be published using the Federation Historical Keys Endpoint.</p></li>
+<li><p><strong>Change in Credential Types</strong>: If the Credential Issuer changes the Credential <strong>types</strong> issued, for instance deciding not to issue anymore one or more Credential types, the related public cryptographic keys MUST be available for the originally designated validity period.</p></li>
+<li><p><strong>Credential Issuers Merge</strong>: If a Credential Issuer merges with another, creating a new Organizational Entity or working on behalf of another one using a different hostname or domain, the <strong>previously</strong> available federation configuration and historical keys MUST be kept available at the original Credential Issuer's well-known endpoints.</p></li>
+<li><p><strong>Credential Issuer Becomes Inactive</strong>: If a Credential Issuer becomes inactive, its <strong>related</strong> Entity Configuration and Federation Historical Entity Endpoint MUST be kept available.</p></li>
+</ul>
+</div></blockquote>
 </section>
 <section id="offline-trust-attestation-mechanisms">
 <h3>Offline Trust Attestation Mechanisms<a class="headerlink" href="#offline-trust-attestation-mechanisms" title="Link to this heading">¶</a></h3>
@@ -1042,7 +1051,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 28/02/2025.
+      Last updated on 04/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
