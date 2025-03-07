@@ -900,7 +900,6 @@ The <code class="docutils literal notranslate"><span class="pre">nonce</span></c
   <span class="s2">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;ES256&quot;</span>
   <span class="p">],</span>
-  <span class="s2">&quot;presentation_definition_uri_supported&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
   <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1686645115</span><span class="p">,</span>
   <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1686652315</span>
 <span class="p">}</span>
@@ -974,7 +973,6 @@ The <code class="docutils literal notranslate"><span class="pre">nonce</span></c
   <span class="s2">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;ES256&quot;</span>
   <span class="p">],</span>
-  <span class="s2">&quot;presentation_definition_uri_supported&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
   <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1687281195</span><span class="p">,</span>
   <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1687288395</span>
 <span class="p">}</span>
@@ -1172,10 +1170,6 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <td><p>JSON array containing a list of the signing algorithms (alg values) supported.</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
-<td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 </section>
@@ -1271,11 +1265,7 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <td><p>JSON array containing a list of the signing algorithms (alg values) supported.</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><strong>presentation_definition_uri_supported</strong></p></td>
-<td><p>Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>client_id_schemes_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>client_id_schemes_supported</strong></p></td>
 <td><p>Array of JSON Strings containing the values of the Client Identifier schemes that the Wallet supports.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a></p></td>
 </tr>
@@ -1431,7 +1421,7 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 04/03/2025.
+      Last updated on 07/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

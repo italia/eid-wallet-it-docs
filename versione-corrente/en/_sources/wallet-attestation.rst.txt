@@ -158,7 +158,6 @@ Below is a non-normative example of the Wallet Attestation Request JWT without e
     "request_object_signing_alg_values_supported": [
       "ES256"
     ],
-    "presentation_definition_uri_supported": false,
     "iat": 1686645115,
     "exp": 1686652315
   }
@@ -235,7 +234,6 @@ Below is a non-normative example of the Wallet Attestation without encoding and 
     "request_object_signing_alg_values_supported": [
       "ES256"
     ],
-    "presentation_definition_uri_supported": false,
     "iat": 1687281195,
     "exp": 1687288395
   }
@@ -394,9 +392,6 @@ The body of the Wallet Attestation Request JWT MUST contain the following parame
     * - **request_object_signing_alg_values_supported**
       - JSON array containing a list of the signing algorithms (alg values) supported.
       -
-    * - **presentation_definition_uri_supported**
-      - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
-      -
 
 .. _table_wallet_attestation_claim:
 
@@ -466,9 +461,6 @@ The body of the Wallet Attestation JWT MUST contain the following parameters:
       -
     * - **request_object_signing_alg_values_supported**
       - JSON array containing a list of the signing algorithms (alg values) supported.
-      -
-    * - **presentation_definition_uri_supported**
-      - Boolean value specifying whether the Wallet Instance supports the transfer of presentation_definition by reference. MUST be set to false.
       -
     * - **client_id_schemes_supported**
       - Array of JSON Strings containing the values of the Client Identifier schemes that the Wallet supports.
