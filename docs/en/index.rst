@@ -11,8 +11,7 @@ Index of content
 .. toctree:: 
    :maxdepth: 3
    
-   references.rst
-   scope.rst
+   introduction.rst
    ssi-introduction.rst
    trust.rst
    wallet-solution.rst
