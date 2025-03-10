@@ -42,13 +42,13 @@ Below are the description of acronyms and definitions which are useful for furth
      -  
    * - Attributes	
      - A set of characteristics, qualities, rights, or permissions of a natural or legal person, or of an object, or even a single piece of such information.	
-     - [According to LLGG]
+     - [nota interna: voce aggiunta, definizione in linea con LLGG]
    * - Authentication
      - Pursuant to Article 3, paragraph 1, point 5 of the eIDAS Regulation, an electronic process that enables the confirmation of the Electronic Identification of a natural or legal person, or the origin and integrity of data in electronic form (in the context of the Guidelines, for example, Attributes).
-     - [According to LLGG]
+     - [nota interna: voce aggiunta, definizione in linea con LLGG]
    * - Authentic Source	
      - Public Entity or Private Entity responsible for the repository or system, considered a primary source for Attributes or for Personal Identification Data, and whose authenticity is recognized in accordance with Union or national law, including administrative practice.
-     - [According to LLGG – definition merged with Authentic Source Holder]
+     - [nota interna: definizione unificata tra i termini Authentic Source e Authentic Source Holder delle LLGG]
    * - Certification Process
      - Process performed by Conformity Assessment Bodies to certify the Wallet Solution. The Certification Process aims to periodically assess technical Wallet Solutions (e.g. performing vulnerability assessment and risk analysis). As a result of the Certification Process a certification is provided to the Wallet Solution.
      - 
@@ -104,7 +104,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - 
    * - IT-Wallet System Register
      - Register containing the list of Public Entities and Private Entities that are registered in the IT-Wallet System.
-     - [According to LLGG]
+     - [nota interna: voce aggiunta, definizione in linea con LLGG]
    * - Key Attestation
      - An attestation from the device's OEM that enhances your confidence in the keys used in your Wallet Instance being securely stored within the device's hardware-backed keystore. Its content is therefore defined by the operating system manufacturer. For Google Android, the term Key Attestation refers to the Strongbox Key Attestation feature. For Apple iOS, the reference is to the `Device Check`_ service, specifically the `attestKey`_ feature.
      - 
@@ -173,7 +173,7 @@ Below are the description of acronyms and definitions which are useful for furth
        | *Alternative terms:* Verifier App.
    * - Selective Disclosure
      - Functionality enabling the User to submit a subset of Digital Credentials Data 
-     - Aligned with DPCM comma 3
+     - [nota interna: voce aggiunta, definizione semplificata rispetto a LLGG]
    * - Self Sovereignty Identity (SSI)
      - Is an approach to digital identity that gives individuals control over the information they use to prove who they are to websites, services, and applications across the web.
      - 
@@ -182,10 +182,10 @@ Below are the description of acronyms and definitions which are useful for furth
      - 
    * - Technical Solutions
      - Set of hardware and software systems and services implemented by the Wallet Solution Providers, the PID Provider, Qualified Electronic Attestation of Attributes Provider, Verifiers and Aggregators.
-     - Aligned with DPCM comma 3
+     - [nota interna: voce aggiunta, definizione in linea con LLGG]
    * - Technical Specifications
      - The specifications that provide the technical architecture, implementation framework and design requirements for the User Experience adopted by the IT-Wallet System Technical Solutions.
-     - Aligned with DPCM comma 3
+     - [nota interna: voce aggiunta, definizione in linea con LLGG]
    * - Trust
      - Trust, within the technical field, is the confidence in the security, reliability, and integrity of entities (such as systems, organizations, or individuals) and their actions, ensuring that they will operate as expected in a secure and predictable manner. It is often established through empirical proof, such as past performance, security certifications, or transparent operational practices, which demonstrate a track record of adherence to security standards and ethical conduct.
      - 
@@ -217,7 +217,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - A natural or legal person, or a natural person representing another natural person or a legal person, that uses a trust services or electronic identification means. provided in accordance with EUDI Wallet Architecture Reference Framework.
      - | Aligned with ARF v1.4.
        | 
-     - | *Alternative terms:* EUDI Wallet User.
+       | *Alternative terms:* EUDI Wallet User.
    * - User Attribute
      - A characteristic, quality, right or permission of a natural or legal person or of an object.
      - | Aligned with ARF v1.4.
