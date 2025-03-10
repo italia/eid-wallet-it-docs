@@ -11,7 +11,7 @@ Index of content
 .. toctree:: 
    :maxdepth: 3
    
-   defined-terms.rst
+   references.rst
    scope.rst
    ssi-introduction.rst
    trust.rst
