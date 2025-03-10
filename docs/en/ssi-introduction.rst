@@ -19,7 +19,10 @@ The main roles in the Digital Identity Wallet ecosystem  are listed as follow:
  - Holders: individuals who own a Wallet Instance and have control over the Digital Credentials they can request, acquire, store, and present to Verifiers;
  - Verifiable Data Registries: authorities that publish certificates, attestations, metadata, and schemes needed for allowing the trust establishment between the parties.
 
-[insert image]
+..  figure:: ../../images/GL-Three-party-model.svg
+    :alt: three-party model architecture
+    :width: 100%
+
 
 In this model, the credential issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their Wallet Instance.
 The Wallet Instance is typically provided as a mobile application on the User's smartphone.
