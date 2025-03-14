@@ -13,6 +13,7 @@ Index of content
    
    introduction.rst
    ssi-introduction.rst
+   design.rst
    trust.rst
    wallet-solution.rst
    pid-eaa-data-model.rst
