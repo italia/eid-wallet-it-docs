@@ -17,7 +17,7 @@ also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1].
 
 Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
 
-By supporting the mobile app, the Wallet Provider enusers the security and reliability of the entire Wallet Solution,
+By supporting the mobile app, the Wallet Provider ensures the security and reliability of the entire Wallet Solution,
 as it is responsible for issuing the Wallet Attestation,
 which is a cryptographic proof about the authenticity and integrity of the Wallet Instance.
 
@@ -203,7 +203,7 @@ Wallet Provider Entity Configuration JWT Header
     * - **Key**
       - **Value**
     * - alg
-      - Algorithm used to verify the token signature. It MUST be one of the possible values indicated in this `table <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
+      - Algorithm used to verify the token signature. It MUST be one of the possible values indicated in this `table <https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
     * - kid
       - Thumbprint of the public key used for signing, according to :rfc:`7638`.
     * - typ
