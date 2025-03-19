@@ -17,7 +17,7 @@ also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1].
 
 Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
 
-By supporting the mobile app, the Wallet Provider enusers the security and reliability of the entire Wallet Solution,
+By supporting the mobile app, the Wallet Provider ensures the security and reliability of the entire Wallet Solution,
 as it is responsible for issuing the Wallet Attestation,
 which is a cryptographic proof about the authenticity and integrity of the Wallet Instance.
 

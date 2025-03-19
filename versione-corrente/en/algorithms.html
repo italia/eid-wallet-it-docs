@@ -229,6 +229,39 @@
 </tr>
 </tbody>
 </table>
+<p>For Credential issued in MDOC format, the following algorithms MUST be supported:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Algorithm</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Operations</strong></p></th>
+<th class="head"><p><strong>References</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ECKA-DH</strong></p></td>
+<td><p>Elliptic Curve Key Agreement Algorithm – Diffie-Hellman.</p></td>
+<td><p>Key agreement / Signature</p></td>
+<td><p>BSI TR-03111.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>HKDF</strong></p></td>
+<td><p>HMAC-based Key Derivation Function.</p></td>
+<td><p>Session key derivation / Signature</p></td>
+<td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5869.html"><strong>RFC 5869</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>AES-256-GCM</strong></p></td>
+<td><p>Advanced Encryption Standard with Galois/Counter Mode and a key length of 256.</p></td>
+<td><p>Session encryption / Signature</p></td>
+<td><p>NIST SP 800-38D.</p></td>
+</tr>
+</tbody>
+</table>
 <p>The following algorithms are RECOMMENDED to be supported:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -248,32 +281,32 @@
 <tr class="row-even"><td><p><strong>PS256</strong></p></td>
 <td><p>RSASSA (RSA with Signature Scheme Appendix) with PSS ( Probabilistic Signature Scheme) padding using SHA256 hash function and MGF1 mask generation function with SHA-256.</p></td>
 <td><p>Signature</p></td>
-<td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
+<td><p><span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>PS384</strong></p></td>
 <td><p>RSASSA (RSA with Signature Scheme Appendix) with PSS ( Probabilistic Signature Scheme) padding using SHA384 hash function and MGF1 mask generation function with SHA-384.</p></td>
 <td><p>Signature</p></td>
-<td><p><span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
+<td><p><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>PS512</strong></p></td>
 <td><p>RSASSA (RSA with Signature Scheme Appendix) with PSS ( Probabilistic Signature Scheme) padding using SHA512 hash function and MGF1 mask generation function with SHA-512.</p></td>
 <td><p>Signature</p></td>
-<td><p><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
+<td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>ECDH-ES</strong></p></td>
 <td><p>Elliptic Curve Diffie-Hellman  (ECDH) Ephemeral Static key agreement using Concat Key Derivation Function (KDF).</p></td>
 <td><p>Key Encryption</p></td>
-<td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
+<td><p><span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>ECDH-ES+A128KW</strong></p></td>
 <td><p>ECDH-ES using Concat KDF and content encryption key (CEK) wrapped using AES with a key length of 128 (A128KW).</p></td>
 <td><p>Key Encryption</p></td>
-<td><p><span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
+<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>ECDH-ES+A256KW</strong></p></td>
 <td><p>ECDH-ES using Concat KDF and content encryption key (CEK) wrapped using AES with a key length of 256 (A256KW).</p></td>
 <td><p>Key Encryption</p></td>
-<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
+<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -299,32 +332,32 @@
 </ul>
 </td>
 <td><p>Signature</p></td>
-<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
+<td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>RSA_1_5</strong></p></td>
 <td><p>RSAES with PKCS1-v1_5 padding scheme. Use of this algorithm is generally not recommended.</p></td>
 <td><p>Key Encryption</p></td>
-<td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html"><strong>RFC 7516</strong></a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack">[Security Vulnerability]</a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
+<td><p><span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html"><strong>RFC 7516</strong></a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_chosen-ciphertext_attack">[Security Vulnerability]</a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>RSA-OAEP</strong></p></td>
 <td><p>RSA Encryption Scheme with Optimal Asymmetric Encryption Padding (OAEP) using default parameters.</p></td>
 <td><p>Key Encryption</p></td>
-<td><p><span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
+<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>, <a class="reference external" href="https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf">[SOG-IS]</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>HS256</strong></p></td>
 <td><p>HMAC using SHA256.</p></td>
 <td><p>Signature</p></td>
-<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
+<td><p><span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>HS384</strong></p></td>
 <td><p>HMAC using SHA384.</p></td>
 <td><p>Signature</p></td>
-<td><p><span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
+<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>HS512</strong></p></td>
 <td><p>HMAC using SHA512</p></td>
 <td><p>Signature</p></td>
-<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
+<td><p><span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7518.html"><strong>RFC 7518</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
