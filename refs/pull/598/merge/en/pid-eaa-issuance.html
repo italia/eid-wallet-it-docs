@@ -1023,7 +1023,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>type</strong>: it MUST be set to <code class="docutils literal notranslate"><span class="pre">openid_credential</span></code>,</p></li>
-<li><p><strong>credential_configuration_id</strong>: JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>, in the case of mobile driving licence in SD-JWT VC format <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mdl</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mdl</span></code> in case of mobile driving licence in MDOC format.</p></li>
+<li><p><strong>credential_configuration_id</strong>: JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>, in the case of mobile driving licence in SD-JWT VC format <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mdl</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mdl</span></code> in case of mobile driving license in MDOC format.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -1804,7 +1804,7 @@ The Authorization Server MUST validate the DPoP proof received at the Token endp
 <td><p>Section 8.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_configuration_id</strong></p></td>
-<td><p>REQUIRED if <code class="docutils literal notranslate"><span class="pre">credential_identifiers</span></code> parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
+<td><p>REQUIRED if <code class="docutils literal notranslate"><span class="pre">credential_identifiers</span></code> parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it can be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
 <td><p>Section 8.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>proof</strong></p></td>
@@ -3230,7 +3230,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 18/03/2025.
+      Last updated on 19/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
