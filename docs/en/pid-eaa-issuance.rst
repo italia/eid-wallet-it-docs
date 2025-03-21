@@ -588,18 +588,25 @@ The following diagram describes the Digital Credential re-issuance flow.
 .. figure:: ../../images/Re-Issuance-Flow.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/ZLDVRzem47_FfxWzhPKAlEm9LArPqqb8xOGOh9gc2PdaGgoPS-OxbtMVVdPQt48pYJp5bz-VyzqlLopAYT-Qx9scqlWAeH5fUJmQERKRRhGqVkqPNMb9a6HOskseDOeYPy1I6RqUNNyOp69fUNSxsYeMTA6qAXv9RNKvRADwU3gdZAmWEBrf9Bjla411eOEBCd3ji48I7Lu9iM8G2si4trPAiBe0QV0rPihiqJ7SvT-1aIfG4BHrhKibsb9aHyQIqO5dJPi0SBZHiJsim7ePs7gmLe4PxhJrj2UMZI92CyoYQ6mtoyQTYcsH6EwLCIWm9HP59Kwoy7cEuZG-87mL9PuXvu2FOWorTHcBZPOlpVFazHpc-Dlh2DZ5WP251sLqbRtLmZ-QvLLRkeQp5z6z-ILCltpBRwV5ntEGg7ZsY7oUGNWYeKo45NU4LOMYj1d64uAc3lbZEIlonKrn0VbYCPz-MYvkLi-bdszrzzfvMI8pBEmlfATRz6FZamve6E6CRFgSvEPOE-JcD3s0SHY04pXaVJPsDpa0zli1iDZsgDGjwQW6JowAW73NfJ360EhWSupSQMcw0Bvdo7tiM_OXEuAcdHuLTPtrdz9BZ2OKCpk3W-6B1VSSoWGbtFNyR6aufwJZCXc_pSN_LpEE2KUMRXRT9ApJVxj1JFeYaRevm2FtE1oktpgCj-ovNT_g-vVVF_n4FDKnIMG9NQ11GMWTFcZhkPUJzRYbzfBc8Q3x-6pMlL-5Wz-QVm00
+    :target: https//www.plantuml.com/plantuml/png/ZLFTRzem47_FNt5xefKAlEm9LAsiOH9IEo46ggPfGYQv46l6pdndMFVNpnVAHsYgbGTadtyVzt6v8rQUmyOa7xJDJCWHIkQA1ls-LxlUMdCPLe7GPyuoMkvbRjElZBB2wHBdHg_wzn-xKmaj7X_w6qMCFeQMwRDL6vtrAb5FQf_4EaRmUbroybIY1GMfZXxAmBt7FEhhUBI8EG4xM264AbUC-GrmYUUO2L50J_0u-Ww4DezAKLiNEbEidHMsC1Q47W9fkuu0ZsijoM4EBd3N5TsLYinOqIRO0p4hbRLeUec8Ihf9CgXLN8MMu4aPWmmJIwniXiCaFi-GlSOjmZTM70WUeWiKpiUQdPYTqgRXUGTc-3je0Uoa5TR1LXcT9-Sg-2V-zo2P550v8hqoU0DHnnsyHaJe9N62J5dfc9TijfYVLw0Bk3fbSU3UmjVnE5rCqz5y_EaQMBAuUaQwJY3-EaBAZgGbrQHbZgoqwSaDGLluiUUdDp2QpsUJpulvUFaI-lbQL7x7WnYCiWo9OEv-eTtNtqvg4D4GmfLrpMUHcs7XaShtwG4COYSyGvFrnRZTi05izmCWTjL5g1xlHGpsBig2nLszkR8wK4IVI-HESralRIUEDaZUV5ZC2-Xnk1T1NIJjj-D1rXdIgPj2e_dimByiyX4QystvG8_DUTUEtC89_cf5tXxEGBuE9AwxKVV2UVstRiNm7FTg1Hfuf1Q7vW8uZrBdPNtjmsyVVtl3E-tCpdyyEtkLqxXIDCW8bSUjTe5QISaRXfqwnpFP9gH-VV6hptVn4ZRc7m00
     
     Re-Issuance Flow Diagram
 
 
-1. The flow starts when the User opens the Wallet Instance: this step MAY be triggered by a notification sent by the Credential Issuer, using one of the out-of-band communication contacts registered during the Issuance flow. 
-2. A Wallet Instance without valid Status Assertions for a stored Digital Credential MUST retrieve them following the flow described in Section :ref:`Validity Verification Mechanisms <Validity Verification Mechanisms>`. If one or more Digital Credentials have the ``credential_status_type`` set to ``INVALID``, the Wallet Instance MUST verify the ``credential_status_detail.state claim``. If this claim is set to ``UPDATED`` or ``ATTRIBUTE_UPDATED``, then the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped. 
+1. The flow starts when the User opens the Wallet Instance: this step MAY be triggered either by a notification sent by the Credential Issuer (using e.g., one of the out-of-band communication contacts registered during the Issuance flow).
+ 2. If the Wallet Instance  
+ 
+   - only supports Status List and does not have a valid Status Token for a stored Digital Credential, Wallet Instance MUST retrieve a fresh one following the flow described in Section :ref:`OAuth Status Lists <OAuth Status Lists>`. If any Digital Credential has status set to 0x03 - ``NEEDUPDATE``, or else
+   - if the Wallet Instance and Credential Issuer additionally support Status Assertion and the Wallet Instance does not have a valid Status Assertion for a stored Digital Credential, the Wallet Instance MAY retrieve a fresh one following the flow described in Section :ref:`OAuth Status Assertions <OAuth Status Assertions>`. If any Digital Credentials has the ``credential_status_type`` set to ``INVALID``, the Wallet Instance MUST verify the ``credential_status_detail.state claim``. If this claim is set to ``UPDATED`` or ``ATTRIBUTE_UPDATED``,
+   
+    the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped.
+ 
 3. If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section :ref:`Refresh Token Flow <Refresh Token Flow>`. The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required.
 4. The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`Low-Level Issuance Flow <Low-Level Issuance Flow>`. When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one.
 
 .. note::
-	The ``credential_status_detail.state`` set to ``ATTRIBUTE_UPDATE`` demonstrates that the User's attribute set, about the refreshed Digital Credential, doesn't match with the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. If the ``credential_status_detail.state`` is set to ``UPDATED``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.
+	
+  Regardless of the Digital Credental revocation mechanism supported, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential.
 
 
 

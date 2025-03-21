@@ -19,6 +19,10 @@ Technical References
       - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", December 2024, Draft 23.
     * - `PresentationExch`_
       - Presentation Exchange 2.0 for Presentation Definition.
+    * - :rfc:`1950`
+      - Deutsch, P., Gailly, J-L., "ZLIB Compressed Data Format Specification version 3.3", RFC 1950, May 1996.    
+    * - :rfc:`1951`
+      - Deutsch, P., "DEFLATE Compressed Data Format Specification version 1.3", RFC 1951, May 1996.   
     * - :rfc:`2119`
       - Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels" BCP 14, RFC 2119, March 1997.
     * - :rfc:`2616`
