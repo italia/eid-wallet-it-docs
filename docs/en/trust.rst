@@ -6,9 +6,7 @@
 The Infrastructure of Trust
 +++++++++++++++++++++++++++
 
-The EUDI Wallet Architecture Reference Framework (`EIDAS-ARF`_) describes the Trust Model as a *"collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem"*.
-
-This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants, also called Federation Entities.
+This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 certificates, and the revocation status of the participants, also called Federation Entities.
 
 The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the `EIDAS-ARF`_.
 
@@ -23,11 +21,11 @@ The Infrastructure of trust facilitates the application of a trust assessment me
 Federation Roles
 ------------------
 
-All the participants are Federation Entities that MUST be registered by an Registration Body,
-except for Wallet Instances which are End-User's personal devices certified by their Wallet Provider.
+All the participants are Federation Entities that MUST be registered by a Registration Body,
+except for Wallet Instances which are End-User's personal devices authenticated by their Wallet Provider.
 
 .. note::
-    The Wallet Instance, as a personal device, is certified as reliable through a verifiable attestation issued and signed by a trusted third party.
+    The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.
 
     This is called *Wallet Attestation* and is documented in `the dedicated section  <wallet-attestation.html>`_.
 
@@ -63,7 +61,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - 
    * - Trusted List
      - Trust Anchor
-     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates.
+     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats may be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities must be synchronized across these endpoints, ensuring consistent availability of information through different channels.
    * - Wallet Provider
      - Leaf
      - 
@@ -72,7 +70,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
 General Properties
 ------------------
 
-The architecture of the trust infrastructure based on OpenID Federation is built upon several core principles:
+The architecture of the trust infrastructure is built upon several core principles:
 
 .. list-table:: 
    :header-rows: 1
@@ -106,10 +104,11 @@ The architecture of the trust infrastructure based on OpenID Federation is built
      - While part of a federated ecosystem, each entity retains control over its own definitions and configurations.
    * - P9
      - **Decentralization**
-     - Unlike traditional centralized systems, the OpenID Federation model promotes a decentralized approach. This ensures that no single entity has control over the entire system, enhancing privacy and security for all participants.
+     - Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach. No single entity has control over the entire system.
 
-Trust Infrastructure Functional Requirements
-----------------------------------------------
+
+Trust Infrastructure Requirements
+---------------------------------
 
 This section includes the requirements necessary for the successful implementation and operation of the infrastructure of trust.
 
@@ -123,61 +122,39 @@ This section includes the requirements necessary for the successful implementati
    * - FR2
      - **Entity Authentication**: the system must implement mechanisms for authenticating entities within the federation, ensuring compliance with the shared rules.
    * - FR3
-     - **Signature Validation**: the system must support the creation, verification, and validation of electronic signatures and provide standard and secure mechanisms to obtain the public keys required for the signature validation.
+     - **Signature Validation**: the system must support the creation, verification, and validation of electronic signatures and provide standard and secure mechanisms to obtain the cryptographic public keys required for the signature validation.
    * - FR4
      - **Time Stamping**: the signed artifacts must contain time stamps to ensure the integrity and non-repudiation of transactions over time, thanks to the interfaces, services, storage model and approaches defined within the federation.
    * - FR5
-     - **Certificate Validation**: the system requires confidential transmission, secured via TLS over HTTP, and validation of certificates for website authentication, ensuring they meet eIDAS criteria.
+     - **Certificate Validation**: the system requires confidential transmission, secured via TLS over HTTP, and validation of certificates for website authentication.
    * - FR6
      - **Interoperability and Standards Compliance**: ensure interoperability between federation members by adhering to technical standards, facilitating cross-border electronic transactions.
    * - FR7
-     - **Data Protection and Privacy**: implement data protection measures in compliance with GDPR and eIDAS regulations, ensuring the privacy and security of personal data processed within the federation.
+     - **Data Protection and Privacy**: implement data protection measures in compliance with GDPR regulations, ensuring the privacy and security of personal data processed within the federation.
    * - FR8
-     - **User Consent and Control**: design mechanisms for obtaining and managing user consent, empowering users with control over their personal information.
+     - **Dispute Resolution and Liability**: establish clear procedures for dispute resolution and define liability among federation members.
    * - FR9
-     - **Audit and Logging**: the system must minimize data, anonymize if possible, define retention periods, secure access, and storage encryption. This protects privacy while enabling security and accountability.
+     - **Emergency and Revocation Services**: implement mechanisms for the immediate revocation of participants in case of security breaches or other emergencies.
    * - FR10
-     - **Dispute Resolution and Liability**: establish clear procedures for dispute resolution and define liability among federation members, in accordance with eIDAS provisions.
-   * - FR11
-     - **Accessibility**: ensure that the system is accessible to all users, including those with disabilities, aligning with eIDAS and local accessibility standards.
-   * - FR12
-     - **Emergency and Revocation Services**: implement mechanisms for the immediate revocation of electronic identification means and participants in case of security breaches or other emergencies.
-   * - FR13
      - **Scalable Trust Infrastructure**: the system must support scalable trust establishment mechanisms, leveraging approaches and technical solutions that complement delegation transitive approaches to efficiently manage trust relationships as the federation grows, removing central registries that might technically or administratively fail.
-   * - FR14
+   * - FR11
      - **Efficient Storage Scalability**: implement a storage solution that scales horizontally to accommodate increasing data volumes while minimizing central storage and administrative costs. The system should enable members to independently store and present historical trust attestations and signed artifacts during dispute resolutions, with the federation infrastructure maintaining only a registry of historical keys to validate the historical data, stored and provided by the participants.
-   * - FR15
+   * - FR12
      - **Verifiable Attestation (Trust Mark)**: incorporate a mechanism for issuing and verifying verifiable attestations that serve as proof of compliance with specific profiles or standards. This allows entities within the federation to demonstrate adherence to agreed-upon security, privacy, and operational standards.
-   * - FR16
-     - **Dynamic Policy Language**: develop and implement a dynamic, extensible policy language that allows for the creation and modification of federation policies in response to evolving requirements, technological advancements, and regulatory changes. This policy language should support the specification of rules governing entity behavior, metadata handling, and trust validation within the federation.
-   * - FR17
-     - **Automated Policy Enforcement**: the system must automatically enforce federation policies as defined by policy language and verifiable attestations, ensuring that all operations and transactions comply with current rules and standards.
-   * - FR18
+   * - FR13
      - **Decentralized Dispute Resolution Mechanism**: design a decentralized mechanism for dispute resolution that allows federation members to independently verify historical trust establishment and signed artifacts, reducing reliance on central authorities and streamlining the resolution process.
-   * - FR19
-     - **Adaptive Load Management**: implement adaptive load management strategies to ensure the system remains responsive and efficient under varying loads, particularly during peak usage times or when processing complex tasks.
-   * - FR20
+   * - FR14
      - **Cross-Federation Interoperability**: ensure the system is capable of interoperating with other federations or trust frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.
-   * - FR21
-     - **Future-Proof Cryptography**: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.
-   * - FR22
+   * - FR15
      - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
-   * - FR23
-     - **Compliance Evaluation for Federation Entity Candidates**: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.
-   * - FR24
-     - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities. This ensures ongoing adherence to federation standards and policies.
-   * - FR25
-     - **Certification of Compliance for Personal Devices**: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.
-   * - FR26
-     - **Certification of Compliance for Cryptographic Devices**: similar to personal devices, personal cryptographic devices used within the federation must also receive certifications of compliance and signed proof thereof from trusted bodies. These certifications should be subject to periodic renewal to reflect the latest security and compliance standards.
-   * - FR27
-     - **Transparent Compliance Reporting**: develop a system for transparent reporting and publication of compliance statuses, audit results, and certification renewals for all federation entities. This transparency fosters trust within the federation and with external stakeholders.
-   * - FR28
+   * - FR16
+     - **Periodic Auditing of Registration Bodies and Entities**: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities.
+   * - FR17
+     - **Attestation of Compliance for Personal Devices**: trusted bodies, in the form of federation entities, should issue attestations of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These attestations should be attested and periodically renewed to ensure the devices meet current security standards.
+   * - FR18
      - **Automated Compliance Monitoring**: the system should include automated tools for monitoring the compliance of entities with federation standards. This automation aids in the early detection of potential compliance issues.
-   * - FR29
+   * - FR19
      - **Secure Protocol Capabilities Binding**: the secure protocol must enable the exchange of protocol-specific capabilities data as cryptographically-bound metadata attached to a specific identity. This metadata should define the technical capabilities associated with the identity, ensuring verifiable proof and tamper-proof association for robust trust establishment and access control.
-   * - FR30
-     - **Historical Capability**: The system should enable members to present historical trust attestations and signed artifacts, with the federation infrastructure capable of maintaining registry of historical keys to validate the historical data.
 
 
 Federation API endpoints
@@ -746,6 +723,66 @@ The details of this endpoint are defined in the `OID-FED`_ Section 8.7.
 Each JWT containing a Trust Chain in the JWT headers can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.
 
 Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.
+
+X.509 PKI
+---------
+
+The X.509 Public Key Infrastructure (PKI) is a framework designed to create, manage, distribute, use, store, and revoke digital X.509 Certificates. At the heart of X.509 PKI is the concept of a Certificate Authority (CA), which issues digital certificates to entities. These certificates are required for establishing secure communications over networks, including the internet, by enabling encryption and digital signature functionalities. The PKI hierarchy typically involves a root CA at the top, with one or more subordinate CAs beneath, forming a trusted chain. Entities rely on this chain of trust to verify the authenticity of certificates. X.509 standards define the format of public key certificates.
+
+The integration of OpenID Federation 1.0 with the traditional X.509 based PKI (rfc:5280), complemented by a RESTful API, aims to enhance the infrastructure with additional features, making it navigable and transparent.
+
+This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general trust management in multilateral digital ecosystems aiming to be interoperable with each other.
+
+OpenID Federation and X.509 based PKI share several things in common, as listed below:
+
+- **Hierarchical Approach**: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.
+- **Decentralization with Multiple Trust Anchors and Intermediates**: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and intermediates, below one or more Trust Anchors, introduces a level of decentralization.
+- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, trust marks and policies using a policy language.
+- **Trust/Certificate Chain**: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through intermediaries to the end entity (Leaf).
+- **Constraints in the Chain**: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediates, and the domains involved.
+- **Public Key Distribution**: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.
+- **Registry of Expired Keys**: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.
+
+
+Federation Trust Anchor and X.509 CA
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the context of OpenID Federation, the Trust Anchor plays a role similar to that of a Certificate Authority (CA) in X.509-based Public Key Infrastructures (PKIs). Both serve as foundational elements of trust within their respective systems. In this document, the term "Trust Anchor" is often used to encompass both concepts. The trust infrastructure described here aligns the OpenID Federation Trust Anchor with the X.509 PKI Certificate Authority, making therefore them a single unique entity supporting both `RFC5280`_ and OpenID Federation 1.0.
+
+X.509 Certificates Issuance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by its Immediate Superiors.
+
+In the same way, each federation Entity has the autonomy to issue a signed statement about itself in the form of a X.509 Certificate.
+Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federtion Authorities (Superior Entities). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.
+
+This is feasible because the X.509 Certificate can be verified using a Trust Chain, similar to the approach used for Entity Configurations in OpenID Federation.
+
+Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
+Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
+
+.. name-constraints::
+   :permitted: URI.1=http://leaf.example.com
+   :permitted: CN=leaf.example.com
+
+When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
+
+1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the ``Common Name (CN)`` field should contain the Federation Entity unique identifier value, which corresponds to the **sub** (subject) value in its federation Entity Configuration.
+2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that matches the **sub** value of its federation Entity Configuration.
+3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration.
+4. **Certificate Revocation List (CRL)**: The participant MUST publish a CRL for its self-issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
+
+By following these guidelines, participants can ensure that their certificates are consistent with the federation's trust model, enhancing interoperability and security across the federation. This approach not only aligns with best practices for certificate management but also reinforces the trust relationships established within the OpenID Federation.
+
+X.509 Certificate Revocation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An X.509 Certificate can be revoked by its Issuer.
+When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
+When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leafs Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.
+
+By implementing an underlying layer established with OpenID Federation 1.0, the federation ensures that all X.509 certificates are issued in a properly decentralized manner using the delegation pattern. Thanks to the trust chains, this approach allows for secure, scalable, and verifiable management of certificates.
 
 
 Privacy Remarks
