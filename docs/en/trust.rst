@@ -881,7 +881,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
          7d:6e:5f:...
 
 
-By following these guidelines, participants can ensure that their certificates are consistent with the federation's trust model, enhancing interoperability and security across the federation. This approach not only aligns with best practices for certificate management but also reinforces the trust relationships established within the OpenID Federation.
+Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach introduces innovative practices for certificate management using the trust relationships established within the OpenID Federation.
 
 
 X.509 Certificate Revocation
@@ -914,7 +914,7 @@ Below a non-normative example, in plain text, examplify the content of a CRL.
     Signature: 
         5c:4f:3b:...
 
-Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern. Trust chains allow a secure, scalable, and verifiable management of X.509 Certificates.
+Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.
 
 
 Privacy Remarks
