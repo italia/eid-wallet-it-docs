@@ -46,6 +46,7 @@ Index of content
    backup-restore.rst
    algorithms.rst
    security-privacy-considerations.rst
+   log-retention-policy.rst
    standards.rst
    contribute.rst
 
