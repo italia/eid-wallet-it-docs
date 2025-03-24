@@ -220,7 +220,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 </tr>
 <tr class="row-odd"><td><p>Trusted List</p></td>
 <td><p>Trust Anchor</p></td>
-<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats may be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities must be synchronized across these endpoints, ensuring consistent availability of information through different channels.</p></td>
+<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats MAY be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities MUST be synchronized across these endpoints, ensuring consistent availability of information through different channels.</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>Leaf</p></td>
@@ -231,7 +231,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 </section>
 <section id="general-properties">
 <h2>General Properties<a class="headerlink" href="#general-properties" title="Link to this heading">¶</a></h2>
-<p>The architecture of the trust infrastructure is built upon several core principles:</p>
+<p>The architecture of the trust infrastructure is built upon the following core principles:</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Identifier</p></th>
@@ -274,7 +274,7 @@ except for Wallet Instances which are End-User's personal devices authenticated 
 </tr>
 <tr class="row-even"><td><p>P9</p></td>
 <td><p><strong>Decentralization</strong></p></td>
-<td><p>Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach. No single entity has control over the entire system.</p></td>
+<td><p>Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach.</p></td>
 </tr>
 </tbody>
 </table>
@@ -921,7 +921,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <h2>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
 <p>The X.509 Public Key Infrastructure (PKI) is a framework designed to create, manage, distribute, use, store, and revoke digital X.509 Certificates. At the heart of X.509 PKI is the concept of a Certificate Authority (CA), which issues digital certificates to entities. These certificates are required for establishing secure communications over networks, including the internet, by enabling encryption and digital signature functionalities. The PKI hierarchy typically involves a root CA at the top, with one or more subordinate CAs beneath, forming a trusted chain. Entities rely on this chain of trust to verify the authenticity of certificates. X.509 standards define the format of public key certificates.</p>
 <p>The integration of OpenID Federation 1.0 with the traditional X.509 based PKI (rfc:5280), complemented by a RESTful API, aims to enhance the infrastructure with additional features, making it navigable and transparent.</p>
-<p>This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general trust management in multilateral digital ecosystems aiming to be interoperable with each other.</p>
+<p>This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general and interoperable trust management in multilateral digital ecosystems.</p>
 <p>OpenID Federation and X.509 based PKI share several things in common, as listed below:</p>
 <ul class="simple">
 <li><p><strong>Hierarchical Approach</strong>: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.</p></li>
@@ -938,10 +938,10 @@ Trust Chain is close to expiration but the overall structure of the federation h
 </section>
 <section id="x-509-certificates-issuance">
 <h3>X.509 Certificates Issuance<a class="headerlink" href="#x-509-certificates-issuance" title="Link to this heading">¶</a></h3>
-<p>In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by its Immediate Superiors.</p>
+<p>In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by Immediate Superiors.</p>
 <p>In the same way, each federation Entity has the autonomy to issue a signed statement about itself in the form of a X.509 Certificate.
-Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federtion Authorities (Superior Entities). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.</p>
-<p>This is feasible because the X.509 Certificate can be verified using a Trust Chain, similar to the approach used for Entity Configurations in OpenID Federation.</p>
+Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federation Authorities (Immediate Superior). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.</p>
+<p>This is feasible because the X.509 Certificate can be verified using a X.509 Certificate Chain, similar to the approach used for Entity Configurations in OpenID Federation.</p>
 <p>Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.</p>
 <p>When a participant self-issues an X.509 Certificate, it adheres to the following requirements:</p>
@@ -1055,13 +1055,13 @@ Naming constraints are applied by Immediate Superiors within the certificates is
      <span class="mi">7</span><span class="n">d</span><span class="p">:</span><span class="mi">6</span><span class="n">e</span><span class="p">:</span><span class="mi">5</span><span class="n">f</span><span class="p">:</span><span class="o">...</span>
 </pre></div>
 </div>
-<p>Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach introduces innovative practices for certificate management using the trust relationships established within the OpenID Federation.</p>
+<p>Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach, enabling X.509 certificate issuance delegation, introduces innovative practices for certificate management using the underlying trust relationships established within the OpenID Federation.</p>
 </section>
 <section id="x-509-certificate-revocation">
 <h3>X.509 Certificate Revocation<a class="headerlink" href="#x-509-certificate-revocation" title="Link to this heading">¶</a></h3>
 <p>An X.509 Certificate can be revoked by its Issuer.
 When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
-When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leafs Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.</p>
+When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leaves Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf's cryptographic public key, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.</p>
 <p>Below a non-normative example, in plain text, examplify the content of a CRL.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span> <span class="n">Revocation</span> <span class="n">List</span> <span class="p">(</span><span class="n">CRL</span><span class="p">):</span>
 <span class="n">Version</span><span class="p">:</span> <span class="mi">2</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
