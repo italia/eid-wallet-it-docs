@@ -951,6 +951,110 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 <li><p><strong>DNS Name</strong>: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the <strong>sub</strong> value of its Entity Configuration.</p></li>
 <li><p><strong>Certificate Revocation List (CRL)</strong>: The participant MUST publish a CRL for its self-issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.</p></li>
 </ol>
+<p>Below a non-normative example of an X.509 Certificate Chain without intermediaries and in plain text, to facilitate the reading.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span><span class="p">:</span>
+<span class="n">Data</span><span class="p">:</span>
+    <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Validity</span>
+        <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2033</span> <span class="n">GMT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
+        <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
+            <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">4096</span> <span class="n">bit</span><span class="p">)</span>
+            <span class="n">Modulus</span><span class="p">:</span>
+                <span class="mi">00</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="mi">82</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+            <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
+    <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">TRUE</span>
+        <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
+            <span class="n">Certificate</span> <span class="n">Sign</span><span class="p">,</span> <span class="n">CRL</span> <span class="n">Sign</span>
+        <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Key</span> <span class="n">Identifier</span><span class="p">:</span>
+            <span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span>
+        <span class="n">X509v3</span> <span class="n">Authority</span> <span class="n">Key</span> <span class="n">Identifier</span><span class="p">:</span>
+            <span class="n">keyid</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span>
+        <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
+            <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
+              <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchors</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="n">ca</span><span class="o">.</span><span class="n">crl</span>
+
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+     <span class="mi">5</span><span class="n">c</span><span class="p">:</span><span class="mi">4</span><span class="n">f</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+
+
+<span class="n">Certificate</span><span class="p">:</span>
+<span class="n">Data</span><span class="p">:</span>
+    <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">1234567890</span> <span class="p">(</span><span class="mh">0x499602d2</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Validity</span>
+        <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2024</span> <span class="n">GMT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
+        <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
+            <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">2048</span> <span class="n">bit</span><span class="p">)</span>
+            <span class="n">Modulus</span><span class="p">:</span>
+                <span class="mi">00</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="mi">82</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+            <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
+    <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">FALSE</span>
+        <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
+            <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
+        <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="p">:</span>
+            <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+        <span class="n">X509v3</span> <span class="n">Name</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">Permitted</span><span class="p">:</span>
+              <span class="n">URI</span><span class="mf">.1</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+              <span class="n">DNS</span><span class="mf">.1</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+        <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
+            <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
+              <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">ancor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">crl</span>
+
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+     <span class="mi">5</span><span class="n">c</span><span class="p">:</span><span class="mi">4</span><span class="n">f</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+
+
+<span class="n">Certificate</span><span class="p">:</span>
+<span class="n">Data</span><span class="p">:</span>
+    <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">987654321</span> <span class="p">(</span><span class="mh">0x3ade68b1</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Validity</span>
+        <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2024</span> <span class="n">GMT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
+        <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
+            <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">2048</span> <span class="n">bit</span><span class="p">)</span>
+            <span class="n">Modulus</span><span class="p">:</span>
+                <span class="mi">00</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="mi">82</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+            <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
+    <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">FALSE</span>
+        <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
+            <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
+        <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="p">:</span>
+            <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+        <span class="n">X509v3</span> <span class="n">Name</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">Permitted</span><span class="p">:</span>
+              <span class="n">URI</span><span class="mf">.1</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+              <span class="n">DNS</span><span class="mf">.1</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+        <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
+            <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
+              <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">crl</span>
+
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+     <span class="mi">7</span><span class="n">d</span><span class="p">:</span><span class="mi">6</span><span class="n">e</span><span class="p">:</span><span class="mi">5</span><span class="n">f</span><span class="p">:</span><span class="o">...</span>
+</pre></div>
+</div>
 <p>By following these guidelines, participants can ensure that their certificates are consistent with the federation's trust model, enhancing interoperability and security across the federation. This approach not only aligns with best practices for certificate management but also reinforces the trust relationships established within the OpenID Federation.</p>
 </section>
 <section id="x-509-certificate-revocation">
@@ -958,7 +1062,28 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 <p>An X.509 Certificate can be revoked by its Issuer.
 When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
 When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leafs Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.</p>
-<p>By implementing an underlying layer established with OpenID Federation 1.0, the federation ensures that all X.509 certificates are issued in a properly decentralized manner using the delegation pattern. Thanks to the trust chains, this approach allows for secure, scalable, and verifiable management of certificates.</p>
+<p>Below a non-normative example, in plain text, examplify the content of a CRL.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span> <span class="n">Revocation</span> <span class="n">List</span> <span class="p">(</span><span class="n">CRL</span><span class="p">):</span>
+<span class="n">Version</span><span class="p">:</span> <span class="mi">2</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+<span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+<span class="n">Last</span> <span class="n">Update</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+<span class="n">Next</span> <span class="n">Update</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">8</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+<span class="n">Revoked</span> <span class="n">Certificates</span><span class="p">:</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">987654320</span>
+        <span class="n">Revocation</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Aug</span> <span class="mi">25</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">CRL</span> <span class="n">Entry</span> <span class="n">Extensions</span><span class="p">:</span>
+            <span class="n">Reason</span> <span class="n">Code</span><span class="p">:</span> <span class="n">Key</span> <span class="n">Compromise</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">987654321</span>
+        <span class="n">Revocation</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Aug</span> <span class="mi">30</span> <span class="mi">15</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">CRL</span> <span class="n">Entry</span> <span class="n">Extensions</span><span class="p">:</span>
+            <span class="n">Reason</span> <span class="n">Code</span><span class="p">:</span> <span class="n">Cessation</span> <span class="n">of</span> <span class="n">Operation</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+<span class="n">Signature</span><span class="p">:</span>
+    <span class="mi">5</span><span class="n">c</span><span class="p">:</span><span class="mi">4</span><span class="n">f</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern. Trust chains allow a secure, scalable, and verifiable management of X.509 Certificates.</p>
 </section>
 </section>
 <section id="privacy-remarks">

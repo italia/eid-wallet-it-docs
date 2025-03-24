@@ -773,7 +773,116 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
 3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration.
 4. **Certificate Revocation List (CRL)**: The participant MUST publish a CRL for its self-issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
 
+Below a non-normative example of an X.509 Certificate Chain without intermediaries and in plain text, to facilitate the reading.
+
+
+.. code-block::
+
+    Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Validity
+            Not Before: Sep 1 00:00:00 2023 GMT
+            Not After : Sep 1 00:00:00 2033 GMT
+        Subject: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (4096 bit)
+                Modulus:
+                    00:af:82:3b:...
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:TRUE
+            X509v3 Key Usage: 
+                Certificate Sign, CRL Sign
+            X509v3 Subject Key Identifier: 
+                12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
+            X509v3 Authority Key Identifier: 
+                keyid:12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:https://trust-anchors.example.com/crl/ca.crl
+                  
+    Signature Algorithm: sha256WithRSAEncryption
+         5c:4f:3b:...
+
+
+    Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1234567890 (0x499602d2)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Validity
+            Not Before: Sep 1 00:00:00 2023 GMT
+            Not After : Sep 1 00:00:00 2024 GMT
+        Subject: CN=https://leaf.example.org, O=Leaf, C=IT
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:af:82:3b:...
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name: 
+                URI:https://leaf.example.com
+            X509v3 Name Constraints: 
+                Permitted:
+                  URI.1=https://leaf.example.com
+                  DNS.1=leaf.example.com
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:https://trust-ancor.example.com/crl/leaf.example.org.crl
+
+    Signature Algorithm: sha256WithRSAEncryption
+         5c:4f:3b:...
+
+
+    Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 987654321 (0x3ade68b1)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: CN=https://leaf.example.org, O=Leaf, C=IT
+        Validity
+            Not Before: Sep 1 00:00:00 2023 GMT
+            Not After : Sep 1 00:00:00 2024 GMT
+        Subject: CN=https://leaf.example.org, O=Leaf, C=IT
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:af:82:3b:...
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name: 
+                URI:https://leaf.example.org
+            X509v3 Name Constraints: 
+                Permitted:
+                  URI.1=https://leaf.example.com
+                  DNS.1=leaf.example.com
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:https://leaf.example.org/crl/self.crl
+
+    Signature Algorithm: sha256WithRSAEncryption
+         7d:6e:5f:...
+
+
 By following these guidelines, participants can ensure that their certificates are consistent with the federation's trust model, enhancing interoperability and security across the federation. This approach not only aligns with best practices for certificate management but also reinforces the trust relationships established within the OpenID Federation.
+
 
 X.509 Certificate Revocation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -782,7 +891,30 @@ An X.509 Certificate can be revoked by its Issuer.
 When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
 When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leafs Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.
 
-By implementing an underlying layer established with OpenID Federation 1.0, the federation ensures that all X.509 certificates are issued in a properly decentralized manner using the delegation pattern. Thanks to the trust chains, this approach allows for secure, scalable, and verifiable management of certificates.
+Below a non-normative example, in plain text, examplify the content of a CRL.
+
+.. code-block::
+
+    Certificate Revocation List (CRL):
+    Version: 2 (0x1)
+    Signature Algorithm: sha256WithRSAEncryption
+    Issuer: CN=https://leaf.example.org, O=Leaf, C=IT
+    Last Update: Sep 1 00:00:00 2023 GMT
+    Next Update: Sep 8 00:00:00 2023 GMT
+    Revoked Certificates:
+        Serial Number: 987654320
+            Revocation Date: Aug 25 12:00:00 2023 GMT
+            CRL Entry Extensions:
+                Reason Code: Key Compromise
+        Serial Number: 987654321
+            Revocation Date: Aug 30 15:00:00 2023 GMT
+            CRL Entry Extensions:
+                Reason Code: Cessation of Operation
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature: 
+        5c:4f:3b:...
+
+Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern. Trust chains allow a secure, scalable, and verifiable management of X.509 Certificates.
 
 
 Privacy Remarks
