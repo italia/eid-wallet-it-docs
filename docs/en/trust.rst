@@ -61,7 +61,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - 
    * - Trusted List
      - Trust Anchor
-     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats may be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities must be synchronized across these endpoints, ensuring consistent availability of information through different channels.
+     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats MAY be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities MUST be synchronized across these endpoints, ensuring consistent availability of information through different channels.
    * - Wallet Provider
      - Leaf
      - 
@@ -70,7 +70,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
 General Properties
 ------------------
 
-The architecture of the trust infrastructure is built upon several core principles:
+The architecture of the trust infrastructure is built upon the following core principles:
 
 .. list-table:: 
    :header-rows: 1
@@ -104,7 +104,7 @@ The architecture of the trust infrastructure is built upon several core principl
      - While part of a federated ecosystem, each entity retains control over its own definitions and configurations.
    * - P9
      - **Decentralization**
-     - Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach. No single entity has control over the entire system.
+     - Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach.
 
 
 Trust Infrastructure Requirements
@@ -731,7 +731,7 @@ The X.509 Public Key Infrastructure (PKI) is a framework designed to create, man
 
 The integration of OpenID Federation 1.0 with the traditional X.509 based PKI (rfc:5280), complemented by a RESTful API, aims to enhance the infrastructure with additional features, making it navigable and transparent.
 
-This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general trust management in multilateral digital ecosystems aiming to be interoperable with each other.
+This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general and interoperable trust management in multilateral digital ecosystems.
 
 OpenID Federation and X.509 based PKI share several things in common, as listed below:
 
@@ -752,12 +752,12 @@ In the context of OpenID Federation, the Trust Anchor plays a role similar to th
 X.509 Certificates Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by its Immediate Superiors.
+In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by Immediate Superiors.
 
 In the same way, each federation Entity has the autonomy to issue a signed statement about itself in the form of a X.509 Certificate.
-Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federtion Authorities (Superior Entities). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.
+Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federation Authorities (Immediate Superior). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.
 
-This is feasible because the X.509 Certificate can be verified using a Trust Chain, similar to the approach used for Entity Configurations in OpenID Federation.
+This is feasible because the X.509 Certificate can be verified using a X.509 Certificate Chain, similar to the approach used for Entity Configurations in OpenID Federation.
 
 Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
@@ -881,7 +881,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
          7d:6e:5f:...
 
 
-Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach introduces innovative practices for certificate management using the trust relationships established within the OpenID Federation.
+Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach, enabling X.509 certificate issuance delegation, introduces innovative practices for certificate management using the underlying trust relationships established within the OpenID Federation.
 
 
 X.509 Certificate Revocation
@@ -889,7 +889,7 @@ X.509 Certificate Revocation
 
 An X.509 Certificate can be revoked by its Issuer.
 When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
-When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leafs Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.
+When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leaves Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf's cryptographic public key, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.
 
 Below a non-normative example, in plain text, examplify the content of a CRL.
 
