@@ -48,4 +48,5 @@ Index of content
    security-privacy-considerations.rst
    standards.rst
    contribute.rst
+   open-source.rst
 
