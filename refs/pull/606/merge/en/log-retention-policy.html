@@ -158,10 +158,14 @@
             
   <section id="general-log-and-data-retention-policies">
 <span id="log-retention-policy-rst"></span><h1>General Log and Data Retention Policies<a class="headerlink" href="#general-log-and-data-retention-policies" title="Link to this heading">¶</a></h1>
-<p>The retention of logs and personal data must comply with the principles of the GDPR, with particular attention to data minimization and storage limitation.
-Wallet Providers, Credential Issuers, and Relying Parties must implement appropriate security measures.</p>
+<p>The retention of logs and personal data must comply with the principles of the GDPR, the requirements of the eIDAS regulation and the requirements defined in ISO/IEC 27001, with particular attention to data minimization and storage limitation.</p>
+<p>For all about log handling, Wallet Providers, Credential Issuers, and Relying Parties are considered Organizational Entities.</p>
 <p>Logs related to Wallet data exchange activities (accesses, transactions, credential issuance/revocation) concerning the End User, as the data subject, MUST be retained for a limited period for security, fraud prevention, dispute resolution, and legal obligations.</p>
-<p>In accordance with the following general principles and in full compliance with them, the retention of logs and personal data in digital identity Wallets MUST adhere to the principles outlined in the GDPR (Article 5), specifically:</p>
+<p>Organizational Entities are responsible for data retention according to their respective roles. Solutions related to Wallet Providers, Credential Issuers, and Relying Parties MUST implement audit logging for the activities of administrators and service operators with access to data exchange and logs.</p>
+<p>Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, <strong>the maximum retention period for data logs is 12 months</strong>. Logs MUST be securely stored to ensure integrity and immutability.</p>
+<section id="gdpr-logs-general-requirements">
+<h2>GDPR Logs General Requirements<a class="headerlink" href="#gdpr-logs-general-requirements" title="Link to this heading">¶</a></h2>
+<p>In accordance with the following general principles and in full compliance with them, the retention of logs and personal data made by Organizational Entities MUST adhere to the principles outlined in the GDPR (Article 5), specifically:</p>
 <ul class="simple">
 <li><p><strong>Lawfulness, Fairness, and Transparency</strong> (Article 5, Paragraph 1, Letter a): Personal data MUST be processed lawfully, fairly, and in a transparent manner in relation to the data subject.</p></li>
 <li><p><strong>Purpose Limitation</strong> (Article 5, Paragraph 1, Letter b): Personal data MUST be collected for specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes.</p></li>
@@ -169,34 +173,81 @@ Wallet Providers, Credential Issuers, and Relying Parties must implement appropr
 <li><p><strong>Storage Limitation</strong> (Article 5, Paragraph 1, Letter e): Personal data MUST be kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed.</p></li>
 <li><p><strong>Integrity and Confidentiality</strong> (Article 5, Paragraph 1, Letter f): Personal data MUST be processed in a manner that ensures appropriate security, including protection against unauthorized or unlawful processing and against accidental loss, destruction, or damage, using appropriate technical or organizational measures.</p></li>
 </ul>
-<p>Wallet Providers, Credential Issuers, and Relying Parties MUST implement appropriate technical and organizational measures to ensure the security of logs and personal data, in compliance with Article 32 of the GDPR.</p>
-<p>Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, the maximum retention period for data logs is 12 months. Logs MUST be securely stored to ensure integrity and immutability.</p>
+<p>Organizational Entities MUST implement appropriate technical and organizational measures to ensure the security of logs and personal data, in compliance with Article 32 of the GDPR.</p>
+</section>
+<section id="iso-iec-27001-logging-general-requirements">
+<h2>ISO/IEC 27001 Logging General Requirements<a class="headerlink" href="#iso-iec-27001-logging-general-requirements" title="Link to this heading">¶</a></h2>
+<p>Organizational Entities MUST implement appropriate technical and organization measured in compliance with ISO/IEC 27001 for maintaining an information security management system for monitoring, auditing, and incident response. Key aspects of log handling under ISO/IEC 27001 include the following requirements:</p>
+<ul class="simple">
+<li><p><strong>A.12.4 Logging and Monitoring</strong>: Organizational Entities MUST produce logs that record exceptions, faults, and information security events. When necessary for security reasons, logs SHOULD capture user activities with a level of detail that is appropriate and sufficient to meet security requirements, ensuring that the data collected is relevant and not excessive. Logs SHOULD be reviewed regularly to ensure that security incidents are identified and addressed promptly.</p></li>
+<li><p><strong>A.12.4.1 Event Logging</strong>: Organizational Entities MUST establish procedures for logging events, including the types of events to be logged, the information to be captured, and the retention period for logs.</p></li>
+<li><p><strong>A.12.4.2 Protection of Log Information</strong>: Organizational Entities MUST be protected against unauthorized access and tampering. This includes implementing access controls, encryption, and integrity checks to ensure that log data remains secure and reliable.</p></li>
+<li><p><strong>A.12.4.3 Administrator and Operator Logs</strong>: Activities of system administrators and operators MUST be logged and reviewed regularly. Organizational Entities MUST detect unauthorized activities and ensures accountability for actions taken on critical systems.</p></li>
+<li><p><strong>A.12.4.4 Clock Synchronization</strong>: All Organizational Entities' systems involved in logging MUST be synchronized to a reliable time source, ensuring accurate timestamps for correlating events across different systems and conducting effective forensic investigations.</p></li>
+<li><p><strong>A.16.1.7 Information Security Incident Management</strong>: Organizational Entities MUST ensure that logs are available and reliable to support incident management processes.</p></li>
+</ul>
 <section id="wallet-provider-log-retention-policy">
-<h2>Wallet Provider Log Retention Policy<a class="headerlink" href="#wallet-provider-log-retention-policy" title="Link to this heading">¶</a></h2>
+<h3>Wallet Provider Log Retention Policy<a class="headerlink" href="#wallet-provider-log-retention-policy" title="Link to this heading">¶</a></h3>
 <p>Personal data related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.</p>
+<p>Wallet Provider MUST log the following items:</p>
+<ul class="simple">
+<li><p>Evidences about the User Authentication to the Wallet Provider backends, according to the national regulation pertaining the digital identity systems, if involved (e.g: signed SAML2 Responses, OIDC ID Token).</p></li>
+<li><p>Wallet Attestation Requests.</p></li>
+<li><p>Wallet Attestations.</p></li>
+<li><p>Holder's requests about the revocation or deactivation of the Wallet Instance.</p></li>
+</ul>
 </section>
 <section id="credential-issuer-log-retention-policy">
-<h2>Credential Issuer Log Retention Policy<a class="headerlink" href="#credential-issuer-log-retention-policy" title="Link to this heading">¶</a></h2>
-<p>Credential Issuers define the retention periods for Credentials based on sector-specific regulations. In the absence of specific regulations, the retention period for credentials should not exceed 5 years from the date of issuance.</p>
+<h3>Credential Issuer Log Retention Policy<a class="headerlink" href="#credential-issuer-log-retention-policy" title="Link to this heading">¶</a></h3>
+<p>Credential Issuers define the retention period for Credentials based on sector-specific regulations. In the absence of specific regulations, the retention period for Credentials SHOULD not exceed 12 months after the date of expiration, configured at time of issuance within the metadata of the Issuer Signed part of the Credential.</p>
+<p>In detail, Credential Issuers require to be compliant to the items above:</p>
+<ul class="simple">
+<li><p>Credential Issuers MUST log the signed requests made by Wallet Instance during the Credential issuance phase, such as authorization requests and token request (Authorization Server) and the Credential requests at the Credential endpoint (Resource Server).</p></li>
+<li><p>Credential Issuers MUST log the evidences about the User Authentication to the Wallet Provider backends, during the authroization phase, according to the national regulation pertaining the digital identity systems, if involved (e.g: signed SAML2 Responses, OIDC ID Token).</p></li>
+<li><p>Credential Issuers MUST log the Issuer signed part of the issued Credentials, such as the Issuer-Signed-JWT using SD-JWT-VC or the MSO using MDoc CBOR.</p></li>
+<li><p>Credential Issuer SHOULD NOT log the User personal attributes, such as the Credential disclosure map.</p></li>
+<li><p>Credential Issuers MUST log the Holder's signed revocation request.</p></li>
+</ul>
 </section>
 <section id="relying-party-log-retention-policy">
-<h2>Relying Party Log Retention Policy<a class="headerlink" href="#relying-party-log-retention-policy" title="Link to this heading">¶</a></h2>
+<h3>Relying Party Log Retention Policy<a class="headerlink" href="#relying-party-log-retention-policy" title="Link to this heading">¶</a></h3>
 <p>Relying Parties MAY retain data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.</p>
 <p>At the end of the retention period, data MUST be deleted or anonymized.</p>
+<p>In detail, Relying Party are required to be compliant with the following items:</p>
+<ul class="simple">
+<li><p>Relying Parties MUST log Wallet's signed presentations, linked to signed presentation requests, containing the Credential Signed part and the Wallet Signed part, such as the Issuer-Signed-JWT and the KB-JWT using SD-JWT-VC.</p></li>
+<li><p>Relying Parties SHOULD not log Credetnail presentation disclosure map, where not necessary.</p></li>
+</ul>
 </section>
-<section id="general-responsibilities-for-log-retention">
-<h2>General Responsibilities for Log Retention<a class="headerlink" href="#general-responsibilities-for-log-retention" title="Link to this heading">¶</a></h2>
-<p>Wallet Providers, Credential Issuers, and Relying Parties are responsible for data retention according to their respective roles. Solutions related to Wallet Providers, Credential Issuers, and Relying Parties MUST implement audit logging for the activities of administrators and service operators with access to data exchange and logs.</p>
+<section id="wallet-instances-logging-features">
+<h3>Wallet Instances Logging Features<a class="headerlink" href="#wallet-instances-logging-features" title="Link to this heading">¶</a></h3>
+<p>The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets.</p>
+<p>Recital (11) of the regulation highlights the critical role of transaction logging as a tool for transparency. Logs enable Wallet Users to effectively monitor their digital identity activities. This transparency aims to improve the user confidence and accountability in digital identity management.</p>
+<p>In addition to transparency, logs facilitates the swift and use of information with competent supervisory authorities, as outlined in Article 51 of Regulation (EU) 2016/679 (GDPR). In instances of suspicious behavior by Relying Parties, logs can be quickly provided to authorities, enabling prompt investigation and resolution of potential security threats.</p>
+<p>About data export and portability, recital (13) emphasizes the use of data export and portability objects to log person identification data and electronic attestations of attributes issued to a Wallet Instance, supporting the right to data portability. Users are enabled to extract and transfer their data between different Wallet Solutions or recover lost Wallet Instances.</p>
+<p>Article 5e, Item 4 of the regulation defines the key features and requirements of the User interface about the navigation of the transaction logs. European Digital Identity Wallets MUST provide a user-friendly, transparent, and traceable dashboard that allows Users to:</p>
+<ul class="simple">
+<li><p>View an up-to-date list of Relying Parties with which they have established a connection, including all data exchanged where applicable.</p></li>
+<li><p>Easily request the erasure of personal data by a Relying Party, in accordance with Article 17 of Regulation (EU) 2016/679 (GDPR). Users MUST be able to exercise their right to be forgotten, enhancing their control over personal data.</p></li>
+<li><p>Easily report a Relying Party to the competent national data protection authority if an allegedly unlawful or suspicious data request is received, addressing potential data protection violations.</p></li>
+</ul>
+<p>In detail, Wallet Instances MUST log the following items:</p>
+<ul class="simple">
+<li><p>Signed presentation requests issued by Relying Parties.</p></li>
+<li><p>Credentials, and attributes contained within them, presented to each Relying Party.</p></li>
+</ul>
 </section>
 <section id="regulatory-references-for-log-retention">
-<h2>Regulatory References for Log Retention<a class="headerlink" href="#regulatory-references-for-log-retention" title="Link to this heading">¶</a></h2>
+<h3>Regulatory References for Log Retention<a class="headerlink" href="#regulatory-references-for-log-retention" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Regulation (EU) 2016/679 (GDPR)</p></li>
 <li><p>Legislative Decree 196/2003 (Personal Data Protection Code)</p></li>
+<li><p>ISO/IEC 27001:2024</p></li>
 <li><p>Regulation (EU) No 910/2014 (eIDAS)</p></li>
 <li><p>National regulations on traffic data retention.</p></li>
 <li><p>Provisions of the Data Protection Authority.</p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -215,11 +266,15 @@ Wallet Providers, Credential Issuers, and Relying Parties must implement appropr
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">General Log and Data Retention Policies</a><ul>
+<li><a class="reference internal" href="#gdpr-logs-general-requirements">GDPR Logs General Requirements</a></li>
+<li><a class="reference internal" href="#iso-iec-27001-logging-general-requirements">ISO/IEC 27001 Logging General Requirements</a><ul>
 <li><a class="reference internal" href="#wallet-provider-log-retention-policy">Wallet Provider Log Retention Policy</a></li>
 <li><a class="reference internal" href="#credential-issuer-log-retention-policy">Credential Issuer Log Retention Policy</a></li>
 <li><a class="reference internal" href="#relying-party-log-retention-policy">Relying Party Log Retention Policy</a></li>
-<li><a class="reference internal" href="#general-responsibilities-for-log-retention">General Responsibilities for Log Retention</a></li>
+<li><a class="reference internal" href="#wallet-instances-logging-features">Wallet Instances Logging Features</a></li>
 <li><a class="reference internal" href="#regulatory-references-for-log-retention">Regulatory References for Log Retention</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
