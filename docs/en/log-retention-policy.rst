@@ -11,7 +11,7 @@ Wallet Providers, Credential Issuers, and Relying Parties must implement appropr
 Logs related to Wallet data exchange activities (accesses, transactions, credential issuance/revocation) concerning the End User, as the data subject, MUST be retained for a limited period for security, fraud prevention, dispute resolution, and legal obligations.
 
 
-In accordance with the following general principles and in full compliance with them, the retention of logs and personal data in digital identity wallets MUST adhere to the principles outlined in the GDPR (Article 5), specifically:
+In accordance with the following general principles and in full compliance with them, the retention of logs and personal data in digital identity Wallets MUST adhere to the principles outlined in the GDPR (Article 5), specifically:
 
 - **Lawfulness, Fairness, and Transparency** (Article 5, Paragraph 1, Letter a): Personal data MUST be processed lawfully, fairly, and in a transparent manner in relation to the data subject.
 - **Purpose Limitation** (Article 5, Paragraph 1, Letter b): Personal data MUST be collected for specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes.
@@ -21,12 +21,12 @@ In accordance with the following general principles and in full compliance with 
 
 Wallet Providers, Credential Issuers, and Relying Parties MUST implement appropriate technical and organizational measures to ensure the security of logs and personal data, in compliance with Article 32 of the GDPR.
 
-Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, the maximum retention period for data logs is 24 months. Logs MUST be securely stored to ensure integrity and immutability.
+Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, the maximum retention period for data logs is 12 months. Logs MUST be securely stored to ensure integrity and immutability.
 
 Wallet Provider Log Retention Policy
 ------------------------------------
 
-Personal data related to the registration and management of Wallet Instances can be retained for up to 24 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.
+Personal data related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.
 
 Credential Issuer Log Retention Policy
 --------------------------------------
