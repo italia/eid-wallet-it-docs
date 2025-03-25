@@ -11,7 +11,7 @@ Wallet Providers, Credential Issuers, and Relying Parties must implement appropr
 Logs related to Wallet data exchange activities (accesses, transactions, credential issuance/revocation) concerning the End User, as the data subject, MUST be retained for a limited period for security, fraud prevention, dispute resolution, and legal obligations.
 
 
-In accordance with the following general principles and in full compliance with them, the retention of logs and personal data in digital identity wallets must adhere to the principles outlined in the GDPR (Article 5), specifically:
+In accordance with the following general principles and in full compliance with them, the retention of logs and personal data in digital identity wallets MUST adhere to the principles outlined in the GDPR (Article 5), specifically:
 
 - **Lawfulness, Fairness, and Transparency** (Article 5, Paragraph 1, Letter a): Personal data MUST be processed lawfully, fairly, and in a transparent manner in relation to the data subject.
 - **Purpose Limitation** (Article 5, Paragraph 1, Letter b): Personal data MUST be collected for specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes.
