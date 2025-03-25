@@ -20,7 +20,7 @@ All the implementers, be these Wallet Providers, Credential Issuers or Relying P
 Wallet Provider Solutions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Wallet Solution Providers are mandatorily required to release their source code, facilitating transparency, security auditing within the IT-Wallet ecosystem. The release of source code should adhere to the following guidelines:
+Wallet Solution Providers are mandatorily required to release their source code, facilitating transparency, security auditing within the IT-Wallet ecosystem. The release of source code adheres to the following guidelines:
 
 - **European Regulations**: According to Art ...... Providers MUST ensure their solutions comply with relevant European standards and regulations, fostering cross-border interoperability.
 
