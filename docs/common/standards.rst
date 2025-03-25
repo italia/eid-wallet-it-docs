@@ -94,4 +94,4 @@ Technical References
     * - `OpenID4VC-SecTrust`_
       - Fett, D., Lodderstedt, T.,  "Security and Trust in OpenID for Verifiable Credentials Ecosystems", March 2024.
     * - `TOKEN-STATUS-LIST`_
-      - Tobias Looker and Paul Bastian and Christian Bormann,  "Token Status List", February 2025, Draft 7.
+      - Tobias Looker and Paul Bastian and Christian Bormann,  "Token Status List", March 2025, Draft 10.

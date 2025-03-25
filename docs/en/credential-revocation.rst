@@ -231,7 +231,7 @@ Authentic Sources MUST use this notification service in the following cases:
 Validity Verification Mechanisms 
 --------------------------------
 
-For the verification of the validity status of a Digital Credential the OAuth Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario. Depending on the capabilities supported by the Credential Issuer, Wallet Instance and Relying PArty, in the remote scenario OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_) MAY be supported as well. The following table sums up the required revocation mechanisms.
+For the verification of the validity status of a Digital Credential the OAuth Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario. Depending on the capabilities supported by the Credential Issuer, Wallet Instance and Relying Party, in the remote scenario OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_) MAY be supported as well. The following table sums up the required revocation mechanisms.
  
  .. _table_revocation_mechanisms: 
  .. list-table:: 
@@ -654,29 +654,35 @@ OAuth Status Lists
  The Issuer of the Digital Credentials MUST
  
    - define a number of bits, k, (either 1, 2, 4, 8) that represents the amount of bits used to describe the status of each Digital Credential within this Status List. This choice MUST be made by the Credential Issuer and is dictated the Digital Credential lifecycle: each credential will then have 2^k (where k is the number of bits chosen) possible states.
-   - create a byte array of size = (amount of issued Digital Credentials) * k / 8 or greater. Depending on k, each byte in the array corresponds to 8/k statuses (8 if k=1, 4 if k=2, 2 if k=1, or 1 if k=8). Each time a new Digital Credential is issued the array is updated accordingly. 
-   - set the status values for all Digital Credentials within the byte array. The status of each Digital Credential is identified using an index that maps to one or more specific bits within the byte array. The index starts counting at 0 and ends with (amount of Issued Digital Credential) - 1 (being the last valid entry). The bits within an array are counted from the least significant bit ("0") to the most significant bit ("7"). All bits of the byte array at a particular index are set to a status value.
+   - create a byte array of size = (amount of Digital Credentials) * k / 8 or greater. Depending on k, each byte in the array corresponds to 8/k statuses (8 if k=1, 4 if k=2, 2 if k=1, or 1 if k=8). Each time a Digital Credential is issued the Credential Issuer assigns it to a position in the array. 
+   - set the status values for all issued Digital Credentials within the byte array. The status of each Digital Credential is identified using an index that maps to one or more specific bits within the byte array. The index starts counting at 0 and ends with (amount of Digital Credential) - 1 (being the last valid entry). The bits within an array are counted from the least significant bit ("0") to the most significant bit ("7"). All bits of the byte array at a particular index are set to a status value.
    - compress the byte array using DEFLATE [:rfc:`1951`] with the ZLIB [:rfc:`1950`] data format. Implementations are RECOMMENDED to use the highest compression level available.
    - make available to Relying Parties, and Wallet Instances, an endpoint to request Status Lists.
  
- The Issuer of a Digital Credential uses the following MUST use the following values for possible Statuses of the isseud Credentials:
+ The Issuer of a Digital Credential MUST use the following values for possible Statuses of the issued Digital Credentials:
  
-   - 0x00 - ``VALID`` - The Credential is valid, correct or legal.
-   - 0x01 - ``INVALID`` - The Credential is revoked, annulled, taken back, recalled or cancelled.
-   - 0x02 - ``SUSPENDED`` - The Credential is temporarily invalid, hanging, debarred from privilege. This state is reversible.
-   - 0x03 - ``NEEDUPDATE`` - The Digital Credential metadata parameters or the credential attributes have changed.
+   - 0x00 - ``VALID`` - The Digital Credential is valid.
+   - 0x01 - ``INVALID`` - The Digital Credential is revoked.
+   - 0x02 - ``SUSPENDED`` - The Digital Credential is temporarily invalid, hanging, debarred from privilege. This state is reversible.
+   - 0x03 - ``UPDATE`` - The Digital Credential metadata parameters have changed.
+   - 0x04 - ``ATTRIBUTE_UPDATE`` - The Digital Credential attributes have changed.
+
+ For example, if five states for a certain Digital Credential are possible, then k=4. If the Credential Issuer creates an array to store the statuses of 6 Digital Credentials, whose validity statuses are 0, 0, 0, 4, 1, 2, respectively; it will:
  
- Additional values may defined for particular use cases.
- 
- For example, if only four states for a certain Digital Credential are possible, then k=2. If The Credential Issuer has issued 12 credential, numbered 0 to 11, for which the validity statuses are respectively 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 2; it will:
- 
-   - create the bite array ``[1, 0, 0, 0, 0, 0, 1, 0; 1, 0, 1, 0, 0, 0, 0, 0; 1, 0, 0, 0, 1, 0, 0, 1]`` which in exadecimal notation generates the byte array ``[0x41, 0x05, 0x91]``.
+   - create the bite array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 1, 0, 0, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]`` which in exadecimal notation generates the byte array ``[0x00, 0x40, 0x21]``.
    - compress the array using DEFLATE. 
  
  .. note::
  
    When the Credental Issuer choses the number of bits for conveying statuses of the Digital Credentials it issues, it MAY add other states besides those described above. The addition of many different states for the lifecycle of a Digital Credential has however to be carefully pondered for it discloses information to Relying Parties.   
  
+ .. note:: 
+
+  The main privacy consideration for a Status List, especially in the context of the EUDIWallet ecosystem, is to prevent the Issuer from tracking the usage of the Digital Credential when the status is being checked. If a Credential Issuer offers status information by referencing a specific token, this would enable him to create a profile for the issued token by correlating the date and identity of Relying Parties, that are requesting the status. Implementations MUST therefore integrate the status information of many Digital Credentials into the same list. As a result, the Issuer does not learn for which Digital Credential the Relying Party is requesting the Status List. The privacy of the Holder is protected by the anonymity within the set of Digital Credential in the Status List, this limits the possibilities of tracking by the Issuer.
+  This herd privacy effect depends on the number of entities within the Status List. A larger amount of Digial Credentials referenced therein results in better privacy but also impacts the performance as more data has to be transferred to read the Status List. Depending on the Status List parameters (e.g. the amounts of bits designating the credential values), Credential Issuers have to strike an appropriate balance between privacy and performance.
+
+  Once the Relying Party receives a Digital Credential, this enables it to request the Status List to validate its status through the provided uri parameter and look up the corresponding index. However, the Relying Party may persistently store the uri and index of the Digital Credential to request the Status List again at a later time. By doing so regularly, the Relying Party may create a profile of the Digital Credential's validity status. This behaviour may be intended as a feature, but might also be abused in cases where this is not intended and unknown to the Holder, e.g. profiling the suspension of a driving license. This behaviour could be mitigated e.g., by regular re-issuance of the Digital Credential.
+
  Status List Token 
  .....................
  
@@ -696,7 +702,7 @@ OAuth Status Lists
      - It MUST be set to ``statuslist+jwt``.
      - `TOKEN-STATUS-LIST`_
    * - **kid**
-     -  Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.
+     - Unique identifier of the Credential Issuer's publick key which signs the Status Token.
      - :rfc:`7638#section_3`.
  
  .. list-table:: 
@@ -710,7 +716,7 @@ OAuth Status Lists
      - REQUIRED. The subject claim MUST specify the URI of the Status List Token. The value MUST be equal to that of the uri claim contained in the status_list claim of the Digital Credential.
      - [:rfc:`7519`]
    * - **iat**
-     - REQUIRED. The issued at claim MUST specify the time at which the Status List Token was issued
+     - REQUIRED. The issued at claim MUST specify the time at which the Status List Token was issued.
      - [:rfc:`7519`]
    * - **exp**
      - OPTIONAL. The expiration time claim, if present, MUST specify the time at which the Status List Token is considered expired by the Credential Issuer.
@@ -732,13 +738,13 @@ OAuth Status Lists
      - **Description**
      - **Reference**
    * - **bits**
-     - REQUIRED. JSON Integer specifying the number of bits per Referenced Token in the compressed byte array (`lst`). The allowed values for bits are 1,2,4 and 8.
+     - REQUIRED. JSON Integer specifying the number of bits per Digital Credential in the compressed byte array (`lst`). The allowed values for bits are 1,2,4 and 8.
      - `TOKEN-STATUS-LIST`_
    * -  **lst** 
-     - REQUIRED. JSON String that contains the status values for all the Referenced Tokens it conveys statuses for. The value MUST be the base64url-encoded compressed byte array.
+     - REQUIRED. JSON String that contains the status values for all the Digital Credentials it conveys statuses for. The value MUST be the base64url-encoded compressed byte array.
      - `TOKEN-STATUS-LIST`_
    * -  **aggregation_uri** 
-     - OPTIONAL. JSON String that contains a URI to retrieve the Status List Aggregation for this type of Referenced Token or Issuer.
+     - OPTIONAL. JSON String that contains a URI to retrieve the Status List Aggregation for this type of Digital Credential or Issuer.
      - `TOKEN-STATUS-LIST`_
  
  The following is an example of Status List Token before applying signature and encoding:
@@ -781,10 +787,10 @@ OAuth Status Lists
      - **Description**
      - **Reference**
    * - **idx**
-     - REQUIRED. The idx (index) claim MUST specify an Integer that represents the index to check for status information in the Status List for the current Referenced Token. The value of idx MUST be a non-negative number, containing a value of zero or greater.
+     - REQUIRED. The idx (index) claim MUST specify an Integer that represents the index to check for status information in the Status List for the current Digital Credential. The value of idx MUST be a non-negative number, containing a value of zero or greater.
      - `TOKEN-STATUS-LIST`_
    * -  **uri** 
-     - REQUIRED. The uri (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Referenced Token. The value of uri MUST be a URI conforming to [:rfc:`3986`].
+     - REQUIRED. The uri (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Digital Credential. The value of uri MUST be a URI conforming to [:rfc:`3986`].
      - `TOKEN-STATUS-LIST`_
  
  
@@ -804,7 +810,7 @@ OAuth Status Lists
  HTTP Status Lists Request
  _____________________________________
  
- To obtain the Status List Token, the Relying Party MUST send an HTTP GET request to the ``status.status_list.uri`` value provided within the Digial Credential.
+ To obtain the Status List Token, the Relying Party MUST send an HTTP GET request to the ``status.status_list.uri`` value provided within the Digital Credential.
  
  The Relying Party SHOULD send the ``application/statuslist+jwt`` Accept-Header to indicate that the requested response type for Status List Token is the JWT format.
  
@@ -835,7 +841,7 @@ OAuth Status Lists
  
    eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjEsImxzdCI6ImVOcmJ1UmdBQWhjQlhRIn0sInN1YiI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzbGlzdHMvMSIsInR0bCI6NDMyMDB9.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
  
- Upon receiving a Digital Credential, a Relying Party MUST first perform the validation of the Digital Credential itself (e.g., checking for expected attributes, valid signature and expiration time). If this validation is not successful, the Digital Credential MUST be rejected. If the validation was successful, the Relying Party MUST perform the following validation steps to evaluate the status of the reference token:
+ Upon receiving a Digital Credential, a Relying Party MUST first perform the validation of the Digital Credential itself (e.g., checking for expected attributes, valid signature and expiration time). If this validation is not successful, the Digital Credential MUST be rejected. If the validation was successful, the Relying Party MUST perform the following validation steps to evaluate the status of the Digital Credential:
  
    - Check for the existence of a ``status`` claim, check for the existence of a ``status_list`` claim within the ``status`` claim and validate that the content of ``status_list`` adheres to the rules defined in Section `Credential Issuers Handling Credential Status`_.
    - Resolve the Status List Token from the provided URI.
@@ -851,13 +857,13 @@ OAuth Status Lists
      - If the expiration time is defined, it MUST be checked if the Status List Token is expired.
      - If the Relying Party is using a system for caching the Status List Token, it SHOULD check the `ttl` claim of the Status List Token and retrieve a fresh copy if (time status was resolved + `ttl` < current time).
  
-   - Decompress the Status List with a decompressor that is compatible with DEFLATE [:rfc:`1951`] and ZLIB [:rfc:`1950`]
+   - Decompress the Status List with a decompressor that is compatible with DEFLATE [:rfc:`1951`] and ZLIB [:rfc:`1950`].
    - Retrieve the status value of the index specified in the Digital Credential as described in `Status Lists Creation`_. Fail if the provided index is out of bounds of the Status List.
    - Check the status value as described in `Status Lists Creation`_.
  
  If any of these checks fails, no statement about the status of the Digital Credential can be made and the Digital Credential SHOULD be rejected.
  
- If for example the decompressed byte array is ``[0x41, 0x05, 0x91]``, it corresponds to the bit array ``[1, 0, 0, 0, 0, 0, 1, 0; 1, 0, 1, 0, 0, 0, 0, 0; 1, 0, 0, 0, 1, 0, 0, 1]``. The Status of the Digital Credential whose ``idx`` claim value is ``11`` in this array refers to the 12th bit pair (i.e., ``[0, 1] = 0x02``) whose status value is ``SUSPENDED``.  
+ If for example, the decompressed byte array is ``[0x00, 0x40, 0x21]``, it corresponds to the bit array ``[0, 0, 0, 0, 0, 0, 0, 0; 0, 1, 0, 0, 0, 0, 0, 0; 0, 0, 1, 0, 0, 0, 0, 1]``. The Status of the Digital Credential whose ``idx`` claim value is ``5`` in this array refers to the last 4-bit pair (i.e., ``[0, 0, 1, 0] = 0x02``) whose status value is ``SUSPENDED``.  
  
  In case any error occurs when the Status Token Endpoint generates the response, following HTTP Status Codes MUST be supported:
  

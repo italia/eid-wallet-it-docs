@@ -588,16 +588,16 @@ The following diagram describes the Digital Credential re-issuance flow.
 .. figure:: ../../images/Re-Issuance-Flow.svg
     :figwidth: 100%
     :align: center
-    :target: https//www.plantuml.com/plantuml/png/ZLFTRzem47_FNt5xefKAlEm9LAsiOH9IEo46ggPfGYQv46l6pdndMFVNpnVAHsYgbGTadtyVzt6v8rQUmyOa7xJDJCWHIkQA1ls-LxlUMdCPLe7GPyuoMkvbRjElZBB2wHBdHg_wzn-xKmaj7X_w6qMCFeQMwRDL6vtrAb5FQf_4EaRmUbroybIY1GMfZXxAmBt7FEhhUBI8EG4xM264AbUC-GrmYUUO2L50J_0u-Ww4DezAKLiNEbEidHMsC1Q47W9fkuu0ZsijoM4EBd3N5TsLYinOqIRO0p4hbRLeUec8Ihf9CgXLN8MMu4aPWmmJIwniXiCaFi-GlSOjmZTM70WUeWiKpiUQdPYTqgRXUGTc-3je0Uoa5TR1LXcT9-Sg-2V-zo2P550v8hqoU0DHnnsyHaJe9N62J5dfc9TijfYVLw0Bk3fbSU3UmjVnE5rCqz5y_EaQMBAuUaQwJY3-EaBAZgGbrQHbZgoqwSaDGLluiUUdDp2QpsUJpulvUFaI-lbQL7x7WnYCiWo9OEv-eTtNtqvg4D4GmfLrpMUHcs7XaShtwG4COYSyGvFrnRZTi05izmCWTjL5g1xlHGpsBig2nLszkR8wK4IVI-HESralRIUEDaZUV5ZC2-Xnk1T1NIJjj-D1rXdIgPj2e_dimByiyX4QystvG8_DUTUEtC89_cf5tXxEGBuE9AwxKVV2UVstRiNm7FTg1Hfuf1Q7vW8uZrBdPNtjmsyVVtl3E-tCpdyyEtkLqxXIDCW8bSUjTe5QISaRXfqwnpFP9gH-VV6hptVn4ZRc7m00
+    :target: https://www.plantuml.com/plantuml/png/ZLJRRXen47ttLqoVcaXS8ZLFH553GoeX9HMYqAXAAcHsPrchNfjwPY7frtTjBiAuJV73QctFcSlncRaXbexhIejtocIwpX5AvYNrkbqdrvs5uhAUruGkiuRHS2UpLNUffV6ODd6krRnxUzaU-QFfmtstaiJecgFPuDN8IcMTfVVUh1196Ci8JYrA5eyb6f0mK4qKgU7MOOw6LVDh47C2jZ17g9UvPCnRm2KUsWo9QdG43_tlG6Xoa60igq9bafKr7kqHKq87DIcp00aE5ygdXpdOcjksQCzbWsnggcgp0sQbD0PrHtYdFbqXUi6BNQ8XU9HQ8yFG44kJuPKGge2pCQxi5b-Xzw2eWcS3r_2L9TS4zueOFfu3-wBFNf7E1GW0w8sHdS8LHeOJ-nCD5DPv4o2s3lE3ukagd0SkDHOSTcFyLIjlj_OXZ8MLr2eFLwbhV6d-ALpko_GRNyi1oLkWCl1qyNBneGNDz_B7KHb-eIQ4CsFFGS3X8hPB0TimgX2HhV3Rb84-4JfF9Pt6W5VJAHJ4llzAmHiSNCFmoxV-_N2GLhy3PNlGZ09ebYDBfJj-Xw3CtlffEXhq9tSjw4ycu-6dwUHkjZb9kJs9tfZXqvzZyusAw6SP4crb4lXBKjgl9B_uUjCOXKCgJ_C7q6lOTWmnwhEswyrxln4lvGDWBn41yTf4aGOChiCayQqCHHFds7Ajk0n3v3r1l_PvysvGnAPn7wLlakxsFtwym61aHn2HpnRSjZNsfZxVT61koKcrIplj-hvjWNNmRFwZqkj4a_z-hvvlE2GE10Lwh5E_0pjNXtQ9AY9xf2J2iIQiGrzwNFBRUeWLaRv80Zmzub7Nz0QeaH6M3bVArXHXH4ZWfe7KbVu3
     
     Re-Issuance Flow Diagram
 
 
 1. The flow starts when the User opens the Wallet Instance: this step MAY be triggered either by a notification sent by the Credential Issuer (using e.g., one of the out-of-band communication contacts registered during the Issuance flow).
- 2. If the Wallet Instance  
+ 2. Regardless of the Digital Credental revocation mechanism supported, if the Wallet Instance  
  
-   - only supports Status List and does not have a valid Status Token for a stored Digital Credential, Wallet Instance MUST retrieve a fresh one following the flow described in Section :ref:`OAuth Status Lists <OAuth Status Lists>`. If any Digital Credential has status set to 0x03 - ``NEEDUPDATE``, or else
-   - if the Wallet Instance and Credential Issuer additionally support Status Assertion and the Wallet Instance does not have a valid Status Assertion for a stored Digital Credential, the Wallet Instance MAY retrieve a fresh one following the flow described in Section :ref:`OAuth Status Assertions <OAuth Status Assertions>`. If any Digital Credentials has the ``credential_status_type`` set to ``INVALID``, the Wallet Instance MUST verify the ``credential_status_detail.state claim``. If this claim is set to ``UPDATED`` or ``ATTRIBUTE_UPDATED``,
+   - only supports Status List and does not have a valid Status Token for a stored Digital Credential, Wallet Instance MUST retrieve a fresh one following the flow described in Section :ref:`OAuth Status Lists <OAuth Status Lists>`. If any Digital Credential has status set to 0x03 - ``UPDATE` or 0x04 - ``ATTRIBUTE_UPDATE``; or else
+   - together with the Credential Issuer additionally support Status Assertion and the Wallet Instance does not have a valid Status Assertion for a stored Digital Credential, the Wallet Instance MAY retrieve a fresh one following the flow described in Section :ref:`OAuth Status Assertions <OAuth Status Assertions>`. If any Digital Credentials has the ``credential_status_type`` set to ``INVALID``, the Wallet Instance MUST verify the ``credential_status_detail.state claim``. If this claim is set to ``UPDATE`` or ``ATTRIBUTE_UPDATE``, then
    
     the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped.
  
@@ -606,8 +606,9 @@ The following diagram describes the Digital Credential re-issuance flow.
 
 .. note::
 	
-  Regardless of the Digital Credental revocation mechanism supported, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential.
-
+  Regardless of the Digital Credental revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE``(using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. 
+  
+  If instead, either the Digital Credential status is set to ``UPDATE``(using OAuth Status List revocation) or ``credential_status_detail.state`` set to ``UPDATE`` (using OAuth Status List revocation) the the ``credential_status_detail.state`` is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.
 
 
 Security Considerations
