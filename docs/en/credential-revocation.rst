@@ -702,7 +702,7 @@ OAuth Status Lists
      - It MUST be set to ``statuslist+jwt``.
      - `TOKEN-STATUS-LIST`_
    * - **kid**
-     - Unique identifier of the Credential Issuer's publick key which signs the Status Token.
+     - Unique identifier of the Credential Issuer's public key which signs the Status Token.
      - :rfc:`7638#section_3`.
  
  .. list-table:: 
