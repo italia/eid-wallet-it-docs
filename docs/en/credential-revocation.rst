@@ -722,7 +722,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      - REQUIRED. The expiration time claim, if present, MUST specify the time at which the Status List Token is considered expired by the Credential Issuer.
      - [:rfc:`7519`]
    * - **ttl**
-     - OPTIONAL. The time to live claim, if present, MUST specify the maximum amount of time, in seconds, that the Status List Token can be cached by a consumer before a fresh copy SHOULD be retrieved. The value of the claim MUST be a positive number encoded in JSON as a number.
+     - OPTIONAL. The time to live claim, if present, MUST specify the maximum amount of time, in seconds, that the Status List Token can be cached by a consumer before a fresh copy SHOULD be retrieved. The value of the claim MUST be a positive number encoded in JSON as a number. This amount of time SHOULD NOT exceed the expiration time defined in **exp** claim.
      - `TOKEN-STATUS-LIST`_
    * - **status_list**
      - REQUIRED. JSON Object that contains a Status List.
