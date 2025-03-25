@@ -105,7 +105,7 @@ Article 5e, Item 4 of the regulation defines the key features and requirements o
 In detail, Wallet Instances MUST log the following items:
 
 - Signed presentation requests issued by Relying Parties.
-- Credentials, and attributes contained within them, presented to each Relying Party.
+- Credentials, and disclosed attributes, presented to each Relying Party.
 
 Regulatory References for Log Retention
 ---------------------------------------
