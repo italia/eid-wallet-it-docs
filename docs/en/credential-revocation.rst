@@ -719,7 +719,7 @@ OAuth Status Lists
      - REQUIRED. The issued at claim MUST specify the time at which the Status List Token was issued.
      - [:rfc:`7519`]
    * - **exp**
-     - OPTIONAL. The expiration time claim, if present, MUST specify the time at which the Status List Token is considered expired by the Credential Issuer.
+     - REQUIRED. The expiration time claim, if present, MUST specify the time at which the Status List Token is considered expired by the Credential Issuer.
      - [:rfc:`7519`]
    * - **ttl**
      - OPTIONAL. The time to live claim, if present, MUST specify the maximum amount of time, in seconds, that the Status List Token can be cached by a consumer before a fresh copy SHOULD be retrieved. The value of the claim MUST be a positive number encoded in JSON as a number.
