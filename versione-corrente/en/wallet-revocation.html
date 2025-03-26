@@ -132,11 +132,12 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -155,7 +156,7 @@
             
   <section id="wallet-instance-revocation">
 <span id="wallet-revocation-rst"></span><h1>Wallet Instance Revocation<a class="headerlink" href="#wallet-instance-revocation" title="Link to this heading">¶</a></h1>
-<p>This section describes the involved entities and modalities to request a Wallet Instance revocation in the IT-Wallet system.</p>
+<p>This section describes the involved entities and modalities to request a Wallet Instance revocation.</p>
 <p>The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements. When, for technical security reasons (e.g., relating to the compromise of cryptographic material) the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.</p>
 <p>As shown in <a class="reference internal" href="wallet-solution.html#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 4</span></a>, other actors MAY trigger the Wallet Instance revocation process:</p>
 <ul class="simple">
@@ -171,10 +172,14 @@
 </figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Detailed flows for <strong>PID Provider, Legal Authorities,</strong> and <strong>Supervisory Body</strong> will be covered in future versions of the technical specification.</p>
+<ul class="simple">
+<li><p>The flow for the Wallet Instance Revocation triggered by the User is detailed below.</p></li>
+<li><p>The endpoint used by the PID Provider is detailed in the Wallet Provider Catalogue of e-Service PDND Catalogue.</p></li>
+<li><p>The flow for Authorized Entities (e.g., Supervisory Bodies) is out of scope of this specification, it will be managed by each Wallet Provider.</p></li>
+</ul>
 </div>
-<section id="revocation-request-from-the-user">
-<h2>Revocation Request from the User<a class="headerlink" href="#revocation-request-from-the-user" title="Link to this heading">¶</a></h2>
+<section id="wallet-instance-revocation-request">
+<h2>Wallet Instance Revocation Request<a class="headerlink" href="#wallet-instance-revocation-request" title="Link to this heading">¶</a></h2>
 <p>Users MAY request the Wallet Instance revocation by:</p>
 <ul class="simple">
 <li><p><em>Selecting the revocation functionality from their Wallet Instance</em>: this functionality may be used by Users before changing their phone.</p></li>
@@ -183,14 +188,58 @@
 <p>In both cases, by using the Wallet Provider portal:</p>
 <ul class="simple">
 <li><p>Users MUST authenticate with at least a second-factor authentication mechanism, or have an active session that meets this requirement.</p></li>
-<li><p>The Wallet Provider MUST allow Users to view the state of all their Wallet Instances and ask for their revocation.</p></li>
+<li><p>The Wallet Provider MUST allow Users to view the state of their Wallet Instances associated with their authenticated session and ask for revocation, sending a Wallet Instance Retrieval or Revocation Request, as applicable, to the <a class="reference external" href="wallet-solution.html#wallet-instance-management-endpoint">Wallet Instance Management endpoint</a> of the Wallet Provider Backend.</p></li>
 </ul>
+<p>Below is a non-normative example of a Wallet Instances Retrieval Request.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/wallet-instances</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">walletprovider.example.com</span>
+</pre></div>
+</div>
+<p>Upon a successful retrieval, the Wallet Provider MUST return a confirmation response, with the status of all Wallet Instances associated with the User.
+Below is a non-normative example of a Wallet Instances Retrieval Response.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+
+<span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f7b2a8d9&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-03-12T10:00:00Z&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;g8b235c4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;REVOKED&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;issued_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-02-28T15:30:00Z&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Once the User identifies the Wallet Instance to be revoked, a Wallet Instance Revocation Request can be sent to the endpoint, including the Wallet Instance ID as a path parameter.
+Below is a non-normative example of a Wallet Instance Revocation Request.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PATCH</span> <span class="nn">/wallet-instances/{f7b2a8d9}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">wallet-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;REVOKED&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="wallet-instance-revocation-response">
+<h2>Wallet Instance Revocation Response<a class="headerlink" href="#wallet-instance-revocation-response" title="Link to this heading">¶</a></h2>
+<p>Upon a successful revocation, the Wallet Provider MUST return a confirmation response.
+Below is a non-normative example of a Wallet Instance Revocation Response.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</pre></div>
+</div>
 </section>
 <section id="revocation-check-mechanisms">
 <h2>Revocation Check Mechanisms<a class="headerlink" href="#revocation-check-mechanisms" title="Link to this heading">¶</a></h2>
 <p>The verification of the Wallet Instance validity MUST be performed:</p>
 <ul class="simple">
-<li><p><strong>During Digital Credential issuance or presentation phase</strong> by the Credential Issuers and Relying Parties, respectively. Only Wallet Instances in Operational or Valid state have valid Wallet Attestations. Thus, the verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers and Relying Parties by checking the presence of valid Wallet Attestation (i.e. not expired and signed by a trusted Wallet Provider).</p></li>
+<li><p><strong>During Digital Credential issuance or presentation phase</strong> by the Credential Issuers and Relying Parties, respectively. Only Wallet Instances in Operational or Valid state have valid Wallet Attestations. Thus, the verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers and Relying Parties by checking the presence of a valid Wallet Attestation (i.e. not expired and signed by a trusted Wallet Provider).</p></li>
 <li><p><strong>During the validity period of the Digital Credential</strong>  by the Credential Issuers. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.</p></li>
 </ul>
 <div class="admonition note">
@@ -215,7 +264,8 @@
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">Wallet Instance Revocation</a><ul>
-<li><a class="reference internal" href="#revocation-request-from-the-user">Revocation Request from the User</a></li>
+<li><a class="reference internal" href="#wallet-instance-revocation-request">Wallet Instance Revocation Request</a></li>
+<li><a class="reference internal" href="#wallet-instance-revocation-response">Wallet Instance Revocation Response</a></li>
 <li><a class="reference internal" href="#revocation-check-mechanisms">Revocation Check Mechanisms</a></li>
 </ul>
 </li>
@@ -241,7 +291,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/03/2025.
+      Last updated on 26/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
