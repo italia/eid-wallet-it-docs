@@ -54,7 +54,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9OWRkZGEwODZhM2I5MDI3NTA4YTk3MWYxNmUwYzQ0YWEyYzlkOGQ5MTMzNGYyZDRhZWRkMWNkNmEwYTJhZDNhOCIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.0zncFKgLgIAhcX7aTIjC44NWYBiQKM4ZmdHfBqZ0O-W38NkBanT1tz9Z7Z0OBqQqDNsehJQa4IKNzbTjAhoccA">EXAMPLE
             ON JWT.IO</a>
@@ -79,7 +79,7 @@ paths:
           description: >-
              If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
              pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
-             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
              <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
           required: false
           schema:
@@ -260,7 +260,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9MTJiYzY1YTc5ODJiNmMwNTI3M2MyOTA4MDhiMGM1ZmQ3YWQ2YWYyZDY4YTNiMmQ0ZGE0YmEyYzRhMWViN2I1MSIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.FXeF6nv84W3Yeuup3tnF6hgYMsuUqkUESPVdcYuIRwDQ6-mUZABugVQcnSM4lRoVAf4BjW0S21zbM0uHFakBxw">EXAMPLE
             ON JWT.IO</a>
@@ -286,7 +286,7 @@ paths:
           description: >-
              If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
              pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
-             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
              <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
           required: false
           schema:
@@ -457,7 +457,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiNTdkMjEzNjItZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj01NDEyZDRhMGQ4NTFkODliNDc5ZTM3MDlhOTNkNTMzMzgzYjQ5MDI0NjdkYzU4ODg0OWU1ZDQ5YmE0ODMzZTg4IiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.9vHIePhOQ-RNKeM2MNc1q4Ht6iLHWoUu7a6Ey3B-I3cCLkhyV0Jb8qEXsyyjIFmy4d71Z4-EM2zYcuu3GJ02VA">EXAMPLE
             ON JWT.IO</a>
@@ -483,7 +483,7 @@ paths:
           description: >-
              If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
              pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
-             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
              <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
           required: false
           schema:
@@ -635,7 +635,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1jZWViZWYxYWI0YmE3YjkyZjBhZWFmMzEzNTMxYWJjOWNjZDYyZjM2M2FkZGI0Y2FjNDFkODQ1MzgxZjhhZmUyIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.NgLR9DF4LLBXeOWU0DbAI5MmvamUFhprYZjN1rLXy7k80_P-AATy-Q5x7aWgfBll55nDIKONzWgf4ghUyaMQGQ">EXAMPLE
             ON JWT.IO</a>
@@ -661,7 +661,7 @@ paths:
           description: >-
              If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
              pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
-             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
              <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
           required: false
           schema:
