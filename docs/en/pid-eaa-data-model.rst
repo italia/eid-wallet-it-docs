@@ -22,7 +22,7 @@ The User attributes provided within the Italian PID are the ones listed below:
     - Date of Birth
     - Taxpayer identification number
 
-The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format. 
+The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDOC-CBOR data format. 
 
 The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections. 
 
@@ -127,7 +127,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. Alpha-2 country code, as specified in ISO 3166-1, of the country or territory of the PID/(Q)EAA Issuer.
       - Commission Implementing Regulation `EU_2024/2977`_.
     * - **status**
-      - [NSD]. REQUIRED only if the Digital Credential is short-lived. JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain either the JSON member *status_assertion* or *status_list*. 
+      - [NSD]. REQUIRED only if the Digital Credential is long-lived. JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain either the JSON member *status_assertion* or *status_list*. 
       - Section 3.2.2.2 `SD-JWT-VC`_ and Section 11 `OAUTH-STATUS-ASSERTION`_.
     * - **cnf**
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
@@ -583,16 +583,16 @@ The combined format for the (Q)EAA issuance is represented below:
 MDOC-CBOR Credential Format
 ====================================
 
-The MDOC data model is based on the ISO/IEC 18013-5 standard, initially developed for the mobile driving license (mDL) use case. 
-The MDOC data elements MUST be encoded in CBOR as defined in `RFC 8949 - Concise Binary Object Representation (CBOR) <RFC 8949 - Concise Binary Object Representation (CBOR)>`_.
+The mDOC data model is based on the ISO/IEC 18013-5 standard, initially developed for the mobile driving license (mDL) use case. 
+The mDOC data elements MUST be encoded in CBOR as defined in `RFC 8949 - Concise Binary Object Representation (CBOR) <RFC 8949 - Concise Binary Object Representation (CBOR)>`_.
 
-This data model structures mDOC Digital Credentials into distinct components: document type (**docType**), namespaces (**nameSpaces**), and cryptographic proof. 
-The document type identifies the Credential's nature, while namespaces categorize and structure data elements (or attributes, see `Attribute Namespaces`_). However, the cryptographic proof ensures integrity and authenticity through the Mobile Security Object (MSO).
+This data model structures mDOC Digital Credentials into distinct components: namespaces (**nameSpaces**), and cryptographic proof (**issuerAuth**). 
+Namespaces categorize and structure data elements (or attributes, see `Attribute Namespaces`_). While, the cryptographic proof ensures integrity and authenticity through the Mobile Security Object (MSO).
 
-The MSO securely stores cryptographic digests of attributes within the `nameSpaces`. This allows verifiers to validate disclosed attributes against corresponding **digestID** values without revealing the entire credential.
+The MSO securely stores cryptographic digests of attributes within the `nameSpaces`. This allows Relying Parties to validate disclosed attributes against corresponding **digestID** values without revealing the entire credential.
 See `Mobile Security Object`_ for details.
 
-The structure of an MDOC-CBOR Credential is outlined below and further elaborated in the following sections.
+The structure of an mDOC-CBOR Credential is outlined below and further elaborated in the following sections.
 
 .. list-table:: 
     :widths: 20 60 20
@@ -602,7 +602,7 @@ The structure of an MDOC-CBOR Credential is outlined below and further elaborate
       - **Description**
       - **Reference**
     * - **nameSpaces** 
-      - *json (JSON object)*. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. The `nameSpaces` MUST use the same value for the document type. Mandatory mDL attributes utilize the standard namespace `org.iso.18013.5.1`. However, it MAY have a domestic namespace, such as `org.iso.18013.5.1.it`, to include additional attributes defined in this implementation profile.  
+      - *tstr (text string)*. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces. Mandatory mDL attributes utilize the standard namespace `org.iso.18013.5.1`. However, it MAY have a domestic namespace, such as `org.iso.18013.5.1.it`, to include additional attributes defined in this implementation profile. Each namespace within the `nameSpaces` MUST share the same issued document type (`docType`) value, which identifies the nature of the Digital Credential, as defined in the `issuerAuth`. 
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerAuth**
       - *bstr (byte string)*. Contains *Mobile Security Object* (MSO), a COSE Sign1 Document, issued by the Credential Issuer.
@@ -610,7 +610,7 @@ The structure of an MDOC-CBOR Credential is outlined below and further elaborate
 
 Attribute Namespaces
 --------------------------------
-The **nameSpaces** object contains one or more *IssuerSignedItemBytes* that are encoded using CBOR bitsring 24 tag (#6.24(bstr .cbor)). These items are marked with the CBOR Tag 24(<<... >>) and represented in the example using the diagnostic format. It represents the disclosure information for each digest within the `Mobile Security Object` and MUST contain the following attributes:
+The **nameSpaces** object contains one or more *nameSpace* entries, each identified by a name. Within each **nameSpace**, it includes one or more *IssuerSignedItemBytes*, each encoded as a CBOR byte sring with Tag 24 (#6.24(bstr .cbor)), which appears as 24(<<... >>) in diagnostic notation. It represents the disclosure information for each digest within the `Mobile Security Object` and MUST contain the following attributes:
 
 .. list-table:: 
     :widths: 20 60 20
@@ -629,12 +629,12 @@ The **nameSpaces** object contains one or more *IssuerSignedItemBytes* that are 
       - *tstr (text string)*
       - Data element identifier.
     * - **elementValue**
-      - depends on the value, see the next table.
+      - *any value (depends on the data element)*.
       - Data element value.
 
 Attributes 
 --------------------------------
-The following **elementIdentifiers**, relevant to the Issuer MUST be included in a Digital Credential encoded in MDOC-CBOR within the respective namespaces: 
+The following **elementIdentifiers**, relevant to the Credential Issuer, MUST be included in a Digital Credential encoded in mDOC-CBOR within the respective *nameSpace*: 
 
 .. list-table:: 
    :widths: 30 70
@@ -674,12 +674,12 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
       - **Description**
       - **Reference**
     * - **1**
-      - Algorithm used to verify the cryptographic signature of the mdoc Digital Credential (REQUIRED).
+      - Algorithm used to verify the cryptographic signature of the mDOC Digital Credential (REQUIRED).
       - RFC9053
 
 .. note::
     
-    Only the Signature Algorithm MUST be present in the protected headers, other elements SHOULD not be present in the protected header.
+    Only the signature algorithm MUST be present in the protected header, other elements SHOULD not be present in the protected header.
 
 
 The **unprotected header** MUST contain the following parameter:
@@ -713,7 +713,7 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
       - **Description**
       - **Reference**
     * - **docType**
-      - *tstr (text string)*. Document type. For an mDL, the value MUST be ``org.iso.18013-5.1.mDL``.
+      - *tstr (text string)*. Defines the type of mDOC Digital Credential being issued. For example, for an mDL, the value MUST be ``org.iso.18013-5.1.mDL``.
       - [ISO 18013-5#8.3.2.1.2]
     * - **version**
       - *(tstr)* Version of the data structure being used.
@@ -729,7 +729,7 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
       - According to the algorithm defined in the protected header.
       - [ISO 18013-5#9.1.2.4]
     * - **valueDigests**
-      - Mapped digest by unique id, grouped by namespace.
+      - Mapped digest by unique id, grouped by namespaces.
       - [ISO 18013-5#9.1.2.4]
     * - **deviceKeyInfo**
       - It MUST contain the Wallet Instance's public key containing the following sub-values:
@@ -738,14 +738,29 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
           * *keyAuthorizations* (OPTIONAL).
           * *keyInfo* (OPTIONAL).
       - [ISO 18013-5#9.1.2.4]
-    * - **Status**
-      - REQUIRED only if the Digital Credential is short-lived. Object containing the MSO revocation information. If present, MUST contain the following sub-value:
-    
-            * *status_list*. A bit array that marks revoked MSOs by position (bit set to 1 = revoked). More compact for large-scale lists.
+    * - **status**
+      - REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism, which uses a bit array to mark revoked MSOs by position (bit set to 1 = revoked). 
       - [ISO 18013-5#9.1.2.6]
 
+The `status_list` MUST have the following attributes:
+
+.. list-table:: 
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Parameter**
+    - **Description**
+    - **Reference**
+  * - **idx**
+    - *integer*.  A non-negative number representing the index to check for the MSO status information in the Status List.
+    - [TOKEN-STATUS-LIST_]
+  * - **uri**
+    - *str*. A URI identifying the Status List Token that contains the MSO status information. The value of `uri` MUST be a URI conforming to [:rfc:3986].
+    - [TOKEN-STATUS-LIST_]
+
+
 .. note::
-    The private key related to the public key stored in the `deviceKey` object is used to sign the `DeviceSignedItems` object and proves the possession of the Digital Credential during the presentation phase (see the presentation phase with MDOC-CBOR).
+    The private key related to the public key stored in the `deviceKey` object is used to sign the `DeviceSignedItems` object and proves the possession of the Digital Credential during the presentation phase (see the presentation phase with mDOC-CBOR).
 
 
 MDOC-CBOR Examples
@@ -763,108 +778,106 @@ The Diagnostic Notation of the CBOR-encoded mDL is given below.
 
 Cross-Format Credential Parameters Mapping
 ======================================================
-The following table provides a comparative mapping between the data structures of SD-JWT-VC and MDOC-CBOR Digital Credentials.
+The following table provides a comparative mapping between the data structures of SD-JWT-VC and mDOC-CBOR Digital Credentials.
 It outlines the key data elements and parameters used in each format, highlighting both commonalities and differences.
 In particular, it shows how core concepts—such as issuer information, validity, cryptographic binding, and disclosures—are represented in these credential formats.
 
-For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOSE header, and `(pld)` if they appear in the payload of the JWT.
+For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOSE header, and `(pld)` if they appear in the payload of the JWT. In mDOC-CBOR, these parameters are identified within the issuerAuth or nameSpaces structures.
 
-.. table:: 
+.. list-table:: 
+   :header-rows: 1
 
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | **Information related to**    | **SD-JWT-VC Parameters**        | **MDOC-CBOR Parameters**                      |
-   +===============================+=================================+===============================================+
-   | Digital Credential definition | vct (pld)                       | IssuerAuth.doctype                            |
-   |                               |                                 |                                               |
-   |                               | –                               | IssuerAuth.version                            |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Digital Credential metadata   | vctm.name (hdr)                 | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.description (hdr)          | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.extends (hdr)              | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.schema (hdr)               | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.schema_uri (hdr)           | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.data_source (hdr)          | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.display (hdr)              | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.claims (hdr)               | namespaces                                    |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Issuer                        | iss (pld)                       | –                                             |
-   |                               |                                 |                                               |
-   |                               | issuing_authority (pld)         | namespaces.elementIdentifier.issuing_authority|
-   |                               |                                 |                                               |
-   |                               | issuing_country (pld)           | namespaces.elementIdentifier.issuing_country  |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Subject                       | sub (pld)                       | sub                                           |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Validity period               | iat (pld)                       | IssuerAuth.validityInfo.signed                |
-   |                               |                                 |                                               |
-   |                               | exp (pld)                       | IssuerAuth.validityInfo.validUntil            |
-   |                               |                                 |                                               |
-   |                               | nbf (pld)                       | IssuerAuth.validityInfo.validFrom             |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Status mechanism              | status_assertation (pld)        | –                                             |
-   |                               |                                 |                                               |
-   |                               | –                               | IssuerAuth.identifier_list                    |
-   |                               |                                 |                                               |
-   |                               | status_list (pld)               | IssuerAuth.status_list                        |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   |  Signature                    | alg (hdr)                       | IssuerAuth.1 (alg)                            |
-   |                               |                                 |                                               |
-   |                               | kid (hdr)                       | IssuerAuth.4 (kid)                            |
-   |                               |                                 |                                               |
-   |                               | signature                       | IssuerAuth.signature                          |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   |   Trust anchors               | trust_chain (OID-FED) (hdr)     | –                                             |
-   |                               |                                 |                                               |
-   |                               | x5c (hdr)                       | IssuerAuth.33 (x5chain)                       |
-   |                               |                                 |                                               |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   |   Cryptographic binding       | cnf.jwk (pld)                   | IssuerAuth.deviceKeyInfo.deviceKey            |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   |   Selective disclosure        | _sd_alg (pld)                   | IssuerAuth.digestAlgorithm                    |
-   |                               |                                 |                                               |
-   |                               | _sd (pld)                       | IssuerAuth.valueDigests                       |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Integrity                     | vct#integrity (pld)             |                                               |
-   |                               |                                 |                                               |
-   |                               | vctm.extends#integrity (hdr)    | –                                             |
-   |                               |                                 |                                               |
-   |                               | vctm.schema_uri#integrity (hdr) |                                               |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Digital Credential format     | typ (hdr)                       | –                                             |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Digital Credential            | verification (pld)              | verification                                  |
-   | auditability                  |                                 |                                               |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Disclosures                   | salt                            |                                               |
-   |                               |                                 |                                               |
-   |                               | claim name                      |  namespace                                    |
-   |                               |                                 |                                               |
-   |                               | claim value                     |                                               |
-   +-------------------------------+---------------------------------+-----------------------------------------------+
+   * - **Information Related To**
+     - **SD-JWT-VC Parameters**
+     - **mDOC-CBOR Parameters**
+   * - Digital Credential definition
+     - vct (pld)
+     - | issuerAuth.doctype
+       | issuerAuth.version
+   * - Digital Credential metadata
+     - | vctm.name (hdr)
+       | vctm.description (hdr)
+       | vctm.extends (hdr)
+       | vctm.schema (hdr)
+       | vctm.schema_uri (hdr)
+       | vctm.data_source (hdr)
+       | vctm.display (hdr)
+       | vctm.claims (hdr)
+     - | –
+       | –
+       | –
+       | –
+       | –
+       | –
+       | –
+       | nameSpaces
+   * - Issuer
+     - | iss (pld)
+       | issuing_authority (pld)
+       | issuing_country (pld)
+     - | –
+       | nameSpaces.elementIdentifier.issuing_authority
+       | nameSpaces.elementIdentifier.issuing_country
+   * - Subject
+     - sub (pld)
+     - nameSpaces.elementIdentifier.sub
+   * - Validity period
+     - | iat (pld)
+       | exp (pld)
+       | nbf (pld)
+     - | issuerAuth.validityInfo.signed
+       | issuerAuth.validityInfo.validUntil
+       | issuerAuth.validityInfo.validFrom
+   * - Status mechanism
+     - | status_assertation (pld)
+       | status_list (pld)
+     - | –
+       | issuerAuth.status_list
+   * - Signature
+     - | alg (hdr)
+       | kid (hdr)
+     - | issuerAuth.1 (alg)
+       | issuerAuth.4 (kid)
+   * - Trust anchors
+     - | trust_chain (OID-FED) (hdr)
+       | x5c (hdr)
+     - | –
+       | issuerAuth.33 (x5chain)
+   * - Cryptographic binding
+     - cnf.jwk (pld)
+     - issuerAuth.deviceKeyInfo.deviceKey
+   * - Selective disclosure
+     - | _sd_alg (pld)
+       | _sd (pld)
+     - | issuerAuth.digestAlgorithm
+       | issuerAuth.valueDigests
+   * - Integrity
+     - | vct#integrity (pld)
+       | vctm.extends#integrity (hdr)
+       | vctm.schema_uri#integrity (hdr)
+     - | 
+       | –
+       | 
+   * - Digital Credential format
+     - typ (hdr)
+     - –
+   * - Digital Credential auditability
+     - verification (pld)
+     - nameSpaces.elementIdentifier.verification
+   * - Disclosures
+     - | salt
+       | claim name
+       | claim value
+     - | 
+       | nameSpaces
+       |
 
 .. note::
 
-   - In the MDOC-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available within the IssuerAuth.  
-     In contrast, the SD-JWT format includes version information via the `vct` URL.
-
-   - `Disclosures`, `_sd`, and `_sd_alg` are specific parameters that enable selective disclosure of claims or attributes.  
-     The `_sd` and `_sd_alg` parameters are part of the SD-JWT payload, while `Disclosures` are sent separately in a Combined Format along with the SD-JWT.
-   
-   - The `vctm.claims` field in SD-JWT and the `namespaces` structure in MDOC-CBOR are functionally equivalent, 
-     as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond 
-     to `namespaces`, including attribute names, values, and digest bindings.
-
-   - The SD-JWT `signature` protects the entire Digital Credential, whereas in MDOC-CBOR, the signature applies only to the IssuerAuth component.
-  
-   - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for MDOC-CBOR Digital Credentials.
-
+   - In the mDOC-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available for the IssuerAuth.  In contrast, the SD-JWT format includes version information via the `vct` URL.
+   - `Disclosures`, `_sd`, and `_sd_alg` enable selective disclosure of SD-JWT claims.  The `_sd` and `_sd_alg` parameters are part of the SD-JWT payload, while `Disclosures` are sent separately in a Combined Format along with the SD-JWT.
+   - The `vctm.claims` parameter in SD-JWT and the `nameSpaces` structure in mDOC-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond to `nameSpaces`, including attribute names, values, and salt values.
+   - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for mDOC-CBOR Digital Credentials.
 
 
 .. _Attribute Namespaces: pid-eaa-data-model.html#attribute-namespaces
