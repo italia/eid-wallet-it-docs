@@ -111,8 +111,6 @@ Regulatory References for Log Retention
 ---------------------------------------
 
 - Regulation (EU) 2016/679 (GDPR)
-- Legislative Decree 196/2003 (Personal Data Protection Code)
 - ISO/IEC 27001:2024
 - Regulation (EU) No 910/2014 (eIDAS)
 - National regulations on traffic data retention.
-- Provisions of the Data Protection Authority.
