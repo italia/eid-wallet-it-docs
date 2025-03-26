@@ -51,7 +51,7 @@ Organizational Entities MUST implement appropriate technical and organization me
 Wallet Provider Log Retention Policy
 ------------------------------------
 
-Personal data related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.
+Information related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.
 
 Wallet Provider MUST log the following items:
 
@@ -76,7 +76,7 @@ In detail, Credential Issuers require to be compliant to the items above:
 Relying Party Log Retention Policy
 ----------------------------------
 
-Relying Parties MAY retain data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.
+Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.
 
 At the end of the retention period, data MUST be deleted or anonymized.
 
@@ -88,7 +88,7 @@ In detail, Relying Party are required to be compliant with the following items:
 Wallet Instances Logging Features
 ---------------------------------
 
-The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets.
+The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets. Please refer in particular to Recitals (11) and (13), and to Article 5e(4) and Article 6(2)(d), as well as Article 8(2)(d), which define logging obligations, user interface requirements, and data portability mechanisms.
 
 Recital (11) of the regulation highlights the critical role of transaction logging as a tool for transparency. Logs enable Wallet Users to effectively monitor their digital identity activities. This transparency aims to improve the user confidence and accountability in digital identity management.
 
