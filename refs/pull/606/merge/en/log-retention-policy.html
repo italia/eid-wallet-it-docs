@@ -188,7 +188,7 @@
 </ul>
 <section id="wallet-provider-log-retention-policy">
 <h3>Wallet Provider Log Retention Policy<a class="headerlink" href="#wallet-provider-log-retention-policy" title="Link to this heading">¶</a></h3>
-<p>Personal data related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.</p>
+<p>Information related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.</p>
 <p>Wallet Provider MUST log the following items:</p>
 <ul class="simple">
 <li><p>Evidences about the User Authentication to the Wallet Provider backends, according to the national regulation pertaining the digital identity systems, if involved (e.g: signed SAML2 Responses, OIDC ID Token).</p></li>
@@ -211,7 +211,7 @@
 </section>
 <section id="relying-party-log-retention-policy">
 <h3>Relying Party Log Retention Policy<a class="headerlink" href="#relying-party-log-retention-policy" title="Link to this heading">¶</a></h3>
-<p>Relying Parties MAY retain data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.</p>
+<p>Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.</p>
 <p>At the end of the retention period, data MUST be deleted or anonymized.</p>
 <p>In detail, Relying Party are required to be compliant with the following items:</p>
 <ul class="simple">
@@ -221,7 +221,7 @@
 </section>
 <section id="wallet-instances-logging-features">
 <h3>Wallet Instances Logging Features<a class="headerlink" href="#wallet-instances-logging-features" title="Link to this heading">¶</a></h3>
-<p>The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets.</p>
+<p>The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets. Please refer in particular to Recitals (11) and (13), and to Article 5e(4) and Article 6(2)(d), as well as Article 8(2)(d), which define logging obligations, user interface requirements, and data portability mechanisms.</p>
 <p>Recital (11) of the regulation highlights the critical role of transaction logging as a tool for transparency. Logs enable Wallet Users to effectively monitor their digital identity activities. This transparency aims to improve the user confidence and accountability in digital identity management.</p>
 <p>In addition to transparency, logs facilitates the swift and use of information with competent supervisory authorities, as outlined in Article 51 of Regulation (EU) 2016/679 (GDPR). In instances of suspicious behavior by Relying Parties, logs can be quickly provided to authorities, enabling prompt investigation and resolution of potential security threats.</p>
 <p>About data export and portability, recital (13) emphasizes the use of data export and portability objects to log person identification data and electronic attestations of attributes issued to a Wallet Instance, supporting the right to data portability. Users are enabled to extract and transfer their data between different Wallet Solutions or recover lost Wallet Instances.</p>
