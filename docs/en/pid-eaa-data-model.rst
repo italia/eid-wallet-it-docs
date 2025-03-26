@@ -758,11 +758,13 @@ The Diagnostic Notation of the CBOR-encoded mDL is given below.
 
 Cross-Format Credential Parameters Mapping
 ======================================================
-The following table provides a comparative mapping between the credential structures of SD-JWT-VC and MDOC-CBOR.
+The following table provides a comparative mapping between the data structures of SD-JWT-VC and MDOC-CBOR Digital Credentials.
 It outlines the key data elements and parameters used in each format, highlighting both commonalities and differences.
-In particular, it shows how core concepts—such as issuer information, validity, cryptographic binding, and disclosures—are represented in the two specifications.
+In particular, it shows how core concepts—such as issuer information, validity, cryptographic binding, and disclosures—are represented in these credential formats.
 
-.. table:: SD-JWT vs MDOC-CBOR Mapping
+For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOSE header, and `(pld)` if they appear in the payload of the JWT.
+
+.. table:: 
 
    +-------------------------------+---------------------------------+-----------------------------------------------+
    | **Information related to**    | **SD-JWT-VC Parameters**        | **MDOC-CBOR Parameters**                      |
@@ -793,7 +795,7 @@ In particular, it shows how core concepts—such as issuer information, validity
    |                               |                                 |                                               |
    |                               | issuing_country (pld)           | namespaces.elementIdentifier.issuing_country  |
    +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Subject                       | sub (pld)                       | sub (included using a domestic namespace)     |
+   | Subject                       | sub (pld)                       | sub                                           |
    +-------------------------------+---------------------------------+-----------------------------------------------+
    | Validity period               | iat (pld)                       | IssuerAuth.validityInfo.signed                |
    |                               |                                 |                                               |
@@ -807,32 +809,33 @@ In particular, it shows how core concepts—such as issuer information, validity
    |                               |                                 |                                               |
    |                               | status_list (pld)               | IssuerAuth.status_list                        |
    +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Cryptographic data            | alg (hdr)                       | IssuerAuth.1 (alg)                            |
+   |  Signature                    | alg (hdr)                       | IssuerAuth.1 (alg)                            |
    |                               |                                 |                                               |
    |                               | kid (hdr)                       | IssuerAuth.4 (kid)                            |
    |                               |                                 |                                               |
-   |                               | trust_chain (OID-FED) (hdr)     | –                                             |
+   |                               | signature                       | IssuerAuth.signature                          |
+   +-------------------------------+---------------------------------+-----------------------------------------------+
+   |   Trust anchors               | trust_chain (OID-FED) (hdr)     | –                                             |
    |                               |                                 |                                               |
    |                               | x5c (hdr)                       | IssuerAuth.33 (x5chain)                       |
    |                               |                                 |                                               |
-   |                               | cnf.jwk (pld)                   | IssuerAuth.deviceKeyInfo.deviceKey            |
-   |                               |                                 |                                               |
-   |                               | _sd_alg (pld)                   | IssuerAuth.digestAlgorithm                    |
+   +-------------------------------+---------------------------------+-----------------------------------------------+
+   |   Cryptographic binding       | cnf.jwk (pld)                   | IssuerAuth.deviceKeyInfo.deviceKey            |
+   +-------------------------------+---------------------------------+-----------------------------------------------+
+   |   Selective disclosure        | _sd_alg (pld)                   | IssuerAuth.digestAlgorithm                    |
    |                               |                                 |                                               |
    |                               | _sd (pld)                       | IssuerAuth.valueDigests                       |
-   |                               |                                 |                                               |
-   |                               | vct#integrity (pld)             | –                                             |
+   +-------------------------------+---------------------------------+-----------------------------------------------+
+   | Integrity                     | vct#integrity (pld)             |                                               |
    |                               |                                 |                                               |
    |                               | vctm.extends#integrity (hdr)    | –                                             |
    |                               |                                 |                                               |
-   |                               | vctm.schema_uri#integrity (hdr) | –                                             |
-   |                               |                                 |                                               |
-   |                               | Signature                       | IssuerAuth.signature                          |
+   |                               | vctm.schema_uri#integrity (hdr) |                                               |
    +-------------------------------+---------------------------------+-----------------------------------------------+
    | Digital Credential format     | typ (hdr)                       | –                                             |
    +-------------------------------+---------------------------------+-----------------------------------------------+
-   | Digital Credential            | verification (pld)              | verification (included using a domestic       |
-   | auditability                  |                                 | namespace)                                    |
+   | Digital Credential            | verification (pld)              | verification                                  |
+   | auditability                  |                                 |                                               |
    +-------------------------------+---------------------------------+-----------------------------------------------+
    | Disclosures                   | salt                            |                                               |
    |                               |                                 |                                               |
@@ -840,6 +843,23 @@ In particular, it shows how core concepts—such as issuer information, validity
    |                               |                                 |                                               |
    |                               | claim value                     |                                               |
    +-------------------------------+---------------------------------+-----------------------------------------------+
+
+.. note::
+
+   - In the MDOC-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available within the IssuerAuth.  
+     In contrast, the SD-JWT format includes version information via the `vct` URL.
+
+   - `Disclosures`, `_sd`, and `_sd_alg` are specific parameters that enable selective disclosure of claims or attributes.  
+     The `_sd` and `_sd_alg` parameters are part of the SD-JWT payload, while `Disclosures` are sent separately in a Combined Format along with the SD-JWT.
+   
+   - The `vctm.claims` field in SD-JWT and the `namespaces` structure in MDOC-CBOR are functionally equivalent, 
+     as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond 
+     to `namespaces`, including attribute names, values, and digest bindings.
+
+   - The SD-JWT `signature` protects the entire Digital Credential, whereas in MDOC-CBOR, the signature applies only to the IssuerAuth component.
+  
+   - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for MDOC-CBOR Digital Credentials.
+
 
 
 .. _Attribute Namespaces: pid-eaa-data-model.html#attribute-namespaces
