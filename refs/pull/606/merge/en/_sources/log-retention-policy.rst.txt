@@ -83,7 +83,7 @@ At the end of the retention period, data MUST be deleted or anonymized.
 In detail, Relying Party are required to be compliant with the following items:
 
 - Relying Parties MUST log Wallet's signed presentations, linked to signed presentation requests, containing the Credential Signed part and the Wallet Signed part, such as the Issuer-Signed-JWT and the KB-JWT using SD-JWT-VC.
-- Relying Parties SHOULD not log Credetnail presentation disclosure map, where not necessary. 
+- Relying Parties SHOULD not log Credential presentation disclosure maps, where not necessary. 
 
 Wallet Instances Logging Features
 ---------------------------------
