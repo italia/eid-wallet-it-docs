@@ -3,16 +3,16 @@
 .. _log-retention-policy.rst:
 
 
-General Log and Data Retention Policies
+General Log Retention Policies
 =======================================
 
-The retention of logs and personal data must comply with the principles of the GDPR, the requirements of the eIDAS regulation and the requirements defined in ISO/IEC 27001, with particular attention to data minimization and storage limitation.
+The retention of logs is a key element for ensuring security, including fraud prevention, incident detection, system integrity, and compliance with applicable legal obligations. It MUST also be align with the requirements defined in ISO/IEC 27001, in particular wih regard auditability, access control, and secure storage. As long log management may involve the processing of personal data, it also constitutes a measure of accountability under the GDPR, with implications for data minimization, storage limitation, and purpose limitation; for these aspects, reference is made to the relevant provisions of the GDPR and sector-specific regulations.
 
 For all about log handling, Wallet Providers, Credential Issuers, and Relying Parties are considered Organizational Entities. 
 
 Logs related to Wallet data exchange activities (accesses, transactions, credential issuance/revocation) concerning the End User, as the data subject, MUST be retained for a limited period for security, fraud prevention, dispute resolution, and legal obligations.
 
-Organizational Entities are responsible for data retention according to their respective roles. Solutions related to Wallet Providers, Credential Issuers, and Relying Parties MUST implement audit logging for the activities of administrators and service operators with access to data exchange and logs.
+Organizational Entities are responsible for log retention according to their respective roles. Solutions related to Wallet Providers, Credential Issuers, and Relying Parties MUST implement audit logging for the activities of administrators and service operators with access to data exchange processes and logs.
 
 Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, **the maximum retention period for data logs is 12 months**. Logs MUST be securely stored to ensure integrity and immutability.
 
