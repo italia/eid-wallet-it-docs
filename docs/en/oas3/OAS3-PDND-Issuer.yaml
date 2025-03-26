@@ -22,8 +22,8 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
-            Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiIsImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.fn94DTQT2aVj5tpIkvA5ajLTp2RmzwiQ0kvex1vmmSl2iAh_XvEOMcqL-ZW72SBy_4o8YBFunNbDNkL8EcLlig">EXAMPLE
+            Interoperabilità. Based on the implementation choices, it can be either Bearer or DPoP.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZiIsImRpZ2VzdCI6eyJhbGciOiJTSEEyNTYiLCJ2YWx1ZSI6IjIzZGI4YTlkYzMxMjBiMGY1MzFlNjllNWM1NGQ4ZDE4MjcwMmQzNDFmYmUxOWYzNzE2NzEwNTZkN2JjN2ZjYWEifSwiY25mIjp7ImprdCI6ImY4MjE3NjA2NmViMzhmZDMzODBkMmQzZDM0ZGViNTg5MGU2ODVlZThlOWUxNWE3ZWI4NDg3MmE2ZmFjMzQwNjMifX0.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -36,13 +36,13 @@ paths:
           in: header
           description: >-
             DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern. See also <a target="blank"
+            pattern using the POP_DPoP implementation. See also <a target="blank"
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImNiZGJmNmZlZWY0ODA2MjI4ZGJmNDY0Yjc1MGE5NGMyOGQ4ZTUzMDFhNzE1ZmZjM2U2Y2QyZjk0YjZlOGUxNTQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.uL017GdfXzJ-9jhs6AUpwtkWLgyBgDWOtlrFvMltLp0C0NFwwMpOGnv-FxxwfYdJj--cteyCjGnmJZhekEKIEA">EXAMPLE
             ON JWT.IO</a>
-          required: true
+          required: false
           schema:
             type: string
             format: JWT
@@ -74,6 +74,18 @@ paths:
           schema:
             type: string
             example: SHA-256=9ddda086a3b9027508a971f16e0c44aa2c9d8d91334f2d4aedd1cd6a0a2ad3a8
+        - name: Agid-JWT-TrackingEvidence
+          in: header
+          description: >-
+             If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
+             pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
+             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
+          required: false
+          schema:
+            type: string
+            format: JWT
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
       requestBody:
         content:
           application/json:
@@ -216,8 +228,8 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
-            Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSIsImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.RQrkQvSrlJ0i3zxRuqxrs31FzGAy5yCR54VBR_v597R19OjiD4LR1u6H1_HK6GbhjJJJoENGG1fhV6MThqXMyw">EXAMPLE
+            Interoperabilità. Based on the implementation choices, it can be either Bearer or DPoP.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjE5MiwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoidWF0LmludGVyb3AucGFnb3BhLml0IiwiZXhwIjoxNzM2ODQ2NDkyLCJpYXQiOjE3MzY4NDYxOTIsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLTlmYWYtNGRkZi05MDFkLWQ0YTg5MjQxOWQ4YSIsImRpZ2VzdCI6eyJhbGciOiJTSEEyNTYiLCJ2YWx1ZSI6Ijk4ZTJiYjFhYWRkZmEyYjk4NWRjMGM1NzZhZjRlMzc0NzZlOWYwZmM5MDAyNWMwNGI0ZTU5ODg4YzY4MWUzN2IifSwiY25mIjp7ImprdCI6ImY4MjE3NjA2NmViMzhmZDMzODBkMmQzZDM0ZGViNTg5MGU2ODVlZThlOWUxNWE3ZWI4NDg3MmE2ZmFjMzQwNjMifX0.RQrkQvSrlJ0i3zxRuqxrs31FzGAy5yCR54VBR_v597R19OjiD4LR1u6H1_HK6GbhjJJJoENGG1fhV6MThqXMyw">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -230,13 +242,13 @@ paths:
           in: header
           description: >-
             DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern. See also <a target="blank"
+            pattern using the POP_DPoP implementation. See also <a target="blank"
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImE1OWU3YTQ3YjExOWIxYTRiY2RiNGU1MzE2Y2IxYWM1ZmJjOThiZjk4YmE4OTBjM2E4NThmNTM3MDIyZTNjNmEiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.Htc8JQ2v63SO-yyoFfsnX_zNNUymCV4OGEGTVsqofpHhxniw7N1PyMRrHYj9PlRGaU7_uPR0BGAHjrQQ1IlMow">EXAMPLE
             ON JWT.IO</a>
-          required: true
+          required: false
           schema:
             type: string
             format: JWT
@@ -269,6 +281,18 @@ paths:
             type: string
             format: JWT
             example: SHA-256=12bc65a7982b6c05273c290808b0c5fd7ad6af2d68a3b2d4da4ba2c4a1eb7b51
+        - name: Agid-JWT-TrackingEvidence
+          in: header
+          description: >-
+             If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
+             pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
+             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
+          required: false
+          schema:
+            type: string
+            format: JWT
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
       requestBody:
         content:
           application/json:
@@ -401,8 +425,8 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
-            Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.IrCeQjd3kyTXwdhrT2zv_8PE_MUCnbVn1jaNF5S2PfxlM_vzKDUiKxFIKkZ6M8Epj5M-dFbfvrdAe-B2vbAuXw">EXAMPLE
+            Interoperabilità. Based on the implementation choices, it can be either Bearer or DPoP.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiJjYzY0OTg4NWRhNzZkNWI4ZDk4NWUxNGEwOWNlNGZmNjM3Y2IwYzA0ZjMwMGYzNzFjMGM0ZjBmMDZiOTk2OGE2In0sImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.IrCeQjd3kyTXwdhrT2zv_8PE_MUCnbVn1jaNF5S2PfxlM_vzKDUiKxFIKkZ6M8Epj5M-dFbfvrdAe-B2vbAuXw">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -415,13 +439,13 @@ paths:
           in: header
           description: >-
             DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern. See also <a target="blank"
+            pattern using the POP_DPoP implementation. See also <a target="blank"
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6IjQ4NGMzMzRiMWZjNTExMGRiYTlmZmNkMDJiNDI1ZTk5ODBlNTczYWQ1NDMzYTg4ZjkwZDFmMDZkYTdlZTVkNjIiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.pfeYZtHqrach0IESBrKHnpI08P4LQpQG6Lmqt-I7Tddk2MKeO4BOc3NZjzNRX6Jpv2iWz4HdsEflL4SVdT6y-Q">EXAMPLE
             ON JWT.IO</a>
-          required: true
+          required: false
           schema:
             type: string
             format: JWT
@@ -454,6 +478,18 @@ paths:
             type: string
             format: JWT
             example: SHA-256=5412d4a0d851d89b479e3709a93d533383b4902467dc588849e5d49ba4833e88
+        - name: Agid-JWT-TrackingEvidence
+          in: header
+          description: >-
+             If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
+             pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
+             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
+          required: false
+          schema:
+            type: string
+            format: JWT
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
       requestBody:
         content:
           application/json:
@@ -567,8 +603,8 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
-            Interoperabilità.</a><br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.xQl8Nb8S-j-gHFn5O90N14i1HYWnK4HfzjCXFXKHAzpZZ8ErrYopUcZ3FqOb4cSSPs2Bo7ZR2UNFwQD8tkgGzA">EXAMPLE
+            Interoperabilità. Based on the implementation choices, it can be either Bearer or DPoP.</a><br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiJjYzY0OTg4NWRhNzZkNWI4ZDk4NWUxNGEwOWNlNGZmNjM3Y2IwYzA0ZjMwMGYzNzFjMGM0ZjBmMDZiOTk2OGE2In0sImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.xQl8Nb8S-j-gHFn5O90N14i1HYWnK4HfzjCXFXKHAzpZZ8ErrYopUcZ3FqOb4cSSPs2Bo7ZR2UNFwQD8tkgGzA">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
@@ -581,13 +617,13 @@ paths:
           in: header
           description: >-
             DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern. See also <a target="blank"
+            pattern using the POP_DPoP implementation. See also <a target="blank"
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImI1MTNiYzI0MjgzOGZmYTEzMDk4N2M3MzBjMTBiMDg5YTUzOTA5MmZiZTAwMDk1Zjg2MWU1NGJlMmQyYWEwNTMiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.jApDgx5xK5xmpuM1CnzLniYVUzvll722NstOHuCiPWAF4-0IrDpuAMcQOpg-3rKUdKYXw5wlVZu7_wjRHezugQ">EXAMPLE
             ON JWT.IO</a>
-          required: true
+          required: false
           schema:
             type: string
             format: JWT
@@ -620,6 +656,18 @@ paths:
             type: string
             format: JWT
             example: SHA-256=ceebef1ab4ba7b92f0aeaf313531abc9ccd62f363addb4cac41d845381f8afe2
+        - name: Agid-JWT-TrackingEvidence
+          in: header
+          description: >-
+             If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
+             pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
+             href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
+          required: false
+          schema:
+            type: string
+            format: JWT
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
       requestBody:
         content:
           application/json:
@@ -748,7 +796,7 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
-            Interoperabilità.</a><br/><br/><a target="blank"
+            Interoperabilità. Based on the implementation choices, it can be either Bearer or DPoP.</a><br/><br/><a target="blank"
             href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.mhy3gsKKcstrk9lbD6ia97KqPvPS4xZ7hggsUAk7SkkTNV1af9t9xh7yic_sxUORoYbwQi_J1IVAtOiEN_Gysw">EXAMPLE
             ON JWT.IO</a>
           required: true
@@ -762,13 +810,13 @@ paths:
           in: header
           description: >-
             DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern. See also <a target="blank"
+            pattern using the POP_DPoP implementation. See also <a target="blank"
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiYXRoIjoiNzFkZWY4MWYyZjE3MWI1MmFkYWMxNzg5ODI3NmFlZWU5OTlhZWUzZDNkZmE3NjkyMjJjODA0NDBmNDQ0ODgxYSIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNzYyMjYyNjE2fQ.H9r1N2s8xp_rcNr4Bs7_n-6vNKN4BPsvXzsV_UWwWiyr314xPMv4v6_8ac2SIbM-cJ-O4hlZysOUrjC7rewlag">EXAMPLE
             ON JWT.IO</a>
-          required: true
+          required: false
           schema:
             type: string
             format: JWT
