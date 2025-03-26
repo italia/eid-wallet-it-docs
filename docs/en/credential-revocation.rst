@@ -728,6 +728,10 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      - REQUIRED. JSON Object that contains a Status List.
      - `TOKEN-STATUS-LIST`_
  
+ .. note::
+
+  It is RECOMMENDED that the Credential Issuer sets the ``exp`` claim so that the Status List Token is short-lived. Typically, this involves the ``exp`` claim not to exeed the ``iat`` claim by more than 24 hours.    
+ 
  A JSON-encoded Status List has the following structure:
  
  .. list-table:: 
