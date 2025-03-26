@@ -13,11 +13,11 @@ such as Credential Issuers and Relying Parties.
 
 These Credentials are a set of data that can uniquely identify a natural or legal person,
 along with other Qualified and non-qualified Electronic Attestations of Attributes,
-also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1]. 
+also known as QEAAs and EAAs respectively, or (Q)EAAs for short[1].
 
 Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
 
-By supporting the mobile app, the Wallet Provider enusers the security and reliability of the entire Wallet Solution,
+By supporting the mobile app, the Wallet Provider ensures the security and reliability of the entire Wallet Solution,
 as it is responsible for issuing the Wallet Attestation,
 which is a cryptographic proof about the authenticity and integrity of the Wallet Instance.
 
@@ -49,22 +49,22 @@ To guarantee the utmost security, these cryptographic keys MUST be securely stor
 Wallet Instance Lifecycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Wallet Provider is in charge of the implementation and provision of Wallet Instances also handling their entire lifecycle. 
+The Wallet Provider is in charge of the implementation and provision of Wallet Instances also handling their entire lifecycle.
 
 In this section, state machines are presented to explain the Wallet Instance and Digital Credential states and their transitions and relations.
 
 .. note::
 
-  PID is specialized Digital Credential type that produces impacts on the Wallet Instance's lifecycle. The revocation of the PID MAY also have potential impacts on (Q)EAAs, if these was issued using the presentation of the PID. 
+  PID is specialized Digital Credential type that produces impacts on the Wallet Instance's lifecycle. The revocation of the PID MAY also have potential impacts on (Q)EAAs, if these was issued using the presentation of the PID.
   When the distinction between PID and (Q)EAA is not needed, the term Digital Credential is used.
 
 .. note::
 
-  In the current version of `EIDAS-ARF`_, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first to prove that the keys used for key 
-  binding of Digital Credentials reside in a trustworthy WSCD, the second to prove that the Wallet Instance is authentic. In this technical specification, a single attestation (Wallet Attestation) is 
-  used as proof of both the Wallet Instance authenticity and WSCD trustworthiness. The future version of this specification will be updated accordingly. 
+  In the current version of `EIDAS-ARF`_, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first to prove that the keys used for key
+  binding of Digital Credentials reside in a trustworthy WSCD, the second to prove that the Wallet Instance is authentic. In this technical specification, a single attestation (Wallet Attestation) is
+  used as proof of both the Wallet Instance authenticity and WSCD trustworthiness. The future version of this specification will be updated accordingly.
 
-As shown in :numref:`fig_Wallet_Instance_States`, the Wallet Instance has four distinct states: **Installed**, **Operational**, **Valid**, and **Uninstalled**. 
+As shown in :numref:`fig_Wallet_Instance_States`, the Wallet Instance has four distinct states: **Installed**, **Operational**, **Valid**, and **Uninstalled**.
 Each state represents a specific functional status and determines the actions that can be performed.
 
 .. _fig_Wallet_Instance_States:
@@ -77,82 +77,82 @@ Each state represents a specific functional status and determines the actions th
 
 .. note::
 
-  The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically checks the Wallet Instances security and compliance status. 
+  The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically checks the Wallet Instances security and compliance status.
 
 .. note::
 
-  The Wallet Attestation is short-lived. It MUST be automatically re-issued before its expiration time. For this reason, the Wallet Instance expiration 
+  The Wallet Attestation is short-lived. It MUST be automatically re-issued before its expiration time. For this reason, the Wallet Instance expiration
   transition is not considered in :numref:`fig_Wallet_Instance_States`.
 
 Transition to Installed
 ....................................
-The state machine begins with the Wallet Instance installation (**WI INST**) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the 
+The state machine begins with the Wallet Instance installation (**WI INST**) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the
 official app store of their device's operating system (this ensures authenticity via system checks), leading to the **Installed** state.
 
-When the state is **Installed**, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from **Operational** or **Valid** to **Installed**. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation 
+When the state is **Installed**, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from **Operational** or **Valid** to **Installed**. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation
 (see “Transition to Operational” section), as not usable anymore. Revocation can occur in the following cases:
 
-  * for technical security reasons (e.g., relating to the compromise of cryptographic material); 
+  * for technical security reasons (e.g., relating to the compromise of cryptographic material);
   * in case of explicit User requests (e.g., due to loss, theft of the Wallet Instance);
   * death of the User;
   * illegal activities reported by Judicial or Supervisory Bodies.
 
 .. note::
 
-  While for the ARF the revocation of the Wallet Instance is accomplished by revoking the Wallet Attestation (see Topic 9 and Topic 38 in Annex 2), 
-  in this specification the revocation is managed differently. Being the Wallet Attestation short-lived, it does not have a status management mechanism. 
-  For this reason, the Wallet Instance revocation transition is accomplished by deleting the Wallet Cryptographic Hardware Key from the WSCD of the Wallet 
+  While for the ARF the revocation of the Wallet Instance is accomplished by revoking the Wallet Attestation (see Topic 9 and Topic 38 in Annex 2),
+  in this specification the revocation is managed differently. Being the Wallet Attestation short-lived, it does not have a status management mechanism.
+  For this reason, the Wallet Instance revocation transition is accomplished by deleting the Wallet Cryptographic Hardware Key from the WSCD of the Wallet
   Instance and from the account associated with the User. This transition is completed when the Wallet Instance is online.
 
 Transition to Operational
 ....................................
-After installation, the User opens the Wallet Instance and an activation begins (**WI ACT**). 
-At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic 
-Hardware Key Tag, subject to obtaining the User's consent (see the “Wallet Instance Initialization and Registration” section for more details). 
-This association allows the User to directly request Wallet Instance revocation from the Wallet Provider, and it also allows the Wallet Provider to 
+After installation, the User opens the Wallet Instance and an activation begins (**WI ACT**).
+At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
+Hardware Key Tag, subject to obtaining the User's consent (see the “Wallet Instance Initialization and Registration” section for more details).
+This association allows the User to directly request Wallet Instance revocation from the Wallet Provider, and it also allows the Wallet Provider to
 revoke the Wallet Instance associated with that User.
 
 .. note::
 
-  As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal. 
-  This specification mandates the use of at least a second-factor for User authentication.  
+  As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
+  This specification mandates the use of at least a second-factor for User authentication.
 
-As part of the activation, the Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance 
-with the technical and security requirements, and the authenticity and integrity of the installed Wallet Instance. 
-Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state. 
+As part of the activation, the Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance
+with the technical and security requirements, and the authenticity and integrity of the installed Wallet Instance.
+Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state.
 
-In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a 
-personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal 
+In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
+personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
 preferences and device's capabilities. Please refer to `Wallet Attestation`_.
 
-In the **Operational** state, Users can request the issuance of PID (**PID ISS**) or (Q)EAAs if the PID is not required in the issuance 
-(**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented 
-without transitioning the Wallet Instance to another state (**(Q)EEA PRE** transition). 
+In the **Operational** state, Users can request the issuance of PID (**PID ISS**) or (Q)EAAs if the PID is not required in the issuance
+(**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
+without transitioning the Wallet Instance to another state (**(Q)EEA PRE** transition).
 
-A **Valid** Wallet Instance MUST transition back to the **Operational** state due to **PID EXP/REV/DEL** transition, when the associated PID expires, or is revoked by its Provider or either deleted by the User. 
+A **Valid** Wallet Instance MUST transition back to the **Operational** state due to **PID EXP/REV/DEL** transition, when the associated PID expires, or is revoked by its Provider or either deleted by the User.
 
 Transition to Valid
 ....................................
-A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**). In this state, Users can obtain and present 
+A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**). In this state, Users can obtain and present
 new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to :ref:`PID/(Q)EAA Issuance` and :ref:`Relying Party Solution`.
 
 .. note::
 
-  Users can have only one Wallet Instance in **Valid** state for the same Wallet Solution. Thus, when a User installs and obtains a PID on a new Wallet 
-  Instance of the same Wallet Solution from the same Wallet Provider, the PID in the previous Wallet Instance MUST be revoked and the Wallet Instance became 
+  Users can have only one Wallet Instance in **Valid** state for the same Wallet Solution. Thus, when a User installs and obtains a PID on a new Wallet
+  Instance of the same Wallet Solution from the same Wallet Provider, the PID in the previous Wallet Instance MUST be revoked and the Wallet Instance became
   **Operational**.
 
 Transition to Uninstalled
 ....................................
 
-Across all states, **Installed**, **Actived**, **Operational**, or **Valid**, the Wallet Instance can be removed entirely through the Wallet Instance 
+Across all states, **Installed**, **Actived**, **Operational**, or **Valid**, the Wallet Instance can be removed entirely through the Wallet Instance
 uninstall (**WI UNINST**) transition, leading to the **Uninstalled** state. If a Wallet Instance is **Uninstalled** it ends its lifecycle.
 
 Wallet Instance Lifecycle Management
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While :numref:`fig_Wallet_Instance_States` shows the different states a Wallet Instance may acquire during its lifecycle, 
-:numref:`fig_Wallet_Instance_Lifecycle` shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle 
+While :numref:`fig_Wallet_Instance_States` shows the different states a Wallet Instance may acquire during its lifecycle,
+:numref:`fig_Wallet_Instance_Lifecycle` shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
 and the effect on their local storage.
 
 .. _fig_Wallet_Instance_Lifecycle:
@@ -160,17 +160,17 @@ and the effect on their local storage.
     :figwidth: 100%
     :align: center
     :target: https://www.plantuml.com/plantuml/png/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00
-    
+
     Wallet Instance Lifecycle Management.
 
-Through a Wallet Instance in an **Installed** state, a User is able to start the **Wallet Instance Activation** (**WI ACT**). 
-As a result, the Wallet Instance MUST create a Wallet Cryptographic Hardware Key pair. In addition, if not already done, 
-Users MUST set their preferred method of unlocking their Wallet Instance. As a result of the **Wallet Instance Revocation** (**WI REV**), the Wallet Instance MUST 
+Through a Wallet Instance in an **Installed** state, a User is able to start the **Wallet Instance Activation** (**WI ACT**).
+As a result, the Wallet Instance MUST create a Wallet Cryptographic Hardware Key pair. In addition, if not already done,
+Users MUST set their preferred method of unlocking their Wallet Instance. As a result of the **Wallet Instance Revocation** (**WI REV**), the Wallet Instance MUST
 delete the Wallet Cryptographic Hardware Key pairs.
 
 A Wallet Provider instead is responsible for:
 
-  * **Wallet Instance Activation** (**WI ACT**): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal. 
+  * **Wallet Instance Activation** (**WI ACT**): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.
   * **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
   * **Data Purging**: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.
 
@@ -203,7 +203,7 @@ Wallet Provider Entity Configuration JWT Header
     * - **Key**
       - **Value**
     * - alg
-      - Algorithm used to verify the token signature. It MUST be one of the possible values indicated in this `table <https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
+      - Algorithm used to verify the token signature. It MUST be one of the possible values indicated in this `table <https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/algorithms.html>`_ (e.g., ES256).
     * - kid
       - Thumbprint of the public key used for signing, according to :rfc:`7638`.
     * - typ
@@ -411,10 +411,10 @@ The following table lists HTTP Status Codes and related error codes that MUST be
    * - **HTTP Status Code**
      - **Error Code**
      - **Description**
-   * - ``500 Internal Server Error`` 
+   * - ``500 Internal Server Error``
      - ``server_error``
      - An internal server error occurred while processing the request.
-   * - ``503 Service Unavailable`` 
+   * - ``503 Service Unavailable``
      - ``temporarily_unavailable``
      - Service unavailable. Please try again later.
 
@@ -445,7 +445,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
     For Android devices, the inclusion of **Strongbox Keymaster** may vary by manufacturer, who decides whether to include it or not.
 
     If any errors occur in any DIS process, such as device integrity verification, for example, due to an unavailable DIS, an internal error, or an invalid nonce in the integrity request, the DIS raises an error response (e.g., see  `Play Integrity API Errors <Play Integrity API Errors_>`_). The Wallet Instance MUST process these errors accordingly. Details on error handling are left to the Wallet Instance implementation.
- 
+
 
 **Step 8**: The Device Integrity Service performs the following actions:
 
@@ -543,25 +543,25 @@ The following table lists HTTP Status Codes and related error codes that MUST be
    * - **HTTP Status Code**
      - **Error Code**
      - **Description**
-   * - ``400 Bad Request`` 
+   * - ``400 Bad Request``
      - ``bad_request``
      - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
-   * - ``403 Forbidden`` 
+   * - ``403 Forbidden``
      - ``integrity_check_error``
      - The device does not meet the Wallet Provider’s minimum security requirements.
-   * - ``403 Forbidden`` 
+   * - ``403 Forbidden``
      - ``invalid_request``
      - The provided challenge is invalid, expired, or already used.
-   * - ``403 Forbidden`` 
+   * - ``403 Forbidden``
      - ``invalid_request``
      - The signature of the Key Attestation is invalid.
    * - ``422 Unprocessable Content`` [OPTIONAL]
      - ``validation_error``
      - The request does not adhere to the required format.
-   * - ``500 Internal Server Error`` 
+   * - ``500 Internal Server Error``
      - ``server_error``
      - An internal server error occurred while processing the request.
-   * - ``503 Service Unavailable`` 
+   * - ``503 Service Unavailable``
      - ``temporarily_unavailable``
      - Service unavailable. Please try again later.
 
