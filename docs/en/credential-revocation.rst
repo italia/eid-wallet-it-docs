@@ -686,7 +686,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  Status List Token 
  .....................
  
- The Credential Issuer MUST make available a Status List Token at the Status List Endpoint. 
+ The Status List Token is available at the Status List Endpoint and contains the following parameters. 
  
  .. list-table:: 
    :widths: 20 60 20
