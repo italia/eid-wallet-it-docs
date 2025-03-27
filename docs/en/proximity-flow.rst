@@ -19,7 +19,6 @@ The presentation phase is structured into three broad sub-phases:
   3. **Communication - Device Retrieval**: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mdoc uses the data from the session establishment message to derive the session key and decrypt the mdoc request.
   During the communication subphase, the Relying Party Instance has the option to request information from the Wallet using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the Verifier App via a session data message. This technical implementation profile only supports Bluetooth Low Energy (BLE) for the communication sub-phase.
 
-
 The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.
 
 .. _fig_High-Level-Flow-ITWallet-Presentation-ISO-updated:
