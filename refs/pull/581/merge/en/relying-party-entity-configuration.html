@@ -132,11 +132,12 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -191,7 +192,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <tr class="row-odd"><td><p><strong>request_uris</strong></p></td>
 <td><p>JSON Array of <em>request_uri</em> values that are pre-registered by the RP. These URLs MUST use the <em>https</em> scheme. See <a class="reference external" href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration 1.0</a> Section 2.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_uris_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>response_uris</strong></p></td>
 <td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>authorization_signed_response_alg</strong></p></td>
@@ -213,7 +214,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The claims <strong>response_uris_supported</strong> are introduced in this specification.</p>
+<p>The parameter <strong>response_uris</strong> is introduced in this specification.</p>
 </div>
 </section>
 <section id="example-of-a-relying-party-entity-configuration">
@@ -342,7 +343,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 03/03/2025.
+      Last updated on 27/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

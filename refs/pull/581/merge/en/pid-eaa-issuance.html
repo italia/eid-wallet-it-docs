@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Digital Credential Lifecycle" href="credential-revocation.html" />
+    <link rel="next" title="PID/(Q)EAA Presentation" href="pid-eaa-presentation.html" />
     <link rel="prev" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -134,11 +134,12 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -180,10 +181,10 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <section id="high-level-pid-flow">
 <h2>High-Level PID flow<a class="headerlink" href="#high-level-pid-flow" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-pid-issuance"><span class="std std-numref">Fig. 5</span></a> shows a general architecture and highlights the main operations involved in the issuance of a PID.</p>
-<figure class="align-center" id="id62" style="width: 100%">
+<figure class="align-center" id="id63" style="width: 100%">
 <span id="fig-high-level-flow-itwallet-pid-issuance"></span><img alt="_images/High-Level-Flow-ITWallet-PID-Issuance.svg" src="_images/High-Level-Flow-ITWallet-PID-Issuance.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">PID Issuance - General architecture and high level flow.</span><a class="headerlink" href="#id62" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">PID Issuance - General architecture and high level flow.</span><a class="headerlink" href="#id63" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below the description of the steps represented in the previous picture:</p>
@@ -208,10 +209,10 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <li><p>the (Q)EAA requires a high security implementation profile.</p></li>
 </ul>
 </div></blockquote>
-<figure class="align-center" id="id63" style="width: 70%">
+<figure class="align-center" id="id64" style="width: 70%">
 <span id="fig-high-level-flow-itwallet-qeaa-issuance"></span><img alt="_images/High-Level-Flow-ITWallet-QEAA-Issuance.svg" src="_images/High-Level-Flow-ITWallet-QEAA-Issuance.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">(Q)EAA Issuance - General architecture and high level flow</span><a class="headerlink" href="#id63" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">(Q)EAA Issuance - General architecture and high level flow</span><a class="headerlink" href="#id64" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below the description of the most relevant operations involved in the (Q)EAA issuance:</p>
@@ -287,10 +288,10 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </pre></div>
 </div>
 <p>The following diagram shows the <em>Issuance flow</em>.</p>
-<figure class="align-center" id="id64" style="width: 100%">
+<figure class="align-center" id="id65" style="width: 100%">
 <span id="fig-low-level-flow-itwallet-pid-qeaa-issuance"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/hLPVQ-D647_VJp7a7Xg3JKhfqy6LSnBtOdeaRiv7NWfYinfBG-HTTVzOvtxwxevih-npQ4CB8P9s_lz-CxF-wBoqFgmR8OCtEgoVqGhHnZDIr4hjuUAhGti1qa4Gujbywmz-SE3MKQkjZSOBUFUPgjfVDm6FRQ-jwGxcybZs99i6FSoryr8hP9rEe2uXHZd9OJ6_lRhyVJIRJc5XpORAdKyImchZ4Sm6BNHZYfdCFzqjFptEPlVYfaRr0cTiWHma_s1Mu6k4Np4UIaz6WupnpRENf86yWpLwMKelKruSIOWE9hz01-z1MPGUOV7RpGoKAH5Y3hGYjEpaQJwTBCnYfqzHVp5zX4VyCw3pSFc71b0DeVO5bUFqPNlH2D97Hxw6XsdmzUI6jIPJxwCq9_cQC0K5qbpN7SfOs12YSm3rHFmRS7O6ZYejVR2uLzbvE4cH0Tp8XahoMnWWA0WcZE4U4zSQxH0kTn0KmT8Oy5jB5br1UXHDEZO9yZsakesblpXE1ZI32GCt8n4aMzAR3OLiFDnOBAEKP0CVFgHMEW9p7E3TqzryEHF19TfZWAIiE4BFeURtQ8xps-aNYCQfHKfmgiOrEiP9fUfrJCMqlNApZMSHKkL9Ln1utfAMbygxKKOI6uSdAVQTFdfhch6o_vYABlUy1WcdO6UAqw2C8NL9V91p1uAwDndbAQnGeuq2k4sD_uBRLsMjDMOrd4rO6NjsFNZpWXfYIQqXxSLWXfTHadk7eHluvgckhDI-yDiMUQnZxlcbsA-8tSINP55nl_7O_wzJBuXXo4aVu9HAeNC5LvcQVcNHrVjFVd3wnoEOCRWtMk41WxlbSW6BXozBkD99aEFk5JED1MkClj-XFNpnhpNEeNDazB7wYNx6_5KELHwB0v6vXZmqPyWSuiEe3odEVWlY5zxuPXYmK4Qlg0hzrkJDmiRVxnHo83UI6ldS88WCtL0duvSZkF5kawXzY26e6OwyVcCPF431WKfBVASUehfqBunYkjVt2q240-Bz0NWJxOr5Rh6SIGxBuXDHRfcSxFdE6SWlJqeR0svGyyKu86dA9FMzBSvTSTUVlyx48rRaV3oLJNEI-SHY8psM84Z7yjSSZe68NWxnhonkp2wnV8TbfevAornnRJ_z-7CKmutHFa6QrtLc__vXcJlW7-XlK9Q5fpMEmLkfdLG7xWVbXp69POrmylDg37B5E6YGQnCqN-_96RWMLNydFM_X48CRfgjHWxTKLMXPdY3aFk5jRBtZWrLZEf2L97ry7toC_yAw-Hi0"><img alt="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" src="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id64" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id65" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Once <em>User Request flow</em> is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in Section <a class="reference internal" href="trust.html#trust-evaluation-mechanism"><span class="std std-ref">Trust Evaluation Mechanism</span></a> .</p>
@@ -644,6 +645,7 @@ without encoding and signature. The JWT header:</p>
 </ol>
 </div></blockquote>
 <p>If the checks above are successful, the Wallet Instance requests the User's consent to store the Digital Credential. Upon receiving consent, the Wallet Instance securely stores the PID/(Q)EAA.</p>
+<p>Below is a non-normative example of a successful response containing a Credential in SD-JWT VC format.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -654,6 +656,23 @@ without encoding and signature. The JWT header:</p>
 <span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;credential&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0eXAiOiJ2YytzZC1qd3QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImM5NTBjMGU2ZmRlYjVkZTUwYTUwMDk2YjI0N2FmMDNjIn0.eyJfc2QiOlsiQ1JJQkdpbWhhbE1TSzhLZUxmNzg2N0w4cHV6MEZnRTVaS1VXLW12N0hiYyIsIlhhZjVJZFVGc0UzYWtabEszT0E5d3dHcjJKcVAwUU01M3BBY2hiempRZmMiLCJjR2FuQVdySG9WQVoyalBhNXk0SzE3U0xpYWFKcGRNUF9PdnBmTGx0VWJjIiwiNEFuZU1ZVVAxRWh3emRHdkRQOEhobnRaRGN1ejZrOHhHWVJ0NXo0SHh0SSIsIjRuYTVXSHRMYzdrYnNxdHFVaHd6WXdVdUQtY3hKVmdENmRaLTl0ZUdhZ3MiLCJiZS10a2U3YVU0WmhDNWUxcGZqRjcxUWpFRzRsZG1IaFRoUFl1TnQyOHo0IiwiSnNkaHhTMWRVTTJaN29MUmZYWVJvOFFEaDJ4M1dQNkdILUJnY21DdzJGayIsIlVobXBRSy1HS3hzaHJwXzZwYVpfZzROVG5fX29aeVdOb01zTGNaMUhlMjgiLCJOdDdQU3RxMkEyWkliUHBHdTJpdmVSek9rbWpYUEN1V0RBdy0tdktSQTBjIiwiV3Rtck5JVzFTVkN0UnZNUF9UM2YtRGlhRUdHNS1iVk5rWGJRckowRnpzRSJdLCJleHAiOjE3NDY1MTU5NzIsImlzcyI6Imh0dHBzOi8vZWFhLXByb3ZpZGVyLmlwenMuaXQiLCJzdWIiOiJOemJMc1hoOHVEQ2NkN25vV1hGWkFmSGt4WnNSR0M5WHMiLCJzdGF0dXMiOnsic3RhdHVzX2F0dGVzdGF0aW9uIjp7ImNyZWRlbnRpYWxfaGFzaF9hbGciOiJzaGEtMjU2In19LCJ2Y3QiOiJEaXNhYmlsaXR5Q2FyZCIsIl9zZF9hbGciOiJzaGEtMjU2IiwiY25mIjp7Imp3ayI6eyJrdHkiOiJFQyIsImNydiI6IlAtMjU2IiwieCI6InBWVTNqYXR1NGEzdGs5Yzlhb3dWZ0x5QkJfcko3TS0zV2xqazFlalV6MkUiLCJ5IjoiVEw1T052Ui1JZ2FybmdyejVqZHZzcG9mZnpGd2NqUFJ0RlVrZW5lSEVJMCJ9fX0.v9ynFXhKXPOhQSMmuLvIBKRWfPEPDf4QwDoNmDOjMROxr5J4Hshh9mBEM5qohH_PDE62i1TLc36C65jFYa7x3A~WyIwQUx5SzRfUi1aVUpTekVKdW5HTFdRIiwiaWF0IiwiMTc0NzExOTU5NSJd~WyItT25uM29FcGh6TDNncHJUcVF0YUd3IiwiZG9jdW1lbnRfbnVtYmVyIiwiMDAwMDAwMDIiXQ~WyJ2bmtVX2tJV2RSa1dPZzBoNlRYcDd3IiwiZ2l2ZW5fbmFtZSIsIk1hcmlvIl~WyJvRUdnaVZQaXV1dEJVby1wcTd6WURBIiwiZmFtaWx5X25hbWUiLCJSb3NzaSJd~WyJGVU1iQm5hLWhlLUlaWTZkOVZ1UkNBIiwiYmlydGhfZGF0ZSIsIjE5ODAtMDEtMTAiXQ~WyJjQ0ZDeXljV1J4alZINkZURVR5OTd3IiwidGF4X2lkX2NvZGUiLCJSU1NNUkE4MFIwMUg1MDFCIl0~WyJVSEFhaWZ1bzloTW9pbkVDU0loOG9RIiwiZXhwaXJ5X2RhdGUiLCIyMDMwLTAxLTEwIl~WyJ3TW1xYkkzTFRPMDVLajFoLXNpWWhRIiwiY29uc3RhbnRfYXR0ZW5kYW5jZV9hbGxvd2FuY2UiLCIwIl0~WyJBODVjeFI1REZyOElfaFZFQTZqZGNBIiwibGlua19xcl9jb2RlIiwiaHR0cHM6Ly9xci5leGFtcGxlLmNvbSJd~WyJHWHRYNXNueTctVEVpblhZajNMdGdBIiwicG9ydHJhaXQiLCIvOWovNEFBUVNrWkpSZ0FCQVFFQkxBRXNBQUQvNFFCV1JYaHBaZ0FBVFUwQUtnQUFBQWdBQkFFYUFBVUFBQUFCQUFBQVBnRWJBQVVBQUFBQkFBQUFSZ0VvQUFNQUFBQUJBQUlBQUFJVEFBTUFBQUFCQUFFQUFBQUFBQUFBQUFFc0FBQUFBUUFBQVN3QUFBQUIvKzBBTEZCb2IzUnZjMmh2Y0NBekxqQUFPRUpKVFFRRUFBQUFBQUFQSEFGYUFBTWJKVWNjQVFBQUFnQUVBUC9oRElGb2RIUndPaTh2Ym5NdVlXUnZZbVV1WTI5dEwzaGhjQzh4TGpBdkFEdy9lSEJoWTJ0bGRDQmlaV2RwYmowbjc3dS9KeUJwWkQwblZ6Vk5NRTF3UTJWb2FVaDZjbVZUZWs1VVkzcHJZemxrSno4K0NqeDRPbmh0Y0cxbGRHRWdlRzFzYm5NNmVEMG5ZV1J2WW1VNmJuTTZiV1YwWVM4bklIZzZlRzF3ZEdzOUowbHRZV2RsT2pwRmVHbG1WRzl2YkNBeE1DNHhNQ2MrQ2p4eVpHWTZVa1JHSUhodGJHNXpPbkprWmowbmFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1UazVPUzh3TWk4eU1pMXlaR1l0YzNsdWRHRjRMVzV6SXljK0Nnb2dQSEprWmpwRVpYTmpjbWx3ZEdsdmJpQnlaR1k2WVdKdmRYUTlKeWNLSUNCNGJXeHVjenAwYVdabVBTZG9kSFJ3T2k4dmJuTXVZV1J2WW1VdVkyOXRMM1JwWm1Zdk1TNHdMeWMrQ2lBZ1BIUnBabVk2VW1WemIyeDFkR2x2YmxWdWFYUStNand2ZEdsbVpqcFNaWE52YkhWMGFXOXVWVzVwZEQ0S0lDQThkR2xtWmpwWVVtVnpiMngxZEdsdmJqNHpNREF2TVR3dmRHbG1aanBZVW1WemIyeDFkR2x2Ymo0S0lDQThkR2xtWmpwWlVtVnpiMngxZEdsdmJqNHpNREF2TVR3dmRHbG1aanBaVW1WemIyeDFkR2x2Ymo0S0lEd3ZjbVJtT2tSbGMyTnlhWEIwYVc5dVBnb0tJRHh5WkdZNlJHVnpZM0pwY0hScGIyNGdjbVJtT21GaWIzVjBQU2NuQ2lBZ2VHMXNibk02ZUcxd1RVMDlKMmgwZEhBNkx5OXVjeTVoWkc5aVpTNWpiMjB2ZUdGd0x6RXVNQzl0YlM4blBnb2dJRHg0YlhCTlRUcEViMk4xYldWdWRFbEVQbUZrYjJKbE9tUnZZMmxrT25OMGIyTnJPamxqTmpabVpUZGxMVFkzWTJRdE5ETTRZeTA1WlRobUxUSXdPREE1TkRObU9UWTJaVHd2ZUcxd1RVMDZSRzlqZFcxbGJuUkpSRDRLSUNBOGVHMXdUVTA2U1c1emRHRnVZMlZKUkQ1NGJYQXVhV2xrT2pSaE16ZzBZVFUxTFdJek1UZ3ROR05rWVMwNE4yVXpMVE14TVRZd00yTmhaVEUzT0R3dmVHMXdUVTA2U1c1emRHRnVZMlZKUkQ0S0lEd3ZjbVJtT2tSbGMyTnlhWEIwYVc5dVBnbzhMM0prWmpwU1JFWStDand2ZURwNGJYQnRaWFJoUGdvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUFvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUFvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lBbzhQM2h3WVdOclpYUWdaVzVrUFNkM0p6OCsvOXNBUXdBRkF3UUVCQU1GQkFRRUJRVUZCZ2NNQ0FjSEJ3Y1BDd3NKREJFUEVoSVJEeEVSRXhZY0Z4TVVHaFVSRVJnaEdCb2RIUjhmSHhNWElpUWlIaVFjSGg4ZS85c0FRd0VGQlFVSEJnY09DQWdPSGhRUkZCNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlSGg0ZUhoNGVIaDRlLzhBQUVRZ0JhQUZvQXdFUkFBSVJBUU1SQWYvRUFCMEFBUUFCQlFFQkFRQUFBQUFBQUFBQUFBQUdBUVVIQ0FrRUFnUC94QUJDRUFFQUFRTUNBZ01OQlFVSEJRQUFBQUFBQVFJREJBVUdCeEVoTVZFSUVoTVVGeUpCVm1GeG9hVFNRb0dSa3NFak1rT0NvaFVXWW5LRHNzSVlObEoxcy8vRUFCWUJBUUVCQUFBQUFBQUFBQUFBQUFBQUFBQUJBdi9FQUJZUkFRRUJBQUFBQUFBQUFBQUFBQUFBQUFBUkFmL2FBQXdEQVFBQ0VRTVJBRDhBM0xBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCNXRTejhMVE1HN25hamwyTVRGczA5OWN2WHJrVVVVUjJ6TTlFQXdudmZ1bHRwNlZjcnh0dDRPVHIxNm5uSGh1ZmdNZm43S3FvbXFyN3FlWHRJTVY2MTNTWEVQTnVUT0JScEdsMGVpTFdOTjJxUHZybVkrQ3dXWHk5Y1ZlLzc3KzgxUHU4UXNjdjloQmV0RjdwTGlIaFhJblBvMGpWS1BURjNHbTFWUDMwVEVmQWd5cHNqdWx0cDZyY294dHlZT1RvTjZybEhodWZoOGZuN2FxWWlxbjc2ZVh0U0RObW01K0ZxZUZhenRPeTdHWGkzcWUrdDNyTnlLNks0N1ltT2lRZWtBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFFTTRyOFJkQzRlYUY0OXFkVTM4dTl6cHc4SzNWRVhMOVVmN2FZOU5VOUVlMmVVQTB2NGs4UXR6YisxT2NyWE15ZkZxS3BuSHdiVXpGaXhIc3A5TlgrS2VjKzdxVVJKUUFBQUJMZUczRUxjMndkVGpLMFBNbnhhdXFKeU1HN016WXZ4N2FmUlYvaWpsUHY2a0c2SENqaUxvWEVQUXZIdE1xbXhsMmVWT1poWEtvbTVZcW4vZFRQb3Fqb24yVHpoQk13QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVdQZm01OU4yZHRYTzNEcXRmTEh4YU9jVVJQblhhNTZLYUtmYlZQS1BqNkFhRWI4M1ZxKzg5elpXdjZ6ZTcvSXZ6eW90MHo1bGkzSDd0dWlQUlRIeG5uTTlNcUxFb0FBQUFBQXZ1dzkxYXZzemMyTHIralh1OHlMRThxN2RVK1pmdHorOWJyajAwejhKNVRIVENEZmZZZTU5TjNqdFhCM0RwVmZQSHlxT2MwVFBuV3E0NktxS3ZiVFBPUGo2VUY4QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQnFSM1l1OHE5VDNkajdReGJzK0o2VFRGM0ppSjZLOGl1bm5IUC9MUk1mZlhLNE1ES0FBQUFBQUFBTTg5eDF2S3ZUTjNaRzBNcTdQaWVxMHpkeG9tZWlqSW9wNXp5L3pVUlAzMFFtamJkQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCK2VUZHQyTWU1ZnUxZDdidDB6WFZQWkVSemtIT1RjK3JYdGUzSHFXdDVGVXpkejhxNWtWZnpWVE1SOTBjbys1UmJsQUFBQUFBQUFGeDJ4cTE3UWR4NmJyZVBWTVhjREt0NUZQOHRVVE1mZkhPUHZRZEc4YTdidjQ5dS9hcTc2M2NwaXVtZTJKam5DRDlBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVI3aVhmcXh1SFc1TWlpZVZWdlNzcXFtZmJGcW9ITytpT1ZGTWRrUkRRcUFBQUFBQUFBQ2xjYzZLbzdZbUFkRU9HbCtySjRkYmJ5SzU1MVhOS3hhcXA5czJxV1JJUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFXWGZtSlZxR3lOZHdhSTUxNUdtNUZxbVBiVmJxaUFjNktPbWltWjdJYUZRQUFBQUFBQUFVcjZLS3Bqc2tIUmZZZUpWcCt5TkN3YTQ1VjQrbTQ5cXFQYlRicGlXUmVnQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVVxaUppWW1PY0E1NThUZHYzTnJjUU5iMEt1aWFhY1hNcjhEempydFZUMzF1ZnkxUW9qaWdBQUFBQUFBQ1I4TXR2M04wY1FORTBLaWlhcWNyTW84TnlqcXRVejMxeWZ5MHlnNkdVeEVSRVJIS0VGUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBYTNkMlRzV3UvalltKzlQc3pWT1BUR0xxVVV4L0Q1L3M3ays2Wm1tWi94VTlpNE5ZRkFBQUFBQUFBR3ovY2JiRnJzWTJYdnZVTE0wemtVemk2YkZVZncrZjdTNUh2bUlwai9BQzFkcWFOa1VBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFIbjFIQ3hkUndMK0JuV0tNakZ5TGRWcTlhcmpuVFhSVkhLWW4yVEFOSGVPWEREUDRkN2hud1ZGM0kwSExybWNIS21PZmUrbndWYytpdU8zN1VkUGJFVVk1VUFBQUFBQVpHNEc4TU0vaUp1R1BDMFhjZlFjU3VKenNxSTVkOTZmQlVUL3dDYzl2Mlk2ZXlKZzNpMDdDeGRPd0xHQmcyS01mRng3ZE5xemFvamxUUlJUSEtJajJSQ0QwQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUE4RzRORzB2WDlJeU5KMWpDczV1RmtVOTdkczNZNXhWSDZUSFhFeDB4UFVEVTdpMzNQbXZiZXUzdFMyalRlMXZTZWMxZUx4MDVWaU96bC9FajJ4NTNiSHBXakNOeWl1M2NydDNLYXFLNko1VjAxUnlxcG5zbUo2WWxSOGdBQStyZEZkeTVSYnQwMVYxMXp5b3Bwam5WVlBaRVIweklNM2NKTzU4MTdjTjJ6cVc3cWIyaWFUemlyeGVlakt2eDJjdjRjZTJmTzdJOUtVYlk3ZjBiUzlBMGpIMG5SOEt6aFlXUFQzdHF6YWpsRk1mck05Y3pQVE05YUQzZ0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBY3dlRFU5WjBqVEtacTFMVk1IQ3Bqcm5JeUtMY2YxVEFJSnJPQndlNGxabHpGeWIyM2RYejZQTjhKajVWRk9SSHVyb21LcCtNQWhldGR5OXRYSXJtdlNkd2F4cDhUOWk3RkYrbVB4aUorSzBXYi9wV283Ly9BTDVxNzMvMWtjLy9BS0ZGNTBYdVh0cTQ5Y1Y2dHVEV05RaVBzV29vc1V6K0VWVDhTaWFhTmdjSHVHdVpieGNhOXQzU00rdnpmQ1pHVlJWa1Q3NjY1bXFQaENDZDZack9rYW5URldtNnBnNXRNOVU0K1JSY2orbVpCNytZQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFMSnZEZG0zZG82ZC9hRzR0V3h0UHNUUEtqd2xYT3E1UFpSVEhuVlQ3SWlRWWIxM3VvdHM0OTJxalJ0dTZycU1SMVhMMWRHUFRWN284NnJsNzRoWUlacTNkUmJvdmQ5R21iYjBqRXBucW0vZHVYNm8vRHZZSUlocTNIdmlobnhWVFRyOXJDb243T0poMjZPWDMxUlZQeElJanErK041NnZFeHFXNjlieXFaNjZhczJ1S2Z5eE1SOEFSKzVNM0s1cnVmdEtwKzFYNTAvaktpbnBpZlRIVlBZQ1JhUHZuZW1rVVJiMHpkbXQ0dHVPcWlqTnJtbVA1Wm1ZUVhmeXZjVGU4NzMrK3VxOHZmUnovQUI3MGd0R3NiNTNwcTlFMjlUM1pyZVZibnJvcnphNHBuK1dKaUFSMzB6UHBucm50VVZ0ek51dUs3ZjdPcVB0VWViUDR3Q1FhUnZqZWVrUkVhYnV2VzhXbU9xbW5Ocm1uOHN6TWZCQkx0SjQ5OFVNQ0thYXRmdFp0RWVqTHc3ZGZQNzZZcG40a0V2MG51b3QwV2U5alU5dDZSbDB4MXpZdTNMRlUvajMwRUV6MEx1b3RzNUYybWpXZHZhcnAwVDEzTE5kR1JUSDNlYlZ5OTBTUVprMmZ1emJ1N3RPL3REYnVyWTJvV0lubFg0T3JsVmJuc3JwbnpxWjlreENDOWdBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWhuR0hmdUR3OTJmZDFqSW9wdjVkeXJ3T0ZqVFZ5OE5kbU9jUlBaVEVkTXoyUjJ6QU5HTjI3ajFuZFd1WHRaMTdPdVptWmRuOTZyb3BvcDlGRkZQVlRUSG9pUGpQU290S2dBQUFBQUFBQUFBQUFBQzdiUzNIck8xZGNzNnpvV2Rjdzh5MVA3MVBUVFhUNmFLNmVxcW1leWZoUFNnM240UGI5d2VJV3o3V3NZOUZOakx0MWVCemNhS3VmZ2JzUnptSTdhWmpwaWV5ZTJKUVRNQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUdtZmRkN2l2YXR4VHEwZUxremk2TmowV2FLWW5vOEpjaUs2NnZmeW1pUDVWd1liVUFBQUFBQUFBQUFBQUFBQUFabDdrVGNWN1NlS2RPanpjbU1YV2NldXpYVE05SGhMY1RYUlY3K1VWeC9NbWpjdEFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFucUJvRnh5ditNY1lkMTNPZlZxZHlqOHNSVC94WEJERkFBQUFBQUFBQUFBQUFBQUFFejRHMy9GK01PMUxuUHIxTzNSK2FKcC81Sm8zOWpxUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUpCenM0aDVIamUvOEFjV1Z6NStGMVhLcWlmOVdwUllsQUFBQUFBQUFBQUFBQUFBQUY5NGVaSGltLzl1NVhQbDRMVmNXcVovMWFVSFJPRUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUZLcGlLWm1laUk2UWMyZFV2VGthbmw1RTlNM2NpNWMvTlhNL3FvOHlnQUFBQUFBQUFBQUFBQUFBRDA2WGVuSDFQRXlJNkp0WkZ1NStXdUovUkIwbXBtSnBpWTZZbnBRVkFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQjRkd1gvRmRDejhtWjVSYXhydGY0VVRQNkE1dVVUem9wcW5ybUlsb1ZBQUFBQUFBQUFBQUFBQUFBQlN1ZVZGVlVkY1JNZzZSN2Z2K05hRmdaTVR6aTdqV3EveG9pZjFaSHVBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJIT0tHUkdKdzMzTGs4K1hnOUp5WmlmYjRLb0hQR21PVk1SMlJFTkNvQUFBQUFBQUFBQUFBQUFBQUtWUnpwbU8ySmdIUTdoZmtSbDhOOXRaUFBuNFRTY2FabjIrQ3BaRWpBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJCTzZDeVBGdURHNnJrVHk1NmZYYi9OTVUvcURRdWV1V2hRQUFBQUFBQUFBQUFBQUFBQUZZNjRCdnAzUHVSNHp3WTJyY21lZkxUNkxmNVptbjlHUk93QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFZLzdvckN5Yy9ndHViSHhLS3E3bE9MRjJhYVk1ek5OdXVtdXIrbW1RYUh0QUFBQUFBQUFBQUFBQUFBQUFBRGZEdWRjTEp3T0MyMmNmTG9xb3UxWXMzWXBxamxNVTNLNnE2ZjZhb1pHUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWZOeWlpN2JxdDNLS2E2S29tS3FhbzV4TVQxeE1BMWI0cGR6ZHFsR3FYdFEySGN4NytGZXFtcU5PdjNmQjEySm43TkZjK2JWVDJSTXhNZFhPVm9nUGtINHErcS93QTlZK3NvZVFmaXI2ci9BRDFqNnloNUIrS3ZxdjhBUFdQcktIa0g0cStxL3dBOVkrc29lUWZpcjZyL0FEMWo2eWg1QitLdnF2OEFQV1ByS0hrSDRxK3Evd0E5WStzb2VRZmlyNnIvQUQxajZ5aDVCK0t2cXY4QVBXUHJLSGtINHErcS93QTlZK3NvZVFmaXI2ci9BRDFqNnloNUIrS3ZxdjhBUFdQcktIa0g0cStxL3dBOVkrc29lUWZpcjZyL0FEMWo2eWg1QitLdnF2OEFQV1ByS0hrSDRxK3Evd0E5WStzb2VRZmlyNnIvQUQxajZ5aWZjTGU1dTFTdlZMT29iOHVZOWpDczFSVk9uV0x2aEs3OHg5bXV1UE5wcDdZaVptZXJuQlJ0SmJvb3RXNmJkdWltaWltSWltbW1PVVJFZFVSQ0Q2QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCLy9aIl0&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;notification_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dab8ef51-fb43-43a5-a5c1-247c93ddb942&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Below is a non-normative example of a successful response containing a Credential in MDOC format.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+<span class="na">Pragma</span><span class="o">:</span> <span class="l">no-cache</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;credential&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;notification_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dab8ef51-fb43-43a5-a5c1-247c93ddb942&quot;</span>
@@ -703,10 +722,10 @@ without encoding and signature. The JWT header:</p>
 </div></blockquote>
 <p>To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP. These aspects are detailed and discussed in section <a class="reference internal" href="#id1"><span class="std std-ref">Security Considerations</span></a>.</p>
 <p>Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh Token to the Token Endpoint.</p>
-<figure class="align-center" id="id65" style="width: 100%">
+<figure class="align-center" id="id66" style="width: 100%">
 <span id="fig-refresh-token-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TPBFIiD048Vl-nH3lRJGqBi7QR05Up9AeHUXh9j9CvZEnDs9qRTtkzkA1Jrc_dpvviSkWrglmx4pTb3XuVYAtfW-riXHRrbXihDTXmeRZgFiS08sm7WzKcrMY-dJR5sMK7dve1fz6YDZHYZkO8HRE22ZjugmggI2teiqOBc6NLcS2eru-0C3Ac_8W5ptGgnd7aNUDZMUyNt0e32Ijh_9qnS6EFXejzUl7kUdJu-Dnz3k4t86iPIs7ij1s-A-8sGjIjM8iqh2oUw_Pd8c1cqHMhJHr1Ywd7fH2xrmG9XQvp24_D_vjSOy7vWb0JzxYhqzySoObaKHhFCI0jpi7ZRRTKIt24qd8pXX9OwtvoCi-7CIAacgnWQznteHATIGIzOB5ol8IhRxYVGSGrfY77E8sJYx6RECi_69V0C0"><img alt="_images/Refresh-Token-Flow.svg" src="_images/Refresh-Token-Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Refresh Token Flow</span><a class="headerlink" href="#id65" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Refresh Token Flow</span><a class="headerlink" href="#id66" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -787,10 +806,10 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <p>In both cases, the newly issued Digital Credential MUST have the same expiry date as the previous one.</p>
 <p>Re-issuance after Digital Credential expiration MUST always require User authentication.</p>
 <p>The following diagram describes the Digital Credential re-issuance flow.</p>
-<figure class="align-center" id="id66" style="width: 100%">
+<figure class="align-center" id="id67" style="width: 100%">
 <span id="fig-reissuance-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZLDVRzem47_FfxWzhPKAlEm9LArPqqb8xOGOh9gc2PdaGgoPS-OxbtMVVdPQt48pYJp5bz-VyzqlLopAYT-Qx9scqlWAeH5fUJmQERKRRhGqVkqPNMb9a6HOskseDOeYPy1I6RqUNNyOp69fUNSxsYeMTA6qAXv9RNKvRADwU3gdZAmWEBrf9Bjla411eOEBCd3ji48I7Lu9iM8G2si4trPAiBe0QV0rPihiqJ7SvT-1aIfG4BHrhKibsb9aHyQIqO5dJPi0SBZHiJsim7ePs7gmLe4PxhJrj2UMZI92CyoYQ6mtoyQTYcsH6EwLCIWm9HP59Kwoy7cEuZG-87mL9PuXvu2FOWorTHcBZPOlpVFazHpc-Dlh2DZ5WP251sLqbRtLmZ-QvLLRkeQp5z6z-ILCltpBRwV5ntEGg7ZsY7oUGNWYeKo45NU4LOMYj1d64uAc3lbZEIlonKrn0VbYCPz-MYvkLi-bdszrzzfvMI8pBEmlfATRz6FZamve6E6CRFgSvEPOE-JcD3s0SHY04pXaVJPsDpa0zli1iDZsgDGjwQW6JowAW73NfJ360EhWSupSQMcw0Bvdo7tiM_OXEuAcdHuLTPtrdz9BZ2OKCpk3W-6B1VSSoWGbtFNyR6aufwJZCXc_pSN_LpEE2KUMRXRT9ApJVxj1JFeYaRevm2FtE1oktpgCj-ovNT_g-vVVF_n4FDKnIMG9NQ11GMWTFcZhkPUJzRYbzfBc8Q3x-6pMlL-5Wz-QVm00"><img alt="_images/Re-Issuance-Flow.svg" src="_images/Re-Issuance-Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Re-Issuance Flow Diagram</span><a class="headerlink" href="#id66" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Re-Issuance Flow Diagram</span><a class="headerlink" href="#id67" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -868,8 +887,8 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <h3>Pushed Authorization Request (PAR) Request<a class="headerlink" href="#pushed-authorization-request-par-request" title="Link to this heading">¶</a></h3>
 <p>The request to the PID/(Q)EAA authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.</p>
 <p>The HTTP POST method MUST use the parameters in the message body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
-<span id="table-http-request-claim"></span><table class="docutils align-default" id="id67">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id67" title="Link to this table">¶</a></caption>
+<span id="table-http-request-claim"></span><table class="docutils align-default" id="id68">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id68" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -894,8 +913,8 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 </table>
 <p>The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>], therefore
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters:</p>
-<span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id68">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id68" title="Link to this table">¶</a></caption>
+<span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id69">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id69" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -997,7 +1016,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <td><p><span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>scope</strong></p></td>
-<td><p>JSON String. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>. It MAY be multivalued, each value MUST be separated by a space.</p></td>
+<td><p>JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. For example, in the case of the PID it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>, in case of mobile driving licence in SD-JWT VC format <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mdl</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mdl</span></code> in case of mobile driving license in MDOC format. It MAY be multivalued, each value MUST be separated by a space.</p></td>
 <td><p><span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>authorization_details</strong></p></td>
@@ -1005,7 +1024,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>type</strong>: it MUST be set to <code class="docutils literal notranslate"><span class="pre">openid_credential</span></code>,</p></li>
-<li><p><strong>credential_configuration_id</strong>: JSON String. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></li>
+<li><p><strong>credential_configuration_id</strong>: JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>, in the case of mobile driving licence in SD-JWT VC format <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mdl</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mdl</span></code> in case of mobile driving license in MDOC format.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -1786,7 +1805,7 @@ The Authorization Server MUST validate the DPoP proof received at the Token endp
 <td><p>Section 8.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_configuration_id</strong></p></td>
-<td><p>REQUIRED if <code class="docutils literal notranslate"><span class="pre">credential_identifiers</span></code> parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
+<td><p>REQUIRED if <code class="docutils literal notranslate"><span class="pre">credential_identifiers</span></code> parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the <cite>credential_configurations_supported</cite> map in the Credential Issuer Metadata. For example, in the case of the PID, it can be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>.</p></td>
 <td><p>Section 8.2 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>proof</strong></p></td>
@@ -1885,7 +1904,7 @@ The Authorization Server MUST validate the DPoP proof received at the Token endp
 <td><p>CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">lead_time</span></code> and <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code> are not present. It contains the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>credential</strong>: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the issued Credential.</p></li>
+<li><p><strong>credential</strong>: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST NOT be re-encoded. If the requested format identifier is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> then the <code class="docutils literal notranslate"><span class="pre">credential</span></code> parameter MUST be a base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO 18013-5]. This structure SHOULD contain all Namespaces and IssuerSignedItems that are included in the AuthorizedNamespaces of the MobileSecurityObject.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -2303,9 +2322,9 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Sections 11.2.3 and A.3.2.</p>
 <blockquote>
 <div><ul>
-<li><p><strong>format</strong>:  String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>dc+sd-jwt</em>&quot;. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.1.</p></li>
+<li><p><strong>format</strong>: String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>dc+sd-jwt</em>&quot; in case of SD-JWT VC (See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.1.) and &quot;<em>mso_mdoc</em>&quot; in case of MDOC (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.2.1.).</p></li>
 <li><p><strong>scope</strong>: JSON String identifying the supported <em>scope</em> value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the <em>scope</em> values in the <em>scopes_supported</em> parameter of the Authorization Server. [See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section  11.2.3].</p></li>
-<li><p><strong>cryptographic_binding_methods_supported</strong>: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value &quot;<em>jwk</em>&quot;.</p></li>
+<li><p><strong>cryptographic_binding_methods_supported</strong>: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value &quot;<em>jwk</em>&quot; for &quot;dc+sd-jwt&quot; format and &quot;<em>cose_key</em>&quot; for &quot;mso_mdoc&quot;.</p></li>
 <li><p><strong>credential_signing_alg_values_supported</strong>: JSON Array of case sensitive strings that identify the algorithms that the PID/(Q)EAA Provider MUST support to sign the issued Credential. See Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details.</p></li>
 <li><p><strong>proof_types_supported</strong>: JSON object which provides detailed information about the key proof(s) supported by the PID/(Q)EAA Provider. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The PID/(Q)EAA Provider MUST support at least &quot;<em>jwt</em>&quot; as defined in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section 8.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof. The PID/(Q)EAA Provider MUST support at least the parameter <strong>proof_signing_alg_values_supported</strong> which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details about the supported algorithms).</p></li>
 <li><p><strong>display</strong>: Array of objects containing display language properties. The parameters that MUST be included are:</p>
@@ -2422,7 +2441,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;scopes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;MDL&quot;</span>
+<span class="w">                </span><span class="s2">&quot;dc_sd_jwt_mdl&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;mso_mdoc_mdl&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;response_modes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;form_post.jwt&quot;</span><span class="p">,</span>
@@ -2634,9 +2654,9 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;MDL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;dc_sd_jwt_mdl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_mdl&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;jwk&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -2836,6 +2856,187 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                            </span><span class="p">]</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;mso_mdoc_mdl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mdl&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;doctype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;cose_key&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;credential_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mobile Driver&#39;s License&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Name&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cognome&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Family Name&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di nascita (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Date of Birth (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_place&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Luogo di Nascita&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place of Birth&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di rilascio (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Issue Date (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Data di scadenza (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Expiry Date (YYYY-MM-GG)&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_country&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Paese di rilascio&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Issuing Country&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Autorità di rilascio&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Issuing Authority&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Numero di documento&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Document Number&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Foto codificata in base64&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Portrait base64 encoded&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elenco delle categorie di abilitazione e relativi dettagli su restrizioni/condizioni&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Driving Privileges and related restrictions/conditions details&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">},</span>
+<span class="w">                        </span><span class="p">{</span>
+<span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">],</span>
+<span class="w">                            </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Codice identificativo della Nazione&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it-IT&quot;</span>
+<span class="w">                                </span><span class="p">},</span>
+<span class="w">                                </span><span class="p">{</span>
+<span class="w">                                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Distinguishing sign of the issuing country&quot;</span><span class="p">,</span>
+<span class="w">                                    </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
+<span class="w">                                </span><span class="p">}</span>
+<span class="w">                            </span><span class="p">]</span>
+<span class="w">                        </span><span class="p">}</span>
+<span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -3022,7 +3223,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
             <div class="right">
                 
-                    <a href="credential-revocation.html"><span>Digital Credential Lifecycle</span><span class="icon">&gt;</span></a>
+                    <a href="pid-eaa-presentation.html"><span>PID/(Q)EAA Presentation</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -3030,7 +3231,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 03/03/2025.
+      Last updated on 27/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

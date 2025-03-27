@@ -420,6 +420,8 @@ without encoding and signature. The JWT header:
 
 If the checks above are successful, the Wallet Instance requests the User's consent to store the Digital Credential. Upon receiving consent, the Wallet Instance securely stores the PID/(Q)EAA.
 
+Below is a non-normative example of a successful response containing a Credential in SD-JWT VC format.
+
 .. code-block:: http
 
     HTTP/1.1 200 OK
@@ -427,8 +429,21 @@ If the checks above are successful, the Wallet Instance requests the User's cons
     Cache-Control: no-store
     Pragma: no-cache
 
-.. literalinclude:: ../../examples/credential-response.json
+.. literalinclude:: ../../examples/sd-jwt-credential-response.json
   :language: JSON  
+
+Below is a non-normative example of a successful response containing a Credential in MDOC format.
+
+.. code-block:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+    Cache-Control: no-store
+    Pragma: no-cache
+
+.. literalinclude:: ../../examples/mdoc-credential-response.json
+  :language: JSON  
+
 
 .. note::
 
@@ -738,13 +753,13 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``. It MAY be multivalued, each value MUST be separated by a space.
+      - JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID it may be set to ``PersonIdentificationData``, in case of mobile driving licence in SD-JWT VC format ``dc_sd_jwt_mdl`` and ``mso_mdoc_mdl`` in case of mobile driving license in MDOC format. It MAY be multivalued, each value MUST be separated by a space.
       - :rfc:`6749`
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
             - **type**: it MUST be set to ``openid_credential``,
-            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``. 
+            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to ``PersonIdentificationData``, in the case of mobile driving licence in SD-JWT VC format ``dc_sd_jwt_mdl`` and ``mso_mdoc_mdl`` in case of mobile driving license in MDOC format.
       - See [RAR :rfc:`9396`] and [`OpenID4VCI`_].
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
@@ -1345,7 +1360,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
     - REQUIRED when an Authorization Details of type *openid_credential* was returned from the Token Response. It MUST NOT be used otherwise. This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response. It MUST NOT be used if ``credential_configuration_id`` is present.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **credential_configuration_id**
-    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it MUST be set to ``PersonIdentificationData``.
+    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it can be set to ``PersonIdentificationData``.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **proof**
     - REQUIRED. JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:
@@ -1416,7 +1431,7 @@ The Credential Response contains the following parameters:
   * - **credentials**
     - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. It contains the following parameters:
 
-          - **credential**: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the issued Credential.
+          - **credential**: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO 18013-5]. This structure SHOULD contain all Namespaces and IssuerSignedItems that are included in the AuthorizedNamespaces of the MobileSecurityObject.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
   * - **lead_time**
     - CONDITIONAL. REQUIRED if ``credentials`` is not present. The amount of time (in seconds) required before making a Deferred Credential Request.
