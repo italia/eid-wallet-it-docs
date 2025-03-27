@@ -603,7 +603,7 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html#voucher-issuance">PDND
-            Interoperabilità. Based on the implementation choices, it can be either Bearer or DPoP.</a><br/><br/><a target="blank"
+            Interoperabilità</a>. Based on the implementation choices, it can be either Bearer or DPoP.<br/><br/><a target="blank"
             href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiJjYzY0OTg4NWRhNzZkNWI4ZDk4NWUxNGEwOWNlNGZmNjM3Y2IwYzA0ZjMwMGYzNzFjMGM0ZjBmMDZiOTk2OGE2In0sImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.xQl8Nb8S-j-gHFn5O90N14i1HYWnK4HfzjCXFXKHAzpZZ8ErrYopUcZ3FqOb4cSSPs2Bo7ZR2UNFwQD8tkgGzA">EXAMPLE
             ON JWT.IO</a>
           required: true
