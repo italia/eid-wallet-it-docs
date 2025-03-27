@@ -702,8 +702,11 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      - It MUST be set to ``statuslist+jwt``.
      - `TOKEN-STATUS-LIST`_
    * - **kid**
-     - Unique identifier of the Credential Issuer's public key which signs the Status Token.
+     - REQUIRED. Unique identifier of the Credential Issuer's public key which signs the Status Token.
      - :rfc:`7638#section_3`.
+   * - **x5c**
+     - REQUIRED. X.509 public key certificate or certificate chain corresponding to the key used to sign the Status List Token
+     - :rfc:`5280`
  
  .. list-table:: 
    :widths: 20 60 20
