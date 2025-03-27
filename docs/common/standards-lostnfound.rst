@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Infrastructure of Trust
 -----------------------
 
