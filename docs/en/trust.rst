@@ -763,7 +763,7 @@ Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries aut
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
 
 .. name-constraints::
-   :permitted: URI.1=http://leaf.example.com
+   :permitted: URI.1=https://leaf.example.com
    :permitted: CN=leaf.example.com
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
