@@ -56,6 +56,31 @@ The following Elliptic Curves MUST be supported for the Elliptic Curve Digital S
     - P-256, P-384, P-521
     - `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_, `[FIPS-186-4] <https://www.nist.gov/publications/digital-signature-standard-dss-2>`_, `[ISO/IEC 14888-3] <https://www.iso.org/standard/76382.html>`_.
 
+
+For Credential issued in MDOC format, the following algorithms MUST be supported:
+
+.. list-table:: 
+  :widths: 20 20 20 20
+  :header-rows: 1
+
+  * - **Algorithm**
+    - **Description**
+    - **Operations**
+    - **References**
+  * - **ECKA-DH** 
+    - Elliptic Curve Key Agreement Algorithm – Diffie-Hellman.
+    - Key agreement / Signature
+    - BSI TR-03111.
+  * - **HKDF**
+    - HMAC-based Key Derivation Function.
+    - Session key derivation / Signature
+    - :rfc:`5869`.
+  * - **AES-256-GCM** 
+    - Advanced Encryption Standard with Galois/Counter Mode and a key length of 256.
+    - Session encryption / Signature
+    - NIST SP 800-38D.
+
+
 The following algorithms are RECOMMENDED to be supported:
     
 .. list-table:: 

@@ -32,7 +32,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
     - String indicating the type of application. It MUST be set to "*web*" value. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2. 
   * - **request_uris**
     - JSON Array of *request_uri* values that are pre-registered by the RP. These URLs MUST use the *https* scheme. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2.
-  * - **response_uris_supported**
+  * - **response_uris**
     - JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode ``direct_post`` and ``direct_post.jwt`` (see `OpenID4VP`_ Draft 20 Sections 6.2 and 6.3).
   * - **authorization_signed_response_alg**
     - String representing the signing [:rfc:`7515`] *alg* algorithm that MUST be used for signing authorization responses. The algorithm *none* MUST NOT be used. See `JARM`_.
@@ -45,7 +45,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `JARM`_ Section 3, `OID-FED`_ Draft 41 Section 5.2.1 and `JWK`_.
 .. note::
-    The claims **response_uris_supported** are introduced in this specification. 
+    The parameter **response_uris** is introduced in this specification. 
 
 Example of a Relying Party Entity Configuration
 -------------------------------------------------

@@ -12,7 +12,7 @@ paths:
         - e-services PDND
       summary: >-
         Notify Wallet Instance Revocation
-      description: >- 
+      description: >-
         This service revokes all digital credentials associated with a specific
         user
       operationId: notifyWalletRevocation
@@ -54,7 +54,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3Jldm9rZUFsbCIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNTcwYTQxNWUtMGU3Zi00MTBkLTg1ZWQtYzU1ZWE1NTM3OTMyIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjhiOTcxYjQzLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9OWRkZGEwODZhM2I5MDI3NTA4YTk3MWYxNmUwYzQ0YWEyYzlkOGQ5MTMzNGYyZDRhZWRkMWNkNmEwYTJhZDNhOCIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.0zncFKgLgIAhcX7aTIjC44NWYBiQKM4ZmdHfBqZ0O-W38NkBanT1tz9Z7Z0OBqQqDNsehJQa4IKNzbTjAhoccA">EXAMPLE
             ON JWT.IO</a>
@@ -78,17 +78,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RevokeAllCredentials'
+              $ref: "#/components/schemas/RevokeAllCredentials"
         required: true
       responses:
-        '200':
+        "200":
           description: 200 OK
           content:
             application/jwt:
               schema:
-                $ref: '#/components/schemas/e-Service_Response'
-              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIn0.ExthZCx8LHMlTTtBm9qA8Y3FhlKvTl-_sWXq35e_vTRMmKukrLhBhNa-C1xfli8g_JBixYhsBzUWhE0ING_kIQ'
-        '400':
+                $ref: "#/components/schemas/e-Service_Response"
+              example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIn0.ExthZCx8LHMlTTtBm9qA8Y3FhlKvTl-_sWXq35e_vTRMmKukrLhBhNa-C1xfli8g_JBixYhsBzUWhE0ING_kIQ"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -133,14 +133,14 @@ paths:
                     error_description: >-
                       The request cannot be fulfilled because it contains an
                       invalid dpop proof
-        '401':
+        "401":
           description: Unauthorized
           headers:
             WWW-Authenticate:
               description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
               schema:
                 type: string
-        '404':
+        "404":
           description: Credentials not found
           content:
             application/json:
@@ -161,7 +161,7 @@ paths:
                       credentials were not found
                 required:
                   - error
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -181,7 +181,7 @@ paths:
                 error: invalid_request
                 error_description: >-
                   TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
-        '503':
+        "503":
           description: Service Unavailable
           content:
             application/json:
@@ -199,8 +199,8 @@ paths:
                 required:
                   - error
               example:
-                error: 'temporarily_unavailable'
-                error_description: 'The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)'
+                error: "temporarily_unavailable"
+                error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
   /v0.9.0/notifyAvailableCredentials:
     post:
       tags:
@@ -248,7 +248,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsInN1YiI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsIm5iZiI6MTczNjg0NjY4OCwicHVycG9zZUlkIjoiNzJlMDE5NTgtZmUyNy00M2JkLWFiNjctYjk5YTY2OWU0MGMwIiwiaXNzIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImNsaWVudF9pZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6IjU3ZDIxMzYyLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCIsInNpZ25lZF9oZWFkZXJzIjp7ImRpZ2VzdCI6IlNIQS0yNTY9MTJiYzY1YTc5ODJiNmMwNTI3M2MyOTA4MDhiMGM1ZmQ3YWQ2YWYyZDY4YTNiMmQ0ZGE0YmEyYzRhMWViN2I1MSIsImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifX0.FXeF6nv84W3Yeuup3tnF6hgYMsuUqkUESPVdcYuIRwDQ6-mUZABugVQcnSM4lRoVAf4BjW0S21zbM0uHFakBxw">EXAMPLE
             ON JWT.IO</a>
@@ -273,17 +273,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AvailableCredentialsRequest'
+              $ref: "#/components/schemas/AvailableCredentialsRequest"
         required: true
       responses:
-        '200':
+        "200":
           description: 200 OK
           content:
             application/jwt:
               schema:
-                $ref: '#/components/schemas/e-Service_Response'
-              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsIm5iZiI6MTczNjg0NjY4OCwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImF1ZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6ImM4YmQ4YTJmLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCJ9.5DbB-OIi2eXz6Txm3UhCrvpq10aOkae1huR7VSa2dGRW7XeOeS5ELURHp1YY9wBdHD2zJWx882Vpq3NHlEGkyA'
-        '400':
+                $ref: "#/components/schemas/e-Service_Response"
+              example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0OjQ0My90L2l0d2FsbGV0LmFwaS91dGlsaXR5LXdhbGxldC8xLjAuMC92MS9ub3RpZnlBdmFpbGFibGVDcmVkZW50aWFscyIsIm5iZiI6MTczNjg0NjY4OCwiZXhwIjoxNzM2ODQ2OTI4LCJpYXQiOjE3MzY4NDY2ODgsImF1ZCI6IjMxNjcwMDkyLWVlYzAtNGY5NS04OGRhLWUxYzdjZTVlNDUwNSIsImp0aSI6ImM4YmQ4YTJmLWU5OTAtNDRmYS05MDEzLTFiMzUzYmZjNWEwZCJ9.5DbB-OIi2eXz6Txm3UhCrvpq10aOkae1huR7VSa2dGRW7XeOeS5ELURHp1YY9wBdHD2zJWx882Vpq3NHlEGkyA"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -328,14 +328,14 @@ paths:
                     error_description: >-
                       The request cannot be fulfilled because it contains an
                       invalid dpop proof
-        '401':
+        "401":
           description: Unauthorized
           headers:
             WWW-Authenticate:
               description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
               schema:
                 type: string
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -355,7 +355,7 @@ paths:
                 error: invalid_request
                 error_description: >-
                   TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
-        '503':
+        "503":
           description: Service Unavailable
           content:
             application/json:
@@ -372,8 +372,8 @@ paths:
                 required:
                   - error
               example:
-                error: 'temporarily_unavailable'
-                error_description: 'The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)'
+                error: "temporarily_unavailable"
+                error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
   /v0.9.0/notifyUpdateCredentials/status/{attribute_type}:
     post:
       tags:
@@ -433,7 +433,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiNTdkMjEzNjItZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj01NDEyZDRhMGQ4NTFkODliNDc5ZTM3MDlhOTNkNTMzMzgzYjQ5MDI0NjdkYzU4ODg0OWU1ZDQ5YmE0ODMzZTg4IiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.9vHIePhOQ-RNKeM2MNc1q4Ht6iLHWoUu7a6Ey3B-I3cCLkhyV0Jb8qEXsyyjIFmy4d71Z4-EM2zYcuu3GJ02VA">EXAMPLE
             ON JWT.IO</a>
@@ -458,17 +458,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NotifyStatusCredRequest'
+              $ref: "#/components/schemas/NotifyStatusCredRequest"
         required: true
       responses:
-        '200':
+        "200":
           description: 200 OK
           content:
             application/jwt:
               schema:
-                $ref: '#/components/schemas/e-Service_Response'
-              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTkiLCJqdGkiOiJjOGJkOGEyZi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQifQ.iVMm66lcfOMve7wqB2yEsq6TFCDGEpAEvzCA7NYoZRHsHxMu8_5N4DGI8xWQ5BRG_fZMumNt-eO29ig1K_G3kA'
-        '400':
+                $ref: "#/components/schemas/e-Service_Response"
+              example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTkiLCJqdGkiOiJjOGJkOGEyZi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQifQ.iVMm66lcfOMve7wqB2yEsq6TFCDGEpAEvzCA7NYoZRHsHxMu8_5N4DGI8xWQ5BRG_fZMumNt-eO29ig1K_G3kA"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -513,14 +513,14 @@ paths:
                     error_description: >-
                       The request cannot be fulfilled because it contains an
                       invalid dpop proof
-        '401':
+        "401":
           description: Unauthorized
           headers:
             WWW-Authenticate:
               description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
               schema:
                 type: string
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -599,7 +599,7 @@ paths:
             JWT containing the signature of the message headers whose integrity
             needs to be guaranteed, to comply with the INTEGRITY_REST_02
             security pattern. <a target="blank"
-            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
+            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1jZWViZWYxYWI0YmE3YjkyZjBhZWFmMzEzNTMxYWJjOWNjZDYyZjM2M2FkZGI0Y2FjNDFkODQ1MzgxZjhhZmUyIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.NgLR9DF4LLBXeOWU0DbAI5MmvamUFhprYZjN1rLXy7k80_P-AATy-Q5x7aWgfBll55nDIKONzWgf4ghUyaMQGQ">EXAMPLE
             ON JWT.IO</a>
@@ -624,17 +624,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NotifyClaimsCredRequest'
+              $ref: "#/components/schemas/NotifyClaimsCredRequest"
         required: true
       responses:
-        '200':
+        "200":
           description: 200 OK
           content:
             application/jwt:
               schema:
-                $ref: '#/components/schemas/e-Service_Response'
-              example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTkiLCJqdGkiOiJjOGJkOGEyZi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQifQ.iVMm66lcfOMve7wqB2yEsq6TFCDGEpAEvzCA7NYoZRHsHxMu8_5N4DGI8xWQ5BRG_fZMumNt-eO29ig1K_G3kA'
-        '400':
+                $ref: "#/components/schemas/e-Service_Response"
+              example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL3ByZC5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL25vdGlmeVN0YXR1c0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTkiLCJqdGkiOiJjOGJkOGEyZi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQifQ.iVMm66lcfOMve7wqB2yEsq6TFCDGEpAEvzCA7NYoZRHsHxMu8_5N4DGI8xWQ5BRG_fZMumNt-eO29ig1K_G3kA"
+        "400":
           description: Bad Request
           content:
             application/json:
@@ -679,14 +679,14 @@ paths:
                     error_description: >-
                       The request cannot be fulfilled because it contains an
                       invalid dpop proof
-        '401':
+        "401":
           description: Unauthorized
           headers:
             WWW-Authenticate:
               description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
               schema:
                 type: string
-        '500':
+        "500":
           description: Internal Server Error
           content:
             application/json:
@@ -775,30 +775,30 @@ paths:
             example: >-
               eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiR0VUIiwiYXRoIjoiNzFkZWY4MWYyZjE3MWI1MmFkYWMxNzg5ODI3NmFlZWU5OTlhZWUzZDNkZmE3NjkyMjJjODA0NDBmNDQ0ODgxYSIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNzYyMjYyNjE2fQ.H9r1N2s8xp_rcNr4Bs7_n-6vNKN4BPsvXzsV_UWwWiyr314xPMv4v6_8ac2SIbM-cJ-O4hlZysOUrjC7rewlag
       responses:
-        '200':
+        "200":
           description: 200 OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseReport'
-        '400':
+                $ref: "#/components/schemas/ResponseReport"
+        "400":
           description: Bad request
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        '401':
+                $ref: "#/components/schemas/ErrorDTO"
+        "401":
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorDTO'
-        '500':
+                $ref: "#/components/schemas/ErrorDTO"
+        "500":
           description: Internal server error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorDTO'
+                $ref: "#/components/schemas/ErrorDTO"
 components:
   schemas:
     e-Service_Response:
@@ -813,27 +813,27 @@ components:
             kid:
               description: Unique identifier of the JWK used by the Provider to sign the JWT.
               type: string
-              example: 'cdb52532-dd94-40ef-824d-9c55b10e6bc9'
+              example: "cdb52532-dd94-40ef-824d-9c55b10e6bc9"
             typ:
               description: It MUST be set to 'JWT'.
               type: string
-              example: 'JWT'
+              example: "JWT"
             use:
               description: Usage of the algorithm. If present, it MUST be 'sig'.
               type: string
-              example: 'sig'
-          required : [alg, kid, typ]
+              example: "sig"
+          required: [alg, kid, typ]
         Payload:
           type: object
           properties:
             iss:
               description: The identifier of the e-Service.
               type: string
-              example: 'https://pre.api.gateway.ipzs.it/t/itwallet.api/utility-wallet/1.0.0/v1/revokeAll'
+              example: "https://pre.api.gateway.ipzs.it/t/itwallet.api/utility-wallet/1.0.0/v1/revokeAll"
             aud:
               description: The identifier of the Consumer.
               type: string
-              example: '31670092-eec0-4f95-88da-e1c7ce5e4505'
+              example: "31670092-eec0-4f95-88da-e1c7ce5e4505"
             exp:
               description: UNIX timestamp representing the JWT expiration time.
               type: integer
@@ -845,18 +845,18 @@ components:
             jti:
               description: Unique identifier of the JWT to prevent replay attacks.
               type: string
-              example: '8b971b43-e990-44fa-9013-1b353bfc5a0f'
+              example: "8b971b43-e990-44fa-9013-1b353bfc5a0f"
             nbf:
               description: UNIX timestamp representing the JWT first validity time.
               type: string
-              example: '1736846688'
+              example: "1736846688"
             result_code:
               description: Response Code.
               type: string
               example: request_accepted
               enum:
-                  - request_accepted
-                  - request_processed
+                - request_accepted
+                - request_processed
             result_description:
               description: Response Description.
               type: string
@@ -893,9 +893,9 @@ components:
       type: object
       properties:
         Available:
-          $ref: '#/components/schemas/AvailableCredentials'
+          $ref: "#/components/schemas/AvailableCredentials"
         Unavailable:
-          $ref: '#/components/schemas/AvailableCredentials'
+          $ref: "#/components/schemas/AvailableCredentials"
     ErrorDTO:
       type: object
       properties:
@@ -989,13 +989,13 @@ components:
           type: integer
           format: int64
         countPid:
-          $ref: '#/components/schemas/TotalCountCredential'
+          $ref: "#/components/schemas/TotalCountCredential"
         countMdl:
-          $ref: '#/components/schemas/TotalCountCredential'
+          $ref: "#/components/schemas/TotalCountCredential"
         countEdc:
-          $ref: '#/components/schemas/TotalCountCredential'
+          $ref: "#/components/schemas/TotalCountCredential"
         countTeam:
-          $ref: '#/components/schemas/TotalCountCredential'
+          $ref: "#/components/schemas/TotalCountCredential"
     TotalCountCredential:
       type: object
       properties:
