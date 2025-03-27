@@ -796,7 +796,7 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://docs.pagopa.it/interoperabilita-1/manuale-operativo/guida-alladesione">PDND
-            Interoperabilità. Based on the implementation choices, it can be either Bearer or DPoP.</a><br/><br/><a target="blank"
+            Interoperabilità</a>. Based on the implementation choices, it can be either Bearer or DPoP.<br/><br/><a target="blank"
             href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL3ByZS5hcGkuZ2F0ZXdheS5pcHpzLml0L3QvaXR3YWxsZXQuYXBpL3V0aWxpdHktd2FsbGV0LzEuMC4wL3YxL3dhbGxldC1yZXBvcnQiLCJzdWIiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJuYmYiOjE3MzY4NDc0MzYsInB1cnBvc2VJZCI6IjcxOGNmYWQ0LTRmYmEtNDBmMy1iMzA0LTBhYmQyMDhhMGIyMCIsImlzcyI6InVhdC5pbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTczNjg0NzY3NiwiaWF0IjoxNzM2ODQ3NDM2LCJjbGllbnRfaWQiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJqdGkiOiIxMDU2ZWVkYi0xN2RhLTQ0NjYtYmM1Yi1hNDNkODc3ZjQ0YzgiLCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.mhy3gsKKcstrk9lbD6ia97KqPvPS4xZ7hggsUAk7SkkTNV1af9t9xh7yic_sxUORoYbwQi_J1IVAtOiEN_Gysw">EXAMPLE
             ON JWT.IO</a>
           required: true
