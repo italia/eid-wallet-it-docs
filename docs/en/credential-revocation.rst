@@ -696,7 +696,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      - **Description**
      - **Reference**
    * - **alg**
-     - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
+     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
      - [:rfc:`7515`], [:rfc:`7517`].
    * -  **typ** 
      - REQUIRED. It MUST be set to ``statuslist+jwt``.
