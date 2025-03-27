@@ -651,7 +651,7 @@ The following **elementIdentifiers**, relevant to the Credential Issuer, MUST be
        The value shall only use Latin1b characters and shall have a maximum length of 150 characters. 
 
 .. note::
-      User-specific attributes for mDOC Digital Credentials—such as those used in mDL or PID—are also included by referencing the appropriate `elementIdentifiers` defined in ISO/IEC 18013-5 or the ARF specification for `PID Rulebook`_.
+      User-specific attributes for mDOC Digital Credentials such as those used in mDL or PID are also included by referencing the appropriate `elementIdentifiers` defined in ISO/IEC 18013-5 or the `EIDAS-ARF`_ specification. Other Digital Credential User-specific attributes are defined in the Catalogue of Digital Credentials.
 
 
 Mobile security Object
@@ -675,7 +675,7 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
       - **Reference**
     * - **1**
       - Algorithm used to verify the cryptographic signature of the mDOC Digital Credential (REQUIRED).
-      - RFC9053
+      - :rfc:`9053`
 
 .. note::
     
