@@ -36,7 +36,7 @@ Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST su
   - *RP Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
   - *Device Retrieval* mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. *Server Retrieval* mechanism MUST NOT be supported.
   - Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see Section :ref:`MDOC-CBOR` for more details).
-  - *Wallet Instance validation* through the Wallet Attestation sent .
+  - *Wallet Instance validation* through the Wallet Attestation.
 
 
 The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.
