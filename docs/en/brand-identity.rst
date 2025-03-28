@@ -1,5 +1,3 @@
-brand-identity.rst
-
 IT-Wallet System Brand Identity
 ###############################
 
