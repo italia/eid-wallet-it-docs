@@ -778,9 +778,9 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
 
 1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the ``Common Name (CN)`` field should contain the Federation Entity unique identifier DNS name, which is included into the **sub** (subject) value in its federation Entity Configuration, removing ``https://`` and any webpaths.
 2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that matches the **sub** value of its federation Entity Configuration.
-3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration.
-4. **Certificate Revocation List (CRL)**: The participant MUST publish a CRL for its self-issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
-5. **Basic Constraints**: The X.509 Certificate MUST include a ``Basic Constraints`` extension with ``CA:TRUE`` and a maximum path length of 1. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.
+3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration, removing ``https://`` and any webpaths.
+4. **Certificate Revocation List (CRL)**: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
+5. **Basic Constraints**: The X.509 Certificate MUST include a ``Basic Constraints`` extension with ``CA:TRUE`` and a maximum path length of 1 if the certificate issuer is a Federation Intermediate, if it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.
 6. **Name Constraints**: The X.509 Certificate MUST include ``Name Constraints`` to specify permitted and excluded domains and URIs. For example:
    - Permitted:
      - ``URI.1=https://leaf.example.com``
@@ -917,7 +917,9 @@ X.509 Certificate Revocation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An X.509 Certificate can be revoked by its Issuer.
-When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
+Revocation lists, and or any other revocation check mechanisms, are required only for X.509 Certificate with expiration time superior to 24 hours, otherwise they are not required.
+
+When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, if the certificate expiration time is superior than 24 hours from the ``X509_NOT_VALID_BEFORE`` time, it MUST implement a CRL about the issued certificate and keep it updated.
 When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leaves Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf's cryptographic public key, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.
 
 Below a non-normative example, in plain text, examplify the content of a CRL.
