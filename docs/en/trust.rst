@@ -837,7 +837,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
             X509v3 Basic Constraints: 
-                CA:TRUE
+                CA:TRUE, pathlen:1
             X509v3 Key Usage: 
                 Digital Signature, Key Encipherment
             X509v3 Subject Alternative Name: 
@@ -846,6 +846,14 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                 Permitted:
                   URI.1=https://leaf.example.com
                   DNS.1=leaf.example.com
+                Excluded:
+                  DNS=localhost
+                  DNS=localhost.localdomain
+                  DNS=127.0.0.1
+                  DNS=example.com
+                  DNS=example.org
+                  DNS=example.net
+                  DNS=*.example.org
             X509v3 CRL Distribution Points: 
                 Full Name:
                   URI:https://trust-ancor.example.com/crl/leaf.example.org.crl
