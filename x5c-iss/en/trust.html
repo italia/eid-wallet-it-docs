@@ -1003,7 +1003,7 @@ Naming constraints are applied by Immediate Superiors within the certificates is
             <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
     <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
         <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
-            <span class="n">CA</span><span class="p">:</span><span class="n">TRUE</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">pathlen</span><span class="p">:</span><span class="mi">1</span>
         <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
             <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
         <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="p">:</span>
@@ -1012,6 +1012,14 @@ Naming constraints are applied by Immediate Superiors within the certificates is
             <span class="n">Permitted</span><span class="p">:</span>
               <span class="n">URI</span><span class="mf">.1</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
               <span class="n">DNS</span><span class="mf">.1</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+            <span class="n">Excluded</span><span class="p">:</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span><span class="o">.</span><span class="n">localdomain</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="mf">127.0.0.1</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">net</span>
+              <span class="n">DNS</span><span class="o">=*.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
         <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
             <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
               <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">ancor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">crl</span>
