@@ -4,7 +4,7 @@ Design Principles
  
 Thanks to the Digital Identity Wallet Paradigm, the IT-Wallet System provides Users with a simpler, faster, and more secure experience when accessing services. 
 
-The IT-Wallet Solution serves as the primary Touchpoint, enabling Users to manage and utilize their Personal Identification Data and Attributes when interacting with Public or Private Entities, in both physical and digital contexts. However, the overall service depends on the interactions of a network of Touchpoints and Technical Solutions, that support its delivery and directly impact the User Experience. 
+The IT-Wallet Solution serves as the primary Touchpoint, enabling Users to manage and use their Identification Data and Attributes when interacting with Public or Private Entities, in both physical and digital contexts. However, the overall service depends on the interactions of a network of Touchpoints and Technical Solutions, that support its delivery and directly impact the User Experience. 
 
 To ensure service quality from a User Experience perspective, Primary Actors, both Public and Private Entities, MUST ensure the usability and accessibility of their Technical Solutions while aligning with the distinctive elements of the IT-Wallet System. Specifically:
 
@@ -12,5 +12,5 @@ To ensure service quality from a User Experience perspective, Primary Actors, bo
 
 - **Accessibility**: Technical Solutions MUST be designed and maintained to meet high accessibility standards to ensure service access regardless of individual abilities, technological skills, or external and contextual constraints. Public Entities MUST adhere to [LG DESIGN], whereas Private Entities MUST comply with applicable regulations. 
 
-- **Consistency**: Technical Solutions MUST be designed and maintained in adherence to the IT-Wallet System’s Visual Identity and functional User Experience requirements in this document, to promote the recognizability of components, to ensure overall system consistency, and to minimize the User's cognitive load.
+- **Consistency**: Technical Solutions MUST be designed and maintained in adherence to the IT-Wallet System’s Brand Identity and User Experience functional requirements in this document, to promote the recognizability of components, to ensure the overall system consistency, and to minimize the User's cognitive load.
 

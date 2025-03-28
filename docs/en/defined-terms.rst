@@ -278,16 +278,21 @@ Below are the main defined terms and definitions related to User Experience aspe
      - Description
      - Notes
    * - Authentication Button
-     - Interactive element of the Interface enabling the User to access the Authentication process and use the services provided by Verifiers.
+     - The Engagement Button that enables the User to access the Authentication process and use the services provided by Verifiers.
+     - 
+   * - Brand Identity
+     - Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.
      - 
    * - Catalog
      - Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.
      - 
+   * - Call To Action
+     - A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.
    * - Detailed View
      - Extended display mode of the Digital Credentials, showing all the Attributes included.
      - 
    * - Engagement Button
-     - Interactive element of the Interface that allows the User to activate the process of issuing a Digital Credential from the Touchpoint of the authorised Authentic Source.
+     - Interactive element of the Interface that allows the User to trigger a process (e.g. to Authenticate, to request the issuance of a Digital Credential, etc).
      - 
    * - Interaction Model
      - A set of characteristics that define how the User interacts with the Interface of one or multiple Touchpoints in order to complete a task or operation and achieve a specific goal.
