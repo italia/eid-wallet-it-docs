@@ -7,7 +7,9 @@ Relying Party Solution
 
 This section provides technical details on the Relying Party Solution.
 
-.. note:: 
-    This section is currently under development.
+Relying Party Solution Requirements
+=====================================
 
-.. include:: relying-party-entity-configuration.rst
+.. include:: relying-party-instance.rst
+
+.. include:: relying-party-endpoint.rst
