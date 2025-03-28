@@ -282,3 +282,8 @@ When the Mobile Relying Party Instance is in the **Operational** state, the issu
 Mobile Relying Party Instance Revocation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Mobile Relying Party Instance revocation MUST be tied to X.509 Access Certificates validity.
+Those certificates MAY be issued as short-lived or long-lived. 
+Short-lived certificates (typically valid within 24 hours) are RECOMMENDED as they do not require explicit revocation mechanisms, reducing the security risks such as. tampering the Mobile Relying Party Instance.
+Long-lived certificates MAY be allowed, implementing the standard revocation mechanisms as defined in :rfc:`5280`, including Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol (OCSP).
+These revocation mechanisms are aligned with the trust model described in Section :ref:`The Infrastructure of Trust`, ensuring consistent and reliable certificate validation across the ecosystem.

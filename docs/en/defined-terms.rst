@@ -83,6 +83,12 @@ Below are the description of acronyms and definitions which are useful for furth
      - An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. 
      - | Revised from ARF v1.4. 
        | *Differences:* renamed “natural or legal person” in “Organizational Entity”.
+   * - Relying Party Solution
+     - Relying Party Solution is the entire eIDAS-compliant product (combination of software, hardware, services and settings) provided by a Relying Party to Users and certified as EUDI-compliant by a Conformity Assessment Body (CAB). 
+     - 
+   * - Relying Party Backend
+     - Is the technical infrastructure and server-side components, including a set of endpoints, managed by a Relying Party.
+     - 
    * - Relying Party Instance
      - A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. 
      - | Revised from ARF v1.4.
