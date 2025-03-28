@@ -5,21 +5,41 @@
 Proximity Flow
 ==============
 
-This section describes how a Relying Party requests the presentation of an *mdoc-CBOR* Credential to a Wallet Unit according to the *ISO 18013-5 Specification*. Only *Supervised Device Retrieval flow* is supported in this technical implementation profile. 
+This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance according to the *ISO 18013-5 Specification*. 
 
-The presentation phase is structured into three broad sub-phases: 
+The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure: 
+
+.. figure:: ../../images/high-level-presentation-proximity.svg
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/svg/TL9DYzim4BthLqnpoa8JquzJJqjt3IbigKbsAJq5HHeiKLboDUEaflI_T-ma9WrPNuIVvhrvyqRtn3fprmJrnaSJEelWc5lwL1HP7vQrPzVjEi9iKcICl3IfATgWuy1P4DlWTyN3nqKrG2zVduf64sCMQFkGcZR5WTCE-chrvR7SRfxBTVdj-KTLpk-KOiy1ORRojLiyuHu3L1b9A9fzYb0vJJXJgi9CASu76szXzYB7JCx69WCk1Ik_egK-fovQdVjvUw6nRGSDgRuXV0T_5CWt6PrRt7k3Muorhh4HH8Zlbl0umb1EyD1-WwRB2EHIvaNMiKQGZ2AQiSCE-O0OuRiE0HbqjB36qFjOGwKpzuD2IQntmPD30XyzUns0Zgh6QP4ACXV8T-MIa6WO3S_yazFtIzWShs2IFhijeybzosWlJHuyEo2diy1qOlx4_ZWT4tJjsG-Uw5FTRMScDKqNlHbJ5fKFIxcyW61npdADd3tkTVZVtBZJZByw92uoakWI0lusRWnux_LrGa9VIRe1wSAarQmdbbZzgvIaltqyFQ5RQpukW96aVAXTtteChoKVK5i2JXFtbSBhV33AxTXIgNkCjcl2Fm00
+    
+    High-Level Proximity Flow
  
-  1. **Device Engagement**: This subphase begins when the User is prompted to disclose certain attributes from the mdoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Unit and the Relying Party, so that the mdoc requests and responses can be exchanged during the communication subphase.
-  The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping.
-  This technical implementation profile exclusively supports QR code for Device Engagement.
+The sub-phases are described below:
 
-  2. **Session establishment**: During the session establishment phase, the Relying Party Instance sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Relying Party at this stage.
+  1. **Device Engagement**: This subphase begins when the User is prompted to disclose certain attributes from the mdoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Relying Party Instance, so that the mdoc requests and responses can be exchanged during the communication subphase.
+  The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping.
+
+  2. **Session establishment**: During the session establishment phase, the Relying Party Instance sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Relying Party Instance at this stage.
   The established session MAY be terminated based on the conditions as detailed in [`ISO18013-5`_ #9.1.1.4].
 
   3. **Communication - Device Retrieval**: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mdoc uses the data from the session establishment message to derive the session key and decrypt the mdoc request.
-  During the communication subphase, the Relying Party Instance has the option to request information from the Wallet using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the Verifier App via a session data message. This technical implementation profile only supports Bluetooth Low Energy (BLE) for the communication sub-phase.
+  During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the Verifier App via a session data message. 
 
-The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.
+
+
+Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least:
+
+  - *Supervised Device Retrieval flow* where a human Verifier is overseeing the verification process in person, in contrast with *unsupervised flow* where verification might happen through automated systems without human oversight.
+  - *Device Engagement* based on QR Code.
+  - *RP Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
+  - *Device Retrieval* mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. *Server Retrieval* mechanism MUST NOT be supported.
+  - Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see Section :ref:`MDOC-CBOR` for more details).
+  - *Wallet Instance validation* through the Wallet Attestation sent .
+
+
+The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.
 
 .. _fig_High-Level-Flow-ITWallet-Presentation-ISO-updated:
 .. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO-updated.svg
@@ -32,15 +52,15 @@ The following figure illustrates the flow diagram compliant with ISO 18013-5 for
 
 **Step 1**: The User opens the Wallet Instance. The User initiates the process by opening the Wallet Instance on their device.
 
-**Step 2**: The User authenticates itself to the Wallet Unit. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Device (WSCD). It is a prerequisite for accessing sensitive data and presenting attributes.
+**Step 2**: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Device (WSCD). It is a prerequisite for accessing sensitive data and presenting attributes.
 
-**Step 3**: The User explicitly indicates their intention to present their mdoc digital credentials, which is considered an attestation within the Wallet Unit.
+**Step 3**: The User explicitly indicates their intention to present their mdoc digital credentials, which is considered an attestation within the Wallet Instance.
 
 **Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCD, a separate authentication via WSCD might be required before presenting sensitive credentials like the mdoc.
 
-**Step 5**: The Wallet Unit generates a new ephemeral Elliptic Curve key pair for secure communication. The public key (EDeviceKey.Pub) will be used for session encryption. This is part of the device engagement process.
+**Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication. The public key (EDeviceKey.Pub) will be used for session encryption. This is part of the device engagement process.
 
-**Step 6**: The Wallet Unit presents a QR Code to the Relying Party Instance. This QR code contains the DeviceEngagement data, which includes the EDeviceKey.Pub and information about supported copter suits. The QR code is one of the defined transmission technologies for device engagement.
+**Step 6**: The Wallet Instance presents a QR Code to the Relying Party Instance. This QR code contains the DeviceEngagement data, which includes the EDeviceKey.Pub and information about supported copter suits. The QR code is one of the defined transmission technologies for device engagement.
 
 Below an example of a device engagement structure that utilizes QR for device engagement and Bluetooth Low Energy (BLE) for data retrieval.
 
@@ -93,11 +113,11 @@ The same content shown above using the diagnostic notation:
 
 **Step 8**: The Relying Party Instance also generates its ephemeral key pair (EReaderKey. Priv, EReaderKey.Pub). The private key (EReaderKey.Priv) is kept secret, and the public key (EReaderKey.Pub) will be used in establishing the session.
 
-**Step 9**: In essence, the Wallet Unit and Relying Party Instance independently derive the session keys using their private ephemeral key and the other party’s public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance computes its session key.
+**Step 9**: In essence, the Wallet Instance and Relying Party Instance independently derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance computes its session key.
 
 **Step 10**: The RP Instance prepares a SessionEstablishment message. This message is signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) and encrypted using the session keys derived in the previous step. The SessionEstablishment message includes the EReaderKey.Pub and a request for specific attribute(s).
 
-The doc request (Wallet Attestation (WA) and an mDL have been requested) MUST be encoded in CBOR, as demonstrated in the following non-normative example.
+The doc request (Wallet Attestation (WA) and an mdoc have been requested) MUST be encoded in CBOR, as demonstrated in the following non-normative example.
 
 CBOR data in AF Binary format: 
 
@@ -161,17 +181,17 @@ The above CBOR data is represented in diagnostic notation as follows:
     ]
   }
 
-**Step 11**: The Relying Party Instance transmits the encrypted and signed SessionEstablishment message to the Wallet Unit over a secure BLE connection that was established based on the device engagement information.
+**Step 11**: The Relying Party Instance transmits the encrypted and signed SessionEstablishment message to the Wallet Instance over a secure BLE connection that was established based on the device engagement information.
 
-**Step 12**: The Wallet Unit also computes the session key, as described in Step 9.
+**Step 12**: The Wallet Instance also computes the session key, as described in Step 9.
 
-**Step 13**: Upon receiving the SessionEstablishment message, the Wallet Unit decrypts it using the shared session key and verifies the Relying Party instance’s signature (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) to ensure its authenticity.
+**Step 13**: Upon receiving the SessionEstablishment message, the Wallet Instance decrypts it using the shared session key and verifies the Relying Party instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) to ensure its authenticity.
 
-**Step 14**: The Wallet Unit decrypts the attribute request and prompts the user for their consent to share the requested attributes. It may also display the contents of the Relying Party’s registration certificate to ensure transparency about the requested data and its registered purpose. This aligns with the principles of selective disclosure and user approval.
+**Step 14**: The Wallet Instance decrypts the attribute request and prompts the user for their consent to share the requested attributes. It may also display the contents of the Relying Party's registration certificate to ensure transparency about the requested data and its registered purpose. This aligns with the principles of selective disclosure and user approval.
 
-**Step 15**: The user reviews the request and the Relying Party’s registration information and then approves the presentation of the requested attributes. 
+**Step 15**: The user reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes. 
 
-**Step 16**: After receiving user approval, the Wallet Unit retrieves the requested mdoc Digital Credentials. It then prepares a SessionData message containing these credentials, signs it (mdoc authentication as specified in [`ISO18013-5`_ #9.1.3]). It encrypts it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity.
+**Step 16**: After receiving user approval, the Wallet Instance retrieves the requested mdoc Digital Credentials. It then prepares a SessionData message containing these credentials, signs it (mdoc authentication as specified in [`ISO18013-5`_ #9.1.3]). It encrypts it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity.
 
 The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #8.3.2.1.2.2].
 
@@ -358,11 +378,11 @@ In diagnostic notation:
     ],
   }
 
-**Step 17**: The Relying Party Instance receives the SessionData, decrypts it, and verifies the Wallet Unit’s signature to ensure the data’s integrity and that it originates from the expected device (device binding). It also checks the validity of the mdoc, including its issuer’s signature and revocation status.
+**Step 17**: The Relying Party Instance receives the SessionData, decrypts it, and verifies the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also checks the validity of the mdoc, including its issuer's signature and revocation status.
 
-**Step 18**: Once the data exchange is complete, either party can terminate the session. If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) should unsubscribe from characteristics and disconnect from the GATT server (Wallet Unit). 
+**Step 18**: Once the data exchange is complete, either party can terminate the session. If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) should unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance). 
 
-**Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many mDL use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.˛
+**Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
 
 Device Engagement
 -----------------
@@ -373,7 +393,7 @@ The Device Engagement structure MUST be have at least the following components:
   - **Security**: an array that contains two mandatory values
   
     - the cipher identifier: see Table 22 of `ISO18013-5`_
-    - the mDL public ephemeral key generated by the Wallet Unit and required by the Relying Party to derive the Session Key. The mDL public ephemeral key MUST be of a type allowed by the indicated cipher suite.
+    - the public ephemeral key generated by the Wallet Instance and required by the Relying Party Instance to derive the Session Key. The public ephemeral key MUST be of a type allowed by the indicated cipher suite.
   - **transferMethod**: an array that contains one or more transferMethod arrays when performing device engagement using the QR code. This array is for offline data retrieval methods. A transferMethod array holds two mandatory values (type and version). Only the BLE option is supported by this technical implementation profile, then the type value MUST be set to ``2``. 
   - **BleOptions**: this elements MUST provide options for the BLE connection (support for Peripheral Server or Central Client Mode, and the device UUID).
 
@@ -395,7 +415,7 @@ The details on the structure of mdoc Request, including identifier and format of
         - **dataElements**: (tstr). Requested data elements with *Intent to Retain* value for each requested element.
 
           - **IntentToRetain**: (bool). It indicates that the Relying Party intends to retain the received data element.
-    - **readerAuth**: *COSE_Sign1*. It is required for the Relying Party authentication. 
+    - **readerAuth**: *COSE_Sign1*. It is required for the Relying Party Instance authentication. 
 
 .. note::
   
@@ -431,7 +451,7 @@ The details on the structure of mdoc Response are provided below.
           - **DataItemValue**: (any). The value of the element.
         - **DeviceAuth**:  The DeviceAuth structure MUST contain the DeviceSignature elements.
 
-          - **DeviceSignature**: It MUST contain the device signature for the Wallet Unit authentication. 
+          - **DeviceSignature**: It MUST contain the device signature for the Wallet Instance authentication. 
   - **status**: It contains a status code. For detailed description and action required refer to to Table 8 (ResponseStatus) of the `ISO18013-5`_
 
 
@@ -440,16 +460,16 @@ Session Termination
 
 The session MUST be terminated if at least one of the following conditions occur. 
 
-  - After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Unit and the Relying Party SHOULD be no less than 300 seconds.
-  - When the Wallet Unit doesn't accept any more requests.
-  - When the Relying Party does not send any further requests. 
+  - After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds.
+  - When the Wallet Instance doesn't accept any more requests.
+  - When the Relying Party Instance does not send any further requests. 
 
-If the Wallet Unit and the Relying Party does not send or receive any further requests, the session termination MUST be initiated as follows. 
+If the Wallet Instance and the Relying Party Instance does not send or receive any further requests, the session termination MUST be initiated as follows. 
 
  - Send the status code for session termination, or
  - dispatch the "End" command as outlined in [`ISO18013-5`_ #8.3.3.1.1.5].
 
-When a session is terminated, the Wallet Unit and the Relying Party MUST perform at least the following actions: 
+When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions: 
 
   - destruction of session keys and related ephemeral key material; 
   - closure of the communication channel used for data retrieval.
