@@ -748,7 +748,7 @@ This is a RESTful API endpoint provided by the Wallet Provider that enables the 
 
 Wallet Attestation Issuance Request
 .............................................
-The request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain an ``assertion`` parameter whose value is a signed JWT of the Wallet Attestation Request, including all header and body parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>` below).
+The request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain an ``assertion`` parameter whose value is a signed JWT of the Wallet Attestation Request, including all header parameters and body claims (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>` below).
 
 .. _table_wallet_attestation_request_claim:
 
@@ -859,7 +859,7 @@ The JOSE header of the Wallet Attestation SD-JWT MUST contain the following para
       - Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
 
-The body of the Wallet Attestation SD-JWT MUST contain the following parameters:
+The body of the Wallet Attestation SD-JWT MUST contain the following claims:
 
 .. list-table::
     :widths: 20 60 20
@@ -881,7 +881,7 @@ The body of the Wallet Attestation SD-JWT MUST contain the following parameters:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **vct**
-      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://issuer.example.org/v1.0/personidentificationdata``).
+      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Wallet Provider metadata.
       - Section 3.2.2.2 `SD-JWT-VC`_.
       - `OpenID4VCI`_.
     * - **_sd**
@@ -890,8 +890,14 @@ The body of the Wallet Attestation SD-JWT MUST contain the following parameters:
     * - **sd_alg**
       - REQUIRED.JSON array containing a list of the signing algorithms (alg values) supported.
       - `SD-JWT`_.
+    * - **sub**
+      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK used during the Wallet Instance registration.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **aal**
+      - REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
+      - This specification.
 
-In the following the disclosure MSUT be present:
+The following the disclosure MUST be present:
 
 .. list-table::
     :widths: 20 60 20
@@ -900,12 +906,6 @@ In the following the disclosure MSUT be present:
     * - **Disclosure**
       - **Description**
       - **Reference**
-    * - **sub**
-      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK contained in the ``cnf`` claim.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **aal**
-      - REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
-      - This specification.
     * - **wallet_link**
       - OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.
       - `OpenID4VCI`_.
@@ -943,8 +943,6 @@ Below are described examples of values for the disclosures:
    ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd``
 -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "wallet_name", "Wallet_Hobbiton_v1"]``
 
-
-
 Below is a non-normative example of the SD-JWT Wallet Attestation without encoding and signature applied:
 
 .. code-block::
@@ -976,7 +974,9 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
     "_sd_alg": "sha-256",
     "iat": 1687281195,
     "exp": 1687288395,
-    "vct": "https://wallet-atestation.example.org/v1.0/walletattestationdata"
+    "vct": "$wallet.atestation.example/v1.0",
+    "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
+    "aal": "https://trust-list.eu/aal/high"
   }
 
 Wallet Attestation mdoc
