@@ -765,6 +765,14 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 .. name-constraints::
    :permitted: URI.1=https://leaf.example.com
    :permitted: CN=leaf.example.com
+   :permitted: DNS=leaf.example.com
+   :excluded: DNS=localhost
+   :excluded: DNS=localhost.localdomain
+   :excluded: DNS=127.0.0.1
+   :excluded: DNS=example.com
+   :excluded: DNS=example.org
+   :excluded: DNS=example.net
+   :excluded: DNS=*.example.org
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 
@@ -783,11 +791,11 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
         Version: 3 (0x2)
         Serial Number: 1 (0x1)
     Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
         Validity
             Not Before: Sep 1 00:00:00 2023 GMT
             Not After : Sep 1 00:00:00 2033 GMT
-        Subject: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Subject: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 Public-Key: (4096 bit)
@@ -820,7 +828,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
         Validity
             Not Before: Sep 1 00:00:00 2023 GMT
             Not After : Sep 1 00:00:00 2024 GMT
-        Subject: CN=https://leaf.example.org, O=Leaf, C=IT
+        Subject: CN=leaf.example.org, O=Leaf, C=IT
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 Public-Key: (2048 bit)
