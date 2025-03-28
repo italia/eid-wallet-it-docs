@@ -776,10 +776,23 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 
-1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the ``Common Name (CN)`` field should contain the Federation Entity unique identifier value, which corresponds to the **sub** (subject) value in its federation Entity Configuration.
+1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the ``Common Name (CN)`` field should contain the Federation Entity unique identifier DNS name, which is included into the **sub** (subject) value in its federation Entity Configuration, removing ``https://`` and any webpaths.
 2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that matches the **sub** value of its federation Entity Configuration.
 3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration.
 4. **Certificate Revocation List (CRL)**: The participant MUST publish a CRL for its self-issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
+5. **Basic Constraints**: The X.509 Certificate MUST include a ``Basic Constraints`` extension with ``CA:TRUE`` and a maximum path length of 1. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.
+6. **Name Constraints**: The X.509 Certificate MUST include ``Name Constraints`` to specify permitted and excluded domains and URIs. For example:
+   - Permitted:
+     - ``URI.1=https://leaf.example.com``
+     - ``DNS.1=leaf.example.com``
+   - Excluded:
+     - ``DNS=localhost``
+     - ``DNS=localhost.localdomain``
+     - ``DNS=127.0.0.1``
+     - ``DNS=example.com``
+     - ``DNS=example.org``
+     - ``DNS=example.net``
+     - ``DNS=*.example.org``
 
 Below a non-normative example of an X.509 Certificate Chain without intermediaries and in plain text, to facilitate the reading.
 
