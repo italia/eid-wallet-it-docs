@@ -810,21 +810,6 @@ The body of the Wallet Attestation Request JWT MUST contain the following claims
     * - **cnf**
       - JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`
-    * - **vp_formats_supported**
-      - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
-      -
-    * - **authorization_endpoint**
-      - URL of the Wallet Authorization Endpoint, it can be a universal link or a custom url-scheme.
-      -
-    * - **response_types_supported**
-      - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
-      -
-    * - **response_modes_supported**
-      - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
-      - :rfc:`8414`
-    * - **request_object_signing_alg_values_supported**
-      - JSON array containing a list of the signing algorithms (alg values) supported.
-      -
 
 
 Wallet Attestation Issuance Response
@@ -849,10 +834,10 @@ Below is a non-normative example of an error response:
 
 .. _table_wallet_attestation_claim:
 
-Wallet Attestation JWT
+Wallet Attestation SD-JWT
 ...................................
 
-The JOSE header of the Wallet Attestation JWT MUST contain the following parameters:
+The JOSE header of the Wallet Attestation SD-JWT MUST contain the following parameters:
 
 .. list-table::
     :widths: 20 60 20
@@ -865,16 +850,16 @@ The JOSE header of the Wallet Attestation JWT MUST contain the following paramet
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Instance as base64url-encoded JWK Thumbprint value.
+      -  Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
-      -  It MUST be set to ``wallet-attestation+jwt``
-      -  `OPENID4VC-HAIP`_
+      -  It MUST be set to ``dc+sd-jwt``
+      -  `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party.
+      - Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
 
-The body of the Wallet Attestation JWT MUST contain the following claims:
+The body of the Wallet Attestation SD-JWT MUST contain the following parameters:
 
 .. list-table::
     :widths: 20 60 20
@@ -884,41 +869,250 @@ The body of the Wallet Attestation JWT MUST contain the following claims:
       - **Description**
       - **Reference**
     * - **iss**
-      - Identifier of the Wallet Provider
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **sub**
-      - Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK contained in the ``cnf`` claim.
+      - REQUIRED. Identifier of the Wallet Provider.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT.
+      - REQUIRED. UNIX Timestamp with the expiry time of the JWT.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
-      - UNIX Timestamp with the time of JWT issuance.
+      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
     * - **cnf**
-      - JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
-      - :rfc:`7800`
+      - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
+      - :rfc:`7800`.
+    * - **vct**
+      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://issuer.example.org/v1.0/personidentificationdata``).
+      - Section 3.2.2.2 `SD-JWT-VC`_.
+      - `OpenID4VCI`_.
+    * - **_sd**
+      - REQUIRED. String containing the hash algorithm used by the Issuer to generate the digests.
+      - `SD-JWT`_.
+    * - **sd_alg**
+      - REQUIRED.JSON array containing a list of the signing algorithms (alg values) supported.
+      - `SD-JWT`_.
+
+In the following the disclosure MSUT be present:
+
+.. list-table::
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **Disclosure**
+      - **Description**
+      - **Reference**
+    * - **sub**
+      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK contained in the ``cnf`` claim.
+      - :rfc:`9126` and :rfc:`7519`.
     * - **aal**
-      - JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
-      -
-    * - **authorization_endpoint**
-      - URL of the Wallet Authorization Endpoint, it can be a universal link or a custom url-scheme.
-      -
-    * - **response_types_supported**
-      - JSON array containing a list of the OAuth 2.0 ``response_type`` values.
-      -
-    * - **response_modes_supported**
-      - JSON array containing a list of the OAuth 2.0 "response_mode" values that this authorization server supports.
-      - :rfc:`8414`
-    * - **vp_formats_supported**
-      - JSON object with name/value pairs, identifying a Credential format supported by the Wallet.
-      -
-    * - **request_object_signing_alg_values_supported**
-      - JSON array containing a list of the signing algorithms (alg values) supported.
-      -
-    * - **client_id_schemes_supported**
-      - Array of JSON Strings containing the values of the Client Identifier schemes that the Wallet supports.
-      - `OpenID4VP`_
+      - REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
+      - This specification.
+    * - **wallet_link**
+      - OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.
+      - `OpenID4VCI`_.
+    * - **wallet_name**
+      - OPTIONAL. String containing a human-readable name of the Wallet.
+      - `OpenID4VCI`_.
+
+Below are described examples of values for the disclosures:
+
+**Claim** ``sub``:
+
+-  SHA-256 Hash: ``DTZRbQgOWJlLaBfe6pr+j1vL4B4t6LLWyt9loaEJKe0=``
+-  Disclosure:
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgInN1YiIsICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIl0=``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "sub", "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]``
+
+**Claim** ``aal``:
+
+-  SHA-256 Hash: ``h+w4Q4dWcHebykPpS4jRsBZVvBhEKszyLeZGmEunDJ4=``
+-  Disclosure:
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImFhbCIsICJodHRwczovL3RydXN0LWxpc3QuZXUvYWFsL2hpZ2giXQ==``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "aal", "https://trust-list.eu/aal/high"]``
+
+**Claim** ``wallet_link``:
+
+-  SHA-256 Hash: ``cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=``
+-  Disclosure:
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9saW5rIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiXQ==``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "wallet_link", "https://example.com/wallet/detail_info.html"]``
+
+**Claim** ``wallet_name``:
+
+-  SHA-256 Hash: ``iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=``
+-  Disclosure:
+   ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd``
+-  Contents: ``["2GLC42sKQveCfGfryNRN9w", "wallet_name", "Wallet_Hobbiton_v1"]``
+
+
+
+Below is a non-normative example of the SD-JWT Wallet Attestation without encoding and signature applied:
+
+.. code-block::
+
+    {
+    "alg": "ES256",
+    "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
+    "trust_chain": [
+      "eyJhbGciOiJFUz...6S0A",
+      "eyJhbGciOiJFUz...jJLA",
+      "eyJhbGciOiJFUz...H9gw",
+    ],
+    "typ": "dc+sd-jwt",
+  }
+  .
+  {
+    "iss": "https://wallet-provider.example.org",
+    "cnf":
+    {
+      "jwk":
+      {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
+        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
+      }
+    },
+    "_sd": [DTZRbQgOWJlLaBfe6pr+j1vL4B4t6LLWyt9loaEJKe0=, 9UVXn0/detJVPm6HSp2pxdFe2YJrVKDeMZqS/Pf2EWc=, cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=, iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=],
+    "_sd_alg": "sha-256",
+    "iat": 1687281195,
+    "exp": 1687288395,
+    "vct": "https://wallet-atestation.example.org/v1.0/walletattestationdata"
+  }
+
+Wallet Attestation mdoc
+...................................
+
+In this descriptions we further specialize the giudelines given in `MDOC-CBOR Credential Format`_ to represent the Wallet Attestation in mdoc format. The latter MUST:
+
+  - have two namespaces: the dfault one, ``org.iso.18013.5.1``, and the domestic namespace, ``org.iso.18013.5.1.it``; 
+  - have **docType** set to ``org.iso.18013.5.1.it.WalletAttestation``; and
+  - have **issuerAuth** as described in `Mobile security Object`_.
+
+The ``nameSpaces``Json Objects are defined as follows:
+
+.. list-table:: org.iso.18013.5.1
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **elementIdentifier**
+      - **Description**
+      - **Reference**
+    * - **issuing_autority**.
+      - Identifier of the Wallet Provider.
+      - `ISO18013-5`_.
+
+for the default namespace, and
+
+.. list-table:: org.iso.18013.5.1.it
+    :widths: 20 60 20
+    :header-rows: 1
+
+    * - **elementIdentifier**
+      - **Description**
+      - **Reference**
+    * - **sub**.
+      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK contained in the ``cnf`` claim.
+      - :rfc:`9126` and :rfc:`7519`.
+    * - **aal**.
+      - JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the ``IssuerAuth.deviceKeyInfo.deviceKey`` claim of the **issuerAuth** Object.
+      - :rfc:`9679`.
+    * - **wallet_link**.
+      - JSON String containing a URL to get further information about the Wallet and the Wallet Provider.
+      - `OpenID4VCI`_.
+    * - **wallet_name**.
+      - JSON String, it MUST be the Identifier of the Wallet Provider.
+      - `OpenID4VCI`_.
+
+for the domestic namespace.
+
+Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnostic notation:
+
+.. code-block::
+
+  {
+    "docType": "org.iso.18013.5.1.it.WalletAttestation",
+    "issuerSigned":{
+      "nameSpaces":{
+        "org.iso.18013.5.1":[
+          24(<< {
+          "digestID": 0,
+          "random": h'E0B…29343AA',
+          "elementIdentifier": "issuing_autority",
+          "elementValue":"https://wallet-provider.example.org”
+          } >>)
+        ],
+        "org.iso.18013.5.1.it":[
+          24(<< {
+          "digestID": 0,
+          "random": h'AE84834F3…A3E4FCCE',
+          "elementIdentifier": "sub",
+          "elementValue":"vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
+          } >>),
+          24(<< {
+          "digestID": 1,
+          "random": h'960CB15A…E902807AA95',
+          "elementIdentifier": "wallet_name",
+          "elementValue": "Wallet_Hobbiton_v1"
+          } >>),
+          24(<<
+          {
+          "digestID": 2,
+          "random": h'9D3774BD59…A4F76A',
+          "elementIdentifier": "wallet_link",
+          "elementValue":"https://example.com/wallet/detail_info.htmla"
+          } >>),
+          24(<<
+          {
+          "digestID": 3,
+          "random": h'9D3774BD59…A4F76A',
+          "elementIdentifier": "aal",
+          "elementValue":"https://trust-list.eu/aal/high"
+          } >>),
+          24(<<
+        ]
+  },
+    "issuerAuth": [
+      << {1: -7} >>,
+      {
+      33: h'30820215308201BCA003020102021404AD30C…'
+      },
+      <<
+        24(<< 
+          {
+            "docType":"org.iso.18013.5.1.it.WalletAttestation",
+            "version": "org.iso.18013.5.1.it",
+            "validityInfo": {
+              "signed": 0("2023-02-22T06:23:56Z")
+              "validFrom": 0("2023-02-22T06:23:56Z"),
+              "validUntil": 0("2024-02-22T00:00:00Z")
+            },
+            "valueDigests": {
+              "org.iso.18013.5.1.it": {
+                0: h'0F1571A988FCDF2929…',
+                1: h'0CDFE0774A2B596C90…',
+                2: h'E23821492558984395…',
+                3: h'BBC77E6CCE544EDF86…'
+              },
+              "org.iso.18013.5.1": {
+                0: h'0F1571A988FCDF2929…'
+              }
+            },
+            "deviceKeyInfo": {
+              "deviceKey": {
+                1: 2,
+                -1: 1,
+                -2: h'B820963964E5…',
+                -3: h'0A6DA0AF437E…'
+              }
+            },
+            "digestAlgorithm": "SHA-256"
+          } 
+        >>)                     
+      >>,
+      h'1AD0D6A7313EFDC…43DEBF48BF5A580D'
+    ]
+  }
+
 
 Error Handling for Wallet Attestation Issuance 
 ..................................................
