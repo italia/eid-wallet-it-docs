@@ -925,10 +925,10 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <p>OpenID Federation and X.509 based PKI share several things in common, as listed below:</p>
 <ul class="simple">
 <li><p><strong>Hierarchical Approach</strong>: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.</p></li>
-<li><p><strong>Decentralization with Multiple Trust Anchors and Intermediates</strong>: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and intermediates, below one or more Trust Anchors, introduces a level of decentralization.</p></li>
-<li><p><strong>Custom Extensions</strong>: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, trust marks and policies using a policy language.</p></li>
-<li><p><strong>Trust/Certificate Chain</strong>: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through intermediaries to the end entity (Leaf).</p></li>
-<li><p><strong>Constraints in the Chain</strong>: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediates, and the domains involved.</p></li>
+<li><p><strong>Decentralization with Multiple Trust Anchors and Intermediates</strong>: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and Intermediates, below one or more Trust Anchors, introduces a level of decentralization.</p></li>
+<li><p><strong>Custom Extensions</strong>: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a policy language.</p></li>
+<li><p><strong>Trust/Certificate Chain</strong>: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through Intermediaries to the end entity (Leaf).</p></li>
+<li><p><strong>Constraints in the Chain</strong>: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediaries, and the domains involved.</p></li>
 <li><p><strong>Public Key Distribution</strong>: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.</p></li>
 <li><p><strong>Registry of Expired Keys</strong>: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.</p></li>
 </ul>
@@ -990,7 +990,7 @@ Naming constraints are applied by Immediate Superiors within the certificates is
     <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
     <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">1234567890</span> <span class="p">(</span><span class="mh">0x499602d2</span><span class="p">)</span>
 <span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
-    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
     <span class="n">Validity</span>
         <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
         <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2024</span> <span class="n">GMT</span>
@@ -1003,7 +1003,7 @@ Naming constraints are applied by Immediate Superiors within the certificates is
             <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
     <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
         <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
-            <span class="n">CA</span><span class="p">:</span><span class="n">FALSE</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">TRUE</span>
         <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
             <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
         <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="p">:</span>
@@ -1192,7 +1192,7 @@ When the X.509 Certificate issuer is an Immediate superior, such as the Trust An
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 27/03/2025.
+      Last updated on 28/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

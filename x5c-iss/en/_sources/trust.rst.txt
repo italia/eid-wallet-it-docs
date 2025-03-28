@@ -736,10 +736,10 @@ This approach leverages the dynamic and flexible nature of OpenID Federation alo
 OpenID Federation and X.509 based PKI share several things in common, as listed below:
 
 - **Hierarchical Approach**: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.
-- **Decentralization with Multiple Trust Anchors and Intermediates**: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and intermediates, below one or more Trust Anchors, introduces a level of decentralization.
-- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, trust marks and policies using a policy language.
-- **Trust/Certificate Chain**: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through intermediaries to the end entity (Leaf).
-- **Constraints in the Chain**: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediates, and the domains involved.
+- **Decentralization with Multiple Trust Anchors and Intermediates**: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and Intermediates, below one or more Trust Anchors, introduces a level of decentralization.
+- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a policy language.
+- **Trust/Certificate Chain**: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through Intermediaries to the end entity (Leaf).
+- **Constraints in the Chain**: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediaries, and the domains involved.
 - **Public Key Distribution**: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.
 - **Registry of Expired Keys**: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.
 
@@ -816,7 +816,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
         Version: 3 (0x2)
         Serial Number: 1234567890 (0x499602d2)
     Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
         Validity
             Not Before: Sep 1 00:00:00 2023 GMT
             Not After : Sep 1 00:00:00 2024 GMT
@@ -829,7 +829,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
             X509v3 Basic Constraints: 
-                CA:FALSE
+                CA:TRUE
             X509v3 Key Usage: 
                 Digital Signature, Key Encipherment
             X509v3 Subject Alternative Name: 
