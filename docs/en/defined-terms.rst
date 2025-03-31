@@ -87,7 +87,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - Relying Party Solution is the entire product (combination of software, hardware, services and settings) provided by a Relying Party to Users and compliant with IT-Wallet technical specification.
      - 
    * - Relying Party Backend
-     - Is the technical infrastructure and server-side components, including a set of endpoints, managed by a Relying Party.
+     - Remote infrastructure with server-side components, generally RESTful, including a predefined set of web endpoints, managed by a Relying Party Solution provider.
      - 
    * - Relying Party Instance
      - A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. 
