@@ -84,7 +84,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - | Revised from ARF v1.4. 
        | *Differences:* renamed “natural or legal person” in “Organizational Entity”.
    * - Relying Party Solution
-     - Relying Party Solution is the entire product (combination of software, hardware, services and settings) provided by a Relying Party to Users and compliant with IT-Wallet technical specification.
+     - A comprehensive product that may include software, hardware, cloud services, and configurations. It facilitates Credential presentations in various contexts - online, offline, proximity, or remote - through the use of remote web services or specialized applications, such as Credential Verifier mobile apps and or embedded technologies.
      - 
    * - Relying Party Backend
      - Remote infrastructure with server-side components, generally RESTful, including a predefined set of web endpoints, managed by a Relying Party Solution provider.
