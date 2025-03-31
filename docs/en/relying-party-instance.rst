@@ -180,7 +180,7 @@ Upon a successful request, the Relying Party Backend generates and returns the n
 
     {
       "challenge": "0fe3cbe0-646d-44b5-8808-917dd5391bd9",
-      "key_attestation": "o2NmbXRvYXBwbGUtYXBw... redacted",
+      "key_attestation": "o2NmbXRvYXBwbGUtYXBw...",
       "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
     }
 
