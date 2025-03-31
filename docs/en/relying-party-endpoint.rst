@@ -23,7 +23,7 @@ The Nonce Endpoint allows the Relying Party Instance to request a cryptographic 
 Relying Party Nonce Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The request to the Nonce Endpoint is an HTTP ``GET`` request, without any parameter.
+The request to the Nonce Endpoint is an HTTP ``GET`` request, without any parameters.
 
 
 Relying Party Nonce Response
@@ -345,7 +345,7 @@ If any errors occur, the Access Certificate Endpoint returns an error response. 
 
     {
         "error": "forbidden",
-        "error_description": "The public key in the CSR is different that the one associated to the Cryptographic Hardware Keys."
+        "error_description": "The public key in the CSR is different from the one associated with the Cryptographic Hardware Keys."
     }
 
 The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:
@@ -362,7 +362,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
       - The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The public key in the CSR does not match the public key associated to the Cryptographic Hardware Keys.
+      - The public key in the CSR does not match the public key associated with the Cryptographic Hardware Keys.
     * - ``500 Internal Server Error``
       - ``server_error``
       - The request cannot be fulfilled because the .well-known Endpoint encountered an internal problem.

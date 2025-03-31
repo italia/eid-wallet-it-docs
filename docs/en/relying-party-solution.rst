@@ -13,11 +13,12 @@ Logical architecture is composed of the following elements:
 
 - **Trust Anchor**: It represents the root of trust for the entire system and consents to Relying Parties to federate in the IT Wallet ecosystem. Trust Anchor has PKI capabilities and issues Registration Certificates during the Relying Party onboarding process. 
 - **Relying Party**: Organizational Entity that provides Relying Party Solutions with the aim of authenticating Users and/or verifying Digital Credentials presented by Users through their Wallet Instances. A Relying Party may provide:
-- **Relying Party Backend**: It handles Relying Party Instances registration and the relative certificate management. It MUST obtain a Registration Certificate by a TA or its intermediary, and it MUST have PKI capabilities to issue Access Certificates to its Relying Party Instances. It also may implement additional web services and business logic for its own purposes and use cases.
-- **Relying Party Instance**: It is a frontend provided to Users in order to access Relying Party Services, and it may be provided as:
-
- - **Web Client**
- - **Mobile Application**.
+   
+   - **Relying Party Backend**: It handles Relying Party Instances registration and the relative certificate management. It MUST obtain a Registration Certificate by a TA or its intermediary, and it MUST have PKI capabilities to issue Access Certificates to its Relying Party Instances. It also may implement additional web services and business logic for its own purposes and use cases.
+   - **Relying Party Instance**: It is a frontend provided to Users in order to access Relying Party Services, and it may be provided as:
+      
+      - **Web Client**.
+      - **Mobile Application**.
 
 The following diagram depicts the Relying Party Solution High Level Architecture.
 

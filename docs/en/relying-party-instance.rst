@@ -288,7 +288,7 @@ The Mobile Relying Party Instance MUST send the signed Integrity Validation Requ
   6. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Relying Party.
   7. The URL in the ``iss`` parameter MUST match the Relying Party's URL identifier.
 
-**Step 28:** If the check are successful, the Relying Party Backend responds with a confirmation of success.
+**Step 28:** If the checks are successful, the Relying Party Backend responds with a confirmation of success.
 
 .. code-block:: http
     :caption: Non-normative example of the Mobile Relying Party Integrity Validation Response
@@ -314,7 +314,7 @@ The Mobile Relying Party Instance MUST send the signed Integrity Validation Requ
 
 **Steps 31-32:** The Relying Party Backend checks that the public key in the CSR corresponds to a Relying Party Instance that has been previously validated, i.e., that it matches the one bound to the Cryptographic Hardware Keys through ``hardware_signature``. If this check is successful, the Relying Party Backend sends the CSR to the Relying Party Instance Access Certificate Authority.
 
-**Steps 33-34:** The Relying Party Instance Access Certificate Authority signs the the CSR, obtaining a valid Access Certificate (``access_certificate``) which it sends back to the Relying Party Backend.
+**Steps 33-34:** The Relying Party Instance Access Certificate Authority signs the CSR, obtaining a valid Access Certificate (``access_certificate``) which it sends back to the Relying Party Backend.
 
 **Steps 35-36:** The Relying Party Backend sends the Access Certificate to the Mobile Relying Party Instance, which stores it for future authentication towards Wallet Instances.
 
