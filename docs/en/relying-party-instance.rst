@@ -94,8 +94,8 @@ Mobile Relying Party Instance Registration
 This section describes the registration of the Mobile Relying Party Instance.
 
 The Registration Flow is Composed by the following sub flows:
-- Device Integrity Check and Key Registration.
-- Access Certificate Issuance.
+ - Device Integrity Check and Key Registration.
+ - Access Certificate Issuance.
 
 .. note::
   
