@@ -255,7 +255,7 @@ For the verification of the validity status of a long-lived Digital Credential t
  
        -  `TOKEN-STATUS-LIST`_.
  
- OAuth Status Assertions
+OAuth Status Assertions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Credential Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials.
