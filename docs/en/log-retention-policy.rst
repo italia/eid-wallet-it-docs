@@ -63,8 +63,3 @@ Wallet Instances Logging Features
 The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets. Please refer in particular to Recitals (11) and (13), and to Article 5e(4) and Article 6(2)(d), as well as Article 8(2)(d), which define logging obligations, user interface requirements, and data portability mechanisms.
 
 
----------------------------------------
-
-- ISO/IEC 27001:2024
-- Regulation (EU) No 910/2014 (eIDAS)
-- National regulations on traffic data retention.
