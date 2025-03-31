@@ -168,7 +168,7 @@
 <li><p>Proof: Cryptographic verification of authenticity and legitimate ownership.</p></li>
 </ul>
 </div></blockquote>
-<p>The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural persons to be authenticated for the access to a service or to a protected resource.
+<p>The Person Identification Data (PID) is issued by the PID Provider according to national laws. The main scope of the PID is allowing natural persons to be authenticated for access to a service or to a protected resource.
 The User attributes provided within the Italian PID are the ones listed below:</p>
 <blockquote>
 <div><ul class="simple">
@@ -178,12 +178,12 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p>Taxpayer identification number</p></li>
 </ul>
 </div></blockquote>
-<p>The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or MDOC-CBOR data format.</p>
+<p>The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDoc-CBOR data format.</p>
 <p>The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections.</p>
 <section id="sd-jwt-vc-credential-format">
 <h2>SD-JWT-VC Credential Format<a class="headerlink" href="#sd-jwt-vc-credential-format" title="Link to this heading">¶</a></h2>
 <p>The PID/(Q)EAA is issued in the form of a Digital Credential. The Digital Credential format is <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> as specified in <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p>
-<p>SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>]. The payload MUST contain the <strong>_sd_alg</strong> claim described in the Section 4.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> and other claims specified in this section.</p>
+<p>SD-JWT MUST be signed using the Issuer's private key. SD-JWT MUST be provided along with a Type Metadata related to the issued Digital Credential according to Sections 6 and 6.3 of [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>]. The payload MUST contain the <strong>_sd_alg</strong> claim described in Section 4.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> and other claims specified in this section.</p>
 <p>The claim <strong>_sd_alg</strong> indicates the hash algorithm used by the Issuer to generate the digests as described in Section 4.1.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>. <strong>_sd_alg</strong>  MUST be set to one of the specified algorithms in Section <a class="reference internal" href="algorithms.html#supported-algs"><span class="std std-ref">Cryptographic Algorithms</span></a>.</p>
 <p>Claims that are not selectively disclosable MUST be included in the SD-JWT as they are.  The digests of the disclosures, along with any decoy if present,  MUST be contained in the  <strong>_sd</strong> array, as specified in Section 4.2.4.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p>
 <p>Each digest value, calculated using a hash function over the disclosures, verifies the integrity and corresponds to a specific Disclosure. Each disclosure includes:</p>
@@ -194,13 +194,13 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p>the claim value.</p></li>
 </ul>
 </div></blockquote>
-<p>In case of nested object in a SD-JWT payload each claim, on each level of the JSON, should be individually selectively disclosable or not. Therefore <strong>_sd</strong> claim containing digests MAY appear multiple times at different level in the SD-JWT.</p>
+<p>In case of nested objects in a SD-JWT payload, each claim at every level of the JSON, should be individually marked as selectively disclosable or not. Therefore <strong>_sd</strong> claim containing digests MAY appear multiple times at different levels in the SD-JWT.</p>
 <p>For each claim that is an array element the digests of the respective disclosures and decoy digests are added to the array in the same position of the original claim values as specified in Section 4.2.4.2 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p>
 <p>In case of array elements, digest values are calculated using a hash function over the disclosures, containing:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>a random salt,</p></li>
-<li><p>the array element</p></li>
+<li><p>the array element.</p></li>
 </ul>
 </div></blockquote>
 <p>In case of multiple array elements, the Issuer may hide the value of the entire array or any of the entry contained within the array, the Holder can disclose both the entire array and any single entry within the array, as defined in Section 4.2.6 of <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p>
@@ -210,7 +210,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </div>
 <p>See <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> for additional details.</p>
 <section id="pid-q-eaa-sd-jwt-parameters">
-<h3>PID/(Q)EAA SD-JWT parameters<a class="headerlink" href="#pid-q-eaa-sd-jwt-parameters" title="Link to this heading">¶</a></h3>
+<h3>PID/(Q)EAA SD-JWT Parameters<a class="headerlink" href="#pid-q-eaa-sd-jwt-parameters" title="Link to this heading">¶</a></h3>
 <p>The JOSE header contains the following mandatory parameters:</p>
 <table class="docutils align-default" id="pid-jose-header">
 <colgroup>
@@ -252,7 +252,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tbody>
 </table>
 <p>The JWT payload contains the following claims. Some of these claims can be disclosed, these are listed in the following tables that specify whether a claim is selectively disclosable [SD] or not [NSD].</p>
-<table class="docutils align-default">
+<table class="docutils align-default" id="table-sd-jwt-vc-parameters">
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -294,7 +294,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>Commission Implementing Regulation <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2977/">EU_2024/2977</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>status</strong></p></td>
-<td><p>[NSD]. REQUIRED. JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain the JSON member <em>status_assertion</em> set to a JSON Object containing the <em>credential_hash_alg</em> claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use <em>sha-256</em>.</p></td>
+<td><p>[NSD]. REQUIRED only if the Digital Credential is long-lived. JSON object containing the information on how to read the status of the Verifiable Credential. It MUST contain either the JSON member <em>status_assertion</em> or <em>status_list</em>.</p></td>
 <td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> and Section 11 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-demarco-oauth-status-assertions/03/">OAUTH-STATUS-ASSERTION</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>cnf</strong></p></td>
@@ -310,7 +310,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>Section 6.1 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>, [<a class="reference external" href="https://www.w3.org/TR/SRI/">W3C-SRI</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>verification</strong></p></td>
-<td><p>[SD]. CONDITIONAL. REQUIRED if Credential type is set to <cite>PersonIdentificationData</cite>. Object containing User authentication and User data verification information. If present MUST include the following sub-value:</p>
+<td><p>[SD]. CONDITIONAL. REQUIRED if Credential type is set to <cite>PersonIdentificationData</cite>, otherwise is OPTIONAL. Object containing User authentication and User data verification information. If present MUST include the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the <cite>trust_frameworks_supported</cite> map provided within the Credential Issuer Metadata.</p></li>
@@ -338,8 +338,43 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0.html">OIDC-IDA</a>.</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>_sd</strong></p></td>
+<td><p>[NSD]. REQUIRED. Array of strings, where each string represents a digest of a Disclosure.</p></td>
+<td><p>4.2.4.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_sd_alg</strong></p></td>
+<td><p>[NSD]. REQUIRED. Hash algorithm used by the Issuer to generate the digests.</p></td>
+<td><p>4.1.1 <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a></p></td>
+</tr>
 </tbody>
 </table>
+<p>If the <code class="docutils literal notranslate"><span class="pre">status</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">status_list</span></code>, it is a JSON Object containing the following sub-parameters:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>idx</strong></p></td>
+<td><p>REQUIRED. The idx (index) claim MUST specify an Integer that represents the index to check for status information in the Status List for the current Digital Credential. The value of idx MUST be a non-negative number, containing a value of zero or greater.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>uri</strong></p></td>
+<td><p>REQUIRED. The uri (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Digital Credential. The value of uri MUST be a URI conforming to [<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a>].</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>If the <code class="docutils literal notranslate"><span class="pre">status</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">status_assertation</span></code>, it is a JSON Object containing the <em>credential_hash_alg</em> claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use <em>sha-256</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim <strong>vct</strong>, using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> the <strong>.well-known</strong> endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.</p>
@@ -362,15 +397,15 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>name</strong></p></td>
-<td><p>REQUIRED. Human-readable name of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> (e.g. <em>name#it-IT</em>).</p></td>
+<td><p>REQUIRED. Human-readable name of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited with the character <code class="docutils literal notranslate"><span class="pre">#</span></code> as defined in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> (e.g. <em>name#it-IT</em>).</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>description</strong></p></td>
-<td><p>REQUIRED. A human-readable description of the Digital Credential type. In case of multiple language, the language tags are added to member name, delimited by a # character as defined in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>.</p></td>
+<td><p>REQUIRED. A human-readable description of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited by a # character as defined in <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a>.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2 and [<a class="reference external" href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a>] Section 5.2.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>extends</strong></p></td>
-<td><p>OPTIONAL. String Identitifier of an exteded metadata type document.</p></td>
+<td><p>OPTIONAL. String Identifier of an extended metadata type document.</p></td>
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>extends#integrity</strong></p></td>
@@ -390,7 +425,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>] Section 6.2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_source</strong></p></td>
-<td><p>REQUIRED. Object containing information about the data origin. It MUST contain the object <code class="docutils literal notranslate"><span class="pre">verification</span></code> with this following sub-value:</p>
+<td><p>REQUIRED. Object containing information about the data origin. It MUST contain the object <code class="docutils literal notranslate"><span class="pre">verification</span></code> with the following sub-value:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">trust_framework</span></code>: MUST contain trust framework used for digital authentication towards Authentic Source system.</p></li>
@@ -414,7 +449,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>: language tag as defined in <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> Section 2. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>: language tag as defined in <span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> Section 2. [REQUIRED].</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: human-readable label for the Digital Credential type. [REQUIRED].</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: human-readable description for the Digital Credential type. [REQUIRED].</p></li>
 <li><dl class="simple">
@@ -459,7 +494,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: array indicating the claim or claims that are being addressed. [REQUIRED].</p></li>
 <li><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">display</span></code>: array containing display information about the claim indicated in the <code class="docutils literal notranslate"><span class="pre">path</span></code>. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following members:</dt><dd><ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>: language tag as defined in <span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> Section 2. [REQUIRED].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lang</span></code>: language tag as defined in <span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5646.html"><strong>RFC 5646</strong></a> Section 2. [REQUIRED].</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">label</span></code>: human-readable label for the claim. [REQUIRED].</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: human-readable description for the claim. [REQUIRED].</p></li>
 </ul>
@@ -664,7 +699,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>Commission Implementing Regulation <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2977/">EU_2024/2977</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>personal_administrative_number</strong></p></td>
-<td><p>[SD]. CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> is not present. National unique identifier of a natural person generated by ANPR as a String format.</p></td>
+<td><p>[SD]. CONDITIONAL. REQUIRED if <code class="docutils literal notranslate"><span class="pre">tax_id_code</span></code> is not present. National unique identifier of a natural person generated by ANPR in string format.</p></td>
 <td><p>Commission Implementing Regulation <a class="reference external" href="https://eur-lex.europa.eu/eli/reg_impl/2024/2977/">EU_2024/2977</a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>tax_id_code</strong></p></td>
@@ -673,7 +708,6 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 </tbody>
 </table>
-<p>The PID attribute schema, which encompasses all potential User data, is defined in <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/arf.md#21-identification-and-authentication-to-access-online-services">ARF v1.4</a>, and furthermore detailed in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#23-pid-attributes">PID Rulebook</a>.</p>
 </section>
 <section id="pid-non-normative-examples">
 <h3>PID Non-Normative Examples<a class="headerlink" href="#pid-non-normative-examples" title="Link to this heading">¶</a></h3>
@@ -769,7 +803,7 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the following the disclosure list is given</p>
+<p>The disclosure list is presented below.</p>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">iat</span></code>:</p>
 <ul class="simple">
 <li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">Yrc-s-WSr4exEYtqDEsmRl7spoVfmBxixP12e4syqNE</span></code></p></li>
@@ -899,8 +933,8 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </div>
 </section>
 <section id="q-eaa-non-normative-examples">
-<h3>(Q)EAA non-normative examples<a class="headerlink" href="#q-eaa-non-normative-examples" title="Link to this heading">¶</a></h3>
-<p>Below a non-normative example of (Q)EAA in JSON.</p>
+<h3>(Q)EAA non-normative Examples<a class="headerlink" href="#q-eaa-non-normative-examples" title="Link to this heading">¶</a></h3>
+<p>Below is a non-normative example of (Q)EAA in JSON.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NzbLsXh8uDCcd7noWXFZAfHkxZsRGC9Xs&quot;</span><span class="p">,</span>
@@ -1077,66 +1111,15 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </div>
 </section>
 </section>
-<section id="mdoc-cbor">
-<h2>MDOC-CBOR<a class="headerlink" href="#mdoc-cbor" title="Link to this heading">¶</a></h2>
-<p>The PID/(Q)EAA MDOC-CBOR data model is defined in ISO/IEC 18013-5, the standard born for the the mobile driving license (mDL) use case.</p>
-<p>The MDOC data elements MUST be encoded as defined in <a class="reference external" href="RFC8949-ConciseBinaryObjectRepresentation(CBOR)">RFC 8949 - Concise Binary Object Representation (CBOR)</a>.</p>
-<p>The PID encoded in MDOC-CBOR format uses the document type set to <cite>eu.europa.ec.eudiw.pid.1</cite>, according to the reverse domain approach defined in the
-<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> and ISO/IEC 18013-5.</p>
-<p>The document's data elements utilize a consistent namespace for the mandatory Mobile Driving License attributes, while the national PID attributes use the domestic namespace <cite>eu.europa.ec.eudiw.pid.it.1</cite>, as outlined in this implementation profile.</p>
-<p>In compliance with ISO/IEC 18013-5, the MDOC data model in the domestic namespace <cite>eu.europa.ec.eudiw.pid.it.1</cite>, requires the following attributes:</p>
-<table class="docutils align-default" id="table-mdoc-attributes">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>version</strong></p></td>
-<td><p><em>tstr (text string)</em>. Version of the data structure being used. It's a way to track changes and updates to the standard or to a specific implementation profile. This allows for backward compatibility and understanding of the data if the standard or implementation evolves over time.</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>status</strong></p></td>
-<td><p><em>uint (unsigned int)</em>. Status code. For example <code class="docutils literal notranslate"><span class="pre">&quot;status&quot;:0</span></code> means OK (normal processing).</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2.3]</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>documents</strong></p></td>
-<td><p><em>bstr (byte string)</em>. The collection of digital documents. Each document in this collection represents a specific type of data or information related to the Digital Credential.</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
-</tr>
-</tbody>
-</table>
-<p>Each document within the <strong>documents</strong> collection MUST have the following structure:</p>
-<table class="docutils align-default" id="table-mdoc-documents-attributes">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>docType</strong></p></td>
-<td><p><em>tstr (text string)</em>. Document type. For the PID, the value MUST be set to <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.eudiw.pid.1.</span></code> For an mDL, the value MUST be <code class="docutils literal notranslate"><span class="pre">org.iso.18013-5.1.mDL</span></code>.</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
-<td><p><em>bstr (byte string)</em>. It MUST contain the Mobile Security Object for Issuer data authentication and the data elements protected by Issuer data authentication.</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
-</tr>
-</tbody>
-</table>
-<p>The <strong>issuerSigned</strong> object MUST have the following structure:</p>
+<section id="mdoc-cbor-credential-format">
+<h2>mDoc-CBOR Credential Format<a class="headerlink" href="#mdoc-cbor-credential-format" title="Link to this heading">¶</a></h2>
+<p>The mDoc data model is based on the ISO/IEC 18013-5 standard.
+The mDoc data elements MUST be encoded in CBOR as defined in <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8949.html"><strong>RFC 8949</strong></a>.</p>
+<p>This data model structures mDoc Digital Credentials into distinct components: namespaces (<strong>nameSpaces</strong>), and cryptographic proof (<strong>issuerAuth</strong>).
+Namespaces categorize and structure data elements (or attributes, see <a class="reference internal" href="#attribute-namespaces"><span class="std std-ref">Attribute Namespaces</span></a>). While the cryptographic proof ensures integrity and authenticity through the Mobile Security Object (MSO).</p>
+<p>The MSO securely stores cryptographic digests of attributes within the <cite>nameSpaces</cite>. This allows Relying Parties to validate disclosed attributes against corresponding <strong>digestID</strong> values without revealing the entire Credential.
+See <a class="reference internal" href="#mobile-security-object"><span class="std std-ref">Mobile security Object</span></a> for details.</p>
+<p>An mDoc-CBOR Digital Credential MUST be compliant with the following structure:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1144,14 +1127,14 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <col style="width: 20.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
 <th class="head"><p><strong>Reference</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>nameSpaces</strong></p></td>
-<td><p><em>bstr (byte string)</em> with <em>tag</em> 24 and <em>major type</em> 6. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. The <cite>nameSpaces</cite> MUST use the same value for the document type. However, it MAY have a domestic namespace to include attributes defined in this implementation profile. The value MUST be set to <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.eudiw.pid.it.1</span></code>.</p></td>
+<td><p><em>tstr (text string)</em>. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces. Mandatory mDL attributes utilize the standard namespace <cite>org.iso.18013.5.1</cite>. However, it MAY have a domestic namespace, such as <cite>org.iso.18013.5.1.IT</cite>, to include additional attributes defined in this implementation profile. Each namespace within the <cite>nameSpaces</cite> MUST share the same issued document type (<cite>docType</cite>) value, which identifies the nature of the Digital Credential, as defined in the <cite>issuerAuth</cite>.</p></td>
 <td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuerAuth</strong></p></td>
@@ -1160,67 +1143,10 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 </tbody>
 </table>
-<p>During the presentation of the MDOC-CBOR credential, in addition to the objects in the table above, a <strong>deviceSigned</strong> object MUST also be added. <strong>deviceSigned</strong> MUST NOT be included in the issued credential provided by the PID/(Q)EAA Issuer.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>deviceSigned</strong></p></td>
-<td><p><em>bstr (byte string)</em>. Data elements signed by the Wallet Instance during the presentation phase.</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
-</tr>
-</tbody>
-</table>
-<p>Where the <strong>deviceSigned</strong> MUST have the following structure:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Attribute name</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>nameSpaces</strong></p></td>
-<td><p><em>tstr (text string)</em>. Returned data elements for the namespaces. It MAY be possible to have one or more namespaces. It MAY be used for self-attested claims.</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>deviceAuth</strong></p></td>
-<td><p><em>bstr (byte string)</em>. It MUST contain either the <em>DeviceSignature</em> or the <em>DeviceMac</em> element.</p></td>
-<td><p>[ISO 18013-5#8.3.2.1.2]</p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>A <strong>deviceSigned</strong> object given during the presentation phase has two purposes:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>It provides optional self-attested attributes in the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object. If no self-attested attributes are provided by the Wallet Instance, the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object MUST be included with an empty structure.</p></li>
-<li><p>Provide a cryptographic proof attesting that the Holder is the legitimate owner of the Credential, by means of a <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> object.</p></li>
-</ol>
-</div></blockquote>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">issuerSigned</span></code> and the <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> objects contain the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object and the <em>Mobile Security Object</em>. The latter is the only signed object, while the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> object is not signed.</p>
-</div>
-<section id="namespaces">
-<h3>nameSpaces<a class="headerlink" href="#namespaces" title="Link to this heading">¶</a></h3>
-<p>The <strong>nameSpaces</strong> object contains one or more <em>IssuerSignedItemBytes</em> that are encoded using CBOR bitsring 24 tag (#6.24(bstr .cbor), marked with the CBOR Tag 24(&lt;&lt;... &gt;&gt;) and represented in the example using the diagnostic format). It represents the disclosure information for each digest within the <cite>Mobile Security Object</cite> and MUST contain the following attributes:</p>
+<p>The structure of an mDoc-CBOR Credential is further elaborated in the following sections.</p>
+<section id="attribute-namespaces">
+<span id="id2"></span><h3>Attribute Namespaces<a class="headerlink" href="#attribute-namespaces" title="Link to this heading">¶</a></h3>
+<p>The <strong>nameSpaces</strong> object contains one or more <em>nameSpace</em> entries, each identified by a name. Within each <strong>nameSpace</strong>, it includes one or more <em>IssuerSignedItemBytes</em>, each encoded as a CBOR byte string with Tag 24 (#6.24(bstr .cbor)), which appears as 24(&lt;&lt;... &gt;&gt;) in diagnostic notation. It represents the disclosure information for each digest within the <cite>Mobile Security Object</cite> and MUST contain the following attributes:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -1229,105 +1155,75 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Name</strong></p></th>
-<th class="head"><p><strong>Encoding</strong></p></th>
 <th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>digestID</strong></p></td>
-<td><p><em>integer</em></p></td>
-<td><p>Reference value to one of the <code class="docutils literal notranslate"><span class="pre">ValueDigests</span></code> provided in the <em>Mobile Security Object</em> (<cite>issuerAuth</cite>).</p></td>
+<td><p><em>integer</em>. Reference value to one of the <code class="docutils literal notranslate"><span class="pre">ValueDigests</span></code> provided in the <em>Mobile Security Object</em> (<cite>issuerAuth</cite>).</p></td>
+<td><p>[ISO 18013-5#9.1.2.5]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>random</strong></p></td>
-<td><p><em>bstr (byte string)</em></p></td>
-<td><p>Random byte value used as salt for the hash function. This value SHALL be different for each <em>IssuerSignedItem</em> and it SHALL have a minimum length of 16 bytes.</p></td>
+<td><p><em>bstr (byte string)</em>. Random byte value used as salt for the hash function. This value SHALL be different for each <em>IssuerSignedItem</em> and it SHALL have a minimum length of 16 bytes.</p></td>
+<td><p>[ISO 18013-5#9.1.2.5]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>elementIdentifier</strong></p></td>
-<td><p><em>tstr (text string)</em></p></td>
-<td><p>Data element identifier.</p></td>
+<td><p><em>tstr (text string)</em>. Data element identifier.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2.3]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>elementValue</strong></p></td>
-<td><p>depends by the value, see the next table.</p></td>
-<td><p>Data element value.</p></td>
-</tr>
-</tbody>
-</table>
-<p>The <strong>elementIdentifier</strong> data that MUST be included in a PID/(Q)EAA are:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Namespace</strong></p></th>
-<th class="head"><p><strong>Element identifier</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>issue_date</strong></p></td>
-<td><p><em>full-date (CBORTag 1004)</em>. Date when the PID/(Q)EAA was issued.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>expiry_date</strong></p></td>
-<td><p><em>full-date (CBORTag 1004)</em>. Date when the PID/(Q)EAA will expire.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>issuing_authority</strong></p></td>
-<td><p><em>tstr (text string)</em>. Name of administrative authority that has issued the PID/(Q)EAA.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>issuing_country</strong></p></td>
-<td><p><em>tstr (text string)</em>. Alpha-2 country code as defined in [ISO 3166].</p></td>
-</tr>
-</tbody>
-</table>
-<p>Depending on the Digital Credential type, additional <strong>elementIdentifier</strong> data MAY be added. The PID MUST support the following data:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Namespace</strong></p></th>
-<th class="head"><p><strong>Element identifier</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>given_name</strong></p></td>
-<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>family_name</strong></p></td>
-<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>birth_date</strong></p></td>
-<td><p><em>full-date (CBORTag 1004)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>birth_place</strong></p></td>
-<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>eu.europa.ec.eudiw.pid.1</strong></p></td>
-<td><p><strong>nationality</strong></p></td>
-<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>eu.europa.ec.eudiw.pid.it.1</strong></p></td>
-<td><p><strong>personal_administrative_number</strong></p></td>
-<td><p><em>tstr (text string)</em>. See <a class="reference internal" href="#sec-pid-user-claims"><span class="std std-ref">PID Claims fields Section</span></a>.</p></td>
+<td><p><em>any value (depends on the data element)</em>. Data element value.</p></td>
+<td><p>[ISO 18013-5#8.3.2.1.2.3]</p></td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h3>
+<p>The following <strong>elementIdentifiers</strong> MUST be included in a Digital Credential encoded in mDoc-CBOR within the respective <em>nameSpace</em>, unless otherwise specified:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Element Identifier</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>issuing_country</strong></p></td>
+<td><p><em>tstr (text string)</em>. Alpha-2 country code as defined in [ISO 3166-1], representing the issuing country or territory.</p></td>
+<td><p>[ISO 18013-5#7.2]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>issuing_authority</strong></p></td>
+<td><p><em>tstr (text string)</em>. Name of the administrative authority that has issued the mDL.
+The value shall only use Latin1b characters and shall have a maximum length of 150 characters.</p></td>
+<td><p>[ISO 18013-5#7.2]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>sub</strong></p></td>
+<td><p><em>uuid (unique identifier)</em>. Identifies the subject of the mDoc Digital Credential (the User).
+The identifier MUST be opaque, MUST NOT correspond to any anagraphic data, and MUST NOT be derived from the User's anagraphic data through pseudonymization. Additionally, different Credentials issued to the same User MUST NOT reuse the same <cite>sub</cite> value.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>verification</strong></p></td>
+<td><p>(OPTIONAL) Object containing authentication and verification details of the User. It has the same logic structure and purpose as reported in the <a class="reference internal" href="#table-sd-jwt-vc-parameters"><span class="std std-ref">Table of the SD-JWT parameters</span></a>.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Digital Credential User-specific attributes are defined in the Catalogue of Digital Credentials.
+User-specific attributes for mDoc Digital Credentials such as those used in mDL or PID are also included by referencing the appropriate <cite>elementIdentifiers</cite> defined in ISO/IEC 18013-5 or the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a> specification.</p>
+</div>
+</section>
 <section id="mobile-security-object">
-<h3>Mobile Security Object<a class="headerlink" href="#mobile-security-object" title="Link to this heading">¶</a></h3>
-<p>The <strong>issuerAuth</strong> represents the <cite>Mobile Security Object</cite> which is a <cite>COSE Sign1 Document</cite> defined in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9052.html">RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process</a>. It has the following data structure:</p>
+<span id="id3"></span><h3>Mobile security Object<a class="headerlink" href="#mobile-security-object" title="Link to this heading">¶</a></h3>
+<p>The <strong>issuerAuth</strong> represents the <cite>Mobile Security Object</cite> which is a <cite>COSE Sign1 Document</cite> defined in <span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9052.html"><strong>RFC 9052</strong></a>. It has the following data structure:</p>
 <ul class="simple">
 <li><p>protected header</p></li>
 <li><p>unprotected header</p></li>
@@ -1348,15 +1244,15 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Signature algorithm</strong></p></td>
-<td><p><cite>-7</cite> means ES256, SHA-256.</p></td>
-<td><p>RFC8152</p></td>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p>Algorithm used to verify the cryptographic signature of the mDoc Digital Credential (REQUIRED).</p></td>
+<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9053.html"><strong>RFC 9053</strong></a></p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Only the Signature Algorithm MUST be present in the protected headers, other elements SHOULD not be present in the protected header.</p>
+<p>Only the signature algorithm MUST be present in the protected header, other elements SHOULD not be present in the protected header.</p>
 </div>
 <p>The <strong>unprotected header</strong> MUST contain the following parameter:</p>
 <table class="docutils align-default">
@@ -1372,15 +1268,19 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>x5chain</strong></p></td>
-<td><p>Identified with the label 33</p></td>
-<td><p><a class="reference external" href="RFC9360CBORObjectSigningandEncryption(COSE)-HeaderParametersforCarryingandReferencingX.509Certificates">RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates</a>.</p></td>
+<tr class="row-even"><td><p><strong>4</strong></p></td>
+<td><p>Unique identifier of the Issuer JWK (OPTIONAL). Required when the issuer of mDoc uses OpenID Federation.</p></td>
+<td><p><a class="reference internal" href="trust.html#trust-rst"><span class="std std-ref">The Infrastructure of Trust</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>33</strong></p></td>
+<td><p>X.509 certificate chain about the Issuer (OPTIONAL). Required for X.509 certificate-based authentication.</p></td>
+<td><p><span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9360.html"><strong>RFC 9360</strong></a>.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <cite>x5chain</cite> is included in the unprotected header with the aim to make the Holder able to update the X.509 certificate chain, related to the <cite>Mobile Security Object</cite> issuer, without invalidating the signature.</p>
+<p>The <cite>x5chain</cite> is included in the unprotected header with the aim to allow the Holder to update the X.509 certificate chain, related to the <cite>Mobile Security Object</cite> issuer, without invalidating the signature.</p>
 </div>
 <p>The <strong>payload</strong> MUST contain the <em>MobileSecurityObject</em>, without the <cite>content-type</cite> COSE Sign header parameter and encoded as a <em>byte string</em> (bstr) using the <em>CBOR Tag</em> 24.</p>
 <p>The <cite>MobileSecurityObjectBytes</cite> MUST have the following attributes:</p>
@@ -1398,11 +1298,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>docType</strong></p></td>
-<td><p>See <a class="reference internal" href="#table-mdoc-documents-attributes"><span class="std std-ref">Table</span></a>.</p></td>
+<td><p><em>tstr (text string)</em>. Defines the type of mDoc Digital Credential being issued. For example, for an mDL, the value MUST be <code class="docutils literal notranslate"><span class="pre">org.iso.18013-5.1.mDL</span></code>. Specific <cite>docType</cite> MAY be defined for Digital Credential other than mDL.</p></td>
 <td><p>[ISO 18013-5#9.1.2.4]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>version</strong></p></td>
-<td><p>See <a class="reference internal" href="#table-mdoc-attributes"><span class="std std-ref">Table</span></a>.</p></td>
+<td><p><em>(tstr)</em> Version of the data structure being used.</p></td>
 <td><p>[ISO 18013-5#9.1.2.4]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>validityInfo</strong></p></td>
@@ -1422,11 +1322,11 @@ The User attributes provided within the Italian PID are the ones listed below:</
 <td><p>[ISO 18013-5#9.1.2.4]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>valueDigests</strong></p></td>
-<td><p>Mapped digest by unique id, grouped by namespace.</p></td>
+<td><p>Mapped digest by unique id, grouped by namespaces.</p></td>
 <td><p>[ISO 18013-5#9.1.2.4]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>deviceKeyInfo</strong></p></td>
-<td><p>It MUST contain the Wallet Instance's public key containing the following sub-values.</p>
+<td><p>It MUST contain the Wallet Instance's public key containing the following sub-values:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>deviceKey</em> (REQUIRED).</p></li>
@@ -1437,165 +1337,448 @@ The User attributes provided within the Italian PID are the ones listed below:</
 </td>
 <td><p>[ISO 18013-5#9.1.2.4]</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>status</strong></p></td>
+<td><p>REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a <em>status_list</em> based on the <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a> mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position.
+The <cite>status_list</cite> MUST contain the following sub-value:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>idx</em> (REQUIRED). Position index in the status list.</p></li>
+<li><p><em>uri</em> (REQUIRED). URI pointing to the status list resource.</p></li>
+</ul>
+</div></blockquote>
+</td>
+<td><p>[ISO 18013-5#9.1.2.6]</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The private key related to the public key stored in the <cite>deviceKey</cite> object is used to sign the <cite>DeviceSignedItems</cite> object and proof the possession of the PID during the presentation phase (see the presentation phase with MDOC-CBOR).</p>
+<p>The private key related to the public key stored in the <cite>deviceKey</cite> object is used to sign the <cite>DeviceSignedItems</cite> object and to prove the possession of the Digital Credential during the presentation phase (see the presentation phase with mDoc-CBOR).</p>
 </div>
 </section>
 <section id="mdoc-cbor-examples">
-<h3>MDOC-CBOR Examples<a class="headerlink" href="#mdoc-cbor-examples" title="Link to this heading">¶</a></h3>
-<p>A non-normative example of a PID in MDOC-CBOR format is represented below using the AF Binary encoding:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a366737461747573006776657273696f6e63312e3069646f63756d656e747381a267646f6354797065781865752e6575726f70612e65632e65756469772e7069642e316c6973737565725369676e6564a26a697373756572417574688443a10126a1182159021930820215308201bca003020102021404ad06a30c1a6dc6e93be0e2e8f78dcafa7907c2300a06082a8648ce3d040302305b310b3009060355040613025a45312e302c060355040a0c25465053204d6f62696c69747920616e64205472616e73706f7274206f66205a65746f706961311c301a06035504030c1349414341205a65746573436f6e666964656e73301e170d3231303932393033333034355a170d3232313130333033333034345a3050311a301806035504030c114453205a65746573436f6e666964656e7331253023060355040a0c1c5a65746f70696120436974792044657074206f662054726166666963310b3009060355040613025a453059301306072a8648ce3d020106082a8648ce3d030107034200047c5545e9a0b15f4ff3ce5015121e8ad3257c28d541c1cd0d604fc9d1e352ccc38adef5f7902d44b7a6fc1f99f06eedf7b0018fd9da716aec2f1ffac173356c7da3693067301f0603551d23041830168014bba2a53201700d3c97542ef42889556d15b7ac4630150603551d250101ff040b3009060728818c5d050102301d0603551d0e04160414ce5fd758a8e88563e625cf056bfe9f692f4296fd300e0603551d0f0101ff040403020780300a06082a8648ce3d0403020347003044022012b06a3813ffec5679f3b8cddb51eaa4b95b0cbb1786b09405e2000e9c46618c02202c1f778ad252285ed05d9b55469f1cb78d773671f30fe7ab815371942328317c59032ad818590325a667646f6354797065781865752e6575726f70612e65632e65756469772e7069642e316776657273696f6e63312e306c76616c6964697479496e666fa3667369676e6564c074323032332d30322d32325430363a32333a35365a6976616c696446726f6dc074323032332d30322d32325430363a32333a35365a6a76616c6964556e74696cc074323032342d30322d32325430303a30303a30305a6c76616c756544696765737473a2781865752e6575726f70612e65632e65756469772e7069642e31ac015820a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a025820cd372fb85148700fa88095e3492d3f9f5beb43e555e5ff26d95f5a6adc36f8e6035820e67e72111b363d80c8124d28193926000980e1211c7986cacbd26aacc5528d48045820f7d062d662826ed95869851db06bb539b402047baee53a00e0aa35bfbe98265d0658202a132dbfe4784627b86aa3807cd19cfeff487aab3dd7a60d0ab119a72e736936075820bdca9e8dbca354e824e67bfe1533fa4a238b9ea832f23fb4271ebeb3a5a8f7200858202c0eaec2f05b6c7fe7982683e3773b5d8d7a01e33d04dfcb162add8bd99bee9a095820bfe220d85657ccec3c67e7db1df747e9148a152334bb6d4b65b273279bcc36ec0a582018e38144f5044301d6a0b4ec9d5f98d4cd950e6ea2c29b849cbd457da29b6ad30b58203c71d2f0efa09d9e3fbbdffd29204f6b292c9f79570aef72dd86c91f7a3aa5c50c582065743d58d89d45e52044758f546034fd13a4f994bc270cdfa7844f74eb3f4b6e0d5820b4a8eb5d523bffa17b41bda12ddc7da32ae1e5f7ff3dcc394a35401f16919bbf781b65752e6575726f70612e65632e65756469772e7069642e69742e31a10e58209d6c11644651126c94acdaf0803e86d4c71d15d3b2712a14295416734efd514d6d6465766963654b6579496e666fa1696465766963654b6579a401022001215820ba01aea44eee1e338eb2f04e279dbd51b34655783ee185150838c9a7a7c4db7122582025ba0044439a3871a7b975a0994a85e79b705a9ac263b3fe899b0a93412ee8c96f646967657374416c676f726974686d675348412d32353658400813c28fd62f2602cbc14724e5865733c44a0fca589b55c085ec9d5c725d6cce25ba0044439a3871a7b975a0994a85e79b705a9ac263b3fe899b0a93412ee8c96a6e616d65537061636573a2781865752e6575726f70612e65632e65756469772e7069642e3188d818586da4686469676573744944016672616e646f6d5820156df9227ad341eaa61aabd301106fd21bdc18820e01dfc16bcf5fecc447111b71656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c7565d903ec6a323032342d30322d3232d818586fa4686469676573744944026672616e646f6d5820a3a1f13f05544d03a5b50b5fdb78465808393bcf3b7953a345fe28f820c7be0d71656c656d656e744964656e7469666965726d69737375616e63655f646174656c656c656d656e7456616c7565d903ec6a323032332d30322d3232d8185866a4686469676573744944036672616e646f6d5820852591f90f2c9ded57a03632e2c1322ab52a082a431e71a4149a6830c8f1ad0c71656c656d656e744964656e7469666965726f69737375696e675f636f756e7472796c656c656d656e7456616c7565624954d818587ca4686469676573744944046672616e646f6d5820d1d587b3512acce15c4f6b20944ceb002a464e4a158389788563408873c3fce571656c656d656e744964656e7469666965727169737375696e675f617574686f726974796c656c656d656e7456616c7565764d696e69737465726f2064656c6c27496e7465726e6fd8185864a4686469676573744944056672616e646f6d582094fdd7609c0e73dc8589b5cab11e1d9058cf8bff8a336da5f81fcba055396a0f71656c656d656e744964656e7469666965726a676976656e5f6e616d656c656c656d656e7456616c7565654d6172696fd8185865a4686469676573744944066672616e646f6d5820660c0a7bf79e0e0261ca1547a4294fb808aa70738f424b13ab1b9440b566ae1371656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756565526f737369d818586ba4686469676573744944076672616e646f6d5820315c53491286488fa07f5c2ce67135ef5c9959c3469c99a14e9b6dc924f9eba571656c656d656e744964656e746966696572696269727468646174656c656c656d656e7456616c7565d903ec6a313935362d30312d3132d818587da4686469676573744944086672616e646f6d5820764ef39c9d01f3aa6a87f441603cfe853fba3cee3bc2c168bcc9e96271d6e06371656c656d656e744964656e74696669657269756e697175655f69646c656c656d656e7456616c7565781e78787878787878782d7878782d787878782d787878787878787878787878781b65752e6575726f70612e65632e65756469772e7069642e69742e3181d8185877a46864696765737449440d6672616e646f6d5820717df3f583b1484366c33a1f869f2b5d201d466a8b589c79ab1a2d85e595432571656c656d656e744964656e7469666965726d7461785f69645f6e756d6265726c656c656d656e7456616c75657554494e49542d585858585858585858585858585858
+<h3>mDoc-CBOR Examples<a class="headerlink" href="#mdoc-cbor-examples" title="Link to this heading">¶</a></h3>
+<p>A non-normative example of an mDL encoded in CBOR is shown below in binary encoding.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>a26a6e616d65537061636573a2716f72672e69736f2e31383031332e352e318cd818a100a4686469676573744944006672616e646f6d5820790401ed5d0822d1aced942e4b0c41f754eee67b89c5ee3b8fd2c97491a9640671656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756565526f737369d818a101a4686469676573744944016672616e646f6d58201442881e24514517333019ec24aecaa70bba927d7f2d38ad7cdc3ce82d8561db71656c656d656e744964656e7469666965726a676976656e5f6e616d656c656c656d656e7456616c7565654d6172696fd818a102a4686469676573744944026672616e646f6d582051b4f3831d910861e81da746b221fd89498507476418cedc3709b5d28a7c41d071656c656d656e744964656e7469666965726a62697274685f646174656c656c656d656e7456616c7565d903ec6a313938302d30312d3130d818a103a4686469676573744944036672616e646f6d58200c8f68d1ec3aa445ef68aa10b7a5875fa18ca222a821e23890a227cdc7d25e8f71656c656d656e744964656e7469666965726a69737375655f646174656c656c656d656e7456616c7565d903ec6a323032352d30332d3237d818a104a4686469676573744944046672616e646f6d58200a9ed0d4937673152e52fb3fac0722baf4252e0d0c9869919e3339670203178e71656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c7565d903ec6a323033302d30332d3237d818a105a4686469676573744944056672616e646f6d58204b315ff17cf3a4754a94a6cf1e9ddfdd99f6e86b177b74f173348968ca74e80b71656c656d656e744964656e7469666965726f69737375696e675f636f756e7472796c656c656d656e7456616c7565624954d818a106a4686469676573744944066672616e646f6d5820f8c82c4103f603435d0bc7762074ccc7c2c74925314a1fb5a8ab9cf2a960221f71656c656d656e744964656e7469666965727169737375696e675f617574686f726974796c656c656d656e7456616c75657828497374697475746f20506f6c696772616669636f2065205a656363612064656c6c6f20537461746fd818a107a4686469676573744944076672616e646f6d58201f7a77a353da7bfc4da12691185249c31d421afd59ddac34f9e4fb4d92b8ec5071656c656d656e744964656e7469666965726b62697274685f706c6163656c656c656d656e7456616c756564526f6d61d818a108a4686469676573744944086672616e646f6d582088e94c0365c611b523518d9a1b179ae52e242383576249f4965c40c6c97cf21471656c656d656e744964656e7469666965726f646f63756d656e745f6e756d6265726c656c656d656e7456616c756569585831323334353637d818a109a4686469676573744944096672616e646f6d5820944758b43602b01ad68911b062349845492c04c6a78129bcf8cb5fb1396af2fc71656c656d656e744964656e74696669657268706f7274726169746c656c656d656e7456616c7565590412ffd8ffe000104a46494600010101009000900000ffdb004300130d0e110e0c13110f11151413171d301f1d1a1a1d3a2a2c2330453d4947443d43414c566d5d4c51685241435f82606871757b7c7b4a5c869085778f6d787b76ffdb0043011415151d191d381f1f38764f434f7676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676767676ffc00011080018006403012200021101031101ffc4001b00000301000301000000000000000000000005060401020307ffc400321000010303030205020309000000000000010203040005110612211331141551617122410781a1163542527391b2c1f1ffc4001501010100000000000000000000000000000001ffc4001a110101010003010000000000000000000000014111213161ffda000c03010002110311003f00a5bbde22da2329c7d692bc7d0d03f52cfb0ff75e7a7ef3e7709723a1d0dae146ddfbb3c039ce07ad2bd47a7e32dbb8dd1d52d6ef4b284f64a480067dfb51f87ffb95ff00eb9ff14d215de66af089ce44b7dbde9cb6890a2838eddf18078f7add62d411ef4db9b10a65d6b95a147381ea0d495b933275fe6bba75c114104a8ba410413e983dff004f5af5d34b4b4cde632d0bf1fd1592bdd91c6411f3934c2fa6af6b54975d106dcf4a65ae56e856001ebc03c7ce29dd9eef1ef10fc447dc9da76ad2aee93537a1ba7e4f70dd8eff0057c6dffb5e1a19854a83758e54528750946ec6704850cd037bceb08b6d7d2cc76d3317fc7b5cc04fb6707269c5c6e0c5b60ae549242123b0e493f602a075559e359970d98db89525456b51c951c8afa13ea8e98e3c596836783d5c63f5a61a99fdb7290875db4be88ab384bbbbbfc7183fdeaa633e8951db7da396dc48524fb1a8bd611a5aa2a2432f30ab420a7a6d3240c718cf031fa9ef4c9ad550205aa02951df4a1d6c8421b015b769db8c9229837ea2be8b1b0d39d0eba9c51484efdb8c0efd8d258daf3c449699f2edbd4584e7af9c64e3f96b9beb28d4ac40931e6478c8e76a24a825449501d867d2b1dcdebae99b9c752ae4ecd6dde4a179c1c1e460938f9149ef655e515c03919a289cb3dca278fb7bf177f4faa829dd8ce3f2ac9a7ecde490971fafd7dce15eed9b71c018c64fa514514b24e8e4f8c5c9b75c1e82579dc1233dfec08238f6add62d391acc1c5256a79e706d52d431c7a0145140b9fd149eb3a60dc5e88cbbc2da092411e9dc71f39a7766b447b344e847dcac9dcb5abba8d145061d43a6fcf1e65cf15d0e90231d3dd9cfe62995c6dcc5ca12a2c904a15f71dd27d451453e09d1a21450961cbb3ea8a956433b781f1ce33dfed54f0e2b50a2b71d84ed6db18028a28175f74fc6bda105c529a791c25c4f3c7a11f71586268f4a66b726e33de9ea6f1b52b181c760724e47b514520a5a28a283ffd9d818a10aa46864696765737449440a6672616e646f6d5820577e4822125f55fe923117aba01fdaefcc67d4aea80018fc22efa8d48e17982f71656c656d656e744964656e7469666965727264726976696e675f70726976696c656765736c656c656d656e7456616c756581a37576656869636c655f63617465676f72795f636f646561416a69737375655f64617465d903ec4b6a323032302d30392d31376b6578706972795f64617465d903ec4b6a323033312d30362d3130d818a10ba46864696765737449440b6672616e646f6d5820fa21d3d890af5f4ea2760d08fd9a6256004cd5aa9d5e697ba5873fb0cddd555e71656c656d656e744964656e74696669657276756e5f64697374696e6775697368696e675f7369676e6c656c656d656e7456616c75656149746f72672e69736f2e31383031332e352e312e697482d818a10ca46864696765737449440c6672616e646f6d58200c3fe75be952ec3c2257031a71f2f54aeabfe7445705cec147fbb2c0f69ad56171656c656d656e744964656e746966696572637375626c656c656d656e7456616c75657820334234684b326d376641395464567a714c72477036573858794a31734e745163d818a10da46864696765737449440d6672616e646f6d5820d22c6db3dd27e066deb2ace6161e47fc6abc7a87c84a10320f14bc66d6e08d4971656c656d656e744964656e7469666965726c766572696669636174696f6e6c656c656d656e7456616c7565a36f74727573745f6672616d65776f726b6969745f77616c6c65746f6173737572616e63655f6c6576656c64686967686865766964656e636581a3647479706565766f7563686474696d656a323032352d30332d32376b6174746573746174696f6ea46474797065736469676974616c5f6174746573746174696f6e707265666572656e63655f6e756d62657273363438352d313631392d333937362d3636373170646174655f6f665f69737375616e63656a323032352d30332d323767766f7563686572a16c6f7267616e697a6174696f6e754d6f746f72697a7a617a696f6e6520436976696c656a69737375657241757468590815d284590229a30126045369707a732d6d646c2d6973737565722d6b6579182159020c30820208308201afa00302010202142eb39c647c81836bcf79fa9cd0b201ec0bf52307300a06082a8648ce3d0403023064310b30090603550406130255533113301106035504080c0a43616c69666f726e69613116301406035504070c0d53616e204672616e636973636f31133011060355040a0c0a4d7920436f6d70616e793113301106035504030c0a6d79736974652e636f6d301e170d3235303332373135353532305a170d3235303430363135353532305a3064310b30090603550406130255533113301106035504080c0a43616c69666f726e69613116301406035504070c0d53616e204672616e636973636f31133011060355040a0c0a4d7920436f6d70616e793113301106035504030c0a6d79736974652e636f6d3059301306072a8648ce3d020106082a8648ce3d03010703420004f33da72d0dd0009b62221b0e839099b12dab5e01021124ebf9060422e648f3c3ec6614a86da1e91e552b2ae35e04d3058ae82b5c65a7f1f26800cb4499652a09a33f303d303b0603551d1104343032863068747470733a2f2f63726564656e7469616c2d6973737565722e6f6964632d66656465726174696f6e2e6f6e6c696e65300a06082a8648ce3d040302034700304402204d1f0819971652b79ebe4825547de3d5554d2f41410225e6b13dab949cda125e022079ba71b823619e49719dce5daa565bf745d3d97e2b87c7f7d6a626f981e653eda1182159020c30820208308201afa00302010202142eb39c647c81836bcf79fa9cd0b201ec0bf52307300a06082a8648ce3d0403023064310b30090603550406130255533113301106035504080c0a43616c69666f726e69613116301406035504070c0d53616e204672616e636973636f31133011060355040a0c0a4d7920436f6d70616e793113301106035504030c0a6d79736974652e636f6d301e170d3235303332373135353532305a170d3235303430363135353532305a3064310b30090603550406130255533113301106035504080c0a43616c69666f726e69613116301406035504070c0d53616e204672616e636973636f31133011060355040a0c0a4d7920436f6d70616e793113301106035504030c0a6d79736974652e636f6d3059301306072a8648ce3d020106082a8648ce3d03010703420004f33da72d0dd0009b62221b0e839099b12dab5e01021124ebf9060422e648f3c3ec6614a86da1e91e552b2ae35e04d3058ae82b5c65a7f1f26800cb4499652a09a33f303d303b0603551d1104343032863068747470733a2f2f63726564656e7469616c2d6973737565722e6f6964632d66656465726174696f6e2e6f6e6c696e65300a06082a8648ce3d040302034700304402204d1f0819971652b79ebe4825547de3d5554d2f41410225e6b13dab949cda125e022079ba71b823619e49719dce5daa565bf745d3d97e2b87c7f7d6a626f981e653ed590390a76776657273696f6e63312e306f646967657374416c676f726974686d667368613235366c76616c756544696765737473a2716f72672e69736f2e31383031332e352e31ac005820f46b65d5060ad060ab9be62ff22ea8633437619ebdc7fa81f2d151159e92bffe015820e506545f6a6fd5d982670b4d62fc2b0688dc8f26754e7b0c574d63f5d72a85ac025820cfcf96fa12d100eeed5f00183d3b6a0888baa47eae85b5b95037eca7bbc0d07e0358208b0772252b0e06b611676b6b3402eb33bf866eb145e49f4d5f23215e6a04777204582014135c96693e2ab08d956876ee491357d906a6dd125557196dfb9811ba54aa8d05582086dcbd99233fbb84a9a2dce3a864a425e6e809300067a4475e3ea2a4d233dc740658202e9512d35ea225e69e7b2180ecc1678dcc3e77a16e36427e64b4f0e2861b4d3a0758204efe55c36f6249d23c473a125afc5181aa30633936494781554971b72ff13700085820cc44a4f9983c5b0b1efc0e82e2867c8d5bbdf89c34bff16a1953c923bb4e4b3e095820775eb2af0aa55f2071d62662b35c99698ae3bc0e2c4af5724ff88476cddd152f0a5820915d0ad53dd23dace34968c263d307c04701a9bb9dc9865af91dc409786fd8330b582047d89ff4fb513044e6f2394236755ac0abf3e4f4a46f40454a458a59f8b7a6fb746f72672e69736f2e31383031332e352e312e6974a20c582016d2098702e896b4614dff1859bd3b42105cac2e62ce7f87dcacc249a656db320d5820755fd7c0f9272a8589c4a661a8aa80dc916018e500884eba316899d653fcb8d16d6465766963654b6579496e666fa1696465766963654b6579a4613102622d3101622d325820f96b29873b61f05403e2963a7ecbc799c9aab28d8a6629e5848cfdef85442866622d335820a9fef033a900c63e3894d8deb805a2a1fb55ef0d2b88e3c0d3336408186485ef67646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6c76616c6964697479496e666fa3667369676e656456c074323032352d30332d32375430303a30303a30305a6976616c696446726f6d56c074323032352d30332d32375430303a30303a30305a6a76616c6964556e74696c56c074323032362d30332d32375430303a30303a30305a66737461747573a16b7374617475735f6c697374a26369647819053c63757269783168747470733a2f2f73746174757370726f76696465722e6578616d706c652e6f72672f2f7374617475736c697374732f315840d09f9acdf7a6be5e4aeb405bfb3b297b1b8003bcf52558a2f39fc6e5cffed40f18f49d2cc0e72a2a56458d8aade591dee8d6540e639bca637f94bd9fa56f345c
 </pre></div>
 </div>
-<p>The <cite>Diagnostic Notation</cite> of the above MDOC-CBOR is given below:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{     
-    &quot;status&quot;: 0,     
-    &quot;version&quot;: &quot;1.0&quot;,     
-    &quot;documents&quot;: [        
-    {             
-      &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,                         
-      &quot;issuerSigned&quot;: {                
-          &quot;issuerAuth&quot;: [                
-          &lt;&lt; {1: -7} &gt;&gt;, % protected header with the value alg:ES256                    
-          {                         
-              33: h&#39;30820215308201BCA003020102021404AD30C…&#39;% 33-&gt;X5chain:COSE X_509  
-          },
-          &lt;&lt;                       
-              24(&lt;&lt;    
-                  {                            
-                  &quot;docType&quot;: &quot;eu.europa.ec.eudiw.pid.1&quot;,                                
-                  &quot;version&quot;: &quot;1.0&quot;,  
-                  &quot;validityInfo&quot;: {                                
-                      &quot;signed&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),                                     
-                      &quot;validFrom&quot;: 0(&quot;2023-02-22T06:23:56Z&quot;),                                   
-                      &quot;validUntil&quot;: 0(&quot;2024-02-22T00:00:00Z&quot;)                               
-                  },
-                  &quot;valueDigests&quot;: { 
-                      &quot;eu.europa.ec.eudiw.pid.1&quot;: {        
-                          1: h&#39;0F1571A97FFB799CC8FCDF2BA4FC2909929…&#39;,                                          
-                          2: h&#39;0CDFE077400432C055A2B69596C90…&#39;,     
-                          3: h&#39;E2382149255AE8E955AF9B8984395…&#39;,                                        
-                          4: h&#39;BBC77E6CCA981A3AD0C3E544EDF86…&#39;,                                     
-                          6: h&#39;BB6E6C68D1B4B4EC5A2AE9206F5t4…&#39;,
-                          7: h&#39;F8A5966E6DAC9970E0334D8F75E25…&#39;,
-                          8: h&#39;1F1A0F7CCDD79b29EB4B22F96F54F…&#39;,
-                          9: h&#39;1A0F7EEDB46B37AS4N22R96D83F3F…&#39;
-                      },
-                      &quot;eu.europa.ec.eudiw.pid.it.1&quot;: {  
-                          10: h&#39;F9EE4D36F67DBD75E23311AC1C29…&#39;
-                      }
-                  },                             
-                  &quot;deviceKeyInfo&quot;: {                              
-                      &quot;deviceKey&quot;: {                                  
-                          1: 2, % kty:EC2 (Eliptic curves with x and y coordinate pairs)           
-                          -1: 1, % crv:p256                     
-                          -2: h&#39;B820963964E53AF064686DD9218303494A…&#39;, % x-coordiantes                                        
-                          -3: h&#39;0A6DA0AF437E2943F1836F31C678D89298E9…&#39;% y-ccordiantes                                     
-                      }                            
-                  },                             
-                  &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;    
-                  }                       
-              &gt;&gt;)                     
-          &gt;&gt;,                        
-          h&#39;1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D&#39;                 
-          ],                 
-          &quot;nameSpaces&quot;: {
-              &quot;eu.europa.ec.eudiw.pid.1&quot;: [                         
-              24(&lt;&lt;    
-                  {      
-                  &quot;digestID&quot;: 1,                                  
-                  &quot;random&quot;: h&#39;E0B70BCEFBD43686F345C9ED429343AA&#39;,                                 
-                  &quot;elementIdentifier&quot;: &quot;expiry_date&quot;,                                
-                  &quot;elementValue&quot;: 1004(&quot;2024-02-22&quot;)                             
-                  }                         
-              &gt;&gt;), 
-              24(&lt;&lt;             
-                  {       
-                  &quot;digestID&quot;: 2,                                  
-                  &quot;random&quot;: h&#39;AE84834F389EE69888665B90A3E4FCCE&#39;, 
-                  &quot;elementIdentifier&quot;: &quot;issue_date&quot;,   
-                  &quot;elementValue&quot;: 1004(&quot;2023-02-22&quot;)                                
+<p>The Diagnostic Notation of the CBOR-encoded mDL is given below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+&quot;nameSpaces&quot;: {
+  &quot;org.iso.18013.5.1&quot;: [
+    24({
+      &quot;0&quot;: {
+        &quot;digestID&quot;: 0,
+        &quot;random&quot;: h&#39;790401ed5d0822d1aced942e4b0c41f754eee67b89c5ee3b8fd2c97491a96406&#39;,
+        &quot;elementIdentifier&quot;: &quot;family_name&quot;,
+        &quot;elementValue&quot;: &quot;Rossi&quot;
+        }
+      }),
+    24({
+      &quot;1&quot;: {
+        &quot;digestID&quot;: 1,
+        &quot;random&quot;: h&#39;1442881e24514517333019ec24aecaa70bba927d7f2d38ad7cdc3ce82d8561db&#39;,
+        &quot;elementIdentifier&quot;: &quot;given_name&quot;,
+        &quot;elementValue&quot;: &quot;Mario&quot;
+        }
+      }),
+    24({
+      &quot;2&quot;: {
+        &quot;digestID&quot;: 2,
+        &quot;random&quot;: h&#39;51b4f3831d910861e81da746b221fd89498507476418cedc3709b5d28a7c41d0&#39;,
+        &quot;elementIdentifier&quot;: &quot;birth_date&quot;,
+        &quot;elementValue&quot;: 1004(1980-01-10)
+        }
+      }),
+    24({
+      &quot;3&quot;: {
+        &quot;digestID&quot;: 3,
+        &quot;random&quot;: h&#39;0c8f68d1ec3aa445ef68aa10b7a5875fa18ca222a821e23890a227cdc7d25e8f&#39;,
+        &quot;elementIdentifier&quot;: &quot;issue_date&quot;,
+        &quot;elementValue&quot;: 1004(2025-03-27)
+        }
+      }),
+    24({
+      &quot;4&quot;: {
+        &quot;digestID&quot;: 4,
+        &quot;random&quot;: h&#39;0a9ed0d4937673152e52fb3fac0722baf4252e0d0c9869919e3339670203178e&#39;,
+        &quot;elementIdentifier&quot;: &quot;expiry_date&quot;,
+        &quot;elementValue&quot;: 1004(2030-03-27)
+        }
+      }),
+    24({
+      &quot;5&quot;: {
+        &quot;digestID&quot;: 5,
+        &quot;random&quot;: h&#39;4b315ff17cf3a4754a94a6cf1e9ddfdd99f6e86b177b74f173348968ca74e80b&#39;,
+        &quot;elementIdentifier&quot;: &quot;issuing_country&quot;,
+        &quot;elementValue&quot;: &quot;IT&quot;
+        }
+      }),
+    24({
+      &quot;6&quot;: {
+        &quot;digestID&quot;: 6,
+        &quot;random&quot;: h&#39;f8c82c4103f603435d0bc7762074ccc7c2c74925314a1fb5a8ab9cf2a960221f&#39;,
+        &quot;elementIdentifier&quot;: &quot;issuing_authority&quot;,
+        &quot;elementValue&quot;: &quot;Istituto Poligrafico e Zecca dello Stato&quot;
+        }
+      }),
+    24({
+      &quot;7&quot;: {
+        &quot;digestID&quot;: 7,
+        &quot;random&quot;: h&#39;1f7a77a353da7bfc4da12691185249c31d421afd59ddac34f9e4fb4d92b8ec50&#39;,
+        &quot;elementIdentifier&quot;: &quot;birth_place&quot;,
+        &quot;elementValue&quot;: &quot;Roma&quot;
+        }
+      }),
+    24({
+      &quot;8&quot;: {
+        &quot;digestID&quot;: 8,
+        &quot;random&quot;: h&#39;88e94c0365c611b523518d9a1b179ae52e242383576249f4965c40c6c97cf214&#39;,
+        &quot;elementIdentifier&quot;: &quot;document_number&quot;,
+        &quot;elementValue&quot;: &quot;XX1234567&quot;
+        }
+      }),
+    24({
+      &quot;9&quot;: {
+        &quot;digestID&quot;: 9,
+        &quot;random&quot;: h&#39;944758b43602b01ad68911b062349845492c04c6a78129bcf8cb5fb1396af2fc&#39;,
+        &quot;elementIdentifier&quot;: &quot;portrait&quot;,
+        &quot;elementValue&quot;: h&#39;ffd8ffe000104a46494600010101009000900000ffdb004300130d0e110e0c
+        13110f11151413171d301f1d1a1a1d3a2a2c2330453d4947443d43414c566d5d4c51685241435f82
+        606871757b7c7b4a5c869085778f6d787b76ffdb0043011415151d191d381f1f38764f434f767676
+        76767676767676767676767676767676767676767676767676767676767676767676767676767676
+        76767676767676ffc00011080018006403012200021101031101ffc4001b00000301000301000000
+        000000000000000005060401020307ffc40032100001030303020502030900000000000001020304
+        0005110612211331141551617122410781a1163542527391b2c1f1ffc40015010101000000000000
+        00000000000000000001ffc4001a110101010003010000000000000000000000014111213161ffda
+        000c03010002110311003f00a5bbde22da2329c7d692bc7d0d03f52cfb0ff75e7a7ef3e7709723a1
+        d0dae146ddfbb3c039ce07ad2bd47a7e32dbb8dd1d52d6ef4b284f64a480067dfb51f87ffb95ff00
+        eb9ff14d215de66af089ce44b7dbde9cb6890a2838eddf18078f7add62d411ef4db9b10a65d6b95a
+        147381ea0d495b933275fe6bba75c114104a8ba410413e983dff004f5af5d34b4b4cde632d0bf1fd
+        1592bdd91c6411f3934c2fa6af6b54975d106dcf4a65ae56e856001ebc03c7ce29dd9eef1ef10fc4
+        47dc9da76ad2aee93537a1ba7e4f70dd8eff0057c6dffb5e1a19854a83758e54528750946ec67048
+        50cd037bceb08b6d7d2cc76d3317fc7b5cc04fb6707269c5c6e0c5b60ae549242123b0e493f602a0
+        75559e359970d98db89525456b51c951c8afa13ea8e98e3c596836783d5c63f5a61a99fdb7290875
+        db4be88ab384bbbbbfc7183fdeaa633e8951db7da396dc48524fb1a8bd611a5aa2a2432f30ab420a
+        7a6d3240c718cf031fa9ef4c9ad550205aa02951df4a1d6c8421b015b769db8c9229837ea2be8b1b
+        0d39d0eba9c51484efdb8c0efd8d258daf3c449699f2edbd4584e7af9c64e3f96b9beb28d4ac4093
+        1e6478c8e76a24a825449501d867d2b1dcdebae99b9c752ae4ecd6dde4a179c1c1e460938f9149ef
+        655e515c03919a289cb3dca278fb7bf177f4faa829dd8ce3f2ac9a7ecde490971fafd7dce15eed9b
+        71c018c64fa514514b24e8e4f8c5c9b75c1e82579dc1233dfec08238f6add62d391acc1c5256a79e
+        706d52d431c7a0145140b9fd149eb3a60dc5e88cbbc2da092411e9dc71f39a7766b447b344e847dc
+        ac9dcb5abba8d145061d43a6fcf1e65cf15d0e90231d3dd9cfe62995c6dcc5ca12a2c904a15f71dd
+        27d451453e09d1a21450961cbb3ea8a956433b781f1ce33dfed54f0e2b50a2b71d84ed6db18028a2
+        8175f74fc6bda105c529a791c25c4f3c7a11f71586268f4a66b726e33de9ea6f1b52b181c760724e
+        47b514520a5a28a283ffd9&#39;        
+        }
+      }),
+    24({
+      &quot;10&quot;: {
+        &quot;digestID&quot;: 10,
+        &quot;random&quot;: h&#39;577e4822125f55fe923117aba01fdaefcc67d4aea80018fc22efa8d48e17982f&#39;,
+        &quot;elementIdentifier&quot;: &quot;driving_privileges&quot;,
+        &quot;elementValue&quot;: [
+          {
+            &quot;vehicle_category_code&quot;: &quot;A&quot;,
+            &quot;issue_date&quot;: 1004(&quot;2020-09-17&quot;),
+            &quot;expiry_date&quot;: 1004(&quot;2031-06-10&quot;)
+            }
+          ]
+        }
+      }),
+    24({
+      &quot;11&quot;: {
+        &quot;digestID&quot;: 11,
+        &quot;random&quot;: h&#39;fa21d3d890af5f4ea2760d08fd9a6256004cd5aa9d5e697ba5873fb0cddd555e&#39;,
+        &quot;elementIdentifier&quot;: &quot;un_distinguishing_sign&quot;,
+        &quot;elementValue&quot;: &quot;I&quot;
+        }
+      })
+    ],
+  &quot;org.iso.18013.5.1.IT&quot;: [
+    24({
+      &quot;12&quot;: {
+        &quot;digestID&quot;: 12,
+        &quot;random&quot;: h&#39;0c3fe75be952ec3c2257031a71f2f54aeabfe7445705cec147fbb2c0f69ad561&#39;,
+        &quot;elementIdentifier&quot;: &quot;sub&quot;,
+        &quot;elementValue&quot;: &quot;3B4hK2m7fA9TdVzqLrGp6W8XyJ1sNtQc&quot;
+        }
+      }),
+    24({
+      &quot;13&quot;: {
+        &quot;digestID&quot;: 13,
+        &quot;random&quot;: h&#39;d22c6db3dd27e066deb2ace6161e47fc6abc7a87c84a10320f14bc66d6e08d49&#39;,
+        &quot;elementIdentifier&quot;: &quot;verification&quot;,
+        &quot;elementValue&quot;: {
+          &quot;trust_framework&quot;: &quot;it_wallet&quot;,
+          &quot;assurance_level&quot;: &quot;high&quot;,
+          &quot;evidence&quot;: [
+            {
+              &quot;type&quot;: &quot;vouch&quot;,
+              &quot;time&quot;: &quot;2025-03-27&quot;,
+              &quot;attestation&quot;: {
+                &quot;type&quot;: &quot;digital_attestation&quot;,
+                &quot;reference_number&quot;: &quot;6485-1619-3976-6671&quot;,
+                &quot;date_of_issuance&quot;: &quot;2025-03-27&quot;,
+                &quot;voucher&quot;: {
+                  &quot;organization&quot;: &quot;Motorizzazione Civile&quot;
                   }
-              &gt;&gt;),                         
-              24(&lt;&lt;   
-                  {                              
-                  &quot;digestID&quot;: 3,                                 
-                  &quot;random&quot;: h&#39;960CB15A2EA9B68E5233CE902807AA95&#39;,                               
-                  &quot;elementIdentifier&quot;: &quot;issuing_country&quot;,                               
-                  &quot;elementValue&quot;: &quot;IT&quot;                                                    
-                  }                       
-              &gt;&gt;), 
-              24(&lt;&lt;       
-                  {                        
-                  &quot;digestID&quot;: 4,    
-                  &quot;random&quot;: h&#39;9D3774BD5994CCFED248674B32A4F76A&#39;, 
-                  &quot;elementIdentifier&quot;: &quot;issuing_authority&quot;,   
-                  &quot;elementValue&quot;: &quot;Ministero dell&#39;Interno&quot;  
-                  }   
-              &gt;&gt;),                 
-              24(&lt;&lt;        
-                  {                              
-                  &quot;digestID&quot;: 5,                         
-                  &quot;random&quot;: h&#39;EB12193DC66C6174530CDC29B274381F&#39;, 
-                  &quot;elementIdentifier&quot;: &quot;given_name&quot;,
-                  &quot;elementValue&quot;: &quot;Mario&quot;                             
-                  }                         
-              &gt;&gt;),            
-              24(&lt;&lt;                            
-                  {                               
-                  &quot;digestID&quot;: 6,                             
-                  &quot;random&quot;: h&#39;DB143143538F3C8D41DC024F9CB25C9D&#39;,
-                  &quot;elementIdentifier&quot;: &quot;family_name&quot;,  
-                  &quot;elementValue&quot;: &quot;Rossi&quot;    
-                  } 
-              &gt;&gt;),                         
-              24(&lt;&lt;               
-                  {                          
-                  &quot;digestID&quot;: 7, 
-                  &quot;random&quot;: h&#39;6059FF1CE27B4997B4ADE1DE7B01DC60&#39;,
-                  &quot;elementIdentifier&quot;: &quot;birth_date&quot;,
-                  &quot;elementValue&quot;: 1004(&quot;1956-01-12&quot;)% the tag 1004 defines the value    
-                    is a full date 
-                  }  
-              &gt;&gt;),
-              24(&lt;&lt;               
-                  {                          
-                  &quot;digestID&quot;: 8, 
-                  &quot;random&quot;: h&#39;FX8VVN1YN6NBH3CKYPJTNPJIVJ5KDMFA&#39;,
-                  &quot;elementIdentifier&quot;: &quot;birth_place&quot;,
-                  &quot;elementValue&quot;: &quot;Roma&quot;
-                  }  
-              &gt;&gt;),
-              24(&lt;&lt;               
-                  {                          
-                  &quot;digestID&quot;: 9, 
-                  &quot;random&quot;: h&#39;RGLXZ5CHND8Y2UUMHXXMJWPCHNH9HVIX&#39;,
-                  &quot;elementIdentifier&quot;: &quot;nationality&quot;,
-                  &quot;elementValue&quot;: &quot;IT&quot;
-                  }  
-              &gt;&gt;)			  
-              ],
-              &quot;eu.europa.ec.eudiw.pid.it.1&quot;: [
-                  24(&lt;&lt;
-                      {
-                      &quot;digestID&quot;: 10, 
-                      &quot;random&quot;: h&#39;11aa7273a2d2daa973f5951f0c34c2fbae&#39;,
-                      &quot;elementIdentifier&quot;: &quot;personal_administrative_number&quot;, 
-                      &quot;elementValue&quot;: &quot;XX00000XX&quot;
-                      }                         
-                  &gt;&gt;)                    
-              ]            
-          }  
-      }           
-    }
+                }
+              }
+            ]
+          }
+        }
+      })
     ]
-  }
+  },
+&quot;issuerAuth&quot;: [
+    &lt;&lt; {1: -7} &gt;&gt;,                 
+    {                         
+        33: h&#39;30820208308201afa00302010202142eb39c647c81836bcf79fa9cd0b201ec0bf52307300a0
+        6082a8648ce3d0403023064310b30090603550406130255533113301106035504080c0a43616c6966
+        6f726e69613116301406035504070c0d53616e204672616e636973636f31133011060355040a0c0a4
+        d7920436f6d70616e793113301106035504030c0a6d79736974652e636f6d301e170d323530333237
+        3135353532305a170d3235303430363135353532305a3064310b30090603550406130255533113301
+        106035504080c0a43616c69666f726e69613116301406035504070c0d53616e204672616e63697363
+        6f31133011060355040a0c0a4d7920436f6d70616e793113301106035504030c0a6d79736974652e6
+        36f6d3059301306072a8648ce3d020106082a8648ce3d03010703420004f33da72d0dd0009b62221b
+        0e839099b12dab5e01021124ebf9060422e648f3c3ec6614a86da1e91e552b2ae35e04d3058ae82b5
+        c65a7f1f26800cb4499652a09a33f303d303b0603551d1104343032863068747470733a2f2f637265
+        64656e7469616c2d6973737565722e6f6964632d66656465726174696f6e2e6f6e6c696e65300a060
+        82a8648ce3d040302034700304402204d1f0819971652b79ebe4825547de3d5554d2f41410225e6b1
+        3dab949cda125e022079ba71b823619e49719dce5daa565bf745d3d97e2b87c7f7d6a626f981e653ed&#39;
+    }, 
+    &lt;&lt; 24(&lt;&lt;    
+        {  
+            &quot;version&quot;: &quot;1.0&quot;,
+            &quot;digestAlgorithm&quot;: &quot;sha256&quot;,
+            &quot;valueDigests&quot;: {
+              &quot;org.iso.18013.5.1&quot;: {
+                &quot;0&quot;: h&#39;f46b65d5060ad060ab9be62ff22ea8633437619ebdc7fa81f2d151159e92bffe&#39;,
+                &quot;1&quot;: h&#39;e506545f6a6fd5d982670b4d62fc2b0688dc8f26754e7b0c574d63f5d72a85ac&#39;,
+                &quot;2&quot;: h&#39;cfcf96fa12d100eeed5f00183d3b6a0888baa47eae85b5b95037eca7bbc0d07e&#39;,
+                &quot;3&quot;: h&#39;8b0772252b0e06b611676b6b3402eb33bf866eb145e49f4d5f23215e6a047772&#39;,
+                &quot;4&quot;: h&#39;14135c96693e2ab08d956876ee491357d906a6dd125557196dfb9811ba54aa8d&#39;,
+                &quot;5&quot;: h&#39;86dcbd99233fbb84a9a2dce3a864a425e6e809300067a4475e3ea2a4d233dc74&#39;,
+                &quot;6&quot;: h&#39;2e9512d35ea225e69e7b2180ecc1678dcc3e77a16e36427e64b4f0e2861b4d3a&#39;,
+                &quot;7&quot;: h&#39;4efe55c36f6249d23c473a125afc5181aa30633936494781554971b72ff13700&#39;,
+                &quot;8&quot;: h&#39;cc44a4f9983c5b0b1efc0e82e2867c8d5bbdf89c34bff16a1953c923bb4e4b3e&#39;,
+                &quot;9&quot;: h&#39;775eb2af0aa55f2071d62662b35c99698ae3bc0e2c4af5724ff88476cddd152f&#39;,
+                &quot;10&quot;: h&#39;915d0ad53dd23dace34968c263d307c04701a9bb9dc9865af91dc409786fd833&#39;,
+                &quot;11&quot;: h&#39;47d89ff4fb513044e6f2394236755ac0abf3e4f4a46f40454a458a59f8b7a6fb&#39;
+                },
+              &quot;org.iso.18013.5.1.IT&quot;: {
+                &quot;12&quot;: h&#39;16d2098702e896b4614dff1859bd3b42105cac2e62ce7f87dcacc249a656db32&#39;,
+                &quot;13&quot;: h&#39;755fd7c0f9272a8589c4a661a8aa80dc916018e500884eba316899d653fcb8d1&#39;
+                }
+              },
+            &quot;deviceKeyInfo&quot;: {
+              &quot;deviceKey&quot;: {
+                &quot;1&quot;: 2,
+                &quot;-1&quot;: 1,
+                &quot;-2&quot;: h&#39;f96b29873b61f05403e2963a7ecbc799c9aab28d8a6629e5848cfdef85442866&#39;,
+                &quot;-3&quot;: h&#39;a9fef033a900c63e3894d8deb805a2a1fb55ef0d2b88e3c0d3336408186485ef&#39;
+                }
+              },
+            &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
+            &quot;validityInfo&quot;: {
+                &quot;signed&quot;: 0(&quot;2025-03-27T00:00:00Z&quot;),
+                &quot;validFrom&quot;: 0(&quot;2025-03-27T00:00:00Z&quot;),
+                &quot;validUntil&quot;: 0(&quot;2026-03-27T00:00:00Z&quot;)
+             },
+           &quot;status&quot;: {
+            &quot;status_list&quot;: {
+              &quot;idx&quot;: 1340,
+              &quot;uri&quot;: &quot;https://statusprovider.example.org//statuslists/1&quot;
+            }
+        }
+        }
+    &gt;&gt;) &gt;&gt;,
+    h&#39;d09f9acdf7a6be5e4aeb405bfb3b297b1b8003bcf52558a2f39fc6e5cffed40f18f49d2cc0e72a2a5645
+      8d8aade591dee8d6540e639bca637f94bd9fa56f345c&#39;
+]
+}
 </pre></div>
 </div>
 </section>
+</section>
+<section id="cross-format-credential-parameters-mapping">
+<h2>Cross-Format Credential Parameters Mapping<a class="headerlink" href="#cross-format-credential-parameters-mapping" title="Link to this heading">¶</a></h2>
+<p>The following table provides a comparative mapping between the data structures of SD-JWT-VC and mDoc-CBOR Digital Credentials.
+It outlines the key data elements and parameters used in each format, highlighting both commonalities and differences.
+In particular, it shows how core concepts—such as issuer information, validity, cryptographic binding, and disclosures—are represented in these credential formats.</p>
+<p>For SD-JWT-VC, parameters are marked with <cite>(hdr)</cite> if they are located in the JOSE header, and <cite>(pld)</cite> if they appear in the payload of the JWT. In mDoc-CBOR, these parameters are identified within the issuerAuth or nameSpaces structures.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Information Related To</strong></p></th>
+<th class="head"><p><strong>SD-JWT-VC Parameters</strong></p></th>
+<th class="head"><p><strong>mDoc-CBOR Parameters</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Digital Credential definition</p></td>
+<td><p>vct (pld)</p></td>
+<td><div class="line-block">
+<div class="line">issuerAuth.doctype</div>
+<div class="line">issuerAuth.version</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Digital Credential metadata</p></td>
+<td><div class="line-block">
+<div class="line">vctm.name (hdr)</div>
+<div class="line">vctm.description (hdr)</div>
+<div class="line">vctm.extends (hdr)</div>
+<div class="line">vctm.schema (hdr)</div>
+<div class="line">vctm.schema_uri (hdr)</div>
+<div class="line">vctm.data_source (hdr)</div>
+<div class="line">vctm.display (hdr)</div>
+<div class="line">vctm.claims (hdr)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">–</div>
+<div class="line">–</div>
+<div class="line">–</div>
+<div class="line">–</div>
+<div class="line">–</div>
+<div class="line">–</div>
+<div class="line">–</div>
+<div class="line">nameSpaces</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Issuer</p></td>
+<td><div class="line-block">
+<div class="line">iss (pld)</div>
+<div class="line">issuing_authority (pld)</div>
+<div class="line">issuing_country (pld)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">–</div>
+<div class="line">nameSpaces.elementIdentifier.issuing_authority</div>
+<div class="line">nameSpaces.elementIdentifier.issuing_country</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Subject</p></td>
+<td><p>sub (pld)</p></td>
+<td><p>nameSpaces.elementIdentifier.sub</p></td>
+</tr>
+<tr class="row-even"><td><p>Validity period</p></td>
+<td><div class="line-block">
+<div class="line">iat (pld)</div>
+<div class="line">exp (pld)</div>
+<div class="line">nbf (pld)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">issuerAuth.validityInfo.signed</div>
+<div class="line">issuerAuth.validityInfo.validUntil</div>
+<div class="line">issuerAuth.validityInfo.validFrom</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Status mechanism</p></td>
+<td><div class="line-block">
+<div class="line">status_assertation (pld)</div>
+<div class="line">status_list (pld)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">–</div>
+<div class="line">issuerAuth.status_list</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Signature</p></td>
+<td><div class="line-block">
+<div class="line">alg (hdr)</div>
+<div class="line">kid (hdr)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">issuerAuth.1 (alg)</div>
+<div class="line">issuerAuth.4 (kid)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Trust anchors</p></td>
+<td><div class="line-block">
+<div class="line">trust_chain (OID-FED) (hdr)</div>
+<div class="line">x5c (hdr)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">–</div>
+<div class="line">issuerAuth.33 (x5chain)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Cryptographic binding</p></td>
+<td><p>cnf.jwk (pld)</p></td>
+<td><p>issuerAuth.deviceKeyInfo.deviceKey</p></td>
+</tr>
+<tr class="row-odd"><td><p>Selective disclosure</p></td>
+<td><div class="line-block">
+<div class="line">_sd_alg (pld)</div>
+<div class="line">_sd (pld)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">issuerAuth.digestAlgorithm</div>
+<div class="line">issuerAuth.valueDigests</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Integrity</p></td>
+<td><div class="line-block">
+<div class="line">vct#integrity (pld)</div>
+<div class="line">vctm.extends#integrity (hdr)</div>
+<div class="line">vctm.schema_uri#integrity (hdr)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">–</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Digital Credential format</p></td>
+<td><p>typ (hdr)</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>Digital Credential auditability</p></td>
+<td><p>verification (pld)</p></td>
+<td><p>nameSpaces.elementIdentifier.verification</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disclosures</p></td>
+<td><div class="line-block">
+<div class="line">salt</div>
+<div class="line">claim name</div>
+<div class="line">claim value</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><br /></div>
+<div class="line">nameSpaces</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>In the mDoc-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available for the IssuerAuth.  In contrast, the SD-JWT format includes version information via the <cite>vct</cite> URL.</p></li>
+<li><p><cite>Disclosures</cite>, <cite>_sd</cite>, and <cite>_sd_alg</cite> enable selective disclosure of SD-JWT claims.  The <cite>_sd</cite> and <cite>_sd_alg</cite> parameters are part of the SD-JWT payload, while <cite>Disclosures</cite> are sent separately in a Combined Format along with the SD-JWT.</p></li>
+<li><p>The <cite>vctm.claims</cite> parameter in SD-JWT and the <cite>nameSpaces</cite> structure in mDoc-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT <cite>Disclosures</cite> for disclosed attributes directly correspond to <cite>nameSpaces</cite>, including attribute names, values, and salt values.</p></li>
+<li><p>A domestic namespace accommodates attributes such as <cite>verification</cite> and <cite>sub</cite>, which are not defined in the standard ISO elementIdentifiers for mDoc-CBOR Digital Credentials.</p></li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -1615,19 +1798,21 @@ The User attributes provided within the Italian PID are the ones listed below:</
                 <ul>
 <li><a class="reference internal" href="#">PID/(Q)EAA Data Model</a><ul>
 <li><a class="reference internal" href="#sd-jwt-vc-credential-format">SD-JWT-VC Credential Format</a><ul>
-<li><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT parameters</a></li>
+<li><a class="reference internal" href="#pid-q-eaa-sd-jwt-parameters">PID/(Q)EAA SD-JWT Parameters</a></li>
 <li><a class="reference internal" href="#digital-credential-metadata-type">Digital Credential Metadata Type</a></li>
 <li><a class="reference internal" href="#pid-claims">PID Claims</a></li>
 <li><a class="reference internal" href="#pid-non-normative-examples">PID Non-Normative Examples</a></li>
-<li><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA non-normative examples</a></li>
+<li><a class="reference internal" href="#q-eaa-non-normative-examples">(Q)EAA non-normative Examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#mdoc-cbor">MDOC-CBOR</a><ul>
-<li><a class="reference internal" href="#namespaces">nameSpaces</a></li>
-<li><a class="reference internal" href="#mobile-security-object">Mobile Security Object</a></li>
-<li><a class="reference internal" href="#mdoc-cbor-examples">MDOC-CBOR Examples</a></li>
+<li><a class="reference internal" href="#mdoc-cbor-credential-format">mDoc-CBOR Credential Format</a><ul>
+<li><a class="reference internal" href="#attribute-namespaces">Attribute Namespaces</a></li>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#mobile-security-object">Mobile security Object</a></li>
+<li><a class="reference internal" href="#mdoc-cbor-examples">mDoc-CBOR Examples</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#cross-format-credential-parameters-mapping">Cross-Format Credential Parameters Mapping</a></li>
 </ul>
 </li>
 </ul>
