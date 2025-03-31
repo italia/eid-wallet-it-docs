@@ -946,21 +946,17 @@ Federation participants that need to issue X.509 Certificates about themselves a
 <p>Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.</p>
 <p>When a participant self-issues an X.509 Certificate, it adheres to the following requirements:</p>
-<ol class="arabic">
+<ol class="arabic simple">
 <li><p><strong>Subject Name</strong>: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> field should contain the Federation Entity unique identifier DNS name, which is included into the <strong>sub</strong> (subject) value in its federation Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
 <li><p><strong>Subject Alternative Name (SAN)</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> that matches the <strong>sub</strong> value of its federation Entity Configuration.</p></li>
 <li><p><strong>DNS Name</strong>: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the <strong>sub</strong> value of its Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
 <li><p><strong>Certificate Revocation List (CRL)</strong>: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.</p></li>
 <li><p><strong>Basic Constraints</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> extension with <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> and a maximum path length of 1 if the certificate issuer is a Federation Intermediate, if it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.</p></li>
-<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For example:
-- Permitted:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DNS.1=leaf.example.com</span></code></p></li>
-</ul>
-</div></blockquote>
+<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For example:</p>
 <ul class="simple">
+<li><p>Permitted:
+- <code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS.1=leaf.example.com</span></code></p></li>
 <li><p>Excluded:
 - <code class="docutils literal notranslate"><span class="pre">DNS=localhost</span></code>
 - <code class="docutils literal notranslate"><span class="pre">DNS=localhost.localdomain</span></code>
