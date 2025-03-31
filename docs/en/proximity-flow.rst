@@ -309,8 +309,8 @@ In diagnostic notation:
                   },
                   "status": {
                     "status_list": {
-                      "bits": 1,
-                      "lst": "eNrbuRgAAhcBXQ"                             
+                      "idx": 1340,
+                      "uri": "https://statusprovider.example.org//statuslists/1"                           
                     }
                   }
                 }
