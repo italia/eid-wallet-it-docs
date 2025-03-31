@@ -134,11 +134,12 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -925,10 +926,10 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <p>OpenID Federation and X.509 based PKI share several things in common, as listed below:</p>
 <ul class="simple">
 <li><p><strong>Hierarchical Approach</strong>: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.</p></li>
-<li><p><strong>Decentralization with Multiple Trust Anchors and Intermediates</strong>: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and intermediates, below one or more Trust Anchors, introduces a level of decentralization.</p></li>
-<li><p><strong>Custom Extensions</strong>: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, trust marks and policies using a policy language.</p></li>
-<li><p><strong>Trust/Certificate Chain</strong>: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through intermediaries to the end entity (Leaf).</p></li>
-<li><p><strong>Constraints in the Chain</strong>: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediates, and the domains involved.</p></li>
+<li><p><strong>Decentralization with Multiple Trust Anchors and Intermediates</strong>: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and Intermediates, below one or more Trust Anchors, introduces a level of decentralization.</p></li>
+<li><p><strong>Custom Extensions</strong>: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a policy language.</p></li>
+<li><p><strong>Trust/Certificate Chain</strong>: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through Intermediaries to the end entity (Leaf).</p></li>
+<li><p><strong>Constraints in the Chain</strong>: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediaries, and the domains involved.</p></li>
 <li><p><strong>Public Key Distribution</strong>: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.</p></li>
 <li><p><strong>Registry of Expired Keys</strong>: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.</p></li>
 </ul>
@@ -945,11 +946,31 @@ Federation participants that need to issue X.509 Certificates about themselves a
 <p>Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.</p>
 <p>When a participant self-issues an X.509 Certificate, it adheres to the following requirements:</p>
-<ol class="arabic simple">
-<li><p><strong>Subject Name</strong>: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> field should contain the Federation Entity unique identifier value, which corresponds to the <strong>sub</strong> (subject) value in its federation Entity Configuration.</p></li>
+<ol class="arabic">
+<li><p><strong>Subject Name</strong>: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> field should contain the Federation Entity unique identifier DNS name, which is included into the <strong>sub</strong> (subject) value in its federation Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
 <li><p><strong>Subject Alternative Name (SAN)</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> that matches the <strong>sub</strong> value of its federation Entity Configuration.</p></li>
-<li><p><strong>DNS Name</strong>: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the <strong>sub</strong> value of its Entity Configuration.</p></li>
-<li><p><strong>Certificate Revocation List (CRL)</strong>: The participant MUST publish a CRL for its self-issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.</p></li>
+<li><p><strong>DNS Name</strong>: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the <strong>sub</strong> value of its Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
+<li><p><strong>Certificate Revocation List (CRL)</strong>: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.</p></li>
+<li><p><strong>Basic Constraints</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> extension with <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> and a maximum path length of 1 if the certificate issuer is a Federation Intermediate, if it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.</p></li>
+<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For example:
+- Permitted:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DNS.1=leaf.example.com</span></code></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Excluded:
+- <code class="docutils literal notranslate"><span class="pre">DNS=localhost</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=localhost.localdomain</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=127.0.0.1</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.com</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.org</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.net</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=*.example.org</span></code></p></li>
+</ul>
+</li>
 </ol>
 <p>Below a non-normative example of an X.509 Certificate Chain without intermediaries and in plain text, to facilitate the reading.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span><span class="p">:</span>
@@ -957,11 +978,11 @@ Naming constraints are applied by Immediate Superiors within the certificates is
     <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
     <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
 <span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
-    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
     <span class="n">Validity</span>
         <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
         <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2033</span> <span class="n">GMT</span>
-    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
     <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
         <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
             <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">4096</span> <span class="n">bit</span><span class="p">)</span>
@@ -990,11 +1011,11 @@ Naming constraints are applied by Immediate Superiors within the certificates is
     <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
     <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">1234567890</span> <span class="p">(</span><span class="mh">0x499602d2</span><span class="p">)</span>
 <span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
-    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
     <span class="n">Validity</span>
         <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
         <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2024</span> <span class="n">GMT</span>
-    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
     <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
         <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
             <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">2048</span> <span class="n">bit</span><span class="p">)</span>
@@ -1003,7 +1024,7 @@ Naming constraints are applied by Immediate Superiors within the certificates is
             <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
     <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
         <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
-            <span class="n">CA</span><span class="p">:</span><span class="n">FALSE</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">pathlen</span><span class="p">:</span><span class="mi">1</span>
         <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
             <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
         <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="p">:</span>
@@ -1012,6 +1033,14 @@ Naming constraints are applied by Immediate Superiors within the certificates is
             <span class="n">Permitted</span><span class="p">:</span>
               <span class="n">URI</span><span class="mf">.1</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
               <span class="n">DNS</span><span class="mf">.1</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+            <span class="n">Excluded</span><span class="p">:</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span><span class="o">.</span><span class="n">localdomain</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="mf">127.0.0.1</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">net</span>
+              <span class="n">DNS</span><span class="o">=*.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
         <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
             <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
               <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">ancor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">crl</span>
@@ -1060,8 +1089,9 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 <section id="x-509-certificate-revocation">
 <h3>X.509 Certificate Revocation<a class="headerlink" href="#x-509-certificate-revocation" title="Link to this heading">¶</a></h3>
 <p>An X.509 Certificate can be revoked by its Issuer.
-When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
-When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leaves Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf's cryptographic public key, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.</p>
+Revocation lists, and or any other revocation check mechanisms, are required only for X.509 Certificate with expiration time superior to 24 hours, otherwise they are not required.</p>
+<p>When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, if the certificate expiration time is superior than 24 hours from the <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code> time, it MUST implement a CRL about the issued certificate and keep it updated.
+When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, and it revokes the certificate about the Leaf, therefore the X.509 Certificate about one of the Leaves Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf's cryptographic public key, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.</p>
 <p>Below a non-normative example, in plain text, examplify the content of a CRL.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span> <span class="n">Revocation</span> <span class="n">List</span> <span class="p">(</span><span class="n">CRL</span><span class="p">):</span>
 <span class="n">Version</span><span class="p">:</span> <span class="mi">2</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
@@ -1192,7 +1222,7 @@ When the X.509 Certificate issuer is an Immediate superior, such as the Trust An
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/03/2025.
+      Last updated on 31/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
