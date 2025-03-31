@@ -802,7 +802,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
  
  Checking Credentials Statuses
- .......................................
+""""""""""""""""""""""""""""""""""""""""""""
  
  The fetching, processing and verifying of a Status List Token may be done by either the Wallet Instance or a Relying Party. Below it is described for the Relying Party, however, the same rules would also apply to the Wallet Instance.
  
