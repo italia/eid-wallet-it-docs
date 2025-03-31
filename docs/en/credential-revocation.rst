@@ -648,6 +648,8 @@ This section defines a Status List data structure, which is used to convey infor
  
 In this specification, the roles of Credential Issuer and Status Issuer (i.e., the entity that issues the Status List Token about the status information of the Digital Credential) coincide, whereas the Status Provider (i.e., the entity that provides the Status List Token on a public endpoint) MAY be the Credential Issuer itself or another entity.
  
+ .. _sec_status_list_creation:
+ 
  Status Lists Creation
 """"""""""""""""""""""""""""""
  
