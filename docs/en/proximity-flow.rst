@@ -111,7 +111,7 @@ The same content shown above using the diagnostic notation:
 
 **Step 7**: The verifier uses its Relying Party Instance to scan the QR code and retrieve the DeviceEngagement data from the mdoc.
 
-**Step 8**: The Relying Party Instance generates its ephemeral key pair (``EReaderKey. Priv``, ``EReaderKey.Pub``). The private key (``EReaderKey.Priv``) MUST be kept secret, and the public key (``EReaderKey.Pub``) MUST be used in establishing the session.
+**Step 8**: The Relying Party Instance generates its ephemeral key pair (``EReaderKey.Priv``, ``EReaderKey.Pub``). The private key (``EReaderKey.Priv``) MUST be kept secret, and the public key (``EReaderKey.Pub``) MUST be used in establishing the session.
 
 **Step 9**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key.
 
@@ -286,6 +286,12 @@ In diagnostic notation:
                                 "validFrom": "2020-10-01T13:30:02Z",
                                 "validUntil": "2021-10-01T13:30:02Z",
                             },
+                            "status": {
+                                "status_list" : {
+                                 "bits": 1,
+                                 "lst": "eNrbuRgAAhcBXQ"                             
+                                 }
+                            }
                         },
                     },
                     "h59E64205DF1E766AEFF13CB2E",
@@ -378,7 +384,7 @@ In diagnostic notation:
     ],
   }
 
-**Step 17**: The Relying Party Instance receives the SessionData, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its issuer's signature. In case of long-lived Digital Credential it SHOULD also check the revocation status.
+**Step 17**: The Relying Party Instance receives the SessionData, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using :ref:`OAuth Status List`.
 
 **Step 18**: Once the data exchange is complete, either party can terminate the session. If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance). 
 
