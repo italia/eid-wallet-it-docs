@@ -133,4 +133,3 @@ Security and Protection Profiles
 
     * - `UNI CEI EN ISO/IEC 27001:2024`
       - Information security, cybersecurity and privacy protection — Information security management systems — Requirement
-

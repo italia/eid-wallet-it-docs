@@ -1,11 +1,92 @@
-{     
-    "status": 0,     
-    "version": "1.0",     
-    "documents": [        
-    {             
-      "docType": "eu.europa.ec.eudiw.pid.1",                         
-      "issuerSigned": {                
-          "issuerAuth": [                
+ {                       
+    "nameSpaces": {
+        "eu.europa.ec.eudi.pid.1": [                         
+        24(<<    
+            {      
+            "digestID": 1,                                  
+            "random": h'E0B70BCEFBD43686F345C9ED429343AA',                                 
+            "elementIdentifier": "expiry_date",                                
+            "elementValue": 1004("2024-02-22")                             
+            }                         
+        >>), 
+        24(<<             
+            {       
+            "digestID": 2,                                  
+            "random": h'AE84834F389EE69888665B90A3E4FCCE', 
+            "elementIdentifier": "issuance_date",   
+            "elementValue": 1004("2023-02-22")                                
+            }
+        >>),                         
+        24(<<   
+            {                              
+            "digestID": 3,                                 
+            "random": h'960CB15A2EA9B68E5233CE902807AA95',                               
+            "elementIdentifier": "issuing_country",                               
+            "elementValue": "IT"                                                    
+            }                       
+        >>), 
+        24(<<       
+            {                        
+            "digestID": 4,    
+            "random": h'9D3774BD5994CCFED248674B32A4F76A', 
+            "elementIdentifier": "issuing_authority",   
+            "elementValue": "Ministero dell'Interno"  
+            }   
+        >>),                 
+        24(<<        
+            {                              
+            "digestID": 5,                         
+            "random": h'EB12193DC66C6174530CDC29B274381F', 
+            "elementIdentifier": "given_name",
+            "elementValue": "Mario"                             
+            }                         
+        >>),            
+        24(<<                            
+            {                               
+            "digestID": 6,                             
+            "random": h'DB143143538F3C8D41DC024F9CB25C9D',
+            "elementIdentifier": "family_name",  
+            "elementValue": "Rossi"    
+            } 
+        >>),                         
+        24(<<               
+            {                          
+            "digestID": 7, 
+            "random": h'6059FF1CE27B4997B4ADE1DE7B01DC60',
+            "elementIdentifier": "birth_date",
+            "elementValue": 1004("1956-01-12")% the tag 1004 defines the value    
+            is a full date 
+            }  
+        >>),
+        24(<<               
+            {                          
+            "digestID": 8, 
+            "random": h'FX8VVN1YN6NBH3CKYPJTNPJIVJ5KDMFA',
+            "elementIdentifier": "birth_place",
+            "elementValue": "Roma"
+            }  
+        >>),
+        24(<<               
+            {                          
+            "digestID": 9, 
+            "random": h'RGLXZ5CHND8Y2UUMHXXMJWPCHNH9HVIX',
+            "elementIdentifier": "nationality",
+            "elementValue": "IT"
+            }  
+        >>)			  
+        ],
+        "eu.europa.ec.eudi.pid.it.1": [
+            24(<<
+                {
+                "digestID": 10, 
+                "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
+                "elementIdentifier": "personal_administrative_number", 
+                "elementValue": "XX00000XX"
+                }                         
+            >>)                    
+        ]            
+    }, 
+    "issuerAuth": [                
           << {1: -7} >>, % protected header with the value alg:ES256                    
           {                         
               33: h'30820215308201BCA003020102021404AD30C…'% 33->X5chain:COSE X_509  
@@ -13,7 +94,7 @@
           <<                       
               24(<<    
                   {                            
-                  "docType": "eu.europa.ec.eudiw.pid.1",                                
+                  "docType": "eu.europa.ec.eudi.pid.1",                                
                   "version": "1.0",  
                   "validityInfo": {                                
                       "signed": 0("2023-02-22T06:23:56Z"),                                     
@@ -21,7 +102,7 @@
                       "validUntil": 0("2024-02-22T00:00:00Z")                               
                   },
                   "valueDigests": { 
-                      "eu.europa.ec.eudiw.pid.1": {        
+                      "eu.europa.ec.eudi.pid.1": {        
                           1: h'0F1571A97FFB799CC8FCDF2BA4FC2909929…',                                          
                           2: h'0CDFE077400432C055A2B69596C90…',     
                           3: h'E2382149255AE8E955AF9B8984395…',                                        
@@ -31,7 +112,7 @@
                           8: h'1F1A0F7CCDD79b29EB4B22F96F54F…',
                           9: h'1A0F7EEDB46B37AS4N22R96D83F3F…'
                       },
-                      "eu.europa.ec.eudiw.pid.it.1": {  
+                      "eu.europa.ec.eudi.pid.it.1": {  
                           10: h'F9EE4D36F67DBD75E23311AC1C29…'
                       }
                   },                             
@@ -48,95 +129,5 @@
               >>)                     
           >>,                        
           h'1AD0D6A7313EFDC38FCD765852FA2BD43DEBF48BF5A580D'                 
-          ],                 
-          "nameSpaces": {
-              "eu.europa.ec.eudiw.pid.1": [                         
-              24(<<    
-                  {      
-                  "digestID": 1,                                  
-                  "random": h'E0B70BCEFBD43686F345C9ED429343AA',                                 
-                  "elementIdentifier": "expiry_date",                                
-                  "elementValue": 1004("2024-02-22")                             
-                  }                         
-              >>), 
-              24(<<             
-                  {       
-                  "digestID": 2,                                  
-                  "random": h'AE84834F389EE69888665B90A3E4FCCE', 
-                  "elementIdentifier": "issue_date",   
-                  "elementValue": 1004("2023-02-22")                                
-                  }
-              >>),                         
-              24(<<   
-                  {                              
-                  "digestID": 3,                                 
-                  "random": h'960CB15A2EA9B68E5233CE902807AA95',                               
-                  "elementIdentifier": "issuing_country",                               
-                  "elementValue": "IT"                                                    
-                  }                       
-              >>), 
-              24(<<       
-                  {                        
-                  "digestID": 4,    
-                  "random": h'9D3774BD5994CCFED248674B32A4F76A', 
-                  "elementIdentifier": "issuing_authority",   
-                  "elementValue": "Ministero dell'Interno"  
-                  }   
-              >>),                 
-              24(<<        
-                  {                              
-                  "digestID": 5,                         
-                  "random": h'EB12193DC66C6174530CDC29B274381F', 
-                  "elementIdentifier": "given_name",
-                  "elementValue": "Mario"                             
-                  }                         
-              >>),            
-              24(<<                            
-                  {                               
-                  "digestID": 6,                             
-                  "random": h'DB143143538F3C8D41DC024F9CB25C9D',
-                  "elementIdentifier": "family_name",  
-                  "elementValue": "Rossi"    
-                  } 
-              >>),                         
-              24(<<               
-                  {                          
-                  "digestID": 7, 
-                  "random": h'6059FF1CE27B4997B4ADE1DE7B01DC60',
-                  "elementIdentifier": "birth_date",
-                  "elementValue": 1004("1956-01-12")% the tag 1004 defines the value    
-                    is a full date 
-                  }  
-              >>),
-              24(<<               
-                  {                          
-                  "digestID": 8, 
-                  "random": h'FX8VVN1YN6NBH3CKYPJTNPJIVJ5KDMFA',
-                  "elementIdentifier": "birth_place",
-                  "elementValue": "Roma"
-                  }  
-              >>),
-              24(<<               
-                  {                          
-                  "digestID": 9, 
-                  "random": h'RGLXZ5CHND8Y2UUMHXXMJWPCHNH9HVIX',
-                  "elementIdentifier": "nationality",
-                  "elementValue": "IT"
-                  }  
-              >>)			  
-              ],
-              "eu.europa.ec.eudiw.pid.it.1": [
-                  24(<<
-                      {
-                      "digestID": 10, 
-                      "random": h'11aa7273a2d2daa973f5951f0c34c2fbae',
-                      "elementIdentifier": "personal_administrative_number", 
-                      "elementValue": "XX00000XX"
-                      }                         
-                  >>)                    
-              ]            
-          }  
-      }           
-    }
-    ]
+          ]
   }
