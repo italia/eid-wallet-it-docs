@@ -22,6 +22,8 @@ Further technical and operational details are discussed in the following section
 Mobile Relying Party Instance
 --------------------------------
 
+A Mobile Relying Party Instance is a native application that runs on mobile devices and enables user digital credential verification within the IT-Wallet ecosystem. It operates as a public client on end-user devices, requiring additional security measures to establish trust. It has a well-defined lifecycle with four main states (**Installed**, **Operational**, **Verified**, and **Uninstalled**) and supports essential functionalities such as registration, access certificate reissuance, and revocation. 
+
 Mobile Relying Party Instance Lifecycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
