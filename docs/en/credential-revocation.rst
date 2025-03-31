@@ -659,7 +659,7 @@ Status Lists Creation
  
  The Issuer of the Digital Credentials MUST
  
-   - define a number of bits, k, (either 1, 2, 4, 8) that represents the amount of bits used to describe the status of each Digital Credential within this Status List. This choice MUST be made by the Credential Issuer and is dictated the Digital Credential lifecycle: each Credential will then have 2^k (where k is the number of bits chosen) possible states.
+   - define a number of bits, k, (either 1, 2, 4, 8) that represents the amount of bits used to describe the status of each Digital Credential within this Status List. The Credential Issuer MUST configure the number of bits. Each Credential will therefore have 2^k (where k is the number of bits chosen) possible states.
    - create a byte array of size = (amount of Digital Credentials) * k / 8 or greater. Depending on k, each byte in the array corresponds to 8/k statuses (8 if k=1, 4 if k=2, 2 if k=1, or 1 if k=8). Each time a Digital Credential is issued the Credential Issuer assigns it to a position in the array. 
    - set the status values for all issued Digital Credentials within the byte array. The status of each Digital Credential is identified using an index that maps to one or more specific bits within the byte array. The index starts counting at 0 and ends with (amount of Digital Credential) - 1 (being the last valid entry). The bits within an array are counted from the least significant bit ("0") to the most significant bit ("7"). All bits of the byte array at a particular index are set to a status value.
    - compress the byte array using DEFLATE [:rfc:`1951`] with the ZLIB [:rfc:`1950`] data format. Implementations are RECOMMENDED to use the highest compression level available.
