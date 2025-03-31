@@ -54,7 +54,6 @@ Relying Party Log Retention Policy
 Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.
 
 
-
 - Relying Parties SHOULD not log Credential presentation disclosure maps, where not necessary. 
 
 Wallet Instances Logging Features
@@ -63,14 +62,3 @@ Wallet Instances Logging Features
 The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets. Please refer in particular to Recitals (11) and (13), and to Article 5e(4) and Article 6(2)(d), as well as Article 8(2)(d), which define logging obligations, user interface requirements, and data portability mechanisms.
 
 
-
-
-
-
-
-
----------------------------------------
-
-- ISO/IEC 27001:2024
-- Regulation (EU) No 910/2014 (eIDAS)
-- National regulations on traffic data retention.
