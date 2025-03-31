@@ -9,13 +9,13 @@ The Relying Party MUST expose endpoints to support trust establishment and essen
 
 
 Relying Party Federation Endpoint
---------------------------------
+----------------------------------
 
 .. include:: relying-party-entity-configuration.rst
 
 
 Relying Party Nonce Endpoint
---------------------------------
+----------------------------------
 
 The Nonce Endpoint allows the Relying Party Instance to request a cryptographic ``nonce`` from the Relying Party Backend. The ``nonce`` serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
 
@@ -166,7 +166,7 @@ This is a RESTful API endpoint provided by the Relying Party that enables Relyin
 
 
 Relying Party Integrity Validation Request
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
 

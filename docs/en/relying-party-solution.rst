@@ -3,7 +3,7 @@
 .. _relying-party-solution:
 
 Relying Party Solution
-+++++++++++++++++++++++
+++++++++++++++++++++++++
 
 A Relying Party, as an organizational entity relying upon IT-Wallet, provides technical Solutions (Relying Party Solution) that could combine software, hardware, services, settings, and configurations, including Relying Party Instances for User authentication and Digital Credential verification. 
 
