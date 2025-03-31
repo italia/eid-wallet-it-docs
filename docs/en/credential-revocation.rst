@@ -779,6 +779,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
        "ttl": 43200
      }
  
+ .. _sec_cred_iss_handling:
  
  Credential Issuers Handling Credential Status 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -854,7 +855,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
  Upon receiving a Digital Credential, a Relying Party MUST first perform the validation of the Digital Credential itself (e.g., checking for expected attributes, valid signature and expiration time). If this validation is not successful, the Digital Credential MUST be rejected. If the validation was successful, the Relying Party MUST perform the following validation steps to evaluate the status of the Digital Credential:
  
-   - Check for the existence of a ``status`` claim, check for the existence of a ``status_list`` claim within the ``status`` claim and validate that the content of ``status_list`` adheres to the rules defined in Section `Credential Issuers Handling Credential Status`_.
+   - Check for the existence of a ``status`` claim, check for the existence of a ``status_list`` claim within the ``status`` claim and validate that the content of ``status_list`` adheres to the rules defined in Section :ref:`sec_cred_iss_handling`.
    - Resolve the Status List Token from the provided URI.
    - Validate the Status List Token:
  
