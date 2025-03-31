@@ -178,58 +178,23 @@
 <section id="wallet-provider-log-retention-policy">
 <h3>Wallet Provider Log Retention Policy<a class="headerlink" href="#wallet-provider-log-retention-policy" title="Link to this heading">¶</a></h3>
 <p>Information related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.</p>
-<p>Wallet Provider MUST log the following items:</p>
-<ul class="simple">
-<li><p>Evidences about the User Authentication to the Wallet Provider backends, according to the national regulation pertaining the digital identity systems, if involved (e.g: signed SAML2 Responses, OIDC ID Token).</p></li>
-<li><p>Wallet Attestation Requests.</p></li>
-<li><p>Wallet Attestations.</p></li>
-<li><p>Holder's requests about the revocation or deactivation of the Wallet Instance.</p></li>
-</ul>
 </section>
 <section id="credential-issuer-log-retention-policy">
 <h3>Credential Issuer Log Retention Policy<a class="headerlink" href="#credential-issuer-log-retention-policy" title="Link to this heading">¶</a></h3>
 <p>Credential Issuers define the retention period for Credentials based on sector-specific regulations. In the absence of specific regulations, the retention period for Credentials SHOULD not exceed 12 months after the date of expiration, configured at time of issuance within the metadata of the Issuer Signed part of the Credential.</p>
-<p>In detail, Credential Issuers require to be compliant to the items above:</p>
-<ul class="simple">
-<li><p>Credential Issuers MUST log the signed requests made by Wallet Instance during the Credential issuance phase, such as authorization requests and token request (Authorization Server) and the Credential requests at the Credential endpoint (Resource Server).</p></li>
-<li><p>Credential Issuers MUST log the evidences about the User Authentication to the Wallet Provider backends, during the authroization phase, according to the national regulation pertaining the digital identity systems, if involved (e.g: signed SAML2 Responses, OIDC ID Token).</p></li>
-<li><p>Credential Issuers MUST log the Issuer signed part of the issued Credentials, such as the Issuer-Signed-JWT using SD-JWT-VC or the MSO using MDoc CBOR.</p></li>
-<li><p>Credential Issuer SHOULD NOT log the User personal attributes, such as the Credential disclosure map.</p></li>
-<li><p>Credential Issuers MUST log the Holder's signed revocation request.</p></li>
-</ul>
 </section>
 <section id="relying-party-log-retention-policy">
 <h3>Relying Party Log Retention Policy<a class="headerlink" href="#relying-party-log-retention-policy" title="Link to this heading">¶</a></h3>
 <p>Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.</p>
-<p>At the end of the retention period, data MUST be deleted or anonymized.</p>
-<p>In detail, Relying Party are required to be compliant with the following items:</p>
 <ul class="simple">
-<li><p>Relying Parties MUST log Wallet's signed presentations, linked to signed presentation requests, containing the Credential Signed part and the Wallet Signed part, such as the Issuer-Signed-JWT and the KB-JWT using SD-JWT-VC.</p></li>
 <li><p>Relying Parties SHOULD not log Credential presentation disclosure maps, where not necessary.</p></li>
 </ul>
 </section>
 <section id="wallet-instances-logging-features">
 <h3>Wallet Instances Logging Features<a class="headerlink" href="#wallet-instances-logging-features" title="Link to this heading">¶</a></h3>
 <p>The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets. Please refer in particular to Recitals (11) and (13), and to Article 5e(4) and Article 6(2)(d), as well as Article 8(2)(d), which define logging obligations, user interface requirements, and data portability mechanisms.</p>
-<p>Recital (11) of the regulation highlights the critical role of transaction logging as a tool for transparency. Logs enable Wallet Users to effectively monitor their digital identity activities. This transparency aims to improve the user confidence and accountability in digital identity management.</p>
-<p>In addition to transparency, logs facilitates the swift and use of information with competent supervisory authorities, as outlined in Article 51 of Regulation (EU) 2016/679 (GDPR). In instances of suspicious behavior by Relying Parties, logs can be quickly provided to authorities, enabling prompt investigation and resolution of potential security threats.</p>
-<p>About data export and portability, recital (13) emphasizes the use of data export and portability objects to log person identification data and electronic attestations of attributes issued to a Wallet Instance, supporting the right to data portability. Users are enabled to extract and transfer their data between different Wallet Solutions or recover lost Wallet Instances.</p>
-<p>Article 5e, Item 4 of the regulation defines the key features and requirements of the User interface about the navigation of the transaction logs. European Digital Identity Wallets MUST provide a user-friendly, transparent, and traceable dashboard that allows Users to:</p>
+<hr class="docutils" />
 <ul class="simple">
-<li><p>View an up-to-date list of Relying Parties with which they have established a connection, including all data exchanged where applicable.</p></li>
-<li><p>Easily request the erasure of personal data by a Relying Party, in accordance with Article 17 of Regulation (EU) 2016/679 (GDPR). Users MUST be able to exercise their right to be forgotten, enhancing their control over personal data.</p></li>
-<li><p>Easily report a Relying Party to the competent national data protection authority if an allegedly unlawful or suspicious data request is received, addressing potential data protection violations.</p></li>
-</ul>
-<p>In detail, Wallet Instances MUST log the following items:</p>
-<ul class="simple">
-<li><p>Signed presentation requests issued by Relying Parties.</p></li>
-<li><p>Credentials, and disclosed attributes, presented to each Relying Party.</p></li>
-</ul>
-</section>
-<section id="regulatory-references-for-log-retention">
-<h3>Regulatory References for Log Retention<a class="headerlink" href="#regulatory-references-for-log-retention" title="Link to this heading">¶</a></h3>
-<ul class="simple">
-<li><p>Regulation (EU) 2016/679 (GDPR)</p></li>
 <li><p>ISO/IEC 27001:2024</p></li>
 <li><p>Regulation (EU) No 910/2014 (eIDAS)</p></li>
 <li><p>National regulations on traffic data retention.</p></li>
@@ -258,7 +223,6 @@
 <li><a class="reference internal" href="#credential-issuer-log-retention-policy">Credential Issuer Log Retention Policy</a></li>
 <li><a class="reference internal" href="#relying-party-log-retention-policy">Relying Party Log Retention Policy</a></li>
 <li><a class="reference internal" href="#wallet-instances-logging-features">Wallet Instances Logging Features</a></li>
-<li><a class="reference internal" href="#regulatory-references-for-log-retention">Regulatory References for Log Retention</a></li>
 </ul>
 </li>
 </ul>
