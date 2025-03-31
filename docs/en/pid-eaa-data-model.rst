@@ -588,7 +588,7 @@ The mDoc data elements MUST be encoded in CBOR as defined in :rfc:`8949`.
 This data model structures mDoc Digital Credentials into distinct components: namespaces (**nameSpaces**), and cryptographic proof (**issuerAuth**). 
 Namespaces categorize and structure data elements (or attributes, see :ref:`Attribute_Namespaces`). While the cryptographic proof ensures integrity and authenticity through the Mobile Security Object (MSO).
 
-The MSO securely stores cryptographic digests of attributes within the `nameSpaces`. This allows Relying Parties to validate disclosed attributes against corresponding **digestID** values without revealing the entire credential.
+The MSO securely stores cryptographic digests of attributes within the `nameSpaces`. This allows Relying Parties to validate disclosed attributes against corresponding **digestID** values without revealing the entire Credential.
 See :ref:`Mobile_Security_Object` for details.
 
 An mDoc-CBOR Digital Credential MUST be compliant with the following structure:
