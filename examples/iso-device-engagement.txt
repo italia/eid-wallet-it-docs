@@ -1,0 +1,34 @@
+{
+  0: "1.1", % Version (Updated to 1.1 because Capabilities and OriginInfos are present)
+  1: % Security
+  [
+    1, % defines the cipher suite , which contains only EC curves
+    24(<< % embedded CBOR data item
+    {
+      1: 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
+      -1: 1, % crv:p256
+      -2:h'5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343167FE', % x-coordinate
+      -3:h'B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67' % y-coordinate
+    }
+    >>)
+  ],
+  2: % DeviceRetrievalMethods (Device engagement using QR code with BLE for retrieval)
+  [
+    [
+      2, % BLE
+      1, % Version
+      { % BLE options
+        0: false, % no support for mdoc peripheral server mode
+        1: true,  % support for mdoc central client mode
+        11: h'45EFEF742B2C4837A9A3B0E1D05A6917' % UUID of mdoc client central mode
+      }
+    ]
+  ],
+  5: % OriginInfos (Required because Capabilities is present)
+  [],
+  6: % Capabilities (Defines supported features)
+  {
+    2: false, % HandoverSessionEstablishmentSupport (Supports negotiated handover)
+    3: true % ReaderAuthAllSupport (Supports reader authentication)
+  }
+}

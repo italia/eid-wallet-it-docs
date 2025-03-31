@@ -1,0 +1,229 @@
+{
+    "version": "1.0",
+    "documents": 
+    [
+      {
+        "docType": "org.iso.18013.5.1.mDL",
+        "issuerSigned": 
+        {
+          "nameSpaces": 
+          {
+            "org.iso.18013.5.1": 
+            [
+              24(<<
+                {
+                    "digestID": 0,
+                    "random": h'87986C20E9',
+                    "elementIdentifier": "family_name",
+                    "elementValue": "Doe"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 3,
+                    "random": h'B23F6244615D',
+                    "elementIdentifier": "issue_date",
+                    "elementValue": "2019-10-20"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 4,
+                    "random": h'C7FFA30E9ABAF',
+                    "elementIdentifier": "expiry_date",
+                    "elementValue": "2024-10-20"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 7,
+                    "random": h'26052A4F5B5F9E68',
+                    "elementIdentifier": "document_number",
+                    "elementValue": "123456789"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 9,
+                    "random": h'4599F81BEAA2CDB2AB2CE4',
+                    "elementIdentifier": "driving_privileges",
+                    "elementValue": [
+                        {
+                            "vehicle_category_code": "A",
+                            "issue_date": "2018-08-09",
+                            "expiry_date": "2024-10-20"
+                        },
+                    ],
+                }
+              >>)
+            ]
+          },
+          "issuerAuth": 
+          [
+            << {1: -7} >>,
+            {
+              33: h'308201EF30943BF5AE82C0943BF5AE943BF943BF5AE5A943BF5AEED3A68D943BF5AE'
+            },
+            <<
+              24(<<
+                {
+                  "version": "1.0",
+                  "digestAlgorithm": "SHA-256",
+                  "docType": "org.iso.18013.5.1.mDL",
+                  "valueDigests": {
+                    "org.iso.18013.5.1": 
+                    {
+                      0: h'751ADCEBF',
+                      1: h'67E5394571',
+                      2: h'33943BF5AE',
+                      3: h'2E35613D55',
+                      4: h'EA5C330D59',
+                      5: h'FAE487AA1D',
+                      6: h'7D83E7533',
+                      7: h'F05498936',
+                      8: h'B68C87F66',
+                      9: h'0B35D6E0C',
+                      10: h'C98A14881',
+                      11: h'B57DDA948',
+                      12: h'651F812DA'
+                    }
+                  },
+                  "deviceKeyInfo": {
+                    "deviceKey": {
+                      1: 2, 
+                      -1: 1, 
+                      -2: h'9631F9A',
+                      -3: h'1FB3C3D6'
+                    }
+                  },
+                  "validityInfo": {
+                    "signed": "2020-10-01T13:30:02Z",
+                    "validFrom": "2020-10-01T13:30:02Z",
+                    "validUntil": "2021-10-01T13:30:02Z"
+                  },
+                  "status": {
+                    "status_list": {
+                      "idx": 1340,
+                      "uri": "https://statusprovider.example.org//statuslists/1"                           
+                    }
+                  }
+                }
+              >>)
+            >>,
+            h'59E64205DF1E766AEFF13CB2E'
+          ]
+        },
+        "deviceSigned": 
+        {
+          "nameSpaces": 24(<< {} >>),
+          "deviceAuth": 
+          {
+            "deviceSignature": 
+            [
+              << {1: -7} >>,
+              {},
+              null,
+              h'E99521A85AD75943BF5AEAE68943BF5AE249943BF5AE943BF5AE43BF5AED'
+            ]
+          }
+        }
+      },
+      {
+        "docType": "org.iso.18013.5.1.it.WalletAttestation",
+        "issuerSigned": 
+        {
+          "nameSpaces": 
+          {
+            "org.iso.18013.5.1.it": 
+            [
+              24(<<
+                {
+                  "digestID": 0,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "wallet_name",
+                  "elementValue": "Wallet_Hobbiton_v1"
+                }
+              >>),
+              24(<<
+                {
+                  "digestID": 1,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "wallet_link",
+                  "elementValue": "https://example.com/wallet/detail_info.html"
+                }
+              >>),
+              24(<<
+                {
+                  "digestID": 2,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "sub",
+                  "elementValue": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
+                }
+              >>),
+              24(<<
+                {
+                  "digestID": 3,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "aal",
+                  "elementValue": "https://trust-list.eu/aal/high"
+                }
+              >>)
+            ]
+          },
+          "issuerAuth": 
+          [
+            << {1: -7} >>,
+            {
+              33: h'308201EF3943BF5AE0943BF5AE82C0943943BF5AEBF5AED3A943BF5AE68D'
+            },
+            <<
+              24(<<
+                {
+                  "version": "1.0",
+                  "digestAlgorithm": "SHA-256",
+                  "docType": "org.iso.18013.5.1.it.WalletAttestation",
+                  "valueDigests": {
+                    "org.iso.18013.5.1.it": {
+                      0: h'0F1571A988FCDF2929…',
+                      1: h'0CDFE0774A2B596C90…',
+                      2: h'E23821492558984395…',
+                      3: h'BBC77E6CCE544EDF86…'
+                    }
+                  },
+                  "deviceKeyInfo": {
+                    "deviceKey": {
+                      1: 2,
+                      -1: 1,
+                      -2: h'B820963964E5…',
+                      -3: h'0A6DA0AF437E…'
+                    }
+                  },
+                  "validityInfo": {
+                    "signed": "2020-10-01T13:30:02Z",
+                    "validFrom": "2020-10-01T13:30:02Z",
+                    "validUntil": "2021-10-01T13:30:02Z"
+                  }
+                }
+              >>)
+            >>,
+            h'59E64205DF1E766AEFF13CB2E'
+          ]
+        },
+        "deviceSigned": 
+        {
+          "nameSpaces": 24(<< {} >>),
+          "deviceAuth": 
+          {
+            "deviceSignature": 
+            [
+              << {1: -7} >>,
+              {},
+              null,
+              h'E42521A85A...'
+            ]
+          }
+        }
+      }
+    ],
+    "status": 0
+}
