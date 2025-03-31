@@ -581,7 +581,7 @@ Below is a non-normative example of an error response:
 Wallet Instance Retrieval Request
 .............................................
 
-To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider with ``Content-Type`` set to `application/json`. 
+To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider. 
  
 .. note:: 
     For retrieving a specific Wallet Instance, the request MUST include the Wallet Instance ID as a path parameter.
@@ -756,10 +756,10 @@ The JOSE header of the Wallet Attestation Request JWT MUST contain the following
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the `Cryptographic Algorithms <algorithms.html>`_ and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      -  Unique identifier of the ``jwk`` used by the Wallet Provider to sign the Wallet Attestation, essential for matching the Wallet Provider's cryptographic public key needed for signature verification.
+      -  Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
       - :rfc:`7638#section_3`.
     * - **typ**
-      -  It MUST be set to ``var+jwt``
+      -  It MUST be set to ``war+jwt``
       -
 
 The body of the Wallet Attestation Request JWT MUST contain the following claims:
@@ -802,7 +802,7 @@ The body of the Wallet Attestation Request JWT MUST contain the following claims
 
 Wallet Attestation Issuance Response
 .............................................
-If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a 200 (OK) status code. The response includes the Wallet Attestation, signed by the Wallet Provider, containing the header and body claims (see :ref:`Table of the Wallet Attestation <table_wallet_attestation_claim>` below).
+If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The response includes an array containing the Wallet Attestations in SD-JWT and mdoc format signed by the Wallet Provider.
 
 If any errors occur during the Wallet Attestation Issuance, an error response MUST be returned. Refer to `Error Handling for Wallet Attestation Issuance`_ for details on error codes and descriptions.
 Below is a non-normative example of an error response:
@@ -847,7 +847,7 @@ The JOSE header of the Wallet Attestation SD-JWT MUST contain the following para
       - Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
 
-The body of the Wallet Attestation SD-JWT MUST contain the following claims:
+The body of the Wallet Attestation SD-JWT contains the following claims:
 
 .. list-table::
     :widths: 20 60 20
@@ -871,12 +871,11 @@ The body of the Wallet Attestation SD-JWT MUST contain the following claims:
     * - **vct**
       - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Wallet Provider metadata.
       - Section 3.2.2.2 `SD-JWT-VC`_.
-      - `OpenID4VCI`_.
     * - **_sd**
-      - REQUIRED. String containing the hash algorithm used by the Issuer to generate the digests.
+      - REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the digests.
       - `SD-JWT`_.
     * - **sd_alg**
-      - REQUIRED.JSON array containing a list of the signing algorithms (alg values) supported.
+      - REQUIRED. JSON array containing a list of the signing algorithms (alg values) supported.
       - `SD-JWT`_.
     * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK used during the Wallet Instance registration.
@@ -885,7 +884,7 @@ The body of the Wallet Attestation SD-JWT MUST contain the following claims:
       - REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
       - This specification.
 
-The following the disclosure MUST be present:
+The following disclosures may be present:
 
 .. list-table::
     :widths: 20 60 20
@@ -903,19 +902,19 @@ The following the disclosure MUST be present:
 
 Below are described examples of values for the disclosures:
 
-**Claim** ``sub``:
-
--  SHA-256 Hash: ``DTZRbQgOWJlLaBfe6pr+j1vL4B4t6LLWyt9loaEJKe0=``
--  Disclosure:
+.. **Claim** ``sub``:
+.. 
+.. -  SHA-256 Hash: ``DTZRbQgOWJlLaBfe6pr+j1vL4B4t6LLWyt9loaEJKe0=``
+.. -  Disclosure:
    ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgInN1YiIsICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIl0=``
--  Contents: ``["2GLC42sKQveCfGfryNRN9w", "sub", "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]``
-
-**Claim** ``aal``:
-
--  SHA-256 Hash: ``h+w4Q4dWcHebykPpS4jRsBZVvBhEKszyLeZGmEunDJ4=``
--  Disclosure:
+.. -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "sub", "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]``
+.. 
+.. **Claim** ``aal``:
+.. 
+.. -  SHA-256 Hash: ``h+w4Q4dWcHebykPpS4jRsBZVvBhEKszyLeZGmEunDJ4=``
+.. -  Disclosure:
    ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImFhbCIsICJodHRwczovL3RydXN0LWxpc3QuZXUvYWFsL2hpZ2giXQ==``
--  Contents: ``["2GLC42sKQveCfGfryNRN9w", "aal", "https://trust-list.eu/aal/high"]``
+.. -  Contents: ``["2GLC42sKQveCfGfryNRN9w", "aal", "https://trust-list.eu/aal/high"]``
 
 **Claim** ``wallet_link``:
 

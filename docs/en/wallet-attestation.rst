@@ -139,9 +139,9 @@ The JSON Object returned in the response MUST have the following parameter:
       - **Reference**
     * - **wallet_attestations**
       -  Contains an array of one or more issued Wallet Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
-      - `OpenID4VCI`_.
+      - This specification.
 
-Each JSON Object contained in the ``credentials`` array MUST have the following form:
+Each JSON Object contained in the ``wallet_attestations`` array MUST have the following form:
 
 .. list-table::
     :widths: 20 60 20
@@ -152,14 +152,14 @@ Each JSON Object contained in the ``credentials`` array MUST have the following 
       - **Reference**
     * - **format**
       - A string identifying the Data Model used to create and represent the Wallet Attestation. It MUST be either ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
-      - `SD-JWT-VC`_, `OpenID4VCI`_.
+      - This specification.
     * - **wallet_attestation**
       - A string representing the Wallet Attestation. If
         
         - the Wallet Attestation is in SD-JWT format, then the claim's value MUST be a string that is an SD-JWT VC.
         - the Wallet Attestation is in mdoc format, then the claim's value is the base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO.18013-5]. This structure MUST contain all Namespaces and IssuerSignedItems that are included in the MobileSecurityObject.
       
-      - `OpenID4VCI`_.
+      - This specification.
 
 Below is a non-normative example of the response.
 
