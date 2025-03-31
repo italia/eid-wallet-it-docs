@@ -859,7 +859,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust.rst`.
      - Check for the existence of the required claims as defined in Section :ref:`sec_status_list_token`.
    
-   - All existing claims in the Status List Token MUST be checked according to `Status List Token `_.
+   - All existing claims in the Status List Token MUST be checked according to :ref:`sec_status_list_token`.
    
      - The subject claim of the Status List Token MUST be equal to the `uri` claim in the `status_list` object of the Digital Credental.
      - If the Relying Party has custom policies regarding the freshness of the Status List Token, it SHOULD check the `iat` claim.
