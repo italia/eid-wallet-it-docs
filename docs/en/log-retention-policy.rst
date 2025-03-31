@@ -16,11 +16,6 @@ Organizational Entities are responsible for log retention according to their res
 
 Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, **the maximum retention period for data logs is 12 months**. Logs MUST be securely stored to ensure integrity and immutability.
 
-
-
-
-
-
 ISO/IEC 27001 Logging General Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -44,36 +39,22 @@ Wallet Provider Log Retention Policy
 
 Information related to the registration and management of Wallet Instances can be retained for up to 12 months after the deactivation/revocation of the Wallet or the associated User account, unless legal obligations require longer retention.
 
-Wallet Provider MUST log the following items:
 
-- Evidences about the User Authentication to the Wallet Provider backends, according to the national regulation pertaining the digital identity systems, if involved (e.g: signed SAML2 Responses, OIDC ID Token). 
-- Wallet Attestation Requests.
-- Wallet Attestations.
-- Holder's requests about the revocation or deactivation of the Wallet Instance.
 
 Credential Issuer Log Retention Policy
 --------------------------------------
 
 Credential Issuers define the retention period for Credentials based on sector-specific regulations. In the absence of specific regulations, the retention period for Credentials SHOULD not exceed 12 months after the date of expiration, configured at time of issuance within the metadata of the Issuer Signed part of the Credential.
 
-In detail, Credential Issuers require to be compliant to the items above:
 
-- Credential Issuers MUST log the signed requests made by Wallet Instance during the Credential issuance phase, such as authorization requests and token request (Authorization Server) and the Credential requests at the Credential endpoint (Resource Server).
-- Credential Issuers MUST log the evidences about the User Authentication to the Wallet Provider backends, during the authroization phase, according to the national regulation pertaining the digital identity systems, if involved (e.g: signed SAML2 Responses, OIDC ID Token). 
-- Credential Issuers MUST log the Issuer signed part of the issued Credentials, such as the Issuer-Signed-JWT using SD-JWT-VC or the MSO using MDoc CBOR.
-- Credential Issuer SHOULD NOT log the User personal attributes, such as the Credential disclosure map. 
-- Credential Issuers MUST log the Holder's signed revocation request.  
 
 Relying Party Log Retention Policy
 ----------------------------------
 
 Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.
 
-At the end of the retention period, data MUST be deleted or anonymized.
 
-In detail, Relying Party are required to be compliant with the following items:
 
-- Relying Parties MUST log Wallet's signed presentations, linked to signed presentation requests, containing the Credential Signed part and the Wallet Signed part, such as the Issuer-Signed-JWT and the KB-JWT using SD-JWT-VC.
 - Relying Parties SHOULD not log Credential presentation disclosure maps, where not necessary. 
 
 Wallet Instances Logging Features
@@ -81,27 +62,15 @@ Wallet Instances Logging Features
 
 The Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets. Please refer in particular to Recitals (11) and (13), and to Article 5e(4) and Article 6(2)(d), as well as Article 8(2)(d), which define logging obligations, user interface requirements, and data portability mechanisms.
 
-Recital (11) of the regulation highlights the critical role of transaction logging as a tool for transparency. Logs enable Wallet Users to effectively monitor their digital identity activities. This transparency aims to improve the user confidence and accountability in digital identity management.
 
-In addition to transparency, logs facilitates the swift and use of information with competent supervisory authorities, as outlined in Article 51 of Regulation (EU) 2016/679 (GDPR). In instances of suspicious behavior by Relying Parties, logs can be quickly provided to authorities, enabling prompt investigation and resolution of potential security threats.
 
-About data export and portability, recital (13) emphasizes the use of data export and portability objects to log person identification data and electronic attestations of attributes issued to a Wallet Instance, supporting the right to data portability. Users are enabled to extract and transfer their data between different Wallet Solutions or recover lost Wallet Instances.
 
-Article 5e, Item 4 of the regulation defines the key features and requirements of the User interface about the navigation of the transaction logs. European Digital Identity Wallets MUST provide a user-friendly, transparent, and traceable dashboard that allows Users to:
 
-- View an up-to-date list of Relying Parties with which they have established a connection, including all data exchanged where applicable.
-- Easily request the erasure of personal data by a Relying Party, in accordance with Article 17 of Regulation (EU) 2016/679 (GDPR). Users MUST be able to exercise their right to be forgotten, enhancing their control over personal data.
-- Easily report a Relying Party to the competent national data protection authority if an allegedly unlawful or suspicious data request is received, addressing potential data protection violations.
 
-In detail, Wallet Instances MUST log the following items:
 
-- Signed presentation requests issued by Relying Parties.
-- Credentials, and disclosed attributes, presented to each Relying Party.
 
-Regulatory References for Log Retention
 ---------------------------------------
 
-- Regulation (EU) 2016/679 (GDPR)
 - ISO/IEC 27001:2024
 - Regulation (EU) No 910/2014 (eIDAS)
 - National regulations on traffic data retention.
