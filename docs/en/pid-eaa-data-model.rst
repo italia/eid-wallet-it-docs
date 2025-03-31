@@ -729,7 +729,7 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
       - **Description**
       - **Reference**
     * - **docType**
-      - *tstr (text string)*. Defines the type of mDoc Digital Credential being issued. For example, for an mDL, the value MUST be ``org.iso.18013-5.1.mDL``. Domestic namespaces MAY be used for Digital Credential other than mDL.
+      - *tstr (text string)*. Defines the type of mDoc Digital Credential being issued. For example, for an mDL, the value MUST be ``org.iso.18013-5.1.mDL``. Specific `docType` MAY be defined for Digital Credential other than mDL. For domestic Digital Credentials the namespace MUST be ``org.iso.18013-5.1.it``.
       - [ISO 18013-5#9.1.2.4]
     * - **version**
       - *(tstr)* Version of the data structure being used.
