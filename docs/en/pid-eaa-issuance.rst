@@ -606,7 +606,7 @@ The following diagram describes the Digital Credential re-issuance flow.
 
 .. note::
 	
-  Regardless of the Digital Credental revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE``(using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. 
+  Regardless of the Digital Credental revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. 
   
   If instead, either the Digital Credential status is set to ``UPDATE``(using OAuth Status List revocation) or ``credential_status_detail.state`` set to ``UPDATE`` (using OAuth Status List revocation) the the ``credential_status_detail.state`` is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.
 
