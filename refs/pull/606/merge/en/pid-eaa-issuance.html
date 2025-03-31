@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Digital Credential Lifecycle" href="credential-revocation.html" />
+    <link rel="next" title="PID/(Q)EAA Presentation" href="pid-eaa-presentation.html" />
     <link rel="prev" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -134,11 +134,12 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -181,10 +182,10 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <section id="high-level-pid-flow">
 <h2>High-Level PID flow<a class="headerlink" href="#high-level-pid-flow" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#fig-high-level-flow-itwallet-pid-issuance"><span class="std std-numref">Fig. 5</span></a> shows a general architecture and highlights the main operations involved in the issuance of a PID.</p>
-<figure class="align-center" id="id59" style="width: 100%">
+<figure class="align-center" id="id60" style="width: 100%">
 <span id="fig-high-level-flow-itwallet-pid-issuance"></span><img alt="_images/High-Level-Flow-ITWallet-PID-Issuance.svg" src="_images/High-Level-Flow-ITWallet-PID-Issuance.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">PID Issuance - General architecture and high level flow.</span><a class="headerlink" href="#id59" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">PID Issuance - General architecture and high level flow.</span><a class="headerlink" href="#id60" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below the description of the steps represented in the previous picture:</p>
@@ -209,10 +210,10 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <li><p>the (Q)EAA requires a high security implementation profile.</p></li>
 </ul>
 </div></blockquote>
-<figure class="align-center" id="id60" style="width: 70%">
+<figure class="align-center" id="id61" style="width: 70%">
 <span id="fig-high-level-flow-itwallet-qeaa-issuance"></span><img alt="_images/High-Level-Flow-ITWallet-QEAA-Issuance.svg" src="_images/High-Level-Flow-ITWallet-QEAA-Issuance.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">(Q)EAA Issuance - General architecture and high level flow</span><a class="headerlink" href="#id60" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">(Q)EAA Issuance - General architecture and high level flow</span><a class="headerlink" href="#id61" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Below the description of the most relevant operations involved in the (Q)EAA issuance:</p>
@@ -288,10 +289,10 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 </pre></div>
 </div>
 <p>The following diagram shows the <em>Issuance flow</em>.</p>
-<figure class="align-center" id="id61" style="width: 100%">
+<figure class="align-center" id="id62" style="width: 100%">
 <span id="fig-low-level-flow-itwallet-pid-qeaa-issuance"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/hLPVQ-D647_VJp7a7Xg3JKhfqy6LSnBtOdeaRiv7NWfYinfBG-HTTVzOvtxwxevih-npQ4CB8P9s_lz-CxF-wBoqFgmR8OCtEgoVqGhHnZDIr4hjuUAhGti1qa4Gujbywmz-SE3MKQkjZSOBUFUPgjfVDm6FRQ-jwGxcybZs99i6FSoryr8hP9rEe2uXHZd9OJ6_lRhyVJIRJc5XpORAdKyImchZ4Sm6BNHZYfdCFzqjFptEPlVYfaRr0cTiWHma_s1Mu6k4Np4UIaz6WupnpRENf86yWpLwMKelKruSIOWE9hz01-z1MPGUOV7RpGoKAH5Y3hGYjEpaQJwTBCnYfqzHVp5zX4VyCw3pSFc71b0DeVO5bUFqPNlH2D97Hxw6XsdmzUI6jIPJxwCq9_cQC0K5qbpN7SfOs12YSm3rHFmRS7O6ZYejVR2uLzbvE4cH0Tp8XahoMnWWA0WcZE4U4zSQxH0kTn0KmT8Oy5jB5br1UXHDEZO9yZsakesblpXE1ZI32GCt8n4aMzAR3OLiFDnOBAEKP0CVFgHMEW9p7E3TqzryEHF19TfZWAIiE4BFeURtQ8xps-aNYCQfHKfmgiOrEiP9fUfrJCMqlNApZMSHKkL9Ln1utfAMbygxKKOI6uSdAVQTFdfhch6o_vYABlUy1WcdO6UAqw2C8NL9V91p1uAwDndbAQnGeuq2k4sD_uBRLsMjDMOrd4rO6NjsFNZpWXfYIQqXxSLWXfTHadk7eHluvgckhDI-yDiMUQnZxlcbsA-8tSINP55nl_7O_wzJBuXXo4aVu9HAeNC5LvcQVcNHrVjFVd3wnoEOCRWtMk41WxlbSW6BXozBkD99aEFk5JED1MkClj-XFNpnhpNEeNDazB7wYNx6_5KELHwB0v6vXZmqPyWSuiEe3odEVWlY5zxuPXYmK4Qlg0hzrkJDmiRVxnHo83UI6ldS88WCtL0duvSZkF5kawXzY26e6OwyVcCPF431WKfBVASUehfqBunYkjVt2q240-Bz0NWJxOr5Rh6SIGxBuXDHRfcSxFdE6SWlJqeR0svGyyKu86dA9FMzBSvTSTUVlyx48rRaV3oLJNEI-SHY8psM84Z7yjSSZe68NWxnhonkp2wnV8TbfevAornnRJ_z-7CKmutHFa6QrtLc__vXcJlW7-XlK9Q5fpMEmLkfdLG7xWVbXp69POrmylDg37B5E6YGQnCqN-_96RWMLNydFM_X48CRfgjHWxTKLMXPdY3aFk5jRBtZWrLZEf2L97ry7toC_yAw-Hi0"><img alt="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" src="_images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id61" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">PID/(Q)EAA Issuance - Detailed flow</span><a class="headerlink" href="#id62" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Once <em>User Request flow</em> is completed, the Wallet Instance processes the Metadata of the PID/(Q)EAA Provider as defined in Section <a class="reference internal" href="trust.html#trust-evaluation-mechanism"><span class="std std-ref">Trust Evaluation Mechanism</span></a> .</p>
@@ -722,10 +723,10 @@ without encoding and signature. The JWT header:</p>
 </div></blockquote>
 <p>To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP. These aspects are detailed and discussed in section <a class="reference internal" href="#id1"><span class="std std-ref">Security Considerations</span></a>.</p>
 <p>Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh Token to the Token Endpoint.</p>
-<figure class="align-center" id="id62" style="width: 100%">
+<figure class="align-center" id="id63" style="width: 100%">
 <span id="fig-refresh-token-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TPBFIiD048Vl-nH3lRJGqBi7QR05Up9AeHUXh9j9CvZEnDs9qRTtkzkA1Jrc_dpvviSkWrglmx4pTb3XuVYAtfW-riXHRrbXihDTXmeRZgFiS08sm7WzKcrMY-dJR5sMK7dve1fz6YDZHYZkO8HRE22ZjugmggI2teiqOBc6NLcS2eru-0C3Ac_8W5ptGgnd7aNUDZMUyNt0e32Ijh_9qnS6EFXejzUl7kUdJu-Dnz3k4t86iPIs7ij1s-A-8sGjIjM8iqh2oUw_Pd8c1cqHMhJHr1Ywd7fH2xrmG9XQvp24_D_vjSOy7vWb0JzxYhqzySoObaKHhFCI0jpi7ZRRTKIt24qd8pXX9OwtvoCi-7CIAacgnWQznteHATIGIzOB5ol8IhRxYVGSGrfY77E8sJYx6RECi_69V0C0"><img alt="_images/Refresh-Token-Flow.svg" src="_images/Refresh-Token-Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Refresh Token Flow</span><a class="headerlink" href="#id62" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Refresh Token Flow</span><a class="headerlink" href="#id63" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -806,21 +807,29 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <p>In both cases, the newly issued Digital Credential MUST have the same expiry date as the previous one.</p>
 <p>Re-issuance after Digital Credential expiration MUST always require User authentication.</p>
 <p>The following diagram describes the Digital Credential re-issuance flow.</p>
-<figure class="align-center" id="id63" style="width: 100%">
-<span id="fig-reissuance-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZLDVRzem47_FfxWzhPKAlEm9LArPqqb8xOGOh9gc2PdaGgoPS-OxbtMVVdPQt48pYJp5bz-VyzqlLopAYT-Qx9scqlWAeH5fUJmQERKRRhGqVkqPNMb9a6HOskseDOeYPy1I6RqUNNyOp69fUNSxsYeMTA6qAXv9RNKvRADwU3gdZAmWEBrf9Bjla411eOEBCd3ji48I7Lu9iM8G2si4trPAiBe0QV0rPihiqJ7SvT-1aIfG4BHrhKibsb9aHyQIqO5dJPi0SBZHiJsim7ePs7gmLe4PxhJrj2UMZI92CyoYQ6mtoyQTYcsH6EwLCIWm9HP59Kwoy7cEuZG-87mL9PuXvu2FOWorTHcBZPOlpVFazHpc-Dlh2DZ5WP251sLqbRtLmZ-QvLLRkeQp5z6z-ILCltpBRwV5ntEGg7ZsY7oUGNWYeKo45NU4LOMYj1d64uAc3lbZEIlonKrn0VbYCPz-MYvkLi-bdszrzzfvMI8pBEmlfATRz6FZamve6E6CRFgSvEPOE-JcD3s0SHY04pXaVJPsDpa0zli1iDZsgDGjwQW6JowAW73NfJ360EhWSupSQMcw0Bvdo7tiM_OXEuAcdHuLTPtrdz9BZ2OKCpk3W-6B1VSSoWGbtFNyR6aufwJZCXc_pSN_LpEE2KUMRXRT9ApJVxj1JFeYaRevm2FtE1oktpgCj-ovNT_g-vVVF_n4FDKnIMG9NQ11GMWTFcZhkPUJzRYbzfBc8Q3x-6pMlL-5Wz-QVm00"><img alt="_images/Re-Issuance-Flow.svg" src="_images/Re-Issuance-Flow.svg" /></a>
+<figure class="align-center" id="id64" style="width: 100%">
+<span id="fig-reissuance-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZLJRRXen47ttLqoVcaXS8ZLFH553GoeX9HMYqAXAAcHsPrchNfjwPY7frtTjBiAuJV73QctFcSlncRaXbexhIejtocIwpX5AvYNrkbqdrvs5uhAUruGkiuRHS2UpLNUffV6ODd6krRnxUzaU-QFfmtstaiJecgFPuDN8IcMTfVVUh1196Ci8JYrA5eyb6f0mK4qKgU7MOOw6LVDh47C2jZ17g9UvPCnRm2KUsWo9QdG43_tlG6Xoa60igq9bafKr7kqHKq87DIcp00aE5ygdXpdOcjksQCzbWsnggcgp0sQbD0PrHtYdFbqXUi6BNQ8XU9HQ8yFG44kJuPKGge2pCQxi5b-Xzw2eWcS3r_2L9TS4zueOFfu3-wBFNf7E1GW0w8sHdS8LHeOJ-nCD5DPv4o2s3lE3ukagd0SkDHOSTcFyLIjlj_OXZ8MLr2eFLwbhV6d-ALpko_GRNyi1oLkWCl1qyNBneGNDz_B7KHb-eIQ4CsFFGS3X8hPB0TimgX2HhV3Rb84-4JfF9Pt6W5VJAHJ4llzAmHiSNCFmoxV-_N2GLhy3PNlGZ09ebYDBfJj-Xw3CtlffEXhq9tSjw4ycu-6dwUHkjZb9kJs9tfZXqvzZyusAw6SP4crb4lXBKjgl9B_uUjCOXKCgJ_C7q6lOTWmnwhEswyrxln4lvGDWBn41yTf4aGOChiCayQqCHHFds7Ajk0n3v3r1l_PvysvGnAPn7wLlakxsFtwym61aHn2HpnRSjZNsfZxVT61koKcrIplj-hvjWNNmRFwZqkj4a_z-hvvlE2GE10Lwh5E_0pjNXtQ9AY9xf2J2iIQiGrzwNFBRUeWLaRv80Zmzub7Nz0QeaH6M3bVArXHXH4ZWfe7KbVu3"><img alt="_images/Re-Issuance-Flow.svg" src="_images/Re-Issuance-Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Re-Issuance Flow Diagram</span><a class="headerlink" href="#id63" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Re-Issuance Flow Diagram</span><a class="headerlink" href="#id64" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<ol class="arabic simple">
-<li><p>The flow starts when the User opens the Wallet Instance: this step MAY be triggered by a notification sent by the Credential Issuer, using one of the out-of-band communication contacts registered during the Issuance flow.</p></li>
-<li><p>A Wallet Instance without valid Status Assertions for a stored Digital Credential MUST retrieve them following the flow described in Section <a class="reference internal" href="credential-revocation.html#validity-verification-mechanisms"><span class="std std-ref">Validity Verification Mechanisms</span></a>. If one or more Digital Credentials have the <code class="docutils literal notranslate"><span class="pre">credential_status_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, the Wallet Instance MUST verify the <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span> <span class="pre">claim</span></code>. If this claim is set to <code class="docutils literal notranslate"><span class="pre">UPDATED</span></code> or <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATED</span></code>, then the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped.</p></li>
+<ol class="arabic">
+<li><p>The flow starts when the User opens the Wallet Instance: this step MAY be triggered either by a notification sent by the Credential Issuer (using e.g., one of the out-of-band communication contacts registered during the Issuance flow).</p></li>
+<li><p>Regardless of the Digital Credental revocation mechanism supported, if the Wallet Instance</p>
+<ul>
+<li><p>only supports Status List and does not have a valid Status Token for a stored Digital Credential, Wallet Instance MUST retrieve a fresh one following the flow described in Section <a class="reference internal" href="credential-revocation.html#oauth-status-lists"><span class="std std-ref">OAuth Status Lists</span></a>. If any Digital Credential has status set to <code class="docutils literal notranslate"><span class="pre">0x03</span></code> - <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> or <code class="docutils literal notranslate"><span class="pre">0x04</span></code> - <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>; or else</p></li>
+<li><p>together with the Credential Issuer additionally support Status Assertion and the Wallet Instance does not have a valid Status Assertion for a stored Digital Credential, the Wallet Instance MAY retrieve a fresh one following the flow described in Section <a class="reference internal" href="credential-revocation.html#oauth-status-assertions"><span class="std std-ref">OAuth Status Assertions</span></a>. If any Digital Credentials has the <code class="docutils literal notranslate"><span class="pre">credential_status_type</span></code> set to <code class="docutils literal notranslate"><span class="pre">INVALID</span></code>, the Wallet Instance MUST verify the <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span></code> claim. If this claim is set to <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> or <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>, then</p>
+<p>the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped.</p>
+</li>
+</ul>
+</li>
 <li><p>If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section <a class="reference internal" href="#refresh-token-flow"><span class="std std-ref">Refresh Token Flow</span></a>. The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required.</p></li>
 <li><p>The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section <a class="reference internal" href="#low-level-issuance-flow"><span class="std std-ref">Low-Level Issuance Flow</span></a>. When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span></code> set to <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code> demonstrates that the User's attribute set, about the refreshed Digital Credential, doesn't match with the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. If the <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span></code> is set to <code class="docutils literal notranslate"><span class="pre">UPDATED</span></code>, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.</p>
+<p>Regardless of the Digital Credental revocation mechanism supported, if either the Digital Credential status is set to <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code> (using OAuth Status List revocation) or <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span></code> is set to <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code> (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential.</p>
+<p>If instead, either the Digital Credential status is set to <code class="docutils literal notranslate"><span class="pre">UPDATE``(using</span> <span class="pre">OAuth</span> <span class="pre">Status</span> <span class="pre">List</span> <span class="pre">revocation)</span> <span class="pre">or</span> <span class="pre">``credential_status_detail.state</span></code> set to <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> (using OAuth Status List revocation) the the <code class="docutils literal notranslate"><span class="pre">credential_status_detail.state</span></code> is set to <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.</p>
 </div>
 <section id="id1">
 <h3>Security Considerations<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
@@ -887,8 +896,8 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <h3>Pushed Authorization Request (PAR) Request<a class="headerlink" href="#pushed-authorization-request-par-request" title="Link to this heading">¶</a></h3>
 <p>The request to the PID/(Q)EAA authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.</p>
 <p>The HTTP POST method MUST use the parameters in the message body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
-<span id="table-http-request-claim"></span><table class="docutils align-default" id="id64">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id64" title="Link to this table">¶</a></caption>
+<span id="table-http-request-claim"></span><table class="docutils align-default" id="id65">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id65" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -913,8 +922,8 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 </table>
 <p>The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>], therefore
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters:</p>
-<span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id65">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id65" title="Link to this table">¶</a></caption>
+<span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id66">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id66" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -3223,7 +3232,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
             <div class="right">
                 
-                    <a href="credential-revocation.html"><span>Digital Credential Lifecycle</span><span class="icon">&gt;</span></a>
+                    <a href="pid-eaa-presentation.html"><span>PID/(Q)EAA Presentation</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -3231,7 +3240,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/03/2025.
+      Last updated on 31/03/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
