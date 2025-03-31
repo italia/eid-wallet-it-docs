@@ -151,7 +151,7 @@ Each JSON Object contained in the ``credentials`` array MUST have the following 
       - **Description**
       - **Reference**
     * - **format**
-      - A string indentifying the Data Model used to create and represent the Wallet Attestation. It MUST be either ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
+      - A string identifying the Data Model used to create and represent the Wallet Attestation. It MUST be either ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
       - `SD-JWT-VC`_, `OpenID4VCI`_.
     * - **wallet_attestation**
       - A string representing the Wallet Attestation. If
@@ -171,11 +171,11 @@ Below is a non-normative example of the response.
     {
       "wallet_attestations": [
         {
-          "format": "dc+sd-jwt"
+          "format": "dc+sd-jwt",
           "wallet_attestation": "ey..."
         },
         {
-          "format": "mso_mdoc"
+          "format": "mso_mdoc",
           "wallet_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
         }
       ]

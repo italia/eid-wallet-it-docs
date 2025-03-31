@@ -13,13 +13,19 @@ such as Credential Issuers and Relying Parties.
 
 These Credentials are a set of data that can uniquely identify a natural or legal person,
 along with other Qualified and non-qualified Electronic Attestations of Attributes,
-also known as QEAAs and EAAs respectively, or (Q)EAAs for short [1]_.
+also known as QEAAs and EAAs respectively, or (Q)EAAs for short.
 
 Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.
 
 By supporting the mobile app, the Wallet Provider ensures the security and reliability of the entire Wallet Solution,
 as it is responsible for issuing the Wallet Attestation,
 which is a cryptographic proof about the authenticity and integrity of the Wallet Instance.
+
+.. figure:: ../../images/static_view_wallet_instance_attestation.svg
+   :name: Wallet Solution Schema
+   :alt: The image illustrates the containment of Wallet Provider and Wallet Instances within the Wallet Solution, managed by the Wallet Provider.
+   :target: https://www.plantuml.com/plantuml/uml/VP8nJyCm48Lt_ugdTexOCw22OCY0GAeGOsMSerWuliY-fEg_9mrEPTAqw-VtNLxEtaJHGRh6AMs40rRlaS8AEgAB533H3-qS2Tu2zxPEWSF8TcrYv-mJzTOGNfzVnXXJ0wKCDorxydAUjMNNYMMVpug9OTrR7i22LlaesXlADPiOraToZWyBsgCsF-JhtFhyGyZJgNlbXVR1oX5R2YSoUdQYEzrQO1seLcfUeGXs_ot5_VzqYM6lQlRXMz6hsTccIbGHhGu2_hhfP1tBwHuZqdOUH6WuEmrKIeqtNonvXhq4ThY3Dc9xBNJv_rSwQeyfawhcZsTPIpKLKuFYSa_JyOPytJNk5m00
+
 
 Wallet Solution Requirements
 -----------------------------
@@ -38,15 +44,8 @@ Wallet Attestation Requirements
 Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance.
 It primarily certifies the **authenticity**, **integrity**, **security**, **privacy**, and **trustworthiness** of a particular Wallet Instance.
 
-.. figure:: ../../images/static_view_wallet_instance_attestation.svg
-   :name: Wallet Solution Schema
-   :alt: The image illustrates the containment of Wallet Provider and Wallet Instances within the Wallet Solution, managed by the Wallet Provider.
-   :target: https://www.plantuml.com/plantuml/uml/VP8nJyCm48Lt_ugdTexOCw22OCY0GAeGOsMSerWuliY-fEg_9mrEPTAqw-VtNLxEtaJHGRh6AMs40rRlaS8AEgAB533H3-qS2Tu2zxPEWSF8TcrYv-mJzTOGNfzVnXXJ0wKCDorxydAUjMNNYMMVpug9OTrR7i22LlaesXlADPiOraToZWyBsgCsF-JhtFhyGyZJgNlbXVR1oX5R2YSoUdQYEzrQO1seLcfUeGXs_ot5_VzqYM6lQlRXMz6hsTccIbGHhGu2_hhfP1tBwHuZqdOUH6WuEmrKIeqtNonvXhq4ThY3Dc9xBNJv_rSwQeyfawhcZsTPIpKLKuFYSa_JyOPytJNk5m00
-
-
 The requirements for the Wallet Attestation are defined below:
 
-- The Wallet Attestation MUST use the signed JSON Web Token (JWT) format.
 - The Wallet Attestation MUST provide all the relevant information to attest to the **integrity** and **security** of the device where the Wallet Instance is installed.
 - The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing registration authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.
 - The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties. The Wallet Provider MUST also verify the Wallet Instance using the App Store vendor's API, such as the *Play Integrity API* for Android and *DeviceCheck* for iOS. These services are defined in this specification as **Device Integrity Service (DIS)**.
@@ -61,25 +60,24 @@ The requirements for the Wallet Attestation are defined below:
 
 WSCD Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To guarantee the utmost security, the cryptographic keys associated with a Wallet Instance (e.g., used to generate the Wallet Attestation) MUST be securely generated and stored within the WSCD.
+To guarantee the utmost security, the cryptographic keys associated with a Wallet Instance (e.g., used to generate the Wallet Attestation) MUST be securely generated and stored within the Wallet Secure Cryptographic Device (WSCD).
 This ensures that only the User can access these keys, thus preventing unauthorized usage or tampering. The WSCD MAY be implemented using at least one of the approaches listed below:
 
-  - **Local Internal WSCD**: The WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS, or the Trusted Execution Environment (TEE) and Strongbox on Android [3]_.
+  - **Local Internal WSCD**: The WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS, or the Trusted Execution Environment (TEE) and Strongbox on Android.
   - **Local External WSCD**: The WSCD is hardware external to the User's device, such as a smart card compliant with *GlobalPlatform* and supporting *JavaCard*.
   - **Remote WSCD**: The WSCD utilizes a remote Hardware Security Module (HSM).
   - **Local Hybrid WSCD**: The WSCD involves a pluggable internal hardware component within the User's device, such as an *eUICC* that adheres to *GlobalPlatform* standards and supports *JavaCard*.
   - **Remote Hybrid WSCD**: The WSCD involves a local component mixed with a remote service.
 
 .. warning::
-  At the current stage, the implementation profile defined in this document supports only the **Local Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required `AAL`.
+  At the current stage, the implementation profile defined in this document supports only the **Local Internal WSCD**. Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (`AAL`).
 
 For more detailed information, please refer to `Wallet Instance Initialization and Registration`_ and `Wallet Attestation Issuance`_  of this document. 
 
 Wallet Instance
 ------------------------------
 
-The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem.
-It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner [2]_.
+The Wallet Instance establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.
 
 The Wallet Instance allows other entities within the ecosystem to establish trust with it, by consistently
 presenting a Wallet Attestation during interactions with PID Providers,
@@ -99,11 +97,6 @@ In this section, state machines are presented to explain the Wallet Instance and
   PID is a specialized Digital Credential type that has impacts on the Wallet Instance's lifecycle. The revocation of the PID MAY also have potential impacts on (Q)EAAs, if they were issued using the presentation of the PID. 
   When the distinction between PID and (Q)EAA is not needed, the term Digital Credential is used.
 
-.. note::
-
-  In the current version of `EIDAS-ARF`_, two types of attestations have been introduced: Wallet Trust Evidence (WTE) and Wallet Instance Attestation (WIA). The first proves that the keys used for key 
-  binding of Digital Credentials reside in a trustworthy WSCD, and the second proves that the Wallet Instance is authentic. In this technical specification, a single attestation (Wallet Attestation) is 
-  used as proof of both the Wallet Instance authenticity and the WSCD trustworthiness. The future version of this specification will be updated accordingly. 
 
 As shown in :numref:`fig_Wallet_Instance_States`, the Wallet Instance has four distinct states: **Installed**, **Operational**, **Valid**, and **Uninstalled**.
 Each state represents a specific functional status and determines the actions that can be performed.
@@ -119,11 +112,6 @@ Each state represents a specific functional status and determines the actions th
 .. note::
 
   The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically check the Wallet Instances security and compliance status. 
-
-.. note::
-
-  The Wallet Attestation is short-lived. It MUST be automatically re-issued before its expiration time. For this reason, the Wallet Instance expiration
-  transition is not considered in :numref:`fig_Wallet_Instance_States`.
 
 Transition to Installed
 ....................................
@@ -176,7 +164,7 @@ A **Valid** Wallet Instance MUST transition back to the **Operational** state du
 Transition to Valid
 ....................................
 A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**). In this state, Users can obtain and present
-new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to :ref:`PID/(Q)EAA Issuance` and :ref:`Relying Party Solution`.
+new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to :ref:`PID/(Q)EAA Issuance` and :ref:`PID/(Q)EAA Presentation`.
 
 .. note::
 
@@ -240,7 +228,7 @@ Wallet Instance Initialization and Registration
 
     **Federation Check**: The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol-specific Metadata. A non-normative example of a response from the `Federation endpoint`_ with the **Entity Configuration** and the **Metadata** of the Wallet Provider is represented within the `Federation endpoint`_ section.
 
-**Steps 3-5 (Nonce Retrieval)**: The Wallet Instance requests a one-time ``challenge``  from the `Nonce endpoint`_ of the Wallet Provider Backend. This "challenge" known as a ``nonce``, MUST be unpredictable to serve as the main defense against replay attacks. 
+**Steps 3-5 (Nonce Retrieval)**: The Wallet Instance requests a one-time ``challenge``  from the :ref:`Nonce Endpoint` of the Wallet Provider Backend. This "challenge" known as a ``nonce``, MUST be unpredictable to serve as the main defense against replay attacks. 
 
 Below is a non-normative example of a Nonce Request.
 
@@ -294,7 +282,7 @@ Below is a non-normative example of a Nonce Response.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
-**Step 9 (Wallet Instance Registration Request)**: The Wallet Instance sends a request to the `Wallet Instance Management endpoint`_ of the Wallet Provider Backend to register the Wallet Instance, identified by the Cryptographic Hardware Key public key. 
+**Step 9 (Wallet Instance Registration Request)**: The Wallet Instance sends a request to the :ref:`Wallet Instance Management Endpoint` of the Wallet Provider Backend to register the Wallet Instance, identified by the Cryptographic Hardware Key public key. 
 The request body includes the following claims: the ``challenge``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
 
 Below is a non-normative example of a Wallet Instance Registration Request.
@@ -982,9 +970,9 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
 Wallet Attestation mdoc
 ...................................
 
-In this descriptions we further specialize the giudelines given in `MDOC-CBOR Credential Format`_ to represent the Wallet Attestation in mdoc format. The latter MUST:
+This description further specializes the guidelines given in `MDOC-CBOR Credential Format`_ to represent the Wallet Attestation in mdoc format. The latter MUST:
 
-  - have two namespaces: the dfault one, ``org.iso.18013.5.1``, and the domestic namespace, ``org.iso.18013.5.1.it``; 
+  - have two namespaces: the default one, ``org.iso.18013.5.1``, and the domestic namespace, ``org.iso.18013.5.1.it``; 
   - have **docType** set to ``org.iso.18013.5.1.it.WalletAttestation``; and
   - have **issuerAuth** as described in `Mobile security Object`_.
 
@@ -997,7 +985,7 @@ The ``nameSpaces``Json Objects are defined as follows:
     * - **elementIdentifier**
       - **Description**
       - **Reference**
-    * - **issuing_autority**.
+    * - **issuing_autority**
       - Identifier of the Wallet Provider.
       - `ISO18013-5`_.
 
@@ -1010,16 +998,16 @@ for the default namespace, and
     * - **elementIdentifier**
       - **Description**
       - **Reference**
-    * - **sub**.
+    * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Instance JWK contained in the ``cnf`` claim.
       - :rfc:`9126` and :rfc:`7519`.
-    * - **aal**.
+    * - **aal**
       - JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the ``IssuerAuth.deviceKeyInfo.deviceKey`` claim of the **issuerAuth** Object.
       - :rfc:`9679`.
-    * - **wallet_link**.
+    * - **wallet_link**
       - JSON String containing a URL to get further information about the Wallet and the Wallet Provider.
       - `OpenID4VCI`_.
-    * - **wallet_name**.
+    * - **wallet_name**
       - JSON String, it MUST be the Identifier of the Wallet Provider.
       - `OpenID4VCI`_.
 
@@ -1168,14 +1156,6 @@ The following table lists HTTP Status Codes and related error codes that MUST be
      - ``temporarily_unavailable``
      - Service unavailable. Please try again later.
 
-External references
---------------------------
-
-.. [1] Definitions are inherited from the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing. Please refer to `this page <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions>`_ for extended definitions and details.
-
-.. [2] Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, as defined `here <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle>`_.
-
-.. [3] Depending on the device operating system, TEE is defined by `Trusty`_ or `Secure Enclave`_ for Android and iOS devices, respectively.
 
 .. _Trust Model: trust.html
 .. _Wallet Attestation Issuance: wallet-solution.html#wallet-attestation-issuance
@@ -1184,10 +1164,8 @@ External references
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
 .. _Wallet Provider metadata: wallet-solution.html#wallet-provider-metadata
-.. _Nonce endpoint: wallet-solution.html#nonce-endpoint
 .. _Wallet Attestation Issuance endpoint: wallet-solution.html#wallet-attestation-issuance-endpoint
 .. _Federation endpoint: wallet-solution.html#federation-endpoint
-.. _Wallet Instance Management endpoint: wallet-solution.html#wallet-instance-management-endpoint
 .. _Wallet Instance Functionalities: wallet-solution.html#wallet-instance-functionalities
 .. _Error Handling for Wallet Instance Management: wallet-solution.html#error-handling-for-wallet-instance-management 
 .. _Error Handling for Wallet Attestation Issuance: wallet-solution.html#error-handling-for-wallet-attestation-issuance
