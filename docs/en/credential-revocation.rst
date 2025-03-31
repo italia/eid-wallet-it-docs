@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-Digital Credential Lifecycle
+Digital Credential Lifecycle 
 ===================================
 
 The Credential Issuer is responsible for creating and issuing Digital Credentials, as well as managing their lifecycle and validity status. 
@@ -35,14 +35,17 @@ A Digital Credential in all states can be deleted (**PID/(Q)EAA DEL**) and this 
   While **Issued**, **Valid**, **Expired**, **Revoked** are explicitly mentioned in the ARF (see Figure 5 of ARF v1.4), 
   **Suspended** is implicitly present in `EIDAS-ARF`_. This specification explicitly considers it.
 
-Credential Transition to Issued
+Credential Transitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Credential Transition to Issued
+------------------------------------
 For the state machine to start, the Wallet Instance MUST be in either the **Operational** or **Valid** state, enabling Digital Credentials to be issued to it. 
 The state machine begins with the **Issued** state, when an issuance process is triggered and, as a result, a Digital Credential is issued to the 
 Wallet Instance (**PID/(Q)EAA ISS**). Please refer to :ref:`PID/(Q)EAA Issuance`.
 
 Credential Transition to Valid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 A Digital Credential changes to **Valid** state when: 
 
   * it reaches its start date of validity;
@@ -50,7 +53,7 @@ A Digital Credential changes to **Valid** state when:
 
 
 Credential Transition to Expired
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 A Digital Credential naturally transitions to the **Expired** state when it automatically expires upon reaching its end date of validity (**PID/(Q)EAA EXP**), 
 indicating they are no longer valid for use.
 
@@ -60,7 +63,7 @@ This ends its lifecycle.
 .. _credential-revocation:
 
 Credential Transition to Revoked
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 A Digital Credential changes from **Issued**, **Valid** or **Suspended** states to **Revoked** state when it is actively revoked by the Credential Issuer 
 by a revocation process (**PID/(Q)EAA REV**). The Relying Parties SHOULD no longer consider usable a particular Digital Credential when it is **Revoked**, even though it is 
 still valid temporally and contains a valid Credential Issuer signature. Revocation can occur in the following cases:
@@ -87,7 +90,7 @@ When a Digital Credential is **Revoked** it cannot transition back to **Valid**,
 has been revoked and the User MAY delete it (**PID/(Q)EAA DEL**). This ends its lifecycle.
 
 Credential Transition to Suspended
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 A (Q)EAA changes from **Issued** or **Valid** states to **Suspended** state when it is suspended by the Credential Issuer (**(Q)EAA SUSP**).
 The (Q)EAA remains **Suspended** until it is restored to the **Issued** or **Valid** state (**(Q)EAA UNSUSP**) depending on the previous state, i.e. 
 the conditions leading to its suspension are resolved, or it changes in **Revoked**, **Expired** or it is deleted. The suspension of a (Q)EAA MAY be: 
@@ -177,7 +180,7 @@ This section describes the main flows for managing Digital Credential Status Upd
 
 
 Status Update related to the User
-.......................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Users MAY change their Digital Credential validity status by:
 
@@ -202,7 +205,7 @@ The User's death triggers a change in the validity status of the User's identifi
 
 
 Status Update by Wallet Instance
-.......................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance MUST notify this event to the Credential Issuer and the Credential Issuer MUST revoke the Digital Credential. To notify this event, the Wallet Instance MUST use the *Notification Endpoint* described in Section :ref:`Notification Endpoint <Notification endpoint>` using the parameter ``event`` set with the value ``credential_deleted``. 
 
@@ -211,13 +214,13 @@ For any other Credential different from the PID, the Credential Issuer SHOULD se
 
 
 Status Update by Wallet Providers 
-.........................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In addition to what already defined in :ref:`Digital Credential Lifecycle <Digital Credential Lifecycle>`, the Credential Issuer MUST provide a web service (Wallet Instance Revocation endpoint) defined using PDND, as specified in the Section :ref:`e-Service PDND Catalogue <e-Service PDND Catalogue>`.
 The Wallet Provider that for any reason revokes a Wallet Instance MUST send a notification to Issuers using this endpoint.
 
 Status Update by Authentic Sources
-.........................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Authentic Sources manage attributes separately from Digital Credentials, which verify authenticity like physical documents. Losing a physical document doesn't mean losing the privileges it represents; it just means the User can't prove them. However, if a User loses privileges due to a serious infraction, the Authentic Source will revoke the related attributes. In such cases, when a User's attributes are updated, Authentic Sources MUST notify Credential Issuers to update the validity status of any Digital Credential containing those attributes.
 
@@ -229,7 +232,7 @@ Authentic Sources MUST use this notification service in the following cases:
 
 
 Validity Verification Mechanisms 
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For the verification of the validity status of a long-lived Digital Credential the OAuth Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario. Depending on the capabilities supported by the Credential Issuer, Wallet Instance and Relying Party, in the remote scenario OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_) MAY be supported as well. The following table sums up the required revocation mechanisms for verifying the status of long-lived Digital Credentials.
  
@@ -256,7 +259,7 @@ For the verification of the validity status of a long-lived Digital Credential t
        -  `TOKEN-STATUS-LIST`_.
  
 OAuth Status Assertions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 A Status Assertion is a signed document serving as proof of a Digital Credential's current validity status. The Credential Issuer provides these assertions to Holders who can present them to Verifiers together with the corresponding Digital Credentials.
 
@@ -279,7 +282,7 @@ The following sections describe how the Digital Credential validation mechanism 
 
 
 Credential Issuers Handling Credential Status 
-...................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Credential Issuers, once a Digital Credential has been generated and successfully issued, MUST:
 
@@ -293,7 +296,7 @@ Moreover, Credential Issuers MUST add the following parameters within their Meta
 
 
 Wallet Instance Checking Credentials Statuses
-...................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A Wallet Instance MUST check periodically the validity status of the Digital Credential that is stored in it, requesting a Status Assertion for each Digital Credential. In this case, the Wallet Instance MUST send a *Status Assertion Request* to the Credential Issuer according to "OAuth Status Assertion Specification" (see `OAUTH-STATUS-ASSERTION`_ for more details) and it is depicted in the following diagram.
 
@@ -338,7 +341,7 @@ Technical details about the HTTP Status Assertion Response is provided in the Se
 
 
 HTTP Status Assertion Request
-_____________________________________
+................................
 
 The *Status Assertion endpoint* MUST be provided by the Credential Issuer within its Metadata. 
 The requests to the *Status Assertion endpoint* MUST be HTTP with method POST, using the mandatory parameters listed below within the HTTP request message body. These MUST be encoded in ``application/json`` format. 
@@ -440,7 +443,7 @@ Below, is given a non-normative example of a single *Status Assertion Request ob
 
 
 HTTP Status Assertion Response
-__________________________________________
+................................
 
 In case of succesfully Status Assertion Request validation, the *Credential Issuer* MUST return an HTTP response with the status code set to *200 OK*. If the *Credential Issuer* is able to provide a valid Status Assertion for a requested Credential, the response MUST contain a Status Assertion object within a JSON Array. Otherwise, a Status Assertion Errors related to that Credential MUST be included in the Response JSON Array as an entry.
 
@@ -624,7 +627,7 @@ Below a non-normative example of a Revocation Assertion Error object in JWT form
   }
 
 Relying Party Checking Credential Status
-...................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 During the presentation flow, if a Status Assertion related to a Digital Credential is available, the Wallet Instance MUST include it along with the related Digital Credential in the ``vp_token`` JSON Array. 
 The Verifier who wants to rely on the mechanism provided by Status Assertion MUST extract the Status Assertion from the ``vp_token`` Array, and, in addition to the checks required in the Presentation Flow described in the Section :ref:`Remote Flow <Remote Flow>`, the Verifier MUST check the presence of ``status.status_assertion`` claim in the Digital Credential. If true, the Verifiers MUST:
@@ -642,7 +645,7 @@ The Verifier who wants to rely on the mechanism provided by Status Assertion MUS
 
 
 OAuth Status Lists
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
  
 This section defines a Status List data structure, which is used to convey information regarding the individual statuses of multiple Digital Credentials. Digital Credentials may be of any format, such as SD-JWTs or ISO/IEC 18013-5 mDocs. A Status List describes the status of the Digital Credentials by encoding their status validity in a bit array. Each Digital Credential is allocated an index during issuance; this index represents its position within the bit array. The value of the bit(s) at this index corresponds to the Digital Credentials' status. A Status List is provided within a cryptographically signed Status List Token in JWT format. For details, see `TOKEN-STATUS-LIST`_.
  
@@ -650,8 +653,9 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
  .. _sec_status_list_creation:
  
- Status Lists Creation
-""""""""""""""""""""""""""""""
+
+Status Lists Creation
+~~~~~~~~~~~~~~~~~~~~~~~~
  
  The Issuer of the Digital Credentials MUST
  
@@ -687,8 +691,8 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
 
 .. _sec_status_list_token:
 
- Status List Token 
-"""""""""""""""""""""""""""""
+Status List Token 
+~~~~~~~~~~~~~~~~~~~~~~~~
  
  The Status List Token is available at the Status List Endpoint and contains the following parameters. 
  
@@ -781,8 +785,8 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
  .. _sec_cred_iss_handling:
  
- Credential Issuers Handling Credential Status 
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+Credential Issuers Handling Credential Status 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
  Credential Issuers, once a Digital Credential has been generated, MUST:
  
@@ -806,8 +810,8 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      - `TOKEN-STATUS-LIST`_
  
  
- Checking Credentials Statuses
-""""""""""""""""""""""""""""""""""""""""""""
+Checking Credentials Statuses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
  The fetching, processing and verifying of a Status List Token may be done by either the Wallet Instance or a Relying Party. Below it is described for the Relying Party, however, the same rules would also apply to the Wallet Instance.
  
@@ -819,8 +823,8 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
      Status List Flow
  
- HTTP Status Lists Request
-"""""""""""""""""""""""""""""""""""
+HTTP Status Lists Request
+..............................
  
  To obtain the Status List Token, the Relying Party MUST send an HTTP GET request to the ``status.status_list.uri`` value provided within the Digital Credential.
  
@@ -835,8 +839,8 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
    Accept: application/statuslist+jwt
  
  
- HTTP Status Lists Response
-""""""""""""""""""""""""""""""""""""""
+HTTP Status Lists Response
+..............................
  
  The Status List Endpoint responds with a Status List Token and MUST use an HTTP status code in the 2xx range. In the successful response, the Status Provider MUST use content-type ``application/statuslist+jwt`` for Status List Token in JWT format.
  
