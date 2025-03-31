@@ -582,7 +582,7 @@ The combined format for the (Q)EAA issuance is represented below:
 mDoc-CBOR Credential Format
 ====================================
 
-The mDoc data model is based on the ISO/IEC 18013-5 standard, initially developed for the mobile driving license (mDL) use case. 
+The mDoc data model is based on the ISO/IEC 18013-5 standard. 
 The mDoc data elements MUST be encoded in CBOR as defined in :rfc:`8949`.
 
 This data model structures mDoc Digital Credentials into distinct components: namespaces (**nameSpaces**), and cryptographic proof (**issuerAuth**). 
