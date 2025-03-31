@@ -753,7 +753,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID it may be set to ``PersonIdentificationData``, in case of mobile driving licence in SD-JWT VC format ``dc_sd_jwt_mdl`` and ``mso_mdoc_mdl`` in case of mobile driving license in mDoc format. It MAY be multivalued, each value MUST be separated by a space.
+      - JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to ``PersonIdentificationData``. In case of mobile driving licence in SD-JWT VC format, ``dc_sd_jwt_mdl``, while ``mso_mdoc_mdl`` in case of mobile driving license in mDoc format. Since it MAY be multivalued, when this occurs each value MUST be separated by a space.
       - :rfc:`6749`
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
