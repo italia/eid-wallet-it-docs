@@ -869,7 +869,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      - If the Relying Party is using a system for caching the Status List Token, it SHOULD check the `ttl` claim of the Status List Token and retrieve a fresh copy if (time status was resolved + `ttl` < current time).
  
    - Decompress the Status List with a decompressor that is compatible with DEFLATE [:rfc:`1951`] and ZLIB [:rfc:`1950`].
-   - Retrieve the status value of the index specified in the Digital Credential as described in `Status Lists Creation`_. Fail if the provided index is out of bounds of the Status List.
+   - Retrieve the status value of the index specified in the Digital Credential as described in :ref:`sec_status_list_creation`. Fail if the provided index is out of bounds of the Status List.
    - Check the status value as described in `Status Lists Creation`_.
  
  If any of these checks fails, no statement about the status of the Digital Credential can be made and the Digital Credential SHOULD be rejected.
