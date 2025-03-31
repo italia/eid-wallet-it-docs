@@ -17,18 +17,9 @@ Organizational Entities are responsible for log retention according to their res
 Unless specific legal obligations dictate otherwise, and with the definition of sector-specific regulation defining appropriate motivations, **the maximum retention period for data logs is 12 months**. Logs MUST be securely stored to ensure integrity and immutability.
 
 
-GDPR Logs General Requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In accordance with the following general principles and in full compliance with them, the retention of logs and personal data made by Organizational Entities MUST adhere to the principles outlined in the GDPR (Article 5), specifically:
 
-- **Lawfulness, Fairness, and Transparency** (Article 5, Paragraph 1, Letter a): Personal data MUST be processed lawfully, fairly, and in a transparent manner in relation to the data subject.
-- **Purpose Limitation** (Article 5, Paragraph 1, Letter b): Personal data MUST be collected for specified, explicit, and legitimate purposes and not further processed in a manner that is incompatible with those purposes.
-- **Data Minimization** (Article 5, Paragraph 1, Letter c): Personal data MUST be adequate, relevant, and limited to what is necessary in relation to the purposes for which they are processed.
-- **Storage Limitation** (Article 5, Paragraph 1, Letter e): Personal data MUST be kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which the personal data are processed.
-- **Integrity and Confidentiality** (Article 5, Paragraph 1, Letter f): Personal data MUST be processed in a manner that ensures appropriate security, including protection against unauthorized or unlawful processing and against accidental loss, destruction, or damage, using appropriate technical or organizational measures.
 
-Organizational Entities MUST implement appropriate technical and organizational measures to ensure the security of logs and personal data, in compliance with Article 32 of the GDPR.
 
 ISO/IEC 27001 Logging General Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
