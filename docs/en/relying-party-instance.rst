@@ -5,14 +5,19 @@
 Relying Party Instance
 =========================
 
-The Relying Party Instance (RPI) is a distinct and secure application designed to request, receive, and process Digital Credentials from Wallet Units in a trusted manner. Each instance ensures the integrity, confidentiality and authenticity of credential exchanges, enabling secure interactions between Users and Relying Parties.
+The Relying Party Instance (RPI) is a distinct and secure application designed to request, receive, and process Digital Credentials from Wallet Instances in a trusted manner. Each instance ensures the integrity, confidentiality and authenticity of credential exchanges, enabling secure interactions between Users and Relying Parties.
 
 There are two primary types of Relying Party Instances, each serving different operational environments:
 
-  - Mobile Relying Party Instance: a native application running on a mobile device (e.g., smartphone or tablet). Each instance corresponds to a specific installation of the application on a device.
-  - Web Relying Party Instance: a remote application operated by the Relying Party.
+- **Mobile Relying Party Instance**: a native application running on a mobile device (e.g., smartphone or tablet). Each instance corresponds to a specific installation of the application on a device. A Mobile Relying Party Instance functions as a public client, operating on end-user devices where sensitive credentials cannot be fully protected from potential threats. This implies additional security measures to establish and maintain trust.
+- **Web Relying Party Instance**: a remote application operated by the Relying Party. A Web Relying Party Instance operates as a confidential client, meaning it can securely store credentials (such as private keys) on a server controlled by the Relying Party. In this context, the Relying Party has direct control over the authentication and verification process.
+
+.. note::
+
+  Unlike the Web RP Instance, a mobile RP Instance requires proper lifecycle management and special registration procedures managed through the RP Backend.
 
 Further technical and operational details are discussed in the following sections.
+
 
 Mobile Relying Party Instance
 --------------------------------
@@ -276,14 +281,39 @@ The Mobile Relying Party Instance MUST send the signed Access Certificate Reques
 Mobile Relying Party Instance Access Certificate Reissuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When the Mobile Relying Party Instance is in the **Operational** state, the issuance of a new Access Certificate follows the same flow described in the :ref:`Mobile Relying Party Instance Registration` section for Access Certificate Issuance.
-
+The issuance of a new Access Certificate follows the same flow described in Section :ref:`Mobile Relying Party Instance Registration` for **Access Certificate Issuance**. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
 
 Mobile Relying Party Instance Revocation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Mobile Relying Party Instance revocation MUST be tied to X.509 Access Certificates validity.
-Those certificates MAY be issued as short-lived or long-lived. 
-Short-lived certificates (typically valid within 24 hours) are RECOMMENDED as they do not require explicit revocation mechanisms, reducing the security risks such as. tampering the Mobile Relying Party Instance.
-Long-lived certificates MAY be allowed, implementing the standard revocation mechanisms as defined in :rfc:`5280`, including Certificate Revocation Lists (CRLs) and Online Certificate Status Protocol (OCSP).
+Relying Parties MUST periodically verify the Relying Party Instance's authenticity and security.
+When security issues are detected, Relying Parties MUST revoke the Relying Party Instance, revoking its X.509 Access Certificate (in case of long-lived certificates), and in any case, Relying Parties MUST NOT allow the re-issue of certificates. 
+As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Access Certificates validity.
+
+Long-lived certificates MUST implement the standard revocation mechanisms as defined in :rfc:`5280`, including Certificate Revocation Lists (CRLs) and/or Online Certificate Status Protocol (OCSP).
 These revocation mechanisms are aligned with the trust model described in Section :ref:`The Infrastructure of Trust`, ensuring consistent and reliable certificate validation across the ecosystem.
+
+Web Relying Party Instance
+--------------------------------
+
+As mentioned in the introduction, a Web Relying Party Instance differs from Mobile Relying Party in its security classification and operational model. While Web Instances operate as confidential clients with server-side security controls that can safely store secrets and cryptographic keys in a controlled environment, Mobile Instances function as public clients running on end-user devices where security guarantees are inherently limited. This fundamental difference necessitates distinct approaches to registration, lifecycle management, and trust establishment. Web Instances can be directly registered with the Trust Anchor or Intermediary Entities through federation endpoints, while Mobile Instances require device attestation, hardware-backed key verification, and Access Certificates issued by the Relying Party Backend to establish and maintain trust within the IT-Wallet ecosystem.
+
+Web Relying Party Instance Registration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Web Relying Party Instances, as confidential clients, are registered directly with the Trust Anchor or an Intermediary Entity. The registration involves:
+
+- The Relying Party MUST register its Web Instance with the Trust Anchor or Intermediary.
+- The Relying Party MUST expose an Entity Configuration as defined in the Trust Framework.
+- The Entity Configuration MUST contain all necessary metadata for federation, including endpoints and public keys.
+- No individual instance lifecycle management is required, as the Web Instance operates as part of the secured server environment.
+
+Web Relying Party Instance Revocation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a Web Relying Party Instance needs to be revoked:
+
+- The revocation MUST be performed according to the Trust Framework procedures.
+- The cryptographic keys used by the Web Instance MUST be revoked.
+- The Entity Configuration MUST be updated to reflect the revocation.
+- The Trust Anchor MUST be notified of the revocation to update federation metadata.
