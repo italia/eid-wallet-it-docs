@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-.. _proximity_flow_sec_main:
+.. _proximity_flow.rst:
 
 Proximity Flow
 ==============
@@ -25,13 +25,13 @@ The sub-phases are described below:
   The established session MAY be terminated based on the conditions as detailed in [`ISO18013-5`_ #9.1.1.4].
 
   3. **Communication - Device Retrieval**: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mdoc uses the data from the session establishment message to derive the session key and decrypt the mdoc request.
-  During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the Verifier App via a session data message. 
+  During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the mobile Relying Party via a session data message. 
 
 
 
 Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least:
 
-  - *Supervised Device Retrieval flow* where a human Verifier is overseeing the verification process in person, in contrast with *unsupervised flow* where verification might happen through automated systems without human oversight.
+  - *Supervised Device Retrieval flow* where a human Relying Party is overseeing the verification process in person, in contrast with *unsupervised flow* where verification might happen through automated systems without human oversight.
   - *Device Engagement* based on QR Code.
   - *RP Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
   - *Device Retrieval* mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. *Server Retrieval* mechanism MUST NOT be supported.
@@ -109,7 +109,7 @@ The same content shown above using the diagnostic notation:
     }
   }
 
-**Step 7**: The Verifier uses its Relying Party Instance to scan the QR code and retrieve the DeviceEngagement data from the mdoc.
+**Step 7**: The verifier uses its Relying Party Instance to scan the QR code and retrieve the DeviceEngagement data from the mdoc.
 
 **Step 8**: The Relying Party Instance generates its ephemeral key pair (``EReaderKey. Priv``, ``EReaderKey.Pub``). The private key (``EReaderKey.Priv``) MUST be kept secret, and the public key (``EReaderKey.Pub``) MUST be used in establishing the session.
 
@@ -387,6 +387,7 @@ In diagnostic notation:
 .. note::
 
   During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.
+
 Device Engagement
 -----------------
 
@@ -464,5 +465,6 @@ When a session is terminated, the Wallet Instance and the Relying Party Instance
 
   - destruction of session keys and related ephemeral key material; 
   - closure of the communication channel used for data retrieval.
+
 
 
