@@ -61,7 +61,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - 
    * - Trusted List
      - Trust Anchor
-     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats may be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities must be synchronized across these endpoints, ensuring consistent availability of information through different channels.
+     - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats MAY be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities MUST be synchronized across these endpoints, ensuring consistent availability of information through different channels.
    * - Wallet Provider
      - Leaf
      - 
@@ -70,7 +70,7 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
 General Properties
 ------------------
 
-The architecture of the trust infrastructure is built upon several core principles:
+The architecture of the trust infrastructure is built upon the following core principles:
 
 .. list-table:: 
    :header-rows: 1
@@ -104,7 +104,7 @@ The architecture of the trust infrastructure is built upon several core principl
      - While part of a federated ecosystem, each entity retains control over its own definitions and configurations.
    * - P9
      - **Decentralization**
-     - Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach. No single entity has control over the entire system.
+     - Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach.
 
 
 Trust Infrastructure Requirements
@@ -731,15 +731,15 @@ The X.509 Public Key Infrastructure (PKI) is a framework designed to create, man
 
 The integration of OpenID Federation 1.0 with the traditional X.509 based PKI (rfc:5280), complemented by a RESTful API, aims to enhance the infrastructure with additional features, making it navigable and transparent.
 
-This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general trust management in multilateral digital ecosystems aiming to be interoperable with each other.
+This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general and interoperable trust management in multilateral digital ecosystems.
 
 OpenID Federation and X.509 based PKI share several things in common, as listed below:
 
 - **Hierarchical Approach**: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.
-- **Decentralization with Multiple Trust Anchors and Intermediates**: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and intermediates, below one or more Trust Anchors, introduces a level of decentralization.
-- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, trust marks and policies using a policy language.
-- **Trust/Certificate Chain**: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through intermediaries to the end entity (Leaf).
-- **Constraints in the Chain**: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediates, and the domains involved.
+- **Decentralization with Multiple Trust Anchors and Intermediates**: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and Intermediates, below one or more Trust Anchors, introduces a level of decentralization.
+- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a policy language.
+- **Trust/Certificate Chain**: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through Intermediaries to the end entity (Leaf).
+- **Constraints in the Chain**: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediaries, and the domains involved.
 - **Public Key Distribution**: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.
 - **Registry of Expired Keys**: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.
 
@@ -752,12 +752,12 @@ In the context of OpenID Federation, the Trust Anchor plays a role similar to th
 X.509 Certificates Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by its Immediate Superiors.
+In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by Immediate Superiors.
 
 In the same way, each federation Entity has the autonomy to issue a signed statement about itself in the form of a X.509 Certificate.
-Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federtion Authorities (Superior Entities). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.
+Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federation Authorities (Immediate Superior). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.
 
-This is feasible because the X.509 Certificate can be verified using a Trust Chain, similar to the approach used for Entity Configurations in OpenID Federation.
+This is feasible because the X.509 Certificate can be verified using a X.509 Certificate Chain, similar to the approach used for Entity Configurations in OpenID Federation.
 
 Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
@@ -765,13 +765,34 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 .. name-constraints::
    :permitted: URI.1=https://leaf.example.com
    :permitted: CN=leaf.example.com
+   :permitted: DNS=leaf.example.com
+   :excluded: DNS=localhost
+   :excluded: DNS=localhost.localdomain
+   :excluded: DNS=127.0.0.1
+   :excluded: DNS=example.com
+   :excluded: DNS=example.org
+   :excluded: DNS=example.net
+   :excluded: DNS=*.example.org
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 
-1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the ``Common Name (CN)`` field should contain the Federation Entity unique identifier value, which corresponds to the **sub** (subject) value in its federation Entity Configuration.
+1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the ``Common Name (CN)`` field should contain the Federation Entity unique identifier DNS name, which is included into the **sub** (subject) value in its federation Entity Configuration, removing ``https://`` and any webpaths.
 2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that matches the **sub** value of its federation Entity Configuration.
-3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration.
-4. **Certificate Revocation List (CRL)**: The participant MUST publish a CRL for its self-issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
+3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration, removing ``https://`` and any webpaths.
+4. **Certificate Revocation List (CRL)**: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
+5. **Basic Constraints**: The X.509 Certificate MUST include a ``Basic Constraints`` extension with ``CA:TRUE`` and a maximum path length of 1 if the certificate issuer is a Federation Intermediate, if it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.
+6. **Name Constraints**: The X.509 Certificate MUST include ``Name Constraints`` to specify permitted and excluded domains and URIs. For example:
+   - Permitted:
+     - ``URI.1=https://leaf.example.com``
+     - ``DNS.1=leaf.example.com``
+   - Excluded:
+     - ``DNS=localhost``
+     - ``DNS=localhost.localdomain``
+     - ``DNS=127.0.0.1``
+     - ``DNS=example.com``
+     - ``DNS=example.org``
+     - ``DNS=example.net``
+     - ``DNS=*.example.org``
 
 Below a non-normative example of an X.509 Certificate Chain without intermediaries and in plain text, to facilitate the reading.
 
@@ -783,11 +804,11 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
         Version: 3 (0x2)
         Serial Number: 1 (0x1)
     Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
         Validity
             Not Before: Sep 1 00:00:00 2023 GMT
             Not After : Sep 1 00:00:00 2033 GMT
-        Subject: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Subject: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 Public-Key: (4096 bit)
@@ -816,11 +837,11 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
         Version: 3 (0x2)
         Serial Number: 1234567890 (0x499602d2)
     Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN=https://trust-anchor.example.com, O=Example Trust Anchor, C=IT
+        Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
         Validity
             Not Before: Sep 1 00:00:00 2023 GMT
             Not After : Sep 1 00:00:00 2024 GMT
-        Subject: CN=https://leaf.example.org, O=Leaf, C=IT
+        Subject: CN=leaf.example.org, O=Leaf, C=IT
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 Public-Key: (2048 bit)
@@ -829,7 +850,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
             X509v3 Basic Constraints: 
-                CA:FALSE
+                CA:TRUE, pathlen:1
             X509v3 Key Usage: 
                 Digital Signature, Key Encipherment
             X509v3 Subject Alternative Name: 
@@ -838,6 +859,14 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                 Permitted:
                   URI.1=https://leaf.example.com
                   DNS.1=leaf.example.com
+                Excluded:
+                  DNS=localhost
+                  DNS=localhost.localdomain
+                  DNS=127.0.0.1
+                  DNS=example.com
+                  DNS=example.org
+                  DNS=example.net
+                  DNS=*.example.org
             X509v3 CRL Distribution Points: 
                 Full Name:
                   URI:https://trust-ancor.example.com/crl/leaf.example.org.crl
@@ -881,15 +910,17 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
          7d:6e:5f:...
 
 
-Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach introduces innovative practices for certificate management using the trust relationships established within the OpenID Federation.
+Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach, enabling X.509 certificate issuance delegation, introduces innovative practices for certificate management using the underlying trust relationships established within the OpenID Federation.
 
 
 X.509 Certificate Revocation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An X.509 Certificate can be revoked by its Issuer.
-When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, it MUST update its CRL.
-When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, it revokes the certificate about the leaf, therefore the X.509 Certificate about one of the Leafs Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.
+Revocation lists, and or any other revocation check mechanisms, are required only for X.509 Certificate with expiration time superior to 24 hours, otherwise they are not required.
+
+When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, if the certificate expiration time is superior than 24 hours from the ``X509_NOT_VALID_BEFORE`` time, it MUST implement a CRL about the issued certificate and keep it updated.
+When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, and it revokes the certificate about the Leaf, therefore the X.509 Certificate about one of the Leaves Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf's cryptographic public key, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.
 
 Below a non-normative example, in plain text, examplify the content of a CRL.
 
