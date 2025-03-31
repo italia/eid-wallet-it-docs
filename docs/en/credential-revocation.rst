@@ -777,7 +777,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
  
  Credential Issuers Handling Credential Status 
- ...................................................
+""""""""""""""""""""""""""""""""""""""""""""""""""""
  
  Credential Issuers, once a Digital Credential has been generated, MUST:
  
