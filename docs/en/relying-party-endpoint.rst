@@ -2,7 +2,7 @@
 
 .. _relying-party-endpoint:
 
-Relying Party Endpoint
+Relying Party Endpoints
 =========================
 
 The Relying Party MUST expose endpoints to support trust establishment and essential functionalities. This includes a trust endpoint (i.e., the Federation Endpoint) that MUST adhere to the OpenID Federation 1.0 specification to reliably establish the Relying Party's identity within the ecosystem. In addition, endpoints for handling the lifecycle of Relying Party Instances (i.e., by providing nonce generation, hardware key registration, integrity validation, and access certificate issuance) are also mandatory, although their specific implementation details are left to the Relying Party's discretion.
