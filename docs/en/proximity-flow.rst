@@ -68,44 +68,44 @@ CBOR data represented in AF Binary format:
 
 .. code-block:: 
 
-  a26776657273696f6e63312e3069646f63756d656e747382a267646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6c6973737565725369676e6564a36a6e616d65537061636573a1716f72672e69736f2e31383031332e352e3185a4686469676573744944006672616e646f6d6b683837393836433230453971656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756563446f65a4686469676573744944036672616e646f6d6d6842323346363234343631354471656c656d656e744964656e7469666965726a69737375655f646174656c656c656d656e7456616c75656a323031392d31302d3230a4686469676573744944046672616e646f6d6e684337464641333045394142414671656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c75656a323032342d31302d3230a4686469676573744944076672616e646f6d71683236303532413446354235463945363871656c656d656e744964656e7469666965726f646f63756d656e745f6e756d6265726c656c656d656e7456616c756569313233343536373839a4686469676573744944096672616e646f6d77683435393946383142454141324344423241423243453471656c656d656e744964656e7469666965727264726976696e675f70726976696c656765736c656c656d656e7456616c756581a37576656869636c655f63617465676f72795f636f646561416a69737375655f646174656a323031382d30382d30396b6578706972795f646174656a323032342d31302d32306a6973737565724175746884a1613126a16233337845683330383230314546333039343342463541453832433039343342463541453934334246393433424635414535413934334246354145454433413638443934334246354145a1623234a66776657273696f6e63312e306f646967657374416c676f726974686d675348412d32353667646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6c76616c756544696765737473a1716f72672e69736f2e31383031332e352e31ad61306a6837353141444345424661316b683637453533393435373161326b683333393433424635414561336b683245333536313344353561346b684541354333333044353961356b684641453438374141314461366a6837443833453735333361376a6846303534393839333661386a6842363843383746363661396a683042333544364530436231306a684339384131343838316231316a684235374444413934386231326a683635314638313244416d6465766963654b6579496e666fa1696465766963654b6579a4613102622d3101622d32686839363331463941622d33696831464233433344366c76616c6964697479496e666fa3667369676e656474323032302d31302d30315431333a33303a30325a6976616c696446726f6d74323032302d31302d30315431333a33303a30325a6a76616c6964556e74696c74323032312d31302d30315431333a33303a30325a781a68353945363432303544463145373636414546463133434232456c6465766963655369676e6564a26a6e616d65537061636573a06a64657669636541757468a16964657669636553696784a1613105a0f6783d68453939353231413835414437353934334246354145414536383934334246354145323439393433424635414539343342463541453433424635414544a267646f635479706578266f72672e69736f2e31383031332e352e312e69742e57616c6c65744174746573746174696f6e6c6973737565725369676e6564a26a6e616d65537061636573a2716f72672e69736f2e31383031332e352e3181a4686469676573744944006672616e646f6d6b683337393836433230413971656c656d656e744964656e7469666965727169737375696e675f617574686f726974796c656c656d656e7456616c75656941424331323358595a746f72672e69736f2e31383031332e352e312e697484a4686469676573744944006672616e646f6d6b683337393836433230413971656c656d656e744964656e7469666965726977616c6c65745f69646c656c656d656e7456616c75656941424331323358595aa4686469676573744944016672616e646f6d6b683337393836433230413971656c656d656e744964656e7469666965726b77616c6c65745f6c696e6b6c656c656d656e7456616c75656941424331323358595aa4686469676573744944026672616e646f6d6b683337393836433230413971656c656d656e744964656e746966696572637375626c656c656d656e7456616c75656941424331323358595aa4686469676573744944036672616e646f6d6b683337393836433230413971656c656d656e744964656e7469666965726361616c6c656c656d656e7456616c75656941424331323358595a6a6973737565724175746884a1613126a1623333783d68333038323031454633393433424635414530393433424635414538324330393433393433424635414542463541454433413934334246354145363844a1623234a66776657273696f6e63312e306f646967657374416c676f726974686d675348412d32353667646f635479706578266f72672e69736f2e31383031332e352e312e69742e57616c6c65744174746573746174696f6e6c76616c756544696765737473a2746f72672e69736f2e31383031332e352e312e6974a461306a6837353141444345424661316b684535383533393436313861326b683633343533393435373361336b6836374635333934343831716f72672e69736f2e31383031332e352e31a161306a683735314135464542466d6465766963654b6579496e666fa1696465766963654b6579a4613102622d3101622d3269683936334431463941622d33696831464244433344366c76616c6964697479496e666fa3667369676e656474323032302d31302d30315431333a33303a30325a6976616c696446726f6d74323032302d31302d30315431333a33303a30325a6a76
+  a26776657273696f6e63312e3...
 
 The same content shown above using the diagnostic notation:
 
 .. code-block::
 
   {
-    "0": "1.1", % Version (Updated to 1.1 because Capabilities and OriginInfos are present)
-    "1": % Security
+    0: "1.1", % Version (Updated to 1.1 because Capabilities and OriginInfos are present)
+    1: % Security
     [
       1, % defines the cipher suite , which contains only EC curves
       24(<< % embedded CBOR data item
         {
-          "1": 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
-          "-1": 1, % crv:p256
-          "-2":"5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343167FE", % x-coordinate
-          "-3":"B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67" % y-coordinate
+          1: 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
+          -1: 1, % crv:p256
+          -2:h'5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343167FE', % x-coordinate
+          -3:h'B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67' % y-coordinate
         }
-        >>)
+      >>)
     ],
-    "2": % DeviceRetrievalMethods (Device engagement using QR code with BLE for retrieval)
+    2: % DeviceRetrievalMethods (Device engagement using QR code with BLE for retrieval)
     [
       [
         2, % BLE
         1, % Version
         { % BLE options
-          "0": false, % no support for mdoc peripheral server mode
-          "1": true,  % support for mdoc central client mode
-          "11": "45EFEF742B2C4837A9A3B0E1D05A6917" % UUID of mdoc client central mode
+          0: false, % no support for mdoc peripheral server mode
+          1: true,  % support for mdoc central client mode
+          11: h'45EFEF742B2C4837A9A3B0E1D05A6917' % UUID of mdoc client central mode
         }
       ]
     ],
-    "5": % OriginInfos (Required because Capabilities is present)
+    5: % OriginInfos (Required because Capabilities is present)
     [],
-    "6": % Capabilities (Defines supported features)
+    6: % Capabilities (Defines supported features)
     {
-      "2": false, % HandoverSessionEstablishmentSupport (Supports negotiated handover)
-      "3": true % ReaderAuthAllSupport (Supports reader authentication)
+      2: false, % HandoverSessionEstablishmentSupport (Supports negotiated handover)
+      3: true % ReaderAuthAllSupport (Supports reader authentication)
     }
   }
 
@@ -123,7 +123,7 @@ CBOR data in AF Binary format:
 
 .. code-block::
 
-  a36776657273696f6e63312e306b646f63526571756573747382a16c6974656d7352657175657374d818a267646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6a6e616d65537061636573a1716f72672e69736f2e31383031332e352e31a66b66616d696c795f6e616d65f56f646f63756d656e745f6e756d626572f57264726976696e675f70726976696c65676573f56a69737375655f64617465f56b6578706972795f64617465f568706f727472616974f4a16c6974656d7352657175657374d818a267646f635479706578266f72672e69736f2e31383031332e352e312e69742e57616c6c65744174746573746174696f6e6a6e616d65537061636573a1746f72672e69736f2e31383031332e352e312e6974a463697373f563737562f56b77616c6c65745f6e616d65f56b77616c6c65745f6c696e6bf56a726561646572417574688443a10126a11821590129308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b1300a06082a8648ce3d0403020347003044022048466e92226e042add073b8cdc43df5a19401e1d95ab226e142947e435af9db30220043af7a8e7d31646a424e02ea0c853ec9c293791f930bf589bee557370a4c97bf6584058a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9
+  a36776657273696f6e63312e306b646f63...
 
 
 The above CBOR data is represented in diagnostic notation as follows:
@@ -132,14 +132,17 @@ The above CBOR data is represented in diagnostic notation as follows:
 
   {
     "version": "1.0",  % Version
-
-    "docRequests": [
+    "docRequests": 
+    [
       {
-        "itemsRequest": 24(<<  % Embedded CBOR data item
+        "itemsRequest": 
+        24(<<  % Embedded CBOR data item
           {
             "docType": "org.iso.18013.5.1.mDL",
-            "nameSpaces": {
-              "org.iso.18013.5.1": {
+            "nameSpaces": 
+            {
+              "org.iso.18013.5.1": 
+              {
                 "family_name": true,
                 "document_number": true,
                 "driving_privileges": true,
@@ -167,16 +170,12 @@ The above CBOR data is represented in diagnostic notation as follows:
         >>)
       }
     ],
-
-    "readerAuth": [
+    "readerAuthAll": [
       h'a10126', % COSE_Sign1 authentication header
-
       {
         33: h'308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b'
       },
-
       null, % No additional reader authentication
-
       h'58a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9'  % Reader authentication signature
     ]
   }
@@ -199,7 +198,7 @@ CBOR Data:
 
 .. code-block::
 
-  a26776657273696f6e63312e3069646f63756d656e747382a267646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6c6973737565725369676e6564a36a6e616d65537061636573a1716f72672e69736f2e31383031332e352e3185a4686469676573744944006672616e646f6d6d6827383739383643323045392771656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756563446f65a4686469676573744944036672616e646f6d6f68274232334636323434363135442771656c656d656e744964656e7469666965726a69737375655f646174656c656c656d656e7456616c75656a323031392d31302d3230a4686469676573744944046672616e646f6d706827433746464133304539414241462771656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c75656a323032342d31302d3230a4686469676573744944076672616e646f6d736827323630353241344635423546394536382771656c656d656e744964656e7469666965726f646f63756d656e745f6e756d6265726c656c656d656e7456616c756569313233343536373839a4686469676573744944096672616e646f6d78196827343539394638314245414132434442324142324345342771656c656d656e744964656e7469666965727264726976696e675f70726976696c656765736c656c656d656e7456616c756582a37576656869636c655f63617465676f72795f636f646561416a69737375655f646174656a323031382d30382d30396b6578706972795f646174656a323032342d31302d3230a37576656869636c655f63617465676f72795f636f646561426a69737375655f646174656a323031372d30322d32336b6578706972795f646174656a323032342d31302d32306a6973737565724175746884a1613126a1623333776827333038323031454633303832433044334136384427a1623234a66776657273696f6e63312e306f646967657374416c676f726974686d675348412d32353667646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6c76616c756544696765737473a1716f72672e69736f2e31383031332e352e31ad61306c68273735314144434542462761316d6827363745353339343537312761326f68273333393433424645353541452761336f68273245333536313344423535352761347068274541354333333034423244353927613572682746414534383737353636314141314427613670682737443833453541314337353333276137716827463035343938453132434139333627613871682742363843383737453036384636362761396f6827304233354436444636453043276231306e68274339384131343143383831276231317168274235374444303145444541393438276231326f6827363531463831324434433341276d6465766963654b6579496e666fa1696465766963654b6579a4613102622d3101622d326a68273936333146394127622d336b68273146423343334436276c76616c6964697479496e666fa3667369676e656474323032302d31302d30315431333a33303a30325a6976616c696446726f6d74323032302d31302d30315431333a33303a30325a6a76616c6964556e74696c74323032312d31302d30315431333a33303a30325a781c682735394536343230354446314537363641454646313343423245276c6465766963655369676e6564a26a6e616d65537061636573a06a64657669636541757468a16964657669636553696784a1613105a0f6776827453939353231413835414437354145363832344427a267646f635479706578266f72672e69736f2e31383031332e352e312e69742e57616c6c65744174746573746174696f6e6c6973737565725369676e6564a26a6e616d65537061636573a1746f72672e69736f2e31383031332e352e312e697482a4686469676573744944006672616e646f6d6d6827333739383643323041392771656c656d656e744964656e7469666965726977616c6c65745f69646c656c656d656e7456616c75656941424331323358595aa4686469676573744944016672616e646f6d6f68274232334636323434363131442771656c656d656e744964656e7469666965726b6973737565725f6e616d656c656c656d656e7456616c7565781c4465706172746d656e74206f66204d6f746f722056656869636c65736a6973737565724175746884a1613126a1623333776827333038323031454633303832433044334136384427a1623234a56776657273696f6e63312e306f646967657374416c676f726974686d675348412d32353667646f635479706578266f72672e69736f2e31383031332e352e312e69742e57616c6c65744174746573746174696f6e6c76616c756544696765737473a1746f72672e69736f2e31383031332e352e312e6974a261306c68273735314144434542462761316d682736374535333934353731276c76616c6964697479496e666fa3667369676e656474323032302d31302d30315431333a33303a30325a6976616c696446726f6d74323032302d31302d30315431333a33303a30325a6a76616c6964556e74696c74323032312d31302d30315431333a33303a30325a781c68273539453634323035444631453736364145464631334342324527
+  a26776657273696f6e63312e3069646f637...
 
 In diagnostic notation:
 
@@ -207,181 +206,232 @@ In diagnostic notation:
 
   {
     "version": "1.0",
-    "documents": [
+    "documents": 
+    [
+      {
+        "docType": "org.iso.18013.5.1.mDL",
+        "issuerSigned": 
         {
-            "docType": "org.iso.18013.5.1.mDL",
-            "issuerSigned": {
-                "nameSpaces": {
-                    "org.iso.18013.5.1": [
+          "nameSpaces": 
+          {
+            "org.iso.18013.5.1": 
+            [
+              24(<<
+                {
+                    "digestID": 0,
+                    "random": h'87986C20E9',
+                    "elementIdentifier": "family_name",
+                    "elementValue": "Doe"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 3,
+                    "random": h'B23F6244615D',
+                    "elementIdentifier": "issue_date",
+                    "elementValue": "2019-10-20"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 4,
+                    "random": h'C7FFA30E9ABAF',
+                    "elementIdentifier": "expiry_date",
+                    "elementValue": "2024-10-20"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 7,
+                    "random": h'26052A4F5B5F9E68',
+                    "elementIdentifier": "document_number",
+                    "elementValue": "123456789"
+                }
+              >>),
+              24(<<
+                {
+                    "digestID": 9,
+                    "random": h'4599F81BEAA2CDB2AB2CE4',
+                    "elementIdentifier": "driving_privileges",
+                    "elementValue": [
                         {
-                            "digestID": 0,
-                            "random": "h87986C20E9",
-                            "elementIdentifier": "family_name",
-                            "elementValue": "Doe",
-                        },
-                        {
-                            "digestID": 3,
-                            "random": "hB23F6244615D",
-                            "elementIdentifier": "issue_date",
-                            "elementValue": "2019-10-20",
-                        },
-                        {
-                            "digestID": 4,
-                            "random": "hC7FFA30E9ABAF",
-                            "elementIdentifier": "expiry_date",
-                            "elementValue": "2024-10-20",
-                        },
-                        {
-                            "digestID": 7,
-                            "random": "h26052A4F5B5F9E68",
-                            "elementIdentifier": "document_number",
-                            "elementValue": "123456789",
-                        },
-                        {
-                            "digestID": 9,
-                            "random": "h4599F81BEAA2CDB2AB2CE4",
-                            "elementIdentifier": "driving_privileges",
-                            "elementValue": [
-                                {
-                                    "vehicle_category_code": "A",
-                                    "issue_date": "2018-08-09",
-                                    "expiry_date": "2024-10-20",
-                                },
-                            ],
+                            "vehicle_category_code": "A",
+                            "issue_date": "2018-08-09",
+                            "expiry_date": "2024-10-20"
                         },
                     ],
-                },
-                "issuerAuth": [
-                    {"1": -7},
-                    {
-                        "33": "h308201EF30943BF5AE82C0943BF5AE943BF943BF5AE5A943BF5AEED3A68D943BF5AE",
-                    },
-                    {
-                        "24": {
-                            "version": "1.0",
-                            "digestAlgorithm": "SHA-256",
-                            "docType": "org.iso.18013.5.1.mDL",
-                            "valueDigests": {
-                                "org.iso.18013.5.1": {
-                                    "0": "h751ADCEBF",
-                                    "1": "h67E5394571",
-                                    "2": "h33943BF5AE",
-                                    "3": "h2E35613D55",
-                                    "4": "hEA5C330D59",
-                                    "5": "hFAE487AA1D",
-                                    "6": "h7D83E7533",
-                                    "7": "hF05498936",
-                                    "8": "hB68C87F66",
-                                    "9": "h0B35D6E0C",
-                                    "10": "hC98A14881",
-                                    "11": "hB57DDA948",
-                                    "12": "h651F812DA",
-                                },
-                            },
-                            "deviceKeyInfo": {
-                                "deviceKey": {"1": 2, "-1": 1, "-2": "h9631F9A", "-3": "h1FB3C3D6"},
-                            },
-                            "validityInfo": {
-                                "signed": "2020-10-01T13:30:02Z",
-                                "validFrom": "2020-10-01T13:30:02Z",
-                                "validUntil": "2021-10-01T13:30:02Z",
-                            },
-                            "status": {
-                                "status_list" : {
-                                 "bits": 1,
-                                 "lst": "eNrbuRgAAhcBXQ"                             
-                                 }
-                            }
-                        },
-                    },
-                    "h59E64205DF1E766AEFF13CB2E",
-                ],
-                "deviceSigned": {
-                    "nameSpaces": {},
-                    "deviceAuth": {
-                        "deviceSig": [
-                            {"1": 5},
-                            {},
-                            null,
-                            "hE99521A85AD75943BF5AEAE68943BF5AE249943BF5AE943BF5AE43BF5AED",
-                        ],
-                    },
-                },
+                }
+              >>)
+            ]
+          },
+          "issuerAuth": 
+          [
+            << {1: -7} >>,
+            {
+              33: h'308201EF30943BF5AE82C0943BF5AE943BF943BF5AE5A943BF5AEED3A68D943BF5AE'
             },
+            <<
+              24(<<
+                {
+                  "version": "1.0",
+                  "digestAlgorithm": "SHA-256",
+                  "docType": "org.iso.18013.5.1.mDL",
+                  "valueDigests": {
+                    "org.iso.18013.5.1": 
+                    {
+                      0: h'751ADCEBF',
+                      1: h'67E5394571',
+                      2: h'33943BF5AE',
+                      3: h'2E35613D55',
+                      4: h'EA5C330D59',
+                      5: h'FAE487AA1D',
+                      6: h'7D83E7533',
+                      7: h'F05498936',
+                      8: h'B68C87F66',
+                      9: h'0B35D6E0C',
+                      10: h'C98A14881',
+                      11: h'B57DDA948',
+                      12: h'651F812DA'
+                    }
+                  },
+                  "deviceKeyInfo": {
+                    "deviceKey": {
+                      1: 2, 
+                      -1: 1, 
+                      -2: h'9631F9A',
+                      -3: h'1FB3C3D6'
+                    }
+                  },
+                  "validityInfo": {
+                    "signed": "2020-10-01T13:30:02Z",
+                    "validFrom": "2020-10-01T13:30:02Z",
+                    "validUntil": "2021-10-01T13:30:02Z"
+                  },
+                  "status": {
+                    "status_list": {
+                      "bits": 1,
+                      "lst": "eNrbuRgAAhcBXQ"                             
+                    }
+                  }
+                }
+              >>)
+            >>,
+            h'59E64205DF1E766AEFF13CB2E'
+          ]
         },
+        "deviceSigned": 
         {
-            "docType": "org.iso.18013.5.1.it.WalletAttestation",
-            "issuerSigned": {
-                "nameSpaces": {
-                    "org.iso.18013.5.1": [
-                        {
-                            "digestID": 0,
-                            "random": "h37986C20A9",
-                            "elementIdentifier": "issuing_authority",
-                            "elementValue": "ABC123XYZ",
-                        },
-                    ],
-                    "org.iso.18013.5.1.it": [
-                        {
-                            "digestID": 0,
-                            "random": "h37986C20A9",
-                            "elementIdentifier": "wallet_name",
-                            "elementValue": "ABC123XYZ",
-                        },
-                        {
-                            "digestID": 1,
-                            "random": "h37986C20A9",
-                            "elementIdentifier": "wallet_link",
-                            "elementValue": "ABC123XYZ",
-                        },
-                        {
-                            "digestID": 2,
-                            "random": "h37986C20A9",
-                            "elementIdentifier": "sub",
-                            "elementValue": "ABC123XYZ",
-                        },
-                        {
-                            "digestID": 3,
-                            "random": "h37986C20A9",
-                            "elementIdentifier": "aal",
-                            "elementValue": "ABC123XYZ",
-                        },
-                    ],
-                },
-                "issuerAuth": [
-                    {"1": -7},
-                    {
-                        "33": "h308201EF3943BF5AE0943BF5AE82C0943943BF5AEBF5AED3A943BF5AE68D",
-                    },
-                    {
-                        "24": {
-                            "version": "1.0",
-                            "digestAlgorithm": "SHA-256",
-                            "docType": "org.iso.18013.5.1.it.WalletAttestation",
-                            "valueDigests": {
-                                "org.iso.18013.5.1.it": {
-                                    "0": "h751ADCEBF",
-                                    "1": "hE585394618",
-                                    "2": "h6345394573",
-                                    "3": "h67F5394481",
-                                },
-                                "org.iso.18013.5.1": {"0": "h751A5FEBF"},
-                            },
-                            "deviceKeyInfo": {
-                                "deviceKey": {"1": 2, "-1": 1, "-2": "h963D1F9A", "-3": "h1FBDC3D6"},
-                            },
-                            "validityInfo": {
-                                "signed": "2020-10-01T13:30:02Z",
-                                "validFrom": "2020-10-01T13:30:02Z",
-                                "validUntil": "2021-10-01T13:30:02Z",
-                            },
-                        },
-                    },
-                    "h59E64205DF1E766AEFF13CB2E",
-                ],
+          "nameSpaces": 24(<< {} >>),
+          "deviceAuth": 
+          {
+            "deviceSignature": 
+            [
+              << {1: -7} >>,
+              {},
+              null,
+              h'E99521A85AD75943BF5AEAE68943BF5AE249943BF5AE943BF5AE43BF5AED'
+            ]
+          }
+        }
+      },
+      {
+        "docType": "org.iso.18013.5.1.it.WalletAttestation",
+        "issuerSigned": 
+        {
+          "nameSpaces": 
+          {
+            "org.iso.18013.5.1.it": 
+            [
+              24(<<
+                {
+                  "digestID": 0,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "wallet_name",
+                  "elementValue": "Wallet_Hobbiton_v1"
+                }
+              >>),
+              24(<<
+                {
+                  "digestID": 1,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "wallet_link",
+                  "elementValue": "https://example.com/wallet/detail_info.html"
+                }
+              >>),
+              24(<<
+                {
+                  "digestID": 2,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "sub",
+                  "elementValue": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
+                }
+              >>),
+              24(<<
+                {
+                  "digestID": 3,
+                  "random": h'37986C20A9',
+                  "elementIdentifier": "aal",
+                  "elementValue": "https://trust-list.eu/aal/high"
+                }
+              >>)
+            ]
+          },
+          "issuerAuth": 
+          [
+            << {1: -7} >>,
+            {
+              33: h'308201EF3943BF5AE0943BF5AE82C0943943BF5AEBF5AED3A943BF5AE68D'
             },
+            <<
+              24(<<
+                {
+                  "version": "1.0",
+                  "digestAlgorithm": "SHA-256",
+                  "docType": "org.iso.18013.5.1.it.WalletAttestation",
+                  "valueDigests": {
+                    "org.iso.18013.5.1.it": {
+                      0: h'0F1571A988FCDF2929…',
+                      1: h'0CDFE0774A2B596C90…',
+                      2: h'E23821492558984395…',
+                      3: h'BBC77E6CCE544EDF86…'
+                    }
+                  },
+                  "deviceKeyInfo": {
+                    "deviceKey": {
+                      1: 2,
+                      -1: 1,
+                      -2: h'B820963964E5…',
+                      -3: h'0A6DA0AF437E…'
+                    }
+                  },
+                  "validityInfo": {
+                    "signed": "2020-10-01T13:30:02Z",
+                    "validFrom": "2020-10-01T13:30:02Z",
+                    "validUntil": "2021-10-01T13:30:02Z"
+                  }
+                }
+              >>)
+            >>,
+            h'59E64205DF1E766AEFF13CB2E'
+          ]
         },
+        "deviceSigned": 
+        {
+          "nameSpaces": 24(<< {} >>),
+          "deviceAuth": 
+          {
+            "deviceSignature": 
+            [
+              << {1: -7} >>,
+              {},
+              null,
+              h'E42521A85A...'
+            ]
+          }
+        }
+      }
     ],
+    "status": 0
   }
 
 **Step 17**: The Relying Party Instance receives the SessionData, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using :ref:`OAuth Status List`.
