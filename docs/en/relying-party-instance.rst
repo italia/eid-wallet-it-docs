@@ -10,7 +10,7 @@ The Relying Party Instance (RPI) is a mobile or embedded application designed to
 There are two primary types of Relying Party Instances, each serving different operational environments:
 
 - **Mobile Relying Party Instance**: a native application running on a mobile device (e.g., smartphone or tablet). Each instance corresponds to a specific installation of the application on a device. A Mobile Relying Party Instance functions as a public client, operating on end-user devices where sensitive credentials cannot be fully protected from potential threats. This implies additional security measures to establish and maintain trust.
-- **Web Relying Party Instance**: a remote application operated by the Relying Party. A Web Relying Party Instance operates as a confidential client, meaning it can securely store credentials (such as private keys) on a server controlled by the Relying Party. In this context, the Relying Party has direct control over the authentication and verification process.
+- **Web Relying Party Instance**: a remote application operated by the Relying Party. A Web Relying Party Instance operates as a confidential client, meaning it can securely store confidential configurations (such as its private cryptographic keys) on a remote server. In this context, the Relying Party is unprovisioned and the presentation request and validation is automatically handled by software.
 
 .. note::
   
