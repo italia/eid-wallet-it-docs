@@ -857,7 +857,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
    - Validate the Status List Token:
  
      - Validate the Status List Token's signature by following the rules defined in section 7.2 of [:rfc:`7519`]. This step requires the resolution of a public key as described in :ref:`trust.rst`.
-     - Check for the existence of the required claims as defined in Section `Status List Token `_.
+     - Check for the existence of the required claims as defined in Section :ref:`sec_status_list_token`.
    
    - All existing claims in the Status List Token MUST be checked according to `Status List Token `_.
    
