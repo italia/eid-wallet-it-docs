@@ -815,7 +815,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
      Status List Flow
  
  HTTP Status Lists Request
- _____________________________________
+"""""""""""""""""""""""""""""""""""
  
  To obtain the Status List Token, the Relying Party MUST send an HTTP GET request to the ``status.status_list.uri`` value provided within the Digital Credential.
  
