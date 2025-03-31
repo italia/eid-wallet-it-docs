@@ -593,7 +593,7 @@ Namespaces categorize and structure data elements (or attributes, see `Attribute
 The MSO securely stores cryptographic digests of attributes within the `nameSpaces`. This allows Relying Parties to validate disclosed attributes against corresponding **digestID** values without revealing the entire credential.
 See `Mobile Security Object`_ for details.
 
-The structure of an mDoc-CBOR Credential is outlined below and further elaborated in the following sections.
+An mDoc-CBOR Digital Credential MUST be compliant with the following structure:
 
 .. list-table:: 
     :widths: 20 60 20
@@ -608,6 +608,8 @@ The structure of an mDoc-CBOR Credential is outlined below and further elaborate
     * - **issuerAuth**
       - *bstr (byte string)*. Contains *Mobile Security Object* (MSO), a COSE Sign1 Document, issued by the Credential Issuer.
       - [ISO 18013-5#9.1.2.4]
+
+The structure of an mDoc-CBOR Credential is further elaborated in the following sections.
 
 Attribute Namespaces
 --------------------------------
