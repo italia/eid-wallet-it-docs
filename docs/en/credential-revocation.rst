@@ -684,7 +684,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
   Once the Relying Party receives a Digital Credential, this enables it to request the Status List to validate its status through the provided URI parameter and look up the corresponding index. However, the Relying Party is able to store the URI and index of the Digital Credential to request the Status List again at a later time. By doing so regularly, the Relying Party may create a profile of the Digital Credential's validity status. This behaviour might also be abused in cases where this is not intended and unknown to the Holder, e.g. profiling the suspension of a driving license. This behaviour could be mitigated e.g., by regular re-issuance of the Digital Credential.
 
  Status List Token 
- .....................
+"""""""""""""""""""""""""""""
  
  The Status List Token is available at the Status List Endpoint and contains the following parameters. 
  
