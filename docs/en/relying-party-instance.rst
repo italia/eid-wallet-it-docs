@@ -203,8 +203,9 @@ Upon a successful request, the Relying Party Backend generates and returns the n
 **Access Certificate Issuance**
 
 **Steps 15-16:** The Mobile Relying Party Instance MUST:
-  - Verify the existence of Cryptographic Hardware Keys. If none exist, the process MUST restart from the previous phase.
-  - Generate an asymmetric key pair for the Access Certificate (``key_pub``, ``key_priv``).
+
+  1. Verify the existence of Cryptographic Hardware Keys. If none exist, the process MUST restart from the previous phase.
+  2. Generate an asymmetric key pair for the Access Certificate (``key_pub``, ``key_priv``).
 
 **Steps 17-19:** The Mobile Relying Party Instance requests a fresh ``challenge`` from the Nonce endpoint of the Relying Party Backend. This ``challenge``, known as a ``nonce``, MUST be unpredictable to serve as the main defense against replay attacks.
 
