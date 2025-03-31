@@ -763,7 +763,7 @@ Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries aut
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
 
 .. name-constraints::
-   :permitted: URI.1=http://leaf.example.com
+   :permitted: URI.1=https://leaf.example.com
    :permitted: CN=leaf.example.com
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
@@ -809,8 +809,8 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                   
     Signature Algorithm: sha256WithRSAEncryption
          5c:4f:3b:...
-
-
+    
+    
     Certificate:
     Data:
         Version: 3 (0x2)
@@ -841,11 +841,11 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
             X509v3 CRL Distribution Points: 
                 Full Name:
                   URI:https://trust-ancor.example.com/crl/leaf.example.org.crl
-
+    
     Signature Algorithm: sha256WithRSAEncryption
          5c:4f:3b:...
-
-
+    
+    
     Certificate:
     Data:
         Version: 3 (0x2)
@@ -876,7 +876,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
             X509v3 CRL Distribution Points: 
                 Full Name:
                   URI:https://leaf.example.org/crl/self.crl
-
+    
     Signature Algorithm: sha256WithRSAEncryption
          7d:6e:5f:...
 
