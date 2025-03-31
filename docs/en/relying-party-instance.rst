@@ -93,6 +93,14 @@ Mobile Relying Party Instance Registration
 
 This section describes the registration of the Mobile Relying Party Instance.
 
+The Registration Flow is Composed by the following sub flows:
+- Device Integrity Check and Key Registration.
+- Access Certificate Issuance.
+
+.. note::
+  
+  Access certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
+
 The overall flow is displayed in :numref:`fig_RelyingParty_Instance_Mobile_Registration`, while a step-by-step description is provided below.
 
 .. _fig_RelyingParty_Instance_Mobile_Registration:

@@ -84,7 +84,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - | Revised from ARF v1.4. 
        | *Differences:* renamed “natural or legal person” in “Organizational Entity”.
    * - Relying Party Solution
-     - Relying Party Solution is the entire eIDAS-compliant product (combination of software, hardware, services and settings) provided by a Relying Party to Users and certified as EUDI-compliant by a Conformity Assessment Body (CAB). 
+     - Relying Party Solution is the entire product (combination of software, hardware, services and settings) provided by a Relying Party to Users and compliant with IT-Wallet technical specification.
      - 
    * - Relying Party Backend
      - Is the technical infrastructure and server-side components, including a set of endpoints, managed by a Relying Party.
