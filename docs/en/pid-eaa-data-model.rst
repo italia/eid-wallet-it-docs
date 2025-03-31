@@ -755,7 +755,7 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
           * *keyInfo* (OPTIONAL).
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position (bit set to 1 = revoked). 
+      - REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position. 
         The `status_list` MUST contain the following sub-value:
 
           * *idx* (REQUIRED). Position index in the status list.
