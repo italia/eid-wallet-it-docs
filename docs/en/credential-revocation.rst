@@ -831,7 +831,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
  
  HTTP Status Lists Response
- __________________________________________
+""""""""""""""""""""""""""""""""""""""
  
  The Status List Endpoint responds with a Status List Token and MUST use an HTTP status code in the 2xx range. In the successful response, the Status Provider MUST use content-type ``application/statuslist+jwt`` for Status List Token in JWT format.
  
