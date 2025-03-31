@@ -61,7 +61,7 @@ redoc = [
         'page': 'OAS3-PDND-AS',
         'spec': './oas3/OAS3-PDND-AS.yaml',
         'embed': True,
-    },
+    }
 ]
 
 

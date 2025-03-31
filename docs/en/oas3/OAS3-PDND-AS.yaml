@@ -27,7 +27,7 @@ paths:
           description: >-
             JWT token obtained from <a target="blank"
             href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html#voucher-issuance">PDND
-            Interoperabilità.</a><br/><br/><a target="blank"
+            Interoperabilità</a>. Based on the implementation choices, it can be either Bearer or DPoP.<br/><br/><a target="blank"
             href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJodHRwczovL2ludGVyb3AucGFnb3BhLml0Iiwic3ViIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwiYXVkIjoiaHR0cHM6Ly9hdXRoZW50aWMtc291cmNlLmV4YW1wbGUuaXQiLCJleHAiOjE3MzMwNDIxNTAsIm5iZiI6MTczMzA0MTk0NSwiaWF0IjoxNzMzMDQxOTIwLCJqdGkiOiJjNGY1ZDdlMi1iN2M4LTQwZjYtOWI2YS1kYzlhNGY1YWViNTciLCJjbGllbnRfaWQiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJwdXJwb3NlSWQiOiJkMmI5YTY1My1jNDk3LTQ1YzYtYjhmMS01YmRmMTI0YzlkM2EiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiI5Yzc4OTRhMGE1YTkxMDU4MGI5NjdmMzg0Y2RmYmExN2IxYWI2Zjg2NjcwZTViMGRmMThhMGM0NTNiNWViMjE1In0sImNuZiI6eyJqa3QiOiI4NTJkMzE5OWJkMGUzOThlYTBjOWMyYTA3NzZjYTMzNjYyOGU4NzBhZWM3YWMwYTQxOGFkYTNlNmNlMTY0ZjhkIn19.SqKCkZyv78VfaTZzOh6iYfKdGirSrPGMvqCMZE9DFXmzhaYz5lpp-fGRjmDbj88Qrw6U_3nl5WUBUjbjxpYxAQ">EXAMPLE
             ON JWT.IO</a>
           required: true
@@ -41,13 +41,13 @@ paths:
           in: header
           description: >-
             DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern. See also <a target="blank"
+            pattern using the POP_DPoP implementation. See also <a target="blank"
             href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
             9449</a>.<br/><br/>
 
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiIyYzc2ZmNhMy1jYjRlLTQzMTItOGI2ZS05NzQ5NDYyZjQyMGQiLCJodG0iOiJQT1NUIiwiYXRoIjoiNDc1MmMzMmQ2YzQ4NzYzZjBmMzljZDNkYzk5ZDJlOTk3OTMyYmFmMzc1NjNiYzVhODk5NDg3YTZmODZlNWIxZCIsImh0dSI6Imh0dHBzOi8vYXV0aGVudGljLXNvdXJjZS5leGFtcGxlLml0IiwiaWF0IjoxNzYyMjYyNjE2fQ.Mdayqq66hFzMFvN131WRZ_dxyaEu7W1Qz-ksYt6-RLGD1rCixnmnmFnNOsgFT_wztGL1zJloYTMgn9Ys6lSxgQ">EXAMPLE
             ON JWT.IO</a>
-          required: true
+          required: false
           schema:
             type: string
             format: JWT
@@ -82,9 +82,9 @@ paths:
         - name: Agid-JWT-TrackingEvidence
           in: header
           description: >-
-            JWT containing the data tracker in the Consumer's domain. It is mandatory only when complying with AUDIT_REST_02 (see <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
-
+            If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
+            pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
+            href="https://italia.github.io/eudi-wallet-it-docs/versione-corrente/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE
             ON JWT.IO</a>
           required: false
