@@ -173,7 +173,7 @@ If the ``status`` parameter is set to ``status_list``, it is a JSON Object conta
      - REQUIRED. The idx (index) claim MUST specify an Integer that represents the index to check for status information in the Status List for the current Digital Credential. The value of idx MUST be a non-negative number, containing a value of zero or greater.
      - TOKEN-STATUS-LIST_
    * -  **uri** 
-     - REQUIRED. The uri (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Digital Credential. The value of uri MUST be a URI conforming to [:rfc:3986].
+     - REQUIRED. The uri (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Digital Credential. The value of uri MUST be a URI conforming to [:rfc:`3986`].
      - TOKEN-STATUS-LIST_
 
 
@@ -307,8 +307,6 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **tax_id_code**
       - [SD]. CONDITIONAL. REQUIRED if ``personal_administrative_number`` is not present. National tax identification code of natural person as a String format. It MUST be set according to ETSI EN 319 412-1. For example ``TINIT-<ItalianTaxIdentificationNumber>``
       - 
-
-The PID attribute schema, which encompasses all potential User data, is defined in `EIDAS-ARF`_, and furthermore detailed in the `PID Rulebook <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md#23-pid-attributes>`_.
 
 
 PID Non-Normative Examples
@@ -585,13 +583,13 @@ mDoc-CBOR Credential Format
 ====================================
 
 The mDoc data model is based on the ISO/IEC 18013-5 standard, initially developed for the mobile driving license (mDL) use case. 
-The mDoc data elements MUST be encoded in CBOR as defined in `RFC 8949 - Concise Binary Object Representation (CBOR) <RFC 8949 - Concise Binary Object Representation (CBOR)>`_.
+The mDoc data elements MUST be encoded in CBOR as defined in :rfc:`8949`.
 
 This data model structures mDoc Digital Credentials into distinct components: namespaces (**nameSpaces**), and cryptographic proof (**issuerAuth**). 
-Namespaces categorize and structure data elements (or attributes, see `Attribute Namespaces`_). While the cryptographic proof ensures integrity and authenticity through the Mobile Security Object (MSO).
+Namespaces categorize and structure data elements (or attributes, see :ref:`Attribute_Namespaces`). While the cryptographic proof ensures integrity and authenticity through the Mobile Security Object (MSO).
 
 The MSO securely stores cryptographic digests of attributes within the `nameSpaces`. This allows Relying Parties to validate disclosed attributes against corresponding **digestID** values without revealing the entire credential.
-See `Mobile Security Object`_ for details.
+See :ref:`Mobile_Security_Object` for details.
 
 An mDoc-CBOR Digital Credential MUST be compliant with the following structure:
 
@@ -610,6 +608,8 @@ An mDoc-CBOR Digital Credential MUST be compliant with the following structure:
       - [ISO 18013-5#9.1.2.4]
 
 The structure of an mDoc-CBOR Credential is further elaborated in the following sections.
+
+.. _Attribute_Namespaces:
 
 Attribute Namespaces
 --------------------------------
@@ -669,11 +669,12 @@ The following **elementIdentifiers** MUST be included in a Digital Credential en
       Digital Credential User-specific attributes are defined in the Catalogue of Digital Credentials.
       User-specific attributes for mDoc Digital Credentials such as those used in mDL or PID are also included by referencing the appropriate `elementIdentifiers` defined in ISO/IEC 18013-5 or the `EIDAS-ARF`_ specification.
 
+.. _Mobile_Security_Object:
 
 Mobile security Object
 --------------------------
 
-The **issuerAuth** represents the `Mobile Security Object` which is a `COSE Sign1 Document` defined in `RFC 9052 - CBOR Object Signing and Encryption (COSE): Structures and Process <https://www.rfc-editor.org/rfc/rfc9052.html>`_. It has the following data structure:
+The **issuerAuth** represents the `Mobile Security Object` which is a `COSE Sign1 Document` defined in :rfc:`9052`. It has the following data structure:
 
 * protected header
 * unprotected header
@@ -709,10 +710,10 @@ The **unprotected header** MUST contain the following parameter:
       - **Reference**
     * - **4**
       - Unique identifier of the Issuer JWK (OPTIONAL). Required when the issuer of mDoc uses OpenID Federation. 
-      - `Trust Model`_
+      - :ref:`trust.rst`
     * - **33**
       - X.509 certificate chain about the Issuer (OPTIONAL). Required for X.509 certificate-based authentication.
-      - `RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates`_.
+      - :rfc:`9360`. 
 
 .. note::
     The `x5chain` is included in the unprotected header with the aim to allow the Holder to update the X.509 certificate chain, related to the `Mobile Security Object` issuer, without invalidating the signature.
@@ -881,11 +882,4 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
    - The `vctm.claims` parameter in SD-JWT and the `nameSpaces` structure in mDoc-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond to `nameSpaces`, including attribute names, values, and salt values.
    - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for mDoc-CBOR Digital Credentials.
 
-
-.. _Attribute Namespaces: pid-eaa-data-model.html#attribute-namespaces
-.. _Mobile Security Object: pid-eaa-data-model.html#mobile-security-object
-.. _RFC 9360 CBOR Object Signing and Encryption (COSE) - Header Parameters for Carrying and Referencing X.509 Certificates: https://datatracker.ietf.org/doc/rfc9360/
-.. _Trust Model: trust.html
-.. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/tree/main
-.. _PID Rulebook: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-3/annex-3.01-pid-rulebook.md
 
