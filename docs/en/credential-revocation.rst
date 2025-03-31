@@ -234,7 +234,7 @@ Authentic Sources MUST use this notification service in the following cases:
 Validity Verification Mechanisms 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For the verification of the validity status of a long-lived Digital Credential the OAuth Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario. Depending on the capabilities supported by the Credential Issuer, Wallet Instance and Relying Party, in the remote scenario OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_) MAY be supported as well. The following table sums up the required revocation mechanisms for verifying the status of long-lived Digital Credentials.
+For the verification of the validity status of a long-lived Digital Credential the OAuth Status List (`TOKEN-STATUS-LIST`_) MUST be supported for both the remote and proximity scenario.  In the remote scenario, the Credential Issuer, Wallet Instance and Relying Party MAY support OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_). The following table sums up the required revocation mechanisms for verifying the status of long-lived Digital Credentials.
  
  .. _table_revocation_mechanisms: 
  .. list-table:: 
