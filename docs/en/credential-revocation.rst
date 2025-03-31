@@ -870,7 +870,7 @@ In this specification, the roles of Credential Issuer and Status Issuer (i.e., t
  
    - Decompress the Status List with a decompressor that is compatible with DEFLATE [:rfc:`1951`] and ZLIB [:rfc:`1950`].
    - Retrieve the status value of the index specified in the Digital Credential as described in :ref:`sec_status_list_creation`. Fail if the provided index is out of bounds of the Status List.
-   - Check the status value as described in `Status Lists Creation`_.
+   - Check the status value as described in :ref:`sec_status_list_creation`.
  
  If any of these checks fails, no statement about the status of the Digital Credential can be made and the Digital Credential SHOULD be rejected.
  
