@@ -27,7 +27,7 @@ Defined Terms and Acronyms
 
 The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framework*, *Attribute*, *Electronic Attestations of Attributes Provider* or *Trust Service Provider (TSP)*, *Person Identification Data (PID)*, *Revocation List*, *Qualified Electronic Attestations of Attributes Provider* or *Qualified Trust Service Provider (QTSP)*, *Electronic Attestation of Attributes (EAA)*, are defined in the `EIDAS-ARF`_.
 
-Below are the description of acronyms and definitions which are useful for further insights into topics that complement the IT-Wallet System and the interacting components.
+Below is the description of acronyms and definitions which are useful for further insights into topics that complement the IT-Wallet System and the interacting components.
 
 .. list-table::
    :header-rows: 1
