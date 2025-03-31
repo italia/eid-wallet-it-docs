@@ -198,7 +198,7 @@ The Metadata type document MUST be a JSON object and contains the following para
       - **Description**
       - **Reference**
     * - **name**
-      - REQUIRED. Human-readable name of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited by a # character as defined in :rfc:`5646` (e.g. *name#it-IT*).
+      - REQUIRED. Human-readable name of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited with the character ``#`` as defined in :rfc:`5646` (e.g. *name#it-IT*).
       - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **description**
       - REQUIRED. A human-readable description of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited by a # character as defined in :rfc:`5646`.
