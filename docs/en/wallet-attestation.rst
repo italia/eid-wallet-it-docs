@@ -9,7 +9,7 @@ This section describes how the Wallet Provider issues a Wallet Attestation.
 .. figure:: ../../images/wallet_instance_acquisition.svg
    :name: Sequence Diagram for Wallet Attestation acquisition
    :alt: The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below.
-   :target: https://www.plantuml.com/plantuml/uml/VLJ1Jjj04BtlLupWK8ZIIwNsWDGAH2bGgWe1BHSaQsmFzZJEhhixTff-VMTD4YV6pS4IoxvvyzxRcPm6GI_Dl3BOYBFDF2LlIiu9dfsJrFqnRse5SCOrMZ46Ct4U3du4yWU00PgW-2q473nYLP70jLLccr67mhg6NTHdQZaZHGaLdcK9z-HRNiDH0Xo6shCj2azaHplSUjUgK0yfPZEoULUQPZDZJ5JrzfDsFO4x-jrG442mj01NaqTXPq5Ab2VhzPOzQKkOJ5QyPo9QqA4casYOMnIA7en-Azhpah8PyBEMdVjbBQxmM9USmHNwV86Uu8QMOJ81LkuMkSAq8hD5S4asIecjBL1TqboF5Sne2JMoLzwlZpVQttZhXC2rvAE4gHg4ms_NbrSFbtSN5z_DYv1X9DerHWRkMOqIVA5yxHjj3YuLP0ii0UOacAEWqG2xJcObKlj4aQ92iZAosuAsuuX1wzS1UpVWB87mdE9W34eZUcL-zoAd7LOp5bCigPYi955jKc8eDLmCS7zrzkxzXwCDtnJg9gquItujPiVZJ7jUJ3bltUsJFdov-cyIkB0eZIUz-mZnT3HKCeL5bt-oAT9dJ0IBZG2KS0B5Ii5cwCz282_iNZCUcrZInyNhaWJNDIfdrDxhATxim8Ab_1_P5COzJtSVQ_faz-K73rYyrFIle48Z7-LT_txMDoFUpzizsNoFWTtfwnSZ7iSN8sxeu0SfxWPR5iQA_rBUBKIhV-Uc2MmBs6DEiEZWuqdrAzJlnSz8Z39OXH70-BECGyVRZoDZmjrCzzVga5ukNoSzMDDnn61VjyzQPaurXsPU_GC0
+   :target: https://www.plantuml.com/plantuml/svg/VLJ1Jjj04BtlLupWK8ZIIwNsWDGAH2bGgWe1BHSaQsmFzZJEhhixTff-VMTD4YV6pS4IoxvvyzxRcPm6GI_Dl3BOYBFDF2LlIiu9dfsJrFqnRse5SCOrMZ46Ct4U3du4yWU00PgW-2q473nYLP70jLLccr67mhg6NTHdQZaZHGaLdcK9z-HRNiDH0Xo6shCj2azaHplSUjUgK0yfPZEoULUQPZDZJ5JrzfDsFO4x-jrG442mj01NaqTXPq5Ab2VhzPOzQKkOJ5QyPo9QqA4casYOMnIA7en-Azhpah8PyBEMdVjbBQxmM9USmHNwV86Uu8QMOJ81LkuMkSAq8hD5S4asIecjBL1TqboF5Sne2JMoLzwlZpVQttZhXC2rvAE4gHg4ms_NbrSFbtSN5z_DYv1X9DerHWRkMOqIVA5yxHjj3YuLP0ii0UOacAEWqG2xJcObKlj4aQ92iZAosuAsuuX1wzS1UpVWB87mdE9W34eZUcL-zoAd7LOp5bCigPYi955jKc8eDLmCS7zrzkxzXwCDtnJg9gquItujPiVZJ7jUJ3bltUsJFdov-cyIkB0eZIUz-mZnT3HKCeL5bt-oAT9dJ0IBZG2KS0B5Ii5cwCz282_iNZCUcrZInyNhaWJNDIfdrDxhATxim8Ab_1_P5COzJtSVQ_faz-K73rYyrFIle48Z7-LT_txMDoFUpzizsNoFWTtfwnSZ7iSN8sxeu0SfxWPR5iQA_rBUBKIhV-Uc2MmBs6DEiEZWuqdrAzJlnSz8Z39OXH70-BECGyVRZoDZmjrCzzVga5ukNoSzMDDnn61VjyzQPaurXsPU_GC0
 
 **Step 1**: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.
 
@@ -18,7 +18,6 @@ This section describes how the Wallet Provider issues a Wallet Attestation.
   1. Verify the existence of Cryptographic Hardware Keys. If none exist, Wallet Instance re-initialization is required.
   2. Generate an ephemeral asymmetric key pair for Wallet Attestation, linking the public key to the attestation.
   3. Verify the Wallet Provider's federation membership and retrieve its metadata.
-
 
 **Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a one-time "challenge" from the `Nonce endpoint`_ of the Wallet Provider Backend. This "challenge" takes the form of a ``nonce``, which is required to be unpredictable and serves as the main defense against replay attacks. 
 The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
@@ -39,7 +38,7 @@ Below is a non-normative example of a Nonce Response.
     Content-Type: application/json
 
     {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
+      "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t"
     }
 
 **Step 7**: The Wallet Instance performs the following actions:
@@ -52,7 +51,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 .. code-block:: json
 
   {
-    "challenge": "0fe3cbe0-646d-44b5-8808-917dd5391bd9",
+    "challenge": "i4ThI2Jhbu81i8mqyWEuDG5t",
     "jwk_thumbprint": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
   }
 
@@ -126,9 +125,9 @@ Below is a non-normative example of a Wallet Attestation Issuance Request.
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Attestation valid for a maximum of 24 hours.
 
-**Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response, containing the Wallet Attestation signed by the Wallet Provider. The Wallet Instance will then perform security, integrity, and trust verification of the Wallet Attestation and its issuer.
+**Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet Attestation in at least three formats: JWT, SD-JWT and mdoc. The Wallet Instance will then perform security and integrity verification of the Wallet Attestations received in addition to trust verification of its Issuer.
 
-The JSON Object returned in the response MUST have the following parameter:
+The JSON Object returned in the response has the following claim:
 
 .. list-table::
     :widths: 20 60 20
@@ -138,7 +137,7 @@ The JSON Object returned in the response MUST have the following parameter:
       - **Description**
       - **Reference**
     * - **wallet_attestations**
-      -  Contains an array of one or more issued Wallet Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
+      - REQUIRED. Contains an array of one or more issued Wallet Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
       - This specification.
 
 Each JSON Object contained in the ``wallet_attestations`` array MUST have the following form:
@@ -151,11 +150,12 @@ Each JSON Object contained in the ``wallet_attestations`` array MUST have the fo
       - **Description**
       - **Reference**
     * - **format**
-      - A string identifying the Data Model used to create and represent the Wallet Attestation. It MUST be either ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
+      - A string identifying the Data Model used to create and represent the Wallet Attestation. It MUST be either ``jwt``, ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
       - This specification.
     * - **wallet_attestation**
       - A string representing the Wallet Attestation. If
         
+        - the Wallet Attestation is in JWT format, then the claim's value MUST be a string that is a JWT.
         - the Wallet Attestation is in SD-JWT format, then the claim's value MUST be a string that is an SD-JWT VC.
         - the Wallet Attestation is in mdoc format, then the claim's value is the base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO.18013-5]. This structure MUST contain all Namespaces and IssuerSignedItems that are included in the MobileSecurityObject.
       
@@ -170,6 +170,10 @@ Below is a non-normative example of the response.
 
     {
       "wallet_attestations": [
+        {
+          "format": "jwt",
+          "wallet_attestation": "ey..."
+        },
         {
           "format": "dc+sd-jwt",
           "wallet_attestation": "ey..."
