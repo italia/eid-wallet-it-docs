@@ -165,7 +165,7 @@ allowing them to hold their Digital Credentials and interact with other particip
 such as Credential Issuers and Relying Parties.</p>
 <p>These Credentials are a set of data that can uniquely identify a natural or legal person,
 along with other Qualified and non-qualified Electronic Attestations of Attributes,
-also known as QEAAs and EAAs respectively, or (Q)EAAs for short <a class="footnote-reference brackets" href="#id68" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+also known as QEAAs and EAAs respectively, or (Q)EAAs for short <a class="footnote-reference brackets" href="#id69" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>Once a User installs the mobile app on their device, such an installation is referred to as a Wallet Instance for the User.</p>
 <p>By supporting the mobile app, the Wallet Provider ensures the security and reliability of the entire Wallet Solution,
 as it is responsible for issuing the Wallet Attestation,
@@ -212,7 +212,7 @@ It primarily certifies the <strong>authenticity</strong>, <strong>integrity</str
 This ensures that only the User can access these keys, thus preventing unauthorized usage or tampering. The WSCD MAY be implemented using at least one of the approaches listed below:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Local Internal WSCD</strong>: The WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS, or the Trusted Execution Environment (TEE) and Strongbox on Android <a class="footnote-reference brackets" href="#id70" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p></li>
+<li><p><strong>Local Internal WSCD</strong>: The WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS, or the Trusted Execution Environment (TEE) and Strongbox on Android <a class="footnote-reference brackets" href="#id71" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p></li>
 <li><p><strong>Local External WSCD</strong>: The WSCD is hardware external to the User's device, such as a smart card compliant with <em>GlobalPlatform</em> and supporting <em>JavaCard</em>.</p></li>
 <li><p><strong>Remote WSCD</strong>: The WSCD utilizes a remote Hardware Security Module (HSM).</p></li>
 <li><p><strong>Local Hybrid WSCD</strong>: The WSCD involves a pluggable internal hardware component within the User's device, such as an <em>eUICC</em> that adheres to <em>GlobalPlatform</em> standards and supports <em>JavaCard</em>.</p></li>
@@ -229,7 +229,7 @@ This ensures that only the User can access these keys, thus preventing unauthori
 <section id="wallet-instance">
 <h2>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h2>
 <p>The Wallet Instance serves as a unique and secure device for authenticating the User within the Wallet ecosystem.
-It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner <a class="footnote-reference brackets" href="#id69" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+It establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner <a class="footnote-reference brackets" href="#id70" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
 <p>The Wallet Instance allows other entities within the ecosystem to establish trust with it, by consistently
 presenting a Wallet Attestation during interactions with PID Providers,
 (Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider,
@@ -251,10 +251,10 @@ used as proof of both the Wallet Instance authenticity and the WSCD trustworthin
 </div>
 <p>As shown in <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 2</span></a>, the Wallet Instance has four distinct states: <strong>Installed</strong>, <strong>Operational</strong>, <strong>Valid</strong>, and <strong>Uninstalled</strong>.
 Each state represents a specific functional status and determines the actions that can be performed.</p>
-<figure class="align-center" id="id83" style="width: 100%">
+<figure class="align-center" id="id84" style="width: 100%">
 <span id="fig-wallet-instance-states"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/XPBHIuH04CRVzwyOk9SAH8ipGaHESW-4kEpihg1wi7ElMzXRHLUY_lfMAvtMZlD5cUytttpZxgnMMQMQlI0xdZDW-r9zGCxgJSLBnGj9Y0OKWrZgjn0iXyby7hgEyrE_BLcLjM0cOBBLJw-iCy4rxJXNJbzRIJxuH9TJT-eI0W1FPozWvSMxj89XaWSFCSIBzBubXd8FjcOONIt-Wol-jbEQHa4xEhpkK5m_xcpWWctLAF6IhaUaET_V5AAel5VHiE3axfI68SHfQYTBwjkT51pCrltMlmv97BNjkFKR0wifZT5c7trCxDz6U9POrelO4RqvP3jU6n4egB4gnQlYiJWLKf7fyUF14bWQrHTBHwZv9_FEBmBVRhy2CcCorrV-2m00"><img alt="_images/Wallet_Instance_States.svg" src="_images/Wallet_Instance_States.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wallet Instance Lifecycle.</span><a class="headerlink" href="#id83" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Wallet Instance Lifecycle.</span><a class="headerlink" href="#id84" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -333,10 +333,10 @@ uninstall (<strong>WI UNINST</strong>) transition, leading to the <strong>Uninst
 <p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle,
 <a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 3</span></a> shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
 and the effect on their local storage.</p>
-<figure class="align-center" id="id84" style="width: 100%">
+<figure class="align-center" id="id85" style="width: 100%">
 <span id="fig-wallet-instance-lifecycle"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00"><img alt="_images/wallet_instance_lifecycle.svg" src="_images/wallet_instance_lifecycle.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Wallet Instance Lifecycle Management.</span><a class="headerlink" href="#id84" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Wallet Instance Lifecycle Management.</span><a class="headerlink" href="#id85" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Through a Wallet Instance in an <strong>Installed</strong> state, a User is able to start the <strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>).
@@ -667,10 +667,10 @@ eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
 <li><p><strong>PID Providers</strong> when notified by the Authentic Source of the PID (ANPR) of the User’s death.</p></li>
 <li><p><strong>Legal Authorities or the Supervisory Body</strong> in cases of proven illegal activities.</p></li>
 </ul>
-<figure class="align-center" id="id85" style="width: 80%">
+<figure class="align-center" id="id86" style="width: 80%">
 <span id="fig-wallet-instance-revoc-entities"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/uml/fL9TZn8z5BwVNt5URbusSPSRhxnQ5oOHuog1tHYJJIPbMk74JZksf-1e_E-UKmiguvqafFIXpyVvk8sa0gNELl-XQstI1lP4VNmncmLrlDaXxTCsHHDQxyWukcbzD-kjSiAvZgGjRcVpvzShWHxltymw5Sa4XfgvxthlXDEBVlLgkQYRpKEzhjyzV5ZLqwkgMfaGlPkA_ZEOFF8nuRDsX3I0FpfqEw2zWIVtNbbh29QEyxhMJ9XyvvFJAWpJO_wlYGCxTymlRpVvFhc2RnNmvnpdz1wBbZ0kr1cIxxroQcSYIBx_8ooGsw4ip8FHh8FAHixnL-q--0DghkealIh0IRhS8rnOWt8QZcOBR7d0reZ3zwhwPQ0IxSMyRQ9F8QT_UO9Waw6HXpGM5570RIA-ayzTNSQOJCYENQbKu8Eog6K0d8YI13YxD_MNdmbymAz6Drkl1mbmHY3F3aqyPTYaNWg9FWnmnw-ps-kaiKLbeH1fO9FVQiGSJ2fOBaQTowdZ7wdbcTnBr-Db0wjgRMpPiei1ZOSFQtFmhIBqZdz-PYyI2L4OSSUR9EHFvdAg4a84fB1_3J5UW7Extdh2ZuECMzRroMcZQ5-iHrCRPoZq9UCx6KvBU432dFxME9qw-mC0"><img alt="_images/wallet_instance_revocation.svg" src="_images/wallet_instance_revocation.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Entities involved in the Wallet Instance revocation process.</span><a class="headerlink" href="#id85" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Entities involved in the Wallet Instance revocation process.</span><a class="headerlink" href="#id86" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -937,8 +937,8 @@ Authenticator Assurance Level values supported.</p></td>
 </div>
 </section>
 </section>
-<section id="id61">
-<h3>Nonce Endpoint<a class="headerlink" href="#id61" title="Link to this heading">¶</a></h3>
+<section id="id62">
+<h3>Nonce Endpoint<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h3>
 <p>This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.</p>
 <section id="nonce-request">
 <h4>Nonce Request<a class="headerlink" href="#nonce-request" title="Link to this heading">¶</a></h4>
@@ -984,8 +984,8 @@ If any errors occur during the the nonce generation, an error response MUST be r
 </table>
 </section>
 </section>
-<section id="id62">
-<h3>Wallet Instance Management Endpoint<a class="headerlink" href="#id62" title="Link to this heading">¶</a></h3>
+<section id="id63">
+<h3>Wallet Instance Management Endpoint<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h3>
 <p>This is a RESTful API endpoint provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion.
 The following sections describe the registration, status retrieval and revocation requests, along with their corresponding responses, handled by this endpoint, which are required for core <a class="reference external" href="wallet-solution.html#wallet-instance-functionalities">Wallet Instance Functionalities</a>.</p>
 <section id="wallet-instance-registration-request">
@@ -1063,16 +1063,16 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </pre></div>
 </div>
 </section>
-<section id="id63">
-<h4>Wallet Instance Revocation Request<a class="headerlink" href="#id63" title="Link to this heading">¶</a></h4>
+<section id="id64">
+<h4>Wallet Instance Revocation Request<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h4>
 <p>To revoke an active Wallet Instance, a revocation request MUST be sent using the HTTP PATCH method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <cite>application/json</cite>. The request body MUST contain a <code class="docutils literal notranslate"><span class="pre">status</span></code> parameter set to &quot;REVOKED&quot;.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.</p>
 </div>
 </section>
-<section id="id64">
-<h4>Wallet Instance Revocation Response<a class="headerlink" href="#id64" title="Link to this heading">¶</a></h4>
+<section id="id65">
+<h4>Wallet Instance Revocation Response<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h4>
 <p>If a Wallet Instance Revocation Request is successfully processed, the Wallet Provider provides an HTTP Response with a 204 (No Content) status code.</p>
 <p>If any errors occur during the Wallet Instance Revocation, an error response MUST be returned. Refer to <a class="reference external" href="wallet-solution.html#error-handling-for-wallet-instance-management">Error Handling for Wallet Instance Management</a> for details on error codes and descriptions.</p>
 <p>Below is a non-normative example of an error response:</p>
@@ -1215,15 +1215,15 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 </section>
 </section>
-<section id="id65">
-<h3>Wallet Attestation Issuance Endpoint<a class="headerlink" href="#id65" title="Link to this heading">¶</a></h3>
+<section id="id66">
+<h3>Wallet Attestation Issuance Endpoint<a class="headerlink" href="#id66" title="Link to this heading">¶</a></h3>
 <p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain a Wallet Attestation, by sending a Wallet Attestation Issuance Request.</p>
 <section id="wallet-attestation-issuance-request">
 <h4>Wallet Attestation Issuance Request<a class="headerlink" href="#wallet-attestation-issuance-request" title="Link to this heading">¶</a></h4>
 <p>The request to the Wallet Provider MUST use the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <cite>application/json</cite>. The request body MUST contain an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT of the Wallet Attestation Request, including all header and body parameters (see <a class="reference internal" href="#table-wallet-attestation-request-claim"><span class="std std-ref">Table of the Wallet Attestation Request Body</span></a> below).</p>
 </section>
 <section id="table-wallet-attestation-request-claim">
-<span id="id66"></span><h4>Wallet Attestation Request<a class="headerlink" href="#table-wallet-attestation-request-claim" title="Link to this heading">¶</a></h4>
+<span id="id67"></span><h4>Wallet Attestation Request<a class="headerlink" href="#table-wallet-attestation-request-claim" title="Link to this heading">¶</a></h4>
 <p>The JOSE header of the Wallet Attestation Request JWT MUST contain the following parameters:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1520,15 +1520,15 @@ Below is a non-normative example of an error response:</p>
 <section id="external-references">
 <h2>External references<a class="headerlink" href="#external-references" title="Link to this heading">¶</a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id68" role="doc-footnote">
+<aside class="footnote brackets" id="id69" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Definitions are inherited from the EUDI Wallet Architecture and Reference Framework, version 1.1.0 at the time of writing. Please refer to <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#2-definitions">this page</a> for extended definitions and details.</p>
 </aside>
-<aside class="footnote brackets" id="id69" role="doc-footnote">
+<aside class="footnote brackets" id="id70" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
 <p>Wallet Instance states adhere to the EUDI Wallet Architecture and Reference Framework, as defined <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/9647a408f628569449af6b30a15fed82cd41129a/arf.md#424-eudi-wallet-instance-lifecycle">here</a>.</p>
 </aside>
-<aside class="footnote brackets" id="id70" role="doc-footnote">
+<aside class="footnote brackets" id="id71" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">3</a><span class="fn-bracket">]</span></span>
 <p>Depending on the device operating system, TEE is defined by <a class="reference external" href="https://source.android.com/docs/security/features/trusty">Trusty</a> or <a class="reference external" href="https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web">Secure Enclave</a> for Android and iOS devices, respectively.</p>
 </aside>
@@ -1587,19 +1587,19 @@ Below is a non-normative example of an error response:</p>
 <li><a class="reference internal" href="#federation-entity-metadata">federation_entity metadata</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id61">Nonce Endpoint</a><ul>
+<li><a class="reference internal" href="#id62">Nonce Endpoint</a><ul>
 <li><a class="reference internal" href="#nonce-request">Nonce Request</a></li>
 <li><a class="reference internal" href="#nonce-response">Nonce Response</a></li>
 <li><a class="reference internal" href="#error-handling-for-nonce-generation">Error Handling for Nonce Generation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id62">Wallet Instance Management Endpoint</a><ul>
+<li><a class="reference internal" href="#id63">Wallet Instance Management Endpoint</a><ul>
 <li><a class="reference internal" href="#wallet-instance-registration-request">Wallet Instance Registration Request</a></li>
 <li><a class="reference internal" href="#wallet-instance-registration-response">Wallet Instance Registration Response</a></li>
 <li><a class="reference internal" href="#wallet-instance-retrieval-request">Wallet Instance Retrieval Request</a></li>
 <li><a class="reference internal" href="#wallet-instance-retrieval-response">Wallet Instance Retrieval Response</a></li>
-<li><a class="reference internal" href="#id63">Wallet Instance Revocation Request</a></li>
-<li><a class="reference internal" href="#id64">Wallet Instance Revocation Response</a></li>
+<li><a class="reference internal" href="#id64">Wallet Instance Revocation Request</a></li>
+<li><a class="reference internal" href="#id65">Wallet Instance Revocation Response</a></li>
 <li><a class="reference internal" href="#error-handling-for-wallet-instance-management">Error Handling for Wallet Instance Management</a><ul>
 <li><a class="reference internal" href="#common-error-responses">Common Error Responses</a></li>
 <li><a class="reference internal" href="#request-specific-error-responses">Request-Specific Error Responses</a></li>
@@ -1607,7 +1607,7 @@ Below is a non-normative example of an error response:</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id65">Wallet Attestation Issuance Endpoint</a><ul>
+<li><a class="reference internal" href="#id66">Wallet Attestation Issuance Endpoint</a><ul>
 <li><a class="reference internal" href="#wallet-attestation-issuance-request">Wallet Attestation Issuance Request</a></li>
 <li><a class="reference internal" href="#table-wallet-attestation-request-claim">Wallet Attestation Request</a></li>
 <li><a class="reference internal" href="#wallet-attestation-issuance-response">Wallet Attestation Issuance Response</a></li>
@@ -1647,7 +1647,7 @@ Below is a non-normative example of an error response:</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 31/03/2025.
+      Last updated on 01/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -293,7 +293,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <td><p>JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Sections 11.2.3 and A.3.2.</p>
 <blockquote>
 <div><ul>
-<li><p><strong>format</strong>: String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>dc+sd-jwt</em>&quot; in case of SD-JWT VC (See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.1.) and &quot;<em>mso_mdoc</em>&quot; in case of MDOC (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.2.1.).</p></li>
+<li><p><strong>format</strong>: String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string &quot;<em>dc+sd-jwt</em>&quot; in case of SD-JWT VC (See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.1.) and &quot;<em>mso_mdoc</em>&quot; in case of mDoc (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.2.1.).</p></li>
 <li><p><strong>scope</strong>: JSON String identifying the supported <em>scope</em> value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the <em>scope</em> values in the <em>scopes_supported</em> parameter of the Authorization Server. [See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section  11.2.3].</p></li>
 <li><p><strong>cryptographic_binding_methods_supported</strong>: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value &quot;<em>jwk</em>&quot; for &quot;dc+sd-jwt&quot; format and &quot;<em>cose_key</em>&quot; for &quot;mso_mdoc&quot;.</p></li>
 <li><p><strong>credential_signing_alg_values_supported</strong>: JSON Array of case sensitive strings that identify the algorithms that the PID/(Q)EAA Provider MUST support to sign the issued Credential. See Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> for more details.</p></li>
@@ -1140,7 +1140,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 31/03/2025.
+      Last updated on 01/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
