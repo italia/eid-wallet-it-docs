@@ -51,7 +51,7 @@ Credential Issuers define the retention period for Credentials based on sector-s
 Relying Party Log Retention Policy
 ----------------------------------
 
-Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service, the expiration, or the revocation date of the presented Credentials, unless legal obligations require otherwise.
+Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service or the expiration date of the presented Credentials, unless legal obligations require otherwise.
 
 
 - Relying Parties SHOULD not log Credential presentation disclosure maps, where not necessary. 
