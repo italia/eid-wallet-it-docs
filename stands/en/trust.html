@@ -134,11 +134,12 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
@@ -157,8 +158,7 @@
             
   <section id="the-infrastructure-of-trust">
 <span id="trust-rst"></span><h1>The Infrastructure of Trust<a class="headerlink" href="#the-infrastructure-of-trust" title="Link to this heading">¶</a></h1>
-<p>The EUDI Wallet Architecture Reference Framework (<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>) describes the Trust Model as a <em>&quot;collection of rules that ensure the legitimacy of the components and the entities involved in the EUDI Wallet ecosystem&quot;</em>.</p>
-<p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, public keys, X.509 certificates, and the revocation status of the participants, also called Federation Entities.</p>
+<p>This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 certificates, and the revocation status of the participants, also called Federation Entities.</p>
 <p>The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="_images/trust-roles.svg"><img alt="federation portrait" src="_images/trust-roles.svg" style="width: 100%;" /></a>
@@ -170,11 +170,11 @@ representation, both the Trust Anchor and the Intermediates assume the role of R
 </figure>
 <section id="federation-roles">
 <h2>Federation Roles<a class="headerlink" href="#federation-roles" title="Link to this heading">¶</a></h2>
-<p>All the participants are Federation Entities that MUST be registered by an Registration Body,
-except for Wallet Instances which are End-User's personal devices certified by their Wallet Provider.</p>
+<p>All the participants are Federation Entities that MUST be registered by a Registration Body,
+except for Wallet Instances which are End-User's personal devices authenticated by their Wallet Provider.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Wallet Instance, as a personal device, is certified as reliable through a verifiable attestation issued and signed by a trusted third party.</p>
+<p>The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.</p>
 <p>This is called <em>Wallet Attestation</em> and is documented in <a class="reference external" href="wallet-attestation.html">the dedicated section</a>.</p>
 </div>
 <p>Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
@@ -221,7 +221,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </tr>
 <tr class="row-odd"><td><p>Trusted List</p></td>
 <td><p>Trust Anchor</p></td>
-<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint must be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates.</p></td>
+<td><p>The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats MAY be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities MUST be synchronized across these endpoints, ensuring consistent availability of information through different channels.</p></td>
 </tr>
 <tr class="row-even"><td><p>Wallet Provider</p></td>
 <td><p>Leaf</p></td>
@@ -232,7 +232,7 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </section>
 <section id="general-properties">
 <h2>General Properties<a class="headerlink" href="#general-properties" title="Link to this heading">¶</a></h2>
-<p>The architecture of the trust infrastructure based on OpenID Federation is built upon several core principles:</p>
+<p>The architecture of the trust infrastructure is built upon the following core principles:</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Identifier</p></th>
@@ -275,13 +275,13 @@ except for Wallet Instances which are End-User's personal devices certified by t
 </tr>
 <tr class="row-even"><td><p>P9</p></td>
 <td><p><strong>Decentralization</strong></p></td>
-<td><p>Unlike traditional centralized systems, the OpenID Federation model promotes a decentralized approach. This ensures that no single entity has control over the entire system, enhancing privacy and security for all participants.</p></td>
+<td><p>Unlike traditional centralized systems, the trust infrastructure should allow a decentralized approach.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="trust-infrastructure-functional-requirements">
-<h2>Trust Infrastructure Functional Requirements<a class="headerlink" href="#trust-infrastructure-functional-requirements" title="Link to this heading">¶</a></h2>
+<section id="trust-infrastructure-requirements">
+<h2>Trust Infrastructure Requirements<a class="headerlink" href="#trust-infrastructure-requirements" title="Link to this heading">¶</a></h2>
 <p>This section includes the requirements necessary for the successful implementation and operation of the infrastructure of trust.</p>
 <table class="docutils align-default" id="id3">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">Functional Requirements</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
@@ -298,88 +298,55 @@ except for Wallet Instances which are End-User's personal devices certified by t
 <td><p><strong>Entity Authentication</strong>: the system must implement mechanisms for authenticating entities within the federation, ensuring compliance with the shared rules.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR3</p></td>
-<td><p><strong>Signature Validation</strong>: the system must support the creation, verification, and validation of electronic signatures and provide standard and secure mechanisms to obtain the public keys required for the signature validation.</p></td>
+<td><p><strong>Signature Validation</strong>: the system must support the creation, verification, and validation of electronic signatures and provide standard and secure mechanisms to obtain the cryptographic public keys required for the signature validation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR4</p></td>
 <td><p><strong>Time Stamping</strong>: the signed artifacts must contain time stamps to ensure the integrity and non-repudiation of transactions over time, thanks to the interfaces, services, storage model and approaches defined within the federation.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR5</p></td>
-<td><p><strong>Certificate Validation</strong>: the system requires confidential transmission, secured via TLS over HTTP, and validation of certificates for website authentication, ensuring they meet eIDAS criteria.</p></td>
+<td><p><strong>Certificate Validation</strong>: the system requires confidential transmission, secured via TLS over HTTP, and validation of certificates for website authentication.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR6</p></td>
 <td><p><strong>Interoperability and Standards Compliance</strong>: ensure interoperability between federation members by adhering to technical standards, facilitating cross-border electronic transactions.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR7</p></td>
-<td><p><strong>Data Protection and Privacy</strong>: implement data protection measures in compliance with GDPR and eIDAS regulations, ensuring the privacy and security of personal data processed within the federation.</p></td>
+<td><p><strong>Data Protection and Privacy</strong>: implement data protection measures in compliance with GDPR regulations, ensuring the privacy and security of personal data processed within the federation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR8</p></td>
-<td><p><strong>User Consent and Control</strong>: design mechanisms for obtaining and managing user consent, empowering users with control over their personal information.</p></td>
+<td><p><strong>Dispute Resolution and Liability</strong>: establish clear procedures for dispute resolution and define liability among federation members.</p></td>
 </tr>
 <tr class="row-even"><td><p>FR9</p></td>
-<td><p><strong>Audit and Logging</strong>: the system must minimize data, anonymize if possible, define retention periods, secure access, and storage encryption. This protects privacy while enabling security and accountability.</p></td>
+<td><p><strong>Emergency and Revocation Services</strong>: implement mechanisms for the immediate revocation of participants in case of security breaches or other emergencies.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FR10</p></td>
-<td><p><strong>Dispute Resolution and Liability</strong>: establish clear procedures for dispute resolution and define liability among federation members, in accordance with eIDAS provisions.</p></td>
-</tr>
-<tr class="row-even"><td><p>FR11</p></td>
-<td><p><strong>Accessibility</strong>: ensure that the system is accessible to all users, including those with disabilities, aligning with eIDAS and local accessibility standards.</p></td>
-</tr>
-<tr class="row-odd"><td><p>FR12</p></td>
-<td><p><strong>Emergency and Revocation Services</strong>: implement mechanisms for the immediate revocation of electronic identification means and participants in case of security breaches or other emergencies.</p></td>
-</tr>
-<tr class="row-even"><td><p>FR13</p></td>
 <td><p><strong>Scalable Trust Infrastructure</strong>: the system must support scalable trust establishment mechanisms, leveraging approaches and technical solutions that complement delegation transitive approaches to efficiently manage trust relationships as the federation grows, removing central registries that might technically or administratively fail.</p></td>
 </tr>
-<tr class="row-odd"><td><p>FR14</p></td>
+<tr class="row-even"><td><p>FR11</p></td>
 <td><p><strong>Efficient Storage Scalability</strong>: implement a storage solution that scales horizontally to accommodate increasing data volumes while minimizing central storage and administrative costs. The system should enable members to independently store and present historical trust attestations and signed artifacts during dispute resolutions, with the federation infrastructure maintaining only a registry of historical keys to validate the historical data, stored and provided by the participants.</p></td>
 </tr>
-<tr class="row-even"><td><p>FR15</p></td>
+<tr class="row-odd"><td><p>FR12</p></td>
 <td><p><strong>Verifiable Attestation (Trust Mark)</strong>: incorporate a mechanism for issuing and verifying verifiable attestations that serve as proof of compliance with specific profiles or standards. This allows entities within the federation to demonstrate adherence to agreed-upon security, privacy, and operational standards.</p></td>
 </tr>
-<tr class="row-odd"><td><p>FR16</p></td>
-<td><p><strong>Dynamic Policy Language</strong>: develop and implement a dynamic, extensible policy language that allows for the creation and modification of federation policies in response to evolving requirements, technological advancements, and regulatory changes. This policy language should support the specification of rules governing entity behavior, metadata handling, and trust validation within the federation.</p></td>
-</tr>
-<tr class="row-even"><td><p>FR17</p></td>
-<td><p><strong>Automated Policy Enforcement</strong>: the system must automatically enforce federation policies as defined by policy language and verifiable attestations, ensuring that all operations and transactions comply with current rules and standards.</p></td>
-</tr>
-<tr class="row-odd"><td><p>FR18</p></td>
+<tr class="row-even"><td><p>FR13</p></td>
 <td><p><strong>Decentralized Dispute Resolution Mechanism</strong>: design a decentralized mechanism for dispute resolution that allows federation members to independently verify historical trust establishment and signed artifacts, reducing reliance on central authorities and streamlining the resolution process.</p></td>
 </tr>
-<tr class="row-even"><td><p>FR19</p></td>
-<td><p><strong>Adaptive Load Management</strong>: implement adaptive load management strategies to ensure the system remains responsive and efficient under varying loads, particularly during peak usage times or when processing complex tasks.</p></td>
-</tr>
-<tr class="row-odd"><td><p>FR20</p></td>
+<tr class="row-odd"><td><p>FR14</p></td>
 <td><p><strong>Cross-Federation Interoperability</strong>: ensure the system is capable of interoperating with other federations or trust frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.</p></td>
 </tr>
-<tr class="row-even"><td><p>FR21</p></td>
-<td><p><strong>Future-Proof Cryptography</strong>: the system should employ a flexible cryptographic framework that can be updated in response to new threats or advancements in cryptographic research, ensuring long-term security and integrity of federation operations.</p></td>
-</tr>
-<tr class="row-odd"><td><p>FR22</p></td>
+<tr class="row-even"><td><p>FR15</p></td>
 <td><p><strong>Autonomous Registration Bodies</strong>: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.</p></td>
 </tr>
-<tr class="row-even"><td><p>FR23</p></td>
-<td><p><strong>Compliance Evaluation for Federation Entity Candidates</strong>: registration bodies must evaluate the compliance of candidate entities against federation standards before their registration in the federation.</p></td>
+<tr class="row-odd"><td><p>FR16</p></td>
+<td><p><strong>Periodic Auditing of Registration Bodies and Entities</strong>: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities.</p></td>
 </tr>
-<tr class="row-odd"><td><p>FR24</p></td>
-<td><p><strong>Periodic Auditing of Registration Bodies and Entities</strong>: implement mechanisms for the periodic auditing and monitoring of the compliance status of both registration bodies and their registered entities. This ensures ongoing adherence to federation standards and policies.</p></td>
+<tr class="row-even"><td><p>FR17</p></td>
+<td><p><strong>Attestation of Compliance for Personal Devices</strong>: trusted bodies, in the form of federation entities, should issue attestations of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These attestations should be attested and periodically renewed to ensure the devices meet current security standards.</p></td>
 </tr>
-<tr class="row-even"><td><p>FR25</p></td>
-<td><p><strong>Certification of Compliance for Personal Devices</strong>: trusted bodies, in the form of federation entities, should issue certifications of compliance and provide signed proof of such compliance for the hardware of personal devices used within the federation. These certifications should be attested and periodically renewed to ensure the devices meet current security standards.</p></td>
-</tr>
-<tr class="row-odd"><td><p>FR26</p></td>
-<td><p><strong>Certification of Compliance for Cryptographic Devices</strong>: similar to personal devices, personal cryptographic devices used within the federation must also receive certifications of compliance and signed proof thereof from trusted bodies. These certifications should be subject to periodic renewal to reflect the latest security and compliance standards.</p></td>
-</tr>
-<tr class="row-even"><td><p>FR27</p></td>
-<td><p><strong>Transparent Compliance Reporting</strong>: develop a system for transparent reporting and publication of compliance statuses, audit results, and certification renewals for all federation entities. This transparency fosters trust within the federation and with external stakeholders.</p></td>
-</tr>
-<tr class="row-odd"><td><p>FR28</p></td>
+<tr class="row-odd"><td><p>FR18</p></td>
 <td><p><strong>Automated Compliance Monitoring</strong>: the system should include automated tools for monitoring the compliance of entities with federation standards. This automation aids in the early detection of potential compliance issues.</p></td>
 </tr>
-<tr class="row-even"><td><p>FR29</p></td>
+<tr class="row-even"><td><p>FR19</p></td>
 <td><p><strong>Secure Protocol Capabilities Binding</strong>: the secure protocol must enable the exchange of protocol-specific capabilities data as cryptographically-bound metadata attached to a specific identity. This metadata should define the technical capabilities associated with the identity, ensuring verifiable proof and tamper-proof association for robust trust establishment and access control.</p></td>
-</tr>
-<tr class="row-odd"><td><p>FR30</p></td>
-<td><p><strong>Historical Capability</strong>: The system should enable members to present historical trust attestations and signed artifacts, with the federation infrastructure capable of maintaining registry of historical keys to validate the historical data.</p></td>
 </tr>
 </tbody>
 </table>
@@ -910,6 +877,15 @@ The trust evaluation mechanisms are distinct from protocol flows and are impleme
 <p class="admonition-title">Note</p>
 <p>The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.</p>
 </div>
+<p>There are events where keys are unavailable to verify the entire trust chain:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Key Change by Credential Issuer</strong>: The Credential Issuer MAY update its cryptographic keys. The cryptographic keys MUST be considered valid if evaluated within their originally designated validity period unless a security reason makes them unusable. The revocation reason MUST be published. Historical cryptographic keys, i.e. unused or revoked public cryptographic keys, MUST be published using the Federation Historical Keys Endpoint.</p></li>
+<li><p><strong>Change in Credential Types</strong>: If the Credential Issuer changes the Credential <strong>types</strong> issued, for instance deciding not to issue anymore one or more Credential types, the related public cryptographic keys MUST be available for the originally designated validity period.</p></li>
+<li><p><strong>Credential Issuers Merge</strong>: If a Credential Issuer merges with another, creating a new Organizational Entity or working on behalf of another one using a different hostname or domain, the <strong>previously</strong> available federation configuration and historical keys MUST be kept available at the original Credential Issuer's well-known endpoints.</p></li>
+<li><p><strong>Credential Issuer Becomes Inactive</strong>: If a Credential Issuer becomes inactive, its <strong>related</strong> Entity Configuration and Federation Historical Entity Endpoint MUST be kept available.</p></li>
+</ul>
+</div></blockquote>
 </section>
 <section id="offline-trust-attestation-mechanisms">
 <h3>Offline Trust Attestation Mechanisms<a class="headerlink" href="#offline-trust-attestation-mechanisms" title="Link to this heading">¶</a></h3>
@@ -941,6 +917,200 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <p>The details of this endpoint are defined in the <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 8.7.</p>
 <p>Each JWT containing a Trust Chain in the JWT headers can be verified over time, since the entire Trust Chain is verifiable using the Trust Anchor's public key.</p>
 <p>Even if the Trust Anchor has changed its cryptographic keys for digital signature, the Federation Historical Keys endpoint always makes the keys no longer used available for historical signature verifications.</p>
+</section>
+<section id="x-509-pki">
+<h2>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
+<p>The X.509 Public Key Infrastructure (PKI) is a framework designed to create, manage, distribute, use, store, and revoke digital X.509 Certificates. At the heart of X.509 PKI is the concept of a Certificate Authority (CA), which issues digital certificates to entities. These certificates are required for establishing secure communications over networks, including the internet, by enabling encryption and digital signature functionalities. The PKI hierarchy typically involves a root CA at the top, with one or more subordinate CAs beneath, forming a trusted chain. Entities rely on this chain of trust to verify the authenticity of certificates. X.509 standards define the format of public key certificates.</p>
+<p>The integration of OpenID Federation 1.0 with the traditional X.509 based PKI (rfc:5280), complemented by a RESTful API, aims to enhance the infrastructure with additional features, making it navigable and transparent.</p>
+<p>This approach leverages the dynamic and flexible nature of OpenID Federation alongside the requirement of the X.509 Certificates for legacy applications and interoperability purposes, aiming to addresses the evolving needs of verification of the registration status of the federation participants, their compliance to the shared rules and the general and interoperable trust management in multilateral digital ecosystems.</p>
+<p>OpenID Federation and X.509 based PKI share several things in common, as listed below:</p>
+<ul class="simple">
+<li><p><strong>Hierarchical Approach</strong>: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.</p></li>
+<li><p><strong>Decentralization with Multiple Trust Anchors and Intermediates</strong>: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and Intermediates, below one or more Trust Anchors, introduces a level of decentralization.</p></li>
+<li><p><strong>Custom Extensions</strong>: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a policy language.</p></li>
+<li><p><strong>Trust/Certificate Chain</strong>: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through Intermediaries to the end entity (Leaf).</p></li>
+<li><p><strong>Constraints in the Chain</strong>: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediaries, and the domains involved.</p></li>
+<li><p><strong>Public Key Distribution</strong>: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.</p></li>
+<li><p><strong>Registry of Expired Keys</strong>: Maintaining a registry of expired keys is crucial for both, ensuring non-repudiation of past signatures even when keys change.</p></li>
+</ul>
+<section id="federation-trust-anchor-and-x-509-ca">
+<h3>Federation Trust Anchor and X.509 CA<a class="headerlink" href="#federation-trust-anchor-and-x-509-ca" title="Link to this heading">¶</a></h3>
+<p>In the context of OpenID Federation, the Trust Anchor plays a role similar to that of a Certificate Authority (CA) in X.509-based Public Key Infrastructures (PKIs). Both serve as foundational elements of trust within their respective systems. In this document, the term &quot;Trust Anchor&quot; is often used to encompass both concepts. The trust infrastructure described here aligns the OpenID Federation Trust Anchor with the X.509 PKI Certificate Authority, making therefore them a single unique entity supporting both <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5280">RFC5280</a> and OpenID Federation 1.0.</p>
+</section>
+<section id="x-509-certificates-issuance">
+<h3>X.509 Certificates Issuance<a class="headerlink" href="#x-509-certificates-issuance" title="Link to this heading">¶</a></h3>
+<p>In an OpenID Federation, each participant is required to self-issue its Entity Configuration, signing it with one of its cryptographic keys that are attested by Immediate Superiors.</p>
+<p>In the same way, each federation Entity has the autonomy to issue a signed statement about itself in the form of a X.509 Certificate.
+Federation participants that need to issue X.509 Certificates about themselves and for their specific purposes, can issue and sign X.509 Certificates using one of their Federation Entity Keys attested by their Federation Authorities (Immediate Superior). This process aligns the issuance of X.509 Certificates with the federation's delegation paradigm.</p>
+<p>This is feasible because the X.509 Certificate can be verified using a X.509 Certificate Chain, similar to the approach used for Entity Configurations in OpenID Federation.</p>
+<p>Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
+Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.</p>
+<p>When a participant self-issues an X.509 Certificate, it adheres to the following requirements:</p>
+<ol class="arabic simple">
+<li><p><strong>Subject Name</strong>: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> field should contain the Federation Entity unique identifier DNS name, which is included into the <strong>sub</strong> (subject) value in its federation Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
+<li><p><strong>Subject Alternative Name (SAN)</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> that matches the <strong>sub</strong> value of its federation Entity Configuration.</p></li>
+<li><p><strong>DNS Name</strong>: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the <strong>sub</strong> value of its Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
+<li><p><strong>Certificate Revocation List (CRL)</strong>: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.</p></li>
+<li><p><strong>Basic Constraints</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> extension with <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> and a maximum path length of 1 if the certificate issuer is a Federation Intermediate, if it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.</p></li>
+<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For example:</p>
+<ul class="simple">
+<li><p>Permitted:
+- <code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS.1=leaf.example.com</span></code></p></li>
+<li><p>Excluded:
+- <code class="docutils literal notranslate"><span class="pre">DNS=localhost</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=localhost.localdomain</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=127.0.0.1</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.com</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.org</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.net</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=*.example.org</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p>Below a non-normative example of an X.509 Certificate Chain without intermediaries and in plain text, to facilitate the reading.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span><span class="p">:</span>
+<span class="n">Data</span><span class="p">:</span>
+    <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">1</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Validity</span>
+        <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2033</span> <span class="n">GMT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
+        <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
+            <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">4096</span> <span class="n">bit</span><span class="p">)</span>
+            <span class="n">Modulus</span><span class="p">:</span>
+                <span class="mi">00</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="mi">82</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+            <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
+    <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">TRUE</span>
+        <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
+            <span class="n">Certificate</span> <span class="n">Sign</span><span class="p">,</span> <span class="n">CRL</span> <span class="n">Sign</span>
+        <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Key</span> <span class="n">Identifier</span><span class="p">:</span>
+            <span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span>
+        <span class="n">X509v3</span> <span class="n">Authority</span> <span class="n">Key</span> <span class="n">Identifier</span><span class="p">:</span>
+            <span class="n">keyid</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">78</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="n">ab</span><span class="p">:</span><span class="n">cd</span><span class="p">:</span><span class="n">ef</span>
+        <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
+            <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
+              <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">anchors</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="n">ca</span><span class="o">.</span><span class="n">crl</span>
+
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+     <span class="mi">5</span><span class="n">c</span><span class="p">:</span><span class="mi">4</span><span class="n">f</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+
+
+<span class="n">Certificate</span><span class="p">:</span>
+<span class="n">Data</span><span class="p">:</span>
+    <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">1234567890</span> <span class="p">(</span><span class="mh">0x499602d2</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">trust</span><span class="o">-</span><span class="n">anchor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Example</span> <span class="n">Trust</span> <span class="n">Anchor</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Validity</span>
+        <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2024</span> <span class="n">GMT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
+        <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
+            <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">2048</span> <span class="n">bit</span><span class="p">)</span>
+            <span class="n">Modulus</span><span class="p">:</span>
+                <span class="mi">00</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="mi">82</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+            <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
+    <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">pathlen</span><span class="p">:</span><span class="mi">1</span>
+        <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
+            <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
+        <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="p">:</span>
+            <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+        <span class="n">X509v3</span> <span class="n">Name</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">Permitted</span><span class="p">:</span>
+              <span class="n">URI</span><span class="mf">.1</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+              <span class="n">DNS</span><span class="mf">.1</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+            <span class="n">Excluded</span><span class="p">:</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span><span class="o">.</span><span class="n">localdomain</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="mf">127.0.0.1</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+              <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">net</span>
+              <span class="n">DNS</span><span class="o">=*.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+        <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
+            <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
+              <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">trust</span><span class="o">-</span><span class="n">ancor</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">crl</span>
+
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+     <span class="mi">5</span><span class="n">c</span><span class="p">:</span><span class="mi">4</span><span class="n">f</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+
+
+<span class="n">Certificate</span><span class="p">:</span>
+<span class="n">Data</span><span class="p">:</span>
+    <span class="n">Version</span><span class="p">:</span> <span class="mi">3</span> <span class="p">(</span><span class="mh">0x2</span><span class="p">)</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">987654321</span> <span class="p">(</span><span class="mh">0x3ade68b1</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+    <span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Validity</span>
+        <span class="n">Not</span> <span class="n">Before</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">Not</span> <span class="n">After</span> <span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2024</span> <span class="n">GMT</span>
+    <span class="n">Subject</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+    <span class="n">Subject</span> <span class="n">Public</span> <span class="n">Key</span> <span class="n">Info</span><span class="p">:</span>
+        <span class="n">Public</span> <span class="n">Key</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">rsaEncryption</span>
+            <span class="n">Public</span><span class="o">-</span><span class="n">Key</span><span class="p">:</span> <span class="p">(</span><span class="mi">2048</span> <span class="n">bit</span><span class="p">)</span>
+            <span class="n">Modulus</span><span class="p">:</span>
+                <span class="mi">00</span><span class="p">:</span><span class="n">af</span><span class="p">:</span><span class="mi">82</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+            <span class="n">Exponent</span><span class="p">:</span> <span class="mi">65537</span> <span class="p">(</span><span class="mh">0x10001</span><span class="p">)</span>
+    <span class="n">X509v3</span> <span class="n">extensions</span><span class="p">:</span>
+        <span class="n">X509v3</span> <span class="n">Basic</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">CA</span><span class="p">:</span><span class="n">FALSE</span>
+        <span class="n">X509v3</span> <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span>
+            <span class="n">Digital</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Key</span> <span class="n">Encipherment</span>
+        <span class="n">X509v3</span> <span class="n">Subject</span> <span class="n">Alternative</span> <span class="n">Name</span><span class="p">:</span>
+            <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+        <span class="n">X509v3</span> <span class="n">Name</span> <span class="n">Constraints</span><span class="p">:</span>
+            <span class="n">Permitted</span><span class="p">:</span>
+              <span class="n">URI</span><span class="mf">.1</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+              <span class="n">DNS</span><span class="mf">.1</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+        <span class="n">X509v3</span> <span class="n">CRL</span> <span class="n">Distribution</span> <span class="n">Points</span><span class="p">:</span>
+            <span class="n">Full</span> <span class="n">Name</span><span class="p">:</span>
+              <span class="n">URI</span><span class="p">:</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">crl</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">crl</span>
+
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+     <span class="mi">7</span><span class="n">d</span><span class="p">:</span><span class="mi">6</span><span class="n">e</span><span class="p">:</span><span class="mi">5</span><span class="n">f</span><span class="p">:</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach, enabling X.509 certificate issuance delegation, introduces innovative practices for certificate management using the underlying trust relationships established within the OpenID Federation.</p>
+</section>
+<section id="x-509-certificate-revocation">
+<h3>X.509 Certificate Revocation<a class="headerlink" href="#x-509-certificate-revocation" title="Link to this heading">¶</a></h3>
+<p>An X.509 Certificate can be revoked by its Issuer.
+Revocation lists, and or any other revocation check mechanisms, are required only for X.509 Certificate with expiration time superior to 24 hours, otherwise they are not required.</p>
+<p>When the X.509 Certificate issuer is the Leaf and therefore the X.509 Certificate is about itself, if the certificate expiration time is superior than 24 hours from the <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code> time, it MUST implement a CRL about the issued certificate and keep it updated.
+When the X.509 Certificate issuer is an Immediate superior, such as the Trust Anchor or a Intermediate, and it revokes the certificate about the Leaf, therefore the X.509 Certificate about one of the Leaves Federation Entity Key. This action invalidates the entire Trust Chain associated with that Leaf's cryptographic public key, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be swiftly addressed.</p>
+<p>Below a non-normative example, in plain text, examplify the content of a CRL.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Certificate</span> <span class="n">Revocation</span> <span class="n">List</span> <span class="p">(</span><span class="n">CRL</span><span class="p">):</span>
+<span class="n">Version</span><span class="p">:</span> <span class="mi">2</span> <span class="p">(</span><span class="mh">0x1</span><span class="p">)</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+<span class="n">Issuer</span><span class="p">:</span> <span class="n">CN</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="n">O</span><span class="o">=</span><span class="n">Leaf</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="n">IT</span>
+<span class="n">Last</span> <span class="n">Update</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">1</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+<span class="n">Next</span> <span class="n">Update</span><span class="p">:</span> <span class="n">Sep</span> <span class="mi">8</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+<span class="n">Revoked</span> <span class="n">Certificates</span><span class="p">:</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">987654320</span>
+        <span class="n">Revocation</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Aug</span> <span class="mi">25</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">CRL</span> <span class="n">Entry</span> <span class="n">Extensions</span><span class="p">:</span>
+            <span class="n">Reason</span> <span class="n">Code</span><span class="p">:</span> <span class="n">Key</span> <span class="n">Compromise</span>
+    <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">987654321</span>
+        <span class="n">Revocation</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Aug</span> <span class="mi">30</span> <span class="mi">15</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="mi">2023</span> <span class="n">GMT</span>
+        <span class="n">CRL</span> <span class="n">Entry</span> <span class="n">Extensions</span><span class="p">:</span>
+            <span class="n">Reason</span> <span class="n">Code</span><span class="p">:</span> <span class="n">Cessation</span> <span class="n">of</span> <span class="n">Operation</span>
+<span class="n">Signature</span> <span class="n">Algorithm</span><span class="p">:</span> <span class="n">sha256WithRSAEncryption</span>
+<span class="n">Signature</span><span class="p">:</span>
+    <span class="mi">5</span><span class="n">c</span><span class="p">:</span><span class="mi">4</span><span class="n">f</span><span class="p">:</span><span class="mi">3</span><span class="n">b</span><span class="p">:</span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.</p>
+</section>
 </section>
 <section id="privacy-remarks">
 <h2>Privacy Remarks<a class="headerlink" href="#privacy-remarks" title="Link to this heading">¶</a></h2>
@@ -982,7 +1152,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 <li><a class="reference internal" href="#">The Infrastructure of Trust</a><ul>
 <li><a class="reference internal" href="#federation-roles">Federation Roles</a></li>
 <li><a class="reference internal" href="#general-properties">General Properties</a></li>
-<li><a class="reference internal" href="#trust-infrastructure-functional-requirements">Trust Infrastructure Functional Requirements</a></li>
+<li><a class="reference internal" href="#trust-infrastructure-requirements">Trust Infrastructure Requirements</a></li>
 <li><a class="reference internal" href="#federation-api-endpoints">Federation API endpoints</a></li>
 <li><a class="reference internal" href="#configuration-of-the-federation">Configuration of the Federation</a></li>
 <li><a class="reference internal" href="#entity-configuration">Entity Configuration</a><ul>
@@ -1011,6 +1181,12 @@ Trust Chain is close to expiration but the overall structure of the federation h
 </li>
 <li><a class="reference internal" href="#trust-chain-fast-renewal">Trust Chain Fast Renewal</a></li>
 <li><a class="reference internal" href="#non-repudiability-of-the-long-lived-attestations">Non-repudiability of the Long Lived Attestations</a></li>
+<li><a class="reference internal" href="#x-509-pki">X.509 PKI</a><ul>
+<li><a class="reference internal" href="#federation-trust-anchor-and-x-509-ca">Federation Trust Anchor and X.509 CA</a></li>
+<li><a class="reference internal" href="#x-509-certificates-issuance">X.509 Certificates Issuance</a></li>
+<li><a class="reference internal" href="#x-509-certificate-revocation">X.509 Certificate Revocation</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#privacy-remarks">Privacy Remarks</a></li>
 <li><a class="reference internal" href="#considerations-about-decentralization">Considerations about Decentralization</a></li>
 </ul>
@@ -1042,7 +1218,7 @@ Trust Chain is close to expiration but the overall structure of the federation h
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 28/02/2025.
+      Last updated on 02/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

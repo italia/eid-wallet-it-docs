@@ -19,8 +19,8 @@ Below are several methods available for contributing to this project:
 Acknowledgements
 ----------------
 
-We would like to thank the following individuals for their comments, 
-concerns, ideas, contributions, some of which substantial, to this 
+We would like to thank the following individuals for their comments,
+concerns, ideas, contributions, some of which substantial, to this
 implementation profile and to the initial set of implementations.
 
 - Alen Horvat
@@ -61,10 +61,11 @@ implementation profile and to the initial set of implementations.
 - Marco Pernpruner
 - Zahra Ebadi Ansaroudi
 - Marco Basili
+- Chris Phillips
 
 
-If anyone has been forgotten, please accept our apologies with the 
-request to propose the modification of this page via a [Pull Request](https://github.com/italia/eudi-wallet-it-docs) 
-with a brief description of the contribution offered, during which 
-event or channel, and during which period. We will then have the opportunity 
+If anyone has been forgotten, please accept our apologies with the
+request to propose the modification of this page via a [Pull Request](https://github.com/italia/eid-wallet-it-docs)
+with a brief description of the contribution offered, during which
+event or channel, and during which period. We will then have the opportunity
 to apologize again and make amends as soon as possible, including you in the list.

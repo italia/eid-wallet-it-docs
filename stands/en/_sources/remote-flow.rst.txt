@@ -121,7 +121,6 @@ A non-normative example of the request object encoded in JSON, prior to being en
       "request_object_signing_alg_values_supported": [
         "ES256"
       ],
-      "presentation_definition_uri_supported": false,
       "client_id_schemes_supported": ["https"],
     },
     "wallet_nonce": "qPmxiNFCR3QTm19POc8u"
@@ -220,8 +219,6 @@ Below are the normative details and references about the parameters to be used b
 
    * - Parameter
      - Description
-   * - `presentation_definition_uri_supported`
-     - OPTIONAL. Boolean. When present it MUST be set to false, default is false.
    * - `vp_formats_supported`
      - REQUIRED. Object with Credential format identifiers. See `OpenID4VP`_ Appendix B.
    * - `alg_values_supported`
@@ -246,7 +243,7 @@ Below is a non-normative example of an HTTP request made by the Wallet Instance 
   Host: client.example.org
   Content-Type: application/x-www-form-urlencoded
 
-  wallet_metadata%3D%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22form_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%2C%20%22presentation_definition_uri_supported%22%3A%20false%7D%2C%20wallet_nonce%3DqPmxiNFCR3QTm19POc8u
+  wallet_metadata%3D%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22form_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C%20wallet_nonce%3D%22qPmxiNFCR3QTm19POc8u%22
 
 .. note::
 
