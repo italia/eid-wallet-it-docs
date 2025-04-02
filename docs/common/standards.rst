@@ -45,8 +45,6 @@ Digital Credential Data Format
       - O. Terbu, D.Fett, B. Campbell, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
     * - ISO18013-5
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
-    * - ISO-IEC_7367
-      - ISO Compliant Mobile Vehicle Registration Certificates, Logical Data Structure
 
 
 Digital Credential Issuance
@@ -81,8 +79,6 @@ Digital Credential Presentation
       - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
     * - ISO/IEC 18013-7
       - Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024
-    * - ISO/IEC 23220-4
-      - Cards and security devices for personal identification - Building blocks for identity management via mobile devices - Part 4: Protocols and services for operational phase
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile", January 2025, Draft 1.
     * - ISO18013-5
