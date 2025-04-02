@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Technical References" href="standards.html" />
+    <link rel="next" title="General Log Retention Policies" href="log-retention-policy.html" />
     <link rel="prev" title="Cryptographic Algorithms" href="algorithms.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -134,14 +134,16 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases for IT-Wallet Solutions</a></li>
@@ -202,10 +204,10 @@ In the following, the requirements are grouped based on their category.</p>
 </tr>
 </tbody>
 </table>
-<p>The IT-Wallet specification supports both SD-JWT-VC and mDOC-CBOR Credential formats. The authenticity and integrity of a Credential is checked by verifying the Issuer's signature.</p>
+<p>The IT-Wallet specification supports both SD-JWT-VC and mDoc-CBOR Credential formats. The authenticity and integrity of a Credential is checked by verifying the Issuer's signature.</p>
 <ul class="simple">
 <li><p>For SD-JWT, the verification is performed using the algorithm specified in the <strong>alg</strong> header parameter of SD-JWT and a verifiable reference to the public key that must be used for the signature verification. Using OpenID Federation, the verifiable reference to the public cryptographic material is the <strong>kid</strong> header of the SD-JWT, where the cryptographic material is obtained from the Trust Chain about the Credential Issuer, specified in <strong>iss</strong> claim.</p></li>
-<li><p>For mDOC, the Issuer's signature is contained in the <em>Mobile Security Object</em> (MSO) and must be validated using the Issuer's public key through a trusted certificate chain contained in the <strong>x5chain</strong> header parameter.</p></li>
+<li><p>For mDoc-CBOR, the Issuer's signature is contained in the <em>Mobile Security Object</em> (MSO) and must be validated using the Issuer's public key through a trusted certificate chain contained in the <strong>x5chain</strong> header parameter.</p></li>
 </ul>
 </section>
 <section id="sr-cf-20">
@@ -236,7 +238,7 @@ In the following, the requirements are grouped based on their category.</p>
 </tr>
 </tbody>
 </table>
-<p>Both SD-JWT and mDOC-CBOR support cryptographic Holder binding by defining how a Holder can present a Credential to a Verifier, providing cryptographic proof of legitimate possession of the Credential.</p>
+<p>Both SD-JWT and mDoc-CBOR support cryptographic Holder binding by defining how a Holder can present a Credential to a Verifier, providing cryptographic proof of legitimate possession of the Credential.</p>
 <p>Currently, for the remote flow, IT-Wallet supports only SD-JWT presentations. In this scenario, the KB-JWT (Key-Bound JWT) parameter is utilized to demonstrate that the Holder possesses the private key associated with the Credential. The Holder signs the KB-JWT using a <strong>nonce</strong> and a Verifier identifier, using the <strong>aud</strong> parameter, as a challenge.</p>
 </section>
 <section id="sr-e-20">
@@ -568,7 +570,7 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 </tr>
 </tbody>
 </table>
-<p>Both SD-JWT and mDOC-CBOR provide selective disclosure capability, allowing Holders to reveal only specific fields to the Verifier.</p>
+<p>Both SD-JWT and mDoc-CBOR provide selective disclosure capability, allowing Holders to reveal only specific fields to the Verifier.</p>
 </section>
 <section id="pr-cf-40">
 <h3>PR-CF-40<a class="headerlink" href="#pr-cf-40" title="Link to this heading">¶</a></h3>
@@ -891,7 +893,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 
             <div class="right">
                 
-                    <a href="standards.html"><span>Technical References</span><span class="icon">&gt;</span></a>
+                    <a href="log-retention-policy.html"><span>General Log Retention Policies</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -899,7 +901,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/03/2025.
+      Last updated on 02/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

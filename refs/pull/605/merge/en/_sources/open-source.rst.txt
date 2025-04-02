@@ -7,7 +7,7 @@ Open Source Releases for IT-Wallet Solutions
 
 In compliance with the LLGG Wallet mandates, IT-Wallet Solution Providers, both public and private, are required to make their source code available. This requirement emphasizes the importance of using open-source software within public administrations to promote transparency and reduce costs. This requirement is supported by the Italian Digital Administration Code (CAD) articles 68 and 69, European regulations, and best practices in open-source software development. This document defines the specific requirements for different stakeholders involved in the IT-Wallet ecosystem, including Wallet Providers, Credential Issuers, and Relying Parties.
 
-All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties, owning the product code, SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:
+All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties, owning the product code (from now on Open Source Project Owner) SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:
 
     - **Transparency and Documentation**: Open Source Project Owners SHOULD produce clear documentation and contribution guidelines.
     - **Community Engagement**: Open Source Project Owners SHOULD foster active community involvement for development and support.
@@ -22,7 +22,7 @@ Wallet Provider Solutions
 
 Wallet Solution Providers are mandatorily required to release their source code, facilitating transparency, security auditing within the IT-Wallet ecosystem. The release of source code adheres to the following guidelines:
 
-- **European Regulations**: According to Art ...... Providers MUST ensure their solutions comply with relevant European standards and regulations, fostering cross-border interoperability.
+- **European Regulations**: According to the Consolidated Regulation (EU) 2024/2979, Art 5a item 3, `the source code of the application software components of European Digital Identity Wallets shall be open-source licensed. Member States may provide that, for duly justified reasons, the source code of specific components other than those installed on user devices shall not be disclosed`.
 
 
 Credential Issuers Solutions
