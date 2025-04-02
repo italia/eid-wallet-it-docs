@@ -366,11 +366,9 @@ For effective error management and the resolution of any other issues, the Prima
 
 To implement these best practices, the Wallet Provider SHOULD establish a hierarchical assistance model: 
 
-1. **Level I | Self-management**: The User SHOULD have access to a Frequently Asked Questions (FAQ) section within their Wallet Instance to clarify doubts and resolve certain issues independently. Each actor SHOULD create specific FAQs and corresponding answers regarding the data and functionalities they provide. For certain error cases, the Wallet Provider MAY provide another actor's direct channel of support to facilitate a timely management and avoid opening an assistance request within the Wallet Instance. 
-
-2. **Level II | Requesting assistance** from the Wallet Provider: If Level I is insufficient, the User MAY open one or more assistance requests to the Wallet Provider. These requests SHOULD be managed through the Wallet Instance or other Wallet Provider Touchpoints. The Wallet Provider MUST diagnose and resolve the issue if it falls under their responsibility. 
-
-3. **Level III | Forwarding the request to the responsible actor**: If Level II is insufficient, the Wallet Provider SHOULD ensure that the request is forwarded to the responsible actor (Electronic Attestations of Attributes Provider, PID Provider, or Authentic Source), who MUST take charge of resolving the issue and communicate the outcome to the User. 
+    1. **Level I | Self-management**: The User SHOULD have access to a Frequently Asked Questions (FAQ) section within their Wallet Instance to clarify doubts and resolve certain issues independently. Each actor SHOULD create specific FAQs and corresponding answers regarding the data and functionalities they provide. For certain error cases, the Wallet Provider MAY provide another actor's direct channel of support to facilitate a timely management and avoid opening an assistance request within the Wallet Instance. 
+	2. **Level II | Requesting assistance** from the Wallet Provider: If Level I is insufficient, the User MAY open one or more assistance requests to the Wallet Provider. These requests SHOULD be managed through the Wallet Instance or other Wallet Provider Touchpoints. The Wallet Provider MUST diagnose and resolve the issue if it falls under their responsibility. 
+	3. **Level III | Forwarding the request to the responsible actor**: If Level II is insufficient, the Wallet Provider SHOULD ensure that the request is forwarded to the responsible actor (Electronic Attestations of Attributes Provider, PID Provider, or Authentic Source), who MUST take charge of resolving the issue and communicate the outcome to the User. 
 
 Here are the functional requirements supporting the User Experience related to Assistance: 
 
