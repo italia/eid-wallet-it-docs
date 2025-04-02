@@ -233,3 +233,5 @@ Digital Credential Presentation Proposals for Future Milestones
       - Digital Credentials API (`W3C-CredentialAPI <https://wicg.github.io/digital-credentials/>`_)
     * - ISO/IEC 23220-4
       - Cards and security devices for personal identification - Building blocks for identity management via mobile devices - Part 4: Protocols and services for operational phase
+    * - ISO/IEC 18013-7
+      - Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024

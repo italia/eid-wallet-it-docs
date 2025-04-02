@@ -77,8 +77,6 @@ Digital Credential Presentation
       - Terbu, O., Lodderstedt, T., Yasuda, K., Looker, T., "OpenID for Verifiable Presentations", December 2024, Draft 23.
     * - `OAuthCrossDeviceSec`_
       - Kasselman, P., Fett, D., Skokan, F.,  "Cross-Device Flows: Security Best Current Practice", July 2024, Draft 8.
-    * - ISO/IEC 18013-7
-      - Personal identification - ISO-compliant driving licence - Part 7, Mobile driving licence (mDL) add-on functions, February 2024
     * - `OPENID4VC-HAIP`_
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile", January 2025, Draft 1.
     * - ISO18013-5
