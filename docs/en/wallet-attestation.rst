@@ -6,6 +6,10 @@ Wallet Attestation Issuance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This section describes how the Wallet Provider issues a Wallet Attestation.
 
+.. note::
+
+  The details provided below are non-normative and are intended to clarify the functionalities of the Mobile Relying Party Instance. The actual implementation may vary based on the specific use case and requirements of the Relying Party.
+
 .. figure:: ../../images/wallet_instance_acquisition.svg
    :name: Sequence Diagram for Wallet Attestation acquisition
    :alt: The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below.
@@ -19,7 +23,7 @@ This section describes how the Wallet Provider issues a Wallet Attestation.
   2. Generate an ephemeral asymmetric key pair for Wallet Attestation, linking the public key to the attestation.
   3. Verify the Wallet Provider's federation membership and retrieve its metadata.
 
-**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a one-time "challenge" from the `Nonce endpoint`_ of the Wallet Provider Backend. This "challenge" takes the form of a ``nonce``, which is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a one-time "challenge" from the :ref:`Nonce endpoint` of the Wallet Provider Backend. This "challenge" takes the form of a ``nonce``, which is required to be unpredictable and serves as the main defense against replay attacks. 
 The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
 
 Below is a non-normative example of a Nonce Request.
@@ -66,7 +70,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 **Steps 11-12 (Wallet Attestation Issuance Request)**: The Wallet Instance:
 
   * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
-  * Submits the Wallet Attestation Request to the `Wallet Attestation Issuance endpoint`_ of the Wallet Provider Backend.
+  * Submits the Wallet Attestation Request to the :ref:`Wallet Attestation Issuance endpoint` of the Wallet Provider Backend.
 
 Below is a non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
 
@@ -98,7 +102,7 @@ Below is a non-normative example of the Wallet Attestation Request JWT without e
   }
 
 
-The Wallet Instance MUST send the signed Wallet Attestation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Wallet Provider's `Wallet Attestation Issuance endpoint`_.
+The Wallet Instance MUST send the signed Wallet Attestation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Wallet Provider's :ref:`Wallet Attestation Issuance endpoint`.
 
 Below is a non-normative example of a Wallet Attestation Issuance Request.
 
@@ -127,39 +131,8 @@ Upon successful completion of all checks, the Wallet Provider issues a Wallet At
 
 **Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet Attestation in at least three formats: JWT, SD-JWT and mdoc. The Wallet Instance will then perform security and integrity verification of the Wallet Attestations received in addition to trust verification of its Issuer.
 
-The JSON Object returned in the response has the following claim:
-
-.. list-table::
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Parameter**
-      - **Description**
-      - **Reference**
-    * - **wallet_attestations**
-      - REQUIRED. Contains an array of one or more issued Wallet Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
-      - This specification.
-
-Each JSON Object contained in the ``wallet_attestations`` array MUST have the following form:
-
-.. list-table::
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Parameter**
-      - **Description**
-      - **Reference**
-    * - **format**
-      - A string identifying the Data Model used to create and represent the Wallet Attestation. It MUST be either ``jwt``, ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
-      - This specification.
-    * - **wallet_attestation**
-      - A string representing the Wallet Attestation. If
-        
-        - the Wallet Attestation is in JWT format, then the claim's value MUST be a string that is a JWT.
-        - the Wallet Attestation is in SD-JWT format, then the claim's value MUST be a string that is an SD-JWT VC.
-        - the Wallet Attestation is in mdoc format, then the claim's value is the base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO.18013-5]. This structure MUST contain all Namespaces and IssuerSignedItems that are included in the MobileSecurityObject.
-      
-      - This specification.
+.. CONDITIONAL, [NO WA IN PRESENTATION] delete line 128 and substitute the line below:
+**Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Attestation JWT signed by the Wallet Provider. The Wallet Instance will then perform security and integrity verification of the Wallet Attestation received in addition to trust verification of its Issuer.
 
 Below is a non-normative example of the response.
 
@@ -185,8 +158,23 @@ Below is a non-normative example of the response.
       ]
     }
 
+.. CONDITIONAL, [NO WA IN PRESENTATION] delete lines 167-186 and substitute the block below:
 
-.. _Wallet Attestation Request: wallet-attestation-issuance.html#format-of-the-wallet-attestation-request
+
+.. 
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+..    {
+      "wallet_attestations": [
+        {
+          "format": "jwt",
+          "wallet_attestation": "ey..."
+        }
+      ]
+    }
+
+.. .. _Wallet Attestation Request: wallet-attestation-issuance.html#format-of-the-wallet-attestation-request
 .. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
 .. _RFC 8414 section 2: https://www.rfc-editor.org/rfc/rfc8414.html#section-2
 .. _Play Integrity API: https://developer.android.com/google/play/integrity?hl=it
