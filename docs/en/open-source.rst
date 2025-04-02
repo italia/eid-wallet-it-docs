@@ -7,7 +7,7 @@ Open Source Releases for IT-Wallet Solutions
 
 In compliance with the LLGG Wallet mandates, IT-Wallet Solution Providers, both public and private, are required to make their source code available. This requirement emphasizes the importance of using open-source software within public administrations to promote transparency and reduce costs. This requirement is supported by the Italian Digital Administration Code (CAD) articles 68 and 69, European regulations, and best practices in open-source software development. This document defines the specific requirements for different stakeholders involved in the IT-Wallet ecosystem, including Wallet Providers, Credential Issuers, and Relying Parties.
 
-All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties, owning the product code, SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:
+All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties, owning the product code (from now on Open Source Project Owner) SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:
 
     - **Transparency and Documentation**: Open Source Project Owners SHOULD produce clear documentation and contribution guidelines.
     - **Community Engagement**: Open Source Project Owners SHOULD foster active community involvement for development and support.
