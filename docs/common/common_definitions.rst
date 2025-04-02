@@ -53,5 +53,6 @@
 .. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/
+.. _RFC5280: https://datatracker.ietf.org/doc/html/rfc5280
 .. _ISO18013-5: https://www.iso.org/standard/69084.html
 
