@@ -22,7 +22,7 @@ Wallet Provider Solutions
 
 Wallet Solution Providers are mandatorily required to release their source code, facilitating transparency, security auditing within the IT-Wallet ecosystem. The release of source code adheres to the following guidelines:
 
-- **European Regulations**: According to Art ...... Providers MUST ensure their solutions comply with relevant European standards and regulations, fostering cross-border interoperability.
+- **European Regulations**: According to the Consolidated Regulation (EU) 2024/2979, Art 5a item 3, `the source code of the application software components of European Digital Identity Wallets shall be open-source licensed. Member States may provide that, for duly justified reasons, the source code of specific components other than those installed on user devices shall not be disclosed`.
 
 
 Credential Issuers Solutions
