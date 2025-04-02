@@ -52,11 +52,11 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 **Step 1**: The User opens the Wallet Instance initiating the process.
 
-**Step 2**: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Device (WSCD). It is a prerequisite for accessing sensitive data and presenting attributes.
+**Step 2**: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Application (WSCA). It is a prerequisite for accessing sensitive data and presenting attributes.
 
-**Step 3**: The User explicitly indicates their intention to present their mdoc Digital Credentials.
+**Step 3**: The User selects the proximity presentation functionality.
 
-**Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCD, a separate authentication via WSCD MAY be required.
+**Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required.
 
 **Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication. The public key (``EDeviceKey.Pub``) will be used for session encryption. This is part of the device engagement process.
 
