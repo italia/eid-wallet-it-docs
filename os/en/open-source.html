@@ -157,35 +157,46 @@
             
   <section id="open-source-releases-for-it-wallet-solutions">
 <span id="open-source-rst"></span><h1>Open Source Releases for IT-Wallet Solutions<a class="headerlink" href="#open-source-releases-for-it-wallet-solutions" title="Link to this heading">¶</a></h1>
-<p>In compliance with the LLGG Wallet mandates, IT-Wallet Solution Providers, both public and private, are required to make their source code available. This requirement emphasizes the importance of using open-source software within public administrations to promote transparency and reduce costs. This requirement is supported by the Italian Digital Administration Code (CAD) articles 68 and 69, European regulations, and best practices in open-source software development. This document defines the specific requirements for different stakeholders involved in the IT-Wallet ecosystem, including Wallet Providers, Credential Issuers, and Relying Parties.</p>
-<p>All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:</p>
+<p>In compliance with the LLGG Wallet mandates, IT-Wallet Solution Providers, both public and private, are required to make their source code available. This requirement emphasizes the importance of using open-source software within public administrations to promote transparency and reduce costs. This requirement is supported by the Italian Digital Administration Code (CAD) articles 68 and 69, European regulations (<code class="docutils literal notranslate"><span class="pre">Artificial</span> <span class="pre">Intelligence</span> <span class="pre">Act</span> <span class="pre">(AI</span> <span class="pre">Act)</span></code> &lt;<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689</a>&gt;_, <code class="docutils literal notranslate"><span class="pre">Cyber</span> <span class="pre">Resilience</span> <span class="pre">Act</span> <span class="pre">(CRA)</span></code> &lt;<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847">https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847</a>&gt;_, <code class="docutils literal notranslate"><span class="pre">Interoperable</span> <span class="pre">Europe</span> <span class="pre">Act</span></code> &lt;<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52022PC0720">https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52022PC0720</a>&gt;_), and best practices in open-source software development. This document defines the specific requirements for different stakeholders involved in the IT-Wallet ecosystem, including Wallet Providers, Credential Issuers, and Relying Parties.</p>
+<p>All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties, owning the product code (from now on Open Source Project Owner) SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Transparency and Documentation</strong>: Maintaining clear documentation and contribution guidelines.</p></li>
-<li><p><strong>Community Engagement</strong>: Fostering active community involvement for development and support.</p></li>
-<li><p><strong>Version Control</strong>: Using systems like Git for managing code changes.</p></li>
-<li><p><strong>Security Practices</strong>: Implementing regular code audits and secure coding standards.</p></li>
-<li><p><strong>Licensing</strong>: Choosing appropriate open-source licenses (e.g., EUPL, MIT, Apache 2.0, GPL, AGPL).</p></li>
+<li><p><strong>Transparency and Documentation</strong>: Open Source Project Owners SHOULD produce clear documentation and contribution guidelines.</p></li>
+<li><p><strong>Community Engagement</strong>: Open Source Project Owners SHOULD foster active community involvement for development and support.</p></li>
+<li><p><strong>Version Control</strong>: Open Source Project Owners MAY use systems like Git for managing code changes.</p></li>
+<li><p><strong>Security Practices</strong>: Open Source Project Owners MUST produce regular code audits and secure coding standards.</p></li>
+<li><p><strong>Licensing</strong>: Open Source Project Owners MUST use appropriate open-source licenses (e.g., EUPL, MIT, Apache 2.0, GPL, AGPL).</p></li>
+<li><p><strong>Responsible Security Disclosure</strong>: Open Source Project Owners MUST configure responsible security disclosure procedures to handle the security issues in an appropriate way, mitigating any kind of threat derived by an unresponsible security issue disclosure.</p></li>
 </ul>
 </div></blockquote>
 <section id="wallet-provider-solutions">
 <h2>Wallet Provider Solutions<a class="headerlink" href="#wallet-provider-solutions" title="Link to this heading">¶</a></h2>
-<p>Wallet Solution Providers are mandatorily required to release their source code. This facilitate transparency, security auditing, and interoperability within the IT-Wallet ecosystem. The release of source code should adhere to the following guidelines:</p>
+<p>Wallet Solution Providers are required to release their source code, build system, and all other assets required to the reproducibility of the implementation in order to facilitate transparency, security auditing within the IT-Wallet ecosystem. The release of source code adheres to the following guidelines:</p>
 <ul class="simple">
-<li><p><strong>European Regulations</strong>: According to Art ...... Providers MUST ensure their solutions comply with relevant European standards and regulations, fostering cross-border interoperability.</p></li>
+<li><p><strong>European Regulations</strong>: According to the Consolidated Regulation (EU) 2024/2979, Art 5a item 3, <cite>the source code of the application software components of European Digital Identity Wallets shall be open-source licensed. Member States may provide that, for duly justified reasons, the source code of specific components other than those installed on user devices shall not be disclosed</cite>.</p></li>
 </ul>
 </section>
 <section id="credential-issuers-solutions">
 <h2>Credential Issuers Solutions<a class="headerlink" href="#credential-issuers-solutions" title="Link to this heading">¶</a></h2>
-<p>Credential Issuers are required to release their source code only if they are providers for public administrations or if their solutions are listed in the public administration reuse catalog. The requirements include:</p>
+<p>Credential Issuers are required to release their source code if they are providers for public administrations or if they are public administrations themselves. The requirements include:</p>
 <ul class="simple">
-<li><p><strong>Public Administration Engagement</strong>: Issuers working with public administrations MUST ensure their solutions are open-source to facilitate integration and reuse.</p></li>
-<li><p><strong>Catalog of Reuse</strong>: Solutions listed in the public administration reuse catalog MUST be open-source to promote widespread adoption and adaptation.</p></li>
+<li><p><strong>Public Administration Engagement</strong>: Issuers working with public administrations MUST ensure their solutions are released with an open source license, in the way specified by the CAD art. 69 (and related guidelines).</p></li>
+<li><p><strong>Catalog of Reuse</strong>: Solutions created with or for public administration MUST be submitted to the public administration reuse catalog to promote widespread adoption and adaptation.</p></li>
 </ul>
 </section>
 <section id="relying-parties-solutions">
 <h2>Relying Parties Solutions<a class="headerlink" href="#relying-parties-solutions" title="Link to this heading">¶</a></h2>
-<p>Relying Parties are subject to the same conditions as Credential Issuers regarding the release of their source code. They MUST comply if they are involved with public administrations or listed in the reuse catalog.</p>
+<p>Relying Parties are subject to the same conditions as Credential Issuers regarding the release of their source code.</p>
+</section>
+<section id="responsible-disclosure">
+<h2>Responsible Disclosure<a class="headerlink" href="#responsible-disclosure" title="Link to this heading">¶</a></h2>
+<p>In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (NIS2 &lt;<a class="reference external" href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555">https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555</a>&gt;_) also emphasizes vulnerability handling within cybersecurity risk management. Many member states have national responsible disclosure policies.</p>
+<p>ISO/IEC 29147:2018 (&lt;<a class="reference external" href="https://www.iso.org/standard/72311.html">https://www.iso.org/standard/72311.html</a>&gt;_) provides guidelines for vulnerability disclosure processes. Industry best practices, often seen in bug bounty platforms, clear reporting, response times, safe harbor, and coordinated disclosure.</p>
+</section>
+<section id="security-best-practices-for-releasing-source-code-of-critical-components">
+<h2>Security Best Practices for Releasing Source Code of Critical Components<a class="headerlink" href="#security-best-practices-for-releasing-source-code-of-critical-components" title="Link to this heading">¶</a></h2>
+<p>The EU Open Source Software Strategy encourages open sourcing with an implicit need for security. The CRA's focus on security by design and Software Bill of Materials (SBOMs &lt;<a class="reference external" href="https://www.cisa.gov/sbom">https://www.cisa.gov/sbom</a>&gt;_) requires secure development practices relevant to open source releases.</p>
+<p>The Open Worldwide Application Security Project (OWASP &lt;<a class="reference external" href="https://owasp.org/">https://owasp.org/</a>&gt;_) provides extensive secure coding guidelines and security patterns. The  SysAdmin, Audit, Network, and Security Institute (SANS &lt;<a class="reference external" href="https://www.sans.org/">https://www.sans.org/</a>&gt;_) and the Italian Computer Emergency Response Team (CERT &lt;<a class="reference external" href="https://cert-agid.gov.it/">https://cert-agid.gov.it/</a>&gt;_) offer secure coding standards for various languages. Version control best practices include regular commits, detailed messages, code reviews, branch protection, and careful secret management. Employing static and dynamic code analysis, along with threat modeling, is required before release. Robust dependency management involves SBOMs, regular updates, vulnerability scanning, and version pinning. Secure build and release processes ensure software integrity. For open-source projects, engaging with the community and maintaining transparency about security practices are RECOMMENDED.</p>
 </section>
 </section>
 
@@ -207,6 +218,8 @@
 <li><a class="reference internal" href="#wallet-provider-solutions">Wallet Provider Solutions</a></li>
 <li><a class="reference internal" href="#credential-issuers-solutions">Credential Issuers Solutions</a></li>
 <li><a class="reference internal" href="#relying-parties-solutions">Relying Parties Solutions</a></li>
+<li><a class="reference internal" href="#responsible-disclosure">Responsible Disclosure</a></li>
+<li><a class="reference internal" href="#security-best-practices-for-releasing-source-code-of-critical-components">Security Best Practices for Releasing Source Code of Critical Components</a></li>
 </ul>
 </li>
 </ul>
@@ -234,7 +247,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 24/03/2025.
+      Last updated on 03/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
