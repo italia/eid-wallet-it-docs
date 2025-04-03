@@ -35,7 +35,7 @@ Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST su
 - *Device Engagement* based on QR Code.
 - *RP Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
 - *Device Retrieval* mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. *Server Retrieval* mechanism MUST NOT be supported.
-- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see Section :ref:`MDOC-CBOR` for more details).
+- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`MDoc-CBOR Credential Format` for more details).
 - *Wallet Instance validation* through the Wallet Attestation.
 
 
@@ -62,7 +62,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 **Step 6**: The Wallet Instance presents a QR Code to the Relying Party Instance. This QR code contains the ``DeviceEngagement`` data, which includes the ``EDeviceKey.Pub`` and information about supported cipher suites.
 
-Below a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceEngagement`` that utilizes QR for device engagement and Bluetooth Low Energy (BLE) for data retrieval.
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceEngagement`` that utilizes QR for device engagement and Bluetooth Low Energy (BLE) for data retrieval.
 
 .. literalinclude:: ../../examples/iso-device-engagement.txt
   :language: text
@@ -73,9 +73,9 @@ Below a non-normative example using the diagnostic notation of a CBOR-encoded ``
 
 **Step 9**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key.
 
-**Step 10**: The RP Instance MUST prepare a ``SessionEstablishment`` message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) and encrypted using the session keys derived in the previous step. The ``SessionEstablishment`` message MUST include the ``EReaderKey.Pub`` and a request for specific attribute(s).
+**Step 10**: The RP Instance MUST prepare a ``SessionEstablishment`` message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.4]) and encrypted using the session keys derived in the previous step. The ``SessionEstablishment`` message MUST include the ``EReaderKey.Pub`` and a request for specific attribute(s).
 
-Below a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` that contains the mdoc request of a Wallet Attestation along with an mDL Digital Credential.
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` that contains the mdoc request of a Wallet Attestation along with an mDL Digital Credential.
 
 .. literalinclude:: ../../examples/iso-session-establishment.txt
   :language: text
@@ -90,9 +90,9 @@ Below a non-normative example using the diagnostic notation of a CBOR-encoded ``
 
 **Step 15**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes. 
 
-**Step 16**: After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials. It then MUST prepare a `SessionData` message containing these Digital Credentials, and it MUST sign it (mdoc authentication as specified in [`ISO18013-5`_ #9.1.3]). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #8.3.2.1.2.2].
+**Step 16**: After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials. It then MUST prepare a `SessionData` message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [`ISO18013-5`_ #9.1.3]). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #8.3.2.1.2.2].
 
-Below a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionData`` that contains the mdoc response of a Wallet Attestation and an mDL.
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionData`` that contains the mdoc response of a Wallet Attestation and an mDL.
 
 .. literalinclude:: ../../examples/iso-session-data.txt
   :language: text
@@ -110,60 +110,156 @@ Below a non-normative example using the diagnostic notation of a CBOR-encoded ``
 Device Engagement
 -----------------
 
-The Device Engagement structure MUST have at least the following components:
+The Device Engagement structure MUST be CBOR encoded and have at least the following components:
 
-- **Version**: *tstr*. Version of the data structure being used.
-- **Security**: an array that contains two mandatory values
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
 
-  - the cipher identifier: see Table 22 of `ISO18013-5`_
-  - the public ephemeral key generated by the Wallet Instance and required by the Relying Party Instance to derive the Session Key. The public ephemeral key MUST be of a type allowed by the indicated cipher suite.
-- **transferMethod**: an array that contains one or more `transferMethod` arrays when performing device engagement using the QR code. This array is for offline data retrieval methods. A `transferMethod` array holds two mandatory values (``type`` and ``version``). Only the BLE option MUST be supported by this technical implementation profile, then the type value MUST be set to ``2``. 
-- **BleOptions**: this elements MUST provide options for the BLE connection such as Peripheral Server or Central Client Mode, and the device UUID. Only Central Client Mode MUST be supported by this technical implementation profile.
+   * - **Component**
+     - **Description**
+
+   * - **Version**
+     - *(tstr)*. Version of the device engagement structure.
+
+   * - **Security**
+     - *(array)*. Contains two mandatory values:
+
+       - *(int)*. Cipher suite identifier. See Table 22 of :doc:`ISO18013-5`.
+
+       - *(bstr)*. Public ephemeral key generated by the Wallet Instance, used by the Relying Party Instance to derive the Session Key. The key MUST be of a type allowed by the selected cipher suite.
+
+   * - **transferMethod**
+     - *(array of arrays)*. Contains one or more `transferMethod` arrays, used for device engagement via QR code (offline data retrieval).
+
+       Each `transferMethod` array contains two mandatory values:
+
+       - **type** *(uint)*. MUST be set to ``2``, corresponding to BLE, the only option supported by this profile.  
+       - **version** *(tstr)*. Version of the transfer method.
+
+   * - **BleOptions**
+     - *(object)*. Provides options for the BLE connection, such as Peripheral Server or Central Client mode, and the device UUID.
+
+       Only `Central Client Mode` MUST be supported by this implementation profile.
+
+   * - **Capabilities**
+     - *(map, OPTIONAL)*. Declares optional capabilities supported by the mdoc, that are: 
+
+       - **HandoverSessionEstablishmentSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `SessionEstablishment` message during Negotiated Handover, as defined in [`ISO18013-5`_ #8.2.2.4].
+
+       - **ReaderAuthAllSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #8.3.2.1.2.1].
+
+   * - **OriginInfos**
+     - *(array, CONDITIONAL)*. Describes the interface used to receive and deliver the engagement structure.  
+  
+       If `Capabilities` is present, then `OriginInfos` MUST also be present (even if empty).  When used in flows defined in [`ISO18013-5`_ #6.3.2.1], `OriginInfos` MAY be an empty array.
 
 
 mdoc Request
 ------------
 
 The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE protocol.
-The mdoc Request, including identifier and format of the data elements, MUST be compliant to the following structure: 
+Each mdoc Request MUST be compliant with the following structure, and MUST include the following components:
 
-- **version**: (tstr). Version of the data structure.
-- **docRequests**: Requested DocType, NameSpace and data elements.
+.. list-table:: 
+   :widths: 30 70
+   :header-rows: 1
 
-  - **itemsRequest**: #6.24(bstr .cbor ItemsRequest).
+   * - **Component**
+     - **Description**
 
-    - **docType**: (tstr). The DocType element contains the type of document requested. See Section :ref:`MDOC-CBOR`.
-    - **nameSpaces**: (tstr). See Section :ref:`MDOC-CBOR` for more details.
+   * - **version**
+     - *(tstr)*. Version of the mdoc Request structure. Enables compatibility management across different versions or implementation profiles.
 
-      - **dataElements**: (tstr). Requested data elements, it MUST contain the *Intent to Retain* value for each requested element.
+   * - **docRequests**
+     - *(array)*. Each entry is a `DocRequest` object containing:
 
-        - **IntentToRetain**: (bool). It indicates that the Relying Party intends to retain the received data element.  
-  - **readerAuth**: *COSE_Sign1*. It is required for the Relying Party Instance authentication. 
+       - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
 
+         - **docType** *(tstr)*. The type of document requested. See :ref:`MDoc-CBOR Credential Format`.
+
+         - **nameSpaces** *(map)*. A map of namespace identifiers to requested *DataElements*.
+
+           Each entry in `DataElements` includes:
+
+           - **DataElementIdentifier** *(tstr)*. The identifier of the requested data element.  
+           - **IntentToRetain** *(bool)*. Indicates whether the Relying Party intends to retain the value of the data element.
+
+   * - **readerAuth**
+     - *(COSE_Sign1)*. Required for the Relying Party Instance authentication. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #9.1.4].
 
 mdoc Response
 -------------
 
 The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase.
-The details on the structure of mdoc Response are provided below. 
+Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
-- **version**: (tstr). Version of the data structure.
-- **documents**: Returned *DocType*, and *ResponseData*.
+.. _table-mdoc-attributes:
 
-  - **docType**: (tstr). The DocType element contains the type of document returned. See Section :ref:`MDOC-CBOR`.
-  - **ResponseData**:
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
 
-    - **IssuerSigned**: It MUST contain the `Namespaces` and `Mobile Security Object` as specified in Section :ref:`MDOC-CBOR`.
-    - **DeviceSigned**: Responded data elements signed by the Wallet Instance.
+   * - **Component**
+     - **Description**
 
-      - **NameSpaces**: #6.24(bstr .cbor DeviceNameSpaces). The DeviceNameSpaces structure MAY be an empty structure. DeviceNameSpaces contains the data element identifiers and values. It is returned as part of the corresponding namespace in DeviceNameSpace.
+   * - **version**
+     - *(tstr)*. Version of the mdoc Response structure. Enables tracking changes and maintaining compatibility across versions of the standard or implementation profiles.
 
-        - **DataItemName**: (tstr). The identifier of the element.
-        - **DataItemValue**: (any). The value of the element.
-      - **DeviceAuth**:  The DeviceAuth structure MUST contain the DeviceSignature elements.
+   * - **documents**
+     - *(bstr, OPTIONAL)*. CBOR-encoded collection of documents returned in response to the request. Each document includes `issuerSigned` and `deviceSigned` components, and follows the structure defined in the below table.
 
-        - **DeviceSignature**: It MUST contain the device signature for the Wallet Instance authentication. 
-- **status**: It contains a status code. For detailed description and action required refer to to Table 8 (ResponseStatus) of the `ISO18013-5`_.
+   * - **documentErrors**
+     - *(object, OPTIONAL)*. A map of error codes for unreturned documents, as defined in [`ISO18013-5`_ #8.3.2.1.2.3]. Each key is a `docType`, and each value is an `ErrorCode` (int) indicating why the document was not returned.
+
+   * - **status**
+     - *(uint)*. Status code indicating the outcome of the request. For example, `"status": 0` means successful processing. For details, see Table 8 (ResponseStatus) of [`ISO18013-5`_ #8.3.2.1.2].
+
+
+Each document in **documents** MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
+
+.. _table-mdoc-documents-attributes:
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **docType**
+     - *(tstr)*. Document type identifier. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``.
+
+   * - **issuerSigned**
+     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`MDoc-CBOR Credential Format`.
+
+   * - **deviceSigned**
+     - *(bstr)*. Contains the `DeviceNameSpaces` structure (data elements signed by the Wallet Instance), and the `deviceAuth` structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.
+
+   * - **errors**
+     - *(object, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. Each key represents a namespace, and each value is an object that maps data element identifiers to corresponding error codes. See [`ISO18013-5`_ #8.3.2.1.2.3] for details on the errors structure.
+
+
+
+A **deviceSigned** data object MUST be compliant with the following structure, and MUST include the following components:
+
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **nameSpaces**
+     - *(bstr)*. Contains the `DeviceNameSpaces` structure. It MAY be an empty structure. `DeviceNameSpaces` maps namespace identifiers to a set of data elements signed by the Wallet Instance.  
+       
+       Each namespace contains one or more `DeviceSignedItem`, where each item includes:
+       
+       - **DataItemName** *(tstr)*. The identifier of the data element.  
+       - **DataItemValue** *(any)*. The value of the data element.
+
+   * - **deviceAuth**
+     - *(COSE_Sign1)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #9.1.3] for details on the authentication structure.
 
 
 Session Termination
@@ -185,5 +281,20 @@ When a session is terminated, the Wallet Instance and the Relying Party Instance
 - destruction of session keys and related ephemeral key material; 
 - closure of the communication channel used for data retrieval.
 
+CBOR Type Acronyms
+-------------------
+.. list-table:: 
+   :widths: 20 80
+   :header-rows: 1
 
+   * - **Acronym**
+     - **Meaning**
+   * - `tstr`
+     - Text string
+   * - `bstr`
+     - Byte string
+   * - `uint`
+     - Unsigned integer
+   * - `bool`
+     - Boolean (true/false)
 

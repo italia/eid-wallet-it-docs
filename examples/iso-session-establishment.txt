@@ -26,9 +26,9 @@
     "itemsRequest": 
     24(<<  % Embedded CBOR data item
       {
-        "docType": "org.iso.18013.5.1.it.WalletAttestation",
+        "docType": "org.iso.18013.5.1.IT.WalletAttestation",
         "nameSpaces": {
-          "org.iso.18013.5.1.it": 
+          "org.iso.18013.5.1.IT": 
           {
             "iss": true,
             "sub": true,
