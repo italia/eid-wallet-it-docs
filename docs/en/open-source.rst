@@ -20,7 +20,7 @@ All the implementers, be these Wallet Providers, Credential Issuers or Relying P
 Wallet Provider Solutions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Wallet Solution Providers are mandatorily required to release their source code, facilitating transparency, security auditing within the IT-Wallet ecosystem. The release of source code adheres to the following guidelines:
+Wallet Solution Providers are required to release their source code, build system, and all other assets required to the reproducibility of the implementation in order to facilitate transparency, security auditing within the IT-Wallet ecosystem. The release of source code adheres to the following guidelines:
 
 - **European Regulations**: According to the Consolidated Regulation (EU) 2024/2979, Art 5a item 3, `the source code of the application software components of European Digital Identity Wallets shall be open-source licensed. Member States may provide that, for duly justified reasons, the source code of specific components other than those installed on user devices shall not be disclosed`.
 
@@ -30,8 +30,8 @@ Credential Issuers Solutions
 
 Credential Issuers are required to release their source code if they are providers for public administrations or if they are public administrations themselves. The requirements include:
 
-- **Public Administration Engagement**: Issuers working with public administrations MUST ensure their solutions are open-source to facilitate integration and reuse.
-- **Catalog of Reuse**: Solutions listed in the public administration reuse catalog MUST be open-source to promote widespread adoption and adaptation.
+- **Public Administration Engagement**: Issuers working with public administrations MUST ensure their solutions are released with an open source license, in the way specified by the CAD art. 69 (and related guidelines).
+- **Catalog of Reuse**: Solutions created with or for public administration MUST be submitted to the public administration reuse catalog to promote widespread adoption and adaptation.
 
 Relying Parties Solutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
