@@ -72,7 +72,7 @@ If an Authentic Source (or an Electronic Attestation of Attributes Provider, sho
 Layout of Electronic Attestations 
 ==================================
 
-The Electronic Attestations obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, the Electronic Attestations MUST ensure a high level of recognizability and accessibility [ACCESSIBILITY_REF] of the information contained. Below are the requirements for displaying the Electronic Attestation that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience: 
+The Electronic Attestations obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, the Electronic Attestations MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the Electronic Attestation that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience: 
 
 - The Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes; 
 - The name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View; 

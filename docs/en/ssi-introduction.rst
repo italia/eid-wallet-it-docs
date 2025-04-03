@@ -22,7 +22,7 @@ The main roles in the Digital Identity Wallet ecosystem  are listed as follow:
 ..  figure:: ../../images/GL-Three-party-model.svg
     :alt: three-party model architecture
     :width: 100%
-*Evolution of IAM Model*
+    *Evolution of IAM Model*
 
 In this model, the credential issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their Wallet Instance.
 The Wallet Instance is typically provided as a mobile application on the User's smartphone.
