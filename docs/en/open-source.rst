@@ -46,7 +46,7 @@ In the European context, the Cyber Resilience Act (CRA) mandates procedures for 
 ISO/IEC 29147:2018 (<https://www.iso.org/standard/72311.html>_) provides guidelines for vulnerability disclosure processes. Industry best practices, often seen in bug bounty platforms, clear reporting, response times, safe harbor, and coordinated disclosure.
 
 Security Best Practices for Releasing Source Code of Critical Components
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The EU Open Source Software Strategy encourages open sourcing with an implicit need for security. The CRA's focus on security by design and Software Bill of Materials (SBOMs <https://www.cisa.gov/sbom>_) requires secure development practices relevant to open source releases.
 
