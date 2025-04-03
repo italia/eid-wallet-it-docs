@@ -121,8 +121,8 @@ Below is the description of acronyms and definitions which are useful for furthe
      - Process defining how information is transferred to the European Commission and the inclusion of an entity in the Trusted List.
      - 
    * - Organizational Entity
-     - A legal person (only considering organizations and public entities, not natural/physical persons) recognized by the Member State through a unique identifier to operate a certain role within the EUDI Wallet ecosystem.
-     - | In this category the following entity roles are included: Wallet Provider, Credential Issuer, Relying Party, QTSP In general, any kind of Entity that must be registered through a national or European registration mechanism.
+     - A legal person (only considering organizations and public entities, not natural/physical persons) recognized through a unique identifier to operate a certain role within the IT-Wallet ecosystem.
+     - | In this category the following entity roles are included: Wallet Provider, Credential Issuer, Relying Party, QTSP In general, any kind of Entity that must be registered through a national registration mechanism.
        | 
        | *Alternative terms:* legal person (only considering organizations and public entities, not natural/physical persons).
    * - PID Provider
