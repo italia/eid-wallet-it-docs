@@ -36,3 +36,18 @@ Credential Issuers are required to release their source code if they are provide
 Relying Parties Solutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Relying Parties are subject to the same conditions as Credential Issuers regarding the release of their source code.
+
+
+Responsible Disclosure
+^^^^^^^^^^^^^^^^^^^^^^
+
+In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (NIS2 <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555>_) also emphasizes vulnerability handling within cybersecurity risk management. Many member states have national responsible disclosure policies.
+
+ISO/IEC 29147:2018 (<https://www.iso.org/standard/72311.html>_) provides guidelines for vulnerability disclosure processes. Industry best practices, often seen in bug bounty platforms, clear reporting, response times, safe harbor, and coordinated disclosure.
+
+Security Best Practices for Releasing Source Code of Critical Components
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The EU Open Source Software Strategy encourages open sourcing with an implicit need for security. The CRA's focus on security by design and Software Bill of Materials (SBOMs <https://www.cisa.gov/sbom>_) requires secure development practices relevant to open source releases.
+
+The Open Worldwide Application Security Project (OWASP <https://owasp.org/>_) provides extensive secure coding guidelines and security patterns. The  SysAdmin, Audit, Network, and Security Institute (SANS <https://www.sans.org/>_) and the Italian Computer Emergency Response Team (CERT <https://cert-agid.gov.it/>_) offer secure coding standards for various languages. Version control best practices include regular commits, detailed messages, code reviews, branch protection, and careful secret management. Employing static and dynamic code analysis, along with threat modeling, is crucial before release. Robust dependency management involves SBOMs, regular updates, vulnerability scanning, and version pinning. Secure build and release processes ensure software integrity. For open-source projects, engaging with the community and maintaining transparency about security practices are RECOMMENDED.
