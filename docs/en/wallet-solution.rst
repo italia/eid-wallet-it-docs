@@ -839,7 +839,7 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **vct**
-      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set to ``https://itwallet.registry.example.it/ITWalletAttestation``.
+      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set to ``wallet.atestation.example/v1.0``.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the digests.
@@ -906,15 +906,14 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
     "trust_chain": [
       "eyJhbGciOiJFUz...6S0A",
       "eyJhbGciOiJFUz...jJLA",
-      "eyJhbGciOiJFUz...H9gw",
+      "eyJhbGciOiJFUz...H9gw"
     ],
-    "typ": "dc+sd-jwt",
+    "typ": "dc+sd-jwt"
   }
   .
   {
     "iss": "https://wallet-provider.example.org",
-    "cnf":
-    {
+    "cnf": {
       "jwk":
       {
         "crv": "P-256",
@@ -923,7 +922,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
       }
     },
-    "_sd": [DTZRbQgOWJlLaBfe6pr+j1vL4B4t6LLWyt9loaEJKe0=, 9UVXn0/detJVPm6HSp2pxdFe2YJrVKDeMZqS/Pf2EWc=, cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=, iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=],
+    "_sd": ["cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=", "iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk="],
     "_sd_alg": "sha-256",
     "iat": 1687281195,
     "exp": 1687288395,

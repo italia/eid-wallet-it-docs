@@ -295,14 +295,13 @@ where a non-normative example in the form of decoded header and payload is shown
         },
         {
           "id": "wallet attestation",
-          "format": "jwt",
+          "format": "dc+sd-jwt",
           "meta": {
-            "vct_values": [ " https://itwallet.registry.example.it/WalletAttestation" ]
+            "vct_values": ["wallet.atestation.example/v1.0" ]
           },
           "claims": [
-              {"path": ["iss"]},
-              {"path": ["iat"]},
-              {"path": ["cnf"]}
+              {"path": ["wallet_name"]},
+              {"path": ["wallet_link"]}
           ]
         }
       ]
@@ -494,7 +493,7 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
     "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
     "vp_token": {
         "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
-        "wallet attestation": $WalletAttestationSD-JWT
+        "wallet attestation": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6WyJleUpoYkdjaU9pSkZVei4uLjZTMEEiLCJleUpoYkdjaU9pSkZVei4uLmpKTEEiLCJleUpoYkdjaU9pSkZVei4uLkg5Z3ciXSwidHlwIjoiZGMrc2Qtand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsImNuZiI6eyJqd2siOnsiY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiI0SE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6IkxJWm5TQjM5dkZKaFlnUzNrN2pYRTRyMy1Db0dGUXdadFBCSVJxcE5scmcifX0sIl9zZCI6WyJjRDkvWEM3dDdRVkh2bVNpRTFkR1cwV1lyMGpjcW04bjBHQTZNR2l0YWlrPSIsImlRUWh6ZjYrc2FZQ3pISDkyTjFReUppc0tzWmJBcGJUckoxYW1IZ0xvT2s9Il0sIl9zZF9hbGciOiJzaGEtMjU2IiwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTUsInZjdCI6IndhbGxldC5hdGVzdGF0aW9uLmV4YW1wbGUvdjEuMCIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJhYWwiOiJodHRwczovL3RydXN0LWxpc3QuZXUvYWFsL2hpZ2gifQ.rbOEkwMHB-m7vKqGygqXAkAB6Z3dM0ldD-nKsYVf1dzJvZW4XUr617ATmb7QgqqJ8y2b2M_Uk29_sqvwFeU3xA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9saW5rIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiXQ==~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd~eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJrYitqd3QifQ.eyJhdWQiOiJodHRwczovL3JlbHlpbmctcGFydHkuZXhhbXBsZS5vcmciLCJfc2RfaGFzaCI6Ik1EbGhaRGc0WW1KbU5qRTVaVFppWldFeU1tUmtaREE1TUdVNU9UQXlNRGMyTldaaE5tWmhZMkZqTnpka1lXRXpObVprTTJZeFlXTTBPR0k0WXpBMFl3PT0iLCJpYXQiOjE2ODcyODExOTUsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJub25jZSI6IjJjMTI4ZTRkLWZjOTEtNGNkMy04NmI4LTE4YmRlYTA5ODhjYiJ9.4uxHqmkJ2FELYBB6tGUSbOfHhr99JUD8bdN4b4PoSfKrwgQAm6ZL9z7asX3Lw7nvxFJyEr0M_N2Y1ylfw07ueQ
     }
   }
 
