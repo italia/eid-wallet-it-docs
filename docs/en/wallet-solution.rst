@@ -198,7 +198,7 @@ A Wallet Provider instead is responsible for:
 
 Wallet Instance Functionalities
 -------------------------------
-A Wallet Provider's Wallet Instance, MUST support three fundamental functionalities: Registration, Attestation Issuance, and Revocation. Each functionality is described in detail in the following sections.
+A Wallet Instance, MUST support three fundamental functionalities: Registration, Attestation Issuance, and Revocation. Each functionality is described in detail in the following sections.
 
 .. note::
 
@@ -207,7 +207,7 @@ A Wallet Provider's Wallet Instance, MUST support three fundamental functionalit
 Wallet Instance Initialization and Registration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For details see :ref:`mobile-instance-app-initialization-and-registration.rst`.
+This process allows a user who has just installed the Wallet Instance application to register the Wallet Instance with the Wallet Provider backend. During this process, the Wallet Instance application will request a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself. This assertion will be validated by the Wallet Provider, and if the validation is successful, the Wallet Provider will authenticate the Wallet Instance. For details see :ref:`mobile-instance-app-initialization-and-registration.rst`.
 
 .. include:: wallet-attestation.rst
 .. include:: wallet-revocation.rst
@@ -396,7 +396,7 @@ Nonce Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
 
-See :ref:`Nonce Request` and :ref:`Nonce Request` for details on the Nonce Request and Nonce Response.
+See :ref:`Nonce Request` and :ref:`Nonce Response` for details on the Nonce Request and Nonce Response.
 
 Wallet Instance Management Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -406,12 +406,19 @@ The following sections describe the registration, status retrieval and revocatio
 Wallet Instance Registration Request
 .............................................
 
-To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Appication Instance Registration Request`
+To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Application Instance Registration Request`
+
+.. warning::
+  During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate the Wallet Instace with a specific User, authenticating the User with the Wallet Provider. The authentication mechanism is at the discretion of the Wallet Provider and it will not be addressed within these guidelines, as each Wallet Provider may have its User authentication systems already implemented.
 
 Wallet Instance Registration Response
 .............................................
 
-If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Appication Instance Registration Response`
+If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Application Instance Registration Response`
+
+.. note::
+
+  The Wallet Provider SHOULD associate the Wallet Instance (through the ``hardware_key_tag`` identifier) with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance and for a future revocation.
 
 Wallet Instance Retrieval Request
 .............................................
@@ -517,25 +524,7 @@ The following errors apply to all Wallet Instance Management operations (Registr
 Request-Specific Error Responses
 '''''''''''''''''''''''''''''''''''''''
 
-The following errors MUST be supported for error responses related to **Wallet Instance Registration**:
-
-.. list-table:: 
-   :widths: 20 20 50
-   :header-rows: 1
-
-   * - **HTTP Status Code**
-     - **Error Code**
-     - **Description**
-   * - ``403 Forbidden``
-     - ``integrity_check_error``
-     - The device does not meet the Wallet Provider's minimum security requirements.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The provided challenge is invalid, expired, or already used.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The signature of the Integrity Assertion is invalid.
-
+The errors in :ref:`Mobile Application Instance Error Response` MUST be supported for error responses related to **Wallet Instance Registration**.
 
 The following errors MUST be supported for error responses related to **Wallet Instance Retrieval**:
 

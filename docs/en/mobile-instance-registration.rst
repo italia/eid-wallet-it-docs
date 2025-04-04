@@ -3,7 +3,7 @@
 Mobile Application Instance Initialization and Registration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since the registration flows are analogous for a Wallet or Relying Party Instance, these components are henceforth called Mobile Application Instance. Similarly, the Application Provider backend fulfills the roles of the Wallet Provier and Relying Party backend depending on the registration process.   
+Since the registration flows are analogous for a Wallet or Relying Party Instance, these components are henceforth called Mobile Application Instance. Similarly, the Application Provider fulfills the roles of the Wallet Provider and Relying Party backend depending on the registration process.   
 
 .. figure:: ../../images/application_instance_initialization.svg
     :figwidth: 100%
@@ -29,10 +29,10 @@ Upon a successful request, the Application Provider Backend generates and return
 
 **Step 6**: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:
 
-  1. It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Wallet is in the initialization phase, they MUST be deleted.
-  2. It MUST generate a pair of asymmetric Elliptic Curve keys (hardware_key_pub, hardware_key_priv) via a local WSCD.
-  3. It SHOULD obtain a unique identifier Cryptographic Hardware Key Tag (hardware_key_tag) for the generated Cryptographic Hardware Keys from the operating system. If the operating system permits specifying a tag during the creation of keys, then a random string for the hardware_key_tag MUST be selected. This random value MUST be collision-resistant and unpredictable to ensure security. To achieve this, consider using a cryptographic hash function or a secure random number generator provided by the operating system or a reputable cryptographic library.
-  4. If the previous points are satisfied, it MUST store the hardware_key_tag in local storage.
+  1. It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Application Instance is in the initialization phase, they MUST be deleted.
+  2. It MUST generate a pair of asymmetric Elliptic Curve keys (``hardware_key_pub``, ``hardware_key_priv``) via a local WSCD.
+  3. It SHOULD obtain a unique identifier Cryptographic Hardware Key Tag (``hardware_key_tag``) for the generated Cryptographic Hardware Keys from the operating system. If the operating system permits specifying a tag during the creation of keys, then a random string for the ``hardware_key_tag`` MUST be selected. This random value MUST be collision-resistant and unpredictable to ensure security. To achieve this, consider using a cryptographic hash function or a secure random number generator provided by the operating system or a reputable cryptographic library.
+  4. If the previous points are satisfied, it MUST store the ``hardware_key_tag`` in local storage.
 
 .. note::
 
@@ -40,7 +40,7 @@ Upon a successful request, the Application Provider Backend generates and return
 
   If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
 
-**Step 7**: The Mobile Application Instance uses the Key Attestation API, providing the "challenge" and the Cryptographic Hardware Key Tag to acquire the Key Attestation.
+**Step 7**: The Mobile Application Instance uses the Key Attestation API, providing the ``nonce`` to acquire the Key Attestation.
 
 .. note::
 
@@ -56,7 +56,7 @@ If any errors occur in any Key Attestation APIS process, such as device integrit
 
 **Step 8**: The Key Attestation API performs the following actions:
 
-* Creates a Key Attestation that is linked with the provided "challenge" and the public key of the Wallet Hardware.
+* Creates a Key Attestation that is linked with the provided "challenge" and the public key of the Application Instance Hardware.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
@@ -64,20 +64,15 @@ If any errors occur in any Key Attestation APIS process, such as device integrit
 The request body includes the following claims: the ``challenge``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
 
 .. note::
-  It is not necessary to send the Application Hardware public key because it is already included in the ``key_attestation``.
-  As seen in the previous steps, the Key Attestation API creates a Key Attestation linked to the provided "challenge" and the public key of the Wallet Hardware. This process eliminates the need to send the Wallet Hardware public key directly, as it is already included in the key attestation. The ``hardware_key_tag`` serves as a reference or identifier for the corresponding Cryptographic Hardware key stored by the Application Provider. Therefore, the Application Provider can associate the received ``hardware_key_tag`` with the appropriate Cryptographic Hardware key in its storage.
-
-.. warning::
-  During the registration phase of the Mobile Application Instance with the Application Provider it is also necessary to associate the Wallet Instace with a specific User, authenticating the User with the Application Provider. The authentication mechanism is at the discretion of the Application Provider and it will not be addressed within these guidelines, as each Application Provider may have its User authentication systems already implemented.
-
+  It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
+  As seen in the previous steps, the Key Attestation API creates a Key Attestation linked to the provided ``nonce`` which is the digest of the Application Provider's ``challenge``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the key attestation. 
 
 **Steps 10-12 (Mobile Application Instance Registration Response)**: The Application Provider validates the ``challenge`` and ``key_attestation`` signature, therefore:
 
   1. It MUST verify that the ``challenge`` was generated by Application Provider and has not already been used.
-  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines.
+  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines. The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``challenge`` with the ``nonce`` provided in the Key Attestation.
   3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider.
-  4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (hardware_key_tag), the Public Hardware Key (hardware_key_pub) and possibly other useful information related to the device.
-  5. It SHOULD associate the Mobile Application Instance with a specific User uniquely identified within the Application Provider's systems. This will be useful for the lifecycle of the Mobile Application Instance and for a future revocation.
+  4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device.
 
 Upon successful registration of the Mobile Application Instance, the Application Provider responds with a confirmation of success.
 
@@ -95,12 +90,12 @@ Below is a non-normative example of a Nonce Request.
 .. code-block:: http
 
     GET /challenge HTTP/1.1
-    Host: applicationprovider.example.com
+    Host: application-provider.example.com
 
 Nonce Response
 ..............
 Upon a successful request, the Application Instance Provider MUST return an HTTP response with a 200 OK status code. The response MUST be in `application/json` format, including the ``challenge``.
-If any errors occur during the the challenge generation, an error response MUST be returned. Refer to :ref:`Error Handling for Nonce Generation` for details on error codes and descriptions.
+If any errors occur during the the challenge generation, an error response MUST be returned. Refer to :ref:`Nonce Response` for details on error codes and descriptions.
 
 Below is a non-normative example of a Nonce Response.
 
@@ -141,10 +136,10 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - **Description**
     * - ``500 Internal Server Error``
       - ``server_error``
-      - The request cannot be fulfilled because the .well-known Endpoint encountered an internal problem.
+      - The request cannot be fulfilled because the Nonce Endpoint encountered an internal problem.
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
-      - The request cannot be fulfilled because the .well-known Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
+      - The request cannot be fulfilled because the Nonce Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
 Mobile Application Instance Registration Request
 ..................................................
@@ -173,8 +168,8 @@ Below is a non-normative example of a Mobile Application Instance Registration R
 
 .. code-block:: http
 
-    POST /wallet-instances HTTP/1.1
-    Host: walletprovider.example.com
+    POST /aplication-instances HTTP/1.1
+    Host: application-provider.example.com
     Content-Type: application/json
 
     {
@@ -195,8 +190,41 @@ Below is a non-normative example of  a Mobile Application Instance Registration 
 
     HTTP/1.1 204 No content
 
+If any errors occur during the Mobile Application Instance registration, an error response MUST be returned.
 
-If any errors occur during the Mobile Application Instance registration, an error response MUST be returned. Refer to :ref:`Error Handling for Wallet Instance Management` and  for details on error codes and descriptions.
+Mobile Application Instance Error Response
+'''''''''''''''''''''''''''''''''''''''''''''
+
+The following errors apply to all Application Instance Management Registration and MUST be supported for the error response, unless otherwise specified:
+
+.. list-table:: 
+   :widths: 20 20 50
+   :header-rows: 1
+
+   * - **HTTP Status Code**
+     - **Error Code**
+     - **Description**
+   * - ``400 Bad Request``
+     - ``bad_request``
+     - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
+   * - ``403 Forbidden``
+     - ``integrity_check_error``
+     - The device does not meet the Wallet Provider's minimum security requirements.
+   * - ``403 Forbidden``
+     - ``invalid_request``
+     - The provided challenge is invalid, expired, or already used.
+   * - ``403 Forbidden``
+     - ``invalid_request``
+     - The signature of the Integrity Assertion is invalid.
+   * - ``422 Unprocessable Content`` [OPTIONAL]
+     - ``validation_error``
+     - The request does not adhere to the required format.
+   * - ``500 Internal Server Error``
+     - ``server_error``
+     - An internal error occurred while processing the request.
+   * - ``503 Service Unavailable``
+     - ``temporarily_unavailable``
+     - The service is unavailable. Please try again later.
 
 Below is a non-normative example of an error response:
 
