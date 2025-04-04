@@ -1,0 +1,298 @@
+openapi: 3.0.1
+info:
+  title: IT Wallet API - Wallet Provider web services
+  version: 0.1.0
+servers:
+  - url: https://wallet-provider.example.org
+    description: Wallet Provider API
+paths:
+  /v0.9.0/notifyUserDeath/:
+    post:
+      tags:
+        - e-services PDND
+      summary: Notification of User's death.
+      description: >-
+        This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.
+      operationId: notifyUserDeath
+      parameters:
+        - name: Authorization
+          in: header
+          description: >-
+            JWT token obtained from <a target="blank"
+            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/authentic-sources.html#pdnd-voucher-issuance">PDND
+            Interoperabilità</a>. Based on the implementation choices, it can be either Bearer or DPoP.<br/><br/><a target="blank"
+            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJodHRwczovL2ludGVyb3AucGFnb3BhLml0Iiwic3ViIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwiYXVkIjoiaHR0cHM6Ly9hdXRoZW50aWMtc291cmNlLmV4YW1wbGUuaXQiLCJleHAiOjE3MzMwNDIxNTAsIm5iZiI6MTczMzA0MTk0NSwiaWF0IjoxNzMzMDQxOTIwLCJqdGkiOiJjNGY1ZDdlMi1iN2M4LTQwZjYtOWI2YS1kYzlhNGY1YWViNTciLCJjbGllbnRfaWQiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJwdXJwb3NlSWQiOiJkMmI5YTY1My1jNDk3LTQ1YzYtYjhmMS01YmRmMTI0YzlkM2EiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiI5Yzc4OTRhMGE1YTkxMDU4MGI5NjdmMzg0Y2RmYmExN2IxYWI2Zjg2NjcwZTViMGRmMThhMGM0NTNiNWViMjE1In0sImNuZiI6eyJqa3QiOiI4NTJkMzE5OWJkMGUzOThlYTBjOWMyYTA3NzZjYTMzNjYyOGU4NzBhZWM3YWMwYTQxOGFkYTNlNmNlMTY0ZjhkIn19.SqKCkZyv78VfaTZzOh6iYfKdGirSrPGMvqCMZE9DFXmzhaYz5lpp-fGRjmDbj88Qrw6U_3nl5WUBUjbjxpYxAQ">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: Signed JWT
+            example: >-
+              DPoP
+              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJodHRwczovL2ludGVyb3AucGFnb3BhLml0Iiwic3ViIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwiYXVkIjoiaHR0cHM6Ly9hdXRoZW50aWMtc291cmNlLmV4YW1wbGUuaXQiLCJleHAiOjE3MzMwNDIxNTAsIm5iZiI6MTczMzA0MTk0NSwiaWF0IjoxNzMzMDQxOTIwLCJqdGkiOiJjNGY1ZDdlMi1iN2M4LTQwZjYtOWI2YS1kYzlhNGY1YWViNTciLCJjbGllbnRfaWQiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJwdXJwb3NlSWQiOiJkMmI5YTY1My1jNDk3LTQ1YzYtYjhmMS01YmRmMTI0YzlkM2EiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiI5Yzc4OTRhMGE1YTkxMDU4MGI5NjdmMzg0Y2RmYmExN2IxYWI2Zjg2NjcwZTViMGRmMThhMGM0NTNiNWViMjE1In0sImNuZiI6eyJqa3QiOiI4NTJkMzE5OWJkMGUzOThlYTBjOWMyYTA3NzZjYTMzNjYyOGU4NzBhZWM3YWMwYTQxOGFkYTNlNmNlMTY0ZjhkIn19.SqKCkZyv78VfaTZzOh6iYfKdGirSrPGMvqCMZE9DFXmzhaYz5lpp-fGRjmDbj88Qrw6U_3nl5WUBUjbjxpYxAQ
+        - name: DPoP
+          in: header
+          description: >-
+            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
+            pattern using the POP_DPoP implementation. See also <a target="blank"
+            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
+            9449</a>.<br/><br/>
+
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiIyYzc2ZmNhMy1jYjRlLTQzMTItOGI2ZS05NzQ5NDYyZjQyMGQiLCJodG0iOiJQT1NUIiwiYXRoIjoiNDc1MmMzMmQ2YzQ4NzYzZjBmMzljZDNkYzk5ZDJlOTk3OTMyYmFmMzc1NjNiYzVhODk5NDg3YTZmODZlNWIxZCIsImh0dSI6Imh0dHBzOi8vYXV0aGVudGljLXNvdXJjZS5leGFtcGxlLml0IiwiaWF0IjoxNzYyMjYyNjE2fQ.Mdayqq66hFzMFvN131WRZ_dxyaEu7W1Qz-ksYt6-RLGD1rCixnmnmFnNOsgFT_wztGL1zJloYTMgn9Ys6lSxgQ">EXAMPLE
+            ON JWT.IO</a>
+          required: false
+          schema:
+            type: string
+            format: JWT
+            example: >-
+              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiIyYzc2ZmNhMy1jYjRlLTQzMTItOGI2ZS05NzQ5NDYyZjQyMGQiLCJodG0iOiJQT1NUIiwiYXRoIjoiNDc1MmMzMmQ2YzQ4NzYzZjBmMzljZDNkYzk5ZDJlOTk3OTMyYmFmMzc1NjNiYzVhODk5NDg3YTZmODZlNWIxZCIsImh0dSI6Imh0dHBzOi8vYXV0aGVudGljLXNvdXJjZS5leGFtcGxlLml0IiwiaWF0IjoxNzYyMjYyNjE2fQ.Mdayqq66hFzMFvN131WRZ_dxyaEu7W1Qz-ksYt6-RLGD1rCixnmnmFnNOsgFT_wztGL1zJloYTMgn9Ys6lSxgQ
+        - name: Agid-JWT-Signature
+          in: header
+          description: >-
+            JWT containing the signature of the message headers whose integrity
+            needs to be guaranteed, to comply with the INTEGRITY_REST_02
+            security pattern (see <a target="blank"
+            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+
+
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJzdWIiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.tG5-P96CCA6N1IYC-xk4GumoVkA3NFolpbBn2vQ2e9vpWQ8f5Sm2l4-1VrXfKTx-CUVz_puiwqkBhulrNKj2fA">EXAMPLE
+            ON JWT.IO</a>
+          required: true
+          schema:
+            type: string
+            format: JWT
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJzdWIiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImlhdCI6MTczMzM5Nzg0MCwibmJmIjoxNzMzNDAxNjI4LCJleHAiOjE3MzM0MDE0NDAsImp0aSI6ImQzZjdiMmM5LTI3NGEtNDJiNy04ZjhkLTJlOWQ4YjE3MzRiMCIsInNpZ25lZF9oZWFkZXJzIjpbeyJkaWdlc3QiOiJTSEEtMjU2PTcyZTE4YmRkZGYxM2M5MTFiNGRkNTYyZWUyMTk3OWE1YzlmMjM1YzNhMDFiZDE0MjZlODU3ZDhjMWEyODJmNDEifSx7ImNvbnRlbnQtdHlwZSI6ImFwcGxpY2F0aW9uL2pzb24ifV19.tG5-P96CCA6N1IYC-xk4GumoVkA3NFolpbBn2vQ2e9vpWQ8f5Sm2l4-1VrXfKTx-CUVz_puiwqkBhulrNKj2fA
+        - name: Digest
+          in: header
+          description: >-
+            Digest of the message payload, to comply with the INTEGRITY_REST_02
+            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
+            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
+            digest output.
+          required: true
+          schema:
+            type: string
+            example: SHA-256=72e18bdddf13c911b4dd562ee21979a5c9f235c3a01bd1426e857d8c1a282f41
+        - name: Agid-JWT-TrackingEvidence
+          in: header
+          description: >-
+            If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
+            pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
+            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE
+            ON JWT.IO</a>
+          required: false
+          schema:
+            type: string
+            format: JWT
+            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2UuZXhhbXBsZS5pdCIsImV4cCI6MTczMzA1MjYwMCwibmJmIjoxNzMzMDM2NDUwLCJpYXQiOjE3MzMwMzY0MDAsImp0aSI6ImE0YjVjNmQ3LWU4ZjktYWJjZC1lZjEyLTM0NTY3ODkwMTIzNCIsImRub25jZSI6NjUyODQyNDIxMzY4NSwicHVycG9zZUlkIjoiYjJjM2Q0ZTUtZjZnNy1oOGk5LWowazEtbG1ubzEyMzQ1Njc4IiwidXNlcklEIjoiYThiN2M2ZDUtZTRmMy1nMmgxLWk5ajAta2xtbm9wcXJzdHV2IiwibG9hIjoic3Vic3RhbnRpYWwifQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/notifyUserDeath"
+      responses:
+        "207":
+          description: Multi-Status
+          content:
+            application/jwt:
+              schema:
+                $ref: "#/components/schemas/e-Service_Response"
+              example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImNkYjUyNTMyLWRkOTQtNDBlZi04MjRkLTljNTViMTBlNmJjOSJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy92MC45LjAvbm90aWZ5VXNlckRlYXRoIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBmIiwicmVzdWx0Ijp7InJldm9rZWQiOlsiV2FsbGV0SW5zdGFuY2VpZEEiLCJXYWxsZXRJbnN0YW5jZWlkQiJdLCJub3RfZm91bmRlZCI6WyJXYWxsZXRJbnN0YW5jZWlkQyJdLCJhbHJlYWR5X3Jldm9rZWQiOlsiV2FsbGV0SW5zdGFuY2VpZEQiXX0sInJlc3VsdF9kZXNjcmlwdGlvbiI6IlRoZSBzZXJ2aWNlIHBhcnRpYWxseSBwcm9jZXNzIHRoZSByZXZvY2F0aW9uIG9mIHRoZSByZXF1ZXN0ZWQgV2FsbGV0IEluc3RhbmNlcyBhcyBzb21lIGlkZW50aWZpZXJzIHdlcmUgbm90IGZvdW5kLiJ9.VKieVsh9QDiLVESOUoxH0wj2-oFwpraUpOMTIAUJBBajd674gpHKk9fOoIVyQua6qrkAWyfQ--MKWWUZ7R0oXw"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_request
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it is missing
+                          required parameters, contains invalid parameters, or
+                          is otherwise malformed.
+                    required:
+                      - error
+                  - type: object
+                    properties:
+                      error:
+                        type: string
+                        description: invalid_dpop_proof
+                      error_description:
+                        type: string
+                        description: >-
+                          The request cannot be fulfilled because it contains an
+                          invalid dpop proof.
+                    required:
+                      - error
+              examples:
+                invalid request:
+                  value:
+                    error: invalid_request
+                    error_description: >-
+                      The request cannot be fulfilled because it is missing
+                      required parameters, contains invalid parameters, or is
+                      otherwise malformed
+                invalid dpop proof:
+                  value:
+                    error: invalid_dpop_proof
+                    error_description: >-
+                      The request cannot be fulfilled because it contains an
+                      invalid dpop proof
+        "401":
+          description: Unauthorized
+          headers:
+            WWW-Authenticate:
+              description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
+              schema:
+                type: string
+        "404":
+          description: Wallet Instance identifiers not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error code
+                    example: not_found
+                  error_description:
+                    type: string
+                    description: >-
+                      Text in human-readable form providing further details to
+                      clarify the nature of the error encountered
+                    example: >-
+                      The Wallet Provider cannot fulfill the request because none of the
+                      Wallet Instance identifiers were found
+                required:
+                  - error
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: server_error
+                  error_description:
+                    type: string
+                    description: >-
+                      The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                required:
+                  - error
+              example:
+                error: invalid_request
+                error_description: >-
+                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+        "503":
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error code
+                  error_description:
+                    type: string
+                    description: >-
+                      Text in human-readable form providing further details to
+                      clarify the nature of the error encountered
+                required:
+                  - error
+              example:
+                error: "temporarily_unavailable"
+                error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
+components:
+  schemas:
+    e-Service_Response:
+      properties:
+        Header:
+          type: object
+          properties:
+            alg:
+              description: A digital signature algorithm identifier.
+              type: string
+              example: RS256
+            kid:
+              description: Unique identifier of the JWK used by the Provider to sign the JWT.
+              type: string
+              example: "cdb52532-dd94-40ef-824d-9c55b10e6bc9"
+            typ:
+              description: It MUST be set to 'JWT'.
+              type: string
+              example: "JWT"
+          required: [alg, kid, typ]
+        Payload:
+          type: object
+          properties:
+            iss:
+              description: The identifier of the e-Service.
+              type: string
+            aud:
+              description: The identifier of the Consumer.
+              type: string
+              example: "31670092-eec0-4f95-88da-e1c7ce5e4505"
+            exp:
+              description: UNIX timestamp representing the JWT expiration time.
+              type: integer
+              example: 1736846928
+            iat:
+              description: UNIX timestamp representing the JWT issuance time.
+              type: integer
+              example: 1736846688
+            jti:
+              description: Unique identifier of the JWT to prevent replay attacks.
+              type: string
+              example: "8b971b43-e990-44fa-9013-1b353bfc5a0f"
+            nbf:
+              description: UNIX timestamp representing the JWT first validity time.
+              type: string
+              example: "1736846688"
+            result:
+              type: object
+              properties:
+                revoked:
+                  type: array
+                  items:
+                    type: string
+                  description: List of Wallet Instances successfully rekoved.
+                not_found:
+                  type: array
+                  items:
+                    type: string
+                  description: List of Wallet Instances not revoked as their identifier were not found at the Wallet Provider.
+                already_revoked:
+                  type: array
+                  items:
+                    type: string
+                  description: List of Wallet Instances that were already revoked by the Wallet Provider.
+              required: [revoked, not_found, already_revoked]
+              description: >-
+                JSON object specifying which Wallet Instance was successfully revoked, which was already revoked and which was not found.
+            result_description:
+              description: Response Description.
+              type: string
+              example: The service partially process the revocation of the requested Wallet Instances as some identifiers were not found.
+          required: [iss, aud, exp, iat, jti, result, result_description]
+    notifyUserDeath:
+      required:
+        - wallet_instance_id
+      type: object
+      properties:
+        wallet_instance_ids:
+          type: array
+          items:
+            type: string
+          description: >-
+            Identifiers of the Wallet Instances associated with the User whose PID was revoked due to his/her death.
