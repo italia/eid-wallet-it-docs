@@ -192,7 +192,7 @@ paths:
               example:
                 error: invalid_request
                 error_description: >-
-                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                  The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
         "503":
           description: Service Unavailable
           content:
