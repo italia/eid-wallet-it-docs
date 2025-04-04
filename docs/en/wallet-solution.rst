@@ -47,7 +47,7 @@ The requirements for the Wallet Attestation are defined below:
 
 .. note:: 
 
-  Throughout this section, the services used to attest genuineness of the Wallet Instance and the device in which it is installed are referred to as **Device Integrity Service (DIS)**. the Device Integrity Service is considered in an abstract fashion and it is assumed to be a service provided by a trusted third party (i.e., the OS Provider's API) which is able to perform integrity checks on the Wallet Instance as well as on the device where it is installed.
+  Throughout this section, the services used to attest genuineness of the Wallet Instance and the device in which it is installed are referred to as **Key Attestation API**. The Key Attestation API is considered in an abstract fashion and it is assumed to be a service provided by a trusted third party (i.e., the OS Provider's API) which is able to perform integrity checks on the Wallet Instance as well as on the device where it is installed.
 
 WSCD Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -207,123 +207,7 @@ A Wallet Provider's Wallet Instance, MUST support three fundamental functionalit
 Wallet Instance Initialization and Registration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../../images/wallet_instance_initialization.svg
-    :name: Sequence Diagram for Wallet Instance Initialization
-    :alt: The figure illustrates the sequence diagram for initializing a Wallet Instance, with the steps explained below.
-    :target: https://www.plantuml.com/plantuml/svg/XLF1Rjiw4BppAnR9uTc2tyD3qFRWeaM2D4s2j4rGfyqbW45JQtbXYLJ9bLltwxkKh4WMdEOWWI1tPcU7mzF0sdDLv4fNx6nLBD2h5QK8I-TuuNwfVqef84EbjgoKDkmy77qBw8z01wXaeNeLSFIWynmPhgqmMuDrbIvBsA_wW1ioA5MCcIVUmWpzXjfopG6EG-d9Pfb7j0Sxt7ct4Q4U5jgiqQOrT67MIcNULIKucs-XAfs59Vd0GA98a9f9jjmIU8LHc8eZ_FjULbEepGZj2OmQe1ICu-2qqTn0vDiXpbTera0DMzeCLI3kI0goL5G513HLFQN77nLvBD1oUBJQfX6Q9C-vaIH0OiT6KwuNEIhbhMC4jq4VTKnaMZZ-T7rvTN_vzUBYYshK3FqHYkXVE_D7bCt6XIZ0BLYJ1U8WmbcdchKID-jEIZMZIfyfN2ABLEjirDNv4HsNxwd8Hd8Kzn6O2epkzM2nih6kjvbYdwrpjsDBadE_BTbbNfShCd2bVVfJUuGRt8OacSBehbhyzt0zaQbf8ulnvD7-3GJtEakIse30pcDqfZZSsUI4bkVHcFbAXrM41PXTdPsyVZEgHvX0sttOOjmw62CzXMp7-dJHPo6WZrSn6dRf9qwmAluwvwWbcEkMGMIzWq2P7KawKZ8yWI7dsyQTsulFO_5ydr_j9MilLG3tAuJ1kuxtseHSGJVslk6bRngiSIj5x6fv4HDtG3DZu2w82c9dYLv3Qvpt64fdKx8Pc3ZaaepGnNH6iVripcIl2zJaEOVYWRIUzrhlGl1ILfvF_7UTapWy3Fdmy92WWwK3YSEoMKphYtBtNzh9_w_WzkR0CvE2IhHCXvSh2s8IGRynxSC4ejIGHwnNf_AhYlmF
-
-    Wallet Instance Initialization Flow
-
-**Step 1**: The User starts the Wallet Instance mobile app for the first time.
-
-**Step 2**: The Wallet Instance checks whether:
-
-* the device meets the minimum security requirements,
-* the Device Integrity Service is available.
-
-.. note::
-
-  The Wallet Instance needs to check if the Wallet Provider is part of the Federation, obtaining its protocol-specific Metadata. A non-normative example of a response from the :ref:`Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Wallet Provider is represented within the :ref:`Federation endpoint` section.
-
-**Steps 3-5 (Nonce Retrieval)**: The Wallet Instance requests a one-time challenge from the :ref:`Nonce Endpoint` of the Wallet Provider Backend. This challenge, known as a ``nonce``, MUST be unpredictable to serve as the main defense against replay attacks. 
-
-Below is a non-normative example of a Nonce Request.
-
-.. code-block:: http
-
-    GET /nonce HTTP/1.1
-    Host: wallet-provider.example.com
-
-Upon a successful request, the Wallet Provider Backend generates and returns the ``nonce`` value to the Wallet Instance. The backend MUST ensure that it is single-use and valid only within a specific time frame. 
-Below is a non-normative example of a Nonce Response.
-
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
-    }
-**Steps 6-7**: The Wallet Instance MUST create an asymmetric cryptographic key pair (``Pub.WI``, ``Priv.WI``) and securely store it in a secure Hardware. In particular it MUST:
-
-  1. ensure that Cryptographic Hardware Keys bound to the Walelt Instance App do not already exist. If they do already exist and the Wallet Instance is in the initialization phase, the Cryptographic Hardware Keys MUST be deleted.
-  2. generate an asymmetric Elliptic Curve key pair, called henceforth Cryptographic Hardware Keys.
-  3. obtain a unique identifier, called Cryptographic Hardware Key Tag, for the generated Cryptographic Hardware Keys. If the operating system permits specifying a tag during the creation of keys, then a random string for the Cryptographic Hardware Key Tag MUST be selected. This random value MUST be collision-resistant and unpredictable to ensure security. To achieve this, one might for example, use a cryptographic hash function or a secure random number generator provided by the operating system or a reputable cryptographic library.
-
-If the above operations are succesfully completed, the Wallet Instance MUST store the Cryptographic Hardware Key Tag in local storage. Then the Wallet Instance proceeds to generate the ``client_data_hash`` by hasing together the nonce obtained from the Wallet Ptrovider backend, the Cryptographic Hardware Key Tag and the public key to which the attestation shall be bound: ``Pub.WI``. 
-
-.. note::
-
-  The Wallet Instance MAY use a local WSCD for cryptographic operations, including key generation, secure storage, and cryptographic processing,  on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.
-  If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Wallet Instance. The Wallet Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Wallet Instance implementation.
-
-**Step 8**: The Wallet Instance uses the Device Integrity Service, providing the requested data to acquire the Integrity Assertion. The request is signed using a Private Hardware key embedded into the device and contains the corresponding certificate of the hardware manufacturer.
-
-.. note::
-
-  The Device Integrity Service allows the verification of a number of parameters  such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. Upon completion of the verifications, the service will generate a signed token with the verdict.
-
-  For example, in devices equipped with Android OS, the DIS is invoked to generate a *Integrity Assertion*. The latter is a digitally signed certificate to prove that a cryptographic key was generated within the StrongBox environment, is stored and protected inside StrongBox in a genuine device and has specific properties and usage restrictions. Developers can leverage this functionality through the *Play Integrity API*. 
-  
-  For Apple devices, the DIS is invoked through the *App Attest* framework, which provides similar attestations to the *Integrity Assertion*. Developers can leverage the *App Attest* functionality by using the framework itself.
-  
-  Both these services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. 
- 
-**Step 9**: The Device Integrity Service creates a Integrity Assertion that
-
-* is bunded to the public key of the Wallet Instance generated in **Step 6**.
-* contains the *verdict* pertaining to the device's security and integrity.
-* is signed by an OEM private key, Priv.OEM, verifiable with the related OEM certificate.
-
-If any errors occur in any DIS processes, such as device integrity verification, the DIS raises an error response (e.g., see  `Play Integrity API Errors <https://developer.android.com/google/play/integrity/error-codes>`_). The Wallet Instance MUST process these errors accordingly. Details on error handling are left to implementers.
-
-**Step 10 (Wallet Instance Registration Request)**: The Wallet Instance sends a request to the :ref:`Wallet Instance Management Endpoint` of the Wallet Provider Backend to register the Wallet Instance.
-
-Below is a non-normative example of a Wallet Instance Registration Request.
-
-.. code-block:: http
-
-    POST /wallet-instances HTTP/1.1
-    Host: wallet-provider.example.com
-    Content-Type: application/json
-
-    {
-      "challenge": "d2JhY2NhbG91cmVqdWFuZGFt",
-      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBw... redacted",
-      "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
-      "key_attestation": [
-        "MIIDXTCCAkWg...gwHQ29tcGFueT",
-        "MIICyzCCAWg...w0xNzA1MTE"
-        ]
-    }
-
-.. note::
-  It is not necessary to send the Wallet Hardware public key because it is already included in the digest of the ``integrity_assertion``. As seen in the previous steps, the Device Integrity Service (DIS) creates a Integrity Assertion linked to the provided "challenge" and the public key of the Wallet Hardware. This process eliminates the need to send the Wallet Hardware public key directly, as it is already included in the Integrity Assertion. The ``hardware_key_tag`` serves as a reference or identifier for the corresponding Cryptographic Hardware key stored by the Wallet Provider. Therefore, the Wallet Provider can associate the received ``hardware_key_tag`` with the appropriate Cryptographic Hardware key in its storage.
-
-.. warning::
-  During the registration phase of the Wallet Instance it is also necessary to associate the Wallet Instace with a specific User, authenticating the User with the Wallet Provider. The authentication mechanism is at the discretion of the Wallet Provider and it will not be addressed within these guidelines, as each Wallet Provider may have its User authentication systems already implemented.
-
-**Steps 11-14 (Wallet Instance Registration Response)**: The Wallet Provider validates the ``nonce``, ``key_attestation`` and ``integrity_assertion`` values, in particular:
-
-  1. It MUST verify that the ``nonce`` was generated by Wallet Provider and has not already been used; moreover it MUST verify that the ``client_data_hash`` in the Integrity Assertion matches the digest calculated by the Wallet Provider with the ``Pub.WI`` and ``challenge`` values obtaned.
-  2. It MUST validate the ``integrity_assertion`` as defined by the device manufacturers' guidelines and the minimum security requirements defined by the Wallet Provider.
-  3. It MUST verify the ``key_attestation`` by validating the hole certificate chain starting with the leaf certificate (whose signature is generated with the hardware-backed key) and ending with the root certificate signed by the Root CA.  
-  4. If the above verifications are completed, it MUST register the Wallet Instance identifying it with the Cryptographic Hardware Key Tag and all useful information related to the device.
-  5. It SHOULD associate the Wallet Instance with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance.
-
-Upon successful registration of the Wallet Instance, the Wallet Provider MUST respond with Status Code 204.
-
-Below is a non-normative example of a successful Wallet Instance Registration Response.
-
-.. code-block:: http
-
-    HTTP/1.1 204 No content
-
-
-**Step 15**: A the successful response from the Wallet Provider implies that the Wallet Instance has been correctly initialized and becomes operational.
-
-.. note:: While the registration endpoint does not necessitate to authenticate the client, its safety is ensured by the content of the ``integrity_assertion`` claim. Proper validation of the *Integrity Assertion* attestation allows for the registration of authentic and unaltered Wallet Instances. Additionally, the inclusion of the nonce in the ``challenge`` helps preventing replay attacks. The authenticity and integrity of the ``hardware_key_tag`` is guaranteed by the OEM signature of the Integrity Assertion. Finally, the **key attestation** guarantees that the generated key pair is safely stored inside the device. 
+For details see :ref:`mobile-instance-app-initialization-and-registration.rst`.
 
 .. include:: wallet-attestation.rst
 .. include:: wallet-revocation.rst
@@ -508,46 +392,6 @@ Below is a non-normative example of the Entity Configuration for a Wallet PRovid
   "exp": 1709290159
   }
 
-
-Nonce Endpoint 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
-
-Nonce Request
-.............
-
-The request for a nonce MUST be an HTTP GET request sent to the Wallet Provider’s Nonce Endpoint.
-
-Nonce Response
-..............
-Upon a successful request, the Wallet Provider MUST return an HTTP response with a 200 OK status code. The response MUST be in `application/json` format, including the ``nonce``.
-If any errors occur during the the nonce generation, an error response MUST be returned. Refer to :ref:`Error Handling for Nonce Generation` for details on error codes and descriptions.
-
-Error Handling for Nonce Generation
-.......................................
-
-If any errors occur during the nonce generation, the Wallet Provider MUST return an error response as defined in :rfc:`6749#section-5.2`. The response MUST use *application/json* as the content type and MUST include the following parameters:
-
-- *error*. The error code.
-- *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
-
-The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response:
-
-.. list-table::
-   :widths: 30 20 50
-   :header-rows: 1
-
-   * - **HTTP Status Code**
-     - **Error Code**
-     - **Description**
-   * - ``500 Internal Server Error``
-     - ``server_error``
-     - An internal server error occurred while processing the request.
-   * - ``503 Service Unavailable``
-     - ``temporarily_unavailable``
-     - Service unavailable. Please try again later.
-
-
 Wallet Instance Management Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This is a RESTful API endpoint provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion. 
@@ -555,52 +399,12 @@ The following sections describe the registration, status retrieval and revocatio
 
 Wallet Instance Registration Request
 .............................................
-To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the following claims:
-
-.. _table_http_request_claim:
-.. list-table:: 
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Claim**
-      - **Description**
-      - **Reference**
-    * - **challenge**
-      - MUST be set to the value obtained from the Wallet Provider through the Nonce Endpoint.
-      - This specification.
-    * - **integrity_assertion**
-      - It MUST be a base64url encoded Integrity Assertion obtained from the **Device Integrity Service**.
-      - This specification.
-    * - **hardware_key_tag**
-      - It MUST be set with the unique identifier of the **Cryptographic Hardware Keys** and encoded in base64url.
-      - This specification.
-    * - **key_attestation**
-      - It MUST a certificate chain whose leaf certificate is the Key Attestation obtained from the device **Key Attestation APIs**, signed with the device hardware key.
-      - This specification.
-
+To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Appication Instance Registration Request`
 
 Wallet Instance Registration Response
 .............................................
 
-If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content).
-
-If any errors occur during the Wallet Instance registration, an error response MUST be returned. Refer to :ref:`Error Handling for Wallet Instance Management` for details on error codes and descriptions.
-
-Below is a non-normative example of an error response:
-
-.. code:: http
-
-   HTTP/1.1 403 Forbidden
-   Content-Type: application/json
-   Cache-Control: no-store
-
-.. code:: json
-
-   {
-     "error": "forbidden",
-     "error_description": "The provided challenge is invalid, expired, or already used."
-   }
-
+If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Appication Instance Registration Response`
 
 Wallet Instance Retrieval Request
 .............................................
