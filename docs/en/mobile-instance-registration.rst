@@ -85,10 +85,6 @@ Upon successful registration of the Mobile Appication Instance, the Appication P
 
 .. note:: **Threat Model**: while the registration endpoint does not necessitate to authenticate the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the registration of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a challenge helps prevent replay attacks. The authenticity of both the challenge and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
 
-Nonce Endpoint 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic challenge from the Appliacation Provider. The challenge serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
-
 Nonce Request
 .............
 
@@ -149,12 +145,6 @@ The following table lists HTTP Status Codes and related error codes that are sup
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the .well-known Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
-
-
-Application Provider Hardware Key Registration Endpoint
------------------------------------------------------------------
-
-This is a RESTful API endpoint provided by the Application Provider that enables Application Instances to register their Cryptographic Hardware Keys.
 
 Mobile Appication Instance Registration Request
 ..................................................

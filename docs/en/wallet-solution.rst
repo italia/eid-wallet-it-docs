@@ -392,6 +392,12 @@ Below is a non-normative example of the Entity Configuration for a Wallet PRovid
   "exp": 1709290159
   }
 
+Nonce Endpoint 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
+
+See :ref:`Nonce Request` and :ref:`Nonce Request` for details on the Nonce Request and Nonce Response.
+
 Wallet Instance Management Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This is a RESTful API endpoint provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion. 
