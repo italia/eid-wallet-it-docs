@@ -56,7 +56,7 @@ If any errors occur in any Key Attestation APIS process, such as device integrit
 
 **Step 8**: The Key Attestation API performs the following actions:
 
-* Creates a Key Attestation that is linked with the provided "challenge" and the public key of the Application Instance Hardware.
+* Creates a Key Attestation that is linked with the provided ``nonce`` and the public key of the Application Instance Hardware.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
@@ -209,7 +209,7 @@ The following errors apply to all Application Instance Management Registration a
      - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
    * - ``403 Forbidden``
      - ``integrity_check_error``
-     - The device does not meet the Wallet Provider's minimum security requirements.
+     - The device does not meet the Application Provider's minimum security requirements.
    * - ``403 Forbidden``
      - ``invalid_request``
      - The provided challenge is invalid, expired, or already used.
