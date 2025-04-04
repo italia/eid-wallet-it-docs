@@ -185,6 +185,8 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
      - *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party once for all `DocRequest`s. The signature is computed over `ReaderAuthenticationAll` data, as defined in [`ISO18013-5`_ #9.1.4].  
        
        This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used.
+
+mdoc Response
 -------------
 
 The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase.
