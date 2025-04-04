@@ -405,6 +405,7 @@ The following sections describe the registration, status retrieval and revocatio
 
 Wallet Instance Registration Request
 .............................................
+
 To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Appication Instance Registration Request`
 
 Wallet Instance Registration Response
