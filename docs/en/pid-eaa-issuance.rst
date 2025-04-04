@@ -415,7 +415,7 @@ without encoding and signature. The JWT header:
     1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
     3. It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
-    4. It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or mDoc-CBOR format. 
+    4. It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or mdoc-CBOR format. 
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID/(Q)EAA Provider is trusted.
 
 If the checks above are successful, the Wallet Instance requests the User's consent to store the Digital Credential. Upon receiving consent, the Wallet Instance securely stores the PID/(Q)EAA.
@@ -432,7 +432,7 @@ Below is a non-normative example of a successful response containing a Credentia
 .. literalinclude:: ../../examples/sd-jwt-credential-response.json
   :language: JSON  
 
-Below is a non-normative example of a successful response containing a Credential in mDoc format.
+Below is a non-normative example of a successful response containing a Credential in mdoc format.
 
 .. code-block:: http
 
@@ -761,13 +761,13 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to ``PersonIdentificationData``. In case of mobile driving licence in SD-JWT VC format, ``dc_sd_jwt_mdl``, while ``mso_mdoc_mdl`` in case of mobile driving license in mDoc format. Since it MAY be multivalued, when this occurs each value MUST be separated by a space.
+      - JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to ``PersonIdentificationData``. In case of mobile driving licence in SD-JWT VC format, ``dc_sd_jwt_mdl``, while ``mso_mdoc_mdl`` in case of mobile driving license in mdoc format. Since it MAY be multivalued, when this occurs each value MUST be separated by a space.
       - :rfc:`6749`
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
             - **type**: it MUST be set to ``openid_credential``,
-            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to ``PersonIdentificationData``, in the case of mobile driving licence in SD-JWT VC format ``dc_sd_jwt_mdl`` and ``mso_mdoc_mdl`` in case of mobile driving license in mDoc format.
+            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to ``PersonIdentificationData``, in the case of mobile driving licence in SD-JWT VC format ``dc_sd_jwt_mdl`` and ``mso_mdoc_mdl`` in case of mobile driving license in mdoc format.
       - See [RAR :rfc:`9396`] and [`OpenID4VCI`_].
     * - **redirect_uri**
       -  Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.

@@ -1,80 +1,80 @@
 {
 "nameSpaces": {
   "org.iso.18013.5.1": [
-    24({
-      "0": {
+    24(<<
+        {
         "digestID": 0,
         "random": h'790401ed5d0822d1aced942e4b0c41f754eee67b89c5ee3b8fd2c97491a96406',
         "elementIdentifier": "family_name",
         "elementValue": "Rossi"
         }
-      }),
-    24({
-      "1": {
+      >>),
+    24(<<
+        {
         "digestID": 1,
         "random": h'1442881e24514517333019ec24aecaa70bba927d7f2d38ad7cdc3ce82d8561db',
         "elementIdentifier": "given_name",
         "elementValue": "Mario"
         }
-      }),
-    24({
-      "2": {
+      >>),
+    24(<<
+        {
         "digestID": 2,
         "random": h'51b4f3831d910861e81da746b221fd89498507476418cedc3709b5d28a7c41d0',
         "elementIdentifier": "birth_date",
         "elementValue": 1004(1980-01-10)
         }
-      }),
-    24({
-      "3": {
+      >>),
+    24(<<
+        {
         "digestID": 3,
         "random": h'0c8f68d1ec3aa445ef68aa10b7a5875fa18ca222a821e23890a227cdc7d25e8f',
         "elementIdentifier": "issue_date",
         "elementValue": 1004(2025-03-27)
         }
-      }),
-    24({
-      "4": {
+      >>),
+    24(<<
+        {
         "digestID": 4,
         "random": h'0a9ed0d4937673152e52fb3fac0722baf4252e0d0c9869919e3339670203178e',
         "elementIdentifier": "expiry_date",
         "elementValue": 1004(2030-03-27)
         }
-      }),
-    24({
-      "5": {
+      >>),
+    24(<<
+        {
         "digestID": 5,
         "random": h'4b315ff17cf3a4754a94a6cf1e9ddfdd99f6e86b177b74f173348968ca74e80b',
         "elementIdentifier": "issuing_country",
         "elementValue": "IT"
         }
-      }),
-    24({
-      "6": {
+      >>),
+    24(<<
+        {
         "digestID": 6,
         "random": h'f8c82c4103f603435d0bc7762074ccc7c2c74925314a1fb5a8ab9cf2a960221f',
         "elementIdentifier": "issuing_authority",
         "elementValue": "Istituto Poligrafico e Zecca dello Stato"
         }
-      }),
-    24({
-      "7": {
+      >>),
+    24(<<
+        {
         "digestID": 7,
         "random": h'1f7a77a353da7bfc4da12691185249c31d421afd59ddac34f9e4fb4d92b8ec50',
         "elementIdentifier": "birth_place",
         "elementValue": "Roma"
         }
-      }),
-    24({
-      "8": {
+      >>),
+    24(<<
+        {
         "digestID": 8,
         "random": h'88e94c0365c611b523518d9a1b179ae52e242383576249f4965c40c6c97cf214',
         "elementIdentifier": "document_number",
         "elementValue": "XX1234567"
         }
-      }),
-    24({
-      "9": {
+      >>),
+    24(<<
+        {
         "digestID": 9,
         "random": h'944758b43602b01ad68911b062349845492c04c6a78129bcf8cb5fb1396af2fc',
         "elementIdentifier": "portrait",
@@ -106,9 +106,9 @@
         8175f74fc6bda105c529a791c25c4f3c7a11f71586268f4a66b726e33de9ea6f1b52b181c760724e
         47b514520a5a28a283ffd9'        
         }
-      }),
-    24({
-      "10": {
+      >>),
+    24(<<
+        {
         "digestID": 10,
         "random": h'577e4822125f55fe923117aba01fdaefcc67d4aea80018fc22efa8d48e17982f',
         "elementIdentifier": "driving_privileges",
@@ -120,27 +120,27 @@
             }
           ]
         }
-      }),
-    24({
-      "11": {
+      >>),
+    24(<<
+        {
         "digestID": 11,
         "random": h'fa21d3d890af5f4ea2760d08fd9a6256004cd5aa9d5e697ba5873fb0cddd555e',
         "elementIdentifier": "un_distinguishing_sign",
         "elementValue": "I"
         }
-      })
+      >>)
     ],
   "org.iso.18013.5.1.IT": [
-    24({
-      "12": {
+    24(<<
+        {
         "digestID": 12,
         "random": h'0c3fe75be952ec3c2257031a71f2f54aeabfe7445705cec147fbb2c0f69ad561',
         "elementIdentifier": "sub",
         "elementValue": "3B4hK2m7fA9TdVzqLrGp6W8XyJ1sNtQc"
         }
-      }),
-    24({
-      "13": {
+      >>),
+    24(<<
+        {
         "digestID": 13,
         "random": h'd22c6db3dd27e066deb2ace6161e47fc6abc7a87c84a10320f14bc66d6e08d49',
         "elementIdentifier": "verification",
@@ -163,7 +163,7 @@
             ]
           }
         }
-      })
+      >>)
     ]
   },
 "issuerAuth": [
@@ -186,34 +186,34 @@
     << 24(<<    
         {  
             "version": "1.0",
-            "digestAlgorithm": "sha256",
+            "digestAlgorithm": "SHA-256",
             "valueDigests": {
               "org.iso.18013.5.1": {
-                "0": h'f46b65d5060ad060ab9be62ff22ea8633437619ebdc7fa81f2d151159e92bffe',
-                "1": h'e506545f6a6fd5d982670b4d62fc2b0688dc8f26754e7b0c574d63f5d72a85ac',
-                "2": h'cfcf96fa12d100eeed5f00183d3b6a0888baa47eae85b5b95037eca7bbc0d07e',
-                "3": h'8b0772252b0e06b611676b6b3402eb33bf866eb145e49f4d5f23215e6a047772',
-                "4": h'14135c96693e2ab08d956876ee491357d906a6dd125557196dfb9811ba54aa8d',
-                "5": h'86dcbd99233fbb84a9a2dce3a864a425e6e809300067a4475e3ea2a4d233dc74',
-                "6": h'2e9512d35ea225e69e7b2180ecc1678dcc3e77a16e36427e64b4f0e2861b4d3a',
-                "7": h'4efe55c36f6249d23c473a125afc5181aa30633936494781554971b72ff13700',
-                "8": h'cc44a4f9983c5b0b1efc0e82e2867c8d5bbdf89c34bff16a1953c923bb4e4b3e',
-                "9": h'775eb2af0aa55f2071d62662b35c99698ae3bc0e2c4af5724ff88476cddd152f',
-                "10": h'915d0ad53dd23dace34968c263d307c04701a9bb9dc9865af91dc409786fd833',
-                "11": h'47d89ff4fb513044e6f2394236755ac0abf3e4f4a46f40454a458a59f8b7a6fb'
+                  0: h'f46b65d5060ad060ab9be62ff22ea8633437619ebdc7fa81f2d151159e92bffe',
+                  1: h'e506545f6a6fd5d982670b4d62fc2b0688dc8f26754e7b0c574d63f5d72a85ac',
+                  2: h'cfcf96fa12d100eeed5f00183d3b6a0888baa47eae85b5b95037eca7bbc0d07e',
+                  3: h'8b0772252b0e06b611676b6b3402eb33bf866eb145e49f4d5f23215e6a047772',
+                  4: h'14135c96693e2ab08d956876ee491357d906a6dd125557196dfb9811ba54aa8d',
+                  5: h'86dcbd99233fbb84a9a2dce3a864a425e6e809300067a4475e3ea2a4d233dc74',
+                  6: h'2e9512d35ea225e69e7b2180ecc1678dcc3e77a16e36427e64b4f0e2861b4d3a',
+                  7: h'4efe55c36f6249d23c473a125afc5181aa30633936494781554971b72ff13700',
+                  8: h'cc44a4f9983c5b0b1efc0e82e2867c8d5bbdf89c34bff16a1953c923bb4e4b3e',
+                  9: h'775eb2af0aa55f2071d62662b35c99698ae3bc0e2c4af5724ff88476cddd152f',
+                 10: h'915d0ad53dd23dace34968c263d307c04701a9bb9dc9865af91dc409786fd833',
+                 11: h'47d89ff4fb513044e6f2394236755ac0abf3e4f4a46f40454a458a59f8b7a6fb'
                 },
               "org.iso.18013.5.1.IT": {
-                "12": h'16d2098702e896b4614dff1859bd3b42105cac2e62ce7f87dcacc249a656db32',
-                "13": h'755fd7c0f9272a8589c4a661a8aa80dc916018e500884eba316899d653fcb8d1'
+                 12: h'16d2098702e896b4614dff1859bd3b42105cac2e62ce7f87dcacc249a656db32',
+                 13: h'755fd7c0f9272a8589c4a661a8aa80dc916018e500884eba316899d653fcb8d1'
                 }
               },
             "deviceKeyInfo": {
               "deviceKey": {
-                "1": 2,
-                "-1": 1,
-                "-2": h'f96b29873b61f05403e2963a7ecbc799c9aab28d8a6629e5848cfdef85442866',
-                "-3": h'a9fef033a900c63e3894d8deb805a2a1fb55ef0d2b88e3c0d3336408186485ef'
-                }
+                 1: 2,
+                -1: 1,
+                -2: h'f96b29873b61f05403e2963a7ecbc799c9aab28d8a6629e5848cfdef85442866',
+                -3: h'a9fef033a900c63e3894d8deb805a2a1fb55ef0d2b88e3c0d3336408186485ef'
+                  }
               },
             "docType": "org.iso.18013.5.1.mDL",
             "validityInfo": {
@@ -224,7 +224,7 @@
            "status": {
             "status_list": {
               "idx": 1340,
-              "uri": "https://statusprovider.example.org//statuslists/1"
+              "uri": "https://statusprovider.example.org/statuslists/1"
             }
         }
         }
