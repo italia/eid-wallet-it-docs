@@ -30,10 +30,10 @@
         "nameSpaces": {
           "org.iso.18013.5.1.IT": 
           {
-            "iss": true,
-            "sub": true,
             "wallet_name": true,
-            "wallet_link": true
+            "wallet_link": true,
+            "sub": true,
+            "aal": true
           }
         }
       }

@@ -135,23 +135,23 @@ The Device Engagement structure MUST be CBOR encoded and have at least the follo
        Only `Central Client Mode` MUST be supported by this implementation profile.
 
    * - **Capabilities**
-     - *(map, OPTIONAL)*. Declares optional capabilities supported by the mdoc, that are: 
+     - *(map)*. Declares optional capabilities supported by the mdoc, that are: 
 
        - **HandoverSessionEstablishmentSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `SessionEstablishment` message during Negotiated Handover, as defined in [`ISO18013-5`_ #8.2.2.4].
 
        - **ReaderAuthAllSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #8.3.2.1.2.1].
 
    * - **OriginInfos**
-     - *(array, CONDITIONAL)*. Describes the interface used to receive and deliver the engagement structure.  
+     - *(array)*. Describes the interface used to receive and deliver the engagement structure.  
   
-       If `Capabilities` is present, then `OriginInfos` MUST also be present (even if empty).  When used in flows defined in [`ISO18013-5`_ #6.3.2.1], `OriginInfos` MAY be an empty array.
+        When used in flows defined in [`ISO18013-5`_ #6.3.2.1], `OriginInfos` MAY be an empty array.
 
 
 mdoc Request
 ------------
 
 The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE protocol.
-Each mdoc Request MUST be compliant with the following structure, and MUST include the following components:
+Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
 .. list-table:: 
    :widths: 30 70
@@ -177,10 +177,14 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
            - **DataElementIdentifier** *(tstr)*. The identifier of the requested data element.  
            - **IntentToRetain** *(bool)*. Indicates whether the Relying Party intends to retain the value of the data element.
 
-   * - **readerAuth**
-     - *(COSE_Sign1)*. Required for the Relying Party Instance authentication. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #9.1.4].
+       - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the the Relying Party Instance for each `DocRequest`. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #9.1.4].  
+             
+         This component MUST be present only if `readerAuthAll` is not used.
 
-mdoc Response
+   * - **readerAuthAll**
+     - *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party once for all `DocRequest`s. The signature is computed over `ReaderAuthenticationAll` data, as defined in [`ISO18013-5`_ #9.1.4].  
+       
+       This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used.
 -------------
 
 The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase.
@@ -199,7 +203,7 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
      - *(tstr)*. Version of the mdoc Response structure. Enables tracking changes and maintaining compatibility across versions of the standard or implementation profiles.
 
    * - **documents**
-     - *(bstr, OPTIONAL)*. CBOR-encoded collection of documents returned in response to the request. Each document includes `issuerSigned` and `deviceSigned` components, and follows the structure defined in the below table.
+     - *(array of Document objects, OPTIONAL)*. CBOR-encoded collection of documents returned in response to the request. Each document includes `issuerSigned` and `deviceSigned` components, and follows the structure defined in the below table.
 
    * - **documentErrors**
      - *(object, OPTIONAL)*. A map of error codes for unreturned documents, as defined in [`ISO18013-5`_ #8.3.2.1.2.3]. Each key is a `docType`, and each value is an `ErrorCode` (int) indicating why the document was not returned.
@@ -273,20 +277,8 @@ When a session is terminated, the Wallet Instance and the Relying Party Instance
 - destruction of session keys and related ephemeral key material; 
 - closure of the communication channel used for data retrieval.
 
-CBOR Type Acronyms
--------------------
-.. list-table:: 
-   :widths: 20 80
-   :header-rows: 1
+.. note::
 
-   * - **Acronym**
-     - **Meaning**
-   * - `tstr`
-     - Text string
-   * - `bstr`
-     - Byte string
-   * - `uint`
-     - Unsigned integer
-   * - `bool`
-     - Boolean (true/false)
+   See :ref:`MDoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
 
+   
