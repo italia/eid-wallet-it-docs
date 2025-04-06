@@ -11,9 +11,9 @@ All the implementers, be these Wallet Providers, Credential Issuers or Relying P
 
     - **Transparency and Documentation**: Open Source Project Owners SHOULD produce clear documentation and contribution guidelines.
     - **Community Engagement**: Open Source Project Owners SHOULD foster active community involvement for development and support.
-    - **Version Control**: Open Source Project Owners MAY use systems like Git for managing code changes.
+    - **Software Version Control**: Open Source Project Owners MUST use version control systems, such as Git, for managing code changes.
     - **Security Practices**: Open Source Project Owners MUST produce regular code audits and secure coding standards.
-    - **Licensing**: Open Source Project Owners MUST use appropriate open-source licenses (e.g., EUPL, MIT, Apache 2.0, GPL, AGPL).
+    - **Licensing**: Open Source Project Owners MUST use appropriate open-source licenses, recognized as "free license" or "open source license" by the Free Software Foundation or the Open Source Initiative.
     - **Responsible Security Disclosure**: Open Source Project Owners MUST configure responsible security disclosure procedures to handle the security issues in an appropriate way, mitigating any kind of threat derived by an unresponsible security issue disclosure. 
 
 
