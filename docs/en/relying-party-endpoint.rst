@@ -5,7 +5,7 @@
 Relying Party Endpoints
 =========================
 
-The Relying Party MUST expose  a predefined set of endpoints supporting all the features about trust evaluation and credential presentation, such as a trust endpoint adhering to the OpenID Federation 1.0 Wallet Architecture specification, facilitating the Relying Party's identity and metadata distribution. The endpoints for handling the lifecycle of Relying Party Instances (i.e., by providing nonce generation, hardware key registration, integrity validation, and access certificate issuance) are also mandatory, although their specific implementation details are left to the Relying Party's discretion.
+The Relying Party MUST expose a trust endpoint adhering to the OpenID Federation 1.0 Wallet Architecture specification, facilitating the Relying Party's identity and metadata distribution. In addition, in case the Relying Party supports proximity presentation, it MUST expose a set of endpoints for handling the lifecycle of Relying Party Instances (e.g., by providing nonce generation, hardware key registration, integrity validation, and access certificate issuance); their specific implementation details are left to the Relying Party's discretion.
 
 
 Relying Party Federation Endpoint
