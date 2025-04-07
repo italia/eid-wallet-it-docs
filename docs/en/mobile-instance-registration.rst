@@ -179,7 +179,7 @@ Below is a non-normative example of a Mobile Application Instance Initialization
 
 
 Mobile Application Instance Initialization Response
-......................................................
+................................................................
 
 If a Mobile Application Instance Initialization Request is successfully validated, the Application Provider provides an HTTP Response with status code 204 (No Content).
 
