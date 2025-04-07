@@ -414,7 +414,7 @@ To register a Wallet Instance, the request to the Wallet Provider MUST use the H
 Wallet Instance Registration Response
 .............................................
 
-If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Application Instance Registration Response`
+If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Application Instance Registration Response`.
 
 .. note::
 
