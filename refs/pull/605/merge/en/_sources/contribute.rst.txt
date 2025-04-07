@@ -61,6 +61,8 @@ implementation profile and to the initial set of implementations.
 - Marco Pernpruner
 - Zahra Ebadi Ansaroudi
 - Marco Basili
+- Valerio Bozzolan
+- Matteo Fortini 
 - Chris Phillips
 
 
