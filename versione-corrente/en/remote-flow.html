@@ -156,7 +156,7 @@
           <div class="body" role="main">
             
   <section id="remote-flow">
-<h1>Remote Flow<a class="headerlink" href="#remote-flow" title="Link to this heading">¶</a></h1>
+<span id="remote-flow-rst"></span><h1>Remote Flow<a class="headerlink" href="#remote-flow" title="Link to this heading">¶</a></h1>
 <p>In this flow the Relying Party MUST provide the URL where the signed presentation Request Object is available for download.</p>
 <p>Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows:</p>
 <ul class="simple">
@@ -461,11 +461,13 @@ where a non-normative example in the form of decoded header and payload is shown
       },
       {
         &quot;id&quot;: &quot;wallet attestation&quot;,
-        &quot;format&quot;: &quot;jwt&quot;,
+        &quot;format&quot;: &quot;dc+sd-jwt&quot;,
+        &quot;meta&quot;: {
+          &quot;vct_values&quot;: [&quot;https://itwallet.registry.example.it/WalletAttestation&quot;]
+        },
         &quot;claims&quot;: [
-            {&quot;path&quot;: [&quot;iss&quot;]},
-            {&quot;path&quot;: [&quot;iat&quot;]},
-            {&quot;path&quot;: [&quot;cnf&quot;]}
+            {&quot;path&quot;: [&quot;wallet_link&quot;]},
+            {&quot;path&quot;: [&quot;wallet_name&quot;]}
         ]
       }
     ]
@@ -677,7 +679,7 @@ The Authorization Error Response MUST be encoded in the request body using the f
 <p><strong>Why the response is encrypted?</strong></p>
 <p>The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS termination</a>. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.</p>
 </div>
-<p>Below is a non-normative example of the request:</p>
+<p>Below is a non-normative example of the Authorization Response:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/response_uri</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
@@ -685,13 +687,12 @@ The Authorization Error Response MUST be encoded in the request body using the f
 <span class="nt">response</span><span class="o">=</span><span class="s">eyJhbGciOiJFUzI1NiIs...9t2LQ</span>
 </pre></div>
 </div>
-<p>Below is a non-normative example of the decrypted payload of the JWT contained in the <code class="docutils literal notranslate"><span class="pre">response</span></code>, before base64url encoding.
-The <cite>vp_token</cite> parameter value corresponds to the format used when the DCQL query language is used in the presentation request.</p>
+<p>Below is a non-normative example of the decrypted payload of the JWT contained in the <code class="docutils literal notranslate"><span class="pre">response</span></code>, before base64url encoding. The <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> parameter value corresponds to the format used when the DCQL query language is used in the presentation request.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{
   &quot;state&quot;: &quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;,
   &quot;vp_token&quot;: {
       &quot;personal id data&quot;: &quot;eyJhbGciOiJFUzI1NiIs...PT0iXX0&quot;,
-      &quot;wallet attestation&quot;: $WalletAttestation-JWT
+      &quot;wallet attestation&quot;: $WalletAttestation-SD-JWT-VC
   }
 }
 </pre></div>
@@ -712,7 +713,7 @@ The <cite>vp_token</cite> parameter value corresponds to the format used when th
 <td><p>There MUST be at least two signed presentations in this Array:</p>
 <ul class="simple">
 <li><p>The requested Digital Credential (one or more, in format of SD-JWT VC)</p></li>
-<li><p>The Wallet Attestation</p></li>
+<li><p>The Wallet Attestation (in SD-JWT VC format)</p></li>
 </ul>
 <p>When <cite>presentation_definition</cite> is used, the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> value is a JSON Array containing the Verifiable Presentation(s) and the <cite>presentation_submission</cite> parameter MUST be also present within the response.</p>
 <p>When the DCQL query language is used, the <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> format is a JSON Object which keys corresponds to the requested credential ids in the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> used in the request, and the values to each presented Digital Credential.</p>
@@ -726,15 +727,11 @@ The <cite>vp_token</cite> parameter value corresponds to the format used when th
 </section>
 <section id="sd-jwt-presentation">
 <h2>SD-JWT Presentation<a class="headerlink" href="#sd-jwt-presentation" title="Link to this heading">¶</a></h2>
-<p>SD-JWT defines how an Holder can present a Credential to a Verifier proving the legitimate possession
-of the Credential. For doing this the Holder MUST include the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> in the SD-JWT,
-by appending the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> at the end of the of the SD-JWT, as represented in the example below:</p>
+<p>SD-JWT defines how an Holder can present a Digital Credential to a Relying Party proving the legitimate possession of the Digital Credential. For doing this the Holder MUST include the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> in the SD-JWT, by appending the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> at the end of the of the SD-JWT, as represented in the example below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Issuer</span><span class="o">-</span><span class="n">Signed</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">1</span><span class="o">&gt;~&lt;</span><span class="n">Disclosure</span> <span class="mi">2</span><span class="o">&gt;~...~&lt;</span><span class="n">Disclosure</span> <span class="n">N</span><span class="o">&gt;~&lt;</span><span class="n">KB</span><span class="o">-</span><span class="n">JWT</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
-The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT,
-using the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter contained in the Issuer-Signed-JWT.</p>
+<p>To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter contained in the Issuer-Signed-JWT.</p>
 <p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -755,8 +752,7 @@ using the <code class="docutils literal notranslate"><span class="pre">cnf</span
 </tr>
 </tbody>
 </table>
-<p>When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the <cite>cnf</cite> parameter.
-The KB-JWT MUST contain the following parameters in the JWT payload:</p>
+<p>When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the <cite>cnf</cite> parameter. The KB-JWT MUST contain the following parameters in the JWT payload:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -784,7 +780,7 @@ The KB-JWT MUST contain the following parameters in the JWT payload:</p>
 </table>
 <section id="revocation-checks">
 <h3>Revocation Checks<a class="headerlink" href="#revocation-checks" title="Link to this heading">¶</a></h3>
-<p>The revocation mechanisms that the Relying Parties MUST implement are defined in <a class="reference external" href="credential-revocation.html">Digital Credential Revocation and Suspension section</a>.</p>
+<p>The revocation mechanisms that the Relying Parties MUST implement are defined in <a class="reference internal" href="credential-revocation.html#digital-credential-revocation-and-suspension"><span class="std std-ref">Digital Credential Revocation and Suspension</span></a>.</p>
 <p>In the context of Digital Credential evaluation, any Relying Party establishes internal policies that define the meaning and value of presented Credentials. This is particularly important in scenarios where a Credential may be suspended but still holds value for certain purposes. For example, a suspended mobile driving license might still be valid for verifying the age of the Holder.</p>
 <p>The process begins with the Relying Party requesting specific Credentials to the Holder. This request should align with the Relying Party's requirements and the context in which the Credentials will be used. The Holder then responds by releasing the requested Credentials.</p>
 <p>Upon receiving the Credentials, the Relying Party evaluates their validity and value based on its internal policies. This evaluation considers the current status of the Credential (e.g., active, suspended, revoked) and the specific use case for which the Credential is being presented.</p>
@@ -1062,7 +1058,7 @@ HOST: relying-party.example.org
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 02/04/2025.
+      Last updated on 07/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

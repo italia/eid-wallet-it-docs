@@ -1,412 +1,285 @@
 .. include:: ../common/common_definitions.rst
 
-.. _proximity_flow_sec_main:
+.. _proximity_flow.rst:
 
 Proximity Flow
 ==============
 
-This section describes how a Verifier requests the presentation of an *mDoc-CBOR* Credential to a Wallet Instance according to the *ISO 18013-5 Specification*. Only *Supervised Device Retrieval flow* is supported in this technical implementation profile. 
+This section describes how a Relying Party Instance requests the presentation of an *mdoc-CBOR* Credential to a Wallet Instance according to the *ISO 18013-5 Specification*. 
 
-The presentation phase is divided into three sub-phases: 
- 
-  1. **Device Engagement**: This subphase begins when the User is prompted to disclose certain attributes from the mDoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Verifier App, so that the mDoc requests and responses can be exchanged during the communication subphase.
-  The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping.
-  This technical implementation profile exclusively supports QR code for Device Engagement.
+The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure: 
 
-  2. **Session establishment**: During the session establishment phase, the Verifier App sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Verifier at this stage.
-  The established session MAY be terminated based on the conditions as detailed in [ISO18013-5#9.1.1.4].
-
-  3. **Communication - Device Retrieval**: The Verifier App encrypts the mDoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mDoc uses the data from the session establishment message to derive the session key and decrypt the mDoc request.
-  During the communication subphase, the Verifier App has the option to request information from the Wallet using mDoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mDoc response using the session key and transmits it to the Verifier App via a session data message. This technical implementation profile only supports Bluetooth Low Energy (BLE) for the communication sub-phase.
-
-
-The following figure illustrates the flow diagram compliant with ISO 18013-5 for proximity flow.
-
-.. _fig_High-Level-Flow-ITWallet-Presentation-ISO-1:
-.. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO.svg
+.. figure:: ../../images/high-level-presentation-proximity.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/bL9BZnCn3BxFhx3A0H3q3_ImMlOXXBJYqGguzE9ct2RQn0bvJDb_ZoSP3QFI2xab_Xx-xDocZ34NPpiisNDn1ufT1t9GPH_XUw88cA3KjuF_3QlnwNM2dHDYq9vf1Q-Up4ddErkeme9KZ381ESFg9rfB6JwnEB4IiAYTAuou7nN_Al-WQ8xcVzHd2dm8eKeFI-cMfApNDpVd3Nm9n90rmKLBa3s4I8b441dSWrTm7wcNkq7RD3xxJE07CIhlXmqyq624-CWdF94RYQaSWiP4iAweRzjr1vLvRkOVYIcYY32TWO8c9rSBp_GYWKoSe88LzPtsvx5HKO5xtnCSVVpNibA6ATjE8IyfKr7aBgptVDry0WlPXIBOH2aPpoEcbgzDOJTXIEPui2PfrqROZogki56OfNuvcxkdHv5N9H8eZSnaPLRJwUPU95JTn9P-5J60Tn2AcAZQjJ_MiCljxndUN6texN8Dr-ErSjd0roZrNEUjFDSVaJqaZP6gOMpDK0-61UHglkcJjJL75Cx4NHflAKT30xLGH_41wnLQIDb7FD6C7URSAOZCSfCjxyjSWcHEZBb4slCuTQL9FJVsWDRq9akuxfQuByx-0G00
+    :target: https://www.plantuml.com/plantuml/svg/TL9DYzim4BthLqnpoa8JquzJJqjt3IbigKbsAJq5HHeiKLboDUEaflI_T-ma9WrPNuIVvhrvyqRtn3fprmJrnaSJEelWc5lwL1HP7vQrPzVjEi9iKcICl3IfATgWuy1P4DlWTyN3nqKrG2zVduf64sCMQFkGcZR5WTCE-chrvR7SRfxBTVdj-KTLpk-KOiy1ORRojLiyuHu3L1b9A9fzYb0vJJXJgi9CASu76szXzYB7JCx69WCk1Ik_egK-fovQdVjvUw6nRGSDgRuXV0T_5CWt6PrRt7k3Muorhh4HH8Zlbl0umb1EyD1-WwRB2EHIvaNMiKQGZ2AQiSCE-O0OuRiE0HbqjB36qFjOGwKpzuD2IQntmPD30XyzUns0Zgh6QP4ACXV8T-MIa6WO3S_yazFtIzWShs2IFhijeybzosWlJHuyEo2diy1qOlx4_ZWT4tJjsG-Uw5FTRMScDKqNlHbJ5fKFIxcyW61npdADd3tkTVZVtBZJZByw92uoakWI0lusRWnux_LrGa9VIRe1wSAarQmdbbZzgvIaltqyFQ5RQpukW96aVAXTtteChoKVK5i2JXFtbSBhV33AxTXIgNkCjcl2Fm00
+    
+    High-Level Presentation Flow in proximity
+ 
+The sub-phases are described below:
 
+  1. **Device Engagement**: This subphase begins when the User is prompted to disclose certain attributes from the mdoc(s). The objective of this subphase is to establish a secure communication channel between the Wallet Instance and the Relying Party Instance, so that the mdoc requests and responses can be exchanged during the communication subphase.
+  The messages exchanged in this subphase are transmitted through short-range technologies to limit the possibility of interception and eavesdropping.
+
+  2. **Session establishment**: During the session establishment phase, the Relying Party Instance sets up a secure connection. All data transmitted over this connection is encrypted using a session key, which is known to both the Wallet Instance and the Relying Party Instance at this stage.
+  The established session MAY be terminated based on the conditions as detailed in [`ISO18013-5`_ #9.1.1.4].
+
+  3. **Communication - Device Retrieval**: The Relying Party Instance encrypts the mdoc request with the appropriate session key and sends it to the Wallet Instance together with its public key in a session establishment message. The mdoc uses the data from the session establishment message to derive the session key and decrypt the mdoc request.
+  During the communication subphase, the Relying Party Instance has the option to request information from the Wallet Instance using mdoc requests and responses. The primary mode of communication is the secure channel established during the session setup. The Wallet Instance encrypts the mdoc response using the session key and transmits it to the mobile Relying Party via a session data message. 
+
+
+
+Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least:
+
+- *Supervised Device Retrieval flow* where a human Relying Party is overseeing the verification process in person, in contrast with *unsupervised flow* where verification might happen through automated systems without human oversight.
+- *Device Engagement* based on QR Code.
+- *RP Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
+- *Device Retrieval* mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. *Server Retrieval* mechanism MUST NOT be supported.
+- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`mdoc-CBOR Credential Format` for more details).
+- *Wallet Instance validation* through the Wallet Attestation.
+
+
+The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.
+
+.. _fig_High-Level-Flow-ITWallet-Presentation-ISO-updated:
+.. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO-updated.svg
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/svg/ZLF1RXCn4BtdAqPxebBBWME5K4iR8GI8a53rmiMn9udLtR6nnxlaxndR6yaHZSGUejYUUU_Dy_DTP1Ku3Vr29NQKXYs6nGBaKvfTWAU80LI4LFRAZvS6gwrNnD0zgxv7XYUotEMwwT-IzGe-az2Gnb8oLlnqys6wXUyU2VY0C0ETAayIxAWOPzJqlhHKIKcQI4WKMqUmFRu60Yxa4mNFcuVxXhL2HEnHSooDFhW_Th1yb7yO1RZ2xXBf_4VrSbJwdMVufiWeCUS8TWSRHW_lm4OWn-0nx5mOq0XlPGNv9X6UBWXlof1CBIyQFo5XoCCJJe3-W8CiUtX1qQXiW5_qfkkMZpXQZL_m-7OLxDXrrt2-cRPTTtL27MzXSt1JcVZ76XwSGR2a-sGixQMnzYrfh_R2HjnrvzSmbkLuK_HjjA8MgPu9oVz8XwnzZSfWQBMtcuts2YiiWq-26Z76x9tWdL9PlwPs5L12YA0WsZsX0KK6a7GuUiuhvc2t0YPQ0lvE63bBsbJaPMIrxMqyL1Eksh4l5O4RCS37hqk8g9CmwuCYmhwvqKlww-aZ5d6N2V84mc5taZkEPIx5mZHZb8YjvrcKbqIFuhcayHHfkUCvywq1yLeiq8uOIK3T3WBkRUHGuwaniDtbi6BpVEvdz3PNIEQIsKBl7KLi77vKhCHOePui7w1UmRckIuOsbznOri9UlsfJVZ2c11osbdBYhx9EWKNz0eDn6cGaQ-fBhuzME6Pa-8bXi5HSASS6ssTnlZ4jxf1C6lg_
+    
     High-Level Proximity Flow
 
-**Step 1-3**: The Verifier requests the User to reveal certain attributes from their mDoc(s) stored in the Wallet Instance. The User initiates the Wallet Instance. The Wallet Instance MUST create a new temporary key pair (EDeviceKey.Priv, EDeviceKey.Pub), and incorporate the cipher suite identifier, the identifier of the elliptic curve for key agreement, and the EDeviceKey public point into the device engagement structure (refer to [ISO18013-5#9.1.1.4]). This key pair is temporary and MUST be invalidated immediately after the secure channel is established. Finally, the Wallet Instance displays the QR Code for Device Engagement.
 
-Below an example of a device engagement structure that utilizes QR for device engagement and Bluetooth Low Energy (BLE) for data retrieval.
+**Step 1**: The User opens the Wallet Instance initiating the process.
 
-CBOR data:
+**Step 2**: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Application (WSCA). It is a prerequisite for accessing sensitive data and presenting attributes.
 
-.. code-block:: 
+**Step 3**: The User selects the proximity presentation functionality.
 
-  a30063312e30018201d818584ba4010220012158205a88d182bce5f42efa59943f33359d2e8a968ff289d93e5fa444b624343167fe225820b16e8cf858ddc7690407ba61d4c338237a8cfcf3de6aa672fc60a557aa32fc670281830201a300f401f50b5045efef742b2c4837a9a3b0e1d05a6917 
+**Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required.
 
-In diagnostic notation:
+**Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication. The public key (``EDeviceKey.Pub``) will be used for session encryption. This is part of the device engagement process.
 
-.. code-block:: 
+**Step 6**: The Wallet Instance presents a QR Code to the Relying Party Instance. This QR code contains the ``DeviceEngagement`` data, which includes the ``EDeviceKey.Pub`` and information about supported cipher suites.
 
-  { 
-    0: "1.0", % Version
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``DeviceEngagement`` that utilizes QR for device engagement and Bluetooth Low Energy (BLE) for data retrieval.
 
-    1:        % Security
-    [ 
-        1,     % defines the cipher suite 1 which contains only EC curves
-        24(<<  % embedded CBOR data item
-          { 
-            1: 2, % kty:EC2 (Elliptic curves with x and y coordinate pairs)
-          -1: 1, % crv:p256
-  -2:h'5A88D182BCE5F42EFA59943F33359D2E8A968FF289D93E5FA444B624343  167FE',% x-coordinate
-  -3:h'B16E8CF858DDC7690407BA61D4C338237A8CFCF3DE6AA672FC60A557AA32FC67' % y-coordinate
-          }
-        >>)
-      ],
-  
-      2: %DeviceRetrievalMethods(Device engagement using QR code)
-      [ 
-        [
-          2, %BLE
-          1, % Version
-        {    %BLE options
-            0: false, % no support for mdoc peripheral server mode
-            1: true, % support mdoc central client mode
-            11: h'45EFEF742B2C4837A9A3B0E1D05A6917' % UUID of mdoc client central mode
-          }
-        ]
-      ]
-  }
+.. literalinclude:: ../../examples/iso-device-engagement.txt
+  :language: text
 
+**Step 7**: The verifier uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc.
 
+**Step 8**: The Relying Party Instance generates its ephemeral key pair (``EReaderKey.Priv``, ``EReaderKey.Pub``). The private key (``EReaderKey.Priv``) MUST be kept secret, and the public key (``EReaderKey.Pub``) MUST be used in establishing the session.
 
-**Step 4-6**: The Verifier App scans the QR Code and generates its own ephemeral key pair (EReaderKey.Priv, EReaderKey.Pub). It then calculates the session key, using the public key received in the Engagement Structure and its newly-generated private key, as outlined in [ISO18013-5#9.1.1.5]. Finally, it generates its session key, which must be independently derived by both the Wallet Instance and the Verifier App.
+**Step 9**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key.
 
-**Step 7**: The Verifier App creates an mDoc request that MUST be encrypted using the relevant session key, and transmits it to the Wallet Instance along with EReaderKey.Pub within a session establishment message. The mDoc request MUST be encoded in CBOR, as demonstrated in the following non-normative example.
+**Step 10**: The RP Instance MUST prepare a ``SessionEstablishment`` message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.4]) and encrypted using the session keys derived in the previous step. The ``SessionEstablishment`` message MUST include the ``EReaderKey.Pub`` and a request for specific attribute(s).
 
-CBOR data: 
-.. code-block::
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionEstablishment`` that contains the mdoc request of a Wallet Attestation along with an mDL Digital Credential.
 
-  a26776657273696f6e63312e306b646f63526571756573747381a26c6974656d7352657175657374d818590152a267646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6a6e616d65537061636573a2746f72672e69736f2e31383031332e352e312e4954a375766572696669636174696f6e2e65766964656e6365f4781c766572696669636174696f6e2e6173737572616e63655f6c6576656cf4781c766572696669636174696f6e2e74727573745f6672616d65776f726bf4716f72672e69736f2e31383031332e352e31ab76756e5f64697374696e6775697368696e675f7369676ef47264726976696e675f70726976696c65676573f46f646f63756d656e745f6e756d626572f46a69737375655f64617465f46f69737375696e675f636f756e747279f47169737375696e675f617574686f72697479f46a62697274685f64617465f46b6578706972795f64617465f46a676976656e5f6e616d65f468706f727472616974f46b66616d696c795f6e616d65f46a726561646572417574688443a10126a11821590129308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b1300a06082a8648ce3d0403020347003044022048466e92226e042add073b8cdc43df5a19401e1d95ab226e142947e435af9db30220043af7a8e7d31646a424e02ea0c853ec9c293791f930bf589bee557370a4c97bf6584058a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9
+.. literalinclude:: ../../examples/iso-session-establishment.txt
+  :language: text
 
-The above CBOR data is represented in diagnostic notation as follows:
-.. code-block::
+**Step 11**: The Relying Party Instance MUST transmit the encrypted and signed ``SessionEstablishment`` message to the Wallet Instance over a secure BLE connection that was established based on the device engagement information.
 
-  {
-    "version": "1.0",
-    "docRequests": [
-    {
-      "itemsRequest": 24(<< {
-        "docType": "org.iso.18013.5.1.mDL",
-        "nameSpaces": {
-          "org.iso.18013.5.1.IT": {
-            "verification.evidence": false,
-            "verification.assurance_level": false,
-            "verification.trust_framework": false
-          },
-          "org.iso.18013.5.1": {
-            "un_distinguishing_sign": false,
-            "driving_privileges": false,
-            "document_number": false,
-            "issue_date": false,
-            "issuing_country": false,
-            "issuing_authority": false,
-            "birth_date": false,
-            "expiry_date": false,
-            "given_name": false,
-            "portrait": false,
-            "family_name": false
-          }
-        }
-      } >>),
-      "readerAuth": [
-        h'a10126',
-        {
-          33: h'308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b1300a06082a8648ce3d0403020347003044022048466e92226e042add073b8cdc43df5a19401e1d95ab226e142947e435af9db30220043af7a8e7d31646a424e02ea0c853ec9c293791f930bf589bee557370a4c97b'
-        },
-        null,
-        h'58a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9'
-      ]
-    }
-    ]
-  }
+**Step 12**: The Wallet Instance MUST compute the session key, as described in Step 9.
 
-**Step 8**: The Wallet Instance uses the session establishment message to derive the session keys and decrypt the mDoc request. It computes the session key using the public key received from the Verifier App and its private key.
+**Step 13**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) to ensure its authenticity.
 
-**Step 9-10**: When the Wallet Instance receives the mDoc request, it locates the documents that contain the requested attributes and asks the User for permission to provide this information to the Verifier. If the User agrees, the Wallet generates an mDoc response and transmits it to the Verifier App through the secure channel.
+**Step 14**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's registration certificate to ensure transparency about the requested data and its registered purpose.
 
-**Step 11-12**: If the User gives consent, the Wallet Instance creates an mDoc response and transmits it to the Verifier App via the secure channel. The mDoc response MUST be encoded in CBOR, with its structure outlined in [ISO18013-5#8.3.2.1.2.2]. Below is a non-normative example of an mDoc response.
+**Step 15**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes. 
 
-CBOR Data:
-.. code-block::
+**Step 16**: After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials. It then MUST prepare a `SessionData` message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [`ISO18013-5`_ #9.1.3]). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #8.3.2.1.2.2].
 
-  a36776657273696f6e63312e3069646f63756d656e747381a367646f6354797065756f72672e69736f2e31383031332e352e312e6d444c6c6973737565725369676e6564a26a6e616d65537061636573a2746f72672e69736f2e31383031332e352e312e495483d81858f7a46864696765737449440b6672616e646f6d506d44f21ee875f2c1d502b43198e5a15271656c656d656e744964656e74696669657275766572696669636174696f6e2e65766964656e63656c656c656d656e7456616c756581a2647479706571656c656374726f6e69635f7265636f7264667265636f7264bf6474797065781f68747470733a2f2f657564692e77616c6c65742e70646e642e676f762e697466736f75726365bf716f7267616e697a6174696f6e5f6e616d65754d6f746f72697a7a617a696f6e6520436976696c656f6f7267616e697a6174696f6e5f6964656d5f696e666c636f756e7472795f636f6465626974ffffd8185866a4686469676573744944046672616e646f6d50185d84dfb71ce9b173010ddd62174fbe71656c656d656e744964656e746966696572781c766572696669636174696f6e2e74727573745f6672616d65776f726b6c656c656d656e7456616c7565656569646173d8185865a4686469676573744944006672616e646f6d50137f903174253c4585358267aae2ea4e71656c656d656e744964656e746966696572781c766572696669636174696f6e2e6173737572616e63655f6c6576656c6c656c656d656e7456616c75656468696768716f72672e69736f2e31383031332e352e318bd8185852a46864696765737449440c6672616e646f6d5053e29d0ddbbc7d2306a32bdbe2e56e5171656c656d656e744964656e7469666965726b66616d696c795f6e616d656c656c656d656e7456616c756563446f65d8185855a4686469676573744944036672616e646f6d50990cba2069fa1b33b8d6ae910b6549dc71656c656d656e744964656e7469666965726a676976656e5f6e616d656c656c656d656e7456616c756567416e746f6e696fd818585ba46864696765737449440a6672616e646f6d504086c1379975f805f1b1f4975e6a126571656c656d656e744964656e7469666965726a69737375655f646174656c656c656d656e7456616c7565d903ec6a323031392d31302d3230d818585ca4686469676573744944016672616e646f6d50ab4ca30c918dd2fd0bf35242c15fa2d871656c656d656e744964656e7469666965726b6578706972795f646174656c656c656d656e7456616c7565d903ec6a323032342d31302d3230d8185855a4686469676573744944076672616e646f6d508d9066f6c8da16619867cd4e2fab0c8871656c656d656e744964656e7469666965726f69737375696e675f636f756e7472796c656c656d656e7456616c7565624954d818587ea4686469676573744944056672616e646f6d5059fe68db795dee4c20976380ea24770571656c656d656e744964656e7469666965727169737375696e675f617574686f726974796c656c656d656e7456616c75657828497374697475746f20506f6c696772616669636f2065205a656363612064656c6c6f20537461746fd818585ba4686469676573744944026672616e646f6d5008b3f1ca5517019767be3dee3bb0614571656c656d656e744964656e7469666965726a62697274685f646174656c656c656d656e7456616c7565d903ec6a313935362d30312d3230d818585ca4686469676573744944096672616e646f6d50a2395ec214350c26066306e23279b3ae71656c656d656e744964656e7469666965726f646f63756d656e745f6e756d6265726c656c656d656e7456616c756569393837363534333231d8185850a4686469676573744944066672616e646f6d50a25e1a5b915d2d6eafee9674e023293971656c656d656e744964656e74696669657268706f7274726169746c656c656d656e7456616c75654420212223d81858eea46864696765737449440d6672616e646f6d50eeed6a3b856563627589a360939d12f771656c656d656e744964656e7469666965727264726976696e675f70726976696c656765736c656c656d656e7456616c756582a37576656869636c655f63617465676f72795f636f646561416a69737375655f64617465d903ec6a323031382d30382d30396b6578706972795f64617465d903ec6a323032342d31302d3230a37576656869636c655f63617465676f72795f636f646561426a69737375655f64617465d903ec6a323031372d30322d32336b6578706972795f64617465d903ec6a323032342d31302d3230d818585ba4686469676573744944086672616e646f6d50c0ef486b2a194ed3cbf7f354fd40092171656c656d656e744964656e74696669657276756e5f64697374696e6775697368696e675f7369676e6c656c656d656e7456616c756561496a697373756572417574688443a10126a118215901423082013e3081e5a00302010202012a300a06082a8648ce3d040302301a3118301606035504030c0f5374617465204f662055746f706961301e170d3233313132343134353430345a170d3238313132323134353430345a30383136303406035504030c2d5374617465204f662055746f7069612049737375696e6720417574686f72697479205369676e696e67204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004c338ec1000b351ce8bcdfc167450aeceb
+Below is a non-normative example using the diagnostic notation of a CBOR-encoded ``SessionData`` that contains the mdoc response of a Wallet Attestation and an mDL.
 
-In diagnostic notation:
-.. code-block::
+.. literalinclude:: ../../examples/iso-session-data.txt
+  :language: text
 
-  {
-    "version": "1.0",
-    "documents": [
-    {
-      "docType": "org.iso.18013.5.1.mDL",
-      "issuerSigned": {
-        "nameSpaces": {
-          "org.iso.18013.5.1.IT": [
-            24(<< {
-              "digestID": 11,
-              "random": h'6d44f21ee875f2c1d502b43198e5a152',
-              "elementIdentifier": "verification.evidence",
-              "elementValue": [
-                {
-                  "type": "electronic_record",
-                  "record": {
-                    "type": "https://eudi.wallet.pdnd.gov.it",
-                    "source": {
-                      "organization_name": "Motorizzazione Civile",
-                      "organization_id": "m_inf",
-                      "country_code": "it"
-                    }
-                  }
-                }
-              ]
-            } >>),
-            24(<< {
-              "digestID": 4,
-              "random": h'185d84dfb71ce9b173010ddd62174fbe',
-              "elementIdentifier": "verification.trust_framework",
-              "elementValue": "eidas"
-            } >>),
-            24(<< {
-              "digestID": 0,
-              "random": h'137f903174253c4585358267aae2ea4e',
-              "elementIdentifier": "verification.assurance_level",
-              "elementValue": "high"
-            } >>)
-          ],
-          "org.iso.18013.5.1": [
-            24(<< {
-              "digestID": 12,
-              "random": h'53e29d0ddbbc7d2306a32bdbe2e56e51',
-              "elementIdentifier": "family_name",
-              "elementValue": "Doe"
-            } >>),
-            24(<< {
-              "digestID": 3,
-              "random": h'990cba2069fa1b33b8d6ae910b6549dc',
-              "elementIdentifier": "given_name",
-              "elementValue": "Antonio"
-            } >>),
-            24(<< {
-              "digestID": 10,
-              "random": h'4086c1379975f805f1b1f4975e6a1265',
-              "elementIdentifier": "issue_date",
-              "elementValue": 1004("2019-10-20")
-            } >>),
-            24(<< {
-              "digestID": 1,
-              "random": h'ab4ca30c918dd2fd0bf35242c15fa2d8',
-              "elementIdentifier": "expiry_date",
-              "elementValue": 1004("2024-10-20")
-            } >>),
-            24(<< {
-              "digestID": 7,
-              "random": h'8d9066f6c8da16619867cd4e2fab0c88',
-              "elementIdentifier": "issuing_country",
-              "elementValue": "IT"
-            } >>),
-            24(<< {
-              "digestID": 5,
-              "random": h'59fe68db795dee4c20976380ea247705',
-              "elementIdentifier": "issuing_authority",
-              "elementValue": "Istituto Poligrafico e Zecca dello Stato"
-            } >>),
-            24(<< {
-              "digestID": 2,
-              "random": h'08b3f1ca5517019767be3dee3bb06145',
-              "elementIdentifier": "birth_date",
-              "elementValue": 1004("1956-01-20")
-            } >>),
-            24(<< {
-              "digestID": 9,
-              "random": h'a2395ec214350c26066306e23279b3ae',
-              "elementIdentifier": "document_number",
-              "elementValue": "987654321"
-            } >>),
-            24(<< {
-              "digestID": 6,
-              "random": h'a25e1a5b915d2d6eafee9674e0232939',
-              "elementIdentifier": "portrait",
-              "elementValue": h'20212223'
-            } >>),
-            24(<< {
-              "digestID": 13,
-              "random": h'eeed6a3b856563627589a360939d12f7',
-              "elementIdentifier": "driving_privileges",
-              "elementValue": [
-                {
-                  "vehicle_category_code": "A",
-                  "issue_date": 1004("2018-08-09"),
-                  "expiry_date": 1004("2024-10-20")
-                },
-                {
-                  "vehicle_category_code": "B",
-                  "issue_date": 1004("2017-02-23"),
-                  "expiry_date": 1004("2024-10-20")
-                }
-              ]
-            } >>),
-            24(<< {
-              "digestID": 8,
-              "random": h'c0ef486b2a194ed3cbf7f354fd400921',
-              "elementIdentifier": "un_distinguishing_sign",
-              "elementValue": "I"
-            } >>)
-          ]
-        },
-        "issuerAuth": [
-          h'a10126',
-          {
-            33: h'3082013e3081e5a00302010202012a300a06082a8648ce3d040302301a3118301606035504030c0f5374617465204f662055746f706961301e170d3233313132343134353430345a170d3238313132323134353430345a30383136303406035504030c2d5374617465204f662055746f7069612049737375696e6720417574686f72697479205369676e696e67204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004c338ec1000b351ce8bcdfc167450aeceb7d518bd9a519583e082d67effff06565804fc09abf0e4a08e699c9dba3796285a15f68e40ac7f9fc7700a15153a4065300a06082a8648ce3d040302034800304502210099b7d62e6bf7b1823db3713df889bf73e70bb4d9c58c21e92c58d2f1beffe932022058d039747a00d70e6d66be4797e6142b3608a014ee09b7b79af2cae2aaf27788'
-          },
-          24(<< {
-        "version": "1.0",
-        "digestAlgorithm": "SHA-256",
-        "docType": "org.iso.18013.5.1.mDL",
-        "valueDigests": {
-          "org.iso.18013.5.1": {
-          1: h'0E5F0B6B33418E508740771E82F893372EAF5B2445BC4C84DCF08B005E9493FC',
-          2: h'DE21BB62FF2897D8B986D2CDA9F9BC5865C02807F7B4D9DD1FA4A79DF4C0D37F',
-          3: h'BC5568239E35CE9FF8798C27FFDCD757B134B679F0FE05729AA3491381912E65',
-          5: h'E6048BDC7FD6454296F1E3F54536107C9C5B24C4064DE46A98121E3630EECCA2',
-          6: h'73690D92DCAA61B0203870F67C6AA9FDFEA889B6F0C720DE757B4B0A8516A206',
-          7: h'E353EA0B0FD92B6BE90C64CC3B2EE1284153A8F0F5066B99AAC599200E6EEEB2',
-          8: h'29227872CEB49923D267B5F4BADE6D387B42AC2DC4B2AE26C9013067FEE7018A',
-          9: h'A6A119F7CACAC0B8C6AACAC747FD3FE7E50B6D9BB8A507FDA79F0DF6646F285D',
-          10: h'6D8025D2F02A5E7E1406FB6AAEB67F9EDE9B07191A53F3E23B77C528223A94E2',
-          12: h'B0D43E4E2EA534E4D5304E64BCF7A0F13E2C8EE8304B9CD23ABA4909652A4647',
-          13: h'FBF4DE318982F2DBAD43C601CAEB22628B301AC18AA8264C5831B2AAAC89C486'
-          },
-          "org.iso.18013.5.1.IT": {
-          0: h'CF57377B675F64F37314739592C1E8A911A7DDAF341CE2902FE877C5A835E4C1',
-          4: h'4A4B4CC64EC9299C1A2501EA449F577005E9F7A60408057C07A7C67FB151E5F5',
-          11: h'78824FBD6FBBA88A2AAB44DF8B6F5E9759126D87D1F4415995E658FD9239E1FE'
-          }
-        },
-        "deviceKeyInfo": {
-          "deviceKey": {
-          1: 2,
-          -1: 1,
-          -2: h'AFD09E720B918CEDC2B8A881950BAB6A1051E18AE16A814D51E609938663D5E1',
-          -3: h'61FBC6C8AD24EC86A78BB4E9AC377DD2B7C711D9F2EB9AFD4AA0963662847AED'}},
-          "validityInfo": {
-            "signed": 0("2023-11-24T14:54:05Z"),
-            "validFrom": 0("2023-11-24T14:54:05Z"),
-            "validUntil": 0("2024-11-24T14:54:05Z")}
-          }  >>),
-          h'f2461e4fab69e9f7bcffe552395424514524d1679440036213173101448d1b1ab4a293859b389ffa8b47aeed10e9b0c1545412ac37c51a76482cd9bbbe110152'
-        ]
-      },
-      "deviceSigned": {
-        "nameSpaces": 24(<< {} >>),
-        "deviceAuth": {
-          "deviceSignature": [
-            h'a10126',
-            {},
-            null,
-            h'1fed7190d2975ab79c072e6f1d9d52436059d1fc959d55baf74f057d89b10fcc0dc77a50d433d4c76ddf26223c5560c4ab123b5cb5eb805a90036aa147493076'
-          ]
-        }
-      }
-    }
-    ],
-    "status": 0
-  }
+**Step 17**: The Relying Party Instance receives the ``SessionData``, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using :ref:`OAuth Status List`.
 
-**Step 13**: The Verifier App is required to validate the signatures in the mDoc's issuerSigned field using the public key of the Credential Issuer specified within the mDoc. Subsequently, the Verifier MUST validate the signature in the deviceSigned field. If these signature checks pass, the Verifier can confidently consider the received information as valid.
+**Step 18**: Once the data exchange is complete, either party can terminate the session. If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance). 
+
+**Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
+
+.. note::
+
+  During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.
 
 Device Engagement
 -----------------
 
-The Device Engagement structure MUST be have at least the following components:
+The Device Engagement structure MUST be CBOR encoded and have at least the following components:
 
-  - **Version**: *tstr*. Version of the data structure being used.
-  - **Security**: an array that contains two mandatory values
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **Version**
+     - *(tstr)*. Version of the device engagement structure.
+
+   * - **Security**
+     - *(array)*. Contains two mandatory values:
+
+       - *(int)*. Cipher suite identifier. See Table 22 of :doc:`ISO18013-5`.
+
+       - *(bstr)*. Public ephemeral key generated by the Wallet Instance, used by the Relying Party Instance to derive the Session Key. The key MUST be of a type allowed by the selected cipher suite.
+
+   * - **BleOptions**
+     - *(map)*. Provides options for the BLE connection, such as Peripheral Server or Central Client mode, and the device UUID.
+
+       Only `Central Client Mode` MUST be supported by this implementation profile.
+
+   * - **Capabilities**
+     - *(map)*. Declares optional capabilities supported by the mdoc, that are: 
+
+       - **HandoverSessionEstablishmentSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `SessionEstablishment` message during Negotiated Handover, as defined in [`ISO18013-5`_ #8.2.2.4].
+
+       - **ReaderAuthAllSupport** *(bool)*. If present, it MUST be set to `true`. Indicates support for receiving the `ReaderAuthAll` structure in the mdoc request, as defined in [`ISO18013-5`_ #8.3.2.1.2.1].
+
+   * - **OriginInfos**
+     - *(array)*. Describes the interface used to receive and deliver the engagement structure.  
   
-    - the cipher identifier: see Table 22 of [ISO18013-5]
-    - the mDL public ephemeral key generated by the Wallet Instance and required by the Verifier App to derive the Session Key. The mDL public ephemeral key MUST be of a type allowed by the indicated cipher suite.
-  - **transferMethod**: an array that contains one or more transferMethod arrays when performing device engagement using the QR code. This array is for offline data retrieval methods. A transferMethod array holds two mandatory values (type and version). Only the BLE option is supported by this technical implementation profile, then the type value MUST be set to ``2``. 
-  - **BleOptions**: this elements MUST provide options for the BLE connection (support for Peripheral Server or Central Client Mode, and the device UUID).
+        When used in flows defined in [`ISO18013-5`_ #6.3.2.1], `OriginInfos` MAY be an empty array.
 
 
-mDoc Request
+mdoc Request
 ------------
 
-The messages in the mDoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mDoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE protocol.
-The details on the structure of mDoc Request, including identifier and format of the data elements, are provided below. 
+The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE protocol.
+Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
-  - **version**: (tstr). Version of the data structure.
-  - **docRequests**: Requested DocType, NameSpace and data elements.
+.. list-table:: 
+   :widths: 30 70
+   :header-rows: 1
 
-    - **itemsRequest**: #6.24(bstr .cbor ItemsRequest).
+   * - **Component**
+     - **Description**
 
-      - **docType**: (tstr). The DocType element contains the type of document requested. See :ref:`Data Model Section <pid_eaa_data_model.rst>`.
-      - **nameSpaces**: (tstr). See :ref:`Data Model Section <pid_eaa_data_model.rst>` for more details.
+   * - **version**
+     - *(tstr)*. Version of the mdoc Request structure. Enables compatibility management across different versions or implementation profiles.
 
-        - **dataElements**: (tstr). Requested data elements with *Intent to Retain* value for each requested element.
+   * - **docRequests**
+     - *(array)*. Each entry is a `DocRequest` containing:
 
-          - **IntentToRetain**: (bool). It indicates that the Verifier App intends to retain the received data element.
-    - **readerAuth**: *COSE_Sign1*. It is required for the Verifier App authentication. 
+       - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
 
-.. note::
-  
-  The domestic data elements MUST not be returned unless specifically requested by the Verifier App.
+         - **docType** *(tstr)*. The type of document requested. See :ref:`mdoc-CBOR Credential Format`.
 
-mDoc Response
+         - **nameSpaces** *(map)*. A map of namespace identifiers to requested *DataElements*.
+
+           Each entry in `DataElements` includes:
+
+           - **DataElementIdentifier** *(tstr)*. The identifier of the requested data element.  
+           - **IntentToRetain** *(bool)*. Indicates whether the Relying Party intends to retain the value of the data element.
+
+       - **readerAuth** *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the the Relying Party Instance for each `DocRequest`. The signature is computed over `ReaderAuthentication` data, as defined in [`ISO18013-5`_ #9.1.4].  
+             
+         This component MUST be present only if `readerAuthAll` is not used.
+
+   * - **readerAuthAll**
+     - *(COSE_Sign1, CONDITIONAL)*. Used to authenticate the Relying Party once for all `DocRequest`s. The signature is computed over `ReaderAuthenticationAll` data, as defined in [`ISO18013-5`_ #9.1.4].  
+       
+       This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used.
+
+mdoc Response
 -------------
 
-The messages in the mDoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase.
-The details on the structure of mDoc Response are provided below. 
+The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase.
+Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
-  - **version**: (tstr). Version of the data structure.
-  - **documents**: Returned *DocType*, and *ResponseData*.
+.. _table-mdoc-attributes:
 
-    - **docType**: (tstr). The DocType element contains the type of document returned. See :ref:`Data Model Section <pid_eaa_data_model.rst>`.
-    - **ResponseData**:
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
 
-      - **IssuerSigned**: Responded data elements signed by the issuer.
+   * - **Component**
+     - **Description**
 
-        - **nameSpaces**: (tstr). See :ref:`Data Model Section <pid_eaa_data_model.rst>` for more details.
+   * - **version**
+     - *(tstr)*. Version of the mdoc Response structure. Enables tracking changes and maintaining compatibility across versions of the standard or implementation profiles.
 
-          - **IssuerSignedItemBytes**: #6.24(bstr .cbor). 
+   * - **documents**
+     - *(array of Documents, OPTIONAL)*. CBOR-encoded collection of documents returned in response to the request. Each document includes `issuerSigned` and `deviceSigned` components, and follows the structure defined in the below table.
 
-            - **digestID**: (uint).  Reference value to one of the **ValueDigests** provided in the *Mobile Security Object* (`issuerAuth`).
-            - **random**: (bstr). Random byte value used as salt for the hash function. This value SHALL be different for each *IssuerSignedItem* and it SHALL have a minimum length of 16 bytes.
-            - **elementIdentifier**: (tstr). Identifier of User attribute name contained in the Credential.
-            - **elementValue**: (any). User attribute value
-      - **DeviceSigned**: Responded data elements signed by the Wallet Instance.
+   * - **documentErrors**
+     - *(map, OPTIONAL)*. A map of error codes for unreturned documents, as defined in [`ISO18013-5`_ #8.3.2.1.2.3]. Each key is a `docType`, and each value is an `ErrorCode` (int) indicating the reason why the document was not returned.
 
-        - **NameSpaces**: #6.24(bstr .cbor DeviceNameSpaces). The DeviceNameSpaces structure MAY be an empty structure. DeviceNameSpaces contains the data element identifiers and values. It is returned as part of the corresponding namespace in DeviceNameSpace.
+   * - **status**
+     - *(uint)*. Status code indicating the outcome of the request. For example, `"status": 0` means successful processing. For details, see Table 8 (ResponseStatus) of [`ISO18013-5`_ #8.3.2.1.2].
 
-          - **DataItemName**: (tstr). The identifier of the element.
-          - **DataItemValue**: (any). The value of the element.
-        - **DeviceAuth**:  The DeviceAuth structure MUST contain the DeviceSignature elements.
 
-          - **DeviceSignature**: It MUST contain the device signature for the Wallet Instance authentication. 
-  - **status**: It contains a status code. For detailed description and action required refer to to Table 8 (ResponseStatus) of the [ISO18013-5]
+Each document in **documents** MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified:
+
+.. _table-mdoc-documents-attributes:
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **docType**
+     - *(tstr)*. Document type identifier. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``.
+
+   * - **issuerSigned**
+     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`mdoc-CBOR Credential Format`.
+
+   * - **deviceSigned**
+     - *(bstr)*. Contains the `DeviceNameSpaces` structure (data elements signed by the Wallet Instance), and the `deviceAuth` structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.
+
+   * - **errors**
+     - *(map, OPTIONAL)*. A map of error codes for each unreturned data element grouped by namespace. Each key represents a namespace, and each value is a map of data element identifiers to corresponding error codes. See [`ISO18013-5`_ #8.3.2.1.2.3] for details on the errors structure.
+
+
+
+A **deviceSigned** data structure MUST be compliant with the following structure, and MUST include the following components:
+
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
+
+   * - **Component**
+     - **Description**
+
+   * - **nameSpaces**
+     - *(bstr)*. Contains the `DeviceNameSpaces` structure. It MAY be an empty structure. `DeviceNameSpaces` maps namespace identifiers to a set of data elements signed by the Wallet Instance.  
+       
+       Each namespace contains one or more `DeviceSignedItem`, where each item includes:
+       
+       - **DataItemName** *(tstr)*. The identifier of the data element.  
+       - **DataItemValue** *(any)*. The value of the data element.
+
+   * - **deviceAuth**
+     - *(COSE_Sign1)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #9.1.3] for details on the authentication structure.
 
 
 Session Termination
 -------------------
 
-The session MUST be terminated if at least one of the following conditions occur. 
+The session MUST be terminated if at least one of the following conditions occur:
 
-  - After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Verifier App SHOULD be no less than 300 seconds.
-  - When the Wallet Instance doesn't accept any more requests.
-  - When the Verifier App does not send any further requests. 
+- after a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
+- when the Wallet Instance does not accept any more requests;
+- when the Relying Party Instance does not send any further requests. 
 
-If the Wallet Instance and the Verifier App does not send or receive any further requests, the session termination MUST be initiated as follows. 
+If the Wallet Instance and the Relying Party Instance does not send or receive any further requests, the session termination MUST be initiated as follows: 
 
- - Send the status code for session termination, or
- - dispatch the "End" command as outlined in [ISO18013-5#8.3.3.1.1.5].
+- send the status code for session termination, or
+- dispatch the "End" command as outlined in [`ISO18013-5`_ #8.3.3.1.1.5].
 
-When a session is terminated, the Wallet Instance and the Verifier App MUST perform at least the following actions: 
+When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions: 
 
-  - destruction of session keys and related ephemeral key material; 
-  - closure of the communication channel used for data retrieval.
+- destruction of session keys and related ephemeral key material; 
+- closure of the communication channel used for data retrieval.
+
+.. note::
+
+   See :ref:`mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
+
