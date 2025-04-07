@@ -461,7 +461,7 @@ To revoke an active Wallet Instance, a revocation request MUST be sent using the
 
 .. note:: 
   
-While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.
+  While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.
 
 Wallet Instance Revocation Response
 .............................................
