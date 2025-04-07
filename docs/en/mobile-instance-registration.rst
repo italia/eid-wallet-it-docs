@@ -25,7 +25,7 @@ Since the initialization flows are analogous for a Wallet or Mobile Relying Part
 
 **Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the :ref:`Nonce endpoint` of the Application Provider Backend. This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks. 
 
-Upon a successful request, the Application Provider Backend generates and returns the ``nonce`` value to the Mobile Application Instance. The backend MUST ensure that it is single-use and valid only within a specific time frame. 
+Upon a successful request, the Application Provider Backend generates and returns the ``nonce`` value to the Mobile Application Instance. The Application Provider Backend MUST ensure that it is single-use and valid only within a specific time frame. 
 
 **Step 6**: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:
 
