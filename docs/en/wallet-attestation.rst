@@ -46,7 +46,7 @@ Below is a non-normative example of a Nonce Response.
 
 **Step 7**: The Wallet Instance performs the following actions:
 
-* Creates ``client_data``, a JSON object that includes the ``nonce`` and the thumbprint of ``ephemeral_key_pub``JWK.
+* Creates ``client_data``, a JSON object that includes the ``nonce`` and the thumbprint of ``ephemeral_key_pub`` JWK.
 * Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
 
 Below is a non-normative example of the ``client_data`` JSON object.
