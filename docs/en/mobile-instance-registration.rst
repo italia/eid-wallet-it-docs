@@ -143,7 +143,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
 Mobile Application Instance Initialization Request
 ............................................................
 
-To register a Mobile Application Instance, the request to the Application Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the following claims:
+To register a Mobile Application Instance, the request to the Application Provider uses the HTTP POST method with ``Content-Type`` set to `application/json`. The request body contains the following claims:
 
 .. _table_http_request_claim:
 .. list-table:: 
