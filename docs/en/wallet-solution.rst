@@ -922,7 +922,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
     "_sd_alg": "sha-256",
     "iat": 1687281195,
     "exp": 1687288395,
-    "vct": "wallet.atestation.example/v1.0",
+    "vct": "https://wallet.attestation.example/v1.0",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "aal": "https://trust-framework.example.it/aal/high"
   }
