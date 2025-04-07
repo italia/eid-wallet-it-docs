@@ -1,6 +1,7 @@
 .. _OAuthCrossDeviceSec: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-cross-device-security-08
 .. _OpenID4VC-SecTrust: https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html
 .. _OID-FED: https://openid.net/specs/openid-federation-1_0-41.html
+.. _OID-FED-WALLET: https://openid.net/specs/openid-federation-wallet-1_0.html
 .. _OIDC-FED#RP_metadata: https://openid.net/specs/openid-federation-1_0.html#Section-4.1
 .. _OIDC-FED#Federation_Entity: https://openid.net/specs/openid-federation-1_0.html#Section-4.6
 .. _LG-AA: https://www.agid.gov.it/sites/default/files/repository_files/llgg_attribute_authorities_0.pdf
@@ -53,3 +54,7 @@
 .. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/
+.. _ETSI TS 119 612: https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.03.01_60/ts_119612v020301p.pdf
+.. _ETSI TS 119 461: https://www.etsi.org/deliver/etsi_ts/119400_119499/119461/01.01.01_60/ts_119461v010101p.pdf
+.. _RFC5280: https://datatracker.ietf.org/doc/html/rfc5280
+.. _ISO18013-5: https://www.iso.org/standard/69084.html
