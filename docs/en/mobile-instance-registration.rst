@@ -96,8 +96,6 @@ Nonce Response
 ..............
 Upon a successful request, the Application Instance Provider returns e.g., an HTTP response with a 200 OK status code. The response MUST contain the ``nonce``. Details on this implementation are left to the Application Provider
 
-If any errors occur during the the nonce generation, an error response is returned. Refer to :ref:`Nonce Response` for details on error codes and descriptions.
-
 Below is a non-normative example of a Nonce Response.
 
 .. code-block:: http
