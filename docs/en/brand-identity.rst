@@ -3,7 +3,7 @@ IT-Wallet System Brand Identity
 
 The IT-Wallet Brand Identity defines the system's personality and it’s expressed through a set of standardized elements, including its naming and Visual Identity. It strengthens and promotes the Trust Model at the basis of the entire ecosystem,  that is to say the framework that legitimizes the Actors' participation in the IT-Wallet System and ensures the security and integrity of its processes. 
 
-The Trust Model must be able to provide Users with clear evidence of the legitimate participation of the actors in the ecosystem and the reliability of the Touchpoints they interact with. Therefore, it is important to strengthen the User awareness and trust in the ecosystem by integrating coherent graphical elements into the Technical Solutions and across the various Touchpoints. 
+It is important to strengthen the User awareness and trust in the ecosystem by integrating coherent graphical elements into the Technical Solutions and across the various Touchpoints.
 
 This section outlines the minimum requirements that Primary Actors must meet to ensure a proper application of the IT-Wallet System Brand Identity, to achieve a uniform, consistent, and recognizable visual presence, and deliver a high-quality User Experience.
 
