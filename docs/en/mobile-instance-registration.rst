@@ -12,7 +12,7 @@ Since the initialization flows are analogous for a Wallet or Mobile Relying Part
 
     Mobile Application Instance Initialization Sequence Diagram
 
-**Step 1**: The User starts the Mobile Application Instance mobile app for the first time.
+**Step 1**: The User starts the Mobile Application Instance for the first time.
 
 **Step 2**: The Mobile Application Instance:
 
