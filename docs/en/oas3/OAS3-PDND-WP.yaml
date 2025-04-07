@@ -295,5 +295,5 @@ components:
           items:
             type: string
           description: >-
-            Identifiers of the Wallet Instances associated with the User whose PID was revoked due to his/her death.
+            Identifiers of the Wallet Instances whose PID was revoked due to User death.
 
