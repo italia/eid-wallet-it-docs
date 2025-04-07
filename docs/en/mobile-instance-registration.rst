@@ -83,7 +83,7 @@ Upon successful initialization of the Mobile Application Instance, the Applicati
 Nonce Request
 ...............
 
-The request for a nonce MUST be an HTTP GET request sent to the Application Provider’s Nonce Endpoint.
+The request for a nonce is an HTTP GET request sent to the Application Provider’s Nonce Endpoint.
 
 Below is a non-normative example of a Nonce Request.
 
