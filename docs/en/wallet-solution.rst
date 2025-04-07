@@ -617,8 +617,8 @@ The body of the Wallet Attestation Request JWT MUST contain the following claims
     * - **hardware_signature**
       - The signature of ``client_data`` obtained using Cryptographic Hardware Key base64 encoded.
       - This specification.
-    * - **integrity_assertion**
-      - The integrity assertion obtained from the **Device Integrity Service** with the holder binding of ``client_data``.
+    * - **key_attestation**
+      - The key attestation obtained from the **Key Attestation API** with the holder binding of ``client_data``.
       - This specification.
     * - **hardware_key_tag**
       - Unique identifier of the **Cryptographic Hardware Keys**.
