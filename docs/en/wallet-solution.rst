@@ -406,7 +406,7 @@ The following sections describe the registration, status retrieval and revocatio
 Wallet Instance Registration Request
 .............................................
 
-To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Application Instance Registration Request`
+To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Application Instance Registration Request`.
 
 .. warning::
   During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate the Wallet Instace with a specific User, authenticating the User with the Wallet Provider. The authentication mechanism is at the discretion of the Wallet Provider and it will not be addressed within these guidelines, as each Wallet Provider may have its User authentication systems already implemented.
