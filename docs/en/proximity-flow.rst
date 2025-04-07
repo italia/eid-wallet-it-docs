@@ -214,7 +214,7 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
      - *(uint)*. Status code indicating the outcome of the request. For example, `"status": 0` means successful processing. For details, see Table 8 (ResponseStatus) of [`ISO18013-5`_ #8.3.2.1.2].
 
 
-Each document in **documents** MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
+Each document in **documents** MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified:
 
 .. _table-mdoc-documents-attributes:
 
