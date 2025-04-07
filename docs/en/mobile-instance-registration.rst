@@ -3,7 +3,7 @@
 Mobile Application Instance Initialization and Registration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since the registration flows are analogous for a Wallet or Relying Party Instance, these components are henceforth called Mobile Application Instance. Similarly, the Application Provider fulfills the roles of the Wallet Provider and Relying Party backend depending on the registration process.   
+Since the registration flows are analogous for a Wallet or Relying Party Instance, these components are henceforth called Mobile Application Instances. Similarly, the Application Provider fulfills the roles of the Wallet Provider and Relying Party backend depending on the registration process.   
 
 .. figure:: ../../images/application_instance_initialization.svg
     :figwidth: 100%
