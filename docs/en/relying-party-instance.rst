@@ -64,10 +64,10 @@ In addition, each Relying Party SHOULD set an amount of time (grace period) duri
 Transition to Verified
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party Instance needs to obtain a proper Access Certificate, which will be used to authenticate itself towards Wallet Instances. This certificate is obtained by interacting with the Relying Party Backend, which in turns communicates with the Relying Party Instance Access Certificate Authority. Specifically, the registration transition (**RPI REG**) consists of the following operations, leading to the **Verified** state:
+The Relying Party Instance needs to obtain a proper Access Certificate, which will be used to authenticate itself towards Wallet Instances. This certificate is obtained by interacting with the Relying Party Backend, which in turns communicates with the Relying Party Instance Access Certificate Authority. Specifically, the registration transition (**RPI REG**) consists of the following subphases, leading to the **Verified** state:
 
-1. After verification of the Relying Party Instance integrity, it registers a pair of Hardware Cryptographic Keys.
-2. The Relying Party Instance obtains an Access Certificate.
+1. **Initialization**: After verification of the Relying Party Instance integrity, it registers a pair of Hardware Cryptographic Keys.
+2. **Access Certificate Issuance**: The Relying Party Instance obtains an Access Certificate.
 
 In case the Access Certificate is expired, a new certificate can be issued to the Relying Party Instance; this operation is represented by the **CERT REISS** transition towards the **Verified** state.
 
@@ -92,6 +92,10 @@ Mobile Relying Party Instance Functionalities
 
 A Mobile Relying Party Instance MUST support three fundamental functionalities: **Registration**, **Access Certificate Reissuance**, and **Revocation**. Each functionality is described in detail in the following sections.
 
+.. note:: 
+
+  Throughout this section, the services used to attest genuineness of the Relying Party Instance and the device in which it is installed are referred to as **Key Attestation API**. The Key Attestation API is considered in an abstract fashion and it is assumed to be a service provided by a trusted third party (i.e., the OS Provider's API) which is able to perform integrity checks on the Wallet Instance as well as on the device where it is installed.
+
 .. note::
 
   The details provided below are non-normative and are intended to clarify the functionalities of the Mobile Relying Party Instance. The actual implementation may vary based on the specific use case and requirements of the Relying Party.
@@ -100,144 +104,60 @@ A Mobile Relying Party Instance MUST support three fundamental functionalities: 
 Mobile Relying Party Instance Registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section describes the registration of the Mobile Relying Party Instance.
+This process allows for the registration of a Relying Party Instance with the Relying Party Backend, and the issuance of an Access Certificate that will be used for authentication purposes towards Wallet Instances during presentation flows. The process consists of two subphases:
 
-The Registration Flow is composed by the following sub flows:
-
-- Device Integrity Check and Key Registration.
-- Access Certificate Issuance.
+1. **Initialization**: The Relying Party Instance requests a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself; the assertion is then validated by the Relying Party Backend. Further details are provided in the :ref:`mobile-instance-app-initialization-and-registration.rst` section.
+2. **Access Certificate Issuance**: The Relying Party Instance requests an Access Certificate from the Relying Party Backend. Before interacting with the Relying Party Instance Access Certificate Authority for the issuance of the Access Certificate, the Relying Party Backend validates the Relying Party Instance's integrity and security by leveraging the long-lived, attested keys generated in the previous subphase. The flow is displayed in :numref:`fig_RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance`, while a step-by-step description is provided below.
 
 .. note::
   
   Access Certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
 
-The overall flow is displayed in :numref:`fig_RelyingParty_Instance_Mobile_Registration`, while a step-by-step description is provided below.
+.. _fig_RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance:
 
-.. _fig_RelyingParty_Instance_Mobile_Registration:
-
-.. figure:: ../../images/RelyingParty_Instance_Mobile_Registration.svg
+.. figure:: ../../images/RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/fLHDh-iq4DtdLupCWlkaia62nPL0hvG7hm8ar1PMJwgcpZIncZZ1OnVwxncdlZUDRsX1RAfqVCwP3y_nU_ReV6YR0eFlR6WFv8hQb0J7hlE7xg-Y-FnNGHXjUhIU2zI-Sw1-Ot8Aa26m4FeH0UgNxc0QWWqr5sChYEmBhAqaife63lOzJ3dVqzbe4fIdoXd1Ryb99C7HCtp6lHEvoX7PANUQw3lK9xBbG3peKmwTg-cJNMfDpB0YmHwDHa-m3BxkOYc3aiQYY9r-yQtK_Wm_Ox2w1bzJxAM93DFPE1jpHZy4Yw9oNUZXJMUhclG9q9Rm4Ltv9pg2d-WYuweCUvU4-lwQAQ7DSSXLNhLQ8iz3e3NMjA459Xq6SKT_1EEe9Ulvaur9XFfFmmN3W6Sq3HuQAgv9PMJFi14LOWzAwHgRXcn5IetTnR4MyfFGFv8b5-D7Hrndf06NUfcUb3GH77iU1LVkqlkkSjZNHa_6nT2ZSV2aL9sY-nDTzdquABM0FEhCMQbtrtcmxzmzPTXXzKRNOoK2BpMYvwoP1SmHneb5Yh3bDz777fMAUFIUs0-NhrH2fcdC0KhAfCUxo-lAsG-BpQ_tTsnCAV6fyZmYJpR5RUFePv9dQvAxGVvmtrcc8jyPiYKCBfD7QhjRRdQm-h3PhNzOhvQx3yb_CzPUCuVe-ncRtLqv-SZyaYsiG41wUjtDoKhURE9_yzg_jDh_SfeG6aFMxqlq2D_0qoj_0QcBTqezfkvhv5husu_BBx_w-kdcHEYvVp9QRfZS1kRb_TeZCxcxLiXA75UEJMNH1qTIPFn-ogjOm9ktOxxpsmSrEI0kQxhFsok-ZvkzwhIH39szIvyO9mDcvdcy1HEJR6KunbOlYU8wQtRPygROj8VP9X8o7MgSuMei2et3uP1zv4ZqDI4EVjxhiTJf4cYSpEGH8Hz6UgJcQUE3SoiWj450KWOczpnzl3WCGiVG5E-57jhcRm00
+    :target: https://www.plantuml.com/plantuml/svg/ZPF1ZjCm48RlUOgHEG0IlC0Uq8PgWGeXhTh2QQLguamJgwbjx4aXRy_4f7XJ1NKFZLBx-ptp_vxSHyR0_Qahi6Td-rD5eMXDJN1mZYltkoXUFmfXjF5eEHQesGLGtoC51HYXZoBmcG3rpLMc8zXGDnZRmAWUO6qZezMKDEWzp3LVQO2IcGHYuooKZ-lu5qMEy2hw84SrWSZETVCY7r4VoTP9MEdZCZhlvycMMbECi29X3qOZ4vGzjouO7j996YM3xQxSx63riDcjFwrNvUwX41FlFyZZ3bOjwIEO0wp2uDar0NrhD7p1KF_2G23c8emlU4RJOTLHyKpzcIm5P184ZXA3HnFWZLBollTzfTGxcFu4SrRgxQGLVtUIyS-U8WjWtHYk6g_7d94f-PTV0dEHJARDgOMyMDFiW8Ks1TQT8Slx6XcL0hJrazNkvFlhpNsBiLNgSWfol5i4SjCZ8xWySskZTSoZaPlCWiKksod-VJIDHUw3-5j4rvQf6MyRVc1dwbJbakopi6znoy6dsOZWx0rvlet_WT4x6-a5DpGRvQsODxQv51e7IyTmDKRJsjp3eec9d3OrBcZ7pqLZsapLiqPM_nN4zDNjTMvrVh4QPvdS55o7iMKNw0KoWOjxidL_wlu0
 
-    Flow of the Mobile Relying Party Instance Registration
-
-
-**Device Integrity Check and Hardware Key Registration**
-
-**Step 1:** The User launches the Mobile Relying Party Instance.
-
-**Step 2:** The Mobile Relying Party Instance:
-
-  - Checks whether the device meets the minimum security requirements.
-  - Checks if the Device Integrity Service is available.
-
-**Steps 3-5:** The Mobile Relying Party Instance requests a fresh ``challenge`` from the Nonce endpoint of the Relying Party Backend. This ``challenge``, known as a ``nonce``, MUST be unpredictable to serve as the main defense against replay attacks.
-
-.. code-block:: http
-    :caption: Non-normative example of the Mobile Relying Party Nonce Request
-    :name: _code_RelyingParty_Instance_Mobile_Registration_Nonce_Request
-
-    GET /nonce HTTP/1.1
-    Host: relying-party.example.com
-
-Upon a successful request, the Relying Party Backend generates and returns the nonce value to the Mobile Relying Party Instance. The Backend MUST ensure that it is single-use and valid only within a specific time frame.
-
-.. code-block:: http
-    :caption: Non-normative example of the Mobile Relying Party Nonce Response
-    :name: _code_RelyingParty_Instance_Mobile_Registration_Nonce_Response
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "nonce": "0fe3cbe0-646d-44b5-8808-917dd5391bd9"
-    }
-
-**Step 6:** The Mobile Relying Party Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:
-
-  1. It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Mobile Relying Party Instance is in the **Installed** state, they MUST be deleted.
-  2. It MUST generate a pair of asymmetric Elliptic Curve keys (Cryptographic Hardware Keys) via a local WSCD.
-  3. It SHOULD obtain a unique identifier (Cryptographic Hardware Key Tag) for the generated Cryptographic Hardware Keys from the operating system. If the operating system permits specifying a tag during the creation of keys, then a random string for the Cryptographic Hardware Key Tag MUST be selected. This random value MUST be collision-resistant and unpredictable to ensure security. To achieve this, consider using a cryptographic hash function or a secure random number generator provided by the operating system or a reputable cryptographic library.
-  4. If the previous points are satisfied, it MUST store the Cryptographic Hardware Key Tag in local storage.
-
-**Step 7:** The Mobile Relying Party Instance uses the Device Integrity Service, providing the challenge and the Cryptographic Hardware Key Tag to acquire the Key Attestation.
-
-**Steps 8-9:** The Device Integrity Service performs the following actions:
-
-  1. Creates a Key Attestation that is linked with the provided challenge and the Cryptographic Hardware Key Tag.
-  2. Incorporates information pertaining to the device's security.
-  3. Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
-  4. Returns the Key Attestation to the Relying Party Instance.
-
-**Step 10:** The Mobile Relying Party Instance requests the Hardware Key Registration by sending the following claims to the Relying Party Backend: ``challenge``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
-
-.. code-block:: http
-    :caption: Non-normative example of the Mobile Relying Party Instance Hardware Key Registration Response
-    :name: _code_RelyingParty_Instance_Mobile_Registration_InstanceRegistration_Request
-
-    POST /hardware-key-registration HTTP/1.1
-    Host: relying-party.example.com
-    Content-Type: application/json
-
-    {
-      "challenge": "0fe3cbe0-646d-44b5-8808-917dd5391bd9",
-      "key_attestation": "o2NmbXRvYXBwbGUtYXBw...",
-      "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
-    }
-
-**Steps 11-13:** The Relying Party Backend validates the ``challenge`` and ``key_attestation`` signature, therefore:
-
-  1. It MUST verify that the ``challenge`` was generated by the Relying Party Backend and has not already been used.
-  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines.
-  3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Relying Party Backend.
-  4. If these checks are passed, it stores the Cryptographic Hardware Key Tag.
-
-**Step 14:** The Relying Party Backend responds with a confirmation of success.
-
-.. code-block:: http
-    :caption: Non-normative example of the Mobile Relying Party Instance Hardware Key Registration Response
-    :name: _code_RelyingParty_Instance_Mobile_Registration_InstanceRegistration_Response
-  
-    HTTP/1.1 204 No content
+    Flow of the Mobile Relying Party Instance Access Certificate Issuance
 
 
-**Access Certificate Issuance**
+**Steps 1-2:** The Mobile Relying Party Instance:
 
-**Steps 15-16:** The Mobile Relying Party Instance MUST:
+  1. Verifies the existence of Cryptographic Hardware Keys. If none exist, the Relying Party Instance re-initialization is required.
+  2. Generates an asymmetric key pair for the Access Certificate (``key_pub``, ``key_priv``).
 
-  1. Verify the existence of Cryptographic Hardware Keys. If none exist, the process MUST restart from the previous phase.
-  2. Generate an asymmetric key pair for the Access Certificate (``key_pub``, ``key_priv``).
+**Steps 3-5:** The Mobile Relying Party Instance requests a ``nonce`` from the :ref:`Relying Party Nonce Endpoint` of the Relying Party Backend. This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks.
 
-**Steps 17-19:** The Mobile Relying Party Instance requests a fresh ``challenge`` from the Nonce endpoint of the Relying Party Backend. This ``challenge``, known as a ``nonce``, MUST be unpredictable to serve as the main defense against replay attacks.
+Upon a successful request, the :ref:`Relying Party Nonce Endpoint` generates and returns the ``nonce`` to the Mobile Relying Party Instance. The :ref:`Relying Party Nonce Endpoint` MUST ensure that it is single-use and valid only within a specific time frame.
 
-Upon a successful request, the Relying Party Backend generates and returns the nonce value to the Mobile Relying Party Instance. The Relying Party Backend MUST ensure that it is single-use and valid only within a specific time frame.
+Non-normative examples of the Nonce Request and Response can be found in the :ref:`Nonce Request` and :ref:`Nonce Request` sections, respectively.
 
-Non-normative examples of the Nonce Request and Response can be found in :numref:`_code_RelyingParty_Instance_Mobile_Registration_Nonce_Request` and :numref:`_code_RelyingParty_Instance_Mobile_Registration_Nonce_Response`, respectively.
+**Step 6:** The Mobile Relying Party Instance:
 
-**Step 20:** The Mobile Relying Party Instance generates ``client_data``, a JSON object that includes the challenge and the thumbprint of ``key_pub``, obtained from its ``JWK`` representation.
+  1. Generates ``client_data``, a JSON object that includes the challenge and the thumbprint of ``key_pub``, obtained from its ``JWK`` representation.
+  2. Computes ``client_data_hash`` by applying the SHA256 algorithm to ``client_data``.
 
 .. code-block:: json
     :caption: Non-normative example of the ``client_data`` JSON object
     :name: _code_RelyingParty_Instance_Mobile_Registration_client_data
 
     {
-      "challenge": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
+      "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "jwk_thumbprint": "hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY"
     }
 
-**Step 21:** The Mobile Relying Party Instance computes ``client_data_hash`` by applying the SHA256 algorithm to ``client_data``.
+**Steps 7-8:** The Mobile Relying Party Instance:
 
-**Steps 22-23:** The Mobile Relying Party Instance:
+  1. Requests the Key Attestation APIs to create a ``key_attestation`` value linked to the ``client_data_hash``.
+  2. Receives a signed ``key_attestation`` value from the Key Attestation APIs, authenticated by the OEM.
 
-  1. Requests the Device Integrity Service to create an ``integrity_assertion`` value linked to the ``client_data_hash``.
-  2. Receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
+**Steps 9-11:** The Mobile Relying Party Instance:
 
-**Steps 24-26:** The Mobile Relying Party Instance:
-
-  1. Produces an ``hardware_signature`` value by signing the ``client_data_hash`` with the Hardware Cryptographic private key, serving as a proof of possession for the Cryptographic Hardware Keys.
-  2. Generates the Integrity Validation Request in the form of a JWT. This JWT includes ``integrity_assertion``, ``challenge``, ``hardware_signature``, ``hardware_key_tag``, ``key_pub`` and is signed using ``key_priv``.
-  3. Submits the Integrity Validation Request to the Relying Party Backend.
+  1. Generates an ``hardware_signature`` value by signing the ``client_data_hash`` with the Hardware Cryptographic private key, serving as a proof of possession for the Cryptographic Hardware Keys.
+  2. Generates the Integrity Validation Request in the form of a JWT. This JWT includes ``key_attestation``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, and ``cnf`` (representing ``key_pub``); it is signed using ``key_priv``.
+  3. Submits the Integrity Validation Request to the :ref:`Relying Party Integrity Validation Endpoint` of the Relying Party Backend.
 
 .. code-block::
     :caption: Non-normative example of the Mobile Relying Party Integrity Validation Request JWT, without encoding and signature applied
@@ -252,8 +172,8 @@ Non-normative examples of the Nonce Request and Response can be found in :numref
     {
       "iss": "https://relying-party.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "sub": "https://relying-party.example.org/",
-      "challenge": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
-      "hardware_signature": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArzG8Kmv1...",
+      "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
+      "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
       "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
       "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX"
       "cnf": {
@@ -266,7 +186,7 @@ Non-normative examples of the Nonce Request and Response can be found in :numref
       },
     }
 
-The Mobile Relying Party Instance MUST send the signed Integrity Validation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Relying Party Backend.
+The Mobile Relying Party Instance sends the signed Integrity Validation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the :ref:`Relying Party Integrity Validation Endpoint`.
 
 .. code-block:: http
     :caption: Non-normative example of the Mobile Relying Party Integrity Validation Request
@@ -280,17 +200,18 @@ The Mobile Relying Party Instance MUST send the signed Integrity Validation Requ
       "assertion": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG..."
     }
 
-**Step 27:** The Relying Party Backend evaluates the Integrity Validation Request and performs the following checks:
+**Step 12:** The :ref:`Relying Party Integrity Validation Endpoint` evaluates the Integrity Validation Request and performs the following checks:
 
-  1. The Relying Party Instance has valid Cryptographic Hardware Keys registered.
-  2. The signature of the Integrity Validation Request MUST be valid and verifiable using the provided key.
-  3. The ``challenge`` value MUST have been generated by the Relying Party Backend and not previously used.
-  4. The ``integrity_assertion`` MUST be validated according to the device manufacturer's guidelines.
-  5. The ``client_data`` MUST be reconstructed using the challenge and the jwk public key. The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Wallet Instance.
-  6. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Relying Party.
-  7. The URL in the ``iss`` parameter MUST match the Relying Party's URL identifier.
+  1. The request includes all required HTTP header parameters as defined in :ref:`Relying Party Integrity Validation Request`.
+  2. The signature of the Integrity Validation Request is valid and verifiable using the provided ``jwk``.
+  3. The ``nonce`` value has been generated by the Relying Party Backend and not previously used.
+  4. The Relying Party Instance has valid Cryptographic Hardware Keys registered.
+  5. The ``client_data`` can be reconstructed using ``nonce`` and ``cnf`` (representing ``key_pub``). The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Relying Party Instance.
+  6. The ``key_attestation`` can be validated according to the device manufacturer's guidelines. The specific checks performed by the Relying Party Backend are detailed in the operating system manufacturer's documentation.
+  7. The device in use is free of known security flaws and meet the minimum security requirements defined by the Relying Party.
+  8. The URL in the ``iss`` parameter matches the Relying Party's URL identifier.
 
-**Step 28:** If the checks are successful, the Relying Party Backend responds with a confirmation of success.
+**Step 13:** If the checks are successful, the :ref:`Relying Party Integrity Validation Endpoint` responds with a confirmation of success using status code ``204 No content``.
 
 .. code-block:: http
     :caption: Non-normative example of the Mobile Relying Party Integrity Validation Response
@@ -298,9 +219,9 @@ The Mobile Relying Party Instance MUST send the signed Integrity Validation Requ
   
     HTTP/1.1 204 No content
 
-**Step 29:** The Mobile Relying Party Instance generates a Certificate Signing Request (CSR, ``csr``) using the pair of keys generated at step 16.
+**Step 14:** The Mobile Relying Party Instance generates a Certificate Signing Request (CSR, ``csr``) using ``key_pub`` and ``key_priv``.
 
-**Step 30:** The Mobile Relying Party Instance sends the CSR to the Relying Party Backend.
+**Step 15:** The Mobile Relying Party Instance sends the CSR to the :ref:`Relying Party Access Certificate Endpoint` of the Relying Party Backend, as part of the Access Certificate Request.
 
 .. code-block:: http
     :caption: Non-normative example of the Mobile Relying Party Access Certificate Request
@@ -314,11 +235,11 @@ The Mobile Relying Party Instance MUST send the signed Integrity Validation Requ
       "csr": "MIIBvzCCAa..."
     }
 
-**Steps 31-32:** The Relying Party Backend checks that the public key in the CSR corresponds to a Relying Party Instance that has been previously validated, i.e., that it matches the one bound to the Cryptographic Hardware Keys through ``hardware_signature``. If this check is successful, the Relying Party Backend sends the CSR to the Relying Party Instance Access Certificate Authority.
+**Steps 16-17:** The :ref:`Relying Party Access Certificate Endpoint` checks that the public key in the CSR corresponds to a Relying Party Instance that has been previously validated, i.e., that it matches the one bound to the Cryptographic Hardware Keys through ``hardware_signature``. If this check is successful, the Relying Party Backend sends the CSR to the Relying Party Instance Access Certificate Authority.
 
-**Steps 33-34:** The Relying Party Instance Access Certificate Authority signs the CSR, obtaining a valid Access Certificate (``access_certificate``) which it sends back to the Relying Party Backend.
+**Steps 18-19:** The Relying Party Instance Access Certificate Authority signs the CSR, obtaining a valid Access Certificate (``access_certificate``) which it sends back to the Relying Party Backend.
 
-**Steps 35-36:** The Relying Party Backend sends the Access Certificate to the Mobile Relying Party Instance, which stores it for future authentication towards Wallet Instances.
+**Steps 20-21:** The :ref:`Relying Party Access Certificate Endpoint` sends the Access Certificate to the Mobile Relying Party Instance, which stores it for future authentication towards Wallet Instances.
 
 .. code-block:: http
     :caption: Non-normative example of the Mobile Relying Party Access Certificate Response
@@ -331,13 +252,11 @@ The Mobile Relying Party Instance MUST send the signed Integrity Validation Requ
       "access_certificate": "hajdnhaghSDGns..."
     }
 
-**Step 37:** The Mobile Relying Party Instance has been registered.
-
 
 Mobile Relying Party Instance Access Certificate Reissuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The issuance of a new Access Certificate follows the same flow described in Section :ref:`Mobile Relying Party Instance Registration` for **Access Certificate Issuance**. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
+The issuance of a new Access Certificate follows the same flow described in the :ref:`Mobile Relying Party Instance Registration` section for **Access Certificate Issuance**. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
 
 
 Mobile Relying Party Instance Revocation
