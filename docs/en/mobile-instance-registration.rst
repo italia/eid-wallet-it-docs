@@ -141,7 +141,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The request cannot be fulfilled because the Nonce Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
 Mobile Application Instance Initialization Request
-..................................................
+............................................................
 
 To register a Mobile Application Instance, the request to the Application Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the following claims:
 
