@@ -611,8 +611,8 @@ The body of the Wallet Attestation Request JWT MUST contain the following claims
     * - **iat**
       - REQUIRED. UNIX Timestamp with the time of JWT issuance.
       - :rfc:`9126` and :rfc:`7519`.
-    * - **challenge**
-      - Challenge data obtained from the ``nonce`` endpoint.
+    * - **nonce**
+      - ``nonce`` obtained from the Nonce endpoint.
       - This specification.
     * - **hardware_signature**
       - The signature of ``client_data`` obtained using Cryptographic Hardware Key base64 encoded.
@@ -1070,7 +1070,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
      - The integrity assertion validation failed; the integrity assertion is tampered with or improperly signed.
    * - ``403 Forbidden`` 
      - ``invalid_request``
-     - The provided challenge is invalid, expired, or already used.
+     - The provided nonce is invalid, expired, or already used.
    * - ``403 Forbidden``
      - ``invalid_request``
      - The Proof of Possession (``hardware_signature``) is invalid.
