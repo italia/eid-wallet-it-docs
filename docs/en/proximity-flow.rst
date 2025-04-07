@@ -208,7 +208,7 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
      - *(array of Documents, OPTIONAL)*. CBOR-encoded collection of documents returned in response to the request. Each document includes `issuerSigned` and `deviceSigned` components, and follows the structure defined in the below table.
 
    * - **documentErrors**
-     - *(map, OPTIONAL)*. A map of error codes for unreturned documents, as defined in [`ISO18013-5`_ #8.3.2.1.2.3]. Each key is a `docType`, and each value is an `ErrorCode` (int) indicating why the document was not returned.
+     - *(map, OPTIONAL)*. A map of error codes for unreturned documents, as defined in [`ISO18013-5`_ #8.3.2.1.2.3]. Each key is a `docType`, and each value is an `ErrorCode` (int) indicating the reason why the document was not returned.
 
    * - **status**
      - *(uint)*. Status code indicating the outcome of the request. For example, `"status": 0` means successful processing. For details, see Table 8 (ResponseStatus) of [`ISO18013-5`_ #8.3.2.1.2].
