@@ -154,7 +154,7 @@ To register a Mobile Application Instance, the request to the Application Provid
       - **Description**
       - **Reference**
     * - **nonce**
-      - MUST be set to the value obtained from the Application Provider through the Nonce Endpoint.
+      - It MUST be set to the value obtained from the Application Provider through the Nonce Endpoint.
       - This specification.
     * - **hardware_key_tag**
       - It MUST be set with the unique identifier of the **Cryptographic Hardware Keys** and encoded in base64url.
