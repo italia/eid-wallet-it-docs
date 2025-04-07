@@ -208,7 +208,6 @@ Below is a non-normative example of the response.
       ]
     }
 
-.. CONDITIONAL, [NO WA IN PRESENTATION] delete lines 167-186 and substitute the block below:
 
 
 .. 
