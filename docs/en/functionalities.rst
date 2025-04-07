@@ -6,7 +6,7 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
 ..  figure:: ../../images/UX-phases-usage.svg
     :alt: User Experience phases of Wallet usage
     :width: 100%
- 	*User Experience phases of Wallet usage*
+*User Experience phases of Wallet usage*
 
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the Activation, Acquisition, Presentation, Management, and Deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection. 
