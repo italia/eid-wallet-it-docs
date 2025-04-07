@@ -1,0 +1,266 @@
+{
+   "credential_catalog_version":1.0,
+   "credentials_catalog":[
+      {
+         "version":1.0,
+         "unique_identifier":"mDL",
+         "name":"Mobile Driving License",
+         "description":"Documento che abilita alla conduzione di veicoli a motore su strade pubbliche",
+         "is_pub":true,
+         "is_qeaa":false,
+         "is_eaa":true,
+         "Is_proof_of_identity":true,
+         "Is_public_wallet_restricted":true,
+         "wallet_solutions_restriction":{
+            "is_public_restricted":"true",
+            "providers_enabled": ["https://wallet-provider.example.org/wallet_solution","https://wallet-provider2.example.org/wallet_solution"]
+         },
+         "validity_days":365,
+         "issuers":[
+            {
+               "iss":"https://issuer.example.org",
+               "organization_name":"Istituto Poligrafico e Zecca dello Stato",
+               "organization_country":"IT",
+               "credential_formats":["sd-jwt-vc","MDOC-CBOR"],
+               "authentication_required":{
+                  "is_required":true,
+                  "loa_level":3
+               },
+               "update_status":{
+                  "type":"status_assertion",
+                  "endpoint":" "
+               },
+               "credentials_required":[
+                  "Person Identification Data"
+               ],
+               "data_source":{
+                  "organization_name":"Ministero dell'Interno",
+                  "authentication_required":{
+                     "is_required":"true",
+                     "loa_level":"3"
+                  },
+                  "trust_framework":{
+                     "type":"pdnd",
+                     "issuing_service":{
+                        "version":1.0,
+                        "name":"",
+                        "description":"",
+                        "provider":""
+                     },
+                     "update_status_service":{
+                        "version":1.0,
+                        "name":"",
+                        "description":"",
+                        "provider":""
+                     }
+                  }
+               }
+            }],
+               "formats":[{
+                  "configuration_id":"dc_sd_jwt_mDL",
+                  "format":"sd-jwt-vc",
+                  "is_proximity_enabled" : false,
+                  "is_remote_enabled": true,                 
+                  "vct":"https://trust-registry.eudi-wallet.example.it/v1.0/mDL",
+                  "schema_uri":"https://trust-registry.eudi-wallet.example.it/schema_dc_sd_jwt/v1.0/mDL",
+                  "schema_uri#integrity":"c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+               },
+               {
+                  "configuration_id":"mso_mdoc_mDL",
+                  "format":"MDOC-CBOR",
+                  "is_proximity_enabled" : true,
+                  "is_remote_enabled": false,                 
+                  "schema_uri":"https://trust-registry.eudi-wallet.example.it/schema_mso_mdoc/v1.0/mDL",
+                  "schema_uri#integrity":"c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+               }
+            ],
+               "schema":{
+               "schema_version":"1.0",
+               "user_attributes":{
+                  "given_name":[
+                     {
+                        "name":"Nome",
+                        "description":"Nome del proprietario del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Name",
+                        "description":"Name of the Document Holder",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "family_name":[
+                     {
+                        "name":"Cognome",
+                        "description":"Cognome del proprietario del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Family Name",
+                        "description":"Family Name of the Document Holder",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "birth_date":[
+                     {
+                        "name":"Data di Nascita (YYYY-MM-GG)",
+                        "description":"Data di Nascita del proprietario del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Date of Birth (YYYY-MM-GG)",
+                        "description":"Date of birth of the Document Holder",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "place_of_birth":[
+                     {
+                        "name":"Luogo di nascita",
+                        "description":"Luogo di nascita del proprietario del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"birth place",
+                        "description":"Birth place of the Document Holder",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "portrait":[
+                     {
+                        "name":"Foto codificata in base64",
+                        "description":"Foto del proprietario del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Portrait base64 encoded",
+                        "description":"Portrait of the Document Holder",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "driving_privileges":[
+                     {
+                        "name":"Elenco delle categorie di abilitazione separate da spazio",
+                        "description":"Elenco delle categorie di abilitazione separate da spazio del proprietario del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Driving Privileges separated by space",
+                        "description":"Driving Privileges separated by space of the Document Holder",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "driving_privileges.vehicle_category_code":[
+                     {
+                        "name":"Codice di categoria della patente",
+                        "description":"Codice di categoria della patente al quale è abilitato alla guida il proprietario del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Vehicle category code",
+                        "description":"Vehicle category code under which the Document Holder is authorised to drive.",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "driving_privileges.issue_date":[
+                     {
+                        "name":"Data di emissione",
+                        "description":"Data di emissione della patente",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Issue date",
+                        "description":"Issuing date of the Document",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "driving_privileges.expiry_date":[
+                     {
+                        "name":"Data di scadenza della categoria di guida",
+                        "description":"Data di scadenza della categoria di guida",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Expiry date of the vehicle category",
+                        "description":"Expiry date of the vehicle category",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "driving_privileges.codes":[
+                     {
+                        "name":"Codici associati alla categoria di guide della patente",
+                        "description":"Codici associati alla categoria di guida della patente che specificano le supplementazioni/restrizioni/condizioni applicabili al veicolo e/o al conducente.",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Codes associated with the driving license category",
+                        "description":"Codes associated with the driving license category that specifies the supplementation/restriction/condition applicable to the vehicle and/or driver",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "driving_privileges.codes.sign":[
+                     {
+                        "name":"Segno associato al codice",
+                        "description":"Segno di tipo '<', '=' '>' associato al codice",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Sign associated to the code",
+                        "description":"Sign of type '<', '=', '>' associated with the code",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "driving_privileges.codes.value":[
+                     {
+                        "name":"Valore",
+                        "description":"Il valore associato al segno",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Value",
+                        "description":"The Value associated with the sign",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "expiry_date":[
+                     {
+                        "name":"Data di scadenza",
+                        "description":"Data di scadenza del Documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Expiry date",
+                        "description":"Expiry date of the Document",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "document_number":[
+                     {
+                        "name":"Numero del documento",
+                        "description":"Numero del documento",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Document number",
+                        "description":"Document number",
+                        "locale":"en-US"
+                     }
+                  ],
+                  "un_distinguishing_sign":[
+                     {
+                        "name":"Sigla distintiva",
+                        "description":"Sigla distintiva del paese di rilascio, come definito al Segretario Generale delle Nazioni Unite in conformità con le Convenzioni delle Nazioni Unite (del 1949 e del 1968) nel febbraio 2017",
+                        "locale":"it-IT"
+                     },
+                     {
+                        "name":"Un distinguishing sign",
+                        "description":"The distinguishing sign of the issuing country, as defined to the UN Secretary Genral in accordance with the UN Conventions (1949 and 1968) on February 2017",
+                        "locale":"en-US"
+                     }
+                  ]
+               }
+            }
+        
+      }
+   ]
+}
+
