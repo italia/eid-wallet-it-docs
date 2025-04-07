@@ -194,7 +194,7 @@ If any errors occur during the Mobile Application Instance initialization, an er
 Mobile Application Instance Initialization Error Response
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-The following errors apply to all Application Instance Management Initialization and MUST be supported for the error response, unless otherwise specified:
+The following errors apply to all Application Instance Initialization:
 
 .. list-table:: 
    :widths: 20 20 50
