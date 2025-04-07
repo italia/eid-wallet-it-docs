@@ -6,7 +6,7 @@ servers:
   - url: https://wallet-provider.example.org
     description: Wallet Provider API
 paths:
-  /v0.9.0/notifyUserDeath/:
+  /v1.0.0/notifyUserDeath/:
     post:
       tags:
         - e-services PDND
