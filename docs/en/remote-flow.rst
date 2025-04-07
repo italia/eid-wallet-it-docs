@@ -295,13 +295,11 @@ where a non-normative example in the form of decoded header and payload is shown
         },
         {
           "id": "wallet attestation",
-          "format": "dc+sd-jwt",
-          "meta": {
-            "vct_values": ["wallet.atestation.example/v1.0" ]
-          },
+          "format": "jwt",
           "claims": [
-              {"path": ["wallet_name"]},
-              {"path": ["wallet_link"]}
+              {"path": ["iss"]},
+              {"path": ["iat"]},
+              {"path": ["cnf"]}
           ]
         }
       ]
@@ -474,7 +472,7 @@ After obtaining the User authorization and consent for the presentation of the C
 
     The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs `TLS termination <https://www.f5.com/glossary/ssl-termination>`_. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.
 
-Below is a non-normative example of the response:
+Below is a non-normative example of the request:
 
 .. code-block:: http
 
@@ -485,7 +483,8 @@ Below is a non-normative example of the response:
   response=eyJhbGciOiJFUzI1NiIs...9t2LQ
   
 
-Below is a non-normative example of the decrypted payload of the JWT contained in the ``response``, before base64url encoding. The `vp_token` parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
+Below is a non-normative example of the decrypted payload of the JWT contained in the ``response``, before base64url encoding.
+The `vp_token` parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
 
 .. code-block:: 
 
@@ -493,7 +492,7 @@ Below is a non-normative example of the decrypted payload of the JWT contained i
     "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
     "vp_token": {
         "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
-        "wallet attestation": "eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0cnVzdF9jaGFpbiI6WyJleUpoYkdjaU9pSkZVei4uLjZTMEEiLCJleUpoYkdjaU9pSkZVei4uLmpKTEEiLCJleUpoYkdjaU9pSkZVei4uLkg5Z3ciXSwidHlwIjoiZGMrc2Qtand0In0.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsImNuZiI6eyJqd2siOnsiY3J2IjoiUC0yNTYiLCJrdHkiOiJFQyIsIngiOiI0SE5wdEkteHIycGp5UkpLR01uejRXbWRuUURfdUpTcTRSOTVOajk4YjQ0IiwieSI6IkxJWm5TQjM5dkZKaFlnUzNrN2pYRTRyMy1Db0dGUXdadFBCSVJxcE5scmcifX0sIl9zZCI6WyJjRDkvWEM3dDdRVkh2bVNpRTFkR1cwV1lyMGpjcW04bjBHQTZNR2l0YWlrPSIsImlRUWh6ZjYrc2FZQ3pISDkyTjFReUppc0tzWmJBcGJUckoxYW1IZ0xvT2s9Il0sIl9zZF9hbGciOiJzaGEtMjU2IiwiaWF0IjoxNjg3MjgxMTk1LCJleHAiOjE2ODcyODgzOTUsInZjdCI6IndhbGxldC5hdGVzdGF0aW9uLmV4YW1wbGUvdjEuMCIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJhYWwiOiJodHRwczovL3RydXN0LWxpc3QuZXUvYWFsL2hpZ2gifQ.rbOEkwMHB-m7vKqGygqXAkAB6Z3dM0ldD-nKsYVf1dzJvZW4XUr617ATmb7QgqqJ8y2b2M_Uk29_sqvwFeU3xA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9saW5rIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiXQ==~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd~eyJhbGciOiJFUzI1NiIsImtpZCI6IjV0NVlZcEJoTi1FZ0lFRUk1aVV6cjZyME1SMDJMblZRME9tZWttTktjalkiLCJ0eXAiOiJrYitqd3QifQ.eyJhdWQiOiJodHRwczovL3JlbHlpbmctcGFydHkuZXhhbXBsZS5vcmciLCJfc2RfaGFzaCI6Ik1EbGhaRGc0WW1KbU5qRTVaVFppWldFeU1tUmtaREE1TUdVNU9UQXlNRGMyTldaaE5tWmhZMkZqTnpka1lXRXpObVprTTJZeFlXTTBPR0k0WXpBMFl3PT0iLCJpYXQiOjE2ODcyODExOTUsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJub25jZSI6IjJjMTI4ZTRkLWZjOTEtNGNkMy04NmI4LTE4YmRlYTA5ODhjYiJ9.4uxHqmkJ2FELYBB6tGUSbOfHhr99JUD8bdN4b4PoSfKrwgQAm6ZL9z7asX3Lw7nvxFJyEr0M_N2Y1ylfw07ueQ
+        "wallet attestation": $WalletAttestation-JWT
     }
   }
 
@@ -506,10 +505,10 @@ Where the following parameters are used:
   * - **Name**
     - **Description**
   * - **vp_token**
-    - There MUST be at least two signed presentations in this Object:
+    - There MUST be at least two signed presentations in this Array:
 
-      - The requested Digital Credential (one or more, in format of SD-JWT VC),
-      - The Wallet Attestation (in SD-JWT format).
+      - The requested Digital Credential (one or more, in format of SD-JWT VC)
+      - The Wallet Attestation
       
       When `presentation_definition` is used, the ``vp_token`` value is a JSON Array containing the Verifiable Presentation(s) and the `presentation_submission` parameter MUST be also present within the response.
 
@@ -522,13 +521,17 @@ Where the following parameters are used:
 SD-JWT Presentation
 -------------------
 
-SD-JWT defines how an Holder can present a Credential to a Verifier proving the legitimate possession of the Credential. For doing this the Holder MUST include the ``KB-JWT`` in the SD-JWT, by appending the ``KB-JWT`` at the end of the of the SD-JWT, as represented in the example below:
+SD-JWT defines how an Holder can present a Credential to a Verifier proving the legitimate possession
+of the Credential. For doing this the Holder MUST include the ``KB-JWT`` in the SD-JWT,
+by appending the ``KB-JWT`` at the end of the of the SD-JWT, as represented in the example below:
 
 .. code-block::
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~<KB-JWT>
 
-To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.nThe Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the ``cnf`` parameter contained in the Issuer-Signed-JWT.
+To validate the signature on the Key Binding JWT, the Verifier MUST use the key material included in the Issuer-Signed-JWT.
+The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT,
+using the ``cnf`` parameter contained in the Issuer-Signed-JWT.
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header:
 
@@ -543,7 +546,9 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **alg**
     - REQUIRED. Signature Algorithm using one of the specified in the section Cryptographic Algorithms. 
 
-When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the `cnf` parameter. The KB-JWT has to contain the following claims in the JWT payload:
+
+When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the `cnf` parameter. 
+The KB-JWT MUST contain the following parameters in the JWT payload:
 
 .. list-table::
   :widths: 25 50
