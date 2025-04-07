@@ -924,7 +924,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
     "exp": 1687288395,
     "vct": "wallet.atestation.example/v1.0",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "aal": "https://trust-list.eu/aal/high"
+    "aal": "https://trust-framework.example.it/aal/high"
   }
 
 Wallet Attestation mdoc
