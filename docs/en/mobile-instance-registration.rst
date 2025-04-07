@@ -23,7 +23,7 @@ Since the registration flows are analogous for a Wallet or Relying Party Instanc
 
     **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the :ref:`Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`Wallet Provider Entity Configuration` and :ref:`Entity Configuration of Relying Parties` sections.
 
-**Steps 3-5 (Challende Retrieval)**: The Mobile Application Instance requests a one-time ``challenge`` from the :ref:`Nonce endpoint` of the Application Provider Backend. This ``challenge`` MUST be unpredictable to serve as the main defense against replay attacks. 
+**Steps 3-5 (Challenge Retrieval)**: The Mobile Application Instance requests a one-time ``challenge`` from the :ref:`Nonce endpoint` of the Application Provider Backend. This ``challenge`` MUST be unpredictable to serve as the main defense against replay attacks. 
 
 Upon a successful request, the Application Provider Backend generates and returns the ``challenge`` value to the Mobile Application Instance. The backend MUST ensure that it is single-use and valid only within a specific time frame. 
 
@@ -168,7 +168,7 @@ Below is a non-normative example of a Mobile Application Instance Registration R
 
 .. code-block:: http
 
-    POST /aplication-instances HTTP/1.1
+    POST /application-instances HTTP/1.1
     Host: application-provider.example.com
     Content-Type: application/json
 
