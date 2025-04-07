@@ -20,6 +20,7 @@ Activation of the Wallet Instance
 Activation is the essential step to enable the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity, which enables the generation of the PID. 
 
 Below are the functional requirements to support the User Experience related to the Activation of the Wallet Instance: 
+
 - The User MUST download the Wallet Solution onto their device to generate their Wallet Instance; 
 - The User MUST set up an unlocking method through a recognition mode (e.g., OTP, biometric authentication, Face ID, PIN). The User MUST use the selected recognition method each time they access the service to ensure security and protect their information; 
 - The User MUST review all relevant information regarding the activation process and service usage. Additionally, the User MUST read any policy from the Provider and PID Provider and/or the service's terms and conditions. The User MUST give their consent to proceed or MAY decline to cancel the operation; 
@@ -29,9 +30,9 @@ Below are the functional requirements to support the User Experience related to 
 - The User MUST authorize the operation using the unlocking method previously set; 
 - The User MUST receive confirmation of the successful activation of the Wallet Instance.
 
-The User MUST always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the `Deactivation of the Wallet Instance <wallet-attestation.html>` section.
+The User MUST always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the `Deactivation of the Wallet Instance`_ section.
 
-In case of errors, the User MUST receive consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management <wallet-attestation.html>` section. 
+In case of errors, the User MUST receive consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section. 
 
 For further details and resources, please refer to www.wallet.gov.it. 
 
@@ -57,17 +58,17 @@ Although the initiation methods for requesting the issuance may differ, the requ
 - The User MUST view the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the name of the Authentic Source; 
 - The User MUST have access to all issued Electronic Attestations by navigating the Catalog of the Wallet Instance. 
 
-The User MUST always be able to request the revocation of the Electronic Attestation of Attributes, even without the device where the Instance was activated. For more details, please refer to the `Management of Electronic Attestations <wallet-attestation.html>` section. 
+The User MUST always be able to request the revocation of the Electronic Attestation of Attributes, even without the device where the Instance was activated. For more details, please refer to the `Management of Electronic Attestations`_ section. 
 
 In the event of communication issues between the systems of the Electronic Attestation of Attributes Provider and the Authentic Source, or if administrative or technical processes prevent the immediate issuance of the Electronic Attestation of Attributes, the request process MUST support deferred process. In this case:  
 - Upon reaching the final step of the process, the User MUST be presented with a message prompting them to wait until the Electronic Attestation of Attributes can be issued. 
 - The User MUST be notified by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available. 
 
-If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, they SHOULD receive appropriate assistance. For more information, please refer to the `Assistance <wallet-attestation.html>` section. 
+If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, they SHOULD receive appropriate assistance. For more information, please refer to the `Assistance`_ section. 
 
-In case of errors, the User MUST receive clear, consistent messages that inform them and guide them toward resolution. For further details, please refer to the `Error Management <wallet-attestation.html>` section. 
+In case of errors, the User MUST receive clear, consistent messages that inform them and guide them toward resolution. For further details, please refer to the `Error Management`_ section. 
 
-If an Authentic Source (or an Electronic Attestation of Attributes Provider, should it coincide with the Authentic Source) intends to implement an Engagement Button to initiate the request process from their Touchpoint, they MUST ensure compliance with the graphical appearance and implementation requirements for the Engagement Button, as outlined in the `IT-Wallet System Brand Identity <wallet-attestation.html>` section. 
+If an Authentic Source (or an Electronic Attestation of Attributes Provider, should it coincide with the Authentic Source) intends to implement an Engagement Button to initiate the request process from their Touchpoint, they MUST ensure compliance with the graphical appearance and implementation requirements for the Engagement Button, as outlined in the IT-Wallet System `Brand Identity`_ section. 
 
 Layout of Electronic Attestations 
 ==================================
@@ -80,7 +81,7 @@ The Electronic Attestations obtained within the Wallet Instance SHOULD be displa
 - The layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen; 
 - The Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout; 
 - The Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
-- The Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations <Layout-of-Electronic-Attestations.html>` section. 
+- The Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section. 
 
 For further details and resources, please refer to www.wallet.gov.it. 
 
@@ -179,7 +180,7 @@ The Authentication process can be carried out using both the same-device and cro
 
 From a User Experience perspective, the Authentication process differs only in how it is initiated, which is through a dedicated Authentication Button. 
 
-To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST adhere to the graphical and implementation requirements for the Authentication Button outlined in the `IT-Wallet System Brand Identity`_ section. Additionally, they SHOULD follow the relative technical requirements and use the open-source resources available at www.wallet.gov.it. 
+To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST adhere to the graphical and implementation requirements for the Authentication Button outlined in the IT-Wallet System `Brand Identity`_ section. Additionally, they SHOULD follow the relative technical requirements and use the open-source resources available at www.wallet.gov.it. 
 
 Management of Electronic Attestations 
 **************************************
@@ -207,7 +208,8 @@ Each Electronic Attestation can be either valid or invalid, with corresponding i
 
 Revocation is the procedure that turns an Electronic Attestation from a valid state to an invalid state. Revocation can occur in either an active or passive mode: 
 
-- **Active revocation**: This refers to the revocation of an Electronic Attestation at the User’s request. This process affects only the Electronic Attestation and not its corresponding physical document, if one exists. Below is an illustrative list of scenarios in which the User MUST have the ability to request the revocation of an Electronic Attestation: 
+- **Active revocation**: This refers to the revocation of an Electronic Attestation at the User’s request. This process affects only the Electronic Attestation and not its corresponding physical document, if one exists. Below is an illustrative list of scenarios in which the User MUST have the ability to request the revocation of an Electronic Attestation:
+
 	- The User decides they no longer wish to use a specific Electronic Attestation; 
 	- The User decides to deactivate their Wallet Instance, thereby revoking all previously obtained Electronic Attestations; 
 	- The User no longer has possession of the device on which their Wallet Instance is installed due to loss or theft. 
@@ -246,11 +248,13 @@ Deactivation of the Wallet Instance
 The deactivation of the Wallet Instance is the functionality that makes the Wallet Instance inactive and therefore no longer operational. The deactivation process can be triggered by different actors depending on the circumstances, specifically: 
 
 - By the User, in cases such as: 
+
 	- The device has been lost or stolen; 
 	- The device has been compromised; 
 	- The device has been reset to factory settings. 
 
 - By an authorized third party, in cases such as: 
+
 	- The Wallet Solution no longer meets the minimum security requirements. 
 
 The User MUST have the ability to voluntarily deactivate their Wallet Instance through: 
@@ -268,7 +272,7 @@ Below are the functional requirements to support the User Experience related to 
 - The User MUST be notified that the Wallet Instance is inactive when logging in again; 
 - The User MUST have the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the `Activation of the Wallet Instance`_ section. 
 
-Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections `Issuance of Electronic Attestations of Attributes`_ and `Backup and Restore of Electronic Attestations of Attributes`_. 
+Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections `Issuance of Electronic Attestations of Attributes`_ and `Backup and Restore of Electronic Attestation of Attributes`_. 
 
 In case of errors, the User MUST receive clear and consistent messages that provide information and guidance for resolution. For more details, please refer to the `Error Management`_ section. 
 
@@ -308,7 +312,7 @@ Below is a non-exhaustive list of the main error cases, with reference to the ac
    * - The Authentication process on the National Identity Provider's service was unsuccessful (e.g. technical errors, unrecognized identity, etc.) 
      - National Identity Provider 
 
-**Issuance of Electronic Attestations of Attributes **
+**Issuance of Electronic Attestations of Attributes**
 
 .. list-table::
    :header-rows: 1
@@ -366,8 +370,10 @@ For effective error management and the resolution of any other issues, the Prima
 
 To implement these best practices, the Wallet Provider SHOULD establish a hierarchical assistance model: 
 
-    1. **Level I | Self-management**: The User SHOULD have access to a Frequently Asked Questions (FAQ) section within their Wallet Instance to clarify doubts and resolve certain issues independently. Each actor SHOULD create specific FAQs and corresponding answers regarding the data and functionalities they provide. For certain error cases, the Wallet Provider MAY provide another actor's direct channel of support to facilitate a timely management and avoid opening an assistance request within the Wallet Instance. 
+	1. **Level I | Self-management**: The User SHOULD have access to a Frequently Asked Questions (FAQ) section within their Wallet Instance to clarify doubts and resolve certain issues independently. Each actor SHOULD create specific FAQs and corresponding answers regarding the data and functionalities they provide. For certain error cases, the Wallet Provider MAY provide another actor's direct channel of support to facilitate a timely management and avoid opening an assistance request within the Wallet Instance. 
+	
 	2. **Level II | Requesting assistance** from the Wallet Provider: If Level I is insufficient, the User MAY open one or more assistance requests to the Wallet Provider. These requests SHOULD be managed through the Wallet Instance or other Wallet Provider Touchpoints. The Wallet Provider MUST diagnose and resolve the issue if it falls under their responsibility. 
+	
 	3. **Level III | Forwarding the request to the responsible actor**: If Level II is insufficient, the Wallet Provider SHOULD ensure that the request is forwarded to the responsible actor (Electronic Attestations of Attributes Provider, PID Provider, or Authentic Source), who MUST take charge of resolving the issue and communicate the outcome to the User. 
 
 Here are the functional requirements supporting the User Experience related to Assistance: 
@@ -394,10 +400,12 @@ Here are some suggestions for implementing these types of feedback tools:
 **Transactional Feedback Collection** 
 
 - **Customer Effort Score (CES)**: To measure the ease of use of the functionalities, surveys MAY be provided, for example, through components like modals or pop-ups within the Wallet Instance, triggered at the conclusion of specific actions or processes. Examples include: 
+
 	- After completing the process of obtaining an Electronic Attestation; 
 	- After the Authentication process, if positive; 
 	- After the presentation process, particularly at the end of the first presentation opportunity and no more than once every 6 months; 
 	- After the revocation and deactivation processes, to explore the reasons behind these actions. 
+
 - **Customer Satisfaction Survey (CSAT)**: To measure the overall satisfaction of the User after a prolonged period of using the Wallet Instance, surveys MAY be provided, for example, through modals or pop-ups within the Wallet Instance. It is recommended to use the CSAT at intervals of no less than six months and as an alternative to CES, to avoid overwhelming Users with too frequent surveys. 
 
 **Relational Feedback Collection** 
