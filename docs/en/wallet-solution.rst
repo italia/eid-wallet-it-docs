@@ -634,8 +634,6 @@ Wallet Attestation Issuance Response
 
 If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter whose value is an array of JSON Objects (see :ref:`Wallet Attestation Issuance`) containing the Wallet Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider. The JWT formatted Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`pid_eaa_issuance.rst`. The SD-JWT and mdoc formatted Wallet Attestation will instead be used during presentation respectively in the remote (:ref:`remote_flow.rst`) and proximity (:ref:`proximity_flow_sec_main`) flows.
 
-.. CONDITIONAL, [NO WA IN PRESENTATION] delete line 831 and substitute the line below:
-.. If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter whose value is an array containing the Wallet Attestations in JWT as described below. This Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`pid_eaa_issuance.rst`.
 
 The JSON Object returned in the response has the following claim:
 
@@ -671,7 +669,6 @@ Each JSON Object contained in the ``wallet_attestations`` array MUST have the fo
       
       - This specification.
 
-.. CONDITIONAL, [NO WA IN PRESENTATION] delete lines 835,866 and collapse the description.
 
 If any errors occur during the Wallet Attestation Issuance, an error response MUST be returned. Refer to :ref:`Error Handling for Wallet Attestation Issuance` for details on error codes and descriptions.
 Below is a non-normative example of an error response:
@@ -787,7 +784,6 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
     "wallet_link": "https://example.com/wallet/detail_info.html"
   }
 
-.. CONDITIONAL, [NO WA IN PRESENTATION] DELETE from line 915 to line 1172
 
 Wallet Attestation SD-JWT
 ...................................
