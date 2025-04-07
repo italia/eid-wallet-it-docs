@@ -1,6 +1,6 @@
 .. _mobile-instance-app-initialization-and-registration.rst:
 
-Mobile Application Instance Initialization and Registration
+Mobile Application Instance Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Since the registration flows are analogous for a Wallet or Relying Party Instance, these components are henceforth called Mobile Application Instances. Similarly, the Application Provider fulfills the roles of the Wallet Provider and Relying Party backend depending on the registration process.   
@@ -23,9 +23,9 @@ Since the registration flows are analogous for a Wallet or Relying Party Instanc
 
     **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the :ref:`Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`Wallet Provider Entity Configuration` and :ref:`Entity Configuration of Relying Parties` sections.
 
-**Steps 3-5 (Challenge Retrieval)**: The Mobile Application Instance requests a one-time ``challenge`` from the :ref:`Nonce endpoint` of the Application Provider Backend. This ``challenge`` MUST be unpredictable to serve as the main defense against replay attacks. 
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the :ref:`Nonce endpoint` of the Application Provider Backend. This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks. 
 
-Upon a successful request, the Application Provider Backend generates and returns the ``challenge`` value to the Mobile Application Instance. The backend MUST ensure that it is single-use and valid only within a specific time frame. 
+Upon a successful request, the Application Provider Backend generates and returns the ``nonce`` value to the Mobile Application Instance. The backend MUST ensure that it is single-use and valid only within a specific time frame. 
 
 **Step 6**: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:
 
@@ -40,7 +40,7 @@ Upon a successful request, the Application Provider Backend generates and return
 
   If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
 
-**Step 7**: The Mobile Application Instance uses the Key Attestation API, providing the ``nonce`` to acquire the Key Attestation.
+**Step 7**: The Mobile Application Instance uses the Key Attestation API, providing the ``clientDataHash`` to acquire the Key Attestation.
 
 .. note::
 
@@ -51,26 +51,26 @@ Upon a successful request, the Application Provider Backend generates and return
   *Secure Enclave* has been available on Apple devices since the iPhone 5s (2013).
   For Android devices, the inclusion of **Strongbox Keymaster** may vary by manufacturer, who decides whether to include it or not.
 
-If any errors occur in any Key Attestation APIS process, such as device integrity verification, for example, due to unavailable Key Attestation APIs, an internal error, or an invalid challenge in the integrity request, the Key Attestation APIS raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.
+If any errors occur in any Key Attestation APIS process, such as device integrity verification, for example, due to unavailable Key Attestation APIs, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIS raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.
  
 
 **Step 8**: The Key Attestation API performs the following actions:
 
-* Creates a Key Attestation that is linked with the provided ``nonce`` and the public key of the Application Instance Hardware.
+* Creates a Key Attestation that is linked with the provided ``clientDataHash`` and the public key of the Application Instance Hardware.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
-**Step 9 (Mobile Application Instance Registration Request)**: The Mobile Application Instance sends a request to the :ref:`Mobile Application Instance Registration Request` of the Application Provider Backend to register the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. 
-The request body includes the following claims: the ``challenge``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
+**Step 9 (Mobile Application Instance Initialization Request)**: The Mobile Application Instance sends a request to the :ref:`Mobile Application Instance Initialization Request` of the Application Provider Backend to register the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. 
+The request body includes the following claims: the ``nonce``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
 
 .. note::
   It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
-  As seen in the previous steps, the Key Attestation API creates a Key Attestation linked to the provided ``nonce`` which is the digest of the Application Provider's ``challenge``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the key attestation. 
+  As seen in the previous steps, the Key Attestation API creates a Key Attestation linked to the provided ``clientDataHash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the key attestation. 
 
-**Steps 10-12 (Mobile Application Instance Registration Response)**: The Application Provider validates the ``challenge`` and ``key_attestation`` signature, therefore:
+**Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature, therefore:
 
-  1. It MUST verify that the ``challenge`` was generated by Application Provider and has not already been used.
-  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines. The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``challenge`` with the ``nonce`` provided in the Key Attestation.
+  1. It MUST verify that the ``nonce`` was generated by Application Provider and has not already been used.
+  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines. The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``nonce`` with the ``clientDataHash`` provided in the Key Attestation.
   3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider.
   4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device.
 
@@ -78,24 +78,25 @@ Upon successful registration of the Mobile Application Instance, the Application
 
 **Steps 13-14**: The Mobile Application Instance has been initialized and becomes operational.
 
-.. note:: **Threat Model**: while the registration endpoint does not necessitate to authenticate the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the registration of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a challenge helps prevent replay attacks. The authenticity of both the challenge and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
+.. note:: **Threat Model**: while the registration endpoint does not necessitate to authenticate the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the registration of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a nonce helps prevent replay attacks. The authenticity of both the nonce and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
 
 Nonce Request
 .............
 
-The request for a challenge MUST be an HTTP GET request sent to the Application Provider’s Nonce Endpoint.
+The request for a nonce MUST be an HTTP GET request sent to the Application Provider’s Nonce Endpoint.
 
 Below is a non-normative example of a Nonce Request.
 
 .. code-block:: http
 
-    GET /challenge HTTP/1.1
+    GET /nonce HTTP/1.1
     Host: application-provider.example.com
 
 Nonce Response
 ..............
-Upon a successful request, the Application Instance Provider MUST return an HTTP response with a 200 OK status code. The response MUST be in `application/json` format, including the ``challenge``.
-If any errors occur during the the challenge generation, an error response MUST be returned. Refer to :ref:`Nonce Response` for details on error codes and descriptions.
+Upon a successful request, the Application Instance Provider returns e.g., an HTTP response with a 200 OK status code. The response MUST contain the ``nonce``. Details on this implementation are left to the Application Provider
+
+If any errors occur during the the nonce generation, an error response is returned. Refer to :ref:`Nonce Response` for details on error codes and descriptions.
 
 Below is a non-normative example of a Nonce Response.
 
@@ -105,7 +106,7 @@ Below is a non-normative example of a Nonce Response.
     Content-Type: application/json
 
     {
-      "challenge": "d2JhY2NhbG91cmVqdWFuZGFt"
+      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
     }
 
 If any errors occur, the Nonce Endpoint returns an error response. The response uses ``application/json`` as the content type and includes the following parameters:
@@ -141,7 +142,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the Nonce Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
-Mobile Application Instance Registration Request
+Mobile Application Instance Initialization Request
 ..................................................
 
 To register a Mobile Application Instance, the request to the Application Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the following claims:
@@ -154,7 +155,7 @@ To register a Mobile Application Instance, the request to the Application Provid
     * - **Claim**
       - **Description**
       - **Reference**
-    * - **challenge**
+    * - **nonce**
       - MUST be set to the value obtained from the Application Provider through the Nonce Endpoint.
       - This specification.
     * - **hardware_key_tag**
@@ -164,7 +165,7 @@ To register a Mobile Application Instance, the request to the Application Provid
       - It MUST be an attestation which guarantees the secure generation, storage and usage of the key pair generated by the Mobile Application Instance. This can be an array containing a certificate chain whose leaf certificate is the Key Attestation obtained from the device **Key Attestation APIs**, signed with the device hardware key.
       - This specification.
 
-Below is a non-normative example of a Mobile Application Instance Registration Request.
+Below is a non-normative example of a Mobile Application Instance Initialization Request.
 
 .. code-block:: http
 
@@ -173,18 +174,18 @@ Below is a non-normative example of a Mobile Application Instance Registration R
     Content-Type: application/json
 
     {
-      "challenge": "d2JhY2NhbG91cmVqdWFuZGFt",
+      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt",
       "key_attestation": "o2NmbXRvYXBwbGUtYXBw... redacted",
       "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
     }
 
 
-Mobile Application Instance Registration Response
+Mobile Application Instance Initialization Response
 ......................................................
 
-If a Mobile Application Instance Registration Request is successfully validated, the Application Provider provides an HTTP Response with status code 204 (No Content).
+If a Mobile Application Instance Initialization Request is successfully validated, the Application Provider provides an HTTP Response with status code 204 (No Content).
 
-Below is a non-normative example of  a Mobile Application Instance Registration Response.
+Below is a non-normative example of  a Mobile Application Instance Initialization Response.
 
 .. code-block:: http
 
@@ -195,7 +196,7 @@ If any errors occur during the Mobile Application Instance registration, an erro
 Mobile Application Instance Error Response
 '''''''''''''''''''''''''''''''''''''''''''''
 
-The following errors apply to all Application Instance Management Registration and MUST be supported for the error response, unless otherwise specified:
+The following errors apply to all Application Instance Management Initialization and MUST be supported for the error response, unless otherwise specified:
 
 .. list-table:: 
    :widths: 20 20 50
@@ -212,7 +213,7 @@ The following errors apply to all Application Instance Management Registration a
      - The device does not meet the Application Provider's minimum security requirements.
    * - ``403 Forbidden``
      - ``invalid_request``
-     - The provided challenge is invalid, expired, or already used.
+     - The provided nonce is invalid, expired, or already used.
    * - ``403 Forbidden``
      - ``invalid_request``
      - The signature of the Integrity Assertion is invalid.
@@ -238,7 +239,7 @@ Below is a non-normative example of an error response:
 
    {
      "error": "forbidden",
-     "error_description": "The provided challenge is invalid, expired, or already used."
+     "error_description": "The provided nonce is invalid, expired, or already used."
    }
 
 
