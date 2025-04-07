@@ -40,7 +40,7 @@ Upon a successful request, the Application Provider Backend generates and return
 
   If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
 
-**Step 7**: The Mobile Application Instance uses the Key Attestation API, providing the ``clientDataHash`` to acquire the Key Attestation.
+**Step 7**: The Mobile Application Instance uses the Key Attestation API, providing the ``client_data_hash`` to acquire the Key Attestation.
 
 .. note::
 
