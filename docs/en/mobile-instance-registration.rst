@@ -56,7 +56,7 @@ If any errors occur in the Key Attestation API process, such as device integrity
 
 **Step 8**: The Key Attestation API performs the following actions:
 
-* Creates a Key Attestation that is linked with the provided ``clientDataHash`` and the public key of the Application Instance Hardware.
+* Creates a Key Attestation that is linked with the provided ``client_data_hash`` and the public key of the Application Instance Hardware.
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
