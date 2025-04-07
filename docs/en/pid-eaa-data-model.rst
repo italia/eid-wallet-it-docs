@@ -808,7 +808,7 @@ Cross-Format Credential Parameters Mapping
 ======================================================
 The following table provides a comparative mapping between the data structures of SD-JWT-VC and mdoc-CBOR Digital Credentials.
 It outlines the key data elements and parameters used in each format, highlighting both commonalities and differences.
-In particular, it shows how core concepts—such as Credential Issuer information, validity, cryptographic binding, and disclosures—are represented in these credential formats.
+In particular, it shows how core concepts - such as Credential Issuer information, validity, cryptographic binding, and disclosures - are represented in these Credential formats.
 
 For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOSE header, and `(pld)` if they appear in the payload of the JWT. In mdoc-CBOR, these parameters are identified within the issuerAuth or nameSpaces structures.
 
