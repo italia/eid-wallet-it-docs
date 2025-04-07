@@ -86,7 +86,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 13**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) to ensure its authenticity.
 
-**Step 14**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to share the requested attributes. It MUST also display the contents of the Relying Party's registration certificate to ensure transparency about the requested data and its registered purpose.
+**Step 14**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's registration certificate to ensure transparency about the requested data and its registered purpose.
 
 **Step 15**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes. 
 
