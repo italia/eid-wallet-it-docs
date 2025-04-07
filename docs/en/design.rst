@@ -8,7 +8,7 @@ The IT-Wallet Solution serves as the primary Touchpoint, enabling Users to manag
 
 To ensure service quality from a User Experience perspective, Primary Actors, both Public and Private Entities, MUST ensure the usability and accessibility of their Technical Solutions while aligning with the distinctive elements of the IT-Wallet System. Specifically:
 
-- **Usability**: Technical Solutions MUST be designed and maintained to meet high usability standards, to facilitate service adoption and reduce the need for assistance. Public Entities MUST adhere to [LG DESIGN], whereas Private Entities MAY refer to it as a best practice. 
+- **Usability**: Technical Solutions MUST be designed and maintained to meet high usability standards, to facilitate service adoption and reduce the need for assistance. Public Entities MUST adhere to [GL_DESIGN], whereas Private Entities MAY refer to it as a best practice. 
 
 - **Accessibility**: Technical Solutions MUST be designed and maintained to meet high accessibility standards to ensure service access regardless of individual abilities, technological skills, or external and contextual constraints. Public Entities MUST adhere to [GL_DESIGN], whereas Private Entities MUST comply with applicable regulations. 
 
