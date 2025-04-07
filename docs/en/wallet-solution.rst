@@ -461,7 +461,7 @@ To revoke an active Wallet Instance, a revocation request MUST be sent using the
 
 .. note:: 
   
-  While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.
+While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.
 
 Wallet Instance Revocation Response
 .............................................
@@ -635,7 +635,7 @@ Wallet Attestation Issuance Response
 If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter whose value is an array of JSON Objects (see :ref:`Wallet Attestation Issuance`) containing the Wallet Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider. The JWT formatted Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`pid_eaa_issuance.rst`. The SD-JWT and mdoc formatted Wallet Attestation will instead be used during presentation respectively in the remote (:ref:`remote_flow.rst`) and proximity (:ref:`proximity_flow_sec_main`) flows.
 
 .. CONDITIONAL, [NO WA IN PRESENTATION] delete line 831 and substitute the line below:
-If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter whose value is an array containing the Wallet Attestations in JWT as described below. This Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`pid_eaa_issuance.rst`.
+.. If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter whose value is an array containing the Wallet Attestations in JWT as described below. This Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`pid_eaa_issuance.rst`.
 
 The JSON Object returned in the response has the following claim:
 

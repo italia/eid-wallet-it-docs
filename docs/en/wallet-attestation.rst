@@ -182,7 +182,7 @@ Below is a non-normative example of the Wallet Attestation without encoding and 
 **Step 18 (Wallet Attestation Issuance Response)**:  Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet Attestation in at least three formats: JWT, SD-JWT and mdoc. The Wallet Instance will then perform security and integrity verification of the Wallet Attestations received in addition to trust verification of its Issuer.
 
 .. CONDITIONAL, [NO WA IN PRESENTATION] delete line 128 and substitute the line below:
-**Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Attestation JWT signed by the Wallet Provider. The Wallet Instance will then perform security and integrity verification of the Wallet Attestation received in addition to trust verification of its Issuer.
+.. **Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Attestation JWT signed by the Wallet Provider. The Wallet Instance will then perform security and integrity verification of the Wallet Attestation received in addition to trust verification of its Issuer.
 
 Below is a non-normative example of the response.
 
