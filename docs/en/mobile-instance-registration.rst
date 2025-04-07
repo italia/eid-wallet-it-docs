@@ -3,7 +3,7 @@
 Mobile Application Instance Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since the registration flows are analogous for a Wallet or Mobile Relying Party Instance, these components are henceforth called Mobile Application Instances. Similarly, the Application Provider fulfills the roles of the Wallet Provider and Relying Party backend depending on the registration process.   
+Since the initialization flows are analogous for a Wallet or Mobile Relying Party Instance, these components are henceforth called Mobile Application Instances. Similarly, the Application Provider fulfills the roles of the Wallet Provider and Relying Party backend depending on the registration process.   
 
 .. figure:: ../../images/application_instance_initialization.svg
     :figwidth: 100%
@@ -74,14 +74,14 @@ The request body includes the following claims: the ``nonce``, Key Attestation (
   3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider.
   4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device.
 
-Upon successful registration of the Mobile Application Instance, the Application Provider responds with a confirmation of success.
+Upon successful initialization of the Mobile Application Instance, the Application Provider responds with a confirmation of success.
 
 **Steps 13-14**: The Mobile Application Instance has been initialized and becomes operational.
 
-.. note:: **Threat Model**: while the registration endpoint does not necessitate to authenticate the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the registration of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a nonce helps prevent replay attacks. The authenticity of both the nonce and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
+.. note:: **Threat Model**: while the initialization endpoint does not necessitate to authenticate the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the initialization of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a nonce helps prevent replay attacks. The authenticity of both the nonce and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
 
 Nonce Request
-.............
+...............
 
 The request for a nonce MUST be an HTTP GET request sent to the Application Provider’s Nonce Endpoint.
 
@@ -93,7 +93,7 @@ Below is a non-normative example of a Nonce Request.
     Host: application-provider.example.com
 
 Nonce Response
-..............
+................
 Upon a successful request, the Application Instance Provider returns e.g., an HTTP response with a 200 OK status code. The response MUST contain the ``nonce``. Details on this implementation are left to the Application Provider.
 
 Below is a non-normative example of a Nonce Response.
@@ -183,16 +183,16 @@ Mobile Application Instance Initialization Response
 
 If a Mobile Application Instance Initialization Request is successfully validated, the Application Provider provides an HTTP Response with status code 204 (No Content).
 
-Below is a non-normative example of  a Mobile Application Instance Initialization Response.
+Below is a non-normative example of a Mobile Application Instance Initialization Response.
 
 .. code-block:: http
 
     HTTP/1.1 204 No content
 
-If any errors occur during the Mobile Application Instance registration, an error response MUST be returned.
+If any errors occur during the Mobile Application Instance initialization, an error response MUST be returned.
 
-Mobile Application Instance Error Response
-'''''''''''''''''''''''''''''''''''''''''''''
+Mobile Application Instance Initialization Error Response
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 The following errors apply to all Application Instance Management Initialization and MUST be supported for the error response, unless otherwise specified:
 

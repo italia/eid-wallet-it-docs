@@ -406,7 +406,7 @@ The following sections describe the registration, status retrieval and revocatio
 Wallet Instance Registration Request
 .............................................
 
-To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Application Instance Registration Request`.
+To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Application Instance Initialization Request`.
 
 .. warning::
   During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate the Wallet Instace with a specific User, authenticating the User with the Wallet Provider. The authentication mechanism is at the discretion of the Wallet Provider and it will not be addressed within these guidelines, as each Wallet Provider may have its User authentication systems already implemented.
@@ -414,7 +414,7 @@ To register a Wallet Instance, the request to the Wallet Provider MUST use the H
 Wallet Instance Registration Response
 .............................................
 
-If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Application Instance Registration Response`.
+If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Application Instance Initialization Response`.
 
 .. note::
 
@@ -524,7 +524,7 @@ The following errors apply to all Wallet Instance Management operations (Registr
 Request-Specific Error Responses
 '''''''''''''''''''''''''''''''''''''''
 
-The errors in :ref:`Mobile Application Instance Error Response` MUST be supported for error responses related to **Wallet Instance Registration**.
+The errors in :ref:`Mobile Application Instance Initialization Error Response` MUST be supported for error responses related to **Wallet Instance Registration**.
 
 The following errors MUST be supported for error responses related to **Wallet Instance Retrieval**:
 
