@@ -3,10 +3,10 @@ info:
   title: IT Wallet API - Wallet Provider web services
   version: 0.1.0
 servers:
-  - url: https://wallet-provider.example.org
-    description: Wallet Provider API
+  - url: https://pdnd.wallet-provider.example.org/api/v1.0
+    description: Wallet Provider API for PDND
 paths:
-  /v1.0.0/wallet-instances/:
+  /wallet-instances:
     patch:
       tags:
         - e-services PDND

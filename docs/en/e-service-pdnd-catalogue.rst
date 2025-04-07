@@ -105,6 +105,8 @@ Get Attribute Claims
     * - **Consumer**
       - PID/(Q)EAA Provider
 
+.. _wp-catalogue:
+
 Wallet Provider Catalogue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
