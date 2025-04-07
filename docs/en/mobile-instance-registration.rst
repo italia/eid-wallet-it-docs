@@ -51,7 +51,7 @@ Upon a successful request, the Application Provider Backend generates and return
   *Secure Enclave* has been available on Apple devices since the iPhone 5s (2013).
   For Android devices, the inclusion of **Strongbox Keymaster** may vary by manufacturer, who decides whether to include it or not.
 
-If any errors occur in any Key Attestation APIS process, such as device integrity verification, for example, due to unavailable Key Attestation APIs, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIS raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.
+If any errors occur in the Key Attestation API process, such as device integrity verification, for example, due to unavailable Key Attestation APIs, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIs raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.
  
 
 **Step 8**: The Key Attestation API performs the following actions:
