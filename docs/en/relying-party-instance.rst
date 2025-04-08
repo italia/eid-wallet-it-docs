@@ -170,7 +170,7 @@ Non-normative examples of the Nonce Request and Response can be found in the :re
     {
       "alg": "ES256",
       "kid": "hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
-      "typ": "ivr+jwt"
+      "typ": "rp-ivr+jwt"
     }
     .
     {
