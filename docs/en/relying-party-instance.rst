@@ -26,7 +26,7 @@ Further technical and operational details are discussed in the following section
 Mobile Relying Party Instance
 --------------------------------
 
-A Mobile Relying Party Instance's lifecycle includes four main states: **Installed**, **Operational**, **Verified**, and **Uninstalled**, supporting functionalities such as registration, access certificate reissuance, and revocation. 
+A Mobile Relying Party Instance's lifecycle includes four main states: **Installed**, **Operational**, **Verified**, and **Uninstalled**, supporting functionalities such as registration, access Certificate reissuance, and revocation. 
 
 Mobile Relying Party Instance Lifecycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,12 +68,12 @@ In addition, each Relying Party SHOULD set an amount of time (grace period) duri
 Transition to Verified
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party Instance needs to obtain a proper Access Certificate, which will be used to authenticate itself towards Wallet Instances. This certificate is obtained by interacting with the Relying Party Backend, which in turns communicates with the Relying Party Instance Access Certificate Authority. Specifically, the registration transition (**RPI REG**) consists of the following subphases, leading to the **Verified** state:
+The Relying Party Instance needs to obtain a proper Access Certificate, which will be used to authenticate itself towards Wallet Instances. This Certificate is obtained by interacting with the Relying Party Backend, which in turns communicates with the Relying Party Instance Access Certificate Authority. Specifically, the registration transition (**RPI REG**) consists of the following subphases, leading to the **Verified** state:
 
 1. **Initialization**: After verification of the Relying Party Instance integrity, it registers a pair of Hardware Cryptographic Keys.
 2. **Access Certificate Issuance**: The Relying Party Instance obtains an Access Certificate.
 
-In case the Access Certificate is expired, a new certificate can be issued to the Relying Party Instance; this operation is represented by the **CERT REISS** transition towards the **Verified** state.
+In case the Access Certificate is expired, a new Certificate can be issued to the Relying Party Instance; this operation is represented by the **CERT REISS** transition towards the **Verified** state.
 
 While in this state, the Relying Party Instance can request the presentation of Digital Credentials to Wallet Instances (**PID/(Q)EAA PRE**), using the Access Certificate to authenticate itself.
 
@@ -83,7 +83,7 @@ Transition to Operational
 
 The expiration of the Access Certificate (**CERT EXP** transition) leads to the **Operational** state.
 
-While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE***. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered.
+While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE***. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered.
 
 
 Transition to Uninstalled

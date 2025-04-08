@@ -11,7 +11,7 @@ In order to implement and provide technical solutions, a Relying Party could tak
 
 A Relying Party provides at least one of the following components:
    
-   - **Relying Party Backend**: It handles Relying Party Instances registration and the relative certificate management. It obtains X.509 Certificate according to the :ref:`The Infrastructure of Trust`. It SHOULD also provide a X.509 Certificate to its Relying Party Instances. It also may implement additional web services and business logic for its own purposes and use cases.
+   - **Relying Party Backend**: It handles Relying Party Instances registration and the relative Certificate management. It obtains X.509 Certificate according to the :ref:`The Infrastructure of Trust`. It SHOULD also provide a X.509 Certificate to its Relying Party Instances. It also may implement additional web services and business logic for its own purposes and use cases.
    - **Relying Party Instance**: It is a frontend provided to Users in order to access Relying Party Services, and it may be provided as:
       
       - **Web Client**.

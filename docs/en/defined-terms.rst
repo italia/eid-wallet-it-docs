@@ -132,6 +132,15 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Trust Relationship
      - Positive outcome of Trust Evaluation, which produces a reliable relationship between Organizational Entities, where one Organizational Entity trusts the other to securely handle data, execute transactions, or perform actions on its behalf.
      -
+   * - Access Certificate
+     - A Certificate for electronic seals or signatures authenticating and validating the (Wallet-) Relying Party, issued by a provider of wallet-relying party access Certificates.
+     - 
+   * - Registration Certificate
+     - A data object that indicates the attributes the Relying Party has registered to intend to request from Users.
+     -
+   * - Certificate Signing Request (CSR)
+     - Request sent to a Certificate Authority (CA) that contains the public key and identifying information of the entity requesting a digital certificate.
+     - 
    * - Metadata
      - Digital artifact that contains all the required information about an Organizational Entity, e.g., protocol related endpoints and the Organizational Entity’s cryptographic public keys (for the complete list check requirement "Metadata Content").
      -
@@ -142,7 +151,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - Process performed by a Registration Authority verifying necessary information to ensure Organizational Entity eligibility and compliance with the relevant rules and standards. The main goal of the Registration Process is for the Organizational Entity to receive one or more Trust Assertions to be used for the Trust Evaluation processes.
      -
    * - Accreditation Process
-     - Process performed by the National Accreditation Body to accreditate CABs. As a result of the Accreditation Process, a NAB issues an accreditation certificate to a CAB.
+     - Process performed by the National Accreditation Body to accreditate CABs. As a result of the Accreditation Process, a NAB issues an accreditation Certificate to a CAB.
      - 
    * - Certification Process
      - Process performed by Conformity Assessment Bodies to certify the Wallet Solution. The Certification Process aims to periodically assess technical Wallet Solutions (e.g. performing vulnerability assessment and risk analysis). As a result of the Certification Process a certification is provided to the Wallet Solution. 
@@ -215,7 +224,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - System defining how the participants of the ecosystem establish and maintain trust in their interactions. The Trust Model outlines the rules and the procedures for the entities (like users, systems, or applications) should validate each other's identities, authenticate, and establish the level of trust before exchanging information.
      -
    * - Level of Assurance
-     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.
+     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the Credential is the same User to whom the Digital Credential was issued.
      -
    * - Holder Key Binding
      - Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.
