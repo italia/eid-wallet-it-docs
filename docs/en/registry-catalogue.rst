@@ -18,12 +18,37 @@ In the case of Public Authentic Sources, the Catalogue provides information from
 
 The Catalogue lists the Issuers authorized to issue each Digital Credential.
 
-The Catalogue is published and maintained within the registry in JSON format. It is accessible for consultation by anyone at the following endpoint: “https://example.com”.
+Digital Credentials Catalogue Endpoint
+--------------------------------------
+The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [:rfc:`8615`] that provides public access to information related to the Credentials available in IT-Wallet.
+
+Digital Credentials Catalogue Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Digital Credentials Catalogue Request MUST be an HTTP GET using the application/json media type as in the following non-normative example.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalogue HTTP/1.1
+    Host: www.trust-registry.eudi-wallet.example.it
+    Content-Type: application/json
+
+
+Digital Credentials Catalogue Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Digital Credentials Catalogue Response MUST be a JSON structure containing the parameters listed in the :ref:` table of Digital Credentials Catalogue parameters <table_catalogue_parameters>`.
+
+
+A non-normative example of Digital Credentials Catalogue is provided below.
+
+.. literalinclude:: ../../examples/catalogue-example.json
+  :language: JSON
+
 
 Digital Credentials Catalogue parameters
 ----------------------------------------
 The catalogue contains the following parameters.
 
+.. _table_catalogue_parameters:
 .. list-table::
    :header-rows: 1
    :widths: 25 50 25
@@ -130,8 +155,3 @@ The catalogue contains the following parameters.
        - **schema_version**: Version number of the version of the credential schema
        - **user_attributes**: JSON Object containing the name of attributes of the Credential, including the name and description of every attribute in multiple languages. Nested attributes MUST be identified by their claim path using ``.`` as delimiter. 
      - IT-Wallet National Guidelines
-
-A non-normative example of Digital Credentials Catalogue is provided below.
-
-.. literalinclude:: ../../examples/catalogue-example.json
-  :language: JSON
