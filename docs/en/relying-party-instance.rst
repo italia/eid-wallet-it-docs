@@ -212,7 +212,7 @@ The Mobile Relying Party Instance sends the signed Integrity Validation Request 
   4. The Relying Party Instance has valid Cryptographic Hardware Keys registered.
   5. The ``client_data`` can be reconstructed using ``nonce`` and ``cnf`` (representing ``key_pub``). The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Relying Party Instance.
   6. The ``key_attestation`` can be validated according to the device manufacturer's guidelines. The specific checks performed by the Relying Party Backend are detailed in the operating system manufacturer's documentation.
-  7. The device in use is free of known security flaws and meet the minimum security requirements defined by the Relying Party.
+  7. The device in use is free of known security flaws and meets the minimum security requirements defined by the Relying Party.
   8. The URL in the ``iss`` parameter matches the Relying Party's URL identifier.
 
 **Step 13:** If the checks are successful, the :ref:`Relying Party Integrity Validation Endpoint` responds with a confirmation of success using status code ``204 No content``.
@@ -260,7 +260,7 @@ The Mobile Relying Party Instance sends the signed Integrity Validation Request 
 Mobile Relying Party Instance Access Certificate Reissuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The issuance of a new Access Certificate follows the same flow described in the :ref:`Mobile Relying Party Instance Registration` section for **Access Certificate Issuance**. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
+The issuance of a new Access Certificate follow the same flow described in the :ref:`Mobile Relying Party Instance Registration` section for **Access Certificate Issuance**. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
 
 
 Mobile Relying Party Instance Revocation

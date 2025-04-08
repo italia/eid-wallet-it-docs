@@ -25,7 +25,7 @@ Further details on the Nonce Request and Response are provided in the :ref:`Nonc
 Relying Party Instance Initialization Endpoint
 ---------------------------------------------------
 
-The Relying Party Instance Initialization Endpoint allows for the inizialization of Relying Party Instances, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys.
+The Relying Party Instance Initialization Endpoint allows for the initialization of Relying Party Instances, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys.
 
 Further details on the Relying Party Instance Initialization Request and Response are provided in the :ref:`Mobile Application Instance Registration Request` and :ref:`Mobile Application Instance Registration Response` sections, respectively.
 
