@@ -32,7 +32,7 @@ Relying Party Solution Requirements
 
 This section lists the requirements to be met by Relying Parties and Relying Party Solutions.
 
-- The Relying Party MUST register with the Federation Authority to obtain bot the Access Certificate and the Registration Certificate.
+- The Relying Party MUST register with the Federation Authority to obtain both the Access Certificate and the Registration Certificate.
 - The Relying Party MUST implement secure mechanisms for handling and processing received Digital Credentials, ensuring the integrity and confidentiality of the Relying Party Solution.
 - The Relying Party Solution MUST implement proper revocation procedures for compromised or decommissioned instances.
 - The Relying Party Solution MUST maintain an audit trail of Credential verifications while respecting privacy requirements and data protection regulations.
