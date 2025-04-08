@@ -7,20 +7,22 @@ Wallet Attestation Issuance
 This section describes how the Wallet Provider issues a Wallet Attestation.
 
 .. figure:: ../../images/wallet_instance_acquisition.svg
-   :name: Sequence Diagram for Wallet Attestation acquisition
-   :alt: The figure illustrates the sequence diagram for issuing a Wallet Attestation, with the steps explained below.
-   :target: https://www.plantuml.com/plantuml/uml/VLJ1Jjj04BtlLupWK8ZIIwNsWDGAH2bGgWe1BHSaQsmFzZJEhhixTff-VMTD4YV6pS4IoxvvyzxRcPm6GI_Dl3BOYBFDF2LlIiu9dfsJrFqnRse5SCOrMZ46Ct4U3du4yWU00PgW-2q473nYLP70jLLccr67mhg6NTHdQZaZHGaLdcK9z-HRNiDH0Xo6shCj2azaHplSUjUgK0yfPZEoULUQPZDZJ5JrzfDsFO4x-jrG442mj01NaqTXPq5Ab2VhzPOzQKkOJ5QyPo9QqA4casYOMnIA7en-Azhpah8PyBEMdVjbBQxmM9USmHNwV86Uu8QMOJ81LkuMkSAq8hD5S4asIecjBL1TqboF5Sne2JMoLzwlZpVQttZhXC2rvAE4gHg4ms_NbrSFbtSN5z_DYv1X9DerHWRkMOqIVA5yxHjj3YuLP0ii0UOacAEWqG2xJcObKlj4aQ92iZAosuAsuuX1wzS1UpVWB87mdE9W34eZUcL-zoAd7LOp5bCigPYi955jKc8eDLmCS7zrzkxzXwCDtnJg9gquItujPiVZJ7jUJ3bltUsJFdov-cyIkB0eZIUz-mZnT3HKCeL5bt-oAT9dJ0IBZG2KS0B5Ii5cwCz282_iNZCUcrZInyNhaWJNDIfdrDxhATxim8Ab_1_P5COzJtSVQ_faz-K73rYyrFIle48Z7-LT_txMDoFUpzizsNoFWTtfwnSZ7iSN8sxeu0SfxWPR5iQA_rBUBKIhV-Uc2MmBs6DEiEZWuqdrAzJlnSz8Z39OXH70-BECGyVRZoDZmjrCzzVga5ukNoSzMDDnn61VjyzQPaurXsPU_GC0
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0wqKBaXmA0ArgafRWL3K5hX4YcRNarqhc_5YpwQKNu-zAV4sc5vMiVtcuxrvaxCWw6NOT0e7SJniAlAgjOPWvPnKxfTwrKU0hMsFB4fXBSw3_XR8Qy00GuZu2GBq3-mw4hZX8CWrZIZiUtYE-aoFS2v24IJMCPpFRy8EYXBWAFJUSjDu8YvcdtktjOOyL5YlYSqOMjLhfLJgwFN7MF4KRkddG440WUa1N4z-LqnQb0Nx-6ez1K3OPPqsb8ZQBGgbtfMAdwUS5otLQx0hkF2FlRZ6Oz_Q6gxHcmVq18dOWk-nWMEjswVRvPeUbuADrYTW0-0MROTLHsgQ-OeuDPWQOg2-fKqyTX13eKVhKxxzxPYm7ogjP_3FjRVRM4Wfpqu8t9Py8Z6Byi3Hbvkhw_khsylBhsh7v51G6o093cu5qX9y8lDNDMG3hXAq35O2R4ZGeA0YDgdIdaoiawNNcbroWSw2ZcEAdn6PQSFAKsXpm0xpf4s-DJHDL1GmeklE4iiozRTiCRHwDCZTzVcRj--EzybcK9Jqf9ZqXNdFtNp1asa7sp3Au6C9-03fT5ngQGObXxoVtEPvvgPGmccHeKfFMR0KYjdGMfTO5Po_7zs3bRQKPmPbgZF8mYwuHEq_UeyAaTaLpCOl-thYiJjYymA1vuxBov2EvML8QttmzvNsmR8LYvtzJMPSWctyRTGGB3V52UQDo2x_dc9GA6jKU2oeNO8LzIyYotedlqx05vxAJfWiO5dcq3iETBYIqtECLMV4PjXqVm00
+
+    Sequence Diagram for Wallet Attestation acquisition
 
 **Step 1**: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.
 
 **Steps 2-3**: The Wallet Instance MUST:
 
   1. Verify the existence of Cryptographic Hardware Keys. If none exist, Wallet Instance re-initialization is required.
-  2. Generate an ephemeral asymmetric key pair for Wallet Attestation, linking the public key to the attestation.
+  2. Generate an ephemeral asymmetric key pair for Wallet Attestation (``ephemeral_key_pub``, ``ephemeral_key_priv``), linking the public key to the attestation.
   3. Verify the Wallet Provider's federation membership and retrieve its metadata.
 
 
-**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a one-time "challenge" from the `Nonce endpoint`_ of the Wallet Provider Backend. This "challenge" takes the form of a ``nonce``, which is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a ``nonce`` from the :ref:`Nonce endpoint` of the Wallet Provider Backend. This ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
 The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
 
 Below is a non-normative example of a Nonce Request.
@@ -28,7 +30,7 @@ Below is a non-normative example of a Nonce Request.
 .. code-block:: http
 
     GET /nonce HTTP/1.1
-    Host: walletprovider.example.com
+    Host: wallet-provider.example.com
 
 Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance. 
 Below is a non-normative example of a Nonce Response.
@@ -39,35 +41,35 @@ Below is a non-normative example of a Nonce Response.
     Content-Type: application/json
 
     {
-      "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
+      "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t"
     }
 
 **Step 7**: The Wallet Instance performs the following actions:
 
-  * Creates ``client_data``, a JSON object that includes the challenge and the thumbprint of ephemeral public ``jwk``.
-  * Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
+* Creates ``client_data``, a JSON object that includes the ``nonce`` and the thumbprint of ``ephemeral_key_pub`` JWK.
+* Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
 
 Below is a non-normative example of the ``client_data`` JSON object.
 
 .. code-block:: json
 
   {
-    "challenge": "0fe3cbe0-646d-44b5-8808-917dd5391bd9",
+    "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t",
     "jwk_thumbprint": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
   }
 
 **Steps 8-10**: The Wallet Instance:
 
-  *  produces an ``hardware_signature`` value by signing the ``client_data_hash`` with the Wallet Hardware's private key, serving as a proof of possession for the Cryptographic Hardware Keys.
-  *  requests the Device Integrity Service to create an ``integrity_assertion`` value linked to the ``client_data_hash``.
-  *  receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
+*  produces an ``hardware_signature`` value by signing the ``client_data_hash`` with the Wallet Hardware's private key, serving as a proof of possession for the Cryptographic Hardware Keys.
+*  requests the Key Attestation API to create an ``key_attestation`` value linked to the ``client_data_hash``.
+*  receives a signed ``key_attestation`` value from the Key Attestation API, authenticated by the OEM.
 
-.. note:: ``integrity_assertion`` is a custom payload generated by Device Integrity Service, signed by device OEM and encoded in base64 to have uniformity between different devices.
+.. note:: ``key_attestation`` is a custom payload generated by Key Attestation API, signed by device OEM and encoded in base64 to have uniformity between different devices.
 
 **Steps 11-12 (Wallet Attestation Issuance Request)**: The Wallet Instance:
 
-  * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``challenge``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
-  * Submits the Wallet Attestation Request to the `Wallet Attestation Issuance endpoint`_ of the Wallet Provider Backend.
+* Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``key_attestation``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
+* Submits the Wallet Attestation Request to the :ref:`Wallet Attestation Issuance endpoint` of the Wallet Provider Backend.
 
 Below is a non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
 
@@ -82,9 +84,9 @@ Below is a non-normative example of the Wallet Attestation Request JWT without e
   {
     "iss": "https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "sub": "https://wallet-provider.example.org/",
-    "challenge": "6ec69324-60a8-4e5b-a697-a766d85790ea",
+    "nonce": "6ec69324-60a8-4e5b-a697-a766d85790ea",
     "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...redacted",
-    "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYX...redacted",
+    "key_attestation": "o2NmbXRvYXBwbGUtYXBwYX...redacted",
     "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU=",
     "cnf": {
       "jwk": {
@@ -94,31 +96,12 @@ Below is a non-normative example of the Wallet Attestation Request JWT without e
         "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
       }
     },
-    "vp_formats_supported": {
-        "jwt_vc_json": {
-          "alg_values_supported": ["ES256K", "ES384"]
-        },
-        "jwt_vp_json": {
-          "alg_values_supported": ["ES256K", "EdDSA"]
-        },
-      },
-    },
-    authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
-    "response_types_supported": [
-      "vp_token"
-    ],
-    "response_modes_supported": [
-      "form_post.jwt"
-    ],
-    "request_object_signing_alg_values_supported": [
-      "ES256"
-    ],
     "iat": 1686645115,
     "exp": 1686652315
   }
 
 
-The Wallet Instance MUST send the signed Wallet Attestation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Wallet Provider's `Wallet Attestation Issuance endpoint`_.
+The Wallet Instance MUST send the signed Wallet Attestation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Wallet Provider's :ref:`Wallet Attestation Issuance endpoint`.
 
 Below is a non-normative example of a Wallet Attestation Issuance Request.
 
@@ -134,91 +117,43 @@ Below is a non-normative example of a Wallet Attestation Issuance Request.
 
 **Steps 13-17**: The Wallet Provider Backend evaluates the Wallet Attestation Request and MUST perform the following checks:
 
-    1. The request MUST include all required HTTP header parameters as defined in :ref:`Table of the Wallet Attestation Request Header <table_wallet_attestation_request_claim>`.
-    2. The signature of the Wallet Attestation Request MUST be valid and verifiable using the provided ``jwk``.
-    3. The ``challenge`` value MUST have been generated by the Wallet Provider and not previously used.
-    4. A valid and currently registered Wallet Instance associated with the provided MUST exist.
-    5. The ``client_data`` MUST be reconstructed using the ``challenge`` and the ``jwk`` public key.  The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Wallet Instance.
-    6. The ``integrity_assertion`` MUST be validated according to the device manufacturer's guidelines.  The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation.
-    7. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
-    8. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier.
+  1. The request MUST include all required HTTP header parameters as defined in :ref:`Wallet Attestation Issuance Request`.
+  2. The signature of the Wallet Attestation Request MUST be valid and verifiable using the provided ``jwk``.
+  3. The ``nonce`` value MUST have been generated by the Wallet Provider and not previously used.
+  4. A valid and currently registered Wallet Instance associated with the provided MUST exist.
+  5. The ``client_data`` MUST be reconstructed using the ``nonce`` and the ``jwk`` public key.  The ``hardware_signature`` parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Wallet Instance.
+  6. The ``key_attestation`` MUST be validated according to the device manufacturer's guidelines.  The specific checks performed by the Wallet Provider are detailed in the operating system manufacturer's documentation.
+  7. The device in use MUST be free of known security flaws and meet the minimum security requirements defined by the Wallet Provider.
+  8. The URL in the ``iss`` parameter MUST match the Wallet Provider's URL identifier.
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Attestation valid for a maximum of 24 hours.
 
-Below is a non-normative example of the Wallet Attestation without encoding and signature applied:
+**Step 18 (Wallet Attestation Issuance Response)**:  Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Attestations signed by the Wallet Provider. The Wallet provider MUST return the Wallet Attestation in at least three formats: JWT, SD-JWT and mdoc. The Wallet Instance will then perform security and integrity verification of the Wallet Attestations received in addition to trust verification of its Issuer.
 
-.. code-block::
 
-    {
-    "alg": "ES256",
-    "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
-    "trust_chain": [
-      "eyJhbGciOiJFUz...6S0A",
-      "eyJhbGciOiJFUz...jJLA",
-      "eyJhbGciOiJFUz...H9gw",
-    ],
-    "typ": "wallet-attestation+jwt",
-  }
-  .
-  {
-    "iss": "https://wallet-provider.example.org",
-    "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "aal": "https://trust-list.eu/aal/high",
-    "cnf":
-    {
-      "jwk":
-      {
-        "crv": "P-256",
-        "kty": "EC",
-        "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-      }
-    },
-    "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
-    "response_types_supported": [
-      "vp_token"
-    ],
-    "response_modes_supported": [
-      "form_post.jwt"
-    ],
-    "vp_formats_supported": {
-        "dc+sd-jwt": {
-            "sd-jwt_alg_values": [
-                "ES256",
-                "ES384"
-            ]
-        }
-    },
-    "request_object_signing_alg_values_supported": [
-      "ES256"
-    ],
-    "iat": 1687281195,
-    "exp": 1687288395
-  }
-
-**Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response, containing the Wallet Attestation signed by the Wallet Provider. The Wallet Instance will then perform security, integrity, and trust verification of the Wallet Attestation and its issuer.
-
-Below is a non-normative example of a Wallet Attestation Issuance Response.
+Below is a non-normative example of the response.
 
 .. code-block:: http
 
     HTTP/1.1 200 OK
-    Content-Type: application/jwt
+    Content-Type: application/json
 
-    eyJhbGciOiJFUzI1NiIsInR5cCI6IndhbGx ...
+    {
+      "wallet_attestations": [
+        {
+          "format": "jwt",
+          "wallet_attestation": "ey..."
+        },
+        {
+          "format": "dc+sd-jwt",
+          "wallet_attestation": "ey..."
+        },
+        {
+          "format": "mso_mdoc",
+          "wallet_attestation": "omppc3N1ZXJBdXRohEOhASahG...ArQwggKwMIICVqADAgEC"
+        }
+      ]
+    }
 
-
-.. _Wallet Attestation Request: wallet-attestation-issuance.html#format-of-the-wallet-attestation-request
-.. _RFC 7523 section 4: https://www.rfc-editor.org/rfc/rfc7523.html#section-4
-.. _RFC 8414 section 2: https://www.rfc-editor.org/rfc/rfc8414.html#section-2
-.. _Play Integrity API: https://developer.android.com/google/play/integrity?hl=it
-.. _DeviceCheck: https://developer.apple.com/documentation/devicecheck
-.. _OAuth 2.0 Nonce Endpoint: https://datatracker.ietf.org/doc/draft-demarco-oauth-nonce-endpoint/
-.. _ARF: https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework
-.. _Play Integrity API Errors: https://developer.android.com/google/play/integrity/error-codes
-.. _TEE Client API Errors: https://globalplatform.org/wp-content/uploads/2010/07/TEE_Client_API_Specification-V1.0.pdf
-.. _Nonce endpoint: wallet-solution.html#nonce-endpoint
-.. _Wallet Attestation Issuance endpoint: wallet-solution.html#wallet-attestation-issuance-endpoint
-.. _Wallet Instance Management endpoint: wallet-solution.html#wallet-instance-management-endpoint
 
 

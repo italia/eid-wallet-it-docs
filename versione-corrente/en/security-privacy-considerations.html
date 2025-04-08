@@ -344,7 +344,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 </tr>
 </tbody>
 </table>
-<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 7</span></a>):</p>
+<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 9</span></a>):</p>
 <ul class="simple">
 <li><p>Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a secure eIDAS scheme or a valid PID, providing the Access Token to the User.</p></li>
 <li><p>Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.</p></li>
@@ -365,7 +365,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 </tbody>
 </table>
 <p>A trusted Wallet Attestation ensures that the Wallet Instance is secure and meets the required security standards before any Credentials are issued or stored.
-In Steps 5-6 of <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 7</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
+In Steps 5-6 of <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 9</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
 signed with the Wallet's private key. This attestation confirms that the Wallet Instance is genuine and has been verified by the Wallet Provider.</p>
 <p>The Issuer verifies this attestation before allowing the Wallet to participate in the issuance process, ensuring that the Wallet adheres to specific security standards.
 Afterward, all cryptographic keys generated and used in the process come from this attested Wallet Instance.</p>
@@ -900,7 +900,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 07/04/2025.
+      Last updated on 08/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
