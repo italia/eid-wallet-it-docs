@@ -14,6 +14,9 @@ There are two primary types of Relying Party Instances, each serving different o
 - **Web Relying Party Instance**: a remote application operated by the Relying Party. A Web Relying Party Instance operates as a confidential client, meaning it can securely store confidential configurations (such as its private cryptographic keys) on a remote server. In this context, the Relying Party is unprovisioned and the presentation request and validation is automatically handled by software.
 
 .. note::
+  Mobile and Embedded Relying Party Instances acting as public client are not considered within this specifications.
+
+.. note::
   
   Unlike the Web Relying Party Instance, a Mobile and Embedded Relying Party Instance requires proper lifecycle management and special registration procedures managed through the Relying Party Backend.
 
