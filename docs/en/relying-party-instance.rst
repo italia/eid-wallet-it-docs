@@ -271,7 +271,6 @@ When security issues are detected, Relying Parties MUST revoke the Relying Party
 As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Access Certificates validity.
 
 Long-lived certificates MUST implement the standard revocation mechanisms as defined in :rfc:`5280`, including Certificate Revocation Lists (CRLs) and/or Online Certificate Status Protocol (OCSP).
-These revocation mechanisms are aligned with the trust model described in Section :ref:`The Infrastructure of Trust`, ensuring consistent and reliable certificate validation across the ecosystem.
 
 
 Web Relying Party Instance
