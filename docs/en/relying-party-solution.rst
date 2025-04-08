@@ -9,8 +9,7 @@ A Relying Party, as an organizational entity relying upon IT-Wallet, provides te
 
 In order to implement and provide technical solutions, a Relying Party could take advantage of services provided by an Intermediary Entity. A Relying Party Intermediary is an Organization Entity that may act on behalf of the Relying Party offering services to it, making the Relying Party able to connect to Wallet Instance and authenticate Users and verify User’s Digital Credentials. 
 
-- **Trust Anchor**: It represents the root of trust for the entire system and consents to Relying Parties to federate in the IT Wallet ecosystem. Trust Anchor has PKI capabilities and issues Registration Certificates during the Relying Party onboarding process. 
-- **Relying Party**: Organizational Entity that provides Relying Party Solutions with the aim of authenticating Users and/or verifying Digital Credentials presented by Users through their Wallet Instances. A Relying Party may provide:
+A Relying Party provides at least one of the following components:
    
    - **Relying Party Backend**: It handles Relying Party Instances registration and the relative certificate management. It obtains X.509 Certificate according to the :ref:`The Infrastructure of Trust`. It SHOULD also provide a X.509 Certificate to its Relying Party Instances. It also may implement additional web services and business logic for its own purposes and use cases.
    - **Relying Party Instance**: It is a frontend provided to Users in order to access Relying Party Services, and it may be provided as:
