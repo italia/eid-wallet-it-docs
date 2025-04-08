@@ -260,7 +260,7 @@ The Mobile Relying Party Instance sends the signed Integrity Validation Request 
 Mobile Relying Party Instance Access Certificate Reissuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The issuance of a new Access Certificate follow the same flow described in the :ref:`Mobile Relying Party Instance Registration` section for **Access Certificate Issuance**. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
+The issuance of a new Access Certificate follows the same flow described in the :ref:`Mobile Relying Party Instance Registration` section for **Access Certificate Issuance**. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.
 
 
 Mobile Relying Party Instance Revocation
