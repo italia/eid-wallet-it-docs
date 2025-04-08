@@ -18,37 +18,36 @@ In the case of Public Authentic Sources, the Catalogue provides information from
 
 The Catalogue lists the Issuers authorized to issue each Digital Credential.
 
-Digital Credentials Catalogue Endpoint
---------------------------------------
-The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [:rfc:`8615`] that provides public access to information related to the Credentials available in IT-Wallet.
-
-Digital Credentials Catalogue Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Digital Credentials Catalogue Request MUST be an HTTP GET using the application/json media type as in the following non-normative example.
-
-.. code-block:: http
-
-    GET /.well-known/credential-catalogue HTTP/1.1
-    Host: www.trust-registry.eudi-wallet.example.it
-    Content-Type: application/json
-
-
-Digital Credentials Catalogue Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Digital Credentials Catalogue Response MUST be a JSON structure containing the parameters listed in the :ref:` table of Digital Credentials Catalogue parameters <table_catalogue_parameters>`.
-
-
-A non-normative example of Digital Credentials Catalogue is provided below.
-
-.. literalinclude:: ../../examples/catalogue-example.json
-  :language: JSON
-
-
 Digital Credentials Catalogue parameters
 ----------------------------------------
-The catalogue contains the following parameters.
+Digital Credentials Catalogue contents is secured in a JWS that contains the following JOSE header parameters:
 
 .. _table_catalogue_parameters:
+.. list-table::
+   :header-rows: 1
+   :widths: 25 50 25
+
+   * - JOSE header
+     - Description
+     - Reference
+   * - **typ**
+     - REQUIRED. It MUST be set to ``JOSE``.
+     - [:rfc:`7515` Section 4.1.9].
+   * - **alg**
+     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
+     - [:rfc:`7515` Section 4.1.1].
+   * - **kid**
+     - REQUIRED. Unique identifier of the public key.
+     - [:rfc:`7515` Section 4.1.4].
+   * - **x5c**
+     - OPTIONAL. Contains the X.509 public key certificate or certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. 
+     - [:rfc:`7515` Section 4.1.6.].
+   * - **cty**
+     - REQUIRED. It MUST be set to ``application/json``.
+     - [:rfc:`7515` Section 4.1.6.].
+
+The JWS payload contains the following parameters:
+
 .. list-table::
    :header-rows: 1
    :widths: 25 50 25
@@ -56,6 +55,9 @@ The catalogue contains the following parameters.
    * - Claim
      - Description
      - Reference
+   * - **iss**
+     - REQUIRED. URL string representing the catalogue signer's unique identifier.
+     - IT-Wallet National Guidelines
    * - **credentials_catalogue_version**
      - REQUIRED. Version number of the catalogue.
      - IT-Wallet National Guidelines
@@ -155,3 +157,36 @@ The catalogue contains the following parameters.
        - **schema_version**: Version number of the version of the credential schema
        - **user_attributes**: JSON Object containing the name of attributes of the Credential, including the name and description of every attribute in multiple languages. Nested attributes MUST be identified by their claim path using ``.`` as delimiter. 
      - IT-Wallet National Guidelines
+
+
+Digital Credentials Catalogue Endpoint
+--------------------------------------
+The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [:rfc:`8615`] that provides public access to information related to the Credentials available in IT-Wallet.
+
+Digital Credentials Catalogue Request
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Digital Credentials Catalogue Request MUST be an HTTP GET using the application/jose media type as in the following non-normative example.
+
+.. code-block:: http
+
+    GET /.well-known/credential-catalogue HTTP/1.1
+    Host: www.trust-registry.eudi-wallet.example.it
+    Content-Type: application/jose
+
+
+Digital Credentials Catalogue Response
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Digital Credentials Catalogue Response MUST be a JWS that contains the parameters listed in the :ref:`table of Digital Credentials Catalogue parameters <table_catalogue_parameters>`.
+
+A non-normative example of the response is provided below.
+
+.. literalinclude:: ../../examples/catalogue-example-jws.txt
+  :language: text
+
+The corresponding example of Digital Credentials Catalogue as decoded JSON for both header and payload is the following: 
+
+.. literalinclude:: ../../examples/catalogue-example-header.json
+  :language: JSON
+
+.. literalinclude:: ../../examples/catalogue-example-payload.json
+  :language: JSON

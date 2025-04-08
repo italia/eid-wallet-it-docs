@@ -1,5 +1,6 @@
 {
    "credential_catalog_version": 1.0,
+   "iss": "https://trust-registry.eudi-wallet.example.it",
    "credentials_catalog": [
       {
          "version": 1.0,
@@ -10,7 +11,6 @@
          "is_qeaa": false,
          "is_eaa": true,
          "is_proof_of_identity": true,
-         "is_public_wallet_restricted": true,
          "wallet_solutions_restriction": {
             "is_public_restricted": "true",
             "providers_enabled": [
