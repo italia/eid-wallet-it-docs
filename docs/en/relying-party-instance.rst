@@ -15,7 +15,7 @@ There are two primary types of Relying Party Instances, each serving different o
 
 .. note::
   
-  Unlike the Web Relying Party Instance, a Mobile Relying Party Instance requires proper lifecycle management and special registration procedures managed through the Relying Party Backend.
+  Unlike the Web Relying Party Instance, a Mobile and Embedded Relying Party Instance requires proper lifecycle management and special registration procedures managed through the Relying Party Backend.
 
 Further technical and operational details are discussed in the following sections.
 
