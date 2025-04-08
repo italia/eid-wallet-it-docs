@@ -270,7 +270,7 @@ Relying Parties MUST periodically verify the Relying Party Instance's authentici
 When security issues are detected, Relying Parties MUST revoke the Relying Party Instance, revoking its X.509 Access Certificate (in case of long-lived certificates), and in any case, Relying Parties MUST NOT allow the re-issue of certificates. 
 As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Access Certificates validity.
 
-Long-lived certificates MUST implement the standard revocation mechanisms as defined in :rfc:`5280`, including Certificate Revocation Lists (CRLs) and/or Online Certificate Status Protocol (OCSP).
+Long-lived X.509 Certificates follows the requirements about their lifecycle, defined in :ref:`The Infrastructure of Trust`.
 
 
 Web Relying Party Instance
