@@ -277,7 +277,7 @@ These revocation mechanisms are aligned with the trust model described in Sectio
 Web Relying Party Instance
 --------------------------------
 
-As mentioned in the introduction, a Web Relying Party Instance differs from Mobile Relying Party in its security classification and operational model. While Web Instances operate as confidential clients with server-side security controls that can safely store secrets and cryptographic keys in a controlled environment, Mobile Instances function as public clients running on end-user devices where security guarantees are inherently limited. This fundamental difference necessitates distinct approaches to registration, lifecycle management, and trust establishment. Web Instances can be directly registered with the Trust Anchor or Intermediary Entities through federation endpoints, while Mobile Instances require device attestation, hardware-backed key verification, and Access Certificates issued by the Relying Party Backend to establish and maintain trust within the IT-Wallet ecosystem.
+Web Instances operates server-side security controls that safely store secrets and cryptographic keys in a controlled environment. Web Instances MUST be registered with the Trust Anchor or Intermediary Entities, according to :ref:`The Infrastructure of Trust`.
 
 
 Web Relying Party Instance Functionalities
