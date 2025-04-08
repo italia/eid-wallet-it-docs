@@ -31,7 +31,7 @@ Credential Issuers Solutions
 Credential Issuers are required to release their source code if they are providers for public administrations or if they are public administrations themselves. The requirements include:
 
 - **Public Administration Engagement**: Issuers working with public administrations MUST ensure their solutions are released with an open source license, in the way specified by the CAD art. 69 (and related guidelines).
-- **Catalog of Reuse**: Solutions created with or for public administration MUST be submitted to the public administration reuse catalog to promote widespread adoption and adaptation.
+- **Catalog of Reuse**: Solutions created with or for public administration MUST be submitted to the public administration software reuse catalog to promote widespread adoption and adaptation.
 
 Relying Parties Solutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -41,7 +41,7 @@ Relying Parties are subject to the same conditions as Credential Issuers regardi
 Responsible Disclosure
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (NIS2 <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555>_) also emphasizes vulnerability handling within cybersecurity risk management. Many member states have national responsible disclosure policies.
+In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (NIS2 <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555>_) also emphasizes vulnerability handling within cybersecurity risk management.
 
 ISO/IEC 29147:2018 (<https://www.iso.org/standard/72311.html>_) provides guidelines for vulnerability disclosure processes. Industry best practices, often seen in bug bounty platforms, clear reporting, response times, safe harbor, and coordinated disclosure.
 
