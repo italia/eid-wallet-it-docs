@@ -26,7 +26,7 @@ Further technical and operational details are discussed in the following section
 Mobile Relying Party Instance
 --------------------------------
 
-A Mobile Relying Party Instance's lifecycle includes four main states: **Installed**, **Operational**, **Verified**, and **Uninstalled**, supporting functionalities such as registration, access Certificate reissuance, and revocation. 
+A Mobile Relying Party Instance's lifecycle includes four main states: **Installed**, **Operational**, **Verified**, and **Uninstalled**, supporting functionalities such as registration, Access Certificate reissuance, and revocation. 
 
 Mobile Relying Party Instance Lifecycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
