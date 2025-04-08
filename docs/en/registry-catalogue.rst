@@ -7,7 +7,7 @@ Registry and Digital Credentials Catalogue
 The catalogue of attributes provides information regarding the formats and schemes of the Digital Credentials, the claims they contain, and details about Issuers and Authentic Sources. Furthermore, the catalogue includes additional information to facilitate the verification of the authenticity and reliability of its contents.
 The catalogue must be used by all technical solutions that operate within the IT-wallet system for the retrieval of information relating to the PID/(Q)EAA contained in the catalogue, in particular:
 
-  - Wallet Providers MUST access the catalogue to identify the Digital Credentials available within the Wallet ecosystem, and MUST use it to retrieved all necessary information for integrating the needed Digital Credentials into their own Wallet Solution.
+  - Wallet Providers MUST access the catalogue to identify the Digital Credentials available within the Wallet ecosystem, and MUST use it to retrieve all necessary information for integrating the needed Digital Credentials into their own Wallet Solution.
   - The Authentic Sources MUST participate in the processes of the registration and maintenance related to the informations necessary for the Issuance of the Digital Credentials.
   - Credential Issuers MUST consult the Catalogue for the Attributes provided by the Authentic Sources and that MUST be included in the Digital Credentials.
   - Relying Parties MUST use the catalogue to gather all the information needed about the Digital Credentials they intend to support during the presentation phase.
@@ -61,9 +61,6 @@ The catalogue contains the following parameters.
    * - **is_proof_of_identity**
      - REQUIRED only if ``is_pub`` is set to true. Boolean value set to ``true`` if the Digital Credential is an identification document pursuant to Presidential Decree No. 445 of December 28, 2000.
      - IT-Wallet National Guidelines
-   * - **is_public_wallet_restricted**
-     - REQUIRED. Boolean value set to ``true`` if the Digital Credential is enabled only for public wallet solutions.
-     - IT-Wallet National Guidelines
    * - **wallet_solutions_restriction**
      - REQUIRED. JSON Object containing restriction information about the wallets enabled to receive the Digital Credentials. It contains:
        
@@ -78,8 +75,8 @@ The catalogue contains the following parameters.
        
        - **iss**: URL string representing the Credential Issuer unique identifier.
        - **organization_name**: String representing the name of the administrative authority that has issued the credential.
-       - **organization_country**: String representing Alpha-2 country code, as specified in ISO 3166-1, of the country or territory of the credential issuer.
-       - **credential_formats**: Array containing Credential formats supported.
+       - **organization_country**: String representing Alpha-2 country code, as specified in ISO 3166-1, of the country or territory of the Credential Issuer.
+       - **credential_formats**: Array containing Credential formats supported as described in Appendix A of `OpenID4VCI`_.
        - **authentication_required**: REQUIRED. JSON Object containing information on the need to present the PID to obtain the Credential, it contains:
          
          - **is_required**: REQUIRED. Boolean value set to ``true`` if the PID is requested to obtain the Credential.
@@ -120,18 +117,18 @@ The catalogue contains the following parameters.
      - REQUIRED. Object containing the available Credential formats, it MUST contain:
        
        - **credential_configuration_id**: String representing a unique identifier of a Credential in a specific format. Its value MUST be mapped by the Credential Issuer in its ``credential_configurations_supported`` metadata claim.
-       - **format**: String representing the Credential Format Identifier as described in Appendix A of ``OpenID4VCI``.
+       - **format**: String representing the Credential Format Identifier as described in Appendix A of `OpenID4VCI`_.
        - **is_proximity_enabled**: Boolean set to ``true`` if proximity presentation is enabled.
        - **is_remote_enabled**: Boolean set to ``true`` if the remote presentation is enabled.
-       - **vct**: Credential type value MUST be an HTTPS **URL String** and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of RFC 7515. It MUST contain also the number of version of the Credential type (for instance: https://issuer.example.org/v1.0/personidentificationdata). As defined in Section 3.2.2.2 [SD-JWT-VC]
-       - **schema_uri**: URL of the Credential schema.
-       - **schema_uri#integrity**: the value MUST be an "integrity metadata" string.
+       - **vct**: HTTPS **URL String** representing the type of the Verifiable Credential as described in the :ref:`Table of the SD-JWT parameters <table_sd-jwt-vc_parameters>`.
+       - **schema_uri**: URL of the Credential schema. It MAY be a JSON schema if ``format`` is set to `dc+sd-jwt` or a CDDL schema if ``format`` is set to `mso_mdoc`.
+       - **schema_uri#integrity**: the value MUST be an integrity metadata string of the Credential schema document.
      - IT-Wallet National Guidelines
    * - **schema**
      - REQUIRED. JSON Object containing information about the credential schema. It MUST contain:
        
-       - **schema_version**: **Number** representing the version of the credential schema
-       - **user_attributes**: **Object** containing the attributes of the credential, including the name and description of every attribute
+       - **schema_version**: Version number of the version of the credential schema
+       - **user_attributes**: JSON Object containing the name of attributes of the Credential, including the name and description of every attribute in multiple languages. Nested attributes MUST be identified by their claim path using ``.`` as delimiter. 
      - IT-Wallet National Guidelines
 
 A non-normative example of Digital Credentials Catalogue is provided below.
