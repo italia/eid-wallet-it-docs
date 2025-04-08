@@ -36,9 +36,9 @@ Below are the description of acronyms and definitions which are useful for furth
      - Entity responsible for identifying citizens for the issuance of a digital identity.
      - 
    * - Digital Credential
-     - A signed set of Attributes encapsulated in a specific data format, such as mDoc-CBOR format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). 
+     - A signed set of Attributes encapsulated in a specific data format, such as mdoc-CBOR format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). 
      - | Revised from ARF v1.4.
-       | *Differences:* The definition from ARF restricts the data format to mDoc-CBOR and SD-JWT VC. A Digital Credential definition should be neutral on the format. 
+       | *Differences:* The definition from ARF restricts the data format to mdoc-CBOR and SD-JWT VC. A Digital Credential definition should be neutral on the format. 
        |
        | *Alternative terms:* Electronic Attestation, Attestation, Verifiable Credential, Digital Attestation.
    * - Organizational Entity
