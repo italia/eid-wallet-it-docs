@@ -83,7 +83,7 @@ Transition to Operational
 
 The expiration of the Access Certificate (**CERT EXP** transition) leads to the **Operational** state.
 
-While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances for a grace period. However, as the certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE***. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance will no longer be able to request presentations and will be de-registered.
+While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE***. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered.
 
 
 Transition to Uninstalled
