@@ -41,7 +41,7 @@ This section lists the requirements to be met by Relying Parties and Relying Par
 - The Relying Party Solution MUST maintain an audit trail of credential verifications while respecting privacy requirements and data protection regulations.
 - The Relying Party Solution MUST allow Selective Disclosure mechanisms during presentation scenarios.
 - The Relying Party Backend MUST provide a RESTful set of services for registering Relying Party Instances and issuing Access Certificates.
-- The Relying Party Instance MUST periodically reestablish trust with the Relying Party through integrity checks and certificate renewal procedures.
+- The Relying Party Instance MUST periodically reestablish trust with the Relying Party through integrity checks and Certificate renewal procedures.
 - The Relying Party Instance MUST provide both a Registration Certificate and Access Certificate to Wallet Instances during their interaction to prove the legitimacy and authorization of its requests.
 - The Relying Party Instance MUST communicate to Users which attributes are requested and for what purpose during any credential presentation flow.
 - The Mobile Relying Party Instances MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively.
