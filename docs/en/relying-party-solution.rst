@@ -38,7 +38,7 @@ This section lists the requirements to be met by Relying Parties and Relying Par
 - The Relying Party MUST register with the Federation Authority to obtain a Registration Certificate that explicitly authorizes which credential types and specific attributes may be requested.
 - The Relying Party MUST implement secure mechanisms for handling and processing received Digital Credentials, ensuring the integrity and confidentiality of the Relying Party Solution.
 - The Relying Party Solution MUST implement proper revocation procedures for compromised or decommissioned instances.
-- The Relying Party Solution MUST maintain an audit trail of credential verifications while respecting privacy requirements and data protection regulations.
+- The Relying Party Solution MUST maintain an audit trail of Credential verifications while respecting privacy requirements and data protection regulations.
 - The Relying Party Solution MUST allow Selective Disclosure mechanisms during presentation scenarios.
 - The Relying Party Backend MUST provide a RESTful set of services for registering Relying Party Instances and issuing Access Certificates.
 - The Relying Party Instance MUST periodically reestablish trust with the Relying Party through integrity checks and Certificate renewal procedures.
