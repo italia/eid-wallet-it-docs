@@ -57,7 +57,7 @@ The Integrity Validation Request includes the following HTTP header parameters:
       - Unique identifier of the JWK used by the Relying Party Instance to sign the Integrity Validation Request.
       - [:rfc:`7515`]
     * - **typ**
-      - It MUST be set to ``ivr+jwt``
+      - It MUST be set to ``rp-ivr+jwt``
       -
 
 The Integrity Validation Request includes the following body parameters:
