@@ -38,6 +38,7 @@ Index of content
    defined-terms.rst
    trust.rst
    wallet-solution.rst
+   issuer-solution.rst
    relying-party-solution.rst
    pid-eaa-data-model.rst
    pid-eaa-issuance.rst

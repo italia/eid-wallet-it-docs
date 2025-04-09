@@ -16,14 +16,6 @@ The relevant entities and interfaces involved in the issuance flow are:
     - *(Q)EAA Provider*.
 
 
-PID/(Q)EAA Providers are composed of:
-
-  - Credential Issuer Component: based on the "OpenID for Verifiable Credential Issuance" specification [`OpenID4VCI`_] to release the PID/(Q)EAA.
-  - Relying Party Component: The component to authenticate the User. PID Providers authenticate users with the national Digital Identity Providers, based on OpenID Connect Core 1.0 or SAML2 while (Q)EAA Providers authenticate users with the PID. 
-
-The (Q)EAA Provider acts as a Verifier by sending a presentation request to the Wallet Instance, according to [`OpenID4VP`_]. The Wallet Instance MUST have a valid PID, obtained in a previous time, to get authenticated with the (Q)EAA Provider.
-
-
 High-Level PID flow
 -------------------
 
@@ -143,7 +135,7 @@ The following diagram shows the *Issuance flow*.
 .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/hLPVQ-D647_VJp7a7Xg3JKhfqy6LSnBtOdeaRiv7NWfYinfBG-HTTVzOvtxwxevih-npQ4CB8P9s_lz-CxF-wBoqFgmR8OCtEgoVqGhHnZDIr4hjuUAhGti1qa4Gujbywmz-SE3MKQkjZSOBUFUPgjfVDm6FRQ-jwGxcybZs99i6FSoryr8hP9rEe2uXHZd9OJ6_lRhyVJIRJc5XpORAdKyImchZ4Sm6BNHZYfdCFzqjFptEPlVYfaRr0cTiWHma_s1Mu6k4Np4UIaz6WupnpRENf86yWpLwMKelKruSIOWE9hz01-z1MPGUOV7RpGoKAH5Y3hGYjEpaQJwTBCnYfqzHVp5zX4VyCw3pSFc71b0DeVO5bUFqPNlH2D97Hxw6XsdmzUI6jIPJxwCq9_cQC0K5qbpN7SfOs12YSm3rHFmRS7O6ZYejVR2uLzbvE4cH0Tp8XahoMnWWA0WcZE4U4zSQxH0kTn0KmT8Oy5jB5br1UXHDEZO9yZsakesblpXE1ZI32GCt8n4aMzAR3OLiFDnOBAEKP0CVFgHMEW9p7E3TqzryEHF19TfZWAIiE4BFeURtQ8xps-aNYCQfHKfmgiOrEiP9fUfrJCMqlNApZMSHKkL9Ln1utfAMbygxKKOI6uSdAVQTFdfhch6o_vYABlUy1WcdO6UAqw2C8NL9V91p1uAwDndbAQnGeuq2k4sD_uBRLsMjDMOrd4rO6NjsFNZpWXfYIQqXxSLWXfTHadk7eHluvgckhDI-yDiMUQnZxlcbsA-8tSINP55nl_7O_wzJBuXXo4aVu9HAeNC5LvcQVcNHrVjFVd3wnoEOCRWtMk41WxlbSW6BXozBkD99aEFk5JED1MkClj-XFNpnhpNEeNDazB7wYNx6_5KELHwB0v6vXZmqPyWSuiEe3odEVWlY5zxuPXYmK4Qlg0hzrkJDmiRVxnHo83UI6ldS88WCtL0duvSZkF5kawXzY26e6OwyVcCPF431WKfBVASUehfqBunYkjVt2q240-Bz0NWJxOr5Rh6SIGxBuXDHRfcSxFdE6SWlJqeR0svGyyKu86dA9FMzBSvTSTUVlyx48rRaV3oLJNEI-SHY8psM84Z7yjSSZe68NWxnhonkp2wnV8TbfevAornnRJ_z-7CKmutHFa6QrtLc__vXcJlW7-XlK9Q5fpMEmLkfdLG7xWVbXp69POrmylDg37B5E6YGQnCqN-_96RWMLNydFM_X48CRfgjHWxTKLMXPdY3aFk5jRBtZWrLZEf2L97ry7toC_yAw-Hi0
+    :target: https://www.plantuml.com/plantuml/svg/hLPVQ-D647_VJp7a7Xg3J4hfqy6LSnBt4deaRiv7NWfYlHhBG-HTTVzOvtxwxevih-npQ4CB8P9s_lz-CxF-wBoqFgmR8OCtEgmNQ8LeunafQgNsSF7LeRq0wI08iJ3V-eCV7BXrr6fNHkC5lFjCzSfVDm6FRQ-jwGxcybZsB9i6FTnhvwLMo3gTG5r1Z7AIm-p-zkhozz5qCe6PDHkgTZv92AkDHp0RjD0L53Ev_tGt__GqdJw8cnMg5pXZ2-GW-GUp1Bz2-1NZeVHaDCWOtooy90ta7QpHoqfwcVBYI49qCFu5EdWFogBq2BFVRgQWJ8KGSw0beMKdpvFnpCnswXJLPvCdUC8_0peFbtze0DKGQbzILQGlsuj6a3uwyYjud0I_6j-mrdZYVPJc75yJfg10cikwGndh6Y9q3f-UXt-3pSx0KQsb3nPtAdiF9oaoVXlPK4L-2mC01S6O8TnZubgZ7SBb3e8oM2e0lxLaqPMaHz6aOvCWtqEgsrZwY-DaG3EOC70p4a6o9RtPKCZ6mut5Aaf9Dl3XG-ga8p2B0E-Ux-xdKn5SOZq6ICggZy0SQdwFvdX_E_a2qJXrI0LEhN2DZd5IgNeTKp5jhzniurc4L7dIDGGUjwJbfV9kb974nk59YdsZZzwQPgpiFwQYgpslGS8fs9dYD2S5f2w93tBkG53t9gCyX3Lgj540jwdnNt3xggornYm7embBOyyk1szUK4Eig3MalHYCy3nASkimSjbrFzIrbTgNVjiYJtLCFR-K-mMn6_YAB2fkDvxw_tNe1J4AXwGpcb8fTAxaAbFFBoswrVwJ7vp-yGHc31wCLdZ0u6u-dy7iySiShdGIxEDcnSnYoHgZxpTe3r_yQurpw1mPVQn-efynVvL3bQVYG6Ik8S_C6JA7-33gGugptvBuXVUz6GOibT5BgaE_D7cniF7tAuKSo8saHYuQ196X6-fa_784L-mMYTg768AQuSZRDvR1ynCSgBJ3T-eXgaltmYYcMtq__o8S4EyFm9jeRonoY-LCSbWMduXoo-HaptVEG7vvKbe1k47TtukPf0cJrFUsE7V3NN_-EXLFM9FpyLGspKdcOukDz5Y181tBNtCu1Y9wESI_ihWnkyJo5PQPEYejSyMr_VJZpr4CDqRx16dUrfdzXyTvxe1_eBz1MPMUrbY0jr8xgGxS3yeF1ObvBFJanrK1SiauQ91h4pJVxiaPk1PLVoKjjd28mGtJhL37M5JNQ5dE4AO-uMLilUE3PMCwaBKaVNmTV8p_mhhv6m00
   
     PID/(Q)EAA Issuance - Detailed flow
 
@@ -165,7 +157,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   * creates a fresh PKCE code verifier, Wallet Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request*.
   * provides to the PID/(Q)EAA Provider PAR endpoint the parameters previously listed above, using the ``request`` parameter (hereafter Request Object) according to :rfc:`9126` Section 3 to prevent Request URI swapping attack. The Pushed Authorization Request enables client authentication prior to any user interaction. This step allows for the early rejection of illegitimate requests, effectively preventing spoofing attacks, tampering, and improper use of authorization requests.
   * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`.
-  * signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation ``cnf`` claim.
+  * signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation ``cnf.jwk`` claim.
   * MUST use the ``OAuth-Client-Attestation`` and  ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint.
   * specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and or scope parameter.
 
@@ -282,7 +274,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 **Steps 8-9 (DPoP Proof for Token Endpoint)**: The Wallet Instance MUST create a new key pair for the DPoP and a fresh DPoP Proof JWT following the instruction provided in  the Section 4 of (:rfc:`9449`) for the token request to the PID/(Q)EAA Provider. The DPoP Proof JWT is signed using the private key for DPoP created by Wallet Instance for this scope. DPoP binds the Access Token, and optionally the Refresh Token, to a certain Wallet Instance (:rfc:`9449`) and mitigates the misuse of leaked or stolen tokens at the Credential Endpoint.
 
 **Step 10 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT* and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP``). 
-The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wallet Instance. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
+The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wallet Instance. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf.jwk`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
 
    1. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
    2. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
@@ -559,7 +551,7 @@ To mitigate the risks of Refresh Token compromise, the following protections are
   - **Limiting the use of Refresh Token**: As specified in `OPENID4VC-HAIP`_: “Credential Issuers should be mindful of how long the usage of the refresh token is allowed to refresh a Credential, as opposed to starting the issuance flow from the beginning. For example, if the User is trying to refresh a Credential more than a year after its original issuance, the usage of the refresh tokens is NOT RECOMMENDED.” In this specification a new Digital Credential obtained performing the re-issuance flow SHOULD have the same expiration of the refreshed one. Thus, this specification does not allow for infinite refresh of Digital Credential with a Refresh Token. Once a Digital Credential expires, the User MUST complete the entire issuance process again, to obtain a new Digital Credential. This specification recommends to set a Refresh Token expiration duration, based on the sensitivity of the associated grant.
 
 .. note::
-	*Short-lived Wallet Attestations and DPoP*:  Following the specification draft *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), the Authorization Server MUST bind the Refresh Token to the Client Instance. To prove this binding the Client Instance MUST use the Client Attestation mechanism when refreshing the Access Token and the Client Instance MUST use the same key that was presented in the ``cnf`` claim of the Client Attestation that was used when the Refresh Token was issued. However this requires that all issued Client Attestations MUST be bound to the same key, thus opening to unlinkability issues. In this specification, both `OAUTH-ATTESTATION-CLIENT-AUTH`_ and *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) MUST be used. Using DPoP guarantees the binding of the Refresh Token with the Client Instance as stated in section 5 of :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"*. DPoP ensures that the Refresh Token is bound to the Wallet Instance.
+	*Short-lived Wallet Attestations and DPoP*:  Following the specification draft *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), the Authorization Server MUST bind the Refresh Token to the Client Instance. To prove this binding the Client Instance MUST use the Client Attestation mechanism when refreshing the Access Token and the Client Instance MUST use the same key that was presented in the ``cnf.jwk`` claim of the Client Attestation that was used when the Refresh Token was issued. However this requires that all issued Client Attestations MUST be bound to the same key, thus opening to unlinkability issues. In this specification, both `OAUTH-ATTESTATION-CLIENT-AUTH`_ and *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) MUST be used. Using DPoP guarantees the binding of the Refresh Token with the Client Instance as stated in section 5 of :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"*. DPoP ensures that the Refresh Token is bound to the Wallet Instance.
 
 
 Re-Issuance Flow
@@ -648,7 +640,7 @@ The Credential Offer made by PID/(Q)EAA Issuer consists of a single URI query pa
     - It MUST contain ``authorization_code`` object with the following parameters:
 
         - **issuer_state**: REQUIRED. Opaque string created by the PID/(Q)EAA Issuer used to bind the subsequent Authorization Request with the PID/(Q)EAA Issuer. The Wallet MUST include it in the subsequent Authorization Request.
-        - **authorization_server**: CONDITIONAL. String identifying the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the PID/(Q)EAA Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or has no multiple entries.
+        - **authorization_server**: REQUIRED when the PID/(Q)EAA Issuer uses more than one authorization server in its Issuer Solution. String identifying the Authorization Server to use. The value MUST match with one of the values mapped in the ``authorization_servers`` array of the PID/(Q)EAA Issuer metadata. It MUST NOT be used if ``authorization_servers`` is absent or it has no multiple entries.
     - Section 4.1.1 of [`OpenID4VCI`_].
 
 
@@ -1046,19 +1038,19 @@ The token request contains the following claims:
       - REQUIRED. It MUST be set to ``authorization_code`` or ``refresh_token``.
       - [:rfc:`6749`].
     * - **code**
-      - CONDITIONAL. REQUIRED only if the grant type is ``authorization_code``. Authorization code returned in the Authentication Response.
+      -  REQUIRED only if the grant type is ``authorization_code``. Authorization code returned in the Authentication Response. It MUST NOT be present if grant type is ``refresh_token``.
       - [:rfc:`6749`].
     * - **redirect_uri**
-      - CONDITIONAL. REQUIRED only if the grant type is ``authorization_code``. It MUST be set as in the Request Object :ref:`Table of the JWT Request parameters <table_jwt_request>`.
+      - REQUIRED only if the grant type is ``authorization_code``. It MUST be set as in the Request Object :ref:`Table of the JWT Request parameters <table_jwt_request>`. It MUST NOT be present if grant type is ``refresh_token``.
       - [:rfc:`67491`].
     * - **code_verifier**
-      - CONDITIONAL. REQUIRED only if the grant type is ``authorization_code``. Verification code of the **code_challenge**.
-      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_.
+      - REQUIRED only if the grant type is ``authorization_code``. Verification code of the **code_challenge**.
+      - `Proof Key for Code Exchange by OAuth Public Clients <https://datatracker.ietf.org/doc/html/rfc7636>`_. It MUST NOT be present if grant type is ``refresh_token``.
     * - **refresh_token**
-      - CONDITIONAL. REQUIRED only if the grant type is ``refresh_token``. The Refresh Token previously issued to the Wallet Instance.
+      - REQUIRED only if the grant type is ``refresh_token``. The Refresh Token previously issued to the Wallet Instance. It MUST NOT be present if grant type is ``authorization_code``.
       - [:rfc:`6749`].
     * - **scope**
-      - CONDITIONAL. OPTIONAL only if the grant type is ``refresh_token``. The requested scope MUST NOT include any scope not originally granted by the User, and if omitted is treated as equal to the scope originally granted by the User.
+      - OPTIONAL only if the grant type is ``refresh_token``. The requested scope MUST NOT include any scope not originally granted by the User, and if omitted is treated as equal to the scope originally granted by the User. It MUST NOT be present if grant type is ``authorization_code``.
       - [:rfc:`6749`].
 
 
@@ -1377,7 +1369,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
   * - **transaction_id**
-    - CONDITIONAL. REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction.
+    - REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction. It MUST NOT be present in immediate flow
     - Section 9.1 of [`OpenID4VCI`_].
 
 
@@ -1437,18 +1429,18 @@ The Credential Response contains the following parameters:
     - **Description**
     - **Reference**
   * - **credentials**
-    - CONDITIONAL. REQUIRED if ``lead_time`` and ``transaction_id`` are not present. It contains the following parameters:
+    - REQUIRED if ``lead_time`` and ``transaction_id`` are not present, otherwise it MUST NOT be present. It contains the following parameters:
 
           - **credential**: REQUIRED. String containing one issued PID/(Q)EAA. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO 18013-5]. This structure SHOULD contain all Namespaces and IssuerSignedItems that are included in the AuthorizedNamespaces of the MobileSecurityObject.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
   * - **lead_time**
-    - CONDITIONAL. REQUIRED if ``credentials`` is not present. The amount of time (in seconds) required before making a Deferred Credential Request.
+    - REQUIRED if ``credentials`` is not present, otherwise it MUST NOT be present. The amount of time (in seconds) required before making a Deferred Credential Request.
     - This Specification.
   * - **notification_id**
     - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`Notification Request`. It MUST NOT be present if the ``credentials`` parameter is not present.
     - Section 8.3 of [`OpenID4VCI`_].
   * - **transaction_id**
-    - CONDITIONAL. REQUIRED if ``credentials`` is not present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Endpoint`. It MUST be invalidated after the User obtains the Credential.
+    - REQUIRED if ``credentials`` is not present, otherwise it MUST NOT be present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`Deferred Endpoint`. It MUST be invalidated after the User obtains the Credential.
     - Section 8.3 of [`OpenID4VCI`_].
 
 In case of the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
@@ -1678,4 +1670,4 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The PID/(Q)EAA Issuer cannot fulfill the request within the defined time interval.
 
 
-.. include::    pid-eaa-entity-configuration.rst
+
