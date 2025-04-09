@@ -42,7 +42,7 @@ The Logo is the official graphic element that ensures immediate recognition of t
 
 The following requirements apply to its use in both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.): 
 
-- The Logo MUST be used exclusively to represent the IT-Wallet System and MUST NOT be used to identify a specific IT-Wallet Solution; 
+- The Logo MUST be used exclusively to represent the IT-Wallet System and MUST NOT be used to identify a specific Wallet Solution; 
 
 - The Logo MUST be used exactly as provided in the official resources and MUST comply with the usage specifications outlined in the supporting recommendations; 
 
@@ -104,7 +104,7 @@ Authentication Button
 =====================
 
 The Authentication Button is a type of Engagement Button. 
-Verifiers MUST make the Authentication Button available within the digital Interface of their Technical Solutions to allow the User to log into their services through its IT-Wallet Instance. Official graphic resources defining the visual appearance of the Authentication Button along with the associated recommendations for its proper implementation are available on the website `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
+Verifiers MUST make the Authentication Button available within the digital Interface of their Technical Solutions to allow the User to log into their services through its Wallet Instance. Official graphic resources defining the visual appearance of the Authentication Button along with the associated recommendations for its proper implementation are available on the website `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
 
 The Authentication Button has the following requirements:
 
