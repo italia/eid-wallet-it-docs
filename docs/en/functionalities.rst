@@ -17,7 +17,7 @@ Each section includes references to the supporting resources and recommendations
 Activation of the Wallet Instance 
 **********************************
 
-Activation is the essential step to enable the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity, which enables the generation of the PID. 
+Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity, which enables the generation of the PID. 
 
 Below are the functional requirements to support the User Experience related to the Activation of the Wallet Instance: 
 
@@ -34,7 +34,7 @@ The User MUST always have the option to request the deactivation of their Wallet
 
 In case of errors, the User MUST receive consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section. 
 
-For further details and resources, please refer to www.wallet.gov.it. 
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
 
 Issuance of Electronic Attestations of Attributes 
 **************************************************
@@ -77,13 +77,13 @@ The Electronic Attestations obtained within the Wallet Instance SHOULD be displa
 
 - The Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes; 
 - The name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View; 
-- The Electronic Attestation, in the Preview View, MUST display its validity status and MAY also include additional attributes to enhance the user experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider; 
+- The Electronic Attestation, in the Preview View, MUST display its validity status and MAY also include additional attributes to enhance the User experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider; 
 - The layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen; 
 - The Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout; 
 - The Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
 - The Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section. 
 
-For further details and resources, please refer to www.wallet.gov.it. 
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
 
 Presentation of Electronic Attestations
 ****************************************
@@ -117,7 +117,7 @@ Below are the functional requirements supporting the User Experience for both me
 
 If an error occurs, the User MUST receive clear and consistent messages informing them of the issue and guiding them toward resolution. For further details, please refer to the `Error Management`_ section. 
 
-For further details and resources, please refer to www.wallet.gov.it.  
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_.  
 
 **Unsupervised Mode** 
 
@@ -230,7 +230,7 @@ To ensure the principles of visibility and transparency, the User MUST be able t
 - The User MUST see which Relying Party they have interacted with and which Electronic Attestations have been presented and verified; 
 - The User MUST be able to easily request the Relying Party to delete their information related to previous presentations. 
 
-For further details and resources, please refer to www.wallet.gov.it. 
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
  
 Backup and Restore of Electronic Attestation of Attributes 
 ===========================================================
@@ -240,7 +240,7 @@ With the aim of ensuring the principle of data portability, the User MUST have a
 - Request the backup and storage of Electronic Attestations of Attributes obtained through their Wallet Instance; 
 - Request the restore of their Electronic Attestations of Attributes on another Wallet Instance. 
 
-For further details and resources, please refer to www.wallet.gov.it. 
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
 
 Deactivation of the Wallet Instance 
 ************************************
