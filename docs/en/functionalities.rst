@@ -205,7 +205,8 @@ Each Electronic Attestation can be either valid or invalid, with corresponding i
 
 - **Invalid**: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the User MUST be informed of the invalid status and SHOULD receive the reason. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Solution MAY implement mechanisms to restrict access to the Detailed View of that Electronic Attestation. This is intended to encourage the User to update or delete the Electronic Attestation by providing appropriate informational text and a Call to Action. 
 
-*Revocation of Electronic Attestations* 
+Revocation of Electronic Attestations
+................................................................
 
 Revocation is the procedure that turns an Electronic Attestation from a valid state to an invalid state. Revocation can occur in either an active or passive mode: 
 
@@ -297,7 +298,8 @@ Below are the requirements and main best practices for error management, specifi
 
 Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience. 
 
-**Activation of the Wallet Instance**
+Activation of the Wallet Instance
+*******************************************************
 
 .. list-table::
    :header-rows: 1
