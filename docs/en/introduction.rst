@@ -42,7 +42,6 @@ This documentation defines the national implementation profile of the IT-Wallet 
  - Wallet Attestation; 
  - Issuance of PID/EAA according to `OpenID4VCI`_; 
  - Presentation of PID/EAA according to `OpenID4VP`_;
- - Presentation of pseudonyms according to `SIOPv2`_;
  - PID/EAA backup and restore mechanisms;
  - PID/EAA revocation lists. 
 

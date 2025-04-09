@@ -32,13 +32,13 @@ The IT-Wallet System has its own Visual Identity. All actors within the ecosyste
 
 - The IT-Wallet System Visual Identity MUST NOT be used to represent any Technical Solution within the System or any other solution. 
 
-Official graphic resources defining the IT-Wallet System Visual Identity, along with the associated recommendations for its application across various components, are available on the website www.wallet.gov.it. The following sections detail the key requirements.
+Official graphic resources defining the IT-Wallet System Visual Identity, along with the associated recommendations for its application across various components, are available on the website `www.wallet.gov.it <https://www.wallet.gov.it>`_. The following sections detail the key requirements.
 
 
 Logo
 ====
 
-The logo is the official graphic element that ensures immediate recognition of the IT-Wallet System and promotes its reliability. 
+The Logo is the official graphic element that ensures immediate recognition of the IT-Wallet System and promotes its reliability. 
 
 The following requirements apply to its use in both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.): 
 
@@ -56,7 +56,7 @@ The following requirements apply to its use in both physical and digital context
 
 - The Logo MAY be displayed alongside other actors’ logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the supporting recommendations. 
 
-For further details and resources, please refer to www.wallet.gov.it. 
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
 
 
 Trust Mark
@@ -81,7 +81,7 @@ The following requirements apply to its use in both physical and digital context
 
 - The Trust Mark MAY be displayed alongside other actors’ logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the supporting recommendations. 
 
-For further details and resources, please refer to www.wallet.gov.it. 
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
 
 
 Components
@@ -102,7 +102,7 @@ Authentication Button
 =====================
 
 The Authentication Button is a type of Engagement Button. 
-Verifiers MUST make the Authentication Button available within the digital Interface of their Technical Solutions to allow the User to log into their services through its IT-Wallet Instance. Official graphic resources defining the visual appearance of the Authentication Button along with the associated recommendations for its proper implementation are available on the website www.wallet.gov.it. 
+Verifiers MUST make the Authentication Button available within the digital Interface of their Technical Solutions to allow the User to log into their services through its IT-Wallet Instance. Official graphic resources defining the visual appearance of the Authentication Button along with the associated recommendations for its proper implementation are available on the website `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
 
 The following are general requirements: 
 
@@ -114,4 +114,4 @@ The following are general requirements:
 
 - The Authentication Button MUST be responsive to all screen resolutions and MUST meet minimum usability and accessibility requirements. 
 
-For further details and resources, please refer to www.wallet.gov.it. 
+For further details and resources, please refer to `www.wallet.gov.it <https://www.wallet.gov.it>`_. 
