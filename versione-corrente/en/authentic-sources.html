@@ -1919,7 +1919,7 @@ associated.</p></td>
 <tbody>
 <tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
 <td><p>This service revokes all Digital Credentials associated with a specific
-User</p></td>
+User.</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
@@ -1939,7 +1939,7 @@ User</p></td>
 </colgroup>
 <tbody>
 <tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
-<td><p>This service returns statistical data on issued Digital Credentials</p></td>
+<td><p>This service returns statistical data on issued Digital Credentials.</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
@@ -1974,6 +1974,35 @@ User</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="wallet-provider-catalogue">
+<span id="wp-catalogue"></span><h3>Wallet Provider Catalogue<a class="headerlink" href="#wallet-provider-catalogue" title="Link to this heading">¶</a></h3>
+<p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
+A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
+</div>
+<section id="notify-user-death">
+<h4>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>Wallet Provider</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>PID Provider</p></td>
 </tr>
 </tbody>
 </table>
@@ -2058,6 +2087,10 @@ User</p></td>
 </li>
 <li><a class="reference internal" href="#authentic-source-catalogue">Authentic Source Catalogue</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">Get Attribute Claims</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wallet-provider-catalogue">Wallet Provider Catalogue</a><ul>
+<li><a class="reference internal" href="#notify-user-death">Notify User Death</a></li>
 </ul>
 </li>
 </ul>
