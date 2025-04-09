@@ -26,7 +26,7 @@ Further technical and operational details are discussed in the following section
 Mobile Relying Party Instance
 --------------------------------
 
-A Mobile Relying Party Instance's lifecycle includes four main states: **Installed**, **Operational**, **Verified**, and **Uninstalled**, supporting functionalities such as registration, Access Certificate reissuance, and revocation. 
+A Mobile Relying Party Instance's lifecycle includes four main states: **Installed**, **Unverified**, **Verified**, and **Uninstalled**, supporting functionalities such as registration, Access Certificate reissuance, and revocation. 
 
 Mobile Relying Party Instance Lifecycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,11 +38,11 @@ In this section, state machines are presented to explain the Mobile Relying Part
 .. figure:: ../../images/RelyingParty_Instance_Mobile_Lifecycle.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/XP5VIyCm5CNVyoaksuiEncRPHCeecowJlioQRaCG7-fowmBf7z8KcP_Uj8R-4NHzQNBpk-SSxbqMEbAwJ2Gv2Ow0IQxFmB4uAf5haQM4640Z-AdvIuaSXflDQZwTslhWW4h40la0eW8OHlmCGyUvktSSIppbgA9AAf8mZCtNzEvJqQgkRsVpsPoGrz4RZ7dscOwzrjG55lZWRyCTQMeDPMLQRh_zJIhnST86hVFzG8m-alfwKSTI4cFTosHb3XPevHV7J6RAVPSbUe6_dbmzNzFL2W965vFwoUixTqVamWDbEw0l0UbKBsNiisNUPgdL6FN3iC_qJV-9F6eoT_l_cCQQLcFjxdLi8BDIur28BtHl76yngKuUMMBAoqH-0m00
-
+    :target: https://www.plantuml.com/plantuml/svg/XP5TQy8m58RlyoiEUhC9ObTqZ295jyRH6-bIbS7OHMTEPo3ze4qttAzVx48Z7M9lsfuylE_3oQ9MIQMQJ9A3u0YObUe87Ejz9KebYfmG3IY4CDTlAP73SBLQpXp7p0Sxh4Gga0yWgO5XmeymTDs7HzSrn3R_CWWCK_quJdSWR6XmFvrDPuIyZTvXp8llVEpRJWzO54AuZZUactMKZJ7STjqdA_5vK1fjzVuWHfz9-tirnr0IK_NVYT6T0MpyV5_8el8-P8D-50QJcvTRkbn2nEXyqXxvlMQx8G-UADi0VOs87LurF4URqegqMOo6SNoEz0elsuuwNSjVsaD0JmkrWXhKaBvCNL2B7_JkN7y-ENtvP84vRpBv2m00
+    
     Lifecycle of the Mobile Relying Party Instance
 
-As shown in :numref:`fig_RelyingParty_Instance_Mobile_Lifecycle`, the Mobile Relying Party Instance has four distinct states: **Installed**, **Operational**, **Verified**, and **Uninstalled**. Each state represents a specific functional status and determines the actions that can be performed.
+As shown in :numref:`fig_RelyingParty_Instance_Mobile_Lifecycle`, the Mobile Relying Party Instance has four distinct states: **Installed**, **Unverified**, **Verified**, and **Uninstalled**. Each state represents a specific functional status and determines the actions that can be performed.
 
 Transition to Installed
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -51,7 +51,7 @@ The state machine begins with the Relying Party Instance installation (**RPI INS
 
 While in this state, the Relying Party Instance MUST interact only with the Relying Party Backend to be registered (i.e., to verify the Instance integrity, register Hardware Cryptographic Keys and obtain an Access Certificate).
 
-When the revocation of the Relying Party Instance occurs (**RPI REV** transition), the Relying Party Instance MUST get back from **Operational** to **Installed**. This transition implies the following operations:
+When the revocation of the Relying Party Instance occurs (**RPI REV** transition), the Relying Party Instance MUST get back from **Unverified** to **Installed**. This transition implies the following operations:
 
 1. The Access Certificate MUST be revoked.
 2. The Hardware Cryptographic Keys MUST be deleted.
@@ -78,17 +78,17 @@ In case the Access Certificate is expired, a new Certificate can be issued to th
 While in this state, the Relying Party Instance can request the presentation of Digital Credentials to Wallet Instances (**PID/(Q)EAA PRE**), using the Access Certificate to authenticate itself.
 
 
-Transition to Operational
+Transition to Unverified
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The expiration of the Access Certificate (**CERT EXP** transition) leads to the **Operational** state.
+The expiration of the Access Certificate (**CERT EXP** transition) leads to the **Unverified** state.
 
 While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE***. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered.
 
 
 Transition to Uninstalled
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Across the **Installed**, **Verified** and **Operational** states, the Relying Party Instance can be removed entirely through the Relying Party Instance uninstall (**RPI UNINST**) transition, leading to the **Uninstalled** state. If a Relying Party Instance is **Uninstalled**, it ends its lifecycle.
+Across the **Installed**, **Verified** and **Unverified** states, the Relying Party Instance can be removed entirely through the Relying Party Instance uninstall (**RPI UNINST**) transition, leading to the **Uninstalled** state. If a Relying Party Instance is **Uninstalled**, it ends its lifecycle.
 
 
 Mobile Relying Party Instance Functionalities
