@@ -133,7 +133,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - Positive outcome of Trust Evaluation, which produces a reliable relationship between Organizational Entities, where one Organizational Entity trusts the other to securely handle data, execute transactions, or perform actions on its behalf.
      -
    * - Access Certificate
-     - A Certificate for electronic seals or signatures authenticating and validating the (Wallet-) Relying Party, issued by a provider of wallet-relying party access Certificates.
+     - A Certificate for electronic seals or signatures authenticating and validating the (Wallet-) Relying Party, issued by a provider of wallet-relying party Access Certificates.
      - 
    * - Registration Certificate
      - A data object that indicates the attributes the Relying Party has registered to intend to request from Users.
