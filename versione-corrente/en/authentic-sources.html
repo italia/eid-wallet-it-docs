@@ -361,12 +361,12 @@
 <figure class="align-center" id="id123" style="width: 100%">
 <span id="fig-voucherissuance-eservice-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TT5HRzCm40VmTt-AK_QoHLH2a-1X3sXHkcf52AAbm6FakRV6Ik8pvtDPz-cnGxSYjBr4iMF_xd-Nwo2Q9KwZ4YiZmW-AfaU6TGXHEuEm05oqo7jhK2aTXLoSxf6LkgT7ACkQN8WJSbd2sNfFV500FedMMA-TG56MtweeFTIZHITbMO0EKAyKkYqaujbfbb-NsQYU8kDRHduGsoSjbXpaLCX7iMfF8dc15J5KtvVhJNTtqswwzvSAKjN5ftfrrJ0c7U7ppmtyjearDFaH9tIY-G1RBHhEYsB3sWpMxMxsTelEO55Sg1DIfpjH4DhRwlB3H-Xrw84UuBLh6Riz_t__8davibBF8gDEuBAX1WOyWDUMGQUUF1CzpAUgzkhb1ztXhuX1CcxcqNPsMnJlu6MfGq3EWtfzjvE3nx-VTgoT7DUfHtOa2BH7Xgg5iozsrqjZtP2Rxz4C8SUU3obLjOiv_2bLyEG2vbZQ60oX4nhmc26__biO7xrb39rrkV1rOkCq_W40"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id123" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id123" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Steps 1-2 (Preparation of Tracked Data):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>) containing the tracked data that have to be sent to the Provider. Finally, it computes the SHA-256 hash of <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-trackingevidence-header">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-header" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
@@ -376,7 +376,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-trackingevidence-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-trackingevidence-payload" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
     <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
@@ -403,7 +403,7 @@
 </div>
 <p><strong>Step 4 (Voucher Request)</strong>: The Consumer creates a Voucher Request and sends it to the PDND Authorization Server.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/authorization-server/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 <span class="na">DPoP</span><span class="o">:</span> <span class="l">eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6IjM5ZmE5NjBiLTc3M2YtNDllZi04YTBlLWU3NzNlOWI5N2FlOCIsImNydiI6IlAtMjU2IiwieCI6Imh1eVhJUU52OTAyb0xzcFg0X3pvbkM5NEc2eUVsbjZsc2RtLTF3TTczMm8iLCJ5IjoiSTlQREVhd1dIcWFGREd4MVprTmstMlBWNldkcGNhSDNBZk9iQlNMaWhndyJ9fQ.eyJqdGkiOiI1NTBlODQwMC1lMjliLTQxZDQtYTcxNi00NDY2NTU0NDAwMDAiLCJodG0iOiJQT1NUIiwiaHR1IjoiaHR0cHM6Ly9pbnRlcm9wLnBhZ29wYS5pdC9hdXRob3JpemF0aW9uLXNlcnZlciIsImlhdCI6MTc2MjI2MDYxNn0.D0ZUDkfGHx_rQBdYi_3VSXkdbJM-7FSWN88LWICQImMWtIWd2mbxGb7v8udfM_c4_ase8x7I3I1JZm01Us3QEA</span>
@@ -417,7 +417,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-clientassertion-header">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-header" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
@@ -427,7 +427,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-clientassertion-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-clientassertion-payload" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
@@ -497,7 +497,7 @@
 </div>
 <p><strong>Step 6 (Voucher Issuance)</strong>: In case of successful checks, the PDND Authorization Server issues a Voucher, which is included in the Voucher Response to the Consumer.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 14 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -511,7 +511,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-accesstoken-header">
-<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 15 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-header" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec&quot;</span><span class="p">,</span>
@@ -521,7 +521,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-eservice-flow-accesstoken-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 16 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-eservice-flow-accesstoken-payload" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://interop.pagopa.it&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;82914b3f-60b2-4529-b4d6-3d4e67f0a933&quot;</span><span class="p">,</span>
@@ -567,12 +567,12 @@
 <figure class="align-center" id="id124" style="width: 100%">
 <span id="fig-voucherissuance-interoperabilityapi-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TP51ozf048Rl-ok6UD7GqFOg4WmH8L3Qq41FXR36mIp6tNHcLjHVtrqDwk7xBY4px_Ay3xjh5atYJuCI8mF27-Ux7WagPgzjXv11PGN9ZKXwPmOZLoZgIYdjnLb_sY4fjNCNIDAq3YJJcL5RITE_TiNcXillt_9vwIpxKw0wMdsDs_mjhScTpHvfCKK9pAgpewi265_0oFzLUEcX70p6WWGqGxbLQFSG11uMGMBpSvEcC2jkdl0pHlmuCZSjnbbeaCv84x5eNiHoc-L5itnUoc_yvv45vadItIrQiq-IB_0SDJDIP7wyRUKwuYCwK12QveLIP9qWkA0H163smnnwgOqzAe2on-x8KUf-IAcYoRAyt2vVLZmwonYrTDSXSolkY9D3_7qlnije2BarDXQl0pOy_dy0"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id124" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id124" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Voucher Request)</strong>: The Participant creates a Voucher Request and sends it to the PDND Authorization Server.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">Non-normative example of the Voucher Request</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/authorization-server/token</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
@@ -585,7 +585,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-clientassertion-header">
-<div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-header" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;9a4d8e3f-8b7d-4c98-926f-2745c6b1f832&quot;</span><span class="p">,</span>
@@ -595,7 +595,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-clientassertion-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_assertion</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-clientassertion-payload" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
@@ -639,7 +639,7 @@
 </div></blockquote>
 <p><strong>Step 2 (Voucher Issuance)</strong>: In case of successful checks, the PDND Authorization Server issues a Voucher, which is included in the Voucher Response to the Participant.</p>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">Non-normative example of the Voucher Response</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -653,7 +653,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-accesstoken-header">
-<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> JOSE header</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-header" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;b839f4c7-1e5d-4a8a-9fc6-72d3b7f091ec&quot;</span><span class="p">,</span>
@@ -663,7 +663,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-interoperabilityapi-flow-accesstoken-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 14 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> payload</span><a class="headerlink" href="#code-voucherissuance-interoperabilityapi-flow-accesstoken-payload" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://interop.pagopa.it&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;5a3c7f28-91b9-4c4e-89a9-6e2f85d9262b&quot;</span><span class="p">,</span>
@@ -955,7 +955,7 @@
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-voucherissuance-endpoint-authorizationserver-error">
-<div class="code-block-caption"><span class="caption-number">Listing 15 </span><span class="caption-text">Non-normative example of a Voucher Error Response</span><a class="headerlink" href="#code-voucherissuance-endpoint-authorizationserver-error" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">Non-normative example of a Voucher Error Response</span><a class="headerlink" href="#code-voucherissuance-endpoint-authorizationserver-error" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
@@ -1025,12 +1025,12 @@
 <figure class="align-center" id="id125" style="width: 100%">
 <span id="fig-keyretrieval-pdnd-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/PS_1IWCn58NXVPxYK7U1-01Tb1Pc8GWgcSMiq_Q8eMbIRsvc79_UgOWAtHxuF-xTLWsYxPoCHat48sTugaIE8S7XfNlgZ0bDIsxdFSMOVVc0jTVTMjpjFflG09T5YOTu2LcnilP-OahkbCkKhLqXL0o6-OWb_XMaZF58kIeF9NFkEDr2pxkcR_2ifSc1w2aZvOVq_P_fUxSPrl1yRwoAroBVf-F4kHepEBVn_VhVj5tAvUil"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id125" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id125" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Keys Request)</strong>: The Provider requests for the keys used by the PDND to sign Vouchers.</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-pdnd-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 16 </span><span class="caption-text">Non-normative example of the Keys Request</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">Non-normative example of the Keys Request</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/jwks.json</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 </pre></div>
@@ -1038,7 +1038,7 @@
 </div>
 <p><strong>Step 2 (Keys Response)</strong>: The .well-known Endpoint returns the list of keys used by the PDND to sign Vouchers, as a <code class="docutils literal notranslate"><span class="pre">JWK</span> <span class="pre">Set</span></code> [<span class="target" id="index-61"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-pdnd-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 17 </span><span class="caption-text">Non-normative example of the Keys Response</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">Non-normative example of the Keys Response</span><a class="headerlink" href="#code-keyretrieval-pdnd-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1082,7 +1082,7 @@
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-endpoint-wellknown-error">
-<div class="code-block-caption"><span class="caption-number">Listing 18 </span><span class="caption-text">Non-normative example of a Keys Error Response</span><a class="headerlink" href="#code-keyretrieval-endpoint-wellknown-error" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 26 </span><span class="caption-text">Non-normative example of a Keys Error Response</span><a class="headerlink" href="#code-keyretrieval-endpoint-wellknown-error" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1138,12 +1138,12 @@
 <figure class="align-center" id="id126" style="width: 100%">
 <span id="fig-keyretrieval-participant-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/fSp1IlGm5CNnVPxYa6_nGQ0lC8jXIbkm25fcxIPjx-XbqYGcDsfzUYk85Low_f_pEsMnIShYbB0umYsjE9CafXVhK67OAayShPUib2qIV5b6IagDuGt63ErTQmp-rUybaGBYleSsflT2AKHATcJ7ig8UUcCqR4QloC_Ob6zgltwADy7JsjBhR_I-BlA4nZ5v-SAQRjUQhZhsXpCz5yg2IqZu8V_FY6LqFE5AwuEVGagKO_0p-qT8G8uqyMNBMbzvrbf1zTMnwGv_CKxavxAu3m00"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id126" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id126" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Key Request)</strong>: The Participant requests for the key used by another Participant, corresponding to a specific <code class="docutils literal notranslate"><span class="pre">kid</span></code>, to the PDND Interoperability API.</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-participant-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 19 </span><span class="caption-text">Non-normative example of the Key Request</span><a class="headerlink" href="#code-keyretrieval-participant-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 27 </span><span class="caption-text">Non-normative example of the Key Request</span><a class="headerlink" href="#code-keyretrieval-participant-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/keys/c7e3d6a4-5b99-4298-9b84-d8f3a61279f1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">interop.pagopa.it</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjVhM2M3ZjI4LTkxYjktNGM0ZS04OWE5LTZlMmY4NWQ5MjYyYiIsImF1ZCI6Imh0dHBzOi8vaW50ZXJvcC5wYWdvcGEuaXQvYXBpL3YxIiwiZXhwIjoxNzMzMjM2NjgwLCJuYmYiOjE3MzMyMzMxNTgsImlhdCI6MTczMzIzMzA4MCwianRpIjoiZjg3ZTJkNWItOWY2NS00ZjBmLThhZDQtOTJlNThlNmIxM2M3IiwiY2xpZW50X2lkIjoiNWEzYzdmMjgtOTFiOS00YzRlLTg5YTktNmUyZjg1ZDkyNjJiIn0.SKDDap16Ubi6gYwpKVdBcuhmhF_XnGiHeoxkF8F4IAualYORu_TxnDZqeP_RCcBAxSRkJTFbMihPCLA7DoRQOw</span>
@@ -1152,7 +1152,7 @@
 </div>
 <p><strong>Step 2 (Key Response)</strong>: The Interoperability API Endpoint returns the requested key, as a <code class="docutils literal notranslate"><span class="pre">JWK</span></code> [<span class="target" id="index-63"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>].</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-participant-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 20 </span><span class="caption-text">Non-normative example of the Key Response</span><a class="headerlink" href="#code-keyretrieval-participant-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 28 </span><span class="caption-text">Non-normative example of the Key Response</span><a class="headerlink" href="#code-keyretrieval-participant-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1208,7 +1208,7 @@
 <p>If any errors occur during the retrieval of the key, the Interoperability API Endpoint MUST return an error response, whose structure depends on the nature of the error.</p>
 <p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-66"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-endpoint-interoperabilityapi-error-401">
-<div class="code-block-caption"><span class="caption-number">Listing 21 </span><span class="caption-text">Non-normative example of a Key Error Response in case of 401 errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-401" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 29 </span><span class="caption-text">Non-normative example of a Key Error Response in case of 401 errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-401" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
 <span class="na">WWW-Authenticate</span><span class="o">:</span> <span class="l">Bearer error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
 </pre></div>
@@ -1222,7 +1222,7 @@
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-keyretrieval-endpoint-interoperabilityapi-error-others">
-<div class="code-block-caption"><span class="caption-number">Listing 22 </span><span class="caption-text">Non-normative example of a Key Error Response in case of other errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-others" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 30 </span><span class="caption-text">Non-normative example of a Key Error Response in case of other errors</span><a class="headerlink" href="#code-keyretrieval-endpoint-interoperabilityapi-error-others" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -1299,12 +1299,12 @@
 <figure class="align-center" id="id127" style="width: 100%">
 <span id="fig-usage-flow"></span><a class="reference external image-reference" href="https////www.plantuml.com/plantuml/svg/ZP1HRzCm4CVV_IbEtWjOgeHut0DQbQmmX5YLTF1OUSwHM4ryuNpkw3uzph8LAZJK5ykMx_-xd_vNKInB6debNde4NDJ8U-yGxg9jKIcRX48Qxf6LkgTVO4n18QO1sHYukDaJ7nJ0c27U-T460MtCxJ991qNlCOWn6co4OgKmD90HBvnr-RMS6Cl7nFWQOpg8_QCLJm4cD-HduhB-XyYqzyrizea27afyU0rSOQJ43a-PrL_COhNuKAmkrumPWF3v-mOUV4v6tmOhYH7UQ5s_FBH-Uun0mMW5eLpJ6aOc-Z5_LVKbb5PiNlupOPIPzusIwwPwEL0EKRR97d3nnRUTV6J4e02A3jqEj9wGMa-IJzFdXQnp6EDMQ8VX94oZm6te3xE8rikxycQphQxhpVRT-pm9y3_ydmKRjcxdGtizrHySFaMFQ_BbFCzZcIUILRsOMtrk3Hjeh5XrbKVIqFy6"><img alt="_images/Low-Level-Flow-AuthenticSource-Usage.svg" src="_images/Low-Level-Flow-AuthenticSource-Usage.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id127" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id127" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Signature Preparation):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) containing the signed headers of the message, to ensure integrity.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-signature-header">
-<div class="code-block-caption"><span class="caption-number">Listing 23 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> header</span><a class="headerlink" href="#code-usage-flow-signature-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 31 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> header</span><a class="headerlink" href="#code-usage-flow-signature-header" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;d4c3b2a1-9876-5432-10fe-dcba98765432&quot;</span><span class="p">,</span>
@@ -1314,7 +1314,7 @@
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-signature-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 24 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> payload</span><a class="headerlink" href="#code-usage-flow-signature-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 32 </span><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">Signature</span></code> payload</span><a class="headerlink" href="#code-usage-flow-signature-payload" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
     <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
@@ -1342,7 +1342,7 @@
 </div>
 <p><strong>Step 3 (e-Service Request):</strong> The Consumer sends an e-Service Request to the Provider, including the Voucher.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-request">
-<div class="code-block-caption"><span class="caption-number">Listing 25 </span><span class="caption-text">Non-normative example of the e-Service Request</span><a class="headerlink" href="#code-usage-flow-request" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 33 </span><span class="caption-text">Non-normative example of the e-Service Request</span><a class="headerlink" href="#code-usage-flow-request" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/ente-example/v1/hello/echo/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">erogatore.example</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">DPoP eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsInN1YiI6IjgyOTE0YjNmLTYwYjItNDUyOS1iNGQ2LTNkNGU2N2YwYTkzMyIsImF1ZCI6Imh0dHBzOi8vZXJvZ2F0b3JlLmV4YW1wbGUvZW50ZS1leGFtcGxlL3YxIiwiZXhwIjoxNzMzMDQyMTUwLCJuYmYiOjE3MzMwNDE5NDUsImlhdCI6MTczMzA0MTkyMCwianRpIjoiYzRmNWQ3ZTItYjdjOC00MGY2LTliNmEtZGM5YTRmNWFlYjU3IiwiY2xpZW50X2lkIjoiODI5MTRiM2YtNjBiMi00NTI5LWI0ZDYtM2Q0ZTY3ZjBhOTMzIiwicHVycG9zZUlkIjoiZDJiOWE2NTMtYzQ5Ny00NWM2LWI4ZjEtNWJkZjEyNGM5ZDNhIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiOTkwOGQ5NGI4ZmViMjY4YzAzNzEwNmQ3Yzg5ZTcwNjBjMmNjMWY2YjJiNGViY2I4MDViZmVlNTNhNTM5MzA3YiJ9LCJjbmYiOnsiamt0IjoiMFpjT0NPUlpOWXktRFdwcXEzMGpaeUpHSFROMGQySGdsQlYzdWlndUE0SSJ9fQ.sGhaHEOfMTB7r4_8ZILM_a9eTBGawWn3kL-dxYoZggFIzyrXDOZcQWt0zr00lMk2iYAMWxS32e4cUedmAsBXGw</span>
@@ -1453,7 +1453,7 @@
 <p>If any of the previous checks fail, the Provider MUST reject the Request.</p>
 <p><strong>Step 4 (e-Service Response):</strong> Upon successful checks, the Provider provides the Consumer with the requested data.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-response">
-<div class="code-block-caption"><span class="caption-number">Listing 26 </span><span class="caption-text">Non-normative example of the e-Service Response</span><a class="headerlink" href="#code-usage-flow-response" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 34 </span><span class="caption-text">Non-normative example of the e-Service Response</span><a class="headerlink" href="#code-usage-flow-response" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jwt</span>
 
@@ -1462,7 +1462,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-response-jwt-header">
-<div class="code-block-caption"><span class="caption-number">Listing 27 </span><span class="caption-text">Non-normative example of the e-Service Response JWT header</span><a class="headerlink" href="#code-usage-flow-response-jwt-header" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 35 </span><span class="caption-text">Non-normative example of the e-Service Response JWT header</span><a class="headerlink" href="#code-usage-flow-response-jwt-header" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
     <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;2802a69-1604-4261-9246-21453e20658e&quot;</span><span class="p">,</span>
@@ -1472,7 +1472,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="code-usage-flow-response-jwt-payload">
-<div class="code-block-caption"><span class="caption-number">Listing 28 </span><span class="caption-text">Non-normative example of the e-Service Response JWT payload</span><a class="headerlink" href="#code-usage-flow-response-jwt-payload" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 36 </span><span class="caption-text">Non-normative example of the e-Service Response JWT payload</span><a class="headerlink" href="#code-usage-flow-response-jwt-payload" title="Link to this code">¶</a></div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://erogatore.example/ente-example/v1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv&quot;</span><span class="p">,</span>
@@ -1785,7 +1785,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <p>If any errors occur during the validation of the e-Service Request, the e-Service Endpoint MUST return an error response, whose structure depends on the nature of the error.</p>
 <p>In case of authentication issues (i.e., invalid or expired Voucher), the response MUST adhere to the error format defined in <span class="target" id="index-107"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3"><strong>RFC 6750#section-3</strong></a> and <span class="target" id="index-108"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1"><strong>RFC 9449#section-7.1</strong></a>, with specific reference to the use of the <code class="docutils literal notranslate"><span class="pre">WWW-Authenticate</span></code> header parameter.</p>
 <div class="literal-block-wrapper docutils container" id="code-usage-endpoint-eservice-error-401">
-<div class="code-block-caption"><span class="caption-number">Listing 29 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of 401 errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error-401" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 37 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of 401 errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error-401" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
 <span class="na">WWW-Authenticate</span><span class="o">:</span> <span class="l">DPoP error=&quot;invalid_token&quot;, error_description=&quot;The access token expired&quot;</span>
 </pre></div>
@@ -1799,7 +1799,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="code-usage-endpoint-eservice-error">
-<div class="code-block-caption"><span class="caption-number">Listing 30 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of other errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error" title="Link to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 38 </span><span class="caption-text">Non-normative example of an e-Service Error Response in case of other errors</span><a class="headerlink" href="#code-usage-endpoint-eservice-error" title="Link to this code">¶</a></div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
