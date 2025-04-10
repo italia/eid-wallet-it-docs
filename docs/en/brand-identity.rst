@@ -44,19 +44,19 @@ The following requirements apply to its use in both physical and digital context
 
 - The Logo MUST be used exclusively to represent the IT-Wallet System and MUST NOT be used to identify a specific Wallet Solution; 
 
-- The Logo MUST be used exactly as provided in the official resources and MUST comply with the usage specifications outlined in the supporting recommendations; 
+- The Logo MUST be used exactly as provided in the official resources and MUST comply with the usage specifications outlined in the Official Resources; 
 
 - The Logo MUST be in the ``application/svg+xml`` data format;
 
 - The Logo MUST NOT be altered, distorted, modified, or replaced by unofficial logos; 
 
-- The Logo MUST maintain the minimum clear space as defined in the supporting recommendations to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space; 
+- The Logo MUST maintain the minimum clear space as defined in the Official Resources to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space; 
 
-- The Logo MUST NOT be resized below the minimum dimensions specified in the supporting recommendations to maintain legibility across formats and devices; 
+- The Logo MUST NOT be resized below the minimum dimensions specified in the Official Resources to maintain legibility across formats and devices; 
 
-- The Logo MUST NOT be placed on backgrounds that compromise its visibility or legibility. Adequate contrast between the Logo and the background MUST be ensured, in line with the supporting recommendations; 
+- The Logo MUST NOT be placed on backgrounds that compromise its visibility or legibility. Adequate contrast between the Logo and the background MUST be ensured, in line with the Official Resources; 
 
-- The Logo MAY be displayed alongside other actors’ logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the supporting recommendations. 
+- The Logo MAY be displayed alongside other actors’ logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the Official Resources. 
 
 
 Trust Mark
@@ -69,17 +69,17 @@ The following requirements apply to its use in both physical and digital context
 
 - The Trust Mark MUST only be displayed by Technical Solutions that have successfully completed the certification process; 
 
-- The Trust Mark MUST be used exactly as provided in the official resources and MUST comply with the usage specifications outlined in the supporting recommendations to ensure proper visibility throughout all the stages of the User Experience; 
+- The Trust Mark MUST be used exactly as provided in the official resources and MUST comply with the usage specifications outlined in the Official Resources to ensure proper visibility throughout all the stages of the User Experience; 
 
 - The Trust Mark MUST NOT be altered, distorted, modified, or replaced by unofficial elements; 
 
-- The Trust Mark MUST NOT be resized below the minimum dimensions specified in the supporting recommendations to maintain legibility across formats and devices; 
+- The Trust Mark MUST NOT be resized below the minimum dimensions specified in the Official Resources to maintain legibility across formats and devices; 
 
-- The Trust Mark MUST maintain the minimum clear space as defined in the supporting recommendations to ensure visibility and recognizability. Other graphic or textual elements MUST NOT interfere with this space; 
+- The Trust Mark MUST maintain the minimum clear space as defined in the Official Resources to ensure visibility and recognizability. Other graphic or textual elements MUST NOT interfere with this space; 
 
-- The Trust Mark MUST NOT be placed on backgrounds that compromise its visibility or legibility. Adequate contrast between the Trust Mark and the background MUST be ensured, in line with the supporting recommendations; 
+- The Trust Mark MUST NOT be placed on backgrounds that compromise its visibility or legibility. Adequate contrast between the Trust Mark and the background MUST be ensured, in line with the Official Resources; 
 
-- The Trust Mark MAY be displayed alongside other actors’ logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the supporting recommendations. 
+- The Trust Mark MAY be displayed alongside other actors’ logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the Official Resources. 
 
 
 Components
@@ -89,7 +89,7 @@ Components are the elements of the IT-Wallet System that enable the User to inte
 
 The Official Resources provide both complex components, such as templates to support entire workflows, and atomic components, like individual elements (e.g. Engagement Buttons) to be integrated into existing interfaces. The key requirements are as follows: 
 
-- Primary Actors MUST use official resources and MUST comply with the usage specifications outlined in the supporting recommendations; 
+- Primary Actors MUST use official resources and MUST comply with the usage specifications outlined in the Official Resources; 
 
 - Primary Actors MAY choose from the available configurations, but MUST ensure the correct use of atomic components, such as the Engagement Buttons; 
 
