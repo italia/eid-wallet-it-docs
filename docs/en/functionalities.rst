@@ -1,3 +1,5 @@
+.. include:: brand-identity.rst
+
 Functionalities
 ################
 
@@ -173,7 +175,7 @@ Authentication is a specific use case of remote presentation that allows the Use
 
 The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for `remote presentation`_ in same-device and cross-device modes. 
 
-From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated `Authentication Button`_. 
+From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`Authentication Button`. 
 
 To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below and SHOULD use the open-source assets available in the Official Resources, which are designed, developed, and tested for usability and accessibility. 
 
@@ -198,7 +200,7 @@ Specific requirements for each individual page are detailed below.
 
 To enable authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the Official Resources.
 
-Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the `Authentication Button`_ section. 
+Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the :ref:`Authentication Button` section. 
 
 In all cases: 
 
