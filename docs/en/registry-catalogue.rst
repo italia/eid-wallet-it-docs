@@ -21,18 +21,18 @@ The Digital Credential Catalogue aims to:
 The main Entities involved in the Digital Credential Catalogue are: 
 
   - **Trust Anchor**: It manages and maintains the Digital Credential Catalogue, guaranteeing its authenticity and integrity.
-  - **Supervisory Body**: It interacts with the Trust Anchor and the Digital Credential Catalogue to monitor the registration phase ensuring security and privacy according to national/Europan regulations, keeping all the information reliable and updated.
+  - **Supervisory Body**: It interacts with the Trust Anchor and the Digital Credential Catalogue to monitor the registration phase ensuring security and privacy according to national/European regulations, keeping all the information reliable and updated.
   - Digital Credential Issuers: The entities authorized to issue Digital Credentials, registering them in the Catalogue.
   - **Relying Parties**: They use the Digital Credential Catalogue to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
   - **Wallet Providers**: They access the Digital Credential Catalogue to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
   - **Users**: The citizens who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.
-  - **Authentic Sources**: The Entities tha hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue. 
+  - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue. 
 
 
 <Aggiungere figura in plantuml (C4 Component) che descirva le entità coinvolte e le principali interazioni>
 
 
-The follwoing table summurizes the main information that MUST be provided by the Digital Credential Catalogue:
+The following table summarizes the main information that MUST be provided by the Digital Credential Catalogue:
 
 .. list-table:: Digital Credential Catalogue - Main information
    :widths: 30 70
@@ -45,7 +45,7 @@ The follwoing table summurizes the main information that MUST be provided by the
        
        - **Credential Unique identifier**: A unique identifier string of each Digital Credential.
        - **User authentication methods**: User authentication mechanisms used to request the Digital Credential, if required by Issuers or Authentic Sources.
-       - **Minimum Level of Assurance**: The minimum level of assurance required for the Digital Credential's reliablity. It MUST take into account the level of assurance of User authentication, when applicable, and Wallet Instance.
+       - **Minimum Level of Assurance**: The minimum level of assurance required for the Digital Credential's reliability. It MUST take into account the level of assurance of User authentication, when applicable, and Wallet Instance.
        - **Additional display characteristics**: Visual and formatting specifications, such as a background reference image, logo, etc.
    * - Digital Credential Issuers
      - Details about the organization authorized to issue the Digital Credential, such as:
@@ -79,12 +79,12 @@ The follwoing table summurizes the main information that MUST be provided by the
        - **Structured taxonomy references**: Classification systems and controlled vocabularies used
 
 
-The Trust Anchor MUST publishes and keep up to date all the information at the Digital Credential Catalogue `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the ``.well-known/credential-catalogue`` endpoint.
+The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalogue `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the ``.well-known/credential-catalogue`` endpoint.
 
 Digital Credentials Categories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Digital Credentials recognazed within IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.
+Digital Credentials recognized within IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.
 
 .. list-table:: Digital Credential Domains and Categories
    :header-rows: 1
@@ -239,7 +239,7 @@ Each element of the ``credentials`` array contains at least the following inform
        * **claims_required**: Array of claim identifiers that are required when using the credential for this purpose..
        * **claims_recommended**: Array of claim identifiers that are recommended but not mandatory for this purpose
    * - **issuers**
-     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for esxample the deferred flow support).
+     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
    * - **authentic_sources**
      - REQUIRED. Array of relevant information about authorized Authentic Sources, including administrative and technical data related the provisioning of data to the Credential Issuers. 
    * - **formats**
@@ -319,4 +319,6 @@ A non-normative example of the response is provided below.
 .. literalinclude:: ../../examples/catalogue-example-jws.txt
   :language: text
 
+
+.. note:: As a future enhancement, an issuers MAY implement a dynamic endpoint that allows filtering credentials by type while offering pagination capabilities.
 
