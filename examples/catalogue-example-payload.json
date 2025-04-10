@@ -1,273 +1,223 @@
 {
-   "credential_catalog_version": 1.0,
-   "iss": "https://trust-registry.eudi-wallet.example.it",
-   "credentials_catalog": [
+   "catalog_version": "1.0",
+   "iss": "https://trust-registry.eid-wallet.example.it",
+   "last_modified": "2025-03-15T12:00:00Z",
+   "taxonomy_uri": "https://trust-registry.eid-wallet.example.it/.well-known/credential-taxonomy",
+   "taxonomy_uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",   
+   "credentials": [
       {
-         "version": 1.0,
-         "unique_identifier": "mDL",
-         "name": "Mobile Driving License",
-         "description": "Documento che abilita alla conduzione di veicoli a motore su strade pubbliche",
-         "is_pub": true,
-         "is_qeaa": false,
-         "is_eaa": true,
-         "is_proof_of_identity": true,
-         "wallet_solutions_restriction": {
-            "is_public_restricted": "true",
-            "providers_enabled": [
+         "version": "1.0",
+         "credential_type": "mDL",
+         "legal_type": "pub-eaa",
+         "localization": {
+            "default_locale": "it",
+            "available_locales": ["en", "it", "fr", "de"],
+            "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/i18n/mdl/",
+            "version": "1.0.0"
+         },
+         "name_l10n_id": "credential.mdl.name",
+         "description_l10n_id": "credential.mdl.description",
+         "restriction_policy": {
+            "allowed_wallet_ids": [
                "https://wallet-provider.example.org/wallet_solution",
                "https://wallet-provider2.example.org/wallet_solution"
+            ],
+            "allowed_issuer_ids": [
+               "https://issuer.example.org"
             ]
          },
-         "validity_days": 365,
+         "pricing_policy": {
+               "pricing_type": "issuance_based",
+               "price": 0.1,
+               "currency": "euro",
+               "pricing_model_uri": "https://trust-registry.eid-wallet.example.it/business-models/mdl"
+         },
+         "validity_info": {
+            "max_validity_days": 365,
+            "status_methods": ["status_list"],
+            "allowed_states": [
+               "valid",
+               "revoked",
+               "suspended"
+            ]
+         },       
+         "authentication": {
+            "user_auth_required": true,
+            "min_loa": "high",
+            "supported_schemes": ["it-wallet"]
+         },
+         "purposes": [
+            {
+               "id": "driving-authorization",
+               "description_l10n_id": "purpose.driving_authorization.description",
+               "category": "AUTHORIZATION",
+               "subcategory": "DRIVING_LICENSE",
+               "claims_required": ["family_name", "given_name", "issue_date", "expiry_date", "issuing_authority", "document_number", "portrait", "driving_privileges", "un_distinguishing_sign"],
+               "claim_recommended": ["birth_date", "un_distinguishing_sign", "issuing_country", "issuing_jurisdiction"]
+            
+            },
+            {
+               "id": "person-identification",
+               "description_l10n_id": "purpose.person_identification.description",
+               "category": "IDENTITY",
+               "subcategory": "PERSON_IDENTIFICATION",
+               "claims_required": ["family_name", "given_name", "birth_date", "portrait", "document_number"],
+               "claim_recommended": ["expiry_date", "issuing_authority"]
+            }
+         ],
          "issuers": [
             {
-               "iss": "https://issuer.example.org",
-               "organization_name": "Istituto Poligrafico e Zecca dello Stato",
-               "organization_country": "IT",
-               "credential_formats": [
-                  "dc+sd-jwt",
-                  "mso_mdoc"
+               "id": "https://issuer.example.org",
+               "organization_name": "Digital Credential Issuer of Example",
+               "organization_code": "ci_example_it",
+               "contacts": [
+                  "mailto:informazioni@example.it",
+                  "mailto:protocollo@pec.example.it"
                ],
-               "authentication_required": {
-                  "is_required": true,
-                  "loa_level": "high"
-               },
-               "update_status": {
-                  "type": "status_assertion",
-                  "endpoint": " "
-               },
-               "credentials_required": [
-                  "Person Identification Data"
+               "legal_type": "pub-eaa",
+               "homepage_uri": "https://issuer.example.org",
+               "logo_uri": "https://issuer.example.org/logo.svg",
+               "policy_uri": "https://issuer.example.org/privacy",
+               "tos_uri": "https://issuer.example.org/terms",
+               "service_documentation": "https://issuer.example.org/.well-known/service-doc",
+               "issuance_flows": {
+                  "deferred_flow": true,
+                  "max_deferred_issuance_time_minutes": 1440,
+                  "notification_methods": ["push", "polling"]
+               }
+            }
+         ],
+         "authentic_sources": [
+            {
+               "id": "https://authentic-sources.example.org",
+               "organization_name": "Authentic Source of Example",
+               "organization_code": "as_example_it",
+               "contacts": [
+                  "mailto:informazioni@example.it",
+                  "mailto:protocollo@pec.example.it"
                ],
-               "data_source": {
-                  "organization_name": "Ministero dell'Interno",
-                  "organization_country": "IT",
-                  "authentication_required": {
-                     "is_required": "true",
-                     "loa_level": "high"
-                  },
-                  "trust_framework": {
-                     "type": "pdnd",
-                     "issuing_service": {
-                        "version": 1.0,
-                        "name": "",
-                        "description": "",
-                        "provider": ""
-                     },
-                     "update_status_service": {
-                        "version": 1.0,
-                        "name": "",
-                        "description": "",
-                        "provider": ""
-                     }
-                  }
+               "homepage_uri": "https://authsource.example.com/",
+               "logo_uri": "https://authsource.example.com/img/logo.svg",
+               "source_type": "public",
+               "service_documentation": "https://authentic-sources.example.org/.well-known/service-doc",
+               "data_provision": {
+                  "immediate_flow": false,
+                  "deferred_flow": true,
+                  "max_response_time_minutes": 60,
+                  "notification_methods": ["push"]
                }
             }
          ],
          "formats": [
             {
-               "configuration_id": "dc_sd_jwt_mDL",
-               "format": "dc+sd-jwt",
-               "is_proximity_enabled": false,
-               "is_remote_enabled": true,
-               "vct": "https://trust-registry.eudi-wallet.example.it/v1.0/mDL",
-               "schema_uri": "https://trust-registry.eudi-wallet.example.it/schema_dc_sd_jwt/v1.0/mDL",
-               "schema_uri#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+               "configuration_id": "sd-jwt-mdl",
+               "format": "vc+sd-jwt",
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mdl",
+               "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
             },
             {
-               "configuration_id": "mso_mdoc_mDL",
+               "configuration_id": "iso-mdoc-mdl",
                "format": "mso_mdoc",
-               "is_proximity_enabled": true,
-               "is_remote_enabled": false,
-               "schema_uri": "https://trust-registry.eudi-wallet.example.it/schema_mso_mdoc/v1.0/mDL",
-               "schema_uri#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mdl",
+               "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
             }
          ],
-         "schema": {
-            "schema_version": "1.0",
-            "user_attributes": {
-               "given_name": [
-                  {
-                     "name": "Nome",
-                     "description": "Nome del proprietario del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Name",
-                     "description": "Name of the Document Holder",
-                     "locale": "en-US"
+         "display_properties": {
+            "templates": [
+               {
+                  "template_uri": "https://trust-registry.eid-wallet.example.it/.well-known/templates/mdl.svg",
+                  "template_uri#integriti": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+                  "properties": {
+                     "orientation": "landscape",
+                     "color_scheme": "light",
+                     "contrast": "high"
                   }
-               ],
-               "family_name": [
-                  {
-                     "name": "Cognome",
-                     "description": "Cognome del proprietario del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Family Name",
-                     "description": "Family Name of the Document Holder",
-                     "locale": "en-US"
-                  }
-               ],
-               "birth_date": [
-                  {
-                     "name": "Data di Nascita (YYYY-MM-GG)",
-                     "description": "Data di Nascita del proprietario del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Date of Birth (YYYY-MM-GG)",
-                     "description": "Date of birth of the Document Holder",
-                     "locale": "en-US"
-                  }
-               ],
-               "place_of_birth": [
-                  {
-                     "name": "Luogo di nascita",
-                     "description": "Luogo di nascita del proprietario del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "birth place",
-                     "description": "Birth place of the Document Holder",
-                     "locale": "en-US"
-                  }
-               ],
-               "portrait": [
-                  {
-                     "name": "Foto codificata in base64",
-                     "description": "Foto del proprietario del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Portrait base64 encoded",
-                     "description": "Portrait of the Document Holder",
-                     "locale": "en-US"
-                  }
-               ],
-               "driving_privileges": [
-                  {
-                     "name": "Elenco delle categorie di abilitazione separate da spazio",
-                     "description": "Elenco delle categorie di abilitazione separate da spazio del proprietario del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Driving Privileges separated by space",
-                     "description": "Driving Privileges separated by space of the Document Holder",
-                     "locale": "en-US"
-                  }
-               ],
-               "driving_privileges.vehicle_category_code": [
-                  {
-                     "name": "Codice di categoria della patente",
-                     "description": "Codice di categoria della patente al quale è abilitato alla guida il proprietario del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Vehicle category code",
-                     "description": "Vehicle category code under which the Document Holder is authorised to drive.",
-                     "locale": "en-US"
-                  }
-               ],
-               "driving_privileges.issue_date": [
-                  {
-                     "name": "Data di emissione",
-                     "description": "Data di emissione della patente",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Issue date",
-                     "description": "Issuing date of the Document",
-                     "locale": "en-US"
-                  }
-               ],
-               "driving_privileges.expiry_date": [
-                  {
-                     "name": "Data di scadenza della categoria di guida",
-                     "description": "Data di scadenza della categoria di guida",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Expiry date of the vehicle category",
-                     "description": "Expiry date of the vehicle category",
-                     "locale": "en-US"
-                  }
-               ],
-               "driving_privileges.codes": [
-                  {
-                     "name": "Codici associati alla categoria di guide della patente",
-                     "description": "Codici associati alla categoria di guida della patente che specificano le supplementazioni/restrizioni/condizioni applicabili al veicolo e/o al conducente.",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Codes associated with the driving license category",
-                     "description": "Codes associated with the driving license category that specifies the supplementation/restriction/condition applicable to the vehicle and/or driver",
-                     "locale": "en-US"
-                  }
-               ],
-               "driving_privileges.codes.sign": [
-                  {
-                     "name": "Segno associato al codice",
-                     "description": "Segno di tipo '<', '=' '>' associato al codice",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Sign associated to the code",
-                     "description": "Sign of type '<', '=', '>' associated with the code",
-                     "locale": "en-US"
-                  }
-               ],
-               "driving_privileges.codes.value": [
-                  {
-                     "name": "Valore",
-                     "description": "Il valore associato al segno",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Value",
-                     "description": "The Value associated with the sign",
-                     "locale": "en-US"
-                  }
-               ],
-               "expiry_date": [
-                  {
-                     "name": "Data di scadenza",
-                     "description": "Data di scadenza del Documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Expiry date",
-                     "description": "Expiry date of the Document",
-                     "locale": "en-US"
-                  }
-               ],
-               "document_number": [
-                  {
-                     "name": "Numero del documento",
-                     "description": "Numero del documento",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Document number",
-                     "description": "Document number",
-                     "locale": "en-US"
-                  }
-               ],
-               "un_distinguishing_sign": [
-                  {
-                     "name": "Sigla distintiva",
-                     "description": "Sigla distintiva del paese di rilascio, come definito al Segretario Generale delle Nazioni Unite in conformità con le Convenzioni delle Nazioni Unite (del 1949 e del 1968) nel febbraio 2017",
-                     "locale": "it-IT"
-                  },
-                  {
-                     "name": "Un distinguishing sign",
-                     "description": "The distinguishing sign of the issuing country, as defined to the UN Secretary Genral in accordance with the UN Conventions (1949 and 1968) on February 2017",
-                     "locale": "en-US"
-                  }
-               ]
+               }
+            ],
+            "background_color": "#008558",
+            "text_color": "#FFFFFF",
+            "logo_uri": "https://trust-registry.eid-wallet.example.it/.well-known/logos/mdl.svg"
+         },
+         "claims": [
+            {
+               "name": "family_name",
+               "taxonomy_ref": "IDENTITY.PERSONAL_DATA.family_name",
+               "display_name_l10n_id": "claims.family_name.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "given_name",
+               "taxonomy_ref": "IDENTITY.PERSONAL_DATA.given_name",
+               "display_name_l10n_id": "claims.given_name.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "birth_date",
+               "taxonomy_ref": "IDENTITY.PERSONAL_DATA.birthdate",
+               "display_name_l10n_id": "claims.birth_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issue_date",
+               "taxonomy_ref": "COMMON.VALIDITY.issuance_date",
+               "display_name_l10n_id": "claims.issue_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "expiry_date",
+               "taxonomy_ref": "COMMON.VALIDITY.expiry_date",
+               "display_name_l10n_id": "claims.expiry_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_authority",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.issuing_authority",
+               "display_name_l10n_id": "claims.issuing_authority.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "document_number",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.document_number",
+               "display_name_l10n_id": "claims.document_number.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "portrait",
+               "taxonomy_ref": "IDENTITY.BIOMETRIC.facial_image",
+               "display_name_l10n_id": "claims.portrait.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "driving_privileges",
+               "taxonomy_ref": "AUTHORIZATION.DRIVING_LICENSE.categories",
+               "display_name_l10n_id": "claims.driving_privileges.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "un_distinguishing_sign",
+               "taxonomy_ref": "AUTHORIZATION.DRIVING_LICENSE.country_code",
+               "display_name_l10n_id": "claims.un_distinguishing_sign.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "administrative_number",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.administrative_number",
+               "display_name_l10n_id": "claims.administrative_number.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_country",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.issuing_country",
+               "display_name_l10n_id": "claims.issuing_country.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_jurisdiction",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.issuing_jurisdiction",
+               "display_name_l10n_id": "claims.issuing_jurisdiction.name",
+               "namespaces": ["org.iso.18013.5.1"]
             }
-         }
+         ]
       }
    ]
 }

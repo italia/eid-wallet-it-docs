@@ -1,24 +1,137 @@
 .. include:: ../common/common_definitions.rst
 
 
-Registry and Digital Credentials Catalogue
+.. _registry_catalogue.rst:
+
+Digital Credentials Catalogue
 +++++++++++++++++++++++++++++++++++++++++++
 
-The catalogue of attributes provides information regarding the formats and schemes of the Digital Credentials, the claims they contain, and details about Issuers and Authentic Sources. Furthermore, the catalogue includes additional information to facilitate the verification of the authenticity and reliability of its contents.
-The catalogue must be used by all technical solutions that operate within the IT-wallet system for the retrieval of information relating to the PID/(Q)EAA contained in the catalogue, in particular:
+The Digital Credentials Catalogue is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials. 
 
-  - Wallet Providers MUST access the catalogue to identify the Digital Credentials available within the Wallet ecosystem, and MUST use it to retrieve all necessary information for integrating the needed Digital Credentials into their own Wallet Solution.
-  - The Authentic Sources MUST participate in the processes of the registration and maintenance related to the informations necessary for the Issuance of the Digital Credentials.
-  - Credential Issuers MUST consult the Catalogue for the Attributes provided by the Authentic Sources and that MUST be included in the Digital Credentials.
-  - Relying Parties MUST use the catalogue to gather all the information needed about the Digital Credentials they intend to support during the presentation phase.
+The Digital Credential Catalogue aims to:
 
-In accordance with the Italian IT-Wallet Guidelines, the Catalogue lists all available Digital Credentials, specifying if the Digital Credential are Public or not and if their availability is exclusively on Public Wallets in the case they are issued pursuant to Presidential Decree No. 445 of December 28, 2000.
+  1. Facilitate Digital Credential discovery for Users
+  2. Standardize the technical and functional description of Digital Credentials
+  3. Enable interoperability between different Issuers and Relying Parties
+  4. Simplify the integration process for Wallet Providers and Relying Parties
+  5. Ensure trust in the ecosystem through certified information
+  6. Provide transparency on the ecosystem of available Digital Credentials
 
-In the case of Public Authentic Sources, the Catalogue provides information from the PDND e-service Catalogue, specifically for Attribute retrieval, the Attributes themselves, and any associated User Authentication requirements with their Levels of Assurance.
 
-The Catalogue lists the Issuers authorized to issue each Digital Credential.
+The main Entities involved in the Digital Credential Catalogue are: 
 
-Digital Credentials Catalogue parameters
+  - **Trust Anchor**: It manages and maintains the Digital Credential Catalogue, guaranteeing its authenticity and integrity.
+  - **Supervisory Body**: It interacts with the Trust Anchor and the Digital Credential Catalogue to monitor the registration phase ensuring security and privacy according to national/Europan regulations, keeping all the information reliable and updated.
+  - Digital Credential Issuers: The entities authorized to issue Digital Credentials, registering them in the Catalogue.
+  - **Relying Parties**: They use the Digital Credential Catalogue to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
+  - **Wallet Providers**: They access the Digital Credential Catalogue to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
+  - **Users**: The citizens who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.
+  - **Authentic Sources**: The Entities tha hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue. 
+
+
+<Aggiungere figura in plantuml (C4 Component) che descirva le entità coinvolte e le principali interazioni>
+
+
+The follwoing table summurizes the main information that MUST be provided by the Digital Credential Catalogue:
+
+.. list-table:: Digital Credential Catalogue - Main information
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Information related to
+     - Description
+   * - Digital Credential Metadata
+     - Essential identifying information and characteristics of the Digital Credential, including:
+       
+       - **Credential Unique identifier**: A unique identifier string of each Digital Credential.
+       - **User authentication methods**: User authentication mechanisms used to request the Digital Credential, if required by Issuers or Authentic Sources.
+       - **Minimum Level of Assurance**: The minimum level of assurance required for the Digital Credential's reliablity. It MUST take into account the level of assurance of User authentication, when applicable, and Wallet Instance.
+       - **Additional display characteristics**: Visual and formatting specifications, such as a background reference image, logo, etc.
+   * - Digital Credential Issuers
+     - Details about the organization authorized to issue the Digital Credential, such as:
+       
+       - **Issuers identifiers**: Codes that uniquely identify the Digital Credential issuer
+       - **Issuer type**: Classification as PID, (Q)EAA, or Pub-EAA Provider
+       - **Additional information**: Organizational details including name, code, and contact information
+   * - Authentic Sources 
+     - Information about the authoritative data source, such as:
+       
+       - **Authentic Source identifiers**: Unique codes for the Digital Credential's authoritative source
+       - **Authentic Source type**: Classification as Public or Private entity
+       - **Additional information**: Organizational details including name, code, and contact information
+   * - Technical Specification
+     - Technical details, including:
+       
+       - **Digital Credential schemes**: Framework and structure specifications
+       - **Digital Credential formats**: Data format and encoding standards
+       - **Authentication policy**: Methods and requirements for verification
+   * - Terms of Use
+     - Conditions and limitations for Digital Credential usage, such as:
+       
+       - **Credential validity**: Time period during which the Digital Credential is valid and, when applicable, mechanisms and technical details for invalidating Digital Credentials (revocation/suspension methods).
+       - **Restriction policy**: If applicable, rules governing the Digital Credential's use and limitations according to national regulations. It is used, for example, to specify if only specific legal type Entities, for example Pub-EAA and public Wallet Solutions, are allowed to issue and obtain the Digital Credential.
+       - **Pricing policy**: Information related to pricing models of Digital Credential, such as `free`, `issuance_based`, `verification_based`.
+       - **Digital Credential purposes**: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.
+   * - Claims and Taxonomy References
+     - Content and classification information:
+       
+       - **List of displayed claims**: Specific Digital Credential content displayed to the User
+       - **Structured taxonomy references**: Classification systems and controlled vocabularies used
+
+
+The Trust Anchor MUST publishes and keep up to date all the information at the Digital Credential Catalogue `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the ``.well-known/credential-catalogue`` endpoint.
+
+Digital Credentials Categories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Digital Credentials recognazed within IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.
+
+.. list-table:: Digital Credential Domains and Categories
+   :header-rows: 1
+   :widths: 20 30 50
+
+   * - **Domain**
+     - **Category**
+     - **Description**
+   * - *IDENTITY*
+     - * PERSON_IDENTIFICATION
+       * ELECTRONIC_RESIDENCY
+       * DIGITAL_IDENTITY
+     - Credentials that establish or verify the identity of a person, including physical and digital identity documents.
+   * - *AUTHORIZATION*
+     - * DRIVING_LICENSE
+       * PROFESSIONAL_LICENSE
+       * TRAVEL_DOCUMENT
+       * ACCESS_PERMIT
+     - Credentials that grant specific permissions, rights or authorizations to perform certain activities or access restricted areas.
+   * - *EDUCATION*
+     - * ACADEMIC_DEGREE
+       * CERTIFICATE
+       * TRAINING_RECOGNITION
+     - Credentials related to educational achievements, qualifications, and professional training recognition.
+   * - *HEALTH*
+     - * INSURANCE_CARD
+       * DISABILITY_CARD
+       * MEDICAL_PRESCRIPTION
+     - Credentials related to healthcare access, medical history, insurance coverage, and health-related documents.
+   * - *FINANCIAL*
+     - * INCOME_CERTIFICATE
+       * TAX_STATEMENT
+       * FAMILY_ECONOMIC_STATUS
+     - Credentials that attest to financial status, income levels, taxation, or economic situation of individuals or families.
+   * - *MEMBERSHIP*
+     - * ASSOCIATION
+       * LOYALTY_PROGRAM
+       * CLUB_MEMBERSHIP
+     - Credentials that confirm affiliation with organizations, participation in programs, or membership status.
+   * - *ATTESTATION*
+     - * PUBLIC_STATEMENT
+       * CIVIL_STATUS
+       * CERTIFICATION
+     - Credentials that provide official statements, confirmations of status, or certifications issued by authorities.
+
+
+Digital Credentials Catalogue Structure
 ----------------------------------------
 Digital Credentials Catalogue contents is secured in a JWS that contains the following JOSE header parameters:
 
@@ -48,115 +161,138 @@ Digital Credentials Catalogue contents is secured in a JWS that contains the fol
 
 The JWS payload contains the following parameters:
 
-.. list-table::
+.. list-table:: First-level Fields of the Catalog
    :header-rows: 1
-   :widths: 25 50 25
+   :widths: 30 70
 
-   * - Claim
+   * - Field Name
      - Description
-     - Reference
+   * - **catalog_version**
+     - REQUIRED. Version of the Digital Credential Catalogue format.
    * - **iss**
-     - REQUIRED. URL string representing the catalogue signer's unique identifier.
-     - IT-Wallet National Guidelines
-   * - **credentials_catalogue_version**
-     - REQUIRED. Version number of the catalogue.
-     - IT-Wallet National Guidelines
-   * - **credentials_catalogue**
-     - REQUIRED. Array containing the registered Digital Credential.
-     - IT-Wallet National Guidelines
+     - REQUIRED. Issuer identifier of the Digital Credential Catalogue.
+   * - **last_modified**
+     - REQUIRED. Timestamp of the last modification to the Digital Credential Catalogue.
+   * - **taxonomy_uri**
+     - REQUIRED. URI of the claims taxonomy reference document.
+   * - **taxonomy_uri#integrity**
+     - OPTIONAL. Cryptographic digest of the taxonomy document for integrity verification.
+   * - **credentials**
+     - REQUIRED. Array containing Digital Credential definitions.
+
+Each element of the ``credentials`` array contains at least the following information:
+
+.. list-table:: First-level Fields of Each Credential Entry
+   :header-rows: 1
+   :widths: 30 70
+
+   * - Field Name
+     - Description
    * - **version**
-     - REQUIRED. Version number of the Digital Credential.
-     - IT-Wallet National Guidelines
-   * - **unique_identifier**
-     - REQUIRED. String representing the unique indentifier value of the Digital Credential.
-     - IT-Wallet National Guidelines
+     - REQUIRED. Version of the Digital Credential definition.
+   * - **credential_type**
+     - REQUIRED. Unique identifier of the Digital Credential type.
+   * - **legal_type**
+     - REQUIRED. Legal classification of the credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
+   * - **localization**
+     - OPTIONAL. Localization settings, including:
+       
+       * **default_locale**: Default language for text.
+       * **available_locales**: List of supported languages.
+       * **base_uri**: Base URI for localization resources.
+       * **version**: Version of the localization files.
    * - **name**
-     - REQUIRED. String representing the name of the Digital Credential.
-     - IT-Wallet National Guidelines
+     - REQUIRED. Human-readable name of the Digital Credential. A suffix ``_l10n_id`` MAY be added for content localisation management.
    * - **description**
-     - REQUIRED. String representing the description of the Digital Credential.
-     - IT-Wallet National Guidelines
-   * - **is_pub**
-     - REQUIRED. Boolean value set to ``true`` if the Digital Credential is a Public Electronic Attestation of Attribute.
-     - IT-Wallet National Guidelines
-   * - **is_qeaa**
-     - REQUIRED. Boolean value set to ``true`` if the Digital Credential is a Qualified Electronic Attestation of Attribute.
-     - IT-Wallet National Guidelines
-   * - **is_eaa**
-     - REQUIRED. Boolean value set to ``true`` if the Digital Credential is a non-qualified Electronic Attestation of Attribute.
-     - IT-Wallet National Guidelines
-   * - **is_proof_of_identity**
-     - REQUIRED only if ``is_pub`` is set to true. Boolean value set to ``true`` if the Digital Credential is an identification document pursuant to Presidential Decree No. 445 of December 28, 2000.
-     - IT-Wallet National Guidelines
-   * - **wallet_solutions_restriction**
-     - REQUIRED. JSON Object containing restriction information about the wallets enabled to receive the Digital Credentials. It contains:
+     - REQUIRED. Human-readable Digital Credential description. A suffix ``_l10n_id`` MAY be added for content localisation management.
+   * - **restriction_policy**
+     - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
        
-       - **is_public_restricted**: REQUIRED. Boolean value set to ``true`` if the Digital Credentials is restricted to public wallet solutions.
-       - **providers_enabled**: REQUIRED only if ``is_public_restricted`` is set to ``true``. Array containing the list of wallet solutions enabled to receive the Digital Credential.
-     - IT-Wallet National Guidelines
-   * - **validity_days**
-     - REQUIRED. Numerical value representing the Credential's lifespan in days.
-     - IT-Wallet National Guidelines
+       * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
+       * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers.
+   * - **pricing_policy**
+     - OPTIONAL. Information about Digital Credential pricing, including:
+       
+       * **pricing_type**: Type of pricing model, such as ``issuance_based`` or ``verification_based``.
+       * **price**: Cost per issuance.
+       * **currency**: Currency of the price.
+       * **pricing_model_uri**: URI to detailed pricing model.
+   * - **validity_info**
+     - Information about Digital Credential validity, including at least:
+       
+       * **max_validity_days**: Maximum validity period in days.
+       * **status_methods**: Supported status verification methods (e.g. ``status_list``).
+       * **allowed_states**: Allowed Digital Credential states (e.g. ``valid``, ``revoked``, ``suspended``).
+   * - **authentication**
+     - REQUIRED. Digital Credential authentication requirements
+       
+       * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
+       * **min_loa**: REQUIRED. Minimum level of assurance required for Digital Credential authentication. It MUST include the level of assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
+       * **supported_eid_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes.
+   * - **purposes**
+     - REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:
+       
+       * **id**: Unique identifier for the purpose (e.g., "driving-authorization", "person-identification").
+       * **description**: Human-readable purpose description with a suffix ``_l10n_id`` for content localisation.
+       * **category**: Main category in the credential taxonomy (e.g., ``AUTHORIZATION``, ``IDENTITY``).
+       * **subcategory**: Subcategory within the taxonomy (e.g., ``DRIVING_LICENSE``, ``PERSON_IDENTIFICATION``).
+       * **claims_required**: Array of claim identifiers that are required when using the credential for this purpose..
+       * **claims_recommended**: Array of claim identifiers that are recommended but not mandatory for this purpose
    * - **issuers**
-     - REQUIRED. JSON Object containing required information about the issuers. It MUST contain:
-       
-       - **iss**: URL string representing the Credential Issuer unique identifier.
-       - **organization_name**: String representing the name of the administrative authority that has issued the credential.
-       - **organization_country**: String representing Alpha-2 country code, as specified in ISO 3166-1, of the country or territory of the Credential Issuer.
-       - **credential_formats**: Array containing Credential formats supported as described in Appendix A of `OpenID4VCI`_.
-       - **authentication_required**: REQUIRED. JSON Object containing information on the need to present the PID to obtain the Credential, it contains:
-         
-         - **is_required**: REQUIRED. Boolean value set to ``true`` if the PID is requested to obtain the Credential.
-         - **loa_level**: REQUIRED only if **is_required** is set to ``true``. String identifying the Level Of Assurance requested during the User authentication.
-       
-       - **update_status**: REQUIRED. JSON Object containing information about the status of the Credential, it MUST contain:
-         
-         - **type**: String representing the verification method of the Credential validity status. The supported values are: ``status_assertion`` and ``status_list``.
-       
-       - **credentials_required**: OPTIONAL. Array containing one or more ``unique_identifier`` related to Credentials requested for the issuance of the Digital Credential.
-       - **data_source**: REQUIRED. JSON Object containing information about the credential data origin, it MUST contain:
-         
-         - **organization_name**: String representing the name of the Authentic Source.
-         - **organization_country**: String representing Alpha-2 country code, as specified in ISO 3166-1, of the country or territory of the Authentic Source.
-         - **authentication_required**: JSON Object containing information on the need to demonstrate User authentication to obtain the User Attributes, it contains:
-           
-           - **is_required**: REQUIRED. Boolean value is set to ``true`` if the User authentication proof is requested to obtain the credential.
-           - **loa_level**: REQUIRED only if ``is_required`` is set to ``true``. String identifying the Level Of Assurance requested during the User authentication.
-        
-         - **trust_framework**: REQUIRED. JSON Object containing information about the trust framework used by Authentic Source to expose its services.
-           
-           - **type**: REQUIRED. String representing the type of trust framework, for public Authentic Sources it MUST be set to ``PDND``.
-           - **issuing_service**: REQUIRED. JSON Object containing information about the service that provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential, it MUST contain:
-             
-             - **version**: Version number representing the version of the service.
-             - **name**: String representing the name of the service.
-             - **description**: String representing the description of the service.
-             - **provider**: String representing the name of the service provider, in case of ``type`` is set to ``PDND`` Trust Framework, the value corresponds to the name of the provider defined in *PDND* infrastucture.
-           
-           - **update_status_service**: REQUIRED. JSON Object containing information about the service that allows to notify the Credential Issuer of a change of status and/or value of a specific attribute, it MUST contain:
-             
-             - **version**: Version number representing the version of the trust framework service for the status update of the credential.
-             - **name**: String representing the name of the service.
-             - **description**: String representing the description of the service.
-             - **provider**: String representing the name of the service provider, in case of ``type`` is set to ``PDND`` Trust Framework, the value corresponds to the name of the provider defined in *PDND* infrastucture.
-     - IT-Wallet National Guidelines
+     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for esxample the deferred flow support).
+   * - **authentic_sources**
+     - REQUIRED. Array of relevant information about authorized Authentic Sources, including administrative and technical data related the provisioning of data to the Credential Issuers. 
    * - **formats**
-     - REQUIRED. Object containing the available Credential formats, it MUST contain:
+     - REQUIRED. Array of supported technical formats of Digital Credentials.
+   * - **display_properties**
+     - REQUIRED. Visual presentation properties of Digital Credentials, e.g.:
        
-       - **credential_configuration_id**: String representing a unique identifier of a Credential in a specific format. Its value MUST be mapped by the Credential Issuer in its ``credential_configurations_supported`` metadata claim.
-       - **format**: String representing the Credential Format Identifier as described in Appendix A of `OpenID4VCI`_.
-       - **is_proximity_enabled**: Boolean set to ``true`` if proximity presentation is enabled.
-       - **is_remote_enabled**: Boolean set to ``true`` if the remote presentation is enabled.
-       - **vct**: HTTPS **URL String** representing the type of the Verifiable Credential as described in the :ref:`Table of the SD-JWT parameters <table_sd-jwt-vc_parameters>`.
-       - **schema_uri**: URL of the Credential schema. It MAY be a JSON schema if ``format`` is set to `dc+sd-jwt` or a CDDL schema if ``format`` is set to `mso_mdoc`.
-       - **schema_uri#integrity**: the value MUST be an integrity metadata string of the Credential schema document.
-     - IT-Wallet National Guidelines
-   * - **schema**
-     - REQUIRED. JSON Object containing information about the credential schema. It MUST contain:
-       
-       - **schema_version**: Version number of the version of the credential schema
-       - **user_attributes**: JSON Object containing the name of attributes of the Credential, including the name and description of every attribute in multiple languages. Nested attributes MUST be identified by their claim path using ``.`` as delimiter. 
-     - IT-Wallet National Guidelines
+       * **templates**: Visual templates for the credential, e.g. `svg` template.
+       * **background_color**: Background color in hexadecimal format.
+       * **text_color**: Text color in hexadecimal format.
+       * **logo_uri**: URI to the Digital Credential logo.
+   * - **claims**
+     - REQUIRED. Array of claims contained in the Digital Credential.
+
+
+The corresponding example of Digital Credentials Catalogue as decoded in JSON for both header and payload is the following: 
+
+.. literalinclude:: ../../examples/catalogue-example-header.json
+  :language: JSON
+
+.. literalinclude:: ../../examples/catalogue-example-payload.json
+  :language: JSON
+
+.. note::
+  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalogue, an Entity consulting it SHOULD:
+
+    - Download the basic version of the Digital Credentials Catalogue (compact, without localisations) using the ``.well-known/credential-catalogue`` endpoint.
+    - Determine the User's preferred language.
+    - Download only the necessary localisation bundles.
+    - Dynamically merge localised content with the Digital Credentials Catalogue structure.
+
+  A non-normative example of a localisation bundle output is given below:
+
+    .. code-block:: 
+
+      {
+        "driving_license.name": "Patente di Guida",
+        "driving_license.description": "Patente di guida ufficiale valida in Italia e nell'UE",
+        "purpose.driving_authorization.name": "Abilitazione alla guida",
+        "purpose.driving_authorization.description": "Verifica di Abilitazione alla guida",
+        "claims.given_name.name": "Nome",
+        ...
+      }
+
+Claims Taxonomy
+^^^^^^^^^^^^^^^^
+
+The Digital Credential Catalogue, MUST include also a reference URI to Claim Taxonomy providing, in a single resource, the semantic information of all registered and available claims within the IT-Wallet ecosystem. It MUST be Credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet technical solutions.
+
+A non-normative example of the Claim Taxonomy is given below.
+
+.. literalinclude:: ../../examples/catalogue-claims-taxonomy.json
+  :language: JSON
 
 
 Digital Credentials Catalogue Endpoint
@@ -183,10 +319,4 @@ A non-normative example of the response is provided below.
 .. literalinclude:: ../../examples/catalogue-example-jws.txt
   :language: text
 
-The corresponding example of Digital Credentials Catalogue as decoded JSON for both header and payload is the following: 
 
-.. literalinclude:: ../../examples/catalogue-example-header.json
-  :language: JSON
-
-.. literalinclude:: ../../examples/catalogue-example-payload.json
-  :language: JSON
