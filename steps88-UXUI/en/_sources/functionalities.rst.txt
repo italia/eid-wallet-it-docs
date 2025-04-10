@@ -1,5 +1,3 @@
-.. include:: brand-identity.rst
-
 Functionalities
 ################
 

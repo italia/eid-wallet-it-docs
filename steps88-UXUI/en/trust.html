@@ -952,6 +952,19 @@ Federation participants that need to issue X.509 Certificates about themselves a
 <p>This is feasible because the X.509 Certificate can be verified using a X.509 Certificate Chain, similar to the approach used for Entity Configurations in OpenID Federation.</p>
 <p>Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.</p>
+<p>Below an example of naming constraints.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">permitted</span> <span class="n">URI</span><span class="mf">.1</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">permitted</span> <span class="n">CN</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">permitted</span> <span class="n">DNS</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">excluded</span> <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span>
+<span class="n">excluded</span> <span class="n">DNS</span><span class="o">=</span><span class="n">localhost</span><span class="o">.</span><span class="n">localdomain</span>
+<span class="n">excluded</span> <span class="n">DNS</span><span class="o">=</span><span class="mf">127.0.0.1</span>
+<span class="n">excluded</span> <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">excluded</span> <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+<span class="n">excluded</span> <span class="n">DNS</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">net</span>
+<span class="n">excluded</span> <span class="n">DNS</span><span class="o">=*.</span><span class="n">example</span><span class="o">.</span><span class="n">org</span>
+</pre></div>
+</div>
 <p>When a participant self-issues an X.509 Certificate, it adheres to the following requirements:</p>
 <ol class="arabic simple">
 <li><p><strong>Subject Name</strong>: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> field should contain the Federation Entity unique identifier DNS name, which is included into the <strong>sub</strong> (subject) value in its federation Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
