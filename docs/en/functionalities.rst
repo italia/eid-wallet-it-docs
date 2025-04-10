@@ -1,3 +1,5 @@
+.. include:: brand-identity.rst
+
 Functionalities
 ################
 
@@ -21,14 +23,14 @@ Activation enables the User to access the Wallet Solution's functionalities for 
 
 Below are the functional requirements to support the User Experience related to the Activation of the Wallet Instance: 
 
-- The User MUST download the Wallet Solution onto their device to generate their Wallet Instance; 
-- The User MUST set up an unlocking method through a recognition mode (e.g., OTP, biometric authentication, Face ID, PIN). The User MUST use the selected recognition method each time they access the service to ensure security and protect their information; 
-- The User MUST review all relevant information regarding the activation process and service usage. Additionally, the User MUST read any policy from the Provider and PID Provider and/or the service's terms and conditions. The User MUST give their consent to proceed or MAY decline to cancel the operation; 
-- The User MUST select an Authentication option from those available; 
-- The User MUST complete the Authentication flow with the National Identity Provider’s service; 
-- The User MUST receive confirmation of the Authentication process outcome. If successful, the User MUST view a preview of their PID. The User MUST confirm the previewed information to proceed with Wallet Instance activation, or MAY cancel the operation; 
-- The User MUST authorize the operation using the unlocking method previously set; 
-- The User MUST receive confirmation of the successful activation of the Wallet Instance.
+- the User MUST download the Wallet Solution onto their device to generate their Wallet Instance; 
+- the User MUST set up an unlocking method through a recognition mode (e.g., OTP, biometric authentication, Face ID, PIN). The User MUST use the selected recognition method each time they access the service to ensure security and protect their information; 
+- the User MUST review all relevant information regarding the activation process and service usage. Additionally, the User MUST read any policy from the Provider and PID Provider and/or the service's terms and conditions. The User MUST give their consent to proceed or MAY decline to cancel the operation; 
+- the User MUST select an Authentication option from those available; 
+- the User MUST complete the Authentication flow with the National Identity Provider’s service; 
+- the User MUST receive confirmation of the Authentication process outcome. If successful, the User MUST view a preview of their PID. The User MUST confirm the previewed information to proceed with Wallet Instance activation, or MAY cancel the operation; 
+- the User MUST authorize the operation using the unlocking method previously set; 
+- the User MUST receive confirmation of the successful activation of the Wallet Instance.
 
 The User MUST always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the `Deactivation of the Wallet Instance`_ section.
 
@@ -42,26 +44,26 @@ Once activation is complete, the User MAY obtain one or more Electronic Attestat
 
 Depending on the User’s specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways: 
 
-- **From the Wallet Instance Catalog**: The User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, which concludes with obtaining the Electronic Attestation of Attributes in the Wallet Instance. 
+- **From the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, which concludes with obtaining the Electronic Attestation of Attributes in the Wallet Instance. 
 
-- **From a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): The User interacts with the digital service of the Authentic Source, allowing them to obtain a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button.
+- **From a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to obtain a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button.
 
 Although the initiation methods for requesting the issuance may differ, the request flows share a similar structure and process. Below are the functional requirements to support the User Experience related to the request of an Electronic Attestation of Attributes from the Catalog: 
 
-- The User MUST access their Wallet Instance using the previously set unlock method; 
-- The User MUST select the Electronic Attestation of Attributes they wish to request from the available options in the Catalog; 
-- The User MUST review certain minimum information before confirming the operation: PID data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User MUST choose whether to disclose any additional non-mandatory data for the request (Selective Disclosure). The User MUST give their consent to proceed, or they MAY cancel the operation; 
-- The User MUST view a preview of the Electronic Attestation of Attributes. The User MUST confirm the data shown in the preview to proceed with the request or MAY cancel the operation; 
-- The User MUST authorize the operation using the unlock method previously set; 
-- The User MUST view the positive outcome of the request; 
-- The User MUST view the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the name of the Authentic Source; 
-- The User MUST have access to all issued Electronic Attestations by navigating the Catalog of the Wallet Instance. 
+- the User MUST access their Wallet Instance using the previously set unlock method; 
+- the User MUST select the Electronic Attestation of Attributes they wish to request from the available options in the Catalog; 
+- the User MUST review certain minimum information before confirming the operation: PID data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User MUST choose whether to disclose any additional non-mandatory data for the request (Selective Disclosure). The User MUST give their consent to proceed, or they MAY cancel the operation; 
+- the User MUST view a preview of the Electronic Attestation of Attributes. The User MUST confirm the data shown in the preview to proceed with the request or MAY cancel the operation; 
+- the User MUST authorize the operation using the unlock method previously set; 
+- the User MUST view the positive outcome of the request; 
+- the User MUST view the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the name of the Authentic Source; 
+- the User MUST have access to all issued Electronic Attestations by navigating the Catalog of the Wallet Instance. 
 
 The User MUST always be able to request the revocation of the Electronic Attestation of Attributes, even without the device where the Instance was activated. For more details, please refer to the `Management of Electronic Attestations`_ section. 
 
 In the event of communication issues between the systems of the Electronic Attestation of Attributes Provider and the Authentic Source, or if administrative or technical processes prevent the immediate issuance of the Electronic Attestation of Attributes, the request process MUST support deferred process. In this case:  
-- Upon reaching the final step of the process, the User MUST be presented with a message prompting them to wait until the Electronic Attestation of Attributes can be issued. 
-- The User MUST be notified by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available. 
+- upon reaching the final step of the process, the User MUST be presented with a message prompting them to wait until the Electronic Attestation of Attributes can be issued. 
+- the User MUST be notified by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available. 
 
 If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, they SHOULD receive appropriate assistance. For more information, please refer to the `User Assistance`_ section. 
 
@@ -74,13 +76,13 @@ Layout of Electronic Attestations
 
 The Electronic Attestations obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, the Electronic Attestations MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the Electronic Attestation that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience: 
 
-- The Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes; 
-- The name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View; 
-- The Electronic Attestation, in the Preview View, MUST display its validity status and MAY also include additional attributes to enhance the User experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider; 
-- The layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen; 
-- The Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout; 
-- The Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
-- The Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section. 
+- the Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes; 
+- the name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View; 
+- the Electronic Attestation, in the Preview View, MUST display its validity status and MAY also include additional attributes to enhance the User experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider; 
+- the layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen; 
+- the Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout; 
+- the Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
+- the Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section. 
 
 
 Presentation of Electronic Attestations
@@ -88,9 +90,9 @@ Presentation of Electronic Attestations
 
 The presentation process allows the User to access a service or demonstrate ownership of certain data or their eligibility to perform a specific action. The presentation of Electronic Attestations and their subsequent verification involves interaction between two parties: the User and the Relying Party. This can take place in two main ways, depending on the circumstances and context of the interaction: 
 
-- **Proximity Presentation**: The User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance, directly to a Verifier or to a Relying Party's device designated for in-person verification. 
+- **Proximity Presentation**: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance, directly to a Verifier or to a Relying Party's device designated for in-person verification. 
 
-- **Remote Presentation**: The User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered. 
+- **Remote Presentation**: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered. 
 
 
 Proximity Presentation 
@@ -98,20 +100,20 @@ Proximity Presentation
 
 Proximity presentation allows the User to present the PID and/or a set of Attributes contained in one or more Electronic Attestations via their Wallet Instance, using one of two methods: 
 
-- **Supervised mode**: The User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a Verifier equipped with a dedicated verification app or system (e.g., law enforcement officer, pharmacist); 
+- **Supervised mode**: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a Verifier equipped with a dedicated verification app or system (e.g., law enforcement officer, pharmacist); 
 
-- **Unsupervised mode**: The User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a designated device (e.g., turnstile, ATM). 
+- **Unsupervised mode**: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a designated device (e.g., turnstile, ATM). 
 
 Below are the functional requirements supporting the User Experience for both methods.
 
 **Supervised Mode** 
 
 - The User MUST access their Wallet Instance using the unlock method previously set; 
-- The User MUST navigate to the feature dedicated to QR Code generation; 
-- The User MUST present the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system; 
-- The User MUST review the requested PID data and/or Attributes, the name of the requesting Service Provider, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
-- The User MUST authorize the operation using the unlock method previously set; 
-- The User MUST receive confirmation of the successful presentation. 
+- the User MUST navigate to the feature dedicated to QR Code generation; 
+- the User MUST present the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system; 
+- the User MUST review the requested PID data and/or Attributes, the name of the requesting Service Provider, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
+- the User MUST authorize the operation using the unlock method previously set; 
+- the User MUST receive confirmation of the successful presentation. 
 
 If an error occurs, the User MUST receive clear and consistent messages informing them of the issue and guiding them toward resolution. For further details, please refer to the `Error Management`_ section. 
 
@@ -135,20 +137,20 @@ Remote presentation allows the User to present the PID and/or a set of Attribute
 
 This presentation can occur in two different modes, depending on the type of device used to access the service: 
 
-- **Same-device mode**: When the User accesses an online digital service using the same device on which the Wallet Instance is installed; 
+- **Same-device mode**: when the User accesses an online digital service using the same device on which the Wallet Instance is installed; 
 
-- **Cross-device mode**: When the User accesses a digital service using a different device from the one where the Wallet Instance is installed. 
+- **Cross-device mode**: when the User accesses a digital service using a different device from the one where the Wallet Instance is installed. 
 
 Below are the functional requirements supporting the User Experience for both modes. 
 
 **Same-Device Mode** 
 
 - The User MUST click the Engagement Button provided on the Relying Party's Touchpoint; 
-- The User MUST access their Wallet Instance using the unlock method previously set; 
-- The User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
-- The User MUST authorize the operation using the unlock method previously set; 
-- The User MUST receive confirmation of the successful presentation within the Wallet Instance; 
-- The User MUST return to the Relying Party's Touchpoint, where they MUST see confirmation of the completed presentation. 
+- the User MUST access their Wallet Instance using the unlock method previously set; 
+- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
+- the User MUST authorize the operation using the unlock method previously set; 
+- the User MUST receive confirmation of the successful presentation within the Wallet Instance; 
+- the User MUST return to the Relying Party's Touchpoint, where they MUST see confirmation of the completed presentation. 
 
 If an error occurs, the User MUST receive clear and consistent messages informing them of the issue and guiding them toward resolution. For further details, please refer to the `Error Management`_ section. 
 
@@ -156,12 +158,12 @@ If an error occurs, the User MUST receive clear and consistent messages informin
 **Cross-Device Mode** 
 
 - The User MUST click the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed; 
-- The User MUST access the desired Wallet Instance from the device where it is installed, using the unlock method previously set; 
-- The User MUST scan the QR Code provided by the Relying Party using their Wallet Instance; 
-- The User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory personal data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation. 
-- The User MUST authorize the operation using the unlock method previously set; 
-- The User MUST receive confirmation of the successful presentation within the Wallet Instance; 
-- The User MUST return to the Relying Party's Touchpoint and MAY view confirmation of the completed presentation. 
+- the User MUST access the desired Wallet Instance from the device where it is installed, using the unlock method previously set; 
+- the User MUST scan the QR Code provided by the Relying Party using their Wallet Instance; 
+- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory personal data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation. 
+- the User MUST authorize the operation using the unlock method previously set; 
+- the User MUST receive confirmation of the successful presentation within the Wallet Instance; 
+- the User MUST return to the Relying Party's Touchpoint and MAY view confirmation of the completed presentation. 
 
 If an error occurs, the User MUST receive clear and consistent messages informing them of the issue and guiding them toward resolution. For further details, please refer to the `Error Management`_ section. 
 
@@ -173,9 +175,94 @@ Authentication is a specific use case of remote presentation that allows the Use
 
 The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for `remote presentation`_ in same-device and cross-device modes. 
 
-From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated Authentication Button. 
+From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`Authentication Button`_. 
 
-To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST adhere to the graphical and implementation requirements for the Authentication Button outlined in the :ref:`IT-Wallet System Brand Identity` section. Additionally, they SHOULD follow the relative technical requirements and use the Official Resources. 
+To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below and SHOULD use the open-source assets available in the Official Resources, which are designed, developed, and tested for usability and accessibility. 
+
+Relying Parties that choose not to adopt these resources MAY implement custom Technical Solutions supporting the Authentication process. However, these MUST comply with the requirements specified below, adhere to [REF_ACCESSIBILITY], and, for public entities, follow the [GL_DESIGN]. 
+
+Relying Parties MUST implement and provide the following pages as part of the Authentication process: 
+
+- **Discovery Page**: lists all the available Authentication methods; 
+- **QR Code page** (*cross-device only*): prompts the User to scan a QR code; 
+- **waiting page** (*cross-device only*): instructs the User to continue the Authentication process on their Wallet Instance; 
+- **thank you page**: confirms the successful Authentication; 
+- **error page**: displays error messages related to the Authentication process. 
+
+Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party’s Touchpoint: 
+
+- a **header and/or subheader** allowing Users to navigate back to the previous page. 
+- a **footer** including the privacy policy, legal notice, and accessibility statement, where required by current regulations. 
+
+Specific requirements for each individual page are detailed below. 
+
+**Discovery Page**
+
+To enable authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the Official Resources.
+
+Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the :ref:`Authentication Button` section. 
+
+In all cases: 
+
+- the page MUST display all available Digital Identity Authentication methods, including the IT-Wallet System Authentication through the Authentication Button; 
+- the page MAY also include other available Authentication methods; 
+
+The page SHOULD provide essential supporting information to help the User make an informed and conscious choice. 
+
+If the User accesses the Discovery Page from a different Touchpoint than the one where the Wallet Instance is activated (cross-device), selecting IT-Wallet System Authentication MUST redirect the User to the QR code page. 
+
+If the User accesses the Discovery Page from the same Touchpoint where the Wallet Instance is activated (same-device), the selection MUST trigger the opening of the User’s Wallet Instance. 
+
+**QR code page (cross-device only)** 
+
+The QR code page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance. 
+
+Relying Parties SHOULD implement the QR code page (cross-device) provided in the Official Resources. In any case:
+
+- the page MUST include the Visual Identity elements of the IT-Wallet System, including the logo; 
+- the page MUST display the QR code along with a clear and concise message instructing the User to scan it using their Wallet Instance; 
+- the page MUST indicate the validity period of the QR code with a short and clear message; 
+- the page MUST include a Call To Action allowing the User to generate a new QR code in case of timeout; 
+- the page MUST include a Call To Action allowing the User to cancel the operation and return to the Discovery Page. 
+
+To ensure QR code readability: 
+
+- minimum recommended dimensions MUST be respected to ensure successful scanning. A size of 150×150 pixels is generally sufficient; for high-density codes (e.g., long URLs or many characters), 300×300 pixels or larger is recommended; 
+- adequate contrast MUST be maintained between the QR code and the background (ideal: black code on a white background); 
+- color inversion between the QR code and the background MUST be avoided; 
+- only one QR code SHOULD be displayed per page; 
+- the QR code MUST be sharp and high-quality (SVG format is recommended); 
+- no text or other visual elements SHOULD overlap or obscure the QR code. 
+
+**Waiting page (cross-device only)** 
+
+The waiting page is shown after the QR code has been scanned and prompts the User to continue the Authentication process within their Wallet Instance. 
+
+Relying Parties SHOULD implement the waiting page (cross-device) provided in the Official Resources. In any case: 
+
+- the page MUST include visual identity elements of the IT-Wallet System, including the logo and an icon or graphical element that reinforces the page message; 
+- the page MUST include a clear and concise message instructing the User to continue the process on their Wallet Instance. 
+
+**Thank you page** 
+
+The thank you page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to prompt the User to proceed to the reserved area of the Relying Party’s Touchpoint. 
+
+Relying Parties SHOULD implement the thank you page provided in the Official  Resources. In any case: 
+
+- the page MUST include the visual identity elements of the IT-Wallet System, including the logo and an icon or graphical element that reinforces the page message; 
+- the page MUST provide a clear and concise message confirming that the authentication process was successfully completed; 
+- the page MUST include a Call To Action prompting the User to proceed to the Relying Party’s reserved area. 
+
+**Error page** 
+
+The error page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the `Error Management`_ section. 
+
+Relying Parties SHOULD implement the error page provided in the Official Resources. In any case: 
+
+- the page MUST include the visual identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of error; 
+- the page MUST include a clear and concise message explaining the nature of the error, the error code, and a simple description; 
+- the page MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
+
 
 Management of Electronic Attestations 
 **************************************

@@ -312,6 +312,9 @@ Below are the main defined terms and definitions related to User Experience aspe
    * - Detailed View
      - Extended display mode of the Digital Credentials, showing all the Attributes included.
      - 
+   * - Discovery Page
+     - It’s the page of the Touchpoint of the Relying Party where the User lands to access their personal area, and it has the goal to show the User all the Authentication methods available.
+     - 
    * - Engagement Button
      - Interactive element of the Interface that allows the User to trigger a process (e.g. to Authenticate, to request the issuance of a Digital Credential, etc.).
      - 
