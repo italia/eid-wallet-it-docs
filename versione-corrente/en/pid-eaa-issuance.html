@@ -278,7 +278,7 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p><strong>Steps 2.4-2.7 (Cross-Device):</strong> The Credential Offer is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance which retrieves the parameters defined in the <a class="reference internal" href="#table-credential-offer-claim"><span class="std std-ref">Table of Credential Offer parameters</span></a>.</p>
 <p><strong>Steps 2.8-2.10 (Same-Device):</strong> The Credential Offer is presented as an href button containing the URL that allows the User to invoke the Wallet Instance using the Credential Offer Endpoint.</p>
 <p>Below a non-normative example of a URL related to a Credential Offer that can be included in a QR Code or in html page with an href button:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>openid-credential-offer://?credential_offer%3D%7B%22credential_issuer%22%3A%22https%3A%2F%2Feaa-provider.example.org%22%2C%22credential_configuration_ids%22%3A%5B%22dc_sd_jwt_EuropeanDisabilityCard%22%5D%2C%22grants%22%3A%7B%22authorization_code%22%3A%7B%22issuer_state%22%3A%22oaKazRN8I0IbtZ0C7JuMn5%22%7D%7D%7D
 </pre></div>
 </div>
 <p>The following diagram shows the <em>Issuance flow</em>.</p>
@@ -379,7 +379,7 @@ OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdH
 <span class="w">    </span><span class="nt">&quot;authorization_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span>
+<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_EuropeanDisabilityCard&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;redirect_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://client.example.com/cb&quot;</span>
@@ -488,7 +488,7 @@ The <code class="docutils literal notranslate"><span class="pre">OAuth-Client-At
 <span class="w">    </span><span class="nt">&quot;authorization_details&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_credential&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;credential_configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_EuropeanDisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;credential_identifiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;DisabilityCard&quot;</span><span class="w"> </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
@@ -1018,7 +1018,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <td><p><span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7636.html#section-4.3"><strong>RFC 7636#section-4.3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>scope</strong></p></td>
-<td><p>JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>. In case of mobile driving licence in SD-JWT VC format, <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mdl</span></code>, while <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mdl</span></code> in case of mobile driving license in mdoc format. Since it MAY be multivalued, when this occurs each value MUST be separated by a space.</p></td>
+<td><p>JSON String. String specifying a unique identifier of the Credential regardless of its format. It MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. Unique identifier value MUST match the <cite>credential_type</cite> parameter of the Digital Credentials Catalogue. For example, in the case of the PID, it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code> while in case of mobile driving licence <code class="docutils literal notranslate"><span class="pre">mDL</span></code>. Since it MAY be multivalued, when this occurs each value MUST be separated by a space.</p></td>
 <td><p><span class="target" id="index-51"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>authorization_details</strong></p></td>
@@ -1026,7 +1026,7 @@ the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>type</strong>: it MUST be set to <code class="docutils literal notranslate"><span class="pre">openid_credential</span></code>,</p></li>
-<li><p><strong>credential_configuration_id</strong>: JSON String. String specifying a unique identifier of the Credential that MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. For example, in the case of the PID, it may be set to <code class="docutils literal notranslate"><span class="pre">PersonIdentificationData</span></code>, in the case of mobile driving licence in SD-JWT VC format <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mdl</span></code> and <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mdl</span></code> in case of mobile driving license in mdoc format.</p></li>
+<li><p><strong>credential_configuration_id</strong>: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the <cite>credential_configurations_supported</cite> metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_PersonIdentificationData`` can be used for PID in SD-JWT VC format, <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mDL</span></code> for mobile driving licence in SD-JWT VC format and <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mDL</span></code> for mobile driving license in mdoc format.</p></li>
 </ul>
 </div></blockquote>
 </td>
@@ -2285,7 +2285,7 @@ If any other error occurs, the PID/(Q)EAA Provider MUST return an error response
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 09/04/2025.
+      Last updated on 10/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
