@@ -3,10 +3,10 @@ Functionalities
 
 The IT-Wallet System provides Users with a simpler, faster, and more secure way to access services. This service is delivered through the use of a Wallet Solution, whose User Experience is structured into three main phases: pre-use, use, and post-use. 
 
-..  figure:: ../../images/UX-phases-usage.svg
-    :alt: User Experience phases of Wallet usage
-    :width: 100%
-*User Experience phases of Wallet usage*
+.. figure:: ../../images/UX-phases-usage.svg
+   :name: User Experience phases of Wallet usage
+   :alt: User Experience phases of Wallet usage
+   :width: 100%
 
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the Activation, Acquisition, Presentation, Management, and Deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection. 
@@ -63,11 +63,11 @@ In the event of communication issues between the systems of the Electronic Attes
 - Upon reaching the final step of the process, the User MUST be presented with a message prompting them to wait until the Electronic Attestation of Attributes can be issued. 
 - The User MUST be notified by the Electronic Attestation of Attributes Provider once the Electronic Attestation of Attributes becomes available. 
 
-If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, they SHOULD receive appropriate assistance. For more information, please refer to the `Assistance`_ section. 
+If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, they SHOULD receive appropriate assistance. For more information, please refer to the `User Assistance`_ section. 
 
 In case of errors, the User MUST receive clear, consistent messages that inform them and guide them toward resolution. For further details, please refer to the `Error Management`_ section. 
 
-If an Authentic Source (or an Electronic Attestation of Attributes Provider, should it coincide with the Authentic Source) intends to implement an Engagement Button to initiate the request process from their Touchpoint, they MUST ensure compliance with the graphical appearance and implementation requirements for the Engagement Button, as outlined in the `IT-Wallet System Brand Identity`_ section. 
+If an Authentic Source (or an Electronic Attestation of Attributes Provider, should it coincide with the Authentic Source) intends to implement an Engagement Button to initiate the request process from their Touchpoint, they MUST ensure compliance with the graphical appearance and implementation requirements for the Engagement Button, as outlined in the :ref:`brand-identity.rst` section. 
 
 Layout of Electronic Attestations 
 ==================================
@@ -175,7 +175,7 @@ The Authentication process can be carried out using both the same-device and cro
 
 From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated Authentication Button. 
 
-To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST adhere to the graphical and implementation requirements for the Authentication Button outlined in the `IT-Wallet System Brand Identity`_ section. Additionally, they SHOULD follow the relative technical requirements and use the Official Resources. 
+To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST adhere to the graphical and implementation requirements for the Authentication Button outlined in the :ref:`IT-Wallet System Brand Identity` section. Additionally, they SHOULD follow the relative technical requirements and use the Official Resources. 
 
 Management of Electronic Attestations 
 **************************************
@@ -284,11 +284,11 @@ Below are the requirements and main best practices for error management, specifi
 - **The actor responsible** for the error: Wallet Provider, PID Provider, Electronic Attestations of Attributes Provider, Authentic Source; 
 - **The way the error is displayed**: message on the page, banner, toast message, and so on; 
 - **Suggested actions for the User** to resolve the error: suggestion to wait, request to try again, referral to FAQs and/or customer care, etc.; 
-- **The method for error management**: opening an assistance request through the Wallet Instance, linking to other detailed channels, and so on. For further details, please refer to the `Assistance`_ section. 
+- **The method for error management**: opening an assistance request through the Wallet Instance, linking to other detailed channels, and so on. For further details, please refer to the :ref:`User Assistance` section. 
 
 Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience. 
 
-Activation of the Wallet Instance
+Activation of the Wallet Instance Errors
 *******************************************************
 
 .. list-table::
@@ -305,7 +305,7 @@ Activation of the Wallet Instance
    * - The Authentication process on the National Identity Provider's service was unsuccessful (e.g. technical errors, unrecognized identity, etc.) 
      - National Identity Provider 
 
-Issuance of Electronic Attestations of Attributes
+Issuance of Electronic Attestations of Attributes Errors
 ****************************************************************
 
 .. list-table::
@@ -320,7 +320,7 @@ Issuance of Electronic Attestations of Attributes
    * - The User is unable to obtain a specific Electronic Attestation of Attributes in their Wallet Instance (e.g. no eligibility, invalid or expired physical version, etc.) 
      - Authentic Source 
 
-Presentation of Electronic Attestations
+Presentation of Electronic Attestations Errors
 **********************************************************
 
 .. list-table::
@@ -330,10 +330,10 @@ Presentation of Electronic Attestations
      - Actor in charge 
    * - The User does not hold the required Attributes contained in one or more Electronic Attestations within their Wallet Instance to access a specific service 
      - Wallet Provider 
-    * - The Wallet Provider's services or the Relying Party’s services are unresponsive (e.g. technical errors or lack of connection)  
+   * - The Wallet Provider's services or the Relying Party’s services are unresponsive (e.g. technical errors or lack of connection)  
      - Wallet Provider, Relying Party  
 
-Management of Electronic Attestations
+Management of Electronic Attestations Errors
 **********************************************************
 
 .. list-table::
@@ -346,7 +346,7 @@ Management of Electronic Attestations
    * - The service for revocation of PID is unavailable (e.g. technical errors) 
      - PID Provider 
 
-Deactivation of the Wallet Instance
+Deactivation of the Wallet Instance Errors
 ***************************************************
 
 .. list-table::
@@ -359,8 +359,8 @@ Deactivation of the Wallet Instance
 
 In addition to error management, all Primary Actors MUST also deal with negative feedback resulting from the User’s decision to abandon or cancel a flow (e.g. Activation, Acquisition, Presentation, etc.). In such cases, feedback MUST be provided to confirm the User’s choice, and it MAY include a Call to Action to continue. 
 
-Assistance 
-***********
+User Assistance 
+********************************
 
 For effective error management and the resolution of any other issues, the Primary Actors MUST ensure adequate support to the User by structuring a simple and effective assistance model. For this purpose, good practices are proposed on which such a model SHOULD be based: 
 
@@ -386,8 +386,8 @@ Here are the functional requirements supporting the User Experience related to A
 - The User SHOULD be informed when an assistance request needs to be managed outside of their Wallet Instance, such as on third-party channels. 
 - The User CAN track the status of the request at any time through functionalities that MUST be made available by the actors dealing with the request. 
 
-Feedback 
-*********
+User Feedback 
+********************************
 
 User feedback collection allows for monitoring the User Experience, identifying potential areas for optimization, and continuously measuring the effectiveness of the service. Each Wallet Provider SHOULD establish a structured feedback collection system to monitor and improve the User Experience. 
 

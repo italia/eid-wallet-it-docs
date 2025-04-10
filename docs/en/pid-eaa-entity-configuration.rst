@@ -131,7 +131,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
 
         - *it_cie*: CIE trust framework supported.
         - *it_spid*: SPID trust framework supported.
-        - *it_wallet*: Italian EUDI Wallet trust framework supported.
+        - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
   * - **evidence_supported**
     -  JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.

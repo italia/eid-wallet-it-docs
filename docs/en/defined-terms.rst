@@ -308,6 +308,7 @@ Below are the main defined terms and definitions related to User Experience aspe
      - 
    * - Call To Action
      - A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.
+     -
    * - Detailed View
      - Extended display mode of the Digital Credentials, showing all the Attributes included.
      - 

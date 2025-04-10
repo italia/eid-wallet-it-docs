@@ -1,3 +1,5 @@
+.. _brand-identity:
+
 IT-Wallet System Brand Identity
 ###############################
 
