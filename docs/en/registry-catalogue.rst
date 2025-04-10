@@ -153,7 +153,7 @@ Digital Credentials Catalogue contents is secured in a JWS that contains the fol
      - REQUIRED. Unique identifier of the public key.
      - [:rfc:`7515` Section 4.1.4].
    * - **x5c**
-     - OPTIONAL. Contains the X.509 public key certificate or certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. 
+     - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. 
      - [:rfc:`7515` Section 4.1.6.].
    * - **cty**
      - REQUIRED. It MUST be set to ``application/json``.
@@ -193,7 +193,7 @@ Each element of the ``credentials`` array contains at least the following inform
    * - **credential_type**
      - REQUIRED. Unique identifier of the Digital Credential type.
    * - **legal_type**
-     - REQUIRED. Legal classification of the credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
+     - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
    * - **localization**
      - OPTIONAL. Localization settings, including:
        
@@ -234,9 +234,9 @@ Each element of the ``credentials`` array contains at least the following inform
        
        * **id**: Unique identifier for the purpose (e.g., "driving-authorization", "person-identification").
        * **description**: Human-readable purpose description with a suffix ``_l10n_id`` for content localisation.
-       * **category**: Main category in the credential taxonomy (e.g., ``AUTHORIZATION``, ``IDENTITY``).
+       * **category**: Main category in the Credential taxonomy (e.g., ``AUTHORIZATION``, ``IDENTITY``).
        * **subcategory**: Subcategory within the taxonomy (e.g., ``DRIVING_LICENSE``, ``PERSON_IDENTIFICATION``).
-       * **claims_required**: Array of claim identifiers that are required when using the credential for this purpose..
+       * **claims_required**: Array of claim identifiers that are required when using the Credential for this purpose..
        * **claims_recommended**: Array of claim identifiers that are recommended but not mandatory for this purpose
    * - **issuers**
      - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
@@ -247,7 +247,7 @@ Each element of the ``credentials`` array contains at least the following inform
    * - **display_properties**
      - REQUIRED. Visual presentation properties of Digital Credentials, e.g.:
        
-       * **templates**: Visual templates for the credential, e.g. `svg` template.
+       * **templates**: Visual templates for the Credential, e.g. `svg` template.
        * **background_color**: Background color in hexadecimal format.
        * **text_color**: Text color in hexadecimal format.
        * **logo_uri**: URI to the Digital Credential logo.
@@ -320,5 +320,4 @@ A non-normative example of the response is provided below.
   :language: text
 
 
-.. note:: As a future enhancement, an issuers MAY implement a dynamic endpoint that allows filtering credentials by type while offering pagination capabilities.
-
+.. note:: As a future enhancement, an issuer MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.
