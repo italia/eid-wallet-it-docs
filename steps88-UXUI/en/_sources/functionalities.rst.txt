@@ -100,7 +100,7 @@ Proximity Presentation
 
 Proximity presentation allows the User to present the PID and/or a set of Attributes contained in one or more Electronic Attestations via their Wallet Instance, using one of two methods: 
 
-- **Supervised mode**: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a Verifier equipped with a dedicated verification app or system (e.g., law enforcement officer, pharmacist); 
+- **Supervised mode**: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a Verifier equipped with a dedicated verification app or system (e.g., law enforcement officer, pharmacist).
 
 - **Unsupervised mode**: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a designated device (e.g., turnstile, ATM). 
 
@@ -108,12 +108,12 @@ Below are the functional requirements supporting the User Experience for both me
 
 **Supervised Mode** 
 
-- The User MUST access their Wallet Instance using the unlock method previously set; 
-- the User MUST navigate to the feature dedicated to QR Code generation; 
-- the User MUST present the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system; 
-- the User MUST review the requested PID data and/or Attributes, the name of the requesting Service Provider, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
-- the User MUST authorize the operation using the unlock method previously set; 
-- the User MUST receive confirmation of the successful presentation. 
+- The User MUST access their Wallet Instance using the unlock method previously set;
+- the User MUST navigate to the feature dedicated to QR Code generation;
+- the User MUST present the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system;
+- the User MUST review the requested PID or EAA data, the name of the requesting Service Provider, and any related policy. The User MUST decide whether to present any non-mandatory PID or EAA data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation;
+- the User MUST authorize the operation using the unlock method previously set;
+- the User MUST receive confirmation of the successful presentation.
 
 If an error occurs, the User MUST receive clear and consistent messages informing them of the issue and guiding them toward resolution. For further details, please refer to the `Error Management`_ section. 
 
@@ -123,7 +123,7 @@ If an error occurs, the User MUST receive clear and consistent messages informin
 - the User MUST access their Wallet Instance using the unlock method previously set; 
 - the User MUST navigate to the feature dedicated to QR Code generation; 
 - the User MUST present the generated QR Code to the designated device (e.g., a turnstile) of the Relying Party for scanning; 
-- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
+- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to present any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
 - the User MUST authorize the operation using the unlock method previously set; 
 - the User MUST receive confirmation of the successful presentation. 
 
@@ -147,7 +147,7 @@ Below are the functional requirements supporting the User Experience for both mo
 
 - The User MUST click the Engagement Button provided on the Relying Party's Touchpoint; 
 - the User MUST access their Wallet Instance using the unlock method previously set; 
-- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
+- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to present any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation; 
 - the User MUST authorize the operation using the unlock method previously set; 
 - the User MUST receive confirmation of the successful presentation within the Wallet Instance; 
 - the User MUST return to the Relying Party's Touchpoint, where they MUST see confirmation of the completed presentation. 
@@ -160,7 +160,7 @@ If an error occurs, the User MUST receive clear and consistent messages informin
 - The User MUST click the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed; 
 - the User MUST access the desired Wallet Instance from the device where it is installed, using the unlock method previously set; 
 - the User MUST scan the QR Code provided by the Relying Party using their Wallet Instance; 
-- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory personal data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation. 
+- the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to present any non-mandatory personal data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation. 
 - the User MUST authorize the operation using the unlock method previously set; 
 - the User MUST receive confirmation of the successful presentation within the Wallet Instance; 
 - the User MUST return to the Relying Party's Touchpoint and MAY view confirmation of the completed presentation. 
@@ -171,11 +171,11 @@ If an error occurs, the User MUST receive clear and consistent messages informin
 Authentication
 .......................
 
-Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to share only the information strictly necessary for verification by Relying Parties. At the same time, it guarantees the reliability, authenticity, and validity of the data presented. 
+Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to present only the information strictly necessary for verification by Relying Parties. At the same time, it guarantees the reliability, authenticity, and validity of the data presented. 
 
 The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for `remote presentation`_ in same-device and cross-device modes. 
 
-From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`Authentication Button`_. 
+From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`Authentication Button`. 
 
 To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below and SHOULD use the open-source assets available in the Official Resources, which are designed, developed, and tested for usability and accessibility. 
 
@@ -469,7 +469,7 @@ Here are the functional requirements supporting the User Experience related to A
 - The User MUST have access to assistance options at any point during the User Experience, with a clear indication of how to access them. 
 - The User MAY open an assistance request through their Wallet Instance or other Touchpoints provided by the Wallet Provider. 
 - When an assistance request is open, the User MUST receive prompt confirmation that the request has been acknowledged. 
-- The User MUST be informed in advance if it is necessary to share their data with third parties. 
+- The User MUST be informed in advance if it is necessary to present their data with third parties. 
 - The User SHOULD be informed when an assistance request needs to be managed outside of their Wallet Instance, such as on third-party channels. 
 - The User CAN track the status of the request at any time through functionalities that MUST be made available by the actors dealing with the request. 
 

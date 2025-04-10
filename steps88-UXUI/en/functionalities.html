@@ -134,7 +134,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design.html">Design Principles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design.html#it-wallet-system-brand-identity">IT-Wallet System Brand Identity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html#id1">IT-Wallet System Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design.html#functionalities">Functionalities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
@@ -230,11 +229,10 @@ The following requirements apply to its use in both physical and digital context
 <p>The Authentication Button is a type of Engagement Button.
 Verifiers MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services through the Wallet Instance.</p>
 <p>The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tabbed, and list layouts, respectively.</p>
-<figure class="align-default">
+<figure class="align-default" id="examples-of-discovery-page-layouts-grid-tab-and-list">
 <a class="reference internal image-reference" href="_images/discovery-page-layouts.svg"><img alt="examples of Discovery Page layouts: grid, tab, and list" src="_images/discovery-page-layouts.svg" style="width: 100%;" /></a>
 </figure>
-<p><em>Examples of Discovery Page layouts: grid, tab, and list</em></p>
-<p>For further details on the use of the Authentication Button, refer to the <a href="#id3"><span class="problematic" id="id4">`Authentication section`_</span></a>.</p>
+<p>For further details on the use of the Authentication Button, refer to the <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>  section.</p>
 <p>The Authentication Button has the following requirements:</p>
 <ul class="simple">
 <li><p>The Authentication Button MUST be used exactly as outlined in the Official Resources;</p></li>
@@ -321,7 +319,7 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 <h3>Proximity Presentation<a class="headerlink" href="#proximity-presentation" title="Link to this heading">¶</a></h3>
 <p>Proximity presentation allows the User to present the PID and/or a set of Attributes contained in one or more Electronic Attestations via their Wallet Instance, using one of two methods:</p>
 <ul class="simple">
-<li><p><strong>Supervised mode</strong>: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a Verifier equipped with a dedicated verification app or system (e.g., law enforcement officer, pharmacist);</p></li>
+<li><p><strong>Supervised mode</strong>: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a Verifier equipped with a dedicated verification app or system (e.g., law enforcement officer, pharmacist).</p></li>
 <li><p><strong>Unsupervised mode</strong>: the User presents the PID and/or a set of Attributes contained in one or more Electronic Attestations through the Wallet Instance to a designated device (e.g., turnstile, ATM).</p></li>
 </ul>
 <p>Below are the functional requirements supporting the User Experience for both methods.</p>
@@ -330,7 +328,7 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 <li><p>The User MUST access their Wallet Instance using the unlock method previously set;</p></li>
 <li><p>the User MUST navigate to the feature dedicated to QR Code generation;</p></li>
 <li><p>the User MUST present the generated QR Code to the Verifier acting on behalf of the Relying Party, who scans it using the designated verification app or system;</p></li>
-<li><p>the User MUST review the requested PID data and/or Attributes, the name of the requesting Service Provider, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation;</p></li>
+<li><p>the User MUST review the requested PID or EAA data, the name of the requesting Service Provider, and any related policy. The User MUST decide whether to present any non-mandatory PID or EAA data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation;</p></li>
 <li><p>the User MUST authorize the operation using the unlock method previously set;</p></li>
 <li><p>the User MUST receive confirmation of the successful presentation.</p></li>
 </ul>
@@ -340,7 +338,7 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 <li><p>the User MUST access their Wallet Instance using the unlock method previously set;</p></li>
 <li><p>the User MUST navigate to the feature dedicated to QR Code generation;</p></li>
 <li><p>the User MUST present the generated QR Code to the designated device (e.g., a turnstile) of the Relying Party for scanning;</p></li>
-<li><p>the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation;</p></li>
+<li><p>the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to present any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation;</p></li>
 <li><p>the User MUST authorize the operation using the unlock method previously set;</p></li>
 <li><p>the User MUST receive confirmation of the successful presentation.</p></li>
 </ul>
@@ -359,7 +357,7 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 <ul class="simple">
 <li><p>The User MUST click the Engagement Button provided on the Relying Party's Touchpoint;</p></li>
 <li><p>the User MUST access their Wallet Instance using the unlock method previously set;</p></li>
-<li><p>the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation;</p></li>
+<li><p>the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to present any non-mandatory PID data and/or Attributes (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation;</p></li>
 <li><p>the User MUST authorize the operation using the unlock method previously set;</p></li>
 <li><p>the User MUST receive confirmation of the successful presentation within the Wallet Instance;</p></li>
 <li><p>the User MUST return to the Relying Party's Touchpoint, where they MUST see confirmation of the completed presentation.</p></li>
@@ -370,7 +368,7 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 <li><p>The User MUST click the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;</p></li>
 <li><p>the User MUST access the desired Wallet Instance from the device where it is installed, using the unlock method previously set;</p></li>
 <li><p>the User MUST scan the QR Code provided by the Relying Party using their Wallet Instance;</p></li>
-<li><p>the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to share any non-mandatory personal data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation.</p></li>
+<li><p>the User MUST review the requested PID data and/or Attributes, the name of the requesting Relying Party, and any related policy. The User MUST decide whether to present any non-mandatory personal data (Selective Disclosure). The User MUST provide consent to proceed or MAY cancel the operation.</p></li>
 <li><p>the User MUST authorize the operation using the unlock method previously set;</p></li>
 <li><p>the User MUST receive confirmation of the successful presentation within the Wallet Instance;</p></li>
 <li><p>the User MUST return to the Relying Party's Touchpoint and MAY view confirmation of the completed presentation.</p></li>
@@ -378,9 +376,9 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 <p>If an error occurs, the User MUST receive clear and consistent messages informing them of the issue and guiding them toward resolution. For further details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
 <section id="authentication">
 <h4>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">¶</a></h4>
-<p>Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to share only the information strictly necessary for verification by Relying Parties. At the same time, it guarantees the reliability, authenticity, and validity of the data presented.</p>
+<p>Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to present only the information strictly necessary for verification by Relying Parties. At the same time, it guarantees the reliability, authenticity, and validity of the data presented.</p>
 <p>The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for <a class="reference internal" href="#remote-presentation">remote presentation</a> in same-device and cross-device modes.</p>
-<p>From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated <a href="#id1"><span class="problematic" id="id2">:ref:`Authentication Button`_</span></a>.</p>
+<p>From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated <a class="reference internal" href="#authentication-button"><span class="std std-ref">Authentication Button</span></a>.</p>
 <p>To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below and SHOULD use the open-source assets available in the Official Resources, which are designed, developed, and tested for usability and accessibility.</p>
 <p>Relying Parties that choose not to adopt these resources MAY implement custom Technical Solutions supporting the Authentication process. However, these MUST comply with the requirements specified below, adhere to [REF_ACCESSIBILITY], and, for public entities, follow the [GL_DESIGN].</p>
 <p>Relying Parties MUST implement and provide the following pages as part of the Authentication process:</p>
@@ -684,7 +682,7 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 <li><p>The User MUST have access to assistance options at any point during the User Experience, with a clear indication of how to access them.</p></li>
 <li><p>The User MAY open an assistance request through their Wallet Instance or other Touchpoints provided by the Wallet Provider.</p></li>
 <li><p>When an assistance request is open, the User MUST receive prompt confirmation that the request has been acknowledged.</p></li>
-<li><p>The User MUST be informed in advance if it is necessary to share their data with third parties.</p></li>
+<li><p>The User MUST be informed in advance if it is necessary to present their data with third parties.</p></li>
 <li><p>The User SHOULD be informed when an assistance request needs to be managed outside of their Wallet Instance, such as on third-party channels.</p></li>
 <li><p>The User CAN track the status of the request at any time through functionalities that MUST be made available by the actors dealing with the request.</p></li>
 </ul>
