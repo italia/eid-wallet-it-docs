@@ -10,12 +10,12 @@ The Digital Credentials Catalogue is the registry of all available Digital Crede
 
 The Digital Credential Catalogue aims to:
 
-  1. Facilitate Digital Credential discovery for Users
-  2. Standardize the technical and functional description of Digital Credentials
-  3. Enable interoperability between different Issuers and Relying Parties
-  4. Simplify the integration process for Wallet Providers and Relying Parties
-  5. Ensure trust in the ecosystem through certified information
-  6. Provide transparency on the ecosystem of available Digital Credentials
+  1. Facilitate Digital Credential discovery for Users.
+  2. Standardize the technical and functional description of Digital Credentials.
+  3. Enable interoperability between different Issuers and Relying Parties.
+  4. Simplify the integration process for Wallet Providers and Relying Parties.
+  5. Ensure trust in the ecosystem through certified information.
+  6. Provide transparency on the ecosystem of available Digital Credentials.
 
 
 The main Entities involved in the Digital Credential Catalogue are: 
@@ -50,21 +50,21 @@ The following table summarizes the main information that MUST be provided by the
    * - Digital Credential Issuers
      - Details about the organization authorized to issue the Digital Credential, such as:
        
-       - **Issuers identifiers**: Codes that uniquely identify the Digital Credential issuer
-       - **Issuer type**: Classification as PID, (Q)EAA, or Pub-EAA Provider
-       - **Additional information**: Organizational details including name, code, and contact information
+       - **Issuers identifiers**: Codes that uniquely identify the Digital Credential issuer.
+       - **Issuer type**: Classification as PID, (Q)EAA, or Pub-EAA Provider.
+       - **Additional information**: Organizational details including name, code, and contact information.
    * - Authentic Sources 
      - Information about the authoritative data source, such as:
        
-       - **Authentic Source identifiers**: Unique codes for the Digital Credential's authoritative source
-       - **Authentic Source type**: Classification as Public or Private entity
-       - **Additional information**: Organizational details including name, code, and contact information
+       - **Authentic Source identifiers**: Unique codes for the Digital Credential's authoritative source.
+       - **Authentic Source type**: Classification as Public or Private entity.
+       - **Additional information**: Organizational details including name, code, and contact information.
    * - Technical Specification
      - Technical details, including:
        
-       - **Digital Credential schemes**: Framework and structure specifications
-       - **Digital Credential formats**: Data format and encoding standards
-       - **Authentication policy**: Methods and requirements for verification
+       - **Digital Credential schemes**: Framework and structure specifications.
+       - **Digital Credential formats**: Data format and encoding standards.
+       - **Authentication policy**: Methods and requirements for verification.
    * - Terms of Use
      - Conditions and limitations for Digital Credential usage, such as:
        
@@ -75,8 +75,8 @@ The following table summarizes the main information that MUST be provided by the
    * - Claims and Taxonomy References
      - Content and classification information:
        
-       - **List of displayed claims**: Specific Digital Credential content displayed to the User
-       - **Structured taxonomy references**: Classification systems and controlled vocabularies used
+       - **List of displayed claims**: Specific Digital Credential content displayed to the User.
+       - **Structured taxonomy references**: Classification systems and controlled vocabularies used.
 
 
 The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalogue `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the ``.well-known/credential-catalogue`` endpoint.
@@ -236,8 +236,8 @@ Each element of the ``credentials`` array contains at least the following inform
        * **description**: Human-readable purpose description with a suffix ``_l10n_id`` for content localisation.
        * **category**: Main category in the Credential taxonomy (e.g., ``AUTHORIZATION``, ``IDENTITY``).
        * **subcategory**: Subcategory within the taxonomy (e.g., ``DRIVING_LICENSE``, ``PERSON_IDENTIFICATION``).
-       * **claims_required**: Array of claim identifiers that are required when using the Credential for this purpose..
-       * **claims_recommended**: Array of claim identifiers that are recommended but not mandatory for this purpose
+       * **claims_required**: Array of claim identifiers that are required when using the Credential for this purpose.
+       * **claims_recommended**: Array of claim identifiers that are recommended but not mandatory for this purpose.
    * - **issuers**
      - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
    * - **authentic_sources**
