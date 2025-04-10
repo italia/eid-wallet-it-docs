@@ -412,7 +412,7 @@ Activation of the Wallet Instance
      - Actor in charge 
    * - The User does not hold the required Attributes contained in one or more Electronic Attestations within their Wallet Instance to access a specific service 
      - Wallet Provider 
-    * - The Wallet Provider's services or the Relying Party’s services are unresponsive (e.g. technical errors or lack of connection)  
+   * - The Wallet Provider's services or the Relying Party’s services are unresponsive (e.g. technical errors or lack of connection)  
      - Wallet Provider, Relying Party  
 
 **Management of Electronic Attestations** 
