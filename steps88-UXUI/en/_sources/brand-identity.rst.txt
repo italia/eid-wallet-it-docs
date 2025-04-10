@@ -102,7 +102,16 @@ Authentication Button
 =====================
 
 The Authentication Button is a type of Engagement Button. 
-Verifiers MUST make the Authentication Button available within the digital Interface of their Technical Solutions to allow the User to log into their services through its Wallet Instance. 
+Verifiers MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services through the Wallet Instance.  
+
+The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tabbed, and list layouts, respectively. 
+
+..  figure:: ../../images/discovery-page-layouts.svg
+    :alt: examples of Discovery Page layouts: grid, tab, and list
+    :width: 100%
+*Examples of Discovery Page layouts: grid, tab, and list*
+
+For further details on the use of the Authentication Button, refer to the `Authentication section`_. 
 
 The Authentication Button has the following requirements:
 
