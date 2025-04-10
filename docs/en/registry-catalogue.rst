@@ -29,7 +29,7 @@ The main Entities involved in the Digital Credential Catalogue are:
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue. 
 
 
-<Aggiungere figura in plantuml (C4 Component) che descirva le entità coinvolte e le principali interazioni>
+<Aggiungere figura in plantuml (C4 Component) che descriva le entità coinvolte e le principali interazioni>
 
 
 The following table summarizes the main information that MUST be provided by the Digital Credential Catalogue:
@@ -50,7 +50,7 @@ The following table summarizes the main information that MUST be provided by the
    * - Digital Credential Issuers
      - Details about the organization authorized to issue the Digital Credential, such as:
        
-       - **Issuers identifiers**: Unique identifier for the Digital Credential issuer.
+       - **Issuer identifiers**: Unique identifier for the Digital Credential issuer.
        - **Issuer type**: Classification as PID, (Q)EAA, or Pub-EAA Provider.
        - **Additional information**: Organizational details including name, code, and contact information.
    * - Authentic Sources 
@@ -84,7 +84,7 @@ The Trust Anchor MUST publish and keep up to date all the information at the Dig
 Digital Credentials Categories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Digital Credentials recognized within IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.
+Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.
 
 .. list-table:: Digital Credential Domains and Categories
    :header-rows: 1
@@ -213,10 +213,13 @@ Each element of the ``credentials`` array contains at least the following inform
    * - **pricing_policy**
      - OPTIONAL. Information about Digital Credential pricing, including:
        
-       * **pricing_type**: Type of pricing model, such as ``issuance_based`` or ``verification_based``.
-       * **price**: Cost per issuance.
-       * **currency**: Currency of the price.
-       * **pricing_model_uri**: URI to detailed pricing model.
+       * **models**: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing:
+         
+         - **pricing_type**: Type of pricing model, such as ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
+         - **price**: Cost associated with the model.
+         - **currency**: Currency of the price.
+       
+       * **pricing_model_uri**: URI to the detailed pricing model documentation.
    * - **validity_info**
      - Information about Digital Credential validity, including at least:
        
@@ -283,6 +286,13 @@ The corresponding example of Digital Credentials Catalogue as decoded in JSON fo
         "claims.given_name.name": "Nome",
         ...
       }
+
+  Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalogue. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+
+  A non-normative example of the Italian localization URI for the mDL bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**.
+
+  Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
+
 
 Claims Taxonomy
 ^^^^^^^^^^^^^^^^

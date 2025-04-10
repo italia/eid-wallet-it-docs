@@ -5,7 +5,7 @@
   "localization": {
     "default_locale": "it",
     "available_locales": ["en", "it", "fr", "de"],
-    "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/i18n/taxonomy/claims/",
+    "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/claims/",
     "version": "1.0.0"
   },
   "name_l10n_id": "taxonomy.claims.name",

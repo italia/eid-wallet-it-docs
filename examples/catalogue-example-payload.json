@@ -12,7 +12,7 @@
          "localization": {
             "default_locale": "it",
             "available_locales": ["en", "it", "fr", "de"],
-            "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/i18n/mdl/",
+            "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/",
             "version": "1.0.0"
          },
          "name_l10n_id": "credential.mdl.name",
@@ -27,11 +27,15 @@
             ]
          },
          "pricing_policy": {
-               "pricing_type": "issuance_based",
-               "price": 0.1,
-               "currency": "euro",
-               "pricing_model_uri": "https://trust-registry.eid-wallet.example.it/business-models/mdl"
-         },
+             "models": [
+               {
+                 "pricing_type": "verification_based",
+                 "price": 0.01,
+                 "currency": "EUR",
+               }
+             ],
+             "pricing_model_uri": "https://example.com/pricing"
+           },
          "validity_info": {
             "max_validity_days": 365,
             "status_methods": ["status_list"],
