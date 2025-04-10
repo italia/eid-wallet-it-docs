@@ -22,7 +22,7 @@ The main Entities involved in the Digital Credential Catalogue are:
 
   - **Trust Anchor**: It manages and maintains the Digital Credential Catalogue, guaranteeing its authenticity and integrity.
   - **Supervisory Body**: It interacts with the Trust Anchor and the Digital Credential Catalogue to monitor the registration phase ensuring security and privacy according to national/European regulations, keeping all the information reliable and updated.
-  - Digital Credential Issuers: The entities authorized to issue Digital Credentials, registering them in the Catalogue.
+  - **Digital Credential Issuers**: The entities authorized to issue Digital Credentials, registering them in the Catalogue.
   - **Relying Parties**: They use the Digital Credential Catalogue to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
   - **Wallet Providers**: They access the Digital Credential Catalogue to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
   - **Users**: The citizens who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.
@@ -50,13 +50,13 @@ The following table summarizes the main information that MUST be provided by the
    * - Digital Credential Issuers
      - Details about the organization authorized to issue the Digital Credential, such as:
        
-       - **Issuers identifiers**: Codes that uniquely identify the Digital Credential issuer.
+       - **Issuers identifiers**: Unique identifier for the Digital Credential issuer.
        - **Issuer type**: Classification as PID, (Q)EAA, or Pub-EAA Provider.
        - **Additional information**: Organizational details including name, code, and contact information.
    * - Authentic Sources 
      - Information about the authoritative data source, such as:
        
-       - **Authentic Source identifiers**: Unique codes for the Digital Credential's authoritative source.
+       - **Authentic Source identifiers**: Unique identifier for the Digital Credential's authoritative source.
        - **Authentic Source type**: Classification as Public or Private entity.
        - **Additional information**: Organizational details including name, code, and contact information.
    * - Technical Specification
@@ -309,6 +309,8 @@ The Digital Credentials Catalogue Request MUST be an HTTP GET using the applicat
     Host: www.trust-registry.eudi-wallet.example.it
     Content-Type: application/jose
 
+.. note:: As a future enhancement, the Trust Anchor MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.
+
 
 Digital Credentials Catalogue Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -318,6 +320,3 @@ A non-normative example of the response is provided below.
 
 .. literalinclude:: ../../examples/catalogue-example-jws.txt
   :language: text
-
-
-.. note:: As a future enhancement, an issuer MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.
