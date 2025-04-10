@@ -107,7 +107,7 @@ The integration of the Authentication Button within the Discovery Page may vary 
 ..  figure:: ../../images/discovery-page-layouts.svg
     :alt: examples of Discovery Page layouts: grid, tab, and list
     :width: 100%
-*Examples of Discovery Page layouts: grid, tab, and list *
+*Examples of Discovery Page layouts: grid, tab, and list*
 
 For further details on the use of the Authentication Button, refer to the `Authentication section`_. 
 
