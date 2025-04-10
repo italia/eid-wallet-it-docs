@@ -69,7 +69,7 @@ The following table summarizes the main information that MUST be provided by the
      - Conditions and limitations for Digital Credential usage, such as:
        
        - **Credential validity**: Time period during which the Digital Credential is valid and, when applicable, mechanisms and technical details for invalidating Digital Credentials (revocation/suspension methods).
-       - **Restriction policy**: If applicable, rules governing the Digital Credential's use and limitations according to national regulations. It is used, for example, to specify if only specific legal type Entities, for example Pub-EAA and public Wallet Solutions, are allowed to issue and obtain the Digital Credential.
+       - **Restriction policy**: If applicable, rules governing the Digital Credential's use and limitations according to national regulations. It is used, for example, to specify if only specific legal type Entities, for example Pub-EAA Provider and public Wallet Solutions, are allowed to issue and obtain the Digital Credential.
        - **Pricing policy**: Information related to pricing models of Digital Credential, such as `free`, `issuance_based`, `verification_based`.
        - **Digital Credential purposes**: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.
    * - Claims and Taxonomy References
@@ -316,7 +316,7 @@ The Digital Credentials Catalogue Request MUST be an HTTP GET using the applicat
 .. code-block:: http
 
     GET /.well-known/credential-catalogue HTTP/1.1
-    Host: www.trust-registry.eudi-wallet.example.it
+    Host: www.trust-registry.eid-wallet.example.it
     Content-Type: application/jose
 
 .. note:: As a future enhancement, the Trust Anchor MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.

@@ -31,7 +31,7 @@
                {
                  "pricing_type": "verification_based",
                  "price": 0.01,
-                 "currency": "EUR",
+                 "currency": "EUR"
                }
              ],
              "pricing_model_uri": "https://example.com/pricing"
@@ -74,6 +74,7 @@
                "id": "https://issuer.example.org",
                "organization_name": "Digital Credential Issuer of Example",
                "organization_code": "ci_example_it",
+               "organization_country": "IT",
                "contacts": [
                   "mailto:informazioni@example.it",
                   "mailto:protocollo@pec.example.it"
@@ -96,6 +97,7 @@
                "id": "https://authentic-sources.example.org",
                "organization_name": "Authentic Source of Example",
                "organization_code": "as_example_it",
+               "organization_country": "IT",
                "contacts": [
                   "mailto:informazioni@example.it",
                   "mailto:protocollo@pec.example.it"
