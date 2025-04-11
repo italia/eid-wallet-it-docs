@@ -100,8 +100,7 @@ Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically
    * - *IDENTITY*
      - * PERSON_IDENTIFICATION
        * ELECTRONIC_RESIDENCY
-       * DIGITAL_IDENTITY
-     - Credentials that establish or verify the identity of a person, including physical and digital identity documents.
+     - Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.
    * - *AUTHORIZATION*
      - * DRIVING_LICENSE
        * PROFESSIONAL_LICENSE
