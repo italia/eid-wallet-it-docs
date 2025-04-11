@@ -1090,6 +1090,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
      - ``temporarily_unavailable``
      - Service unavailable. Please try again later.
 
+
 .. .. _Trust Model: trust.html
 .. _Wallet Attestation Issuance: wallet-solution.html#wallet-attestation-issuance
 .. _Wallet Instance Initialization and Registration: wallet-solution.html#wallet-instance-initialization-and-registration
