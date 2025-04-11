@@ -431,6 +431,9 @@ Credential Issuance Test Matrix
 This section provides the set of test cases for verifying conformance of a Credential Issuance implementations to the technical rules defined in the IT-Wallet ecosystem.
 Tests related to both PID and (Q)EAA Providers are related to the issuance of credential of public interest, as published within the Credential Catalogue.
 
+.. note::
+
+  References about official OpenID4VCI test plans will update this section in future releases.
 
 - PID/EAA Issuance
 
