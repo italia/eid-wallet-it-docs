@@ -135,7 +135,8 @@ Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically
 
 
 Digital Credentials Catalogue Structure
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Digital Credentials Catalogue contents is secured in a JWS that contains the following JOSE header parameters:
 
 .. _table_catalogue_parameters:
@@ -309,11 +310,12 @@ A non-normative example of the Claim Taxonomy is given below.
 
 
 Digital Credentials Catalogue Endpoint
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [:rfc:`8615`] that provides public access to information related to the Credentials available in IT-Wallet.
 
 Digital Credentials Catalogue Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------
+
 The Digital Credentials Catalogue Request MUST be an HTTP GET using the application/jose media type as in the following non-normative example.
 
 .. code-block:: http
@@ -326,7 +328,8 @@ The Digital Credentials Catalogue Request MUST be an HTTP GET using the applicat
 
 
 Digital Credentials Catalogue Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
+
 The Digital Credentials Catalogue Response MUST be a JWS that contains the parameters listed in the :ref:`table of Digital Credentials Catalogue parameters <table_catalogue_parameters>`.
 
 A non-normative example of the response is provided below.
