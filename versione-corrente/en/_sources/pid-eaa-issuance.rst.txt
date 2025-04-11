@@ -1186,7 +1186,7 @@ Access Token
 
 A DPoP-bound Access Token is provided by the PID/(Q)EAA Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
 
-The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
+The **DPoP JWT** contains the following JOSE header parameters and claims.
 
 .. list-table::
     :widths: 20 60 20
@@ -1196,13 +1196,13 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
       - **Description**
       - **Reference**
     * - **typ**
-      - It MUST be equal to ``at+jwt``.
+      - REQUIRED. It MUST be equal to ``at+jwt``.
       - [:rfc:`7515`].
     * - **alg**
-      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
+      - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
       - [:rfc:`7515`].
     * - **kid**
-      -  Unique identifier of the ``jwk`` used by the PID/(Q)EAA Provider to sign the Access Token. 
+      - REQUIRED. Unique identifier of the ``jwk`` used by the PID/(Q)EAA Provider to sign the Access Token. 
       - :rfc:`7638#section_3`.
 
 
@@ -1214,28 +1214,28 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
     - **Description**
     - **Reference**
   * - **iss**
-    - It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet Instance MUST verify that this value matches the PID/(Q)EAA Issuer where it has requested the credential.
+    - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the PID/(Q)EAA Issuer. The Wallet Instance MUST verify that this value matches the PID/(Q)EAA Issuer where it has requested the credential.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
-    - It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the PID/(Q)EAA SD-JWT-VC.
+    - REQUIRED. It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the PID/(Q)EAA SD-JWT-VC.
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **client_id**
-    - The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet Attestation (``cnf.jwk``).
+    - REQUIRED. The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **aud**
-    - It MUST be set to the identifier of the PID/(Q)EAA Provider.
+    - REQUIRED. It MUST be set to the identifier of the PID/(Q)EAA Provider.
     - [:rfc:`9068`].
   * - **iat**
-    - UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
+    - REQUIRED. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
     - [:rfc:`9068`], [:rfc:`7519`. Section 4.1.6].
   * - **exp**
-    - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
+    - REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **jti**
-    - It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP SHOULD use to prevent reuse by rejecting the Token ID if already processed.
+    - OPTIONAL. It MUST be a String in *uuid4* format. Unique Token ID identifier that the RP SHOULD use to prevent reuse by rejecting the Token ID if already processed.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **cnf**
-    - It MUST contain a **jkt** claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the *jkt* member MUST be the base64url encoding (as defined in [:rfc:`7515`]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.
+    - REQUIRED. It MUST contain a **jkt** claim being JWK SHA-256 Thumbprint Confirmation Method. The value of the *jkt* member MUST be the base64url encoding (as defined in [:rfc:`7515`]) of the JWK SHA-256 Thumbprint of the DPoP public key (in JWK format) to which the Access Token is bound.
     - [:rfc:`9449`. Section 6.1] and [:rfc:`7638`].
 
 Refresh Token
