@@ -24,7 +24,7 @@ This repository hosts the sphinx project tree of IT-Wallet Technical Specificati
 
 ## Preview
 
-Preview of the lates editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
+Preview of the latest editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
 
  - [Editor's Copy](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)
 
