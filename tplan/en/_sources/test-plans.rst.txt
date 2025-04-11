@@ -892,7 +892,7 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
      - Ensure errors in the Credential Offer Assessment process are handled correctly and reported.
 
 Credential Presentation Test Matrix
----------------------------------
+------------------------------------
 
 This section provides the set of test cases for verifying conformance of a Credential Verifiers implementations to the technical rules defined in the IT-Wallet ecosystem.
 
