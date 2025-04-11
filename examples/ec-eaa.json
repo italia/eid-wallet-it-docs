@@ -46,8 +46,7 @@
             ],
             "scopes_supported": [
                 "EuropeanDisabilityCard",
-                "dc_sd_jwt_mdl",
-                "mso_mdoc_mdl"
+                "mDL"
             ],
             "response_modes_supported": [
                 "form_post.jwt",
@@ -108,7 +107,7 @@
                 }
             ],
             "credential_configurations_supported": {
-                "EuropeanDisabilityCard": {
+                "dc_sd_jwt_EuropeanDisabilityCard": {
                     "format": "dc+sd-jwt",
                     "scope": "EuropeanDisabilityCard",
                     "cryptographic_binding_methods_supported": [
@@ -259,9 +258,9 @@
                         }
                     ]
                 },
-                "dc_sd_jwt_mdl": {
+                "dc_sd_jwt_mDL": {
                     "format": "dc+sd-jwt",
-                    "scope": "dc_sd_jwt_mdl",
+                    "scope": "mDL",
                     "cryptographic_binding_methods_supported": [
                         "jwk"
                     ],
@@ -289,7 +288,7 @@
                             "locale": "en-US"
                         }
                     ],
-                    "vct": "https://eaa-provider.example.org/v1.0/mdl",
+                    "vct": "https://eaa-provider.example.org/v1.0/mDL",
                     "claims": [
                         {
                             "path": ["given_name"],
@@ -462,9 +461,9 @@
                         }
                     ]
                 },
-                "mso_mdoc_mdl": {
+                "mso_mdoc_mDL": {
                     "format": "mso_mdoc",
-                    "scope": "mso_mdoc_mdl",
+                    "scope": "mDL",
                     "doctype": "org.iso.18013.5.1.mDL",
                     "cryptographic_binding_methods_supported": [
                         "cose_key"

@@ -80,7 +80,7 @@ A non-normative example of the backup JWT is as the following:
     "wallet_attestation":"eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ",
     "credentials_backup": {  
         "https://issuer.example.org/v1.0/mdl": ["org.iso.18013-5.1.mDL"],
-        "https://eaa-provider.example.org/": ["EuropeanDisabilityCard"]
+        "https://eaa-provider.example.org/": ["dc_sd_jwt_EuropeanDisabilityCard"]
      },
   }
 

@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 Entity Configuration of Relying Parties
-===========================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 According to Section :ref:`Configuration of the Federation`, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
 The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`. 
@@ -14,7 +14,7 @@ The Relying Parties MUST provide the following metadata types:
 The *federation_entity* metadata MUST contain the claims as defined in Section :ref:`Metadata of federation_entity Leaves`.
 
 Metadata for openid_credential_verifier
--------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *openid_credential_verifier* metadata MUST contain the following parameters.
 
@@ -35,7 +35,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
   * - **response_uris**
     - JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode ``direct_post`` and ``direct_post.jwt`` (see `OpenID4VP`_ Draft 20 Sections 6.2 and 6.3).
   * - **authorization_signed_response_alg**
-    - String representing the signing [:rfc:`7515`] *alg* algorithm that MUST be used for signing authorization responses. The algorithm *none* MUST NOT be used. See `JARM`_.
+    - String representing the signing [:rfc:`7515`] *alg* algorithm that MUST be used for signing authorization responses. The algorithm "*none*" MUST NOT be used. See `JARM`_.
   * - **authorization_encrypted_response_alg**
     - Algorithm used to encrypt the authorization response. It specifies to the Wallet Instance the asymmetric encryption algorithm. See `JARM`_.
   * - **authorization_encrypted_response_enc**
@@ -48,7 +48,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
     The parameter **response_uris** is introduced in this specification. 
 
 Example of a Relying Party Entity Configuration
--------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* well-known endpoint to obtain the Relying Party Entity Configuration:
 
