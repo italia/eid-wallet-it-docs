@@ -70,8 +70,8 @@ pandoc -o eidas-it-wallet-docs.odt index.html
 
 ## Versioning
 
-This project participates in the versioning model [*Semantic
-Versioning*](https://semver.org/).
+This project adheres to the [*Semantic
+Versioning*](https://semver.org/) model.
 
 Furthermore, this project uses the git *branches* and *tags* in the following way:
 * the branch `versione-corrente` contains the last stable version of the standard;
