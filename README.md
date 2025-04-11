@@ -75,8 +75,8 @@ Versioning*](https://semver.org/) model.
 
 Furthermore, this project uses the git *branches* and *tags* in the following way:
 * the branch `versione-corrente` contains the last stable version of the standard;
-* The [release page](https://github.com/italia/publiccode.yml/releases) of
-  GitHub contains all the released versions of the standard. For the sake of coherence, the *releases* are made according to the tag names.
+* The [release page](https://github.com/italia/eid-wallet-it-docs/releases) of
+  GitHub contains all the released versions of the specifications. For the sake of coherence, the *releases* are made according to the tag names.
 
 Each time a release is created or edited, a preview is built based on the tag the release refers to. See [the preview section](preview-of-released-versions) for more.
 
