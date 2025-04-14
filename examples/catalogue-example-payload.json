@@ -132,7 +132,7 @@
             "templates": [
                {
                   "template_uri": "https://trust-registry.eid-wallet.example.it/.well-known/templates/mdl.svg",
-                  "template_uri#integriti": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+                  "template_uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
                   "properties": {
                      "orientation": "landscape",
                      "color_scheme": "light",
