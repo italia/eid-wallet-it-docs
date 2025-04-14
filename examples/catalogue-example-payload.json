@@ -117,7 +117,7 @@
          "formats": [
             {
                "configuration_id": "sd-jwt-mdl",
-               "format": "vc+sd-jwt",
+               "format": "dc+sd-jwt",
                "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mdl",
                "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
             },
