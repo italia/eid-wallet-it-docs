@@ -149,10 +149,10 @@ This section provides the common set of test cases for Wallet Solutions, Relying
    * - ALL-005
      - Security
      - Evaluation of compliance with entities before exchanging data about the User
-     - Entities evaluates trust and compliance with other entities before any information related to a citizen might be exchanged. Bogus configurations don't allow data exchanges.
+     - Entities evaluates trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.
    * - ALL-006
      - Security
-     - Evaluation of proof of possession during the use of a signed assertion including any usage ownership confirmation method. 
+     - Evaluation of proof of possession during the use of a signed assertion in according to the configured usage ownership confirmation method. 
      - Entities evaluates the confirmation method and apply its protocol to consider valid the signed statement.
    * - ALL-007
      - Security
@@ -897,7 +897,7 @@ Credential Presentation Test Matrix
 This section provides the set of test cases for verifying conformance of a Credential Verifiers implementations to the technical rules defined in the IT-Wallet ecosystem.
 
 
-Remote Credential Presetation Test Matrix
+Remote Credential Presentation Test Matrix
 ...........................................
 
 This section defines the test cases about the remote presentation flow.
