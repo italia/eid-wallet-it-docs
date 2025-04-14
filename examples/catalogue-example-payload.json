@@ -118,20 +118,21 @@
             {
                "configuration_id": "dc_sd_jwt_mDL",
                "format": "dc+sd-jwt",
-               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mdl",
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
                "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
             },
             {
                "configuration_id": "mso_mdoc_mDL",
                "format": "mso_mdoc",
-               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mdl",
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL",
                "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
             }
          ],
          "display_properties": {
             "templates": [
                {
-                  "template_uri": "https://trust-registry.eid-wallet.example.it/.well-known/templates/mdl.svg",
+                  "authentic_source_id": "https://authentic-sources.example.org",
+                  "template_uri": "https://authsource.example.com/.well-known/templates/mDL.svg",
                   "template_uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
                   "properties": {
                      "orientation": "landscape",
@@ -142,7 +143,7 @@
             ],
             "background_color": "#008558",
             "text_color": "#FFFFFF",
-            "logo_uri": "https://trust-registry.eid-wallet.example.it/.well-known/logos/mdl.svg"
+            "logo_uri": "https://trust-registry.eid-wallet.example.it/.well-known/logos/mDL.svg"
          },
          "claims": [
             {
