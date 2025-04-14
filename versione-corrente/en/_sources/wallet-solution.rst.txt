@@ -12,12 +12,14 @@ Wallet Solution Requirements
 
 This section lists the requirements that Wallet Providers, Wallet Solutions, and their Wallet Instances must meet.
 
+- The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.
 - The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.
 - The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet Attestation.
 - The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers and Relying Parties, presenting a Wallet Attestation.
-- The Wallet Solutions MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.
 - The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively.
 - The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
+- The Wallet Instance MUST provide Users with an up-to-date list of Relying Parties with which the User has established a connection and, where applicable, all data exchanged;
+- The Wallet Instance MUST provide Users with a mechanism to request the erasure of personal attributes by a Relying Party pursuant to Article 17 of Regulation (EU) 2016/679, and to log each Erasure Request made.
 
 Wallet Attestation Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -198,7 +200,14 @@ A Wallet Provider instead is responsible for:
 
 Wallet Instance Functionalities
 -------------------------------
-A Wallet Instance, MUST support three fundamental functionalities: Registration, Attestation Issuance, and Revocation. Each functionality is described in detail in the following sections.
+A Wallet Instance, MUST support the following functionalities:
+
+  - Wallet Registration (detailed in :ref:`Wallet Instance Initialization and Registration`), 
+  - Wallet Attestation Issuance (detailed in :ref:`Wallet Attestation Issuance`),
+  - Wallet Revocation (detailed in :ref:`Wallet Instance Revocation`) and 
+  - Deletion of presented attributes (detailed in :ref:`User's Attributes Deletion`). 
+
+Each functionality is described in detail in the following sections.
 
 .. note::
 
@@ -207,11 +216,55 @@ A Wallet Instance, MUST support three fundamental functionalities: Registration,
 Wallet Instance Initialization and Registration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This process allows the User who has just installed the Wallet Instance application to register the Wallet Instance with the Wallet Provider backend. During this process, the Wallet Instance application will request a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself. This assertion will be validated by the Wallet Provider, and if the validation is successful, the Wallet Provider will authenticate the Wallet Instance. For details see :ref:`mobile-instance-app-initialization-and-registration.rst`.
+This process allows the User who has just installed the Wallet Instance application to register the Wallet Instance with the Wallet Provider backend. During this process, the Wallet Instance application will request a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself. This assertion will be validated by the Wallet Provider, and if the validation is successful, the Wallet Provider will authenticate the Wallet Instance. For details see :ref:`Mobile Application Instance Initialization`.
+
+.. warning::
+
+  During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate the Wallet Instance with a specific User, authenticating the User with the Wallet Provider. The authentication mechanism is at the discretion of the Wallet Provider and it will not be addressed within these guidelines, as each Wallet Provider may have its User authentication systems already implemented.
+
+.. note::
+
+  The Wallet Provider SHOULD associate the Wallet Instance (through the ``hardware_key_tag`` identifier) with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance and for a future revocation. For details see :ref:`Mobile Application Instance`.
 
 .. include:: wallet-attestation.rst
 .. include:: wallet-revocation.rst
 
+User's Attributes Deletion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which attributes that can uniquely identify Users (e.g., the tax_id_code claim of the PID) have been presented. Subsequently Users may request deletion of all attributes presented to a Relying Party of their choice. Below the high level flow regarding this interaction is presented.   
+
+.. figure:: ../../images/user's_data_deletion_flow.svg
+    :figwidth: 100%
+    :align: center
+    :target: https://www.plantuml.com/plantuml/png/RLBDZjD03BxdAQozS67t0Nf0ksABn0KX5iI5YvCuxOZfE8mzBNrxx2bDcBAtTFpv-_7NHr7CMWwnmwASog6dtE6WdE7kcr2-0nGeOezTpx_1dzu8FDCn3DJDjXg6C6DIkFkECPB2nsICQQ2wYFCCBSe9u6b7II_Cs54QmQWl_5yedaFQmMVRERURsunICi4sZHp-hXFDsg8-q4WPDN1ouBmW9qSkKb0ZmVqxTxWnpqV-IO2gEVH52KQAL3ccaWR_m1ZC3pZSjtnx0ozxFa4Cei1JupoGm8yK4imiGYBEnDFrU4zNcLiRBwOwAEYUsZk0ij5b-bL8wdZrnzFgMbP_ddRJafZmzhqzLH93EWJkhz9r93Cd8RzEOYNW8sMVsc-0hwPwqp1mhnYIrBcxMXkw71wcp0UVLCI154TKDC__HpI4b-EwtHh3hRsg77dd5_vNT4csT8GRFp3wD_azNe4sKRsBjnMw96vhm6A2ISE0Ib8pUACF5Jb5Fi70Dat63IS3BWZOeq1FzY9b64XaAZ6sTED3Uu5gOtN-x7tJMhM7xxaONdcHMRPg-2LkKsp1fVFRV_CdrZ2TBqoFPgKSuXy0
+
+    Sequence Diagram for Deletion of User's Attributes
+
+**Step 1:** The User requests the deletion of attributes invoking the Wallet Instance’s attribute deletion function.
+
+**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes. The Wallet Instance SHOULD filter the transaction logs so that only the Relying Parties which have had access to attributes uniquely identifying the User are shown.
+
+**Step 3:** The User selects the target Relying Party for attributes deletion.
+
+**Steps 4 - 5:** The Wallet Instance obtains the Relying Party Entity Configuration at the Federation ./well-known/ endpoint. The URL or the Erasure Endpoint (``erasure_endpoint``) can be found inside the metadata parameter.
+
+**Step 6:** The Wallet Instance logs the Erasure Request’s relevant information. These logs MUST include at least:
+  * the date of request,
+  * the Relying Party to which the request was made, 
+  * the attributes requested to be removed.
+
+**Steps 7 - 8:** The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present. Details on the Erasure Request can be found in :ref:`Erasure Request`.
+
+.. note::
+  
+  The Relying Party web page will authenticate the User with an appropriate level of assurance using any method such as SPID/CIE or the PID presentation. The specific mechanism used for authentication is left to the Relying Party. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
+
+**Step 9:** Upon successful authentication of the User the Relying Party MUST delete all attributes bound to the User in its possession. 
+
+**Step 10:** The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in :ref:`Erasure Response`.
+
+**Steps 11 - 12:**  The User-Agent uses the implemented method to return the Erasure Response to the Wallet Instance. Finally, the User is notified via the Wallet Instance regarding the Erasure Response outcome.
 
 Wallet Provider Endpoints
 ------------------------------------
@@ -334,7 +387,7 @@ federation_entity metadata
       - OPTIONAL. String. A URL that points to the logo of the Wallet Provider. The file containing the logo SHOULD be published in a format that can be viewed via the web.
       -  `OID-FED`_.
 
-Below is a non-normative example of the Entity Configuration for a Wallet PRovider.
+Below is a non-normative example of the Entity Configuration for a Wallet Provider.
 
 .. code-block:: javascript
 
@@ -396,7 +449,7 @@ Nonce Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
 
-See :ref:`Nonce Request` and :ref:`Nonce Response` for details on the Nonce Request and Nonce Response.
+See :ref:`Mobile Application Nonce Request` and :ref:`Mobile Application Nonce Response` for details on the Nonce Request and Nonce Response.
 
 Wallet Instance Management Endpoint
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -408,17 +461,10 @@ Wallet Instance Registration Request
 
 To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`Mobile Application Instance Initialization Request`.
 
-.. warning::
-  During the registration phase of the Wallet Instance with the Wallet Provider it is also necessary to associate the Wallet Instace with a specific User, authenticating the User with the Wallet Provider. The authentication mechanism is at the discretion of the Wallet Provider and it will not be addressed within these guidelines, as each Wallet Provider may have its User authentication systems already implemented.
-
 Wallet Instance Registration Response
 .............................................
 
 If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`Mobile Application Instance Initialization Response`.
-
-.. note::
-
-  The Wallet Provider SHOULD associate the Wallet Instance (through the ``hardware_key_tag`` identifier) with a specific User uniquely identified within the Wallet Provider's systems. This will be useful for the lifecycle of the Wallet Instance and for a future revocation.
 
 Wallet Instance Retrieval Request
 .............................................
@@ -566,66 +612,9 @@ This is a RESTful API endpoint provided by the Wallet Provider that enables the 
 Wallet Attestation Issuance Request
 .............................................
 
-The request to the Wallet Provider MUST use the HTTP POST method with Content-Type set to ``application/json``. The request body MUST contain an ``assertion`` parameter whose value is a signed JWT of the Wallet Attestation Request, including all header parameters and body claims described below.
+Further details on the Wallet Attestation Issuance Request are provided in the :ref:`Mobile Application Key Binding Request` section.
 
-Wallet Attestation Request JWT
-...................................
-
-The JOSE header of the Wallet Attestation Request JWT MUST contain the following parameters:
-
-.. list-table::
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **JOSE header**
-      - **Description**
-      - **Reference**
-    * - **alg**
-      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the :ref:`Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
-      - :rfc:`7516#section-4.1.1`.
-    * - **kid**
-      -  Thumbprint of the Wallet Instance's JWK contained in the ``cnf`` claim.
-      - :rfc:`7638#section_3`.
-    * - **typ**
-      -  It MUST be set to ``war+jwt``
-      - This specification.
-
-The body of the Wallet Attestation Request JWT MUST contain the following claims:
-
-.. list-table::
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Claim**
-      - **Description**
-      - **Reference**
-    * - **iss**
-      - Identifier of the Wallet Provider concatenated with the thumbprint of the JWK in the ``cnf`` claim.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **aud**
-      - It MUST be set to the identifier of the Wallet Provider.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **iat**
-      - REQUIRED. UNIX Timestamp with the time of JWT issuance.
-      - :rfc:`9126` and :rfc:`7519`.
-    * - **nonce**
-      - ``nonce`` obtained from the Nonce endpoint.
-      - This specification.
-    * - **hardware_signature**
-      - The signature of ``client_data`` obtained using Cryptographic Hardware Key base64 encoded.
-      - This specification.
-    * - **key_attestation**
-      - The key attestation obtained from the **Key Attestation API** with the holder binding of ``client_data``.
-      - This specification.
-    * - **hardware_key_tag**
-      - Unique identifier of the **Cryptographic Hardware Keys**.
-      - This specification.
-    * - **cnf**
-      - JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance. This is the public key to which the Wallet Attestations returned shall be bound.  
-      - :rfc:`7800`.
+The ``typ`` header of the Integrity Request JWT assumes the value ``wp-war+jwt``.
 
 .. _wallet_attestation_issuance_response:
 
@@ -669,25 +658,11 @@ Each JSON Object contained in the ``wallet_attestations`` array MUST have the fo
       
       - This specification.
 
+If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`Mobile Application Key Binding Error Response` section.
 
-If any errors occur during the Wallet Attestation Issuance, an error response MUST be returned. Refer to :ref:`Error Handling for Wallet Attestation Issuance` for details on error codes and descriptions.
-Below is a non-normative example of an error response:
-
-.. code:: http
-
-   HTTP/1.1 403 Forbidden
-   Content-Type: application/json
-   Cache-Control: no-store
-
-.. code:: json
-
-   {
-     "error": "integrity_check_error",
-     "error_description": "The device does not meet the Wallet Provider’s minimum security requirements."
-   }
 
 Wallet Attestation JWT
-...................................
+'''''''''''''''''''''''''''''''''''
 
 The JOSE header of the Wallet Attestation JWT contains the following parameters:
 
@@ -786,7 +761,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
 
 
 Wallet Attestation SD-JWT
-...................................
+'''''''''''''''''''''''''''''''''''
 
 The JOSE header of the Wallet Attestation SD-JWT MUST contain the following parameters:
 
@@ -928,7 +903,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation without encodi
   }
 
 Wallet Attestation mdoc
-...................................
+'''''''''''''''''''''''''''''''''''
 
 This description further specializes the guidelines given in `MDOC-CBOR Credential Format` to represent the Wallet Attestation in mdoc format. The latter MUST:
 
@@ -992,8 +967,7 @@ Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnost
           "random": h'9D3774BD59…A4F76A',
           "elementIdentifier": "aal",
           "elementValue":"https://trust-list.eu/aal/high"
-          } >>),
-          24(<<
+          } >>)
         ]
   },
     "issuerAuth": [
@@ -1034,73 +1008,3 @@ Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnost
       h'1AD0D6A7313EFDC…43DEBF48BF5A580D'
     ]
   }
-
-
-Error Handling for Wallet Attestation Issuance 
-..................................................
-
-If any errors occur during the Wallet Attestation Request verification, the Wallet Provider MUST return an error response as defined in :rfc:`7231` (additional details available in :rfc:`7807`). The response MUST use the content type set to *application/json* and MUST include the following parameters:
-
-  - *error*. The error code.
-  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
-
-The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:
-
-.. list-table::
-   :widths: 30 20 50
-   :header-rows: 1
-
-   * - **HTTP Status Code**
-     - **Error Code**
-     - **Description**
-   * - ``400 Bad Request``
-     - ``bad_request``
-     - The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.
-   * - ``403 Forbidden`` 
-     - ``invalid_request``
-     - The wallet instance was revoked.
-   * - ``403 Forbidden`` 
-     - ``integrity_check_error``
-     - The device does not meet the Wallet Provider’s minimum security requirements.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The signature of the Wallet Attestation Request is invalid or does not match the associated public key (JWK).
-   * - ``403 Forbidden`` 
-     - ``invalid_request``
-     - The integrity assertion validation failed; the integrity assertion is tampered with or improperly signed.
-   * - ``403 Forbidden`` 
-     - ``invalid_request``
-     - The provided nonce is invalid, expired, or already used.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The Proof of Possession (``hardware_signature``) is invalid.
-   * - ``403 Forbidden`` 
-     - ``invalid_request``
-     - The ``iss`` parameter does not match the Wallet Provider’s expected URL identifier.
-   * - ``404 Not Found`` 
-     - ``not_found``
-     - The Wallet Instance was not found.
-   * - ``422 Unprocessable Content`` [OPTIONAL]
-     - ``validation_error``
-     - The request does not adhere to the required format.
-   * - ``500 Internal Server Error``
-     - ``server_error``
-     - An internal server error occurred while processing the request.
-   * - ``503 Service Unavailable``
-     - ``temporarily_unavailable``
-     - Service unavailable. Please try again later.
-
-.. .. _Trust Model: trust.html
-.. _Wallet Attestation Issuance: wallet-solution.html#wallet-attestation-issuance
-.. _Wallet Instance Initialization and Registration: wallet-solution.html#wallet-instance-initialization-and-registration
-.. _Transition to Operational: wallet-solution.html#transition-to-operational
-.. _Trusty: https://source.android.com/docs/security/features/trusty
-.. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
-.. _Wallet Provider metadata: wallet-solution.html#wallet-provider-metadata
-.. _Wallet Attestation Issuance endpoint: wallet-solution.html#wallet-attestation-issuance-endpoint
-.. _Federation endpoint: wallet-solution.html#federation-endpoint
-.. _Wallet Instance Functionalities: wallet-solution.html#wallet-instance-functionalities
-.. _Error Handling for Wallet Instance Management: wallet-solution.html#error-handling-for-wallet-instance-management 
-.. _Error Handling for Wallet Attestation Issuance: wallet-solution.html#error-handling-for-wallet-attestation-issuance
-.. _Error Handling for Nonce Generation: wallet-solution.html#error-handling-for-nonce-generation
-

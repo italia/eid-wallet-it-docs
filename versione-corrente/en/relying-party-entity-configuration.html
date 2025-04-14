@@ -212,11 +212,14 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <tr class="row-odd"><td><p><strong>jwks</strong></p></td>
 <td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> Section 3, <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>erasure_endpoint</strong></p></td>
+<td><p>[CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users’ attributes. This URL MUST use the <em>https</em> scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim of the PID.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The parameter <strong>response_uris</strong> is introduced in this specification.</p>
+<p>The parameters <strong>response_uris</strong> and <strong>erasure_endpoint</strong> are introduced in this specification.</p>
 </div>
 </section>
 <section id="example-of-a-relying-party-entity-configuration">
@@ -345,7 +348,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 11/04/2025.
+      Last updated on 14/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
