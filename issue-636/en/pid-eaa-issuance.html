@@ -187,13 +187,12 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <div><ol class="arabic simple">
 <li><p><strong>PID Provider Discovery and Trust</strong>: the Wallet Instance discovers the trusted PID Provider using the Digital Credential Catalogue and Federation Services, establishing the trust to the PID Provider according to the Trust Model and obtaining its metadata that discloses the formats of the PID, the algorithms supported, and any other parameter required for interoperability needs.</p></li>
 <li><p><strong>PID Request</strong>: using the Authorization Code Flow defined in [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>] the Wallet Instance requests the PID to the PID Provider.</p></li>
-<li><p><strong>Wallet Provider Discovery and Trust</strong>: The PID Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.</p></li>
+<li><p><strong>Wallet Provider Discovery and Trust</strong>: the PID Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.</p></li>
 <li><p><strong>User Authentication</strong>: the PID Provider authenticates the User with CieID LoA High (L3), acting as an Identity and Access Management Proxy to the National eID system.</p></li>
-<li><p><strong>Fetch of PID data from National Public Registry</strong>: The PID Provider obtains the required PID data from National Public Registry (ANPR) which acts as Authentic Source.</p></li>
+<li><p><strong>Fetch of PID data from National Public Registry</strong>: the PID Provider obtains the required PID data from National Public Registry (ANPR) which acts as Authentic Source.</p></li>
 <li><p><strong>PID Issuance</strong>: the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.</p></li>
 </ol>
 </div></blockquote>
-<p>In the following sections the steps from 1 to 5 are further expanded into more technical details.</p>
 </section>
 <section id="high-level-q-eaa-flow">
 <h2>High-Level (Q)EAA flow<a class="headerlink" href="#high-level-q-eaa-flow" title="Link to this heading">¶</a></h2>
@@ -213,11 +212,11 @@ The relevant entities and interfaces involved in the issuance flow are:</p>
 <p>Similarly to the PID high-level flow, the above diagram depicts a (Q)EAA high-level flow starting from the User who wants to obtain a (Q)EAA (step 0). Below the description of the most relevant operations involved in the (Q)EAA issuance:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p><strong>(Q)EAA Provider Discovery and Trust</strong>: the Wallet Instance obtains the list of the trusted (Q)EAA Provider using the Digital Credential Catalogue and Federation API (e.g.: using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), then inspects the metadata looking for the Digital Credential capabilities of each (Q)EAA Provider.</p></li>
+<li><p><strong>(Q)EAA Provider Discovery and Trust</strong>: the Wallet Instance obtains the list of the trusted (Q)EAA Providers using the Digital Credential Catalogue and Federation API (e.g.: using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), then inspects the metadata looking for the Digital Credential capabilities of each (Q)EAA Provider.</p></li>
 <li><p><strong>(Q)EAA Request</strong>: using the Authorization Code Flow, defined in [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>], the Wallet Instance requests a (Q)EAA to the (Q)EAA Provider.</p></li>
-<li><p><strong>Wallet Provider Discovery and Trust</strong>: The (Q)EAA Provider verifies the authenticity and validity of the Wallet Instance. During this step the (Q)EAA Provider establishes trust with the Wallet Provider and retrieves Wallet metadata containing the necessary parameters for interoperability, as defined by the Trust Model.</p></li>
+<li><p><strong>Wallet Provider Discovery and Trust</strong>: the (Q)EAA Provider verifies the authenticity and validity of the Wallet Instance. During this step the (Q)EAA Provider establishes trust with the Wallet Provider and retrieves Wallet metadata containing the necessary parameters for interoperability, as defined by the Trust Model.</p></li>
 <li><p><strong>User Authentication</strong>: the (Q)EAA Provider, acting as a Relying Party Instance, authenticates the User evaluating the presentation of the PID.</p></li>
-<li><p><strong>Obtaining Attributes</strong>: The (Q)EAA Provider fetches User attributes from the relevant Authentic Source.</p></li>
+<li><p><strong>Obtaining Attributes</strong>: the (Q)EAA Provider fetches User attributes from the relevant Authentic Source.</p></li>
 <li><p><strong>(Q)EAA Issuance</strong>: the (Q)EAA Provider releases a (Q)EAA bound to the key material held by the requesting Wallet Instance.</p></li>
 </ol>
 </div></blockquote>
