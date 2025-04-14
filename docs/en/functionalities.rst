@@ -340,6 +340,7 @@ The deactivation of the Wallet Instance is the functionality that makes the Wall
 	- The Wallet Solution no longer meets the minimum security requirements. 
 
 The Wallet Provider MUST guarantee the User the ability to voluntarily deactivate their Wallet Instance through: 
+
 - The Wallet Instance itself; 
 - A Touchpoint (e.g., a website) provided by the Wallet Provider; 
 - The device’s app store, by uninstalling the Wallet Instance. 
