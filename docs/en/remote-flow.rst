@@ -285,7 +285,7 @@ where a non-normative example in the form of decoded header and payload is shown
           "id": "personal id data",
           "format": "dc+sd-jwt",
           "meta": {
-            "vct_values": [ "https://pidprovider.example.org/v1.0/personidentificationdata" ]
+            "vct_values": [ "https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata" ]
           },
           "claims": [
               {"path": ["given_name"]},
