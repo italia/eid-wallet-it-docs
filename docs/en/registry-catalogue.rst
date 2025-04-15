@@ -213,7 +213,7 @@ Each element of the ``credentials`` array contains at least the following inform
      - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
        
        * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
-       * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers.
+       * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the **issuers** field of the corresponding Digital Credential.
    * - **pricing_policy**
      - OPTIONAL. Information about Digital Credential pricing, including:
        
