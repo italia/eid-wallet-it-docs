@@ -37,7 +37,7 @@ For each test case, the table specifies:
 - **Test Case**: a unique identifier.
 - **Category**: the functional area covered by the test.
 - **Description**: the requirement being tested, always based on a normative MUST from the specification.
-- **Expected Result**: the expected outcome when the Wallet is implemented correctly.
+- **Expected Result**: the expected outcome when the solution is implemented correctly.
 
 
 Signed Statements Evaluation Test Matrix
@@ -133,7 +133,7 @@ This section provides the common set of test cases for Wallet Solutions, Relying
    * - ALL-001
      - Security
      - Obtaining Trust Anchors public cryptographic materials
-     - Entities obtains the list of Trust Anchors or Certificate Authorities and their public cryptographic key materials, periodically ensuring that these are not expired, revoked or updated. Infrastructure of Trust provides these information through web endpoints and other out of band mechanisms, to facilitate comparison of the provided information to all the entities.
+     - Entities obtain the list of Trust Anchors or Certificate Authorities and their public cryptographic key materials, periodically ensuring that these are not expired, revoked or updated. Infrastructure of Trust provides these information through web endpoints and other out of band mechanisms, to facilitate comparison of the provided information to all the entities.
    * - ALL-002
      - Security
      - Compliance self evaluation
@@ -141,33 +141,33 @@ This section provides the common set of test cases for Wallet Solutions, Relying
    * - ALL-003
      - Discovery
      - Publication of information about itself
-     - Entities signs and publish all the information about them, containing all the protocol metadata, cryptographic material, trust marks, using the well-known endpoint defined in this specification, making these information publicly discoverable by other entities.
+     - Entities sign and publish all the information about them, containing all the protocol metadata, cryptographic material, trust marks, using the well-known endpoint defined in this specification, making these information publicly discoverable by other entities.
    * - ALL-004
      - Security
      - Publication of the historical key registry
-     - Entities signs and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making these information publicly discoverable by other entities.
+     - Entities sign and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making these information publicly discoverable by other entities.
    * - ALL-005
      - Security
      - Evaluation of compliance with entities before exchanging data about the User
-     - Entities evaluates trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.
+     - Entities evaluate trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.
    * - ALL-006
      - Security
      - Evaluation of proof of possession during the use of a signed assertion in according to the configured usage ownership confirmation method. 
-     - Entities evaluates the confirmation method and apply its protocol to consider valid the signed statement.
+     - Entities evaluate the confirmation method and apply its protocol to consider valid the signed statement.
    * - ALL-007
      - Security
      - Supported cryptography algorithms
-     - Entities evaluates cryptography using in compliance of the allowed algorithms.
+     - Entities evaluate cryptography using in compliance of the allowed algorithms.
    * - ALL-008
      - Security
      - Replay attacks
-     - Signed statements using unique identifiers are stored untill their expiration time and checked againts any replay of them.
+     - Signed statements using unique identifiers are stored until their expiration time and checked against any replay of them.
 
 
 Wallet Solution Test Matrix
 -----------------------------
 
-This section provides the set of test cases for verifying conformance of a Wallet Solution implementations to the technical rules defined in the IT-Wallet ecosystem.
+This section provides the set of test cases for verifying conformance of a Wallet Solution implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the mandatory requirements (MUST statements) extracted from the following documents:
 
 - Wallet Solution
@@ -198,7 +198,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
      - All private key materials are inaccessible from the operating system or any application outside the Wallet Solution.
    * - WS-004
      - Attestation
-     - The Wallet MUST be capable of generating and presenting a Wallet Attestation when required by Verifiers or Issuers.
+     - The Wallet MUST be capable of generating and presenting a Wallet Attestation when required by Relying Parties or Issuers.
      - Valid, verifiable Attestations are generated including integrity and origin proofs.
    * - WS-005
      - Attestation
@@ -206,7 +206,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
      - The Wallet correctly interprets and fulfills attestation requests including subject data and cryptographic signatures.
    * - WS-006
      - Remote Credential Presentation
-     - The Wallet Solution MUST implement the both the proximity and remote presentation flow, ensuring Verifiable Credential selection, integrity, and User interaction.
+     - The Wallet Solution MUST implement both the proximity and remote presentation flow, ensuring Verifiable Credential selection, integrity, and User interaction.
      - Verifiable Credential presentation is successful, correct, and under User control.
    * - WS-007
      - Credential Issuance
@@ -1279,10 +1279,6 @@ This section defines the general test cases about the proximity presentation flo
      - BLE connection remains stable throughout the exchange.
 
    * - PPR-010
-     - Document Verification
-     - Verify the integrity of received documents.
-     - Documents are verified and integrity is confirmed.
-   * - TC-010
      - Document Verification
      - Verify the integrity of received documents.
      - Documents are verified and integrity is confirmed.
