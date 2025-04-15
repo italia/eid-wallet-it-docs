@@ -132,8 +132,10 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
@@ -143,6 +145,7 @@
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases for IT-Wallet Solutions</a></li>
 </ul>
@@ -226,7 +229,7 @@ associated.</p></td>
 <tbody>
 <tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
 <td><p>This service revokes all Digital Credentials associated with a specific
-User</p></td>
+User.</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
@@ -246,7 +249,7 @@ User</p></td>
 </colgroup>
 <tbody>
 <tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
-<td><p>This service returns statistical data on issued Digital Credentials</p></td>
+<td><p>This service returns statistical data on issued Digital Credentials.</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
@@ -286,6 +289,35 @@ User</p></td>
 </table>
 </section>
 </section>
+<section id="wallet-provider-catalogue">
+<span id="wp-catalogue"></span><h2>Wallet Provider Catalogue<a class="headerlink" href="#wallet-provider-catalogue" title="Link to this heading">¶</a></h2>
+<p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
+A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
+</div>
+<section id="notify-user-death">
+<h3>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>Wallet Provider</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>PID Provider</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 </section>
 
 
@@ -314,6 +346,10 @@ User</p></td>
 <li><a class="reference internal" href="#get-attribute-claims">Get Attribute Claims</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#wallet-provider-catalogue">Wallet Provider Catalogue</a><ul>
+<li><a class="reference internal" href="#notify-user-death">Notify User Death</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -338,7 +374,7 @@ User</p></td>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

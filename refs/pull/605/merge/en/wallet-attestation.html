@@ -132,8 +132,10 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
@@ -143,6 +145,7 @@
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases for IT-Wallet Solutions</a></li>
 </ul>
@@ -160,7 +163,7 @@
 <span id="wallet-attestation-rst"></span><h1>Wallet Attestation Issuance<a class="headerlink" href="#wallet-attestation-issuance" title="Link to this heading">¶</a></h1>
 <p>This section describes how the Wallet Provider issues a Wallet Attestation.</p>
 <figure class="align-center" id="id1" style="width: 100%">
-<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0wqKBaXmA0ArgafRWL3K5hX4YcRNarqhc_5YpwQKNu-zAV4sc5vMiVtcuxrvaxCWw6NOT0e7SJniAlAgjOPWvPnKxfTwrKU0hMsFB4fXBSw3_XR8Qy00GuZu2GBq3-mw4hZX8CWrZIZiUtYE-aoFS2v24IJMCPpFRy8EYXBWAFJUSjDu8YvcdtktjOOyL5YlYSqOMjLhfLJgwFN7MF4KRkddG440WUa1N4z-LqnQb0Nx-6ez1K3OPPqsb8ZQBGgbtfMAdwUS5otLQx0hkF2FlRZ6Oz_Q6gxHcmVq18dOWk-nWMEjswVRvPeUbuADrYTW0-0MROTLHsgQ-OeuDPWQOg2-fKqyTX13eKVhKxxzxPYm7ogjP_3FjRVRM4Wfpqu8t9Py8Z6Byi3Hbvkhw_khsylBhsh7v51G6o093cu5qX9y8lDNDMG3hXAq35O2R4ZGeA0YDgdIdaoiawNNcbroWSw2ZcEAdn6PQSFAKsXpm0xpf4s-DJHDL1GmeklE4iiozRTiCRHwDCZTzVcRj--EzybcK9Jqf9ZqXNdFtNp1asa7sp3Au6C9-03fT5ngQGObXxoVtEPvvgPGmccHeKfFMR0KYjdGMfTO5Po_7zs3bRQKPmPbgZF8mYwuHEq_UeyAaTaLpCOl-thYiJjYymA1vuxBov2EvML8QttmzvNsmR8LYvtzJMPSWctyRTGGB3V52UQDo2x_dc9GA6jKU2oeNO8LzIyYotedlqx05vxAJfWiO5dcq3iETBYIqtECLMV4PjXqVm00"><img alt="_images/wallet_instance_acquisition.svg" src="_images/wallet_instance_acquisition.svg" /></a>
+<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/VLHFRnC_4BtxKupSmo-LyhiWmQ4Ig5LLsWg4ehR09L8qkvxiMjcC5tisfNnwx4s9jy7qiehjDt_UcpSv3u9UXcsdS137mxOYhrfh2DREIUL-gl_w2B2rxP55AQp5UT1V0taD66084Jz1WFwENKS2jnm4kQOHXNqFBr6Vw0akH2Y2n3g6YyLjs4DH0fo4tbjk6a_4nUmBxtRMa8SAwmsn6KEhUgEKIXtz_o5MF8Cx-Z5G441WUWJNazyNanPboJw-May14FPPfmqbedQ7GgbtfUBdEUTbI_K6x1ek_LClhl7OjxQ66_Jc4Jr18hRa1snWfdNxVBlQqDDAiD7w56m0tA7jiEf8JJDV4wS6KqCCrBUqZSSEOYZqQ7tATxWT4_P3fVKS_hhsTXSBAUNP2O7RaKyavb4UEFbyUttpS7rtTVL5xPaS2se39C71hK5QWeza_gY6RC1LWfR1Ie0j2HeKLCGcLJgGYNMoz5gpIoxGMT1nJF4p8ZDjM7iARGxOOvwroRU6fecA0aPqtLbYMQN-LYs6Ley6kR-vUFFstUoGR0v5IK-BIL-Pzy8jbZoPTh0Demm-be3ta4wpMQcdEHGjChtE4yrjeOIp8aULdh9aAHIpfRKkyIfu_p2yHojjASySocJdaALTSedRFnGVDIApBvYjNtRsn6NtnEOL0YyzbzSX7Slha1Rxw0yiROHbAnOx-ulCk0Qx-Dke8LXkYYFCEv5z_Yt5e53MgF1OKBi4A-fVH9RrJewTW2yzbPqmMS6opA5t7EXuAQVd6AlEYSsmxNu3"><img alt="_images/wallet_instance_acquisition.svg" src="_images/wallet_instance_acquisition.svg" /></a>
 <figcaption>
 <p><span class="caption-text">Sequence Diagram for Wallet Attestation acquisition</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -176,21 +179,7 @@
 </div></blockquote>
 <p><strong>Steps 4-6 (Nonce Retrieval)</strong>: The Wallet Instance solicits a <code class="docutils literal notranslate"><span class="pre">nonce</span></code> from the <a class="reference internal" href="wallet-solution.html#nonce-endpoint"><span class="std std-ref">Nonce Endpoint</span></a> of the Wallet Provider Backend. This <code class="docutils literal notranslate"><span class="pre">nonce</span></code> is required to be unpredictable and serves as the main defense against replay attacks.
 The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> MUST be produced in a manner that ensures its single-use within a predetermined time frame.</p>
-<p>Below is a non-normative example of a Nonce Request.</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/nonce</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">wallet-provider.example.com</span>
-</pre></div>
-</div>
-<p>Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance.
-Below is a non-normative example of a Nonce Response.</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;i4ThI2Jhbu81i8mqyWEuDG5t&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+<p>Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance.</p>
 <p><strong>Step 7</strong>: The Wallet Instance performs the following actions:</p>
 <ul class="simple">
 <li><p>Creates <code class="docutils literal notranslate"><span class="pre">client_data</span></code>, a JSON object that includes the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> and the thumbprint of <code class="docutils literal notranslate"><span class="pre">ephemeral_key_pub</span></code> JWK.</p></li>
@@ -218,44 +207,7 @@ Below is a non-normative example of a Nonce Response.</p>
 <li><p>Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code> and other configuration related parameters (see <span class="xref std std-ref">Table of the Wallet Attestation Request Body</span>) and is signed using the private key of the initially generated ephemeral key pair.</p></li>
 <li><p>Submits the Wallet Attestation Request to the <a class="reference internal" href="wallet-solution.html#wallet-attestation-issuance-endpoint"><span class="std std-ref">Wallet Attestation Issuance Endpoint</span></a> of the Wallet Provider Backend.</p></li>
 </ul>
-<p>Below is a non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;war+jwt&quot;</span>
-<span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-  <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;6ec69324-60a8-4e5b-a697-a766d85790ea&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hardware_signature&quot;</span><span class="p">:</span> <span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...redacted&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;key_attestation&quot;</span><span class="p">:</span> <span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYX...redacted&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hardware_key_tag&quot;</span><span class="p">:</span> <span class="s2">&quot;WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU=&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;cnf&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;jwk&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;crv&quot;</span><span class="p">:</span> <span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1686645115</span><span class="p">,</span>
-  <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1686652315</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <p>The Wallet Instance MUST send the signed Wallet Attestation Request JWT as an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter in the body of an HTTP request to the Wallet Provider's <a class="reference internal" href="wallet-solution.html#wallet-attestation-issuance-endpoint"><span class="std std-ref">Wallet Attestation Issuance Endpoint</span></a>.</p>
-<p>Below is a non-normative example of a Wallet Attestation Issuance Request.</p>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/wallet-attestation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">wallet-provider.example.org</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <p><strong>Steps 13-17</strong>: The Wallet Provider Backend evaluates the Wallet Attestation Request and MUST perform the following checks:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -318,7 +270,7 @@ Below is a non-normative example of a Nonce Response.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

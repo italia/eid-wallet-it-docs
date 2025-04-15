@@ -132,8 +132,10 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
@@ -143,6 +145,7 @@
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases for IT-Wallet Solutions</a></li>
 </ul>
@@ -161,14 +164,12 @@
 <p>The PID/(Q)EAA Providers, as Federation Entity, are required to adhere to the guidelines outlined in Section <a class="reference internal" href="trust.html#configuration-of-the-federation"><span class="std std-ref">Configuration of the Federation</span></a>. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
 The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters defined in the Sections <a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates"><span class="std std-ref">Entity Configuration Leaves and Intermediates</span></a> and <a class="reference internal" href="trust.html#entity-configurations-common-parameters"><span class="std std-ref">Entity Configurations Common Parameters</span></a>.</p>
 <p>The PID/(Q)EAA Providers MUST provide the following metadata types:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><cite>federation_entity</cite></p></li>
 <li><p><cite>oauth_authorization_server</cite></p></li>
 <li><p><cite>openid_credential_issuer</cite></p></li>
 </ul>
-</div></blockquote>
-<p>In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for <em>openid_credential_verifier</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://github.com/italia/spid-cie-oidc-docs">SPID/CIE id OIDC Technical Specification</a>.</p>
+<p>In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for <em>openid_credential_verifier</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://italia.github.io/spid-cie-oidc-docs/en">SPID/CIE-OpenID-Connect-Specifications</a>.</p>
 <p>The <em>federation_entity</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves"><span class="std std-ref">Metadata of federation_entity Leaves</span></a>.</p>
 <p>The <em>openid_credential_verifier</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="relying-party-solution.html#metadata-for-openid-credential-verifier"><span class="std std-ref">Metadata for openid_credential_verifier</span></a>.</p>
 <section id="metadata-for-oauth-authorization-server">
@@ -206,9 +207,9 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <tr class="row-even"><td><p><strong>acr_values_supported</strong></p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">OpenID Connect Discovery 1.0 Section 3</a>. The supported values are:</p>
 <ul class="simple">
-<li><p><cite>https://www.spid.gov.it/SpidL1</cite></p></li>
-<li><p><cite>https://www.spid.gov.it/SpidL2</cite></p></li>
-<li><p><cite>https://www.spid.gov.it/SpidL3</cite></p></li>
+<li><p><cite>https://trust-registry.eid-wallet.example.it/loa/low</cite></p></li>
+<li><p><cite>https://trust-registry.eid-wallet.example.it/loa/substantial</cite></p></li>
+<li><p><cite>https://trust-registry.eid-wallet.example.it/loa/high</cite></p></li>
 </ul>
 </td>
 </tr>
@@ -307,7 +308,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 </ul>
 </div></blockquote>
 </li>
-<li><p><strong>vct</strong>: As defined in [<a class="reference internal" href="pid-eaa-data-model.html#sd-jwt-vc-credential-format"><span class="std std-ref">SD-JWT-VC Credential Format</span></a>].</p></li>
+<li><p><strong>vct</strong>: REQUIRED only if <code class="docutils literal notranslate"><span class="pre">format</span></code> is set to &quot;<em>dc+sd-jwt</em>&quot;. As defined in [<a class="reference internal" href="pid-eaa-data-model.html#sd-jwt-vc-credential-format"><span class="std std-ref">SD-JWT-VC Credential Format</span></a>].</p></li>
+<li><p><strong>doctype</strong>: REQUIRED only if <code class="docutils literal notranslate"><span class="pre">format</span></code> is set to &quot;<em>mso_mdoc</em>&quot;. As defined in [<a class="reference internal" href="pid-eaa-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>].</p></li>
 <li><p><strong>claims</strong>: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> Section A.3.2.</p>
 <blockquote>
 <div><ul>
@@ -335,7 +337,6 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <blockquote>
 <div><ul class="simple">
 <li><p><em>it_cie</em>: CIE trust framework supported.</p></li>
-<li><p><em>it_spid</em>: SPID trust framework supported.</p></li>
 <li><p><em>it_wallet</em>: Italian EUDI Wallet trust framework supported.</p></li>
 <li><p><em>eudi_wallet</em>: Member State EUDI Wallet trust framework supported.</p></li>
 </ul>
@@ -357,14 +358,12 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <section id="example-of-a-q-eaa-provider-entity-configuration">
 <h2>Example of a (Q)EAA Provider Entity Configuration<a class="headerlink" href="#example-of-a-q-eaa-provider-entity-configuration" title="Link to this heading">¶</a></h2>
 <p>Below is a non-normative example of an Entity Configuration of a (Q)EAA Provider containing a metadata for</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><cite>federation_entity</cite></p></li>
 <li><p><cite>oauth_authorization_server</cite></p></li>
 <li><p><cite>openid_credential_issuer</cite></p></li>
 <li><p><cite>openid_credential_verifier</cite></p></li>
 </ul>
-</div></blockquote>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718207217</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1749743216</span><span class="p">,</span>
@@ -408,13 +407,12 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                </span><span class="s2">&quot;S256&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;acr_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL3&quot;</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/substantial&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/high&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;scopes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;dc_sd_jwt_mdl&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;mso_mdoc_mdl&quot;</span>
+<span class="w">                </span><span class="s2">&quot;mDL&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;response_modes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;form_post.jwt&quot;</span><span class="p">,</span>
@@ -475,7 +473,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;credential_configurations_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">&quot;EuropeanDisabilityCard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;dc_sd_jwt_EuropeanDisabilityCard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -505,7 +503,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/v1.0/disabilitycard&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/v1.0/EuropeanDisabilityCard&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="p">{</span>
 <span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;document_number&quot;</span><span class="p">],</span>
@@ -626,9 +624,9 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;dc_sd_jwt_mdl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;dc_sd_jwt_mDL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_mdl&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;jwk&quot;</span>
 <span class="w">                    </span><span class="p">],</span>
@@ -656,7 +654,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span>
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eaa-provider.example.org/v1.0/mdl&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/v1.0/mDL&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="p">{</span>
 <span class="w">                            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">],</span>
@@ -829,9 +827,9 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                        </span><span class="p">}</span>
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">&quot;mso_mdoc_mdl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;mso_mdoc_mDL&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mdl&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;scope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;doctype&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1.mDL&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="nt">&quot;cryptographic_binding_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;cose_key&quot;</span>
@@ -1024,7 +1022,6 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;trust_frameworks_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;it_cie&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;it_spid&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;it_wallet&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;eudi_wallet&quot;</span>
 <span class="w">            </span><span class="p">],</span>
@@ -1047,8 +1044,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                </span><span class="s2">&quot;https://eaa-provider.example.org/response_uri&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;default_acr_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL3&quot;</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/substantial&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/high&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
@@ -1141,7 +1138,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

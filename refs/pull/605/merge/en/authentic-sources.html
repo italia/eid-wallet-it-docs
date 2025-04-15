@@ -134,8 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
@@ -145,6 +147,7 @@
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases for IT-Wallet Solutions</a></li>
 </ul>
@@ -361,7 +364,7 @@
 <figure class="align-center" id="id123" style="width: 100%">
 <span id="fig-voucherissuance-eservice-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TT5HRzCm40VmTt-AK_QoHLH2a-1X3sXHkcf52AAbm6FakRV6Ik8pvtDPz-cnGxSYjBr4iMF_xd-Nwo2Q9KwZ4YiZmW-AfaU6TGXHEuEm05oqo7jhK2aTXLoSxf6LkgT7ACkQN8WJSbd2sNfFV500FedMMA-TG56MtweeFTIZHITbMO0EKAyKkYqaujbfbb-NsQYU8kDRHduGsoSjbXpaLCX7iMfF8dc15J5KtvVhJNTtqswwzvSAKjN5ftfrrJ0c7U7ppmtyjearDFaH9tIY-G1RBHhEYsB3sWpMxMxsTelEO55Sg1DIfpjH4DhRwlB3H-Xrw84UuBLh6Riz_t__8davibBF8gDEuBAX1WOyWDUMGQUUF1CzpAUgzkhb1ztXhuX1CcxcqNPsMnJlu6MfGq3EWtfzjvE3nx-VTgoT7DUfHtOa2BH7Xgg5iozsrqjZtP2Rxz4C8SUU3obLjOiv_2bLyEG2vbZQ60oX4nhmc26__biO7xrb39rrkV1rOkCq_W40"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-eService.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id123" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Voucher Issuance for e-Service - Detailed flow</span><a class="headerlink" href="#id123" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Steps 1-2 (Preparation of Tracked Data):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>) containing the tracked data that have to be sent to the Provider. Finally, it computes the SHA-256 hash of <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code>.</p>
@@ -567,7 +570,7 @@
 <figure class="align-center" id="id124" style="width: 100%">
 <span id="fig-voucherissuance-interoperabilityapi-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TP51ozf048Rl-ok6UD7GqFOg4WmH8L3Qq41FXR36mIp6tNHcLjHVtrqDwk7xBY4px_Ay3xjh5atYJuCI8mF27-Ux7WagPgzjXv11PGN9ZKXwPmOZLoZgIYdjnLb_sY4fjNCNIDAq3YJJcL5RITE_TiNcXillt_9vwIpxKw0wMdsDs_mjhScTpHvfCKK9pAgpewi265_0oFzLUEcX70p6WWGqGxbLQFSG11uMGMBpSvEcC2jkdl0pHlmuCZSjnbbeaCv84x5eNiHoc-L5itnUoc_yvv45vadItIrQiq-IB_0SDJDIP7wyRUKwuYCwK12QveLIP9qWkA0H163smnnwgOqzAe2on-x8KUf-IAcYoRAyt2vVLZmwonYrTDSXSolkY9D3_7qlnije2BarDXQl0pOy_dy0"><img alt="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" src="_images/Low-Level-Flow-AuthenticSource-Voucher-Issuance-InteroperabilityAPI.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id124" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Voucher Issuance for Interoperability API - Detailed flow</span><a class="headerlink" href="#id124" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Voucher Request)</strong>: The Participant creates a Voucher Request and sends it to the PDND Authorization Server.</p>
@@ -1025,7 +1028,7 @@
 <figure class="align-center" id="id125" style="width: 100%">
 <span id="fig-keyretrieval-pdnd-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/PS_1IWCn58NXVPxYK7U1-01Tb1Pc8GWgcSMiq_Q8eMbIRsvc79_UgOWAtHxuF-xTLWsYxPoCHat48sTugaIE8S7XfNlgZ0bDIsxdFSMOVVc0jTVTMjpjFflG09T5YOTu2LcnilP-OahkbCkKhLqXL0o6-OWb_XMaZF58kIeF9NFkEDr2pxkcR_2ifSc1w2aZvOVq_P_fUxSPrl1yRwoAroBVf-F4kHepEBVn_VhVj5tAvUil"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-PDND.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id125" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Key Retrieval for PDND Keys - Detailed flow</span><a class="headerlink" href="#id125" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Keys Request)</strong>: The Provider requests for the keys used by the PDND to sign Vouchers.</p>
@@ -1138,7 +1141,7 @@
 <figure class="align-center" id="id126" style="width: 100%">
 <span id="fig-keyretrieval-participant-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/fSp1IlGm5CNnVPxYa6_nGQ0lC8jXIbkm25fcxIPjx-XbqYGcDsfzUYk85Low_f_pEsMnIShYbB0umYsjE9CafXVhK67OAayShPUib2qIV5b6IagDuGt63ErTQmp-rUybaGBYleSsflT2AKHATcJ7ig8UUcCqR4QloC_Ob6zgltwADy7JsjBhR_I-BlA4nZ5v-SAQRjUQhZhsXpCz5yg2IqZu8V_FY6LqFE5AwuEVGagKO_0p-qT8G8uqyMNBMbzvrbf1zTMnwGv_CKxavxAu3m00"><img alt="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" src="_images/Low-Level-Flow-AuthenticSource-KeyRetrieval-Participant.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id126" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Key Retrieval for Participant's Key - Detailed flow</span><a class="headerlink" href="#id126" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Key Request)</strong>: The Participant requests for the key used by another Participant, corresponding to a specific <code class="docutils literal notranslate"><span class="pre">kid</span></code>, to the PDND Interoperability API.</p>
@@ -1299,7 +1302,7 @@
 <figure class="align-center" id="id127" style="width: 100%">
 <span id="fig-usage-flow"></span><a class="reference external image-reference" href="https////www.plantuml.com/plantuml/svg/ZP1HRzCm4CVV_IbEtWjOgeHut0DQbQmmX5YLTF1OUSwHM4ryuNpkw3uzph8LAZJK5ykMx_-xd_vNKInB6debNde4NDJ8U-yGxg9jKIcRX48Qxf6LkgTVO4n18QO1sHYukDaJ7nJ0c27U-T460MtCxJ991qNlCOWn6co4OgKmD90HBvnr-RMS6Cl7nFWQOpg8_QCLJm4cD-HduhB-XyYqzyrizea27afyU0rSOQJ43a-PrL_COhNuKAmkrumPWF3v-mOUV4v6tmOhYH7UQ5s_FBH-Uun0mMW5eLpJ6aOc-Z5_LVKbb5PiNlupOPIPzusIwwPwEL0EKRR97d3nnRUTV6J4e02A3jqEj9wGMa-IJzFdXQnp6EDMQ8VX94oZm6te3xE8rikxycQphQxhpVRT-pm9y3_ydmKRjcxdGtizrHySFaMFQ_BbFCzZcIUILRsOMtrk3Hjeh5XrbKVIqFy6"><img alt="_images/Low-Level-Flow-AuthenticSource-Usage.svg" src="_images/Low-Level-Flow-AuthenticSource-Usage.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id127" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">e-Service Usage - Detailed flow</span><a class="headerlink" href="#id127" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1 (Signature Preparation):</strong> The Consumer prepares a JWT (<code class="docutils literal notranslate"><span class="pre">Signature</span></code>) containing the signed headers of the message, to ensure integrity.</p>
@@ -1919,7 +1922,7 @@ associated.</p></td>
 <tbody>
 <tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
 <td><p>This service revokes all Digital Credentials associated with a specific
-User</p></td>
+User.</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
@@ -1939,7 +1942,7 @@ User</p></td>
 </colgroup>
 <tbody>
 <tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
-<td><p>This service returns statistical data on issued Digital Credentials</p></td>
+<td><p>This service returns statistical data on issued Digital Credentials.</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
@@ -1974,6 +1977,35 @@ User</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
 <td><p>PID/(Q)EAA Provider</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="wallet-provider-catalogue">
+<span id="wp-catalogue"></span><h3>Wallet Provider Catalogue<a class="headerlink" href="#wallet-provider-catalogue" title="Link to this heading">¶</a></h3>
+<p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
+A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
+</div>
+<section id="notify-user-death">
+<h4>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>Wallet Provider</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>PID Provider</p></td>
 </tr>
 </tbody>
 </table>
@@ -2060,6 +2092,10 @@ User</p></td>
 <li><a class="reference internal" href="#get-attribute-claims">Get Attribute Claims</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#wallet-provider-catalogue">Wallet Provider Catalogue</a><ul>
+<li><a class="reference internal" href="#notify-user-death">Notify User Death</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2091,7 +2127,7 @@ User</p></td>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

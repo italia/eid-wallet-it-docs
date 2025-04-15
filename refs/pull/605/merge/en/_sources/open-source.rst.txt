@@ -30,8 +30,8 @@ Credential Issuers Solutions
 
 Credential Issuers are encouraged to release their source code under an open-source license, starting from the experimentation phase, in accordance with the principles set out in Article 69 of the CAD. The requirements include:
 
-- **Public Administration Engagement**: Issuers working with public administrations MUST ensure their solutions are released with an open source license, in the way specified by the CAD art. 69 (and related guidelines).
-- **Catalog of Reuse**: Solutions created with or for public administration MUST be submitted to the public administration software reuse catalog to promote widespread adoption and adaptation.
+- **Public Administration Engagement**: Issuers working with public administrations SHOULD ensure their solutions are released with an open source license, in the way specified by the CAD art. 69 (and related guidelines).
+- **Catalog of Reuse**: Solutions created with or for public administration SHOULD be submitted to the public administration software reuse catalog to promote widespread adoption and adaptation.
 
 Relying Parties Solutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^

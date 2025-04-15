@@ -133,8 +133,10 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases for IT-Wallet Solutions</a></li>
 </ul>
@@ -245,6 +248,7 @@
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-initialization-and-registration">Wallet Instance Initialization and Registration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-attestation-issuance">Wallet Attestation Issuance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#wallet-instance-revocation">Wallet Instance Revocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution.html#user-s-attributes-deletion">User's Attributes Deletion</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html#wallet-provider-endpoints">Wallet Provider Endpoints</a><ul>
@@ -256,10 +260,40 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="issuer-solution.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuer-solution.html#component-details">Component Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#frontend-component">Frontend Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#credential-issuer-component">Credential Issuer Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#authorization-server">Authorization Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#relying-party-component">Relying Party Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#api-interface">API Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#credential-lifecycle-management">Credential Lifecycle Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#trust-security-component">Trust &amp; Security Component</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="issuer-solution.html#interaction-patterns">Interaction Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="issuer-solution.html#exposed-endpoints">Exposed Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#federation-endpoints">Federation Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="issuer-solution.html#credential-issuer-component-endpoints">Credential Issuer Component Endpoints</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#entity-configuration-of-relying-parties">Entity Configuration of Relying Parties</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#metadata-for-openid-credential-verifier">Metadata for openid_credential_verifier</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#example-of-a-relying-party-entity-configuration">Example of a Relying Party Entity Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-solution-requirements">Relying Party Solution Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-instance">Relying Party Instance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#mobile-relying-party-instance">Mobile Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#web-relying-party-instance">Web Relying Party Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html#relying-party-endpoints">Relying Party Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-federation-endpoint">Relying Party Federation Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-nonce-endpoint">Relying Party Nonce Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-instance-initialization-endpoint">Relying Party Instance Initialization Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-key-binding-endpoint">Relying Party Key Binding Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-access-certificate-endpoint">Relying Party Access Certificate Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-solution.html#relying-party-erasure-endpoint">Relying Party Erasure Endpoint</a></li>
 </ul>
 </li>
 </ul>
@@ -282,6 +316,17 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-data-model.html#cross-format-credential-parameters-mapping">Cross-Format Credential Parameters Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="registry-catalogue.html#digital-credentials-categories">Digital Credentials Categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure">Digital Credentials Catalogue Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry-catalogue.html#claims-taxonomy">Claims Taxonomy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-endpoint">Digital Credentials Catalogue Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-request">Digital Credentials Catalogue Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-response">Digital Credentials Catalogue Response</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a><ul>
@@ -338,24 +383,17 @@
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#notification-response">Notification Response</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="pid-eaa-issuance.html#entity-configuration-of-pid-q-eaa-providers">Entity Configuration of PID/(Q)EAA Providers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#metadata-for-oauth-authorization-server">Metadata for oauth_authorization_server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#metadata-for-openid-credential-issuer">Metadata for openid_credential_issuer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-issuance.html#example-of-a-q-eaa-provider-entity-configuration">Example of a (Q)EAA Provider Entity Configuration</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-presentation.html#remote-flow">Remote Flow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#request-uri-with-http-post">Request URI with HTTP POST</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#authorization-request-details">Authorization Request Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#authorization-request">Authorization Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#request-uri-request">Request URI Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#request-object-details">Request Object Details</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#authorization-response-details">Authorization Response Details</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#sd-jwt-presentation">SD-JWT Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#request-uri-response">Request URI Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#authorization-response">Authorization Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#relying-party-response">Relying Party Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#status-endpoint">Status Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#redirect-uri">Redirect URI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pid-eaa-presentation.html#device-flow-status-checks-and-security">Device Flow Status Checks and Security</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pid-eaa-presentation.html#proximity-flow">Proximity Flow</a><ul>
@@ -416,6 +454,7 @@
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html#e-service-pdnd-catalogue">e-Service PDND Catalogue</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#credential-issuer-catalogue">Credential Issuer Catalogue</a></li>
 <li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#authentic-source-catalogue">Authentic Source Catalogue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-sources.html#wallet-provider-catalogue">Wallet Provider Catalogue</a></li>
 </ul>
 </li>
 </ul>
@@ -493,6 +532,19 @@
 <li class="toctree-l2"><a class="reference internal" href="standards.html#security-and-protection-profiles">Security and Protection Profiles</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html#structure-of-the-test-matrix">Structure of the Test Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html#signed-statements-evaluation-test-matrix">Signed Statements Evaluation Test Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html#trust-evaluation-test-matrix">Trust Evaluation Test Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html#wallet-solution-test-matrix">Wallet Solution Test Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html#credential-issuance-test-matrix">Credential Issuance Test Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html#credential-presentation-test-matrix">Credential Presentation Test Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="test-plans.html#remote-credential-presentation-test-matrix">Remote Credential Presentation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans.html#proximity-credential-presentation-test-matrix">Proximity Credential Presentation Test Matrix</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
 </ul>
@@ -553,7 +605,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
