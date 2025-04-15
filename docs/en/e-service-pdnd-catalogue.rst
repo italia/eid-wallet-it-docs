@@ -60,7 +60,7 @@ Notify Wallet Instance Revocation
 
     * - **Description**
       - This service revokes all Digital Credentials associated with a specific
-        User
+        User.
     * - **Provider**
       - PID/(Q)EAA Provider
     * - **Consumer**
@@ -75,7 +75,7 @@ Get Statistics
     :stub-columns: 1
 
     * - **Description**
-      - This service returns statistical data on issued Digital Credentials
+      - This service returns statistical data on issued Digital Credentials.
     * - **Provider**
       - PID/(Q)EAA Provider
     * - **Consumer**
@@ -104,3 +104,29 @@ Get Attribute Claims
       - Authentic Source 
     * - **Consumer**
       - PID/(Q)EAA Provider
+
+.. _wp-catalogue:
+
+Wallet Provider Catalogue
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
+A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint. 
+
+.. note::
+    A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-WP.html" target="_blank">here</a>`.
+
+Notify User Death
+...................................................
+
+.. list-table::
+    :widths: 20 80 
+    :stub-columns: 1
+
+    * - **Description**
+      - This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.
+    * - **Provider**
+      - Wallet Provider
+    * - **Consumer**
+      - PID Provider
+

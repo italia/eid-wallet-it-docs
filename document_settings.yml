@@ -1,13 +1,10 @@
 document:
-  name: eIDAS Italian Wallet Technical Specifications
+  name: eID Italian Wallet Technical Specifications
   description: |
-    eIDAS Italian Wallet Technical Specifications
+    eID Italian Wallet Technical Specifications
   tags:
-    - eIDAS
-    - eudiw
     - wallet
     - interoperabilità
-    - spid
     - cie
     - openid
   

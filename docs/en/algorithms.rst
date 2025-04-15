@@ -57,7 +57,7 @@ The following Elliptic Curves MUST be supported for the Elliptic Curve Digital S
     - `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_, `[FIPS-186-4] <https://www.nist.gov/publications/digital-signature-standard-dss-2>`_, `[ISO/IEC 14888-3] <https://www.iso.org/standard/76382.html>`_.
 
 
-For Credential issued in mDoc format, the following algorithms MUST be supported:
+For Credential issued in mdoc format, the following algorithms MUST be supported:
 
 .. list-table:: 
   :widths: 20 20 20 20

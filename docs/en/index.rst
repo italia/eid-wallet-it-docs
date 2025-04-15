@@ -38,6 +38,7 @@ Index of content
    defined-terms.rst
    trust.rst
    wallet-solution.rst
+   issuer-solution.rst
    relying-party-solution.rst
    pid-eaa-data-model.rst
    registry-catalogue.rst
@@ -50,5 +51,6 @@ Index of content
    security-privacy-considerations.rst
    log-retention-policy.rst
    standards.rst
+   test-plans.rst
    contribute.rst
 

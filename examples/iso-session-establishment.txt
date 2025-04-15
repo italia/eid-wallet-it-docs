@@ -1,0 +1,52 @@
+{
+  "version": "1.0",  % Version
+  "docRequests": 
+  [
+    {
+    "itemsRequest": 
+    24(<<  % Embedded CBOR data item
+      {
+        "docType": "org.iso.18013.5.1.mDL",
+        "nameSpaces": 
+        {
+          "org.iso.18013.5.1": 
+          {
+            "family_name": true,
+            "document_number": true,
+            "driving_privileges": true,
+            "issue_date": true,
+            "expiry_date": true,
+            "portrait": false
+          }
+        }
+      }
+    >>)
+    },
+    {
+    "itemsRequest": 
+    24(<<  % Embedded CBOR data item
+      {
+        "docType": "org.iso.18013.5.1.IT.WalletAttestation",
+        "nameSpaces": {
+          "org.iso.18013.5.1.IT": 
+          {
+            "wallet_name": true,
+            "wallet_link": true,
+            "sub": true,
+            "aal": true
+          }
+        }
+      }
+    >>)
+    }
+  ],
+  "readerAuthAll": 
+  [
+    h'a10126', % COSE_Sign1 authentication header
+    {
+      33: h'308201253081cda00302010202012a300a06082a8648ce3d0403023020311e301c06035504030c15536f6d652052656164657220417574686f72697479301e170d3233313132343130323832325a170d3238313132323130323832325a301a3118301606035504030c0f536f6d6520526561646572204b65793059301306072a8648ce3d020106082a8648ce3d03010703420004aa1092fb59e26ddd182cfdbc85f1aa8217a4f0fae6a6a5536b57c5ef7be2fb6d0dfd319839e6c24d087cd26499ec4f87c8c766200ba4c6218c74de50cd1243b'
+    },
+    null, % No additional reader authentication
+    h'58a0d421a7e53b7db0412a196fea50ca6d4c8a530a47dd84d88588ab145374bd0ab2a724cf2ed2facf32c7184591c5969efd53f5aba63194105440bc1904e1b9'  % Reader authentication signature
+  ]
+}
