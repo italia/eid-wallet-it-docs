@@ -187,7 +187,7 @@
 <p><span class="caption-text">Lifecycle of the Mobile Relying Party Instance</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>As shown in <a class="reference internal" href="relying-party-solution.html#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 8</span></a>, the Mobile Relying Party Instance has four distinct states: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong>, and <strong>Uninstalled</strong>. Each state represents a specific functional status and determines the actions that can be performed.</p>
+<p>As shown in <a class="reference internal" href="relying-party-solution.html#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 9</span></a>, the Mobile Relying Party Instance has four distinct states: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong>, and <strong>Uninstalled</strong>. Each state represents a specific functional status and determines the actions that can be performed.</p>
 <section id="transition-to-installed">
 <h4>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h4>
 <p>The state machine begins with the Relying Party Instance installation (<strong>RPI INST</strong> transition), where Users download and install a Relying Party Instance using the official app store of their device's operating system, leading to the <strong>Installed</strong> state.</p>
@@ -241,15 +241,15 @@
 <h4>Mobile Relying Party Instance Registration<a class="headerlink" href="#mobile-relying-party-instance-registration" title="Link to this heading">¶</a></h4>
 <p>This process allows for the registration of a Relying Party Instance with the Relying Party Backend, and the issuance of an Access Certificate that will be used for authentication purposes towards Wallet Instances during presentation flows. The process consists of two subphases:</p>
 <ol class="arabic simple">
-<li><p><strong>Initialization</strong>: The Relying Party Instance requests a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself; the assertion is then validated by the Relying Party Backend. Further details are provided in the <a class="reference internal" href="mobile-instance-registration.html#mobile-instance-app-initialization-and-registration-rst"><span class="std std-ref">Mobile Application Instance Initialization</span></a> section.</p></li>
-<li><p><strong>Access Certificate Issuance</strong>: The Relying Party Instance requests an Access Certificate from the Relying Party Backend. Before interacting with the Relying Party Instance Access Certificate Authority for the issuance of the Access Certificate, the Relying Party Backend validates the Relying Party Instance's integrity and security by leveraging the long-lived, attested keys generated in the previous subphase. The flow is displayed in <a class="reference internal" href="relying-party-solution.html#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 9</span></a>, while a step-by-step description is provided below.</p></li>
+<li><p><strong>Initialization</strong>: The Relying Party Instance requests a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself; the assertion is then validated by the Relying Party Backend. Further details are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization"><span class="std std-ref">Mobile Application Instance Initialization</span></a> section.</p></li>
+<li><p><strong>Access Certificate Issuance</strong>: The Relying Party Instance requests an Access Certificate from the Relying Party Backend. Before interacting with the Relying Party Instance Access Certificate Authority for the issuance of the Access Certificate, the Relying Party Backend validates the Relying Party Instance's integrity and security by leveraging the long-lived, attested keys generated in the previous subphase. The flow is displayed in <a class="reference internal" href="relying-party-solution.html#fig-relyingparty-instance-mobile-registration-accesscertificateissuance"><span class="std std-numref">Fig. 10</span></a>, while a step-by-step description is provided below.</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Access Certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.</p>
 </div>
 <figure class="align-center" id="id3" style="width: 100%">
-<span id="fig-relyingparty-instance-mobile-registration-accesscertificateissuance"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZPF1ZjCm48RlUOgHEG0IlC0Uq8PgWGeXhTh2QQLguamJgwbjx4aXRy_4f7XJ1NKFZLBx-ptp_vxSHyR0_Qahi6Td-rD5eMXDJN1mZYltkoXUFmfXjF5eEHQesGLGtoC51HYXZoBmcG3rpLMc8zXGDnZRmAWUO6qZezMKDEWzp3LVQO2IcGHYuooKZ-lu5qMEy2hw84SrWSZETVCY7r4VoTP9MEdZCZhlvycMMbECi29X3qOZ4vGzjouO7j996YM3xQxSx63riDcjFwrNvUwX41FlFyZZ3bOjwIEO0wp2uDar0NrhD7p1KF_2G23c8emlU4RJOTLHyKpzcIm5P184ZXA3HnFWZLBollTzfTGxcFu4SrRgxQGLVtUIyS-U8WjWtHYk6g_7d94f-PTV0dEHJARDgOMyMDFiW8Ks1TQT8Slx6XcL0hJrazNkvFlhpNsBiLNgSWfol5i4SjCZ8xWySskZTSoZaPlCWiKksod-VJIDHUw3-5j4rvQf6MyRVc1dwbJbakopi6znoy6dsOZWx0rvlet_WT4x6-a5DpGRvQsODxQv51e7IyTmDKRJsjp3eec9d3OrBcZ7pqLZsapLiqPM_nN4zDNjTMvrVh4QPvdS55o7iMKNw0KoWOjxidL_wlu0"><img alt="_images/RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance.svg" src="_images/RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance.svg" /></a>
+<span id="fig-relyingparty-instance-mobile-registration-accesscertificateissuance"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/ZPF1ZjCm48RlUOgHEG0Il40FQBFL0XL2MhNbjb8rSQQDrTGszgIGjsSIBDnK5jh3HbdFzu__-JDzY8o1XqjVuS3E3fU6GjMPbk3e73VkTrMzVHR2QEFHSgnGimkWVaGA2Z3244NWCm7gksjCJx2bVZJs19DwX8sDZ5RJh47lOQdvHYFKp2GG6sUXVjx4loXoX3VH1sbr2aHsgLjUyeZwJBQTXOq-Bz6odnTRQqqnmfg4FHgDJ50FtBbWU9mxQPGCTljwkuVrqtQ_-RnPr_kdIeRu-4aUArXtfCzWZh0EesTt2kWxe-4hXlON1W8PBiBqWbSqFJOzLJVgBsGf89CWS9OOF9e0xvIIzuCV6gK-GFedcAjIxvDMvbj9nZy7YYo0TLEuQleyvefCy_poDuFvaapEnMGX7xQqQ52mAR3k3La-jCYe5A1jNwns5p_S5myTnawQfYx8SLK4ikc94LoUsTeqEkRLo2QpeEYoI_4VeZbPv278V4Lqshr7OzjfELAWjncNowMOqoP4SBQiof7VrQDtDj8hqb-iwKu6k-a_BOsEuMv5qjdIST5o8bDHOq6hiQeqpiNvzgoHqtyNuloBEkXiTVdHD2wY-B-W4CQENQ1No0Ik7iYsmwN_0m00"><img alt="_images/RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance.svg" src="_images/RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance.svg" /></a>
 <figcaption>
 <p><span class="caption-text">Flow of the Mobile Relying Party Instance Access Certificate Issuance</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
@@ -271,14 +271,12 @@
 <li><p>Computes <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> by applying the SHA256 algorithm to <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></li>
 </ol>
 </div></blockquote>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-instance-mobile-registration-client-data">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_data</span></code> JSON object</span><a class="headerlink" href="#code-relyingparty-instance-mobile-registration-client-data" title="Link to this code">¶</a></div>
+<p>Below is a non-normative example of the <code class="docutils literal notranslate"><span class="pre">client_data</span></code> JSON object.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;jwk_thumbprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY&quot;</span>
 <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 <p><strong>Steps 7-8:</strong> The Mobile Relying Party Instance:</p>
 <blockquote>
@@ -291,55 +289,15 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Generates an <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> value by signing the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> with the Hardware Cryptographic private key, serving as a proof of possession for the Cryptographic Hardware Keys.</p></li>
-<li><p>Generates the Integrity Validation Request in the form of a JWT. This JWT includes <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, and <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (representing <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>); it is signed using <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p></li>
-<li><p>Submits the Integrity Validation Request to the <a class="reference internal" href="relying-party-solution.html#relying-party-integrity-validation-endpoint"><span class="std std-ref">Relying Party Integrity Validation Endpoint</span></a> of the Relying Party Backend.</p></li>
+<li><p>Generates the <a class="reference internal" href="relying-party-solution.html#relying-party-key-binding-request"><span class="std std-ref">Relying Party Key Binding Request</span></a> in the form of a JWT. This JWT includes <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, and <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (representing <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>); it is signed using <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p></li>
+<li><p>Sends the signed <a class="reference internal" href="relying-party-solution.html#relying-party-key-binding-request"><span class="std std-ref">Relying Party Key Binding Request</span></a> JWT as an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter in the body of an HTTP request to the <a class="reference internal" href="relying-party-solution.html#relying-party-key-binding-endpoint"><span class="std std-ref">Relying Party Key Binding Endpoint</span></a>.</p></li>
 </ol>
 </div></blockquote>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-instance-mobile-registration-integrityvalidation-jwt">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of the Mobile Relying Party Integrity Validation Request JWT, without encoding and signature applied</span><a class="headerlink" href="#code-relyingparty-instance-mobile-registration-integrityvalidation-jwt" title="Link to this code">¶</a></div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;rp-ivr+jwt&quot;</span>
-<span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-  <span class="s2">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://relying-party.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;https://relying-party.example.org/&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;nonce&quot;</span><span class="p">:</span> <span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hardware_signature&quot;</span><span class="p">:</span> <span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;integrity_assertion&quot;</span><span class="p">:</span> <span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;hardware_key_tag&quot;</span><span class="p">:</span> <span class="s2">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span>
-  <span class="s2">&quot;cnf&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;jwk&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;crv&quot;</span><span class="p">:</span> <span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p>The Mobile Relying Party Instance sends the signed Integrity Validation Request JWT as an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter in the body of an HTTP request to the <a class="reference internal" href="relying-party-solution.html#relying-party-integrity-validation-endpoint"><span class="std std-ref">Relying Party Integrity Validation Endpoint</span></a>.</p>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-instance-mobile-registration-integrityvalidation-request">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of the Mobile Relying Party Integrity Validation Request</span><a class="headerlink" href="#code-relyingparty-instance-mobile-registration-integrityvalidation-request" title="Link to this code">¶</a></div>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/integrity-validation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p><strong>Step 12:</strong> The <a class="reference internal" href="relying-party-solution.html#relying-party-integrity-validation-endpoint"><span class="std std-ref">Relying Party Integrity Validation Endpoint</span></a> evaluates the Integrity Validation Request and performs the following checks:</p>
+<p><strong>Step 12:</strong> The Relying Party Backend evaluates the Key Binding Request and performs the following checks:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>The request includes all required HTTP header parameters as defined in <a class="reference internal" href="relying-party-solution.html#relying-party-integrity-validation-request"><span class="std std-ref">Relying Party Integrity Validation Request</span></a>.</p></li>
-<li><p>The signature of the Integrity Validation Request is valid and verifiable using the provided <code class="docutils literal notranslate"><span class="pre">jwk</span></code>.</p></li>
+<li><p>The request includes all required HTTP header parameters as defined in <a class="reference internal" href="relying-party-solution.html#relying-party-key-binding-request"><span class="std std-ref">Relying Party Key Binding Request</span></a>.</p></li>
+<li><p>The signature of the Key Binding Request is valid and verifiable using the provided <code class="docutils literal notranslate"><span class="pre">jwk</span></code>.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value has been generated by the Relying Party Backend and not previously used.</p></li>
 <li><p>The Relying Party Instance has valid Cryptographic Hardware Keys registered.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">client_data</span></code> can be reconstructed using <code class="docutils literal notranslate"><span class="pre">nonce</span></code> and <code class="docutils literal notranslate"><span class="pre">cnf</span></code> (representing <code class="docutils literal notranslate"><span class="pre">key_pub</span></code>). The <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> parameter value is then validated using the registered Cryptographic Hardware Key's public key associated with the Relying Party Instance.</p></li>
@@ -348,41 +306,12 @@
 <li><p>The URL in the <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter matches the Relying Party's URL identifier.</p></li>
 </ol>
 </div></blockquote>
-<p><strong>Step 13:</strong> If the checks are successful, the <a class="reference internal" href="relying-party-solution.html#relying-party-integrity-validation-endpoint"><span class="std std-ref">Relying Party Integrity Validation Endpoint</span></a> responds with a confirmation of success using status code <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">content</span></code>.</p>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-instance-mobile-registration-integrityvalidation-response">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of the Mobile Relying Party Integrity Validation Response</span><a class="headerlink" href="#code-relyingparty-instance-mobile-registration-integrityvalidation-response" title="Link to this code">¶</a></div>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
-</pre></div>
-</div>
-</div>
+<p><strong>Step 13:</strong> If the checks are successful, the Relying Party Backend responds with a confirmation of success (<a class="reference internal" href="relying-party-solution.html#relying-party-key-binding-response"><span class="std std-ref">Relying Party Key Binding Response</span></a>).</p>
 <p><strong>Step 14:</strong> The Mobile Relying Party Instance generates a Certificate Signing Request (CSR, <code class="docutils literal notranslate"><span class="pre">csr</span></code>) using <code class="docutils literal notranslate"><span class="pre">key_pub</span></code> and <code class="docutils literal notranslate"><span class="pre">key_priv</span></code>.</p>
-<p><strong>Step 15:</strong> The Mobile Relying Party Instance sends the CSR to the <a class="reference internal" href="relying-party-solution.html#relying-party-access-certificate-endpoint"><span class="std std-ref">Relying Party Access Certificate Endpoint</span></a> of the Relying Party Backend, as part of the Access Certificate Request.</p>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-instance-mobile-registration-accesscertificate-request">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of the Mobile Relying Party Access Certificate Request</span><a class="headerlink" href="#code-relyingparty-instance-mobile-registration-accesscertificate-request" title="Link to this code">¶</a></div>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/access-certificate</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;csr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIIBvzCCAa...&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<p><strong>Steps 16-17:</strong> The <a class="reference internal" href="relying-party-solution.html#relying-party-access-certificate-endpoint"><span class="std std-ref">Relying Party Access Certificate Endpoint</span></a> checks that the public key in the CSR corresponds to a Relying Party Instance that has been previously validated, i.e., that it matches the one bound to the Cryptographic Hardware Keys through <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>. If this check is successful, the Relying Party Backend sends the CSR to the Relying Party Instance Access Certificate Authority.</p>
+<p><strong>Step 15:</strong> The Mobile Relying Party Instance sends the CSR to the <a class="reference internal" href="relying-party-solution.html#relying-party-access-certificate-endpoint"><span class="std std-ref">Relying Party Access Certificate Endpoint</span></a> of the Relying Party Backend, as part of the <a class="reference internal" href="relying-party-solution.html#relying-party-access-certificate-request"><span class="std std-ref">Relying Party Access Certificate Request</span></a>.</p>
+<p><strong>Steps 16-17:</strong> The Relying Party Backend checks that the public key in the CSR corresponds to a Relying Party Instance that has been previously validated, i.e., that it matches the one bound to the Cryptographic Hardware Keys through <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>. If this check is successful, the Relying Party Backend sends the CSR to the Relying Party Instance Access Certificate Authority.</p>
 <p><strong>Steps 18-19:</strong> The Relying Party Instance Access Certificate Authority signs the CSR, obtaining a valid Access Certificate (<code class="docutils literal notranslate"><span class="pre">access_certificate</span></code>) which it sends back to the Relying Party Backend.</p>
-<p><strong>Steps 20-21:</strong> The <a class="reference internal" href="relying-party-solution.html#relying-party-access-certificate-endpoint"><span class="std std-ref">Relying Party Access Certificate Endpoint</span></a> sends the Access Certificate to the Mobile Relying Party Instance, which stores it for future authentication towards Wallet Instances.</p>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-instance-mobile-registration-accesscertificate-response">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of the Mobile Relying Party Access Certificate Response</span><a class="headerlink" href="#code-relyingparty-instance-mobile-registration-accesscertificate-response" title="Link to this code">¶</a></div>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;access_certificate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hajdnhaghSDGns...&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
+<p><strong>Steps 20-21:</strong> The Relying Party Backend sends the Access Certificate (as part of the <a class="reference internal" href="relying-party-solution.html#relying-party-access-certificate-response"><span class="std std-ref">Relying Party Access Certificate Response</span></a>) to the Mobile Relying Party Instance, which stores it for future authentication towards Wallet Instances.</p>
 </section>
 <section id="mobile-relying-party-instance-access-certificate-reissuance">
 <h4>Mobile Relying Party Instance Access Certificate Reissuance<a class="headerlink" href="#mobile-relying-party-instance-access-certificate-reissuance" title="Link to this heading">¶</a></h4>
@@ -490,7 +419,7 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

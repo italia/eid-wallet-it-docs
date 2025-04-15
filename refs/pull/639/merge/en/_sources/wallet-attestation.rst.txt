@@ -9,7 +9,7 @@ This section describes how the Wallet Provider issues a Wallet Attestation.
 .. figure:: ../../images/wallet_instance_acquisition.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0wqKBaXmA0ArgafRWL3K5hX4YcRNarqhc_5YpwQKNu-zAV4sc5vMiVtcuxrvaxCWw6NOT0e7SJniAlAgjOPWvPnKxfTwrKU0hMsFB4fXBSw3_XR8Qy00GuZu2GBq3-mw4hZX8CWrZIZiUtYE-aoFS2v24IJMCPpFRy8EYXBWAFJUSjDu8YvcdtktjOOyL5YlYSqOMjLhfLJgwFN7MF4KRkddG440WUa1N4z-LqnQb0Nx-6ez1K3OPPqsb8ZQBGgbtfMAdwUS5otLQx0hkF2FlRZ6Oz_Q6gxHcmVq18dOWk-nWMEjswVRvPeUbuADrYTW0-0MROTLHsgQ-OeuDPWQOg2-fKqyTX13eKVhKxxzxPYm7ogjP_3FjRVRM4Wfpqu8t9Py8Z6Byi3Hbvkhw_khsylBhsh7v51G6o093cu5qX9y8lDNDMG3hXAq35O2R4ZGeA0YDgdIdaoiawNNcbroWSw2ZcEAdn6PQSFAKsXpm0xpf4s-DJHDL1GmeklE4iiozRTiCRHwDCZTzVcRj--EzybcK9Jqf9ZqXNdFtNp1asa7sp3Au6C9-03fT5ngQGObXxoVtEPvvgPGmccHeKfFMR0KYjdGMfTO5Po_7zs3bRQKPmPbgZF8mYwuHEq_UeyAaTaLpCOl-thYiJjYymA1vuxBov2EvML8QttmzvNsmR8LYvtzJMPSWctyRTGGB3V52UQDo2x_dc9GA6jKU2oeNO8LzIyYotedlqx05vxAJfWiO5dcq3iETBYIqtECLMV4PjXqVm00
+    :target: https://www.plantuml.com/plantuml/svg/VLHFRnC_4BtxKupSmo-LyhiWmQ4Ig5LLsWg4ehR09L8qkvxiMjcC5tisfNnwx4s9jy7qiehjDt_UcpSv3u9UXcsdS137mxOYhrfh2DREIUL-gl_w2B2rxP55AQp5UT1V0taD66084Jz1WFwENKS2jnm4kQOHXNqFBr6Vw0akH2Y2n3g6YyLjs4DH0fo4tbjk6a_4nUmBxtRMa8SAwmsn6KEhUgEKIXtz_o5MF8Cx-Z5G441WUWJNazyNanPboJw-May14FPPfmqbedQ7GgbtfUBdEUTbI_K6x1ek_LClhl7OjxQ66_Jc4Jr18hRa1snWfdNxVBlQqDDAiD7w56m0tA7jiEf8JJDV4wS6KqCCrBUqZSSEOYZqQ7tATxWT4_P3fVKS_hhsTXSBAUNP2O7RaKyavb4UEFbyUttpS7rtTVL5xPaS2se39C71hK5QWeza_gY6RC1LWfR1Ie0j2HeKLCGcLJgGYNMoz5gpIoxGMT1nJF4p8ZDjM7iARGxOOvwroRU6fecA0aPqtLbYMQN-LYs6Ley6kR-vUFFstUoGR0v5IK-BIL-Pzy8jbZoPTh0Demm-be3ta4wpMQcdEHGjChtE4yrjeOIp8aULdh9aAHIpfRKkyIfu_p2yHojjASySocJdaALTSedRFnGVDIApBvYjNtRsn6NtnEOL0YyzbzSX7Slha1Rxw0yiROHbAnOx-ulCk0Qx-Dke8LXkYYFCEv5z_Yt5e53MgF1OKBi4A-fVH9RrJewTW2yzbPqmMS6opA5t7EXuAQVd6AlEYSsmxNu3
 
     Sequence Diagram for Wallet Attestation acquisition
 
@@ -22,27 +22,10 @@ This section describes how the Wallet Provider issues a Wallet Attestation.
   3. Verify the Wallet Provider's federation membership and retrieve its metadata.
 
 
-**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a ``nonce`` from the :ref:`Nonce endpoint` of the Wallet Provider Backend. This ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a ``nonce`` from the :ref:`Nonce Endpoint` of the Wallet Provider Backend. This ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
 The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
 
-Below is a non-normative example of a Nonce Request.
-
-.. code-block:: http
-
-    GET /nonce HTTP/1.1
-    Host: wallet-provider.example.com
-
 Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance. 
-Below is a non-normative example of a Nonce Response.
-
-.. code-block:: http
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json
-
-    {
-      "nonce": "i4ThI2Jhbu81i8mqyWEuDG5t"
-    }
 
 **Step 7**: The Wallet Instance performs the following actions:
 
@@ -71,49 +54,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 * Constructs the Wallet Attestation Request in the form of a JWT. This JWT includes the ``key_attestation``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Attestation Request Body <table_wallet_attestation_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
 * Submits the Wallet Attestation Request to the :ref:`Wallet Attestation Issuance endpoint` of the Wallet Provider Backend.
 
-Below is a non-normative example of the Wallet Attestation Request JWT without encoding and signature applied:
-
-.. code-block::
-
-  {
-    "alg": "ES256",
-    "kid": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "typ": "war+jwt"
-  }
-  .
-  {
-    "iss": "https://wallet-provider.example.org/instance/vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "sub": "https://wallet-provider.example.org/",
-    "nonce": "6ec69324-60a8-4e5b-a697-a766d85790ea",
-    "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...redacted",
-    "key_attestation": "o2NmbXRvYXBwbGUtYXBwYX...redacted",
-    "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU=",
-    "cnf": {
-      "jwk": {
-        "crv": "P-256",
-        "kty": "EC",
-        "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-      }
-    },
-    "iat": 1686645115,
-    "exp": 1686652315
-  }
-
-
 The Wallet Instance MUST send the signed Wallet Attestation Request JWT as an ``assertion`` parameter in the body of an HTTP request to the Wallet Provider's :ref:`Wallet Attestation Issuance endpoint`.
-
-Below is a non-normative example of a Wallet Attestation Issuance Request.
-
-.. code-block:: http
-
-    POST /wallet-attestation HTTP/1.1
-    Host: wallet-provider.example.org
-    Content-Type: application/json
-
-    {
-      "assertion": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG..."
-    }
 
 **Steps 13-17**: The Wallet Provider Backend evaluates the Wallet Attestation Request and MUST perform the following checks:
 
@@ -154,6 +95,3 @@ Below is a non-normative example of the response.
         }
       ]
     }
-
-
-

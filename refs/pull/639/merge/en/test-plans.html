@@ -189,7 +189,7 @@
 <li><p><strong>Test Case</strong>: a unique identifier.</p></li>
 <li><p><strong>Category</strong>: the functional area covered by the test.</p></li>
 <li><p><strong>Description</strong>: the requirement being tested, always based on a normative MUST from the specification.</p></li>
-<li><p><strong>Expected Result</strong>: the expected outcome when the Wallet is implemented correctly.</p></li>
+<li><p><strong>Expected Result</strong>: the expected outcome when the solution is implemented correctly.</p></li>
 </ul>
 </section>
 <section id="signed-statements-evaluation-test-matrix">
@@ -309,7 +309,7 @@
 <tr class="row-even"><td><p>ALL-001</p></td>
 <td><p>Security</p></td>
 <td><p>Obtaining Trust Anchors public cryptographic materials</p></td>
-<td><p>Entities obtains the list of Trust Anchors or Certificate Authorities and their public cryptographic key materials, periodically ensuring that these are not expired, revoked or updated. Infrastructure of Trust provides these information through web endpoints and other out of band mechanisms, to facilitate comparison of the provided information to all the entities.</p></td>
+<td><p>Entities obtain the list of Trust Anchors or Certificate Authorities and their public cryptographic key materials, periodically ensuring that these are not expired, revoked or updated. Infrastructure of Trust provides these information through web endpoints and other out of band mechanisms, to facilitate comparison of the provided information to all the entities.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-002</p></td>
 <td><p>Security</p></td>
@@ -319,39 +319,39 @@
 <tr class="row-even"><td><p>ALL-003</p></td>
 <td><p>Discovery</p></td>
 <td><p>Publication of information about itself</p></td>
-<td><p>Entities signs and publish all the information about them, containing all the protocol metadata, cryptographic material, trust marks, using the well-known endpoint defined in this specification, making these information publicly discoverable by other entities.</p></td>
+<td><p>Entities sign and publish all the information about them, containing all the protocol metadata, cryptographic material, trust marks, using the well-known endpoint defined in this specification, making these information publicly discoverable by other entities.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-004</p></td>
 <td><p>Security</p></td>
 <td><p>Publication of the historical key registry</p></td>
-<td><p>Entities signs and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making these information publicly discoverable by other entities.</p></td>
+<td><p>Entities sign and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making these information publicly discoverable by other entities.</p></td>
 </tr>
 <tr class="row-even"><td><p>ALL-005</p></td>
 <td><p>Security</p></td>
 <td><p>Evaluation of compliance with entities before exchanging data about the User</p></td>
-<td><p>Entities evaluates trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.</p></td>
+<td><p>Entities evaluate trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-006</p></td>
 <td><p>Security</p></td>
 <td><p>Evaluation of proof of possession during the use of a signed assertion in according to the configured usage ownership confirmation method.</p></td>
-<td><p>Entities evaluates the confirmation method and apply its protocol to consider valid the signed statement.</p></td>
+<td><p>Entities evaluate the confirmation method and apply its protocol to consider valid the signed statement.</p></td>
 </tr>
 <tr class="row-even"><td><p>ALL-007</p></td>
 <td><p>Security</p></td>
 <td><p>Supported cryptography algorithms</p></td>
-<td><p>Entities evaluates cryptography using in compliance of the allowed algorithms.</p></td>
+<td><p>Entities evaluate cryptography using in compliance of the allowed algorithms.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-008</p></td>
 <td><p>Security</p></td>
 <td><p>Replay attacks</p></td>
-<td><p>Signed statements using unique identifiers are stored untill their expiration time and checked againts any replay of them.</p></td>
+<td><p>Signed statements using unique identifiers are stored until their expiration time and checked against any replay of them.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="wallet-solution-test-matrix">
 <h2>Wallet Solution Test Matrix<a class="headerlink" href="#wallet-solution-test-matrix" title="Link to this heading">¶</a></h2>
-<p>This section provides the set of test cases for verifying conformance of a Wallet Solution implementations to the technical rules defined in the IT-Wallet ecosystem.
+<p>This section provides the set of test cases for verifying conformance of a Wallet Solution implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the mandatory requirements (MUST statements) extracted from the following documents:</p>
 <ul class="simple">
 <li><p>Wallet Solution</p></li>
@@ -391,7 +391,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 </tr>
 <tr class="row-odd"><td><p>WS-004</p></td>
 <td><p>Attestation</p></td>
-<td><p>The Wallet MUST be capable of generating and presenting a Wallet Attestation when required by Verifiers or Issuers.</p></td>
+<td><p>The Wallet MUST be capable of generating and presenting a Wallet Attestation when required by Relying Parties or Issuers.</p></td>
 <td><p>Valid, verifiable Attestations are generated including integrity and origin proofs.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-005</p></td>
@@ -401,7 +401,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 </tr>
 <tr class="row-odd"><td><p>WS-006</p></td>
 <td><p>Remote Credential Presentation</p></td>
-<td><p>The Wallet Solution MUST implement the both the proximity and remote presentation flow, ensuring Verifiable Credential selection, integrity, and User interaction.</p></td>
+<td><p>The Wallet Solution MUST implement both the proximity and remote presentation flow, ensuring Verifiable Credential selection, integrity, and User interaction.</p></td>
 <td><p>Verifiable Credential presentation is successful, correct, and under User control.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-007</p></td>
@@ -726,7 +726,7 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
 <tr class="row-even"><td><p>ISS-005</p></td>
 <td><p>Authentication</p></td>
 <td><p>User Authentication with PID Provider</p></td>
-<td><p>User is authenticated with LoA 3 (High) by the PID Provider. Validate the use of national digital identity schemes and ensure User consent is obtained.</p></td>
+<td><p>User is authenticated with LoA 3 (High) by the PID Provider. Validate the use of the digital identity scheme CieID and ensure that User consent is obtained.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ISS-006</p></td>
 <td><p>Issuance</p></td>
@@ -990,270 +990,265 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
 </tr>
 <tr class="row-odd"><td><p>ISS-058</p></td>
 <td><p>Security</p></td>
-<td><p>Validate Notification Endpoint Response</p></td>
-<td><p>Ensure the Notification Endpoint Response is received with the correct status code.</p></td>
-</tr>
-<tr class="row-even"><td><p>ISS-059</p></td>
-<td><p>Security</p></td>
 <td><p>Validate Error Handling in Notification Endpoint</p></td>
 <td><p>Ensure errors in the Notification Endpoint are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-060</p></td>
+<tr class="row-even"><td><p>ISS-059</p></td>
 <td><p>Security</p></td>
 <td><p>Validate Error Handling in Credential Endpoint</p></td>
 <td><p>Ensure errors in the Credential Endpoint are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-061</p></td>
+<tr class="row-odd"><td><p>ISS-060</p></td>
 <td><p>Security</p></td>
 <td><p>Validate Error Handling in Token Endpoint</p></td>
 <td><p>Ensure errors in the Token Endpoint are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-062</p></td>
+<tr class="row-even"><td><p>ISS-061</p></td>
 <td><p>Security</p></td>
 <td><p>Validate Error Handling in Authorization Endpoint</p></td>
 <td><p>Ensure errors in the Authorization Endpoint are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-063</p></td>
+<tr class="row-odd"><td><p>ISS-062</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in PAR Endpoint</p></td>
 <td><p>Ensure errors in the PAR Endpoint are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-064</p></td>
+<tr class="row-even"><td><p>ISS-063</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Nonce Endpoint</p></td>
 <td><p>Ensure errors in the Nonce Endpoint are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-065</p></td>
+<tr class="row-odd"><td><p>ISS-064</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Deferred Endpoint</p></td>
 <td><p>Ensure errors in the Deferred Endpoint are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-066</p></td>
+<tr class="row-even"><td><p>ISS-065</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Re-Issuance Flow</p></td>
 <td><p>Ensure errors in the Re-Issuance Flow are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-067</p></td>
+<tr class="row-odd"><td><p>ISS-066</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Refresh Token Flow</p></td>
 <td><p>Ensure errors in the Refresh Token Flow are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-068</p></td>
+<tr class="row-even"><td><p>ISS-067</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Issuance</p></td>
 <td><p>Ensure errors in the Credential Issuance process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-069</p></td>
+<tr class="row-odd"><td><p>ISS-068</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Request</p></td>
 <td><p>Ensure errors in the Credential Request process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-070</p></td>
+<tr class="row-even"><td><p>ISS-069</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Response</p></td>
 <td><p>Ensure errors in the Credential Response process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-071</p></td>
+<tr class="row-odd"><td><p>ISS-070</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Validation</p></td>
 <td><p>Ensure errors in the Credential Validation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-072</p></td>
+<tr class="row-even"><td><p>ISS-071</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Integrity</p></td>
 <td><p>Ensure errors in the Credential Integrity process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-073</p></td>
+<tr class="row-odd"><td><p>ISS-072</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Type and Schema</p></td>
 <td><p>Ensure errors in the Credential Type and Schema process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-074</p></td>
+<tr class="row-even"><td><p>ISS-073</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Trust Chain Validation</p></td>
 <td><p>Ensure errors in the Trust Chain Validation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-075</p></td>
+<tr class="row-odd"><td><p>ISS-074</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Deferred Issuance</p></td>
 <td><p>Ensure errors in the Deferred Issuance process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-076</p></td>
+<tr class="row-even"><td><p>ISS-075</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Notification Handling</p></td>
 <td><p>Ensure errors in the Notification Handling process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-077</p></td>
+<tr class="row-odd"><td><p>ISS-076</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in User Authentication</p></td>
 <td><p>Ensure errors in the User Authentication process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-078</p></td>
+<tr class="row-even"><td><p>ISS-077</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in User Consent</p></td>
 <td><p>Ensure errors in the User Consent process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-079</p></td>
+<tr class="row-odd"><td><p>ISS-078</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in User Notification</p></td>
 <td><p>Ensure errors in the User Notification process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-080</p></td>
+<tr class="row-even"><td><p>ISS-079</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in User Attribute Set Update</p></td>
 <td><p>Ensure errors in the User Attribute Set Update process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-081</p></td>
+<tr class="row-odd"><td><p>ISS-080</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Data Model/Format Update</p></td>
 <td><p>Ensure errors in the Data Model/Format Update process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-082</p></td>
+<tr class="row-even"><td><p>ISS-081</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Expiry</p></td>
 <td><p>Ensure errors in the Credential Expiry process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-083</p></td>
+<tr class="row-odd"><td><p>ISS-082</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Re-Issuance</p></td>
 <td><p>Ensure errors in the Credential Re-Issuance process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-084</p></td>
+<tr class="row-even"><td><p>ISS-083</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Binding</p></td>
 <td><p>Ensure errors in the Credential Binding process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-085</p></td>
+<tr class="row-odd"><td><p>ISS-084</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Trust Evaluation</p></td>
 <td><p>Ensure errors in the Credential Trust Evaluation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-086</p></td>
+<tr class="row-even"><td><p>ISS-085</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Metadata Retrieval</p></td>
 <td><p>Ensure errors in the Credential Metadata Retrieval process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-087</p></td>
+<tr class="row-odd"><td><p>ISS-086</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Discovery</p></td>
 <td><p>Ensure errors in the Credential Discovery process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-088</p></td>
+<tr class="row-even"><td><p>ISS-087</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Evaluation</p></td>
 <td><p>Ensure errors in the Credential Offer Evaluation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-089</p></td>
+<tr class="row-odd"><td><p>ISS-088</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Acceptance</p></td>
 <td><p>Ensure errors in the Credential Offer Acceptance process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-090</p></td>
+<tr class="row-even"><td><p>ISS-089</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Rejection</p></td>
 <td><p>Ensure errors in the Credential Offer Rejection process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-091</p></td>
+<tr class="row-odd"><td><p>ISS-090</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Revocation</p></td>
 <td><p>Ensure errors in the Credential Offer Revocation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-092</p></td>
+<tr class="row-even"><td><p>ISS-091</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Expiry</p></td>
 <td><p>Ensure errors in the Credential Offer Expiry process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-093</p></td>
+<tr class="row-odd"><td><p>ISS-092</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Renewal</p></td>
 <td><p>Ensure errors in the Credential Offer Renewal process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-094</p></td>
+<tr class="row-even"><td><p>ISS-093</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Update</p></td>
 <td><p>Ensure errors in the Credential Offer Update process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-095</p></td>
+<tr class="row-odd"><td><p>ISS-094</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Validation</p></td>
 <td><p>Ensure errors in the Credential Offer Validation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-096</p></td>
+<tr class="row-even"><td><p>ISS-095</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Verification</p></td>
 <td><p>Ensure errors in the Credential Offer Verification process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-097</p></td>
+<tr class="row-odd"><td><p>ISS-096</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Confirmation</p></td>
 <td><p>Ensure errors in the Credential Offer Confirmation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-098</p></td>
+<tr class="row-even"><td><p>ISS-097</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Notification</p></td>
 <td><p>Ensure errors in the Credential Offer Notification process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-099</p></td>
+<tr class="row-odd"><td><p>ISS-098</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Communication</p></td>
 <td><p>Ensure errors in the Credential Offer Communication process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-100</p></td>
+<tr class="row-even"><td><p>ISS-099</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Transmission</p></td>
 <td><p>Ensure errors in the Credential Offer Transmission process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-101</p></td>
+<tr class="row-odd"><td><p>ISS-100</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Reception</p></td>
 <td><p>Ensure errors in the Credential Offer Reception process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-102</p></td>
+<tr class="row-even"><td><p>ISS-101</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Processing</p></td>
 <td><p>Ensure errors in the Credential Offer Processing process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-103</p></td>
+<tr class="row-odd"><td><p>ISS-102</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Handling</p></td>
 <td><p>Ensure errors in the Credential Offer Handling process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-104</p></td>
+<tr class="row-even"><td><p>ISS-103</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Management</p></td>
 <td><p>Ensure errors in the Credential Offer Management process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-105</p></td>
+<tr class="row-odd"><td><p>ISS-104</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Administration</p></td>
 <td><p>Ensure errors in the Credential Offer Administration process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-106</p></td>
+<tr class="row-even"><td><p>ISS-105</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Control</p></td>
 <td><p>Ensure errors in the Credential Offer Control process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-107</p></td>
+<tr class="row-odd"><td><p>ISS-106</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Oversight</p></td>
 <td><p>Ensure errors in the Credential Offer Oversight process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-108</p></td>
+<tr class="row-even"><td><p>ISS-107</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Supervision</p></td>
 <td><p>Ensure errors in the Credential Offer Supervision process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-109</p></td>
+<tr class="row-odd"><td><p>ISS-108</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Monitoring</p></td>
 <td><p>Ensure errors in the Credential Offer Monitoring process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-odd"><td><p>ISS-110</p></td>
+<tr class="row-even"><td><p>ISS-109</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Evaluation</p></td>
 <td><p>Ensure errors in the Credential Offer Evaluation process are handled correctly and reported.</p></td>
 </tr>
-<tr class="row-even"><td><p>ISS-111</p></td>
+<tr class="row-odd"><td><p>ISS-110</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Validate Error Handling in Credential Offer Assessment</p></td>
 <td><p>Ensure errors in the Credential Offer Assessment process are handled correctly and reported.</p></td>
@@ -1741,57 +1736,52 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
 <td><p>Verify the integrity of received documents.</p></td>
 <td><p>Documents are verified and integrity is confirmed.</p></td>
 </tr>
-<tr class="row-even"><td><p>TC-010</p></td>
-<td><p>Document Verification</p></td>
-<td><p>Verify the integrity of received documents.</p></td>
-<td><p>Documents are verified and integrity is confirmed.</p></td>
-</tr>
-<tr class="row-odd"><td><p>PPR-011</p></td>
+<tr class="row-even"><td><p>PPR-011</p></td>
 <td><p>Security</p></td>
 <td><p>Test encryption of mdoc requests and responses.</p></td>
 <td><p>All mdoc requests and responses are encrypted correctly.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-012</p></td>
+<tr class="row-odd"><td><p>PPR-012</p></td>
 <td><p>User Interface</p></td>
 <td><p>Check the user interface for attribute consent.</p></td>
 <td><p>User interface displays attribute consent request clearly.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-013</p></td>
+<tr class="row-even"><td><p>PPR-013</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Test response to unsupported document types.</p></td>
 <td><p>System returns appropriate error for unsupported document types.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-014</p></td>
+<tr class="row-odd"><td><p>PPR-014</p></td>
 <td><p>Performance</p></td>
 <td><p>Measure time taken for session establishment.</p></td>
 <td><p>Session is established within acceptable time limits.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-015</p></td>
+<tr class="row-even"><td><p>PPR-015</p></td>
 <td><p>Compatibility</p></td>
 <td><p>Verify compatibility with different mobile devices.</p></td>
 <td><p>System works seamlessly across various mobile devices.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-016</p></td>
+<tr class="row-odd"><td><p>PPR-016</p></td>
 <td><p>Data Integrity</p></td>
 <td><p>Test integrity of data during transmission.</p></td>
 <td><p>Data integrity is maintained during transmission.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-017</p></td>
+<tr class="row-even"><td><p>PPR-017</p></td>
 <td><p>Session Management</p></td>
 <td><p>Test session management under high load.</p></td>
 <td><p>Sessions are managed effectively under high load conditions.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-018</p></td>
+<tr class="row-odd"><td><p>PPR-018</p></td>
 <td><p>BLE Connection</p></td>
 <td><p>Test reconnection after BLE disconnection.</p></td>
 <td><p>System reconnects successfully after BLE disconnection.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-019</p></td>
+<tr class="row-even"><td><p>PPR-019</p></td>
 <td><p>User Experience</p></td>
 <td><p>Evaluate user experience during the proximity flow.</p></td>
 <td><p>Users report a positive experience with the proximity flow.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-020</p></td>
+<tr class="row-odd"><td><p>PPR-020</p></td>
 <td><p>Security</p></td>
 <td><p>Test resistance to replay attacks.</p></td>
 <td><p>System is resistant to replay attacks.</p></td>
@@ -1856,7 +1846,7 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

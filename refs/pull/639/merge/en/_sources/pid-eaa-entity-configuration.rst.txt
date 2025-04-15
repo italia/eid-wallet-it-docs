@@ -13,7 +13,7 @@ The PID/(Q)EAA Providers MUST provide the following metadata types:
 - `oauth_authorization_server`
 - `openid_credential_issuer`
 
-In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for *openid_credential_verifier* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE id OIDC Technical Specification <https://github.com/italia/spid-cie-oidc-docs>`_.
+In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for *openid_credential_verifier* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE-OpenID-Connect-Specifications`_.
 
 
 The *federation_entity* metadata MUST contain the parameters as defined in Section :ref:`Metadata of federation_entity Leaves`.
@@ -47,9 +47,9 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **acr_values_supported**
     - See `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. The supported values are:
       
-      - `https://www.spid.gov.it/SpidL1`
-      - `https://www.spid.gov.it/SpidL2`
-      - `https://www.spid.gov.it/SpidL3`
+      - `https://trust-registry.eid-wallet.example.it/loa/low`
+      - `https://trust-registry.eid-wallet.example.it/loa/substantial`
+      - `https://trust-registry.eid-wallet.example.it/loa/high`
   * - **scopes_supported**
     - JSON array containing a list of the supported *scope* values. See :rfc:`8414#section-2`.
   * - **response_modes_supported**
@@ -130,7 +130,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - JSON array containing all supported trust frameworks. See `OIDC-IDA`_ Section 8. The supported values are:
 
         - *it_cie*: CIE trust framework supported.
-        - *it_spid*: SPID trust framework supported.
         - *it_wallet*: Italian EUDI Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
   * - **evidence_supported**

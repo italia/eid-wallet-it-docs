@@ -218,11 +218,14 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <tr class="row-odd"><td><p><strong>jwks</strong></p></td>
 <td><p>JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> Section 3, <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Section 5.2.1 and <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>erasure_endpoint</strong></p></td>
+<td><p>[CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users’ attributes. This URL MUST use the <em>https</em> scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim of the PID.</p></td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The parameter <strong>response_uris</strong> is introduced in this specification.</p>
+<p>The parameters <strong>response_uris</strong> and <strong>erasure_endpoint</strong> are introduced in this specification.</p>
 </div>
 </section>
 <section id="example-of-a-relying-party-entity-configuration">
@@ -313,178 +316,29 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <section id="relying-party-nonce-endpoint">
 <h2>Relying Party Nonce Endpoint<a class="headerlink" href="#relying-party-nonce-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Relying Party Nonce Endpoint allows the Relying Party Instance to request a cryptographic <code class="docutils literal notranslate"><span class="pre">nonce</span></code> from the Relying Party Backend. The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.</p>
-<p>Further details on the Nonce Request and Response are provided in the <a class="reference internal" href="pid-eaa-issuance.html#nonce-request"><span class="std std-ref">Nonce Request</span></a> and <a class="reference internal" href="pid-eaa-issuance.html#nonce-response"><span class="std std-ref">Nonce Response</span></a> sections, respectively.</p>
+<p>Further details on the Nonce Request and Response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request"><span class="std std-ref">Mobile Application Nonce Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-response"><span class="std std-ref">Mobile Application Nonce Response</span></a> sections, respectively.</p>
 </section>
 <section id="relying-party-instance-initialization-endpoint">
 <h2>Relying Party Instance Initialization Endpoint<a class="headerlink" href="#relying-party-instance-initialization-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Relying Party Instance Initialization Endpoint allows for the initialization of Relying Party Instances, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys.</p>
-<p>Further details on the Relying Party Instance Initialization Request and Response are provided in the <span class="xref std std-ref">Mobile Application Instance Registration Request</span> and <span class="xref std std-ref">Mobile Application Instance Registration Response</span> sections, respectively.</p>
+<p>Further details on the Relying Party Instance Initialization Request and Response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a> sections, respectively.</p>
 </section>
-<section id="relying-party-integrity-validation-endpoint">
-<h2>Relying Party Integrity Validation Endpoint<a class="headerlink" href="#relying-party-integrity-validation-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Relying Party Integrity Validation Endpoint enables Relying Party Instances to prove their integrity, before obtaining an Access Certificate.</p>
-<section id="relying-party-integrity-validation-request">
-<h3>Relying Party Integrity Validation Request<a class="headerlink" href="#relying-party-integrity-validation-request" title="Link to this heading">¶</a></h3>
-<p>The request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
-<p>The Integrity Validation Request includes the following HTTP header parameters:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>A digital signature algorithm identifier.</p></td>
-<td><p>[<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>Unique identifier of the JWK used by the Relying Party Instance to sign the Integrity Validation Request.</p></td>
-<td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>]</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">rp-ivr+jwt</span></code></p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>The Integrity Validation Request includes the following body parameters:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 60.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-<th class="head"><p><strong>Reference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>iss</strong></p></td>
-<td><p>The identifier of the Relying Party concatenated with the thumbprint of the JWK in the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim.</p></td>
-<td><p>[<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>The identifier of the Relying Party Backend.</p></td>
-<td><p>[<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>exp</strong></p></td>
-<td><p>UNIX timestamp representing the JWT expiration time.</p></td>
-<td><p>[<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>iat</strong></p></td>
-<td><p>UNIX timestamp representing the JWT issuance time.</p></td>
-<td><p>[<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>nonce</strong></p></td>
-<td><p>The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> obtained from the <a class="reference internal" href="wallet-solution.html#nonce-endpoint"><span class="std std-ref">Nonce Endpoint</span></a>.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
-<td><p>The signature of <code class="docutils literal notranslate"><span class="pre">client_data</span></code> obtained using the Cryptographic Hardware Key, encoded in the <code class="docutils literal notranslate"><span class="pre">base64url</span></code> format.</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p><strong>key_attestation</strong></p></td>
-<td><p>The key attestation obtained from the Key Attestation APIs with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p><strong>hardware_key_tag</strong></p></td>
-<td><p>The value of the Cryptographic Hardware Key Tag.</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<section id="relying-party-key-binding-endpoint">
+<h2>Relying Party Key Binding Endpoint<a class="headerlink" href="#relying-party-key-binding-endpoint" title="Link to this heading">¶</a></h2>
+<p>The Relying Party Key Binding Endpoint enables Relying Party Instances to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Relying Party Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization"><span class="std std-ref">Mobile Application Instance Initialization</span></a> phase. Before completing the process, the Relying Party Backend also needs to verify the integrity of the Relying Party Instance.</p>
+<section id="relying-party-key-binding-request">
+<h3>Relying Party Key Binding Request<a class="headerlink" href="#relying-party-key-binding-request" title="Link to this heading">¶</a></h3>
+<p>Further details on the Relying Party Key Binding Request are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-request"><span class="std std-ref">Mobile Application Key Binding Request</span></a> section.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>.</p>
 </section>
-<section id="relying-party-integrity-validation-response">
-<h3>Relying Party Integrity Validation Response<a class="headerlink" href="#relying-party-integrity-validation-response" title="Link to this heading">¶</a></h3>
-<p>Upon a successful request, the Integrity Validation Endpoint provides an HTTP Response with a <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code> status code.</p>
-<p>If any errors occur, the Integrity Validation Endpoint returns an error response. The response uses <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and includes the following parameters:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><em>error</em>. The error code.</p></li>
-<li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
-</ul>
-</div></blockquote>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-endpoint-integrityvalidation-error">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of an Hardware Key Registration Error Response</span><a class="headerlink" href="#code-relyingparty-endpoint-integrityvalidation-error" title="Link to this code">¶</a></div>
-<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;forbidden&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The provided challenge is invalid, expired, or already used.&quot;</span>
-<span class="p">}</span>
+<section id="relying-party-key-binding-response">
+<h3>Relying Party Key Binding Response<a class="headerlink" href="#relying-party-key-binding-response" title="Link to this heading">¶</a></h3>
+<p>Upon a successful request, the Relying Party Backend provides an HTTP Response with a <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code> status code.</p>
+<p>Below is a non-normative example of a Key Binding Request Response.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
 </pre></div>
 </div>
-</div>
-<p>The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 20.0%" />
-<col style="width: 50.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>HTTP Status Code</strong></p></th>
-<th class="head"><p><strong>Error Code</strong></p></th>
-<th class="head"><p><strong>Description</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
-<td><p>The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">integrity_check_error</span></code></p></td>
-<td><p>The device does not meet the Relying Party's minimum security requirements.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The signature of the Integrity Validation Request is invalid or does not match the associated public key (JWK).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The integrity assertion validation failed; the integrity assertion is tampered with or improperly signed.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The provided challenge is invalid, expired, or already used.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The Proof of Possession (<code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>) is invalid.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The <code class="docutils literal notranslate"><span class="pre">iss</span></code> parameter does not match the Relying Party expected URL identifier.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">not_found</span></code></p></td>
-<td><p>The Relying Party Instance was not found.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPTIONAL]</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
-<td><p>The request does not adhere to the required format.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Endpoint encountered an internal problem.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Endpoint is temporarily unavailable (e.g., due to maintenance or overload).</p></td>
-</tr>
-</tbody>
-</table>
+<p>If any errors occur during the process, an error response is returned. Further details on the error response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-error-response"><span class="std std-ref">Mobile Application Key Binding Error Response</span></a> section.</p>
 </section>
 </section>
 <section id="relying-party-access-certificate-endpoint">
@@ -492,8 +346,8 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <p>The Relying Party Access Certificate Endpoint enables Relying Party Instances to obtain an Access Certificate.</p>
 <section id="relying-party-access-certificate-request">
 <h3>Relying Party Access Certificate Request<a class="headerlink" href="#relying-party-access-certificate-request" title="Link to this heading">¶</a></h3>
-<p>The request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
-<p>The Access Certificate Request includes the following body parameters:</p>
+<p>The Access Certificate Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
+<p>The request includes the following body parameter:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -508,11 +362,21 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>csr</strong></p></td>
-<td><p>The CSR generated by the Relying Party Instance, encoded in the <code class="docutils literal notranslate"><span class="pre">base64url</span></code> format as defined in <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2511.html"><strong>RFC 2511</strong></a>.</p></td>
+<td><p>The CSR generated by the Relying Party Instance, encoded in the <code class="docutils literal notranslate"><span class="pre">base64url</span></code> format as defined in <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2511.html"><strong>RFC 2511</strong></a>.</p></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<p>Below is a non-normative example of an Access Certificate Request.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/access-certificate</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;csr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIIBvzCCAa...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="relying-party-access-certificate-response">
 <h3>Relying Party Access Certificate Response<a class="headerlink" href="#relying-party-access-certificate-response" title="Link to this heading">¶</a></h3>
@@ -532,10 +396,19 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <tbody>
 <tr class="row-even"><td><p><strong>access_certificate</strong></p></td>
 <td><p>The Access Certificate generated by the CSR.</p></td>
-<td></td>
+<td><p>This specification.</p></td>
 </tr>
 </tbody>
 </table>
+<p>Below is a non-normative example of an Access Certificate Response.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;access_certificate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hajdnhaghSDGns...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>If any errors occur, the Relying Party Access Certificate Endpoint returns an error response. The response uses <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and includes the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
@@ -543,17 +416,15 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
 </ul>
 </div></blockquote>
-<div class="literal-block-wrapper docutils container" id="code-relyingparty-endpoint-accesscertificate-error">
-<div class="code-block-caption"><span class="caption-text">Non-normative example of an Hardware Key Registration Error Response</span><a class="headerlink" href="#code-relyingparty-endpoint-accesscertificate-error" title="Link to this code">¶</a></div>
+<p>Below is a non-normative example of an Access Certificate Error Response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
 <span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;forbidden&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_request&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The public key in the CSR is different from the one associated with the Cryptographic Hardware Keys.&quot;</span>
 <span class="p">}</span>
 </pre></div>
-</div>
 </div>
 <p>The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:</p>
 <table class="docutils align-default">
@@ -589,6 +460,73 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 </table>
 </section>
 </section>
+<section id="relying-party-erasure-endpoint">
+<h2>Relying Party Erasure Endpoint<a class="headerlink" href="#relying-party-erasure-endpoint" title="Link to this heading">¶</a></h2>
+<p>The Erasure Endpoint, which is described in <a class="reference internal" href="relying-party-solution.html#metadata-for-openid-credential-verifier"><span class="std std-ref">Metadata for openid_credential_verifier</span></a>, allows Wallet Instances to request deletion of attributes presented to the Relying Party. It MUST be authenticated, i.e., the Relying Party MUST request User authentication before proceeding with the attribute deletion.</p>
+<section id="erasure-request">
+<h3>Erasure Request<a class="headerlink" href="#erasure-request" title="Link to this heading">¶</a></h3>
+<p>The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.</p>
+<p>Below is a non-normative example of an Erasure Request where the call back URL is passed as a query parameter.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/erasure-endpoint?callback_url=https://wallet-instance/erasure_response</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
+</pre></div>
+</div>
+</section>
+<section id="erasure-response">
+<h3>Erasure Response<a class="headerlink" href="#erasure-response" title="Link to this heading">¶</a></h3>
+<p>If the deletion of all attributes bound to the User have been successful, the Erasure Response MUST return a 204 HTTP status code.</p>
+<p>If instead the attributes deletion procedure fails due any circumstances, the Relying Party MUST return an error response with <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: The error code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
+</ul>
+</div></blockquote>
+<p>The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
+<td><p>The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unauthorized</span></code></p></td>
+<td><p>The request could not be carried fulfilled due to invalid authentication by the User.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Erasure Endpoint encountered an internal problem. (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>The request cannot be fulfilled because the Erasure Endpoint is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is an example of an error response from Erasure Endpoint:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">500</span> <span class="n">Internal</span> <span class="n">Server</span> <span class="n">Error</span>
+<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>
+
+<span class="p">{</span>
+ <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;server_error&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;error_description&quot;</span><span class="p">:</span> <span class="s2">&quot;The request cannot be fulfilled due to an internal server error.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Upon receiving an error response, the Wallet Instance which made the Erasure Request MUST inform the User of the error condition in an appropriate manner.</p>
+</section>
+</section>
 </section>
 
 
@@ -616,14 +554,19 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 </li>
 <li><a class="reference internal" href="#relying-party-nonce-endpoint">Relying Party Nonce Endpoint</a></li>
 <li><a class="reference internal" href="#relying-party-instance-initialization-endpoint">Relying Party Instance Initialization Endpoint</a></li>
-<li><a class="reference internal" href="#relying-party-integrity-validation-endpoint">Relying Party Integrity Validation Endpoint</a><ul>
-<li><a class="reference internal" href="#relying-party-integrity-validation-request">Relying Party Integrity Validation Request</a></li>
-<li><a class="reference internal" href="#relying-party-integrity-validation-response">Relying Party Integrity Validation Response</a></li>
+<li><a class="reference internal" href="#relying-party-key-binding-endpoint">Relying Party Key Binding Endpoint</a><ul>
+<li><a class="reference internal" href="#relying-party-key-binding-request">Relying Party Key Binding Request</a></li>
+<li><a class="reference internal" href="#relying-party-key-binding-response">Relying Party Key Binding Response</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#relying-party-access-certificate-endpoint">Relying Party Access Certificate Endpoint</a><ul>
 <li><a class="reference internal" href="#relying-party-access-certificate-request">Relying Party Access Certificate Request</a></li>
 <li><a class="reference internal" href="#relying-party-access-certificate-response">Relying Party Access Certificate Response</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#relying-party-erasure-endpoint">Relying Party Erasure Endpoint</a><ul>
+<li><a class="reference internal" href="#erasure-request">Erasure Request</a></li>
+<li><a class="reference internal" href="#erasure-response">Erasure Response</a></li>
 </ul>
 </li>
 </ul>
@@ -650,7 +593,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
