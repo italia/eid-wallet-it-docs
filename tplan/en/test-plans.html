@@ -189,7 +189,7 @@
 <li><p><strong>Test Case</strong>: a unique identifier.</p></li>
 <li><p><strong>Category</strong>: the functional area covered by the test.</p></li>
 <li><p><strong>Description</strong>: the requirement being tested, always based on a normative MUST from the specification.</p></li>
-<li><p><strong>Expected Result</strong>: the expected outcome when the Wallet is implemented correctly.</p></li>
+<li><p><strong>Expected Result</strong>: the expected outcome when the solution is implemented correctly.</p></li>
 </ul>
 </section>
 <section id="signed-statements-evaluation-test-matrix">
@@ -309,7 +309,7 @@
 <tr class="row-even"><td><p>ALL-001</p></td>
 <td><p>Security</p></td>
 <td><p>Obtaining Trust Anchors public cryptographic materials</p></td>
-<td><p>Entities obtains the list of Trust Anchors or Certificate Authorities and their public cryptographic key materials, periodically ensuring that these are not expired, revoked or updated. Infrastructure of Trust provides these information through web endpoints and other out of band mechanisms, to facilitate comparison of the provided information to all the entities.</p></td>
+<td><p>Entities obtain the list of Trust Anchors or Certificate Authorities and their public cryptographic key materials, periodically ensuring that these are not expired, revoked or updated. Infrastructure of Trust provides these information through web endpoints and other out of band mechanisms, to facilitate comparison of the provided information to all the entities.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-002</p></td>
 <td><p>Security</p></td>
@@ -319,39 +319,39 @@
 <tr class="row-even"><td><p>ALL-003</p></td>
 <td><p>Discovery</p></td>
 <td><p>Publication of information about itself</p></td>
-<td><p>Entities signs and publish all the information about them, containing all the protocol metadata, cryptographic material, trust marks, using the well-known endpoint defined in this specification, making these information publicly discoverable by other entities.</p></td>
+<td><p>Entities sign and publish all the information about them, containing all the protocol metadata, cryptographic material, trust marks, using the well-known endpoint defined in this specification, making these information publicly discoverable by other entities.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-004</p></td>
 <td><p>Security</p></td>
 <td><p>Publication of the historical key registry</p></td>
-<td><p>Entities signs and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making these information publicly discoverable by other entities.</p></td>
+<td><p>Entities sign and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making these information publicly discoverable by other entities.</p></td>
 </tr>
 <tr class="row-even"><td><p>ALL-005</p></td>
 <td><p>Security</p></td>
 <td><p>Evaluation of compliance with entities before exchanging data about the User</p></td>
-<td><p>Entities evaluates trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.</p></td>
+<td><p>Entities evaluate trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-006</p></td>
 <td><p>Security</p></td>
 <td><p>Evaluation of proof of possession during the use of a signed assertion in according to the configured usage ownership confirmation method.</p></td>
-<td><p>Entities evaluates the confirmation method and apply its protocol to consider valid the signed statement.</p></td>
+<td><p>Entities evaluate the confirmation method and apply its protocol to consider valid the signed statement.</p></td>
 </tr>
 <tr class="row-even"><td><p>ALL-007</p></td>
 <td><p>Security</p></td>
 <td><p>Supported cryptography algorithms</p></td>
-<td><p>Entities evaluates cryptography using in compliance of the allowed algorithms.</p></td>
+<td><p>Entities evaluate cryptography using in compliance of the allowed algorithms.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ALL-008</p></td>
 <td><p>Security</p></td>
 <td><p>Replay attacks</p></td>
-<td><p>Signed statements using unique identifiers are stored untill their expiration time and checked againts any replay of them.</p></td>
+<td><p>Signed statements using unique identifiers are stored until their expiration time and checked against any replay of them.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="wallet-solution-test-matrix">
 <h2>Wallet Solution Test Matrix<a class="headerlink" href="#wallet-solution-test-matrix" title="Link to this heading">¶</a></h2>
-<p>This section provides the set of test cases for verifying conformance of a Wallet Solution implementations to the technical rules defined in the IT-Wallet ecosystem.
+<p>This section provides the set of test cases for verifying conformance of a Wallet Solution implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the mandatory requirements (MUST statements) extracted from the following documents:</p>
 <ul class="simple">
 <li><p>Wallet Solution</p></li>
@@ -391,7 +391,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 </tr>
 <tr class="row-odd"><td><p>WS-004</p></td>
 <td><p>Attestation</p></td>
-<td><p>The Wallet MUST be capable of generating and presenting a Wallet Attestation when required by Verifiers or Issuers.</p></td>
+<td><p>The Wallet MUST be capable of generating and presenting a Wallet Attestation when required by Relying Parties or Issuers.</p></td>
 <td><p>Valid, verifiable Attestations are generated including integrity and origin proofs.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-005</p></td>
@@ -401,7 +401,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 </tr>
 <tr class="row-odd"><td><p>WS-006</p></td>
 <td><p>Remote Credential Presentation</p></td>
-<td><p>The Wallet Solution MUST implement the both the proximity and remote presentation flow, ensuring Verifiable Credential selection, integrity, and User interaction.</p></td>
+<td><p>The Wallet Solution MUST implement both the proximity and remote presentation flow, ensuring Verifiable Credential selection, integrity, and User interaction.</p></td>
 <td><p>Verifiable Credential presentation is successful, correct, and under User control.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-007</p></td>
@@ -1736,57 +1736,52 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
 <td><p>Verify the integrity of received documents.</p></td>
 <td><p>Documents are verified and integrity is confirmed.</p></td>
 </tr>
-<tr class="row-even"><td><p>TC-010</p></td>
-<td><p>Document Verification</p></td>
-<td><p>Verify the integrity of received documents.</p></td>
-<td><p>Documents are verified and integrity is confirmed.</p></td>
-</tr>
-<tr class="row-odd"><td><p>PPR-011</p></td>
+<tr class="row-even"><td><p>PPR-011</p></td>
 <td><p>Security</p></td>
 <td><p>Test encryption of mdoc requests and responses.</p></td>
 <td><p>All mdoc requests and responses are encrypted correctly.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-012</p></td>
+<tr class="row-odd"><td><p>PPR-012</p></td>
 <td><p>User Interface</p></td>
 <td><p>Check the user interface for attribute consent.</p></td>
 <td><p>User interface displays attribute consent request clearly.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-013</p></td>
+<tr class="row-even"><td><p>PPR-013</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Test response to unsupported document types.</p></td>
 <td><p>System returns appropriate error for unsupported document types.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-014</p></td>
+<tr class="row-odd"><td><p>PPR-014</p></td>
 <td><p>Performance</p></td>
 <td><p>Measure time taken for session establishment.</p></td>
 <td><p>Session is established within acceptable time limits.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-015</p></td>
+<tr class="row-even"><td><p>PPR-015</p></td>
 <td><p>Compatibility</p></td>
 <td><p>Verify compatibility with different mobile devices.</p></td>
 <td><p>System works seamlessly across various mobile devices.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-016</p></td>
+<tr class="row-odd"><td><p>PPR-016</p></td>
 <td><p>Data Integrity</p></td>
 <td><p>Test integrity of data during transmission.</p></td>
 <td><p>Data integrity is maintained during transmission.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-017</p></td>
+<tr class="row-even"><td><p>PPR-017</p></td>
 <td><p>Session Management</p></td>
 <td><p>Test session management under high load.</p></td>
 <td><p>Sessions are managed effectively under high load conditions.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-018</p></td>
+<tr class="row-odd"><td><p>PPR-018</p></td>
 <td><p>BLE Connection</p></td>
 <td><p>Test reconnection after BLE disconnection.</p></td>
 <td><p>System reconnects successfully after BLE disconnection.</p></td>
 </tr>
-<tr class="row-odd"><td><p>PPR-019</p></td>
+<tr class="row-even"><td><p>PPR-019</p></td>
 <td><p>User Experience</p></td>
 <td><p>Evaluate user experience during the proximity flow.</p></td>
 <td><p>Users report a positive experience with the proximity flow.</p></td>
 </tr>
-<tr class="row-even"><td><p>PPR-020</p></td>
+<tr class="row-odd"><td><p>PPR-020</p></td>
 <td><p>Security</p></td>
 <td><p>Test resistance to replay attacks.</p></td>
 <td><p>System is resistant to replay attacks.</p></td>
