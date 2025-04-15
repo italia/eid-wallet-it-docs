@@ -465,7 +465,7 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
    * - ISS-005
      - Authentication
      - User Authentication with PID Provider
-     - User is authenticated with LoA 3 (High) by the PID Provider. Validate the use of national digital identity schemes and ensure User consent is obtained.
+     - User is authenticated with LoA 3 (High) by the PID Provider. Validate the use of the digital identity scheme CieID and ensure that User consent is obtained.
    * - ISS-006
      - Issuance
      - PID/(Q)EAA Issuance
