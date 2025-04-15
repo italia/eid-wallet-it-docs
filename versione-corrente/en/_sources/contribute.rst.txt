@@ -27,6 +27,7 @@ implementation profile and to the initial set of implementations.
 - Amir Sharif
 - Andrea Moro
 - Andrea Prosseda
+- Chris Phillips
 - Elisa Nicolussi Paolaz
 - Emanuele De Cupis
 - Emiliano Vernini
@@ -40,6 +41,8 @@ implementation profile and to the initial set of implementations.
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
+- Marco Basili
+- Marco Pernpruner
 - Mart Aarma
 - Marta Sciunnach
 - Michele Silletti
@@ -47,6 +50,7 @@ implementation profile and to the initial set of implementations.
 - Niels van Dijk
 - Oliver Terbu
 - Paul Bastien
+- Pasquale Cerqua
 - Pasquale De Rose
 - Peter Altmann
 - Riccardo Iaconelli
@@ -58,10 +62,8 @@ implementation profile and to the initial set of implementations.
 - Thomas Chiozzi
 - Torsten Lodderstedt
 - Vladimir Duzhinov
-- Marco Pernpruner
 - Zahra Ebadi Ansaroudi
-- Marco Basili
-- Chris Phillips
+
 
 
 If anyone has been forgotten, please accept our apologies with the

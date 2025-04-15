@@ -171,7 +171,7 @@ The details of each step shown in the previous picture are described below.
             "id": "personal id data",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": [ "https://pidprovider.example.org/v1.0/personidentificationdata" ]
+              "vct_values": [ "https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata" ]
             },
             "claims": [
                 {"path": ["given_name"]},
@@ -355,6 +355,7 @@ The request and its parameters are defined in Section number 5 (Authorization Re
 
   For the ``authorization_endpoint`` the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking. 
   Furthermore, universal links offer fallback mechanisms, allowing the flow to continue seamlessly in a browser even if the Wallet Instance is not installed, ensuring a smoother User experience. To ensure interoperability, support custom url-schemes is also RECOMMENDED according to OpenID4VC High Assurance Interoperability Profile (HAIP)  `OPENID4VC-HAIP`_, and in particular using the custom url ``haip://``.
+
 
 Request URI Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="PID/(Q)EAA Presentation" href="pid-eaa-presentation.html" />
-    <link rel="prev" title="PID/(Q)EAA Data Model" href="pid-eaa-data-model.html" /> 
+    <link rel="prev" title="Digital Credentials Catalogue" href="registry-catalogue.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -137,6 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PID/(Q)EAA Issuance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
@@ -892,7 +893,7 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <p>The request to the PID/(Q)EAA authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.</p>
 <p>The HTTP POST method MUST use the parameters in the message body encoded in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> format.</p>
 <span id="table-http-request-claim"></span><table class="docutils align-default" id="id9">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">PAR http request parameters</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -918,7 +919,7 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 <p>The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [<a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-attestation-based-client-auth/03/">OAUTH-ATTESTATION-CLIENT-AUTH</a>], therefore
 the request to the PID/(Q)EAA authorization endpoint MUST use the following HTTP Headers parameters:</p>
 <span id="table-http-request-headers-claim"></span><table class="docutils align-default" id="id10">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">http request header parameters</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -2268,8 +2269,8 @@ If any other error occurs, the PID/(Q)EAA Provider MUST return an error response
         <div class="button_nav">
             <div class="left">
                 
-                <a href="pid-eaa-data-model.html">
-                    <span class="icon">&lt;</span><span>PID/(Q)EAA Data Model</span></a>
+                <a href="registry-catalogue.html">
+                    <span class="icon">&lt;</span><span>Digital Credentials Catalogue</span></a>
                 
             </div>
 
