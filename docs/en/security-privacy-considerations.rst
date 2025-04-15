@@ -115,7 +115,7 @@ SR-I-10
    * - |check-icon|
      - The Issuer must authenticate and identify the User properly according to the expectations of the Verifier (which may be defined in a specification, Trust Framework, or by convention).
 
-The issuance process utilizes OAuth 2.0-based flows, specifically the Authorization Code Flow, to securely authenticate the User. Moreover, the User authentication is performed using eIDAS-notified schemes or the PID, ensuring a high LoA.
+The issuance process utilizes OAuth 2.0-based flows, specifically the Authorization Code Flow, to securely authenticate the User. Moreover, the User authentication is performed using CieID scheme with high LoA or the PID.
 
 SR-I-20
 ~~~~~~~
@@ -147,7 +147,7 @@ SR-I-40
 
 The issuance process securely binds the Credential to the User as follows (see :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`):
 
-* Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a secure eIDAS scheme or a valid PID, providing the Access Token to the User.
+* Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a CieID scheme or a valid PID, providing the Access Token to the User.
 * Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.
 * Credential Issuance (Steps 18-21): The Credential request is verified using proof of possession, which is cryptographically bound to the User. The use of the same key in the DPoP ensures that the key material is controlled by the Wallet Instance, and not by a third party.
 

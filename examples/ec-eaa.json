@@ -41,8 +41,8 @@
                 "S256"
             ],
             "acr_values_supported": [
-                "https://www.spid.gov.it/SpidL2",
-                "https://www.spid.gov.it/SpidL3"
+                "https://trust-registry.eid-wallet.example.it/loa/substantial",
+                "https://trust-registry.eid-wallet.example.it/loa/high"
             ],
             "scopes_supported": [
                 "EuropeanDisabilityCard",
@@ -656,7 +656,6 @@
             },
             "trust_frameworks_supported": [
                 "it_cie",
-                "it_spid",
                 "it_wallet",
                 "eudi_wallet"
             ],
@@ -679,8 +678,8 @@
                 "https://eaa-provider.example.org/response_uri"
             ],
             "default_acr_values": [
-                "https://www.spid.gov.it/SpidL2",
-                "https://www.spid.gov.it/SpidL3"
+                "https://trust-registry.eid-wallet.example.it/loa/substantial",
+                "https://trust-registry.eid-wallet.example.it/loa/high"
             ],
             "request_object_signing_alg_values_supported": [
                 "ES256",

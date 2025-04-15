@@ -221,8 +221,8 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
     {
         "exp": 1649375259,
         "iat": 1649373279,
-        "iss": "https://registry.eidas.trust-anchor.example.eu",
-        "sub": "https://registry.eidas.trust-anchor.example.eu",
+        "iss": "https://trust-registry.eid-wallet.example.it",
+        "sub": "https://trust-registry.eid-wallet.example.it",
         "jwks": {
             "keys": [
                 {
@@ -239,23 +239,22 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
             "federation_entity": {
                 "organization_name": "example TA",
                 "contacts":[
-                    "tech@eidas.trust-anchor.example.eu"
+                    "tech@eid.trust-anchor.example.eu"
                 ],
-                "homepage_uri": "https://registry.eidas.trust-anchor.example.eu",
-                "logo_uri":"https://registry.eidas.trust-anchor.example.eu/static/svg/logo.svg",
-                "federation_fetch_endpoint": "https://registry.eidas.trust-anchor.example.eu/fetch",
-                "federation_resolve_endpoint": "https://registry.eidas.trust-anchor.example.eu/resolve",
-                "federation_list_endpoint": "https://registry.eidas.trust-anchor.example.eu/list",
-                "federation_trust_mark_status_endpoint": "https://registry.eidas.trust-anchor.example.eu/trust_mark_status"
+                "homepage_uri": "https://trust-registry.eid-wallet.example.it",
+                "logo_uri":"https://trust-registry.eid-wallet.example.it/static/svg/logo.svg",
+                "federation_fetch_endpoint": "https://trust-registry.eid-wallet.example.it/fetch",
+                "federation_resolve_endpoint": "https://trust-registry.eid-wallet.example.it/resolve",
+                "federation_list_endpoint": "https://trust-registry.eid-wallet.example.it/list",
+                "federation_trust_mark_status_endpoint": "https://trust-registry.eid-wallet.example.it/trust_mark_status"
             }
         },
         "trust_mark_issuers": {
-            "https://registry.eidas.trust-anchor.example.eu/openid_relying_party/public": [
-                "https://registry.spid.eidas.trust-anchor.example.eu",
-                "https://public.intermediary.spid.org"
+            "https://trust-registry.eid-wallet.example.it/openid_relying_party/public": [
+                "https://trust-registry.eid-wallet.example.it",
+                "https://public.intermediary.other.org"
             ],
-            "https://registry.eidas.trust-anchor.example.eu/openid_relying_party/private": [
-                "https://registry.spid.eidas.trust-anchor.example.eu",
+            "https://trust-registry.eid-wallet.example.it/openid_relying_party/private": [
                 "https://private.other.intermediary.org"
             ]
         }
@@ -465,7 +464,7 @@ Below there is a non-normative example of an Subordinate Statement issued by an 
     {
         "exp": 1649623546,
         "iat": 1649450746,
-        "iss": "https://intermediate.eidas.example.org",
+        "iss": "https://intermediate.example.org",
         "sub": "https://rp.example.it",
         "jwks": {
             "keys": [
