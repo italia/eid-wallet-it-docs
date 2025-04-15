@@ -436,6 +436,8 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
   References about official OpenID4VCI test plans will update this section in future releases.
 
 - PID/EAA Issuance
+
+
 .. list-table::
    :widths: 10 15 40 35
    :header-rows: 1
