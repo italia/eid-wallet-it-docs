@@ -436,8 +436,6 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
   References about official OpenID4VCI test plans will update this section in future releases.
 
 - PID/EAA Issuance
-
-
 .. list-table::
    :widths: 10 15 40 35
    :header-rows: 1
@@ -676,217 +674,213 @@ Tests related to both PID and (Q)EAA Providers are related to the issuance of cr
      - Ensure the Notification Endpoint parameters are used correctly and the event is reported.
    * - ISS-058
      - Security
-     - Validate Notification Endpoint Response
-     - Ensure the Notification Endpoint Response is received with the correct status code.
-   * - ISS-059
-     - Security
      - Validate Error Handling in Notification Endpoint
      - Ensure errors in the Notification Endpoint are handled correctly and reported.
-   * - ISS-060
+   * - ISS-059
      - Security
      - Validate Error Handling in Credential Endpoint
      - Ensure errors in the Credential Endpoint are handled correctly and reported.
-   * - ISS-061
+   * - ISS-060
      - Security
      - Validate Error Handling in Token Endpoint
      - Ensure errors in the Token Endpoint are handled correctly and reported.
-   * - ISS-062
+   * - ISS-061
      - Security
      - Validate Error Handling in Authorization Endpoint
      - Ensure errors in the Authorization Endpoint are handled correctly and reported.
-   * - ISS-063
+   * - ISS-062
      - Error Handling
      - Validate Error Handling in PAR Endpoint
      - Ensure errors in the PAR Endpoint are handled correctly and reported.
-   * - ISS-064
+   * - ISS-063
      - Error Handling
      - Validate Error Handling in Nonce Endpoint
      - Ensure errors in the Nonce Endpoint are handled correctly and reported.
-   * - ISS-065
+   * - ISS-064
      - Error Handling
      - Validate Error Handling in Deferred Endpoint
      - Ensure errors in the Deferred Endpoint are handled correctly and reported.
-   * - ISS-066
+   * - ISS-065
      - Error Handling
      - Validate Error Handling in Re-Issuance Flow
      - Ensure errors in the Re-Issuance Flow are handled correctly and reported.
-   * - ISS-067
+   * - ISS-066
      - Error Handling
      - Validate Error Handling in Refresh Token Flow
      - Ensure errors in the Refresh Token Flow are handled correctly and reported.
-   * - ISS-068
+   * - ISS-067
      - Error Handling
      - Validate Error Handling in Credential Issuance
      - Ensure errors in the Credential Issuance process are handled correctly and reported.
-   * - ISS-069
+   * - ISS-068
      - Error Handling
      - Validate Error Handling in Credential Request
      - Ensure errors in the Credential Request process are handled correctly and reported.
-   * - ISS-070
+   * - ISS-069
      - Error Handling
      - Validate Error Handling in Credential Response
      - Ensure errors in the Credential Response process are handled correctly and reported.
-   * - ISS-071
+   * - ISS-070
      - Error Handling
      - Validate Error Handling in Credential Validation
      - Ensure errors in the Credential Validation process are handled correctly and reported.
-   * - ISS-072
+   * - ISS-071
      - Error Handling
      - Validate Error Handling in Credential Integrity
      - Ensure errors in the Credential Integrity process are handled correctly and reported.
-   * - ISS-073
+   * - ISS-072
      - Error Handling
      - Validate Error Handling in Credential Type and Schema
      - Ensure errors in the Credential Type and Schema process are handled correctly and reported.
-   * - ISS-074
+   * - ISS-073
      - Error Handling
      - Validate Error Handling in Trust Chain Validation
      - Ensure errors in the Trust Chain Validation process are handled correctly and reported.
-   * - ISS-075
+   * - ISS-074
      - Error Handling
      - Validate Error Handling in Deferred Issuance
      - Ensure errors in the Deferred Issuance process are handled correctly and reported.
-   * - ISS-076
+   * - ISS-075
      - Error Handling
      - Validate Error Handling in Notification Handling
      - Ensure errors in the Notification Handling process are handled correctly and reported.
-   * - ISS-077
+   * - ISS-076
      - Error Handling
      - Validate Error Handling in User Authentication
      - Ensure errors in the User Authentication process are handled correctly and reported.
-   * - ISS-078
+   * - ISS-077
      - Error Handling
      - Validate Error Handling in User Consent
      - Ensure errors in the User Consent process are handled correctly and reported.
-   * - ISS-079
+   * - ISS-078
      - Error Handling
      - Validate Error Handling in User Notification
      - Ensure errors in the User Notification process are handled correctly and reported.
-   * - ISS-080
+   * - ISS-079
      - Error Handling
      - Validate Error Handling in User Attribute Set Update
      - Ensure errors in the User Attribute Set Update process are handled correctly and reported.
-   * - ISS-081
+   * - ISS-080
      - Error Handling
      - Validate Error Handling in Data Model/Format Update
      - Ensure errors in the Data Model/Format Update process are handled correctly and reported.
-   * - ISS-082
+   * - ISS-081
      - Error Handling
      - Validate Error Handling in Credential Expiry
      - Ensure errors in the Credential Expiry process are handled correctly and reported.
-   * - ISS-083
+   * - ISS-082
      - Error Handling
      - Validate Error Handling in Credential Re-Issuance
      - Ensure errors in the Credential Re-Issuance process are handled correctly and reported.
-   * - ISS-084
+   * - ISS-083
      - Error Handling
      - Validate Error Handling in Credential Binding
      - Ensure errors in the Credential Binding process are handled correctly and reported.
-   * - ISS-085
+   * - ISS-084
      - Error Handling
      - Validate Error Handling in Credential Trust Evaluation
      - Ensure errors in the Credential Trust Evaluation process are handled correctly and reported.
-   * - ISS-086
+   * - ISS-085
      - Error Handling
      - Validate Error Handling in Credential Metadata Retrieval
      - Ensure errors in the Credential Metadata Retrieval process are handled correctly and reported.
-   * - ISS-087
+   * - ISS-086
      - Error Handling
      - Validate Error Handling in Credential Discovery
      - Ensure errors in the Credential Discovery process are handled correctly and reported.
-   * - ISS-088
+   * - ISS-087
      - Error Handling
      - Validate Error Handling in Credential Offer Evaluation
      - Ensure errors in the Credential Offer Evaluation process are handled correctly and reported.
-   * - ISS-089
+   * - ISS-088
      - Error Handling
      - Validate Error Handling in Credential Offer Acceptance
      - Ensure errors in the Credential Offer Acceptance process are handled correctly and reported.
-   * - ISS-090
+   * - ISS-089
      - Error Handling
      - Validate Error Handling in Credential Offer Rejection
      - Ensure errors in the Credential Offer Rejection process are handled correctly and reported.
-   * - ISS-091
+   * - ISS-090
      - Error Handling
      - Validate Error Handling in Credential Offer Revocation
      - Ensure errors in the Credential Offer Revocation process are handled correctly and reported.
-   * - ISS-092
+   * - ISS-091
      - Error Handling
      - Validate Error Handling in Credential Offer Expiry
      - Ensure errors in the Credential Offer Expiry process are handled correctly and reported.
-   * - ISS-093
+   * - ISS-092
      - Error Handling
      - Validate Error Handling in Credential Offer Renewal
      - Ensure errors in the Credential Offer Renewal process are handled correctly and reported.
-   * - ISS-094
+   * - ISS-093
      - Error Handling
      - Validate Error Handling in Credential Offer Update
      - Ensure errors in the Credential Offer Update process are handled correctly and reported.
-   * - ISS-095
+   * - ISS-094
      - Error Handling
      - Validate Error Handling in Credential Offer Validation
      - Ensure errors in the Credential Offer Validation process are handled correctly and reported.
-   * - ISS-096
+   * - ISS-095
      - Error Handling
      - Validate Error Handling in Credential Offer Verification
      - Ensure errors in the Credential Offer Verification process are handled correctly and reported.
-   * - ISS-097
+   * - ISS-096
      - Error Handling
      - Validate Error Handling in Credential Offer Confirmation
      - Ensure errors in the Credential Offer Confirmation process are handled correctly and reported.
-   * - ISS-098
+   * - ISS-097
      - Error Handling
      - Validate Error Handling in Credential Offer Notification
      - Ensure errors in the Credential Offer Notification process are handled correctly and reported.
-   * - ISS-099
+   * - ISS-098
      - Error Handling
      - Validate Error Handling in Credential Offer Communication
      - Ensure errors in the Credential Offer Communication process are handled correctly and reported.
-   * - ISS-100
+   * - ISS-099
      - Error Handling
      - Validate Error Handling in Credential Offer Transmission
      - Ensure errors in the Credential Offer Transmission process are handled correctly and reported.
-   * - ISS-101
+   * - ISS-100
      - Error Handling
      - Validate Error Handling in Credential Offer Reception
      - Ensure errors in the Credential Offer Reception process are handled correctly and reported.
-   * - ISS-102
+   * - ISS-101
      - Error Handling
      - Validate Error Handling in Credential Offer Processing
      - Ensure errors in the Credential Offer Processing process are handled correctly and reported.
-   * - ISS-103
+   * - ISS-102
      - Error Handling
      - Validate Error Handling in Credential Offer Handling
      - Ensure errors in the Credential Offer Handling process are handled correctly and reported.
-   * - ISS-104
+   * - ISS-103
      - Error Handling
      - Validate Error Handling in Credential Offer Management
      - Ensure errors in the Credential Offer Management process are handled correctly and reported.
-   * - ISS-105
+   * - ISS-104
      - Error Handling
      - Validate Error Handling in Credential Offer Administration
      - Ensure errors in the Credential Offer Administration process are handled correctly and reported.
-   * - ISS-106
+   * - ISS-105
      - Error Handling
      - Validate Error Handling in Credential Offer Control
      - Ensure errors in the Credential Offer Control process are handled correctly and reported.
-   * - ISS-107
+   * - ISS-106
      - Error Handling
      - Validate Error Handling in Credential Offer Oversight
      - Ensure errors in the Credential Offer Oversight process are handled correctly and reported.
-   * - ISS-108
+   * - ISS-107
      - Error Handling
      - Validate Error Handling in Credential Offer Supervision
      - Ensure errors in the Credential Offer Supervision process are handled correctly and reported.
-   * - ISS-109
+   * - ISS-108
      - Error Handling
      - Validate Error Handling in Credential Offer Monitoring
      - Ensure errors in the Credential Offer Monitoring process are handled correctly and reported.
-   * - ISS-110
+   * - ISS-109
      - Error Handling
      - Validate Error Handling in Credential Offer Evaluation
      - Ensure errors in the Credential Offer Evaluation process are handled correctly and reported.
-   * - ISS-111
+   * - ISS-110
      - Error Handling
      - Validate Error Handling in Credential Offer Assessment
      - Ensure errors in the Credential Offer Assessment process are handled correctly and reported.
