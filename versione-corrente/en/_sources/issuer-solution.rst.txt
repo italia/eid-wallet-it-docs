@@ -30,7 +30,7 @@ The Digital Credential Issuer Solution MUST:
    7. Maintain comprehensive audit trails while respecting privacy regulations.
    8. Issue Digital Credentials that support Selective Disclosure.
    9. Periodically renew its trust with the Federation.
-   10. Register the Relying Party Component (if required) within the national eIDAS ecosystem (for PID issuance) and IT-Wallet ecosystem (for (Q)EAA issuance).
+   10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID issuance) and, if required, within the IT-Wallet ecosystem (for (Q)EAA issuance).
    11. For PID issuance, authenticate Users with LoA High using national Digital Identity Providers.
    12. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_.
    13. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`Digital Credential Lifecycle`.

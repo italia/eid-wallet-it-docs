@@ -179,7 +179,7 @@
 <li><p>Maintain comprehensive audit trails while respecting privacy regulations.</p></li>
 <li><p>Issue Digital Credentials that support Selective Disclosure.</p></li>
 <li><p>Periodically renew its trust with the Federation.</p></li>
-<li><p>Register the Relying Party Component (if required) within the national eIDAS ecosystem (for PID issuance) and IT-Wallet ecosystem (for (Q)EAA issuance).</p></li>
+<li><p>Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID issuance) and, if required, within the IT-Wallet ecosystem (for (Q)EAA issuance).</p></li>
 <li><p>For PID issuance, authenticate Users with LoA High using national Digital Identity Providers.</p></li>
 <li><p>For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>.</p></li>
 <li><p>Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section <a class="reference internal" href="credential-revocation.html#digital-credential-lifecycle"><span class="std std-ref">Digital Credential Lifecycle</span></a>.</p></li>
@@ -309,7 +309,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <li><p><cite>oauth_authorization_server</cite></p></li>
 <li><p><cite>openid_credential_issuer</cite></p></li>
 </ul>
-<p>In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for <em>openid_credential_verifier</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://github.com/italia/spid-cie-oidc-docs">SPID/CIE id OIDC Technical Specification</a>.</p>
+<p>In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for <em>openid_credential_verifier</em> MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for <em>openid_relying_party</em> within their Entity Configuration. The <em>openid_relying_party</em> metadata MUST be compliant with the current version of <a class="reference external" href="https://italia.github.io/spid-cie-oidc-docs/en">SPID/CIE-OpenID-Connect-Specifications</a>.</p>
 <p>The <em>federation_entity</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves"><span class="std std-ref">Metadata of federation_entity Leaves</span></a>.</p>
 <p>The <em>openid_credential_verifier</em> metadata MUST contain the parameters as defined in Section <a class="reference internal" href="relying-party-solution.html#metadata-for-openid-credential-verifier"><span class="std std-ref">Metadata for openid_credential_verifier</span></a>.</p>
 <section id="metadata-for-oauth-authorization-server">
@@ -347,9 +347,9 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <tr class="row-even"><td><p><strong>acr_values_supported</strong></p></td>
 <td><p>See <a class="reference external" href="https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata">OpenID Connect Discovery 1.0 Section 3</a>. The supported values are:</p>
 <ul class="simple">
-<li><p><cite>https://www.spid.gov.it/SpidL1</cite></p></li>
-<li><p><cite>https://www.spid.gov.it/SpidL2</cite></p></li>
-<li><p><cite>https://www.spid.gov.it/SpidL3</cite></p></li>
+<li><p><cite>https://trust-registry.eid-wallet.example.it/loa/low</cite></p></li>
+<li><p><cite>https://trust-registry.eid-wallet.example.it/loa/substantial</cite></p></li>
+<li><p><cite>https://trust-registry.eid-wallet.example.it/loa/high</cite></p></li>
 </ul>
 </td>
 </tr>
@@ -477,7 +477,6 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <blockquote>
 <div><ul class="simple">
 <li><p><em>it_cie</em>: CIE trust framework supported.</p></li>
-<li><p><em>it_spid</em>: SPID trust framework supported.</p></li>
 <li><p><em>it_wallet</em>: Italian EUDI Wallet trust framework supported.</p></li>
 <li><p><em>eudi_wallet</em>: Member State EUDI Wallet trust framework supported.</p></li>
 </ul>
@@ -548,8 +547,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                </span><span class="s2">&quot;S256&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;acr_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL3&quot;</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/substantial&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/high&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;scopes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;EuropeanDisabilityCard&quot;</span><span class="p">,</span>
@@ -1163,7 +1162,6 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;trust_frameworks_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;it_cie&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;it_spid&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;it_wallet&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s2">&quot;eudi_wallet&quot;</span>
 <span class="w">            </span><span class="p">],</span>
@@ -1186,8 +1184,8 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 <span class="w">                </span><span class="s2">&quot;https://eaa-provider.example.org/response_uri&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;default_acr_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL2&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="s2">&quot;https://www.spid.gov.it/SpidL3&quot;</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/substantial&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/loa/high&quot;</span>
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
@@ -1314,7 +1312,7 @@ The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters def
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

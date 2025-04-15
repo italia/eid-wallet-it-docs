@@ -212,7 +212,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - | Revised from ARF v1.4 and Implementing Act.
        | *Differences:* editorial (renamed “Member Stare or other legal entity” and "natural or legal person", respectively).
    * - National Identity Provider
-     - It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE-OpenID-Connect-Specifications`_).
+     - It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (e.g.: CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE-OpenID-Connect-Specifications`_).
      -
    * - Trust Attestation
      - Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.
@@ -268,8 +268,6 @@ Acronyms
     - Wallet Secure Cryptographic Application
   * - **CIE**
     - National Electronic Identity Card
-  * - **SPID**
-    - Italian Public Digital Identity System
   * - **ANPR**
     - Italian National Registry of the Resident Population
 

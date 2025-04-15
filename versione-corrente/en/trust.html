@@ -419,8 +419,8 @@ public keys for signature operations.</p>
 {
     &quot;exp&quot;: 1649375259,
     &quot;iat&quot;: 1649373279,
-    &quot;iss&quot;: &quot;https://registry.eidas.trust-anchor.example.eu&quot;,
-    &quot;sub&quot;: &quot;https://registry.eidas.trust-anchor.example.eu&quot;,
+    &quot;iss&quot;: &quot;https://trust-registry.eid-wallet.example.it&quot;,
+    &quot;sub&quot;: &quot;https://trust-registry.eid-wallet.example.it&quot;,
     &quot;jwks&quot;: {
         &quot;keys&quot;: [
             {
@@ -437,23 +437,22 @@ public keys for signature operations.</p>
         &quot;federation_entity&quot;: {
             &quot;organization_name&quot;: &quot;example TA&quot;,
             &quot;contacts&quot;:[
-                &quot;tech@eidas.trust-anchor.example.eu&quot;
+                &quot;tech@eid.trust-anchor.example.eu&quot;
             ],
-            &quot;homepage_uri&quot;: &quot;https://registry.eidas.trust-anchor.example.eu&quot;,
-            &quot;logo_uri&quot;:&quot;https://registry.eidas.trust-anchor.example.eu/static/svg/logo.svg&quot;,
-            &quot;federation_fetch_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/fetch&quot;,
-            &quot;federation_resolve_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/resolve&quot;,
-            &quot;federation_list_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/list&quot;,
-            &quot;federation_trust_mark_status_endpoint&quot;: &quot;https://registry.eidas.trust-anchor.example.eu/trust_mark_status&quot;
+            &quot;homepage_uri&quot;: &quot;https://trust-registry.eid-wallet.example.it&quot;,
+            &quot;logo_uri&quot;:&quot;https://trust-registry.eid-wallet.example.it/static/svg/logo.svg&quot;,
+            &quot;federation_fetch_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/fetch&quot;,
+            &quot;federation_resolve_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/resolve&quot;,
+            &quot;federation_list_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/list&quot;,
+            &quot;federation_trust_mark_status_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/trust_mark_status&quot;
         }
     },
     &quot;trust_mark_issuers&quot;: {
-        &quot;https://registry.eidas.trust-anchor.example.eu/openid_relying_party/public&quot;: [
-            &quot;https://registry.spid.eidas.trust-anchor.example.eu&quot;,
-            &quot;https://public.intermediary.spid.org&quot;
+        &quot;https://trust-registry.eid-wallet.example.it/openid_relying_party/public&quot;: [
+            &quot;https://trust-registry.eid-wallet.example.it&quot;,
+            &quot;https://public.intermediary.other.org&quot;
         ],
-        &quot;https://registry.eidas.trust-anchor.example.eu/openid_relying_party/private&quot;: [
-            &quot;https://registry.spid.eidas.trust-anchor.example.eu&quot;,
+        &quot;https://trust-registry.eid-wallet.example.it/openid_relying_party/private&quot;: [
             &quot;https://private.other.intermediary.org&quot;
         ]
     }
@@ -695,7 +694,7 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 {
     &quot;exp&quot;: 1649623546,
     &quot;iat&quot;: 1649450746,
-    &quot;iss&quot;: &quot;https://intermediate.eidas.example.org&quot;,
+    &quot;iss&quot;: &quot;https://intermediate.example.org&quot;,
     &quot;sub&quot;: &quot;https://rp.example.it&quot;,
     &quot;jwks&quot;: {
         &quot;keys&quot;: [
@@ -1220,7 +1219,7 @@ When the X.509 Certificate issuer is an Immediate superior, such as the Trust An
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 14/04/2025.
+      Last updated on 15/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
