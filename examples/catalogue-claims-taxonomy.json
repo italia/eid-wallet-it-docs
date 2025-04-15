@@ -1,0 +1,260 @@
+{
+  "version": "1.0",
+  "last_modified": "2025-04-10T12:00:00Z",
+  "id": "urn:taxonomy:claims",
+  "localization": {
+    "default_locale": "it",
+    "available_locales": ["en", "it", "fr", "de"],
+    "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/claims/",
+    "version": "1.0.0"
+  },
+  "name_l10n_id": "taxonomy.claims.name",
+  "description_l10n_id": "taxonomy.claims.description",
+  "domains": [
+    {
+      "id": "IDENTITY",
+      "name_l10n_id": "domain.identity.name",
+      "description_l10n_id": "domain.identity.description",
+      "categories": [
+        {
+          "id": "PERSONAL_DATA",
+          "name_l10n_id": "category.personal_data.name",
+          "description_l10n_id": "category.personal_data.description",
+          "claims": [
+            {
+              "id": "given_name",
+              "name_l10n_id": "claim.given_name.name",
+              "description_l10n_id": "claim.given_name.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "family_name",
+              "name_l10n_id": "claim.family_name.name",
+              "description_l10n_id": "claim.family_name.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "birthdate",
+              "name_l10n_id": "claim.birthdate.name",
+              "description_l10n_id": "claim.birthdate.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "place_of_birth",
+              "name_l10n_id": "claim.place_of_birth.name",
+              "description_l10n_id": "claim.place_of_birth.description",
+              "sensitivity": "RESTRICTED",
+              "type": "structured"
+            }
+          ]
+        },
+        {
+          "id": "CONTACT_INFO",
+          "name_l10n_id": "category.contact_info.name",
+          "description_l10n_id": "category.contact_info.description",
+          "claims": [
+            {
+              "id": "email",
+              "name_l10n_id": "claim.email.name",
+              "description_l10n_id": "claim.email.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "phone_number",
+              "name_l10n_id": "claim.phone_number.name",
+              "description_l10n_id": "claim.phone_number.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "address",
+              "name_l10n_id": "claim.address.name",
+              "description_l10n_id": "claim.address.description",
+              "sensitivity": "RESTRICTED",
+              "type": "structured"
+            }
+          ]
+        },
+        {
+          "id": "IDENTIFIERS",
+          "name_l10n_id": "category.identifiers.name",
+          "description_l10n_id": "category.identifiers.description",
+          "claims": [
+            {
+              "id": "tax_id",
+              "name_l10n_id": "claim.tax_id.name",
+              "description_l10n_id": "claim.tax_id.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "personal_administrative_number",
+              "name_l10n_id": "claim.personal_administrative_number.name",
+              "description_l10n_id": "claim.personal_administrative_number.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            }
+          ]
+        },
+        {
+          "id": "BIOMETRIC",
+          "name_l10n_id": "category.biometric.name",
+          "description_l10n_id": "category.biometric.description",
+          "claims": [
+            {
+              "id": "portrait",
+              "name_l10n_id": "claim.portrait.name",
+              "description_l10n_id": "claim.portrait.description",
+              "sensitivity": "SENSITIVE",
+              "type": "simple"
+            }
+          ]
+        },
+        {
+          "id": "DOCUMENTS",
+          "name_l10n_id": "category.documents.name",
+          "description_l10n_id": "category.documents.description",
+          "claims": [
+            {
+              "id": "document_type",
+              "name_l10n_id": "claim.document_type.name",
+              "description_l10n_id": "claim.document_type.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            },
+            {
+              "id": "document_number",
+              "name_l10n_id": "claim.document_number.name",
+              "description_l10n_id": "claim.document_number.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "issuing_authority",
+              "name_l10n_id": "claim.issuing_authority.name",
+              "description_l10n_id": "claim.issuing_authority.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            },
+            {
+              "id": "issuing_country",
+              "name_l10n_id": "claim.issuing_country.name",
+              "description_l10n_id": "claim.issuing_country.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            },
+            {
+              "id": "issuing_jurisdiction",
+              "name_l10n_id": "claim.issuing_jurisdiction.name",
+              "description_l10n_id": "claim.issuing_jurisdiction.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "AUTHORIZATION",
+      "name_l10n_id": "domain.authorization.name",
+      "description_l10n_id": "domain.authorization.description",
+      "categories": [
+        {
+          "id": "DRIVING_LICENSE",
+          "name_l10n_id": "category.driving_license.name",
+          "description_l10n_id": "category.driving_license.description",
+          "claims": [
+            {
+              "id": "driving_privileges",
+              "name_l10n_id": "claim.driving_privileges.name",
+              "description_l10n_id": "claim.driving_privileges.description",
+              "sensitivity": "PUBLIC",
+              "type": "structured"
+            },
+            {
+              "id": "vehicle_category_code",
+              "name_l10n_id": "claim.vehicle_category_code.name",
+              "description_l10n_id": "claim.vehicle_category_code.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "FINANCIAL",
+      "name_l10n_id": "domain.financial.name", 
+      "description_l10n_id": "domain.financial.description",
+      "categories": [
+        {
+          "id": "INCOME",
+          "name_l10n_id": "category.income.name",
+          "description_l10n_id": "category.income.description",
+          "claims": [
+            {
+              "id": "income_indicator",
+              "name_l10n_id": "claim.income_indicator.name",
+              "description_l10n_id": "claim.income_indicator.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "income_certificate_type",
+              "name_l10n_id": "claim.income_certificate_type.name",
+              "description_l10n_id": "claim.income_certificate_type.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            },
+            {
+              "id": "reference_period",
+              "name_l10n_id": "claim.reference_period.name",
+              "description_l10n_id": "claim.reference_period.description",
+              "sensitivity": "RESTRICTED",
+              "type": "simple"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "COMMON",
+      "name_l10n_id": "domain.common.name",
+      "description_l10n_id": "domain.common.description",
+      "categories": [
+        {
+          "id": "VALIDITY",
+          "name_l10n_id": "category.validity.name",
+          "description_l10n_id": "category.validity.description",
+          "claims": [
+            {
+              "id": "issuance_date",
+              "name_l10n_id": "claim.issuance_date.name",
+              "description_l10n_id": "claim.issuance_date.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            },
+            {
+              "id": "expiry_date",
+              "name_l10n_id": "claim.expiry_date.name",
+              "description_l10n_id": "claim.expiry_date.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            },
+            {
+              "id": "validity_period",
+              "name_l10n_id": "claim.validity_period.name",
+              "description_l10n_id": "claim.validity_period.description",
+              "sensitivity": "PUBLIC",
+              "type": "simple"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

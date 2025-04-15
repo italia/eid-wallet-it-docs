@@ -2,18 +2,18 @@
 .. _Entity_Configuration_Credential_Issuer:
 
 Entity Configuration of PID/(Q)EAA Providers
---------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The PID/(Q)EAA Providers, as Federation Entity, are required to adhere to the guidelines outlined in Section :ref:`Configuration of the Federation`. Specifically, they MUST provide a well-known endpoint that hosts their Entity Configuration.
 The Entity Configuration of PID/(Q)EAA Providers MUST contain the parameters defined in the Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`. 
 
 The PID/(Q)EAA Providers MUST provide the following metadata types:
 
-  - `federation_entity`
-  - `oauth_authorization_server`
-  - `openid_credential_issuer`
+- `federation_entity`
+- `oauth_authorization_server`
+- `openid_credential_issuer`
 
-In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for *openid_credential_verifier* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE id OIDC Technical Specification <https://github.com/italia/spid-cie-oidc-docs>`_.
+In cases where the (Q)EAA Providers authenticate Users using their Wallet Instance, then the metadata for *openid_credential_verifier* MUST be provided in addition to the metadata above. In case a national eID scheme is used by the PID/(Q)EAA Providers for the User authentication, they MAY include a metadata for *openid_relying_party* within their Entity Configuration. The *openid_relying_party* metadata MUST be compliant with the current version of `SPID/CIE-OpenID-Connect-Specifications`_.
 
 
 The *federation_entity* metadata MUST contain the parameters as defined in Section :ref:`Metadata of federation_entity Leaves`.
@@ -47,9 +47,9 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **acr_values_supported**
     - See `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. The supported values are:
       
-      - `https://www.spid.gov.it/SpidL1`
-      - `https://www.spid.gov.it/SpidL2`
-      - `https://www.spid.gov.it/SpidL3`
+      - `https://trust-registry.eid-wallet.example.it/loa/low`
+      - `https://trust-registry.eid-wallet.example.it/loa/substantial`
+      - `https://trust-registry.eid-wallet.example.it/loa/high`
   * - **scopes_supported**
     - JSON array containing a list of the supported *scope* values. See :rfc:`8414#section-2`.
   * - **response_modes_supported**
@@ -105,7 +105,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **credential_configurations_supported**
     - JSON object that outlines the details of the Credential supported by the PID/(Q)EAA Provider. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Credential. This identifier is utilized to inform the Wallet Instance which Credential can be provided by the PID/(Q)EAA Provider. The associated value within the object MUST contain metadata specific to that Credential, as defined following. See `OpenID4VCI`_ Sections 11.2.3 and A.3.2.
 
-        - **format**: String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string "*dc+sd-jwt*" in case of SD-JWT VC (See `OpenID4VCI`_ Section A.3.1.) and "*mso_mdoc*" in case of mDoc (see `OpenID4VCI`_ Section A.2.1.).
+        - **format**: String identifying the format of this Credential. The PID/(Q)EAA MUST support the value string "*dc+sd-jwt*" in case of SD-JWT VC (See `OpenID4VCI`_ Section A.3.1.) and "*mso_mdoc*" in case of mdoc (see `OpenID4VCI`_ Section A.2.1.).
         - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. [See `OpenID4VCI`_ Section  11.2.3].
         - **cryptographic_binding_methods_supported**: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The PID/(Q)EAA Provider MUST support the value "*jwk*" for "dc+sd-jwt" format and "*cose_key*" for "mso_mdoc".
         - **credential_signing_alg_values_supported**: JSON Array of case sensitive strings that identify the algorithms that the PID/(Q)EAA Provider MUST support to sign the issued Credential. See Section :ref:`Cryptographic algorithms` for more details.
@@ -115,7 +115,8 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 - **name**: String value of a display name for the Credential.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
 
-        - **vct**: As defined in [:ref:`SD-JWT-VC Credential Format`].
+        - **vct**: REQUIRED only if ``format`` is set to "*dc+sd-jwt*". As defined in [:ref:`SD-JWT-VC Credential Format`].
+        - **doctype**: REQUIRED only if ``format`` is set to "*mso_mdoc*". As defined in [:ref:`mDoc-CBOR Credential Format`].
         - **claims**: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
             
             - **path**: It contains the pointer that specifies the path to a specific claim within the Credential as defined in Appendix C of `OpenID4VCI`_.
@@ -129,7 +130,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - JSON array containing all supported trust frameworks. See `OIDC-IDA`_ Section 8. The supported values are:
 
         - *it_cie*: CIE trust framework supported.
-        - *it_spid*: SPID trust framework supported.
         - *it_wallet*: Italian EUDI Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
   * - **evidence_supported**
@@ -145,10 +145,10 @@ Example of a (Q)EAA Provider Entity Configuration
 
 Below is a non-normative example of an Entity Configuration of a (Q)EAA Provider containing a metadata for 
 
-  - `federation_entity`
-  - `oauth_authorization_server`
-  - `openid_credential_issuer`
-  - `openid_credential_verifier`
+- `federation_entity`
+- `oauth_authorization_server`
+- `openid_credential_issuer`
+- `openid_credential_verifier`
 
 .. literalinclude:: ../../examples/ec-eaa.json
   :language: JSON

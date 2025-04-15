@@ -49,10 +49,10 @@ SR-CF-10 and SR-E-10
    * - |check-icon|
      - For any presentation, the Credential format and Trust Framework must be designed in a secure way to determine the Issuer and to check that the original Credential was issued by this Issuer (e.g., by using a cryptographic signature).
 
-The IT-Wallet specification supports both SD-JWT-VC and mDoc-CBOR Credential formats. The authenticity and integrity of a Credential is checked by verifying the Issuer's signature.
+The IT-Wallet specification supports both SD-JWT-VC and mdoc-CBOR Credential formats. The authenticity and integrity of a Credential is checked by verifying the Issuer's signature.
 
 - For SD-JWT, the verification is performed using the algorithm specified in the **alg** header parameter of SD-JWT and a verifiable reference to the public key that must be used for the signature verification. Using OpenID Federation, the verifiable reference to the public cryptographic material is the **kid** header of the SD-JWT, where the cryptographic material is obtained from the Trust Chain about the Credential Issuer, specified in **iss** claim.
-- For mDoc-CBOR, the Issuer's signature is contained in the *Mobile Security Object* (MSO) and must be validated using the Issuer's public key through a trusted certificate chain contained in the **x5chain** header parameter.
+- For mdoc-CBOR, the Issuer's signature is contained in the *Mobile Security Object* (MSO) and must be validated using the Issuer's public key through a trusted certificate chain contained in the **x5chain** header parameter.
 
 SR-CF-20
 ~~~~~~~~
@@ -72,7 +72,7 @@ SR-CF-21
    * - |check-icon|
      - For cryptographic Holder binding, the presentation format requires the Holder to demonstrate possession of the private key associated with the Credential. This is typically achieved by having the Holder sign a challenge, which consists of a nonce value and the Verifier's unique identifier.
 
-Both SD-JWT and mDoc-CBOR support cryptographic Holder binding by defining how a Holder can present a Credential to a Verifier, providing cryptographic proof of legitimate possession of the Credential.
+Both SD-JWT and mdoc-CBOR support cryptographic Holder binding by defining how a Holder can present a Credential to a Verifier, providing cryptographic proof of legitimate possession of the Credential.
 
 Currently, for the remote flow, IT-Wallet supports only SD-JWT presentations. In this scenario, the KB-JWT (Key-Bound JWT) parameter is utilized to demonstrate that the Holder possesses the private key associated with the Credential. The Holder signs the KB-JWT using a **nonce** and a Verifier identifier, using the **aud** parameter, as a challenge.
 
@@ -115,7 +115,7 @@ SR-I-10
    * - |check-icon|
      - The Issuer must authenticate and identify the User properly according to the expectations of the Verifier (which may be defined in a specification, Trust Framework, or by convention).
 
-The issuance process utilizes OAuth 2.0-based flows, specifically the Authorization Code Flow, to securely authenticate the User. Moreover, the User authentication is performed using eIDAS-notified schemes or the PID, ensuring a high LoA.
+The issuance process utilizes OAuth 2.0-based flows, specifically the Authorization Code Flow, to securely authenticate the User. Moreover, the User authentication is performed using CieID scheme with high LoA or the PID.
 
 SR-I-20
 ~~~~~~~
@@ -147,7 +147,7 @@ SR-I-40
 
 The issuance process securely binds the Credential to the User as follows (see :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`):
 
-* Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a secure eIDAS scheme or a valid PID, providing the Access Token to the User.
+* Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a CieID scheme or a valid PID, providing the Access Token to the User.
 * Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.
 * Credential Issuance (Steps 18-21): The Credential request is verified using proof of possession, which is cryptographically bound to the User. The use of the same key in the DPoP ensures that the key material is controlled by the Wallet Instance, and not by a third party.
 
@@ -313,7 +313,7 @@ PR-CF-30
    * - |check-icon|
      - The Credential Format must ensure that there is a robust mechanism to ensure that data that is not to be released to a Verifier cannot be extracted by the Verifier (selective disclosure).
 
-Both SD-JWT and mDoc-CBOR provide selective disclosure capability, allowing Holders to reveal only specific fields to the Verifier.
+Both SD-JWT and mdoc-CBOR provide selective disclosure capability, allowing Holders to reveal only specific fields to the Verifier.
 
 PR-CF-40
 ~~~~~~~~

@@ -1,0 +1,230 @@
+{
+   "catalog_version": "1.0",
+   "iss": "https://trust-registry.eid-wallet.example.it",
+   "last_modified": "2025-03-15T12:00:00Z",
+   "taxonomy_uri": "https://trust-registry.eid-wallet.example.it/.well-known/credential-taxonomy",
+   "taxonomy_uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",   
+   "credentials": [
+      {
+         "version": "1.0",
+         "credential_type": "mDL",
+         "legal_type": "pub-eaa",
+         "localization": {
+            "default_locale": "it",
+            "available_locales": ["en", "it", "fr", "de"],
+            "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/",
+            "version": "1.0.0"
+         },
+         "name_l10n_id": "credential.mdl.name",
+         "description_l10n_id": "credential.mdl.description",
+         "restriction_policy": {
+            "allowed_wallet_ids": [
+               "https://wallet-provider.example.org/wallet_solution",
+               "https://wallet-provider2.example.org/wallet_solution"
+            ],
+            "allowed_issuer_ids": [
+               "https://issuer.example.org"
+            ]
+         },
+         "pricing_policy": {
+             "models": [
+               {
+                 "pricing_type": "verification_based",
+                 "price": 0.01,
+                 "currency": "EUR"
+               }
+             ],
+             "pricing_model_uri": "https://example.com/pricing"
+           },
+         "validity_info": {
+            "max_validity_days": 365,
+            "status_methods": ["status_list"],
+            "allowed_states": [
+               "valid",
+               "revoked",
+               "suspended"
+            ]
+         },       
+         "authentication": {
+            "user_auth_required": true,
+            "min_loa": "high",
+            "supported_schemes": ["it-wallet"]
+         },
+         "purposes": [
+            {
+               "id": "driving-authorization",
+               "description_l10n_id": "purpose.driving_authorization.description",
+               "category": "AUTHORIZATION",
+               "subcategory": "DRIVING_LICENSE",
+               "claims_required": ["family_name", "given_name", "issue_date", "expiry_date", "issuing_authority", "document_number", "portrait", "driving_privileges", "un_distinguishing_sign"],
+               "claim_recommended": ["birth_date", "un_distinguishing_sign", "issuing_country", "issuing_jurisdiction"]
+            
+            },
+            {
+               "id": "person-identification",
+               "description_l10n_id": "purpose.person_identification.description",
+               "category": "IDENTITY",
+               "subcategory": "PERSON_IDENTIFICATION",
+               "claims_required": ["family_name", "given_name", "birth_date", "portrait", "document_number"],
+               "claim_recommended": ["expiry_date", "issuing_authority"]
+            }
+         ],
+         "issuers": [
+            {
+               "id": "https://issuer.example.org",
+               "organization_name": "Digital Credential Issuer of Example",
+               "organization_code": "ci_example_it",
+               "organization_country": "IT",
+               "contacts": [
+                  "mailto:informazioni@example.it",
+                  "mailto:protocollo@pec.example.it"
+               ],
+               "legal_type": "pub-eaa",
+               "homepage_uri": "https://issuer.example.org",
+               "logo_uri": "https://issuer.example.org/logo.svg",
+               "policy_uri": "https://issuer.example.org/privacy",
+               "tos_uri": "https://issuer.example.org/terms",
+               "service_documentation": "https://issuer.example.org/.well-known/service-doc",
+               "issuance_flows": {
+                  "deferred_flow": true,
+                  "max_deferred_issuance_time_minutes": 1440,
+                  "notification_methods": ["push", "polling"]
+               }
+            }
+         ],
+         "authentic_sources": [
+            {
+               "id": "https://authentic-sources.example.org",
+               "organization_name": "Authentic Source of Example",
+               "organization_code": "as_example_it",
+               "organization_country": "IT",
+               "contacts": [
+                  "mailto:informazioni@example.it",
+                  "mailto:protocollo@pec.example.it"
+               ],
+               "homepage_uri": "https://authsource.example.com/",
+               "logo_uri": "https://authsource.example.com/img/logo.svg",
+               "source_type": "public",
+               "service_documentation": "https://authentic-sources.example.org/.well-known/service-doc",
+               "data_provision": {
+                  "immediate_flow": false,
+                  "deferred_flow": true,
+                  "max_response_time_minutes": 60,
+                  "notification_methods": ["push"]
+               }
+            }
+         ],
+         "formats": [
+            {
+               "configuration_id": "dc_sd_jwt_mDL",
+               "format": "dc+sd-jwt",
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
+               "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+            },
+            {
+               "configuration_id": "mso_mdoc_mDL",
+               "format": "mso_mdoc",
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL",
+               "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+            }
+         ],
+         "display_properties": {
+            "templates": [
+               {
+                  "authentic_source_id": "https://authentic-sources.example.org",
+                  "template_uri": "https://authsource.example.com/.well-known/templates/mDL.svg",
+                  "template_uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+                  "properties": {
+                     "orientation": "landscape",
+                     "color_scheme": "light",
+                     "contrast": "high"
+                  }
+               }
+            ],
+            "background_color": "#008558",
+            "text_color": "#FFFFFF",
+            "logo_uri": "https://trust-registry.eid-wallet.example.it/.well-known/logos/mDL.svg"
+         },
+         "claims": [
+            {
+               "name": "family_name",
+               "taxonomy_ref": "IDENTITY.PERSONAL_DATA.family_name",
+               "display_name_l10n_id": "claims.family_name.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "given_name",
+               "taxonomy_ref": "IDENTITY.PERSONAL_DATA.given_name",
+               "display_name_l10n_id": "claims.given_name.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "birth_date",
+               "taxonomy_ref": "IDENTITY.PERSONAL_DATA.birthdate",
+               "display_name_l10n_id": "claims.birth_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issue_date",
+               "taxonomy_ref": "COMMON.VALIDITY.issuance_date",
+               "display_name_l10n_id": "claims.issue_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "expiry_date",
+               "taxonomy_ref": "COMMON.VALIDITY.expiry_date",
+               "display_name_l10n_id": "claims.expiry_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_authority",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.issuing_authority",
+               "display_name_l10n_id": "claims.issuing_authority.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "document_number",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.document_number",
+               "display_name_l10n_id": "claims.document_number.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "portrait",
+               "taxonomy_ref": "IDENTITY.BIOMETRIC.facial_image",
+               "display_name_l10n_id": "claims.portrait.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "driving_privileges",
+               "taxonomy_ref": "AUTHORIZATION.DRIVING_LICENSE.categories",
+               "display_name_l10n_id": "claims.driving_privileges.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "un_distinguishing_sign",
+               "taxonomy_ref": "AUTHORIZATION.DRIVING_LICENSE.country_code",
+               "display_name_l10n_id": "claims.un_distinguishing_sign.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "administrative_number",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.administrative_number",
+               "display_name_l10n_id": "claims.administrative_number.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_country",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.issuing_country",
+               "display_name_l10n_id": "claims.issuing_country.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_jurisdiction",
+               "taxonomy_ref": "IDENTITY.DOCUMENTS.issuing_jurisdiction",
+               "display_name_l10n_id": "claims.issuing_jurisdiction.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            }
+         ]
+      }
+   ]
+}

@@ -20,7 +20,7 @@
       "credential_hash_alg": "sha-256"
     }
   },
-  "vct": "https://pidprovider.example.org/v1.0/personidentificationdata",
+  "vct": "https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata",
   "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
   "_sd_alg": "sha-256",
   "cnf": {

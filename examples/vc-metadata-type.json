@@ -1,8 +1,7 @@
 {	
     "name": "Person Identification Data",
-    "description": "Digital version of Person Identification Data",
-    "template_uri": "https://pidprovider.example.org/v1.0/templatepid",	
-    "schema_uri": "https://pidprovider.example.org/schema/v1.0/personidentificationdata",
+    "description": "Digital version of Person Identification Data",	
+    "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/v1.0/sd-jwt/personidentificationdata",
     "schema_uri#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
     "data_source": {
         "verification": {
@@ -36,7 +35,7 @@
             },
             "svg_templates": [
               {
-                "uri": "https://authsource.example.com/svgtemplates/pid-credential-italian.svg",
+                "uri": "https://authsource.example.com/.well-known/templates/it/personidentificationdata.svg",
                 "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
                 "properties": {
                   "orientation": "landscape",
@@ -63,7 +62,7 @@
             },
             "svg_templates": [
               {
-                "uri": "https://authsource.example.com/svgtemplates/pid-credential-english.svg",
+                "uri": "https://authsource.example.com/.well-known/templates/en/personidentificationdata.svg",
                 "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
                 "properties": {
                   "orientation": "landscape",

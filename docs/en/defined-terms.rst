@@ -36,9 +36,9 @@ Below are the description of acronyms and definitions which are useful for furth
      - Entity responsible for identifying citizens for the issuance of a digital identity.
      - 
    * - Digital Credential
-     - A signed set of Attributes encapsulated in a specific data format, such as mDoc-CBOR format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). 
+     - A signed set of Attributes encapsulated in a specific data format, such as mdoc-CBOR format specified in [ISO 18013-5] or the SD-JWT VC format specified in [SD-JWT-VC]. This may be a Personal Identification Data (PID), (Qualified) Electronic Attestation of Attribute ((Q)EAA). 
      - | Revised from ARF v1.4.
-       | *Differences:* The definition from ARF restricts the data format to mDoc-CBOR and SD-JWT VC. A Digital Credential definition should be neutral on the format. 
+       | *Differences:* The definition from ARF restricts the data format to mdoc-CBOR and SD-JWT VC. A Digital Credential definition should be neutral on the format. 
        |
        | *Alternative terms:* Electronic Attestation, Attestation, Verifiable Credential, Digital Attestation.
    * - Organizational Entity
@@ -83,6 +83,12 @@ Below are the description of acronyms and definitions which are useful for furth
      - An Organizational Entity that relies upon an electronic identification or a Trust Service originating from a Wallet Instance. 
      - | Revised from ARF v1.4. 
        | *Differences:* renamed “natural or legal person” in “Organizational Entity”.
+   * - Relying Party Solution
+     - A comprehensive product that may include software, hardware, cloud services, and configurations. It facilitates Credential presentations in various contexts - online, offline, proximity, or remote - through the use of remote web services or specialized applications, such as Credential Verifier mobile apps and or embedded technologies.
+     - 
+   * - Relying Party Backend
+     - Remote infrastructure with server-side components, generally RESTful, including a predefined set of web endpoints, managed by a Relying Party Solution provider.
+     - 
    * - Relying Party Instance
      - A Relying Party Instance in the context of a mobile application or a standalone embedded device refers to a specific deployment of the application or device. These instances depend on an User Authentication through a Wallet Instance to confirm User identities before granting access to their functionalities. Each version or environment where the application or device is running, be it a particular release of a mobile app installed on a User's smartphone or a specific embedded device in use, constitutes a separate instance. In case of proximity supervised scenarios, it belongs to and is controlled by a Verifier. 
      - | Revised from ARF v1.4.
@@ -126,6 +132,15 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Trust Relationship
      - Positive outcome of Trust Evaluation, which produces a reliable relationship between Organizational Entities, where one Organizational Entity trusts the other to securely handle data, execute transactions, or perform actions on its behalf.
      -
+   * - Access Certificate
+     - A Certificate for electronic seals or signatures authenticating and validating the (Wallet-) Relying Party, issued by a provider of wallet-relying party Access Certificates.
+     - 
+   * - Registration Certificate
+     - A data object that indicates the attributes the Relying Party has registered to intend to request from Users.
+     -
+   * - Certificate Signing Request (CSR)
+     - Request sent to a Certificate Authority (CA) that contains the public key and identifying information of the entity requesting a digital certificate.
+     - 
    * - Metadata
      - Digital artifact that contains all the required information about an Organizational Entity, e.g., protocol related endpoints and the Organizational Entity’s cryptographic public keys (for the complete list check requirement "Metadata Content").
      -
@@ -136,7 +151,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - Process performed by a Registration Authority verifying necessary information to ensure Organizational Entity eligibility and compliance with the relevant rules and standards. The main goal of the Registration Process is for the Organizational Entity to receive one or more Trust Assertions to be used for the Trust Evaluation processes.
      -
    * - Accreditation Process
-     - Process performed by the National Accreditation Body to accreditate CABs. As a result of the Accreditation Process, a NAB issues an accreditation certificate to a CAB.
+     - Process performed by the National Accreditation Body to accreditate CABs. As a result of the Accreditation Process, a NAB issues an accreditation Certificate to a CAB.
      - 
    * - Certification Process
      - Process performed by Conformity Assessment Bodies to certify the Wallet Solution. The Certification Process aims to periodically assess technical Wallet Solutions (e.g. performing vulnerability assessment and risk analysis). As a result of the Certification Process a certification is provided to the Wallet Solution. 
@@ -197,7 +212,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - | Revised from ARF v1.4 and Implementing Act.
        | *Differences:* editorial (renamed “Member Stare or other legal entity” and "natural or legal person", respectively).
    * - National Identity Provider
-     - It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (eg: the Italian SPID and CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE-OpenID-Connect-Specifications`_).
+     - It represents preexisting identity systems based on SAML2 or OpenID Connect Core 1.0, already in production in each Member State (e.g.: CIE id schemes notified eIDAS with *LoA* **High**, see `SPID/CIE-OpenID-Connect-Specifications`_).
      -
    * - Trust Attestation
      - Electronic attestation of an entity's compliance with the national regulatory framework, which is cryptographically verifiable and cannot be repudiated over time by the entity that issued it. A Trust Attestation is always related to a particular Trust Framework.
@@ -209,7 +224,7 @@ Below are the description of acronyms and definitions which are useful for furth
      - System defining how the participants of the ecosystem establish and maintain trust in their interactions. The Trust Model outlines the rules and the procedures for the entities (like users, systems, or applications) should validate each other's identities, authenticate, and establish the level of trust before exchanging information.
      -
    * - Level of Assurance
-     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the credential is the same User to whom the Digital Credential was issued.
+     - The degree of confidence in the vetting process used to establish the identity of the User and the degree of confidence that the User who presents the Credential is the same User to whom the Digital Credential was issued.
      -
    * - Holder Key Binding
      - Ability of the Holder to prove legitimate possession of the private part, related to the public part attested by a Trusted Third Party.
@@ -220,7 +235,9 @@ Below are the description of acronyms and definitions which are useful for furth
    * - Pseudonym
      - Pseudonyms are alternative identifier used to represent an entity (such as a person or organization) without revealing their true identity. It provides a layer of privacy and anonymity while still allowing for consistent authentication and authorization within a system.
      -
-
+   * - Digital Credentials Catalogue
+     - The Digital Credentials Catalogue is a structured list of the Digital Credentials available in IT-Wallet system, organized to facilitate their discovery and access.
+     -
 
 Acronyms
 --------
@@ -253,8 +270,6 @@ Acronyms
     - Wallet Secure Cryptographic Application
   * - **CIE**
     - National Electronic Identity Card
-  * - **SPID**
-    - Italian Public Digital Identity System
   * - **ANPR**
     - Italian National Registry of the Resident Population
 

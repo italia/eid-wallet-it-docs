@@ -19,7 +19,7 @@
       "credential_hash_alg": "sha-256"
     }
   },
-  "vct": "https://issuer.example.org/v1.0/disabilitycard",
+  "vct": "https://trust-registry.eid-wallet.example.it/credentials/v1.0/EuropeanDisabilityCard",
   "vct#integrity": "2e40bcd6799008085ffb1a1f3517efee335298fd976b3e655bfb3f4eaa11d171",
   "_sd_alg": "sha-256",
   "cnf": {

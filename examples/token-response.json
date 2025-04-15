@@ -6,7 +6,7 @@
     "authorization_details": [
       {
         "type": "openid_credential",
-        "credential_configuration_id": "EuropeanDisabilityCard",
+        "credential_configuration_id": "dc_sd_jwt_EuropeanDisabilityCard",
         "credential_identifiers": [ "DisabilityCard" ]
       }
     ]

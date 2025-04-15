@@ -24,7 +24,7 @@ This repository hosts the sphinx project tree of IT-Wallet Technical Specificati
 
 ## Preview
 
-Preview of the lates editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
+Preview of the latest editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
 
  - [Editor's Copy](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)
 
@@ -65,18 +65,18 @@ ODT
 sudo apt install pandoc
 sphinx-build -b singlehtml docs/en/  html/
 cd html
-pandoc -o eidas-it-wallet-docs.odt index.html
+pandoc -o eid-it-wallet-docs.odt index.html
 ````
 
 ## Versioning
 
-This project participates in the versioning model [*Semantic
-Versioning*](https://semver.org/).
+This project adheres to the [*Semantic
+Versioning*](https://semver.org/) model.
 
 Furthermore, this project uses the git *branches* and *tags* in the following way:
 * the branch `versione-corrente` contains the last stable version of the standard;
-* The [release page](https://github.com/italia/publiccode.yml/releases) of
-  GitHub contains all the released versions of the standard. For the sake of coherence, the *releases* are made according to the tag names.
+* The [release page](https://github.com/italia/eid-wallet-it-docs/releases) of
+  GitHub contains all the released versions of the specifications. For the sake of coherence, the *releases* are made according to the tag names.
 
 Each time a release is created or edited, a preview is built based on the tag the release refers to. See [the preview section](preview-of-released-versions) for more.
 
