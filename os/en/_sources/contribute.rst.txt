@@ -63,6 +63,7 @@ implementation profile and to the initial set of implementations.
 - Marco Basili
 - Valerio Bozzolan
 - Matteo Fortini 
+- Chris Phillips
 
 
 If anyone has been forgotten, please accept our apologies with the
