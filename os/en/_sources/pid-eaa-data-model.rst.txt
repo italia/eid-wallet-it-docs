@@ -22,7 +22,7 @@ The User attributes provided within the Italian PID are the ones listed below:
     - Date of Birth
     - Taxpayer identification number
 
-The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mDoc-CBOR data format. 
+The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mdoc-CBOR data format. 
 
 The PID/(Q)EAA data format and the mechanism through which a digital credential is issued to the Wallet Instance and presented to a Relying Party are described in the following sections. 
 
@@ -134,7 +134,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://issuer.example.org/v1.0/personidentificationdata``).
+      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the PID/(Q)EAA Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -431,30 +431,31 @@ The combined format for the PID issuance is given by:
   aQWZIa3hac1JHQzlYcyIsICJpc3N1aW5nX2F1dGhvcml0eSI6ICJJc3RpdHV0byBQb2x
   pZ3JhZmljbyBlIFplY2NhIGRlbGxvIFN0YXRvIiwgImlzc3VpbmdfY291bnRyeSI6ICJ
   JVCIsICJzdGF0dXMiOiB7InN0YXR1c19hc3NlcnRpb24iOiB7ImNyZWRlbnRpYWxfaGF
-  zaF9hbGciOiAic2hhLTI1NiJ9fSwgInZjdCI6ICJodHRwczovL3BpZHByb3ZpZGVyLmV
-  4YW1wbGUub3JnL3YxLjAvcGVyc29uaWRlbnRpZmljYXRpb25kYXRhIiwgInZjdCNpbnR
-  lZ3JpdHkiOiAiYzVmNzNlMjUwZmU4NjlmMjRkMTUxMThhY2NlMjg2YzliYjU2YjYzYTQ
-  0M2RjODVhZjY1M2NkNzNmNjA3OGIxZiIsICJfc2RfYWxnIjogInNoYS0yNTYiLCAiY25
-  mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0F
-  FUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAiWnh
-  qaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.7lV6m1K
-  IsnwuJcR8DgrmRHBkLEXJcx7kVBI1rzlbBwZ_xMPwAd4Dfl06dyLKegdTZO1RDR3IDi-
-  JyiuNMFlZOQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhdCIsIDE2ODMwMDAw
-  MDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgInZlcmlmaWNhdGlvbiIsIHsidHJ
-  1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsICJhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCI
-  sICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3VjaCIsICJ0aW1lIjogIjIwMjAtMDMtMTl
-  UMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogeyJ0eXBlIjogImRpZ2l0YWxfYXR0ZXN0YXR
-  pb24iLCAicmVmZXJlbmNlX251bWJlciI6ICI2NDg1LTE2MTktMzk3Ni02NjcxIiwgImR
-  hdGVfb2ZfaXNzdWFuY2UiOiAiMjAyMC0wMy0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHs
-  ib3JnYW5pemF0aW9uIjogIk1pbmlzdGVybyBkZWxsJ0ludGVybm8ifX19fV0~WyI2SWo
-  3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSTha
-  V205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19P
-  NjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJ
-  BSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoX3BsYWNlIiwgIlJvbWEiXQ~WyJQ
-  YzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgIm5hdGlvbmFsaXR5IiwgIklUIl0~WyJHMDJO
-  U3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJl
-  ciIsICJYWDAwMDAwWFgiXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgInRheF9pZ
-  F9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhYWFhYWFgiXQ~
+  zaF9hbGciOiAic2hhLTI1NiJ9fSwgInZjdCI6ICJodHRwczovL3RydXN0LXJlZ2lzdHJ
+  5LmVpZC13YWxsZXQuZXhhbXBsZS5pdC9jcmVkZW50aWFscy92MS4wL3BlcnNvbmlkZW5
+  0aWZpY2F0aW9uZGF0YSIsICJ2Y3QjaW50ZWdyaXR5IjogImM1ZjczZTI1MGZlODY5ZjI
+  0ZDE1MTE4YWNjZTI4NmM5YmI1NmI2M2E0NDNkYzg1YWY2NTNjZDczZjYwNzhiMWYiLCA
+  iX3NkX2FsZyI6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCA
+  iY3J2IjogIlAtMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUl
+  MaWxEbHM3dkNlR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnV
+  lY0NFNnQ0alQ5RjJIWlEifX19.ISeLw-Tqpmcos9ms7KQTfUhSm4srAtGOMNQe3M-toa
+  YhCcT4JnvZANmtBb8rOXdJ60oTtya4krCOjFNirEg3-g~WyIyR0xDNDJzS1F2ZUNmR2Z
+  yeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV
+  9BIiwgInZlcmlmaWNhdGlvbiIsIHsidHJ1c3RfZnJhbWV3b3JrIjogIml0X2NpZSIsIC
+  Jhc3N1cmFuY2VfbGV2ZWwiOiAiaGlnaCIsICJldmlkZW5jZSI6IHsidHlwZSI6ICJ2b3
+  VjaCIsICJ0aW1lIjogIjIwMjAtMDMtMTlUMTI6NDJaIiwgImF0dGVzdGF0aW9uIjogey
+  J0eXBlIjogImRpZ2l0YWxfYXR0ZXN0YXRpb24iLCAicmVmZXJlbmNlX251bWJlciI6IC
+  I2NDg1LTE2MTktMzk3Ni02NjcxIiwgImRhdGVfb2ZfaXNzdWFuY2UiOiAiMjAyMC0wMy
+  0xOVQxMjo0M1oiLCAidm91Y2hlciI6IHsib3JnYW5pemF0aW9uIjogIk1pbmlzdGVyby
+  BkZWxsJ0ludGVybm8ifX19fV0~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImdpdm
+  VuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgImZhbWl
+  seV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnR
+  oX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgIm
+  JpcnRoX3BsYWNlIiwgIlJvbWEiXQ~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgIm5
+  hdGlvbmFsaXR5IiwgIklUIl0~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgInBlcnN
+  vbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJYWDAwMDAwWFgiXQ~WyJsa2x4RjVq
+  TVlsR1RQVW92TU5JdkNBIiwgInRheF9pZF9jb2RlIiwgIlRJTklULVhYWFhYWFhYWFhY
+  WFhYWFgiXQ~
 
 
 (Q)EAA non-normative Examples
@@ -561,37 +562,38 @@ The combined format for the (Q)EAA issuance is represented below:
   VhzIiwgImlzc3VpbmdfYXV0aG9yaXR5IjogIklzdGl0dXRvIFBvbGlncmFmaWNvIGUgW
   mVjY2EgZGVsbG8gU3RhdG8iLCAiaXNzdWluZ19jb3VudHJ5IjogIklUIiwgInN0YXR1c
   yI6IHsic3RhdHVzX2Fzc2VydGlvbiI6IHsiY3JlZGVudGlhbF9oYXNoX2FsZyI6ICJza
-  GEtMjU2In19LCAidmN0IjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUub3JnL3YxLjAvZ
-  GlzYWJpbGl0eWNhcmQiLCAidmN0I2ludGVncml0eSI6ICIyZTQwYmNkNjc5OTAwODA4N
-  WZmYjFhMWYzNTE3ZWZlZTMzNTI5OGZkOTc2YjNlNjU1YmZiM2Y0ZWFhMTFkMTcxIiwgI
-  l9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgI
-  mNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJT
-  GlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1Z
-  WNDRTZ0NGpUOUYySFpRIn19fQ.L-km4kT5RCMVd9S5ZuVxINxfiSOksgcQNTGb71EhjF
-  fkqptx-upFnx3KEHHmGFoyftiT1ScKHBUiWvBj32MAYg~WyIyR0xDNDJzS1F2ZUNmR2Z
-  yeU5STjl3IiwgImlhdCIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV
-  9BIiwgImRvY3VtZW50X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyI2SWo3dE0tYTVpVl
-  BHYm9TNXRtdlZBIiwgImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHB
-  OUGVOZW5IZGhRIiwgImZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQ
-  xMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1Vl
-  BycFR0TjRRTU9xUk9BIiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyJQYzM
-  zSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJ
-  lciIsICJYWDAwMDAwWFgiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0
-  YW50X2F0dGVuZGFuY2VfYWxsb3dhbmNlIiwgdHJ1ZV0~
+  GEtMjU2In19LCAidmN0IjogImh0dHBzOi8vdHJ1c3QtcmVnaXN0cnkuZWlkLXdhbGxld
+  C5leGFtcGxlLml0L2NyZWRlbnRpYWxzL3YxLjAvRXVyb3BlYW5EaXNhYmlsaXR5Q2FyZ
+  CIsICJ2Y3QjaW50ZWdyaXR5IjogIjJlNDBiY2Q2Nzk5MDA4MDg1ZmZiMWExZjM1MTdlZ
+  mVlMzM1Mjk4ZmQ5NzZiM2U2NTViZmIzZjRlYWExMWQxNzEiLCAiX3NkX2FsZyI6ICJza
+  GEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlAtMjU2I
+  iwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtY
+  yIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ5RjJIW
+  lEifX19.2Dt5a6CFNv-YAmfewZGERmlIOdYybaNtZP6Va1zHZ_IqZAGM8S6M4mcTU-RO
+  3X4cU4j20xif2Ocf1jvd2L5CRQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImlhd
+  CIsIDE2ODMwMDAwMDBd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImRvY3VtZW50
+  X251bWJlciIsICJYWFhYWFhYWFhYIl0~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwg
+  ImdpdmVuX25hbWUiLCAiTWFyaW8iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgI
+  mZhbWlseV9uYW1lIiwgIlJvc3NpIl0~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgI
+  mJpcnRoX2RhdGUiLCAiMTk4MC0wMS0xMCJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9B
+  IiwgImV4cGlyeV9kYXRlIiwgIjIwMjQtMDEtMDEiXQ~WyJQYzMzSk0yTGNoY1VfbEhnZ
+  3ZfdWZRIiwgInBlcnNvbmFsX2FkbWluaXN0cmF0aXZlX251bWJlciIsICJYWDAwMDAwW
+  FgiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImNvbnN0YW50X2F0dGVuZGFuY2
+  VfYWxsb3dhbmNlIiwgdHJ1ZV0~
 
-mDoc-CBOR Credential Format
+mdoc-CBOR Credential Format
 ====================================
 
-The mDoc data model is based on the ISO/IEC 18013-5 standard. 
-The mDoc data elements MUST be encoded in CBOR as defined in :rfc:`8949`.
+The mdoc data model is based on the ISO/IEC 18013-5 standard. 
+The mdoc data elements MUST be encoded in CBOR as defined in :rfc:`8949`.
 
-This data model structures mDoc Digital Credentials into distinct components: namespaces (**nameSpaces**), and cryptographic proof (**issuerAuth**). 
+This data model structures mdoc Digital Credentials into distinct components: namespaces (**nameSpaces**), and cryptographic proof (**issuerAuth**). 
 Namespaces categorize and structure data elements (or attributes, see :ref:`Attribute_Namespaces`). While the cryptographic proof ensures integrity and authenticity through the Mobile Security Object (MSO).
 
 The MSO securely stores cryptographic digests of attributes within the `nameSpaces`. This allows Relying Parties to validate disclosed attributes against corresponding **digestID** values without revealing the entire Credential.
 See :ref:`Mobile_Security_Object` for details.
 
-An mDoc-CBOR Digital Credential MUST be compliant with the following structure:
+An mdoc-CBOR Digital Credential MUST be compliant with the following structure:
 
 .. list-table:: 
     :widths: 20 60 20
@@ -601,19 +603,19 @@ An mDoc-CBOR Digital Credential MUST be compliant with the following structure:
       - **Description**
       - **Reference**
     * - **nameSpaces** 
-      - *tstr (text string)*. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces. Mandatory mDL attributes utilize the standard namespace `org.iso.18013.5.1`. However, it MAY have a domestic namespace, such as `org.iso.18013.5.1.IT`, to include additional attributes defined in this implementation profile. Each namespace within the `nameSpaces` MUST share the same issued document type (`docType`) value, which identifies the nature of the Digital Credential, as defined in the `issuerAuth`. 
+      - *(map)*. The namespaces within which the data elements are defined. A Digital Credential MAY include multiple namespaces. Mandatory mDL attributes utilize the standard namespace `org.iso.18013.5.1`. However, it MAY have a domestic namespace, such as `org.iso.18013.5.1.IT`, to include additional attributes defined in this implementation profile. Each namespace within the `nameSpaces` MUST share the same issued document type (`docType`) value, which identifies the nature of the Digital Credential, as defined in the `issuerAuth`. 
       - [ISO 18013-5#8.3.2.1.2]
     * - **issuerAuth**
-      - *bstr (byte string)*. Contains *Mobile Security Object* (MSO), a COSE Sign1 Document, issued by the Credential Issuer.
+      - *(COSE_Sign1)*. Contains *Mobile Security Object* (MSO), a COSE Sign1 Document, issued by the Credential Issuer.
       - [ISO 18013-5#9.1.2.4]
 
-The structure of an mDoc-CBOR Credential is further elaborated in the following sections.
+The structure of an mdoc-CBOR Credential is further elaborated in the following sections.
 
 .. _Attribute_Namespaces:
 
 Attribute Namespaces
 --------------------------------
-The **nameSpaces** object contains one or more *nameSpace* entries, each identified by a name. Within each **nameSpace**, it includes one or more *IssuerSignedItemBytes*, each encoded as a CBOR byte string with Tag 24 (#6.24(bstr .cbor)), which appears as 24(<<... >>) in diagnostic notation. It represents the disclosure information for each digest within the `Mobile Security Object` and MUST contain the following attributes:
+The **nameSpaces** contains one or more *nameSpace* entries, each identified by a name. Within each **nameSpace**, it includes one or more *IssuerSignedItemBytes*, each encoded as a CBOR byte string with Tag 24 (#6.24(bstr .cbor)), which appears as 24(<<... >>) in diagnostic notation. It represents the disclosure information for each digest within the `Mobile Security Object` and MUST contain the following attributes:
 
 .. list-table:: 
     :widths: 20 60 20
@@ -623,21 +625,21 @@ The **nameSpaces** object contains one or more *nameSpace* entries, each identif
       - **Description**
       - **Reference**
     * - **digestID**
-      - *integer*. Reference value to one of the ``ValueDigests`` provided in the *Mobile Security Object* (`issuerAuth`).
+      - *(uint)*. Reference value to one of the ``ValueDigests`` provided in the *Mobile Security Object*.
       - [ISO 18013-5#9.1.2.5]
     * - **random**
-      - *bstr (byte string)*. Random byte value used as salt for the hash function. This value SHALL be different for each *IssuerSignedItem* and it SHALL have a minimum length of 16 bytes.
+      - *(bstr)*. Random byte value used as salt for the hash function. This value SHALL be different for each *IssuerSignedItem* and it SHALL have a minimum length of 16 bytes.
       - [ISO 18013-5#9.1.2.5]
     * - **elementIdentifier**
-      - *tstr (text string)*. Data element identifier.
+      - *(tstr)*. Data element identifier.
       - [ISO 18013-5#8.3.2.1.2.3]
     * - **elementValue**
-      - *any value (depends on the data element)*. Data element value.
+      - *(any)*. Data element value.
       - [ISO 18013-5#8.3.2.1.2.3]
 
 Attributes 
 --------------------------------
-The following **elementIdentifiers** MUST be included in a Digital Credential encoded in mDoc-CBOR within the respective *nameSpace*, unless otherwise specified:
+The following **elementIdentifiers** MUST be included in a Digital Credential encoded in mdoc-CBOR within the respective *nameSpace*, unless otherwise specified:
 
 .. list-table:: 
    :widths: 20 60 20
@@ -648,38 +650,38 @@ The following **elementIdentifiers** MUST be included in a Digital Credential en
      - **Reference**
 
    * - **issuing_country**
-     - *tstr (text string)*. Alpha-2 country code as defined in [ISO 3166-1], representing the issuing country or territory. 
+     - *(tstr)*. Alpha-2 country code as defined in [ISO 3166-1], representing the issuing country or territory. 
      - [ISO 18013-5#7.2]
 
    * - **issuing_authority**
-     - *tstr (text string)*. Name of the administrative authority that has issued the mDL.  
+     - *(tstr)*. Name of the administrative authority that has issued the mDL.  
        The value shall only use Latin1b characters and shall have a maximum length of 150 characters. 
      - [ISO 18013-5#7.2]
 
    * - **sub**
-     - *uuid (unique identifier)*. Identifies the subject of the mDoc Digital Credential (the User).
+     - *(uuid)*. Identifies the subject of the mdoc Digital Credential (the User).
        The identifier MUST be opaque, MUST NOT correspond to any anagraphic data, and MUST NOT be derived from the User's anagraphic data through pseudonymization. Additionally, different Credentials issued to the same User MUST NOT reuse the same `sub` value.
      - 
 
    * - **verification**
-     - (OPTIONAL) Object containing authentication and verification details of the User. It has the same logic structure and purpose as reported in the :ref:`Table of the SD-JWT parameters <table_sd-jwt-vc_parameters>`.
+     - *(map, OPTIONAL)*. Contains authentication and verification details of the User. It has the same logic structure and purpose as reported in the :ref:`Table of the SD-JWT parameters <table_sd-jwt-vc_parameters>`.
      - 
 
 .. note::
       Digital Credential User-specific attributes are defined in the Catalogue of Digital Credentials.
-      User-specific attributes for mDoc Digital Credentials such as those used in mDL or PID are also included by referencing the appropriate `elementIdentifiers` defined in ISO/IEC 18013-5 or the `EIDAS-ARF`_ specification.
+      User-specific attributes for mdoc Digital Credentials such as those used in mDL or PID are also included by referencing the appropriate `elementIdentifiers` defined in ISO/IEC 18013-5 or the `EIDAS-ARF`_ specification.
 
 .. _Mobile_Security_Object:
 
-Mobile security Object
+Mobile Security Object
 --------------------------
 
 The **issuerAuth** represents the `Mobile Security Object` which is a `COSE Sign1 Document` defined in :rfc:`9052`. It has the following data structure:
 
-* protected header
-* unprotected header
-* payload
-* signature.
+   * protected header
+   * unprotected header
+   * payload
+   * signature.
 
 The **protected header** MUST contain the following parameter encoded in CBOR format:
 
@@ -691,7 +693,7 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
       - **Description**
       - **Reference**
     * - **1**
-      - Algorithm used to verify the cryptographic signature of the mDoc Digital Credential (REQUIRED).
+      - *(int)*. Algorithm used to verify the cryptographic signature of the mdoc Digital Credential.
       - :rfc:`9053`
 
 .. note::
@@ -699,7 +701,7 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
     Only the signature algorithm MUST be present in the protected header, other elements SHOULD not be present in the protected header.
 
 
-The **unprotected header** MUST contain the following parameter:
+The **unprotected header** MUST contain the following parameters, unless otherwise specified:
 
 .. list-table:: 
     :widths: 20 60 20
@@ -709,18 +711,18 @@ The **unprotected header** MUST contain the following parameter:
       - **Description**
       - **Reference**
     * - **4**
-      - Unique identifier of the Issuer JWK (OPTIONAL). Required when the issuer of mDoc uses OpenID Federation. 
+      - *(tstr, OPTIONAL)*. Unique identifier of the Issuer JWK. Required when the Issuer of mdoc uses OpenID Federation. 
       - :ref:`trust.rst`
     * - **33**
-      - X.509 certificate chain about the Issuer (OPTIONAL). Required for X.509 certificate-based authentication.
-      - :rfc:`9360`. 
+      - *(array)*. X.509 certificate chain about the Issuer. Required for X.509 certificate-based authentication.
+      - :rfc:`9360`
 
 .. note::
     The `x5chain` is included in the unprotected header with the aim to allow the Holder to update the X.509 certificate chain, related to the `Mobile Security Object` issuer, without invalidating the signature.
 
 The **payload** MUST contain the *MobileSecurityObject*, without the `content-type` COSE Sign header parameter and encoded as a *byte string* (bstr) using the *CBOR Tag* 24.
 
-The `MobileSecurityObjectBytes` MUST have the following attributes:
+The `MobileSecurityObject` MUST have the following attributes, unless otherwise specified:
 
 .. list-table:: 
     :widths: 20 60 20
@@ -730,44 +732,46 @@ The `MobileSecurityObjectBytes` MUST have the following attributes:
       - **Description**
       - **Reference**
     * - **docType**
-      - *tstr (text string)*. Defines the type of mDoc Digital Credential being issued. For example, for an mDL, the value MUST be ``org.iso.18013-5.1.mDL``. Specific `docType` MAY be defined for Digital Credential other than mDL. 
+      - *(tstr)*. Defines the type of mdoc Digital Credential being issued. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``. Specific `docType` MAY be defined for Digital Credential other than mDL. 
       - [ISO 18013-5#9.1.2.4]
     * - **version**
-      - *(tstr)* Version of the data structure being used.
+      - *(tstr)*. Version of the `MobileSecurityObject`.
       - [ISO 18013-5#9.1.2.4]
     * - **validityInfo**
-      - Object containing issuance and expiration datetimes. It MUST contain the following sub-value:
+      - *(map)*. Contains the `MobileSecurityObject` issuance and expiration datetimes. It MUST contain the following sub-value:
 
-          * *signed*
-          * *validFrom*
-          * *validUntil*
+          * **signed** *(tdate)*. The timestamp indicating when the `MobileSecurityObject` was signed.  
+          * **validFrom** *(tdate)*. Timestamp before which the `MobileSecurityObject` is not considered valid. MUST be equal to or later than the `signed` time.  
+          * **validUntil** *(tdate)*. Timestamp after which the `MobileSecurityObject` is no longer considered valid.
+
       - [ISO 18013-5#9.1.2.4]
     * - **digestAlgorithm**
-      - According to the algorithm defined in the protected header.
+      - *(tstr)*. Identifier of the digest algorithm, which MUST match the algorithm defined in the protected header.
       - [ISO 18013-5#9.1.2.4]
     * - **valueDigests**
-      - Mapped digest by unique id, grouped by namespaces.
+      - *(map)*. Maps each namespace identifier to a set of digests, where each digest is keyed by a unique `digestID` and holds the digest value.
       - [ISO 18013-5#9.1.2.4]
     * - **deviceKeyInfo**
-      - It MUST contain the Wallet Instance's public key containing the following sub-values:
+      - *(map)*. Contains metadata about the Wallet Instance's public key. It MUST include the following sub-fields, unless otherwise specified:
 
-          * *deviceKey* (REQUIRED).
-          * *keyAuthorizations* (OPTIONAL).
-          * *keyInfo* (OPTIONAL).
+          * **deviceKey** *(COSE_Key)*. Contains the public key parameters.
+          * **keyAuthorizations** *(map, OPTIONAL)*. Defines authorizations for either full namespaces or individual data elements.
+          * **keyInfo** *(map, OPTIONAL)*. Contains additional metadata about the key.
+
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position. 
+      - *(map, CONDITIONAL)*. REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position. 
         The `status_list` MUST contain the following sub-value:
 
-          * *idx* (REQUIRED). Position index in the status list.
-          * *uri* (REQUIRED). URI pointing to the status list resource.
+          * **idx**. Position index in the status list.
+          * **uri**. URI pointing to the status list resource.
       - [ISO 18013-5#9.1.2.6]
 
 .. note::
-    The private key related to the public key stored in the `deviceKey` object is used to sign the `DeviceSignedItems` object and to prove the possession of the Digital Credential during the presentation phase (see the presentation phase with mDoc-CBOR).
+    The private key related to the public key stored in the `deviceKey` map is used to sign the `DeviceSignedItems` and to prove the possession of the Digital Credential during the presentation phase (see the presentation phase with mdoc-CBOR).
 
 
-mDoc-CBOR Examples
+mdoc-CBOR Examples
 ----------------------
 A non-normative example of an mDL encoded in CBOR is shown below in binary encoding.
 
@@ -779,20 +783,43 @@ The Diagnostic Notation of the CBOR-encoded mDL is given below.
 .. literalinclude:: ../../examples/mDL-mdoc-cbor-example.txt
   :language: text
 
+CBOR Acronyms
+--------------------------------
+.. list-table:: 
+   :widths: 20 80
+   :header-rows: 1
+
+   * - **Acronym**
+     - **Meaning**
+   * - `tstr`
+     - Text String
+   * - `bstr`
+     - Byte String
+   * - `int`
+     - Signed Integer
+   * - `uint`
+     - Unsigned Integer
+   * - `uuid`
+     - Universally Unique Identifier
+   * - `bool`
+     - Boolean (true/false)
+   * - `tdate`
+     - Tagged Date (for example, Tag `0` is used to indicate a date/time string in RFC 3339 format)
+
 Cross-Format Credential Parameters Mapping
 ======================================================
-The following table provides a comparative mapping between the data structures of SD-JWT-VC and mDoc-CBOR Digital Credentials.
+The following table provides a comparative mapping between the data structures of SD-JWT-VC and mdoc-CBOR Digital Credentials.
 It outlines the key data elements and parameters used in each format, highlighting both commonalities and differences.
-In particular, it shows how core concepts—such as issuer information, validity, cryptographic binding, and disclosures—are represented in these credential formats.
+In particular, it shows how core concepts - such as Credential Issuer information, validity, cryptographic binding, and disclosures - are represented in these Credential formats.
 
-For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOSE header, and `(pld)` if they appear in the payload of the JWT. In mDoc-CBOR, these parameters are identified within the issuerAuth or nameSpaces structures.
+For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOSE header, and `(pld)` if they appear in the payload of the JWT. In mdoc-CBOR, these parameters are identified within the issuerAuth or nameSpaces structures.
 
 .. list-table:: 
    :header-rows: 1
 
    * - **Information Related To**
      - **SD-JWT-VC Parameters**
-     - **mDoc-CBOR Parameters**
+     - **mdoc-CBOR Parameters**
    * - Digital Credential definition
      - vct (pld)
      - | issuerAuth.doctype
@@ -877,9 +904,12 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
 
 .. note::
 
-   - In the mDoc-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available for the IssuerAuth.  In contrast, the SD-JWT format includes version information via the `vct` URL.
+   - In the mdoc-CBOR format, the version of the Digital Credential is not explicitly defined; it is only available for the IssuerAuth.  In contrast, the SD-JWT format includes version information via the `vct` URL.
    - `Disclosures`, `_sd`, and `_sd_alg` enable selective disclosure of SD-JWT claims.  The `_sd` and `_sd_alg` parameters are part of the SD-JWT payload, while `Disclosures` are sent separately in a Combined Format along with the SD-JWT.
-   - The `vctm.claims` parameter in SD-JWT and the `nameSpaces` structure in mDoc-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond to `nameSpaces`, including attribute names, values, and salt values.
-   - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for mDoc-CBOR Digital Credentials.
+   - The `vctm.claims` parameter in SD-JWT and the `nameSpaces` structure in mdoc-CBOR are functionally equivalent, as both define the claim names and their structure. SD-JWT `Disclosures` for disclosed attributes directly correspond to `nameSpaces`, including attribute names, values, and salt values.
+   - A domestic namespace accommodates attributes such as `verification` and `sub`, which are not defined in the standard ISO elementIdentifiers for mdoc-CBOR Digital Credentials.
+
+
+
 
 
