@@ -13,7 +13,7 @@ The Infrastructure of trust facilitates the application of a trust assessment me
 ..  figure:: ../../images/trust-roles.svg
     :alt: federation portrait
     :width: 100%
-   
+
     The roles within the Federation, where the Trust Anchor oversees its subordinates,
     which include one or more Intermediates and Leaves. In this
     representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.
@@ -43,28 +43,28 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - The Federation has PKI capabilities. The Entity that configures the entire infrastructure is the Trust Anchor.
    * - Qualified Trust Service Provider (QTSP)
      - Leaf
-     - 
+     -
    * - Person Identification Data Provider
      - Leaf
-     - 
+     -
    * - Qualified Electronic Attestations of Attributes Provider
      - Leaf
-     - 
+     -
    * - Electronic Attestations of Attributes Provider
      - Leaf
-     - 
+     -
    * - Relying Party
      - Leaf
-     - 
+     -
    * - Trust Service Provider (TSP)
      - Leaf
-     - 
+     -
    * - Trusted List
      - Trust Anchor
      - The listing endpoint, the trust mark status endpoint, and the fetch endpoint MUST be exposed by both Trust Anchors and Intermediates, making the Trusted List distributed over multiple Federation Entities, where each of these is responsible for their registered subordinates. Other endpoints using different data formats MAY be implemented to facilitate interoperability with systems that do not support OpenID Federation 1.0. In such cases, the same information about federation entities MUST be synchronized across these endpoints, ensuring consistent availability of information through different channels.
    * - Wallet Provider
      - Leaf
-     - 
+     -
 
 
 General Properties
@@ -72,7 +72,7 @@ General Properties
 
 The architecture of the trust infrastructure is built upon the following core principles:
 
-.. list-table:: 
+.. list-table::
    :header-rows: 1
 
    * - Identifier
@@ -205,7 +205,7 @@ Configuration of the Federation
 The configuration of the federation is published by the Trust Anchor within its Entity Configuration, it is available at the well-known web path corresponding to **.well-known/openid-federation**.
 
 All the participants in the federation MUST obtain the federation configuration before entering the operational phase, and they
-MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the 
+MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the
 public keys for signature operations.
 
 Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Federation <OID-FED>`_ specification:
@@ -302,7 +302,7 @@ The Entity Configurations of all the participants in the federation MUST have in
      - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`. It contains the Federation Entity Keys required for the operations of trust evaluation.
    * - **metadata**
      - JSON Object. Each key of the JSON Object represents a metadata type identifier
-       containing JSON Object representing the metadata, according to the metadata 
+       containing JSON Object representing the metadata, according to the metadata
        schema of that type. An Entity Configuration MAY contain more metadata statements, but only one for each type of
        metadata (<**entity_type**>). the metadata types are defined in the section `Metadata Types <Metadata Types>`_.
 
@@ -359,7 +359,7 @@ giving the references of the metadata protocol for each of these.
 
 
 .. note::
-    
+
     The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.
 
 .. list-table::
@@ -383,7 +383,7 @@ giving the references of the metadata protocol for each of these.
      - ``federation_entity``, ``wallet_provider``
      - --
    * - Authorization Server
-     - 
+     -
      - ``federation_entity``, ``oauth_authorization_server``
      - `OPENID4VCI`_
    * - Credential Issuer
@@ -399,16 +399,16 @@ giving the references of the metadata protocol for each of these.
 .. note::
     Wallet Provider metadata is defined in the section below.
 
-    `Wallet Solution section <wallet-solution.html>`_. 
+    `Wallet Solution section <wallet-solution.html>`_.
 
 
 .. note::
-    In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server, 
-    it MUST incorporate both 
+    In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server,
+    it MUST incorporate both
     ``oauth_authorization_server`` and ``openid_credential_issuer`` within its metadata types.
     Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the `authorization_servers` parameters, including the Authorization Server unique identifier.
     Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
-    it could be necessary to include the relevant metadata type, either ``openid_relying_party`` 
+    it could be necessary to include the relevant metadata type, either ``openid_relying_party``
     or ``openid_credential_verifier``.
 
 
@@ -418,7 +418,7 @@ Metadata of federation_entity Leaves
 The *federation_entity* metadata for Leaves MUST contain the following claims.
 
 
-.. list-table:: 
+.. list-table::
   :widths: 20 60
   :header-rows: 1
 
@@ -446,9 +446,9 @@ The Subordinate Statement MAY contain a metadata policy and the Trust Marks rela
 
 The metadata policy, when applied, makes one or more changes to the final metadata of the Leaf. The final metadata of a Leaf is derived from the Trust Chain that contains all the statements, starting from the Entity Configuration up to the Subordinate Statement issued by the Trust Anchor.
 
-Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where the Subordinate Statements are requested to validate the Leaf's Entity Configuration signature. 
+Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where the Subordinate Statements are requested to validate the Leaf's Entity Configuration signature.
 
-.. note:: 
+.. note::
     The Federation Fetch endpoint MAY also publish X.509 certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 certificates via a RESTful service.
 
 Below there is a non-normative example of an Subordinate Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
@@ -632,11 +632,11 @@ In the process depicted in the sequence diagram below, the Wallet Instance uses 
 Evaluating Trust with Wallets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys. 
+The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys.
 
 The Wallet Attestation MAY contain the Trust Chain that attests the reliability for its issuer (Wallet Provider) at the time of issuance.
 
-The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider). 
+The Wallet Instance provides its Wallet Attestation within the signed request during the PID issuance phase. The Credential Issuer MUST evaluate the Trust Chain about the Wallet Attestation issuer (formally, the Wallet Provider).
 
 
 Trust Chain
@@ -674,7 +674,7 @@ There are events where keys are unavailable to verify the entire trust chain:
 
  - **Change in Credential Types**: If the Credential Issuer changes the Credential **types** issued, for instance deciding not to issue anymore one or more Credential types, the related public cryptographic keys MUST be available for the originally designated validity period.
 
- - **Credential Issuers Merge**: If a Credential Issuer merges with another, creating a new Organizational Entity or working on behalf of another one using a different hostname or domain, the **previously** available federation configuration and historical keys MUST be kept available at the original Credential Issuer's well-known endpoints. 
+ - **Credential Issuers Merge**: If a Credential Issuer merges with another, creating a new Organizational Entity or working on behalf of another one using a different hostname or domain, the **previously** available federation configuration and historical keys MUST be kept available at the original Credential Issuer's well-known endpoints.
 
  - **Credential Issuer Becomes Inactive**: If a Credential Issuer becomes inactive, its **related** Entity Configuration and Federation Historical Entity Endpoint MUST be kept available.
 
@@ -687,7 +687,7 @@ The offline flows do not allow for real-time evaluation of an Entity's status, s
 Offline Wallet Trust Attestation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Given that the Wallet Instance cannot publish its metadata online at the *.well-known/openid-federation* endpoint, 
+Given that the Wallet Instance cannot publish its metadata online at the *.well-known/openid-federation* endpoint,
 it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).
 
 
@@ -805,22 +805,22 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                     00:af:82:3b:...
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
-            X509v3 Basic Constraints: 
+            X509v3 Basic Constraints:
                 CA:TRUE
-            X509v3 Key Usage: 
+            X509v3 Key Usage:
                 Certificate Sign, CRL Sign
-            X509v3 Subject Key Identifier: 
+            X509v3 Subject Key Identifier:
                 12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
-            X509v3 Authority Key Identifier: 
+            X509v3 Authority Key Identifier:
                 keyid:12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
-            X509v3 CRL Distribution Points: 
+            X509v3 CRL Distribution Points:
                 Full Name:
                   URI:https://trust-anchors.example.com/crl/ca.crl
-                  
+
     Signature Algorithm: sha256WithRSAEncryption
          5c:4f:3b:...
-    
-    
+
+
     Certificate:
     Data:
         Version: 3 (0x2)
@@ -838,13 +838,13 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                     00:af:82:3b:...
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
-            X509v3 Basic Constraints: 
+            X509v3 Basic Constraints:
                 CA:TRUE, pathlen:1
-            X509v3 Key Usage: 
+            X509v3 Key Usage:
                 Digital Signature, Key Encipherment
-            X509v3 Subject Alternative Name: 
+            X509v3 Subject Alternative Name:
                 URI:https://leaf.example.com
-            X509v3 Name Constraints: 
+            X509v3 Name Constraints:
                 Permitted:
                   URI.1=https://leaf.example.com
                   DNS.1=leaf.example.com
@@ -856,14 +856,14 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                   DNS=example.org
                   DNS=example.net
                   DNS=*.example.org
-            X509v3 CRL Distribution Points: 
+            X509v3 CRL Distribution Points:
                 Full Name:
                   URI:https://trust-ancor.example.com/crl/leaf.example.org.crl
-    
+
     Signature Algorithm: sha256WithRSAEncryption
          5c:4f:3b:...
-    
-    
+
+
     Certificate:
     Data:
         Version: 3 (0x2)
@@ -881,20 +881,20 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
                     00:af:82:3b:...
                 Exponent: 65537 (0x10001)
         X509v3 extensions:
-            X509v3 Basic Constraints: 
+            X509v3 Basic Constraints:
                 CA:FALSE
-            X509v3 Key Usage: 
+            X509v3 Key Usage:
                 Digital Signature, Key Encipherment
-            X509v3 Subject Alternative Name: 
+            X509v3 Subject Alternative Name:
                 URI:https://leaf.example.org
-            X509v3 Name Constraints: 
+            X509v3 Name Constraints:
                 Permitted:
                   URI.1=https://leaf.example.com
                   DNS.1=leaf.example.com
-            X509v3 CRL Distribution Points: 
+            X509v3 CRL Distribution Points:
                 Full Name:
                   URI:https://leaf.example.org/crl/self.crl
-    
+
     Signature Algorithm: sha256WithRSAEncryption
          7d:6e:5f:...
 
@@ -931,7 +931,7 @@ Below a non-normative example, in plain text, examplify the content of a CRL.
             CRL Entry Extensions:
                 Reason Code: Cessation of Operation
     Signature Algorithm: sha256WithRSAEncryption
-    Signature: 
+    Signature:
         5c:4f:3b:...
 
 Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.
@@ -953,6 +953,6 @@ Considerations about Decentralization
 - There may be more than a single Trust Anchor.
 - In some cases, a trust verifier may trust an Intermediate, especially when the Intermediate acts as a Trust Anchor within a specific perimeter, such as cases where the Leafs are both in the same perimeter like a Member State jurisdiction (eg: an Italian Relying Party with an Italian Wallet Instance may consider the Italian Intermediate as a Trust Anchor for the scopes of their interactions).
 - Trust attestations (Trust Chain) should be included in the JWT issued by Credential Issuers, and the Presentation Requests of RPs should contain the Trust Chain related to them (issuers of the presentation requests).
-- Since the credential presentation must be signed, storing the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with. 
+- Since the credential presentation must be signed, storing the signed presentation requests and responses, which include the Trust Chain, the Wallet Instance may have the snapshot of the federation configuration (Trust Anchor Entity Configuration in the Trust Chain) and the verifiable reliability of the Relying Party it has interacted with.
 - Each signed attestation is long-lived since it can be cryptographically validated even when the federation configuration changes or the keys of its issuers are renewed.
 - Each participant should be able to update its Entity Configuration without notifying the changes to any third party. The metadata policy contained within a Trust Chain must be applied to overload any information related to protocol specific metadata.

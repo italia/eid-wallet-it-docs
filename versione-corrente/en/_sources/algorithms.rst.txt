@@ -1,13 +1,13 @@
 .. include:: ../common/common_definitions.rst
-  
+
 .. _supported_algs:
 
 Cryptographic Algorithms
 ++++++++++++++++++++++++
 
 The following algorithms MUST be supported:
-    
-.. list-table:: 
+
+.. list-table::
   :widths: 20 20 20 20
   :header-rows: 1
 
@@ -15,11 +15,11 @@ The following algorithms MUST be supported:
     - **Description**
     - **Operations**
     - **References**
-  * - **ES256** 
+  * - **ES256**
     - Elliptic Curve Digital Signature Algorithm (ECDSA) using one of the enabled curves listed in the section below and SHA256.
     - Signature
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_, `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_ .
-  * - **ES384** 
+  * - **ES384**
     - Elliptic Curve Digital Signature Algorithm (ECDSA) using one of the enabled curves listed in the section below and SHA384.
     - Signature
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_, `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_ .
@@ -33,23 +33,23 @@ The following algorithms MUST be supported:
     - :rfc:`7516`, :rfc:`7518`.
   * - **A128CBC-HS256**
     - AES encryption in Cipher Block Chaining mode with 128-bit Initial Vector value, plus HMAC authentication using SHA-256 and truncating HMAC to 128 bits.
-    - Content Encryption 
+    - Content Encryption
     - :rfc:`7516`, :rfc:`7518`.
   * - **A256CBC-HS512**
     - AES encryption in Cipher Block Chaining mode with 256-bit Initial Vector value, plus HMAC authentication using SHA-512 and truncating HMAC to 256 bits.
-    - Content Encryption 
+    - Content Encryption
     - :rfc:`7516`, :rfc:`7518`.
 
 The following Elliptic Curves MUST be supported for the Elliptic Curve Digital Signature Algorithm:
 
-.. list-table:: 
-  :widths: 20 20 20 
+.. list-table::
+  :widths: 20 20 20
   :header-rows: 1
 
   * - **Curve Family**
     - **Short Curve Name**
     - **References**
-  * - **Brainpool** 
+  * - **Brainpool**
     - brainpoolP256r1, brainpoolP384r1, brainpoolP512r1.
     - :rfc:`5639`, `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_ .
   * - **NIST**
@@ -59,7 +59,7 @@ The following Elliptic Curves MUST be supported for the Elliptic Curve Digital S
 
 For Credential issued in mdoc format, the following algorithms MUST be supported:
 
-.. list-table:: 
+.. list-table::
   :widths: 20 20 20 20
   :header-rows: 1
 
@@ -67,7 +67,7 @@ For Credential issued in mdoc format, the following algorithms MUST be supported
     - **Description**
     - **Operations**
     - **References**
-  * - **ECKA-DH** 
+  * - **ECKA-DH**
     - Elliptic Curve Key Agreement Algorithm – Diffie-Hellman.
     - Key agreement / Signature
     - BSI TR-03111.
@@ -75,15 +75,15 @@ For Credential issued in mdoc format, the following algorithms MUST be supported
     - HMAC-based Key Derivation Function.
     - Session key derivation / Signature
     - :rfc:`5869`.
-  * - **AES-256-GCM** 
+  * - **AES-256-GCM**
     - Advanced Encryption Standard with Galois/Counter Mode and a key length of 256.
     - Session encryption / Signature
     - NIST SP 800-38D.
 
 
 The following algorithms are RECOMMENDED to be supported:
-    
-.. list-table:: 
+
+.. list-table::
   :widths: 20 20 20 20
   :header-rows: 1
 
@@ -91,7 +91,7 @@ The following algorithms are RECOMMENDED to be supported:
     - **Description**
     - **Operations**
     - **References**
-  * - **PS256** 
+  * - **PS256**
     - RSASSA (RSA with Signature Scheme Appendix) with PSS ( Probabilistic Signature Scheme) padding using SHA256 hash function and MGF1 mask generation function with SHA-256.
     - Signature
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_.
@@ -104,7 +104,7 @@ The following algorithms are RECOMMENDED to be supported:
     - Signature
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_.
   * - **ECDH-ES**
-    - Elliptic Curve Diffie-Hellman  (ECDH) Ephemeral Static key agreement using Concat Key Derivation Function (KDF). 
+    - Elliptic Curve Diffie-Hellman  (ECDH) Ephemeral Static key agreement using Concat Key Derivation Function (KDF).
     - Key Encryption
     - :rfc:`7518`.
   * - **ECDH-ES+A128KW**
@@ -117,8 +117,8 @@ The following algorithms are RECOMMENDED to be supported:
     - :rfc:`7518`.
 
 The following algorithms MUST NOT be supported:
-    
-.. list-table:: 
+
+.. list-table::
   :widths: 20 20 20 20
   :header-rows: 1
 
@@ -126,7 +126,7 @@ The following algorithms MUST NOT be supported:
     - **Description**
     - **Operations**
     - **References**
-  * - **none** 
+  * - **none**
     - -
     - Signature
     - :rfc:`7518`.
@@ -138,15 +138,15 @@ The following algorithms MUST NOT be supported:
     - RSA Encryption Scheme with Optimal Asymmetric Encryption Padding (OAEP) using default parameters.
     - Key Encryption
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_.
-  * - **HS256** 
+  * - **HS256**
     - HMAC using SHA256.
     - Signature
     - :rfc:`7518`.
-  * - **HS384** 
+  * - **HS384**
     - HMAC using SHA384.
     - Signature
     - :rfc:`7518`.
-  * - **HS512** 
+  * - **HS512**
     - HMAC using SHA512
     - Signature
     - :rfc:`7518`.

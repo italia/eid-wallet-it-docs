@@ -4,7 +4,7 @@ Entity Configuration of Relying Parties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 According to Section :ref:`Configuration of the Federation`, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
-The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`. 
+The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`.
 
 The Relying Parties MUST provide the following metadata types:
 
@@ -18,18 +18,18 @@ Metadata for openid_credential_verifier
 
 The *openid_credential_verifier* metadata MUST contain the following parameters.
 
-.. list-table:: 
+.. list-table::
   :widths: 20 60
   :header-rows: 1
 
   * - **Claim**
     - **Description**
   * - **client_id**
-    - It MUST contain an HTTPS URL that uniquely identifies the RP. See :rfc:`7591#section-3.2.1` and `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 3.2. 
+    - It MUST contain an HTTPS URL that uniquely identifies the RP. See :rfc:`7591#section-3.2.1` and `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 3.2.
   * - **client_name**
-    - Human-readable string name of the RP. See :rfc:`7591#section-2`. 
+    - Human-readable string name of the RP. See :rfc:`7591#section-2`.
   * - **application_type**
-    - String indicating the type of application. It MUST be set to "*web*" value. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2. 
+    - String indicating the type of application. It MUST be set to "*web*" value. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2.
   * - **request_uris**
     - JSON Array of *request_uri* values that are pre-registered by the RP. These URLs MUST use the *https* scheme. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2.
   * - **response_uris**
@@ -49,7 +49,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
 
 
 .. note::
-    The parameters **response_uris** and **erasure_endpoint** are introduced in this specification. 
+    The parameters **response_uris** and **erasure_endpoint** are introduced in this specification.
 
 Example of a Relying Party Entity Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

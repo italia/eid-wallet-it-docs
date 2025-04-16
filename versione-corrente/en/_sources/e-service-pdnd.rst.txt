@@ -113,7 +113,7 @@ PDND Voucher Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PDND infrastructure defines two different types of Vouchers:
-    
+
     - **For e-Service**: allow Consumers to request data from an e-Service.
 
     - **For Interoperability API**: allow Participants to request data from the Interoperability API, exposed by the PDND Infrastructure.
@@ -428,7 +428,7 @@ The PDND Authorization Server MUST also validate the ``client_assertion`` JWT as
 
         - The ``iss`` and ``sub`` claims MUST identify a Client registered in the PDND Infrastructure.
         - The ``aud`` claim MUST represent the PDND Authorization Server.
-  
+
 
 **Step 2 (Voucher Issuance)**: In case of successful checks, the PDND Authorization Server issues a Voucher, which is included in the Voucher Response to the Participant.
 
@@ -600,7 +600,7 @@ The Voucher Response MUST include the following body parameters:
       - [:rfc:`6749`], [:rfc:`9449`], [`PDND`_]
     * - **token_type**
       - It MUST be set to:
-      
+
         - ``DPoP`` in case of Voucher for e-Service following the ``POP_DPoP`` implementation;
         - ``Bearer`` in case of Voucher for Interoperability API, or Voucher for e-Service following the ``POP_TPoP`` implementation.
       - [:rfc:`6749`], [:rfc:`9449`]
@@ -678,7 +678,7 @@ If any errors occur during the validation of the Voucher Request, the PDND Autho
 .. code-block:: http
     :caption: Non-normative example of a Voucher Error Response
     :name: code_VoucherIssuance_Endpoint_AuthorizationServer_Error
-    
+
     HTTP/1.1 400 Bad Request
     Content-Type: application/json
     Cache-Control: no-store
@@ -691,7 +691,7 @@ If any errors occur during the validation of the Voucher Request, the PDND Autho
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
@@ -808,7 +808,7 @@ If any errors occur during the retrieval of the keys, the .well-known Endpoint M
 .. code-block:: http
     :caption: Non-normative example of a Keys Error Response
     :name: code_KeyRetrieval_Endpoint_WellKnown_Error
-    
+
     HTTP/1.1 500 Internal Server Error
     Content-Type: application/json
 
@@ -820,7 +820,7 @@ If any errors occur during the retrieval of the keys, the .well-known Endpoint M
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
@@ -942,7 +942,7 @@ In case of authentication issues (i.e., invalid or expired Voucher), the respons
 .. code-block:: http
     :caption: Non-normative example of a Key Error Response in case of 401 errors
     :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_401
-    
+
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: Bearer error="invalid_token", error_description="The access token expired"
 
@@ -954,7 +954,7 @@ For all other errors, the response MUST adhere to the error format defined in :r
 .. code-block:: http
     :caption: Non-normative example of a Key Error Response in case of other errors
     :name: code_KeyRetrieval_Endpoint_InteroperabilityAPI_Error_Others
-    
+
     HTTP/1.1 400 Bad Request
     Content-Type: application/json
 
@@ -966,7 +966,7 @@ For all other errors, the response MUST adhere to the error format defined in :r
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
@@ -1008,7 +1008,7 @@ The **Provider** MUST comply with the following prerequisites:
     - Has created a new key ring associated with the specific e-Service.
     - Has registered a key pair associated with the key ring.
 
-.. note:: 
+.. note::
 
     The Provider's key ring is the counterpart to the Client on the Consumer's side. It stores cryptographic material, allowing Consumers to verify the integrity of responses from Providers.
 
@@ -1110,7 +1110,7 @@ The Provider MUST validate the Voucher as follows:
         - The ``aud`` claim MUST match the intended e-Service.
         - In case of ``POP_DPoP`` implementation, the ``cnf.jkt`` claim MUST correspond to the SHA-256 Thumbprint of the DPoP public key in the ``jwk`` claim in the DPoP proof.
 
-.. note:: 
+.. note::
 
     If the Provider requires additional context about the request, it can interact with the PDND Interoperability API by passing the value of the ``purposeId`` as a parameter.
 
@@ -1132,7 +1132,7 @@ The Provider MUST validate the ``TrackingEvidence`` JWT as follows:
 
 In addition, the Provider MUST ensure that the hash of the ``TrackingEvidence`` JWT matches the value of the ``digest.value`` claim contained in the ``access_token`` payload.
 
-.. note:: 
+.. note::
 
     The validation of the ``TrackingEvidence`` JWT is required only when complying with the ``AUDIT_REST_02`` security pattern or the ``POP_TPoP`` implementation.
 
@@ -1143,7 +1143,7 @@ The Provider MUST validate the ``Signature`` JWT as follows:
         - Ensure that the ``typ`` claim is present and that its value is ``JWT``.
 
     Signature:
-    
+
         - Validate the signature of the JWT using the retrieved Consumer's public key and the algorithm specified by the ``alg`` header parameter.
 
     Payload:
@@ -1155,7 +1155,7 @@ In addition, the Provider MUST validate the integrity of the e-Service Request, 
 
     - The ``signed_headers.content-type`` claim matches the value of the ``Content-Type`` HTTP header of the e-Service Request.
     - The ``signed_headers.digest`` claim matches the value of the digest of the payload of the e-Service Request, as well as the value of the ``Digest`` HTTP header of the e-Service Request.
-        
+
 
 If any of the previous checks fail, the Provider MUST reject the Request.
 
@@ -1170,7 +1170,7 @@ If any of the previous checks fail, the Provider MUST reject the Request.
 
     eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2Vyb2dhdG9yZS5leGFtcGxlL2VudGUtZXhhbXBsZS92MSIsImF1ZCI6IjlhOGI3YzZkLWU1ZjQtZzNoMi1pMWowLWtsbW5vcHFyc3R1diIsImV4cCI6MTczMzQwMTc4NSwibmJmIjoxNzMzNDAxMzg3LCJpYXQiOjE3MzM0MDEyNTYsImp0aSI6Ijk5NzUzMmUtODcxYS00OTY5LTk5OTktMTIzNDU2Nzg5YWJjIiwicmVxdWVzdGVkRmllbGQxIjoidmFsdWUxIiwicmVxdWVzdGVkRmllbGQyIjoidmFsdWUyIiwicmVxdWVzdGVkRmllbGQzIjoidmFsdWUzIn0.OZSn693I-oCvvq3RnFW-9HeUWE7J1hri-lyae8CLt2JTbzKPCnWg7f6AmzR-euXYKdRWpofZkhpux7TlYG9RwA
 
-    
+
 .. code-block::
     :caption: Non-normative example of the e-Service Response JWT header
     :name: _code_Usage_Flow_Response_JWT_Header
@@ -1205,7 +1205,7 @@ The Consumer MUST perform the following steps to validate the e-Service Response
         - Ensure that the ``typ`` claim is present and that its value is ``JWT``.
 
     Signature:
-    
+
         - Obtain the Provider's public key corresponding to the ``kid`` header parameter, by interacting with the PDND Interoperability API.
         - Validate the signature of the JWT using the retrieved Provider's public key and the algorithm specified by the ``alg`` header parameter.
 
@@ -1423,7 +1423,7 @@ In case of authentication issues (i.e., invalid or expired Voucher), the respons
 .. code-block:: http
     :caption: Non-normative example of an e-Service Error Response in case of 401 errors
     :name: code_Usage_Endpoint_eService_Error_401
-    
+
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: DPoP error="invalid_token", error_description="The access token expired"
 
@@ -1435,7 +1435,7 @@ For all other errors, the response MUST adhere to the error format defined in :r
 .. code-block:: http
     :caption: Non-normative example of an e-Service Error Response in case of other errors
     :name: code_Usage_Endpoint_eService_Error
-    
+
     HTTP/1.1 400 Bad Request
     Content-Type: application/json
 
@@ -1447,7 +1447,7 @@ For all other errors, the response MUST adhere to the error format defined in :r
 
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 

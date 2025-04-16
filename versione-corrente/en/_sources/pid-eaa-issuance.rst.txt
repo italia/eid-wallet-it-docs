@@ -35,7 +35,7 @@ The high-level flow begins with the User who wants to obtain a PID and starts hi
     2. **PID Request**: using the Authorization Code Flow defined in [`OpenID4VCI`_] the Wallet Instance requests the PID to the PID Provider.
     3. **Wallet Provider Discovery and Trust**: the PID Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
     4. **User Authentication**: the PID Provider authenticates the User with CieID LoA High (L3), acting as an Identity and Access Management Proxy to the National eID system.
-    5. **Fetch of PID data from National Public Registry**: the PID Provider obtains the required PID data from National Public Registry (ANPR) which acts as Authentic Source.  
+    5. **Fetch of PID data from National Public Registry**: the PID Provider obtains the required PID data from National Public Registry (ANPR) which acts as Authentic Source.
     6. **PID Issuance**: the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.
 
 High-Level (Q)EAA flow
@@ -67,31 +67,31 @@ Similarly to the PID high-level flow, the above diagram depicts a (Q)EAA high-le
 Low-Level Issuance Flow
 -----------------------
 
-The PID/(Q)EAA Issuance flow is based on [`OpenID4VCI`_] and the following main reference standards/specifications MUST be supported on top of `OpenID4VCI`_: 
+The PID/(Q)EAA Issuance flow is based on [`OpenID4VCI`_] and the following main reference standards/specifications MUST be supported on top of `OpenID4VCI`_:
 
-  * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], as recommended in Section 3 of [`OpenID4VCI`_]. 
+  * **The OAuth 2.0 Authorization Framework** [:rfc:`6749`], as recommended in Section 3 of [`OpenID4VCI`_].
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], as recommended in Section 5 of [`OpenID4VCI`_].
   * **Proof Key for Code Exchange** (PKCE)  [:rfc:`7636`], as recommended in Section 5 of [`OpenID4VCI`_].
   * **JWT Authorization Requests** (JAR) [:rfc:`9101`].
-  * **JWT Authorization Response Modes** (JARM) [`JARM`_]. 
+  * **JWT Authorization Response Modes** (JARM) [`JARM`_].
   * **Rich Authorization Requests** (RAR) [:rfc:`9396`].
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * **OpenID Federation 1.0** [`OID-FED`_].
 
-The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. PID/(Q)EAA Providers MUST support: 
+The PID/(Q)EAA Provider MUST use *OAuth 2.0 Authorization Server* based on :rfc:`6749` to authorize the User to obtain a Credential. PID/(Q)EAA Providers MUST support:
 
   * **Authorization Code Flow**: The PID/(Q)EAA Provider requires User authentication and consent at the Authorization Endpoint before collecting User information to create and provide a Credential.
   * **Wallet Initiated Flow**: The request from the Wallet Instance is sent to the PID/(Q)EAA Provider without any input from the PID/(Q)EAA Provider.
   * **Immediate Issuance flow**: The PID/(Q)EAA Provider issues the Credential directly in response to the Credential Request.
 
-In addition, the PID/(Q)EAA Providers MAY support: 
+In addition, the PID/(Q)EAA Providers MAY support:
 
   * **Issuer Initiated Flow**: The Wallet Instance sends its request to the PID/(Q)EAA Provider based on the input provided by the PID/(Q)EAA Provider.
-    
-    * **Same-device Issuance flow**: The User receives the Credential on the same device used to initiate the flow. 
-    * **Cross-device Issuance flow**: The User receives the Credential on another device than the one that initiated the flow. 
-  
-  * **Refresh Token flow**: The Wallet Instance requests a new Access Token at the Token Endpoint of the PID/(Q)EEA. 
+
+    * **Same-device Issuance flow**: The User receives the Credential on the same device used to initiate the flow.
+    * **Cross-device Issuance flow**: The User receives the Credential on another device than the one that initiated the flow.
+
+  * **Refresh Token flow**: The Wallet Instance requests a new Access Token at the Token Endpoint of the PID/(Q)EEA.
   * **Re-issuance flow**: Following updates to an already stored Digital Credential, the Wallet Instance requests a refresh of the Digital Credential at the Credential Endpoint of the PID/(Q)EAA Provider.
   * **Deferred Issuance flow**: The PID/(Q)EAA Provider may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
 
@@ -137,7 +137,7 @@ The following diagram shows the *Issuance flow*.
     :figwidth: 100%
     :align: center
     :target: https://www.plantuml.com/plantuml/svg/hLPRRs8t47xthnZjFZH8e5HjdrRQQWcXcwXHGbDMUQc479y1HZdOfxvmblxwZeUB3onH6xLI5B3d_dqpOpw5g7rCgrhf59rDgsVqIZLyHuOQRIEy-nBGlmCT82drxBvkBxuB45QirIoTnNVm_euMotXL9poslVAkFPZhOzcJhckCS6iv1MjGT5g5jWAESfB3vFRwykAttdWuX8btQwfsFaafRrr4S6lqqFQ9CxdzV3Fz_3WUtwlH4iqBdB452f3zWvj3N2ByWdof8paBckExvwZ90iK0Auowqb7dl2IIKYqCVeOMFe3ng2F2vDVH68oh43W7cXDwSV8q74pSPATEh3uPFi8Z_famHBZummAOcj366LNzVF9RKG_oeQMuX8TXYil1IBG6mnXPMd9yJPY30bafwmOrrzL5w1m-Mnx-3JOxWq0BgsFok5VPUJX9KV1RwvegYXle0AW81WBX7fFGE1iGBdOGp9AdFk3NXZo66TaUcxHYalG7o7KxJtz9d09e0HCwRdegQR6aDnigNKSOUQnOIhg6Znzp9ns1sK_m_kdcTZfMAMJMEK1MDX9Xo-68yFOQxjmGRdX2uEBknvvWOtB5biEx9YipW1k-OnXD9Bk092EMjQ8sCVGAUbW7F4bhszozjwR6rVp7L6orvp9fE0Muq9fdem-vC_Y3GZYGqhx9g0pU0Yrw5i1rRlONtBmgQxnpyyuumjpvimiXkXUqm1KrZcnKdR6TigIqYo3NSIs3lF2QEoXk6fH9vjJBbzb-AUo6l2AFHbfC9lr_7NH5Wi8XwOAcDWP3c4cLkS_d7iDoVvGFIVzuwWe6zyuQF61mCvrEOFBm-nGkRHRiunR5mk9CD7hVRiqjVFpNk10uDwxeMFr4ls3-AeUcJCM1o593cPapP7Rn4TIx51U_Cv8likDTD-3CE3kdHTekIbacOlpj6g40UgsfriyrWYhGTNKAVYL2w8DrERJPX-Y2Mk0e6vVBaFb90KpUsplrnEewl0YA-INVpxzA1yIt5n0TspkFqc8ban9Mn2UYqZ8bsRETqvLVT4-27gxHoblO8Mae96rxMvrxrQxklepL8oueHBxLTNsI-S1ZhIDMeCXo-Ii99q2mbqFyIuzhjqkiysmLfhgb5QwajX--_ud5C78sPaZBjYxitpzCImVy0_qrwceMQOLzY5xReCs1-qxvgKzgoeMU_A3gWvuB3XRqoYKhBtfs1g51avkuWkSD7698mxHBj1oB5Wlq8iyGIf_8ClOnoCMyTYteXIPx_1nyudzfLVyD
-  
+
     PID/(Q)EAA Issuance - Detailed flow
 
 
@@ -180,7 +180,7 @@ The PID/(Q)EAA Provider performs the following checks upon the receipt of the PA
 
 Below a non-normative example of the PAR.
 
-.. code-block:: 
+.. code-block::
 
     POST /as/par HTTP/1.1
     Host: eaa-provider.example.org
@@ -279,7 +279,7 @@ The PID/(Q)EAA Provider returns the issued ``request_uri`` to the Wallet Instanc
 
 .. _iss_token_request_reqs:
 
-**Step 10 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT* and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP``). 
+**Step 10 (Token Request):** The Wallet Instance sends a token request to the PID/(Q)EAA Provider Token Endpoint with a *DPoP Proof JWT* and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication  (``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP``).
 The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wallet Instance. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf.jwk`` claim). The PID/(Q)EAA Provider performs the following checks on the Token Request:
 
    1. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
@@ -338,8 +338,8 @@ Below is a non-normative example of a Nonce Request:
     Host: eaa-provider.example.org
     Content-Length: 0
 
-**Step 13 (Nonce Response)**: The PID/(Q)EAA Provider provides the `c_nonce` to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 16 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack. 
-Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer 
+**Step 13 (Nonce Response)**: The PID/(Q)EAA Provider provides the `c_nonce` to the Wallet Instance. The parameter `c_nonce` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 16 to create the proof of possession of the key (*proof* claim) and it is the primary countermeasure against key proof replay attack.
+Note that, the received `c_nonce` value can be used to create the proof as long as the Issuer
 provides the Wallet Instance with a new `c_nonce` value.
 
 Below is a non-normative example of a Nonce Response:
@@ -351,7 +351,7 @@ Below is a non-normative example of a Nonce Response:
     Cache-Control: no-store
 
 .. literalinclude:: ../../examples/nonce-response.json
-  :language: JSON  
+  :language: JSON
 
 
 **Steps 14-15 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 13** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
@@ -397,25 +397,25 @@ A non-normative example of the Credential Request is provided below.
       OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
 
 .. literalinclude:: ../../examples/credential-request.json
-  :language: JSON  
-  
+  :language: JSON
+
 
 
 Where a non-normative example of the decoded content of the ``jwt`` parameter is represented below,
 without encoding and signature. The JWT header:
 
 .. literalinclude:: ../../examples/credential-jwt-proof-header.json
-  :language: JSON  
+  :language: JSON
 
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
-  :language: JSON  
+  :language: JSON
 
 **Steps 17-21 (Credential Response)**: The PID/(Q)EAA Provider MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested PID/(Q)EAA. The PID/(Q)EAA Provider MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the PID/(Q)EAA Provider creates a new Credential bound to the key material and provides it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the PID/(Q)EAA:
 
     1. It MUST check that the PID/(Q)EAA Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>`.
     2. It MUST check the PID/(Q)EAA integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`) and the public key that is identified using the ``kid`` header of the SD-JWT.
     3. It MUST check that the received PID/(Q)EAA (in credential claim) matches the requested credential type and complies with the specific schema of that Credential defined in :ref:`PID/(Q)EAA Data Model <pid_eaa_data_model.rst>`.
-    4. It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or mdoc-CBOR format. 
+    4. It MUST process and verify the PID/(Q)EAA in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or mdoc-CBOR format.
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the PID/(Q)EAA Provider is trusted.
 
 If the checks above are successful, the Wallet Instance requests the User's consent to store the Digital Credential. Upon receiving consent, the Wallet Instance securely stores the PID/(Q)EAA.
@@ -430,7 +430,7 @@ Below is a non-normative example of a successful response containing a Credentia
     Pragma: no-cache
 
 .. literalinclude:: ../../examples/sd-jwt-credential-response.json
-  :language: JSON  
+  :language: JSON
 
 Below is a non-normative example of a successful response containing a Credential in mdoc format.
 
@@ -442,7 +442,7 @@ Below is a non-normative example of a successful response containing a Credentia
     Pragma: no-cache
 
 .. literalinclude:: ../../examples/mdoc-credential-response.json
-  :language: JSON  
+  :language: JSON
 
 
 .. note::
@@ -466,7 +466,7 @@ Below is a non-normative example of a successful response containing a Credentia
       c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
       OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
 .. literalinclude:: ../../examples/notification-request.json
-  :language: JSON 
+  :language: JSON
 
 
 **Step 23 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
@@ -485,7 +485,7 @@ An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
 
   - the Deferred endpoint to obtain a new Digital Credential after time set in the parameter ``lead_time`` or when it is notified as ready to be issued;
   - the Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer;
-  - the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`). 
+  - the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`Re-Issuance Flow <Re-Issuance Flow>`).
 
 To mitigate the impact of a stolen Refresh Token, the Refresh Tokens MUST be DPoP. These aspects are detailed and discussed in section :ref:`Security Considerations <Security Considerations>`.
 
@@ -496,15 +496,15 @@ Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh 
     :figwidth: 100%
     :align: center
     :target: https://www.plantuml.com/plantuml/svg/TPBFIiD048Vl-nH3lRJGqBi7QR05Up9AeHUXh9j9CvZEnDs9qRTtkzkA1Jrc_dpvviSkWrglmx4pTb3XuVYAtfW-riXHRrbXihDTXmeRZgFiS08sm7WzKcrMY-dJR5sMK7dve1fz6YDZHYZkO8HRE22ZjugmggI2teiqOBc6NLcS2eru-0C3Ac_8W5ptGgnd7aNUDZMUyNt0e32Ijh_9qnS6EFXejzUl7kUdJu-Dnz3k4t86iPIs7ij1s-A-8sGjIjM8iqh2oUw_Pd8c1cqHMhJHr1Ywd7fH2xrmG9XQvp24_D_vjSOy7vWb0JzxYhqzySoObaKHhFCI0jpi7ZRRTKIt24qd8pXX9OwtvoCi-7CIAacgnWQznteHATIGIzOB5ol8IhRxYVGSGrfY77E8sJYx6RECi_69V0C0
-    
+
     Refresh Token Flow
 
 .. note::
   The refresh of a Token may be triggered by different actions (e.g., User deletion of a Digital Credential). In each case, Wallet Instances are supposed to be running and the corresponding cryptographic material unlocked.
 
-**Step 1.** The Wallet Instance MUST create a fresh DPoP Proof JWT and a fresh Wallet Attestation proof of possession for the token request of the PID/(Q)EAA Provider. 
+**Step 1.** The Wallet Instance MUST create a fresh DPoP Proof JWT and a fresh Wallet Attestation proof of possession for the token request of the PID/(Q)EAA Provider.
 
-**Step 2.** To refresh a DPoP-bound Access Token, the Wallet Instance sends a token request using the parameter ``grant_type`` set to ``refresh_token``, including the DPoP header and the OAuth Client Attestation headers.  
+**Step 2.** To refresh a DPoP-bound Access Token, the Wallet Instance sends a token request using the parameter ``grant_type`` set to ``refresh_token``, including the DPoP header and the OAuth Client Attestation headers.
 A non-normative example of the token request for a DPoP Access Token using a Refresh Token is shown below.
 
 .. code::
@@ -541,7 +541,7 @@ A non-normative example of a successful response is shown below.
       "expires_in": 3600,
   }
 
-If the Refresh Token is expired or invalid, the PID/(Q)EAA Provider MUST issue an error, using the error type member set to ``invalid_grant``. Therefore, to obtain the Digital Credential an issuance flow authenticating the User is required, as defined in Section :ref:`Low-Level Issuance Flow <Low-Level Issuance Flow>`. 
+If the Refresh Token is expired or invalid, the PID/(Q)EAA Provider MUST issue an error, using the error type member set to ``invalid_grant``. Therefore, to obtain the Digital Credential an issuance flow authenticating the User is required, as defined in Section :ref:`Low-Level Issuance Flow <Low-Level Issuance Flow>`.
 
 
 Security Considerations
@@ -574,11 +574,11 @@ The re-issuance process outlined in this section is limited to the following sce
   - Data model/format technical update;
   - User's attribute set update.
 
-In the first case, the new Digital Credential's Users attribute set will match the original one. For example, a Credential Issuer may need to update the Digital Credential metadata or data format without changing the User's attribute set. In this case, the direct involvement of the User is not mandatory for the replacement and storage of a Digital Credential. 
+In the first case, the new Digital Credential's Users attribute set will match the original one. For example, a Credential Issuer may need to update the Digital Credential metadata or data format without changing the User's attribute set. In this case, the direct involvement of the User is not mandatory for the replacement and storage of a Digital Credential.
 
-In the second case, Credential Issuers may also need to modify one or more User's attribute values during re-issuance. In this case, the Wallet Instance MUST inform the User that the attribute data set has been changed and MUST then request the User's authorization to store the new Digital Credential. 
+In the second case, Credential Issuers may also need to modify one or more User's attribute values during re-issuance. In this case, the Wallet Instance MUST inform the User that the attribute data set has been changed and MUST then request the User's authorization to store the new Digital Credential.
 
-In both cases, the newly issued Digital Credential MUST have the same expiry date as the previous one. 
+In both cases, the newly issued Digital Credential MUST have the same expiry date as the previous one.
 
 Re-issuance after Digital Credential expiration MUST always require User authentication.
 
@@ -589,37 +589,37 @@ The following diagram describes the Digital Credential re-issuance flow.
     :figwidth: 100%
     :align: center
     :target: https://www.plantuml.com/plantuml/svg/ZLJRRXen47ttLqoVcaXS8ZLFH553GoeX9HMYqAXAAcHsPrchNfjwPY7frtTjBiAuJV73QctFcSlncRaXbexhIejtocIwpX5AvYNrkbqdrvs5uhAUruGkiuRHS2UpLNUffV6ODd6krRnxUzaU-QFfmtstaiJecgFPuDN8IcMTfVVUh1196Ci8JYrA5eyb6f0mK4qKgU7MOOw6LVDh47C2jZ17g9UvPCnRm2KUsWo9QdG43_tlG6Xoa60igq9bafKr7kqHKq87DIcp00aE5ygdXpdOcjksQCzbWsnggcgp0sQbD0PrHtYdFbqXUi6BNQ8XU9HQ8yFG44kJuPKGge2pCQxi5b-Xzw2eWcS3r_2L9TS4zueOFfu3-wBFNf7E1GW0w8sHdS8LHeOJ-nCD5DPv4o2s3lE3ukagd0SkDHOSTcFyLIjlj_OXZ8MLr2eFLwbhV6d-ALpko_GRNyi1oLkWCl1qyNBneGNDz_B7KHb-eIQ4CsFFGS3X8hPB0TimgX2HhV3Rb84-4JfF9Pt6W5VJAHJ4llzAmHiSNCFmoxV-_N2GLhy3PNlGZ09ebYDBfJj-Xw3CtlffEXhq9tSjw4ycu-6dwUHkjZb9kJs9tfZXqvzZyusAw6SP4crb4lXBKjgl9B_uUjCOXKCgJ_C7q6lOTWmnwhEswyrxln4lvGDWBn41yTf4aGOChiCayQqCHHFds7Ajk0n3v3r1l_PvysvGnAPn7wLlakxsFtwym61aHn2HpnRSjZNsfZxVT61koKcrIplj-hvjWNNmRFwZqkj4a_z-hvvlE2GE10Lwh5E_0pjNXtQ9AY9xf2J2iIQiGrzwNFBRUeWLaRv80Zmzub7Nz0QeaH6M3bVArXHXH4ZWfe7KbVu3
-    
+
     Re-Issuance Flow Diagram
 
 
 1. The flow starts when the User opens the Wallet Instance: this step MAY be triggered either by a notification sent by the Credential Issuer (using e.g., one of the out-of-band communication contacts registered during the Issuance flow).
-2. Regardless of the Digital Credental revocation mechanism supported, if the Wallet Instance  
- 
+2. Regardless of the Digital Credental revocation mechanism supported, if the Wallet Instance
+
    - only supports Status List and does not have a valid Status Token for a stored Digital Credential, Wallet Instance MUST retrieve a fresh one following the flow described in Section :ref:`OAuth Status Lists <OAuth Status Lists>`. If any Digital Credential has status set to ``0x03`` - ``UPDATE`` or ``0x04`` - ``ATTRIBUTE_UPDATE``; or else
    - together with the Credential Issuer additionally support Status Assertion and the Wallet Instance does not have a valid Status Assertion for a stored Digital Credential, the Wallet Instance MAY retrieve a fresh one following the flow described in Section :ref:`OAuth Status Assertions <OAuth Status Assertions>`. If any Digital Credentials has the ``credential_status_type`` set to ``INVALID``, the Wallet Instance MUST verify the ``credential_status_detail.state`` claim. If this claim is set to ``UPDATE`` or ``ATTRIBUTE_UPDATE``, then
-   
+
      the Wallet Instance MUST check if the related Access Tokens are still valid. If the Access Token is valid, then step 3 MAY be skipped.
- 
+
 3. If the Access Token is expired and the Wallet Instance still has a valid Refresh Token, the Wallet Instance MUST obtain a new Access Token starting a Refresh Token Flow, according to Section :ref:`Refresh Token Flow <Refresh Token Flow>`. The Refresh Token Flow enables the Wallet Instance to obtain a new Refresh Token and a new DPoP Access Token to refresh the Digital Credential. If the Refresh Token is expired, a new Issuance Flow authenticating the User is required.
 4. The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`Low-Level Issuance Flow <Low-Level Issuance Flow>`. When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one.
 
 .. note::
-	
-  Regardless of the Digital Credental revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. 
-  
+
+  Regardless of the Digital Credental revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential.
+
   If instead, either the Digital Credential status is set to ``UPDATE``(using OAuth Status List revocation) or ``credential_status_detail.state`` set to ``UPDATE`` (using OAuth Status List revocation) the the ``credential_status_detail.state`` is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.
 
 
 Security Considerations
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To ensure the integrity and security of the re-issuance process, the following security considerations apply. 
+To ensure the integrity and security of the re-issuance process, the following security considerations apply.
 
   - Access Token limitations: An Access Token obtained as a result of a Refresh Token flow MUST NOT be used for the first-time issuance of a Digital Credential. This ensures that only existing Credentials in the Wallet Instance are updated.
   - Credential expiry: The Credential Issuer MUST set the same expiry date for the re-issued Digital Credential as the previous one. This prevents indefinite Credential renewals without proper User authentication.
   - User consent: For re-issuance processes triggered by attribute changes, User consent MUST be obtained before storing the new Digital Credential. This ensures that the User is aware of and agrees to the updated information.
-  - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token. 
+  - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token.
 
 
 Credential Offer Endpoint
@@ -665,7 +665,7 @@ Pushed Authorization Request (PAR) Request
 
 The request to the PID/(Q)EAA authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.
 
-The HTTP POST method MUST use the parameters in the message body encoded in ``application/x-www-form-urlencoded`` format. 
+The HTTP POST method MUST use the parameters in the message body encoded in ``application/x-www-form-urlencoded`` format.
 
 .. _table_http_request_claim:
 .. list-table:: PAR http request parameters
@@ -737,7 +737,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - It MUST be set to the identifier of the PID/(Q)EAA Provider.
       - :rfc:`9126` and :rfc:`7519`.
     * - **exp**
-      - UNIX Timestamp with the expiry time of the JWT. The claim value MUST be not greater than 300 seconds from the issuance time. 
+      - UNIX Timestamp with the expiry time of the JWT. The claim value MUST be not greater than 300 seconds from the issuance time.
       - :rfc:`9126` and :rfc:`7519`.
     * - **iat**
       - UNIX Timestamp with the time of JWT issuance.
@@ -857,11 +857,11 @@ Below is a non-normative example of an error response.
   Content-Type: application/json
 
 .. literalinclude:: ../../examples/par-error.json
-  :language: JSON  
+  :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
@@ -908,7 +908,7 @@ The authorization server MUST first verify the identity of the User that own the
 Authorization Request
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The Authorization request is issued by the Web Browser in use by the Wallet Instance, the HTTP methods **POST** or **GET** are used. When the method **POST** is used, the parameters MUST be sent using the *Form Serialization*. When the method **GET** is used, the parameters MUST be sent using the *Query String Serialization*. For more details see Section 13 of [`OIDC`_]. 
+The Authorization request is issued by the Web Browser in use by the Wallet Instance, the HTTP methods **POST** or **GET** are used. When the method **POST** is used, the parameters MUST be sent using the *Form Serialization*. When the method **GET** is used, the parameters MUST be sent using the *Query String Serialization*. For more details see Section 13 of [`OIDC`_].
 
 The mandatory parameters in the HTTP authentication request are specified in the following table.
 
@@ -951,7 +951,7 @@ If the authentication is successful the PID/(Q)EAA Issuer redirects the User by 
       - Unique identifier of the PID/(Q)EAA Issuer who created the Authentication Response. The Wallet Instance MUST validate this parameter.
       - [:rfc:`9207`], [:rfc:`7519`, Section 4.1.1.].
 
-If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`. 
+If any errors occur during the Authorization Request, the Authorization Server MUST return an error response as defined in :rfc:`6749#section-4.1.2.1`.
 In case of invalid/missing ``redirect_uri`` or ``client_id`` Authorization Server MUST inform the User with the error and MUST NOT redirect the User to the redirection URI.
 If any other error occurs the Authorization Server MUST redirect the User by adding the following query parameters as required to the *redirect_uri* using the *application/x-www-form-urlencoded* format:
 
@@ -971,7 +971,7 @@ Below is a non-normative example of an error response.
 
 In case of Authorization Server redirects the User to the *redirect_uri* HTTP status code *302 (Found)* MUST be used. The following error codes are supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
@@ -993,7 +993,7 @@ In case of Authorization Server redirects the User to the *redirect_uri* HTTP st
 
 In case of Authorization Server doesn't redirect the User to the *redirect_uri* the following HTTP Status Codes are supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 80
     :header-rows: 1
 
@@ -1149,11 +1149,11 @@ Below is a non-normative example of an error response.
   Pragma: no-cache
 
 .. literalinclude:: ../../examples/token-error.json
-  :language: JSON  
+  :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
@@ -1168,7 +1168,7 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The PID/(Q)EAA Issuer cannot fulfill the request because the provided authorization code or Refresh Token is invalid, expired, revoked, or does not match the redirection URI used in the authorization request, or was issued to another client. (:rfc:`6749#section-5.2`).
     * - *400 Bad Request* [REQUIRED]
       - ``unsupported_grant_type``
-      - The PID/(Q)EAA Issuer cannot fulfill the request because the authorization grant type is not supported. (:rfc:`6749#section-5.2`).  
+      - The PID/(Q)EAA Issuer cannot fulfill the request because the authorization grant type is not supported. (:rfc:`6749#section-5.2`).
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_dpop_proof``
       - The PID/(Q)EAA Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 5 of [:rfc:`9449`].
@@ -1206,7 +1206,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
       - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
       - [:rfc:`7515`].
     * - **kid**
-      - REQUIRED. Unique identifier of the ``jwk`` used by the PID/(Q)EAA Provider to sign the Access Token. 
+      - REQUIRED. Unique identifier of the ``jwk`` used by the PID/(Q)EAA Provider to sign the Access Token.
       - :rfc:`7638#section_3`.
 
 
@@ -1263,7 +1263,7 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
       - [:rfc:`7515`].
     * - **kid**
-      -  Unique identifier of the ``jwk`` used by the PID/(Q)EAA Provider to sign the Access Token. 
+      -  Unique identifier of the ``jwk`` used by the PID/(Q)EAA Provider to sign the Access Token.
       - :rfc:`7638#section_3`.
 
 
@@ -1317,7 +1317,7 @@ The request for a nonce MUST be an HTTP POST without a body addressed to the PID
 Nonce Response
 ^^^^^^^^^^^^^^^^^^^
 
-Nonce Response to the Wallet Instance MUST be sent using `application/json` media type. In case of Nonce Request successful, the PID/(Q)EAA Provider MUST return HTTP response with a *200 (OK)* status code. 
+Nonce Response to the Wallet Instance MUST be sent using `application/json` media type. In case of Nonce Request successful, the PID/(Q)EAA Provider MUST return HTTP response with a *200 (OK)* status code.
 
 As defined in Section 7.2 of `OpenID4VCI`_, the PID/(Q)EAA Issuer MUST make the response uncacheable by adding a ``Cache-Control`` header field valued with *no-store*.
 
@@ -1420,12 +1420,12 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
 Credential Response
 ^^^^^^^^^^^^^^^^^^^^
 
-Credential Response to the Wallet Instance MUST be sent using `application/json` media type. If the Credential Request is successfully validated, and the Credential is immediately available, the PID/(Q)EAA Provider MUST return HTTP response with a *200 (OK)* status code. If the Credential is not available and the deferred flow is supported by the PID/(Q)EAA Provider, an HTTP status code *202* MUST be returned.  
+Credential Response to the Wallet Instance MUST be sent using `application/json` media type. If the Credential Request is successfully validated, and the Credential is immediately available, the PID/(Q)EAA Provider MUST return HTTP response with a *200 (OK)* status code. If the Credential is not available and the deferred flow is supported by the PID/(Q)EAA Provider, an HTTP status code *202* MUST be returned.
 
 The Credential Response contains the following parameters:
 
 .. _table_credential_response_claim:
-.. list-table:: 
+.. list-table::
   :widths: 20 60 20
   :header-rows: 1
 
@@ -1462,11 +1462,11 @@ Below is a non-normative example of an error response.
   Cache-Control: no-store
 
 .. literalinclude:: ../../examples/credential-error.json
-  :language: JSON  
+  :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
@@ -1523,9 +1523,9 @@ In the case where the Authentic Source and the PID/(Q)EAA Provider are both enab
 
 The following requirements apply:
 
- 1. The Deferred Credential request MAY also happen several days after the initial Credential request. 
+ 1. The Deferred Credential request MAY also happen several days after the initial Credential request.
  2. The User MUST be informed that the Credential is available and ready to be issued.
- 3. The Wallet Provider MUST NOT be informed about which Credential is available to be issued or which Credential Issuer the User needs to contact. 
+ 3. The Wallet Provider MUST NOT be informed about which Credential is available to be issued or which Credential Issuer the User needs to contact.
  4. The Wallet Instance MUST be informed about the amount of time to wait before making a new Credential request.
  5. As, in general, an unavailability may be an unexpected event, the PID/(Q)EAA Provider MUST be able to switch on the fly between a *immediate* and an *deferred* flow. This decision MUST be taken after the authorization step.
 
@@ -1539,14 +1539,14 @@ If PID/(Q)EAA Providers, supporting this flow, are not able to immediately issue
   Cache-Control: no-store
 
 .. literalinclude:: ../../examples/credential-response-deferred.json
-  :language: JSON  
+  :language: JSON
 
 The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). PID/(Q)EAA Providers MAY send a notification to the User through a communication channel (e.g. email address), if previously provided by the User to the PID/(Q)EAA Provider.
 
 Deferred Request
 ^^^^^^^^^^^^^^^^
 
-Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User accesses the Wallet Instance. 
+Upon receipt of the notification (by the Wallet Instance and/or by the PID/(Q)EAA Provider), the User accesses the Wallet Instance.
 
 The Wallet Instance MUST present to the Deferred Endpoint an Access Token that is valid for the issuance of the Digital Credential previously requested at the Credential Endpoint.
 
@@ -1583,7 +1583,7 @@ The following is a non-normative example of a Deferred Credential Request:
 Deferred Response
 ^^^^^^^^^^^^^^^^^
 
-The Deferred Credential Response MUST be sent using the `application/json`` media type. If the Digital Credential is available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`Credential Response <Credential Response>`. If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to Section 9.3 of `OpenID4VCI`_.  
+The Deferred Credential Response MUST be sent using the `application/json`` media type. If the Digital Credential is available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`Credential Response <Credential Response>`. If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to Section 9.3 of `OpenID4VCI`_.
 
 Notification endpoint
 ---------------------
@@ -1600,7 +1600,7 @@ Notification Request
 
 The Notification Request MUST be an HTTP POST using the *application/json* media type with the following parameters.
 
-.. list-table:: 
+.. list-table::
   :widths: 20 60 25
   :header-rows: 1
 
@@ -1608,7 +1608,7 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
     - **Description**
     - **Reference**
   * - **notification_id**
-    - REQUIRED. It MUST be equal to the ``notification_id`` value returned in the Credential Response by the PID/(Q)EAA Provider. 
+    - REQUIRED. It MUST be equal to the ``notification_id`` value returned in the Credential Response by the PID/(Q)EAA Provider.
     - Section 10.1 of [`OpenID4VCI`_].
   * - **event**
     - REQUIRED. Type of the notification event. It MUST be a case sensitive string and it MUST support the following values:
@@ -1623,11 +1623,11 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
     - Section 10.1 of [`OpenID4VCI`_].
 
 
-    
+
 Notification Response
 ^^^^^^^^^^^^^^^^^^^^^
 
-The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 10.2 of [`OpenID4VCI`_]. 
+The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 10.2 of [`OpenID4VCI`_].
 
 In case of errors, what is described in Section 10.3 of [`OpenID4VCI`_] MUST apply.
 
@@ -1646,11 +1646,11 @@ Below is a non-normative example of an error response.
   Cache-Control: no-store
 
 .. literalinclude:: ../../examples/notification-error.json
-  :language: JSON  
+  :language: JSON
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
-.. list-table:: 
+.. list-table::
     :widths: 20 20 60
     :header-rows: 1
 
