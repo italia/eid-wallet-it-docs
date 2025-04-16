@@ -8,7 +8,7 @@ General Log Retention Policies
 
 The retention of logs is a key element for ensuring security, including fraud prevention, incident detection, system integrity, and compliance with applicable legal obligations. It MUST also be align with the requirements defined in ISO/IEC 27001, in particular with regard auditability, access control, and secure storage. As long log management may involve the processing of personal data, it also constitutes a measure of accountability under the GDPR, with implications for data minimization, storage limitation, and purpose limitation; for these aspects, reference is made to the relevant provisions of the GDPR and sector-specific regulations.
 
-For all about log handling, Wallet Providers, Credential Issuers, and Relying Parties are considered Organizational Entities. 
+For all about log handling, Wallet Providers, Credential Issuers, and Relying Parties are considered Organizational Entities.
 
 Logs related to Wallet data exchange activities (accesses, transactions, Credential issuance/revocation) concerning the User, as the data subject, MUST be retained for a limited period for security, fraud prevention, dispute resolution, and legal obligations.
 
@@ -54,12 +54,12 @@ Relying Party Log Retention Policy
 Relying Parties MAY retain logs related to the processing of data received from the Wallet only for the duration necessary to provide the requested service. The maximum retention period is 24 months after the conclusion of the service or the expiration date of the presented Credentials, unless legal obligations require otherwise.
 
 
-- Relying Parties SHOULD not log Credential presentation disclosure maps, where not necessary. 
+- Relying Parties SHOULD not log Credential presentation disclosure maps, where not necessary.
 
 Wallet Instances Logging Features
 ---------------------------------
 
-In addition to the requirements included in the Consolidated Regulation (EU) No 910/2014, Art 5a 4(d) and the additional information provided within the Recitals (11) and (13), the Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Consolidated Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets. 
+In addition to the requirements included in the Consolidated Regulation (EU) No 910/2014, Art 5a 4(d) and the additional information provided within the Recitals (11) and (13), the Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Consolidated Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets.
 
 Regulation (EU) 2024/2979, Article 9, which define logging obligations about Wallet Solutions and data portability mechanisms.
 

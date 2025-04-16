@@ -22,10 +22,10 @@ This section describes how the Wallet Provider issues a Wallet Attestation.
   3. Verify the Wallet Provider's federation membership and retrieve its metadata.
 
 
-**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a ``nonce`` from the :ref:`Nonce Endpoint` of the Wallet Provider Backend. This ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 4-6 (Nonce Retrieval)**: The Wallet Instance solicits a ``nonce`` from the :ref:`Nonce Endpoint` of the Wallet Provider Backend. This ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks.
 The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
 
-Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance. 
+Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance.
 
 **Step 7**: The Wallet Instance performs the following actions:
 

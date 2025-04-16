@@ -22,7 +22,7 @@ Notify Available Credential
 ...........................................
 
 .. list-table::
-    :widths: 20 80 
+    :widths: 20 80
     :stub-columns: 1
 
     * - **Description**
@@ -37,7 +37,7 @@ Notify Update Credential
 ...........................................
 
 .. list-table::
-    :widths: 20 80 
+    :widths: 20 80
     :stub-columns: 1
 
     * - **Description**
@@ -55,7 +55,7 @@ Notify Wallet Instance Revocation
 ...........................................
 
 .. list-table::
-    :widths: 20 80 
+    :widths: 20 80
     :stub-columns: 1
 
     * - **Description**
@@ -71,7 +71,7 @@ Get Statistics
 ...........................................
 
 .. list-table::
-    :widths: 20 80 
+    :widths: 20 80
     :stub-columns: 1
 
     * - **Description**
@@ -79,14 +79,14 @@ Get Statistics
     * - **Provider**
       - PID/(Q)EAA Provider
     * - **Consumer**
-      - Authorized Third Party 
+      - Authorized Third Party
 
 .. _authentic_source_catalogue:
 
 Authentic Source Catalogue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.  
+Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.
 
 .. note::
     A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">here</a>`.
@@ -95,13 +95,13 @@ Get Attribute Claims
 ...........................................
 
 .. list-table::
-    :widths: 20 80 
+    :widths: 20 80
     :stub-columns: 1
 
     * - **Description**
       - This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential.
     * - **Provider**
-      - Authentic Source 
+      - Authentic Source
     * - **Consumer**
       - PID/(Q)EAA Provider
 
@@ -111,7 +111,7 @@ Wallet Provider Catalogue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
-A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint. 
+A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.
 
 .. note::
     A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-WP.html" target="_blank">here</a>`.
@@ -120,7 +120,7 @@ Notify User Death
 ...................................................
 
 .. list-table::
-    :widths: 20 80 
+    :widths: 20 80
     :stub-columns: 1
 
     * - **Description**
