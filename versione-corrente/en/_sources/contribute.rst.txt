@@ -45,6 +45,7 @@ implementation profile and to the initial set of implementations.
 - Marco Pernpruner
 - Mart Aarma
 - Marta Sciunnach
+- Matteo Fortini
 - Michele Silletti
 - Nicola Saitto
 - Niels van Dijk
@@ -61,9 +62,9 @@ implementation profile and to the initial set of implementations.
 - Takahiko Kawasaki
 - Thomas Chiozzi
 - Torsten Lodderstedt
+- Valerio Bozzolan
 - Vladimir Duzhinov
 - Zahra Ebadi Ansaroudi
-
 
 
 If anyone has been forgotten, please accept our apologies with the

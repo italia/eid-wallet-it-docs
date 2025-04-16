@@ -32,3 +32,4 @@ Index of content
    standards.rst
    test-plans.rst
    contribute.rst
+   open-source.rst
