@@ -304,6 +304,7 @@ Revocation is the procedure that turns an Electronic Attestation from a valid st
 	- The physical document corresponding to the Electronic Attestation has been reported lost or damaged by the User through the appropriate channel/ Touchpoint; 
 	- The physical document corresponding to the Electronic Attestation has been revoked by the competent authorities; 
 	- The minimum security and/ or reliability requirements for one or more involved parties are no longer met. 
+	- The User's device no longer meets the minimum security requirements (rooted or jailbroken).
 
 
 History of Electronic Attestations 
