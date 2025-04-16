@@ -20,7 +20,7 @@ All the implementers, be these Wallet Providers, Credential Issuers or Relying P
 Wallet Providers
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Wallet Solution Providers are encouraged to release their source code, build system, and all other assets required to the reproducibility of the implementation in order to facilitate transparency, security auditing within the IT-Wallet ecosystem. Where applicable, the release of source code SHOULD follow the specifications below:
+Wallet Providers are encouraged to release their source code, build system, and all other assets required to the reproducibility of the implementation in order to facilitate transparency, security auditing within the IT-Wallet ecosystem. Where applicable, the release of source code SHOULD follow the specifications below:
 
 - **European Regulations**: According to the Consolidated Regulation (EU) 910/2014, Art 5a item 3, `the source code of the application software components of European Digital Identity Wallets shall be open-source licensed. Member States may provide that, for duly justified reasons, the source code of specific components other than those installed on user devices shall not be disclosed`.
 
