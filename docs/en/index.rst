@@ -1,6 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
-IT-Wallet System Technical Specifications 
+IT-Wallet System Technical Specifications
 =========================================
 
 This document provides the technical architecture, implementation framework and design requirements to be adopted by the IT-Wallet System Technical Solutions.
@@ -8,9 +8,9 @@ This document provides the technical architecture, implementation framework and 
 Index of content
 ----------------
 
-.. toctree:: 
+.. toctree::
    :maxdepth: 3
-   
+
    introduction.rst
    defined-terms.rst
    ssi-introduction.rst

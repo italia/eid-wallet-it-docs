@@ -6,7 +6,7 @@ The Digital Identity Wallet Paradigm
 ++++++++++++++++++++++++++++++++++++
 
 The Digital Identity Wallet paradigm refers to a new architecture in Identity and Access Management (IAM) that enhances confidentiality and grants Users full control over the Digital Credentials used to access services.
-Thanks to this new paradigm, the IT-Wallet System allows Users to maintain full control in the management and use of their information when accessing services provided by public and private entities. 
+Thanks to this new paradigm, the IT-Wallet System allows Users to maintain full control in the management and use of their information when accessing services provided by public and private entities.
 
 The main difference between this new approach and the traditional IAM infrastructure is that the presentation of credentials or attributes doesn’t require intermediaries between the Wallet Instance and the Relying Party, while in the SAML2 or OIDC based infrastructure a Digital Identity Provider is always involved, knowing which services the User is accessing to.
 
