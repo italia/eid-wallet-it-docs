@@ -63,7 +63,7 @@ Upon a successful request, the Application Provider generates and returns the ``
   For Android devices, the inclusion of **Strongbox Keymaster** may vary by manufacturer, who decides whether to include it or not.
 
 If any errors occur in the Key Attestation API process, such as device integrity verification, for example, due to unavailable Key Attestation APIs, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIs raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.
- 
+
 
 **Step 8**: The Key Attestation API performs the following actions:
 
@@ -75,7 +75,7 @@ If any errors occur in the Key Attestation API process, such as device integrity
 
 .. note::
   It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
-  As seen in the previous steps, the Key Attestation API creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the key attestation. 
+  As seen in the previous steps, the Key Attestation API creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the key attestation.
 
 **Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature, therefore:
 
@@ -138,7 +138,7 @@ If any errors occur, the Application Provider returns an error response. The res
 Below is a non-normative example of a Nonce Error Response.
 
 .. code-block:: http
-    
+
     HTTP/1.1 500 Internal Server Error
     Content-Type: application/json
 
@@ -172,7 +172,7 @@ The Instance Initialization Request uses the HTTP POST method with ``Content-Typ
 The Instance Initialization Request body contains the following claims:
 
 .. _table_http_request_claim:
-.. list-table:: 
+.. list-table::
     :widths: 20 60 20
     :header-rows: 1
 
@@ -227,7 +227,7 @@ If any errors occur, the Application Provider returns an error response. The res
 Below is a non-normative example of an Instance Initialization Error Response.
 
 .. code-block:: http
-    
+
     HTTP/1.1 403 Forbidden
     Content-Type: application/json
     Cache-Control: no-store
@@ -239,7 +239,7 @@ Below is a non-normative example of an Instance Initialization Error Response.
 
 The following table lists HTTP Status Codes and related error codes that are supported for the error response:
 
-.. list-table:: 
+.. list-table::
    :widths: 20 20 50
    :header-rows: 1
 
@@ -397,7 +397,7 @@ If any errors occur, the Application Provider returns an error response. The res
 Below is a non-normative example of a Key Binding Error Response.
 
 .. code-block:: http
-    
+
     HTTP/1.1 403 Forbidden
     Content-Type: application/json
 
@@ -418,28 +418,28 @@ The following table lists HTTP Status Codes and related error codes that are sup
     * - ``400 Bad Request``
       - ``bad_request``
       - The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.
-    * - ``403 Forbidden`` 
+    * - ``403 Forbidden``
       - ``invalid_request``
       - The Mobile Application Instance has been revoked.
-    * - ``403 Forbidden`` 
+    * - ``403 Forbidden``
       - ``integrity_check_error``
       - The device does not meet the Application Provider's minimum security requirements.
     * - ``403 Forbidden``
       - ``invalid_request``
       - The signature of the Integrity Request is invalid or does not match the associated public key (JWK).
-    * - ``403 Forbidden`` 
+    * - ``403 Forbidden``
       - ``invalid_request``
       - The integrity assertion validation failed; the integrity assertion is tampered with or improperly signed.
-    * - ``403 Forbidden`` 
+    * - ``403 Forbidden``
       - ``invalid_request``
       - The provided ``nonce`` is invalid, expired, or already used.
     * - ``403 Forbidden``
       - ``invalid_request``
       - The Proof of Possession (``hardware_signature``) is invalid.
-    * - ``403 Forbidden`` 
+    * - ``403 Forbidden``
       - ``invalid_request``
       - The ``iss`` parameter does not match the Application Provider's expected URL identifier.
-    * - ``404 Not Found`` 
+    * - ``404 Not Found``
       - ``not_found``
       - The Mobile Application Instance was not found.
     * - ``422 Unprocessable Content`` [OPTIONAL]

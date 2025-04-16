@@ -10,7 +10,7 @@ An Issuer, as an Organizational Entity participating in the IT-Wallet ecosystem,
 The following diagram depicts the Issuer Solution High Level Architecture.
 
 .. figure:: ../../images/issuer-solution.svg
-   :width: 100% 
+   :width: 100%
    :alt: The image illustrates the Issuer Solution and its relations and interactions within the ecosystem.
    :target: https://www.plantuml.com/plantuml/svg/fLTjRzis4FxkNt5LXpK1chfvIP4CA537IJSFQUF5IVVHeAMpJ4GIDP9ouWtxxpk-A9PCnnFQVAWbykwvvquFZzTFIZEfgpphlO7X2Gn5Nee22mq9PwbaESo5X95I5KgOYApIN1GmaF62Qunr9R7tYXTnLYK82wrBzKk_BzdZkvJhHJMh5CfO59hmtiKYxvSPAqoi0wMJZC_wmvE3iLcw_tBTpvdIA6bfwZcGJsbu4R5BdFC2OJA-7TrTJNgl4lS-6jvylR-zxX1OLoLBvF6Q0AVTWpbP7AXIKYhAnrzduy7xv9wBmb49DYq2UqGbSZmuxSSeDP_pc6divf0mpMPCTRJEHFpGpTBahpfo5cb7Iy9Seknc-u2hxaoxMV9a6ZEPT3F6ftZ1YXIdBDCTFmMg1otARiQFBCkm2t2V5qfpRO_Divo7bT8Y1wLN6QhU84ckCionq7SitOlmIQCiM1QzXPzcwL1aGdwCNf_RFxDcqFtgepc4rax81ALVJIMkelrDM59vpkIgZNfu-E5ibdH2VVr-Td9sTX82AwIZb0JG7-BPyV6y6_G9Epi-EYVeDn20ooMFKRMnyNn6pBjXiwEpmyFt8MqjAwNRi6U3u_EppzrWJq-FZay71BlkJdg1m68jf09M951_Hr0hfJ5NlJ5A9Oez8_Yt4DtJJqI_RXKM8ajuaS8bJxacfw74XAXobjdSNPFw61bdHL4d5dDwzQJtd1IdHcUiY94W_xGhCF8haO_sHi7exi1j6apDKlMn9RSwYZzfxJW5CnfcsHHvGeXV_IlWw1ASMTHSJdmYtAQXLxuCkmDJrsW7PPLU6FzugaGbRNQ3UWacTab5Vb4G1aLV8fYk2ihlxWnOzzzsLAkDATMEC0dyphp2mBwQOBT2Q11pi6RsVYH6wzh2PqnGsZhi3jwuBSAifth1PJ8j6TcWMgVuDoPmPxPWxBOC8_YzIdXCOW4YCwbASsgKa2ku40b7fyThJ6cVEHJZk9jSeszjrLifnP9JdckzZVrAr2PR2w4-oi1Y-bUHsEicJO_saxtRpSW59ZBjCnSC9pDHsNxKk_0FUznQJ9Mt87xXCMl0-AJXdnxGNojMpdW1SJsVA6Em7fdgE7Df9mzpIZxxnxLHP0g6iqOvQDSSJwZTZ8Ml9Uqc2JTqcWNK2ocgT04C2CZvSlAKSnOZx1azuXFBomnXiX2FglyD9SaCLVyBArXAlxVuLuLARsis--jlu6-CvYVmTsIqRnFtvV65ks3nGpFJe3hnSvIfAnJb6TI_NQYR4elHvSctuIXonapxYba4jIq3q0ASLC3tnARK_MtLJiiDDfHLax0_Xcwl8MbcHJPnBeQZsJWoJxyHiSpmgpkKCpLqMSjvded7x-GaCLlHUR5zOMLwaNk7iNdVNhmnzE5cT3cadydWotNKxA6sdlPIWKUk5z3gwlxYSf8QZoxtGKXdHYzkTU-F_Ql1OF_xSYcJ8fbYBMj3Qpo2KQtao2_WGMtn0urbDx_ciDXW6SWsutECLt66RULUrylW3bZkFy344MjAOmq64bEkj6Ik8odDT4Kr83lQMOguVN_uSQN1sOpj0LTtSL6E5Hcjdg-kds7YbxnjID2t1g0Rc5WqRYRFgSQ4N1HS2qcbtK7E_4U5oFsxqQabPZOjjU2bwf5q_J0KZZ3Kr2YxXadGMaEJve0IQDp8rbi7qROr9jyYbVyWCVBb2-scCeg3HgTw8KgxczpCDAEzZSRWiGnrWZ4ucmS-J38yo3xLq3dWz7_-BSwRhUSRotZoxFSyw7dNeAYR5V2tqaO9rClksmvYGxdMBDdoYNP01kV5YCfETB5SbLgaafKB7eCeKORq0Yv1GxDmIvTeuiPIKd3kGG9D_qY65zn0RZBOCZ_VefOSbqrY5Jcqs6q72oS_swnPh9kYcTvldLytmKBVdlSEfhMDSToFrtuG4FuWDTjfit_vb4md-bMAgYG5Ao07oc1ZSY4BG-2o9Z1pozlxmr0KDYuXRtThoBsRGt306YxmeazGrjrnTiYiWsTmNfe-dyYYohF_0000
       Issuer Solution High Level Architecture
@@ -55,7 +55,7 @@ The Frontend Component, if provided by the Issuer, MUST provide a web-based User
    - Initiate issuance through Credential Offers.
    - Provide User support and documentation.
 
-Issuers MAY provide additional services to the User through the Frontend Component. These additional services MUST NOT conflict with any regulatory or technical requirements defined in this technical specification or in national/European security and privacy regulations. 
+Issuers MAY provide additional services to the User through the Frontend Component. These additional services MUST NOT conflict with any regulatory or technical requirements defined in this technical specification or in national/European security and privacy regulations.
 
 Credential Issuer Component
 ---------------------------
@@ -83,7 +83,7 @@ Relying Party Component
 When User authentication is required, this component MUST authenticate Users:
 
    - For PID issuance, via national Digital Identity Providers using OIDC or SAML2.
-   - For (Q)EAA issuance, requesting, obtaining and validating PIDs from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`pid-eaa-presentation.rst`. 
+   - For (Q)EAA issuance, requesting, obtaining and validating PIDs from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`pid-eaa-presentation.rst`.
 
 API Interface
 ---------------
