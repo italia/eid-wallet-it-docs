@@ -41,5 +41,4 @@ Responsible Disclosure
 
 In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (NIS2 <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555>_) also emphasizes vulnerability handling within cybersecurity risk management.
 
-ISO/IEC 29147:2018 (<https://www.iso.org/standard/72311.html>_) provides guidelines for vulnerability disclosure processes. Industry best practices includes bug bounty platforms, clear reporting, response times, safe harbor, and coordinated disclosure.
 
