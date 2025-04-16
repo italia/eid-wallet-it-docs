@@ -16,7 +16,6 @@ The relevant entities and interfaces involved in the issuance flow are:
     - *(Q)EAA Provider*,
     - *Authentic Source*.
 
-
 High-Level PID flow
 -------------------
 

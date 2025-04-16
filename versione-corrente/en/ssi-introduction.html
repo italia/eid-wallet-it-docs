@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Digital Identity Wallet Paradigm &#8212; Italian EUDI Wallet Implementation Profile  documentation</title>
+    <title>The Digital Identity Wallet Paradigm &#8212; IT-Wallet Technical Specification  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Normative Language and Conventions" href="defined-terms.html" />
-    <link rel="prev" title="The Italian EUDI Wallet Implementation Profile" href="index.html" /> 
+    <link rel="next" title="Design Principles" href="design.html" />
+    <link rel="prev" title="Normative References" href="defined-terms.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">Italian EUDI Wallet Implementation Profile  documentation</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specification  documentation</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -129,9 +129,14 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">Defined Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">Normative Language and Conventions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Digital Identity Wallet Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative Language and Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">Defined Terms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#it-wallet-system-brand-identity">IT-Wallet System Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#functionalities">Functionalities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
@@ -162,28 +167,28 @@
             
   <section id="the-digital-identity-wallet-paradigm">
 <span id="ssi-introduction-rst"></span><h1>The Digital Identity Wallet Paradigm<a class="headerlink" href="#the-digital-identity-wallet-paradigm" title="Link to this heading">¶</a></h1>
-<p>The Digital Identity Wallet paradigm refers to a new architecture in Identity and Access Management (IAM) that improves the privacy and grants complete control and ownership over the personal data by their owner, the users.
-Users possess their digital documents and determine to which actors they present these documents, with the ability to revoke the use of said documents, all while maintaining a history of their activities.</p>
-<p>The main difference between this new approach and the traditional IAM infrastructure is that during the presentation phase there are no intermediaries between the Wallet and the Relying Party, while in the SAML2 or OIDC based infrastructure an Identity Provider is always involved, knowing which services a citizen is accessing to.</p>
-<p>Digital identity Wallet Architectures are significant in the field of data exchange and data governance. In accordance with the  eIDAS Regulation, a new digital identity paradigm is designed for European Users - be they citizens, public administrations, or companies - who want to access another Member State's services using their national authentication systems.</p>
-<p>The main roles in a Wallet ecosystem are listed as follow:</p>
+<p>The Digital Identity Wallet paradigm refers to a new architecture in Identity and Access Management (IAM) that enhances confidentiality and grants Users full control over the Digital Credentials used to access services.
+Thanks to this new paradigm, the IT-Wallet System allows Users to maintain full control in the management and use of their information when accessing services provided by public and private entities.</p>
+<p>The main difference between this new approach and the traditional IAM infrastructure is that the presentation of credentials or attributes doesn’t require intermediaries between the Wallet Instance and the Relying Party, while in the SAML2 or OIDC based infrastructure a Digital Identity Provider is always involved, knowing which services the User is accessing to.</p>
+<p>Digital Identity Wallet Architectures are significant in the field of digital identity governance. This new digital identity paradigm is designed for Users - be they citizens, Public Administrations, or private organizations- who want to access services using their national authentication systems.</p>
+<p>The main roles in the Digital Identity Wallet ecosystem  are listed as follow:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Issuers: parties who can issue digital credentials about a person;</p></li>
-<li><p>Verifiers: parties who request Holders' digital credentials for authentication and authorization purposes;</p></li>
-<li><p>Holders: individuals who own a Wallet and have control over the digital credentials they can request, acquire, store, and present to verifiers;</p></li>
-<li><p>Verifiable Data Registries: Authorities that publish certificates, attestations, metadata, and schemes needed for allowing the trust establishment between the parties.</p></li>
+<li><p>Issuers: parties who issue Digital Credentials for Users;</p></li>
+<li><p>Verifiers: parties who request Digital Credentials from the User for Authentication and authorization purposes;</p></li>
+<li><p>Holders: individuals who own a Wallet Instance and have control over the Digital Credentials they can request, acquire, store, and present to Verifiers;</p></li>
+<li><p>Verifiable Data Registries: authorities that publish certificates, attestations, metadata, and schemes needed for allowing the trust establishment between the parties.</p></li>
 </ul>
 </div></blockquote>
-<p>In this model, the Credential Issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their digital Wallet.
-The Wallet typically comes in the form of an application on the User's mobile phone.</p>
-<p>Other key elements that characterize an SSI system include:</p>
+<p>In this model, the credential issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their Wallet Instance.
+The Wallet Instance is typically provided as a mobile application on the User's smartphone.</p>
+<p>Other key elements that characterize this new Digital Identity Wallet paradigm  include:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Privacy and control</strong>: Wallets enable individuals to maintain control over their personal data. They can choose what information to release, to whom, and for what purpose;</p></li>
+<li><p><strong>Confidentiality and control</strong>: Wallets enable individuals to maintain control over the information they share. They can choose what attributes or credentials to present, to whom, and for what purpose, in line with the Self-Sovereign Identity (SSI) approach;</p></li>
 <li><p><strong>Security</strong>: Wallets leverage cryptographic mechanism to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control;</p></li>
 <li><p><strong>Interoperability</strong>: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities without relying on a central authority. This allows for seamless and trusted interactions between individuals, organizations, and even across borders;</p></li>
-<li><p><strong>Efficiency and cost reduction</strong>: individuals can manage their own identities, eliminating the need for multiple identity credentials and repetitive identity verification processes. This can streamline administrative procedures, reduce costs, and enhance the user experience.</p></li>
+<li><p><strong>Efficiency and cost reduction</strong>: Individuals can easily manage their own credentials, avoid handling multiple identity tokens, and reduce repetitive identity verification processes. This streamlines administrative procedures, reduces costs, and enhances the User Experience.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -201,14 +206,14 @@ The Wallet typically comes in the form of an application on the User's mobile ph
         <div class="button_nav">
             <div class="left">
                 
-                <a href="index.html">
-                    <span class="icon">&lt;</span><span>The Italian EUDI Wallet Implementation Profile</span></a>
+                <a href="defined-terms.html">
+                    <span class="icon">&lt;</span><span>Normative References</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="defined-terms.html"><span>Normative Language and Conventions</span><span class="icon">&gt;</span></a>
+                    <a href="design.html"><span>Design Principles</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -216,7 +221,7 @@ The Wallet typically comes in the form of an application on the User's mobile ph
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 15/04/2025.
+      Last updated on 16/04/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

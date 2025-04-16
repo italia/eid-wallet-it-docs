@@ -761,17 +761,6 @@ This is feasible because the X.509 Certificate can be verified using a X.509 Cer
 Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
 
-.. name-constraints::
-   :permitted: URI.1=https://leaf.example.com
-   :permitted: CN=leaf.example.com
-   :permitted: DNS=leaf.example.com
-   :excluded: DNS=localhost
-   :excluded: DNS=localhost.localdomain
-   :excluded: DNS=127.0.0.1
-   :excluded: DNS=example.com
-   :excluded: DNS=example.org
-   :excluded: DNS=example.net
-   :excluded: DNS=*.example.org
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 

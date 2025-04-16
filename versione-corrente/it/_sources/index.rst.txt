@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 ==============================================
-The Italian EUDI Wallet implementation profile
+IT-Wallet implementation profile
 ==============================================
 
 [TODO INTRO]

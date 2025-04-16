@@ -128,7 +128,6 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
     - JSON array containing all supported trust frameworks. See `OIDC-IDA`_ Section 8. The supported values are:
-
         - *it_cie*: CIE trust framework supported.
         - *it_wallet*: Italian EUDI Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
