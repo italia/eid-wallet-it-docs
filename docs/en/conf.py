@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 # -- PROJECT Variables ----------------------------------------------------
-settings_project_name = "IT-Wallet Technical Specification"
+settings_project_name = "IT-Wallet Technical Documentation"
 # settings_copyright_copyleft = 'Dipartimento per la Trasformazione Digitale'
 settings_editor_name = 'Dipartimento per la Trasformazione Digitale'
-settings_doc_version = 'version: latest'
-settings_doc_release = 'version: latest'
-settings_basename = 'eidas-it-wallet-docs'
-settings_file_name = 'eidas-it-wallet-docs'
+version = '1.0.0'
+settings_doc_version = version
+settings_doc_release = "versione-corrente"
+settings_basename = 'eid-wallet-it-docs'
+settings_file_name = 'eid-wallet-it-docs'
+
+version = settings_doc_version
 
 import sys, os
 from recommonmark.transform import AutoStructify
@@ -47,6 +49,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.autosectionlabel',
     'sphinxcontrib.redoc',
+    'sphinxcontrib.images'
 ]
 
 redoc = [
@@ -76,6 +79,10 @@ rst_epilog = """
 .. _blank: target="_blank"
 """
 
+images_config = {
+    "default_image_width": "99%",
+    "align": "center"
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -181,14 +188,14 @@ html_css_files = [
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-#  html_title = settings_project_name
+html_title = f"{settings_project_name} {version}"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #  html_short_title = "IT-Wallet"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#  html_logo = "https://avatars.githubusercontent.com/u/15377824?s=48&v=4"
+# html_logo = "https://avatars.githubusercontent.com/u/15377824?s=48&v=4"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -309,9 +316,13 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', settings_file_name, settings_project_name,
-   settings_project_name, settings_project_name,
-   'Miscellaneous'
+  (
+    'index',
+    settings_file_name,
+    settings_project_name,
+    settings_project_name,
+    settings_project_name,
+    'Miscellaneous'
   )
 ]
 
