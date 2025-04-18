@@ -17,7 +17,7 @@ Below are several methods available for contributing to this project:
 
 
 Acknowledgements
-----------------
++++++++++++++++++++++++++++
 
 We would like to thank the following individuals for their comments,
 concerns, ideas, contributions, some of which substantial, to this
