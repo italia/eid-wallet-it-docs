@@ -49,8 +49,11 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.autosectionlabel',
     'sphinxcontrib.redoc',
-    'sphinxcontrib.images'
+    'rst2pdf.pdfbuilder',
 ]
+
+pdf_documents = [('index', u'rst2pdf', u'rst2pdf doc', settings_editor_name),]
+# pdf_use_index = False
 
 redoc = [
     {
