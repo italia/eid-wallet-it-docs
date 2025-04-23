@@ -70,7 +70,7 @@ Qualora un Titolare di Fonte Autentica (o un Fornitore di Attestati Elettronici 
 Layout degli Attestati Elettronici 
 ===================================
 
-Gli Attestati Elettronici ottenuti in un’Istanza IT-Wallet DOVREBBERO essere visualizzati in lista all’interno di una Vista di Anteprima. In tal caso, gli Attestati Elettronici DEVONO garantire un alto livello di riconoscibilità e accessibilità [RIF_ACCESSIBILITÀ] delle informazioni contenute. Di seguito i requisiti relativi alle modalità di visualizzazione di un’Attestato Elettronico che ogni Fornitore di Soluzione IT-Wallet DEVE rispettare per garantire un’esperienza di consultazione e fruizione coerente e accessibile: 
+Gli Attestati Elettronici ottenuti in un’Istanza IT-Wallet DOVREBBERO essere visualizzati in lista all’interno di una Vista di Anteprima. In tal caso, gli Attestati Elettronici DEVONO garantire un alto livello di riconoscibilità e accessibilità [RIF_ACCESSIBILITÀ] delle informazioni contenute. Di seguito i requisiti relativi alle modalità di visualizzazione di un Attestato Elettronico che ogni Fornitore di Soluzione IT-Wallet DEVE rispettare per garantire un’esperienza di consultazione e fruizione coerente e accessibile: 
  
 - l’Attestato Elettronico DEVE essere visualizzato correttamente su qualsiasi dispositivo, garantendo un'esperienza uniforme su schermi di diverse dimensioni; 
 - il nome dell’Attestato Elettronico DEVE essere chiaramente indicato e sempre visibile sia nella Vista di Dettaglio che nella Vista di Anteprima; 
