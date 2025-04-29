@@ -35,6 +35,10 @@ The Wallet Provider MUST allow the User to remove the PID issued during the acti
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
 
+PID – Personal Identification Data
+===================================
+TBD (what it is from a user perspective, how to use it for issuance of EAA and authentication)
+
 
 Issuance of Electronic Attestations of Attributes
 **************************************************
