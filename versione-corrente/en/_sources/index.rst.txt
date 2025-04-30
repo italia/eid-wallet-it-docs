@@ -31,5 +31,5 @@ Index of content
    log-retention-policy.rst
    standards.rst
    test-plans.rst
-   contribute.rst
    open-source.rst
+   contribute.rst

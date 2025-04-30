@@ -2,10 +2,10 @@
 
 .. _open-source.rst:
 
-Open Source Releases for IT-Wallet Solutions  
-============================================
+Open Source Releases 
+=====================
 
-In line with the general principles of openness and transparency, Wallet Providers, Credential Issuers and Relying Parties are encouraged to consider adopting open-source approaches, including during the experimentation phase, to promote collaboration, peer review, and shared improvements across the ecosystem. This encouragement is part of an evolving framework, pending the definition of the relevant procedures by the Guidelines pursuant to Article 64-quater of the CAD, which refers to Article 69 regarding the release of source code. Open source is supported by the Italian Digital Administration Code (CAD) articles 68 and 69 (and related guidelines), European regulations (``Artificial Intelligence Act (AI Act)`` <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689>_, ``Cyber Resilience Act (CRA)`` <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847>_, ``Interoperable Europe Act`` <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202400903>_).
+In line with the general principles of openness and transparency, Wallet Providers, Credential Issuers and Relying Parties are encouraged to consider adopting open-source approaches, including during the experimentation phase, to promote collaboration, peer review, and shared improvements across the ecosystem. This encouragement is part of an evolving framework, pending the definition of the relevant procedures by the `guidelines on the acquisition and reuse of software for public administrations <https://docs.italia.it/italia/developers-italia/gl-acquisition-and-reuse-software-for-pa-docs/en/stabile/index.html>`_ pursuant to Article 64-quater of the CAD, which refers to Article 69 regarding the release of source code. Open source is supported by the Italian Digital Administration Code (CAD) articles 68 and 69 (and related guidelines), European regulations (`Artificial Intelligence Act (AI Act) <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689>`_, `Cyber Resilience Act (CRA) <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202402847>`_, `Interoperable Europe Act <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202400903>`_).
 
 All the implementers, be these Wallet Providers, Credential Issuers or Relying Parties, owning the product code (from now on Open Source Project Owner) SHOULD follow industry best practices for open-source software, including proper documentation, version control, and community engagement. In particular:
 
