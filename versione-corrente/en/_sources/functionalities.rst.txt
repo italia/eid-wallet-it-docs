@@ -9,7 +9,7 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
    :width: 100%
 
 
-The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the Activation, Acquisition, Presentation, Management, and Deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
+The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
 
 The Official Resources include recommendations on the required User-Wallet Instance interactions and design best practices that promote consistency across different Wallet Solutions in terms of how functionalities are accessed and used.
 
@@ -43,9 +43,9 @@ Once activation is complete, the User MAY obtain one or more Electronic Attestat
 
 Depending on the User’s specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways:
 
-- **From the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance.
+- **from the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance.
 
-- **From a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button.
+- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button.
 
 Although the initiation methods for requesting the issuance may differ, the request flows share a similar structure and process. Below are the functional and the User Experience requirements of the issuance of an Electronic Attestation of Attributes from the Catalog that the Wallet Provider MUST guarantee via their Wallet Solution:
 
@@ -78,7 +78,7 @@ The Electronic Attestations obtained within the Wallet Instance SHOULD be displa
 
 - the Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
 - the name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View;
-- the Electronic Attestation, both in the Preview View and the Detailed View, MUST display its status if different from valid and MAY display it if valid. The Preview View MAY also include additional attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider;
+- the Electronic Attestation, both in the Preview View and the Detailed View, MUST display its status if different from valid and MAY display it if valid. The Preview View MAY also include additional Attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider;
 - the layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen;
 - the Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout;
 - the Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details;
@@ -160,7 +160,7 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 - The User clicks the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
 - the User accesses the desired Wallet Instance from the device where it is installed, using the unlock method previously set;
 - the User scans the QR Code provided by the Relying Party using their Wallet Instance;
-- the User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory personal data (Selective Disclosure). The User provides consent to proceed or cancels the operation.
+- the User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA data (Selective Disclosure). The User provides consent to proceed or cancels the operation.
 - the User authorizes the operation using the unlock method previously set;
 - the User receives confirmation of the successful presentation within the Wallet Instance;
 - the User returns to the Relying Party's Touchpoint and views confirmation of the completed presentation.
@@ -206,8 +206,7 @@ In all cases:
 
 - the page MUST display all available Digital Identity Authentication methods, including the IT-Wallet System Authentication through the Authentication Button;
 - the page MAY also include other available Authentication methods;
-
-The page SHOULD provide essential supporting information to help the User make an informed and conscious choice.
+- the page SHOULD provide essential supporting information to help the User make an informed and conscious choice.
 
 If the User accesses the Discovery Page from a different Touchpoint than the one where the Wallet Instance is activated (cross-device), selecting IT-Wallet System Authentication MUST redirect the User to the QR code page.
 
@@ -219,7 +218,7 @@ The QR code page is presented to the User who selects IT-Wallet System Authentic
 
 Relying Parties SHOULD implement the QR code page (cross-device) provided in the Official Resources. In any case:
 
-- the page MUST include the Visual Identity elements of the IT-Wallet System, including the logo;
+- the page MUST include the Visual Identity elements of the IT-Wallet System, including the Logo;
 - the page MUST display the QR code along with a clear and concise message instructing the User to scan it using their Wallet Instance;
 - the page MUST indicate the validity period of the QR code with a short and clear message;
 - the page MUST include a Call To Action allowing the User to generate a new QR code in case of timeout;
@@ -240,7 +239,7 @@ The waiting page is shown after the QR code has been scanned and prompts the Use
 
 Relying Parties SHOULD implement the waiting page (cross-device) provided in the Official Resources. In any case:
 
-- the page MUST include visual identity elements of the IT-Wallet System, including the logo and an icon or graphical element that reinforces the page message;
+- the page MUST include visual identity elements of the IT-Wallet System, including the Logo and an icon or graphical element that reinforces the page message;
 - the page MUST include a clear and concise message instructing the User to continue the process on their Wallet Instance.
 
 **Thank you page**
@@ -249,7 +248,7 @@ The thank you page is displayed after the User completes the Authentication proc
 
 Relying Parties SHOULD implement the thank you page provided in the Official  Resources. In any case:
 
-- the page MUST include the visual identity elements of the IT-Wallet System, including the logo and an icon or graphical element that reinforces the page message;
+- the page MUST include the visual identity elements of the IT-Wallet System, including the Logo and an icon or graphical element that reinforces the page message;
 - the page MUST provide a clear and concise message confirming that the authentication process was successfully completed;
 - the page MUST include a Call To Action prompting the User to proceed to the Touchpoint authenticated area.
 
@@ -259,7 +258,7 @@ The error page is displayed when an issue occurs during the Authentication proce
 
 Relying Parties SHOULD implement the error page provided in the Official Resources. In any case:
 
-- the page MUST include the visual identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of error;
+- the page MUST include the visual identity elements of the IT-Wallet System, including the Logo and an icon or graphical element that conveys the type of error;
 - the page MUST include a clear and concise message explaining the nature of the error, the error code, and a simple description;
 - the page MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
@@ -379,7 +378,7 @@ Below are the requirements and main best practices for error management, specifi
 Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience.
 
 Activation of the Wallet Instance Errors
-*******************************************************
+=========================================
 
 .. list-table::
    :header-rows: 1
@@ -396,7 +395,7 @@ Activation of the Wallet Instance Errors
      - National Identity Provider
 
 Issuance of Electronic Attestations of Attributes Errors
-****************************************************************
+=========================================================
 
 .. list-table::
    :header-rows: 1
@@ -411,7 +410,7 @@ Issuance of Electronic Attestations of Attributes Errors
      - Authentic Source
 
 Presentation of Electronic Attestations Errors
-**********************************************************
+===============================================
 
 .. list-table::
    :header-rows: 1
@@ -424,7 +423,7 @@ Presentation of Electronic Attestations Errors
      - Wallet Provider, Relying Party
 
 Management of Electronic Attestations Errors
-**********************************************************
+=============================================
 
 .. list-table::
    :header-rows: 1
@@ -437,7 +436,7 @@ Management of Electronic Attestations Errors
      - PID Provider
 
 Deactivation of the Wallet Instance Errors
-***************************************************
+===========================================
 
 .. list-table::
    :header-rows: 1
@@ -447,7 +446,7 @@ Deactivation of the Wallet Instance Errors
    * - The service for deactivating the Wallet Instance is unavailable (e.g. technical errors)
      - Wallet Provider
 
-In addition to error management, all Primary Actors MUST also deal with negative feedback resulting from the User’s decision to abandon or cancel a flow (e.g. Activation, Acquisition, Presentation, etc.). In such cases, feedback MUST be provided to confirm the User’s choice, and it MAY include a Call to Action to continue.
+In addition to error management, all Primary Actors MUST also deal with negative feedback resulting from the User’s decision to abandon or cancel a flow (e.g. activation, acquisition, presentation, etc.). In such cases, feedback MUST be provided to confirm the User’s choice, and it MAY include a Call to Action to continue.
 
 User Assistance
 ********************************

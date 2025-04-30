@@ -1,6 +1,6 @@
 .. _brand-identity:
 
-IT-Wallet System Brand Identity
+Brand Identity
 ###############################
 
 The IT-Wallet Brand Identity defines the system's personality and it’s expressed through a set of standardized elements, including its naming and Visual Identity. It strengthens and promotes the Trust Model at the basis of the entire ecosystem,  that is to say the framework that legitimizes the Actors' participation in the IT-Wallet System and ensures the security and integrity of its processes.
@@ -42,7 +42,7 @@ The following requirements apply to its use in both physical and digital context
 
 - the Logo MUST be used to represent the IT-Wallet System or the participation to the IT-Wallet System and MUST NOT be used to identify a specific Technical Solution;
 
-- The Logo MUST be used exactly as provided in the official resources and MUST comply with the usage specifications outlined in the Official Resources;
+- The Logo MUST be used exactly as provided in the Official Resources and MUST comply with the usage specifications outlined in the Official Resources;
 
 - The Logo MUST be in the ``application/svg+xml`` data format;
 
@@ -61,13 +61,14 @@ Trust Mark
 ==========
 
 The Trust Mark is the official graphic element that guarantees the belonging of Primary Actors and their respective Technical Solutions to the IT-Wallet System.
+
 The following requirements apply to its use in both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.):
 
 - The Trust Mark MUST be used exclusively to certify the participation in the IT-Wallet System and MUST NOT be used for any other purpose;
 
 - The Trust Mark MUST only be displayed by Technical Solutions that have successfully completed the certification process;
 
-- The Trust Mark MUST be used exactly as provided in the official resources and MUST comply with the usage specifications outlined in the Official Resources to ensure proper visibility throughout all the stages of the User Experience;
+- The Trust Mark MUST be used exactly as provided in the Official Resources and MUST comply with the usage specifications outlined in the Official Resources to ensure proper visibility throughout all the stages of the User Experience;
 
 - The Trust Mark MUST NOT be altered, distorted, modified, or replaced by unofficial elements;
 
@@ -85,9 +86,11 @@ Components
 
 Components are the elements of the IT-Wallet System that enable the User to interact with several Technical Solutions via their Wallet Instance.
 
-The Official Resources provide both complex components, such as templates to support entire workflows, and atomic components, like individual elements (e.g. Engagement Buttons) to be integrated into existing interfaces. The key requirements are as follows:
+The Official Resources provide both complex components, such as templates to support entire workflows, and atomic components, like individual elements (e.g. Engagement Buttons) to be integrated into existing interfaces. 
 
-- Primary Actors MUST use official resources and MUST comply with the usage specifications outlined in the Official Resources;
+The key requirements are as follows:
+
+- Primary Actors MUST use Official Resources and MUST comply with the usage specifications outlined in the Official Resources;
 
 - Primary Actors MAY choose from the available configurations, but MUST ensure the correct use of atomic components, such as the Engagement Buttons;
 
