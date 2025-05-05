@@ -342,8 +342,8 @@ The Key Binding Request JWT includes the following body claims:
     * - **hardware_signature**
       - The signature of ``client_data`` obtained using the Cryptographic Hardware Key, encoded in the ``base64url`` format.
       -
-    * - **key_attestation**
-      - The key attestation obtained from the Key Attestation APIs with the holder binding of ``client_data``.
+    * - **integrity_assertion**
+      - The integrity assertion obtained from the **Device Integrity Service** with the holder binding of ``client_data``.
       -
     * - **hardware_key_tag**
       - The value of the Cryptographic Hardware Key Tag.
@@ -367,7 +367,7 @@ Below is a non-normative example of a Key Binding Request JWT.
       "sub": "https://application-provider.example.org/",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "key_attestation": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
+      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
       "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX"
       "cnf": {
         "jwk": {
