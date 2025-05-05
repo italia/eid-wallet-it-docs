@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Normative References &#8212; IT-Wallet Technical Specification  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Digital Identity Wallet Paradigm" href="ssi-introduction.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specification  documentation</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Normative References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#defined-terms-and-acronyms">Defined Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#defined-terms">Defined Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#normative-language-and-conventions">Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#brand-identity">Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html#functionalities">Functionalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="normative-references">
+<h1>Normative References<a class="headerlink" href="#normative-references" title="Link to this heading">¶</a></h1>
+<p>Below the normative references and respective acronyms included in these Technical Specifications:</p>
+<p>[CAD]</p>
+<p>Legislative Decree No. 82 of March 7, 2005, as amended, containing the 'Digital Administration Code'.</p>
+<p>[REF_ACCESSIBILITY]</p>
+<p>Accessibility Guidelines for IT Tools as per Article 11 of Law 4/2004.
+Directive (EU) 2019/882 of the European Parliament and of the Council of 17 April 2019 on the accessibility requirements for products and services.</p>
+<p>[GL_DESIGN]</p>
+<p>Design Guidelines for  websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.</p>
+</section>
+<section id="defined-terms-and-acronyms">
+<h1>Defined Terms and Acronyms<a class="headerlink" href="#defined-terms-and-acronyms" title="Link to this heading">¶</a></h1>
+<p>The terms <em>User</em>, <em>Trust Service</em>, <em>Trust Model</em>, <em>Trusted List</em>, <em>Trust Framework</em>, <em>Attribute</em>, <em>Electronic Attestations of Attributes Provider</em> or <em>Trust Service Provider (TSP)</em>, <em>Person Identification Data (PID)</em>, <em>Revocation List</em>, <em>Qualified Electronic Attestations of Attributes Provider</em> or <em>Qualified Trust Service Provider (QTSP)</em>, <em>Electronic Attestation of Attributes (EAA)</em>, are defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+<p>Below is the description of acronyms and definitions which are useful for further insights into topics that complement the IT-Wallet System and the interacting components.</p>
+</section>
+<section id="defined-terms">
+<span id="id1"></span><h1>Defined Terms and Acronyms<a class="headerlink" href="#defined-terms" title="Link to this heading">¶</a></h1>
+<p>This section aligns the IT-Wallet System's terminology with the definitions provided in ARF 1.10 (see <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md">ARF Annex 1</a>).
+For each term, the IT-Wallet definition is compared and mapped to the ARF definition, with notes on any differences or clarifications.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Term / Acronym</p></th>
+<th class="head"><p>IT-Wallet Definition</p></th>
+<th class="head"><p>ARF 1.10 Definition / Alignment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Accreditation Process</p></td>
+<td><p>Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.</p></td>
+<td><p>Identical to ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Attribute</p></td>
+<td><p>A set of characteristics, qualities, rights, or permissions of a person or object, or a single piece of such information.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Authentication</p></td>
+<td><p>Electronic process confirming the identity of a person or the origin/integrity of data.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Authentic Source</p></td>
+<td><p>Public or private entity responsible for a repository/system considered a primary source for Attributes or PID.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Certification Process</p></td>
+<td><p>Process by Conformity Assessment Bodies to certify the Wallet Solution, including periodic technical assessments.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Conformity Assessment Body (CAB)</p></td>
+<td><p>Accredited body competent to assess/certify Wallet Solutions or trust service providers.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Credential Issuer</p></td>
+<td><p>Organizational Entity providing Digital Credentials to Users (may be PID Provider or (Q)EAA Provider).</p></td>
+<td><p>ARF 1.10 uses similar terms; IT-Wallet merges PID and (Q)EAA Providers under this term.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Credential Status Assertion</p></td>
+<td><p>Signed document proving a Digital Credential's current validity status.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Critical Assets</p></td>
+<td><p>Assets (e.g., cryptographic keys) whose loss would seriously impact the Wallet Unit.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cryptographic Hardware Key Tag</p></td>
+<td><p>Unique identifier for Cryptographic Hardware Keys, used to access the private key in hardware.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Cryptographic Hardware Keys</p></td>
+<td><p>Key pair generated by the Wallet Instance, valid for its lifetime, used for identification.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Device Integrity Service</p></td>
+<td><p>Service by device manufacturers to verify app integrity and secure key storage.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Digital Credential</p></td>
+<td><p>Signed set of Attributes in a specific format (e.g., mDoc-CBOR, SD-JWT VC), may be PID or (Q)EAA.</p></td>
+<td><p>ARF 1.10 restricts to mDoc-CBOR and SD-JWT VC; IT-Wallet notes the definition should be format-neutral.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Federation Authority</p></td>
+<td><p>Public governance entity issuing guidelines, rules, and managing trust lists and participant status.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Holder</p></td>
+<td><p>Person or entity that receives, manages, and presents Digital Credentials via the Wallet Instance.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Holder Key Binding</p></td>
+<td><p>Ability of the Holder to prove possession of the private key attested by a Trusted Third Party.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Identity and Access Management (IAM)</p></td>
+<td><p>Framework for managing digital identities and access to information.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>IT-Wallet System</p></td>
+<td><p>Set of Technical Solutions implementing the Italian Digital Wallet System.</p></td>
+<td><p>Not present in ARF 1.10; specific to IT-Wallet.</p></td>
+</tr>
+<tr class="row-even"><td><p>IT-Wallet System Register</p></td>
+<td><p>Register of entities participating in the IT-Wallet System.</p></td>
+<td><p>Not present in ARF 1.10; specific to IT-Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Key Attestation</p></td>
+<td><p>Attestation from device OEM about secure key storage in hardware-backed keystore.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Level of Assurance (LoA)</p></td>
+<td><p>Degree of confidence in identity vetting and credential presentation.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Metadata</p></td>
+<td><p>Digital artifact with information about an Organizational Entity (endpoints, public keys, etc.).</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>National Accreditation Bodies (NAB)</p></td>
+<td><p>Body performing accreditation under authority from a Member State.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>National Identity Provider</p></td>
+<td><p>Preexisting identity systems (e.g., SPID, CIE) notified to eIDAS.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Notification Process</p></td>
+<td><p>Process for transferring information to the EC and inclusion in the Trusted List.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Organizational Entity</p></td>
+<td><p>Legal person (organization or public entity) recognized to operate a role in the IT-Wallet ecosystem.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>PID Provider</p></td>
+<td><p>Credential Issuer responsible for issuing/revoking PID, ensuring cryptographic binding to Wallet Unit.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Policy Language</p></td>
+<td><p>Formal language for defining security, privacy, and identity management policies.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Primary Actors</p></td>
+<td><p>Entities implementing Technical Solutions for the IT-Wallet System.</p></td>
+<td><p>Not present in ARF 1.10; specific to IT-Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pseudonym</p></td>
+<td><p>Alternative identifier for privacy/anonymity, allowing authentication/authorization.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Qualified Electronic Attestation of Attributes (QEAA)</p></td>
+<td><p>Digitally verifiable attestation issued by a QTSP, substantiating possession of attributes.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qualified Electronic Attestation of Attributes Provider</p></td>
+<td><p>Entity providing QEAAs.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Qualified Electronic Signature Provider</p></td>
+<td><p>Trust Service Provider issuing Qualified Electronic Signature certificates.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Registration Authority</p></td>
+<td><p>Party responsible for registering Organizational Entities by issuing Trust Assertions.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Registration Process</p></td>
+<td><p>Process for verifying eligibility and compliance of Organizational Entities.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Relying Party</p></td>
+<td><p>Entity relying on electronic identification or Trust Service from a Wallet Instance.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party Solution</p></td>
+<td><p>Product (software/hardware/cloud) enabling credential presentations in various contexts.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Relying Party Backend</p></td>
+<td><p>Remote infrastructure with server-side components managed by a Relying Party Solution provider.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Relying Party Instance</p></td>
+<td><p>Specific deployment of a Relying Party application or device.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Selective Disclosure</p></td>
+<td><p>Functionality enabling the User to submit a subset of Digital Credentials Data.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Self-Sovereign Identity (SSI)</p></td>
+<td><p>Approach giving individuals control over their digital identity information.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Supervision Process</p></td>
+<td><p>Process by a Supervisory Body to review and ensure proper functioning of the Wallet Provider and others.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Technical Solutions</p></td>
+<td><p>Hardware/software systems and services implemented by Wallet Solution Providers, PID Provider, etc.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Technical Specifications</p></td>
+<td><p>Specifications providing technical architecture, implementation framework, and design requirements.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Trust</p></td>
+<td><p>Confidence in the security, reliability, and integrity of entities and their actions.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trust Assertion</p></td>
+<td><p>Cryptographically verifiable artifact proving compliance with rules and requirements.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Trust Attestation</p></td>
+<td><p>Electronic attestation of compliance with the regulatory framework, cryptographically verifiable.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trust Evaluation</p></td>
+<td><p>Process of verifying trustworthiness of registered Organizational Entities.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Trust Framework</p></td>
+<td><p>Legally enforceable set of rules and agreements for a multi-party system.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trust Layer</p></td>
+<td><p>Architectural component enabling participants to establish trust.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Trust Model</p></td>
+<td><p>Collection of rules ensuring legitimacy of components/entities in the IT-Wallet ecosystem.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trust Relationship</p></td>
+<td><p>Reliable relationship between Organizational Entities after Trust Evaluation.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Access Certificate</p></td>
+<td><p>Certificate authenticating and validating the (Wallet-) Relying Party.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Registration Certificate</p></td>
+<td><p>Data object indicating the attributes the Relying Party has registered to request from Users.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Certificate Signing Request (CSR)</p></td>
+<td><p>Request sent to a CA containing the public key and identifying information for a digital certificate.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Metadata</p></td>
+<td><p>Digital artifact with information about an Organizational Entity (endpoints, public keys, etc.).</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Policy Language</p></td>
+<td><p>Formal language for defining security, privacy, and identity management policies.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Registration Process</p></td>
+<td><p>Process for verifying eligibility and compliance of Organizational Entities.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Accreditation Process</p></td>
+<td><p>Process performed by the National Accreditation Body to accredit CABs.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trusted List</p></td>
+<td><p>Repository of information about authoritative entities and their status.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>User</p></td>
+<td><p>Natural or legal person using trust services or electronic identification means.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>User Attribute</p></td>
+<td><p>Characteristic, quality, right, or permission of a person or object.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Verifier</p></td>
+<td><p>Also known as Credential Verifier; a person or entity using a Relying Party Instance.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wallet Instance</p></td>
+<td><p>Application installed on a User's device, part of the Wallet Unit, providing user interfaces.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Provider</p></td>
+<td><p>Organizational Entity responsible for management and provisioning of a Wallet Solution.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wallet Provider Backend</p></td>
+<td><p>Technical infrastructure and server-side components managed by a Wallet Provider.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Secure Cryptographic Application (WSCA)</p></td>
+<td><p>Application managing Critical Assets using cryptographic functions provided by the WSCD.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wallet Secure Cryptographic Device (WSCD)</p></td>
+<td><p>Tamper-resistant device providing an environment for the WSCA to protect Critical Assets.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Solution</p></td>
+<td><p>Set of Technical Solutions for the proper functioning of IT-Wallet Instances.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wallet Unit</p></td>
+<td><p>Unique configuration of a Wallet Solution for an individual User, including security features.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Unit Attestation</p></td>
+<td><p>Data object issued by a Wallet Provider describing the components of the Wallet Unit.</p></td>
+<td><p>Aligned with ARF 1.10.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For any term not present in ARF 1.10, the IT-Wallet definition is provided as authoritative for the Italian context.</p>
+</div>
+<p>Below are the main defined terms and definitions related to User Experience aspects:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Authentication Button</p></td>
+<td><p>The Engagement Button that enables the User to access the Authentication process and use the services provided by Verifiers.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Brand Identity</p></td>
+<td><p>Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Catalog</p></td>
+<td><p>Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Call To Action</p></td>
+<td><p>A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Detailed View</p></td>
+<td><p>Extended display mode of the Digital Credentials, showing all the Attributes included.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Discovery Page</p></td>
+<td><p>It’s the page of the Touchpoint of the Relying Party where the User lands to access their authenticated area, and it has the goal to show the User all the Authentication methods available.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Engagement Button</p></td>
+<td><p>Interactive element of the Interface that allows the User to trigger a process (e.g. to Authenticate, to request the issuance of a Digital Credential, etc.).</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Interaction Model</p></td>
+<td><p>A set of characteristics that define how the User interacts with the Interface of one or multiple Touchpoints in order to complete a task or operation and achieve a specific goal.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Interface</p></td>
+<td><p>The set of graphic, typographical and interactive elements through which the User interacts with the Touchpoint(s) responsible for the delivery of a product or service, in compliance with [GL_DESIGN].</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Preview View</p></td>
+<td><p>Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Service Model</p></td>
+<td><p>Set of interactions between actors and touchpoints necessary for service delivery and fruition.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Touchpoint</p></td>
+<td><p>Point of contact (digital and not) between the User and the product or service.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Trust Mark</p></td>
+<td><p>A graphic element that gives evidence of the participation of the Primary Actors in the IT-Wallet System and thus guarantees adherence to its standards.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>User Experience</p></td>
+<td><p>The set of people's perceptions and reactions resulting from the use and/or expectation of use of a product, system or service.</p></td>
+<td><p>Aligned with ISO 9241-210:2010</p></td>
+</tr>
+<tr class="row-even"><td><p>Visual Identity</p></td>
+<td><p>Coherent set of graphic and typographic elements that visually represent a product or service and make it distinguishable and recognizable.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="acronyms">
+<h2>Acronyms<a class="headerlink" href="#acronyms" title="Link to this heading">¶</a></h2>
+<p>Below are the main acronyms used in the document:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Acronym</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>AAL</strong></p></td>
+<td><p>Authenticator Assurance Level as defined in <a class="reference external" href="https://csrc.nist.gov/glossary/term/authenticator_assurance_level">https://csrc.nist.gov/glossary/term/authenticator_assurance_level</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ANPR</strong></p></td>
+<td><p>Italian National Registry of the Resident Population</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>API</strong></p></td>
+<td><p>Application Programming Interface</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CIE</strong></p></td>
+<td><p>National Electronic Identity Card</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>IAM</strong></p></td>
+<td><p>Identity and Access Management</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LoA</strong></p></td>
+<td><p>Level of Assurance</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>OID4VP</strong></p></td>
+<td><p>OpenID for Verifiable Presentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PID</strong></p></td>
+<td><p>Person Identification Data</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PII</strong></p></td>
+<td><p>Personally Identifiable Information</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SPID</strong></p></td>
+<td><p>Italian Public Digital Identity System</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SSI</strong></p></td>
+<td><p>Self Sovereign Identity</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VC</strong></p></td>
+<td><p>Verifiable Credential</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>VP</strong></p></td>
+<td><p>Verifiable Presentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>WSCA</strong></p></td>
+<td><p>Wallet Secure Cryptographic Application</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>WSCD</strong></p></td>
+<td><p>Wallet Secure Cryptographic Device</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="normative-language-and-conventions">
+<h1>Normative Language and Conventions<a class="headerlink" href="#normative-language-and-conventions" title="Link to this heading">¶</a></h1>
+<p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Normative References</a></li>
+<li><a class="reference internal" href="#defined-terms-and-acronyms">Defined Terms and Acronyms</a></li>
+<li><a class="reference internal" href="#defined-terms">Defined Terms and Acronyms</a><ul>
+<li><a class="reference internal" href="#acronyms">Acronyms</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#normative-language-and-conventions">Normative Language and Conventions</a></li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="introduction.html">
+                    <span class="icon">&lt;</span><span>Introduction</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="ssi-introduction.html"><span>The Digital Identity Wallet Paradigm</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 05/05/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
