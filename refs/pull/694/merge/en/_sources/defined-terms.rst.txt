@@ -34,8 +34,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 Defined Terms and Acronyms
 ==========================
 
-This section aligns the IT-Wallet System's terminology with the definitions provided in ARF 1.10 (see `ARF Annex 1 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md>`_).  
-For each term, the IT-Wallet definition is compared and mapped to the ARF definition, with notes on any differences or clarifications.
+This section aligns the IT-Wallet System's terminology with the definitions provided in ARF 1.10 (see `ARF Annex 1 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md>`_). For each term, the IT-Wallet definition is compared and mapped to the ARF definition, with notes on any differences or clarifications.
 
 .. list-table::
    :header-rows: 1
@@ -43,7 +42,7 @@ For each term, the IT-Wallet definition is compared and mapped to the ARF defini
 
    * - Term / Acronym
      - IT-Wallet Definition
-     - ARF 1.10 Definition / Alignment
+     - ARF Definition / Alignment
 
    * - Accreditation Process
      - Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
