@@ -37,7 +37,25 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 PID – Personal Identification Data
 ===================================
-TBD (what it is from a user perspective, how to use it for issuance of EAA and authentication)
+The PID (Personal Identity Data) refers to verified minimum set of informations about an individual that can be stored and shared securely via the wallet app. From the user’s perspective, this data includes basic Identity Information: 
+- Name
+- Surname
+- Date of birth
+- Fiscal code
+(Place of birth, Nationality)
+
+The Wallet Provider MUST allow the user to:
+- Receive, store, visualize and interact with the user’s personal identity data (PID) in a secure and private manner in the wallet app.
+- Manage the PID by providing an interface for them to easily view and control the validity and the status (valid, revoked, expiring, expired) with specific data they wish to share
+- Present the PID in order to be identified by the Relying Party in a digital context and request the issuance of additional personal attestations. 
+- Present the PID and other attributes from (Qualified) Electronic Attestation of Attribute stored in the wallet to access services provided by Relying Parties. The user can present the PID using the same presentation methods as those available for the other certificates in the wallet.
+- Revoke or update the PID (and the wallet instance with all the attestation issued) at any time, with the ability to request the deletion or modification of data stored within the wallet to ensure user control and privacy
+- Recognize one's own PID and differentiate it from other (Q)EAAs, as it adheres to the comprehensive guidelines defined by the PID Issuer - not only concerning visual identity, but also including format, structure, and presentation standards.
+
+
+The PID Issuer MUST define: 
+- a name/naming convention to refer to the PID, which must be consistent across all wallet solutions
+- a clear set of guidelines for the PID to ensure consistent identification and representation of the PID across different wallet solutions, in terms of format, structure, and presentation standards (e.g. name, color, background, an official graphic element to clearly identify and differentiate it). 
 
 
 Issuance of Electronic Attestations of Attributes
@@ -87,6 +105,14 @@ The Electronic Attestations obtained within the Wallet Instance SHOULD be displa
 - the Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout;
 - the Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details;
 - the Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section.
+
+
+The Wallet Provider MUST allow the user to manage each single attestation in his wallet by providing a view to control the validity and the lifecycle, providing specific details about the state (e.g., valid, revoked, expiring, expired) and contact information for assistance, if needed. These lifecycle actions must be clearly communicated and supported within all wallet solutions to ensure a seamless and consistent user experience.
+
+- All the (Q)EAAs must be homogeneous, consistent, and recognizable across all wallet solutions.
+- To ensure recognizability, each credential must include a defined set of common data attributes, such as the credential name, color scheme, and background.
+- These attributes must be defined by the Issuer. While credentials may vary in form, they must include at least one distinctive and recognizable visual element, and follow consistent color and layout standards (e.g., a driver's license must appear in pink across all wallets with a distinctive graphic element).
+
 
 
 Presentation of Electronic Attestations
