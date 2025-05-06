@@ -170,10 +170,10 @@
 <p>The Wallet and Mobile Relying Party Instances share significant similarities, with particular respect to some aspects related to initialization and integrity validation. To eliminate redundancy, this section will use the term <strong>Mobile Application Instance</strong> to collectively refer to both. Within this framework, the <strong>Application Provider</strong> assumes the responsibilities of either the Wallet Provider or the Relying Party Backend, depending on the context.</p>
 <section id="mobile-application-instance-initialization">
 <h2>Mobile Application Instance Initialization<a class="headerlink" href="#mobile-application-instance-initialization" title="Link to this heading">¶</a></h2>
-<p>The Initialization flow enables the Mobile Application Instance to register a long-lived key pair, securely stored in an appropriate secure storage within the device, with the Application Provider. This process occurs only after the Application Provider verifies the security and integrity assertion issued by the OS manufacturer.</p>
+<p>The Initialization flow enables the Mobile Application Instance to register a long-lived key pair, securely stored in an appropriate secure storage within the device, with the Application Provider. This process occurs only after the Application Provider verifies the security and Key Attestation issued by the OS manufacturer.</p>
 <p>The flow is displayed in <a class="reference internal" href="#fig-mobileapplication-instance-initialization-flow"><span class="std std-ref">Mobile Application Instance Initialization Sequence Diagram</span></a>, while a step-by-step description is provided below.</p>
 <figure class="align-center" id="id1" style="width: 100%">
-<span id="fig-mobileapplication-instance-initialization-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/VLFBRjiw4DtpAmQyYvi0xWy4Q94qYpPe2mJfOnN0695ZQM29L3b3j-xNbvHToBQ2R0XuT1vd7huLnQHvw0rcZI4F3INJiIVOnAXD_6tC_uy5mOv732e6dSO4zhjGie02MGfXd15WlyI6UuAxSUpPeN8Cy114CJYQ63YESCxuH7kuKoNH0_pkyK4EK5I1_sHC7Des4OLptgd5OuexzfJWFRej1J_n6xSrfYPyywwuti1dpC5re1q1pjpQ4-zGfw8nvJd2xpjoM-3DHF2qOqSm4AbCXO433ta08PSJwnuI_SoSQA2WyXmm-4fzgJV0H80xv1wRdewE9UiDF1M90WLhGwppidEsgPVo794VA52gzHawVJr6dwkUpYJczcQ9-xGVDRO9nuuTVCJaVs6Y6brWH4vmPMrthAwtj5-FkR5s1PVLn3jhhm-jYyRqcZ9ymtQXgzWMWNyPKQKsudgce6kFYkiEfOEtuBabqQkfnHLSIgpWCkprwI2hhZ7rFNgSph8IS5wNjS-XYJbuq0YJtO4vZtb10EFft6lUxxoMrP9QYyjvl782Fx1dlpY1vTUbqIdkQrtKYyQhvx3S-yMTrKq-KSkYQT8kFsICGSXS7fwdnT-iY6IXT0CFWPLBtZy73SdEaSWcz-QMWiz3_nS0"><img alt="_images/application_instance_initialization.svg" src="_images/application_instance_initialization.svg" /></a>
+<span id="fig-mobileapplication-instance-initialization-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/VLFBRjiw4DtpAmQyYvi0xWy4Q94qYpPe2mJfOnN0695ZQM29L3b3j-xNbvHToBQ2R0XuT1vd7huLnQHvw0rcZI4F3INJiIVOnAXD_6tC_uy5mOv732e6dSO4zhjGie02MGfXd15WlyI6UuAxSUpPeN8Cy114CJYQ63YESCxuH7kuKoNH0_pkyK4EK5I1_sHC7Des4OLptgd5OuexzfJWFRej1J_n6xSrfYPyywwuti1dpC5re1q1pjpQ4-zGfw8nvJd2xpjoM-3DHF2qOqSm4AbCXO433ta08PSJwnuI_SoSQA2WyXmm-4fzgJV0H80xv1wRdewE9UiDF1M90WLhGwppidEsgPVo794VA52gzHawVJr6dwkUpYJczcQ9-xGVDRO9nuuTVCJaVs6Y6brWH4vmPMrthAwtj5-FkR5s1PVLn3jhhm-jYyRqcZ9ymtQXgzWMWNyPKQKsudgce6kFYkiEfOEtuBabqQkfnHLSIgpWCkprwI2hhZ7rFNgSph8IS5wNjS-XYJbuq0YJtO4vZtb10EFft6lUxxoMrP9QYyjvl782Fx1dlpY1vTUbqIdkQrtKYyQhvx3S-yMTrKq-KSkYQT8kFsICGSXS7fwdnT-iY6IXT0CFWPLBtZy73SdEaSWcz-QMWiz3_nS0"><img alt="_images/application_instance_initialization.svg" src="_images/application_instance_initialization.svg" /></a>
 <figcaption>
 <p><span class="caption-text">Mobile Application Instance Initialization Sequence Diagram</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
@@ -183,7 +183,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>Checks whether the device meets the minimum security requirements.</p></li>
-<li><p>Checks if the Key Attestation API is available.</p></li>
+<li><p>Checks if the Key Attestation APIs is available.</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
@@ -206,17 +206,17 @@
 <p><strong>WSCD</strong>: The Mobile Application Instance MAY use a local WSCD for cryptographic operations, including key generation, secure storage, and cryptographic processing,  on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.</p>
 <p>If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.</p>
 </div>
-<p><strong>Step 7</strong>: The Mobile Application Instance uses the Key Attestation API, providing the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> to acquire the Key Attestation.</p>
+<p><strong>Step 7</strong>: The Mobile Application Instance uses the Key Attestation APIs, providing the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> to acquire the Key Attestation.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Key Attestation API</strong>: In this section, the Key Attestation API is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.</p>
-<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. For Android, the Key Attestation API is represented by <em>Key Attestation</em>, a feature supported by <em>StrongBox Keymaster</em>, which is a physical HSM installed directly on the motherboard, and the <em>TEE</em> (Trusted Execution Environment), a secure area of the main processor. <em>Key Attestation</em> aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the <em>Play Integrity API</em>. For Apple devices, the Key Attestation API is represented by <em>DeviceCheck</em>, which provides a framework and server interface to manage device-specific data securely. <em>DeviceCheck</em> is used in combination with the <em>Secure Enclave</em>, a dedicated HSM integrated into Apple's SoCs. <em>DeviceCheck</em> can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like <em>Secure Enclave</em>. Developers can leverage <em>DeviceCheck</em> functionality by using the framework itself.
+<p><strong>Key Attestation APIs</strong>: In this section, the Key Attestation APIs is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.</p>
+<p>The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. Additionally Android devices may possess the <em>Key Attestation API</em>, a feature supported by <em>StrongBox Keymaster</em> (a physical HSM installed directly on the motherboard) or by the <em>TEE</em> (Trusted Execution Environment, a secure area of the main processor). <em>Key Attestation</em> aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. For Apple devices, the Key Attestation API is represented by <em>DeviceCheck</em>, which provides a framework and server interface to manage device-specific data securely. <em>DeviceCheck</em> is used in combination with the <em>Secure Enclave</em>, a dedicated HSM integrated into Apple's SoCs. <em>DeviceCheck</em> can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like <em>Secure Enclave</em>. Developers can leverage <em>DeviceCheck</em> functionality by using the framework itself.
 These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national registration systems.
 <em>Secure Enclave</em> has been available on Apple devices since the iPhone 5s (2013).
 For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may vary by manufacturer, who decides whether to include it or not.</p>
 </div>
-<p>If any errors occur in the Key Attestation API process, such as device integrity verification, for example, due to unavailable Key Attestation APIs, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIs raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.</p>
-<p><strong>Step 8</strong>: The Key Attestation API performs the following actions:</p>
+<p>If any errors occur in the Key Attestation APIs process, such as device integrity verification, for example, due to unavailable Key Attestation APIss, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIs raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.</p>
+<p><strong>Step 8</strong>: The Key Attestation APIs performs the following actions:</p>
 <ul class="simple">
 <li><p>Creates a Key Attestation that is linked with the provided <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> and the public key of the Application Instance Hardware.</p></li>
 <li><p>Incorporates information pertaining to the device's security.</p></li>
@@ -226,7 +226,7 @@ For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may v
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It is not necessary to send the Application Instance Hardware public key because it is already included in the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.
-As seen in the previous steps, the Key Attestation API creates a Key Attestation linked to the provided <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> which is the digest of the Application Provider's <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the key attestation.</p>
+As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> which is the digest of the Application Provider's <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.</p>
 </div>
 <p><strong>Steps 10-12 (Mobile Application Instance Initialization Response)</strong>: The Application Provider validates the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> and <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> signature, therefore:</p>
 <blockquote>
@@ -413,7 +413,7 @@ As seen in the previous steps, the Key Attestation API creates a Key Attestation
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The signature of the Integrity Assertion is invalid.</p></td>
+<td><p>The signature of the Key Attestation is invalid.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPTIONAL]</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
@@ -517,7 +517,7 @@ As seen in the previous steps, the Key Attestation API creates a Key Attestation
 <td></td>
 </tr>
 <tr class="row-even"><td><p><strong>integrity_assertion</strong></p></td>
-<td><p>The integrity assertion obtained from the <strong>Device Integrity Service</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></td>
+<td><p>The Integrity Assertion obtained from the <strong>Device Integrity Service APIs</strong> with the holder binding of <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><strong>hardware_key_tag</strong></p></td>
@@ -594,7 +594,7 @@ As seen in the previous steps, the Key Attestation API creates a Key Attestation
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
-<td><p>The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.</p></td>
+<td><p>The request is malformed, missing required parameters (e.g., header parameters or Integrity Assertion), or includes invalid and unknown parameters.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -610,7 +610,7 @@ As seen in the previous steps, the Key Attestation API creates a Key Attestation
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The integrity assertion validation failed; the integrity assertion is tampered with or improperly signed.</p></td>
+<td><p>The Integrity Assertion validation failed; the Integrity Assertion is tampered with or improperly signed.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -707,7 +707,7 @@ As seen in the previous steps, the Key Attestation API creates a Key Attestation
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/05/2025.
+      Last updated on 06/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
