@@ -49,7 +49,7 @@ The requirements for the Wallet Attestation are defined below:
 
 .. note::
 
-  Throughout this section, the services used to attest genuineness of the Wallet Instance and the device in which it is installed are referred to as **Key Attestation API**. The Key Attestation API is considered in an abstract fashion and it is assumed to be a service provided by a trusted third party (i.e., the OS Provider's API) which is able to perform integrity checks on the Wallet Instance as well as on the device where it is installed.
+  Throughout this section, the services used to attest genuineness of the Wallet Instance and the device in which it is installed are referred to as **Device Integrity Service API**. The Device Integrity Service API is considered in an abstract fashion and it is assumed to be a service provided by a trusted third party (i.e., the OS Provider's API) which is able to perform integrity checks on the Wallet Instance as well as on the device where it is installed.
 
 WSCD Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -813,10 +813,10 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
       - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set to ``wallet.atestation.example/v1.0``.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
-      - REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the digests.
+      - REQUIRED. JSON array containing a list of all disclusure's digests.
       - `SD-JWT`_.
     * - **sd_alg**
-      - REQUIRED. JSON array containing a list of the signing algorithms (alg values) supported.
+      - REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the disclusure's digests.
       - `SD-JWT`_.
     * - **sub**
       - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.
