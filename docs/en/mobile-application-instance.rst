@@ -9,7 +9,7 @@ The Wallet and Mobile Relying Party Instances share significant similarities, wi
 Mobile Application Instance Initialization
 ================================================
 
-The Initialization flow enables the Mobile Application Instance to register a long-lived key pair, securely stored in an appropriate secure storage within the device, with the Application Provider. This process occurs only after the Application Provider verifies the security and integrity assertion issued by the OS manufacturer.
+The Initialization flow enables the Mobile Application Instance to register a long-lived key pair, securely stored in an appropriate secure storage within the device, with the Application Provider. This process occurs only after the Application Provider verifies the security and Key Attestation issued by the OS manufacturer.
 
 The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flow`, while a step-by-step description is provided below.
 
@@ -18,7 +18,7 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 .. figure:: ../../images/application_instance_initialization.svg
     :figwidth: 100%
     :align: center
-    :target: https://www.plantuml.com/plantuml/svg/VLFDRjH03BxFKrZ3WLPQNg0IgAL8K05IrGAdIYjdnasiJMR2sBEmF3t9PAiqswYN73p-VZxRkHJ5fBbh3MQD8NSL9TEm9tYCKQlurvYtjvYK7VSOL0mwZGdiJw5a0GMo381-xW3xFLRS4bprVSiEbME0co2AmL51OD_34l69zknew5Ag4-i1xYcLojNjZKmOL84tqYSETPs8mfBWkTPjYdlsbE0ZkXq5N_2LsnapMdttOP2_W6-OWsj06mASiMCutgEMeZ73vzX-tP3R0JyMW9_STaGgfT1nu2vt8EHoiP_eT-P47GMLXu31Zz2lT80hLH8jMYKRO2B0FNABLKj7nS7h1TmD52GAreOu3ixEtagMuNFi_4o14YhDhTFhqVfSzRIWcEFD5DVfq6ki4_ODE_Y2oV_1HADrWHuvmPcrpR6wtT5Xs-VAsWsSLXFlhJsVeel6z1ep_C3w1QzYFH0yUKILCOXhcO9kFIfk6vG6teFdcaJFIiGDd59iuDJi-VD1Zhp6ZDz9Op5BVZh6BOfG6bTcxKEeOWuUD4AHdD3pg5T1O3mjDUSzp-lPhCEdXzDWhvp3BspPByzX_NL5RDbxNnQt9hvv22jtiBYxijaxgbaqJVT-HzB786HE3z7JYzzk8Cb2wG9k0YjZo_yc3idEaSXZRiqb1P-xzZy0
+    :target: https://www.plantuml.com/plantuml/png/VLFBRjiw4DtpAmQyYvi0xWy4Q94qYpPe2mJfOnN0695ZQM29L3b3j-xNbvHToBQ2R0XuT1vd7huLnQHvw0rcZI4F3INJiIVOnAXD_6tC_uy5mOv732e6dSO4zhjGie02MGfXd15WlyI6UuAxSUpPeN8Cy114CJYQ63YESCxuH7kuKoNH0_pkyK4EK5I1_sHC7Des4OLptgd5OuexzfJWFRej1J_n6xSrfYPyywwuti1dpC5re1q1pjpQ4-zGfw8nvJd2xpjoM-3DHF2qOqSm4AbCXO433ta08PSJwnuI_SoSQA2WyXmm-4fzgJV0H80xv1wRdewE9UiDF1M90WLhGwppidEsgPVo794VA52gzHawVJr6dwkUpYJczcQ9-xGVDRO9nuuTVCJaVs6Y6brWH4vmPMrthAwtj5-FkR5s1PVLn3jhhm-jYyRqcZ9ymtQXgzWMWNyPKQKsudgce6kFYkiEfOEtuBabqQkfnHLSIgpWCkprwI2hhZ7rFNgSph8IS5wNjS-XYJbuq0YJtO4vZtb10EFft6lUxxoMrP9QYyjvl782Fx1dlpY1vTUbqIdkQrtKYyQhvx3S-yMTrKq-KSkYQT8kFsICGSXS7fwdnT-iY6IXT0CFWPLBtZy73SdEaSWcz-QMWiz3_nS0
 
     Mobile Application Instance Initialization Sequence Diagram
 
@@ -28,7 +28,7 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 **Step 2**: The Mobile Application Instance:
 
   * Checks whether the device meets the minimum security requirements.
-  * Checks if the Device Integrity Service is available.
+  * Checks if the Key Attestation APIs is available.
 
 .. note::
 
@@ -51,36 +51,36 @@ Upon a successful request, the Application Provider generates and returns the ``
 
   If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
 
-**Step 7**: The Mobile Application Instance uses the Device Integrity Service, providing the ``client_data_hash`` to acquire the Integrity Assertion.
+**Step 7**: The Mobile Application Instance uses the Key Attestation APIs, providing the ``client_data_hash`` to acquire the Key Attestation.
 
 .. note::
 
-  **Device Integrity Service**: In this section, the Device Integrity Service is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.
+  **Key Attestation APIs**: In this section, the Key Attestation APIs is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.
 
-  The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. Additionally Android devices may possess the *Key Attestation API*, a feature supported by *StrongBox Keymaster* (a physical HSM installed directly on the motherboard) or by the *TEE* (Trusted Execution Environment, a secure area of the main processor). *Key Attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the *Play Integrity API*. For Apple devices, the Device Integrity Service is represented by *DeviceCheck*, which provides a framework and server interface to manage device-specific data securely. *DeviceCheck* is used in combination with the *Secure Enclave*, a dedicated HSM integrated into Apple's SoCs. *DeviceCheck* can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like *Secure Enclave*. Developers can leverage *DeviceCheck* functionality by using the framework itself.
+  The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. Additionally Android devices may possess the *Key Attestation API*, a feature supported by *StrongBox Keymaster* (a physical HSM installed directly on the motherboard) or by the *TEE* (Trusted Execution Environment, a secure area of the main processor). *Key Attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the *Play Integrity API*. For Apple devices, the Key Attestation APIs is represented by *DeviceCheck*, which provides a framework and server interface to manage device-specific data securely. *DeviceCheck* is used in combination with the *Secure Enclave*, a dedicated HSM integrated into Apple's SoCs. *DeviceCheck* can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like *Secure Enclave*. Developers can leverage *DeviceCheck* functionality by using the framework itself.
   These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national registration systems.
   *Secure Enclave* has been available on Apple devices since the iPhone 5s (2013).
   For Android devices, the inclusion of **Strongbox Keymaster** may vary by manufacturer, who decides whether to include it or not.
 
-If any errors occur in the Device Integrity Service process, such as device integrity verification, for example, due to unavailable Device Integrity Services, an internal error, or an invalid nonce in the integrity request, the Device Integrity Service raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.
+If any errors occur in the Key Attestation APIs process, such as device integrity verification, for example, due to unavailable Key Attestation APIss, an internal error, or an invalid nonce in the integrity request, the Key Attestation APIs raise an error response. The Mobile Application Instance MUST process these errors accordingly. Details on error handling are left to the Mobile Application Instance implementation.
 
 
-**Step 8**: The Device Integrity Service performs the following actions:
+**Step 8**: The Key Attestation APIs performs the following actions:
 
-* Creates a Integrity Assertion that is linked with the provided ``client_data_hash`` and the public key of the Application Instance Hardware.
+* Creates a Key Attestation that is linked with the provided ``client_data_hash`` and the public key of the Application Instance Hardware.
 * Incorporates information pertaining to the device's security.
-* Uses an OEM private key to sign the Integrity Assertion, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
+* Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
-**Step 9 (Mobile Application Instance Initialization Request)**: The Mobile Application Instance sends a :ref:`Mobile Application Instance Initialization Request` to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the ``nonce``, Integrity Assertion (``integrity_assertion``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
+**Step 9 (Mobile Application Instance Initialization Request)**: The Mobile Application Instance sends a :ref:`Mobile Application Instance Initialization Request` to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the ``nonce``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
 
 .. note::
-  It is not necessary to send the Application Instance Hardware public key because it is already included in the ``integrity_assertion``.
-  As seen in the previous steps, the Device Integrity Service creates a Integrity Assertion linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Integrity Assertion.
+  It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
+  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
 
-**Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``integrity_assertion`` signature, therefore:
+**Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature, therefore:
 
   1. It MUST verify that the ``nonce`` was generated by Application Provider and has not already been used.
-  2. It MUST validate the ``integrity_assertion`` as defined by the device manufacturers' guidelines. The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``nonce`` with the ``client_data_hash`` provided in the Integrity Assertion.
+  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines. The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``nonce`` with the ``client_data_hash`` provided in the Key Attestation.
   3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider.
   4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device.
 
@@ -92,7 +92,7 @@ Upon successful initialization of the Mobile Application Instance, the Applicati
 
 **Steps 13-14**: The Mobile Application Instance has been initialized.
 
-.. note:: **Threat Model**: while the initialization endpoint does not necessitate authenticating the client, it is safeguarded through the use of `integrity_assertion`. Proper validation of this attestation permits the initialization of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a nonce helps prevent replay attacks. The authenticity of both the nonce and the ``hardware_key_tag`` is ensured by the signature found within the ``integrity_assertion``.
+.. note:: **Threat Model**: while the initialization endpoint does not necessitate authenticating the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the initialization of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a nonce helps prevent replay attacks. The authenticity of both the nonce and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
 
 
 Mobile Application Nonce Request
@@ -185,8 +185,8 @@ The Instance Initialization Request body contains the following claims:
     * - **hardware_key_tag**
       - The unique identifier of the **Cryptographic Hardware Keys** and encoded in ``base64url``.
       - This specification.
-    * - **integrity_assertion**
-      - An attestation that guarantees the secure generation, storage and usage of the key pair generated by the Mobile Application Instance. This can be an array containing a certificate chain whose leaf certificate is the Integrity Assertion obtained from the device **Device Integrity Service**, signed with the device hardware key.
+    * - **key_attestation**
+      - An attestation that guarantees the secure generation, storage and usage of the key pair generated by the Mobile Application Instance. This can be an array containing a certificate chain whose leaf certificate is the Key Attestation obtained from the device **Key Attestation APIs**, signed with the device hardware key.
       - This specification.
 
 Below is a non-normative example of an Instance Initialization Request.
@@ -199,7 +199,7 @@ Below is a non-normative example of an Instance Initialization Request.
 
     {
       "nonce": "d2JhY2NhbG91cmVqdWFuZGFt",
-      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBw... redacted",
+      "key_attestation": "o2NmbXRvYXBwbGUtYXBw... redacted",
       "hardware_key_tag": "WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU="
     }
 
@@ -257,7 +257,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
      - The provided nonce is invalid, expired, or already used.
    * - ``403 Forbidden``
      - ``invalid_request``
-     - The signature of the Integrity Assertion is invalid.
+     - The signature of the Key Attestation is invalid.
    * - ``422 Unprocessable Content`` [OPTIONAL]
      - ``validation_error``
      - The request does not adhere to the required format.
@@ -342,8 +342,8 @@ The Key Binding Request JWT includes the following body claims:
     * - **hardware_signature**
       - The signature of ``client_data`` obtained using the Cryptographic Hardware Key, encoded in the ``base64url`` format.
       -
-    * - **integrity_assertion**
-      - The integrity assertion obtained from the **Device Integrity Service** with the holder binding of ``client_data``.
+    * - **key_attestation**
+      - The Key Attestation obtained from the **Key Attestation APIs** with the holder binding of ``client_data``.
       -
     * - **hardware_key_tag**
       - The value of the Cryptographic Hardware Key Tag.
@@ -367,7 +367,7 @@ Below is a non-normative example of a Key Binding Request JWT.
       "sub": "https://application-provider.example.org/",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
+      "key_attestation": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
       "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX"
       "cnf": {
         "jwk": {
@@ -417,7 +417,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - **Description**
     * - ``400 Bad Request``
       - ``bad_request``
-      - The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.
+      - The request is malformed, missing required parameters (e.g., header parameters or Key Attestation), or includes invalid and unknown parameters.
     * - ``403 Forbidden``
       - ``invalid_request``
       - The Mobile Application Instance has been revoked.
@@ -429,7 +429,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The signature of the Integrity Request is invalid or does not match the associated public key (JWK).
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The integrity assertion validation failed; the integrity assertion is tampered with or improperly signed.
+      - The Key Attestation validation failed; the Key Attestation is tampered with or improperly signed.
     * - ``403 Forbidden``
       - ``invalid_request``
       - The provided ``nonce`` is invalid, expired, or already used.
