@@ -57,7 +57,7 @@ Upon a successful request, the Application Provider generates and returns the ``
 
   **Key Attestation APIs**: In this section, the Key Attestation APIs is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.
 
-  The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. Additionally Android devices may possess the *Key Attestation API*, a feature supported by *StrongBox Keymaster* (a physical HSM installed directly on the motherboard) or by the *TEE* (Trusted Execution Environment, a secure area of the main processor). *Key Attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. Developers can leverage its functionality through the *Play Integrity API*. For Apple devices, the Key Attestation APIs is represented by *DeviceCheck*, which provides a framework and server interface to manage device-specific data securely. *DeviceCheck* is used in combination with the *Secure Enclave*, a dedicated HSM integrated into Apple's SoCs. *DeviceCheck* can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like *Secure Enclave*. Developers can leverage *DeviceCheck* functionality by using the framework itself.
+  The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. Additionally Android devices may possess the *Key Attestation API*, a feature supported by *StrongBox Keymaster* (a physical HSM installed directly on the motherboard) or by the *TEE* (Trusted Execution Environment, a secure area of the main processor). *Key Attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. For Apple devices, the Key Attestation API is represented by *DeviceCheck*, which provides a framework and server interface to manage device-specific data securely. *DeviceCheck* is used in combination with the *Secure Enclave*, a dedicated HSM integrated into Apple's SoCs. *DeviceCheck* can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like *Secure Enclave*. Developers can leverage *DeviceCheck* functionality by using the framework itself.
   These services, specifically developed by the manufacturer, are integrated within the Android or iOS SDKs, eliminating the need for a predefined endpoint to access them. Additionally, as they are specifically developed for mobile architecture, they do not need to be registered as Federation Entities through national registration systems.
   *Secure Enclave* has been available on Apple devices since the iPhone 5s (2013).
   For Android devices, the inclusion of **Strongbox Keymaster** may vary by manufacturer, who decides whether to include it or not.
@@ -342,8 +342,8 @@ The Key Binding Request JWT includes the following body claims:
     * - **hardware_signature**
       - The signature of ``client_data`` obtained using the Cryptographic Hardware Key, encoded in the ``base64url`` format.
       -
-    * - **key_attestation**
-      - The Key Attestation obtained from the **Key Attestation APIs** with the holder binding of ``client_data``.
+    * - **integrity_assertion**
+      - The Integrity Assertion obtained from the **Device Integrity Service APIs** with the holder binding of ``client_data``.
       -
     * - **hardware_key_tag**
       - The value of the Cryptographic Hardware Key Tag.
@@ -367,7 +367,7 @@ Below is a non-normative example of a Key Binding Request JWT.
       "sub": "https://application-provider.example.org/",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
       "hardware_signature": "KoZIhvcNAQcCoIAwgAIB...",
-      "key_attestation": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
+      "integrity_assertion": "o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...",
       "hardware_key_tag": "QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX"
       "cnf": {
         "jwk": {
@@ -417,7 +417,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - **Description**
     * - ``400 Bad Request``
       - ``bad_request``
-      - The request is malformed, missing required parameters (e.g., header parameters or Key Attestation), or includes invalid and unknown parameters.
+      - The request is malformed, missing required parameters (e.g., header parameters or Integrity Assertion), or includes invalid and unknown parameters.
     * - ``403 Forbidden``
       - ``invalid_request``
       - The Mobile Application Instance has been revoked.
@@ -429,7 +429,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The signature of the Integrity Request is invalid or does not match the associated public key (JWK).
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The Key Attestation validation failed; the Key Attestation is tampered with or improperly signed.
+      - The Integrity Assertion validation failed; the Integrity Assertion is tampered with or improperly signed.
     * - ``403 Forbidden``
       - ``invalid_request``
       - The provided ``nonce`` is invalid, expired, or already used.
