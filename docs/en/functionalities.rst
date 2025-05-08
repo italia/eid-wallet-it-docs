@@ -108,11 +108,6 @@ The Electronic Attestations obtained within the Wallet Instance SHOULD be displa
 - the Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section.
 
 
-The Wallet Provider MUST allow the user to manage each single attestation in his wallet by providing a view to control the validity and the lifecycle, providing specific details about the state (e.g., valid, revoked, expiring, expired) and contact information for assistance, if needed. These lifecycle actions must be clearly communicated and supported within all wallet solutions to ensure a seamless and consistent user experience.
-
-- All the (Q)EAAs must be homogeneous, consistent, and recognizable across all wallet solutions.
-- To ensure recognizability, each credential must include a defined set of common data attributes, such as the credential name, color scheme, and background.
-- These attributes must be defined by the Issuer. While credentials may vary in form, they must include at least one distinctive and recognizable visual element, and follow consistent color and layout standards (e.g., a driver's license must appear in pink across all wallets with a distinctive graphic element).
 
 
 
