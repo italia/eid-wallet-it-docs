@@ -1,51 +1,49 @@
 .. include:: ../common/common_definitions.rst
 
-.. _relying-party-endpoint:
+.. "included" file, so we start with '-' title level
 
 Relying Party Endpoints
-=========================
+-----------------------
 
 The Relying Party MUST expose a trust endpoint adhering to the OpenID Federation 1.0 Wallet Architecture specification, facilitating the Relying Party's identity and metadata distribution. In addition, in case the Relying Party supports proximity presentation, it MUST expose a set of endpoints for handling the lifecycle of Relying Party Instances (e.g., by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance); their specific implementation details are left to the Relying Party's discretion.
 
 
 Relying Party Federation Endpoint
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. include:: relying-party-entity-configuration.rst
+The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Entity Configuration of Relying Parties`.
 
 
 Relying Party Nonce Endpoint
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Relying Party Nonce Endpoint allows the Relying Party Instance to request a cryptographic ``nonce`` from the Relying Party Backend. The ``nonce`` serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
 
-Further details on the Nonce Request and Response are provided in the :ref:`Mobile Application Nonce Request` and :ref:`Mobile Application Nonce Response` sections, respectively.
-
+Further details on the Nonce Request and Response are provided in the :ref:`mobile-application-instance:Mobile Application Nonce Request` and :ref:`mobile-application-instance:Mobile Application Nonce Request` Sections, respectively.
 
 Relying Party Instance Initialization Endpoint
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Relying Party Instance Initialization Endpoint allows for the initialization of Relying Party Instances, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys.
 
-Further details on the Relying Party Instance Initialization Request and Response are provided in the :ref:`Mobile Application Instance Initialization Request` and :ref:`Mobile Application Instance Initialization Response` sections, respectively.
-
+Further details on the Relying Party Instance Initialization Request and Response are provided in the :ref:`mobile-application-instance:Mobile Application Instance Initialization Request` and :ref:`mobile-application-instance:Mobile Application Instance Initialization Response` Sections, respectively.
 
 Relying Party Key Binding Endpoint
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party Key Binding Endpoint enables Relying Party Instances to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Relying Party Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`Mobile Application Instance Initialization` phase. Before completing the process, the Relying Party Backend also needs to verify the integrity of the Relying Party Instance.
-
+The Relying Party Key Binding Endpoint enables Relying Party Instances to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Relying Party Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Relying Party Backend also needs to verify the integrity of the Relying Party Instance.
 
 Relying Party Key Binding Request
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""
 
-Further details on the Relying Party Key Binding Request are provided in the :ref:`Mobile Application Key Binding Request` section.
+Further details on the Relying Party Key Binding Request are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Request` section.
+
 
 The ``typ`` header of the Integrity Request JWT assumes the value ``rp-kb+jwt``.
 
 
 Relying Party Key Binding Response
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""""""
 
 Upon a successful request, the Relying Party Backend provides an HTTP Response with a ``204 No Content`` status code.
 
@@ -55,17 +53,17 @@ Below is a non-normative example of a Key Binding Request Response.
 
     HTTP/1.1 204 No content
 
-If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`Mobile Application Key Binding Error Response` section.
+If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Error Response` section.
 
 
 Relying Party Access Certificate Endpoint
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Relying Party Access Certificate Endpoint enables Relying Party Instances to obtain an Access Certificate.
 
 
 Relying Party Access Certificate Request
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""""""""""""
 
 The Access Certificate Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
 
@@ -96,7 +94,7 @@ Below is a non-normative example of an Access Certificate Request.
 
 
 Relying Party Access Certificate Response
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""
 
 Upon a successful request, the Relying Party Access Certificate Endpoint provides an HTTP Response with a ``200 OK`` status code and the Access Certificate. The Access Certificate Response, which uses ``application/json`` as the ``Content-Type``, includes the following body parameters:
 
@@ -142,6 +140,7 @@ Below is a non-normative example of an Access Certificate Error Response.
 The following table lists HTTP Status Codes and related error codes that MUST be supported for the error response, unless otherwise specified:
 
 .. list-table::
+    :class: longtable
     :widths: 30 20 50
     :header-rows: 1
 
@@ -162,12 +161,12 @@ The following table lists HTTP Status Codes and related error codes that MUST be
       - The request cannot be fulfilled because the Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
 Relying Party Erasure Endpoint
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Erasure Endpoint, which is described in :ref:`Metadata for openid_credential_verifier`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. It MUST be authenticated, i.e., the Relying Party MUST request User authentication before proceeding with the attribute deletion.
+The Erasure Endpoint, which is described in :ref:`relying-party-entity-configuration:Metadata for openid_credential_verifier`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. It MUST be authenticated, i.e., the Relying Party MUST request User authentication before proceeding with the attribute deletion.
 
 Erasure Request
-~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""
 
 The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.
 
@@ -179,7 +178,7 @@ Below is a non-normative example of an Erasure Request where the call back URL i
   Host: relying-party.example.org
 
 Erasure Response
-~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""
 If the deletion of all attributes bound to the User have been successful, the Erasure Response MUST return a 204 HTTP status code.
 
 If instead the attributes deletion procedure fails due any circumstances, the Relying Party MUST return an error response with ``application/json`` as the content type and MUST include the following parameters:
@@ -190,6 +189,7 @@ If instead the attributes deletion procedure fails due any circumstances, the Re
 The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
 
 .. list-table::
+    :class: longtable
     :widths: 20 20 60
     :header-rows: 1
 
@@ -212,7 +212,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
 
 The following is an example of an error response from Erasure Endpoint:
 
-.. code-block::
+.. code-block:: http
 
   HTTP/1.1 500 Internal Server Error
   Content-Type: application/json

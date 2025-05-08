@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Security and Privacy Considerations &#8212; IT-Wallet Technical Specification  documentation</title>
+    <title>25. Security and Privacy Considerations &#8212; IT-Wallet Technical Documentation - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="General Log Retention Policies" href="log-retention-policy.html" />
-    <link rel="prev" title="Cryptographic Algorithms" href="algorithms.html" /> 
+    <link rel="next" title="26. General Log Retention Policies" href="log-retention-policy.html" />
+    <link rel="prev" title="24. Cryptographic Algorithms" href="algorithms.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specification  documentation</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - 1.0.0</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -128,34 +128,38 @@
 
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">Normative Language and Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html#brand-identity">Brand Identity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html#functionalities">Functionalities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and Restore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">2. Normative References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">3. Defined Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">4. Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">5. The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">6. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">7. IT-Wallet System Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">8. Functionalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">9. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">10. Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">11. Credential Issuer Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">12. Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">13. Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-data-model.html">14. Digital Credential Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-issuance.html">15. Digital Credential Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-presentation.html">16. Digital Credential Presentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">17. Digital Credential Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">18. Backup and Restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">19. Digital Credentials Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">20. e-Service PDND Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">21. e-Service PDND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mobile-application-instance.html">22. Mobile Application Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-configurations.html">23. Entity Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">24. Cryptographic Algorithms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">25. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">26. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">27. Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">28. Test Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">29. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">30. Open Source Releases</a></li>
 </ul>
 
         </div>
@@ -168,7 +172,7 @@
           <div class="body" role="main">
             
   <section id="security-and-privacy-considerations">
-<span id="security-privacy-considerations-rst"></span><h1>Security and Privacy Considerations<a class="headerlink" href="#security-and-privacy-considerations" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">25. </span>Security and Privacy Considerations<a class="headerlink" href="#security-and-privacy-considerations" title="Link to this heading">¶</a></h1>
 <p>This section provides an informal security analysis of the IT-Wallet specification by analyzing the compliance with the security and privacy requirements identified in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>].</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -199,9 +203,9 @@ as a consequence 7 requirements specifically related to the implementation are n
 <p>For each requirement defined below, this section uses the description defined in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>], specifying whether the requirement is satisfied (fully satisfied: <a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a>, partially satisfied: <a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a>, and not satisfied: <a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" style="width: 25px;" /></a>).
 In the following, the requirements are grouped based on their category.</p>
 <section id="security-requirements">
-<h2>Security Requirements<a class="headerlink" href="#security-requirements" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">25.1. </span>Security Requirements<a class="headerlink" href="#security-requirements" title="Link to this heading">¶</a></h2>
 <section id="sr-cf-10-and-sr-e-10">
-<h3>SR-CF-10 and SR-E-10<a class="headerlink" href="#sr-cf-10-and-sr-e-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.1. </span>SR-CF-10 and SR-E-10<a class="headerlink" href="#sr-cf-10-and-sr-e-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -220,7 +224,7 @@ In the following, the requirements are grouped based on their category.</p>
 </ul>
 </section>
 <section id="sr-cf-20">
-<h3>SR-CF-20<a class="headerlink" href="#sr-cf-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.2. </span>SR-CF-20<a class="headerlink" href="#sr-cf-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -235,7 +239,7 @@ In the following, the requirements are grouped based on their category.</p>
 <p>The cryptographic signature included in the Credential format ensures that any tampering with the Credential will result in a failed verification.</p>
 </section>
 <section id="sr-cf-21">
-<h3>SR-CF-21<a class="headerlink" href="#sr-cf-21" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.3. </span>SR-CF-21<a class="headerlink" href="#sr-cf-21" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -251,7 +255,7 @@ In the following, the requirements are grouped based on their category.</p>
 <p>Currently, for the remote flow, IT-Wallet supports only SD-JWT presentations. In this scenario, the KB-JWT (Key-Bound JWT) parameter is utilized to demonstrate that the Holder possesses the private key associated with the Credential. The Holder signs the KB-JWT using a <strong>nonce</strong> and a Verifier identifier, using the <strong>aud</strong> parameter, as a challenge.</p>
 </section>
 <section id="sr-e-20">
-<h3>SR-E-20<a class="headerlink" href="#sr-e-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.4. </span>SR-E-20<a class="headerlink" href="#sr-e-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -267,7 +271,7 @@ In the following, the requirements are grouped based on their category.</p>
 keys and metadata, as distributed via a verifiable attestation, such as the OpenID Federation Entity Configuration verified within a Trust Chain.</p>
 </section>
 <section id="sr-e-30">
-<h3>SR-E-30<a class="headerlink" href="#sr-e-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.5. </span>SR-E-30<a class="headerlink" href="#sr-e-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -282,7 +286,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <p>Issuers are registered by a Trust Anchor or its Intermediate. To verify the trust of an Issuer, a Verifier must verify that the Trust Chain related to the Issuer is valid and still active. This validation process ensures that only trusted entities are permitted to participate in the system, preventing the introduction of untrustworthy actors.</p>
 </section>
 <section id="sr-e-40">
-<h3>SR-E-40<a class="headerlink" href="#sr-e-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.6. </span>SR-E-40<a class="headerlink" href="#sr-e-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -297,7 +301,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <p>If an Issuer's Entity Statement is revoked or unavailable, means that Issuer is no longer considered valid within the federation. This ensures that Verifiers have real-time access to the status of trusted entities and can revoke trust if necessary. However, Verifiers must actively check the Issuer's status by querying federation endpoints (i.e., the fetch endpoint for obtaining the Subordinate Statement).</p>
 </section>
 <section id="sr-i-10">
-<h3>SR-I-10<a class="headerlink" href="#sr-i-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.7. </span>SR-I-10<a class="headerlink" href="#sr-i-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -312,7 +316,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <p>The issuance process utilizes OAuth 2.0-based flows, specifically the Authorization Code Flow, to securely authenticate the User. Moreover, the User authentication is performed using CieID scheme with high LoA or the PID.</p>
 </section>
 <section id="sr-i-20">
-<h3>SR-I-20<a class="headerlink" href="#sr-i-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.8. </span>SR-I-20<a class="headerlink" href="#sr-i-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -327,7 +331,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <p>When verified data is expected, the Issuer obtains the correct and up-to-date claims from the relevant Authentic Sources, ensuring their accuracy at the time of issuance.</p>
 </section>
 <section id="sr-i-30">
-<h3>SR-I-30<a class="headerlink" href="#sr-i-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.9. </span>SR-I-30<a class="headerlink" href="#sr-i-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -342,7 +346,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <p>The Issuer is the entity responsible for revoking a Credential. The specification describes several use cases that may trigger a revocation process and details the revocation flow in which the Issuer revokes Credentials at the User's request (through the Wallet Instance) after verifying possession of the Credentials.</p>
 </section>
 <section id="sr-i-40">
-<h3>SR-I-40<a class="headerlink" href="#sr-i-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.10. </span>SR-I-40<a class="headerlink" href="#sr-i-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -354,7 +358,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 </tr>
 </tbody>
 </table>
-<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 13</span></a>):</p>
+<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 15.3</span></a>):</p>
 <ul class="simple">
 <li><p>Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a CieID scheme or a valid PID, providing the Access Token to the User.</p></li>
 <li><p>Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.</p></li>
@@ -362,7 +366,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 </ul>
 </section>
 <section id="sr-i-50">
-<h3>SR-I-50<a class="headerlink" href="#sr-i-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.11. </span>SR-I-50<a class="headerlink" href="#sr-i-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -375,7 +379,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 </tbody>
 </table>
 <p>A trusted Wallet Attestation ensures that the Wallet Instance is secure and meets the required security standards before any Credentials are issued or stored.
-In Steps 5-6 of <a class="reference internal" href="pid-eaa-issuance.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 13</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
+In Steps 5-6 of <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 15.3</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
 signed with the Wallet's private key. This attestation confirms that the Wallet Instance is genuine and has been verified by the Wallet Provider.</p>
 <p>The Issuer verifies this attestation before allowing the Wallet to participate in the issuance process, ensuring that the Wallet adheres to specific security standards.
 Afterward, all cryptographic keys generated and used in the process come from this attested Wallet Instance.</p>
@@ -385,7 +389,7 @@ Afterward, all cryptographic keys generated and used in the process come from th
 </div>
 </section>
 <section id="sr-p-20">
-<h3>SR-P-20<a class="headerlink" href="#sr-p-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.12. </span>SR-P-20<a class="headerlink" href="#sr-p-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -397,10 +401,10 @@ Afterward, all cryptographic keys generated and used in the process come from th
 </tr>
 </tbody>
 </table>
-<p>This requirement is addressed by secure identification of the Issuer. The &quot;iss&quot; parameter in the authorization response assures the Wallet that the response is coming from the expected Issuer and the cryptographic verification of the received tokens ensures that they were issued by the legitimate Issuer. In addition, the use of PKCE avoids injection of the code from another session to the User session.</p>
+<p>This requirement is addressed by secure identification of the Issuer. The ^iss^ parameter in the authorization response assures the Wallet that the response is coming from the expected Issuer and the cryptographic verification of the received tokens ensures that they were issued by the legitimate Issuer. In addition, the use of PKCE avoids injection of the code from another session to the User session.</p>
 </section>
 <section id="sr-p-30">
-<h3>SR-P-30<a class="headerlink" href="#sr-p-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.13. </span>SR-P-30<a class="headerlink" href="#sr-p-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -415,7 +419,7 @@ Afterward, all cryptographic keys generated and used in the process come from th
 <p>The presentation process occurs through different flows, including remote and proximity. In the case of the remote flow, a combination of signed Request Objects, <strong>nonce</strong> usage, Trust Chain validation, Wallet Attestation, and Holder binding ensures that no third party can interfere with or modify the information transmitted between the Wallet and the Verifier. These mechanisms align with Security Requirement P-30, protecting the interaction from tampering or injection attacks.</p>
 </section>
 <section id="sr-p-40">
-<h3>SR-P-40<a class="headerlink" href="#sr-p-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.14. </span>SR-P-40<a class="headerlink" href="#sr-p-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -446,7 +450,7 @@ where a list of mitigations from [<a class="reference external" href="https://da
 </div>
 </section>
 <section id="sr-p-41">
-<h3>SR-P-41<a class="headerlink" href="#sr-p-41" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.15. </span>SR-P-41<a class="headerlink" href="#sr-p-41" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -465,7 +469,7 @@ Regarding the <strong>nonce</strong> claim, the Verifier MUST check that the <st
 Regarding the <strong>aud</strong> value, the Verifier must check that the audience of the presentation matches the Verifier's identifier.</p>
 </section>
 <section id="sr-p-50">
-<h3>SR-P-50<a class="headerlink" href="#sr-p-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.16. </span>SR-P-50<a class="headerlink" href="#sr-p-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -491,7 +495,7 @@ as shown for example in this <a class="reference external" href="https://www.tuv
 </div>
 </section>
 <section id="sr-v-10">
-<h3>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.17. </span>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -499,21 +503,21 @@ as shown for example in this <a class="reference external" href="https://www.tuv
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a></p></td>
-<td><p>(conditional w.r.t  I-50+V-20) The Verifier must ensure that the Credential is stored in a secure Wallet.</p></td>
+<td><p>(conditional w.r.t I-50+V-20) The Verifier must ensure that the Credential is stored in a secure Wallet.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Verifier checks the Wallet Attestation during exchanges (sent with the authorization response), ensuring that it meets the security criteria required by the Verifier and is under the sole responsability of its issuer, the trusted Wallet Provider.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Currently, no explicit security and privacy measures related to this requirement are specified in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>] and it is not clearly defined what &quot;stored in a secure Wallet&quot; means. Without this detail, this requirement is considered only partially satisfied. Indeed, the Wallet Attestation guarantees
+<p>Currently, no explicit security and privacy measures related to this requirement are specified in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>] and it is not clearly defined what ^stored in a secure Wallet^ means. Without this detail, this requirement is considered only partially satisfied. Indeed, the Wallet Attestation guarantees
 that the Wallet Instance is operating on a secure, trusted device and adheres to the strict security policies set by the Wallet Provider. However, the attestation does not directly guarantee that each
 Credential within the Wallet is stored securely; it verifies the overall security of the Wallet environment, within which the Credentials reside. Therefore, while the attestation supports the Verifier's
 confidence that the Credential comes from a secure source, it is ultimately a broad assurance of the Wallet's security, rather than a specific validation of individual Credential storage.</p>
 </div>
 </section>
 <section id="sr-v-20">
-<h3>SR-V-20<a class="headerlink" href="#sr-v-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.18. </span>SR-V-20<a class="headerlink" href="#sr-v-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -521,7 +525,7 @@ confidence that the Credential comes from a secure source, it is ultimately a br
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
-<td><p>(conditional w.r.t.  I-10) The Verifier must ensure that the Credential was issued by an Issuer that only issues Credentials to trustworthy Wallets.</p></td>
+<td><p>(conditional w.r.t. I-10) The Verifier must ensure that the Credential was issued by an Issuer that only issues Credentials to trustworthy Wallets.</p></td>
 </tr>
 </tbody>
 </table>
@@ -532,7 +536,7 @@ confidence that the Credential comes from a secure source, it is ultimately a br
 </div>
 </section>
 <section id="sr-w-20">
-<h3>SR-W-20<a class="headerlink" href="#sr-w-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.19. </span>SR-W-20<a class="headerlink" href="#sr-w-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -549,7 +553,7 @@ confidence that the Credential comes from a secure source, it is ultimately a br
 In addition to the Issuer's information, the Digital Credential Metadata Type also contains information on the Authentic Source.</p>
 </section>
 <section id="sr-w-30">
-<h3>SR-W-30<a class="headerlink" href="#sr-w-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.1.20. </span>SR-W-30<a class="headerlink" href="#sr-w-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -565,9 +569,9 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 </section>
 </section>
 <section id="privacy-requirements">
-<h2>Privacy Requirements<a class="headerlink" href="#privacy-requirements" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">25.2. </span>Privacy Requirements<a class="headerlink" href="#privacy-requirements" title="Link to this heading">¶</a></h2>
 <section id="pr-cf-30">
-<h3>PR-CF-30<a class="headerlink" href="#pr-cf-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.2.1. </span>PR-CF-30<a class="headerlink" href="#pr-cf-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -575,14 +579,14 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
-<td><p>The Credential Format must ensure that there is a robust mechanism to ensure that data that is not to be released to a Verifier cannot be extracted by the Verifier (selective disclosure).</p></td>
+<td><p>The Credential Format must ensure that there is a robust mechanism to ensure that data that is not to be released to a Verifier cannot be extracted by the Verifier (Selective Disclosure).</p></td>
 </tr>
 </tbody>
 </table>
-<p>Both SD-JWT and mdoc-CBOR provide selective disclosure capability, allowing Holders to reveal only specific fields to the Verifier.</p>
+<p>Both SD-JWT and mdoc-CBOR provide Selective Disclosure capability, allowing Holders to reveal only specific fields to the Verifier.</p>
 </section>
 <section id="pr-cf-40">
-<h3>PR-CF-40<a class="headerlink" href="#pr-cf-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.2.2. </span>PR-CF-40<a class="headerlink" href="#pr-cf-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -594,14 +598,14 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 </tr>
 </tbody>
 </table>
-<p>While selective disclosure is a strong tool for preventing correlation, full unlinkability is not guaranteed in all cases. Issues like Verifier collusion or Issuer tracking can arise.</p>
+<p>While Selective Disclosure is a strong tool for preventing correlation, full unlinkability is not guaranteed in all cases. Issues like Verifier collusion or Issuer tracking can arise.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Batch issuance, using different key binding keys and salts for each Credential, can mitigate Verifier/Verifier and presentation unlinkability risks.</p>
 </div>
 </section>
 <section id="pr-e-60">
-<h3>PR-E-60<a class="headerlink" href="#pr-e-60" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.2.3. </span>PR-E-60<a class="headerlink" href="#pr-e-60" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -618,7 +622,7 @@ In addition, privacy is protected also during the check of the Credential's stat
 that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.</p>
 </section>
 <section id="pr-e-70">
-<h3>PR-E-70<a class="headerlink" href="#pr-e-70" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.2.4. </span>PR-E-70<a class="headerlink" href="#pr-e-70" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -633,7 +637,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <p>The following mechanisms may be implemented to reduce the correlation:</p>
 <ul class="simple">
 <li><p><em>Verifier-Verifier</em>: evaluation mechanisms to ensure that a Verifier requests only the information it is authorized to obtain from the Wallet. This approach minimizes data exchange and helps prevent User profiling through potential collusion between Verifiers.</p></li>
-<li><p><em>Issuer-Verifier</em>: The Issuer does not require the authentication of the Verifier during the trust evaluation. In principle, the Issuer does not know which Verifiers the User is accessing and will avoid User activity profiling based on the Verifier's access.</p></li>
+<li><p><em>Issuer-Verifier</em>: The Issuer does not require the authentication of the Verifier during the Trust Evaluation. In principle, the Issuer does not know which Verifiers the User is accessing and will avoid User activity profiling based on the Verifier's access.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -641,7 +645,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 </div>
 </section>
 <section id="pr-w-40">
-<h3>PR-W-40<a class="headerlink" href="#pr-w-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.2.5. </span>PR-W-40<a class="headerlink" href="#pr-w-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -656,7 +660,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <p>After establishing trust with the Verifier, the Wallet asks for the User's consent and provides the User the opportunity to review and select the data to be presented to the Verifier.</p>
 </section>
 <section id="pr-w-60">
-<h3>PR-W-60<a class="headerlink" href="#pr-w-60" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.2.6. </span>PR-W-60<a class="headerlink" href="#pr-w-60" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -671,7 +675,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <p>Same as for SR-P-80.</p>
 </section>
 <section id="pr-w-70">
-<h3>PR-W-70<a class="headerlink" href="#pr-w-70" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.2.7. </span>PR-W-70<a class="headerlink" href="#pr-w-70" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -687,9 +691,9 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 </section>
 </section>
 <section id="security-and-privacy-requirements">
-<h2>Security and Privacy Requirements<a class="headerlink" href="#security-and-privacy-requirements" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">25.3. </span>Security and Privacy Requirements<a class="headerlink" href="#security-and-privacy-requirements" title="Link to this heading">¶</a></h2>
 <section id="spr-e-50">
-<h3>SPR-E-50<a class="headerlink" href="#spr-e-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.3.1. </span>SPR-E-50<a class="headerlink" href="#spr-e-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -709,7 +713,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 </div>
 </section>
 <section id="spr-p-10">
-<h3>SPR-P-10<a class="headerlink" href="#spr-p-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.3.2. </span>SPR-P-10<a class="headerlink" href="#spr-p-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -728,11 +732,11 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <li><p><em>DPoP</em>: Ensures that the Holder of the access token possesses the private key associated with it, preventing attackers from reusing intercepted tokens.</p></li>
 <li><p><em>Holder binding</em>: Ties the Credential to a specific Holder, ensuring that only the legitimate Holder can use a Credential to authenticate with the Issuer.</p></li>
 <li><p><em>redirect_uri validation</em>: This validation ensures that the authorization response is sent to the correct and authorized endpoint, thereby preventing unauthorized interception by malicious actors. Ensuring the integrity of the <strong>redirect_uri</strong> is critical to avoid any manipulation or misdirection of the URI.</p></li>
-<li><p><em>PKCE</em>:  Avoids injection of a legit authorization <strong>code</strong> in another session.</p></li>
+<li><p><em>PKCE</em>: Avoids injection of a legit authorization <strong>code</strong> in another session.</p></li>
 </ul>
 </section>
 <section id="spr-p-60">
-<h3>SPR-P-60<a class="headerlink" href="#spr-p-60" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.3.3. </span>SPR-P-60<a class="headerlink" href="#spr-p-60" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -755,10 +759,10 @@ In the IT-Wallet specification, the <strong>redirect_uri</strong> is registered 
 <p>In order to be sure that the <strong>redirect_uri</strong> is received from a legit Wallet and not from the attacker, the Verifier response endpoint upon the recipient of a valid
 authorization response creates a fresh cryptographic value that is linked to the authorization response and attaches it to the <strong>redirect_uri</strong> that is sent to the Wallet.
 When the Verifier receives the redirect, it can extract the response code and check with its response endpoint whether the response code was associated with this Authorization
-Response. (See <a class="reference internal" href="remote-flow.html#redirect-uri"><span class="std std-ref">Redirect URI Section</span></a>).</p>
+Response. (See <a class="reference internal" href="remote-flow.html#redirect-uri"><span class="std std-ref">Redirect URI</span></a>).</p>
 </section>
 <section id="spr-p-70">
-<h3>SPR-P-70<a class="headerlink" href="#spr-p-70" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.3.4. </span>SPR-P-70<a class="headerlink" href="#spr-p-70" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -778,7 +782,7 @@ To mitigate these threats, the IT-Wallet specification requires the following se
 <li><p><em>DPoP</em>: Ensures that the Holder of the access token possesses the private key associated with it, preventing attackers from reusing intercepted tokens.</p></li>
 <li><p><em>Holder binding</em>: Ties the Credential to a specific Holder, ensuring that only the legitimate Holder can use a Credential to authenticate with the Issuer.</p></li>
 <li><p><em>redirect_uri validation</em>: This validation ensures that the authorization response is sent to the correct and authorized endpoint, thereby preventing unauthorized interception by malicious actors. Ensuring the integrity of the <strong>redirect_uri</strong> is critical to avoid any manipulation or misdirection of the URI.</p></li>
-<li><p><em>PKCE</em>:  Avoids injection of a legit authorization <strong>code</strong> in another session.</p></li>
+<li><p><em>PKCE</em>: Avoids injection of a legit authorization <strong>code</strong> in another session.</p></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -791,7 +795,7 @@ OpenID4VCI standard provides the option for the Wallet to request encrypted Cred
 </div>
 </section>
 <section id="spr-p-80">
-<h3>SPR-P-80<a class="headerlink" href="#spr-p-80" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.3.5. </span>SPR-P-80<a class="headerlink" href="#spr-p-80" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -807,7 +811,7 @@ OpenID4VCI standard provides the option for the Wallet to request encrypted Cred
 ensure that while the Verifier checks the Credential's validity, the Issuer does not learn where or when the Credential is being used.</p>
 </section>
 <section id="spr-w-50">
-<h3>SPR-W-50<a class="headerlink" href="#spr-w-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">25.3.6. </span>SPR-W-50<a class="headerlink" href="#spr-w-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -838,47 +842,47 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">Security and Privacy Considerations</a><ul>
-<li><a class="reference internal" href="#security-requirements">Security Requirements</a><ul>
-<li><a class="reference internal" href="#sr-cf-10-and-sr-e-10">SR-CF-10 and SR-E-10</a></li>
-<li><a class="reference internal" href="#sr-cf-20">SR-CF-20</a></li>
-<li><a class="reference internal" href="#sr-cf-21">SR-CF-21</a></li>
-<li><a class="reference internal" href="#sr-e-20">SR-E-20</a></li>
-<li><a class="reference internal" href="#sr-e-30">SR-E-30</a></li>
-<li><a class="reference internal" href="#sr-e-40">SR-E-40</a></li>
-<li><a class="reference internal" href="#sr-i-10">SR-I-10</a></li>
-<li><a class="reference internal" href="#sr-i-20">SR-I-20</a></li>
-<li><a class="reference internal" href="#sr-i-30">SR-I-30</a></li>
-<li><a class="reference internal" href="#sr-i-40">SR-I-40</a></li>
-<li><a class="reference internal" href="#sr-i-50">SR-I-50</a></li>
-<li><a class="reference internal" href="#sr-p-20">SR-P-20</a></li>
-<li><a class="reference internal" href="#sr-p-30">SR-P-30</a></li>
-<li><a class="reference internal" href="#sr-p-40">SR-P-40</a></li>
-<li><a class="reference internal" href="#sr-p-41">SR-P-41</a></li>
-<li><a class="reference internal" href="#sr-p-50">SR-P-50</a></li>
-<li><a class="reference internal" href="#sr-v-10">SR-V-10</a></li>
-<li><a class="reference internal" href="#sr-v-20">SR-V-20</a></li>
-<li><a class="reference internal" href="#sr-w-20">SR-W-20</a></li>
-<li><a class="reference internal" href="#sr-w-30">SR-W-30</a></li>
+<li><a class="reference internal" href="#">25. Security and Privacy Considerations</a><ul>
+<li><a class="reference internal" href="#security-requirements">25.1. Security Requirements</a><ul>
+<li><a class="reference internal" href="#sr-cf-10-and-sr-e-10">25.1.1. SR-CF-10 and SR-E-10</a></li>
+<li><a class="reference internal" href="#sr-cf-20">25.1.2. SR-CF-20</a></li>
+<li><a class="reference internal" href="#sr-cf-21">25.1.3. SR-CF-21</a></li>
+<li><a class="reference internal" href="#sr-e-20">25.1.4. SR-E-20</a></li>
+<li><a class="reference internal" href="#sr-e-30">25.1.5. SR-E-30</a></li>
+<li><a class="reference internal" href="#sr-e-40">25.1.6. SR-E-40</a></li>
+<li><a class="reference internal" href="#sr-i-10">25.1.7. SR-I-10</a></li>
+<li><a class="reference internal" href="#sr-i-20">25.1.8. SR-I-20</a></li>
+<li><a class="reference internal" href="#sr-i-30">25.1.9. SR-I-30</a></li>
+<li><a class="reference internal" href="#sr-i-40">25.1.10. SR-I-40</a></li>
+<li><a class="reference internal" href="#sr-i-50">25.1.11. SR-I-50</a></li>
+<li><a class="reference internal" href="#sr-p-20">25.1.12. SR-P-20</a></li>
+<li><a class="reference internal" href="#sr-p-30">25.1.13. SR-P-30</a></li>
+<li><a class="reference internal" href="#sr-p-40">25.1.14. SR-P-40</a></li>
+<li><a class="reference internal" href="#sr-p-41">25.1.15. SR-P-41</a></li>
+<li><a class="reference internal" href="#sr-p-50">25.1.16. SR-P-50</a></li>
+<li><a class="reference internal" href="#sr-v-10">25.1.17. SR-V-10</a></li>
+<li><a class="reference internal" href="#sr-v-20">25.1.18. SR-V-20</a></li>
+<li><a class="reference internal" href="#sr-w-20">25.1.19. SR-W-20</a></li>
+<li><a class="reference internal" href="#sr-w-30">25.1.20. SR-W-30</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#privacy-requirements">Privacy Requirements</a><ul>
-<li><a class="reference internal" href="#pr-cf-30">PR-CF-30</a></li>
-<li><a class="reference internal" href="#pr-cf-40">PR-CF-40</a></li>
-<li><a class="reference internal" href="#pr-e-60">PR-E-60</a></li>
-<li><a class="reference internal" href="#pr-e-70">PR-E-70</a></li>
-<li><a class="reference internal" href="#pr-w-40">PR-W-40</a></li>
-<li><a class="reference internal" href="#pr-w-60">PR-W-60</a></li>
-<li><a class="reference internal" href="#pr-w-70">PR-W-70</a></li>
+<li><a class="reference internal" href="#privacy-requirements">25.2. Privacy Requirements</a><ul>
+<li><a class="reference internal" href="#pr-cf-30">25.2.1. PR-CF-30</a></li>
+<li><a class="reference internal" href="#pr-cf-40">25.2.2. PR-CF-40</a></li>
+<li><a class="reference internal" href="#pr-e-60">25.2.3. PR-E-60</a></li>
+<li><a class="reference internal" href="#pr-e-70">25.2.4. PR-E-70</a></li>
+<li><a class="reference internal" href="#pr-w-40">25.2.5. PR-W-40</a></li>
+<li><a class="reference internal" href="#pr-w-60">25.2.6. PR-W-60</a></li>
+<li><a class="reference internal" href="#pr-w-70">25.2.7. PR-W-70</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#security-and-privacy-requirements">Security and Privacy Requirements</a><ul>
-<li><a class="reference internal" href="#spr-e-50">SPR-E-50</a></li>
-<li><a class="reference internal" href="#spr-p-10">SPR-P-10</a></li>
-<li><a class="reference internal" href="#spr-p-60">SPR-P-60</a></li>
-<li><a class="reference internal" href="#spr-p-70">SPR-P-70</a></li>
-<li><a class="reference internal" href="#spr-p-80">SPR-P-80</a></li>
-<li><a class="reference internal" href="#spr-w-50">SPR-W-50</a></li>
+<li><a class="reference internal" href="#security-and-privacy-requirements">25.3. Security and Privacy Requirements</a><ul>
+<li><a class="reference internal" href="#spr-e-50">25.3.1. SPR-E-50</a></li>
+<li><a class="reference internal" href="#spr-p-10">25.3.2. SPR-P-10</a></li>
+<li><a class="reference internal" href="#spr-p-60">25.3.3. SPR-P-60</a></li>
+<li><a class="reference internal" href="#spr-p-70">25.3.4. SPR-P-70</a></li>
+<li><a class="reference internal" href="#spr-p-80">25.3.5. SPR-P-80</a></li>
+<li><a class="reference internal" href="#spr-w-50">25.3.6. SPR-W-50</a></li>
 </ul>
 </li>
 </ul>
@@ -896,13 +900,13 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
             <div class="left">
                 
                 <a href="algorithms.html">
-                    <span class="icon">&lt;</span><span>Cryptographic Algorithms</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">24. </span>Cryptographic Algorithms</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="log-retention-policy.html"><span>General Log Retention Policies</span><span class="icon">&gt;</span></a>
+                    <a href="log-retention-policy.html"><span><span class="section-number">26. </span>General Log Retention Policies</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

@@ -1,7 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _log-retention-policy.rst:
-
 
 General Log Retention Policies
 =======================================

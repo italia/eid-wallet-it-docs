@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _proximity_flow.rst:
 
 Proximity Flow
 ==============
@@ -35,7 +34,7 @@ Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST su
 - *Device Engagement* based on QR Code.
 - *RP Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
 - *Device Retrieval* mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. *Server Retrieval* mechanism MUST NOT be supported.
-- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`mdoc-CBOR Credential Format` for more details).
+- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`credential-data-model:mdoc-CBOR Credential Format` for more details).
 - *Wallet Instance validation* through the Wallet Attestation.
 
 
@@ -86,7 +85,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 13**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) to ensure its authenticity.
 
-**Step 14**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's registration certificate to ensure transparency about the requested data and its registered purpose.
+**Step 14**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested data and its registered purpose.
 
 **Step 15**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.
 
@@ -104,7 +103,6 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 **Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
 
 .. note::
-
   During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.
 
 Device Engagement
@@ -113,6 +111,7 @@ Device Engagement
 The Device Engagement structure MUST be CBOR encoded and have at least the following components:
 
 .. list-table::
+   :class: longtable
    :widths: 30 70
    :header-rows: 1
 
@@ -154,6 +153,7 @@ The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR 
 Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
 .. list-table::
+   :class: longtable
    :widths: 30 70
    :header-rows: 1
 
@@ -168,7 +168,7 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
        - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
 
-         - **docType** *(tstr)*. The type of document requested. See :ref:`mdoc-CBOR Credential Format`.
+         - **docType** *(tstr)*. The type of document requested. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
 
          - **nameSpaces** *(map)*. A map of namespace identifiers to requested *DataElements*.
 
@@ -193,8 +193,8 @@ The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypt
 Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
 .. _table-mdoc-attributes:
-
 .. list-table::
+   :class: longtable
    :widths: 25 75
    :header-rows: 1
 
@@ -217,8 +217,8 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
 Each document in **documents** MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified:
 
 .. _table-mdoc-documents-attributes:
-
 .. list-table::
+   :class: longtable
    :widths: 30 70
    :header-rows: 1
 
@@ -229,7 +229,7 @@ Each document in **documents** MUST be compliant with the following structure, a
      - *(tstr)*. Document type identifier. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``.
 
    * - **issuerSigned**
-     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`mdoc-CBOR Credential Format`.
+     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
 
    * - **deviceSigned**
      - *(bstr)*. Contains the `DeviceNameSpaces` structure (data elements signed by the Wallet Instance), and the `deviceAuth` structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.
@@ -242,6 +242,7 @@ Each document in **documents** MUST be compliant with the following structure, a
 A **deviceSigned** data structure MUST be compliant with the following structure, and MUST include the following components:
 
 .. list-table::
+   :class: longtable
    :widths: 25 75
    :header-rows: 1
 
@@ -265,21 +266,20 @@ Session Termination
 
 The session MUST be terminated if at least one of the following conditions occur:
 
-- after a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
-- when the Wallet Instance does not accept any more requests;
-- when the Relying Party Instance does not send any further requests.
+- After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
+- When the Wallet Instance does not accept any more requests;
+- When the Relying Party Instance does not send any further requests.
 
 If the Wallet Instance and the Relying Party Instance does not send or receive any further requests, the session termination MUST be initiated as follows:
 
-- send the status code for session termination, or
-- dispatch the "End" command as outlined in [`ISO18013-5`_ #8.3.3.1.1.5].
+- Send the status code for session termination, or
+- Dispatch the "End" command as outlined in [`ISO18013-5`_ #8.3.3.1.1.5].
 
 When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions:
 
-- destruction of session keys and related ephemeral key material;
-- closure of the communication channel used for data retrieval.
+- Destruction of session keys and related ephemeral key material;
+- Closure of the communication channel used for data retrieval.
 
 .. note::
-
-   See :ref:`mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
+  See :ref:`credential-data-model:mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
 

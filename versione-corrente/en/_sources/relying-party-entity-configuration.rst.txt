@@ -1,24 +1,26 @@
 .. include:: ../common/common_definitions.rst
 
-Entity Configuration of Relying Parties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-According to Section :ref:`Configuration of the Federation`, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
-The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`Entity Configuration Leaves and Intermediates` and :ref:`Entity Configurations Common Parameters`.
+Entity Configuration of Relying Parties
+------------------------------------------
+
+According to Section :ref:`trust:Configuration of the Federation`, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
+The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections :ref:`trust:Entity Configuration Leaves and Intermediates` and :ref:`trust:Entity Configurations Common Parameters`.
 
 The Relying Parties MUST provide the following metadata types:
 
   - `federation_entity`
   - `openid_credential_verifier`
 
-The *federation_entity* metadata MUST contain the claims as defined in Section :ref:`Metadata of federation_entity Leaves`.
+The *federation_entity* metadata MUST contain the claims as defined in Section :ref:`trust:Metadata of federation_entity Leaves`.
 
 Metadata for openid_credential_verifier
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *openid_credential_verifier* metadata MUST contain the following parameters.
 
 .. list-table::
+  :class: longtable
   :widths: 20 60
   :header-rows: 1
 
@@ -45,14 +47,14 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `JARM`_ Section 3, `OID-FED`_ Draft 41 Section 5.2.1 and `JWK`_.
   * - **erasure_endpoint**
-    - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users’ attributes. This URL MUST use the *https* scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim of the PID.
+    - [CONDITIONAL] JSON String that represents the URI to which the Wallet Instance can request deletion of Users' attributes. This URL MUST use the *https* scheme. This endpoint MUST be present whenever the Relying Parties requested attributes that can uniquely identify Users such as the tax_id_code claim of the PID.
 
 
 .. note::
-    The parameters **response_uris** and **erasure_endpoint** are introduced in this specification.
+  The parameters **response_uris** and **erasure_endpoint** are introduced in this specification.
 
 Example of a Relying Party Entity Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below a non-normative example of the request made by the Wallet Instance to the *openid-federation* well-known endpoint to obtain the Relying Party Entity Configuration:
 

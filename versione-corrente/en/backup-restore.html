@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Backup and Restore &#8212; IT-Wallet Technical Specification  documentation</title>
+    <title>18. Backup and Restore &#8212; IT-Wallet Technical Documentation - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Cryptographic Algorithms" href="algorithms.html" />
-    <link rel="prev" title="Authentic Sources" href="authentic-sources.html" /> 
+    <link rel="next" title="19. Digital Credentials Catalogue" href="registry-catalogue.html" />
+    <link rel="prev" title="17. Digital Credential Lifecycle" href="credential-revocation.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -32,7 +32,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Specification  documentation</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - 1.0.0</a></h1>
             <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -128,34 +128,38 @@
 
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">Normative References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">Normative Language and Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">The Digital Identity Wallet Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html#brand-identity">Brand Identity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html#functionalities">Functionalities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="issuer-solution.html">Issuer Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data-model.html">PID/(Q)EAA Data Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">Digital Credentials Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-issuance.html">PID/(Q)EAA Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-presentation.html">PID/(Q)EAA Presentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">Digital Credential Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">Authentic Sources</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Backup and Restore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Technical References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans.html">Test Plans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html#acknowledgements">Acknowledgements</a></li>
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">2. Normative References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">3. Defined Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">4. Normative Language and Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">5. The Digital Identity Wallet Paradigm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">6. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">7. IT-Wallet System Brand Identity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">8. Functionalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">9. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">10. Wallet Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">11. Credential Issuer Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">12. Relying Party Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">13. Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-data-model.html">14. Digital Credential Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-issuance.html">15. Digital Credential Issuance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-presentation.html">16. Digital Credential Presentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">17. Digital Credential Lifecycle</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">18. Backup and Restore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">19. Digital Credentials Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">20. e-Service PDND Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">21. e-Service PDND</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mobile-application-instance.html">22. Mobile Application Instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-configurations.html">23. Entity Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">24. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">25. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">26. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standards.html">27. Technical References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plans.html">28. Test Plans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">29. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">30. Open Source Releases</a></li>
 </ul>
 
         </div>
@@ -168,7 +172,7 @@
           <div class="body" role="main">
             
   <section id="backup-and-restore">
-<span id="backup-restore-rst"></span><h1>Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">18. </span>Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Link to this heading">¶</a></h1>
 <p>The <strong>Backup and Restore</strong> functionality becomes relevant when the User wants to change device and/or Wallet Solution in order to access the previously issued Digital Credentials again.</p>
 <ul class="simple">
 <li><p>The mobile device has been <strong>lost</strong>, <strong>stolen</strong>, <strong>damaged</strong>, or <strong>compromised</strong> (e.g., due to unauthorized access).</p></li>
@@ -178,17 +182,17 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For Wallet Solutions based on the IT Wallet technical specifications, the migration to a different Wallet Solution (known as data portability) can be supported following the backup and restore functionality described in this section.</p>
+<p>For Wallet Solutions based on the IT Wallet Technical Specifications, the migration to a different Wallet Solution (known as data portability) can be supported following the backup and restore functionality described in this section.</p>
 </div>
 <section id="backup-flow">
-<h2>Backup Flow<a class="headerlink" href="#backup-flow" title="Link to this heading">¶</a></h2>
-<figure class="align-default" id="sequence-diagram-for-wallet-instance-backup">
+<h2><span class="section-number">18.1. </span>Backup Flow<a class="headerlink" href="#backup-flow" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="sequence-diagram-for-wallet-instance-backup" style="width: 90%">
 <span id="fig-backup-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/VP5HRzGm3CVVyodClMn8j1KmU9YcqxPZe8bDEkaqyG1eIbFlQaYJAd4uAhJlJj96WuvZUMhj_y_-spxrB1s7JejdP9GE3KBBtFlZgd9oLsw9sr07ZqvPmsYuLBQhUYrDOWhFZQQwMXqLwnIwkRwgEkaPNGpThY8XoQ0h-rHVICNMmKsi1TB38dqiXDWCKT_TdjjW6kc6mvtK6dbZTM2oviMaE_3m3d-GmiLp-2KWlltOfV4iZSA8VHe3a2CPpE_1sM6Wt24A6TsTJCezkbggxw4_wsc3Blc8rFaOWhFr9UHW9k_5dEriJHetR9tS9l1w_Cy3mPLLKaFE9fUvnhqG1t3nizUaY47BmGO6sNmBdZiq37VMGMyzfIsHsOfP5oW-jzGqQBuMIvYlHeXnt28c0i4nB4xgvSiIyZGhXv5YajgVLFLo8QBc96aVBs02NvNm0GqwoGWVSO1rwwJ7FsWYKxj9_ReSvzmZVLmT_j_og4mcKyCBezpGCpQGpRydZK_K2pHLU5F-Y-vp_8GKlXY8QTWHjx1sjkkdW_oL6-zQhRGDJRvkzlQm_ld5fePlInZ1ENAAfWcT_Wq0"><img alt="The figure illustrates the sequence diagram for backup flow, with the steps explained below." src="_images/Backup_flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Backup flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-backup" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 18.1 </span><span class="caption-text">Backup flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-backup" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 30</span></a>:</p>
+<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 18.1</span></a>:</p>
 <p><strong>Step 1</strong>: The User selects the option to back up Credentials stored within the Wallet Instance.</p>
 <p><strong>Steps 2-3</strong>: The Wallet Instance using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User.
 The User MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup.</p>
@@ -217,28 +221,27 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 </div>
 <p><strong>Step 5</strong>: The User will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other.</p>
 <p><strong>Step 6</strong>: In the case where the User prefers the native storage, the backup file is stored on the User device.</p>
-<p>A non-normative example of the backup JWT is as the following:</p>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;typ&quot;</span><span class="p">:</span> <span class="s2">&quot;wallet-unit-credentials-backup+jwt&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="o">.</span>
-<span class="p">{</span>
-  <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2024-12-13T16:35:06+01:00&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;wallet_provider_id&quot;</span><span class="p">:</span><span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;wallet_instance_version&quot;</span><span class="p">:</span><span class="s2">&quot;v1.0&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;wallet_attestation&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;credentials_backup&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;https://issuer.example.org/v1.0/mdl&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;org.iso.18013-5.1.mDL&quot;</span><span class="p">],</span>
-      <span class="s2">&quot;https://eaa-provider.example.org/&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dc_sd_jwt_EuropeanDisabilityCard&quot;</span><span class="p">]</span>
-   <span class="p">},</span>
+<p>A non-normative example of the backup JWT header and payload is as the following:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet-unit-credentials-backup+jwt&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div></blockquote>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2024-12-13T16:35:06+01:00&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_provider_id&quot;</span><span class="p">:</span><span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_instance_version&quot;</span><span class="p">:</span><span class="s2">&quot;v1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_attestation&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;credentials_backup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;https://issuer.example.org/v1.0/mdl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013-5.1.mDL&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;https://eaa-provider.example.org/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dc_sd_jwt_EuropeanDisabilityCard&quot;</span><span class="p">]</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>The JOSE header of the backup JWT MUST contain the following REQUIRED parameters:</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -252,7 +255,7 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference external" href="algorithms.html">Cryptographic Algorithms</a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
+<td><p>A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
 <td><p><span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
@@ -262,7 +265,7 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 </tbody>
 </table>
 <p>The body of backup JWT contains the following REQUIRED claims:</p>
-<table class="docutils align-default">
+<table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 75.0%" />
@@ -280,7 +283,7 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 <td><p>It MUST be set to the unique identifier of the Wallet Provider.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>wallet_instance_version</strong></p></td>
-<td><p>It MUST be set to  the version of the Wallet Solution that has been backed up.</p></td>
+<td><p>It MUST be set to the version of the Wallet Solution that has been backed up.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
 <td><p>It MUST be set to a value containing the Wallet Attestation JWT.</p></td>
@@ -292,22 +295,22 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 </table>
 </section>
 <section id="restore-flow-for-hardware-binding-credential">
-<h2>Restore flow for Hardware Binding Credential<a class="headerlink" href="#restore-flow-for-hardware-binding-credential" title="Link to this heading">¶</a></h2>
-<figure class="align-default" id="sequence-diagram-for-wallet-instance-restore">
+<h2><span class="section-number">18.2. </span>Restore flow for Hardware Binding Credential<a class="headerlink" href="#restore-flow-for-hardware-binding-credential" title="Link to this heading">¶</a></h2>
+<figure class="align-default" id="sequence-diagram-for-wallet-instance-restore" style="width: 90%">
 <span id="fig-restore-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80"><img alt="The figure illustrates the sequence diagram for restore flow, with the steps explained below." src="_images/Restore_Flow.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Restore flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-restore" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 18.2 </span><span class="caption-text">Restore flow.</span><a class="headerlink" href="#sequence-diagram-for-wallet-instance-restore" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Considering that the User has initialized the new Wallet Instance and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
-Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 31</span></a>:</p>
+Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 18.2</span></a>:</p>
 <p><strong>Steps 1-6</strong>: The User wants to restore the Digital Credentials using the backup previously created with their Wallet Instance.
 The User selects <cite>restore Digital Credentials backup</cite> in the Wallet Instance app and a prompt with the import function is provided to the User. The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases.
 To check the authenticity of the file, the Wallet Instance MUST verify the backup JWT's signature to ensure its authenticity. To do this, it first extracts the Wallet Attestation JWT from <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim and obtains the related public key using the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim).</p>
 <p><strong>Steps 7-8</strong>: The Wallet Instance for each HW binding credentials entry in the payload of the backup JWT performs the following steps:</p>
 <ul class="simple">
 <li><p>It extracts the Credential Issuer identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the Credential Issuer.</p></li>
-<li><p>Using the Issuer identifier the Wallet Instance obtains the metadata of the Credential Issuer and makes a re-issuance request to the Credential Issuer by providing the new cryptographic binding with the Credential.</p></li>
+<li><p>Using the Issuer identifier the Wallet Instance obtains the metadata of the Credential Issuer and makes a re-issuance request to the Credential Issuer by providing the new Cryptographic Binding with the Credential.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -330,9 +333,9 @@ To check the authenticity of the file, the Wallet Instance MUST verify the backu
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">Backup and Restore</a><ul>
-<li><a class="reference internal" href="#backup-flow">Backup Flow</a></li>
-<li><a class="reference internal" href="#restore-flow-for-hardware-binding-credential">Restore flow for Hardware Binding Credential</a></li>
+<li><a class="reference internal" href="#">18. Backup and Restore</a><ul>
+<li><a class="reference internal" href="#backup-flow">18.1. Backup Flow</a></li>
+<li><a class="reference internal" href="#restore-flow-for-hardware-binding-credential">18.2. Restore flow for Hardware Binding Credential</a></li>
 </ul>
 </li>
 </ul>
@@ -347,14 +350,14 @@ To check the authenticity of the file, the Wallet Instance MUST verify the backu
         <div class="button_nav">
             <div class="left">
                 
-                <a href="authentic-sources.html">
-                    <span class="icon">&lt;</span><span>Authentic Sources</span></a>
+                <a href="credential-revocation.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">17. </span>Digital Credential Lifecycle</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="algorithms.html"><span>Cryptographic Algorithms</span><span class="icon">&gt;</span></a>
+                    <a href="registry-catalogue.html"><span><span class="section-number">19. </span>Digital Credentials Catalogue</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

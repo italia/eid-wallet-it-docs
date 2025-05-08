@@ -1,37 +1,37 @@
 .. include:: ../common/common_definitions.rst
 .. include:: ../common/symbols.rst
 
-.. _trust.rst:
 
 The Infrastructure of Trust
-+++++++++++++++++++++++++++
+===========================
 
 This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 certificates, and the revocation status of the participants, also called Federation Entities.
 
 The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the `EIDAS-ARF`_.
 
-..  figure:: ../../images/trust-roles.svg
-    :alt: federation portrait
-    :width: 100%
+.. figure:: ../../images/trust-roles.svg
+  :alt: federation portrait
+  :width: 100%
 
-    The roles within the Federation, where the Trust Anchor oversees its subordinates,
-    which include one or more Intermediates and Leaves. In this
-    representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.
+  The roles within the Federation, where the Trust Anchor oversees its subordinates,
+  which include one or more Intermediates and Leaves. In this
+  representation, both the Trust Anchor and the Intermediates assume the role of Registration Authority.
 
 Federation Roles
-------------------
+----------------
 
 All the participants are Federation Entities that MUST be registered by a Registration Body,
 except for Wallet Instances which are End-User's personal devices authenticated by their Wallet Provider.
 
 .. note::
-    The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.
+  The Wallet Instance, as a personal device, is deemed reliable through a verifiable attestation issued and signed by a trusted third party.
 
-    This is called *Wallet Attestation* and is documented in `the dedicated section  <wallet-attestation.html>`_.
+  This is called *Wallet Attestation* and is documented in the dedicated :ref:`wallet-attestation-issuance:Wallet Attestation Issuance`.
 
 Below the table with the summary of the Federation Entity roles, mapped on the corresponding EUDI Wallet roles, as defined in the `EIDAS-ARF`_.
 
 .. list-table::
+   :class: longtable
    :widths: 20 20 60
    :header-rows: 1
 
@@ -66,13 +66,14 @@ Below the table with the summary of the Federation Entity roles, mapped on the c
      - Leaf
      -
 
-
 General Properties
 ------------------
 
 The architecture of the trust infrastructure is built upon the following core principles:
 
 .. list-table::
+   :class: longtable
+   :widths: 20 20 80
    :header-rows: 1
 
    * - Identifier
@@ -80,7 +81,7 @@ The architecture of the trust infrastructure is built upon the following core pr
      - Description
    * - P1
      - **Security**
-     - Incorporates mechanisms to ensure the integrity, confidentiality, and authenticity of the trust relationships and interactions within the federation.
+     - Incorporates mechanisms to ensure the integrity, confidentiality, and authenticity of the Trust Relationships and interactions within the federation.
    * - P2
      - **Privacy**
      - Designed to respect and protect the privacy of the entities and individuals involved, minimal disclosure is part of this.
@@ -98,7 +99,7 @@ The architecture of the trust infrastructure is built upon the following core pr
      - Designed to efficiently manage an increasing number of entities or interactions without a significant increase in trust management complexity.
    * - P7
      - **Flexibility**
-     - Adaptable to various operational and organizational needs, allowing entities to define and adjust their trust relationships and policies.
+     - Adaptable to various operational and organizational needs, allowing entities to define and adjust their Trust Relationships and policies.
    * - P8
      - **Autonomy**
      - While part of a federated ecosystem, each entity retains control over its own definitions and configurations.
@@ -113,6 +114,8 @@ Trust Infrastructure Requirements
 This section includes the requirements necessary for the successful implementation and operation of the infrastructure of trust.
 
 .. list-table:: Functional Requirements
+   :class: longtable
+   :widths: 20 80
    :header-rows: 1
 
    * - ID
@@ -136,7 +139,7 @@ This section includes the requirements necessary for the successful implementati
    * - FR9
      - **Emergency and Revocation Services**: implement mechanisms for the immediate revocation of participants in case of security breaches or other emergencies.
    * - FR10
-     - **Scalable Trust Infrastructure**: the system must support scalable trust establishment mechanisms, leveraging approaches and technical solutions that complement delegation transitive approaches to efficiently manage trust relationships as the federation grows, removing central registries that might technically or administratively fail.
+     - **Scalable Trust Infrastructure**: the system must support scalable trust establishment mechanisms, leveraging approaches and technical solutions that complement delegation transitive approaches to efficiently manage Trust Relationships as the federation grows, removing central registries that might technically or administratively fail.
    * - FR11
      - **Efficient Storage Scalability**: implement a storage solution that scales horizontally to accommodate increasing data volumes while minimizing central storage and administrative costs. The system should enable members to independently store and present historical trust attestations and signed artifacts during dispute resolutions, with the federation infrastructure maintaining only a registry of historical keys to validate the historical data, stored and provided by the participants.
    * - FR12
@@ -144,7 +147,7 @@ This section includes the requirements necessary for the successful implementati
    * - FR13
      - **Decentralized Dispute Resolution Mechanism**: design a decentralized mechanism for dispute resolution that allows federation members to independently verify historical trust establishment and signed artifacts, reducing reliance on central authorities and streamlining the resolution process.
    * - FR14
-     - **Cross-Federation Interoperability**: ensure the system is capable of interoperating with other federations or trust frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.
+     - **Cross-Federation Interoperability**: ensure the system is capable of interoperating with other federations or Trust Frameworks, facilitating cross-federation transactions and trust establishment without compromising security or compliance.
    * - FR15
      - **Autonomous Registration Bodies**: the system must facilitate the integration of autonomous registration bodies that operate in compliance with federation rules. These bodies are tasked with evaluating and registering entities within the federation, according to the pre-established rules and their compliance that must be periodically asserted.
    * - FR16
@@ -167,6 +170,7 @@ publicly available. The table below summarises the endpoints and their scopes.
 All the endpoints listed below are defined in the `OID-FED`_ specs.
 
 .. list-table::
+   :class: longtable
    :widths: 20 20 20 20
    :header-rows: 1
 
@@ -273,6 +277,8 @@ Entity Configuration and within the Subordinate Statement issued by a immediate 
 
 The Entity Configuration MAY also contain one or more Trust Marks.
 
+Technical details about Entity Configuration of Wallet Provider, Credential Issuer and Relying Party are given in Section :ref:`entity-configurations:Entity Configurations`.
+
 .. note::
   **Entity Configuration Signature**
 
@@ -285,6 +291,7 @@ The Entity Configurations of all the participants in the federation MUST have in
 
 
 .. list-table::
+   :class: longtable
    :widths: 20 60
    :header-rows: 1
 
@@ -299,7 +306,7 @@ The Entity Configurations of all the participants in the federation MUST have in
    * - **exp**
      - UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated at :rfc:`7519`.
    * - **jwks**
-     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`. It contains the Federation Entity Keys required for the operations of trust evaluation.
+     - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`. It contains the Federation Entity Keys required for the operations of Trust Evaluation.
    * - **metadata**
      - JSON Object. Each key of the JSON Object represents a metadata type identifier
        containing JSON Object representing the metadata, according to the metadata
@@ -313,6 +320,7 @@ Entity Configuration Trust Anchor
 The Trust Anchor Entity Configuration, in addition to the common parameters listed above, uses the following parameters:
 
 .. list-table::
+   :class: longtable
    :widths: 20 60 20
    :header-rows: 1
 
@@ -330,12 +338,13 @@ The Trust Anchor Entity Configuration, in addition to the common parameters list
 
 
 Entity Configuration Leaves and Intermediates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to the previously defined claims, the Entity Configuration of the Leaves and of the Intermediate Entities uses the following parameters:
 
 
 .. list-table::
+   :class: longtable
    :widths: 20 60 20
    :header-rows: 1
 
@@ -359,10 +368,10 @@ giving the references of the metadata protocol for each of these.
 
 
 .. note::
-
-    The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.
+  The entries that don't have any reference to a known draft or standard are intended to be defined in this technical reference.
 
 .. list-table::
+   :class: longtable
    :widths: 20 20 20 60
    :header-rows: 1
 
@@ -397,28 +406,29 @@ giving the references of the metadata protocol for each of these.
 
 
 .. note::
-    Wallet Provider metadata is defined in the section below.
+  Wallet Provider metadata is defined in the section below.
 
-    `Wallet Solution section <wallet-solution.html>`_.
+  :ref:`wallet-solution:Wallet Solution`.
 
 
 .. note::
-    In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server,
-    it MUST incorporate both
-    ``oauth_authorization_server`` and ``openid_credential_issuer`` within its metadata types.
-    Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the `authorization_servers` parameters, including the Authorization Server unique identifier.
-    Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
-    it could be necessary to include the relevant metadata type, either ``openid_relying_party``
-    or ``openid_credential_verifier``.
+  In instances where a PID/EAA Provider implements both the Credential Issuer and the Authorization Server,
+  it MUST incorporate both
+  ``oauth_authorization_server`` and ``openid_credential_issuer`` within its metadata types.
+  Other implementations may divide the Credential Issuer from the Authorization Server, when this happens the Credential Issuer metadata MUST contain the `authorization_servers` parameters, including the Authorization Server unique identifier.
+  Furthermore, should there be a necessity for User Authentication by the Credential Issuer,
+  it could be necessary to include the relevant metadata type, either ``openid_relying_party``
+  or ``openid_credential_verifier``.
 
 
 Metadata of federation_entity Leaves
--------------------------------------
+------------------------------------
 
 The *federation_entity* metadata for Leaves MUST contain the following claims.
 
 
 .. list-table::
+  :class: longtable
   :widths: 20 60
   :header-rows: 1
 
@@ -439,7 +449,7 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
 
 
 Subordinate Statements
------------------------
+----------------------
 
 Trust Anchors and Intermediates publish Subordinate Statements related to their immediate Subordinates.
 The Subordinate Statement MAY contain a metadata policy and the Trust Marks related to a Subordinate.
@@ -449,7 +459,7 @@ The metadata policy, when applied, makes one or more changes to the final metada
 Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where the Subordinate Statements are requested to validate the Leaf's Entity Configuration signature.
 
 .. note::
-    The Federation Fetch endpoint MAY also publish X.509 certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 certificates via a RESTful service.
+  The Federation Fetch endpoint MAY also publish X.509 certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 certificates via a RESTful service.
 
 Below there is a non-normative example of an Subordinate Statement issued by an Registration Body (such as the Trust Anchor or its Intermediate) in relation to one of its Subordinates.
 
@@ -506,7 +516,6 @@ Below there is a non-normative example of an Subordinate Statement issued by an 
 
 
 .. note::
-
   **Subordinate Statement Signature**
 
   The same considerations and requirements made for the Entity Configuration
@@ -518,8 +527,8 @@ Subordinate Statement
 
 The Subordinate Statement issued by Trust Anchors and Intermediates contains the following attributes:
 
-
 .. list-table::
+   :class: longtable
    :widths: 20 60 20
    :header-rows: 1
 
@@ -566,26 +575,26 @@ Each of these can be verified using the Subordinate Statement issued by a superi
 Each Subordinate Statement is verifiable over time and MUST have an expiration date. The revocation of each statement is verifiable in real time and online (only for remote flows) through the federation endpoints.
 
 .. note::
-    The revocation of an Entity is made with the unavailability of the Subordinate Statement related to it. If the Trust Anchor or its Intermediate doesn't publish a valid Subordinate Statement, or if it publishes an expired/invalid Subordinate Statement, the subject of the Subordinate Statement MUST be intended as not valid or revoked.
+  The revocation of an Entity is made with the unavailability of the Subordinate Statement related to it. If the Trust Anchor or its Intermediate doesn't publish a valid Subordinate Statement, or if it publishes an expired/invalid Subordinate Statement, the subject of the Subordinate Statement MUST be intended as not valid or revoked.
 
 The concatenation of the statements, through the combination of these signing mechanisms and the binding of claims and public keys, forms the Trust Chain.
 
 The Trust Chains can also be verified offline, using one of the Trust Anchor's public keys.
 
 .. note::
-    Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it **requires the presentation of the Wallet Attestation during the credential issuance and presentation phases**.
+  Since the Wallet Instance is not a Federation Entity, the Trust Evaluation Mechanism related to it **requires the presentation of the Wallet Attestation during the credential issuance and presentation phases**.
 
-    The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
+  The Wallet Attestation conveys all the required information pertaining to the instance, such as its public key and any other technical or administrative information, without any User's personal data.
 
 
 Establishing Trust with Credential Issuers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the issuance process, trust evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the trust evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.
+In the issuance process, Trust Evaluation ensures the integrity and authenticity of the Credentials being issued and the realiability of their Issuers. This section delineates the Trust Evaluation mechanisms distinct from the protocol flows, implemented by Wallet Instances and Relying Parties, as described in the dedicated section.
 
-Trust evaluations implement different ways, as defined below:
+Trust Evaluations implement different ways, as defined below:
 
-* **Federation Entity Discovery**: Wallet Instances and Relying Parties MUST verify the identity of the Issuer through a Federation Entity Discovery process. This involves querying a trusted list or directory to confirm the Issuer's validity status and compliance with the Trust Framework.
+* **Federation Entity Discovery**: Wallet Instances and Relying Parties MUST verify the identity of the Issuer through a Federation Entity Discovery process. This involves querying a Trusted List or directory to confirm the Issuer's validity status and compliance with the Trust Framework.
 
 * **Trust Chains**: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains, be provided statically or build though a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority to the Issuer.
 
@@ -601,17 +610,17 @@ In the process represented in the sequence diagram below, the Wallet Instance us
     :target: //www.plantuml.com/plantuml/svg/fPCzRzim48Pt_ef3bavkzWn13DTfXIv1quyboqKynOTIH-9uj9D_NqQ46hkmkaGJGJtty7q5wYORgfKnk8Hgt7D2CVY58P2TR6qwm0mN6oLFOem1kfmBwSK9rMqdgXCZ7Sap6br-rv8DrjBlOgLTSyFg-hewh-2MhD_LrOSCs-gr5zX46VYfA1f7UH10Wuy72c7rM-91BcCYORyQo5D3WCIdo69kqqtQTi8LV2ChAcUr9p5cVljiYdsDMgn6VPtvKgqP1erZI_YF8yIOO8WAXBN3wPY3-XmTqctdhk-jkMo-BuzHFGiQmRsXqKXYJJrCm99Y_W8_CR1_dROTGLBQSomPyfkgP9QdwUtjts1peQ_qaXyaQTop9myi4tSsaoFnplqlGBiqcnsoE8V1e1kEzu1pOm75mm-XvyHAVgdNdSQUoCE1RNUKlEtdx2XaMffTr_msaysmLOsws66TKc3AS1S3ztLnZlb4odjgbsfWmG0Z6NeqF4T_9WFS8mTy30Hlls262iG3-UaISiu5fITtG-BB6Fu0
 
 .. note::
-  As shown in the figure, the trust evaluation process is entirely separate and distinct from the protocol-specific flow. It operates in a different flow and utilizes specialized protocols designed specifically for this purpose.
+  As shown in the figure, the Trust Evaluation process is entirely separate and distinct from the protocol-specific flow. It operates in a different flow and utilizes specialized protocols designed specifically for this purpose.
 
 Establishing Trust with Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the context of evaluating Relying Parties, the responsibility for trust evaluation lies solely with the Wallet Instance.
-The trust evaluation mechanisms are distinct from protocol flows and are implemented by the Wallet Instance, as detailed in the dedicated section.
+In the context of evaluating Relying Parties, the responsibility for Trust Evaluation lies solely with the Wallet Instance.
+The Trust Evaluation mechanisms are distinct from protocol flows and are implemented by the Wallet Instance, as detailed in the dedicated section.
 
-Trust evaluations are conducted as follows:
+Trust Evaluations are conducted as follows:
 
-* **Federation Entity Discovery**: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party through a Federation Entity Discovery process. This involves querying a trusted list or directory to confirm the Relying Party's validity status and compliance with the Trust Framework and the evaluation of the request signature using the cryptographic material obtained from the Trust Chain.
+* **Federation Entity Discovery**: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party through a Federation Entity Discovery process. This involves querying a Trusted List or directory to confirm the Relying Party's validity status and compliance with the Trust Framework and the evaluation of the request signature using the cryptographic material obtained from the Trust Chain.
 
 * **Trust Chains**: The Wallet Instance evaluates the Relying Party's Trust Chains, which may be provided statically or built through a Federation Entity Discovery process, to ensure that the Relying Party is part of a recognized and trusted federation. This involves checking the Trust Chain from the root authority (Trust Anchor) to the Relying Party.
 
@@ -630,7 +639,7 @@ In the process depicted in the sequence diagram below, the Wallet Instance uses 
   As shown in the figure, internet connection is required to update the Trust Chain about an RP and check its revocation status.
 
 Evaluating Trust with Wallets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Wallet Provider issues the Wallet Attestation, certifying the operational status of its Wallet Instances and including one of their public keys.
 
@@ -640,7 +649,7 @@ The Wallet Instance provides its Wallet Attestation within the signed request du
 
 
 Trust Chain
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^
 
 The Trust Chain is a sequence of verified statements that validates a participant's compliance with the Federation. It has an expiration date time, beyond which it MUST be renewed to obtain the fresh and updated metadata. The expiration date of the Trust Chain is determined by the earliest expiration timestamp among all the expiration timestamp contained in the statements. No Entity can force the expiration date of the Trust Chain to be higher than the one configured by the Trust Anchor.
 
@@ -665,8 +674,7 @@ Below is a non-normative example of a Trust Chain, composed by a JSON Array cont
 
 
 .. note::
-
-    The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.
+  The entire Trust Chain is verifiable by only possessing the Trust Anchor's public keys.
 
 There are events where keys are unavailable to verify the entire trust chain:
 
@@ -679,20 +687,20 @@ There are events where keys are unavailable to verify the entire trust chain:
  - **Credential Issuer Becomes Inactive**: If a Credential Issuer becomes inactive, its **related** Entity Configuration and Federation Historical Entity Endpoint MUST be kept available.
 
 Offline Trust Attestation Mechanisms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The offline flows do not allow for real-time evaluation of an Entity's status, such as its revocation. At the same time, using short-lived Trust Chains enables the attainment of trust attestations compatible with the required revocation administrative protocols (e.g., a revocation must be propagated in less than 24 hours, thus the Trust Chain must not be valid for more than that period).
 
 
 Offline Wallet Trust Attestation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""""
 
 Given that the Wallet Instance cannot publish its metadata online at the *.well-known/openid-federation* endpoint,
 it MUST obtain a Wallet Attestation issued by its Wallet Provider. The Wallet Attestation MUST contain all the relevant information regarding the security capabilities of the Wallet Instance and its protocol related configuration. It SHOULD contain the Trust Chain related to its issuer (Wallet Provider).
 
 
 Offline Relying Party Metadata
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""""""""""""""""""""""""""""""
 
 Since the Federation Entity Discovery is only applicable in online scenarios, it is possible to include the Trust Chain in the presentation requests that the Relying Party may issue for a Wallet Instance.
 
@@ -706,14 +714,14 @@ Trust Chain Fast Renewal
 ------------------------
 
 The Trust Chain fast renewal method offers a streamlined way to maintain the validity of a trust chain without undergoing the full discovery
-process again. It's particularly useful for quickly updating trust relationships when minor changes occur or when the
+process again. It's particularly useful for quickly updating Trust Relationships when minor changes occur or when the
 Trust Chain is close to expiration but the overall structure of the federation hasn't changed significantly.
 
 The Trust Chain fast renewal process is initiated by fetching the leaf's Entity Configuration anew. However, unlike the federation discovery process that may involve fetching Entity Configurations starting from the authority hints, the fast renewal focuses on directly obtaining the Subordinate Statements. These statements are requested using the `source_endpoint` provided within them, which points to the location where the statements can be fetched.
 
 
 Non-repudiability of the Long Lived Attestations
---------------------------------------------------
+------------------------------------------------
 
 The Trust Anchor and its Intermediate MUST expose the Federation Historical Keys endpoint, where are published all the public part of the Federation Entity Keys that are no longer used, whether expired or revoked.
 
@@ -734,9 +742,9 @@ This approach leverages the dynamic and flexible nature of OpenID Federation alo
 
 OpenID Federation and X.509 based PKI share several things in common, as listed below:
 
-- **Hierarchical Approach**: both utilize a hierarchical trust model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.
+- **Hierarchical Approach**: both utilize a hierarchical Trust Model with a single, overarching trusted third party, known as the Trust Anchor, which is trusted above all others.
 - **Decentralization with Multiple Trust Anchors and Intermediates**: despite a unique hierarchical model, the possibility of having multiple Trust Anchors and Intermediates, below one or more Trust Anchors, introduces a level of decentralization.
-- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a policy language.
+- **Custom Extensions**: both systems allow for custom extensions to meet specific requirements or to enhance functionality. X.509 Certificates support custom extensions, OpenID Federation allows definition of custom protocol specific metadata, Trust Marks and policies using a Policy Language.
 - **Trust/Certificate Chain**: they rely on a chained proof of trust, where trust is passed down from the root authority (Trust Anchor) through Intermediaries to the end entity (Leaf).
 - **Constraints in the Chain**: constraints can be applied within the Trust Chain regarding critical aspects such as the delegation of trust, the number of intermediaries, and the domains involved.
 - **Public Key Distribution**: Both systems involve the distribution of the public key of the Trust Anchor to ensure entities can verify the trust chain.
@@ -746,7 +754,7 @@ OpenID Federation and X.509 based PKI share several things in common, as listed 
 Federation Trust Anchor and X.509 CA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the context of OpenID Federation, the Trust Anchor plays a role similar to that of a Certificate Authority (CA) in X.509-based Public Key Infrastructures (PKIs). Both serve as foundational elements of trust within their respective systems. In this document, the term "Trust Anchor" is often used to encompass both concepts. The trust infrastructure described here aligns the OpenID Federation Trust Anchor with the X.509 PKI Certificate Authority, making therefore them a single unique entity supporting both `RFC5280`_ and OpenID Federation 1.0.
+In the context of OpenID Federation, the Trust Anchor plays a role similar to that of a Certificate Authority (CA) in X.509-based Public Key Infrastructures (PKIs). Both serve as foundational elements of trust within their respective systems. In this document, the term "Trust Anchor" is often used to encompass both concepts. The trust infrastructure described here aligns the OpenID Federation Trust Anchor with the X.509 PKI Certificate Authority, making therefore them a single unique entity supporting both `RFC 5280`_ and OpenID Federation 1.0.
 
 X.509 Certificates Issuance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -760,7 +768,6 @@ This is feasible because the X.509 Certificate can be verified using a X.509 Cer
 
 Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
-
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 
@@ -786,7 +793,7 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
 Below a non-normative example of an X.509 Certificate Chain without intermediaries and in plain text, to facilitate the reading.
 
 
-.. code-block::
+.. code-block:: text
 
     Certificate:
     Data:
@@ -899,7 +906,7 @@ Below a non-normative example of an X.509 Certificate Chain without intermediari
          7d:6e:5f:...
 
 
-Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach, enabling X.509 certificate issuance delegation, introduces innovative practices for certificate management using the underlying trust relationships established within the OpenID Federation.
+Federation participants can ensure that their certificates are consistent, enabling interoperability and security across the federation. This approach, enabling X.509 certificate issuance delegation, introduces innovative practices for certificate management using the underlying Trust Relationships established within the OpenID Federation.
 
 
 X.509 Certificate Revocation
@@ -913,7 +920,7 @@ When the X.509 Certificate issuer is an Immediate superior, such as the Trust An
 
 Below a non-normative example, in plain text, examplify the content of a CRL.
 
-.. code-block::
+.. code-block:: text
 
     Certificate Revocation List (CRL):
     Version: 2 (0x1)

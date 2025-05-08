@@ -1,20 +1,20 @@
-.. _mobile-instance.rst:
+.. include:: ../common/common_definitions.rst
+
 
 Mobile Application Instance
-+++++++++++++++++++++++++++++
+===========================
 
 The Wallet and Mobile Relying Party Instances share significant similarities, with particular respect to some aspects related to initialization and integrity validation. To eliminate redundancy, this section will use the term **Mobile Application Instance** to collectively refer to both. Within this framework, the **Application Provider** assumes the responsibilities of either the Wallet Provider or the Relying Party Backend, depending on the context.
 
 
 Mobile Application Instance Initialization
-================================================
+------------------------------------------
 
 The Initialization flow enables the Mobile Application Instance to register a long-lived key pair, securely stored in an appropriate secure storage within the device, with the Application Provider. This process occurs only after the Application Provider verifies the security and Key Attestation issued by the OS manufacturer.
 
 The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flow`, while a step-by-step description is provided below.
 
 .. _fig_MobileApplication_Instance_Initialization_Flow:
-
 .. figure:: ../../images/application_instance_initialization.svg
     :figwidth: 100%
     :align: center
@@ -31,12 +31,11 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
   * Checks if the Key Attestation APIs is available.
 
 .. note::
+  **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Entity Configuration of Relying Parties` sections.
 
-    **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the :ref:`Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`Wallet Provider Entity Configuration` and :ref:`Entity Configuration of Relying Parties` sections.
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks. 
 
-**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a ``nonce`` from the Application Provider, by sending a :ref:`Mobile Application Nonce Request`. This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks.
-
-Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
+Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`mobile-application-instance:Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
 
 **Step 6**: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:
 
@@ -46,15 +45,13 @@ Upon a successful request, the Application Provider generates and returns the ``
   4. If the previous points are satisfied, it MUST store the ``hardware_key_tag`` in local storage.
 
 .. note::
-
-  **WSCD**: The Mobile Application Instance MAY use a local WSCD for cryptographic operations, including key generation, secure storage, and cryptographic processing,  on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.
+  **WSCD**: The Mobile Application Instance MAY use a local WSCD for cryptographic operations, including key generation, secure storage, and cryptographic processing, on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.
 
   If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
 
 **Step 7**: The Mobile Application Instance uses the Key Attestation APIs, providing the ``client_data_hash`` to acquire the Key Attestation.
 
 .. note::
-
   **Key Attestation APIs**: In this section, the Key Attestation APIs is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.
 
   The service also incorporates details in the signed object, such as the device type, model, app version, operating system version, bootloader status, and other relevant information to assess whether the device has been compromised. Additionally Android devices may possess the *Key Attestation API*, a feature supported by *StrongBox Keymaster* (a physical HSM installed directly on the motherboard) or by the *TEE* (Trusted Execution Environment, a secure area of the main processor). *Key Attestation* aims to provide a way to strongly determine if a key pair is hardware-backed, what the properties of the key are, and what constraints are applied to its usage. For Apple devices, the Key Attestation API is represented by *DeviceCheck*, which provides a framework and server interface to manage device-specific data securely. *DeviceCheck* is used in combination with the *Secure Enclave*, a dedicated HSM integrated into Apple's SoCs. *DeviceCheck* can be used to attest to the integrity of the device, apps, and/or encryption keys generated on the device, ensuring they were created in a secure environment like *Secure Enclave*. Developers can leverage *DeviceCheck* functionality by using the framework itself.
@@ -71,7 +68,7 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
-**Step 9 (Mobile Application Instance Initialization Request)**: The Mobile Application Instance sends a :ref:`Mobile Application Instance Initialization Request` to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the ``nonce``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
+**Step 9 (Mobile Application Instance Initialization Request)**: The Mobile Application Instance sends a :ref:`mobile-application-instance:Mobile Application Instance Initialization Request` to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the ``nonce``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
 
 .. note::
   It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
@@ -84,19 +81,18 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
   3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider.
   4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device.
 
-Upon successful initialization of the Mobile Application Instance, the Application Provider responds with a confirmation of success (:ref:`Mobile Application Instance Initialization Response`).
+Upon successful initialization of the Mobile Application Instance, the Application Provider responds with a confirmation of success (:ref:`mobile-application-instance:Mobile Application Instance Initialization Response`).
 
 .. note::
-
   The Application Provider might associate the Mobile Application Instance (through the ``hardware_key_tag`` identifier) with a specific User or Device. This uniquely identifies the User/Device within the Application Provider's systems and can be used for future revocations in the lifecycle of the Mobile Application Instance.
 
 **Steps 13-14**: The Mobile Application Instance has been initialized.
 
-.. note:: **Threat Model**: while the initialization endpoint does not necessitate authenticating the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the initialization of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a nonce helps prevent replay attacks. The authenticity of both the nonce and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
-
+.. note::
+  **Threat Model**: while the initialization endpoint does not necessitate authenticating the client, it is safeguarded through the use of `key_attestation`. Proper validation of this attestation permits the initialization of authentic and unaltered app instances. Any other claims submitted will not undergo validation, leading the endpoint to respond with an error. Additionally, the inclusion of a nonce helps prevent replay attacks. The authenticity of both the nonce and the ``hardware_key_tag`` is ensured by the signature found within the ``key_attestation``.
 
 Mobile Application Nonce Request
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Nonce Request uses the HTTP GET method.
 
@@ -107,9 +103,8 @@ Below is a non-normative example of a Nonce Request.
     GET /nonce HTTP/1.1
     Host: application-provider.example.com
 
-
 Mobile Application Nonce Response
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Upon a successful request, the Application Provider returns an HTTP Response with a ``200 OK`` status code, with ``Content-Type`` set to ``application/json``.
 
@@ -126,9 +121,8 @@ Below is a non-normative example of a Nonce Response.
       "nonce": "d2JhY2NhbG91cmVqdWFuZGFt"
     }
 
-
 Mobile Application Nonce Error Response
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""
 
 If any errors occur, the Application Provider returns an error response. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -150,6 +144,7 @@ Below is a non-normative example of a Nonce Error Response.
 The following table lists HTTP Status Codes and related error codes that are supported for the error response:
 
 .. list-table::
+    :class: longtable
     :widths: 30 20 50
     :header-rows: 1
 
@@ -163,16 +158,16 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the Nonce Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
-
 Mobile Application Instance Initialization Request
----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Instance Initialization Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
 
 The Instance Initialization Request body contains the following claims:
 
-.. _table_http_request_claim:
+
 .. list-table::
+    :class: longtable
     :widths: 20 60 20
     :header-rows: 1
 
@@ -205,7 +200,7 @@ Below is a non-normative example of an Instance Initialization Request.
 
 
 Mobile Application Instance Initialization Response
----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If an Instance Initialization Request is successfully validated, the Application Provider provides an HTTP Response with status code ``204 No Content``.
 
@@ -217,7 +212,7 @@ Below is a non-normative example of an Instance Initialization Response.
 
 
 Mobile Application Instance Initialization Error Response
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 If any errors occur, the Application Provider returns an error response. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -240,6 +235,7 @@ Below is a non-normative example of an Instance Initialization Error Response.
 The following table lists HTTP Status Codes and related error codes that are supported for the error response:
 
 .. list-table::
+   :class: longtable
    :widths: 20 20 50
    :header-rows: 1
 
@@ -270,15 +266,15 @@ The following table lists HTTP Status Codes and related error codes that are sup
 
 
 Mobile Application Key Binding
-=====================================
+------------------------------
 
-The Key Binding flow enables the Mobile Application Instance to bind a newly created pair of keys to the Mobile Application Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`Mobile Application Instance Initialization` phase. Before completing the process, the Application Provider also needs to verify the integrity of the Mobile Application Instance.
+The Key Binding flow enables the Mobile Application Instance to bind a newly created pair of keys to the Mobile Application Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Application Provider also needs to verify the integrity of the Mobile Application Instance.
 
-Although the exact flow differs depending on the context (see the :ref:`Mobile Relying Party Instance Registration` and :ref:`Wallet Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
+Although the exact flow differs depending on the context (see the :ref:`relying-party-instance:Mobile Relying Party Instance Registration` and :ref:`wallet-attestation-issuance:Wallet Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
 
 
 Mobile Application Key Binding Request
--------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Key Binding Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
 
@@ -298,7 +294,9 @@ Below is a non-normative example of a Key Binding Request.
 
 In particular, the Key Binding Request JWT includes the following HTTP header parameters:
 
+.. _table_key_binding_request_claim:
 .. list-table::
+    :class: longtable
     :widths: 20 60 20
     :header-rows: 1
 
@@ -306,7 +304,7 @@ In particular, the Key Binding Request JWT includes the following HTTP header pa
       - **Description**
       - **Reference**
     * - **alg**
-      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the :ref:`Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
+      - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the :ref:`algorithms:cryptographic algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
       - Thumbprint of the Mobile Application Instance's JWK contained in the ``cnf`` claim.
@@ -318,6 +316,7 @@ In particular, the Key Binding Request JWT includes the following HTTP header pa
 The Key Binding Request JWT includes the following body claims:
 
 .. list-table::
+    :class: longtable
     :widths: 20 60 20
     :header-rows: 1
 
@@ -352,16 +351,18 @@ The Key Binding Request JWT includes the following body claims:
       - JSON object containing the public part of an asymmetric key pair owned by the Mobile Application Instance.
       - :rfc:`7800`.
 
-Below is a non-normative example of a Key Binding Request JWT.
+Below is a non-normative example of a Key Binding Request JWT header and payload.
 
-.. code-block::
+.. code-block:: json
 
     {
       "alg": "ES256",
       "kid": "hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "typ": "..."
     }
-    .
+
+.. code-block:: json
+  
     {
       "iss": "https://application-provider.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "sub": "https://application-provider.example.org/",
@@ -381,13 +382,13 @@ Below is a non-normative example of a Key Binding Request JWT.
 
 
 Mobile Application Key Binding Response
-----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`Relying Party Integrity Validation Response` and :ref:`Wallet Attestation Issuance Response` sections.
+The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-endpoint:Relying Party Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet Attestation Issuance Response` sections.
 
 
 Mobile Application Key Binding Error Response
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""""""
 
 If any errors occur, the Application Provider returns an error response. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
@@ -409,6 +410,7 @@ Below is a non-normative example of a Key Binding Error Response.
 The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified:
 
 .. list-table::
+    :class: longtable
     :widths: 30 20 50
     :header-rows: 1
 

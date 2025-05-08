@@ -1,10 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
 
-.. _registry_catalogue.rst:
-
 Digital Credentials Catalogue
-+++++++++++++++++++++++++++++++++++++++++++
+=============================
 
 The Digital Credentials Catalogue is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
 
@@ -29,7 +27,7 @@ The main Entities involved in the Digital Credential Catalogue are:
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue.
 
 
-.. _catalogue.svg:
+.. _fig_catalogue.svg:
 .. figure:: ../../images/catalogue.svg
     :figwidth: 100%
     :align: center
@@ -39,6 +37,7 @@ The main Entities involved in the Digital Credential Catalogue are:
 The following table summarizes the main information that MUST be provided by the Digital Credential Catalogue:
 
 .. list-table:: Digital Credential Catalogue - Main information
+   :class: longtable
    :widths: 30 70
    :header-rows: 1
 
@@ -49,7 +48,7 @@ The following table summarizes the main information that MUST be provided by the
 
        - **Credential Unique identifier**: A unique identifier string of each Digital Credential.
        - **User authentication methods**: User authentication mechanisms used to request the Digital Credential, if required by Issuers or Authentic Sources.
-       - **Minimum Level of Assurance**: The minimum level of assurance required for the Digital Credential's reliability. It MUST take into account the level of assurance of User authentication, when applicable, and Wallet Instance.
+       - **Minimum Level of Assurance**: The minimum Level of Assurance required for the Digital Credential's reliability. It MUST take into account the Level of Assurance of User authentication, when applicable, and Wallet Instance.
        - **Additional display characteristics**: Visual and formatting specifications, such as a background reference image, logo, etc.
    * - Digital Credential Issuers
      - Details about the organization authorized to issue the Digital Credential, such as:
@@ -91,6 +90,7 @@ Digital Credentials Categories
 Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.
 
 .. list-table:: Digital Credential Domains and Categories
+   :class: longtable
    :header-rows: 1
    :widths: 20 30 50
 
@@ -141,6 +141,7 @@ Digital Credentials Catalogue contents is secured in a JWS that contains the fol
 
 .. _table_catalogue_parameters:
 .. list-table::
+   :class: longtable
    :header-rows: 1
    :widths: 25 50 25
 
@@ -151,13 +152,13 @@ Digital Credentials Catalogue contents is secured in a JWS that contains the fol
      - REQUIRED. It MUST be set to ``JOSE``.
      - [:rfc:`7515` Section 4.1.9].
    * - **alg**
-     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <supported_algs>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
+     - REQUIRED. A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <algorithms:Cryptographic Algorithms>` and MUST NOT be set to ``none`` or with a symmetric algorithm (MAC) identifier.
      - [:rfc:`7515` Section 4.1.1].
    * - **kid**
      - REQUIRED. Unique identifier of the public key.
      - [:rfc:`7515` Section 4.1.4].
    * - **x5c**
-     - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key  used with the X.509 Certificate.
+     - OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [:rfc:`5280`] corresponding to the key used to digitally sign the JWS. When the header parameter `kid` value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.
      - [:rfc:`7515` Section 4.1.6.].
    * - **cty**
      - REQUIRED. It MUST be set to ``application/json``.
@@ -166,6 +167,7 @@ Digital Credentials Catalogue contents is secured in a JWS that contains the fol
 The JWS payload contains the following parameters:
 
 .. list-table:: First-level Fields of the Catalog
+   :class: longtable
    :header-rows: 1
    :widths: 30 70
 
@@ -187,6 +189,7 @@ The JWS payload contains the following parameters:
 Each element of the ``credentials`` array contains at least the following information:
 
 .. list-table:: First-level Fields of Each Credential Entry
+   :class: longtable
    :header-rows: 1
    :widths: 30 70
 
@@ -234,7 +237,7 @@ Each element of the ``credentials`` array contains at least the following inform
      - REQUIRED. Digital Credential authentication requirements
 
        * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
-       * **min_loa**: REQUIRED. Minimum level of assurance required for Digital Credential authentication. It MUST include the level of assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
+       * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
        * **supported_eid_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes.
    * - **purposes**
      - REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:
@@ -280,7 +283,7 @@ The corresponding example of Digital Credentials Catalogue as decoded in JSON fo
 
   A non-normative example of a localisation bundle output is given below:
 
-    .. code-block::
+    .. code-block:: json
 
       {
         "driving_license.name": "Patente di Guida",
@@ -288,7 +291,7 @@ The corresponding example of Digital Credentials Catalogue as decoded in JSON fo
         "purpose.driving_authorization.name": "Abilitazione alla guida",
         "purpose.driving_authorization.description": "Verifica di Abilitazione alla guida",
         "claims.given_name.name": "Nome",
-        ...
+        "...": "..."
       }
 
   Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalogue. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
@@ -301,7 +304,7 @@ The corresponding example of Digital Credentials Catalogue as decoded in JSON fo
 Claims Taxonomy
 ^^^^^^^^^^^^^^^^
 
-The Digital Credential Catalogue, MUST include also a reference URI to Claim Taxonomy providing, in a single resource, the semantic information of all registered and available claims within the IT-Wallet ecosystem. It MUST be Credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet technical solutions.
+The Digital Credential Catalogue, MUST include also a reference URI to Claim Taxonomy providing, in a single resource, the semantic information of all registered and available claims within the IT-Wallet ecosystem. It MUST be Credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet Technical Solutions.
 
 A non-normative example of the Claim Taxonomy is given below.
 
@@ -324,7 +327,8 @@ The Digital Credentials Catalogue Request MUST be an HTTP GET using the applicat
     Host: www.trust-registry.eid-wallet.example.it
     Content-Type: application/jose
 
-.. note:: As a future enhancement, the Trust Anchor MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.
+.. note::
+  As a future enhancement, the Trust Anchor MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.
 
 
 Digital Credentials Catalogue Response
