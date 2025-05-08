@@ -53,9 +53,10 @@ The Wallet Provider MUST allow the user to:
 - Recognize one's own PID and differentiate it from other (Q)EAAs, as it adheres to the comprehensive guidelines defined by the PID Issuer - not only concerning visual identity, but also including format, structure, and presentation standards.
 
 
-The PID Issuer MUST define: 
-- a name/naming convention to refer to the PID, which must be consistent across all wallet solutions
-- a clear set of guidelines for the PID to ensure consistent identification and representation of the PID across different wallet solutions, in terms of format, structure, and presentation standards (e.g. name, color, background, an official graphic element to clearly identify and differentiate it). 
+The PID Provider MUST define: 
+
+- a name/ naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions. The PID name MUST be comprehensible and user-friendly avoiding technical terms such as “Person Identification Data” or its acronym “PID”;
+- a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.). 
 
 
 Issuance of Electronic Attestations of Attributes
