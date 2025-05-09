@@ -91,22 +91,26 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 If an Authentic Source (or an Electronic Attestation of Attributes Provider, should it coincide with the Authentic Source) intends to implement an Engagement Button to initiate the request process from their Touchpoint, they MUST ensure compliance with the graphical appearance and implementation requirements for the Engagement Button, as outlined in the :ref:`brand-identity.rst` section.
 
-Layout of Electronic Attestations
-==================================
+Focus on Electronic Attestations of Attributes
+==============================================
 
-The Electronic Attestations obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, the Electronic Attestations MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the Electronic Attestation that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:
+The EAAs obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, each EAA MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the EAA that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:
 
-- the Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
-- the name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View;
-- the Electronic Attestation, both in the Preview View and the Detailed View, MUST display its status if different from valid and MAY display it if valid. The Preview View MAY also include additional attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider;
-- the layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen;
-- the Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout;
-- the Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details;
-- the Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section.
+- The EAA MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
+- The name of the EAA MUST be clearly visible and always displayed in both the Detail View and the Preview View;
+- The EAA, both in the Preview View and the Detailed View, MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. The Preview View MAY also include additional Attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider. The Detailed View MAY provide specific details about the state if invalid (e.g., the reason why the EAA is revoked);
+- The EAA MUST include Action Buttons in the Detail View to enable lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref: `Management of Electronic Attestations`); 
+- The EAA MUST be an interactive element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref: `Presentation of Electronic Attestation`); 
+- The EAA MAY be displayed in a card format in their Preview View, in line with approaches already used by other digital wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout; 
+- The EAA MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
+- The EAA MUST display a method of assistance (see :ref: `User Assistance`); 
+- The EAA layout in the Preview View MUST be optimized for scalability and usability, especially when multiple EAAs are displayed on the same screen; 
+- The EAA representation MUST adhere to a defined set of specifications provided by the Electronic Attestation of Attributes Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
 
+The Electronic Attestation of Attributes Provider: 
 
-
-
+- MUST define a name/ naming convention to refer to the EAAs issued, to guarantee consistency across all Wallet Solutions; the EAA name MUST be comprehensible and user-friendly avoiding technical terms or acronyms whenever possible; 
+- MUST define a clear set of specifications for the EAA to ensure consistent identification and representation of the EAA across different Wallet Solutions, in terms of format, structure, and appearance standards (e.g. name, color, background image, etc.).
 
 Presentation of Electronic Attestations
 ****************************************
