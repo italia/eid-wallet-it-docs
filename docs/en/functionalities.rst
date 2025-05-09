@@ -35,27 +35,25 @@ The Wallet Provider MUST allow the User to remove the PID issued during the acti
 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
 
-PID – Personal Identification Data
+Focus on PID – Person Identification Data
 ===================================
-The PID (Personal Identity Data) refers to verified minimum set of informations about an individual that can be stored and shared securely via the wallet app. From the user’s perspective, this data includes basic Identity Information: 
-- Name
-- Surname
-- Date of birth
-- Fiscal code
-(Place of birth, Nationality)
+The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see :ref:`PID/(Q)EAA Data Model`) issued as a result of the activation process and made available in the Wallet Instance.
+Below are the requirements for displaying and using the PID that each Wallet Provider MUST adhere to, in order to provide a consistent and accessible consultation and usage experience: 
 
-The Wallet Provider MUST allow the user to:
-- Receive, store, visualize and interact with the user’s personal identity data (PID) in a secure and private manner in the wallet app.
-- Manage the PID by providing an interface for them to easily view and control the validity and the status (valid, revoked, expiring, expired) with specific data they wish to share
-- Present the PID in order to be identified by the Relying Party in a digital context and request the issuance of additional personal attestations. 
-- Present the PID and other attributes from (Qualified) Electronic Attestation of Attribute stored in the wallet to access services provided by Relying Parties. The user can present the PID using the same presentation methods as those available for the other certificates in the wallet.
-- Revoke or update the PID (and the wallet instance with all the attestation issued) at any time, with the ability to request the deletion or modification of data stored within the wallet to ensure user control and privacy
-- Recognize one's own PID and differentiate it from other (Q)EAAs, as it adheres to the comprehensive guidelines defined by the PID Issuer - not only concerning visual identity, but also including format, structure, and presentation standards.
+- The PID MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes; 
+- The PID MUST be named as defined by the PID Provider;  
+- The PID MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked); 
+- The PID MUST include Action Buttons to enable lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see :ref: `Management of Electronic Attestations`); 
+- The PID MUST be an interactive element, for the User to be authenticated by a Relying Party in a digital context (see :ref: `Authentication`), to access services in proximity contexts, and to request the issuance of additional EAAs (see :ref: `Issuance of Electronic Attestation of Attributes`);  
+- The PID MUST display a method of assistance by the PID Provider (see :ref: `User Assistance`); 
+- The PID MUST be recognizable by the User and distinguishable from other EAAs; 
+- The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
 
 
-The PID Issuer MUST define: 
-- a name/naming convention to refer to the PID, which must be consistent across all wallet solutions
-- a clear set of guidelines for the PID to ensure consistent identification and representation of the PID across different wallet solutions, in terms of format, structure, and presentation standards (e.g. name, color, background, an official graphic element to clearly identify and differentiate it). 
+The PID Provider MUST define: 
+
+- a name/ naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions. The PID name MUST be comprehensible and user-friendly avoiding technical terms such as “Person Identification Data” or its acronym “PID”;
+- a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.). 
 
 
 Issuance of Electronic Attestations of Attributes
@@ -113,8 +111,6 @@ The Electronic Attestation of Attributes Provider:
 
 - MUST define a name/ naming convention to refer to the EAAs issued, to guarantee consistency across all Wallet Solutions; the EAA name MUST be comprehensible and user-friendly avoiding technical terms or acronyms whenever possible; 
 - MUST define a clear set of specifications for the EAA to ensure consistent identification and representation of the EAA across different Wallet Solutions, in terms of format, structure, and appearance standards (e.g. name, color, background image, etc.).
-
-
 
 Presentation of Electronic Attestations
 ****************************************
