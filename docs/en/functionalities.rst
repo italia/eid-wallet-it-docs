@@ -40,13 +40,14 @@ Focus on PID – Person Identification Data
 The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see :ref:`PID/(Q)EAA Data Model`) issued as a result of the activation process and made available in the Wallet Instance.
 Below are the requirements for displaying and using the PID that each Wallet Provider MUST adhere to, in order to provide a consistent and accessible consultation and usage experience: 
 
-The Wallet Provider MUST allow the user to:
-- Receive, store, visualize and interact with the user’s personal identity data (PID) in a secure and private manner in the wallet app.
-- Manage the PID by providing an interface for them to easily view and control the validity and the status (valid, revoked, expiring, expired) with specific data they wish to share
-- Present the PID in order to be identified by the Relying Party in a digital context and request the issuance of additional personal attestations. 
-- Present the PID and other attributes from (Qualified) Electronic Attestation of Attribute stored in the wallet to access services provided by Relying Parties. The user can present the PID using the same presentation methods as those available for the other certificates in the wallet.
-- Revoke or update the PID (and the wallet instance with all the attestation issued) at any time, with the ability to request the deletion or modification of data stored within the wallet to ensure user control and privacy
-- Recognize one's own PID and differentiate it from other (Q)EAAs, as it adheres to the comprehensive guidelines defined by the PID Issuer - not only concerning visual identity, but also including format, structure, and presentation standards.
+- The PID MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes; 
+- The PID MUST be named as defined by the PID Provider;  
+- The PID MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked); 
+- The PID MUST include Action Buttons to enable lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see :ref: `Management of Electronic Attestations`); 
+- The PID MUST be an interactive element, for the User to be authenticated by a Relying Party in a digital context (see :ref: `Authentication`), to access services in proximity contexts, and to request the issuance of additional EAAs (see :ref: `Issuance of Electronic Attestation of Attributes`);  
+- The PID MUST display a method of assistance by the PID Provider (see :ref: `User Assistance`); 
+- The PID MUST be recognizable by the User and distinguishable from other EAAs; 
+- The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
 
 
 The PID Provider MUST define: 
