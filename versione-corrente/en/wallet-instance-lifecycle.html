@@ -190,10 +190,14 @@ When the distinction between PID and (Q)EAA is not needed, the term Digital Cred
 </div>
 <p>As shown in <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 10.2</span></a>, the Wallet Instance has four distinct states: <strong>Installed</strong>, <strong>Operational</strong>, <strong>Valid</strong>, and <strong>Uninstalled</strong>.
 Each state represents a specific functional status and determines the actions that can be performed.</p>
-<figure class="align-center" id="id2" style="width: 100%">
-<span id="fig-wallet-instance-states"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/XPBHIuH04CRVzwyOk9SAH8ipGaHESW-4kEpihg1wi7ElMzXRHLUY_lfMAvtMZlD5cUytttpZxgnMMQMQlI0xdZDW-r9zGCxgJSLBnGj9Y0OKWrZgjn0iXyby7hgEyrE_BLcLjM0cOBBLJw-iCy4rxJXNJbzRIJxuH9TJT-eI0W1FPozWvSMxj89XaWSFCSIBzBubXd8FjcOONIt-Wol-jbEQHa4xEhpkK5m_xcpWWctLAF6IhaUaET_V5AAel5VHiE3axfI68SHfQYTBwjkT51pCrltMlmv97BNjkFKR0wifZT5c7trCxDz6U9POrelO4RqvP3jU6n4egB4gnQlYiJWLKf7fyUF14bWQrHTBHwZv9_FEBmBVRhy2CcCorrV-2m00"><img alt="_images/Wallet_Instance_States.svg" src="_images/Wallet_Instance_States.svg" /></a>
+<figure class="align-default" id="id3">
+<span id="fig-wallet-instance-states"></span><p class="plantuml">
+<object data="_images/plantuml-e2d723fbf3b355e24af66b6a0ee11d22241fb75e.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-e2d723fbf3b355e24af66b6a0ee11d22241fb75e.png"><img src="_images/plantuml-e2d723fbf3b355e24af66b6a0ee11d22241fb75e.png" alt="The figure illustrates the Wallet Instance States." style="width: 99.0%"/></a>
+
+</object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Wallet Instance Lifecycle.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP9HIyCm58NVyoikx4M5qYgRo1XbnMLGa3bNjmdgGsmp5qZJqgQ8_dgJLTjhwzYUnZtVEVVSjjDIiq9NgOGjav9h29MPg9X3f9dc9TcBX0DFS_q92I_ZGkHQP8gGqierRNm93ERpOEHvF_Fxd1VCWap2O6T-ZR9XKXZQyswyPhPMeisPNGz7mn4X0F1yyGfEadqensytZM4RGhY87YtHZXlGXc5qlVWFBiJxNXiQ5JtGmMsDeld9v2uk-Kxt6g_efazsza_YJ6R5-4rMt3zxEAT1064KkSiLdRW7oJ_MhNwiVnEMuSpQiRN6mAdopkgkZpujtLyZl2WicqFS6Rqx6jix6n6TekXKYa_5Qt4hfEBGqwy7IU0Or7nOfa8fllZuyigVkFQVJwPS9LKglm40">Wallet Instance States.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -264,10 +268,14 @@ uninstall (<strong>WI UNINST</strong>) transition, leading to the <strong>Uninst
 <p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 10.2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle,
 <a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 10.3</span></a> shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
 and the effect on their local storage.</p>
-<figure class="align-center" id="id3" style="width: 100%">
-<span id="fig-wallet-instance-lifecycle"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/dP9Vgvim6CRl_HIPd0k5ddgpgq7XE0sSGhUAUbO6WnBDYnLYuf9NkpBstPUurPLEs9yRBzuyloV-aZmPP1g7JdYlMbcBWGCv8VRcJHHfTbutBPw6QZ2WQoKH9AvhrKMzOD8nZmQvQAieUVsOkT7BkrtKCOEWxUYOM8Ar4lIwT_tFsvGUYvBcT5z-p6WGUbxnl3ySCveN-_V7R9-NURmjtJpcF0THiYRmUUMlo0F25qoKK7hZAyra0sueRFVYiC2B0B8XAJCdu3ix2KBR-bODaZDz2OPgHVm34mAGRAL19ciWrrK_95yzuX5INAn85x3wyq8whh4T6RPAaayoE6n9d9IXRuD--0lb81RG74PLtw8v_N15BJkVMbe5PuDAh_p2Vba3SxttpRkngMziCgt6beE-ixd-K0FoVrqqZF_cSgSocP3VLEP8q0zkFMN8I3ReffND55ezc5wt21jVgqgXXPny3k87yBCsfJjQqWbmhuKrPkDUJkY2pdeE9ZcD5uDJShhhyv-YBZbTxVblTjSmphk_PEbovHD8FdJYEm00"><img alt="_images/wallet_instance_lifecycle.svg" src="_images/wallet_instance_lifecycle.svg" /></a>
+<figure class="align-default" id="id4">
+<span id="fig-wallet-instance-lifecycle"></span><p class="plantuml">
+<object data="_images/plantuml-4e8af812087e77bddaf273295da21ed5c7fb809a.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-4e8af812087e77bddaf273295da21ed5c7fb809a.png"><img src="_images/plantuml-4e8af812087e77bddaf273295da21ed5c7fb809a.png" alt="The figure illustrates the Wallet Instance Lifecycle Management." style="width: 99.0%"/></a>
+
+</object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text">Wallet Instance Lifecycle Management.</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dP9HgzCm5CVVyocEOGyj37ovZqvkRGDtC5r9gqCGHjOSQo1BPdhQESJlxhAvEMP1lQ___Fud_VNaiICLgDzQM2bhaM3kZebh41RcCpQ7nYAyLKwrk4L7x8LnZUqrmglyuMN-iCwz8sKSXjViQLw8TLKBAPRrnr8aAMFLqtArBeMibk_MvLBMCflNCS-qbcXhrIPSR_WK9eJVAFVMXndtGRaMOsYDmz6meeD5c46XkY-e5ySaILF6tlZUQHKEIR-P0h_NkPpo5BupO03LeIFS9ghvEa9d3Pb1aV4EFhbaDOSihrD-17dwkwhHZbGb3hwvhKhnuL8zTgz_hDWa-uvycFAAV50jNiUp7-p6fhcnAOCVZCPmPtFve1RTSrq23l_dSgToCe6Bofz8iklZUQ58GTc7rhZs14qdtIuOmXaFVkE9foTvYVPS-3Ms40jHYtC19gJQRXPVJXh1Q7q5SocoKJ2Ivrtl_u96yhpQ_R_S7d2utlw-BCP7FgBJ_TR-1000">Wallet Instance Lifecycle Management.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Through a Wallet Instance in an <strong>Installed</strong> state, a User is able to start the <strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>).
@@ -332,7 +340,7 @@ delete the Wallet Cryptographic Hardware Key pairs.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/05/2025.
+      Last updated on 12/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

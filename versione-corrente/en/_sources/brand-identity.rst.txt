@@ -102,10 +102,17 @@ Verifiers MUST make the Authentication Button available within the Discovery Pag
 
 The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.
 
-.. figure:: ../../images/discovery-page-layouts.svg
-  :name: Examples of Discovery Page layouts: grid, tab, and list
-  :alt: examples of Discovery Page layouts: grid, tab, and list
-  :width: 100%
+.. only:: format_html
+
+  .. figure:: ./images/svg/discovery-page-layouts.svg
+    :alt: examples of Discovery Page layouts: grid, tab, and list
+    :width: 100%
+
+.. only:: format_latex 
+  
+  .. figure:: ./images/pdf/discovery-page-layouts.pdf
+    :alt: examples of Discovery Page layouts: grid, tab, and list
+    :width: 100%
 
 For further details on the use of the Authentication Button, please refer to the :ref:`functionalities:Authentication` section.
 

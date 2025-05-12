@@ -6,12 +6,18 @@ User's Attributes Deletion
 
 This Wallet Instance functionality allows Users to obtain a list of all Relying Parties towards which attributes that can uniquely identify Users (e.g., the tax_id_code claim of the PID) have been presented. Subsequently Users may request deletion of all attributes presented to a Relying Party of their choice. Below the high level flow regarding this interaction is presented.
 
-.. figure:: ../../images/user's_data_deletion_flow.svg
-    :figwidth: 100%
-    :align: center
-    :target: https://www.plantuml.com/plantuml/png/RLBDZjD03BxdAQozS67t0Nf0ksABn0KX5iI5YvCuxOZfE8mzBNrxx2bDcBAtTFpv-_7NHr7CMWwnmwASog6dtE6WdE7kcr2-0nGeOezTpx_1dzu8FDCn3DJDjXg6C6DIkFkECPB2nsICQQ2wYFCCBSe9u6b7II_Cs54QmQWl_5yedaFQmMVRERURsunICi4sZHp-hXFDsg8-q4WPDN1ouBmW9qSkKb0ZmVqxTxWnpqV-IO2gEVH52KQAL3ccaWR_m1ZC3pZSjtnx0ozxFa4Cei1JupoGm8yK4imiGYBEnDFrU4zNcLiRBwOwAEYUsZk0ij5b-bL8wdZrnzFgMbP_ddRJafZmzhqzLH93EWJkhz9r93Cd8RzEOYNW8sMVsc-0hwPwqp1mhnYIrBcxMXkw71wcp0UVLCI154TKDC__HpI4b-EwtHh3hRsg77dd5_vNT4csT8GRFp3wD_azNe4sKRsBjnMw96vhm6A2ISE0Ib8pUACF5Jb5Fi70Dat63IS3BWZOeq1FzY9b64XaAZ6sTED3Uu5gOtN-x7tJMhM7xxaONdcHMRPg-2LkKsp1fVFRV_CdrZ2TBqoFPgKSuXy0
+.. plantuml:: plantuml/user-deletion-attribute-flow.puml
+    :width: 99%
+    :alt: The figure illustrates the Deletion of User's Attributes Process.
+    :caption: `Deletion of User's Attributes Process. <https://www.plantuml.com/plantuml/svg/TLFDZjD03BxdAQnUkB3x03sWNR55ue8G2-B2nKcSTaGw3cDFIzyUUqeIfkpUHlNdxyTVyo2AIVDnX2SQIGD7u06-2QKt0e-gARHPIHhCoZ4VMqeDTie9DexP00faUpHDox_djISwXOwQoOX35oQC2fllE1ezV8oc5pigYpXDKAES01xt5FNAZ0t57epwol-5nak8U_XiEvTwSvTGSYBOnPx3ttMYIMlK1-efeQTquBGW1qEkKb0YmTqxTxWrpoV-IO3pCQ2VBpNasFa3ns1-mE6-vTjRU3xm6SOW2ZnKpWC9_8WXmiGY9FBApMzjF9jgfw07gky0oaQNw5SckOxxjSdLjQp-FEss9Z7XtNlxgP0qK21mDqkNaKmSXVmwaPM0JvHysW00V3NLcuQ1MyKGNHQAgxcX-V0m93xwf22EfDYZedd-Fw8Xl1pNRTOORkr5vP7tVk5_HTTaSqUuzGEZlydlyGAqYkfTl2tG9N5T0sOJZ1ewL9AImHkzByXXv3DqRDDet70su8A00mgqH14aTns937aSQxh-lhv0iR4wBrykhLLx-9QpuPKNcMMhX5_YLiLcN3g__JT_OWt3vShqO5RoSVm3>`_
 
-    Sequence Diagram for Deletion of User's Attributes
+
+.. .. figure:: ../../images/user's_data_deletion_flow.svg
+..     :figwidth: 100%
+..     :align: center
+..     :target: https://www.plantuml.com/plantuml/png/RLBDZjD03BxdAQozS67t0Nf0ksABn0KX5iI5YvCuxOZfE8mzBNrxx2bDcBAtTFpv-_7NHr7CMWwnmwASog6dtE6WdE7kcr2-0nGeOezTpx_1dzu8FDCn3DJDjXg6C6DIkFkECPB2nsICQQ2wYFCCBSe9u6b7II_Cs54QmQWl_5yedaFQmMVRERURsunICi4sZHp-hXFDsg8-q4WPDN1ouBmW9qSkKb0ZmVqxTxWnpqV-IO2gEVH52KQAL3ccaWR_m1ZC3pZSjtnx0ozxFa4Cei1JupoGm8yK4imiGYBEnDFrU4zNcLiRBwOwAEYUsZk0ij5b-bL8wdZrnzFgMbP_ddRJafZmzhqzLH93EWJkhz9r93Cd8RzEOYNW8sMVsc-0hwPwqp1mhnYIrBcxMXkw71wcp0UVLCI154TKDC__HpI4b-EwtHh3hRsg77dd5_vNT4csT8GRFp3wD_azNe4sKRsBjnMw96vhm6A2ISE0Ib8pUACF5Jb5Fi70Dat63IS3BWZOeq1FzY9b64XaAZ6sTED3Uu5gOtN-x7tJMhM7xxaONdcHMRPg-2LkKsp1fVFRV_CdrZ2TBqoFPgKSuXy0
+
+..     Sequence Diagram for Deletion of User's Attributes
 
 **Step 1:** The User requests the deletion of attributes invoking the Wallet Instance's attribute deletion function.
 

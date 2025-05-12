@@ -40,12 +40,18 @@ The requirements for the Wallet Attestation are defined below:
 - The Wallet Attestation MUST NOT contain information about the User in control of the Wallet Instance.
 - The Wallet Instance MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by `EIDAS-ARF`_.
 
-.. figure:: ../../images/static_view_wallet_instance_attestation.svg
-    :figwidth: 100%
-    :align: center
-    :target: https://www.plantuml.com/plantuml/svg/VP8nJyCm48Lt_ugdTexOCw22OCY0GAeGOsMSerWuliY-fEg_9mrEPTAqw-VtNLxEtaJHGRh6AMs40rRlaS8AEgAB533H3-qS2Tu2zxPEWSF8TcrYv-mJzTOGNfzVnXXJ0wKCDorxydAUjMNNYMMVpug9OTrR7i22LlaesXlADPiOraToZWyBsgCsF-JhtFhyGyZJgNlbXVR1oX5R2YSoUdQYEzrQO1seLcfUeGXs_ot5_VzqYM6lQlRXMz6hsTccIbGHhGu2_hhfP1tBwHuZqdOUH6WuEmrKIeqtNonvXhq4ThY3Dc9xBNJv_rSwQeyfawhcZsTPIpKLKuFYSa_JyOPytJNk5m00
+.. plantuml:: plantuml/wallet-solution-architecture.puml
+    :width: 99%
+    :alt: The figure illustrates the Wallet Solution Architecture.
+    :caption: `Wallet Solution Architecture. <https://www.plantuml.com/plantuml/svg/VPAnJiCm48PtFyKfcIFs3AWW638Wa2B4M1tEqLhOliY-fEhRquPOSjEqwv_li_-SRnC5WmpEmXTQIm8jsq4CUsZrdXmgrC81Yiz8eG2CC4GAaDBP-GWyccu63bEsxQSiOrzeD9hW_VLjmfWSAANPzUp92nIB-_EpOkfKZePFmOhM-2ZeDUMQcJCeZsGj7rQqPzI_vBlS-lwF8ADJzyOBxOAH8xGKpidacPHkiJS0PQ1EgMM5AfZTNgh7Ixg6qrpLuk9xw4rsCQaQcWWz1W7-kUja7UlqZZ7jmfC8HS7pWKgfwUMhDK-pby0M7W2rc165hl__HaVqa9XKDL-UDItLL4mEgkivfSyRyjtWx1y0>`_
 
-    Wallet Solution Schema
+
+.. .. figure:: ../../images/static_view_wallet_instance_attestation.svg
+..     :figwidth: 100%
+..     :align: center
+..     :target: https://www.plantuml.com/plantuml/svg/VP8nJyCm48Lt_ugdTexOCw22OCY0GAeGOsMSerWuliY-fEg_9mrEPTAqw-VtNLxEtaJHGRh6AMs40rRlaS8AEgAB533H3-qS2Tu2zxPEWSF8TcrYv-mJzTOGNfzVnXXJ0wKCDorxydAUjMNNYMMVpug9OTrR7i22LlaesXlADPiOraToZWyBsgCsF-JhtFhyGyZJgNlbXVR1oX5R2YSoUdQYEzrQO1seLcfUeGXs_ot5_VzqYM6lQlRXMz6hsTccIbGHhGu2_hhfP1tBwHuZqdOUH6WuEmrKIeqtNonvXhq4ThY3Dc9xBNJv_rSwQeyfawhcZsTPIpKLKuFYSa_JyOPytJNk5m00
+
+..     Wallet Solution Schema
 
 .. note::
   Throughout this section, the services used to attest genuineness of the Wallet Instance and the device in which it is installed are referred to as **Device Integrity Service API**. The Device Integrity Service API is considered in an abstract fashion and it is assumed to be a service provided by a trusted third party (i.e., the OS Provider's API) which is able to perform integrity checks on the Wallet Instance as well as on the device where it is installed.

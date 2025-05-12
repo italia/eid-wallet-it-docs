@@ -6,10 +6,21 @@ Functionalities
 
 The IT-Wallet System provides Users with a simpler, faster, and more secure way to access services. This service is delivered through the use of a Wallet Solution, whose User Experience is structured into three main phases: pre-use, use, and post-use.
 
-.. figure:: ../../images/UX-phases-usage.svg
-  :name: User Experience phases of Wallet usage
-  :alt: User Experience phases of Wallet usage
-  :width: 100%
+.. only:: format_html
+
+  .. figure:: ./images/svg/UX-phases-usage.svg
+    :alt: User Experience phases of Wallet usage
+    :width: 100%
+
+    User Experience phases of Wallet usage
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/UX-phases-usage.pdf
+    :alt: User Experience phases of Wallet usage
+    :width: 100%
+
+    User Experience phases of Wallet usage
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
 

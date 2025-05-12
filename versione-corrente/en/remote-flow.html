@@ -183,13 +183,17 @@
 <li><p><strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance.</p></li>
 </ul>
 <p>Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.</p>
-<figure class="align-center" id="id1" style="width: 100%">
-<span id="fig-high-level-flow-presentation"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/TL9TJy8m57tlhpZXHLcYYz-61uCXnF34d11UJCZS6bQPRMtlRF3NspB0JUBJidlEFH-v7LhA3DKV5TF-AtAXCqdeBRAgueI9zB3CUG-PXUjIKbvjX5mXySFDbc0qOqRZx05kW8jpHD5ZJQKouZiZeIHI_bbpIr64KmVJ_2nh8_gWqgXwLVfX8GpF2ShWEKMk2WwRPnAlafHdSSHn4-t4eYi-beLMGb8SC-P21gC7k0mXThQOfvDsXAVnBDWaqvTP7mVrDF7AxOssxg7SrR6krKfQtdJR8zEtTr-cpvZRxLs7lSK4evBdQ-l9lz1DWEQM6uo2a2IFjfhS1ZXa_LExQ_obbwJMN1uNQbZ_D0e6TzjAIJlQeUvzm3htxlWg7QBuispWzYTi3ilOaCl2lwuV"><img alt="_images/High-Level-Flow-Presentation.svg" src="_images/High-Level-Flow-Presentation.svg" /></a>
+<figure class="align-default" id="id1">
+<span id="fig-high-level-flow-presentation"></span><p class="plantuml">
+<object data="_images/plantuml-b8e883cffe4439f7bf69a8f049af6e83a737f375.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-b8e883cffe4439f7bf69a8f049af6e83a737f375.png"><img src="_images/plantuml-b8e883cffe4439f7bf69a8f049af6e83a737f375.png" alt="The figure illustrates the High Level Remote Protocol Flow." style="width: 99.0%"/></a>
+
+</object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 16.1 </span><span class="caption-text">High Level Remote Protocol Flow</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 16.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/TL9TQ-em6BxFhtZmvXmBvvJpVV1YECHjmi2kKxmPIDU-sCoOP4bgSRz-YLNNAhjids_U3AtBZAis0dTyLUAUjYIGqaOvGcAKKxaIk16gPjhpUCvr9XrwYqm8SfX8BvSvzP1Pd55I4ZikLqZypzsUO3HZHkFR5Ue1Vdn755rNhbI6lsMEA-bZNokoBehmjOPfFfQLuNsuqgZArpDKS4EvWp9uI96hWc3pJE99EkLPX3Xkgdsnw9gFPQ4LbowE6Qj31wC7-1bA768nJoVj2hVZMOX9fe-pFaxkQUATsugsxsdShqjVgvMqr6mx8jFd5p-cprXzqFqEkiK4evBojVNa3-XFWEQM34R1I3gFjfRy3N3eUZQx6xpLIwVM92y7DQnF5eM0V_j9IRlQQUx_W7NktSbLEbJ9XDYXFfwmEImRaYpyuti7">High Level Remote Protocol Flow.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>A High-Level description of the remote flow, from the User's perspective, is given below and shown in <a class="reference internal" href="#fig-high-level-flow-presentation"><span class="std std-ref">High Level Remote Protocol Flow</span></a>:</p>
+<p>A High-Level description of the remote flow, from the User's perspective, is given below and shown in <a class="reference internal" href="#fig-high-level-flow-presentation"><span class="std std-ref">High Level Remote Protocol Flow.</span></a>:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><em>Authorization Request</em>: the Wallet Instance obtains a URL in the Same Device flow or a QR Code containing the URL in Cross Device flow where the signed presentation Request Object is available for download.</p></li>
@@ -220,10 +224,14 @@
 </ol>
 </div></blockquote>
 <p>Below is a sequence diagram that details the interactions between all the involved parties.</p>
-<figure class="align-center" id="id2" style="width: 100%">
-<a class="reference external image-reference" href="https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGst0TfCU3RY8uxgsaxHMBIK-r8L0SKSIwnMv9OTIr2B_lJEWbgPa1mXGtPRalFVuE1zw4qa7IijMwKJUfUKKWrBgt90FCFWOCGn0HqXAJVtdlF1zX9znPGt60NptmSuNzBPDg3h6iSPssX4CxdNR8i6DOtXdK31WlNiaCTIndgEZpA0LkWQOPKjrX-t6kZaCEMZpTQQTOm_kuFOyqG8kMil0Xu8Cgxq8baGf0hDrtcxP8nPs_cb3TgK98Qa4np-njbEunocCCCYzmUcLdMkotbL7jMgm3jGIkS9JkCE_4qQ2OV24Xh3XbUXJCAZKsHalOsIjMk1WkD0HuUoiu8hw5VPG5m5bJKCaBNkQxNXmKvzOEtbuiXICzu_sXT2GnKnIi12oZEgKF5Z76ciasdJCmUWDacoPu6Fa3t42V82ebvW_Cr2sQq7B5Zf6WBMb1Vn-T-4REGwBW3DMvqXRP-T02uGKMf1J3yx8iz74DaUrqADytIFuergSB94MllcpSbsyKblZqocC5duj-3svg145J68UPIDhcIOYxsgOf9_iNoir3pvrx9-FVUA3T-r6hOLdpJn6E-O08P4iKf8qUUk3Dxe5AHhGYHaTMPFpfaHVoYCA4uKKARibseeLIkcMmCxW-UN1IkPkWuQtex42_gtxn-I4Mza6OLkC7ACRJHh82qEDLuf10A3sKxvBUbHY5mMMq3WhrpIwqrFRMh8O5ROHlq7qrULOdiHvWYxNWIetg4f7wAATEsnwGF3JloGRPy4lltgR_1eYFtlz8iH-0Zr_cPqM0x_sDchNGESvcIp64lG9WvrjG9WqfO3WPvNwSg7RJ5sYT6kRgZpvvAVXGJpC1zAJ4JCVf7Z4gBqkbO4kl9lPiCHcjnaLGoL9G3ga3_QVt7BkC7Q220yklycgcv1_H5VAhgiwr2IcwTB6A3bSs_PoZcGxh9wskDldI0XAK6L0bLZdH1Zp-HCMbp-h0tr-1nPk8qYFxzt-1NbPIoJlQTUKg6ecIOpaNS0LYsbEAZMPIbfc8oMhMxY9CM60iTJe5h98VdS_Xb7_tXKAopCOOwxc0gLKO5O4lyB0ntYktLnTZw_kBYz_Koz7d2euXei5SjEwzct3OUzn0s-jQoGfHGh7-PdSVUXZP01nE4NP1IadWUlIb3CL7ZaoZmlhPBs-8tdM8zcRNswO7-b42VtbPmhQPFSR6qth8pQWYOAT9i8eCi28HYbwDhhKf6K2oFKI4FHAsrRIuKHgKvn0LLdsiUkJ83VD_Z87UPn1adri3bNVbKSoV79JpidBRCneIFf0LVdNu_7mXzSdh-77Lw_WzZq_uR-3-kX09XPriSmY2Dkoc1YP7L-sbQXPOym2TvYgsI4NUtbeX6ToVQ9lL5pNytglPUM95za_UCS6Zqom7UNNEDsRExcafTGFXA3lD_dAsUH3LR0ZgfW59Vs_FVoYH7O5dOtQ-QEKmVe1rPK_JEMVocxBATA6pq_k3VHTnzumTLgs_m40"><img alt="_images/cross_same_device_auth_seq_diagram.svg" src="_images/cross_same_device_auth_seq_diagram.svg" /></a>
+<figure class="align-default" id="id2">
+<p class="plantuml">
+<object data="_images/plantuml-b931e68c808b3281e9d249889d04a2782c430087.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-b931e68c808b3281e9d249889d04a2782c430087.png"><img src="_images/plantuml-b931e68c808b3281e9d249889d04a2782c430087.png" alt="The figure illustrates the Remote Protocol Flow." style="width: 99.0%"/></a>
+
+</object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 16.2 </span><span class="caption-text">Remote Protocol Flow</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 16.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLPFRnkt4xtpKmpqE_ni87QJ7WsuYACwjXEtLYqbFjI5G7574kiLkIM7gwX5ldk7v6hDjHqWG0rVTfVptfitVwYtdgIZiAdXscwFhh756cvnOmbXuYnPPMjuNzkja86i2Pi5EY74cIBhOFJ9enk1z124MDWl-SN_FVoChLReH_2_QxrQqxiwe6YOHYlTI4CmkfDrZGHNXjcDmeIn7Hu937KaLsWeCqY1fW9cwQXkiTvfiu891-s-oJGyTcyERiu2hM5SQmO-JCZjamYMHC43ipLMT-mUUtR-aufqAmaXY017Fx6s4xZ31KpHnRp1o5Ql96bhYgDIL5W6oXZPuWcx_LT0JybkL8GLl_4sE8L2d9xoQ_IiDS71P2qzmkbfZnlLjxY76ZkCxoHuIjyast5l5ZQmThBmQ2aeQn_q2w4kYva7fy5b6UKfBbZ36aiasZNCmUWLHlcWdFMU7v8Jre6N6yoF6IZRjIRkk8OHOAkv7h_TZcsLZgyTBbaT9woDNW6j4OAhqwbxerBPvhfwLGfzbTDz1RyNB-SRfBMj_c3NIwz4PtmuWUdQRXD-9izgM06Jg8Vq8MbP129h1iMJZ_PlXLWv6nhsp_fzuuCrzKvi8y-MUPGqp05Cahf8nAR9dwwjaZN4eG4PcD6GLhbl-kZpMCJ8H2vuIZuaRRqLGiYQG2_XUVAWO-TsGPERwKm006ptnUI6QtM5q0qZnyXAaWIoYQ70wuSX0HH-fkU-FGgnwnwMK1aTqrIoaGjTQzBe1TOUlqFqnVaibiHOWYRFWKWP34SdqNczCbZj0S4k_epTk7Hsy-riKZLQxChnCiIp1dfMcS6AWL_sDafJGMEvcJJwFkWpEhtS9IP9mI7OPQ6-J-WcK_THijPLCPvyylFam1_c0-7HY6NiNskIKSCjbO76rYorss0rN4QzeR5986v8w_JVgHCPsZSH4UvDhadRpCa-eEd7hYasrDo7nKPx7tkujEtb7ibsQBceSRZd4a4VL1XGDDOP4Vfy_fZ5vSVoGDVVZeLh3t77xzr-Z_mwHV8thbCVLTn979Fwpc7BOghZGar7DNOCOqZB6gwy3-XW5cUqW-mbVxYRmNHVxmA5vIdqFazp3oM4OrO4swBZOtolNLrSpYvkpyz_5Iz7d0WuWl4QUMbTshhYi8-uWtVQLDoKIGh7SUByFx7UOoeE11-_WW18S4rOSAV20qVcwqARzBx8aIoqkNjJvIQvICSYqfz_8ITLTh_INjNMOmMIoEb58FH9XaeQzHBOw7ucDHD0dXU785kfwzWEnt4sanEYiEnJqpT1MfhxP0xoTGOXVQyEnNuhJ-K6zqivDI-pCQDAUw2O_ClPRFB3c-CtyEFhrt3paKlupwWyEeet5ZM-lul0TMCnLxP2-DfDecIDFWaSCfLt1oVsygNXdicrWRvJSJdFs-7Awcuyp_x11pPugfnkA5VZvCczaqOwZVf19EXNOKevctpuc8n7uREW8F-pXry5oowXir637qePR7z1DVqFflwNod3bzD8cpqyEB_GdZhrbwh2f_mK0">Remote Protocol Flow.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The details of each step shown in the previous picture are described below.</p>
@@ -234,11 +242,8 @@
 <div><p>In the <strong>Cross Device Flow</strong>, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL with the parameters <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>.</p>
 <p>Below is represented a non-normative example of a QR Code issued by the Relying Party.</p>
 </div></blockquote>
-<figure class="align-center" id="id3" style="width: 50%">
+<figure class="align-center" style="width: 50%">
 <img alt="_images/verifier_qr_code.svg" src="_images/verifier_qr_code.svg" />
-<figcaption>
-<p><span class="caption-number">Fig. 16.3 </span><span class="caption-text">Below is represented a non-normative example of the QR Code raw payload:</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
-</figcaption>
 </figure>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.example.org/authorization?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org&amp;request_uri_method=post
 </pre></div>
@@ -468,8 +473,8 @@ information regarding the hardware used or usage preferences of its User.</p>
 </div>
 <p>If both the Relying Party and the Wallet Instance support the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the <cite>request_uri</cite> endpoint of the Relying Party, with the method POST and content type set to <cite>application/x-www-form-urlencoded</cite>.
 The request and its parameters are defined in Section number 5 (Authorization Request) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request.</p>
-<table class="longtable docutils align-default" id="id4">
-<caption><span class="caption-number">Table 16.1 </span><span class="caption-text">Request URI Endpoint Parameters</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-number">Table 16.1 </span><span class="caption-text">Request URI Endpoint Parameters</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -488,8 +493,8 @@ The request and its parameters are defined in Section number 5 (Authorization Re
 </tr>
 </tbody>
 </table>
-<table class="longtable docutils align-default" id="id5">
-<caption><span class="caption-number">Table 16.2 </span><span class="caption-text">Wallet Metadata Parameters</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-number">Table 16.2 </span><span class="caption-text">Wallet Metadata Parameters</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -1066,7 +1071,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/05/2025.
+      Last updated on 12/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -200,7 +200,7 @@ as a consequence 7 requirements specifically related to the implementation are n
 <li><p><strong>SPR</strong>: Security and Privacy Requirements.</p></li>
 </ul>
 <p>The final identifier uses the following name space: <em>requirement_category-component-id</em>.</p>
-<p>For each requirement defined below, this section uses the description defined in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>], specifying whether the requirement is satisfied (fully satisfied: <a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a>, partially satisfied: <a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a>, and not satisfied: <a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" style="width: 25px;" /></a>).
+<p>For each requirement defined below, this section uses the description defined in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>], specifying whether the requirement is satisfied (fully satisfied: <a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a>, partially satisfied: <a class="reference internal" href="_images/Eo_circle_orange_checkmark.png"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.png" style="width: 25px;" /></a>, and not satisfied: <a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a>).
 In the following, the requirements are grouped based on their category.</p>
 <section id="security-requirements">
 <h2><span class="section-number">25.1. </span>Security Requirements<a class="headerlink" href="#security-requirements" title="Link to this heading">¶</a></h2>
@@ -212,7 +212,7 @@ In the following, the requirements are grouped based on their category.</p>
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>For any presentation, the Credential format and Trust Framework must be designed in a secure way to determine the Issuer and to check that the original Credential was issued by this Issuer (e.g., by using a cryptographic signature).</p></td>
 </tr>
 </tbody>
@@ -231,7 +231,7 @@ In the following, the requirements are grouped based on their category.</p>
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>For any presentation, the Credential format must ensure that the data that is tied to the original Credential cannot be altered (e.g., by using a cryptographic signature.)</p></td>
 </tr>
 </tbody>
@@ -246,7 +246,7 @@ In the following, the requirements are grouped based on their category.</p>
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>For cryptographic Holder binding, the presentation format requires the Holder to demonstrate possession of the private key associated with the Credential. This is typically achieved by having the Holder sign a challenge, which consists of a nonce value and the Verifier's unique identifier.</p></td>
 </tr>
 </tbody>
@@ -262,7 +262,7 @@ In the following, the requirements are grouped based on their category.</p>
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Trust Framework must ensure that the identification of an Issuer is unique and unambiguous. If there are multiple instances of the same Issuer using the same key material, the Verifier must trust all instances equally.</p></td>
 </tr>
 </tbody>
@@ -278,7 +278,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The way in which the Verifier determines the trustworthiness of the Issuer defined in the Trust Framework must be secured from influence by a malicious party that can, for example, introduce untrustworthy entities into a directory.</p></td>
 </tr>
 </tbody>
@@ -293,7 +293,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Trust Framework must ensure that there is a way for Verifiers to keep their information on trusted Issuers up to date and that there is a way to revoke trust in an Issuer.</p></td>
 </tr>
 </tbody>
@@ -308,7 +308,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Issuer must authenticate and identify the User properly according to the expectations of the Verifier (which may be defined in a specification, Trust Framework, or by convention).</p></td>
 </tr>
 </tbody>
@@ -323,7 +323,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Issuer must only use correct and up-to-date claims about the User into the Credential where verified data is expected.</p></td>
 </tr>
 </tbody>
@@ -338,7 +338,7 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Issuer must revoke a Credential once the Issuer learns about potential abuse of the Credential.</p></td>
 </tr>
 </tbody>
@@ -353,12 +353,12 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Issuer must only include Holder-binding data into the Credential that is tied to the actual User (and not, e.g., include a cryptographic key under control by a third party).</p></td>
 </tr>
 </tbody>
 </table>
-<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 15.3</span></a>):</p>
+<p>The issuance process securely binds the Credential to the User as follows (see <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 15.4</span></a>):</p>
 <ul class="simple">
 <li><p>Authorization (Steps 8-10): The Wallet Instance sends an authorization request, and the Issuer authenticates the User using a CieID scheme or a valid PID, providing the Access Token to the User.</p></li>
 <li><p>Proof of Key Possession (Steps 12-13, 16-17): The Wallet creates a DPoP Proof JWT, binding the Access Token to the Wallet Instance. The same key is then used later to request the Credential, ensuring continuity of ownership.</p></li>
@@ -373,13 +373,13 @@ keys and metadata, as distributed via a verifiable attestation, such as the Open
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>(conditional w.r.t I-10) The Issuer must ensure that the Credential was stored in a secure Wallet.</p></td>
 </tr>
 </tbody>
 </table>
 <p>A trusted Wallet Attestation ensures that the Wallet Instance is secure and meets the required security standards before any Credentials are issued or stored.
-In Steps 5-6 of <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 15.3</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
+In Steps 5-6 of <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 15.4</span></a>, the Wallet Instance provides a Wallet Attestation, which includes a proof of possession
 signed with the Wallet's private key. This attestation confirms that the Wallet Instance is genuine and has been verified by the Wallet Provider.</p>
 <p>The Issuer verifies this attestation before allowing the Wallet to participate in the issuance process, ensuring that the Wallet adheres to specific security standards.
 Afterward, all cryptographic keys generated and used in the process come from this attested Wallet Instance.</p>
@@ -396,7 +396,7 @@ Afterward, all cryptographic keys generated and used in the process come from th
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that no third party can interfere with the issuance process such that the Issuer issues Credentials for the third party to the User.</p></td>
 </tr>
 </tbody>
@@ -411,7 +411,7 @@ Afterward, all cryptographic keys generated and used in the process come from th
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that the interaction between the Wallet and Verifier is protected such that no third party can interfere with the interaction by modifying the information transmitted.</p></td>
 </tr>
 </tbody>
@@ -426,7 +426,7 @@ Afterward, all cryptographic keys generated and used in the process come from th
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.png"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that the interaction between an attacker and a Verifier cannot be forwarded to and successfully completed by a User.</p></td>
 </tr>
 </tbody>
@@ -457,7 +457,7 @@ where a list of mitigations from [<a class="reference external" href="https://da
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that an attacker cannot successfully forward an interaction between a Wallet and a Verifier to a Verifier under the control of the attacker.</p></td>
 </tr>
 </tbody>
@@ -476,7 +476,7 @@ Regarding the <strong>aud</strong> value, the Verifier must check that the audie
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.png"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that third parties cannot interfere with the binding process.</p></td>
 </tr>
 </tbody>
@@ -502,7 +502,7 @@ as shown for example in this <a class="reference external" href="https://www.tuv
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.png"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>(conditional w.r.t I-50+V-20) The Verifier must ensure that the Credential is stored in a secure Wallet.</p></td>
 </tr>
 </tbody>
@@ -524,7 +524,7 @@ confidence that the Credential comes from a secure source, it is ultimately a br
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>(conditional w.r.t. I-10) The Verifier must ensure that the Credential was issued by an Issuer that only issues Credentials to trustworthy Wallets.</p></td>
 </tr>
 </tbody>
@@ -543,7 +543,7 @@ confidence that the Credential comes from a secure source, it is ultimately a br
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Wallet must provide trustworthy and complete information about Issuers to the User.</p></td>
 </tr>
 </tbody>
@@ -560,7 +560,7 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Wallet must provide trustworthy and complete information about Verifiers to the User.</p></td>
 </tr>
 </tbody>
@@ -578,7 +578,7 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Credential Format must ensure that there is a robust mechanism to ensure that data that is not to be released to a Verifier cannot be extracted by the Verifier (Selective Disclosure).</p></td>
 </tr>
 </tbody>
@@ -593,7 +593,7 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.png"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Credential Format must support correlation protection.</p></td>
 </tr>
 </tbody>
@@ -612,7 +612,7 @@ In addition to the Issuer's information, the Digital Credential Metadata Type al
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Trust Framework must ensure that the Issuer cannot learn where the User uses the Credential.</p></td>
 </tr>
 </tbody>
@@ -629,7 +629,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.svg"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_orange_checkmark.png"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Trust Framework must support correlation protection.</p></td>
 </tr>
 </tbody>
@@ -652,7 +652,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Wallet must ask the User for meaningful consent before a Credential is used. The Wallet must provide the User the opportunity to review any data that is released to a Verifier.</p></td>
 </tr>
 </tbody>
@@ -667,7 +667,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Wallet must ensure that the Issuer cannot learn where the User uses the Credential.</p></td>
 </tr>
 </tbody>
@@ -682,7 +682,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.svg"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
 <td><p>The Wallet must ensure that the Verifier cannot learn that the same User is using other Verifiers.</p></td>
 </tr>
 </tbody>
@@ -700,7 +700,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Trust Framework must ensure that lifecycles of keys, certificates, and Credentials are designed such that the impact of a compromise is minimized.</p></td>
 </tr>
 </tbody>
@@ -720,7 +720,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that no third party can read the Credential issued by the Issuer.</p></td>
 </tr>
 </tbody>
@@ -743,7 +743,7 @@ that while the Verifier checks the Credential's validity, the Issuer does not le
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that during an interaction with a Verifier, an attacker cannot read PII.</p></td>
 </tr>
 </tbody>
@@ -769,7 +769,7 @@ Response. (See <a class="reference internal" href="remote-flow.html#redirect-uri
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that during an interaction with an Issuer, an attacker cannot read PII.</p></td>
 </tr>
 </tbody>
@@ -802,7 +802,7 @@ OpenID4VCI standard provides the option for the Wallet to request encrypted Cred
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The protocol must ensure that the Issuer cannot learn where the User uses the Credential.</p></td>
 </tr>
 </tbody>
@@ -818,7 +818,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 <col style="width: 92.0%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.svg"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.svg" style="width: 25px;" /></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
 <td><p>The Wallet must ensure that the Credentials and private keys are protected from unauthorized access.</p></td>
 </tr>
 </tbody>
@@ -914,7 +914,7 @@ ensure that while the Verifier checks the Credential's validity, the Issuer does
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/05/2025.
+      Last updated on 12/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

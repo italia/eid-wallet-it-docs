@@ -177,11 +177,15 @@
 <section id="mobile-application-instance-initialization">
 <h2><span class="section-number">22.1. </span>Mobile Application Instance Initialization<a class="headerlink" href="#mobile-application-instance-initialization" title="Link to this heading">¶</a></h2>
 <p>The Initialization flow enables the Mobile Application Instance to register a long-lived key pair, securely stored in an appropriate secure storage within the device, with the Application Provider. This process occurs only after the Application Provider verifies the security and Key Attestation issued by the OS manufacturer.</p>
-<p>The flow is displayed in <a class="reference internal" href="#fig-mobileapplication-instance-initialization-flow"><span class="std std-ref">Mobile Application Instance Initialization Sequence Diagram</span></a>, while a step-by-step description is provided below.</p>
-<figure class="align-center" id="id1" style="width: 100%">
-<span id="fig-mobileapplication-instance-initialization-flow"></span><a class="reference external image-reference" href="https://www.plantuml.com/plantuml/png/VLFBRjiw4DtpAmQyYvi0xWy4Q94qYpPe2mJfOnN0695ZQM29L3b3j-xNbvHToBQ2R0XuT1vd7huLnQHvw0rcZI4F3INJiIVOnAXD_6tC_uy5mOv732e6dSO4zhjGie02MGfXd15WlyI6UuAxSUpPeN8Cy114CJYQ63YESCxuH7kuKoNH0_pkyK4EK5I1_sHC7Des4OLptgd5OuexzfJWFRej1J_n6xSrfYPyywwuti1dpC5re1q1pjpQ4-zGfw8nvJd2xpjoM-3DHF2qOqSm4AbCXO433ta08PSJwnuI_SoSQA2WyXmm-4fzgJV0H80xv1wRdewE9UiDF1M90WLhGwppidEsgPVo794VA52gzHawVJr6dwkUpYJczcQ9-xGVDRO9nuuTVCJaVs6Y6brWH4vmPMrthAwtj5-FkR5s1PVLn3jhhm-jYyRqcZ9ymtQXgzWMWNyPKQKsudgce6kFYkiEfOEtuBabqQkfnHLSIgpWCkprwI2hhZ7rFNgSph8IS5wNjS-XYJbuq0YJtO4vZtb10EFft6lUxxoMrP9QYyjvl782Fx1dlpY1vTUbqIdkQrtKYyQhvx3S-yMTrKq-KSkYQT8kFsICGSXS7fwdnT-iY6IXT0CFWPLBtZy73SdEaSWcz-QMWiz3_nS0"><img alt="_images/application_instance_initialization.svg" src="_images/application_instance_initialization.svg" /></a>
+<p>The flow is displayed in <a class="reference internal" href="#fig-mobileapplication-instance-initialization-flow"><span class="std std-ref">Mobile Application Instance Initialization Sequence Diagram.</span></a>, while a step-by-step description is provided below.</p>
+<figure class="align-default" id="id1">
+<span id="fig-mobileapplication-instance-initialization-flow"></span><p class="plantuml">
+<object data="_images/plantuml-bdca6a5e5b931f528ab8f41c74795dc00717b28c.svg" type="image/svg+xml" style="width:80%">
+<a href="_images/plantuml-bdca6a5e5b931f528ab8f41c74795dc00717b28c.png"><img src="_images/plantuml-bdca6a5e5b931f528ab8f41c74795dc00717b28c.png" alt="The figure illustrates the Mobile Application Instance Initialization Sequence Diagram." style="width: 80.0%"/></a>
+
+</object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 22.1 </span><span class="caption-text">Mobile Application Instance Initialization Sequence Diagram</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 22.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLFBRjiw4DtpAmQyYvi0xWy4Q94qYpPe2mJfOnN0695ZQM29L3b3j-xNbvHToBQ2R0XuT1vd7huLnQHvw0rcZI4F3INJiIVOnAXD_6tC_uy5mOv732e6dSO4zhjGie02MGfXd15WlyI6UuAxSUpPeN8Cy114CJYQ63YESCxuH7kuKoNH0_pkyK4EK5I1_sHC7Des4OLptgd5OuexzfJWFRej1J_n6xSrfYPyywwuti1dpC5re1q1pjpQ4-zGfw8nvJd2xpjoM-3DHF2qOqSm4AbCXO433ta08PSJwnuI_SoSQA2WyXmm-4fzgJV0H80xv1wRdewE9UiDF1M90WLhGwppidEsgPVo794VA52gzHawVJr6dwkUpYJczcQ9-xGVDRO9nuuTVCJaVs6Y6brWH4vmPMrthAwtj5-FkR5s1PVLn3jhhm-jYyRqcZ9ymtQXgzWMWNyPKQKsudgce6kFYkiEfOEtuBabqQkfnHLSIgpWCkprwI2hhZ7rFNgSph8IS5wNjS-XYJbuq0YJtO4vZtb10EFft6lUxxoMrP9QYyjvl782Fx1dlpY1vTUbqIdkQrtKYyQhvx3S-yMTrKq-KSkYQT8kFsICGSXS7fwdnT-iY6IXT0CFWPLBtZy73SdEaSWcz-QMWiz3_nS0">Mobile Application Instance Initialization Sequence Diagram.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1</strong>: The User starts the Mobile Application Instance for the first time.</p>
@@ -719,7 +723,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/05/2025.
+      Last updated on 12/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

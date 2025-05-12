@@ -12,12 +12,18 @@ Depending on whether the User is using a mobile device or a workstation, the Rel
 Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
 
 .. _fig_High-Level-Flow-Presentation:
-.. figure:: ../../images/High-Level-Flow-Presentation.svg
-    :figwidth: 100%
-    :align: center
-    :target: https://www.plantuml.com/plantuml/svg/TL9TJy8m57tlhpZXHLcYYz-61uCXnF34d11UJCZS6bQPRMtlRF3NspB0JUBJidlEFH-v7LhA3DKV5TF-AtAXCqdeBRAgueI9zB3CUG-PXUjIKbvjX5mXySFDbc0qOqRZx05kW8jpHD5ZJQKouZiZeIHI_bbpIr64KmVJ_2nh8_gWqgXwLVfX8GpF2ShWEKMk2WwRPnAlafHdSSHn4-t4eYi-beLMGb8SC-P21gC7k0mXThQOfvDsXAVnBDWaqvTP7mVrDF7AxOssxg7SrR6krKfQtdJR8zEtTr-cpvZRxLs7lSK4evBdQ-l9lz1DWEQM6uo2a2IFjfhS1ZXa_LExQ_obbwJMN1uNQbZ_D0e6TzjAIJlQeUvzm3htxlWg7QBuispWzYTi3ilOaCl2lwuV
+.. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
+    :width: 99%
+    :alt: The figure illustrates the High Level Remote Protocol Flow.
+    :caption: `High Level Remote Protocol Flow. <https://www.plantuml.com/plantuml/svg/TL9TQ-em6BxFhtZmvXmBvvJpVV1YECHjmi2kKxmPIDU-sCoOP4bgSRz-YLNNAhjids_U3AtBZAis0dTyLUAUjYIGqaOvGcAKKxaIk16gPjhpUCvr9XrwYqm8SfX8BvSvzP1Pd55I4ZikLqZypzsUO3HZHkFR5Ue1Vdn755rNhbI6lsMEA-bZNokoBehmjOPfFfQLuNsuqgZArpDKS4EvWp9uI96hWc3pJE99EkLPX3Xkgdsnw9gFPQ4LbowE6Qj31wC7-1bA768nJoVj2hVZMOX9fe-pFaxkQUATsugsxsdShqjVgvMqr6mx8jFd5p-cprXzqFqEkiK4evBojVNa3-XFWEQM34R1I3gFjfRy3N3eUZQx6xpLIwVM92y7DQnF5eM0V_j9IRlQQUx_W7NktSbLEbJ9XDYXFfwmEImRaYpyuti7>`_
 
-    High Level Remote Protocol Flow
+
+.. .. figure:: ../../images/High-Level-Flow-Presentation.svg
+..     :figwidth: 100%
+..     :align: center
+..     :target: https://www.plantuml.com/plantuml/svg/TL9TJy8m57tlhpZXHLcYYz-61uCXnF34d11UJCZS6bQPRMtlRF3NspB0JUBJidlEFH-v7LhA3DKV5TF-AtAXCqdeBRAgueI9zB3CUG-PXUjIKbvjX5mXySFDbc0qOqRZx05kW8jpHD5ZJQKouZiZeIHI_bbpIr64KmVJ_2nh8_gWqgXwLVfX8GpF2ShWEKMk2WwRPnAlafHdSSHn4-t4eYi-beLMGb8SC-P21gC7k0mXThQOfvDsXAVnBDWaqvTP7mVrDF7AxOssxg7SrR6krKfQtdJR8zEtTr-cpvZRxLs7lSK4evBdQ-l9lz1DWEQM6uo2a2IFjfhS1ZXa_LExQ_obbwJMN1uNQbZ_D0e6TzjAIJlQeUvzm3htxlWg7QBuispWzYTi3ilOaCl2lwuV
+
+..     High Level Remote Protocol Flow
 
 
 A High-Level description of the remote flow, from the User's perspective, is given below and shown in :ref:`fig_High-Level-Flow-Presentation`:
@@ -42,12 +48,18 @@ A High-Level description of the remote flow, from the User's perspective, is giv
 
 Below is a sequence diagram that details the interactions between all the involved parties.
 
-.. figure:: ../../images/cross_same_device_auth_seq_diagram.svg
-    :figwidth: 100%
-    :align: center
-    :target: https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGst0TfCU3RY8uxgsaxHMBIK-r8L0SKSIwnMv9OTIr2B_lJEWbgPa1mXGtPRalFVuE1zw4qa7IijMwKJUfUKKWrBgt90FCFWOCGn0HqXAJVtdlF1zX9znPGt60NptmSuNzBPDg3h6iSPssX4CxdNR8i6DOtXdK31WlNiaCTIndgEZpA0LkWQOPKjrX-t6kZaCEMZpTQQTOm_kuFOyqG8kMil0Xu8Cgxq8baGf0hDrtcxP8nPs_cb3TgK98Qa4np-njbEunocCCCYzmUcLdMkotbL7jMgm3jGIkS9JkCE_4qQ2OV24Xh3XbUXJCAZKsHalOsIjMk1WkD0HuUoiu8hw5VPG5m5bJKCaBNkQxNXmKvzOEtbuiXICzu_sXT2GnKnIi12oZEgKF5Z76ciasdJCmUWDacoPu6Fa3t42V82ebvW_Cr2sQq7B5Zf6WBMb1Vn-T-4REGwBW3DMvqXRP-T02uGKMf1J3yx8iz74DaUrqADytIFuergSB94MllcpSbsyKblZqocC5duj-3svg145J68UPIDhcIOYxsgOf9_iNoir3pvrx9-FVUA3T-r6hOLdpJn6E-O08P4iKf8qUUk3Dxe5AHhGYHaTMPFpfaHVoYCA4uKKARibseeLIkcMmCxW-UN1IkPkWuQtex42_gtxn-I4Mza6OLkC7ACRJHh82qEDLuf10A3sKxvBUbHY5mMMq3WhrpIwqrFRMh8O5ROHlq7qrULOdiHvWYxNWIetg4f7wAATEsnwGF3JloGRPy4lltgR_1eYFtlz8iH-0Zr_cPqM0x_sDchNGESvcIp64lG9WvrjG9WqfO3WPvNwSg7RJ5sYT6kRgZpvvAVXGJpC1zAJ4JCVf7Z4gBqkbO4kl9lPiCHcjnaLGoL9G3ga3_QVt7BkC7Q220yklycgcv1_H5VAhgiwr2IcwTB6A3bSs_PoZcGxh9wskDldI0XAK6L0bLZdH1Zp-HCMbp-h0tr-1nPk8qYFxzt-1NbPIoJlQTUKg6ecIOpaNS0LYsbEAZMPIbfc8oMhMxY9CM60iTJe5h98VdS_Xb7_tXKAopCOOwxc0gLKO5O4lyB0ntYktLnTZw_kBYz_Koz7d2euXei5SjEwzct3OUzn0s-jQoGfHGh7-PdSVUXZP01nE4NP1IadWUlIb3CL7ZaoZmlhPBs-8tdM8zcRNswO7-b42VtbPmhQPFSR6qth8pQWYOAT9i8eCi28HYbwDhhKf6K2oFKI4FHAsrRIuKHgKvn0LLdsiUkJ83VD_Z87UPn1adri3bNVbKSoV79JpidBRCneIFf0LVdNu_7mXzSdh-77Lw_WzZq_uR-3-kX09XPriSmY2Dkoc1YP7L-sbQXPOym2TvYgsI4NUtbeX6ToVQ9lL5pNytglPUM95za_UCS6Zqom7UNNEDsRExcafTGFXA3lD_dAsUH3LR0ZgfW59Vs_FVoYH7O5dOtQ-QEKmVe1rPK_JEMVocxBATA6pq_k3VHTnzumTLgs_m40
+.. plantuml:: plantuml/credential-presentation-remote-flow.puml
+    :width: 99%
+    :alt: The figure illustrates the Remote Protocol Flow.
+    :caption: `Remote Protocol Flow. <https://www.plantuml.com/plantuml/svg/fLPFRnkt4xtpKmpqE_ni87QJ7WsuYACwjXEtLYqbFjI5G7574kiLkIM7gwX5ldk7v6hDjHqWG0rVTfVptfitVwYtdgIZiAdXscwFhh756cvnOmbXuYnPPMjuNzkja86i2Pi5EY74cIBhOFJ9enk1z124MDWl-SN_FVoChLReH_2_QxrQqxiwe6YOHYlTI4CmkfDrZGHNXjcDmeIn7Hu937KaLsWeCqY1fW9cwQXkiTvfiu891-s-oJGyTcyERiu2hM5SQmO-JCZjamYMHC43ipLMT-mUUtR-aufqAmaXY017Fx6s4xZ31KpHnRp1o5Ql96bhYgDIL5W6oXZPuWcx_LT0JybkL8GLl_4sE8L2d9xoQ_IiDS71P2qzmkbfZnlLjxY76ZkCxoHuIjyast5l5ZQmThBmQ2aeQn_q2w4kYva7fy5b6UKfBbZ36aiasZNCmUWLHlcWdFMU7v8Jre6N6yoF6IZRjIRkk8OHOAkv7h_TZcsLZgyTBbaT9woDNW6j4OAhqwbxerBPvhfwLGfzbTDz1RyNB-SRfBMj_c3NIwz4PtmuWUdQRXD-9izgM06Jg8Vq8MbP129h1iMJZ_PlXLWv6nhsp_fzuuCrzKvi8y-MUPGqp05Cahf8nAR9dwwjaZN4eG4PcD6GLhbl-kZpMCJ8H2vuIZuaRRqLGiYQG2_XUVAWO-TsGPERwKm006ptnUI6QtM5q0qZnyXAaWIoYQ70wuSX0HH-fkU-FGgnwnwMK1aTqrIoaGjTQzBe1TOUlqFqnVaibiHOWYRFWKWP34SdqNczCbZj0S4k_epTk7Hsy-riKZLQxChnCiIp1dfMcS6AWL_sDafJGMEvcJJwFkWpEhtS9IP9mI7OPQ6-J-WcK_THijPLCPvyylFam1_c0-7HY6NiNskIKSCjbO76rYorss0rN4QzeR5986v8w_JVgHCPsZSH4UvDhadRpCa-eEd7hYasrDo7nKPx7tkujEtb7ibsQBceSRZd4a4VL1XGDDOP4Vfy_fZ5vSVoGDVVZeLh3t77xzr-Z_mwHV8thbCVLTn979Fwpc7BOghZGar7DNOCOqZB6gwy3-XW5cUqW-mbVxYRmNHVxmA5vIdqFazp3oM4OrO4swBZOtolNLrSpYvkpyz_5Iz7d0WuWl4QUMbTshhYi8-uWtVQLDoKIGh7SUByFx7UOoeE11-_WW18S4rOSAV20qVcwqARzBx8aIoqkNjJvIQvICSYqfz_8ITLTh_INjNMOmMIoEb58FH9XaeQzHBOw7ucDHD0dXU785kfwzWEnt4sanEYiEnJqpT1MfhxP0xoTGOXVQyEnNuhJ-K6zqivDI-pCQDAUw2O_ClPRFB3c-CtyEFhrt3paKlupwWyEeet5ZM-lul0TMCnLxP2-DfDecIDFWaSCfLt1oVsygNXdicrWRvJSJdFs-7Awcuyp_x11pPugfnkA5VZvCczaqOwZVf19EXNOKevctpuc8n7uREW8F-pXry5oowXir637qePR7z1DVqFflwNod3bzD8cpqyEB_GdZhrbwh2f_mK0>`_
 
-    Remote Protocol Flow
+
+.. .. figure:: ../../images/cross_same_device_auth_seq_diagram.svg
+..     :figwidth: 100%
+..     :align: center
+..     :target: https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGst0TfCU3RY8uxgsaxHMBIK-r8L0SKSIwnMv9OTIr2B_lJEWbgPa1mXGtPRalFVuE1zw4qa7IijMwKJUfUKKWrBgt90FCFWOCGn0HqXAJVtdlF1zX9znPGt60NptmSuNzBPDg3h6iSPssX4CxdNR8i6DOtXdK31WlNiaCTIndgEZpA0LkWQOPKjrX-t6kZaCEMZpTQQTOm_kuFOyqG8kMil0Xu8Cgxq8baGf0hDrtcxP8nPs_cb3TgK98Qa4np-njbEunocCCCYzmUcLdMkotbL7jMgm3jGIkS9JkCE_4qQ2OV24Xh3XbUXJCAZKsHalOsIjMk1WkD0HuUoiu8hw5VPG5m5bJKCaBNkQxNXmKvzOEtbuiXICzu_sXT2GnKnIi12oZEgKF5Z76ciasdJCmUWDacoPu6Fa3t42V82ebvW_Cr2sQq7B5Zf6WBMb1Vn-T-4REGwBW3DMvqXRP-T02uGKMf1J3yx8iz74DaUrqADytIFuergSB94MllcpSbsyKblZqocC5duj-3svg145J68UPIDhcIOYxsgOf9_iNoir3pvrx9-FVUA3T-r6hOLdpJn6E-O08P4iKf8qUUk3Dxe5AHhGYHaTMPFpfaHVoYCA4uKKARibseeLIkcMmCxW-UN1IkPkWuQtex42_gtxn-I4Mza6OLkC7ACRJHh82qEDLuf10A3sKxvBUbHY5mMMq3WhrpIwqrFRMh8O5ROHlq7qrULOdiHvWYxNWIetg4f7wAATEsnwGF3JloGRPy4lltgR_1eYFtlz8iH-0Zr_cPqM0x_sDchNGESvcIp64lG9WvrjG9WqfO3WPvNwSg7RJ5sYT6kRgZpvvAVXGJpC1zAJ4JCVf7Z4gBqkbO4kl9lPiCHcjnaLGoL9G3ga3_QVt7BkC7Q220yklycgcv1_H5VAhgiwr2IcwTB6A3bSs_PoZcGxh9wskDldI0XAK6L0bLZdH1Zp-HCMbp-h0tr-1nPk8qYFxzt-1NbPIoJlQTUKg6ecIOpaNS0LYsbEAZMPIbfc8oMhMxY9CM60iTJe5h98VdS_Xb7_tXKAopCOOwxc0gLKO5O4lyB0ntYktLnTZw_kBYz_Koz7d2euXei5SjEwzct3OUzn0s-jQoGfHGh7-PdSVUXZP01nE4NP1IadWUlIb3CL7ZaoZmlhPBs-8tdM8zcRNswO7-b42VtbPmhQPFSR6qth8pQWYOAT9i8eCi28HYbwDhhKf6K2oFKI4FHAsrRIuKHgKvn0LLdsiUkJ83VD_Z87UPn1adri3bNVbKSoV79JpidBRCneIFf0LVdNu_7mXzSdh-77Lw_WzZq_uR-3-kX09XPriSmY2Dkoc1YP7L-sbQXPOym2TvYgsI4NUtbeX6ToVQ9lL5pNytglPUM95za_UCS6Zqom7UNNEDsRExcafTGFXA3lD_dAsUH3LR0ZgfW59Vs_FVoYH7O5dOtQ-QEKmVe1rPK_JEMVocxBATA6pq_k3VHTnzumTLgs_m40
+
+..     Remote Protocol Flow
 
 
 The details of each step shown in the previous picture are described below.
@@ -62,9 +74,17 @@ The details of each step shown in the previous picture are described below.
 
   Below is represented a non-normative example of a QR Code issued by the Relying Party.
 
-.. figure:: ../../images/verifier_qr_code.svg
-  :figwidth: 50%
-  :align: center
+.. only:: format_html
+
+  .. figure:: ./images/svg/verifier_qr_code.svg
+    :figwidth: 50%
+    :align: center
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/verifier_qr_code.pdf
+    :width: 50%
+    :align: center
 
 
   Below is represented a non-normative example of the QR Code raw payload:
