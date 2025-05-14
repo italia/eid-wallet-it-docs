@@ -54,7 +54,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 The PID Provider MUST: 
 
 - a name/ naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions. The PID name MUST be comprehensible and user-friendly avoiding technical terms such as “Person Identification Data” or its acronym “PID”;
-- a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.). 
+- Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.). 
 
 
 Issuance of Electronic Attestations of Attributes
@@ -95,11 +95,10 @@ If an Authentic Source (or an Electronic Attestation of Attributes Provider, sho
 
 Focus on Electronic Attestations of Attributes
 ==============================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The EAAs obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, each EAA MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the EAA that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:
 
-Layout of Electronic Attestations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - The EAA MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
 - The name of the EAA MUST be clearly visible and always displayed in both the Detail View and the Preview View;
@@ -108,7 +107,7 @@ Layout of Electronic Attestations
 - The EAA MUST be an interactive element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref: `Presentation of Electronic Attestation`); 
 - The EAA MAY be displayed in a card format in their Preview View, in line with approaches already used by other digital wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout; 
 - The EAA MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
-- The EAA MUST display a method of assistance (see :ref: `User Assistance`); 
+- The EAA MUST display a method of assistance (see :ref:`functionalities:User Assistance`); 
 - The EAA layout in the Preview View MUST be optimized for scalability and usability, especially when multiple EAAs are displayed on the same screen; 
 - The EAA representation MUST adhere to a defined set of specifications provided by the Electronic Attestation of Attributes Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
 
@@ -164,7 +163,7 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation.
 
-In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
+In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 Remote Presentation
 ^^^^^^^^^^^^^^^^^^^
