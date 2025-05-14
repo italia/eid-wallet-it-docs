@@ -52,7 +52,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 
 The PID Provider MUST: 
 
-- Implement a name/ naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions;
+- Implement a name/naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions;
 - Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.). 
 
 
