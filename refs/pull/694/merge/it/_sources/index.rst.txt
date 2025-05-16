@@ -10,7 +10,7 @@ Introduzione
 
 cos'è eIDAS
 
-cos’è IT-Wallet
+cos'è IT-Wallet
 
 scopo delle regole tecniche
 

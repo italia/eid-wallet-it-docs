@@ -1,13 +1,13 @@
 .. include:: ../common/common_definitions.rst
 
-.. _supported_algs:
 
 Cryptographic Algorithms
-++++++++++++++++++++++++
+========================
 
 The following algorithms MUST be supported:
 
 .. list-table::
+  :class: longtable
   :widths: 20 20 20 20
   :header-rows: 1
 
@@ -56,10 +56,10 @@ The following Elliptic Curves MUST be supported for the Elliptic Curve Digital S
     - P-256, P-384, P-521
     - `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_, `[FIPS-186-4] <https://www.nist.gov/publications/digital-signature-standard-dss-2>`_, `[ISO/IEC 14888-3] <https://www.iso.org/standard/76382.html>`_.
 
-
 For Credential issued in mdoc format, the following algorithms MUST be supported:
 
 .. list-table::
+  :class: longtable
   :widths: 20 20 20 20
   :header-rows: 1
 
@@ -80,10 +80,10 @@ For Credential issued in mdoc format, the following algorithms MUST be supported
     - Session encryption / Signature
     - NIST SP 800-38D.
 
-
 The following algorithms are RECOMMENDED to be supported:
 
 .. list-table::
+  :class: longtable
   :widths: 20 20 20 20
   :header-rows: 1
 
@@ -104,7 +104,7 @@ The following algorithms are RECOMMENDED to be supported:
     - Signature
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_.
   * - **ECDH-ES**
-    - Elliptic Curve Diffie-Hellman  (ECDH) Ephemeral Static key agreement using Concat Key Derivation Function (KDF).
+    - Elliptic Curve Diffie-Hellman (ECDH) Ephemeral Static key agreement using Concat Key Derivation Function (KDF).
     - Key Encryption
     - :rfc:`7518`.
   * - **ECDH-ES+A128KW**
@@ -119,6 +119,7 @@ The following algorithms are RECOMMENDED to be supported:
 The following algorithms MUST NOT be supported:
 
 .. list-table::
+  :class: longtable
   :widths: 20 20 20 20
   :header-rows: 1
 

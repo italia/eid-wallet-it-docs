@@ -1,6 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _proximity_flow.rst:
 
 Proximity Flow
 ==============
@@ -9,12 +8,18 @@ This section describes how a Relying Party Instance requests the presentation of
 
 The high-level presentation phase is structured into three broad sub-phases as depicted in the following figure:
 
-.. figure:: ../../images/high-level-presentation-proximity.svg
-    :figwidth: 100%
-    :align: center
-    :target: https://www.plantuml.com/plantuml/svg/TL9DYzim4BthLqnpoa8JquzJJqjt3IbigKbsAJq5HHeiKLboDUEaflI_T-ma9WrPNuIVvhrvyqRtn3fprmJrnaSJEelWc5lwL1HP7vQrPzVjEi9iKcICl3IfATgWuy1P4DlWTyN3nqKrG2zVduf64sCMQFkGcZR5WTCE-chrvR7SRfxBTVdj-KTLpk-KOiy1ORRojLiyuHu3L1b9A9fzYb0vJJXJgi9CASu76szXzYB7JCx69WCk1Ik_egK-fovQdVjvUw6nRGSDgRuXV0T_5CWt6PrRt7k3Muorhh4HH8Zlbl0umb1EyD1-WwRB2EHIvaNMiKQGZ2AQiSCE-O0OuRiE0HbqjB36qFjOGwKpzuD2IQntmPD30XyzUns0Zgh6QP4ACXV8T-MIa6WO3S_yazFtIzWShs2IFhijeybzosWlJHuyEo2diy1qOlx4_ZWT4tJjsG-Uw5FTRMScDKqNlHbJ5fKFIxcyW61npdADd3tkTVZVtBZJZByw92uoakWI0lusRWnux_LrGa9VIRe1wSAarQmdbbZzgvIaltqyFQ5RQpukW96aVAXTtteChoKVK5i2JXFtbSBhV33AxTXIgNkCjcl2Fm00
+.. plantuml:: plantuml/credential-presentation-high-level-flow.puml
+    :width: 90%
+    :alt: The figure illustrates the High-Level Presentation Flow in proximity.
+    :caption: `High-Level Presentation Flow in proximity. <https://www.plantuml.com/plantuml/svg/VLBHYjim47pNLsppv8CcHzjxBELeOaYXK9DSANqoEccmHMN9bUHSJUc_T-qanWr9zIAyEpCxE_9ZJ3Aahh6qDLMz_8m3B1K14Ix9PBoZefOHufLnodOQz7xzSBz-ADU-QRrZq0SXjfysURb_odVvbwVlHPxT2P5Cig35VpKNGXG8qRkiYmYlQV6LhmNVZVQAQcyrVxAM-EWxfsNeitQcKRQ31gEl2D_HRq5y9fEPni4eb72LhD1mXOblLhGPovHFvM7y7geBe5Zxa9P1kWgal7DGuuHdf1V0qJTfBH99fsa7snjNKS59zeD2pg4-MnDhH3BE92CjnQEggYLBMTwB-5ouZ8XnM0rd_idfsnNjZotAvwrnbbEXRnFqtEIBIJKl80ENJwBq0_rnknIfQyz-CD5FkElEb6-QpXarfimgxrRSd9LeUSvoXnGC3jB-Qsvyqu2V7MAw3uYi6q7ufUenu8EHbmanVSlfMiIPIIsJd5XizOyGd7wvEVr2rvxv-009aU43TfTTGTrAtaBgICbFt1l0otpWk3kEV8JJNMF_0W00>`_
 
-    High-Level Presentation Flow in proximity
+
+.. .. figure:: ../../images/high-level-presentation-proximity.svg
+..     :figwidth: 100%
+..     :align: center
+..     :target: https://www.plantuml.com/plantuml/svg/TL9DYzim4BthLqnpoa8JquzJJqjt3IbigKbsAJq5HHeiKLboDUEaflI_T-ma9WrPNuIVvhrvyqRtn3fprmJrnaSJEelWc5lwL1HP7vQrPzVjEi9iKcICl3IfATgWuy1P4DlWTyN3nqKrG2zVduf64sCMQFkGcZR5WTCE-chrvR7SRfxBTVdj-KTLpk-KOiy1ORRojLiyuHu3L1b9A9fzYb0vJJXJgi9CASu76szXzYB7JCx69WCk1Ik_egK-fovQdVjvUw6nRGSDgRuXV0T_5CWt6PrRt7k3Muorhh4HH8Zlbl0umb1EyD1-WwRB2EHIvaNMiKQGZ2AQiSCE-O0OuRiE0HbqjB36qFjOGwKpzuD2IQntmPD30XyzUns0Zgh6QP4ACXV8T-MIa6WO3S_yazFtIzWShs2IFhijeybzosWlJHuyEo2diy1qOlx4_ZWT4tJjsG-Uw5FTRMScDKqNlHbJ5fKFIxcyW61npdADd3tkTVZVtBZJZByw92uoakWI0lusRWnux_LrGa9VIRe1wSAarQmdbbZzgvIaltqyFQ5RQpukW96aVAXTtteChoKVK5i2JXFtbSBhV33AxTXIgNkCjcl2Fm00
+
+..     High-Level Presentation Flow in proximity
 
 The sub-phases are described below:
 
@@ -35,19 +40,25 @@ Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST su
 - *Device Engagement* based on QR Code.
 - *RP Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
 - *Device Retrieval* mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. *Server Retrieval* mechanism MUST NOT be supported.
-- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`mdoc-CBOR Credential Format` for more details).
+- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`credential-data-model:mdoc-CBOR Credential Format` for more details).
 - *Wallet Instance validation* through the Wallet Attestation.
 
 
 The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.
 
 .. _fig_High-Level-Flow-ITWallet-Presentation-ISO-updated:
-.. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO-updated.svg
-    :figwidth: 100%
-    :align: center
-    :target: https://www.plantuml.com/plantuml/svg/ZLF1RXCn4BtdAqPxebBBWME5K4iR8GI8a53rmiMn9udLtR6nnxlaxndR6yaHZSGUejYUUU_Dy_DTP1Ku3Vr29NQKXYs6nGBaKvfTWAU80LI4LFRAZvS6gwrNnD0zgxv7XYUotEMwwT-IzGe-az2Gnb8oLlnqys6wXUyU2VY0C0ETAayIxAWOPzJqlhHKIKcQI4WKMqUmFRu60Yxa4mNFcuVxXhL2HEnHSooDFhW_Th1yb7yO1RZ2xXBf_4VrSbJwdMVufiWeCUS8TWSRHW_lm4OWn-0nx5mOq0XlPGNv9X6UBWXlof1CBIyQFo5XoCCJJe3-W8CiUtX1qQXiW5_qfkkMZpXQZL_m-7OLxDXrrt2-cRPTTtL27MzXSt1JcVZ76XwSGR2a-sGixQMnzYrfh_R2HjnrvzSmbkLuK_HjjA8MgPu9oVz8XwnzZSfWQBMtcuts2YiiWq-26Z76x9tWdL9PlwPs5L12YA0WsZsX0KK6a7GuUiuhvc2t0YPQ0lvE63bBsbJaPMIrxMqyL1Eksh4l5O4RCS37hqk8g9CmwuCYmhwvqKlww-aZ5d6N2V84mc5taZkEPIx5mZHZb8YjvrcKbqIFuhcayHHfkUCvywq1yLeiq8uOIK3T3WBkRUHGuwaniDtbi6BpVEvdz3PNIEQIsKBl7KLi77vKhCHOePui7w1UmRckIuOsbznOri9UlsfJVZ2c11osbdBYhx9EWKNz0eDn6cGaQ-fBhuzME6Pa-8bXi5HSASS6ssTnlZ4jxf1C6lg_
+.. plantuml:: plantuml/credential-presentation-flow.puml
+    :width: 99%
+    :alt: The figure illustrates the Low-Level Presentation Flow in proximity.
+    :caption: `Low-Level Presentation Flow in proximity. <https://www.plantuml.com/plantuml/svg/ZLD1Qniz4BtxLmnx-WB9T-Wnb98qCQKqfQxTa4ilO-tOAx8xKgNHRltlEolP8DCOkWTZIJFllNbwkek2GTBGmvERRfvef1vMWIAne5Z7iEemqWAJE4x3bi9Y0VgX4HVWEL80Z93oNlxnYcQDzSW2pGlsFGayivLchfl-Bbclu3Eh1ZQKIyQ2dsu-JBVmpHE3T0H7e5FbIO8TKUY8cjxdbY8fQHChIHbXUtWB15oOJn1UDW_t5Mk1YDIJaPWRVN2_xM3b0BvsPfVOp7-mrwFSxxp0L-GMrPm3s1riX3oy0nk1dO2di7DXe5Pv2oleDwdmT45uLKRSblAiyHCnXNbufWd8TpJeieTNKere0_pa_vfc-KYZDVI53l-lWXsRvXhEDzEsQQvEgECjR3etvOc_h-71jGIMJPzQotjjB7rBtkDUsLYQvlmQnhmSRxA-ZK6kaSgPaloBT9YrhmbR2hNsUhFINc2LPV1922B5Q1tFUATKbg-grO1x30G8qUwPMa1kWTY4WvTv9HBiLi5KIw1VYQBCaZO5UHa5jxsDNJ7XgXxxKX6uaG9yV5f299C2WUcGcVhgHY_fBwUFbCLT9CWJA8VTQUuavhbGbEc8aIEsFiw2NXCzOW-QnbEaBU-FcQyDYDTgWN4in0hgTX1eRwE44az3GUnk3YjLp-V-Y5xdYhYzPBRIUyUHAeSVKL2DLUh9IWVb2ivrNJAqkkJQiWhs-asRvWVJve33rlAS-AkiqtHaNc5edG4ToRRbfPT7gnn7PFX1OR2SNSd7BTNFudnZMjmHjsde_m00>`_
 
-    High-Level Proximity Flow
+
+.. .. figure:: ../../images/High-Level-Flow-ITWallet-Presentation-ISO-updated.svg
+..     :figwidth: 100%
+..     :align: center
+..     :target: https://www.plantuml.com/plantuml/svg/ZLF1RXCn4BtdAqPxebBBWME5K4iR8GI8a53rmiMn9udLtR6nnxlaxndR6yaHZSGUejYUUU_Dy_DTP1Ku3Vr29NQKXYs6nGBaKvfTWAU80LI4LFRAZvS6gwrNnD0zgxv7XYUotEMwwT-IzGe-az2Gnb8oLlnqys6wXUyU2VY0C0ETAayIxAWOPzJqlhHKIKcQI4WKMqUmFRu60Yxa4mNFcuVxXhL2HEnHSooDFhW_Th1yb7yO1RZ2xXBf_4VrSbJwdMVufiWeCUS8TWSRHW_lm4OWn-0nx5mOq0XlPGNv9X6UBWXlof1CBIyQFo5XoCCJJe3-W8CiUtX1qQXiW5_qfkkMZpXQZL_m-7OLxDXrrt2-cRPTTtL27MzXSt1JcVZ76XwSGR2a-sGixQMnzYrfh_R2HjnrvzSmbkLuK_HjjA8MgPu9oVz8XwnzZSfWQBMtcuts2YiiWq-26Z76x9tWdL9PlwPs5L12YA0WsZsX0KK6a7GuUiuhvc2t0YPQ0lvE63bBsbJaPMIrxMqyL1Eksh4l5O4RCS37hqk8g9CmwuCYmhwvqKlww-aZ5d6N2V84mc5taZkEPIx5mZHZb8YjvrcKbqIFuhcayHHfkUCvywq1yLeiq8uOIK3T3WBkRUHGuwaniDtbi6BpVEvdz3PNIEQIsKBl7KLi77vKhCHOePui7w1UmRckIuOsbznOri9UlsfJVZ2c11osbdBYhx9EWKNz0eDn6cGaQ-fBhuzME6Pa-8bXi5HSASS6ssTnlZ4jxf1C6lg_
+
+..     High-Level Proximity Flow
 
 
 **Step 1**: The User opens the Wallet Instance initiating the process.
@@ -86,7 +97,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 13**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #9.1.1.4]) to ensure its authenticity.
 
-**Step 14**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's registration certificate to ensure transparency about the requested data and its registered purpose.
+**Step 14**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested data and its registered purpose.
 
 **Step 15**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.
 
@@ -104,7 +115,6 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 **Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
 
 .. note::
-
   During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.
 
 Device Engagement
@@ -113,6 +123,7 @@ Device Engagement
 The Device Engagement structure MUST be CBOR encoded and have at least the following components:
 
 .. list-table::
+   :class: longtable
    :widths: 30 70
    :header-rows: 1
 
@@ -154,6 +165,7 @@ The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR 
 Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
 .. list-table::
+   :class: longtable
    :widths: 30 70
    :header-rows: 1
 
@@ -168,7 +180,7 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
        - **itemsRequest**. CBOR-encoded `ItemsRequest` structure, formatted as:
 
-         - **docType** *(tstr)*. The type of document requested. See :ref:`mdoc-CBOR Credential Format`.
+         - **docType** *(tstr)*. The type of document requested. See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
 
          - **nameSpaces** *(map)*. A map of namespace identifiers to requested *DataElements*.
 
@@ -193,8 +205,8 @@ The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypt
 Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:
 
 .. _table-mdoc-attributes:
-
 .. list-table::
+   :class: longtable
    :widths: 25 75
    :header-rows: 1
 
@@ -217,8 +229,8 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
 Each document in **documents** MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified:
 
 .. _table-mdoc-documents-attributes:
-
 .. list-table::
+   :class: longtable
    :widths: 30 70
    :header-rows: 1
 
@@ -229,7 +241,7 @@ Each document in **documents** MUST be compliant with the following structure, a
      - *(tstr)*. Document type identifier. For example, for an mDL, the value MUST be ``org.iso.18013.5.1.mDL``.
 
    * - **issuerSigned**
-     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`mdoc-CBOR Credential Format`.
+     - *(bstr)*. Contains the `IssuerNameSpaces` structure, which includes data elements signed by the Issuer, and the `issuerAuth` structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See :ref:`credential-data-model:mdoc-CBOR Credential Format`.
 
    * - **deviceSigned**
      - *(bstr)*. Contains the `DeviceNameSpaces` structure (data elements signed by the Wallet Instance), and the `deviceAuth` structure, which includes the authentication data signed by the Wallet Instance. See the table below for details.
@@ -242,6 +254,7 @@ Each document in **documents** MUST be compliant with the following structure, a
 A **deviceSigned** data structure MUST be compliant with the following structure, and MUST include the following components:
 
 .. list-table::
+   :class: longtable
    :widths: 25 75
    :header-rows: 1
 
@@ -265,21 +278,20 @@ Session Termination
 
 The session MUST be terminated if at least one of the following conditions occur:
 
-- after a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
-- when the Wallet Instance does not accept any more requests;
-- when the Relying Party Instance does not send any further requests.
+- After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
+- When the Wallet Instance does not accept any more requests;
+- When the Relying Party Instance does not send any further requests.
 
 If the Wallet Instance and the Relying Party Instance does not send or receive any further requests, the session termination MUST be initiated as follows:
 
-- send the status code for session termination, or
-- dispatch the "End" command as outlined in [`ISO18013-5`_ #8.3.3.1.1.5].
+- Send the status code for session termination, or
+- Dispatch the "End" command as outlined in [`ISO18013-5`_ #8.3.3.1.1.5].
 
 When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions:
 
-- destruction of session keys and related ephemeral key material;
-- closure of the communication channel used for data retrieval.
+- Destruction of session keys and related ephemeral key material;
+- Closure of the communication channel used for data retrieval.
 
 .. note::
-
-   See :ref:`mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
+  See :ref:`credential-data-model:mdoc-CBOR Credential Format` for the meaning of CBOR type acronyms.
 

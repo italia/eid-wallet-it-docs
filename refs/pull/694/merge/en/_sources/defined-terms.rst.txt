@@ -10,16 +10,14 @@ Below the normative references and respective acronyms included in these Technic
 
 Legislative Decree No. 82 of March 7, 2005, as amended, containing the 'Digital Administration Code'.
 
-
 [REF_ACCESSIBILITY]
 
 Accessibility Guidelines for IT Tools as per Article 11 of Law 4/2004.
 Directive (EU) 2019/882 of the European Parliament and of the Council of 17 April 2019 on the accessibility requirements for products and services.
 
-
 [GL_DESIGN]
 
-Design Guidelines for  websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.
+Design Guidelines for websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.
 
 
 Defined Terms and Acronyms
@@ -37,6 +35,7 @@ Defined Terms and Acronyms
 This section aligns the IT-Wallet System's terminology with the definitions provided in ARF 1.10 (see `ARF Annex 1 <https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md>`_). For each term, the IT-Wallet definition is compared and mapped to the ARF definition, with notes on any differences or clarifications.
 
 .. list-table::
+   :class: longtable
    :header-rows: 1
    :widths: 20 40 40
 
@@ -331,66 +330,69 @@ This section aligns the IT-Wallet System's terminology with the definitions prov
 .. note::
    For any term not present in ARF 1.10, the IT-Wallet definition is provided as authoritative for the Italian context.
 
-
 Below are the main defined terms and definitions related to User Experience aspects:
 
 .. list-table::
-   :header-rows: 1
+  :class: longtable
+  :widths: 20 80 20
+  :header-rows: 1
 
-   * - Name
-     - Description
-     - Notes
-   * - Authentication Button
-     - The Engagement Button that enables the User to access the Authentication process and use the services provided by Verifiers.
-     -
-   * - Brand Identity
-     - Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.
-     -
-   * - Catalog
-     - Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.
-     -
-   * - Call To Action
-     - A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.
-     -
-   * - Detailed View
-     - Extended display mode of the Digital Credentials, showing all the Attributes included.
-     -
-   * - Discovery Page
-     - It’s the page of the Touchpoint of the Relying Party where the User lands to access their authenticated area, and it has the goal to show the User all the Authentication methods available.
-     -
-   * - Engagement Button
-     - Interactive element of the Interface that allows the User to trigger a process (e.g. to Authenticate, to request the issuance of a Digital Credential, etc.).
-     -
-   * - Interaction Model
-     - A set of characteristics that define how the User interacts with the Interface of one or multiple Touchpoints in order to complete a task or operation and achieve a specific goal.
-     -
-   * - Interface
-     - The set of graphic, typographical and interactive elements through which the User interacts with the Touchpoint(s) responsible for the delivery of a product or service, in compliance with [GL_DESIGN].
-     -
-   * - Preview View
-     - Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.
-     -
-   * - Service Model
-     - Set of interactions between actors and touchpoints necessary for service delivery and fruition.
-     -
-   * - Touchpoint
-     - Point of contact (digital and not) between the User and the product or service.
-     -
-   * - Trust Mark
-     - A graphic element that gives evidence of the participation of the Primary Actors in the IT-Wallet System and thus guarantees adherence to its standards.
-     -
-   * - User Experience
-     - The set of people's perceptions and reactions resulting from the use and/or expectation of use of a product, system or service.
-     - Aligned with ISO 9241-210:2010
-   * - Visual Identity
-     - Coherent set of graphic and typographic elements that visually represent a product or service and make it distinguishable and recognizable.
-     -
+  * - Name
+    - Description
+    - Notes
+  * - Authentication Button
+    - The Engagement Button that enables the User to access the Authentication process and use the services provided by Verifiers.
+    - 
+  * - Brand Identity
+    - Collection of visual, verbal, and strategic elements that a service, a product or an entity uses to present itself to the User and to distinguish itself from others.
+    - 
+  * - Catalog
+    - Section of the Wallet Instance that displays the list of all the available Digital Credentials that can be obtained through the IT-Wallet Instance, and from which it is possible to start the issuing process.
+    - 
+  * - Call To Action
+    - A clear and direct suggestion that encourages users to take a specific action. It can be a button, a link, or another element guiding the user toward a particular goal.
+    - 
+  * - Detailed View
+    - Extended display mode of the Digital Credentials, showing all the Attributes included.
+    - 
+  * - Discovery Page
+    - It's the page of the Touchpoint of the Relying Party where the User lands to access their authenticated area, and it has the goal to show the User all the Authentication methods available.
+    - 
+  * - Engagement Button
+    - Interactive element of the Interface that allows the User to trigger a process (e.g. to Authenticate, to request the issuance of a Digital Credential, etc.).
+    - 
+  * - Interaction Model
+    - A set of characteristics that define how the User interacts with the Interface of one or multiple Touchpoints in order to complete a task or operation and achieve a specific goal.
+    - 
+  * - Interface
+    - The set of graphic, typographical and interactive elements through which the User interacts with the Touchpoint(s) responsible for the delivery of a product or service, in compliance with [GL_DESIGN].
+    - 
+  * - Preview View
+    - Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.
+    - 
+  * - Service Model
+    - Set of interactions between actors and touchpoints necessary for service delivery and fruition.
+    - 
+  * - Touchpoint
+    - Point of contact (digital and not) between the User and the product or service.
+    - 
+  * - Trust Mark
+    - A graphic element that gives evidence of the participation of the Primary Actors in the IT-Wallet System and thus guarantees adherence to its standards.
+    - 
+  * - User Experience
+    - The set of people's perceptions and reactions resulting from the use and/or expectation of use of a product, system or service.
+    - Aligned with ISO 9241-210:2010
+  * - Visual Identity
+    - Coherent set of graphic and typographic elements that visually represent a product or service and make it distinguishable and recognizable.
+    - 
 
 Acronyms
 --------
+
 Below are the main acronyms used in the document:
 
 .. list-table::
+  :class: longtable
   :widths: 20 80
   :header-rows: 1
 
@@ -426,7 +428,6 @@ Below are the main acronyms used in the document:
     - Wallet Secure Cryptographic Application
   * - **WSCD**
     - Wallet Secure Cryptographic Device
-
 
 Normative Language and Conventions
 ==================================
