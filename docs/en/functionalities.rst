@@ -6,10 +6,21 @@ Functionalities
 
 The IT-Wallet System provides Users with a simpler, faster, and more secure way to access services. This service is delivered through the use of a Wallet Solution, whose User Experience is structured into three main phases: pre-use, use, and post-use.
 
-.. figure:: ../../images/UX-phases-usage.svg
-  :name: User Experience phases of Wallet usage
-  :alt: User Experience phases of Wallet usage
-  :width: 100%
+.. only:: format_html
+
+  .. figure:: ./images/svg/UX-phases-usage.svg
+    :alt: User Experience phases of Wallet usage
+    :width: 100%
+
+    User Experience phases of Wallet usage
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/UX-phases-usage.pdf
+    :alt: User Experience phases of Wallet usage
+    :width: 100%
+
+    User Experience phases of Wallet usage
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
 
@@ -93,11 +104,9 @@ If an Authentic Source (or an Electronic Attestation of Attributes Provider, sho
 
 
 Focus on Electronic Attestations of Attributes
-==============================================
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The EAAs obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, each EAA MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the EAA that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:
-
 
 - The EAA MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
 - The name of the EAA MUST be clearly visible and always displayed in both the Detail View and the Preview View;
