@@ -197,7 +197,26 @@
 <li><p>The User receives confirmation of the successful activation of the Wallet Instance.</p></li>
 </ul>
 <p>The Wallet Provider MUST allow the User to remove the PID issued during the activation phase. In addition, the PID Provider SHOULD allow the User to revoke the issued PID through a specific Touchpoint. The Wallet Provider MUST allow the User to always have the option to request the deactivation of their Wallet Instance, even in the absence of the device on which it was installed. For further details, please refer to the <a class="reference internal" href="#deactivation-of-the-wallet-instance">Deactivation of the Wallet Instance</a> and <a class="reference internal" href="#management-of-electronic-attestations">Management of Electronic Attestations</a> sections.</p>
-<p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
+<p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
+<section id="focus-on-pid-person-identification-data">
+<h3><span class="section-number">8.1.1. </span>Focus on PID – Person Identification Data<a class="headerlink" href="#focus-on-pid-person-identification-data" title="Link to this heading">¶</a></h3>
+<p>The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see <a class="reference internal" href="credential-data-model.html#digital-credential-data-model"><span class="std std-ref">Digital Credential Data Model</span></a>) issued as a result of the activation process and made available in the Wallet Instance.
+Below are the requirements for displaying and using the PID that each Wallet Provider MUST adhere to, in order to provide a consistent and accessible consultation and usage experience:</p>
+<ul class="simple">
+<li><p>The PID MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
+<li><p>The PID MUST be named as defined by the PID Provider;</p></li>
+<li><p>The PID MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked);</p></li>
+<li><p>The PID MUST include Action Buttons to enable lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
+<li><p>The PID MUST be an interactive element, for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts, and to request the issuance of additional EAAs (see <span class="xref std std-ref">functionalities:Issuance of Electronic Attestation of Attributes</span>);</p></li>
+<li><p>The PID MUST display a method of assistance by the PID Provider (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
+<li><p>The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions.</p></li>
+</ul>
+<p>The PID Provider MUST:</p>
+<ul class="simple">
+<li><p>Implement a name/naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions;</p></li>
+<li><p>Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.).</p></li>
+</ul>
+</section>
 </section>
 <section id="issuance-of-electronic-attestations-of-attributes">
 <h2><span class="section-number">8.2. </span>Issuance of Electronic Attestations of Attributes<a class="headerlink" href="#issuance-of-electronic-attestations-of-attributes" title="Link to this heading">¶</a></h2>
@@ -227,9 +246,22 @@
 <p>If the User encounters incorrect data in an already obtained or in-progress Electronic Attestation of Attributes, the Wallet Provider SHOULD guarantee the User appropriate assistance via their Wallet Instance. For more information, please refer to the <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> section.</p>
 <p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
 <p>If an Authentic Source (or an Electronic Attestation of Attributes Provider, should it coincide with the Authentic Source) intends to implement an Engagement Button to initiate the request process from their Touchpoint, they MUST ensure compliance with the graphical appearance and implementation requirements for the Engagement Button, as outlined in the <a class="reference internal" href="brand-identity.html#it-wallet-system-brand-identity"><span class="std std-ref">IT-Wallet System Brand Identity</span></a> section.</p>
-<section id="layout-of-electronic-attestations">
-<h3><span class="section-number">8.2.1. </span>Layout of Electronic Attestations<a class="headerlink" href="#layout-of-electronic-attestations" title="Link to this heading">¶</a></h3>
-<p>The Electronic Attestations obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, the Electronic Attestations MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the Electronic Attestation that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:</p>
+<section id="focus-on-electronic-attestations-of-attributes">
+<h3><span class="section-number">8.2.1. </span>Focus on Electronic Attestations of Attributes<a class="headerlink" href="#focus-on-electronic-attestations-of-attributes" title="Link to this heading">¶</a></h3>
+<p>The EAAs obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, each EAA MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the EAA that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:</p>
+<ul class="simple">
+<li><p>The EAA MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
+<li><p>The name of the EAA MUST be clearly visible and always displayed in both the Detail View and the Preview View;</p></li>
+<li><p>The EAA, both in the Preview View and the Detailed View, MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. The Preview View MAY also include additional Attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider. The Detailed View MAY provide specific details about the state if invalid (e.g., the reason why the EAA is revoked);</p></li>
+<li><p>The EAA MUST include Action Buttons in the Detail View to enable lifecycle management and allow the User to revoke or to update a EAA at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
+<li><p>The EAA MUST be an interactive element, for the User to access services provided by Relying Parties in digital and proximity contexts (see <span class="xref std std-ref">functionalities:Presentation of Electronic Attestation</span>);</p></li>
+<li><p>The EAA MAY be displayed in a card format in their Preview View, in line with approaches already used by other digital wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a &quot;digital version&quot; in the layout;</p></li>
+<li><p>The EAA MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details;</p></li>
+<li><p>The EAA MUST display a method of assistance (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
+<li><p>The EAA layout in the Preview View MUST be optimized for scalability and usability, especially when multiple EAAs are displayed on the same screen;</p></li>
+<li><p>The EAA representation MUST adhere to a defined set of specifications provided by the Electronic Attestation of Attributes Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions.</p></li>
+</ul>
+<p>The Electronic Attestation of Attributes Provider:</p>
 <ul class="simple">
 <li><p>The Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
 <li><p>The name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View;</p></li>
@@ -275,7 +307,7 @@
 <li><p>The User authorizes the operation using the unlock method previously set;</p></li>
 <li><p>The User receives confirmation of the successful presentation.</p></li>
 </ul>
-<p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management">Error Management</a> section.</p>
+<p>In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
 </section>
 <section id="remote-presentation">
 <h3><span class="section-number">8.3.2. </span>Remote Presentation<a class="headerlink" href="#remote-presentation" title="Link to this heading">¶</a></h3>
@@ -689,9 +721,12 @@
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">8. Functionalities</a><ul>
-<li><a class="reference internal" href="#activation-of-the-wallet-instance">8.1. Activation of the Wallet Instance</a></li>
+<li><a class="reference internal" href="#activation-of-the-wallet-instance">8.1. Activation of the Wallet Instance</a><ul>
+<li><a class="reference internal" href="#focus-on-pid-person-identification-data">8.1.1. Focus on PID – Person Identification Data</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes">8.2. Issuance of Electronic Attestations of Attributes</a><ul>
-<li><a class="reference internal" href="#layout-of-electronic-attestations">8.2.1. Layout of Electronic Attestations</a></li>
+<li><a class="reference internal" href="#focus-on-electronic-attestations-of-attributes">8.2.1. Focus on Electronic Attestations of Attributes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#presentation-of-electronic-attestations">8.3. Presentation of Electronic Attestations</a><ul>
@@ -749,7 +784,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 12/05/2025.
+      Last updated on 19/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
