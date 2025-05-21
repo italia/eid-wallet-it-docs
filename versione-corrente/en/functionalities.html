@@ -210,12 +210,14 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>The PID MUST include Action Buttons to enable lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see <a class="reference internal" href="#management-of-electronic-attestations"><span class="std std-ref">Management of Electronic Attestations</span></a>);</p></li>
 <li><p>The PID MUST be an interactive element, for the User to be authenticated by a Relying Party in a digital context (see <a class="reference internal" href="#authentication"><span class="std std-ref">Authentication</span></a>), to access services in proximity contexts, and to request the issuance of additional EAAs (see <span class="xref std std-ref">functionalities:Issuance of Electronic Attestation of Attributes</span>);</p></li>
 <li><p>The PID MUST display a method of assistance by the PID Provider (see <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a>);</p></li>
+<li><p>The PID MUST be recognizable by the User and distinguishable from other EAAs;</p></li>
+<li><p>The PID MUST be named with the naming convention that will be defined in this document’s future version, avoiding custom or technical terms such as “Person Identification Data” or its acronym “PID”;</p></li>
 <li><p>The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions.</p></li>
 </ul>
 <p>The PID Provider MUST:</p>
 <ul class="simple">
 <li><p>Implement a name/naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions;</p></li>
-<li><p>Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.).</p></li>
+<li><p>Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. color, background image, etc.).</p></li>
 </ul>
 </section>
 </section>
@@ -264,13 +266,8 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </ul>
 <p>The Electronic Attestation of Attributes Provider:</p>
 <ul class="simple">
-<li><p>The Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;</p></li>
-<li><p>The name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View;</p></li>
-<li><p>The Electronic Attestation, both in the Preview View and the Detailed View, MUST display its status if different from valid and MAY display it if valid. The Preview View MAY also include additional attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider;</p></li>
-<li><p>The layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen;</p></li>
-<li><p>The Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a &quot;digital version&quot; in the layout;</p></li>
-<li><p>The Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details;</p></li>
-<li><p>The Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the <a class="reference internal" href="#management-of-electronic-attestations">Management of Electronic Attestations</a> section.</p></li>
+<li><p>MUST define a name/ naming convention to refer to the EAAs issued, to guarantee consistency across all Wallet Solutions; the EAA name MUST be comprehensible and user-friendly avoiding technical terms or acronyms whenever possible;</p></li>
+<li><p>MUST define a clear set of specifications for the EAA to ensure consistent identification and representation of the EAA across different Wallet Solutions, in terms of format, structure, and appearance standards (e.g. color, background image, etc.).</p></li>
 </ul>
 </section>
 </section>
@@ -532,9 +529,8 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p><strong>The method for error management</strong>: opening an assistance request through the Wallet Instance, linking to other detailed channels, and so on. For further details, please refer to the <a class="reference internal" href="#user-assistance"><span class="std std-ref">User Assistance</span></a> section.</p></li>
 </ul>
 <p>Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience.</p>
-</section>
 <section id="activation-of-the-wallet-instance-errors">
-<h2><span class="section-number">9.7. </span>Activation of the Wallet Instance Errors<a class="headerlink" href="#activation-of-the-wallet-instance-errors" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">9.6.1. </span>Activation of the Wallet Instance Errors<a class="headerlink" href="#activation-of-the-wallet-instance-errors" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -562,7 +558,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </table>
 </section>
 <section id="issuance-of-electronic-attestations-of-attributes-errors">
-<h2><span class="section-number">9.8. </span>Issuance of Electronic Attestations of Attributes Errors<a class="headerlink" href="#issuance-of-electronic-attestations-of-attributes-errors" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">9.6.2. </span>Issuance of Electronic Attestations of Attributes Errors<a class="headerlink" href="#issuance-of-electronic-attestations-of-attributes-errors" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -587,7 +583,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </table>
 </section>
 <section id="presentation-of-electronic-attestations-errors">
-<h2><span class="section-number">9.9. </span>Presentation of Electronic Attestations Errors<a class="headerlink" href="#presentation-of-electronic-attestations-errors" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">9.6.3. </span>Presentation of Electronic Attestations Errors<a class="headerlink" href="#presentation-of-electronic-attestations-errors" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -609,7 +605,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </table>
 </section>
 <section id="management-of-electronic-attestations-errors">
-<h2><span class="section-number">9.10. </span>Management of Electronic Attestations Errors<a class="headerlink" href="#management-of-electronic-attestations-errors" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">9.6.4. </span>Management of Electronic Attestations Errors<a class="headerlink" href="#management-of-electronic-attestations-errors" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -631,7 +627,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </table>
 </section>
 <section id="deactivation-of-the-wallet-instance-errors">
-<h2><span class="section-number">9.11. </span>Deactivation of the Wallet Instance Errors<a class="headerlink" href="#deactivation-of-the-wallet-instance-errors" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">9.6.5. </span>Deactivation of the Wallet Instance Errors<a class="headerlink" href="#deactivation-of-the-wallet-instance-errors" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -650,8 +646,9 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </table>
 <p>In addition to error management, all Primary Actors MUST also deal with negative feedback resulting from the User's decision to abandon or cancel a flow (e.g. Activation, Acquisition, Presentation, etc.). In such cases, feedback MUST be provided to confirm the User's choice, and it MAY include a Call to Action to continue.</p>
 </section>
+</section>
 <section id="user-assistance">
-<h2><span class="section-number">9.12. </span>User Assistance<a class="headerlink" href="#user-assistance" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">9.7. </span>User Assistance<a class="headerlink" href="#user-assistance" title="Link to this heading">¶</a></h2>
 <p>For effective error management and the resolution of any other issues, Primary Actors MUST ensure adequate support to the User by structuring a simple and effective assistance model based on the following principles:</p>
 <ul class="simple">
 <li><p><strong>Self-resolution</strong>: to allow the User to consult the frequently asked questions (FAQs) about the content and functionalities of the Wallet Instance, in order to resolve any error cases or issues independently.</p></li>
@@ -678,7 +675,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </ul>
 </section>
 <section id="user-feedback">
-<h2><span class="section-number">9.13. </span>User Feedback<a class="headerlink" href="#user-feedback" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">9.8. </span>User Feedback<a class="headerlink" href="#user-feedback" title="Link to this heading">¶</a></h2>
 <p>User feedback collection allows for monitoring the User Experience, identifying potential areas for optimization, and continuously measuring the effectiveness of the service. Each Wallet Provider SHOULD establish a structured feedback collection system to monitor and improve the User Experience.</p>
 <p>This feedback system MAY be fed by two different types of feedback collection:</p>
 <ul class="simple">
@@ -748,14 +745,16 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </ul>
 </li>
 <li><a class="reference internal" href="#deactivation-of-the-wallet-instance">9.5. Deactivation of the Wallet Instance</a></li>
-<li><a class="reference internal" href="#error-management">9.6. Error Management</a></li>
-<li><a class="reference internal" href="#activation-of-the-wallet-instance-errors">9.7. Activation of the Wallet Instance Errors</a></li>
-<li><a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes-errors">9.8. Issuance of Electronic Attestations of Attributes Errors</a></li>
-<li><a class="reference internal" href="#presentation-of-electronic-attestations-errors">9.9. Presentation of Electronic Attestations Errors</a></li>
-<li><a class="reference internal" href="#management-of-electronic-attestations-errors">9.10. Management of Electronic Attestations Errors</a></li>
-<li><a class="reference internal" href="#deactivation-of-the-wallet-instance-errors">9.11. Deactivation of the Wallet Instance Errors</a></li>
-<li><a class="reference internal" href="#user-assistance">9.12. User Assistance</a></li>
-<li><a class="reference internal" href="#user-feedback">9.13. User Feedback</a></li>
+<li><a class="reference internal" href="#error-management">9.6. Error Management</a><ul>
+<li><a class="reference internal" href="#activation-of-the-wallet-instance-errors">9.6.1. Activation of the Wallet Instance Errors</a></li>
+<li><a class="reference internal" href="#issuance-of-electronic-attestations-of-attributes-errors">9.6.2. Issuance of Electronic Attestations of Attributes Errors</a></li>
+<li><a class="reference internal" href="#presentation-of-electronic-attestations-errors">9.6.3. Presentation of Electronic Attestations Errors</a></li>
+<li><a class="reference internal" href="#management-of-electronic-attestations-errors">9.6.4. Management of Electronic Attestations Errors</a></li>
+<li><a class="reference internal" href="#deactivation-of-the-wallet-instance-errors">9.6.5. Deactivation of the Wallet Instance Errors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-assistance">9.7. User Assistance</a></li>
+<li><a class="reference internal" href="#user-feedback">9.8. User Feedback</a></li>
 </ul>
 </li>
 </ul>

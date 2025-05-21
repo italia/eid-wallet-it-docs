@@ -57,14 +57,16 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 - The PID MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. Specific details about the PID status, if invalid, MAY be provided (e.g., the reason why the PID is revoked); 
 - The PID MUST include Action Buttons to enable lifecycle management and allow the User to revoke the PID, thus the entire Wallet Instance with all EAAs issued, or to update the PID at any time (see :ref:`functionalities:Management of Electronic Attestations`); 
 - The PID MUST be an interactive element, for the User to be authenticated by a Relying Party in a digital context (see :ref:`functionalities:Authentication`), to access services in proximity contexts, and to request the issuance of additional EAAs (see :ref:`functionalities:Issuance of Electronic Attestation of Attributes`);  
-- The PID MUST display a method of assistance by the PID Provider (see :ref:`functionalities:User Assistance`); 
+- The PID MUST display a method of assistance by the PID Provider (see :ref:`functionalities:User Assistance`);
+- The PID MUST be recognizable by the User and distinguishable from other EAAs; 
+- The PID MUST be named with the naming convention that will be defined in this document’s future version, avoiding custom or technical terms such as “Person Identification Data” or its acronym “PID”; 
 - The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
 
 
 The PID Provider MUST: 
 
 - Implement a name/naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions;
-- Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. name, color, background image, etc.). 
+- Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. color, background image, etc.). 
 
 
 Issuance of Electronic Attestations of Attributes
@@ -122,13 +124,8 @@ The EAAs obtained within the Wallet Instance SHOULD be displayed in a list withi
 
 The Electronic Attestation of Attributes Provider: 
 
-- The Electronic Attestation MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
-- The name of the Electronic Attestation MUST be clearly visible and always displayed in both the Detail View and the Preview View;
-- The Electronic Attestation, both in the Preview View and the Detailed View, MUST display its status if different from valid and MAY display it if valid. The Preview View MAY also include additional attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider;
-- The layout of elements in the Preview View of the Electronic Attestation MUST be optimized for scalability and usability, especially when multiple Electronic Attestations are displayed on the same screen;
-- The Electronic Attestation MAY adopt a card format, in line with approaches already used by other Wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout;
-- The Electronic Attestation MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details;
-- The Electronic Attestation MUST include Action Buttons in the Detail View to allow for management, as outlined in the `Management of Electronic Attestations`_ section.
+- MUST define a name/ naming convention to refer to the EAAs issued, to guarantee consistency across all Wallet Solutions; the EAA name MUST be comprehensible and user-friendly avoiding technical terms or acronyms whenever possible; 
+- MUST define a clear set of specifications for the EAA to ensure consistent identification and representation of the EAA across different Wallet Solutions, in terms of format, structure, and appearance standards (e.g. color, background image, etc.). 
 
 
 Presentation of Electronic Attestations
@@ -421,7 +418,7 @@ Below are the requirements and main best practices for error management, specifi
 Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience.
 
 Activation of the Wallet Instance Errors
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -439,7 +436,7 @@ Activation of the Wallet Instance Errors
     - National Identity Provider
 
 Issuance of Electronic Attestations of Attributes Errors
---------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -455,7 +452,7 @@ Issuance of Electronic Attestations of Attributes Errors
     - Authentic Source
 
 Presentation of Electronic Attestations Errors
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -469,7 +466,7 @@ Presentation of Electronic Attestations Errors
     - Wallet Provider, Relying Party
 
 Management of Electronic Attestations Errors
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -483,7 +480,7 @@ Management of Electronic Attestations Errors
     - PID Provider
 
 Deactivation of the Wallet Instance Errors
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
