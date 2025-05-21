@@ -327,7 +327,7 @@ A Wallet Instance MUST check periodically the validity status of the Digital Cre
 
 **Step 1 (Status Assertion Request)**: The Wallet Instance sends the Status Assertion Request to the Credential Issuer, where:
 
-  - The request MUST contain the base64url encoded hash value of the Digital Credential, for which the Status Assertion is requested, and enveloped in a signed Status Assertion Request object.
+  - The request MUST contain the base64url encoded hash value of the Digital Credential's Issuer signed part, such as the Issuer Signed JWT using :ref:`credential-data-model:SD-JWT-VC Credential Format`, or the Mobile Security Object using :ref:`credential-data-model:mdoc-CBOR Credential Format`, for which the Status Assertion is requested, and enveloped in a signed Status Assertion Request object.
   - The Status Assertion Request object MUST be signed with the private key corresponding to the confirmation claim assigned by the Issuer and contained within the Digital Credential.
 
 The Status Assertion HTTP request can be sent to a single Credential Issuer regarding multiple Digital Credentials, and MUST contain a JSON object with the member `status_assertion_requests` as described in Section :ref:`credential-revocation:HTTP Status Assertion Request`.
@@ -341,7 +341,7 @@ The Credential Issuer that receives the Status Assertion Request object MUST:
   - creates the corresponding Status Assertion.
 
 
-**Step 2 (Status Assertion Response)**: The *status_assertion_responses* MUST be a JSON Array containing the *StatusAssertionResponse* and/or the *StatusAssertionErrors* JSON Objects related to the request made by the Wallet Instance.
+**Step 2 (Status Assertion Response)**: The *status_assertion_responses* MUST be an array of strings containing the *StatusAssertionResponse* and/or the *StatusAssertionErrors* JSON Objects related to the request made by the Wallet Instance.
 
 The Wallet Instance MUST:
 
@@ -526,6 +526,12 @@ The Status Assertion MUST contain the parameters and claims defined below
   * - **typ**
     - It MUST be set to `status-assertion+jwt`.
     - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_.
+  * - **kid**
+    - Unique identifier of the Issuer JWK. It is REQUIRED when ``x5c`` is not used.
+    - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
+  * - **x5c**
+    -  X.509 certificate chain about the Issuer. It is REQUIRED when ``kid`` is not used.
+    - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
 
 .. list-table::
   :class: longtable
@@ -603,8 +609,47 @@ Below a non-normative example of a Status Assertion Response object in JWT forma
 
 The Status Assertion Error object MUST contain the following claims:
 
-  - *error*. The error code, as registered in the table below;
-  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+.. list-table::
+  :class: longtable
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Header**
+    - **Description**
+    - **Reference**
+  * - **alg**
+    - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms in Section :ref:`Cryptographic Algorithms <algorithms:Cryptographic Algorithms>` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
+    - Section 4.1.1 of [:rfc:`7516`].
+  * - **typ**
+    - It MUST be set to `status-assertion+jwt`.
+    - Section 4.1.11 of [:rfc:`7516`].
+
+.. list-table::
+  :class: longtable
+  :widths: 20 60 20
+  :header-rows: 1
+
+  * - **Payload**
+    - **Description**
+    - **Reference**
+  * - **iss**
+    - It MUST be set to the identifier of the Credential Issuer.
+    - :rfc:`9126` and :rfc:`7519`.
+  * - **jti**
+    - Unique identifier for the JWT.
+    - :rfc:`9126` and :rfc:`7519`.
+  * - **credential_hash**
+    - Hash value of the Credential the Status Assertion Error is bound to, it MUST match the one contained in the Status Assertion Request.
+    - `OAUTH-STATUS-ASSERTION`_.
+  * - **credential_hash_alg**
+    - The Algorithm used for hashing the Credential to which the Status Assertion Error is bound, it MUST match the one contained in the Status Assertion Request. The value SHOULD be set to ``sha-256``.
+    - `OAUTH-STATUS-ASSERTION`_.
+  * - **error**
+    - The error code, as registered in the table below.
+    - Section 4.1.7 of :rfc:`7519`.
+  * - **error_description**
+    - Text in human-readable form providing further details to clarify the nature of the error encountered.
+    - Section 4.1.7 of :rfc:`7519`.
 
 Errors are meant to provide additional information about the failure so that the User can be informed and take the appropriate action.
 The `error` claim for the Status Assertion Error object MUST be set with one of the values defined in the table below, in addition to the values specified in :rfc:`6749#section-5.2`:
@@ -619,11 +664,11 @@ The `error` claim for the Status Assertion Error object MUST be set with one of 
     * - ``invalid_request``
       - The request is not valid due to the lack or incorrectness of one or more parameters. (:rfc:`6749#section-5.2`).
     * - ``invalid_request_signature``
-      - The Revocation Assertion Request signature validation has failed. This error type is used when the proof of possession of the Digital Credential is found not valid within the Revocation Assertion Request.
+      - The Revocation Assertion Request signature validation has failed. This error type is used when the proof of possession of the Digital Credential is found not valid within the Revocation Assertion Request. (Section 9.2 of `OAUTH-STATUS-ASSERTION`_).
     * - ``credential_not_found``
-      - The `credential_hash` value provided in the Revocation Assertion Request doesn't match with any active Digital Credential.
+      - The `credential_hash` value provided in the Revocation Assertion Request doesn't match with any active Digital Credential. (Section 9.2 of `OAUTH-STATUS-ASSERTION`_).
     * - ``unsupported_hash_alg``
-      - The hash algorithm set in `credential_hash_alg` is not supported.
+      - The hash algorithm set in `credential_hash_alg` is not supported. (Section 9.2 of `OAUTH-STATUS-ASSERTION`_).
 
 Below a non-normative example of a Revocation Assertion Error object in JWT format, with the headers and payload represented in JSON and without applying the signature.
 

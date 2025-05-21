@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Documentation</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>Project Documentation</h1>
+
+    <div class="section">
+        <h2>Current Version</h2>
+        {% if structure['versione-corrente']['exists'] %}
+            {% set languages = structure['versione-corrente']['languages'] %}
+            {% if languages['it'] or languages['en'] %}
+                <div class="item">
+                    {% if languages['it'] %}
+                        <a class="language-link" href="versione-corrente/it/index.html">Italiano</a>
+                    {% endif %}
+                    {% if languages['en'] %}
+                        <a class="language-link" href="versione-corrente/en/index.html">English</a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <p class="no-item">No current version available</p>
+            {% endif %}
+        {% else %}
+            <p class="no-item">No current version available</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2>Releases</h2>
+        {% if structure['releases'] %}
+            {% for release in structure['releases'] %}
+                {% set languages = structure['releases'][release]['languages'] %}
+                <div class="item">
+                    <div class="item-title">{{ release }}</div>
+                    {% if languages['it'] %}
+                        <a class="language-link" href="releases/{{ release }}/it/index.html">Italiano</a>
+                    {% endif %}
+                    {% if languages['en'] %}
+                        <a class="language-link" href="releases/{{ release }}/en/index.html">English</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-item">No releases available</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2>Pull Requests</h2>
+        {% if structure['prs'] %}
+            {% for pr in structure['prs'] %}
+                {% set languages = structure['prs'][pr]['languages'] %}
+                {% set title = structure['prs'][pr]['title'] %}
+                {% set pr_num = structure['prs'][pr]['number'] %}
+                {% set pr_link = "https://github.com/" + repo + "/pull/" + pr_num %}
+                <div class="item">
+                    <div class="item-title">{{ pr }} - <a class="pr-link" href="{{ pr_link }}" target="_blank">{{ title }}</a></div>
+                    {% if languages['it'] %}
+                        <a class="language-link" href="prs/{{ pr }}/it/index.html">Italiano</a>
+                    {% endif %}
+                    {% if languages['en'] %}
+                        <a class="language-link" href="prs/{{ pr }}/en/index.html">English</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-item">No pull requests available</p>
+        {% endif %}
+    </div>
+
+    <footer>
+        Generated on {{ current_date }} by automatic directory scan
+    </footer>
+</body>
+</html>
