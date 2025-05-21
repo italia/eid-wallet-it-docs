@@ -48,6 +48,7 @@ In caso di errori nell’utilizzo della Istanza IT-Wallet, il Fornitore di Soluz
 
 Focus sul PID – Dati di Identificazione della Persona
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Il PID (Person Identification Data) si riferisce a un set minimo verificato di informazioni sull'identità dell'Utente (vedere :ref:`credential-data-model:Digital Credential Data Model`) emesso come risultato del processo di attivazione e reso disponibile nell'Istanza Wallet.
 Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PID a cui ogni Fornitore Wallet DEVE aderire, al fine di fornire un'esperienza di consultazione e utilizzo coerente e accessibile:
 
@@ -57,12 +58,14 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 - Il PID DEVE includere Pulsanti di Ingaggio per consentire la gestione del ciclo di vita e permettere all'Utente di revocare il PID, quindi l'intera Istanza Wallet con tutte le EAA emesse, o di aggiornare il PID in qualsiasi momento (vedere :ref:`functionalities:Gestione degli Attestati Elettronici`);
 - Il PID DEVE essere un elemento interattivo, affinché l'Utente possa essere autenticato da un Relying Party in un contesto digitale (vedere :ref:`functionalities:Autenticazione`), per accedere ai servizi in contesti di prossimità e per richiedere l'emissione di ulteriori EAA (vedere :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi`);
 - Il PID DEVE visualizzare un metodo di assistenza da parte del Fornitore PID (vedere :ref:`functionalities:Assistenza Utente`);
+- Il PID DEVE essere riconoscibile dall'Utente e distinguibile da altri EAA;
+- Il PID DEVE essere denominato con la convenzione di denominazione che sarà definita nella versione futura di questo documento, evitando termini personalizzati o tecnici come "Person Identification Data" o il suo acronimo "PID";
 - La rappresentazione del PID DEVE aderire a un insieme definito di specifiche fornite dal Fornitore PID per garantire riconoscibilità, coerenza e omogeneità tra diverse Soluzioni Wallet.
 
 Il Fornitore PID DEVE:
 
 - Implementare un nome/convenzione di denominazione per riferirsi al PID, per garantire coerenza tra tutte le Soluzioni Wallet;
-- Definire un insieme chiaro di specifiche per il PID per garantire l'identificazione e la rappresentazione coerenti del PID tra diverse Soluzioni Wallet, in termini di format, struttura e standard di aspetto (ad esempio nome, colore, immagine di sfondo, ecc.).
+- Definire un insieme chiaro di specifiche per il PID per garantire l'identificazione e la rappresentazione coerenti del PID tra diverse Soluzioni Wallet, in termini di format, struttura e standard di aspetto (ad esempio colore, immagine di sfondo, ecc.).
 
 Ottenimento degli Attestati Elettronici di Attributi 
 ----------------------------------------------------
@@ -101,6 +104,7 @@ Qualora un Titolare di Fonte Autentica (o un Fornitore di Attestati Elettronici 
 
 Focus sulle Attestazioni Elettroniche di Attributi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Le Attestazioni Elettroniche di Attributi (EAA) ottenute all'interno dell'Istanza Wallet DOVREBBERO essere visualizzate in un elenco all'interno di una Vista Anteprima. In questo caso, ogni EAA DEVE garantire un elevato livello di riconoscibilità e accessibilità [REF_ACCESSIBILITY] delle informazioni contenute. Di seguito sono riportati i requisiti per la visualizzazione dell'EAA a cui ogni Fornitore Wallet DEVE aderire per fornire un'esperienza di consultazione e utilizzo coerente e accessibile:
 
 - L'EAA DEVE essere visualizzata correttamente su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;
@@ -116,13 +120,8 @@ Le Attestazioni Elettroniche di Attributi (EAA) ottenute all'interno dell'Istanz
 
 Il Fornitore di Attestazioni Elettroniche di Attributi:
 
-- L’Attestato Elettronico DEVE essere visualizzato correttamente su qualsiasi dispositivo, garantendo un'esperienza uniforme su schermi di diverse dimensioni; 
-- Il nome dell’Attestato Elettronico DEVE essere chiaramente indicato e sempre visibile sia nella Vista di Dettaglio che nella Vista di Anteprima; 
-- L’Attestato Elettronico, sia nella Vista di Anteprima che nella Vista di Dettaglio, DEVE mostrare lo stato se diverso da valido e PUÒ mostrarlo se valido. La Vista di Anteprima PUÒ includere alcuni Attributi per migliorarne l’esperienza di utilizzo e di gestione; PUÒ, ad esempio, includere il nome o il logo del Fornitore di Attestati Elettronici di Attributi o del Fornitore di Dati di Identificazione Personale; 
-- Il layout degli elementi nella Vista di Anteprima dell’Attestato Elettronico DEVE essere ottimizzato considerando il principio di scalabilità e usabilità, soprattutto in presenza di più Attestati Elettronici nella stessa schermata; 
-- L’Attestato Elettronico PUÒ assumere un formato a card, in linea con gli approcci già adottati da altri Wallet sul mercato, per richiamare l'aspetto di un eventuale documento fisico corrispondente. Quando possibile, PUÒ essere dichiarata la natura digitale del documento, ad esempio riportando nel layout la dicitura “versione digitale”; 
-- L’Attestato Elettronico DEVE includere nella Vista di Dettaglio gli stessi dati mostrati nella Vista di Anteprima e PUÒ includerne altri; 
-- L’Attestato Elettronico DEVE prevedere nella Vista di Dettaglio la presenza di Pulsanti di Azione per garantirne la gestione, come descritto nella sezione :ref:`functionalities:Gestione degli Attestati Elettronici`. 
+- DEVE definire un nome/convenzione di denominazione per riferirsi agli EAA emessi, per garantire coerenza tra tutte le Soluzioni Wallet; il nome dell'EAA DEVE essere comprensibile e user-friendly evitando termini tecnici o acronimi quando possibile;
+- DEVE definire un insieme chiaro di specifiche per l'EAA per garantire un'identificazione e rappresentazione coerente dell'EAA tra diverse Soluzioni Wallet, in termini di formato, struttura e standard di aspetto (ad es. colore, immagine di sfondo, ecc.).
 
 Presentazione degli Attestati Elettronici 
 -----------------------------------------
@@ -407,7 +406,7 @@ Di seguito vengono presentati i requisiti e le principali buone pratiche di gest
 Di seguito, una lista non esaustiva delle principali casistiche di errore, con riferimento all’attore responsabile della loro gestione, per ciascuna fase dell’Esperienza Utente.  
 
 Errori di Attivazione dell’Istanza IT-Wallet 
---------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
 .. list-table::
    :widths: 80 20
@@ -425,7 +424,7 @@ Errori di Attivazione dell’Istanza IT-Wallet
      - National Identity Provider 
 
 Errori di ottenimento degli Attestati Elettronici di Attributi
---------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :widths: 80 20
@@ -441,7 +440,7 @@ Errori di ottenimento degli Attestati Elettronici di Attributi
      - Titolare di Fonte Autentica  
 
 Errori di presentazione degli Attestati Elettronici
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :widths: 80 20
@@ -455,7 +454,7 @@ Errori di presentazione degli Attestati Elettronici
      - Fornitore di Soluzione IT-Wallet, Verificatore di Attestati Elettronici 
 
 Errori di gestione degli Attestati Elettronici
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :widths: 80 20
@@ -469,7 +468,7 @@ Errori di gestione degli Attestati Elettronici
      - Fornitore di Dati di Identificazione Personale 
 
 Errori di disattivazione dell’Istanza IT-Wallet
------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :widths: 80 20

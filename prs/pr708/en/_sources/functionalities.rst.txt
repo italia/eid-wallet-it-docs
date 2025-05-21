@@ -62,12 +62,10 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 - The PID MUST be named with the naming convention that will be defined in this document’s future version, avoiding custom or technical terms such as “Person Identification Data” or its acronym “PID”; 
 - The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
 
-
 The PID Provider MUST: 
 
 - Implement a name/naming convention to refer to the PID, to guarantee consistency across all Wallet Solutions;
 - Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. color, background image, etc.). 
-
 
 Issuance of Electronic Attestations of Attributes
 -------------------------------------------------
@@ -104,7 +102,6 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 
 If an Authentic Source (or an Electronic Attestation of Attributes Provider, should it coincide with the Authentic Source) intends to implement an Engagement Button to initiate the request process from their Touchpoint, they MUST ensure compliance with the graphical appearance and implementation requirements for the Engagement Button, as outlined in the :ref:`brand-identity:IT-Wallet System Brand Identity` section.
 
-
 Focus on Electronic Attestations of Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -120,7 +117,6 @@ The EAAs obtained within the Wallet Instance SHOULD be displayed in a list withi
 - The EAA MUST display a method of assistance (see :ref:`functionalities:User Assistance`); 
 - The EAA layout in the Preview View MUST be optimized for scalability and usability, especially when multiple EAAs are displayed on the same screen; 
 - The EAA representation MUST adhere to a defined set of specifications provided by the Electronic Attestation of Attributes Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
-
 
 The Electronic Attestation of Attributes Provider: 
 

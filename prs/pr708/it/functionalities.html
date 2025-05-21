@@ -181,12 +181,14 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <li><p>Il PID DEVE includere Pulsanti di Ingaggio per consentire la gestione del ciclo di vita e permettere all'Utente di revocare il PID, quindi l'intera Istanza Wallet con tutte le EAA emesse, o di aggiornare il PID in qualsiasi momento (vedere <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>);</p></li>
 <li><p>Il PID DEVE essere un elemento interattivo, affinché l'Utente possa essere autenticato da un Relying Party in un contesto digitale (vedere <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>), per accedere ai servizi in contesti di prossimità e per richiedere l'emissione di ulteriori EAA (vedere <a class="reference internal" href="#ottenimento-degli-attestati-elettronici-di-attributi"><span class="std std-ref">Ottenimento degli Attestati Elettronici di Attributi</span></a>);</p></li>
 <li><p>Il PID DEVE visualizzare un metodo di assistenza da parte del Fornitore PID (vedere <a class="reference internal" href="#assistenza-utente"><span class="std std-ref">Assistenza Utente</span></a>);</p></li>
+<li><p>Il PID DEVE essere riconoscibile dall'Utente e distinguibile da altri EAA;</p></li>
+<li><p>Il PID DEVE essere denominato con la convenzione di denominazione che sarà definita nella versione futura di questo documento, evitando termini personalizzati o tecnici come &quot;Person Identification Data&quot; o il suo acronimo &quot;PID&quot;;</p></li>
 <li><p>La rappresentazione del PID DEVE aderire a un insieme definito di specifiche fornite dal Fornitore PID per garantire riconoscibilità, coerenza e omogeneità tra diverse Soluzioni Wallet.</p></li>
 </ul>
 <p>Il Fornitore PID DEVE:</p>
 <ul class="simple">
 <li><p>Implementare un nome/convenzione di denominazione per riferirsi al PID, per garantire coerenza tra tutte le Soluzioni Wallet;</p></li>
-<li><p>Definire un insieme chiaro di specifiche per il PID per garantire l'identificazione e la rappresentazione coerenti del PID tra diverse Soluzioni Wallet, in termini di format, struttura e standard di aspetto (ad esempio nome, colore, immagine di sfondo, ecc.).</p></li>
+<li><p>Definire un insieme chiaro di specifiche per il PID per garantire l'identificazione e la rappresentazione coerenti del PID tra diverse Soluzioni Wallet, in termini di format, struttura e standard di aspetto (ad esempio colore, immagine di sfondo, ecc.).</p></li>
 </ul>
 </section>
 </section>
@@ -235,13 +237,8 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 <p>Il Fornitore di Attestazioni Elettroniche di Attributi:</p>
 <ul class="simple">
-<li><p>L’Attestato Elettronico DEVE essere visualizzato correttamente su qualsiasi dispositivo, garantendo un'esperienza uniforme su schermi di diverse dimensioni;</p></li>
-<li><p>Il nome dell’Attestato Elettronico DEVE essere chiaramente indicato e sempre visibile sia nella Vista di Dettaglio che nella Vista di Anteprima;</p></li>
-<li><p>L’Attestato Elettronico, sia nella Vista di Anteprima che nella Vista di Dettaglio, DEVE mostrare lo stato se diverso da valido e PUÒ mostrarlo se valido. La Vista di Anteprima PUÒ includere alcuni Attributi per migliorarne l’esperienza di utilizzo e di gestione; PUÒ, ad esempio, includere il nome o il logo del Fornitore di Attestati Elettronici di Attributi o del Fornitore di Dati di Identificazione Personale;</p></li>
-<li><p>Il layout degli elementi nella Vista di Anteprima dell’Attestato Elettronico DEVE essere ottimizzato considerando il principio di scalabilità e usabilità, soprattutto in presenza di più Attestati Elettronici nella stessa schermata;</p></li>
-<li><p>L’Attestato Elettronico PUÒ assumere un formato a card, in linea con gli approcci già adottati da altri Wallet sul mercato, per richiamare l'aspetto di un eventuale documento fisico corrispondente. Quando possibile, PUÒ essere dichiarata la natura digitale del documento, ad esempio riportando nel layout la dicitura “versione digitale”;</p></li>
-<li><p>L’Attestato Elettronico DEVE includere nella Vista di Dettaglio gli stessi dati mostrati nella Vista di Anteprima e PUÒ includerne altri;</p></li>
-<li><p>L’Attestato Elettronico DEVE prevedere nella Vista di Dettaglio la presenza di Pulsanti di Azione per garantirne la gestione, come descritto nella sezione <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>.</p></li>
+<li><p>DEVE definire un nome/convenzione di denominazione per riferirsi agli EAA emessi, per garantire coerenza tra tutte le Soluzioni Wallet; il nome dell'EAA DEVE essere comprensibile e user-friendly evitando termini tecnici o acronimi quando possibile;</p></li>
+<li><p>DEVE definire un insieme chiaro di specifiche per l'EAA per garantire un'identificazione e rappresentazione coerente dell'EAA tra diverse Soluzioni Wallet, in termini di formato, struttura e standard di aspetto (ad es. colore, immagine di sfondo, ecc.).</p></li>
 </ul>
 </section>
 </section>
@@ -503,9 +500,8 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <li><p><strong>le modalità di presa in carico dell’errore</strong>: apertura di una richiesta di assistenza tramite l’Istanza IT-Wallet, rimando ad altri canali di approfondimento, etc. Per approfondimenti si rimanda alla sezione Assistenza Utente.</p></li>
 </ul>
 <p>Di seguito, una lista non esaustiva delle principali casistiche di errore, con riferimento all’attore responsabile della loro gestione, per ciascuna fase dell’Esperienza Utente.</p>
-</section>
 <section id="errori-di-attivazione-dellistanza-it-wallet">
-<h2><span class="section-number">3.7. </span>Errori di Attivazione dell’Istanza IT-Wallet<a class="headerlink" href="#errori-di-attivazione-dellistanza-it-wallet" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">3.6.1. </span>Errori di Attivazione dell’Istanza IT-Wallet<a class="headerlink" href="#errori-di-attivazione-dellistanza-it-wallet" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -533,7 +529,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-ottenimento-degli-attestati-elettronici-di-attributi">
-<h2><span class="section-number">3.8. </span>Errori di ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">3.6.2. </span>Errori di ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -558,7 +554,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-presentazione-degli-attestati-elettronici">
-<h2><span class="section-number">3.9. </span>Errori di presentazione degli Attestati Elettronici<a class="headerlink" href="#errori-di-presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">3.6.3. </span>Errori di presentazione degli Attestati Elettronici<a class="headerlink" href="#errori-di-presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -580,7 +576,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-gestione-degli-attestati-elettronici">
-<h2><span class="section-number">3.10. </span>Errori di gestione degli Attestati Elettronici<a class="headerlink" href="#errori-di-gestione-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">3.6.4. </span>Errori di gestione degli Attestati Elettronici<a class="headerlink" href="#errori-di-gestione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -602,7 +598,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-disattivazione-dellistanza-it-wallet">
-<h2><span class="section-number">3.11. </span>Errori di disattivazione dell’Istanza IT-Wallet<a class="headerlink" href="#errori-di-disattivazione-dellistanza-it-wallet" title="Link to this heading">¶</a></h2>
+<h3><span class="section-number">3.6.5. </span>Errori di disattivazione dell’Istanza IT-Wallet<a class="headerlink" href="#errori-di-disattivazione-dellistanza-it-wallet" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -621,8 +617,9 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 <p>Oltre alla gestione degli errori, DEVE essere garantita da parte di tutti gli Attori Primari anche la gestione di esiti negativi dovuti alla volontà dell’Utente di abbandonare o annullare un flusso (es. attivazione, ottenimento, presentazione, etc.). In questi casi DEVE essere previsto un feedback che dia conferma all’Utente della scelta intrapresa e che PUÒ includere una Call to Action per proseguire.</p>
 </section>
+</section>
 <section id="assistenza-utente">
-<h2><span class="section-number">3.12. </span>Assistenza Utente<a class="headerlink" href="#assistenza-utente" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.7. </span>Assistenza Utente<a class="headerlink" href="#assistenza-utente" title="Link to this heading">¶</a></h2>
 <p>Per un’efficace gestione degli errori e di eventuali altre problematiche, gli Attori Primari DEVONO garantire un’adeguata assistenza all’Utente, strutturando un modello di assistenza semplice ed efficace basato sui seguenti principi:</p>
 <ul class="simple">
 <li><p><strong>Risoluzione autonoma</strong>: permettere all’Utente di consultare domande frequenti (FAQ) sui contenuti e sulle funzionalità dell’Istanza IT-Wallet, al fine di risolvere eventuali casistiche di errore o problematiche in maniera autonoma.</p></li>
@@ -649,7 +646,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 </section>
 <section id="feedback-utente">
-<h2><span class="section-number">3.13. </span>Feedback Utente<a class="headerlink" href="#feedback-utente" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.8. </span>Feedback Utente<a class="headerlink" href="#feedback-utente" title="Link to this heading">¶</a></h2>
 <p>La raccolta dei feedback degli Utenti permette di monitorare l’Esperienza Utente, identificare le aree per una possibile ottimizzazione e misurare l’efficacia del servizio in maniera continuativa. Ogni Fornitore di Soluzione IT-Wallet DOVREBBE predisporre un sistema strutturato di raccolta feedback, per monitorare e migliorare l’Esperienza Utente.</p>
 <p>Tale sistema di feedback POTREBBE essere alimentato da due diverse tipologie di raccolta feedback:</p>
 <ul class="simple">
@@ -719,14 +716,16 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 </li>
 <li><a class="reference internal" href="#disattivazione-dellistanza-it-wallet">3.5. Disattivazione dell’Istanza IT-Wallet</a></li>
-<li><a class="reference internal" href="#gestione-degli-errori">3.6. Gestione degli errori</a></li>
-<li><a class="reference internal" href="#errori-di-attivazione-dellistanza-it-wallet">3.7. Errori di Attivazione dell’Istanza IT-Wallet</a></li>
-<li><a class="reference internal" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi">3.8. Errori di ottenimento degli Attestati Elettronici di Attributi</a></li>
-<li><a class="reference internal" href="#errori-di-presentazione-degli-attestati-elettronici">3.9. Errori di presentazione degli Attestati Elettronici</a></li>
-<li><a class="reference internal" href="#errori-di-gestione-degli-attestati-elettronici">3.10. Errori di gestione degli Attestati Elettronici</a></li>
-<li><a class="reference internal" href="#errori-di-disattivazione-dellistanza-it-wallet">3.11. Errori di disattivazione dell’Istanza IT-Wallet</a></li>
-<li><a class="reference internal" href="#assistenza-utente">3.12. Assistenza Utente</a></li>
-<li><a class="reference internal" href="#feedback-utente">3.13. Feedback Utente</a></li>
+<li><a class="reference internal" href="#gestione-degli-errori">3.6. Gestione degli errori</a><ul>
+<li><a class="reference internal" href="#errori-di-attivazione-dellistanza-it-wallet">3.6.1. Errori di Attivazione dell’Istanza IT-Wallet</a></li>
+<li><a class="reference internal" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi">3.6.2. Errori di ottenimento degli Attestati Elettronici di Attributi</a></li>
+<li><a class="reference internal" href="#errori-di-presentazione-degli-attestati-elettronici">3.6.3. Errori di presentazione degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#errori-di-gestione-degli-attestati-elettronici">3.6.4. Errori di gestione degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#errori-di-disattivazione-dellistanza-it-wallet">3.6.5. Errori di disattivazione dell’Istanza IT-Wallet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#assistenza-utente">3.7. Assistenza Utente</a></li>
+<li><a class="reference internal" href="#feedback-utente">3.8. Feedback Utente</a></li>
 </ul>
 </li>
 </ul>
