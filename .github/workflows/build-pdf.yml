@@ -1,0 +1,135 @@
+name: pdf-build
+
+on:
+  release:
+    types:
+      - published
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    env:
+      SETTINGS_FILE_NAME: "eid-wallet-it-docs"
+    steps:
+      # Check out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          architecture: "x64"
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Install LaTeX and dependencies
+        run: |
+          sudo apt-get update
+          # Common pkg
+          sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended 
+          # languages pkg
+          sudo apt-get install -y texlive-lang-italian texlive-lang-english
+          # graphix nd images pkg
+          sudo apt-get install -y texlive-pictures texlive-font-utils graphviz
+          # utils for imgs (svg, pdf, ..)
+          sudo apt-get install -y ghostscript poppler-utils imagemagick netpbm
+          # Core pkg
+          sudo apt-get install -y texlive-base texlive-binaries
+          # LuaLaTeX engine
+          sudo apt-get install -y texlive-luatex
+          # Additional pkg (fonts, tables, formatting, etc.)
+          sudo apt-get install -y texlive-fonts-extra texlive-science texlive-publishers texlive-formats-extra texlive-latex-extra
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install -r requirements-dev.txt
+
+      # Append appropriate tags to document title based on build context
+      - name: Append tags to document title
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            TAG="${{ github.event.release.tag_name }}"
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/it/conf.py
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Release '"${TAG}"'"/' docs/en/conf.py
+            echo "Applied release tag '${TAG}' to document titles"
+          else
+            # This is for workflow_dispatch, we use editor's copy designation
+            echo "Using default title for manual build"
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Versione Corrente"/' docs/it/conf.py
+            sed -i 's/\(settings_project_name = ".*\)"/\1 - Editor'"'"'s Copy"/' docs/en/conf.py
+          fi
+
+          sed -i 's/settings_file_name = ".*"/settings_file_name = "'"$SETTINGS_FILE_NAME"'"/' docs/en/conf.py
+
+      - name: Generate LaTeX files and build en version
+        run: |
+          echo "Building English version..."
+          sphinx-build -b latex docs/en/ build/latex/en
+          cd build/latex/en
+
+          # Build 
+          echo "=== First LaTeX run ==="
+          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
+          
+          echo "Processing index..."
+          makeindex "$SETTINGS_FILE_NAME.idx" || true
+          
+          echo "=== Second LaTeX run ==="
+          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
+          
+          echo "=== Final LaTeX run ==="
+          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
+
+          echo "=== Build completed ==="
+          ls -la "$SETTINGS_FILE_NAME.pdf" || echo "PDF not generated!"
+
+
+      - name: Generate LaTeX files and build it version
+        run: |
+          sphinx-build -b latex docs/it/ build/latex/it
+          cd build/latex/it
+          # Build 
+          echo "=== First LaTeX run ==="
+          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
+          
+          echo "Processing index..."
+          makeindex "$SETTINGS_FILE_NAME.idx" || true
+          
+          echo "=== Second LaTeX run ==="
+          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
+          
+          echo "=== Final LaTeX run ==="
+          lualatex -interaction=nonstopmode -file-line-error "$SETTINGS_FILE_NAME.tex" 2>&1 | grep -E "Warning|Error" 
+
+          echo "=== Build completed ==="
+          ls -la "$SETTINGS_FILE_NAME.pdf" || echo "PDF not generated!"
+
+      - name: Create PDF directory
+        run: |
+          mkdir -p pdf_output
+          
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          
+          cp build/latex/it/$SETTINGS_FILE_NAME.pdf pdf_output/$SETTINGS_FILE_NAME-it-${TIMESTAMP}.pdf
+          cp build/latex/en/$SETTINGS_FILE_NAME.pdf pdf_output/$SETTINGS_FILE_NAME-en-${TIMESTAMP}.pdf
+
+      - name: Upload PDFs as artifact
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-pdf
+          path: pdf_output/*.pdf
+
+      - name: Upload Release Asset
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pdf_output/*.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -17,8 +17,15 @@ Credential Issuers MUST provide the following e-services through PDND to:
   - revoke Digital Credentials issued to a revoked Wallet Instance
   - provide statistics about issued Credentials
 
-.. note::
-  A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-Issuer.html" target="_blank">here</a>`.
+.. only:: html
+
+  .. note::
+    A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-Issuer.html" target="_blank">here</a>`.
+
+.. only:: latex
+
+  .. note::
+    A complete OpenAPI Specification is available :ref:`appendix-oas-pdnd-issuer:Appendix B - Credential Issuer PDND e-services`.
 
 Notify Available Credential
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -91,8 +98,15 @@ Authentic Source Catalogue
 
 Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.
 
-.. note::
-  A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">here</a>`.
+.. only:: html
+
+  .. note::
+    A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">here</a>`.
+
+.. only:: latex
+
+  .. note::
+    A complete OpenAPI Specification is available :ref:`appendix-oas-pdnd-as:Appendix A - Authentic Source PDND e-services`.
 
 Get Attribute Claims
 ^^^^^^^^^^^^^^^^^^^^
@@ -115,8 +129,15 @@ Wallet Provider Catalogue
 User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
 A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.
 
-.. note::
-  A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-WP.html" target="_blank">here</a>`.
+.. only:: html
+
+  .. note::
+    A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-WP.html" target="_blank">here</a>`.
+
+.. only:: latex
+
+  .. note::
+    A complete OpenAPI Specification is available :ref:`appendix-oas-pdnd-wp:Appendix C - Wallet Provider PDND e-services`.
 
 Notify User Death
 ^^^^^^^^^^^^^^^^^
