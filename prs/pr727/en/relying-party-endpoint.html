@@ -317,7 +317,7 @@
 </section>
 <section id="relying-party-erasure-endpoint">
 <h2><span class="section-number">7.3.6. </span>Relying Party Erasure Endpoint<a class="headerlink" href="#relying-party-erasure-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Erasure Endpoint, which is described in <a class="reference internal" href="relying-party-metadata.html#relying-party-metadata"><span class="std std-ref">Relying Party Metadata</span></a>, allows Wallet Instances to request deletion of attributes presented to the Relying Party. It MUST be authenticated, i.e., the Relying Party MUST request User authentication before proceeding with the attribute deletion.</p>
+<p>The Erasure Endpoint, which is described in <a class="reference internal" href="relying-party-metadata.html#relying-party-metadata"><span class="std std-ref">Relying Party Metadata</span></a>, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.</p>
 <section id="erasure-request">
 <h3><span class="section-number">7.3.6.1. </span>Erasure Request<a class="headerlink" href="#erasure-request" title="Link to this heading">¶</a></h3>
 <p>The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.</p>

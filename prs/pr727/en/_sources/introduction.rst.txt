@@ -13,8 +13,8 @@ entities in the form of Digital Credentials. Similarly to a physical wallet, the
 
 The main roles in the Wallet ecosystem are listed as follow:
 
-- **Credential Issuers**: parties who issue Digital Credentials for Users;
-- **Relying Parties**: parties who request Digital Credentials from the User for Authentication and authorization purposes;
+- **Credential Issuers**: parties who issue Digital Credentials to Users;
+- **Relying Parties**: parties who request Digital Credentials presentations to the User, for Authentication and authorization purposes;
 - **Users**: individuals who own a Wallet Instance and have control over the Digital Credentials they can request, acquire, store, and present to Relying Parties;
 
 In this model, the Credential Issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their Wallet Instance.
@@ -25,10 +25,10 @@ The development of the IT-Wallet System includes a phased experimentation proces
 
 Other key elements that characterize this new Digital Identity Wallet paradigm include:
 
-- **Confidentiality and control**: Wallets enable individuals to maintain control over the information they share. They can choose what attributes or credentials to present and to whom;
-- **Security**: Wallets leverage cryptographic mechanism to ensure the integrity and security of identity information. It avoids the risk of identity theft, fraud, and unauthorized access since the data remains under the individual's control;
-- **Interoperability**: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities without relying on a central authority. This allows for seamless and trusted interactions between individuals, organizations, and even across borders;
-- **Efficiency and cost reduction**: Individuals can easily manage their own credentials, avoid handling multiple identity tokens, and reduce repetitive identity verification processes. This streamlines administrative procedures, reduces costs, and enhances the User Experience.
+- **Confidentiality and control**: Wallets enable individuals to maintain control over the information provided within the presented Credentials. They can choose what attributes or Credentials to present and to whom;
+- **Security**: Wallets leverage cryptographic mechanism for the integrity and the security of exchaged data. This avoids identity theft, fraud, and unauthorized access;
+- **Interoperability**: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities, enabling trusted interactions between individuals, organizations, and even across borders;
+- **Efficiency and cost reduction**: Individuals can easily manage their own Credentials, avoid handling multiple identity tokens, and reduce repetitive identity verification processes.
 
 Scope
 -----

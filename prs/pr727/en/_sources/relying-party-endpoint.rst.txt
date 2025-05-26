@@ -163,7 +163,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
 Relying Party Erasure Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Erasure Endpoint, which is described in :ref:`relying-party-metadata:Relying Party Metadata`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. It MUST be authenticated, i.e., the Relying Party MUST request User authentication before proceeding with the attribute deletion.
+The Erasure Endpoint, which is described in :ref:`relying-party-metadata:Relying Party Metadata`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.
 
 Erasure Request
 """""""""""""""
