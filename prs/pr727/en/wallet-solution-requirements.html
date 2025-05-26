@@ -191,11 +191,11 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
 <ul class="simple">
 <li><p>The Wallet Attestation MUST provide all the relevant information to attest to the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
 <li><p>The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.</p></li>
-<li><p>The Wallet Provider MUST ensure the integrity, authenticity, and genuineness of the Wallet Instance, preventing any attempts at manipulation or falsification by unauthorized third parties. The Wallet Provider MUST also verify the Wallet Instance using the available OS Provider's API and MUST do so using the most secure flow allowed by the OS Provider's API. Examples include <em>Play Integrity API</em> for Android and <em>App Attest</em> for iOS.</p></li>
+<li><p>The Wallet Provider MUST periodically evaluate and guarrantee the integrity, the authenticity, and the genuineness of the Wallet Instance. The Wallet Provider verifies the Wallet Instance using the most secure flow made available by OS Provider's API, such as the <em>Play Integrity API</em> for Android and <em>App Attest</em> for iOS.</p></li>
 <li><p>The Wallet Provider MUST possess a revocation mechanism for the Wallet Instance, allowing the Wallet Provider to terminate service for a specific Instance at any time.</p></li>
 <li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance's ephemeral public key.</p></li>
 <li><p>The Wallet Attestation MAY be used multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction. However, it is RECOMMENDED that Wallet Instances avoid using the same attestation repeatedly, due to privacy concerns such as linkability between different interactions.</p></li>
-<li><p>The Wallet Attestation MUST be short-lived and MUST have an expiration time, after which it MUST no longer be considered valid.</p></li>
+<li><p>The Wallet Attestation not implementing revocation check methods, MUST be short-lived and MUST have an expiration time, after which it MUST no longer be considered valid.</p></li>
 <li><p>The Wallet Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness of the Wallet Instance requesting it cannot be guaranteed.</p></li>
 <li><p>Each Wallet Instance SHOULD be able to request multiple Wallet Attestations using different cryptographic public keys associated with them.</p></li>
 <li><p>The Wallet Attestation MUST NOT contain information about the User in control of the Wallet Instance.</p></li>
@@ -209,7 +209,7 @@ It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong
 <section id="wscd-requirements">
 <h2><span class="section-number">4.1.1.2. </span>WSCD Requirements<a class="headerlink" href="#wscd-requirements" title="Link to this heading">¶</a></h2>
 <p>To guarantee the utmost security, the cryptographic keys associated with a Wallet Instance (e.g., used to generate the Wallet Attestation) MUST be securely generated and stored within the Wallet Secure Cryptographic Device (WSCD).
-This ensures that only the User can access these keys, thus preventing unauthorized usage or tampering. The WSCD MAY be implemented using at least one of the approaches listed below:</p>
+Only the legitimate User can access the private cryptographic keys, preventing unauthorized usage or tampering. The WSCD MAY be implemented using at least one of the approaches listed below:</p>
 <ul class="simple">
 <li><p><strong>Local Internal WSCD</strong>: The WSCD relies entirely on the device's native cryptographic hardware, such as the Secure Enclave on iOS, or the Trusted Execution Environment (TEE) and Strongbox on Android.</p></li>
 <li><p><strong>Local External WSCD</strong>: The WSCD is hardware external to the User's device, such as a smart card compliant with <em>GlobalPlatform</em> and supporting <em>JavaCard</em>.</p></li>
