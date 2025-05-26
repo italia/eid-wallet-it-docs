@@ -36,7 +36,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Processo di Accreditamento**
       Procedura svolta dall'Ente di Accreditamento Nazionale per accreditare gli Organismi di Valutazione della conformità (CABs), che si conclude con il rilascio di un certificato di accreditamento.
-      Identico ad ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Attributi**
     **Attributi dell'Utente**
@@ -53,7 +53,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Processo di Certificazione**
       Procedura svolta dagli Organismi di Valutazione della conformità (CABs) per certificare le Soluzioni Wallet, che comprende anche le valutazioni tecniche periodiche.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Organismo di Valutazione della Conformità**
       Organismo accreditato valuta e certifica le Soluzioni di Portafogli o i Fornitori di Servizi Fiduciari.
@@ -67,7 +67,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Credential Status Assertion**
     **Status Assertion**
       Documento firmato attestante lo stato di validità attuale di una Credenziale Digitale.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Asset Critici**
       Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Unità di Wallet.
@@ -75,16 +75,16 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Cryptographic Hardware Key Tag**
       Identificativo univoco per le Cryptographic Hardware Keys, utilizzato per accedere alla chiave privata dell'hardware.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Cryptographic Hardware Keys**
       Coppia di chiavi generata dall'Istanza del Wallet, valida per tutta la sua durata.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Servizio di Integrità del Dispositivo**
       Servizio fornito dai produttori di dispositivi per verificare l'integrità delle app e l'archiviazione sicura delle chiavi.
       Service by device manufacturers to verify app integrity and secure key storage.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Attestato Elettronico**
     **Credenziale Digitale**
@@ -94,21 +94,21 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Autorità di Federazione**
       Ente di governance pubblica che emana linee guida, regole e gestisce Elenchi di Fiducia e lo stato dei partecipanti.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Titolare**
     **Holder**
       Persona fisica o giuridica che riceve, gestisce e presenta Credenziali Digitali tramite l'Istanza del Wallet.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Associazione Crittografica con l'Utente**
     **Holder Key Binding**
       Capacità del Titolare di dimostrare il possesso della chiave privata attestata da una terza parte di fiducia.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Identity and Access Management (IAM)**
       Framework per la gestione delle identità digitali e dell'accesso alle informazioni.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Sistema IT-Wallet**
       Insieme di Soluzioni Tecniche che implementano il Sistema di Wallet Digitale Italiano.
@@ -120,11 +120,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Key Attestation**
       Attestazione dell'OEM del dispositivo sull'archiviazione sicura delle chiavi nell' hardware-backed keystore.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Livello di Garanzia**
       Grado di sicurezza della verifica dell'identità e nella presentazione delle Credenziali.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Metadato**
       Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
@@ -134,9 +134,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Organismo che esegue l'accreditamento sotto l'autorità di uno Stato membro.
       Conforme con ARF 1.10.
 
-    **Gestore di Identità DIgitale**
+    **Gestore di Identità Digitale**
       Sistemi di identità preesistenti (ad esempio CIE) notificati eIDAS.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Processo di Notifica**
       Procedura per l'invio delle informazioni alla Commissione Europea e l'inserimento all'interno delle Trusted List.
@@ -144,7 +144,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Entità Organizzativa**
       Persona giuridica (pubblica o privata) riconosciuta per svolgere un ruolo nell'ecosistema IT-Wallet.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Dati di Identificazione Personale**
       Insieme di dati che permettono di stabilire l'identità di una persona fisica o giuridica, o di una persona fisica che rappresenta un'altra persona fisica o giuridica.
@@ -157,7 +157,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Policy Language**
       Linguaggio formale per la definizione di policy di sicurezza, privacy e gestione dell'identità.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Attori Primari**
       Entità che realizzano le Soluzioni Tecniche per il funzionamento del Sistema IT-Wallet.
@@ -175,6 +175,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Attestazione verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
       Conforme con ARF 1.10.
     
+    **Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico**
     **Attestato Elettronico Pubblico di Attributi**
       Attestato Elettronico di Attributi che contiene Attributi forniti da una Fonte Autentica pubblica.
       Conforme con ARF 1.10.
@@ -216,11 +217,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Soluzione di Relying Party**
       Prodotto (software/hardware/cloud) che consente la presentazione delle Credenziali in vari contesti.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Backend della Relying Party**
       Infrastruttura remota composta da componenti server gestiti da un fornitore di Soluzioni di Relying Party.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Istanza di Relying Party**
     **App di Verifica**
@@ -233,15 +234,15 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Self-Sovereign Identity (SSI)**
       Approccio che concede agli individui di avere il pieno controllo sulle informazioni relative alla propria identità digitale.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Processo di Supervisione**
       Procedimento svolto da parte di un Organismo di Vigilanza per esaminare e garantire il corretto funzionamento del Fornitore di Wallet e di altre entità.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Soluzioni Tecniche**
       Insieme dei sistemi hardware/software e dei servizi realizzati dai Fornitori di Wallet, Fornitori di Attestati Elettronici di Dati di Identificazione Personale, ecc.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Specifiche Tecniche**
       Specifiche che forniscono l'architettura tecnica, il quadro implementativo e i requisiti di progettazione.
@@ -249,31 +250,31 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Trust**
       Fiducia nell'affidabilità, sicurezza e integrità delle entità e delle loro azioni.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Trust Attestation**
       Attestazione elettronica di conformità al quadro normativo, verificabile crittograficamente.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Trust Evaluation**
       Processo di verifica dell'affidabilità delle Entità Organizzative registrate.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Trust Framework**
       Insieme di regole e accordi giuridicamente vincolanti per un sistema composto da più attori.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Trust Layer**
       Componente architetturale che consente ai partecipanti di stabilire un rapporto di fiducia.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Trust Model**
       Insieme di regole che garantiscono la legittimità dei componenti/entità nell'ecosistema IT-Wallet.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Trust Relationship**
       Affidabilità tra Entità Organizzative verificata in seguito alla Trust Evaluation.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Certificato di Accesso**
       Certificato di autenticazione e convalida della (Wallet-) Relying Party.
@@ -285,7 +286,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Certificate Signing Request (CSR)**
       Richiesta inviata a una CA contenente la chiave pubblica e le informazioni identificative utili all'emissione un certificato digitale.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10.
 
     **Trusted List**
       Archivio di informazioni sugli enti eutoritativi e sul loro stato.
@@ -298,7 +299,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Verificatore di Attestati Elettronici**
     **Verificatore di Credenziale**
       Una persona o entità che utilizza un'istanza di Relying Party.
-      Conforme con ARF 1.10.
+      Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Istanza del Wallet**
       Applicazione installata sul dispositivo di un Utente, parte di un'Unità di Wallet, che fornisce interfacce utente.
@@ -338,7 +339,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Intermediario**
       Intermediario come definito nella Sezione 1.2 di `OID-FED`_, ad esempio in IT-Wallet potrebbe esistere intermediari della Relying Party, ovvero coloro che offrono e gestiscono, per conto della Relying Party, le Soluzioni Tecniche per la verifica remota o di prossimità delle Attestazioni Elettroniche.
-      Non presente in ARF 1.10; specifico di IT-Wallet.
+      Conforme con ARF 1.10.
 
 .. note::
    Qualora un termine non è presente nell'ARF 1.10, la definizione fornita in IT-Wallet è da ritenersi valida per il solo contesto italiano.
@@ -435,7 +436,7 @@ Below are the main acronyms used in the document:
   * - **QEAA**
     - Qualified Electronic Attestation of Attributes (Attestato Elettronico di Attributi Qualificati)
   * - **Pub-EAA**
-    - Public Electronic Attestation of Attributes (Attestato Elettronico Pubblico di Attributi)
+    - Electronic Attestation of Attributes issued by or on behalf of a public sector body (Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico)
   * - **SSI**
     - Self Sovereign Identity
   * - **VC**
@@ -450,12 +451,12 @@ Below are the main acronyms used in the document:
 Linguaggio Normativo e Convenzioni
 ==================================
 
-Le seguenti parole solamente quando appaiono con tutte le lettere in maiuscolo assumono i significati di seguito riportati:
+Conformemente agli RFC 2119 e 8174 le seguenti parole chiave solamente quando appaiono con tutte le lettere in maiuscolo assumono i significati di seguito riportati:
 
   - DEVE/DEVONO: indicano un requisito che è necessario soddisfare.
-  - NON DEVE/NON DEVONO: indicano un requisito di divieto assoluto.
-  - PUO'/POSSONO: indicano un requisito opzionale.
-  - DOVREBBE/DOVREBBERO/RACCOMANDATO: indicano un requisito raccomandato/consigliato.
-  - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito non raccomandato/consigliato.
+  - NON DEVE/NON DEVONO: indicano un divieto assoluto.
+  - PUO'/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione. 
+  - DOVREBBE/DOVREBBERO/RACCOMANDATO: indicano un requisito consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti da una eventuale scelta alternativa.
+  - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito che non è consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti dalla eventuale scelta di applicare comunque il requisito.
   - OBBLIGATORIO: necessario
   - OPZIONALE: facoltativo
