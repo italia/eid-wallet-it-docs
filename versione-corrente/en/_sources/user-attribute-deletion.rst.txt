@@ -35,7 +35,7 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 **Steps 7 - 8:** The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present. Details on the Erasure Request can be found in :ref:`relying-party-endpoint:Erasure Request`.
 
 .. note::
-  The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as SPID/CIE or the PID presentation. The specific mechanism used for authentication is left to the Relying Party. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
+  The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as CIE or the PID presentation. The specific mechanism used for authentication is left to the Relying Party. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
 
 **Step 9:** Upon successful authentication of the User the Relying Party MUST delete all attributes bound to the User in its possession.
 

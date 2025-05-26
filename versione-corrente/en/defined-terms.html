@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11.1. Defined Terms and Acronyms &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy - 1.0.0</title>
+    <title>11.1. Normative References &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11.2. Normative References" href="normative-ref.html" />
+    <link rel="next" title="11.3. Normative References" href="normative-ref.html" />
     <link rel="prev" title="11. Defined Terms and References" href="defined-terms-and-references.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -141,9 +141,10 @@
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">9. Security and Privacy Considerations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">10. General Log Retention Policies</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="defined-terms-and-references.html">11. Defined Terms and References</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">11.1. Defined Terms and Acronyms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="normative-ref.html">11.2. Normative References</a></li>
-<li class="toctree-l2"><a class="reference internal" href="standards.html">11.3. Technical References</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11.1. Normative References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defined-terms-and-acronyms">11.2. Defined Terms and Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="normative-ref.html">11.3. Normative References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standards.html">11.4. Technical References</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">12. How to contribute</a></li>
@@ -160,15 +161,28 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="defined-terms-and-acronyms">
-<span id="defined-terms"></span><h1><span class="section-number">11.1. </span>Defined Terms and Acronyms<a class="headerlink" href="#defined-terms-and-acronyms" title="Link to this heading">¶</a></h1>
+  <section id="normative-references">
+<h1><span class="section-number">11.1. </span>Normative References<a class="headerlink" href="#normative-references" title="Link to this heading">¶</a></h1>
+<p>Below the normative references and respective acronyms included in these Technical Specifications:</p>
+<p>[CAD]</p>
+<p>Legislative Decree No. 82 of March 7, 2005, as amended, containing the 'Digital Administration Code'.</p>
+<p>[REF_ACCESSIBILITY]</p>
+<p>Accessibility Guidelines for IT Tools as per Article 11 of Law 4/2004.
+Directive (EU) 2019/882 of the European Parliament and of the Council of 17 April 2019 on the accessibility requirements for products and services.</p>
+<p>[GL_DESIGN]</p>
+<p>Design Guidelines for websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.</p>
+</section>
+<section id="defined-terms-and-acronyms">
+<span id="defined-terms"></span><h1><span class="section-number">11.2. </span>Defined Terms and Acronyms<a class="headerlink" href="#defined-terms-and-acronyms" title="Link to this heading">¶</a></h1>
 <p>This section aligns the IT-Wallet System's terminology with the definitions provided in ARF 1.10 (see <a class="reference external" href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/annexes/annex-1/annex-1-definitions.md">ARF Annex 1</a>). For each term, the IT-Wallet definition is compared and mapped to the ARF definition, with notes on any differences or clarifications.</p>
+<p>The terms <em>User</em>, <em>Trust Service</em>, <em>Trust Model</em>, <em>Trusted List</em>, <em>Trust Framework</em>, <em>Attribute</em>, <em>Electronic Attestations of Attributes Provider</em> or <em>Trust Service Provider (TSP)</em>, <em>Person Identification Data (PID)</em>, <em>Revocation List</em>, <em>Qualified Electronic Attestations of Attributes Provider</em> or <em>Qualified Trust Service Provider (QTSP)</em>, <em>Electronic Attestation of Attributes (EAA)</em>, are defined in the <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+<p>Below is the description of acronyms and definitions which are useful for further insights into topics that complement the IT-Wallet System and the interacting components.</p>
 <dl class="simple glossary">
 <dt id="term-Access-Certificate"><strong>Access Certificate</strong><a class="headerlink" href="#term-Access-Certificate" title="Link to this term">¶</a></dt><dd><p>Certificate authenticating and validating the (Wallet-) Relying Party.
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Accreditation-Process"><strong>Accreditation Process</strong><a class="headerlink" href="#term-Accreditation-Process" title="Link to this term">¶</a></dt><dd><p>Process performed by the National Accreditation Body to accredit CABs, resulting in an accreditation certificate.
-Identical to ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Attributes"><strong>Attributes</strong><a class="headerlink" href="#term-Attributes" title="Link to this term">¶</a></dt><dt id="term-User-Attribute"><strong>User Attribute</strong><a class="headerlink" href="#term-User-Attribute" title="Link to this term">¶</a></dt><dt id="term-User-Claim"><strong>User Claim</strong><a class="headerlink" href="#term-User-Claim" title="Link to this term">¶</a></dt><dd><p>A set of characteristics, qualities, rights, or permissions of a person or object, or a single piece of such information.
 Aligned with ARF 1.10.</p>
@@ -180,58 +194,64 @@ Aligned with ARF 1.10.</p>
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Certificate-Signing-Request-CSR"><strong>Certificate Signing Request (CSR)</strong><a class="headerlink" href="#term-Certificate-Signing-Request-CSR" title="Link to this term">¶</a></dt><dd><p>Request sent to a CA containing the public key and identifying information for a digital certificate.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Certification-Process"><strong>Certification Process</strong><a class="headerlink" href="#term-Certification-Process" title="Link to this term">¶</a></dt><dd><p>Process by Conformity Assessment Bodies to certify the Wallet Solution, including periodic technical assessments.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Conformity-Assessment-Body-CAB"><strong>Conformity Assessment Body (CAB)</strong><a class="headerlink" href="#term-Conformity-Assessment-Body-CAB" title="Link to this term">¶</a></dt><dd><p>Accredited body competent to assess/certify Wallet Solutions or trust service providers.
 Aligned with ARF 1.10.</p>
 </dd>
-<dt id="term-Credential-Issuer"><strong>Credential Issuer</strong><a class="headerlink" href="#term-Credential-Issuer" title="Link to this term">¶</a></dt><dt id="term-Issuer"><strong>Issuer</strong><a class="headerlink" href="#term-Issuer" title="Link to this term">¶</a></dt><dt id="term-Attestation-Provider"><strong>Attestation Provider</strong><a class="headerlink" href="#term-Attestation-Provider" title="Link to this term">¶</a></dt><dd><p>Organizational Entity providing Digital Credentials to Users (may be PID Provider or (Q)EAA Provider).
+<dt id="term-Credential-Issuer"><strong>Credential Issuer</strong><a class="headerlink" href="#term-Credential-Issuer" title="Link to this term">¶</a></dt><dt id="term-Issuer"><strong>Issuer</strong><a class="headerlink" href="#term-Issuer" title="Link to this term">¶</a></dt><dd><p>Organizational Entity providing Digital Credentials to Users (may be PID Provider or (Q)EAA Provider).
 ARF 1.10 uses similar terms; IT-Wallet merges PID and (Q)EAA Providers under this term.</p>
 </dd>
 <dt id="term-Credential-Status-Assertion"><strong>Credential Status Assertion</strong><a class="headerlink" href="#term-Credential-Status-Assertion" title="Link to this term">¶</a></dt><dt id="term-Status-Assertion"><strong>Status Assertion</strong><a class="headerlink" href="#term-Status-Assertion" title="Link to this term">¶</a></dt><dd><p>Signed document proving a Digital Credential's current validity status.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Critical-Assets"><strong>Critical Assets</strong><a class="headerlink" href="#term-Critical-Assets" title="Link to this term">¶</a></dt><dd><p>Assets (e.g., cryptographic keys) whose loss would seriously impact the Wallet Unit.
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Cryptographic-Hardware-Key-Tag"><strong>Cryptographic Hardware Key Tag</strong><a class="headerlink" href="#term-Cryptographic-Hardware-Key-Tag" title="Link to this term">¶</a></dt><dd><p>Unique identifier for Cryptographic Hardware Keys, used to access the private key in hardware.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Cryptographic-Hardware-Keys"><strong>Cryptographic Hardware Keys</strong><a class="headerlink" href="#term-Cryptographic-Hardware-Keys" title="Link to this term">¶</a></dt><dd><p>Key pair generated by the Wallet Instance, valid for its lifetime.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Device-Integrity-Service"><strong>Device Integrity Service</strong><a class="headerlink" href="#term-Device-Integrity-Service" title="Link to this term">¶</a></dt><dd><p>Service by device manufacturers to verify app integrity and secure key storage.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Digital-Credential"><strong>Digital Credential</strong><a class="headerlink" href="#term-Digital-Credential" title="Link to this term">¶</a></dt><dt id="term-Credential"><strong>Credential</strong><a class="headerlink" href="#term-Credential" title="Link to this term">¶</a></dt><dd><p>Signed set of Attributes in a specific format (e.g., mDoc-CBOR, SD-JWT VC), may be PID or (Q)EAA.
 ARF 1.10 restricts to mDoc-CBOR and SD-JWT VC; IT-Wallet notes the definition should be format-neutral.</p>
 </dd>
-<dt id="term-Digital-Credential-Catalogue"><strong>Digital Credential Catalogue</strong><a class="headerlink" href="#term-Digital-Credential-Catalogue" title="Link to this term">¶</a></dt><dd><p>Electronic catalog containing information about the formats and schemes of Digital Credentials, the data contained and the Authentic Sources. The Catalog contains additional information that allows for the establishment of the authenticity and reliability of the information contained therein.</p>
+<dt id="term-Digital-Credential-Catalogue"><strong>Digital Credential Catalogue</strong><a class="headerlink" href="#term-Digital-Credential-Catalogue" title="Link to this term">¶</a></dt><dd><p>Electronic catalog containing information about the formats and schemes of Digital Credentials, the data contained and the Authentic Sources. The Catalog contains additional information that allows for the establishment of the authenticity and reliability of the information contained therein.
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Electronic-Attestation-of-Attributes-EAA"><strong>Electronic Attestation of Attributes (EAA)</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Attributes-EAA" title="Link to this term">¶</a></dt><dd><p>Digitally verifiable attestation in electronic form, substantiating possession of attributes.
 Aligned with ARF 1.10.</p>
 </dd>
-<dt id="term-Electronic-Attestation-of-Attributes-Provider"><strong>Electronic Attestation of Attributes Provider</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Attributes-Provider" title="Link to this term">¶</a></dt><dd><p>Entity providing EAAs.
+<dt id="term-Electronic-Attestation-of-Attributes-issued-by-or-on-behalf-of-a-public-sector-body-Pub-EAA"><strong>Electronic Attestation of Attributes issued by or on behalf of a public sector body (Pub-EAA)</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Attributes-issued-by-or-on-behalf-of-a-public-sector-body-Pub-EAA" title="Link to this term">¶</a></dt><dt id="term-Public-Electronic-Attestation-of-Attributes"><strong>Public Electronic Attestation of Attributes</strong><a class="headerlink" href="#term-Public-Electronic-Attestation-of-Attributes" title="Link to this term">¶</a></dt><dd><p>Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
 Aligned with ARF 1.10.</p>
 </dd>
-<dt id="term-Electronic-Attestation-of-Public-Interest"><strong>Electronic Attestation of Public Interest</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Public-Interest" title="Link to this term">¶</a></dt><dt id="term-Credential-of-Public-Interest"><strong>Credential of Public Interest</strong><a class="headerlink" href="#term-Credential-of-Public-Interest" title="Link to this term">¶</a></dt><dd><p>Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559.</p>
+<dt id="term-Electronic-Attestation-of-Attributes-Provider"><strong>Electronic Attestation of Attributes Provider</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Attributes-Provider" title="Link to this term">¶</a></dt><dt id="term-Electionic-Attestation-Provider"><strong>Electionic Attestation Provider</strong><a class="headerlink" href="#term-Electionic-Attestation-Provider" title="Link to this term">¶</a></dt><dd><p>Organizational Entity providing EAAs.
+Aligned with ARF 1.10.</p>
+</dd>
+<dt id="term-Electronic-Attestation-of-Public-Interest"><strong>Electronic Attestation of Public Interest</strong><a class="headerlink" href="#term-Electronic-Attestation-of-Public-Interest" title="Link to this term">¶</a></dt><dt id="term-Credential-of-Public-Interest"><strong>Credential of Public Interest</strong><a class="headerlink" href="#term-Credential-of-Public-Interest" title="Link to this term">¶</a></dt><dd><p>Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559.
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Federation-Authority"><strong>Federation Authority</strong><a class="headerlink" href="#term-Federation-Authority" title="Link to this term">¶</a></dt><dd><p>Public governance entity issuing guidelines, rules, and managing trust lists and participant status.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Holder"><strong>Holder</strong><a class="headerlink" href="#term-Holder" title="Link to this term">¶</a></dt><dd><p>Person or entity that receives, manages, and presents Digital Credentials via the Wallet Instance.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
-<dt id="term-Holder-Key-Binding"><strong>Holder Key Binding</strong><a class="headerlink" href="#term-Holder-Key-Binding" title="Link to this term">¶</a></dt><dt id="term-Cryptographic-Binding"><strong>Cryptographic Binding</strong><a class="headerlink" href="#term-Cryptographic-Binding" title="Link to this term">¶</a></dt><dd><p>Ability of the Holder to prove possession of the private key attested by a Trusted Third Party.
-Aligned with ARF 1.10.</p>
+<dt id="term-Holder-Key-Binding"><strong>Holder Key Binding</strong><a class="headerlink" href="#term-Holder-Key-Binding" title="Link to this term">¶</a></dt><dd><p>Ability of the Holder to prove possession of the private key attested by a Trusted Third Party.
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Identity-and-Access-Management-IAM"><strong>Identity and Access Management (IAM)</strong><a class="headerlink" href="#term-Identity-and-Access-Management-IAM" title="Link to this term">¶</a></dt><dd><p>Framework for managing digital identities and access to information.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
-<dt id="term-Intermediate-Entity"><strong>Intermediate Entity</strong><a class="headerlink" href="#term-Intermediate-Entity" title="Link to this term">¶</a></dt><dt id="term-Intermediate"><strong>Intermediate</strong><a class="headerlink" href="#term-Intermediate" title="Link to this term">¶</a></dt><dd><p>Intermediate Entity as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 1.2, for example in IT-Wallet it could be a Relying Party intermediary that offers and manages, on behalf of Relying Party, the Technical Solutions for the remote or proximity verification of Electronic Attestations.</p>
+<dt id="term-Intermediate-Entity"><strong>Intermediate Entity</strong><a class="headerlink" href="#term-Intermediate-Entity" title="Link to this term">¶</a></dt><dt id="term-Intermediary"><strong>Intermediary</strong><a class="headerlink" href="#term-Intermediary" title="Link to this term">¶</a></dt><dd><p>Intermediate Entity as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 1.2, for example in IT-Wallet it could be a Relying Party intermediary that offers and manages, on behalf of Relying Party, the Technical Solutions for the remote or proximity verification of Electronic Attestations.
+Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-IT-Wallet-System"><strong>IT-Wallet System</strong><a class="headerlink" href="#term-IT-Wallet-System" title="Link to this term">¶</a></dt><dd><p>Set of Technical Solutions implementing the Italian Digital Wallet System.
 Not present in ARF 1.10; specific to IT-Wallet.</p>
@@ -240,27 +260,25 @@ Not present in ARF 1.10; specific to IT-Wallet.</p>
 Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Key-Attestation"><strong>Key Attestation</strong><a class="headerlink" href="#term-Key-Attestation" title="Link to this term">¶</a></dt><dd><p>Attestation from device OEM about secure key storage in hardware-backed keystore.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
-<dt id="term-Level-of-Assurance"><strong>Level of Assurance</strong><a class="headerlink" href="#term-Level-of-Assurance" title="Link to this term">¶</a></dt><dd><ul class="simple">
-<li><p>Degree of confidence in identity vetting and credential presentation.</p></li>
-<li><p>Aligned with ARF 1.10.</p></li>
-</ul>
+<dt id="term-Level-of-Assurance"><strong>Level of Assurance</strong><a class="headerlink" href="#term-Level-of-Assurance" title="Link to this term">¶</a></dt><dd><p>Degree of confidence in identity vetting and credential presentation.
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Metadata"><strong>Metadata</strong><a class="headerlink" href="#term-Metadata" title="Link to this term">¶</a></dt><dd><p>Digital artifact with information about an Organizational Entity (endpoints, public keys, etc.).
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-National-Accreditation-Bodies-NAB"><strong>National Accreditation Bodies (NAB)</strong><a class="headerlink" href="#term-National-Accreditation-Bodies-NAB" title="Link to this term">¶</a></dt><dd><p>Body performing accreditation under authority from a Member State.
 Aligned with ARF 1.10.</p>
 </dd>
-<dt id="term-National-Identity-Provider"><strong>National Identity Provider</strong><a class="headerlink" href="#term-National-Identity-Provider" title="Link to this term">¶</a></dt><dd><p>Preexisting identity systems (e.g., SPID, CIE) notified to eIDAS.
-Aligned with ARF 1.10.</p>
+<dt id="term-National-Identity-Provider"><strong>National Identity Provider</strong><a class="headerlink" href="#term-National-Identity-Provider" title="Link to this term">¶</a></dt><dd><p>Preexisting identity systems (e.g. CIE) notified to eIDAS.
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Notification-Process"><strong>Notification Process</strong><a class="headerlink" href="#term-Notification-Process" title="Link to this term">¶</a></dt><dd><p>Process for transferring information to the EC and inclusion in the Trusted List.
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Organizational-Entity"><strong>Organizational Entity</strong><a class="headerlink" href="#term-Organizational-Entity" title="Link to this term">¶</a></dt><dd><p>Legal person (organization or public entity) recognized to operate a role in the IT-Wallet ecosystem.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Person-Identification-Data-PID"><strong>Person Identification Data (PID)</strong><a class="headerlink" href="#term-Person-Identification-Data-PID" title="Link to this term">¶</a></dt><dd><p>Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
 Aligned with ARF 1.10.</p>
@@ -272,7 +290,7 @@ Aligned with ARF 1.10.</p>
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Policy-Language"><strong>Policy Language</strong><a class="headerlink" href="#term-Policy-Language" title="Link to this term">¶</a></dt><dd><p>Formal language for defining security, privacy, and identity management policies.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Primary-Actors"><strong>Primary Actors</strong><a class="headerlink" href="#term-Primary-Actors" title="Link to this term">¶</a></dt><dd><p>Entities implementing Technical Solutions for the IT-Wallet System.
 Not present in ARF 1.10; specific to IT-Wallet.</p>
@@ -280,13 +298,10 @@ Not present in ARF 1.10; specific to IT-Wallet.</p>
 <dt id="term-Pseudonym"><strong>Pseudonym</strong><a class="headerlink" href="#term-Pseudonym" title="Link to this term">¶</a></dt><dd><p>Alternative identifier for privacy/anonymity, allowing authentication/authorization.
 Aligned with ARF 1.10.</p>
 </dd>
-<dt id="term-Public-Electronic-Attestation-of-Attributes-Pub-EAA"><strong>Public Electronic Attestation of Attributes (Pub-EAA)</strong><a class="headerlink" href="#term-Public-Electronic-Attestation-of-Attributes-Pub-EAA" title="Link to this term">¶</a></dt><dd><p>Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
-Aligned with ARF 1.10.</p>
-</dd>
 <dt id="term-Qualified-Electronic-Attestation-of-Attributes-QEAA"><strong>Qualified Electronic Attestation of Attributes (QEAA)</strong><a class="headerlink" href="#term-Qualified-Electronic-Attestation-of-Attributes-QEAA" title="Link to this term">¶</a></dt><dd><p>Digitally verifiable attestation issued by a QTSP, substantiating possession of attributes.
 Aligned with ARF 1.10.</p>
 </dd>
-<dt id="term-Qualified-Electronic-Attestation-of-Attributes-Provider"><strong>Qualified Electronic Attestation of Attributes Provider</strong><a class="headerlink" href="#term-Qualified-Electronic-Attestation-of-Attributes-Provider" title="Link to this term">¶</a></dt><dd><p>Entity providing QEAAs.
+<dt id="term-Qualified-Electronic-Attestation-of-Attributes-Provider"><strong>Qualified Electronic Attestation of Attributes Provider</strong><a class="headerlink" href="#term-Qualified-Electronic-Attestation-of-Attributes-Provider" title="Link to this term">¶</a></dt><dd><p>Organizational Entity providing QEAAs.
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Qualified-Electronic-Signature-Provider"><strong>Qualified Electronic Signature Provider</strong><a class="headerlink" href="#term-Qualified-Electronic-Signature-Provider" title="Link to this term">¶</a></dt><dd><p>Trust Service Provider issuing Qualified Electronic Signature certificates.
@@ -305,49 +320,49 @@ Aligned with ARF 1.10.</p>
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Relying-Party-Backend"><strong>Relying Party Backend</strong><a class="headerlink" href="#term-Relying-Party-Backend" title="Link to this term">¶</a></dt><dd><p>Remote infrastructure with server-side components managed by a Relying Party Solution provider.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Relying-Party-Instance"><strong>Relying Party Instance</strong><a class="headerlink" href="#term-Relying-Party-Instance" title="Link to this term">¶</a></dt><dt id="term-Verifier-App"><strong>Verifier App</strong><a class="headerlink" href="#term-Verifier-App" title="Link to this term">¶</a></dt><dd><p>Specific deployment of a Relying Party application or device.
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Relying-Party-Solution"><strong>Relying Party Solution</strong><a class="headerlink" href="#term-Relying-Party-Solution" title="Link to this term">¶</a></dt><dd><p>Product (software/hardware/cloud) enabling Credential presentations in various contexts.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Selective-Disclosure"><strong>Selective Disclosure</strong><a class="headerlink" href="#term-Selective-Disclosure" title="Link to this term">¶</a></dt><dd><p>Functionality enabling the User to submit a subset of Digital Credentials Data.
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Self-Sovereign-Identity-SSI"><strong>Self-Sovereign Identity (SSI)</strong><a class="headerlink" href="#term-Self-Sovereign-Identity-SSI" title="Link to this term">¶</a></dt><dd><p>Approach giving individuals control over their digital identity information.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Supervision-Process"><strong>Supervision Process</strong><a class="headerlink" href="#term-Supervision-Process" title="Link to this term">¶</a></dt><dd><p>Process by a Supervisory Body to review and ensure proper functioning of the Wallet Provider and others.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Technical-Solutions"><strong>Technical Solutions</strong><a class="headerlink" href="#term-Technical-Solutions" title="Link to this term">¶</a></dt><dd><p>Hardware/software systems and services implemented by Wallet Solution Providers, PID Provider, etc.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Technical-Specifications"><strong>Technical Specifications</strong><a class="headerlink" href="#term-Technical-Specifications" title="Link to this term">¶</a></dt><dd><p>Specifications providing technical architecture, implementation framework, and design requirements.
 Aligned with ARF 1.10.</p>
 </dd>
 <dt id="term-Trust"><strong>Trust</strong><a class="headerlink" href="#term-Trust" title="Link to this term">¶</a></dt><dd><p>Confidence in the security, reliability, and integrity of entities and their actions.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Trust-Attestation"><strong>Trust Attestation</strong><a class="headerlink" href="#term-Trust-Attestation" title="Link to this term">¶</a></dt><dd><p>Electronic attestation of compliance with the regulatory framework, cryptographically verifiable.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Trust-Evaluation"><strong>Trust Evaluation</strong><a class="headerlink" href="#term-Trust-Evaluation" title="Link to this term">¶</a></dt><dd><p>Process of verifying trustworthiness of registered Organizational Entities.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Trust-Framework"><strong>Trust Framework</strong><a class="headerlink" href="#term-Trust-Framework" title="Link to this term">¶</a></dt><dd><p>Legally enforceable set of rules and agreements for a multi-party system.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Trust-Layer"><strong>Trust Layer</strong><a class="headerlink" href="#term-Trust-Layer" title="Link to this term">¶</a></dt><dd><p>Architectural component enabling participants to establish trust.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Trust-Model"><strong>Trust Model</strong><a class="headerlink" href="#term-Trust-Model" title="Link to this term">¶</a></dt><dd><p>Collection of rules ensuring legitimacy of components/entities in the IT-Wallet ecosystem.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Trust-Relationship"><strong>Trust Relationship</strong><a class="headerlink" href="#term-Trust-Relationship" title="Link to this term">¶</a></dt><dd><p>Reliable relationship between Organizational Entities after Trust Evaluation.
-Aligned with ARF 1.10.</p>
+Not present in ARF 1.10.</p>
 </dd>
 <dt id="term-Trusted-List"><strong>Trusted List</strong><a class="headerlink" href="#term-Trusted-List" title="Link to this term">¶</a></dt><dd><p>Repository of information about authoritative entities and their status.
 Aligned with ARF 1.10.</p>
@@ -355,8 +370,8 @@ Aligned with ARF 1.10.</p>
 <dt id="term-User"><strong>User</strong><a class="headerlink" href="#term-User" title="Link to this term">¶</a></dt><dd><p>Natural or legal person using trust services or electronic identification means.
 Aligned with ARF 1.10.</p>
 </dd>
-<dt id="term-Verifier"><strong>Verifier</strong><a class="headerlink" href="#term-Verifier" title="Link to this term">¶</a></dt><dd><p>Also known as Credential Verifier; a person or entity using a Relying Party Instance.
-Aligned with ARF 1.10.</p>
+<dt id="term-Verifier"><strong>Verifier</strong><a class="headerlink" href="#term-Verifier" title="Link to this term">¶</a></dt><dt id="term-Credential-Verifier"><strong>Credential Verifier</strong><a class="headerlink" href="#term-Credential-Verifier" title="Link to this term">¶</a></dt><dd><p>A person or entity using a Relying Party Instance.
+Not present in ARF 1.10; specific to IT-Wallet.</p>
 </dd>
 <dt id="term-Wallet-Instance"><strong>Wallet Instance</strong><a class="headerlink" href="#term-Wallet-Instance" title="Link to this term">¶</a></dt><dd><p>Application installed on a User's device, part of the Wallet Unit, providing user interfaces.
 Aligned with ARF 1.10.</p>
@@ -422,7 +437,7 @@ Aligned with ISO 9241-210:2010.</p>
 </dd>
 </dl>
 <section id="acronyms">
-<h2><span class="section-number">11.1.1. </span>Acronyms<a class="headerlink" href="#acronyms" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">11.2.1. </span>Acronyms<a class="headerlink" href="#acronyms" title="Link to this heading">¶</a></h2>
 <p>Below are the main acronyms used in the document:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -439,13 +454,19 @@ Aligned with ISO 9241-210:2010.</p>
 <td><p>Authenticator Assurance Level as defined in <a class="reference external" href="https://csrc.nist.gov/glossary/term/authenticator_assurance_level">https://csrc.nist.gov/glossary/term/authenticator_assurance_level</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>ANPR</strong></p></td>
-<td><p>Italian National Registry of the Resident Population</p></td>
+<td><p>Anagrafe Nazionale della Popolazione Residente (Italian National Registry of the Resident Population)</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>API</strong></p></td>
 <td><p>Application Programming Interface</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>CIE</strong></p></td>
-<td><p>National Electronic Identity Card</p></td>
+<tr class="row-odd"><td><p><strong>CAB</strong></p></td>
+<td><p>Conformity Assessment Body</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CIE</strong></p></td>
+<td><p>Carta di Identità Elettronica (National Electronic Identity Card)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>EAA</strong></p></td>
+<td><p>Electronic Attestation of Attributes</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>IAM</strong></p></td>
 <td><p>Identity and Access Management</p></td>
@@ -453,8 +474,14 @@ Aligned with ISO 9241-210:2010.</p>
 <tr class="row-odd"><td><p><strong>LoA</strong></p></td>
 <td><p>Level of Assurance</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>OID4VP</strong></p></td>
+<tr class="row-even"><td><p><strong>NAB</strong></p></td>
+<td><p>National Accreditation Body</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>OID4VP</strong></p></td>
 <td><p>OpenID for Verifiable Presentation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PDND</strong></p></td>
+<td><p>Piattaforma Digitale Nazionale Dati (National Digital Data Platform)</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>PID</strong></p></td>
 <td><p>Person Identification Data</p></td>
@@ -462,22 +489,25 @@ Aligned with ISO 9241-210:2010.</p>
 <tr class="row-even"><td><p><strong>PII</strong></p></td>
 <td><p>Personally Identifiable Information</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>SPID</strong></p></td>
-<td><p>Italian Public Digital Identity System</p></td>
+<tr class="row-odd"><td><p><strong>QEAA</strong></p></td>
+<td><p>Qualified Electronic Attestation of Attributes</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>SSI</strong></p></td>
+<tr class="row-even"><td><p><strong>Pub-EAA</strong></p></td>
+<td><p>Electronic Attestation of Attributes issued by or on behalf of a public sector body</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SSI</strong></p></td>
 <td><p>Self Sovereign Identity</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>VC</strong></p></td>
+<tr class="row-even"><td><p><strong>VC</strong></p></td>
 <td><p>Verifiable Credential</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>VP</strong></p></td>
+<tr class="row-odd"><td><p><strong>VP</strong></p></td>
 <td><p>Verifiable Presentation</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>WSCA</strong></p></td>
+<tr class="row-even"><td><p><strong>WSCA</strong></p></td>
 <td><p>Wallet Secure Cryptographic Application</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>WSCD</strong></p></td>
+<tr class="row-odd"><td><p><strong>WSCD</strong></p></td>
 <td><p>Wallet Secure Cryptographic Device</p></td>
 </tr>
 </tbody>
@@ -499,8 +529,9 @@ Aligned with ISO 9241-210:2010.</p>
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">11.1. Defined Terms and Acronyms</a><ul>
-<li><a class="reference internal" href="#acronyms">11.1.1. Acronyms</a></li>
+<li><a class="reference internal" href="#">11.1. Normative References</a></li>
+<li><a class="reference internal" href="#defined-terms-and-acronyms">11.2. Defined Terms and Acronyms</a><ul>
+<li><a class="reference internal" href="#acronyms">11.2.1. Acronyms</a></li>
 </ul>
 </li>
 </ul>
@@ -522,7 +553,7 @@ Aligned with ISO 9241-210:2010.</p>
 
             <div class="right">
                 
-                    <a href="normative-ref.html"><span><span class="section-number">11.2. </span>Normative References</span><span class="icon">&gt;</span></a>
+                    <a href="normative-ref.html"><span><span class="section-number">11.3. </span>Normative References</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
