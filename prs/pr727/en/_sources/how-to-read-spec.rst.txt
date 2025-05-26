@@ -72,7 +72,7 @@ For readers who are interested in implementing a **Credential Issuer** Solution,
 
 **Essential sections:**
 
-* **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Credential Issuer Solution - Complete issuer implementation requirements and component details.
+* **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Credential Issuer Solution - Complete Issuer implementation requirements and component details.
 * **Section** :ref:`authentic-sources:Authentic Sources`: Understanding authoritative data source integration patterns.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Digital Credential formats and lifecycle management.
 * **Section** :ref:`credential-issuance:Digital Credential Issuance`: Detailed issuance flow implementation.
