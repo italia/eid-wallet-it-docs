@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13.1.4. Relying Party Endpoints &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy - 1.0.0</title>
+    <title>7.3. Relying Party Endpoints &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="14. Authentic Sources" href="authentic-sources.html" />
-    <link rel="prev" title="13.1.1. Relying Party Instance" href="relying-party-instance.html" /> 
+    <link rel="next" title="7.4. Authentic Source Endpoints" href="authentic-source-endpoint.html" />
+    <link rel="prev" title="7.2. Credential Issuer Endpoints" href="credential-issuer-endpoint.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,42 +131,25 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">2. Normative References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">3. Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">4. Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">5. Normative Language and Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">6. The Digital Identity Wallet Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">7. Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">8. IT-Wallet System Brand Identity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">9. Functionalities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">10. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">11. Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">12. Credential Issuer Solution</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="relying-party-solution.html">13. Relying Party Solution</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html">13.1.1. Relying Party Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">13.1.2. Mobile Relying Party Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">13.1.3. Web Relying Party Instance</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">13.1.4. Relying Party Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">2. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">3. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">4. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">5. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">6. Digital Credential Flows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">7. Endpoints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">7.1. Wallet Provider Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">7.2. Credential Issuer Endpoints</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. Relying Party Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">7.4. Authentic Source Endpoints</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">14. Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-data-model.html">15. Digital Credential Data Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuance.html">16. Digital Credential Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-presentation.html">17. Digital Credential Presentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">18. Digital Credential Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">19. Backup and Restore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">20. Digital Credentials Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">21. e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">22. e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mobile-application-instance.html">23. Mobile Application Instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-configurations.html">24. Entity Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">25. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">26. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">27. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">28. Technical References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans.html">29. Test Plans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">30. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">31. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">8. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">9. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">10. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">11. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">12. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">13. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">14. Appendix</a></li>
 </ul>
 
         </div>
@@ -179,32 +162,32 @@
           <div class="body" role="main">
             
   <section id="relying-party-endpoints">
-<h1><span class="section-number">13.1.4. </span>Relying Party Endpoints<a class="headerlink" href="#relying-party-endpoints" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">7.3. </span>Relying Party Endpoints<a class="headerlink" href="#relying-party-endpoints" title="Link to this heading">¶</a></h1>
 <p>The Relying Party MUST expose a trust endpoint adhering to the OpenID Federation 1.0 Wallet Architecture specification, facilitating the Relying Party's identity and metadata distribution. In addition, in case the Relying Party supports proximity presentation, it MUST expose a set of endpoints for handling the lifecycle of Relying Party Instances (e.g., by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance); their specific implementation details are left to the Relying Party's discretion.</p>
 <section id="relying-party-federation-endpoint">
-<h2><span class="section-number">13.1.4.1. </span>Relying Party Federation Endpoint<a class="headerlink" href="#relying-party-federation-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Relying Party MUST provide its Entity Configuration through the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint, according to Section <a class="reference internal" href="trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. Technical details are provided in Section <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-of-relying-parties"><span class="std std-ref">Entity Configuration of Relying Parties</span></a>.</p>
+<h2><span class="section-number">7.3.1. </span>Relying Party Federation Endpoint<a class="headerlink" href="#relying-party-federation-endpoint" title="Link to this heading">¶</a></h2>
+<p>The Relying Party MUST provide its Entity Configuration through the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint, according to Section <a class="reference internal" href="trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. Technical details are provided in Section <a class="reference internal" href="relying-party-entity-configuration.html#relying-party-entity-configuration"><span class="std std-ref">Relying Party Entity Configuration</span></a>.</p>
 </section>
 <section id="relying-party-nonce-endpoint">
-<h2><span class="section-number">13.1.4.2. </span>Relying Party Nonce Endpoint<a class="headerlink" href="#relying-party-nonce-endpoint" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.2. </span>Relying Party Nonce Endpoint<a class="headerlink" href="#relying-party-nonce-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Relying Party Nonce Endpoint allows the Relying Party Instance to request a cryptographic <code class="docutils literal notranslate"><span class="pre">nonce</span></code> from the Relying Party Backend. The <code class="docutils literal notranslate"><span class="pre">nonce</span></code> serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.</p>
 <p>Further details on the Nonce Request and Response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request"><span class="std std-ref">Mobile Application Nonce Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request"><span class="std std-ref">Mobile Application Nonce Request</span></a> Sections, respectively.</p>
 </section>
 <section id="relying-party-instance-initialization-endpoint">
-<h2><span class="section-number">13.1.4.3. </span>Relying Party Instance Initialization Endpoint<a class="headerlink" href="#relying-party-instance-initialization-endpoint" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.3. </span>Relying Party Instance Initialization Endpoint<a class="headerlink" href="#relying-party-instance-initialization-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Relying Party Instance Initialization Endpoint allows for the initialization of Relying Party Instances, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys.</p>
 <p>Further details on the Relying Party Instance Initialization Request and Response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a> Sections, respectively.</p>
 </section>
 <section id="relying-party-key-binding-endpoint">
-<h2><span class="section-number">13.1.4.4. </span>Relying Party Key Binding Endpoint<a class="headerlink" href="#relying-party-key-binding-endpoint" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.4. </span>Relying Party Key Binding Endpoint<a class="headerlink" href="#relying-party-key-binding-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Relying Party Key Binding Endpoint enables Relying Party Instances to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Relying Party Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization"><span class="std std-ref">Mobile Application Instance Initialization</span></a> phase. Before completing the process, the Relying Party Backend also needs to verify the integrity of the Relying Party Instance.</p>
 <section id="relying-party-key-binding-request">
-<h3><span class="section-number">13.1.4.4.1. </span>Relying Party Key Binding Request<a class="headerlink" href="#relying-party-key-binding-request" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.4.1. </span>Relying Party Key Binding Request<a class="headerlink" href="#relying-party-key-binding-request" title="Link to this heading">¶</a></h3>
 <p>Further details on the Relying Party Key Binding Request are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-request"><span class="std std-ref">Mobile Application Key Binding Request</span></a> section.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>.</p>
 </section>
 <section id="relying-party-key-binding-response">
-<h3><span class="section-number">13.1.4.4.2. </span>Relying Party Key Binding Response<a class="headerlink" href="#relying-party-key-binding-response" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.4.2. </span>Relying Party Key Binding Response<a class="headerlink" href="#relying-party-key-binding-response" title="Link to this heading">¶</a></h3>
 <p>Upon a successful request, the Relying Party Backend provides an HTTP Response with a <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code> status code.</p>
 <p>Below is a non-normative example of a Key Binding Request Response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
@@ -214,10 +197,10 @@
 </section>
 </section>
 <section id="relying-party-access-certificate-endpoint">
-<h2><span class="section-number">13.1.4.5. </span>Relying Party Access Certificate Endpoint<a class="headerlink" href="#relying-party-access-certificate-endpoint" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.5. </span>Relying Party Access Certificate Endpoint<a class="headerlink" href="#relying-party-access-certificate-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Relying Party Access Certificate Endpoint enables Relying Party Instances to obtain an Access Certificate.</p>
 <section id="relying-party-access-certificate-request">
-<h3><span class="section-number">13.1.4.5.1. </span>Relying Party Access Certificate Request<a class="headerlink" href="#relying-party-access-certificate-request" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.5.1. </span>Relying Party Access Certificate Request<a class="headerlink" href="#relying-party-access-certificate-request" title="Link to this heading">¶</a></h3>
 <p>The Access Certificate Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
 <p>The request includes the following body parameter:</p>
 <table class="docutils align-default">
@@ -251,7 +234,7 @@
 </div>
 </section>
 <section id="relying-party-access-certificate-response">
-<h3><span class="section-number">13.1.4.5.2. </span>Relying Party Access Certificate Response<a class="headerlink" href="#relying-party-access-certificate-response" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.5.2. </span>Relying Party Access Certificate Response<a class="headerlink" href="#relying-party-access-certificate-response" title="Link to this heading">¶</a></h3>
 <p>Upon a successful request, the Relying Party Access Certificate Endpoint provides an HTTP Response with a <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> status code and the Access Certificate. The Access Certificate Response, which uses <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>, includes the following body parameters:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -333,10 +316,10 @@
 </section>
 </section>
 <section id="relying-party-erasure-endpoint">
-<h2><span class="section-number">13.1.4.6. </span>Relying Party Erasure Endpoint<a class="headerlink" href="#relying-party-erasure-endpoint" title="Link to this heading">¶</a></h2>
-<p>The Erasure Endpoint, which is described in <a class="reference internal" href="relying-party-entity-configuration.html#metadata-for-openid-credential-verifier"><span class="std std-ref">Metadata for openid_credential_verifier</span></a>, allows Wallet Instances to request deletion of attributes presented to the Relying Party. It MUST be authenticated, i.e., the Relying Party MUST request User authentication before proceeding with the attribute deletion.</p>
+<h2><span class="section-number">7.3.6. </span>Relying Party Erasure Endpoint<a class="headerlink" href="#relying-party-erasure-endpoint" title="Link to this heading">¶</a></h2>
+<p>The Erasure Endpoint, which is described in <a class="reference internal" href="relying-party-metadata.html#relying-party-metadata"><span class="std std-ref">Relying Party Metadata</span></a>, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.</p>
 <section id="erasure-request">
-<h3><span class="section-number">13.1.4.6.1. </span>Erasure Request<a class="headerlink" href="#erasure-request" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.6.1. </span>Erasure Request<a class="headerlink" href="#erasure-request" title="Link to this heading">¶</a></h3>
 <p>The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.</p>
 <p>Below is a non-normative example of an Erasure Request where the call back URL is passed as a query parameter.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/erasure-endpoint?callback_url=https://wallet-instance/erasure_response</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -345,7 +328,7 @@
 </div>
 </section>
 <section id="erasure-response">
-<h3><span class="section-number">13.1.4.6.2. </span>Erasure Response<a class="headerlink" href="#erasure-response" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.6.2. </span>Erasure Response<a class="headerlink" href="#erasure-response" title="Link to this heading">¶</a></h3>
 <p>If the deletion of all attributes bound to the User have been successful, the Erasure Response MUST return a 204 HTTP status code.</p>
 <p>If instead the attributes deletion procedure fails due any circumstances, the Relying Party MUST return an error response with <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
 <blockquote>
@@ -415,23 +398,23 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">13.1.4. Relying Party Endpoints</a><ul>
-<li><a class="reference internal" href="#relying-party-federation-endpoint">13.1.4.1. Relying Party Federation Endpoint</a></li>
-<li><a class="reference internal" href="#relying-party-nonce-endpoint">13.1.4.2. Relying Party Nonce Endpoint</a></li>
-<li><a class="reference internal" href="#relying-party-instance-initialization-endpoint">13.1.4.3. Relying Party Instance Initialization Endpoint</a></li>
-<li><a class="reference internal" href="#relying-party-key-binding-endpoint">13.1.4.4. Relying Party Key Binding Endpoint</a><ul>
-<li><a class="reference internal" href="#relying-party-key-binding-request">13.1.4.4.1. Relying Party Key Binding Request</a></li>
-<li><a class="reference internal" href="#relying-party-key-binding-response">13.1.4.4.2. Relying Party Key Binding Response</a></li>
+<li><a class="reference internal" href="#">7.3. Relying Party Endpoints</a><ul>
+<li><a class="reference internal" href="#relying-party-federation-endpoint">7.3.1. Relying Party Federation Endpoint</a></li>
+<li><a class="reference internal" href="#relying-party-nonce-endpoint">7.3.2. Relying Party Nonce Endpoint</a></li>
+<li><a class="reference internal" href="#relying-party-instance-initialization-endpoint">7.3.3. Relying Party Instance Initialization Endpoint</a></li>
+<li><a class="reference internal" href="#relying-party-key-binding-endpoint">7.3.4. Relying Party Key Binding Endpoint</a><ul>
+<li><a class="reference internal" href="#relying-party-key-binding-request">7.3.4.1. Relying Party Key Binding Request</a></li>
+<li><a class="reference internal" href="#relying-party-key-binding-response">7.3.4.2. Relying Party Key Binding Response</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#relying-party-access-certificate-endpoint">13.1.4.5. Relying Party Access Certificate Endpoint</a><ul>
-<li><a class="reference internal" href="#relying-party-access-certificate-request">13.1.4.5.1. Relying Party Access Certificate Request</a></li>
-<li><a class="reference internal" href="#relying-party-access-certificate-response">13.1.4.5.2. Relying Party Access Certificate Response</a></li>
+<li><a class="reference internal" href="#relying-party-access-certificate-endpoint">7.3.5. Relying Party Access Certificate Endpoint</a><ul>
+<li><a class="reference internal" href="#relying-party-access-certificate-request">7.3.5.1. Relying Party Access Certificate Request</a></li>
+<li><a class="reference internal" href="#relying-party-access-certificate-response">7.3.5.2. Relying Party Access Certificate Response</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#relying-party-erasure-endpoint">13.1.4.6. Relying Party Erasure Endpoint</a><ul>
-<li><a class="reference internal" href="#erasure-request">13.1.4.6.1. Erasure Request</a></li>
-<li><a class="reference internal" href="#erasure-response">13.1.4.6.2. Erasure Response</a></li>
+<li><a class="reference internal" href="#relying-party-erasure-endpoint">7.3.6. Relying Party Erasure Endpoint</a><ul>
+<li><a class="reference internal" href="#erasure-request">7.3.6.1. Erasure Request</a></li>
+<li><a class="reference internal" href="#erasure-response">7.3.6.2. Erasure Response</a></li>
 </ul>
 </li>
 </ul>
@@ -448,14 +431,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="relying-party-instance.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">13.1.1. </span>Relying Party Instance</span></a>
+                <a href="credential-issuer-endpoint.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">7.2. </span>Credential Issuer Endpoints</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="authentic-sources.html"><span><span class="section-number">14. </span>Authentic Sources</span><span class="icon">&gt;</span></a>
+                    <a href="authentic-source-endpoint.html"><span><span class="section-number">7.4. </span>Authentic Source Endpoints</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -463,7 +446,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 21/05/2025.
+      Last updated on 26/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

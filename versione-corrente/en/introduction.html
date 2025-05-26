@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Normative References" href="defined-terms.html" />
+    <link rel="next" title="2. Architecture Overview" href="architecture-overview.html" />
     <link rel="prev" title="IT-Wallet System Technical Documentation - 1.0.0" href="index.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -131,36 +131,19 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">2. Normative References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">3. Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms">4. Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">5. Normative Language and Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">6. The Digital Identity Wallet Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">7. Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">8. IT-Wallet System Brand Identity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">9. Functionalities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">10. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">11. Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">12. Credential Issuer Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">13. Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">14. Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-data-model.html">15. Digital Credential Data Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuance.html">16. Digital Credential Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-presentation.html">17. Digital Credential Presentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">18. Digital Credential Lifecycle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">19. Backup and Restore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">20. Digital Credentials Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">21. e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">22. e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mobile-application-instance.html">23. Mobile Application Instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-configurations.html">24. Entity Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">25. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">26. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">27. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">28. Technical References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans.html">29. Test Plans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">30. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">31. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">2. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">3. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">4. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">5. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">6. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">7. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">8. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">9. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">10. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">11. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">12. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">13. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">14. Appendix</a></li>
 </ul>
 
         </div>
@@ -176,41 +159,132 @@
 <h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
 <p>Over the last decade, digitalization has radically transformed the way citizens and businesses interact with public and private services, introducing new secure, accessible and user-friendly forms of service access.</p>
 <p>In Italy, Decree-Law No. 19 of 2 March 2024, converted, with amendments, by Law No. 56 of 29 April 2024, introduced Article 64-quater of Legislative Decree No. 82 of 7 March 2005, establishing the Italian Digital Wallet System - IT-Wallet System. The IT-Wallet System allows natural or legal persons to access public and private services through the secure presentation of Digital Credential, attesting to entitlements, delegations, characteristics, licenses or qualifications. Article 64-quater also provides for the adoption of one or more implementing decrees (decreti attuativi) to define the rules governing the operation of the IT-Wallet System, including the roles of the entities involved, technical and security requirements, and principles of economic sustainability, of which these Technical Specifications – drafted through an open and collaborative process – form an integral part.</p>
-<p>Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their
-wallet, the information required for Authentication in the form of Digital Credentials. Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card, as well as a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or certified attribute.</p>
-<p>What distinguishes the IT-Wallet System from previous Authentication systems is that Digital Credentials refer to characteristics, qualities or properties, already authenticated at source. These Digital Credentials can be used by the User without the Credential Issuers being aware of their use. During the use of the Digital Credentials, no usage information is released to third parties as the relationship is exclusive between the User and the service provider, in a transparent and informed manner.
+<p>Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their wallet, the information required for accessing services provided by public and private
+entities in the form of Digital Credentials. Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card, as well as a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or certified attribute.</p>
+<p>The main roles in the Wallet ecosystem are listed as follow:</p>
+<ul class="simple">
+<li><p><strong>Credential Issuers</strong>: parties who issue Digital Credentials to Users;</p></li>
+<li><p><strong>Relying Parties</strong>: parties who request Digital Credentials presentations to the User, for Authentication and authorization purposes;</p></li>
+<li><p><strong>Users</strong>: individuals who own a Wallet Instance and have control over the Digital Credentials they can request, acquire, store, and present to Relying Parties;</p></li>
+</ul>
+<p>In this model, the Credential Issuer (e.g., an educational institution) provides Digital Credentials to the User, who can store them in their Wallet Instance.
+The Wallet Instance is typically provided as a mobile application on the User's smartphone.</p>
+<p>What distinguishes this new approach from previous identity access management systems is that Digital Credentials refer to characteristics, qualities or properties, already authenticated at source. These Digital Credentials can be used by the User without the Credential Issuers being aware of their use. During the use of the Digital Credentials, no usage information is released to third parties as the relationship is exclusive between the User and the Relying Party, in a transparent and informed manner.
 The development of the IT-Wallet System includes a phased experimentation process, aimed at testing the Wallet and assessing its impact in real-world contexts. This process is designed to validate technical components, user experience elements, and interoperability mechanisms, while ensuring a progressive and controlled adoption of the System. Moreover, it supports the continuous improvement of the IT-Wallet and its gradual alignment with the European Digital Identity Wallet (EUDI Wallet), both in terms of architecture and compliance with evolving European specifications.</p>
+<p>Other key elements that characterize this new Digital Identity Wallet paradigm include:</p>
+<ul class="simple">
+<li><p><strong>Confidentiality and control</strong>: Wallets enable individuals to maintain control over the information provided within the presented Credentials. They can choose what attributes or Credentials to present and to whom;</p></li>
+<li><p><strong>Security</strong>: Wallets leverage cryptographic mechanism for the integrity and the security of exchaged data. This avoids identity theft, fraud, and unauthorized access;</p></li>
+<li><p><strong>Interoperability</strong>: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities, enabling trusted interactions between individuals, organizations, and even across borders;</p></li>
+<li><p><strong>Efficiency and cost reduction</strong>: Individuals can easily manage their own Credentials, avoid handling multiple identity tokens, and reduce repetitive identity verification processes.</p></li>
+</ul>
 <section id="scope">
 <h2><span class="section-number">1.1. </span>Scope<a class="headerlink" href="#scope" title="Link to this heading">¶</a></h2>
 <p>These Technical Specifications are intended to complement the Guidelines provided for in Article 64-quater of Legislative Decree No. 82/2005 (CAD). Both the Guidelines and these Technical Specifications, once formally adopted, will become part of the regulatory framework for the IT-Wallet System. They will be periodically updated, where necessary, in light of the results of the experimentation phase, the adoption of new national or European legislative acts, and evolving requirements in terms of security and interoperability. These Technical Specifications pursue two main objectives and represent a core component of the implementation framework for the IT-Wallet System.</p>
 <p>The first one is to provide a clear and structured set of recommendations, resources and design requirements related to the IT-Wallet System elements that impact on the User Experience.
 The document, by distinguishing between mandatory regulatory aspects and good design practices, aims to provide to public entities and private entities interested in taking part in the IT-Wallet System what is necessary to:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>facilitate the understanding and adoption of the Service Model, increasing the number of potential services and usage opportunities for the User;</p></li>
 <li><p>adopt the IT-Wallet System's Visual Identity in order to enhance its reliability and recognizability for the User;</p></li>
 <li><p>ensure design consistency across macro-functionalities and single interactions between the User and the service Touchpoints;</p></li>
 <li><p>maintain an adequate level of quality, promoting the principles of usability, accessibility and inclusivity.</p></li>
 </ul>
-</div></blockquote>
-<p>The second focus is to define the technical architecture and reference framework that will serve as a guideline for all the parties involved in the development of the IT-Wallet System.
-This documentation defines the national implementation profile of the IT-Wallet System, detailing the technical specifications of its components, as listed below:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Entities of the ecosystem according to <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>;</p></li>
-<li><p>Infrastructure of trust attesting reliability and eligibility of the participants;</p></li>
-<li><p>PID and EAAs data schemes and attribute sets;</p></li>
-<li><p>PID/EAA in MDL CBOR format;</p></li>
-<li><p>PID/EAA in <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a> format;</p></li>
-<li><p>Wallet Solution general architecture;</p></li>
-<li><p>Wallet Attestation;</p></li>
-<li><p>Issuance of PID/EAA according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>;</p></li>
-<li><p>Presentation of PID/EAA according to <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-20.html">OpenID4VP</a>;</p></li>
-<li><p>PID/EAA backup and restore mechanisms;</p></li>
-<li><p>PID/EAA revocation lists.</p></li>
-</ul>
-</div></blockquote>
+<p>The second focus is to define the technical architecture and reference framework that will serve as a guideline for all the parties involved in the development of the IT-Wallet System.</p>
 <p>Additional documentation, tools and resources - hereinafter defined Official Resources - for the design and development of the IT-Wallet System Technical Solutions will be made available on the upcoming website <a class="reference external" href="http://www.wallet.gov.it">http://www.wallet.gov.it</a>.</p>
+</section>
+<section id="normative-language-and-conventions">
+<h2><span class="section-number">1.2. </span>Normative Language and Conventions<a class="headerlink" href="#normative-language-and-conventions" title="Link to this heading">¶</a></h2>
+<p>The key words &quot;MUST&quot;, &quot;MUST NOT&quot;, &quot;REQUIRED&quot;, &quot;SHALL&quot;, &quot;SHALL NOT&quot;, &quot;SHOULD&quot;, &quot;SHOULD NOT&quot;, &quot;RECOMMENDED&quot;, &quot;NOT RECOMMENDED&quot;, &quot;MAY&quot;, and &quot;OPTIONAL&quot; in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.</p>
+</section>
+<section id="design-principles">
+<h2><span class="section-number">1.3. </span>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h2>
+<p>The IT-Wallet System adheres to the Digital Identity Wallet Paradigm, aiming to provide Users with a simple, fast, and more secure experience when accessing services.</p>
+<p>The Wallet Solution serves as the primary Touchpoint, enabling Users to manage and use their PID and Attributes when interacting with public or private entities, in both physical and digital contexts. However, the overall service depends on the interactions of a network of Touchpoints and Technical Solutions, that support its delivery and directly impact the User Experience.</p>
+<p>To ensure service quality from a User Experience perspective, Primary Actors, both public and private entities, MUST ensure the usability and accessibility of their Technical Solutions while aligning with the distinctive elements of the IT-Wallet System. Specifically:</p>
+<ul class="simple">
+<li><p><strong>Usability</strong>: Technical Solutions MUST be designed and maintained to meet high usability standards, to facilitate service adoption and reduce the need for assistance. Public entities MUST adhere to [GL_DESIGN], whereas private entities MAY refer to it as a best practice.</p></li>
+<li><p><strong>Accessibility</strong>: Technical Solutions MUST be designed and maintained to meet high accessibility standards to ensure service access regardless of individual abilities, technological skills, or external and contextual constraints. Public entities MUST adhere to [REF_ACCESSIBILITY], whereas private entities MUST comply with applicable regulations.</p></li>
+<li><p><strong>Consistency</strong>: Technical Solutions MUST be designed and maintained in adherence to the IT-Wallet System's Brand Identity and User Experience functional requirements in this document, to promote the recognizability of components, to ensure the overall system consistency, and to minimize the User's cognitive load.</p></li>
+</ul>
+</section>
+<section id="brand-identity">
+<h2><span class="section-number">1.4. </span>Brand Identity<a class="headerlink" href="#brand-identity" title="Link to this heading">¶</a></h2>
+<p>The IT-Wallet Brand Identity defines the system's personality and it's expressed through a set of standardized elements, including its naming and Visual Identity. It strengthens and promotes the Trust Model at the basis of the entire ecosystem, that is to say the framework that legitimizes the Actors' participation in the IT-Wallet System and ensures the security and integrity of its processes.</p>
+<p>It is important to strengthen the User awareness and trust in the ecosystem by integrating coherent graphical elements into the Technical Solutions and across the various Touchpoints.</p>
+<p>This section outlines the minimum requirements that Primary Actors must meet to ensure a proper application of the IT-Wallet System Brand Identity, to achieve a uniform, consistent, and recognizable visual presence, and deliver a high-quality User Experience.</p>
+<p>For further details, please refer to the Official Resources.</p>
+<section id="naming">
+<h3><span class="section-number">1.4.1. </span>Naming<a class="headerlink" href="#naming" title="Link to this heading">¶</a></h3>
+<p>&quot;IT-Wallet System&quot; is the official name that MUST be used in all written and verbal contexts, both physical and digital. Below are the requirements for the correct spelling and pronunciation:</p>
+<ul class="simple">
+<li><p>The use of uppercase letters for &quot;IT&quot; and the initials of &quot;Wallet&quot; and &quot;System&quot; MUST be followed;</p></li>
+<li><p>The hyphen (“-”) between &quot;IT&quot; and &quot;Wallet&quot; MUST be used without any spacing;</p></li>
+<li><p>The correct pronunciation of &quot;IT&quot; MUST be followed, with the two letters &quot;I&quot; and &quot;T&quot; pronounced separately. In Italian, the correct pronunciation is /i ti/, not /it/, while in English, it is /ai ti/, not /it/, /ait/, or /iti/.</p></li>
+</ul>
+</section>
+<section id="visual-identity">
+<h3><span class="section-number">1.4.2. </span>Visual Identity<a class="headerlink" href="#visual-identity" title="Link to this heading">¶</a></h3>
+<p>The IT-Wallet System has its own Visual Identity. All actors within the ecosystem MUST ensure that their Visual Identity and that of their Technical Solutions are distinct yet compatible and cohesive with the Visual Identity of IT-Wallet System. Specifically, all Primary Actors MAY use the Official Resources related to the Visual Identity of the IT-Wallet System. Their use MUST be exclusively aimed at representing the participation in the IT-Wallet System and not at replacing the Visual Identity of their own Technical Solutions.</p>
+<section id="logo">
+<h4><span class="section-number">1.4.2.1. </span>Logo<a class="headerlink" href="#logo" title="Link to this heading">¶</a></h4>
+<p>The Logo is the official graphic element that ensures immediate recognition of the IT-Wallet System and promotes its reliability.</p>
+<p>The following requirements apply to its use in both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.):</p>
+<ul class="simple">
+<li><p>The Logo MAY be used by anyone referring to the IT-Wallet System;</p></li>
+<li><p>The Logo MUST be used to represent the IT-Wallet System or the participation to the IT-Wallet System and MUST NOT be used to identify a specific Technical Solution;</p></li>
+<li><p>The Logo MUST be used exactly as provided in the Official Resources and MUST comply with the usage specifications outlined in the Official Resources;</p></li>
+<li><p>The Logo MUST be in the <code class="docutils literal notranslate"><span class="pre">application/svg+xml</span></code> data format;</p></li>
+<li><p>The Logo MUST NOT be altered, distorted, modified, or replaced by unofficial logos;</p></li>
+<li><p>The Logo MUST maintain the minimum clear space as defined in the Official Resources to ensure visibility and recognizability. No other graphic or textual elements MUST interfere with this space;</p></li>
+<li><p>The Logo MUST NOT be resized below the minimum dimensions specified in the Official Resources to maintain legibility across formats and devices;</p></li>
+<li><p>The Logo MUST NOT be placed on backgrounds that compromise its visibility or legibility. Adequate contrast between the Logo and the background MUST be ensured, in line with the Official Resources;</p></li>
+<li><p>The Logo MAY be displayed alongside other actors' logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the Official Resources.</p></li>
+</ul>
+</section>
+<section id="trust-mark">
+<h4><span class="section-number">1.4.2.2. </span>Trust Mark<a class="headerlink" href="#trust-mark" title="Link to this heading">¶</a></h4>
+<p>The Trust Mark is the official graphic element that guarantees the belonging of Primary Actors and their respective Technical Solutions to the IT-Wallet System.</p>
+<p>The following requirements apply to its use in both physical and digital contexts (e.g., websites, apps, documents, printed materials, videos, etc.):</p>
+<ul class="simple">
+<li><p>The Trust Mark MUST be used exclusively to certify the participation in the IT-Wallet System and MUST NOT be used for any other purpose;</p></li>
+<li><p>The Trust Mark MUST only be displayed by Technical Solutions that have successfully completed the Certification Process;</p></li>
+<li><p>The Trust Mark MUST be used exactly as provided in the Official Resources and MUST comply with the usage specifications outlined in the Official Resources to ensure proper visibility throughout all the stages of the User Experience;</p></li>
+<li><p>The Trust Mark MUST NOT be altered, distorted, modified, or replaced by unofficial elements;</p></li>
+<li><p>The Trust Mark MUST NOT be resized below the minimum dimensions specified in the Official Resources to maintain legibility across formats and devices;</p></li>
+<li><p>The Trust Mark MUST maintain the minimum clear space as defined in the Official Resources to ensure visibility and recognizability. Other graphic or textual elements MUST NOT interfere with this space;</p></li>
+<li><p>The Trust Mark MUST NOT be placed on backgrounds that compromise its visibility or legibility. Adequate contrast between the Trust Mark and the background MUST be ensured, in line with the Official Resources;</p></li>
+<li><p>The Trust Mark MAY be displayed alongside other actors' logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the Official Resources.</p></li>
+</ul>
+</section>
+<section id="components">
+<h4><span class="section-number">1.4.2.3. </span>Components<a class="headerlink" href="#components" title="Link to this heading">¶</a></h4>
+<p>Components are the elements of the IT-Wallet System that enable the User to interact with several Technical Solutions via their Wallet Instance.</p>
+<p>The Official Resources provide both complex components, such as templates to support entire workflows, and atomic components, like individual elements (e.g. Engagement Buttons) to be integrated into existing interfaces.</p>
+<p>The key requirements are as follows:</p>
+<ul class="simple">
+<li><p>Primary Actors MUST use Official Resources and MUST comply with the usage specifications outlined in the Official Resources;</p></li>
+<li><p>Primary Actors MAY choose from the available configurations, but MUST ensure the correct use of atomic components, such as the Engagement Buttons;</p></li>
+<li><p>Primary Actors MUST keep components up to date, in line with the latest available version.</p></li>
+</ul>
+</section>
+<section id="authentication-button">
+<h4><span class="section-number">1.4.2.4. </span>Authentication Button<a class="headerlink" href="#authentication-button" title="Link to this heading">¶</a></h4>
+<p>The Authentication Button is a type of Engagement Button.
+Verifiers MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services through the Wallet Instance.</p>
+<p>The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="_images/discovery-page-layouts.svg"><img alt="examples of Discovery Page layouts: grid, tab, and list" src="_images/discovery-page-layouts.svg" style="width: 100%;" /></a>
+</figure>
+<p>For further details on the use of the Authentication Button, please refer to the <a class="reference internal" href="functionalities.html#authentication"><span class="std std-ref">Authentication</span></a> section.</p>
+<p>The Authentication Button has the following requirements:</p>
+<ul class="simple">
+<li><p>The Authentication Button MUST be used exactly as outlined in the Official Resources;</p></li>
+<li><p>The Authentication Button MUST be visually distinguishable from other Authentication Buttons or action buttons;</p></li>
+<li><p>The Authentication Button MUST be used only in the shapes, sizes, and proportions defined by the Official Resources and MUST NOT be altered, distorted, or hidden;</p></li>
+<li><p>The Authentication Button MUST be responsive to all screen resolutions and MUST meet minimum usability and accessibility requirements.</p></li>
+</ul>
+</section>
+</section>
 </section>
 </section>
 
@@ -230,6 +304,19 @@ This documentation defines the national implementation profile of the IT-Wallet 
                 <ul>
 <li><a class="reference internal" href="#">1. Introduction</a><ul>
 <li><a class="reference internal" href="#scope">1.1. Scope</a></li>
+<li><a class="reference internal" href="#normative-language-and-conventions">1.2. Normative Language and Conventions</a></li>
+<li><a class="reference internal" href="#design-principles">1.3. Design Principles</a></li>
+<li><a class="reference internal" href="#brand-identity">1.4. Brand Identity</a><ul>
+<li><a class="reference internal" href="#naming">1.4.1. Naming</a></li>
+<li><a class="reference internal" href="#visual-identity">1.4.2. Visual Identity</a><ul>
+<li><a class="reference internal" href="#logo">1.4.2.1. Logo</a></li>
+<li><a class="reference internal" href="#trust-mark">1.4.2.2. Trust Mark</a></li>
+<li><a class="reference internal" href="#components">1.4.2.3. Components</a></li>
+<li><a class="reference internal" href="#authentication-button">1.4.2.4. Authentication Button</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -251,7 +338,7 @@ This documentation defines the national implementation profile of the IT-Wallet 
 
             <div class="right">
                 
-                    <a href="defined-terms.html"><span><span class="section-number">2. </span>Normative References</span><span class="icon">&gt;</span></a>
+                    <a href="architecture-overview.html"><span><span class="section-number">2. </span>Architecture Overview</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -259,7 +346,7 @@ This documentation defines the national implementation profile of the IT-Wallet 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 21/05/2025.
+      Last updated on 26/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -37,7 +37,7 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
   * Checks if the Key Attestation APIs is available.
 
 .. note::
-  **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Entity Configuration of Relying Parties` sections.
+  **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
 
 **Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks. 
 

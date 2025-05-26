@@ -1,31 +1,10 @@
 .. include:: ../common/common_definitions.rst
 
-
-Normative References
-====================
-
-Below the normative references and respective acronyms included in these Technical Specifications:
-
-[CAD]
-
-Legislative Decree No. 82 of March 7, 2005, as amended, containing the 'Digital Administration Code'.
-
-[REF_ACCESSIBILITY]
-
-Accessibility Guidelines for IT Tools as per Article 11 of Law 4/2004.
-Directive (EU) 2019/882 of the European Parliament and of the Council of 17 April 2019 on the accessibility requirements for products and services.
-
-[GL_DESIGN]
-
-Design Guidelines for websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.
-
-
-Defined Terms and Acronyms
-==========================
-
-The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framework*, *Attribute*, *Electronic Attestations of Attributes Provider* or *Trust Service Provider (TSP)*, *Person Identification Data (PID)*, *Revocation List*, *Qualified Electronic Attestations of Attributes Provider* or *Qualified Trust Service Provider (QTSP)*, *Electronic Attestation of Attributes (EAA)*, are defined in the `EIDAS-ARF`_.
-
-Below is the description of acronyms and definitions which are useful for further insights into topics that complement the IT-Wallet System and the interacting components.
+..
+  Defined Terms and Acronyms
+  ==========================
+  The terms *User*, *Trust Service*, *Trust Model*, *Trusted List*, *Trust Framework*, *Attribute*, *Electronic Attestations of Attributes Provider* or *Trust Service Provider (TSP)*, *Person Identification Data (PID)*, *Revocation List*, *Qualified Electronic Attestations of Attributes Provider* or *Qualified Trust Service Provider (QTSP)*, *Electronic Attestation of Attributes (EAA)*, are defined in the `EIDAS-ARF`_.
+  Below is the description of acronyms and definitions which are useful for further insights into topics that complement the IT-Wallet System and the interacting components.
 
 .. _defined-terms:
 
@@ -436,7 +415,3 @@ Below are the main acronyms used in the document:
   * - **WSCD**
     - Wallet Secure Cryptographic Device
 
-Normative Language and Conventions
-==================================
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
