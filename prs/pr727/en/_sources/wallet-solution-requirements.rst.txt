@@ -5,7 +5,7 @@
 Wallet Solution Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section lists the requirements that Wallet Providers, Wallet Solutions, and their Wallet Instances must meet.
+This section lists the requirements about Wallet Providers and Wallet Solutions with their Wallet Instances.
 
 - The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.
 - The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.
