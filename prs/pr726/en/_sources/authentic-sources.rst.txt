@@ -6,7 +6,7 @@ Authentic Sources
 
 Authentic Sources provide Users attributes to the Credential Issuers enabling them in the issuance of the Digital Credentials. During the Issuance Flow, Credential Issuers request from Authentic Sources the attributes required to provide the requested Credential. Authentic Sources MAY also provide a Credential Offer related to their Credential Issuers as defined in Section :ref:`credential-issuance-endpoint:Credential Offer Endpoint`.
 
-Public Authentic Sources MUST interact with Credential Issuers via PDND according to the rules defined in Section :ref:`e-service-pdnd:e-Service PDND` and in Section :ref:`credential-revocation:Status Update by Authentic Sources`. See also Section :ref:`e-service-pdnd-catalogue:Authentic Source Catalogue` for additional details.
+Public Authentic Sources MUST interact with Credential Issuers via PDND according to the rules defined in Section :ref:`e-service-pdnd:e-Service PDND` and in Section :ref:`credential-revocation:Status Update by Authentic Sources`. See also Section :ref:`authentic-source-endpoint:e-Service PDND Authentic Source Catalogue` for additional details.
 
 Authentic Sources MUST:
 

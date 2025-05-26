@@ -2,6 +2,10 @@
 
 .. "included" file, so we start with '-' title level
 
+.. role:: raw-html(raw)
+  :format: html
+
+
 Wallet Provider Endpoints
 -------------------------
 
@@ -593,4 +597,36 @@ Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnost
       h'1AD0D6A7313EFDC…43DEBF48BF5A580D'
     ]
   }
+
+
+e-Service PDND Wallet Provider Catalogue
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
+A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.
+
+.. only:: html
+
+  .. note::
+    A complete OpenAPI Specification is available :raw-html:`<a href="OAS3-PDND-WP.html" target="_blank">here</a>`.
+
+.. only:: latex
+
+  .. note::
+    A complete OpenAPI Specification is available :ref:`appendix-oas-pdnd-wp:Wallet Provider PDND OpenAPI Specification`.
+
+Notify User Death
+"""""""""""""""""
+
+.. list-table::
+    :class: longtable
+    :widths: 20 80
+    :stub-columns: 1
+
+    * - **Description**
+      - This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.
+    * - **Provider**
+      - Wallet Provider
+    * - **Consumer**
+      - PID Provider
 

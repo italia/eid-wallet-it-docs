@@ -1,8 +1,9 @@
 .. include:: ../common/common_definitions.rst
 
+.. "included" file, so we start with '-' title level
 
 Design Principles
-=================
+-----------------
 
 The IT-Wallet System adheres to the Digital Identity Wallet Paradigm, aiming to provide Users with a simple, fast, and more secure experience when accessing services.
 

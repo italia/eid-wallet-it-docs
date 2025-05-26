@@ -1,9 +1,9 @@
 .. include:: ../common/common_definitions.rst
 
+.. "included" file, so we start with '-' title level
 
-
-IT-Wallet System Brand Identity
-===============================
+Brand Identity
+-------------------------------
 
 
 The IT-Wallet Brand Identity defines the system's personality and it's expressed through a set of standardized elements, including its naming and Visual Identity. It strengthens and promotes the Trust Model at the basis of the entire ecosystem, that is to say the framework that legitimizes the Actors' participation in the IT-Wallet System and ensures the security and integrity of its processes.
@@ -15,7 +15,7 @@ This section outlines the minimum requirements that Primary Actors must meet to 
 For further details, please refer to the Official Resources.
 
 Naming
-------
+^^^^^^
 
 "IT-Wallet System" is the official name that MUST be used in all written and verbal contexts, both physical and digital. Below are the requirements for the correct spelling and pronunciation:
 
@@ -27,12 +27,12 @@ Naming
 
 
 Visual Identity
----------------
+^^^^^^^^^^^^^^^
 
 The IT-Wallet System has its own Visual Identity. All actors within the ecosystem MUST ensure that their Visual Identity and that of their Technical Solutions are distinct yet compatible and cohesive with the Visual Identity of IT-Wallet System. Specifically, all Primary Actors MAY use the Official Resources related to the Visual Identity of the IT-Wallet System. Their use MUST be exclusively aimed at representing the participation in the IT-Wallet System and not at replacing the Visual Identity of their own Technical Solutions.
 
 Logo
-^^^^
+""""
 
 The Logo is the official graphic element that ensures immediate recognition of the IT-Wallet System and promotes its reliability.
 
@@ -57,7 +57,7 @@ The following requirements apply to its use in both physical and digital context
 - The Logo MAY be displayed alongside other actors' logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the Official Resources.
 
 Trust Mark
-^^^^^^^^^^
+""""""""""
 
 The Trust Mark is the official graphic element that guarantees the belonging of Primary Actors and their respective Technical Solutions to the IT-Wallet System.
 
@@ -80,7 +80,7 @@ The following requirements apply to its use in both physical and digital context
 - The Trust Mark MAY be displayed alongside other actors' logos, trademarks, or symbols, in accordance with the coexistence specifications regarding proportions and visibility, as defined in the Official Resources.
 
 Components
-^^^^^^^^^^
+""""""""""
 
 Components are the elements of the IT-Wallet System that enable the User to interact with several Technical Solutions via their Wallet Instance.
 
@@ -95,7 +95,7 @@ The key requirements are as follows:
 - Primary Actors MUST keep components up to date, in line with the latest available version.
 
 Authentication Button
-^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 
 The Authentication Button is a type of Engagement Button.
 Verifiers MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services through the Wallet Instance.

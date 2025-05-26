@@ -1,9 +1,9 @@
 .. include:: ../common/common_definitions.rst
 
-.. "included" file, so we start with '-' title level
+.. level 2 "included" file, so we start with '^' title level
 
 Wallet Instance
----------------
+^^^^^^^^^^^^^^^
 
 The Wallet Instance establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.
 
