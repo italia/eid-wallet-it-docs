@@ -130,7 +130,7 @@ Cross-Cutting Topics
 Regardless of your primary role, certain sections contain information relevant to all ecosystem participants:
 
 **Security and Compliance:**
-    All implementers must thoroughly review Section :ref:`security-privacy-considerations:Security and Privacy Considerations` and Section :ref:`log-retention-policy:General Log Retention Policies` to ensure proper security posture, privacy protection, and regulatory compliance within the IT-Wallet ecosystem.
+    All implementers must implement their solutions according to Section :ref:`security-privacy-considerations:Security and Privacy Considerations` and Section :ref:`log-retention-policy:General Log Retention Policies`.
 
 **Standards and References:**
     Section :ref:`defined-terms-and-references:Defined Terms and References` provides essential normative references, defined terms, and technical standards that establish the foundation for interoperable implementations across all ecosystem participants.
