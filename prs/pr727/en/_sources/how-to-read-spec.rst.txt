@@ -146,7 +146,7 @@ The following phased reading approach is suggested:
     1. **Foundation Phase**: Read  Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, design principles, and trust infrastructure.
     2. **Role-Specific Phase**: Focus on primary role's essential sections to understand specific implementation requirements, main technical component, the general architecture and interaction flows (see Section :ref:`entities:Entities` and Section :ref:`endpoints:Endpoints` for more details).
     3. **Integration Phase**: Review secondary sections relevant to interactions with other ecosystem participants and platform integration requirements.
-    4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements to ensure robust and compliant implementations (see Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`test-plans:Test Plans` for additional information).
+    4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements according to Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`test-plans:Test Plans` for additional information.
 
 .. note::
 

@@ -20,7 +20,7 @@ Wallet Attestation Requirements
 """""""""""""""""""""""""""""""
 
 Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance.
-It primarily certifies the **authenticity**, **integrity**, **security**, **privacy**, and **trustworthiness** of a particular Wallet Instance.
+It primarily proves the **authenticity**, **integrity**, **security**, and in general the **trustworthiness** of a particular Wallet Instance.
 
 The requirements for the Wallet Attestation are defined below:
 
