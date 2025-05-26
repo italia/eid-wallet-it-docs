@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>19. Backup and Restore &#8212; IT-Wallet Technical Documentation - PR #708 - 1.0.0</title>
+    <title>5.1.5. Backup and Restore &#8212; IT-Wallet Technical Documentation - PR #708 - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20. Digital Credentials Catalogue" href="registry-catalogue.html" />
-    <link rel="prev" title="18. Digital Credential Lifecycle" href="credential-revocation.html" /> 
+    <link rel="next" title="5.1.6. Wallet Provider Entity Configuration" href="wallet-provider-entity-configuration.html" />
+    <link rel="prev" title="5.1.4.2.4. User&#39;s Attributes Deletion" href="user-attribute-deletion.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,36 +131,35 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">2. Normative References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#defined-terms-and-acronyms">3. Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#id1">4. Defined Terms and Acronyms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html#normative-language-and-conventions">5. Normative Language and Conventions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">6. The Digital Identity Wallet Paradigm</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">7. Design Principles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">8. IT-Wallet System Brand Identity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">9. Functionalities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">10. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">11. Wallet Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">12. Credential Issuer Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">13. Relying Party Solution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">14. Authentic Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-data-model.html">15. Digital Credential Data Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuance.html">16. Digital Credential Issuance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-presentation.html">17. Digital Credential Presentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="credential-revocation.html">18. Digital Credential Lifecycle</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">19. Backup and Restore</a></li>
-<li class="toctree-l1"><a class="reference internal" href="registry-catalogue.html">20. Digital Credentials Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-catalogue.html">21. e-Service PDND Catalogue</a></li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">22. e-Service PDND</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mobile-application-instance.html">23. Mobile Application Instance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entity-configurations.html">24. Entity Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">25. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">26. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">27. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">28. Technical References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans.html">29. Test Plans</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">30. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">31. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">5. Entities</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">5.1. Wallet Solution</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">5.1.1. Wallet Solution Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">5.1.2. Wallet Solution Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">5.1.3. Wallet Solution Interaction Patterns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">5.1.4. Wallet Instance</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.1.5. Backup and Restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Wallet Provider Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Credential Issuer Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Relying Party Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Authentic Sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
 </ul>
 
         </div>
@@ -173,7 +172,7 @@
           <div class="body" role="main">
             
   <section id="backup-and-restore">
-<h1><span class="section-number">19. </span>Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">5.1.5. </span>Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Link to this heading">¶</a></h1>
 <p>The <strong>Backup and Restore</strong> functionality becomes relevant when the User wants to change device and/or Wallet Solution in order to access the previously issued Digital Credentials again.</p>
 <ul class="simple">
 <li><p>The mobile device has been <strong>lost</strong>, <strong>stolen</strong>, <strong>damaged</strong>, or <strong>compromised</strong> (e.g., due to unauthorized access).</p></li>
@@ -186,7 +185,7 @@
 <p>For Wallet Solutions based on the IT Wallet Technical Specifications, the migration to a different Wallet Solution (known as data portability) can be supported following the backup and restore functionality described in this section.</p>
 </div>
 <section id="backup-flow">
-<h2><span class="section-number">19.1. </span>Backup Flow<a class="headerlink" href="#backup-flow" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.5.1. </span>Backup Flow<a class="headerlink" href="#backup-flow" title="Link to this heading">¶</a></h2>
 <figure class="align-default" id="id2">
 <span id="fig-backup-flow"></span><p class="plantuml">
 <object data="_images/plantuml-5c3d200c016a8c60fd7435d9b4f85537a92e9a72.svg" type="image/svg+xml" style="width:90%">
@@ -194,10 +193,10 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 19.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/VP5HRzGm3CVVyodClMn8j1KmU9YcqxPZe8bDEkaqyG1eIbFlQaYJAd4uAhJlJj96WuvZUMhj_y_-spxrB1s7JejdP9GE3KBBtFlZgd9oLsw9sr07ZqvPmsYuLBQhUYrDOWhFZQQwMXqLwnIwkRwgEkaPNGpThY8XoQ0h-rHVICNMmKsi1TB38dqiXDWCKT_TdjjW6kc6mvtK6dbZTM2oviMaE_3m3d-GmiLp-2KWlltOfV4iZSA8VHe3a2CPpE_1sM6Wt24A6TsTJCezkbggxw4_wsc3Blc8rFaOWhFr9UHW9k_5dEriJHetR9tS9l1w_Cy3mPLLKaFE9fUvnhqG1t3nizUaY47BmGO6sNmBdZiq37VMGMyzfIsHsOfP5oW-jzGqQBuMIvYlHeXnt28c0i4nB4xgvSiIyZGhXv5YajgVLFLo8QBc96aVBs02NvNm0GqwoGWVSO1rwwJ7FsWYKxj9_ReSvzmZVLmT_j_og4mcKyCBezpGCpQGpRydZK_K2pHLU5F-Y-vp_8GKlXY8QTWHjx1sjkkdW_oL6-zQhRGDJRvkzlQm_ld5fePlInZ1ENAAfWcT_Wq0">Backup flow</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/VP5HRzGm3CVVyodClMn8j1KmU9YcqxPZe8bDEkaqyG1eIbFlQaYJAd4uAhJlJj96WuvZUMhj_y_-spxrB1s7JejdP9GE3KBBtFlZgd9oLsw9sr07ZqvPmsYuLBQhUYrDOWhFZQQwMXqLwnIwkRwgEkaPNGpThY8XoQ0h-rHVICNMmKsi1TB38dqiXDWCKT_TdjjW6kc6mvtK6dbZTM2oviMaE_3m3d-GmiLp-2KWlltOfV4iZSA8VHe3a2CPpE_1sM6Wt24A6TsTJCezkbggxw4_wsc3Blc8rFaOWhFr9UHW9k_5dEriJHetR9tS9l1w_Cy3mPLLKaFE9fUvnhqG1t3nizUaY47BmGO6sNmBdZiq37VMGMyzfIsHsOfP5oW-jzGqQBuMIvYlHeXnt28c0i4nB4xgvSiIyZGhXv5YajgVLFLo8QBc96aVBs02NvNm0GqwoGWVSO1rwwJ7FsWYKxj9_ReSvzmZVLmT_j_og4mcKyCBezpGCpQGpRydZK_K2pHLU5F-Y-vp_8GKlXY8QTWHjx1sjkkdW_oL6-zQhRGDJRvkzlQm_ld5fePlInZ1ENAAfWcT_Wq0">Backup flow</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 19.1</span></a>:</p>
+<p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 5.7</span></a>:</p>
 <p><strong>Step 1</strong>: The User selects the option to back up Credentials stored within the Wallet Instance.</p>
 <p><strong>Steps 2-3</strong>: The Wallet Instance using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User.
 The User MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup.</p>
@@ -300,7 +299,7 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 </table>
 </section>
 <section id="restore-flow-for-hardware-binding-credential">
-<h2><span class="section-number">19.2. </span>Restore flow for Hardware Binding Credential<a class="headerlink" href="#restore-flow-for-hardware-binding-credential" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.5.2. </span>Restore flow for Hardware Binding Credential<a class="headerlink" href="#restore-flow-for-hardware-binding-credential" title="Link to this heading">¶</a></h2>
 <figure class="align-default" id="id3">
 <span id="fig-restore-flow"></span><p class="plantuml">
 <object data="_images/plantuml-7142b2a7089df27ff5c53a5880e973d5371ea5e9.svg" type="image/svg+xml" style="width:90%">
@@ -308,11 +307,11 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 19.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80">Restore Flow</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.8 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80">Restore Flow</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Considering that the User has initialized the new Wallet Instance and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
-Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 19.2</span></a>:</p>
+Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 5.8</span></a>:</p>
 <p><strong>Steps 1-6</strong>: The User wants to restore the Digital Credentials using the backup previously created with their Wallet Instance.
 The User selects <cite>restore Digital Credentials backup</cite> in the Wallet Instance app and a prompt with the import function is provided to the User. The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases.
 To check the authenticity of the file, the Wallet Instance MUST verify the backup JWT's signature to ensure its authenticity. To do this, it first extracts the Wallet Attestation JWT from <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim and obtains the related public key using the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim).</p>
@@ -342,9 +341,9 @@ To check the authenticity of the file, the Wallet Instance MUST verify the backu
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">19. Backup and Restore</a><ul>
-<li><a class="reference internal" href="#backup-flow">19.1. Backup Flow</a></li>
-<li><a class="reference internal" href="#restore-flow-for-hardware-binding-credential">19.2. Restore flow for Hardware Binding Credential</a></li>
+<li><a class="reference internal" href="#">5.1.5. Backup and Restore</a><ul>
+<li><a class="reference internal" href="#backup-flow">5.1.5.1. Backup Flow</a></li>
+<li><a class="reference internal" href="#restore-flow-for-hardware-binding-credential">5.1.5.2. Restore flow for Hardware Binding Credential</a></li>
 </ul>
 </li>
 </ul>
@@ -359,14 +358,14 @@ To check the authenticity of the file, the Wallet Instance MUST verify the backu
         <div class="button_nav">
             <div class="left">
                 
-                <a href="credential-revocation.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">18. </span>Digital Credential Lifecycle</span></a>
+                <a href="user-attribute-deletion.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">5.1.4.2.4. </span>User's Attributes Deletion</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="registry-catalogue.html"><span><span class="section-number">20. </span>Digital Credentials Catalogue</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-provider-entity-configuration.html"><span><span class="section-number">5.1.6. </span>Wallet Provider Entity Configuration</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

@@ -11,7 +11,7 @@ The Relying Party MUST expose a trust endpoint adhering to the OpenID Federation
 Relying Party Federation Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Entity Configuration of Relying Parties`.
+The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 
 
 Relying Party Nonce Endpoint
@@ -163,7 +163,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
 Relying Party Erasure Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Erasure Endpoint, which is described in :ref:`relying-party-entity-configuration:Metadata for openid_credential_verifier`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. It MUST be authenticated, i.e., the Relying Party MUST request User authentication before proceeding with the attribute deletion.
+The Erasure Endpoint, which is described in :ref:`relying-party-metadata:Relying Party Metadata`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.
 
 Erasure Request
 """""""""""""""

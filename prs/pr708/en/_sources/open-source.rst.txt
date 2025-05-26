@@ -34,6 +34,6 @@ Relying Parties are are encouraged to follow the same conditions as Credential I
 Responsible Disclosure
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (NIS2 <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555>_) also emphasizes vulnerability handling within cybersecurity risk management.
+In the European context, the Cyber Resilience Act (CRA) mandates procedures for handling vulnerability reports and requires reporting actively exploited vulnerabilities to Computer Security Incident Response Teams (CSIRTs). The Directive on Security of Network and Information Systems Directive (EU) 2022/2555 (`NIS2 <https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32022L2555>`_) also emphasizes vulnerability handling within cybersecurity risk management.
 
 

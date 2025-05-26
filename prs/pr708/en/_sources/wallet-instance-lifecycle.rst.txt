@@ -1,8 +1,9 @@
 .. include:: ../common/common_definitions.rst
 
+.. level 3 "included" file, so we start with '"' title level
 
 Wallet Instance Lifecycle
-=========================
+"""""""""""""""""""""""""
 
 The Wallet Provider is in charge of the implementation and provision of Wallet Instances also handling their entire lifecycle.
 
@@ -34,7 +35,7 @@ Each state represents a specific functional status and determines the actions th
   The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically check the Wallet Instances security and compliance status.
 
 Transition to Installed
-"""""""""""""""""""""""""
+.......................
 
 The state machine begins with the Wallet Instance installation (**WI INST**) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the
 official app store of their device's operating system (this ensures authenticity via system checks), leading to the **Installed** state.
@@ -54,7 +55,7 @@ When the state is **Installed**, the Wallet Instance MUST interact only with the
   Instance and from the account associated with the User. This transition is completed when the Wallet Instance is online.
 
 Transition to Operational
-"""""""""""""""""""""""""""
+.........................
 
 After installation, the User opens the Wallet Instance and an activation begins (**WI ACT**).
 At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
@@ -81,7 +82,7 @@ without transitioning the Wallet Instance to another state (**(Q)EEA PRE** trans
 A **Valid** Wallet Instance MUST transition back to the **Operational** state due to **PID EXP/REV/DEL** transition, when the associated PID expires, is revoked by its Provider or either deleted by the User.
 
 Transition to Valid
-"""""""""""""""""""""
+...................
 
 A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (**PID ISS**). In this state, Users can obtain and present
 new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refer to :ref:`credential-issuance:Digital Credential Issuance` and :ref:`credential-presentation:Digital Credential Presentation`.
@@ -92,13 +93,13 @@ new (Q)EAAs (**(Q)EAA ISS/PRE**), and present the PID (**PID PRE**). Please refe
   **Operational**.
 
 Transition to Uninstalled
-"""""""""""""""""""""""""""
+.........................
 
 Across all states, **Installed**, **Activated**, **Operational**, or **Valid**, the Wallet Instance can be removed entirely through the Wallet Instance
 uninstall (**WI UNINST**) transition, leading to the **Uninstalled** state. If a Wallet Instance is **Uninstalled** it ends its lifecycle.
 
 Wallet Instance Lifecycle Management
-"""""""""""""""""""""""""""""""""""""
+....................................
 
 While :numref:`fig_Wallet_Instance_States` shows the different states a Wallet Instance may acquire during its lifecycle,
 :numref:`fig_Wallet_Instance_Lifecycle` shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle

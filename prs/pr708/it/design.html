@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Principi di design &#8212; IT-Wallet Technical Documentation - PR #708 - 1.0.0</title>
+    <title>2. Principi di design &#8212; IT-Wallet Technical Documentation - PR #708 - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="2. Brand Identity del Sistema IT-Wallet" href="brand-identity.html" />
-    <link rel="prev" title="Documentazione Tecnica del Sistema IT-Wallet - 1.0.0" href="index.html" /> 
+    <link rel="next" title="2.1. Brand Identity del Sistema IT-Wallet" href="brand-identity.html" />
+    <link rel="prev" title="1. Introduction" href="introduction.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,9 +131,14 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Principi di design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity del Sistema IT-Wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">3. Funzionalità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Principi di design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="brand-identity.html">2.1. Brand Identity del Sistema IT-Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html">2.2. Funzionalità</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">4. Defined Terms and References</a></li>
 </ul>
 
         </div>
@@ -146,15 +151,64 @@
           <div class="body" role="main">
             
   <section id="principi-di-design">
-<h1><span class="section-number">1. </span>Principi di design<a class="headerlink" href="#principi-di-design" title="Link to this heading">¶</a></h1>
-<p>Il Sistema IT-Wallet si basa sul paradigma del Portafoglio di Identità Digitale e ha l’obiettivo di fornire agli Utenti un'esperienza di accesso ai servizi più semplice, veloce e sicura.</p>
-<p>La Soluzione IT-Wallet rappresenta il principale Touchpoint e consente agli Utenti di utilizzare e gestire il proprio PID e i propri Attributi nelle interazioni con soggetti pubblici o privati, sia in contesti fisici che digitali. Il corretto funzionamento del servizio, tuttavia, si fonda su un’ampia rete di interazioni tra diversi Touchpoint e Soluzioni Tecniche, che ne supportano l’erogazione e incidono direttamente sull’Esperienza Utente.</p>
-<p>Per garantire un’elevata qualità del servizio dal punto di vista dell’Esperienza Utente, gli Attori Primari, siano essi enti pubblici o privati, DEVONO assicurare l’usabilità e l’accessibilità delle proprie Soluzioni Tecniche, in allineamento con gli elementi distintivi del Sistema IT-Wallet. Nello specifico:</p>
+<h1><span class="section-number">2. </span>Principi di design<a class="headerlink" href="#principi-di-design" title="Link to this heading">¶</a></h1>
+<p>Il Sistema IT-Wallet si basa sul paradigma del Portafoglio di Identità Digitale e ha l'obiettivo di fornire agli Utenti un'esperienza di accesso ai servizi più semplice, veloce e sicura.</p>
+<p>La Soluzione IT-Wallet rappresenta il principale Touchpoint e consente agli Utenti di utilizzare e gestire il proprio PID e i propri Attributi nelle interazioni con soggetti pubblici o privati, sia in contesti fisici che digitali. Il corretto funzionamento del servizio, tuttavia, si fonda su un'ampia rete di interazioni tra diversi Touchpoint e Soluzioni Tecniche, che ne supportano l'erogazione e incidono direttamente sull'Esperienza Utente.</p>
+<p>Per garantire un'elevata qualità del servizio dal punto di vista dell'Esperienza Utente, gli Attori Primari, siano essi enti pubblici o privati, DEVONO assicurare l'usabilità e l'accessibilità delle proprie Soluzioni Tecniche, in allineamento con gli elementi distintivi del Sistema IT-Wallet. Nello specifico:</p>
 <ul class="simple">
-<li><p><strong>Usabilità</strong>: le Soluzioni Tecniche DEVONO essere progettate e mantenute per garantire elevanti standard di usabilità, allo scopo di facilitare l’adozione del servizio e ridurre la necessità di supporto. Gli enti pubblici DEVONO aderire alle [GL_DESIGN], mentre gli enti privati POSSONO prenderle a riferimento come buone pratiche;</p></li>
+<li><p><strong>Usabilità</strong>: le Soluzioni Tecniche DEVONO essere progettate e mantenute per garantire elevanti standard di usabilità, allo scopo di facilitare l'adozione del servizio e ridurre la necessità di supporto. Gli enti pubblici DEVONO aderire alle [GL_DESIGN], mentre gli enti privati POSSONO prenderle a riferimento come buone pratiche;</p></li>
 <li><p><strong>Accessibilità</strong>: le Soluzioni Tecniche DEVONO essere progettate e mantenute per garantire elevati standard di accessibilità, allo scopo di garantire accesso al servizio indipendentemente da capacità o competenze tecnologiche individuali o da vincoli esterni e di contesto. Gli enti pubblici DEVONO aderire alle [REF_ACCESSIBILITY], mentre gli enti privati DEVONO rispettare quanto previsto dalla normativa vigente;</p></li>
-<li><p><strong>Coerenza</strong>: le Soluzioni Tecniche DEVONO essere progettate e mantenute in coerenza con la Brand Identity del Sistema IT-Wallet e i requisiti funzionali relativi all’Esperienza Utente descritti in queste specifiche, per promuovere la riconoscibilità dei componenti, garantire la coerenza complessiva del sistema e minimizzare il carico cognitivo per l’Utente.</p></li>
+<li><p><strong>Coerenza</strong>: le Soluzioni Tecniche DEVONO essere progettate e mantenute in coerenza con la Brand Identity del Sistema IT-Wallet e i requisiti funzionali relativi all'Esperienza Utente descritti in queste specifiche, per promuovere la riconoscibilità dei componenti, garantire la coerenza complessiva del sistema e minimizzare il carico cognitivo per l'Utente.</p></li>
 </ul>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Principi di Design Indice dei Contenuti</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2.1. Brand Identity del Sistema IT-Wallet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="brand-identity.html#naming">2.1.1. Naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="brand-identity.html#identita-visiva">2.1.2. Identità Visiva</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="brand-identity.html#logo">2.1.2.1. Logo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="brand-identity.html#trust-mark">2.1.2.2. Trust Mark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="brand-identity.html#componenti">2.1.2.3. Componenti</a></li>
+<li class="toctree-l3"><a class="reference internal" href="brand-identity.html#pulsante-di-autenticazione">2.1.2.4. Pulsante di Autenticazione</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">2.2. Funzionalità</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#attivazione-dell-istanza-it-wallet">2.2.1. Attivazione dell'Istanza IT-Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#focus-sul-pid-dati-di-identificazione-della-persona">2.2.1.1. Focus sul PID – Dati di Identificazione della Persona</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#ottenimento-degli-attestati-elettronici-di-attributi">2.2.2. Ottenimento degli Attestati Elettronici di Attributi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#focus-sulle-attestazioni-elettroniche-di-attributi">2.2.2.1. Focus sulle Attestazioni Elettroniche di Attributi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#presentazione-degli-attestati-elettronici">2.2.3. Presentazione degli Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#presentazione-in-prossimita">2.2.3.1. Presentazione in prossimità</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#presentazione-da-remoto">2.2.3.2. Presentazione da remoto</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#gestione-degli-attestati-elettronici">2.2.4. Gestione degli Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#stato-degli-attestati-elettronici">2.2.4.1. Stato degli Attestati Elettronici</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#storico-degli-attestati-elettronici">2.2.4.2. Storico degli Attestati Elettronici</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#archiviazione-e-ripristino-degli-attestati-elettronici-di-attributi">2.2.4.3. Archiviazione e ripristino degli Attestati Elettronici di Attributi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#disattivazione-dell-istanza-it-wallet">2.2.5. Disattivazione dell'Istanza IT-Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#gestione-degli-errori">2.2.6. Gestione degli errori</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#errori-di-attivazione-dell-istanza-it-wallet">2.2.6.1. Errori di Attivazione dell'Istanza IT-Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#errori-di-ottenimento-degli-attestati-elettronici-di-attributi">2.2.6.2. Errori di ottenimento degli Attestati Elettronici di Attributi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#errori-di-presentazione-degli-attestati-elettronici">2.2.6.3. Errori di presentazione degli Attestati Elettronici</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#errori-di-gestione-degli-attestati-elettronici">2.2.6.4. Errori di gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#errori-di-disattivazione-dell-istanza-it-wallet">2.2.6.5. Errori di disattivazione dell'Istanza IT-Wallet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#assistenza-utente">2.2.7. Assistenza Utente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functionalities.html#feedback-utente">2.2.8. Feedback Utente</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
@@ -170,14 +224,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="index.html">
-                    <span class="icon">&lt;</span><span>Documentazione Tecnica del Sistema IT-Wallet - 1.0.0</span></a>
+                <a href="introduction.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">1. </span>Introduction</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="brand-identity.html"><span><span class="section-number">2. </span>Brand Identity del Sistema IT-Wallet</span><span class="icon">&gt;</span></a>
+                    <a href="brand-identity.html"><span><span class="section-number">2.1. </span>Brand Identity del Sistema IT-Wallet</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

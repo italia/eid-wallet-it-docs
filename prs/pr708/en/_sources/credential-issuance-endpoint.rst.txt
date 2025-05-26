@@ -1,14 +1,13 @@
 .. include:: ../common/common_definitions.rst
 
-Credential Issuance Endpoints
-==============================
-
 Credential Offer Endpoint
--------------------------
+"""""""""""""""""""""""""
+
 The Credential Offer endpoint of a Wallet is used by Credential Issuer to interact with the User to initiate a Credential Issuance. The custom URL scheme ``openid-credential-offer://`` MUST be used.
 
 Credential Offer
-^^^^^^^^^^^^^^^^
+................
+
 The Credential Offer made by Credential Issuer consists of a single URI query parameter ``credential_offer``. The Credential Offer URL MAY be included in a QR Code or in an html page with an href button and MUST contain the following mandatory parameters:
 
 .. _table_credential_offer_claim:
@@ -35,15 +34,15 @@ The Credential Offer made by Credential Issuer consists of a single URI query pa
 
 
 Credential Offer Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.........................
 No response is expected from the Wallet.
 
 
 Pushed Authorization Request Endpoint
--------------------------------------
+"""""""""""""""""""""""""""""""""""""
 
 Pushed Authorization Request (PAR) Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..........................................
 
 The request to the Credential Issuer authorization endpoint MUST use HTTP Headers parameters and HTTP POST parameters.
 
@@ -209,7 +208,7 @@ The body of the Wallet Attestation proof of possession JWT, contained in the HTT
       - [:rfc:`7519`. Section 4.1.7].
 
 Pushed Authorization Request (PAR) Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...........................................
 
 If the verification is successful, the Credential Issuer MUST provide the response with a *201 HTTP status code*. The following parameters are included as top-level members in the HTTP response message body, using the ``application/json`` media type as defined in [:rfc:`8259`].
 
@@ -285,14 +284,14 @@ In the following table are listed HTTP Status Codes and related error codes that
 
 
 Authorization endpoint
-----------------------
+""""""""""""""""""""""
 
 The authorization endpoint is used to interact with the Credential Issuer and obtain an authorization grant.
 The authorization server MUST first verify the identity of the User that own the credential.
 
 
 Authorization Request
-^^^^^^^^^^^^^^^^^^^^^
+.....................
 
 The Authorization request is issued by the Web Browser in use by the Wallet Instance, the HTTP methods **POST** or **GET** are used. When the method **POST** is used, the parameters MUST be sent using the *Form Serialization*. When the method **GET** is used, the parameters MUST be sent using the *Query String Serialization*. For more details see Section 13 of [`OIDC`_].
 
@@ -314,7 +313,7 @@ The mandatory parameters in the HTTP authentication request are specified in the
       - [:rfc:`9126`].
 
 Authorization Response
-^^^^^^^^^^^^^^^^^^^^^^^
+......................
 
 The authentication response is returned by the Credential issuer authorization endpoint at the end of the authentication flow.
 
@@ -399,14 +398,14 @@ In case of Authorization Server doesn't redirect the User to the *redirect_uri* 
 
 
 Token endpoint
---------------
+""""""""""""""
 
 The token endpoint is used by the Wallet Instance to obtain an Access Token by presenting an authorization grant, as
 defined in :rfc:`6749`. The Token Endpoint is a protected endpoint with a client authentication based on the model defined in OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_ ].
 
 
 Token Request
-^^^^^^^^^^^^^
+.............
 
 The request to the Credential Issuer Token endpoint MUST be an HTTP request with method POST, with the body message encoded in ``application/x-www-form-urlencoded`` format. The Wallet Instance sends the Token endpoint request with ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` as header parameters according to `OAUTH-ATTESTATION-CLIENT-AUTH`_.
 
@@ -495,7 +494,7 @@ The payload of a **DPoP JWT Proof** MUST contain the following claims:
 
 
 Token Response
-^^^^^^^^^^^^^^^
+..............
 
 If the Token Request is successfully validated, the Authorization Server provides an HTTP Token Response with a *200 (OK)* status code. The Token Response contains the following claims.
 
@@ -578,7 +577,7 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The Credential Issuer cannot fulfill the request within the defined time interval.
 
 Access Token
-^^^^^^^^^^^^
+............
 
 A DPoP-bound Access Token is provided by the Credential Issuer Token endpoint as a result of a successful token request. The Access Token is encoded in JWT format, according to [:rfc:`7519`]. The Access Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
 
@@ -637,7 +636,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
     - [:rfc:`9449`. Section 6.1] and [:rfc:`7638`].
 
 Refresh Token
-^^^^^^^^^^^^^
+.............
 
 A *DPoP-bound Refresh Token* is provided by the Credential Issuer Token endpoint as a result of a successful token request. The Refresh Token is encoded in JWT format, according to [:rfc:`7519`]. The Refresh Token MUST have at least the following mandatory claims and it MUST be bound to the public key that is provided by the DPoP proof. This binding can be accomplished based on the methodology defined in Section 6 of (:rfc:`9449`).
 
@@ -699,18 +698,18 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
     - [:rfc:`9449`. Section 6.1] and [:rfc:`7638`].
 
 Nonce Endpoint
---------------
+""""""""""""""
 
 The Nonce Endpoint provides a ``c_nonce`` value useful to create a proof of possession of key material for the request to the Credential Endpoint, as defined in Section 7 of `OpenID4VCI`_.
 
 Nonce Request
-^^^^^^^^^^^^^
+.............
 
 The request for a nonce MUST be an HTTP POST without a body addressed to the Credential Issuer Nonce Endpoint mapped in the Credential Issuer Metadata.
 
 
 Nonce Response
-^^^^^^^^^^^^^^
+..............
 
 Nonce Response to the Wallet Instance MUST be sent using `application/json` media type. In case of Nonce Request successful, the Credential Issuer MUST return HTTP response with a *200 (OK)* status code.
 
@@ -730,13 +729,13 @@ The Nonce Response contains the following parameter:
     - Section 7.2 of [`OpenID4VCI`_].
 
 Credential endpoint
--------------------
+"""""""""""""""""""
 
 The Credential Endpoint issues a Credential upon the presentation of a valid Access Token, as defined in `OpenID4VCI`_.
 
 
 Credential Request
-^^^^^^^^^^^^^^^^^^^
+..................
 
 The Wallet Instance when requests the Digital Credential to the Credential endpoint, MUST use the following parameters in the message body of the HTTP POST request, using the `application/json` media type.
 
@@ -816,7 +815,7 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
 
 
 Credential Response
-^^^^^^^^^^^^^^^^^^^^
+...................
 
 Credential Response to the Wallet Instance MUST be sent using `application/json` media type. If the Credential Request is successfully validated, and the Credential is immediately available, the Credential Issuer MUST return HTTP response with a *200 (OK)* status code. If the Credential is not available and the deferred flow is supported by the Credential Issuer, an HTTP status code *202* MUST be returned.
 
@@ -914,7 +913,7 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The Credential Issuer cannot fulfill the request within the defined time interval.
 
 Deferred Endpoint
------------------
+"""""""""""""""""
 
 Credential Issuers MAY support the *Deferred Endpoint* aiming to satify the cases where an immediate issuance might be not possible, due to errors during the communication between the Credential Issuer and the Authentic Source (for example the Authentic Source is temporarily unavailable, etc.) or due to administrative or technical processes.
 
@@ -944,7 +943,7 @@ If Credential Issuers, supporting this flow, are not able to immediately issue a
 The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). Credential Issuers MAY send a notification to the User through a communication channel (e.g. email address), if previously provided by the User to the Credential Issuer.
 
 Deferred Request
-^^^^^^^^^^^^^^^^
+................
 
 Upon receipt of the notification (by the Wallet Instance and/or by the Credential Issuer), the User accesses the Wallet Instance.
 
@@ -981,12 +980,12 @@ The following is a non-normative example of a Deferred Credential Request:
   }
 
 Deferred Response
-^^^^^^^^^^^^^^^^^
+.................
 
 The Deferred Credential Response MUST be sent using the `application/json`` media type. If the Digital Credential is available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response`. If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to Section 9.3 of `OpenID4VCI`_.
 
 Notification endpoint
----------------------
+"""""""""""""""""""""
 
 The Notification Endpoint is used by the Wallet to notify the Credential Issuer of certain events for issued Credentials, such as if the Credential was successfully stored in the Wallet Instance.
 
@@ -996,7 +995,7 @@ This endpoint MUST be protected using a DPoP Access Token. TLS for the confident
 
 
 Notification Request
-^^^^^^^^^^^^^^^^^^^^
+....................
 
 The Notification Request MUST be an HTTP POST using the *application/json* media type with the following parameters.
 
@@ -1024,7 +1023,7 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
     - Section 10.1 of [`OpenID4VCI`_].
 
 Notification Response
-^^^^^^^^^^^^^^^^^^^^^
+.....................
 
 The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 10.2 of [`OpenID4VCI`_].
 

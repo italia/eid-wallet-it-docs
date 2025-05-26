@@ -23,7 +23,6 @@ The relevant entities and interfaces involved in the issuance flow are:
 
   credential-issuance-high-level.rst
   credential-issuance-low-level.rst
-  credential-issuance-endpoint.rst
 
 
 

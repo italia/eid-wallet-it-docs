@@ -21,8 +21,8 @@ The following diagram depicts the Issuer Solution High Level Architecture.
       
 ..    Issuer Solution High Level Architecture
 
-Requirements
-------------
+Credential Issuer Requirements
+------------------------------
 
 The Digital Credential Issuer Solution MUST:
 
@@ -99,7 +99,7 @@ This component MUST establish secure connections with Authentic Sources to:
    - Provide cryptographic evidence of User authentication when required.
 
 .. note::
-   For public Authentic Sources, a Credential Issuer MUST use PDND according to rules in Sections :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Status Update by Authentic Sources`, and :ref:`e-service-pdnd-catalogue:Authentic Source Catalogue`.
+   For public Authentic Sources, a Credential Issuer MUST use PDND according to rules in Sections :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Status Update by Authentic Sources`, and :ref:`authentic-source-endpoint:e-Service PDND Authentic Source Catalogue`.
 
 Credential Lifecycle Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -133,18 +133,7 @@ The Digital Credential Issuer Solution supports these interaction patterns:
 
 All interactions must follow the security considerations in Section :ref:`credential-issuance:Digital Credential Issuance`, including proper handling of tokens, proofs, and cryptographic materials.
 
-Exposed Endpoints
------------------
-
-Federation Endpoints
-^^^^^^^^^^^^^^^^^^^^
-
-The Credential Issuers MUST provide an Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`credential-issuer-entity-configuration:Entity Configuration of Credential Issuers`.
-
-Credential Issuer Component Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-These endpoints implement the protocols described in Section :ref:`credential-issuance-endpoint:Credential Issuance Endpoints` for Digital Credential issuance operations.
-
+.. include:: credential-issuer-entity-configuration.rst
+.. include:: credential-issuer-metadata.rst
 
 
