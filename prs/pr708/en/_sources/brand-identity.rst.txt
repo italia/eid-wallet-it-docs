@@ -4,7 +4,7 @@
 IT-Wallet System Brand Identity
 ===============================
 
-The IT-Wallet Brand Identity defines the system's personality and it's expressed through a set of standardized elements, including its naming and Visual Identity. It strengthens and promotes the Trust Model at the basis of the entire ecosystem, that is to say the framework that legitimizes the Actors' participation in the IT-Wallet System and ensures the security and integrity of its processes.
+The IT-Wallet Brand Identity defines the system's personality and is expressed through a series of codified elements that distinguish it, including the naming and the elements specific to the Visual Identity. This consolidates the implementation of the Trust Model.
 
 It is important to strengthen the User awareness and trust in the ecosystem by integrating coherent graphical elements into the Technical Solutions and across the various Touchpoints.
 
@@ -28,10 +28,9 @@ Naming
 Visual Identity
 ---------------
 
-The IT-Wallet System has its own Visual Identity. All actors within the ecosystem MUST ensure that their Visual Identity and that of their Technical Solutions are distinct yet compatible and cohesive with the Visual Identity of IT-Wallet System. 
+The IT-Wallet System has its own Visual Identity. Ecosystem participants MUST apply it in such a way that it stands out while at the same time dialogues and coexists with their own Visual Identity and that of their own Technical Solutions.
 
-Specifically, all Primary Actors MAY use the Official Resources related to the Visual Identity of the IT-Wallet System. Their use MUST be exclusively aimed at representing the participation in the IT-Wallet System and not at replacing the Visual Identity of their own Technical Solutions.
-
+Specifically, all Primary Actors MUST use the Official Resources related to the Visual Identity of the IT-Wallet System. Their use is intended to represent participation in the IT-Wallet System without replacing the Visual Identity of their own Technical Solution.
 
 Logo
 ^^^^

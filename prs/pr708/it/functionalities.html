@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
+<html lang="it" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,14 +9,15 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/documentation_options.js?v=3fd72285"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
     <link rel="prev" title="2. Brand Identity del Sistema IT-Wallet" href="brand-identity.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -112,11 +113,11 @@
         <div class="searchbox_wrapper">
             
 <search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3 id="searchlabel">Ricerca veloce</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
+      <input type="submit" value="Vai" />
     </form>
     </div>
 </search>
@@ -157,7 +158,7 @@
 <section id="attivazione-dellistanza-it-wallet">
 <h2><span class="section-number">3.1. </span>Attivazione dell’Istanza IT-Wallet<a class="headerlink" href="#attivazione-dellistanza-it-wallet" title="Link to this heading">¶</a></h2>
 <p>L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione IT-Wallet per l’ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un’operazione di Autenticazione dell'Utente sull’Istanza IT-Wallet tramite la propria identità digitale che consente la generazione del PID.</p>
-<p>Di seguito i requisiti funzionali e di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione IT-Wallet:</p>
+<p>Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione IT-Wallet:</p>
 <ul class="simple">
 <li><p>l'Utente scarica la Soluzione IT-Wallet sul suo dispositivo così da generare la propria Istanza IT-Wallet;</p></li>
 <li><p>l'Utente imposta un metodo di sblocco per la sua Istanza IT-Wallet se non è già stato impostato in precedenza nell’app. In aggiunta al PIN, l’Utente può decidere di usare il metodo di sblocco usato per il dispositivo e gestito a livello di sistema operativo (e.g. autenticazione biometrica) come alternativa al PIN. L’Utente utilizza il metodo di sblocco ogni qual volta è richiesta un’autorizzazione a garanzia della sicurezza e della protezione delle proprie informazioni;</p></li>
@@ -200,7 +201,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <li><p><strong>dal Catalogo dell’Istanza IT-Wallet</strong>: l’Utente esplora l’elenco degli Attestati Elettronici di Attributi messi a disposizione dalla Soluzione IT-Wallet, seleziona quello di suo interesse e avvia la procedura di richiesta che si conclude con l’ottenimento dell’Attestato Elettronico di Attributi nell’Istanza IT-Wallet;</p></li>
 <li><p><strong>da un Touchpoint del Titolare di Fonte Autentica</strong> (o del Fornitore di Attestati Elettronici di Attributi qualora coincida con il Titolare di Fonte Autentica): l’Utente interagisce col servizio digitale del Titolare di Fonte Autentica che gli permette di ottenere nella sua Istanza IT-Wallet uno specifico Attestato Elettronico di Attributi tramite un Pulsante di Ingaggio.</p></li>
 </ul>
-<p>Nonostante le modalità di avvio della richiesta siano diverse, i flussi di ottenimento condividono una struttura e un processo simili. Di seguito, sono illustrati i requisiti funzionali a supporto dell’Esperienza Utente del flusso di ottenimento di un Attestato Elettronico di Attributi dal Catalogo che il Fornitore di Soluzione IT-Wallet DEVE garantire attraverso la propria Soluzione IT-Wallet:</p>
+<p>Nonostante le modalità di avvio della richiesta siano diverse, i flussi di ottenimento condividono una struttura e un processo simili. Di seguito, sono illustrati i requisiti dell’Esperienza Utente del flusso di ottenimento di un Attestato Elettronico di Attributi dal Catalogo che il Fornitore di Soluzione IT-Wallet DEVE garantire attraverso la propria Soluzione IT-Wallet:</p>
 <ul class="simple">
 <li><p>l’Utente accede alla propria Istanza IT-Wallet utilizzando la modalità di sblocco precedentemente impostata;</p></li>
 <li><p>l’Utente seleziona l’Attestato Elettronico di Attributi che intende aggiungere alla sua Istanza IT-Wallet scegliendo tra quelli disponibili nel Catalogo;</p></li>
@@ -256,7 +257,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <li><p><strong>Modalità supervisionata</strong>: l'Utente, tramite l’Istanza IT-Wallet, presenta il PID e/o uno o più Attestati Elettronici di Attributi, a un Verificatore di Attestati Elettronici dotato di un’apposita app o sistema di verifica (e.g. agente delle forze dell’ordine, farmacista, etc.);</p></li>
 <li><p><strong>Modalità non supervisionata</strong>: l’Utente, tramite l’Istanza IT-Wallet, presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici a un dispositivo preposto (e.g. tornello, ATM, etc.).</p></li>
 </ul>
-<p>Di seguito i requisiti funzionali a supporto dell’Esperienza Utente relativi a entrambe le modalità che il Fornitore di Soluzione IT-Wallet DEVE garantire attraverso la propria Soluzione IT-Wallet.</p>
+<p>Di seguito i requisiti dell’Esperienza Utente relativi a entrambe le modalità che il Fornitore di Soluzione IT-Wallet DEVE garantire attraverso la propria Soluzione IT-Wallet.</p>
 <p><strong>Modalità supervisionata</strong></p>
 <ul class="simple">
 <li><p>L’Utente accede alla propria Istanza IT-Wallet utilizzando la modalità di sblocco precedentemente impostata;</p></li>
@@ -753,7 +754,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 21/05/2025.
+      Ultimo aggiornamento 26/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

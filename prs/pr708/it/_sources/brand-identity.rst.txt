@@ -4,7 +4,7 @@
 Brand Identity del Sistema IT-Wallet 
 ====================================
 
-La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e si declina in una serie di elementi codificati che la contraddistinguono, tra cui il naming e gli elementi propri dell’Identità Visiva. Questa contribuisce a rafforzare e promuovere il Modello della Fiducia che sta alla base dell’intero ecosistema ovvero il modello che legittima la partecipazione degli attori al Sistema IT-Wallet e ne determina la sicurezza e l'integrità dei processi. 
+La Brand Identity del Sistema IT-Wallet definisce la personalità del sistema e si declina in una serie di elementi codificati che la contraddistinguono, tra cui il naming e gli elementi propri dell’Identità Visiva. Questa consolida l'implementazione del Modello della Fiducia.
 
 È quindi importante che la consapevolezza dell’Utente e la sua fiducia nell’ecosistema siano favoriti dalla presenza di elementi grafici, da integrare nelle Soluzioni Tecniche e nei diversi Touchpoint. 
 
@@ -28,9 +28,9 @@ Naming
 Identità Visiva
 ---------------
 
-Il Sistema IT-Wallet ha una sua propria un’Identità Visiva. Pertanto, i diversi attori dell’ecosistema DEVONO garantire che la propria Identità Visiva e quella delle proprie Soluzione Tecniche siano in grado di distinguersi e allo stesso tempo di dialogare e coesistere con quella del Sistema IT-Wallet.  
+Il Sistema IT-Wallet ha una propria Identità Visiva. I partecipanti dell’ecosistema DEVONO applicarla in modo che si distingua e allo stesso tempo dialoghi e coesista con l'Identità Visiva propria e delle proprie Soluzioni Tecniche.  
  
-In particolare, tutti gli Attori Primari POSSONO utilizzare le Risorse Ufficiali relative all’Identità Visiva del Sistema IT-Wallet. Il loro utilizzo DEVE avere come unico scopo quello di rappresentare la partecipazione al Sistema IT-Wallet e non di sostituire dell’Identità Visiva della propria Soluzione Tecnica. 
+In particolare, tutti gli Attori Primari DEVONO utilizzare le Risorse Ufficiali relative all’Identità Visiva del Sistema IT-Wallet. Il loro utilizzo ha lo scopo di rappresentare la partecipazione al Sistema IT-Wallet senza sostituire l’Identità Visiva della propria Soluzione Tecnica. 
 
  
 Logo 
@@ -46,7 +46,7 @@ Di seguito i requisiti generali per il suo utilizzo, validi sia in riferimento a
 
 - il Logo DEVE essere quello presente all’interno delle Risorse Ufficiali e DEVE seguire le relative specifiche di utilizzo disponibili nelle Risorse Ufficiali; 
 
-- il Logo DEVE essere utilizzato in formato ``application/svg +xml``; 
+- il Logo DEVE essere utilizzato in formato ``application/svg+xml``; 
 
 - il Logo NON DEVE essere alterato, distorto, modificato o sostituito da loghi non ufficiali; 
 
@@ -84,7 +84,7 @@ Di seguito i requisiti generali per il suo utilizzo, validi sia in riferimento a
 Componenti 
 ^^^^^^^^^^
 
-I componenti rappresentano quegli elementi del Sistema IT-Wallet che abilitano l’Utente a interagire con le diverse Soluzioni Tecniche tramite la propria Istanza IT-Wallet.  
+Sono definiti componenti gli elementi del Sistema IT-Wallet che abilitano l’Utente a interagire con le diverse Soluzioni Tecniche tramite la propria Istanza IT-Wallet.  
 
 Le Risorse Ufficiali mettono a disposizione sia componenti complessi, ovvero template relativi a interi flussi, sia componenti atomici, ovvero singoli elementi da integrare all’interno di interfacce preesistenti (e.g. i Pulsanti di Ingaggio). 
 
