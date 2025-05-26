@@ -47,7 +47,7 @@ Notify Available Credential
   :stub-columns: 1
 
   * - **Description**
-    - This service informs Users when a specific credential has become
+    - This service informs Users when a specific Credential has become
       available to be entered into the Wallet
   * - **Provider**
     - Credential Issuer

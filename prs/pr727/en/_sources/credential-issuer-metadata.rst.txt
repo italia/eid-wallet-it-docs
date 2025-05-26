@@ -67,7 +67,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **credential_issuer**
     - The Credential Issuer identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 11.2.1 and 11.2.3.
   * - **credential_endpoint**
-    - URL of the credential endpoint. See `OpenID4VCI`_ Section 11.2.3.
+    - URL of the Credential endpoint. See `OpenID4VCI`_ Section 11.2.3.
   * - **nonce_endpoint**
     - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
   * - **revocation_endpoint**
