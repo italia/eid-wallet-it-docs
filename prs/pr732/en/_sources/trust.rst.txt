@@ -802,7 +802,7 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
      - ``DNS=example.net``
      - ``DNS=*.example.org``
 
-Below a non-normative example in plain text (OpenSSL format) of an X.509 Certificate Chain with an intermediary, starting from the leaf certificate.
+Below is a non-normative example, in plain text (OpenSSL format), of an X.509 certificate chain with an intermediate CA, starting from the Leaf certificate.
 
 
 .. code-block:: text
