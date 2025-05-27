@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6.3. Digital Credentials Catalogue &#8212; IT-Wallet Technical Documentation - PR #736 - 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Digital Credential Flows" href="digital-credential-flows.html" />
+    <link rel="prev" title="6.2. Digital Credential Lifecycle" href="credential-revocation.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #736 - 1.0.0</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="credential-data-model.html">6.1. Digital Credential Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">6.2. Digital Credential Lifecycle</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Digital Credentials Catalogue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="digital-credentials-catalogue">
+<h1><span class="section-number">6.3. </span>Digital Credentials Catalogue<a class="headerlink" href="#digital-credentials-catalogue" title="Link to this heading">¶</a></h1>
+<p>The Digital Credentials Catalogue is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.</p>
+<p>The Digital Credential Catalogue aims to:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Facilitate Digital Credential discovery for Users.</p></li>
+<li><p>Standardize the technical and functional description of Digital Credentials.</p></li>
+<li><p>Enable interoperability between different Issuers and Relying Parties.</p></li>
+<li><p>Simplify the integration process for Wallet Providers and Relying Parties.</p></li>
+<li><p>Ensure trust in the ecosystem through certified information.</p></li>
+<li><p>Provide transparency on the ecosystem of available Digital Credentials.</p></li>
+</ol>
+</div></blockquote>
+<p>The main Entities involved in the Digital Credential Catalogue are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Trust Anchor</strong>: It manages and maintains the Digital Credential Catalogue, guaranteeing its authenticity and integrity.</p></li>
+<li><p><strong>Supervisory Body</strong>: It interacts with the Trust Anchor and the Digital Credential Catalogue to monitor the registration phase ensuring security and privacy according to national/European regulations, keeping all the information reliable and updated.</p></li>
+<li><p><strong>Digital Credential Issuers</strong>: The entities authorized to issue Digital Credentials, registering them in the Catalogue.</p></li>
+<li><p><strong>Relying Parties</strong>: They use the Digital Credential Catalogue to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.</p></li>
+<li><p><strong>Wallet Providers</strong>: They access the Digital Credential Catalogue to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.</p></li>
+<li><p><strong>Users</strong>: The citizens who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.</p></li>
+<li><p><strong>Authentic Sources</strong>: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue.</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-default" id="id1">
+<span id="fig-catalogue-svg"></span><p class="plantuml">
+<object data="_images/plantuml-944c55af858aa41e57195dcf451c634be13664a1.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-944c55af858aa41e57195dcf451c634be13664a1.png"><img src="_images/plantuml-944c55af858aa41e57195dcf451c634be13664a1.png" alt="The figure illustrates the Digital Credential Entities." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080">Entity-Relationship diagram of Digital Credential Catalogue.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The following table summarizes the main information that MUST be provided by the Digital Credential Catalogue:</p>
+<table class="longtable docutils align-default" id="id2">
+<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Digital Credential Catalogue - Main information</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Information related to</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Digital Credential Metadata</p></td>
+<td><p>Essential identifying information and characteristics of the Digital Credential, including:</p>
+<ul class="simple">
+<li><p><strong>Credential Unique identifier</strong>: A unique identifier string of each Digital Credential.</p></li>
+<li><p><strong>User authentication methods</strong>: User authentication mechanisms used to request the Digital Credential, if required by Issuers or Authentic Sources.</p></li>
+<li><p><strong>Minimum Level of Assurance</strong>: The minimum Level of Assurance required for the Digital Credential's reliability. It MUST take into account the Level of Assurance of User authentication, when applicable, and Wallet Instance.</p></li>
+<li><p><strong>Additional display characteristics</strong>: Visual and formatting specifications, such as a background reference image, logo, etc.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Digital Credential Issuers</p></td>
+<td><p>Details about the organization authorized to issue the Digital Credential, such as:</p>
+<ul class="simple">
+<li><p><strong>Issuer identifiers</strong>: Unique identifier for the Digital Credential issuer.</p></li>
+<li><p><strong>Issuer type</strong>: Classification as PID, (Q)EAA, or Pub-EAA Provider.</p></li>
+<li><p><strong>Additional information</strong>: Organizational details including name, code, and contact information.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Authentic Sources</p></td>
+<td><p>Information about the authoritative data source, such as:</p>
+<ul class="simple">
+<li><p><strong>Authentic Source identifiers</strong>: Unique identifier for the Digital Credential's authoritative source.</p></li>
+<li><p><strong>Authentic Source type</strong>: Classification as Public or Private entity.</p></li>
+<li><p><strong>Additional information</strong>: Organizational details including name, code, and contact information.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Technical Specification</p></td>
+<td><p>Technical details, including:</p>
+<ul class="simple">
+<li><p><strong>Digital Credential schemes</strong>: Framework and structure specifications.</p></li>
+<li><p><strong>Digital Credential formats</strong>: Data format and encoding standards.</p></li>
+<li><p><strong>Authentication policy</strong>: Methods and requirements for verification.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Terms of Use</p></td>
+<td><p>Conditions and limitations for Digital Credential usage, such as:</p>
+<ul class="simple">
+<li><p><strong>Credential validity</strong>: Time period during which the Digital Credential is valid and, when applicable, mechanisms and technical details for invalidating Digital Credentials (revocation/suspension methods).</p></li>
+<li><p><strong>Restriction policy</strong>: If applicable, rules governing the Digital Credential's use and limitations according to national regulations. It is used, for example, to specify if only specific legal type Entities, for example Pub-EAA Provider and public Wallet Solutions, are allowed to issue and obtain the Digital Credential.</p></li>
+<li><p><strong>Pricing policy</strong>: Information related to pricing models of Digital Credential, such as <cite>free</cite>, <cite>issuance_based</cite>, <cite>verification_based</cite>.</p></li>
+<li><p><strong>Digital Credential purposes</strong>: Information related to the allowed purposes for which the Digital Credential can be used. Each Digital Credential type can be used for multiple purposes.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Claims and Taxonomy References</p></td>
+<td><p>Content and classification information:</p>
+<ul class="simple">
+<li><p><strong>List of displayed claims</strong>: Specific Digital Credential content displayed to the User.</p></li>
+<li><p><strong>Structured taxonomy references</strong>: Classification systems and controlled vocabularies used.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalogue <cite>.well-known</cite> endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalogue</span></code> endpoint.</p>
+<section id="digital-credentials-categories">
+<h2><span class="section-number">6.3.1. </span>Digital Credentials Categories<a class="headerlink" href="#digital-credentials-categories" title="Link to this heading">¶</a></h2>
+<p>Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.</p>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-number">Table 6.2 </span><span class="caption-text">Digital Credential Domains and Categories</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Domain</strong></p></th>
+<th class="head"><p><strong>Category</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>IDENTITY</em></p></td>
+<td><ul class="simple">
+<li><p>PERSON_IDENTIFICATION</p></li>
+<li><p>ELECTRONIC_RESIDENCY</p></li>
+</ul>
+</td>
+<td><p>Credentials that establish or verify the identity of a person, including physical and digital identity documents legally recognized by national laws.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>AUTHORIZATION</em></p></td>
+<td><ul class="simple">
+<li><p>DRIVING_LICENSE</p></li>
+<li><p>PROFESSIONAL_LICENSE</p></li>
+<li><p>TRAVEL_DOCUMENT</p></li>
+<li><p>ACCESS_PERMIT</p></li>
+</ul>
+</td>
+<td><p>Credentials that grant specific permissions, rights or authorizations to perform certain activities or access restricted areas.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>EDUCATION</em></p></td>
+<td><ul class="simple">
+<li><p>ACADEMIC_DEGREE</p></li>
+<li><p>CERTIFICATE</p></li>
+<li><p>TRAINING_RECOGNITION</p></li>
+</ul>
+</td>
+<td><p>Credentials related to educational achievements, qualifications, and professional training recognition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>HEALTH</em></p></td>
+<td><ul class="simple">
+<li><p>INSURANCE_CARD</p></li>
+<li><p>DISABILITY_CARD</p></li>
+<li><p>MEDICAL_PRESCRIPTION</p></li>
+</ul>
+</td>
+<td><p>Credentials related to healthcare access, medical history, insurance coverage, and health-related documents.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>FINANCIAL</em></p></td>
+<td><ul class="simple">
+<li><p>INCOME_CERTIFICATE</p></li>
+<li><p>TAX_STATEMENT</p></li>
+<li><p>FAMILY_ECONOMIC_STATUS</p></li>
+</ul>
+</td>
+<td><p>Credentials that attest to financial status, income levels, taxation, or economic situation of individuals or families.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MEMBERSHIP</em></p></td>
+<td><ul class="simple">
+<li><p>ASSOCIATION</p></li>
+<li><p>LOYALTY_PROGRAM</p></li>
+<li><p>CLUB_MEMBERSHIP</p></li>
+</ul>
+</td>
+<td><p>Credentials that confirm affiliation with organizations, participation in programs, or membership status.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>ATTESTATION</em></p></td>
+<td><ul class="simple">
+<li><p>PUBLIC_STATEMENT</p></li>
+<li><p>CIVIL_STATUS</p></li>
+<li><p>CERTIFICATION</p></li>
+</ul>
+</td>
+<td><p>Credentials that provide official statements, confirmations of status, or certifications issued by authorities.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="digital-credentials-catalogue-structure">
+<h2><span class="section-number">6.3.2. </span>Digital Credentials Catalogue Structure<a class="headerlink" href="#digital-credentials-catalogue-structure" title="Link to this heading">¶</a></h2>
+<p>Digital Credentials Catalogue contents is secured in a JWS that contains the following JOSE header parameters:</p>
+<table class="longtable docutils align-default" id="table-catalogue-parameters">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>JOSE header</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">JOSE</span></code>.</p></td>
+<td><p>[<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.9].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>alg</strong></p></td>
+<td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or with a symmetric algorithm (MAC) identifier.</p></td>
+<td><p>[<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.1].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>kid</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the public key.</p></td>
+<td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.4].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>x5c</strong></p></td>
+<td><p>OPTIONAL. Contains the X.509 public key Certificate or Certificate chain [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>] corresponding to the key used to digitally sign the JWS. When the header parameter <cite>kid</cite> value is present, it MUST refer to the same leaf's cryptographic public key used with the X.509 Certificate.</p></td>
+<td><p>[<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.6.].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cty</strong></p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+<td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.6.].</p></td>
+</tr>
+</tbody>
+</table>
+<p>The JWS payload contains the following parameters:</p>
+<table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-number">Table 6.3 </span><span class="caption-text">First-level Fields of the Catalog</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>catalog_version</strong></p></td>
+<td><p>REQUIRED. Version of the Digital Credential Catalogue format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iss</strong></p></td>
+<td><p>REQUIRED. Issuer identifier of the Digital Credential Catalogue.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>last_modified</strong></p></td>
+<td><p>REQUIRED. Timestamp of the last modification to the Digital Credential Catalogue.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>taxonomy_uri</strong></p></td>
+<td><p>REQUIRED. URI of the claims taxonomy reference document.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>taxonomy_uri#integrity</strong></p></td>
+<td><p>OPTIONAL. Cryptographic digest of the taxonomy document for integrity verification.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>credentials</strong></p></td>
+<td><p>REQUIRED. Array containing Digital Credential definitions.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each element of the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array contains at least the following information:</p>
+<table class="longtable docutils align-default" id="id5">
+<caption><span class="caption-number">Table 6.4 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>version</strong></p></td>
+<td><p>REQUIRED. Version of the Digital Credential definition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the Digital Credential type.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>legal_type</strong></p></td>
+<td><p>REQUIRED. Legal classification of the Credential (e.g., <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code>, <code class="docutils literal notranslate"><span class="pre">qeaa</span></code>, <code class="docutils literal notranslate"><span class="pre">eaa</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>localization</strong></p></td>
+<td><p>OPTIONAL. Localization settings, including:</p>
+<ul class="simple">
+<li><p><strong>default_locale</strong>: Default language for text.</p></li>
+<li><p><strong>available_locales</strong>: List of supported languages.</p></li>
+<li><p><strong>base_uri</strong>: Base URI for localization resources.</p></li>
+<li><p><strong>version</strong>: Version of the localization files.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><p>REQUIRED. Human-readable name of the Digital Credential. A suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> MAY be added for content localisation management.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>description</strong></p></td>
+<td><p>REQUIRED. Human-readable Digital Credential description. A suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> MAY be added for content localisation management.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>restriction_policy</strong></p></td>
+<td><p>OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.</p>
+<ul class="simple">
+<li><p><strong>allowed_wallet_ids</strong>: List of allowed Wallet Solutions identifiers.</p></li>
+<li><p><strong>allowed_issuer_ids</strong>: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the <strong>issuers</strong> field of the corresponding Digital Credential.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>pricing_policy</strong></p></td>
+<td><p>OPTIONAL. Information about Digital Credential pricing, including:</p>
+<ul class="simple">
+<li><p><strong>models</strong>: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing:</p>
+<ul>
+<li><p><strong>pricing_type</strong>: Type of pricing model, such as <code class="docutils literal notranslate"><span class="pre">issuance_based</span></code>, <code class="docutils literal notranslate"><span class="pre">verification_based</span></code>, <code class="docutils literal notranslate"><span class="pre">subscription_based</span></code>, <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
+<li><p><strong>price</strong>: Cost associated with the model.</p></li>
+<li><p><strong>currency</strong>: Currency of the price.</p></li>
+</ul>
+</li>
+<li><p><strong>pricing_model_uri</strong>: URI to the detailed pricing model documentation.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>validity_info</strong></p></td>
+<td><p>Information about Digital Credential validity, including at least:</p>
+<ul class="simple">
+<li><p><strong>max_validity_days</strong>: Maximum validity period in days.</p></li>
+<li><p><strong>status_methods</strong>: Supported status verification methods (e.g. <code class="docutils literal notranslate"><span class="pre">status_list</span></code>).</p></li>
+<li><p><strong>allowed_states</strong>: Allowed Digital Credential states (e.g. <code class="docutils literal notranslate"><span class="pre">valid</span></code>, <code class="docutils literal notranslate"><span class="pre">revoked</span></code>, <code class="docutils literal notranslate"><span class="pre">suspended</span></code>).</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>authentication</strong></p></td>
+<td><p>REQUIRED. Digital Credential authentication requirements</p>
+<ul class="simple">
+<li><p><strong>user_auth_required</strong>: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.</p></li>
+<li><p><strong>min_loa</strong>: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.</p></li>
+<li><p><strong>supported_eid_schemes</strong>: REQUIRED if <code class="docutils literal notranslate"><span class="pre">user_auth_required</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>. Supported digital identity authentication schemes.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>purposes</strong></p></td>
+<td><p>REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:</p>
+<ul class="simple">
+<li><p><strong>id</strong>: Unique identifier for the purpose (e.g., &quot;driving-authorization&quot;, &quot;person-identification&quot;).</p></li>
+<li><p><strong>description</strong>: Human-readable purpose description with a suffix <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> for content localisation.</p></li>
+<li><p><strong>category</strong>: Main category in the Credential taxonomy (e.g., <code class="docutils literal notranslate"><span class="pre">AUTHORIZATION</span></code>, <code class="docutils literal notranslate"><span class="pre">IDENTITY</span></code>).</p></li>
+<li><p><strong>subcategory</strong>: Subcategory within the taxonomy (e.g., <code class="docutils literal notranslate"><span class="pre">DRIVING_LICENSE</span></code>, <code class="docutils literal notranslate"><span class="pre">PERSON_IDENTIFICATION</span></code>).</p></li>
+<li><p><strong>claims_required</strong>: Array of claim identifiers that are required when using the Credential for this purpose.</p></li>
+<li><p><strong>claims_recommended</strong>: Array of claim identifiers that are recommended but not mandatory for this purpose.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>issuers</strong></p></td>
+<td><p>REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
+<td><p>REQUIRED. Array of relevant information about authorized Authentic Sources, including administrative and technical data related the provisioning of data to the Credential Issuers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>formats</strong></p></td>
+<td><p>REQUIRED. Array of supported technical formats of Digital Credentials.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>display_properties</strong></p></td>
+<td><p>REQUIRED. Visual presentation properties of Digital Credentials, e.g.:</p>
+<ul class="simple">
+<li><p><strong>templates</strong>: Visual templates for the Credential, e.g. <cite>svg</cite> template.</p></li>
+<li><p><strong>background_color</strong>: Background color in hexadecimal format.</p></li>
+<li><p><strong>text_color</strong>: Text color in hexadecimal format.</p></li>
+<li><p><strong>logo_uri</strong>: URI to the Digital Credential logo.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>claims</strong></p></td>
+<td><p>REQUIRED. Array of claims contained in the Digital Credential.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The corresponding example of Digital Credentials Catalogue as decoded in JSON for both header and payload is the following:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="s2">&quot;JOSE&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="s2">&quot;e9bc097a-ce51-4036-9562-d2ade882db0d&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;cty&quot;</span><span class="p">:</span><span class="s2">&quot;application/json&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;catalog_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-03-15T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;taxonomy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/credential-taxonomy&quot;</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">&quot;taxonomy_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V&quot;</span><span class="p">,</span><span class="w">   </span>
+<span class="w">   </span><span class="nt">&quot;credentials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential.mdl.name&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential.mdl.description&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">               </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="s2">&quot;https://wallet-provider2.example.org/wallet_solution&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;allowed_issuer_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">               </span><span class="s2">&quot;https://issuer.example.org&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;pricing_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">             </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">               </span><span class="p">{</span>
+<span class="w">                 </span><span class="nt">&quot;pricing_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verification_based&quot;</span><span class="p">,</span>
+<span class="w">                 </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span>
+<span class="w">                 </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span>
+<span class="w">               </span><span class="p">}</span>
+<span class="w">             </span><span class="p">],</span>
+<span class="w">             </span><span class="nt">&quot;pricing_model_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/pricing&quot;</span>
+<span class="w">           </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;validity_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;max_validity_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;status_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;status_list&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;allowed_states&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">               </span><span class="s2">&quot;valid&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="s2">&quot;revoked&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="s2">&quot;suspended&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">         </span><span class="p">},</span><span class="w">       </span>
+<span class="w">         </span><span class="nt">&quot;authentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;user_auth_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;min_loa&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;supported_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;it-wallet&quot;</span><span class="p">]</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;purposes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving-authorization&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.driving_authorization.description&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;subcategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;claims_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">],</span>
+<span class="w">               </span><span class="nt">&quot;claim_recommended&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_country&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_jurisdiction&quot;</span><span class="p">]</span>
+<span class="w">            </span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person-identification&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;purpose.person_identification.description&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;subcategory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSON_IDENTIFICATION&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;claims_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">],</span>
+<span class="w">               </span><span class="nt">&quot;claim_recommended&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;issuers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital Credential Issuer of Example&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ci_example_it&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                  </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
+<span class="w">               </span><span class="p">],</span>
+<span class="w">               </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/privacy&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;tos_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/terms&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://issuer.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;issuance_flows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;max_deferred_issuance_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;push&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;polling&quot;</span><span class="p">]</span>
+<span class="w">               </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;authentic_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authentic-sources.example.org&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Authentic Source of Example&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;organization_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;as_example_it&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;organization_country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IT&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                  </span><span class="s2">&quot;mailto:informazioni@example.it&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="s2">&quot;mailto:protocollo@pec.example.it&quot;</span>
+<span class="w">               </span><span class="p">],</span>
+<span class="w">               </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/img/logo.svg&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;source_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;service_documentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authentic-sources.example.org/.well-known/service-doc&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;data_provision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;max_response_time_minutes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;notification_methods&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;push&quot;</span><span class="p">]</span>
+<span class="w">               </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_mDL&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mDL&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;display_properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">               </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;authentic_source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authentic-sources.example.org&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;template_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/.well-known/templates/mDL.svg&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;template_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                     </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;landscape&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;light&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="nt">&quot;contrast&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
+<span class="w">                  </span><span class="p">}</span>
+<span class="w">               </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#008558&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/logos/mDL.svg&quot;</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.PERSONAL_DATA.family_name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.family_name.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.PERSONAL_DATA.given_name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.given_name.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.PERSONAL_DATA.birthdate&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.birth_date.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;COMMON.VALIDITY.issuance_date&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issue_date.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;COMMON.VALIDITY.expiry_date&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.expiry_date.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.DOCUMENTS.issuing_authority&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_authority.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.DOCUMENTS.document_number&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.document_number.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.BIOMETRIC.facial_image&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.portrait.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION.DRIVING_LICENSE.categories&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.driving_privileges.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION.DRIVING_LICENSE.country_code&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.un_distinguishing_sign.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;administrative_number&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.DOCUMENTS.administrative_number&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.administrative_number.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_country&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.DOCUMENTS.issuing_country&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_country.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_jurisdiction&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;taxonomy_ref&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY.DOCUMENTS.issuing_jurisdiction&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_jurisdiction.name&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">         </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalogue, an Entity consulting it SHOULD:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Download the basic version of the Digital Credentials Catalogue (compact, without localisations) using the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalogue</span></code> endpoint.</p></li>
+<li><p>Determine the User's preferred language.</p></li>
+<li><p>Download only the necessary localisation bundles.</p></li>
+<li><p>Dynamically merge localised content with the Digital Credentials Catalogue structure.</p></li>
+</ul>
+</div></blockquote>
+<p>A non-normative example of a localisation bundle output is given below:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;driving_license.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di Guida&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;driving_license.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Patente di guida ufficiale valida in Italia e nell&#39;UE&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Abilitazione alla guida&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;purpose.driving_authorization.description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Verifica di Abilitazione alla guida&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;claims.given_name.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Nome&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;...&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Localization bundles MUST be available at the URI specified in the <strong>localization_info.bundles_base_uri</strong> claim of the Digital Credentials Catalogue. Each locale bundle MUST be accessible following the naming pattern <strong>{locale_code}.json</strong>, where <strong>{locale_code}</strong> is replaced with the corresponding locale code from the <strong>available_locales</strong> array.</p>
+<p>A non-normative example of the Italian localization URI for the mDL bundle would be <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json</strong>.</p>
+<p>Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the <strong>localization_info.integrity</strong> claim. This ensures that the localization data has not been tampered with during transmission.</p>
+</div>
+</section>
+<section id="claims-taxonomy">
+<h2><span class="section-number">6.3.3. </span>Claims Taxonomy<a class="headerlink" href="#claims-taxonomy" title="Link to this heading">¶</a></h2>
+<p>The Digital Credential Catalogue, MUST include also a reference URI to Claim Taxonomy providing, in a single resource, the semantic information of all registered and available claims within the IT-Wallet ecosystem. It MUST be Credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet Technical Solutions.</p>
+<p>A non-normative example of the Claim Taxonomy is given below.</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;last_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-04-10T12:00:00Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:taxonomy:claims&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/taxonomy/claims/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;taxonomy.claims.name&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;taxonomy.claims.description&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;domains&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTITY&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.name&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.identity.description&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PERSONAL_DATA&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.personal_data.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.personal_data.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.given_name.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.given_name.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.family_name.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.family_name.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birthdate&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.birthdate.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.birthdate.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;place_of_birth&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.place_of_birth.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.place_of_birth.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;structured&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTACT_INFO&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.contact_info.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.contact_info.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.email.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.email.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;phone_number&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.phone_number.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.phone_number.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;address&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.address.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.address.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;structured&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDENTIFIERS&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.identifiers.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.identifiers.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tax_id&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.tax_id.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.tax_id.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal_administrative_number&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.personal_administrative_number.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.personal_administrative_number.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BIOMETRIC&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.biometric.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.biometric.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.portrait.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.portrait.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SENSITIVE&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DOCUMENTS&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.documents.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.documents.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_type&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.document_type.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.document_type.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.document_number.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.document_number.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuing_authority.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuing_authority.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_country&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuing_country.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuing_country.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_jurisdiction&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuing_jurisdiction.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuing_jurisdiction.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUTHORIZATION&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.name&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.authorization.description&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DRIVING_LICENSE&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.driving_license.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.driving_license.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.driving_privileges.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.driving_privileges.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;structured&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vehicle_category_code&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.vehicle_category_code.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.vehicle_category_code.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FINANCIAL&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.name&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.financial.description&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INCOME&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.income.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.income.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;income_indicator&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.income_indicator.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.income_indicator.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;income_certificate_type&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.income_certificate_type.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.income_certificate_type.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reference_period&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.reference_period.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.reference_period.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RESTRICTED&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;COMMON&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.common.name&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain.common.description&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;categories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VALIDITY&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.validity.name&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;category.validity.description&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuance_date&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuance_date.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.issuance_date.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.expiry_date.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.expiry_date.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;validity_period&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.validity_period.name&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claim.validity_period.description&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;sensitivity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="digital-credentials-catalogue-endpoint">
+<h2><span class="section-number">6.3.4. </span>Digital Credentials Catalogue Endpoint<a class="headerlink" href="#digital-credentials-catalogue-endpoint" title="Link to this heading">¶</a></h2>
+<p>The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8615.html"><strong>RFC 8615</strong></a>] that provides public access to information related to the Credentials available in IT-Wallet.</p>
+<section id="digital-credentials-catalogue-request">
+<h3><span class="section-number">6.3.4.1. </span>Digital Credentials Catalogue Request<a class="headerlink" href="#digital-credentials-catalogue-request" title="Link to this heading">¶</a></h3>
+<p>The Digital Credentials Catalogue Request MUST be an HTTP GET using the application/jose media type as in the following non-normative example.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalogue</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">www.trust-registry.eid-wallet.example.it</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/jose</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As a future enhancement, the Trust Anchor MAY implement a dynamic endpoint that enables filtering credentials by type, while offering pagination capabilities, to support more efficient and flexible browsing of the Digital Credentials Catalogue.</p>
+</div>
+</section>
+<section id="digital-credentials-catalogue-response">
+<h3><span class="section-number">6.3.4.2. </span>Digital Credentials Catalogue Response<a class="headerlink" href="#digital-credentials-catalogue-response" title="Link to this heading">¶</a></h3>
+<p>The Digital Credentials Catalogue Response MUST be a JWS that contains the parameters listed in the <a class="reference internal" href="#table-catalogue-parameters"><span class="std std-ref">table of Digital Credentials Catalogue parameters</span></a>.</p>
+<p>A non-normative example of the response is provided below.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ewogICAidHlwIjoiSk9TRSIsCiAgICJhbGciOiJFUzI1NiIsCiAgICJraWQiOiJlOWJjMDk3YS1jZTUxLTQwMzYtOTU2Mi1kMmFkZTg4MmRiMGQiLAogICAiY3R5IjoiYXBwbGljYXRpb24vanNvbiIKfQ==.ew0KICAgImNhdGFsb2dfdmVyc2lvbiI6ICIxLjAiLA0KICAgImlzcyI6ICJodHRwczovL3RydXN0LXJlZ2lzdHJ5LmVpZC13YWxsZXQuZXhhbXBsZS5pdCIsDQogICAibGFzdF9tb2RpZmllZCI6ICIyMDI1LTAzLTE1VDEyOjAwOjAwWiIsDQogICAidGF4b25vbXlfdXJpIjogImh0dHBzOi8vdHJ1c3QtcmVnaXN0cnkuZWlkLXdhbGxldC5leGFtcGxlLml0Ly53ZWxsLWtub3duL2NyZWRlbnRpYWwtdGF4b25vbXkiLA0KICAgInRheG9ub215X3VyaSNpbnRlZ3JpdHkiOiAic2hhMjU2LUxtWGZoLTljTGxKTlhOLVRzTWstUG1Lalo1dDBXUkw1Y2FfeEdnWDNjMVYiLCAgIA0KICAgImNyZWRlbnRpYWxzIjogWw0KICAgICAgew0KICAgICAgICAgInZlcnNpb24iOiAiMS4wIiwNCiAgICAgICAgICJjcmVkZW50aWFsX3R5cGUiOiAibURMIiwNCiAgICAgICAgICJsZWdhbF90eXBlIjogInB1Yi1lYWEiLA0KICAgICAgICAgImxvY2FsaXphdGlvbiI6IHsNCiAgICAgICAgICAgICJkZWZhdWx0X2xvY2FsZSI6ICJpdCIsDQogICAgICAgICAgICAiYXZhaWxhYmxlX2xvY2FsZXMiOiBbImVuIiwgIml0IiwgImZyIiwgImRlIl0sDQogICAgICAgICAgICAiYmFzZV91cmkiOiAiaHR0cHM6Ly90cnVzdC1yZWdpc3RyeS5laWQtd2FsbGV0LmV4YW1wbGUuaXQvLndlbGwta25vd24vbDEwbi9tZGwvIiwNCiAgICAgICAgICAgICJ2ZXJzaW9uIjogIjEuMC4wIg0KICAgICAgICAgfSwNCiAgICAgICAgICJuYW1lX2wxMG5faWQiOiAiY3JlZGVudGlhbC5tZGwubmFtZSIsDQogICAgICAgICAiZGVzY3JpcHRpb25fbDEwbl9pZCI6ICJjcmVkZW50aWFsLm1kbC5kZXNjcmlwdGlvbiIsDQogICAgICAgICAicmVzdHJpY3Rpb25fcG9saWN5Ijogew0KICAgICAgICAgICAgImFsbG93ZWRfd2FsbGV0X2lkcyI6IFsNCiAgICAgICAgICAgICAgICJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy93YWxsZXRfc29sdXRpb24iLA0KICAgICAgICAgICAgICAgImh0dHBzOi8vd2FsbGV0LXByb3ZpZGVyMi5leGFtcGxlLm9yZy93YWxsZXRfc29sdXRpb24iDQogICAgICAgICAgICBdLA0KICAgICAgICAgICAgImFsbG93ZWRfaXNzdWVyX2lkcyI6IFsNCiAgICAgICAgICAgICAgICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyINCiAgICAgICAgICAgIF0NCiAgICAgICAgIH0sDQogICAgICAgICAicHJpY2luZ19wb2xpY3kiOiB7DQogICAgICAgICAgICAgIm1vZGVscyI6IFsNCiAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgInByaWNpbmdfdHlwZSI6ICJ2ZXJpZmljYXRpb25fYmFzZWQiLA0KICAgICAgICAgICAgICAgICAicHJpY2UiOiAwLjAxLA0KICAgICAgICAgICAgICAgICAiY3VycmVuY3kiOiAiRVVSIg0KICAgICAgICAgICAgICAgfQ0KICAgICAgICAgICAgIF0sDQogICAgICAgICAgICAgInByaWNpbmdfbW9kZWxfdXJpIjogImh0dHBzOi8vZXhhbXBsZS5jb20vcHJpY2luZyINCiAgICAgICAgICAgfSwNCiAgICAgICAgICJ2YWxpZGl0eV9pbmZvIjogew0KICAgICAgICAgICAgIm1heF92YWxpZGl0eV9kYXlzIjogMzY1LA0KICAgICAgICAgICAgInN0YXR1c19tZXRob2RzIjogWyJzdGF0dXNfbGlzdCJdLA0KICAgICAgICAgICAgImFsbG93ZWRfc3RhdGVzIjogWw0KICAgICAgICAgICAgICAgInZhbGlkIiwNCiAgICAgICAgICAgICAgICJyZXZva2VkIiwNCiAgICAgICAgICAgICAgICJzdXNwZW5kZWQiDQogICAgICAgICAgICBdDQogICAgICAgICB9LCAgICAgICANCiAgICAgICAgICJhdXRoZW50aWNhdGlvbiI6IHsNCiAgICAgICAgICAgICJ1c2VyX2F1dGhfcmVxdWlyZWQiOiB0cnVlLA0KICAgICAgICAgICAgIm1pbl9sb2EiOiAiaGlnaCIsDQogICAgICAgICAgICAic3VwcG9ydGVkX3NjaGVtZXMiOiBbIml0LXdhbGxldCJdDQogICAgICAgICB9LA0KICAgICAgICAgInB1cnBvc2VzIjogWw0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgImlkIjogImRyaXZpbmctYXV0aG9yaXphdGlvbiIsDQogICAgICAgICAgICAgICAiZGVzY3JpcHRpb25fbDEwbl9pZCI6ICJwdXJwb3NlLmRyaXZpbmdfYXV0aG9yaXphdGlvbi5kZXNjcmlwdGlvbiIsDQogICAgICAgICAgICAgICAiY2F0ZWdvcnkiOiAiQVVUSE9SSVpBVElPTiIsDQogICAgICAgICAgICAgICAic3ViY2F0ZWdvcnkiOiAiRFJJVklOR19MSUNFTlNFIiwNCiAgICAgICAgICAgICAgICJjbGFpbXNfcmVxdWlyZWQiOiBbImZhbWlseV9uYW1lIiwgImdpdmVuX25hbWUiLCAiaXNzdWVfZGF0ZSIsICJleHBpcnlfZGF0ZSIsICJpc3N1aW5nX2F1dGhvcml0eSIsICJkb2N1bWVudF9udW1iZXIiLCAicG9ydHJhaXQiLCAiZHJpdmluZ19wcml2aWxlZ2VzIiwgInVuX2Rpc3Rpbmd1aXNoaW5nX3NpZ24iXSwNCiAgICAgICAgICAgICAgICJjbGFpbV9yZWNvbW1lbmRlZCI6IFsiYmlydGhfZGF0ZSIsICJ1bl9kaXN0aW5ndWlzaGluZ19zaWduIiwgImlzc3VpbmdfY291bnRyeSIsICJpc3N1aW5nX2p1cmlzZGljdGlvbiJdDQogICAgICAgICAgICANCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAiaWQiOiAicGVyc29uLWlkZW50aWZpY2F0aW9uIiwNCiAgICAgICAgICAgICAgICJkZXNjcmlwdGlvbl9sMTBuX2lkIjogInB1cnBvc2UucGVyc29uX2lkZW50aWZpY2F0aW9uLmRlc2NyaXB0aW9uIiwNCiAgICAgICAgICAgICAgICJjYXRlZ29yeSI6ICJJREVOVElUWSIsDQogICAgICAgICAgICAgICAic3ViY2F0ZWdvcnkiOiAiUEVSU09OX0lERU5USUZJQ0FUSU9OIiwNCiAgICAgICAgICAgICAgICJjbGFpbXNfcmVxdWlyZWQiOiBbImZhbWlseV9uYW1lIiwgImdpdmVuX25hbWUiLCAiYmlydGhfZGF0ZSIsICJwb3J0cmFpdCIsICJkb2N1bWVudF9udW1iZXIiXSwNCiAgICAgICAgICAgICAgICJjbGFpbV9yZWNvbW1lbmRlZCI6IFsiZXhwaXJ5X2RhdGUiLCAiaXNzdWluZ19hdXRob3JpdHkiXQ0KICAgICAgICAgICAgfQ0KICAgICAgICAgXSwNCiAgICAgICAgICJpc3N1ZXJzIjogWw0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgImlkIjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUub3JnIiwNCiAgICAgICAgICAgICAgICJvcmdhbml6YXRpb25fbmFtZSI6ICJEaWdpdGFsIENyZWRlbnRpYWwgSXNzdWVyIG9mIEV4YW1wbGUiLA0KICAgICAgICAgICAgICAgIm9yZ2FuaXphdGlvbl9jb2RlIjogImNpX2V4YW1wbGVfaXQiLA0KICAgICAgICAgICAgICAgIm9yZ2FuaXphdGlvbl9jb3VudHJ5IjogIklUIiwNCiAgICAgICAgICAgICAgICJjb250YWN0cyI6IFsNCiAgICAgICAgICAgICAgICAgICJtYWlsdG86aW5mb3JtYXppb25pQGV4YW1wbGUuaXQiLA0KICAgICAgICAgICAgICAgICAgIm1haWx0bzpwcm90b2NvbGxvQHBlYy5leGFtcGxlLml0Ig0KICAgICAgICAgICAgICAgXSwNCiAgICAgICAgICAgICAgICJsZWdhbF90eXBlIjogInB1Yi1lYWEiLA0KICAgICAgICAgICAgICAgImhvbWVwYWdlX3VyaSI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsDQogICAgICAgICAgICAgICAibG9nb191cmkiOiAiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLA0KICAgICAgICAgICAgICAgInBvbGljeV91cmkiOiAiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZS5vcmcvcHJpdmFjeSIsDQogICAgICAgICAgICAgICAidG9zX3VyaSI6ICJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy90ZXJtcyIsDQogICAgICAgICAgICAgICAic2VydmljZV9kb2N1bWVudGF0aW9uIjogImh0dHBzOi8vaXNzdWVyLmV4YW1wbGUub3JnLy53ZWxsLWtub3duL3NlcnZpY2UtZG9jIiwNCiAgICAgICAgICAgICAgICJpc3N1YW5jZV9mbG93cyI6IHsNCiAgICAgICAgICAgICAgICAgICJkZWZlcnJlZF9mbG93IjogdHJ1ZSwNCiAgICAgICAgICAgICAgICAgICJtYXhfZGVmZXJyZWRfaXNzdWFuY2VfdGltZV9taW51dGVzIjogMTQ0MCwNCiAgICAgICAgICAgICAgICAgICJub3RpZmljYXRpb25fbWV0aG9kcyI6IFsicHVzaCIsICJwb2xsaW5nIl0NCiAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIH0NCiAgICAgICAgIF0sDQogICAgICAgICAiYXV0aGVudGljX3NvdXJjZXMiOiBbDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAiaWQiOiAiaHR0cHM6Ly9hdXRoZW50aWMtc291cmNlcy5leGFtcGxlLm9yZyIsDQogICAgICAgICAgICAgICAib3JnYW5pemF0aW9uX25hbWUiOiAiQXV0aGVudGljIFNvdXJjZSBvZiBFeGFtcGxlIiwNCiAgICAgICAgICAgICAgICJvcmdhbml6YXRpb25fY29kZSI6ICJhc19leGFtcGxlX2l0IiwNCiAgICAgICAgICAgICAgICJvcmdhbml6YXRpb25fY291bnRyeSI6ICJJVCIsDQogICAgICAgICAgICAgICAiY29udGFjdHMiOiBbDQogICAgICAgICAgICAgICAgICAibWFpbHRvOmluZm9ybWF6aW9uaUBleGFtcGxlLml0IiwNCiAgICAgICAgICAgICAgICAgICJtYWlsdG86cHJvdG9jb2xsb0BwZWMuZXhhbXBsZS5pdCINCiAgICAgICAgICAgICAgIF0sDQogICAgICAgICAgICAgICAiaG9tZXBhZ2VfdXJpIjogImh0dHBzOi8vYXV0aHNvdXJjZS5leGFtcGxlLmNvbS8iLA0KICAgICAgICAgICAgICAgImxvZ29fdXJpIjogImh0dHBzOi8vYXV0aHNvdXJjZS5leGFtcGxlLmNvbS9pbWcvbG9nby5zdmciLA0KICAgICAgICAgICAgICAgInNvdXJjZV90eXBlIjogInB1YmxpYyIsDQogICAgICAgICAgICAgICAic2VydmljZV9kb2N1bWVudGF0aW9uIjogImh0dHBzOi8vYXV0aGVudGljLXNvdXJjZXMuZXhhbXBsZS5vcmcvLndlbGwta25vd24vc2VydmljZS1kb2MiLA0KICAgICAgICAgICAgICAgImRhdGFfcHJvdmlzaW9uIjogew0KICAgICAgICAgICAgICAgICAgImltbWVkaWF0ZV9mbG93IjogZmFsc2UsDQogICAgICAgICAgICAgICAgICAiZGVmZXJyZWRfZmxvdyI6IHRydWUsDQogICAgICAgICAgICAgICAgICAibWF4X3Jlc3BvbnNlX3RpbWVfbWludXRlcyI6IDYwLA0KICAgICAgICAgICAgICAgICAgIm5vdGlmaWNhdGlvbl9tZXRob2RzIjogWyJwdXNoIl0NCiAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIH0NCiAgICAgICAgIF0sDQogICAgICAgICAiZm9ybWF0cyI6IFsNCiAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICJjb25maWd1cmF0aW9uX2lkIjogImRjX3NkX2p3dF9tREwiLA0KICAgICAgICAgICAgICAgImZvcm1hdCI6ICJkYytzZC1qd3QiLA0KICAgICAgICAgICAgICAgInNjaGVtYV91cmkiOiAiaHR0cHM6Ly90cnVzdC1yZWdpc3RyeS5laWQtd2FsbGV0LmV4YW1wbGUuaXQvLndlbGwta25vd24vc2NoZW1hcy9zZC1qd3QvbURMIiwNCiAgICAgICAgICAgICAgICJzY2hlbWFfdXJpI2ludGVncml0eSI6ICJzaGEyNTYtYzhiNzA4NzI4ZTRjNTc1NmUzNWMwM2FlYWMyNTdjYTg3OGQxZjcxN2Q3YjYxZjYyMWJlNGQzNmRiZDliOWMxNiINCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAiY29uZmlndXJhdGlvbl9pZCI6ICJtc29fbWRvY19tREwiLA0KICAgICAgICAgICAgICAgImZvcm1hdCI6ICJtc29fbWRvYyIsDQogICAgICAgICAgICAgICAic2NoZW1hX3VyaSI6ICJodHRwczovL3RydXN0LXJlZ2lzdHJ5LmVpZC13YWxsZXQuZXhhbXBsZS5pdC8ud2VsbC1rbm93bi9zY2hlbWFzL21kb2MvbURMIiwNCiAgICAgICAgICAgICAgICJzY2hlbWFfdXJpI2ludGVncml0eSI6ICJzaGEyNTYtYzhiNzA4NzI4ZTRjNTc1NmUzNWMwM2FlYWMyNTdjYTg3OGQxZjcxN2Q3YjYxZjYyMWJlNGQzNmRiZDliOWMxNiINCiAgICAgICAgICAgIH0NCiAgICAgICAgIF0sDQogICAgICAgICAiZGlzcGxheV9wcm9wZXJ0aWVzIjogew0KICAgICAgICAgICAgInRlbXBsYXRlcyI6IFsNCiAgICAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICAgICJhdXRoZW50aWNfc291cmNlX2lkIjogImh0dHBzOi8vYXV0aGVudGljLXNvdXJjZXMuZXhhbXBsZS5vcmciLA0KICAgICAgICAgICAgICAgICAgInRlbXBsYXRlX3VyaSI6ICJodHRwczovL2F1dGhzb3VyY2UuZXhhbXBsZS5jb20vLndlbGwta25vd24vdGVtcGxhdGVzL21ETC5zdmciLA0KICAgICAgICAgICAgICAgICAgInRlbXBsYXRlX3VyaSNpbnRlZ3JpdHkiOiAic2hhMjU2LThjTGxKTlhOLVRzTWstUG1Lalo1dDBXUkw1Y2FfeEdnWDNjMVZMbVhmaC05YyIsDQogICAgICAgICAgICAgICAgICAicHJvcGVydGllcyI6IHsNCiAgICAgICAgICAgICAgICAgICAgICJvcmllbnRhdGlvbiI6ICJsYW5kc2NhcGUiLA0KICAgICAgICAgICAgICAgICAgICAgImNvbG9yX3NjaGVtZSI6ICJsaWdodCIsDQogICAgICAgICAgICAgICAgICAgICAiY29udHJhc3QiOiAiaGlnaCINCiAgICAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgICAgIH0NCiAgICAgICAgICAgIF0sDQogICAgICAgICAgICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMDA4NTU4IiwNCiAgICAgICAgICAgICJ0ZXh0X2NvbG9yIjogIiNGRkZGRkYiLA0KICAgICAgICAgICAgImxvZ29fdXJpIjogImh0dHBzOi8vdHJ1c3QtcmVnaXN0cnkuZWlkLXdhbGxldC5leGFtcGxlLml0Ly53ZWxsLWtub3duL2xvZ29zL21ETC5zdmciDQogICAgICAgICB9LA0KICAgICAgICAgImNsYWltcyI6IFsNCiAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICJuYW1lIjogImZhbWlseV9uYW1lIiwNCiAgICAgICAgICAgICAgICJ0YXhvbm9teV9yZWYiOiAiSURFTlRJVFkuUEVSU09OQUxfREFUQS5mYW1pbHlfbmFtZSIsDQogICAgICAgICAgICAgICAiZGlzcGxheV9uYW1lX2wxMG5faWQiOiAiY2xhaW1zLmZhbWlseV9uYW1lLm5hbWUiLA0KICAgICAgICAgICAgICAgIm5hbWVzcGFjZXMiOiBbIm9yZy5pc28uMTgwMTMuNS4xIl0NCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAibmFtZSI6ICJnaXZlbl9uYW1lIiwNCiAgICAgICAgICAgICAgICJ0YXhvbm9teV9yZWYiOiAiSURFTlRJVFkuUEVSU09OQUxfREFUQS5naXZlbl9uYW1lIiwNCiAgICAgICAgICAgICAgICJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ICJjbGFpbXMuZ2l2ZW5fbmFtZS5uYW1lIiwNCiAgICAgICAgICAgICAgICJuYW1lc3BhY2VzIjogWyJvcmcuaXNvLjE4MDEzLjUuMSJdDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgIm5hbWUiOiAiYmlydGhfZGF0ZSIsDQogICAgICAgICAgICAgICAidGF4b25vbXlfcmVmIjogIklERU5USVRZLlBFUlNPTkFMX0RBVEEuYmlydGhkYXRlIiwNCiAgICAgICAgICAgICAgICJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ICJjbGFpbXMuYmlydGhfZGF0ZS5uYW1lIiwNCiAgICAgICAgICAgICAgICJuYW1lc3BhY2VzIjogWyJvcmcuaXNvLjE4MDEzLjUuMSJdDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgIm5hbWUiOiAiaXNzdWVfZGF0ZSIsDQogICAgICAgICAgICAgICAidGF4b25vbXlfcmVmIjogIkNPTU1PTi5WQUxJRElUWS5pc3N1YW5jZV9kYXRlIiwNCiAgICAgICAgICAgICAgICJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ICJjbGFpbXMuaXNzdWVfZGF0ZS5uYW1lIiwNCiAgICAgICAgICAgICAgICJuYW1lc3BhY2VzIjogWyJvcmcuaXNvLjE4MDEzLjUuMSJdDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgIm5hbWUiOiAiZXhwaXJ5X2RhdGUiLA0KICAgICAgICAgICAgICAgInRheG9ub215X3JlZiI6ICJDT01NT04uVkFMSURJVFkuZXhwaXJ5X2RhdGUiLA0KICAgICAgICAgICAgICAgImRpc3BsYXlfbmFtZV9sMTBuX2lkIjogImNsYWltcy5leHBpcnlfZGF0ZS5uYW1lIiwNCiAgICAgICAgICAgICAgICJuYW1lc3BhY2VzIjogWyJvcmcuaXNvLjE4MDEzLjUuMSJdDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgIm5hbWUiOiAiaXNzdWluZ19hdXRob3JpdHkiLA0KICAgICAgICAgICAgICAgInRheG9ub215X3JlZiI6ICJJREVOVElUWS5ET0NVTUVOVFMuaXNzdWluZ19hdXRob3JpdHkiLA0KICAgICAgICAgICAgICAgImRpc3BsYXlfbmFtZV9sMTBuX2lkIjogImNsYWltcy5pc3N1aW5nX2F1dGhvcml0eS5uYW1lIiwNCiAgICAgICAgICAgICAgICJuYW1lc3BhY2VzIjogWyJvcmcuaXNvLjE4MDEzLjUuMSJdDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgIm5hbWUiOiAiZG9jdW1lbnRfbnVtYmVyIiwNCiAgICAgICAgICAgICAgICJ0YXhvbm9teV9yZWYiOiAiSURFTlRJVFkuRE9DVU1FTlRTLmRvY3VtZW50X251bWJlciIsDQogICAgICAgICAgICAgICAiZGlzcGxheV9uYW1lX2wxMG5faWQiOiAiY2xhaW1zLmRvY3VtZW50X251bWJlci5uYW1lIiwNCiAgICAgICAgICAgICAgICJuYW1lc3BhY2VzIjogWyJvcmcuaXNvLjE4MDEzLjUuMSJdDQogICAgICAgICAgICB9LA0KICAgICAgICAgICAgew0KICAgICAgICAgICAgICAgIm5hbWUiOiAicG9ydHJhaXQiLA0KICAgICAgICAgICAgICAgInRheG9ub215X3JlZiI6ICJJREVOVElUWS5CSU9NRVRSSUMuZmFjaWFsX2ltYWdlIiwNCiAgICAgICAgICAgICAgICJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ICJjbGFpbXMucG9ydHJhaXQubmFtZSIsDQogICAgICAgICAgICAgICAibmFtZXNwYWNlcyI6IFsib3JnLmlzby4xODAxMy41LjEiXQ0KICAgICAgICAgICAgfSwNCiAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICJuYW1lIjogImRyaXZpbmdfcHJpdmlsZWdlcyIsDQogICAgICAgICAgICAgICAidGF4b25vbXlfcmVmIjogIkFVVEhPUklaQVRJT04uRFJJVklOR19MSUNFTlNFLmNhdGVnb3JpZXMiLA0KICAgICAgICAgICAgICAgImRpc3BsYXlfbmFtZV9sMTBuX2lkIjogImNsYWltcy5kcml2aW5nX3ByaXZpbGVnZXMubmFtZSIsDQogICAgICAgICAgICAgICAibmFtZXNwYWNlcyI6IFsib3JnLmlzby4xODAxMy41LjEiXQ0KICAgICAgICAgICAgfSwNCiAgICAgICAgICAgIHsNCiAgICAgICAgICAgICAgICJuYW1lIjogInVuX2Rpc3Rpbmd1aXNoaW5nX3NpZ24iLA0KICAgICAgICAgICAgICAgInRheG9ub215X3JlZiI6ICJBVVRIT1JJWkFUSU9OLkRSSVZJTkdfTElDRU5TRS5jb3VudHJ5X2NvZGUiLA0KICAgICAgICAgICAgICAgImRpc3BsYXlfbmFtZV9sMTBuX2lkIjogImNsYWltcy51bl9kaXN0aW5ndWlzaGluZ19zaWduLm5hbWUiLA0KICAgICAgICAgICAgICAgIm5hbWVzcGFjZXMiOiBbIm9yZy5pc28uMTgwMTMuNS4xIl0NCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAibmFtZSI6ICJhZG1pbmlzdHJhdGl2ZV9udW1iZXIiLA0KICAgICAgICAgICAgICAgInRheG9ub215X3JlZiI6ICJJREVOVElUWS5ET0NVTUVOVFMuYWRtaW5pc3RyYXRpdmVfbnVtYmVyIiwNCiAgICAgICAgICAgICAgICJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ICJjbGFpbXMuYWRtaW5pc3RyYXRpdmVfbnVtYmVyLm5hbWUiLA0KICAgICAgICAgICAgICAgIm5hbWVzcGFjZXMiOiBbIm9yZy5pc28uMTgwMTMuNS4xIl0NCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAibmFtZSI6ICJpc3N1aW5nX2NvdW50cnkiLA0KICAgICAgICAgICAgICAgInRheG9ub215X3JlZiI6ICJJREVOVElUWS5ET0NVTUVOVFMuaXNzdWluZ19jb3VudHJ5IiwNCiAgICAgICAgICAgICAgICJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ICJjbGFpbXMuaXNzdWluZ19jb3VudHJ5Lm5hbWUiLA0KICAgICAgICAgICAgICAgIm5hbWVzcGFjZXMiOiBbIm9yZy5pc28uMTgwMTMuNS4xIl0NCiAgICAgICAgICAgIH0sDQogICAgICAgICAgICB7DQogICAgICAgICAgICAgICAibmFtZSI6ICJpc3N1aW5nX2p1cmlzZGljdGlvbiIsDQogICAgICAgICAgICAgICAidGF4b25vbXlfcmVmIjogIklERU5USVRZLkRPQ1VNRU5UUy5pc3N1aW5nX2p1cmlzZGljdGlvbiIsDQogICAgICAgICAgICAgICAiZGlzcGxheV9uYW1lX2wxMG5faWQiOiAiY2xhaW1zLmlzc3VpbmdfanVyaXNkaWN0aW9uLm5hbWUiLA0KICAgICAgICAgICAgICAgIm5hbWVzcGFjZXMiOiBbIm9yZy5pc28uMTgwMTMuNS4xIl0NCiAgICAgICAgICAgIH0NCiAgICAgICAgIF0NCiAgICAgIH0NCiAgIF0NCn0.kBvX6LppO1m35KdSg3_p_WP1i-cONPjFQuKBDtTIpOYkrEb7zarqtKEqWMJcw3GWhDnIIs8a2Jy4_ng0fokqug
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">6.3. Digital Credentials Catalogue</a><ul>
+<li><a class="reference internal" href="#digital-credentials-categories">6.3.1. Digital Credentials Categories</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-structure">6.3.2. Digital Credentials Catalogue Structure</a></li>
+<li><a class="reference internal" href="#claims-taxonomy">6.3.3. Claims Taxonomy</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-endpoint">6.3.4. Digital Credentials Catalogue Endpoint</a><ul>
+<li><a class="reference internal" href="#digital-credentials-catalogue-request">6.3.4.1. Digital Credentials Catalogue Request</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-response">6.3.4.2. Digital Credentials Catalogue Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="credential-revocation.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">6.2. </span>Digital Credential Lifecycle</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="digital-credential-flows.html"><span><span class="section-number">7. </span>Digital Credential Flows</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 27/05/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
