@@ -21,4 +21,4 @@ Per garantire un'elevata qualità del servizio dal punto di vista dell'Esperienz
   :maxdepth: 3
 
   brand-identity.rst  
-  functionalities.rst
+

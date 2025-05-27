@@ -28,4 +28,9 @@ Architecture Overview
 [Lorem Ipsum]
 
 
-  
+.. toctree::
+  :caption: Architettura Indice dei Contenuti
+  :maxdepth: 3
+
+  functionalities.rst
+

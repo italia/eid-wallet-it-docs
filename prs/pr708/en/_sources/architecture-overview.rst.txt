@@ -45,3 +45,11 @@ The architecture enables the following interaction processes:
 
 The Trust Infrastructure manages onboarding and revocation of entities, provides credential schemas, and lets participants discover and verify authorized entities and their status. It supports automatic trust chain validation, distributed trust anchoring, standardized metadata exchange, and Federation API services for secure, seamless federation operations.
 
+
+.. toctree::
+  :caption: Architecture Overview Table of Contents
+  :maxdepth: 3
+
+  functionalities.rst
+
+  

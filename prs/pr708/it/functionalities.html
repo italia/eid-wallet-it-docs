@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.2. Funzionalità &#8212; IT-Wallet Technical Documentation - PR #708 - 1.0.0</title>
+    <title>3.1. Funzionalità &#8212; IT-Wallet Technical Documentation - PR #708 - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="3. Architecture Overview" href="architecture-overview.html" />
-    <link rel="prev" title="2.1. Brand Identity del Sistema IT-Wallet" href="brand-identity.html" /> 
+    <link rel="next" title="4. Defined Terms and References" href="defined-terms-and-references.html" />
+    <link rel="prev" title="3. Architecture Overview" href="architecture-overview.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -132,12 +132,11 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="design.html">2. Principi di design</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="brand-identity.html">2.1. Brand Identity del Sistema IT-Wallet</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Funzionalità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Principi di design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Funzionalità</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">4. Defined Terms and References</a></li>
 </ul>
 
@@ -151,18 +150,18 @@
           <div class="body" role="main">
             
   <section id="funzionalita">
-<h1><span class="section-number">2.2. </span>Funzionalità<a class="headerlink" href="#funzionalita" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">3.1. </span>Funzionalità<a class="headerlink" href="#funzionalita" title="Link to this heading">¶</a></h1>
 <p>Il Sistema IT-Wallet offre all'utente un'esperienza più semplice, veloce e sicura di accesso ai servizi. Tale servizio si concretizza per l'Utente nella possibilità di utilizzare una Soluzione IT-Wallet, la cui esperienza di fruizione è scandita in tre macro-fasi: pre-utilizzo, utilizzo e post-utilizzo.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="_images/UX-phases-usage.svg"><img alt="Fasi dell'Esperienza Utente di utilizzo di una Istanza IT-Wallet" src="_images/UX-phases-usage.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Fasi dell'Esperienza Utente di utilizzo di una Istanza IT-Wallet</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Fasi dell'Esperienza Utente di utilizzo di una Istanza IT-Wallet</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Le sezioni a seguire si focalizzano sulle macro-fasi di utilizzo e post-utilizzo. Esse definiscono i requisiti funzionali a supporto dell'Esperienza Utente relativi alle fasi di attivazione ottenimento, presentazione, gestione e disattivazione, unitamente ai requisiti di interazione con il servizio in termini di gestione degli errori, richiesta di assistenza e raccolta feedback.</p>
 <p>Le Risorse Ufficiali descrivono le modalità di interazione Utente - Istanza IT-Wallet e le buone pratiche di progettazione al fine di promuovere coerenza tra le diverse Soluzioni IT-Wallet, in termini di modalità di fruizione delle funzionalità.</p>
 <section id="attivazione-dell-istanza-it-wallet">
-<h2><span class="section-number">2.2.1. </span>Attivazione dell'Istanza IT-Wallet<a class="headerlink" href="#attivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.1. </span>Attivazione dell'Istanza IT-Wallet<a class="headerlink" href="#attivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h2>
 <p>L'attivazione è il passaggio necessario per abilitare l'Utente all'utilizzo delle funzionalità della Soluzione IT-Wallet per l'ottenimento, la presentazione e la gestione dei propri Attestati Elettronici in modo sicuro. Il processo di attivazione consiste in un'operazione di Autenticazione dell'Utente sull'Istanza IT-Wallet tramite la propria identità digitale che consente la generazione del PID.</p>
 <p>Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione IT-Wallet:</p>
 <ul class="simple">
@@ -178,7 +177,7 @@
 <p>Il Fornitore di Soluzione IT-Wallet DEVE permettere all'Utente in ogni momento di rimuovere il PID ottenuto durante la fase di Attivazione. Inoltre, il Fornitore di Dati di Identificazione Personale DOVREBBE permettere all'Utente di revocare il PID ottenuto, tramite uno specifico Touchpoint. Il Fornitore di Soluzione IT-Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza IT-Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni <a class="reference internal" href="#disattivazione-dell-istanza-it-wallet"><span class="std std-ref">Disattivazione dell'Istanza IT-Wallet</span></a> e <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>.</p>
 <p>In caso di errori nell'utilizzo della Istanza IT-Wallet, il Fornitore di Soluzione IT-Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <section id="focus-sul-pid-dati-di-identificazione-della-persona">
-<h3><span class="section-number">2.2.1.1. </span>Focus sul PID – Dati di Identificazione della Persona<a class="headerlink" href="#focus-sul-pid-dati-di-identificazione-della-persona" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.1.1. </span>Focus sul PID – Dati di Identificazione della Persona<a class="headerlink" href="#focus-sul-pid-dati-di-identificazione-della-persona" title="Link to this heading">¶</a></h3>
 <p>Il PID (Person Identification Data) si riferisce a un set minimo verificato di informazioni sull'identità dell'Utente (vedere <span class="xref std std-ref">credential-data-model:Digital Credential Data Model</span>) emesso come risultato del processo di attivazione e reso disponibile nell'Istanza Wallet.
 Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PID a cui ogni Fornitore Wallet DEVE aderire, al fine di fornire un'esperienza di consultazione e utilizzo coerente e accessibile:</p>
 <ul class="simple">
@@ -200,7 +199,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </section>
 </section>
 <section id="ottenimento-degli-attestati-elettronici-di-attributi">
-<h2><span class="section-number">2.2.2. </span>Ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.2. </span>Ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h2>
 <p>Ad attivazione conclusa, l'Utente PUÒ ottenere uno o più Attestati Elettronici di Attributi all'interno della sua Istanza IT-Wallet.</p>
 <p>A seconda delle specifiche esigenze dell'Utente, della tipologia di Attestato Elettronico di Attributi e delle disponibilità offerte dal Fornitore di Soluzione IT-Wallet, dal Fornitore di Attestati Elettronici di Attributi e dal Titolare di Fonte Autentica, l'ottenimento degli Attestati Elettronici di Attributi può avvenire attraverso due modalità:</p>
 <ul class="simple">
@@ -228,7 +227,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p>In caso di errori nell'utilizzo della Istanza IT-Wallet, il Fornitore di Soluzione IT-Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Qualora un Titolare di Fonte Autentica (o un Fornitore di Attestati Elettronici di Attributi qualora coincida con il Titolare di Fonte Autentica) intendesse implementare un Pulsante di Ingaggio per permettere l'avvio del processo di ottenimento da un proprio Touchpoint, questo DEVE garantire il rispetto dei requisiti relativi all'aspetto grafico e alle modalità di implementazione del Pulsante di Ingaggio, descritti nella sezione <a class="reference internal" href="brand-identity.html#brand-identity-del-sistema-it-wallet"><span class="std std-ref">Brand Identity del Sistema IT-Wallet</span></a>.</p>
 <section id="focus-sulle-attestazioni-elettroniche-di-attributi">
-<h3><span class="section-number">2.2.2.1. </span>Focus sulle Attestazioni Elettroniche di Attributi<a class="headerlink" href="#focus-sulle-attestazioni-elettroniche-di-attributi" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.2.1. </span>Focus sulle Attestazioni Elettroniche di Attributi<a class="headerlink" href="#focus-sulle-attestazioni-elettroniche-di-attributi" title="Link to this heading">¶</a></h3>
 <p>Le Attestazioni Elettroniche di Attributi (EAA) ottenute all'interno dell'Istanza Wallet DOVREBBERO essere visualizzate in un elenco all'interno di una Vista Anteprima. In questo caso, ogni EAA DEVE garantire un elevato livello di riconoscibilità e accessibilità [REF_ACCESSIBILITY] delle informazioni contenute. Di seguito sono riportati i requisiti per la visualizzazione dell'EAA a cui ogni Fornitore Wallet DEVE aderire per fornire un'esperienza di consultazione e utilizzo coerente e accessibile:</p>
 <ul class="simple">
 <li><p>L'EAA DEVE essere visualizzata correttamente su tutti i dispositivi, garantendo un'esperienza coerente su schermi di dimensioni diverse;</p></li>
@@ -250,14 +249,14 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </section>
 </section>
 <section id="presentazione-degli-attestati-elettronici">
-<h2><span class="section-number">2.2.3. </span>Presentazione degli Attestati Elettronici<a class="headerlink" href="#presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.3. </span>Presentazione degli Attestati Elettronici<a class="headerlink" href="#presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
 <p>Il processo di presentazione permette all'Utente di accedere a un servizio o di dimostrare la titolarità di un dato o la sua idoneità a effettuare una determinata azione. La presentazione degli Attestati Elettronici e la loro conseguente verifica, prevede l'interazione tra due soggetti, l'Utente e il Verificatore di Attestati Elettronici, e può avvenire in due modalità principali a seconda delle circostanze e del contesto di interazione:</p>
 <ul class="simple">
 <li><p><strong>Presentazione in prossimità</strong>: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza IT-Wallet direttamente a un Verifier o a un dispositivo del Verificatore di Attestati Elettronici preposto alla verifica in presenza;</p></li>
 <li><p><strong>Presentazione da remoto</strong>: l'Utente presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite l'Istanza IT-Wallet ad un Verificatore di Attestati Elettronici predisposto per la verifica online al fine, ad esempio, di Autenticarsi e fruire dei servizi erogati.</p></li>
 </ul>
 <section id="presentazione-in-prossimita">
-<h3><span class="section-number">2.2.3.1. </span>Presentazione in prossimità<a class="headerlink" href="#presentazione-in-prossimita" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.3.1. </span>Presentazione in prossimità<a class="headerlink" href="#presentazione-in-prossimita" title="Link to this heading">¶</a></h3>
 <p>La presentazione in prossimità consente all'Utente di esibire il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite la propria Istanza IT-Wallet, secondo due diverse modalità:</p>
 <ul class="simple">
 <li><p><strong>Modalità supervisionata</strong>: l'Utente, tramite l'Istanza IT-Wallet, presenta il PID e/o uno o più Attestati Elettronici di Attributi, a un Verificatore di Attestati Elettronici dotato di un'apposita app o sistema di verifica (e.g. agente delle forze dell'ordine, farmacista, etc.);</p></li>
@@ -286,7 +285,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p>In caso di errori nell'utilizzo dell'Istanza IT-Wallet, il Fornitore di Soluzione IT-Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 </section>
 <section id="presentazione-da-remoto">
-<h3><span class="section-number">2.2.3.2. </span>Presentazione da remoto<a class="headerlink" href="#presentazione-da-remoto" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.3.2. </span>Presentazione da remoto<a class="headerlink" href="#presentazione-da-remoto" title="Link to this heading">¶</a></h3>
 <p>La presentazione da remoto consente all'Utente di esibire il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici, facendo interagire la propria Istanza IT-Wallet con il Touchpoint di un Verificatore di Attestati Elettronici, tramite un apposito Pulsante di Ingaggio.</p>
 <p>Tale presentazione può avvenire in due diverse modalità, sulla base del tipo di dispositivo utilizzato per accedere al servizio di interesse:</p>
 <ul class="simple">
@@ -316,7 +315,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 <p>In caso di errori nell'utilizzo dell'Istanza IT-Wallet, il Fornitore di Soluzione IT-Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <section id="autenticazione">
-<h4><span class="section-number">2.2.3.2.1. </span>Autenticazione<a class="headerlink" href="#autenticazione" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">3.1.3.2.1. </span>Autenticazione<a class="headerlink" href="#autenticazione" title="Link to this heading">¶</a></h4>
 <p>L'Autenticazione è un caso d'uso specifico della presentazione remota e consente all'Utente di accedere in modo sicuro ai servizi resi disponibili da Verificatori di Attestati Elettronici pubblici e privati, presentando il PID ed eventualmente un set di Attributi contenuti negli Attestati Elettronici di Attributi ottenuti. Questo garantisce all'Utente il pieno controllo sui propri dati e la possibilità di condividere anche i soli dati strettamente necessari alla verifica da parte del Verificatore di Attestati Elettronici.</p>
 <p>Il processo di Autenticazione può avvenire in entrambe le modalità same-device e cross-device descritte sopra. Per quanto riguarda i requisiti funzionali a supporto dell'Esperienza Utente, si DEVONO rispettare gli stessi requisiti previsti per la presentazione in remoto nelle due modalità (same-device e cross-device).</p>
 <p>Infatti, a livello di Esperienza Utente, il processo di Autenticazione si distingue da un generico flusso di presentazione principalmente per le modalità di avvio del processo, in questo caso reso possibile a partire da uno specifico pulsante, il Pulsante di Autenticazione.</p>
@@ -394,7 +393,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </section>
 </section>
 <section id="gestione-degli-attestati-elettronici">
-<h2><span class="section-number">2.2.4. </span>Gestione degli Attestati Elettronici<a class="headerlink" href="#gestione-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.4. </span>Gestione degli Attestati Elettronici<a class="headerlink" href="#gestione-degli-attestati-elettronici" title="Link to this heading">¶</a></h2>
 <p>Il Fornitore di Soluzione IT-Wallet, attraverso la propria Soluzione IT-Wallet, e il Fornitore di Dati di Identificazione Personale o il Fornitore di Attestati Elettronici di Attributi, attraverso Touchpoint dedicati, DEVONO dare all'Utente la possibilità di gestire in ogni momento i propri Attestati Elettronici.</p>
 <p>In questa sezione sono illustrate tre diverse categorie di requisiti per la gestione del ciclo di vita di ogni Attestato Elettronico e nello specifico per la gestione:</p>
 <ul class="simple">
@@ -404,7 +403,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 <p>Di seguito i principali aspetti che impattano e determinano l'Esperienza Utente nell'ambito della gestione degli Attestati Elettronici per mezzo di un'Istanza IT-Wallet e i requisiti funzionali riferiti a ciascuna categoria.</p>
 <section id="stato-degli-attestati-elettronici">
-<h3><span class="section-number">2.2.4.1. </span>Stato degli Attestati Elettronici<a class="headerlink" href="#stato-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.4.1. </span>Stato degli Attestati Elettronici<a class="headerlink" href="#stato-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
 <p>Per garantire l'affidabilità e promuovere il corretto utilizzo della propria Soluzione IT-Wallet, il Fornitore di Soluzione IT-Wallet DEVE dare all'Utente visibilità dello stato degli Attestati Elettronici ottenuti nella propria Istanza IT-Wallet sulla base delle informazioni ricevute dal Fornitore di Attestati Elettronici, gestore del loro ciclo di vita.</p>
 <p>Ogni Attestato Elettronico può assumere lo stato valido o non valido, con conseguenti impatti circa le sue possibilità di utilizzo, in particolare:</p>
 <ul class="simple">
@@ -412,7 +411,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <li><p><strong>non valido</strong>: gli Attestati Elettronici non validi NON DEVONO essere utilizzabili quindi presentabili. Rientrano in questa categoria gli Attestati Elettronici scaduti o revocati. In questi casi l'Istanza IT-Wallet DEVE essere informare l'Utente circa lo stato di non validità e DOVREBBE dare evidenza della motivazione. Qualora l'Attestato Elettronico non fosse più valido, e non fosse quindi più possibile alcuno scenario di utilizzo, l'Istanza IT-Wallet PUÒ prevedere dei meccanismi per inibire la Vista di Dettaglio di tale Attestato Elettronico, al fine di incoraggiare l'Utente ad aggiornarlo o cancellarlo tramite apposito testo informativo e Call To Action.</p></li>
 </ul>
 <section id="revoca-degli-attestati-elettronici">
-<h4><span class="section-number">2.2.4.1.1. </span>Revoca degli Attestati Elettronici<a class="headerlink" href="#revoca-degli-attestati-elettronici" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">3.1.4.1.1. </span>Revoca degli Attestati Elettronici<a class="headerlink" href="#revoca-degli-attestati-elettronici" title="Link to this heading">¶</a></h4>
 <p>La revoca si configura come quel meccanismo che determina il passaggio di un Attestato Elettronico da uno stato valido a uno stato non valido. La revoca può avvenire in modalità attiva o passiva:</p>
 <ul>
 <li><p><strong>Revoca attiva</strong>: ovvero la revoca di un Attestato Elettronico su richiesta dell'Utente. Tale processo comporta la sola revoca dell'Attestato Elettronico e non del corrispettivo documento fisico, se esistente. Di seguito un elenco esemplificativo di scenari in cui il Fornitore di Soluzione IT-Wallet DEVE dare possibilità all'Utente di richiedere la revoca di un Attestato Elettronico:</p>
@@ -438,7 +437,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </section>
 </section>
 <section id="storico-degli-attestati-elettronici">
-<h3><span class="section-number">2.2.4.2. </span>Storico degli Attestati Elettronici<a class="headerlink" href="#storico-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.4.2. </span>Storico degli Attestati Elettronici<a class="headerlink" href="#storico-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
 <p>Al fine di garantire i principi di visibilità e trasparenza, il Fornitore di Soluzione IT-Wallet DEVE permettere all'Utente di visualizzare lo storico di tutte le transazioni effettuate, ovvero l'utilizzo degli Attestati Elettronici di Attributi tramite l'Istanza IT-Wallet. In particolare:</p>
 <ul class="simple">
 <li><p>l'Istanza IT-Wallet DEVE mostrare all'Utente con quali Verificatori di Attestati Elettronici ha interagito e quali Attestati Elettronici sono stati oggetto di presentazione e verifica;</p></li>
@@ -446,7 +445,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 </section>
 <section id="archiviazione-e-ripristino-degli-attestati-elettronici-di-attributi">
-<h3><span class="section-number">2.2.4.3. </span>Archiviazione e ripristino degli Attestati Elettronici di Attributi<a class="headerlink" href="#archiviazione-e-ripristino-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.4.3. </span>Archiviazione e ripristino degli Attestati Elettronici di Attributi<a class="headerlink" href="#archiviazione-e-ripristino-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h3>
 <p>Con l'obiettivo di garantire il principio di data portability, la Soluzione IT-Wallet DEVE garantire all'Utente l'accesso a specifiche funzionalità per:</p>
 <ul class="simple">
 <li><p>richiedere l'archiviazione, quindi il salvataggio, degli Attestati Elettronici di Attributi ottenuti su una specifica Istanza IT-Wallet;</p></li>
@@ -455,7 +454,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </section>
 </section>
 <section id="disattivazione-dell-istanza-it-wallet">
-<h2><span class="section-number">2.2.5. </span>Disattivazione dell'Istanza IT-Wallet<a class="headerlink" href="#disattivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.5. </span>Disattivazione dell'Istanza IT-Wallet<a class="headerlink" href="#disattivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h2>
 <p>La disattivazione dell'Istanza IT-Wallet è la funzionalità che rende l'Istanza IT-Wallet disattiva e quindi non più operativa. La disattivazione dell'Istanza IT-Wallet può essere scatenata da attori differenti a seconda delle circostanze, in particolare:</p>
 <ul>
 <li><p>da parte dell'Utente nel caso in cui, ad esempio:</p>
@@ -495,7 +494,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p>In caso di errori nell'utilizzo dell'Istanza IT-Wallet, il Fornitore di Soluzione IT-Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 </section>
 <section id="gestione-degli-errori">
-<h2><span class="section-number">2.2.6. </span>Gestione degli errori<a class="headerlink" href="#gestione-degli-errori" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.6. </span>Gestione degli errori<a class="headerlink" href="#gestione-degli-errori" title="Link to this heading">¶</a></h2>
 <p>Il Sistema IT-Wallet prevede l'interazione di una molteplicità di servizi erogati da diversi attori. È quindi importante che venga definito un modello di gestione degli errori efficace, con l'obiettivo di migliorare la percezione e il senso di affidabilità dell'interno ecosistema e permettere all'Utente di sentirsi guidato nell'interazione con le diverse Soluzioni Tecniche e nella gestione consapevole di eventuali criticità durante la fruizione del servizio.</p>
 <p>Una comunicazione efficace in caso di errore determina un vantaggio anche per gli attori coinvolti, in quanto concorre alla riduzione delle richieste di assistenza e, quindi, alla minimizzazione dell'impatto sui sistemi.</p>
 <p>Di seguito vengono presentati i requisiti e le principali buone pratiche di gestione dell'errore, riferite alle modalità di interazione tra l'Utente e la propria Istanza IT-Wallet. Ciascun Attore Primario deve implementare una corretta gestione degli errori, in conformità alle attuali regole tecniche, al fine di comunicarli, direttamente o indirettamente, all'Utente e tramite l'Istanza IT-Wallet. Gli errori possono essere declinati, sulla base della loro natura, come segue:</p>
@@ -509,7 +508,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 <p>Di seguito, una lista non esaustiva delle principali casistiche di errore, con riferimento all'attore responsabile della loro gestione, per ciascuna fase dell'Esperienza Utente.</p>
 <section id="errori-di-attivazione-dell-istanza-it-wallet">
-<h3><span class="section-number">2.2.6.1. </span>Errori di Attivazione dell'Istanza IT-Wallet<a class="headerlink" href="#errori-di-attivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.6.1. </span>Errori di Attivazione dell'Istanza IT-Wallet<a class="headerlink" href="#errori-di-attivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -537,7 +536,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-ottenimento-degli-attestati-elettronici-di-attributi">
-<h3><span class="section-number">2.2.6.2. </span>Errori di ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.6.2. </span>Errori di ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -562,7 +561,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-presentazione-degli-attestati-elettronici">
-<h3><span class="section-number">2.2.6.3. </span>Errori di presentazione degli Attestati Elettronici<a class="headerlink" href="#errori-di-presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.6.3. </span>Errori di presentazione degli Attestati Elettronici<a class="headerlink" href="#errori-di-presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -584,7 +583,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-gestione-degli-attestati-elettronici">
-<h3><span class="section-number">2.2.6.4. </span>Errori di gestione degli Attestati Elettronici<a class="headerlink" href="#errori-di-gestione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.6.4. </span>Errori di gestione degli Attestati Elettronici<a class="headerlink" href="#errori-di-gestione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -606,7 +605,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </table>
 </section>
 <section id="errori-di-disattivazione-dell-istanza-it-wallet">
-<h3><span class="section-number">2.2.6.5. </span>Errori di disattivazione dell'Istanza IT-Wallet<a class="headerlink" href="#errori-di-disattivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.6.5. </span>Errori di disattivazione dell'Istanza IT-Wallet<a class="headerlink" href="#errori-di-disattivazione-dell-istanza-it-wallet" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -627,7 +626,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </section>
 </section>
 <section id="assistenza-utente">
-<h2><span class="section-number">2.2.7. </span>Assistenza Utente<a class="headerlink" href="#assistenza-utente" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.7. </span>Assistenza Utente<a class="headerlink" href="#assistenza-utente" title="Link to this heading">¶</a></h2>
 <p>Per un'efficace gestione degli errori e di eventuali altre problematiche, gli Attori Primari DEVONO garantire un'adeguata assistenza all'Utente, strutturando un modello di assistenza semplice ed efficace basato sui seguenti principi:</p>
 <ul class="simple">
 <li><p><strong>Risoluzione autonoma</strong>: permettere all'Utente di consultare domande frequenti (FAQ) sui contenuti e sulle funzionalità dell'Istanza IT-Wallet, al fine di risolvere eventuali casistiche di errore o problematiche in maniera autonoma.</p></li>
@@ -654,7 +653,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </ul>
 </section>
 <section id="feedback-utente">
-<h2><span class="section-number">2.2.8. </span>Feedback Utente<a class="headerlink" href="#feedback-utente" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">3.1.8. </span>Feedback Utente<a class="headerlink" href="#feedback-utente" title="Link to this heading">¶</a></h2>
 <p>La raccolta dei feedback degli Utenti permette di monitorare l'Esperienza Utente, identificare le aree per una possibile ottimizzazione e misurare l'efficacia del servizio in maniera continuativa. Ogni Fornitore di Soluzione IT-Wallet DOVREBBE predisporre un sistema strutturato di raccolta feedback, per monitorare e migliorare l'Esperienza Utente.</p>
 <p>Tale sistema di feedback POTREBBE essere alimentato da due diverse tipologie di raccolta feedback:</p>
 <ul class="simple">
@@ -697,43 +696,43 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">2.2. Funzionalità</a><ul>
-<li><a class="reference internal" href="#attivazione-dell-istanza-it-wallet">2.2.1. Attivazione dell'Istanza IT-Wallet</a><ul>
-<li><a class="reference internal" href="#focus-sul-pid-dati-di-identificazione-della-persona">2.2.1.1. Focus sul PID – Dati di Identificazione della Persona</a></li>
+<li><a class="reference internal" href="#">3.1. Funzionalità</a><ul>
+<li><a class="reference internal" href="#attivazione-dell-istanza-it-wallet">3.1.1. Attivazione dell'Istanza IT-Wallet</a><ul>
+<li><a class="reference internal" href="#focus-sul-pid-dati-di-identificazione-della-persona">3.1.1.1. Focus sul PID – Dati di Identificazione della Persona</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#ottenimento-degli-attestati-elettronici-di-attributi">2.2.2. Ottenimento degli Attestati Elettronici di Attributi</a><ul>
-<li><a class="reference internal" href="#focus-sulle-attestazioni-elettroniche-di-attributi">2.2.2.1. Focus sulle Attestazioni Elettroniche di Attributi</a></li>
+<li><a class="reference internal" href="#ottenimento-degli-attestati-elettronici-di-attributi">3.1.2. Ottenimento degli Attestati Elettronici di Attributi</a><ul>
+<li><a class="reference internal" href="#focus-sulle-attestazioni-elettroniche-di-attributi">3.1.2.1. Focus sulle Attestazioni Elettroniche di Attributi</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#presentazione-degli-attestati-elettronici">2.2.3. Presentazione degli Attestati Elettronici</a><ul>
-<li><a class="reference internal" href="#presentazione-in-prossimita">2.2.3.1. Presentazione in prossimità</a></li>
-<li><a class="reference internal" href="#presentazione-da-remoto">2.2.3.2. Presentazione da remoto</a><ul>
-<li><a class="reference internal" href="#autenticazione">2.2.3.2.1. Autenticazione</a></li>
+<li><a class="reference internal" href="#presentazione-degli-attestati-elettronici">3.1.3. Presentazione degli Attestati Elettronici</a><ul>
+<li><a class="reference internal" href="#presentazione-in-prossimita">3.1.3.1. Presentazione in prossimità</a></li>
+<li><a class="reference internal" href="#presentazione-da-remoto">3.1.3.2. Presentazione da remoto</a><ul>
+<li><a class="reference internal" href="#autenticazione">3.1.3.2.1. Autenticazione</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#gestione-degli-attestati-elettronici">2.2.4. Gestione degli Attestati Elettronici</a><ul>
-<li><a class="reference internal" href="#stato-degli-attestati-elettronici">2.2.4.1. Stato degli Attestati Elettronici</a><ul>
-<li><a class="reference internal" href="#revoca-degli-attestati-elettronici">2.2.4.1.1. Revoca degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#gestione-degli-attestati-elettronici">3.1.4. Gestione degli Attestati Elettronici</a><ul>
+<li><a class="reference internal" href="#stato-degli-attestati-elettronici">3.1.4.1. Stato degli Attestati Elettronici</a><ul>
+<li><a class="reference internal" href="#revoca-degli-attestati-elettronici">3.1.4.1.1. Revoca degli Attestati Elettronici</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#storico-degli-attestati-elettronici">2.2.4.2. Storico degli Attestati Elettronici</a></li>
-<li><a class="reference internal" href="#archiviazione-e-ripristino-degli-attestati-elettronici-di-attributi">2.2.4.3. Archiviazione e ripristino degli Attestati Elettronici di Attributi</a></li>
+<li><a class="reference internal" href="#storico-degli-attestati-elettronici">3.1.4.2. Storico degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#archiviazione-e-ripristino-degli-attestati-elettronici-di-attributi">3.1.4.3. Archiviazione e ripristino degli Attestati Elettronici di Attributi</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#disattivazione-dell-istanza-it-wallet">2.2.5. Disattivazione dell'Istanza IT-Wallet</a></li>
-<li><a class="reference internal" href="#gestione-degli-errori">2.2.6. Gestione degli errori</a><ul>
-<li><a class="reference internal" href="#errori-di-attivazione-dell-istanza-it-wallet">2.2.6.1. Errori di Attivazione dell'Istanza IT-Wallet</a></li>
-<li><a class="reference internal" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi">2.2.6.2. Errori di ottenimento degli Attestati Elettronici di Attributi</a></li>
-<li><a class="reference internal" href="#errori-di-presentazione-degli-attestati-elettronici">2.2.6.3. Errori di presentazione degli Attestati Elettronici</a></li>
-<li><a class="reference internal" href="#errori-di-gestione-degli-attestati-elettronici">2.2.6.4. Errori di gestione degli Attestati Elettronici</a></li>
-<li><a class="reference internal" href="#errori-di-disattivazione-dell-istanza-it-wallet">2.2.6.5. Errori di disattivazione dell'Istanza IT-Wallet</a></li>
+<li><a class="reference internal" href="#disattivazione-dell-istanza-it-wallet">3.1.5. Disattivazione dell'Istanza IT-Wallet</a></li>
+<li><a class="reference internal" href="#gestione-degli-errori">3.1.6. Gestione degli errori</a><ul>
+<li><a class="reference internal" href="#errori-di-attivazione-dell-istanza-it-wallet">3.1.6.1. Errori di Attivazione dell'Istanza IT-Wallet</a></li>
+<li><a class="reference internal" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi">3.1.6.2. Errori di ottenimento degli Attestati Elettronici di Attributi</a></li>
+<li><a class="reference internal" href="#errori-di-presentazione-degli-attestati-elettronici">3.1.6.3. Errori di presentazione degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#errori-di-gestione-degli-attestati-elettronici">3.1.6.4. Errori di gestione degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#errori-di-disattivazione-dell-istanza-it-wallet">3.1.6.5. Errori di disattivazione dell'Istanza IT-Wallet</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#assistenza-utente">2.2.7. Assistenza Utente</a></li>
-<li><a class="reference internal" href="#feedback-utente">2.2.8. Feedback Utente</a></li>
+<li><a class="reference internal" href="#assistenza-utente">3.1.7. Assistenza Utente</a></li>
+<li><a class="reference internal" href="#feedback-utente">3.1.8. Feedback Utente</a></li>
 </ul>
 </li>
 </ul>
@@ -748,14 +747,14 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
         <div class="button_nav">
             <div class="left">
                 
-                <a href="brand-identity.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">2.1. </span>Brand Identity del Sistema IT-Wallet</span></a>
+                <a href="architecture-overview.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">3. </span>Architecture Overview</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="architecture-overview.html"><span><span class="section-number">3. </span>Architecture Overview</span><span class="icon">&gt;</span></a>
+                    <a href="defined-terms-and-references.html"><span><span class="section-number">4. </span>Defined Terms and References</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -763,7 +762,7 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 26/05/2025.
+      Ultimo aggiornamento 27/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
