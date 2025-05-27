@@ -1,9 +1,5 @@
 .. include:: ../common/common_definitions.rst
 
-.. _defined-terms.rst:
-
-defined-terms.rst
-+++++++++++++++++++++++++++
 
 Riferimenti Normativi
 ======================
@@ -19,8 +15,6 @@ Linee guida per l'accessibilità degli strumenti informatici ai sensi dell'artic
 [GL_DESIGN]
 
 Linee guida per la progettazione dei siti web e dei servizi digitali forniti dalle pubbliche amministrazioni, ai sensi dell'articolo 53, comma 1-ter, del decreto legislativo del 7 marzo 2005, n. 82, e successive modificazioni.
-
-.. _defined-terms:
 
 Definizioni e Acronimi
 ==========================
@@ -44,7 +38,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
 
     **Autenticazione**
-      Processo elettronico che consente di confermare l’Identificazione di una persona fisica o giuridica, oppure l’origine/integrità dei dati.
+      Processo elettronico che consente di confermare l'Identificazione di una persona fisica o giuridica, oppure l'origine/integrità dei dati.
       Conforme con ARF 1.10.
 
     **Fonte Autentica**
@@ -182,7 +176,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Attestato Elettronico di Interesse Pubblico**
     **Credenziale Elettronica di Interesse Pubblico**
-      Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell’articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
+      Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
       Non presente in ARF 1.10; specifico di IT-Wallet.
       
     **Attestato Elettronico di Dati di Identificazione Personale**  
@@ -460,3 +454,6 @@ Conformemente agli RFC 2119 e 8174 le seguenti parole chiave solamente quando ap
   - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito che non è consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti dalla eventuale scelta di applicare comunque il requisito.
   - OBBLIGATORIO: necessario
   - OPZIONALE: facoltativo
+
+
+

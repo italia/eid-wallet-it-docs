@@ -1,8 +1,6 @@
-.. include:: ../common/common_definitions.rst
+.. include:: ../common/standards.rst
 
-.. _standards.rst:
+[Lorem Ipsum]
 
-Standards
-+++++++++
 
-TODO
+

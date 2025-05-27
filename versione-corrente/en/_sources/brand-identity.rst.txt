@@ -3,8 +3,7 @@
 .. "included" file, so we start with '-' title level
 
 Brand Identity
--------------------------------
-
+--------------
 
 The IT-Wallet Brand Identity defines the system's personality and it's expressed through a set of standardized elements, including its naming and Visual Identity. It strengthens and promotes the Trust Model at the basis of the entire ecosystem, that is to say the framework that legitimizes the Actors' participation in the IT-Wallet System and ensures the security and integrity of its processes.
 
@@ -105,14 +104,18 @@ The integration of the Authentication Button within the Discovery Page may vary 
 .. only:: format_html
 
   .. figure:: ./images/svg/discovery-page-layouts.svg
-    :alt: examples of Discovery Page layouts: grid, tab, and list
+    :alt: Examples of Discovery Page layouts: grid, tab, and list
     :width: 100%
+    
+    Examples of Discovery Page layouts: grid, tab, and list
 
 .. only:: format_latex 
   
   .. figure:: ./images/pdf/discovery-page-layouts.pdf
-    :alt: examples of Discovery Page layouts: grid, tab, and list
+    :alt: Examples of Discovery Page layouts: grid, tab, and list
     :width: 100%
+
+    Examples of Discovery Page layouts: grid, tab, and list
 
 For further details on the use of the Authentication Button, please refer to the :ref:`functionalities:Authentication` section.
 

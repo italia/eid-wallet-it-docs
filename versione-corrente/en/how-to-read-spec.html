@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.2. How to Read the Specification &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy - 1.0.0</title>
+    <title>How to Read the Specification &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -16,9 +16,7 @@
     <script src="_static/js/petite-vue.js"></script>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="3. The Infrastructure of Trust" href="trust.html" />
-    <link rel="prev" title="2.1. Functionalities" href="functionalities.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -129,25 +127,22 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="architecture-overview.html">2. Architecture Overview</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="functionalities.html">2.1. Functionalities</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. How to Read the Specification</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">3. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">4. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">5. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">6. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">7. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">8. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">9. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">10. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">11. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">12. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">13. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">14. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
 </ul>
 
         </div>
@@ -160,13 +155,15 @@
           <div class="body" role="main">
             
   <section id="how-to-read-the-specification">
-<h1><span class="section-number">2.2. </span>How to Read the Specification<a class="headerlink" href="#how-to-read-the-specification" title="Link to this heading">¶</a></h1>
+<h1>How to Read the Specification<a class="headerlink" href="#how-to-read-the-specification" title="Link to this heading">¶</a></h1>
 <p>This specification is designed to fulfil the requirements from multiple stakeholders within the IT-Wallet ecosystem. Each role has different responsibilities and scopes, and therefore different information needs. This section provides tailored reading paths to help you navigate efficiently to the content most relevant to the implementation goals.</p>
 <section id="specification-structure-overview">
-<h2><span class="section-number">2.2.1. </span>Specification Structure Overview<a class="headerlink" href="#specification-structure-overview" title="Link to this heading">¶</a></h2>
+<h2>Specification Structure Overview<a class="headerlink" href="#specification-structure-overview" title="Link to this heading">¶</a></h2>
 <p>The specification is organized into the following major sections:</p>
 <dl class="simple">
-<dt><strong>Section</strong> <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>:</dt><dd><p>Establishes scope, normative language, design principles, and brand identity requirements for the IT-Wallet ecosystem.</p>
+<dt><strong>Section</strong> <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>:</dt><dd><p>Establishes scope, and normative language for the IT-Wallet ecosystem.</p>
+</dd>
+<dt><strong>Section</strong> <a class="reference internal" href="design.html#design-principles"><span class="std std-ref">Design Principles</span></a>:</dt><dd><p>Provides design principles, and brand identity requirements for the IT-Wallet ecosystem.</p>
 </dd>
 <dt><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>:</dt><dd><p>Provides high-level system functionalities and guidance for navigating the specification based on implementation requirements.</p>
 </dd>
@@ -189,10 +186,10 @@
 </dl>
 </section>
 <section id="reading-paths-by-role">
-<h2><span class="section-number">2.2.2. </span>Reading Paths by Role<a class="headerlink" href="#reading-paths-by-role" title="Link to this heading">¶</a></h2>
+<h2>Reading Paths by Role<a class="headerlink" href="#reading-paths-by-role" title="Link to this heading">¶</a></h2>
 <p>Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections <a class="reference internal" href="introduction.html#introduction"><span class="std std-ref">Introduction</span></a>, <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>, and <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>, which establish the common vocabulary, design principles, and trust infrastructure that provide the underlying framework for the entire ecosystem.</p>
 <section id="wallet-provider">
-<h3><span class="section-number">2.2.2.1. </span>Wallet Provider<a class="headerlink" href="#wallet-provider" title="Link to this heading">¶</a></h3>
+<h3>Wallet Provider<a class="headerlink" href="#wallet-provider" title="Link to this heading">¶</a></h3>
 <p>Readers implementing or operating a <strong>Wallet Provider</strong> Solution should focus on understanding how to securely manage Digital Credentials and facilitate User interactions with other ecosystem participants.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
@@ -211,7 +208,7 @@
 </ul>
 </section>
 <section id="credential-issuer">
-<h3><span class="section-number">2.2.2.2. </span>Credential Issuer<a class="headerlink" href="#credential-issuer" title="Link to this heading">¶</a></h3>
+<h3>Credential Issuer<a class="headerlink" href="#credential-issuer" title="Link to this heading">¶</a></h3>
 <p>For readers who are interested in implementing a <strong>Credential Issuer</strong> Solution, they should focus on the Digital Credential lifecycle and issuance interaction flows.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
@@ -234,7 +231,7 @@
 </div>
 </section>
 <section id="authentic-source">
-<h3><span class="section-number">2.2.2.3. </span>Authentic Source<a class="headerlink" href="#authentic-source" title="Link to this heading">¶</a></h3>
+<h3>Authentic Source<a class="headerlink" href="#authentic-source" title="Link to this heading">¶</a></h3>
 <p>If the reader wants to operate an <strong>Authentic Source</strong>, the focus should be on secure data provision and integration with Credential Issuers.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
@@ -250,7 +247,7 @@
 </ul>
 </section>
 <section id="relying-party">
-<h3><span class="section-number">2.2.2.4. </span>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h3>
+<h3>Relying Party<a class="headerlink" href="#relying-party" title="Link to this heading">¶</a></h3>
 <p>Readers interested in implementing or operating a <strong>Relying Party</strong> Solution to accept and verify Digital Credentials should focus on presentation protocols and verification mechanisms.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
@@ -268,7 +265,7 @@
 </section>
 </section>
 <section id="cross-cutting-topics">
-<h2><span class="section-number">2.2.3. </span>Cross-Cutting Topics<a class="headerlink" href="#cross-cutting-topics" title="Link to this heading">¶</a></h2>
+<h2>Cross-Cutting Topics<a class="headerlink" href="#cross-cutting-topics" title="Link to this heading">¶</a></h2>
 <p>Regardless of your primary role, certain sections contain information relevant to all ecosystem participants:</p>
 <dl class="simple">
 <dt><strong>Security and Compliance:</strong></dt><dd><p>All implementers must implement their solutions according to Section <a class="reference internal" href="security-privacy-considerations.html#security-and-privacy-considerations"><span class="std std-ref">Security and Privacy Considerations</span></a> and Section <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>.</p>
@@ -280,7 +277,7 @@
 </dl>
 </section>
 <section id="implementation-approach">
-<h2><span class="section-number">2.2.4. </span>Implementation Approach<a class="headerlink" href="#implementation-approach" title="Link to this heading">¶</a></h2>
+<h2>Implementation Approach<a class="headerlink" href="#implementation-approach" title="Link to this heading">¶</a></h2>
 <p>The following phased reading approach is suggested:</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -311,17 +308,17 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">2.2. How to Read the Specification</a><ul>
-<li><a class="reference internal" href="#specification-structure-overview">2.2.1. Specification Structure Overview</a></li>
-<li><a class="reference internal" href="#reading-paths-by-role">2.2.2. Reading Paths by Role</a><ul>
-<li><a class="reference internal" href="#wallet-provider">2.2.2.1. Wallet Provider</a></li>
-<li><a class="reference internal" href="#credential-issuer">2.2.2.2. Credential Issuer</a></li>
-<li><a class="reference internal" href="#authentic-source">2.2.2.3. Authentic Source</a></li>
-<li><a class="reference internal" href="#relying-party">2.2.2.4. Relying Party</a></li>
+<li><a class="reference internal" href="#">How to Read the Specification</a><ul>
+<li><a class="reference internal" href="#specification-structure-overview">Specification Structure Overview</a></li>
+<li><a class="reference internal" href="#reading-paths-by-role">Reading Paths by Role</a><ul>
+<li><a class="reference internal" href="#wallet-provider">Wallet Provider</a></li>
+<li><a class="reference internal" href="#credential-issuer">Credential Issuer</a></li>
+<li><a class="reference internal" href="#authentic-source">Authentic Source</a></li>
+<li><a class="reference internal" href="#relying-party">Relying Party</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#cross-cutting-topics">2.2.3. Cross-Cutting Topics</a></li>
-<li><a class="reference internal" href="#implementation-approach">2.2.4. Implementation Approach</a></li>
+<li><a class="reference internal" href="#cross-cutting-topics">Cross-Cutting Topics</a></li>
+<li><a class="reference internal" href="#implementation-approach">Implementation Approach</a></li>
 </ul>
 </li>
 </ul>
@@ -336,14 +333,9 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="functionalities.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">2.1. </span>Functionalities</span></a>
-                
             </div>
 
             <div class="right">
-                
-                    <a href="trust.html"><span><span class="section-number">3. </span>The Infrastructure of Trust</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -351,7 +343,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/05/2025.
+      Last updated on 27/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

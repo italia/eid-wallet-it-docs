@@ -1,5 +1,6 @@
 .. include:: ../common/common_definitions.rst
 
+
 Normative References
 ====================
 
@@ -18,7 +19,6 @@ Directive (EU) 2019/882 of the European Parliament and of the Council of 17 Apri
 
 Design Guidelines for websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.
 
-.. _defined-terms:
 
 Defined Terms and Acronyms
 ==========================

@@ -1,15 +1,18 @@
 How to Read the Specification
-=============================
+-----------------------------
 
 This specification is designed to fulfil the requirements from multiple stakeholders within the IT-Wallet ecosystem. Each role has different responsibilities and scopes, and therefore different information needs. This section provides tailored reading paths to help you navigate efficiently to the content most relevant to the implementation goals.
 
 Specification Structure Overview
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The specification is organized into the following major sections:
 
 **Section** :ref:`introduction:Introduction`: 
-  Establishes scope, normative language, design principles, and brand identity requirements for the IT-Wallet ecosystem.
+  Establishes scope, and normative language for the IT-Wallet ecosystem.
+
+**Section** :ref:`design:Design Principles`: 
+  Provides design principles, and brand identity requirements for the IT-Wallet ecosystem.
 
 **Section** :ref:`architecture-overview:Architecture Overview`:
   Provides high-level system functionalities and guidance for navigating the specification based on implementation requirements.
@@ -40,12 +43,12 @@ The specification is organized into the following major sections:
 
 
 Reading Paths by Role
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust`, which establish the common vocabulary, design principles, and trust infrastructure that provide the underlying framework for the entire ecosystem.
 
 Wallet Provider
-^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""
 
 Readers implementing or operating a **Wallet Provider** Solution should focus on understanding how to securely manage Digital Credentials and facilitate User interactions with other ecosystem participants.
 
@@ -66,7 +69,7 @@ Readers implementing or operating a **Wallet Provider** Solution should focus on
 
 
 Credential Issuer
-^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 
 For readers who are interested in implementing a **Credential Issuer** Solution, they should focus on the Digital Credential lifecycle and issuance interaction flows.
 
@@ -90,7 +93,7 @@ For readers who are interested in implementing a **Credential Issuer** Solution,
     If the Credential Issuer authenticates the User it must comply with Section :ref:`credential-presentation:Digital Credential Presentation`. If the Authentic Source providing User's attributes belongs to the public sector it must comply with Section :ref:`e-service-pdnd:e-Service PDND`.  
 
 Authentic Source
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""
 
 If the reader wants to operate an **Authentic Source**, the focus should be on secure data provision and integration with Credential Issuers.
 
@@ -107,7 +110,7 @@ If the reader wants to operate an **Authentic Source**, the focus should be on s
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Understanding how authoritative data and attributes becomes Digital Credentials, and how their lifecycle is managed.
 
 Relying Party
-^^^^^^^^^^^^^^
+"""""""""""""
 
 Readers interested in implementing or operating a **Relying Party** Solution to accept and verify Digital Credentials should focus on presentation protocols and verification mechanisms.
 
@@ -125,7 +128,7 @@ Readers interested in implementing or operating a **Relying Party** Solution to 
 * **Section** :ref:`mobile-application-instance:Mobile Application Instance`: Mobile-specific implementation patterns.
 
 Cross-Cutting Topics
-----------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Regardless of your primary role, certain sections contain information relevant to all ecosystem participants:
 
@@ -139,7 +142,7 @@ Regardless of your primary role, certain sections contain information relevant t
     Section :ref:`test-plans:Test Plans` provides a comprehensive test matrix for validating implementations across different roles and interaction flows.
 
 Implementation Approach
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The following phased reading approach is suggested:
 
