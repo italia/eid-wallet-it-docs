@@ -3,7 +3,7 @@
 Come leggere le Specifiche
 --------------------------
 
-Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno dell'ecosistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e, quindi, diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutarti a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.
+Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno dell'ecosistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutare il lettore a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.
 
 Panoramica della Struttura delle Specifiche
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
   Stabilisce l'ambito e il linguaggio normativo per l'ecosistema IT-Wallet.
 
 **Sezione** :ref:`design:Principi di design`: 
-  Fornisce principi di progettazione e requisiti di identità del marchio per l'ecosistema IT-Wallet.
+  Fornisce principi di progettazione e requisiti di identità visiva dell'ecosistema IT-Wallet.
 
 **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`:
   Fornisce funzionalità di sistema di alto livello e guida per navigare nella specifica in base ai requisiti di implementazione.
@@ -56,7 +56,7 @@ I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet**
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti completi di implementazione del wallet, componenti e processi di interazione.
+* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.
 * **Sezione** :ref:`digital-credential-management:Gestione delle Credenziali Digitali`: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.
 * **Sezione** :ref:`digital-credential-flows:Flussi delle Credenziali Elettroniche`: Flussi di emissione e presentazione per le Credenziali Elettroniche.
 * **Sezione** :ref:`wallet-provider-endpoint:Endpoint del Fornitore di Wallet`: Specifiche API per la federazione e specifiche per IT-Wallet.
@@ -66,7 +66,7 @@ I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet**
 
 **Sezioni secondarie:**
 
-* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Credenziale`: Comprensione delle interazioni e dei requisiti del fornitore di credenziali.
+* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Credenziale`: Comprensione delle interazioni e dei requisiti del Fornitore di Credenziali.
 * **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Comprensione delle interazioni con le Relying Party e dei protocolli di presentazione.
 
 
