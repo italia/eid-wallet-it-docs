@@ -99,7 +99,7 @@ Questo componente DEVE stabilire connessioni sicure con le Fonti Autentiche per:
    - Fornire prove crittografiche dell'autenticazione dell'Utente quando richiesto.
 
 .. note::
-   Per le Fonti Autentiche pubbliche, un Fornitore di Attestati Elettronici DEVE utilizzare PDND secondo quanto definito nelle Sezioni :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`, e :ref:`authentic-source-endpoint:e-Service Catalogo delle Fonti Autentiche PDND`.
+   Per le Fonti Autentiche pubbliche, un Fornitore di Attestati Elettronici DEVE utilizzare PDND secondo quanto definito nelle Sezioni :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`, e :ref:`authentic-source-endpoint:Catalogo degli e-Service PDND delle Fonti Autentiche`.
 
 Gestione del Ciclo di Vita degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
