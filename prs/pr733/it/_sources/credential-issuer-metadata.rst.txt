@@ -99,8 +99,8 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
                 - **name**: Valore stringa di un nome visualizzato per l'Attestato Elettronico.
                 - **locale**: Valore stringa che identifica la localizzazione rappresentato come un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
 
-        - **vct**: RICHIESTO solo se ``format`` è valorizzato con "*dc+sd-jwt*". Come definito in [:ref:`credential-data-model:Formato Credenziale SD-JWT-VC`].
-        - **doctype**: RICHIESTO solo se ``format`` è valorizzato con "*mso_mdoc*". Come definito in [:ref:`credential-data-model:Formato Credenziale mdoc-CBOR`].
+        - **vct**: RICHIESTO solo se ``format`` è valorizzato con "*dc+sd-jwt*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato SD-JWT-VC`].
+        - **doctype**: RICHIESTO solo se ``format`` è valorizzato con "*mso_mdoc*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`].
         - **claims**: Array di oggetti JSON ciascuno che descrive come un determinato attributo relativo all'Attestato Elettronico DEVE essere visualizzato all'Utente. Questo Array elenca gli attributi nell'ordine in cui DEVONO essere visualizzati dal Wallet. Per fornire informazioni dettagliate sull'attributo, il valore più interno DEVE contenere almeno i seguenti parametri. Vedi `OpenID4VCI`_ Sezione A.3.2.
 
             - **path**: Contiene il puntatore che specifica il percorso all'attributo specifico all'interno dell'Attestato Elettronico come definito nell'Appendice C di `OpenID4VCI`_.

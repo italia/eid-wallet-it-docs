@@ -68,7 +68,7 @@ Sulla base della specifica `OpenID4VCI`_ e del profilo implementativo fornito ne
    - Emettere Attestati Elettronici alle Istanze del Wallet.
    - Elaborare le richieste di Attestati Elettronici.
    - Ottenere i dati dell'Utente dalle Fonti Autentiche.
-   - Generare Attestati Elettronici correttamente formattati e firmati nei formati supportati (SD-JWT-VC, mDoc-CBOR). Vedere la Sezione :ref:`credential-data-model:Modello di Dati delle Credenziali Elettroniche` per maggiori dettagli.
+   - Generare Attestati Elettronici correttamente formattati e firmati nei formati supportati (SD-JWT-VC, mDoc-CBOR). Vedere la Sezione :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici` per maggiori dettagli.
    - Implementare i protocolli e i flussi di emissione degli Attestati Elettronici.
 
 Authorization Server
