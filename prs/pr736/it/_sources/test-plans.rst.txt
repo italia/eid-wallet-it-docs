@@ -71,7 +71,7 @@ Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, R
   * - ATT-005
     - Signature Validation
     - Convalidare tutte le operazioni crittografiche e rifiutare se una qualsiasi fallisce.
-    - Tutte le firme devono essere valide; qualsiasi fallimento comporta il rifiuto.
+    - Tutte le firme devono essere valide; qualsiasi fallimento comporta il fallimento di conformità.
   * - ATT-006
     - Key Entropy
     - Garantire che le chiavi crittografiche abbiano entropia sufficiente.
@@ -132,15 +132,15 @@ Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, R
   * - ALL-001
     - Security
     - Ottenimento dei materiali crittografici pubblici delle Ancore di Fiducia
-    - Le entità ottengono l'elenco delle Ancore di Fiducia o delle Autorità di Certificazione e i loro materiali di chiave crittografica pubblica, assicurandosi periodicamente che questi non siano scaduti, revocati o aggiornati. L'infrastruttura di fiducia fornisce queste informazioni attraverso endpoint web e altri meccanismi fuori banda, per facilitare il confronto delle informazioni fornite a tutte le entità.
+    - Le entità ottengono l'elenco delle Ancore di Fiducia o delle Autorità di Certificazione e i loro materiali di chiave crittografica pubblica, assicurandosi periodicamente che questi non siano scaduti, revocati o aggiornati. L'infrastruttura di fiducia fornisce queste informazioni attraverso endpoint web e meccanismi di recapito alternativi, per facilitare il confronto delle informazioni fornite a tutte le entità.
   * - ALL-002
     - Security
     - Autovalutazione della conformità
-    - Le entità valutano periodicamente la loro conformità e presenza all'interno della federazione, verificando che la catena di fiducia su se stesse sia ancora valida, non revocata e conforme alla specifica tecnica. Le entità applicano le politiche, verificando che la loro configurazione attuale sia valida con le politiche attive su di esse all'interno della federazione. La catena di fiducia, valutata e memorizzata in più formati per facilitare l'interoperabilità nella scoperta della fiducia con altre entità, viene memorizzata dalle entità e utilizzata all'occorrenza durante i flussi di scambio dati. La catena di fiducia sulle entità viene recuperata o scoperta utilizzando le asserzioni emesse dall'entità.
+    - Le entità valutano periodicamente la loro conformità e presenza all'interno della federazione, verificando che la catena di fiducia su se stesse sia ancora valida, non revocata e conforme alla specifica tecnica. Le entità applicano le politiche, verificando che la loro configurazione attuale sia valida con le politiche attive su di esse all'interno della federazione. La catena di fiducia, valutata e memorizzata in più formati per facilitare l'interoperabilità nella scoperta della fiducia con altre entità, viene memorizzata dalle entità e utilizzata all'occorrenza durante i flussi di scambio dati. La catena di fiducia sulle entità viene recuperata utilizzando le asserzioni emesse dall'entità.
   * - ALL-003
     - Discovery
     - Pubblicazione di informazioni su se stessi
-    - Le entità firmano e pubblicano tutte le informazioni su di loro, contenenti tutti i metadati del protocollo, il materiale crittografico, i trust mark, utilizzando l'endpoint well-known definito in questa specifica, rendendo queste informazioni pubblicamente individuabili da altre entità.
+    - Le entità firmano e pubblicano tutte le informazioni su di loro, contenenti tutti i metadati del protocollo, il materiale crittografico, i Trust Mark, utilizzando l'endpoint well-known definito in questa specifica, rendendo queste informazioni pubblicamente individuabili da altre entità.
   * - ALL-004
     - Security
     - Pubblicazione del registro storico delle chiavi
@@ -191,7 +191,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
   * - WS-002
     - User Interaction
     - La Soluzione Wallet DEVE richiedere e ottenere il Consenso esplicito dell'Utente durante l'inizializzazione dell'Istanza del Wallet.
-    - L'Istanza del Wallet viene attivata solo dopo aver ottenuto il Consenso dell'Utente verificabile.
+    - L'Istanza del Wallet viene attivata solo dopo aver ottenuto il Consenso dell'Utente.
   * - WS-003
     - Security
     - La Soluzione Wallet DEVE memorizzare le chiavi private all'interno di un Elemento Hardware Sicuro o di un archivio sicuro equivalente.
