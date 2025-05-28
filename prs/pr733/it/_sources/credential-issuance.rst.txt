@@ -1,24 +1,14 @@
 .. include:: ../common/common_definitions.rst
 
 
-Emissione di Credenziale Digitale
-=================================
+Emissione di Attestati Elettronici
+===================================
 
-Questa sezione descrive il flusso di emissione di Attestato Elettronico di Dati di Identificazione Personale e Attestati Elettronici di Attributi (Qualificati) con un alto livello di sicurezza.
-Le entità e le interfacce rilevanti coinvolte nel flusso di emissione sono:
-
-    - *Fornitore di Wallet*,
-    - *Soluzione Wallet*,
-    - *Istanza del Wallet*,
-    - *Fornitore di Attestati Elettronici di Dati di Identificazione Personale*,
-    - *Gestore di Identità DIgitale*,
-    - *Fornitore di Attestati Elettronici di Attributi (Qualificati)*,
-    - *Fonte Autentica*.
-  
+Questa sezione descrive il flusso di emissione di un Attestato Elettronico di Dati di Identificazione Personale (PID) e di Attestati Elettronici di Attributi ((Q)EAA) con un elevato livello di sicurezza. Nelle sezioni successive vengono utilizzati i termini Credential Issuer, PID Provider, (Q)EAA Provider per riferirsi rispettivamente a Fornitore di Attestati Elettronici, Fornitore di Attestati Elettronici di Dati di Identificazione Personale e Fornitore di Attestati Elettronici di Attributi.
 
 
 .. toctree::
-  :caption: Indice dei Contenuti per l'Emissione di Credenziale
+  :caption: Indice dei Contenuti per l'Emissione di Attestati Elettronici
   :maxdepth: 3
 
   credential-issuance-high-level.rst

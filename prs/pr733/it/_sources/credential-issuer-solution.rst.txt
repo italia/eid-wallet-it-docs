@@ -63,7 +63,7 @@ I Fornitori di Attestati Elettronici POSSONO fornire servizi aggiuntivi all'Uten
 Componente Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sulla base della specifica `OpenID4VCI`_ e del profilo implementativo fornito nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`, questo componente DEVE:
+Sulla base della specifica `OpenID4VCI`_ e del profilo implementativo fornito nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, questo componente DEVE:
 
    - Emettere Attestati Elettronici alle Istanze del Wallet.
    - Elaborare le richieste di Attestati Elettronici.
@@ -108,7 +108,7 @@ Questo componente DEVE gestire:
 
    - Lo stato di validità degli Attestati Elettronici (ad esempio aggiornamenti, revoche o sospensioni).
    - I processi e i flussi di revoca (implementazione di meccanismi per revocare o sospendere gli Attestati Elettronici), secondo quando definito nella Sezione :ref:`credential-revocation:Ciclo di vita delle Credenziali`.
-   - I processi e i flussi di rinnovo degli Attestati Elettronici, secondo i meccanismi definiti nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`.
+   - I processi e i flussi di rinnovo degli Attestati Elettronici, secondo i meccanismi definiti nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`.
 
 Componente Trust & Security
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,7 +131,7 @@ La Soluzione del Fornitore degli Attestati Elettronici supporta questi modelli d
    4. **Relying Party verso Gestori di Identità**: Interazioni di autenticazione con i sistemi nazionali di Identità Digitale o verifica del PID.
    5. **Interfaccia API verso Fonti Autentiche**: Chiamate API sicure per recuperare dati verificati dell'Utente.
 
-Tutte le interazioni devono seguire le considerazioni di sicurezza nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`, inclusa la corretta gestione di token e materiali crittografici.
+Tutte le interazioni devono seguire le considerazioni di sicurezza nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, inclusa la corretta gestione di token e materiali crittografici.
 
 .. include:: credential-issuer-entity-configuration.rst
 .. include:: credential-issuer-metadata.rst
