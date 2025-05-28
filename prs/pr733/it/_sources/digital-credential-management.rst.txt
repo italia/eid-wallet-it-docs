@@ -1,11 +1,11 @@
 .. include:: ../common/common_definitions.rst
 
 
-Gestione delle Credenziali Digitali
-===================================
+Gestione degli Attestati Elettronici
+=====================================
 
 .. toctree::
-  :caption: Indice dei Contenuti per la Gestione delle Credenziali Digitali
+  :caption: Indice dei Contenuti per la degli Attestati Elettronici
   :maxdepth: 3
 
   credential-data-model.rst
