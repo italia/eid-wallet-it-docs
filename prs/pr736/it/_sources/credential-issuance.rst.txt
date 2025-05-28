@@ -11,7 +11,7 @@ Le entità e le interfacce rilevanti coinvolte nel flusso di emissione sono:
     - *Soluzione Wallet*,
     - *Istanza del Wallet*,
     - *Fornitore di Attestati Elettronici di Dati di Identificazione Personale*,
-    - *Gestore di Identità DIgitale*,
+    - *Gestore di Identità Digitale*,
     - *Fornitore di Attestati Elettronici di Attributi (Qualificati)*,
     - *Fonte Autentica*.
   

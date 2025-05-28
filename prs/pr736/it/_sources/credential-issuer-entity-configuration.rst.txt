@@ -13,7 +13,7 @@ I Fornitori di Credenziale DEVONO fornire i seguenti tipi di metadati:
 - `oauth_authorization_server`
 - `openid_credential_issuer`
 
-Nei casi in cui i Fornitori di Attestati Elettronici di Attributi (Qualificati) autenticano gli Utenti utilizzando la loro Istanza del Wallet, allora i metadati per *openid_credential_verifier* DEVONO essere forniti in aggiunta ai metadati sopra indicati. Nel caso in cui uno schema nazionale di eID sia utilizzato dai Fornitori di Credenziale per l'autenticazione dell'Utente, essi POSSONO includere i metadati per *openid_relying_party* all'interno della loro Configurazione dell'Entità. I metadati *openid_relying_party* DEVONO essere conformi alla versione corrente delle `SPID/CIE-OpenID-Connect-Specifications`_.
+Nei casi in cui i Fornitori di Attestati Elettronici di Attributi (Qualificati) autenticano gli Utenti utilizzando la loro Istanza del Wallet, i metadati per *openid_credential_verifier* DEVONO essere forniti in aggiunta ai metadati sopra indicati. Nel caso in cui uno schema nazionale di eID sia utilizzato dai Fornitori di Credenziale per l'autenticazione dell'Utente, essi POSSONO includere i metadati per *openid_relying_party* all'interno della loro Configurazione dell'Entità. I metadati *openid_relying_party* DEVONO essere conformi alla versione corrente delle `SPID/CIE-OpenID-Connect-Specifications`_.
 
 
 I metadati *federation_entity* DEVONO contenere i parametri come definiti nella Sezione :ref:`trust:Metadati delle Foglie federation_entity`.

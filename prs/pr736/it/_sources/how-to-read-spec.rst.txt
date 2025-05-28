@@ -126,7 +126,7 @@ I lettori interessati all'implementazione o alla gestione di una Soluzione di **
 
 **Sezioni secondarie:**
 
-* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Comprensione delle interazioni dell'Istanza del Wallet e dei protocolli di presentazione
+* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Comprensione delle interazioni dell'Istanza del Wallet e dei protocolli di presentazione.
 * **Sezione** :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`: Modelli di implementazione specifici per dispositivi mobili.
 
 Argomenti Trasversali

@@ -36,7 +36,7 @@ La Soluzione del Fornitore di Credenziale Elettronica DEVE:
    8. Emettere Attestati Elettronici che supportano la Divulgazione Selettiva.
    9. Rinnovare periodicamente la propria fiducia con la Federazione.
    10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID) e, se richiesto, all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA).
-   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando i Gestori di Identità DIgitale nazionali.
+   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando i Gestori di Identità Digitale nazionali.
    12. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare un PID valido dall'Istanza del Wallet dell'Utente tramite `OpenID4VP`_.
    13. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di vita delle Credenziali`.
 
