@@ -805,7 +805,7 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
 Below is a non-normative example, in plain text (OpenSSL format), of an X.509 certificate chain with an intermediate CA, starting from the Leaf certificate.
 
 .. literalinclude:: ../../examples/x5c.json
-  :language: JSON
+  :language: text
 
 Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.
 
