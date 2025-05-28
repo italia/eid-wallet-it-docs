@@ -355,7 +355,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Insieme di caratteristiche che definiscono le modalità con cui l'Utente interagisce con l'Interfaccia di uno o più Touchpoint per completare un'attività o un'operazione e conseguire un determinato scopo.
     
     **Interfaccia**
-      L'insieme degli elementi grafici, tipografici e interattivi attraverso i quali l'Utente interagisce con il/i Touchpoint preposto/i all'erogazione di un prodotto o servizio, nel rispetto di [GL_DESIGN].
+      L'insieme degli elementi grafici, tipografici e interattivi attraverso i quali l'Utente interagisce con il/i Touchpoint preposto/i all'erogazione di un prodotto o servizio, nel rispetto di [LG_DESIGN].
     
     **Visualizzazione in Anteprima**
       Modalità di visualizzazione compatta dell'Attestato Elettronico Digitale che consente di riconoscerla e distinguerla in un elenco di Attestazioni Elettroniche mediante la presenza di dati o elementi minimi.
