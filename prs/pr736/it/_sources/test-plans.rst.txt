@@ -40,7 +40,7 @@ Per ogni caso di test, la tabella specifica:
 Matrice di Test per la Valutazione delle Dichiarazioni Firmate
 --------------------------------------------------------------
 
-Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, Relying Party e Credential Issuer che valutano qualsiasi dichiarazione firmata, siano esse asserzioni, richieste, attestati o credenziali.
+Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, Relying Party e Credential Issuer che valutano qualsiasi dichiarazione firmata, siano esse asserzioni, richieste, attestati o Credenziali.
 
 
 .. list-table::
@@ -211,7 +211,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
   * - WS-007
     - Credential Issuance
     - Il Wallet DEVE supportare il flusso dell'Emittente per ricevere e memorizzare le Credenziali Verificabili.
-    - Le credenziali vengono memorizzate in modo sicuro e analizzate correttamente secondo la struttura definita.
+    - Le Credenziali vengono memorizzate in modo sicuro e analizzate correttamente secondo la struttura definita.
   * - WS-008
     - Revocation
     - Il Wallet DEVE consentire all'Utente di attivare una Revoca dell'Istanza del Wallet in qualsiasi momento.
@@ -226,7 +226,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
     - Il backup è crittografato e legato all'Utente; l'operazione di Ripristino verifica l'integrità e l'autenticità dell'Utente prima del recupero.
   * - WS-011
     - Backup & Restore
-    - Il Wallet DEVE gestire le chiavi di crittografia del backup in modo sicuro e derivarle da segreti o credenziali controllati dall'Utente.
+    - Il Wallet DEVE gestire le chiavi di crittografia del backup in modo sicuro e derivarle da segreti o Credenziali controllati dall'Utente.
     - Nessuna entità non autorizzata può decrittografare i backup; i backup sono resi inutili se manomessi.
   * - WS-012
     - Backup & Restore
@@ -247,10 +247,10 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
   * - WS-016
     - Credential Presentation
     - Il Wallet DEVE supportare la presentazione offline delle Credenziali Verificabili quando consentito.
-    - Le credenziali vengono presentate in modo sicuro anche in modalità offline, mantenendo l'integrità e l'autenticità.
+    - Le Credenziali vengono presentate in modo sicuro anche in modalità offline, mantenendo l'integrità e l'autenticità.
   * - WS-017
     - Security
-    - Il Wallet DEVE garantire protezioni anti-replay durante la presentazione delle credenziali.
+    - Il Wallet DEVE garantire protezioni anti-replay durante la presentazione delle Credenziali.
     - Ogni presentazione è crittograficamente unica e legata alla richiesta del Verificatore.
   * - WS-018
     - Revocation
@@ -283,14 +283,14 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
   * - WS-025
     - Revocation
     - In caso di Revoca dell'Istanza del Wallet, il Wallet DEVE eliminare qualsiasi Credenziale Verificabile memorizzata localmente.
-    - Nessun dato di credenziale rimane accessibile dopo l'attivazione della revoca.
+    - Nessun dato di Credenziale rimane accessibile dopo l'attivazione della revoca.
   * - WS-026
     - Revocation
     - Il Wallet DEVE notificare al Backend del Wallet una Richiesta di Revoca che includa una prova valida di possesso della Chiave di Binding del Wallet.
     - La Richiesta di Revoca viene accettata e lo stato di revoca viene aggiornato nel backend.
   * - WS-027
     - Security
-    - Il Wallet DEVE impedire il riutilizzo delle Chiavi di Binding del Wallet revocate o delle credenziali nelle future Istanze del Wallet.
+    - Il Wallet DEVE impedire il riutilizzo delle Chiavi di Binding del Wallet revocate o delle Credenziali nelle future Istanze del Wallet.
     - Qualsiasi tentativo di riutilizzo viene rilevato e bloccato.
   * - WS-028
     - Attestation
@@ -359,7 +359,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
   * - WS-044
     - User Interaction
     - Il Wallet DEVE richiedere all'Utente prima di inviare una Credenziale Verificabile a un Verificatore.
-    - Nessuna credenziale viene condivisa senza la conferma esplicita dell'Utente.
+    - Nessuna Credenziale viene condivisa senza la conferma esplicita dell'Utente.
   * - WS-045
     - Backup & Restore
     - Il Wallet DEVE consentire all'Utente di eliminare tutti i dati di backup memorizzati.
@@ -371,7 +371,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
   * - WS-047
     - Security
     - Il Wallet DEVE verificare la validità temporale delle Credenziali ricevute (ad esempio, issuanceDate, expirationDate).
-    - Le credenziali scadute vengono contrassegnate come non valide e non vengono utilizzate.
+    - Le Credenziali scadute vengono contrassegnate come non valide e non vengono utilizzate.
   * - WS-048
     - Attestation
     - Il Wallet DEVE includere la chiave pubblica della Chiave di Binding del Wallet nell'Attestato del Wallet.
@@ -398,7 +398,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
     - Il disclaimer viene mostrato chiaramente all'Utente e la presentazione procede solo dopo il consenso.
   * - WS-054
     - Relying Party Instance
-    - Il Wallet DEVE applicare il controllo che lo stato dell'Istanza di Relying Party sia 'Verificato' prima di consentire la presentazione delle credenziali.
+    - Il Wallet DEVE applicare il controllo che lo stato dell'Istanza di Relying Party sia 'Verificato' prima di consentire la presentazione delle Credenziali.
     - Il Wallet nega il flusso se l'Istanza di Relying Party è in qualsiasi stato diverso da 'Verificato'.
   * - WS-055
     - Security
@@ -485,11 +485,11 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
   * - ISS-010
     - Security
     - Convalida della richiesta di Credenziale
-    - Il Credential Issuer convalida la richiesta di Credenziali e emette le Credenziali. Convalidare la prova di possesso e assicurarsi che il tipo di credenziale corrisponda alla richiesta.
+    - Il Credential Issuer convalida la richiesta di Credenziali e emette le Credenziali. Convalidare la prova di possesso e assicurarsi che il tipo di Credenziale corrisponda alla richiesta.
   * - ISS-011
     - Deferred Issuance
     - Flusso di emissione differita
-    - L'Istanza del Wallet gestisce correttamente l'emissione differita e recupera le credenziali in un secondo momento. Convalidare l'uso dell'identificatore univoco della transazione (`transaction_id`) e assicurarsi che la Credenziale venga emessa dopo il tempo di attesa specificato.
+    - L'Istanza del Wallet gestisce correttamente l'emissione differita e recupera le Credenziali in un secondo momento. Convalidare l'uso dell'identificatore univoco della transazione (`transaction_id`) e assicurarsi che la Credenziale venga emessa dopo il tempo di attesa specificato.
   * - ISS-012
     - Notification
     - Gestione delle notifiche
@@ -948,11 +948,11 @@ Questa sezione definisce i casi di test relativi al flusso di presentazione remo
     - L'Istanza del Wallet utilizza il metodo GET come predefinito.
   * - RPR-10
     - Metadata
-    - Verificare che i parametri corrispondano ai metadati del verificatore di credenziali openid.
+    - Verificare che i parametri corrispondano ai metadati del verificatore di Credenziali openid.
     - Verranno considerati solo i parametri consentiti.
   * - RPR-11
     - User Consent
-    - Testare l'idoneità di un verificatore di credenziali nel richiedere attributi dell'utente.
+    - Testare l'idoneità di un verificatore di Credenziali nel richiedere attributi dell'utente.
     - L'utente può modificare la selezione dei dati relativi agli attributi opzionali.
   * - RPR-12
     - Authorization Response
@@ -1012,7 +1012,7 @@ Questa sezione definisce i casi di test relativi al flusso di presentazione remo
     - Viene inviata una risposta di errore di autorizzazione.
   * - RPR-26
     - Error Handling
-    - Verificare la gestione dei claim malformati nelle credenziali presentate.
+    - Verificare la gestione dei claim malformati nelle Credenziali presentate.
     - Viene inviata una risposta di errore di autorizzazione.
   * - RPR-27
     - Error Handling

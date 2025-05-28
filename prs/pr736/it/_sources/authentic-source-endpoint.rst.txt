@@ -15,12 +15,12 @@ Le Fonti Autentiche pubbliche DEVONO fornire il seguente e-service attraverso PD
 .. only:: html
 
   .. note::
-    Una specifica OpenAPI completa è disponibile :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">qui</a>`.
+    Una specifica OpenAPI di esempio è disponibile :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">qui</a>`.
 
 .. only:: latex
 
   .. note::
-    Una specifica OpenAPI completa è disponibile :ref:`appendix-oas-pdnd-as:Specifica OpenAPI della Fonte Autentica PDND`.
+    Una specifica OpenAPI di esempio è disponibile :ref:`appendix-oas-pdnd-as:Specifica OpenAPI della Fonte Autentica PDND`.
 
 Ottieni Attributi dell'Utente
 """""""""""""""""""""""""""""

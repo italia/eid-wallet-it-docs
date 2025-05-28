@@ -73,7 +73,7 @@ I metadati *openid_credential_issuer* DEVONO contenere i seguenti attributi.
   * - **revocation_endpoint**
     - URL dell'endpoint di revoca. Vedi :rfc:`8414#section-2`.
   * - **deferred_credential_endpoint**
-    - URL dell'endpoint di credenziale differita, come definito nella Sezione 11.2.3 di `OpenID4VCI`_.
+    - URL dell'endpoint di Credenziale differita, come definito nella Sezione 11.2.3 di `OpenID4VCI`_.
   * - **status_assertion_endpoint**
     - DEVE essere un URL HTTPS che indica l'endpoint dove le Istanze del Wallet possono richiedere Status Assertion. Vedi Sezione :ref:`credential-revocation:Ciclo di vita delle Credenziali` per maggiori dettagli. (`OAUTH-STATUS-ASSERTION`_ Sezione 11.1.).
   * - **notification_endpoint**

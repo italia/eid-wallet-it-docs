@@ -43,7 +43,7 @@ Una descrizione di alto livello del flusso remoto, dal punto di vista dell'Utent
 
   5. *Consenso dell'Utente*: l'Istanza del Wallet chiede la divulgazione e il consenso dell'Utente mostrando l'identità della Relying Party e gli attributi richiesti.
   6. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme all'Attestato di Wallet se richiesto.
-  7. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla l'Attestato di Wallet per garantire che il Fornitore di Wallet sia affidabile.
+  7. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziali e controlla l'Attestato di Wallet per garantire che il Fornitore di Wallet sia affidabile.
   8. *Risposta della Relying Party*: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.
 
 Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tra tutte le parti coinvolte.
@@ -519,7 +519,7 @@ Dove vengono utilizzati i seguenti parametri:
 
       Quando viene utilizzato `presentation_definition`, il valore ``vp_token`` è un Array JSON contenente la/e Presentazione/i Verificabile/i e il parametro `presentation_submission` DEVE essere presente anche all'interno della risposta.
 
-      Quando viene utilizzato il linguaggio di query DCQL, il formato ``vp_token`` è un Oggetto JSON le cui chiavi corrispondono agli id delle credenziali richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascuna Credenziale Elettronica presentata.
+      Quando viene utilizzato il linguaggio di query DCQL, il formato ``vp_token`` è un Oggetto JSON le cui chiavi corrispondono agli id delle Credenziali richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascuna Credenziale Elettronica presentata.
 
   * - **state**
     - Identificatore univoco fornito dalla Relying Party all'interno della Richiesta di Autorizzazione.
@@ -608,7 +608,7 @@ Nella seguente tabella sono elencati i codici di errore e le descrizioni che son
    * - ``invalid_request``
      - L'Istanza del Wallet non supporta nessuno degli algoritmi di firma richiesti dalla Relying Party. `OpenID4VP`_
    * - ``access_denied``
-     - Il Wallet non aveva la credenziale richiesta, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. `OpenID4VP`_
+     - Il Wallet non aveva la Credenziale richiesta, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. `OpenID4VP`_
    * - ``invalid_client``
      - La Relying Party non può essere autorizzata a causa di errori di convalida della fiducia o non è un partecipante valido della federazione. `OID-FED`_
 
@@ -653,7 +653,7 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
       - Le Credenziali presentate sono malformate, non valide o revocate.
     * - ``400 Bad Request``
       - ``invalid_request``
-      - La presentazione della credenziale, contenuta nell'oggetto ``vp_token``, è malformata, non ha i parametri richiesti o è formattata in modo errato.
+      - La presentazione della Credenziale, contenuta nell'oggetto ``vp_token``, è malformata, non ha i parametri richiesti o è formattata in modo errato.
     * - ``400 Bad Request``
       - ``invalid_request``
       - L'"sd-jwt" restituito è malformato, mancano parametri obbligatori o è formattato in modo errato.

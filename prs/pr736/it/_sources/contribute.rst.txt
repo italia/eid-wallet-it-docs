@@ -21,48 +21,7 @@ Vorremmo ringraziare le seguenti persone per i loro commenti,
 preoccupazioni, idee, contributi, alcuni dei quali sostanziali, a questo
 profilo di implementazione e al set iniziale di implementazioni.
 
-- Alen Horvat
-- Amir Sharif
-- Andrea Moro
-- Andrea Prosseda
-- Chris Phillips
-- Elisa Nicolussi Paolaz
-- Emanuele De Cupis
-- Emiliano Vernini
-- Francesco Grauso
-- Francesco Marino
-- Francesco Ventola
-- Gabriella Cefalù
-- Giada Sciarretta
-- Giuseppe De Marco
-- Klaas Wierenga
-- Kristina Yasuda
-- Leif Johansson
-- Lorenzo Cerini
-- Marco Basili
-- Marco Pernpruner
-- Mart Aarma
-- Marta Sciunnach
-- Matteo Fortini
-- Michele Silletti
-- Nicola Saitto
-- Niels van Dijk
-- Oliver Terbu
-- Paul Bastien
-- Pasquale Cerqua
-- Pasquale De Rose
-- Peter Altmann
-- Riccardo Iaconelli
-- Roland Hedberg
-- Salvatore Laiso
-- Salvatore Manfredi
-- Stefano Alifuoco
-- Takahiko Kawasaki
-- Thomas Chiozzi
-- Torsten Lodderstedt
-- Valerio Bozzolan
-- Vladimir Duzhinov
-- Zahra Ebadi Ansaroudi
+.. include:: ../common/contributors.rst
 
 Se qualcuno è stato dimenticato, vi preghiamo di accettare le nostre scuse con la
 richiesta di proporre la modifica di questa pagina tramite una [Pull Request](https://github.com/italia/eid-wallet-it-docs)

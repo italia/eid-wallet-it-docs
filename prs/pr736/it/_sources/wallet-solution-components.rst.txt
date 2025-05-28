@@ -46,8 +46,8 @@ Questo componente DEVE garantire la sicurezza attraverso:
 
 
 
-Unità di Wallet
----------------
+Istanza del Wallet
+------------------
 
 Interfaccia Utente
 ^^^^^^^^^^^^^^^^^^

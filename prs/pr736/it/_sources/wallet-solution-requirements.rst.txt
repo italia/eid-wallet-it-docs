@@ -10,7 +10,7 @@ Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzio
 - La Soluzione Wallet DEVE aderire alle specifiche stabilite da questo documento per ottenere Attestati Elettronici di Dati di Identificazione Personale (PID) e Attestati Elettronici di Attributi (Q)EAA.
 - Il Fornitore di Wallet DEVE esporre un insieme di endpoint, disponibili esclusivamente per le istanze della sua Soluzione Wallet, che supportano le funzionalità principali delle Istanze del Wallet.
 - L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo un nuovo Attestato di Wallet.
-- L'Istanza del Wallet DEVE stabilire la trust con altri partecipanti dell'ecosistema Wallet, come i Fornitori di Credenziale e le Relying Party, presentando un Attestato di Wallet.
+- L'Istanza del Wallet DEVE stabilire la trust con altri partecipanti dell'ecosistema Wallet, come i Fornitori di Credenziali e le Relying Party, presentando un Attestato di Wallet.
 - L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store.
 - L'Istanza del Wallet DEVE fornire un meccanismo per verificare l'effettivo possesso e il pieno controllo da parte dell'Utente del proprio dispositivo personale.
 - L'Istanza del Wallet DEVE fornire agli Utenti un elenco aggiornato delle Relying Party con cui l'Utente ha stabilito una connessione e, ove applicabile, tutti i dati scambiati;

@@ -170,7 +170,7 @@
 <div><ol class="arabic simple">
 <li><p>Facilitare la scoperta degli Attestati Elettronici per gli Utenti.</p></li>
 <li><p>Standardizzare la descrizione tecnica e funzionale degli Attestati Elettronici.</p></li>
-<li><p>Abilitare l'interoperabilità tra diversi Fornitori di Credenziale e Relying Party.</p></li>
+<li><p>Abilitare l'interoperabilità tra diversi Fornitori di Credenziali e Relying Party.</p></li>
 <li><p>Semplificare il processo di integrazione per i Fornitori di Wallet e le Relying Party.</p></li>
 <li><p>Garantire la fiducia nell'ecosistema attraverso informazioni certificate.</p></li>
 <li><p>Fornire trasparenza sull'ecosistema degli Attestati Elettronici disponibili.</p></li>
@@ -185,7 +185,7 @@
 <li><p><strong>Relying Party</strong>: Utilizzano il Catalogo degli Attestati Elettronici per raccogliere tutte le informazioni necessarie sugli Attestati Elettronici che intendono richiedere durante la fase di presentazione.</p></li>
 <li><p><strong>Fornitori di Wallet</strong>: Accedono al Catalogo degli Attestati Elettronici per identificare gli Attestati Elettronici disponibili e per recuperare tutte le informazioni necessarie per integrarli nelle loro Soluzioni Wallet.</p></li>
 <li><p><strong>Utenti</strong>: I cittadini che utilizzano indirettamente il Catalogo degli Attestati Elettronici attraverso le loro Istanze del Wallet per scoprire e richiedere Attestati Elettronici.</p></li>
-<li><p><strong>Fonti Autentiche</strong>: Le Entità che detengono i dati originali attestati negli Attestati Elettronici. Forniscono supporto ai Fornitori di Credenziale nella registrazione degli Attestati Elettronici nel Catalogo.</p></li>
+<li><p><strong>Fonti Autentiche</strong>: Le Entità che detengono i dati originali attestati negli Attestati Elettronici. Forniscono supporto ai Fornitori di Credenziali nella registrazione degli Attestati Elettronici nel Catalogo.</p></li>
 </ul>
 </div></blockquote>
 <figure class="align-default" id="id1">
@@ -215,7 +215,7 @@
 <td><p>Informazioni identificative essenziali e caratteristiche dell'Attestato Elettronico, tra cui:</p>
 <ul class="simple">
 <li><p><strong>Identificatore univoco della Credenziale</strong>: Una stringa identificativa univoca di ciascun Attestato Elettronico.</p></li>
-<li><p><strong>Metodi di autenticazione dell'Utente</strong>: Meccanismi di autenticazione dell'Utente utilizzati per richiedere l'Attestato Elettronico, se richiesti dai Fornitori di Credenziale o dalle Fonti Autentiche.</p></li>
+<li><p><strong>Metodi di autenticazione dell'Utente</strong>: Meccanismi di autenticazione dell'Utente utilizzati per richiedere l'Attestato Elettronico, se richiesti dai Fornitori di Credenziali o dalle Fonti Autentiche.</p></li>
 <li><p><strong>Livello minimo di Garanzia</strong>: Il Livello di Garanzia minimo richiesto per l'affidabilità dell'Attestato Elettronico. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza del Wallet.</p></li>
 <li><p><strong>Caratteristiche di visualizzazione aggiuntive</strong>: Specifiche visive e di formattazione, come un'immagine di riferimento di sfondo, logo, ecc.</p></li>
 </ul>
@@ -462,10 +462,10 @@
 <td><p>OBBLIGATORIO. Descrizione leggibile dell'Attestato Elettronico. Un suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> PUÒ essere aggiunto per la gestione della localizzazione del contenuto.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>restriction_policy</strong></p></td>
-<td><p>OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sui Fornitori di Credenziale autorizzati a richiedere/emettere l'Attestato Elettronico.</p>
+<td><p>OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sui Fornitori di Credenziali autorizzati a richiedere/emettere l'Attestato Elettronico.</p>
 <ul class="simple">
 <li><p><strong>allowed_wallet_ids</strong>: Elenco degli identificatori delle Soluzioni Wallet consentite.</p></li>
-<li><p><strong>allowed_issuer_ids</strong>: Elenco degli identificatori dei Fornitori di Credenziale consentiti. Se presente, rappresenta una whitelist di Fornitori di Credenziale che possono essere aggiunti dall'Ancora di Fiducia nel campo <strong>issuers</strong> del corrispondente Attestato Elettronico.</p></li>
+<li><p><strong>allowed_issuer_ids</strong>: Elenco degli identificatori dei Fornitori di Credenziali consentiti. Se presente, rappresenta una whitelist di Fornitori di Credenziali che possono essere aggiunti dall'Ancora di Fiducia nel campo <strong>issuers</strong> del corrispondente Attestato Elettronico.</p></li>
 </ul>
 </td>
 </tr>
@@ -514,10 +514,10 @@
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuers</strong></p></td>
-<td><p>OBBLIGATORIO. Array di informazioni rilevanti sui Fornitori di Credenziale autorizzati, inclusi dati amministrativi e tecnici come il nome dell'Organizzazione, un riferimento al documento di specifiche API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).</p></td>
+<td><p>OBBLIGATORIO. Array di informazioni rilevanti sui Fornitori di Credenziali autorizzati, inclusi dati amministrativi e tecnici come il nome dell'Organizzazione, un riferimento al documento di specifiche API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>OBBLIGATORIO. Array di informazioni rilevanti sulle Fonti Autentiche autorizzate, inclusi dati amministrativi e tecnici relativi alla fornitura di dati ai Fornitori di Credenziale.</p></td>
+<td><p>OBBLIGATORIO. Array di informazioni rilevanti sulle Fonti Autentiche autorizzate, inclusi dati amministrativi e tecnici relativi alla fornitura di dati ai Fornitori di Credenziali.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>formats</strong></p></td>
 <td><p>OBBLIGATORIO. Array di formati tecnici supportati degli Attestati Elettronici.</p></td>

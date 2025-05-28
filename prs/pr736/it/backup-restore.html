@@ -282,7 +282,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>timestamp</strong></p></td>
-<td><p>Timestamp UNIX con l'ora di creazione del file di backup. Questo valore viene aggiornato ogni volta che una nuova voce di credenziale viene aggiunta al file di backup.</p></td>
+<td><p>Timestamp UNIX con l'ora di creazione del file di backup. Questo valore viene aggiornato ogni volta che una nuova voce di Credenziale viene aggiunta al file di backup.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_provider_id</strong></p></td>
 <td><p>DEVE essere impostato sull'identificatore univoco del Fornitore di Wallet.</p></td>
@@ -316,7 +316,7 @@ Di seguito, la descrizione dei passaggi di <a class="reference internal" href="#
 <p><strong>Passaggi 1-6</strong>: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
 L'Utente seleziona <cite>ripristina backup delle Credenziali Elettroniche</cite> nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero.
 Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità. Per fare ciò, estrae prima il JWT dell'Attestato di Unità di Portafoglio dal claim <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> e ottiene la relativa chiave pubblica utilizzando l'Attestato di Unità di Portafoglio (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>).</p>
-<p><strong>Passaggi 7-8</strong>: L'Istanza del Wallet per ogni voce di credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:</p>
+<p><strong>Passaggi 7-8</strong>: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:</p>
 <ul class="simple">
 <li><p>Estrae l'identificatore del Fornitore di Credenziale e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziale e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziale.</p></li>
 <li><p>Utilizzando l'identificatore del Fornitore di Credenziale, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziale e effettua una richiesta di riemissione al Fornitore di Credenziale fornendo la nuova Associazione Crittografica con l'Utente.</p></li>

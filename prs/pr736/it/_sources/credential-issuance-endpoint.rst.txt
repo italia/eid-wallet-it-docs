@@ -287,7 +287,7 @@ Endpoint di autorizzazione
 """"""""""""""""""""""""""
 
 L'endpoint di autorizzazione viene utilizzato per interagire con il Credential Issuer e ottenere una concessione di autorizzazione.
-Il server di autorizzazione DEVE prima verificare l'identità dell'Utente proprietario della credenziale.
+Il server di autorizzazione DEVE prima verificare l'identità dell'Utente proprietario della Credenziale.
 
 
 Richiesta di Autorizzazione
@@ -611,7 +611,7 @@ Il **JWT DPoP** contiene i seguenti parametri di intestazione JOSE e claim.
     - **Descrizione**
     - **Riferimento**
   * - **iss**
-    - OBBLIGATORIO. DEVE essere un URL HTTPS che identifica in modo univoco il Credential Issuer. L'Istanza del Wallet DEVE verificare che questo valore corrisponda al Credential Issuer a cui ha richiesto la credenziale.
+    - OBBLIGATORIO. DEVE essere un URL HTTPS che identifica in modo univoco il Credential Issuer. L'Istanza del Wallet DEVE verificare che questo valore corrisponda al Credential Issuer a cui ha richiesto la Credenziale.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
     - OBBLIGATORIO. Identifica il soggetto del JWT. DEVE essere impostato sul valore del campo ``sub`` nella Credenziale SD-JWT-VC.

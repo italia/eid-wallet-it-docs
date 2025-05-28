@@ -583,7 +583,7 @@ La concatenazione delle dichiarazioni, attraverso la combinazione di questi mecc
 Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.
 
 .. note::
-  Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Valutazione della Fiducia ad essa relativo **richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle credenziali**.
+  Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Valutazione della Fiducia ad essa relativo **richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle Credenziali**.
 
   Il Wallet Attestation trasmette tutte le informazioni richieste relative all'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.
 
@@ -850,7 +850,7 @@ Note sulla Privacy
 ------------------
 
 - Le Istanze del Wallet NON DEVONO pubblicare i loro metadati attraverso un servizio online.
-- L'infrastruttura di trust DEVE essere pubblica, con tutti gli endpoint pubblicamente accessibili senza alcuna credenziale client che possa rivelare chi sta richiedendo l'accesso.
+- L'infrastruttura di trust DEVE essere pubblica, con tutti gli endpoint pubblicamente accessibili senza alcuna Credenziale client che possa rivelare chi sta richiedendo l'accesso.
 - Quando un'Istanza del Wallet richiede i Subordinate Statement per costruire la Trust Chain per una specifica Relying Party o convalida un Trust Mark online, emesso per una specifica Relying Party, il Trust Anchor o il suo Intermediario non sanno che una particolare Istanza del Wallet sta chiedendo informazioni su una specifica Relying Party; invece, servono solo le dichiarazioni relative a quella Relying Party come risorsa pubblica.
 - I metadati dell'Istanza del Wallet NON DEVONO contenere informazioni che possano rivelare informazioni tecniche sull'hardware utilizzato.
 - I metadati dell'entità Foglia, dell'Intermediario e del Trust Anchor possono includere la quantità necessaria di dati come parte delle informazioni di contatto amministrativo, tecnico e di sicurezza. Generalmente non è raccomandato utilizzare dettagli di contatto personali in tali casi. Da una prospettiva legale, la pubblicazione di tali informazioni è necessaria per il supporto operativo riguardante questioni tecniche e di sicurezza e la regolamentazione GDPR.
@@ -862,6 +862,6 @@ Considerazioni sulla Decentralizzazione
 - Ci possono essere più di un singolo Trust Anchor.
 - In alcuni casi, un verificatore di fiducia può fidarsi di un Intermediario, specialmente quando l'Intermediario agisce come un Trust Anchor all'interno di un perimetro specifico, come casi in cui le Foglie sono entrambe nello stesso perimetro come una giurisdizione di Stato Membro (ad esempio: una Relying Party italiana con un'Istanza del Wallet italiana può considerare l'Intermediario italiano come un Trust Anchor per gli scopi delle loro interazioni).
 - Le attestazioni di fiducia (Trust Chain) dovrebbero essere incluse nel JWT emesso dai Credential Issuer, e le Richieste di Presentazione delle RP dovrebbero contenere la Trust Chain relativa a loro (emittenti delle richieste di presentazione).
-- Poiché la presentazione delle credenziali deve essere firmata, memorizzando le richieste e le risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione della federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile della Relying Party con cui ha interagito.
+- Poiché la presentazione delle Credenziali deve essere firmata, memorizzando le richieste e le risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione della federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile della Relying Party con cui ha interagito.
 - Ogni attestazione firmata è di lunga durata poiché può essere crittograficamente convalidata anche quando la configurazione della federazione cambia o le chiavi dei suoi emittenti vengono rinnovate.
 - Ogni partecipante dovrebbe essere in grado di aggiornare la propria Entity Configuration senza notificare le modifiche a terze parti. La policy dei metadati contenuta all'interno di una Trust Chain deve essere applicata per sovrascrivere qualsiasi informazione relativa ai metadati specifici del protocollo.

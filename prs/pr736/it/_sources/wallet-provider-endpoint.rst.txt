@@ -164,7 +164,7 @@ I seguenti errori DEVONO essere supportati per le risposte di errore relative al
      - L'utente non ha il permesso di recuperare questa Istanza di Wallet.
    * - ``401 Unauthorized``
      - ``unauthorized``
-     - La richiesta manca di credenziali di autenticazione valide.
+     - La richiesta manca di Credenziali di autenticazione valide.
 
 I seguenti errori DEVONO essere supportati per le risposte di errore relative alla **Revoca dell'Istanza di Wallet**:
 
@@ -226,7 +226,7 @@ Ogni Oggetto JSON contenuto nell'array ``wallet_attestations`` DEVE avere la seg
       - **Descrizione**
       - **Riferimento**
     * - **format**
-      - Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` a seconda del formato della credenziale.
+      - Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` a seconda del formato della Credenziale.
       - Questa specifica.
     * - **wallet_attestation**
       - Una stringa che rappresenta l'Attestato di Wallet. Se
@@ -395,7 +395,7 @@ Il corpo dell'SD-JWT dell'Attestato di Wallet contiene i seguenti claim:
       - OBBLIGATORIO. Oggetto JSON, contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza di Wallet.
       - :rfc:`7800`.
     * - **vct**
-      - OBBLIGATORIO. Il valore del tipo di credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su ``wallet.atestation.example/v1.0``.
+      - OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su ``wallet.atestation.example/v1.0``.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - OBBLIGATORIO. Array JSON contenente un elenco di tutti i digest delle divulgazioni.

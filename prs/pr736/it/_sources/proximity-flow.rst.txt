@@ -16,14 +16,14 @@ La fase di presentazione di alto livello è strutturata in tre ampie sotto-fasi 
 
 Le sotto-fasi sono descritte di seguito:
 
-  1. **Device Engagement**: Questa sottofase inizia quando all'Utente viene richiesto di divulgare determinati attributi dall'mdoc(s). L'obiettivo di questa sottofase è stabilire un canale di comunicazione sicuro tra l'Istanza del Wallet e l'Istanza di Relying Party, in modo che le richieste e le risposte mdoc possano essere scambiate durante la sottofase di comunicazione.
+  1. **Device Engagement**: Questa sottofase inizia quando all'Utente viene richiesto di divulgare determinati attributi dall'mdoc(s). L'obiettivo di questa sottofase è stabilire un canale di comunicazione sicuro tra l'Istanza del Wallet e l'Istanza di Relying Party, in modo che le richieste e le risposte di presentazione possano essere scambiate durante la sottofase di comunicazione.
   I messaggi scambiati in questa sottofase vengono trasmessi attraverso tecnologie a corto raggio per limitare la possibilità di intercettazione e ascolto non autorizzato.
 
   2. **Stabilimento della sessione**: Durante la fase di stabilimento della sessione, l'Istanza di Relying Party configura una connessione sicura. Tutti i dati trasmessi su questa connessione sono criptati utilizzando una chiave di sessione, che è nota sia all'Istanza del Wallet che all'Istanza di Relying Party in questa fase.
   La sessione stabilita PUÒ essere terminata in base alle condizioni dettagliate in [`ISO18013-5`_ #9.1.1.4].
 
   3. **Comunicazione - Recupero del Dispositivo**: L'Istanza di Relying Party cripta la richiesta mdoc con l'appropriata chiave di sessione e la invia all'Istanza del Wallet insieme alla sua chiave pubblica in un messaggio di stabilimento della sessione. L'mdoc utilizza i dati dal messaggio di stabilimento della sessione per derivare la chiave di sessione e decriptare la richiesta mdoc.
-  Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione di richiedere informazioni dall'Istanza del Wallet utilizzando richieste e risposte mdoc. La modalità principale di comunicazione è il canale sicuro stabilito durante la configurazione della sessione. L'Istanza del Wallet cripta la risposta mdoc utilizzando la chiave di sessione e la trasmette al Relying Party mobile tramite un messaggio di dati di sessione.
+  Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione di richiedere informazioni dall'Istanza del Wallet utilizzando richieste e risposte mdoc. La modalità principale di comunicazione è il canale sicuro stabilito durante la configurazione della sessione. L'Istanza del Wallet cripta la risposta di presentazione utilizzando la chiave di sessione e la trasmette al Relying Party mobile tramite un messaggio di dati di sessione.
 
 
 

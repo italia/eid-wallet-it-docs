@@ -209,7 +209,7 @@
 <ol class="arabic simple" start="5">
 <li><p><em>Consenso dell'Utente</em>: l'Istanza del Wallet chiede la divulgazione e il consenso dell'Utente mostrando l'identità della Relying Party e gli attributi richiesti.</p></li>
 <li><p><em>Risposta di Autorizzazione POST</em>: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme all'Attestato di Wallet se richiesto.</p></li>
-<li><p><em>Controlli RP</em>: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla l'Attestato di Wallet per garantire che il Fornitore di Wallet sia affidabile.</p></li>
+<li><p><em>Controlli RP</em>: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziali e controlla l'Attestato di Wallet per garantire che il Fornitore di Wallet sia affidabile.</p></li>
 <li><p><em>Risposta della Relying Party</em>: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.</p></li>
 </ol>
 </div></blockquote>
@@ -692,7 +692,7 @@ Inoltre, i link universali offrono meccanismi di fallback, consentendo al flusso
 <li><p>L'Attestato di Wallet (in formato SD-JWT VC)</p></li>
 </ul>
 <p>Quando viene utilizzato <cite>presentation_definition</cite>, il valore <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> è un Array JSON contenente la/e Presentazione/i Verificabile/i e il parametro <cite>presentation_submission</cite> DEVE essere presente anche all'interno della risposta.</p>
-<p>Quando viene utilizzato il linguaggio di query DCQL, il formato <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> è un Oggetto JSON le cui chiavi corrispondono agli id delle credenziali richieste nel <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> utilizzato nella richiesta, e i valori a ciascuna Credenziale Elettronica presentata.</p>
+<p>Quando viene utilizzato il linguaggio di query DCQL, il formato <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> è un Oggetto JSON le cui chiavi corrispondono agli id delle Credenziali richieste nel <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> utilizzato nella richiesta, e i valori a ciascuna Credenziale Elettronica presentata.</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
@@ -796,7 +796,7 @@ La Risposta di Errore di Autorizzazione DEVE essere codificata nel corpo della r
 <td><p>L'Istanza del Wallet non supporta nessuno degli algoritmi di firma richiesti dalla Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">access_denied</span></code></p></td>
-<td><p>Il Wallet non aveva la credenziale richiesta, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
+<td><p>Il Wallet non aveva la Credenziale richiesta, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_client</span></code></p></td>
 <td><p>La Relying Party non può essere autorizzata a causa di errori di convalida della fiducia o non è un partecipante valido della federazione. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
@@ -847,7 +847,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>La presentazione della credenziale, contenuta nell'oggetto <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, è malformata, non ha i parametri richiesti o è formattata in modo errato.</p></td>
+<td><p>La presentazione della Credenziale, contenuta nell'oggetto <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>, è malformata, non ha i parametri richiesti o è formattata in modo errato.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>

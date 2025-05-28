@@ -6,7 +6,7 @@ Ciclo di vita delle Credenziali
 
 Il Fornitore di Credenziale è responsabile della creazione e del rilascio delle Credenziali, nonché della gestione del loro ciclo di vita e dello stato di validità.
 
-La Fonte Autentica è l'entità responsabile della gestione e della fornitura degli Attributi dell'Utente ai Fornitori di Credenziale.
+La Fonte Autentica è l'entità responsabile della gestione e della fornitura degli Attributi dell'Utente ai Fornitori di Credenziali.
 Esiste una relazione tra il ciclo di vita degli attributi gestiti dalla Fonte Autentica e il ciclo di vita delle Credenziali
 gestito dal Fornitore di Credenziale. Infatti, uno dei motivi per la revoca o la sospensione delle Credenziali è l'aggiornamento/revoca o
 sospensione degli attributi contenuti nella Credenziale. In IT Wallet, la fornitura degli Attributi dell'Utente e la notifica di
@@ -108,7 +108,7 @@ Gestione del Ciclo di Vita delle Credenziali
 --------------------------------------------
 
 Mentre la :numref:`fig_DigitalCredential_States` mostra i diversi stati che una Credenziale può acquisire durante il suo ciclo di vita,
-la :numref:`fig_DigitalCredential_Lifecycle` mostra il punto di vista delle Istanze del Wallet e dei Fornitori di Credenziale nella gestione del ciclo di vita delle Credenziali
+la :numref:`fig_DigitalCredential_Lifecycle` mostra il punto di vista delle Istanze del Wallet e dei Fornitori di Credenziali nella gestione del ciclo di vita delle Credenziali
 e l'effetto sul loro storage locale.
 
 .. _fig_DigitalCredential_Lifecycle:
@@ -213,7 +213,7 @@ Gli Utenti POSSONO modificare lo stato di validità della loro Credenziale:
 .. note::
   Se l'Utente attiva un'altra Istanza del Wallet dallo stesso Fornitore di Wallet e utilizzando la stessa Soluzione Wallet e ottiene un nuovo PID, il PID precedente DEVE essere revocato e l'Istanza del Wallet precedente DEVE passare allo stato operativo.
 
-In caso di morte dell'Utente, i Fornitori di Credenziale e il Fornitore di Wallet DEVONO garantire che le Credenziali e le Istanze del Wallet possedute dall'Utente siano revocate.
+In caso di morte dell'Utente, i Fornitori di Credenziali e il Fornitore di Wallet DEVONO garantire che le Credenziali e le Istanze del Wallet possedute dall'Utente siano revocate.
 La morte dell'Utente attiva un cambiamento nello stato di validità degli attributi di identificazione dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al Fornitore di Attestati Elettronici di Dati di Identificazione Personale che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il Fornitore di Attestati Elettronici di Dati di Identificazione Personale DEVONO utilizzare i meccanismi forniti nella Sezione :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`.
 
 .. note::
@@ -231,14 +231,14 @@ Aggiornamento dello Stato da parte dei Fornitori di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di vita delle Credenziali`, il Fornitore di Credenziale DEVE fornire un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:Catalogo e-Service PDND del Credential Issuer`.
-Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Credenziale utilizzando questo endpoint.
+Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Credenziali utilizzando questo endpoint.
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Le Fonti Autentiche gestiscono gli attributi separatamente dalle Credenziali, che verificano l'autenticità come i documenti fisici. Perdere un documento fisico non significa perdere i privilegi che rappresenta; significa solo che l'Utente non può provarli. Tuttavia, se un Utente perde i privilegi a causa di un'infrazione grave, la Fonte Autentica revocherà gli attributi correlati. In tali casi, quando gli attributi di un Utente vengono aggiornati, le Fonti Autentiche DEVONO notificare ai Fornitori di Credenziale di aggiornare lo stato di validità di qualsiasi Credenziale contenente tali attributi.
+Le Fonti Autentiche gestiscono gli attributi separatamente dalle Credenziali, che verificano l'autenticità come i documenti fisici. Perdere un documento fisico non significa perdere i privilegi che rappresenta; significa solo che l'Utente non può provarli. Tuttavia, se un Utente perde i privilegi a causa di un'infrazione grave, la Fonte Autentica revocherà gli attributi correlati. In tali casi, quando gli attributi di un Utente vengono aggiornati, le Fonti Autentiche DEVONO notificare ai Fornitori di Credenziali di aggiornare lo stato di validità di qualsiasi Credenziale contenente tali attributi.
 
-I Fornitori di Credenziale DEVONO fornire un servizio web disponibile tramite PDND per la notifica dell'aggiornamento delle Credenziali e dello stato di validità come definito nella Sezione :ref:`credential-issuer-endpoint:Catalogo e-Service PDND del Credential Issuer`. Per il flusso del protocollo, fare riferimento alla Sezione :ref:`e-service-pdnd:e-Service PDND`.
+I Fornitori di Credenziali DEVONO fornire un servizio web disponibile tramite PDND per la notifica dell'aggiornamento delle Credenziali e dello stato di validità come definito nella Sezione :ref:`credential-issuer-endpoint:Catalogo e-Service PDND del Credential Issuer`. Per il flusso del protocollo, fare riferimento alla Sezione :ref:`e-service-pdnd:e-Service PDND`.
 Le Fonti Autentiche DEVONO utilizzare questo servizio di notifica nei seguenti casi:
 
   - Il valore di uno o più Attributi contenuti nel database della Fonte Autentica è cambiato.
@@ -294,12 +294,12 @@ Le seguenti sezioni descrivono come funziona il meccanismo di validazione delle 
 Gestione dello Stato delle Credenziali con OAuth Status Assertion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-I Fornitori di Credenziale, una volta che una Credenziale è stata generata e rilasciata con successo, DEVONO:
+I Fornitori di Credenziali, una volta che una Credenziale è stata generata e rilasciata con successo, DEVONO:
 
   - Memorizzarla localmente con il set minimo di dati necessari per gestire il suo ciclo di vita, incluso lo stato di validità di quella Credenziale;
   - Includere un algoritmo di hash specificato nella Credenziale utilizzando il claim ``credential_hash_alg`` all'interno del membro JSON ``status_assertion`` del claim status
 
-Inoltre, i Fornitori di Credenziale DEVONO aggiungere i seguenti parametri nei loro Metadati:
+Inoltre, i Fornitori di Credenziali DEVONO aggiungere i seguenti parametri nei loro Metadati:
 
   - ``status_assertion_endpoint``
   - ``credential_hash_alg_supported``
@@ -743,7 +743,7 @@ Creazione delle Status Lists
 
 .. note::
   La principale considerazione sulla privacy per una Status List è impedire al Fornitore di Credenziale di tracciare l'uso della Credenziale quando lo stato viene controllato. Se un Fornitore di Credenziale offre informazioni sullo stato facendo riferimento a un token specifico, ciò consentirebbe al Fornitore di Credenziale di creare un profilo per il token emesso correlando la data e l'identità delle Relying Party che richiedono lo stato. Le implementazioni DEVONO quindi integrare le informazioni sullo stato di molte Credenziali nella stessa lista. Di conseguenza, il Fornitore di Credenziale non apprende per quale Credenziale la Relying Party sta richiedendo la Status List. La privacy del Titolare è protetta dall'anonimato all'interno dell'insieme di Credenziali nella Status List, questo limita le possibilità di tracciamento da parte del Fornitore di Credenziale.
-  Questo effetto di privacy di gruppo dipende dal numero di entità all'interno della Status List. Una maggiore quantità di Credenziali referenziate in essa risulta in una migliore privacy ma influisce anche sulle prestazioni poiché più dati devono essere trasferiti per leggere la Status List. A seconda dei parametri della Status List (ad esempio la quantità di bit che designano i valori della Credenziale), i Fornitori di Credenziale devono trovare un equilibrio appropriato tra privacy e prestazioni.
+  Questo effetto di privacy di gruppo dipende dal numero di entità all'interno della Status List. Una maggiore quantità di Credenziali referenziate in essa risulta in una migliore privacy ma influisce anche sulle prestazioni poiché più dati devono essere trasferiti per leggere la Status List. A seconda dei parametri della Status List (ad esempio la quantità di bit che designano i valori della Credenziale), i Fornitori di Credenziali devono trovare un equilibrio appropriato tra privacy e prestazioni.
 
   Una volta che la Relying Party riceve una Credenziale, questo le consente di richiedere la Status List per validare il suo stato attraverso il parametro URI fornito e cercare l'indice corrispondente. Tuttavia, la Relying Party è in grado di memorizzare l'URI e l'indice della Credenziale per richiedere nuovamente la Status List in un momento successivo. Facendolo regolarmente, la Relying Party può creare un profilo dello stato di validità della Credenziale. Questo comportamento potrebbe anche essere abusato in casi in cui non è intenzionale e sconosciuto al Titolare, ad esempio profilando la sospensione di una patente di guida. Questo comportamento potrebbe essere mitigato, ad esempio, con la regolare riemissione della Credenziale.
 
@@ -845,7 +845,7 @@ Di seguito è riportato un esempio di Token di Status List prima di applicare la
 Gestione dello Stato delle Credenziali con Token di Status List
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
- I Fornitori di Credenziale, una volta che una Credenziale è stata generata, DEVONO:
+ I Fornitori di Credenziali, una volta che una Credenziale è stata generata, DEVONO:
 
   - Memorizzarla localmente con il set minimo di dati necessari per gestire il suo ciclo di vita, incluso lo stato di validità di quella Credenziale;
   - Includere un claim ``status_list`` all'interno del valore dell'Oggetto JSON del claim ``status`` della Credenziale.

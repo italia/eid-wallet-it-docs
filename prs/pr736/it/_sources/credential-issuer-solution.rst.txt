@@ -26,7 +26,7 @@ Requisiti del Fornitore di Credenziale
 
 La Soluzione del Fornitore di Credenziale Elettronica DEVE:
 
-   1. Registrarsi presso l'Autorità di Federazione per ottenere la corretta autorizzazione per l'emissione di specifici tipi di credenziali.
+   1. Registrarsi presso l'Autorità di Federazione per ottenere la corretta autorizzazione per l'emissione di specifici tipi di Credenziali.
    2. Implementare meccanismi sicuri di creazione ed emissione che garantiscano integrità e riservatezza.
    3. Comunicare con le Fonti Autentiche attraverso Servizi API sicuri e affidabili per ottenere dati verificati dell'Utente.
    4. Autenticarsi presso le Istanze del Wallet durante l'emissione per dimostrare la propria legittimità.
@@ -58,7 +58,7 @@ Il Componente Frontend, se fornito dal Fornitore di Credenziale, DEVE fornire un
    - Avviare l'emissione attraverso Offerte di Credenziali.
    - Fornire supporto e documentazione all'Utente.
 
-I Fornitori di Credenziale POSSONO fornire servizi aggiuntivi all'Utente attraverso il Componente Frontend. Questi servizi aggiuntivi NON DEVONO essere in conflitto con i requisiti normativi o tecnici definiti in questa specifica tecnica o nelle normative nazionali/europee sulla sicurezza e la privacy.
+I Fornitori di Credenziali POSSONO fornire servizi aggiuntivi all'Utente attraverso il Componente Frontend. Questi servizi aggiuntivi NON DEVONO essere in conflitto con i requisiti normativi o tecnici definiti in questa specifica tecnica o nelle normative nazionali/europee sulla sicurezza e la privacy.
 
 Componente Fornitore di Credenziale
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

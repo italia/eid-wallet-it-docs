@@ -10,7 +10,7 @@ Il Catalogo degli Attestati Elettronici mira a:
 
   1. Facilitare la scoperta degli Attestati Elettronici per gli Utenti.
   2. Standardizzare la descrizione tecnica e funzionale degli Attestati Elettronici.
-  3. Abilitare l'interoperabilità tra diversi Fornitori di Credenziale e Relying Party.
+  3. Abilitare l'interoperabilità tra diversi Fornitori di Credenziali e Relying Party.
   4. Semplificare il processo di integrazione per i Fornitori di Wallet e le Relying Party.
   5. Garantire la fiducia nell'ecosistema attraverso informazioni certificate.
   6. Fornire trasparenza sull'ecosistema degli Attestati Elettronici disponibili.
@@ -24,7 +24,7 @@ Le principali Entità coinvolte nel Catalogo degli Attestati Elettronici sono:
   - **Relying Party**: Utilizzano il Catalogo degli Attestati Elettronici per raccogliere tutte le informazioni necessarie sugli Attestati Elettronici che intendono richiedere durante la fase di presentazione.
   - **Fornitori di Wallet**: Accedono al Catalogo degli Attestati Elettronici per identificare gli Attestati Elettronici disponibili e per recuperare tutte le informazioni necessarie per integrarli nelle loro Soluzioni Wallet.
   - **Utenti**: I cittadini che utilizzano indirettamente il Catalogo degli Attestati Elettronici attraverso le loro Istanze del Wallet per scoprire e richiedere Attestati Elettronici.
-  - **Fonti Autentiche**: Le Entità che detengono i dati originali attestati negli Attestati Elettronici. Forniscono supporto ai Fornitori di Credenziale nella registrazione degli Attestati Elettronici nel Catalogo.
+  - **Fonti Autentiche**: Le Entità che detengono i dati originali attestati negli Attestati Elettronici. Forniscono supporto ai Fornitori di Credenziali nella registrazione degli Attestati Elettronici nel Catalogo.
 
 
 .. _fig_catalogue.svg:
@@ -53,7 +53,7 @@ La seguente tabella riassume le principali informazioni che DEVONO essere fornit
      - Informazioni identificative essenziali e caratteristiche dell'Attestato Elettronico, tra cui:
 
        - **Identificatore univoco della Credenziale**: Una stringa identificativa univoca di ciascun Attestato Elettronico.
-       - **Metodi di autenticazione dell'Utente**: Meccanismi di autenticazione dell'Utente utilizzati per richiedere l'Attestato Elettronico, se richiesti dai Fornitori di Credenziale o dalle Fonti Autentiche.
+       - **Metodi di autenticazione dell'Utente**: Meccanismi di autenticazione dell'Utente utilizzati per richiedere l'Attestato Elettronico, se richiesti dai Fornitori di Credenziali o dalle Fonti Autentiche.
        - **Livello minimo di Garanzia**: Il Livello di Garanzia minimo richiesto per l'affidabilità dell'Attestato Elettronico. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza del Wallet.
        - **Caratteristiche di visualizzazione aggiuntive**: Specifiche visive e di formattazione, come un'immagine di riferimento di sfondo, logo, ecc.
    * - Fornitori di Attestati Elettronici
@@ -219,10 +219,10 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
    * - **description**
      - OBBLIGATORIO. Descrizione leggibile dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
    * - **restriction_policy**
-     - OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sui Fornitori di Credenziale autorizzati a richiedere/emettere l'Attestato Elettronico.
+     - OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sui Fornitori di Credenziali autorizzati a richiedere/emettere l'Attestato Elettronico.
 
        * **allowed_wallet_ids**: Elenco degli identificatori delle Soluzioni Wallet consentite.
-       * **allowed_issuer_ids**: Elenco degli identificatori dei Fornitori di Credenziale consentiti. Se presente, rappresenta una whitelist di Fornitori di Credenziale che possono essere aggiunti dall'Ancora di Fiducia nel campo **issuers** del corrispondente Attestato Elettronico.
+       * **allowed_issuer_ids**: Elenco degli identificatori dei Fornitori di Credenziali consentiti. Se presente, rappresenta una whitelist di Fornitori di Credenziali che possono essere aggiunti dall'Ancora di Fiducia nel campo **issuers** del corrispondente Attestato Elettronico.
    * - **pricing_policy**
      - OPZIONALE. Informazioni sui prezzi dell'Attestato Elettronico, inclusi:
 
@@ -255,9 +255,9 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
        * **claims_required**: Array di identificatori di attributi che sono richiesti quando si utilizza la Credenziale per questo scopo.
        * **claims_recommended**: Array di identificatori di attributi che sono raccomandati ma non obbligatori per questo scopo.
    * - **issuers**
-     - OBBLIGATORIO. Array di informazioni rilevanti sui Fornitori di Credenziale autorizzati, inclusi dati amministrativi e tecnici come il nome dell'Organizzazione, un riferimento al documento di specifiche API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).
+     - OBBLIGATORIO. Array di informazioni rilevanti sui Fornitori di Credenziali autorizzati, inclusi dati amministrativi e tecnici come il nome dell'Organizzazione, un riferimento al documento di specifiche API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).
    * - **authentic_sources**
-     - OBBLIGATORIO. Array di informazioni rilevanti sulle Fonti Autentiche autorizzate, inclusi dati amministrativi e tecnici relativi alla fornitura di dati ai Fornitori di Credenziale.
+     - OBBLIGATORIO. Array di informazioni rilevanti sulle Fonti Autentiche autorizzate, inclusi dati amministrativi e tecnici relativi alla fornitura di dati ai Fornitori di Credenziali.
    * - **formats**
      - OBBLIGATORIO. Array di formati tecnici supportati degli Attestati Elettronici.
    * - **display_properties**

@@ -93,7 +93,7 @@ Nel caso del flusso Avviato dall'Issuer, oltre al Controllo della Federazione de
   * DEVE creare il ``code_verifier`` con una stringa casuale con sufficiente entropia utilizzando i caratteri non riservati con una lunghezza minima di 43 caratteri e una lunghezza massima di 128 caratteri, rendendo impraticabile per un attaccante indovinarne il valore. Il valore DEVE essere generato seguendo la raccomandazione nella Sezione 4.1 di :rfc:`7636`.
   * firma questa richiesta utilizzando la chiave privata creata durante la fase di configurazione per ottenere l'Attestato del Wallet. La relativa chiave pubblica attestata dal Fornitore di Wallet viene fornita all'interno del claim ``cnf.jwk`` dell'Attestato del Wallet.
   * DEVE utilizzare i parametri ``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP`` secondo OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], poiché in questo flusso l'Endpoint di Pushed Authorization è un endpoint protetto.
-  * specifica i tipi di credenziali richieste utilizzando il parametro ``authorization_details`` [RAR :rfc:`9396`] e/o il parametro scope.
+  * specifica i tipi di Credenziali richieste utilizzando il parametro ``authorization_details`` [RAR :rfc:`9396`] e/o il parametro scope.
 
 Il Credential Issuer esegue i seguenti controlli alla ricezione della richiesta PAR:
 
@@ -280,7 +280,7 @@ Di seguito è riportato un esempio non normativo di una Risposta Nonce:
 
 **Passaggi 14-15 (Prova DPoP per l'Endpoint Credential)**: L'Istanza del Wallet per richiedere la Credenziale Elettronica crea una prova di possesso con ``c_nonce`` ottenuto nel **Passaggio 13** e utilizzando la chiave privata utilizzata per il DPoP, firmando un JWT di Prova DPoP secondo la Sezione 4 di (:rfc:`9449`). Il valore ``jwk`` nel parametro ``proof`` DEVE essere uguale alla chiave pubblica referenziata nel DPoP.
 
-**Passaggio 16 (Richiesta Credenziale)**: L'Istanza del Wallet invia una richiesta per la Credenziale Elettronica all'endpoint Credential. Questa richiesta DEVE includere l'Access Token, il JWT di Prova DPoP, il tipo di credenziale, la prova (che dimostra il possesso del materiale chiave crittografico). Il parametro proof DEVE essere un oggetto che contiene la prova del possesso del materiale chiave crittografico a cui sarà vincolata la Credenziale Elettronica emessa. Per verificare la prova, il Credential Issuer conduce i seguenti controlli all'endpoint Credential:
+**Passaggio 16 (Richiesta Credenziale)**: L'Istanza del Wallet invia una richiesta per la Credenziale Elettronica all'endpoint Credential. Questa richiesta DEVE includere l'Access Token, il JWT di Prova DPoP, il tipo di Credenziale, la prova (che dimostra il possesso del materiale chiave crittografico). Il parametro proof DEVE essere un oggetto che contiene la prova del possesso del materiale chiave crittografico a cui sarà vincolata la Credenziale Elettronica emessa. Per verificare la prova, il Credential Issuer conduce i seguenti controlli all'endpoint Credential:
 
  1. la prova JWT DEVE includere tutti i claim richiesti come specificato nella tabella della Sezione :ref:`credential-issuance-endpoint:Richiesta di Token`;
  2. La prova della chiave DEVE essere esplicitamente tipizzata utilizzando i parametri dell'header come definito per il rispettivo tipo di prova;
@@ -331,8 +331,8 @@ senza codifica e firma. L'header JWT:
 **Passaggi 17-21 (Risposta Credenziale)**: Il Credential Issuer DEVE validare la *Prova JWT DPoP* in base ai passaggi definiti nella Sezione 4.3 di (:rfc:`9449`) e se l'*Access Token* è valido e adatto per la Credenziale richiesta. Il Credential Issuer DEVE validare la prova di possesso per il materiale chiave a cui la nuova Credenziale SARÀ vincolata, secondo la Sezione 8.2.2 di `OpenID4VCI`_. Se tutti i controlli hanno successo, il Credential Issuer crea una nuova Credenziale vincolata al materiale chiave e la fornisce all'Istanza del Wallet. L'Istanza del Wallet DEVE eseguire i seguenti controlli prima di procedere con l'archiviazione sicura della Credenziale:
 
     1. DEVE verificare che il PID/(Q)EAA contenuto nella Risposta Credenziale contenga tutti i parametri obbligatori e i valori siano validati secondo la :ref:`Tabella dei parametri della risposta Credenziale <table_credential_response_claim>`.
-    2. DEVE verificare l'integrità della credenziale verificando la firma utilizzando l'algoritmo specificato nel parametro dell'header ``alg`` di SD-JWT (:ref:`credential-data-model:Modello di Dati delle Credenziali Elettroniche`) e la chiave pubblica che è identificata utilizzando l'header ``kid`` dell'SD-JWT.
-    3. DEVE verificare che la Credenziale Elettronica ricevuta (nel claim credential) corrisponda al tipo di credenziale richiesto e sia conforme allo schema specifico di quella Credenziale definito in :ref:`credential-data-model:Modello di Dati delle Credenziali Elettroniche`.
+    2. DEVE verificare l'integrità della Credenziale verificando la firma utilizzando l'algoritmo specificato nel parametro dell'header ``alg`` di SD-JWT (:ref:`credential-data-model:Modello di Dati delle Credenziali Elettroniche`) e la chiave pubblica che è identificata utilizzando l'header ``kid`` dell'SD-JWT.
+    3. DEVE verificare che la Credenziale Elettronica ricevuta (nel claim credential) corrisponda al tipo di Credenziale richiesto e sia conforme allo schema specifico di quella Credenziale definito in :ref:`credential-data-model:Modello di Dati delle Credenziali Elettroniche`.
     4. DEVE elaborare e verificare la Credenziale nel formato SD-JWT VC (secondo la Sezione 5 di `SD-JWT`_) o nel formato mdoc-CBOR.
     5. DEVE verificare la Catena di Trust nell'header dell'SD-JWT VC per verificare che il Credential Issuer sia affidabile.
 

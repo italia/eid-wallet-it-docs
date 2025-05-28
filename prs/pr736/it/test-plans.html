@@ -200,7 +200,7 @@
 </section>
 <section id="matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate">
 <h2><span class="section-number">15.3.2. </span>Matrice di Test per la Valutazione delle Dichiarazioni Firmate<a class="headerlink" href="#matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate" title="Link to this heading">¶</a></h2>
-<p>Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, Relying Party e Credential Issuer che valutano qualsiasi dichiarazione firmata, siano esse asserzioni, richieste, attestati o credenziali.</p>
+<p>Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, Relying Party e Credential Issuer che valutano qualsiasi dichiarazione firmata, siano esse asserzioni, richieste, attestati o Credenziali.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 15.0%" />
@@ -413,7 +413,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 <tr class="row-even"><td><p>WS-007</p></td>
 <td><p>Credential Issuance</p></td>
 <td><p>Il Wallet DEVE supportare il flusso dell'Emittente per ricevere e memorizzare le Credenziali Verificabili.</p></td>
-<td><p>Le credenziali vengono memorizzate in modo sicuro e analizzate correttamente secondo la struttura definita.</p></td>
+<td><p>Le Credenziali vengono memorizzate in modo sicuro e analizzate correttamente secondo la struttura definita.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-008</p></td>
 <td><p>Revocation</p></td>
@@ -432,7 +432,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 </tr>
 <tr class="row-even"><td><p>WS-011</p></td>
 <td><p>Backup &amp; Restore</p></td>
-<td><p>Il Wallet DEVE gestire le chiavi di crittografia del backup in modo sicuro e derivarle da segreti o credenziali controllati dall'Utente.</p></td>
+<td><p>Il Wallet DEVE gestire le chiavi di crittografia del backup in modo sicuro e derivarle da segreti o Credenziali controllati dall'Utente.</p></td>
 <td><p>Nessuna entità non autorizzata può decrittografare i backup; i backup sono resi inutili se manomessi.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-012</p></td>
@@ -458,11 +458,11 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 <tr class="row-odd"><td><p>WS-016</p></td>
 <td><p>Credential Presentation</p></td>
 <td><p>Il Wallet DEVE supportare la presentazione offline delle Credenziali Verificabili quando consentito.</p></td>
-<td><p>Le credenziali vengono presentate in modo sicuro anche in modalità offline, mantenendo l'integrità e l'autenticità.</p></td>
+<td><p>Le Credenziali vengono presentate in modo sicuro anche in modalità offline, mantenendo l'integrità e l'autenticità.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-017</p></td>
 <td><p>Security</p></td>
-<td><p>Il Wallet DEVE garantire protezioni anti-replay durante la presentazione delle credenziali.</p></td>
+<td><p>Il Wallet DEVE garantire protezioni anti-replay durante la presentazione delle Credenziali.</p></td>
 <td><p>Ogni presentazione è crittograficamente unica e legata alla richiesta del Verificatore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-018</p></td>
@@ -503,7 +503,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 <tr class="row-even"><td><p>WS-025</p></td>
 <td><p>Revocation</p></td>
 <td><p>In caso di Revoca dell'Istanza del Wallet, il Wallet DEVE eliminare qualsiasi Credenziale Verificabile memorizzata localmente.</p></td>
-<td><p>Nessun dato di credenziale rimane accessibile dopo l'attivazione della revoca.</p></td>
+<td><p>Nessun dato di Credenziale rimane accessibile dopo l'attivazione della revoca.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-026</p></td>
 <td><p>Revocation</p></td>
@@ -512,7 +512,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 </tr>
 <tr class="row-even"><td><p>WS-027</p></td>
 <td><p>Security</p></td>
-<td><p>Il Wallet DEVE impedire il riutilizzo delle Chiavi di Binding del Wallet revocate o delle credenziali nelle future Istanze del Wallet.</p></td>
+<td><p>Il Wallet DEVE impedire il riutilizzo delle Chiavi di Binding del Wallet revocate o delle Credenziali nelle future Istanze del Wallet.</p></td>
 <td><p>Qualsiasi tentativo di riutilizzo viene rilevato e bloccato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-028</p></td>
@@ -598,7 +598,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 <tr class="row-odd"><td><p>WS-044</p></td>
 <td><p>User Interaction</p></td>
 <td><p>Il Wallet DEVE richiedere all'Utente prima di inviare una Credenziale Verificabile a un Verificatore.</p></td>
-<td><p>Nessuna credenziale viene condivisa senza la conferma esplicita dell'Utente.</p></td>
+<td><p>Nessuna Credenziale viene condivisa senza la conferma esplicita dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-045</p></td>
 <td><p>Backup &amp; Restore</p></td>
@@ -613,7 +613,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 <tr class="row-even"><td><p>WS-047</p></td>
 <td><p>Security</p></td>
 <td><p>Il Wallet DEVE verificare la validità temporale delle Credenziali ricevute (ad esempio, issuanceDate, expirationDate).</p></td>
-<td><p>Le credenziali scadute vengono contrassegnate come non valide e non vengono utilizzate.</p></td>
+<td><p>Le Credenziali scadute vengono contrassegnate come non valide e non vengono utilizzate.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-048</p></td>
 <td><p>Attestation</p></td>
@@ -647,7 +647,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 </tr>
 <tr class="row-odd"><td><p>WS-054</p></td>
 <td><p>Relying Party Instance</p></td>
-<td><p>Il Wallet DEVE applicare il controllo che lo stato dell'Istanza di Relying Party sia 'Verificato' prima di consentire la presentazione delle credenziali.</p></td>
+<td><p>Il Wallet DEVE applicare il controllo che lo stato dell'Istanza di Relying Party sia 'Verificato' prima di consentire la presentazione delle Credenziali.</p></td>
 <td><p>Il Wallet nega il flusso se l'Istanza di Relying Party è in qualsiasi stato diverso da 'Verificato'.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-055</p></td>
@@ -757,12 +757,12 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
 <tr class="row-odd"><td><p>ISS-010</p></td>
 <td><p>Security</p></td>
 <td><p>Convalida della richiesta di Credenziale</p></td>
-<td><p>Il Credential Issuer convalida la richiesta di Credenziali e emette le Credenziali. Convalidare la prova di possesso e assicurarsi che il tipo di credenziale corrisponda alla richiesta.</p></td>
+<td><p>Il Credential Issuer convalida la richiesta di Credenziali e emette le Credenziali. Convalidare la prova di possesso e assicurarsi che il tipo di Credenziale corrisponda alla richiesta.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISS-011</p></td>
 <td><p>Deferred Issuance</p></td>
 <td><p>Flusso di emissione differita</p></td>
-<td><p>L'Istanza del Wallet gestisce correttamente l'emissione differita e recupera le credenziali in un secondo momento. Convalidare l'uso dell'identificatore univoco della transazione (<cite>transaction_id</cite>) e assicurarsi che la Credenziale venga emessa dopo il tempo di attesa specificato.</p></td>
+<td><p>L'Istanza del Wallet gestisce correttamente l'emissione differita e recupera le Credenziali in un secondo momento. Convalidare l'uso dell'identificatore univoco della transazione (<cite>transaction_id</cite>) e assicurarsi che la Credenziale venga emessa dopo il tempo di attesa specificato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ISS-012</p></td>
 <td><p>Notification</p></td>
@@ -1334,12 +1334,12 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
 </tr>
 <tr class="row-odd"><td><p>RPR-10</p></td>
 <td><p>Metadata</p></td>
-<td><p>Verificare che i parametri corrispondano ai metadati del verificatore di credenziali openid.</p></td>
+<td><p>Verificare che i parametri corrispondano ai metadati del verificatore di Credenziali openid.</p></td>
 <td><p>Verranno considerati solo i parametri consentiti.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-11</p></td>
 <td><p>User Consent</p></td>
-<td><p>Testare l'idoneità di un verificatore di credenziali nel richiedere attributi dell'utente.</p></td>
+<td><p>Testare l'idoneità di un verificatore di Credenziali nel richiedere attributi dell'utente.</p></td>
 <td><p>L'utente può modificare la selezione dei dati relativi agli attributi opzionali.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-12</p></td>
@@ -1414,7 +1414,7 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
 </tr>
 <tr class="row-odd"><td><p>RPR-26</p></td>
 <td><p>Error Handling</p></td>
-<td><p>Verificare la gestione dei claim malformati nelle credenziali presentate.</p></td>
+<td><p>Verificare la gestione dei claim malformati nelle Credenziali presentate.</p></td>
 <td><p>Viene inviata una risposta di errore di autorizzazione.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-27</p></td>
