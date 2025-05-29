@@ -29,18 +29,18 @@ Di seguito, la descrizione dei passaggi di :numref:`fig_Backup_flow`:
 **Passaggio 1**: L'Utente seleziona l'opzione per eseguire il backup delle Credenziali memorizzate nell'Istanza del Wallet.
 
 **Passaggi 2-3**: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente.
-L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un gestore di password o in una cassaforte fisica) poiché sono fondamentali per il ripristino del backup.
+L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup.
 
 .. note::
   Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziale, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.
 
 .. note::
-  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su `RFC 2898`_ ed è raccomandata dal `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. Esistono altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati `qui <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_.
+  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su `RFC 2898`_ ed è raccomandata dal `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati `qui <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_.
 
 .. note::
-  Il fattore di lavoro per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nel `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_.
+  Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nell’`OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_.
 
-**Passaggio 4**: L'Istanza del Wallet esegue le operazioni seguenti per creare la voce JWT di backup per il file di backup.
+**Passaggio 4**: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup.
 
 - Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziale e il ``credential_configuration_id`` come voce nel JWT di backup.
 - Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nell'Attestato di Unità di Portafoglio. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nell'Attestato di Unità di Portafoglio (claim ``cnf``). L'Istanza del Wallet DEVE verificare la validità dell'Attestato di Unità di Portafoglio prima di firmare il JWT di backup.
