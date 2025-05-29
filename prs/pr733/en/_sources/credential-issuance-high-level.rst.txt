@@ -55,6 +55,7 @@ The :numref:`fig_High-Level-Flow-ITWallet-QEAA-Issuance` shows a general archite
 ..     (Q)EAA Issuance - General architecture and high level flow
 
 Similarly to the PID high-level flow, the above diagram depicts a (Q)EAA high-level flow starting from the User who wants to obtain a (Q)EAA (step 0). Below the description of the most relevant operations involved in the (Q)EAA issuance:
+
     1. **(Q)EAA Provider Discovery and Trust**: the Wallet Instance obtains the list of the trusted (Q)EAA Providers using the Digital Credential Catalogue and Federation API (e.g.: using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), then inspects the metadata looking for the Digital Credential capabilities of each (Q)EAA Provider.
     2. **(Q)EAA Request**: using the Authorization Code Flow, defined in [`OpenID4VCI`_], the Wallet Instance requests a (Q)EAA to the (Q)EAA Provider.
     3. **Wallet Provider Discovery and Trust**: the (Q)EAA Provider verifies the authenticity and validity of the Wallet Instance. During this step the (Q)EAA Provider establishes trust with the Wallet Provider and retrieves Wallet metadata containing the necessary parameters for interoperability, as defined by the Trust Model.
