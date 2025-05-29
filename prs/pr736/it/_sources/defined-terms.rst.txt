@@ -110,7 +110,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Key Attestation**
-      Attestazione dell'OEM del dispositivo sull'archiviazione sicura delle chiavi nell' hardware-backed keystore.
+      Attestazione dell'OEM del dispositivo sull'archiviazione sicura delle chiavi nell'hardware-backed keystore.
       Non presente in ARF 1.10.
 
     **Livello di Garanzia**
@@ -163,7 +163,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
     
     **Attestato Elettronico di Attributi**
-      Attestazione verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
+      Attestato verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
       Conforme con ARF 1.10.
     
     **Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico**
@@ -176,7 +176,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
       
     **Attestato Elettronico di Dati di Identificazione Personale**  
-      Attestazione Elettronica che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
+      Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
       Conforme con ARF 1.10.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
@@ -279,12 +279,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10.
 
     **Trusted List**
-      Archivio di informazioni sugli enti eutoritativi e sul loro stato.
+      Archivio di informazioni sugli enti autoritativi e sul loro stato.
       Conforme con ARF 1.10.
 
     **Verificatore di Attestati Elettronici**
     **Verificatore di Credenziali**
-      Una persona o entità che utilizza un'istanza di Relying Party.
+      Una persona o entità che utilizza un'Istanza di Relying Party.
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Istanza del Wallet**
@@ -311,7 +311,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
 
     **Attestato di Istanza del Wallet**
-      Oggetto emesso da un Fornitore di Wallet che descrive le caretteristiche e i componenti della Istanza del Wallet.
+      Oggetto emesso da un Fornitore di Wallet che descrive le caratteristiche e i componenti della Istanza del Wallet.
       Conforme con ARF 1.10.
 
     **Catalogo degli Attestati Elettronici**
@@ -319,13 +319,13 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Intermediario**
-      Intermediario come definito nella Sezione 1.2 di `OID-FED`_, ad esempio in IT-Wallet potrebbe esistere intermediari della Relying Party, ovvero coloro che offrono e gestiscono, per conto della Relying Party, le Soluzioni Tecniche per la verifica remota o di prossimità delle Attestazioni Elettroniche.
+      Intermediario come definito nella Sezione 1.2 di `OID-FED`_, ad esempio in IT-Wallet potrebbe esistere intermediari della Relying Party, ovvero coloro che offrono e gestiscono, per conto della Relying Party, le Soluzioni Tecniche per la verifica remota o di prossimità degli Attestati Elettronici.
       Conforme con ARF 1.10.
 
 .. note::
    Qualora un termine non è presente nell'ARF 1.10, la definizione fornita in IT-Wallet è da ritenersi valida per il solo contesto italiano.
 
-Di seguito sono riportati i principali termini e definizioni relativi agli aspetti della User Experience:
+Di seguito sono riportati i principali termini e definizioni relativi agli aspetti dell'Esperienza Utente:
 
 .. glossary::
     :sorted:
@@ -333,11 +333,11 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
     **Authentication Button**
       Pulsante che consente all'Utente di avviare il processo di Autenticazione e di utilizzare i servizi forniti dai Verificatori di Attestati Elettronici.
   
-    **Identità del Marchio**
+    **Brand Identity**
       Insieme di elementi visivi, verbali e strategici che un servizio, un prodotto o un'entità utilizza per presentarsi all'Utente e per distinguersi dagli altri.
 
     **Catalogo**
-      Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'istanza IT-Wallet, e dalle quali è possibile avviare il processo di emissione.
+      Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'Istanza del Wallet, e dalle quali è possibile avviare il processo di emissione.
     
     **Call To Action**
       Suggerimento chiaro e diretto che incoraggia gli Utenti a intraprendere un'azione specifica. Può essere un pulsante, un link o un altro elemento che guida l'Utente verso un obiettivo specifico.
@@ -358,7 +358,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       L'insieme degli elementi grafici, tipografici e interattivi attraverso i quali l'Utente interagisce con il/i Touchpoint preposto/i all'erogazione di un prodotto o servizio, nel rispetto di [LG_DESIGN].
     
     **Visualizzazione in Anteprima**
-      Modalità di visualizzazione compatta dell'Attestato Elettronico Digitale che consente di riconoscerla e distinguerla in un elenco di Attestazioni Elettroniche mediante la presenza di dati o elementi minimi.
+      Modalità di visualizzazione compatta dell'Attestato Elettronico che consente di riconoscerla e distinguerla in un elenco di Attestati Elettronici mediante la presenza di dati o elementi minimi.
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
@@ -367,13 +367,13 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Punto di contatto (digitale e non) tra l'Utente e il prodotto o servizio.
     
     **Trust Mark**
-      Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
+      Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al Sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
 
-    **Esperienza dell'Utente**
+    **Esperienza Utente**
       L'insieme delle percezioni e delle reazioni delle persone derivanti dall'uso e/o dalle aspettative d'uso di un prodotto, sistema o servizio.
       In linea con la norma ISO 9241-210:2010.
 
-    **Identità Visiva**
+    **Visual Identity**
       Insieme coerente di elementi grafici e tipografici che rappresentano visivamente un prodotto o un servizio e lo rendono distinguibile e riconoscibile.
 
 Acronimi

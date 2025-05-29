@@ -96,6 +96,7 @@ L'intestazione JOSE contiene i seguenti parametri obbligatori:
 
 Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere divulgati, questi sono elencati nelle seguenti tabelle che specificano se un claim è divulgabile selettivamente [SD] o meno [NSD].
 
+.. _table_sd-jwt-vc_parameters:
 .. list-table::
     :class: longtable
     :widths: 20 60 20

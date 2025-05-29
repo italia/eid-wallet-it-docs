@@ -1,7 +1,7 @@
 .. include:: ../common/common_definitions.rst
 
 Flussi di Alto Livello per il Rilascio di Attestati Elettronici di Attributi
-=====================================================
+============================================================================
 
 Flusso di alto livello per il PID
 ---------------------------------

@@ -2,7 +2,7 @@
 
 
 Flussi relativi agli Attestati Elettronici
-=====================================
+==========================================
 
 .. toctree::
   :caption: Indice dei Contenuti dei Flussi relativi agli Attestati Elettronici
