@@ -128,10 +128,21 @@
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="design.html">2. Principi di design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">4. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendice</a></li>
 </ul>
 
         </div>
@@ -179,7 +190,7 @@
 </li>
       <li><a href="defined-terms.html#term-Associazione-Crittografica-con-l-Utente"><strong>Associazione Crittografica con l&#39;Utente</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Attestato-di-Unita-di-Wallet"><strong>Attestato di Unità di Wallet</strong></a>
+      <li><a href="defined-terms.html#term-Attestato-di-Istanza-del-Wallet"><strong>Attestato di Istanza del Wallet</strong></a>
 </li>
       <li><a href="defined-terms.html#term-Attestato-Elettronico"><strong>Attestato Elettronico</strong></a>
 </li>
@@ -221,6 +232,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="defined-terms.html#term-Backend-della-Relying-Party"><strong>Backend della Relying Party</strong></a>
 </li>
+      <li><a href="defined-terms.html#term-Brand-Identity"><strong>Brand Identity</strong></a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -233,25 +246,13 @@
 </li>
       <li><a href="defined-terms.html#term-Catalogo-degli-Attestati-Elettronici"><strong>Catalogo degli Attestati Elettronici</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Catalogo-delle-Credenziali-Digitali"><strong>Catalogo delle Credenziali Digitali</strong></a>
-</li>
       <li><a href="defined-terms.html#term-Certificate-Signing-Request-CSR"><strong>Certificate Signing Request (CSR)</strong></a>
-</li>
-      <li><a href="defined-terms.html#term-Certificato-di-Accesso"><strong>Certificato di Accesso</strong></a>
-</li>
-      <li><a href="defined-terms.html#term-Certificato-di-Registrazione"><strong>Certificato di Registrazione</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="defined-terms.html#term-Credential-Issuer"><strong>Credential Issuer</strong></a>
+      <li><a href="defined-terms.html#term-Certificato-di-Accesso"><strong>Certificato di Accesso</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Credential-Status-Assertion"><strong>Credential Status Assertion</strong></a>
-</li>
-      <li><a href="defined-terms.html#term-Credenziale"><strong>Credenziale</strong></a>
-</li>
-      <li><a href="defined-terms.html#term-Credenziale-Digitale"><strong>Credenziale Digitale</strong></a>
-</li>
-      <li><a href="defined-terms.html#term-Credenziale-Elettronica-di-Interesse-Pubblico"><strong>Credenziale Elettronica di Interesse Pubblico</strong></a>
+      <li><a href="defined-terms.html#term-Certificato-di-Registrazione"><strong>Certificato di Registrazione</strong></a>
 </li>
       <li><a href="defined-terms.html#term-Cryptographic-Hardware-Key-Tag"><strong>Cryptographic Hardware Key Tag</strong></a>
 </li>
@@ -287,7 +288,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="defined-terms.html#term-Entita-Organizzativa"><strong>Entità Organizzativa</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Esperienza-dell-Utente"><strong>Esperienza dell&#39;Utente</strong></a>
+      <li><a href="defined-terms.html#term-Esperienza-Utente"><strong>Esperienza Utente</strong></a>
 </li>
   </ul></td>
 </tr></table>
@@ -301,13 +302,11 @@
 </li>
       <li><a href="defined-terms.html#term-Fornitore-di-Attestati-Elettronici-di-Attributi"><strong>Fornitore di Attestati Elettronici di Attributi</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Fornitore-di-Attestati-Elettronici-di-Attributi-Qualificati"><strong>Fornitore di Attestati Elettronici di Attributi Qualificati</strong></a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="defined-terms.html#term-Fornitore-di-Attestati-Elettronici-di-Dati-di-Identificazione-Personale"><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale</strong></a>
+      <li><a href="defined-terms.html#term-Fornitore-di-Attestati-Elettronici-di-Attributi-Qualificati"><strong>Fornitore di Attestati Elettronici di Attributi Qualificati</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Fornitore-di-Credenziale"><strong>Fornitore di Credenziale</strong></a>
+      <li><a href="defined-terms.html#term-Fornitore-di-Attestati-Elettronici-di-Dati-di-Identificazione-Personale"><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale</strong></a>
 </li>
       <li><a href="defined-terms.html#term-Fornitore-di-Wallet"><strong>Fornitore di Wallet</strong></a>
 </li>
@@ -339,16 +338,12 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="defined-terms.html#term-Identita-del-Marchio"><strong>Identità del Marchio</strong></a>
+      <li><a href="defined-terms.html#term-Identity-and-Access-Management"><strong>Identity and Access Management</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Identita-Visiva"><strong>Identità Visiva</strong></a>
-</li>
-      <li><a href="defined-terms.html#term-Identity-and-Access-Management-IAM"><strong>Identity and Access Management (IAM)</strong></a>
+      <li><a href="defined-terms.html#term-Interfaccia"><strong>Interfaccia</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="defined-terms.html#term-Interfaccia"><strong>Interfaccia</strong></a>
-</li>
       <li><a href="defined-terms.html#term-Intermediario"><strong>Intermediario</strong></a>
 </li>
       <li><a href="defined-terms.html#term-Istanza-del-Wallet"><strong>Istanza del Wallet</strong></a>
@@ -429,15 +424,135 @@
 </li>
       <li><a href="defined-terms.html#term-Registro-del-Sistema-IT-Wallet"><strong>Registro del Sistema IT-Wallet</strong></a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="defined-terms.html#term-Relazione-di-Fiducia"><strong>Relazione di Fiducia</strong></a>
+</li>
       <li><a href="defined-terms.html#term-Relying-Party"><strong>Relying Party</strong></a>
 </li>
       <li>
     RFC
 
       <ul>
-        <li><a href="standards.html#index-0">RFC 5280</a>
+        <li><a href="credential-revocation.html#index-39">RFC 1950</a>, <a href="credential-revocation.html#index-51">[1]</a>
+</li>
+        <li><a href="credential-revocation.html#index-38">RFC 1951</a>, <a href="credential-revocation.html#index-50">[1]</a>
+</li>
+        <li><a href="relying-party-endpoint.html#index-0">RFC 2511</a>
+</li>
+        <li><a href="e-service-pdnd.html#index-74">RFC 3230</a>, <a href="e-service-pdnd.html#index-75">[1]</a>
+</li>
+        <li><a href="credential-data-model.html#index-9">RFC 3986</a>, <a href="credential-revocation.html#index-47">[1]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-27">RFC 4122</a>, <a href="credential-issuance-endpoint.html#index-67">[1]</a>, <a href="credential-issuer-endpoint.html#index-27">[2]</a>, <a href="credential-issuer-endpoint.html#index-67">[3]</a>, <a href="credential-revocation.html#index-10">[4]</a>
+</li>
+        <li><a href="credential-data-model.html#index-3">RFC 5280</a>, <a href="credential-revocation.html#index-43">[1]</a>, <a href="registry-catalogue.html#index-3">[2]</a>, <a href="standards.html#index-0">[3]</a>, <a href="wallet-provider-endpoint.html#index-17">[4]</a>, <a href="wallet-provider-endpoint.html#index-4">[5]</a>
+</li>
+        <li><a href="algorithms.html#index-9">RFC 5639</a>
+</li>
+        <li><a href="credential-data-model.html#index-10">RFC 5646</a>, <a href="credential-data-model.html#index-11">[1]</a>, <a href="credential-data-model.html#index-12">[2]</a>, <a href="credential-data-model.html#index-13">[3]</a>, <a href="credential-issuer-metadata.html#index-10">[4]</a>, <a href="credential-issuer-metadata.html#index-11">[5]</a>, <a href="credential-issuer-metadata.html#index-12">[6]</a>, <a href="credential-issuer-solution.html#index-10">[7]</a>, <a href="credential-issuer-solution.html#index-11">[8]</a>, <a href="credential-issuer-solution.html#index-12">[9]</a>
+</li>
+        <li><a href="algorithms.html#index-10">RFC 5869</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-0">RFC 6749</a>, <a href="credential-issuance-endpoint.html#index-11">[1]</a>, <a href="credential-issuance-endpoint.html#index-14">[2]</a>, <a href="credential-issuance-endpoint.html#index-52">[3]</a>, <a href="credential-issuance-endpoint.html#index-54">[4]</a>, <a href="credential-issuance-endpoint.html#index-55">[5]</a>, <a href="credential-issuance-endpoint.html#index-56">[6]</a>, <a href="credential-issuance-endpoint.html#index-58">[7]</a>, <a href="credential-issuance-endpoint.html#index-59">[8]</a>, <a href="credential-issuance-endpoint.html#index-73">[9]</a>, <a href="credential-issuance-endpoint.html#index-74">[10]</a>, <a href="credential-issuance-endpoint.html#index-75">[11]</a>, <a href="credential-issuance-endpoint.html#index-76">[12]</a>, <a href="credential-issuance-low-level.html#index-0">[13]</a>, <a href="credential-issuance-low-level.html#index-25">[14]</a>, <a href="credential-issuance-low-level.html#index-29">[15]</a>, <a href="credential-issuance-low-level.html#index-30">[16]</a>, <a href="credential-issuance-low-level.html#index-5">[17]</a>, <a href="credential-issuer-endpoint.html#index-0">[18]</a>, <a href="credential-issuer-endpoint.html#index-11">[19]</a>, <a href="credential-issuer-endpoint.html#index-14">[20]</a>, <a href="credential-issuer-endpoint.html#index-52">[21]</a>, <a href="credential-issuer-endpoint.html#index-54">[22]</a>, <a href="credential-issuer-endpoint.html#index-55">[23]</a>, <a href="credential-issuer-endpoint.html#index-56">[24]</a>, <a href="credential-issuer-endpoint.html#index-58">[25]</a>, <a href="credential-issuer-endpoint.html#index-59">[26]</a>, <a href="credential-issuer-endpoint.html#index-73">[27]</a>, <a href="credential-issuer-endpoint.html#index-74">[28]</a>, <a href="credential-issuer-endpoint.html#index-75">[29]</a>, <a href="credential-issuer-endpoint.html#index-76">[30]</a>, <a href="e-service-pdnd.html#index-13">[31]</a>, <a href="e-service-pdnd.html#index-2">[32]</a>, <a href="e-service-pdnd.html#index-26">[33]</a>, <a href="e-service-pdnd.html#index-28">[34]</a>, <a href="e-service-pdnd.html#index-30">[35]</a>, <a href="e-service-pdnd.html#index-6">[36]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-42">RFC 6749#section-4.1.2</a>, <a href="credential-issuance-endpoint.html#index-44">[1]</a>, <a href="credential-issuer-endpoint.html#index-42">[2]</a>, <a href="credential-issuer-endpoint.html#index-44">[3]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-39">RFC 6749#section-4.1.2.1</a>, <a href="credential-issuance-endpoint.html#index-40">[1]</a>, <a href="credential-issuance-endpoint.html#index-47">[2]</a>, <a href="credential-issuance-endpoint.html#index-48">[3]</a>, <a href="credential-issuance-endpoint.html#index-49">[4]</a>, <a href="credential-issuance-endpoint.html#index-50">[5]</a>, <a href="credential-issuance-endpoint.html#index-51">[6]</a>, <a href="credential-issuer-endpoint.html#index-39">[7]</a>, <a href="credential-issuer-endpoint.html#index-40">[8]</a>, <a href="credential-issuer-endpoint.html#index-47">[9]</a>, <a href="credential-issuer-endpoint.html#index-48">[10]</a>, <a href="credential-issuer-endpoint.html#index-49">[11]</a>, <a href="credential-issuer-endpoint.html#index-50">[12]</a>, <a href="credential-issuer-endpoint.html#index-51">[13]</a>, <a href="relying-party-endpoint.html#index-1">[14]</a>, <a href="relying-party-endpoint.html#index-2">[15]</a>, <a href="remote-flow.html#index-10">[16]</a>, <a href="remote-flow.html#index-4">[17]</a>, <a href="remote-flow.html#index-5">[18]</a>, <a href="remote-flow.html#index-8">[19]</a>, <a href="remote-flow.html#index-9">[20]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-33">RFC 6749#section-5.2</a>, <a href="credential-issuance-endpoint.html#index-34">[1]</a>, <a href="credential-issuance-endpoint.html#index-35">[2]</a>, <a href="credential-issuance-endpoint.html#index-77">[3]</a>, <a href="credential-issuance-endpoint.html#index-78">[4]</a>, <a href="credential-issuance-endpoint.html#index-79">[5]</a>, <a href="credential-issuance-endpoint.html#index-80">[6]</a>, <a href="credential-issuance-endpoint.html#index-82">[7]</a>, <a href="credential-issuer-endpoint.html#index-33">[8]</a>, <a href="credential-issuer-endpoint.html#index-34">[9]</a>, <a href="credential-issuer-endpoint.html#index-35">[10]</a>, <a href="credential-issuer-endpoint.html#index-77">[11]</a>, <a href="credential-issuer-endpoint.html#index-78">[12]</a>, <a href="credential-issuer-endpoint.html#index-79">[13]</a>, <a href="credential-issuer-endpoint.html#index-80">[14]</a>, <a href="credential-issuer-endpoint.html#index-82">[15]</a>, <a href="credential-revocation.html#index-12">[16]</a>, <a href="credential-revocation.html#index-13">[17]</a>, <a href="credential-revocation.html#index-36">[18]</a>, <a href="credential-revocation.html#index-37">[19]</a>, <a href="e-service-pdnd.html#index-109">[20]</a>, <a href="e-service-pdnd.html#index-54">[21]</a>, <a href="e-service-pdnd.html#index-55">[22]</a>, <a href="e-service-pdnd.html#index-56">[23]</a>, <a href="e-service-pdnd.html#index-57">[24]</a>, <a href="e-service-pdnd.html#index-58">[25]</a>, <a href="e-service-pdnd.html#index-60">[26]</a>, <a href="e-service-pdnd.html#index-67">[27]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-57">RFC 67491</a>, <a href="credential-issuer-endpoint.html#index-57">[1]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-144">RFC 6750</a>, <a href="credential-issuance-endpoint.html#index-147">[1]</a>, <a href="credential-issuer-endpoint.html#index-144">[2]</a>, <a href="credential-issuer-endpoint.html#index-147">[3]</a>
+</li>
+        <li><a href="e-service-pdnd.html#index-107">RFC 6750#section-3</a>, <a href="e-service-pdnd.html#index-66">[1]</a>
+</li>
+        <li><a href="e-service-pdnd.html#index-110">RFC 6750#section-3.1</a>, <a href="e-service-pdnd.html#index-112">[1]</a>, <a href="e-service-pdnd.html#index-68">[2]</a>, <a href="e-service-pdnd.html#index-69">[3]</a>
+</li>
+        <li><a href="wallet-provider-endpoint.html#index-0">RFC 7231</a>
+</li>
+        <li><a href="credential-data-model.html#index-0">RFC 7515</a>, <a href="credential-data-model.html#index-1">[1]</a>, <a href="credential-data-model.html#index-2">[2]</a>, <a href="credential-data-model.html#index-4">[3]</a>, <a href="credential-data-model.html#index-8">[4]</a>, <a href="credential-issuance-endpoint.html#index-103">[5]</a>, <a href="credential-issuance-endpoint.html#index-108">[6]</a>, <a href="credential-issuance-endpoint.html#index-109">[7]</a>, <a href="credential-issuance-endpoint.html#index-128">[8]</a>, <a href="credential-issuance-endpoint.html#index-132">[9]</a>, <a href="credential-issuance-endpoint.html#index-133">[10]</a>, <a href="credential-issuance-endpoint.html#index-135">[11]</a>, <a href="credential-issuance-endpoint.html#index-138">[12]</a>, <a href="credential-issuance-endpoint.html#index-139">[13]</a>, <a href="credential-issuance-endpoint.html#index-60">[14]</a>, <a href="credential-issuance-endpoint.html#index-62">[15]</a>, <a href="credential-issuance-endpoint.html#index-64">[16]</a>, <a href="credential-issuance-endpoint.html#index-66">[17]</a>, <a href="credential-issuance-endpoint.html#index-85">[18]</a>, <a href="credential-issuance-endpoint.html#index-86">[19]</a>, <a href="credential-issuer-endpoint.html#index-103">[20]</a>, <a href="credential-issuer-endpoint.html#index-108">[21]</a>, <a href="credential-issuer-endpoint.html#index-109">[22]</a>, <a href="credential-issuer-endpoint.html#index-128">[23]</a>, <a href="credential-issuer-endpoint.html#index-132">[24]</a>, <a href="credential-issuer-endpoint.html#index-133">[25]</a>, <a href="credential-issuer-endpoint.html#index-135">[26]</a>, <a href="credential-issuer-endpoint.html#index-138">[27]</a>, <a href="credential-issuer-endpoint.html#index-139">[28]</a>, <a href="credential-issuer-endpoint.html#index-60">[29]</a>, <a href="credential-issuer-endpoint.html#index-62">[30]</a>, <a href="credential-issuer-endpoint.html#index-64">[31]</a>, <a href="credential-issuer-endpoint.html#index-66">[32]</a>, <a href="credential-issuer-endpoint.html#index-85">[33]</a>, <a href="credential-issuer-endpoint.html#index-86">[34]</a>, <a href="credential-issuer-metadata.html#index-6">[35]</a>, <a href="credential-issuer-solution.html#index-6">[36]</a>, <a href="credential-revocation.html#index-14">[37]</a>, <a href="credential-revocation.html#index-16">[38]</a>, <a href="credential-revocation.html#index-18">[39]</a>, <a href="credential-revocation.html#index-19">[40]</a>, <a href="credential-revocation.html#index-40">[41]</a>, <a href="e-service-pdnd.html#index-15">[42]</a>, <a href="e-service-pdnd.html#index-16">[43]</a>, <a href="e-service-pdnd.html#index-17">[44]</a>, <a href="e-service-pdnd.html#index-32">[45]</a>, <a href="e-service-pdnd.html#index-33">[46]</a>, <a href="e-service-pdnd.html#index-51">[47]</a>, <a href="e-service-pdnd.html#index-76">[48]</a>, <a href="e-service-pdnd.html#index-77">[49]</a>, <a href="e-service-pdnd.html#index-78">[50]</a>, <a href="e-service-pdnd.html#index-87">[51]</a>, <a href="e-service-pdnd.html#index-88">[52]</a>, <a href="e-service-pdnd.html#index-89">[53]</a>, <a href="e-service-pdnd.html#index-97">[54]</a>, <a href="e-service-pdnd.html#index-98">[55]</a>, <a href="e-service-pdnd.html#index-99">[56]</a>, <a href="registry-catalogue.html#index-0">[57]</a>, <a href="registry-catalogue.html#index-1">[58]</a>, <a href="registry-catalogue.html#index-2">[59]</a>, <a href="registry-catalogue.html#index-4">[60]</a>, <a href="registry-catalogue.html#index-5">[61]</a>, <a href="relying-party-metadata.html#index-2">[62]</a>, <a href="relying-party-metadata.html#index-3">[63]</a>, <a href="wallet-provider-endpoint.html#index-18">[64]</a>, <a href="wallet-provider-endpoint.html#index-5">[65]</a>
+</li>
+        <li><a href="algorithms.html#index-18">RFC 7516</a>, <a href="algorithms.html#index-3">[1]</a>, <a href="algorithms.html#index-5">[2]</a>, <a href="algorithms.html#index-7">[3]</a>, <a href="credential-revocation.html#index-28">[4]</a>, <a href="credential-revocation.html#index-29">[5]</a>
+</li>
+        <li><a href="backup-restore.html#index-0">RFC 7516#section-4.1.1</a>, <a href="credential-issuance-endpoint.html#index-1">[1]</a>, <a href="credential-issuance-endpoint.html#index-18">[2]</a>, <a href="credential-issuer-endpoint.html#index-1">[3]</a>, <a href="credential-issuer-endpoint.html#index-18">[4]</a>, <a href="credential-revocation.html#index-0">[5]</a>, <a href="credential-revocation.html#index-1">[6]</a>, <a href="mobile-application-instance.html#index-0">[7]</a>, <a href="remote-flow.html#index-0">[8]</a>, <a href="wallet-provider-endpoint.html#index-15">[9]</a>, <a href="wallet-provider-endpoint.html#index-2">[10]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-134">RFC 7517</a>, <a href="credential-issuance-endpoint.html#index-136">[1]</a>, <a href="credential-issuance-endpoint.html#index-137">[2]</a>, <a href="credential-issuance-endpoint.html#index-140">[3]</a>, <a href="credential-issuance-endpoint.html#index-63">[4]</a>, <a href="credential-issuance-endpoint.html#index-65">[5]</a>, <a href="credential-issuer-endpoint.html#index-134">[6]</a>, <a href="credential-issuer-endpoint.html#index-136">[7]</a>, <a href="credential-issuer-endpoint.html#index-137">[8]</a>, <a href="credential-issuer-endpoint.html#index-140">[9]</a>, <a href="credential-issuer-endpoint.html#index-63">[10]</a>, <a href="credential-issuer-endpoint.html#index-65">[11]</a>, <a href="credential-revocation.html#index-15">[12]</a>, <a href="credential-revocation.html#index-17">[13]</a>, <a href="credential-revocation.html#index-41">[14]</a>, <a href="e-service-pdnd.html#index-61">[15]</a>, <a href="e-service-pdnd.html#index-62">[16]</a>, <a href="e-service-pdnd.html#index-63">[17]</a>, <a href="e-service-pdnd.html#index-65">[18]</a>, <a href="remote-flow.html#index-3">[19]</a>, <a href="trust.html#index-2">[20]</a>, <a href="trust.html#index-3">[21]</a>, <a href="wallet-provider-entity-configuration.html#index-1">[22]</a>, <a href="wallet-provider-metadata.html#index-0">[23]</a>
+</li>
+        <li><a href="algorithms.html#index-0">RFC 7518</a>, <a href="algorithms.html#index-1">[1]</a>, <a href="algorithms.html#index-11">[2]</a>, <a href="algorithms.html#index-12">[3]</a>, <a href="algorithms.html#index-13">[4]</a>, <a href="algorithms.html#index-14">[5]</a>, <a href="algorithms.html#index-15">[6]</a>, <a href="algorithms.html#index-16">[7]</a>, <a href="algorithms.html#index-17">[8]</a>, <a href="algorithms.html#index-19">[9]</a>, <a href="algorithms.html#index-2">[10]</a>, <a href="algorithms.html#index-20">[11]</a>, <a href="algorithms.html#index-21">[12]</a>, <a href="algorithms.html#index-22">[13]</a>, <a href="algorithms.html#index-4">[14]</a>, <a href="algorithms.html#index-6">[15]</a>, <a href="algorithms.html#index-8">[16]</a>
+</li>
+        <li><a href="credential-data-model.html#index-5">RFC 7519</a>, <a href="credential-data-model.html#index-6">[1]</a>, <a href="credential-data-model.html#index-7">[2]</a>, <a href="credential-issuance-endpoint.html#index-10">[3]</a>, <a href="credential-issuance-endpoint.html#index-100">[4]</a>, <a href="credential-issuance-endpoint.html#index-102">[5]</a>, <a href="credential-issuance-endpoint.html#index-106">[6]</a>, <a href="credential-issuance-endpoint.html#index-112">[7]</a>, <a href="credential-issuance-endpoint.html#index-114">[8]</a>, <a href="credential-issuance-endpoint.html#index-116">[9]</a>, <a href="credential-issuance-endpoint.html#index-118">[10]</a>, <a href="credential-issuance-endpoint.html#index-120">[11]</a>, <a href="credential-issuance-endpoint.html#index-121">[12]</a>, <a href="credential-issuance-endpoint.html#index-122">[13]</a>, <a href="credential-issuance-endpoint.html#index-123">[14]</a>, <a href="credential-issuance-endpoint.html#index-125">[15]</a>, <a href="credential-issuance-endpoint.html#index-127">[16]</a>, <a href="credential-issuance-endpoint.html#index-141">[17]</a>, <a href="credential-issuance-endpoint.html#index-142">[18]</a>, <a href="credential-issuance-endpoint.html#index-143">[19]</a>, <a href="credential-issuance-endpoint.html#index-16">[20]</a>, <a href="credential-issuance-endpoint.html#index-17">[21]</a>, <a href="credential-issuance-endpoint.html#index-20">[22]</a>, <a href="credential-issuance-endpoint.html#index-22">[23]</a>, <a href="credential-issuance-endpoint.html#index-24">[24]</a>, <a href="credential-issuance-endpoint.html#index-26">[25]</a>, <a href="credential-issuance-endpoint.html#index-28">[26]</a>, <a href="credential-issuance-endpoint.html#index-4">[27]</a>, <a href="credential-issuance-endpoint.html#index-46">[28]</a>, <a href="credential-issuance-endpoint.html#index-6">[29]</a>, <a href="credential-issuance-endpoint.html#index-68">[30]</a>, <a href="credential-issuance-endpoint.html#index-71">[31]</a>, <a href="credential-issuance-endpoint.html#index-72">[32]</a>, <a href="credential-issuance-endpoint.html#index-8">[33]</a>, <a href="credential-issuance-endpoint.html#index-83">[34]</a>, <a href="credential-issuance-endpoint.html#index-89">[35]</a>, <a href="credential-issuance-endpoint.html#index-91">[36]</a>, <a href="credential-issuance-endpoint.html#index-93">[37]</a>, <a href="credential-issuance-endpoint.html#index-95">[38]</a>, <a href="credential-issuance-endpoint.html#index-97">[39]</a>, <a href="credential-issuance-endpoint.html#index-98">[40]</a>, <a href="credential-issuance-low-level.html#index-18">[41]</a>, <a href="credential-issuer-endpoint.html#index-10">[42]</a>, <a href="credential-issuer-endpoint.html#index-100">[43]</a>, <a href="credential-issuer-endpoint.html#index-102">[44]</a>, <a href="credential-issuer-endpoint.html#index-106">[45]</a>, <a href="credential-issuer-endpoint.html#index-112">[46]</a>, <a href="credential-issuer-endpoint.html#index-114">[47]</a>, <a href="credential-issuer-endpoint.html#index-116">[48]</a>, <a href="credential-issuer-endpoint.html#index-118">[49]</a>, <a href="credential-issuer-endpoint.html#index-120">[50]</a>, <a href="credential-issuer-endpoint.html#index-121">[51]</a>, <a href="credential-issuer-endpoint.html#index-122">[52]</a>, <a href="credential-issuer-endpoint.html#index-123">[53]</a>, <a href="credential-issuer-endpoint.html#index-125">[54]</a>, <a href="credential-issuer-endpoint.html#index-127">[55]</a>, <a href="credential-issuer-endpoint.html#index-141">[56]</a>, <a href="credential-issuer-endpoint.html#index-142">[57]</a>, <a href="credential-issuer-endpoint.html#index-143">[58]</a>, <a href="credential-issuer-endpoint.html#index-16">[59]</a>, <a href="credential-issuer-endpoint.html#index-17">[60]</a>, <a href="credential-issuer-endpoint.html#index-20">[61]</a>, <a href="credential-issuer-endpoint.html#index-22">[62]</a>, <a href="credential-issuer-endpoint.html#index-24">[63]</a>, <a href="credential-issuer-endpoint.html#index-26">[64]</a>, <a href="credential-issuer-endpoint.html#index-28">[65]</a>, <a href="credential-issuer-endpoint.html#index-4">[66]</a>, <a href="credential-issuer-endpoint.html#index-46">[67]</a>, <a href="credential-issuer-endpoint.html#index-6">[68]</a>, <a href="credential-issuer-endpoint.html#index-68">[69]</a>, <a href="credential-issuer-endpoint.html#index-71">[70]</a>, <a href="credential-issuer-endpoint.html#index-72">[71]</a>, <a href="credential-issuer-endpoint.html#index-8">[72]</a>, <a href="credential-issuer-endpoint.html#index-83">[73]</a>, <a href="credential-issuer-endpoint.html#index-89">[74]</a>, <a href="credential-issuer-endpoint.html#index-91">[75]</a>, <a href="credential-issuer-endpoint.html#index-93">[76]</a>, <a href="credential-issuer-endpoint.html#index-95">[77]</a>, <a href="credential-issuer-endpoint.html#index-97">[78]</a>, <a href="credential-issuer-endpoint.html#index-98">[79]</a>, <a href="credential-revocation.html#index-21">[80]</a>, <a href="credential-revocation.html#index-23">[81]</a>, <a href="credential-revocation.html#index-25">[82]</a>, <a href="credential-revocation.html#index-3">[83]</a>, <a href="credential-revocation.html#index-31">[84]</a>, <a href="credential-revocation.html#index-33">[85]</a>, <a href="credential-revocation.html#index-34">[86]</a>, <a href="credential-revocation.html#index-35">[87]</a>, <a href="credential-revocation.html#index-44">[88]</a>, <a href="credential-revocation.html#index-45">[89]</a>, <a href="credential-revocation.html#index-46">[90]</a>, <a href="credential-revocation.html#index-49">[91]</a>, <a href="credential-revocation.html#index-5">[92]</a>, <a href="credential-revocation.html#index-7">[93]</a>, <a href="credential-revocation.html#index-9">[94]</a>, <a href="e-service-pdnd.html#index-100">[95]</a>, <a href="e-service-pdnd.html#index-101">[96]</a>, <a href="e-service-pdnd.html#index-102">[97]</a>, <a href="e-service-pdnd.html#index-103">[98]</a>, <a href="e-service-pdnd.html#index-104">[99]</a>, <a href="e-service-pdnd.html#index-105">[100]</a>, <a href="e-service-pdnd.html#index-18">[101]</a>, <a href="e-service-pdnd.html#index-23">[102]</a>, <a href="e-service-pdnd.html#index-35">[103]</a>, <a href="e-service-pdnd.html#index-37">[104]</a>, <a href="e-service-pdnd.html#index-39">[105]</a>, <a href="e-service-pdnd.html#index-41">[106]</a>, <a href="e-service-pdnd.html#index-43">[107]</a>, <a href="e-service-pdnd.html#index-44">[108]</a>, <a href="e-service-pdnd.html#index-46">[109]</a>, <a href="e-service-pdnd.html#index-48">[110]</a>, <a href="e-service-pdnd.html#index-79">[111]</a>, <a href="e-service-pdnd.html#index-80">[112]</a>, <a href="e-service-pdnd.html#index-81">[113]</a>, <a href="e-service-pdnd.html#index-82">[114]</a>, <a href="e-service-pdnd.html#index-83">[115]</a>, <a href="e-service-pdnd.html#index-84">[116]</a>, <a href="e-service-pdnd.html#index-85">[117]</a>, <a href="e-service-pdnd.html#index-86">[118]</a>, <a href="e-service-pdnd.html#index-90">[119]</a>, <a href="e-service-pdnd.html#index-91">[120]</a>, <a href="e-service-pdnd.html#index-92">[121]</a>, <a href="e-service-pdnd.html#index-93">[122]</a>, <a href="e-service-pdnd.html#index-94">[123]</a>, <a href="e-service-pdnd.html#index-95">[124]</a>, <a href="e-service-pdnd.html#index-96">[125]</a>, <a href="mobile-application-instance.html#index-3">[126]</a>, <a href="mobile-application-instance.html#index-5">[127]</a>, <a href="mobile-application-instance.html#index-7">[128]</a>, <a href="mobile-application-instance.html#index-9">[129]</a>, <a href="remote-flow.html#index-1">[130]</a>, <a href="trust.html#index-0">[131]</a>, <a href="trust.html#index-1">[132]</a>, <a href="wallet-provider-endpoint.html#index-11">[133]</a>, <a href="wallet-provider-endpoint.html#index-14">[134]</a>, <a href="wallet-provider-endpoint.html#index-20">[135]</a>, <a href="wallet-provider-endpoint.html#index-22">[136]</a>, <a href="wallet-provider-endpoint.html#index-24">[137]</a>, <a href="wallet-provider-endpoint.html#index-27">[138]</a>, <a href="wallet-provider-endpoint.html#index-29">[139]</a>, <a href="wallet-provider-endpoint.html#index-7">[140]</a>, <a href="wallet-provider-endpoint.html#index-9">[141]</a>
+</li>
+        <li><a href="credential-revocation.html#index-11">RFC 7519#section-4.1.7</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-43">RFC 7521</a>, <a href="credential-issuer-endpoint.html#index-43">[1]</a>, <a href="e-service-pdnd.html#index-11">[2]</a>, <a href="e-service-pdnd.html#index-3">[3]</a>, <a href="e-service-pdnd.html#index-7">[4]</a>, <a href="e-service-pdnd.html#index-9">[5]</a>
+</li>
+        <li><a href="e-service-pdnd.html#index-10">RFC 7523</a>, <a href="e-service-pdnd.html#index-106">[1]</a>, <a href="e-service-pdnd.html#index-12">[2]</a>, <a href="e-service-pdnd.html#index-14">[3]</a>, <a href="e-service-pdnd.html#index-19">[4]</a>, <a href="e-service-pdnd.html#index-20">[5]</a>, <a href="e-service-pdnd.html#index-21">[6]</a>, <a href="e-service-pdnd.html#index-22">[7]</a>, <a href="e-service-pdnd.html#index-24">[8]</a>, <a href="e-service-pdnd.html#index-25">[9]</a>, <a href="e-service-pdnd.html#index-4">[10]</a>, <a href="e-service-pdnd.html#index-8">[11]</a>
+</li>
+        <li><a href="relying-party-metadata.html#index-1">RFC 7591#section-2</a>
+</li>
+        <li><a href="relying-party-metadata.html#index-0">RFC 7591#section-3.2.1</a>
+</li>
+        <li><a href="credential-issuance-low-level.html#index-2">RFC 7636</a>, <a href="credential-issuance-low-level.html#index-7">[1]</a>, <a href="credential-issuer-metadata.html#index-3">[2]</a>, <a href="credential-issuer-solution.html#index-3">[3]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-12">RFC 7636#section-4.2</a>, <a href="credential-issuer-endpoint.html#index-12">[1]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-13">RFC 7636#section-4.3</a>, <a href="credential-issuer-endpoint.html#index-13">[1]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-105">RFC 7638</a>, <a href="credential-issuance-endpoint.html#index-130">[1]</a>, <a href="credential-issuer-endpoint.html#index-105">[2]</a>, <a href="credential-issuer-endpoint.html#index-130">[3]</a>, <a href="e-service-pdnd.html#index-53">[4]</a>, <a href="wallet-provider-entity-configuration.html#index-0">[5]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-110">RFC 7638#section_3</a>, <a href="credential-issuance-endpoint.html#index-2">[1]</a>, <a href="credential-issuance-endpoint.html#index-87">[2]</a>, <a href="credential-issuer-endpoint.html#index-110">[3]</a>, <a href="credential-issuer-endpoint.html#index-2">[4]</a>, <a href="credential-issuer-endpoint.html#index-87">[5]</a>, <a href="credential-revocation.html#index-42">[6]</a>, <a href="mobile-application-instance.html#index-1">[7]</a>, <a href="wallet-provider-endpoint.html#index-16">[8]</a>, <a href="wallet-provider-endpoint.html#index-3">[9]</a>
+</li>
+        <li><a href="credential-revocation.html#index-26">RFC 7800</a>, <a href="mobile-application-instance.html#index-10">[1]</a>, <a href="wallet-provider-endpoint.html#index-12">[2]</a>, <a href="wallet-provider-endpoint.html#index-25">[3]</a>
+</li>
+        <li><a href="wallet-provider-endpoint.html#index-1">RFC 7807</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-29">RFC 8259</a>, <a href="credential-issuer-endpoint.html#index-29">[1]</a>
+</li>
+        <li><a href="credential-issuer-metadata.html#index-5">RFC 8414</a>, <a href="credential-issuer-metadata.html#index-9">[1]</a>, <a href="credential-issuer-solution.html#index-5">[2]</a>, <a href="credential-issuer-solution.html#index-9">[3]</a>
+</li>
+        <li><a href="credential-issuer-metadata.html#index-1">RFC 8414#section-2</a>, <a href="credential-issuer-metadata.html#index-2">[1]</a>, <a href="credential-issuer-metadata.html#index-4">[2]</a>, <a href="credential-issuer-metadata.html#index-7">[3]</a>, <a href="credential-issuer-metadata.html#index-8">[4]</a>, <a href="credential-issuer-solution.html#index-1">[5]</a>, <a href="credential-issuer-solution.html#index-2">[6]</a>, <a href="credential-issuer-solution.html#index-4">[7]</a>, <a href="credential-issuer-solution.html#index-7">[8]</a>, <a href="credential-issuer-solution.html#index-8">[9]</a>
+</li>
+        <li><a href="registry-catalogue.html#index-6">RFC 8615</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-61">RFC 8725</a>, <a href="credential-issuer-endpoint.html#index-61">[1]</a>
+</li>
+        <li><a href="credential-revocation.html#index-27">RFC 8747</a>
+</li>
+        <li><a href="credential-data-model.html#index-14">RFC 8949</a>
+</li>
+        <li><a href="e-service-pdnd.html#index-49">RFC 8963</a>
+</li>
+        <li><a href="credential-issuance-low-level.html#index-26">RFC 9027</a>
+</li>
+        <li><a href="credential-data-model.html#index-15">RFC 9052</a>
+</li>
+        <li><a href="credential-data-model.html#index-16">RFC 9053</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-101">RFC 9068</a>, <a href="credential-issuance-endpoint.html#index-111">[1]</a>, <a href="credential-issuance-endpoint.html#index-113">[2]</a>, <a href="credential-issuance-endpoint.html#index-115">[3]</a>, <a href="credential-issuance-endpoint.html#index-117">[4]</a>, <a href="credential-issuance-endpoint.html#index-119">[5]</a>, <a href="credential-issuance-endpoint.html#index-124">[6]</a>, <a href="credential-issuance-endpoint.html#index-126">[7]</a>, <a href="credential-issuance-endpoint.html#index-88">[8]</a>, <a href="credential-issuance-endpoint.html#index-90">[9]</a>, <a href="credential-issuance-endpoint.html#index-92">[10]</a>, <a href="credential-issuance-endpoint.html#index-94">[11]</a>, <a href="credential-issuance-endpoint.html#index-96">[12]</a>, <a href="credential-issuance-endpoint.html#index-99">[13]</a>, <a href="credential-issuer-endpoint.html#index-101">[14]</a>, <a href="credential-issuer-endpoint.html#index-111">[15]</a>, <a href="credential-issuer-endpoint.html#index-113">[16]</a>, <a href="credential-issuer-endpoint.html#index-115">[17]</a>, <a href="credential-issuer-endpoint.html#index-117">[18]</a>, <a href="credential-issuer-endpoint.html#index-119">[19]</a>, <a href="credential-issuer-endpoint.html#index-124">[20]</a>, <a href="credential-issuer-endpoint.html#index-126">[21]</a>, <a href="credential-issuer-endpoint.html#index-88">[22]</a>, <a href="credential-issuer-endpoint.html#index-90">[23]</a>, <a href="credential-issuer-endpoint.html#index-92">[24]</a>, <a href="credential-issuer-endpoint.html#index-94">[25]</a>, <a href="credential-issuer-endpoint.html#index-96">[26]</a>, <a href="credential-issuer-endpoint.html#index-99">[27]</a>, <a href="e-service-pdnd.html#index-34">[28]</a>, <a href="e-service-pdnd.html#index-36">[29]</a>, <a href="e-service-pdnd.html#index-38">[30]</a>, <a href="e-service-pdnd.html#index-40">[31]</a>, <a href="e-service-pdnd.html#index-42">[32]</a>, <a href="e-service-pdnd.html#index-45">[33]</a>, <a href="e-service-pdnd.html#index-47">[34]</a>, <a href="e-service-pdnd.html#index-50">[35]</a>
+</li>
+        <li><a href="credential-issuance-low-level.html#index-10">RFC 9101</a>, <a href="credential-issuance-low-level.html#index-12">[1]</a>, <a href="credential-issuance-low-level.html#index-14">[2]</a>, <a href="credential-issuance-low-level.html#index-19">[3]</a>, <a href="credential-issuance-low-level.html#index-20">[4]</a>, <a href="credential-issuance-low-level.html#index-3">[5]</a>, <a href="remote-flow.html#index-2">[6]</a>, <a href="remote-flow.html#index-6">[7]</a>, <a href="remote-flow.html#index-7">[8]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-146">RFC 9110</a>, <a href="credential-issuance-endpoint.html#index-69">[1]</a>, <a href="credential-issuance-endpoint.html#index-70">[2]</a>, <a href="credential-issuer-endpoint.html#index-146">[3]</a>, <a href="credential-issuer-endpoint.html#index-69">[4]</a>, <a href="credential-issuer-endpoint.html#index-70">[5]</a>, <a href="credential-revocation.html#index-48">[6]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-19">RFC 9126</a>, <a href="credential-issuance-endpoint.html#index-21">[1]</a>, <a href="credential-issuance-endpoint.html#index-23">[2]</a>, <a href="credential-issuance-endpoint.html#index-25">[3]</a>, <a href="credential-issuance-endpoint.html#index-3">[4]</a>, <a href="credential-issuance-endpoint.html#index-30">[5]</a>, <a href="credential-issuance-endpoint.html#index-31">[6]</a>, <a href="credential-issuance-endpoint.html#index-41">[7]</a>, <a href="credential-issuance-endpoint.html#index-5">[8]</a>, <a href="credential-issuance-endpoint.html#index-7">[9]</a>, <a href="credential-issuance-endpoint.html#index-9">[10]</a>, <a href="credential-issuance-low-level.html#index-1">[11]</a>, <a href="credential-issuance-low-level.html#index-11">[12]</a>, <a href="credential-issuance-low-level.html#index-13">[13]</a>, <a href="credential-issuance-low-level.html#index-15">[14]</a>, <a href="credential-issuance-low-level.html#index-16">[15]</a>, <a href="credential-issuance-low-level.html#index-17">[16]</a>, <a href="credential-issuance-low-level.html#index-21">[17]</a>, <a href="credential-issuance-low-level.html#index-22">[18]</a>, <a href="credential-issuance-low-level.html#index-23">[19]</a>, <a href="credential-issuance-low-level.html#index-24">[20]</a>, <a href="credential-issuance-low-level.html#index-6">[21]</a>, <a href="credential-issuance-low-level.html#index-9">[22]</a>, <a href="credential-issuer-endpoint.html#index-19">[23]</a>, <a href="credential-issuer-endpoint.html#index-21">[24]</a>, <a href="credential-issuer-endpoint.html#index-23">[25]</a>, <a href="credential-issuer-endpoint.html#index-25">[26]</a>, <a href="credential-issuer-endpoint.html#index-3">[27]</a>, <a href="credential-issuer-endpoint.html#index-30">[28]</a>, <a href="credential-issuer-endpoint.html#index-31">[29]</a>, <a href="credential-issuer-endpoint.html#index-41">[30]</a>, <a href="credential-issuer-endpoint.html#index-5">[31]</a>, <a href="credential-issuer-endpoint.html#index-7">[32]</a>, <a href="credential-issuer-endpoint.html#index-9">[33]</a>, <a href="credential-revocation.html#index-2">[34]</a>, <a href="credential-revocation.html#index-20">[35]</a>, <a href="credential-revocation.html#index-22">[36]</a>, <a href="credential-revocation.html#index-24">[37]</a>, <a href="credential-revocation.html#index-30">[38]</a>, <a href="credential-revocation.html#index-32">[39]</a>, <a href="credential-revocation.html#index-4">[40]</a>, <a href="credential-revocation.html#index-6">[41]</a>, <a href="credential-revocation.html#index-8">[42]</a>, <a href="mobile-application-instance.html#index-2">[43]</a>, <a href="mobile-application-instance.html#index-4">[44]</a>, <a href="mobile-application-instance.html#index-6">[45]</a>, <a href="mobile-application-instance.html#index-8">[46]</a>, <a href="wallet-provider-endpoint.html#index-10">[47]</a>, <a href="wallet-provider-endpoint.html#index-13">[48]</a>, <a href="wallet-provider-endpoint.html#index-19">[49]</a>, <a href="wallet-provider-endpoint.html#index-21">[50]</a>, <a href="wallet-provider-endpoint.html#index-23">[51]</a>, <a href="wallet-provider-endpoint.html#index-26">[52]</a>, <a href="wallet-provider-endpoint.html#index-28">[53]</a>, <a href="wallet-provider-endpoint.html#index-6">[54]</a>, <a href="wallet-provider-endpoint.html#index-8">[55]</a>
+</li>
+        <li><a href="credential-issuer-metadata.html#index-0">RFC 9126#as_metadata</a>, <a href="credential-issuer-solution.html#index-0">[1]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-32">RFC 9126#section-2.3</a>, <a href="credential-issuance-endpoint.html#index-36">[1]</a>, <a href="credential-issuance-endpoint.html#index-37">[2]</a>, <a href="credential-issuance-endpoint.html#index-38">[3]</a>, <a href="credential-issuer-endpoint.html#index-32">[4]</a>, <a href="credential-issuer-endpoint.html#index-36">[5]</a>, <a href="credential-issuer-endpoint.html#index-37">[6]</a>, <a href="credential-issuer-endpoint.html#index-38">[7]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-45">RFC 9207</a>, <a href="credential-issuer-endpoint.html#index-45">[1]</a>
+</li>
+        <li><a href="credential-data-model.html#index-17">RFC 9360</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-15">RFC 9396</a>, <a href="credential-issuance-low-level.html#index-4">[1]</a>, <a href="credential-issuance-low-level.html#index-8">[2]</a>, <a href="credential-issuer-endpoint.html#index-15">[3]</a>
+</li>
+        <li><a href="credential-issuance-endpoint.html#index-104">RFC 9449</a>, <a href="credential-issuance-endpoint.html#index-107">[1]</a>, <a href="credential-issuance-endpoint.html#index-129">[2]</a>, <a href="credential-issuance-endpoint.html#index-131">[3]</a>, <a href="credential-issuance-endpoint.html#index-145">[4]</a>, <a href="credential-issuance-endpoint.html#index-53">[5]</a>, <a href="credential-issuance-endpoint.html#index-81">[6]</a>, <a href="credential-issuance-endpoint.html#index-84">[7]</a>, <a href="credential-issuance-low-level.html#index-27">[8]</a>, <a href="credential-issuance-low-level.html#index-28">[9]</a>, <a href="credential-issuance-low-level.html#index-31">[10]</a>, <a href="credential-issuance-low-level.html#index-32">[11]</a>, <a href="credential-issuance-low-level.html#index-33">[12]</a>, <a href="credential-issuance-low-level.html#index-34">[13]</a>, <a href="credential-issuance-low-level.html#index-35">[14]</a>, <a href="credential-issuance-low-level.html#index-36">[15]</a>, <a href="credential-issuer-endpoint.html#index-104">[16]</a>, <a href="credential-issuer-endpoint.html#index-107">[17]</a>, <a href="credential-issuer-endpoint.html#index-129">[18]</a>, <a href="credential-issuer-endpoint.html#index-131">[19]</a>, <a href="credential-issuer-endpoint.html#index-145">[20]</a>, <a href="credential-issuer-endpoint.html#index-53">[21]</a>, <a href="credential-issuer-endpoint.html#index-81">[22]</a>, <a href="credential-issuer-endpoint.html#index-84">[23]</a>, <a href="e-service-pdnd.html#index-0">[24]</a>, <a href="e-service-pdnd.html#index-1">[25]</a>, <a href="e-service-pdnd.html#index-27">[26]</a>, <a href="e-service-pdnd.html#index-29">[27]</a>, <a href="e-service-pdnd.html#index-31">[28]</a>, <a href="e-service-pdnd.html#index-5">[29]</a>, <a href="e-service-pdnd.html#index-52">[30]</a>, <a href="e-service-pdnd.html#index-64">[31]</a>, <a href="e-service-pdnd.html#index-70">[32]</a>, <a href="e-service-pdnd.html#index-71">[33]</a>, <a href="e-service-pdnd.html#index-72">[34]</a>, <a href="e-service-pdnd.html#index-73">[35]</a>
+</li>
+        <li><a href="e-service-pdnd.html#index-111">RFC 9449#section-5</a>, <a href="e-service-pdnd.html#index-59">[1]</a>
+</li>
+        <li><a href="e-service-pdnd.html#index-108">RFC 9449#section-7.1</a>
+</li>
+        <li><a href="wallet-provider-endpoint.html#index-30">RFC 9679</a>
 </li>
       </ul></li>
   </ul></td>
@@ -500,10 +615,6 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="defined-terms.html#term-Unita-di-Wallet"><strong>Unità di Wallet</strong></a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="defined-terms.html#term-Utente"><strong>Utente</strong></a>
 </li>
   </ul></td>
@@ -514,11 +625,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="defined-terms.html#term-Verificatore-di-Attestati-Elettronici"><strong>Verificatore di Attestati Elettronici</strong></a>
 </li>
-      <li><a href="defined-terms.html#term-Verificatore-di-Credenziale"><strong>Verificatore di Credenziale</strong></a>
+      <li><a href="defined-terms.html#term-Verificatore-di-Credenziali"><strong>Verificatore di Credenziali</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="defined-terms.html#term-Vista-di-Dettaglio"><strong>Vista di Dettaglio</strong></a>
+</li>
+      <li><a href="defined-terms.html#term-Visual-Identity"><strong>Visual Identity</strong></a>
 </li>
       <li><a href="defined-terms.html#term-Visualizzazione-in-Anteprima"><strong>Visualizzazione in Anteprima</strong></a>
 </li>
@@ -549,7 +662,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 28/05/2025.
+      Ultimo aggiornamento 29/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -1,11 +1,11 @@
 .. include:: ../common/common_definitions.rst
 
 
-Defined Terms and References
-============================
+Termini Definiti e Riferimenti
+==============================
 
 .. toctree::
-  :caption: Defined Terms and References Table of Contents
+  :caption: Indice dei Termini Definiti e Riferimenti
   :maxdepth: 3
 
   defined-terms.rst

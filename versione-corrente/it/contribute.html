@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="./">
+<html lang="it" data-content_root="./">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>contribute.rst &#8212; IT-Wallet implementation profile - Versione Corrente version: latest documentation</title>
+    <title>13. Come contribuire &#8212; IT-Wallet Technical Documentation - Versione Corrente - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
-    <script src="_static/documentation_options.js?v=edb75691"></script>
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=3fd72285"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Standards" href="standards.html" />
-    <link rel="prev" title="revocation-lists.rst" href="revocation-lists.html" /> 
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="14. Rilasci Open Source" href="open-source.html" />
+    <link rel="prev" title="12.5. Technical References" href="standards.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -30,7 +33,15 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="index.html" title="Go to homepage">IT-Wallet implementation profile - Versione Corrente version: latest documentation</a></h1>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - Versione Corrente - 1.0.0</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
 
         <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
     <template v-if="mode == 'light'">
@@ -103,11 +114,11 @@
         <div class="searchbox_wrapper">
             
 <search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3 id="searchlabel">Ricerca veloce</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
+      <input type="submit" value="Vai" />
     </form>
     </div>
 </search>
@@ -118,21 +129,23 @@
 
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ssi-introduction.html">ssi-introduction.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms.html">defined-terms.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">trust.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-data.html">pid-eaa-data.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-mdoc-cbor.html">pid-eaa-mdoc-cbor.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pid-eaa-sd-jwt.html">pid-eaa-sd-jwt.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">wallet-solution.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-attestation.html">wallet-instance-attestation.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="issuance.html">issuance.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pseudonyms.html">pseudonyms.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">backup-restore.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="revocation-lists.html">revocation-lists.rst</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">contribute.rst</a></li>
-<li class="toctree-l1"><a class="reference internal" href="standards.html">Standards</a></li>
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Principi di design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">13. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendice</a></li>
 </ul>
 
         </div>
@@ -144,9 +157,74 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="contribute-rst">
-<span id="id1"></span><h1>contribute.rst<a class="headerlink" href="#contribute-rst" title="Link to this heading">¶</a></h1>
-<p>Instruction to join in the development here.</p>
+  <section id="come-contribuire">
+<h1><span class="section-number">13. </span>Come contribuire<a class="headerlink" href="#come-contribuire" title="Link to this heading">¶</a></h1>
+<p>Il progetto IT-Wallet, incluso questo documento, segue un <strong>processo di sviluppo aperto</strong>. Questo approccio garantisce che il processo di sviluppo sia accessibile a tutti, invitando tutte le parti interessate a partecipare.</p>
+<p>Di conseguenza, gli stakeholder, i membri della comunità nazionale e internazionale non sono solo incoraggiati ma anche calorosamente invitati a contribuire al perfezionamento di queste regole tecniche.</p>
+<p>Di seguito sono riportati diversi metodi disponibili per contribuire a questo progetto:</p>
+<ul class="simple">
+<li><p><strong>GitHub issues</strong>. Aprendo un'issue, puoi chiedere chiarimenti, proporre miglioramenti o segnalare errori editoriali. Se stai lavorando su un'issue, ti incoraggiamo ad aprire una pull request in bozza e collegarla.</p></li>
+<li><p><strong>Pull requests</strong>. Le pull request rappresentano contributi attivi al progetto, tipicamente, ma non sempre, a seguito di discussioni basate su issue. Una volta avviata una pull request, essa facilita la discussione e la revisione delle modifiche proposte prima che vengano unite al ramo principale (<cite>versione-corrente</cite>).</p></li>
+<li><p><strong>Canale Slack di Developers Italia</strong>. Slack è un'applicazione di messaggistica progettata per le aziende, che collega le persone alle informazioni di cui hanno bisogno. <em>Developers Italia</em> è una comunità aperta basata su contributi e partecipazione da parte di pubbliche amministrazioni, sviluppatori, tecnici, studenti e cittadini. <em>Developers Italia</em> ha avviato un canale Slack a cui [tutti possono unirsi gratuitamente](<a class="reference external" href="https://slack.developers.italia.it/">https://slack.developers.italia.it/</a>), dove puoi conoscere tutte le loro attività e partecipare alle discussioni.</p></li>
+</ul>
+<section id="ringraziamenti">
+<h2><span class="section-number">13.1. </span>Ringraziamenti<a class="headerlink" href="#ringraziamenti" title="Link to this heading">¶</a></h2>
+<p>Vorremmo ringraziare le seguenti persone per i loro commenti,
+preoccupazioni, idee, contributi, alcuni dei quali sostanziali, a questo
+profilo di implementazione e al set iniziale di implementazioni.</p>
+<ul class="simple">
+<li><p>Alen Horvat</p></li>
+<li><p>Amir Sharif</p></li>
+<li><p>Andrea Moro</p></li>
+<li><p>Andrea Prosseda</p></li>
+<li><p>Chris Phillips</p></li>
+<li><p>Chiara Leonardi</p></li>
+<li><p>Elisa Nicolussi Paolaz</p></li>
+<li><p>Emanuele De Cupis</p></li>
+<li><p>Emiliano Vernini</p></li>
+<li><p>Francesco Grauso</p></li>
+<li><p>Francesco Marino</p></li>
+<li><p>Francesco Ventola</p></li>
+<li><p>Gabriella Cefalù</p></li>
+<li><p>Giada Sciarretta</p></li>
+<li><p>Giuseppe De Marco</p></li>
+<li><p>Klaas Wierenga</p></li>
+<li><p>Kristina Yasuda</p></li>
+<li><p>Leif Johansson</p></li>
+<li><p>Lorenzo Cerini</p></li>
+<li><p>Marco Basili</p></li>
+<li><p>Marco Pernpruner</p></li>
+<li><p>Mart Aarma</p></li>
+<li><p>Marta Sciunnach</p></li>
+<li><p>Matteo Fortini</p></li>
+<li><p>Michele Silletti</p></li>
+<li><p>Nicola Saitto</p></li>
+<li><p>Niels van Dijk</p></li>
+<li><p>Oliver Terbu</p></li>
+<li><p>Paul Bastien</p></li>
+<li><p>Pasquale Cerqua</p></li>
+<li><p>Pasquale De Rose</p></li>
+<li><p>Peter Altmann</p></li>
+<li><p>Riccardo Iaconelli</p></li>
+<li><p>Roland Hedberg</p></li>
+<li><p>Rosalia Galeano</p></li>
+<li><p>Salvatore Laiso</p></li>
+<li><p>Salvatore Manfredi</p></li>
+<li><p>Stefania Guerra</p></li>
+<li><p>Stefano Alifuoco</p></li>
+<li><p>Takahiko Kawasaki</p></li>
+<li><p>Thomas Chiozzi</p></li>
+<li><p>Torsten Lodderstedt</p></li>
+<li><p>Valerio Bozzolan</p></li>
+<li><p>Vladimir Duzhinov</p></li>
+<li><p>Zahra Ebadi Ansaroudi</p></li>
+</ul>
+<p>Se qualcuno è stato dimenticato, vi preghiamo di accettare le nostre scuse con la
+richiesta di proporre la modifica di questa pagina tramite una [Pull Request](<a class="reference external" href="https://github.com/italia/eid-wallet-it-docs">https://github.com/italia/eid-wallet-it-docs</a>)
+con una breve descrizione del contributo offerto, durante quale
+evento o canale, e durante quale periodo. Avremo quindi l'opportunità
+di scusarci nuovamente e rimediare il prima possibile, includendovi nell'elenco.</p>
+</section>
 </section>
 
 
@@ -155,6 +233,23 @@
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">13. Come contribuire</a><ul>
+<li><a class="reference internal" href="#ringraziamenti">13.1. Ringraziamenti</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -162,14 +257,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="revocation-lists.html">
-                    <span class="icon">&lt;</span><span>revocation-lists.rst</span></a>
+                <a href="standards.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">12.5. </span>Technical References</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="standards.html"><span>Standards</span><span class="icon">&gt;</span></a>
+                    <a href="open-source.html"><span><span class="section-number">14. </span>Rilasci Open Source</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -177,11 +272,10 @@
 
 
     <div class="footer" role="contentinfo">
-    &#169; Copyright .
-      Last updated on 26/05/2025.
+      Ultimo aggiornamento 29/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
-<p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
+<p id="theme_credit"></p>
   </body>
 </html>
