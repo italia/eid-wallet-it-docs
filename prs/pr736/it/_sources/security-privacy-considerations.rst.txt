@@ -82,7 +82,7 @@ SR-E-20
    * - |check-icon|
      - Il Trust Framework deve garantire che l'identificazione di un Fornitore di Credenziale sia unica e non ambigua. Se ci sono più istanze dello stesso Fornitore di Credenziale che utilizzano lo stesso materiale chiave, il Verificatore di Attestati Elettronici deve fidarsi di tutte le istanze allo stesso modo.
 
-Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziale) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Configurazione dell'Entità OpenID Federation verificata all'interno di una Trust Chain.
+Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziale) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.
 
 SR-E-30
 ^^^^^^^

@@ -14,9 +14,9 @@ Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DE
 Endpoint di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Configurazione dell'Entità del Fornitore di Wallet.
+L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.
 
-Vedere la Sezione :ref:`wallet-provider-entity-configuration:Configurazione dell'Entità del Fornitore di Wallet` per i dettagli tecnici.
+Vedere la Sezione :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` per i dettagli tecnici.
 
 
 Endpoint Nonce della Soluzione Wallet

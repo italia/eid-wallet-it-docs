@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
 
-Configurazione dell'Entità Relying Party
-----------------------------------------
+Entity Configuration Relying Party
+----------------------------------
 
 Secondo la Sezione :ref:`trust:Configurazione della Federazione`, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Configurazione di Entità.
 La Configurazione di Entità delle Relying Party DEVE contenere i parametri definiti nelle Sezioni :ref:`trust:Entity Configuration Foglie e Intermediari` e :ref:`trust:Parametri Comuni delle Entity Configuration`.

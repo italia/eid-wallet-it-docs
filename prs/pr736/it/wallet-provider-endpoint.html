@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">8. Endpoints</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. Endpoint del Fornitore di Wallet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Endpoint del Credential Issuer</a></li>
@@ -168,8 +168,8 @@
 <p>Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DEVE esporre gli endpoint per supportare l'instaurazione della fiducia e le funzionalità essenziali dell'Istanza di Wallet. Questi includono l'endpoint di Federazione <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> che DEVE aderire alla specifica OpenID Federation 1.0 per stabilire in modo affidabile la fiducia con il Fornitore di Wallet, nonché endpoint per la registrazione dell'Istanza di Wallet, la generazione di nonce (richiesta per la registrazione), l'emissione di attestati e la revoca. A parte l'endpoint di Federazione, i dettagli di implementazione degli altri sono lasciati alla discrezione del Fornitore di Wallet.</p>
 <section id="endpoint-di-federazione">
 <h2><span class="section-number">8.1.1. </span>Endpoint di Federazione<a class="headerlink" href="#endpoint-di-federazione" title="Link to this heading">¶</a></h2>
-<p>L'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Configurazione dell'Entità del Fornitore di Wallet.</p>
-<p>Vedere la Sezione <a class="reference internal" href="wallet-provider-entity-configuration.html#configurazione-dell-entita-del-fornitore-di-wallet"><span class="std std-ref">Configurazione dell'Entità del Fornitore di Wallet</span></a> per i dettagli tecnici.</p>
+<p>L'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.</p>
+<p>Vedere la Sezione <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a> per i dettagli tecnici.</p>
 </section>
 <section id="endpoint-nonce-della-soluzione-wallet">
 <h2><span class="section-number">8.1.2. </span>Endpoint Nonce della Soluzione Wallet<a class="headerlink" href="#endpoint-nonce-della-soluzione-wallet" title="Link to this heading">¶</a></h2>
@@ -903,7 +903,7 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 28/05/2025.
+      Ultimo aggiornamento 29/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

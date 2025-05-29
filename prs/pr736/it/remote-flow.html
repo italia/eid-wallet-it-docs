@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="credential-issuance.html">7.1. Emissione di Credenziale Digitale</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="credential-presentation.html">7.2. Presentazione della Credenziale Digitale</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">7.2.1. Flusso Remoto</a></li>
@@ -202,7 +202,7 @@
 <blockquote>
 <div><ol class="loweralpha simple">
 <li><p>verifica la firma dell'Oggetto di Richiesta firmato utilizzando la chiave pubblica identificata nell'intestazione JWT dell'Oggetto di Richiesta. Utilizzando tale riferimento, l'Istanza del Wallet è in grado di selezionare la corretta chiave pubblica della Relying Party per la verifica della firma.</p></li>
-<li><p>verifica che il <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contenuto nell'emittente dell'Oggetto di Richiesta (Relying Party) corrisponda a quello ottenuto al passaggio numero 2 e al parametro <code class="docutils literal notranslate"><span class="pre">sub</span></code> contenuto nella Configurazione dell'Entità della Relying Party all'interno della Catena di Fiducia.</p></li>
+<li><p>verifica che il <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contenuto nell'emittente dell'Oggetto di Richiesta (Relying Party) corrisponda a quello ottenuto al passaggio numero 2 e al parametro <code class="docutils literal notranslate"><span class="pre">sub</span></code> contenuto nella Entity Configuration della Relying Party all'interno della Catena di Fiducia.</p></li>
 <li><p>valuta le Credenziali Elettroniche richieste e verifica l'idoneità della Relying Party nel richiedere queste applicando le politiche relative a quella specifica Relying Party, ottenute con la Catena di Fiducia.</p></li>
 </ol>
 </div></blockquote>
@@ -292,7 +292,7 @@
 <li><p>Quando la scoperta delle capacità dell'Istanza del Wallet non è supportata dalla Relying Party, l'Istanza del Wallet richiede l'Oggetto di Richiesta firmato utilizzando il metodo HTTP GET.</p></li>
 </ul>
 </div></blockquote>
-<p><strong>Passaggio 14 (Risposta URI Request)</strong>: La Relying Party emette l'Oggetto di Richiesta firmandolo utilizzando una delle sue chiavi private crittografiche, le cui parti pubbliche sono state pubblicate all'interno della sua Configurazione dell'Entità (<cite>metadata.openid_credential_verifier.jwks</cite>). L'Istanza del Wallet ottiene l'Oggetto di Richiesta firmato.</p>
+<p><strong>Passaggio 14 (Risposta URI Request)</strong>: La Relying Party emette l'Oggetto di Richiesta firmandolo utilizzando una delle sue chiavi private crittografiche, le cui parti pubbliche sono state pubblicate all'interno della sua Entity Configuration (<cite>metadata.openid_credential_verifier.jwks</cite>). L'Istanza del Wallet ottiene l'Oggetto di Richiesta firmato.</p>
 <blockquote>
 <div><p>Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -1061,7 +1061,7 @@ L'URL della richiesta DOVREBBE includere un parametro con un valore casuale. La 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 28/05/2025.
+      Ultimo aggiornamento 29/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

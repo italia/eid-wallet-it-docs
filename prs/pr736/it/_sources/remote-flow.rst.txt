@@ -38,7 +38,7 @@ Una descrizione di alto livello del flusso remoto, dal punto di vista dell'Utent
   4. *Controlli WI*: l'Istanza del Wallet:
 
     a. verifica la firma dell'Oggetto di Richiesta firmato utilizzando la chiave pubblica identificata nell'intestazione JWT dell'Oggetto di Richiesta. Utilizzando tale riferimento, l'Istanza del Wallet è in grado di selezionare la corretta chiave pubblica della Relying Party per la verifica della firma.
-    b. verifica che il ``client_id`` contenuto nell'emittente dell'Oggetto di Richiesta (Relying Party) corrisponda a quello ottenuto al passaggio numero 2 e al parametro ``sub`` contenuto nella Configurazione dell'Entità della Relying Party all'interno della Catena di Fiducia.
+    b. verifica che il ``client_id`` contenuto nell'emittente dell'Oggetto di Richiesta (Relying Party) corrisponda a quello ottenuto al passaggio numero 2 e al parametro ``sub`` contenuto nella Entity Configuration della Relying Party all'interno della Catena di Fiducia.
     c. valuta le Credenziali Elettroniche richieste e verifica l'idoneità della Relying Party nel richiedere queste applicando le politiche relative a quella specifica Relying Party, ottenute con la Catena di Fiducia.
 
   5. *Consenso dell'Utente*: l'Istanza del Wallet chiede la divulgazione e il consenso dell'Utente mostrando l'identità della Relying Party e gli attributi richiesti.
@@ -152,7 +152,7 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
 
   - Quando la scoperta delle capacità dell'Istanza del Wallet non è supportata dalla Relying Party, l'Istanza del Wallet richiede l'Oggetto di Richiesta firmato utilizzando il metodo HTTP GET.
 
-**Passaggio 14 (Risposta URI Request)**: La Relying Party emette l'Oggetto di Richiesta firmandolo utilizzando una delle sue chiavi private crittografiche, le cui parti pubbliche sono state pubblicate all'interno della sua Configurazione dell'Entità (`metadata.openid_credential_verifier.jwks`). L'Istanza del Wallet ottiene l'Oggetto di Richiesta firmato.
+**Passaggio 14 (Risposta URI Request)**: La Relying Party emette l'Oggetto di Richiesta firmandolo utilizzando una delle sue chiavi private crittografiche, le cui parti pubbliche sono state pubblicate all'interno della sua Entity Configuration (`metadata.openid_credential_verifier.jwks`). L'Istanza del Wallet ottiene l'Oggetto di Richiesta firmato.
 
   Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:
   

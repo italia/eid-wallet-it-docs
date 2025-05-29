@@ -135,7 +135,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
@@ -174,7 +174,7 @@
 </dd>
 <dt><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>:</dt><dd><p>Copre i modelli di dati e i formati delle Credenziali Elettroniche, la gestione del ciclo di vita, la verifica della validità e la struttura del catalogo delle Credenziali.</p>
 </dd>
-<dt><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-delle-credenziali-elettroniche"><span class="std std-ref">Flussi delle Credenziali Elettroniche</span></a>:</dt><dd><p>Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità.</p>
+<dt><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-relativi-agli-attestati-elettronici"><span class="std std-ref">Flussi relativi agli Attestati Elettronici</span></a>:</dt><dd><p>Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità.</p>
 </dd>
 <dt><strong>Sezione</strong> <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a>:</dt><dd><p>Specifiche tecniche per tutti gli endpoint API esposti da ciascun tipo di entità, inclusi gli endpoint di federazione e le integrazioni di servizi specializzati.</p>
 </dd>
@@ -196,7 +196,7 @@
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-delle-credenziali-elettroniche"><span class="std std-ref">Flussi delle Credenziali Elettroniche</span></a>: Flussi di emissione e presentazione per le Credenziali Elettroniche.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-relativi-agli-attestati-elettronici"><span class="std std-ref">Flussi relativi agli Attestati Elettronici</span></a>: Flussi di emissione e presentazione per le Credenziali Elettroniche.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-del-fornitore-di-wallet"><span class="std std-ref">Endpoint del Fornitore di Wallet</span></a>: Specifiche API per la federazione e specifiche per IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>: Requisiti di implementazione per sicurezza e crittografia.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>: Modelli di implementazione specifici per dispositivi mobili.</p></li>
@@ -252,7 +252,7 @@
 <p>I lettori interessati all'implementazione o alla gestione di una Soluzione di <strong>Relying Party</strong> per accettare e verificare le Credenziali Elettroniche dovrebbero concentrarsi sui protocolli di presentazione e sui meccanismi di verifica.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Requisiti completi di implementazione del verificatore e Configurazione dell'Entità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Requisiti completi di implementazione del Verificatore di Credenziali.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-endpoint.html#endpoint-della-relying-party"><span class="std std-ref">Endpoint della Relying Party</span></a>: Specifiche API relative alla federazione e alla verifica.</p></li>
@@ -290,7 +290,7 @@
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziale e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Configurazione dell'Entità e ai flussi di federazione che si applicano a più ruoli.</p>
+<p>Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziale e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Entity Configuration e ai flussi di federazione che si applicano a più ruoli.</p>
 </div>
 </section>
 </section>
@@ -344,7 +344,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 28/05/2025.
+      Ultimo aggiornamento 29/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

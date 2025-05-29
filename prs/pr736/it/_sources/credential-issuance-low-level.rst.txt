@@ -78,7 +78,7 @@ Il seguente diagramma mostra il *flusso di rilascio*.
 Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadati del Credential Issuer come definito nella Sezione :ref:`trust:Meccanismo di Valutazione della Fiducia`.
 
 .. note::
-  **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadati specifici del protocollo. Un esempio non normativo di una risposta dall'endpoint **.well-known/openid-federation** con la **Configurazione dell'Entità** e i **Metadati** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Configurazione dell'Entità Fornitore di Credenziale`.
+  **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadati specifici del protocollo. Un esempio non normativo di una risposta dall'endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadati** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration Fornitore di Credenziale`.
 
 Nel caso del flusso Avviato dall'Issuer, oltre al Controllo della Federazione definito sopra, l'Istanza del Wallet DEVE eseguire i seguenti controlli sui parametri dell'Offerta di Credenziale:
 

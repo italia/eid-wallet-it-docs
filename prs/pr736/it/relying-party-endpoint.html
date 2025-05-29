@@ -137,7 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">8. Endpoints</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">8.1. Endpoint del Fornitore di Wallet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Endpoint del Credential Issuer</a></li>
@@ -168,7 +168,7 @@
 <p>La Relying Party DEVE esporre un endpoint di trust conforme alla specifica OpenID Federation 1.0 Wallet Architecture, facilitando la distribuzione dell'identità e dei metadati della Relying Party. Inoltre, nel caso in cui la Relying Party supporti la presentazione di prossimità, DEVE esporre una serie di endpoint per gestire il ciclo di vita delle Istanze di Relying Party (ad esempio, fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso); i dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.</p>
 <section id="endpoint-di-federazione-della-relying-party">
 <h2><span class="section-number">8.3.1. </span>Endpoint di Federazione della Relying Party<a class="headerlink" href="#endpoint-di-federazione-della-relying-party" title="Link to this heading">¶</a></h2>
-<p>La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code>, secondo la Sezione <a class="reference internal" href="trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. I dettagli tecnici sono forniti nella Sezione <a class="reference internal" href="relying-party-entity-configuration.html#configurazione-dell-entita-relying-party"><span class="std std-ref">Configurazione dell'Entità Relying Party</span></a>.</p>
+<p>La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code>, secondo la Sezione <a class="reference internal" href="trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. I dettagli tecnici sono forniti nella Sezione <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
 </section>
 <section id="endpoint-nonce-della-relying-party">
 <h2><span class="section-number">8.3.2. </span>Endpoint Nonce della Relying Party<a class="headerlink" href="#endpoint-nonce-della-relying-party" title="Link to this heading">¶</a></h2>
@@ -448,7 +448,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 28/05/2025.
+      Ultimo aggiornamento 29/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
