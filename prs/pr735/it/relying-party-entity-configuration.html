@@ -173,19 +173,19 @@
             
   <section id="configurazione-dell-entita-relying-party">
 <h1><span class="section-number">5.3.5. </span>Configurazione dell'Entità Relying Party<a class="headerlink" href="#configurazione-dell-entita-relying-party" title="Link to this heading">¶</a></h1>
-<p>Secondo la Sezione <a class="reference internal" href="trust.html#configurazione-della-federazione"><span class="std std-ref">Configurazione della Federazione</span></a>, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Configurazione di Entità.
-La Configurazione di Entità delle Relying Party DEVE contenere i parametri definiti nelle Sezioni <a class="reference internal" href="trust.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a> e <a class="reference internal" href="trust.html#parametri-comuni-delle-entity-configuration"><span class="std std-ref">Parametri Comuni delle Entity Configuration</span></a>.</p>
-<p>Le Relying Party DEVONO fornire i seguenti tipi di metadati:</p>
+<p>Secondo la Sezione <a class="reference internal" href="trust.html#configurazione-della-federazione"><span class="std std-ref">Configurazione della Federazione</span></a>, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Entity Configuration.
+L'Entity Configuration delle Relying Party DEVE contenere i parametri definiti nelle Sezioni <a class="reference internal" href="trust.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a> e <a class="reference internal" href="trust.html#parametri-comuni-delle-entity-configuration"><span class="std std-ref">Parametri Comuni delle Entity Configuration</span></a>.</p>
+<p>Le Relying Party DEVONO fornire i seguenti tipi di metadata:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><cite>federation_entity</cite></p></li>
-<li><p><cite>openid_credential_verifier</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code></p></li>
 </ul>
 </div></blockquote>
-<p>I metadati <em>federation_entity</em> DEVONO contenere i claim come definito nella Sezione <a class="reference internal" href="trust.html#metadati-delle-foglie-federation-entity"><span class="std std-ref">Metadati delle Foglie federation_entity</span></a>.</p>
+<p>I metadata contenuti in <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> DEVONO contenere i claim come definito nella Sezione <a class="reference internal" href="trust.html#metadati-delle-foglie-federation-entity"><span class="std std-ref">Metadati delle Foglie federation_entity</span></a>.</p>
 <section id="esempio-di-configurazione-di-entita-di-una-relying-party">
 <h2><span class="section-number">5.3.5.1. </span>Esempio di Configurazione di Entità di una Relying Party<a class="headerlink" href="#esempio-di-configurazione-di-entita-di-una-relying-party" title="Link to this heading">¶</a></h2>
-<p>Di seguito un esempio non normativo della richiesta effettuata dall'Istanza del Wallet all'endpoint well-known <em>openid-federation</em> per ottenere la Configurazione di Entità della Relying Party:</p>
+<p>Di seguito un esempio non normativo della richiesta effettuata dall'Istanza del Wallet all'endpoint well-known <code class="docutils literal notranslate"><span class="pre">openid-federation</span></code> per ottenere l'Entity Configuration della Relying Party:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 </pre></div>
