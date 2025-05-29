@@ -8,11 +8,11 @@ Riferimenti Normativi
 
 Decreto Legislativo del 7 marzo 2005, n. 82 e successive modificazioni, recante il 'Codice dell'Amministrazione Digitale'.
 
-[REF_ACCESSIBILITY]
+[RIF_ACCESSIBILITÀ]
 
 Linee guida per l'accessibilità degli strumenti informatici ai sensi dell'articolo 11 della legge del 9 Gennaio 2004 n. 4. Direttiva UE 2019/882 del Parlamento Europeo e del Consiglio, del 17 aprile 2019, sui requisiti di accessibilità per prodotti e servizi.
 
-[GL_DESIGN]
+[LG_DESIGN]
 
 Linee guida per la progettazione dei siti web e dei servizi digitali forniti dalle pubbliche amministrazioni, ai sensi dell'articolo 53, comma 1-ter, del decreto legislativo del 7 marzo 2005, n. 82, e successive modificazioni.
 
