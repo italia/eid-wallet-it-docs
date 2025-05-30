@@ -1,17 +1,17 @@
 .. include:: ../common/common_definitions.rst
 
 
-Soluzione del Fornitore di Credenziale
-======================================
+Soluzione del Fornitore di Attestati Elettronici
+=================================================
 
-Un Fornitore di Credenziale, come Entità Organizzativa partecipante all'ecosistema IT-Wallet, DEVE fornire Soluzioni Tecniche (Soluzione del Fornitore) che combinano software, hardware, servizi, impostazioni e configurazioni per emettere Attestati Elettronici alle Istanze del Wallet dell'Utente in modo sicuro e affidabile.
+Un Fornitore di Attestati Elettronici, come Entità Organizzativa partecipante all'ecosistema IT-Wallet, DEVE fornire Soluzioni Tecniche che combinano software, hardware, servizi, impostazioni e configurazioni per emettere Attestati Elettronici alle Istanze del Wallet dell'Utente in modo sicuro e affidabile.
 
-Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione del Fornitore.
+Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione del Fornitore di Attestati Elettronici.
 
 .. plantuml:: plantuml/ci-solution-architecture.puml
     :width: 99%
     :alt: L'immagine illustra la Soluzione del Fornitore di Credenziale e le sue relazioni e interazioni all'interno dell'ecosistema.
-    :caption: `Architettura di Alto Livello della Soluzione del Fornitore di Credenziale. <https://www.plantuml.com/plantuml/svg/fLPHRzis47xthxYfmve0pRmsIP42Qr7NIJ4FxUh5QVSeqEHP9Yg96aavyORzznqfAfOinH5QlrWYZzzzT_hkU6-DPTgMMGfJZG9pAraACsDArB1GQMcboc6Y-LfQvBRKEFf1vZmj1SAlqxFnz2oUggnGEPryCnezXKjSoHnXCR-UtLmj6iQsB9ZGfsEkiapbRtfsLYgt9-mMZShmv7pCKLkvafnP760jc6LBPeQOfef_7M1M6jHc24-L334Zj0tg0OPVSJkGtG0pAMBEj1XWYNTypV84OvRQ8Vb6yzMgOe3bBKjJV1HoB7DZfVLwyqAQbiQg38pTfcX64o6kKimmjpSiEOhmpgBEMHezWn-NoLIbIh-EdhpoFxVcaCFghLEkjrDQe0whYSPjTBmFMsYPCRrjepv__l9YAGQXFlbbUNPnSTO5DiXLBZhGB_doz7Gr3FgCNPo-UDM5jfeIrOQzc9o-kdW_3FRy_CNf-OHWTxLhrmYCMwKDi5n0dMimMsCnCwCvQgFo8wV0Pn1zfh-8_gjLMAjKo3o1Ivb8ovfTnJZdXb9iyNNaYukyBZncV7LdZogTn4u7BET8a7_v5PY5bIXuUsfWTdDIRJfConBpkYM9sajGVzjFpgnKP1YZ58JuHtW5d5r2PHOrbqK8HFemx3QauR1Zgk6sKrRQjJlFOwDAxQERr4kmy4ic2ekACCZx1i4rDJ1Xzw33klsrlNfjn9GxmYJm6_SA4__gd5qhPK6jm9l1IcaWHhlSmdiKg7qU3ZjlTEfkrB5TIotYWf4Dcbs8_w206xS5yshBCOBVIo6vkuA8pA8iK6-aKNeBxvIGMEdn0oQqpqAYv6EPQVILNhqLMcsaGBtJspoiH6sojH2C8yKT6SxH619xtJlfqN-odmypgXmJcNRDTMxTfIfzpnYz2mz7qbl49bWGlswPDM12qF3l2EXtVq_NC2kjSekvAuBtuN5d5BbyuB8HBUswweFwcBC8gQ9T8QJprioFNMjL9cjWG43LMKadzOfnX2CdDxnZMP4YBDRgreo_e2OLeHb_P3bBwFyQ_oxHsBvUShnBSMZQpGo7ooawze7lHS_lKU8g4HH7DtsjH7mgC9zTddsPpgBAcDcG4OzW-XY2LL1zQGWjhQdKS26qQLSZ0h5kCGvbL6qs9CcyI1P-sPDq6o_Sqs_4B7K4wmvJcJg-h7LubQhRRoMbCTsIu7rXRrqpgTvXxjxxqpU7CNoQNKxfRp7v-25gDa6VKNyhmAsqQsYrvN3pLAAPpowFGUdAZ5wgrQC_Zwyca-Dl3AOGkOYnLgxZDP_1h1Ph51RmfBRuZjPmc61p2klGR4etbIlaMvvYMxqVwcMeYYWBds1HCMkgOmS66XDfh6PLKp6MsPAIG7Qqir6yVGM4YQD1sat07RBXyZ78IxBQtby_Fy4YB0NRBiDG_q2tAD5et2w1L8q9cSgbLPgIUu2T6_U9tNzxtLPZwkCoQrcO4Qat33JTCOGw5uNNCEdqpwv9SyZeoDmfDrXtlFLrfz07JVWY7ENcWPvJEir1erqzuANTKJujBQEzTdEeiHpr0DCk-VuOkwNSVxX3wR7pBShxpUSBIwMuFtS_guMZdPpk9w2-UTePC0yVxol4Xd2zcUZvGWSWs-KIDEM7CgwtXLM9PiLQSb05wWwzBfTEH_DmcofGKKsM9E0iW7Ga_JqHlfCESfz1pmXyZLPBt3I9kU_NOjSFrXtUVBTct3P54t_k7K7RO0-UxOvRU_Dqc8_3AA125JMRQRDvrG6zfVoMMVe_>`_
+    :caption: `Architettura di Alto Livello della Soluzione del Fornitore di Attestati Elettronici. <https://www.plantuml.com/plantuml/svg/fLPHRzis47xthxYfmve0pRmsIP42Qr7NIJ4FxUh5QVSeqEHP9Yg96aavyORzznqfAfOinH5QlrWYZzzzT_hkU6-DPTgMMGfJZG9pAraACsDArB1GQMcboc6Y-LfQvBRKEFf1vZmj1SAlqxFnz2oUggnGEPryCnezXKjSoHnXCR-UtLmj6iQsB9ZGfsEkiapbRtfsLYgt9-mMZShmv7pCKLkvafnP760jc6LBPeQOfef_7M1M6jHc24-L334Zj0tg0OPVSJkGtG0pAMBEj1XWYNTypV84OvRQ8Vb6yzMgOe3bBKjJV1HoB7DZfVLwyqAQbiQg38pTfcX64o6kKimmjpSiEOhmpgBEMHezWn-NoLIbIh-EdhpoFxVcaCFghLEkjrDQe0whYSPjTBmFMsYPCRrjepv__l9YAGQXFlbbUNPnSTO5DiXLBZhGB_doz7Gr3FgCNPo-UDM5jfeIrOQzc9o-kdW_3FRy_CNf-OHWTxLhrmYCMwKDi5n0dMimMsCnCwCvQgFo8wV0Pn1zfh-8_gjLMAjKo3o1Ivb8ovfTnJZdXb9iyNNaYukyBZncV7LdZogTn4u7BET8a7_v5PY5bIXuUsfWTdDIRJfConBpkYM9sajGVzjFpgnKP1YZ58JuHtW5d5r2PHOrbqK8HFemx3QauR1Zgk6sKrRQjJlFOwDAxQERr4kmy4ic2ekACCZx1i4rDJ1Xzw33klsrlNfjn9GxmYJm6_SA4__gd5qhPK6jm9l1IcaWHhlSmdiKg7qU3ZjlTEfkrB5TIotYWf4Dcbs8_w206xS5yshBCOBVIo6vkuA8pA8iK6-aKNeBxvIGMEdn0oQqpqAYv6EPQVILNhqLMcsaGBtJspoiH6sojH2C8yKT6SxH619xtJlfqN-odmypgXmJcNRDTMxTfIfzpnYz2mz7qbl49bWGlswPDM12qF3l2EXtVq_NC2kjSekvAuBtuN5d5BbyuB8HBUswweFwcBC8gQ9T8QJprioFNMjL9cjWG43LMKadzOfnX2CdDxnZMP4YBDRgreo_e2OLeHb_P3bBwFyQ_oxHsBvUShnBSMZQpGo7ooawze7lHS_lKU8g4HH7DtsjH7mgC9zTddsPpgBAcDcG4OzW-XY2LL1zQGWjhQdKS26qQLSZ0h5kCGvbL6qs9CcyI1P-sPDq6o_Sqs_4B7K4wmvJcJg-h7LubQhRRoMbCTsIu7rXRrqpgTvXxjxxqpU7CNoQNKxfRp7v-25gDa6VKNyhmAsqQsYrvN3pLAAPpowFGUdAZ5wgrQC_Zwyca-Dl3AOGkOYnLgxZDP_1h1Ph51RmfBRuZjPmc61p2klGR4etbIlaMvvYMxqVwcMeYYWBds1HCMkgOmS66XDfh6PLKp6MsPAIG7Qqir6yVGM4YQD1sat07RBXyZ78IxBQtby_Fy4YB0NRBiDG_q2tAD5et2w1L8q9cSgbLPgIUu2T6_U9tNzxtLPZwkCoQrcO4Qat33JTCOGw5uNNCEdqpwv9SyZeoDmfDrXtlFLrfz07JVWY7ENcWPvJEir1erqzuANTKJujBQEzTdEeiHpr0DCk-VuOkwNSVxX3wR7pBShxpUSBIwMuFtS_guMZdPpk9w2-UTePC0yVxol4Xd2zcUZvGWSWs-KIDEM7CgwtXLM9PiLQSb05wWwzBfTEH_DmcofGKKsM9E0iW7Ga_JqHlfCESfz1pmXyZLPBt3I9kU_NOjSFrXtUVBTct3P54t_k7K7RO0-UxOvRU_Dqc8_3AA125JMRQRDvrG6zfVoMMVe_>`_
 
 
 .. .. figure:: ../../images/issuer-solution.svg
@@ -21,24 +21,24 @@ Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione de
       
 ..    Issuer Solution High Level Architecture
 
-Requisiti del Fornitore di Credenziale
---------------------------------------
+Requisiti del Fornitore di Attestati Elettronici
+------------------------------------------------
 
-La Soluzione del Fornitore di Credenziale Elettronica DEVE:
+La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
 
-   1. Registrarsi presso l'Autorità di Federazione per ottenere la corretta autorizzazione per l'emissione di specifici tipi di Credenziali.
+   1. Registrarsi presso l'Autorità di Federazione per ottenere la corretta autorizzazione per l'emissione di specifici tipi di Attestati Elettronici.
    2. Implementare meccanismi sicuri di creazione ed emissione che garantiscano integrità e riservatezza.
    3. Comunicare con le Fonti Autentiche attraverso Servizi API sicuri e affidabili per ottenere dati verificati dell'Utente.
    4. Autenticarsi presso le Istanze del Wallet durante l'emissione per dimostrare la propria legittimità.
-   5. Supportare il flusso di emissione immediata e PUÒ supportare l'emissione differita per vari scenari operativi.
+   5. Supportare il flusso di emissione immediata (*immediate flow*) e PUÒ supportare l'emissione differita (*deferred flow*) per vari scenari operativi.
    6. Implementare una gestione appropriata degli errori e notifiche all'Utente per tutti i processi.
-   7. Mantenere tracce di audit complete rispettando le normative sulla privacy.
-   8. Emettere Attestati Elettronici che supportano la Divulgazione Selettiva.
-   9. Rinnovare periodicamente la propria fiducia con la Federazione.
-   10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID) e, se richiesto, all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA).
-   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando i Gestori di Identità Digitale nazionali.
-   12. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare un PID valido dall'Istanza del Wallet dell'Utente tramite `OpenID4VP`_.
-   13. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di vita delle Credenziali`.
+   7. Mantenere log di audit complete rispettando le normative sulla privacy.
+   8. Emettere Attestati Elettronici che supportano la Divulgazione Selettiva (*Selective Disclosure*).
+   9. Rinnovare periodicamente la conformità e l'aderenza alla Federazione IT-Wallet .
+   10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
+   11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazione di Identità Digitale.
+   12. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
+   13. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
    Per il Componente Frontend (se implementato):
 
@@ -51,41 +51,41 @@ Dettagli dei Componenti
 Componente Frontend
 ^^^^^^^^^^^^^^^^^^^
 
-Il Componente Frontend, se fornito dal Fornitore di Credenziale, DEVE fornire un'interfaccia Utente basata sul web per la gestione degli Attestati Elettronici, offrendo funzionalità per:
+Il Componente Frontend, se fornito dal Fornitore di Attestati Elettronici, DEVE fornire un'interfaccia Utente web per la gestione degli Attestati Elettronici, offrendo funzionalità per:
 
-   - Visualizzare e verificare gli Attestati Elettronici emessi e il loro stato.
+   - Visualizzare e verificare gli Attestati Elettronici emessi e il loro stato di validità.
    - Gestire il ciclo di vita degli Attestati Elettronici (ad es., revoca).
-   - Avviare l'emissione attraverso Offerte di Credenziali.
+   - Avviare l'emissione attraverso il meccanismo di *Credential Offer*.
    - Fornire supporto e documentazione all'Utente.
 
-I Fornitori di Credenziali POSSONO fornire servizi aggiuntivi all'Utente attraverso il Componente Frontend. Questi servizi aggiuntivi NON DEVONO essere in conflitto con i requisiti normativi o tecnici definiti in questa specifica tecnica o nelle normative nazionali/europee sulla sicurezza e la privacy.
+I Fornitori di Attestati Elettronici POSSONO fornire servizi aggiuntivi all'Utente attraverso il Componente Frontend. Questi servizi aggiuntivi NON DEVONO essere in conflitto con i requisiti normativi o tecnici definiti in questa specifica tecnica o nelle normative nazionali/europee sulla sicurezza e la privacy.
 
-Componente Fornitore di Credenziale
+Componente Credential Issuer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Seguendo la specifica `OpenID4VCI`_ e il profilo di implementazione nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`, questo componente DEVE:
+Sulla base della specifica `OpenID4VCI`_ e del profilo implementativo fornito nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, questo componente DEVE:
 
    - Emettere Attestati Elettronici alle Istanze del Wallet.
    - Elaborare le richieste di Attestati Elettronici.
    - Ottenere i dati dell'Utente dalle Fonti Autentiche.
-   - Generare Attestati Elettronici correttamente formattati e firmati nei formati supportati (SD-JWT-VC, mDoc-CBOR). Vedere la Sezione :ref:`credential-data-model:Modello di Dati delle Credenziali Elettroniche` per maggiori dettagli.
+   - Generare Attestati Elettronici correttamente formattati e firmati nei formati supportati (SD-JWT-VC, mDoc-CBOR). Vedere la Sezione :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici` per maggiori dettagli.
    - Implementare i protocolli e i flussi di emissione degli Attestati Elettronici.
 
-Server di Autorizzazione
+Authorization Server
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questo componente basato su OAuth2 DEVE:
 
    - Gestire i flussi di autenticazione e autorizzazione.
-   - Gestire token di accesso/refresh e codici di autorizzazione.
+   - Gestire gli Access Token, Refresh e Authorization Code.
    - Validare l'identità dell'Utente confermata dal Componente Relying Party.
 
 Componente Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quando è richiesta l'autenticazione dell'Utente, questo componente DEVE autenticare gli Utenti:
+Questo componente DEVE autenticare gli Utenti, se richiesto:
 
-   - Per l'emissione di PID, tramite Gestori di Identità Digitale nazionali utilizzando OIDC o SAML2.
+   - Per l'emissione di PID, tramite l'infrastruttura nazionale di Identità Digitale.
    - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione della Credenziale Digitale`.
 
 Interfaccia API
@@ -94,21 +94,21 @@ Interfaccia API
 Questo componente DEVE stabilire connessioni sicure con le Fonti Autentiche per:
 
    - Recuperare dati verificati dell'Utente.
-   - Autenticare e autorizzare correttamente le connessioni.
+   - Autenticare e autorizzare correttamente le richieste di connessione.
    - Formattare i dati secondo gli schemi degli Attestati Elettronici.
    - Fornire prove crittografiche dell'autenticazione dell'Utente quando richiesto.
 
 .. note::
-   Per le Fonti Autentiche pubbliche, un Fornitore di Credenziale DEVE utilizzare PDND secondo le regole nelle Sezioni :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`, e :ref:`authentic-source-endpoint:e-Service Catalogo delle Fonti Autentiche PDND`.
+   Per le Fonti Autentiche pubbliche, un Fornitore di Attestati Elettronici DEVE utilizzare PDND secondo quanto definito nelle Sezioni :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`, e :ref:`authentic-source-endpoint:Catalogo degli e-Service PDND delle Fonti Autentiche`.
 
-Gestione del Ciclo di Vita delle Credenziali
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Gestione del Ciclo di Vita degli Attestati Elettronici
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questo componente DEVE gestire:
 
-   - Gestione dello stato (mantenimento e aggiornamento della validità).
-   - Processi di revoca (implementazione di meccanismi per revocare o sospendere gli Attestati Elettronici), secondo la Sezione :ref:`credential-revocation:Ciclo di vita delle Credenziali`.
-   - Flussi di rinnovo (gestione dei processi di rinnovo degli Attestati Elettronici), secondo i meccanismi definiti nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`.
+   - Lo stato di validità degli Attestati Elettronici (ad esempio aggiornamenti, revoche o sospensioni).
+   - I processi e i flussi di revoca (implementazione di meccanismi per revocare o sospendere gli Attestati Elettronici), secondo quando definito nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
+   - I processi e i flussi di rinnovo degli Attestati Elettronici, secondo i meccanismi definiti nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`.
 
 Componente Trust & Security
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,22 +116,22 @@ Componente Trust & Security
 Questo componente DEVE garantire la sicurezza attraverso:
 
    - Gestione delle chiavi e dei certificati.
-   - Registrazione degli audit.
+   - Log di audit.
    - Monitoraggio della sicurezza e risposta agli incidenti.
    - Conformità ai requisiti di sicurezza della Federazione IT-Wallet.
 
 Modelli di Interazione
 ----------------------
 
-La Soluzione del Fornitore di Credenziale supporta questi modelli di interazione:
+La Soluzione del Fornitore degli Attestati Elettronici supporta questi modelli di interazione:
 
    1. **Utente verso Frontend**: Interazioni basate sul web per la gestione degli Attestati Elettronici.
-   2. **Frontend verso Fornitore di Credenziale**: Converte le richieste dell'utente in messaggi del protocollo OpenID4VCI.
-   3. **Istanza del Wallet verso Fornitore di Credenziale**: Interazioni dirette basate sul protocollo seguendo il flusso di emissione.
-   4. **Relying Party verso Gestori di Identità**: Interazioni di autenticazione con i sistemi nazionali eID o verifica PID.
+   2. **Frontend verso Fornitore degli Attestati Elettronici**: Converte le richieste dell'Utente in messaggi del protocollo OpenID4VCI.
+   3. **Istanza del Wallet verso Fornitore degli Attestati Elettronici**: Interazioni dirette basate sul protocollo seguendo il flusso di emissione.
+   4. **Relying Party verso Gestori di Identità**: Interazioni di autenticazione con i sistemi nazionali di Identità Digitale o verifica del PID.
    5. **Interfaccia API verso Fonti Autentiche**: Chiamate API sicure per recuperare dati verificati dell'Utente.
 
-Tutte le interazioni devono seguire le considerazioni di sicurezza nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`, inclusa la corretta gestione di token, prove e materiali crittografici.
+Tutte le interazioni devono seguire le considerazioni di sicurezza nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, inclusa la corretta gestione di token e materiali crittografici.
 
 .. include:: credential-issuer-entity-configuration.rst
 .. include:: credential-issuer-metadata.rst

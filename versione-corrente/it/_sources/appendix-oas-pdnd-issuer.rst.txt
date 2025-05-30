@@ -1,9 +1,9 @@
 
 
-Credential Issuer PDND OpenAPI Specification 
---------------------------------------------
+Specifica OpenAPI del Credential Issuer PDND
+----------------------------------------------
 
-Di seguito è riportata la specifica OpenAPI completa per i servizi elettronici del Fornitore di Credenziale PDND:
+Di seguito è riportata la specifica Open API completa per i servizi elettronici del Credential Issuer PDND:
 
 .. literalinclude:: ./oas3/OAS3-PDND-Issuer.yaml
     :language: yaml

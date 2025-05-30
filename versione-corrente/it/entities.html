@@ -137,12 +137,12 @@
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Entità</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">5.1. Soluzione Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Credenziale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Soluzione di Relying Party</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Fonti Autentiche</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
@@ -176,7 +176,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution-components.html">5.1.2. Componenti della Soluzione Wallet</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#backend-del-wallet">5.1.2.1. Backend del Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#istanza-del-wallet">5.1.2.2. Istanza del Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#unita-di-wallet">5.1.2.2. Unità di Wallet</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution-components.html#modelli-di-interazione-della-soluzione-wallet">5.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
@@ -202,26 +202,26 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Credenziale</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#requisiti-del-fornitore-di-credenziale">5.2.1. Requisiti del Fornitore di Credenziale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#requisiti-del-fornitore-di-attestati-elettronici">5.2.1. Requisiti del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#dettagli-dei-componenti">5.2.2. Dettagli dei Componenti</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#componente-frontend">5.2.2.1. Componente Frontend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#componente-fornitore-di-credenziale">5.2.2.2. Componente Fornitore di Credenziale</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#server-di-autorizzazione">5.2.2.3. Server di Autorizzazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#componente-credential-issuer">5.2.2.2. Componente Credential Issuer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#authorization-server">5.2.2.3. Authorization Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#componente-relying-party">5.2.2.4. Componente Relying Party</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#interfaccia-api">5.2.2.5. Interfaccia API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#gestione-del-ciclo-di-vita-delle-credenziali">5.2.2.6. Gestione del Ciclo di Vita delle Credenziali</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#gestione-del-ciclo-di-vita-degli-attestati-elettronici">5.2.2.6. Gestione del Ciclo di Vita degli Attestati Elettronici</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#componente-trust-security">5.2.2.7. Componente Trust &amp; Security</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#modelli-di-interazione">5.2.3. Modelli di Interazione</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#entity-configuration-fornitore-di-credenziale">5.2.4. Entity Configuration Fornitore di Credenziale</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#esempio-di-entity-configuration-di-un-fornitore-di-attestati-elettronici-di-attributi-qualificati">5.2.4.1. Esempio di Entity Configuration di un Fornitore di Attestati Elettronici di Attributi (Qualificati)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#entity-configuration-del-fornitore-di-attestati-elettronici">5.2.4. Entity Configuration del Fornitore di Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#esempio-di-entity-configuration-di-un-fornitore-di-attestati-elettronici-di-attributi">5.2.4.1. Esempio di Entity Configuration di un Fornitore di Attestati Elettronici di Attributi</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#metadati-del-fornitore-di-credenziale">5.2.5. Metadati del Fornitore di Credenziale</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadati-per-oauth-authorization-server">5.2.5.1. Metadati per oauth_authorization_server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadati-per-openid-credential-issuer">5.2.5.2. Metadati per openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#metadata-del-fornitore-di-attestati-elettronici">5.2.5. Metadata del Fornitore di Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadata-per-oauth-authorization-server">5.2.5.1. Metadata per oauth_authorization_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadata-per-openid-credential-issuer">5.2.5.2. Metadata per openid_credential_issuer</a></li>
 </ul>
 </li>
 </ul>

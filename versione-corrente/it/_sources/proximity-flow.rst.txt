@@ -33,7 +33,7 @@ Le Istanze di Relying Party e Wallet registrate nell'ecosistema IT-Wallet DEVONO
 - *Device Engagement* basato su QR Code.
 - *Autenticazione dell'Istanza RP* seguendo i meccanismi definiti nell'`ISO18013-5`_ per l'*autenticazione del lettore*.
 - Meccanismo di *Recupero del Dispositivo* basato su Bluetooth Low Energy (BLE) per la sottofase di comunicazione. Il meccanismo di *Recupero del Server* NON DEVE essere supportato.
-- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR` per maggiori dettagli).
+- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per maggiori dettagli).
 - *Validazione dell'Istanza del Wallet* attraverso l'Attestato di Wallet.
 
 
@@ -165,7 +165,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
        - **itemsRequest**. Struttura `ItemsRequest` codificata in CBOR, formattata come:
 
-         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR`.
+         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`.
 
          - **nameSpaces** *(map)*. Una mappa di identificatori di namespace per i *DataElements* richiesti.
 
@@ -226,7 +226,7 @@ Ogni documento in **documents** DEVE essere conforme alla seguente struttura e D
      - *(tstr)*. Identificatore del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``.
 
    * - **issuerSigned**
-     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi di dati firmati dal Fornitore di Credenziale, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR`.
+     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi di dati firmati dal Fornitore di Credenziale, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`.
 
    * - **deviceSigned**
      - *(bstr)*. Contiene la struttura `DeviceNameSpaces` (elementi di dati firmati dall'Istanza del Wallet), e la struttura `deviceAuth`, che include i dati di autenticazione firmati dall'Istanza del Wallet. Vedi la tabella sottostante per i dettagli.
@@ -278,4 +278,4 @@ Quando una sessione viene terminata, l'Istanza del Wallet e l'Istanza di Relying
 - Chiusura del canale di comunicazione utilizzato per il recupero dei dati.
 
 .. note::
-  Vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR` per il significato degli acronimi dei tipi CBOR.
+  Vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per il significato degli acronimi dei tipi CBOR.

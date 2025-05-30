@@ -12,10 +12,10 @@ Endpoint del Credential Issuer
 Endpoint di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-I Credential Issuer DEVONO fornire una Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`credential-issuer-entity-configuration:Entity Configuration Fornitore di Credenziale`.
+I Credential Issuer DEVONO fornire una Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, in accordo alla Sezione :ref:`trust:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
 
-Endpoint di Emissione delle Credenziali
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Endpoint relativi all'Emissione delgli Attestati Elettronici
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: credential-issuance-endpoint.rst
 
@@ -24,21 +24,21 @@ Catalogo e-Service PDND del Credential Issuer
 
 I Credential Issuer DEVONO fornire i seguenti e-service attraverso PDND per:
 
-  - gestire le notifiche di disponibilità dei dati e gli aggiornamenti degli attributi provenienti da una Fonte Autentica;
-  - revocare le Credenziali Elettroniche emesse per un'Istanza del Wallet revocata
-  - fornire statistiche sulle Credenziali emesse
+  - gestire le notifiche relative alla disponibilità dei dati e gli aggiornamenti degli attributi provenienti da una Fonte Autentica;
+  - revocare gli Attestati Elettronici emessi per un'Istanza del Wallet revocata
+  - fornire statistiche sugli Attestati Elettronici emessi
 
 .. only:: html
 
   .. note::
-    Una Specifica OpenAPI completa è disponibile :raw-html:`<a href="OAS3-PDND-Issuer.html" target="_blank">qui</a>`.
+    La specifica OpenAPI completa è disponibile :raw-html:`<a href="OAS3-PDND-Issuer.html" target="_blank">qui</a>`.
 
 .. only:: latex
 
   .. note::
-    Una Specifica OpenAPI completa è disponibile :ref:`appendix-oas-pdnd-issuer:Credential Issuer PDND OpenAPI Specification`.
+    La specifica OpenAPI completa è disponibile :ref:`appendix-oas-pdnd-issuer:Specifica OpenAPI del Credential Issuer PDND`.
 
-Notifica Credenziale Disponibile
+Notify Available Credential
 """"""""""""""""""""""""""""""""
 
 .. list-table::
@@ -47,14 +47,14 @@ Notifica Credenziale Disponibile
   :stub-columns: 1
 
   * - **Descrizione**
-    - Questo servizio informa gli Utenti quando una specifica Credenziale è diventata
-      disponibile per essere inserita nel Wallet
+    - Questo servizio informa gli Utenti quando uno specifico Attestato Elettronico è
+      disponibile per essere inserito nel Wallet
   * - **Fornitore**
-    - Fornitore di Credenziale
+    - Fornitore di Attestato Elettronico
   * - **Consumatore**
     - Fonte Autentica
 
-Notifica Aggiornamento Credenziale
+Notify Update Credential
 """"""""""""""""""""""""""""""""""
 
 .. list-table::
@@ -65,14 +65,14 @@ Notifica Aggiornamento Credenziale
   * - **Descrizione**
     - Il servizio è progettato per ricevere dalla Fonte Autentica (AS), tramite PDND,
       la notifica di un cambiamento di stato e/o valore di un attributo specifico (es. MDL)
-      con cui è associato un documento digitale emesso dal Fornitore di Credenziale.
+      a cui è associato un documento digitale emesso dal Fornitore di Attestato Elettronico.
   * - **Fornitore**
-    - Fornitore di Credenziale
+    - Fornitore di Attestato Elettronico
   * - **Consumatore**
     - Fonte Autentica
 
 
-Notifica Revoca Istanza del Wallet
+Notify Wallet Instance Revocation
 """"""""""""""""""""""""""""""""""
 
 .. list-table::
@@ -81,14 +81,14 @@ Notifica Revoca Istanza del Wallet
   :stub-columns: 1
   
   * - **Descrizione**
-    - Questo servizio revoca tutte le Credenziali Elettroniche associate a uno specifico Utente.
+    - Questo servizio revoca tutti gli Attestati Elettronici associati a uno specifico Utente.
   * - **Fornitore**
-    - Fornitore di Credenziale
+    - Fornitore di Attestato Elettronico
   * - **Consumatore**
     - Fornitore di Wallet
 
 
-Ottieni Statistiche
+Get Statistics
 """""""""""""""""""
 
 .. list-table::
@@ -97,8 +97,8 @@ Ottieni Statistiche
   :stub-columns: 1
 
   * - **Descrizione**
-    - Questo servizio restituisce dati statistici sulle Credenziali Elettroniche emesse.
+    - Questo servizio restituisce dati statistici sugli Attestati Elettronici emessi.
   * - **Fornitore**
-    - Fornitore di Credenziale
+    - Fornitore di Attestati Elettronici
   * - **Consumatore**
     - Terza Parte Autorizzata

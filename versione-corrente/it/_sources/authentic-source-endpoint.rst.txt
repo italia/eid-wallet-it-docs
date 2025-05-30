@@ -7,22 +7,22 @@
 Endpoint delle Fonti Autentiche
 -------------------------------
 
-e-Service Catalogo delle Fonti Autentiche PDND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Catalogo degli e-Service PDND delle Fonti Autentiche
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le Fonti Autentiche pubbliche DEVONO fornire il seguente e-service attraverso PDND per fornire al Fornitore di Credenziale gli attributi dell'Utente necessari per il rilascio di un Attestato Elettronico.
+Le Fonti Autentiche pubbliche DEVONO realizzare e rendere disponibile tramite PDND il seguente e-service al fine di rilasciare al Fornitore di Attestati Elettronici gli attributi dell'Utente necessari per l'emissione di un Attestato Elettronico.
 
 .. only:: html
 
   .. note::
-    Una specifica OpenAPI di esempio è disponibile :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">qui</a>`.
+    La specifica OpenAPI completa è disponibile :raw-html:`<a href="OAS3-PDND-AS.html" target="_blank">qui</a>`.
 
 .. only:: latex
 
   .. note::
-    Una specifica OpenAPI di esempio è disponibile :ref:`appendix-oas-pdnd-as:Specifica OpenAPI della Fonte Autentica PDND`.
+    La specifica OpenAPI completa è disponibile :ref:`appendix-oas-pdnd-as:Specifica OpenAPI della Fonte Autentica PDND`.
 
-Ottieni Attributi dell'Utente
+Get Attribute Claims
 """""""""""""""""""""""""""""
 
 .. list-table::
@@ -31,8 +31,8 @@ Ottieni Attributi dell'Utente
   :stub-columns: 1
 
   * - **Descrizione**
-    - Questo servizio fornisce al Fornitore di Credenziale tutti gli attributi dell'Utente necessari per il rilascio di un Attestato Elettronico.
-  * - **Fornitore**
+    - Questo servizio fornisce al Fornitore di Attestati Elettronici tutti gli attributi dell'Utente necessari per il rilascio di un Attestato Elettronico.
+  * - **Emettitore**
     - Fonte Autentica
-  * - **Consumatore**
-    - Fornitore di Credenziale
+  * - **Fruitore**
+    - Fornitore di Attestati Elettronici

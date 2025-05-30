@@ -4,17 +4,7 @@
 Digital Credential Issuance
 ============================
 
-This section describes the PID and (Q)EAAs issuance flow with a high level of security.
-The relevant entities and interfaces involved in the issuance flow are:
-
-    - *Wallet Provider*,
-    - *Wallet Solution*,
-    - *Wallet Instance*,
-    - *PID Provider*,
-    - *National Identity Provider*,
-    - *(Q)EAA Provider*,
-    - *Authentic Source*.
-  
+This section describes the PID and (Q)EAAs issuance flow with a high level of security.  
 
 
 .. toctree::

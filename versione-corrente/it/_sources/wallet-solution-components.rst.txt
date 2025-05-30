@@ -46,8 +46,8 @@ Questo componente DEVE garantire la sicurezza attraverso:
 
 
 
-Istanza del Wallet
-------------------
+Unità di Wallet
+---------------
 
 Interfaccia Utente
 ^^^^^^^^^^^^^^^^^^
@@ -69,7 +69,7 @@ In base allo stato dell'Istanza del Wallet e alla richiesta dell'Utente, questo 
 Componente Issuer
 ^^^^^^^^^^^^^^^^^
 
-Seguendo la specifica `OpenID4VCI`_ e il profilo di implementazione nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`, questo componente DEVE implementare i protocolli e i flussi di emissione delle Credenziali Elettroniche per richiedere Credenziali Elettroniche ai Credential Issuer.
+Seguendo la specifica `OpenID4VCI`_ e il profilo di implementazione nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, questo componente DEVE implementare i protocolli e i flussi di emissione delle Credenziali Elettroniche per richiedere Credenziali Elettroniche ai Credential Issuer.
 
 Componente di Presentazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

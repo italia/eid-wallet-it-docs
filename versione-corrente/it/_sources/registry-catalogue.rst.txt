@@ -4,13 +4,13 @@
 Catalogo degli Attestati Elettronici
 ====================================
 
-Il Catalogo degli Attestati Elettronici è il registro di tutti gli Attestati Elettronici disponibili riconosciuti all'interno dell'ecosistema IT-Wallet. È pubblicato dall'Ancora di Fiducia ed è pubblicamente disponibile per tutte le Entità attraverso un endpoint di Federazione specializzato. Funge da punto di riferimento unico per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo degli Attestati Elettronici.
+Il Catalogo degli Attestati Elettronici è il registro di tutti gli Attestati Elettronici disponibili riconosciuti all'interno dell'ecosistema IT-Wallet. È pubblicato dal Trust Anchor ed è pubblicamente disponibile per tutte le Entità attraverso un endpoint di Federazione specializzato. Funge da punto di riferimento unico per tutti gli attori coinvolti nel processo di emissione, verifica e utilizzo degli Attestati Elettronici.
 
 Il Catalogo degli Attestati Elettronici mira a:
 
-  1. Facilitare la scoperta degli Attestati Elettronici per gli Utenti.
+  1. Facilitare la *discovery* degli Attestati Elettronici per gli Utenti.
   2. Standardizzare la descrizione tecnica e funzionale degli Attestati Elettronici.
-  3. Abilitare l'interoperabilità tra diversi Fornitori di Credenziali e Relying Party.
+  3. Abilitare l'interoperabilità tra diversi Fornitori di Attestati Elettronici e Relying Party.
   4. Semplificare il processo di integrazione per i Fornitori di Wallet e le Relying Party.
   5. Garantire la fiducia nell'ecosistema attraverso informazioni certificate.
   6. Fornire trasparenza sull'ecosistema degli Attestati Elettronici disponibili.
@@ -18,13 +18,13 @@ Il Catalogo degli Attestati Elettronici mira a:
 
 Le principali Entità coinvolte nel Catalogo degli Attestati Elettronici sono:
 
-  - **Ancora di Fiducia**: Gestisce e mantiene il Catalogo degli Attestati Elettronici, garantendone l'autenticità e l'integrità.
-  - **Organismo di Supervisione**: Interagisce con l'Ancora di Fiducia e il Catalogo degli Attestati Elettronici per monitorare la fase di registrazione garantendo sicurezza e privacy secondo le normative nazionali/europee, mantenendo tutte le informazioni affidabili e aggiornate.
+  - **Trust Anchor**: Gestisce e mantiene il Catalogo degli Attestati Elettronici, garantendone l'autenticità e l'integrità.
+  - **Organismo di Supervisione**: Interagisce con il Trust Anchor e il Catalogo degli Attestati Elettronici per monitorare la fase di registrazione garantendo sicurezza e privacy secondo le normative nazionali/europee, mantenendo tutte le informazioni affidabili e aggiornate.
   - **Fornitori di Attestati Elettronici**: Le entità autorizzate a emettere Attestati Elettronici, registrandoli nel Catalogo.
   - **Relying Party**: Utilizzano il Catalogo degli Attestati Elettronici per raccogliere tutte le informazioni necessarie sugli Attestati Elettronici che intendono richiedere durante la fase di presentazione.
-  - **Fornitori di Wallet**: Accedono al Catalogo degli Attestati Elettronici per identificare gli Attestati Elettronici disponibili e per recuperare tutte le informazioni necessarie per integrarli nelle loro Soluzioni Wallet.
-  - **Utenti**: I cittadini che utilizzano indirettamente il Catalogo degli Attestati Elettronici attraverso le loro Istanze del Wallet per scoprire e richiedere Attestati Elettronici.
-  - **Fonti Autentiche**: Le Entità che detengono i dati originali attestati negli Attestati Elettronici. Forniscono supporto ai Fornitori di Credenziali nella registrazione degli Attestati Elettronici nel Catalogo.
+  - **Fornitori di Wallet**: Accedono al Catalogo degli Attestati Elettronici per identificare gli Attestati Elettronici disponibili e per recuperare tutte le informazioni necessarie per integrarli nelle loro Soluzioni Tecniche.
+  - **Utenti**: Gli Utenti che utilizzano indirettamente il Catalogo degli Attestati Elettronici attraverso le loro Istanze del Wallet per visualizzare e richiedere Attestati Elettronici.
+  - **Fonti Autentiche**: Le Entità che detengono i dati originali attestati negli Attestati Elettronici. Forniscono supporto ai Fornitori di Attestati Elettronici nella registrazione degli stessi nel Catalogo.
 
 
 .. _fig_catalogue.svg:
@@ -52,34 +52,34 @@ La seguente tabella riassume le principali informazioni che DEVONO essere fornit
    * - Metadati dell'Attestato Elettronico
      - Informazioni identificative essenziali e caratteristiche dell'Attestato Elettronico, tra cui:
 
-       - **Identificatore univoco della Credenziale**: Una stringa identificativa univoca di ciascun Attestato Elettronico.
-       - **Metodi di autenticazione dell'Utente**: Meccanismi di autenticazione dell'Utente utilizzati per richiedere l'Attestato Elettronico, se richiesti dai Fornitori di Credenziali o dalle Fonti Autentiche.
+       - **Identificatore univoco dell'Attestato Elettronico**: Una stringa che identificativa univocamente il tipo di Attestato Elettronico.
+       - **Metodi di autenticazione dell'Utente**: Meccanismi di autenticazione dell'Utente utilizzati per richiedere l'Attestato Elettronico, se richiesti dai Fornitori di Attestati Elettronici o dalle Fonti Autentiche.
        - **Livello minimo di Garanzia**: Il Livello di Garanzia minimo richiesto per l'affidabilità dell'Attestato Elettronico. DEVE tenere conto del Livello di Garanzia dell'autenticazione dell'Utente, quando applicabile, e dell'Istanza del Wallet.
        - **Caratteristiche di visualizzazione aggiuntive**: Specifiche visive e di formattazione, come un'immagine di riferimento di sfondo, logo, ecc.
    * - Fornitori di Attestati Elettronici
      - Dettagli sull'organizzazione autorizzata a emettere l'Attestato Elettronico, come:
 
-       - **Identificatori del Fornitore di Credenziale**: Identificatore univoco per il fornitore dell'Attestato Elettronico.
-       - **Tipo di Fornitore di Credenziale**: Classificazione come Fornitore di Attestati Elettronici di Dati di Identificazione Personale, Fornitore di Attestati Elettronici di Attributi (Qualificati) o Fornitore di Attestati Elettronici Pubblici di Attributi.
-       - **Informazioni aggiuntive**: Dettagli organizzativi inclusi nome, codice e informazioni di contatto.
+       - **Identificatori del Fornitore di Attestati Elettronici**: Identificativo univoco del Fornitore dell'Attestato Elettronico.
+       - **Tipologia di Fornitore di Attestati Elettronici**: Classificazione come ad esempio Fornitore di Attestati Elettronici di Dati di Identificazione Personale, Fornitore di Attestati Elettronici di Attributi (Qualificati) o Fornitore di Attestati Elettronici Pubblici di Attributi.
+       - **Informazioni aggiuntive**: Dettagli amministrativi come la denominazione, un codice amministrativo e informazioni di contatto.
    * - Fonti Autentiche
-     - Informazioni sulla fonte autorevole dei dati, come:
+     - Informazioni sulla Fonte Autentica dei dati, come:
 
-       - **Identificatori della Fonte Autentica**: Identificatore univoco per la fonte autorevole dell'Attestato Elettronico.
-       - **Tipo di Fonte Autentica**: Classificazione come entità Pubblica o Privata.
-       - **Informazioni aggiuntive**: Dettagli organizzativi inclusi nome, codice e informazioni di contatto.
+       - **Identificativi della Fonte Autentica**: Identificativo univoco della Fonte Autentica dell'Attestato Elettronico.
+       - **Tipologia di Fonte Autentica**: Classificazione come Entità Pubblica o Privata.
+       - **Informazioni aggiuntive**: Dettagli amministrativi come la denominazione, un codice amministrativo e informazioni di contatto.
    * - Specifiche Tecniche
      - Dettagli tecnici, tra cui:
 
-       - **Schemi dell'Attestato Elettronico**: Specifiche di framework e struttura.
+       - **Schemi dell'Attestato Elettronico**: Specifiche relative a framework e struttura dati.
        - **Formati dell'Attestato Elettronico**: Standard di formato dati e codifica.
        - **Policy di autenticazione**: Metodi e requisiti per la verifica.
    * - Termini di Utilizzo
      - Condizioni e limitazioni per l'utilizzo dell'Attestato Elettronico, come:
 
        - **Validità della Credenziale**: Periodo di tempo durante il quale l'Attestato Elettronico è valido e, quando applicabile, meccanismi e dettagli tecnici per invalidare gli Attestati Elettronici (metodi di revoca/sospensione).
-       - **Policy di restrizione**: Se applicabile, regole che governano l'uso dell'Attestato Elettronico e limitazioni secondo le normative nazionali. È utilizzata, ad esempio, per specificare se solo Entità di tipo legale specifico, ad esempio Fornitore di Attestati Elettronici Pubblici di Attributi e Soluzioni Wallet pubbliche, sono autorizzate a emettere e ottenere l'Attestato Elettronico.
-       - **Policy di prezzo**: Informazioni relative ai modelli di prezzo dell'Attestato Elettronico, come `free`, `issuance_based`, `verification_based`.
+       - **Policy di restrizione**: Se applicabile, regole che governano l'uso dell'Attestato Elettronico e limitazioni secondo le normative nazionali. È utilizzata, ad esempio, per specificare se solo tipologie specifiche di Entità autorizzate, ad esempio Fornitore di Attestati Elettronici Pubblici di Attributi e Soluzioni Wallet pubbliche, possono emettere e ottenere l'Attestato Elettronico.
+       - **Pricing Policy**: Informazioni relative ai modelli tariffari dell'Attestato Elettronico, come `free`, `issuance_based`, `verification_based`.
        - **Scopi dell'Attestato Elettronico**: Informazioni relative agli scopi consentiti per cui l'Attestato Elettronico può essere utilizzato. Ogni tipo di Attestato Elettronico può essere utilizzato per più scopi.
    * - Attributi dell'Utente e Riferimenti Tassonomici
      - Informazioni sul contenuto e sulla classificazione:
@@ -88,7 +88,7 @@ La seguente tabella riassume le principali informazioni che DEVONO essere fornit
        - **Riferimenti tassonomici strutturati**: Sistemi di classificazione e vocabolari controllati utilizzati.
 
 
-L'Ancora di Fiducia DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo l'affidabilità, l'autenticità e l'integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, gli attributi e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalogue``.
+Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo l'affidabilità, l'autenticità e l'integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, gli attributi e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalogue``.
 
 Categorie di Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -106,38 +106,38 @@ Gli Attestati Elettronici riconosciuti all'interno dell'ecosistema IT-Wallet son
    * - *IDENTITY*
      - * PERSON_IDENTIFICATION
        * ELECTRONIC_RESIDENCY
-     - Credenziali che stabiliscono o verificano l'identità di una persona, inclusi documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.
+     - Attestati Elettronici che stabiliscono o verificano l'identità di una persona, inclusi documenti di identità fisici e digitali legalmente riconosciuti dalle leggi nazionali.
    * - *AUTHORIZATION*
      - * DRIVING_LICENSE
        * PROFESSIONAL_LICENSE
        * TRAVEL_DOCUMENT
        * ACCESS_PERMIT
-     - Credenziali che concedono permessi specifici, diritti o autorizzazioni per svolgere determinate attività o accedere ad aree ristrette.
+     - Attestati Elettronici che concedono permessi specifici, diritti o autorizzazioni per svolgere determinate attività o accedere ad aree ristrette.
    * - *EDUCATION*
      - * ACADEMIC_DEGREE
        * CERTIFICATE
        * TRAINING_RECOGNITION
-     - Credenziali relative a risultati educativi, qualifiche e riconoscimento di formazione professionale.
+     - Credenziali relative a titoli di studio, qualifiche e certificati professionali.
    * - *HEALTH*
      - * INSURANCE_CARD
        * DISABILITY_CARD
        * MEDICAL_PRESCRIPTION
-     - Credenziali relative all'accesso all'assistenza sanitaria, alla storia medica, alla copertura assicurativa e ai documenti relativi alla salute.
+     - Attestati Elettronici relativi all'accesso all'assistenza sanitaria, alla storia medica, alla copertura assicurativa e ai documenti relativi alla salute.
    * - *FINANCIAL*
      - * INCOME_CERTIFICATE
        * TAX_STATEMENT
        * FAMILY_ECONOMIC_STATUS
-     - Credenziali che attestano lo stato finanziario, i livelli di reddito, la tassazione o la situazione economica di individui o famiglie.
+     - Attestati Elettronici che attestano lo stato finanziario, i livelli di reddito, la tassazione o la situazione economica di individui o famiglie.
    * - *MEMBERSHIP*
      - * ASSOCIATION
        * LOYALTY_PROGRAM
        * CLUB_MEMBERSHIP
-     - Credenziali che confermano l'affiliazione a organizzazioni, la partecipazione a programmi o lo stato di appartenenza.
+     - Attestati Elettronici che confermano l'affiliazione a organizzazioni, la partecipazione a programmi o lo stato di appartenenza.
    * - *ATTESTATION*
      - * PUBLIC_STATEMENT
        * CIVIL_STATUS
        * CERTIFICATION
-     - Credenziali che forniscono dichiarazioni ufficiali, conferme di stato o certificazioni rilasciate dalle autorità.
+     - Attestati Elettronici che forniscono dichiarazioni ufficiali, conferme di stato o certificazioni rilasciate dalle autorità.
 
 
 Struttura del Catalogo degli Attestati Elettronici
@@ -155,16 +155,16 @@ Il contenuto del Catalogo degli Attestati Elettronici è protetto in un JWS che 
      - Descrizione
      - Riferimento
    * - **typ**
-     - OBBLIGATORIO. DEVE essere impostato a ``JOSE``.
+     - OBBLIGATORIO. DEVE essere valorizzato con la stringa ``JOSE``.
      - [:rfc:`7515` Sezione 4.1.9].
    * - **alg**
-     - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Algoritmi Crittografici <algorithms:Algoritmi Crittografici>` e NON DEVE essere impostato a ``none`` o con un identificatore di algoritmo simmetrico (MAC).
+     - OBBLIGATORIO. Un identificativo di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Algoritmi Crittografici <algorithms:Algoritmi Crittografici>` e NON DEVE essere impostato a ``none`` o con un identificativo di algoritmo simmetrico (MAC).
      - [:rfc:`7515` Sezione 4.1.1].
    * - **kid**
-     - OBBLIGATORIO. Identificatore univoco della chiave pubblica.
+     - OBBLIGATORIO. Identificativo univoco della chiave pubblica.
      - [:rfc:`7515` Sezione 4.1.4].
    * - **x5c**
-     - OPZIONALE. Contiene il Certificato di chiave pubblica X.509 o la catena di Certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWS. Quando il valore del parametro dell'header `kid` è presente, DEVE riferirsi alla stessa chiave pubblica crittografica della foglia utilizzata con il Certificato X.509.
+     - OPZIONALE. Contiene il Certificato di chiave pubblica X.509 o la catena di Certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWS. Quando il valore del parametro dell'header `kid` è presente, DEVE riferirsi alla stessa chiave pubblica crittografica della foglia attestata dal Certificato X.509.
      - [:rfc:`7515` Sezione 4.1.6.].
    * - **cty**
      - OBBLIGATORIO. DEVE essere impostato a ``application/json``.
@@ -177,12 +177,12 @@ Il payload JWS contiene i seguenti parametri:
    :header-rows: 1
    :widths: 30 70
 
-   * - Nome del Campo
+   * - Nome
      - Descrizione
    * - **catalog_version**
      - OBBLIGATORIO. Versione del formato del Catalogo degli Attestati Elettronici.
    * - **iss**
-     - OBBLIGATORIO. Identificatore dell'emittente del Catalogo degli Attestati Elettronici.
+     - OBBLIGATORIO. Identificativo del Fornitore del Catalogo degli Attestati Elettronici.
    * - **last_modified**
      - OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.
    * - **taxonomy_uri**
@@ -204,35 +204,35 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
    * - **version**
      - OBBLIGATORIO. Versione della definizione dell'Attestato Elettronico.
    * - **credential_type**
-     - OBBLIGATORIO. Identificatore univoco del tipo di Attestato Elettronico.
+     - OBBLIGATORIO. Identificativo univoco del tipo di Attestato Elettronico.
    * - **legal_type**
      - OBBLIGATORIO. Classificazione legale della Credenziale (es., ``pub-eaa``, ``qeaa``, ``eaa``).
    * - **localization**
      - OPZIONALE. Impostazioni di localizzazione, inclusi:
 
-       * **default_locale**: Lingua predefinita per il testo.
-       * **available_locales**: Elenco delle lingue supportate.
+       * **default_locale**: localizzazione predefinita per il testo.
+       * **available_locales**: Elenco delle localizzazioni supportate.
        * **base_uri**: URI base per le risorse di localizzazione.
        * **version**: Versione dei file di localizzazione.
    * - **name**
-     - OBBLIGATORIO. Nome leggibile dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
+     - OBBLIGATORIO. Nome *human-readable* dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
    * - **description**
-     - OBBLIGATORIO. Descrizione leggibile dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
+     - OBBLIGATORIO. Descrizione *human-readable* dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
    * - **restriction_policy**
-     - OPZIONALE. Restrizioni legali sulle Soluzioni Wallet e/o sui Fornitori di Credenziali autorizzati a richiedere/emettere l'Attestato Elettronico.
+     - OPZIONALE. Restrizioni legali sulle Soluzioni tecniche di Fornitori di Wallet e/o di Attestati Elettronici autorizzati a richiedere/emettere un Attestato Elettronico.
 
-       * **allowed_wallet_ids**: Elenco degli identificatori delle Soluzioni Wallet consentite.
-       * **allowed_issuer_ids**: Elenco degli identificatori dei Fornitori di Credenziali consentiti. Se presente, rappresenta una whitelist di Fornitori di Credenziali che possono essere aggiunti dall'Ancora di Fiducia nel campo **issuers** del corrispondente Attestato Elettronico.
+       * **allowed_wallet_ids**: Elenco degli identificativi delle Soluzioni Tecniche dei Fornitori di Wallet consentite.
+       * **allowed_issuer_ids**: Elenco degli identificativi delle Soluzioni Tecniche dei Fornitori di Attestati Elettronici autorizzati. Se presente, rappresenta una whitelist di Fornitori di Attestati Elettronici che possono essere aggiunti dal Trust Anchor nel campo **issuers** del corrispondente Attestato Elettronico.
    * - **pricing_policy**
-     - OPZIONALE. Informazioni sui prezzi dell'Attestato Elettronico, inclusi:
+     - OPZIONALE. Informazioni sui tariffari dell'Attestato Elettronico, come ad esempio:
 
-       * **models**: OBBLIGATORIO. Array di modelli di prezzo applicabili all'Attestato Elettronico, ciascuno contenente:
+       * **models**: OBBLIGATORIO. Array di modelli di tariffari applicabili all'Attestato Elettronico, ciascuno contenente
 
-         - **pricing_type**: Tipo di modello di prezzo, come ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
+         - **pricing_type**: Tipo di modello di tariffario, come ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
          - **price**: Costo associato al modello.
-         - **currency**: Valuta del prezzo.
+         - **currency**: Valuta della tariffa.
 
-       * **pricing_model_uri**: URI alla documentazione dettagliata del modello di prezzo.
+       * **pricing_model_uri**: URI alla documentazione dettagliata del modello di tariffario.
    * - **validity_info**
      - Informazioni sulla validità dell'Attestato Elettronico, inclusi almeno:
 
@@ -246,29 +246,29 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
        * **min_loa**: OBBLIGATORIO. Livello minimo di Garanzia richiesto per l'autenticazione dell'Attestato Elettronico. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza del Wallet che richiede l'Attestato Elettronico.
        * **supported_eid_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati.
    * - **purposes**
-     - OBBLIGATORIO. Array di scopi di utilizzo per cui l'Attestato Elettronico può essere utilizzato, definendo contesti di utilizzo specifici e attributi richiesti per ciascuno scopo, come:
+     - OBBLIGATORIO. Array di scopi o ambiti specifici per cui l'Attestato Elettronico può essere utilizzato, definendo contesti di utilizzo specifici e attributi richiesti per ciascuno scopo, come:
 
-       * **id**: Identificatore univoco per lo scopo (es., "driving-authorization", "person-identification").
-       * **description**: Descrizione leggibile dello scopo con un suffisso ``_l10n_id`` per la localizzazione del contenuto.
+       * **id**: Identificativo univoco per lo scopo (es., "driving-authorization", "person-identification").
+       * **description**: Descrizione *human-readable* dello scopo con un suffisso ``_l10n_id`` per la localizzazione del contenuto.
        * **category**: Categoria principale nella tassonomia della Credenziale (es., ``AUTHORIZATION``, ``IDENTITY``).
        * **subcategory**: Sottocategoria all'interno della tassonomia (es., ``DRIVING_LICENSE``, ``PERSON_IDENTIFICATION``).
-       * **claims_required**: Array di identificatori di attributi che sono richiesti quando si utilizza la Credenziale per questo scopo.
-       * **claims_recommended**: Array di identificatori di attributi che sono raccomandati ma non obbligatori per questo scopo.
+       * **claims_required**: Array di identificativi di claims che sono richiesti quando si utilizza l'Attestato Elettronico per questo scopo.
+       * **claims_recommended**: Array di identificativi di claims che sono raccomandati ma non obbligatori per questo scopo.
    * - **issuers**
-     - OBBLIGATORIO. Array di informazioni rilevanti sui Fornitori di Credenziali autorizzati, inclusi dati amministrativi e tecnici come il nome dell'Organizzazione, un riferimento al documento di specifiche API e meccanismi di emissione supportati (ad esempio il supporto al flusso differito).
+     - OBBLIGATORIO. Array di informazioni rilevanti sui Fornitori di Attestato Elettronico autorizzati, inclusi dati amministrativi e tecnici come il nome dell'Organizzazione, un riferimento al documento di specifiche API e meccanismi di emissione supportati (ad esempio il supporto al *deferred flow*).
    * - **authentic_sources**
-     - OBBLIGATORIO. Array di informazioni rilevanti sulle Fonti Autentiche autorizzate, inclusi dati amministrativi e tecnici relativi alla fornitura di dati ai Fornitori di Credenziali.
+     - OBBLIGATORIO. Array di informazioni rilevanti sulle Fonti Autentiche autorizzate, inclusi dati amministrativi e tecnici relativi alla fornitura di dati ai Fornitori di Attestato Elettronico.
    * - **formats**
      - OBBLIGATORIO. Array di formati tecnici supportati degli Attestati Elettronici.
    * - **display_properties**
      - OBBLIGATORIO. Proprietà di presentazione visiva degli Attestati Elettronici, ad es.:
 
-       * **templates**: Modelli visivi per la Credenziale, ad es. template `svg`.
+       * **templates**: Modelli visivi per l'Attestato Elettronico, ad es. template `svg`.
        * **background_color**: Colore di sfondo in formato esadecimale.
        * **text_color**: Colore del testo in formato esadecimale.
        * **logo_uri**: URI al logo dell'Attestato Elettronico.
    * - **claims**
-     - OBBLIGATORIO. Array di attributi contenuti nell'Attestato Elettronico.
+     - OBBLIGATORIO. Array di claims contenuti nell'Attestato Elettronico.
 
 
 L'esempio corrispondente del Catalogo degli Attestati Elettronici decodificato in JSON sia per l'header che per il payload è il seguente:
@@ -300,9 +300,9 @@ L'esempio corrispondente del Catalogo degli Attestati Elettronici decodificato i
         "...": "..."
       }
 
-  I bundle di localizzazione DEVONO essere disponibili all'URI specificato nel claim **localization_info.bundles_base_uri** del Catalogo degli Attestati Elettronici. Ogni bundle locale DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice locale corrispondente dall'array **available_locales**.
+  I bundle di localizzazione DEVONO essere disponibili all'URI specificato nel claim **localization_info.bundles_base_uri** del Catalogo degli Attestati Elettronici. Ogni *bundle locale* DEVE essere accessibile seguendo il pattern di denominazione **{locale_code}.json**, dove **{locale_code}** è sostituito con il codice di localizzazione corrispondente dall'array **available_locales**.
 
-  Un esempio non normativo dell'URI di localizzazione italiana per il bundle mDL sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**.
+  Un esempio non normativo dell'URI di localizzazione italiana per il bundle mDL è **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**.
 
   Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim **localization_info.integrity**. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.
 
@@ -320,12 +320,12 @@ Un esempio non normativo della Tassonomia degli Attributi è fornito di seguito.
 
 Endpoint del Catalogo degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-L'Endpoint del Catalogo degli Attestati Elettronici DEVE essere un URI HTTPS well-known [:rfc:`8615`] che fornisce accesso pubblico alle informazioni relative agli Attestati disponibili in IT-Wallet.
+L'Endpoint del Catalogo degli Attestati Elettronici DEVE essere un URI HTTPS *well-known* [:rfc:`8615`] che fornisce accesso pubblico alle informazioni relative agli Attestati Elettronici disponibili in IT-Wallet.
 
 Richiesta del Catalogo degli Attestati Elettronici
 --------------------------------------------------
 
-La Richiesta del Catalogo degli Attestati Elettronici DEVE essere una GET HTTP utilizzando il tipo di media application/jose come nel seguente esempio non normativo.
+La Richiesta del Catalogo degli Attestati Elettronici DEVE essere una GET HTTP utilizzando il *media type* ``application/jose`` come nel seguente esempio non normativo.
 
 .. code-block:: http
 
@@ -334,7 +334,7 @@ La Richiesta del Catalogo degli Attestati Elettronici DEVE essere una GET HTTP u
     Content-Type: application/jose
 
 .. note::
-  Come miglioramento futuro, l'Ancora di Fiducia PUÒ implementare un endpoint dinamico che consenta di filtrare le credenziali per tipo, offrendo al contempo capacità di paginazione, per supportare una navigazione più efficiente e flessibile del Catalogo degli Attestati Elettronici.
+  Come miglioramento futuro, il Trust Anchor PUÒ implementare un endpoint dinamico che consenta di filtrare gli Attestati Elettronici per tipo, offrendo al contempo capacità di paginazione, per supportare una navigazione più efficiente e flessibile del Catalogo degli Attestati Elettronici.
 
 
 Risposta del Catalogo degli Attestati Elettronici
