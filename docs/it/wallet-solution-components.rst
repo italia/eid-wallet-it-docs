@@ -30,7 +30,7 @@ Gestione del Ciclo di Vita dell'Istanza del Wallet
 Questo componente DEVE gestire:
 
 - Registrazione dell'Istanza del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`).
-- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`).
+- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`).
 - Gestione dello stato (mantenimento e aggiornamento della validità).
 - Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`.
 
@@ -60,7 +60,7 @@ Componente di Gestione del Ciclo di Vita dell'Istanza del Wallet
 Interagendo con il Backend del Wallet, questo componente DEVE gestire:
 
 - Registrazione dell'Istanza del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`).
-- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`).
+- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`).
 - Gestione dello stato (mantenimento e aggiornamento della validità).
 - Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`.
 

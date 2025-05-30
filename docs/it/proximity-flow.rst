@@ -34,7 +34,7 @@ Le Istanze di Relying Party e Wallet registrate nell'ecosistema IT-Wallet DEVONO
 - *Autenticazione dell'Istanza RP* seguendo i meccanismi definiti nell'`ISO18013-5`_ per l'*autenticazione del lettore*.
 - Meccanismo di *Recupero del Dispositivo* basato su Bluetooth Low Energy (BLE) per la sottofase di comunicazione. Il meccanismo di *Recupero del Server* NON DEVE essere supportato.
 - *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR` per maggiori dettagli).
-- *Validazione dell'Istanza del Wallet* attraverso l'Attestato di Wallet.
+- *Validazione dell'Istanza del Wallet* attraverso la Wallet Attestation.
 
 
 La seguente figura illustra il flusso di basso livello conforme a ISO 18013-5 per il flusso di prossimità.
@@ -71,7 +71,7 @@ Di seguito è riportato un esempio non normativo che utilizza la notazione diagn
 
 **Passo 10**: L'Istanza RP DEVE preparare un messaggio ``SessionEstablishment``. Questo messaggio DEVE essere firmato dall'Istanza di Relying Party (autenticazione del lettore mdoc come specificato in [`ISO18013-5`_ #9.1.4]) e criptato utilizzando le chiavi di sessione derivate nel passo precedente. Il messaggio ``SessionEstablishment`` DEVE includere ``EReaderKey.Pub`` e una richiesta per specifici attributi.
 
-Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionEstablishment`` codificato in CBOR che contiene la richiesta mdoc di un Attestato di Wallet insieme a una Credenziale Digitale mDL.
+Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionEstablishment`` codificato in CBOR che contiene la richiesta mdoc di una Wallet Attestation insieme a una Credenziale Digitale mDL.
 
 .. literalinclude:: ../../examples/iso-session-establishment.txt
   :language: text
@@ -88,7 +88,7 @@ Di seguito è riportato un esempio non normativo che utilizza la notazione diagn
 
 **Passo 16**: Dopo aver ricevuto l'approvazione dell'Utente, l'Istanza del Wallet DEVE recuperare le Credenziali Digitali mdoc richieste. Quindi DEVE preparare un messaggio `SessionData` contenente queste Credenziali Digitali, e DEVE firmare i dati di autenticazione richiesti (come parte del processo di autenticazione mdoc, come specificato in [`ISO18013-5`_ #9.1.3]). DEVE criptarlo utilizzando le chiavi di sessione stabilite prima di trasmetterlo all'Istanza di Relying Party sul canale BLE sicuro. La firma garantisce il binding del dispositivo e l'integrità dei dati. La risposta mdoc DEVE essere codificata in CBOR, con la sua struttura delineata in [`ISO18013-5`_ #8.3.2.1.2.2].
 
-Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionData`` codificato in CBOR che contiene la risposta mdoc di un Attestato di Wallet e un mDL.
+Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionData`` codificato in CBOR che contiene la risposta mdoc di una Wallet Attestation e un mDL.
 
 .. literalinclude:: ../../examples/iso-session-data.txt
   :language: text
@@ -100,7 +100,7 @@ Di seguito è riportato un esempio non normativo che utilizza la notazione diagn
 **Considerazione Finale**: Il flusso di presentazione si è concentrato sullo scambio tecnico di dati in ambienti di prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un livello di verifica dell'identità attraverso l'ispezione visiva e il confronto, contribuendo all'Associazione Crittografica con l'Utente e agli aspetti generali di garanzia dell'autenticazione non completamente catturati in un flusso di presentazione puramente tecnico.
 
 .. note::
-  Durante la presentazione di prossimità, l'Istanza del Wallet potrebbe non essere in grado di recuperare un Attestato di Wallet aggiornato; in questo caso, l'Istanza del Wallet DOVREBBE inviare l'ultima versione dell'Attestato di Wallet. È lasciato alla Relying Party determinare se una presentazione con un Attestato di Wallet valido ma scaduto sia valida o meno.
+  Durante la presentazione di prossimità, l'Istanza del Wallet potrebbe non essere in grado di recuperare una Wallet Attestation aggiornato; in questo caso, l'Istanza del Wallet DOVREBBE inviare l'ultima versione della Wallet Attestation. È lasciato alla Relying Party determinare se una presentazione con una Wallet Attestation valido ma scaduto sia valida o meno.
 
 Device Engagement
 ^^^^^^^^^^^^^^^^^
