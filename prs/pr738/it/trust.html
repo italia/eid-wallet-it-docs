@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. L&#39;Infrastruttura di Trust &#8212; IT-Wallet Technical Documentation - PR #738 - 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="5. Entità" href="entities.html" />
+    <link rel="prev" title="3.1. Funzionalità" href="functionalities.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #738 - 1.0.0</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Ricerca veloce</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Vai" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Principi di design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendice</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="l-infrastruttura-di-trust">
+<h1><span class="section-number">4. </span>L'Infrastruttura di Trust<a class="headerlink" href="#l-infrastruttura-di-trust" title="Link to this heading">¶</a></h1>
+<p>Questa sezione delinea l'implementazione del Modello di Trust in un'infrastruttura conforme a OpenID Federation 1.0 <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>. Questa infrastruttura prevede un'API RESTful per la distribuzione di metadati, policy di metadati, trust mark, chiavi pubbliche crittografiche e certificati X.509, e lo stato di revoca dei partecipanti, chiamati anche Entità di Federazione.</p>
+<p>L'Infrastruttura di trust facilita l'applicazione di un meccanismo di valutazione della fiducia tra le parti definite nell'<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+<figure class="align-default" id="id2">
+<p class="plantuml">
+<object data="_images/plantuml-e67b2336345eb96963de7ade0f4f48540a4bc15b.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-e67b2336345eb96963de7ade0f4f48540a4bc15b.png"><img src="_images/plantuml-e67b2336345eb96963de7ade0f4f48540a4bc15b.png" alt="La figura illustra i ruoli di trust." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/XT1VIyD0303mz_iKSJuFiOpXWuoDJc7Wmn31HybwSHwxvaekvnZYTtTjjUrWpBVy-LsuP1uLHLFfpPNZmYTBS9zFRlB9MnvOqJ79p9YuSroXO0aRB7PR2Obj7dmGK46EnnQn3jH29EnRiF775yO85OgyzGIZ5qbHOS75Hv0HO0H5k5vE7-uUinEtOYKfoJfKQfnZlUtaFp0xE_A9y3qsnDVHSLfDbjCB9klC1TJTwW_3bm4O-5p84gj33wiO4xMB5wxxvOb-HUz9OItXqzbVkw_EssVo1yTRMAFeeP7IoszZ2WVZL8rde6ZsLHitbpGoo3BJ7cJORzSVchhSJwjBVMRcn3QL_WS0">I ruoli all'interno della Federazione, dove il Trust Anchor supervisiona i suoi subordinati, che includono uno o più Intermediari e Foglie.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>In questa rappresentazione, sia il Trust Anchor che gli Intermediari assumono il ruolo di Registration Authority.</p>
+<section id="ruoli-della-federazione">
+<h2><span class="section-number">4.1. </span>Ruoli della Federazione<a class="headerlink" href="#ruoli-della-federazione" title="Link to this heading">¶</a></h2>
+<p>Tutti i partecipanti sono Entità di Federazione che DEVONO essere registrati da un Organismo di Registrazione,
+ad eccezione delle Istanze del Wallet che sono dispositivi personali dell'Utente finale autenticati dal loro Fornitore di Wallet.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un attestato verificabile emesso e firmato da una terza parte fidata.</p>
+<p>Questo è chiamato <em>Wallet Attestation</em> ed è documentato nella sezione dedicata <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>.</p>
+</div>
+<p>Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli del Wallet EUDI, come definiti nell'<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ruolo EUDI</p></th>
+<th class="head"><p>Ruolo nella Federazione</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Public Key Infrastructure (PKI)</p></td>
+<td><p>Trust Anchor</p></td>
+<td><p>La Federazione ha capacità PKI. L'Entità che configura l'intera infrastruttura è il Trust Anchor.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qualified Trust Service Provider (QTSP)</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Person Identification Data Provider</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Qualified Electronic Attestations of Attributes Provider</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Electronic Attestations of Attributes Provider</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Relying Party</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Trust Service Provider (TSP)</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Trusted List</p></td>
+<td><p>Trust Anchor</p></td>
+<td><p>L'endpoint di listing, l'endpoint di stato del trust mark e l'endpoint di fetch DEVONO essere esposti sia dai Trust Anchor che dagli Intermediari, rendendo la Trusted List distribuita su più Entità di Federazione, dove ciascuna di queste è responsabile dei propri subordinati registrati. Altri endpoint che utilizzano formati di dati diversi POSSONO essere implementati per facilitare l'interoperabilità con sistemi che non supportano OpenID Federation 1.0. In tali casi, le stesse informazioni sulle entità di federazione DEVONO essere sincronizzate tra questi endpoint, garantendo la disponibilità coerente delle informazioni attraverso diversi canali.</p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Provider</p></td>
+<td><p>Leaf</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="proprieta-generali">
+<h2><span class="section-number">4.2. </span>Proprietà Generali<a class="headerlink" href="#proprieta-generali" title="Link to this heading">¶</a></h2>
+<p>L'architettura dell'infrastruttura di trust è costruita sui seguenti principi fondamentali:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Identificatore</p></th>
+<th class="head"><p>Proprietà</p></th>
+<th class="head"><p>Descrizione</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>P1</p></td>
+<td><p><strong>Sicurezza</strong></p></td>
+<td><p>Incorpora meccanismi per garantire l'integrità, la riservatezza e l'autenticità delle Relazioni di Trust e delle interazioni all'interno della federazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p>P2</p></td>
+<td><p><strong>Privacy</strong></p></td>
+<td><p>Progettata per rispettare e proteggere la privacy delle entità e degli individui coinvolti, la divulgazione minima fa parte di questo.</p></td>
+</tr>
+<tr class="row-even"><td><p>P3</p></td>
+<td><p><strong>Interoperabilità</strong></p></td>
+<td><p>Supporta l'interazione senza soluzione di continuità e l'instaurazione della fiducia tra diversi sistemi ed entità all'interno della federazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p>P4</p></td>
+<td><p><strong>Trust Transitivo</strong></p></td>
+<td><p>Trust stabilito indirettamente attraverso una catena di relazioni fidate, consentendo alle entità di fidarsi l'una dell'altra sulla base di autorità comuni e intermediari fidati.</p></td>
+</tr>
+<tr class="row-even"><td><p>P5</p></td>
+<td><p><strong>Delega</strong></p></td>
+<td><p>Capacità/funzionalità tecnica di delegare autorità o responsabilità ad altre entità, consentendo un meccanismo di trust distribuito.</p></td>
+</tr>
+<tr class="row-odd"><td><p>P6</p></td>
+<td><p><strong>Scalabilità</strong></p></td>
+<td><p>Progettata per gestire in modo efficiente un numero crescente di entità o interazioni senza un significativo aumento della complessità di gestione della fiducia.</p></td>
+</tr>
+<tr class="row-even"><td><p>P7</p></td>
+<td><p><strong>Flessibilità</strong></p></td>
+<td><p>Adattabile a varie esigenze operative e organizzative, consentendo alle entità di definire e regolare le proprie Relazioni di Trust e politiche.</p></td>
+</tr>
+<tr class="row-odd"><td><p>P8</p></td>
+<td><p><strong>Autonomia</strong></p></td>
+<td><p>Pur facendo parte di un ecosistema federato, ogni entità mantiene il controllo sulle proprie definizioni e configurazioni.</p></td>
+</tr>
+<tr class="row-even"><td><p>P9</p></td>
+<td><p><strong>Decentralizzazione</strong></p></td>
+<td><p>A differenza dei tradizionali sistemi centralizzati, l'infrastruttura di trust dovrebbe consentire un approccio decentralizzato.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="requisiti-dell-infrastruttura-di-trust">
+<h2><span class="section-number">4.3. </span>Requisiti dell'Infrastruttura di Trust<a class="headerlink" href="#requisiti-dell-infrastruttura-di-trust" title="Link to this heading">¶</a></h2>
+<p>Questa sezione include i requisiti necessari per l'implementazione e il funzionamento di successo dell'infrastruttura di trust.</p>
+<table class="longtable docutils align-default" id="id3">
+<caption><span class="caption-number">Tabella 4.1 </span><span class="caption-text">Requisiti Funzionali</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ID</p></th>
+<th class="head"><p>Descrizione</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FR1</p></td>
+<td><p><strong>Stabilimento della Fiducia nella Federazione</strong>: il sistema deve essere in grado di stabilire la fiducia tra diverse entità (Credential Issuer, Relying Party, ecc.) all'interno di una federazione, utilizzando firme crittografiche per lo scambio sicuro di informazioni sui partecipanti nell'ecosistema.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR2</p></td>
+<td><p><strong>Autenticazione delle Entità</strong>: il sistema deve implementare meccanismi per l'autenticazione delle entità all'interno della federazione, garantendo la conformità alle regole condivise.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR3</p></td>
+<td><p><strong>Convalida della Firma</strong>: il sistema deve supportare la creazione, la verifica e la convalida delle firme elettroniche e fornire meccanismi standard e sicuri per ottenere le chiavi pubbliche crittografiche necessarie per la convalida della firma.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR4</p></td>
+<td><p><strong>Marcatura Temporale</strong>: gli artefatti firmati devono contenere marcature temporali per garantire l'integrità e la non ripudiabilità delle transazioni nel tempo, grazie alle interfacce, ai servizi, al modello di archiviazione e agli approcci definiti all'interno della federazione.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR5</p></td>
+<td><p><strong>Convalida dei Certificati</strong>: il sistema richiede la trasmissione confidenziale, protetta tramite TLS su HTTP, e la convalida dei certificati per l'autenticazione del sito web.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR6</p></td>
+<td><p><strong>Interoperabilità e Conformità agli Standard</strong>: garantire l'interoperabilità tra i membri della federazione aderendo a standard tecnici, facilitando le transazioni elettroniche transfrontaliere.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR7</p></td>
+<td><p><strong>Protezione dei Dati e Privacy</strong>: implementare misure di protezione dei dati in conformità con le normative GDPR, garantendo la privacy e la sicurezza dei dati personali trattati all'interno della federazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR8</p></td>
+<td><p><strong>Risoluzione delle Controversie e Responsabilità</strong>: stabilire procedure chiare per la risoluzione delle controversie e definire la responsabilità tra i membri della federazione.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR9</p></td>
+<td><p><strong>Servizi di Emergenza e Revoca</strong>: implementare meccanismi per la revoca immediata dei partecipanti in caso di violazioni della sicurezza o altre emergenze.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR10</p></td>
+<td><p><strong>Infrastruttura di Trust Scalabile</strong>: il sistema deve supportare meccanismi di stabilimento della fiducia scalabili, sfruttando approcci e soluzioni tecniche che complementano gli approcci transitivi di delega per gestire in modo efficiente le Relazioni di Trust man mano che la federazione cresce, rimuovendo i registri centrali che potrebbero fallire tecnicamente o amministrativamente.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR11</p></td>
+<td><p><strong>Scalabilità Efficiente dello Storage</strong>: implementare una soluzione di storage che si scala orizzontalmente per adattarsi a volumi di dati crescenti, minimizzando lo storage centrale e i costi amministrativi. Il sistema dovrebbe consentire ai membri di archiviare e presentare in modo indipendente attestazioni di fiducia storiche e artefatti firmati durante la risoluzione delle controversie, con l'infrastruttura della federazione che mantiene solo un registro delle chiavi storiche per convalidare i dati storici, archiviati e forniti dai partecipanti.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR12</p></td>
+<td><p><strong>Attestazione Verificabile (Trust Mark)</strong>: incorporare un meccanismo per l'emissione e la verifica di attestazioni verificabili che servono come prova di conformità a specifici profili o standard. Ciò consente alle entità all'interno della federazione di dimostrare l'aderenza a standard di sicurezza, privacy e operativi concordati.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR13</p></td>
+<td><p><strong>Meccanismo Decentralizzato di Risoluzione delle Controversie</strong>: progettare un meccanismo decentralizzato per la risoluzione delle controversie che consenta ai membri della federazione di verificare in modo indipendente lo stabilimento storico della fiducia e gli artefatti firmati, riducendo la dipendenza dalle autorità centrali e semplificando il processo di risoluzione.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR14</p></td>
+<td><p><strong>Interoperabilità tra Federazioni</strong>: garantire che il sistema sia in grado di interoperare con altre federazioni o Trust Framework, facilitando le transazioni tra federazioni e lo stabilimento della fiducia senza compromettere la sicurezza o la conformità.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR15</p></td>
+<td><p><strong>Organismi di Registrazione Autonomi</strong>: il sistema deve facilitare l'integrazione di organismi di registrazione autonomi che operano in conformità con le regole della federazione. Questi organismi hanno il compito di valutare e registrare le entità all'interno della federazione, secondo le regole prestabilite e la loro conformità che deve essere periodicamente attestata.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR16</p></td>
+<td><p><strong>Audit Periodico degli Organismi di Registrazione e delle Entità</strong>: implementare meccanismi per l'audit periodico e il monitoraggio dello stato di conformità sia degli organismi di registrazione che delle loro entità registrate.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR17</p></td>
+<td><p><strong>Attestazione di Conformità per Dispositivi Personali</strong>: organismi fidati, sotto forma di entità di federazione, dovrebbero emettere attestazioni di conformità e fornire prove firmate di tale conformità per l'hardware dei dispositivi personali utilizzati all'interno della federazione. Queste attestazioni dovrebbero essere attestate e periodicamente rinnovate per garantire che i dispositivi soddisfino gli standard di sicurezza attuali.</p></td>
+</tr>
+<tr class="row-odd"><td><p>FR18</p></td>
+<td><p><strong>Monitoraggio Automatizzato della Conformità</strong>: il sistema dovrebbe includere strumenti automatizzati per monitorare la conformità delle entità agli standard della federazione. Questa automazione aiuta nella rilevazione precoce di potenziali problemi di conformità.</p></td>
+</tr>
+<tr class="row-even"><td><p>FR19</p></td>
+<td><p><strong>Associazione Sicura delle Capacità del Protocollo</strong>: il protocollo sicuro deve consentire lo scambio di dati sulle capacità specifiche del protocollo come metadati crittograficamente vincolati allegati a un'identità specifica. Questi metadati dovrebbero definire le capacità tecniche associate all'identità, garantendo una prova verificabile e un'associazione a prova di manomissione per un solido stabilimento della fiducia e controllo degli accessi.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="endpoint-api-della-federazione">
+<h2><span class="section-number">4.4. </span>Endpoint API della Federazione<a class="headerlink" href="#endpoint-api-della-federazione" title="Link to this heading">¶</a></h2>
+<p>OpenID Federation 1.0 utilizza Servizi Web RESTful protetti su
+HTTPs. OpenID Federation 1.0 definisce quali sono gli endpoint web che i partecipanti DEVONO rendere
+pubblicamente disponibili. La tabella seguente riassume gli endpoint e i loro scopi.</p>
+<p>Tutti gli endpoint elencati di seguito sono definiti nelle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>nome endpoint</p></th>
+<th class="head"><p>richiesta http</p></th>
+<th class="head"><p>scopo</p></th>
+<th class="head"><p>richiesto per</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>federation metadata</p></td>
+<td><p><strong>GET</strong> .well-known/openid-federation</p></td>
+<td><p>Metadati che un'Entità pubblica su se stessa, verificabili con una terza parte fidata (Entità Superiore). È chiamata Entity Configuration.</p></td>
+<td><p>Trust Anchor, Intermediate, Wallet Provider, Relying Party, Credential Issuer</p></td>
+</tr>
+<tr class="row-odd"><td><p>subordinate list endpoint</p></td>
+<td><p><strong>GET</strong> /list</p></td>
+<td><p>Elenca i Subordinati.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
+<tr class="row-even"><td><p>fetch endpoint</p></td>
+<td><p><strong>GET</strong> /fetch?sub=https://rp.example.org</p></td>
+<td><p>Restituisce un JWT firmato su un soggetto specifico, il suo Subordinato. È chiamato Subordinate Statement.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
+<tr class="row-odd"><td><p>trust mark status</p></td>
+<td><p><strong>POST</strong> /status?sub=...&amp;trust_mark_id=...</p></td>
+<td><p>Restituisce lo stato dell'emissione (validità) di un Trust Mark relativo a un soggetto specifico.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
+<tr class="row-even"><td><p>historical keys</p></td>
+<td><p><strong>GET</strong> /historical-jwks</p></td>
+<td><p>Elenca le chiavi scadute e revocate, con la motivazione della revoca.</p></td>
+<td><p>Trust Anchor, Intermediate</p></td>
+</tr>
+</tbody>
+</table>
+<p>Tutte le risposte degli endpoint della federazione sono sotto forma di JWT firmati, ad eccezione dell'<strong>endpoint di Listing dei Subordinati</strong> e dell'<strong>endpoint di Stato del Trust Mark</strong> che vengono serviti come JSON semplice di default.</p>
+</section>
+<section id="configurazione-della-federazione">
+<h2><span class="section-number">4.5. </span>Configurazione della Federazione<a class="headerlink" href="#configurazione-della-federazione" title="Link to this heading">¶</a></h2>
+<p>La configurazione della federazione è pubblicata dal Trust Anchor all'interno della sua Entity Configuration, è disponibile al percorso web noto corrispondente a <strong>.well-known/openid-federation</strong>.</p>
+<p>Tutti i partecipanti alla federazione DEVONO ottenere la configurazione della federazione prima di entrare nella fase operativa, e
+DEVONO mantenerla aggiornata. La configurazione della federazione è l'Entity Configuration del Trust Anchor, contiene le
+chiavi pubbliche per le operazioni di firma.</p>
+<p>Di seguito un esempio non normativo di Entity Configuration di un Trust Anchor, dove ogni parametro è documentato nella specifica <a class="reference external" href="OID-FED">OpenID Federation</a>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;alg&quot;: &quot;ES256&quot;,
+    &quot;kid&quot;: &quot;FifYx03bnosD8m6gYQIfNHNP9cM_Sam9Tc5nLloIIrc&quot;,
+    &quot;typ&quot;: &quot;entity-statement+jwt&quot;
+}
+.
+{
+    &quot;exp&quot;: 1649375259,
+    &quot;iat&quot;: 1649373279,
+    &quot;iss&quot;: &quot;https://trust-registry.eid-wallet.example.it&quot;,
+    &quot;sub&quot;: &quot;https://trust-registry.eid-wallet.example.it&quot;,
+    &quot;jwks&quot;: {
+        &quot;keys&quot;: [
+            {
+
+                &quot;kty&quot;: &quot;EC&quot;,
+                &quot;kid&quot;: &quot;X2ZOMHNGSDc4ZlBrcXhMT3MzRmRZOG9Jd3o2QjZDam51cUhhUFRuOWd0WQ&quot;,
+                &quot;crv&quot;: &quot;P-256&quot;,
+                &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
+                &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;
+            }
+        ]
+    },
+    &quot;metadata&quot;: {
+        &quot;federation_entity&quot;: {
+            &quot;organization_name&quot;: &quot;example TA&quot;,
+            &quot;contacts&quot;:[
+                &quot;tech@eid.trust-anchor.example.eu&quot;
+            ],
+            &quot;homepage_uri&quot;: &quot;https://trust-registry.eid-wallet.example.it&quot;,
+            &quot;logo_uri&quot;:&quot;https://trust-registry.eid-wallet.example.it/static/svg/logo.svg&quot;,
+            &quot;federation_fetch_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/fetch&quot;,
+            &quot;federation_resolve_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/resolve&quot;,
+            &quot;federation_list_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/list&quot;,
+            &quot;federation_trust_mark_status_endpoint&quot;: &quot;https://trust-registry.eid-wallet.example.it/trust_mark_status&quot;
+        }
+    },
+    &quot;trust_mark_issuers&quot;: {
+        &quot;https://trust-registry.eid-wallet.example.it/openid_relying_party/public&quot;: [
+            &quot;https://trust-registry.eid-wallet.example.it&quot;,
+            &quot;https://public.intermediary.other.org&quot;
+        ],
+        &quot;https://trust-registry.eid-wallet.example.it/openid_relying_party/private&quot;: [
+            &quot;https://private.other.intermediary.org&quot;
+        ]
+    }
+}
+</pre></div>
+</div>
+</section>
+<section id="entity-configuration">
+<h2><span class="section-number">4.6. </span>Entity Configuration<a class="headerlink" href="#entity-configuration" title="Link to this heading">¶</a></h2>
+<p>L'Entity Configuration è il documento verificabile che ogni Entità di Federazione DEVE pubblicare per proprio conto, nell'endpoint <strong>.well-known/openid-federation</strong>.</p>
+<p>La risposta HTTP dell'Entity Configuration DEVE impostare il tipo di media a <cite>application/entity-statement+jwt</cite>.</p>
+<p>L'Entity Configuration DEVE essere firmata crittograficamente. La parte pubblica di questa chiave DEVE essere fornita nell'
+Entity Configuration e all'interno del Subordinate Statement emesso da un superiore immediato e relativo alla sua Entità di Federazione subordinata.</p>
+<p>L'Entity Configuration PUÒ anche contenere uno o più Trust Mark.</p>
+<p>I dettagli tecnici sull'Entity Configuration del Fornitore di Wallet, del Credential Issuer e della Relying Party sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a>, <a class="reference internal" href="credential-issuer-entity-configuration.html#entity-configuration-fornitore-di-credenziale"><span class="std std-ref">Entity Configuration Fornitore di Credenziale</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Firma dell'Entity Configuration</strong></p>
+<p>Tutte le operazioni di verifica della firma riguardanti le Entity Configuration, i Subordinate Statement e i Trust Mark, sono effettuate con le chiavi pubbliche della Federazione. Per gli algoritmi supportati fare riferimento alla Sezione <cite>Cryptografic Algorithm</cite>.</p>
+</div>
+<section id="parametri-comuni-delle-entity-configuration">
+<h3><span class="section-number">4.6.1. </span>Parametri Comuni delle Entity Configuration<a class="headerlink" href="#parametri-comuni-delle-entity-configuration" title="Link to this heading">¶</a></h3>
+<p>Le Entity Configuration di tutti i partecipanti alla federazione DEVONO avere in comune i parametri elencati di seguito.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>String. Identificatore dell'Entità emittente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>String. Identificatore dell'Entità a cui si riferisce. DEVE essere uguale a <code class="docutils literal notranslate"><span class="pre">iss</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>Timestamp UNIX con l'ora di generazione del JWT, codificato come NumericDate come indicato in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>Timestamp UNIX con l'ora di scadenza del JWT, codificato come NumericDate come indicato in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>jwks</strong></p></td>
+<td><p>Un JSON Web Key Set (JWKS) <span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a> che rappresenta la parte pubblica delle chiavi di firma dell'Entità in questione. Ogni JWK nel set JWK DEVE avere un ID chiave (claim kid) e PUÒ avere un parametro <cite>x5c</cite>, come definito in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>. Contiene le Chiavi dell'Entità di Federazione necessarie per le operazioni di Valutazione della Fiducia.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>metadata</strong></p></td>
+<td><p>JSON Object. Ogni chiave dell'Oggetto JSON rappresenta un identificatore di tipo di metadati
+contenente un Oggetto JSON che rappresenta i metadati, secondo lo schema di metadati
+di quel tipo. Un'Entity Configuration PUÒ contenere più dichiarazioni di metadati, ma solo una per ogni tipo di
+metadati (&lt;<strong>entity_type</strong>&gt;). i tipi di metadati sono definiti nella sezione <a class="reference external" href="MetadataTypes">Tipi di Metadati</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-configuration-trust-anchor">
+<h3><span class="section-number">4.6.2. </span>Entity Configuration Trust Anchor<a class="headerlink" href="#entity-configuration-trust-anchor" title="Link to this heading">¶</a></h3>
+<p>L'Entity Configuration del Trust Anchor, oltre ai parametri comuni elencati sopra, utilizza i seguenti parametri:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+<th class="head"><p><strong>Richiesto</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>trust_mark_issuers</strong></p></td>
+<td><p>Array JSON che definisce quali autorità della Federazione sono considerate affidabili
+per l'emissione di specifici Trust Mark, assegnati con i loro identificatori unici.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_mark_owners</strong></p></td>
+<td><p>Array JSON che elenca quali entità sono considerate proprietarie di
+specifici Trust Mark.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="entity-configuration-foglie-e-intermediari">
+<h3><span class="section-number">4.6.3. </span>Entity Configuration Foglie e Intermediari<a class="headerlink" href="#entity-configuration-foglie-e-intermediari" title="Link to this heading">¶</a></h3>
+<p>Oltre ai claim precedentemente definiti, l'Entity Configuration delle Foglie e delle Entità Intermediarie utilizza i seguenti parametri:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+<th class="head"><p><strong>Richiesto</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>authority_hints</strong></p></td>
+<td><p>Array di URL (String). Contiene un elenco di URL delle entità superiori immediate, come il Trust Anchor o
+un Intermediario, che emette un Subordinate Statement relativo a questo soggetto.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_marks</strong></p></td>
+<td><p>Un Array JSON contenente i Trust Mark.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id1">
+<h3><span class="section-number">4.6.4. </span>Tipi di Metadati<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<p>In questa sezione sono definiti i principali tipi di metadati mappati ai ruoli dell'ecosistema,
+fornendo i riferimenti del protocollo di metadati per ciascuno di essi.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Le voci che non hanno alcun riferimento a una bozza o standard noto sono intese come definite in questo riferimento tecnico.</p>
+</div>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Entità OpenID</p></th>
+<th class="head"><p>Entità EUDI</p></th>
+<th class="head"><p>Tipo di Metadati</p></th>
+<th class="head"><p>Riferimenti</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Trust Anchor</p></td>
+<td><p>Trust Anchor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Intermediate</p></td>
+<td><p>Intermediate</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Wallet Provider</p></td>
+<td><p>Wallet Provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_provider</span></code></p></td>
+<td><p>--</p></td>
+</tr>
+<tr class="row-odd"><td><p>Authorization Server</p></td>
+<td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OPENID4VCI</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Credential Issuer</p></td>
+<td><p>PID Provider, (Q)EAA Provider</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code>, [<code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code>]</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OPENID4VCI</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Relying Party</p></td>
+<td><p>Relying Party</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code>, <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>, <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>I metadati del Fornitore di Wallet sono definiti nella sezione seguente.</p>
+<p><a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Nei casi in cui un Fornitore di PID/EAA implementi sia il Credential Issuer che l'Authorization Server,
+DEVE incorporare sia
+<code class="docutils literal notranslate"><span class="pre">oauth_authorization_server</span></code> che <code class="docutils literal notranslate"><span class="pre">openid_credential_issuer</span></code> all'interno dei suoi tipi di metadati.
+Altre implementazioni possono dividere il Credential Issuer dall'Authorization Server, quando ciò accade i metadati del Credential Issuer DEVONO contenere i parametri <cite>authorization_servers</cite>, incluso l'identificatore unico dell'Authorization Server.
+Inoltre, qualora ci fosse la necessità di Autenticazione dell'Utente da parte del Credential Issuer,
+potrebbe essere necessario includere il tipo di metadati pertinente, sia <code class="docutils literal notranslate"><span class="pre">openid_relying_party</span></code>
+che <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="metadati-delle-foglie-federation-entity">
+<h2><span class="section-number">4.7. </span>Metadati delle Foglie federation_entity<a class="headerlink" href="#metadati-delle-foglie-federation-entity" title="Link to this heading">¶</a></h2>
+<p>I metadati <em>federation_entity</em> per le Foglie DEVONO contenere i seguenti claim.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>organization_name</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.2.2</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>homepage_uri</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.2.2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>policy_uri</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.2.2</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>logo_uri</strong></p></td>
+<td><p>URL del logo dell'entità; DEVE essere in formato SVG. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 36 Sezione 5.2.2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>contacts</strong></p></td>
+<td><p>Indirizzo email certificato istituzionale (PEC) dell'entità. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 36 Sezione 5.2.2</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>federation_resolve_endpoint</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.1.1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="subordinate-statements">
+<h2><span class="section-number">4.8. </span>Subordinate Statements<a class="headerlink" href="#subordinate-statements" title="Link to this heading">¶</a></h2>
+<p>Trust Anchor e Intermediari pubblicano Subordinate Statement relativi ai loro Subordinati immediati.
+Il Subordinate Statement PUÒ contenere una policy di metadati e i Trust Mark relativi a un Subordinato.</p>
+<p>La policy di metadati, quando applicata, apporta una o più modifiche ai metadati finali della Foglia. I metadati finali di una Foglia derivano dalla Trust Chain che contiene tutte le dichiarazioni, a partire dall'Entity Configuration fino al Subordinate Statement emesso dal Trust Anchor.</p>
+<p>Trust Anchor e Intermediari DEVONO esporre l'endpoint Federation Fetch, dove i Subordinate Statement sono richiesti per convalidare la firma dell'Entity Configuration della Foglia.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>L'endpoint Federation Fetch PUÒ anche pubblicare certificati X.509 per ciascuna delle chiavi pubbliche del Subordinato. Rendendo la distribuzione dei certificati X.509 emessi tramite un servizio RESTful.</p>
+</div>
+<p>Di seguito c'è un esempio non normativo di un Subordinate Statement emesso da un Organismo di Registrazione (come il Trust Anchor o il suo Intermediario) in relazione a uno dei suoi Subordinati.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;alg&quot;: &quot;ES256&quot;,
+    &quot;kid&quot;: &quot;em3cmnZgHIYFsQ090N6B3Op7LAAqj8rghMhxGmJstqg&quot;,
+    &quot;typ&quot;: &quot;entity-statement+jwt&quot;
+}
+.
+{
+    &quot;exp&quot;: 1649623546,
+    &quot;iat&quot;: 1649450746,
+    &quot;iss&quot;: &quot;https://intermediate.example.org&quot;,
+    &quot;sub&quot;: &quot;https://rp.example.it&quot;,
+    &quot;jwks&quot;: {
+        &quot;keys&quot;: [
+            {
+                &quot;kty&quot;: &quot;EC&quot;,
+                &quot;kid&quot;: &quot;2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs&quot;,
+                &quot;crv&quot;: &quot;P-256&quot;,
+                &quot;x&quot;: &quot;1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI&quot;,
+                &quot;y&quot;: &quot;slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY&quot;,
+                &quot;x5c&quot;: [ &lt;X.509 certificate&gt; ]
+            }
+        ]
+    },
+    &quot;metadata_policy&quot;: {
+        &quot;openid_credential_verifier&quot;: {
+            &quot;scope&quot;: {
+                &quot;subset_of&quot;: [
+                     &quot;eu.europa.ec.eudiw.pid.1&quot;,
+                     &quot;given_name&quot;,
+                     &quot;family_name&quot;,
+                     &quot;email&quot;
+                  ]
+            },
+            &quot;vp_formats&quot;: {
+                &quot;dc+sd-jwt&quot;: {
+                    &quot;sd-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ],
+                    &quot;kb-jwt_alg_values&quot;: [
+                        &quot;ES256&quot;,
+                        &quot;ES384&quot;
+                    ]
+                }
+            }
+        }
+     }
+}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Firma del Subordinate Statement</strong></p>
+<p>Le stesse considerazioni e requisiti fatti per l'Entity Configuration
+e in relazione ai meccanismi di firma DEVONO essere applicati per i Subordinate Statement.</p>
+</div>
+<section id="subordinate-statement">
+<h3><span class="section-number">4.8.1. </span>Subordinate Statement<a class="headerlink" href="#subordinate-statement" title="Link to this heading">¶</a></h3>
+<p>Il Subordinate Statement emesso da Trust Anchor e Intermediari contiene i seguenti attributi:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+<th class="head"><p><strong>Richiesto</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>jwks</strong></p></td>
+<td><p>JWKS di Federazione dell'entità <em>sub</em>. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 3 per ulteriori dettagli.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>metadata_policy</strong></p></td>
+<td><p>Oggetto JSON che descrive la policy dei Metadati. Ogni chiave dell'Oggetto JSON rappresenta un identificatore del tipo di metadati e ogni valore DEVE essere un Oggetto JSON che rappresenta la policy dei metadati secondo quel tipo di metadati. Si prega di fare riferimento alle specifiche <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>, Sezione 6.1, per i dettagli di implementazione.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>trust_marks</strong></p></td>
+<td><p>Array JSON contenente i Trust Mark emessi da se stesso per il soggetto subordinato.</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>constraints</strong></p></td>
+<td><p>PUÒ contenere gli <strong>allowed_leaf_entity_types</strong>, che limita quali tipi di metadati il soggetto è autorizzato a pubblicare. PUÒ contenere il numero massimo di Intermediari consentiti tra se stesso e la Foglia (<strong>max_path_length</strong>)</p></td>
+<td><p><a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="meccanismo-di-valutazione-della-fiducia">
+<h2><span class="section-number">4.9. </span>Meccanismo di Valutazione della Fiducia<a class="headerlink" href="#meccanismo-di-valutazione-della-fiducia" title="Link to this heading">¶</a></h2>
+<p>I Trust Anchor DEVONO distribuire le loro Chiavi Pubbliche di Federazione attraverso meccanismi sicuri fuori banda, come la pubblicazione su una pagina web verificata o l'archiviazione in un repository remoto come parte di una lista di fiducia. La logica alla base di questo requisito è che affidarsi esclusivamente ai dati forniti all'interno dell'Entity Configuration del Trust Anchor non mitiga adeguatamente i rischi associati agli attacchi di manipolazione DNS e TLS. Per garantire la sicurezza, tutti i partecipanti DEVONO ottenere le chiavi pubbliche del Trust Anchor utilizzando questi metodi fuori banda. Dovrebbero quindi confrontare queste chiavi con quelle ottenute dall'Entity Configuration del Trust Anchor, scartando qualsiasi chiave che non corrisponda. Questo processo aiuta a garantire l'integrità e l'autenticità delle chiavi pubbliche del Trust Anchor e la sicurezza complessiva della federazione.</p>
+<p>Il Trust Anchor pubblica l'elenco dei suoi Subordinati (endpoint Federation Subordinate Listing) e le attestazioni dei loro metadati e chiavi pubbliche (Subordinate Statement).</p>
+<p>Ogni partecipante, inclusi Trust Anchor, Intermediario, Credential Issuer, Fornitore di Wallet e Relying Party, pubblica i propri metadati e chiavi pubbliche (endpoint Entity Configuration) nella risorsa web nota <strong>.well-known/openid-federation</strong>.</p>
+<p>Ciascuno di questi può essere verificato utilizzando il Subordinate Statement emesso da un superiore, come il Trust Anchor o un Intermediario.</p>
+<p>Ogni Subordinate Statement è verificabile nel tempo e DEVE avere una data di scadenza. La revoca di ogni dichiarazione è verificabile in tempo reale e online (solo per flussi remoti) attraverso gli endpoint della federazione.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>La revoca di un'Entità avviene con l'indisponibilità del Subordinate Statement ad essa relativo. Se il Trust Anchor o il suo Intermediario non pubblica un Subordinate Statement valido, o se pubblica un Subordinate Statement scaduto/non valido, il soggetto del Subordinate Statement DEVE essere inteso come non valido o revocato.</p>
+</div>
+<p>La concatenazione delle dichiarazioni, attraverso la combinazione di questi meccanismi di firma e il vincolo di claim e chiavi pubbliche, forma la Trust Chain.</p>
+<p>Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Valutazione della Fiducia ad essa relativo <strong>richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle Credenziali</strong>.</p>
+<p>Il Wallet Attestation trasmette tutte le informazioni richieste relative all'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.</p>
+</div>
+<section id="stabilire-la-fiducia-con-i-credential-issuer">
+<h3><span class="section-number">4.9.1. </span>Stabilire la Fiducia con i Credential Issuer<a class="headerlink" href="#stabilire-la-fiducia-con-i-credential-issuer" title="Link to this heading">¶</a></h3>
+<p>Nel processo di emissione, la Valutazione della Fiducia garantisce l'integrità e l'autenticità delle Credenziali emesse e l'affidabilità dei loro Emittenti. Questa sezione delinea i meccanismi di Valutazione della Fiducia distinti dai flussi di protocollo, implementati dalle Istanze del Wallet e dalle Relying Party, come descritto nella sezione dedicata.</p>
+<p>Le Valutazioni della Fiducia implementano diversi modi, come definito di seguito:</p>
+<ul class="simple">
+<li><p><strong>Scoperta dell'Entità di Federazione</strong>: le Istanze del Wallet e le Relying Party DEVONO verificare l'identità dell'Emittente attraverso un processo di Scoperta dell'Entità di Federazione. Ciò comporta l'interrogazione di una Trusted List o directory per confermare lo stato di validità dell'Emittente e la conformità al Trust Framework.</p></li>
+<li><p><strong>Trust Chain</strong>: le Istanze del Wallet e le Relying Party valutano le Trust Chain dell'Emittente, che possono essere fornite staticamente o costruite attraverso un processo di Scoperta dell'Entità di Federazione, per garantire che l'entità che richiede la Credenziale faccia parte di una federazione riconosciuta e fidata. Ciò comporta il controllo della Trust Chain dall'autorità root all'Emittente.</p></li>
+<li><p><strong>Valutazione dei Trust Mark</strong>: i Trust Mark vengono valutati per garantire la continua conformità alle politiche della federazione. Questi marchi indicano l'aderenza a specifici standard e pratiche richiesti dalla federazione.</p></li>
+<li><p><strong>Valutazione delle Policy</strong>: le Istanze del Wallet e le Relying Party DEVONO verificare che il Credential Issuer sia autorizzato all'emissione della Credenziale di loro interesse. Metadati, policy di metadati e Trust Mark sono utilizzati per l'implementazione di questi controlli.</p></li>
+</ul>
+<p>Nel processo rappresentato nel diagramma di sequenza seguente, l'Istanza del Wallet utilizza l'API della Federazione per scoprire e raccogliere tutti i Credential Issuer abilitati all'interno della federazione. Il processo di scoperta produce la Trust Chain. Quando la Trust Chain viene fornita staticamente all'interno di una richiesta firmata o di una Credenziale, RICHIEDE di essere aggiornata solo quando la connessione internet è disponibile, mentre DEVE essere aggiornata quando la Trust Chain fornita staticamente risulta scaduta.</p>
+<figure class="align-default" id="id4">
+<p class="plantuml">
+<object data="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.png"><img src="_images/plantuml-142731de99b6d615f4253079dcc9dc44d7eda639.png" alt="La figura illustra il Processo di Valutazione della Fiducia." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fPE_Rjmm38TtFGMHfTCrUuOWXwlJ6bs2fd-MB8n5nqHbIg2ek-JjwxFW9XUSkzIJ87_y-AD1tsH3jJ86-Aub6pHx30MDey2TnevoTWdLkEE4Ol0BGo0xkTgrW1akTagUn1W3j3aNqeiJgcrcgXKZ7Sap6btMZblfXZZHhhfXStqzEQ_WbgmRfjE738qOsmlielJyL7IEzo201XyF5CBcjyI3NCP4mdxJawUA08bFaSNShfsrjSCLV2ChAcUrIumJldasnMwAMco8Ugpvmc8PUerZJVZE4M9Cq4S5mcvuL-PWUjuqQPjbrlyUSzLyNnwZUXOqWdj3ev74ghe_0gkAvGlynC3-M6q3GLBQSomPygkgP9Qd-Utjts3BG5_f9Jz8qhXdJnvOZjpvJ8x4E_Ul07LfTWEoE8V1eEtVtW7doWAAXnz2pucL_CfSTSV9mu5jgCbFTvz2fhNQxPJV5h8Q6jMegpDiKmfC6UvYu6uwd6C-aVAUwbBrB1XW94EFXkVepsI0U-I0Zu7WzHVCC07nG7vUGiwve7JaRaXy6SCV">Processo di Valutazione della Fiducia.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Come mostrato nella figura, il processo di Valutazione della Fiducia è completamente separato e distinto dal flusso specifico del protocollo. Opera in un flusso diverso e utilizza protocolli specializzati progettati specificamente per questo scopo.</p>
+</div>
+</section>
+<section id="stabilire-la-fiducia-con-la-relying-party">
+<h3><span class="section-number">4.9.2. </span>Stabilire la Fiducia con la Relying Party<a class="headerlink" href="#stabilire-la-fiducia-con-la-relying-party" title="Link to this heading">¶</a></h3>
+<p>Nel contesto della valutazione delle Relying Party, la responsabilità della Valutazione della Fiducia spetta esclusivamente all'Istanza del Wallet.
+I meccanismi di Valutazione della Fiducia sono distinti dai flussi di protocollo e sono implementati dall'Istanza del Wallet, come dettagliato nella sezione dedicata.</p>
+<p>Le Valutazioni della Fiducia sono condotte come segue:</p>
+<ul class="simple">
+<li><p><strong>Scoperta dell'Entità di Federazione</strong>: Quando l'Istanza del Wallet riceve una richiesta firmata emessa da una Relying Party, l'Istanza del Wallet DEVE verificare l'identità della Relying Party attraverso un processo di Scoperta dell'Entità di Federazione. Ciò comporta l'interrogazione di una Trusted List o directory per confermare lo stato di validità della Relying Party e la conformità al Trust Framework e la valutazione della firma della richiesta utilizzando il materiale crittografico ottenuto dalla Trust Chain.</p></li>
+<li><p><strong>Trust Chain</strong>: L'Istanza del Wallet valuta le Trust Chain della Relying Party, che possono essere fornite staticamente o costruite attraverso un processo di Scoperta dell'Entità di Federazione, per garantire che la Relying Party faccia parte di una federazione riconosciuta e fidata. Ciò comporta il controllo della Trust Chain dall'autorità root (Trust Anchor) alla Relying Party.</p></li>
+<li><p><strong>Valutazione dei Trust Mark</strong>: i Trust Mark vengono valutati per garantire la continua conformità alle politiche della federazione. Questi marchi indicano l'aderenza a specifici standard e pratiche richiesti dalla federazione. Le Relying Party POSSONO includere Trust Mark nella loro Entity Configuration per segnalare proprietà amministrative e conformità a profili specifici, come le concessioni nell'interazione con utenti minorenni.</p></li>
+<li><p><strong>Valutazione delle Policy</strong>: L'Istanza del Wallet DEVE verificare che la Relying Party sia autorizzata a richiedere la Credenziale di interesse. Metadati, policy di metadati e Trust Mark sono utilizzati per implementare questi controlli.</p></li>
+</ul>
+<p>Nel processo illustrato nel diagramma di sequenza seguente, l'Istanza del Wallet utilizza l'API della Federazione per scoprire e raccogliere tutte le Relying Party abilitate all'interno della federazione. Il processo di scoperta produce la Trust Chain. Quando la Trust Chain viene fornita staticamente all'interno di una richiesta firmata, deve essere aggiornata solo quando è disponibile una connessione internet, ma DEVE essere aggiornata se la Trust Chain fornita staticamente è scaduta.</p>
+<figure class="align-default" id="id5">
+<p class="plantuml">
+<object data="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.png"><img src="_images/plantuml-fbba2be78f4d369f9b244106ae5f9cb5f41be31a.png" alt="La figura illustra il Processo di Scoperta della Relying Party." style="width: 99.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLDFRzi-3BtxKn2z_4xvzTv3qQ1_i64x16dNNGeKgaGdH6NAawYq_lPZvBbD33Tm3ev5Fpw-Hv5NIKoKt7XOe--8Dx3ISmStb6pOOUogLizagJKiyDjuZ_ATDOajWabmreTWY9qTuQyV2-Q8-XZni2o8XvYJm9BjDaGuLpR1sA0Z8yfOZSekBY-L-G8Y_iceQGRQ60IjeDDO2ZbQhBJqGe4ZoHUGQCEAin4Tif3ncen9NurGu85pikQOog4D3i6m0zmPdrLi0jdY9qbblBQcXjxUzTOG0wMzt1qvLV56iYK-p2bi781OC38AsC2CTg-j0ltDaAN_GbQ37QWgSYghL3WKaTF-FWwx_f_AoY-UBBnYbohq2Vk2qxs_Gx5RMAyqxPQ5f8Fhm3LjSYnzV68m0l-_eVUBLmvlV1vQP7AB6Xr6CzXHgaaBQvGSUPAvEgNgzbsYiMefYrhQvtuZbWHr34qHE-8w8M7Ltz6OgY_lGsYX3X7GsEq8KW1VQ7nO3fsRigOGsA30Pu-UwptusRG4lzO_1sQbcPJSCz_dbn0TiH64Uz5dWwT5ZMaU3uUcZRYZa1EaWUg9o_2KhtSVIWT3Fx1BJ_mnuFrmdz24xAggFEOhEnhbhtQiZ7xPfiputb94DtU1zEej_jlEGuibdlhTcCkrLECoPFQCjp66EDlpicqzOO9Ly6JrPKxE3KRQOJ_mDR7nqA0OPyHKLretD_ul">Valutazione della Fiducia - Processo di Scoperta della Relying Party.</a></span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Come mostrato nella figura, la connessione internet è necessaria per aggiornare la Trust Chain relativa a una RP e verificarne lo stato di revoca.</p>
+</div>
+</section>
+<section id="valutazione-della-fiducia-con-i-wallet">
+<h3><span class="section-number">4.9.3. </span>Valutazione della Fiducia con i Wallet<a class="headerlink" href="#valutazione-della-fiducia-con-i-wallet" title="Link to this heading">¶</a></h3>
+<p>Il Fornitore di Wallet emette il Wallet Attestation, certificando lo stato operativo delle sue Istanze del Wallet e includendo una delle loro chiavi pubbliche.</p>
+<p>Il Wallet Attestation PUÒ contenere la Trust Chain che attesta l'affidabilità del suo emittente (Fornitore di Wallet) al momento dell'emissione.</p>
+<p>L'Istanza del Wallet fornisce il suo Wallet Attestation all'interno della richiesta firmata durante la fase di emissione del PID. Il Credential Issuer DEVE valutare la Trust Chain relativa all'emittente del Wallet Attestation (formalmente, il Fornitore di Wallet).</p>
+</section>
+<section id="trust-chain">
+<h3><span class="section-number">4.9.4. </span>Trust Chain<a class="headerlink" href="#trust-chain" title="Link to this heading">¶</a></h3>
+<p>La Trust Chain è una sequenza di dichiarazioni verificate che convalida la conformità di un partecipante alla Federazione. Ha una data e ora di scadenza, oltre la quale DEVE essere rinnovata per ottenere i metadati freschi e aggiornati. La data di scadenza della Trust Chain è determinata dal timestamp di scadenza più recente tra tutti i timestamp di scadenza contenuti nelle dichiarazioni. Nessuna Entità può forzare la data di scadenza della Trust Chain ad essere superiore a quella configurata dal Trust Anchor.</p>
+<p>Di seguito è riportata una rappresentazione astratta di una Trust Chain.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;EntityConfiguration-as-SignedJWT-selfissued-byLeaf&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;EntityStatement-as-SignedJWT-issued-byTrustAnchor&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Di seguito è riportato un esempio non normativo di una Trust Chain, composta da un Array JSON contenente JWT, con un Intermediario coinvolto.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk1OTA2MDIsImlhdCI6MTY0OTQxNzg2MiwiaXNzIjoiaHR0cHM6Ly9ycC5leGFtcGxlLm9yZyIsInN1YiI6Imh0dHBzOi8vcnAuZXhhbXBsZS5vcmciLCJqd2tzIjp7ImtleXMiOlt7Imt0eSI6IkVDIiwia2lkIjoiTkZNMVdVVmlVbFl6VVdwTGFtbGZjRXBQUlZZMlZYWklSakJuUVhabVJIaEtZVVZZVWxkVFFuQTJOQSIsImNydiI6IlAtMjU2IiwieCI6InVzbEMzd2QtcFgzd3o0YlJZbnd5M2x6cGJHWkZoTjk2aEwyQUhBM01RNlkiLCJ5IjoiVkxDQlhGV2xkTlNOSXo4a0gyOXZMUjROMThCa3dHT1gyNnpRb3J1UTFNNCJ9XX0sIm1ldGFkYXRhIjp7Im9wZW5pZF9yZWx5aW5nX3BhcnR5Ijp7ImFwcGxpY2F0aW9uX3R5cGUiOiJ3ZWIiLCJjbGllbnRfaWQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnLyIsImNsaWVudF9yZWdpc3RyYXRpb25fdHlwZXMiOlsiYXV0b21hdGljIl0sImp3a3MiOnsia2V5cyI6W3sia3R5IjoiRUMiLCJraWQiOiJORk0xV1VWaVVsWXpVV3BMYW1sZmNFcFBSVlkyVlhaSVJqQm5RWFptUkhoS1lVVllVbGRUUW5BMk5BIiwiY3J2IjoiUC0yNTYiLCJ4IjoidXNsQzN3ZC1wWDN3ejRiUllud3kzbHpwYkdaRmhOOTZoTDJBSEEzTVE2WSIsInkiOiJWTENCWEZXbGROU05JejhrSDI5dkxSNE4xOEJrd0dPWDI2elFvcnVRMU00In1dfSwiY2xpZW50X25hbWUiOiJOYW1lIG9mIGFuIGV4YW1wbGUgb3JnYW5pemF0aW9uIiwiY29udGFjdHMiOlsib3BzQHJwLmV4YW1wbGUuaXQiXSwiZ3JhbnRfdHlwZXMiOlsicmVmcmVzaF90b2tlbiIsImF1dGhvcml6YXRpb25fY29kZSJdLCJyZWRpcmVjdF91cmlzIjpbImh0dHBzOi8vcnAuZXhhbXBsZS5vcmcvb2lkYy9ycC9jYWxsYmFjay8iXSwicmVzcG9uc2VfdHlwZXMiOlsiY29kZSJdLCJzY29wZSI6ImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSBldS5ldXJvcGEuZWMuZXVkaXcucGlkLml0LjEgZW1haWwiLCJzdWJqZWN0X3R5cGUiOiJwYWlyd2lzZSJ9LCJmZWRlcmF0aW9uX2VudGl0eSI6eyJmZWRlcmF0aW9uX3Jlc29sdmVfZW5kcG9pbnQiOiJodHRwczovL3JwLmV4YW1wbGUub3JnL3Jlc29sdmUvIiwib3JnYW5pemF0aW9uX25hbWUiOiJFeGFtcGxlIFJQIiwiaG9tZXBhZ2VfdXJpIjoiaHR0cHM6Ly9ycC5leGFtcGxlLml0IiwicG9saWN5X3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9wb2xpY3kiLCJsb2dvX3VyaSI6Imh0dHBzOi8vcnAuZXhhbXBsZS5pdC9zdGF0aWMvbG9nby5zdmciLCJjb250YWN0cyI6WyJ0ZWNoQGV4YW1wbGUuaXQiXX19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3JlZ2lzdHJ5LmVpZGFzLnRydXN0LWFuY2hvci5leGFtcGxlLmV1L29wZW5pZF9yZWx5aW5nX3BhcnR5L3B1YmxpYy8iLCJ0cnVzdF9tYXJrIjoiZXlKaCBcdTIwMjYifV0sImF1dGhvcml0eV9oaW50cyI6WyJodHRwczovL2ludGVybWVkaWF0ZS5laWRhcy5leGFtcGxlLm9yZyJdfQ.Un315HdckvhYA-iRregZAmL7pnfjQH2APz82blQO5S0sl1JR0TEFp5E1T913g8GnuwgGtMQUqHPZwV6BvTLA8g&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZWlkYXMuZXhhbXBsZS5vcmciLCJzdWIiOiJodHRwczovL3JwLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6Ik5GTTFXVVZpVWxZelVXcExhbWxmY0VwUFJWWTJWWFpJUmpCblFYWm1SSGhLWVVWWVVsZFRRbkEyTkEiLCJjcnYiOiJQLTI1NiIsIngiOiJ1c2xDM3dkLXBYM3d6NGJSWW53eTNsenBiR1pGaE45NmhMMkFIQTNNUTZZIiwieSI6IlZMQ0JYRldsZE5TTkl6OGtIMjl2TFI0TjE4Qmt3R09YMjZ6UW9ydVExTTQifV19LCJtZXRhZGF0YV9wb2xpY3kiOnsib3BlbmlkX3JlbHlpbmdfcGFydHkiOnsic2NvcGUiOnsic3Vic2V0X29mIjpbImV1LmV1cm9wYS5lYy5ldWRpdy5waWQuMSwgIGV1LmV1cm9wYS5lYy5ldWRpdy5waWQuaXQuMSJdfSwicmVxdWVzdF9hdXRoZW50aWNhdGlvbl9tZXRob2RzX3N1cHBvcnRlZCI6eyJvbmVfb2YiOlsicmVxdWVzdF9vYmplY3QiXX0sInJlcXVlc3RfYXV0aGVudGljYXRpb25fc2lnbmluZ19hbGdfdmFsdWVzX3N1cHBvcnRlZCI6eyJzdWJzZXRfb2YiOlsiUlMyNTYiLCJSUzUxMiIsIkVTMjU2IiwiRVM1MTIiLCJQUzI1NiIsIlBTNTEyIl19fX0sInRydXN0X21hcmtzIjpbeyJpZCI6Imh0dHBzOi8vdHJ1c3QtYW5jaG9yLmV4YW1wbGUuZXUvb3BlbmlkX3JlbHlpbmdfcGFydHkvcHVibGljLyIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19._qt5-T6DahP3TuWa_27klE8I9Z_sPK2FtQlKY6pGMPchbSI2aHXY3aAXDUrObPo4CHtqgg3J2XcrghDFUCFGEQ&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImVXa3pUbWt0WW5kblZHMWxhMjU1ZDJkQ2RVZERSazQwUWt0WVlVMWFhRFZYT1RobFpHdFdXSGQ1WnciLCJ0eXAiOiJhcHBsaWNhdGlvbi9lbnRpdHktc3RhdGVtZW50K2p3dCJ9.eyJleHAiOjE2NDk2MjM1NDYsImlhdCI6MTY0OTQ1MDc0NiwiaXNzIjoiaHR0cHM6Ly90cnVzdC1hbmNob3IuZXhhbXBsZS5ldSIsInN1YiI6Imh0dHBzOi8vaW50ZXJtZWRpYXRlLmVpZGFzLmV4YW1wbGUub3JnIiwiandrcyI6eyJrZXlzIjpbeyJrdHkiOiJFQyIsImtpZCI6IlNURkRXV2hKY0dWWFgzQjNSVmRaYWtsQ0xUTnVNa000WTNGNlFUTk9kRXRyZFhGWVlYWjJjWGN0UVEiLCJjcnYiOiJQLTI1NiIsIngiOiJyQl9BOGdCUnh5NjhVTkxZRkZLR0ZMR2VmWU5XYmgtSzh1OS1GYlQyZkZJIiwieSI6IlNuWVk2Y3NjZnkxcjBISFhLTGJuVFZsamFndzhOZzNRUEs2WFVoc2UzdkUifV19LCJ0cnVzdF9tYXJrcyI6W3siaWQiOiJodHRwczovL3RydXN0LWFuY2hvci5leGFtcGxlLmV1L2ZlZGVyYXRpb25fZW50aXR5L3RoYXQtcHJvZmlsZSIsInRydXN0X21hcmsiOiJleUpoYiBcdTIwMjYifV19.r3uoi-U0tx0gDFlnDdITbcwZNUpy7M2tnh08jlD-Ej9vMzWMCXOCCuwIn0ZT0jS4M_sHneiG6tLxRqj-htI70g&quot;</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>L'intera Trust Chain è verificabile possedendo solo le chiavi pubbliche del Trust Anchor.</p>
+</div>
+<p>Ci sono eventi in cui le chiavi non sono disponibili per verificare l'intera trust chain:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Cambio di Chiave da parte del Credential Issuer</strong>: Il Credential Issuer PUÒ aggiornare le sue chiavi crittografiche. Le chiavi crittografiche DEVONO essere considerate valide se valutate all'interno del loro periodo di validità originariamente designato a meno che un motivo di sicurezza non le renda inutilizzabili. Il motivo della revoca DEVE essere pubblicato. Le chiavi crittografiche storiche, cioè le chiavi crittografiche pubbliche inutilizzate o revocate, DEVONO essere pubblicate utilizzando l'Endpoint Federation Historical Keys.</p></li>
+<li><p><strong>Modifica nei Tipi di Credenziali</strong>: Se il Credential Issuer modifica i <strong>tipi</strong> di Credenziali emesse, ad esempio decidendo di non emettere più uno o più tipi di Credenziali, le relative chiavi crittografiche pubbliche DEVONO essere disponibili per il periodo di validità originariamente designato.</p></li>
+<li><p><strong>Fusione di Credential Issuer</strong>: Se un Credential Issuer si fonde con un altro, creando una nuova Entità Organizzativa o lavorando per conto di un'altra utilizzando un hostname o dominio diverso, la configurazione della federazione <strong>precedentemente</strong> disponibile e le chiavi storiche DEVONO essere mantenute disponibili agli endpoint well-known originali del Credential Issuer.</p></li>
+<li><p><strong>Il Credential Issuer diventa inattivo</strong>: Se un Credential Issuer diventa inattivo, la sua Entity Configuration <strong>correlata</strong> e l'Endpoint Federation Historical Entity DEVONO essere mantenuti disponibili.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="meccanismi-di-attestazione-della-fiducia-offline">
+<h3><span class="section-number">4.9.5. </span>Meccanismi di Attestazione della Fiducia Offline<a class="headerlink" href="#meccanismi-di-attestazione-della-fiducia-offline" title="Link to this heading">¶</a></h3>
+<p>I flussi offline non consentono la valutazione in tempo reale dello stato di un'Entità, come la sua revoca. Allo stesso tempo, l'utilizzo di Trust Chain di breve durata consente il raggiungimento di attestazioni di fiducia compatibili con i protocolli amministrativi di revoca richiesti (ad esempio, una revoca deve essere propagata in meno di 24 ore, quindi la Trust Chain non deve essere valida per più di quel periodo).</p>
+<section id="attestazione-della-fiducia-del-wallet-offline">
+<h4><span class="section-number">4.9.5.1. </span>Attestazione della Fiducia del Wallet Offline<a class="headerlink" href="#attestazione-della-fiducia-del-wallet-offline" title="Link to this heading">¶</a></h4>
+<p>Dato che l'Istanza del Wallet non può pubblicare i suoi metadati online all'endpoint <em>.well-known/openid-federation</em>,
+DEVE ottenere un Wallet Attestation emesso dal suo Fornitore di Wallet. Il Wallet Attestation DEVE contenere tutte le informazioni rilevanti riguardanti le capacità di sicurezza dell'Istanza del Wallet e la sua configurazione relativa al protocollo. DOVREBBE contenere la Trust Chain relativa al suo emittente (Fornitore di Wallet).</p>
+</section>
+<section id="metadati-offline-della-relying-party">
+<h4><span class="section-number">4.9.5.2. </span>Metadati Offline della Relying Party<a class="headerlink" href="#metadati-offline-della-relying-party" title="Link to this heading">¶</a></h4>
+<p>Poiché la Scoperta dell'Entità di Federazione è applicabile solo in scenari online, è possibile includere la Trust Chain nelle richieste di presentazione che la Relying Party può emettere per un'Istanza del Wallet.</p>
+<p>La Relying Party DEVE firmare la richiesta di presentazione, la richiesta DOVREBBE includere il claim <cite>trust_chain</cite> nei parametri dell'intestazione JWT, contenente la Trust Chain della Federazione relativa a se stessa.</p>
+<p>L'Istanza del Wallet che verifica la richiesta emessa dalla Relying Party DEVE utilizzare le chiavi pubbliche del Trust Anchor per convalidare l'intera Trust Chain relativa alla Relying Party prima di attestarne l'affidabilità.</p>
+<p>Inoltre, l'Istanza del Wallet applica la policy dei metadati, se presente.</p>
+</section>
+</section>
+</section>
+<section id="rinnovo-rapido-della-trust-chain">
+<h2><span class="section-number">4.10. </span>Rinnovo Rapido della Trust Chain<a class="headerlink" href="#rinnovo-rapido-della-trust-chain" title="Link to this heading">¶</a></h2>
+<p>Il metodo di rinnovo rapido della Trust Chain offre un modo semplificato per mantenere la validità di una trust chain senza dover sottoporre nuovamente l'intero processo di scoperta.
+È particolarmente utile per aggiornare rapidamente le Relazioni di Trust quando si verificano modifiche minori o quando la
+Trust Chain è vicina alla scadenza ma la struttura complessiva della federazione non è cambiata in modo significativo.</p>
+<p>Il processo di rinnovo rapido della Trust Chain viene avviato recuperando nuovamente l'Entity Configuration della foglia. Tuttavia, a differenza del processo di scoperta della federazione che può comportare il recupero delle Entity Configuration a partire dagli authority hints, il rinnovo rapido si concentra sull'ottenimento diretto dei Subordinate Statement. Queste dichiarazioni vengono richieste utilizzando il <cite>source_endpoint</cite> fornito al loro interno, che indica la posizione in cui le dichiarazioni possono essere recuperate.</p>
+</section>
+<section id="non-ripudiabilita-delle-attestazioni-di-lunga-durata">
+<h2><span class="section-number">4.11. </span>Non-ripudiabilità delle Attestazioni di Lunga Durata<a class="headerlink" href="#non-ripudiabilita-delle-attestazioni-di-lunga-durata" title="Link to this heading">¶</a></h2>
+<p>Il Trust Anchor e il suo Intermediario DEVONO esporre l'endpoint Federation Historical Keys, dove sono pubblicate tutte le parti pubbliche delle Chiavi dell'Entità di Federazione che non sono più utilizzate, sia scadute che revocate.</p>
+<p>I dettagli di questo endpoint sono definiti nella Sezione 8.7 di <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p>
+<p>Ogni JWT contenente una Trust Chain nelle intestazioni JWT può essere verificato nel tempo, poiché l'intera Trust Chain è verificabile utilizzando la chiave pubblica del Trust Anchor.</p>
+<p>Anche se il Trust Anchor ha cambiato le sue chiavi crittografiche per la firma digitale, l'endpoint Federation Historical Keys rende sempre disponibili le chiavi non più utilizzate per le verifiche storiche delle firme.</p>
+</section>
+<section id="x-509-pki">
+<h2><span class="section-number">4.12. </span>X.509 PKI<a class="headerlink" href="#x-509-pki" title="Link to this heading">¶</a></h2>
+<p>L'Infrastruttura a Chiave Pubblica X.509 (PKI) è un framework progettato per creare, gestire, distribuire, utilizzare, archiviare e revocare Certificati digitali X.509. Al centro della PKI X.509 c'è il concetto di Autorità di Certificazione (CA), che emette certificati digitali alle entità. Questi certificati sono necessari per stabilire comunicazioni sicure sulle reti, incluso internet, abilitando funzionalità di crittografia e firma digitale. La gerarchia PKI tipicamente coinvolge una CA root al vertice, con una o più CA subordinate al di sotto, formando una catena di fiducia. Le entità si affidano a questa catena di fiducia per verificare l'autenticità dei certificati. Gli standard X.509 definiscono il formato dei certificati a chiave pubblica.</p>
+<p>L'integrazione di OpenID Federation 1.0 con la tradizionale PKI basata su X.509 (rfc:5280), complementata da un'API RESTful, mira a migliorare l'infrastruttura con funzionalità aggiuntive, rendendola navigabile e trasparente.</p>
+<p>Questo approccio sfrutta la natura dinamica e flessibile di OpenID Federation insieme al requisito dei Certificati X.509 per applicazioni legacy e scopi di interoperabilità, mirando ad affrontare le esigenze in evoluzione di verifica dello stato di registrazione dei partecipanti alla federazione, la loro conformità alle regole condivise e la gestione generale e interoperabile della fiducia negli ecosistemi digitali multilaterali.</p>
+<p>OpenID Federation e PKI basata su X.509 condividono diverse cose in comune, come elencato di seguito:</p>
+<ul class="simple">
+<li><p><strong>Approccio Gerarchico</strong>: entrambi utilizzano un Modello di Trust gerarchico con una singola, sovrastante terza parte fidata, nota come Trust Anchor, che è fidata sopra tutte le altre.</p></li>
+<li><p><strong>Decentralizzazione con Multipli Trust Anchor e Intermediari</strong>: nonostante un unico modello gerarchico, la possibilità di avere multipli Trust Anchor e Intermediari, sotto uno o più Trust Anchor, introduce un livello di decentralizzazione.</p></li>
+<li><p><strong>Estensioni Personalizzate</strong>: entrambi i sistemi consentono estensioni personalizzate per soddisfare requisiti specifici o per migliorare la funzionalità. I Certificati X.509 supportano estensioni personalizzate, OpenID Federation consente la definizione di metadati specifici del protocollo personalizzati, Trust Mark e politiche utilizzando un Policy Language.</p></li>
+<li><p><strong>Trust/Certificate Chain</strong>: si basano su una prova a catena di fiducia, dove la fiducia viene trasmessa dall'autorità root (Trust Anchor) attraverso gli Intermediari all'entità finale (Foglia).</p></li>
+<li><p><strong>Vincoli nella Catena</strong>: possono essere applicati vincoli all'interno della Trust Chain riguardanti aspetti critici come la delega della fiducia, il numero di intermediari e i domini coinvolti.</p></li>
+<li><p><strong>Distribuzione della Chiave Pubblica</strong>: Entrambi i sistemi comportano la distribuzione della chiave pubblica del Trust Anchor per garantire che le entità possano verificare la trust chain.</p></li>
+<li><p><strong>Registro delle Chiavi Scadute</strong>: Mantenere un registro delle chiavi scadute è cruciale per entrambi, garantendo la non ripudiabilità delle firme passate anche quando le chiavi cambiano.</p></li>
+</ul>
+<section id="trust-anchor-della-federazione-e-ca-x-509">
+<h3><span class="section-number">4.12.1. </span>Trust Anchor della Federazione e CA X.509<a class="headerlink" href="#trust-anchor-della-federazione-e-ca-x-509" title="Link to this heading">¶</a></h3>
+<p>Nel contesto di OpenID Federation, il Trust Anchor svolge un ruolo simile a quello di un'Autorità di Certificazione (CA) nelle Infrastrutture a Chiave Pubblica (PKI) basate su X.509. Entrambi servono come elementi fondamentali di fiducia all'interno dei rispettivi sistemi. In questo documento, il termine &quot;Trust Anchor&quot; è spesso usato per comprendere entrambi i concetti. L'infrastruttura di fiducia descritta qui allinea il Trust Anchor di OpenID Federation con l'Autorità di Certificazione PKI X.509, rendendoli quindi un'unica entità che supporta sia <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5280">RFC 5280</a> che OpenID Federation 1.0.</p>
+</section>
+<section id="emissione-di-certificati-x-509">
+<h3><span class="section-number">4.12.2. </span>Emissione di Certificati X.509<a class="headerlink" href="#emissione-di-certificati-x-509" title="Link to this heading">¶</a></h3>
+<p>In una OpenID Federation, ogni partecipante è tenuto ad auto-emettere la propria Entity Configuration, firmandola con una delle sue chiavi crittografiche che sono attestate dai Superiori Immediati.</p>
+<p>Allo stesso modo, ogni entità di federazione ha l'autonomia di emettere una dichiarazione firmata su se stessa sotto forma di un Certificato X.509.
+I partecipanti alla federazione che hanno bisogno di emettere Certificati X.509 su se stessi e per i loro scopi specifici, possono emettere e firmare Certificati X.509 utilizzando una delle loro Chiavi di Entità di Federazione attestate dalle loro Autorità di Federazione (Superiore Immediato). Questo processo allinea l'emissione di Certificati X.509 con il paradigma di delega della federazione.</p>
+<p>Questo è fattibile perché il Certificato X.509 può essere verificato utilizzando una Catena di Certificati X.509, simile all'approccio utilizzato per le Entity Configuration in OpenID Federation.</p>
+<p>Le Foglie della Federazione non sono Autorità di Certificazione (CA) o intermediari CA autorizzati a emettere certificati X.509 per i loro subordinati. Invece, le Foglie della Federazione agiscono come intermediari per l'emissione di certificati esclusivamente su se stesse. Questo viene realizzato applicando vincoli di denominazione appropriati per garantire che i certificati X.509 siano correttamente delimitati.
+I vincoli di denominazione sono applicati dai Superiori Immediati all'interno dei certificati emessi per l'entità Foglia, specificamente riguardanti le Chiavi di Entità di Federazione della Foglia. Di conseguenza, la Foglia può emettere certificati X.509 solo su se stessa, mantenendo così l'integrità della Trust Chain.</p>
+<p>Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti requisiti:</p>
+<ol class="arabic simple">
+<li><p><strong>Nome del Soggetto</strong>: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. In particolare, il campo <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> dovrebbe contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore <strong>sub</strong> (soggetto) nella sua Entity Configuration di federazione, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi percorso web.</p></li>
+<li><p><strong>Nome Alternativo del Soggetto (SAN)</strong>: Il Certificato X.509 DEVE includere un <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> che corrisponde al valore <strong>sub</strong> della sua Entity Configuration di federazione.</p></li>
+<li><p><strong>Nome DNS</strong>: Il Certificato X.509 DEVE includere un Nome DNS nel SAN che corrisponde al nome DNS contenuto nel valore <strong>sub</strong> della sua Entity Configuration, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi percorso web.</p></li>
+<li><p><strong>Lista di Revoca dei Certificati (CRL)</strong>: Se i Certificati X.509 emessi hanno un tempo di scadenza superiore a 24 ore, l'Emittente X.509 DEVE pubblicare una CRL per i Certificati X.509 emessi. Questa lista DEVE essere accessibile e regolarmente aggiornata per garantire che qualsiasi Certificato X.509 compromesso o non valido sia prontamente revocato con la motivazione della revoca, se presente.</p></li>
+<li><p><strong>Vincoli di Base</strong>: Il Certificato X.509 DEVE includere un'estensione <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> con <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> e una lunghezza massima del percorso di 1 se l'emittente del certificato è un Intermediario di Federazione, se è una Foglia, la lunghezza massima del percorso DEVE essere impostata a 0. Ciò indica che il Subordinato a cui si riferisce il certificato può emettere Certificati X.509 solo con una profondità di catena limitata.</p></li>
+<li><p><strong>Vincoli di Nome</strong>: Il Certificato X.509 DEVE includere <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> per specificare domini e URI consentiti ed esclusi. Ad esempio:</p>
+<ul class="simple">
+<li><p>Consentiti:
+- <code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS.1=leaf.example.com</span></code></p></li>
+<li><p>Esclusi:
+- <code class="docutils literal notranslate"><span class="pre">DNS=localhost</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=localhost.localdomain</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=127.0.0.1</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.com</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.org</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=example.net</span></code>
+- <code class="docutils literal notranslate"><span class="pre">DNS=*.example.org</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p>Di seguito è riportato un esempio non normativo, in formato testo semplice (formato OpenSSL), di una catena di certificati X.509 con una CA intermedia, a partire dal certificato Leaf.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 631900975802917176051117802358049194750736752223 (0x6eaf6b7456ab3c0a4b38f02bb6073db7ce925e5f)
+    Signature Algorithm: sha256
+        Issuer: commonName=https://intermediate.example.net, organizationName=Example INT, countryName=IT
+        Validity
+            Not Before: May 27 09:13:33 2025 GMT
+            Not After : May 28 09:13:33 2026 GMT
+        Subject: commonName=CN=leaf.example.com, O=Example Leaf, C=IT, organizationName=Example Leaf, countryName=IT
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey (EC)
+                Public-Key: (256 bit)
+                Curve: secp256r1
+                X: 69976109031737194756970051761651042204906873292535726068007861307666294009468
+                Y: 30041520431409736411496718565679258429461229569083348196905050642324938424017
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:TRUE, pathlen:0
+            X509v3 Subject Alternative Name:
+                DNS:leaf.example.org
+                URI:leaf.example.org
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
+            X509v3 CRL Distribution Points:
+                Full Name:
+                  URI:https://leaf.example.com/crl/leaf.example.com.crl
+            X509v3 Name Constraints:
+                Permitted:
+                  URI.1=https://leaf.example.com
+                  DNS.2=leaf.example.com
+                Excluded:
+                  DNS.1=localhost
+                  DNS.2=localhost.localdomain
+                  DNS.3=127.0.0.1
+                  DNS.4=example.com
+                  DNS.5=example.org
+                  DNS.6=example.net
+
+    Signature Algorithm: sha256
+     30:45:02:21:00:ee:0c:24:4c:ea:57:db:f8:54:68:77
+     92:bd:d7:e3:3d:ec:80:4e:84:b4:36:70:f3:00:0b:f0
+     cf:bf:07:c1:4a:02:20:70:1e:12:e4:c4:97:ba:95:36
+     e8:20:82:d6:f1:7f:4d:0d:41:4a:51:0a:c5:b2:5d:62
+     33:45:c5:b0:dc:28:0a
+
+-----BEGIN CERTIFICATE-----
+MIIC6jCCApCgAwIBAgIUbq9rdFarPApLOPArtgc9t86SXl8wCgYIKoZIzj0EAwIw
+TjEpMCcGA1UEAwwgaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZXhhbXBsZS5uZXQxFDAS
+BgNVBAoMC0V4YW1wbGUgSU5UMQswCQYDVQQGEwJJVDAeFw0yNTA1MjcwOTEzMzNa
+Fw0yNjA1MjgwOTEzMzNaMFgxMjAwBgNVBAMMKUNOPWxlYWYuZXhhbXBsZS5jb20s
+IE89RXhhbXBsZSBMZWFmLCBDPUlUMRUwEwYDVQQKDAxFeGFtcGxlIExlYWYxCzAJ
+BgNVBAYTAklUMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEmrUS/DeI3q5nTl0y
+U5nmAydnP8U4VQxoLb5EVXgCbnxCauXjmhQKpwjlACbOXY7iCBgdqq+1g8OWqMg2
+o5H+0aOCAUAwggE8MBIGA1UdEwEB/wQIMAYBAf8CAQAwLQYDVR0RBCYwJIIQbGVh
+Zi5leGFtcGxlLm9yZ4YQbGVhZi5leGFtcGxlLm9yZzAOBgNVHQ8BAf8EBAMCAaYw
+QgYDVR0fBDswOTA3oDWgM4YxaHR0cHM6Ly9sZWFmLmV4YW1wbGUuY29tL2NybC9s
+ZWFmLmV4YW1wbGUuY29tLmNybDCBogYDVR0eAQH/BIGXMIGUoDAwGoYYaHR0cHM6
+Ly9sZWFmLmV4YW1wbGUuY29tMBKCEGxlYWYuZXhhbXBsZS5jb22hYDALgglsb2Nh
+bGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAuCCTEyNy4wLjAuMTANggtl
+eGFtcGxlLmNvbTANggtleGFtcGxlLm9yZzANggtleGFtcGxlLm5ldDAKBggqhkjO
+PQQDAgNIADBFAiEA7gwkTOpX2/hUaHeSvdfjPeyAToS0NnDzAAvwz78HwUoCIHAe
+EuTEl7qVNugggtbxf00NQUpRCsWyXWIzRcWw3CgK
+-----END CERTIFICATE-----
+
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 396534572491127113022787686743653095280228078403 (0x457539a6ac314749fa5ec658f76ed225fd769343)
+    Signature Algorithm: sha256
+        Issuer: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Validity
+            Not Before: May 27 09:13:33 2025 GMT
+            Not After : May 28 09:13:33 2026 GMT
+        Subject: commonName=https://intermediate.example.net, organizationName=Example INT, countryName=IT
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey (EC)
+                Public-Key: (256 bit)
+                Curve: secp256r1
+                X: 25156074883156693989891139993064608529947553342874167037412394938695986639833
+                Y: 37747901399770759266458300753958501018530290808445029579181649667235295170256
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:TRUE, pathlen:1
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
+            X509v3 CRL Distribution Points:
+                Full Name:
+                  URI:https://intermediate.example.net/crl/intermediate.example.net.crl
+            X509v3 Name Constraints:
+                Excluded:
+                  DNS.1=localhost
+                  DNS.2=localhost.localdomain
+                  DNS.3=127.0.0.1
+                  DNS.4=example.com
+                  DNS.5=example.org
+                  DNS.6=example.net
+
+    Signature Algorithm: sha256
+     30:46:02:21:00:cb:1d:01:ee:1b:bf:a1:4d:36:42:d2
+     0a:7e:80:37:44:e6:e0:ae:6c:70:58:ea:4c:60:00:af
+     53:3b:11:f6:66:02:21:00:c6:08:73:d8:45:7e:e8:e9
+     5e:be:5b:68:9e:12:e9:a2:8e:95:31:01:1d:9e:99:04
+     17:d3:f3:54:71:1b:9f:ac
+
+-----BEGIN CERTIFICATE-----
+MIICjzCCAjSgAwIBAgIURXU5pqwxR0n6XsZY927SJf12k0MwCgYIKoZIzj0EAwIw
+UjEuMCwGA1UEAwwlQ049Y2EuZXhhbXBsZS5jb20sIE89RXhhbXBsZSBDQSwgQz1J
+VDETMBEGA1UECgwKRXhhbXBsZSBDQTELMAkGA1UEBhMCSVQwHhcNMjUwNTI3MDkx
+MzMzWhcNMjYwNTI4MDkxMzMzWjBOMSkwJwYDVQQDDCBodHRwczovL2ludGVybWVk
+aWF0ZS5leGFtcGxlLm5ldDEUMBIGA1UECgwLRXhhbXBsZSBJTlQxCzAJBgNVBAYT
+AklUMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEN53VdNZrwDIEoleHOjbgNAA9
+Ab6PeLajowvmkPNm89lTdI4YecjNJYS35wyhMEt+opXZukysBjRRO84M8I6O0KOB
+6zCB6DASBgNVHRMBAf8ECDAGAQH/AgEBMA4GA1UdDwEB/wQEAwIBpjBSBgNVHR8E
+SzBJMEegRaBDhkFodHRwczovL2ludGVybWVkaWF0ZS5leGFtcGxlLm5ldC9jcmwv
+aW50ZXJtZWRpYXRlLmV4YW1wbGUubmV0LmNybDBuBgNVHR4BAf8EZDBioWAwC4IJ
+bG9jYWxob3N0MBeCFWxvY2FsaG9zdC5sb2NhbGRvbWFpbjALggkxMjcuMC4wLjEw
+DYILZXhhbXBsZS5jb20wDYILZXhhbXBsZS5vcmcwDYILZXhhbXBsZS5uZXQwCgYI
+KoZIzj0EAwIDSQAwRgIhAMsdAe4bv6FNNkLSCn6AN0Tm4K5scFjqTGAAr1M7EfZm
+AiEAxghz2EV+6OlevltonhLpoo6VMQEdnpkEF9PzVHEbn6w=
+-----END CERTIFICATE-----
+
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 284423255585370380375410701638165198317432410917 (0x31d1fad9752ce503dbbacd0bf76abc930d651325)
+    Signature Algorithm: sha256
+        Issuer: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Validity
+            Not Before: May 27 09:13:33 2025 GMT
+            Not After : May 28 09:13:33 2026 GMT
+        Subject: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey (EC)
+                Public-Key: (256 bit)
+                Curve: secp256r1
+                X: 7607860515366991947250115130866123391572079251785604713950047686319787674406
+                Y: 74493290682810963932331564302963289249956540428755890573822716633130571216251
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:TRUE, pathlen:2
+            X509v3 Subject Alternative Name:
+                DNS:ca.example.com
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
+            X509v3 CRL Distribution Points:
+                Full Name:
+                  URI:https://ca.example.com/crl/ca.example.com.crl
+            X509v3 Name Constraints:
+                Excluded:
+                  DNS.1=localhost
+                  DNS.2=localhost.localdomain
+                  DNS.3=127.0.0.1
+                  DNS.4=example.com
+                  DNS.5=example.org
+                  DNS.6=example.net
+
+    Signature Algorithm: sha256
+     30:46:02:21:00:b9:6c:2c:6f:9a:18:b8:04:d6:39:d3
+     50:dd:e6:a6:ce:9b:f0:d8:64:48:7b:4b:33:2e:fe:d9
+     3d:13:81:4c:d4:02:21:00:ab:10:9d:f1:0f:64:d8:dc
+     76:53:d1:e3:32:b1:65:b7:97:83:d7:69:0f:5a:da:9b
+     1e:a4:a9:a3:88:98:6b:5f
+
+-----BEGIN CERTIFICATE-----
+MIICmjCCAj+gAwIBAgIUMdH62XUs5QPbus0L92q8kw1lEyUwCgYIKoZIzj0EAwIw
+UjEuMCwGA1UEAwwlQ049Y2EuZXhhbXBsZS5jb20sIE89RXhhbXBsZSBDQSwgQz1J
+VDETMBEGA1UECgwKRXhhbXBsZSBDQTELMAkGA1UEBhMCSVQwHhcNMjUwNTI3MDkx
+MzMzWhcNMjYwNTI4MDkxMzMzWjBSMS4wLAYDVQQDDCVDTj1jYS5leGFtcGxlLmNv
+bSwgTz1FeGFtcGxlIENBLCBDPUlUMRMwEQYDVQQKDApFeGFtcGxlIENBMQswCQYD
+VQQGEwJJVDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABBDR5X4r9VUDnU5X2rIf
+xDo7DFNodgP2AD4jzqrETwsmpLG1V9s1bu+zyFrnGVvKmoqR0kOeZ1/vyN5vhMcx
+NXujgfIwge8wEgYDVR0TAQH/BAgwBgEB/wIBAjAZBgNVHREEEjAQgg5jYS5leGFt
+cGxlLmNvbTAOBgNVHQ8BAf8EBAMCAaYwPgYDVR0fBDcwNTAzoDGgL4YtaHR0cHM6
+Ly9jYS5leGFtcGxlLmNvbS9jcmwvY2EuZXhhbXBsZS5jb20uY3JsMG4GA1UdHgEB
+/wRkMGKhYDALgglsb2NhbGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAuC
+CTEyNy4wLjAuMTANggtleGFtcGxlLmNvbTANggtleGFtcGxlLm9yZzANggtleGFt
+cGxlLm5ldDAKBggqhkjOPQQDAgNJADBGAiEAuWwsb5oYuATWOdNQ3eamzpvw2GRI
+e0szLv7ZPROBTNQCIQCrEJ3xD2TY3HZT0eMysWW3l4PXaQ9a2psepKmjiJhrXw==
+-----END CERTIFICATE-----
+</pre></div>
+</div>
+<p>I partecipanti alla federazione possono garantire che i loro certificati siano coerenti, consentendo l'interoperabilità e la sicurezza in tutta la federazione. Questo approccio, che consente la delega dell'emissione di certificati X.509, introduce pratiche innovative per la gestione dei certificati utilizzando le Relazioni di Trust sottostanti stabilite all'interno di OpenID Federation.</p>
+</section>
+<section id="revoca-del-certificato-x-509">
+<h3><span class="section-number">4.12.3. </span>Revoca del Certificato X.509<a class="headerlink" href="#revoca-del-certificato-x-509" title="Link to this heading">¶</a></h3>
+<p>Un Certificato X.509 può essere revocato dal suo Emittente.
+Le liste di revoca, e/o qualsiasi altro meccanismo di controllo della revoca, sono richiesti solo per i Certificati X.509 con tempo di scadenza superiore a 24 ore, altrimenti non sono richiesti.</p>
+<p>Quando l'emittente del Certificato X.509 è la Foglia e quindi il Certificato X.509 riguarda se stessa, se il tempo di scadenza del certificato è superiore a 24 ore dal tempo <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code>, DEVE implementare una CRL relativa al certificato emesso e mantenerla aggiornata.
+Quando l'emittente del Certificato X.509 è un Superiore immediato, come il Trust Anchor o un Intermediario, e revoca il certificato relativo alla Foglia, quindi il Certificato X.509 relativo a una delle Chiavi di Entità di Federazione della Foglia. Questa azione invalida l'intera Trust Chain associata a quella chiave pubblica crittografica della Foglia, rimuovendo efficacemente la sua capacità di emettere ulteriori Certificati X.509 su se stessa. Questo meccanismo di revoca gerarchico garantisce che qualsiasi compromissione o comportamento scorretto da parte di un'entità Foglia possa essere rapidamente affrontato.</p>
+<p>Di seguito un esempio non normativo, in testo semplice, che esemplifica il contenuto di una CRL.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Revocation List (CRL):
+Version: 2 (0x1)
+Signature Algorithm: sha256WithRSAEncryption
+Issuer: CN=https://leaf.example.org, O=Leaf, C=IT
+Last Update: Sep 1 00:00:00 2023 GMT
+Next Update: Sep 8 00:00:00 2023 GMT
+Revoked Certificates:
+    Serial Number: 987654320
+        Revocation Date: Aug 25 12:00:00 2023 GMT
+        CRL Entry Extensions:
+            Reason Code: Key Compromise
+    Serial Number: 987654321
+        Revocation Date: Aug 30 15:00:00 2023 GMT
+        CRL Entry Extensions:
+            Reason Code: Cessation of Operation
+Signature Algorithm: sha256WithRSAEncryption
+Signature:
+    5c:4f:3b:...
+</pre></div>
+</div>
+<p>Utilizzando il livello sottostante stabilito con OpenID Federation 1.0, tutti i certificati X.509 sono emessi in modo adeguatamente decentralizzato utilizzando il pattern di delega.</p>
+</section>
+</section>
+<section id="note-sulla-privacy">
+<h2><span class="section-number">4.13. </span>Note sulla Privacy<a class="headerlink" href="#note-sulla-privacy" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Le Istanze del Wallet NON DEVONO pubblicare i loro metadati attraverso un servizio online.</p></li>
+<li><p>L'infrastruttura di trust DEVE essere pubblica, con tutti gli endpoint pubblicamente accessibili senza alcuna Credenziale client che possa rivelare chi sta richiedendo l'accesso.</p></li>
+<li><p>Quando un'Istanza del Wallet richiede i Subordinate Statement per costruire la Trust Chain per una specifica Relying Party o convalida un Trust Mark online, emesso per una specifica Relying Party, il Trust Anchor o il suo Intermediario non sanno che una particolare Istanza del Wallet sta chiedendo informazioni su una specifica Relying Party; invece, servono solo le dichiarazioni relative a quella Relying Party come risorsa pubblica.</p></li>
+<li><p>I metadati dell'Istanza del Wallet NON DEVONO contenere informazioni che possano rivelare informazioni tecniche sull'hardware utilizzato.</p></li>
+<li><p>I metadati dell'entità Foglia, dell'Intermediario e del Trust Anchor possono includere la quantità necessaria di dati come parte delle informazioni di contatto amministrativo, tecnico e di sicurezza. Generalmente non è raccomandato utilizzare dettagli di contatto personali in tali casi. Da una prospettiva legale, la pubblicazione di tali informazioni è necessaria per il supporto operativo riguardante questioni tecniche e di sicurezza e la regolamentazione GDPR.</p></li>
+</ul>
+</section>
+<section id="considerazioni-sulla-decentralizzazione">
+<h2><span class="section-number">4.14. </span>Considerazioni sulla Decentralizzazione<a class="headerlink" href="#considerazioni-sulla-decentralizzazione" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Ci possono essere più di un singolo Trust Anchor.</p></li>
+<li><p>In alcuni casi, un verificatore di fiducia può fidarsi di un Intermediario, specialmente quando l'Intermediario agisce come un Trust Anchor all'interno di un perimetro specifico, come casi in cui le Foglie sono entrambe nello stesso perimetro come una giurisdizione di Stato Membro (ad esempio: una Relying Party italiana con un'Istanza del Wallet italiana può considerare l'Intermediario italiano come un Trust Anchor per gli scopi delle loro interazioni).</p></li>
+<li><p>Le attestazioni di fiducia (Trust Chain) dovrebbero essere incluse nel JWT emesso dai Credential Issuer, e le Richieste di Presentazione delle RP dovrebbero contenere la Trust Chain relativa a loro (emittenti delle richieste di presentazione).</p></li>
+<li><p>Poiché la presentazione delle Credenziali deve essere firmata, memorizzando le richieste e le risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione della federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile della Relying Party con cui ha interagito.</p></li>
+<li><p>Ogni attestazione firmata è di lunga durata poiché può essere crittograficamente convalidata anche quando la configurazione della federazione cambia o le chiavi dei suoi emittenti vengono rinnovate.</p></li>
+<li><p>Ogni partecipante dovrebbe essere in grado di aggiornare la propria Entity Configuration senza notificare le modifiche a terze parti. La policy dei metadati contenuta all'interno di una Trust Chain deve essere applicata per sovrascrivere qualsiasi informazione relativa ai metadati specifici del protocollo.</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">4. L'Infrastruttura di Trust</a><ul>
+<li><a class="reference internal" href="#ruoli-della-federazione">4.1. Ruoli della Federazione</a></li>
+<li><a class="reference internal" href="#proprieta-generali">4.2. Proprietà Generali</a></li>
+<li><a class="reference internal" href="#requisiti-dell-infrastruttura-di-trust">4.3. Requisiti dell'Infrastruttura di Trust</a></li>
+<li><a class="reference internal" href="#endpoint-api-della-federazione">4.4. Endpoint API della Federazione</a></li>
+<li><a class="reference internal" href="#configurazione-della-federazione">4.5. Configurazione della Federazione</a></li>
+<li><a class="reference internal" href="#entity-configuration">4.6. Entity Configuration</a><ul>
+<li><a class="reference internal" href="#parametri-comuni-delle-entity-configuration">4.6.1. Parametri Comuni delle Entity Configuration</a></li>
+<li><a class="reference internal" href="#entity-configuration-trust-anchor">4.6.2. Entity Configuration Trust Anchor</a></li>
+<li><a class="reference internal" href="#entity-configuration-foglie-e-intermediari">4.6.3. Entity Configuration Foglie e Intermediari</a></li>
+<li><a class="reference internal" href="#id1">4.6.4. Tipi di Metadati</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metadati-delle-foglie-federation-entity">4.7. Metadati delle Foglie federation_entity</a></li>
+<li><a class="reference internal" href="#subordinate-statements">4.8. Subordinate Statements</a><ul>
+<li><a class="reference internal" href="#subordinate-statement">4.8.1. Subordinate Statement</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#meccanismo-di-valutazione-della-fiducia">4.9. Meccanismo di Valutazione della Fiducia</a><ul>
+<li><a class="reference internal" href="#stabilire-la-fiducia-con-i-credential-issuer">4.9.1. Stabilire la Fiducia con i Credential Issuer</a></li>
+<li><a class="reference internal" href="#stabilire-la-fiducia-con-la-relying-party">4.9.2. Stabilire la Fiducia con la Relying Party</a></li>
+<li><a class="reference internal" href="#valutazione-della-fiducia-con-i-wallet">4.9.3. Valutazione della Fiducia con i Wallet</a></li>
+<li><a class="reference internal" href="#trust-chain">4.9.4. Trust Chain</a></li>
+<li><a class="reference internal" href="#meccanismi-di-attestazione-della-fiducia-offline">4.9.5. Meccanismi di Attestazione della Fiducia Offline</a><ul>
+<li><a class="reference internal" href="#attestazione-della-fiducia-del-wallet-offline">4.9.5.1. Attestazione della Fiducia del Wallet Offline</a></li>
+<li><a class="reference internal" href="#metadati-offline-della-relying-party">4.9.5.2. Metadati Offline della Relying Party</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rinnovo-rapido-della-trust-chain">4.10. Rinnovo Rapido della Trust Chain</a></li>
+<li><a class="reference internal" href="#non-ripudiabilita-delle-attestazioni-di-lunga-durata">4.11. Non-ripudiabilità delle Attestazioni di Lunga Durata</a></li>
+<li><a class="reference internal" href="#x-509-pki">4.12. X.509 PKI</a><ul>
+<li><a class="reference internal" href="#trust-anchor-della-federazione-e-ca-x-509">4.12.1. Trust Anchor della Federazione e CA X.509</a></li>
+<li><a class="reference internal" href="#emissione-di-certificati-x-509">4.12.2. Emissione di Certificati X.509</a></li>
+<li><a class="reference internal" href="#revoca-del-certificato-x-509">4.12.3. Revoca del Certificato X.509</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#note-sulla-privacy">4.13. Note sulla Privacy</a></li>
+<li><a class="reference internal" href="#considerazioni-sulla-decentralizzazione">4.14. Considerazioni sulla Decentralizzazione</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="functionalities.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">3.1. </span>Funzionalità</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="entities.html"><span><span class="section-number">5. </span>Entità</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Ultimo aggiornamento 30/05/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8.1. Wallet Provider Endpoints &#8212; IT-Wallet Technical Documentation - PR #738 - 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8.2. Credential Issuer Endpoints" href="credential-issuer-endpoint.html" />
+    <link rel="prev" title="8. Endpoints" href="endpoints.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #738 - 1.0.0</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">8. Endpoints</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.1. Wallet Provider Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Credential Issuer Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">8.3. Relying Party Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">8.4. Authentic Source Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="wallet-provider-endpoints">
+<h1><span class="section-number">8.1. </span>Wallet Provider Endpoints<a class="headerlink" href="#wallet-provider-endpoints" title="Link to this heading">¶</a></h1>
+<p>The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose the endpoints to support trust establishment and essential Wallet Instance functionalities. These include the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> Federation Endpoint which MUST adhere to the OpenID Federation 1.0 specification to reliably establish trust with the Wallet Provider's as well as, endpoints for Wallet Instance registration, nonce generation (required for registration), attestation issuance, and revocation. Aside from the Federation endpoint, the implementation details of the others are left to the Wallet Provider's discretion.</p>
+<section id="id1">
+<h2><span class="section-number">8.1.1. </span>Federation Endpoint<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint serves as the discovery mechanism for trust establishment by retrieving the Wallet Provider Entity Configuration.</p>
+<p>See Section <a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a> for technical details.</p>
+</section>
+<section id="wallet-solution-nonce-endpoint">
+<h2><span class="section-number">8.1.2. </span>Wallet Solution Nonce Endpoint<a class="headerlink" href="#wallet-solution-nonce-endpoint" title="Link to this heading">¶</a></h2>
+<p>This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.</p>
+<p>See <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request"><span class="std std-ref">Mobile Application Nonce Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-response"><span class="std std-ref">Mobile Application Nonce Response</span></a> for details on the Nonce Request and Nonce Response.</p>
+</section>
+<section id="wallet-instance-management-endpoint">
+<h2><span class="section-number">8.1.3. </span>Wallet Instance Management Endpoint<a class="headerlink" href="#wallet-instance-management-endpoint" title="Link to this heading">¶</a></h2>
+<p>This is a RESTful API endpoint provided by the Wallet Provider that enables Wallet Instance management, including registration, status retrieval, revocation upon request (e.g., by the User), and deletion.
+The following sections describe the registration, status retrieval and revocation requests, along with their corresponding responses, handled by this endpoint, which are required for core <a class="reference internal" href="wallet-instance-functionalities.html#id1"><span class="std std-ref">Wallet Instance Functionalities</span></a>.</p>
+<section id="wallet-instance-registration-request">
+<h3><span class="section-number">8.1.3.1. </span>Wallet Instance Registration Request<a class="headerlink" href="#wallet-instance-registration-request" title="Link to this heading">¶</a></h3>
+<p>To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <cite>application/json</cite>. The request body MUST contain the claims described in <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a>.</p>
+</section>
+<section id="wallet-instance-registration-response">
+<h3><span class="section-number">8.1.3.2. </span>Wallet Instance Registration Response<a class="headerlink" href="#wallet-instance-registration-response" title="Link to this heading">¶</a></h3>
+<p>If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a>.</p>
+</section>
+<section id="wallet-instance-retrieval-request">
+<h3><span class="section-number">8.1.3.3. </span>Wallet Instance Retrieval Request<a class="headerlink" href="#wallet-instance-retrieval-request" title="Link to this heading">¶</a></h3>
+<p>To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For retrieving a specific Wallet Instance, the request MUST include the Wallet Instance ID as a path parameter.</p>
+</div>
+</section>
+<section id="wallet-instance-retrieval-response">
+<h3><span class="section-number">8.1.3.4. </span>Wallet Instance Retrieval Response<a class="headerlink" href="#wallet-instance-retrieval-response" title="Link to this heading">¶</a></h3>
+<p>If a Wallet Instance Retrieval Request is successfully processed, the Wallet Provider MUST return an HTTP Response with a 200 (OK) status code.
+The response body MUST be in JSON format and include the relevant Wallet Instance information, such as its unique ID, status, and issuance date.
+When retrieving all Wallet Instances, the response MUST return an array containing the details of all associated instances.</p>
+<p>If any errors occur during the retrieval process, an error response MUST be returned. Refer to <a class="reference internal" href="#id2"><span class="std std-ref">Error Handling for Wallet Instance Management</span></a> for details on error codes and descriptions.</p>
+<p>Below is a non-normative example of an error response:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;forbidden&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;User is not authorized to retrieve Wallet Instances.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="wallet-instance-revocation-request">
+<h3><span class="section-number">8.1.3.5. </span>Wallet Instance Revocation Request<a class="headerlink" href="#wallet-instance-revocation-request" title="Link to this heading">¶</a></h3>
+<p>To revoke an active Wallet Instance, a revocation request MUST be sent using the HTTP PATCH method with Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The request body MUST contain a <code class="docutils literal notranslate"><span class="pre">status</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.</p>
+</div>
+</section>
+<section id="wallet-instance-revocation-response">
+<h3><span class="section-number">8.1.3.6. </span>Wallet Instance Revocation Response<a class="headerlink" href="#wallet-instance-revocation-response" title="Link to this heading">¶</a></h3>
+<p>If a Wallet Instance Revocation Request is successfully processed, the Wallet Provider provides an HTTP Response with a 204 (No Content) status code.</p>
+<p>If any errors occur during the Wallet Instance Revocation, an error response MUST be returned. Refer to <a class="reference internal" href="#id2"><span class="std std-ref">Error Handling for Wallet Instance Management</span></a> for details on error codes and descriptions.</p>
+<p>Below is a non-normative example of an error response:</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bad_request&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The request is missing status parameter.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3><span class="section-number">8.1.3.7. </span>Error Handling for Wallet Instance Management<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>To ensure robustness and security, the Wallet Provider MUST handle errors consistently across all Wallet Instance Management requests, including Registration, Retrieval, and Revocation.</p>
+<p>In case of an error, the Wallet Provider MUST return an error response as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7231.html"><strong>RFC 7231</strong></a>, with additional details available in <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7807.html"><strong>RFC 7807</strong></a>. The response MUST use the Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code> and MUST include the following parameters:</p>
+<ul class="simple">
+<li><p><em>error</em>. The error code.</p></li>
+<li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
+</ul>
+<p>The following sections categorize errors into <strong>common errors</strong>, which apply to all requests, and <strong>request-specific errors</strong>, which are relevant to particular operations.</p>
+</section>
+<section id="common-error-responses">
+<h3><span class="section-number">8.1.3.8. </span>Common Error Responses<a class="headerlink" href="#common-error-responses" title="Link to this heading">¶</a></h3>
+<p>The following errors apply to all Wallet Instance Management operations (Registration, Retrieval, and Revocation), and MUST be supported for the error response, unless otherwise specified:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>HTTP Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
+<td><p>The request is malformed, missing required parameters, or includes invalid and unknown parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPTIONAL]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
+<td><p>The request does not adhere to the required format.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>An internal error occurred while processing the request.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>The service is unavailable. Please try again later.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="request-specific-error-responses">
+<h3><span class="section-number">8.1.3.9. </span>Request-Specific Error Responses<a class="headerlink" href="#request-specific-error-responses" title="Link to this heading">¶</a></h3>
+<p>The errors in <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-error-response"><span class="std std-ref">Mobile Application Instance Initialization Error Response</span></a> MUST be supported for error responses related to <strong>Wallet Instance Registration</strong>.</p>
+<p>The following errors MUST be supported for error responses related to <strong>Wallet Instance Retrieval</strong>:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>HTTP Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">forbidden</span></code></p></td>
+<td><p>The user does not have permission to retrieve this Wallet Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unauthorized</span></code></p></td>
+<td><p>The request lacks valid authentication credentials.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following errors MUST be supported for error responses related to <strong>Wallet Instance Revocation</strong>:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>HTTP Status Code</strong></p></th>
+<th class="head"><p><strong>Error Code</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>The user does not have permission to revoke this Wallet Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unauthorized</span></code></p></td>
+<td><p>The request cannot be authenticated or authorized.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id3">
+<h2><span class="section-number">8.1.4. </span>Wallet Attestation Issuance Endpoint<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain a Wallet Attestation, by sending a Wallet Attestation Issuance Request.</p>
+<section id="wallet-attestation-issuance-request">
+<h3><span class="section-number">8.1.4.1. </span>Wallet Attestation Issuance Request<a class="headerlink" href="#wallet-attestation-issuance-request" title="Link to this heading">¶</a></h3>
+<p>Further details on the Wallet Attestation Issuance Request are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-request"><span class="std std-ref">Mobile Application Key Binding Request</span></a> section.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">wp-war+jwt</span></code>.</p>
+</section>
+<section id="wallet-attestation-issuance-response">
+<h3><span class="section-number">8.1.4.2. </span>Wallet Attestation Issuance Response<a class="headerlink" href="#wallet-attestation-issuance-response" title="Link to this heading">¶</a></h3>
+<p>If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object MUST possess the <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> parameter whose value is an array of JSON Objects (see <a class="reference internal" href="wallet-attestation-issuance.html#id1"><span class="std std-ref">Wallet Attestation Issuance</span></a>) containing the Wallet Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider. The JWT formatted Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>. The SD-JWT and mdoc formatted Wallet Attestation will instead be used during presentation respectively in the remote (<a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>) and proximity (<a class="reference internal" href="proximity-flow.html#proximity-flow"><span class="std std-ref">Proximity Flow</span></a>) flows.</p>
+<p>The JSON Object returned in the response has the following claim:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>wallet_attestations</strong></p></td>
+<td><p>REQUIRED. Contains an array of one or more issued Wallet Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.</p></td>
+<td><p>This specification.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each JSON Object contained in the <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> array MUST have the following form:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>format</strong></p></td>
+<td><p>A string identifying the Data Model used to create and represent the Wallet Attestation. It MUST be either <code class="docutils literal notranslate"><span class="pre">jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> or <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> depending on the credential format.</p></td>
+<td><p>This specification.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
+<td><p>A string representing the Wallet Attestation. If</p>
+<ul class="simple">
+<li><p>the Wallet Attestation is in JWT format, then the claim's value MUST be a string that is a JWT.</p></li>
+<li><p>the Wallet Attestation is in SD-JWT format, then the claim's value MUST be a string that is an SD-JWT VC.</p></li>
+<li><p>the Wallet Attestation is in mdoc format, then the claim's value is the base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO.18013-5]. This structure MUST contain all Namespaces and IssuerSignedItems that are included in the MobileSecurityObject.</p></li>
+</ul>
+</td>
+<td><p>This specification.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If any errors occur during the process, an error response is returned. Further details on the error response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-error-response"><span class="std std-ref">Mobile Application Key Binding Error Response</span></a> section.</p>
+</section>
+<section id="wallet-attestation-jwt">
+<h3><span class="section-number">8.1.4.3. </span>Wallet Attestation JWT<a class="headerlink" href="#wallet-attestation-jwt" title="Link to this heading">¶</a></h3>
+<p>The JOSE header of the Wallet Attestation JWT contains the following parameters:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>JOSE header</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in the Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
+<td><p><span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Attestation.</p></td>
+<td><p><span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
+<td><p>REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>x5c</strong></p></td>
+<td><p>OPTIONAL. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
+<td><p><span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8 and <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> Section 3.5.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The body of the Wallet Attestation JWT contains the following claims:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>REQUIRED. Identifier of the Wallet Provider.</p></td>
+<td><p><span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT.</p></td>
+<td><p><span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>REQUIRED. UNIX Timestamp with the time of JWT issuance.</p></td>
+<td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<td><p>REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
+<td><p><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
+<td><p>OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
+<td><p>OPTIONAL. String containing a human-readable name of the Wallet.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>sub</strong></p></td>
+<td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.</p></td>
+<td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aal</strong></p></td>
+<td><p>REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
+<td><p>This specification.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet.atestation.example/v1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet_v1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/wallet/detail_info.html&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="wallet-attestation-sd-jwt">
+<h3><span class="section-number">8.1.4.4. </span>Wallet Attestation SD-JWT<a class="headerlink" href="#wallet-attestation-sd-jwt" title="Link to this heading">¶</a></h3>
+<p>The JOSE header of the Wallet Attestation SD-JWT MUST contain the following parameters:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>JOSE header</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>REQUIRED. A digital signature algorithm identifier such as per IANA &quot;JSON Web Signature and Encryption Algorithms&quot; registry. It MUST be one of the supported algorithms listed in <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or any symmetric algorithm (MAC) identifier.</p></td>
+<td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>REQUIRED. Unique identifier of the public key associated to the private key the Wallet Provider used to sign the Wallet Attestation.</p></td>
+<td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>REQUIRED. It MUST be set to <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code></p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
+<td><p>REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>x5c</strong></p></td>
+<td><p>OPTIONAL. Contains the X.509 public key certificate or certificate chain (<span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corresponding to the key used to digitally sign the JWT.</p></td>
+<td><p><span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Section 4.1.8 and <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> Section 3.5.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The body of the Wallet Attestation SD-JWT contains the following claims:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Claim</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>REQUIRED. Identifier of the Wallet Provider.</p></td>
+<td><p><span class="target" id="index-19"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-20"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<td><p>REQUIRED. UNIX Timestamp with the expiry time of the JWT.</p></td>
+<td><p><span class="target" id="index-21"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<td><p>REQUIRED. UNIX Timestamp with the time of JWT issuance.</p></td>
+<td><p><span class="target" id="index-23"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-24"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cnf</strong></p></td>
+<td><p>REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.</p></td>
+<td><p><span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>vct</strong></p></td>
+<td><p>REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet.atestation.example/v1.0</span></code>.</p></td>
+<td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_sd</strong></p></td>
+<td><p>REQUIRED. JSON array containing a list of all disclusure's digests.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_sd_alg</strong></p></td>
+<td><p>REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the disclusure's digests.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>sub</strong></p></td>
+<td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.</p></td>
+<td><p><span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>aal</strong></p></td>
+<td><p>REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.</p></td>
+<td><p>This specification.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following disclosures MAY be present:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Disclosure</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
+<td><p>OPTIONAL. String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
+<td><p>OPTIONAL. String containing a human-readable name of the Wallet.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below are described examples of values for the disclosures:</p>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">wallet_link</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=</span></code></p></li>
+<li><p>Disclosure: <code class="docutils literal notranslate"><span class="pre">WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9saW5rIiwgImh0dHBzOi8vZXhhbXBsZS5jb20vd2FsbGV0L2RldGFpbF9pbmZvLmh0bWwiXQ==</span></code></p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;wallet_link&quot;,</span> <span class="pre">&quot;https://example.com/wallet/detail_info.html&quot;]</span></code></p></li>
+</ul>
+<p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">wallet_name</span></code>:</p>
+<ul class="simple">
+<li><p>SHA-256 Hash: <code class="docutils literal notranslate"><span class="pre">iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=</span></code></p></li>
+<li><p>Disclosure:n``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd``</p></li>
+<li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;wallet_name&quot;,</span> <span class="pre">&quot;Wallet_v1&quot;]</span></code></p></li>
+</ul>
+<p>Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.attestation.example/v1.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-framework.example.it/aal/high&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="wallet-attestation-mdoc">
+<h3><span class="section-number">8.1.4.5. </span>Wallet Attestation mdoc<a class="headerlink" href="#wallet-attestation-mdoc" title="Link to this heading">¶</a></h3>
+<p>This description further specializes the guidelines given in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> to represent the Wallet Attestation in mdoc format. The latter MUST:</p>
+<ul class="simple">
+<li><p>Have the domestic namespace <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.it</span></code>;</p></li>
+<li><p>Have <strong>docType</strong> set to <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.it.WalletAttestation</span></code>; and</p></li>
+<li><p>Have <strong>issuerAuth</strong> as described in <a class="reference internal" href="credential-data-model.html#mobile-security-object"><span class="std std-ref">Mobile Security Object</span></a>.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> for the domestic nameSpace Json Objects are defined as follows:</p>
+<table class="longtable docutils align-default" id="id4">
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">org.iso.18013.5.1.it</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>elementIdentifier</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Reference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>sub</strong></p></td>
+<td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation COSE Key.</p></td>
+<td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aal</strong></p></td>
+<td><p>JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the <code class="docutils literal notranslate"><span class="pre">IssuerAuth.deviceKeyInfo.deviceKey</span></code> claim of the <strong>issuerAuth</strong> Object.</p></td>
+<td><p><span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9679.html"><strong>RFC 9679</strong></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
+<td><p>JSON String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
+<td><p>JSON String, it MUST be the Identifier of the Wallet Provider.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnostic notation:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;docType&quot;: &quot;org.iso.18013.5.1.it.WalletAttestation&quot;,
+  &quot;issuerSigned&quot;:{
+    &quot;nameSpaces&quot;:{
+      &quot;org.iso.18013.5.1.it&quot;:[
+        24(&lt;&lt; {
+        &quot;digestID&quot;: 0,
+        &quot;random&quot;: h&#39;960CB15A…E902807AA95&#39;,
+        &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
+        &quot;elementValue&quot;: &quot;Wallet_v1&quot;
+        } &gt;&gt;),
+        24(&lt;&lt;
+        {
+        &quot;digestID&quot;: 1,
+        &quot;random&quot;: h&#39;9D3774BD59…A4F76A&#39;,
+        &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
+        &quot;elementValue&quot;:&quot;https://example.com/wallet/detail_info.html&quot;
+        } &gt;&gt;),
+        24(&lt;&lt; {
+        &quot;digestID&quot;: 2,
+        &quot;random&quot;: h&#39;AE84834F3…A3E4FCCE&#39;,
+        &quot;elementIdentifier&quot;: &quot;sub&quot;,
+        &quot;elementValue&quot;:&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;
+        } &gt;&gt;),
+        24(&lt;&lt;
+        {
+        &quot;digestID&quot;: 3,
+        &quot;random&quot;: h&#39;9D3774BD59…A4F76A&#39;,
+        &quot;elementIdentifier&quot;: &quot;aal&quot;,
+        &quot;elementValue&quot;:&quot;https://trust-list.eu/aal/high&quot;
+        } &gt;&gt;)
+      ]
+},
+  &quot;issuerAuth&quot;: [
+    &lt;&lt; {1: -7} &gt;&gt;,
+    {
+    33: h&#39;30820215308201BCA003020102021404AD30C…&#39;
+    },
+    &lt;&lt;
+      24(&lt;&lt;
+        {
+          &quot;docType&quot;:&quot;org.iso.18013.5.1.it.WalletAttestation&quot;,
+          &quot;version&quot;: &quot;org.iso.18013.5.1.it&quot;,
+          &quot;validityInfo&quot;: {
+            &quot;signed&quot;: &quot;2023-02-22T06:23:56Z&quot;
+            &quot;validFrom&quot;: &quot;2023-02-22T06:23:56Z&quot;,
+            &quot;validUntil&quot;: &quot;2024-02-22T00:00:00Z&quot;
+          },
+          &quot;valueDigests&quot;: {
+            &quot;org.iso.18013.5.1.it&quot;: {
+              0: h&#39;0F1571A988FCDF2929…&#39;,
+              1: h&#39;0CDFE0774A2B596C90…&#39;,
+              2: h&#39;E23821492558984395…&#39;,
+              3: h&#39;BBC77E6CCE544EDF86…&#39;
+            }
+          },
+          &quot;deviceKeyInfo&quot;: {
+            &quot;deviceKey&quot;: {
+              1: 2,
+              -1: 1,
+              -2: h&#39;B820963964E5…&#39;,
+              -3: h&#39;0A6DA0AF437E…&#39;
+            }
+          },
+          &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;
+        }
+      &gt;&gt;)
+    &gt;&gt;,
+    h&#39;1AD0D6A7313EFDC…43DEBF48BF5A580D&#39;
+  ]
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="e-service-pdnd-wallet-provider-catalogue">
+<h2><span class="section-number">8.1.5. </span>e-Service PDND Wallet Provider Catalogue<a class="headerlink" href="#e-service-pdnd-wallet-provider-catalogue" title="Link to this heading">¶</a></h2>
+<p>User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
+A PID Provider that has been notified by the Authentic Source of the PID of the User's death MUST send a notification to Wallet Providers using this endpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-WP.html" target="_blank">here</a></span>.</p>
+</div>
+<section id="notify-user-death">
+<h3><span class="section-number">8.1.5.1. </span>Notify User Death<a class="headerlink" href="#notify-user-death" title="Link to this heading">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>This service is used to notify the Wallet Provider of the need to revoke the Wallet Instance and delete the User's account due to the User's death.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>Wallet Provider</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>PID Provider</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">8.1. Wallet Provider Endpoints</a><ul>
+<li><a class="reference internal" href="#id1">8.1.1. Federation Endpoint</a></li>
+<li><a class="reference internal" href="#wallet-solution-nonce-endpoint">8.1.2. Wallet Solution Nonce Endpoint</a></li>
+<li><a class="reference internal" href="#wallet-instance-management-endpoint">8.1.3. Wallet Instance Management Endpoint</a><ul>
+<li><a class="reference internal" href="#wallet-instance-registration-request">8.1.3.1. Wallet Instance Registration Request</a></li>
+<li><a class="reference internal" href="#wallet-instance-registration-response">8.1.3.2. Wallet Instance Registration Response</a></li>
+<li><a class="reference internal" href="#wallet-instance-retrieval-request">8.1.3.3. Wallet Instance Retrieval Request</a></li>
+<li><a class="reference internal" href="#wallet-instance-retrieval-response">8.1.3.4. Wallet Instance Retrieval Response</a></li>
+<li><a class="reference internal" href="#wallet-instance-revocation-request">8.1.3.5. Wallet Instance Revocation Request</a></li>
+<li><a class="reference internal" href="#wallet-instance-revocation-response">8.1.3.6. Wallet Instance Revocation Response</a></li>
+<li><a class="reference internal" href="#id2">8.1.3.7. Error Handling for Wallet Instance Management</a></li>
+<li><a class="reference internal" href="#common-error-responses">8.1.3.8. Common Error Responses</a></li>
+<li><a class="reference internal" href="#request-specific-error-responses">8.1.3.9. Request-Specific Error Responses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">8.1.4. Wallet Attestation Issuance Endpoint</a><ul>
+<li><a class="reference internal" href="#wallet-attestation-issuance-request">8.1.4.1. Wallet Attestation Issuance Request</a></li>
+<li><a class="reference internal" href="#wallet-attestation-issuance-response">8.1.4.2. Wallet Attestation Issuance Response</a></li>
+<li><a class="reference internal" href="#wallet-attestation-jwt">8.1.4.3. Wallet Attestation JWT</a></li>
+<li><a class="reference internal" href="#wallet-attestation-sd-jwt">8.1.4.4. Wallet Attestation SD-JWT</a></li>
+<li><a class="reference internal" href="#wallet-attestation-mdoc">8.1.4.5. Wallet Attestation mdoc</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#e-service-pdnd-wallet-provider-catalogue">8.1.5. e-Service PDND Wallet Provider Catalogue</a><ul>
+<li><a class="reference internal" href="#notify-user-death">8.1.5.1. Notify User Death</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="endpoints.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">8. </span>Endpoints</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="credential-issuer-endpoint.html"><span><span class="section-number">8.2. </span>Credential Issuer Endpoints</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 30/05/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
