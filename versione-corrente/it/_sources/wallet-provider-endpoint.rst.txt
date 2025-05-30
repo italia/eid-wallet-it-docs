@@ -318,7 +318,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload dell'
     ],
     "typ": "jwt"
   }
-  
+
 .. code-block:: json
 
   {
@@ -400,7 +400,7 @@ Il corpo dell'SD-JWT dell'Attestato di Wallet contiene i seguenti claim:
     * - **_sd**
       - OBBLIGATORIO. Array JSON contenente un elenco di tutti i digest delle divulgazioni.
       - `SD-JWT`_.
-    * - **sd_alg**
+    * - **_sd_alg**
       - OBBLIGATORIO. Stringa contenente l'algoritmo di hash utilizzato dal Fornitore di Wallet per generare i digest delle divulgazioni.
       - `SD-JWT`_.
     * - **sub**
@@ -455,7 +455,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload dell'
     ],
     "typ": "dc+sd-jwt"
   }
-  
+
 .. code-block:: json
 
   {
