@@ -58,10 +58,10 @@ Il metodo HTTP POST DEVE utilizzare i parametri nel corpo del messaggio codifica
       - **Descrizione**
       - **Riferimento**
     * - **client_id**
-      - DEVE essere impostato sull'impronta digitale del valore ``jwk`` nel parametro ``cnf`` all'interno dell'Attestato di Wallet.
+      - DEVE essere impostato sull'impronta digitale del valore ``jwk`` nel parametro ``cnf`` all'interno della Wallet Attestation.
       - :rfc:`6749`
     * - **request**
-      - DEVE essere un JWT firmato. La chiave privata corrispondente a quella pubblica nel parametro ``cnf`` all'interno dell'Attestato di Wallet DEVE essere utilizzata per firmare l'Oggetto Richiesta.
+      - DEVE essere un JWT firmato. La chiave privata corrispondente a quella pubblica nel parametro ``cnf`` all'interno della Wallet Attestation DEVE essere utilizzata per firmare l'Oggetto Richiesta.
       - `OpenID Connect Core. Sezione 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
 
 L'Endpoint di Autorizzazione Spinta è protetto con l'Autenticazione Client basata su Attestato OAuth 2.0 [`OAUTH-ATTESTATION-CLIENT-AUTH`_], pertanto
@@ -74,10 +74,10 @@ la richiesta all'endpoint di autorizzazione del Credential Issuer DEVE utilizzar
     :header-rows: 1
 
     * - **OAuth-Client-Attestation**
-      - DEVE essere impostato su un valore contenente il JWT dell'Attestato di Wallet.
+      - DEVE essere impostato su un valore contenente il JWT della Wallet Attestation.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - **OAuth-Client-Attestation-PoP**
-      - DEVE essere impostato su un valore contenente la Prova di Possesso del JWT dell'Attestato di Wallet.
+      - DEVE essere impostato su un valore contenente la Prova di Possesso del JWT della Wallet Attestation.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
 
 
@@ -96,7 +96,7 @@ L'*Oggetto Richiesta* JWT ha i seguenti parametri di intestazione JOSE:
       - Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o qualsiasi identificatore di algoritmo simmetrico (MAC).
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - Identificatore univoco del ``jwk`` all'interno del claim ``cnf`` dell'Attestato di Wallet come valore dell'Impronta JWK codificato in base64url.
+      - Identificatore univoco del ``jwk`` all'interno del claim ``cnf`` della Wallet Attestation come valore dell'Impronta JWK codificato in base64url.
       - :rfc:`7638#section_3`.
 
 .. note::
@@ -166,7 +166,7 @@ Il payload JWT ``request`` contenuto nel messaggio HTTP POST è fornito con i se
 .. note::
   Se la richiesta contiene il valore scope e il parametro *authorization_details*, il Credential Issuer DEVE interpretarli individualmente. Tuttavia, se entrambi richiedono lo stesso tipo di Credenziale, il Credential Issuer DEVE seguire la richiesta come indicato dall'oggetto authorization details.
 
-L'intestazione JOSE della prova di possesso dell'Attestato di Wallet, contenuta nelle intestazioni della Richiesta HTTP, DEVE contenere:
+L'intestazione JOSE della prova di possesso della Wallet Attestation, contenuta nelle intestazioni della Richiesta HTTP, DEVE contenere:
 
 .. _table_jwt_pop:
 .. list-table::
@@ -181,7 +181,7 @@ L'intestazione JOSE della prova di possesso dell'Attestato di Wallet, contenuta 
       - Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o qualsiasi identificatore di algoritmo simmetrico (MAC).
       - :rfc:`7516#section-4.1.1`.
 
-Il corpo della prova di possesso dell'Attestato di Wallet JWT, contenuto nelle intestazioni della Richiesta HTTP, DEVE contenere:
+Il corpo della prova di possesso della Wallet Attestation JWT, contenuto nelle intestazioni della Richiesta HTTP, DEVE contenere:
 
 .. list-table::
     :class: longtable
@@ -617,7 +617,7 @@ Il **JWT DPoP** contiene i seguenti parametri di intestazione JOSE e claim.
     - OBBLIGATORIO. Identifica il soggetto del JWT. DEVE essere impostato sul valore del campo ``sub`` nella Credenziale SD-JWT-VC.
     - [:rfc:`9068`], [:rfc:`7519`] e Sezione 8 di [`OIDC`_].
   * - **client_id**
-    - OBBLIGATORIO. L'identificatore per l'Istanza del Wallet che ha richiesto il Token di Accesso; DEVE essere uguale al kid della chiave pubblica dell'Istanza del Wallet specificata nell'Attestato di Wallet (``cnf.jwk``).
+    - OBBLIGATORIO. L'identificatore per l'Istanza del Wallet che ha richiesto il Token di Accesso; DEVE essere uguale al kid della chiave pubblica dell'Istanza del Wallet specificata nella Wallet Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] e Sezione 8 di [`OIDC`_].
   * - **aud**
     - OBBLIGATORIO. DEVE essere impostato sull'identificatore del Credential Issuer.
@@ -676,7 +676,7 @@ Il **JWT DPoP** DEVE contenere i seguenti parametri di intestazione JOSE e claim
     - Identifica il soggetto del JWT. DEVE essere impostato sul valore del campo ``sub`` nella Credenziale SD-JWT-VC.
     - [:rfc:`9068`], [:rfc:`7519`] e Sezione 8 di [`OIDC`_].
   * - **client_id**
-    - L'identificatore per l'Istanza del Wallet che ha richiesto il Token di Accesso; DEVE essere uguale al valore `kid` che identifica la chiave pubblica utilizzata nell'Istanza del Wallet, utilizzata nell'Attestato di Wallet (``cnf.jwk``).
+    - L'identificatore per l'Istanza del Wallet che ha richiesto il Token di Accesso; DEVE essere uguale al valore `kid` che identifica la chiave pubblica utilizzata nell'Istanza del Wallet, utilizzata nella Wallet Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] e Sezione 8 di [`OIDC`_].
   * - **aud**
     - DEVE essere impostato sull'identificatore del Credential Issuer.

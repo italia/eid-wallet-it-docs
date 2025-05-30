@@ -363,8 +363,8 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>Un Attestato di Wallet affidabile garantisce che l'Istanza del Wallet sia sicura e soddisfi gli standard di sicurezza richiesti prima che qualsiasi Credenziale venga emessa o memorizzata.
-Nei Passi 5-6 di <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 7.4</span></a>, l'Istanza del Wallet fornisce un Attestato di Wallet, che include una prova di possesso
+<p>una Wallet Attestation affidabile garantisce che l'Istanza del Wallet sia sicura e soddisfi gli standard di sicurezza richiesti prima che qualsiasi Credenziale venga emessa o memorizzata.
+Nei Passi 5-6 di <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 7.4</span></a>, l'Istanza del Wallet fornisce una Wallet Attestation, che include una prova di possesso
 firmata con la chiave privata del Wallet. Questo attestato conferma che l'Istanza del Wallet è genuina ed è stata verificata dal Fornitore di Wallet.</p>
 <p>Il Fornitore di Credenziale verifica questo attestato prima di consentire al Wallet di partecipare al processo di emissione, garantendo che il Wallet aderisca a specifici standard di sicurezza.
 Successivamente, tutte le chiavi crittografiche generate e utilizzate nel processo provengono da questa Istanza del Wallet attestata.</p>
@@ -401,7 +401,7 @@ Successivamente, tutte le chiavi crittografiche generate e utilizzate nel proces
 </tr>
 </tbody>
 </table>
-<p>Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di <strong>nonce</strong>, validazione della Trust Chain, Attestato di Wallet e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e il Verificatore di Attestati Elettronici. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.</p>
+<p>Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di <strong>nonce</strong>, validazione della Trust Chain, Wallet Attestation e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e il Verificatore di Attestati Elettronici. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.</p>
 </section>
 <section id="sr-p-40">
 <h3><span class="section-number">10.1.14. </span>SR-P-40<a class="headerlink" href="#sr-p-40" title="Link to this heading">¶</a></h3>
@@ -492,10 +492,10 @@ come mostrato ad esempio in questo <a class="reference external" href="https://w
 </tr>
 </tbody>
 </table>
-<p>Il Verificatore di Attestati Elettronici controlla l'Attestato di Wallet durante gli scambi (inviato con la risposta di autorizzazione), garantendo che soddisfi i criteri di sicurezza richiesti dal Verificatore di Attestati Elettronici e sia sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.</p>
+<p>Il Verificatore di Attestati Elettronici controlla la Wallet Attestation durante gli scambi (inviato con la risposta di autorizzazione), garantendo che soddisfi i criteri di sicurezza richiesti dal Verificatore di Attestati Elettronici e sia sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>] e non è chiaramente definito cosa significhi ^memorizzato in un Wallet sicuro^. Senza questo dettaglio, questo requisito è considerato solo parzialmente soddisfatto. Infatti, l'Attestato di Wallet garantisce
+<p>Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>] e non è chiaramente definito cosa significhi ^memorizzato in un Wallet sicuro^. Senza questo dettaglio, questo requisito è considerato solo parzialmente soddisfatto. Infatti, la Wallet Attestation garantisce
 che l'Istanza del Wallet stia operando su un dispositivo sicuro e affidabile e aderisca alle rigorose politiche di sicurezza stabilite dal Fornitore di Wallet. Tuttavia, l'attestato non garantisce direttamente che ogni
 Credenziale all'interno del Wallet sia memorizzata in modo sicuro; verifica la sicurezza complessiva dell'ambiente del Wallet, all'interno del quale risiedono le Credenziali. Pertanto, mentre l'attestato supporta la
 fiducia del Verificatore di Attestati Elettronici che la Credenziale provenga da una fonte sicura, è in definitiva una garanzia ampia della sicurezza del Wallet, piuttosto che una convalida specifica della memorizzazione individuale della Credenziale.</p>
@@ -713,7 +713,7 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 <p>Per mitigare questa minaccia, la specifica IT-Wallet richiede i seguenti meccanismi di sicurezza nel processo di emissione:</p>
 <ul class="simple">
 <li><p><em>TLS</em>: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Credenziale, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.</p></li>
-<li><p><em>Attestato di Wallet</em>: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Credenziale, fornendo ulteriore garanzia che il Fornitore di Credenziale stia interagendo con un'Istanza del Wallet legittima.</p></li>
+<li><p><em>Wallet Attestation</em>: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Credenziale, fornendo ulteriore garanzia che il Fornitore di Credenziale stia interagendo con un'Istanza del Wallet legittima.</p></li>
 <li><p><em>DPoP</em>: Garantisce che il Titolare del token di accesso possieda la chiave privata associata ad esso, impedendo agli attaccanti di riutilizzare token intercettati.</p></li>
 <li><p><em>Associazione del Titolare</em>: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Credenziale.</p></li>
 <li><p><em>validazione redirect_uri</em>: Questa validazione garantisce che la risposta di autorizzazione sia inviata all'endpoint corretto e autorizzato, impedendo così l'intercettazione non autorizzata da parte di attori malintenzionati. Garantire l'integrità del <strong>redirect_uri</strong> è fondamentale per evitare qualsiasi manipolazione o reindirizzamento dell'URI.</p></li>

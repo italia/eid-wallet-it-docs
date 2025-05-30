@@ -42,8 +42,8 @@ Una descrizione di alto livello del flusso remoto, dal punto di vista dell'Utent
     c. valuta le Credenziali Elettroniche richieste e verifica l'idoneità della Relying Party nel richiedere queste applicando le politiche relative a quella specifica Relying Party, ottenute con la Catena di Fiducia.
 
   5. *Consenso dell'Utente*: l'Istanza del Wallet chiede la divulgazione e il consenso dell'Utente mostrando l'identità della Relying Party e gli attributi richiesti.
-  6. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme all'Attestato di Wallet se richiesto.
-  7. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla l'Attestato di Wallet per garantire che il Fornitore di Wallet sia affidabile.
+  6. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme alla Wallet Attestation se richiesto.
+  7. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.
   8. *Risposta della Relying Party*: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.
 
 Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tra tutte le parti coinvolte.
@@ -111,20 +111,20 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
   - Se è fornito ed è uguale a ``post``, l'Istanza del Wallet DOVREBBE fornire i suoi metadati alla Relying Party. La Relying Party aggiorna l'Oggetto di Richiesta in base alle capacità tecniche del Wallet.
 
     Di seguito è riportato un esempio non normativo di una richiesta HTTP effettuata dall'Istanza del Wallet alla Relying Party.
-    
+
     .. code-block:: http
-    
+
       POST /request HTTP/1.1
       Host: client.example.org
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
-    
+
       wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22form_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C&wallet_nonce=%22qPmxiNFCR3QTm19POc8u%22
-    
+
     Dove il corpo della richiesta prima di essere codificato in `application/x-www-form-urlencoded` dal Wallet corrisponde a:
-    
+
     .. code:: json
-    
+
       {
         "wallet_metadata": {
           "authorization_endpoint": "https://wallet-solution.digital-strategy.europa.eu/authorization",
@@ -155,18 +155,18 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
 **Passaggio 14 (Risposta URI Request)**: La Relying Party emette l'Oggetto di Richiesta firmandolo utilizzando una delle sue chiavi private crittografiche, le cui parti pubbliche sono state pubblicate all'interno della sua Configurazione dell'Entità (`metadata.openid_credential_verifier.jwks`). L'Istanza del Wallet ottiene l'Oggetto di Richiesta firmato.
 
   Di seguito è riportato un esempio non normativo della Risposta URI di Reindirizzamento:
-  
+
   .. code-block:: http
-  
+
     HTTP/1.1 200 OK
     Content-Type: application/oauth-authz-req+jwt
-  
+
     eyJhbGciOiJFUzI1NiIs...9t2LQ
-  
+
   Un esempio non normativo di un Oggetto di Richiesta sotto forma di intestazione e payload decodificati è mostrato di seguito:
-  
+
   .. code-block:: json
-  
+
     {
       "alg": "ES256",
       "typ": "oauth-authz-req+jwt",
@@ -177,9 +177,9 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
         "MIICajCCAdOgAwIBAgIC...sf2"
       ]
     }
-  
+
   .. code-block:: json
-  
+
     {
       "client_id": "https://relying-party.example.org",
       "response_mode": "direct_post.jwt",
@@ -220,7 +220,7 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
       "exp": 1672422065,
       "request_uri_method": "post"
     }
-  
+
 **Passaggi 15-17 (Controlli WI)**: L'Istanza del Wallet verifica l'Oggetto di Richiesta, che è sotto forma di JWT firmato. Quindi elabora i metadati della Relying Party e applica le politiche pertinenti per determinare quali Credenziali Elettroniche e dati dell'Utente la Relying Party è autorizzata a richiedere.
 
 **Passaggi 18-19 (Consenso dell'Utente)**: L'Istanza del Wallet richiede il consenso dell'Utente per divulgare le Credenziali richieste mostrando l'identità della Relying Party e gli attributi richiesti. L'Utente autorizza e acconsente alla presentazione delle Credenziali selezionando/deselezionando i dati personali da rilasciare.
@@ -230,17 +230,17 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
   Di seguito è riportato un esempio non normativo della Risposta di Autorizzazione:
 
   .. code-block:: http
-  
+
       POST /response_uri HTTP/1.1
       HOST: relying-party.example.org
       Content-Type: application/x-www-form-urlencoded
-  
+
       response=eyJhbGciOiJFUzI1NiIs...9t2LQ
-  
+
   Di seguito è riportato un esempio non normativo del payload decifrato del JWT contenuto nel parametro ``response``, prima della codifica base64url. Il valore del parametro ``vp_token`` corrisponde al formato utilizzato quando il linguaggio di query DCQL viene utilizzato nella richiesta di presentazione.
-  
+
   .. code-block:: json
-  
+
       {
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
@@ -249,7 +249,7 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
         }
       }
 
-**Passaggi 21-25 (Controlli RP)**: La Relying Party verifica la Risposta di Autorizzazione, estrae l'Attestato di Wallet per stabilire la fiducia con la Soluzione Wallet. Quindi estrae le Credenziali Elettroniche e attesta la fiducia con il Fornitore di Credenziale e la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in :ref:`credential-revocation:Revoca e Sospensione delle Credenziali`. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.
+**Passaggi 21-25 (Controlli RP)**: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae le Credenziali Elettroniche e attesta la fiducia con il Fornitore di Credenziale e la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in :ref:`credential-revocation:Revoca e Sospensione delle Credenziali`. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.
 
 **Passaggi 26-27 o 28 (Risposta della Relying Party)**: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che informa l'Utente.
 
@@ -277,12 +277,12 @@ Al contrario, nel **Flusso Stesso Dispositivo**, la Relying Party utilizza un re
 
   Quando l'Istanza del Wallet ha fornito la presentazione all'endpoint **response_uri** della Relying Party e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo all'user-agent di accedere alla risorsa protetta. Viene fornito un URL di reindirizzamento che trasporta la posizione in cui l'user-agent deve navigare.
   Di seguito è riportato un esempio non normativo della risposta con il ``redirect_uri`` dalla Relying Party all'user-agent.
-  
+
   .. code-block:: http
-  
+
       HTTP/1.1 200 OK
       Content-Type: application/json
-  
+
       {
         "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
       }
@@ -515,7 +515,7 @@ Dove vengono utilizzati i seguenti parametri:
     - Ci DEVONO essere almeno due presentazioni firmate in questo Array:
 
       - La Credenziale Elettronica richiesta (una o più, in formato SD-JWT VC)
-      - L'Attestato di Wallet (in formato SD-JWT VC)
+      - la Wallet Attestation (in formato SD-JWT VC)
 
       Quando viene utilizzato `presentation_definition`, il valore ``vp_token`` è un Array JSON contenente la/e Presentazione/i Verificabile/i e il parametro `presentation_submission` DEVE essere presente anche all'interno della risposta.
 
@@ -545,7 +545,7 @@ Quando viene presentato un SD-JWT, il suo KB-JWT DEVE contenere i seguenti param
   * - **typ**
     - OBBLIGATORIO. DEVE essere ``kb+jwt``, che tipizza esplicitamente il Key Binding JWT come raccomandato nella Sezione 3.11 di [RFC8725].
   * - **alg**
-    - OBBLIGATORIO. Algoritmo di Firma utilizzando uno di quelli specificati nella Sezione :ref:`algorithms:Algoritmi Crittografici`. 
+    - OBBLIGATORIO. Algoritmo di Firma utilizzando uno di quelli specificati nella Sezione :ref:`algorithms:Algoritmi Crittografici`.
 
 Quando viene presentato un SD-JWT, la firma KB-JWT DEVE essere verificata dalla stessa chiave pubblica inclusa nell'SD-JWT all'interno del parametro `cnf`. Il KB-JWT DEVE contenere i seguenti parametri nel payload JWT:
 
@@ -665,7 +665,7 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
       - Il valore del nonce fornito è errato o altrimenti malformato.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - La firma dell'Attestato di Wallet non è valida o la fiducia non può essere stabilita con il suo Emittente.
+      - La firma della Wallet Attestation non è valida o la fiducia non può essere stabilita con il suo Emittente.
     * - ``403 Forbidden``
       - ``invalid_request``
       - La fiducia non può essere stabilita con il Fornitore di Credenziale.

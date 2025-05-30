@@ -198,11 +198,11 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
     - Tutti i materiali delle chiavi private sono inaccessibili dal sistema operativo o da qualsiasi applicazione esterna alla Soluzione Wallet.
   * - WS-004
     - Attestation
-    - Il Wallet DEVE essere in grado di generare e presentare un Attestato di Wallet quando richiesto dalle Relying Party o dagli Emittenti.
+    - Il Wallet DEVE essere in grado di generare e presentare una Wallet Attestation quando richiesto dalle Relying Party o dagli Emittenti.
     - Vengono generati Attestati validi e verificabili, incluse prove di integrità e origine.
   * - WS-005
     - Attestation
-    - Il Wallet DEVE supportare l'elaborazione delle Richieste di Attestato di Wallet e generare risposte appropriate in conformità con eIDAS.
+    - Il Wallet DEVE supportare l'elaborazione delle Richieste di Wallet Attestation e generare risposte appropriate in conformità con eIDAS.
     - Il Wallet interpreta correttamente e soddisfa le richieste di attestato, inclusi i dati del soggetto e le firme crittografiche.
   * - WS-006
     - Remote Credential Presentation
@@ -449,7 +449,7 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
   * - ISS-001
     - Setup
     - Convalidare la configurazione dell'Istanza del Wallet
-    - L'Istanza del Wallet è configurata con un Attestato di Wallet valido. Assicurarsi che la chiave pubblica sia valida e correttamente associata a un elemento sicuro.
+    - L'Istanza del Wallet è configurata con una Wallet Attestation valido. Assicurarsi che la chiave pubblica sia valida e correttamente associata a un elemento sicuro.
   * - ISS-002
     - Discovery
     - Scoperta del Credential Issuer

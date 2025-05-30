@@ -156,10 +156,10 @@ Entità Coinvolte
 Mentre il Fornitore di Credenziale DEVE gestire direttamente lo stato di validità delle Credenziali che ha emesso, altri attori POSSONO attivare il processo di revoca/sospensione della Credenziale:
 
   - Utenti, attraverso:
-  
+
     - La loro Istanza del Wallet
     - Servizio web fornito dal Fornitore di Credenziale
-  
+
   - La Fonte Autentica quando gli attributi della Credenziale vengono aggiornati o cambiano stato di validità
   - Il Fornitore di Wallet quando revoca un'Istanza del Wallet
   - Il Gestore di Identità DIgitale se l'Identità Digitale utilizzata per il rilascio del PID è stata rubata o compromessa
@@ -418,7 +418,7 @@ L'**oggetto di Richiesta di Status Assertion** DEVE essere un JWT che DEVE conte
     - **Descrizione**
     - **Riferimento**
   * - **iss**
-    - Impronta digitale del JWK nel parametro ``cnf`` dell'Attestato di Wallet.
+    - Impronta digitale del JWK nel parametro ``cnf`` della Wallet Attestation.
     - :rfc:`9126` e :rfc:`7519`.
   * - **aud**
     - DEVE essere impostato sulla stringa URL dell'endpoint di Status Assertion del Fornitore di Credenziale.
@@ -447,7 +447,7 @@ Di seguito, viene fornito un esempio non normativo di un singolo *oggetto di Ric
     "alg": "ES256",
     "typ": "status-assertion-request+jwt"
   }
-  
+
 .. code-block:: json
 
   {
@@ -840,8 +840,8 @@ Di seguito è riportato un esempio di Token di Status List prima di applicare la
     "sub": "https://example-issuer.com/statuslists/",
     "ttl": 43200
   }
- 
- 
+
+
 Gestione dello Stato delle Credenziali con Token di Status List
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -922,11 +922,11 @@ Risposta HTTP di Status Lists
   eyJhbGciOiJFUzI1NiIsImtpZCI6IjEyIiwidHlwIjoic3RhdHVzbGlzdCtqd3QifQ.eyJleHAiOjIyOTE3MjAxNzAsImlhdCI6MTY4NjkyMDE3MCwiaXNzIjoiaHR0cHM6Ly9leGFtcGxlLmNvbSIsInN0YXR1c19saXN0Ijp7ImJpdHMiOjEsImxzdCI6ImVOcmJ1UmdBQWhjQlhRIn0sInN1YiI6Imh0dHBzOi8vZXhhbXBsZS5jb20vc3RhdHVzbGlzdHMvMSIsInR0bCI6NDMyMDB9.SSdg3AnTHsyRtCHziLy-QnXg-YRldMEXkdEgDXgE_ZvIvjM0eULQlzEbLBLfCeGhlqKJSReC-m85K79CTjJDzg
 
 Al ricevimento di una Credenziale, una Relying Party DEVE prima eseguire la validazione della Credenziale stessa (ad esempio, controllando gli attributi previsti, la firma valida e il tempo di scadenza). Se questa validazione non ha successo, la Credenziale DEVE essere rifiutata. Se la validazione ha avuto successo, la Relying Party DEVE eseguire i seguenti passaggi di validazione per valutare lo stato della Credenziale:
- 
+
   - Controllare l'esistenza di un claim ``status``, controllare l'esistenza di un claim ``status_list`` all'interno del claim ``status`` e validare che il contenuto di ``status_list`` aderisca alle regole definite nella Sezione :ref:`credential-revocation:Gestione dello Stato delle Credenziali con Token di Status List`.
   - Risolvere il Token di Status List dall'URI fornito.
   - Validare il Token di Status List:
- 
+
     - Validare la firma del Token di Status List seguendo le regole definite nella sezione 7.2 di [:rfc:`7519`]. Questo passaggio richiede la risoluzione di una chiave pubblica come descritto in :ref:`trust:L'Infrastruttura di Trust`.
 
     - Controllare l'esistenza dei claim richiesti come definito nella Sezione :ref:`credential-revocation:Token di Status List`.

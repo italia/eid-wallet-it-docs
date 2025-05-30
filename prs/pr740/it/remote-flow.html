@@ -208,8 +208,8 @@
 </div></blockquote>
 <ol class="arabic simple" start="5">
 <li><p><em>Consenso dell'Utente</em>: l'Istanza del Wallet chiede la divulgazione e il consenso dell'Utente mostrando l'identità della Relying Party e gli attributi richiesti.</p></li>
-<li><p><em>Risposta di Autorizzazione POST</em>: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme all'Attestato di Wallet se richiesto.</p></li>
-<li><p><em>Controlli RP</em>: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla l'Attestato di Wallet per garantire che il Fornitore di Wallet sia affidabile.</p></li>
+<li><p><em>Risposta di Autorizzazione POST</em>: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme alla Wallet Attestation se richiesto.</p></li>
+<li><p><em>Controlli RP</em>: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.</p></li>
 <li><p><em>Risposta della Relying Party</em>: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.</p></li>
 </ol>
 </div></blockquote>
@@ -380,7 +380,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Passaggi 21-25 (Controlli RP)</strong>: La Relying Party verifica la Risposta di Autorizzazione, estrae l'Attestato di Wallet per stabilire la fiducia con la Soluzione Wallet. Quindi estrae le Credenziali Elettroniche e attesta la fiducia con il Fornitore di Credenziale e la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in <a class="reference internal" href="credential-revocation.html#revoca-e-sospensione-delle-credenziali"><span class="std std-ref">Revoca e Sospensione delle Credenziali</span></a>. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.</p>
+<p><strong>Passaggi 21-25 (Controlli RP)</strong>: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae le Credenziali Elettroniche e attesta la fiducia con il Fornitore di Credenziale e la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in <a class="reference internal" href="credential-revocation.html#revoca-e-sospensione-delle-credenziali"><span class="std std-ref">Revoca e Sospensione delle Credenziali</span></a>. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.</p>
 <p><strong>Passaggi 26-27 o 28 (Risposta della Relying Party)</strong>: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che informa l'Utente.</p>
 <blockquote>
 <div><p>Dopo aver ricevuto e convalidato la Risposta di Autorizzazione all'Endpoint di Risposta, la Relying Party restituisce all'Istanza del Wallet un HTTP 200 OK. In particolare, nel Flusso Stesso Dispositivo, la Relying Party DOVREBBE anche passare il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> all'Istanza del Wallet. Dopo aver ricevuto il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire l'user-agent per continuare il flusso.</p>
@@ -689,7 +689,7 @@ Inoltre, i link universali offrono meccanismi di fallback, consentendo al flusso
 <td><p>Ci DEVONO essere almeno due presentazioni firmate in questo Array:</p>
 <ul class="simple">
 <li><p>La Credenziale Elettronica richiesta (una o più, in formato SD-JWT VC)</p></li>
-<li><p>L'Attestato di Wallet (in formato SD-JWT VC)</p></li>
+<li><p>la Wallet Attestation (in formato SD-JWT VC)</p></li>
 </ul>
 <p>Quando viene utilizzato <cite>presentation_definition</cite>, il valore <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> è un Array JSON contenente la/e Presentazione/i Verificabile/i e il parametro <cite>presentation_submission</cite> DEVE essere presente anche all'interno della risposta.</p>
 <p>Quando viene utilizzato il linguaggio di query DCQL, il formato <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> è un Oggetto JSON le cui chiavi corrispondono agli id delle credenziali richieste nel <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> utilizzato nella richiesta, e i valori a ciascuna Credenziale Elettronica presentata.</p>
@@ -863,7 +863,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>La firma dell'Attestato di Wallet non è valida o la fiducia non può essere stabilita con il suo Emittente.</p></td>
+<td><p>La firma della Wallet Attestation non è valida o la fiducia non può essere stabilita con il suo Emittente.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
