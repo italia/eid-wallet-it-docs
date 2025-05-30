@@ -34,7 +34,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Attributi**
     **Attributi dell'Utente**
-      Un insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni. 
+      Un insieme di caratteristiche, qualità, diritti o autorizzazioni di una persona fisica o giuridica o di un oggetto o anche una sola di queste informazioni.
       Conforme con ARF 1.10.
 
     **Autenticazione**
@@ -43,7 +43,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Fonte Autentica**
       Soggetto pubblico o privato responsabile di un archivio o sistema che è considerato fonte primaria per gli Attributi o per i Dati di Identificazione Personale.
-      Conforme con ARF 1.10.    
+      Conforme con ARF 1.10.
 
     **Processo di Certificazione**
       Procedura svolta dagli Organismi di Valutazione della conformità (CABs) per certificare le Soluzioni Wallet, che comprende anche le valutazioni tecniche periodiche.
@@ -63,7 +63,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Asset Critici**
-      Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Unità di Wallet.
+      Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Wallet Unit.
       Conforme con ARF 1.10.
 
     **Cryptographic Hardware Key Tag**
@@ -143,7 +143,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Fornitore di Attestati Elettronici di Dati di Identificazione Personale**
     **PID Provider**
-      Fornitore di Attestato Elettronico responsabile dell'emissione/revoca del PID, garantendo l'associazione crittografica con l'Unità di Wallet.
+      Fornitore di Attestato Elettronico responsabile dell'emissione/revoca del PID, garantendo l'associazione crittografica con la Wallet Unit.
       Conforme con ARF 1.10.
 
     **Policy Language**
@@ -161,11 +161,11 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico di Attributi Qualificati**
       Attestazione verificabile digitalmente emessa da un QTSP, che comprova il possesso di attributi.
       Conforme con ARF 1.10.
-    
+
     **Attestato Elettronico di Attributi**
       Attestazione verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
       Conforme con ARF 1.10.
-    
+
     **Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico**
     **Attestato Elettronico Pubblico di Attributi**
       Attestato Elettronico di Attributi che contiene Attributi forniti da una Fonte Autentica pubblica.
@@ -174,8 +174,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
     **Attestato Elettronico di Interesse Pubblico**
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
       Non presente in ARF 1.10; specifico di IT-Wallet.
-      
-    **Attestato Elettronico di Dati di Identificazione Personale**  
+
+    **Attestato Elettronico di Dati di Identificazione Personale**
       Attestazione Elettronica che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
       Conforme con ARF 1.10.
 
@@ -290,7 +290,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Istanza del Wallet**
-      Applicazione installata sul dispositivo di un Utente, parte di un'Unità di Wallet, che fornisce interfacce utente.
+      Applicazione installata sul dispositivo di un Utente, parte di una Wallet Unit, che fornisce interfacce utente.
       Conforme con ARF 1.10.
 
     **Fornitore di Wallet**
@@ -312,12 +312,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle istanze di IT-Wallet.
       Conforme con ARF 1.10.
 
-    **Unità di Wallet**
+    **Wallet Unit**
       Configurazione unica di una Soluzione Wallet per un singolo Utente, incluse tutte le funzionalità di sicurezza.
       Conforme con ARF 1.10.
 
-    **Attestato di Unità di Wallet**
-      Oggetto emesso da un Fornitore di Wallet che descrive le caretteristiche e i componenti della Unità di Wallet.
+    **Wallet Unit Attestation**
+      Oggetto emesso da un Fornitore di Wallet che descrive le caretteristiche e i componenti della Wallet Unit.
       Conforme con ARF 1.10.
 
     **Catalogo degli Attestati Elettronici**
@@ -338,40 +338,40 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
 
     **Authentication Button**
       Pulsante che consente all'Utente di avviare il processo di Autenticazione e di utilizzare i servizi forniti dai Verificatori di Attestati Elettronici.
-  
+
     **Identità del Marchio**
       Insieme di elementi visivi, verbali e strategici che un servizio, un prodotto o un'entità utilizza per presentarsi all'Utente e per distinguersi dagli altri.
 
     **Catalogo**
       Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'istanza IT-Wallet, e dalle quali è possibile avviare il processo di emissione.
-    
+
     **Call To Action**
       Suggerimento chiaro e diretto che incoraggia gli Utenti a intraprendere un'azione specifica. Può essere un pulsante, un link o un altro elemento che guida l'Utente verso un obiettivo specifico.
-    
+
     **Vista di Dettaglio**
       Modalità di visualizzazione estesa degli Attestati Elettronici, che mostra tutti gli Attributi contenuti.
-    
+
     **Discovery Page**
       È la pagina che rappresenta il Touchpoint con la Relying Party dove l'Utente atterra per accedere alla propria area autenticata e ha lo scopo di mostrare all'Utente tutti i metodi di Autenticazione disponibili.
-  
+
     **Engagement Button**
       Elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo (ad esempio per autenticarsi, per richiedere il rilascio di un attestato elettronico, ecc.).
-  
+
     **Modello di Interazione**
       Insieme di caratteristiche che definiscono le modalità con cui l'Utente interagisce con l'Interfaccia di uno o più Touchpoint per completare un'attività o un'operazione e conseguire un determinato scopo.
-    
+
     **Interfaccia**
       L'insieme degli elementi grafici, tipografici e interattivi attraverso i quali l'Utente interagisce con il/i Touchpoint preposto/i all'erogazione di un prodotto o servizio, nel rispetto di [GL_DESIGN].
-    
+
     **Visualizzazione in Anteprima**
       Modalità di visualizzazione compatta dell'Attestato Elettronico Digitale che consente di riconoscerla e distinguerla in un elenco di Attestazioni Elettroniche mediante la presenza di dati o elementi minimi.
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
-    
+
     **Touchpoint**
       Punto di contatto (digitale e non) tra l'Utente e il prodotto o servizio.
-    
+
     **Trust Mark**
       Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
 
@@ -442,7 +442,7 @@ Conformemente agli RFC 2119 e 8174 le seguenti parole chiave solamente quando ap
 
   - DEVE/DEVONO: indicano un requisito che è necessario soddisfare.
   - NON DEVE/NON DEVONO: indicano un divieto assoluto.
-  - PUO'/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione. 
+  - PUO'/POSSONO: indicano un requisito opzionale, ovvero si può scegliere di soddisfarlo o meno senza alcun tipo di implicazione.
   - DOVREBBE/DOVREBBERO/RACCOMANDATO: indicano un requisito consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti da una eventuale scelta alternativa.
   - NON DOVREBBE/NON DOVREBBERO/NON RACCOMANDATO: indicano un requisito che non è consigliato/raccomandato, ovvero si devono tenere in considerazione tutte le implicazioni derivanti dalla eventuale scelta di applicare comunque il requisito.
   - OBBLIGATORIO: necessario
