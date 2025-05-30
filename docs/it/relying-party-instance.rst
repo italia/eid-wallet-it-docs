@@ -2,7 +2,7 @@
 
 .. "included" file, so we start with '-' title level
 
-Relying Party Instance
+App di Verifica 
 ----------------------
 
 L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party.
@@ -10,7 +10,7 @@ L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere
 Esistono due tipi principali di App di Verifica, ciascuna destinata a diversi ambienti operativi:
 
 - **App di Verifica Embedded**: una soluzione hardware/software che opera su un dispositivo specializzato (ad es., varchi di accesso). Ogni App di Verifica corrisponde a un'installazione specifica dell'applicazione su un dispositivo embedded. Poiché la trust con l'App di Verifica Embedded è stabilita attraverso la trust instaurata con il Mobile Relying Party Provider, l'App di Verifica Embedded può essere considerata un Confidential Client di OAuth.
-- **App di Verifica Mobile**: un'applicazione nativa che opera su un dispositivo mobile (ad es., smartphone o tablet). Ogni istanza corrisponde a un'installazione specifica dell'applicazione su un dispositivo. Poiché la trust con la Mobile Relying Party Instance è stabilita attraverso la trust instaurata con il Mobile Relying Party Provider, l'App di Verifica Mobile può essere considerata un Confidential Client di OAuth.
+- **App di Verifica Mobile**: un'applicazione nativa che opera su un dispositivo mobile (ad es., smartphone o tablet). Ogni istanza corrisponde a un'installazione specifica dell'applicazione su un dispositivo. Poiché la trust con la App di Verifica Mobile è stabilita attraverso la trust instaurata con il Mobile Relying Party Provider, l'App di Verifica Mobile può essere considerata un Confidential Client di OAuth.
 - **App di Verifica Web**: un'applicazione remota gestita dalla Relying Party. Un'App di Verifica Web opera come Confidential Client di OAuth, il che significa che può memorizzare in modo sicuro configurazioni riservate (come le sue chiavi crittografiche private) su un server remoto. In questo contesto, la Relying Party non è fornita da terzi e la richiesta di presentazione e la successiva validazione sono gestite automaticamente dal software.
 
 .. note::
@@ -22,21 +22,21 @@ Esistono due tipi principali di App di Verifica, ciascuna destinata a diversi am
 Ulteriori dettagli tecnici e operativi sono discussi nelle sezioni seguenti.
 
 
-Mobile Relying Party Instance
+App di Verifica Mobile
 -----------------------------
 
 Il ciclo di vita di un'App di Verifica include quattro stati principali: **Installed**, **Unverified**, **Verified** e **Uninstalled**, supportando funzionalità come registrazione, riemissione del Certificato di Accesso e revoca.
 
-Mobile Relying Party Instance Lifecycle
+Ciclo di Vita App di Verifica Mobile 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In questa sezione vengono presentati le macchine a stati finiti per spiegare gli stati della App di Verifica Mobile, nonché le loro transizioni e relazioni.
+In questa sezione vengono presentati le macchine a stati finiti per spiegare gli stati dell'App di Verifica Mobile, nonché le loro transizioni e relazioni.
 
 .. _fig_RelyingParty_Instance_Mobile_Lifecycle:
 .. plantuml:: plantuml/rp-mobile-instance-lifecycle.puml
     :width: 99%
     :alt: La figura illustra il Ciclo di vita dell'App di Verifica Mobile.
-    :caption: `Ciclo di vita della Mobile Relying Party Instance. <https://www.plantuml.com/plantuml/svg/XP7VQ_em5CNVyrTSzENx5SIkw1X5Ycx6KTYaYpyOZ3reSwk1c4gRRdH__M8DZJZ4FlMU--avXzjHeTUvBlSINaIAIPL8X2m5lKDupJR2J0nb9TGMOiDL42dpWKgGx0H7mFt1Q1oB91S7BJ95Y5bhF65I8eVsT3eUU9xLMolCHIgGjs1T6Eirhw3j-m-Flc-9fVgo2BHJytXUin3ET7BV7_G7X7nqFg7Bis_L3Lrc02oE89hD5wJH6ihQE6uvkoHpiTrfWzRrJX2ZpwGUR_fOIcAg_tPYT6K1PpzCCfdbmKQM6CRHfFVlxJyTZo5cTDYhL-55ihjG04-KBO2-nyI9DnkUe-N15Qcz68tcytFa8l1wsqvJr_7NxZ2XnuEwWWOqaFcP9g0GFnZS-U6mTtmBoGWLB_Vo5m00>`_
+    :caption: `Ciclo di vita della App di Verifica Mobile. <https://www.plantuml.com/plantuml/svg/XP7VQ_em5CNVyrTSzENx5SIkw1X5Ycx6KTYaYpyOZ3reSwk1c4gRRdH__M8DZJZ4FlMU--avXzjHeTUvBlSINaIAIPL8X2m5lKDupJR2J0nb9TGMOiDL42dpWKgGx0H7mFt1Q1oB91S7BJ95Y5bhF65I8eVsT3eUU9xLMolCHIgGjs1T6Eirhw3j-m-Flc-9fVgo2BHJytXUin3ET7BV7_G7X7nqFg7Bis_L3Lrc02oE89hD5wJH6ihQE6uvkoHpiTrfWzRrJX2ZpwGUR_fOIcAg_tPYT6K1PpzCCfdbmKQM6CRHfFVlxJyTZo5cTDYhL-55ihjG04-KBO2-nyI9DnkUe-N15Qcz68tcytFa8l1wsqvJr_7NxZ2XnuEwWWOqaFcP9g0GFnZS-U6mTtmBoGWLB_Vo5m00>`_
 
 
 .. .. figure:: ../../images/RelyingParty_Instance_Mobile_Lifecycle.svg
@@ -50,7 +50,7 @@ Come mostrato in :numref:`fig_RelyingParty_Instance_Mobile_Lifecycle`, l'App di 
 
 
 
-Transition to Installed
+Transizione a Installed
 """""""""""""""""""""""
 
 La macchina a stati inizia con l'installazione della App di Verifica (transizione **RPI INST**), dove gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo, portando allo stato **Installed**.
@@ -71,8 +71,8 @@ La revoca può avvenire nei seguenti casi:
 
 Inoltre, ogni Relying Party DOVREBBE stabilire un periodo di tempo (periodo di grazia) durante il quale l'App di Verifica può richiedere presentazioni di Credenziali Elettroniche autenticandosi verso un'Istanza del Wallet utilizzando un Certificato di Accesso scaduto. Dopo questo periodo, l'App di Verifica DEVE essere de-registrata (transizione **RPI DEREG**) e tornare allo stato **Installed**. Questa transizione implica che le Cryptographic Hardware Keys DEVONO essere cancellate.
 
-Transition to Verified
-""""""""""""""""""""""
+Transizione a Verified
+""""""""""""""""""""""""
 
 L'App di Verifica deve ottenere un Certificato di Accesso appropriato, che sarà utilizzato per autenticarsi verso le Istanze del Wallet. Questo Certificato viene ottenuto interagendo con il Backend della Relying Party, che a sua volta comunica con l'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica. In particolare, la transizione di registrazione (**RPI REG**) consiste nelle seguenti sottofasi, che portano allo stato **Verified**:
 
@@ -84,8 +84,8 @@ Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di A
 In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (**PID/(Q)EAA PRE**), utilizzando il Certificato di Accesso per autenticarsi.
 
 
-Transition to Unverified
-""""""""""""""""""""""""
+Transizione a Unverified
+""""""""""""""""""""""""""
 
 La scadenza del Certificato di Accesso (transizione **CERT EXP**) porta allo stato **Unverified**.
 
@@ -93,13 +93,13 @@ In questo stato, l'App di Verifica può ancora richiedere la presentazione di At
 
 
 
-Transition to Uninstalled
-"""""""""""""""""""""""""
+Transizione a Uninstalled
+"""""""""""""""""""""""""""
 
 Attraverso gli stati **Installed**, **Verified** e **Unverified**, la Relying Party Instance può essere rimossa completamente attraverso la disinstallazione dell'App di Verifica (transizione **RPI UNINST**), portando allo stato **Uninstalled**. Se un'App di Verifica è **Uninstalled**, termina il suo ciclo di vita.
 
 
-Mobile Relying Party Instance Functionalities
+Funzionalità dell'App di Verifica Mobile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un'App di Verifica DEVE supportare tre funzionalità fondamentali: **Registrazione**, **Riemissione del Certificato di Accesso** e **Revoca**. Ogni funzionalità è descritta in dettaglio nelle sezioni seguenti.
@@ -111,7 +111,7 @@ Un'App di Verifica DEVE supportare tre funzionalità fondamentali: **Registrazio
   I dettagli forniti di seguito sono non normativi e sono destinati a chiarire le funzionalità dell'App di Verifica Mobile. L'implementazione effettiva può variare in base al caso d'uso specifico e ai requisiti della Relying Party.
 
 
-Mobile Relying Party Instance Registration
+Registrazione App di Verifica Mobile
 """"""""""""""""""""""""""""""""""""""""""
 
 Questo processo consente la registrazione di un'App di Verifica con il Backend della Relying Party e l'emissione di un Certificato di Accesso che sarà utilizzato per autenticarsi verso le Istanze del Wallet durante i flussi di presentazione. Il processo consiste in due sottofasi:
@@ -126,7 +126,7 @@ Questo processo consente la registrazione di un'App di Verifica con il Backend d
 .. plantuml:: plantuml/rp-mobile-instance-access-certificate-issuance.puml
     :width: 99%
     :alt: La figura illustra il Flusso di Emissione del Certificato di Accesso dell'App di Verifica Mobile.
-    :caption: `Flusso di Emissione del Certificato di Accesso della Mobile Relying Party Instance. <https://www.plantuml.com/plantuml/svg/ZLF1ZjD03BtdAwpX04Zm0psWBMM1QeMqQijjfSYPkCsewSmmdXJozpXX89tL2EsXKMg_Ppy_EtSSCSJXqbSuH6U7IqEXwanBS7GkDkvNLRr-58JHngEDNA6EBe3wpXGK8CF0Gl0B0jGtrvYUO4VzQEm99lO8MokDhAQPWzv3plb4LwD9K95EmGX-Js6Eh1-tVoWO6Lwn3rBo58Xipi-RVKHz9jlEn4QVoz1SrvDTQqtCi2717et6ACs7sBb9pbn9etYnFwnt1zZSxmxRpzlD-d1VoJ3lFyXZ1PkEz1dC4JPXzD6T0lhEQFYAeVs9WU21HeRf1QzeUcnwgcxONyXIm4W2WJEDuD44UAEKlDT-Q9Hw1-bFC5UbtYQkpBSIhtyCn540raqcgsbDvegHvldbDmEN9WjoJYO9Ix2bh411fe1rRyZ6kiM8IW7QzibgT_73ysJT8NTID5N1oAiYO14zOGGkpqMQ-NiRDJ9FIt8s5vf89QLTMa7DvcGn3a5cB48VIAx7s7Owa6JghS_bTCdgT0qCpfPPDxRdUVREChrW0zcfxcMmc_hJuMWEpyuanNB5HSa9cP8Q2zpfSz0u9-Vk2qUY_nhY_5NLUf6QBqrZPiN_2GKpzj45UW5DmDKTsNQuzBy1>`_
+    :caption: `Flusso di Emissione del Certificato di Accesso della App di Verifica Mobile. <https://www.plantuml.com/plantuml/svg/ZLF1ZjD03BtdAwpX04Zm0psWBMM1QeMqQijjfSYPkCsewSmmdXJozpXX89tL2EsXKMg_Ppy_EtSSCSJXqbSuH6U7IqEXwanBS7GkDkvNLRr-58JHngEDNA6EBe3wpXGK8CF0Gl0B0jGtrvYUO4VzQEm99lO8MokDhAQPWzv3plb4LwD9K95EmGX-Js6Eh1-tVoWO6Lwn3rBo58Xipi-RVKHz9jlEn4QVoz1SrvDTQqtCi2717et6ACs7sBb9pbn9etYnFwnt1zZSxmxRpzlD-d1VoJ3lFyXZ1PkEz1dC4JPXzD6T0lhEQFYAeVs9WU21HeRf1QzeUcnwgcxONyXIm4W2WJEDuD44UAEKlDT-Q9Hw1-bFC5UbtYQkpBSIhtyCn540raqcgsbDvegHvldbDmEN9WjoJYO9Ix2bh411fe1rRyZ6kiM8IW7QzibgT_73ysJT8NTID5N1oAiYO14zOGGkpqMQ-NiRDJ9FIt8s5vf89QLTMa7DvcGn3a5cB48VIAx7s7Owa6JghS_bTCdgT0qCpfPPDxRdUVREChrW0zcfxcMmc_hJuMWEpyuanNB5HSa9cP8Q2zpfSz0u9-Vk2qUY_nhY_5NLUf6QBqrZPiN_2GKpzj45UW5DmDKTsNQuzBy1>`_
 
 
 .. .. figure:: ../../images/RelyingParty_Instance_Mobile_Registration_AccessCertificateIssuance.svg
@@ -134,10 +134,10 @@ Questo processo consente la registrazione di un'App di Verifica con il Backend d
 ..     :align: center
 ..     :target: https://www.plantuml.com/plantuml/svg/ZPF1ZjCm48RlUOgHEG0Il40FQBFL0XL2MhNbjb8rSQQDrTGszgIGjsSIBDnK5jh3HbdFzu__-JDzY8o1XqjVuS3E3fU6GjMPbk3e73VkTrMzVHR2QEFHSgnGimkWVaGA2Z3244NWCm7gksjCJx2bVZJs19DwX8sDZ5RJh47lOQdvHYFKp2GG6sUXVjx4loXoX3VH1sbr2aHsgLjUyeZwJBQTXOq-Bz6odnTRQqqnmfg4FHgDJ50FtBbWU9mxQPGCTljwkuVrqtQ_-RnPr_kdIeRu-4aUArXtfCzWZh0EesTt2kWxe-4hXlON1W8PBiBqWbSqFJOzLJVgBsGf89CWS9OOF9e0xvIIzuCV6gK-GFedcAjIxvDMvbj9nZy7YYo0TLEuQleyvefCy_poDuFvaapEnMGX7xQqQ52mAR3k3La-jCYe5A1jNwns5p_S5myTnawQfYx8SLK4ikc94LoUsTeqEkRLo2QpeEYoI_4VeZbPv278V4Lqshr7OzjfELAWjncNowMOqoP4SBQiof7VrQDtDj8hqb-iwKu6k-a_BOsEuMv5qjdIST5o8bDHOq6hiQeqpiNvzgoHqtyNuloBEkXiTVdHD2wY-B-W4CQENQ1No0Ik7iYsmwN_0m00
 
-    Flow of the Mobile Relying Party Instance Access Certificate Issuance
+    Flow of the App di Verifica Mobile Access Certificate Issuance
 
 
-**Passi 1-2:** La Mobile Relying Party Instance:
+**Passi 1-2:** La App di Verifica Mobile:
 
   1. Verifica l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la re-inizializzazione dell'App di Verifica.
   2. Genera una coppia di chiavi asimmetriche per il Certificato di Accesso (``key_pub``, ``key_priv``).
@@ -197,13 +197,13 @@ Di seguito è riportato un esempio non normativo di ``client_data``.
 **Passi 20-21:** Il Backend della Relying Party invia il Certificato di Accesso (come parte della :ref:`relying-party-endpoint:Risposta del Certificato di Accesso della Relying Party`) all'App di Verifica Mobile, che lo memorizza per future autenticazioni verso le Istanze del Wallet.
 
 
-Mobile Relying Party Instance Access Certificate Reissuance
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Riemissione de Certificato di Accesso App di Verifica Mobile
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-L'emissione di un nuovo Certificato di Accesso segue lo stesso flusso descritto nella sezione :ref:`relying-party-instance:Mobile Relying Party Instance Registration` per **Emissione del Certificato di Accesso**. Questi certificati POSSONO essere emessi come a breve durata (tipicamente validi entro 24 ore) o a lunga durata.
+L'emissione di un nuovo Certificato di Accesso segue lo stesso flusso descritto nella sezione :ref:`relying-party-instance:Registrazione App di Verifica Mobile` per **Emissione del Certificato di Accesso**. Questi certificati POSSONO essere emessi come a breve durata (tipicamente validi entro 24 ore) o a lunga durata.
 
 
-Mobile Relying Party Instance Revocation
+Revoca App di Verifica Mobile
 """"""""""""""""""""""""""""""""""""""""
 
 Le Relying Party DEVONO verificare periodicamente l'autenticità e la sicurezza delle App di Verifica.
@@ -213,20 +213,20 @@ Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla va
 I Certificati X.509 a lunga durata seguono i requisiti relativi al loro ciclo di vita, definiti in :ref:`trust:L'Infrastruttura di Trust`.
 
 
-Web Relying Party Instance
+App di Verifica Web
 --------------------------
 
 Le Web Instance operano controlli di sicurezza lato server che memorizzano in modo sicuro segreti e chiavi crittografiche in un ambiente controllato. Le App di Verifica Web DEVONO essere registrate presso la Trust Anchor o le Entità Intermediarie, secondo :ref:`trust:L'Infrastruttura di Trust`.
 
 
-Web Relying Party Instance Functionalities
+Funzionalità dell'App di Verifica Web
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un'App di Verifica Web DEVE supportare due funzionalità fondamentali: **Registrazione** e **Revoca**. Ogni funzionalità è descritta nelle sezioni seguenti.
 
 
-Web Relying Party Instance Registration
-"""""""""""""""""""""""""""""""""""""""
+Registrazione Revoca App di Verifica Web
+"""""""""""""""""""""""""""""""""""""""""
 
 Le App di Verifica Web, in qualità di OAuth Confidential Client, sono registrate direttamente dalla Trust Anchor o un'Entità Intermediaria. La registrazione comporta:
 
@@ -236,7 +236,7 @@ Le App di Verifica Web, in qualità di OAuth Confidential Client, sono registrat
 - Non è richiesta alcuna gestione del ciclo di vita delle singole istanze, poiché l'App Web opera come parte dell'ambiente server protetto.
 
 
-Web Relying Party Instance Revocation
+Revoca App di Verifica Web
 """""""""""""""""""""""""""""""""""""
 
 Quando una App di Verifica Web deve essere revocata:
