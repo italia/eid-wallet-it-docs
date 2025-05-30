@@ -14,9 +14,9 @@ Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DE
 Endpoint di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Configurazione dell'Entità del Fornitore di Wallet.
+L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.
 
-Vedere la Sezione :ref:`wallet-provider-entity-configuration:Configurazione dell'Entità del Fornitore di Wallet` per i dettagli tecnici.
+Vedere la Sezione :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` per i dettagli tecnici.
 
 
 Endpoint Nonce della Soluzione Wallet
@@ -164,7 +164,7 @@ I seguenti errori DEVONO essere supportati per le risposte di errore relative al
      - L'utente non ha il permesso di recuperare questa Istanza di Wallet.
    * - ``401 Unauthorized``
      - ``unauthorized``
-     - La richiesta manca di credenziali di autenticazione valide.
+     - La richiesta manca di Credenziali di autenticazione valide.
 
 I seguenti errori DEVONO essere supportati per le risposte di errore relative alla **Revoca dell'Istanza di Wallet**:
 
@@ -198,7 +198,7 @@ L'header ``typ`` del JWT della Richiesta di Integrità assume il valore ``wp-war
 Risposta all'Emissione dell'Attestato di Wallet
 """""""""""""""""""""""""""""""""""""""""""""""
 
-Se la Richiesta di Emissione dell'Attestato di Wallet viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` il cui valore è un array di Oggetti JSON (vedi :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. L'Attestato di Wallet in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in :ref:`credential-issuance:Emissione di Credenziale Digitale`. L'Attestato di Wallet in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`).
+Se la Richiesta di Emissione dell'Attestato di Wallet viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` il cui valore è un array di Oggetti JSON (vedi :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. L'Attestato di Wallet in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`. L'Attestato di Wallet in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`).
 
 
 L'Oggetto JSON restituito nella risposta ha il seguente claim:
@@ -226,7 +226,7 @@ Ogni Oggetto JSON contenuto nell'array ``wallet_attestations`` DEVE avere la seg
       - **Descrizione**
       - **Riferimento**
     * - **format**
-      - Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` a seconda del formato della credenziale.
+      - Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` a seconda del formato della Credenziale.
       - Questa specifica.
     * - **wallet_attestation**
       - Una stringa che rappresenta l'Attestato di Wallet. Se
@@ -395,7 +395,7 @@ Il corpo dell'SD-JWT dell'Attestato di Wallet contiene i seguenti claim:
       - OBBLIGATORIO. Oggetto JSON, contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza di Wallet.
       - :rfc:`7800`.
     * - **vct**
-      - OBBLIGATORIO. Il valore del tipo di credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su ``wallet.atestation.example/v1.0``.
+      - OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su ``wallet.atestation.example/v1.0``.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - OBBLIGATORIO. Array JSON contenente un elenco di tutti i digest delle divulgazioni.

@@ -82,7 +82,7 @@ SR-E-20
    * - |check-icon|
      - Il Trust Framework deve garantire che l'identificazione di un Fornitore di Credenziale sia unica e non ambigua. Se ci sono più istanze dello stesso Fornitore di Credenziale che utilizzano lo stesso materiale chiave, il Verificatore di Attestati Elettronici deve fidarsi di tutte le istanze allo stesso modo.
 
-Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziale) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Configurazione dell'Entità OpenID Federation verificata all'interno di una Trust Chain.
+Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziale) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.
 
 SR-E-30
 ^^^^^^^
@@ -92,7 +92,7 @@ SR-E-30
    * - |check-icon|
      - Il modo in cui il Verificatore di Attestati Elettronici determina l'affidabilità del Fornitore di Credenziale definito nel Trust Framework deve essere protetto dall'influenza di una parte malintenzionata che può, ad esempio, introdurre entità non affidabili in una directory.
 
-I Fornitori di Credenziale sono registrati da un Trust Anchor o dal suo Intermediario. Per verificare l'affidabilità di un Fornitore di Credenziale, un Verificatore di Attestati Elettronici deve verificare che la Trust Chain relativa al Fornitore di Credenziale sia valida e ancora attiva. Questo processo di convalida garantisce che solo entità affidabili siano autorizzate a partecipare al sistema, impedendo l'introduzione di attori non affidabili.
+I Fornitori di Credenziali sono registrati da un Trust Anchor o dal suo Intermediario. Per verificare l'affidabilità di un Fornitore di Credenziale, un Verificatore di Attestati Elettronici deve verificare che la Trust Chain relativa al Fornitore di Credenziale sia valida e ancora attiva. Questo processo di convalida garantisce che solo entità affidabili siano autorizzate a partecipare al sistema, impedendo l'introduzione di attori non affidabili.
 
 SR-E-40
 ^^^^^^^
@@ -100,7 +100,7 @@ SR-E-40
    :widths: 8 92
 
    * - |check-icon|
-     - Il Trust Framework deve garantire che ci sia un modo per i Verificatori di Attestati Elettronici di mantenere aggiornate le loro informazioni sui Fornitori di Credenziale affidabili e che ci sia un modo per revocare la fiducia in un Fornitore di Credenziale.
+     - Il Trust Framework deve garantire che ci sia un modo per i Verificatori di Attestati Elettronici di mantenere aggiornate le loro informazioni sui Fornitori di Credenziali affidabili e che ci sia un modo per revocare la fiducia in un Fornitore di Credenziale.
 
 Se l'Entity Statement di un Fornitore di Credenziale viene revocato o non è disponibile, significa che il Fornitore di Credenziale non è più considerato valido all'interno della federazione. Ciò garantisce che i Verificatori di Attestati Elettronici abbiano accesso in tempo reale allo stato delle entità affidabili e possano revocare la fiducia se necessario. Tuttavia, i Verificatori di Attestati Elettronici devono controllare attivamente lo stato del Fornitore di Credenziale interrogando gli endpoint della federazione (cioè, l'endpoint fetch per ottenere la Subordinate Statement).
 
@@ -282,9 +282,9 @@ SR-W-20
    :widths: 8 92
 
    * - |check-icon|
-     - Il Wallet deve fornire informazioni affidabili e complete sui Fornitori di Credenziale all'Utente.
+     - Il Wallet deve fornire informazioni affidabili e complete sui Fornitori di Credenziali all'Utente.
 
-L'Istanza del Wallet scopre i Fornitori di Credenziale affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Credenziale e i Trust Mark per filtrare il Fornitore di PID.
+L'Istanza del Wallet scopre i Fornitori di Credenziali affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Credenziale e i Trust Mark per filtrare il Fornitore di PID.
 
 Le informazioni del Fornitore di Credenziale vengono visualizzate all'Utente durante il processo di emissione e possono essere successivamente lette dall'Utente in quanto sono all'interno della Credenziale emessa.
 Oltre alle informazioni del Fornitore di Credenziale, il Tipo di Metadati della Credenziale Digitale contiene anche informazioni sulla Fonte Autentica.
@@ -474,7 +474,7 @@ SPR-P-80
    * - |check-icon|
      - Il protocollo deve garantire che il Fornitore di Credenziale non possa sapere dove l'Utente utilizza la Credenziale.
 
-Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziale. Inoltre, Status Assertion che preservano la privacy, presentate insieme alle Credenziali,
+Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali. Inoltre, Status Assertion che preservano la privacy, presentate insieme alle Credenziali,
 garantiscono che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziale non apprende dove o quando la Credenziale viene utilizzata.
 
 SPR-W-50

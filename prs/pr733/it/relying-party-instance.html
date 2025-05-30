@@ -18,7 +18,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="5.3.5. Configurazione dell&#39;Entità Relying Party" href="relying-party-entity-configuration.html" />
+    <link rel="next" title="5.3.5. Entity Configuration Relying Party" href="relying-party-entity-configuration.html" />
     <link rel="prev" title="5.3.1. Requisiti della Soluzione di Relying Party" href="relying-party-requirements.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -143,7 +143,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">5.3.2. Relying Party Instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mobile-relying-party-instance">5.3.3. Mobile Relying Party Instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#web-relying-party-instance">5.3.4. Web Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Configurazione dell'Entità Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Entity Configuration Relying Party</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.6. Metadati della Relying Party</a></li>
 </ul>
 </li>
@@ -360,8 +360,8 @@ Di conseguenza, la revoca della Mobile Relying Party Instance DEVE essere legata
 <p>Le Web Relying Party Instance, come client confidenziali, sono registrate direttamente con l'Ancora di Fiducia o un'Entità Intermediaria. La registrazione comporta:</p>
 <ul class="simple">
 <li><p>La Relying Party DEVE registrare la sua Web Instance con l'Ancora di Fiducia o l'Intermediario.</p></li>
-<li><p>La Relying Party DEVE esporre una Configurazione dell'Entità come definito nel Trust Framework.</p></li>
-<li><p>La Configurazione dell'Entità DEVE contenere tutti i metadati necessari per la federazione, inclusi gli endpoint e le chiavi pubbliche.</p></li>
+<li><p>La Relying Party DEVE esporre una Entity Configuration come definito nel Trust Framework.</p></li>
+<li><p>La Entity Configuration DEVE contenere tutti i metadati necessari per la federazione, inclusi gli endpoint e le chiavi pubbliche.</p></li>
 <li><p>Non è richiesta alcuna gestione del ciclo di vita delle singole istanze, poiché la Web Instance opera come parte dell'ambiente server protetto.</p></li>
 </ul>
 </section>
@@ -371,7 +371,7 @@ Di conseguenza, la revoca della Mobile Relying Party Instance DEVE essere legata
 <ul class="simple">
 <li><p>La revoca DEVE essere eseguita secondo le procedure del Trust Framework.</p></li>
 <li><p>Le chiavi crittografiche utilizzate dalla Web Instance DEVONO essere revocate.</p></li>
-<li><p>La Configurazione dell'Entità DEVE essere aggiornata per riflettere la revoca.</p></li>
+<li><p>La Entity Configuration DEVE essere aggiornata per riflettere la revoca.</p></li>
 <li><p>L'Ancora di Fiducia DEVE essere notificata della revoca per aggiornare i metadati della federazione.</p></li>
 </ul>
 </section>
@@ -436,7 +436,7 @@ Di conseguenza, la revoca della Mobile Relying Party Instance DEVE essere legata
 
             <div class="right">
                 
-                    <a href="relying-party-entity-configuration.html"><span><span class="section-number">5.3.5. </span>Configurazione dell'Entità Relying Party</span><span class="icon">&gt;</span></a>
+                    <a href="relying-party-entity-configuration.html"><span><span class="section-number">5.3.5. </span>Entity Configuration Relying Party</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -444,7 +444,7 @@ Di conseguenza, la revoca della Mobile Relying Party Instance DEVE essere legata
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 30/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

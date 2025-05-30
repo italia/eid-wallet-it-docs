@@ -37,7 +37,7 @@ Il flusso è mostrato in :ref:`fig_MobileApplication_Instance_Initialization_Flo
   * Verifica se le API di Key Attestation sono disponibili.
 
 .. note::
-  **Controllo della Federazione**: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint :ref:`wallet-provider-endpoint:Endpoint di Federazione` con la **Configurazione dell'Entità** e i **Metadati** del Fornitore dell'Applicazione sono presentati nelle sezioni :ref:`wallet-provider-entity-configuration:Configurazione dell'Entità del Fornitore di Wallet` e :ref:`relying-party-entity-configuration:Configurazione dell'Entità Relying Party`.
+  **Controllo della Federazione**: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint :ref:`wallet-provider-endpoint:Endpoint di Federazione` con la **Entity Configuration** e i **Metadati** del Fornitore dell'Applicazione sono presentati nelle sezioni :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` e :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
 **Passi 3-5 (Recupero del Nonce)**: L'Istanza dell'Applicazione Mobile richiede un ``nonce`` monouso dall'**Endpoint Nonce** del Backend del Fornitore dell'Applicazione (vedi :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` o :ref:`relying-party-endpoint:Endpoint Nonce della Relying Party`). Questo ``nonce`` DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay.
 

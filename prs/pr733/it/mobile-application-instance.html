@@ -149,7 +149,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">15.1. Istanza dell'Applicazione Mobile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test-plans.html">15.3. Piani di Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Credential Issuer PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Specifica OpenAPI del Credential Issuer PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.5. Specifica OpenAPI della Fonte Autentica PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.6. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
 </ul>
@@ -192,7 +192,7 @@
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Controllo della Federazione</strong>: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-federazione"><span class="std std-ref">Endpoint di Federazione</span></a> con la <strong>Configurazione dell'Entità</strong> e i <strong>Metadati</strong> del Fornitore dell'Applicazione sono presentati nelle sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#configurazione-dell-entita-del-fornitore-di-wallet"><span class="std std-ref">Configurazione dell'Entità del Fornitore di Wallet</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#configurazione-dell-entita-relying-party"><span class="std std-ref">Configurazione dell'Entità Relying Party</span></a>.</p>
+<p><strong>Controllo della Federazione</strong>: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-federazione"><span class="std std-ref">Endpoint di Federazione</span></a> con la <strong>Entity Configuration</strong> e i <strong>Metadati</strong> del Fornitore dell'Applicazione sono presentati nelle sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
 </div>
 <p><strong>Passi 3-5 (Recupero del Nonce)</strong>: L'Istanza dell'Applicazione Mobile richiede un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> monouso dall'<strong>Endpoint Nonce</strong> del Backend del Fornitore dell'Applicazione (vedi <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet"><span class="std std-ref">Endpoint Nonce della Soluzione Wallet</span></a> o <a class="reference internal" href="relying-party-endpoint.html#endpoint-nonce-della-relying-party"><span class="std std-ref">Endpoint Nonce della Relying Party</span></a>). Questo <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay.</p>
 <p>In caso di richiesta riuscita, il Fornitore dell'Applicazione genera e restituisce il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code> all'Istanza dell'Applicazione Mobile, come parte della <a class="reference internal" href="#risposta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Risposta di Nonce dell'Applicazione Mobile</span></a>. Il Fornitore dell'Applicazione DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.</p>
@@ -717,7 +717,7 @@ Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Att
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 30/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

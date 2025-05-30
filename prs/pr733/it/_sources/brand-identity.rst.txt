@@ -81,7 +81,7 @@ Di seguito i requisiti generali per il suo utilizzo, validi sia in riferimento a
 Componenti 
 """"""""""
 
-Sono definiti componenti gli elementi del Sistema IT-Wallet che abilitano l'Utente a interagire con le diverse Soluzioni Tecniche tramite la propria Istanza IT-Wallet.  
+Sono definiti componenti gli elementi del Sistema IT-Wallet che abilitano l'Utente a interagire con le diverse Soluzioni Tecniche tramite la propria Istanza del Wallet.  
 
 Le Risorse Ufficiali mettono a disposizione sia componenti complessi, ovvero template relativi a interi flussi, sia componenti atomici, ovvero singoli elementi da integrare all'interno di interfacce preesistenti (e.g. i Pulsanti di Ingaggio). 
 
@@ -97,7 +97,7 @@ Pulsante di Autenticazione
 """"""""""""""""""""""""""
 
 Il Pulsante di Autenticazione è un esempio di Pulsante di Ingaggio. 
-I Verificatori di Attestati Elettronici DEVONO rendere disponibile il Pulsante di Autenticazione all'interno della Discovery Page delle proprie Soluzioni Tecniche per permettere all'Utente di Autenticarsi ai propri servizi tramite un'Istanza IT-Wallet.  
+I Verificatori di Attestati Elettronici DEVONO rendere disponibile il Pulsante di Autenticazione all'interno della Discovery Page delle proprie Soluzioni Tecniche per permettere all'Utente di Autenticarsi ai propri servizi tramite un'Istanza del Wallet.  
 
 Le modalità di integrazione del Pulsante di Autenticazione nella Discovery Page possono essere molteplici a seconda del layout della pagina stessa. Di seguito alcuni esempi illustrativi e non esaustivi di Discovery Page, rispettivamente con struttura a griglia, a tab e in lista. 
 

@@ -8,11 +8,11 @@ Riferimenti Normativi
 
 Decreto Legislativo del 7 marzo 2005, n. 82 e successive modificazioni, recante il 'Codice dell'Amministrazione Digitale'.
 
-[REF_ACCESSIBILITY]
+[RIF_ACCESSIBILITÀ]
 
 Linee guida per l'accessibilità degli strumenti informatici ai sensi dell'articolo 11 della legge del 9 Gennaio 2004 n. 4. Direttiva UE 2019/882 del Parlamento Europeo e del Consiglio, del 17 aprile 2019, sui requisiti di accessibilità per prodotti e servizi.
 
-[GL_DESIGN]
+[LG_DESIGN]
 
 Linee guida per la progettazione dei siti web e dei servizi digitali forniti dalle pubbliche amministrazioni, ai sensi dell'articolo 53, comma 1-ter, del decreto legislativo del 7 marzo 2005, n. 82, e successive modificazioni.
 
@@ -57,13 +57,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
       ARF 1.10 utilizza definizioni similari; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA .
 
-    **Credential Status Assertion**
     **Status Assertion**
       Documento firmato attestante lo stato di validità attuale di un Attestato Elettronico.
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Asset Critici**
-      Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Unità di Wallet.
+      Asset (ad esempio, le chiavi crittografiche) la cui perdita avrebbe gravi ripercussioni sulla Istanza del Wallet.
       Conforme con ARF 1.10.
 
     **Cryptographic Hardware Key Tag**
@@ -89,6 +88,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Titolare**
     **Holder**
+    **Utente**
       Persona fisica o giuridica che riceve, gestisce e presenta Attestati Elettronici tramite l'Istanza del Wallet.
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
@@ -97,7 +97,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Capacità del Titolare di dimostrare il possesso della chiave privata attestata da una terza parte di fiducia.
       Non presente in ARF 1.10.
 
-    **Identity and Access Management (IAM)**
+    **Identity and Access Management**
       Framework per la gestione delle identità digitali e dell'accesso alle informazioni.
       Non presente in ARF 1.10.
 
@@ -110,7 +110,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Key Attestation**
-      Attestazione dell'OEM del dispositivo sull'archiviazione sicura delle chiavi nell' hardware-backed keystore.
+      Attestazione dell'OEM del dispositivo sull'archiviazione sicura delle chiavi nell'hardware-backed keystore.
       Non presente in ARF 1.10.
 
     **Livello di Garanzia**
@@ -143,7 +143,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Fornitore di Attestati Elettronici di Dati di Identificazione Personale**
     **PID Provider**
-      Fornitore di Attestato Elettronico responsabile dell'emissione/revoca del PID, garantendo l'associazione crittografica con l'Unità di Wallet.
+      Fornitore di Attestato Elettronico responsabile dell'emissione/revoca del PID, che garantisce l'associazione crittografica con l'Unità di Wallet.
       Conforme con ARF 1.10.
 
     **Policy Language**
@@ -163,7 +163,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
     
     **Attestato Elettronico di Attributi**
-      Attestazione verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
+      Attestato verificabile digitalmente in forma elettronica, comprovante il possesso di attributi.
       Conforme con ARF 1.10.
     
     **Attestato Elettronico di Attributi rilasciato da o per conto di un ente pubblico**
@@ -176,7 +176,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
       
     **Attestato Elettronico di Dati di Identificazione Personale**  
-      Attestazione Elettronica che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
+      Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
       Conforme con ARF 1.10.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
@@ -261,6 +261,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Insieme di regole che garantiscono la legittimità dei componenti/entità nell'ecosistema IT-Wallet.
       Non presente in ARF 1.10.
 
+    **Relazione di Fiducia**
     **Trust Relationship**
       Affidabilità tra Entità Organizzative verificata in seguito alla Trust Evaluation.
       Non presente in ARF 1.10.
@@ -278,19 +279,16 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10.
 
     **Trusted List**
-      Archivio di informazioni sugli enti eutoritativi e sul loro stato.
-      Conforme con ARF 1.10.
-
-    **Utente**
-      Persona fisica o giuridica che utilizza servizi fiduciari o mezzi di identificazione elettronica.
+      Archivio di informazioni sugli enti autoritativi e sul loro stato.
       Conforme con ARF 1.10.
 
     **Verificatore di Attestati Elettronici**
-      Una persona o entità che utilizza un'istanza di Relying Party.
+    **Verificatore di Credenziali**
+      Una persona o entità che utilizza un'Istanza di Relying Party.
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Istanza del Wallet**
-      Applicazione installata sul dispositivo di un Utente, parte di un'Unità di Wallet, che fornisce interfacce utente.
+      Applicazione installata sul dispositivo di un Utente, parte di un'Istanza del Wallet, che fornisce interfacce utente.
       Conforme con ARF 1.10.
 
     **Fornitore di Wallet**
@@ -312,12 +310,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle istanze di IT-Wallet.
       Conforme con ARF 1.10.
 
-    **Unità di Wallet**
-      Configurazione unica di una Soluzione Wallet per un singolo Utente, incluse tutte le funzionalità di sicurezza.
-      Conforme con ARF 1.10.
-
-    **Attestato di Unità di Wallet**
-      Oggetto emesso da un Fornitore di Wallet che descrive le caretteristiche e i componenti della Unità di Wallet.
+    **Attestato di Istanza del Wallet**
+      Oggetto emesso da un Fornitore di Wallet che descrive le caratteristiche e i componenti della Istanza del Wallet.
       Conforme con ARF 1.10.
 
     **Catalogo degli Attestati Elettronici**
@@ -325,13 +319,13 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Intermediario**
-      Intermediario come definito nella Sezione 1.2 di `OID-FED`_, ad esempio in IT-Wallet potrebbe esistere intermediari della Relying Party, ovvero coloro che offrono e gestiscono, per conto della Relying Party, le Soluzioni Tecniche per la verifica remota o di prossimità delle Attestazioni Elettroniche.
+      Intermediario come definito nella Sezione 1.2 di `OID-FED`_, ad esempio in IT-Wallet potrebbe esistere intermediari della Relying Party, ovvero coloro che offrono e gestiscono, per conto della Relying Party, le Soluzioni Tecniche per la verifica remota o di prossimità degli Attestati Elettronici.
       Conforme con ARF 1.10.
 
 .. note::
    Qualora un termine non è presente nell'ARF 1.10, la definizione fornita in IT-Wallet è da ritenersi valida per il solo contesto italiano.
 
-Di seguito sono riportati i principali termini e definizioni relativi agli aspetti della User Experience:
+Di seguito sono riportati i principali termini e definizioni relativi agli aspetti dell'Esperienza Utente:
 
 .. glossary::
     :sorted:
@@ -339,11 +333,11 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
     **Authentication Button**
       Pulsante che consente all'Utente di avviare il processo di Autenticazione e di utilizzare i servizi forniti dai Verificatori di Attestati Elettronici.
   
-    **Identità del Marchio**
+    **Brand Identity**
       Insieme di elementi visivi, verbali e strategici che un servizio, un prodotto o un'entità utilizza per presentarsi all'Utente e per distinguersi dagli altri.
 
     **Catalogo**
-      Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'istanza IT-Wallet, e dalle quali è possibile avviare il processo di emissione.
+      Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'Istanza del Wallet, e dalle quali è possibile avviare il processo di emissione.
     
     **Call To Action**
       Suggerimento chiaro e diretto che incoraggia gli Utenti a intraprendere un'azione specifica. Può essere un pulsante, un link o un altro elemento che guida l'Utente verso un obiettivo specifico.
@@ -355,16 +349,16 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       È la pagina che rappresenta il Touchpoint con la Relying Party dove l'Utente atterra per accedere alla propria area autenticata e ha lo scopo di mostrare all'Utente tutti i metodi di Autenticazione disponibili.
   
     **Engagement Button**
-      Elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo (ad esempio per autenticarsi, per richiedere il rilascio di un attestato elettronico, ecc.).
+      Elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo (ad esempio per autenticarsi, per richiedere il rilascio di un Attestato Elettronico, ecc.).
   
     **Modello di Interazione**
       Insieme di caratteristiche che definiscono le modalità con cui l'Utente interagisce con l'Interfaccia di uno o più Touchpoint per completare un'attività o un'operazione e conseguire un determinato scopo.
     
     **Interfaccia**
-      L'insieme degli elementi grafici, tipografici e interattivi attraverso i quali l'Utente interagisce con il/i Touchpoint preposto/i all'erogazione di un prodotto o servizio, nel rispetto di [GL_DESIGN].
+      L'insieme degli elementi grafici, tipografici e interattivi attraverso i quali l'Utente interagisce con il/i Touchpoint preposto/i all'erogazione di un prodotto o servizio, nel rispetto di [LG_DESIGN].
     
     **Visualizzazione in Anteprima**
-      Modalità di visualizzazione compatta dell'Attestato Elettronico Digitale che consente di riconoscerla e distinguerla in un elenco di Attestazioni Elettroniche mediante la presenza di dati o elementi minimi.
+      Modalità di visualizzazione compatta dell'Attestato Elettronico che consente di riconoscerla e distinguerla in un elenco di Attestati Elettronici mediante la presenza di dati o elementi minimi.
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
@@ -373,13 +367,13 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Punto di contatto (digitale e non) tra l'Utente e il prodotto o servizio.
     
     **Trust Mark**
-      Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
+      Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al Sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
 
-    **Esperienza dell'Utente**
+    **Esperienza Utente**
       L'insieme delle percezioni e delle reazioni delle persone derivanti dall'uso e/o dalle aspettative d'uso di un prodotto, sistema o servizio.
       In linea con la norma ISO 9241-210:2010.
 
-    **Identità Visiva**
+    **Visual Identity**
       Insieme coerente di elementi grafici e tipografici che rappresentano visivamente un prodotto o un servizio e lo rendono distinguibile e riconoscibile.
 
 Acronimi

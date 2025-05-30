@@ -28,7 +28,7 @@ I seguenti algoritmi DEVONO essere supportati:
     - Firma
     - :rfc:`7518`, `[SOG-IS] <https://www.sogis.eu/documents/cc/crypto/SOGIS-Agreed-Cryptographic-Mechanisms-1.3.pdf>`_, `[ETSI] <https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/01.04.03_60/ts_119312v010403p.pdf>`_ .
   * - **RSA-OAEP-256**
-    - RSA Encryption Scheme con Optimal Asymmetric Encryption Padding (OAEP) utilizzando la funzione di hash SHA256 e la funzione di generazione della maschera MGF1 con SHA-256.
+    - RSA Encryption Scheme con Optimal Asymmetric Encryption Padding (OAEP) utilizzando la funzione di hash SHA256 e la funzione di generazione MGF1 con SHA-256.
     - Cifratura delle Chiavi
     - :rfc:`7516`, :rfc:`7518`.
   * - **A128CBC-HS256**
@@ -68,7 +68,7 @@ Per le Credenziali emesse in formato mdoc, i seguenti algoritmi DEVONO essere su
     - **Operazioni**
     - **Riferimenti**
   * - **ECKA-DH**
-    - Elliptic Curve Key Agreement Algorithm – Diffie-Hellman.
+    - Elliptic Curve Key Agreement Algorithm - Diffie-Hellman.
     - Accordo di chiave / Firma
     - BSI TR-03111.
   * - **HKDF**

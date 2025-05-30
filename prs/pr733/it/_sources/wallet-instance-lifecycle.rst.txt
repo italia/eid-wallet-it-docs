@@ -85,7 +85,7 @@ Transizione a Valido
 ....................
 
 Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un Attestato Elettronico di Dati di Identificazione Personale valido (**PID ISS**). In questo stato, gli Utenti possono ottenere e presentare
-nuovi Attestati Elettronici di Attributi (Qualificati) (**(Q)EAA ISS/PRE**), e presentare l'Attestato Elettronico di Dati di Identificazione Personale (**PID PRE**). Si prega di fare riferimento a :ref:`credential-issuance:Emissione di Credenziale Digitale` e :ref:`credential-presentation:Presentazione della Credenziale Digitale`.
+nuovi Attestati Elettronici di Attributi (Qualificati) (**(Q)EAA ISS/PRE**), e presentare l'Attestato Elettronico di Dati di Identificazione Personale (**PID PRE**). Si prega di fare riferimento a :ref:`credential-issuance:Emissione di Attestati Elettronici` e :ref:`credential-presentation:Presentazione della Credenziale Digitale`.
 
 .. note::
   Gli Utenti possono avere solo un'Istanza del Wallet in stato **Valido** per la stessa Soluzione Wallet. Pertanto, quando un Utente installa e ottiene un Attestato Elettronico di Dati di Identificazione Personale su una nuova Istanza

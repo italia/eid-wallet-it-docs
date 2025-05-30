@@ -103,7 +103,7 @@ Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI:
   * - **Claim**
     - **Descrizione**
   * - **timestamp**
-    - Timestamp UNIX con l'ora di creazione del file di backup. Questo valore viene aggiornato ogni volta che una nuova voce di credenziale viene aggiunta al file di backup.
+    - Timestamp UNIX con l'ora di creazione del file di backup. Questo valore viene aggiornato ogni volta che una nuova voce di Credenziale viene aggiunta al file di backup.
   * - **wallet_provider_id**
     - DEVE essere impostato sull'identificatore univoco del Fornitore di Wallet.
   * - **wallet_instance_version**
@@ -132,7 +132,7 @@ Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero.
 Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità. Per fare ciò, estrae prima il JWT dell'Attestato di Unità di Portafoglio dal claim ``wallet_attestation`` e ottiene la relativa chiave pubblica utilizzando l'Attestato di Unità di Portafoglio (claim ``cnf``).
 
-**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:
+**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:
 
 - Estrae l'identificatore del Fornitore di Credenziale e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziale e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziale.
 - Utilizzando l'identificatore del Fornitore di Credenziale, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziale e effettua una richiesta di riemissione al Fornitore di Credenziale fornendo la nuova Associazione Crittografica con l'Utente.

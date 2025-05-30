@@ -6,11 +6,11 @@ Politiche Generali di Conservazione dei Log
 
 La conservazione dei log è un elemento chiave per garantire la sicurezza, inclusa la prevenzione delle frodi, il rilevamento degli incidenti, l'integrità del sistema e la conformità con gli obblighi legali applicabili. DEVE anche essere allineata con i requisiti definiti nella norma ISO/IEC 27001, in particolare per quanto riguarda la verificabilità, il controllo degli accessi e l'archiviazione sicura. Poiché la gestione dei log può comportare il trattamento di dati personali, costituisce anche una misura di responsabilizzazione ai sensi del GDPR, con implicazioni per la minimizzazione dei dati, la limitazione della conservazione e la limitazione delle finalità; per questi aspetti, si fa riferimento alle disposizioni pertinenti del GDPR e alle normative specifiche del settore.
 
-Per tutto ciò che riguarda la gestione dei log, i Fornitori di Wallet, i Fornitori di Credenziale e le Relying Party sono considerati Entità Organizzative.
+Per tutto ciò che riguarda la gestione dei log, i Fornitori di Wallet, i Fornitori di Credenziali e le Relying Party sono considerati Entità Organizzative.
 
 I log relativi alle attività di scambio dati del Wallet (accessi, transazioni, emissione/revoca di Credenziali) riguardanti l'Utente, in quanto interessato, DEVONO essere conservati per un periodo limitato per motivi di sicurezza, prevenzione delle frodi, risoluzione delle controversie e obblighi legali.
 
-Le Entità Organizzative sono responsabili della conservazione dei log in base ai rispettivi ruoli. Le soluzioni relative ai Fornitori di Wallet, ai Fornitori di Credenziale e alle Relying Party DEVONO implementare la registrazione di audit per le attività degli amministratori e degli operatori di servizio con accesso ai processi di scambio dati e ai log.
+Le Entità Organizzative sono responsabili della conservazione dei log in base ai rispettivi ruoli. Le soluzioni relative ai Fornitori di Wallet, ai Fornitori di Credenziali e alle Relying Party DEVONO implementare la registrazione di audit per le attività degli amministratori e degli operatori di servizio con accesso ai processi di scambio dati e ai log.
 
 A meno che specifici obblighi legali non dispongano diversamente, e con la definizione di normative specifiche di settore che definiscano motivazioni appropriate, **il periodo massimo di conservazione per i log dei dati è di 12 mesi**. I log DEVONO essere archiviati in modo sicuro per garantirne l'integrità e l'immutabilità.
 
@@ -42,7 +42,7 @@ Le informazioni relative alla registrazione e alla gestione delle Istanze del Wa
 Politica di Conservazione dei Log del Fornitore di Credenziale
 --------------------------------------------------------------
 
-I Fornitori di Credenziale definiscono il periodo di conservazione per le Credenziali in base alle normative specifiche del settore. In assenza di normative specifiche, il periodo di conservazione per le Credenziali NON DOVREBBE superare i 12 mesi dopo la data di scadenza, configurata al momento dell'emissione nei metadati della parte firmata dall'Emittente della Credenziale.
+I Fornitori di Credenziali definiscono il periodo di conservazione per le Credenziali in base alle normative specifiche del settore. In assenza di normative specifiche, il periodo di conservazione per le Credenziali NON DOVREBBE superare i 12 mesi dopo la data di scadenza, configurata al momento dell'emissione nei metadati della parte firmata dall'Emittente della Credenziale.
 
 
 

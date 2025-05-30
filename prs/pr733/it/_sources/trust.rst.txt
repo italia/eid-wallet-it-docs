@@ -277,7 +277,7 @@ Entity Configuration e all'interno del Subordinate Statement emesso da un superi
 
 L'Entity Configuration PUÒ anche contenere uno o più Trust Mark.
 
-I dettagli tecnici sull'Entity Configuration del Fornitore di Wallet, del Credential Issuer e della Relying Party sono forniti rispettivamente nelle Sezioni :ref:`wallet-provider-entity-configuration:Configurazione dell'Entità del Fornitore di Wallet`, :ref:`credential-issuer-entity-configuration:Configurazione dell'Entità Fornitore di Credenziale` e :ref:`relying-party-entity-configuration:Configurazione dell'Entità Relying Party`.
+I dettagli tecnici sull'Entity Configuration del Fornitore di Wallet, del Credential Issuer e della Relying Party sono forniti rispettivamente nelle Sezioni :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`, :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici` e :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
 
 .. note::
@@ -583,7 +583,7 @@ La concatenazione delle dichiarazioni, attraverso la combinazione di questi mecc
 Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.
 
 .. note::
-  Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Valutazione della Fiducia ad essa relativo **richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle credenziali**.
+  Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Valutazione della Fiducia ad essa relativo **richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle Credenziali**.
 
   Il Wallet Attestation trasmette tutte le informazioni richieste relative all'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.
 
@@ -803,121 +803,10 @@ Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti re
      - ``DNS=example.net``
      - ``DNS=*.example.org``
 
-Di seguito un esempio non normativo di una Catena di Certificati X.509 senza intermediari e in testo semplice, per facilitare la lettura.
+Di seguito è riportato un esempio non normativo, in formato testo semplice (formato OpenSSL), di una catena di certificati X.509 con una CA intermedia, a partire dal certificato Leaf.
 
-
-.. code-block:: text
-
-    Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number: 1 (0x1)
-    Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
-        Validity
-            Not Before: Sep 1 00:00:00 2023 GMT
-            Not After : Sep 1 00:00:00 2033 GMT
-        Subject: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
-        Subject Public Key Info:
-            Public Key Algorithm: rsaEncryption
-                Public-Key: (4096 bit)
-                Modulus:
-                    00:af:82:3b:...
-                Exponent: 65537 (0x10001)
-        X509v3 extensions:
-            X509v3 Basic Constraints:
-                CA:TRUE
-            X509v3 Key Usage:
-                Certificate Sign, CRL Sign
-            X509v3 Subject Key Identifier:
-                12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
-            X509v3 Authority Key Identifier:
-                keyid:12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
-            X509v3 CRL Distribution Points:
-                Full Name:
-                  URI:https://trust-anchors.example.com/crl/ca.crl
-
-    Signature Algorithm: sha256WithRSAEncryption
-         5c:4f:3b:...
-
-
-    Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number: 1234567890 (0x499602d2)
-    Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
-        Validity
-            Not Before: Sep 1 00:00:00 2023 GMT
-            Not After : Sep 1 00:00:00 2024 GMT
-        Subject: CN=leaf.example.org, O=Leaf, C=IT
-        Subject Public Key Info:
-            Public Key Algorithm: rsaEncryption
-                Public-Key: (2048 bit)
-                Modulus:
-                    00:af:82:3b:...
-                Exponent: 65537 (0x10001)
-        X509v3 extensions:
-            X509v3 Basic Constraints:
-                CA:TRUE, pathlen:1
-            X509v3 Key Usage:
-                Digital Signature, Key Encipherment
-            X509v3 Subject Alternative Name:
-                URI:https://leaf.example.com
-            X509v3 Name Constraints:
-                Permitted:
-                  URI.1=https://leaf.example.com
-                  DNS.1=leaf.example.com
-                Excluded:
-                  DNS=localhost
-                  DNS=localhost.localdomain
-                  DNS=127.0.0.1
-                  DNS=example.com
-                  DNS=example.org
-                  DNS=example.net
-                  DNS=*.example.org
-            X509v3 CRL Distribution Points:
-                Full Name:
-                  URI:https://trust-ancor.example.com/crl/leaf.example.org.crl
-
-    Signature Algorithm: sha256WithRSAEncryption
-         5c:4f:3b:...
-
-
-    Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number: 987654321 (0x3ade68b1)
-    Signature Algorithm: sha256WithRSAEncryption
-        Issuer: CN=https://leaf.example.org, O=Leaf, C=IT
-        Validity
-            Not Before: Sep 1 00:00:00 2023 GMT
-            Not After : Sep 1 00:00:00 2024 GMT
-        Subject: CN=https://leaf.example.org, O=Leaf, C=IT
-        Subject Public Key Info:
-            Public Key Algorithm: rsaEncryption
-                Public-Key: (2048 bit)
-                Modulus:
-                    00:af:82:3b:...
-                Exponent: 65537 (0x10001)
-        X509v3 extensions:
-            X509v3 Basic Constraints:
-                CA:FALSE
-            X509v3 Key Usage:
-                Digital Signature, Key Encipherment
-            X509v3 Subject Alternative Name:
-                URI:https://leaf.example.org
-            X509v3 Name Constraints:
-                Permitted:
-                  URI.1=https://leaf.example.com
-                  DNS.1=leaf.example.com
-            X509v3 CRL Distribution Points:
-                Full Name:
-                  URI:https://leaf.example.org/crl/self.crl
-
-    Signature Algorithm: sha256WithRSAEncryption
-         7d:6e:5f:...
-
+.. literalinclude:: ../../examples/x5c.json
+  :language: text
 
 I partecipanti alla federazione possono garantire che i loro certificati siano coerenti, consentendo l'interoperabilità e la sicurezza in tutta la federazione. Questo approccio, che consente la delega dell'emissione di certificati X.509, introduce pratiche innovative per la gestione dei certificati utilizzando le Relazioni di Trust sottostanti stabilite all'interno di OpenID Federation.
 
@@ -961,7 +850,7 @@ Note sulla Privacy
 ------------------
 
 - Le Istanze del Wallet NON DEVONO pubblicare i loro metadati attraverso un servizio online.
-- L'infrastruttura di trust DEVE essere pubblica, con tutti gli endpoint pubblicamente accessibili senza alcuna credenziale client che possa rivelare chi sta richiedendo l'accesso.
+- L'infrastruttura di trust DEVE essere pubblica, con tutti gli endpoint pubblicamente accessibili senza alcuna Credenziale client che possa rivelare chi sta richiedendo l'accesso.
 - Quando un'Istanza del Wallet richiede i Subordinate Statement per costruire la Trust Chain per una specifica Relying Party o convalida un Trust Mark online, emesso per una specifica Relying Party, il Trust Anchor o il suo Intermediario non sanno che una particolare Istanza del Wallet sta chiedendo informazioni su una specifica Relying Party; invece, servono solo le dichiarazioni relative a quella Relying Party come risorsa pubblica.
 - I metadati dell'Istanza del Wallet NON DEVONO contenere informazioni che possano rivelare informazioni tecniche sull'hardware utilizzato.
 - I metadati dell'entità Foglia, dell'Intermediario e del Trust Anchor possono includere la quantità necessaria di dati come parte delle informazioni di contatto amministrativo, tecnico e di sicurezza. Generalmente non è raccomandato utilizzare dettagli di contatto personali in tali casi. Da una prospettiva legale, la pubblicazione di tali informazioni è necessaria per il supporto operativo riguardante questioni tecniche e di sicurezza e la regolamentazione GDPR.
@@ -973,6 +862,6 @@ Considerazioni sulla Decentralizzazione
 - Ci possono essere più di un singolo Trust Anchor.
 - In alcuni casi, un verificatore di fiducia può fidarsi di un Intermediario, specialmente quando l'Intermediario agisce come un Trust Anchor all'interno di un perimetro specifico, come casi in cui le Foglie sono entrambe nello stesso perimetro come una giurisdizione di Stato Membro (ad esempio: una Relying Party italiana con un'Istanza del Wallet italiana può considerare l'Intermediario italiano come un Trust Anchor per gli scopi delle loro interazioni).
 - Le attestazioni di fiducia (Trust Chain) dovrebbero essere incluse nel JWT emesso dai Credential Issuer, e le Richieste di Presentazione delle RP dovrebbero contenere la Trust Chain relativa a loro (emittenti delle richieste di presentazione).
-- Poiché la presentazione delle credenziali deve essere firmata, memorizzando le richieste e le risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione della federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile della Relying Party con cui ha interagito.
+- Poiché la presentazione delle Credenziali deve essere firmata, memorizzando le richieste e le risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione della federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile della Relying Party con cui ha interagito.
 - Ogni attestazione firmata è di lunga durata poiché può essere crittograficamente convalidata anche quando la configurazione della federazione cambia o le chiavi dei suoi emittenti vengono rinnovate.
 - Ogni partecipante dovrebbe essere in grado di aggiornare la propria Entity Configuration senza notificare le modifiche a terze parti. La policy dei metadati contenuta all'interno di una Trust Chain deve essere applicata per sovrascrivere qualsiasi informazione relativa ai metadati specifici del protocollo.

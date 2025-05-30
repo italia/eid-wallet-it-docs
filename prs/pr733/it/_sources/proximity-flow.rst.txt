@@ -16,14 +16,14 @@ La fase di presentazione di alto livello è strutturata in tre ampie sotto-fasi 
 
 Le sotto-fasi sono descritte di seguito:
 
-  1. **Device Engagement**: Questa sottofase inizia quando all'Utente viene richiesto di divulgare determinati attributi dall'mdoc(s). L'obiettivo di questa sottofase è stabilire un canale di comunicazione sicuro tra l'Istanza del Wallet e l'Istanza di Relying Party, in modo che le richieste e le risposte mdoc possano essere scambiate durante la sottofase di comunicazione.
+  1. **Device Engagement**: Questa sottofase inizia quando all'Utente viene richiesto di divulgare determinati attributi dall'mdoc(s). L'obiettivo di questa sottofase è stabilire un canale di comunicazione sicuro tra l'Istanza del Wallet e l'Istanza di Relying Party, in modo che le richieste e le risposte di presentazione possano essere scambiate durante la sottofase di comunicazione.
   I messaggi scambiati in questa sottofase vengono trasmessi attraverso tecnologie a corto raggio per limitare la possibilità di intercettazione e ascolto non autorizzato.
 
   2. **Stabilimento della sessione**: Durante la fase di stabilimento della sessione, l'Istanza di Relying Party configura una connessione sicura. Tutti i dati trasmessi su questa connessione sono criptati utilizzando una chiave di sessione, che è nota sia all'Istanza del Wallet che all'Istanza di Relying Party in questa fase.
   La sessione stabilita PUÒ essere terminata in base alle condizioni dettagliate in [`ISO18013-5`_ #9.1.1.4].
 
   3. **Comunicazione - Recupero del Dispositivo**: L'Istanza di Relying Party cripta la richiesta mdoc con l'appropriata chiave di sessione e la invia all'Istanza del Wallet insieme alla sua chiave pubblica in un messaggio di stabilimento della sessione. L'mdoc utilizza i dati dal messaggio di stabilimento della sessione per derivare la chiave di sessione e decriptare la richiesta mdoc.
-  Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione di richiedere informazioni dall'Istanza del Wallet utilizzando richieste e risposte mdoc. La modalità principale di comunicazione è il canale sicuro stabilito durante la configurazione della sessione. L'Istanza del Wallet cripta la risposta mdoc utilizzando la chiave di sessione e la trasmette al Relying Party mobile tramite un messaggio di dati di sessione.
+  Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione di richiedere informazioni dall'Istanza del Wallet utilizzando richieste e risposte mdoc. La modalità principale di comunicazione è il canale sicuro stabilito durante la configurazione della sessione. L'Istanza del Wallet cripta la risposta di presentazione utilizzando la chiave di sessione e la trasmette al Relying Party mobile tramite un messaggio di dati di sessione.
 
 
 
@@ -33,7 +33,7 @@ Le Istanze di Relying Party e Wallet registrate nell'ecosistema IT-Wallet DEVONO
 - *Device Engagement* basato su QR Code.
 - *Autenticazione dell'Istanza RP* seguendo i meccanismi definiti nell'`ISO18013-5`_ per l'*autenticazione del lettore*.
 - Meccanismo di *Recupero del Dispositivo* basato su Bluetooth Low Energy (BLE) per la sottofase di comunicazione. Il meccanismo di *Recupero del Server* NON DEVE essere supportato.
-- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR` per maggiori dettagli).
+- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per maggiori dettagli).
 - *Validazione dell'Istanza del Wallet* attraverso l'Attestato di Wallet.
 
 
@@ -165,7 +165,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
        - **itemsRequest**. Struttura `ItemsRequest` codificata in CBOR, formattata come:
 
-         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR`.
+         - **docType** *(tstr)*. Il tipo di documento richiesto. Vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`.
 
          - **nameSpaces** *(map)*. Una mappa di identificatori di namespace per i *DataElements* richiesti.
 
@@ -226,7 +226,7 @@ Ogni documento in **documents** DEVE essere conforme alla seguente struttura e D
      - *(tstr)*. Identificatore del tipo di documento. Ad esempio, per un mDL, il valore DEVE essere ``org.iso.18013.5.1.mDL``.
 
    * - **issuerSigned**
-     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi di dati firmati dal Fornitore di Credenziale, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR`.
+     - *(bstr)*. Contiene la struttura `IssuerNameSpaces`, che include elementi di dati firmati dal Fornitore di Credenziale, e la struttura `issuerAuth`, che garantisce la loro autenticità e integrità utilizzando il Mobile Security Object (MSO). Vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`.
 
    * - **deviceSigned**
      - *(bstr)*. Contiene la struttura `DeviceNameSpaces` (elementi di dati firmati dall'Istanza del Wallet), e la struttura `deviceAuth`, che include i dati di autenticazione firmati dall'Istanza del Wallet. Vedi la tabella sottostante per i dettagli.
@@ -278,4 +278,4 @@ Quando una sessione viene terminata, l'Istanza del Wallet e l'Istanza di Relying
 - Chiusura del canale di comunicazione utilizzato per il recupero dei dati.
 
 .. note::
-  Vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR` per il significato degli acronimi dei tipi CBOR.
+  Vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per il significato degli acronimi dei tipi CBOR.

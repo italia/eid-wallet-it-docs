@@ -168,8 +168,8 @@
 <p>Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DEVE esporre gli endpoint per supportare l'instaurazione della fiducia e le funzionalità essenziali dell'Istanza di Wallet. Questi includono l'endpoint di Federazione <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> che DEVE aderire alla specifica OpenID Federation 1.0 per stabilire in modo affidabile la fiducia con il Fornitore di Wallet, nonché endpoint per la registrazione dell'Istanza di Wallet, la generazione di nonce (richiesta per la registrazione), l'emissione di attestati e la revoca. A parte l'endpoint di Federazione, i dettagli di implementazione degli altri sono lasciati alla discrezione del Fornitore di Wallet.</p>
 <section id="endpoint-di-federazione">
 <h2><span class="section-number">8.1.1. </span>Endpoint di Federazione<a class="headerlink" href="#endpoint-di-federazione" title="Link to this heading">¶</a></h2>
-<p>L'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Configurazione dell'Entità del Fornitore di Wallet.</p>
-<p>Vedere la Sezione <a class="reference internal" href="wallet-provider-entity-configuration.html#configurazione-dell-entita-del-fornitore-di-wallet"><span class="std std-ref">Configurazione dell'Entità del Fornitore di Wallet</span></a> per i dettagli tecnici.</p>
+<p>L'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.</p>
+<p>Vedere la Sezione <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a> per i dettagli tecnici.</p>
 </section>
 <section id="endpoint-nonce-della-soluzione-wallet">
 <h2><span class="section-number">8.1.2. </span>Endpoint Nonce della Soluzione Wallet<a class="headerlink" href="#endpoint-nonce-della-soluzione-wallet" title="Link to this heading">¶</a></h2>
@@ -308,7 +308,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unauthorized</span></code></p></td>
-<td><p>La richiesta manca di credenziali di autenticazione valide.</p></td>
+<td><p>La richiesta manca di Credenziali di autenticazione valide.</p></td>
 </tr>
 </tbody>
 </table>
@@ -348,7 +348,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </section>
 <section id="risposta-all-emissione-dell-attestato-di-wallet">
 <h3><span class="section-number">8.1.4.2. </span>Risposta all'Emissione dell'Attestato di Wallet<a class="headerlink" href="#risposta-all-emissione-dell-attestato-di-wallet" title="Link to this heading">¶</a></h3>
-<p>Se la Richiesta di Emissione dell'Attestato di Wallet viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. L'Oggetto JSON restituito DEVE possedere il parametro <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> il cui valore è un array di Oggetti JSON (vedi <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. L'Attestato di Wallet in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in <span class="xref std std-ref">credential-issuance:Emissione di Credenziale Digitale</span>. L'Attestato di Wallet in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (<a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a>) e di prossimità (<a class="reference internal" href="proximity-flow.html#flusso-di-prossimita"><span class="std std-ref">Flusso di Prossimità</span></a>).</p>
+<p>Se la Richiesta di Emissione dell'Attestato di Wallet viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. L'Oggetto JSON restituito DEVE possedere il parametro <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> il cui valore è un array di Oggetti JSON (vedi <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. L'Attestato di Wallet in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>. L'Attestato di Wallet in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (<a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a>) e di prossimità (<a class="reference internal" href="proximity-flow.html#flusso-di-prossimita"><span class="std std-ref">Flusso di Prossimità</span></a>).</p>
 <p>L'Oggetto JSON restituito nella risposta ha il seguente claim:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -384,7 +384,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>format</strong></p></td>
-<td><p>Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere <code class="docutils literal notranslate"><span class="pre">jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> o <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> a seconda del formato della credenziale.</p></td>
+<td><p>Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere <code class="docutils literal notranslate"><span class="pre">jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> o <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> a seconda del formato della Credenziale.</p></td>
 <td><p>Questa specifica.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
@@ -592,7 +592,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vct</strong></p></td>
-<td><p>OBBLIGATORIO. Il valore del tipo di credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">wallet.atestation.example/v1.0</span></code>.</p></td>
+<td><p>OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">wallet.atestation.example/v1.0</span></code>.</p></td>
 <td><p>Sezione 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>_sd</strong></p></td>
@@ -903,7 +903,7 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 30/05/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

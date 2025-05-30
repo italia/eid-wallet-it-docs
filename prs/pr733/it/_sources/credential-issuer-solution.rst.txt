@@ -38,7 +38,7 @@ La Soluzione del Fornitore di Attestati Elettronici Elettronica DEVE:
    10. Registrare il Componente Relying Party all'interno dell'ecosistema di Federazione dell'Identità Digitale CIEid (per l'emissione di PID), e all'interno dell'ecosistema IT-Wallet (per l'emissione di (Q)EAA, se necessario).
    11. Per l'emissione di PID, autenticare gli Utenti con LoA High utilizzando l'infrastruttura nazione di Identità Digitale.
    12. Per l'emissione di (Q)EAA che richiedono autenticazione, verificare che il PID dell'Utente sia valido tramite `OpenID4VP`_.
-   13. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di vita delle Credenziali`.
+   13. Implementare procedure adeguate per l'intero ciclo di vita dell'Attestato Elettronico come dettagliato nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
 
    Per il Componente Frontend (se implementato):
 
@@ -107,7 +107,7 @@ Gestione del Ciclo di Vita degli Attestati Elettronici
 Questo componente DEVE gestire:
 
    - Lo stato di validità degli Attestati Elettronici (ad esempio aggiornamenti, revoche o sospensioni).
-   - I processi e i flussi di revoca (implementazione di meccanismi per revocare o sospendere gli Attestati Elettronici), secondo quando definito nella Sezione :ref:`credential-revocation:Ciclo di vita delle Credenziali`.
+   - I processi e i flussi di revoca (implementazione di meccanismi per revocare o sospendere gli Attestati Elettronici), secondo quando definito nella Sezione :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`.
    - I processi e i flussi di rinnovo degli Attestati Elettronici, secondo i meccanismi definiti nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`.
 
 Componente Trust & Security

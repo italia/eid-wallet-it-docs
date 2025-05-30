@@ -133,7 +133,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Oggetto JSON contenente il materiale crittografico da utilizzare come prova di possesso. L'inclusione del claim **cnf** (confirmation) in un JWT, permette al soggetto che emette il JWT di dichiarare che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
       - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. OBBLIGATORIO. Il valore del tipo di Attestato Elettronico DEVE essere una stringa URL HTTPS e DEVE essere valorizzata utilizzando uno dei valori ottenuti dai metadata del Fornitore di Attestati Elettronici. È l'identificativo del tipo di SD-JWT VC e DEVE essere resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione dell'Attestato Elettronico (ad esempio: ``https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
+      - [NSD]. OBBLIGATORIO. Il valore del tipo di Attestato Elettronico DEVE essere una stringa URL HTTPS e DEVE essere valorizzata utilizzando uno dei valori ottenuti dai Metadata del Fornitore di Attestati Elettronici. È l'identificativo del tipo di SD-JWT VC e DEVE essere resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione dell'Attestato Elettronico (ad esempio: ``https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. OBBLIGATORIO. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella la Sezione 3.3.5 di [`W3C-SRI`_].
@@ -201,7 +201,7 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
       - **Descrizione**
       - **Riferimento**
     * - **name**
-      - OBBLIGATORIO. Nome human-readable del tipo di Attestato Elettronico. In casistiche multilingua, i tag di lingua vengono aggiunti al nome del claim, delimitandoli con il carattere `#` come definito in :rfc:`5646` (ad es. *name#it-IT*).
+      - OBBLIGATORIO. Nome *human-readable* del tipo di Attestato Elettronico. In casistiche multilingua, i tag di lingua vengono aggiunti al nome del claim, delimitandoli con il carattere `#` come definito in :rfc:`5646` (ad es. *name#it-IT*).
       - [`SD-JWT-VC`_] Sezione 6.2 e [`OIDC`_] Sezione 5.2.
     * - **description**
       - OBBLIGATORIO. Una descrizione leggibile del tipo di Attestato Elettronico. In casistiche multilingua, i tag di lingua vengono aggiunti al nome del claim, delimitandoli da un carattere `#` come definito in :rfc:`5646`.
@@ -238,8 +238,8 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
       - OBBLIGATORIO. Array di oggetti, uno per ogni lingua supportata, contenente informazioni di visualizzazione per il tipo di Attestato Elettronico. Contiene per ogni oggetto le seguenti proprietà:
 
           * ``lang``: tag di lingua come definito in :rfc:`5646` Sezione 2. [OBBLIGATORIO].
-          * ``name``: nome human-readable del tipo di Attestato Elettronico. [OBBLIGATORIO].
-          * ``description``: descrizione human-readable per il tipo di Attestato Elettronico. [OBBLIGATORIO].
+          * ``name``: nome *human-readable* del tipo di Attestato Elettronico. [OBBLIGATORIO].
+          * ``description``: descrizione *human-readable* per il tipo di Attestato Elettronico. [OBBLIGATORIO].
           * ``rendering``: oggetto contenente i metodi di rendering supportati dal tipo di Attestato Elettronico. [OBBLIGATORIO]. Il metodo di rendering `svg_template` DEVE essere supportato.
             
             L'array ``svg_templates`` di oggetti contiene per ogni template SVG supportato le seguenti proprietà:
@@ -269,8 +269,8 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
           * ``path``: array che indica i/il claim a cui ci si riferisce. [OBBLIGATORIO].
           * ``display``: array contenente informazioni di visualizzazione sul claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata dal tipo di Attestato Elettronico. Questa proprietà è OBBLIGATORIA. Contiene i seguenti parametri:
              * ``lang``: tag di lingua come definito in :rfc:`5646` Sezione 2. [OBBLIGATORIO].
-             * ``label``: etichetta human-readable per il claim. [OBBLIGATORIO].
-             * ``description``: descrizione human-readable per il claim. [OBBLIGATORIO].
+             * ``label``: etichetta *human-readable* per il claim. [OBBLIGATORIO].
+             * ``description``: descrizione *human-readable* per il claim. [OBBLIGATORIO].
           * ``sd``: stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è. [OBBLIGATORIO].
           * ``svg_id``: stringa alfanumerica contenente l'ID del claim referenziato nel template SVG come definito in [`SD-JWT-VC`_] Sezione 9. [OBBLIGATORIO].
       - [`SD-JWT-VC`_] Sezione 9.
@@ -596,7 +596,7 @@ Il modello dati mdoc si basa sullo standard ISO/IEC 18013-5.
 I dati in mdoc DEVONO essere codificati in CBOR come definito in :rfc:`8949`.
 
 Questo modello dati struttura gli Attestati Elettronici in componenti distinti: namespaces (**nameSpaces**) e prova crittografica (**issuerAuth**).
-I namespace categorizzano e strutturano i dati (o attributi, vedi :ref:`credential-data-model:Attribute Namespaces`). Mentre la prova crittografica garantisce integrità e autenticità attraverso il Mobile Security Object (MSO).
+I namespace categorizzano e strutturano i dati (o attributi, vedi :ref:`credential-data-model:Attributi dei Namespaces`). Mentre la prova crittografica garantisce integrità e autenticità attraverso il Mobile Security Object (MSO).
 
 L'MSO memorizza in modo sicuro i digest crittografici degli attributi all'interno dei `nameSpaces`. Ciò consente alle Relying Party di convalidare gli attributi divulgati rispetto ai valori **digestID** corrispondenti senza rivelare l'intero Attestato Elettronico.
 Vedere :ref:`credential-data-model:Mobile Security Object` per i dettagli.

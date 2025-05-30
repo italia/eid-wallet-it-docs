@@ -231,8 +231,8 @@ Web Relying Party Instance Registration
 Le Web Relying Party Instance, come client confidenziali, sono registrate direttamente con l'Ancora di Fiducia o un'Entità Intermediaria. La registrazione comporta:
 
 - La Relying Party DEVE registrare la sua Web Instance con l'Ancora di Fiducia o l'Intermediario.
-- La Relying Party DEVE esporre una Configurazione dell'Entità come definito nel Trust Framework.
-- La Configurazione dell'Entità DEVE contenere tutti i metadati necessari per la federazione, inclusi gli endpoint e le chiavi pubbliche.
+- La Relying Party DEVE esporre una Entity Configuration come definito nel Trust Framework.
+- La Entity Configuration DEVE contenere tutti i metadati necessari per la federazione, inclusi gli endpoint e le chiavi pubbliche.
 - Non è richiesta alcuna gestione del ciclo di vita delle singole istanze, poiché la Web Instance opera come parte dell'ambiente server protetto.
 
 
@@ -243,5 +243,5 @@ Quando una Web Relying Party Instance deve essere revocata:
 
 - La revoca DEVE essere eseguita secondo le procedure del Trust Framework.
 - Le chiavi crittografiche utilizzate dalla Web Instance DEVONO essere revocate.
-- La Configurazione dell'Entità DEVE essere aggiornata per riflettere la revoca.
+- La Entity Configuration DEVE essere aggiornata per riflettere la revoca.
 - L'Ancora di Fiducia DEVE essere notificata della revoca per aggiornare i metadati della federazione.
