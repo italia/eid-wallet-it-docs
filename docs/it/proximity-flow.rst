@@ -33,7 +33,7 @@ Le App di Verifica e le Istanze Wallet registrate nell'ecosistema IT-Wallet DEVO
 - *Device Engagement* basato su QR Code.
 - *Autenticazione dell'Istanza RP* seguendo i meccanismi definiti nell'`ISO18013-5`_ per l'*autenticazione del lettore*.
 - Meccanismo di *Recupero del Dispositivo* basato su Bluetooth Low Energy (BLE) per la sottofase di comunicazione. Il meccanismo di *Recupero del Server* NON DEVE essere supportato.
-- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Formato Credenziale mdoc-CBOR` per maggiori dettagli).
+- *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per maggiori dettagli).
 - *Validazione dell'Istanza del Wallet* attraverso la Wallet Attestation.
 
 La seguente figura illustra il flusso di prossimità a basso livello conforme ad ISO 18013-5.

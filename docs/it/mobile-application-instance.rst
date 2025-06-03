@@ -276,7 +276,7 @@ Associazione Chiave dell'Applicazione Mobile
 
 Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.
 
-Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni :ref:`relying-party-instance:Mobile Relying Party Instance Registration` e :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.
+Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni :ref:`relying-party-instance:App di Verifica Mobile` e :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.
 
 
 Richiesta di Associazione Chiave dell'Applicazione Mobile

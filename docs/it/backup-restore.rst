@@ -32,7 +32,7 @@ Di seguito, la descrizione dei passaggi di :numref:`fig_Backup_flow`:
 L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup.
 
 .. note::
-  Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziale, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.
+  Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziali, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.
 
 .. note::
   Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su `RFC 2898`_ ed è raccomandata dal `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati `qui <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_.
@@ -42,7 +42,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 
 **Passaggio 4**: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup.
 
-- Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziale e il ``credential_configuration_id`` come voce nel JWT di backup.
+- Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` come voce nel JWT di backup.
 - Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Unit Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Unit Attestation (claim ``cnf``). L'Istanza del Wallet DEVE verificare la validità della Wallet Unit Attestation prima di firmare il JWT di backup.
 - Aggiunge il JWT di backup firmato come voce al file di backup.
 - Cripta il file di backup utilizzando la frase chiave fornita.
@@ -103,7 +103,7 @@ Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI:
   * - **Claim**
     - **Descrizione**
   * - **timestamp**
-    - Timestamp UNIX con l'ora di creazione del file di backup. Questo valore viene aggiornato ogni volta che una nuova voce di credenziale viene aggiunta al file di backup.
+    - Timestamp UNIX con l'ora di creazione del file di backup. Questo valore viene aggiornato ogni volta che una nuova voce di Credenziale viene aggiunta al file di backup.
   * - **wallet_provider_id**
     - DEVE essere impostato sull'identificatore univoco del Fornitore di Wallet.
   * - **wallet_instance_version**
@@ -111,7 +111,7 @@ Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI:
   * - **wallet_attestation**
     - DEVE essere impostato su un valore contenente il JWT della Wallet Unit Attestation.
   * - **credentials_backup**
-    - Oggetto che descrive le specifiche delle Credenziali di cui è stato eseguito il backup. Questo oggetto contiene un elenco di coppie nome/valore, dove ogni nome è un identificatore univoco del Fornitore di Credenziale. Questo identificatore viene utilizzato per avviare la fase di emissione. Il valore è un array di stringhe univoche. Ogni stringa corrisponde al ``credential_configuration_id`` che identifica la specifica Credenziale Elettronica che è stata emessa.
+    - Oggetto che descrive le specifiche delle Credenziali di cui è stato eseguito il backup. Questo oggetto contiene un elenco di coppie nome/valore, dove ogni nome è un identificatore univoco del Fornitore di Credenziali. Questo identificatore viene utilizzato per avviare la fase di emissione. Il valore è un array di stringhe univoche. Ogni stringa corrisponde al ``credential_configuration_id`` che identifica la specifica Credenziale Elettronica che è stata emessa.
 
 
 Flusso di ripristino per Credenziale con associazione hardware
@@ -132,10 +132,10 @@ Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero.
 Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità. Per fare ciò, estrae prima il JWT della Wallet Unit Attestation dal claim ``wallet_attestation`` e ottiene la relativa chiave pubblica utilizzando la Wallet Unit Attestation (claim ``cnf``).
 
-**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:
+**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:
 
-- Estrae l'identificatore del Fornitore di Credenziale e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziale e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziale.
-- Utilizzando l'identificatore del Fornitore di Credenziale, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziale e effettua una richiesta di riemissione al Fornitore di Credenziale fornendo la nuova Associazione Crittografica con l'Utente.
+- Estrae l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali.
+- Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente.
 
 .. note::
   L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Unit Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet.

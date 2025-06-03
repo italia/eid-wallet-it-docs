@@ -26,7 +26,7 @@ ad eccezione delle Istanze del Wallet che sono dispositivi personali dell'Utente
 .. note::
   L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un attestato verificabile emesso e firmato da una terza parte fidata.
 
-  Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`.
+  Questo è chiamato *Wallet Attestation* ed è documentato nella sezione dedicata :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`.
 
 Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli del Wallet EUDI, come definiti nell'`EIDAS-ARF`_.
 
@@ -709,7 +709,7 @@ Attestazione della Fiducia del Wallet Offline
 """""""""""""""""""""""""""""""""""""""""""""
 
 Dato che l'Istanza del Wallet non può pubblicare i suoi metadati online all'endpoint *.well-known/openid-federation*,
-DEVE ottenere un Wallet Attestation emesso dal suo Fornitore di Wallet. Il Wallet Attestation DEVE contenere tutte le informazioni rilevanti riguardanti le capacità di sicurezza dell'Istanza del Wallet e la sua configurazione relativa al protocollo. DOVREBBE contenere la Trust Chain relativa al suo emittente (Fornitore di Wallet).
+DEVE ottenere una Wallet Attestation emesso dal suo Fornitore di Wallet. Il Wallet Attestation DEVE contenere tutte le informazioni rilevanti riguardanti le capacità di sicurezza dell'Istanza del Wallet e la sua configurazione relativa al protocollo. DOVREBBE contenere la Trust Chain relativa al suo emittente (Fornitore di Wallet).
 
 
 Metadati Offline della Relying Party

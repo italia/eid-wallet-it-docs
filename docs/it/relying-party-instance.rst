@@ -3,7 +3,7 @@
 .. "included" file, so we start with '-' title level
 
 App di Verifica 
-----------------------
+---------------
 
 L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party.
 
@@ -23,12 +23,12 @@ Ulteriori dettagli tecnici e operativi sono discussi nelle sezioni seguenti.
 
 
 App di Verifica Mobile
------------------------------
+----------------------
 
 Il ciclo di vita di un'App di Verifica include quattro stati principali: **Installed**, **Unverified**, **Verified** e **Uninstalled**, supportando funzionalità come registrazione, riemissione del Certificato di Accesso e revoca.
 
 Ciclo di Vita App di Verifica Mobile 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In questa sezione vengono presentati le macchine a stati finiti per spiegare gli stati dell'App di Verifica Mobile, nonché le loro transizioni e relazioni.
 
@@ -72,7 +72,7 @@ La revoca può avvenire nei seguenti casi:
 Inoltre, ogni Relying Party DOVREBBE stabilire un periodo di tempo (periodo di grazia) durante il quale l'App di Verifica può richiedere presentazioni di Credenziali Elettroniche autenticandosi verso un'Istanza del Wallet utilizzando un Certificato di Accesso scaduto. Dopo questo periodo, l'App di Verifica DEVE essere de-registrata (transizione **RPI DEREG**) e tornare allo stato **Installed**. Questa transizione implica che le Cryptographic Hardware Keys DEVONO essere cancellate.
 
 Transizione a Verified
-""""""""""""""""""""""""
+""""""""""""""""""""""
 
 L'App di Verifica deve ottenere un Certificato di Accesso appropriato, che sarà utilizzato per autenticarsi verso le Istanze del Wallet. Questo Certificato viene ottenuto interagendo con il Backend della Relying Party, che a sua volta comunica con l'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica. In particolare, la transizione di registrazione (**RPI REG**) consiste nelle seguenti sottofasi, che portano allo stato **Verified**:
 
@@ -85,7 +85,7 @@ In questo stato, l'App di Verifica può richiedere la presentazione di Attestati
 
 
 Transizione a Unverified
-""""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 La scadenza del Certificato di Accesso (transizione **CERT EXP**) porta allo stato **Unverified**.
 
@@ -94,13 +94,13 @@ In questo stato, l'App di Verifica può ancora richiedere la presentazione di At
 
 
 Transizione a Uninstalled
-"""""""""""""""""""""""""""
+"""""""""""""""""""""""""
 
 Attraverso gli stati **Installed**, **Verified** e **Unverified**, la Relying Party Instance può essere rimossa completamente attraverso la disinstallazione dell'App di Verifica (transizione **RPI UNINST**), portando allo stato **Uninstalled**. Se un'App di Verifica è **Uninstalled**, termina il suo ciclo di vita.
 
 
 Funzionalità dell'App di Verifica Mobile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Un'App di Verifica DEVE supportare tre funzionalità fondamentali: **Registrazione**, **Riemissione del Certificato di Accesso** e **Revoca**. Ogni funzionalità è descritta in dettaglio nelle sezioni seguenti.
 

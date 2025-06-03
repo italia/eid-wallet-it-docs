@@ -39,7 +39,7 @@ Le informazioni relative alla registrazione e alla gestione delle Istanze del Wa
 
 
 
-Politica di Conservazione dei Log del Fornitore di Credenziale
+Politica di Conservazione dei Log del Fornitore di Credenziali
 --------------------------------------------------------------
 
 I Fornitori di Credenziali definiscono il periodo di conservazione per le Credenziali in base alle normative specifiche del settore. In assenza di normative specifiche, il periodo di conservazione per le Credenziali NON DOVREBBE superare i 12 mesi dopo la data di scadenza, configurata al momento dell'emissione nei metadati della parte firmata dall'Emittente della Credenziale.

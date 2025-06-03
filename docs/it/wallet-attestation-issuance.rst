@@ -76,7 +76,7 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Attes
 
 Dopo il completamento con successo di tutti i controlli, il Fornitore di Wallet emette una Wallet Attestation valido per un massimo di 24 ore.
 
-**Passo 18 (Risposta di Emissione della Wallet Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e Content-Type ``application/json``, contenente gli Attestati di Wallet firmati dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet Attestation in almeno tre formati: JWT, SD-JWT e mdoc. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità degli Attestati di Wallet ricevuti oltre alla verifica di fiducia del suo Fornitore di Credenziale.
+**Passo 18 (Risposta di Emissione della Wallet Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e Content-Type ``application/json``, contenente gli Attestati di Wallet firmati dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet Attestation in almeno tre formati: JWT, SD-JWT e mdoc. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità degli Attestati di Wallet ricevuti oltre alla verifica di fiducia del suo Fornitore di Credenziali.
 
 
 Di seguito è riportato un esempio non normativo della risposta.

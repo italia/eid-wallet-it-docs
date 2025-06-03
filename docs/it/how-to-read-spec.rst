@@ -70,14 +70,14 @@ I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet**
 * **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Comprensione delle interazioni con le Relying Party e dei protocolli di presentazione.
 
 
-Fornitore di Credenziale
+Fornitore di Credenziali
 """"""""""""""""""""""""
 
-Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di Credenziale**, dovrebbero concentrarsi sul ciclo di vita delle Credenziali Elettroniche e sui flussi di interazione per l'emissione.
+Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di Credenziali**, dovrebbero concentrarsi sul ciclo di vita delle Credenziali Elettroniche e sui flussi di interazione per l'emissione.
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Soluzione di Fornitore di Credenziale - Requisiti completi di implementazione e dettagli dei componenti.
+* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Soluzione di Fornitore di Credenziali - Requisiti completi di implementazione e dettagli dei componenti.
 * **Sezione** :ref:`authentic-sources:Fonti Autentiche`: Comprensione dei modelli di integrazione con fonti di dati autorevoli.
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Formati delle Credenziali Elettroniche e gestione del ciclo di vita.
 * **Sezione** :ref:`credential-issuance:Emissione di Attestati Elettronici`: Implementazione dettagliata del flusso di emissione.
@@ -92,7 +92,7 @@ Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di
 
 .. note::
 
-    Se il Fornitore di Credenziale autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione della Credenziale Digitale`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.  
+    Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione della Credenziale Digitale`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.  
 
 Fonte Autentica
 """""""""""""""
@@ -155,4 +155,4 @@ Si suggerisce il seguente approccio di lettura in fasi:
 
 .. note::
 
-    Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziale e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Entity Configuration e ai flussi di federazione che si applicano a più ruoli.
+    Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziali e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Entity Configuration e ai flussi di federazione che si applicano a più ruoli.
