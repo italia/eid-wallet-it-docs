@@ -43,7 +43,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Fonte Autentica**
       Soggetto pubblico o privato responsabile di un archivio o sistema che è considerato fonte primaria per gli Attributi o per i Dati di Identificazione Personale.
-      Conforme con ARF 1.10.    
+      Conforme con ARF 1.10.
 
     **Processo di Certificazione**
       Procedura svolta dagli Organismi di Valutazione della conformità (CABs) per certificare le Soluzioni Wallet, che comprende anche le valutazioni tecniche periodiche.
@@ -175,7 +175,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Attestato Elettronico di Attributi che contiene Attributi destinati ad attestare il rilascio, da parte dello Stato o di altre pubbliche amministrazioni, di autorizzazioni, certificazioni, abilitazioni, documenti di identità e riconoscimento, ricevute di introiti, ovvero ad assumere un valore fiduciario e di tutela della fede pubblica in seguito alla loro emissione o alle scritturazioni su di essi effettuate e, in generale, quando sono considerati carte valori ai sensi dell'articolo 2, comma 10-bis, della legge 13 luglio 1966, n. 559.
       Non presente in ARF 1.10; specifico di IT-Wallet.
       
-    **Attestato Elettronico di Dati di Identificazione Personale**  
+    **Attestato Elettronico di Dati di Identificazione Personale**
       Attestato Elettronico che consente di autenticare il soggetto a cui si riferiscono i Dati Personali Identificativi.
       Conforme con ARF 1.10.
 
@@ -311,6 +311,9 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
 
     **Attestato di Istanza del Wallet**
+    **Wallet Unit Attestation**
+    **Wallet Attestation**
+    **Wallet Instance Attestation**
       Oggetto emesso da un Fornitore di Wallet che descrive le caratteristiche e i componenti della Istanza del Wallet.
       Conforme con ARF 1.10.
 

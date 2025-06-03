@@ -524,13 +524,13 @@ La Status Assertion DEVE contenere i parametri e i claim definiti di seguito
     - Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Cryptographic Algorithms <algorithms:Algoritmi Crittografici>` e NON DEVE essere impostato su ``none`` o su un identificatore di algoritmo simmetrico (MAC).
     - [:rfc:`7515`], [:rfc:`7517`].
   * - **typ**
-    - DEVE  corrispondere a `status-assertion+jwt`.
+    - DEVE corrispondere a `status-assertion+jwt`.
     - [:rfc:`7515`], [:rfc:`7517`], `OAUTH-STATUS-ASSERTION`_.
   * - **kid**
     - Identificatore univoco del JWK del Fornitore di Attestati Elettronici. È RICHIESTO quando ``x5c`` non viene utilizzato.
     - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
   * - **x5c**
-    -  Catena di certificati X.509 relativa al Fornitore di Attestati Elettronici. È RICHIESTO quando ``kid`` non viene utilizzato.
+    - Catena di certificati X.509 relativa al Fornitore di Attestati Elettronici. È RICHIESTO quando ``kid`` non viene utilizzato.
     - [:rfc:`7515`], `OAUTH-STATUS-ASSERTION`_.
 
 .. list-table::
@@ -848,7 +848,7 @@ Gestione dello Stato degli Attestati Elettronici con Token di Status List
 I Fornitori di Attestati Elettronici, una volta che un Attestato Elettronico è stato generato, DEVONO:
 
   - Memorizzarlo localmente con il set minimo di dati necessari per gestire il suo ciclo di vita, incluso lo stato di validità di quell'Attestato Elettronico;
-  - Includere un claim ``status_list`` all'interno dell'Oggetto JSON ``status`` claim  dell'Attestato Elettronico.
+  - Includere un claim ``status_list`` all'interno dell'Oggetto JSON ``status`` claim dell'Attestato Elettronico.
 
 Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con i seguenti parametri
 

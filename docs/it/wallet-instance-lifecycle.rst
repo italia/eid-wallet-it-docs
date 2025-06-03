@@ -38,7 +38,7 @@ Transizione a Installato
 ........................
 
 La macchina a stati inizia con la transizione di installazione dell'Istanza del Wallet (**WI INST**), dove gli Utenti scaricano e installano un'Istanza del Wallet fornita dal Fornitore di Wallet utilizzando lo
-store ufficiale delle applicazioni del sistema operativo del loro dispositivo (questo garantisce l'autenticità tramite controlli di sistema), portando allo stato **Installato**.
+store ufficiale del sistema operativo del loro dispositivo (questo garantisce l'autenticità tramite controlli di sistema), portando allo stato **Installato**.
 
 Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con il Fornitore di Wallet per essere attivata. Quando avviene la revoca dell'Istanza del Wallet, l'Istanza del Wallet DEVE tornare da **Operativo** o **Valido** a **Installato**. La revoca segna la Cryptographic Hardware Key del Wallet, registrata durante l'attivazione
 (vedi :ref:`wallet-instance-lifecycle:Transizione a Operativo`), come non più utilizzabile. La revoca può avvenire nei seguenti casi:
@@ -49,8 +49,8 @@ Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con
 * attività illegali segnalate da Organi Giudiziari o di Vigilanza.
 
 .. note::
-  Mentre per l'ARF la revoca dell'Istanza del Wallet viene realizzata revocando l'Attestato di Wallet (vedi Argomento 9 e Argomento 38 nell'Allegato 2),
-  in questa specifica la revoca è gestita diversamente. Essendo l'Attestato di Wallet a breve durata, non ha un meccanismo di gestione dello stato.
+  Mentre per l'ARF la revoca dell'Istanza del Wallet viene realizzata revocando la Wallet Attestation (vedi Argomento 9 e Argomento 38 nell'Allegato 2),
+  in questa specifica la revoca è gestita diversamente. Essendo la Wallet Attestation a breve durata, non ha un meccanismo di gestione dello stato.
   Per questo motivo, la transizione di revoca dell'Istanza del Wallet viene realizzata eliminando la Cryptographic Hardware Key del Wallet dal WSCD dell'Istanza del
   Wallet e dall'account associato all'Utente. Questa transizione viene completata quando l'Istanza del Wallet è online.
 
@@ -69,11 +69,11 @@ revocare l'Istanza del Wallet associata a quell'Utente.
 
 Come parte dell'attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo e le capacità tecniche generali del dispositivo per verificare la conformità
 con i requisiti tecnici e di sicurezza, e l'autenticità e l'integrità dell'Istanza del Wallet installata.
-Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno un Attestato di Wallet valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato **Operativo**.
+Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato **Operativo**.
 
 Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
-numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
-personali e le capacità del dispositivo. Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`.
+PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
+personali e le capacità del dispositivo. Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`.
 
 Nello stato **Operativo**, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (**PID ISS**) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
 (**(Q)EEA ISS**). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate

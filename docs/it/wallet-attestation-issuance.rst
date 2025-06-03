@@ -1,15 +1,15 @@
 .. include:: ../common/common_definitions.rst
 
 
-Emissione dell'Attestato di Wallet
+Emissione della Wallet Attestation
 ==================================
 
-Questa sezione descrive come il Fornitore di Wallet emette un Attestato di Wallet.
+Questa sezione descrive come il Fornitore di Wallet emette una Wallet Attestation.
 
 .. plantuml:: plantuml/wallet-attestation-issuance.puml
     :width: 99%
-    :alt: La figura illustra il Diagramma di Sequenza per l'acquisizione dell'Attestato di Wallet.
-    :caption: `Diagramma di Sequenza per l'acquisizione dell'Attestato di Wallet. <https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0waKBaXmg0HgLKfRWL3K5hX4YcRNazrHDlPYpsu9lnvxcsQtnUrb5TjlFjwRUJaDWbwwRQEm4sUxRK5UrMm8riv9uVweDsq4SCajMb4AIt4Uz8z0NWC6w4B4Jn2WVs7JaC2r3OAsf065RGjFKP-fvv8YIgZoB3ku9J_Sd2skmqCCIe2Zq7gsLUM9RBRCmhkU3NaeiDoGDKDeKMwKKgcrjvzYwHEueTyT1G44I_VWMl8ex2n8ZRAqFhwofm08-wnd8X4-O19Zxb4eaL0gVlOvpsigDy1hEFUxLbpbiQsvX2lqvXuzmLVQmTBUOGKphUlzxMf3kvLWfVKnS03iaHii6bBJp9TaKuEf8GlKrhIDnmPYABJ8FkKxt0u9swxGUWx_NNlkOo6bl7L2u7hoYSGyoWD7twulh-ukRouklgi79iy5vG19S71ha9hW2vb7rT0QS8KWMs09i2L1WuAAh4cL3cHYdL5whQrBww17GOSnnS-076d3sbEe9m43Pg_DU6jecYWhO4IN3PELLUflLMEezR0WjrTdxzv_c1sIpI4hwN4kwMlpNhZ5qawc7RYoA9sF9U0ZfDDibkjf3jaLcLwF4ntRGWadMOugFOsIyQFBLXW2-JH4hNFSClj_6E0zI_rIhZdaISzXb7XfSnnVK7xGYinGT6A1_8PFjksMh7c5nDFT6ssHZdbR98C_-qTBpc3BmjZmNpA37VhuswWkiAsoenozCUxxpnI3GgD6-SUiudbeRWPvP4xpkBqJyBcd_4PCxPYLEhJE1dfkqEavngfJigRRDly0>`_
+    :alt: La figura illustra il Diagramma di Sequenza per l'acquisizione della Wallet Attestation.
+    :caption: `Diagramma di Sequenza per l'acquisizione della Wallet Attestation. <https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0waKBaXmg0HgLKfRWL3K5hX4YcRNazrHDlPYpsu9lnvxcsQtnUrb5TjlFjwRUJaDWbwwRQEm4sUxRK5UrMm8riv9uVweDsq4SCajMb4AIt4Uz8z0NWC6w4B4Jn2WVs7JaC2r3OAsf065RGjFKP-fvv8YIgZoB3ku9J_Sd2skmqCCIe2Zq7gsLUM9RBRCmhkU3NaeiDoGDKDeKMwKKgcrjvzYwHEueTyT1G44I_VWMl8ex2n8ZRAqFhwofm08-wnd8X4-O19Zxb4eaL0gVlOvpsigDy1hEFUxLbpbiQsvX2lqvXuzmLVQmTBUOGKphUlzxMf3kvLWfVKnS03iaHii6bBJp9TaKuEf8GlKrhIDnmPYABJ8FkKxt0u9swxGUWx_NNlkOo6bl7L2u7hoYSGyoWD7twulh-ukRouklgi79iy5vG19S71ha9hW2vb7rT0QS8KWMs09i2L1WuAAh4cL3cHYdL5whQrBww17GOSnnS-076d3sbEe9m43Pg_DU6jecYWhO4IN3PELLUflLMEezR0WjrTdxzv_c1sIpI4hwN4kwMlpNhZ5qawc7RYoA9sF9U0ZfDDibkjf3jaLcLwF4ntRGWadMOugFOsIyQFBLXW2-JH4hNFSClj_6E0zI_rIhZdaISzXb7XfSnnVK7xGYinGT6A1_8PFjksMh7c5nDFT6ssHZdbR98C_-qTBpc3BmjZmNpA37VhuswWkiAsoenozCUxxpnI3GgD6-SUiudbeRWPvP4xpkBqJyBcd_4PCxPYLEhJE1dfkqEavngfJigRRDly0>`_
 
 
 .. .. figure:: ../../images/wallet_instance_acquisition.svg
@@ -19,15 +19,15 @@ Questa sezione descrive come il Fornitore di Wallet emette un Attestato di Walle
 
 ..   Sequence Diagram for Wallet Attestation acquisition
 
-**Passo 1**: L'Utente avvia una nuova operazione che richiede l'acquisizione di un Attestato di Wallet.
+**Passo 1**: L'Utente avvia una nuova operazione che richiede l'acquisizione di una Wallet Attestation.
 
 **Passi 2-3**: L'Istanza del Wallet DEVE:
 
   1. Verificare l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la reinizializzazione dell'Istanza del Wallet.
-  2. Generare una coppia di chiavi asimmetriche effimere per l'Attestato di Wallet (``ephemeral_key_pub``, ``ephemeral_key_priv``), collegando la chiave pubblica all'attestato.
+  2. Generare una coppia di chiavi asimmetriche effimere per la Wallet Attestation (``ephemeral_key_pub``, ``ephemeral_key_priv``), collegando la chiave pubblica all'attestato.
   3. Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati.
 
-**Passi 4-6 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` dall'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet. Questo ``nonce`` deve essere imprevedibile e serve come principale difesa contro gli attacchi di replay.
+**Passi 4-6 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` all'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet. Questo ``nonce`` deve essere imprevedibile e serve come principale difesa contro gli attacchi di replay.
 
 Il ``nonce`` DEVE essere prodotto in modo da garantire il suo utilizzo singolo entro un periodo di tempo predeterminato.
 
@@ -53,20 +53,20 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 * richiede al Servizio di Integrità del Dispositivo di creare un valore ``integrity_assertion`` collegato al ``client_data_hash``.
 * riceve un valore firmato ``integrity_assertion`` dal Servizio di Integrità del Dispositivo, autenticato dall'OEM.
 
-.. note:: 
+.. note::
   ``integrity_assertion`` è un payload personalizzato generato dal Servizio di Integrità del Dispositivo, firmato dall'OEM del dispositivo e codificato in base64 per avere uniformità tra diversi dispositivi.
 
-**Passi 11-12 (Richiesta di Emissione dell'Attestato di Wallet)**: L'Istanza del Wallet:
+**Passi 11-12 (Richiesta di Emissione della Wallet Attestation)**: L'Istanza del Wallet:
 
-* Costruisce la Richiesta di Attestato di Wallet sotto forma di JWT. Questo JWT include ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Attestato di Wallet <table_key_binding_request_claim>`) ed è firmato utilizzando la chiave privata della coppia di chiavi effimere generata inizialmente.
-* Invia la Richiesta di Attestato di Wallet all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione dell'Attestato di Wallet` del Backend del Fornitore del Wallet.
+* Costruisce la Richiesta di Wallet Attestation sotto forma di JWT. Questo JWT include ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` e altri parametri relativi alla configurazione (vedi :ref:`Tabella del Corpo della Richiesta di Wallet Attestation <table_key_binding_request_claim>`) ed è firmato utilizzando la chiave privata della coppia di chiavi effimere generata inizialmente.
+* Invia la Richiesta di Wallet Attestation all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet Attestation` del Backend del Fornitore del Wallet.
 
-L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Attestato di Wallet come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione dell'Attestato di Wallet` del Fornitore di Wallet.
+L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Attestation come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet Attestation` del Fornitore di Wallet.
 
-**Passi 13-17**: Il Backend del Fornitore del Wallet valuta la Richiesta di Attestato di Wallet e DEVE eseguire i seguenti controlli:
+**Passi 13-17**: Il Backend del Fornitore del Wallet valuta la Richiesta di Wallet Attestation e DEVE eseguire i seguenti controlli:
 
-  1. La richiesta DEVE includere tutti i parametri dell'intestazione HTTP richiesti come definito in :ref:`wallet-provider-endpoint:Richiesta di Emissione dell'Attestato di Wallet`.
-  2. La firma della Richiesta di Attestato di Wallet DEVE essere valida e verificabile utilizzando la ``jwk`` fornita.
+  1. La richiesta DEVE includere tutti i parametri dell'intestazione HTTP richiesti come definito in :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet Attestation`.
+  2. La firma della Richiesta di Wallet Attestation DEVE essere valida e verificabile utilizzando la ``jwk`` fornita.
   3. Il valore ``nonce`` DEVE essere stato generato dal Fornitore di Wallet e non essere stato utilizzato in precedenza.
   4. DEVE esistere un'Istanza del Wallet valida e attualmente registrata associata a quella fornita.
   5. Il ``client_data`` DEVE essere ricostruito utilizzando il ``nonce`` e la chiave pubblica ``jwk``. Il valore del parametro ``hardware_signature`` viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet.
@@ -74,9 +74,9 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Attestato di
   7. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
   8. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet.
 
-Dopo il completamento con successo di tutti i controlli, il Fornitore di Wallet emette un Attestato di Wallet valido per un massimo di 24 ore.
+Dopo il completamento con successo di tutti i controlli, il Fornitore di Wallet emette una Wallet Attestation valido per un massimo di 24 ore.
 
-**Passo 18 (Risposta di Emissione dell'Attestato di Wallet)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e Content-Type ``application/json``, contenente gli Attestati di Wallet firmati dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire l'Attestato di Wallet in almeno tre formati: JWT, SD-JWT e mdoc. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità degli Attestati di Wallet ricevuti oltre alla verifica di fiducia del suo Fornitore di Credenziale.
+**Passo 18 (Risposta di Emissione della Wallet Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e Content-Type ``application/json``, contenente gli Attestati di Wallet firmati dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet Attestation in almeno tre formati: JWT, SD-JWT e mdoc. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità degli Attestati di Wallet ricevuti oltre alla verifica di fiducia del suo Fornitore di Credenziali.
 
 
 Di seguito è riportato un esempio non normativo della risposta.

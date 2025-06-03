@@ -130,7 +130,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - DEVE essere valorizzato con ``code``.
       - :rfc:`6749`
     * - **response_mode**
-      - DEVE essere una stringa che indica il "*response_mode*", come specificato in [`OAUTH-MULT-RESP-TYPE`_]. DEVE essere valorizzato con uno dei valori supportati (*response_modes_supported*) forniti nei Metadata del Credential Issuer. Tale claim informa il Credential Issuer sul meccanismo da utilizzare per la restituizione dei parametri da parte dell' Authorization Endpoint. In caso di *HTTP 302 Redirect Response* il valore DEVE essere *query*. In questa modalità, i parametri dell'Authorization Response sono codificati nella stringa di query aggiunta al ``redirect_uri`` durante il redirect all'Istanza del Wallet. In caso di *HTTP POST Response* il valore DEVE essere *form_post.jwt* secondo [`JARM`_]. In questa modalità, i parametri dell'Authorization Response sono riportati in un JWT codificato in un form HTML che viene inviato automaticamente nell'user-agent, e quindi viene trasmesso tramite il metodo HTTP POST all'Istanza del Wallet, con i parametri risultanti codificati nel body utilizzando il formato *application/x-www-form-urlencoded*. L'attributo *action* del form DEVE contenere il  *Redirection URI* dell'Istanza del Wallet. L'attributo *method* del form DEVE essere POST.
+      - DEVE essere una stringa che indica il "*response_mode*", come specificato in [`OAUTH-MULT-RESP-TYPE`_]. DEVE essere valorizzato con uno dei valori supportati (*response_modes_supported*) forniti nei Metadata del Credential Issuer. Tale claim informa il Credential Issuer sul meccanismo da utilizzare per la restituizione dei parametri da parte dell' Authorization Endpoint. In caso di *HTTP 302 Redirect Response* il valore DEVE essere *query*. In questa modalità, i parametri dell'Authorization Response sono codificati nella stringa di query aggiunta al ``redirect_uri`` durante il redirect all'Istanza del Wallet. In caso di *HTTP POST Response* il valore DEVE essere *form_post.jwt* secondo [`JARM`_]. In questa modalità, i parametri dell'Authorization Response sono riportati in un JWT codificato in un form HTML che viene inviato automaticamente nell'user-agent, e quindi viene trasmesso tramite il metodo HTTP POST all'Istanza del Wallet, con i parametri risultanti codificati nel body utilizzando il formato *application/x-www-form-urlencoded*. L'attributo *action* del form DEVE contenere il *Redirection URI* dell'Istanza del Wallet. L'attributo *method* del form DEVE essere POST.
       - Vedi [`OAUTH-MULT-RESP-TYPE`_] e [`JARM`_].
     * - **client_id**
       - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
@@ -442,7 +442,7 @@ La token request contiene i seguenti claim:
       - OBBLIGATORIO solo se il *grant type* è ``refresh_token``. Il Refresh Token precedentemente emesso all'Istanza del Wallet. NON DEVE essere presente se il *grant type* è ``authorization_code``.
       - [:rfc:`6749`].
     * - **scope**
-      - OPZIONALE solo se il *grant type* è ``refresh_token``. Lo scope richiesto NON DEVE includere alcun valore di scope non originariamente concesso dall'Utente, e se omesso è da intendersi  uguale allo scope originariamente concesso dall'Utente. NON DEVE essere presente se il *grant type* è ``authorization_code``.
+      - OPZIONALE solo se il *grant type* è ``refresh_token``. Lo scope richiesto NON DEVE includere alcun valore di scope non originariamente concesso dall'Utente, e se omesso è da intendersi uguale allo scope originariamente concesso dall'Utente. NON DEVE essere presente se il *grant type* è ``authorization_code``.
       - [:rfc:`6749`].
 
 
@@ -496,7 +496,7 @@ Il payload del **JWT DPoP Proof** DEVE contenere i seguenti claim:
 Token Response
 .................
 
-Se la Token Request viene validata con successo, l'Authorization Server fornisce una Token Response con *status code HTTP 200 (OK)*. La Token Response  contiene i seguenti claim.
+Se la Token Request viene validata con successo, l'Authorization Server fornisce una Token Response con *status code HTTP 200 (OK)*. La Token Response contiene i seguenti claim.
 
 .. list-table::
     :class: longtable
@@ -807,7 +807,7 @@ Il *proof type* del JWT DEVE contenere i seguenti parametri per l'header JOSE e 
     - DEVE essere valorizzato con l'identificativo del Credential Issuer.
     - [`OpenID4VCI`_].
   * - **iat**
-    - Timestamp UNIX con data e orario  di emissione del JWT, codificato come NumericDate come indicato nel :rfc:`7519`.
+    - Timestamp UNIX con data e orario di emissione del JWT, codificato come NumericDate come indicato nel :rfc:`7519`.
     - [`OpenID4VCI`_], [:rfc:`7519`. Sezione 4.1.6].
   * - **nonce**
     - Il tipo di valore di questo claim DEVE essere una stringa, dove il valore è un **c_nonce** fornito dal Credential Issuer tramite la Nonce Response.
