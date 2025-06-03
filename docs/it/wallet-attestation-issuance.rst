@@ -27,7 +27,7 @@ Questa sezione descrive come il Fornitore di Wallet emette una Wallet Attestatio
   2. Generare una coppia di chiavi asimmetriche effimere per la Wallet Attestation (``ephemeral_key_pub``, ``ephemeral_key_priv``), collegando la chiave pubblica all'attestato.
   3. Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati.
 
-**Passi 4-6 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` dall'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet. Questo ``nonce`` deve essere imprevedibile e serve come principale difesa contro gli attacchi di replay.
+**Passi 4-6 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` all'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet. Questo ``nonce`` deve essere imprevedibile e serve come principale difesa contro gli attacchi di replay.
 
 Il ``nonce`` DEVE essere prodotto in modo da garantire il suo utilizzo singolo entro un periodo di tempo predeterminato.
 
