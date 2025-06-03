@@ -35,12 +35,23 @@ Furthermore, this project uses the git *branches* and *tags* in the following wa
 Each time a release is created or edited, a preview is built based on the tag the release refers to. 
 A preview of the latest editor's copy build, corresponding to the branch `versione-corrente` can be navigated using the following link:
 
+English version:
+
  - [Editor's Copy](https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/)
 
+Versione Italiana:
+
+ - [Ultima Versione in Sviluppo](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/)
 
 ### Releases
 
 Released versions can be navigated by adding the tag in the webpath leaded by a _v_, as follows:
+
+Italian:
+
+ - [https://italia.github.io/eid-wallet-it-docs/releases/v1.0.1/it/](https://italia.github.io/eid-wallet-it-docs/releases/v1.0.1-1/it/)
+
+English:
 
  - [https://italia.github.io/eid-wallet-it-docs/releases/v1.0.1/en/](https://italia.github.io/eid-wallet-it-docs/releases/v1.0.1-1/en/)
  - [https://italia.github.io/eid-wallet-it-docs/releases/v1.0.0/en/](https://italia.github.io/eid-wallet-it-docs/releases/v1.0.0/en/)
