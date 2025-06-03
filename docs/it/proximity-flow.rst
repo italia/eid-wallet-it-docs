@@ -173,12 +173,12 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
            - **DataElementIdentifier** *(tstr)*. L'identificativo dell'elemento di dati richiesto.
            - **IntentToRetain** *(bool)*. Indica se la Relying Party intende conservare il valore dell'elemento di dati.
 
-       - **readerAuth** *(COSE_Sign1, OPZIONALE)*. Utilizzato per autenticare l'App di Verifica per ogni `DocRequest`. La firma è calcolata sui dati `ReaderAuthentication`, come definito in [`ISO18013-5`_ #9.1.4].
+       - **readerAuth** *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare l'App di Verifica per ogni `DocRequest`. La firma è calcolata sui dati `ReaderAuthentication`, come definito in [`ISO18013-5`_ #9.1.4].
 
          Questo componente DEVE essere presente solo se `readerAuthAll` non viene utilizzato.
 
    * - **readerAuthAll**
-     - *(COSE_Sign1, OPZIONALE)*. Utilizzato per autenticare l'App di Verifica una volta per tutte le richieste in `DocRequest`. La firma è calcolata sui dati `ReaderAuthenticationAll`, come definito in [`ISO18013-5`_ #9.1.4].
+     - *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare l'App di Verifica una volta per tutte le richieste in `DocRequest`. La firma è calcolata sui dati `ReaderAuthenticationAll`, come definito in [`ISO18013-5`_ #9.1.4].
 
        Questo componente DEVE essere presente solo se `ReaderAuthAllSupport` è impostato su `true` nel messaggio di DeviceEngagement, in questo caso, i campi individuali `readerAuth` non vengono utilizzati.
 

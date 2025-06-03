@@ -33,7 +33,7 @@ I metadata *openid_credential_verifier* DEVONO contenere i seguenti parametri.
   * - **jwks**
     - Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi `JARM`_ Sezione 3, `OID-FED`_ Draft 41 Sezione 5.2.1 e `JWK`_.
   * - **erasure_endpoint**
-    - [OPZIONALE] Stringa JSON che rappresenta l'URI a cui l'Istanza del Wallet può richiedere la cancellazione degli attributi degli Utenti. Questo URL DEVE utilizzare lo schema ``https``. Questo endpoint DEVE essere presente ogni volta che le Relying Party richiedono attributi che possono identificare in modo univoco gli Utenti, come il claim tax_id_code del PID.
+    - [CONDIZIONALE] Stringa JSON che rappresenta l'URI a cui l'Istanza del Wallet può richiedere la cancellazione degli attributi degli Utenti. Questo URL DEVE utilizzare lo schema ``https``. Questo endpoint DEVE essere presente ogni volta che le Relying Party richiedono attributi che possono identificare in modo univoco gli Utenti, come il claim tax_id_code del PID.
 
 
 .. note::

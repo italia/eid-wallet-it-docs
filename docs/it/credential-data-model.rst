@@ -1,5 +1,5 @@
 .. include:: ../common/common_definitions.rst
-
+  
 
 Modello di Dati delle Credenziali Elettroniche
 ==============================================
@@ -138,7 +138,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni di hash crittografico. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato secondo la Sezione 3.3.5 di [`W3C-SRI`].
       - Sezione 6.1 `SD-JWT-VC`, [`W3C-SRI`]
     * - **verification**
-      - [SD]. OPZIONALE. OBBLIGATORIO se il tipo di Credenziale è impostato su `PersonIdentificationData`, altrimenti è OPZIONALE. Oggetto contenente informazioni sull'autenticazione dell'Utente e sulla verifica dei dati dell'Utente. Se presente DEVE includere il seguente sotto-valore:
+      - [SD]. CONDIZIONALE. OBBLIGATORIO se il tipo di Credenziale è impostato su `PersonIdentificationData`, altrimenti è OPZIONALE. Oggetto contenente informazioni sull'autenticazione dell'Utente e sulla verifica dei dati dell'Utente. Se presente DEVE includere il seguente sotto-valore:
 
           * ``trust_framework``: Stringa che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere impostato utilizzando uno dei valori descritti nella mappa `trust_frameworks_supported` fornita nei Metadati del Credential Issuer.
           * ``assurance_level``: Stringa che identifica il livello di garanzia dell'identità garantito durante il processo di autenticazione dell'Utente.
@@ -209,16 +209,16 @@ Il documento del tipo di Metadati DEVE essere un oggetto JSON e contiene i segue
       - OPZIONALE. Identificatore di stringa di un documento di tipo metadati esteso.
       - [`SD-JWT-VC`] Sezione 6.2.
     * - **extends#integrity**
-      - OPZIONALE. OBBLIGATORIO se **extends** è presente.
+      - CONDIZIONALE. OBBLIGATORIO se **extends** è presente.
       - [`SD-JWT-VC`] Sezione 6.2.
     * - **schema**
-      - OPZIONALE. OBBLIGATORIO se **schema_uri** non è presente.
+      - CONDIZIONALE. OBBLIGATORIO se **schema_uri** non è presente.
       - [`SD-JWT-VC`] Sezione 6.2.
     * - **schema_uri**
-      - OPZIONALE. OBBLIGATORIO se **schema** non è presente.
+      - CONDIZIONALE. OBBLIGATORIO se **schema** non è presente.
       - [`SD-JWT-VC`] Sezione 6.2.
     * - **schema_uri#integrity**
-      - OPZIONALE. OBBLIGATORIO se **schema_uri** è presente.
+      - CONDIZIONALE. OBBLIGATORIO se **schema_uri** è presente.
       - [`SD-JWT-VC`] Sezione 6.2.
     * - **data_source**
       - OBBLIGATORIO. Oggetto contenente informazioni sull'origine dei dati. DEVE contenere l'oggetto ``verification`` con il seguente sotto-valore:
@@ -240,7 +240,7 @@ Il documento del tipo di Metadati DEVE essere un oggetto JSON e contiene i segue
           * ``name``: etichetta leggibile per il tipo di Credenziale Elettronica. [OBBLIGATORIO].
           * ``description``: descrizione leggibile per il tipo di Credenziale Elettronica. [OBBLIGATORIO].
           * ``rendering``: oggetto contenente i metodi di rendering supportati dal tipo di Credenziale Elettronica. [OBBLIGATORIO]. Il metodo di rendering `svg_template` DEVE essere supportato.
-
+            
             L'array ``svg_templates`` di oggetti contiene per ogni modello SVG supportato le seguenti proprietà:
 
                 * ``uri``: URI che punta al modello SVG. [OBBLIGATORIO].
@@ -309,10 +309,10 @@ A seconda del tipo di Credenziale Elettronica **vct**, possono essere aggiunti d
       - [SD]. OBBLIGATORIO. Uno o più codici paese alpha-2 come specificato in ISO 3166-1. (*Array di stringhe*)
       - Regolamento di esecuzione della Commissione `EU_2024/2977`
     * - **personal_administrative_number**
-      - [SD]. OPZIONALE. OBBLIGATORIO se ``tax_id_code`` non è presente. Identificatore univoco nazionale di una persona fisica generato da ANPR in formato stringa. (*String*)
+      - [SD]. CONDIZIONALE. OBBLIGATORIO se ``tax_id_code`` non è presente. Identificatore univoco nazionale di una persona fisica generato da ANPR in formato stringa. (*String*)
       - Regolamento di esecuzione della Commissione `EU_2024/2977`
     * - **tax_id_code**
-      - [SD]. OPZIONALE. OBBLIGATORIO se ``personal_administrative_number`` non è presente. Codice di identificazione fiscale nazionale della persona fisica in formato String. DEVE essere impostato secondo ETSI EN 319 412-1. Ad esempio ``TINIT-<ItalianTaxIdentificationNumber>``. (*String*)
+      - [SD]. CONDIZIONALE. OBBLIGATORIO se ``personal_administrative_number`` non è presente. Codice di identificazione fiscale nazionale della persona fisica in formato String. DEVE essere impostato secondo ETSI EN 319 412-1. Ad esempio ``TINIT-<ItalianTaxIdentificationNumber>``. (*String*)
       -
 
 
@@ -769,7 +769,7 @@ Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente s
 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
-      - *(map, OPZIONALE)*. OBBLIGATORIO solo se la Credenziale Elettronica ha una lunga durata. Contiene le informazioni di revoca MSO. Se presente, include una *status_list* basata sul meccanismo TOKEN-STATUS-LIST_. Questo meccanismo utilizza un array di bit per contrassegnare gli MSO revocati in base alla loro posizione di indice.
+      - *(map, CONDIZIONALE)*. OBBLIGATORIO solo se la Credenziale Elettronica ha una lunga durata. Contiene le informazioni di revoca MSO. Se presente, include una *status_list* basata sul meccanismo TOKEN-STATUS-LIST_. Questo meccanismo utilizza un array di bit per contrassegnare gli MSO revocati in base alla loro posizione di indice.
         La `status_list` DEVE contenere il seguente sotto-valore:
 
           * **idx**. Indice di posizione nella lista di stato.
