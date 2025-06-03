@@ -12,7 +12,7 @@ Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSS
 
 - **Utenti**, collegandosi al portale web del Fornitore di Wallet dalla propria Istanza del Wallet o utilizzando un browser esterno.
 - **Fornitori di Attestati Elettronici di Dati di Identificazione Personale** quando notificati dalla Fonte Autentica del PID (ANPR) del decesso dell'Utente.
-- **Autorità Legali o l'Organismo di Supervisione** in casi di comprovate attività illegali.
+- **Autorità Legali o Organismo di Supervisione** in casi di comprovate attività illegali.
 
 
 .. _fig_Wallet_Instance_Revoc_Entities:
