@@ -41,7 +41,7 @@ Richiesta di Revoca dell'Istanza del Wallet
 
 Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet:
 
-- *Selezionando la funzionalità di revoca dalla propria Istanza del Wallet*: questa funzionalità può essere utilizzata dagli Utenti prima di cambiare il proprio telefono.
+- *Selezionando la funzionalità di revoca all'interno dalla propria Istanza del Wallet*: questa funzionalità può essere utilizzata dagli Utenti prima di cambiare il proprio telefono.
 - *Utilizzando un user agent esterno*: questo copre i casi in cui gli Utenti perdono il loro dispositivo e quindi l'accesso alla loro Istanza del Wallet.
 
 In entrambi i casi, utilizzando il portale del Fornitore di Wallet:
