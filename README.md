@@ -41,7 +41,7 @@ English version:
 
 Versione Italiana:
 
- - [Ultima Versione in Sviluppo](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/)
+ - [Ultima versione in corso di sviluppo](https://italia.github.io/eid-wallet-it-docs/versione-corrente/it/)
 
 ### Releases
 
