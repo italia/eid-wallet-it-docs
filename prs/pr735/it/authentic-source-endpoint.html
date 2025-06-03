@@ -136,8 +136,8 @@
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">8. Endpoints</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">8.1. Endpoint del Fornitore di Wallet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Endpoint del Credential Issuer</a></li>
@@ -165,15 +165,15 @@
             
   <section id="endpoint-delle-fonti-autentiche">
 <h1><span class="section-number">8.4. </span>Endpoint delle Fonti Autentiche<a class="headerlink" href="#endpoint-delle-fonti-autentiche" title="Link to this heading">¶</a></h1>
-<section id="e-service-catalogo-delle-fonti-autentiche-pdnd">
-<h2><span class="section-number">8.4.1. </span>e-Service Catalogo delle Fonti Autentiche PDND<a class="headerlink" href="#e-service-catalogo-delle-fonti-autentiche-pdnd" title="Link to this heading">¶</a></h2>
-<p>Le Fonti Autentiche pubbliche DEVONO fornire il seguente e-service attraverso PDND per fornire al Fornitore di Credenziale gli attributi dell'Utente necessari per il rilascio di un Attestato Elettronico.</p>
+<section id="catalogo-degli-e-service-pdnd-delle-fonti-autentiche">
+<h2><span class="section-number">8.4.1. </span>Catalogo degli e-Service PDND delle Fonti Autentiche<a class="headerlink" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche" title="Link to this heading">¶</a></h2>
+<p>Le Fonti Autentiche pubbliche DEVONO realizzare e rendere disponibile tramite PDND il seguente e-service al fine di rilasciare al Fornitore di Attestati Elettronici gli attributi dell'Utente necessari per l'emissione di un Attestato Elettronico.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Una specifica OpenAPI completa è disponibile <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">qui</a></span>.</p>
+<p>La specifica OpenAPI completa è disponibile <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">qui</a></span>.</p>
 </div>
-<section id="ottieni-attributi-dell-utente">
-<h3><span class="section-number">8.4.1.1. </span>Ottieni Attributi dell'Utente<a class="headerlink" href="#ottieni-attributi-dell-utente" title="Link to this heading">¶</a></h3>
+<section id="get-attribute-claims">
+<h3><span class="section-number">8.4.1.1. </span>Get Attribute Claims<a class="headerlink" href="#get-attribute-claims" title="Link to this heading">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -181,13 +181,13 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><th class="stub"><p><strong>Descrizione</strong></p></th>
-<td><p>Questo servizio fornisce al Fornitore di Credenziale tutti gli attributi dell'Utente necessari per il rilascio di un Attestato Elettronico.</p></td>
+<td><p>Questo servizio fornisce al Fornitore di Attestati Elettronici tutti gli attributi dell'Utente necessari per il rilascio di un Attestato Elettronico.</p></td>
 </tr>
-<tr class="row-even"><th class="stub"><p><strong>Fornitore</strong></p></th>
+<tr class="row-even"><th class="stub"><p><strong>Emettitore</strong></p></th>
 <td><p>Fonte Autentica</p></td>
 </tr>
-<tr class="row-odd"><th class="stub"><p><strong>Consumatore</strong></p></th>
-<td><p>Fornitore di Credenziale</p></td>
+<tr class="row-odd"><th class="stub"><p><strong>Fruitore</strong></p></th>
+<td><p>Fornitore di Attestati Elettronici</p></td>
 </tr>
 </tbody>
 </table>
@@ -210,8 +210,8 @@
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">8.4. Endpoint delle Fonti Autentiche</a><ul>
-<li><a class="reference internal" href="#e-service-catalogo-delle-fonti-autentiche-pdnd">8.4.1. e-Service Catalogo delle Fonti Autentiche PDND</a><ul>
-<li><a class="reference internal" href="#ottieni-attributi-dell-utente">8.4.1.1. Ottieni Attributi dell'Utente</a></li>
+<li><a class="reference internal" href="#catalogo-degli-e-service-pdnd-delle-fonti-autentiche">8.4.1. Catalogo degli e-Service PDND delle Fonti Autentiche</a><ul>
+<li><a class="reference internal" href="#get-attribute-claims">8.4.1.1. Get Attribute Claims</a></li>
 </ul>
 </li>
 </ul>
@@ -243,7 +243,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

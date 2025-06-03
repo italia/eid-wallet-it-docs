@@ -136,8 +136,8 @@
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
@@ -160,30 +160,30 @@
   <section id="introduzione">
 <h1><span class="section-number">1. </span>Introduzione<a class="headerlink" href="#introduzione" title="Link to this heading">¶</a></h1>
 <p>Nell'ultimo decennio, la digitalizzazione ha trasformato radicalmente il modo in cui cittadini e imprese interagiscono con i servizi pubblici e privati, introducendo nuove forme di accesso ai servizi sicure, accessibili e user-friendly.</p>
-<p>In Italia, il Decreto-Legge n. 19 del 2 marzo 2024, convertito, con modificazioni, dalla Legge n. 56 del 29 aprile 2024, ha introdotto l'articolo 64-quater del Decreto Legislativo n. 82 del 7 marzo 2005, istituendo il Sistema di Portafoglio Digitale Italiano - Sistema IT-Wallet. Il Sistema IT-Wallet consente a persone fisiche o giuridiche di accedere a servizi pubblici e privati attraverso la presentazione sicura di Credenziali, attestanti diritti, deleghe, caratteristiche, licenze o qualifiche. L'articolo 64-quater prevede inoltre l'adozione di uno o più decreti attuativi per definire le regole che disciplinano il funzionamento del Sistema IT-Wallet, compresi i ruoli delle entità coinvolte, i requisiti tecnici e di sicurezza, e i principi di sostenibilità economica, di cui queste Specifiche Tecniche – redatte attraverso un processo aperto e collaborativo – costituiscono parte integrante.</p>
-<p>Grazie al Sistema IT-Wallet, le persone fisiche e giuridiche possono fornire direttamente, tramite il proprio wallet, le informazioni necessarie per accedere ai servizi offerti da enti pubblici e privati sotto forma di Credenziali. Analogamente a un portafoglio fisico, l'IT-Wallet può contenere dati relativi all'identità o ai documenti, come la patente di guida o la tessera sanitaria, nonché una vasta gamma di informazioni digitali verificabili, come una qualifica professionale, un diploma di istruzione, una licenza o un attributo certificato.</p>
+<p>In Italia, il Decreto-Legge n. 19 del 2 marzo 2024, convertito, con modificazioni, dalla Legge n. 56 del 29 aprile 2024, ha introdotto l'articolo 64-quater del Decreto Legislativo n. 82 del 7 marzo 2005, istituendo il Sistema di Portafoglio Digitale Italiano - Sistema IT-Wallet. Il Sistema IT-Wallet consente a persone fisiche o giuridiche di accedere a servizi pubblici e privati attraverso la presentazione sicura di Attestati Elettronici, attestanti diritti, deleghe, caratteristiche, licenze o qualifiche. L'articolo 64-quater prevede inoltre l'adozione di uno o più decreti attuativi per definire le regole che disciplinano il funzionamento del Sistema IT-Wallet, compresi i ruoli delle entità coinvolte, i requisiti tecnici e di sicurezza, e i principi di sostenibilità economica, di cui queste Specifiche Tecniche – redatte attraverso un processo aperto e collaborativo – costituiscono parte integrante.</p>
+<p>Grazie al Sistema IT-Wallet, le persone fisiche e giuridiche possono fornire direttamente, tramite il proprio Wallet, le informazioni necessarie per accedere ai servizi offerti da enti pubblici e privati sotto forma di Attestati Elettronici. Analogamente a un portafoglio fisico, un'Istanza del Wallet può contenere dati relativi all'identità o ai documenti, come la patente di guida o la tessera sanitaria, nonché una vasta gamma di informazioni digitali verificabili, come una qualifica professionale, un diploma di istruzione, una licenza o un attributo certificato.</p>
 <p>I principali ruoli nell'ecosistema Wallet sono elencati di seguito:</p>
 <ul class="simple">
-<li><p><strong>Credential Issuer</strong>: soggetti che rilasciano Credenziali agli Utenti;</p></li>
-<li><p><strong>Relying Party</strong>: soggetti che richiedono all'Utente presentazioni di Credenziali, per finalità di Autenticazione e autorizzazione;</p></li>
-<li><p><strong>Utenti</strong>: individui che possiedono un'Istanza del Wallet e hanno il controllo sulle Credenziali che possono richiedere, acquisire, memorizzare e presentare alle Relying Party;</p></li>
+<li><p><strong>Fornitore di Attestati Elettronici</strong>: soggetti che rilasciano Attestati Elettronici agli Utenti;</p></li>
+<li><p><strong>Verificatori di Attestati Elettronici</strong>: soggetti che richiedono all'Utente presentazioni di Attestati Elettronici, per finalità di Autenticazione e autorizzazione;</p></li>
+<li><p><strong>Utenti</strong>: individui che possiedono un'Istanza del Wallet e hanno il controllo sugli Attestati Elettronici che possono richiedere, acquisire, memorizzare e presentare alle Verificatori di Attestati Elettronici;</p></li>
 </ul>
-<p>In questo modello, il Fornitore di Credenziale (ad esempio, un'istituzione educativa) fornisce Credenziali all'Utente, che può memorizzarle nella propria Istanza del Wallet.
+<p>In questo modello, il Fornitore di Attestati Elettronici (ad esempio, un'istituzione educativa) fornisce Attestati Elettronici all'Utente, che può memorizzarle nella propria Istanza del Wallet.
 L'Istanza del Wallet è tipicamente fornita come applicazione mobile sullo smartphone dell'Utente.</p>
-<p>Ciò che distingue questo nuovo approccio dai precedenti sistemi di gestione dell'accesso all'identità è che le Credenziali si riferiscono a caratteristiche, qualità o proprietà, già autenticate alla fonte. Queste Credenziali possono essere utilizzate dall'Utente senza che i Fornitori di Credenziale siano a conoscenza del loro utilizzo. Durante l'uso delle Credenziali, nessuna informazione sull'utilizzo viene rilasciata a terze parti poiché la relazione è esclusiva tra l'Utente e la Relying Party, in modo trasparente e informato.
-Lo sviluppo del Sistema IT-Wallet include un processo di sperimentazione graduale, finalizzato a testare il Wallet e valutarne l'impatto in contesti reali. Questo processo è progettato per validare componenti tecniche, elementi di esperienza utente e meccanismi di interoperabilità, garantendo al contempo un'adozione progressiva e controllata del Sistema. Inoltre, supporta il miglioramento continuo dell'IT-Wallet e il suo graduale allineamento con il Portafoglio Europeo di Identità Digitale (EUDI Wallet), sia in termini di architettura che di conformità con le specifiche europee in evoluzione.</p>
+<p>Ciò che distingue questo nuovo approccio dai precedenti sistemi di gestione dell'accesso all'identità è che gli Attestati Elettronici si riferiscono a caratteristiche, qualità o proprietà, già autenticate alla fonte. Questi Attestati Elettronici possono essere utilizzate dall'Utente senza che i Fornitori di Attestati Elettronici siano a conoscenza del loro utilizzo. Durante l'uso degli Attestati Elettronici, nessuna informazione sull'utilizzo viene rilasciata a terze parti poiché la relazione è esclusiva tra l'Utente e il Verificatore di Attestati Elettronici, in modo trasparente e informato.
+Lo sviluppo del Sistema IT-Wallet include un processo di sperimentazione graduale, finalizzato a testare il Wallet e valutarne l'impatto in contesti reali. Questo processo è progettato per validare componenti tecniche, elementi di esperienza utente e meccanismi di interoperabilità, garantendo al contempo un'adozione progressiva e controllata del Sistema. Inoltre, supporta il miglioramento continuo del Sistema IT-Wallet e il suo graduale allineamento con il Portafoglio Europeo di Identità Digitale (EUDI Wallet), sia in termini di architettura che di conformità con le specifiche europee in evoluzione.</p>
 <p>Altri elementi chiave che caratterizzano questo nuovo paradigma di Portafoglio di Identità Digitale includono:</p>
 <ul class="simple">
-<li><p><strong>Riservatezza e controllo</strong>: i Wallet consentono agli individui di mantenere il controllo sulle informazioni fornite all'interno delle Credenziali presentate. Possono scegliere quali attributi o Credenziali presentare e a chi;</p></li>
+<li><p><strong>Riservatezza e controllo</strong>: i Wallet consentono agli individui di mantenere il controllo sulle informazioni fornite all'interno degli Attestati Elettronici presentate. Possono scegliere quali attributi o Attestati Elettronici presentare e a chi;</p></li>
 <li><p><strong>Sicurezza</strong>: i Wallet sfruttano meccanismi crittografici per l'integrità e la sicurezza dei dati scambiati. Ciò evita il furto di identità, le frodi e gli accessi non autorizzati;</p></li>
 <li><p><strong>Interoperabilità</strong>: i Wallet promuovono l'interoperabilità consentendo a diversi sistemi e organizzazioni di riconoscere e verificare le identità, abilitando interazioni affidabili tra individui, organizzazioni e persino oltre i confini;</p></li>
-<li><p><strong>Efficienza e riduzione dei costi</strong>: gli individui possono gestire facilmente le proprie Credenziali, evitare di gestire più token di identità e ridurre i processi ripetitivi di verifica dell'identità.</p></li>
+<li><p><strong>Efficienza e riduzione dei costi</strong>: gli individui possono gestire facilmente i propri Attestati Elettronici, evitare di gestire più token di identità e ridurre i processi ripetitivi di verifica dell'identità.</p></li>
 </ul>
 <section id="ambito">
 <h2><span class="section-number">1.1. </span>Ambito<a class="headerlink" href="#ambito" title="Link to this heading">¶</a></h2>
 <p>Queste Specifiche Tecniche sono destinate a completare le Linee Guida previste dall'articolo 64-quater del Decreto Legislativo n. 82/2005 (CAD). Sia le Linee Guida che queste Specifiche Tecniche, una volta formalmente adottate, diventeranno parte del quadro normativo per il Sistema IT-Wallet. Saranno periodicamente aggiornate, ove necessario, alla luce dei risultati della fase di sperimentazione, dell'adozione di nuovi atti legislativi nazionali o europei e dei requisiti in evoluzione in termini di sicurezza e interoperabilità. Queste Specifiche Tecniche perseguono due obiettivi principali e rappresentano una componente fondamentale del quadro di implementazione per il Sistema IT-Wallet.</p>
-<p>Il primo è fornire un insieme chiaro e strutturato di raccomandazioni, risorse e requisiti di progettazione relativi agli elementi del Sistema IT-Wallet che impattano sull'Esperienza dell'Utente.
-Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di progettazione, mira a fornire agli enti pubblici e privati interessati a partecipare al Sistema IT-Wallet quanto necessario per:</p>
+<p>Il primo obiettivo è quello di fornire un insieme chiaro e strutturato di raccomandazioni, risorse e requisiti di progettazione relativi agli elementi del Sistema IT-Wallet che impattano sull'Esperienza dell'Utente.
+Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche progettuali e implementative, mira a fornire agli enti pubblici e privati interessati a partecipare al Sistema IT-Wallet quanto necessario per:</p>
 <ul class="simple">
 <li><p>facilitare la comprensione e l'adozione del Modello di Servizio, aumentando il numero di potenziali servizi e opportunità di utilizzo per l'Utente;</p></li>
 <li><p>adottare l'Identità Visiva del Sistema IT-Wallet al fine di migliorarne l'affidabilità e la riconoscibilità per l'Utente;</p></li>
@@ -199,14 +199,14 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 </section>
 <section id="come-leggere-le-specifiche">
 <h2><span class="section-number">1.3. </span>Come leggere le Specifiche<a class="headerlink" href="#come-leggere-le-specifiche" title="Link to this heading">¶</a></h2>
-<p>Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno dell'ecosistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e, quindi, diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutarti a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.</p>
+<p>Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno dell'ecosistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutare il lettore a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.</p>
 <section id="panoramica-della-struttura-delle-specifiche">
 <h3><span class="section-number">1.3.1. </span>Panoramica della Struttura delle Specifiche<a class="headerlink" href="#panoramica-della-struttura-delle-specifiche" title="Link to this heading">¶</a></h3>
 <p>La specifica è organizzata nelle seguenti sezioni principali:</p>
 <dl class="simple">
 <dt><strong>Sezione</strong> <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>:</dt><dd><p>Stabilisce l'ambito e il linguaggio normativo per l'ecosistema IT-Wallet.</p>
 </dd>
-<dt><strong>Sezione</strong> <a class="reference internal" href="design.html#principi-di-design"><span class="std std-ref">Principi di design</span></a>:</dt><dd><p>Fornisce principi di progettazione e requisiti di identità del marchio per l'ecosistema IT-Wallet.</p>
+<dt><strong>Sezione</strong> <a class="reference internal" href="design.html#principi-di-design"><span class="std std-ref">Principi di design</span></a>:</dt><dd><p>Fornisce principi di progettazione e requisiti di identità visiva dell'ecosistema IT-Wallet.</p>
 </dd>
 <dt><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>:</dt><dd><p>Fornisce funzionalità di sistema di alto livello e guida per navigare nella specifica in base ai requisiti di implementazione.</p>
 </dd>
@@ -214,9 +214,9 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 </dd>
 <dt><strong>Sezione</strong> <a class="reference internal" href="entities.html#entita"><span class="std std-ref">Entità</span></a>:</dt><dd><p>Requisiti di implementazione completi per ogni partecipante all'ecosistema: Soluzioni Wallet, Fornitori di Credenziali, Relying Party e Fonti Autentiche, inclusi i loro componenti, modelli di interazione e requisiti di configurazione.</p>
 </dd>
-<dt><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>:</dt><dd><p>Copre i modelli di dati e i formati delle Credenziali Elettroniche, la gestione del ciclo di vita, la verifica della validità e la struttura del catalogo delle Credenziali.</p>
+<dt><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>:</dt><dd><p>Copre i modelli di dati e i formati delle Credenziali Elettroniche, la gestione del ciclo di vita, la verifica della validità e la struttura del catalogo delle Credenziali.</p>
 </dd>
-<dt><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-delle-credenziali-elettroniche"><span class="std std-ref">Flussi delle Credenziali Elettroniche</span></a>:</dt><dd><p>Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità.</p>
+<dt><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-relativi-agli-attestati-elettronici"><span class="std std-ref">Flussi relativi agli Attestati Elettronici</span></a>:</dt><dd><p>Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità.</p>
 </dd>
 <dt><strong>Sezione</strong> <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a>:</dt><dd><p>Specifiche tecniche per tutti gli endpoint API esposti da ciascun tipo di entità, inclusi gli endpoint di federazione e le integrazioni di servizi specializzati.</p>
 </dd>
@@ -236,9 +236,9 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 <p>I lettori che implementano o gestiscono una Soluzione di <strong>Fornitore di Wallet</strong> dovrebbero concentrarsi sulla comprensione di come gestire in modo sicuro le Credenziali Elettroniche e facilitare le interazioni dell'Utente con altri partecipanti all'ecosistema.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Requisiti completi di implementazione del wallet, componenti e processi di interazione.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-delle-credenziali-elettroniche"><span class="std std-ref">Flussi delle Credenziali Elettroniche</span></a>: Flussi di emissione e presentazione per le Credenziali Elettroniche.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-relativi-agli-attestati-elettronici"><span class="std std-ref">Flussi relativi agli Attestati Elettronici</span></a>: Flussi di emissione e presentazione per le Credenziali Elettroniche.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-del-fornitore-di-wallet"><span class="std std-ref">Endpoint del Fornitore di Wallet</span></a>: Specifiche API per la federazione e specifiche per IT-Wallet.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>: Requisiti di implementazione per sicurezza e crittografia.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>: Modelli di implementazione specifici per dispositivi mobili.</p></li>
@@ -246,19 +246,19 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 </ul>
 <p><strong>Sezioni secondarie:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-credenziale"><span class="std std-ref">Soluzione del Fornitore di Credenziale</span></a>: Comprensione delle interazioni e dei requisiti del fornitore di credenziali.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Soluzione del Fornitore di Attestati Elettronici</span></a>: Comprensione delle interazioni e dei requisiti del Fornitore di Credenziali.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Comprensione delle interazioni con le Relying Party e dei protocolli di presentazione.</p></li>
 </ul>
 </section>
-<section id="fornitore-di-credenziale">
-<h4><span class="section-number">1.3.2.2. </span>Fornitore di Credenziale<a class="headerlink" href="#fornitore-di-credenziale" title="Link to this heading">¶</a></h4>
-<p>Per i lettori interessati all'implementazione di una Soluzione di <strong>Fornitore di Credenziale</strong>, dovrebbero concentrarsi sul ciclo di vita delle Credenziali Elettroniche e sui flussi di interazione per l'emissione.</p>
+<section id="fornitore-di-credenziali">
+<h4><span class="section-number">1.3.2.2. </span>Fornitore di Credenziali<a class="headerlink" href="#fornitore-di-credenziali" title="Link to this heading">¶</a></h4>
+<p>Per i lettori interessati all'implementazione di una Soluzione di <strong>Fornitore di Credenziali</strong>, dovrebbero concentrarsi sul ciclo di vita delle Credenziali Elettroniche e sui flussi di interazione per l'emissione.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-credenziale"><span class="std std-ref">Soluzione del Fornitore di Credenziale</span></a>: Soluzione di Fornitore di Credenziale - Requisiti completi di implementazione e dettagli dei componenti.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Soluzione del Fornitore di Attestati Elettronici</span></a>: Soluzione di Fornitore di Credenziali - Requisiti completi di implementazione e dettagli dei componenti.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="authentic-sources.html#fonti-autentiche"><span class="std std-ref">Fonti Autentiche</span></a>: Comprensione dei modelli di integrazione con fonti di dati autorevoli.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>: Formati delle Credenziali Elettroniche e gestione del ciclo di vita.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuance.html#emissione-di-credenziale-digitale"><span class="std std-ref">Emissione di Credenziale Digitale</span></a>: Implementazione dettagliata del flusso di emissione.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Formati delle Credenziali Elettroniche e gestione del ciclo di vita.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>: Implementazione dettagliata del flusso di emissione.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-endpoint.html#endpoint-del-credential-issuer"><span class="std std-ref">Endpoint del Credential Issuer</span></a>: Specifiche API per la federazione e specifiche per l'emissione.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>: Algoritmi di firma e requisiti di implementazione della sicurezza.</p></li>
 </ul>
@@ -270,7 +270,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Se il Fornitore di Credenziale autentica l'Utente deve conformarsi alla Sezione <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>.</p>
+<p>Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>.</p>
 </div>
 </section>
 <section id="fonte-autentica">
@@ -285,8 +285,8 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 </ul>
 <p><strong>Sezioni secondarie:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-credenziale"><span class="std std-ref">Soluzione del Fornitore di Credenziale</span></a>: Comprensione dei componenti principali dei Fornitori di Credenziali e dei processi di integrazione.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>: Comprensione di come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e di come viene gestito il loro ciclo di vita.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Soluzione del Fornitore di Attestati Elettronici</span></a>: Comprensione dei componenti principali dei Fornitori di Credenziali e dei processi di integrazione.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Comprensione di come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e di come viene gestito il loro ciclo di vita.</p></li>
 </ul>
 </section>
 <section id="relying-party">
@@ -294,15 +294,15 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 <p>I lettori interessati all'implementazione o alla gestione di una Soluzione di <strong>Relying Party</strong> per accettare e verificare le Credenziali Elettroniche dovrebbero concentrarsi sui protocolli di presentazione e sui meccanismi di verifica.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Requisiti completi di implementazione del verificatore e Configurazione dell'Entità.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-delle-credenziali-digitali"><span class="std std-ref">Gestione delle Credenziali Digitali</span></a>: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Requisiti completi di implementazione del Verificatore di Credenziali.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-endpoint.html#endpoint-della-relying-party"><span class="std std-ref">Endpoint della Relying Party</span></a>: Specifiche API relative alla federazione e alla verifica.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>: Requisiti della suite crittografica.</p></li>
 </ul>
 <p><strong>Sezioni secondarie:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Comprensione delle interazioni dell'Istanza del Wallet e dei protocolli di presentazione</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Comprensione delle interazioni dell'Istanza del Wallet e dei protocolli di presentazione.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>: Modelli di implementazione specifici per dispositivi mobili.</p></li>
 </ul>
 </section>
@@ -332,7 +332,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziale e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Configurazione dell'Entità e ai flussi di federazione che si applicano a più ruoli.</p>
+<p>Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziali e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Entity Configuration e ai flussi di federazione che si applicano a più ruoli.</p>
 </div>
 </section>
 </section>
@@ -359,7 +359,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 <li><a class="reference internal" href="#panoramica-della-struttura-delle-specifiche">1.3.1. Panoramica della Struttura delle Specifiche</a></li>
 <li><a class="reference internal" href="#percorsi-di-lettura-per-ruolo">1.3.2. Percorsi di Lettura per Ruolo</a><ul>
 <li><a class="reference internal" href="#fornitore-di-wallet">1.3.2.1. Fornitore di Wallet</a></li>
-<li><a class="reference internal" href="#fornitore-di-credenziale">1.3.2.2. Fornitore di Credenziale</a></li>
+<li><a class="reference internal" href="#fornitore-di-credenziali">1.3.2.2. Fornitore di Credenziali</a></li>
 <li><a class="reference internal" href="#fonte-autentica">1.3.2.3. Fonte Autentica</a></li>
 <li><a class="reference internal" href="#relying-party">1.3.2.4. Relying Party</a></li>
 </ul>
@@ -397,7 +397,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche di
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

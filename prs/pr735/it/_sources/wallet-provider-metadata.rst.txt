@@ -56,7 +56,7 @@ metadati federation_entity
       - OPZIONALE. Stringa. Un URL che punta al logo del Fornitore di Wallet. Il file contenente il logo DOVREBBE essere pubblicato in un formato visualizzabile tramite web.
       - `OID-FED`_.
 
-Di seguito è riportato un esempio non normativo della Configurazione dell'Entità per un Fornitore di Wallet.
+Di seguito è riportato un esempio non normativo della Entity Configuration per un Fornitore di Wallet.
 
 .. code-block:: javascript
 

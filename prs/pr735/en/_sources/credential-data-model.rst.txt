@@ -177,15 +177,15 @@ If the ``status`` parameter is set to ``status_list``, it is a JSON Object conta
      - REQUIRED. The idx (index) claim MUST specify an Integer that represents the index to check for status information in the Status List for the current Digital Credential. The value of idx MUST be a non-negative number, containing a value of zero or greater.
      - TOKEN-STATUS-LIST_
    * - **uri**
-     - REQUIRED. The uri (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Digital Credential. The value of uri MUST be a URI conforming to [:rfc:`3986`].
+     - REQUIRED. The ``uri`` (URI) claim MUST specify a String value that identifies the Status List Token containing the status information for the Digital Credential. The value of ``uri`` MUST be a URI conforming to [:rfc:`3986`].
      - TOKEN-STATUS-LIST_
 
 
-If the ``status`` parameter is set to ``status_assertation``, it is a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*.
+If the ``status`` parameter is set to ``status_assertion``, it is a JSON Object containing the *credential_hash_alg* claim indicating the Algorithm used for hashing the Digital Credential to which the Status Assertion is bound. It is RECOMMENDED to use *sha-256*.
 
 
 .. note::
-  Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim **vct**, using the HTTP GET method or using the vctm header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.
+  Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim **vct**, using the HTTP GET method or using the ``vctm`` header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.
 
 
 Digital Credential Metadata Type
@@ -202,10 +202,10 @@ The Metadata type document MUST be a JSON object and contains the following para
       - **Description**
       - **Reference**
     * - **name**
-      - REQUIRED. Human-readable name of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited with the character ``#`` as defined in :rfc:`5646` (e.g. *name#it-IT*).
+      - REQUIRED. Human-readable name of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited with the character `#` as defined in :rfc:`5646` (e.g. *name#it-IT*).
       - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **description**
-      - REQUIRED. A human-readable description of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited by a # character as defined in :rfc:`5646`.
+      - REQUIRED. A human-readable description of the Digital Credential type. In case of multiple languages, the language tags are added to the member name, delimited by a `#` character as defined in :rfc:`5646`.
       - [`SD-JWT-VC`_] Section 6.2 and [`OIDC`_] Section 5.2.
     * - **extends**
       - OPTIONAL. String Identifier of an extended metadata type document.
@@ -772,7 +772,7 @@ The `MobileSecurityObject` MUST have the following attributes, unless otherwise 
       - [ISO 18013-5#9.1.2.4]
     * - **status**
       - *(map, CONDITIONAL)*. REQUIRED only if the Digital Credential is long-lived. Contains the MSO revocation information. If present, it includes a *status_list* based on the TOKEN-STATUS-LIST_ mechanism. This mechanism uses a bit array to mark revoked MSOs by their index position.
-        The `status_list` MUST contain the following sub-value:
+        The `status_list` MUST contain the following sub-values:
 
           * **idx**. Position index in the status list.
           * **uri**. URI pointing to the status list resource.
@@ -835,7 +835,7 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
    * - **Information Related To**
      - **SD-JWT-VC Parameters**
      - **mdoc-CBOR Parameters**
-   * - Digital Credential definition
+   * - Digital Credential type definition
      - vct (pld)
      - | issuerAuth.doctype
        | issuerAuth.version
@@ -874,7 +874,7 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
        | issuerAuth.validityInfo.validUntil
        | issuerAuth.validityInfo.validFrom
    * - Status mechanism
-     - | status_assertation (pld)
+     - | status_assertion (pld)
        | status_list (pld)
      - | -
        | issuerAuth.status_list

@@ -14,9 +14,9 @@ Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DE
 Endpoint di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Configurazione dell'Entità del Fornitore di Wallet.
+L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.
 
-Vedere la Sezione :ref:`wallet-provider-entity-configuration:Configurazione dell'Entità del Fornitore di Wallet` per i dettagli tecnici.
+Vedere la Sezione :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` per i dettagli tecnici.
 
 
 Endpoint Nonce della Soluzione Wallet
@@ -164,7 +164,7 @@ I seguenti errori DEVONO essere supportati per le risposte di errore relative al
      - L'utente non ha il permesso di recuperare questa Istanza di Wallet.
    * - ``401 Unauthorized``
      - ``unauthorized``
-     - La richiesta manca di credenziali di autenticazione valide.
+     - La richiesta manca di Credenziali di autenticazione valide.
 
 I seguenti errori DEVONO essere supportati per le risposte di errore relative alla **Revoca dell'Istanza di Wallet**:
 
@@ -183,22 +183,22 @@ I seguenti errori DEVONO essere supportati per le risposte di errore relative al
      - ``unauthorized``
      - La richiesta non può essere autenticata o autorizzata.
 
-Endpoint di Emissione dell'Attestato di Wallet
+Endpoint di Emissione della Wallet Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere un Attestato di Wallet, inviando una Richiesta di Emissione dell'Attestato di Wallet.
+Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere una Wallet Attestation, inviando una Richiesta di Emissione della Wallet Attestation.
 
-Richiesta di Emissione dell'Attestato di Wallet
+Richiesta di Emissione della Wallet Attestation
 """""""""""""""""""""""""""""""""""""""""""""""
 
-Ulteriori dettagli sulla Richiesta di Emissione dell'Attestato di Wallet sono forniti nella sezione :ref:`mobile-application-instance:Richiesta di Associazione Chiave dell'Applicazione Mobile`.
+Ulteriori dettagli sulla Richiesta di Emissione della Wallet Attestation sono forniti nella sezione :ref:`mobile-application-instance:Richiesta di Associazione Chiave dell'Applicazione Mobile`.
 
 L'header ``typ`` del JWT della Richiesta di Integrità assume il valore ``wp-war+jwt``.
 
-Risposta all'Emissione dell'Attestato di Wallet
+Risposta all'Emissione della Wallet Attestation
 """""""""""""""""""""""""""""""""""""""""""""""
 
-Se la Richiesta di Emissione dell'Attestato di Wallet viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` il cui valore è un array di Oggetti JSON (vedi :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. L'Attestato di Wallet in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in :ref:`credential-issuance:Emissione di Credenziale Digitale`. L'Attestato di Wallet in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`).
+Se la Richiesta di Emissione della Wallet Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` il cui valore è un array di Oggetti JSON (vedi :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. la Wallet Attestation in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`. la Wallet Attestation in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`).
 
 
 L'Oggetto JSON restituito nella risposta ha il seguente claim:
@@ -226,24 +226,24 @@ Ogni Oggetto JSON contenuto nell'array ``wallet_attestations`` DEVE avere la seg
       - **Descrizione**
       - **Riferimento**
     * - **format**
-      - Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` a seconda del formato della credenziale.
+      - Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare la Wallet Attestation. DEVE essere ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` a seconda del formato della Credenziale.
       - Questa specifica.
     * - **wallet_attestation**
-      - Una stringa che rappresenta l'Attestato di Wallet. Se
+      - Una stringa che rappresenta la Wallet Attestation. Se
 
-        - l'Attestato di Wallet è in formato JWT, allora il valore del claim DEVE essere una stringa che è un JWT.
-        - l'Attestato di Wallet è in formato SD-JWT, allora il valore del claim DEVE essere una stringa che è un SD-JWT VC.
-        - l'Attestato di Wallet è in formato mdoc, allora il valore del claim è la rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO.18013-5]. Questa struttura DEVE contenere tutti i Namespace e gli IssuerSignedItems inclusi nel MobileSecurityObject.
+        - la Wallet Attestation è in formato JWT, allora il valore del claim DEVE essere una stringa che è un JWT.
+        - la Wallet Attestation è in formato SD-JWT, allora il valore del claim DEVE essere una stringa che è un SD-JWT VC.
+        - la Wallet Attestation è in formato mdoc, allora il valore del claim è la rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO.18013-5]. Questa struttura DEVE contenere tutti i Namespace e gli IssuerSignedItems inclusi nel MobileSecurityObject.
 
       - Questa specifica.
 
 Se si verificano errori durante il processo, viene restituita una risposta di errore. Ulteriori dettagli sulla risposta di errore sono forniti nella sezione :ref:`mobile-application-instance:Risposta di Errore di Associazione Chiave dell'Applicazione Mobile`.
 
 
-JWT dell'Attestato di Wallet
+JWT della Wallet Attestation
 """"""""""""""""""""""""""""
 
-L'header JOSE del JWT dell'Attestato di Wallet contiene i seguenti parametri:
+L'header JOSE del JWT della Wallet Attestation contiene i seguenti parametri:
 
 .. list-table::
     :class: longtable
@@ -257,7 +257,7 @@ L'header JOSE del JWT dell'Attestato di Wallet contiene i seguenti parametri:
       - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati nella Sezione :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o qualsiasi identificatore di algoritmo simmetrico (MAC).
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare l'Attestato di Wallet.
+      - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
       - OBBLIGATORIO. DEVE essere impostato su ``oauth-client-attestation+jwt``
@@ -269,7 +269,7 @@ L'header JOSE del JWT dell'Attestato di Wallet contiene i seguenti parametri:
       - OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (:rfc:`5280`) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
       - :rfc:`7515` Sezione 4.1.8 e `SD-JWT-VC`_ Sezione 3.5.
 
-Il corpo del JWT dell'Attestato di Wallet contiene i seguenti claim:
+Il corpo del JWT della Wallet Attestation contiene i seguenti claim:
 
 .. list-table::
     :class: longtable
@@ -298,13 +298,13 @@ Il corpo del JWT dell'Attestato di Wallet contiene i seguenti claim:
       - OPZIONALE. Stringa contenente un nome leggibile dall'uomo del Wallet.
       - `OpenID4VCI`_.
     * - **sub**
-      - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK dell'Attestato di Wallet.
+      - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet Attestation.
       - :rfc:`9126` e :rfc:`7519`.
     * - **aal**
       - OBBLIGATORIO. Stringa JSON che attesta il livello di autenticazione del Wallet e della chiave come affermato nel claim cnf.
       - Questa specifica.
 
-Di seguito è riportato un esempio non normativo dell'header e del payload dell'Attestato di Wallet SD-JWT senza codifica e firma applicata:
+Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Attestation SD-JWT senza codifica e firma applicata:
 
 .. code-block:: json
 
@@ -318,7 +318,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload dell'
     ],
     "typ": "jwt"
   }
-  
+
 .. code-block:: json
 
   {
@@ -343,10 +343,10 @@ Di seguito è riportato un esempio non normativo dell'header e del payload dell'
   }
 
 
-SD-JWT dell'Attestato di Wallet
+SD-JWT della Wallet Attestation
 """""""""""""""""""""""""""""""
 
-L'header JOSE dell'SD-JWT dell'Attestato di Wallet DEVE contenere i seguenti parametri:
+L'header JOSE dell'SD-JWT della Wallet Attestation DEVE contenere i seguenti parametri:
 
 .. list-table::
     :class: longtable
@@ -360,7 +360,7 @@ L'header JOSE dell'SD-JWT dell'Attestato di Wallet DEVE contenere i seguenti par
       - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o qualsiasi identificatore di algoritmo simmetrico (MAC).
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare l'Attestato di Wallet.
+      - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
       - OBBLIGATORIO. DEVE essere impostato su ``dc+sd-jwt``
@@ -372,7 +372,7 @@ L'header JOSE dell'SD-JWT dell'Attestato di Wallet DEVE contenere i seguenti par
       - OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (:rfc:`5280`) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
       - :rfc:`7515` Sezione 4.1.8 e `SD-JWT-VC`_ Sezione 3.5.
 
-Il corpo dell'SD-JWT dell'Attestato di Wallet contiene i seguenti claim:
+Il corpo dell'SD-JWT della Wallet Attestation contiene i seguenti claim:
 
 .. list-table::
     :class: longtable
@@ -395,7 +395,7 @@ Il corpo dell'SD-JWT dell'Attestato di Wallet contiene i seguenti claim:
       - OBBLIGATORIO. Oggetto JSON, contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza di Wallet.
       - :rfc:`7800`.
     * - **vct**
-      - OBBLIGATORIO. Il valore del tipo di credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su ``wallet.atestation.example/v1.0``.
+      - OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su ``wallet.atestation.example/v1.0``.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - OBBLIGATORIO. Array JSON contenente un elenco di tutti i digest delle divulgazioni.
@@ -404,7 +404,7 @@ Il corpo dell'SD-JWT dell'Attestato di Wallet contiene i seguenti claim:
       - OBBLIGATORIO. Stringa contenente l'algoritmo di hash utilizzato dal Fornitore di Wallet per generare i digest delle divulgazioni.
       - `SD-JWT`_.
     * - **sub**
-      - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK dell'Attestato di Wallet.
+      - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet Attestation.
       - :rfc:`9126` e :rfc:`7519`.
     * - **aal**
       - OBBLIGATORIO. Stringa JSON che attesta il livello di autenticazione del Wallet e della chiave come affermato nel claim cnf.
@@ -441,7 +441,7 @@ Di seguito sono descritti esempi di valori per le divulgazioni:
 - Divulgazione:n``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd``
 - Contenuti: ``["2GLC42sKQveCfGfryNRN9w", "wallet_name", "Wallet_v1"]``
 
-Di seguito è riportato un esempio non normativo dell'header e del payload dell'Attestato di Wallet SD-JWT senza codifica e firma applicata:
+Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Attestation SD-JWT senza codifica e firma applicata:
 
 .. code-block:: json
 
@@ -455,7 +455,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload dell'
     ],
     "typ": "dc+sd-jwt"
   }
-  
+
 .. code-block:: json
 
   {
@@ -478,10 +478,10 @@ Di seguito è riportato un esempio non normativo dell'header e del payload dell'
     "aal": "https://trust-framework.example.it/aal/high"
   }
 
-Attestato di Wallet mdoc
+Wallet Attestation mdoc
 """"""""""""""""""""""""
 
-Questa descrizione specializza ulteriormente le linee guida fornite in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format` per rappresentare l'Attestato di Wallet in formato mdoc. Quest'ultimo DEVE:
+Questa descrizione specializza ulteriormente le linee guida fornite in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format` per rappresentare la Wallet Attestation in formato mdoc. Quest'ultimo DEVE:
 
 - Avere il namespace domestico ``org.iso.18013.5.1.it``;
 - Avere **docType** impostato su ``org.iso.18013.5.1.it.WalletAttestation``; e
@@ -498,7 +498,7 @@ I ``nameSpaces`` per gli Oggetti Json del nameSpace domestico sono definiti come
       - **Descrizione**
       - **Riferimento**
     * - **sub**
-      - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della Chiave COSE dell'Attestato di Wallet.
+      - OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della Chiave COSE della Wallet Attestation.
       - :rfc:`9126` e :rfc:`7519`.
     * - **aal**
       - Stringa JSON che attesta il livello di autenticazione dell'Istanza di Wallet in relazione alla Chiave COSE contenuta nel claim ``IssuerAuth.deviceKeyInfo.deviceKey`` dell'Oggetto **issuerAuth**.
@@ -510,7 +510,7 @@ I ``nameSpaces`` per gli Oggetti Json del nameSpace domestico sono definiti come
       - Stringa JSON, DEVE essere l'Identificatore del Fornitore di Wallet.
       - `OpenID4VCI`_.
 
-Di seguito è riportato un esempio non normativo dell'Attestato di Wallet mdoc in notazione diagnostica CBOR:
+Di seguito è riportato un esempio non normativo della Wallet Attestation mdoc in notazione diagnostica CBOR:
 
 .. code-block:: text
 

@@ -142,17 +142,17 @@
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#modelli-di-interazione-della-soluzione-wallet">5.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">5.1.4. Istanza del Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="backup-restore.html">5.1.5. Backup e Ripristino</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Configurazione dell'Entità del Fornitore di Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Entity Configuration del Fornitore di Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Metadati del Fornitore di Wallet</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Credenziale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Soluzione di Relying Party</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Fonti Autentiche</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
@@ -200,7 +200,7 @@ Ogni stato rappresenta uno stato funzionale specifico e determina le azioni che 
 <section id="transizione-a-installato">
 <h2><span class="section-number">5.1.4.1.1. </span>Transizione a Installato<a class="headerlink" href="#transizione-a-installato" title="Link to this heading">¶</a></h2>
 <p>La macchina a stati inizia con la transizione di installazione dell'Istanza del Wallet (<strong>WI INST</strong>), dove gli Utenti scaricano e installano un'Istanza del Wallet fornita dal Fornitore di Wallet utilizzando lo
-store ufficiale delle applicazioni del sistema operativo del loro dispositivo (questo garantisce l'autenticità tramite controlli di sistema), portando allo stato <strong>Installato</strong>.</p>
+store ufficiale del sistema operativo del loro dispositivo (questo garantisce l'autenticità tramite controlli di sistema), portando allo stato <strong>Installato</strong>.</p>
 <p>Quando lo stato è <strong>Installato</strong>, l'Istanza del Wallet DEVE interagire solo con il Fornitore di Wallet per essere attivata. Quando avviene la revoca dell'Istanza del Wallet, l'Istanza del Wallet DEVE tornare da <strong>Operativo</strong> o <strong>Valido</strong> a <strong>Installato</strong>. La revoca segna la Cryptographic Hardware Key del Wallet, registrata durante l'attivazione
 (vedi <a class="reference internal" href="#transizione-a-operativo"><span class="std std-ref">Transizione a Operativo</span></a>), come non più utilizzabile. La revoca può avvenire nei seguenti casi:</p>
 <ul class="simple">
@@ -211,8 +211,8 @@ store ufficiale delle applicazioni del sistema operativo del loro dispositivo (q
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Mentre per l'ARF la revoca dell'Istanza del Wallet viene realizzata revocando l'Attestato di Wallet (vedi Argomento 9 e Argomento 38 nell'Allegato 2),
-in questa specifica la revoca è gestita diversamente. Essendo l'Attestato di Wallet a breve durata, non ha un meccanismo di gestione dello stato.
+<p>Mentre per l'ARF la revoca dell'Istanza del Wallet viene realizzata revocando la Wallet Attestation (vedi Argomento 9 e Argomento 38 nell'Allegato 2),
+in questa specifica la revoca è gestita diversamente. Essendo la Wallet Attestation a breve durata, non ha un meccanismo di gestione dello stato.
 Per questo motivo, la transizione di revoca dell'Istanza del Wallet viene realizzata eliminando la Cryptographic Hardware Key del Wallet dal WSCD dell'Istanza del
 Wallet e dall'account associato all'Utente. Questa transizione viene completata quando l'Istanza del Wallet è online.</p>
 </div>
@@ -231,10 +231,10 @@ Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione 
 </div>
 <p>Come parte dell'attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo e le capacità tecniche generali del dispositivo per verificare la conformità
 con i requisiti tecnici e di sicurezza, e l'autenticità e l'integrità dell'Istanza del Wallet installata.
-Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno un Attestato di Wallet valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato <strong>Operativo</strong>.</p>
+Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato <strong>Operativo</strong>.</p>
 <p>Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
-numero di identificazione personale (PIN) o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
-personali e le capacità del dispositivo. Si prega di fare riferimento a <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>.</p>
+PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
+personali e le capacità del dispositivo. Si prega di fare riferimento a <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>.</p>
 <p>Nello stato <strong>Operativo</strong>, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (<strong>PID ISS</strong>) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
 (<strong>(Q)EEA ISS</strong>). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate
 senza far transitare l'Istanza del Wallet a un altro stato (transizione <strong>(Q)EEA PRE</strong>).</p>
@@ -243,7 +243,7 @@ senza far transitare l'Istanza del Wallet a un altro stato (transizione <strong>
 <section id="transizione-a-valido">
 <h2><span class="section-number">5.1.4.1.3. </span>Transizione a Valido<a class="headerlink" href="#transizione-a-valido" title="Link to this heading">¶</a></h2>
 <p>Una transizione allo stato Valido si verifica solo quando l'Istanza del Wallet ottiene un Attestato Elettronico di Dati di Identificazione Personale valido (<strong>PID ISS</strong>). In questo stato, gli Utenti possono ottenere e presentare
-nuovi Attestati Elettronici di Attributi (Qualificati) (<strong>(Q)EAA ISS/PRE</strong>), e presentare l'Attestato Elettronico di Dati di Identificazione Personale (<strong>PID PRE</strong>). Si prega di fare riferimento a <a class="reference internal" href="credential-issuance.html#emissione-di-credenziale-digitale"><span class="std std-ref">Emissione di Credenziale Digitale</span></a> e <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>.</p>
+nuovi Attestati Elettronici di Attributi (Qualificati) (<strong>(Q)EAA ISS/PRE</strong>), e presentare l'Attestato Elettronico di Dati di Identificazione Personale (<strong>PID PRE</strong>). Si prega di fare riferimento a <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a> e <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Gli Utenti possono avere solo un'Istanza del Wallet in stato <strong>Valido</strong> per la stessa Soluzione Wallet. Pertanto, quando un Utente installa e ottiene un Attestato Elettronico di Dati di Identificazione Personale su una nuova Istanza
@@ -333,7 +333,7 @@ eliminare le coppie di Cryptographic Hardware Key.</p>
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

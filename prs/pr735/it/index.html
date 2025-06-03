@@ -135,8 +135,8 @@
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
@@ -158,7 +158,7 @@
             
   <section id="documentazione-tecnica-it-wallet-version">
 <h1>Documentazione Tecnica IT-Wallet - 1.0.0<a class="headerlink" href="#documentazione-tecnica-it-wallet-version" title="Link to this heading">¶</a></h1>
-<p>Questo documento fornisce l'architettura tecnica, il framework di implementazione e i requisiti di progettazione da adottare per le Soluzioni Tecniche del Sistema IT-Wallet.</p>
+<p>Questo documento fornisce l'architettura tecnica, il quadro implementativo e i requisiti di progettazione da adottare per le Soluzioni Tecniche del Sistema IT-Wallet.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
 <ul>
@@ -184,11 +184,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="functionalities.html">3.1. Funzionalità</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="functionalities.html#attivazione-dell-istanza-it-wallet">3.1.1. Attivazione dell'Istanza IT-Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#attivazione-dell-istanza-del-wallet">3.1.1. Attivazione dell'Istanza del Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#ottenimento-degli-attestati-elettronici-di-attributi">3.1.2. Ottenimento degli Attestati Elettronici di Attributi</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#presentazione-degli-attestati-elettronici">3.1.3. Presentazione degli Attestati Elettronici</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#gestione-degli-attestati-elettronici">3.1.4. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l3"><a class="reference internal" href="functionalities.html#disattivazione-dell-istanza-it-wallet">3.1.5. Disattivazione dell'Istanza IT-Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="functionalities.html#disattivazione-dell-istanza-del-wallet">3.1.5. Disattivazione dell'Istanza del Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#gestione-degli-errori">3.1.6. Gestione degli errori</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#assistenza-utente">3.1.7. Assistenza Utente</a></li>
 <li class="toctree-l3"><a class="reference internal" href="functionalities.html#feedback-utente">3.1.8. Feedback Utente</a></li>
@@ -241,40 +241,40 @@
 <li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#modelli-di-interazione-della-soluzione-wallet">5.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">5.1.4. Istanza del Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="backup-restore.html">5.1.5. Backup e Ripristino</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Configurazione dell'Entità del Fornitore di Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Entity Configuration del Fornitore di Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Metadati del Fornitore di Wallet</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Credenziale</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#requisiti-del-fornitore-di-credenziale">5.2.1. Requisiti del Fornitore di Credenziale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#requisiti-del-fornitore-di-attestati-elettronici">5.2.1. Requisiti del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#dettagli-dei-componenti">5.2.2. Dettagli dei Componenti</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#modelli-di-interazione">5.2.3. Modelli di Interazione</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#configurazione-dell-entita-fornitore-di-credenziale">5.2.4. Configurazione dell'Entità Fornitore di Credenziale</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadati-del-fornitore-di-credenziale">5.2.5. Metadati del Fornitore di Credenziale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#entity-configuration-del-fornitore-di-attestati-elettronici">5.2.4. Entity Configuration del Fornitore di Attestati Elettronici</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadata-del-fornitore-di-attestati-elettronici">5.2.5. Metadata del Fornitore di Attestati Elettronici</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Soluzione di Relying Party</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-requirements.html">5.3.1. Requisiti della Soluzione di Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.2. Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">5.3.3. Mobile Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">5.3.4. Web Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Configurazione dell'Entità Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.2. App di Verifica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">5.3.3. App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">5.3.4. App di Verifica Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Entity Configuration Relying Party</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.6. Metadati della Relying Party</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Fonti Autentiche</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="credential-data-model.html">6.1. Modello di Dati delle Credenziali Elettroniche</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#formato-credenziale-sd-jwt-vc">6.1.1. Formato Credenziale SD-JWT-VC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#formato-credenziale-mdoc-cbor">6.1.2. Formato Credenziale mdoc-CBOR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#mappatura-dei-parametri-delle-credenziali-tra-formati">6.1.3. Mappatura dei Parametri delle Credenziali tra Formati</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential-data-model.html">6.1. Modello di Dati degli Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-sd-jwt-vc">6.1.1. Attestato Elettronico in formato SD-JWT-VC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor">6.1.2. Attestato Elettronico in formato mdoc-CBOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-data-model.html#mappatura-dei-parametri-degli-attestati-elettronici-tra-i-vari-formati">6.1.3. Mappatura dei Parametri degli Attestati Elettronici tra i vari Formati</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">6.2. Ciclo di vita delle Credenziali</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#transizioni-delle-credenziali">6.2.1. Transizioni delle Credenziali</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#gestione-del-ciclo-di-vita-delle-credenziali">6.2.2. Gestione del Ciclo di Vita delle Credenziali</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">6.2. Ciclo di Vita degli Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#transizioni-degli-attestati-elettronici">6.2.1. Transizioni degli Attestati Elettronici</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#gestione-del-ciclo-di-vita-degli-attestati-elettronici">6.2.2. Gestione del Ciclo di Vita degli Attestati Elettronici</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#meccanismi-di-verifica-della-validita">6.2.3. Meccanismi di Verifica della Validità</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-revocation.html#oauth-status-lists">6.2.4. OAuth Status Lists</a></li>
 </ul>
@@ -288,10 +288,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuance.html">7.1. Emissione di Credenziale Digitale</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuance-high-level.html">7.1.1. Flussi di Alto Livello per il Rilascio di Credenziali</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuance-low-level.html">7.1.2. Flussi di Basso Livello per il Rilascio di Credenziali</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuance.html">7.1. Emissione di Attestati Elettronici</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuance-high-level.html">7.1.1. Flussi ad Alto Livello per l'Emissione di Attestati Elettronici</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuance-low-level.html">7.1.2. Flussi Dettagliati per l'Emissione di Attestati Elettronici</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-presentation.html">7.2. Presentazione della Credenziale Digitale</a><ul>
@@ -306,13 +306,13 @@
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-federazione">8.1.1. Endpoint di Federazione</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet">8.1.2. Endpoint Nonce della Soluzione Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-gestione-dell-istanza-di-wallet">8.1.3. Endpoint di Gestione dell'Istanza di Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-dell-attestato-di-wallet">8.1.4. Endpoint di Emissione dell'Attestato di Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-attestation">8.1.4. Endpoint di Emissione della Wallet Attestation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#catalogo-e-service-pdnd-del-fornitore-di-wallet">8.1.5. Catalogo e-Service PDND del Fornitore di Wallet</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Endpoint del Credential Issuer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#endpoint-di-federazione">8.2.1. Endpoint di Federazione</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#endpoint-di-emissione-delle-credenziali">8.2.2. Endpoint di Emissione delle Credenziali</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#endpoint-relativi-all-emissione-delgli-attestati-elettronici">8.2.2. Endpoint relativi all'Emissione delgli Attestati Elettronici</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#catalogo-e-service-pdnd-del-credential-issuer">8.2.3. Catalogo e-Service PDND del Credential Issuer</a></li>
 </ul>
 </li>
@@ -326,7 +326,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">8.4. Endpoint delle Fonti Autentiche</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#e-service-catalogo-delle-fonti-autentiche-pdnd">8.4.1. e-Service Catalogo delle Fonti Autentiche PDND</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#catalogo-degli-e-service-pdnd-delle-fonti-autentiche">8.4.1. Catalogo degli e-Service PDND delle Fonti Autentiche</a></li>
 </ul>
 </li>
 </ul>
@@ -380,7 +380,7 @@
 <li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. Politiche Generali di Conservazione dei Log</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="log-retention-policy.html#requisiti-generali-di-logging-iso-iec-27001">11.1. Requisiti Generali di Logging ISO/IEC 27001</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#politica-di-conservazione-dei-log-del-fornitore-di-wallet">11.1.1. Politica di Conservazione dei Log del Fornitore di Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#politica-di-conservazione-dei-log-del-fornitore-di-credenziale">11.1.2. Politica di Conservazione dei Log del Fornitore di Credenziale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#politica-di-conservazione-dei-log-del-fornitore-di-credenziali">11.1.2. Politica di Conservazione dei Log del Fornitore di Credenziali</a></li>
 <li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#politica-di-conservazione-dei-log-della-relying-party">11.1.3. Politica di Conservazione dei Log della Relying Party</a></li>
 <li class="toctree-l3"><a class="reference internal" href="log-retention-policy.html#funzionalita-di-logging-delle-istanze-del-wallet">11.1.4. Funzionalità di Logging delle Istanze del Wallet</a></li>
 </ul>
@@ -415,7 +415,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-wallet">14.1. Fornitori di Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-credenziale">14.2. Fornitori di Credenziale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="open-source.html#fornitori-di-credenziali">14.2. Fornitori di Credenziali</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open-source.html#relying-party">14.3. Relying Party</a></li>
 <li class="toctree-l2"><a class="reference internal" href="open-source.html#divulgazione-responsabile">14.4. Divulgazione Responsabile</a></li>
 </ul>
@@ -429,7 +429,7 @@
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#requisiti-e-pattern-di-sicurezza">15.2.1. Requisiti e Pattern di Sicurezza</a></li>
 <li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#emissione-del-voucher-pdnd">15.2.2. Emissione del Voucher PDND</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#recupero-delle-chiavi">15.2.3. Recupero delle Chiavi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#reperimento-delle-chiavi">15.2.3. Reperimento delle Chiavi</a></li>
 <li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#utilizzo-dell-e-service">15.2.4. Utilizzo dell'e-Service</a></li>
 </ul>
 </li>
@@ -473,7 +473,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

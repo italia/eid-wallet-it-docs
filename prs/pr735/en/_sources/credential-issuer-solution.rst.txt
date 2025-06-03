@@ -35,8 +35,8 @@ The Digital Credential Issuer Solution MUST:
    7. Maintain comprehensive audit trails while respecting privacy regulations.
    8. Issue Digital Credentials that support Selective Disclosure.
    9. Periodically renew its trust with the Federation.
-   10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID issuance) and, if required, within the IT-Wallet ecosystem (for (Q)EAA issuance).
-   11. For PID issuance, authenticate Users with LoA High using national Digital Identity Providers.
+   10. Register the Relying Party Component within the CIEid Digital Identity Federation ecosystem (for PID issuance), and within the IT-Wallet ecosystem (for (Q)EAA issuance, if required).
+   11. For PID issuance, authenticate Users with LoA High using national Digital Identity infrastructure.
    12. For (Q)EAA issuance requiring authentication, verify a valid PID from the User's Wallet Instance via `OpenID4VP`_.
    13. Implement proper procedures for the entire Digital Credential lifecycle as detailed in Section :ref:`credential-revocation:Digital Credential Lifecycle`.
 
@@ -85,7 +85,7 @@ Relying Party Component
 
 When User authentication is required, this component MUST authenticate Users:
 
-   - For PID issuance, via national Digital Identity Providers using OIDC or SAML2.
+   - For PID issuance, via national Digital Identity Providers.
    - For (Q)EAA issuance, requesting, obtaining and validating PIDs from User Wallet Instances using `OpenID4VP`_ in accordance with Section :ref:`credential-presentation:Digital Credential Presentation`.
 
 API Interface

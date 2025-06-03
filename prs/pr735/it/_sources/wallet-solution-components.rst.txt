@@ -30,7 +30,7 @@ Gestione del Ciclo di Vita dell'Istanza del Wallet
 Questo componente DEVE gestire:
 
 - Registrazione dell'Istanza del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`).
-- Emissione dell'Attestato di Unità di Portafoglio (dettagliata in :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`).
+- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`).
 - Gestione dello stato (mantenimento e aggiornamento della validità).
 - Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`.
 
@@ -60,7 +60,7 @@ Componente di Gestione del Ciclo di Vita dell'Istanza del Wallet
 Interagendo con il Backend del Wallet, questo componente DEVE gestire:
 
 - Registrazione dell'Istanza del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`).
-- Emissione dell'Attestato di Unità di Portafoglio (dettagliata in :ref:`wallet-attestation-issuance:Emissione dell'Attestato di Wallet`).
+- Emissione della Wallet Unit Attestation (dettagliata in :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`).
 - Gestione dello stato (mantenimento e aggiornamento della validità).
 - Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`.
 
@@ -69,7 +69,7 @@ In base allo stato dell'Istanza del Wallet e alla richiesta dell'Utente, questo 
 Componente Issuer
 ^^^^^^^^^^^^^^^^^
 
-Seguendo la specifica `OpenID4VCI`_ e il profilo di implementazione nella Sezione :ref:`credential-issuance:Emissione di Credenziale Digitale`, questo componente DEVE implementare i protocolli e i flussi di emissione delle Credenziali Elettroniche per richiedere Credenziali Elettroniche ai Credential Issuer.
+Seguendo la specifica `OpenID4VCI`_ e il profilo di implementazione nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, questo componente DEVE implementare i protocolli e i flussi di emissione delle Credenziali Elettroniche per richiedere Credenziali Elettroniche ai Credential Issuer.
 
 Componente di Presentazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,7 +97,7 @@ Modelli di Interazione della Soluzione Wallet
 La Soluzione Wallet supporta questi modelli di interazione:
 
 1. **Utente verso Frontend del Backend del Wallet**: Interazioni basate sul web per la gestione dell'Istanza del Wallet.
-2. **Istanza del Wallet verso API del Backend del Wallet**: per la registrazione dell'Istanza del Wallet e l'emissione dell'Attestato di Unità di Portafoglio.
+2. **Istanza del Wallet verso API del Backend del Wallet**: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Unit Attestation.
 3. **Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet**: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.
 4. **Utente verso Interfaccia Utente dell'Istanza del Wallet**: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).
 5. **Istanza del Wallet verso Relying Party**: per la presentazione delle Credenziali Elettroniche.

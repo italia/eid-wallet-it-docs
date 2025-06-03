@@ -136,8 +136,8 @@
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
@@ -149,7 +149,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">15.1. Istanza dell'Applicazione Mobile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test-plans.html">15.3. Piani di Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Credential Issuer PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Specifica OpenAPI del Credential Issuer PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.5. Specifica OpenAPI della Fonte Autentica PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.6. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
 </ul>
@@ -192,7 +192,7 @@
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Controllo della Federazione</strong>: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-federazione"><span class="std std-ref">Endpoint di Federazione</span></a> con la <strong>Configurazione dell'Entità</strong> e i <strong>Metadati</strong> del Fornitore dell'Applicazione sono presentati nelle sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#configurazione-dell-entita-del-fornitore-di-wallet"><span class="std std-ref">Configurazione dell'Entità del Fornitore di Wallet</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#configurazione-dell-entita-relying-party"><span class="std std-ref">Configurazione dell'Entità Relying Party</span></a>.</p>
+<p><strong>Controllo della Federazione</strong>: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-federazione"><span class="std std-ref">Endpoint di Federazione</span></a> con la <strong>Entity Configuration</strong> e i <strong>Metadati</strong> del Fornitore dell'Applicazione sono presentati nelle sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
 </div>
 <p><strong>Passi 3-5 (Recupero del Nonce)</strong>: L'Istanza dell'Applicazione Mobile richiede un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> monouso dall'<strong>Endpoint Nonce</strong> del Backend del Fornitore dell'Applicazione (vedi <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet"><span class="std std-ref">Endpoint Nonce della Soluzione Wallet</span></a> o <a class="reference internal" href="relying-party-endpoint.html#endpoint-nonce-della-relying-party"><span class="std std-ref">Endpoint Nonce della Relying Party</span></a>). Questo <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay.</p>
 <p>In caso di richiesta riuscita, il Fornitore dell'Applicazione genera e restituisce il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code> all'Istanza dell'Applicazione Mobile, come parte della <a class="reference internal" href="#risposta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Risposta di Nonce dell'Applicazione Mobile</span></a>. Il Fornitore dell'Applicazione DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.</p>
@@ -439,7 +439,7 @@ Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Att
 <section id="associazione-chiave-dell-applicazione-mobile">
 <h2><span class="section-number">15.1.2. </span>Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h2>
 <p>Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di <a class="reference internal" href="#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.</p>
-<p>Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni <a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance-registration"><span class="std std-ref">Mobile Relying Party Instance Registration</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.</p>
+<p>Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni <a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile"><span class="std std-ref">App di Verifica Mobile</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.</p>
 <section id="richiesta-di-associazione-chiave-dell-applicazione-mobile">
 <h3><span class="section-number">15.1.2.1. </span>Richiesta di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#richiesta-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
 <p>La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
@@ -563,7 +563,7 @@ Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Att
 </section>
 <section id="risposta-di-associazione-chiave-dell-applicazione-mobile">
 <h3><span class="section-number">15.1.2.2. </span>Risposta di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
-<p>La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni <a class="reference internal" href="relying-party-endpoint.html#risposta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Risposta di Associazione Chiavi della Relying Party</span></a> e <a class="reference internal" href="wallet-provider-endpoint.html#risposta-all-emissione-dell-attestato-di-wallet"><span class="std std-ref">Risposta all'Emissione dell'Attestato di Wallet</span></a>.</p>
+<p>La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni <a class="reference internal" href="relying-party-endpoint.html#risposta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Risposta di Associazione Chiavi della Relying Party</span></a> e <a class="reference internal" href="wallet-provider-endpoint.html#risposta-all-emissione-della-wallet-attestation"><span class="std std-ref">Risposta all'Emissione della Wallet Attestation</span></a>.</p>
 <section id="risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile">
 <h4><span class="section-number">15.1.2.2.1. </span>Risposta di Errore di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h4>
 <p>Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> e include i seguenti parametri:</p>
@@ -717,7 +717,7 @@ Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Att
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -142,17 +142,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#modelli-di-interazione-della-soluzione-wallet">5.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">5.1.4. Istanza del Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="backup-restore.html">5.1.5. Backup e Ripristino</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Configurazione dell'Entità del Fornitore di Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Entity Configuration del Fornitore di Wallet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Metadati del Fornitore di Wallet</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Credenziale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Soluzione di Relying Party</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Fonti Autentiche</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
@@ -198,7 +198,7 @@
 <p>Questo componente DEVE gestire:</p>
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
-<li><p>Emissione dell'Attestato di Unità di Portafoglio (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>).</p></li>
+<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -225,7 +225,7 @@
 <p>Interagendo con il Backend del Wallet, questo componente DEVE gestire:</p>
 <ul class="simple">
 <li><p>Registrazione dell'Istanza del Wallet (dettagliata in <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>).</p></li>
-<li><p>Emissione dell'Attestato di Unità di Portafoglio (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>).</p></li>
+<li><p>Emissione della Wallet Unit Attestation (dettagliata in <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>).</p></li>
 <li><p>Gestione dello stato (mantenimento e aggiornamento della validità).</p></li>
 <li><p>Processi di revoca (implementazione di meccanismi per revocare le Istanze del Wallet), secondo la Sezione <a class="reference internal" href="wallet-instance-revocation.html#revoca-dell-istanza-del-wallet"><span class="std std-ref">Revoca dell'Istanza del Wallet</span></a>.</p></li>
 </ul>
@@ -233,7 +233,7 @@
 </section>
 <section id="componente-issuer">
 <h3><span class="section-number">5.1.2.2.3. </span>Componente Issuer<a class="headerlink" href="#componente-issuer" title="Link to this heading">¶</a></h3>
-<p>Seguendo la specifica <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> e il profilo di implementazione nella Sezione <a class="reference internal" href="credential-issuance.html#emissione-di-credenziale-digitale"><span class="std std-ref">Emissione di Credenziale Digitale</span></a>, questo componente DEVE implementare i protocolli e i flussi di emissione delle Credenziali Elettroniche per richiedere Credenziali Elettroniche ai Credential Issuer.</p>
+<p>Seguendo la specifica <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a> e il profilo di implementazione nella Sezione <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>, questo componente DEVE implementare i protocolli e i flussi di emissione delle Credenziali Elettroniche per richiedere Credenziali Elettroniche ai Credential Issuer.</p>
 </section>
 <section id="componente-di-presentazione">
 <h3><span class="section-number">5.1.2.2.4. </span>Componente di Presentazione<a class="headerlink" href="#componente-di-presentazione" title="Link to this heading">¶</a></h3>
@@ -258,7 +258,7 @@
 <p>La Soluzione Wallet supporta questi modelli di interazione:</p>
 <ol class="arabic simple">
 <li><p><strong>Utente verso Frontend del Backend del Wallet</strong>: Interazioni basate sul web per la gestione dell'Istanza del Wallet.</p></li>
-<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione dell'Attestato di Unità di Portafoglio.</p></li>
+<li><p><strong>Istanza del Wallet verso API del Backend del Wallet</strong>: per la registrazione dell'Istanza del Wallet e l'emissione della Wallet Unit Attestation.</p></li>
 <li><p><strong>Fornitore di Attestati Elettronici di Dati di Identificazione Personale verso API del Backend del Wallet</strong>: Chiamate API sicure per richiedere la revoca dell'Istanza del Wallet.</p></li>
 <li><p><strong>Utente verso Interfaccia Utente dell'Istanza del Wallet</strong>: per la gestione delle Credenziali Elettroniche (emissione, presentazione, backup, ripristino, eliminazione).</p></li>
 <li><p><strong>Istanza del Wallet verso Relying Party</strong>: per la presentazione delle Credenziali Elettroniche.</p></li>
@@ -326,7 +326,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

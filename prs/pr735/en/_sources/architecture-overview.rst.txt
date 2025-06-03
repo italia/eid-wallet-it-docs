@@ -35,15 +35,15 @@ External systems provide services that connect the IT-Wallet ecosystem to the na
 
 The architecture enables the following interaction processes:
 
-  1. **Entity Onboarding and Federation**: Only qualified and compliant entities are registered in the IT-Wallet Federation. The Trust Registry is updated during registration, allowing participants to monitor federation status. This process may include technical and security assessments.
+  1. **Entity Onboarding and Federation**: Only qualified and compliant Entities are registered in the IT-Wallet Federation. The Trust Registry is updated during registration, allowing participants to monitor federation status. This process includes administrative, technical and security assessments.
 
-  2. **Credential Issuance**: Credential Issuers connect to Authentic Sources via standardized APIs on the National Digital Data Platform to request verified user attributes. Digital Credentials are based on authoritative, current data with proper authorization and audit trails.
+  2. **Credential Issuance**: Credential Issuers connect to Authentic Sources via standardized APIs (on the National Digital Data Platform if the Authentic Source belongs to the Public sector) to request verified User attributes. Digital Credentials are based on authoritative, current data with proper authorization and audit trails.
 
-  3. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on user devices, allowing users to control and use credentials from multiple sources.
+  3. **Credential Storage and Management**: IT-Wallet Solutions receive and manage Digital Credentials on User devices, allowing Users to control and use credentials from multiple Issuers.
 
   4. **Credential Presentation and Verification**: Users present Digital Credentials to Relying Parties for verification. Verification systems check claims through cryptographic methods and status checks for both public and private sector use.
 
-The Trust Infrastructure manages onboarding and revocation of entities, provides credential schemas, and lets participants discover and verify authorized entities and their status. It supports automatic trust chain validation, distributed trust anchoring, standardized metadata exchange, and Federation API services for secure, seamless federation operations.
+The Trust Infrastructure manages onboarding and revocation of Entities, provides credential schemas, and lets participants discover and verify authorized entities and their status. It supports automatic trust chain validation, distributed trust anchoring, standardized metadata exchange, and Federation API services for secure, seamless federation operations.
 
 
 .. toctree::

@@ -136,8 +136,8 @@
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">4. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione delle Credenziali Digitali</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi delle Credenziali Elettroniche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
 <li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
@@ -179,7 +179,7 @@ ad eccezione delle Istanze del Wallet che sono dispositivi personali dell'Utente
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>L'Istanza del Wallet, come dispositivo personale, è considerata affidabile attraverso un attestato verificabile emesso e firmato da una terza parte fidata.</p>
-<p>Questo è chiamato <em>Wallet Attestation</em> ed è documentato nella sezione dedicata <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>.</p>
+<p>Questo è chiamato <em>Wallet Attestation</em> ed è documentato nella sezione dedicata <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>.</p>
 </div>
 <p>Di seguito la tabella con il riepilogo dei ruoli delle Entità di Federazione, mappati sui corrispondenti ruoli del Wallet EUDI, come definiti nell'<a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p>
 <table class="longtable docutils align-default">
@@ -478,7 +478,7 @@ chiavi pubbliche per le operazioni di firma.</p>
 <p>L'Entity Configuration DEVE essere firmata crittograficamente. La parte pubblica di questa chiave DEVE essere fornita nell'
 Entity Configuration e all'interno del Subordinate Statement emesso da un superiore immediato e relativo alla sua Entità di Federazione subordinata.</p>
 <p>L'Entity Configuration PUÒ anche contenere uno o più Trust Mark.</p>
-<p>I dettagli tecnici sull'Entity Configuration del Fornitore di Wallet, del Credential Issuer e della Relying Party sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#configurazione-dell-entita-del-fornitore-di-wallet"><span class="std std-ref">Configurazione dell'Entità del Fornitore di Wallet</span></a>, <a class="reference internal" href="credential-issuer-entity-configuration.html#configurazione-dell-entita-fornitore-di-credenziale"><span class="std std-ref">Configurazione dell'Entità Fornitore di Credenziale</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#configurazione-dell-entita-relying-party"><span class="std std-ref">Configurazione dell'Entità Relying Party</span></a>.</p>
+<p>I dettagli tecnici sull'Entity Configuration del Fornitore di Wallet, del Credential Issuer e della Relying Party sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a>, <a class="reference internal" href="credential-issuer-entity-configuration.html#entity-configuration-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Entity Configuration del Fornitore di Attestati Elettronici</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Firma dell'Entity Configuration</strong></p>
@@ -820,7 +820,7 @@ e in relazione ai meccanismi di firma DEVONO essere applicati per i Subordinate 
 <p>Le Trust Chain possono anche essere verificate offline, utilizzando una delle chiavi pubbliche del Trust Anchor.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Valutazione della Fiducia ad essa relativo <strong>richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle credenziali</strong>.</p>
+<p>Poiché l'Istanza del Wallet non è un'Entità di Federazione, il Meccanismo di Valutazione della Fiducia ad essa relativo <strong>richiede la presentazione del Wallet Attestation durante le fasi di emissione e presentazione delle Credenziali</strong>.</p>
 <p>Il Wallet Attestation trasmette tutte le informazioni richieste relative all'istanza, come la sua chiave pubblica e qualsiasi altra informazione tecnica o amministrativa, senza alcun dato personale dell'Utente.</p>
 </div>
 <section id="stabilire-la-fiducia-con-i-credential-issuer">
@@ -920,7 +920,7 @@ I meccanismi di Valutazione della Fiducia sono distinti dai flussi di protocollo
 <section id="attestazione-della-fiducia-del-wallet-offline">
 <h4><span class="section-number">4.9.5.1. </span>Attestazione della Fiducia del Wallet Offline<a class="headerlink" href="#attestazione-della-fiducia-del-wallet-offline" title="Link to this heading">¶</a></h4>
 <p>Dato che l'Istanza del Wallet non può pubblicare i suoi metadati online all'endpoint <em>.well-known/openid-federation</em>,
-DEVE ottenere un Wallet Attestation emesso dal suo Fornitore di Wallet. Il Wallet Attestation DEVE contenere tutte le informazioni rilevanti riguardanti le capacità di sicurezza dell'Istanza del Wallet e la sua configurazione relativa al protocollo. DOVREBBE contenere la Trust Chain relativa al suo emittente (Fornitore di Wallet).</p>
+DEVE ottenere una Wallet Attestation emesso dal suo Fornitore di Wallet. Il Wallet Attestation DEVE contenere tutte le informazioni rilevanti riguardanti le capacità di sicurezza dell'Istanza del Wallet e la sua configurazione relativa al protocollo. DOVREBBE contenere la Trust Chain relativa al suo emittente (Fornitore di Wallet).</p>
 </section>
 <section id="metadati-offline-della-relying-party">
 <h4><span class="section-number">4.9.5.2. </span>Metadati Offline della Relying Party<a class="headerlink" href="#metadati-offline-della-relying-party" title="Link to this heading">¶</a></h4>
@@ -995,116 +995,187 @@ I vincoli di denominazione sono applicati dai Superiori Immediati all'interno de
 </ul>
 </li>
 </ol>
-<p>Di seguito un esempio non normativo di una Catena di Certificati X.509 senza intermediari e in testo semplice, per facilitare la lettura.</p>
+<p>Di seguito è riportato un esempio non normativo, in formato testo semplice (formato OpenSSL), di una catena di certificati X.509 con una CA intermedia, a partire dal certificato Leaf.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate:
-Data:
-    Version: 3 (0x2)
-    Serial Number: 1 (0x1)
-Signature Algorithm: sha256WithRSAEncryption
-    Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
-    Validity
-        Not Before: Sep 1 00:00:00 2023 GMT
-        Not After : Sep 1 00:00:00 2033 GMT
-    Subject: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
-    Subject Public Key Info:
-        Public Key Algorithm: rsaEncryption
-            Public-Key: (4096 bit)
-            Modulus:
-                00:af:82:3b:...
-            Exponent: 65537 (0x10001)
-    X509v3 extensions:
-        X509v3 Basic Constraints:
-            CA:TRUE
-        X509v3 Key Usage:
-            Certificate Sign, CRL Sign
-        X509v3 Subject Key Identifier:
-            12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
-        X509v3 Authority Key Identifier:
-            keyid:12:34:56:78:90:ab:cd:ef:12:34:56:78:90:ab:cd:ef
-        X509v3 CRL Distribution Points:
-            Full Name:
-              URI:https://trust-anchors.example.com/crl/ca.crl
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 631900975802917176051117802358049194750736752223 (0x6eaf6b7456ab3c0a4b38f02bb6073db7ce925e5f)
+    Signature Algorithm: sha256
+        Issuer: commonName=https://intermediate.example.net, organizationName=Example INT, countryName=IT
+        Validity
+            Not Before: May 27 09:13:33 2025 GMT
+            Not After : May 28 09:13:33 2026 GMT
+        Subject: commonName=CN=leaf.example.com, O=Example Leaf, C=IT, organizationName=Example Leaf, countryName=IT
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey (EC)
+                Public-Key: (256 bit)
+                Curve: secp256r1
+                X: 69976109031737194756970051761651042204906873292535726068007861307666294009468
+                Y: 30041520431409736411496718565679258429461229569083348196905050642324938424017
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:TRUE, pathlen:0
+            X509v3 Subject Alternative Name:
+                DNS:leaf.example.org
+                URI:leaf.example.org
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
+            X509v3 CRL Distribution Points:
+                Full Name:
+                  URI:https://leaf.example.com/crl/leaf.example.com.crl
+            X509v3 Name Constraints:
+                Permitted:
+                  URI.1=https://leaf.example.com
+                  DNS.2=leaf.example.com
+                Excluded:
+                  DNS.1=localhost
+                  DNS.2=localhost.localdomain
+                  DNS.3=127.0.0.1
+                  DNS.4=example.com
+                  DNS.5=example.org
+                  DNS.6=example.net
 
-Signature Algorithm: sha256WithRSAEncryption
-     5c:4f:3b:...
+    Signature Algorithm: sha256
+     30:45:02:21:00:ee:0c:24:4c:ea:57:db:f8:54:68:77
+     92:bd:d7:e3:3d:ec:80:4e:84:b4:36:70:f3:00:0b:f0
+     cf:bf:07:c1:4a:02:20:70:1e:12:e4:c4:97:ba:95:36
+     e8:20:82:d6:f1:7f:4d:0d:41:4a:51:0a:c5:b2:5d:62
+     33:45:c5:b0:dc:28:0a
 
-
-Certificate:
-Data:
-    Version: 3 (0x2)
-    Serial Number: 1234567890 (0x499602d2)
-Signature Algorithm: sha256WithRSAEncryption
-    Issuer: CN=trust-anchor.example.com, O=Example Trust Anchor, C=IT
-    Validity
-        Not Before: Sep 1 00:00:00 2023 GMT
-        Not After : Sep 1 00:00:00 2024 GMT
-    Subject: CN=leaf.example.org, O=Leaf, C=IT
-    Subject Public Key Info:
-        Public Key Algorithm: rsaEncryption
-            Public-Key: (2048 bit)
-            Modulus:
-                00:af:82:3b:...
-            Exponent: 65537 (0x10001)
-    X509v3 extensions:
-        X509v3 Basic Constraints:
-            CA:TRUE, pathlen:1
-        X509v3 Key Usage:
-            Digital Signature, Key Encipherment
-        X509v3 Subject Alternative Name:
-            URI:https://leaf.example.com
-        X509v3 Name Constraints:
-            Permitted:
-              URI.1=https://leaf.example.com
-              DNS.1=leaf.example.com
-            Excluded:
-              DNS=localhost
-              DNS=localhost.localdomain
-              DNS=127.0.0.1
-              DNS=example.com
-              DNS=example.org
-              DNS=example.net
-              DNS=*.example.org
-        X509v3 CRL Distribution Points:
-            Full Name:
-              URI:https://trust-ancor.example.com/crl/leaf.example.org.crl
-
-Signature Algorithm: sha256WithRSAEncryption
-     5c:4f:3b:...
-
+-----BEGIN CERTIFICATE-----
+MIIC6jCCApCgAwIBAgIUbq9rdFarPApLOPArtgc9t86SXl8wCgYIKoZIzj0EAwIw
+TjEpMCcGA1UEAwwgaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZXhhbXBsZS5uZXQxFDAS
+BgNVBAoMC0V4YW1wbGUgSU5UMQswCQYDVQQGEwJJVDAeFw0yNTA1MjcwOTEzMzNa
+Fw0yNjA1MjgwOTEzMzNaMFgxMjAwBgNVBAMMKUNOPWxlYWYuZXhhbXBsZS5jb20s
+IE89RXhhbXBsZSBMZWFmLCBDPUlUMRUwEwYDVQQKDAxFeGFtcGxlIExlYWYxCzAJ
+BgNVBAYTAklUMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEmrUS/DeI3q5nTl0y
+U5nmAydnP8U4VQxoLb5EVXgCbnxCauXjmhQKpwjlACbOXY7iCBgdqq+1g8OWqMg2
+o5H+0aOCAUAwggE8MBIGA1UdEwEB/wQIMAYBAf8CAQAwLQYDVR0RBCYwJIIQbGVh
+Zi5leGFtcGxlLm9yZ4YQbGVhZi5leGFtcGxlLm9yZzAOBgNVHQ8BAf8EBAMCAaYw
+QgYDVR0fBDswOTA3oDWgM4YxaHR0cHM6Ly9sZWFmLmV4YW1wbGUuY29tL2NybC9s
+ZWFmLmV4YW1wbGUuY29tLmNybDCBogYDVR0eAQH/BIGXMIGUoDAwGoYYaHR0cHM6
+Ly9sZWFmLmV4YW1wbGUuY29tMBKCEGxlYWYuZXhhbXBsZS5jb22hYDALgglsb2Nh
+bGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAuCCTEyNy4wLjAuMTANggtl
+eGFtcGxlLmNvbTANggtleGFtcGxlLm9yZzANggtleGFtcGxlLm5ldDAKBggqhkjO
+PQQDAgNIADBFAiEA7gwkTOpX2/hUaHeSvdfjPeyAToS0NnDzAAvwz78HwUoCIHAe
+EuTEl7qVNugggtbxf00NQUpRCsWyXWIzRcWw3CgK
+-----END CERTIFICATE-----
 
 Certificate:
-Data:
-    Version: 3 (0x2)
-    Serial Number: 987654321 (0x3ade68b1)
-Signature Algorithm: sha256WithRSAEncryption
-    Issuer: CN=https://leaf.example.org, O=Leaf, C=IT
-    Validity
-        Not Before: Sep 1 00:00:00 2023 GMT
-        Not After : Sep 1 00:00:00 2024 GMT
-    Subject: CN=https://leaf.example.org, O=Leaf, C=IT
-    Subject Public Key Info:
-        Public Key Algorithm: rsaEncryption
-            Public-Key: (2048 bit)
-            Modulus:
-                00:af:82:3b:...
-            Exponent: 65537 (0x10001)
-    X509v3 extensions:
-        X509v3 Basic Constraints:
-            CA:FALSE
-        X509v3 Key Usage:
-            Digital Signature, Key Encipherment
-        X509v3 Subject Alternative Name:
-            URI:https://leaf.example.org
-        X509v3 Name Constraints:
-            Permitted:
-              URI.1=https://leaf.example.com
-              DNS.1=leaf.example.com
-        X509v3 CRL Distribution Points:
-            Full Name:
-              URI:https://leaf.example.org/crl/self.crl
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 396534572491127113022787686743653095280228078403 (0x457539a6ac314749fa5ec658f76ed225fd769343)
+    Signature Algorithm: sha256
+        Issuer: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Validity
+            Not Before: May 27 09:13:33 2025 GMT
+            Not After : May 28 09:13:33 2026 GMT
+        Subject: commonName=https://intermediate.example.net, organizationName=Example INT, countryName=IT
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey (EC)
+                Public-Key: (256 bit)
+                Curve: secp256r1
+                X: 25156074883156693989891139993064608529947553342874167037412394938695986639833
+                Y: 37747901399770759266458300753958501018530290808445029579181649667235295170256
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:TRUE, pathlen:1
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
+            X509v3 CRL Distribution Points:
+                Full Name:
+                  URI:https://intermediate.example.net/crl/intermediate.example.net.crl
+            X509v3 Name Constraints:
+                Excluded:
+                  DNS.1=localhost
+                  DNS.2=localhost.localdomain
+                  DNS.3=127.0.0.1
+                  DNS.4=example.com
+                  DNS.5=example.org
+                  DNS.6=example.net
 
-Signature Algorithm: sha256WithRSAEncryption
-     7d:6e:5f:...
+    Signature Algorithm: sha256
+     30:46:02:21:00:cb:1d:01:ee:1b:bf:a1:4d:36:42:d2
+     0a:7e:80:37:44:e6:e0:ae:6c:70:58:ea:4c:60:00:af
+     53:3b:11:f6:66:02:21:00:c6:08:73:d8:45:7e:e8:e9
+     5e:be:5b:68:9e:12:e9:a2:8e:95:31:01:1d:9e:99:04
+     17:d3:f3:54:71:1b:9f:ac
+
+-----BEGIN CERTIFICATE-----
+MIICjzCCAjSgAwIBAgIURXU5pqwxR0n6XsZY927SJf12k0MwCgYIKoZIzj0EAwIw
+UjEuMCwGA1UEAwwlQ049Y2EuZXhhbXBsZS5jb20sIE89RXhhbXBsZSBDQSwgQz1J
+VDETMBEGA1UECgwKRXhhbXBsZSBDQTELMAkGA1UEBhMCSVQwHhcNMjUwNTI3MDkx
+MzMzWhcNMjYwNTI4MDkxMzMzWjBOMSkwJwYDVQQDDCBodHRwczovL2ludGVybWVk
+aWF0ZS5leGFtcGxlLm5ldDEUMBIGA1UECgwLRXhhbXBsZSBJTlQxCzAJBgNVBAYT
+AklUMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEN53VdNZrwDIEoleHOjbgNAA9
+Ab6PeLajowvmkPNm89lTdI4YecjNJYS35wyhMEt+opXZukysBjRRO84M8I6O0KOB
+6zCB6DASBgNVHRMBAf8ECDAGAQH/AgEBMA4GA1UdDwEB/wQEAwIBpjBSBgNVHR8E
+SzBJMEegRaBDhkFodHRwczovL2ludGVybWVkaWF0ZS5leGFtcGxlLm5ldC9jcmwv
+aW50ZXJtZWRpYXRlLmV4YW1wbGUubmV0LmNybDBuBgNVHR4BAf8EZDBioWAwC4IJ
+bG9jYWxob3N0MBeCFWxvY2FsaG9zdC5sb2NhbGRvbWFpbjALggkxMjcuMC4wLjEw
+DYILZXhhbXBsZS5jb20wDYILZXhhbXBsZS5vcmcwDYILZXhhbXBsZS5uZXQwCgYI
+KoZIzj0EAwIDSQAwRgIhAMsdAe4bv6FNNkLSCn6AN0Tm4K5scFjqTGAAr1M7EfZm
+AiEAxghz2EV+6OlevltonhLpoo6VMQEdnpkEF9PzVHEbn6w=
+-----END CERTIFICATE-----
+
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 284423255585370380375410701638165198317432410917 (0x31d1fad9752ce503dbbacd0bf76abc930d651325)
+    Signature Algorithm: sha256
+        Issuer: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Validity
+            Not Before: May 27 09:13:33 2025 GMT
+            Not After : May 28 09:13:33 2026 GMT
+        Subject: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey (EC)
+                Public-Key: (256 bit)
+                Curve: secp256r1
+                X: 7607860515366991947250115130866123391572079251785604713950047686319787674406
+                Y: 74493290682810963932331564302963289249956540428755890573822716633130571216251
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:TRUE, pathlen:2
+            X509v3 Subject Alternative Name:
+                DNS:ca.example.com
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
+            X509v3 CRL Distribution Points:
+                Full Name:
+                  URI:https://ca.example.com/crl/ca.example.com.crl
+            X509v3 Name Constraints:
+                Excluded:
+                  DNS.1=localhost
+                  DNS.2=localhost.localdomain
+                  DNS.3=127.0.0.1
+                  DNS.4=example.com
+                  DNS.5=example.org
+                  DNS.6=example.net
+
+    Signature Algorithm: sha256
+     30:46:02:21:00:b9:6c:2c:6f:9a:18:b8:04:d6:39:d3
+     50:dd:e6:a6:ce:9b:f0:d8:64:48:7b:4b:33:2e:fe:d9
+     3d:13:81:4c:d4:02:21:00:ab:10:9d:f1:0f:64:d8:dc
+     76:53:d1:e3:32:b1:65:b7:97:83:d7:69:0f:5a:da:9b
+     1e:a4:a9:a3:88:98:6b:5f
+
+-----BEGIN CERTIFICATE-----
+MIICmjCCAj+gAwIBAgIUMdH62XUs5QPbus0L92q8kw1lEyUwCgYIKoZIzj0EAwIw
+UjEuMCwGA1UEAwwlQ049Y2EuZXhhbXBsZS5jb20sIE89RXhhbXBsZSBDQSwgQz1J
+VDETMBEGA1UECgwKRXhhbXBsZSBDQTELMAkGA1UEBhMCSVQwHhcNMjUwNTI3MDkx
+MzMzWhcNMjYwNTI4MDkxMzMzWjBSMS4wLAYDVQQDDCVDTj1jYS5leGFtcGxlLmNv
+bSwgTz1FeGFtcGxlIENBLCBDPUlUMRMwEQYDVQQKDApFeGFtcGxlIENBMQswCQYD
+VQQGEwJJVDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABBDR5X4r9VUDnU5X2rIf
+xDo7DFNodgP2AD4jzqrETwsmpLG1V9s1bu+zyFrnGVvKmoqR0kOeZ1/vyN5vhMcx
+NXujgfIwge8wEgYDVR0TAQH/BAgwBgEB/wIBAjAZBgNVHREEEjAQgg5jYS5leGFt
+cGxlLmNvbTAOBgNVHQ8BAf8EBAMCAaYwPgYDVR0fBDcwNTAzoDGgL4YtaHR0cHM6
+Ly9jYS5leGFtcGxlLmNvbS9jcmwvY2EuZXhhbXBsZS5jb20uY3JsMG4GA1UdHgEB
+/wRkMGKhYDALgglsb2NhbGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAuC
+CTEyNy4wLjAuMTANggtleGFtcGxlLmNvbTANggtleGFtcGxlLm9yZzANggtleGFt
+cGxlLm5ldDAKBggqhkjOPQQDAgNJADBGAiEAuWwsb5oYuATWOdNQ3eamzpvw2GRI
+e0szLv7ZPROBTNQCIQCrEJ3xD2TY3HZT0eMysWW3l4PXaQ9a2psepKmjiJhrXw==
+-----END CERTIFICATE-----
 </pre></div>
 </div>
 <p>I partecipanti alla federazione possono garantire che i loro certificati siano coerenti, consentendo l'interoperabilità e la sicurezza in tutta la federazione. Questo approccio, che consente la delega dell'emissione di certificati X.509, introduce pratiche innovative per la gestione dei certificati utilizzando le Relazioni di Trust sottostanti stabilite all'interno di OpenID Federation.</p>
@@ -1143,7 +1214,7 @@ Signature:
 <h2><span class="section-number">4.13. </span>Note sulla Privacy<a class="headerlink" href="#note-sulla-privacy" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Le Istanze del Wallet NON DEVONO pubblicare i loro metadati attraverso un servizio online.</p></li>
-<li><p>L'infrastruttura di trust DEVE essere pubblica, con tutti gli endpoint pubblicamente accessibili senza alcuna credenziale client che possa rivelare chi sta richiedendo l'accesso.</p></li>
+<li><p>L'infrastruttura di trust DEVE essere pubblica, con tutti gli endpoint pubblicamente accessibili senza alcuna Credenziale client che possa rivelare chi sta richiedendo l'accesso.</p></li>
 <li><p>Quando un'Istanza del Wallet richiede i Subordinate Statement per costruire la Trust Chain per una specifica Relying Party o convalida un Trust Mark online, emesso per una specifica Relying Party, il Trust Anchor o il suo Intermediario non sanno che una particolare Istanza del Wallet sta chiedendo informazioni su una specifica Relying Party; invece, servono solo le dichiarazioni relative a quella Relying Party come risorsa pubblica.</p></li>
 <li><p>I metadati dell'Istanza del Wallet NON DEVONO contenere informazioni che possano rivelare informazioni tecniche sull'hardware utilizzato.</p></li>
 <li><p>I metadati dell'entità Foglia, dell'Intermediario e del Trust Anchor possono includere la quantità necessaria di dati come parte delle informazioni di contatto amministrativo, tecnico e di sicurezza. Generalmente non è raccomandato utilizzare dettagli di contatto personali in tali casi. Da una prospettiva legale, la pubblicazione di tali informazioni è necessaria per il supporto operativo riguardante questioni tecniche e di sicurezza e la regolamentazione GDPR.</p></li>
@@ -1155,7 +1226,7 @@ Signature:
 <li><p>Ci possono essere più di un singolo Trust Anchor.</p></li>
 <li><p>In alcuni casi, un verificatore di fiducia può fidarsi di un Intermediario, specialmente quando l'Intermediario agisce come un Trust Anchor all'interno di un perimetro specifico, come casi in cui le Foglie sono entrambe nello stesso perimetro come una giurisdizione di Stato Membro (ad esempio: una Relying Party italiana con un'Istanza del Wallet italiana può considerare l'Intermediario italiano come un Trust Anchor per gli scopi delle loro interazioni).</p></li>
 <li><p>Le attestazioni di fiducia (Trust Chain) dovrebbero essere incluse nel JWT emesso dai Credential Issuer, e le Richieste di Presentazione delle RP dovrebbero contenere la Trust Chain relativa a loro (emittenti delle richieste di presentazione).</p></li>
-<li><p>Poiché la presentazione delle credenziali deve essere firmata, memorizzando le richieste e le risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione della federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile della Relying Party con cui ha interagito.</p></li>
+<li><p>Poiché la presentazione delle Credenziali deve essere firmata, memorizzando le richieste e le risposte di presentazione firmate, che includono la Trust Chain, l'Istanza del Wallet può avere lo snapshot della configurazione della federazione (Entity Configuration del Trust Anchor nella Trust Chain) e l'affidabilità verificabile della Relying Party con cui ha interagito.</p></li>
 <li><p>Ogni attestazione firmata è di lunga durata poiché può essere crittograficamente convalidata anche quando la configurazione della federazione cambia o le chiavi dei suoi emittenti vengono rinnovate.</p></li>
 <li><p>Ogni partecipante dovrebbe essere in grado di aggiornare la propria Entity Configuration senza notificare le modifiche a terze parti. La policy dei metadati contenuta all'interno di una Trust Chain deve essere applicata per sovrascrivere qualsiasi informazione relativa ai metadati specifici del protocollo.</p></li>
 </ul>
@@ -1245,7 +1316,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
