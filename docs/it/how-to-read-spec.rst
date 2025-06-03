@@ -3,7 +3,7 @@
 Come leggere le Specifiche
 --------------------------
 
-Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno dell'ecosistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e, quindi, diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutarti a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.
+Questa specifica è progettata per soddisfare i requisiti di molteplici stakeholder all'interno dell'ecosistema IT-Wallet. Ogni ruolo ha responsabilità e ambiti diversi e diverse esigenze informative. Questa sezione fornisce percorsi di lettura personalizzati per aiutare il lettore a navigare in modo efficiente verso i contenuti più rilevanti per gli obiettivi di implementazione.
 
 Panoramica della Struttura delle Specifiche
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -14,7 +14,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
   Stabilisce l'ambito e il linguaggio normativo per l'ecosistema IT-Wallet.
 
 **Sezione** :ref:`design:Principi di design`: 
-  Fornisce principi di progettazione e requisiti di identità del marchio per l'ecosistema IT-Wallet.
+  Fornisce principi di progettazione e requisiti di identità visiva dell'ecosistema IT-Wallet.
 
 **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`:
   Fornisce funzionalità di sistema di alto livello e guida per navigare nella specifica in base ai requisiti di implementazione.
@@ -25,10 +25,10 @@ La specifica è organizzata nelle seguenti sezioni principali:
 **Sezione** :ref:`entities:Entità`: 
   Requisiti di implementazione completi per ogni partecipante all'ecosistema: Soluzioni Wallet, Fornitori di Credenziali, Relying Party e Fonti Autentiche, inclusi i loro componenti, modelli di interazione e requisiti di configurazione.
 
-**Sezione** :ref:`digital-credential-management:Gestione delle Credenziali Digitali`: 
+**Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: 
   Copre i modelli di dati e i formati delle Credenziali Elettroniche, la gestione del ciclo di vita, la verifica della validità e la struttura del catalogo delle Credenziali.
 
-**Sezione** :ref:`digital-credential-flows:Flussi delle Credenziali Elettroniche`:
+**Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`:
   Guida dettagliata all'implementazione per i flussi di emissione e presentazione delle Credenziali Elettroniche, inclusi i flussi di interazione remota e di prossimità.
 
 **Sezione** :ref:`endpoints:Endpoints`: 
@@ -56,9 +56,9 @@ I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet**
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti completi di implementazione del wallet, componenti e processi di interazione.
-* **Sezione** :ref:`digital-credential-management:Gestione delle Credenziali Digitali`: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.
-* **Sezione** :ref:`digital-credential-flows:Flussi delle Credenziali Elettroniche`: Flussi di emissione e presentazione per le Credenziali Elettroniche.
+* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.
+* **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.
+* **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`: Flussi di emissione e presentazione per le Credenziali Elettroniche.
 * **Sezione** :ref:`wallet-provider-endpoint:Endpoint del Fornitore di Wallet`: Specifiche API per la federazione e specifiche per IT-Wallet.
 * **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Requisiti di implementazione per sicurezza e crittografia.
 * **Sezione** :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`: Modelli di implementazione specifici per dispositivi mobili.
@@ -66,7 +66,7 @@ I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet**
 
 **Sezioni secondarie:**
 
-* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Credenziale`: Comprensione delle interazioni e dei requisiti del fornitore di credenziali.
+* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Comprensione delle interazioni e dei requisiti del Fornitore di Credenziali.
 * **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Comprensione delle interazioni con le Relying Party e dei protocolli di presentazione.
 
 
@@ -77,10 +77,10 @@ Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Credenziale`: Soluzione di Fornitore di Credenziale - Requisiti completi di implementazione e dettagli dei componenti.
+* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Soluzione di Fornitore di Credenziale - Requisiti completi di implementazione e dettagli dei componenti.
 * **Sezione** :ref:`authentic-sources:Fonti Autentiche`: Comprensione dei modelli di integrazione con fonti di dati autorevoli.
-* **Sezione** :ref:`digital-credential-management:Gestione delle Credenziali Digitali`: Formati delle Credenziali Elettroniche e gestione del ciclo di vita.
-* **Sezione** :ref:`credential-issuance:Emissione di Credenziale Digitale`: Implementazione dettagliata del flusso di emissione.
+* **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Formati delle Credenziali Elettroniche e gestione del ciclo di vita.
+* **Sezione** :ref:`credential-issuance:Emissione di Attestati Elettronici`: Implementazione dettagliata del flusso di emissione.
 * **Sezione** :ref:`credential-issuer-endpoint:Endpoint del Credential Issuer`: Specifiche API per la federazione e specifiche per l'emissione.
 * **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Algoritmi di firma e requisiti di implementazione della sicurezza.
 
@@ -108,8 +108,8 @@ Se il lettore vuole gestire una **Fonte Autentica**, l'attenzione dovrebbe esser
 
 **Sezioni secondarie:**
 
-* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Credenziale`: Comprensione dei componenti principali dei Fornitori di Credenziali e dei processi di integrazione.
-* **Sezione** :ref:`digital-credential-management:Gestione delle Credenziali Digitali`: Comprensione di come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e di come viene gestito il loro ciclo di vita.
+* **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Comprensione dei componenti principali dei Fornitori di Credenziali e dei processi di integrazione.
+* **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Comprensione di come i dati autorevoli e gli attributi diventano Credenziali Elettroniche e di come viene gestito il loro ciclo di vita.
 
 Relying Party
 """""""""""""
@@ -118,15 +118,15 @@ I lettori interessati all'implementazione o alla gestione di una Soluzione di **
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti completi di implementazione del verificatore e Configurazione dell'Entità.
-* **Sezione** :ref:`digital-credential-management:Gestione delle Credenziali Digitali`: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.
+* **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti completi di implementazione del Verificatore di Credenziali.
+* **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.
 * **Sezione** :ref:`credential-presentation:Presentazione della Credenziale Digitale`: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.
 * **Sezione** :ref:`relying-party-endpoint:Endpoint della Relying Party`: Specifiche API relative alla federazione e alla verifica.
 * **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Requisiti della suite crittografica.
 
 **Sezioni secondarie:**
 
-* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Comprensione delle interazioni dell'Istanza del Wallet e dei protocolli di presentazione
+* **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Comprensione delle interazioni dell'Istanza del Wallet e dei protocolli di presentazione.
 * **Sezione** :ref:`mobile-application-instance:Istanza dell'Applicazione Mobile`: Modelli di implementazione specifici per dispositivi mobili.
 
 Argomenti Trasversali
@@ -155,4 +155,4 @@ Si suggerisce il seguente approccio di lettura in fasi:
 
 .. note::
 
-    Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziale e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Configurazione dell'Entità e ai flussi di federazione che si applicano a più ruoli.
+    Per gli implementatori che lavorano su soluzioni che coprono più ruoli (ad esempio, una combinazione di Soluzioni di Fornitore di Credenziale e Relying Party), si raccomanda di rivedere le sezioni per tutti i ruoli pertinenti prima di procedere con gli sviluppi. È importante prestare particolare attenzione ai requisiti di Entity Configuration e ai flussi di federazione che si applicano a più ruoli.

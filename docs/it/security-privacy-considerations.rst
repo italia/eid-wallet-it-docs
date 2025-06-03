@@ -82,7 +82,7 @@ SR-E-20
    * - |check-icon|
      - Il Trust Framework deve garantire che l'identificazione di un Fornitore di Credenziale sia unica e non ambigua. Se ci sono più istanze dello stesso Fornitore di Credenziale che utilizzano lo stesso materiale chiave, il Verificatore di Attestati Elettronici deve fidarsi di tutte le istanze allo stesso modo.
 
-Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziale) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Configurazione dell'Entità OpenID Federation verificata all'interno di una Trust Chain.
+Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziale) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.
 
 SR-E-30
 ^^^^^^^
@@ -92,7 +92,7 @@ SR-E-30
    * - |check-icon|
      - Il modo in cui il Verificatore di Attestati Elettronici determina l'affidabilità del Fornitore di Credenziale definito nel Trust Framework deve essere protetto dall'influenza di una parte malintenzionata che può, ad esempio, introdurre entità non affidabili in una directory.
 
-I Fornitori di Credenziale sono registrati da un Trust Anchor o dal suo Intermediario. Per verificare l'affidabilità di un Fornitore di Credenziale, un Verificatore di Attestati Elettronici deve verificare che la Trust Chain relativa al Fornitore di Credenziale sia valida e ancora attiva. Questo processo di convalida garantisce che solo entità affidabili siano autorizzate a partecipare al sistema, impedendo l'introduzione di attori non affidabili.
+I Fornitori di Credenziali sono registrati da un Trust Anchor o dal suo Intermediario. Per verificare l'affidabilità di un Fornitore di Credenziale, un Verificatore di Attestati Elettronici deve verificare che la Trust Chain relativa al Fornitore di Credenziale sia valida e ancora attiva. Questo processo di convalida garantisce che solo entità affidabili siano autorizzate a partecipare al sistema, impedendo l'introduzione di attori non affidabili.
 
 SR-E-40
 ^^^^^^^
@@ -100,7 +100,7 @@ SR-E-40
    :widths: 8 92
 
    * - |check-icon|
-     - Il Trust Framework deve garantire che ci sia un modo per i Verificatori di Attestati Elettronici di mantenere aggiornate le loro informazioni sui Fornitori di Credenziale affidabili e che ci sia un modo per revocare la fiducia in un Fornitore di Credenziale.
+     - Il Trust Framework deve garantire che ci sia un modo per i Verificatori di Attestati Elettronici di mantenere aggiornate le loro informazioni sui Fornitori di Credenziali affidabili e che ci sia un modo per revocare la fiducia in un Fornitore di Credenziale.
 
 Se l'Entity Statement di un Fornitore di Credenziale viene revocato o non è disponibile, significa che il Fornitore di Credenziale non è più considerato valido all'interno della federazione. Ciò garantisce che i Verificatori di Attestati Elettronici abbiano accesso in tempo reale allo stato delle entità affidabili e possano revocare la fiducia se necessario. Tuttavia, i Verificatori di Attestati Elettronici devono controllare attivamente lo stato del Fornitore di Credenziale interrogando gli endpoint della federazione (cioè, l'endpoint fetch per ottenere la Subordinate Statement).
 
@@ -156,8 +156,8 @@ SR-I-50
    * - |check-icon|
      - (condizionale rispetto a I-10) Il Fornitore di Credenziale deve garantire che la Credenziale sia stata memorizzata in un Wallet sicuro.
 
-una Wallet Attestation affidabile garantisce che l'Istanza del Wallet sia sicura e soddisfi gli standard di sicurezza richiesti prima che qualsiasi Credenziale venga emessa o memorizzata.
-Nei Passi 5-6 di :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`, l'Istanza del Wallet fornisce una Wallet Attestation, che include una prova di possesso
+Un Attestato di Wallet affidabile garantisce che l'Istanza del Wallet sia sicura e soddisfi gli standard di sicurezza richiesti prima che qualsiasi Credenziale venga emessa o memorizzata.
+Nei Passi 5-6 di :numref:`fig_Low-Level-Flow-ITWallet-PID-QEAA-Issuance`, l'Istanza del Wallet fornisce un Attestato di Wallet, che include una prova di possesso
 firmata con la chiave privata del Wallet. Questo attestato conferma che l'Istanza del Wallet è genuina ed è stata verificata dal Fornitore di Wallet.
 
 Il Fornitore di Credenziale verifica questo attestato prima di consentire al Wallet di partecipare al processo di emissione, garantendo che il Wallet aderisca a specifici standard di sicurezza.
@@ -184,7 +184,7 @@ SR-P-30
    * - |check-icon|
      - Il protocollo deve garantire che l'interazione tra il Wallet e il Verificatore di Attestati Elettronici sia protetta in modo tale che nessuna terza parte possa interferire con l'interazione modificando le informazioni trasmesse.
 
-Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di **nonce**, validazione della Trust Chain, Wallet Attestation e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e il Verificatore di Attestati Elettronici. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.
+Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di **nonce**, validazione della Trust Chain, Attestato di Wallet e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e il Verificatore di Attestati Elettronici. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.
 
 SR-P-40
 ^^^^^^^
@@ -255,10 +255,10 @@ SR-V-10
    * - |partially-check-icon|
      - (condizionale rispetto a I-50+V-20) Il Verificatore di Attestati Elettronici deve garantire che la Credenziale sia memorizzata in un Wallet sicuro.
 
-Il Verificatore di Attestati Elettronici controlla la Wallet Attestation durante gli scambi (inviato con la risposta di autorizzazione), garantendo che soddisfi i criteri di sicurezza richiesti dal Verificatore di Attestati Elettronici e sia sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.
+Il Verificatore di Attestati Elettronici controlla l'Attestato di Wallet durante gli scambi (inviato con la risposta di autorizzazione), garantendo che soddisfi i criteri di sicurezza richiesti dal Verificatore di Attestati Elettronici e sia sotto la sola responsabilità del suo emittente, il Fornitore di Wallet affidabile.
 
 .. note::
-  Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [`OpenID4VC-SecTrust`_] e non è chiaramente definito cosa significhi ^memorizzato in un Wallet sicuro^. Senza questo dettaglio, questo requisito è considerato solo parzialmente soddisfatto. Infatti, la Wallet Attestation garantisce
+  Attualmente, non sono specificate misure di sicurezza e privacy esplicite relative a questo requisito in [`OpenID4VC-SecTrust`_] e non è chiaramente definito cosa significhi ^memorizzato in un Wallet sicuro^. Senza questo dettaglio, questo requisito è considerato solo parzialmente soddisfatto. Infatti, l'Attestato di Wallet garantisce
   che l'Istanza del Wallet stia operando su un dispositivo sicuro e affidabile e aderisca alle rigorose politiche di sicurezza stabilite dal Fornitore di Wallet. Tuttavia, l'attestato non garantisce direttamente che ogni
   Credenziale all'interno del Wallet sia memorizzata in modo sicuro; verifica la sicurezza complessiva dell'ambiente del Wallet, all'interno del quale risiedono le Credenziali. Pertanto, mentre l'attestato supporta la
   fiducia del Verificatore di Attestati Elettronici che la Credenziale provenga da una fonte sicura, è in definitiva una garanzia ampia della sicurezza del Wallet, piuttosto che una convalida specifica della memorizzazione individuale della Credenziale.
@@ -282,9 +282,9 @@ SR-W-20
    :widths: 8 92
 
    * - |check-icon|
-     - Il Wallet deve fornire informazioni affidabili e complete sui Fornitori di Credenziale all'Utente.
+     - Il Wallet deve fornire informazioni affidabili e complete sui Fornitori di Credenziali all'Utente.
 
-L'Istanza del Wallet scopre i Fornitori di Credenziale affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Credenziale e i Trust Mark per filtrare il Fornitore di PID.
+L'Istanza del Wallet scopre i Fornitori di Credenziali affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Credenziale e i Trust Mark per filtrare il Fornitore di PID.
 
 Le informazioni del Fornitore di Credenziale vengono visualizzate all'Utente durante il processo di emissione e possono essere successivamente lette dall'Utente in quanto sono all'interno della Credenziale emessa.
 Oltre alle informazioni del Fornitore di Credenziale, il Tipo di Metadati della Credenziale Digitale contiene anche informazioni sulla Fonte Autentica.
@@ -412,7 +412,7 @@ SPR-P-10
 Per mitigare questa minaccia, la specifica IT-Wallet richiede i seguenti meccanismi di sicurezza nel processo di emissione:
 
 - *TLS*: Utilizzato in tutte le comunicazioni tra il Wallet e il Fornitore di Credenziale, garantendo che i dati in transito siano crittografati e protetti dall'intercettazione da parte di attaccanti.
-- *Wallet Attestation*: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Credenziale, fornendo ulteriore garanzia che il Fornitore di Credenziale stia interagendo con un'Istanza del Wallet legittima.
+- *Attestato di Wallet*: Garantisce che il Wallet operi su un dispositivo sicuro e affidabile e rispetti gli standard di sicurezza richiesti dal Fornitore di Credenziale, fornendo ulteriore garanzia che il Fornitore di Credenziale stia interagendo con un'Istanza del Wallet legittima.
 - *DPoP*: Garantisce che il Titolare del token di accesso possieda la chiave privata associata ad esso, impedendo agli attaccanti di riutilizzare token intercettati.
 - *Associazione del Titolare*: Lega la Credenziale a un Titolare specifico, garantendo che solo il legittimo Titolare possa utilizzare una Credenziale per autenticarsi con il Fornitore di Credenziale.
 - *validazione redirect_uri*: Questa validazione garantisce che la risposta di autorizzazione sia inviata all'endpoint corretto e autorizzato, impedendo così l'intercettazione non autorizzata da parte di attori malintenzionati. Garantire l'integrità del **redirect_uri** è fondamentale per evitare qualsiasi manipolazione o reindirizzamento dell'URI.
@@ -474,7 +474,7 @@ SPR-P-80
    * - |check-icon|
      - Il protocollo deve garantire che il Fornitore di Credenziale non possa sapere dove l'Utente utilizza la Credenziale.
 
-Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziale. Inoltre, Status Assertion che preservano la privacy, presentate insieme alle Credenziali,
+Il protocollo di scambio non richiede alcuna interazione tra Verificatori di Attestati Elettronici e Fornitori di Credenziali. Inoltre, Status Assertion che preservano la privacy, presentate insieme alle Credenziali,
 garantiscono che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziale non apprende dove o quando la Credenziale viene utilizzata.
 
 SPR-W-50

@@ -1,15 +1,15 @@
 .. include:: ../common/common_definitions.rst
 
-Configurazione dell'Entità del Fornitore di Wallet
+Entity Configuration del Fornitore di Wallet
 --------------------------------------------------
 
-Una richiesta HTTP GET all'endpoint della Federazione consente di recuperare la Configurazione dell'Entità del Fornitore di Wallet.
+Una richiesta HTTP GET all'endpoint della Federazione consente di recuperare la Entity Configuration del Fornitore di Wallet.
 
-La Configurazione dell'Entità del Fornitore di Wallet restituita DEVE contenere gli attributi descritti nelle sezioni seguenti.
+La Entity Configuration del Fornitore di Wallet restituita DEVE contenere gli attributi descritti nelle sezioni seguenti.
 
-La Configurazione dell'Entità del Fornitore di Wallet è un JWT firmato contenente le chiavi pubbliche e gli algoritmi supportati dal Fornitore di Wallet. È strutturata in conformità con `OID-FED`_ e con :ref:`trust:L'Infrastruttura di Trust` delineata in questa specifica.
+La Entity Configuration del Fornitore di Wallet è un JWT firmato contenente le chiavi pubbliche e gli algoritmi supportati dal Fornitore di Wallet. È strutturata in conformità con `OID-FED`_ e con :ref:`trust:L'Infrastruttura di Trust` delineata in questa specifica.
 
-Header JWT della Configurazione dell'Entità del Fornitore di Wallet
+Header JWT della Entity Configuration del Fornitore di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
@@ -30,7 +30,7 @@ Header JWT della Configurazione dell'Entità del Fornitore di Wallet
       - Tipo di media, impostato su ``entity-statement+jwt``.
       - `OID-FED`_.
 
-Payload JWT della Configurazione dell'Entità del Fornitore di Wallet
+Payload JWT della Entity Configuration del Fornitore di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
@@ -57,7 +57,7 @@ Payload JWT della Configurazione dell'Entità del Fornitore di Wallet
       - OBBLIGATORIO. Array di URL (String) contenente l'elenco degli URL delle Entità superiori immediate, come il Trust Anchor o un Intermediario, che POSSONO emettere un Entity Statement relativo al Fornitore di Wallet.
       - `OID-FED`_.
     * - ``jwks``
-      - OBBLIGATORIO. Un JSON Web Key Set (JWKS) che rappresenta la parte pubblica delle chiavi di firma dell'Entità di Federazione del Fornitore di Wallet. La chiave privata corrispondente è utilizzata dall'Entità per firmare la Configurazione dell'Entità su se stessa.
+      - OBBLIGATORIO. Un JSON Web Key Set (JWKS) che rappresenta la parte pubblica delle chiavi di firma dell'Entità di Federazione del Fornitore di Wallet. La chiave privata corrispondente è utilizzata dall'Entità per firmare la Entity Configuration su se stessa.
       - :rfc:`7517`, `OID-FED`_.
     * - ``metadata``
       - OBBLIGATORIO. Oggetto JSON che rappresenta i Tipi di Entità e i metadati per quei Tipi di Entità. Ogni nome membro dell'oggetto JSON è un Identificatore di Tipo di Entità, e ogni valore DEVE essere un oggetto JSON contenente parametri di metadati secondo lo schema di metadati del Tipo di Entità. DEVE contenere i metadati ``wallet_provider`` e OPZIONALMENTE i metadati ``federation_entity``.

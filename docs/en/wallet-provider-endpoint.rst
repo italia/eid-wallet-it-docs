@@ -14,12 +14,12 @@ The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose t
 Federation Endpoint
 ^^^^^^^^^^^^^^^^^^^
 
-The ``/.well-known/openid-federation`` endpoint serves as the discovery mechanism for trust establishment by retrieving the Wallet Provider Entity Configuration. 
+The ``/.well-known/openid-federation`` endpoint serves as the discovery mechanism for trust establishment by retrieving the Wallet Provider Entity Configuration.
 
 See Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` for technical details.
 
 
-Wallet Solution Nonce Endpoint 
+Wallet Solution Nonce Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
@@ -318,7 +318,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
     ],
     "typ": "jwt"
   }
-  
+
 .. code-block:: json
 
   {
@@ -400,7 +400,7 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
     * - **_sd**
       - REQUIRED. JSON array containing a list of all disclusure's digests.
       - `SD-JWT`_.
-    * - **sd_alg**
+    * - **_sd_alg**
       - REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the disclusure's digests.
       - `SD-JWT`_.
     * - **sub**
@@ -467,7 +467,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
     ],
     "typ": "dc+sd-jwt"
   }
-  
+
 .. code-block:: json
 
   {

@@ -23,7 +23,7 @@ The main Entities involved in the Digital Credential Catalogue are:
   - **Digital Credential Issuers**: The entities authorized to issue Digital Credentials, registering them in the Catalogue.
   - **Relying Parties**: They use the Digital Credential Catalogue to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
   - **Wallet Providers**: They access the Digital Credential Catalogue to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
-  - **Users**: The citizens who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.
+  - **Users**: The Users who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue.
 
 
@@ -226,7 +226,7 @@ Each element of the ``credentials`` array contains at least the following inform
    * - **pricing_policy**
      - OPTIONAL. Information about Digital Credential pricing, including:
 
-       * **models**: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing:
+       * **models**: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing
 
          - **pricing_type**: Type of pricing model, such as ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
          - **price**: Cost associated with the model.
@@ -325,7 +325,7 @@ The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [:rfc:
 Digital Credentials Catalogue Request
 ---------------------------------------
 
-The Digital Credentials Catalogue Request MUST be an HTTP GET using the application/jose media type as in the following non-normative example.
+The Digital Credentials Catalogue Request MUST be an HTTP GET using the ``application/jose`` media type as in the following non-normative example.
 
 .. code-block:: http
 

@@ -94,7 +94,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - **cryptographic_binding_methods_supported**: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The Credential Issuer MUST support the value "*jwk*" for "dc+sd-jwt" format and "*cose_key*" for "mso_mdoc".
         - **credential_signing_alg_values_supported**: JSON Array of case sensitive strings that identify the algorithms that the Credential Issuer MUST support to sign the issued Credential. See Section :ref:`algorithms:cryptographic algorithms` for more details.
         - **proof_types_supported**: JSON object which provides detailed information about the key proof(s) supported by the Credential Issuer. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The Credential Issuer MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Section 8.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof. The Credential Issuer MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`algorithms:cryptographic algorithms` for more details about the supported algorithms).
-        - **display**: Array of objects containing display language properties. The parameters that MUST be included are:
+        - **display**: Array of objects containing display language properties. The parameters that MUST be included are
 
                 - **name**: String value of a display name for the Credential.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
@@ -104,7 +104,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - **claims**: Array of JSON object each describing how a certain claim related to the Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
 
             - **path**: It contains the pointer that specifies the path to a specific claim within the Credential as defined in Appendix C of `OpenID4VCI`_.
-            - **display**: Array of objects containing display language properties. The parameters that MUST be included are:
+            - **display**: Array of objects containing display language properties. The parameters that MUST be included are
 
                 - **name**: String value of a display name for the claim.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
@@ -112,8 +112,8 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.
   * - **trust_frameworks_supported**
     - JSON array containing all supported trust frameworks. See `OIDC-IDA`_ Section 8. The supported values are:
-        - *it_cie*: CIE trust framework supported.
-        - *it_wallet*: Italian EUDI Wallet trust framework supported.
+        - *it_cie*: CIE id trust framework supported.
+        - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
   * - **evidence_supported**
     - JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.
