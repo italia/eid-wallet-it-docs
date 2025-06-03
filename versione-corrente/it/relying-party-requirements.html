@@ -18,7 +18,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="5.3.2. Relying Party Instance" href="relying-party-instance.html" />
+    <link rel="next" title="5.3.2. App di Verifica" href="relying-party-instance.html" />
     <link rel="prev" title="5.3. Soluzione di Relying Party" href="relying-party-solution.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -140,9 +140,9 @@
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">5.3. Soluzione di Relying Party</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">5.3.1. Requisiti della Soluzione di Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.2. Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">5.3.3. Mobile Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">5.3.4. Web Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.2. App di Verifica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">5.3.3. App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">5.3.4. App di Verifica Web</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Entity Configuration Relying Party</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.6. Metadati della Relying Party</a></li>
 </ul>
@@ -177,16 +177,16 @@
 <ul class="simple">
 <li><p>La Relying Party DEVE registrarsi presso l'Autorità di Federazione per ottenere sia il Certificato di Accesso che il Certificato di Registrazione.</p></li>
 <li><p>La Relying Party DEVE implementare meccanismi sicuri per la gestione e l'elaborazione delle Credenziali Elettroniche ricevute, garantendo l'integrità e la riservatezza della Soluzione di Relying Party.</p></li>
-<li><p>La Relying Party DEVE esporre un endpoint per la cancellazione degli attributi personali presentati dagli Utenti ogni volta che gli attributi richiesti dalla Relying Party includono un identificativo univoco dell'Utente (ad esempio, l'attributo &quot;tax_id_code&quot; dell'Attestato Elettronico di Dati di Identificazione Personale).</p></li>
-<li><p>La Soluzione di Relying Party DEVE implementare procedure adeguate di revoca per le istanze compromesse o dismesse.</p></li>
-<li><p>La Soluzione di Relying Party DEVE mantenere una traccia di audit delle verifiche delle Credenziali nel rispetto dei requisiti di privacy e delle normative sulla protezione dei dati.</p></li>
-<li><p>La Soluzione di Relying Party DEVE consentire meccanismi di Divulgazione Selettiva durante gli scenari di presentazione.</p></li>
-<li><p>Il Backend della Relying Party DEVE fornire un insieme di servizi RESTful per la registrazione delle Istanze di Relying Party e il rilascio dei Certificati di Accesso.</p></li>
-<li><p>L'Istanza di Relying Party DEVE periodicamente ristabilire la fiducia con la Relying Party attraverso controlli di integrità e procedure di rinnovo del Certificato.</p></li>
-<li><p>L'Istanza di Relying Party DEVE fornire sia un Certificato di Registrazione che un Certificato di Accesso alle Istanze del Wallet durante la loro interazione per dimostrare la legittimità e l'autorizzazione delle sue richieste.</p></li>
-<li><p>L'Istanza di Relying Party DEVE comunicare agli Utenti quali attributi vengono richiesti e per quale scopo durante qualsiasi flusso di presentazione della Credenziale.</p></li>
-<li><p>Le Istanze di Relying Party Mobile DEVONO essere compatibili e funzionali sia sui sistemi operativi Android che iOS e disponibili rispettivamente sul Play Store e sull'App Store.</p></li>
-<li><p>Le Istanze di Relying Party Mobile DEVONO gestire scenari di presentazione sia online che offline, con misure di sicurezza e notifiche utente appropriate.</p></li>
+<li><p>La Relying Party DEVE esporre un endpoint per la cancellazione degli attributi personali presentati dagli Utenti ogni volta che gli Attestati Elettronici richiesti dalla Relying Party includono un identificativo univoco dell'Utente (ad esempio, l'attributo &quot;tax_id_code&quot; dell'Attestato Elettronico di Dati di Identificazione Personale).</p></li>
+<li><p>La Soluzione di Relying Party DEVE implementare procedure adeguate di revoca per le App di Verifica compromesse o dismesse.</p></li>
+<li><p>La Soluzione di Relying Party DEVE mantenere una traccia di audit delle verifiche eseguite sigli Attestati Elettronici che le sono stati presentati nel rispetto dei requisiti di privacy e delle normative sulla protezione dei dati.</p></li>
+<li><p>La Soluzione di Relying Party DEVE consentire l'uso della Divulgazione Selettiva durante la fase di presentazione degli attributi negli Attestati Elettronici .</p></li>
+<li><p>Il Backend della Relying Party DEVE fornire un insieme di API RESTful per la registrazione delle App di Verifica e il rilascio dei Certificati di Accesso.</p></li>
+<li><p>L'App di Verifica DEVE periodicamente ristabilire la trust con la Relying Party attraverso controlli di integrità e procedure di rinnovo del Certificato di Accesso.</p></li>
+<li><p>L'App di Verifica DEVE fornire sia un Certificato di Registrazione che un Certificato di Accesso alle Istanze del Wallet durante la loro interazione per dimostrare la legittimità e l'autorizzazione delle sue richieste.</p></li>
+<li><p>L'App di Verifica DEVE comunicare agli Utenti quali attributi vengono richiesti e per quale scopo durante qualsiasi flusso di presentazione degli Attestati Elettronici.</p></li>
+<li><p>Le App di Verifica Mobile DEVONO essere compatibili e funzionali sia sui sistemi operativi Android che iOS e disponibili rispettivamente sul Play Store e sull'App Store.</p></li>
+<li><p>Le App di Verifica Mobile DEVONO gestire scenari di presentazione sia online che offline, con misure di sicurezza e notifiche utente appropriate.</p></li>
 </ul>
 </section>
 
@@ -210,7 +210,7 @@
 
             <div class="right">
                 
-                    <a href="relying-party-instance.html"><span><span class="section-number">5.3.2. </span>Relying Party Instance</span><span class="icon">&gt;</span></a>
+                    <a href="relying-party-instance.html"><span><span class="section-number">5.3.2. </span>App di Verifica</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -218,7 +218,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

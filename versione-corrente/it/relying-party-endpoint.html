@@ -165,46 +165,46 @@
             
   <section id="endpoint-della-relying-party">
 <h1><span class="section-number">8.3. </span>Endpoint della Relying Party<a class="headerlink" href="#endpoint-della-relying-party" title="Link to this heading">¶</a></h1>
-<p>La Relying Party DEVE esporre un endpoint di trust conforme alla specifica OpenID Federation 1.0 Wallet Architecture, facilitando la distribuzione dell'identità e dei metadati della Relying Party. Inoltre, nel caso in cui la Relying Party supporti la presentazione di prossimità, DEVE esporre una serie di endpoint per gestire il ciclo di vita delle Istanze di Relying Party (ad esempio, fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso); i dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.</p>
+<p>La Relying Party DEVE esporre un Endpoint per verificare il trust conforme alla specifica OpenID Federation 1.0 Wallet Architecture, facilitando la distribuzione dell'identità e dei metadata della Relying Party. Inoltre, nel caso in cui il Relying Party supporti la presentazione di prossimità, DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica (ad esempio, fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso); i dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.</p>
 <section id="endpoint-di-federazione-della-relying-party">
 <h2><span class="section-number">8.3.1. </span>Endpoint di Federazione della Relying Party<a class="headerlink" href="#endpoint-di-federazione-della-relying-party" title="Link to this heading">¶</a></h2>
-<p>La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code>, secondo la Sezione <a class="reference internal" href="trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. I dettagli tecnici sono forniti nella Sezione <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
+<p>La Relying Party DEVE fornire la propria Entity Configuration attraverso l'Endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code>, secondo la Sezione <a class="reference internal" href="trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>. I dettagli tecnici sono forniti nella Sezione <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
 </section>
 <section id="endpoint-nonce-della-relying-party">
 <h2><span class="section-number">8.3.2. </span>Endpoint Nonce della Relying Party<a class="headerlink" href="#endpoint-nonce-della-relying-party" title="Link to this heading">¶</a></h2>
-<p>L'Endpoint Nonce della Relying Party consente all'Istanza di Relying Party di richiedere un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> crittografico dal Backend della Relying Party. Il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> serve come sfida imprevedibile e monouso per garantire la freschezza e prevenire attacchi di replay.</p>
+<p>Il Nonce Endpoint della Relying Party consente all'App di Verifica di richiedere un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> crittografico dal Backend della Relying Party. Il <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, un codice monouso e casuale, serve per garantire l'unicità e prevenire replay attacks.</p>
 <p>Ulteriori dettagli sulla Richiesta e Risposta Nonce sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="mobile-application-instance.html#richiesta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Nonce dell'Applicazione Mobile</span></a> e <a class="reference internal" href="mobile-application-instance.html#richiesta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Nonce dell'Applicazione Mobile</span></a>.</p>
 </section>
 <section id="endpoint-di-inizializzazione-dell-istanza-di-relying-party">
 <h2><span class="section-number">8.3.3. </span>Endpoint di Inizializzazione dell'Istanza di Relying Party<a class="headerlink" href="#endpoint-di-inizializzazione-dell-istanza-di-relying-party" title="Link to this heading">¶</a></h2>
-<p>L'Endpoint di Inizializzazione dell'Istanza di Relying Party consente l'inizializzazione delle Istanze di Relying Party, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro.</p>
-<p>Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'Istanza di Relying Party sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="mobile-application-instance.html#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> e <a class="reference internal" href="mobile-application-instance.html#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>.</p>
+<p>L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro.</p>
+<p>Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Verifica sono forniti rispettivamente nelle Sezioni <a class="reference internal" href="mobile-application-instance.html#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> e <a class="reference internal" href="mobile-application-instance.html#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>.</p>
 </section>
 <section id="endpoint-di-associazione-chiavi-della-relying-party">
 <h2><span class="section-number">8.3.4. </span>Endpoint di Associazione Chiavi della Relying Party<a class="headerlink" href="#endpoint-di-associazione-chiavi-della-relying-party" title="Link to this heading">¶</a></h2>
-<p>L'Endpoint di Associazione Chiavi della Relying Party consente alle Istanze di Relying Party di associare la coppia di chiavi appena creata, che sarà associata a un Certificato di Accesso, all'Istanza di Relying Party, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di <a class="reference internal" href="mobile-application-instance.html#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>. Prima di completare il processo, il Backend della Relying Party deve anche verificare l'integrità dell'Istanza di Relying Party.</p>
+<p>Il Key Binding Endpoint della Relying Party consente alle App di Verifica di associare la coppia di chiavi appena creata, che sarà associata a un Certificato di Accesso, all'App di Verifica, basandosi su una dimostrazione di possesso delle Cryptographic Hardware Keys generate durante la fase di <a class="reference internal" href="mobile-application-instance.html#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>. Prima di completare il processo, il Backend della Relying Party deve anche verificare l'integrità dell'App di Verifica.</p>
 <section id="richiesta-di-associazione-chiavi-della-relying-party">
 <h3><span class="section-number">8.3.4.1. </span>Richiesta di Associazione Chiavi della Relying Party<a class="headerlink" href="#richiesta-di-associazione-chiavi-della-relying-party" title="Link to this heading">¶</a></h3>
-<p>Ulteriori dettagli sulla Richiesta di Associazione Chiavi della Relying Party sono forniti nella sezione <a class="reference internal" href="mobile-application-instance.html#richiesta-di-associazione-chiave-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Associazione Chiave dell'Applicazione Mobile</span></a>.</p>
+<p>Ulteriori dettagli sulla Richiesta di Key Binding della Relying Party sono forniti nella sezione <a class="reference internal" href="mobile-application-instance.html#richiesta-di-associazione-chiave-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Associazione Chiave dell'Applicazione Mobile</span></a>.</p>
 <p>L'header <code class="docutils literal notranslate"><span class="pre">typ</span></code> del JWT di Richiesta di Integrità assume il valore <code class="docutils literal notranslate"><span class="pre">rp-kb+jwt</span></code>.</p>
 </section>
 <section id="risposta-di-associazione-chiavi-della-relying-party">
 <h3><span class="section-number">8.3.4.2. </span>Risposta di Associazione Chiavi della Relying Party<a class="headerlink" href="#risposta-di-associazione-chiavi-della-relying-party" title="Link to this heading">¶</a></h3>
-<p>In caso di richiesta riuscita, il Backend della Relying Party fornisce una Risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code>.</p>
+<p>In caso di richiesta riuscita, il Backend della Relying Party fornisce una HTTP Response con Status Code <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code>.</p>
 <p>Di seguito è riportato un esempio non normativo di una Risposta alla Richiesta di Associazione Chiavi.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
 </pre></div>
 </div>
-<p>Se si verificano errori durante il processo, viene restituita una risposta di errore. Ulteriori dettagli sulla risposta di errore sono forniti nella sezione <a class="reference internal" href="mobile-application-instance.html#risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile"><span class="std std-ref">Risposta di Errore di Associazione Chiave dell'Applicazione Mobile</span></a>.</p>
+<p>Se si verificano errori durante il processo, viene restituita una Error Response. Ulteriori dettagli sulla Error Response sono forniti nella sezione <a class="reference internal" href="mobile-application-instance.html#risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile"><span class="std std-ref">Risposta di Errore di Associazione Chiave dell'Applicazione Mobile</span></a>.</p>
 </section>
 </section>
 <section id="endpoint-del-certificato-di-accesso-della-relying-party">
 <h2><span class="section-number">8.3.5. </span>Endpoint del Certificato di Accesso della Relying Party<a class="headerlink" href="#endpoint-del-certificato-di-accesso-della-relying-party" title="Link to this heading">¶</a></h2>
-<p>L'Endpoint del Certificato di Accesso della Relying Party consente alle Istanze di Relying Party di ottenere un Certificato di Accesso.</p>
+<p>L'Endpoint del Certificato di Accesso della Relying Party consente alle App di Verifica di ottenere un Certificato di Accesso.</p>
 <section id="richiesta-del-certificato-di-accesso-della-relying-party">
 <h3><span class="section-number">8.3.5.1. </span>Richiesta del Certificato di Accesso della Relying Party<a class="headerlink" href="#richiesta-del-certificato-di-accesso-della-relying-party" title="Link to this heading">¶</a></h3>
 <p>La Richiesta del Certificato di Accesso utilizza il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
-<p>La richiesta include il seguente parametro nel corpo:</p>
+<p>La richiesta include il seguente parametro nel body:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -237,7 +237,7 @@
 </section>
 <section id="risposta-del-certificato-di-accesso-della-relying-party">
 <h3><span class="section-number">8.3.5.2. </span>Risposta del Certificato di Accesso della Relying Party<a class="headerlink" href="#risposta-del-certificato-di-accesso-della-relying-party" title="Link to this heading">¶</a></h3>
-<p>In caso di richiesta riuscita, l'Endpoint del Certificato di Accesso della Relying Party fornisce una Risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e il Certificato di Accesso. La Risposta del Certificato di Accesso, che utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>, include i seguenti parametri nel corpo:</p>
+<p>In caso di richiesta riuscita, l'Access Certificate Endpoint della Relying Party fornisce un HTTP Response con Status Code <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e il Certificato di Accesso. La Risposta dell'Access Certificate Endpoint, che utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>, include i seguenti parametri nel body:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -257,7 +257,7 @@
 </tr>
 </tbody>
 </table>
-<p>Di seguito è riportato un esempio non normativo di una Risposta del Certificato di Accesso.</p>
+<p>Di seguito è riportato un esempio non normativo di Risposta dall'Access Certificate Endpoint.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -266,14 +266,14 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Se si verificano errori, l'Endpoint del Certificato di Accesso della Relying Party restituisce una risposta di errore. La risposta utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come tipo di contenuto e include i seguenti parametri:</p>
+<p>Se si verificano errori, l'Access Certificate Endpoint della Relying Party restituisce una Error Response. La risposta utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come tipo di contenuto e include i seguenti parametri:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. Il codice di errore.</p></li>
-<li><p><em>error_description</em>. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.</p></li>
+<li><p><em>error_description</em>. Testo in forma leggibile che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.</p></li>
 </ul>
 </div></blockquote>
-<p>Di seguito è riportato un esempio non normativo di una Risposta di Errore del Certificato di Accesso.</p>
+<p>Di seguito è riportato un esempio non normativo di una Error Response dell'Access Certificate Endpoint.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -283,7 +283,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore che DEVONO essere supportati per la risposta di errore, se non diversamente specificato:</p>
+<p>La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore che DEVONO essere supportati per l'Error Response, se non diversamente specificato:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 30.0%" />
@@ -299,7 +299,7 @@
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
-<td><p>La richiesta è malformata, mancano parametri richiesti (ad esempio, parametri di intestazione o asserzione di integrità), o include parametri non validi e sconosciuti.</p></td>
+<td><p>La richiesta non è conforme allo standard, mancano parametri richiesti (ad esempio, <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>), oppure sono includi parametri non validi e sconosciuti.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -322,7 +322,7 @@
 <p>L'Endpoint di Cancellazione, che è descritto in <a class="reference internal" href="relying-party-metadata.html#metadati-della-relying-party"><span class="std std-ref">Metadati della Relying Party</span></a>, consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party. La Relying Party DEVE richiedere l'autenticazione dell'Utente prima di procedere con la cancellazione degli attributi.</p>
 <section id="richiesta-di-cancellazione">
 <h3><span class="section-number">8.3.6.1. </span>Richiesta di Cancellazione<a class="headerlink" href="#richiesta-di-cancellazione" title="Link to this heading">¶</a></h3>
-<p>La Richiesta di Cancellazione DEVE essere una richiesta GET all'Endpoint di Cancellazione. L'Istanza di Wallet DEVE anche supportare un meccanismo di callback che consenta all'User-Agent di notificare all'Istanza di Wallet (e quindi all'Utente) una volta che viene restituita la Risposta di Cancellazione.</p>
+<p>La Richiesta di Cancellazione DEVE essere una richiesta GET all'Endpoint di Cancellazione. L'Istanza di Wallet DEVE anche supportare un meccanismo di callback che consenta allo User-Agent di notificare lo stato della richiesta all'Istanza di Wallet (e quindi all'Utente) una volta che viene restituita la Risposta di Cancellazione.</p>
 <p>Di seguito è riportato un esempio non normativo di una Richiesta di Cancellazione in cui l'URL di callback viene passato come parametro di query.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/erasure-endpoint?callback_url=https://wallet-instance/erasure_response</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
@@ -331,15 +331,15 @@
 </section>
 <section id="risposta-di-cancellazione">
 <h3><span class="section-number">8.3.6.2. </span>Risposta di Cancellazione<a class="headerlink" href="#risposta-di-cancellazione" title="Link to this heading">¶</a></h3>
-<p>Se la cancellazione di tutti gli attributi associati all'Utente è avvenuta con successo, la Risposta di Cancellazione DEVE restituire un codice di stato HTTP 204.</p>
+<p>Se la cancellazione di tutti gli attributi associati all'Utente è avvenuta con successo, la Risposta di Cancellazione DEVE restituire un Status Code HTTP 204.</p>
 <p>Se invece la procedura di cancellazione degli attributi fallisce per qualsiasi circostanza, la Relying Party DEVE restituire una risposta di errore con <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come tipo di contenuto e DEVE includere i seguenti parametri:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: Il codice di errore.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Testo in forma leggibile che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.</p></li>
 </ul>
 </div></blockquote>
-<p>La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore che DEVONO essere supportati per la risposta di errore:</p>
+<p>La seguente tabella elenca gli Status Code HTTP e i relativi Error Codes che DEVONO essere supportati per la Error Response:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -359,7 +359,7 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Unauthorized</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unauthorized</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta a causa dell'autenticazione non valida da parte dell'Utente.</p></td>
+<td><p>La richiesta non può essere soddisfatta in quanto l'autenticazione da parte dell'Utente risulta fallita o non valida.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
@@ -371,7 +371,7 @@
 </tr>
 </tbody>
 </table>
-<p>Di seguito è riportato un esempio di risposta di errore dall'Endpoint di Cancellazione:</p>
+<p>Di seguito è riportato un esempio di Error Response dall'Endpoint di Cancellazione:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -381,7 +381,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Alla ricezione di una risposta di errore, l'Istanza di Wallet che ha effettuato la Richiesta di Cancellazione DEVE informare l'Utente della condizione di errore in modo appropriato.</p>
+<p>Alla ricezione di una Error Response, l'Istanza di Wallet che ha effettuato la Richiesta di Cancellazione DEVE informare l'Utente della condizione di errore in modo appropriato.</p>
 </section>
 </section>
 </section>
@@ -448,7 +448,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

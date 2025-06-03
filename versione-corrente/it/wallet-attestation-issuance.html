@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.1.4.2.2. Emissione dell&#39;Attestato di Wallet &#8212; IT-Wallet Technical Documentation - Versione Corrente - 1.0.0</title>
+    <title>5.1.4.2.2. Emissione della Wallet Attestation &#8212; IT-Wallet Technical Documentation - Versione Corrente - 1.0.0</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -172,29 +172,29 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="emissione-dell-attestato-di-wallet">
-<h1><span class="section-number">5.1.4.2.2. </span>Emissione dell'Attestato di Wallet<a class="headerlink" href="#emissione-dell-attestato-di-wallet" title="Link to this heading">¶</a></h1>
-<p>Questa sezione descrive come il Fornitore di Wallet emette un Attestato di Wallet.</p>
+  <section id="emissione-della-wallet-attestation">
+<h1><span class="section-number">5.1.4.2.2. </span>Emissione della Wallet Attestation<a class="headerlink" href="#emissione-della-wallet-attestation" title="Link to this heading">¶</a></h1>
+<p>Questa sezione descrive come il Fornitore di Wallet emette una Wallet Attestation.</p>
 <figure class="align-default" id="id1">
 <p class="plantuml">
 <object data="_images/plantuml-9f3742e6902ea1df7093dd48833be3fac3d7f066.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-9f3742e6902ea1df7093dd48833be3fac3d7f066.png"><img src="_images/plantuml-9f3742e6902ea1df7093dd48833be3fac3d7f066.png" alt="La figura illustra il Diagramma di Sequenza per l'acquisizione dell'Attestato di Wallet." style="width: 99.0%"/></a>
+<a href="_images/plantuml-9f3742e6902ea1df7093dd48833be3fac3d7f066.png"><img src="_images/plantuml-9f3742e6902ea1df7093dd48833be3fac3d7f066.png" alt="La figura illustra il Diagramma di Sequenza per l'acquisizione della Wallet Attestation." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0waKBaXmg0HgLKfRWL3K5hX4YcRNazrHDlPYpsu9lnvxcsQtnUrb5TjlFjwRUJaDWbwwRQEm4sUxRK5UrMm8riv9uVweDsq4SCajMb4AIt4Uz8z0NWC6w4B4Jn2WVs7JaC2r3OAsf065RGjFKP-fvv8YIgZoB3ku9J_Sd2skmqCCIe2Zq7gsLUM9RBRCmhkU3NaeiDoGDKDeKMwKKgcrjvzYwHEueTyT1G44I_VWMl8ex2n8ZRAqFhwofm08-wnd8X4-O19Zxb4eaL0gVlOvpsigDy1hEFUxLbpbiQsvX2lqvXuzmLVQmTBUOGKphUlzxMf3kvLWfVKnS03iaHii6bBJp9TaKuEf8GlKrhIDnmPYABJ8FkKxt0u9swxGUWx_NNlkOo6bl7L2u7hoYSGyoWD7twulh-ukRouklgi79iy5vG19S71ha9hW2vb7rT0QS8KWMs09i2L1WuAAh4cL3cHYdL5whQrBww17GOSnnS-076d3sbEe9m43Pg_DU6jecYWhO4IN3PELLUflLMEezR0WjrTdxzv_c1sIpI4hwN4kwMlpNhZ5qawc7RYoA9sF9U0ZfDDibkjf3jaLcLwF4ntRGWadMOugFOsIyQFBLXW2-JH4hNFSClj_6E0zI_rIhZdaISzXb7XfSnnVK7xGYinGT6A1_8PFjksMh7c5nDFT6ssHZdbR98C_-qTBpc3BmjZmNpA37VhuswWkiAsoenozCUxxpnI3GgD6-SUiudbeRWPvP4xpkBqJyBcd_4PCxPYLEhJE1dfkqEavngfJigRRDly0">Diagramma di Sequenza per l'acquisizione dell'Attestato di Wallet.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0waKBaXmg0HgLKfRWL3K5hX4YcRNazrHDlPYpsu9lnvxcsQtnUrb5TjlFjwRUJaDWbwwRQEm4sUxRK5UrMm8riv9uVweDsq4SCajMb4AIt4Uz8z0NWC6w4B4Jn2WVs7JaC2r3OAsf065RGjFKP-fvv8YIgZoB3ku9J_Sd2skmqCCIe2Zq7gsLUM9RBRCmhkU3NaeiDoGDKDeKMwKKgcrjvzYwHEueTyT1G44I_VWMl8ex2n8ZRAqFhwofm08-wnd8X4-O19Zxb4eaL0gVlOvpsigDy1hEFUxLbpbiQsvX2lqvXuzmLVQmTBUOGKphUlzxMf3kvLWfVKnS03iaHii6bBJp9TaKuEf8GlKrhIDnmPYABJ8FkKxt0u9swxGUWx_NNlkOo6bl7L2u7hoYSGyoWD7twulh-ukRouklgi79iy5vG19S71ha9hW2vb7rT0QS8KWMs09i2L1WuAAh4cL3cHYdL5whQrBww17GOSnnS-076d3sbEe9m43Pg_DU6jecYWhO4IN3PELLUflLMEezR0WjrTdxzv_c1sIpI4hwN4kwMlpNhZ5qawc7RYoA9sF9U0ZfDDibkjf3jaLcLwF4ntRGWadMOugFOsIyQFBLXW2-JH4hNFSClj_6E0zI_rIhZdaISzXb7XfSnnVK7xGYinGT6A1_8PFjksMh7c5nDFT6ssHZdbR98C_-qTBpc3BmjZmNpA37VhuswWkiAsoenozCUxxpnI3GgD6-SUiudbeRWPvP4xpkBqJyBcd_4PCxPYLEhJE1dfkqEavngfJigRRDly0">Diagramma di Sequenza per l'acquisizione della Wallet Attestation.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p><strong>Passo 1</strong>: L'Utente avvia una nuova operazione che richiede l'acquisizione di un Attestato di Wallet.</p>
+<p><strong>Passo 1</strong>: L'Utente avvia una nuova operazione che richiede l'acquisizione di una Wallet Attestation.</p>
 <p><strong>Passi 2-3</strong>: L'Istanza del Wallet DEVE:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Verificare l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la reinizializzazione dell'Istanza del Wallet.</p></li>
-<li><p>Generare una coppia di chiavi asimmetriche effimere per l'Attestato di Wallet (<code class="docutils literal notranslate"><span class="pre">ephemeral_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">ephemeral_key_priv</span></code>), collegando la chiave pubblica all'attestato.</p></li>
+<li><p>Generare una coppia di chiavi asimmetriche effimere per la Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">ephemeral_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">ephemeral_key_priv</span></code>), collegando la chiave pubblica all'attestato.</p></li>
 <li><p>Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati.</p></li>
 </ol>
 </div></blockquote>
-<p><strong>Passi 4-6 (Recupero del Nonce)</strong>: L'Istanza del Wallet richiede un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> dall'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet"><span class="std std-ref">Endpoint Nonce della Soluzione Wallet</span></a> del Backend del Fornitore del Wallet. Questo <code class="docutils literal notranslate"><span class="pre">nonce</span></code> deve essere imprevedibile e serve come principale difesa contro gli attacchi di replay.</p>
+<p><strong>Passi 4-6 (Recupero del Nonce)</strong>: L'Istanza del Wallet richiede un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet"><span class="std std-ref">Endpoint Nonce della Soluzione Wallet</span></a> del Backend del Fornitore del Wallet. Questo <code class="docutils literal notranslate"><span class="pre">nonce</span></code> deve essere imprevedibile e serve come principale difesa contro gli attacchi di replay.</p>
 <p>Il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere prodotto in modo da garantire il suo utilizzo singolo entro un periodo di tempo predeterminato.</p>
 <p>In caso di richiesta riuscita, il Fornitore di Wallet genera e restituisce il valore del nonce all'Istanza del Wallet.</p>
 <p><strong>Passo 7</strong>: L'Istanza del Wallet esegue le seguenti azioni:</p>
@@ -219,17 +219,17 @@
 <p class="admonition-title">Nota</p>
 <p><code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code> è un payload personalizzato generato dal Servizio di Integrità del Dispositivo, firmato dall'OEM del dispositivo e codificato in base64 per avere uniformità tra diversi dispositivi.</p>
 </div>
-<p><strong>Passi 11-12 (Richiesta di Emissione dell'Attestato di Wallet)</strong>: L'Istanza del Wallet:</p>
+<p><strong>Passi 11-12 (Richiesta di Emissione della Wallet Attestation)</strong>: L'Istanza del Wallet:</p>
 <ul class="simple">
-<li><p>Costruisce la Richiesta di Attestato di Wallet sotto forma di JWT. Questo JWT include <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code> e altri parametri relativi alla configurazione (vedi <a class="reference internal" href="mobile-application-instance.html#table-key-binding-request-claim"><span class="std std-ref">Tabella del Corpo della Richiesta di Attestato di Wallet</span></a>) ed è firmato utilizzando la chiave privata della coppia di chiavi effimere generata inizialmente.</p></li>
-<li><p>Invia la Richiesta di Attestato di Wallet all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-dell-attestato-di-wallet"><span class="std std-ref">Endpoint di Emissione dell'Attestato di Wallet</span></a> del Backend del Fornitore del Wallet.</p></li>
+<li><p>Costruisce la Richiesta di Wallet Attestation sotto forma di JWT. Questo JWT include <code class="docutils literal notranslate"><span class="pre">integrity_assertion</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">cnf</span></code> e altri parametri relativi alla configurazione (vedi <a class="reference internal" href="mobile-application-instance.html#table-key-binding-request-claim"><span class="std std-ref">Tabella del Corpo della Richiesta di Wallet Attestation</span></a>) ed è firmato utilizzando la chiave privata della coppia di chiavi effimere generata inizialmente.</p></li>
+<li><p>Invia la Richiesta di Wallet Attestation all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-attestation"><span class="std std-ref">Endpoint di Emissione della Wallet Attestation</span></a> del Backend del Fornitore del Wallet.</p></li>
 </ul>
-<p>L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Attestato di Wallet come parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> nel corpo di una richiesta HTTP all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-dell-attestato-di-wallet"><span class="std std-ref">Endpoint di Emissione dell'Attestato di Wallet</span></a> del Fornitore di Wallet.</p>
-<p><strong>Passi 13-17</strong>: Il Backend del Fornitore del Wallet valuta la Richiesta di Attestato di Wallet e DEVE eseguire i seguenti controlli:</p>
+<p>L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet Attestation come parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> nel corpo di una richiesta HTTP all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-emissione-della-wallet-attestation"><span class="std std-ref">Endpoint di Emissione della Wallet Attestation</span></a> del Fornitore di Wallet.</p>
+<p><strong>Passi 13-17</strong>: Il Backend del Fornitore del Wallet valuta la Richiesta di Wallet Attestation e DEVE eseguire i seguenti controlli:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>La richiesta DEVE includere tutti i parametri dell'intestazione HTTP richiesti come definito in <a class="reference internal" href="wallet-provider-endpoint.html#richiesta-di-emissione-dell-attestato-di-wallet"><span class="std std-ref">Richiesta di Emissione dell'Attestato di Wallet</span></a>.</p></li>
-<li><p>La firma della Richiesta di Attestato di Wallet DEVE essere valida e verificabile utilizzando la <code class="docutils literal notranslate"><span class="pre">jwk</span></code> fornita.</p></li>
+<li><p>La richiesta DEVE includere tutti i parametri dell'intestazione HTTP richiesti come definito in <a class="reference internal" href="wallet-provider-endpoint.html#richiesta-di-emissione-della-wallet-attestation"><span class="std std-ref">Richiesta di Emissione della Wallet Attestation</span></a>.</p></li>
+<li><p>La firma della Richiesta di Wallet Attestation DEVE essere valida e verificabile utilizzando la <code class="docutils literal notranslate"><span class="pre">jwk</span></code> fornita.</p></li>
 <li><p>Il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere stato generato dal Fornitore di Wallet e non essere stato utilizzato in precedenza.</p></li>
 <li><p>DEVE esistere un'Istanza del Wallet valida e attualmente registrata associata a quella fornita.</p></li>
 <li><p>Il <code class="docutils literal notranslate"><span class="pre">client_data</span></code> DEVE essere ricostruito utilizzando il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e la chiave pubblica <code class="docutils literal notranslate"><span class="pre">jwk</span></code>. Il valore del parametro <code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code> viene quindi convalidato utilizzando la chiave pubblica della Cryptographic Hardware Key registrata associata all'Istanza del Wallet.</p></li>
@@ -238,8 +238,8 @@
 <li><p>L'URL nel parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> DEVE corrispondere all'identificatore URL del Fornitore di Wallet.</p></li>
 </ol>
 </div></blockquote>
-<p>Dopo il completamento con successo di tutti i controlli, il Fornitore di Wallet emette un Attestato di Wallet valido per un massimo di 24 ore.</p>
-<p><strong>Passo 18 (Risposta di Emissione dell'Attestato di Wallet)</strong>: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, contenente gli Attestati di Wallet firmati dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire l'Attestato di Wallet in almeno tre formati: JWT, SD-JWT e mdoc. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità degli Attestati di Wallet ricevuti oltre alla verifica di fiducia del suo Fornitore di Credenziale.</p>
+<p>Dopo il completamento con successo di tutti i controlli, il Fornitore di Wallet emette una Wallet Attestation valido per un massimo di 24 ore.</p>
+<p><strong>Passo 18 (Risposta di Emissione della Wallet Attestation)</strong>: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, contenente gli Attestati di Wallet firmati dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet Attestation in almeno tre formati: JWT, SD-JWT e mdoc. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità degli Attestati di Wallet ricevuti oltre alla verifica di fiducia del suo Fornitore di Credenziali.</p>
 <p>Di seguito è riportato un esempio non normativo della risposta.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
@@ -292,7 +292,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

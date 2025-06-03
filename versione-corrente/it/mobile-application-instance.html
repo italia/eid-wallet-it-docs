@@ -439,7 +439,7 @@ Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Att
 <section id="associazione-chiave-dell-applicazione-mobile">
 <h2><span class="section-number">15.1.2. </span>Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h2>
 <p>Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di <a class="reference internal" href="#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.</p>
-<p>Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni <a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance-registration"><span class="std std-ref">Mobile Relying Party Instance Registration</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.</p>
+<p>Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni <a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile"><span class="std std-ref">App di Verifica Mobile</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.</p>
 <section id="richiesta-di-associazione-chiave-dell-applicazione-mobile">
 <h3><span class="section-number">15.1.2.1. </span>Richiesta di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#richiesta-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
 <p>La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
@@ -563,7 +563,7 @@ Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Att
 </section>
 <section id="risposta-di-associazione-chiave-dell-applicazione-mobile">
 <h3><span class="section-number">15.1.2.2. </span>Risposta di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
-<p>La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni <a class="reference internal" href="relying-party-endpoint.html#risposta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Risposta di Associazione Chiavi della Relying Party</span></a> e <a class="reference internal" href="wallet-provider-endpoint.html#risposta-all-emissione-dell-attestato-di-wallet"><span class="std std-ref">Risposta all'Emissione dell'Attestato di Wallet</span></a>.</p>
+<p>La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni <a class="reference internal" href="relying-party-endpoint.html#risposta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Risposta di Associazione Chiavi della Relying Party</span></a> e <a class="reference internal" href="wallet-provider-endpoint.html#risposta-all-emissione-della-wallet-attestation"><span class="std std-ref">Risposta all'Emissione della Wallet Attestation</span></a>.</p>
 <section id="risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile">
 <h4><span class="section-number">15.1.2.2.1. </span>Risposta di Errore di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h4>
 <p>Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> e include i seguenti parametri:</p>
@@ -717,7 +717,7 @@ Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Att
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

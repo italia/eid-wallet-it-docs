@@ -338,17 +338,17 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </table>
 </section>
 </section>
-<section id="endpoint-di-emissione-dell-attestato-di-wallet">
-<h2><span class="section-number">8.1.4. </span>Endpoint di Emissione dell'Attestato di Wallet<a class="headerlink" href="#endpoint-di-emissione-dell-attestato-di-wallet" title="Link to this heading">¶</a></h2>
-<p>Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere un Attestato di Wallet, inviando una Richiesta di Emissione dell'Attestato di Wallet.</p>
-<section id="richiesta-di-emissione-dell-attestato-di-wallet">
-<h3><span class="section-number">8.1.4.1. </span>Richiesta di Emissione dell'Attestato di Wallet<a class="headerlink" href="#richiesta-di-emissione-dell-attestato-di-wallet" title="Link to this heading">¶</a></h3>
-<p>Ulteriori dettagli sulla Richiesta di Emissione dell'Attestato di Wallet sono forniti nella sezione <a class="reference internal" href="mobile-application-instance.html#richiesta-di-associazione-chiave-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Associazione Chiave dell'Applicazione Mobile</span></a>.</p>
+<section id="endpoint-di-emissione-della-wallet-attestation">
+<h2><span class="section-number">8.1.4. </span>Endpoint di Emissione della Wallet Attestation<a class="headerlink" href="#endpoint-di-emissione-della-wallet-attestation" title="Link to this heading">¶</a></h2>
+<p>Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere una Wallet Attestation, inviando una Richiesta di Emissione della Wallet Attestation.</p>
+<section id="richiesta-di-emissione-della-wallet-attestation">
+<h3><span class="section-number">8.1.4.1. </span>Richiesta di Emissione della Wallet Attestation<a class="headerlink" href="#richiesta-di-emissione-della-wallet-attestation" title="Link to this heading">¶</a></h3>
+<p>Ulteriori dettagli sulla Richiesta di Emissione della Wallet Attestation sono forniti nella sezione <a class="reference internal" href="mobile-application-instance.html#richiesta-di-associazione-chiave-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Associazione Chiave dell'Applicazione Mobile</span></a>.</p>
 <p>L'header <code class="docutils literal notranslate"><span class="pre">typ</span></code> del JWT della Richiesta di Integrità assume il valore <code class="docutils literal notranslate"><span class="pre">wp-war+jwt</span></code>.</p>
 </section>
-<section id="risposta-all-emissione-dell-attestato-di-wallet">
-<h3><span class="section-number">8.1.4.2. </span>Risposta all'Emissione dell'Attestato di Wallet<a class="headerlink" href="#risposta-all-emissione-dell-attestato-di-wallet" title="Link to this heading">¶</a></h3>
-<p>Se la Richiesta di Emissione dell'Attestato di Wallet viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. L'Oggetto JSON restituito DEVE possedere il parametro <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> il cui valore è un array di Oggetti JSON (vedi <a class="reference internal" href="wallet-attestation-issuance.html#emissione-dell-attestato-di-wallet"><span class="std std-ref">Emissione dell'Attestato di Wallet</span></a>) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. L'Attestato di Wallet in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>. L'Attestato di Wallet in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (<a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a>) e di prossimità (<a class="reference internal" href="proximity-flow.html#flusso-di-prossimita"><span class="std std-ref">Flusso di Prossimità</span></a>).</p>
+<section id="risposta-all-emissione-della-wallet-attestation">
+<h3><span class="section-number">8.1.4.2. </span>Risposta all'Emissione della Wallet Attestation<a class="headerlink" href="#risposta-all-emissione-della-wallet-attestation" title="Link to this heading">¶</a></h3>
+<p>Se la Richiesta di Emissione della Wallet Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> e Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. L'Oggetto JSON restituito DEVE possedere il parametro <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> il cui valore è un array di Oggetti JSON (vedi <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. la Wallet Attestation in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in <a class="reference internal" href="credential-issuance.html#emissione-di-attestati-elettronici"><span class="std std-ref">Emissione di Attestati Elettronici</span></a>. la Wallet Attestation in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (<a class="reference internal" href="remote-flow.html#flusso-remoto"><span class="std std-ref">Flusso Remoto</span></a>) e di prossimità (<a class="reference internal" href="proximity-flow.html#flusso-di-prossimita"><span class="std std-ref">Flusso di Prossimità</span></a>).</p>
 <p>L'Oggetto JSON restituito nella risposta ha il seguente claim:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -384,15 +384,15 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>format</strong></p></td>
-<td><p>Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare l'Attestato di Wallet. DEVE essere <code class="docutils literal notranslate"><span class="pre">jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> o <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> a seconda del formato della Credenziale.</p></td>
+<td><p>Una stringa che identifica il Modello di Dati utilizzato per creare e rappresentare la Wallet Attestation. DEVE essere <code class="docutils literal notranslate"><span class="pre">jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code> o <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> a seconda del formato della Credenziale.</p></td>
 <td><p>Questa specifica.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
-<td><p>Una stringa che rappresenta l'Attestato di Wallet. Se</p>
+<td><p>Una stringa che rappresenta la Wallet Attestation. Se</p>
 <ul class="simple">
-<li><p>l'Attestato di Wallet è in formato JWT, allora il valore del claim DEVE essere una stringa che è un JWT.</p></li>
-<li><p>l'Attestato di Wallet è in formato SD-JWT, allora il valore del claim DEVE essere una stringa che è un SD-JWT VC.</p></li>
-<li><p>l'Attestato di Wallet è in formato mdoc, allora il valore del claim è la rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO.18013-5]. Questa struttura DEVE contenere tutti i Namespace e gli IssuerSignedItems inclusi nel MobileSecurityObject.</p></li>
+<li><p>la Wallet Attestation è in formato JWT, allora il valore del claim DEVE essere una stringa che è un JWT.</p></li>
+<li><p>la Wallet Attestation è in formato SD-JWT, allora il valore del claim DEVE essere una stringa che è un SD-JWT VC.</p></li>
+<li><p>la Wallet Attestation è in formato mdoc, allora il valore del claim è la rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO.18013-5]. Questa struttura DEVE contenere tutti i Namespace e gli IssuerSignedItems inclusi nel MobileSecurityObject.</p></li>
 </ul>
 </td>
 <td><p>Questa specifica.</p></td>
@@ -401,9 +401,9 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </table>
 <p>Se si verificano errori durante il processo, viene restituita una risposta di errore. Ulteriori dettagli sulla risposta di errore sono forniti nella sezione <a class="reference internal" href="mobile-application-instance.html#risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile"><span class="std std-ref">Risposta di Errore di Associazione Chiave dell'Applicazione Mobile</span></a>.</p>
 </section>
-<section id="jwt-dell-attestato-di-wallet">
-<h3><span class="section-number">8.1.4.3. </span>JWT dell'Attestato di Wallet<a class="headerlink" href="#jwt-dell-attestato-di-wallet" title="Link to this heading">¶</a></h3>
-<p>L'header JOSE del JWT dell'Attestato di Wallet contiene i seguenti parametri:</p>
+<section id="jwt-della-wallet-attestation">
+<h3><span class="section-number">8.1.4.3. </span>JWT della Wallet Attestation<a class="headerlink" href="#jwt-della-wallet-attestation" title="Link to this heading">¶</a></h3>
+<p>L'header JOSE del JWT della Wallet Attestation contiene i seguenti parametri:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -422,7 +422,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare l'Attestato di Wallet.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
@@ -439,7 +439,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 </tbody>
 </table>
-<p>Il corpo del JWT dell'Attestato di Wallet contiene i seguenti claim:</p>
+<p>Il corpo del JWT della Wallet Attestation contiene i seguenti claim:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -478,7 +478,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>sub</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK dell'Attestato di Wallet.</p></td>
+<td><p>OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aal</strong></p></td>
@@ -487,7 +487,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 </tbody>
 </table>
-<p>Di seguito è riportato un esempio non normativo dell'header e del payload dell'Attestato di Wallet SD-JWT senza codifica e firma applicata:</p>
+<p>Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Attestation SD-JWT senza codifica e firma applicata:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
@@ -523,9 +523,9 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </pre></div>
 </div>
 </section>
-<section id="sd-jwt-dell-attestato-di-wallet">
-<h3><span class="section-number">8.1.4.4. </span>SD-JWT dell'Attestato di Wallet<a class="headerlink" href="#sd-jwt-dell-attestato-di-wallet" title="Link to this heading">¶</a></h3>
-<p>L'header JOSE dell'SD-JWT dell'Attestato di Wallet DEVE contenere i seguenti parametri:</p>
+<section id="sd-jwt-della-wallet-attestation">
+<h3><span class="section-number">8.1.4.4. </span>SD-JWT della Wallet Attestation<a class="headerlink" href="#sd-jwt-della-wallet-attestation" title="Link to this heading">¶</a></h3>
+<p>L'header JOSE dell'SD-JWT della Wallet Attestation DEVE contenere i seguenti parametri:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -544,7 +544,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><span class="target" id="index-15"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>kid</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare l'Attestato di Wallet.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-16"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
@@ -561,7 +561,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 </tbody>
 </table>
-<p>Il corpo dell'SD-JWT dell'Attestato di Wallet contiene i seguenti claim:</p>
+<p>Il corpo dell'SD-JWT della Wallet Attestation contiene i seguenti claim:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -599,12 +599,12 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p>OBBLIGATORIO. Array JSON contenente un elenco di tutti i digest delle divulgazioni.</p></td>
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>_sd_alg</strong></p></td>
+<tr class="row-even"><td><p><strong>sd_alg</strong></p></td>
 <td><p>OBBLIGATORIO. Stringa contenente l'algoritmo di hash utilizzato dal Fornitore di Wallet per generare i digest delle divulgazioni.</p></td>
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK dell'Attestato di Wallet.</p></td>
+<td><p>OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>aal</strong></p></td>
@@ -650,7 +650,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <li><p>Divulgazione:n``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd``</p></li>
 <li><p>Contenuti: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;wallet_name&quot;,</span> <span class="pre">&quot;Wallet_v1&quot;]</span></code></p></li>
 </ul>
-<p>Di seguito è riportato un esempio non normativo dell'header e del payload dell'Attestato di Wallet SD-JWT senza codifica e firma applicata:</p>
+<p>Di seguito è riportato un esempio non normativo dell'header e del payload della Wallet Attestation SD-JWT senza codifica e firma applicata:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
@@ -685,9 +685,9 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </pre></div>
 </div>
 </section>
-<section id="attestato-di-wallet-mdoc">
-<h3><span class="section-number">8.1.4.5. </span>Attestato di Wallet mdoc<a class="headerlink" href="#attestato-di-wallet-mdoc" title="Link to this heading">¶</a></h3>
-<p>Questa descrizione specializza ulteriormente le linee guida fornite in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> per rappresentare l'Attestato di Wallet in formato mdoc. Quest'ultimo DEVE:</p>
+<section id="wallet-attestation-mdoc">
+<h3><span class="section-number">8.1.4.5. </span>Wallet Attestation mdoc<a class="headerlink" href="#wallet-attestation-mdoc" title="Link to this heading">¶</a></h3>
+<p>Questa descrizione specializza ulteriormente le linee guida fornite in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> per rappresentare la Wallet Attestation in formato mdoc. Quest'ultimo DEVE:</p>
 <ul class="simple">
 <li><p>Avere il namespace domestico <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.it</span></code>;</p></li>
 <li><p>Avere <strong>docType</strong> impostato su <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.it.WalletAttestation</span></code>; e</p></li>
@@ -709,7 +709,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>sub</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della Chiave COSE dell'Attestato di Wallet.</p></td>
+<td><p>OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della Chiave COSE della Wallet Attestation.</p></td>
 <td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> e <span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aal</strong></p></td>
@@ -726,7 +726,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 </tbody>
 </table>
-<p>Di seguito è riportato un esempio non normativo dell'Attestato di Wallet mdoc in notazione diagnostica CBOR:</p>
+<p>Di seguito è riportato un esempio non normativo della Wallet Attestation mdoc in notazione diagnostica CBOR:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;docType&quot;: &quot;org.iso.18013.5.1.it.WalletAttestation&quot;,
   &quot;issuerSigned&quot;:{
@@ -862,12 +862,12 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 <li><a class="reference internal" href="#risposte-di-errore-specifiche-della-richiesta">8.1.3.9. Risposte di Errore Specifiche della Richiesta</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#endpoint-di-emissione-dell-attestato-di-wallet">8.1.4. Endpoint di Emissione dell'Attestato di Wallet</a><ul>
-<li><a class="reference internal" href="#richiesta-di-emissione-dell-attestato-di-wallet">8.1.4.1. Richiesta di Emissione dell'Attestato di Wallet</a></li>
-<li><a class="reference internal" href="#risposta-all-emissione-dell-attestato-di-wallet">8.1.4.2. Risposta all'Emissione dell'Attestato di Wallet</a></li>
-<li><a class="reference internal" href="#jwt-dell-attestato-di-wallet">8.1.4.3. JWT dell'Attestato di Wallet</a></li>
-<li><a class="reference internal" href="#sd-jwt-dell-attestato-di-wallet">8.1.4.4. SD-JWT dell'Attestato di Wallet</a></li>
-<li><a class="reference internal" href="#attestato-di-wallet-mdoc">8.1.4.5. Attestato di Wallet mdoc</a></li>
+<li><a class="reference internal" href="#endpoint-di-emissione-della-wallet-attestation">8.1.4. Endpoint di Emissione della Wallet Attestation</a><ul>
+<li><a class="reference internal" href="#richiesta-di-emissione-della-wallet-attestation">8.1.4.1. Richiesta di Emissione della Wallet Attestation</a></li>
+<li><a class="reference internal" href="#risposta-all-emissione-della-wallet-attestation">8.1.4.2. Risposta all'Emissione della Wallet Attestation</a></li>
+<li><a class="reference internal" href="#jwt-della-wallet-attestation">8.1.4.3. JWT della Wallet Attestation</a></li>
+<li><a class="reference internal" href="#sd-jwt-della-wallet-attestation">8.1.4.4. SD-JWT della Wallet Attestation</a></li>
+<li><a class="reference internal" href="#wallet-attestation-mdoc">8.1.4.5. Wallet Attestation mdoc</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#catalogo-e-service-pdnd-del-fornitore-di-wallet">8.1.5. Catalogo e-Service PDND del Fornitore di Wallet</a><ul>
@@ -903,7 +903,7 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

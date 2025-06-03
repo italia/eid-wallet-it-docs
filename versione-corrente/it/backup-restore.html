@@ -200,23 +200,23 @@
 <p>Di seguito, la descrizione dei passaggi di <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 5.7</span></a>:</p>
 <p><strong>Passaggio 1</strong>: L'Utente seleziona l'opzione per eseguire il backup delle Credenziali memorizzate nell'Istanza del Wallet.</p>
 <p><strong>Passaggi 2-3</strong>: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente.
-L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un gestore di password o in una cassaforte fisica) poiché sono fondamentali per il ripristino del backup.</p>
+L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziale, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.</p>
+<p>Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziali, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su <a class="reference external" href="http://tools.ietf.org/html/rfc2898.html">RFC 2898</a> ed è raccomandata dal <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST 800-132</a>. Esistono altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">qui</a>.</p>
+<p>Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su <a class="reference external" href="http://tools.ietf.org/html/rfc2898.html">RFC 2898</a> ed è raccomandata dal <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST 800-132</a>. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">qui</a>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il fattore di lavoro per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> è di 600000 iterazioni come indicato nel <a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a>.</p>
+<p>Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> è di 600000 iterazioni come indicato nell’<a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a>.</p>
 </div>
-<p><strong>Passaggio 4</strong>: L'Istanza del Wallet esegue le operazioni seguenti per creare la voce JWT di backup per il file di backup.</p>
+<p><strong>Passaggio 4</strong>: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup.</p>
 <ul class="simple">
-<li><p>Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziale e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> come voce nel JWT di backup.</p></li>
-<li><p>Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nell'Attestato di Unità di Portafoglio. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nell'Attestato di Unità di Portafoglio (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>). L'Istanza del Wallet DEVE verificare la validità dell'Attestato di Unità di Portafoglio prima di firmare il JWT di backup.</p></li>
+<li><p>Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> come voce nel JWT di backup.</p></li>
+<li><p>Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Unit Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>). L'Istanza del Wallet DEVE verificare la validità della Wallet Unit Attestation prima di firmare il JWT di backup.</p></li>
 <li><p>Aggiunge il JWT di backup firmato come voce al file di backup.</p></li>
 <li><p>Cripta il file di backup utilizzando la frase chiave fornita.</p></li>
 </ul>
@@ -291,10 +291,10 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 <td><p>DEVE essere impostato sulla versione della Soluzione Wallet di cui è stato eseguito il backup.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
-<td><p>DEVE essere impostato su un valore contenente il JWT dell'Attestato di Unità di Portafoglio.</p></td>
+<td><p>DEVE essere impostato su un valore contenente il JWT della Wallet Unit Attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credentials_backup</strong></p></td>
-<td><p>Oggetto che descrive le specifiche delle Credenziali di cui è stato eseguito il backup. Questo oggetto contiene un elenco di coppie nome/valore, dove ogni nome è un identificatore univoco del Fornitore di Credenziale. Questo identificatore viene utilizzato per avviare la fase di emissione. Il valore è un array di stringhe univoche. Ogni stringa corrisponde al <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> che identifica la specifica Credenziale Elettronica che è stata emessa.</p></td>
+<td><p>Oggetto che descrive le specifiche delle Credenziali di cui è stato eseguito il backup. Questo oggetto contiene un elenco di coppie nome/valore, dove ogni nome è un identificatore univoco del Fornitore di Credenziali. Questo identificatore viene utilizzato per avviare la fase di emissione. Il valore è un array di stringhe univoche. Ogni stringa corrisponde al <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> che identifica la specifica Credenziale Elettronica che è stata emessa.</p></td>
 </tr>
 </tbody>
 </table>
@@ -315,15 +315,15 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 Di seguito, la descrizione dei passaggi di <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 5.8</span></a>:</p>
 <p><strong>Passaggi 1-6</strong>: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
 L'Utente seleziona <cite>ripristina backup delle Credenziali Elettroniche</cite> nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero.
-Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità. Per fare ciò, estrae prima il JWT dell'Attestato di Unità di Portafoglio dal claim <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> e ottiene la relativa chiave pubblica utilizzando l'Attestato di Unità di Portafoglio (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>).</p>
+Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità. Per fare ciò, estrae prima il JWT della Wallet Unit Attestation dal claim <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> e ottiene la relativa chiave pubblica utilizzando la Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>).</p>
 <p><strong>Passaggi 7-8</strong>: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:</p>
 <ul class="simple">
-<li><p>Estrae l'identificatore del Fornitore di Credenziale e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziale e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziale.</p></li>
-<li><p>Utilizzando l'identificatore del Fornitore di Credenziale, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziale e effettua una richiesta di riemissione al Fornitore di Credenziale fornendo la nuova Associazione Crittografica con l'Utente.</p></li>
+<li><p>Estrae l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali.</p></li>
+<li><p>Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>L'Istanza del Wallet NON DEVE verificare la scadenza dell'Attestato di Unità di Portafoglio poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet.</p>
+<p>L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Unit Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet.</p>
 </div>
 </section>
 </section>
@@ -374,7 +374,7 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

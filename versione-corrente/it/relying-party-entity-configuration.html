@@ -19,7 +19,7 @@
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
     <link rel="next" title="5.3.6. Metadati della Relying Party" href="relying-party-metadata.html" />
-    <link rel="prev" title="5.3.2. Relying Party Instance" href="relying-party-instance.html" /> 
+    <link rel="prev" title="5.3.2. App di Verifica" href="relying-party-instance.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -140,9 +140,9 @@
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">5.3. Soluzione di Relying Party</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="relying-party-requirements.html">5.3.1. Requisiti della Soluzione di Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.2. Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">5.3.3. Mobile Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">5.3.4. Web Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.2. App di Verifica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">5.3.3. App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">5.3.4. App di Verifica Web</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">5.3.5. Entity Configuration Relying Party</a></li>
 <li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.6. Metadati della Relying Party</a></li>
 </ul>
@@ -173,19 +173,19 @@
             
   <section id="entity-configuration-relying-party">
 <h1><span class="section-number">5.3.5. </span>Entity Configuration Relying Party<a class="headerlink" href="#entity-configuration-relying-party" title="Link to this heading">¶</a></h1>
-<p>Secondo la Sezione <a class="reference internal" href="trust.html#configurazione-della-federazione"><span class="std std-ref">Configurazione della Federazione</span></a>, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Configurazione di Entità.
-La Configurazione di Entità delle Relying Party DEVE contenere i parametri definiti nelle Sezioni <a class="reference internal" href="trust.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a> e <a class="reference internal" href="trust.html#parametri-comuni-delle-entity-configuration"><span class="std std-ref">Parametri Comuni delle Entity Configuration</span></a>.</p>
-<p>Le Relying Party DEVONO fornire i seguenti tipi di metadati:</p>
+<p>Secondo la Sezione <a class="reference internal" href="trust.html#configurazione-della-federazione"><span class="std std-ref">Configurazione della Federazione</span></a>, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Entity Configuration.
+L'Entity Configuration delle Relying Party DEVE contenere i parametri definiti nelle Sezioni <a class="reference internal" href="trust.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a> e <a class="reference internal" href="trust.html#parametri-comuni-delle-entity-configuration"><span class="std std-ref">Parametri Comuni delle Entity Configuration</span></a>.</p>
+<p>Le Relying Party DEVONO fornire i seguenti tipi di metadata:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><cite>federation_entity</cite></p></li>
-<li><p><cite>openid_credential_verifier</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">federation_entity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code></p></li>
 </ul>
 </div></blockquote>
-<p>I metadati <em>federation_entity</em> DEVONO contenere i claim come definito nella Sezione <a class="reference internal" href="trust.html#metadati-delle-foglie-federation-entity"><span class="std std-ref">Metadati delle Foglie federation_entity</span></a>.</p>
-<section id="esempio-di-configurazione-di-entita-di-una-relying-party">
-<h2><span class="section-number">5.3.5.1. </span>Esempio di Configurazione di Entità di una Relying Party<a class="headerlink" href="#esempio-di-configurazione-di-entita-di-una-relying-party" title="Link to this heading">¶</a></h2>
-<p>Di seguito un esempio non normativo della richiesta effettuata dall'Istanza del Wallet all'endpoint well-known <em>openid-federation</em> per ottenere la Configurazione di Entità della Relying Party:</p>
+<p>I metadata contenuti in <code class="docutils literal notranslate"><span class="pre">federation_entity</span></code> DEVONO contenere i claim come definito nella Sezione <a class="reference internal" href="trust.html#metadati-delle-foglie-federation-entity"><span class="std std-ref">Metadati delle Foglie federation_entity</span></a>.</p>
+<section id="entity-configuration-di-una-relying-party">
+<h2><span class="section-number">5.3.5.1. </span>Entity Configuration di una Relying Party<a class="headerlink" href="#entity-configuration-di-una-relying-party" title="Link to this heading">¶</a></h2>
+<p>Di seguito un esempio non normativo della richiesta effettuata dall'Istanza del Wallet all'endpoint well-known <code class="docutils literal notranslate"><span class="pre">openid-federation</span></code> per ottenere l'Entity Configuration della Relying Party:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 </pre></div>
@@ -295,7 +295,7 @@ La Configurazione di Entità delle Relying Party DEVE contenere i parametri defi
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">5.3.5. Entity Configuration Relying Party</a><ul>
-<li><a class="reference internal" href="#esempio-di-configurazione-di-entita-di-una-relying-party">5.3.5.1. Esempio di Configurazione di Entità di una Relying Party</a></li>
+<li><a class="reference internal" href="#entity-configuration-di-una-relying-party">5.3.5.1. Entity Configuration di una Relying Party</a></li>
 </ul>
 </li>
 </ul>
@@ -311,7 +311,7 @@ La Configurazione di Entità delle Relying Party DEVE contenere i parametri defi
             <div class="left">
                 
                 <a href="relying-party-instance.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">5.3.2. </span>Relying Party Instance</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">5.3.2. </span>App di Verifica</span></a>
                 
             </div>
 
@@ -325,7 +325,7 @@ La Configurazione di Entità delle Relying Party DEVE contenere i parametri defi
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

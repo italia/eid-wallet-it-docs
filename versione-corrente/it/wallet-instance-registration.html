@@ -18,7 +18,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="5.1.4.2.2. Emissione dell&#39;Attestato di Wallet" href="wallet-attestation-issuance.html" />
+    <link rel="next" title="5.1.4.2.2. Emissione della Wallet Attestation" href="wallet-attestation-issuance.html" />
     <link rel="prev" title="5.1.4.2. Funzionalità dell&#39;Istanza del Wallet" href="wallet-instance-functionalities.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -174,14 +174,14 @@
             
   <section id="inizializzazione-e-registrazione-dell-istanza-del-wallet">
 <h1><span class="section-number">5.1.4.2.1. </span>Inizializzazione e Registrazione dell'Istanza del Wallet<a class="headerlink" href="#inizializzazione-e-registrazione-dell-istanza-del-wallet" title="Link to this heading">¶</a></h1>
-<p>Questo processo consente all'Utente che ha appena installato l'applicazione dell'Istanza del Wallet di registrare l'Istanza del Wallet presso il Backend del Fornitore di Wallet. Durante questo processo, l'applicazione dell'Istanza del Wallet richiederà un'attestazione di sicurezza e integrità dal produttore del sistema operativo, che associa anche una coppia di chiavi a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso. Questa attestazione sarà convalidata dal Fornitore di Wallet e, se la convalida ha esito positivo, il Fornitore di Wallet autenticherà l'Istanza del Wallet. Per i dettagli vedere <a class="reference internal" href="mobile-application-instance.html#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>.</p>
+<p>Questo processo consente all'Utente che ha appena installato l'applicazione di registrare l'Istanza del Wallet presso il Backend del Fornitore di Wallet. Durante questo processo, l'applicazione richiederà un'attestazione di sicurezza e integrità dal produttore del sistema operativo, che associa anche una coppia di chiavi a lunga durata memorizzata in un adeguato storage sicuro all'interno del dispositivo stesso. Questa attestazione sarà convalidata dal Fornitore di Wallet e, se la convalida ha esito positivo, il Fornitore di Wallet autenticherà l'Istanza del Wallet. Per i dettagli vedere <a class="reference internal" href="mobile-application-instance.html#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Durante la fase di registrazione dell'Istanza del Wallet presso il Fornitore di Wallet è necessario anche associare l'Istanza del Wallet a un Utente specifico, autenticando l'Utente con il Fornitore di Wallet. Il meccanismo di autenticazione è a discrezione del Fornitore di Wallet e non sarà trattato all'interno di queste linee guida, poiché ogni Fornitore di Wallet potrebbe avere già implementato i propri sistemi di autenticazione dell'Utente.</p>
+<p>Durante la fase di registrazione dell'Istanza del Wallet presso il Fornitore di Wallet è necessario anche associare l'Istanza del Wallet ad un Utente specifico, autenticando l'Utente con il Fornitore di Wallet. Il meccanismo di autenticazione è a discrezione del Fornitore di Wallet e non sarà trattato all'interno di queste linee guida, poiché ogni Fornitore di Wallet potrebbe avere già implementato i propri sistemi di autenticazione dell'Utente.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il Fornitore di Wallet DOVREBBE associare l'Istanza del Wallet (tramite l'identificatore <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) a un Utente specifico identificato in modo univoco all'interno dei sistemi del Fornitore di Wallet. Questo sarà utile per il ciclo di vita dell'Istanza del Wallet e per una futura revoca. Per i dettagli vedere <a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>.</p>
+<p>Il Fornitore di Wallet DOVREBBE associare l'Istanza del Wallet (tramite l'identificatore <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) a un Utente specifico identificato in modo univoco all'interno dei sistemi del Fornitore di Wallet. Questo sarà utile per il ciclo di vita dell'Istanza del Wallet e per una futura revoca. Per i dettagli far riferimento all'<a class="reference internal" href="mobile-application-instance.html#istanza-dell-applicazione-mobile"><span class="std std-ref">Istanza dell'Applicazione Mobile</span></a>.</p>
 </div>
 </section>
 
@@ -205,7 +205,7 @@
 
             <div class="right">
                 
-                    <a href="wallet-attestation-issuance.html"><span><span class="section-number">5.1.4.2.2. </span>Emissione dell'Attestato di Wallet</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-attestation-issuance.html"><span><span class="section-number">5.1.4.2.2. </span>Emissione della Wallet Attestation</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -213,7 +213,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/05/2025.
+      Ultimo aggiornamento 03/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
