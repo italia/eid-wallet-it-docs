@@ -784,11 +784,13 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 
 1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. The Intermediaries and Leaves subject name MUST include the following attributes:
+
   -``Common Name (CN)``: SHOULD contain the Federation Entity unique identifier DNS name, which is included in the sub (subject) value in its federation Entity Configuration, removing ``https://`` and any webpaths.
   - ``Organization Name (O)``: MUST contain the legal name of the organization.
   - ``Country Name (C)``: MUST contain the two-letter ISO country code.
   - ``Email Address``: MUST contain the organization's contact email.
   - ``Serial Number``: MUST contain the official registration number of the organization.
+  
 2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that MUST match the **sub** and the **iss** values of its federation Entity Configuration.
 3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** and the **iss** values of its Entity Configuration, removing ``https://`` and any webpaths.
 4. **Certificate Revocation List (CRL)**: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
