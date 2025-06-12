@@ -1,5 +1,5 @@
 {
-    "typ": "jwt-client-attestation-pop",
+    "typ": "oauth-client-attestation-pop+jwt",
     "alg": "ES256",
     "kid": "47b982369791d08003a7283f059cb0d1"
 }
