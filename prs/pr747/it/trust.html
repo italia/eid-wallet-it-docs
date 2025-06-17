@@ -974,17 +974,26 @@ I partecipanti alla federazione che hanno bisogno di emettere Certificati X.509 
 I vincoli di denominazione sono applicati dai Superiori Immediati all'interno dei certificati emessi per l'entità Foglia, specificamente riguardanti le Chiavi di Entità di Federazione della Foglia. Di conseguenza, la Foglia può emettere certificati X.509 solo su se stessa, mantenendo così l'integrità della Trust Chain.</p>
 <p>Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti requisiti:</p>
 <ol class="arabic simple">
-<li><p><strong>Nome del Soggetto</strong>: Il nome del soggetto del Certificato X.509 DEVE corrispondere all'identità del partecipante. In particolare, il campo <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> dovrebbe contenere il nome DNS dell'identificatore unico dell'Entità di Federazione, che è incluso nel valore <strong>sub</strong> (soggetto) nella sua Entity Configuration di federazione, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi percorso web.</p></li>
-<li><p><strong>Nome Alternativo del Soggetto (SAN)</strong>: Il Certificato X.509 DEVE includere un <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> che corrisponde al valore <strong>sub</strong> della sua Entity Configuration di federazione.</p></li>
-<li><p><strong>Nome DNS</strong>: Il Certificato X.509 DEVE includere un Nome DNS nel SAN che corrisponde al nome DNS contenuto nel valore <strong>sub</strong> della sua Entity Configuration, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi percorso web.</p></li>
-<li><p><strong>Lista di Revoca dei Certificati (CRL)</strong>: Se i Certificati X.509 emessi hanno un tempo di scadenza superiore a 24 ore, l'Emittente X.509 DEVE pubblicare una CRL per i Certificati X.509 emessi. Questa lista DEVE essere accessibile e regolarmente aggiornata per garantire che qualsiasi Certificato X.509 compromesso o non valido sia prontamente revocato con la motivazione della revoca, se presente.</p></li>
-<li><p><strong>Vincoli di Base</strong>: Il Certificato X.509 DEVE includere un'estensione <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> con <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> e una lunghezza massima del percorso di 1 se l'emittente del certificato è un Intermediario di Federazione, se è una Foglia, la lunghezza massima del percorso DEVE essere impostata a 0. Ciò indica che il Subordinato a cui si riferisce il certificato può emettere Certificati X.509 solo con una profondità di catena limitata.</p></li>
-<li><p><strong>Vincoli di Nome</strong>: Il Certificato X.509 DEVE includere <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> per specificare domini e URI consentiti ed esclusi. Ad esempio:</p>
+<li><p><strong>Subject Name</strong>: Il subject name del Certificato X.509 DEVE corrispondere all’identità del partecipante. Il subject name degli Intermediari e delle Foglie DEVE includere i seguenti attributi:</p>
 <ul class="simple">
-<li><p>Consentiti:
+<li><p><code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code>: DOVREBBE contenere l’identificatore univoco DNS dell’Entità della Federazione, che è incluso nel valore <code class="docutils literal notranslate"><span class="pre">sub</span></code> (subject) nella sua Entity Configuration di federazione, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi percorso web.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">Name</span> <span class="pre">(O)</span></code>: DEVE contenere la denominazione legale dell’organizzazione.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">Name</span> <span class="pre">(C)</span></code>: DEVE contenere il codice paese ISO a due lettere.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Address</span></code>: DEVE contenere l’indirizzo email di contatto dell’organizzazione.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">Number</span></code>: DEVE contenere il numero di registrazione ufficiale dell’organizzazione.</p></li>
+</ul>
+</li>
+<li><p><strong>Subject Alternative Name (SAN)</strong>: Il Certificato X.509 DEVE includere un <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> che DEVE corrispondere ai valori <code class="docutils literal notranslate"><span class="pre">sub</span></code> e <code class="docutils literal notranslate"><span class="pre">iss</span></code> della sua Entity Configuration di federazione.</p></li>
+<li><p><strong>DNS Name</strong>: Il Certificato X.509 DEVE includere un DNS Name nel SAN che corrisponda al nome DNS contenuto nei valori <code class="docutils literal notranslate"><span class="pre">sub</span></code> e <code class="docutils literal notranslate"><span class="pre">iss</span></code> della sua Entity Configuration, rimuovendo <code class="docutils literal notranslate"><span class="pre">https://</span></code> e qualsiasi percorso web.</p></li>
+<li><p><strong>Lista di Revoca dei Certificati (CRL)</strong>: Se i Certificati X.509 emessi hanno un tempo di scadenza superiore a 24 ore, l'Emittente X.509 DEVE pubblicare una CRL per i Certificati X.509 emessi. Questa lista DEVE essere accessibile e regolarmente aggiornata per garantire che qualsiasi Certificato X.509 compromesso o non valido sia prontamente revocato con la motivazione della revoca, se presente.</p></li>
+<li><p><strong>Basic Constraints</strong>: Il Certificato X.509 DEVE includere un’estensione <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> configurata con <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> e una lunghezza massima del percorso pari a 1 se l’emittente del certificato è un Intermediario della Federazione. Se si tratta di una Foglia, la lunghezza massima del percorso DEVE essere impostata a 0. Questo indica che il Soggetto subordinato a cui si riferisce il certificato può emettere solo Certificati X.509 relativi a sé stesso. L’estensione <code class="docutils literal notranslate"><span class="pre">BasicConstraints</span></code> DEVE essere impostata come <code class="docutils literal notranslate"><span class="pre">critical</span></code>.</p></li>
+<li><p><strong>Key Usage</strong>: <code class="docutils literal notranslate"><span class="pre">Digital</span> <span class="pre">Signature</span></code>, <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Encipherment</span></code>, <code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">Sign</span></code>, <code class="docutils literal notranslate"><span class="pre">CRL</span> <span class="pre">Sign</span></code> DEVONO essere inclusi. L’estensione <code class="docutils literal notranslate"><span class="pre">KeyUsage</span></code> DEVE essere impostata come <code class="docutils literal notranslate"><span class="pre">critical</span></code>.</p></li>
+<li><p><strong>Name Constraints</strong>: Il Certificato X.509 DEVE includere <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> per specificare i domini e gli URI permessi ed esclusi. Ad esempio:</p>
+<ul class="simple">
+<li><p>Permitted:
 - <code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code>
 - <code class="docutils literal notranslate"><span class="pre">DNS.1=leaf.example.com</span></code></p></li>
-<li><p>Esclusi:
+<li><p>Excluded:
 - <code class="docutils literal notranslate"><span class="pre">DNS=localhost</span></code>
 - <code class="docutils literal notranslate"><span class="pre">DNS=localhost.localdomain</span></code>
 - <code class="docutils literal notranslate"><span class="pre">DNS=127.0.0.1</span></code>
@@ -994,6 +1003,7 @@ I vincoli di denominazione sono applicati dai Superiori Immediati all'interno de
 - <code class="docutils literal notranslate"><span class="pre">DNS=*.example.org</span></code></p></li>
 </ul>
 </li>
+<li><p><strong>AuthorityKeyIdentifier</strong>: Il Certificato X.509 DEVE includere un'estensione <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code>. Il campo <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> dell’estensione <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code> DEVE essere presente e DEVE essere identico al campo <code class="docutils literal notranslate"><span class="pre">SubjectKeyIdentifier</span></code> del certificato dell’emittente. Questo consolida la costruzione e la validazione della catena di certificati.</p></li>
 </ol>
 <p>Di seguito è riportato un esempio non normativo, in formato testo semplice (formato OpenSSL), di una catena di certificati X.509 con una CA intermedia, a partire dal certificato Leaf.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate:
@@ -1210,7 +1220,7 @@ Quando l'emittente del Certificato X.509 è un Superiore immediato, come il Trus
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Revocation List (CRL):
 Version: 2 (0x1)
 Signature Algorithm: sha256WithRSAEncryption
-Issuer: CN=https://leaf.example.org, O=Leaf, C=IT
+Issuer: CN=leaf.example.org, O=Leaf, C=IT
 Last Update: Sep 1 00:00:00 2023 GMT
 Next Update: Sep 8 00:00:00 2023 GMT
 Revoked Certificates:
@@ -1227,7 +1237,6 @@ Signature:
     5c:4f:3b:...
 </pre></div>
 </div>
-<p>Utilizzando il livello sottostante stabilito con OpenID Federation 1.0, tutti i certificati X.509 sono emessi in modo adeguatamente decentralizzato utilizzando il pattern di delega.</p>
 </section>
 </section>
 <section id="note-sulla-privacy">
@@ -1336,7 +1345,7 @@ Signature:
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 10/06/2025.
+      Ultimo aggiornamento 17/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -988,8 +988,7 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 <li><p><strong>Certificate Revocation List (CRL)</strong>: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.</p></li>
 <li><p><strong>Basic Constraints</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> extension with <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> and a maximum path length of 1 if the certificate issuer is a Federation Intermediate. If it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates about itself. <code class="docutils literal notranslate"><span class="pre">BasicConstraints</span></code> extension MUST be set <code class="docutils literal notranslate"><span class="pre">critical</span></code>.</p></li>
 <li><p><strong>Key Usage</strong>: <code class="docutils literal notranslate"><span class="pre">Digital</span> <span class="pre">Signature</span></code>, <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Encipherment</span></code>, <code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">Sign</span></code>, <code class="docutils literal notranslate"><span class="pre">CRL</span> <span class="pre">Sign</span></code> MUST be included. <code class="docutils literal notranslate"><span class="pre">KeyUsage</span></code> extension MUST be set <code class="docutils literal notranslate"><span class="pre">critical</span></code>.</p></li>
-<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For example:</p></li>
-<li><p><strong>AuthorityKeyIdentifier</strong>: The X.509 Certificate MUST include an <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code> extension. The <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> field of the <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code> extension MUST be present and MUST be identical to the <code class="docutils literal notranslate"><span class="pre">SubjectKeyIdentifier</span></code> field of the issuer's certificate. This consolidates the certificate chain building and validation.</p>
+<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For instance:</p>
 <ul class="simple">
 <li><p>Permitted:
 - <code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code>
@@ -1004,6 +1003,7 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 - <code class="docutils literal notranslate"><span class="pre">DNS=*.example.org</span></code></p></li>
 </ul>
 </li>
+<li><p><strong>AuthorityKeyIdentifier</strong>: The X.509 Certificate MUST include an <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code> extension. The <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> field of the <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code> extension MUST be present and MUST be identical to the <code class="docutils literal notranslate"><span class="pre">SubjectKeyIdentifier</span></code> field of the issuer's certificate. This consolidates the certificate chain building and validation.</p></li>
 </ol>
 <p>Below is a non-normative example, in plain text (OpenSSL format), of an X.509 certificate chain with an intermediate CA, starting from the Leaf certificate.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate:
@@ -1210,6 +1210,34 @@ UqRC3K4ElbHG3+d6IC1AbcwCIGhFf/Wva4JV2Hz/HTKwhcembZeYXTUK+wQN4VlZ
 </div>
 <p>Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.</p>
 </section>
+<section id="x-509-certificate-revocation">
+<h3><span class="section-number">4.12.3. </span>X.509 Certificate Revocation<a class="headerlink" href="#x-509-certificate-revocation" title="Link to this heading">¶</a></h3>
+<p>An X.509 Certificate can be revoked by its Issuer.
+Revocation lists, and/or any other revocation control mechanism, are particularly required for X.509 Certificates with an expiration time greater than 24 hours; otherwise, they are not required.</p>
+<p>When the issuer of the X.509 Certificate is the Leaf and therefore the X.509 Certificate refers to itself, if the certificate expiration time is greater than 24 hours from the <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code> time, it MUST implement a CRL related to the issued certificate and keep it updated.
+When the issuer of the X.509 Certificate is an immediate Superior, such as the Trust Anchor or an Intermediary, and revokes the certificate related to the Leaf, i.e., the X.509 Certificate related to one of the Federation Entity Keys of the Leaf, this action invalidates the entire Trust Chain associated with that cryptographic public key of the Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be quickly addressed.</p>
+<p>Below is a non-normative example, in plain text, illustrating the content of a CRL.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Revocation List (CRL):
+Version: 2 (0x1)
+Signature Algorithm: sha256WithRSAEncryption
+Issuer: CN=leaf.example.org, O=Leaf, C=IT
+Last Update: Sep 1 00:00:00 2023 GMT
+Next Update: Sep 8 00:00:00 2023 GMT
+Revoked Certificates:
+    Serial Number: 987654320
+        Revocation Date: Aug 25 12:00:00 2023 GMT
+        CRL Entry Extensions:
+            Reason Code: Key Compromise
+    Serial Number: 987654321
+        Revocation Date: Aug 30 15:00:00 2023 GMT
+        CRL Entry Extensions:
+            Reason Code: Cessation of Operation
+Signature Algorithm: sha256WithRSAEncryption
+Signature:
+    5c:4f:3b:...
+</pre></div>
+</div>
+</section>
 </section>
 <section id="privacy-remarks">
 <h2><span class="section-number">4.13. </span>Privacy Remarks<a class="headerlink" href="#privacy-remarks" title="Link to this heading">¶</a></h2>
@@ -1283,6 +1311,7 @@ UqRC3K4ElbHG3+d6IC1AbcwCIGhFf/Wva4JV2Hz/HTKwhcembZeYXTUK+wQN4VlZ
 <li><a class="reference internal" href="#x-509-pki">4.12. X.509 PKI</a><ul>
 <li><a class="reference internal" href="#federation-trust-anchor-and-x-509-ca">4.12.1. Federation Trust Anchor and X.509 CA</a></li>
 <li><a class="reference internal" href="#x-509-certificates-issuance">4.12.2. X.509 Certificates Issuance</a></li>
+<li><a class="reference internal" href="#x-509-certificate-revocation">4.12.3. X.509 Certificate Revocation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#privacy-remarks">4.13. Privacy Remarks</a></li>
@@ -1316,7 +1345,7 @@ UqRC3K4ElbHG3+d6IC1AbcwCIGhFf/Wva4JV2Hz/HTKwhcembZeYXTUK+wQN4VlZ
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 10/06/2025.
+      Last updated on 17/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
