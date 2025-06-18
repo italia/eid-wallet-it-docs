@@ -52,7 +52,7 @@ Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tr
 .. plantuml:: plantuml/credential-presentation-remote-flow.puml
     :width: 99%
     :alt: La figura illustra il Flusso Remoto.
-    :caption: `Flusso di Protocollo Remoto. <https://www.plantuml.com/plantuml/svg/fLPFRnkt4xtpKmpqE_ni87QJ7WsuYACwjXEtLYqbFjI5G7574kiLkIM7gwX5ldk7v6hDjHqWG0rVTfVptfitVwYtdgIZiAdXscwFhh756cvnOmbXuYnPPMjuNzkja86i2Pi5EY74cIBhOFJ9enk1z124MDWl-SN_FVoChLReH_2_QxrQqxiwe6YOHYlTI4CmkfDrZGHNXjcDmeIn7Hu937KaLsWeCqY1fW9cwQXkiTvfiu891-s-oJGyTcyERiu2hM5SQmO-JCZjamYMHC43ipLMT-mUUtR-aufqAmaXY017Fx6s4xZ31KpHnRp1o5Ql96bhYgDIL5W6oXZPuWcx_LT0JybkL8GLl_4sE8L2d9xoQ_IiDS71P2qzmkbfZnlLjxY76ZkCxoHuIjyast5l5ZQmThBmQ2aeQn_q2w4kYva7fy5b6UKfBbZ36aiasZNCmUWLHlcWdFMU7v8Jre6N6yoF6IZRjIRkk8OHOAkv7h_TZcsLZgyTBbaT9woDNW6j4OAhqwbxerBPvhfwLGfzbTDz1RyNB-SRfBMj_c3NIwz4PtmuWUdQRXD-9izgM06Jg8Vq8MbP129h1iMJZ_PlXLWv6nhsp_fzuuCrzKvi8y-MUPGqp05Cahf8nAR9dwwjaZN4eG4PcD6GLhbl-kZpMCJ8H2vuIZuaRRqLGiYQG2_XUVAWO-TsGPERwKm006ptnUI6QtM5q0qZnyXAaWIoYQ70wuSX0HH-fkU-FGgnwnwMK1aTqrIoaGjTQzBe1TOUlqFqnVaibiHOWYRFWKWP34SdqNczCbZj0S4k_epTk7Hsy-riKZLQxChnCiIp1dfMcS6AWL_sDafJGMEvcJJwFkWpEhtS9IP9mI7OPQ6-J-WcK_THijPLCPvyylFam1_c0-7HY6NiNskIKSCjbO76rYorss0rN4QzeR5986v8w_JVgHCPsZSH4UvDhadRpCa-eEd7hYasrDo7nKPx7tkujEtb7ibsQBceSRZd4a4VL1XGDDOP4Vfy_fZ5vSVoGDVVZeLh3t77xzr-Z_mwHV8thbCVLTn979Fwpc7BOghZGar7DNOCOqZB6gwy3-XW5cUqW-mbVxYRmNHVxmA5vIdqFazp3oM4OrO4swBZOtolNLrSpYvkpyz_5Iz7d0WuWl4QUMbTshhYi8-uWtVQLDoKIGh7SUByFx7UOoeE11-_WW18S4rOSAV20qVcwqARzBx8aIoqkNjJvIQvICSYqfz_8ITLTh_INjNMOmMIoEb58FH9XaeQzHBOw7ucDHD0dXU785kfwzWEnt4sanEYiEnJqpT1MfhxP0xoTGOXVQyEnNuhJ-K6zqivDI-pCQDAUw2O_ClPRFB3c-CtyEFhrt3paKlupwWyEeet5ZM-lul0TMCnLxP2-DfDecIDFWaSCfLt1oVsygNXdicrWRvJSJdFs-7Awcuyp_x11pPugfnkA5VZvCczaqOwZVf19EXNOKevctpuc8n7uREW8F-pXry5oowXir637qePR7z1DVqFflwNod3bzD8cpqyEB_GdZhrbwh2f_mK0>`_
+    :caption: `Flusso di Protocollo Remoto. <https://www.plantuml.com/plantuml/svg/fLPDRnit4BtpLmpKGsqWSPCU3RX8ehgsaxHMBIK-r8L1SKSIwnMv9OUhg4N-UuVaYgRy0GGeeClkSjvxy-Q3UkD9EWhhLiX0reJr79qGugqYws3qoQCRWVGGX9ZRB_d5znv-nbuhz2FuxgDUhkXT6r1qZAELxgGX65tBjaM22yFmHc72sEmV2GprKYxHK6QG0aq3p39GNM6xrMO94mxQFi-qT-p675o-3RI2SQiP-30XzmyYM1853ypMMJsmUxnd5q8gqhqavBG3lFo9jHt3DSvXYYxc3KRsUYb9MrCTbQB1Eb36o1wFuGh_3kW99iuIAiA6ttWRd48XJaxuDNhMck1Wif8UuUIau4RrFUwWnWxZEmcUqZV9TjoOkGsidIpSMmhAsZlzHAZBOcw3q-2oZFeK5wnZZJKIRJlcOFG6ANvIpdhF3ya9wy3BDUR739JjMj6wXOuHOAEv7hzVZMsJZgySBbWT9woDNWAj489hqwaRerBPRdNpeXRw8gVx0lweNjwkaLQs-RDsdRqIW_7X6AOhkqducJohOGLCekxYXwnb7eYisIkUlBT_8yJIsT2nVzRl6X-iQRTY4taspAEaOGvWajH58ZPD_lJHAjb271gGWHaDQPNxfaIVnY969dB1KtOhQYjM225R0hs0nyc3Zfqx14qkfpC10B3P5PCRhjUS-32C72CRIHB8HeOQhmn30gZzZC-bFIgngm9Bg8oEQIhPoRbkDMdq0bkFto3wx7GMIs8iGPVdG5GPbD69T5ul3JOxGB3pls8tBfnTFvjDhaQFGpcUXdZKG8ygixTYuDUTZT8qq5bk9iwt17r6fnVRn2GfE0IxgDINX2upTOcIhMwgyUIJdoS7_Z0V2FT6B6B_MfECsjzI6MXipKAxDJRxowWO6fi4ueQqJl-JEf6XVHSHuSRaclJTBTaxDCFOFREAwbR8MMivRt5_dIMS4bJbMVNFMoBq-VmHQyYFzO6XZHthqnxYAj-P-WlownJ9txWSLLIvUZWcjPV3diKqHvMQWMhi6CQGbYrSU1_GmIoEuW1P9B-_di5qLzOAXUKfz3uFRO4ImZ4hWktHyJ6-lYxEpcTdLwUdlucd8uu5l8Jn2datdTkM4uCFk8LtsZJSUqaAnt7Y_9jOxnaWEXny_0e28C5rOSuD2NSScMy5RUBxEaUoqEScJPMRv28TYKX_-eMSLDdzHdlLMeyDI2Advu7G9nagQUJPPgFBw6acW3mM3a7sKhUn7OxY22OdH6NPfwuqGTgDksGEygq58Nrl3iLk-Kxb6eVTctkKsPXHfN6l1lnyDflyyFheDVpuwXLSVk0I_ZkgZuxYnKITBrSEkA7xRrMy8huE0oTPeyy2w_3wje-9FNqtk4ToRQ1lL5oFxMP_CmqNcsV_u3qRF5LETvIhSVpWUicJ6oVw81AKZPTIpYOVtYVZKVWiACZ_xU5NKSjcw6nK_Nze0DlTGrtvNrJ-aEold29jylZa_htzmB4tJ1tMxNy0>`_
 
 
 .. .. figure:: ../../images/cross_same_device_auth_seq_diagram.svg
@@ -440,12 +440,9 @@ I parametri del payload JWT sono descritti qui:
   Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``response_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``response_uris``, ottenuti dalla Trust Chain relativa alla Relying Party.
 
 .. note::
-  I seguenti parametri, anche se definiti in `OpenID4VP`_, non sono menzionati nel precedente esempio non normativo, poiché il loro utilizzo è condizionale e potrebbe cambiare in future versioni di questa documentazione.
-
-  - ``presentation_definition``: JSON Object secondo `Presentation Exchange <https://identity.foundation/presentation-exchange/spec/v2.0.0/>`_. Questo parametro NON DEVE essere presente quando ``presentation_definition_uri`` o ``scope`` sono presenti.
-  - ``presentation_definition_uri``: Non supportato. Stringa contenente un URL HTTPS che punta a una risorsa dove può essere recuperato un JSON Object *Presentation Definition*. Questo parametro DEVE essere presente quando il parametro ``presentation_definition`` o un valore ``scope`` che rappresenta una Presentation Definition non è presente.
+  Il seguente parametro, anche se definito in `OpenID4VP`_, non viene menzionato nel precedente esempio non normativo poiché il suo utilizzo è condizionale.
+  
   - ``client_metadata``: Un JSON Object contenente i valori dei metadata della Relying Party. Se il parametro ``client_metadata`` è presente, l'Istanza del Wallet DEVE ignorarlo e considerare i metadata del client ottenuti attraverso la Trust Chain OpenID Federation.
-
 
 Errori dell'Endpoint URI Request
 --------------------------------
@@ -513,9 +510,7 @@ Nella Authorization Response vengono utilizzati i seguenti parametri:
       - La Credenziale Elettronica richiesta (una o più, in formato SD-JWT VC)
       - la Wallet Attestation (in formato SD-JWT VC)
 
-      Quando viene utilizzato `presentation_definition`, il valore ``vp_token`` è un Array JSON contenente la/e Presentazione/i Verificabile/i e il parametro `presentation_submission` DEVE essere presente anche all'interno della risposta.
-
-      Quando viene utilizzato il linguaggio di query DCQL, il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascun Attestato Elettronico presentato.
+      Il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascun Attestato Elettronico presentato.
 
   * - **state**
     - Identificatore univoco fornito dalla Relying Party all'interno della Authorization Request.
