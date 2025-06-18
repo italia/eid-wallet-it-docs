@@ -4,15 +4,13 @@
 Template e-Service PDND
 =======================
 
-To enhance the co-design process of APIs, the PDND provides a specialized tool aimed at optimizing the publication, sharing, and reuse of e-services. This functionality is comprehensively defined and regulated within the official document:
+To enhance the co-design process of APIs, the PDND provides a specialized tool aimed at optimizing the publication and the reuse of e-services. This functionality is comprehensively defined and regulated within the document below:
 
     - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati" (`PDND`_).
 
 Central to this functionality is the concept of the template e-service, which serves as a standardized blueprint encapsulating all the necessary technical and descriptive metadata associated with an e-service. Such templates can be created and maintained by any Participants, referred to as API Co-design Managers and these can be either Providers or Consumers within the PDND ecosystem.
 
 Once a template e-service is published, it is accessible through the PDND Template Catalog, a centralized repository that facilitates discovery and reuse. This catalog enables any authorized PDND Participant to browse available templates and instantiate new e-services based on existing designs.
-
-This mechanism speeds up the development process and encourages teamwork by using shared and reusable components that follow PDND’s standards.
 
 
 PDND Template e-service definition and guidelines
@@ -31,7 +29,7 @@ Participants are enabled to create Templates E-Service via a guided wizard acces
     - The "Audience" field is omitted.
     - Thresholds are optional and serve as recommendations for Participants implementing the template.
 
-Participants are prohibited from creating multiple templates with the same name: template names must be unique per participant.. Upon creation, a template is initially set to the Draft state. Templates can then be published to the Template Catalogue, thereby making them accessible to all Participants.
+Participants are prohibited from creating multiple templates with the same name: template names MUST be unique per participant. Upon creation, a template is initially set to the Draft state. Templates can then be published to the Template Catalogue, thereby making them accessible to all Participants.
 
 Template E-Service Modification
 """""""""""""""""""""""""""""""

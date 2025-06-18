@@ -434,25 +434,57 @@
 <span class="linenos">264</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Required if claims parameter is not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.</span>
 <span class="linenos">265</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 <span class="linenos">266</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;864000&quot;</span>
-<span class="linenos">267</span><span class="w">            </span><span class="nt">claims</span><span class="p">:</span>
-<span class="linenos">268</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Credential Claims.</span>
+<span class="linenos">267</span><span class="w">            </span><span class="nt">userClaims</span><span class="p">:</span>
+<span class="linenos">268</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of User Claims.</span>
 <span class="linenos">269</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">270</span><span class="w">              </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;given_name&quot;:</span><span class="nv"> </span><span class="s">&quot;Mario&quot;,</span>
-<span class="linenos">271</span><span class="w">                </span><span class="s">&quot;family_name&quot;:</span><span class="nv"> </span><span class="s">&quot;Rossi&quot;,</span>
-<span class="linenos">272</span><span class="w">                </span><span class="s">&quot;birth_date&quot;:</span><span class="nv"> </span><span class="s">&quot;1980-01-10&quot;,</span>
-<span class="linenos">273</span><span class="w">                </span><span class="s">&quot;birth_place&quot;:</span><span class="nv"> </span><span class="s">&quot;Roma&quot;,</span>
-<span class="linenos">274</span><span class="w">                </span><span class="s">&quot;nationality&quot;:</span><span class="nv"> </span><span class="s">&quot;IT&quot;,</span>
-<span class="linenos">275</span><span class="w">                </span><span class="s">&quot;personal_administrative_number&quot;:</span><span class="nv"> </span><span class="s">&quot;XX00000XX&quot;,</span>
-<span class="linenos">276</span><span class="w">                </span><span class="s">&quot;tax_id_code&quot;:</span><span class="nv"> </span><span class="s">&quot;TINIT-XXXXXXXXXXXXXXXX&quot;&#39;</span>
-<span class="linenos">277</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">iss</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">aud</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">exp</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">iat</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">jti</span><span class="p p-Indicator">]</span>
-<span class="linenos">278</span><span class="w">    </span><span class="nt">CredentialClaimsRequest</span><span class="p">:</span>
-<span class="linenos">279</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span>
-<span class="linenos">280</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_id</span>
-<span class="linenos">281</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
-<span class="linenos">282</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
-<span class="linenos">283</span><span class="w">        </span><span class="nt">unique_id</span><span class="p">:</span>
-<span class="linenos">284</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="linenos">285</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID ANPR or Tax identification number</span>
+<span class="linenos">270</span><span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">271</span><span class="w">                </span><span class="nt">given_name</span><span class="p">:</span>
+<span class="linenos">272</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current First Name.</span>
+<span class="linenos">273</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">274</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Mario&quot;&#39;</span>
+<span class="linenos">275</span><span class="w">                </span><span class="nt">family_name</span><span class="p">:</span>
+<span class="linenos">276</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Current Family Name.</span>
+<span class="linenos">277</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">278</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Rossi&quot;&#39;</span>
+<span class="linenos">279</span><span class="w">                </span><span class="nt">birth_date</span><span class="p">:</span>
+<span class="linenos">280</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Date of Birth.</span>
+<span class="linenos">281</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">282</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;1980-01-10&quot;&#39;</span>
+<span class="linenos">283</span><span class="w">                </span><span class="nt">birth_place</span><span class="p">:</span>
+<span class="linenos">284</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Place of Birth.</span>
+<span class="linenos">285</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">286</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;Roma&quot;&#39;</span>
+<span class="linenos">287</span><span class="w">                </span><span class="nt">tax_id_code</span><span class="p">:</span>
+<span class="linenos">288</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National tax identification number. REQUIRED if personal_administrative_number is absent.</span>
+<span class="linenos">289</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">290</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;TINIT-XXXXXXXXXXXXXXXX&quot;&#39;</span>
+<span class="linenos">291</span><span class="w">                </span><span class="nt">personal_administrative_number</span><span class="p">:</span>
+<span class="linenos">292</span><span class="w">                  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">National unique identifier of a natural person. REQUIRED if tax_id_code is absent.</span>
+<span class="linenos">293</span><span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">294</span><span class="w">                  </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&quot;XX00000XX&quot;&#39;</span>
+<span class="linenos">295</span><span class="w">            </span><span class="nt">attributeClaims</span><span class="p">:</span>
+<span class="linenos">296</span><span class="w">              </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List of Datasets of Attribute.</span>
+<span class="linenos">297</span><span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">298</span><span class="w">              </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span>
+<span class="linenos">299</span><span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">300</span><span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">301</span><span class="w">                  </span><span class="nt">id</span><span class="p">:</span>
+<span class="linenos">302</span><span class="w">                    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unique identifier of the Dataset.</span>
+<span class="linenos">303</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">304</span><span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;</span>
+<span class="linenos">305</span><span class="w">                </span><span class="nt">additionalProperties</span><span class="p">:</span>
+<span class="linenos">306</span><span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">307</span><span class="w">                </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">id</span><span class="p p-Indicator">]</span>
+<span class="linenos">308</span><span class="w">                </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[{&quot;id&quot;:</span><span class="nv"> </span><span class="s">&quot;6F9619FF-8B86-D011-B42D-00C04FC964FF&quot;,</span><span class="nv"> </span><span class="s">&quot;nationality&quot;:</span><span class="nv"> </span><span class="s">&quot;IT&quot;},</span><span class="nv"> </span><span class="s">{...}]&#39;</span>
+<span class="linenos">309</span><span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">iss</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">aud</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">exp</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">iat</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">jti</span><span class="p p-Indicator">]</span>
+<span class="linenos">310</span><span class="w">    </span><span class="nt">CredentialClaimsRequest</span><span class="p">:</span>
+<span class="linenos">311</span><span class="w">      </span><span class="nt">required</span><span class="p">:</span>
+<span class="linenos">312</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unique_id</span>
+<span class="linenos">313</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="linenos">314</span><span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="linenos">315</span><span class="w">        </span><span class="nt">unique_id</span><span class="p">:</span>
+<span class="linenos">316</span><span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">317</span><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ID ANPR or Tax identification number</span>
 </pre></div>
 </div>
 </section>
@@ -485,7 +517,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/06/2025.
+      Last updated on 18/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
