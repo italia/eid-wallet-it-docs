@@ -783,12 +783,20 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 
-1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the ``Common Name (CN)`` field should contain the Federation Entity unique identifier DNS name, which is included into the **sub** (subject) value in its federation Entity Configuration, removing ``https://`` and any webpaths.
-2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that matches the **sub** value of its federation Entity Configuration.
-3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** value of its Entity Configuration, removing ``https://`` and any webpaths.
+1. **Subject Name**: The X.509 Certificate's subject name MUST match the participant's identity. The Intermediaries and Leaves subject name MUST include the following attributes:
+
+  -``Common Name (CN)``: SHOULD contain the Federation Entity unique identifier DNS name, which is included in the sub (subject) value in its federation Entity Configuration, removing ``https://`` and any webpaths.
+  - ``Organization Name (O)``: MUST contain the legal name of the organization.
+  - ``Country Name (C)``: MUST contain the two-letter ISO country code.
+  - ``Email Address``: MUST contain the organization's contact email.
+  - ``Serial Number``: MUST contain the official registration number of the organization.
+  
+2. **Subject Alternative Name (SAN)**: The X.509 Certificate MUST include a ``SAN URI`` that MUST match the **sub** and the **iss** values of its federation Entity Configuration.
+3. **DNS Name**: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the **sub** and the **iss** values of its Entity Configuration, removing ``https://`` and any webpaths.
 4. **Certificate Revocation List (CRL)**: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.
-5. **Basic Constraints**: The X.509 Certificate MUST include a ``Basic Constraints`` extension with ``CA:TRUE`` and a maximum path length of 1 if the certificate issuer is a Federation Intermediate, if it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.
-6. **Name Constraints**: The X.509 Certificate MUST include ``Name Constraints`` to specify permitted and excluded domains and URIs. For example:
+5. **Basic Constraints**: The X.509 Certificate MUST include a ``Basic Constraints`` extension with ``CA:TRUE`` and a maximum path length of 1 if the certificate issuer is a Federation Intermediate. If it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates about itself. ``BasicConstraints`` extension MUST be set ``critical``.
+6. **Key Usage**: ``Digital Signature``, ``Key Encipherment``, ``Certificate Sign``, ``CRL Sign`` MUST be included. ``KeyUsage`` extension MUST be set ``critical``.
+7. **Name Constraints**: The X.509 Certificate MUST include ``Name Constraints`` to specify permitted and excluded domains and URIs. For instance:
 
    - Permitted:
      - ``URI.1=https://leaf.example.com``
@@ -802,12 +810,47 @@ When a participant self-issues an X.509 Certificate, it adheres to the following
      - ``DNS=example.net``
      - ``DNS=*.example.org``
 
+8. **AuthorityKeyIdentifier**: The X.509 Certificate MUST include an ``AuthorityKeyIdentifier`` extension. The ``keyIdentifier`` field of the ``AuthorityKeyIdentifier`` extension MUST be present and MUST be identical to the ``SubjectKeyIdentifier`` field of the issuer's certificate. This consolidates the certificate chain building and validation.
+
 Below is a non-normative example, in plain text (OpenSSL format), of an X.509 certificate chain with an intermediate CA, starting from the Leaf certificate.
 
 .. literalinclude:: ../../examples/x5c.json
   :language: text
 
 Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.
+
+
+X.509 Certificate Revocation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An X.509 Certificate can be revoked by its Issuer.
+Revocation lists, and/or any other revocation control mechanism, are particularly required for X.509 Certificates with an expiration time greater than 24 hours; otherwise, they are not required.
+
+When the issuer of the X.509 Certificate is the Leaf and therefore the X.509 Certificate refers to itself, if the certificate expiration time is greater than 24 hours from the ``X509_NOT_VALID_BEFORE`` time, it MUST implement a CRL related to the issued certificate and keep it updated.
+When the issuer of the X.509 Certificate is an immediate Superior, such as the Trust Anchor or an Intermediary, and revokes the certificate related to the Leaf, i.e., the X.509 Certificate related to one of the Federation Entity Keys of the Leaf, this action invalidates the entire Trust Chain associated with that cryptographic public key of the Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be quickly addressed.
+
+Below is a non-normative example, in plain text, illustrating the content of a CRL.
+
+.. code-block:: text
+
+    Certificate Revocation List (CRL):
+    Version: 2 (0x1)
+    Signature Algorithm: sha256WithRSAEncryption
+    Issuer: CN=leaf.example.org, O=Leaf, C=IT
+    Last Update: Sep 1 00:00:00 2023 GMT
+    Next Update: Sep 8 00:00:00 2023 GMT
+    Revoked Certificates:
+        Serial Number: 987654320
+            Revocation Date: Aug 25 12:00:00 2023 GMT
+            CRL Entry Extensions:
+                Reason Code: Key Compromise
+        Serial Number: 987654321
+            Revocation Date: Aug 30 15:00:00 2023 GMT
+            CRL Entry Extensions:
+                Reason Code: Cessation of Operation
+    Signature Algorithm: sha256WithRSAEncryption
+    Signature:
+        5c:4f:3b:...
 
 
 Privacy Remarks

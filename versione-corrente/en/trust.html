@@ -973,12 +973,22 @@ Federation participants that need to issue X.509 Certificates about themselves a
 Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.</p>
 <p>When a participant self-issues an X.509 Certificate, it adheres to the following requirements:</p>
 <ol class="arabic simple">
-<li><p><strong>Subject Name</strong>: The X.509 Certificate's subject name MUST match the participant's identity. Specifically, the <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code> field should contain the Federation Entity unique identifier DNS name, which is included into the <strong>sub</strong> (subject) value in its federation Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
-<li><p><strong>Subject Alternative Name (SAN)</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> that matches the <strong>sub</strong> value of its federation Entity Configuration.</p></li>
-<li><p><strong>DNS Name</strong>: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the <strong>sub</strong> value of its Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
+<li><p><strong>Subject Name</strong>: The X.509 Certificate's subject name MUST match the participant's identity. The Intermediaries and Leaves subject name MUST include the following attributes:</p></li>
+</ol>
+<blockquote>
+<div><p>-<code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Name</span> <span class="pre">(CN)</span></code>: SHOULD contain the Federation Entity unique identifier DNS name, which is included in the sub (subject) value in its federation Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.
+- <code class="docutils literal notranslate"><span class="pre">Organization</span> <span class="pre">Name</span> <span class="pre">(O)</span></code>: MUST contain the legal name of the organization.
+- <code class="docutils literal notranslate"><span class="pre">Country</span> <span class="pre">Name</span> <span class="pre">(C)</span></code>: MUST contain the two-letter ISO country code.
+- <code class="docutils literal notranslate"><span class="pre">Email</span> <span class="pre">Address</span></code>: MUST contain the organization's contact email.
+- <code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">Number</span></code>: MUST contain the official registration number of the organization.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Subject Alternative Name (SAN)</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">SAN</span> <span class="pre">URI</span></code> that MUST match the <strong>sub</strong> and the <strong>iss</strong> values of its federation Entity Configuration.</p></li>
+<li><p><strong>DNS Name</strong>: The X.509 Certificate MUST include a DNS Name in the SAN that matches the DNS name contained within the <strong>sub</strong> and the <strong>iss</strong> values of its Entity Configuration, removing <code class="docutils literal notranslate"><span class="pre">https://</span></code> and any webpaths.</p></li>
 <li><p><strong>Certificate Revocation List (CRL)</strong>: If the issued X.509 Certificates has an expiration time superior to 24 hours, the X.509 Issuer MUST publish a CRL for the issued X.509 Certificates. This list MUST be accessible and regularly updated to ensure that any compromised or invalid X.509 Certificates are promptly revoked with the motivation of the revocation, if any.</p></li>
-<li><p><strong>Basic Constraints</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> extension with <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> and a maximum path length of 1 if the certificate issuer is a Federation Intermediate, if it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates with a limited chain depth.</p></li>
-<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For example:</p>
+<li><p><strong>Basic Constraints</strong>: The X.509 Certificate MUST include a <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Constraints</span></code> extension with <code class="docutils literal notranslate"><span class="pre">CA:TRUE</span></code> and a maximum path length of 1 if the certificate issuer is a Federation Intermediate. If it is a Leaf, the maximum path length MUST be set to 0. This indicates that the Subordinate to which certificate is about, can only issue X.509 Certificates about itself. <code class="docutils literal notranslate"><span class="pre">BasicConstraints</span></code> extension MUST be set <code class="docutils literal notranslate"><span class="pre">critical</span></code>.</p></li>
+<li><p><strong>Key Usage</strong>: <code class="docutils literal notranslate"><span class="pre">Digital</span> <span class="pre">Signature</span></code>, <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Encipherment</span></code>, <code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">Sign</span></code>, <code class="docutils literal notranslate"><span class="pre">CRL</span> <span class="pre">Sign</span></code> MUST be included. <code class="docutils literal notranslate"><span class="pre">KeyUsage</span></code> extension MUST be set <code class="docutils literal notranslate"><span class="pre">critical</span></code>.</p></li>
+<li><p><strong>Name Constraints</strong>: The X.509 Certificate MUST include <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">Constraints</span></code> to specify permitted and excluded domains and URIs. For instance:</p>
 <ul class="simple">
 <li><p>Permitted:
 - <code class="docutils literal notranslate"><span class="pre">URI.1=https://leaf.example.com</span></code>
@@ -993,39 +1003,40 @@ Naming constraints are applied by Immediate Superiors within the certificates is
 - <code class="docutils literal notranslate"><span class="pre">DNS=*.example.org</span></code></p></li>
 </ul>
 </li>
+<li><p><strong>AuthorityKeyIdentifier</strong>: The X.509 Certificate MUST include an <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code> extension. The <code class="docutils literal notranslate"><span class="pre">keyIdentifier</span></code> field of the <code class="docutils literal notranslate"><span class="pre">AuthorityKeyIdentifier</span></code> extension MUST be present and MUST be identical to the <code class="docutils literal notranslate"><span class="pre">SubjectKeyIdentifier</span></code> field of the issuer's certificate. This consolidates the certificate chain building and validation.</p></li>
 </ol>
 <p>Below is a non-normative example, in plain text (OpenSSL format), of an X.509 certificate chain with an intermediate CA, starting from the Leaf certificate.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 631900975802917176051117802358049194750736752223 (0x6eaf6b7456ab3c0a4b38f02bb6073db7ce925e5f)
+        Serial Number: 532475288460794907764955656061464526302363002777 (0x5d450489d8679c4cc77f9d4c279d4f0011002799)
     Signature Algorithm: sha256
-        Issuer: commonName=https://intermediate.example.net, organizationName=Example INT, countryName=IT
+        Issuer: commonName=intermediate.example.net, organizationName=Example CA Intermediate, countryName=IT, emailAddress=contact@example.net, serialNumber=5903918921915681440
         Validity
-            Not Before: May 27 09:13:33 2025 GMT
-            Not After : May 28 09:13:33 2026 GMT
-        Subject: commonName=CN=leaf.example.com, O=Example Leaf, C=IT, organizationName=Example Leaf, countryName=IT
+            Not Before: Jun 09 14:35:57 2025 GMT
+            Not After : Jun 10 14:35:57 2026 GMT
+        Subject: commonName=leaf.example.org, organizationName=Example Leaf, countryName=IT, emailAddress=contact@example.org, serialNumber=1748451612203067223
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey (EC)
                 Public-Key: (256 bit)
                 Curve: secp256r1
-                X: 69976109031737194756970051761651042204906873292535726068007861307666294009468
-                Y: 30041520431409736411496718565679258429461229569083348196905050642324938424017
+                X: 3829782194632306206263450981235769084537108480123189128003929806887497190160
+                Y: 91063511551083347289412833103330824068843433877336628340259440320184702889352
         X509v3 extensions:
             X509v3 Basic Constraints:
                 CA:TRUE, pathlen:0
             X509v3 Subject Alternative Name:
                 DNS:leaf.example.org
-                URI:leaf.example.org
+                URI:https://leaf.example.org/that-app
             X509v3 Key Usage:
                 Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
             X509v3 CRL Distribution Points:
                 Full Name:
-                  URI:https://leaf.example.com/crl/leaf.example.com.crl
+                  URI:https://leaf.example.org/crl/leaf.example.com.crl
             X509v3 Name Constraints:
                 Permitted:
-                  URI.1=https://leaf.example.com
-                  DNS.2=leaf.example.com
+                  URI.1=https://leaf.example.org
+                  DNS.2=leaf.example.org
                 Excluded:
                   DNS.1=localhost
                   DNS.2=localhost.localdomain
@@ -1033,49 +1044,57 @@ Naming constraints are applied by Immediate Superiors within the certificates is
                   DNS.4=example.com
                   DNS.5=example.org
                   DNS.6=example.net
+            X509v3 Subject Key Identifier:
+                23:cd:b9:d3:fd:e7:f6:2d:d4:6e:3a:5d:54:e3:5d:8b:4b:52:5a:e4
+            X509v3 Authority Key Identifier:
+                keyid:d4:ff:a5:44:ad:30:93:d0:4d:74:b0:73:d9:a7:3d:44:8b:78:60:16
 
     Signature Algorithm: sha256
-     30:45:02:21:00:ee:0c:24:4c:ea:57:db:f8:54:68:77
-     92:bd:d7:e3:3d:ec:80:4e:84:b4:36:70:f3:00:0b:f0
-     cf:bf:07:c1:4a:02:20:70:1e:12:e4:c4:97:ba:95:36
-     e8:20:82:d6:f1:7f:4d:0d:41:4a:51:0a:c5:b2:5d:62
-     33:45:c5:b0:dc:28:0a
+     30:44:02:20:35:cc:29:0c:a5:60:81:6c:6a:3e:b2:f9
+     4c:6c:13:ec:bc:20:0c:a0:31:62:6f:21:bd:d4:66:df
+     01:33:00:85:02:20:0d:5b:8f:2b:38:ba:ff:0e:dc:d6
+     7d:af:77:1d:10:09:d4:7c:1a:88:ef:0f:95:a8:67:8e
+     8f:cd:41:3c:75:1b
 
 -----BEGIN CERTIFICATE-----
-MIIC6jCCApCgAwIBAgIUbq9rdFarPApLOPArtgc9t86SXl8wCgYIKoZIzj0EAwIw
-TjEpMCcGA1UEAwwgaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZXhhbXBsZS5uZXQxFDAS
-BgNVBAoMC0V4YW1wbGUgSU5UMQswCQYDVQQGEwJJVDAeFw0yNTA1MjcwOTEzMzNa
-Fw0yNjA1MjgwOTEzMzNaMFgxMjAwBgNVBAMMKUNOPWxlYWYuZXhhbXBsZS5jb20s
-IE89RXhhbXBsZSBMZWFmLCBDPUlUMRUwEwYDVQQKDAxFeGFtcGxlIExlYWYxCzAJ
-BgNVBAYTAklUMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEmrUS/DeI3q5nTl0y
-U5nmAydnP8U4VQxoLb5EVXgCbnxCauXjmhQKpwjlACbOXY7iCBgdqq+1g8OWqMg2
-o5H+0aOCAUAwggE8MBIGA1UdEwEB/wQIMAYBAf8CAQAwLQYDVR0RBCYwJIIQbGVh
-Zi5leGFtcGxlLm9yZ4YQbGVhZi5leGFtcGxlLm9yZzAOBgNVHQ8BAf8EBAMCAaYw
-QgYDVR0fBDswOTA3oDWgM4YxaHR0cHM6Ly9sZWFmLmV4YW1wbGUuY29tL2NybC9s
-ZWFmLmV4YW1wbGUuY29tLmNybDCBogYDVR0eAQH/BIGXMIGUoDAwGoYYaHR0cHM6
-Ly9sZWFmLmV4YW1wbGUuY29tMBKCEGxlYWYuZXhhbXBsZS5jb22hYDALgglsb2Nh
-bGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAuCCTEyNy4wLjAuMTANggtl
-eGFtcGxlLmNvbTANggtleGFtcGxlLm9yZzANggtleGFtcGxlLm5ldDAKBggqhkjO
-PQQDAgNIADBFAiEA7gwkTOpX2/hUaHeSvdfjPeyAToS0NnDzAAvwz78HwUoCIHAe
-EuTEl7qVNugggtbxf00NQUpRCsWyXWIzRcWw3CgK
+MIIDqzCCA1KgAwIBAgIUXUUEidhnnEzHf51MJ51PABEAJ5kwCgYIKoZIzj0EAwIw
+gZQxITAfBgNVBAMMGGludGVybWVkaWF0ZS5leGFtcGxlLm5ldDEgMB4GA1UECgwX
+RXhhbXBsZSBDQSBJbnRlcm1lZGlhdGUxCzAJBgNVBAYTAklUMSIwIAYJKoZIhvcN
+AQkBFhNjb250YWN0QGV4YW1wbGUubmV0MRwwGgYDVQQFExM1OTAzOTE4OTIxOTE1
+NjgxNDQwMB4XDTI1MDYwOTE0MzU1N1oXDTI2MDYxMDE0MzU1N1owgYExGTAXBgNV
+BAMMEGxlYWYuZXhhbXBsZS5vcmcxFTATBgNVBAoMDEV4YW1wbGUgTGVhZjELMAkG
+A1UEBhMCSVQxIjAgBgkqhkiG9w0BCQEWE2NvbnRhY3RAZXhhbXBsZS5vcmcxHDAa
+BgNVBAUTEzE3NDg0NTE2MTIyMDMwNjcyMjMwWTATBgcqhkjOPQIBBggqhkjOPQMB
+BwNCAAQId5R0uKK9aN4iVAIaJAx7MhocY8pdUCBb4JQtsidLEMlUHvt8F4ZjRoFI
+V7qBSFYeDzthRWg2euvb6WS/Um2Io4IBkTCCAY0wEgYDVR0TAQH/BAgwBgEB/wIB
+ADA+BgNVHREENzA1ghBsZWFmLmV4YW1wbGUub3JnhiFodHRwczovL2xlYWYuZXhh
+bXBsZS5vcmcvdGhhdC1hcHAwDgYDVR0PAQH/BAQDAgGmMEIGA1UdHwQ7MDkwN6A1
+oDOGMWh0dHBzOi8vbGVhZi5leGFtcGxlLm9yZy9jcmwvbGVhZi5leGFtcGxlLmNv
+bS5jcmwwgaIGA1UdHgEB/wSBlzCBlKAwMBqGGGh0dHBzOi8vbGVhZi5leGFtcGxl
+Lm9yZzASghBsZWFmLmV4YW1wbGUub3JnoWAwC4IJbG9jYWxob3N0MBeCFWxvY2Fs
+aG9zdC5sb2NhbGRvbWFpbjALggkxMjcuMC4wLjEwDYILZXhhbXBsZS5jb20wDYIL
+ZXhhbXBsZS5vcmcwDYILZXhhbXBsZS5uZXQwHQYDVR0OBBYEFCPNudP95/Yt1G46
+XVTjXYtLUlrkMB8GA1UdIwQYMBaAFNT/pUStMJPQTXSwc9mnPUSLeGAWMAoGCCqG
+SM49BAMCA0cAMEQCIDXMKQylYIFsaj6y+UxsE+y8IAygMWJvIb3UZt8BMwCFAiAN
+W48rOLr/DtzWfa93HRAJ1HwaiO8Plahnjo/NQTx1Gw==
 -----END CERTIFICATE-----
 
 Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 396534572491127113022787686743653095280228078403 (0x457539a6ac314749fa5ec658f76ed225fd769343)
+        Serial Number: 91269650197527070332222733869315853624156944719 (0xffcac33859493fa23c03f40ee26db9a4178f94f)
     Signature Algorithm: sha256
-        Issuer: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Issuer: commonName=Example IT-Wallet Trust Anchor, organizationName=Example CA, countryName=IT, emailAddress=contact@example.com
         Validity
-            Not Before: May 27 09:13:33 2025 GMT
-            Not After : May 28 09:13:33 2026 GMT
-        Subject: commonName=https://intermediate.example.net, organizationName=Example INT, countryName=IT
+            Not Before: Jun 09 14:35:57 2025 GMT
+            Not After : Jun 10 14:35:57 2026 GMT
+        Subject: commonName=intermediate.example.net, organizationName=Example CA Intermediate, countryName=IT, emailAddress=contact@example.net, serialNumber=5903918921915681440
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey (EC)
                 Public-Key: (256 bit)
                 Curve: secp256r1
-                X: 25156074883156693989891139993064608529947553342874167037412394938695986639833
-                Y: 37747901399770759266458300753958501018530290808445029579181649667235295170256
+                X: 60445869653704266271652775334242888921048732241760726518398679071861851035439
+                Y: 112203853411663223722072600807244711112453133428273896104884765015852062761767
         X509v3 extensions:
             X509v3 Basic Constraints:
                 CA:TRUE, pathlen:1
@@ -1092,47 +1111,55 @@ Certificate:
                   DNS.4=example.com
                   DNS.5=example.org
                   DNS.6=example.net
+            X509v3 Subject Key Identifier:
+                d4:ff:a5:44:ad:30:93:d0:4d:74:b0:73:d9:a7:3d:44:8b:78:60:16
+            X509v3 Authority Key Identifier:
+                keyid:19:ef:85:76:05:1c:cd:66:84:43:ba:ea:d8:3a:82:a4:0e:3e:d7:10
 
     Signature Algorithm: sha256
-     30:46:02:21:00:cb:1d:01:ee:1b:bf:a1:4d:36:42:d2
-     0a:7e:80:37:44:e6:e0:ae:6c:70:58:ea:4c:60:00:af
-     53:3b:11:f6:66:02:21:00:c6:08:73:d8:45:7e:e8:e9
-     5e:be:5b:68:9e:12:e9:a2:8e:95:31:01:1d:9e:99:04
-     17:d3:f3:54:71:1b:9f:ac
+     30:45:02:21:00:a7:d5:c4:c2:ab:f0:0d:de:fb:9f:79
+     c6:0d:ca:d3:4c:3f:31:5c:21:aa:ff:81:18:0f:56:01
+     19:de:7a:31:91:02:20:7d:79:0a:6e:77:3a:dc:bb:da
+     bc:47:81:51:31:9e:58:96:d7:e3:24:5d:1e:07:56:a0
+     0e:93:71:06:18:38:25
 
 -----BEGIN CERTIFICATE-----
-MIICjzCCAjSgAwIBAgIURXU5pqwxR0n6XsZY927SJf12k0MwCgYIKoZIzj0EAwIw
-UjEuMCwGA1UEAwwlQ049Y2EuZXhhbXBsZS5jb20sIE89RXhhbXBsZSBDQSwgQz1J
-VDETMBEGA1UECgwKRXhhbXBsZSBDQTELMAkGA1UEBhMCSVQwHhcNMjUwNTI3MDkx
-MzMzWhcNMjYwNTI4MDkxMzMzWjBOMSkwJwYDVQQDDCBodHRwczovL2ludGVybWVk
-aWF0ZS5leGFtcGxlLm5ldDEUMBIGA1UECgwLRXhhbXBsZSBJTlQxCzAJBgNVBAYT
-AklUMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEN53VdNZrwDIEoleHOjbgNAA9
-Ab6PeLajowvmkPNm89lTdI4YecjNJYS35wyhMEt+opXZukysBjRRO84M8I6O0KOB
-6zCB6DASBgNVHRMBAf8ECDAGAQH/AgEBMA4GA1UdDwEB/wQEAwIBpjBSBgNVHR8E
-SzBJMEegRaBDhkFodHRwczovL2ludGVybWVkaWF0ZS5leGFtcGxlLm5ldC9jcmwv
-aW50ZXJtZWRpYXRlLmV4YW1wbGUubmV0LmNybDBuBgNVHR4BAf8EZDBioWAwC4IJ
-bG9jYWxob3N0MBeCFWxvY2FsaG9zdC5sb2NhbGRvbWFpbjALggkxMjcuMC4wLjEw
-DYILZXhhbXBsZS5jb20wDYILZXhhbXBsZS5vcmcwDYILZXhhbXBsZS5uZXQwCgYI
-KoZIzj0EAwIDSQAwRgIhAMsdAe4bv6FNNkLSCn6AN0Tm4K5scFjqTGAAr1M7EfZm
-AiEAxghz2EV+6OlevltonhLpoo6VMQEdnpkEF9PzVHEbn6w=
+MIIDNDCCAtqgAwIBAgIUD/ysM4WUk/ojwD9A7ibbmkF4+U8wCgYIKoZIzj0EAwIw
+bzEnMCUGA1UEAwweRXhhbXBsZSBJVC1XYWxsZXQgVHJ1c3QgQW5jaG9yMRMwEQYD
+VQQKDApFeGFtcGxlIENBMQswCQYDVQQGEwJJVDEiMCAGCSqGSIb3DQEJARYTY29u
+dGFjdEBleGFtcGxlLmNvbTAeFw0yNTA2MDkxNDM1NTdaFw0yNjA2MTAxNDM1NTda
+MIGUMSEwHwYDVQQDDBhpbnRlcm1lZGlhdGUuZXhhbXBsZS5uZXQxIDAeBgNVBAoM
+F0V4YW1wbGUgQ0EgSW50ZXJtZWRpYXRlMQswCQYDVQQGEwJJVDEiMCAGCSqGSIb3
+DQEJARYTY29udGFjdEBleGFtcGxlLm5ldDEcMBoGA1UEBRMTNTkwMzkxODkyMTkx
+NTY4MTQ0MDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABIWjJlsIHYDNnlDBYkJR
+vVCfaVA6LhS9f9y6hEb50Bcv+BEhaA2/9uhcVLeAEjlrXnYNuZRl4FHVTZF6aZwO
+YyejggEsMIIBKDASBgNVHRMBAf8ECDAGAQH/AgEBMA4GA1UdDwEB/wQEAwIBpjBS
+BgNVHR8ESzBJMEegRaBDhkFodHRwczovL2ludGVybWVkaWF0ZS5leGFtcGxlLm5l
+dC9jcmwvaW50ZXJtZWRpYXRlLmV4YW1wbGUubmV0LmNybDBuBgNVHR4BAf8EZDBi
+oWAwC4IJbG9jYWxob3N0MBeCFWxvY2FsaG9zdC5sb2NhbGRvbWFpbjALggkxMjcu
+MC4wLjEwDYILZXhhbXBsZS5jb20wDYILZXhhbXBsZS5vcmcwDYILZXhhbXBsZS5u
+ZXQwHQYDVR0OBBYEFNT/pUStMJPQTXSwc9mnPUSLeGAWMB8GA1UdIwQYMBaAFBnv
+hXYFHM1mhEO66tg6gqQOPtcQMAoGCCqGSM49BAMCA0gAMEUCIQCn1cTCq/AN3vuf
+ecYNytNMPzFcIar/gRgPVgEZ3noxkQIgfXkKbnc63LvavEeBUTGeWJbX4yRdHgdW
+oA6TcQYYOCU=
 -----END CERTIFICATE-----
 
 Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 284423255585370380375410701638165198317432410917 (0x31d1fad9752ce503dbbacd0bf76abc930d651325)
+        Serial Number: 313952574345981235022793443559613673136138691500 (0x36fe1ecdecae8457166130bfe9bdc06872fb23ac)
     Signature Algorithm: sha256
-        Issuer: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+        Issuer: commonName=Example IT-Wallet Trust Anchor, organizationName=Example CA, countryName=IT
         Validity
-            Not Before: May 27 09:13:33 2025 GMT
-            Not After : May 28 09:13:33 2026 GMT
-        Subject: commonName=CN=ca.example.com, O=Example CA, C=IT, organizationName=Example CA, countryName=IT
+            Not Before: Jun 09 14:35:57 2025 GMT
+            Not After : Jun 10 14:35:57 2026 GMT
+        Subject: commonName=Example IT-Wallet Trust Anchor, organizationName=Example CA, countryName=IT, emailAddress=contact@example.com
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey (EC)
                 Public-Key: (256 bit)
                 Curve: secp256r1
-                X: 7607860515366991947250115130866123391572079251785604713950047686319787674406
-                Y: 74493290682810963932331564302963289249956540428755890573822716633130571216251
+                X: 60617617675072387336958300284769391145869494383252483142674734617850314807683
+                Y: 22362075555843863650063359938302746220336487493783775954314666627962434204527
         X509v3 extensions:
             X509v3 Basic Constraints:
                 CA:TRUE, pathlen:2
@@ -1151,33 +1178,65 @@ Certificate:
                   DNS.4=example.com
                   DNS.5=example.org
                   DNS.6=example.net
+            X509v3 Subject Key Identifier:
+                19:ef:85:76:05:1c:cd:66:84:43:ba:ea:d8:3a:82:a4:0e:3e:d7:10
 
     Signature Algorithm: sha256
-     30:46:02:21:00:b9:6c:2c:6f:9a:18:b8:04:d6:39:d3
-     50:dd:e6:a6:ce:9b:f0:d8:64:48:7b:4b:33:2e:fe:d9
-     3d:13:81:4c:d4:02:21:00:ab:10:9d:f1:0f:64:d8:dc
-     76:53:d1:e3:32:b1:65:b7:97:83:d7:69:0f:5a:da:9b
-     1e:a4:a9:a3:88:98:6b:5f
+     30:44:02:20:15:b9:fc:a4:cc:10:f2:d4:c3:5c:21:0b
+     26:dc:25:52:a4:42:dc:ae:04:95:b1:c6:df:e7:7a:20
+     2d:40:6d:cc:02:20:68:45:7f:f5:af:6b:82:55:d8:7c
+     ff:1d:32:b0:85:c7:a6:6d:97:98:5d:35:0a:fb:04:0d
+     e1:59:59:e2:d9:44
 
 -----BEGIN CERTIFICATE-----
-MIICmjCCAj+gAwIBAgIUMdH62XUs5QPbus0L92q8kw1lEyUwCgYIKoZIzj0EAwIw
-UjEuMCwGA1UEAwwlQ049Y2EuZXhhbXBsZS5jb20sIE89RXhhbXBsZSBDQSwgQz1J
-VDETMBEGA1UECgwKRXhhbXBsZSBDQTELMAkGA1UEBhMCSVQwHhcNMjUwNTI3MDkx
-MzMzWhcNMjYwNTI4MDkxMzMzWjBSMS4wLAYDVQQDDCVDTj1jYS5leGFtcGxlLmNv
-bSwgTz1FeGFtcGxlIENBLCBDPUlUMRMwEQYDVQQKDApFeGFtcGxlIENBMQswCQYD
-VQQGEwJJVDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABBDR5X4r9VUDnU5X2rIf
-xDo7DFNodgP2AD4jzqrETwsmpLG1V9s1bu+zyFrnGVvKmoqR0kOeZ1/vyN5vhMcx
-NXujgfIwge8wEgYDVR0TAQH/BAgwBgEB/wIBAjAZBgNVHREEEjAQgg5jYS5leGFt
-cGxlLmNvbTAOBgNVHQ8BAf8EBAMCAaYwPgYDVR0fBDcwNTAzoDGgL4YtaHR0cHM6
-Ly9jYS5leGFtcGxlLmNvbS9jcmwvY2EuZXhhbXBsZS5jb20uY3JsMG4GA1UdHgEB
-/wRkMGKhYDALgglsb2NhbGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAuC
-CTEyNy4wLjAuMTANggtleGFtcGxlLmNvbTANggtleGFtcGxlLm9yZzANggtleGFt
-cGxlLm5ldDAKBggqhkjOPQQDAgNJADBGAiEAuWwsb5oYuATWOdNQ3eamzpvw2GRI
-e0szLv7ZPROBTNQCIQCrEJ3xD2TY3HZT0eMysWW3l4PXaQ9a2psepKmjiJhrXw==
+MIICzzCCAnagAwIBAgIUNv4ezeyuhFcWYTC/6b3AaHL7I6wwCgYIKoZIzj0EAwIw
+SzEnMCUGA1UEAwweRXhhbXBsZSBJVC1XYWxsZXQgVHJ1c3QgQW5jaG9yMRMwEQYD
+VQQKDApFeGFtcGxlIENBMQswCQYDVQQGEwJJVDAeFw0yNTA2MDkxNDM1NTdaFw0y
+NjA2MTAxNDM1NTdaMG8xJzAlBgNVBAMMHkV4YW1wbGUgSVQtV2FsbGV0IFRydXN0
+IEFuY2hvcjETMBEGA1UECgwKRXhhbXBsZSBDQTELMAkGA1UEBhMCSVQxIjAgBgkq
+hkiG9w0BCQEWE2NvbnRhY3RAZXhhbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjO
+PQMBBwNCAASGBFsTNDdouYJ4tmzaAoljRGI9LvTVbN7wjJaoArTZgzFwfHnwUIqa
+ovnq42WkLxsCIPLu/K27bF2fPyPCI7Nvo4IBEjCCAQ4wEgYDVR0TAQH/BAgwBgEB
+/wIBAjAZBgNVHREEEjAQgg5jYS5leGFtcGxlLmNvbTAOBgNVHQ8BAf8EBAMCAaYw
+PgYDVR0fBDcwNTAzoDGgL4YtaHR0cHM6Ly9jYS5leGFtcGxlLmNvbS9jcmwvY2Eu
+ZXhhbXBsZS5jb20uY3JsMG4GA1UdHgEB/wRkMGKhYDALgglsb2NhbGhvc3QwF4IV
+bG9jYWxob3N0LmxvY2FsZG9tYWluMAuCCTEyNy4wLjAuMTANggtleGFtcGxlLmNv
+bTANggtleGFtcGxlLm9yZzANggtleGFtcGxlLm5ldDAdBgNVHQ4EFgQUGe+FdgUc
+zWaEQ7rq2DqCpA4+1xAwCgYIKoZIzj0EAwIDRwAwRAIgFbn8pMwQ8tTDXCELJtwl
+UqRC3K4ElbHG3+d6IC1AbcwCIGhFf/Wva4JV2Hz/HTKwhcembZeYXTUK+wQN4VlZ
+4tlE
 -----END CERTIFICATE-----
 </pre></div>
 </div>
 <p>Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.</p>
+</section>
+<section id="x-509-certificate-revocation">
+<h3><span class="section-number">4.12.3. </span>X.509 Certificate Revocation<a class="headerlink" href="#x-509-certificate-revocation" title="Link to this heading">¶</a></h3>
+<p>An X.509 Certificate can be revoked by its Issuer.
+Revocation lists, and/or any other revocation control mechanism, are particularly required for X.509 Certificates with an expiration time greater than 24 hours; otherwise, they are not required.</p>
+<p>When the issuer of the X.509 Certificate is the Leaf and therefore the X.509 Certificate refers to itself, if the certificate expiration time is greater than 24 hours from the <code class="docutils literal notranslate"><span class="pre">X509_NOT_VALID_BEFORE</span></code> time, it MUST implement a CRL related to the issued certificate and keep it updated.
+When the issuer of the X.509 Certificate is an immediate Superior, such as the Trust Anchor or an Intermediary, and revokes the certificate related to the Leaf, i.e., the X.509 Certificate related to one of the Federation Entity Keys of the Leaf, this action invalidates the entire Trust Chain associated with that cryptographic public key of the Leaf, effectively removing its ability to issue further X.509 Certificates about itself. This hierarchical revocation mechanism ensures that any compromise or misbehavior by a Leaf entity can be quickly addressed.</p>
+<p>Below is a non-normative example, in plain text, illustrating the content of a CRL.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate Revocation List (CRL):
+Version: 2 (0x1)
+Signature Algorithm: sha256WithRSAEncryption
+Issuer: CN=leaf.example.org, O=Leaf, C=IT
+Last Update: Sep 1 00:00:00 2023 GMT
+Next Update: Sep 8 00:00:00 2023 GMT
+Revoked Certificates:
+    Serial Number: 987654320
+        Revocation Date: Aug 25 12:00:00 2023 GMT
+        CRL Entry Extensions:
+            Reason Code: Key Compromise
+    Serial Number: 987654321
+        Revocation Date: Aug 30 15:00:00 2023 GMT
+        CRL Entry Extensions:
+            Reason Code: Cessation of Operation
+Signature Algorithm: sha256WithRSAEncryption
+Signature:
+    5c:4f:3b:...
+</pre></div>
+</div>
 </section>
 </section>
 <section id="privacy-remarks">
@@ -1252,6 +1311,7 @@ e0szLv7ZPROBTNQCIQCrEJ3xD2TY3HZT0eMysWW3l4PXaQ9a2psepKmjiJhrXw==
 <li><a class="reference internal" href="#x-509-pki">4.12. X.509 PKI</a><ul>
 <li><a class="reference internal" href="#federation-trust-anchor-and-x-509-ca">4.12.1. Federation Trust Anchor and X.509 CA</a></li>
 <li><a class="reference internal" href="#x-509-certificates-issuance">4.12.2. X.509 Certificates Issuance</a></li>
+<li><a class="reference internal" href="#x-509-certificate-revocation">4.12.3. X.509 Certificate Revocation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#privacy-remarks">4.13. Privacy Remarks</a></li>
