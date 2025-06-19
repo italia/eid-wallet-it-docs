@@ -155,4 +155,4 @@ To check the authenticity of the file, the :term:`Wallet Instance` MUST verify t
 - Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes a re-issuance request to the :term:`Credential Issuer` by providing the new :term:`Cryptographic Binding` with the:term:`Credential`.
 
 .. note::
-  The Wallet Instance MUST not check the expiration of the Wallet Attestation as its main purpose is to enable the Wallet Instance to verify the authenticity of the backup file by ensuring it has been created and signed by a Wallet Instance of a specific Wallet Provider.
+  The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider`.
