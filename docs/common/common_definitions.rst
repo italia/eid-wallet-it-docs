@@ -9,7 +9,6 @@
 .. _ETSI TS 119 461: https://www.etsi.org/deliver/etsi_ts/119400_119499/119461/01.01.01_60/ts_119461v010101p.pdf
 .. _ETSI TS 119 612: https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.03.01_60/ts_119612v020301p.pdf
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
-.. _EU_2024/2982: https://eur-lex.europa.eu/eli/reg_impl/2024/2982/
 .. _Federation endpoint: wallet-solution.html#federation-endpoint
 .. _ISO18013-5: https://www.iso.org/standard/69084.html
 .. _JARM: https://openid.net/specs/oauth-v2-jarm-final.html
