@@ -244,6 +244,30 @@ Le Fonti Autentiche DEVONO utilizzare questo servizio di notifica nei seguenti c
   - Il valore di uno o più Attributi contenuti nel database della Fonte Autentica è cambiato.
   - Lo stato di validità degli Attributi è aggiornato (revoca o sospensione).
 
+Nel seguente diagramma è illustrato il processo di Alto Livello relativo all'aggiornamento dello stato da parte delle Fonti Autentiche
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/status-update-as.svg
+    :alt: Processo di aggiornamento dello stato da parte delle Fonti Autentiche
+    :width: 100%
+
+    Processo di aggiornamento dello stato da parte delle Fonti Autentiche
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/status-update-as.pdf
+    :alt: Processo di aggiornamento dello stato da parte delle Fonti Autentiche
+    :width: 100%
+
+Il processo inizia nel momento in cui si verifica una variazione sui dati o sulla loro validità nel database della Fonte Autentica. Le modifiche possono essere indotte anche da enti terzi diversi dalla Fonte Autentica, ad esempio in caso di attività illegali da parte degli Organi di Polizia.
+
+Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica DEVE notificare il Fornitore di Attestati Elettronici a cui ha fornito tali dati utilizzando il servizio esposto su PDND ":ref:`credential-issuer-endpoint:Notify Update Credential`".
+
+Il Fornitore di Attestati Elettronici, una volta ricevuta la notifica, DEVE provvedere all'aggiornamento dello stato della Credenziale secondo la modalità definite per il meccanismo di validità utilizzato e PUÒ inviare una notifica all'Utente utilizzando un eventuale canale di comunicazione precedentemente registrato.
+
+L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità delle Credenziali Digitali in essa memorizzate, riceve lo stato aggiornato e di conseguenza DOVRA' informare l'Utente del cambiamento di stato della Credenziale.
+
 
 Meccanismi di Verifica della Validità
 -------------------------------------
