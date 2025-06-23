@@ -173,16 +173,16 @@
             
   <section id="backup-and-restore">
 <h1><span class="section-number">5.1.5. </span>Backup and Restore<a class="headerlink" href="#backup-and-restore" title="Link to this heading">¶</a></h1>
-<p>The <strong>Backup and Restore</strong> functionality becomes relevant when the User wants to change device and/or Wallet Solution in order to access the previously issued Digital Credentials again.</p>
+<p>The <strong>Backup and Restore</strong> functionality becomes relevant when the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> wants to change device and/or <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> in order to access the previously issued Digital Credentials again.</p>
 <ul class="simple">
 <li><p>The mobile device has been <strong>lost</strong>, <strong>stolen</strong>, <strong>damaged</strong>, or <strong>compromised</strong> (e.g., due to unauthorized access).</p></li>
-<li><p>The User replaces an existing Wallet Instance with a new instance of the same Wallet Solution.</p></li>
-<li><p>The User has changed their mobile device and needs to set up the Wallet Solution on the new device.</p></li>
-<li><p>The User performs a factory reset on the current phone and needs to set up the Wallet Solution again.</p></li>
+<li><p>The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> replaces an existing <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> with a new instance of the same <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> has changed their mobile device and needs to set up the <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> on the new device.</p></li>
+<li><p>The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> performs a factory reset on the current phone and needs to set up the <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> again.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For Wallet Solutions based on the IT Wallet Technical Specifications, the migration to a different Wallet Solution (known as data portability) can be supported following the backup and restore functionality described in this section.</p>
+<p>For Wallet Solutions based on the IT Wallet <a class="reference internal" href="defined-terms.html#term-Technical-Specifications"><span class="xref std std-term">Technical Specifications</span></a>, the migration to a different <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> (known as data portability) can be supported following the backup and restore functionality described in this section.</p>
 </div>
 <section id="backup-flow">
 <h2><span class="section-number">5.1.5.1. </span>Backup Flow<a class="headerlink" href="#backup-flow" title="Link to this heading">¶</a></h2>
@@ -197,12 +197,12 @@
 </figcaption>
 </figure>
 <p>Below, the description of the steps of <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 5.7</span></a>:</p>
-<p><strong>Step 1</strong>: The User selects the option to back up Credentials stored within the Wallet Instance.</p>
-<p><strong>Steps 2-3</strong>: The Wallet Instance using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User.
-The User MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup.</p>
+<p><strong>Step 1</strong>: The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> selects the option to back up Credentials stored within the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a>.</p>
+<p><strong>Steps 2-3</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User.
+The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As highlighted in the ARF, encryption is necessary because the backup file is considered sensitive. Even if an attacker only knows the Issuer identifiers, they can infer the different types of Digital Credentials, which constitutes a violation of User privacy.</p>
+<p>As highlighted in the ARF, encryption is necessary because the backup file is considered sensitive. Even if an attacker only knows the <a class="reference internal" href="defined-terms.html#term-Issuer"><span class="xref std std-term">Issuer</span></a> identifiers, they can infer the different types of Digital Credentials, which constitutes a violation of <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> privacy.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -212,10 +212,10 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 <p class="admonition-title">Note</p>
 <p>The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> hashing algorithim is 600000 iterations as stated in the <a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a>.</p>
 </div>
-<p><strong>Step 4</strong>: The Wallet Instance performs the operations below to create the backup JWT entry for the backup file.</p>
+<p><strong>Step 4</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> performs the operations below to create the backup JWT entry for the backup file.</p>
 <ul class="simple">
-<li><p>For each of the HW bound key Credentials, add the Credential Issuer identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> as an entry in the backup JWT.</p></li>
-<li><p>Sign the backup JWT using the private key that its public key is attested within the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim). The Wallet Instance MUST verify the validity of the Wallet Attestation before signing the backup JWT.</p></li>
+<li><p>For each of the HW bound key Credentials, add the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> as an entry in the backup JWT.</p></li>
+<li><p>Sign the backup JWT using the private key that its public key is attested within the <a class="reference internal" href="defined-terms.html#term-Wallet-Attestation"><span class="xref std std-term">Wallet Attestation</span></a>. The related public key that is attested by the <a class="reference internal" href="defined-terms.html#term-Wallet-Provider"><span class="xref std std-term">Wallet Provider</span></a> is provided within the <a class="reference internal" href="defined-terms.html#term-Wallet-Attestation"><span class="xref std std-term">Wallet Attestation</span></a> (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim). The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST verify the validity of the <a class="reference internal" href="defined-terms.html#term-Wallet-Attestation"><span class="xref std std-term">Wallet Attestation</span></a> before signing the backup JWT.</p></li>
 <li><p>Add the signed backup JWT as an entry to the backup file.</p></li>
 <li><p>Encrypt the backup file using the provided key phrase.</p></li>
 </ul>
@@ -223,8 +223,8 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 <p class="admonition-title">Note</p>
 <p>The Backup JWT MAY contain transaction history for each Credential entry within the <code class="docutils literal notranslate"><span class="pre">credentials_backup</span></code> claim.</p>
 </div>
-<p><strong>Step 5</strong>: The User will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other.</p>
-<p><strong>Step 6</strong>: In the case where the User prefers the native storage, the backup file is stored on the User device.</p>
+<p><strong>Step 5</strong>: The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other.</p>
+<p><strong>Step 6</strong>: In the case where the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> prefers the native storage, the backup file is stored on the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> device.</p>
 <p>A non-normative example of the backup JWT header and payload is as the following:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
@@ -281,19 +281,19 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>timestamp</strong></p></td>
-<td><p>UNIX timestamp with the time of backup file creation. This value is updated every time a new credential entry is added to the backup file.</p></td>
+<td><p>UNIX timestamp with the time of backup file creation. This value is updated every time a new Credential entry is added to the backup file.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_provider_id</strong></p></td>
-<td><p>It MUST be set to the unique identifier of the Wallet Provider.</p></td>
+<td><p>It MUST be set to the unique identifier of the <a class="reference internal" href="defined-terms.html#term-Wallet-Provider"><span class="xref std std-term">Wallet Provider</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>wallet_instance_version</strong></p></td>
-<td><p>It MUST be set to the version of the Wallet Solution that has been backed up.</p></td>
+<td><p>It MUST be set to the version of the <a class="reference internal" href="defined-terms.html#term-Wallet-Solution"><span class="xref std std-term">Wallet Solution</span></a> that has been backed up.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
-<td><p>It MUST be set to a value containing the Wallet Attestation JWT.</p></td>
+<td><p>It MUST be set to a value containing the <a class="reference internal" href="defined-terms.html#term-Wallet-Attestation"><span class="xref std std-term">Wallet Attestation</span></a> JWT.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credentials_backup</strong></p></td>
-<td><p>Object that describes specifics of the Credential that are backupped. This object contains a list of name/value pairs, where each name is a unique identifier of the Credential Issuer. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> that identifies the specific Digital Credential that was issued.</p></td>
+<td><p>Object that describes specifics of the:term:<cite>Credential</cite> that are backupped. This object contains a list of name/value pairs, where each name is a unique identifier of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a>. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> that identifies the specific:term:<cite>Digital Credential</cite> that was issued.</p></td>
 </tr>
 </tbody>
 </table>
@@ -310,19 +310,19 @@ The User MUST securely store the key phrase chosen from those proposed by the sy
 <p><span class="caption-number">Fig. 5.8 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80">Restore Flow</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Considering that the User has initialized the new Wallet Instance and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
+<p>Considering that the <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> has initialized the new <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> and it is in active state by obtaining a new PID, this specification relaxes the requirement of the ARF concerning the addition of the PID in the backup file.
 Below, the description of the steps of <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 5.8</span></a>:</p>
-<p><strong>Steps 1-6</strong>: The User wants to restore the Digital Credentials using the backup previously created with their Wallet Instance.
-The User selects <cite>restore Digital Credentials backup</cite> in the Wallet Instance app and a prompt with the import function is provided to the User. The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases.
-To check the authenticity of the file, the Wallet Instance MUST verify the backup JWT's signature to ensure its authenticity. To do this, it first extracts the Wallet Attestation JWT from <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim and obtains the related public key using the Wallet Attestation (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim).</p>
-<p><strong>Steps 7-8</strong>: The Wallet Instance for each HW binding credentials entry in the payload of the backup JWT performs the following steps:</p>
+<p><strong>Steps 1-6</strong>: The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> wants to restore the Digital Credentials using the backup previously created with their <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a>.
+The <a class="reference internal" href="defined-terms.html#term-User"><span class="xref std std-term">User</span></a> selects <cite>restore Digital Credentials backup</cite> in the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> app and a prompt with the import function is provided to the User. The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases.
+To check the authenticity of the file, the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST verify the backup JWT's signature to ensure its authenticity. To do this, it first extracts the <a class="reference internal" href="defined-terms.html#term-Wallet-Attestation"><span class="xref std std-term">Wallet Attestation</span></a> JWT from <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> claim and obtains the related public key using the <a class="reference internal" href="defined-terms.html#term-Wallet-Attestation"><span class="xref std std-term">Wallet Attestation</span></a> (<code class="docutils literal notranslate"><span class="pre">cnf</span></code> claim).</p>
+<p><strong>Steps 7-8</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> for each HW binding credentials entry in the payload of the backup JWT performs the following steps:</p>
 <ul class="simple">
-<li><p>It extracts the Credential Issuer identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the Credential Issuer.</p></li>
-<li><p>Using the Issuer identifier the Wallet Instance obtains the metadata of the Credential Issuer and makes a re-issuance request to the Credential Issuer by providing the new Cryptographic Binding with the Credential.</p></li>
+<li><p>It extracts the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a>.</p></li>
+<li><p>Using the <a class="reference internal" href="defined-terms.html#term-Issuer"><span class="xref std std-term">Issuer</span></a> identifier the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> obtains the metadata of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> and makes a re-issuance request to the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> by providing the new <span class="xref std std-term">Cryptographic Binding</span> with the:term:<cite>Credential</cite>.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Wallet Instance MUST not check the expiration of the Wallet Attestation as its main purpose is to enable the Wallet Instance to verify the authenticity of the backup file by ensuring it has been created and signed by a Wallet Instance of a specific Wallet Provider.</p>
+<p>The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> MUST not check the expiration of the <a class="reference internal" href="defined-terms.html#term-Wallet-Attestation"><span class="xref std std-term">Wallet Attestation</span></a> as its main purpose is to enable the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> to verify the authenticity of the backup file by ensuring it has been created and signed by a <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> of a specific <a class="reference internal" href="defined-terms.html#term-Wallet-Provider"><span class="xref std std-term">Wallet Provider</span></a>.</p>
 </div>
 </section>
 </section>
@@ -373,7 +373,7 @@ To check the authenticity of the file, the Wallet Instance MUST verify the backu
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 19/06/2025.
+      Last updated on 23/06/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
