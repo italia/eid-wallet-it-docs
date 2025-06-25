@@ -1,12 +1,10 @@
 from cryptography import x509
 from cryptography.hazmat.primitives import serialization
-from cryptography.x509.oid import ExtensionOID, NameOID, ObjectIdentifier
+from cryptography.x509.oid import ExtensionOID
 
 from cryptography.hazmat.primitives.asymmetric import rsa, ec
 
 from pyeudiw.tests.x509.test_x509 import gen_chain
-
-NameOID.ORGANIZATION_IDENTIFIER = ObjectIdentifier("2.5.4.97") # it is the organizationIdentifier referenced in ETSI EN 319 412-6 V0.0.2 (2025-06)
 
 import binascii
 import textwrap
