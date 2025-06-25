@@ -260,7 +260,7 @@ Nel seguente diagramma è illustrato il processo di Alto Livello relativo all'ag
     :alt: Processo di aggiornamento dello stato da parte delle Fonti Autentiche
     :width: 100%
 
-Il processo inizia nel momento in cui si verifica una variazione sui dati o sulla loro validità nel database della Fonte Autentica. Le modifiche possono essere indotte anche da enti terzi diversi dalla Fonte Autentica, ad esempio in caso di attività illegali da parte degli Organi di Polizia.
+Il processo inizia nel momento in cui si verifica una variazione sui dati o sulla loro validità nel database della Fonte Autentica. Le modifiche possono essere indotte anche da enti terzi diversi dalla Fonte Autentica, ad esempio in caso di attività illegali come notificate dagli Organi di Polizia.
 
 Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica DEVE notificare il Fornitore di Attestati Elettronici a cui ha fornito tali dati utilizzando il servizio esposto su PDND ":ref:`credential-issuer-endpoint:Notify Update Credential`".
 
