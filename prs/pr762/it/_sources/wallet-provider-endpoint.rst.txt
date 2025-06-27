@@ -539,7 +539,7 @@ Di seguito è riportato un esempio non normativo della Wallet Attestation mdoc i
             {
               "digestID": 2,
               "elementIdentifier": "wallet_link",
-              "elementValue": "https://foo.com",
+              "elementValue": "https://wallet-provider.example.org",
               "random": h'dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec'
             }
           >>),
