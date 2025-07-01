@@ -486,7 +486,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </tbody>
 </table>
-<p>Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:</p>
+<p>Below is a non-normative example of the JWT Wallet Attestation header and payload without encoding and signature applied:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
@@ -495,7 +495,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -513,7 +513,6 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet.atestation.example/v1.0&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet_v1&quot;</span><span class="p">,</span>
@@ -910,7 +909,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 27/06/2025.
+      Last updated on 01/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -304,7 +304,7 @@ The body of the Wallet Attestation JWT contains the following claims:
       - REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
       - This specification.
 
-Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:
+Below is a non-normative example of the JWT Wallet Attestation header and payload without encoding and signature applied:
 
 .. code-block:: json
 
@@ -316,7 +316,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
       "eyJhbGciOiJFUz...jJLA",
       "eyJhbGciOiJFUz...H9gw",
     ],
-    "typ": "jwt"
+    "typ": "oauth-client-attestation+jwt"
   }
 
 .. code-block:: json
@@ -335,7 +335,6 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
     },
     "iat": 1687281195,
     "exp": 1687288395,
-    "vct": "wallet.atestation.example/v1.0",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "aal": "https://trust-list.eu/aal/high",
     "wallet_name": "Wallet_v1",
