@@ -263,7 +263,7 @@ L'header JOSE del JWT della Wallet Attestation contiene i seguenti parametri:
       - OBBLIGATORIO. DEVE essere impostato su ``oauth-client-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - OBBLIGATORIO. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
+      - OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
       - `OID-FED`_ Sezione 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
       - OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (:rfc:`5280`) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
@@ -448,11 +448,6 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
   {
     "alg": "ES256",
     "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
-    "trust_chain": [
-      "eyJhbGciOiJFUz...6S0A",
-      "eyJhbGciOiJFUz...jJLA",
-      "eyJhbGciOiJFUz...H9gw"
-    ],
     "typ": "dc+sd-jwt"
   }
 
