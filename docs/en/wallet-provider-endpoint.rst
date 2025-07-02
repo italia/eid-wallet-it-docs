@@ -365,7 +365,7 @@ The JOSE header of the Wallet Attestation SD-JWT MUST contain the following para
       - REQUIRED. It MUST be set to ``dc+sd-jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
+      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
       - OPTIONAL. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
@@ -459,11 +459,6 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
   {
     "alg": "ES256",
     "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
-    "trust_chain": [
-      "eyJhbGciOiJFUz...6S0A",
-      "eyJhbGciOiJFUz...jJLA",
-      "eyJhbGciOiJFUz...H9gw"
-    ],
     "typ": "dc+sd-jwt"
   }
 
