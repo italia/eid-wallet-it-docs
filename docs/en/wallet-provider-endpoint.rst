@@ -304,7 +304,7 @@ The body of the Wallet Attestation JWT contains the following claims:
       - REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
       - This specification.
 
-Below is a non-normative example of the JWT Wallet Attestation header and payload without encoding and signature applied:
+Below is a non-normative example of the Wallet Attestation JWT header and payload, without encoding and signature applied:
 
 .. code-block:: json
 
