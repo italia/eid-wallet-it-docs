@@ -263,7 +263,7 @@ L'header JOSE del JWT della Wallet Attestation contiene i seguenti parametri:
       - OBBLIGATORIO. DEVE essere impostato su ``oauth-client-attestation+jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - OBBLIGATORIO. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
+      - OPZIONALE. Sequenza di Entity Statement che compone la Catena di Fiducia relativa al Fornitore di Wallet.
       - `OID-FED`_ Sezione 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
       - OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (:rfc:`5280`) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
@@ -448,11 +448,6 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
   {
     "alg": "ES256",
     "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
-    "trust_chain": [
-      "eyJhbGciOiJFUz...6S0A",
-      "eyJhbGciOiJFUz...jJLA",
-      "eyJhbGciOiJFUz...H9gw"
-    ],
     "typ": "dc+sd-jwt"
   }
 
@@ -483,13 +478,13 @@ Wallet Attestation mdoc
 
 Questa descrizione specializza ulteriormente le linee guida fornite in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format` per rappresentare la Wallet Attestation in formato mdoc. Quest'ultimo DEVE:
 
-- Avere il namespace domestico ``org.iso.18013.5.1.it``;
-- Avere **docType** impostato su ``org.iso.18013.5.1.it.WalletAttestation``; e
+- Avere il namespace domestico ``org.iso.18013.5.1.IT``;
+- Avere **docType** impostato su ``org.iso.18013.5.1.IT.WalletAttestation``; e
 - Avere **issuerAuth** come descritto in :ref:`credential-data-model:Mobile security Object`.
 
 I ``nameSpaces`` per gli Oggetti Json del nameSpace domestico sono definiti come segue:
 
-.. list-table:: org.iso.18013.5.1.it
+.. list-table:: org.iso.18013.5.1.IT
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
@@ -515,75 +510,83 @@ Di seguito è riportato un esempio non normativo della Wallet Attestation mdoc i
 .. code-block:: text
 
   {
-    "docType": "org.iso.18013.5.1.it.WalletAttestation",
-    "issuerSigned":{
-      "nameSpaces":{
-        "org.iso.18013.5.1.it":[
-          24(<< {
-          "digestID": 0,
-          "random": h'960CB15A…E902807AA95',
-          "elementIdentifier": "wallet_name",
-          "elementValue": "Wallet_v1"
-          } >>),
+    "docType": "org.iso.18013.5.1.IT.WalletAttestation",
+    "issuerSigned": {
+      "nameSpaces": {
+        "org.iso.18013.5.1.IT": [
           24(<<
-          {
-          "digestID": 1,
-          "random": h'9D3774BD59…A4F76A',
-          "elementIdentifier": "wallet_link",
-          "elementValue":"https://example.com/wallet/detail_info.html"
-          } >>),
-          24(<< {
-          "digestID": 2,
-          "random": h'AE84834F3…A3E4FCCE',
-          "elementIdentifier": "sub",
-          "elementValue":"vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"
-          } >>),
+            {
+              "digestID": 0,
+              "elementIdentifier": "aal",
+              "elementValue": "https://wallet-provider.example.org/LoA/basic",
+              "random": h'bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114'
+            }
+          >>),
           24(<<
-          {
-          "digestID": 3,
-          "random": h'9D3774BD59…A4F76A',
-          "elementIdentifier": "aal",
-          "elementValue":"https://trust-list.eu/aal/high"
-          } >>)
+            {
+              "digestID": 1,
+              "elementIdentifier": "sub",
+              "elementValue": "ec#1",
+              "random": h'0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d'
+            }
+          >>),
+          24(<<
+            {
+              "digestID": 2,
+              "elementIdentifier": "wallet_link",
+              "elementValue": "https://wallet-provider.example.org",
+              "random": h'dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec'
+            }
+          >>),
+          24(<<
+            {
+              "digestID": 3,
+              "elementIdentifier": "wallet_name",
+              "elementValue": "Wallet name",
+              "random": h'd665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae'
+            }
+          >>)
         ]
-  },
-    "issuerAuth": [
-      << {1: -7} >>,
-      {
-      33: h'30820215308201BCA003020102021404AD30C…'
       },
-      <<
-        24(<<
-          {
-            "docType":"org.iso.18013.5.1.it.WalletAttestation",
-            "version": "org.iso.18013.5.1.it",
-            "validityInfo": {
-              "signed": "2023-02-22T06:23:56Z"
-              "validFrom": "2023-02-22T06:23:56Z",
-              "validUntil": "2024-02-22T00:00:00Z"
-            },
-            "valueDigests": {
-              "org.iso.18013.5.1.it": {
-                0: h'0F1571A988FCDF2929…',
-                1: h'0CDFE0774A2B596C90…',
-                2: h'E23821492558984395…',
-                3: h'BBC77E6CCE544EDF86…'
+      "issuerAuth": [
+        << {1: -7} >>,
+        {
+          33: h'825903B0...'
+        },
+        <<
+          24(<<
+            {
+              "version": "1.0",
+              "digestAlgorithm": "SHA-256",
+              "valueDigests": {
+                "org.iso.18013.5.1.IT": {
+                  0: h'2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f',
+                  1: h'7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997',
+                  2: h'7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f',
+                  3: h'ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024'
+                }
+              },
+              "deviceKeyInfo": {
+                "deviceKey": {
+                  -1: 1,
+                  2: "ec#1",
+                  1: 2,
+                  -2: h'09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5',
+                  -3: h'6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3'
+                }
+              },
+              "docType": "org.iso.18013.5.1.IT.WalletAttestation",
+              "validityInfo": {
+                "signed": 0("2025-06-27T07:40:21Z"),
+                "validFrom": 0("2025-06-27T07:40:21Z"),
+                "validUntil": 0("2025-06-27T08:40:21Z")
               }
-            },
-            "deviceKeyInfo": {
-              "deviceKey": {
-                1: 2,
-                -1: 1,
-                -2: h'B820963964E5…',
-                -3: h'0A6DA0AF437E…'
-              }
-            },
-            "digestAlgorithm": "SHA-256"
-          }
-        >>)
-      >>,
-      h'1AD0D6A7313EFDC…43DEBF48BF5A580D'
-    ]
+            }
+          >>)
+        >>
+        h'97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c'
+      ]
+    }
   }
 
 
