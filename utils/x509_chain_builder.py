@@ -9,6 +9,13 @@ from pyeudiw.tests.x509.test_x509 import gen_chain
 import binascii
 import textwrap
 
+
+# The NameOID.ORGANIZATION_IDENTIFIER.name is set to "Unknown OID" because the ORGANIZATION_IDENTIFIER OID is not a standard, widely recognized OID that the cryptography library has a predefined name for.
+UNSTANDARD_OID_NAMES = {
+    "2.5.4.97": "organizationIdentifier",
+    # Add other custom OIDs as needed
+}
+
 def format_name(name):
     formatted_attrs = []
     for attr in name:
@@ -17,7 +24,10 @@ def format_name(name):
             formatted_attrs.append(f"{attr.oid._name}={attr.value}")
         else:
             # Use the dotted string representation
-            formatted_attrs.append(f"{attr.oid.dotted_string}={attr.value}")
+            if attr.oid.dotted_string in UNSTANDARD_OID_NAMES:
+                formatted_attrs.append(f"{UNSTANDARD_OID_NAMES[attr.oid.dotted_string]}={attr.value}")
+            else:
+                formatted_attrs.append(f"{attr.oid.dotted_string}={attr.value}")
     return ", ".join(formatted_attrs)
 
 def format_serial(serial):
