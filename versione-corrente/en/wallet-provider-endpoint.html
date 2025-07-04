@@ -680,12 +680,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 <section id="wallet-attestation-mdoc">
 <h3><span class="section-number">8.1.4.5. </span>Wallet Attestation mdoc<a class="headerlink" href="#wallet-attestation-mdoc" title="Link to this heading">¶</a></h3>
-<p>This description further specializes the guidelines given in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> to represent the Wallet Attestation in mdoc format. The latter MUST:</p>
-<ul class="simple">
-<li><p>Have the domestic namespace <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.IT</span></code>;</p></li>
-<li><p>Have <strong>docType</strong> set to <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.IT.WalletAttestation</span></code>; and</p></li>
-<li><p>Have <strong>issuerAuth</strong> as described in <a class="reference internal" href="credential-data-model.html#mobile-security-object"><span class="std std-ref">Mobile Security Object</span></a>.</p></li>
-</ul>
+<p>This description extends the MDOC-CBOR Credential Format guidelines, given in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite>, to support Wallet Attestation data representation. The Wallet Attestation MUST use the domestic namespace  <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.IT</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> for the domestic nameSpace Json Objects are defined as follows:</p>
 <table class="longtable docutils align-default" id="id4">
 <caption><span class="caption-number">Table 8.1 </span><span class="caption-text">org.iso.18013.5.1.IT</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
@@ -721,83 +716,80 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </table>
 <p>Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnostic notation:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
-  &quot;issuerSigned&quot;: {
-    &quot;nameSpaces&quot;: {
-      &quot;org.iso.18013.5.1.IT&quot;: [
-        24(&lt;&lt;
-          {
-            &quot;digestID&quot;: 0,
-            &quot;elementIdentifier&quot;: &quot;aal&quot;,
-            &quot;elementValue&quot;: &quot;https://wallet-provider.example.org/LoA/basic&quot;,
-            &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
-          }
-        &gt;&gt;),
-        24(&lt;&lt;
-          {
-            &quot;digestID&quot;: 1,
-            &quot;elementIdentifier&quot;: &quot;sub&quot;,
-            &quot;elementValue&quot;: &quot;ec#1&quot;,
-            &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
-          }
-        &gt;&gt;),
-        24(&lt;&lt;
-          {
-            &quot;digestID&quot;: 2,
-            &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
-            &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
-            &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
-          }
-        &gt;&gt;),
-        24(&lt;&lt;
-          {
-            &quot;digestID&quot;: 3,
-            &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
-            &quot;elementValue&quot;: &quot;Wallet name&quot;,
-            &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
-          }
-        &gt;&gt;)
-      ]
-    },
-    &quot;issuerAuth&quot;: [
-      &lt;&lt; {1: -7} &gt;&gt;,
-      {
-        33: h&#39;825903B0...&#39;
-      },
-      &lt;&lt;
-        24(&lt;&lt;
-          {
-            &quot;version&quot;: &quot;1.0&quot;,
-            &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
-            &quot;valueDigests&quot;: {
-              &quot;org.iso.18013.5.1.IT&quot;: {
-                0: h&#39;2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f&#39;,
-                1: h&#39;7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997&#39;,
-                2: h&#39;7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f&#39;,
-                3: h&#39;ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024&#39;
-              }
-            },
-            &quot;deviceKeyInfo&quot;: {
-              &quot;deviceKey&quot;: {
-                -1: 1,
-                2: &quot;ec#1&quot;,
-                1: 2,
-                -2: h&#39;09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5&#39;,
-                -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
-              }
-            },
-            &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
-            &quot;validityInfo&quot;: {
-              &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
-              &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
-              &quot;validUntil&quot;: 0(&quot;2025-06-27T08:40:21Z&quot;)
-            }
-          }
-        &gt;&gt;)
-      &gt;&gt;
-      h&#39;97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c&#39;
+  &quot;nameSpaces&quot;: {
+    &quot;org.iso.18013.5.1.IT&quot;: [
+      24(&lt;&lt;
+        {
+          &quot;digestID&quot;: 0,
+          &quot;elementIdentifier&quot;: &quot;aal&quot;,
+          &quot;elementValue&quot;: &quot;https://wallet-provider.example.org/LoA/basic&quot;,
+          &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
+        }
+      &gt;&gt;),
+      24(&lt;&lt;
+        {
+          &quot;digestID&quot;: 1,
+          &quot;elementIdentifier&quot;: &quot;sub&quot;,
+          &quot;elementValue&quot;: &quot;ec#1&quot;,
+          &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
+        }
+      &gt;&gt;),
+      24(&lt;&lt;
+        {
+          &quot;digestID&quot;: 2,
+          &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
+          &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
+          &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
+        }
+      &gt;&gt;),
+      24(&lt;&lt;
+        {
+          &quot;digestID&quot;: 3,
+          &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
+          &quot;elementValue&quot;: &quot;Wallet name&quot;,
+          &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
+        }
+      &gt;&gt;)
     ]
-  }
+  },
+  &quot;issuerAuth&quot;: [
+    &lt;&lt; {1: -7} &gt;&gt;,
+    {
+      33: h&#39;825903B0...&#39;
+    },
+    &lt;&lt;
+      24(&lt;&lt;
+        {
+          &quot;version&quot;: &quot;1.0&quot;,
+          &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
+          &quot;valueDigests&quot;: {
+            &quot;org.iso.18013.5.1.IT&quot;: {
+              0: h&#39;2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f&#39;,
+              1: h&#39;7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997&#39;,
+              2: h&#39;7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f&#39;,
+              3: h&#39;ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024&#39;
+            }
+          },
+          &quot;deviceKeyInfo&quot;: {
+            &quot;deviceKey&quot;: {
+              -1: 1,
+              2: &quot;ec#1&quot;,
+              1: 2,
+              -2: h&#39;09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5&#39;,
+              -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
+            }
+          },
+          &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
+          &quot;validityInfo&quot;: {
+            &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+            &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+            &quot;validUntil&quot;: 0(&quot;2025-06-27T08:40:21Z&quot;)
+          }
+        }
+      &gt;&gt;)
+    &gt;&gt;
+    h&#39;97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c&#39;
+  ]
 }
 </pre></div>
 </div>
@@ -904,7 +896,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 03/07/2025.
+      Last updated on 04/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
