@@ -6,7 +6,7 @@ servers:
   - url: https://authentic-source.example.it
     description: Authentic Source API
 paths:
-  /v0.9.0/AttributeClaims/{attribute_type}:
+  /v0.9.0/AttributeClaims:
     post:
       tags:
         - e-Services PDND
@@ -15,13 +15,6 @@ paths:
         This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential
       operationId: attributeClaims
       parameters:
-        - name: attribute_type
-          in: path
-          required: true
-          description: Identifier of attribute claims set
-          schema:
-            type: string
-            example: PersonIdentificationData
         - name: Authorization
           in: header
           description: >-
@@ -264,22 +257,57 @@ components:
               description: Required if claims parameter is not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.
               type: integer
               example: "864000"
-            claims:
-              description: List of Credential Claims.
+            userClaims:
+              description: List of User Claims.
               type: object
-              example: '"given_name": "Mario",
-                "family_name": "Rossi",
-                "birth_date": "1980-01-10",
-                "birth_place": "Roma",
-                "nationality": "IT",
-                "personal_administrative_number": "XX00000XX",
-                "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"'
+              properties:
+                given_name:
+                  description: Current First Name.
+                  type: string
+                  example: '"Mario"'
+                family_name:
+                  description: Current Family Name.
+                  type: string
+                  example: '"Rossi"'
+                birth_date:
+                  description: Date of Birth.
+                  type: string
+                  example: '"1980-01-10"'
+                birth_place:
+                  description: Place of Birth.
+                  type: string
+                  example: '"Roma"'
+                tax_id_code:
+                  description: National tax identification number. REQUIRED if personal_administrative_number is absent.
+                  type: string
+                  example: '"TINIT-XXXXXXXXXXXXXXXX"'
+                personal_administrative_number:
+                  description: National unique identifier of a natural person. REQUIRED if tax_id_code is absent.
+                  type: string
+                  example: '"XX00000XX"'
+            attributeClaims:
+              description: List of Datasets of Attribute.
+              type: array
+              items: 
+                type: object
+                properties:
+                  object_type:
+                    description: Unique identifier of the Dataset.
+                    type: string
+                    example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
+                  additionalProperties:
+                    type: string
+                required: [object_type]
+                example: '[{"object_type": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
           required: [iss, aud, exp, iat, jti]
     CredentialClaimsRequest:
       required:
-        - unique_id
+        - object_id
       type: object
       properties:
-        unique_id:
+        object_id:
           type: string
           description: ID ANPR or Tax identification number
+        object_type:
+          type: string
+          description: Unique identifier of the Credential dataset, if this parameter is present only the indicated dataset is returned

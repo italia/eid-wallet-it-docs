@@ -192,7 +192,7 @@ paths:
               example:
                 error: invalid_request
                 error_description: >-
-                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                  The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
         "503":
           description: Service Unavailable
           content:
@@ -378,7 +378,7 @@ paths:
               example:
                 error: invalid_request
                 error_description: >-
-                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                  The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
         "503":
           description: Service Unavailable
           content:
@@ -398,7 +398,7 @@ paths:
               example:
                 error: "temporarily_unavailable"
                 error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
-  /v0.9.0/notifyUpdateCredentials/status/{attribute_type}:
+  /v0.9.0/notifyUpdateCredentials:
     post:
       tags:
         - e-services PDND
@@ -410,16 +410,6 @@ paths:
         associated.
       operationId: notifyStatusCredentials
       parameters:
-        - name: attribute_type
-          in: path
-          required: true
-          description: Identifier of attribute claims set
-          schema:
-            type: string
-            example: MDL
-            enum:
-              - EuropeanDisabilityCard
-              - MDL
         - name: Authorization
           in: header
           description: >-
@@ -575,185 +565,7 @@ paths:
               example:
                 error: invalid_request
                 error_description: >-
-                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
-  /v0.9.0/notifyUpdateCredentials/claims/{attribute_type}:
-    post:
-      tags:
-        - e-services PDND
-      summary: Notify Attribute Update
-      description: >-
-        The service is designed to receive from Authentic Source (AS), via PDND,
-        notification of a change of claims of a specific attribute (e.g. MDL)
-        with which a digital document issued by the Credential Issuer is
-        associated.
-      operationId: notifyClaimsCredentials
-      parameters:
-        - name: attribute_type
-          in: path
-          required: true
-          description: Identifier of attribute claims set
-          schema:
-            type: string
-            example: MDL
-            enum:
-              - EuropeanDisabilityCard
-              - MDL
-        - name: Authorization
-          in: header
-          description: >-
-            JWT token obtained from <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html#voucher-issuance">PDND
-            Interoperabilità</a>. Based on the implementation choices, it can be either Bearer or DPoP.<br/><br/><a target="blank"
-            href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiI2OGRlYTAzZDA5MWQ1MDZjYzMyMzQ2ZWI3ZTBjZjNlM2E3NWEzYTUzZDVkODI4NWU4ODY5ZDVlOTZiNGJjZGYyIn0sImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.xQl8Nb8S-j-gHFn5O90N14i1HYWnK4HfzjCXFXKHAzpZZ8ErrYopUcZ3FqOb4cSSPs2Bo7ZR2UNFwQD8tkgGzA">EXAMPLE
-            ON JWT.IO</a>
-          required: true
-          schema:
-            type: string
-            format: Signed JWT
-            example: >-
-              DPoP
-              eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzI5NTgwMzgyLCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiJpbnRlcm9wLnBhZ29wYS5pdCIsImV4cCI6MTcyOTU4MDY4MiwiaWF0IjoxNzI5NTgwMzgyLCJjbGllbnRfaWQiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJqdGkiOiJjOGJkOGEyZi00YzI5LTQwODctODIxZS0wNjg3Mjc5ZWJmNGEiLCJkaWdlc3QiOnsiYWxnIjoiU0hBMjU2IiwidmFsdWUiOiI2OGRlYTAzZDA5MWQ1MDZjYzMyMzQ2ZWI3ZTBjZjNlM2E3NWEzYTUzZDVkODI4NWU4ODY5ZDVlOTZiNGJjZGYyIn0sImNuZiI6eyJqa3QiOiJmODIxNzYwNjZlYjM4ZmQzMzgwZDJkM2QzNGRlYjU4OTBlNjg1ZWU4ZTllMTVhN2ViODQ4NzJhNmZhYzM0MDYzIn19.xQl8Nb8S-j-gHFn5O90N14i1HYWnK4HfzjCXFXKHAzpZZ8ErrYopUcZ3FqOb4cSSPs2Bo7ZR2UNFwQD8tkgGzA
-        - name: DPoP
-          in: header
-          description: >-
-            DPoP proof JWT, to comply with the REST_JWS_2021_POP security
-            pattern using the POP_DPoP implementation. See also <a target="blank"
-            href="https://datatracker.ietf.org/doc/html/rfc9449.html">RFC
-            9449</a>.<br/><br/>
-
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImI1MTNiYzI0MjgzOGZmYTEzMDk4N2M3MzBjMTBiMDg5YTUzOTA5MmZiZTAwMDk1Zjg2MWU1NGJlMmQyYWEwNTMiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.jApDgx5xK5xmpuM1CnzLniYVUzvll722NstOHuCiPWAF4-0IrDpuAMcQOpg-3rKUdKYXw5wlVZu7_wjRHezugQ">EXAMPLE
-            ON JWT.IO</a>
-          required: false
-          schema:
-            type: string
-            format: JWT
-            example: >-
-              eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImI1MTNiYzI0MjgzOGZmYTEzMDk4N2M3MzBjMTBiMDg5YTUzOTA5MmZiZTAwMDk1Zjg2MWU1NGJlMmQyYWEwNTMiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.jApDgx5xK5xmpuM1CnzLniYVUzvll722NstOHuCiPWAF4-0IrDpuAMcQOpg-3rKUdKYXw5wlVZu7_wjRHezugQ
-        - name: Agid-JWT-Signature
-          in: header
-          description: >-
-            JWT containing the signature of the message headers whose integrity
-            needs to be guaranteed, to comply with the INTEGRITY_REST_02
-            security pattern. <a target="blank"
-            href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
-
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1jZWViZWYxYWI0YmE3YjkyZjBhZWFmMzEzNTMxYWJjOWNjZDYyZjM2M2FkZGI0Y2FjNDFkODQ1MzgxZjhhZmUyIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.NgLR9DF4LLBXeOWU0DbAI5MmvamUFhprYZjN1rLXy7k80_P-AATy-Q5x7aWgfBll55nDIKONzWgf4ghUyaMQGQ">EXAMPLE
-            ON JWT.IO</a>
-          required: true
-          schema:
-            type: string
-            format: JWT
-            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiIwNjM0ZGIxNy03ZWJlLTRhNjctYWE0Ni02NWRhNTQ0ZjE2MTkiLCJpc3MiOiIxODVkYmNiYS04MzY2LTQ5NGQtYmUwMi01MjY1OTVkZDc0MjgiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1ZGQ3NDI4IiwianRpIjoiYzhiZDhhMmYtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1jZWViZWYxYWI0YmE3YjkyZjBhZWFmMzEzNTMxYWJjOWNjZDYyZjM2M2FkZGI0Y2FjNDFkODQ1MzgxZjhhZmUyIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.NgLR9DF4LLBXeOWU0DbAI5MmvamUFhprYZjN1rLXy7k80_P-AATy-Q5x7aWgfBll55nDIKONzWgf4ghUyaMQGQ
-        - name: Digest
-          in: header
-          description: >-
-            Digest of the message payload, to comply with the INTEGRITY_REST_02
-            security pattern. According to <a target="blank" href="https://www.rfc-editor.org/rfc/rfc3230.html#section-4.2">RFC
-            3230 §4.2</a>, the format MUST be the following: digest-algorithm=encoded
-            digest output.
-          required: true
-          schema:
-            type: string
-            format: JWT
-            example: SHA-256=ceebef1ab4ba7b92f0aeaf313531abc9ccd62f363addb4cac41d845381f8afe2
-        - name: Agid-JWT-TrackingEvidence
-          in: header
-          description: >-
-             If the Voucher type is Bearer, this header represents a JWT acting as a proof of possession, to comply with the REST_JWS_2021_POP security
-             pattern using the POP_TPoP implementation. Otherwise, it is a JWT containing the data tracked in the Consumer's domain, to comply with AUDIT_REST_02 (see <a target="blank"
-             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>). <br/><br/>
-             <a target="blank" href="https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA">EXAMPLE ON JWT.IO</a>
-          required: false
-          schema:
-            type: string
-            format: JWT
-            example: eyJhbGciOiJFUzI1NiIsImtpZCI6ImQ0YzNiMmExLTk4NzYtNTQzMi0xMGZlLWRjYmE5ODc2NTQzMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI4MjkxNGIzZi02MGIyLTQ1MjktYjRkNi0zZDRlNjdmMGE5MzMiLCJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTk1IiwiZXhwIjoxNzMzMDUyNjAwLCJuYmYiOjE3MzMwMzY0NTAsImlhdCI6MTczMzAzNjQwMCwianRpIjoiYTRiNWM2ZDctZThmOS1hYmNkLWVmMTItMzQ1Njc4OTAxMjM0IiwiZG5vbmNlIjo2NTI4NDI0MjEzNjg1LCJwdXJwb3NlSWQiOiJiMmMzZDRlNS1mNmc3LWg4aTktajBrMS1sbW5vMTIzNDU2NzgiLCJ1c2VySUQiOiJhOGI3YzZkNS1lNGYzLWcyaDEtaTlqMC1rbG1ub3BxcnN0dXYiLCJsb2EiOiJzdWJzdGFudGlhbCJ9.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/NotifyClaimsCredRequest"
-        required: true
-      responses:
-        "200":
-          description: 200 OK
-          content:
-            application/jwt:
-              schema:
-                $ref: "#/components/schemas/e-Service_Response"
-              example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImE4ZDEzYzQ1ZWYyZTI4MzBmN2M0NGJkNDk0MWNjYSJ9.eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0LzEuMC4wL3YxL25vdGlmeVVwZGF0ZUNsYWltc0NyZWRlbnRpYWxzIiwibmJmIjoxNzM2ODQ2Njg4LCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiYXVkIjoiMTg1ZGJjYmEtODM2Ni00OTRkLWJlMDItNTI2NTkiLCJqdGkiOiJjOGJkOGEyZi1lOTkwLTQ0ZmEtOTAxMy0xYjM1M2JmYzVhMGQiLCJyZXN1bHRfY29kZSI6InJlcXVlc3RfYWNjZXB0ZWQiLCJyZXN1bHRfZGVzY3JpcHRpb24iOiJUaGUgc2VydmljZSBjb3JyZWN0bHkgcmVjZWl2ZWQgdGhlIHJlcXVlc3QifQ.iVMm66lcfOMve7wqB2yEsq6TFCDGEpAEvzCA7NYoZRHsHxMu8_5N4DGI8xWQ5BRG_fZMumNt-eO29ig1K_G3kA"
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - type: object
-                    properties:
-                      error:
-                        type: string
-                        description: invalid_request
-                      error_description:
-                        type: string
-                        description: >-
-                          The request cannot be fulfilled because it is missing
-                          required parameters, contains invalid parameters, or
-                          is otherwise malformed.
-                    required:
-                      - error
-                  - type: object
-                    properties:
-                      error:
-                        type: string
-                        description: invalid_dpop_proof
-                      error_description:
-                        type: string
-                        description: >-
-                          The request cannot be fulfilled because it contains an
-                          invalid dpop proof.
-                    required:
-                      - error
-              examples:
-                invalid request:
-                  value:
-                    error: invalid_request
-                    error_description: >-
-                      The request cannot be fulfilled because it is missing
-                      required parameters, contains invalid parameters, or is
-                      otherwise malformed
-                invalid dpop proof:
-                  value:
-                    error: invalid_dpop_proof
-                    error_description: >-
-                      The request cannot be fulfilled because it contains an
-                      invalid dpop proof
-        "401":
-          description: Unauthorized
-          headers:
-            WWW-Authenticate:
-              description: The request cannot be fulfilled because the Voucher is expired, revoked or otherwise malformed. See <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc6750.html#section-3">RFC6750</a> and <a target="blank" href="https://datatracker.ietf.org/doc/html/rfc9449.html#section-7.1-11">RFC9449</a> for details.
-              schema:
-                type: string
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    description: server_error
-                  error_description:
-                    type: string
-                    description: >-
-                      The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
-                required:
-                  - error
-              example:
-                error: invalid_request
-                error_description: >-
-                  TThe request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
+                  The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
   /v0.9.0/wallet-report/{api}:
     get:
       tags:
@@ -924,15 +736,22 @@ components:
           required: [iss, aud, exp, iat, jti, result_code, result_description]
     RevokeAllCredentials:
       required:
-        - unique_id
+        - object_id
         - wallet_provider
+        - signal_type
       type: object
       properties:
-        unique_id:
+        object_id:
           type: string
           description: ID ANPR or Tax identification number
         wallet_provider:
           type: string
+          description: URL identifier of the Wallet Provider
+        signal_type:
+          type: string
+          enum:
+            - DELETE
+            - SUSPENDED
           description: URL identifier of the Wallet Provider
     AvailableCredentials:
       required:
@@ -967,78 +786,48 @@ components:
       type: array
       items:
         required:
-          - uid
-          - owner
-          - validity
+          - object_type
+          - object_id
+          - eservice_id
+          - status_details
         type: object
         properties:
-          uid:
+          object_type:
             type: string
-            example: <document_id>
+            example: a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11
             description: >-
-              The UUID of the request transmitted by the Credential Issuer to
-              the AS to download the attribute data used to create the digital
+              The UUID of the Credential dataset transmitted by the AS to
+              the Credential Issuer used to create the single digital
               credential
-          owner:
+          object_id:
             type: string
             description: >-
               The ID ANPR or Tax Identification Number of the user to whom the
-              attribute refers (the digital credential issued by the Credential
-              Issuer presents this value as a claim in the disclosure list)
-          validity:
-            type: boolean
-            example: false
+              attribute refers
+          eservice_id:
+            type: string
+            example: b8c6d7ad-93fc-4eaf-9018-3cd8bf98163f
             description: >-
-              Identifier of the new validity status of the attribute that is
-              reflected on all associated documents (both physical and
-              digital).The possible values of the validity field are as
-              follows:1=Valid, 0=Invalid
+              Unique identifier of the e-service Get Attribute Claims provided by the Authentic Source
           status_details:
             type: object
             properties:
               state:
                 type: string
-                example: revoked
+                example: invalid
+                enum:
+                  - INVALID
+                  - SUSPENDED
+                  - UPDATE
                 description: >-
-                  string indicating the status of the attribute (mandatory only
-                  for validity=0)
+                  string indicating the status of the Credential dataset. INVALID: attributes are no longer valid, SUSPENDED: attributes are temporarily invalid, UPDATE: attributes have changed.
               description:
                 type: string
-                example: credential revoked
+                example: The attributes provided for the credential issuance are no longer valid
                 description: >-
-                  description of attribute status (mandatory only for
-                  validity=0)
-    NotifyClaimsCredRequest:
-      type: array
-      items:
-        type: object
-        required:
-          - uid
-          - owner
-          - claims
-        properties:
-          uid:
-            type: string
-            example: <document_id>
-            description: >-
-              The UUID of the request transmitted by the Credential Issuer to
-              the AS to download the attribute data used to create the digital
-              credential
-          owner:
-            type: string
-            description: >-
-              The ID ANPR or Tax Identification NUmber of the user to whom the
-              attribute refers (the digital credential issued by the Credential
-              Issuer presents this value as a claim in the disclosure list)
-          claims:
-            type: array
-            description: >-
-              Names of attribute claims that have been updated that are
-              reflected on all associated documents (both physical and digital).
-              For digital documents only, the updating of at least one attribute
-              claim renders it invalid
-            items:
-              type: string
+                  description of attribute status
+            required:
+              - state
     ResponseReport:
       type: object
       properties:
