@@ -487,11 +487,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
 Wallet Attestation mdoc
 """""""""""""""""""""""
 
-This description further specializes the guidelines given in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format` to represent the Wallet Attestation in mdoc format. The latter MUST:
-
-- Have the domestic namespace ``org.iso.18013.5.1.IT``;
-- Have **docType** set to ``org.iso.18013.5.1.IT.WalletAttestation``; and
-- Have **issuerAuth** as described in :ref:`credential-data-model:Mobile security Object`.
+This description further specializes the guidelines given in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format` to represent the Wallet Attestation in mdoc format. The latter MUST have the domestic namespace ``org.iso.18013.5.1.IT``.
 
 The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follows:
 
@@ -521,83 +517,80 @@ Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnost
 .. code-block:: text
 
   {
-    "docType": "org.iso.18013.5.1.IT.WalletAttestation",
-    "issuerSigned": {
-      "nameSpaces": {
-        "org.iso.18013.5.1.IT": [
-          24(<<
-            {
-              "digestID": 0,
-              "elementIdentifier": "aal",
-              "elementValue": "https://wallet-provider.example.org/LoA/basic",
-              "random": h'bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114'
-            }
-          >>),
-          24(<<
-            {
-              "digestID": 1,
-              "elementIdentifier": "sub",
-              "elementValue": "ec#1",
-              "random": h'0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d'
-            }
-          >>),
-          24(<<
-            {
-              "digestID": 2,
-              "elementIdentifier": "wallet_link",
-              "elementValue": "https://wallet-provider.example.org",
-              "random": h'dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec'
-            }
-          >>),
-          24(<<
-            {
-              "digestID": 3,
-              "elementIdentifier": "wallet_name",
-              "elementValue": "Wallet name",
-              "random": h'd665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae'
-            }
-          >>)
-        ]
-      },
-      "issuerAuth": [
-        << {1: -7} >>,
-        {
-          33: h'825903B0...'
-        },
-        <<
-          24(<<
-            {
-              "version": "1.0",
-              "digestAlgorithm": "SHA-256",
-              "valueDigests": {
-                "org.iso.18013.5.1.IT": {
-                  0: h'2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f',
-                  1: h'7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997',
-                  2: h'7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f',
-                  3: h'ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024'
-                }
-              },
-              "deviceKeyInfo": {
-                "deviceKey": {
-                  -1: 1,
-                  2: "ec#1",
-                  1: 2,
-                  -2: h'09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5',
-                  -3: h'6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3'
-                }
-              },
-              "docType": "org.iso.18013.5.1.IT.WalletAttestation",
-              "validityInfo": {
-                "signed": 0("2025-06-27T07:40:21Z"),
-                "validFrom": 0("2025-06-27T07:40:21Z"),
-                "validUntil": 0("2025-06-27T08:40:21Z")
-              }
-            }
-          >>)
-        >>
-        h'97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c'
+    "nameSpaces": {
+      "org.iso.18013.5.1.IT": [
+        24(<<
+          {
+            "digestID": 0,
+            "elementIdentifier": "aal",
+            "elementValue": "https://wallet-provider.example.org/LoA/basic",
+            "random": h'bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114'
+          }
+        >>),
+        24(<<
+          {
+            "digestID": 1,
+            "elementIdentifier": "sub",
+            "elementValue": "ec#1",
+            "random": h'0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d'
+          }
+        >>),
+        24(<<
+          {
+            "digestID": 2,
+            "elementIdentifier": "wallet_link",
+            "elementValue": "https://wallet-provider.example.org",
+            "random": h'dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec'
+          }
+        >>),
+        24(<<
+          {
+            "digestID": 3,
+            "elementIdentifier": "wallet_name",
+            "elementValue": "Wallet name",
+            "random": h'd665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae'
+          }
+        >>)
       ]
-    }
+    },
+    "issuerAuth": [
+      << {1: -7} >>,
+      {
+        33: h'825903B0...'
+      },
+      <<
+        24(<<
+          {
+            "version": "1.0",
+            "digestAlgorithm": "SHA-256",
+            "valueDigests": {
+              "org.iso.18013.5.1.IT": {
+                0: h'2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f',
+                1: h'7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997',
+                2: h'7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f',
+                3: h'ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024'
+              }
+            },
+            "deviceKeyInfo": {
+              "deviceKey": {
+                -1: 1,
+                2: "ec#1",
+                1: 2,
+                -2: h'09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5',
+                -3: h'6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3'
+              }
+            },
+            "docType": "org.iso.18013.5.1.IT.WalletAttestation",
+            "validityInfo": {
+              "signed": 0("2025-06-27T07:40:21Z"),
+              "validFrom": 0("2025-06-27T07:40:21Z"),
+              "validUntil": 0("2025-06-27T08:40:21Z")
+            }
+          }
+        >>)
+      >>
+      h'97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c'
+    ]
   }
 
 
