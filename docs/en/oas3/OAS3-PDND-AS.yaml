@@ -6,7 +6,7 @@ servers:
   - url: https://authentic-source.example.it
     description: Authentic Source API
 paths:
-  /v0.9.0/AttributeClaims/{attribute_type}:
+  /v0.9.0/AttributeClaims:
     post:
       tags:
         - e-Services PDND
@@ -15,13 +15,6 @@ paths:
         This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential
       operationId: attributeClaims
       parameters:
-        - name: attribute_type
-          in: path
-          required: true
-          description: Identifier of attribute claims set
-          schema:
-            type: string
-            example: PersonIdentificationData
         - name: Authorization
           in: header
           description: >-
@@ -298,20 +291,23 @@ components:
               items: 
                 type: object
                 properties:
-                  id:
+                  object_type:
                     description: Unique identifier of the Dataset.
                     type: string
                     example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                additionalProperties:
+                  additionalProperties:
                     type: string
-                required: [id]
-                example: '[{"id": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
+                required: [object_type]
+                example: '[{"object_type": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
           required: [iss, aud, exp, iat, jti]
     CredentialClaimsRequest:
       required:
-        - unique_id
+        - object_id
       type: object
       properties:
-        unique_id:
+        object_id:
           type: string
           description: ID ANPR or Tax identification number
+        object_type:
+          type: string
+          description: Unique identifier of the Credential dataset, if this parameter is present only the indicated dataset is returned
