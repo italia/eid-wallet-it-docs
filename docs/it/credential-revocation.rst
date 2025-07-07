@@ -262,11 +262,11 @@ Nel seguente diagramma è illustrato il processo di Alto Livello relativo all'ag
 
 Il processo inizia nel momento in cui si verifica una variazione sui dati o sulla loro validità nel database della Fonte Autentica. Le modifiche possono essere indotte anche da enti terzi diversi dalla Fonte Autentica, ad esempio in caso di attività illegali come notificate dagli Organi di Polizia.
 
-Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica DEVE notificare il Fornitore di Attestati Elettronici a cui ha fornito tali dati utilizzando il servizio esposto su PDND ":ref:`credential-issuer-endpoint:Notify Update Credential`".
+Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica DEVE notificare il Fornitore di Attestati Elettronici a cui ha fornito tali dati utilizzando il servizio ":ref:`credential-issuer-endpoint:Notify Update Credential`" esposto su PDND.
 
 Il Fornitore di Attestati Elettronici, una volta ricevuta la notifica, DEVE provvedere all'aggiornamento dello stato della Credenziale secondo la modalità definite per il meccanismo di validità utilizzato e PUÒ inviare una notifica all'Utente utilizzando un eventuale canale di comunicazione precedentemente registrato.
 
-L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità delle Credenziali Digitali in essa memorizzate, riceve lo stato aggiornato e di conseguenza DOVRA' informare l'Utente del cambiamento di stato della Credenziale.
+L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità delle Credenziali Digitali in essa memorizzate, riceve lo stato aggiornato e di conseguenza DOVRA' informare l'Utente nel caso in cui lo Stato della Credenziale Digitale venga modificato in INVALID. Nel caso in cui lo stato della Credenziale Digitale venga modificato in UPDATE (equivalentemente 0x03) o ATTRIBUTE_UPDATE (equivalentemente 0x04), il Wallet procederà alla Riemissione della Credenziale Digitale come descritto in :ref:`Re-Issuance Flow`.
 
 
 Meccanismi di Verifica della Validità
