@@ -25,7 +25,7 @@ Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider D
 
 - Inviando un avviso presso un recapito verificato (ad esempio recapito e-mail o telefonico) e se possibile anche presso l'Istanza del Wallet revocata.
 - Inviando la notifica entro massimo 24 ore.
-- Includendo una spiegazione chiara e semplice dei motivi della revoca, con eventuali dettagli tecnici se si tratta di un problema di sicurezza.
+- Includendo una spiegazione chiara e semplice dei motivi della revoca, con eventuali istruzioni per riattivare l'Istanza del Wallet.
 
 .. .. figure:: ../../images/wallet_instance_revocation.svg
 ..     :figwidth: 80%
