@@ -318,15 +318,15 @@ During the communication subphase, the Relying Party Instance has the option to 
 <p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> that contains the mdoc response of a Wallet Attestation and an mDL.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
     &quot;version&quot;: &quot;1.0&quot;,
-    &quot;documents&quot;: 
+    &quot;documents&quot;:
     [
       {
         &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
-        &quot;issuerSigned&quot;: 
+        &quot;issuerSigned&quot;:
         {
-          &quot;nameSpaces&quot;: 
+          &quot;nameSpaces&quot;:
           {
-            &quot;org.iso.18013.5.1&quot;: 
+            &quot;org.iso.18013.5.1&quot;:
             [
               24(&lt;&lt;
                 {
@@ -391,7 +391,7 @@ During the communication subphase, the Relying Party Instance has the option to 
                     ac9dcb5abba8d145061d43a6fcf1e65cf15d0e90231d3dd9cfe62995c6dcc5ca12a2c904a15f71dd
                     27d451453e09d1a21450961cbb3ea8a956433b781f1ce33dfed54f0e2b50a2b71d84ed6db18028a2
                     8175f74fc6bda105c529a791c25c4f3c7a11f71586268f4a66b726e33de9ea6f1b52b181c760724e
-                    47b514520a5a28a283ffd9&#39;  
+                    47b514520a5a28a283ffd9&#39;
                 }
               &gt;&gt;),
               24(&lt;&lt;
@@ -410,7 +410,7 @@ During the communication subphase, the Relying Party Instance has the option to 
               &gt;&gt;)
             ]
           },
-          &quot;issuerAuth&quot;: 
+          &quot;issuerAuth&quot;:
           [
             &lt;&lt; {1: -7} &gt;&gt;,
             {
@@ -435,7 +435,7 @@ During the communication subphase, the Relying Party Instance has the option to 
                   &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
                   &quot;docType&quot;: &quot;org.iso.18013.5.1.mDL&quot;,
                   &quot;valueDigests&quot;: {
-                    &quot;org.iso.18013.5.1&quot;: 
+                    &quot;org.iso.18013.5.1&quot;:
                     {
                         0: h&#39;f46b65d5060ad060ab9be62ff22ea8633437619ebdc7fa81f2d151159e92bffe&#39;,
                         1: h&#39;e506545f6a6fd5d982670b4d62fc2b0688dc8f26754e7b0c574d63f5d72a85ac&#39;,
@@ -451,8 +451,8 @@ During the communication subphase, the Relying Party Instance has the option to 
                        11: h&#39;47d89ff4fb513044e6f2394236755ac0abf3e4f4a46f40454a458a59f8b7a6fb&#39;
                     },
                     &quot;org.iso.18013.5.1.IT&quot;: {
-                       12: h&#39;16d2098702e896b4614dff1859bd3b42105cac2e62ce7f87dcacc249a656db32&#39;,
-                       13: h&#39;755fd7c0f9272a8589c4a661a8aa80dc916018e500884eba316899d653fcb8d1&#39;
+                       12: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;,
+                       13: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
                       }
                   },
                   &quot;deviceKeyInfo&quot;: {
@@ -471,7 +471,7 @@ During the communication subphase, the Relying Party Instance has the option to 
                   &quot;status&quot;: {
                     &quot;status_list&quot;: {
                       &quot;idx&quot;: 1340,
-                      &quot;uri&quot;: &quot;https://statusprovider.example.org/statuslists/1&quot;                           
+                      &quot;uri&quot;: &quot;https://statusprovider.example.org/statuslists/1&quot;
                     }
                   }
                 }
@@ -481,12 +481,12 @@ During the communication subphase, the Relying Party Instance has the option to 
             8d8aade591dee8d6540e639bca637f94bd9fa56f345c&#39;
           ]
         },
-        &quot;deviceSigned&quot;: 
+        &quot;deviceSigned&quot;:
         {
           &quot;nameSpaces&quot;: 24(&lt;&lt; {} &gt;&gt;),
-          &quot;deviceAuth&quot;: 
+          &quot;deviceAuth&quot;:
           {
-            &quot;deviceSignature&quot;: 
+            &quot;deviceSignature&quot;:
             [
               &lt;&lt; {1: -7} &gt;&gt;,
               {},
@@ -500,111 +500,88 @@ During the communication subphase, the Relying Party Instance has the option to 
       },
       {
         &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
-        &quot;issuerSigned&quot;: 
-        {
-          &quot;nameSpaces&quot;: 
-          {
-            &quot;org.iso.18013.5.1.IT&quot;: 
-            [
+        &quot;issuerSigned&quot;: {
+          &quot;nameSpaces&quot;: {
+            &quot;org.iso.18013.5.1.IT&quot;: [
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 0,
-                  &quot;random&quot;: h&#39;691a4e9c599982a009e6e0e4d64784e53dd8b1ebca79e7d6eb2146b16c7def7a&#39;,
-                  &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
-                  &quot;elementValue&quot;: &quot;Wallet_Hobbiton_v1&quot;
+                  &quot;elementIdentifier&quot;: &quot;aal&quot;,
+                  &quot;elementValue&quot;: &quot;https://wallet-provider.example.org/LoA/basic&quot;,
+                  &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
                 }
               &gt;&gt;),
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 1,
-                  &quot;random&quot;: h&#39;6659db56b91fd967107742dc45dff9e692f03bb9298e8b90b0cefbe6f7475f25&#39;,
-                  &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
-                  &quot;elementValue&quot;: &quot;https://example.com/wallet/detail_info.html&quot;
+                  &quot;elementIdentifier&quot;: &quot;sub&quot;,
+                  &quot;elementValue&quot;: &quot;ec#1&quot;,
+                  &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
                 }
               &gt;&gt;),
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 2,
-                  &quot;random&quot;: h&#39;147cb4f9a4a8b71cb13a963e73dfa01ec59953831dda0a818e9b8c457ff91b31&#39;,
-                  &quot;elementIdentifier&quot;: &quot;sub&quot;,
-                  &quot;elementValue&quot;: &quot;3B4hK2m7fA9TdVzqLrGp6W8XyJ1sNtQc&quot;
+                  &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
+                  &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
+                  &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
                 }
               &gt;&gt;),
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 3,
-                  &quot;random&quot;: h&#39;c1e2ded83eb15143e16f3e4bcda9a7804f467263a59b0f4f3269ccdc240ce453&#39;,
-                  &quot;elementIdentifier&quot;: &quot;aal&quot;,
-                  &quot;elementValue&quot;: &quot;https://trust-list.eu/aal/high&quot;
+                  &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
+                  &quot;elementValue&quot;: &quot;Wallet name&quot;,
+                  &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
                 }
               &gt;&gt;)
             ]
           },
-          &quot;issuerAuth&quot;: 
-          [
+          &quot;issuerAuth&quot;: [
             &lt;&lt; {1: -7} &gt;&gt;,
             {
-              33: h&#39;207581c0bc387bf3d7e7c7a3991395ed28069806e5ed21fdeb19aaa6f33bd9da98c88e44fc32
-              cb19578e472a2cf4ed2c9182864265754dc19941a4b408d056a657a649bc67a9aa0e22ff76460680e7
-              4b26197dd542a41ac6d99dc6a94bbfc668844705cd4dd6b56f521339174deda55676088b531901c992
-              a65e97213037215057cb4d8519b2ea8c03b376b048b9c60f75586b067456ae78aac9e472b1fa6ce0cf
-              65345c463ae0c94e59bb034597533a14a84f4b99d19b72207607c2f692e6956822cb19736de6b38477
-              d726ac07983cfe9cd1e27b59f3cabae28653eac2bbf884fca22122df8c78da110c411f310abd6fae86
-              2e7766044e1af78525dabf5412ebcf57532ee25b959fa1d591f950adb46da1cec14c0a6c08383a95de
-              5fad9673fdf72130029b81350d048568fa1b962ba2118af48a8c4aaf074e5265f367d134055a4c9f99
-              21a8f03050e062a5b91bb053bcbd69bc59e37ac0c3a6358461893fae6f87021c6492638864ae38afb6
-              aa444406c1c296300be1a152b27fbcdd543d73888199f2daf3bc007bdcbacf2f6a8d498c4d6f42f59f
-              0cc8967db15016faf81c3fbd4585e5eb657c13c86d4149d17a10417d3a65342d206fdbd3ba139b8d9a
-              175b27a4578f37703b20cd2179c6e9ce49c26391e46753c86b80ea0837bc71c57893cacf4e76f1bbe1
-              ce2292914d5d247cecb579d36271ae0b7d0988ef42105c90fda654a7a41908a8680b38896689f3e511
-              663bcf667d7a2787e1bb8effa3b9910064d59609f58f98e3e9edd35aa4f170da7521db1c6ab6b3a6fb
-              e585778fccf2426417d509c5f2e7d5b726148a46373f0b43bf6749b4c8af592b0a032a3971cb0ea453
-              9c2493314b4429b7d88b8abd160342e9d8e790dd61c0def2e84df2db0d7f8603814ca49a49c76513b0
-              94c283ca5bf60710ee5fd7511d0307184b8b3349f5ac6cc29d2d5429b0e9cdb6ba72a53159833f45d3
-              72c1b191f20434e7a9120f528d1c9463d5b58380e1087f288c444cc55c182663ee3a4a70ae21784093
-              5276a1c8424a8a893175dd080704daeceffee9c8e453adcadd3f0ba383bbed6f0d3cada8055d08008d
-              b244da9e59f9972641c036fcac047d2d067bca02bca7f752&#39;
+              33: h&#39;825903B0...&#39;
             },
             &lt;&lt;
               24(&lt;&lt;
                 {
                   &quot;version&quot;: &quot;1.0&quot;,
                   &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
-                  &quot;docType&quot;: &quot;org.iso.18013.5.1.it.WalletAttestation&quot;,
                   &quot;valueDigests&quot;: {
-                  &quot;org.iso.18013.5.1.IT&quot;: {
-                      0: h&#39;0f1571a988fcdf29290d4a509d25b24c7b182d8c3f5db27c761f6b7ec9b0c830&#39;,
-                      1: h&#39;0cdfe0774a2b596c90b147ae3a61fd55f06cb7490aab76d3a49105dc3c5a987b&#39;,
-                      2: h&#39;e238214925589843954da4f60772ce3054fd8f0a0c1f5a4b6f2a791b7ec1993f&#39;,
-                      3: h&#39;bbc77e6cce544edf864f2cf60d9f1eb13998a99126584b3615a6437f822ea820&#39;
+                    &quot;org.iso.18013.5.1.IT&quot;: {
+                      0: h&#39;2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f&#39;,
+                      1: h&#39;7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997&#39;,
+                      2: h&#39;7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f&#39;,
+                      3: h&#39;ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024&#39;
                     }
                   },
                   &quot;deviceKeyInfo&quot;: {
                     &quot;deviceKey&quot;: {
+                      -1: 1,
+                      2: &quot;ec#1&quot;,
                       1: 2,
-                     -1: 1,
-                     -2: h&#39;b820963964e5483cb929a3e8bb79da5a7137f50f859f6a173d3d642cefa8f419&#39;,
-                     -3: h&#39;0a6da0af437ebf9672351dcac420f1a37924bde1076c4cf09f4cb05ad3dba8b0&#39;
+                      -2: h&#39;09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5&#39;,
+                      -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
                     }
                   },
+                  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
                   &quot;validityInfo&quot;: {
-                    &quot;signed&quot;: 0(&quot;2025-03-03T10:00:00Z&quot;),
-                    &quot;validFrom&quot;: 0(&quot;2025-03-03T10:00:00Z&quot;),
-                    &quot;validUntil&quot;: 0(&quot;2026-03-03T10:00:00Z&quot;)
+                    &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+                    &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+                    &quot;validUntil&quot;: 0(&quot;2025-06-27T08:40:21Z&quot;)
                   }
                 }
               &gt;&gt;)
-            &gt;&gt;,
-            h&#39;98F1D2C47EB3AA09F5F3CCF2839D7E6A12B37E5A4C9E42E7B0D5D299AB5CE87F7A0DFF12B6A5CC
-            9D9B329A8165F8B163D479DEA9A2E4B0C30FD6C83FADB5E244&#39;
+            &gt;&gt;
+            h&#39;97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c&#39;
           ]
         },
-        &quot;deviceSigned&quot;: 
+        &quot;deviceSigned&quot;:
         {
           &quot;nameSpaces&quot;: 24(&lt;&lt; {} &gt;&gt;),
-          &quot;deviceAuth&quot;: 
+          &quot;deviceAuth&quot;:
           {
-            &quot;deviceSignature&quot;: 
+            &quot;deviceSignature&quot;:
             [
               &lt;&lt; {1: -7} &gt;&gt;,
               {},
@@ -877,7 +854,7 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 02/07/2025.
+      Last updated on 08/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

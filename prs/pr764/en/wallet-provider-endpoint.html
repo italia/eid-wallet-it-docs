@@ -486,7 +486,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </tbody>
 </table>
-<p>Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:</p>
+<p>Below is a non-normative example of the Wallet Attestation JWT header and payload, without encoding and signature applied:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
@@ -495,7 +495,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt&quot;</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -513,7 +513,6 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet.atestation.example/v1.0&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet_v1&quot;</span><span class="p">,</span>
@@ -551,7 +550,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p><a class="reference external" href="https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-01.html">OPENID4VC-HAIP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
-<td><p>REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
+<td><p>OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
@@ -653,11 +652,6 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span>
-<span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span>
 <span class="p">}</span>
 </pre></div>
@@ -686,15 +680,10 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 <section id="wallet-attestation-mdoc">
 <h3><span class="section-number">8.1.4.5. </span>Wallet Attestation mdoc<a class="headerlink" href="#wallet-attestation-mdoc" title="Link to this heading">¶</a></h3>
-<p>This description further specializes the guidelines given in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> to represent the Wallet Attestation in mdoc format. The latter MUST:</p>
-<ul class="simple">
-<li><p>Have the domestic namespace <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.it</span></code>;</p></li>
-<li><p>Have <strong>docType</strong> set to <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.it.WalletAttestation</span></code>; and</p></li>
-<li><p>Have <strong>issuerAuth</strong> as described in <a class="reference internal" href="credential-data-model.html#mobile-security-object"><span class="std std-ref">Mobile Security Object</span></a>.</p></li>
-</ul>
+<p>This description extends the MDOC-CBOR Credential Format guidelines, given in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite>, to support Wallet Attestation data representation. The Wallet Attestation MUST use the domestic namespace  <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.IT</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> for the domestic nameSpace Json Objects are defined as follows:</p>
 <table class="longtable docutils align-default" id="id4">
-<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">org.iso.18013.5.1.it</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">org.iso.18013.5.1.IT</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -727,74 +716,79 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </table>
 <p>Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnostic notation:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-  &quot;docType&quot;: &quot;org.iso.18013.5.1.it.WalletAttestation&quot;,
-  &quot;issuerSigned&quot;:{
-    &quot;nameSpaces&quot;:{
-      &quot;org.iso.18013.5.1.it&quot;:[
-        24(&lt;&lt; {
-        &quot;digestID&quot;: 0,
-        &quot;random&quot;: h&#39;960CB15A…E902807AA95&#39;,
-        &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
-        &quot;elementValue&quot;: &quot;Wallet_v1&quot;
-        } &gt;&gt;),
-        24(&lt;&lt;
+  &quot;nameSpaces&quot;: {
+    &quot;org.iso.18013.5.1.IT&quot;: [
+      24(&lt;&lt;
         {
-        &quot;digestID&quot;: 1,
-        &quot;random&quot;: h&#39;9D3774BD59…A4F76A&#39;,
-        &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
-        &quot;elementValue&quot;:&quot;https://example.com/wallet/detail_info.html&quot;
-        } &gt;&gt;),
-        24(&lt;&lt; {
-        &quot;digestID&quot;: 2,
-        &quot;random&quot;: h&#39;AE84834F3…A3E4FCCE&#39;,
-        &quot;elementIdentifier&quot;: &quot;sub&quot;,
-        &quot;elementValue&quot;:&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;
-        } &gt;&gt;),
-        24(&lt;&lt;
+          &quot;digestID&quot;: 0,
+          &quot;elementIdentifier&quot;: &quot;aal&quot;,
+          &quot;elementValue&quot;: &quot;https://wallet-provider.example.org/LoA/basic&quot;,
+          &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
+        }
+      &gt;&gt;),
+      24(&lt;&lt;
         {
-        &quot;digestID&quot;: 3,
-        &quot;random&quot;: h&#39;9D3774BD59…A4F76A&#39;,
-        &quot;elementIdentifier&quot;: &quot;aal&quot;,
-        &quot;elementValue&quot;:&quot;https://trust-list.eu/aal/high&quot;
-        } &gt;&gt;)
-      ]
-},
+          &quot;digestID&quot;: 1,
+          &quot;elementIdentifier&quot;: &quot;sub&quot;,
+          &quot;elementValue&quot;: &quot;ec#1&quot;,
+          &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
+        }
+      &gt;&gt;),
+      24(&lt;&lt;
+        {
+          &quot;digestID&quot;: 2,
+          &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
+          &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
+          &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
+        }
+      &gt;&gt;),
+      24(&lt;&lt;
+        {
+          &quot;digestID&quot;: 3,
+          &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
+          &quot;elementValue&quot;: &quot;Wallet name&quot;,
+          &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
+        }
+      &gt;&gt;)
+    ]
+  },
   &quot;issuerAuth&quot;: [
     &lt;&lt; {1: -7} &gt;&gt;,
     {
-    33: h&#39;30820215308201BCA003020102021404AD30C…&#39;
+      33: h&#39;825903B0...&#39;
     },
     &lt;&lt;
       24(&lt;&lt;
         {
-          &quot;docType&quot;:&quot;org.iso.18013.5.1.it.WalletAttestation&quot;,
-          &quot;version&quot;: &quot;org.iso.18013.5.1.it&quot;,
-          &quot;validityInfo&quot;: {
-            &quot;signed&quot;: &quot;2023-02-22T06:23:56Z&quot;
-            &quot;validFrom&quot;: &quot;2023-02-22T06:23:56Z&quot;,
-            &quot;validUntil&quot;: &quot;2024-02-22T00:00:00Z&quot;
-          },
+          &quot;version&quot;: &quot;1.0&quot;,
+          &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
           &quot;valueDigests&quot;: {
-            &quot;org.iso.18013.5.1.it&quot;: {
-              0: h&#39;0F1571A988FCDF2929…&#39;,
-              1: h&#39;0CDFE0774A2B596C90…&#39;,
-              2: h&#39;E23821492558984395…&#39;,
-              3: h&#39;BBC77E6CCE544EDF86…&#39;
+            &quot;org.iso.18013.5.1.IT&quot;: {
+              0: h&#39;2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f&#39;,
+              1: h&#39;7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997&#39;,
+              2: h&#39;7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f&#39;,
+              3: h&#39;ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024&#39;
             }
           },
           &quot;deviceKeyInfo&quot;: {
             &quot;deviceKey&quot;: {
-              1: 2,
               -1: 1,
-              -2: h&#39;B820963964E5…&#39;,
-              -3: h&#39;0A6DA0AF437E…&#39;
+              2: &quot;ec#1&quot;,
+              1: 2,
+              -2: h&#39;09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5&#39;,
+              -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
             }
           },
-          &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;
+          &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
+          &quot;validityInfo&quot;: {
+            &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+            &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+            &quot;validUntil&quot;: 0(&quot;2025-06-27T08:40:21Z&quot;)
+          }
         }
       &gt;&gt;)
-    &gt;&gt;,
-    h&#39;1AD0D6A7313EFDC…43DEBF48BF5A580D&#39;
+    &gt;&gt;
+    h&#39;97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c&#39;
   ]
 }
 </pre></div>
@@ -902,7 +896,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 02/07/2025.
+      Last updated on 08/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

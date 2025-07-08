@@ -790,7 +790,7 @@ Quando un partecipante auto-emette un Certificato X.509, aderisce ai seguenti re
    - ``Organization Name (O)``: DEVE contenere la denominazione legale dell’organizzazione.
    - ``Country Name (C)``: DEVE contenere il codice paese ISO a due lettere.
    - ``Email Address``: DEVE contenere l’indirizzo email di contatto dell’organizzazione.
-   - ``Serial Number``: DEVE contenere il numero di registrazione ufficiale dell’organizzazione.
+   - ``organizationIdentifier``: DEVE contenere il numero di registrazione che identifica univocamente l'organizzazione all'interno del sistema di registrazione, utilizzando il valore OID ``2.5.4.97`` come definito in ``ITU-T X.500``.
 
 2. **Subject Alternative Name (SAN)**: Il Certificato X.509 DEVE includere un ``SAN URI`` che DEVE corrispondere ai valori ``sub`` e ``iss`` della sua Entity Configuration di federazione.
 3. **DNS Name**: Il Certificato X.509 DEVE includere un DNS Name nel SAN che corrisponda al nome DNS contenuto nei valori ``sub`` e ``iss`` della sua Entity Configuration, rimuovendo ``https://`` e qualsiasi percorso web.
