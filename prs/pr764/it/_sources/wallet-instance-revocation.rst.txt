@@ -21,9 +21,9 @@ Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSS
     :alt: La figura illustra le Entità coinvolte nel processo di revoca dell'Istanza del Wallet.
     :caption: `Entità coinvolte nel processo di revoca dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1>`_
 
-Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli utenti quando la loro Wallet Unit viene revocata:
+Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata:
 
-- Inviando un avviso su un canale out-of-band (ad esempio, e-mail o SMS) come metodo di notifica principale o, se si preferisce, utilizzando l'Istanza del Wallet stessa.
+- Inviando un avviso presso un recapito verificato (ad esempio recapito e-mail o telefonico) e se possibile anche presso l'Istanza del Wallet revocata.
 - Inviando la notifica entro massimo 24 ore.
 - Includendo una spiegazione chiara e semplice dei motivi della revoca, con eventuali dettagli tecnici se si tratta di un problema di sicurezza.
 
