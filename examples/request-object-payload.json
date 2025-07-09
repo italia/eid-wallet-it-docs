@@ -10,11 +10,11 @@
     "state": "fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
     "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
     "code_challenge_method": "S256",
-    "scope": "EuropeanDisabilityCard",
+    "scope": "Education_degree",
     "authorization_details": [
       {
         "type": "openid_credential",
-        "credential_configuration_id": "dc_sd_jwt_EuropeanDisabilityCard"
+        "credential_configuration_id": "dc_sd_jwt_Education_degree"
       }
     ],
     "redirect_uri": "https://client.example.com/cb"
