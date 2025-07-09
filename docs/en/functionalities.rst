@@ -422,6 +422,7 @@ The Relying Party implementing the page:
 - MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of error;
 - SHOULD ensure that the copy on the page mirrors that reported in Official Resources;
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
+
 Management of Electronic Attestations
 -------------------------------------
 
@@ -532,6 +533,8 @@ Below are the requirements and main best practices for error management, specifi
 - **The method for error management**: opening an assistance request through the Wallet Instance, linking to other detailed channels, and so on. For further details, please refer to the :ref:`functionalities:User Assistance` section.
 
 Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience.
+
+For further implementation details on error management in relation to each Primary Actor see :ref:`endpoints` section. 
 
 Activation of the Wallet Instance Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
