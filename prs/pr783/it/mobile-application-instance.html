@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>15.1. Istanza dell&#39;Applicazione Mobile &#8212; IT-Wallet Technical Documentation - PR #783</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="15.2. e-Service PDND" href="e-service-pdnd.html" />
+    <link rel="prev" title="15. Appendice" href="appendix.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #783</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Ricerca veloce</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Vai" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Principi di design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">15. Appendice</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15.1. Istanza dell'Applicazione Mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-plans.html">15.3. Piani di Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Specifica OpenAPI del Credential Issuer PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.5. Specifica OpenAPI della Fonte Autentica PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.6. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="istanza-dell-applicazione-mobile">
+<h1><span class="section-number">15.1. </span>Istanza dell'Applicazione Mobile<a class="headerlink" href="#istanza-dell-applicazione-mobile" title="Link to this heading">¶</a></h1>
+<p>Le Istanze del Wallet e delle Relying Party Mobili condividono significative somiglianze, in particolare rispetto ad alcuni aspetti relativi all'inizializzazione e alla validazione dell'integrità. Per eliminare la ridondanza, questa sezione utilizzerà il termine <strong>Istanza dell'Applicazione Mobile</strong> per riferirsi collettivamente a entrambe. All'interno di questo framework, il <strong>Fornitore dell'Applicazione</strong> assume le responsabilità del Fornitore di Wallet o del Backend della Relying Party, a seconda del contesto.</p>
+<section id="inizializzazione-dell-istanza-dell-applicazione-mobile">
+<h2><span class="section-number">15.1.1. </span>Inizializzazione dell'Istanza dell'Applicazione Mobile<a class="headerlink" href="#inizializzazione-dell-istanza-dell-applicazione-mobile" title="Link to this heading">¶</a></h2>
+<p>Il flusso di Inizializzazione consente all'Istanza dell'Applicazione Mobile di registrare una coppia di chiavi a lunga durata, memorizzata in modo sicuro in un'appropriata memoria sicura all'interno del dispositivo, con il Fornitore dell'Applicazione. Questo processo avviene solo dopo che il Fornitore dell'Applicazione verifica la sicurezza e la Key Attestation emessa dal produttore del sistema operativo.</p>
+<p>Il flusso è mostrato in <a class="reference internal" href="#fig-mobileapplication-instance-initialization-flow"><span class="std std-ref">Diagramma di Sequenza dell'Inizializzazione dell'Istanza dell'Applicazione Mobile.</span></a>, mentre una descrizione passo-passo è fornita di seguito.</p>
+<figure class="align-default" id="id1">
+<span id="fig-mobileapplication-instance-initialization-flow"></span><p class="plantuml">
+<object data="_images/plantuml-bdca6a5e5b931f528ab8f41c74795dc00717b28c.svg" type="image/svg+xml" style="width:80%">
+<a href="_images/plantuml-bdca6a5e5b931f528ab8f41c74795dc00717b28c.png"><img src="_images/plantuml-bdca6a5e5b931f528ab8f41c74795dc00717b28c.png" alt="La figura illustra il Diagramma di Sequenza dell'Inizializzazione dell'Istanza dell'Applicazione Mobile." style="width: 80.0%"/></a>
+
+</object></p>
+<figcaption>
+<p><span class="caption-number">Fig. 15.1 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLFBRjiw4DtpAmQyYvi0xWy4Q94qYpPe2mJfOnN0695ZQM29L3b3j-xNbvHToBQ2R0XuT1vd7huLnQHvw0rcZI4F3INJiIVOnAXD_6tC_uy5mOv732e6dSO4zhjGie02MGfXd15WlyI6UuAxSUpPeN8Cy114CJYQ63YESCxuH7kuKoNH0_pkyK4EK5I1_sHC7Des4OLptgd5OuexzfJWFRej1J_n6xSrfYPyywwuti1dpC5re1q1pjpQ4-zGfw8nvJd2xpjoM-3DHF2qOqSm4AbCXO433ta08PSJwnuI_SoSQA2WyXmm-4fzgJV0H80xv1wRdewE9UiDF1M90WLhGwppidEsgPVo794VA52gzHawVJr6dwkUpYJczcQ9-xGVDRO9nuuTVCJaVs6Y6brWH4vmPMrthAwtj5-FkR5s1PVLn3jhhm-jYyRqcZ9ymtQXgzWMWNyPKQKsudgce6kFYkiEfOEtuBabqQkfnHLSIgpWCkprwI2hhZ7rFNgSph8IS5wNjS-XYJbuq0YJtO4vZtb10EFft6lUxxoMrP9QYyjvl782Fx1dlpY1vTUbqIdkQrtKYyQhvx3S-yMTrKq-KSkYQT8kFsICGSXS7fwdnT-iY6IXT0CFWPLBtZy73SdEaSWcz-QMWiz3_nS0">Diagramma di Sequenza dell'Inizializzazione dell'Istanza dell'Applicazione Mobile.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><strong>Passo 1</strong>: L'Utente avvia l'Istanza dell'Applicazione Mobile per la prima volta.</p>
+<p><strong>Passo 2</strong>: L'Istanza dell'Applicazione Mobile:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Verifica se il dispositivo soddisfa i requisiti minimi di sicurezza.</p></li>
+<li><p>Verifica se le API di Key Attestation sono disponibili.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Controllo della Federazione</strong>: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-federazione"><span class="std std-ref">Endpoint di Federazione</span></a> con la <strong>Entity Configuration</strong> e i <strong>Metadati</strong> del Fornitore dell'Applicazione sono presentati nelle sezioni <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a> e <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-relying-party"><span class="std std-ref">Entity Configuration Relying Party</span></a>.</p>
+</div>
+<p><strong>Passi 3-5 (Recupero del Nonce)</strong>: L'Istanza dell'Applicazione Mobile richiede un <code class="docutils literal notranslate"><span class="pre">nonce</span></code> monouso dall'<strong>Endpoint Nonce</strong> del Backend del Fornitore dell'Applicazione (vedi <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-nonce-della-soluzione-wallet"><span class="std std-ref">Endpoint Nonce della Soluzione Wallet</span></a> o <a class="reference internal" href="relying-party-endpoint.html#endpoint-nonce-della-relying-party"><span class="std std-ref">Endpoint Nonce della Relying Party</span></a>). Questo <code class="docutils literal notranslate"><span class="pre">nonce</span></code> DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay.</p>
+<p>In caso di richiesta riuscita, il Fornitore dell'Applicazione genera e restituisce il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code> all'Istanza dell'Applicazione Mobile, come parte della <a class="reference internal" href="#risposta-di-nonce-dell-applicazione-mobile"><span class="std std-ref">Risposta di Nonce dell'Applicazione Mobile</span></a>. Il Fornitore dell'Applicazione DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.</p>
+<p><strong>Passo 6</strong>: L'Istanza dell'Applicazione Mobile, attraverso il sistema operativo, crea una coppia di Cryptographic Hardware Keys e memorizza il corrispondente Cryptographic Hardware Key Tag nell'archivio locale una volta soddisfatti i seguenti requisiti:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>DEVE assicurarsi che le Cryptographic Hardware Keys non esistano già. Se esistono e l'Istanza dell'Applicazione è nella fase di inizializzazione, DEVONO essere eliminate.</p></li>
+<li><p>DEVE generare una coppia di chiavi asimmetriche a Curva Ellittica (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_priv</span></code>) tramite un WSCD locale.</p></li>
+<li><p>DOVREBBE ottenere un identificatore univoco Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) per le Cryptographic Hardware Keys generate dal sistema operativo. Se il sistema operativo consente di specificare un tag durante la creazione delle chiavi, allora DEVE essere selezionata una stringa casuale per l'<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>. Questo valore casuale DEVE essere resistente alle collisioni e imprevedibile per garantire la sicurezza. Per raggiungere questo obiettivo, considerare l'utilizzo di una funzione di hash crittografico o un generatore di numeri casuali sicuro fornito dal sistema operativo o da una libreria crittografica affidabile.</p></li>
+<li><p>Se i punti precedenti sono soddisfatti, DEVE memorizzare l'<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> nell'archivio locale.</p></li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>WSCD</strong>: L'Istanza dell'Applicazione Mobile PUÒ utilizzare un WSCD locale per operazioni crittografiche, inclusa la generazione di chiavi, l'archiviazione sicura e l'elaborazione crittografica, su dispositivi che supportano questa funzionalità. Sui dispositivi Android, Strongbox è RACCOMANDATO; Trusted Execution Environment (TEE) PUÒ essere utilizzato solo quando Strongbox non è disponibile. Per i dispositivi iOS, Secure Elements (SE) DEVONO essere utilizzati. Dato che ogni OEM offre un SDK distinto per accedere al WSCD locale, la discussione di seguito affronterà questo argomento in un contesto generale.</p>
+<p>Se il WSCD fallisce durante una qualsiasi di queste operazioni, ad esempio a causa di limitazioni hardware, solleverà una risposta di errore all'Istanza dell'Applicazione Mobile. L'Istanza dell'Applicazione Mobile DEVE gestire questi errori di conseguenza per garantire un funzionamento sicuro. I dettagli sulla gestione degli errori sono lasciati all'implementazione dell'Istanza dell'Applicazione Mobile.</p>
+</div>
+<p><strong>Passo 7</strong>: L'Istanza dell'Applicazione Mobile utilizza le API di Key Attestation, fornendo il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> per acquisire la Key Attestation.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>API di Key Attestation</strong>: In questa sezione, si presume che le API di Key Attestation siano fornite dai produttori di dispositivi. Questo servizio consente la verifica di una chiave memorizzata in modo sicuro all'interno dell'hardware del dispositivo attraverso un oggetto firmato. Inoltre, offre una prova verificabile che una specifica Istanza dell'Applicazione Mobile sia autentica, inalterata e nel suo stato originale utilizzando un documento firmato specializzato creato per questo scopo.</p>
+<p>Il servizio incorpora anche dettagli nell'oggetto firmato, come il tipo di dispositivo, il modello, la versione dell'app, la versione del sistema operativo, lo stato del bootloader e altre informazioni rilevanti per valutare se il dispositivo è stato compromesso. Inoltre, i dispositivi Android possono possedere l'<em>API di Key Attestation</em>, una funzionalità supportata da <em>StrongBox Keymaster</em> (un HSM fisico installato direttamente sulla scheda madre) o dal <em>TEE</em> (Trusted Execution Environment, un'area sicura del processore principale). <em>Key Attestation</em> mira a fornire un modo per determinare con certezza se una coppia di chiavi è supportata dall'hardware, quali sono le proprietà della chiave e quali vincoli sono applicati al suo utilizzo. Per i dispositivi Apple, l'API di Key Attestation è rappresentata da <em>DeviceCheck</em>, che fornisce un framework e un'interfaccia server per gestire i dati specifici del dispositivo in modo sicuro. <em>DeviceCheck</em> viene utilizzato in combinazione con il <em>Secure Enclave</em>, un HSM dedicato integrato nei SoC di Apple. <em>DeviceCheck</em> può essere utilizzato per attestare l'integrità del dispositivo, delle app e/o delle chiavi di crittografia generate sul dispositivo, garantendo che siano state create in un ambiente sicuro come <em>Secure Enclave</em>. Gli sviluppatori possono sfruttare la funzionalità di <em>DeviceCheck</em> utilizzando il framework stesso.
+Questi servizi, sviluppati specificamente dal produttore, sono integrati negli SDK Android o iOS, eliminando la necessità di un endpoint predefinito per accedervi. Inoltre, poiché sono sviluppati specificamente per l'architettura mobile, non hanno bisogno di essere registrati come Entità di Federazione attraverso i sistemi di registrazione nazionali.
+<em>Secure Enclave</em> è disponibile sui dispositivi Apple dall'iPhone 5s (2013).
+Per i dispositivi Android, l'inclusione di <strong>Strongbox Keymaster</strong> può variare a seconda del produttore, che decide se includerlo o meno.</p>
+</div>
+<p>Se si verificano errori nel processo delle API di Key Attestation, come la verifica dell'integrità del dispositivo, ad esempio, a causa di API di Key Attestation non disponibili, un errore interno o un nonce non valido nella richiesta di integrità, le API di Key Attestation sollevano una risposta di errore. L'Istanza dell'Applicazione Mobile DEVE elaborare questi errori di conseguenza. I dettagli sulla gestione degli errori sono lasciati all'implementazione dell'Istanza dell'Applicazione Mobile.</p>
+<p><strong>Passo 8</strong>: Le API di Key Attestation eseguono le seguenti azioni:</p>
+<ul class="simple">
+<li><p>Creano una Key Attestation che è collegata con il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> fornito e la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione.</p></li>
+<li><p>Incorporano informazioni relative alla sicurezza del dispositivo.</p></li>
+<li><p>Utilizzano una chiave privata OEM per firmare la Key Attestation, quindi verificabile con il relativo certificato OEM, confermando che le Cryptographic Hardware Keys sono gestite in modo sicuro dal sistema operativo.</p></li>
+</ul>
+<p><strong>Passo 9 (Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile)</strong>: L'Istanza dell'Applicazione Mobile invia una <a class="reference internal" href="#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a> al Fornitore dell'Applicazione, per inizializzare l'Istanza dell'Applicazione Mobile, identificata dalla chiave pubblica Cryptographic Hardware. Il corpo della richiesta include i seguenti attributi: il <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, la Key Attestation (<code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>) e il Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.
+Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> fornito, che è il digest del <code class="docutils literal notranslate"><span class="pre">nonce</span></code> del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag. Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.</p>
+</div>
+<p><strong>Passi 10-12 (Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile)</strong>: Il Fornitore dell'Applicazione convalida il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e la firma <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>, quindi:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>DEVE verificare che il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> sia stato generato dal Fornitore dell'Applicazione e non sia già stato utilizzato.</p></li>
+<li><p>DEVE convalidare la <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> come definito dalle linee guida dei produttori di dispositivi. Il Fornitore dell'Applicazione DEVE anche verificare il legame tra l'<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> ricevuto, l'<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code> e il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> con il <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> fornito nella Key Attestation.</p></li>
+<li><p>DEVE verificare che il dispositivo in uso non abbia difetti di sicurezza e rifletta i requisiti minimi di sicurezza definiti dal Fornitore dell'Applicazione.</p></li>
+<li><p>Se questi controlli sono superati, DEVE registrare l'Istanza dell'Applicazione Mobile, conservando il Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>), la Public Hardware Key (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>) e possibilmente altre informazioni utili relative al dispositivo.</p></li>
+</ol>
+</div></blockquote>
+<p>In caso di inizializzazione riuscita dell'Istanza dell'Applicazione Mobile, il Fornitore dell'Applicazione risponde con una conferma di successo (<a class="reference internal" href="#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Il Fornitore dell'Applicazione potrebbe associare l'Istanza dell'Applicazione Mobile (attraverso l'identificatore <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) a un Utente o Dispositivo specifico. Questo identifica in modo univoco l'Utente/Dispositivo all'interno dei sistemi del Fornitore dell'Applicazione e può essere utilizzato per future revoche nel ciclo di vita dell'Istanza dell'Applicazione Mobile.</p>
+</div>
+<p><strong>Passi 13-14</strong>: L'Istanza dell'Applicazione Mobile è stata inizializzata.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Modello di Minaccia</strong>: mentre l'endpoint di inizializzazione non necessita di autenticare il client, è protetto attraverso l'uso di <cite>key_attestation</cite>. La corretta validazione di questa attestazione permette l'inizializzazione di istanze di app autentiche e inalterate. Qualsiasi altro attributo inviato non sarà sottoposto a validazione, portando l'endpoint a rispondere con un errore. Inoltre, l'inclusione di un nonce aiuta a prevenire gli attacchi di replay. L'autenticità sia del nonce che dell'<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> è garantita dalla firma trovata all'interno della <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.</p>
+</div>
+<section id="richiesta-di-nonce-dell-applicazione-mobile">
+<h3><span class="section-number">15.1.1.1. </span>Richiesta di Nonce dell'Applicazione Mobile<a class="headerlink" href="#richiesta-di-nonce-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
+<p>La Richiesta di Nonce utilizza il metodo HTTP GET.</p>
+<p>Di seguito è riportato un esempio non normativo di una Richiesta di Nonce.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/nonce</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">application-provider.example.com</span>
+</pre></div>
+</div>
+</section>
+<section id="risposta-di-nonce-dell-applicazione-mobile">
+<h3><span class="section-number">15.1.1.2. </span>Risposta di Nonce dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-nonce-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
+<p>In caso di richiesta riuscita, il Fornitore dell'Applicazione restituisce una Risposta HTTP con un codice di stato <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code>, con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
+<p>Il corpo della Risposta di Nonce contiene il valore <code class="docutils literal notranslate"><span class="pre">nonce</span></code>.</p>
+<p>Di seguito è riportato un esempio non normativo di una Risposta di Nonce.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d2JhY2NhbG91cmVqdWFuZGFt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="risposta-di-errore-di-nonce-dell-applicazione-mobile">
+<h4><span class="section-number">15.1.1.2.1. </span>Risposta di Errore di Nonce dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-errore-di-nonce-dell-applicazione-mobile" title="Link to this heading">¶</a></h4>
+<p>Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> e include i seguenti parametri:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>error</em>. Il codice di errore.</p></li>
+<li><p><em>error_description</em>. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.</p></li>
+</ul>
+</div></blockquote>
+<p>Di seguito è riportato un esempio non normativo di una Risposta di Errore di Nonce.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">500</span> <span class="ne">Internal Server Error</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server_error&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The server encountered an unexpected error.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Codice di Stato HTTP</strong></p></th>
+<th class="head"><p><strong>Codice di Errore</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>La richiesta non può essere soddisfatta perché l'Endpoint Nonce ha riscontrato un problema interno.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>La richiesta non può essere soddisfatta perché l'Endpoint Nonce è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile">
+<h3><span class="section-number">15.1.1.3. </span>Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile<a class="headerlink" href="#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
+<p>La Richiesta di Inizializzazione dell'Istanza utilizza il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
+<p>Il corpo della Richiesta di Inizializzazione dell'Istanza contiene i seguenti attributi:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Attributo</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+<th class="head"><p><strong>Riferimento</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>nonce</strong></p></td>
+<td><p>DEVE essere impostato sul valore ottenuto dal Fornitore dell'Applicazione attraverso l'Endpoint Nonce.</p></td>
+<td><p>Questa specifica.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>hardware_key_tag</strong></p></td>
+<td><p>L'identificatore univoco delle <strong>Cryptographic Hardware Keys</strong> e codificato in <code class="docutils literal notranslate"><span class="pre">base64url</span></code>.</p></td>
+<td><p>Questa specifica.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>key_attestation</strong></p></td>
+<td><p>Un'attestazione che garantisce la generazione, l'archiviazione e l'utilizzo sicuri della coppia di chiavi generata dall'Istanza dell'Applicazione Mobile. Questo può essere un array contenente una catena di certificati il cui certificato foglia è la Key Attestation ottenuta dalle <strong>API di Key Attestation</strong> del dispositivo, firmata con la chiave hardware del dispositivo.</p></td>
+<td><p>Questa specifica.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Di seguito è riportato un esempio non normativo di una Richiesta di Inizializzazione dell'Istanza.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/instance-initialization</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">application-provider.example.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d2JhY2NhbG91cmVqdWFuZGFt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;key_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBw... redacted&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WQhyDymFKsP95iFqpzdEDWW4l7aVna2Fn4JCeWHYtbU=&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile">
+<h3><span class="section-number">15.1.1.4. </span>Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
+<p>Se una Richiesta di Inizializzazione dell'Istanza viene convalidata con successo, il Fornitore dell'Applicazione fornisce una Risposta HTTP con codice di stato <code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code>.</p>
+<p>Di seguito è riportato un esempio non normativo di una Risposta di Inizializzazione dell'Istanza.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No content</span>
+</pre></div>
+</div>
+<section id="risposta-di-errore-di-inizializzazione-dell-istanza-dell-applicazione-mobile">
+<h4><span class="section-number">15.1.1.4.1. </span>Risposta di Errore di Inizializzazione dell'Istanza dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-errore-di-inizializzazione-dell-istanza-dell-applicazione-mobile" title="Link to this heading">¶</a></h4>
+<p>Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> e include i seguenti parametri:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>error</em>. Il codice di errore.</p></li>
+<li><p><em>error_description</em>. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.</p></li>
+</ul>
+</div></blockquote>
+<p>Di seguito è riportato un esempio non normativo di una Risposta di Errore di Inizializzazione dell'Istanza.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Cache-Control</span><span class="o">:</span> <span class="l">no-store</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;forbidden&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The provided nonce is invalid, expired, or already used.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Codice di Stato HTTP</strong></p></th>
+<th class="head"><p><strong>Codice di Errore</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
+<td><p>La richiesta è malformata, mancano parametri richiesti o include parametri non validi e sconosciuti.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">integrity_check_error</span></code></p></td>
+<td><p>Il dispositivo non soddisfa i requisiti minimi di sicurezza del Fornitore dell'Applicazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>Il nonce fornito non è valido, è scaduto o è già stato utilizzato.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>La firma della Key Attestation non è valida.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPZIONALE]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
+<td><p>La richiesta non aderisce al formato richiesto.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>Si è verificato un errore interno durante l'elaborazione della richiesta.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>Il servizio non è disponibile. Si prega di riprovare più tardi.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="associazione-chiave-dell-applicazione-mobile">
+<h2><span class="section-number">15.1.2. </span>Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h2>
+<p>Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di <a class="reference internal" href="#inizializzazione-dell-istanza-dell-applicazione-mobile"><span class="std std-ref">Inizializzazione dell'Istanza dell'Applicazione Mobile</span></a>. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.</p>
+<p>Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni <a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile"><span class="std std-ref">App di Verifica Mobile</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a>), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.</p>
+<section id="richiesta-di-associazione-chiave-dell-applicazione-mobile">
+<h3><span class="section-number">15.1.2.1. </span>Richiesta di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#richiesta-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
+<p>La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> impostato su <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
+<p>Il corpo della Richiesta di Associazione Chiave contiene un parametro <code class="docutils literal notranslate"><span class="pre">assertion</span></code> il cui valore è un JWT firmato che include tutti i parametri di intestazione e gli attributi del corpo descritti di seguito.</p>
+<p>Di seguito è riportato un esempio non normativo di una Richiesta di Associazione Chiave.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/key-binding</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">application-provider.example.org</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In particolare, il JWT della Richiesta di Associazione Chiave include i seguenti parametri di intestazione HTTP:</p>
+<table class="longtable docutils align-default" id="table-key-binding-request-claim">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parametro</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+<th class="head"><p><strong>Riferimento</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>alg</strong></p></td>
+<td><p>Un identificatore di algoritmo di firma digitale come da registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati elencati in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> o qualsiasi identificatore di algoritmo simmetrico (MAC).</p></td>
+<td><p>[<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>kid</strong></p></td>
+<td><p>Impronta digitale della JWK dell'Istanza dell'Applicazione Mobile contenuta nell'attributo <code class="docutils literal notranslate"><span class="pre">cnf</span></code>.</p></td>
+<td><p>[<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7638.html#section_3"><strong>RFC 7638#section_3</strong></a>]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typ</strong></p></td>
+<td><p>Il tipo del JWT, che può assumere valori diversi a seconda del contesto.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Il JWT della Richiesta di Associazione Chiave include i seguenti attributi del corpo:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Attributo</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+<th class="head"><p><strong>Riferimento</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
+<td><p>L'identificatore del Fornitore dell'Applicazione concatenato con l'impronta digitale della JWK nell'attributo <code class="docutils literal notranslate"><span class="pre">cnf</span></code>.</p></td>
+<td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>aud</strong></p></td>
+<td><p>L'identificatore del Fornitore dell'Applicazione.</p></td>
+<td><p>[<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
+<td><p>Timestamp UNIX che rappresenta il tempo di scadenza del JWT.</p></td>
+<td><p>[<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
+<td><p>Timestamp UNIX che rappresenta il tempo di emissione del JWT.</p></td>
+<td><p>[<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a>], [<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>].</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nonce</strong></p></td>
+<td><p>Il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> ottenuto dall'Endpoint Nonce.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>hardware_signature</strong></p></td>
+<td><p>La firma di <code class="docutils literal notranslate"><span class="pre">client_data</span></code> ottenuta utilizzando la Cryptographic Hardware Key, codificata nel formato <code class="docutils literal notranslate"><span class="pre">base64url</span></code>.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>integrity_assertion</strong></p></td>
+<td><p>L'Integrity Assertion ottenuta dalle <strong>API del Servizio di Integrità del Dispositivo</strong> con l'associazione del titolare di <code class="docutils literal notranslate"><span class="pre">client_data</span></code>.</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>hardware_key_tag</strong></p></td>
+<td><p>Il valore del Cryptographic Hardware Key Tag.</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>cnf</strong></p></td>
+<td><p>Oggetto JSON contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza dell'Applicazione Mobile.</p></td>
+<td><p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Di seguito è riportato un esempio non normativo di un'intestazione e un payload JWT di una Richiesta di Associazione Chiave.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://application-provider.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://application-provider.example.org/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f3b29a81-45c7-4d12-b8b5-e1f6c9327aef&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hardware_signature&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;KoZIhvcNAQcCoIAwgAIB...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;integrity_assertion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;o2NmbXRvYXBwbGUtYXBwYXNzZXJ0aW9uLXBheWxvYWQtYXBw...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hardware_key_tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;QW12DylRTmF89iGkpydNDWW7m8bVpa2Fn9KBeXGYtfX&quot;</span>
+<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8FJtI-yr3pjyRKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MKZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="risposta-di-associazione-chiave-dell-applicazione-mobile">
+<h3><span class="section-number">15.1.2.2. </span>Risposta di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h3>
+<p>La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni <a class="reference internal" href="relying-party-endpoint.html#risposta-di-associazione-chiavi-della-relying-party"><span class="std std-ref">Risposta di Associazione Chiavi della Relying Party</span></a> e <a class="reference internal" href="wallet-provider-endpoint.html#risposta-all-emissione-della-wallet-attestation"><span class="std std-ref">Risposta all'Emissione della Wallet Attestation</span></a>.</p>
+<section id="risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile">
+<h4><span class="section-number">15.1.2.2.1. </span>Risposta di Errore di Associazione Chiave dell'Applicazione Mobile<a class="headerlink" href="#risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile" title="Link to this heading">¶</a></h4>
+<p>Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> e include i seguenti parametri:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>error</em>. Il codice di errore.</p></li>
+<li><p><em>error_description</em>. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.</p></li>
+</ul>
+</div></blockquote>
+<p>Di seguito è riportato un esempio non normativo di una Risposta di Errore di Associazione Chiave.</p>
+<div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;invalid_request&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;error_description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The provided challenge is invalid, expired, or already used.&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore, se non diversamente specificato:</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 20.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Codice di Stato HTTP</strong></p></th>
+<th class="head"><p><strong>Codice di Errore</strong></p></th>
+<th class="head"><p><strong>Descrizione</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bad_request</span></code></p></td>
+<td><p>La richiesta è malformata, mancano parametri richiesti (ad esempio, parametri di intestazione o Integrity Assertion) o include parametri non validi e sconosciuti.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>L'Istanza dell'Applicazione Mobile è stata revocata.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">integrity_check_error</span></code></p></td>
+<td><p>Il dispositivo non soddisfa i requisiti minimi di sicurezza del Fornitore dell'Applicazione.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>La firma della Richiesta di Integrità non è valida o non corrisponde alla chiave pubblica associata (JWK).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>La validazione dell'Integrity Assertion è fallita; l'Integrity Assertion è manomessa o firmata impropriamente.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>Il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> fornito non è valido, è scaduto o è già stato utilizzato.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>La Prova di Possesso (<code class="docutils literal notranslate"><span class="pre">hardware_signature</span></code>) non è valida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">iss</span></code> non corrisponde all'identificatore URL previsto del Fornitore dell'Applicazione.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">not_found</span></code></p></td>
+<td><p>L'Istanza dell'Applicazione Mobile non è stata trovata.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">422</span> <span class="pre">Unprocessable</span> <span class="pre">Content</span></code> [OPZIONALE]</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">validation_error</span></code></p></td>
+<td><p>La richiesta non aderisce al formato richiesto.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>Si è verificato un errore interno del server durante l'elaborazione della richiesta.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
+<td><p>Il servizio non è disponibile. Si prega di riprovare più tardi.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">15.1. Istanza dell'Applicazione Mobile</a><ul>
+<li><a class="reference internal" href="#inizializzazione-dell-istanza-dell-applicazione-mobile">15.1.1. Inizializzazione dell'Istanza dell'Applicazione Mobile</a><ul>
+<li><a class="reference internal" href="#richiesta-di-nonce-dell-applicazione-mobile">15.1.1.1. Richiesta di Nonce dell'Applicazione Mobile</a></li>
+<li><a class="reference internal" href="#risposta-di-nonce-dell-applicazione-mobile">15.1.1.2. Risposta di Nonce dell'Applicazione Mobile</a><ul>
+<li><a class="reference internal" href="#risposta-di-errore-di-nonce-dell-applicazione-mobile">15.1.1.2.1. Risposta di Errore di Nonce dell'Applicazione Mobile</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile">15.1.1.3. Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</a></li>
+<li><a class="reference internal" href="#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile">15.1.1.4. Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</a><ul>
+<li><a class="reference internal" href="#risposta-di-errore-di-inizializzazione-dell-istanza-dell-applicazione-mobile">15.1.1.4.1. Risposta di Errore di Inizializzazione dell'Istanza dell'Applicazione Mobile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#associazione-chiave-dell-applicazione-mobile">15.1.2. Associazione Chiave dell'Applicazione Mobile</a><ul>
+<li><a class="reference internal" href="#richiesta-di-associazione-chiave-dell-applicazione-mobile">15.1.2.1. Richiesta di Associazione Chiave dell'Applicazione Mobile</a></li>
+<li><a class="reference internal" href="#risposta-di-associazione-chiave-dell-applicazione-mobile">15.1.2.2. Risposta di Associazione Chiave dell'Applicazione Mobile</a><ul>
+<li><a class="reference internal" href="#risposta-di-errore-di-associazione-chiave-dell-applicazione-mobile">15.1.2.2.1. Risposta di Errore di Associazione Chiave dell'Applicazione Mobile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="appendix.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15. </span>Appendice</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="e-service-pdnd.html"><span><span class="section-number">15.2. </span>e-Service PDND</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Ultimo aggiornamento 10/07/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
