@@ -782,7 +782,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
 Remote Flow Requirements
 -----------------------------
 
-The following table lists the requirements extracted from this document:
+The following table lists the requirements encoded with an unique identifier:
 
 .. list-table::
     :class: longtable
@@ -791,214 +791,92 @@ The following table lists the requirements extracted from this document:
 
     * - **Requirement ID**
       - **Description**
+    
     * - REMFLOW-1
-  - The Relying Party MUST support a Same Device flow by providing an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page.
-* - REMFLOW-2
-  - The Relying Party MUST support a Cross Device flow by providing a QR Code which the User frames with the Wallet Instance.
-* - REMFLOW-11
-  - The QR Code MUST contain a URL with the parameters ``client_id``, ``request_uri``, ``state``.
-* - REMFLOW-8
-  - The Relying Party MUST provide an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page for Same Device flow.
-* - REMFLOW-3
-  - The Relying Party MUST create a ``state`` value bound to the Holder's user-agent.
-* - REMFLOW-4
-  - The Relying Party MUST bind the ``state`` value to the user-agent using a secure method (e.g., HTTP secured cookie).
-* - REMFLOW-5
-  - The Relying Party MUST make the Authorization Request Object available for download at the ``request_uri`` location.
-* - REMFLOW-6
-  - The Relying Party MUST ensure the Authorization Request Object is properly signed and contains all required claims.
-* - REMFLOW-12
-  - The Relying Party MUST ensure secure generation of QR codes.
-* - REMFLOW-13
-  - The Relying Party MUST validate the format of generated QR codes.
-* - REMFLOW-14
-  - The Relying Party MUST ensure proper rate limiting for QR code generation.
-* - REMFLOW-15
-  - The Relying Party MUST maintain proper security logs of QR code usage.
-* - REMFLOW-16
-  - The Relying Party MUST implement proper error handling for invalid or expired QR codes.
-* - REMFLOW-17
-  - The Relying Party MUST ensure proper timeout handling for QR code scanning.
-* - REMFLOW-18
-  - The Relying Party MUST implement proper cleanup of expired QR codes.
-* - REMFLOW-19
-  - The Relying Party MUST implement proper error handling for QR code scanning failures.
-* - REMFLOW-20
-  - The Relying Party MUST ensure proper handling of concurrent QR code scans.
-* - REMFLOW-21
-  - The Relying Party MUST validate the integrity of QR code data.
-* - REMFLOW-22
-  - The Relying Party MUST implement proper session binding for QR codes.
-* - REMFLOW-23
-  - The Relying Party MUST ensure secure transmission of QR code data.
-* - REMFLOW-24
-  - The Relying Party MUST inspect the user-agent to determine whether the flow occurs on the same device.
-* - REMFLOW-25
-  - The Relying Party MUST provide the user-agent with a JavaScript page inspecting the status endpoint.
-* - REMFLOW-26
-  - The Relying Party MUST provide a JavaScript page for inspecting the status endpoint in the Same Device flow.
-* - REMFLOW-27
-  - The Wallet Instance MUST extract the ``client_id``, ``request_uri``, ``state``, and ``request_uri_method`` parameters from the payload.
-* - REMFLOW-28
-  - The Wallet Instance MUST establish trust with the Relying Party before evaluating the request.
-* - REMFLOW-29
-  - The Wallet Instance MUST verify the trust chain and validity of the Relying Party's Entity Configuration.
-* - REMFLOW-30
-  - If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter.
-* - REMFLOW-31
-  - If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method.
-* - REMFLOW-32
-  - The Wallet Instance MUST verify the signature of the signed Request Object using the public key identified in the JWT header of the Request Object.
-* - REMFLOW-33
-  - The Wallet Instance MUST verify that the ``client_id`` contained in the Request Object issuer matches with the one obtained at step 2 and with the ``sub`` parameter contained in the Relying Party's Entity Configuration within the Trust Chain.
-* - REMFLOW-34
-  - The Wallet Instance MUST evaluate the requested Digital Credentials and check the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party.
-* - REMFLOW-35
-  - The Wallet Instance MUST ask for User disclosure and consent by showing the Relying Party's identity and the requested attributes.
-* - REMFLOW-36
-  - The Wallet Instance MUST ensure secure transmission of all sensitive data.
-* - REMFLOW-37
-  - The Wallet Instance MUST present the requested information and Wallet Attestation (if requested) to the Relying Party.
-* - REMFLOW-38
-  - The Wallet Instance MUST include the Wallet Attestation in the response when requested by the Relying Party.
-* - REMFLOW-39
-  - The Wallet Instance MUST inform the User about the successful authentication with the Relying Party.
-* - REMFLOW-40
-  - The ``redirect_uri`` value MUST be used with an HTTP method GET by the user-agent to redirect the User to a specific Relying Party's endpoint.
-* - REMFLOW-41
-  - The Relying Party MUST validate the presented Credentials by verifying the trust with their Issuers and check the Wallet Attestation to ensure the Wallet Provider is trusted.
-* - REMFLOW-42
-  - The Relying Party MUST validate presented Credentials by verifying trust with their Issuers.
-* - REMFLOW-43
-  - The Relying Party MUST check the Wallet Attestation to ensure the Wallet Provider is trusted.
-* - REMFLOW-44
-  - The Relying Party MUST validate the signature of the Wallet Attestation when present.
-* - REMFLOW-45
-  - The Relying Party MUST verify the trust status of the Wallet Provider through the Trust Chain.
-* - REMFLOW-46
-  - The Relying Party MUST validate that the response comes from the same Wallet Instance that initiated the flow.
-* - REMFLOW-47
-  - The Relying Party MUST verify the integrity and authenticity of all received messages.
-* - REMFLOW-48
-  - The Relying Party MUST validate that all requested attributes are present in the response.
-* - REMFLOW-49
-  - The Relying Party MUST validate the format and structure of received Verifiable Presentations.
-* - REMFLOW-50
-  - The Relying Party MUST validate the cryptographic proofs in received Verifiable Presentations.
-* - REMFLOW-51
-  - The Relying Party MUST verify the validity period of presented credentials.
-* - REMFLOW-52
-  - The Relying Party MUST check credential revocation status when applicable.
-* - REMFLOW-53
-  - The Relying Party MUST validate that the response is properly encrypted when required.
-* - REMFLOW-54
-  - The Relying Party MUST validate that the response matches the original request parameters.
-* - REMFLOW-55
-  - The Relying Party MUST validate the format and structure of the authorization response.
-* - REMFLOW-56
-  - The Relying Party MUST validate the integrity of the ``request_uri`` endpoint responses.
-* - REMFLOW-57
-  - The Relying Party MUST validate the integrity of received ``state`` parameters.
-* - REMFLOW-58
-  - The Relying Party MUST validate the integrity of ``request_uri_method`` parameters.
-* - REMFLOW-59
-  - The Relying Party MUST validate the format of ``state`` parameters.
-* - REMFLOW-60
-  - The Relying Party MUST validate the format of ``request_uri_method`` parameters.
-* - REMFLOW-61
-  - The Relying Party MUST validate the format of ``client_id`` parameters.
-* - REMFLOW-62
-  - The Relying Party MUST ensure the ``state`` parameter matches the one initially provided.
-* - REMFLOW-63
-  - The Relying Party MUST ensure proper binding between ``state`` and session.
-* - REMFLOW-64
-  - The Relying Party MUST ensure proper validation of ``client_id`` against trusted sources.
-* - REMFLOW-65
-  - The Relying Party MUST implement proper error handling for failed credential verifications.
-* - REMFLOW-66
-  - The Relying Party MUST implement proper error handling for invalid ``request_uri_method`` values.
-* - REMFLOW-67
-  - The Relying Party MUST implement proper error handling for invalid ``client_id`` values.
-* - REMFLOW-68
-  - The Relying Party MUST implement proper error handling for invalid ``state`` values.
-* - REMFLOW-69
-  - The Relying Party MUST implement proper error handling for invalid or expired QR codes.
-* - REMFLOW-70
-  - The Relying Party MUST implement proper error handling for QR code scanning failures.
-* - REMFLOW-71
-  - The Relying Party MUST ensure proper error reporting to the User in case of verification failures.
-* - REMFLOW-72
-  - Relying Party MUST implement the error handling and validation mechanisms for Redirect URIs defined in this specification.
-* - REMFLOW-73
-  - The error response MUST use ``application/json`` as the content type.
-* - REMFLOW-74
-  - The error response MUST include the ``error`` and ``error_description`` parameters.
-* - REMFLOW-75
-  - The specified HTTP Status Codes and related error codes MUST be supported for the error response.
-* - REMFLOW-76
-  - The Relying Party MUST provide appropriate error responses with proper HTTP status codes and error descriptions.
-* - REMFLOW-77
-  - The Relying Party MUST implement proper session management for the presentation flow.
-* - REMFLOW-78
-  - The Relying Party MUST implement proper session management for cross-device flows.
-* - REMFLOW-79
-  - The Relying Party MUST implement proper session termination after completion.
-* - REMFLOW-80
-  - The Relying Party MUST implement proper access controls for presentation verification endpoints.
-* - REMFLOW-81
-  - The Relying Party MUST implement proper rate limiting for presentation requests.
-* - REMFLOW-82
-  - The Relying Party MUST implement proper rate limiting for ``request_uri`` endpoint access.
-* - REMFLOW-83
-  - The Relying Party MUST implement proper rate limiting for ``request_uri_method`` changes.
-* - REMFLOW-84
-  - The Relying Party MUST implement proper rate limiting for QR code generation.
-* - REMFLOW-85
-  - The Relying Party MUST implement proper timeout handling for presentation flows.
-* - REMFLOW-86
-  - The Relying Party MUST implement proper timeout handling for QR code scanning.
-* - REMFLOW-87
-  - The Relying Party MUST implement proper timeout handling for ``request_uri_method`` operations.
-* - REMFLOW-88
-  - The Relying Party MUST ensure proper handling of network errors during the presentation flow.
-* - REMFLOW-89
-  - The Relying Party MUST ensure proper handling of concurrent requests to the ``request_uri`` endpoint.
-* - REMFLOW-90
-  - The Relying Party MUST ensure proper handling of ``request_uri`` endpoint timeouts.
-* - REMFLOW-91
-  - The Relying Party MUST ensure proper handling of HTTP methods for ``request_uri`` endpoints.
-* - REMFLOW-92
-  - The Relying Party MUST ensure proper handling of concurrent QR code scans.
-* - REMFLOW-93
-  - The Relying Party MUST ensure proper cleanup of temporary presentation data.
-* - REMFLOW-94
-  - The Relying Party MUST implement proper cleanup of expired Request Objects.
-* - REMFLOW-95
-  - The Relying Party MUST implement proper cleanup of expired ``state`` values.
-* - REMFLOW-96
-  - The Relying Party MUST implement proper cleanup of expired QR codes.
-* - REMFLOW-97
-  - The Relying Party MUST ensure secure storage of any retained presentation data.
-* - REMFLOW-98
-  - The Relying Party MUST ensure secure storage of Request Objects.
-* - REMFLOW-99
-  - The Relying Party MUST ensure secure transmission of verification results.
-* - REMFLOW-100
-  - The Relying Party MUST ensure secure transmission of ``state`` parameters.
-* - REMFLOW-101
-  - The Relying Party MUST ensure secure transmission of QR code data.
-* - REMFLOW-102
-  - The Relying Party MUST implement proper audit logs of all credential verification attempts.
-* - REMFLOW-103
-  - The Relying Party MUST implement proper security logs of verification outcomes.
-* - REMFLOW-104
-  - The Relying Party MUST maintain proper security logs of ``state`` usage.
-* - REMFLOW-105
-  - The Relying Party MUST maintain proper security logs of ``request_uri_method`` usage.
-* - REMFLOW-106
-  - The Relying Party MUST maintain proper security logs of QR code usage.
-* - REMFLOW-107
-  - The Relying Party MUST maintain proper security logs of ``client_id`` usage.
-* - REMFLOW-108
-  - The Relying Party MUST support both Same Device and Cross Device flows for credential presentation.
-
+      - The Relying Party MUST inspect the user-agent to determine whether the flow occurs on the same device or cross device or asking the User to manually select the flow type.
+    * - REMFLOW-2
+      - The Relying Party MUST support a Same Device flow by providing an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page.
+    * - REMFLOW-3
+      - The Relying Party MUST support a Cross Device flow by providing a QR Code which the User frames with the Wallet Instance.
+    * - REMFLOW-4
+      - The QR Code MUST contain a URL with the parameters ``client_id``, ``request_uri``, ``state``.
+    * - REMFLOW-5
+      - The Relying Party MUST ensure proper rate limiting for QR code generation or produce QR Codes using JS within the Holder's user-agent.
+    * - REMFLOW-6
+      - The Relying Party MUST bind the ``state`` value to the user-agent using a secure method (e.g., HTTP secured cookie).
+    * - REMFLOW-7
+      - The Relying Party MUST make the Authorization Request Object available for download at the ``request_uri`` location.
+    * - REMFLOW-8
+      - The Relying Party MUST ensure the Authorization Request Object is properly signed and contains all required claims.
+    * - REMFLOW-9
+      - The Relying Party MUST ensure proper timeout handling for QR code scanning.
+    * - REMFLOW-10
+      - The Relying Party MUST implement proper cleanup of expired Authorization sessions.
+    * - REMFLOW-11
+      - The Relying Party MUST provide the user-agent with a JavaScript page inspecting the status endpoint.
+    * - REMFLOW-12
+      - The Wallet Instance MUST extract the ``client_id``, ``request_uri``, ``state``, and optionally the ``request_uri_method``, parameters from the payload.
+    * - REMFLOW-13
+      - The Wallet Instance MUST establish trust with the Relying Party before evaluating the request payload.
+    * - REMFLOW-14
+      - If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter.
+    * - REMFLOW-15
+      - If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its capabilities (wallet metadata) to the Relying Party's ``request_uri`` endpoint using the HTTP POST method.
+    * - REMFLOW-16
+      - The Wallet Instance MUST verify the signature of the signed Request Object using the verified public key, identified in the JWT header of the Request Object and in the trust chain related to the Relying Party.
+    * - REMFLOW-17
+      - The Wallet Instance MUST verify that the ``client_id`` contained in the Request Object issuer matches with the one obtained at step 2 and with the Relying Party's identifier within the Trust Chain.
+    * - REMFLOW-18
+      - The Wallet Instance MUST evaluate the requested Digital Credentials and check the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party.
+    * - REMFLOW-19
+      - The Wallet Instance MUST ask for User disclosure and consent by showing the Relying Party's identity and the requested attributes.
+    * - REMFLOW-20
+      - The Wallet Instance MUST ensure secure transmission of all sensitive data.
+    * - REMFLOW-21
+      - The Wallet Instance MUST present the requested information and Wallet Attestation (if requested) to the Relying Party, including it within the ``vp_token`` object.
+    * - REMFLOW-22
+      - The Wallet Instance MUST inform the User about the successful authentication with the Relying Party.
+    * - REMFLOW-23
+      - The ``redirect_uri`` value MUST be used with an HTTP method GET by the user-agent to redirect the User to a specific Relying Party's endpoint.
+    * - REMFLOW-24
+      - The Relying Party MUST validate the presented Credentials by verifying the trust with their Issuers and check the Wallet Attestation (if previously requested and made available by the Wallet Instance) to ensure the Wallet Provider is trusted.
+    * - REMFLOW-25
+      - The Relying Party MUST validate that the response comes from the same Wallet Instance that initiated the flow.
+    * - REMFLOW-26
+      - The Relying Party MUST verify the integrity and authenticity of all received messages.
+    * - REMFLOW-27
+      - The Relying Party MUST validate that all requested attributes are present in the response.
+    * - REMFLOW-28
+      - The Relying Party MUST validate the format and structure of received Verifiable Presentations.
+    * - REMFLOW-29
+      - The Relying Party MUST validate the cryptographic proofs in received Verifiable Presentations.
+    * - REMFLOW-30
+      - The Relying Party MUST verify the validity period of presented Credentials.
+    * - REMFLOW-31
+      - The Relying Party MUST check Credential revocation status when applicable.
+    * - REMFLOW-32
+      - The Relying Party MUST validate that the response is properly encrypted.
+    * - REMFLOW-33
+      - The Relying Party MUST validate that the response matches the original request parameters.
+    * - REMFLOW-34
+      - The Relying Party MUST validate the format and structure of the authorization response.
+    * - REMFLOW-35
+      - The Relying Party MUST ensure proper error reporting to the User in case of verification failures.
+    * - REMFLOW-36
+      - Relying Party MUST implement the error handling and validation mechanisms for Redirect URIs defined in this specification.
+    * - REMFLOW-37
+      - The error response MUST use ``application/json`` as the content type.
+    * - REMFLOW-38
+      - The error response MUST include the ``error`` and ``error_description`` parameters.
+    * - REMFLOW-39
+      - The specified HTTP Status Codes and related error codes MUST be supported for the error response.
+    * - REMFLOW-40
+      - The Relying Party MUST implement proper timeout handling for presentation flows.
+    * - REMFLOW-41
+      - The Relying Party MUST ensure proper cleanup of temporary presentation data.
+    * - REMFLOW-42
+      - The Relying Party MUST implement proper cleanup of expired Request Objects.
+    * - REMFLOW-43
+      - The Relying Party MUST implement proper audit logs of all credential verification attempts.
+    * - REMFLOW-44
+      - The Relying Party MUST implement proper security logs of verification outcomes.
