@@ -765,3 +765,4 @@ La seguente tabella elenca gli Status Code HTTP e i relativi *Error codes* che D
     * - ``503 Service Unavailable``
       - ``temporarily_unavailable``
       - La richiesta non può essere soddisfatta perché il servizio è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (:rfc:`6749#section-4.1.2.1`).
+
