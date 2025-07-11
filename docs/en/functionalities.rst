@@ -523,7 +523,7 @@ The IT-Wallet System involves the interaction of multiple services provided by d
 
 Effective communication in case of an error also provides benefits for the actors involved, as it contributes to the reduction of assistance requests and, thus, to the minimisation of the impact on support systems.
 
-Below are the requirements and main best practices for error management, specifically related to the interaction between the User and their Wallet Instance.  It is crucial that each Primary Actor implements a proper error management, in compliance with current Technical Specifications in order to communicate them, directly or indirectly, to the User and through the IT-Wallet Instance. Errors can be categorized, based on their nature, as follows:
+Below are the requirements and main best practices for error management, specifically related to the interaction between the User and their Wallet Instance. 
 
 - **The stage of the User Experience** where the error may occur: activation or deactivation of the Wallet Instance, obtaining, presenting, or managing Electronic Attestations of Attributes;
 - **The type of error**: system error, communication error between actors, etc.;
