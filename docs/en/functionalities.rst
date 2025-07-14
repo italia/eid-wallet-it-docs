@@ -534,8 +534,6 @@ Below are the requirements and main best practices for error management, specifi
 
 Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience.
 
-For further implementation details on error management in relation to each Primary Actor see :ref:`endpoints` section. 
-
 Activation of the Wallet Instance Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
