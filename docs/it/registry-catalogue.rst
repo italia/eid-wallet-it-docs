@@ -261,7 +261,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - **authentic_sources**
     - OBBLIGATORIO. Array di informazioni rilevanti sulle Fonti Autentiche autorizzate, inclusi dati amministrativi e tecnici relativi alla fornitura di dati ai Fornitori di Attestato Elettronico.
   * - **formats**
-      - OBBLIGATORIO. Array dei formati tecnici supportati per le Credenziali Digitali, che include:
+    - OBBLIGATORIO. Array dei formati tecnici supportati per le Credenziali Digitali, che include:
 
         * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc``)
         * **configuration_id**: Identificativo di configurazione del formato dell'Attestato Elettronico. Questo è formato concatenando il valore di ``credential_type`` al ``format`` (ad esempio, ``dc_sd_jwt_mDL`` o ``mso_mdoc_mDL``), ed è usato per fare riferimento in modo univoco alla configurazione per questo formato di Attestato Elettronico.
@@ -271,6 +271,8 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
           * definita da uno standard ISO, DEVE essere una stringa nel formato ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (ad esempio, ``iso.org.18013.5.1.mDL``).
           * definita a livello europeo, DEVE essere una stringa nel formato ``eu.europa.ec.{credential_type}.{version}`` (ad esempio, ``eu.europa.ec.personidentificationdata.1.0``).
           * definita da uno standard nazionale, DEVE essere una stringa nel formato ``{dominio inverso Trust Anchor}.{credential_type}.{version}`` (ad esempio, ``it.eid-wallet.trust-registry.personidentificationdata.1.0``).
+        * **schema_uri**: URI che punta al documento di specifica del formato.
+        * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa nel formato ``{metodo_digest}={valore_digest}``, dove ``{metodo_digest}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{valore_digest}`` è il valore di digest codificato in base64url.
   * - **display_properties**
     - OBBLIGATORIO. Proprietà di presentazione visiva degli Attestati Elettronici, ad es.:
 
@@ -280,6 +282,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **logo_uri**: URI al logo dell'Attestato Elettronico.
   * - **claims**
     - OBBLIGATORIO. Array di claims contenuti nell'Attestato Elettronico.
+
 
 L'Oggetto ``wallet_attestations`` contiene almeno le seguenti informazioni:
 
