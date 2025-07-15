@@ -198,6 +198,11 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
        This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used.
 
+.. note::
+    **Requesting the Wallet Attestation**
+
+    The Relying Party which requests a Wallet Attestation MUST do so by adding an object in the **docRequest** array having only the ``docType`` set to ``it.eid-wallet.trust-registry.WalletAttestation.1.0``, it MUST NOT include the ``nameSacecs`` parameter in the request as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities.
+
 mdoc Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -272,6 +277,10 @@ A **deviceSigned** data structure MUST be compliant with the following structure
    * - **deviceAuth**
      - *(COSE_Sign1)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #9.1.3] for details on the authentication structure.
 
+.. note::
+    **Presenting the Wallet Attestation**
+
+    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance MUST include all available disclosures for the Wallet Attestation in the response even if the Relying Party did not request them in the mdoc request. The rational behind this is that the Wallet Attestation is a proof of the Wallet Instance's trustworthiness and capabilities but is not a Digital Credential per se. Therefore, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user.
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

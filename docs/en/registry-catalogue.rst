@@ -191,85 +191,132 @@ The JWS payload contains the following parameters:
      - OPTIONAL. Cryptographic digest of the taxonomy document for integrity verification.
    * - **credentials**
      - REQUIRED. Array containing Digital Credential definitions.
+   * - **wallet_attestations**
+     - REQUIRED. JSON Object containing information about the Wallet Attestations supported.
 
 Each element of the ``credentials`` array contains at least the following information:
 
 .. list-table:: First-level Fields of Each Credential Entry
-   :class: longtable
-   :header-rows: 1
-   :widths: 30 70
+  :class: longtable
+  :header-rows: 1
+  :widths: 30 70
 
-   * - Field Name
-     - Description
-   * - **version**
-     - REQUIRED. Version of the Digital Credential definition.
-   * - **credential_type**
-     - REQUIRED. Unique identifier of the Digital Credential type.
-   * - **legal_type**
-     - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
-   * - **localization**
-     - OPTIONAL. Localization settings, including:
+  * - Field Name
+    - Description
+  * - **version**
+    - REQUIRED. Version of the Digital Credential definition.
+  * - **credential_type**
+    - REQUIRED. Unique identifier of the Digital Credential type.
+  * - **legal_type**
+    - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
+  * - **localization**
+    - OPTIONAL. Localization settings, including:
 
-       * **default_locale**: Default language for text.
-       * **available_locales**: List of supported languages.
-       * **base_uri**: Base URI for localization resources.
-       * **version**: Version of the localization files.
-   * - **name**
-     - REQUIRED. Human-readable name of the Digital Credential. A suffix ``_l10n_id`` MAY be added for content localisation management.
-   * - **description**
-     - REQUIRED. Human-readable Digital Credential description. A suffix ``_l10n_id`` MAY be added for content localisation management.
-   * - **restriction_policy**
-     - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
+      * **default_locale**: Default language for text.
+      * **available_locales**: List of supported languages.
+      * **base_uri**: Base URI for localization resources.
+      * **version**: Version of the localization files.
+  * - **name**
+    - REQUIRED. Human-readable name of the Digital Credential. A suffix ``_l10n_id`` MAY be added for content localisation management.
+  * - **description**
+    - REQUIRED. Human-readable Digital Credential description. A suffix ``_l10n_id`` MAY be added for content localisation management.
+  * - **restriction_policy**
+    - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
 
-       * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
-       * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the **issuers** field of the corresponding Digital Credential.
-   * - **pricing_policy**
-     - OPTIONAL. Information about Digital Credential pricing, including:
+      * **allowed_wallet_ids**: List of allowed Wallet Solutions identifiers.
+      * **allowed_issuer_ids**: List of allowed Credential Issuers identifiers. If present, it represents a whitelist of Credential Issuers that may be added by the Trust Anchor in the **issuers** field of the corresponding Digital Credential.
+  * - **pricing_policy**
+    - OPTIONAL. Information about Digital Credential pricing, including:
 
-       * **models**: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing
+      * **models**: REQUIRED. Array of pricing models applicable to the Digital Credential, each containing
 
-         - **pricing_type**: Type of pricing model, such as ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
-         - **price**: Cost associated with the model.
-         - **currency**: Currency of the price.
+        - **pricing_type**: Type of pricing model, such as ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
+        - **price**: Cost associated with the model.
+        - **currency**: Currency of the price.
 
-       * **pricing_model_uri**: URI to the detailed pricing model documentation.
-   * - **validity_info**
-     - Information about Digital Credential validity, including at least:
+      * **pricing_model_uri**: URI to the detailed pricing model documentation.
+  * - **validity_info**
+    - Information about Digital Credential validity, including at least:
 
-       * **max_validity_days**: Maximum validity period in days.
-       * **status_methods**: Supported status verification methods (e.g. ``status_list``).
-       * **allowed_states**: Allowed Digital Credential states (e.g. ``valid``, ``revoked``, ``suspended``).
-   * - **authentication**
-     - REQUIRED. Digital Credential authentication requirements
+      * **max_validity_days**: Maximum validity period in days.
+      * **status_methods**: Supported status verification methods (e.g. ``status_list``).
+      * **allowed_states**: Allowed Digital Credential states (e.g. ``valid``, ``revoked``, ``suspended``).
+  * - **authentication**
+    - REQUIRED. Digital Credential authentication requirements
 
-       * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
-       * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
-       * **supported_eid_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes.
-   * - **purposes**
-     - REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:
+      * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
+      * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
+      * **supported_eid_schemes**: REQUIRED if ``user_auth_required`` is ``true``. Supported digital identity authentication schemes.
+  * - **purposes**
+    - REQUIRED. Array of usage purposes for which the Digital Credential can be used, defining specific usage contexts and required claims for each purpose, such as:
 
-       * **id**: Unique identifier for the purpose (e.g., "driving-authorization", "person-identification").
-       * **description**: Human-readable purpose description with a suffix ``_l10n_id`` for content localisation.
-       * **category**: Main category in the Credential taxonomy (e.g., ``AUTHORIZATION``, ``IDENTITY``).
-       * **subcategory**: Subcategory within the taxonomy (e.g., ``DRIVING_LICENSE``, ``PERSON_IDENTIFICATION``).
-       * **claims_required**: Array of claim identifiers that are required when using the Credential for this purpose.
-       * **claims_recommended**: Array of claim identifiers that are recommended but not mandatory for this purpose.
-   * - **issuers**
-     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
-   * - **authentic_sources**
-     - REQUIRED. Array of relevant information about authorized Authentic Sources, including administrative and technical data related the provisioning of data to the Credential Issuers.
-   * - **formats**
-     - REQUIRED. Array of supported technical formats of Digital Credentials.
-   * - **display_properties**
-     - REQUIRED. Visual presentation properties of Digital Credentials, e.g.:
+      * **id**: Unique identifier for the purpose (e.g., "driving-authorization", "person-identification").
+      * **description**: Human-readable purpose description with a suffix ``_l10n_id`` for content localisation.
+      * **category**: Main category in the Credential taxonomy (e.g., ``AUTHORIZATION``, ``IDENTITY``).
+      * **subcategory**: Subcategory within the taxonomy (e.g., ``DRIVING_LICENSE``, ``PERSON_IDENTIFICATION``).
+      * **claims_required**: Array of claim identifiers that are required when using the Credential for this purpose.
+      * **claims_recommended**: Array of claim identifiers that are recommended but not mandatory for this purpose.
+  * - **issuers**
+    - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
+  * - **authentic_sources**
+    - REQUIRED. Array of relevant information about authorized Authentic Sources, including administrative and technical data related the provisioning of data to the Credential Issuers.
+  * - **formats**
+    - REQUIRED. Array of supported technical formats of Digital Credentials, including:
 
-       * **templates**: Visual templates for the Credential, e.g. `svg` template.
-       * **background_color**: Background color in hexadecimal format.
-       * **text_color**: Text color in hexadecimal format.
-       * **logo_uri**: URI to the Digital Credential logo.
-   * - **claims**
-     - REQUIRED. Array of claims contained in the Digital Credential.
+      * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc``)
+      * **configuration_id**: Configuration identifier of the credential format. This is formed by concatenating the ``credential_type`` value to the ``format`` (e.g., ``dc_sd_jwt_mDL`` or ``mso_mdoc_mDL``), and is used to uniquely reference the configuration for this credential format.
+      * **vct**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{version}/{credential_type}`` (e.g., ``https://trust-registry.eid-wallet.example.it/1.0/mDL``).
+      * **docType**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``mso_mdoc``. If the credential is:
 
+        * defined by an ISO standard, it MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g., ``iso.org.18013.5.1.mDL``).
+        * deined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.mDL.1.0``).
+        * defined by a national standard, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.eid-wallet.trust-registry.mDL.1.0``).
+      * **schema_uri**: URI pointing to the format specification document.
+      * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}={digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
+  * - **display_properties**
+    - REQUIRED. Visual presentation properties of Digital Credentials, e.g.:
+
+      * **templates**: Visual templates for the Credential, e.g. `svg` template.
+      * **background_color**: Background color in hexadecimal format.
+      * **text_color**: Text color in hexadecimal format.
+      * **logo_uri**: URI to the Digital Credential logo.
+  * - **claims**
+    - REQUIRED. Array of claims contained in the Digital Credential.
+
+
+The ``wallet_attestations`` Object contains at least the following information:
+
+.. list-table:: First-level Fields of Each Credential Entry
+  :class: longtable
+  :header-rows: 1
+  :widths: 30 70
+
+  * - Field Name
+    - Description
+  * - **version**
+    - REQUIRED. Version of the Digital Credential definition.
+  * - **credential_type**
+    - REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to ``WalletAttestation``.
+  * - **name**
+    - REQUIRED. Human-readable name of the Wallet Attestation. It MUST be set to ``Wallet Attestation``.
+  * - **description**
+    - REQUIRED. Human-readable Digital Credential description.
+  * - **aal_values_supported**
+    - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels low, medium and high.
+  * - **formats**
+    - REQUIRED. Array of supported formats for the Wallet Attestation, including:
+
+      * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
+      * **configuration_id**: Configuration identifier of the Wallet Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet Attestation format.
+      * **vct**: CONDITIONAL. It is only present if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{version}/{credential_type}`` (e.g., ``https://trust-registry.eid-wallet.example.it/1.0/WalletAttestation``).
+      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.eid-wallet.trust-registry.WalletAttestation.1.0``).
+      * **schema_uri**: URI pointing to the format specification document.
+      * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}={digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
+  * - **claims**
+    - REQUIRED. Array of claims contained in the Digital Credential. It MUST include at least the following claims:
+
+      * **Name**: The name of the claim (e.g., ``sub``, ``aal``, ``wallet_link``, ``wallet_name``).
+      * **Namespaces**: CONDITIONAL. Array of namespaces to which the claim belongs. It MUST be set to ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.eid-wallet.trust-registry.WalletAttestation.1.0``).
 
 The corresponding example of Digital Credentials Catalogue as decoded in JSON for both header and payload is the following:
 
