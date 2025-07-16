@@ -202,7 +202,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
             "id": "wallet attestation",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": ["https://trust-registry.eid-wallet.example.it/v1.0/WalletAttestation"]
+              "vct_values": ["https://trust-registry.it-wallet.example.it/v1.0/WalletAttestation"]
             }
           }
         ]
