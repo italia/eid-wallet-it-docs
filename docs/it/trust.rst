@@ -446,7 +446,9 @@ I metadati *federation_entity* per le Foglie DEVONO contenere i seguenti claim.
   * - **contacts**
     - Indirizzo email certificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Draft 36 Sezione 5.2.2
   * - **federation_resolve_endpoint**
-    - Vedi `OID-FED`_ Draft 41 Sezione 5.1.1
+    - OPZIONALE. Vedi `OID-FED`_ Draft 41 Sezione 5.1.1
+  * - **tos_uri**
+    - OPZIONALE. URL che contiene i termini di servizio del Fornitore di Wallet. Vedi `OID-FED`_.
 
 
 Subordinate Statements

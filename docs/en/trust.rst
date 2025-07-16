@@ -446,6 +446,10 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
     - Institutional certified email address (PEC) of the entity. See `OID-FED`_ Draft 36 Section 5.2.2
   * - **federation_resolve_endpoint**
     - See `OID-FED`_ Draft 41 Section 5.1.1
+  * - **federation_resolve_endpoint**
+    - [OPTIONAL] The resolver fetches the requested subject's Entity Configuration, assembles a Trust Chain that starts with the subject's Entity Configuration and ends with the specified Trust Anchor's Entity Configuration, verifies the Trust Chain, and then applies all the policies present in the Trust Chain to the subject's metadata. See `OID-FED`_.
+  * - **tos_uri**
+    - [OPTIONAL] URL string that points to a human-readable terms of service document for the client that describes a contractual relationship between the end-user and the client that the end-user accepts when authorizing the client. See `OID-FED`_.
 
 
 Subordinate Statements
