@@ -317,7 +317,7 @@ The ``wallet_attestations`` Object contains at least the following information:
   * - Field Name
     - Description
   * - **version**
-    - REQUIRED. Version of the Digital Credential definition.
+    - REQUIRED. Version of the Wallet Attestation definition.
   * - **credential_type**
     - REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to ``WalletAttestation``.
   * - **name**

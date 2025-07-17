@@ -271,7 +271,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **logo_uri**: [OPZIONALE] URI del logo dell'organizzazione della Fonte Autentica.
       * **source_type**: Tipo di Fonte Autentica, come ``public`` o ``private``.
       * **service_documentation**: [OPZIONALE] URI che punta alla documentazione del servizio della Fonte Autentica.
-      * - **data_provision**: [OPZIONALE] Oggetto JSON contenente informazioni sui metodi di fornitura dei dati supportati dalla Fonte Autentica, inclusi:
+      * **data_provision**: [OPZIONALE] Oggetto JSON contenente informazioni sui metodi di fornitura dei dati supportati dalla Fonte Autentica, inclusi:
 
         * **immediate_flow**: OBBLIGATORIO. Booleano che indica se la Fonte Autentica supporta la fornitura immediata dei dati.
         * **deferred_flow**: OBBLIGATORIO. Booleano che indica se la Fonte Autentica supporta la fornitura differita dei dati.
