@@ -286,9 +286,9 @@ When multiple Digital Credentials are issued together in a single batch, their l
   * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. the Issuer marks every credential in the batch as revoked and emits a single notification for the entire batch.
 
 .. note::
-  As the Wallet UI typically surfaces a batch as one Credential (e.g. 3 uses remaining), a User-driven deletion likewise removes the entire batch. It is not possible to delete or revoke just one credential—any deletion request using the batch's ``notification_id`` applies to all credentials in that batch.
+  As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion likewise removes the entire batch. It is not possible to delete or revoke just one credential—any deletion request using the batch's ``notification_id`` applies to all credentials in that batch.
 
-  
+
 
 Validity Verification Mechanisms
 --------------------------------
