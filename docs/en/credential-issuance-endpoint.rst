@@ -908,7 +908,7 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_dpop_proof``
       - The Credential Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 7 of [:rfc:`9449`].
-     * - *400 Bad Request* [REQUIRED]
+    * - *400 Bad Request* [REQUIRED]
       - ``issuer_batch_size_limit_exceeded``
       -  The number of credentials requested in the batch exceeds the credential issuer's maximum batch size.
     * - *400 Bad Request* [REQUIRED]
