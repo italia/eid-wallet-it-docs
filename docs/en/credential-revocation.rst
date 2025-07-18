@@ -104,6 +104,13 @@ the conditions leading to its suspension are resolved, or it changes in **Revoke
   * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA.
   * Explicitly requested by the User.
 
+
+Digital Credential Lifecycle in a Batch
+---------------------------------------
+
+For Digital Credentials issued in a single batch, each Credential immediately enters its own lifecycle state machine. All state transitions (Issued → Valid → Expired/Suspended/Revoked) still occur on a per Credential basis, using Credential's individual parameters (e.g., validity dates, status assertion).
+
+
 Credential Lifecycle Management
 -------------------------------
 
