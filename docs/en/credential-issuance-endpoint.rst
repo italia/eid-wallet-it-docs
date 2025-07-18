@@ -767,6 +767,12 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
       - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
+  * - **proofs**
+    - REQUIRED when the ``proof`` parameter is absent. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. he proofs object MUST contain the following mandatory claims:
+
+      - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
+      - **jwt**: an array of JWT, where each jwt is used as proof of possession.
+    - [`OpenID4VCI`_].
   * - **transaction_id**
     - REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction. It MUST NOT be present in immediate flow
     - Section 9.1 of [`OpenID4VCI`_].
@@ -831,7 +837,7 @@ The Credential Response contains the following parameters:
     - **Description**
     - **Reference**
   * - **credentials**
-    - REQUIRED if ``lead_time`` and ``transaction_id`` are not present, otherwise it MUST NOT be present. It contains the following parameters:
+    - REQUIRED if ``lead_time`` and ``transaction_id`` are not present, otherwise it MUST NOT be present. It is an array of one or more issued Credentials. The elements of the array MUST be objects. The number of elements in the credentials array matches the number of keys that the Wallet Instance has provided either via the ``proof`` or ``proofs`` parameter of the Credential Request. It contains the following parameters:
 
           - **credential**: REQUIRED. String containing one issued Digital Credential. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO 18013-5]. This structure SHOULD contain all Namespaces and IssuerSignedItems that are included in the AuthorizedNamespaces of the MobileSecurityObject.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
@@ -883,7 +889,7 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The Credential Issuer cannot fulfill the request because the requested Credential Format is not supported. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_proof``
-      - The Credential Issuer cannot fulfill the request because the ``proof`` parameter in the Credential Request is invalid or absent. Section 8.3.1 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because the ``proof`` or ``proofs`` parameter in the Credential Request is invalid or absent or or the key proof(s) does not contain the ``c_nonce`` value. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_nonce``
       - The Credential Issuer cannot fulfill the request because the ``proof`` parameter in the Credential Request uses an invalid nonce. Section 8.3.1 of [`OpenID4VCI`_].
@@ -902,6 +908,10 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_dpop_proof``
       - The Credential Issuer cannot fulfill the request because of invalid *DPoP proof*. Section 7 of [:rfc:`9449`].
+     * - *400 Bad Request* [REQUIRED]
+      - ``issuer_batch_size_limit_exceeded``
+      -  The number of credentials requested in the batch exceeds the credential issuer's maximum batch size.
+    * - *400 Bad Request* [REQUIRED]
     * - *500 Internal Server Error* [REQUIRED]
       - ``server_error``
       - The Credential Issuer encountered an internal problem.
