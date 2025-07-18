@@ -36,8 +36,10 @@ In addition, the Credential Issuers MAY support:
   * **Batch Credential Issuance Flow**: It enables the issuance of a batch of one or more Digital Credential. Digital Credentials that are issued in a batch MUST share the same format and contain the same set of attributes about the Holder, but MUST contain different Cryptographic Data to achieve unlinkability between the Digital Credentials. 
 
 
-  .. note::
-  **Standard or Batch Credential Issuance:** The user can configure the Wallet Solution to issue digital credentials in either batch or standard mode and define the prefered batch size.
+.. note::
+    **Standard or Batch Credential Issuance:** 
+      
+    The user can configure the Wallet Solution to issue digital credentials in either batch or standard mode and define the prefered batch size.
 
 The entire Issuance flow can be divided into two sub-flows:
 
@@ -638,6 +640,4 @@ To ensure the integrity and security of the re-issuance process, the following s
   - Credential expiry: The Credential Issuer MUST set the same expiry date for the re-issued Digital Credential as the previous one. This prevents indefinite Credential renewals without proper User authentication.
   - User consent: For re-issuance processes triggered by attribute changes, User consent MUST be obtained before storing the new Digital Credential. This ensures that the User is aware of and agrees to the updated information.
   - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token.
-
-
 
