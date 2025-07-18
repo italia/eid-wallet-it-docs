@@ -35,6 +35,7 @@ In addition, the Credential Issuers MAY support:
   * **Deferred Issuance Flow**: The Credential Issuer may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
   * **Batch Credential Issuance Flow**: It enables the issuance of a batch of one or more Digital Credential. Digital Credentials that are issued in a batch MUST share the same format and contain the same set of attributes about the Holder, but MUST contain different Cryptographic Data to achieve unlinkability between the Digital Credentials. 
 
+
   .. note::
   **Standard or Batch Credential Issuance:** The user can configure the Wallet Solution to issue digital credentials in either batch or standard mode and define the prefered batch size.
 
@@ -358,6 +359,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 .. note::
   The ``c_nonce`` value in all the jwt proofs is identical and it is not needed to obtain separate nonce values per proof. 
 
+
 **Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST be an object that contains two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer conducts the same checks as already defined in **Step 16**.
 
 
@@ -378,6 +380,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 
 .. literalinclude:: ../../examples/batch-credential-request.json
   :language: JSON
+
 
 The decoded content of ``jwt`` elements in the ``jwt`` array is similar to what is explained in **Step 16**.
 
@@ -404,6 +407,7 @@ Below is a non-normative example of a successful response containing a Credentia
 .. literalinclude:: ../../examples/sd-jwt-credential-response.json
   :language: JSON
 
+
 Below is a non-normative example of a successful response containing a Credential in mdoc format.
 
 .. code-block:: http
@@ -429,11 +433,14 @@ Below is a non-normative example of a successful response containing a batch of 
 .. literalinclude:: ../../examples/sd-jwt-batch-credential-response.json
   :language: JSON
 
+
 .. note::
   When the Wallet Instance receives a new batch of the same credential with the same claims, the wallet MUST delete previous credentials. 
 
+
 .. note::
   If the requested Credential cannot be issued immediately and requires more time, the Credential Issuer SHOULD support the Deferred Flow (step 24) as specified in Section :ref:`credential-issuance-endpoint:Deferred Endpoint`. Additionally, in the case of batch issuance, the same ``transaction_id`` retrieves all Credentials that are requested in the batch.
+
 
 
 **Step 25 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
@@ -456,7 +463,9 @@ Below is a non-normative example of a successful response containing a batch of 
   :language: JSON
 
 
+
 **Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
+
 
 .. code-block:: http
 
@@ -465,8 +474,10 @@ Below is a non-normative example of a successful response containing a batch of 
 .. note::
    In some cases there are multiple sets of Credential data available in the Authentic Source system, and the User may be interested in obtaining more than one Credential. In these cases the Issuance Flow remains the same as described in :ref:`credential-issuance-low-level:Low-Level Issuance Flow`. In the Token Response (**Step 11**), the Credential Issuer generates a unique identifier (``credential_identifier``) for each Credential Dataset provided in the `AttributeClaims` parameter of the e-service PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Therefore, the ``credential_identifiers`` array within the ``authorization_details`` object contains the identifiers of all Credentials available for issuance. The Wallet sends a Credential Request (**Step 16**) for each identifier, obtaining multiple distinct Credentials that are individually shown to the User for the acceptance. Finally, the Credential Issuer is notified by the Wallet of the outcome through the :ref:`credential-issuance-endpoint:Notification Endpoint`.
 
+
 .. note::
    For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials—any partial failure is treated as a batch failure. 
+
 
 
 Refresh Token Flow
