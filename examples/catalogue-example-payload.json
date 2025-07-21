@@ -112,7 +112,7 @@
                   "max_response_time_minutes": 60,
                   "notification_methods": ["push"]
                },
-               "user_information": "https://issuer.example.org/.well-known/user_information"
+               "user_information": "Any mDL registered before 2010-01-01 has no available data for Digital Credential issuance."
             }
          ],
          "formats": [
@@ -230,7 +230,7 @@
          ]
       }
    ],
-   "wallet_attestations": {
+   "wallet_attestation": {
       "version": "1.0",
       "credential_type": "WalletAttestation",
       "name": "Wallet Attestation",

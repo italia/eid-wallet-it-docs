@@ -364,7 +364,7 @@ Il corpo dell'SD-JWT della Wallet Attestation contiene i seguenti claim:
       - OBBLIGATORIO. Oggetto JSON, contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza di Wallet.
       - :rfc:`7800`.
     * - **vct**
-      - OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato su ```https://trust-registry.it-wallet.example.it/v1/WalletAttestation``.
+      - OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato come ``{url_trust_anchor}/{versione}/WalletAttestation``; si veda :ref:`registry-catalogue:Struttura del Catalogo degli Attestati Elettronici` per dettagli.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - OBBLIGATORIO. Array JSON contenente un elenco di tutti i digest delle divulgazioni.
@@ -425,7 +425,7 @@ Di seguito è riportato un esempio non normativo dell'header e del payload della
 Wallet Attestation mdoc
 """"""""""""""""""""""""
 
-Questa descrizione specializza ulteriormente le linee guida fornite in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format` per rappresentare la Wallet Attestation in formato mdoc. Quest'ultimo DEVE avere il namespace domestico ``it.wallet.trust-registry.WalletAttestation.1``.
+Questa descrizione specializza ulteriormente le linee guida fornite in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format` per rappresentare la Wallet Attestation in formato mdoc. Quest'ultimo DEVE avere il ``docType`` alorizzato come ``{Trust Anchor reverse domain}.{WalletAttestation}.{versione}``; si veda :ref:`registry-catalogue:Struttura del Catalogo degli Attestati Elettronici` per dettagli.
 
 I ``nameSpaces`` per gli Oggetti Json del nameSpace domestico sono definiti come segue:
 

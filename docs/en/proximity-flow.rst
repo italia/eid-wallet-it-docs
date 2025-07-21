@@ -201,7 +201,7 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 .. note::
     **Requesting the Wallet Attestation**
 
-    The Relying Party which requests a Wallet Attestation MUST do so by adding an object in the **docRequest** array having only the ``docType`` set to ``it.wallet.trust-registry.WalletAttestation.1``, it MUST NOT include the ``nameSpaces`` parameter in the request as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities.
+    The Relying Party which requests a Wallet Attestation MUST do so by adding an object in the **docRequest** array having only the ``docType`` set to ``{Trust Anchor reverse domain}.{WalletAttestation}.{version}`` as described in :ref:`registry-catalogue:Digital Credentials Catalogue Structure`, it MUST NOT include the ``nameSpaces`` parameter in the request as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities.
 
 mdoc Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

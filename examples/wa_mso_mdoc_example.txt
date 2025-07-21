@@ -1,7 +1,7 @@
 
   {
     "nameSpaces": {
-      "it.eid-wallet.trust-registry.WalletAttestation.1.0": [
+      "it.eid-wallet.trust-registry.WalletAttestation.1": [
         24(<<
           {
             "digestID": 0,
@@ -47,7 +47,7 @@
             "version": "1.0",
             "digestAlgorithm": "SHA-256",
             "valueDigests": {
-              "org.iso.18013.5.1.IT": {
+              "it.eid-wallet.trust-registry.WalletAttestation.1": {
                 0: h'2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f',
                 1: h'7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997',
                 2: h'7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f',
@@ -63,7 +63,7 @@
                 -3: h'6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3'
               }
             },
-            "docType": "it.eid-wallet.trust-registry.WalletAttestation.1.0",
+            "docType": "it.eid-wallet.trust-registry.WalletAttestation.1",
             "validityInfo": {
               "signed": 0("2025-06-27T07:40:21Z"),
               "validFrom": 0("2025-06-27T07:40:21Z"),
