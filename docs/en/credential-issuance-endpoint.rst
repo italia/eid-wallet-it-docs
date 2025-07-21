@@ -768,7 +768,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
   * - **proofs**
-    - REQUIRED when the ``proof`` parameter is absent. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. he proofs object MUST contain the following mandatory claims:
+    - REQUIRED when the ``proof`` parameter is absent. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. The proofs object MUST contain the following mandatory claims:
 
       - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
       - **jwt**: an array of JWT, where each jwt is used as proof of possession.
@@ -892,7 +892,7 @@ In the following table are listed HTTP Status Codes and related error codes that
       - The Credential Issuer cannot fulfill the request because the ``proof`` or ``proofs`` parameter in the Credential Request is invalid or absent or or the key proof(s) does not contain the ``c_nonce`` value. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_nonce``
-      - The Credential Issuer cannot fulfill the request because the ``proof`` parameter in the Credential Request uses an invalid nonce. Section 8.3.1 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because the ``proof`` or ``proofs`` parameter in the Credential Request uses an invalid nonce. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_encryption_parameters``
       - The Credential Issuer cannot fulfill the request because the encryption parameters in the Credential Request are invalid or missing. Section 8.3.1 of [`OpenID4VCI`_].
