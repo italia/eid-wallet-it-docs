@@ -362,7 +362,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
   The ``c_nonce`` value in all the jwt proofs is identical and it is not needed to obtain separate nonce values per proof. 
 
 
-**Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST set using a JSON object containing two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer conducts the same checks as already defined in **Step 16**.
+**Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST set using a JSON object containing two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer, in addition to the predefined checks in **Step 16**, must ensure the ``jwk`` attribute in each key proofs is unique.
 
 
 .. code-block:: http
