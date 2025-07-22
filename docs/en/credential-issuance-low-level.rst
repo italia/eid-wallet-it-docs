@@ -39,7 +39,7 @@ In addition, the Credential Issuers MAY support:
 .. note::
     **Standard or Batch Credential Issuance:** 
       
-    The user can configure the Wallet Solution to issue digital credentials in either batch or standard mode and define the prefered batch size.
+    The User can configure the Wallet Solution to issue Digital Credentials in either batch or standard mode and define the prefered batch size.
 
 The entire Issuance flow can be divided into two sub-flows:
 
@@ -97,7 +97,7 @@ The following diagram shows the *Issuance flow*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the “batch_credential_issuance” object in the Credential Issuer metadata. From this object, the Wallet Instance can extract the ``batch_size`` value. 
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the “batch_credential_issuance” object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value. 
 
 .. note::
   **Federation Check:** The Wallet Instance must verify whether the Credential Issuer is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Credential Issuer is represented within the section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
@@ -354,15 +354,15 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
   :language: JSON
 
-**Step 17 (Fresh Digital Credential Keys Generation)**: The Wallet Instance generates N fresh credential key pairs, where the number of key pairs (N) is determined by the value defined in the ``batch_size``.
+**Step 17 (Fresh Digital Credential Keys Generation)**: The Wallet Instance generates N fresh Credential key pairs, where the number of key pairs (N) is determined by the value defined in the ``batch_size``.
 
-**Step 18 (Proofs of Possession of Credentials)**: The Wallet Instance MUST generate N key proofs using provided ``c_nonce`` in **Step 13** and one for each credential in the batch. The number of key proofs (N) is defined by the ``batch_size`` value.
+**Step 18 (Proofs of Possession of Credentials)**: The Wallet Instance MUST generate N key proofs using provided ``c_nonce`` in **Step 13** and one for each Credential in the batch. The number of key proofs (N) is defined by the ``batch_size`` value.
 
 .. note::
   The ``c_nonce`` value in all the jwt proofs is identical and it is not needed to obtain separate nonce values per proof. 
 
 
-**Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST be an object that contains two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer conducts the same checks as already defined in **Step 16**.
+**Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST set using a JSON object containing two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer conducts the same checks as already defined in **Step 16**.
 
 
 .. code-block:: http
@@ -387,7 +387,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 The decoded content of ``jwt`` elements in the ``jwt`` array is similar to what is explained in **Step 16**.
 
 
-**Steps 20-24 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate all the key proofs that are provided within ``proof`` (**Step 15**) or ``proofs`` (**Step 18**) parameter that the new Credentials SHALL be bound to, according to `OpenID4VCI`_ Appendix F1. If all checks succeed, the Credential Issuer returns the issued credential inside the ``credentials`` parameter. The number of elements in the credentials array matches the number of the keys that the Wallet Instance has provided either via the ``proof`` parameter (**Step 16**) or ``proofs`` parameter (**Step 19**). The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential(s):
+**Steps 20-24 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate all the key proofs that are provided within ``proof`` (**Step 15**) or ``proofs`` (**Step 18**) parameter that the new Credentials SHALL be bound to, according to `OpenID4VCI`_ Appendix F1. If all checks succeed, the Credential Issuer returns the issued credential inside the ``credentials`` parameter. The number of elements in the Credentials array matches the number of the keys that the Wallet Instance has provided either via the ``proof`` parameter (**Step 16**) or ``proofs`` parameter (**Step 19**). The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential(s):
 
     1. It MUST check that the PID/(Q)EAA contained in the Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>`.
     2. It MUST check the Credential integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`credential-data-model:Digital Credential Data Model`) and the public key that is identified using the ``kid`` header of the SD-JWT.
@@ -478,7 +478,7 @@ Below is a non-normative example of a successful response containing a batch of 
 
 
 .. note::
-   For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials—any partial failure is treated as a batch failure. 
+   For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued Credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials, any partial failure is treated as a batch failure. 
 
 
 
