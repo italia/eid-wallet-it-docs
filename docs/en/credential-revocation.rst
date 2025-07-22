@@ -282,11 +282,11 @@ Batch Credential Lifecycle Management
 
 When multiple Digital Credentials are issued together in a single batch, their lifecycle remains fully granular:
 
-  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by any authorized entity (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``).
-  * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. the Issuer marks every credential in the batch as revoked and emits a single notification for the entire batch.
+  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by any authorized entity (e.g. the Wallet Instance via Notification Endpoint with ``event=credential_deleted``, a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``).
+  * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. the Issuer marks every Credential in the batch as revoked and emits a single notification for the entire batch.
 
 .. note::
-  As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion likewise removes the entire batch. It is not possible to delete or revoke just one credential—any deletion request using the batch's ``notification_id`` applies to all credentials in that batch.
+  As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion likewise removes the entire batch. It is not possible to delete or revoke just one Credential, any deletion request using the batch's ``notification_id`` applies to all Credentials in that batch.
 
 
 

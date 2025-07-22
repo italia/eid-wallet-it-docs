@@ -770,8 +770,8 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
   * - **proofs**
     - REQUIRED when the ``proof`` parameter is absent. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. The proofs object MUST contain the following mandatory claims:
 
-      - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
-      - **jwt**: an array of JWT, where each jwt is used as proof of possession.
+      - **proof_type**: JSON string denoting the proof type. It MUST be set with`jwt`.
+      - **jwt**: an array of JWT, where each element within the array is used as proof of possession.
     - [`OpenID4VCI`_].
   * - **transaction_id**
     - REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction. It MUST NOT be present in immediate flow
@@ -837,7 +837,7 @@ The Credential Response contains the following parameters:
     - **Description**
     - **Reference**
   * - **credentials**
-    - REQUIRED if ``lead_time`` and ``transaction_id`` are not present, otherwise it MUST NOT be present. It is an array of one or more issued Credentials. The elements of the array MUST be objects. The number of elements in the credentials array matches the number of keys that the Wallet Instance has provided either via the ``proof`` or ``proofs`` parameter of the Credential Request. It contains the following parameters:
+    - REQUIRED if ``lead_time`` and ``transaction_id`` are not present, otherwise it MUST NOT be present. It is an array of one or more issued Credentials. The number of elements in the Credentials array matches the number of keys that the Wallet Instance has provided either via the ``proof`` or ``proofs`` parameter of the Credential Request. The array MUST contain JSON objects, where each object MUST have exactly one member with the key ``credential``. The value of the ``credential`` member MUST be a string containing the encoded Credential, as further described below:
 
           - **credential**: REQUIRED. String containing one issued Digital Credential. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO 18013-5]. This structure SHOULD contain all Namespaces and IssuerSignedItems that are included in the AuthorizedNamespaces of the MobileSecurityObject.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
