@@ -97,7 +97,7 @@ Pulsante di Autenticazione
 """"""""""""""""""""""""""
 
 Il Pulsante di Autenticazione "Entra con IT-Wallet" è un esempio di Pulsante di Ingaggio. 
-Il Pulsante di Autenticazione "Entra con IT-Wallet" funge da Pulsante di Ingaggio, fornendo agli utenti un modo standardizzato per Autenticarsi utilizzando il proprio portafoglio digitale.
+Il Pulsante di Autenticazione "Entra con IT-Wallet" funge da Pulsante di Ingaggio, fornendo agli Utenti un modo standardizzato per Autenticarsi utilizzando il proprio portafoglio digitale.
 
 I Verificatori di Attestati Elettronici DEVONO rendere disponibile il Pulsante di Autenticazione all'interno della Discovery Page delle proprie Soluzioni Tecniche per permettere all'Utente di Autenticarsi ai propri servizi tramite un'Istanza del Wallet. 
 
@@ -111,11 +111,11 @@ Il Pulsante di Autenticazione è caratterizzato dai seguenti requisiti:
 
 - Gli attori che intendono integrare il Pulsante di Autenticazione nella propria Soluzione Tecnica DEVONO garantirne la traduzione in altre lingue, almeno quella inglese; 
 
-- il Pulsante di Autenticazione DEVE mantenere una distanza minima da altri elementi (“quiet zone”) di almeno 24px; 
+- il Pulsante di Autenticazione DEVE mantenere una distanza minima da altri elementi (``quiet zone``) di almeno 24px; 
 
 - Il Pulsante di Autenticazione DEVE riportare la dicitura “Entra con IT-Wallet"; 
 
-- il Pulsante di Autenticazione DOVREBBE essere sempre accompagnato da un link esterno (ad es. “Scopri di più”) che rimanda al sito ufficiale del Sistema IT-Wallet www.wallet.gov.it; 
+- il Pulsante di Autenticazione DOVREBBE essere sempre accompagnato da un link esterno (ad es. “Scopri di più”) che rimanda al sito ufficiale del Sistema IT-Wallet ``www.wallet.gov.it``; 
 
 - Qualora lo spazio a disposizione lo consenta e/o il contesto lo richieda, il Pulsante di Autenticazione DOVREBBE essere accompagnato da un testo descrittivo, ad esempio “IT-Wallet è il Sistema di portafoglio digitale italiano che ti dà pieno controllo sulle tue informazioni, senza che l’ente che le ha rilasciate venga a conoscenza di quando e come vengono usate” oppure “Accedi tramite un’app IT-Wallet, il Sistema di portafoglio digitale italiano che semplifica le interazioni tra cittadini, pubbliche amministrazioni e soggetti privati, nel mondo fisico e in quello digitale.  Con IT-Wallet hai il pieno controllo sulle tue informazioni, condividendole solo quando necessario e in modo sicuro, senza che l’ente che le ha rilasciate venga a conoscenza di quando e come vengono usate.”; 
 
