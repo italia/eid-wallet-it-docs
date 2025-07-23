@@ -671,7 +671,7 @@ The following **elementIdentifiers** MUST be included in a Digital Credential en
      - [ISO 18013-5#7.2]
 
    * - **sub**
-     - *(uuid, OPTIONAL)*. Identifies the subject of the mdoc Digital Credential (the User). The identifier MUST be opaque, MUST NOT correspond to any anagraphic data, and MUST NOT be derived from the User's anagraphic data through pseudonymization. Additionally, different Credentials issued to the same User MUST NOT reuse the same `sub` value.
+     - *(uuid, OPTIONAL)*. Identifies the subject of the mdoc Digital Credential (the User). The identifier MUST be opaque, MUST NOT correspond to any anagraphic data, and MUST NOT be derived from the User's anagraphic data through pseudonymization. Additionally, different Credentials issued to the same User or to different Users MUST NOT use the same `sub` value.
      -
 
    * - **verification**

@@ -243,7 +243,7 @@ Each element of the ``credentials`` array contains at least the following inform
       * **status_methods**: Supported status verification methods (e.g. ``status_list``).
       * **allowed_states**: Allowed Digital Credential states (e.g. ``valid``, ``revoked``, ``suspended``).
   * - **authentication**
-    - REQUIRED. Digital Credential authentication requirements
+    - REQUIRED. Digital Credential authentication requirements.
 
       * **user_auth_required**: REQUIRED. Flag indicating if User authentication is required during the issuance of the Digital Credential.
       * **min_loa**: REQUIRED. Minimum Level of Assurance required for Digital Credential authentication. It MUST include the Level of Assurance of the User authentication and the Wallet Instance requesting the Digital Credential.
@@ -282,9 +282,9 @@ Each element of the ``credentials`` array contains at least the following inform
     - REQUIRED. Array of supported technical formats of Digital Credentials, including:
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc``)
-      * **configuration_id**: Configuration identifier of the credential format. This is formed by concatenating the ``credential_type`` value to the ``format`` (e.g., ``dc_sd_jwt_mDL`` or ``mso_mdoc_mDL``), and is used to uniquely reference the configuration for this credential format.
+      * **configuration_id**: Configuration identifier of the :term:Credential format. This is formed by concatenating the ``credential_type`` value to the ``format`` (e.g., ``dc_sd_jwt_mDL`` or ``mso_mdoc_mDL``), and is used to uniquely reference the configuration for this :term:Credential format.
       * **vct**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{version}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/v1.0/mDL``).
-      * **docType**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``mso_mdoc``. If the credential is:
+      * **docType**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``mso_mdoc``. If the :term:Credential is:
 
         * defined by an ISO standard, it MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g., ``iso.org.18013.5.1.mDL``).
         * deined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.loyaltycard.1.0``).
@@ -325,7 +325,7 @@ The ``wallet_attestation`` Object contains at least the following information:
   * - **description**
     - REQUIRED. Human-readable Digital Credential description.
   * - **aal_values_supported**
-    - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels low, medium and high.
+    - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels ``low``, ``medium`` and ``high``.
   * - **formats**
     - REQUIRED. Array of supported formats for the Wallet Attestation, including:
 

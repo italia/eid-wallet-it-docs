@@ -445,7 +445,7 @@ The JWT payload parameters are described herein:
 .. note::
     **Requesting the Wallet Attestation**
 
-    The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it MUST NOT include the ``claims`` parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
+    The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the ``claims`` parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
 
 Request URI Endpoint Errors
 ----------------------------
@@ -501,7 +501,7 @@ After obtaining the User authorization and consent for the presentation of the D
 .. note::
     **Presenting the Wallet Attestation**
 
-    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the DCQL query. The Wallet Instance MUST include all available disclosures for the Wallet Attestation in the response even if the Relying Party did not request them in the DCQL query. The rational behind this is that the Wallet Attestation is a proof of the Wallet Instance's trustworthiness and capabilities but is not a Digital Credential per se. Therefore, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user.
+    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user.
 
 Where the following parameters are used:
 
