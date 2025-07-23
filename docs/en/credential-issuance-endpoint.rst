@@ -770,7 +770,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
   * - **proofs**
     - REQUIRED when the ``proof`` parameter is absent. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. The proofs object MUST contain the following mandatory claims:
 
-      - **proof_type**: JSON string denoting the proof type. It MUST be set with`jwt`.
+      - **proof_type**: JSON string denoting the proof type. It MUST be set with `jwt`.
       - **jwt**: an array of JWT, where each element within the array is used as proof of possession.
     - [`OpenID4VCI`_].
   * - **transaction_id**

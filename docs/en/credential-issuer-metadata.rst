@@ -120,9 +120,9 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **credential_hash_alg_supported**
     - The supported algorithm used by the Wallet Instance to hash the Digital Credential for which the Status Assertion is requested. It is RECOMMENDED to use *sha-256*. (See `OAUTH-STATUS-ASSERTION`_ Section 11.1.).
   * - **batch_credential_issuance**
-    - Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the credential issuer supports the ``proofs`` parameter in the credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
+    - Object containing information about the Credential Issuer's support for issuance of Credentials in a batch at the Credential Endpoint. The presence of this parameter means that the Credential issuer supports the ``proofs`` parameter in the Credential request so can issue more than one Digital Credential for the same Credential with the same attributes about the Holder in a single request/response. The parameter that MUST be included is:
 
 
-            - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a credential request.
+            - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request.
 
 
