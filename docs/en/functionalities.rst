@@ -236,6 +236,9 @@ To ensure a consistent and seamless Authentication process across all Relying Pa
 
 Relying Parties SHOULD use the Official Resources for design (see IT-Wallet Authentication Model) and development (see iam-proxy-italia). If a Relying Party does not intend to use such open source resources, MAY independently develop the Technical Solutions enabling the Authentication flow.
 
+.. note::
+  The images in this section are to be considered illustrative as they are the subject of interface (UI) evolutions, pending the definition of the branding of the IT-Wallet System. 
+
 Relying Parties MUST implement and provide the following pages as part of the Authentication process:
 
 - **Discovery Page**: lists all the available Authentication methods;
