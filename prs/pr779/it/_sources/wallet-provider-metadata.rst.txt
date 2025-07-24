@@ -29,33 +29,6 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_provider`` contiene i segu
       - OPZIONALE. Elenco dei valori supportati per il contesto di sicurezza certificabile. Questi valori specificano il livello di sicurezza dell'app, secondo i livelli: basso, medio o alto. Valori di Authenticator Assurance Level supportati.
       - Questa specifica.
 
-metadati federation_entity
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. list-table::
-    :class: longtable
-    :widths: 20 60 20
-    :header-rows: 1
-
-    * - **Chiave**
-      - **Valore**
-      - **Riferimento**
-    * - ``organization_name``
-      - OPZIONALE. Un nome leggibile dall'uomo che rappresenta l'organizzazione proprietaria del Fornitore di Wallet.
-      - `OID-FED`_.
-    * - ``homepage_uri``
-      - OPZIONALE. URL di una pagina Web dell'organizzazione proprietaria del Fornitore di Wallet.
-      - `OID-FED`_.
-    * - ``tos_uri``
-      - OPZIONALE. URL che contiene i termini di servizio del Fornitore di Wallet.
-      - `OID-FED`_.
-    * - ``policy_uri``
-      - OPZIONALE. URL della documentazione delle condizioni e delle politiche rilevanti per il Fornitore di Wallet.
-      - `OID-FED`_.
-    * - ``logo_uri``
-      - OPZIONALE. Stringa. Un URL che punta al logo del Fornitore di Wallet. Il file contenente il logo DOVREBBE essere pubblicato in un formato visualizzabile tramite web.
-      - `OID-FED`_.
-
 Di seguito è riportato un esempio non normativo della Entity Configuration per un Fornitore di Wallet.
 
 .. code-block:: javascript

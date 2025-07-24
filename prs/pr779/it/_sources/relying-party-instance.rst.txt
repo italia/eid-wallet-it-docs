@@ -57,7 +57,7 @@ La macchina a stati inizia con l'installazione della App di Verifica (transizion
 
 In questo stato, l'App di Verifica DEVE interagire solo con il Backend della Relying Party per essere registrata (cioè, per verificare l'integrità dell'Istanza, registrare le Cryptographic Hardware Keys e ottenere un Certificato di Accesso).
 
-Quando avviene la revoca dell'App di Verifica (transizione **RPI REV**), l'App di Verifica DEVE tornare da **Unverified** a **Installed**. Questa transizione implica le seguenti operazioni:
+Quando avviene la revoca dell'App di Verifica (transizione **RPI REV**), l'App di Verifica DEVE tornare da **Verified** a **Installed**. Questa transizione implica le seguenti operazioni:
 
 1. Il Certificato di Accesso DEVE essere revocato.
 2. Le Cryptographic Hardware Keys DEVONO essere cancellate.
