@@ -35,7 +35,6 @@ The following diagram depicts the Relying Party Solution High Level Architecture
   :caption: Relying Party Solution Table of Contents
   :maxdepth: 3
 
-  relying-party-requirements.rst
   relying-party-instance.rst
   relying-party-entity-configuration.rst
   relying-party-metadata.rst
