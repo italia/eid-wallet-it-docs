@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. Appendix &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
+    <title>15.3. Template e-Service PDND &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="15.1. Mobile Application Instance" href="mobile-application-instance.html" />
-    <link rel="prev" title="14. Open Source Releases" href="open-source.html" /> 
+    <link rel="next" title="15.4. Test Plans" href="test-plans.html" />
+    <link rel="prev" title="15.2. e-Service PDND" href="e-service-pdnd.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -144,10 +144,10 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Appendix</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">15. Appendix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">15.1. Mobile Application Instance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15.3. Template e-Service PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test-plans.html">15.4. Test Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.5. Credential Issuer PDND OpenAPI Specification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.6. Overview</a></li>
@@ -168,74 +168,123 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="appendix">
-<h1><span class="section-number">15. </span>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">¶</a></h1>
+  <section id="template-e-service-pdnd">
+<h1><span class="section-number">15.3. </span>Template e-Service PDND<a class="headerlink" href="#template-e-service-pdnd" title="Link to this heading">¶</a></h1>
+<p>The PDND provides a specialized tool that enhances API co-design processes by optimizing e-service publication and reuse. This functionality is thoroughly defined and regulated in the document below.</p>
 <blockquote>
-<div><div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Appendix Table of Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="mobile-application-instance.html">15.1. Mobile Application Instance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization">15.1.1. Mobile Application Instance Initialization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request">15.1.1.1. Mobile Application Nonce Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-response">15.1.1.2. Mobile Application Nonce Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-request">15.1.1.3. Mobile Application Instance Initialization Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-response">15.1.1.4. Mobile Application Instance Initialization Response</a></li>
+<div><ul class="simple">
+<li><p>&quot;Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>).</p></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding">15.1.2. Mobile Application Key Binding</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-request">15.1.2.1. Mobile Application Key Binding Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-response">15.1.2.2. Mobile Application Key Binding Response</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#requirements-and-security-patterns">15.2.1. Requirements and Security Patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#pdnd-voucher-issuance">15.2.2. PDND Voucher Issuance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-voucher-for-e-service">15.2.2.1. PDND Voucher for e-Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-voucher-for-interoperability-api">15.2.2.2. PDND Voucher for Interoperability API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-authorization-server-endpoint">15.2.2.3. PDND Authorization Server Endpoint</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#key-retrieval">15.2.3. Key Retrieval</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-authorization-server-keys">15.2.3.1. PDND Authorization Server Keys</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-authorization-server-well-known-endpoint">15.2.3.2. PDND Authorization Server .well-known Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#participants-keys">15.2.3.3. Participants' Keys</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#pdnd-interoperability-api-endpoint">15.2.3.4. PDND Interoperability API Endpoint</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#e-service-usage">15.2.4. e-Service Usage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#e-service-usage-prerequisites">15.2.4.1. e-Service Usage Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#e-service-usage-flow">15.2.4.2. e-Service Usage Flow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#e-service-endpoint">15.2.4.3. e-Service Endpoint</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html#pdnd-template-e-service-definition-and-guidelines">15.3.1. PDND Template e-service definition and guidelines</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-template.html#templates-e-service-management">15.3.1.1. Templates e-service Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-template.html#version-management">15.3.1.2. Version Management</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans.html">15.4. Test Plans</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#structure-of-the-test-matrix">15.4.1. Structure of the Test Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#signed-statements-evaluation-test-matrix">15.4.2. Signed Statements Evaluation Test Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#trust-evaluation-test-matrix">15.4.3. Trust Evaluation Test Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#wallet-solution-test-matrix">15.4.4. Wallet Solution Test Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#credential-issuance-test-matrix">15.4.5. Credential Issuance Test Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#credential-presentation-test-matrix">15.4.6. Credential Presentation Test Matrix</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="test-plans.html#remote-credential-presentation-test-matrix">15.4.6.1. Remote Credential Presentation Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans.html#proximity-credential-presentation-test-matrix">15.4.6.2. Proximity Credential Presentation Test Matrix</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
 </div></blockquote>
+<p>The template e-service concept is central to this functionality, it serves as a standardized blueprint containing all necessary technical and descriptive metadata for an e-service. API Co-design Managers, who can be either Providers or Consumers within the PDND ecosystem, MAY create and maintain these templates.</p>
+<p>Once a template e-service is published, it is accessible through the PDND Template Catalog, a centralized repository that facilitates discovery and reuse. This catalog enables any authorized PDND Participant to browse available templates and instantiate new e-services based on existing designs.</p>
+<section id="pdnd-template-e-service-definition-and-guidelines">
+<h2><span class="section-number">15.3.1. </span>PDND Template e-service definition and guidelines<a class="headerlink" href="#pdnd-template-e-service-definition-and-guidelines" title="Link to this heading">¶</a></h2>
+<p>The PDND infrastructure supports the lifecycle management of Template E-Services, similar to that of traditional e-services. The lifecycle states include: <strong>Draft</strong>, <strong>Active</strong>, <strong>Suspended</strong>, and <strong>Deprecated</strong>. As with traditional e-services, PDND enforces role-based access control to govern status transitions.</p>
+<section id="templates-e-service-management">
+<h3><span class="section-number">15.3.1.1. </span>Templates e-service Management<a class="headerlink" href="#templates-e-service-management" title="Link to this heading">¶</a></h3>
+<section id="template-e-service-creation">
+<h4><span class="section-number">15.3.1.1.1. </span>Template E-Service Creation<a class="headerlink" href="#template-e-service-creation" title="Link to this heading">¶</a></h4>
+<p>Participants are enabled to create Templates E-Service via a guided wizard accessible through the PDND Web GUI (APIs will be available in the future). The creation workflow closely mirrors that of standard e-service creation, with the following distinctions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>An additional field identifies the intended recipient of the template.</p></li>
+<li><p>The &quot;Audience&quot; field is omitted.</p></li>
+<li><p>Thresholds are optional and serve as recommendations for Participants implementing the template.</p></li>
+</ul>
+</div></blockquote>
+<p>Participants are prohibited from creating multiple templates with the same name: template names MUST be unique per participant. Upon creation, a template is initially set to the Draft state. Templates can then be published to the Template Catalogue, thereby making them accessible to all Participants.</p>
+</section>
+<section id="template-e-service-modification">
+<h4><span class="section-number">15.3.1.1.2. </span>Template E-Service Modification<a class="headerlink" href="#template-e-service-modification" title="Link to this heading">¶</a></h4>
+<p>Participants who have created a template may edit it. The scope of editable fields depends on the template’s lifecycle state:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If the template is in Draft state, all fields are editable.</p></li>
+<li><p>For templates in other states, only a restricted subset of fields can be modified directly.</p></li>
+<li><p>Fields that cannot be modified in published templates require the creation of a new template version to apply changes.</p></li>
+</ul>
+</div></blockquote>
+<p>Template versioning operates similarly to that of e-services, given that changes to the blueprint can impact instantiated services and then the Participants who consume that instance.</p>
+<p>The following fields may be edited without triggering a new template version:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Name</p></li>
+<li><p>Intended Recipient</p></li>
+<li><p>Description</p></li>
+<li><p>Voucher Time Limit</p></li>
+<li><p>Documentation (excluding the OpenAPI specification)</p></li>
+<li><p>Attributes</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="template-e-service-suspension">
+<h4><span class="section-number">15.3.1.1.3. </span>Template E-Service Suspension<a class="headerlink" href="#template-e-service-suspension" title="Link to this heading">¶</a></h4>
+<p>Templates, like e-services, can be Suspended. When suspended:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The template is removed from the templates public catalogue.</p></li>
+<li><p>Instantiation of new instances from the suspended template is disabled.</p></li>
+<li><p>Previously instantiated instances remain unaffected.</p></li>
+<li><p>Templates may be reactivated at any time.</p></li>
+<li><p>Templates cannot be deleted.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="template-e-service-instantiation">
+<h4><span class="section-number">15.3.1.1.4. </span>Template E-Service Instantiation<a class="headerlink" href="#template-e-service-instantiation" title="Link to this heading">¶</a></h4>
+<p>Participants may instantiate a Template E-Service by browsing the Template Catalogue and selecting a template. This process generates a new e-service.</p>
+<p>Instantiation constraints include:</p>
+<blockquote>
+<div><ul>
+<li><p>Only templates in the Active state are eligible for instantiation.</p></li>
+<li><p>The instantiation is facilitated through a guided wizard in the PDND Web GUI.</p></li>
+<li><p>Due to the standardization objective of templates, most fields are pre-populated and immutable during instantiation.</p></li>
+<li><p>The following information cannot be modified during instantiation:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Documentation upload</p></li>
+<li><p>Token expiration time</p></li>
+<li><p>Name, description, and attributes</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>Instead, the following fields must be specified during instantiation:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Audience</p></li>
+<li><p>Thresholds</p></li>
+<li><p>Automatic/Manual Approval Policy</p></li>
+</ul>
+</div></blockquote>
+<p>Additionally, although the OpenAPI specification is fixed, the following metadata fields can be provided so that PDND can automatically update the YAML specification:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Contacts (name, email, URL, Terms and Conditions URL)</p></li>
+<li><p>Server URLs</p></li>
+</ul>
+</div></blockquote>
+<p>Each instantiated e-service maintains an independent lifecycle analogous to standard e-services.</p>
+</section>
+</section>
+<section id="version-management">
+<h3><span class="section-number">15.3.1.2. </span>Version Management<a class="headerlink" href="#version-management" title="Link to this heading">¶</a></h3>
+<p>Template versioning follows a controlled process:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Publishing a new template version sets it to Active.</p></li>
+<li><p>The previously Active version is automatically transitioned to Deprecated.</p></li>
+<li><p>Only one Active version per template is allowed at any time.</p></li>
+<li><p>Templates may also have a single Draft version coexisting with the Active version.</p></li>
+</ul>
+</div></blockquote>
+<p>Instances derived from templates maintain independent versioning since Participants may update instance-specific fields (e.g., server URLs) multiple times, while the instance remains linked to the originating template version.</p>
+<p>Consequently, template versions and instance versions are independent and not directly correlated.</p>
+<p>Participants instantiating a template may then update either the specific instance or, if available, upgrade to a newer template version.</p>
+</section>
+</section>
 </section>
 
 
@@ -244,6 +293,33 @@
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">15.3. Template e-Service PDND</a><ul>
+<li><a class="reference internal" href="#pdnd-template-e-service-definition-and-guidelines">15.3.1. PDND Template e-service definition and guidelines</a><ul>
+<li><a class="reference internal" href="#templates-e-service-management">15.3.1.1. Templates e-service Management</a><ul>
+<li><a class="reference internal" href="#template-e-service-creation">15.3.1.1.1. Template E-Service Creation</a></li>
+<li><a class="reference internal" href="#template-e-service-modification">15.3.1.1.2. Template E-Service Modification</a></li>
+<li><a class="reference internal" href="#template-e-service-suspension">15.3.1.1.3. Template E-Service Suspension</a></li>
+<li><a class="reference internal" href="#template-e-service-instantiation">15.3.1.1.4. Template E-Service Instantiation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-management">15.3.1.2. Version Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -251,14 +327,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="open-source.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">14. </span>Open Source Releases</span></a>
+                <a href="e-service-pdnd.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15.2. </span>e-Service PDND</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="mobile-application-instance.html"><span><span class="section-number">15.1. </span>Mobile Application Instance</span><span class="icon">&gt;</span></a>
+                    <a href="test-plans.html"><span><span class="section-number">15.4. </span>Test Plans</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

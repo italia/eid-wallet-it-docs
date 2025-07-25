@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15.3. Test Plans &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
+    <title>15.4. Test Plans &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="15.4. Credential Issuer PDND OpenAPI Specification" href="appendix-oas-pdnd-issuer.html" />
-    <link rel="prev" title="15.2. e-Service PDND" href="e-service-pdnd.html" /> 
+    <link rel="next" title="15.5. Credential Issuer PDND OpenAPI Specification" href="appendix-oas-pdnd-issuer.html" />
+    <link rel="prev" title="15.3. Template e-Service PDND" href="e-service-pdnd-template.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -147,13 +147,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="appendix.html">15. Appendix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">15.1. Mobile Application Instance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">15.3. Test Plans</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Credential Issuer PDND OpenAPI Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.5. Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-parameters">15.6. Template Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-instantiation">15.7. Template Instantiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#authentic-source-pdnd-openapi-specification">15.8. Authentic Source PDND OpenAPI Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.9. Wallet Provider PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15.4. Test Plans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.5. Credential Issuer PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.6. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-parameters">15.7. Template Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-instantiation">15.8. Template Instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#authentic-source-pdnd-openapi-specification">15.9. Authentic Source PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.10. Wallet Provider PDND OpenAPI Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -168,7 +169,7 @@
           <div class="body" role="main">
             
   <section id="test-plans">
-<h1><span class="section-number">15.3. </span>Test Plans<a class="headerlink" href="#test-plans" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">15.4. </span>Test Plans<a class="headerlink" href="#test-plans" title="Link to this heading">¶</a></h1>
 <p>The purpose of the test plans is to support implementers, auditors, and conformance test environments in validating the behavior of the Wallet Solutions, Relying Parties and Credential Issuers under various operational and security scenarios.</p>
 <p>All test cases are derived from normative rules defined in the above specifications, with no assumptions or extensions.</p>
 <div class="admonition note">
@@ -176,7 +177,7 @@
 <p>Please note that the test plans matrix may be subject to future changes.</p>
 </div>
 <section id="structure-of-the-test-matrix">
-<h2><span class="section-number">15.3.1. </span>Structure of the Test Matrix<a class="headerlink" href="#structure-of-the-test-matrix" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.1. </span>Structure of the Test Matrix<a class="headerlink" href="#structure-of-the-test-matrix" title="Link to this heading">¶</a></h2>
 <p>Each test case is identified by a unique test ID (e.g., WS-001) and categorized using the functional domains defined below. Other category identifiers can be used as well.</p>
 <ul class="simple">
 <li><p><strong>Discovery</strong></p></li>
@@ -201,7 +202,7 @@
 </ul>
 </section>
 <section id="signed-statements-evaluation-test-matrix">
-<h2><span class="section-number">15.3.2. </span>Signed Statements Evaluation Test Matrix<a class="headerlink" href="#signed-statements-evaluation-test-matrix" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.2. </span>Signed Statements Evaluation Test Matrix<a class="headerlink" href="#signed-statements-evaluation-test-matrix" title="Link to this heading">¶</a></h2>
 <p>This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or credentials.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -297,7 +298,7 @@
 </table>
 </section>
 <section id="trust-evaluation-test-matrix">
-<h2><span class="section-number">15.3.3. </span>Trust Evaluation Test Matrix<a class="headerlink" href="#trust-evaluation-test-matrix" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.3. </span>Trust Evaluation Test Matrix<a class="headerlink" href="#trust-evaluation-test-matrix" title="Link to this heading">¶</a></h2>
 <p>This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -358,7 +359,7 @@
 </table>
 </section>
 <section id="wallet-solution-test-matrix">
-<h2><span class="section-number">15.3.4. </span>Wallet Solution Test Matrix<a class="headerlink" href="#wallet-solution-test-matrix" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.4. </span>Wallet Solution Test Matrix<a class="headerlink" href="#wallet-solution-test-matrix" title="Link to this heading">¶</a></h2>
 <p>This section provides the set of test cases for verifying conformance of a Wallet Solution implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the mandatory requirements (MUST statements) extracted from the following documents:</p>
 <ul class="simple">
@@ -686,7 +687,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 </table>
 </section>
 <section id="credential-issuance-test-matrix">
-<h2><span class="section-number">15.3.5. </span>Credential Issuance Test Matrix<a class="headerlink" href="#credential-issuance-test-matrix" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.5. </span>Credential Issuance Test Matrix<a class="headerlink" href="#credential-issuance-test-matrix" title="Link to this heading">¶</a></h2>
 <p>This section provides the set of test cases for verifying conformance of a Credential Issuance implementations to the technical rules defined in the IT-Wallet ecosystem.
 Tests related to Credential Issuer are related to the issuance of Credential of Public Interest, as published within the Credential Catalogue.</p>
 <div class="admonition note">
@@ -1265,10 +1266,10 @@ Tests related to Credential Issuer are related to the issuance of Credential of 
 </table>
 </section>
 <section id="credential-presentation-test-matrix">
-<h2><span class="section-number">15.3.6. </span>Credential Presentation Test Matrix<a class="headerlink" href="#credential-presentation-test-matrix" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.6. </span>Credential Presentation Test Matrix<a class="headerlink" href="#credential-presentation-test-matrix" title="Link to this heading">¶</a></h2>
 <p>This section provides the set of test cases for verifying conformance of a Credential Verifiers implementations to the technical rules defined in the IT-Wallet ecosystem.</p>
 <section id="remote-credential-presentation-test-matrix">
-<h3><span class="section-number">15.3.6.1. </span>Remote Credential Presentation Test Matrix<a class="headerlink" href="#remote-credential-presentation-test-matrix" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">15.4.6.1. </span>Remote Credential Presentation Test Matrix<a class="headerlink" href="#remote-credential-presentation-test-matrix" title="Link to this heading">¶</a></h3>
 <p>This section defines the test cases about the remote presentation flow.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1673,7 +1674,7 @@ Tests related to Credential Issuer are related to the issuance of Credential of 
 </table>
 </section>
 <section id="proximity-credential-presentation-test-matrix">
-<h3><span class="section-number">15.3.6.2. </span>Proximity Credential Presentation Test Matrix<a class="headerlink" href="#proximity-credential-presentation-test-matrix" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">15.4.6.2. </span>Proximity Credential Presentation Test Matrix<a class="headerlink" href="#proximity-credential-presentation-test-matrix" title="Link to this heading">¶</a></h3>
 <p>This section defines the general test cases about the proximity presentation flow.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1814,15 +1815,15 @@ Tests related to Credential Issuer are related to the issuance of Credential of 
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">15.3. Test Plans</a><ul>
-<li><a class="reference internal" href="#structure-of-the-test-matrix">15.3.1. Structure of the Test Matrix</a></li>
-<li><a class="reference internal" href="#signed-statements-evaluation-test-matrix">15.3.2. Signed Statements Evaluation Test Matrix</a></li>
-<li><a class="reference internal" href="#trust-evaluation-test-matrix">15.3.3. Trust Evaluation Test Matrix</a></li>
-<li><a class="reference internal" href="#wallet-solution-test-matrix">15.3.4. Wallet Solution Test Matrix</a></li>
-<li><a class="reference internal" href="#credential-issuance-test-matrix">15.3.5. Credential Issuance Test Matrix</a></li>
-<li><a class="reference internal" href="#credential-presentation-test-matrix">15.3.6. Credential Presentation Test Matrix</a><ul>
-<li><a class="reference internal" href="#remote-credential-presentation-test-matrix">15.3.6.1. Remote Credential Presentation Test Matrix</a></li>
-<li><a class="reference internal" href="#proximity-credential-presentation-test-matrix">15.3.6.2. Proximity Credential Presentation Test Matrix</a></li>
+<li><a class="reference internal" href="#">15.4. Test Plans</a><ul>
+<li><a class="reference internal" href="#structure-of-the-test-matrix">15.4.1. Structure of the Test Matrix</a></li>
+<li><a class="reference internal" href="#signed-statements-evaluation-test-matrix">15.4.2. Signed Statements Evaluation Test Matrix</a></li>
+<li><a class="reference internal" href="#trust-evaluation-test-matrix">15.4.3. Trust Evaluation Test Matrix</a></li>
+<li><a class="reference internal" href="#wallet-solution-test-matrix">15.4.4. Wallet Solution Test Matrix</a></li>
+<li><a class="reference internal" href="#credential-issuance-test-matrix">15.4.5. Credential Issuance Test Matrix</a></li>
+<li><a class="reference internal" href="#credential-presentation-test-matrix">15.4.6. Credential Presentation Test Matrix</a><ul>
+<li><a class="reference internal" href="#remote-credential-presentation-test-matrix">15.4.6.1. Remote Credential Presentation Test Matrix</a></li>
+<li><a class="reference internal" href="#proximity-credential-presentation-test-matrix">15.4.6.2. Proximity Credential Presentation Test Matrix</a></li>
 </ul>
 </li>
 </ul>
@@ -1839,14 +1840,14 @@ Tests related to Credential Issuer are related to the issuance of Credential of 
         <div class="button_nav">
             <div class="left">
                 
-                <a href="e-service-pdnd.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">15.2. </span>e-Service PDND</span></a>
+                <a href="e-service-pdnd-template.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15.3. </span>Template e-Service PDND</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="appendix-oas-pdnd-issuer.html"><span><span class="section-number">15.4. </span>Credential Issuer PDND OpenAPI Specification</span><span class="icon">&gt;</span></a>
+                    <a href="appendix-oas-pdnd-issuer.html"><span><span class="section-number">15.5. </span>Credential Issuer PDND OpenAPI Specification</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
