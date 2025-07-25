@@ -184,14 +184,20 @@
 </ul>
 <figure class="align-default" id="id1">
 <span id="fig-wallet-instance-revoc-entities"></span><p class="plantuml">
-<object data="_images/plantuml-dbaa8289530580660685cc3a39ac7bbc123fb04d.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-dbaa8289530580660685cc3a39ac7bbc123fb04d.png"><img src="_images/plantuml-dbaa8289530580660685cc3a39ac7bbc123fb04d.png" alt="La figura illustra le Entità coinvolte nel processo di revoca dell'Istanza del Wallet." style="width: 99.0%"/></a>
+<object data="_images/plantuml-2be338be4b1ac7518525f1d4bea5fa56b0d15466.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-2be338be4b1ac7518525f1d4bea5fa56b0d15466.png"><img src="_images/plantuml-2be338be4b1ac7518525f1d4bea5fa56b0d15466.png" alt="La figura illustra le Entità coinvolte nel processo di revoca dell'Istanza del Wallet." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLDHYnD137xVNn7xuXq8ljoZo7djWXNKqfw8SB1CTs8RtCxKcSpMLVpl9kDsJpk-MIZRfCdtVVcIlOri0gT31xLZOi88v7hVzMZb1_0UuQFfEcHOEYbrBKB0thU6oJiu1jzYZDKJScsNBCAB-Stp-KqpzuUZT-ZuPLMzNYxgPdDVh-ltzvzMzTLrLQqmHE-kKiJm36OVv36JPnOmW3yvShlC_E0kk6VIVEUJioOCLwVyNnE7o7YG_h5sa-FPDVoeG3wJb7CzZLZISOakAVs-DSxiC8BgUnfXGJjYqy4ye1KSCbqK7V_45ZzwiZBL6Ner9ixGOnmBKuspSC8j26LFBIh3pwfw9329zqhUDj6daDM_EgTWarC5XneBXZdGDh74xBEhonWJXinu62VLT6ywihe0KSH91KpiJVtjjm8Vw3lQPklje0Acp7GyPmsRTDH1eWy3t4brPdkJBBLY7uoDF0Z97pDI5gOJB1U5Srbr_4krbcaykXul3QogDNRZbLqig5m-h1_FUerVXOiLGX6AtlAIjFbByQge20NGmVvNH7a0artlFDFdGTUjv_hWB1hUZzJ5raeDO_jIyZjTJilK4rDMVulEfaFt2m00">Entità coinvolte nel processo di revoca dell'Istanza del Wallet.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1">Entità coinvolte nel processo di revoca dell'Istanza del Wallet.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
+<p>Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata:</p>
+<ul class="simple">
+<li><p>Inviando un avviso presso un recapito verificato (ad esempio recapito e-mail o telefonico) e se possibile anche presso l'Istanza del Wallet revocata.</p></li>
+<li><p>Inviando la notifica entro massimo 24 ore.</p></li>
+<li><p>Includendo una spiegazione chiara e semplice dei motivi della revoca, con eventuali istruzioni per riattivare l'Istanza del Wallet.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <ul class="simple">
@@ -318,7 +324,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Revoca dell'
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 23/06/2025.
+      Ultimo aggiornamento 25/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

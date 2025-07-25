@@ -5,7 +5,7 @@ Overview
 --------
 
 The template e-service functionality is employed to standardize data transmission from Authentic Sources to Credential Issuers.
-The template e-service is published within PDND by the Credential Issuer and is accessible through the PDND Template Catalogue.
+The template e-service SHOULD be published within PDND by the Credential Issuer and is accessible through the PDND Template Catalogue.
 
 Template Parameters
 -------------------
@@ -13,7 +13,7 @@ Template Parameters
 The template e-service **MUST** adhere to the following specifications:
 
     - **Name**: IT Wallet - Authentic Source - <``Credential name``>
-    - **Intended Recipient**: IT Wallet - Authentic Source - <``Authentic Source name``>
+    - **Intended Recipients**: IT Wallet - Authentic Source - <``Authentic Source domain``>
     - **Description**: Provide the Credential Issuer with a new credential <``Credential name``>
     - **Technology**: REST
     - **Data variation via Signal Hub**: True
@@ -26,7 +26,7 @@ The template e-service **MUST** adhere to the following specifications:
 Template Instantiation
 ----------------------
 
-Each Authentic Source **MUST** instantiate the *IT Wallet - Authentic Source* template e-service in PDND.  
+Each Authentic Source **SHOULD** instantiate the *IT Wallet - Authentic Source* template e-service in PDND.  
 The instantiation process will result in a new e-service that **MUST** satisfy the following requirements:
 
     - **Signal Hub**: True

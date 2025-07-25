@@ -57,7 +57,7 @@ The state machine begins with the Relying Party Instance installation (**RPI INS
 
 While in this state, the Relying Party Instance MUST interact only with the Relying Party Backend to be registered (i.e., to verify the Instance integrity, register Hardware Cryptographic Keys and obtain an Access Certificate).
 
-When the revocation of the Relying Party Instance occurs (**RPI REV** transition), the Relying Party Instance MUST get back from **Unverified** to **Installed**. This transition implies the following operations:
+When the revocation of the Relying Party Instance occurs (**RPI REV** transition), the Relying Party Instance MUST get back from **Verified** to **Installed**. This transition implies the following operations:
 
 1. The Access Certificate MUST be revoked.
 2. The Hardware Cryptographic Keys MUST be deleted.

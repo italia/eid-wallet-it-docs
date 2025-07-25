@@ -183,14 +183,20 @@
 </ul>
 <figure class="align-default" id="id1">
 <span id="fig-wallet-instance-revoc-entities"></span><p class="plantuml">
-<object data="_images/plantuml-dbaa8289530580660685cc3a39ac7bbc123fb04d.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-dbaa8289530580660685cc3a39ac7bbc123fb04d.png"><img src="_images/plantuml-dbaa8289530580660685cc3a39ac7bbc123fb04d.png" alt="The figure illustrates the Entities involved in the Wallet Instance revocation process." style="width: 99.0%"/></a>
+<object data="_images/plantuml-2be338be4b1ac7518525f1d4bea5fa56b0d15466.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-2be338be4b1ac7518525f1d4bea5fa56b0d15466.png"><img src="_images/plantuml-2be338be4b1ac7518525f1d4bea5fa56b0d15466.png" alt="The figure illustrates the Entities involved in the Wallet Instance revocation process." style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fLDHYnD137xVNn7xuXq8ljoZo7djWXNKqfw8SB1CTs8RtCxKcSpMLVpl9kDsJpk-MIZRfCdtVVcIlOri0gT31xLZOi88v7hVzMZb1_0UuQFfEcHOEYbrBKB0thU6oJiu1jzYZDKJScsNBCAB-Stp-KqpzuUZT-ZuPLMzNYxgPdDVh-ltzvzMzTLrLQqmHE-kKiJm36OVv36JPnOmW3yvShlC_E0kk6VIVEUJioOCLwVyNnE7o7YG_h5sa-FPDVoeG3wJb7CzZLZISOakAVs-DSxiC8BgUnfXGJjYqy4ye1KSCbqK7V_45ZzwiZBL6Ner9ixGOnmBKuspSC8j26LFBIh3pwfw9329zqhUDj6daDM_EgTWarC5XneBXZdGDh74xBEhonWJXinu62VLT6ywihe0KSH91KpiJVtjjm8Vw3lQPklje0Acp7GyPmsRTDH1eWy3t4brPdkJBBLY7uoDF0Z97pDI5gOJB1U5Srbr_4krbcaykXul3QogDNRZbLqig5m-h1_FUerVXOiLGX6AtlAIjFbByQge20NGmVvNH7a0artlFDFdGTUjv_hWB1hUZzJ5raeDO_jIyZjTJilK4rDMVulEfaFt2m00">Entities involved in the Wallet Instance revocation process.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1">Entities involved in the Wallet Instance revocation process.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
+<p>Regardless of who triggered the revocation, the Wallet Provider has to inform Users when their Wallet Unit is revoked, according to the following requirements:</p>
+<ul class="simple">
+<li><p>Out-of-band alerts (e.g., email or SMS) MUST be sent as the primary notification mechanism alongside the Wallet Unit itself.</p></li>
+<li><p>The alert MUST occur within 24 hours from the effective Wallet Unit revocation.</p></li>
+<li><p>A user-friendly explanation about the reason of the revocation MUST be provided to the User alongside with the instruction to reactive the Wallet Unit if possible.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -317,7 +323,7 @@ Below is a non-normative example of a Wallet Instance Revocation Response.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 23/06/2025.
+      Last updated on 25/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
