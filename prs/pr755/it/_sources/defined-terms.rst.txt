@@ -54,6 +54,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
 
     **Fornitore di Attestati Elettronici**
+    **Credential Issuer**
       Soggetto pubblico o privato che fornisce Attestati Elettronici agli Utenti (può essere un fornitore di PID oppure un fornitore di (Q)EAA).
       ARF 1.10 utilizza definizioni similari; IT-Wallet aggrega sotto questo termine sia il fornitore di PID che di (Q)EAA .
 
@@ -117,7 +118,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Grado di sicurezza della verifica dell'identità e nella presentazione degli Attestati Elettronici.
       Non presente in ARF 1.10.
 
-    **Metadato**
+    **Metadata**
       Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
       Conforme con ARF 1.10.
 
@@ -180,10 +181,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
 
     **Fornitore di Attestati Elettronici di Attributi Qualificati**
+    **QEAA Provider**
       Entità Organizzativa che fornisce QEAAs.
       Conforme con ARF 1.10.
 
     **Fornitore di Attestati Elettronici di Attributi**
+    **EAA Provider**
       Entità Organizzativa che fornisce EAAs.
       Conforme con ARF 1.10.
 

@@ -210,7 +210,7 @@
 <h3><span class="section-number">5.3.3.1.1. </span>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h3>
 <p>The state machine begins with the Relying Party Instance installation (<strong>RPI INST</strong> transition), where Users download and install a Relying Party Instance using the official app store of their device's operating system, leading to the <strong>Installed</strong> state.</p>
 <p>While in this state, the Relying Party Instance MUST interact only with the Relying Party Backend to be registered (i.e., to verify the Instance integrity, register Hardware Cryptographic Keys and obtain an Access Certificate).</p>
-<p>When the revocation of the Relying Party Instance occurs (<strong>RPI REV</strong> transition), the Relying Party Instance MUST get back from <strong>Unverified</strong> to <strong>Installed</strong>. This transition implies the following operations:</p>
+<p>When the revocation of the Relying Party Instance occurs (<strong>RPI REV</strong> transition), the Relying Party Instance MUST get back from <strong>Verified</strong> to <strong>Installed</strong>. This transition implies the following operations:</p>
 <ol class="arabic simple">
 <li><p>The Access Certificate MUST be revoked.</p></li>
 <li><p>The Hardware Cryptographic Keys MUST be deleted.</p></li>
@@ -443,7 +443,7 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 18/06/2025.
+      Last updated on 25/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

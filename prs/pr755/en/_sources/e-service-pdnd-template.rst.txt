@@ -4,11 +4,11 @@
 Template e-Service PDND
 =======================
 
-To enhance the co-design process of APIs, the PDND provides a specialized tool aimed at optimizing the publication and the reuse of e-services. This functionality is comprehensively defined and regulated within the document below:
+The PDND provides a specialized tool that enhances API co-design processes by optimizing e-service publication and reuse. This functionality is thoroughly defined and regulated in the document below.
 
     - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati" (`PDND`_).
 
-Central to this functionality is the concept of the template e-service, which serves as a standardized blueprint encapsulating all the necessary technical and descriptive metadata associated with an e-service. Such templates can be created and maintained by any Participants, referred to as API Co-design Managers and these can be either Providers or Consumers within the PDND ecosystem.
+The template e-service concept is central to this functionality, it serves as a standardized blueprint containing all necessary technical and descriptive metadata for an e-service. API Co-design Managers, who can be either Providers or Consumers within the PDND ecosystem, MAY create and maintain these templates.
 
 Once a template e-service is published, it is accessible through the PDND Template Catalog, a centralized repository that facilitates discovery and reuse. This catalog enables any authorized PDND Participant to browse available templates and instantiate new e-services based on existing designs.
 

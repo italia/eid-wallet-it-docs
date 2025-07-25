@@ -211,7 +211,7 @@
 <h3><span class="section-number">5.3.3.1.1. </span>Transizione a Installed<a class="headerlink" href="#transizione-a-installed" title="Link to this heading">¶</a></h3>
 <p>La macchina a stati inizia con l'installazione della App di Verifica (transizione <strong>RPI INST</strong>), dove gli Utenti scaricano e installano una App di Verifica utilizzando l'app store ufficiale del sistema operativo del loro dispositivo, portando allo stato <strong>Installed</strong>.</p>
 <p>In questo stato, l'App di Verifica DEVE interagire solo con il Backend della Relying Party per essere registrata (cioè, per verificare l'integrità dell'Istanza, registrare le Cryptographic Hardware Keys e ottenere un Certificato di Accesso).</p>
-<p>Quando avviene la revoca dell'App di Verifica (transizione <strong>RPI REV</strong>), l'App di Verifica DEVE tornare da <strong>Unverified</strong> a <strong>Installed</strong>. Questa transizione implica le seguenti operazioni:</p>
+<p>Quando avviene la revoca dell'App di Verifica (transizione <strong>RPI REV</strong>), l'App di Verifica DEVE tornare da <strong>Verified</strong> a <strong>Installed</strong>. Questa transizione implica le seguenti operazioni:</p>
 <ol class="arabic simple">
 <li><p>Il Certificato di Accesso DEVE essere revocato.</p></li>
 <li><p>Le Cryptographic Hardware Keys DEVONO essere cancellate.</p></li>
@@ -444,7 +444,7 @@ Di conseguenza, la revoca dell'App di Verifica Mobile DEVE essere legata alla va
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 18/06/2025.
+      Ultimo aggiornamento 25/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
