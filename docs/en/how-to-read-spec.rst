@@ -11,11 +11,14 @@ The specification is organized into the following major sections:
 **Section** :ref:`introduction:Introduction`: 
   Establishes scope, and normative language for the IT-Wallet ecosystem.
 
-**Section** :ref:`design:Design Principles`: 
-  Provides design principles, and brand identity requirements for the IT-Wallet ecosystem.
+**Section** :ref:`brand-identity:Brand Identity`: 
+  Provides the IT-Wallet Brand Identity requirements, guidance on the naming convention and on the application of the visual elements that identify the ecosystem.
 
 **Section** :ref:`architecture-overview:Architecture Overview`:
-  Provides high-level system functionalities and guidance for navigating the specification based on implementation requirements.
+  Provides high-level view on the Architecture in terms of governance and operational processes enabled.
+
+**Section** ref:`functionalities:User Experience Design`: 
+  Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
 
 **Section** :ref:`trust:The Infrastructure of Trust`:
   Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.
@@ -35,8 +38,8 @@ The specification is organized into the following major sections:
 **Section** :ref:`algorithms:Cryptographic Algorithms`, :ref:`security-privacy-considerations:Security and Privacy Considerations`, and :ref:`log-retention-policy:General Log Retention Policies` (**Implementation Support**): 
   Cryptographic requirements, security and privacy considerations, and log retention policies essential for compliant implementations.
 
-**Section** :ref:`defined-terms-and-references:Defined Terms and References`, :ref:`contribute:How to contribute`, and :ref:`open-source:Open Source Releases` (**Terminology and References**):
-  Comprehensive terminology, normative references, contribution guidelines.
+**Section** :ref:`defined-terms-and-references:Defined Terms and References`, :ref:`official-resources:Official Resources`, :ref:`contribute:How to contribute`, and :ref:`open-source:Open Source Releases` (**Terminology and References**):
+  Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.
 
 **Section** :ref:`appendix:Appendix`: 
   Provides supplementary technical details, implementation patterns, and testing frameworks including mobile application instance management, national platform integration specifications, and comprehensive test matrices for ecosystem validation.
@@ -45,7 +48,7 @@ The specification is organized into the following major sections:
 Reading Paths by Role
 ^^^^^^^^^^^^^^^^^^^^^
 
-Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust`, which establish the common vocabulary, design principles, and trust infrastructure that provide the underlying framework for the entire ecosystem.
+Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust`, which establish the common vocabulary, and trust infrastructure that provide the underlying framework for the entire ecosystem.
 
 Wallet Provider
 """""""""""""""
@@ -54,6 +57,7 @@ Readers implementing or operating a **Wallet Provider** Solution should focus on
 
 **Essential sections:**
 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
 * **Section** :ref:`wallet-solution:Wallet Solution`: Complete wallet implementation requirements, components, and interaction processes.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Digital Credential data models, formats and lifecycle management.
 * **Section** :ref:`digital-credential-flows:Digital Credential Flows`: Issuance and presentation flows for Digital Credentials.
@@ -75,6 +79,7 @@ For readers who are interested in implementing a **Credential Issuer** Solution,
 
 **Essential sections:**
 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
 * **Section** :ref:`credential-issuer-solution:Credential Issuer Solution`: Credential Issuer Solution - Complete Issuer implementation requirements and component details.
 * **Section** :ref:`authentic-sources:Authentic Sources`: Understanding authoritative data source integration patterns.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Digital Credential formats and lifecycle management.
@@ -99,6 +104,7 @@ If the reader wants to operate an **Authentic Source**, the focus should be on s
 
 **Essential sections:**
 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
 * **Section** :ref:`authentic-sources:Authentic Sources`: Requirements and integration patterns with Credential Issuers.
 * **Section** :ref:`authentic-source-endpoint:Authentic Source Endpoints`: API specifications and catalogue integration.
 * **Section** :ref:`algorithms:Cryptographic Algorithms`: Data integrity, authentication, and security requirements.
@@ -116,6 +122,7 @@ Readers interested in implementing or operating a **Relying Party** Solution to 
 
 **Essential sections:**
 
+* **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
 * **Section** :ref:`relying-party-solution:Relying Party Solution`: Complete verifier implementation requirements and Entity Configuration.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Understanding Digital Credential formats and validity verification.
 * **Section** :ref:`credential-presentation:Digital Credential Presentation`: Presentation flow implementation for both remote and proximity scenarios.
@@ -146,8 +153,8 @@ Implementation Approach
 
 The following phased reading approach is suggested:
 
-    1. **Foundation Phase**: Read  Sections :ref:`introduction:Introduction`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, design principles, and trust infrastructure.
-    2. **Role-Specific Phase**: Focus on primary role's essential sections to understand specific implementation requirements, main technical component, the general architecture and interaction flows (see Section :ref:`entities:Entities` and Section :ref:`endpoints:Endpoints` for more details).
+    1. **Foundation Phase**: Read  Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand-Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.
+    2. **Role-Specific Phase**: Focus on primary role's essential sections to understand specific User Experience, functional and implementation requirements, main technical component, the general architecture and interaction flows (see Section :ref:`functionalities:User Experience Design`, :ref:`entities:Entities` and Section :ref:`endpoints:Endpoints` for more details).
     3. **Integration Phase**: Review secondary sections relevant to interactions with other ecosystem participants and platform integration requirements.
     4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements according to Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`test-plans:Test Plans` for additional information.
 
