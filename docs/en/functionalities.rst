@@ -32,7 +32,17 @@ The IT-Wallet System provides Users with a simpler, faster, and more secure way 
 
 The following sections focus on the usage and post-usage phases. They define the functional requirements supporting the User Experience for the activation, acquisition, presentation, management, and deactivation phases, along with interaction requirements related to error management, assistance requests, and feedback collection.
 
+Additional documentation and resources are provided in the :ref:`official-resources:Official Resources` section.  
+
 The Official Resources include recommendations on the required User-Wallet Instance interactions and design best practices that promote consistency across different Wallet Solutions in terms of how functionalities are accessed and used.
+
+To ensure a correct and consistent implementation, Primary Actors: 
+
+- MUST use Official Resources and MUST comply with all related usage specifications provided; 
+
+- MAY choose from the available configurations provided, but MUST ensure the correct use of atomic components, such as the Engagement Buttonss; 
+
+- MUST keep used resources up to date, in line with the latest available version of the Official Resources. 
 
 Activation of the Wallet Instance
 ---------------------------------
@@ -95,6 +105,8 @@ Below are illustrated the User Experience requirements for the issuance of an El
 
 - The User accesses their Wallet Instance using the unlock method previously set;
 - The User selects the Electronic Attestation of Attributes they wish to request from the available options in the Catalog;
+- The User selects from which Electronic Attestation Provider they want to obtain the Electronic Attribute Attestation, if there is more than one; 
+- The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes from the Authentic Source; 
 - The User views the PID data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting their PID data to the Electronic Attestation of Attributes Provider, or cancels the operation;
 - The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes from the Authentic Source;
 - The User views a preview of the Electronic Attestation of Attributes. The User confirms the data shown in the preview to proceed with the request or cancels the operation;
@@ -102,6 +114,24 @@ Below are illustrated the User Experience requirements for the issuance of an El
 - The User views the positive outcome of the request;
 - The User views the details of the requested Electronic Attestation of Attributes, including: the data contained in it, the name of the Electronic Attestation of Attributes Provider who issued the Attestation, and the name of the Authentic Source;
 - The User has access to all issued Electronic Attestations by navigating the Wallet Instance.
+
+If the Authentic Source considers it useful, it MAY provide the User with additional information related to an Electronic Attestation of Attributes. This information MUST be displayed by the Wallet Provider to the User in the Wallet Instance, before initiating the process of issuing the Electronic Attestation of Attributes. In order to properly draft this informational content, the Authentic Source: 
+
+- MUST use clear language (e.g. avoid technical or complex terms), be concise (e.g. avoid excessively long or elaborate texts) and inclusive (e.g. avoid ability-based verbs), following the best practices for writing, language and tone of voice described in [REF_ACCESSIBILITY] and, in the case of public entities, in [GL_DESIGN]; 
+
+- MUST adhere to the specific purpose of the text, communicating useful information to the User before engaging in the issuance process (e.g. listing prerequisites or stating limitations that could affect the successful outcome of the procedure); 
+
+- MUST ensure that the information is constantly updated; 
+
+- MUST include a title and text in which it MAY include references to external channels to direct users to a procedure, explore a specific topic and/or open support requests. 
+
+Following is an example of informative text: 
+
+**Title:** Do you already have the physical document? 
+
+**Text:** To obtain the digital version of [Document name], you must already have obtained the corresponding physical document. For more details, [read more information] (URL). 
+
+For further information, please refer to the section :ref:`registry-catalogue:Digital Credentials Catalogue` (see claim “``user_information``”). 
 
 The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the `Deactivation of the Wallet Instance`_ and `Management of Electronic Attestations`_ sections.
 
@@ -242,7 +272,7 @@ From a User Experience perspective, the Authentication process differs from the 
 
 To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN]
 
-Relying Parties SHOULD use the Official Resources for design (see IT-Wallet Authentication Model) and development (see iam-proxy-italia). If a Relying Party does not intend to use such open source resources, MAY independently develop the Technical Solutions enabling the Authentication flow.
+Relying Parties SHOULD use the :ref:`official-resources:Official Resources` for design and development. If a Relying Party does not intend to use such open source resources, MAY independently develop the Technical Solutions enabling the Authentication flow.
 
 .. note::
   The images in this section are to be considered illustrative as they are the subject of interface (UI) evolutions, pending the definition of the branding of the IT-Wallet System. 
@@ -483,7 +513,7 @@ The Authentication Button has the following requirements:
 - Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., “IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world.  With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used." 
 
 
-Below are some non-statutory examples of Authentication Button layouts: 
+Below are some non-mandatory examples of Authentication Button layouts: 
 
  
 .. only:: format_html 
