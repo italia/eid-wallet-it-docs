@@ -33,6 +33,13 @@ In addition, the Credential Issuers MAY support:
   * **Refresh Token Flow**: The Wallet Instance requests a new Access Token at the Token Endpoint of the PID/(Q)EEA Provider.
   * **Re-issuance Flow**: Following updates to an already stored Digital Credential, the Wallet Instance requests a refresh of the Digital Credential at the Credential Endpoint of the Credential Issuer.
   * **Deferred Issuance Flow**: The Credential Issuer may require time to issue the requested Digital Credential, due to the Authentic Sources data provisioning rules, and allows the Wallet to retrieve the requested Credential in the future.
+  * **Batch Credential Issuance Flow**: It enables the issuance of a batch of one or more Digital Credential. Digital Credentials that are issued in a batch MUST share the same format and contain the same set of attributes about the Holder. Each Credential MUST contain different Cryptographic Data to achieve unlinkability between the Digital Credentials. 
+
+
+.. note::
+    **Standard or Batch Credential Issuance:** 
+      
+    The User can configure the Wallet Solution to issue Digital Credentials in either batch or standard mode and define the prefered batch size.
 
 The entire Issuance flow can be divided into two sub-flows:
 
@@ -79,7 +86,7 @@ The following diagram shows the *Issuance flow*.
 .. plantuml:: plantuml/credential-issuance-flow.puml
     :width: 99%
     :alt: The figure illustrates the Credential Issuance Low-Level Flow.
-    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/hLPVRo8t47_tfnZb7XeaKAgsJoTTTOJG2sgKq9HJNYeXnpl0A8kzjSTmwQUlFLdmGaYhg9MYxAxd_-ytC-PpOEqvhckb8piRru_ebMhI6Hbgj6Ku-nhGdu4E49LwTDzU3huB4DP9gravYsVmuOQMAxwi8nxQNdgttPlhGzc3hcjacDZ0sXeKdQr2Mq6ASfJ3o6E5badNC0aXjXv9AMyT8xWDUjZsAUKn-N8z-t8_7j-gqGhD4xoo10gGVODR0AyGVabohvcS1PrYkqVMP84um1fPLvfrpadYABM5mS-mXOzWF6f6cFuw6eDn5KBAW1Q4Nfmy30TJDstLAQbFX_TmZtz630pdVrW0KnDQdbFLpr_-HTI3_B4bNi7TCF9gC1AjmP0vIKkERmbpK20hPLsZJdLryJc5Jil1rBiDLV-8JMiGQ6arHu-joix3KOg2tqRNL14_GmT0HJ0G27UOXCRPW73UGZ2Fdlg0tnho6EPaUqfGJ2PHVuHSj_FqbyGfW1OmeUEcfw8MItgteT8rTpldqoUOJguEmEn7-F1mFPcDLGoPzHGWAvkN2CBXY71o1JTk2DTfEk3yviUUO6DonJQ5TqrMJW0-fxC4es6oIuWoNbcBjU7GA-XX7V0ehVFVUkFXiFVUr58r_p4LM-suZ1gE0IwqvjdeG-wCzA0GzgHitsLK1c-95dqIm5LkzYTyVbFMUESMdN64XVCdrW6x9xIGwcaSMLQTePqbIMaMmQtZMCPuwRNbEJytA7ES4YylyzrAQ4Uy8ez66apc_7yTSqM2GKbwZwKs1aEOIvMvonSUmshtAGz9_t3c2WQtpXhSOt0zcqrXUlVx32vi5fIuEyN2uLmqUgzsPWjV-cjS21W2ENkeVgHVC7-3GRC_AJIM2eh-2Igxw0ZcNOABtpd9Y-ntrmquDyukQ1cz42EBH8nVhn0Ae3UQQlrO8wW2N5Ude5SYX3vObqERNOWkf6cEBrvMGDcsgGoPdHZ0v9tTgiUahiEJO9XlyDtigzWwsnq0EmZiF4g3bKnAM14VYKh3b6HFzarNVdvKMXzmWrRkmGv9Go7ffRFLgHljykRhMDtZaWAdKrtNHvaFFDQQiG95DfM_bd02HFAoZt_XSUFQnCgLLPWwAArm9RNzyFrFIGmZPpb3MZPrOV_sRbOwu5_ehr5NSwOrze6zja6R7VVTycEVr2mLUlH3gWzw8JXOq6iNhTpcsHc41arkuWeUds4VGnfckq8Bx6cvH2_o3A7qYInYpq4E5hNRWbvgieTNmUVqBwxhlm40>`_
+    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry2gEHlsgi0BYBBQYpKa5L7WMyA22jo92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEORxvvh3yO9qmpk-hJ7YdbT-lqMHPJMUoaBLG3bvzjcXUWR3WisojlpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87CqKGL86iSynGbK1HUXWc1ajKJeeAPjRwrgFCw9zHsY7e0neuvfAGp3vUBp_UJQVpRBB3uW6-iGLf8NW7lG6tG_Y5v4OugHK8YgxNJaW5qbdOenEbS2AWuZWKxmYZd-48xw4mA1p2ujV950fT8X04kP5esClzUBJGYrPTalfYV0Tt-8T7ws3mkm8eAacmLhBCmvjfH4C8BqVfTd0xzcutch3MQEmSIIF8vuGXA4Z5ULsZeCHIWixHqvPXOVH1bdz9JcjWvLO9vmssAfs77aGcy20gMKht22c34aPCOSU9hRMo28EMWfKtCWVyKak3TYNLa4aF9bwyXv2tDl8hnuc4HZ8XSJFCl61B-MB3J5GkRPsB2rZChfwGcNjuVNyzMqupRqFLAK1GBZX2KyE9nDaLtEWnNDE0mE3cno5pKuIC5ONNTL0c0X_fZ6Wid5HRy3nXGSk9mjbXP0yhYprOWz-6q_5u-59ebCq_XABAhfPUG9_WMDOm6pc4pg0VQUsfACSN6SN1sw92GmAu2it-W8_FocgZzIOPHzXeSsOVEFs02YYVMalbicHeboI9pSAy9OvvZBT6KF-unnfvZWbuV5XrAw4TyL8QBBZ1UCx_rJ7F97Dm0Xsv54M1rguuoz3b6uDsrxtoJmC_dRc4WxbM1Puuk5uk5x2u_RI4joe8OjnECTPmnHhD_FQsPiBY-PeKyIGM9ipa9-hA2liMWg40zBTp4uB-rzfQj9QuYy30Mt9692Qj171AF8Ouqm4fgLogj2yY-9Na1xuMT9hLgj1g8xU-sQsyVzXuc3KpVYbSiVjUbh7Tvy1LJMcZR2mCvXSNw-1gPULN79wt_PiinIZiEgMAqVutX56E_Fj3-_ukV_FcJSwFy-4GicPFzTUvj20EGbPYNI5apz-HIygw-IeYUX87DdYW7CcLq-2YLaPgH4-7hMwkrHBMZwpL--Y9spIEKGoIpbACd8FIWQ2Y8oBTZT4uNhxCDiLpta8Hhl1MtvE-i0yyWE6RhhiACjzvQmz2YjPfWv30Y47FokBsY5ZFBf5KFkXbbWCUKF57KT99O-waPisTBTtbpUTfTeTRQHsT4kDCVSGtCbW9XoLaKb7oUmx7D92NK_ot1W-w1GRd2fMc5al5kRtx_qyaXebMZa8s8zrhl_djChRWTwfVeIXNJkun1sU4igBeIf-cxtEPBR_jiHp4XdbG8FRQA_wq2yx0rbXG1artdc9mknntg2YMt6xHnEuDNSAtid6M3pQLFeBO2gcUVXTye3z-N_q9>`_
 
 
 .. .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
@@ -90,7 +97,7 @@ The following diagram shows the *Issuance flow*.
 ..     PID/(Q)EAA Issuance - Detailed flow
 
 
-Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust:Trust Evaluation Mechanism` .
+Once *User Request flow* is completed, the Wallet Instance processes the Metadata of the Credential Issuer as defined in Section :ref:`trust:Trust Evaluation Mechanism`. Additionally, in the case of Batch Credential issuance, the Wallet Instance MUST check the support of batch issuance by looking for the ``batch_credential_issuance`` object in the Credential Issuer metadata, from where the Wallet Instance can get the ``batch_size`` value. 
 
 .. note::
   **Federation Check:** The Wallet Instance must verify whether the Credential Issuer is a member of the Federation, obtaining its protocol specific Metadata. A non-normative example of a response from the endpoint **.well-known/openid-federation** with the **Entity Configuration** and the **Metadata** of the Credential Issuer is represented within the section :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`.
@@ -293,7 +300,12 @@ Below is a non-normative example of a Nonce Response:
   :language: JSON
 
 
-**Steps 14-15 (DPoP Proof for Credential Endpoint)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 13** and using the private key used for the DPoP, signing a DPoP Proof JWT according to (:rfc:`9449`) Section 4. The ``jwk`` value in the ``proof`` parameter MUST be equal to the public key referenced in the DPoP.
+**Step 14 (DPoP Proof for Credential Endpoint)**: The Wallet Instance creates a DPoP Proof JWT using the same key in **Step 8** and according to (:rfc:`9449`) Section 4.
+
+.. note::
+   If the Wallet Instance requests a batch issuance of Digital Credentials, the flow continues with **Step 17**. Otherwise Steps **15-16** are performed.
+
+**Step 15 (Proof of Possession of Credential)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 13** using the private key used for the DPoP. The ``jwk`` value in the proof parameter MUST be equal to the public key referenced in the DPoP.
 
 **Step 16 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proof (which demonstrates possession of the key). The ``proof`` parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued Digital Credential will be bound. To verify the proof, the Credential Issuer conducts the following checks at the Credential endpoint:
 
@@ -342,15 +354,48 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
   :language: JSON
 
-**Steps 17-21 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate the proof of possession for the key material the new Credential SHALL be bound to, according to `OpenID4VCI`_ Section 8.2.2. If all checks succeed, the Credential Issuer creates a new Credential bound to the key material and provides it to the Wallet Instance. The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential:
+**Step 17 (Fresh Digital Credential Keys Generation)**: The Wallet Instance generates N fresh Credential key pairs, where the number of key pairs (N) is determined by the value defined in the ``batch_size``.
+
+**Step 18 (Proofs of Possession of Credentials)**: The Wallet Instance MUST generate N key proofs using provided ``c_nonce`` in **Step 13** and one for each Credential in the batch. The number of key proofs (N) is defined by the ``batch_size`` value.
+
+.. note::
+  The ``c_nonce`` value in all the jwt proofs is identical and it is not needed to obtain separate nonce values per proof. 
+
+
+**Step 19 (Batch Credential Request)**: The Wallet Instance sends a request for the batch of Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proofs (which demonstrates possession of the keys). The proofs parameter MUST set using a JSON object containing two or more evidence of possession of the cryptographic key materials to which the issued batch of Digital Credential will be bound. To verify the proofs, the Credential Issuer, in addition to the predefined checks in **Step 16**, must ensure the ``jwk`` attribute in each key proofs is unique.
+
+
+.. code-block:: http
+
+  POST /credential HTTP/1.1
+    Host: eaa-provider.example.org
+  Content-Type: application/json
+  Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
+  DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
+      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
+      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
+      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
+      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
+      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
+      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
+      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
+
+.. literalinclude:: ../../examples/batch-credential-request.json
+  :language: JSON
+
+
+The decoded content of ``jwt`` elements in the ``jwt`` array is similar to what is explained in **Step 16**.
+
+
+**Steps 20-24 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate all the key proofs that are provided within ``proof`` (**Step 15**) or ``proofs`` (**Step 18**) parameter that the new Credentials SHALL be bound to, according to `OpenID4VCI`_ Appendix F1. If all checks succeed, the Credential Issuer returns the issued Credential inside the ``credentials`` parameter. The number of elements in the Credentials array matches the number of the keys that the Wallet Instance has provided either via the ``proof`` parameter (**Step 16**) or ``proofs`` parameter (**Step 19**). The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential(s):
 
     1. It MUST check that the PID/(Q)EAA contained in the Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>`.
     2. It MUST check the Credential integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`credential-data-model:Digital Credential Data Model`) and the public key that is identified using the ``kid`` header of the SD-JWT.
-    3. It MUST check that the received Digital Credential (in the ``credential`` claim) matches the requested Credential type and complies with the specific schema of that Credential defined in :ref:`credential-data-model:Digital Credential Data Model`.
+    3. It MUST check that the received Digital Credential(s) (in the ``credential`` claim) matches the requested Credential type and complies with the specific schema of that Credential defined in :ref:`credential-data-model:Digital Credential Data Model`.
     4. It MUST process and verify the Credential in SD-JWT VC format (according to `SD-JWT`_ Section 5.) or mdoc-CBOR format.
     5. It MUST verify the Trust Chain in the header of SD-JWT VC to verify that the Credential Issuer is trusted.
 
-If the checks above are successful, the Wallet Instance requests the User's consent to store the Digital Credential. Upon receiving consent, the Wallet Instance securely stores the Digital Credential.
+If the checks above are successful, the Wallet Instance requests the User's consent to store the Digital Credential(s). Upon receiving consent, the Wallet Instance securely stores the Digital Credential(s).
 
 Below is a non-normative example of a successful response containing a Credential in SD-JWT VC format.
 
@@ -363,6 +408,7 @@ Below is a non-normative example of a successful response containing a Credentia
 
 .. literalinclude:: ../../examples/sd-jwt-credential-response.json
   :language: JSON
+
 
 Below is a non-normative example of a successful response containing a Credential in mdoc format.
 
@@ -377,10 +423,29 @@ Below is a non-normative example of a successful response containing a Credentia
   :language: JSON
 
 
-.. note::
-  If the requested Credential cannot be issued immediately and requires more time, the Credential Issuer SHOULD support the Deferred Flow (step 24) as specified in Section :ref:`credential-issuance-endpoint:Deferred Endpoint`.
+Below is a non-normative example of a successful response containing a batch of Credentials in SD-JWT VC format:
 
-**Step 22 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
+.. code-block:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+    Cache-Control: no-store
+    Pragma: no-cache
+
+.. literalinclude:: ../../examples/sd-jwt-batch-credential-response.json
+  :language: JSON
+
+
+.. note::
+  When the Wallet Instance receives a new batch of the same Credential with the same claims, the Wallet MUST delete previous Credentials. 
+
+
+.. note::
+  If the requested Credential cannot be issued immediately and requires more time, the Credential Issuer SHOULD support the Deferred Flow (step 27) as specified in Section :ref:`credential-issuance-endpoint:Deferred Endpoint`. Additionally, in the case of batch issuance, the same ``transaction_id`` retrieves all Credentials that are requested in the batch.
+
+
+
+**Step 25 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example.
 
 .. code-block:: http
 
@@ -400,7 +465,9 @@ Below is a non-normative example of a successful response containing a Credentia
   :language: JSON
 
 
-**Step 23 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
+
+**Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
+
 
 .. code-block:: http
 
@@ -408,6 +475,12 @@ Below is a non-normative example of a successful response containing a Credentia
 
 .. note::
    In some cases there are multiple sets of Credential data available in the Authentic Source system, and the User may be interested in obtaining more than one Credential. In these cases the Issuance Flow remains the same as described in :ref:`credential-issuance-low-level:Low-Level Issuance Flow`. In the Token Response (**Step 11**), the Credential Issuer generates a unique identifier (``credential_identifier``) for each Credential Dataset provided in the `AttributeClaims` parameter of the e-service PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Therefore, the ``credential_identifiers`` array within the ``authorization_details`` object contains the identifiers of all Credentials available for issuance. The Wallet sends a Credential Request (**Step 16**) for each identifier, obtaining multiple distinct Credentials that are individually shown to the User for the acceptance. Finally, the Credential Issuer is notified by the Wallet of the outcome through the :ref:`credential-issuance-endpoint:Notification Endpoint`.
+
+
+.. note::
+   For batch-issued Digital Credentials, a single ``notification_id`` covers the entire batch-issued Credentials. The notification response (e.g. ``credential_accepted`` or ``credential_stored``) applies to all Credentials, any partial failure is treated as a batch failure. 
+
+
 
 Refresh Token Flow
 ------------------
@@ -567,6 +640,4 @@ To ensure the integrity and security of the re-issuance process, the following s
   - Credential expiry: The Credential Issuer MUST set the same expiry date for the re-issued Digital Credential as the previous one. This prevents indefinite Credential renewals without proper User authentication.
   - User consent: For re-issuance processes triggered by attribute changes, User consent MUST be obtained before storing the new Digital Credential. This ensures that the User is aware of and agrees to the updated information.
   - Sender-constrained Refresh Token: Refresh Tokens MUST be cryptographically bound to the Wallet Instance using DPoP protocol. This mitigates the risk of token misuse by ensuring that only the intended Wallet Instance (the same that originally has obtained the Digital Credential) can use that Refresh Token.
-
-
 
