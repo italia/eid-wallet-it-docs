@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15.5. Authentic Source PDND OpenAPI Specification &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
+    <title>15.5. Overview &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="15.6. Wallet Provider PDND OpenAPI Specification" href="appendix-oas-pdnd-wp.html" />
+    <link rel="next" title="15.9. Wallet Provider PDND OpenAPI Specification" href="appendix-oas-pdnd-wp.html" />
     <link rel="prev" title="15.4. Credential Issuer PDND OpenAPI Specification" href="appendix-oas-pdnd-issuer.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -149,8 +149,11 @@
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test-plans.html">15.3. Test Plans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Credential Issuer PDND OpenAPI Specification</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">15.5. Authentic Source PDND OpenAPI Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.6. Wallet Provider PDND OpenAPI Specification</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15.5. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template-parameters">15.6. Template Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template-instantiation">15.7. Template Instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentic-source-pdnd-openapi-specification">15.8. Authentic Source PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.9. Wallet Provider PDND OpenAPI Specification</a></li>
 </ul>
 </li>
 </ul>
@@ -164,8 +167,45 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="authentic-source-pdnd-openapi-specification">
-<h1><span class="section-number">15.5. </span>Authentic Source PDND OpenAPI Specification<a class="headerlink" href="#authentic-source-pdnd-openapi-specification" title="Link to this heading">¶</a></h1>
+  <section id="overview">
+<h1><span class="section-number">15.5. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h1>
+<p>The template e-service functionality is employed to standardize data transmission from Authentic Sources to Credential Issuers.
+The template e-service SHOULD be published within PDND by the Credential Issuer and is accessible through the PDND Template Catalogue.</p>
+</section>
+<section id="template-parameters">
+<h1><span class="section-number">15.6. </span>Template Parameters<a class="headerlink" href="#template-parameters" title="Link to this heading">¶</a></h1>
+<p>The template e-service <strong>MUST</strong> adhere to the following specifications:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Name</strong>: IT Wallet - Authentic Source - &lt;<code class="docutils literal notranslate"><span class="pre">Credential</span> <span class="pre">name</span></code>&gt;</p></li>
+<li><p><strong>Intended Recipients</strong>: IT Wallet - Authentic Source - &lt;<code class="docutils literal notranslate"><span class="pre">Authentic</span> <span class="pre">Source</span> <span class="pre">domain</span></code>&gt;</p></li>
+<li><p><strong>Description</strong>: Provide the Credential Issuer with a new credential &lt;<code class="docutils literal notranslate"><span class="pre">Credential</span> <span class="pre">name</span></code>&gt;</p></li>
+<li><p><strong>Technology</strong>: REST</p></li>
+<li><p><strong>Data variation via Signal Hub</strong>: True</p></li>
+<li><p><strong>Version changelog</strong>: Authentic Source e-service via template implementation</p></li>
+<li><p><strong>Voucher Time Limit</strong>: 20</p></li>
+<li><p><strong>Suggest custom threshold</strong>: False</p></li>
+<li><p><strong>Suggest manual agreement approval policy</strong>: False</p></li>
+<li><p><strong>Attributes</strong>: &lt;<code class="docutils literal notranslate"><span class="pre">Offcial</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">Credential</span> <span class="pre">Issuer</span> <span class="pre">Public</span> <span class="pre">Authority</span></code>&gt;</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="template-instantiation">
+<h1><span class="section-number">15.7. </span>Template Instantiation<a class="headerlink" href="#template-instantiation" title="Link to this heading">¶</a></h1>
+<p>Each Authentic Source <strong>SHOULD</strong> instantiate the <em>IT Wallet - Authentic Source</em> template e-service in PDND.
+The instantiation process will result in a new e-service that <strong>MUST</strong> satisfy the following requirements:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Signal Hub</strong>: True</p></li>
+<li><p><strong>Manual agreement approval policy</strong>: False</p></li>
+<li><p><strong>Daily API calls threshold for each provider</strong>: greater than 10000</p></li>
+<li><p><strong>Daily API calls threshold</strong>: greater than 10000</p></li>
+</ul>
+</div></blockquote>
+<p>Additional information required during the creation process is provider-dependent.</p>
+</section>
+<section id="authentic-source-pdnd-openapi-specification">
+<h1><span class="section-number">15.8. </span>Authentic Source PDND OpenAPI Specification<a class="headerlink" href="#authentic-source-pdnd-openapi-specification" title="Link to this heading">¶</a></h1>
 <p>Below is the complete Open API Specification for the Authentic Source PDND e-services:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.1</span>
 <span class="linenos">  2</span><span class="nt">info</span><span class="p">:</span>
@@ -490,6 +530,23 @@
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">15.5. Overview</a></li>
+<li><a class="reference internal" href="#template-parameters">15.6. Template Parameters</a></li>
+<li><a class="reference internal" href="#template-instantiation">15.7. Template Instantiation</a></li>
+<li><a class="reference internal" href="#authentic-source-pdnd-openapi-specification">15.8. Authentic Source PDND OpenAPI Specification</a></li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -504,7 +561,7 @@
 
             <div class="right">
                 
-                    <a href="appendix-oas-pdnd-wp.html"><span><span class="section-number">15.6. </span>Wallet Provider PDND OpenAPI Specification</span><span class="icon">&gt;</span></a>
+                    <a href="appendix-oas-pdnd-wp.html"><span><span class="section-number">15.9. </span>Wallet Provider PDND OpenAPI Specification</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -512,7 +569,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/07/2025.
+      Last updated on 25/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
