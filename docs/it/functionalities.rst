@@ -558,9 +558,10 @@ Per maggiori dettagli sull'utilizzo del Pulsante di Autenticazione vedi la sezio
 
 **Pulsante "Entra con IT-Wallet" - codice html** 
 
-Il pulsante è disponibile in 3 varianti (default / M / L ) ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). Il sistema richiede Jquery 1.8+. I riferimenti al codice html verrà incluso nelle versioni successive delle presenti regole tecniche.
+Il pulsante è disponibile in 3 varianti (default / M / L ) ed in formato "get" (chiamata ad una pagina esterna) e "post" (form interna al pulsante). Il sistema richiede Jquery 1.8+. I riferimenti al codice html e alla Brand Identity corretta verranno inclusi nelle versioni successive delle presenti regole tecniche.
 
 **Pulsante “Entra con IT-Wallet" - svg**
+Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti corretti alla Brand Identity verranno inclusi nelle versioni successive delle presenti regole tecniche.
 
 .. literalinclude:: ../../examples/authentication_button.svg
   :language: SVG
