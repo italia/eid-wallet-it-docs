@@ -268,7 +268,7 @@ Authentication is a specific use case of remote presentation that allows the Use
 
 The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for `remote presentation`_ in same-device and cross-device modes.
 
-From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`brand-identity:Authentication Button`.
+From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`Authentication Button`.
 
 To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN]
 
@@ -300,16 +300,16 @@ To enable authentication via the IT-Wallet System, the Relying Party MAY replace
 .. only:: format_html
 
   .. figure:: ./images/svg/discovery-page.svg
-    :alt: Layout Model of Discovery Page in grid
-    :width: 100%
-    
-    Layout Model of Discovery Page in grid  
+     :alt: Layout Model of Discovery Page in grid
+     :width: 100%
+
+     Layout Model of Discovery Page in grid  
 
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/discovery-page.pdf
-    :alt: Layout Model of Discovery Page in grid 
-    :width: 100% 
+     :alt: Layout Model of Discovery Page in grid 
+     :width: 100% 
 
      Layout Model of Discovery Page in grid 
 
@@ -334,16 +334,16 @@ The Relying Party SHOULD implement the Selection Page made available in Official
 .. only:: format_html 
 
   .. figure:: ./images/svg/selection-page.svg
-    :alt: Selection Page
-    :width: 100%
+     :alt: Selection Page
+     :width: 100%
 
      Selection Page 
 
 .. only:: format_latex  
 
   .. figure:: ./images/svg/selection-page.pdf
-    :alt: Selection Page
-    :width: 100%
+     :alt: Selection Page
+     :width: 100%
 
      Selection Page 
 
@@ -374,16 +374,16 @@ Relying Parties SHOULD implement the QR code page (cross-device) provided in the
 .. only:: format_html 
 
   .. figure:: ./images/svg/QR-page.svg
-    :alt: QR code page
-    :width: 100%
+     :alt: QR code page
+     :width: 100%
 
      QR code page 
  
 .. only:: format_latex  
 
   .. figure:: ./images/svg/QR-page.pdf
-    :alt: QR code page
-    :width: 100%
+     :alt: QR code page
+     :width: 100%
 
      QR code page 
 
@@ -413,16 +413,16 @@ Relying Parties SHOULD implement the waiting page (cross-device) provided in the
 .. only:: format_html 
 
   .. figure:: ./images/svg/waiting-page.svg
-    :alt: Waiting page
-    :width: 100%
+     :alt: Waiting page
+     :width: 100%
 
      Waiting page 
  
 .. only:: format_latex  
 
   .. figure:: ./images/svg/waiting-page.pdf
-    :alt: Waiting page
-    :width: 100%
+     :alt: Waiting page
+     :width: 100%
 
      Waiting page 
 
@@ -440,16 +440,16 @@ Relying Parties SHOULD implement the thank you page provided in the Official Res
 .. only:: format_html 
 
   .. figure:: ./images/svg/thank-you-page.svg
-    :alt: Thank you page
-    :width: 100%
+     :alt: Thank you page
+     :width: 100%
 
      Thank you page 
  
 .. only:: format_latex  
 
   .. figure:: ./images/svg/thank-you-page.pdf
-    :alt: Thank you page
-    :width: 100%
+     :alt: Thank you page
+     :width: 100%
 
      Thank you page 
 
@@ -468,16 +468,16 @@ Relying Parties SHOULD implement the error page provided in the Official Resourc
 .. only:: format_html 
 
   .. figure:: ./images/svg/error-page.svg
-    :alt: Error page
-    :width: 100%
+     :alt: Error page
+     :width: 100%
 
      Error page 
  
 .. only:: format_latex  
 
   .. figure:: ./images/svg/error-page.pdf
-    :alt: Error page
-    :width: 100%
+     :alt: Error page
+     :width: 100%
 
      Error page 
 
@@ -518,36 +518,36 @@ Below are some non-mandatory examples of Authentication Button layouts:
 .. only:: format_html 
 
   .. figure:: ./images/svg/authentication-button-layout.svg
-    :alt: Variants of Authentication Button 
-    :width: 100% 
+     :alt: Variants of Authentication Button 
+     :width: 100% 
 
-    Variants of Authentication Button 
+     Variants of Authentication Button 
 
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/authentication-button-layout.pdf 
-    :alt: Variants of Authentication Button 
-    :width: 100% 
+     :alt: Variants of Authentication Button 
+     :width: 100% 
 
-Variants of Authentication Button 
+     Variants of Authentication Button 
 
 The integration of the Authentication Button within the Discovery Page may vary depending on the page layout. Below are illustrative, non-exhaustive examples of Discovery Pages using grid, tab, and list layouts, respectively.
 
 .. only:: format_html
 
   .. figure:: ./images/svg/discovery-page-layouts.svg
-    :alt: Examples of Discovery Page layouts: grid, tab, and list
-    :width: 100%
+     :alt: Examples of Discovery Page layouts: grid, tab, and list
+     :width: 100%
 
-    Examples of Discovery Page layouts: grid, tab, and list
+     Examples of Discovery Page layouts: grid, tab, and list
 
 .. only:: format_latex 
 
   .. figure:: ./images/pdf/discovery-page-layouts.pdf
-    :alt: Examples of Discovery Page layouts: grid, tab, and list
-    :width: 100%
+     :alt: Examples of Discovery Page layouts: grid, tab, and list
+     :width: 100%
 
-    Examples of Discovery Page layouts: grid, tab, and list
+     Examples of Discovery Page layouts: grid, tab, and list
 
 For further details on the use of the Authentication Button, please refer to the :ref:`functionalities:Authentication` section.
 
