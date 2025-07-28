@@ -33,6 +33,12 @@ In aggiunta, i Credential Issuer POSSONO supportare:
   * **Refresh Token Flow**: L'Istanza del Wallet richiede un nuovo Access Token al Token Endpoint del PID/(Q)EEA Provider.
   * **Re-issuance Flow**: A seguito di aggiornamenti ad un Attestato Elettronico già memorizzato, l'Istanza del Wallet richiede un aggiornamento dell'Attestato Elettronico al Credential Endpoint del Credential Issuer.
   * **Deferred Issuance Flow**: Il Credential Issuer potrebbe impiegare del tempo per emettere l'Attestato Elettronico richiesto, a causa delle regole di provisioning dei dati delle Fonti Autentiche, e consente al Wallet di recuperare l'Attestato Elettronico richiesto in futuro.
+  * **Batch Credential Issuance Flow**: Permette l'emissione di un batch di una o più Credenziali Digitali. Le Credenziali Digitali emesse in batch DEVONO condividere lo stesso formato e contenere lo stesso set di attributi relativi al Titolare. Ogni Credenziale DEVE contenere dati crittografici diversi per impedire la correlabilità tra le Credenziali Digitali.
+
+.. note::
+    **Standard or Batch Credential Issuance:** 
+
+    L'Utente può configurare la Wallet Solution per emettere Credenziali digitali in modalità batch o standard e definire la dimensione preferita del batch.
 
 L'intero Issuance Flow può essere suddiviso in due sotto-flussi:
 
@@ -73,9 +79,9 @@ Il seguente diagramma mostra il *flusso di emissione*.
 .. plantuml:: plantuml/credential-issuance-flow.puml
     :width: 99%
     :alt: La figura illustra il flusso dettagliato per l'emissione degli Attestati Elettronici.
-    :caption: `Emissione degli Attestati Elettronici - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/hLPVRo8t47_tfnZb7XeaKAgsJoTTTOJG2sgKq9HJNYeXnpl0A8kzjSTmwQUlFLdmGaYhg9MYxAxd_-ytC-PpOEqvhckb8piRru_ebMhI6Hbgj6Ku-nhGdu4E49LwTDzU3huB4DP9gravYsVmuOQMAxwi8nxQNdgttPlhGzc3hcjacDZ0sXeKdQr2Mq6ASfJ3o6E5badNC0aXjXv9AMyT8xWDUjZsAUKn-N8z-t8_7j-gqGhD4xoo10gGVODR0AyGVabohvcS1PrYkqVMP84um1fPLvfrpadYABM5mS-mXOzWF6f6cFuw6eDn5KBAW1Q4Nfmy30TJDstLAQbFX_TmZtz630pdVrW0KnDQdbFLpr_-HTI3_B4bNi7TCF9gC1AjmP0vIKkERmbpK20hPLsZJdLryJc5Jil1rBiDLV-8JMiGQ6arHu-joix3KOg2tqRNL14_GmT0HJ0G27UOXCRPW73UGZ2Fdlg0tnho6EPaUqfGJ2PHVuHSj_FqbyGfW1OmeUEcfw8MItgteT8rTpldqoUOJguEmEn7-F1mFPcDLGoPzHGWAvkN2CBXY71o1JTk2DTfEk3yviUUO6DonJQ5TqrMJW0-fxC4es6oIuWoNbcBjU7GA-XX7V0ehVFVUkFXiFVUr58r_p4LM-suZ1gE0IwqvjdeG-wCzA0GzgHitsLK1c-95dqIm5LkzYTyVbFMUESMdN64XVCdrW6x9xIGwcaSMLQTePqbIMaMmQtZMCPuwRNbEJytA7ES4YylyzrAQ4Uy8ez66apc_7yTSqM2GKbwZwKs1aEOIvMvonSUmshtAGz9_t3c2WQtpXhSOt0zcqrXUlVx32vi5fIuEyN2uLmqUgzsPWjV-cjS21W2ENkeVgHVC7-3GRC_AJIM2eh-2Igxw0ZcNOABtpd9Y-ntrmquDyukQ1cz42EBH8nVhn0Ae3UQQlrO8wW2N5Ude5SYX3vObqERNOWkf6cEBrvMGDcsgGoPdHZ0v9tTgiUahiEJO9XlyDtigzWwsnq0EmZiF4g3bKnAM14VYKh3b6HFzarNVdvKMXzmWrRkmGv9Go7ffRFLgHljykRhMDtZaWAdKrtNHvaFFDQQiG95DfM_bd02HFAoZt_XSUFQnCgLLPWwAArm9RNzyFrFIGmZPpb3MZPrOV_sRbOwu5_ehr5NSwOrze6zja6R7VVTycEVr2mLUlH3gWzw8JXOq6iNhTpcsHc41arkuWeUds4VGnfckq8Bx6cvH2_o3A7qYInYpq4E5hNRWbvgieTNmUVqBwxhlm40>`_
+    :caption: `Emissione degli Attestati Elettronici - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry2gEHlsgi0BYBBQYpKa5L7WMyA22jo92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEORxvvh3yO9qmpk-hJ7YdbT-lqMHPJMUoaBLG3bvzjcXUWR3WisojlpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87CqKGL86iSynGbK1HUXWc1ajKJeeAPjRwrgFCw9zHsY7e0neuvfAGp3vUBp_UJQVpRBB3uW6-iGLf8NW7lG6tG_Y5v4OugHK8YgxNJaW5qbdOenEbS2AWuZWKxmYZd-48xw4mA1p2ujV950fT8X04kP5esClzUBJGYrPTalfYV0Tt-8T7ws3mkm8eAacmLhBCmvjfH4C8BqVfTd0xzcutch3MQEmSIIF8vuGXA4Z5ULsZeCHIWixHqvPXOVH1bdz9JcjWvLO9vmssAfs77aGcy20gMKht22c34aPCOSU9hRMo28EMWfKtCWVyKak3TYNLa4aF9bwyXv2tDl8hnuc4HZ8XSJFCl61B-MB3J5GkRPsB2rZChfwGcNjuVNyzMqupRqFLAK1GBZX2KyE9nDaLtEWnNDE0mE3cno5pKuIC5ONNTL0c0X_fZ6Wid5HRy3nXGSk9mjbXP0yhYprOWz-6q_5u-59ebCq_XABAhfPUG9_WMDOm6pc4pg0VQUsfACSN6SN1sw92GmAu2it-W8_FocgZzIOPHzXeSsOVEFs02YYVMalbicHeboI9pSAy9OvvZBT6KF-unnfvZWbuV5XrAw4TyL8QBBZ1UCx_rJ7F97Dm0Xsv54M1rguuoz3b6uDsrxtoJmC_dRc4WxbM1Puuk5uk5x2u_RI4joe8OjnECTPmnHhD_FQsPiBY-PeKyIGM9ipa9-hA2liMWg40zBTp4uB-rzfQj9QuYy30Mt9692Qj171AF8Ouqm4fgLogj2yY-9Na1xuMT9hLgj1g8xU-sQsyVzXuc3KpVYbSiVjUbh7Tvy1LJMcZR2mCvXSNw-1gPULN79wt_PiinIZiEgMAqVutX56E_Fj3-_ukV_FcJSwFy-4GicPFzTUvj20EGbPYNI5apz-HIygw-IeYUX87DdYW7CcLq-2YLaPgH4-7hMwkrHBMZwpL--Y9spIEKGoIpbACd8FIWQ2Y8oBTZT4uNhxCDiLpta8Hhl1MtvE-i0yyWE6RhhiACjzvQmz2YjPfWv30Y47FokBsY5ZFBf5KFkXbbWCUKF57KT99O-waPisTBTtbpUTfTeTRQHsT4kDCVSGtCbW9XoLaKb7oUmx7D92NK_ot1W-w1GRd2fMc5al5kRtx_qyaXebMZa8s8zrhl_djChRWTwfVeIXNJkun1sU4igBeIf-cxtEPBR_jiHp4XdbG8FRQA_wq2yx0rbXG1artdc9mknntg2YMt6xHnEuDNSAtid6M3pQLFeBO2gcUVXTye3z-N_q9>`_
 
-Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust:Meccanismo di Valutazione della Fiducia`.
+Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust:Meccanismo di Valutazione della Fiducia`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
 
 .. note::
   **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo. Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
@@ -277,8 +283,12 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
 .. literalinclude:: ../../examples/nonce-response.json
   :language: JSON
 
+**Passo 14 (DPoP Proof per il Credential Endpoint)**: L'Istanza del Wallet crea un JWT DPoP Proof utilizzando la stessa chiave del **Passo 8** e secondo la Sezione 4 di (:rfc:`9449`).
 
-**Passi 14-15 (`DPoP Proof` per il Credential Endpoint)**: Per richiedere l'Attestato Elettronico, l'Istanza del Wallet crea una prova di possesso con ``c_nonce`` ottenuto nel **Passo 13** e utilizzando la chiave privata utilizzata per il DPoP, firmando un JWT di `DPoP proof` secondo la Sezione 4 di (:rfc:`9449`). Il valore ``jwk`` nel parametro ``proof`` DEVE essere uguale alla chiave pubblica referenziata nel DPoP.
+.. note::
+   Se l'Istanza del Wallet richiede l'emissione in batch di Credenziali Digitali, il flusso prosegue con il **Passo 17**. In caso contrario, vengono eseguiti i passi **15-16**.
+
+**Passo 15 (Prova di Possesso della Credenziale)**: L'Istanza del Wallet per la richiesta delle Credenziali Digitali crea una prova di possesso con il ``c_nonce`` ottenuto nel **Passo 13** utilizzando la chiave privata utilizzata per il DPoP. Il valore del ``jwk`` nel parametro proof DEVE essere uguale alla chiave pubblica referenziata nel DPoP.
 
 **Passo 16 (`Credential Request`)**: L'Istanza del Wallet invia una richiesta per l'Attestato Elettronico al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT di `DPoP proof`, il tipo di Attestato Elettronico, la prova (che dimostra il possesso del materiale crittografico). Il parametro ``proof`` DEVE essere un oggetto che contiene la prova di possesso del materiale crittografico a cui sarà associato l'Attestato Elettronico emesso. Per verificare la prova, il Credential Issuer conduce i seguenti controlli al Credential Endpoint:
 
@@ -329,13 +339,45 @@ Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` �
 
 **Passi 17-21 (`Credential Response`)**: Il Credential Issuer DEVE validare il JWT di *DPoP proof* in base ai passaggi definiti nella Sezione 4.3 di (:rfc:`9449`) e se l'Access Token è valido e adatto per l'Attestato Elettronico richiesto. Il Credential Issuer DEVE validare la prova di possesso per il materiale crittografico a cui il nuovo Attestato Elettronico DEVE essere vincolato, secondo la Sezione 8.2.2 di `OpenID4VCI`_. Se tutti i controlli hanno successo, il Credential Issuer crea un nuovo Attestato Elettronico vincolato al materiale crittografico e lo fornisce all'Istanza del Wallet. L'Istanza del Wallet DEVE eseguire i seguenti controlli prima di procedere con l'archiviazione sicura dell'Attestato Elettronico:
 
+**Passo 17 (Generazione di nuove chiavi per le Credenziali Digitali)**: L'Istanza del Wallet genera N nuove coppie di chiavi per le Credenziali, dove il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size``.
+
+**Passo 18 (Prove di possesso delle credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size``.
+
+.. note::
+  Il valore ``c_nonce`` in tutte le proof jwt è identico e non è necessario ottenere valori del nonce diversi.
+
+**Passo 19 (Batch Credential Request)**: L'Istanza del Wallet invia una richiesta per il batch di Credenziali Digitali al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT DPoP Proof, il tipo di Credenziale e le proofs (che dimostrano il possesso delle chiavi). Il parametro ``proofs`` DEVE essere impostato utilizzando un oggetto JSON contenente due o più prove di possesso dei materiali crittografici a cui sarà associato il batch di Credenziali Digitali emesso. Per verificare le proofs, il Credential Issuer, oltre ai controlli definiti al **Passo 16**, deve assicurarsi che l'attributo ``jwk`` in ogni proof sia univoco.
+
+.. code-block:: http
+
+    POST /credential HTTP/1.1
+    Host: eaa-provider.example.org
+    Content-Type: application/json
+    Authorization: DPoP Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU
+    DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6Ik
+      VDIiwieCI6Imw4dEZyaHgtMzR0VjNoUklDUkRZOXpDa0RscEJoRjQyVVFVZldWQVdCR
+      nMiLCJ5IjoiOVZFNGpmX09rX282NHpiVFRsY3VOSmFqSG10NnY5VERWclUwQ2R2R
+      1JEQSIsImNydiI6IlAtMjU2In19.eyJqdGkiOiJlMWozVl9iS2ljOC1MQUVCIiwiaHRtIj
+      oiR0VUIiwiaHR1IjoiaHR0cHM6Ly9yZXNvdXJjZS5leGFtcGxlLm9yZy9wcm90ZWN0Z
+      WRyZXNvdXJjZSIsImlhdCI6MTU2MjI2MjYxOCwiYXRoIjoiZlVIeU8ycjJaM0RaNTNF
+      c05yV0JiMHhXWG9hTnk1OUlpS0NBcWtzbVFFbyJ9.2oW9RP35yRqzhrtNP86L-Ey71E
+      OptxRimPPToA1plemAgR6pxHF8y6-yqyVnmcw6Fy1dqd-jfxSYoMxhAJpLjA
+
+.. literalinclude:: ../../examples/batch-credential-request.json
+  :language: JSON
+
+
+Il contenuto decodificato degli elementi ``jwt`` nell'array ``jwt`` è simile a quanto spiegato nel **Passo 16**.
+
+**Passi 20-24 (Credential Response)**: Il Credential Issuer DEVE convalidare il *JWT DPoP Proof* in base alle istruzioni definite all'interno della Sezione 4.3 di (:rfc:`9449`) e verificare se l'*Access Token* è valido e idoneo per la Credenziale richiesta. Il Credential Issuer DEVE convalidare tutte le prove fornite nel parametro ``proof`` (**Passo 15**) o ``proofs`` (**Passo 18**) a cui le nuove Credenziali DEVONO essere vincolate, secondo quanto riportato nell'Appendice F1 di `OpenID4VCI`_. Se tutti i controlli hanno esito positivo, il Credential Issuer restituisce la Credenziale emessa all'interno del parametro ``credentials``. Il numero di elementi nell'array ``credentials`` corrisponde al numero di chiavi fornite dall'Istanza del Wallet tramite il parametro ``proof`` (**Passo 16**) o il parametro ``proofs`` (**Passo 19**). L'Istanza del Wallet DEVE eseguire i seguenti controlli prima di procedere con l'archiviazione sicura delle Credenziali:
+
     1. DEVE verificare che il PID/(Q)EAA contenuto nella `Credential Response` contenga tutti i parametri obbligatori e i valori siano validati secondo la :ref:`Tabella dei parametri della Credential Response <table_credential_response_claim>`.
     2. DEVE verificare l'integrità dell'Attestato Elettronico verificando la firma utilizzando l'algoritmo specificato nel parametro dell'header ``alg`` di SD-JWT (:ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`) e la chiave pubblica che è identificata utilizzando l'header ``kid`` dell'SD-JWT.
-    3. DEVE verificare che l'Attestato Elettronico ricevuto (nel claim ``credential``) corrisponda al tipo di Attestato Elettronico richiesto e sia conforme allo schema specifico di quell'Attestato Elettronico definito in :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`.
+    3. DEVE verificare che l'Attestato o gli Attestati Elettronici ricevuti (nel claim ``credential``) corrispondano al tipo di Attestato Elettronico richiesto e sia conforme allo schema specifico di quell'Attestato Elettronico definito in :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`.
     4. DEVE elaborare e verificare l'Attestato Elettronico nel formato SD-JWT VC (secondo la Sezione 5 di `SD-JWT`_) o nel formato mdoc-CBOR.
     5. DEVE verificare la Trust Chain nell'header dell'SD-JWT VC per verificare che il Credential Issuer sia affidabile.
 
-Se i controlli sopra hanno successo, l'Istanza del Wallet richiede il consenso dell'Utente per memorizzare l'Attestato Elettronico. Dopo aver ricevuto il consenso, l'Istanza del Wallet memorizza in modo sicuro l'Attestato Elettronico.
+Se i controlli sopra hanno successo, l'Istanza del Wallet richiede il consenso dell'Utente per memorizzare l'Attestato o gli Attestati Elettronici. Dopo aver ricevuto il consenso, l'Istanza del Wallet memorizza in modo sicuro l'Attestato Elettronico.
 
 Di seguito è riportato un esempio non normativo di una risposta di successo contenente un Attestato Elettronico nel formato SD-JWT VC.
 
@@ -361,11 +403,26 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
 .. literalinclude:: ../../examples/mdoc-credential-response.json
   :language: JSON
 
+Di seguito è riportato un esempio non normativo di una risposta di successo contenente un batch di Attestati Elettronici nel formato SD-JWT VC.
+
+.. code-block:: http
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+    Cache-Control: no-store
+    Pragma: no-cache
+    
+.. literalinclude:: ../../examples/sd-jwt-batch-credential-response.json
+  :language: JSON
+
 
 .. note::
-  Se l'Attestato Elettronico richiesto non può essere emesso immediatamente e richiede più tempo, il Credential Issuer DOVREBBE supportare il Deferred Flow (Passo 24) come specificato nella Sezione :ref:`credential-issuance-endpoint:Deferred Endpoint`.
+  Quando l'Istanza del Wallet riceve un nuovo batch contentente le stesse credenziali con gli stessi claim, il Wallet DEVE eliminare le Credenziali precedenti.
 
-**Passo 22 (`Notification Request`)**: Secondo la Sezione 10.1 di [`OpenID4VCI`_], il Wallet invia una richiesta HTTP POST al Notification Endpoint utilizzando il tipo di media *application/json*, come nel seguente esempio non normativo.
+.. note::
+  Se l'Attestato Elettronico richiesto non può essere emesso immediatamente e richiede più tempo, il Credential Issuer DOVREBBE supportare il Deferred Flow (**passo 27**) come specificato nella Sezione :ref:`credential-issuance-endpoint:Deferred Endpoint`. Inoltre, in caso di emissione in batch, lo stesso ``transaction_id`` si riferisce a tutte le Credenziali richieste nel batch.
+
+**Passo 25 (Notification Request)**: Secondo la Sezione 10.1 di [`OpenID4VCI`_], il Wallet invia una richiesta HTTP POST all'Endpoint di notifica utilizzando il tipo di supporto *application/json* come nel seguente esempio non normativo.
 
 .. code-block:: http
 
@@ -385,7 +442,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
   :language: JSON
 
 
-**Passo 23 (`Notification Response`)**: Quando il Credential Issuer ha ricevuto con successo la `Notification Request` dal Wallet, DEVE rispondere con un codice di stato HTTP *204* come raccomandato nella Sezione 10.2 di [`OpenID4VCI`_]. Di seguito è riportato un esempio non normativo di risposta a una `Notification Request` riuscita:
+**Passo 26 (`Notification Response`)**: Quando il Credential Issuer ha ricevuto con successo la `Notification Request` dal Wallet, DEVE rispondere con un codice di stato HTTP *204* come raccomandato nella Sezione 10.2 di [`OpenID4VCI`_]. Di seguito è riportato un esempio non normativo di risposta a una `Notification Request` riuscita:
 
 .. code-block:: http
 
@@ -393,6 +450,9 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
 
 .. note::
    Nel sistema della Fonte Autentica talvolta sono disponibili molteplici set di dati pertanto l'Utente potrebbe essere interessato a ottenere più di una Credenziale. In questi casi, L'Issuance flow rimane lo stesso descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. Nella Token Response (**Passo 11**), il Fornitore di Credenziali genera un identificativo univoco (``credential_identifier``) per ciascun set di dati fornito nel parametro ``AttributeClaims`` del servizio PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Pertanto, l'array ``credential_identifiers`` fornito nel parametro ``authorization_details`` contiene gli identificativi di ciascun set di dati. Successivamente, il Wallet invia una Credential Request (**Passo 16**) per ciascun identificativo, ottenendo più Credenziali distinte che vengono mostrate individualmente all'Utente per la loro accettazione. Infine, il Fornitore di Credenziali viene informato dal Wallet dell'esito tramite il :ref:`credential-issuance-endpoint:Notification Endpoint`.
+
+.. note::
+  Per le Credenziali Digitali emesse in batch, il ``notification_id`` si riferisce a tutte le credenziali emesse in batch. La Notification Response (ad esempio ``credential_accepted`` o ``credential_stored``) si applica pertanto a tutte le credenziali contenute nel batch; qualsiasi errore parziale viene trattato come errore dell'intero batch.
 
 Refresh Token Flow
 -------------------

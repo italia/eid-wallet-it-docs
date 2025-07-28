@@ -767,6 +767,12 @@ Il Credential Endpoint DEVE accettare e convalidare il *DPoP proof* inviato nel 
       - **proof_type**: stringa JSON che denota il tipo di prova in termini di formato. DEVE essere `jwt`.
       - **jwt**: il JWT utilizzato come prova di possesso.
     - [`OpenID4VCI`_].
+  * - **proofs**
+    - OBBLIGATORIO se il parametro ``proof`` è assente. Oggetto che fornisce una o più prove di possesso del materiale crittografico a cui saranno vincolate le Istanze di Credenziali emesse. L'oggetto ``proofs`` DEVE contenere i seguenti claim obbligatori:
+
+      - **proof_type**: stringa JSON che denota il tipo di prova in termini di formato. Il suo valore DEVE essere configurato con `jwt`.
+      - **jwt**: un array di JWT, in cui ogni elemento all'interno dell'array viene utilizzato come prova di possesso.
+    - [`OpenID4VCI`_].
   * - **transaction_id**
     - OBBLIGATORIO solo in caso di Deferred Flow. Stringa che identifica una transazione di emissione posticipata. NON DEVE essere presente nel flusso di emissione immediato.
     - Sezione 9.1 di [`OpenID4VCI`_].
@@ -831,7 +837,8 @@ La Credential Response contiene i seguenti parametri:
     - **Descrizione**
     - **Riferimento**
   * - **credentials**
-    - OBBLIGATORIO se ``lead_time`` e ``transaction_id`` non sono presenti, altrimenti NON DEVE essere presente. Contiene i seguenti parametri:
+    - OBBLIGATORIO se ``lead_time`` e ``transaction_id`` non sono presenti, altrimenti NON DEVE essere presente. Array di una o più Credenziali emesse. Il numero di elementi nell'array delle Credenziali corrisponde al numero di chiavi che l'Istanza del Wallet ha fornito tramite il parametro ``proof`` o ``proofs`` nella Credential Request. L'array DEVE contenere oggetti JSON, dove ogni oggetto DEVE avere il claim ``credential``. Il valore del claim ``credential`` DEVE essere configurato con una stringa contenente la Credenziale codificata, come descritto di seguito:
+
 
           - **credential**: OBBLIGATORIO. Stringa contenente un Attestato Elettronico emesso. Se l'identificativo del formato richiesto è ``dc+sd-jwt`` allora il parametro ``credential`` NON DEVE essere ricodificato. Se l'identificativo di formato richiesto è ``mso_mdoc`` allora il parametro ``credential`` DEVE essere una rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO 18013-5]. Questa struttura DOVREBBE contenere tutti i Namespaces e IssuerSignedItems inclusi negli AuthorizedNamespaces del MobileSecurityObject.
     - Sezione 8.3, Allegato A2.4 e Allegato A3.4 di [`OpenID4VCI`_].
@@ -883,10 +890,10 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
       - Il Credential Issuer non può soddisfare la richiesta perché il Formato dell'Attestato Elettronico richiesto non è supportato. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_proof``
-      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proof`` nella Credential Request non è valido o è assente. Sezione 8.3.1 di [`OpenID4VCI`_].
+      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proof``o ``proofs`` nella Credential Request non è valido o è assente oppure non contiene il valore del ``c_nonce``. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_nonce``
-      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proof`` nella Credential Request utilizza un nonce non valido. Sezione 8.3.1 di [`OpenID4VCI`_].
+      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proof`` o ``proofs`` nella Credential Request utilizza un nonce non valido. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_encryption_parameters``
       - Il Credential Issuer non può soddisfare la richiesta perché i parametri di crittografia nella Credential Request non sono validi o mancanti. Sezione 8.3.1 di [`OpenID4VCI`_].

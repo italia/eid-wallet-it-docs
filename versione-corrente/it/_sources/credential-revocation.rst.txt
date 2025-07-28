@@ -104,6 +104,11 @@ le condizioni che hanno portato alla sua sospensione vengono risolte, o passa a 
   * Guidata dal caso d'uso, basata sullo stato di validità degli attributi contenuti nell'Attestato Elettronico di Attributi (Q)EAA. In questo caso, una Fonte Autentica DEVE notificare al Fornitore di Attestati Elettronici qualsiasi cambiamento nello stato degli attributi attestati dall'Attestato Elettronico di Attributi (Q)EAA.
   * Esplicitamente richiesta dall'Utente.
 
+Ciclo di vita delle credenziali digitali ottenute in batch
+----------------------------------------------------------
+
+Ciascuna delle Credenziali Digitali emesse in batch, entra immediatamente nel proprio stato relativo al ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di singola Credenziale, utilizzando i parametri individuali della Credenziale (ad esempio, date di validità, status assertion).
+
 Gestione del Ciclo di Vita degli Attestati Elettronici
 ------------------------------------------------------
 
@@ -267,6 +272,17 @@ Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte A
 Il Fornitore di Attestati Elettronici, una volta ricevuta la notifica, DEVE provvedere all'aggiornamento dello stato della Credenziale secondo la modalità definite per il meccanismo di validità utilizzato. Il Fornitore di Attestati Elettronici PUÒ inviare una notifica all'Utente utilizzando un eventuale canale di comunicazione precedentemente registrato.
 
 L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità delle Credenziali Digitali in essa memorizzate, riceve lo stato aggiornato. Nel caso in cui lo Stato della Credenziale Digitale venga modificato in INVALID il Fornitore di Attestati Elettronici DEVE informarne l'Utente. Nel caso in cui lo stato della Credenziale Digitale venga modificato in UPDATE (equivalentemente 0x03) o ATTRIBUTE_UPDATE (equivalentemente 0x04), il Wallet PUO' procedere alla riemissione della Credenziale Digitale come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+
+Gestione del ciclo di vita delle Credenziali in batch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Quando più Credenziali Digitali vengono emesse insieme in un singolo batch, il loro ciclo di vita rimane completamente granulare:
+
+* **Trigger raggruppati, aggiornamenti indipendenti**: una singola richiesta di aggiornamento dello stato del batch che fa riferimento al ``notification_id`` del batch e inviata da qualsiasi entità autorizzata (ad esempio, l'Istanza del Wallet tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite PDND) viene gestita come N modifiche di stato separate. Il Credential Issuer aggiorna lo stato di ciascuna Credenziale singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``).
+* **Revoca a livello di batch**: la stessa richiesta di aggiornamento del batch funge anche da richiesta di revoca totale. Il Credential Issuer contrassegna ogni credenziale nel batch come revocata ed emette una singola notifica per l'intero batch.
+
+.. note::
+  Poiché l'interfaccia utente del Wallet in genere visualizza un batch come una singola Credenziale (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove anche l'intero batch. Non è possibile eliminare o revocare una sola credenziale; qualsiasi richiesta di eliminazione che utilizzi il ``notification_id`` del batch si applica a tutte le credenziali presenti in quel batch.
 
 
 Meccanismi di Verifica della Validità
