@@ -8,7 +8,8 @@ Design dell'Esperienza Utente
   :caption: Indice di Design dell’Esperienza Utente 
   :maxdepth: 3 
 
-.. include:: design.rst 
+.. include:: design.rst
+.. include:: official-resources.rst
 
 
 Panoramica delle funzionalità
@@ -307,21 +308,21 @@ Per garantire l'Autenticazione tramite il Sistema IT-Wallet, il Verificatore di 
 .. only:: format_html
 
   .. figure:: ./images/svg/discovery-page.svg
-    :alt: Modello di layout di Discovery Page a griglia
-    :width: 100%
+     :alt: Modello di layout di Discovery Page a griglia
+     :width: 100%
 
-    Modello di layout di Discovery Page a griglia  
+     Modello di layout di Discovery Page a griglia  
 
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/discovery-page.pdf
-    :alt: Modello di layout di Discovery Page a griglia 
-    :width: 100% 
+     :alt: Modello di layout di Discovery Page a griglia 
+     :width: 100% 
 
      Modello di layout di Discovery Page a griglia 
 
 
-In alternativa, il Verificatore di Attestati Elettronici PUÒ mantenere la propria Discovery Page, ma DEVE in ogni caso integrare il Pulsante di Autenticazione, come da indicazioni presenti nella sezione :ref:`brand-identity:Pulsante di Autenticazione`.
+In alternativa, il Verificatore di Attestati Elettronici PUÒ mantenere la propria Discovery Page, ma DEVE in ogni caso integrare il Pulsante di Autenticazione, come da indicazioni presenti nella sezione `Pulsante di Autenticazione`_.
 
 In ogni caso, nella pagina, il Verificatore di Attestati Elettronici:
 
@@ -342,16 +343,16 @@ Il Verificatore di Attestati Elettronici DOVREBBE implementare la Selection Page
 .. only:: format_html 
 
   .. figure:: ./images/svg/selection-page.svg
-    :alt: Selection Page
-    :width: 100%
+     :alt: Selection Page
+     :width: 100%
 
      Selection Page 
 
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/selection-page.pdf
-    :alt: Selection Page
-    :width: 100%
+  .. figure:: ./images/pdf/selection-page.pdf
+     :alt: Selection Page
+     :width: 100%
 
      Selection Page 
 
@@ -382,16 +383,16 @@ Il Verificatore di Attestati Elettronici DOVREBBE implementare la QR code page (
 .. only:: format_html 
 
   .. figure:: ./images/svg/QR-page.svg
-    :alt: QR code page
-    :width: 100%
+     :alt: QR code page
+     :width: 100%
 
      QR code page 
 
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/QR-page.pdf
-    :alt: QR code page
-    :width: 100%
+  .. figure:: ./images/pdf/QR-page.pdf
+     :alt: QR code page
+     :width: 100%
 
      QR code page 
 
@@ -421,15 +422,16 @@ Il Verificatore di Attestati Elettronici DOVREBBE implementare la waiting page (
 .. only:: format_html 
 
   .. figure:: ./images/svg/waiting-page.svg
-    :alt: Waiting page
-    :width: 100%
+     :alt: Waiting page
+     :width: 100%
 
      Waiting page 
 
-.. only:: format_latex 
-  .. figure:: ./images/svg/waiting-page.pdf
-    :alt: Waiting page
-    :width: 100%
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/waiting-page.pdf
+     :alt: Waiting page
+     :width: 100%
 
      Waiting page 
 
@@ -447,16 +449,16 @@ Il Verificatore di Attestati Elettronici DOVREBBE implementare la thank you page
 .. only:: format_html 
 
   .. figure:: ./images/svg/thank-you-page.svg
-    :alt: Thank you page
-    :width: 100%
+     :alt: Thank you page
+     :width: 100%
 
      Thank you page 
 
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/thank-you-page.pdf
-    :alt: Thank you page
-    :width: 100%
+  .. figure:: ./images/pdf/thank-you-page.pdf
+     :alt: Thank you page
+     :width: 100%
 
      Thank you page 
 
@@ -475,16 +477,16 @@ Il Verificatore di Attestati Elettronici DOVREBBE implementare la error page res
 .. only:: format_html 
 
   .. figure:: ./images/svg/error-page.svg
-    :alt: Error page
-    :width: 100%
+     :alt: Error page
+     :width: 100%
 
      Error page 
 
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/error-page.pdf
-    :alt: Error page
-    :width: 100%
+  .. figure:: ./images/pdf/error-page.pdf
+     :alt: Error page
+     :width: 100%
 
      Error page 
 
@@ -518,21 +520,23 @@ Il Pulsante di Autenticazione è caratterizzato dai seguenti requisiti:
 
 - il Pulsante di Autenticazione DOVREBBE essere sempre accompagnato da un link esterno (ad es. “Scopri di più”) che rimanda al sito ufficiale del Sistema IT-Wallet ``www.wallet.gov.it``; 
 
-- Qualora lo spazio a disposizione lo consenta e/o il contesto lo richieda, il Pulsante di Autenticazione DOVREBBE essere accompagnato da un testo descrittivo, ad esempio “IT-Wallet è il Sistema di portafoglio digitale italiano che ti dà pieno controllo sulle tue informazioni, senza che l’ente che le ha rilasciate venga a conoscenza di quando e come vengono usate” oppure “Accedi tramite un’app IT-Wallet, il Sistema di portafoglio digitale italiano che semplifica le interazioni tra cittadini, pubbliche amministrazioni e soggetti privati, nel mondo fisico e in quello digitale.  Con IT-Wallet hai il pieno controllo sulle tue informazioni, condividendole solo quando necessario e in modo sicuro, senza che l’ente che le ha rilasciate venga a conoscenza di quando e come vengono usate.”. 
+- Qualora lo spazio a disposizione lo consenta e/o il contesto lo richieda, il Pulsante di Autenticazione DOVREBBE essere accompagnato da un testo descrittivo, ad esempio “IT-Wallet è il Sistema di portafoglio digitale italiano che ti dà pieno controllo sulle tue informazioni, senza che l’ente che le ha rilasciate venga a conoscenza di quando e come vengono usate” oppure “Accedi tramite un’app IT-Wallet, il Sistema di portafoglio digitale italiano che semplifica le interazioni tra cittadini, pubbliche amministrazioni e soggetti privati, nel mondo fisico e in quello digitale. Con IT-Wallet hai il pieno controllo sulle tue informazioni, condividendole solo quando necessario e in modo sicuro, senza che l’ente che le ha rilasciate venga a conoscenza di quando e come vengono usate.”. 
 
 Di seguito alcuni esempi non normativi di layout del Pulsante di Autenticazione:  
 
-.. only:: format_html 
+.. only:: format_html
+
   .. figure:: ./images/svg/authentication-button-layout.svg  
-    :alt: Varianti del Pulsante di Autenticazione
-    :width: 100% 
+     :alt: Varianti del Pulsante di Autenticazione
+     :width: 100% 
 
  Varianti del Pulsante di Autenticazione 
 
-.. only:: format_latex  
+.. only:: format_latex
+
   .. figure:: ./images/pdf/authentication-button-layout.pdf 
-    :alt: Varianti del Pulsante di Autenticazione 
-    :width: 100% 
+     :alt: Varianti del Pulsante di Autenticazione 
+     :width: 100% 
 
  Varianti del Pulsante di Autenticazione 
 
@@ -564,7 +568,7 @@ Il pulsante è disponibile in 3 varianti (default / M / L ) ed in formato "get" 
 Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti corretti alla Brand Identity verranno inclusi nelle versioni successive delle presenti regole tecniche.
 
 .. literalinclude:: ../../examples/authentication_button.svg
-  :language: SVG
+  :language: xml
 
 
 Gestione degli Attestati Elettronici

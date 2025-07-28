@@ -8,6 +8,7 @@ User Experience Design
   :maxdepth: 3 
 
 .. include:: design.rst 
+.. include:: official-resources.rst
 
 Functionalities overview
 ------------------------
@@ -268,7 +269,7 @@ Authentication is a specific use case of remote presentation that allows the Use
 
 The Authentication process can be carried out using both the same-device and cross-device modes described above. For the User Experience functional requirements that MUST be addressed, please refer to the functional requirements for `remote presentation`_ in same-device and cross-device modes.
 
-From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated :ref:`Authentication Button`.
+From a User Experience perspective, the Authentication process differs from the Presentation process only in how it is initiated, which is through a dedicated `Authentication Button`_.
 
 To ensure a consistent and seamless Authentication process across all Relying Parties, each Relying Party MUST follow the visual and User Experience requirements outlined below, together with compliance with [REF_ACCESSIBILITY] and, in the case of public entities, with [GL_DESIGN]
 
@@ -313,7 +314,7 @@ To enable authentication via the IT-Wallet System, the Relying Party MAY replace
 
      Layout Model of Discovery Page in grid 
 
-Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the :ref:`brand-identity:Authentication Button` section.
+Alternatively, the Relying Party MAY maintain its own Discovery Page but MUST integrate the Authentication Button as specified in the `Authentication Button`_ section.
 
 The Relying Party implementing the page:
 
@@ -341,7 +342,7 @@ The Relying Party SHOULD implement the Selection Page made available in Official
 
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/selection-page.pdf
+  .. figure:: ./images/pdf/selection-page.pdf
      :alt: Selection Page
      :width: 100%
 
@@ -381,7 +382,7 @@ Relying Parties SHOULD implement the QR code page (cross-device) provided in the
  
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/QR-page.pdf
+  .. figure:: ./images/pdf/QR-page.pdf
      :alt: QR code page
      :width: 100%
 
@@ -420,7 +421,7 @@ Relying Parties SHOULD implement the waiting page (cross-device) provided in the
  
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/waiting-page.pdf
+  .. figure:: ./images/pdf/waiting-page.pdf
      :alt: Waiting page
      :width: 100%
 
@@ -447,7 +448,7 @@ Relying Parties SHOULD implement the thank you page provided in the Official Res
  
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/thank-you-page.pdf
+  .. figure:: ./images/pdf/thank-you-page.pdf
      :alt: Thank you page
      :width: 100%
 
@@ -475,7 +476,7 @@ Relying Parties SHOULD implement the error page provided in the Official Resourc
  
 .. only:: format_latex  
 
-  .. figure:: ./images/svg/error-page.pdf
+  .. figure:: ./images/pdf/error-page.pdf
      :alt: Error page
      :width: 100%
 
@@ -506,11 +507,12 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button MUST maintain a minimum distance from other elements (``quiet zone``) of at least 24px; 
 
-- The Authentication Button MUST state “Login with IT-Wallet.” 
+- The Authentication Button MUST state “Login with IT-Wallet.”;
 
 - The Authentication Button SHOULD always be accompanied by an external link (e.g., “Learn more”) that links to the official website of the IT-Wallet System ``www.wallet.gov.it``; 
 
-- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., “IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world.  With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
+- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., “IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
+
 
 Below are some non-mandatory examples of Authentication Button layouts: 
 
@@ -561,7 +563,7 @@ The references to the html code and the Brand Identity will be included in the n
 Below a non-normative example of the Authentication Button. The references to the Brand Identity will be included in the next releases of the present specifications.
 
 .. literalinclude:: ../../examples/authentication_button.svg
-  :language: SVG 
+  :language: xml 
 
 Management of Electronic Attestations
 -------------------------------------
