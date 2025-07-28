@@ -14,7 +14,7 @@ The template e-service **MUST** adhere to the following specifications:
 
     - **Name**: IT Wallet - Authentic Source - <``Credential name``>
     - **Intended Recipients**: IT Wallet - Authentic Source - <``Authentic Source domain``>
-    - **Description**: Provide the Credential Issuer with a new credential <``Credential name``>
+    - **Description**: Description text useful to the Credential Issuer about the new Credential <``Credential name``>
     - **Technology**: REST
     - **Data variation via Signal Hub**: True
     - **Version changelog**: Authentic Source e-service via template implementation
