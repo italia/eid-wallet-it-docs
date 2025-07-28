@@ -1,8 +1,7 @@
 Credential Issuance Test Matrix
 ---------------------------------
 
-This section provides the set of test cases for verifying conformance of a Credential Issuance implementations to the technical rules defined in the IT-Wallet ecosystem.
-Tests related to Credential Issuer are related to the issuance of Credential of Public Interest, as published within the Credential Catalogue.
+This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Issuer solutions. It is also intended for assessment bodies inspecting and validating the implementations of Credential Issuer solutions.
 
 .. note::
   References about official OpenID4VCI test plans will update this section in future releases.
