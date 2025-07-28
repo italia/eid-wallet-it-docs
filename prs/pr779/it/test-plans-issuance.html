@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html lang="it" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>15.3.1.4. Matrice di Test per l&#39;Emissione delle Credenziali &#8212; IT-Wallet Technical Documentation - PR #779</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=3fd72285"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=da26b4cc"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Indice" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+    <link rel="next" title="15.3.1.5. Matrice di Test per la Presentazione di Credenziali Remota" href="test-plans-remote-presentation.html" />
+    <link rel="prev" title="15.3.1.3. Matrice di Test per la Soluzione Wallet" href="test-plans-wallet.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #779</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Ricerca veloce</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Vai" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Principi di design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">15. Appendice</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">15.1. Istanza dell'Applicazione Mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">15.3. Test Plans</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">15.3.1.1. Matrice di Test per la Valutazione delle Firme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">15.3.1.2. Matrice di Test per la Valutazione della Fiducia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet.html">15.3.1.3. Matrice di Test per la Soluzione Wallet</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.3.1.4. Matrice di Test per l'Emissione delle Credenziali</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-remote-presentation.html">15.3.1.5. Matrice di Test per la Presentazione di Credenziali Remota</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-proximity-presentation.html">15.3.1.6. Matrice di Test per la Presentazione di Credenziali in Prossimità</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Specifica OpenAPI del Credential Issuer PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.5. Specifica OpenAPI della Fonte Autentica PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.6. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="matrice-di-test-per-l-emissione-delle-credenziali">
+<h1><span class="section-number">15.3.1.4. </span>Matrice di Test per l'Emissione delle Credenziali<a class="headerlink" href="#matrice-di-test-per-l-emissione-delle-credenziali" title="Link to this heading">¶</a></h1>
+<p>Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Issuer. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Issuer.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Riferimenti sui piani di test ufficiali OpenID4VCI aggiorneranno questa sezione nelle versioni future.</p>
+</div>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Test Case ID</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Expected Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ISS-001</p></td>
+<td><p>Setup</p></td>
+<td><p>Validare la configurazione della Wallet Instance</p></td>
+<td><p>La Wallet Instance è configurata con una Wallet Attestation valida. Verificare che la chiave pubblica sia valida e correttamente legata a un elemento sicuro.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-002</p></td>
+<td><p>Discovery</p></td>
+<td><p>Credential Issuer Discovery</p></td>
+<td><p>La Wallet Instance scopre con successo i Digital Credential Issuer affidabili utilizzando il Credential Catalogue e verifica la conformità della loro configurazione e delle policy tramite Federation API.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-003</p></td>
+<td><p>Metadata</p></td>
+<td><p>Recupero dei metadata del Credential Issuer</p></td>
+<td><p>La Wallet Instance recupera e valida i metadata del Credential Issuer. I metadata includono i formati PID, gli algoritmi supportati e i parametri di interoperabilità.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-004</p></td>
+<td><p>Authorization, Authentication</p></td>
+<td><p>Richiesta di Credential tramite Authorization Code Flow</p></td>
+<td><p>La Wallet Instance richiede con successo una Credential tramite Authorization Code Flow. Validare l'uso di PKCE con un code verifier di 43-128 caratteri.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-005</p></td>
+<td><p>Authentication</p></td>
+<td><p>Autenticazione dell'Utente con PID Provider</p></td>
+<td><p>L'Utente è autenticato con LoA 3 (High) dal PID Provider. Validare l'uso dello schema di identità digitale CieID e assicurarsi che sia stato ottenuto il consenso dell'Utente.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-006</p></td>
+<td><p>Issuance</p></td>
+<td><p>Emissione della Credential</p></td>
+<td><p>La Credential è emessa e legata al materiale chiave della Wallet Instance. Validare il processo di binding e assicurare l'integrità e la conformità al data model della Credential emessa.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-007</p></td>
+<td><p>Authentication</p></td>
+<td><p>Autenticazione dell'Utente con (Q)EAA Provider</p></td>
+<td><p>L'Utente è autenticato presentando un PID valido. La richiesta di presentazione, il PID è valido e precedentemente ottenuto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-008</p></td>
+<td><p>Security</p></td>
+<td><p>Validazione della Pushed Authorization Request (PAR)</p></td>
+<td><p>Il Credential Issuer valida con successo la richiesta PAR.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-009</p></td>
+<td><p>Security</p></td>
+<td><p>Validazione della Token Request</p></td>
+<td><p>Il Credential Issuer valida la token request ed emette i token. Validare la prova DPoP e assicurarsi che il codice di autorizzazione sia valido e non riutilizzato.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-010</p></td>
+<td><p>Security</p></td>
+<td><p>Validazione della Credential Request</p></td>
+<td><p>Il Credential Issuer valida la richiesta di Credential ed emette le Credential. Validare la proof of possession e assicurarsi che il tipo di credential corrisponda alla richiesta.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-011</p></td>
+<td><p>Deferred Issuance</p></td>
+<td><p>Flusso di Deferred Issuance</p></td>
+<td><p>La Wallet Instance gestisce correttamente la deferred issuance e recupera le credential successivamente. Validare l'uso di un identificatore univoco di transazione (<cite>transaction_id</cite>) e assicurarsi che la Credential sia emessa dopo il lead time specificato.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-012</p></td>
+<td><p>Notification</p></td>
+<td><p>Gestione delle notifiche</p></td>
+<td><p>La Wallet Instance invia e riceve notifiche correttamente. Validare l'uso di <cite>notification_id</cite> e assicurarsi che il tipo di evento sia correttamente riportato.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-013</p></td>
+<td><p>Credential Issuance</p></td>
+<td><p>Il Provider (Q)EAA offre Credential all'Holder</p></td>
+<td><p>Le Wallet Instance valutano l'offerta e avviano il flusso di autorizzazione dopo aver valutato la fiducia con il Provider (Q)EAA.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-014</p></td>
+<td><p>Security</p></td>
+<td><p>Validare <cite>client_id</cite> nella richiesta PAR</p></td>
+<td><p>Assicurarsi che il <cite>client_id</cite> nel body della richiesta corrisponda al claim <cite>client_id</cite> nel Request Object.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-015</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il claim <cite>iss</cite> nel Request Object</p></td>
+<td><p>Assicurarsi che il claim <cite>iss</cite> nel Request Object corrisponda al claim <cite>client_id</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-016</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il claim <cite>aud</cite> nel Request Object</p></td>
+<td><p>Assicurarsi che il claim <cite>aud</cite> nel Request Object sia uguale all'identificativo del Credential Issuer.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-017</p></td>
+<td><p>Security</p></td>
+<td><p>Rifiutare la richiesta PAR con <cite>request_uri</cite></p></td>
+<td><p>Assicurarsi che la richiesta PAR sia rifiutata se contiene il parametro <cite>request_uri</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-018</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri obbligatori nel Request Object</p></td>
+<td><p>Assicurarsi che il Request Object contenga tutti i parametri obbligatori e che i valori siano validati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-019</p></td>
+<td><p>Security</p></td>
+<td><p>Validare <cite>OAuth-Client-Attestation-PoP</cite></p></td>
+<td><p>Assicurarsi che il parametro <cite>OAuth-Client-Attestation-PoP</cite> sia validato.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-020</p></td>
+<td><p>Authorization</p></td>
+<td><p>Validare <cite>request_uri</cite> nella Authorization Request</p></td>
+<td><p>Assicurarsi che i valori di <cite>request_uri</cite> siano monouso e che le richieste scadute siano rifiutate.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-021</p></td>
+<td><p>Authorization</p></td>
+<td><p>Identificare la richiesta dalla PAR inviata</p></td>
+<td><p>Assicurarsi che la richiesta sia identificata come risultato della PAR inviata.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-022</p></td>
+<td><p>Authorization</p></td>
+<td><p>Rifiutare Authorization Request senza <cite>request_uri</cite></p></td>
+<td><p>Assicurarsi che tutte le Authorization Request senza <cite>request_uri</cite> siano rifiutate.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-023</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri della Authorization Response</p></td>
+<td><p>Assicurarsi che la Authorization Response contenga tutti i parametri definiti.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-024</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il parametro <cite>state</cite> nella Authorization Response</p></td>
+<td><p>Assicurarsi che il parametro <cite>state</cite> nella risposta corrisponda al valore inviato nel Request Object.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-025</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il parametro <cite>iss</cite> nella Authorization Response</p></td>
+<td><p>Assicurarsi che il parametro <cite>iss</cite> corrisponda al Credential Issuer previsto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-026</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la DPoP Proof per il Token Endpoint</p></td>
+<td><p>Assicurarsi che la DPoP Proof JWT sia valida e leghi l'Access Token alla Wallet Instance.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-027</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri della Token Request</p></td>
+<td><p>Assicurarsi che la token request includa <cite>code</cite>, <cite>code_verifier</cite> e una OAuth 2.0 Attestation valida.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-028</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il codice di autorizzazione nella Token Request</p></td>
+<td><p>Assicurarsi che il codice di autorizzazione sia valido e non riutilizzato.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-029</p></td>
+<td><p>Security</p></td>
+<td><p>Validare <cite>redirect_uri</cite> nella Token Request</p></td>
+<td><p>Assicurarsi che il <cite>redirect_uri</cite> corrisponda al valore nel precedente Request Object.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-030</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la DPoP Proof JWT nella Token Request</p></td>
+<td><p>Assicurarsi che la DPoP Proof JWT sia validata secondo la specifica.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-031</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la Nonce Request</p></td>
+<td><p>Assicurarsi che la Nonce Request sia inviata correttamente e che venga ottenuto un nuovo <cite>c_nonce</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-032</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la Nonce Response</p></td>
+<td><p>Assicurarsi che il <cite>c_nonce</cite> nella Nonce Response sia imprevedibile e utilizzato correttamente.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-033</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la DPoP Proof per il Credential Endpoint</p></td>
+<td><p>Assicurarsi che la DPoP Proof JWT per il Credential Endpoint sia valida e leghi la Credential alla Wallet Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-034</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri della Credential Request</p></td>
+<td><p>Assicurarsi che la Credential Request includa Access Token, DPoP Proof JWT e una valid proof of possession.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-035</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la JWT Proof nella Credential Request</p></td>
+<td><p>Assicurarsi che la JWT proof includa tutti i claim richiesti e sia firmata correttamente.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-036</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il <cite>c_nonce</cite> nella Credential Request</p></td>
+<td><p>Assicurarsi che il <cite>c_nonce</cite> nella JWT corrisponda al valore fornito dal server.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-037</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri della Credential Response</p></td>
+<td><p>Assicurarsi che la Credential Response contenga tutti i parametri obbligatori e che i valori siano validati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-038</p></td>
+<td><p>Security</p></td>
+<td><p>Validare l'integrità della Credential</p></td>
+<td><p>Assicurarsi dell'integrità della Credential emessa verificando la firma.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-039</p></td>
+<td><p>Security</p></td>
+<td><p>Validare tipo e schema della Credential</p></td>
+<td><p>Assicurarsi che la Credential emessa corrisponda al tipo richiesto e sia conforme allo schema.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-040</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la Trust Chain nella Credential</p></td>
+<td><p>Assicurarsi che la Trust Chain nell'header della Credential verifichi la fiducia del Credential Issuer al momento dell'emissione.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-041</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri di Deferred Issuance</p></td>
+<td><p>Assicurarsi che i parametri di Deferred Issuance siano usati correttamente e che la Credential sia emessa dopo il lead time specificato.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-042</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri della Notification Request</p></td>
+<td><p>Assicurarsi che la Notification Request includa <cite>notification_id</cite> e un tipo di evento valido.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-043</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la Notification Response</p></td>
+<td><p>Assicurarsi che la Notification Response sia ricevuta con il corretto status code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-044</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il flusso Refresh Token</p></td>
+<td><p>Assicurarsi che il flusso Refresh Token sia usato correttamente e che i token siano legati alla chiave DPoP.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-045</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la scadenza del Refresh Token</p></td>
+<td><p>Assicurarsi che il Refresh Token non sia scaduto e sia usato entro il tempo consentito.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-046</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i token sender-constrained</p></td>
+<td><p>Assicurarsi che i Refresh Token siano crittograficamente legati alla Wallet Instance.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-047</p></td>
+<td><p>Security</p></td>
+<td><p>Limitare l'uso del Refresh Token</p></td>
+<td><p>Assicurarsi che l'uso dei Refresh Token sia limitato e conforme alla specifica.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-048</p></td>
+<td><p>Revocation</p></td>
+<td><p>Validare la durata delle Wallet Attestation</p></td>
+<td><p>Assicurarsi che le Wallet Attestation siano a breve durata o fornite con Status List se a lunga durata.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-049</p></td>
+<td><p>Security</p></td>
+<td><p>Validare il flusso di Re-Issuance</p></td>
+<td><p>Assicurarsi che il flusso di Re-Issuance sia usato correttamente e conforme alla specifica.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-050</p></td>
+<td><p>Security</p></td>
+<td><p>Validare l'aggiornamento del Data Model/Format</p></td>
+<td><p>Assicurarsi che l'aggiornamento del Data Model/Format sia gestito correttamente durante la Re-Issuance.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-051</p></td>
+<td><p>Security</p></td>
+<td><p>Validare l'aggiornamento del set di attributi utente</p></td>
+<td><p>Assicurarsi che gli aggiornamenti del set di attributi utente siano gestiti correttamente durante la Re-Issuance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-052</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la scadenza della Credential in Re-Issuance</p></td>
+<td><p>Assicurarsi che la nuova Credential abbia la stessa data di scadenza della precedente.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-053</p></td>
+<td><p>Security</p></td>
+<td><p>Validare l'autenticazione utente in Re-Issuance</p></td>
+<td><p>Assicurarsi che l'autenticazione utente sia richiesta per la Re-Issuance dopo la scadenza della Credential.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-054</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri del Deferred Endpoint</p></td>
+<td><p>Assicurarsi che i parametri del Deferred Endpoint siano usati correttamente e che la Credential sia emessa dopo il lead time specificato.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-055</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la Deferred Credential Request</p></td>
+<td><p>Assicurarsi che la Deferred Credential Request sia inviata correttamente e che la Credential sia emessa.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-056</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la Deferred Credential Response</p></td>
+<td><p>Assicurarsi che la Deferred Credential Response contenga tutti i parametri obbligatori e che i valori siano validati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-057</p></td>
+<td><p>Security</p></td>
+<td><p>Validare i parametri del Notification Endpoint</p></td>
+<td><p>Assicurarsi che i parametri del Notification Endpoint siano usati correttamente e che l'evento sia riportato.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-058</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la gestione degli errori nel Notification Endpoint</p></td>
+<td><p>Assicurarsi che gli errori nel Notification Endpoint siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-059</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la gestione degli errori nel Credential Endpoint</p></td>
+<td><p>Assicurarsi che gli errori nel Credential Endpoint siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-060</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la gestione degli errori nel Token Endpoint</p></td>
+<td><p>Assicurarsi che gli errori nel Token Endpoint siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-061</p></td>
+<td><p>Security</p></td>
+<td><p>Validare la gestione degli errori nell'Authorization Endpoint</p></td>
+<td><p>Assicurarsi che gli errori nell'Authorization Endpoint siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-062</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel PAR Endpoint</p></td>
+<td><p>Assicurarsi che gli errori nel PAR Endpoint siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-063</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel Nonce Endpoint</p></td>
+<td><p>Assicurarsi che gli errori nel Nonce Endpoint siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-064</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel Deferred Endpoint</p></td>
+<td><p>Assicurarsi che gli errori nel Deferred Endpoint siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-065</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel flusso di Re-Issuance</p></td>
+<td><p>Assicurarsi che gli errori nel flusso di Re-Issuance siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-066</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel flusso Refresh Token</p></td>
+<td><p>Assicurarsi che gli errori nel flusso Refresh Token siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-067</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'emissione delle Credential</p></td>
+<td><p>Assicurarsi che gli errori nel processo di emissione delle Credential siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-068</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Credential Request</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Request siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-069</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Credential Response</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Response siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-070</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Credential Validation</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Validation siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-071</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Credential Integrity</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Integrity siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-072</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel Credential Type and Schema</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Type and Schema siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-073</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Trust Chain Validation</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Trust Chain Validation siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-074</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Deferred Issuance</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Deferred Issuance siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-075</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Notification Handling</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Notification Handling siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-076</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'User Authentication</p></td>
+<td><p>Assicurarsi che gli errori nel processo di User Authentication siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-077</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'User Consent</p></td>
+<td><p>Assicurarsi che gli errori nel processo di User Consent siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-078</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'User Notification</p></td>
+<td><p>Assicurarsi che gli errori nel processo di User Notification siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-079</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'aggiornamento del set di attributi utente</p></td>
+<td><p>Assicurarsi che gli errori nel processo di aggiornamento del set di attributi utente siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-080</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'aggiornamento del Data Model/Format</p></td>
+<td><p>Assicurarsi che gli errori nel processo di aggiornamento del Data Model/Format siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-081</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella scadenza della Credential</p></td>
+<td><p>Assicurarsi che gli errori nel processo di scadenza della Credential siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-082</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Re-Issuance della Credential</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Re-Issuance della Credential siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-083</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel Credential Binding</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Binding siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-084</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Credential Trust Evaluation</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Trust Evaluation siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-085</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel recupero dei metadata della Credential</p></td>
+<td><p>Assicurarsi che gli errori nel processo di recupero dei metadata della Credential siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-086</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella Credential Discovery</p></td>
+<td><p>Assicurarsi che gli errori nel processo di Credential Discovery siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-087</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella valutazione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di valutazione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-088</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'accettazione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di accettazione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-089</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel rifiuto della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di rifiuto della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-090</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella revoca della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di revoca della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-091</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella scadenza della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di scadenza della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-092</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel rinnovo della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di rinnovo della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-093</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'aggiornamento della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di aggiornamento della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-094</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella validazione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di validazione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-095</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella verifica della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di verifica della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-096</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella conferma della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di conferma della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-097</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella notifica della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di notifica della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-098</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella comunicazione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di comunicazione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-099</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella trasmissione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di trasmissione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-100</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella ricezione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di ricezione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-101</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel processing della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di processing della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-102</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'handling della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di handling della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-103</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel management della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di management della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-104</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'amministrazione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di amministrazione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-105</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel controllo della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di controllo della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-106</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella supervisione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di supervisione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-107</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella sorveglianza della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di sorveglianza della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-108</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nel monitoraggio della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di monitoraggio della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-even"><td><p>ISS-109</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nella valutazione della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di valutazione della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ISS-110</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Validare la gestione degli errori nell'assessment della Credential Offer</p></td>
+<td><p>Assicurarsi che gli errori nel processo di assessment della Credential Offer siano gestiti correttamente e riportati.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="test-plans-wallet.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15.3.1.3. </span>Matrice di Test per la Soluzione Wallet</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="test-plans-remote-presentation.html"><span><span class="section-number">15.3.1.5. </span>Matrice di Test per la Presentazione di Credenziali Remota</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Ultimo aggiornamento 28/07/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>

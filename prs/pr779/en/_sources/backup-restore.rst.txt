@@ -152,7 +152,7 @@ To check the authenticity of the file, the :term:`Wallet Instance` MUST verify t
 **Steps 7-8**: The :term:`Wallet Instance` for each HW binding credentials entry in the payload of the backup JWT performs the following steps:
 
 - It extracts the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the :term:`Credential Issuer`.
-- Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes a re-issuance request to the :term:`Credential Issuer` by providing the new :term:`Cryptographic Binding` with the:term:`Credential`.
+- Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes a re-issuance request to the :term:`Credential Issuer` by providing the new :term:`Holder Key Binding` with the:term:`Credential`.
 
 .. note::
   The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider`.

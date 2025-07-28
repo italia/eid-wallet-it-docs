@@ -2,10 +2,10 @@
 Proximity Credential Presentation Test Matrix
 ----------------------------------------------
 
-This section defines the general test cases about the proximity presentation flow.
+This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Verifiers solutions for proximity flows. It is also intended for assessment bodies inspecting and validating the implementations of Credential Verifiers solutions for proximity flows.
 
 .. note::
-  References about ISO-1813-5 test plans will update this section in future releases.
+  Further references about official ISO-18013-5 test plans, if available, will update this section in future releases.
 
 
 .. list-table::

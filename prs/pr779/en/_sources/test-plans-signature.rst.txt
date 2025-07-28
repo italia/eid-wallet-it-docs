@@ -1,7 +1,7 @@
 Signature Evaluation Test Matrix
 ------------------------------------------
 
-This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or credentials.
+This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or Credentials.
 
 
 .. list-table::

@@ -198,6 +198,11 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 
        This component MUST be present only if `ReaderAuthAllSupport` is set to `true` in the DeviceEngagement structure, and individual `readerAuth` fields are not used.
 
+.. note::
+    **Requesting the Wallet Attestation**
+
+    The Relying Party requesting a Wallet Attestation MUST add an object in the **docRequest** array having the ``docType`` set to ``{Trust Anchor reverse domain}.{WalletAttestation}`` as described in :ref:`registry-catalogue:Digital Credentials Catalogue Structure`. The Relying Party MUST NOT include the ``nameSpaces`` parameter in the request.
+
 mdoc Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -272,6 +277,10 @@ A **deviceSigned** data structure MUST be compliant with the following structure
    * - **deviceAuth**
      - *(COSE_Sign1)*. Contains the `DeviceAuth` structure, which MUST include the **deviceSignature** for the Wallet Instance authentication. The signature is computed over the `DeviceAuthentication` data, which binds the returned elements to the session and the request. See [`ISO18013-5`_ #9.1.3] for details on the authentication structure.
 
+.. note::
+    **Presenting the Wallet Attestation**
+
+    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet Attestation and MUST include the claim ``aal`` as a disclosure. Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user.
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

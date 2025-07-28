@@ -306,40 +306,12 @@ The body of the Wallet Attestation JWT contains the following claims:
 
 Below is a non-normative example of the Wallet Attestation JWT header and payload, without encoding and signature applied:
 
-.. code-block:: json
+.. literalinclude:: ../../examples/wa-jwt_example_header.json
+  :language: JSON
 
-  {
-    "alg": "ES256",
-    "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
-    "trust_chain": [
-      "eyJhbGciOiJFUz...6S0A",
-      "eyJhbGciOiJFUz...jJLA",
-      "eyJhbGciOiJFUz...H9gw",
-    ],
-    "typ": "oauth-client-attestation+jwt"
-  }
+.. literalinclude:: ../../examples/wa-jwt_example_payload.json
+  :language: JSON
 
-.. code-block:: json
-
-  {
-    "iss": "https://wallet-provider.example.org",
-    "cnf":
-    {
-      "jwk":
-      {
-        "crv": "P-256",
-        "kty": "EC",
-        "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-      }
-    },
-    "iat": 1687281195,
-    "exp": 1687288395,
-    "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "aal": "https://trust-list.eu/aal/high",
-    "wallet_name": "Wallet_v1",
-    "wallet_link": "https://example.com/wallet/detail_info.html"
-  }
 
 
 Wallet Attestation SD-JWT
@@ -394,7 +366,7 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **vct**
-      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set to ``wallet.atestation.example/v1.0``.
+      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be of the type ``{url_trust_anchor}/WalletAttestation`` as described in :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - REQUIRED. JSON array containing a list of all disclusure's digests.
@@ -403,7 +375,7 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
       - REQUIRED. String containing the hash algorithm used by the Wallet Provider to generate the disclusure's digests.
       - `SD-JWT`_.
     * - **sub**
-      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.
+      - OPTIONAL. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aal**
       - REQUIRED. JSON String asserting the authentication level of the Wallet and the key as asserted in the cnf claim.
@@ -426,19 +398,10 @@ The following disclosures MAY be present:
       - OPTIONAL. String containing a human-readable name of the Wallet.
       - `OpenID4VCI`_.
 
-Below are described examples of values for the disclosures:
+.. note:: 
+  Regardless of the fact that ``wallet_link`` and ``wallet_name`` are disclosable, these values MUST NOT be shown to the User, as they are not a User attribute.
 
-.. **Claim** ``sub``:
-..
-.. - SHA-256 Hash: ``DTZRbQgOWJlLaBfe6pr+j1vL4B4t6LLWyt9loaEJKe0=``
-.. - Disclosure: ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgInN1YiIsICJ2YmVYSmtzTTQ1eHBodEFObkNpRzZtQ3l1VTRqZkdOem9wR3VLdm9nZzljIl0=``
-.. - Contents: ``["2GLC42sKQveCfGfryNRN9w", "sub", "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c"]``
-..
-.. **Claim** ``aal``:
-..
-.. - SHA-256 Hash: ``h+w4Q4dWcHebykPpS4jRsBZVvBhEKszyLeZGmEunDJ4=``
-.. - Disclosure: ``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImFhbCIsICJodHRwczovL3RydXN0LWxpc3QuZXUvYWFsL2hpZ2giXQ==``
-.. - Contents: ``["2GLC42sKQveCfGfryNRN9w", "aal", "https://trust-list.eu/aal/high"]``
+Below are described examples of values for the disclosures:
 
 **Claim** ``wallet_link``:
 
@@ -454,44 +417,20 @@ Below are described examples of values for the disclosures:
 
 Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:
 
-.. code-block:: json
+.. literalinclude:: ../../examples/wa_sd_jwt_example_header.json
+  :language: JSON
 
-  {
-    "alg": "ES256",
-    "kid": "5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY",
-    "typ": "dc+sd-jwt"
-  }
-
-.. code-block:: json
-
-  {
-    "iss": "https://wallet-provider.example.org",
-    "cnf": {
-      "jwk":
-      {
-        "crv": "P-256",
-        "kty": "EC",
-        "x": "4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44",
-        "y": "LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg"
-      }
-    },
-    "_sd": ["cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=", "iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk="],
-    "_sd_alg": "sha-256",
-    "iat": 1687281195,
-    "exp": 1687288395,
-    "vct": "https://wallet.attestation.example/v1.0",
-    "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
-    "aal": "https://trust-framework.example.it/aal/high"
-  }
+.. literalinclude:: ../../examples/wa_sd_jwt_example_payload.json
+  :language: JSON
 
 Wallet Attestation mdoc
 """""""""""""""""""""""
 
-This description extends the MDOC-CBOR Credential Format guidelines, given in ref:`pid-eaa-data-model:MDOC-CBOR Credential Format`, to support Wallet Attestation data representation. The Wallet Attestation MUST use the domestic namespace  ``org.iso.18013.5.1.IT``.
+This description extends the MDOC-CBOR Credential Format guidelines, given in :ref:`credential-data-model:mdoc-CBOR Credential Format`, to support Wallet Attestation data representation. The Wallet Attestation MUST use ``docType`` of the form ``{Trust Anchor reverse domain}.{WalletAttestation}`` as described in :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
 
 The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follows:
 
-.. list-table:: org.iso.18013.5.1.IT
+.. list-table:: it.wallet.trust-registry.WalletAttestation
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
@@ -500,100 +439,26 @@ The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follow
       - **Description**
       - **Reference**
     * - **sub**
-      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation COSE Key.
+      - OPTIONAL. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation COSE Key.
       - :rfc:`9126` and :rfc:`7519`.
     * - **aal**
-      - JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the ``IssuerAuth.deviceKeyInfo.deviceKey`` claim of the **issuerAuth** Object.
+      - REQUIRED. JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the ``IssuerAuth.deviceKeyInfo.deviceKey`` claim of the **issuerAuth** Object.
       - :rfc:`9679`.
     * - **wallet_link**
-      - JSON String containing a URL to get further information about the Wallet and the Wallet Provider.
+      - OPTIONAL. JSON String containing a URL to get further information about the Wallet and the Wallet Provider.
       - `OpenID4VCI`_.
     * - **wallet_name**
-      - JSON String, it MUST be the Identifier of the Wallet Provider.
+      - OPTIONAL. JSON String, it MUST be the Identifier of the Wallet Provider.
       - `OpenID4VCI`_.
 
 Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnostic notation:
 
-.. code-block:: text
-
-  {
-    "nameSpaces": {
-      "org.iso.18013.5.1.IT": [
-        24(<<
-          {
-            "digestID": 0,
-            "elementIdentifier": "aal",
-            "elementValue": "https://wallet-provider.example.org/LoA/basic",
-            "random": h'bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114'
-          }
-        >>),
-        24(<<
-          {
-            "digestID": 1,
-            "elementIdentifier": "sub",
-            "elementValue": "ec#1",
-            "random": h'0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d'
-          }
-        >>),
-        24(<<
-          {
-            "digestID": 2,
-            "elementIdentifier": "wallet_link",
-            "elementValue": "https://wallet-provider.example.org",
-            "random": h'dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec'
-          }
-        >>),
-        24(<<
-          {
-            "digestID": 3,
-            "elementIdentifier": "wallet_name",
-            "elementValue": "Wallet name",
-            "random": h'd665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae'
-          }
-        >>)
-      ]
-    },
-    "issuerAuth": [
-      << {1: -7} >>,
-      {
-        33: h'825903B0...'
-      },
-      <<
-        24(<<
-          {
-            "version": "1.0",
-            "digestAlgorithm": "SHA-256",
-            "valueDigests": {
-              "org.iso.18013.5.1.IT": {
-                0: h'2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f',
-                1: h'7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997',
-                2: h'7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f',
-                3: h'ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024'
-              }
-            },
-            "deviceKeyInfo": {
-              "deviceKey": {
-                -1: 1,
-                2: "ec#1",
-                1: 2,
-                -2: h'09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5',
-                -3: h'6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3'
-              }
-            },
-            "docType": "org.iso.18013.5.1.IT.WalletAttestation",
-            "validityInfo": {
-              "signed": 0("2025-06-27T07:40:21Z"),
-              "validFrom": 0("2025-06-27T07:40:21Z"),
-              "validUntil": 0("2025-06-27T08:40:21Z")
-            }
-          }
-        >>)
-      >>
-      h'97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c'
-    ]
-  }
+.. literalinclude:: ../../examples/wa_mso_mdoc_example.txt
+  :language: text
 
 
+.. note:: 
+  Regardless of the fact that ``sub``, ``aal``, ``wallet_link`` and ``wallet_name`` are disclosable in the domestic namespace, these values MUST NOT be shown to the User, as they are not a User attribute.
 
 e-Service PDND Wallet Provider Catalogue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

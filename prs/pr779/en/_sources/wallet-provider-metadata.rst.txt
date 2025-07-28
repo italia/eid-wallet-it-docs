@@ -25,9 +25,6 @@ The metadata JSON Object whose key is ``wallet_provider`` contains the following
     * - ``signed_jwks_uri``
       - CONDITIONAL. URL referencing a signed JWT having the Entity's JWK Set document for that Entity Type as its payload. This URL MUST use the https scheme. The JWT MUST be signed using a Federation Entity Key. A successful response from the URL MUST use the HTTP status code 200 with the Content Type ``application/jwk-set+jwt``. It MUST be present if ``jwks`` and ``jwks_uri`` are absent.
       - `OID-FED`_.
-    * - ``aal_values_supported``
-      - OPTIONAL. List of supported values for the certifiable security context. These values specify the security level of the app, according to the levels: low, medium, or high. Authenticator Assurance Level values supported.
-      - This specification.
 
 Below is a non-normative example of the Entity Configuration for a Wallet Provider.
 

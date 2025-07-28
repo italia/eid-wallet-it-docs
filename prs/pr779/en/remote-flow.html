@@ -323,7 +323,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal id data&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/v1.0/personidentificationdata&quot;</span><span class="w"> </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">]},</span>
@@ -335,12 +335,8 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet attestation&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://itwallet.registry.example.it/WalletAttestation&quot;</span><span class="p">]</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;wallet_link&quot;</span><span class="p">]},</span>
-<span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;wallet_name&quot;</span><span class="p">]}</span>
-<span class="w">        </span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/v1.0/WalletAttestation&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
@@ -618,6 +614,11 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: A JSON object containing the Relying Party metadata values. If the <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> parameter is present, the Wallet Instance MUST ignore it and consider the client metadata obtained through the OpenID Federation Trust Chain.</p></li>
 </ul>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Requesting the Wallet Attestation</strong></p>
+<p>The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the <code class="docutils literal notranslate"><span class="pre">claims</span></code> parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> parameter in the DCQL query, which MUST be set to the value set in the <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>.</p>
+</div>
 <section id="request-uri-endpoint-errors">
 <h3><span class="section-number">7.2.1.3.1. </span>Request URI Endpoint Errors<a class="headerlink" href="#request-uri-endpoint-errors" title="Link to this heading">¶</a></h3>
 <p>When the Relying Party encounters errors while issuing the Request Object from the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint, it MUST return an error response with <code class="docutils literal notranslate"><span class="pre">application/json</span></code> as the content type and MUST include the following parameters:</p>
@@ -669,6 +670,11 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
 <p>The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS termination</a>. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Presenting the Wallet Attestation</strong></p>
+<p>The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User.</p>
 </div>
 <p>Where the following parameters are used:</p>
 <table class="longtable docutils align-default">
@@ -1057,7 +1063,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 24/07/2025.
+      Last updated on 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

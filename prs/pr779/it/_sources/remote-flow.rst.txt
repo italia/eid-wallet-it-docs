@@ -44,7 +44,7 @@ Una descrizione ad alto livello del flusso remoto, dal punto di vista dell'Utent
 
   5. *Consenso dell'Utente*: l'Istanza del Wallet chiede la divulgazione e il consenso dell'Utente mostrando l'identità della Relying Party e gli attributi richiesti.
   6. *Risposta di Autorizzazione POST*: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme alla Wallet Attestation se richiesto.
-  7. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.
+  7. *Controlli RP*: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.
   8. *Risposta della Relying Party*: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.
 
 Di seguito è riportato un diagramma di sequenza che dettaglia le interazioni tra tutte le parti coinvolte.
@@ -191,7 +191,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "id": "personal id data",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": [ "https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata" ]
+              "vct_values": [ "https://trust-registry.it-wallet.example.it/v1/personidentificationdata" ]
             },
             "claims": [
               {"path": ["given_name"]},
@@ -203,7 +203,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "id": "wallet attestation",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": ["https://itwallet.registry.example.it/WalletAttestation"]
+              "vct_values": ["https://trust-registry.it-wallet.example.it/v1/WalletAttestation"]
             },
             "claims": [
               {"path": ["wallet_link"]},
@@ -444,6 +444,10 @@ I parametri del payload JWT sono descritti qui:
   
   - ``client_metadata``: Un JSON Object contenente i valori dei metadata della Relying Party. Se il parametro ``client_metadata`` è presente, l'Istanza del Wallet DEVE ignorarlo e considerare i metadata del client ottenuti attraverso la Trust Chain OpenID Federation.
 
+.. note:: **Richiesta dell'Attestazione del Wallet**
+  
+  La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro ``claims`` nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro ``vct_values`` nella query DCQL, il quale DEVE essere impostato al valore definito nella :ref:`registry-catalogue:Struttura del Catalogo degli Attestati Elettronici`.
+
 Errori dell'Endpoint URI Request
 --------------------------------
 
@@ -494,6 +498,9 @@ Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazio
 
     La risposta inviata dall'Istanza del Wallet alla Relying Party è cifrata per impedire a un avversario di sfruttare possibili vulnerabilità per accedere alle informazioni trasmesse in chiaro all'interno della rete della Relying Party. Per esempio, ciò è possibile se l'ambiente di rete della Relying Party impiega un proxy per le operazioni di `TLS Termination <https://www.f5.com/glossary/ssl-termination>`_, il quale agisce come intermediario tra il client e il backend web server della Relying Party e gestisce tutte le operazioni relative a TLS. In questo caso specifico, il proxy decifra il contenuto della trasmissione, in seguito lo inoltra al backend web server della Relying Party. Questa operazione può avvenire in chiaro oppure negoziando una ulteriore sessione TLS con il web server della Relying Party (sempre raccomandato). Nel primo caso, trasmissione dei dati TLS in chiaro, qualsiasi avversario all'interno del segmento di rete fra proxy e web server backend che intercettasse i dati trasmessi, potrebbe ottenere informazioni sensibili; se però la risposta è cifrata, la fattispece descritta viene mitigata anche mandando i dati in chiaro.
 
+.. note:: **Presentazione dell'Attestazione del Wallet**
+  
+    L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti per l'utente.
 
 Nella Authorization Response vengono utilizzati i seguenti parametri:
 
@@ -507,7 +514,7 @@ Nella Authorization Response vengono utilizzati i seguenti parametri:
   * - **vp_token**
     - Ci DEVONO essere almeno due presentazioni firmate in questo Array:
 
-      - La Credenziale Elettronica richiesta (una o più, in formato SD-JWT VC)
+      - L'Attestato Elettronico richiesto (uno o più, in formato SD-JWT VC)
       - la Wallet Attestation (in formato SD-JWT VC)
 
       Il formato ``vp_token`` è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel ``dcql_query`` utilizzato nella richiesta, e i valori a ciascun Attestato Elettronico presentato.
@@ -554,7 +561,7 @@ Quando viene presentato un SD-JWT, la firma KB-JWT DEVE essere verificata dalla 
   * - **nonce**
     - OBBLIGATORIO. Garantisce l'unicità della firma. Il valore di questa *claim* DEVE essere una stringa e deve corrispondere a quello fornito nel Request Object.
   * - **sd_hash**
-    - OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le *selective disclosures* selezionate dall'utente.
+    - OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le *selective disclosures* selezionate dall'Utente.
 
 
 Errori della Authorization Response
@@ -577,7 +584,7 @@ Di seguito è riportato un esempio non normativo di una *Error Response* nella *
   error_description=...
 
 .. warning::
-  L'attuale specifica OpenID4VP delinea varie risposte di errore che un'Istanza del Wallet può restituire alla Relying Party in caso di *Authorization Request* errata. Per migliorare la privacy, le Istanze del Wallet NON DOVREBBERO notificare alla Relying Party le richieste errate qualora un uso improprio delle risposte di errore potrebbe portare a raccogliere informazioni lesive della privacy dell'utente (ad esempio, se l'utente decide di non voler presentare l'Attestato Elettronico richiesto).
+  L'attuale specifica OpenID4VP delinea varie risposte di errore che un'Istanza del Wallet può restituire alla Relying Party in caso di *Authorization Request* errata. Per migliorare la privacy, le Istanze del Wallet NON DOVREBBERO notificare alla Relying Party le richieste errate qualora un uso improprio delle risposte di errore potrebbe portare a raccogliere informazioni lesive della privacy dell'Utente (ad esempio, se l'Utente decide di non voler presentare l'Attestato Elettronico richiesto).
 
 Nella seguente tabella sono elencati gli *Error codes* e le descrizioni che sono supportati per la *Error Response* nella *Autorization Response*:
 
@@ -597,7 +604,7 @@ Nella seguente tabella sono elencati gli *Error codes* e le descrizioni che sono
    * - ``invalid_request``
      - L'Istanza del Wallet non supporta nessuno degli algoritmi di firma richiesti dalla Relying Party. `OpenID4VP`_
    * - ``access_denied``
-     - Il Wallet non aveva la Credenziale richiesta, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. `OpenID4VP`_
+     - Il Wallet non aveva l'Attestato Elettronico richiesto, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. `OpenID4VP`_
    * - ``invalid_client``
      - La Relying Party non può essere autenticata a causa di errori di convalida della trust oppure non è un stata riconosciuta come partecipante valido della federazione. `OID-FED`_
 
@@ -702,7 +709,7 @@ La Relying Party lega la richiesta dello user-agent, con un cookie di sessione c
 
 * **201 Created**; quando il Request Object firmato è stato emesso dalla Relying Party che attende di essere scaricato dall'Istanza del Wallet all'endpoint ``request_uri``.
 * **202 Accepted**; quando il Request Object firmato è stato ottenuto dall'Istanza del Wallet.
-* **200 OK**; quando l'Istanza del Wallet ha fornito la presentazione all'endpoint ``response_uri`` della Relying Party e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo allo user-agent di accedere alla risorsa protetta. Viene fornito un ``redirect_uri`` che trasporta lo user-agent alla pagina in cui l'utente deve navigare.
+* **200 OK**; quando l'Istanza del Wallet ha fornito la presentazione all'endpoint ``response_uri`` della Relying Party e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo allo user-agent di accedere alla risorsa protetta. Viene fornito un ``redirect_uri`` che trasporta lo user-agent alla pagina in cui l'Utente deve navigare.
 
 Errori dello Status Endpoint
 -----------------------------

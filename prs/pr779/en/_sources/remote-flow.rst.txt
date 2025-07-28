@@ -190,7 +190,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
             "id": "personal id data",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": [ "https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata" ]
+              "vct_values": [ "https://trust-registry.eid-wallet.example.it/v1.0/personidentificationdata" ]
             },
             "claims": [
               {"path": ["given_name"]},
@@ -202,12 +202,8 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
             "id": "wallet attestation",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": ["https://itwallet.registry.example.it/WalletAttestation"]
-            },
-            "claims": [
-              {"path": ["wallet_link"]},
-              {"path": ["wallet_name"]}
-            ]
+              "vct_values": ["https://trust-registry.it-wallet.example.it/v1.0/WalletAttestation"]
+            }
           }
         ]
       },
@@ -446,6 +442,11 @@ The JWT payload parameters are described herein:
 
   - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present, the Wallet Instance MUST ignore it and consider the client metadata obtained through the OpenID Federation Trust Chain.
 
+.. note::
+    **Requesting the Wallet Attestation**
+
+    The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the ``claims`` parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
+
 Request URI Endpoint Errors
 ----------------------------
 
@@ -487,7 +488,6 @@ The following is an example of an error response from ``request_uri`` endpoint:
 Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. The Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is ``server_error``, the Wallet Instance SHOULD prompt the User to re-enter or scan a new QR code, if applicable.
 
 
-
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -498,6 +498,10 @@ After obtaining the User authorization and consent for the presentation of the D
 
     The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs `TLS termination <https://www.f5.com/glossary/ssl-termination>`_. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.
 
+.. note::
+    **Presenting the Wallet Attestation**
+
+    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User.
 
 Where the following parameters are used:
 

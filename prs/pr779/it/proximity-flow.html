@@ -284,16 +284,7 @@ Durante la sottofase di comunicazione, l'App di Verifica ha l'opzione di richied
     &quot;itemsRequest&quot;: 
     24(&lt;&lt;  % Embedded CBOR data item
       {
-        &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
-        &quot;nameSpaces&quot;: {
-          &quot;org.iso.18013.5.1.IT&quot;: 
-          {
-            &quot;wallet_name&quot;: true,
-            &quot;wallet_link&quot;: true,
-            &quot;sub&quot;: true,
-            &quot;aal&quot;: true
-          }
-        }
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
       }
     &gt;&gt;)
     }
@@ -500,10 +491,10 @@ Durante la sottofase di comunicazione, l'App di Verifica ha l'opzione di richied
         }
       },
       {
-        &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
         &quot;issuerSigned&quot;: {
           &quot;nameSpaces&quot;: {
-            &quot;org.iso.18013.5.1.IT&quot;: [
+            &quot;it.wallet.trust-registry.WalletAttestation&quot;: [
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 0,
@@ -600,7 +591,7 @@ Durante la sottofase di comunicazione, l'App di Verifica ha l'opzione di richied
 </div>
 <p><strong>Passo 17</strong>: L'App di Verifica che riceve il <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> DEVE decifrarlo, quindi verificare la firma dell'Istanza del Wallet per garantire sia l'integrità dei dati che la provenienza di essi dal dispositivo previsto (device binding). Essa DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici a lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a>.</p>
 <p><strong>Passo 18</strong>: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. Se viene utilizzato BLE, questo può comportare l'invio di uno Stat Code per la terminazione della sessione o il comando <code class="docutils literal notranslate"><span class="pre">End</span></code>. In questo scenario, il Client GATT (App di Verifica) DEVE disconnettersi dal Server GATT (Istanza del Wallet).</p>
-<p><strong>Considerazione Finale</strong>: Questo flusso di presentazione descrive lo scambio di dati in prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un ulteriore livello di sicurezza riguardo l'identità dell'utente attraverso l'ispezione visiva e il confronto degli Attributi Elettronici presentati, contribuendo agli aspetti generali di garanzia dell'autenticazione non completamente catturati in un flusso di presentazione puramente tecnico.</p>
+<p><strong>Considerazione Finale</strong>: Questo flusso di presentazione descrive lo scambio di dati in prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un ulteriore livello di sicurezza riguardo l'identità dell'Utente attraverso l'ispezione visiva e il confronto degli Attributi Elettronici presentati, contribuendo agli aspetti generali di garanzia dell'autenticazione non completamente catturati in un flusso di presentazione puramente tecnico.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Durante la presentazione di prossimità, l'Istanza del Wallet potrebbe non essere in grado di recuperare una Wallet Attestation aggiornato; in questo caso, l'Istanza del Wallet DOVREBBE inviare l'ultima versione della Wallet Attestation. È lasciato alla Relying Party determinare se una presentazione con una Wallet Attestation valido ma scaduto sia valida o meno.</p>
@@ -699,6 +690,11 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Richiesta dell'Attestazione del Wallet</strong></p>
+<p>La Relying Party che richiede un'Attestazione del Wallet DEVE aggiungere un oggetto nell'array <strong>docRequest</strong> che abbia solo il campo <code class="docutils literal notranslate"><span class="pre">docType</span></code> impostato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> (si rimanda a <a class="reference internal" href="registry-catalogue.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli ulteriori). La Relying Party NON DEVE includere il parametro <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> nella richiesta.</p>
+</div>
 </section>
 <section id="risposta-mdoc">
 <h2><span class="section-number">7.2.2.3. </span>Risposta mdoc<a class="headerlink" href="#risposta-mdoc" title="Link to this heading">¶</a></h2>
@@ -781,6 +777,11 @@ Ogni Risposta mdoc DEVE essere conforme alla seguente struttura e DEVE includere
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Presentazione dell'Attestazione del Wallet</strong></p>
+<p>L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party nella richiesta mdoc. L'Istanza del Wallet DOVREBBE includere tutte le divulgazioni selettive disponibili per l'Attestazione del Wallet, DEVE tuttavia includere il campo <code class="docutils literal notranslate"><span class="pre">aal</span></code> nella risposta. Inoltre, durante la presentazione, l'Istanza del Wallet NON DEVE richiedere il consenso dell'Utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti verso l'Utente.</p>
+</div>
 </section>
 <section id="chiusura-della-sessione">
 <h2><span class="section-number">7.2.2.4. </span>Chiusura della Sessione<a class="headerlink" href="#chiusura-della-sessione" title="Link to this heading">¶</a></h2>
@@ -855,7 +856,7 @@ Ogni Risposta mdoc DEVE essere conforme alla seguente struttura e DEVE includere
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 24/07/2025.
+      Ultimo aggiornamento 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

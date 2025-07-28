@@ -110,7 +110,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. URL string representing the Credential Issuer unique identifier.
       - `[RFC7519, Section 4.1.1] <https://www.iana.org/go/rfc7519>`_.
     * - **sub**
-      - [NSD]. REQUIRED. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same ``sub`` value.
+      - [NSD]. OPTIONAL. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same ``sub`` value.
       - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
       - [SD]. REQUIRED. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
@@ -134,7 +134,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
+      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -185,7 +185,7 @@ If the ``status`` parameter is set to ``status_assertion``, it is a JSON Object 
 
 
 .. note::
-  Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim **vct**, using the HTTP GET method or using the ``vctm`` header parameter if provided. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.
+  The Credential Type Metadata JSON Document MAY be retrieved directly from the URL contained in the claim **vct**, using the HTTP GET method or using the ``vctm`` header parameter if provided. In case the Credential Type Metadata is retrived via ``vct``, matching of the literals included in the URI string MUST be performed in a case-insensitive manner. Unlike specified in Section 6.3.1 of `SD-JWT-VC`_ the **.well-known** endpoint is not included in the current implementation profile. Implementers may decide to use it for interoperability with other systems.
 
 
 Digital Credential Metadata Type
@@ -671,8 +671,7 @@ The following **elementIdentifiers** MUST be included in a Digital Credential en
      - [ISO 18013-5#7.2]
 
    * - **sub**
-     - *(uuid)*. Identifies the subject of the mdoc Digital Credential (the User).
-       The identifier MUST be opaque, MUST NOT correspond to any anagraphic data, and MUST NOT be derived from the User's anagraphic data through pseudonymization. Additionally, different Credentials issued to the same User MUST NOT reuse the same `sub` value.
+     - *(uuid, OPTIONAL)*. Identifies the subject of the mdoc Digital Credential (the User). The identifier MUST be opaque, MUST NOT correspond to any anagraphic data, and MUST NOT be derived from the User's anagraphic data through pseudonymization. Additionally, different Credentials issued to the same User or to different Users MUST NOT use the same `sub` value.
      -
 
    * - **verification**
@@ -682,6 +681,9 @@ The following **elementIdentifiers** MUST be included in a Digital Credential en
 .. note::
   Digital Credential User-specific attributes are defined in the Catalogue of Digital Credentials.
   User-specific attributes for mdoc Digital Credentials such as those used in mDL or PID are also included by referencing the appropriate `elementIdentifiers` defined in ISO/IEC 18013-5 or the `EIDAS-ARF`_ specification.
+
+.. note:: 
+  Regardless of the Digital Credential type, the `sub` value MUST NOT be shown to the User, as it is not a User attribute. It is used for identification purposes by the Credential Issuers.
 
 Mobile Security Object
 ^^^^^^^^^^^^^^^^^^^^^^

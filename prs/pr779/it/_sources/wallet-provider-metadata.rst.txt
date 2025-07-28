@@ -25,9 +25,6 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_provider`` contiene i segu
     * - ``signed_jwks_uri``
       - CONDIZIONALE. URL che fa riferimento a un JWT firmato avente come payload il documento JWK Set dell'Entità per quel Tipo di Entità. Questo URL DEVE utilizzare lo schema https. Il JWT DEVE essere firmato utilizzando una Chiave di Entità di Federazione. Una risposta positiva dall'URL DEVE utilizzare il codice di stato HTTP 200 con il Content Type ``application/jwk-set+jwt``. DEVE essere presente se ``jwks`` e ``jwks_uri`` sono assenti.
       - `OID-FED`_.
-    * - ``aal_values_supported``
-      - OPZIONALE. Elenco dei valori supportati per il contesto di sicurezza certificabile. Questi valori specificano il livello di sicurezza dell'app, secondo i livelli: basso, medio o alto. Valori di Authenticator Assurance Level supportati.
-      - Questa specifica.
 
 Di seguito è riportato un esempio non normativo della Entity Configuration per un Fornitore di Wallet.
 
