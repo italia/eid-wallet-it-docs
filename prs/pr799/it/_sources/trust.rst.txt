@@ -436,15 +436,15 @@ I metadati *federation_entity* per le Foglie DEVONO contenere i seguenti claim.
   * - **Claim**
     - **Descrizione**
   * - **organization_name**
-    - Vedi `OID-FED`_ Draft 41 Sezione 5.2.2
+    - Vedi `OID-FED`_ Sezione 5.2.2
   * - **homepage_uri**
-    - Vedi `OID-FED`_ Draft 41 Sezione 5.2.2
+    - Vedi `OID-FED`_ Sezione 5.2.2
   * - **policy_uri**
-    - Vedi `OID-FED`_ Draft 41 Sezione 5.2.2
+    - Vedi `OID-FED`_ Sezione 5.2.2
   * - **logo_uri**
-    - URL del logo dell'entità; DEVE essere in formato SVG. Vedi `OID-FED`_ Draft 36 Sezione 5.2.2
+    - URL del logo dell'entità; DEVE essere in formato SVG. Vedi `OID-FED`_ Sezione 5.2.2
   * - **contacts**
-    - Indirizzo email certificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Draft 36 Sezione 5.2.2
+    - Indirizzo email certificato istituzionale (PEC) dell'entità. Vedi `OID-FED`_ Sezione 5.2.2
   * - **federation_resolve_endpoint**
     - OPZIONALE. Vedi `OID-FED`_ Sezione 5.1.1
   * - **tos_uri**

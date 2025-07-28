@@ -435,15 +435,15 @@ The *federation_entity* metadata for Leaves MUST contain the following claims.
   * - **Claim**
     - **Description**
   * - **organization_name**
-    - See `OID-FED`_ Draft 41 Section 5.2.2
+    - See `OID-FED`_ Section 5.2.2
   * - **homepage_uri**
-    - See `OID-FED`_ Draft 41 Section 5.2.2
+    - See `OID-FED`_ Section 5.2.2
   * - **policy_uri**
-    - See `OID-FED`_ Draft 41 Section 5.2.2
+    - See `OID-FED`_ Section 5.2.2
   * - **logo_uri**
-    - URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Draft 36 Section 5.2.2
+    - URL of the entity's logo; it MUST be in SVG format. See `OID-FED`_ Section 5.2.2
   * - **contacts**
-    - Institutional certified email address (PEC) of the entity. See `OID-FED`_ Draft 36 Section 5.2.2
+    - Institutional certified email address (PEC) of the entity. See `OID-FED`_ Section 5.2.2
   * - **federation_resolve_endpoint**
     - See `OID-FED`_ Section 5.1.1
   * - **tos_uri**
