@@ -89,7 +89,7 @@ Inoltre, sebbene la specifica OpenAPI sia fissa, i seguenti campi di metadati po
 Ogni servizio elettronico istanziato mantiene un ciclo di vita indipendente analogo ai servizi elettronici standard.
 
 Gestione delle Versioni
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 Il versioning dei template segue un processo controllato:
 
     - La pubblicazione di una nuova versione del template la imposta su Active.
