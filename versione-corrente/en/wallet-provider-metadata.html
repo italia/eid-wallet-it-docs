@@ -201,10 +201,6 @@
 <td><p>CONDITIONAL. URL referencing a signed JWT having the Entity's JWK Set document for that Entity Type as its payload. This URL MUST use the https scheme. The JWT MUST be signed using a Federation Entity Key. A successful response from the URL MUST use the HTTP status code 200 with the Content Type <code class="docutils literal notranslate"><span class="pre">application/jwk-set+jwt</span></code>. It MUST be present if <code class="docutils literal notranslate"><span class="pre">jwks</span></code> and <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> are absent.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">aal_values_supported</span></code></p></td>
-<td><p>OPTIONAL. List of supported values for the certifiable security context. These values specify the security level of the app, according to the levels: low, medium, or high. Authenticator Assurance Level values supported.</p></td>
-<td><p>This specification.</p></td>
-</tr>
 </tbody>
 </table>
 <p>Below is a non-normative example of the Entity Configuration for a Wallet Provider.</p>
@@ -311,7 +307,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/07/2025.
+      Last updated on 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

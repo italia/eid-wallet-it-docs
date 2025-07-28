@@ -202,10 +202,6 @@
 <td><p>CONDIZIONALE. URL che fa riferimento a un JWT firmato avente come payload il documento JWK Set dell'Entità per quel Tipo di Entità. Questo URL DEVE utilizzare lo schema https. Il JWT DEVE essere firmato utilizzando una Chiave di Entità di Federazione. Una risposta positiva dall'URL DEVE utilizzare il codice di stato HTTP 200 con il Content Type <code class="docutils literal notranslate"><span class="pre">application/jwk-set+jwt</span></code>. DEVE essere presente se <code class="docutils literal notranslate"><span class="pre">jwks</span></code> e <code class="docutils literal notranslate"><span class="pre">jwks_uri</span></code> sono assenti.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">aal_values_supported</span></code></p></td>
-<td><p>OPZIONALE. Elenco dei valori supportati per il contesto di sicurezza certificabile. Questi valori specificano il livello di sicurezza dell'app, secondo i livelli: basso, medio o alto. Valori di Authenticator Assurance Level supportati.</p></td>
-<td><p>Questa specifica.</p></td>
-</tr>
 </tbody>
 </table>
 <p>Di seguito è riportato un esempio non normativo della Entity Configuration per un Fornitore di Wallet.</p>
@@ -312,7 +308,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/07/2025.
+      Ultimo aggiornamento 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

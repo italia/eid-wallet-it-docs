@@ -283,16 +283,7 @@ During the communication subphase, the Relying Party Instance has the option to 
     &quot;itemsRequest&quot;: 
     24(&lt;&lt;  % Embedded CBOR data item
       {
-        &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
-        &quot;nameSpaces&quot;: {
-          &quot;org.iso.18013.5.1.IT&quot;: 
-          {
-            &quot;wallet_name&quot;: true,
-            &quot;wallet_link&quot;: true,
-            &quot;sub&quot;: true,
-            &quot;aal&quot;: true
-          }
-        }
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
       }
     &gt;&gt;)
     }
@@ -499,10 +490,10 @@ During the communication subphase, the Relying Party Instance has the option to 
         }
       },
       {
-        &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
         &quot;issuerSigned&quot;: {
           &quot;nameSpaces&quot;: {
-            &quot;org.iso.18013.5.1.IT&quot;: [
+            &quot;it.wallet.trust-registry.WalletAttestation&quot;: [
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 0,
@@ -698,6 +689,11 @@ Each mdoc Request MUST be compliant with the following structure, and MUST inclu
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Requesting the Wallet Attestation</strong></p>
+<p>The Relying Party requesting a Wallet Attestation MUST add an object in the <strong>docRequest</strong> array having the <code class="docutils literal notranslate"><span class="pre">docType</span></code> set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>. The Relying Party MUST NOT include the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> parameter in the request.</p>
+</div>
 </section>
 <section id="mdoc-response">
 <h2><span class="section-number">7.2.2.3. </span>mdoc Response<a class="headerlink" href="#mdoc-response" title="Link to this heading">¶</a></h2>
@@ -780,6 +776,11 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Presenting the Wallet Attestation</strong></p>
+<p>The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet Attestation and MUST include the claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> as a disclosure. Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user.</p>
+</div>
 </section>
 <section id="session-termination">
 <h2><span class="section-number">7.2.2.4. </span>Session Termination<a class="headerlink" href="#session-termination" title="Link to this heading">¶</a></h2>
@@ -854,7 +855,7 @@ Each mdoc Response MUST be compliant with the following structure, and MUST incl
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/07/2025.
+      Last updated on 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

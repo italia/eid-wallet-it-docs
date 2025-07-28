@@ -318,7 +318,7 @@ To check the authenticity of the file, the <a class="reference internal" href="d
 <p><strong>Steps 7-8</strong>: The <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> for each HW binding credentials entry in the payload of the backup JWT performs the following steps:</p>
 <ul class="simple">
 <li><p>It extracts the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> identifier and the <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a>.</p></li>
-<li><p>Using the <a class="reference internal" href="defined-terms.html#term-Issuer"><span class="xref std std-term">Issuer</span></a> identifier the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> obtains the metadata of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> and makes a re-issuance request to the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> by providing the new <span class="xref std std-term">Cryptographic Binding</span> with the:term:<cite>Credential</cite>.</p></li>
+<li><p>Using the <a class="reference internal" href="defined-terms.html#term-Issuer"><span class="xref std std-term">Issuer</span></a> identifier the <a class="reference internal" href="defined-terms.html#term-Wallet-Instance"><span class="xref std std-term">Wallet Instance</span></a> obtains the metadata of the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> and makes a re-issuance request to the <a class="reference internal" href="defined-terms.html#term-Credential-Issuer"><span class="xref std std-term">Credential Issuer</span></a> by providing the new <a class="reference internal" href="defined-terms.html#term-Holder-Key-Binding"><span class="xref std std-term">Holder Key Binding</span></a> with the:term:<cite>Credential</cite>.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -373,7 +373,7 @@ To check the authenticity of the file, the <a class="reference internal" href="d
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/07/2025.
+      Last updated on 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

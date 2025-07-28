@@ -487,37 +487,37 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tbody>
 </table>
 <p>Below is a non-normative example of the Wallet Attestation JWT header and payload, without encoding and signature applied:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span>
-<span class="p">}</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;trust_chain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;eyJhbGciOiJFUz...6S0A&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;eyJhbGciOiJFUz...jJLA&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;eyJhbGciOiJFUz...H9gw&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet_v1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;wallet_link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/wallet/detail_info.html&quot;</span>
-<span class="p">}</span>
+<span class="w">      </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wallet_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet_v1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wallet_link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/wallet/detail_info.html&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -590,7 +590,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p><span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vct</strong></p></td>
-<td><p>REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet.atestation.example/v1.0</span></code>.</p></td>
+<td><p>REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be of the type <code class="docutils literal notranslate"><span class="pre">{url_trust_anchor}/WalletAttestation</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>.</p></td>
 <td><p>Section 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>_sd</strong></p></td>
@@ -602,7 +602,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
-<td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.</p></td>
+<td><p>OPTIONAL. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.</p></td>
 <td><p><span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>aal</strong></p></td>
@@ -635,6 +635,10 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Regardless of the fact that <code class="docutils literal notranslate"><span class="pre">wallet_link</span></code> and <code class="docutils literal notranslate"><span class="pre">wallet_name</span></code> are disclosable, these values MUST NOT be shown to the User, as they are not a User attribute.</p>
+</div>
 <p>Below are described examples of values for the disclosures:</p>
 <p><strong>Claim</strong> <code class="docutils literal notranslate"><span class="pre">wallet_link</span></code>:</p>
 <ul class="simple">
@@ -649,41 +653,41 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <li><p>Contents: <code class="docutils literal notranslate"><span class="pre">[&quot;2GLC42sKQveCfGfryNRN9w&quot;,</span> <span class="pre">&quot;wallet_name&quot;,</span> <span class="pre">&quot;Wallet_v1&quot;]</span></code></p></li>
 </ul>
 <p>Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span>
-<span class="p">}</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5t5YYpBhN-EgIEEI5iUzr6r0MR02LnVQ0OmekmNKcjY&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;typ&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=&quot;</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet.attestation.example/v1.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-framework.example.it/aal/high&quot;</span>
-<span class="p">}</span>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://wallet-provider.example.org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cnf&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;jwk&quot;</span><span class="p">:</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4HNptI-xr2pjyRJKGMnz4WmdnQD_uJSq4R95Nj98b44&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LIZnSB39vFJhYgS3k7jXE4r3-CoGFQwZtPBIRqpNlrg&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;_sd&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cD9/XC7t7QVHvmSiE1dGW0WYr0jcqm8n0GA6MGitaik=&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;iQQhzf6+saYCzHH92N1QyJisKsZbApbTrJ1amHgLoOk=&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="wallet-attestation-mdoc">
 <h3><span class="section-number">8.1.4.5. </span>Wallet Attestation mdoc<a class="headerlink" href="#wallet-attestation-mdoc" title="Link to this heading">¶</a></h3>
-<p>This description extends the MDOC-CBOR Credential Format guidelines, given in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite>, to support Wallet Attestation data representation. The Wallet Attestation MUST use the domestic namespace  <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.IT</span></code>.</p>
+<p>This description extends the MDOC-CBOR Credential Format guidelines, given in <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>, to support Wallet Attestation data representation. The Wallet Attestation MUST use <code class="docutils literal notranslate"><span class="pre">docType</span></code> of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> for the domestic nameSpace Json Objects are defined as follows:</p>
 <table class="longtable docutils align-default" id="id4">
-<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">org.iso.18013.5.1.IT</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 8.1 </span><span class="caption-text">it.wallet.trust-registry.WalletAttestation</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 60.0%" />
@@ -697,101 +701,105 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>sub</strong></p></td>
-<td><p>REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation COSE Key.</p></td>
+<td><p>OPTIONAL. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation COSE Key.</p></td>
 <td><p><span class="target" id="index-28"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9126.html"><strong>RFC 9126</strong></a> and <span class="target" id="index-29"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aal</strong></p></td>
-<td><p>JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the <code class="docutils literal notranslate"><span class="pre">IssuerAuth.deviceKeyInfo.deviceKey</span></code> claim of the <strong>issuerAuth</strong> Object.</p></td>
+<td><p>REQUIRED. JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the <code class="docutils literal notranslate"><span class="pre">IssuerAuth.deviceKeyInfo.deviceKey</span></code> claim of the <strong>issuerAuth</strong> Object.</p></td>
 <td><p><span class="target" id="index-30"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9679.html"><strong>RFC 9679</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
-<td><p>JSON String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
+<td><p>OPTIONAL. JSON String containing a URL to get further information about the Wallet and the Wallet Provider.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
-<td><p>JSON String, it MUST be the Identifier of the Wallet Provider.</p></td>
+<td><p>OPTIONAL. JSON String, it MUST be the Identifier of the Wallet Provider.</p></td>
 <td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnostic notation:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-  &quot;nameSpaces&quot;: {
-    &quot;org.iso.18013.5.1.IT&quot;: [
-      24(&lt;&lt;
-        {
-          &quot;digestID&quot;: 0,
-          &quot;elementIdentifier&quot;: &quot;aal&quot;,
-          &quot;elementValue&quot;: &quot;https://wallet-provider.example.org/LoA/basic&quot;,
-          &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
-        }
-      &gt;&gt;),
-      24(&lt;&lt;
-        {
-          &quot;digestID&quot;: 1,
-          &quot;elementIdentifier&quot;: &quot;sub&quot;,
-          &quot;elementValue&quot;: &quot;ec#1&quot;,
-          &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
-        }
-      &gt;&gt;),
-      24(&lt;&lt;
-        {
-          &quot;digestID&quot;: 2,
-          &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
-          &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
-          &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
-        }
-      &gt;&gt;),
-      24(&lt;&lt;
-        {
-          &quot;digestID&quot;: 3,
-          &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
-          &quot;elementValue&quot;: &quot;Wallet name&quot;,
-          &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
-        }
-      &gt;&gt;)
-    ]
-  },
-  &quot;issuerAuth&quot;: [
-    &lt;&lt; {1: -7} &gt;&gt;,
-    {
-      33: h&#39;825903B0...&#39;
-    },
-    &lt;&lt;
-      24(&lt;&lt;
-        {
-          &quot;version&quot;: &quot;1.0&quot;,
-          &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
-          &quot;valueDigests&quot;: {
-            &quot;org.iso.18013.5.1.IT&quot;: {
-              0: h&#39;2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f&#39;,
-              1: h&#39;7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997&#39;,
-              2: h&#39;7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f&#39;,
-              3: h&#39;ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024&#39;
-            }
-          },
-          &quot;deviceKeyInfo&quot;: {
-            &quot;deviceKey&quot;: {
-              -1: 1,
-              2: &quot;ec#1&quot;,
-              1: 2,
-              -2: h&#39;09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5&#39;,
-              -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
-            }
-          },
-          &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
-          &quot;validityInfo&quot;: {
-            &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
-            &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
-            &quot;validUntil&quot;: 0(&quot;2025-06-27T08:40:21Z&quot;)
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  {
+    &quot;nameSpaces&quot;: {
+      &quot;it.wallet.trust-registry.WalletAttestation&quot;: [
+        24(&lt;&lt;
+          {
+            &quot;digestID&quot;: 0,
+            &quot;elementIdentifier&quot;: &quot;aal&quot;,
+            &quot;elementValue&quot;: &quot;https://trust-list.eu/aal/low&quot;,
+            &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
           }
-        }
-      &gt;&gt;)
-    &gt;&gt;
-    h&#39;97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c&#39;
-  ]
-}
+        &gt;&gt;),
+        24(&lt;&lt;
+          {
+            &quot;digestID&quot;: 1,
+            &quot;elementIdentifier&quot;: &quot;sub&quot;,
+            &quot;elementValue&quot;: &quot;ec#1&quot;,
+            &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
+          }
+        &gt;&gt;),
+        24(&lt;&lt;
+          {
+            &quot;digestID&quot;: 2,
+            &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
+            &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
+            &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
+          }
+        &gt;&gt;),
+        24(&lt;&lt;
+          {
+            &quot;digestID&quot;: 3,
+            &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
+            &quot;elementValue&quot;: &quot;Wallet name&quot;,
+            &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
+          }
+        &gt;&gt;)
+      ]
+    },
+    &quot;issuerAuth&quot;: [
+      &lt;&lt; {1: -7} &gt;&gt;,
+      {
+        33: h&#39;825903B0...&#39;
+      },
+      &lt;&lt;
+        24(&lt;&lt;
+          {
+            &quot;version&quot;: &quot;1.0&quot;,
+            &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
+            &quot;valueDigests&quot;: {
+              &quot;it.wallet.trust-registry.WalletAttestation&quot;: {
+                0: h&#39;2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f&#39;,
+                1: h&#39;7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997&#39;,
+                2: h&#39;7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f&#39;,
+                3: h&#39;ce566344e76ff543c5084e7618bdb54223ff2750dbcb4a3c7c35fd56a47a1024&#39;
+              }
+            },
+            &quot;deviceKeyInfo&quot;: {
+              &quot;deviceKey&quot;: {
+                -1: 1,
+                2: &quot;ec#1&quot;,
+                1: 2,
+                -2: h&#39;09a9028deb030705de45e4702d1ce6860e94c0e29f334359a476078c2d22b9c5&#39;,
+                -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
+              }
+            },
+            &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
+            &quot;validityInfo&quot;: {
+              &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+              &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
+              &quot;validUntil&quot;: 0(&quot;2025-06-27T08:40:21Z&quot;)
+            }
+          }
+        &gt;&gt;)
+      &gt;&gt;
+      h&#39;97f223fd4c9c462454e4123df916dd0d672af14608727ce38470b8bd74fb496e11462113f0005d3e97bf6115074712991e1720eb085292edd894a116a305310c&#39;
+    ]
+  }
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Regardless of the fact that <code class="docutils literal notranslate"><span class="pre">sub</span></code>, <code class="docutils literal notranslate"><span class="pre">aal</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_link</span></code> and <code class="docutils literal notranslate"><span class="pre">wallet_name</span></code> are disclosable in the domestic namespace, these values MUST NOT be shown to the User, as they are not a User attribute.</p>
 </div>
 </section>
 </section>
@@ -896,7 +904,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/07/2025.
+      Last updated on 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

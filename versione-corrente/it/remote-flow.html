@@ -209,7 +209,7 @@
 <ol class="arabic simple" start="5">
 <li><p><em>Consenso dell'Utente</em>: l'Istanza del Wallet chiede la divulgazione e il consenso dell'Utente mostrando l'identità della Relying Party e gli attributi richiesti.</p></li>
 <li><p><em>Risposta di Autorizzazione POST</em>: l'Istanza del Wallet presenta le informazioni richieste alla Relying Party, insieme alla Wallet Attestation se richiesto.</p></li>
-<li><p><em>Controlli RP</em>: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Credenziale e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.</p></li>
+<li><p><em>Controlli RP</em>: La Relying Party convalida le Credenziali presentate verificando la fiducia con i loro Fornitori di Attestati Elettronici e controlla la Wallet Attestation per garantire che il Fornitore di Wallet sia affidabile.</p></li>
 <li><p><em>Risposta della Relying Party</em>: l'Istanza del Wallet informa l'Utente dell'autenticazione riuscita con la Relying Party, e l'Utente continua la navigazione.</p></li>
 </ol>
 </div></blockquote>
@@ -324,7 +324,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal id data&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/v1/personidentificationdata&quot;</span><span class="w"> </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">]},</span>
@@ -336,7 +336,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet attestation&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://itwallet.registry.example.it/WalletAttestation&quot;</span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/v1/WalletAttestation&quot;</span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;wallet_link&quot;</span><span class="p">]},</span>
@@ -616,6 +616,11 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <li><p><code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>: Un JSON Object contenente i valori dei metadata della Relying Party. Se il parametro <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> è presente, l'Istanza del Wallet DEVE ignorarlo e considerare i metadata del client ottenuti attraverso la Trust Chain OpenID Federation.</p></li>
 </ul>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Richiesta dell'Attestazione del Wallet</strong></p>
+<p>La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> nella query DCQL, il quale DEVE essere impostato al valore definito nella <a class="reference internal" href="registry-catalogue.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a>.</p>
+</div>
 <section id="errori-dell-endpoint-uri-request">
 <h3><span class="section-number">7.2.1.3.1. </span>Errori dell'Endpoint URI Request<a class="headerlink" href="#errori-dell-endpoint-uri-request" title="Link to this heading">¶</a></h3>
 <p>Quando la Relying Party incontra errori durante l'emissione del Request Object dall'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, DEVE restituire una <em>Error Response</em> con <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come tipo di contenuto e DEVE includere i seguenti parametri:</p>
@@ -668,6 +673,11 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <p><strong>Perché la risposta è cifrata?</strong></p>
 <p>La risposta inviata dall'Istanza del Wallet alla Relying Party è cifrata per impedire a un avversario di sfruttare possibili vulnerabilità per accedere alle informazioni trasmesse in chiaro all'interno della rete della Relying Party. Per esempio, ciò è possibile se l'ambiente di rete della Relying Party impiega un proxy per le operazioni di <a class="reference external" href="https://www.f5.com/glossary/ssl-termination">TLS Termination</a>, il quale agisce come intermediario tra il client e il backend web server della Relying Party e gestisce tutte le operazioni relative a TLS. In questo caso specifico, il proxy decifra il contenuto della trasmissione, in seguito lo inoltra al backend web server della Relying Party. Questa operazione può avvenire in chiaro oppure negoziando una ulteriore sessione TLS con il web server della Relying Party (sempre raccomandato). Nel primo caso, trasmissione dei dati TLS in chiaro, qualsiasi avversario all'interno del segmento di rete fra proxy e web server backend che intercettasse i dati trasmessi, potrebbe ottenere informazioni sensibili; se però la risposta è cifrata, la fattispece descritta viene mitigata anche mandando i dati in chiaro.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p><strong>Presentazione dell'Attestazione del Wallet</strong></p>
+<p>L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti per l'utente.</p>
+</div>
 <p>Nella Authorization Response vengono utilizzati i seguenti parametri:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -683,7 +693,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
 <td><p>Ci DEVONO essere almeno due presentazioni firmate in questo Array:</p>
 <ul class="simple">
-<li><p>La Credenziale Elettronica richiesta (una o più, in formato SD-JWT VC)</p></li>
+<li><p>L'Attestato Elettronico richiesto (uno o più, in formato SD-JWT VC)</p></li>
 <li><p>la Wallet Attestation (in formato SD-JWT VC)</p></li>
 </ul>
 <p>Il formato <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> è un JSON Object le cui chiavi corrispondono agli id degli Attestati Elettronici richieste nel <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> utilizzato nella richiesta, e i valori a ciascun Attestato Elettronico presentato.</p>
@@ -741,7 +751,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <td><p>OBBLIGATORIO. Garantisce l'unicità della firma. Il valore di questa <em>claim</em> DEVE essere una stringa e deve corrispondere a quello fornito nel Request Object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sd_hash</strong></p></td>
-<td><p>OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le <em>selective disclosures</em> selezionate dall'utente.</p></td>
+<td><p>OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le <em>selective disclosures</em> selezionate dall'Utente.</p></td>
 </tr>
 </tbody>
 </table>
@@ -761,7 +771,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>L'attuale specifica OpenID4VP delinea varie risposte di errore che un'Istanza del Wallet può restituire alla Relying Party in caso di <em>Authorization Request</em> errata. Per migliorare la privacy, le Istanze del Wallet NON DOVREBBERO notificare alla Relying Party le richieste errate qualora un uso improprio delle risposte di errore potrebbe portare a raccogliere informazioni lesive della privacy dell'utente (ad esempio, se l'utente decide di non voler presentare l'Attestato Elettronico richiesto).</p>
+<p>L'attuale specifica OpenID4VP delinea varie risposte di errore che un'Istanza del Wallet può restituire alla Relying Party in caso di <em>Authorization Request</em> errata. Per migliorare la privacy, le Istanze del Wallet NON DOVREBBERO notificare alla Relying Party le richieste errate qualora un uso improprio delle risposte di errore potrebbe portare a raccogliere informazioni lesive della privacy dell'Utente (ad esempio, se l'Utente decide di non voler presentare l'Attestato Elettronico richiesto).</p>
 </div>
 <p>Nella seguente tabella sono elencati gli <em>Error codes</em> e le descrizioni che sono supportati per la <em>Error Response</em> nella <em>Autorization Response</em>:</p>
 <table class="longtable docutils align-default">
@@ -788,7 +798,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <td><p>L'Istanza del Wallet non supporta nessuno degli algoritmi di firma richiesti dalla Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">access_denied</span></code></p></td>
-<td><p>Il Wallet non aveva la Credenziale richiesta, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
+<td><p>Il Wallet non aveva l'Attestato Elettronico richiesto, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_client</span></code></p></td>
 <td><p>La Relying Party non può essere autenticata a causa di errori di convalida della trust oppure non è un stata riconosciuta come partecipante valido della federazione. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
@@ -901,7 +911,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 <ul class="simple">
 <li><p><strong>201 Created</strong>; quando il Request Object firmato è stato emesso dalla Relying Party che attende di essere scaricato dall'Istanza del Wallet all'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>.</p></li>
 <li><p><strong>202 Accepted</strong>; quando il Request Object firmato è stato ottenuto dall'Istanza del Wallet.</p></li>
-<li><p><strong>200 OK</strong>; quando l'Istanza del Wallet ha fornito la presentazione all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo allo user-agent di accedere alla risorsa protetta. Viene fornito un <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> che trasporta lo user-agent alla pagina in cui l'utente deve navigare.</p></li>
+<li><p><strong>200 OK</strong>; quando l'Istanza del Wallet ha fornito la presentazione all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party e l'autenticazione dell'Utente ha avuto successo. La Relying Party aggiorna il cookie di sessione consentendo allo user-agent di accedere alla risorsa protetta. Viene fornito un <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> che trasporta lo user-agent alla pagina in cui l'Utente deve navigare.</p></li>
 </ul>
 <section id="errori-dello-status-endpoint">
 <h3><span class="section-number">7.2.1.6.1. </span>Errori dello Status Endpoint<a class="headerlink" href="#errori-dello-status-endpoint" title="Link to this heading">¶</a></h3>
@@ -1050,7 +1060,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/07/2025.
+      Ultimo aggiornamento 28/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

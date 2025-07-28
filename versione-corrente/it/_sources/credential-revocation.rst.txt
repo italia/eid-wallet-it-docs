@@ -266,7 +266,7 @@ Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte A
 
 Il Fornitore di Attestati Elettronici, una volta ricevuta la notifica, DEVE provvedere all'aggiornamento dello stato della Credenziale secondo la modalità definite per il meccanismo di validità utilizzato. Il Fornitore di Attestati Elettronici PUÒ inviare una notifica all'Utente utilizzando un eventuale canale di comunicazione precedentemente registrato.
 
-L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità delle Credenziali Digitali in essa memorizzate, riceve lo stato aggiornato. Nel caso in cui lo Stato della Credenziale Digitale venga modificato in INVALID il Fornitore di Attestati Elettronici DEVE informarne l'Utente. Nel caso in cui lo stato della Credenziale Digitale venga modificato in UPDATE (equivalentemente 0x03) o ATTRIBUTE_UPDATE (equivalentemente 0x04), il Wallet PUO' procedere alla Riemissione della Credenziale Digitale come descritto in :ref:`Re-Issuance Flow`.
+L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità delle Credenziali Digitali in essa memorizzate, riceve lo stato aggiornato. Nel caso in cui lo Stato della Credenziale Digitale venga modificato in INVALID il Fornitore di Attestati Elettronici DEVE informarne l'Utente. Nel caso in cui lo stato della Credenziale Digitale venga modificato in UPDATE (equivalentemente 0x03) o ATTRIBUTE_UPDATE (equivalentemente 0x04), il Wallet PUO' procedere alla riemissione della Credenziale Digitale come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 
 Meccanismi di Verifica della Validità

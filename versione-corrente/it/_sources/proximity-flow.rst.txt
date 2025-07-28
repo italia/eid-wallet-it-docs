@@ -96,7 +96,7 @@ Di seguito è riportato un esempio non normativo che utilizza la notazione diagn
 
 **Passo 18**: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. Se viene utilizzato BLE, questo può comportare l'invio di uno Stat Code per la terminazione della sessione o il comando ``End``. In questo scenario, il Client GATT (App di Verifica) DEVE disconnettersi dal Server GATT (Istanza del Wallet).
 
-**Considerazione Finale**: Questo flusso di presentazione descrive lo scambio di dati in prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un ulteriore livello di sicurezza riguardo l'identità dell'utente attraverso l'ispezione visiva e il confronto degli Attributi Elettronici presentati, contribuendo agli aspetti generali di garanzia dell'autenticazione non completamente catturati in un flusso di presentazione puramente tecnico.
+**Considerazione Finale**: Questo flusso di presentazione descrive lo scambio di dati in prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un ulteriore livello di sicurezza riguardo l'identità dell'Utente attraverso l'ispezione visiva e il confronto degli Attributi Elettronici presentati, contribuendo agli aspetti generali di garanzia dell'autenticazione non completamente catturati in un flusso di presentazione puramente tecnico.
 
 .. note::
   Durante la presentazione di prossimità, l'Istanza del Wallet potrebbe non essere in grado di recuperare una Wallet Attestation aggiornato; in questo caso, l'Istanza del Wallet DOVREBBE inviare l'ultima versione della Wallet Attestation. È lasciato alla Relying Party determinare se una presentazione con una Wallet Attestation valido ma scaduto sia valida o meno.
@@ -182,6 +182,10 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
        Questo componente DEVE essere presente solo se `ReaderAuthAllSupport` è impostato su `true` nel messaggio di DeviceEngagement, in questo caso, i campi individuali `readerAuth` non vengono utilizzati.
 
+.. note:: **Richiesta dell'Attestazione del Wallet**
+    
+    La Relying Party che richiede un'Attestazione del Wallet DEVE aggiungere un oggetto nell'array **docRequest** che abbia solo il campo ``docType`` impostato come ``{Trust Anchor reverse domain}.{WalletAttestation}`` (si rimanda a :ref:`registry-catalogue:Struttura del Catalogo degli Attestati Elettronici` per dettagli ulteriori). La Relying Party NON DEVE includere il parametro ``nameSpaces`` nella richiesta.
+
 Risposta mdoc
 ^^^^^^^^^^^^^^
 
@@ -256,6 +260,9 @@ Una struttura di dati **deviceSigned** DEVE essere conforme alla seguente strutt
    * - **deviceAuth**
      - *(COSE_Sign1)*. Contiene la struttura `DeviceAuth`, che DEVE includere la **deviceSignature** per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati `DeviceAuthentication`, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [`ISO18013-5`_ #9.1.3] per i dettagli sulla struttura di autenticazione.
 
+.. note:: **Presentazione dell'Attestazione del Wallet**
+  
+    L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party nella richiesta mdoc. L'Istanza del Wallet DOVREBBE includere tutte le divulgazioni selettive disponibili per l'Attestazione del Wallet, DEVE tuttavia includere il campo ``aal`` nella risposta. Inoltre, durante la presentazione, l'Istanza del Wallet NON DEVE richiedere il consenso dell'Utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti verso l'Utente.
 
 Chiusura della Sessione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
