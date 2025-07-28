@@ -4,7 +4,7 @@
 Template e-Service PDND
 =======================
 
-The PDND provides a specialized tool that enhances API co-design processes by optimizing e-service publication and reuse. This functionality is thoroughly defined and regulated in this document.
+The PDND provides a specialized tool that enhances API co-design processes by optimizing e-service publication and reuse. This functionality is defined in this document.
 
     - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati" (`PDND`_).
 

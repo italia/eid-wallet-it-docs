@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. Appendice &#8212; IT-Wallet Technical Documentation - PR #797</title>
+    <title>15.3. Template e-Service PDND &#8212; IT-Wallet Technical Documentation - PR #797</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="15.1. Istanza dell&#39;Applicazione Mobile" href="mobile-application-instance.html" />
-    <link rel="prev" title="14. Rilasci Open Source" href="open-source.html" /> 
+    <link rel="next" title="15.4. Piani di Test" href="test-plans.html" />
+    <link rel="prev" title="15.2. e-Service PDND" href="e-service-pdnd.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -145,10 +145,10 @@
 <li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Termini Definiti e Riferimenti</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contribute.html">13. Come contribuire</a></li>
 <li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">15. Appendice</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">15. Appendice</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">15.1. Istanza dell'Applicazione Mobile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15.3. Template e-Service PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test-plans.html">15.4. Piani di Test</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.5. Specifica OpenAPI del Credential Issuer PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.6. Panoramica</a></li>
@@ -169,74 +169,123 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="appendice">
-<h1><span class="section-number">15. </span>Appendice<a class="headerlink" href="#appendice" title="Link to this heading">¶</a></h1>
+  <section id="template-e-service-pdnd">
+<h1><span class="section-number">15.3. </span>Template e-Service PDND<a class="headerlink" href="#template-e-service-pdnd" title="Link to this heading">¶</a></h1>
+<p>La PDND fornisce uno strumento specializzato che migliora i processi di co-progettazione delle API ottimizzando la pubblicazione e il riutilizzo dei servizi elettronici. Questa funzionalità è definita e regolamentata nel presente documento.</p>
 <blockquote>
-<div><div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Indice dell'Appendice</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="mobile-application-instance.html">15.1. Istanza dell'Applicazione Mobile</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html#inizializzazione-dell-istanza-dell-applicazione-mobile">15.1.1. Inizializzazione dell'Istanza dell'Applicazione Mobile</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#richiesta-di-nonce-dell-applicazione-mobile">15.1.1.1. Richiesta di Nonce dell'Applicazione Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#risposta-di-nonce-dell-applicazione-mobile">15.1.1.2. Risposta di Nonce dell'Applicazione Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#richiesta-di-inizializzazione-dell-istanza-dell-applicazione-mobile">15.1.1.3. Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#risposta-di-inizializzazione-dell-istanza-dell-applicazione-mobile">15.1.1.4. Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile</a></li>
+<div><ul class="simple">
+<li><p>&quot;Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>).</p></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html#associazione-chiave-dell-applicazione-mobile">15.1.2. Associazione Chiave dell'Applicazione Mobile</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#richiesta-di-associazione-chiave-dell-applicazione-mobile">15.1.2.1. Richiesta di Associazione Chiave dell'Applicazione Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mobile-application-instance.html#risposta-di-associazione-chiave-dell-applicazione-mobile">15.1.2.2. Risposta di Associazione Chiave dell'Applicazione Mobile</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#requisiti-e-pattern-di-sicurezza">15.2.1. Requisiti e Pattern di Sicurezza</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#emissione-del-voucher-pdnd">15.2.2. Emissione del Voucher PDND</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#voucher-pdnd-per-e-service">15.2.2.1. Voucher PDND per e-Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#voucher-pdnd-per-api-di-interoperabilita">15.2.2.2. Voucher PDND per API di Interoperabilità</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#endpoint-authorization-server-pdnd">15.2.2.3. Endpoint Authorization Server PDND</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#reperimento-delle-chiavi">15.2.3. Reperimento delle Chiavi</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#chiavi-dell-authorization-server-pdnd">15.2.3.1. Chiavi dell'Authorization Server PDND</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#endpoint-well-known-dell-authorization-server-pdnd">15.2.3.2. Endpoint .well-known dell'Authorization Server PDND</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#chiavi-degli-aderenti">15.2.3.3. Chiavi degli Aderenti</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#endpoint-api-di-interoperabilita-pdnd">15.2.3.4. Endpoint API di Interoperabilità PDND</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html#utilizzo-dell-e-service">15.2.4. Utilizzo dell'e-Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#prerequisiti-per-l-utilizzo-dell-e-service">15.2.4.1. Prerequisiti per l'Utilizzo dell'e-Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#flusso-di-utilizzo-dell-e-service">15.2.4.2. Flusso di Utilizzo dell'e-Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd.html#endpoint-e-service">15.2.4.3. Endpoint e-Service</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html#definizione-e-linee-guida-dell-e-service-template-pdnd">15.3.1. Definizione e linee guida dell'e-service template PDND</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-template.html#gestione-dei-servizi-elettronici-template">15.3.1.1. Gestione dei Servizi Elettronici Template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="e-service-pdnd-template.html#gestione-delle-versioni">15.3.1.2. Gestione delle Versioni</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans.html">15.4. Piani di Test</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#struttura-della-matrice-di-test">15.4.1. Struttura della Matrice di Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate">15.4.2. Matrice di Test per la Valutazione delle Dichiarazioni Firmate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#matrice-di-test-per-la-valutazione-della-fiducia">15.4.3. Matrice di Test per la Valutazione della Fiducia</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#matrice-di-test-per-la-soluzione-wallet">15.4.4. Matrice di Test per la Soluzione Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#matrice-di-test-per-l-emissione-di-credenziali">15.4.5. Matrice di Test per l'Emissione di Credenziali</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test-plans.html#matrice-di-test-per-la-presentazione-di-credenziali">15.4.6. Matrice di Test per la Presentazione di Credenziali</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="test-plans.html#matrice-di-test-per-la-presentazione-remota-di-credenziali">15.4.6.1. Matrice di Test per la Presentazione Remota di Credenziali</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans.html#matrice-di-test-per-la-presentazione-di-credenziali-di-prossimita">15.4.6.2. Matrice di Test per la Presentazione di Credenziali di Prossimità</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
 </div></blockquote>
+<p>Il template del servizio elettronico serve come modello standardizzato contenente tutti i metadati tecnici e descrittivi necessari per un servizio elettronico. I Gestori delle API, che possono essere sia Fornitori che Consumatori all'interno dell'ecosistema PDND, POSSONO creare e mantenere questi template.</p>
+<p>Una volta che un e-service template è pubblicato, è accessibile attraverso il Catalogo Template PDND che è un repository centralizzato che facilita il riutilizzo. Questo catalogo consente a qualsiasi Partecipante PDND autorizzato di sfogliare i template disponibili e istanziare nuovi servizi elettronici basati su progetti esistenti.</p>
+<section id="definizione-e-linee-guida-dell-e-service-template-pdnd">
+<h2><span class="section-number">15.3.1. </span>Definizione e linee guida dell'e-service template PDND<a class="headerlink" href="#definizione-e-linee-guida-dell-e-service-template-pdnd" title="Link to this heading">¶</a></h2>
+<p>L'infrastruttura PDND supporta la gestione del ciclo di vita dei Servizi Elettronici Template, simile a quella dei servizi elettronici tradizionali. Gli stati del ciclo di vita includono: <strong>Draft</strong>, <strong>Active</strong>, <strong>Supsended</strong> e <strong>Deprecated</strong>. Come per i servizi elettronici tradizionali, PDND applica il controllo degli accessi basato sui ruoli per governare le transizioni di stato.</p>
+<section id="gestione-dei-servizi-elettronici-template">
+<h3><span class="section-number">15.3.1.1. </span>Gestione dei Servizi Elettronici Template<a class="headerlink" href="#gestione-dei-servizi-elettronici-template" title="Link to this heading">¶</a></h3>
+<section id="creazione-del-servizio-elettronico-template">
+<h4><span class="section-number">15.3.1.1.1. </span>Creazione del Servizio Elettronico Template<a class="headerlink" href="#creazione-del-servizio-elettronico-template" title="Link to this heading">¶</a></h4>
+<p>I Partecipanti sono abilitati a creare Servizi Elettronici Template tramite una procedura guidata accessibile attraverso l'interfaccia web PDND (le API saranno disponibili in futuro). Il flusso di lavoro di creazione rispecchia da vicino quello della creazione standard di servizi elettronici, con le seguenti distinzioni:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Un campo aggiuntivo identifica il destinatario previsto del template.</p></li>
+<li><p>Il campo &quot;Audience&quot; è omesso.</p></li>
+<li><p>Le soglie sono opzionali e servono come raccomandazioni per i Partecipanti che implementano il template.</p></li>
+</ul>
+</div></blockquote>
+<p>Ai Partecipanti è vietato creare più template con lo stesso nome: i nomi dei template DEVONO essere unici per partecipante. Alla creazione, un template è inizialmente impostato sullo stato Draft. I template possono quindi essere pubblicati nel Catalogo Template, rendendoli così accessibili a tutti i Partecipanti.</p>
+</section>
+<section id="modifica-del-servizio-elettronico-template">
+<h4><span class="section-number">15.3.1.1.2. </span>Modifica del Servizio Elettronico Template<a class="headerlink" href="#modifica-del-servizio-elettronico-template" title="Link to this heading">¶</a></h4>
+<p>I Partecipanti che hanno creato un template possono modificarlo. La portata dei campi modificabili dipende dallo stato del ciclo di vita del template:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Se il template è in stato Draft, tutti i campi sono modificabili.</p></li>
+<li><p>Per i template in altri stati, solo un sottoinsieme limitato di campi può essere modificato direttamente.</p></li>
+<li><p>I campi che non possono essere modificati nei template pubblicati richiedono la creazione di una nuova versione del template per applicare le modifiche.</p></li>
+</ul>
+</div></blockquote>
+<p>Il versionamento dei template funziona in modo simile a quello dei servizi elettronici, dato che le modifiche al modello possono impattare i servizi istanziati e quindi i Partecipanti che consumano quell'istanza.</p>
+<p>I seguenti campi possono essere modificati senza attivare una nuova versione del template:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Name</p></li>
+<li><p>Intended Recipient</p></li>
+<li><p>Description</p></li>
+<li><p>Voucher Time Limit</p></li>
+<li><p>Documentation (escludendo la specifica OpenAPI)</p></li>
+<li><p>Attributes</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="sospensione-del-e-service-template">
+<h4><span class="section-number">15.3.1.1.3. </span>Sospensione del e-service Template<a class="headerlink" href="#sospensione-del-e-service-template" title="Link to this heading">¶</a></h4>
+<p>I template, come i servizi elettronici, possono essere Sospesi. Quando sospesi:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Il template viene rimosso dal catalogo pubblico dei template.</p></li>
+<li><p>L'istanziazione di nuove istanze dal template sospeso è disabilitata.</p></li>
+<li><p>Le istanze precedentemente istanziate rimangono inalterate.</p></li>
+<li><p>I template possono essere riattivati in qualsiasi momento.</p></li>
+<li><p>I template non possono essere eliminati.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="istanziazione-del-e-service-template">
+<h4><span class="section-number">15.3.1.1.4. </span>Istanziazione del e-service Template<a class="headerlink" href="#istanziazione-del-e-service-template" title="Link to this heading">¶</a></h4>
+<p>I Partecipanti possono istanziare un Servizio Elettronico Template sfogliando il Catalogo Template e selezionando un template. Questo processo genera un nuovo servizio elettronico.</p>
+<p>I vincoli di istanziazione includono:</p>
+<blockquote>
+<div><ul>
+<li><p>Solo i template in stato Attivo sono idonei per l'istanziazione.</p></li>
+<li><p>L'istanziazione è facilitata attraverso una procedura guidata nell'interfaccia web PDND.</p></li>
+<li><p>A causa dell'obiettivo di standardizzazione dei template, la maggior parte dei campi è pre-compilata e immutabile durante l'istanziazione.</p></li>
+<li><p>Le seguenti informazioni non possono essere modificate durante l'istanziazione:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Caricamento della documentazione</p></li>
+<li><p>Tempo di scadenza del token</p></li>
+<li><p>Nome, descrizione e attributi</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>Invece, i seguenti campi devono essere specificati durante l'istanziazione:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Audience</p></li>
+<li><p>Thresholds</p></li>
+<li><p>Automatic/Manual Approval Policy</p></li>
+</ul>
+</div></blockquote>
+<p>Inoltre, sebbene la specifica OpenAPI sia fissa, i seguenti campi di metadati possono essere forniti in modo che PDND possa aggiornare automaticamente la specifica YAML:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Contatti (nome, email, URL, URL Termini e Condizioni)</p></li>
+<li><p>URL del server</p></li>
+</ul>
+</div></blockquote>
+<p>Ogni servizio elettronico istanziato mantiene un ciclo di vita indipendente analogo ai servizi elettronici standard.</p>
+</section>
+</section>
+<section id="gestione-delle-versioni">
+<h3><span class="section-number">15.3.1.2. </span>Gestione delle Versioni<a class="headerlink" href="#gestione-delle-versioni" title="Link to this heading">¶</a></h3>
+<p>Il versioning dei template segue un processo controllato:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>La pubblicazione di una nuova versione del template la imposta su Active.</p></li>
+<li><p>La versione precedentemente Active viene automaticamente trasferita a Deprecated.</p></li>
+<li><p>È consentita solo una versione Active per template in qualsiasi momento.</p></li>
+<li><p>I template possono anche avere una singola versione Draft che coesiste con la versione Active.</p></li>
+</ul>
+</div></blockquote>
+<p>Le istanze derivate dai template mantengono un versioning indipendente poiché i Partecipanti possono aggiornare i campi specifici dell'istanza (ad esempio, URL del server) più volte, mentre l'istanza rimane collegata alla versione del template di origine.</p>
+<p>Di conseguenza, le versioni dei template e le versioni delle istanze sono indipendenti e non direttamente correlate.</p>
+<p>I Partecipanti che istanziano un template possono quindi aggiornare sia l'istanza specifica o, se disponibile, aggiornare a una versione più recente del template.</p>
+</section>
+</section>
 </section>
 
 
@@ -245,6 +294,33 @@
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">15.3. Template e-Service PDND</a><ul>
+<li><a class="reference internal" href="#definizione-e-linee-guida-dell-e-service-template-pdnd">15.3.1. Definizione e linee guida dell'e-service template PDND</a><ul>
+<li><a class="reference internal" href="#gestione-dei-servizi-elettronici-template">15.3.1.1. Gestione dei Servizi Elettronici Template</a><ul>
+<li><a class="reference internal" href="#creazione-del-servizio-elettronico-template">15.3.1.1.1. Creazione del Servizio Elettronico Template</a></li>
+<li><a class="reference internal" href="#modifica-del-servizio-elettronico-template">15.3.1.1.2. Modifica del Servizio Elettronico Template</a></li>
+<li><a class="reference internal" href="#sospensione-del-e-service-template">15.3.1.1.3. Sospensione del e-service Template</a></li>
+<li><a class="reference internal" href="#istanziazione-del-e-service-template">15.3.1.1.4. Istanziazione del e-service Template</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gestione-delle-versioni">15.3.1.2. Gestione delle Versioni</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -252,14 +328,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="open-source.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">14. </span>Rilasci Open Source</span></a>
+                <a href="e-service-pdnd.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15.2. </span>e-Service PDND</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="mobile-application-instance.html"><span><span class="section-number">15.1. </span>Istanza dell'Applicazione Mobile</span><span class="icon">&gt;</span></a>
+                    <a href="test-plans.html"><span><span class="section-number">15.4. </span>Piani di Test</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
