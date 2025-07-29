@@ -18,15 +18,15 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
   * - RPR-01
     - Same Device Flow
     - Verificare l'URL di redirect HTTP (302).
-    - La Wallet Instance riceve l'URL corretto.
+    - Il Wallet Instance riceve l'URL corretto.
   * - RPR-02
     - Cross Device Flow
-    - Verificare la generazione del QR Code per la Wallet Instance.
-    - La Wallet Instance scansiona il QR Code con successo.
+    - Verificare la generazione del QR Code per Il Wallet Instance.
+    - Il Wallet Instance scansiona il QR Code con successo.
   * - RPR-03
     - Cross Device Flow
     - Verificare che il QR Code contenga i parametri URL corretti.
-    - La Wallet Instance recupera l'URL con i parametri.
+    - Il Wallet Instance recupera l'URL con i parametri.
   * - RPR-04
     - Cross Device Flow
     - Testare la scansione del QR Code in condizioni di scarsa illuminazione.
@@ -42,15 +42,15 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
   * - RPR-07
     - Request URI Method
     - Testare `request_uri_method` come `post`.
-    - La Wallet Instance invia i metadata tramite POST.
+    - Il Wallet Instance invia i metadata tramite POST.
   * - RPR-08
     - Request URI Method
     - Testare `request_uri_method` come `get`.
-    - La Wallet Instance recupera il Request Object tramite GET.
+    - Il Wallet Instance recupera il Request Object tramite GET.
   * - RPR-09
     - Request URI Method
     - Testare l'assenza di `request_uri_method`.
-    - La Wallet Instance utilizza il metodo GET come default.
+    - Il Wallet Instance utilizza il metodo GET come default.
   * - RPR-10
     - Metadata
     - Verificare che i parametri corrispondano ai metadata del credential verifier openid.
@@ -73,7 +73,7 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - Viene inviata una Authorization Error Response.
   * - RPR-15
     - Error Handling
-    - Verificare il logging degli errori da parte della Wallet Instance.
+    - Verificare il logging degli errori da parte delIl Wallet Instance.
     - Gli errori vengono registrati appropriatamente.
   * - RPR-16
     - Error Handling
@@ -150,7 +150,7 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
   * - RPR-34
     - Same Device Flow
     - Verificare la gestione di condizioni di rete lenta.
-    - La Wallet Instance riprova o notifica l'utente.
+    - Il Wallet Instance riprova o notifica l'utente.
   * - RPR-35
     - Request URI Method
     - Testare la gestione di payload metadata di grandi dimensioni.
