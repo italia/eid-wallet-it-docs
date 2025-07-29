@@ -201,23 +201,23 @@
 <tbody>
 <tr class="row-even"><td><p>ISS-001</p></td>
 <td><p>Setup</p></td>
-<td><p>Validare la configurazione della Wallet Instance</p></td>
-<td><p>La Wallet Instance è configurata con una Wallet Attestation valida. Verificare che la chiave pubblica sia valida e correttamente legata a un elemento sicuro.</p></td>
+<td><p>Validare la configurazione delIl Wallet Instance</p></td>
+<td><p>Il Wallet Instance è configurata con una Wallet Attestation valida. Verificare che la chiave pubblica sia valida e correttamente legata a un elemento sicuro.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ISS-002</p></td>
 <td><p>Discovery</p></td>
 <td><p>Credential Issuer Discovery</p></td>
-<td><p>La Wallet Instance scopre con successo i Digital Credential Issuer affidabili utilizzando il Credential Catalogue e verifica la conformità della loro configurazione e delle policy tramite Federation API.</p></td>
+<td><p>Il Wallet Instance scopre con successo i Digital Credential Issuer affidabili utilizzando il Credential Catalogue e verifica la conformità della loro configurazione e delle policy tramite Federation API.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISS-003</p></td>
 <td><p>Metadata</p></td>
 <td><p>Recupero dei metadata del Credential Issuer</p></td>
-<td><p>La Wallet Instance recupera e valida i metadata del Credential Issuer. I metadata includono i formati PID, gli algoritmi supportati e i parametri di interoperabilità.</p></td>
+<td><p>Il Wallet Instance recupera e valida i metadata del Credential Issuer. I metadata includono i formati PID, gli algoritmi supportati e i parametri di interoperabilità.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ISS-004</p></td>
 <td><p>Authorization, Authentication</p></td>
 <td><p>Richiesta di Credential tramite Authorization Code Flow</p></td>
-<td><p>La Wallet Instance richiede con successo una Credential tramite Authorization Code Flow. Validare l'uso di PKCE con un code verifier di 43-128 caratteri.</p></td>
+<td><p>Il Wallet Instance richiede con successo una Credential tramite Authorization Code Flow. Validare l'uso di PKCE con un code verifier di 43-128 caratteri.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISS-005</p></td>
 <td><p>Authentication</p></td>
@@ -227,7 +227,7 @@
 <tr class="row-odd"><td><p>ISS-006</p></td>
 <td><p>Issuance</p></td>
 <td><p>Emissione della Credential</p></td>
-<td><p>La Credential è emessa e legata al materiale chiave della Wallet Instance. Validare il processo di binding e assicurare l'integrità e la conformità al data model della Credential emessa.</p></td>
+<td><p>La Credenziale è emessa e legata al materiale chiave delIl Wallet Instance. Validare il processo di binding e assicurare l'integrità e la conformità al data model della Credential emessa.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISS-007</p></td>
 <td><p>Authentication</p></td>
@@ -252,12 +252,12 @@
 <tr class="row-even"><td><p>ISS-011</p></td>
 <td><p>Deferred Issuance</p></td>
 <td><p>Flusso di Deferred Issuance</p></td>
-<td><p>La Wallet Instance gestisce correttamente la deferred issuance e recupera le credential successivamente. Validare l'uso di un identificatore univoco di transazione (<cite>transaction_id</cite>) e assicurarsi che la Credential sia emessa dopo il lead time specificato.</p></td>
+<td><p>Il Wallet Instance gestisce correttamente la deferred issuance e recupera le credential successivamente. Validare l'uso di un identificatore univoco di transazione (<cite>transaction_id</cite>) e assicurarsi che la Credential sia emessa dopo il lead time specificato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ISS-012</p></td>
 <td><p>Notification</p></td>
 <td><p>Gestione delle notifiche</p></td>
-<td><p>La Wallet Instance invia e riceve notifiche correttamente. Validare l'uso di <cite>notification_id</cite> e assicurarsi che il tipo di evento sia correttamente riportato.</p></td>
+<td><p>Il Wallet Instance invia e riceve notifiche correttamente. Validare l'uso di <cite>notification_id</cite> e assicurarsi che il tipo di evento sia correttamente riportato.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISS-013</p></td>
 <td><p>Credential Issuance</p></td>
@@ -327,7 +327,7 @@
 <tr class="row-odd"><td><p>ISS-026</p></td>
 <td><p>Security</p></td>
 <td><p>Validare la DPoP Proof per il Token Endpoint</p></td>
-<td><p>Assicurarsi che la DPoP Proof JWT sia valida e leghi l'Access Token alla Wallet Instance.</p></td>
+<td><p>Assicurarsi che la DPoP Proof JWT sia valida e leghi l'Access Token alIl Wallet Instance.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISS-027</p></td>
 <td><p>Security</p></td>
@@ -362,7 +362,7 @@
 <tr class="row-even"><td><p>ISS-033</p></td>
 <td><p>Security</p></td>
 <td><p>Validare la DPoP Proof per il Credential Endpoint</p></td>
-<td><p>Assicurarsi che la DPoP Proof JWT per il Credential Endpoint sia valida e leghi la Credential alla Wallet Instance.</p></td>
+<td><p>Assicurarsi che la DPoP Proof JWT per il Credential Endpoint sia valida e leghi la Credential alIl Wallet Instance.</p></td>
 </tr>
 <tr class="row-odd"><td><p>ISS-034</p></td>
 <td><p>Security</p></td>
@@ -427,7 +427,7 @@
 <tr class="row-odd"><td><p>ISS-046</p></td>
 <td><p>Security</p></td>
 <td><p>Validare i token sender-constrained</p></td>
-<td><p>Assicurarsi che i Refresh Token siano crittograficamente legati alla Wallet Instance.</p></td>
+<td><p>Assicurarsi che i Refresh Token siano crittograficamente legati alIl Wallet Instance.</p></td>
 </tr>
 <tr class="row-even"><td><p>ISS-047</p></td>
 <td><p>Security</p></td>

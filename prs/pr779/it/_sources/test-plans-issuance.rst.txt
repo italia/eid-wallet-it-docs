@@ -18,20 +18,20 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Expected Result
   * - ISS-001
     - Setup
-    - Validare la configurazione della Wallet Instance
-    - La Wallet Instance è configurata con una Wallet Attestation valida. Verificare che la chiave pubblica sia valida e correttamente legata a un elemento sicuro.
+    - Validare la configurazione delIl Wallet Instance
+    - Il Wallet Instance è configurata con una Wallet Attestation valida. Verificare che la chiave pubblica sia valida e correttamente legata a un elemento sicuro.
   * - ISS-002
     - Discovery
     - Credential Issuer Discovery
-    - La Wallet Instance scopre con successo i Digital Credential Issuer affidabili utilizzando il Credential Catalogue e verifica la conformità della loro configurazione e delle policy tramite Federation API.
+    - Il Wallet Instance scopre con successo i Digital Credential Issuer affidabili utilizzando il Credential Catalogue e verifica la conformità della loro configurazione e delle policy tramite Federation API.
   * - ISS-003
     - Metadata
     - Recupero dei metadata del Credential Issuer
-    - La Wallet Instance recupera e valida i metadata del Credential Issuer. I metadata includono i formati PID, gli algoritmi supportati e i parametri di interoperabilità.
+    - Il Wallet Instance recupera e valida i metadata del Credential Issuer. I metadata includono i formati PID, gli algoritmi supportati e i parametri di interoperabilità.
   * - ISS-004
     - Authorization, Authentication
     - Richiesta di Credential tramite Authorization Code Flow
-    - La Wallet Instance richiede con successo una Credential tramite Authorization Code Flow. Validare l'uso di PKCE con un code verifier di 43-128 caratteri.
+    - Il Wallet Instance richiede con successo una Credential tramite Authorization Code Flow. Validare l'uso di PKCE con un code verifier di 43-128 caratteri.
   * - ISS-005
     - Authentication
     - Autenticazione dell'Utente con PID Provider
@@ -39,7 +39,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - ISS-006
     - Issuance
     - Emissione della Credential
-    - La Credential è emessa e legata al materiale chiave della Wallet Instance. Validare il processo di binding e assicurare l'integrità e la conformità al data model della Credential emessa.
+    - La Credenziale è emessa e legata al materiale chiave delIl Wallet Instance. Validare il processo di binding e assicurare l'integrità e la conformità al data model della Credential emessa.
   * - ISS-007
     - Authentication
     - Autenticazione dell'Utente con (Q)EAA Provider
@@ -59,11 +59,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - ISS-011
     - Deferred Issuance
     - Flusso di Deferred Issuance
-    - La Wallet Instance gestisce correttamente la deferred issuance e recupera le credential successivamente. Validare l'uso di un identificatore univoco di transazione (`transaction_id`) e assicurarsi che la Credential sia emessa dopo il lead time specificato.
+    - Il Wallet Instance gestisce correttamente la deferred issuance e recupera le credential successivamente. Validare l'uso di un identificatore univoco di transazione (`transaction_id`) e assicurarsi che la Credential sia emessa dopo il lead time specificato.
   * - ISS-012
     - Notification
     - Gestione delle notifiche
-    - La Wallet Instance invia e riceve notifiche correttamente. Validare l'uso di `notification_id` e assicurarsi che il tipo di evento sia correttamente riportato.
+    - Il Wallet Instance invia e riceve notifiche correttamente. Validare l'uso di `notification_id` e assicurarsi che il tipo di evento sia correttamente riportato.
   * - ISS-013
     - Credential Issuance
     - Il Provider (Q)EAA offre Credential all'Holder
@@ -119,7 +119,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - ISS-026
     - Security
     - Validare la DPoP Proof per il Token Endpoint
-    - Assicurarsi che la DPoP Proof JWT sia valida e leghi l'Access Token alla Wallet Instance.
+    - Assicurarsi che la DPoP Proof JWT sia valida e leghi l'Access Token alIl Wallet Instance.
   * - ISS-027
     - Security
     - Validare i parametri della Token Request
@@ -147,7 +147,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - ISS-033
     - Security
     - Validare la DPoP Proof per il Credential Endpoint
-    - Assicurarsi che la DPoP Proof JWT per il Credential Endpoint sia valida e leghi la Credential alla Wallet Instance.
+    - Assicurarsi che la DPoP Proof JWT per il Credential Endpoint sia valida e leghi la Credential alIl Wallet Instance.
   * - ISS-034
     - Security
     - Validare i parametri della Credential Request
@@ -199,7 +199,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - ISS-046
     - Security
     - Validare i token sender-constrained
-    - Assicurarsi che i Refresh Token siano crittograficamente legati alla Wallet Instance.
+    - Assicurarsi che i Refresh Token siano crittograficamente legati alIl Wallet Instance.
   * - ISS-047
     - Security
     - Limitare l'uso del Refresh Token

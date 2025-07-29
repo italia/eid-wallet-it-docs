@@ -204,18 +204,18 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
 <tbody>
 <tr class="row-even"><td><p>WS-001</p></td>
 <td><p>Wallet Initialization</p></td>
-<td><p>La Wallet Solution DEVE assicurare che ogni Wallet Instance sia generata secondo le specifiche e includa un identificatore univoco e chiavi crittografiche legate a un elemento sicuro.</p></td>
+<td><p>Il Wallet Solution DEVE assicurare che ogni Wallet Instance sia generata secondo le specifiche e includa un identificatore univoco e chiavi crittografiche legate a un elemento sicuro.</p></td>
 <td><p>Una Wallet Instance conforme viene generata con identificatori corretti e legami sicuri.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-002</p></td>
 <td><p>User Interaction</p></td>
-<td><p>La Wallet Solution DEVE richiedere e ottenere il consenso esplicito dell'Utente durante l'inizializzazione della Wallet Instance.</p></td>
-<td><p>La Wallet Instance viene attivata solo dopo aver ottenuto il consenso verificabile dell'Utente.</p></td>
+<td><p>Il Wallet Solution DEVE richiedere e ottenere il consenso esplicito dell'Utente durante l'inizializzazione delIl Wallet Instance.</p></td>
+<td><p>Il Wallet Instance viene attivata solo dopo aver ottenuto il consenso verificabile dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-003</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet Solution DEVE memorizzare le chiavi private all'interno di un Secure Hardware Element o storage sicuro equivalente.</p></td>
-<td><p>Tutti i materiali delle chiavi private sono inaccessibili dal sistema operativo o da qualsiasi applicazione esterna alla Wallet Solution.</p></td>
+<td><p>Il Wallet Solution DEVE memorizzare le chiavi private all'interno di un Secure Hardware Element o storage sicuro equivalente.</p></td>
+<td><p>Tutti i materiali delle chiavi private sono inaccessibili dal sistema operativo o da qualsiasi applicazione esterna alIl Wallet Solution.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-004</p></td>
 <td><p>Attestation</p></td>
@@ -225,11 +225,11 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
 <tr class="row-even"><td><p>WS-005</p></td>
 <td><p>Attestation</p></td>
 <td><p>Il Wallet DEVE supportare l'elaborazione delle Wallet Attestation Request e la generazione di risposte appropriate in conformità con eIDAS.</p></td>
-<td><p>La Wallet interpreta e soddisfa correttamente le richieste di attestation includendo i dati del soggetto e le firme crittografiche.</p></td>
+<td><p>Il Wallet interpreta e soddisfa correttamente le richieste di attestation includendo i dati del soggetto e le firme crittografiche.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-006</p></td>
 <td><p>Remote Credential Presentation</p></td>
-<td><p>La Wallet Solution DEVE implementare sia il flusso di presentazione di prossimità che remoto, assicurando la selezione delle Verifiable Credential, l'integrità e l'interazione dell'Utente.</p></td>
+<td><p>Il Wallet Solution DEVE implementare sia il flusso di presentazione di prossimità che remoto, assicurando la selezione delle Verifiable Credential, l'integrità e l'interazione dell'Utente.</p></td>
 <td><p>La presentazione delle Verifiable Credential ha successo, è corretta e sotto il controllo dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-007</p></td>
@@ -244,12 +244,12 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
 </tr>
 <tr class="row-even"><td><p>WS-009</p></td>
 <td><p>Revocation</p></td>
-<td><p>Alla Wallet Instance Revocation, la Wallet Solution DEVE notificare i sistemi backend rilevanti per propagare la revoca.</p></td>
+<td><p>AlIl Wallet Instance Revocation, Il Wallet Solution DEVE notificare i sistemi backend rilevanti per propagare la revoca.</p></td>
 <td><p>Lo stato di revoca si riflette in tutti i componenti dell'ecosistema (es. Issuer, Verifier).</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-010</p></td>
 <td><p>Backup &amp; Restore</p></td>
-<td><p>La Wallet DEVE supportare operazioni di Backup e Restore crittografate in conformità con i requisiti di privacy e integrità.</p></td>
+<td><p>Il Wallet DEVE supportare operazioni di Backup e Restore crittografate in conformità con i requisiti di privacy e integrità.</p></td>
 <td><p>Il Backup è crittografato e legato all'Utente; l'operazione di Restore verifica l'integrità e l'autenticità dell'Utente prima del recupero.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-011</p></td>
@@ -259,12 +259,12 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
 </tr>
 <tr class="row-odd"><td><p>WS-012</p></td>
 <td><p>Backup &amp; Restore</p></td>
-<td><p>La Wallet DEVE autenticare l'Utente prima di permettere il Restore.</p></td>
+<td><p>Il Wallet DEVE autenticare l'Utente prima di permettere il Restore.</p></td>
 <td><p>Il Restore ha successo solo dopo l'autenticazione verificata dell'Utente utilizzando metodi approvati (es. biometrici, PIN, challenge crittografico).</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-013</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet DEVE rilevare le Attestation scadute e supportare i flussi di refresh.</p></td>
+<td><p>Il Wallet DEVE rilevare le Attestation scadute e supportare i flussi di refresh.</p></td>
 <td><p>Le Attestation scadute non vengono utilizzate; il refresh viene attivato automaticamente o tramite prompt dell'Utente.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-014</p></td>
@@ -274,57 +274,57 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
 </tr>
 <tr class="row-even"><td><p>WS-015</p></td>
 <td><p>User Interaction</p></td>
-<td><p>La Wallet DEVE operare sotto il principio del controllo dell'Utente e della minimizzazione dei dati.</p></td>
+<td><p>Il Wallet DEVE operare sotto il principio del controllo dell'Utente e della minimizzazione dei dati.</p></td>
 <td><p>Solo i dati esplicitamente consenziti e richiesti vengono utilizzati e trasmessi; tutte le operazioni richiedono azioni esplicite dell'Utente.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-016</p></td>
 <td><p>Credential Presentation</p></td>
-<td><p>La Wallet DEVE supportare la presentazione offline delle Verifiable Credential quando consentito.</p></td>
+<td><p>Il Wallet DEVE supportare la presentazione offline delle Verifiable Credential quando consentito.</p></td>
 <td><p>Le Credential vengono presentate in modo sicuro anche in modalità offline, mantenendo integrità e autenticità.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-017</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE assicurare protezioni anti-replay durante la presentazione delle credenziali.</p></td>
+<td><p>Il Wallet DEVE assicurare protezioni anti-replay durante la presentazione delle credenziali.</p></td>
 <td><p>Ogni presentazione è crittograficamente unica e legata alla richiesta del Verifier.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-018</p></td>
 <td><p>Revocation</p></td>
-<td><p>La Wallet DEVE registrare e rendere verificabile il processo di revoca delle Wallet Instance.</p></td>
+<td><p>Il Wallet DEVE registrare e rendere verificabile il processo di revoca delle Wallet Instance.</p></td>
 <td><p>Log completi e resistenti alla manomissione sono disponibili per l'ispezione su richiesta.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-019</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE stabilire canali mutuamente autenticati e crittografati durante tutte le interazioni.</p></td>
+<td><p>Il Wallet DEVE stabilire canali mutuamente autenticati e crittografati durante tutte le interazioni.</p></td>
 <td><p>Tutti i messaggi sono protetti contro intercettazione, modifica o impersonificazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-020</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE bloccarsi e/o revocare la Wallet Instance al rilevamento di manomissioni.</p></td>
-<td><p>La Wallet diventa inoperabile e la revoca viene attivata se la manomissione è confermata.</p></td>
+<td><p>Il Wallet DEVE bloccarsi e/o revocare Il Wallet Instance al rilevamento di manomissioni.</p></td>
+<td><p>Il Wallet diventa inoperabile e la revoca viene attivata se la manomissione è confermata.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-021</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE eseguire Device Attestation utilizzando meccanismi specifici della piattaforma come Play Integrity (Android) o DC App Attest (iOS) durante la creazione della Wallet Instance.</p></td>
-<td><p>La Device Attestation ha successo e i risultati sono inclusi nel payload della Wallet Attestation.</p></td>
+<td><p>Il Wallet DEVE eseguire Device Attestation utilizzando meccanismi specifici della piattaforma come Play Integrity (Android) o DC App Attest (iOS) durante la creazione delIl Wallet Instance.</p></td>
+<td><p>La Device Attestation ha successo e i risultati sono inclusi nel payload delIl Wallet Attestation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-022</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet Attestation DEVE includere una firma utilizzando la Wallet Binding Key, e la catena di certificati DEVE essere verificabile fino a una root attendibile.</p></td>
+<td><p>Il Wallet Attestation DEVE includere una firma utilizzando Il Wallet Binding Key, e la catena di certificati DEVE essere verificabile fino a una root attendibile.</p></td>
 <td><p>La firma è presente, valida e verificabile utilizzando la catena di certificati fornita.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-023</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet DEVE includere un risultato di Device Attestation nella struttura della Wallet Attestation.</p></td>
+<td><p>Il Wallet DEVE includere un risultato di Device Attestation nella struttura delIl Wallet Attestation.</p></td>
 <td><p>Un oggetto Device Attestation valido (risultato Play Integrity o DC App Attest) è incorporato nell'Attestation.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-024</p></td>
 <td><p>Backup &amp; Restore</p></td>
-<td><p>Durante il Restore, la Wallet DEVE validare l'integrità del file di backup crittografato utilizzando un meccanismo di controllo dell'integrità.</p></td>
-<td><p>La Wallet rifiuta di ripristinare un file di backup manomesso o corrotto.</p></td>
+<td><p>Durante il Restore, Il Wallet DEVE validare l'integrità del file di backup crittografato utilizzando un meccanismo di controllo dell'integrità.</p></td>
+<td><p>Il Wallet rifiuta di ripristinare un file di backup manomesso o corrotto.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-025</p></td>
 <td><p>Revocation</p></td>
-<td><p>In caso di Wallet Instance Revocation, la Wallet DEVE eliminare tutte le Verifiable Credential memorizzate localmente.</p></td>
+<td><p>In caso di Wallet Instance Revocation, Il Wallet DEVE eliminare tutte le Verifiable Credential memorizzate localmente.</p></td>
 <td><p>Nessun dato di credenziale rimane accessibile dopo che la revoca è stata attivata.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-026</p></td>
@@ -334,12 +334,12 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
 </tr>
 <tr class="row-even"><td><p>WS-027</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE prevenire il riutilizzo di Wallet Binding Key revocate o credenziali in future Wallet Instance.</p></td>
+<td><p>Il Wallet DEVE prevenire il riutilizzo di Wallet Binding Key revocate o credenziali in future Wallet Instance.</p></td>
 <td><p>Qualsiasi tentativo di riutilizzo viene rilevato e bloccato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-028</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet DEVE supportare il refresh dell'Attestation tramite l'API definita esposta dal Wallet Backend.</p></td>
+<td><p>Il Wallet DEVE supportare il refresh dell'Attestation tramite l'API definita esposta dal Wallet Backend.</p></td>
 <td><p>L'Attestation viene rinnovata e la nuova versione viene accettata dai Verifier e dagli Issuer.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-029</p></td>
@@ -349,157 +349,157 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
 </tr>
 <tr class="row-odd"><td><p>WS-030</p></td>
 <td><p>User Interaction</p></td>
-<td><p>La Wallet DEVE richiedere all'Utente di confermare l'intento prima di qualsiasi operazione distruttiva come Revocation o Credential Deletion.</p></td>
+<td><p>Il Wallet DEVE richiedere all'Utente di confermare l'intento prima di qualsiasi operazione distruttiva come Revocation o Credential Deletion.</p></td>
 <td><p>Le azioni distruttive vengono eseguite solo dopo la conferma esplicita dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-031</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet DEVE generare una Wallet Attestation contenente informazioni sullo stato di integrità del dispositivo, utilizzando Play Integrity API su Android.</p></td>
-<td><p>La Wallet Attestation include un payload Play Integrity valido con il campo 'MEETS_DEVICE_INTEGRITY' impostato.</p></td>
+<td><p>Il Wallet DEVE generare una Wallet Attestation contenente informazioni sullo stato di integrità del dispositivo, utilizzando Play Integrity API su Android.</p></td>
+<td><p>Il Wallet Attestation include un payload Play Integrity valido con il campo 'MEETS_DEVICE_INTEGRITY' impostato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-032</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet DEVE generare una Wallet Attestation utilizzando DeviceCheck App Attest su iOS e includere il risultato dell'attestation nella Wallet Attestation.</p></td>
-<td><p>La Wallet Attestation include una risposta JWT DC App Attest valida firmata da Apple.</p></td>
+<td><p>Il Wallet DEVE generare una Wallet Attestation utilizzando DeviceCheck App Attest su iOS e includere il risultato dell'attestation nelIl Wallet Attestation.</p></td>
+<td><p>Il Wallet Attestation include una risposta JWT DC App Attest valida firmata da Apple.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-033</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE verificare che la firma del token Play Integrity sia valida e emessa da Google.</p></td>
-<td><p>La Wallet rifiuta token Play Integrity non validi o contraffatti.</p></td>
+<td><p>Il Wallet DEVE verificare che la firma del token Play Integrity sia valida e emessa da Google.</p></td>
+<td><p>Il Wallet rifiuta token Play Integrity non validi o contraffatti.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-034</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE validare che il valore 'nonce' utilizzato in Play Integrity sia crittograficamente legato alla Wallet Instance.</p></td>
+<td><p>Il Wallet DEVE validare che il valore 'nonce' utilizzato in Play Integrity sia crittograficamente legato alIl Wallet Instance.</p></td>
 <td><p>Qualsiasi manomissione del nonce viene rilevata e porta al rifiuto dell'Attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-035</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet DEVE inviare la Wallet Attestation al Wallet Backend durante la registrazione.</p></td>
+<td><p>Il Wallet DEVE inviare Il Wallet Attestation al Wallet Backend durante la registrazione.</p></td>
 <td><p>Il Wallet Backend riceve l'attestation e ne verifica la validità.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-036</p></td>
 <td><p>Backup &amp; Restore</p></td>
-<td><p>La Wallet DEVE crittografare i backup utilizzando una chiave simmetrica derivata dai segreti dell'Utente.</p></td>
+<td><p>Il Wallet DEVE crittografare i backup utilizzando una chiave simmetrica derivata dai segreti dell'Utente.</p></td>
 <td><p>Il backup non può essere decrittografato senza i materiali di autenticazione originali dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-037</p></td>
 <td><p>Backup &amp; Restore</p></td>
-<td><p>La Wallet DEVE includere metadata nel backup che identificano la versione e il timestamp di creazione.</p></td>
+<td><p>Il Wallet DEVE includere metadata nel backup che identificano la versione e il timestamp di creazione.</p></td>
 <td><p>Il processo di Restore legge e verifica i metadata del backup prima di procedere.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-038</p></td>
 <td><p>Revocation</p></td>
-<td><p>La Wallet DEVE inviare una Revocation Request all’endpoint del Backend, includendo l’ID della Wallet come parametro nel path dell’URL.</p></td>
-<td><p>Il backend elabora la revoca e aggiorna lo stato della Wallet a revocata.</p></td>
+<td><p>Il Wallet DEVE inviare una Revocation Request all’endpoint del Backend, includendo l’ID delIl Wallet come parametro nel path dell’URL.</p></td>
+<td><p>Il backend elabora la revoca e aggiorna lo stato delIl Wallet a revocata.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-039</p></td>
 <td><p>Revocation</p></td>
-<td><p>La Wallet DEVE non permettere ulteriori Credential Issuance o Presentation dopo la revoca.</p></td>
-<td><p>Tutte le operazioni vengono bloccate una volta che la Wallet è revocata.</p></td>
+<td><p>Il Wallet DEVE non permettere ulteriori Credential Issuance o Presentation dopo la revoca.</p></td>
+<td><p>Tutte le operazioni vengono bloccate una volta che Il Wallet è revocata.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-040</p></td>
 <td><p>Credential Issuance</p></td>
-<td><p>La Wallet DEVE validare la struttura della Credential Offer ricevuta dall'Issuer.</p></td>
-<td><p>La Wallet accetta solo Credential Offer che corrispondono al formato e alla firma previsti.</p></td>
+<td><p>Il Wallet DEVE validare la struttura della Credential Offer ricevuta dall'Issuer.</p></td>
+<td><p>Il Wallet accetta solo Credential Offer che corrispondono al formato e alla firma previsti.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-041</p></td>
 <td><p>Credential Issuance</p></td>
-<td><p>La Wallet DEVE assicurare che l'Utente acconsenta a ricevere una nuova Credential.</p></td>
+<td><p>Il Wallet DEVE assicurare che l'Utente acconsenta a ricevere una nuova Credential.</p></td>
 <td><p>Nessuna Credential viene memorizzata senza l'approvazione esplicita dell'Utente.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-042</p></td>
 <td><p>Credential Presentation</p></td>
-<td><p>La Wallet DEVE verificare la Presentation Request del Verifier prima di rispondere.</p></td>
+<td><p>Il Wallet DEVE verificare la Presentation Request del Verifier prima di rispondere.</p></td>
 <td><p>Richieste non valide o malformate vengono rifiutate.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-043</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE firmare le Verifiable Presentations con la chiave privata corretta legata alla Wallet Instance.</p></td>
+<td><p>Il Wallet DEVE firmare le Verifiable Presentations con la chiave privata corretta legata alIl Wallet Instance.</p></td>
 <td><p>I Verifier sono in grado di validare la firma e fidarsi della presentazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-044</p></td>
 <td><p>User Interaction</p></td>
-<td><p>La Wallet DEVE richiedere all'Utente prima di inviare una Verifiable Credential a un Verifier.</p></td>
+<td><p>Il Wallet DEVE richiedere all'Utente prima di inviare una Verifiable Credential a un Verifier.</p></td>
 <td><p>Nessuna credenziale viene condivisa senza la conferma esplicita dell'Utente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-045</p></td>
 <td><p>Backup &amp; Restore</p></td>
-<td><p>La Wallet DEVE permettere all'Utente di eliminare tutti i dati di backup memorizzati.</p></td>
+<td><p>Il Wallet DEVE permettere all'Utente di eliminare tutti i dati di backup memorizzati.</p></td>
 <td><p>Tutti i materiali di backup vengono eliminati in modo sicuro e non possono essere recuperati.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-046</p></td>
 <td><p>Revocation</p></td>
-<td><p>Se la Wallet viene ripristinata su un nuovo dispositivo, DEVE controllare se la Wallet Instance originale era stata revocata.</p></td>
+<td><p>Se Il Wallet viene ripristinata su un nuovo dispositivo, DEVE controllare se Il Wallet Instance originale era stata revocata.</p></td>
 <td><p>Le Wallet Instance revocate non possono essere ripristinate.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-047</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE verificare la validità temporale delle Credential ricevute (es. issuanceDate, expirationDate).</p></td>
+<td><p>Il Wallet DEVE verificare la validità temporale delle Credential ricevute (es. issuanceDate, expirationDate).</p></td>
 <td><p>Le credenziali scadute sono marcate come non valide e non vengono utilizzate.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-048</p></td>
 <td><p>Attestation</p></td>
-<td><p>La Wallet DEVE includere la chiave pubblica della Wallet Binding Key nella Wallet Attestation.</p></td>
+<td><p>Il Wallet DEVE includere la chiave pubblica delIl Wallet Binding Key nelIl Wallet Attestation.</p></td>
 <td><p>I Verifier e gli Issuer possono validare le firme effettuate con la corrispondente chiave privata.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-049</p></td>
 <td><p>Credential Presentation</p></td>
-<td><p>La Wallet DEVE supportare la Selective Disclosure degli attributi delle Credential.</p></td>
+<td><p>Il Wallet DEVE supportare la Selective Disclosure degli attributi delle Credential.</p></td>
 <td><p>Solo i campi selezionati sono inclusi nella presentazione inviata al Verifier.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-050</p></td>
 <td><p>Credential Presentation</p></td>
-<td><p>La Wallet DEVE permettere all'Utente di visualizzare in anteprima quali attributi delle Credential saranno divulgati prima della conferma.</p></td>
+<td><p>Il Wallet DEVE permettere all'Utente di visualizzare in anteprima quali attributi delle Credential saranno divulgati prima della conferma.</p></td>
 <td><p>All'Utente viene mostrato l'esatto dato da condividere e lo approva esplicitamente.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-051</p></td>
 <td><p>Proximity Flow</p></td>
-<td><p>La Wallet DEVE avviare il flusso di prossimità solo dopo il consenso esplicito dell'Utente di interagire con una Mobile Relying Party Instance.</p></td>
-<td><p>Il flusso di presentazione di prossimità della Wallet viene bloccato a meno che l'Utente non abbia approvato la richiesta.</p></td>
+<td><p>Il Wallet DEVE avviare il flusso di prossimità solo dopo il consenso esplicito dell'Utente di interagire con una Mobile Relying Party Instance.</p></td>
+<td><p>Il flusso di presentazione di prossimità delIl Wallet viene bloccato a meno che l'Utente non abbia approvato la richiesta.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-052</p></td>
 <td><p>Proximity Flow</p></td>
-<td><p>La Wallet DEVE validare l'Access Certificate presentato da una Mobile Relying Party Instance prima di procedere.</p></td>
-<td><p>Se l'Access Certificate è mancante, non valido o scaduto, la Wallet DEVE rifiutare la richiesta.</p></td>
+<td><p>Il Wallet DEVE validare l'Access Certificate presentato da una Mobile Relying Party Instance prima di procedere.</p></td>
+<td><p>Se l'Access Certificate è mancante, non valido o scaduto, Il Wallet DEVE rifiutare la richiesta.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-053</p></td>
 <td><p>Proximity Flow</p></td>
-<td><p>La Wallet DEVE visualizzare una disclaimer quando l'Access Certificate è scaduto ma ancora all'interno del periodo di grazia consentito.</p></td>
+<td><p>Il Wallet DEVE visualizzare una disclaimer quando l'Access Certificate è scaduto ma ancora all'interno del periodo di grazia consentito.</p></td>
 <td><p>La disclaimer viene mostrata chiaramente all'Utente e la presentazione procede solo dopo il consenso.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-054</p></td>
 <td><p>Relying Party Instance</p></td>
-<td><p>La Wallet DEVE applicare il controllo che lo stato della Relying Party Instance sia 'Verified' prima di permettere la presentazione delle credenziali.</p></td>
-<td><p>La Wallet nega il flusso se la Relying Party Instance è in qualsiasi stato diverso da 'Verified'.</p></td>
+<td><p>Il Wallet DEVE applicare il controllo che lo stato della Relying Party Instance sia 'Verified' prima di permettere la presentazione delle credenziali.</p></td>
+<td><p>Il Wallet nega il flusso se la Relying Party Instance è in qualsiasi stato diverso da 'Verified'.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-055</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE registrare qualsiasi tentativo di presentazione fallito a causa di stato non valido della Relying Party Instance o Access Certificate scaduto.</p></td>
+<td><p>Il Wallet DEVE registrare qualsiasi tentativo di presentazione fallito a causa di stato non valido della Relying Party Instance o Access Certificate scaduto.</p></td>
 <td><p>Un log di eventi di sicurezza viene generato e memorizzato in modo sicuro.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-056</p></td>
 <td><p>Interoperability</p></td>
-<td><p>La Wallet DEVE supportare la comunicazione con le Relying Party Instance utilizzando QR code standardizzati per la negoziazione di sessione come definito nella specifica.</p></td>
-<td><p>La Wallet legge e analizza con successo i QR code e avvia la sessione secondo il protocollo.</p></td>
+<td><p>Il Wallet DEVE supportare la comunicazione con le Relying Party Instance utilizzando QR code standardizzati per la negoziazione di sessione come definito nella specifica.</p></td>
+<td><p>Il Wallet legge e analizza con successo i QR code e avvia la sessione secondo il protocollo.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-057</p></td>
 <td><p>Proximity Flow</p></td>
-<td><p>La Wallet DEVE stabilire una sessione sicura e autenticata con la Mobile Relying Party Instance utilizzando chiavi effimere prima della presentazione.</p></td>
+<td><p>Il Wallet DEVE stabilire una sessione sicura e autenticata con la Mobile Relying Party Instance utilizzando chiavi effimere prima della presentazione.</p></td>
 <td><p>Le chiavi di sessione vengono negoziate e verificate, e tutta la comunicazione è crittografata.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-058</p></td>
 <td><p>Credential Presentation</p></td>
-<td><p>La Wallet DEVE permettere all'Utente di scegliere quale Credential presentare a una Relying Party Instance anche nel flusso di prossimità.</p></td>
+<td><p>Il Wallet DEVE permettere all'Utente di scegliere quale Credential presentare a una Relying Party Instance anche nel flusso di prossimità.</p></td>
 <td><p>L'interfaccia di selezione delle Credential viene mostrata all'Utente durante il flusso di prossimità.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-059</p></td>
 <td><p>Security</p></td>
-<td><p>La Wallet DEVE interrompere la sessione se la Relying Party Instance non riesce a dimostrare il possesso della chiave privata associata all'Access Certificate.</p></td>
+<td><p>Il Wallet DEVE interrompere la sessione se la Relying Party Instance non riesce a dimostrare il possesso della chiave privata associata all'Access Certificate.</p></td>
 <td><p>La sessione viene terminata e nessun dato di Credential viene divulgato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WS-060</p></td>
 <td><p>User Interaction</p></td>
-<td><p>La Wallet DEVE indicare chiaramente all'Utente quando una richiesta di presentazione proviene da una Mobile Relying Party Instance utilizzando un canale di prossimità.</p></td>
+<td><p>Il Wallet DEVE indicare chiaramente all'Utente quando una richiesta di presentazione proviene da una Mobile Relying Party Instance utilizzando un canale di prossimità.</p></td>
 <td><p>La fonte della richiesta viene mostrata prima di permettere alla presentazione di procedere.</p></td>
 </tr>
 </tbody>
