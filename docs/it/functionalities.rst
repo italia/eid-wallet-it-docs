@@ -4,14 +4,6 @@
 Design dell'Esperienza Utente
 =============================
 
-.. toctree::
-  :caption: Indice di Design dell’Esperienza Utente 
-  :maxdepth: 3 
-
-  design.rst
-  official-resources.rst
-  functionalities.rst
-
 
 .. include:: design.rst
 
