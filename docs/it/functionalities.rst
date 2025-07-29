@@ -149,9 +149,9 @@ Ottenimento dal Touchpoint della Fonte Autentica
 Di seguito sono illustrati i requisiti dell'Esperienza Utente del flusso di ottenimento di un Attestato Elettronico di Attributi dal Touchpoint della Fonte Autentica che questa DEVE garantire attraverso il proprio Touchpoint:  
 
 - L’Utente interagisce con il Pulsante di Ingaggio chiaramente esposto nell’interfaccia del Touchpoint; 
-- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DOVREBBE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:functionalities:Autenticazione; 
-- (*solo cross-device*) L’Utente scansiona un QR code che invoca l’apertura dell’Istanza del Wallet prescelta, attraverso un’interfaccia che DOVREBBE seguire le indicazioni e le funzionalità previste per la QR code page descritta nella sezione :ref:functionalities:Autenticazione; 
-- (*solo cross-device*) L’Utente visualizza un messaggio di invito a continuare sulla propria Istanza del Wallet, attraverso un’interfaccia che DOVREBBE seguire le indicazioni e le funzionalità previste per la waiting page descritta nella sezione :ref:functionalities:Autenticazione; 
+- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DOVREBBE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`; 
+- (*solo cross-device*) L’Utente scansiona un QR code che invoca l’apertura dell’Istanza del Wallet prescelta, attraverso un’interfaccia che DOVREBBE seguire le indicazioni e le funzionalità previste per la QR code page descritta nella sezione :ref:`functionalities:Autenticazione`; 
+- (*solo cross-device*) L’Utente visualizza un messaggio di invito a continuare sulla propria Istanza del Wallet, attraverso un’interfaccia che DOVREBBE seguire le indicazioni e le funzionalità previste per la waiting page descritta nella sezione :ref:`functionalities:Autenticazione`; 
 - l'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata; 
 - L’Utente visualizza eventuali informazioni aggiuntive sui requisiti e/o limitazioni relative all’ottenimento dell’Attestato Elettronico di Attributi, provenienti dalla Fonte Autentica;
 - l'Utente prende visione dei dati del PID, qualora richiesti dalla Fonte Autentica per l'ottenimento dell'Attestato Elettronico di Attributi, il nome del relativo Fornitore di Attestati Elettronici di Attributi e di eventuali informative. L'Utente dà il proprio consenso per poter proseguire presentando i dati del PID o altri Attributi al Fornitore di Attestati Elettronici di Attributi oppure annulla l'operazione;    
@@ -164,7 +164,7 @@ Di seguito sono illustrati i requisiti dell'Esperienza Utente del flusso di otte
 
 - l'Utente visualizza i dettagli dell'Attestato Elettronico di Attributi ottenuto ovvero: i dati in esso contenuti, il nome del Fornitore di Attestati Elettronici di Attributi che ha emesso l'Attestato Elettronico di Attributi e il nome della Fonte Autentica. 
 
-In caso di errori nell'ottenimento dell'Attestato Elettronico di Attributi, la Fonte Autentica DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:functionalities:Gestione degli errori. 
+In caso di errori nell'ottenimento dell'Attestato Elettronico di Attributi, la Fonte Autentica DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
 
 Focus sugli Attestati Elettronici di Attributi
@@ -202,7 +202,7 @@ Presentazione in prossimità
 
 La presentazione in prossimità consente all'Utente di esibire il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici tramite la propria Istanza del Wallet, secondo due diverse modalità: 
 
-- **Modalità supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta il PID e/o uno o più Attestati Elettronici di Attributi, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (:ref:relying-party-instance:App di Verifica Mobile); 
+- **Modalità supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta il PID e/o uno o più Attestati Elettronici di Attributi, a un Verificatore di Attestati Elettronici (e.g. agente delle forze dell'ordine, operatore di sportello, etc.) dotato di un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Mobile`); 
 
 - **Modalità non supervisionata**: l'Utente, tramite l'Istanza del Wallet, presenta il PID e/o un set di Attributi contenuti in uno o più Attestati Elettronici a un dispositivo preposto (e.g. tornello, totem, etc.) dotato di un apposito sistema di verifica (App di Verifica Embedded). 
 
@@ -237,8 +237,8 @@ La presentazione da remoto consente all'Utente di esibire il PID e/o un set di A
 
 Tale presentazione può avvenire in due diverse modalità, sulla base del tipo di dispositivo utilizzato per accedere al servizio di interesse: 
 
-- **Same-device**: nel caso in cui l'Utente voglia accedere a un servizio digitale online integrato con un apposito sistema di verifica (:ref:relying-party-instance:App di Verifica Web) utilizzando lo stesso dispositivo su cui ha installato l'Istanza del Wallet; 
-- **Cross-device**: nel caso in cui l'Utente voglia accedere a un servizio digitale integrato con un apposito sistema di verifica (:ref:relying-party-instance:App di Verifica Web) utilizzando un dispositivo differente rispetto a quello in cui ha installato l'Istanza del Wallet.  
+- **Same-device**: nel caso in cui l'Utente voglia accedere a un servizio digitale online integrato con un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Web`) utilizzando lo stesso dispositivo su cui ha installato l'Istanza del Wallet; 
+- **Cross-device**: nel caso in cui l'Utente voglia accedere a un servizio digitale integrato con un apposito sistema di verifica (:ref:`relying-party-instance:App di Verifica Web`) utilizzando un dispositivo differente rispetto a quello in cui ha installato l'Istanza del Wallet.  
 
 Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità che il Fornitore di Wallet DEVE garantire attraverso la propria Soluzione Wallet. 
 
