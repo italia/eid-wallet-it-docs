@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15.3. Piani di Test &#8212; IT-Wallet Technical Documentation - Versione Corrente</title>
+    <title>15.4. Piani di Test &#8212; IT-Wallet Technical Documentation - Versione Corrente</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="15.4. Specifica OpenAPI del Credential Issuer PDND" href="appendix-oas-pdnd-issuer.html" />
-    <link rel="prev" title="15.2. e-Service PDND" href="e-service-pdnd.html" /> 
+    <link rel="next" title="15.5. Specifica OpenAPI del Credential Issuer PDND" href="appendix-oas-pdnd-issuer.html" />
+    <link rel="prev" title="15.3. Template e-Service PDND" href="e-service-pdnd-template.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -148,10 +148,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="appendix.html">15. Appendice</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">15.1. Istanza dell'Applicazione Mobile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">15.3. Piani di Test</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.4. Specifica OpenAPI del Credential Issuer PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.5. Specifica OpenAPI della Fonte Autentica PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.6. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15.4. Piani di Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.5. Specifica OpenAPI del Credential Issuer PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.6. Panoramica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#parametri-del-template">15.7. Parametri del Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#istanziazione-del-template">15.8. Istanziazione del Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#specifica-openapi-della-fonte-autentica-pdnd">15.9. Specifica OpenAPI della Fonte Autentica PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.10. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
 </ul>
 </li>
 </ul>
@@ -166,7 +170,7 @@
           <div class="body" role="main">
             
   <section id="piani-di-test">
-<h1><span class="section-number">15.3. </span>Piani di Test<a class="headerlink" href="#piani-di-test" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">15.4. </span>Piani di Test<a class="headerlink" href="#piani-di-test" title="Link to this heading">¶</a></h1>
 <p>Lo scopo dei piani di test è supportare gli implementatori, i revisori e gli ambienti di test di conformità nella validazione del comportamento delle Soluzioni Wallet, delle Relying Party e dei Credential Issuer in vari scenari operativi e di sicurezza.</p>
 <p>Tutti i casi di test derivano da regole normative definite nelle specifiche sopra indicate, senza assunzioni o estensioni.</p>
 <div class="admonition note">
@@ -174,7 +178,7 @@
 <p>Si noti che la matrice dei piani di test potrebbe essere soggetta a modifiche future.</p>
 </div>
 <section id="struttura-della-matrice-di-test">
-<h2><span class="section-number">15.3.1. </span>Struttura della Matrice di Test<a class="headerlink" href="#struttura-della-matrice-di-test" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.1. </span>Struttura della Matrice di Test<a class="headerlink" href="#struttura-della-matrice-di-test" title="Link to this heading">¶</a></h2>
 <p>Ogni caso di test è identificato da un ID di test univoco (ad esempio, WS-001) e categorizzato utilizzando i domini funzionali definiti di seguito. Possono essere utilizzati anche altri identificatori di categoria.</p>
 <ul class="simple">
 <li><p><strong>Discovery</strong></p></li>
@@ -199,7 +203,7 @@
 </ul>
 </section>
 <section id="matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate">
-<h2><span class="section-number">15.3.2. </span>Matrice di Test per la Valutazione delle Dichiarazioni Firmate<a class="headerlink" href="#matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.2. </span>Matrice di Test per la Valutazione delle Dichiarazioni Firmate<a class="headerlink" href="#matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate" title="Link to this heading">¶</a></h2>
 <p>Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, Relying Party e Credential Issuer che valutano qualsiasi dichiarazione firmata, siano esse asserzioni, richieste, attestati o Credenziali.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -295,7 +299,7 @@
 </table>
 </section>
 <section id="matrice-di-test-per-la-valutazione-della-fiducia">
-<h2><span class="section-number">15.3.3. </span>Matrice di Test per la Valutazione della Fiducia<a class="headerlink" href="#matrice-di-test-per-la-valutazione-della-fiducia" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.3. </span>Matrice di Test per la Valutazione della Fiducia<a class="headerlink" href="#matrice-di-test-per-la-valutazione-della-fiducia" title="Link to this heading">¶</a></h2>
 <p>Questa sezione fornisce l'insieme comune di casi di test per Soluzioni Wallet, Relying Party e Credential Issuer.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -356,7 +360,7 @@
 </table>
 </section>
 <section id="matrice-di-test-per-la-soluzione-wallet">
-<h2><span class="section-number">15.3.4. </span>Matrice di Test per la Soluzione Wallet<a class="headerlink" href="#matrice-di-test-per-la-soluzione-wallet" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.4. </span>Matrice di Test per la Soluzione Wallet<a class="headerlink" href="#matrice-di-test-per-la-soluzione-wallet" title="Link to this heading">¶</a></h2>
 <p>Questa sezione fornisce l'insieme di casi di test per verificare la conformità di un'implementazione di Soluzione Wallet alle regole tecniche definite nell'ecosistema IT-Wallet.
 Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti dai seguenti documenti:</p>
 <ul class="simple">
@@ -684,7 +688,7 @@ Il piano di test si basa sui requisiti obbligatori (dichiarazioni MUST) estratti
 </table>
 </section>
 <section id="matrice-di-test-per-l-emissione-di-credenziali">
-<h2><span class="section-number">15.3.5. </span>Matrice di Test per l'Emissione di Credenziali<a class="headerlink" href="#matrice-di-test-per-l-emissione-di-credenziali" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.5. </span>Matrice di Test per l'Emissione di Credenziali<a class="headerlink" href="#matrice-di-test-per-l-emissione-di-credenziali" title="Link to this heading">¶</a></h2>
 <p>Questa sezione fornisce l'insieme di casi di test per verificare la conformità delle implementazioni di Emissione di Credenziali alle regole tecniche definite nell'ecosistema IT-Wallet.
 I test relativi al Credential Issuer sono relativi all'emissione di Credenziali di Interesse Pubblico, come pubblicato nel Catalogo delle Credenziali.</p>
 <div class="admonition note">
@@ -1263,10 +1267,10 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
 </table>
 </section>
 <section id="matrice-di-test-per-la-presentazione-di-credenziali">
-<h2><span class="section-number">15.3.6. </span>Matrice di Test per la Presentazione di Credenziali<a class="headerlink" href="#matrice-di-test-per-la-presentazione-di-credenziali" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">15.4.6. </span>Matrice di Test per la Presentazione di Credenziali<a class="headerlink" href="#matrice-di-test-per-la-presentazione-di-credenziali" title="Link to this heading">¶</a></h2>
 <p>Questa sezione fornisce l'insieme di casi di test per verificare la conformità delle implementazioni dei Verificatori di Credenziali alle regole tecniche definite nell'ecosistema IT-Wallet.</p>
 <section id="matrice-di-test-per-la-presentazione-remota-di-credenziali">
-<h3><span class="section-number">15.3.6.1. </span>Matrice di Test per la Presentazione Remota di Credenziali<a class="headerlink" href="#matrice-di-test-per-la-presentazione-remota-di-credenziali" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">15.4.6.1. </span>Matrice di Test per la Presentazione Remota di Credenziali<a class="headerlink" href="#matrice-di-test-per-la-presentazione-remota-di-credenziali" title="Link to this heading">¶</a></h3>
 <p>Questa sezione definisce i casi di test relativi al flusso di presentazione remota.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -1671,7 +1675,7 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
 </table>
 </section>
 <section id="matrice-di-test-per-la-presentazione-di-credenziali-di-prossimita">
-<h3><span class="section-number">15.3.6.2. </span>Matrice di Test per la Presentazione di Credenziali di Prossimità<a class="headerlink" href="#matrice-di-test-per-la-presentazione-di-credenziali-di-prossimita" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">15.4.6.2. </span>Matrice di Test per la Presentazione di Credenziali di Prossimità<a class="headerlink" href="#matrice-di-test-per-la-presentazione-di-credenziali-di-prossimita" title="Link to this heading">¶</a></h3>
 <p>Questa sezione definisce i casi di test generali relativi al flusso di presentazione di prossimità.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -1812,15 +1816,15 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">15.3. Piani di Test</a><ul>
-<li><a class="reference internal" href="#struttura-della-matrice-di-test">15.3.1. Struttura della Matrice di Test</a></li>
-<li><a class="reference internal" href="#matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate">15.3.2. Matrice di Test per la Valutazione delle Dichiarazioni Firmate</a></li>
-<li><a class="reference internal" href="#matrice-di-test-per-la-valutazione-della-fiducia">15.3.3. Matrice di Test per la Valutazione della Fiducia</a></li>
-<li><a class="reference internal" href="#matrice-di-test-per-la-soluzione-wallet">15.3.4. Matrice di Test per la Soluzione Wallet</a></li>
-<li><a class="reference internal" href="#matrice-di-test-per-l-emissione-di-credenziali">15.3.5. Matrice di Test per l'Emissione di Credenziali</a></li>
-<li><a class="reference internal" href="#matrice-di-test-per-la-presentazione-di-credenziali">15.3.6. Matrice di Test per la Presentazione di Credenziali</a><ul>
-<li><a class="reference internal" href="#matrice-di-test-per-la-presentazione-remota-di-credenziali">15.3.6.1. Matrice di Test per la Presentazione Remota di Credenziali</a></li>
-<li><a class="reference internal" href="#matrice-di-test-per-la-presentazione-di-credenziali-di-prossimita">15.3.6.2. Matrice di Test per la Presentazione di Credenziali di Prossimità</a></li>
+<li><a class="reference internal" href="#">15.4. Piani di Test</a><ul>
+<li><a class="reference internal" href="#struttura-della-matrice-di-test">15.4.1. Struttura della Matrice di Test</a></li>
+<li><a class="reference internal" href="#matrice-di-test-per-la-valutazione-delle-dichiarazioni-firmate">15.4.2. Matrice di Test per la Valutazione delle Dichiarazioni Firmate</a></li>
+<li><a class="reference internal" href="#matrice-di-test-per-la-valutazione-della-fiducia">15.4.3. Matrice di Test per la Valutazione della Fiducia</a></li>
+<li><a class="reference internal" href="#matrice-di-test-per-la-soluzione-wallet">15.4.4. Matrice di Test per la Soluzione Wallet</a></li>
+<li><a class="reference internal" href="#matrice-di-test-per-l-emissione-di-credenziali">15.4.5. Matrice di Test per l'Emissione di Credenziali</a></li>
+<li><a class="reference internal" href="#matrice-di-test-per-la-presentazione-di-credenziali">15.4.6. Matrice di Test per la Presentazione di Credenziali</a><ul>
+<li><a class="reference internal" href="#matrice-di-test-per-la-presentazione-remota-di-credenziali">15.4.6.1. Matrice di Test per la Presentazione Remota di Credenziali</a></li>
+<li><a class="reference internal" href="#matrice-di-test-per-la-presentazione-di-credenziali-di-prossimita">15.4.6.2. Matrice di Test per la Presentazione di Credenziali di Prossimità</a></li>
 </ul>
 </li>
 </ul>
@@ -1837,14 +1841,14 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
         <div class="button_nav">
             <div class="left">
                 
-                <a href="e-service-pdnd.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">15.2. </span>e-Service PDND</span></a>
+                <a href="e-service-pdnd-template.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15.3. </span>Template e-Service PDND</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="appendix-oas-pdnd-issuer.html"><span><span class="section-number">15.4. </span>Specifica OpenAPI del Credential Issuer PDND</span><span class="icon">&gt;</span></a>
+                    <a href="appendix-oas-pdnd-issuer.html"><span><span class="section-number">15.5. </span>Specifica OpenAPI del Credential Issuer PDND</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -1852,7 +1856,7 @@ I test relativi al Credential Issuer sono relativi all'emissione di Credenziali 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 28/07/2025.
+      Ultimo aggiornamento 29/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
