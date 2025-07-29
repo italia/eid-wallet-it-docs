@@ -10,9 +10,10 @@ Design dell'Esperienza Utente
 
   design.rst
   official-resources.rst
+  functionalities.rst
+
 
 .. include:: design.rst
-.. include:: official-resources.rst
 
 
 Panoramica delle funzionalità
