@@ -16,5 +16,5 @@ Below the normative references and respective acronyms included in these Technic
     * - GL_DESIGN
       - Design Guidelines for websites and digital services provided by public administrations, pursuant to Article 53, paragraph 1-ter of Legislative Decree No. 82 of March 7, 2005, as amended.
 
-
+.. include:: official-resources.rst
 
