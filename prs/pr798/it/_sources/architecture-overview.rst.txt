@@ -50,4 +50,4 @@ L'Infrastruttura di Trust gestisce l'onboarding e la revoca delle Entità, forni
   :caption: Indice della Panoramica dell'Architettura
   :maxdepth: 3
 
-  functionalities.rst
+  
