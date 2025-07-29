@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.1.4. Istanza del Wallet &#8212; IT-Wallet Technical Documentation - PR #798</title>
+    <title>7.1.4. Istanza del Wallet &#8212; IT-Wallet Technical Documentation - PR #798</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="5.1.4.1. Ciclo di vita dell&#39;Istanza del Wallet" href="wallet-instance-lifecycle.html" />
-    <link rel="prev" title="5.1.2. Componenti della Soluzione Wallet" href="wallet-solution-components.html" /> 
+    <link rel="next" title="7.1.4.1. Ciclo di vita dell&#39;Istanza del Wallet" href="wallet-instance-lifecycle.html" />
+    <link rel="prev" title="7.1.2. Componenti della Soluzione Wallet" href="wallet-solution-components.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -134,33 +134,35 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">4. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">5. Entità</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">5.1. Soluzione Wallet</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">5.1.1. Requisiti della Soluzione Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">5.1.2. Componenti della Soluzione Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#modelli-di-interazione-della-soluzione-wallet">5.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">5.1.4. Istanza del Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">5.1.5. Backup e Ripristino</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Entity Configuration del Fornitore di Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Metadati del Fornitore di Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html#principi-di-design">5. Principi di design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">7. Entità</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">7.1. Soluzione Wallet</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">7.1.1. Requisiti della Soluzione Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">7.1.2. Componenti della Soluzione Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#modelli-di-interazione-della-soluzione-wallet">7.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.1.4. Istanza del Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">7.1.5. Backup e Ripristino</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">7.1.6. Entity Configuration del Fornitore di Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">7.1.7. Metadati del Fornitore di Wallet</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Soluzione di Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Fonti Autentiche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">7.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">7.3. Soluzione di Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">7.4. Fonti Autentiche</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">8. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">9. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">10. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">11. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">12. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">13. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">14. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">15. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">16. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">17. Appendice</a></li>
 </ul>
 
         </div>
@@ -173,30 +175,30 @@
           <div class="body" role="main">
             
   <section id="istanza-del-wallet">
-<h1><span class="section-number">5.1.4. </span>Istanza del Wallet<a class="headerlink" href="#istanza-del-wallet" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">7.1.4. </span>Istanza del Wallet<a class="headerlink" href="#istanza-del-wallet" title="Link to this heading">¶</a></h1>
 <p>L'Istanza del Wallet stabilisce un meccanismo forte e affidabile per garantire all'Utente transazioni digitali in modo sicuro e rispettoso della privacy.</p>
 <p>L'Istanza del Wallet permette ad altre entità all'interno dell'ecosistema di stabilire un rapporto di fiducia con essa, presentando costantemente una Wallet Attestation durante le interazioni con i Fornitori di Attestati Elettronici di Dati di Identificazione Personale, i Fornitori di Attestati Elettronici di Attributi (Qualificati) e le Relying Party. Questi attestati verificabili, forniti dal Fornitore di Wallet, servono ad autenticare l'Istanza del Wallet stessa, garantendone l'affidabilità durante le interazioni con altri attori dell'ecosistema.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti dell'Istanza del Wallet</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-lifecycle.html">5.1.4.1. Ciclo di vita dell'Istanza del Wallet</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-installato">5.1.4.1.1. Transizione a Installato</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-operativo">5.1.4.1.2. Transizione a Operativo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-valido">5.1.4.1.3. Transizione a Valido</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-disinstallato">5.1.4.1.4. Transizione a Disinstallato</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#gestione-del-ciclo-di-vita-dell-istanza-del-wallet">5.1.4.1.5. Gestione del Ciclo di Vita dell'Istanza del Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-lifecycle.html">7.1.4.1. Ciclo di vita dell'Istanza del Wallet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-installato">7.1.4.1.1. Transizione a Installato</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-operativo">7.1.4.1.2. Transizione a Operativo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-valido">7.1.4.1.3. Transizione a Valido</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#transizione-a-disinstallato">7.1.4.1.4. Transizione a Disinstallato</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-lifecycle.html#gestione-del-ciclo-di-vita-dell-istanza-del-wallet">7.1.4.1.5. Gestione del Ciclo di Vita dell'Istanza del Wallet</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wallet-instance-functionalities.html">5.1.4.2. Funzionalità dell'Istanza del Wallet</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-registration.html">5.1.4.2.1. Inizializzazione e Registrazione dell'Istanza del Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation-issuance.html">5.1.4.2.2. Emissione della Wallet Attestation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html">5.1.4.2.3. Revoca dell'Istanza del Wallet</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#richiesta-di-revoca-dell-istanza-del-wallet">5.1.4.2.3.1. Richiesta di Revoca dell'Istanza del Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#risposta-alla-revoca-dell-istanza-del-wallet">5.1.4.2.3.2. Risposta alla Revoca dell'Istanza del Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#meccanismi-di-verifica-della-revoca">5.1.4.2.3.3. Meccanismi di Verifica della Revoca</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-instance-functionalities.html">7.1.4.2. Funzionalità dell'Istanza del Wallet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-registration.html">7.1.4.2.1. Inizializzazione e Registrazione dell'Istanza del Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation-issuance.html">7.1.4.2.2. Emissione della Wallet Attestation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html">7.1.4.2.3. Revoca dell'Istanza del Wallet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#richiesta-di-revoca-dell-istanza-del-wallet">7.1.4.2.3.1. Richiesta di Revoca dell'Istanza del Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#risposta-alla-revoca-dell-istanza-del-wallet">7.1.4.2.3.2. Risposta alla Revoca dell'Istanza del Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#meccanismi-di-verifica-della-revoca">7.1.4.2.3.3. Meccanismi di Verifica della Revoca</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="user-attribute-deletion.html">5.1.4.2.4. Eliminazione degli Attributi dell'Utente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user-attribute-deletion.html">7.1.4.2.4. Eliminazione degli Attributi dell'Utente</a></li>
 </ul>
 </li>
 </ul>
@@ -217,13 +219,13 @@
             <div class="left">
                 
                 <a href="wallet-solution-components.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">5.1.2. </span>Componenti della Soluzione Wallet</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">7.1.2. </span>Componenti della Soluzione Wallet</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="wallet-instance-lifecycle.html"><span><span class="section-number">5.1.4.1. </span>Ciclo di vita dell'Istanza del Wallet</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-instance-lifecycle.html"><span><span class="section-number">7.1.4.1. </span>Ciclo di vita dell'Istanza del Wallet</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

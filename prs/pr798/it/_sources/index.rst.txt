@@ -14,7 +14,7 @@ Questo documento fornisce l'architettura tecnica, il quadro implementativo e i r
   introduction.rst
   brand-identity.rst
   architecture-overview.rst
-  functionalieties.rst
+  functionalities.rst
   trust.rst
   entities.rst
   digital-credential-management.rst
