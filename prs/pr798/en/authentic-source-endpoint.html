@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8.4. Authentic Source Endpoints &#8212; IT-Wallet Technical Documentation - PR #798</title>
+    <title>9.4. Authentic Source Endpoints &#8212; IT-Wallet Technical Documentation - PR #798</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="9. Cryptographic Algorithms" href="algorithms.html" />
-    <link rel="prev" title="8.3. Relying Party Endpoints" href="relying-party-endpoint.html" /> 
+    <link rel="next" title="10. Cryptographic Algorithms" href="algorithms.html" />
+    <link rel="prev" title="9.3. Relying Party Endpoints" href="relying-party-endpoint.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,26 +131,27 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">8. Endpoints</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">8.1. Wallet Provider Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Credential Issuer Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">8.3. Relying Party Endpoints</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">8.4. Authentic Source Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">6. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">9. Endpoints</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">9.1. Wallet Provider Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">9.2. Credential Issuer Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">9.3. Relying Party Endpoints</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">9.4. Authentic Source Endpoints</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendix</a></li>
 </ul>
 
         </div>
@@ -163,16 +164,16 @@
           <div class="body" role="main">
             
   <section id="authentic-source-endpoints">
-<h1><span class="section-number">8.4. </span>Authentic Source Endpoints<a class="headerlink" href="#authentic-source-endpoints" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">9.4. </span>Authentic Source Endpoints<a class="headerlink" href="#authentic-source-endpoints" title="Link to this heading">¶</a></h1>
 <section id="e-service-pdnd-authentic-source-catalogue">
-<h2><span class="section-number">8.4.1. </span>e-Service PDND Authentic Source Catalogue<a class="headerlink" href="#e-service-pdnd-authentic-source-catalogue" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">9.4.1. </span>e-Service PDND Authentic Source Catalogue<a class="headerlink" href="#e-service-pdnd-authentic-source-catalogue" title="Link to this heading">¶</a></h2>
 <p>Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A complete OpenAPI Specification is available <span class="raw-html"><a href="OAS3-PDND-AS.html" target="_blank">here</a></span>.</p>
 </div>
 <section id="get-attribute-claims">
-<h3><span class="section-number">8.4.1.1. </span>Get Attribute Claims<a class="headerlink" href="#get-attribute-claims" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">9.4.1.1. </span>Get Attribute Claims<a class="headerlink" href="#get-attribute-claims" title="Link to this heading">¶</a></h3>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -208,9 +209,9 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">8.4. Authentic Source Endpoints</a><ul>
-<li><a class="reference internal" href="#e-service-pdnd-authentic-source-catalogue">8.4.1. e-Service PDND Authentic Source Catalogue</a><ul>
-<li><a class="reference internal" href="#get-attribute-claims">8.4.1.1. Get Attribute Claims</a></li>
+<li><a class="reference internal" href="#">9.4. Authentic Source Endpoints</a><ul>
+<li><a class="reference internal" href="#e-service-pdnd-authentic-source-catalogue">9.4.1. e-Service PDND Authentic Source Catalogue</a><ul>
+<li><a class="reference internal" href="#get-attribute-claims">9.4.1.1. Get Attribute Claims</a></li>
 </ul>
 </li>
 </ul>
@@ -228,13 +229,13 @@
             <div class="left">
                 
                 <a href="relying-party-endpoint.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">8.3. </span>Relying Party Endpoints</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">9.3. </span>Relying Party Endpoints</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="algorithms.html"><span><span class="section-number">9. </span>Cryptographic Algorithms</span><span class="icon">&gt;</span></a>
+                    <a href="algorithms.html"><span><span class="section-number">10. </span>Cryptographic Algorithms</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

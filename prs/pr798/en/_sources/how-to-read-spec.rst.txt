@@ -17,7 +17,7 @@ The specification is organized into the following major sections:
 **Section** :ref:`architecture-overview:Architecture Overview`:
   Provides high-level view on the Architecture in terms of governance and operational processes enabled.
 
-**Section** ref:`functionalities:User Experience Design`: 
+**Section** :ref:`functionalities:User Experience Design`: 
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
 
 **Section** :ref:`trust:The Infrastructure of Trust`:
