@@ -121,7 +121,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
     - No credential data remains accessible after revocation is triggered.
   * - WS-026
     - Revocation
-    - The Wallet MUST notify the Wallet Backend with a Revocation Request that includes a valid proof of possession of the Wallet Binding Key.
+    - The Wallet MUST notify the Wallet Backend with a Revocation Request containing a 'status' parameter set to 'REVOKED'.
     - The Revocation Request is accepted and revocation status is updated in the backend.
   * - WS-027
     - Security
@@ -169,7 +169,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
     - Restore process reads and verifies backup metadata before proceeding.
   * - WS-038
     - Revocation
-    - The Wallet MUST send a signed Revocation Request including the Wallet Binding Key signature to the Backend.
+    - The Wallet MUST send a Revocation Request to the Backend endpoint, including the Wallet ID as a path parameter.
     - The backend processes the revocation and updates the Wallet status to revoked.
   * - WS-039
     - Revocation

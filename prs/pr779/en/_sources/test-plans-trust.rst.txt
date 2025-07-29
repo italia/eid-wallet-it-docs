@@ -20,7 +20,7 @@ This section provides the common set of test cases for Wallet Solutions, Relying
   * - ALL-002
     - Security
     - Compliance self evaluation
-    - Entities periodically evaluate their compliance and presence within the federation, checking the trust chain about themselves as still valid, not revoked and compliant with the tecnhical specification. Entities apply the policies, checking that their current configuration is valid with the active policies about them within the federation. Trust chain, evaluated and stored in mutiple formats to facilitate interoperability in trust discovery with other entities, are stored by entities and used on occurrence during the data exchange flows. Trust chain about entities are fetched or discovered using the entitie's issued assertions.
+    - Entities periodically evaluate their compliance and presence within the federation, checking the trust chain about themselves as still valid, not revoked and compliant with the technical specification. Entities apply the policies, checking that their current configuration is valid with the active policies about them within the federation. Trust chain, evaluated and stored in multiple formats to facilitate interoperability in trust discovery with other entities, are stored by entities and used on occurrence during the data exchange flows. Trust chain about entities are fetched or discovered using the entities' issued assertions.
   * - ALL-003
     - Discovery
     - Publication of information about itself
@@ -28,19 +28,19 @@ This section provides the common set of test cases for Wallet Solutions, Relying
   * - ALL-004
     - Security
     - Publication of the historical key registry
-    - Entities sign and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making these information publicly discoverable by other entities.
+    - Entities sign and publish all the information about the unused or revoked cryptographic material using well known endpoints defined in this specification, making this information publicly discoverable by other entities.
   * - ALL-005
     - Security
     - Evaluation of compliance with entities before exchanging data about the User
     - Entities evaluate trust and compliance with other entities before any information related to a natural or legal person might be exchanged. Bogus configurations don't allow data exchanges.
   * - ALL-006
     - Security
-    - Evaluation of proof of possession during the use of a signed assertion in according to the configured usage ownership confirmation method.
+    - Evaluation of proof of possession during the use of a signed assertion according to the configured usage ownership confirmation method.
     - Entities evaluate the confirmation method and apply its protocol to consider valid the signed statement.
   * - ALL-007
     - Security
     - Supported cryptography algorithms
-    - Entities evaluate cryptography using in compliance of the allowed algorithms.
+    - Entities evaluate cryptographic usage for compliance with the allowed algorithms.
   * - ALL-008
     - Security
     - Replay attacks

@@ -33,11 +33,11 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
     - Tutti i materiali delle chiavi private sono inaccessibili dal sistema operativo o da qualsiasi applicazione esterna alla Wallet Solution.
   * - WS-004
     - Attestation
-    - La Wallet DEVE essere in grado di generare e presentare una Wallet Attestation quando richiesto dalle Relying Party o dagli Issuer.
+    - Il Wallet DEVE essere in grado di generare e presentare una Wallet Attestation quando richiesto dalle Relying Party o dagli Issuer.
     - Attestation valide e verificabili vengono generate includendo prove di integrità e origine.
   * - WS-005
     - Attestation
-    - La Wallet DEVE supportare l'elaborazione delle Wallet Attestation Request e la generazione di risposte appropriate in conformità con eIDAS.
+    - Il Wallet DEVE supportare l'elaborazione delle Wallet Attestation Request e la generazione di risposte appropriate in conformità con eIDAS.
     - La Wallet interpreta e soddisfa correttamente le richieste di attestation includendo i dati del soggetto e le firme crittografiche.
   * - WS-006
     - Remote Credential Presentation
@@ -45,11 +45,11 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
     - La presentazione delle Verifiable Credential ha successo, è corretta e sotto il controllo dell'Utente.
   * - WS-007
     - Credential Issuance
-    - La Wallet DEVE supportare il flusso Issuer per ricevere e memorizzare Verifiable Credentials.
+    - Il Wallet DEVE supportare il flusso Issuer per ricevere e memorizzare Verifiable Credentials.
     - Le Credential vengono memorizzate in modo sicuro e analizzate correttamente secondo la struttura definita.
   * - WS-008
     - Revocation
-    - La Wallet DEVE permettere all'Utente di attivare una Wallet Instance Revocation in qualsiasi momento.
+    - Il Wallet DEVE permettere all'Utente di attivare una Wallet Instance Revocation in qualsiasi momento.
     - La revoca viene eseguita e i materiali crittografici vengono eliminati in modo sicuro o resi inutilizzabili.
   * - WS-009
     - Revocation
@@ -61,7 +61,7 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
     - Il Backup è crittografato e legato all'Utente; l'operazione di Restore verifica l'integrità e l'autenticità dell'Utente prima del recupero.
   * - WS-011
     - Backup & Restore
-    - La Wallet DEVE gestire le chiavi di crittografia del backup in modo sicuro e derivarle da segreti controllati dall'Utente o credenziali.
+    - Il Wallet DEVE gestire le chiavi di crittografia del backup in modo sicuro e derivarle da segreti controllati dall'Utente o credenziali.
     - Nessuna entità non autorizzata può decrittografare i backup; i backup diventano inutili se manomessi.
   * - WS-012
     - Backup & Restore
@@ -121,7 +121,7 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
     - Nessun dato di credenziale rimane accessibile dopo che la revoca è stata attivata.
   * - WS-026
     - Revocation
-    - La Wallet DEVE notificare il Wallet Backend con una Revocation Request che include una prova valida di possesso della Wallet Binding Key.
+    - Il Wallet DEVE notificare il Wallet Backend con una Revocation Request che contiene un parametro 'status'  impostato a 'REVOKED'.
     - La Revocation Request viene accettata e lo stato di revoca viene aggiornato nel backend.
   * - WS-027
     - Security
@@ -169,7 +169,7 @@ Il piano di test è basato sui requisiti obbligatori (dichiarazioni MUST) estrat
     - Il processo di Restore legge e verifica i metadata del backup prima di procedere.
   * - WS-038
     - Revocation
-    - La Wallet DEVE inviare una Revocation Request firmata inclusa la firma della Wallet Binding Key al Backend.
+    - La Wallet DEVE inviare una Revocation Request all’endpoint del Backend, includendo l’ID della Wallet come parametro nel path dell’URL.
     - Il backend elabora la revoca e aggiorna lo stato della Wallet a revocata.
   * - WS-039
     - Revocation

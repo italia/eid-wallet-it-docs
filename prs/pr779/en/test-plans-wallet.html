@@ -328,7 +328,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 </tr>
 <tr class="row-odd"><td><p>WS-026</p></td>
 <td><p>Revocation</p></td>
-<td><p>The Wallet MUST notify the Wallet Backend with a Revocation Request that includes a valid proof of possession of the Wallet Binding Key.</p></td>
+<td><p>The Wallet MUST notify the Wallet Backend with a Revocation Request containing a 'status' parameter set to 'REVOKED'.</p></td>
 <td><p>The Revocation Request is accepted and revocation status is updated in the backend.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-027</p></td>
@@ -388,7 +388,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 </tr>
 <tr class="row-odd"><td><p>WS-038</p></td>
 <td><p>Revocation</p></td>
-<td><p>The Wallet MUST send a signed Revocation Request including the Wallet Binding Key signature to the Backend.</p></td>
+<td><p>The Wallet MUST send a Revocation Request to the Backend endpoint, including the Wallet ID as a path parameter.</p></td>
 <td><p>The backend processes the revocation and updates the Wallet status to revoked.</p></td>
 </tr>
 <tr class="row-even"><td><p>WS-039</p></td>
@@ -533,7 +533,7 @@ The test plan is based on the mandatory requirements (MUST statements) extracted
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 28/07/2025.
+      Last updated on 29/07/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

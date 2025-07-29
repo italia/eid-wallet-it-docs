@@ -70,6 +70,6 @@ This section provides the common set of test cases for Wallet Solutions, Relying
     - Ensure the `expiration` time is greater than the `issued at` time.
     - The `expiration` time must be later than the `issued at` time.
   * - ATT-015
-    - Data model validation
+    - Data Model validation
     - Ensure JOSE/COSE type matches with the defined data model.
     - The parameters or claims, their values and the schema used to represent them are compliant with the data model.
