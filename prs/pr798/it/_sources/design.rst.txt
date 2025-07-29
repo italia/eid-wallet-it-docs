@@ -2,7 +2,7 @@
     
 
 Principi di design
-==================
+-------------------
 
 Il Sistema IT-Wallet si basa sul paradigma del Portafoglio di Identità Digitale e ha l'obiettivo di fornire agli Utenti un'esperienza di accesso ai servizi più semplice, veloce e sicura.  
 
@@ -16,9 +16,4 @@ Per garantire un'elevata qualità del servizio dal punto di vista dell'Esperienz
 
 - **Coerenza**: le Soluzioni Tecniche DEVONO essere progettate e mantenute in coerenza con la Brand Identity del Sistema IT-Wallet e i requisiti funzionali relativi all'Esperienza Utente descritti in queste specifiche, per promuovere la riconoscibilità dei componenti, garantire la coerenza complessiva del sistema e minimizzare il carico cognitivo per l'Utente.
 
-.. toctree::
-  :caption: Principi di Design Indice dei Contenuti
-  :maxdepth: 3
-
-  brand-identity.rst  
 

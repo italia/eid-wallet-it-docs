@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12. Considerazioni di Sicurezza e Privacy &#8212; IT-Wallet Technical Documentation - PR #798</title>
+    <title>11. Considerazioni di Sicurezza e Privacy &#8212; IT-Wallet Technical Documentation - PR #798</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="13. Politiche Generali di Conservazione dei Log" href="log-retention-policy.html" />
-    <link rel="prev" title="11. Algoritmi Crittografici" href="algorithms.html" /> 
+    <link rel="next" title="12. Politiche Generali di Conservazione dei Log" href="log-retention-policy.html" />
+    <link rel="prev" title="10. Algoritmi Crittografici" href="algorithms.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -135,19 +135,18 @@
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html#principi-di-design">5. Principi di design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">6. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">7. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">8. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">9. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">10. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">11. Algoritmi Crittografici</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">12. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">13. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">14. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">15. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">16. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">17. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">5. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">6. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Algoritmi Crittografici</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendice</a></li>
 </ul>
 
         </div>
@@ -160,7 +159,7 @@
           <div class="body" role="main">
             
   <section id="considerazioni-di-sicurezza-e-privacy">
-<h1><span class="section-number">12. </span>Considerazioni di Sicurezza e Privacy<a class="headerlink" href="#considerazioni-di-sicurezza-e-privacy" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">11. </span>Considerazioni di Sicurezza e Privacy<a class="headerlink" href="#considerazioni-di-sicurezza-e-privacy" title="Link to this heading">¶</a></h1>
 <p>Questa sezione fornisce un'analisi informale della sicurezza della specifica IT-Wallet analizzando la conformità con i requisiti di sicurezza e privacy identificati in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>].</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -191,9 +190,9 @@ di conseguenza 7 requisiti specificamente relativi all'implementazione non sono 
 <p>Per ogni requisito definito di seguito, questa sezione utilizza la descrizione definita in [<a class="reference external" href="https://openid.github.io/OpenID4VC_SecTrust/draft-oid4vc-security-and-trust.html">OpenID4VC-SecTrust</a>], specificando se il requisito è soddisfatto (completamente soddisfatto: <a class="reference internal" href="_images/Eo_circle_green_checkmark.png"><img alt="check-icon" src="_images/Eo_circle_green_checkmark.png" style="width: 25px;" /></a>, parzialmente soddisfatto: <a class="reference internal" href="_images/Eo_circle_orange_checkmark.png"><img alt="partially-check-icon" src="_images/Eo_circle_orange_checkmark.png" style="width: 25px;" /></a>, e non soddisfatto: <a class="reference internal" href="_images/Eo_circle_red_letter-x.png"><img alt="uncheck-icon" src="_images/Eo_circle_red_letter-x.png" style="width: 25px;" /></a>).
 Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <section id="requisiti-di-sicurezza">
-<h2><span class="section-number">12.1. </span>Requisiti di Sicurezza<a class="headerlink" href="#requisiti-di-sicurezza" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">11.1. </span>Requisiti di Sicurezza<a class="headerlink" href="#requisiti-di-sicurezza" title="Link to this heading">¶</a></h2>
 <section id="sr-cf-10-e-sr-e-10">
-<h3><span class="section-number">12.1.1. </span>SR-CF-10 e SR-E-10<a class="headerlink" href="#sr-cf-10-e-sr-e-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.1. </span>SR-CF-10 e SR-E-10<a class="headerlink" href="#sr-cf-10-e-sr-e-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -212,7 +211,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </ul>
 </section>
 <section id="sr-cf-20">
-<h3><span class="section-number">12.1.2. </span>SR-CF-20<a class="headerlink" href="#sr-cf-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.2. </span>SR-CF-20<a class="headerlink" href="#sr-cf-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -227,7 +226,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>La firma crittografica inclusa nel formato della Credenziale garantisce che qualsiasi manomissione della Credenziale comporterà una verifica fallita.</p>
 </section>
 <section id="sr-cf-21">
-<h3><span class="section-number">12.1.3. </span>SR-CF-21<a class="headerlink" href="#sr-cf-21" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.3. </span>SR-CF-21<a class="headerlink" href="#sr-cf-21" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -243,7 +242,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>Attualmente, per il flusso remoto, IT-Wallet supporta solo presentazioni SD-JWT. In questo scenario, il parametro KB-JWT (Key-Bound JWT) viene utilizzato per dimostrare che il Titolare possiede la chiave privata associata alla Credenziale. Il Titolare firma il KB-JWT utilizzando un <strong>nonce</strong> e un identificatore del Verificatore di Attestati Elettronici, utilizzando il parametro <strong>aud</strong>, come sfida.</p>
 </section>
 <section id="sr-e-20">
-<h3><span class="section-number">12.1.4. </span>SR-E-20<a class="headerlink" href="#sr-e-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.4. </span>SR-E-20<a class="headerlink" href="#sr-e-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -258,7 +257,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>Il Trust Framework IT Wallet garantisce che ogni entità (ad esempio, un Fornitore di Credenziali) sia identificata in modo univoco attraverso chiavi crittografiche e metadati, distribuiti tramite un attestato verificabile, come la Entity Configuration OpenID Federation verificata all'interno di una Trust Chain.</p>
 </section>
 <section id="sr-e-30">
-<h3><span class="section-number">12.1.5. </span>SR-E-30<a class="headerlink" href="#sr-e-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.5. </span>SR-E-30<a class="headerlink" href="#sr-e-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -273,7 +272,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>I Fornitori di Credenziali sono registrati da un Trust Anchor o dal suo Intermediario. Per verificare l'affidabilità di un Fornitore di Credenziali, un Verificatore di Attestati Elettronici deve verificare che la Trust Chain relativa al Fornitore di Credenziali sia valida e ancora attiva. Questo processo di convalida garantisce che solo entità affidabili siano autorizzate a partecipare al sistema, impedendo l'introduzione di attori non affidabili.</p>
 </section>
 <section id="sr-e-40">
-<h3><span class="section-number">12.1.6. </span>SR-E-40<a class="headerlink" href="#sr-e-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.6. </span>SR-E-40<a class="headerlink" href="#sr-e-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -288,7 +287,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>Se l'Entity Statement di un Fornitore di Credenziali viene revocato o non è disponibile, significa che il Fornitore di Credenziali non è più considerato valido all'interno della federazione. Ciò garantisce che i Verificatori di Attestati Elettronici abbiano accesso in tempo reale allo stato delle entità affidabili e possano revocare la fiducia se necessario. Tuttavia, i Verificatori di Attestati Elettronici devono controllare attivamente lo stato del Fornitore di Credenziali interrogando gli endpoint della federazione (cioè, l'endpoint fetch per ottenere la Subordinate Statement).</p>
 </section>
 <section id="sr-i-10">
-<h3><span class="section-number">12.1.7. </span>SR-I-10<a class="headerlink" href="#sr-i-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.7. </span>SR-I-10<a class="headerlink" href="#sr-i-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -303,7 +302,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>Il processo di emissione utilizza flussi basati su OAuth 2.0, in particolare il flusso Authorization Code, per autenticare in modo sicuro l'Utente. Inoltre, l'autenticazione dell'Utente viene eseguita utilizzando lo schema CieID con alto LoA o il PID.</p>
 </section>
 <section id="sr-i-20">
-<h3><span class="section-number">12.1.8. </span>SR-I-20<a class="headerlink" href="#sr-i-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.8. </span>SR-I-20<a class="headerlink" href="#sr-i-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -318,7 +317,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>Quando sono previsti dati verificati, il Fornitore di Credenziali ottiene gli attributi corretti e aggiornati dalle relative Fonti Autentiche, garantendone l'accuratezza al momento dell'emissione.</p>
 </section>
 <section id="sr-i-30">
-<h3><span class="section-number">12.1.9. </span>SR-I-30<a class="headerlink" href="#sr-i-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.9. </span>SR-I-30<a class="headerlink" href="#sr-i-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -333,7 +332,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 <p>Il Fornitore di Credenziali è l'entità responsabile della revoca di una Credenziale. La specifica descrive diversi casi d'uso che possono attivare un processo di revoca e dettaglia il flusso di revoca in cui il Fornitore di Credenziali revoca le Credenziali su richiesta dell'Utente (attraverso l'Istanza del Wallet) dopo aver verificato il possesso delle Credenziali.</p>
 </section>
 <section id="sr-i-40">
-<h3><span class="section-number">12.1.10. </span>SR-I-40<a class="headerlink" href="#sr-i-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.10. </span>SR-I-40<a class="headerlink" href="#sr-i-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -345,7 +344,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tr>
 </tbody>
 </table>
-<p>Il processo di emissione lega in modo sicuro la Credenziale all'Utente come segue (vedi <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 9.4</span></a>):</p>
+<p>Il processo di emissione lega in modo sicuro la Credenziale all'Utente come segue (vedi <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 8.4</span></a>):</p>
 <ul class="simple">
 <li><p>Autorizzazione (Passi 8-10): L'Istanza del Wallet invia una richiesta di autorizzazione, e il Fornitore di Credenziali autentica l'Utente utilizzando uno schema CieID o un PID valido, fornendo il Token di Accesso all'Utente.</p></li>
 <li><p>Prova di Possesso della Chiave (Passi 12-13, 16-17): Il Wallet crea un DPoP Proof JWT, legando il Token di Accesso all'Istanza del Wallet. La stessa chiave viene poi utilizzata successivamente per richiedere la Credenziale, garantendo la continuità della proprietà.</p></li>
@@ -353,7 +352,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </ul>
 </section>
 <section id="sr-i-50">
-<h3><span class="section-number">12.1.11. </span>SR-I-50<a class="headerlink" href="#sr-i-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.11. </span>SR-I-50<a class="headerlink" href="#sr-i-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -366,7 +365,7 @@ Di seguito, i requisiti sono raggruppati in base alla loro categoria.</p>
 </tbody>
 </table>
 <p>Un Wallet Attestation affidabile garantisce che l'Istanza del Wallet sia sicura e soddisfi gli standard di sicurezza richiesti prima che qualsiasi Credenziale venga emessa o memorizzata.
-Nei Passi 5-6 di <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 9.4</span></a>, l'Istanza del Wallet fornisce una Wallet Attestation, che include una prova di possesso
+Nei Passi 5-6 di <a class="reference internal" href="credential-issuance-low-level.html#fig-low-level-flow-itwallet-pid-qeaa-issuance"><span class="std std-numref">Fig. 8.4</span></a>, l'Istanza del Wallet fornisce una Wallet Attestation, che include una prova di possesso
 firmata con la chiave privata del Wallet. Questo attestato conferma che l'Istanza del Wallet è genuina ed è stata verificata dal Fornitore di Wallet.</p>
 <p>Il Fornitore di Credenziali verifica questo attestato prima di consentire al Wallet di partecipare al processo di emissione, garantendo che il Wallet aderisca a specifici standard di sicurezza.
 Successivamente, tutte le chiavi crittografiche generate e utilizzate nel processo provengono da questa Istanza del Wallet attestata.</p>
@@ -376,7 +375,7 @@ Successivamente, tutte le chiavi crittografiche generate e utilizzate nel proces
 </div>
 </section>
 <section id="sr-p-20">
-<h3><span class="section-number">12.1.12. </span>SR-P-20<a class="headerlink" href="#sr-p-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.12. </span>SR-P-20<a class="headerlink" href="#sr-p-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -391,7 +390,7 @@ Successivamente, tutte le chiavi crittografiche generate e utilizzate nel proces
 <p>Questo requisito è affrontato mediante l'identificazione sicura del Fornitore di Credenziali. Il parametro ^iss^ nella risposta di autorizzazione assicura al Wallet che la risposta provenga dal Fornitore di Credenziali previsto e la verifica crittografica dei token ricevuti garantisce che siano stati emessi dal legittimo Fornitore di Credenziali. Inoltre, l'uso di PKCE evita l'iniezione del codice da un'altra sessione alla sessione dell'Utente.</p>
 </section>
 <section id="sr-p-30">
-<h3><span class="section-number">12.1.13. </span>SR-P-30<a class="headerlink" href="#sr-p-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.13. </span>SR-P-30<a class="headerlink" href="#sr-p-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -406,7 +405,7 @@ Successivamente, tutte le chiavi crittografiche generate e utilizzate nel proces
 <p>Il processo di presentazione avviene attraverso diversi flussi, inclusi remoto e di prossimità. Nel caso del flusso remoto, una combinazione di Request Objects firmati, utilizzo di <strong>nonce</strong>, validazione della Trust Chain, Wallet Attestation e associazione del Titolare garantisce che nessuna terza parte possa interferire o modificare le informazioni trasmesse tra il Wallet e il Verificatore di Attestati Elettronici. Questi meccanismi sono allineati con il Requisito di Sicurezza P-30, proteggendo l'interazione da manomissioni o attacchi di iniezione.</p>
 </section>
 <section id="sr-p-40">
-<h3><span class="section-number">12.1.14. </span>SR-P-40<a class="headerlink" href="#sr-p-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.14. </span>SR-P-40<a class="headerlink" href="#sr-p-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -437,7 +436,7 @@ dove viene discussa una lista di mitigazioni da [<a class="reference external" h
 </div>
 </section>
 <section id="sr-p-41">
-<h3><span class="section-number">12.1.15. </span>SR-P-41<a class="headerlink" href="#sr-p-41" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.15. </span>SR-P-41<a class="headerlink" href="#sr-p-41" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -456,7 +455,7 @@ Per quanto riguarda il claim <strong>nonce</strong>, il Verificatore di Attestat
 Per quanto riguarda il valore <strong>aud</strong>, il Verificatore di Attestati Elettronici deve verificare che l'audience della presentazione corrisponda all'identificatore del Verificatore di Attestati Elettronici.</p>
 </section>
 <section id="sr-p-50">
-<h3><span class="section-number">12.1.16. </span>SR-P-50<a class="headerlink" href="#sr-p-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.16. </span>SR-P-50<a class="headerlink" href="#sr-p-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -482,7 +481,7 @@ come mostrato ad esempio in questo <a class="reference external" href="https://w
 </div>
 </section>
 <section id="sr-v-10">
-<h3><span class="section-number">12.1.17. </span>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.17. </span>SR-V-10<a class="headerlink" href="#sr-v-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -504,7 +503,7 @@ fiducia del Verificatore di Attestati Elettronici che la Credenziale provenga da
 </div>
 </section>
 <section id="sr-v-20">
-<h3><span class="section-number">12.1.18. </span>SR-V-20<a class="headerlink" href="#sr-v-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.18. </span>SR-V-20<a class="headerlink" href="#sr-v-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -523,7 +522,7 @@ fiducia del Verificatore di Attestati Elettronici che la Credenziale provenga da
 </div>
 </section>
 <section id="sr-w-20">
-<h3><span class="section-number">12.1.19. </span>SR-W-20<a class="headerlink" href="#sr-w-20" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.19. </span>SR-W-20<a class="headerlink" href="#sr-w-20" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -540,7 +539,7 @@ fiducia del Verificatore di Attestati Elettronici che la Credenziale provenga da
 Oltre alle informazioni del Fornitore di Credenziali, il Tipo di Metadati della Credenziale Digitale contiene anche informazioni sulla Fonte Autentica.</p>
 </section>
 <section id="sr-w-30">
-<h3><span class="section-number">12.1.20. </span>SR-W-30<a class="headerlink" href="#sr-w-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.1.20. </span>SR-W-30<a class="headerlink" href="#sr-w-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -556,9 +555,9 @@ Oltre alle informazioni del Fornitore di Credenziali, il Tipo di Metadati della 
 </section>
 </section>
 <section id="requisiti-di-privacy">
-<h2><span class="section-number">12.2. </span>Requisiti di Privacy<a class="headerlink" href="#requisiti-di-privacy" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">11.2. </span>Requisiti di Privacy<a class="headerlink" href="#requisiti-di-privacy" title="Link to this heading">¶</a></h2>
 <section id="pr-cf-30">
-<h3><span class="section-number">12.2.1. </span>PR-CF-30<a class="headerlink" href="#pr-cf-30" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.2.1. </span>PR-CF-30<a class="headerlink" href="#pr-cf-30" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -573,7 +572,7 @@ Oltre alle informazioni del Fornitore di Credenziali, il Tipo di Metadati della 
 <p>Sia SD-JWT che mdoc-CBOR forniscono la capacità di Divulgazione Selettiva, permettendo ai Titolari di rivelare solo campi specifici al Verificatore di Attestati Elettronici.</p>
 </section>
 <section id="pr-cf-40">
-<h3><span class="section-number">12.2.2. </span>PR-CF-40<a class="headerlink" href="#pr-cf-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.2.2. </span>PR-CF-40<a class="headerlink" href="#pr-cf-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -592,7 +591,7 @@ Oltre alle informazioni del Fornitore di Credenziali, il Tipo di Metadati della 
 </div>
 </section>
 <section id="pr-e-60">
-<h3><span class="section-number">12.2.3. </span>PR-E-60<a class="headerlink" href="#pr-e-60" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.2.3. </span>PR-E-60<a class="headerlink" href="#pr-e-60" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -609,7 +608,7 @@ Inoltre, la privacy è protetta anche durante il controllo dello stato della Cre
 che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
 </section>
 <section id="pr-e-70">
-<h3><span class="section-number">12.2.4. </span>PR-E-70<a class="headerlink" href="#pr-e-70" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.2.4. </span>PR-E-70<a class="headerlink" href="#pr-e-70" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -632,7 +631,7 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 </div>
 </section>
 <section id="pr-w-40">
-<h3><span class="section-number">12.2.5. </span>PR-W-40<a class="headerlink" href="#pr-w-40" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.2.5. </span>PR-W-40<a class="headerlink" href="#pr-w-40" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -647,7 +646,7 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 <p>Dopo aver stabilito la fiducia con il Verificatore di Attestati Elettronici, il Wallet chiede il consenso dell'Utente e fornisce all'Utente l'opportunità di rivedere e selezionare i dati da presentare al Verificatore di Attestati Elettronici.</p>
 </section>
 <section id="pr-w-60">
-<h3><span class="section-number">12.2.6. </span>PR-W-60<a class="headerlink" href="#pr-w-60" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.2.6. </span>PR-W-60<a class="headerlink" href="#pr-w-60" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -662,7 +661,7 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 <p>Come per SR-P-80.</p>
 </section>
 <section id="pr-w-70">
-<h3><span class="section-number">12.2.7. </span>PR-W-70<a class="headerlink" href="#pr-w-70" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.2.7. </span>PR-W-70<a class="headerlink" href="#pr-w-70" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -678,9 +677,9 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 </section>
 </section>
 <section id="requisiti-di-sicurezza-e-privacy">
-<h2><span class="section-number">12.3. </span>Requisiti di Sicurezza e Privacy<a class="headerlink" href="#requisiti-di-sicurezza-e-privacy" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">11.3. </span>Requisiti di Sicurezza e Privacy<a class="headerlink" href="#requisiti-di-sicurezza-e-privacy" title="Link to this heading">¶</a></h2>
 <section id="spr-e-50">
-<h3><span class="section-number">12.3.1. </span>SPR-E-50<a class="headerlink" href="#spr-e-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.3.1. </span>SPR-E-50<a class="headerlink" href="#spr-e-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -700,7 +699,7 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 </div>
 </section>
 <section id="spr-p-10">
-<h3><span class="section-number">12.3.2. </span>SPR-P-10<a class="headerlink" href="#spr-p-10" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.3.2. </span>SPR-P-10<a class="headerlink" href="#spr-p-10" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -723,7 +722,7 @@ che mentre il Verificatore di Attestati Elettronici controlla la validità della
 </ul>
 </section>
 <section id="spr-p-60">
-<h3><span class="section-number">12.3.3. </span>SPR-P-60<a class="headerlink" href="#spr-p-60" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.3.3. </span>SPR-P-60<a class="headerlink" href="#spr-p-60" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -747,7 +746,7 @@ Nella specifica IT-Wallet, il <strong>redirect_uri</strong> è registrato e vali
 Quando il Verificatore di Attestati Elettronici riceve il reindirizzamento, può estrarre il codice di risposta e verificare con il suo endpoint di risposta se il codice di risposta era associato a questa Risposta di Autorizzazione. (Vedi <a class="reference internal" href="remote-flow.html#uri-di-reindirizzamento"><span class="std std-ref">URI di Reindirizzamento</span></a>).</p>
 </section>
 <section id="spr-p-70">
-<h3><span class="section-number">12.3.4. </span>SPR-P-70<a class="headerlink" href="#spr-p-70" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.3.4. </span>SPR-P-70<a class="headerlink" href="#spr-p-70" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -780,7 +779,7 @@ Lo standard OpenID4VCI fornisce l'opzione per il Wallet di richiedere Credenzial
 </div>
 </section>
 <section id="spr-p-80">
-<h3><span class="section-number">12.3.5. </span>SPR-P-80<a class="headerlink" href="#spr-p-80" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.3.5. </span>SPR-P-80<a class="headerlink" href="#spr-p-80" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -796,7 +795,7 @@ Lo standard OpenID4VCI fornisce l'opzione per il Wallet di richiedere Credenzial
 garantiscono che mentre il Verificatore di Attestati Elettronici controlla la validità della Credenziale, il Fornitore di Credenziali non apprende dove o quando la Credenziale viene utilizzata.</p>
 </section>
 <section id="spr-w-50">
-<h3><span class="section-number">12.3.6. </span>SPR-W-50<a class="headerlink" href="#spr-w-50" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">11.3.6. </span>SPR-W-50<a class="headerlink" href="#spr-w-50" title="Link to this heading">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8.0%" />
@@ -827,47 +826,47 @@ garantiscono che mentre il Verificatore di Attestati Elettronici controlla la va
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">12. Considerazioni di Sicurezza e Privacy</a><ul>
-<li><a class="reference internal" href="#requisiti-di-sicurezza">12.1. Requisiti di Sicurezza</a><ul>
-<li><a class="reference internal" href="#sr-cf-10-e-sr-e-10">12.1.1. SR-CF-10 e SR-E-10</a></li>
-<li><a class="reference internal" href="#sr-cf-20">12.1.2. SR-CF-20</a></li>
-<li><a class="reference internal" href="#sr-cf-21">12.1.3. SR-CF-21</a></li>
-<li><a class="reference internal" href="#sr-e-20">12.1.4. SR-E-20</a></li>
-<li><a class="reference internal" href="#sr-e-30">12.1.5. SR-E-30</a></li>
-<li><a class="reference internal" href="#sr-e-40">12.1.6. SR-E-40</a></li>
-<li><a class="reference internal" href="#sr-i-10">12.1.7. SR-I-10</a></li>
-<li><a class="reference internal" href="#sr-i-20">12.1.8. SR-I-20</a></li>
-<li><a class="reference internal" href="#sr-i-30">12.1.9. SR-I-30</a></li>
-<li><a class="reference internal" href="#sr-i-40">12.1.10. SR-I-40</a></li>
-<li><a class="reference internal" href="#sr-i-50">12.1.11. SR-I-50</a></li>
-<li><a class="reference internal" href="#sr-p-20">12.1.12. SR-P-20</a></li>
-<li><a class="reference internal" href="#sr-p-30">12.1.13. SR-P-30</a></li>
-<li><a class="reference internal" href="#sr-p-40">12.1.14. SR-P-40</a></li>
-<li><a class="reference internal" href="#sr-p-41">12.1.15. SR-P-41</a></li>
-<li><a class="reference internal" href="#sr-p-50">12.1.16. SR-P-50</a></li>
-<li><a class="reference internal" href="#sr-v-10">12.1.17. SR-V-10</a></li>
-<li><a class="reference internal" href="#sr-v-20">12.1.18. SR-V-20</a></li>
-<li><a class="reference internal" href="#sr-w-20">12.1.19. SR-W-20</a></li>
-<li><a class="reference internal" href="#sr-w-30">12.1.20. SR-W-30</a></li>
+<li><a class="reference internal" href="#">11. Considerazioni di Sicurezza e Privacy</a><ul>
+<li><a class="reference internal" href="#requisiti-di-sicurezza">11.1. Requisiti di Sicurezza</a><ul>
+<li><a class="reference internal" href="#sr-cf-10-e-sr-e-10">11.1.1. SR-CF-10 e SR-E-10</a></li>
+<li><a class="reference internal" href="#sr-cf-20">11.1.2. SR-CF-20</a></li>
+<li><a class="reference internal" href="#sr-cf-21">11.1.3. SR-CF-21</a></li>
+<li><a class="reference internal" href="#sr-e-20">11.1.4. SR-E-20</a></li>
+<li><a class="reference internal" href="#sr-e-30">11.1.5. SR-E-30</a></li>
+<li><a class="reference internal" href="#sr-e-40">11.1.6. SR-E-40</a></li>
+<li><a class="reference internal" href="#sr-i-10">11.1.7. SR-I-10</a></li>
+<li><a class="reference internal" href="#sr-i-20">11.1.8. SR-I-20</a></li>
+<li><a class="reference internal" href="#sr-i-30">11.1.9. SR-I-30</a></li>
+<li><a class="reference internal" href="#sr-i-40">11.1.10. SR-I-40</a></li>
+<li><a class="reference internal" href="#sr-i-50">11.1.11. SR-I-50</a></li>
+<li><a class="reference internal" href="#sr-p-20">11.1.12. SR-P-20</a></li>
+<li><a class="reference internal" href="#sr-p-30">11.1.13. SR-P-30</a></li>
+<li><a class="reference internal" href="#sr-p-40">11.1.14. SR-P-40</a></li>
+<li><a class="reference internal" href="#sr-p-41">11.1.15. SR-P-41</a></li>
+<li><a class="reference internal" href="#sr-p-50">11.1.16. SR-P-50</a></li>
+<li><a class="reference internal" href="#sr-v-10">11.1.17. SR-V-10</a></li>
+<li><a class="reference internal" href="#sr-v-20">11.1.18. SR-V-20</a></li>
+<li><a class="reference internal" href="#sr-w-20">11.1.19. SR-W-20</a></li>
+<li><a class="reference internal" href="#sr-w-30">11.1.20. SR-W-30</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#requisiti-di-privacy">12.2. Requisiti di Privacy</a><ul>
-<li><a class="reference internal" href="#pr-cf-30">12.2.1. PR-CF-30</a></li>
-<li><a class="reference internal" href="#pr-cf-40">12.2.2. PR-CF-40</a></li>
-<li><a class="reference internal" href="#pr-e-60">12.2.3. PR-E-60</a></li>
-<li><a class="reference internal" href="#pr-e-70">12.2.4. PR-E-70</a></li>
-<li><a class="reference internal" href="#pr-w-40">12.2.5. PR-W-40</a></li>
-<li><a class="reference internal" href="#pr-w-60">12.2.6. PR-W-60</a></li>
-<li><a class="reference internal" href="#pr-w-70">12.2.7. PR-W-70</a></li>
+<li><a class="reference internal" href="#requisiti-di-privacy">11.2. Requisiti di Privacy</a><ul>
+<li><a class="reference internal" href="#pr-cf-30">11.2.1. PR-CF-30</a></li>
+<li><a class="reference internal" href="#pr-cf-40">11.2.2. PR-CF-40</a></li>
+<li><a class="reference internal" href="#pr-e-60">11.2.3. PR-E-60</a></li>
+<li><a class="reference internal" href="#pr-e-70">11.2.4. PR-E-70</a></li>
+<li><a class="reference internal" href="#pr-w-40">11.2.5. PR-W-40</a></li>
+<li><a class="reference internal" href="#pr-w-60">11.2.6. PR-W-60</a></li>
+<li><a class="reference internal" href="#pr-w-70">11.2.7. PR-W-70</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#requisiti-di-sicurezza-e-privacy">12.3. Requisiti di Sicurezza e Privacy</a><ul>
-<li><a class="reference internal" href="#spr-e-50">12.3.1. SPR-E-50</a></li>
-<li><a class="reference internal" href="#spr-p-10">12.3.2. SPR-P-10</a></li>
-<li><a class="reference internal" href="#spr-p-60">12.3.3. SPR-P-60</a></li>
-<li><a class="reference internal" href="#spr-p-70">12.3.4. SPR-P-70</a></li>
-<li><a class="reference internal" href="#spr-p-80">12.3.5. SPR-P-80</a></li>
-<li><a class="reference internal" href="#spr-w-50">12.3.6. SPR-W-50</a></li>
+<li><a class="reference internal" href="#requisiti-di-sicurezza-e-privacy">11.3. Requisiti di Sicurezza e Privacy</a><ul>
+<li><a class="reference internal" href="#spr-e-50">11.3.1. SPR-E-50</a></li>
+<li><a class="reference internal" href="#spr-p-10">11.3.2. SPR-P-10</a></li>
+<li><a class="reference internal" href="#spr-p-60">11.3.3. SPR-P-60</a></li>
+<li><a class="reference internal" href="#spr-p-70">11.3.4. SPR-P-70</a></li>
+<li><a class="reference internal" href="#spr-p-80">11.3.5. SPR-P-80</a></li>
+<li><a class="reference internal" href="#spr-w-50">11.3.6. SPR-W-50</a></li>
 </ul>
 </li>
 </ul>
@@ -885,13 +884,13 @@ garantiscono che mentre il Verificatore di Attestati Elettronici controlla la va
             <div class="left">
                 
                 <a href="algorithms.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">11. </span>Algoritmi Crittografici</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10. </span>Algoritmi Crittografici</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="log-retention-policy.html"><span><span class="section-number">13. </span>Politiche Generali di Conservazione dei Log</span><span class="icon">&gt;</span></a>
+                    <a href="log-retention-policy.html"><span><span class="section-number">12. </span>Politiche Generali di Conservazione dei Log</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

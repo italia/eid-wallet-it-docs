@@ -8,6 +8,9 @@ Design dell'Esperienza Utente
   :caption: Indice di Design dell’Esperienza Utente 
   :maxdepth: 3 
 
+  design.rst
+  official-resources.rst
+
 .. include:: design.rst
 .. include:: official-resources.rst
 

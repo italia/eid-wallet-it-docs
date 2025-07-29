@@ -46,8 +46,5 @@ L'architettura descritta, abilita i seguenti macro processi:
 L'Infrastruttura di Trust gestisce l'onboarding e la revoca delle Entità, fornisce schemi di Attestati Elettronici, consente ai partecipanti di ottenere l'elenco delle Entità autorizzate, e fornisce gli strumenti tecnici per verificarne lo stato di conformità e adesione alla federazione IT-Wallet. Supporta, inoltre, un modello gerarchico e distribuito del Trust, attraverso la convalida automatica della catena di Trust, lo scambio standardizzato di metadati e i servizi API di Federazione per operazioni di federazione sicure e affidabili.
 
 
-.. toctree::
-  :caption: Indice della Panoramica dell'Architettura
-  :maxdepth: 3
 
   
