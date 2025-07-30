@@ -38,7 +38,7 @@ To ensure a correct and consistent implementation, Primary Actors:
 
 - MUST use Official Resources and MUST comply with all related usage specifications provided; 
 
-- MAY choose from the available configurations provided, but MUST ensure the correct use of atomic components, such as the Engagement Buttonss; 
+- MAY choose from the available configurations provided. Primary Actors MUST ensure the correct use of atomic components, such as the Engagement Buttons; 
 
 - MUST keep used resources up to date, in line with the latest available version of the Official Resources. 
 
