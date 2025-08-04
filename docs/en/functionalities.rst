@@ -121,13 +121,13 @@ If the Authentic Source considers it useful, it MAY provide the User with additi
 
 - MUST ensure that the information is constantly updated; 
 
-- MUST include a title and text in which it MAY include references to external channels to direct users to a procedure, explore a specific topic and/or open support requests. 
+- MUST include a title and text in which it MAY include references to external channels to direct Users to a procedure, explore a specific topic and/or open support requests. 
 
 Following is an example of informative text: 
 
 **Title:** Do you already have the physical document? 
 
-**Text:** To obtain the digital version of [Document name], you must already have obtained the corresponding physical document. For more details, [read more information] (URL). 
+**Text:** To obtain the digital version of [Document name], please make sure to already have obtained the corresponding physical document. For more details, [read more information] (URL). 
 
 For further information, please refer to the section :ref:`registry-catalogue:Digital Credentials Catalogue` (see claim “``user_information``”). 
 
@@ -148,7 +148,7 @@ Below are illustrated the User Experience requirements for the issuance of an El
 
 - The User interacts with the Engagement Button clearly displayed in the Touchpoint interface; 
 - The User selects the Wallet Solution with which to proceed, through an interface that SHOULD follow the directions and functionalities described for the *Selection Page* in the :ref:`functionalities:Authentication section`; 
-- (*cross-device only*) the User scan a QR code that invokes the opening of their chosen Wallet Instance, through an interface that SHOULD follow the directions and functionalities described for the *QR code page* in the :ref:`functionalities:Authentication section`; 
+- (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that SHOULD follow the directions and functionalities described for the *QR code page* in the :ref:`functionalities:Authentication section`; 
 - (*cross-device only*) the User displays a message inviting them to continue on their chosen Wallet Instance, through an interface that SHOULD follow the directions and functionalities described for the *waiting page* in the :ref:`functionalities:Authentication section`; 
 - The User accesses their Wallet Instance using the unlock method previously set; 
 - The User views the PID data, if required by the Authentic Source for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting their PID data to the Electronic Attestation of Attributes Provider, or cancels the operation; 
