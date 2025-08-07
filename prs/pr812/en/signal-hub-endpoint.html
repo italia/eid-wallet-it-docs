@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Endpoints &#8212; IT-Wallet Technical Documentation - PR #812</title>
+    <title>8.5. PDND Signal Hub Endpoints &#8212; IT-Wallet Technical Documentation - PR #812</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8.1. Wallet Provider Endpoints" href="wallet-provider-endpoint.html" />
-    <link rel="prev" title="7.2.2. Proximity Flow" href="proximity-flow.html" /> 
+    <link rel="next" title="9. Cryptographic Algorithms" href="algorithms.html" />
+    <link rel="prev" title="8.4. Authentic Source Endpoints" href="authentic-source-endpoint.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -137,12 +137,12 @@
 <li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Endpoints</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">8. Endpoints</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">8.1. Wallet Provider Endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Credential Issuer Endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">8.3. Relying Party Endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">8.4. Authentic Source Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">8.5. PDND Signal Hub Endpoints</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8.5. PDND Signal Hub Endpoints</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
@@ -163,103 +163,127 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="endpoints">
-<span id="id1"></span><h1><span class="section-number">8. </span>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Endpoints Table of Contents</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="wallet-provider-endpoint.html">8.1. Wallet Provider Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#id1">8.1.1. Federation Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-solution-nonce-endpoint">8.1.2. Wallet Solution Nonce Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-management-endpoint">8.1.3. Wallet Instance Management Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-registration-request">8.1.3.1. Wallet Instance Registration Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-registration-response">8.1.3.2. Wallet Instance Registration Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-retrieval-request">8.1.3.3. Wallet Instance Retrieval Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-retrieval-response">8.1.3.4. Wallet Instance Retrieval Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-revocation-request">8.1.3.5. Wallet Instance Revocation Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-instance-revocation-response">8.1.3.6. Wallet Instance Revocation Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#id2">8.1.3.7. Error Handling for Wallet Instance Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#common-error-responses">8.1.3.8. Common Error Responses</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#request-specific-error-responses">8.1.3.9. Request-Specific Error Responses</a></li>
+  <section id="pdnd-signal-hub-endpoints">
+<h1><span class="section-number">8.5. </span>PDND Signal Hub Endpoints<a class="headerlink" href="#pdnd-signal-hub-endpoints" title="Link to this heading">¶</a></h1>
+<p>Signal Hub is a service provided by the PDND. It enables a PDND e-service Provider to issue a Signal of Change, which notifies all relevant e-service Consumers about a data variation within the Provider's domain.
+Although the Signal Hub is hosted and managed by the PDND (acting as the service provider), all participating entities are considered consumers of the Signal Hub service. However, it is important to distinguish this from the actual consumer of the Signal of Change, which is always the Credential Issuer.
+The Signal Hub allows the Credential Issuer to receive notifications indicating that a change has occurred. To access the updated data, the signal recipient must query the corresponding e-service, following standard PDND procedures.
+For detailed technical specifications and implementation guidelines, please refer to the <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub" target="_blank">Signal Hub User Guide</a></span>.</p>
+<section id="authentic-sources">
+<h2><span class="section-number">8.5.1. </span>Authentic Sources<a class="headerlink" href="#authentic-sources" title="Link to this heading">¶</a></h2>
+<p>Authentic Sources MUST perform the following actions through PDND:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>enable the Signal Hub feature for each credential e-service via GUI</p></li>
+<li><p>submit a Signal of Change for each e-service output data variation</p></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#id3">8.1.4. Wallet Attestation Issuance Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-attestation-issuance-request">8.1.4.1. Wallet Attestation Issuance Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-attestation-issuance-response">8.1.4.2. Wallet Attestation Issuance Response</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-attestation-jwt">8.1.4.3. Wallet Attestation JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-attestation-sd-jwt">8.1.4.4. Wallet Attestation SD-JWT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#wallet-attestation-mdoc">8.1.4.5. Wallet Attestation mdoc</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html#e-service-pdnd-wallet-provider-catalogue">8.1.5. e-Service PDND Wallet Provider Catalogue</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-endpoint.html#notify-user-death">8.1.5.1. Notify User Death</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuer-endpoint.html">8.2. Credential Issuer Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#federation-endpoints">8.2.1. Federation Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#credential-issuance-endpoints">8.2.2. Credential Issuance Endpoints</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#credential-offer-endpoint">8.2.2.1. Credential Offer Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#pushed-authorization-request-endpoint">8.2.2.2. Pushed Authorization Request Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#authorization-endpoint">8.2.2.3. Authorization endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#token-endpoint">8.2.2.4. Token endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#nonce-endpoint">8.2.2.5. Nonce Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#credential-endpoint">8.2.2.6. Credential endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#deferred-endpoint">8.2.2.7. Deferred Endpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notification-endpoint">8.2.2.8. Notification endpoint</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#e-service-pdnd-credential-issuer-catalogue">8.2.3. e-Service PDND Credential Issuer Catalogue</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notify-wallet-instance-revocation">8.2.3.1. Notify Wallet Instance Revocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#get-statistics">8.2.3.2. Get Statistics</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-endpoint.html">8.3. Relying Party Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-federation-endpoint">8.3.1. Relying Party Federation Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-nonce-endpoint">8.3.2. Relying Party Nonce Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-instance-initialization-endpoint">8.3.3. Relying Party Instance Initialization Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-key-binding-endpoint">8.3.4. Relying Party Key Binding Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-key-binding-request">8.3.4.1. Relying Party Key Binding Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-key-binding-response">8.3.4.2. Relying Party Key Binding Response</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-endpoint">8.3.5. Relying Party Access Certificate Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-request">8.3.5.1. Relying Party Access Certificate Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-response">8.3.5.2. Relying Party Access Certificate Response</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-erasure-endpoint">8.3.6. Relying Party Erasure Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#erasure-request">8.3.6.1. Erasure Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#erasure-response">8.3.6.2. Erasure Response</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-source-endpoint.html">8.4. Authentic Source Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html#e-service-pdnd-authentic-source-catalogue">8.4.1. e-Service PDND Authentic Source Catalogue</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims">8.4.1.1. Get Attribute Claims</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="signal-hub-endpoint.html">8.5. PDND Signal Hub Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#authentic-sources">8.5.1. Authentic Sources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#notify-update-credential">8.5.1.1. Notify Update Credential</a></li>
-<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#notify-available-credential">8.5.1.2. Notify Available Credential</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#credential-issuer">8.5.2. Credential Issuer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#check-for-update-credential">8.5.2.1. Check for Update Credential</a></li>
-<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#check-for-credential-availability">8.5.2.2. Check for Credential availability</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="https://github.com/pagopa/interop-signalhub-core/blob/main/docs/openAPI/push-signals.yaml" target="_blank">here</a></span>.</p>
 </div>
+</div></blockquote>
+<section id="notify-update-credential">
+<h3><span class="section-number">8.5.1.1. </span>Notify Update Credential<a class="headerlink" href="#notify-update-credential" title="Link to this heading">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>The service is designed to allow Authentic Source (AS), via Signal Hub, to submit
+notification of a change of status and/or value of a specific attribute (e.g. MDL)
+associated with a digital document issued by the Credential Issuer.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>PDND</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>Authentic Source</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notify-available-credential">
+<h3><span class="section-number">8.5.1.2. </span>Notify Available Credential<a class="headerlink" href="#notify-available-credential" title="Link to this heading">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>The service is designed to allow the Authentic Source (AS), via Signal Hub, to
+notify the User of the availability of a specific Credential to be entered
+into the Wallet.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>PDND</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>Authentic Source</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="credential-issuer">
+<h2><span class="section-number">8.5.2. </span>Credential Issuer<a class="headerlink" href="#credential-issuer" title="Link to this heading">¶</a></h2>
+<p>Credential Issuers MUST perform the following actions through PDND:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>monitor data changes for each e-service with Signal Hub enabled</p></li>
+<li><p>retrieve the updated data from the subscribed e-service</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A complete OpenAPI Specification is available <span class="raw-html"><a href="https://github.com/pagopa/interop-signalhub-core/blob/main/docs/openAPI/pull-signals.yaml" target="_blank">here</a></span>.</p>
+</div>
+</div></blockquote>
+<section id="check-for-update-credential">
+<h3><span class="section-number">8.5.2.1. </span>Check for Update Credential<a class="headerlink" href="#check-for-update-credential" title="Link to this heading">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>The service is designed to allow Credential Issuers (CI), via SignalHub, to check
+for changes in the status and/or value of a specific attribute (e.g. MDL)
+as notified by the Authentic Source.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>PDND</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>Credential Issuers</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="check-for-credential-availability">
+<h3><span class="section-number">8.5.2.2. </span>Check for Credential availability<a class="headerlink" href="#check-for-credential-availability" title="Link to this heading">¶</a></h3>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
+<td><p>The service is designed to allow Credential Issuers (CI), via SignalHub, to check
+for the availability of a specific Credential in order to notify the User.</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
+<td><p>PDND</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
+<td><p>Credential Issuers</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 </section>
 
 
@@ -268,6 +292,32 @@
         </div>
       </div>
     
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">8.5. PDND Signal Hub Endpoints</a><ul>
+<li><a class="reference internal" href="#authentic-sources">8.5.1. Authentic Sources</a><ul>
+<li><a class="reference internal" href="#notify-update-credential">8.5.1.1. Notify Update Credential</a></li>
+<li><a class="reference internal" href="#notify-available-credential">8.5.1.2. Notify Available Credential</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#credential-issuer">8.5.2. Credential Issuer</a><ul>
+<li><a class="reference internal" href="#check-for-update-credential">8.5.2.1. Check for Update Credential</a></li>
+<li><a class="reference internal" href="#check-for-credential-availability">8.5.2.2. Check for Credential availability</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+    
 
       <div class="clearer"></div>
     </div>
@@ -275,14 +325,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="proximity-flow.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">7.2.2. </span>Proximity Flow</span></a>
+                <a href="authentic-source-endpoint.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">8.4. </span>Authentic Source Endpoints</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="wallet-provider-endpoint.html"><span><span class="section-number">8.1. </span>Wallet Provider Endpoints</span><span class="icon">&gt;</span></a>
+                    <a href="algorithms.html"><span><span class="section-number">9. </span>Cryptographic Algorithms</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
