@@ -230,6 +230,12 @@ Below is the description of acronyms and definitions which are useful for furthe
       Approach giving individuals control over their digital identity information.
       Not present in ARF 1.10.
 
+    **Signal Hub**
+      A set of PDND platform services that implements the Signal of Change distribution process. It consists of two services: signal deposit and signal retrieval.
+
+    **Signal Hub Signal of Change**
+      An event used to notify the PDND of updates to statuses and/or facts within a data or information domain managed by the service provider.
+
     **Supervision Process**
       Process by a Supervisory Body to review and ensure proper functioning of the Wallet Provider and others.
       Not present in ARF 1.10; specific to IT-Wallet.

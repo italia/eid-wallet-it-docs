@@ -103,7 +103,7 @@ National Data Interoperability Platform Specifications
     * - `MODI`_
       - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni", November 2023, Version 1.2.
     * - `PDND`_
-      - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati", December 2021, Version 1.0.
+      - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati", June 2025, Version 2.0.
 
 National Digital Identity Platform Specifications
 -------------------------------------------------
