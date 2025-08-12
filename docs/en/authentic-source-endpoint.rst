@@ -25,6 +25,7 @@ Public Authentic Sources MUST provide the following e-service through PDND to pr
 Get Attribute Claims
 """"""""""""""""""""
 
+.. _authentic-source-endpoint-get-attribute-claims:
 .. list-table::
   :class: longtable
   :widths: 20 80
@@ -39,6 +40,19 @@ Get Attribute Claims
 
 Pseudonymization Endpoint
 """"""""""""""""""""""""""""""
+
+.. _table_pseudonymization_endpoint_description:
+.. list-table::
+  :class: longtable
+  :widths: 20 80
+  :stub-columns: 1
+
+  * - **Description**
+    - This service provides the Credential Issuer with the pseudonymization algorithm and salt used to compute each subject's pseudonym.
+  * - **Provider**
+    - Authentic Source
+  * - **Consumer**
+    - Credential Issuer
 
 The Pseudonymization Endpoint is used by Credential Issuers to request Authentic Sources for the pseudonymization algorithm and salt used to compute each subject's pseudonym. 
 
@@ -55,6 +69,7 @@ The Pseudonymization Endpoint MUST be a GET request with the following parameter
 
 If the Pseudonymization Endpoint request is correctly processed, the e-Service will then respond with status code HTTP 200 OK and ``Content-Type`` set to ``application/jwt`` as described in :ref:`e-service-pdnd:e-service Usage`, with the body containing the following additional parameters:
 
+.. _table_pseudonymization_response_parameters:
 .. list-table::
   :widths: 25 75
   :header-rows: 1
@@ -67,6 +82,7 @@ If the Pseudonymization Endpoint request is correctly processed, the e-Service w
     - REQUIRED. It MUST be the ``alg`` Identifier of the Cryptographic Hash Function; e.g., for SHA-256, the value MUST be ``sha-256``. 
 
 If any error occurs during the request parsing, the response MUST adhere to the error format defined in :ref:`e-service-pdnd:e-Service Response`.
+
 The pseudonym of a subject with Tax Id Number ``tax_id`` is computed as:
 
 .. math::

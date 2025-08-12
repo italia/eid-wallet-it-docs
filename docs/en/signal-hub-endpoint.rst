@@ -80,6 +80,7 @@ Push Endpoint
 
 The Push Endpoint is used by Authentic Sources to deposit Signals to the Signal Hub. The PUSH request MUST be a POST request with ``Content-Type`` set to ``application-json``, whose header MUST have the the parameters described in :ref:`e-service-pdnd:e-service Usage` and whose body MUST contain the following parameters:
 
+.. _table_signal_push_request_parameters:
 .. list-table::
   :widths: 25 75
   :header-rows: 1
@@ -105,7 +106,7 @@ The Push Endpoint is used by Authentic Sources to deposit Signals to the Signal 
 Non normative examples of POST Requests are presented below.
 
 .. code-block:: http
-    :name: code_Signal_Transmission_Request_1
+    :name: code_Signal_PUSH_Request_1
 
     POST /1.0/push/signals HTTP/1.1
     Host: api.signalhub.interop.pagopa.it
@@ -124,7 +125,7 @@ Non normative examples of POST Requests are presented below.
     }
 
 .. code-block:: http
-    :name: code_Signal_Transmission_Request_2
+    :name: code_Signal_PUSH_Request_2
 
     POST /1.0/push/signals HTTP/1.1
     Host: api.signalhub.interop.pagopa.it
@@ -144,6 +145,7 @@ Non normative examples of POST Requests are presented below.
 
 The response acknowledgind the correct parsing of the request MUST be a HTTP 200 OK with ``Content-Type`` set to ``application/json`` and the body containing the following parameters:
 
+.. _table_signal_push_response_parameters:
 .. list-table::
   :widths: 25 75
   :header-rows: 1
@@ -153,12 +155,7 @@ The response acknowledgind the correct parsing of the request MUST be a HTTP 200
   * - **signalID**
     - REQUIRED. The identifier of the Signal that has been successfully transmitted.
 
-If any error occurs during the request parsing, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
-
-    - ``error``: The error code.
-    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
-
-TODO
+If any error occurs during the request parsing, the response MUST adhere to the error format defined in :ref:`e-service-pdnd:e-Service Response`.
 
 Pull Endpoint
 """"""""""""""""
@@ -182,6 +179,7 @@ If the POLL request is correctly processed, the e-Service will then respond with
 
 Regardless of the response code used, the response MUST have ``Content-Type`` set to ``application/jwt`` with the header and body containing the parameters described in :ref:`e-service-pdnd:e-Service Response` with the addition of the body parameters:
 
+.. _table_signal_pull_response_parameters:
 .. list-table::
   :widths: 25 75
   :header-rows: 1
@@ -216,12 +214,7 @@ Regardless of the response code used, the response MUST have ``Content-Type`` se
     Digest:
 
 
-If any error occurs during the request parsing, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
-
-    - ``error``: The error code.
-    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
-
-?????????????????
+If any error occurs during the request parsing, the response MUST adhere to the error format defined in :ref:`e-service-pdnd:e-Service Response`.
 
 Signals Processing
 ^^^^^^^^^^^^^^^^^^^^

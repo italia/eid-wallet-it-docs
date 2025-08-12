@@ -70,13 +70,13 @@ paths:
             security pattern. <a target="blank"
             href="https://italia.github.io/eid-wallet-it-docs/v1.0.0/en/e-service-pdnd.html">e-Service PDND</a>. <br/><br/>
 
-            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiI1NzBhNDE1ZS0wZTdmLTQxMGQtODVlZC1jNTVlYTU1Mzc5MzIiLCJpc3MiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj05ZGRkYTA4NmEzYjkwMjc1MDhhOTcxZjE2ZTBjNDRhYTJjOWQ4ZDkxMzM0ZjJkNGFlZGQxY2Q2YTBhMmFkM2E4IiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.0zncFKgLgIAhcX7aTIjC44NWYBiQKM4ZmdHfBqZ0O-W38NkBanT1tz9Z7Z0OBqQqDNsehJQa4IKNzbTjAhoccA">EXAMPLE
+            <a target="blank" href="https://jwt.io/#debugger-io?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiI1NzBhNDE1ZS0wZTdmLTQxMGQtODVlZC1jNTVlYTU1Mzc5MzIiLCJpc3MiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1hZTVjMDNmZTM4MThiNDRiM2U2MDA0MDZjZWYzNzQwNGEyN2JkNTZiMzk4MTk1MjE4Mzg5ZjJlZDRhZThlMTBmIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.a6Vd2s128ANPR-AWIEbLwEBtylYtLuH1IYKL-xCQG31BMBzB6F28PmFmw5_gxPRvzAJzyLuImSZX2VVrUmabGA">EXAMPLE
             ON JWT.IO</a>
           required: true
           schema:
             type: string
             format: JWT
-            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiI1NzBhNDE1ZS0wZTdmLTQxMGQtODVlZC1jNTVlYTU1Mzc5MzIiLCJpc3MiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj05ZGRkYTA4NmEzYjkwMjc1MDhhOTcxZjE2ZTBjNDRhYTJjOWQ4ZDkxMzM0ZjJkNGFlZGQxY2Q2YTBhMmFkM2E4IiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.0zncFKgLgIAhcX7aTIjC44NWYBiQKM4ZmdHfBqZ0O-W38NkBanT1tz9Z7Z0OBqQqDNsehJQa4IKNzbTjAhoccA
+            example: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiI1NzBhNDE1ZS0wZTdmLTQxMGQtODVlZC1jNTVlYTU1Mzc5MzIiLCJpc3MiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj1hZTVjMDNmZTM4MThiNDRiM2U2MDA0MDZjZWYzNzQwNGEyN2JkNTZiMzk4MTk1MjE4Mzg5ZjJlZDRhZThlMTBmIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.a6Vd2s128ANPR-AWIEbLwEBtylYtLuH1IYKL-xCQG31BMBzB6F28PmFmw5_gxPRvzAJzyLuImSZX2VVrUmabGA
         - name: Digest
           in: header
           description: >-
@@ -87,7 +87,7 @@ paths:
           required: true
           schema:
             type: string
-            example: SHA-256=9ddda086a3b9027508a971f16e0c44aa2c9d8d91334f2d4aedd1cd6a0a2ad3a8
+            example: SHA-256=ae5c03fe3818b44b3e600406cef37404a27bd56b398195218389f2ed4ae8e10f
         - name: Agid-JWT-TrackingEvidence
           in: header
           description: >-
@@ -244,6 +244,8 @@ components:
       properties:
         signalId:
           type: number
+          description: The identifier of the Signal that has been successfully transmitted.
+          example: 1
       required:
         - signalId
     problem:
@@ -285,6 +287,7 @@ components:
         - UPDATE
         - DELETE
         - SEEDUPDATE
+      example: "UPDATE"
     SignalPayload:
       type: object
       properties:
@@ -293,15 +296,19 @@ components:
         objectId:
           type: string
           description: The pseudonym to which the Signal is bound.
+          example: fec44ba9afc68492a387199c9faaaa5d954b19b39140637712a67cb90c726575
         eserviceId:
           type: string
           description: e-Service to which the Signal is bound.
+          example: b1817321-0486-4c75-89e5-4ee297250418
         signalId:
           type: number
           description: Positive 64 bit integer number referencing the identifier of the signal.
+          example: 1
         objectType:
           type: string
           description: Signal category.
+          example: "domicilio"
       required:
         - signalType
         - objectId
