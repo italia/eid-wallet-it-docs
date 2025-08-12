@@ -47,12 +47,12 @@ Authentic Sources in the IT Wallet ecosystem use the Signal Hub Push e-service t
   - notify the Credential Issuer of a variation in the pseudonymization algorithm;
   - notify the Credential Issuer of the availability of a specific Credential to be entered into the Wallet. 
   
-The last case happens whenever the Credential Issuer has requested the Digital Credential attributes from the Authentic Source (invoking the `get_attribute` PDND endpoint), but the Authentic Source cannot respond immediately with the requested attributes. Thus the Authentic Source notifies the Credential Issuer via Signal Hub that the requested Digigtal Credential is now available.
+The last case happens whenever the Credential Issuer has requested the Digital Credential attributes from the Authentic Source (invoking the `get_attribute` PDND endpoint), but the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested Digital Credential is now available.
 
 The Authentic Source MUST implement the necessary logic to handle the Signal Hub Push endpoint, in doing this it has to consider the following aspects:
 
-  - Signals are sent per e-service, meaning that the Authentic Source SHOULD implement a push cycle per e-service ID;
-  - Signals are labeled by a unique identifier, the ``signalId``, which is a positive 64 bit integer number. The Signal ID MUST be incremented by 1 for each new Signal sent by the Authentic Source. It is up to the Authentic Source to keep track of the last ``signalId`` it has sent.
+  - Signals are sent per e-service, meaning that the Authentic Source SHOULD implement a push cycle for each e-service ID it is a Producer of;
+  - Signals are labeled by a unique identifier, the ``signalId``, which is a positive 64 bit integer number. The Signal ID MUST be incremented by 1 for each new Signal sent by the Authentic Source. It is up to the Authentic Source to keep track of the last ``signalId`` it has sent. Signals with lower ``signalId`` values are considered older by the PDND and will raise an error if received.
 
 Credential Issuers
 """"""""""""""""""""
@@ -65,12 +65,11 @@ Credential Issuers in the IT Wallet ecosystem use the Signal Hub Pull e-service 
 
 The Credential Issuer MUST implement the necessary logic to handle the polling of the Signal Hub Pull endpoint, in doing this it has to consider the following aspects:
 
-  - Signals are queried and retrieved per e-service, meaning that the Credential Issuer MUST implement a poll cycle per e-service ID;
+  - Signals are queried and retrieved per e-service, meaning that the Credential Issuer MUST implement a poll cycle for each e-service ID;
   - the retention period of Signals in Signal Hub is 30 days;
   - the Signal Hub platform does not keep trak of the last ``signalId`` notified to a specific Credential Issuers. Thus each Credential Issuer MUST keep track of the last ``signalId`` it has received for each e-service ID;
   - the Signal Hub Pull endpoint returns Signals in batches of at most 100 Signals at a time, specifying if more signals are available for retrieval;  
 
- 
 Endpoints
 ^^^^^^^^^^^^^
 
@@ -90,7 +89,6 @@ The Pseudonymization Endpoint MUST be a GET request with the following parameter
   - Headers parameters: these are those described in :ref:`e-service-pdnd:e-service Usage`.
 
 ..note::
-  
   The Authentic Source, in addition to the checks described in :ref:`e-service-pdnd:e-service Usage`, SHOULD also check that the e-Service Id in the path corresponds to the e-Service Id referenced in the PDND Voucher.
 
 If the Pseudonymization Endpoint request is correctly processed, the e-Service will then respond with status code HTTP 200 OK and ``Content-Type`` set to ``application/jwt`` as described in :ref:`e-service-pdnd:e-service Usage`, with the body containing the following additional parameters:
@@ -106,50 +104,7 @@ If the Pseudonymization Endpoint request is correctly processed, the e-Service w
   * - **cryptoHashFunction**
     - REQUIRED. It MUST be the ``alg`` Identifier of the Cryptographic Hash Function; e.g., for SHA-256, the value MUST be ``sha-256``. 
 
-If any error occurs during the request parsing, the response MUST adhere to the error format defined in :rfc:`6749#section-5.2`. The response MUST use ``application/json`` as the content type and MUST include the following parameters:
-
-    - ``error``: The error code.
-    - ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
-
-.. code-block:: http
-    :caption: Non-normative example of an e-Service Error Response in case of other errors
-    :name: code_Usage_Endpoint_eService_Error_Cryptoendpt
-
-    HTTP/1.1 400 Bad Request
-    Content-Type: application/json
-
-    {
-        "error": "invalid_request",
-        "error_description": "The Agid-JWT-Signature header parameter is missing."
-    }
-
-
-The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
-
-.. list-table::
-  :class: longtable
-  :widths: 20 20 60
-  :header-rows: 1
-
-  * - **Status Code**
-    - **Error Code**
-    - **Description**
-  * - ``400 Bad Request``
-    - ``invalid_request``
-    - The request cannot be fulfilled because it is missing required parameters, contains invalid parameters, or is otherwise malformed [:rfc:`6750#section-3.1`].
-  * - ``400 Bad Request``
-    - ``invalid_dpop_proof``
-    - The request cannot be fulfilled because it contains an invalid *DPoP proof* [:rfc:`9449#section-5`].
-  * - ``401 Unauthorized``
-    - ``invalid_token``
-    - The request cannot be fulfilled because the Voucher is expired, revoked, or otherwise malformed [:rfc:`6750#section-3.1`].
-  * - ``500 Internal Server Error``
-    - ``server_error``
-    - The request cannot be fulfilled because the e-Service Endpoint encountered an internal problem.
-  * - ``503 Service Unavailable``
-    - ``temporarily_unavailable``
-    - The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
-
+If any error occurs during the request parsing, the response MUST adhere to the error format defined in :ref:`e-service-pdnd:e-Service Response`.
 The pseudonym of a subject with Tax Id Number ``tax_id`` is computed as:
 
 .. math::
