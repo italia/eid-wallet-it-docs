@@ -70,46 +70,10 @@ The Credential Issuer MUST implement the necessary logic to handle the polling o
   - the Signal Hub platform does not keep trak of the last ``signalId`` notified to a specific Credential Issuers. Thus each Credential Issuer MUST keep track of the last ``signalId`` it has received for each e-service ID;
   - the Signal Hub Pull endpoint returns Signals in batches of at most 100 Signals at a time, specifying if more signals are available for retrieval;  
 
-Endpoints
-^^^^^^^^^^^^^
+Signal Hub Endpoints
+^^^^^^^^^^^^^^^^^^^^^^
 
 This section describes the endpoints available for the Signal Hub Push and Pull services, including their functionalities and the expected request and response formats.
-
-Pseudonymization Endpoint
-""""""""""""""""""""""""""""""
-
-The Pseudonymization Endpoint is used by Credential Issuers to request Authentic Sources for the pseudonymization algorithm and salt used to compute each subject's pseudonym. 
-
-The Pseudonymization Endpoint MUST be a GET request with the following parameters:
-
-  - Path Parameters:
-    
-    - ``eserviceId``. REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-service Id value the Credential Issuer is a Consumer of.
-
-  - Headers parameters: these are those described in :ref:`e-service-pdnd:e-service Usage`.
-
-..note::
-  The Authentic Source, in addition to the checks described in :ref:`e-service-pdnd:e-service Usage`, SHOULD also check that the e-Service Id in the path corresponds to the e-Service Id referenced in the PDND Voucher.
-
-If the Pseudonymization Endpoint request is correctly processed, the e-Service will then respond with status code HTTP 200 OK and ``Content-Type`` set to ``application/jwt`` as described in :ref:`e-service-pdnd:e-service Usage`, with the body containing the following additional parameters:
-
-.. list-table::
-  :widths: 25 75
-  :header-rows: 1
-
-  * - **Name**
-    - **Description**
-  * - **salt**
-    - REQUIRED. The salt value used to generate Pseudonymized Identifiers.
-  * - **cryptoHashFunction**
-    - REQUIRED. It MUST be the ``alg`` Identifier of the Cryptographic Hash Function; e.g., for SHA-256, the value MUST be ``sha-256``. 
-
-If any error occurs during the request parsing, the response MUST adhere to the error format defined in :ref:`e-service-pdnd:e-Service Response`.
-The pseudonym of a subject with Tax Id Number ``tax_id`` is computed as:
-
-.. math::
-  pseudonym = hash(``tax_id``||``cryptoHashFunction``||``salt``)
-  where ``hash`` is the cryptographic hash function specified by the Authentic Source, and ``||`` denotes concatenation.
 
 Push Endpoint
 """"""""""""""""""

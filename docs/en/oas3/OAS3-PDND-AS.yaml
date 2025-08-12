@@ -206,8 +206,8 @@ paths:
               example:
                 error: "temporarily_unavailable"
                 error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
-  /v0.9.0/CryptographicInformations:
-    post:
+  /v0.9.0/CryptographicInformations{eserviceId}:
+    get:
       tags:
         - e-Services PDND
       summary: Get Cryptographic Informations
@@ -215,6 +215,13 @@ paths:
         This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential
       operationId: CryptographicInformations
       parameters:
+        - name: eserviceId
+          schema:
+            type: string
+            example: b1817321-0486-4c75-89e5-4ee297250418         
+          required: true
+          in: path
+          description: e-Service for which the pseudonymization algorithms is requested. It MUST correspond to the e-service Id value the Authentic Source is a Provider of.
         - name: Authorization
           in: header
           description: >-
