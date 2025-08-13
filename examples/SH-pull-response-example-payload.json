@@ -1,0 +1,25 @@
+{
+    "iss": "https://api.signalhub.interop.pagopa.it/1.0/pull/signals",
+    "aud": "9a8b7c6d-e5f4-g3h2-i1j0-klmnopqrstuv",
+    "exp": 1783401785,
+    "nbf": 1753401387,
+    "iat": 1753401256,
+    "jti": "997532e-871a-4969-9999-123456789abc",
+    "signals": [
+      {
+        "signalId": 1,
+        "objectType": "domicilio",
+        "objectId": "fec44ba9afc68492a387199c9faaaa5d954b19b39140637712a67cb90c726575",
+        "signalType": "UPDATE",
+        "eserviceId": "b1817321-0486-4c75-89e5-4ee297250418"
+      },
+      {
+        "signalId": 2,
+        "objectType": "-",
+        "objectId": "-",
+        "signalType": "SALTUPDATE",
+        "eserviceId": "b1817321-0486-4c75-89e5-4ee297250418"
+      }
+    ],
+    "lastSignalId": 2
+  }
