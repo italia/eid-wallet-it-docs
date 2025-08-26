@@ -212,7 +212,7 @@ paths:
         - e-Services PDND
       summary: Get Cryptographic Informations
       description: >-
-        This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential
+        This service provides the Credential Issuer with the pseudonymization algorithm and salt used to pseudonymize the Signal subject throughout the e-Services in Signal Hub.
       operationId: CryptographicInformations
       parameters:
         - name: eserviceId

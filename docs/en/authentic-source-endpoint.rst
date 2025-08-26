@@ -10,7 +10,7 @@ Authentic Source Endpoints
 e-Service PDND Authentic Source Catalogue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Public Authentic Sources MUST provide the following e-service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.
+Public Authentic Sources MUST provide the following e-Service through PDND to provide the Credential Issuer with User's attributes required to the issuance of a Digital Credential.
 
 .. only:: html
 
@@ -32,14 +32,14 @@ Get Attribute Claims
   :stub-columns: 1
 
   * - **Description**
-    - This service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential.
+    - This e-Service provides the Credential Issuer with all attribute claims necessary for the issuance of a Digital Credential.
   * - **Provider**
     - Authentic Source
   * - **Consumer**
     - Credential Issuer
 
-Pseudonymization Endpoint
-""""""""""""""""""""""""""""""
+Get Pseudonymization Algorithm
+""""""""""""""""""""""""""""""""
 
 .. _table_pseudonymization_endpoint_description:
 .. list-table::
@@ -48,7 +48,7 @@ Pseudonymization Endpoint
   :stub-columns: 1
 
   * - **Description**
-    - This service provides the Credential Issuer with the pseudonymization algorithm and salt used to compute each subject's pseudonym.
+    - This e-Service provides the Credential Issuer with the pseudonymization algorithm and salt used to compute each subject's pseudonym.
   * - **Provider**
     - Authentic Source
   * - **Consumer**
