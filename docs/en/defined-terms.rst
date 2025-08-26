@@ -234,7 +234,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       A PDND platform managed by the PDND Manager which enable collection and distribution of Signals. It consists of two PDND e-Services: Signal Collection and Signal Distribution.
 
     **Signal (Signal Hub)**
-      A Signal is a digital message containing information which is propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself. 
+      A digital signal propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself. 
 
     **Supervision Process**
       Process by a Supervisory Body to review and ensure proper functioning of the Wallet Provider and others.
