@@ -546,14 +546,14 @@ components:
               items: 
                 type: object
                 properties:
-                  source_data:
+                  dataId:
                     description: Unique identifier of the Dataset.
                     type: string
                     example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
                   additionalProperties:
                     type: string
-                required: [source_data]
-                example: '[{"source_data": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
+                required: [dataId]
+                example: '[{"dataId": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
           required: [iss, aud, exp, iat, jti]
     CredentialClaimsRequest:
       required:
@@ -563,6 +563,6 @@ components:
         object_id:
           type: string
           description: ID ANPR or Tax identification number
-        source_data:
+        dataId:
           type: string
           description: Unique identifier of the Credential dataset, if this parameter is present only the indicated dataset is returned
