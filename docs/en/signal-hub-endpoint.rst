@@ -71,16 +71,19 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **signalId**
     - REQUIRED. A positive 64 bit integer number referencing the identifier of the Signal in chronological order.
   * - **objectType**
-    - REQUIRED. Signal category. If the Authentic Source's e-Service is used by different Credential Issuers, this parameter MAY be used to distinguish the type of object the Signal refers to. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
+    - REQUIRED. REQUIRED. Digital Credential Type. The value of this parameter is the same as the ``credential_type`` value present in the Catalogue. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
   * - **objectId**
     - REQUIRED. The pseudonym to which the Signal is bound. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
   * - **SignalType**
     - REQUIRED. Signal Type. It MUST be one of the following: 
     
-      - ``UPDATE``, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;
+      - ``ATTRIBUTE_UPDATE``, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;
       - ``CREATE``, when the Signal refers to the availability of the attributes of a specific Digital Credential;
-      - ``DELETE``, when the Signal refers to the deletion of a specific attribute associated with a Digital Credential;
-      - ``SALTUPDATE``, when the Signal refers to a change in the pseudonymization algorithm' salt value used by the Authentic Source. 
+      - ``REVOKE``, when the Signal refers to the revocation of the attributes contained in the Digital Credential;
+      - ``SUSPEND``, when the Signal refers to the temporary suspension of the attributes contained in the Digital Credential;
+      - ``SALTUPDATE``, when the Signal refers to a change in the pseudonymization algorithm' salt value used by the Authentic Source.
+  * - **source_data**
+    - OPTIONAL. Authentic Source database identifier of the Digial Credential's attributes the Signal refers to.    
   * - **eserviceId**
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
 
@@ -197,15 +200,17 @@ Regardless of the response code used, the response MUST have ``Content-Type`` se
     - REQUIRED. JSON Array of JSON Objects containing the Signals transmitted by the Signal Distribution e-Service to the Credential Issuer. Each JSON Object MUST contain the following parameters:
     
       - **signalId**: REQUIRED. Integer corresponding to the identifier of the Signal in chronological order.
-      - **objectType**: REQUIRED. Signal category. If the  If the Authentic Source's e-Service is used by different Credential Issuers, this parameter MAY be used to distinguish the type of object the Signal refers to.
+      - **objectType**: REQUIRED. Digital Credential Type. The value of this parameter is the same as the ``credential_type`` value present in the Catalogue. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
       - **objectId**: REQUIRED. The pseudonym to which the Signal is bound.
       - **SignalType**: REQUIRED. Signal Type. It MUST be one of the following:
       
-        - ``UPDATE``, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;
+        - ``ATTRIBUTE_UPDATE``, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;
         - ``CREATE``, when the Signal refers to the availability of the attributes of a specific Digital Credential;
-        - ``DELETE``, when the Signal refers to the deletion of a specific attribute associated with a Digital Credential;
+        - ``REVOKE``, when the Signal refers to the revocation of the attributes contained in the Digital Credential;
+        - ``SUSPEND``, when the Signal refers to the temporary suspension of the attributes contained in the Digital Credential;
         - ``SALTUPDATE``, when the Signal refers to a change in the pseudonymization algorithm' salt value used by the Authentic Source.
       - **eserviceId**: REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the PDND is a Consumer of.
+      - **source_data**: OPTIONAL. Authentic Source database identifier of the Digial Credential's attributes the Signal refers to. 
   * - **lastsignalId**
     - REQUIRED. Integer corresponding to the ``signalId`` of the last Signal included in the Signal Distribution response by the Signal Distribution e-Service. If no Signals are available, this value must be ``null``.
 
@@ -244,10 +249,12 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
   - For each Signal, the Credential Issuer MUST check the ``objectId`` value:
     
-    - if the latter is ``-`` and the ``SignalType`` is ``SALTUPDATE``, it means that the Signal refers to a variation of the pseudonymization algorithm. It MUST immediately stop all Signal processing and request the updated information from the Authentic Source pseudonymization endpoint. Having obtained the updated cryptographic information, it MUST update its pseudonyms accordingly before proceeding with the processing of the remaining Signals.
+    - if the latter is ``-`` and the ``SignalType`` is ``SALTUPDATE``, it means that the Signal refers to a variation of the pseudonymization algorithm. It MUST immediately stop all Signal processing and request the updated information from the Authentic Source pseudonymization endpoint. After having obtained the updated cryptographic information, it MUST update all pseudonyms related to the Signal's ``eserviceId`` and ``objectType`` values. After completion of this operation, the Credential Issuer can proceed to process the remaining Signals.
     - if it is not ``-``, it means that the Signal refers to a change of status and/or value of a specific attribute associated with a Digital Credential or that the User's attributes of a specific Digital Credential are available. In each case, the Credential Issuer MUST check if the ``objectId`` corresponds to the pseudonym of a User with an on-going process with the Credential Issuer itself. If so,
       
       - if the Signal ``SignalType`` is ``UPDATE``, it means that the status and/or value of the attribute associated with a Digest Credential need updates; instead,
+      - if the Signal ``SignalType`` is ``REVOKE``, it means that the attributes contained in the Digital Credential have been revoked;
+      - if the Signal ``SignalType`` is ``SUSPEND``, it means that the attributes contained in the Digital Credential have been temporarily suspended;
       - if the Signal ``SignalType`` is ``CREATE``, it means that the requested attributes of a specific Digital Credential are now available; 
 
       in both cases the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information. 
