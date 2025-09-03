@@ -199,14 +199,14 @@
 <tr class="row-even"><td><p><strong>response_uris</strong></p></td>
 <td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_signed_response_alg</strong></p></td>
-<td><p>String representing the signing [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> algorithm that MUST be used for signing authorization responses. The algorithm &quot;<em>none</em>&quot; MUST NOT be used. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-odd"><td><p><strong>authorization_signing_alg_values_supported</strong></p></td>
+<td><p>JSON array containing the list of signing [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> algorithm that MUST be used for signing authorization responses. The algorithm &quot;<em>none</em>&quot; MUST NOT be used. See <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>authorization_encrypted_response_alg</strong></p></td>
-<td><p>Algorithm used to encrypt the authorization response. It specifies to the Wallet Instance the asymmetric encryption algorithm. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-even"><td><p><strong>authorization_encryption_alg_values_supported</strong></p></td>
+<td><p>JSON array containing a list of algorithm used to encrypt the authorization response. It specifies to the Wallet Instance the asymmetric encryption algorithms. See <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_encrypted_response_enc</strong></p></td>
-<td><p>Encryption algorithm used for the authorization response. It specifies to the Wallet Instance the symmetric encryption algorithm. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-odd"><td><p><strong>authorization_encryption_enc_values_supported</strong></p></td>
+<td><p>JSON array containing a list of encryption algorithm used for the authorization response. It specifies to the Wallet Instance the symmetric encryption algorithms. See <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
 <td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least &quot;<em>dc+sd-jwt</em>&quot;. The value associated with each name/value pair MUST be a JSON object &quot;<strong>sd-jwt_alg_values</strong>&quot; that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The <em>alg</em> JOSE header (as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) of the presented SD-JWT MUST match one of the array values. See also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Section 9.1.</p></td>
@@ -253,7 +253,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 31/07/2025.
+      Last updated on 03/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
