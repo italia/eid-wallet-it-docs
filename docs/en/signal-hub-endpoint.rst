@@ -82,7 +82,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
       - ``REVOKE``, when the Signal refers to the revocation of the attributes contained in the Digital Credential;
       - ``SUSPEND``, when the Signal refers to the temporary suspension of the attributes contained in the Digital Credential;
       - ``SALTUPDATE``, when the Signal refers to a change in the pseudonymization algorithm' salt value used by the Authentic Source.
-  * - **datasetId**
+  * - **dataId**
     - OPTIONAL. Authentic Source database identifier of the Digial Credential's attributes the Signal refers to. This parameter MUST be provided when the Signal refers to a set of multiple attributes in the Authentic Source system.   
   * - **eserviceId**
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
