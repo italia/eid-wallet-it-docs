@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Matrice dei Test per il Credential Issuer
 -----------------------------------------
 
@@ -77,7 +79,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_015a
     - Emissione, Sicurezza
     - Elaborazione dell’algoritmo nell’header del Request Object della PAR
-    - Il Credential Issuer utilizza l’algoritmo specificato nel parametro di header alg (RFC 9126/9101) per validare la firma del Request Object.
+    - Il Credential Issuer utilizza l’algoritmo specificato nel parametro di header alg (:rfc:`9126`/:rfc:`9101`) per validare la firma del Request Object.
   * - CI_015b
     - Emissione, Sicurezza
     - Recupero della Chiave Pubblica dalla Wallet Attestation nella PAR
@@ -105,7 +107,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_018
     - Emissione, Sicurezza
     - Validazione della Firma del Request Object nella PAR
-    - Il Credential Issuer valida correttamente la firma del Request Object utilizzando l’algoritmo del parametro alg e la chiave pubblica della Wallet Attestation (cnf.jwk, referenziata da kid), confermando l’integrità della firma (RFC 9126/9101).
+    - Il Credential Issuer valida correttamente la firma del Request Object utilizzando l’algoritmo del parametro alg e la chiave pubblica della Wallet Attestation (cnf.jwk, referenziata da kid), confermando l’integrità della firma (:rfc:`9126`/:rfc:`9101`).
   * - CI_019
     - Emissione, Sicurezza
     - Verifica di Conformità dell’Algoritmo nella PAR
@@ -117,19 +119,19 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_021
     - Emissione, Sicurezza
     - Corrispondenza Issuer-Client ID nella richiesta PAR
-    - Il Credential Issuer valida che il claim iss nel Request Object corrisponda al claim client_id nello stesso Request Object (RFC 9126/9101); discrepanze portano al rifiuto della richiesta.
+    - Il Credential Issuer valida che il claim iss nel Request Object corrisponda al claim client_id nello stesso Request Object (:rfc:`9126`/:rfc:`9101`); discrepanze portano al rifiuto della richiesta.
   * - CI_022
     - Emissione, Sicurezza
     - Verifica dell’Audience Claim nella PAR
-    - Il Credential Issuer conferma che il claim aud nel Request Object sia uguale al proprio identificativo (RFC 9126/9101); valori errati comportano il rifiuto immediato.
+    - Il Credential Issuer conferma che il claim aud nel Request Object sia uguale al proprio identificativo (:rfc:`9126`/:rfc:`9101`); valori errati comportano il rifiuto immediato.
   * - CI_023
     - Emissione, Sicurezza
     - Rifiuto del parametro Request URI nella PAR
-    - Il Credential Issuer rileva e rifiuta qualsiasi richiesta PAR contenente il parametro request_uri (RFC 9126), restituendo un errore che segnala il parametro non supportato.
+    - Il Credential Issuer rileva e rifiuta qualsiasi richiesta PAR contenente il parametro request_uri (:rfc:`9126`), restituendo un errore che segnala il parametro non supportato.
   * - CI_024
     - Emissione, Sicurezza
     - Validazione dei Parametri Obbligatori nella PAR
-    - Il Credential Issuer verifica la presenza di tutti i parametri HTTP obbligatori nel Request Object e valida i loro valori rispetto alle specifiche di tabella definite (RFC 9126); parametri mancanti o non validi causano risposte di errore strutturate.
+    - Il Credential Issuer verifica la presenza di tutti i parametri HTTP obbligatori nel Request Object e valida i loro valori rispetto alle specifiche di tabella definite (:rfc:`9126`); parametri mancanti o non validi causano risposte di errore strutturate.
   * - CI_025
     - Emissione, Sicurezza
     - Controllo della Scadenza del Token nella PAR
@@ -141,7 +143,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_026a
     - Emissione, Sicurezza
     - Rifiuto Consigliato per Tempo di Emissione Token nella PAR
-    - Il Credential Issuer rifiuta richieste in cui iat è superiore a più di 5 minuti dal tempo corrente (RFC 9126); violazioni temporali generano errori "invalid_request".
+    - Il Credential Issuer rifiuta richieste in cui iat è superiore a più di 5 minuti dal tempo corrente (:rfc:`9126`); violazioni temporali generano errori "invalid_request".
   * - CI_027
     - Emissione, Sicurezza
     - Prevenzione di Replay Attack nella PAR
@@ -213,7 +215,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_044
     - Emissione, Interoperabilità
     - Struttura JSON della risposta PAR
-    - Il corpo del messaggio di risposta HTTP utilizza il tipo media application/json (RFC 8259) e include i parametri richiesti di livello superiore.
+    - Il corpo del messaggio di risposta HTTP utilizza il tipo media application/json (:rfc:`8259`) e include i parametri richiesti di livello superiore.
   * - CI_044a
     - Emissione, Sicurezza
     - Parametro request_uri nella risposta PAR
@@ -225,7 +227,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_045
     - Emissione, Interoperabilità
     - Tabella dei codici di stato HTTP per la risposta PAR
-    - Quando l’elaborazione della richiesta PAR incontra errori, il Credential Issuer risponde come definito in RFC 9126, secondo i codici di stato HTTP.
+    - Quando l’elaborazione della richiesta PAR incontra errori, il Credential Issuer risponde come definito in :rfc:`9126`, secondo i codici di stato HTTP.
   * - CI_046
     - Emissione, Sicurezza e Privacy
     - Verifica dell’identità dell’utente durante la richiesta di autorizzazione
@@ -237,15 +239,15 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_048
     - Emissione, Sicurezza
     - Tolleranza opzionale per richieste duplicate nella richiesta di autorizzazione
-    - Il Credential Issuer consente richieste duplicate quando derivano da ricaricamento o aggiornamento del user-agent da parte dell’utente (derivato da RFC 9126).
+    - Il Credential Issuer consente richieste duplicate quando derivano da ricaricamento o aggiornamento del user-agent da parte dell’utente (derivato da :rfc:`9126`).
   * - CI_049
     - Emissione, Sicurezza
     - Identificazione della richiesta PAR nella richiesta di autorizzazione
-    - Il Credential Issuer identifica e correla con successo ogni richiesta di autorizzazione come risultato diretto di una PAR precedentemente inviata (derivato da RFC 9126).
+    - Il Credential Issuer identifica e correla con successo ogni richiesta di autorizzazione come risultato diretto di una PAR precedentemente inviata (derivato da :rfc:`9126`).
   * - CI_050
     - Emissione, Sicurezza
     - Obbligatorietà del parametro request_uri nella richiesta di autorizzazione
-    - Il Credential Issuer rifiuta tutte le richieste di autorizzazione che non contengono il parametro request_uri, poiché la PAR è l’unico metodo per trasmettere richieste di autorizzazione dall’istanza del Wallet (derivato da RFC 9126).
+    - Il Credential Issuer rifiuta tutte le richieste di autorizzazione che non contengono il parametro request_uri, poiché la PAR è l’unico metodo per trasmettere richieste di autorizzazione dall’istanza del Wallet (derivato da :rfc:`9126`).
   * - CI_051
     - Emissione, Sicurezza
     - Autenticazione ad alto livello CieID
@@ -297,19 +299,19 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_060
     - Emissione, Sicurezza
     - Verifica dell’emissione del codice di autorizzazione nella richiesta di token
-    - Il Credential Issuer garantisce che il codice di autorizzazione sia emesso all’istanza del Wallet autenticata (RFC 6749) e che non sia stato riutilizzato.
+    - Il Credential Issuer garantisce che il codice di autorizzazione sia emesso all’istanza del Wallet autenticata (:rfc:`6749`) e che non sia stato riutilizzato.
   * - CI_061
     - Emissione, Sicurezza
     - Verifica di validità e utilizzo del Codice di Autorizzazione nella Richiesta di Token
-    - Il Credential Issuer verifica che il codice di autorizzazione sia valido e non sia stato precedentemente utilizzato (RFC 6749).
+    - Il Credential Issuer verifica che il codice di autorizzazione sia valido e non sia stato precedentemente utilizzato (:rfc:`6749`).
   * - CI_062
     - Emissione, Sicurezza
     - Validazione della corrispondenza del Redirect URI nella Richiesta di Token
-    - Il Credential Issuer conferma che il redirect_uri corrisponda esattamente al valore incluso nel precedente Request Object (vedi Sezione 3.1.3.1 di [OIDC]).
+    - Il Credential Issuer conferma che il redirect_uri corrisponda esattamente al valore incluso nel precedente Request Object (vedi Sezione 3.1.3.1 di [`OIDC`_]).
   * - CI_063
     - Emissione, Sicurezza
     - Validazione del DPoP Proof JWT nella Richiesta di Token
-    - Il Credential Issuer valida correttamente il DPoP Proof JWT secondo la Sezione 4.3 di (RFC 9449).
+    - Il Credential Issuer valida correttamente il DPoP Proof JWT secondo la Sezione 4.3 di (:rfc:`9449`).
   * - CI_064
     - Emissione, Interoperabilità
     - Fornitura dell’Access Token nella risposta di Token
@@ -325,7 +327,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_067
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per le risposte di Token
-    - In caso di errori durante la validazione della Richiesta di Token, l’Authorization Server restituisce una risposta di errore come definito in RFC 6749, in accordo con la Tabella dei Codici di Stato HTTP.
+    - In caso di errori durante la validazione della Richiesta di Token, l’Authorization Server restituisce una risposta di errore come definito in :rfc:`6749`, in accordo con la Tabella dei Codici di Stato HTTP.
   * - CI_068
     - Emissione, Interoperabilità
     - Fornitura di c_nonce
@@ -389,11 +391,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_082
     - Emissione, Sicurezza
     - Validazione del DPoP JWT Proof e dell’Access Token nella Risposta di Credenziale
-    - Il Credential Issuer valida correttamente il DPoP JWT Proof secondo le procedure della Sezione 4.3 di (RFC 9449) e conferma che l’Access Token sia valido e idoneo per la Credenziale richiesta.
+    - Il Credential Issuer valida correttamente il DPoP JWT Proof secondo le procedure della Sezione 4.3 di (:rfc:`9449`) e conferma che l’Access Token sia valido e idoneo per la Credenziale richiesta.
   * - CI_083
     - Emissione, Sicurezza
     - Validazione della prova di possesso del materiale crittografico nella Risposta di Credenziale
-    - Il Credential Issuer valida la prova di possesso della chiave alla quale sarà vincolata la nuova Credenziale, secondo la Sezione 8.2.2 di OpenID4VCI.
+    - Il Credential Issuer valida la prova di possesso della chiave alla quale sarà vincolata la nuova Credenziale, secondo la Sezione 8.2.2 di `OpenID4VCI`_.
   * - CI_084
     - Emissione, Sicurezza
     - Creazione e Binding della Credenziale nella Risposta
@@ -405,7 +407,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_085
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per la Risposta di Credenziale
-    - Quando la Richiesta di Credenziale non contiene un Access Token valido, il Credential Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [RFC 6750], in accordo con la Tabella dei Codici di Stato HTTP.
+    - Quando la Richiesta di Credenziale non contiene un Access Token valido, il Credential Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la Tabella dei Codici di Stato HTTP.
   * - CI_086
     - Emissione, Interoperabilità
     - Notification ID unificato per operazioni batch
@@ -413,7 +415,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_087
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per la Risposta di Notifica
-    - Quando la Richiesta di Notifica non contiene un Access Token valido, il Notification Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [RFC 6750], in accordo con la Tabella dei Codici di Stato HTTP.
+    - Quando la Richiesta di Notifica non contiene un Access Token valido, il Notification Endpoint restituisce una risposta di errore come definito nella Sezione 3 di [:rfc:`6750`], in accordo con la Tabella dei Codici di Stato HTTP.
   * - CI_088
     - Emissione, Sicurezza
     - Restrizione dello scope dell’Access Token
@@ -437,11 +439,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_091
     - Emissione, Interoperabilità
     - Validazione dell’OAuth Client Attestation PoP per il Refresh
-    - Il Credential Issuer valida correttamente il parametro OAuth-Client-Attestation-PoP secondo la Sezione 4 di [OAUTH-ATTESTATION-CLIENT-AUTH].
+    - Il Credential Issuer valida correttamente il parametro OAuth-Client-Attestation-PoP secondo la Sezione 4 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * - CI_092
     - Emissione, Sicurezza
     - Validazione del DPoP Proof JWT per il Refresh
-    - Il Credential Issuer valida il DPoP Proof JWT secondo la Sezione 4.3 di (RFC 9449).
+    - Il Credential Issuer valida il DPoP Proof JWT secondo la Sezione 4.3 di (:rfc:`9449`).
   * - CI_093
     - Emissione, Sicurezza
     - Controllo di validità e binding del Refresh Token
@@ -473,7 +475,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_100
     - Emissione, Sicurezza
     - Binding crittografico dei Refresh Token
-    - Gli Authorization Server vincolano crittograficamente i Refresh Token al Wallet Instance secondo le specifiche di RFC 9449.
+    - Gli Authorization Server vincolano crittograficamente i Refresh Token al Wallet Instance secondo le specifiche di :rfc:`9449`.
   * - CI_101
     - Emissione, Sicurezza
     - Coerenza di binding della chiave DPoP tra Refresh e Access Token
@@ -489,7 +491,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_104
     - Emissione, Sicurezza
     - Gestione della durata di utilizzo del Refresh Token
-    - I Credential Issuer gestiscono e limitano la durata per cui i Refresh Token possono essere utilizzati per aggiornare le Credenziali, prima di richiedere il riavvio completo del processo di emissione (OPENID4VC-HAIP).
+    - I Credential Issuer gestiscono e limitano la durata per cui i Refresh Token possono essere utilizzati per aggiornare le Credenziali, prima di richiedere il riavvio completo del processo di emissione (`OPENID4VC-HAIP`_).
   * - CI_105
     - Emissione, Sicurezza
     - Allineamento raccomandato delle date di scadenza nelle Credenziali riemesse

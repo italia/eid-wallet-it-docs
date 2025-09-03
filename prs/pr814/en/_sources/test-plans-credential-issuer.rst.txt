@@ -1,3 +1,5 @@
+.. include:: ../common/common_definitions.rst
+
 Credential Issuer Test Matrix
 ---------------------------------
 
@@ -149,7 +151,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_028
     - Issuance, Security, Interoperability
     - OAuth Client Attestation PoP Validation
-    - .Credential Issuer successfully validates the OAuth-Client-Attestation-PoP parameter according to Section 4 of [OAUTH-ATTESTATION-CLIENT-AUTH], confirming proof-of-possession and rejecting invalid attestations with detailed error responses.
+    - .Credential Issuer successfully validates the OAuth-Client-Attestation-PoP parameter according to Section 4 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_], confirming proof-of-possession and rejecting invalid attestations with detailed error responses.
   * - CI_029
     - Issuance, Trust
     - Wallet Instance Trustworthiness Verification
@@ -305,7 +307,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_062
     - Issuance, Security
     - Redirect URI Matching Validation of the Token Request
-    - Credential Issuer confirms the redirect_uri exactly matches the value included in the previous Request Object (see Section 3.1.3.1. of [OIDC]).
+    - Credential Issuer confirms the redirect_uri exactly matches the value included in the previous Request Object (see Section 3.1.3.1. of [`OIDC`_]).
   * - CI_063
     - Issuance, Security
     - DPoP Proof JWT Validation of the Token Request
