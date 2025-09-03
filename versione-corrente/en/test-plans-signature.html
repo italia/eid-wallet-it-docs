@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15.4. Test Plans &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
+    <title>15.4.1.1. Signature Evaluation Test Matrix &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="15.4.1.1. Signature Evaluation Test Matrix" href="test-plans-signature.html" />
-    <link rel="prev" title="15.3. Template e-Service PDND" href="e-service-pdnd-template.html" /> 
+    <link rel="next" title="15.4.1.2. Trust Evaluation Test Matrix" href="test-plans-trust.html" />
+    <link rel="prev" title="15.4. Test Plans" href="test-plans.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -148,8 +148,8 @@
 <li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">15.1. Mobile Application Instance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">15.4. Test Plans</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">15.4.1.1. Signature Evaluation Test Matrix</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">15.4. Test Plans</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.4.1.1. Signature Evaluation Test Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">15.4.1.2. Trust Evaluation Test Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-wallet.html">15.4.1.3. Wallet Solution Test Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">15.4.1.4. Credential Issuer Test Matrix</a></li>
@@ -176,48 +176,101 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="test-plans">
-<h1><span class="section-number">15.4. </span>Test Plans<a class="headerlink" href="#test-plans" title="Link to this heading">¶</a></h1>
-<p>The purpose of the test plans is to support implementers, auditors, and conformance test environments in validating the behavior of the Wallet Solutions, Relying Parties and Credential Issuers under various operational and security scenarios.</p>
-<p>All test cases are derived from normative rules defined in the above specifications, with no assumptions or extensions.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please note that the test plans matrix may be subject to future changes.</p>
-</div>
-<section id="structure-of-the-test-matrix">
-<h2><span class="section-number">15.4.1. </span>Structure of the Test Matrix<a class="headerlink" href="#structure-of-the-test-matrix" title="Link to this heading">¶</a></h2>
-<p>Each test case is identified by a unique test ID (e.g., WS-001) and categorized using the functional domains defined below. Other category identifiers can be used as well.</p>
-<ul class="simple">
-<li><p><strong>Discovery</strong></p></li>
-<li><p><strong>Security</strong></p></li>
-<li><p><strong>Privacy</strong></p></li>
-<li><p><strong>Authorization</strong></p></li>
-<li><p><strong>Authentication</strong></p></li>
-<li><p><strong>User Experience</strong></p></li>
-<li><p><strong>Credential Issuance</strong></p></li>
-<li><p><strong>Credential Presentation</strong></p></li>
-<li><p><strong>Credential Status</strong></p></li>
-<li><p><strong>Backup &amp; Restore</strong></p></li>
-</ul>
-<p>For each test case, the table specifies:</p>
-<ul class="simple">
-<li><p><strong>Test Case ID</strong>: a unique identifier.</p></li>
-<li><p><strong>Purpose</strong>: the functional area covered by the test.</p></li>
-<li><p><strong>Description</strong>: the requirement being tested, always based on a normative MUST from the specification.</p></li>
-<li><p><strong>Expected Result</strong>: the expected outcome when the solution is implemented correctly.</p></li>
-</ul>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Test Plans by Context</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="test-plans-signature.html">15.4.1.1. Signature Evaluation Test Matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans-trust.html">15.4.1.2. Trust Evaluation Test Matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans-wallet.html">15.4.1.3. Wallet Solution Test Matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans-credential-issuer.html">15.4.1.4. Credential Issuer Test Matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans-remote-presentation.html">15.4.1.5. Remote Credential Presentation Test Matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-plans-proximity-presentation.html">15.4.1.6. Proximity Credential Presentation Test Matrix</a></li>
-</ul>
-</div>
-</section>
+  <section id="signature-evaluation-test-matrix">
+<h1><span class="section-number">15.4.1.1. </span>Signature Evaluation Test Matrix<a class="headerlink" href="#signature-evaluation-test-matrix" title="Link to this heading">¶</a></h1>
+<p>This section provides the common set of test cases for Wallet Solutions, Relying Parties and Credential Issuers evaluating any signed statements, be these assertions, requests, attestation or Credentials.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Test Case ID</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Expected Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATT-001</p></td>
+<td><p>Discovery, Security</p></td>
+<td><p>Evaluation of the issuer</p></td>
+<td><p>Entities evaluating signed statements establish trust with the issuer and assess its compliance. Undiscoverable Issuers within the federation or unlinkable to any known Trust Anchor, halt any protocol communications.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-002</p></td>
+<td><p>Discovery, Security</p></td>
+<td><p>Evaluation of the signature</p></td>
+<td><p>Entities evaluate signed statements by verifying the signature with the issuer's cryptographic material, provided it is trusted through a well-known Trust Anchor. Any untrusted cryptographic material or invalid signatures halt protocol communications.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-003</p></td>
+<td><p>Algorithm Verification</p></td>
+<td><p>Verify that the algorithm specified in the header matches the one used for cryptographic operations.</p></td>
+<td><p>The algorithm in the header must match the cryptographic operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-004</p></td>
+<td><p>Appropriate Algorithms</p></td>
+<td><p>Ensure only cryptographically current algorithms are used.</p></td>
+<td><p>Only approved algorithms are accepted; deprecated ones are rejected.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-005</p></td>
+<td><p>Signature Validation</p></td>
+<td><p>Validate all cryptographic operations and reject if any fail.</p></td>
+<td><p>All signatures must be valid; any failure results in rejection.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-006</p></td>
+<td><p>Key Entropy</p></td>
+<td><p>Ensure cryptographic keys have sufficient entropy.</p></td>
+<td><p>Keys must meet entropy requirements; weak keys are rejected.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-007</p></td>
+<td><p>Issuer Validation</p></td>
+<td><p>Validate that the cryptographic keys belong to the issuer.</p></td>
+<td><p>Keys must be verified as belonging to the issuer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-008</p></td>
+<td><p>Audience Validation</p></td>
+<td><p>Validate the audience claim to ensure the token is used by the intended party.</p></td>
+<td><p>Audience claim must match the intended recipient.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-009</p></td>
+<td><p>Claim Trust</p></td>
+<td><p>Do not trust received claims without validation.</p></td>
+<td><p>Claims must be validated; untrusted claims are rejected.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-010</p></td>
+<td><p>Explicit Typing</p></td>
+<td><p>Use explicit typing to prevent COSE/JOSE confusion.</p></td>
+<td><p>Typing must be explicit and validated.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-011</p></td>
+<td><p>Cross-JWT Confusion</p></td>
+<td><p>Prevent COSE/JOSE from being used in unintended contexts.</p></td>
+<td><p>COSE/JOSE must be contextually validated to prevent misuse.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-012</p></td>
+<td><p>Substitution Attacks</p></td>
+<td><p>Ensure COSE/JOSE are not substituted across different contexts.</p></td>
+<td><p>COSE/JOSE must be validated for context-specific use.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-013</p></td>
+<td><p>Issued At Validation</p></td>
+<td><p>Verify that the <cite>issued at</cite> parameter is set to the current time, allowing a grace period not exceeding 120 seconds.</p></td>
+<td><p>The <cite>issued at</cite> value must be within 120 seconds of the current time.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATT-014</p></td>
+<td><p>Expiration Validation</p></td>
+<td><p>Ensure the <cite>expiration</cite> time is greater than the <cite>issued at</cite> time.</p></td>
+<td><p>The <cite>expiration</cite> time must be later than the <cite>issued at</cite> time.</p></td>
+</tr>
+<tr class="row-even"><td><p>ATT-015</p></td>
+<td><p>Data Model validation</p></td>
+<td><p>Ensure JOSE/COSE type matches with the defined data model.</p></td>
+<td><p>The parameters or claims, their values and the schema used to represent them are compliant with the data model.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 
 
@@ -226,23 +279,6 @@
         </div>
       </div>
     
-        <div id="show_right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&lt;</span><span>Page contents</span></a></p>
-        </div>
-
-        <div id="right_sidebar">
-            <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
-            <div class="page_toc">
-                <ul>
-<li><a class="reference internal" href="#">15.4. Test Plans</a><ul>
-<li><a class="reference internal" href="#structure-of-the-test-matrix">15.4.1. Structure of the Test Matrix</a></li>
-</ul>
-</li>
-</ul>
-
-            </div>
-        </div>
-    
 
       <div class="clearer"></div>
     </div>
@@ -250,14 +286,14 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="e-service-pdnd-template.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">15.3. </span>Template e-Service PDND</span></a>
+                <a href="test-plans.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15.4. </span>Test Plans</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="test-plans-signature.html"><span><span class="section-number">15.4.1.1. </span>Signature Evaluation Test Matrix</span><span class="icon">&gt;</span></a>
+                    <a href="test-plans-trust.html"><span><span class="section-number">15.4.1.2. </span>Trust Evaluation Test Matrix</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>

@@ -18,7 +18,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="5.3.1. Requisiti della Soluzione di Relying Party" href="relying-party-requirements.html" />
+    <link rel="next" title="5.3.1. App di Verifica" href="relying-party-instance.html" />
     <link rel="prev" title="5.2. Soluzione del Fornitore di Attestati Elettronici" href="credential-issuer-solution.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -139,12 +139,11 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">5.1. Soluzione Wallet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. Soluzione di Relying Party</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-requirements.html">5.3.1. Requisiti della Soluzione di Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.2. App di Verifica</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">5.3.3. App di Verifica Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">5.3.4. App di Verifica Web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Entity Configuration Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.6. Metadati della Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">5.3.1. App di Verifica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">5.3.2. App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">5.3.3. App di Verifica Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.4. Entity Configuration Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.5. Metadati della Relying Party</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Fonti Autentiche</a></li>
@@ -199,37 +198,36 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Indice dei Contenuti della Soluzione di Relying Party</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-requirements.html">5.3.1. Requisiti della Soluzione di Relying Party</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-instance.html">5.3.2. App di Verifica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">5.3.3. App di Verifica Mobile</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#ciclo-di-vita-app-di-verifica-mobile">5.3.3.1. Ciclo di Vita App di Verifica Mobile</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-installed">5.3.3.1.1. Transizione a Installed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-verified">5.3.3.1.2. Transizione a Verified</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-unverified">5.3.3.1.3. Transizione a Unverified</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-uninstalled">5.3.3.1.4. Transizione a Uninstalled</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-instance.html">5.3.1. App di Verifica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">5.3.2. App di Verifica Mobile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#ciclo-di-vita-app-di-verifica-mobile">5.3.2.1. Ciclo di Vita App di Verifica Mobile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-installed">5.3.2.1.1. Transizione a Installed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-verified">5.3.2.1.2. Transizione a Verified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-unverified">5.3.2.1.3. Transizione a Unverified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#transizione-a-uninstalled">5.3.2.1.4. Transizione a Uninstalled</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#funzionalita-dell-app-di-verifica-mobile">5.3.3.2. Funzionalità dell'App di Verifica Mobile</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#registrazione-app-di-verifica-mobile">5.3.3.2.1. Registrazione App di Verifica Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#riemissione-de-certificato-di-accesso-app-di-verifica-mobile">5.3.3.2.2. Riemissione de Certificato di Accesso App di Verifica Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#revoca-app-di-verifica-mobile">5.3.3.2.3. Revoca App di Verifica Mobile</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">5.3.4. App di Verifica Web</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#funzionalita-dell-app-di-verifica-web">5.3.4.1. Funzionalità dell'App di Verifica Web</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#registrazione-revoca-app-di-verifica-web">5.3.4.1.1. Registrazione Revoca App di Verifica Web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#revoca-app-di-verifica-web">5.3.4.1.2. Revoca App di Verifica Web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#funzionalita-dell-app-di-verifica-mobile">5.3.2.2. Funzionalità dell'App di Verifica Mobile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#registrazione-app-di-verifica-mobile">5.3.2.2.1. Registrazione App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#riemissione-de-certificato-di-accesso-app-di-verifica-mobile">5.3.2.2.2. Riemissione de Certificato di Accesso App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#revoca-app-di-verifica-mobile">5.3.2.2.3. Revoca App di Verifica Mobile</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Entity Configuration Relying Party</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-di-una-relying-party">5.3.5.1. Entity Configuration di una Relying Party</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">5.3.3. App di Verifica Web</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#funzionalita-dell-app-di-verifica-web">5.3.3.1. Funzionalità dell'App di Verifica Web</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#registrazione-revoca-app-di-verifica-web">5.3.3.1.1. Registrazione Revoca App di Verifica Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#revoca-app-di-verifica-web">5.3.3.1.2. Revoca App di Verifica Web</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-metadata.html">5.3.6. Metadati della Relying Party</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.4. Entity Configuration Relying Party</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-di-una-relying-party">5.3.4.1. Entity Configuration di una Relying Party</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-metadata.html">5.3.5. Metadati della Relying Party</a></li>
 </ul>
 </div>
 </section>
@@ -254,7 +252,7 @@
 
             <div class="right">
                 
-                    <a href="relying-party-requirements.html"><span><span class="section-number">5.3.1. </span>Requisiti della Soluzione di Relying Party</span><span class="icon">&gt;</span></a>
+                    <a href="relying-party-instance.html"><span><span class="section-number">5.3.1. </span>App di Verifica</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
