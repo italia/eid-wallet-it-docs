@@ -49,6 +49,8 @@ I Metadata *oauth_authorization_server* DEVONO contenere i seguenti parametri.
     - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati dal *token endpoint* per la firma sul JWT utilizzato per autenticare il client al *token endpoint*. Vedi :rfc:`8414#section-2`.
   * - **request_object_signing_alg_values_supported**
     - Array JSON contenente un elenco degli algoritmi di firma ("valori *alg*") supportati per i *Request Objects*. Vedi `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
+  * - **dpop_signing_alg_values_supported**
+    - Array JSON contenente un elenco degli algoritmi di firma (valori "*alg*") supportati per i JWT DPoP proof. Vedi :rfc:`9449`.
   * - **jwks**
     - JSON Web Key Set contenente le chiavi crittografiche per '*authorization server*. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
 
