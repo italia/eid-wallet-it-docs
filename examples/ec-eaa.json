@@ -687,15 +687,15 @@
                 "ES384",
                 "ES512"
             ],
-            "authorization_signed_response_alg": [
+            "authorization_signing_alg_values_supported": [
                 "ES256",
                 "ES384",
                 "ES512"
             ],
-            "authorization_encrypted_response_alg": [
+            "authorization_encryption_alg_values_supported": [
                 "RSA-OAEP-256"
             ],
-            "authorization_encrypted_response_enc": [
+            "authorization_encryption_enc_values_supported": [
                 "A128CBC-HS256",
                 "A192CBC-HS384",
                 "A256CBC-HS512",

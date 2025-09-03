@@ -72,3 +72,4 @@
 .. _Wallet Instance Functionalities: wallet-solution.html#wallet-instance-functionalities
 .. _Wallet Instance Initialization and Registration: wallet-solution.html#wallet-instance-initialization-and-registration
 .. _Wallet Provider metadata: wallet-solution.html#wallet-provider-metadata
+.. _OIDC-RP-Metadata: https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html
