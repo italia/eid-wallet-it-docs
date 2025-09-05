@@ -101,7 +101,7 @@ A (Q)EAA changes from **Issued** or **Valid** states to **Suspended** state when
 The (Q)EAA remains **Suspended** until it is restored to the **Issued** or **Valid** state (**(Q)EAA UNSUSP**) depending on the previous state, i.e.
 the conditions leading to its suspension are resolved, or it changes in **Revoked**, **Expired** or it is deleted. The suspension of a (Q)EAA MAY be:
 
-  * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST notify through Signal Hub the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA.
+  * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST use Signal Hub to notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA.
   * Explicitly requested by the User.
 
 
