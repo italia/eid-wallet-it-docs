@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.3.2. Relying Party Instance &#8212; IT-Wallet Technical Documentation - PR #812</title>
+    <title>5.3.1. Relying Party Instance &#8212; IT-Wallet Technical Documentation - PR #812</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5.3.5. Relying Party Entity Configuration" href="relying-party-entity-configuration.html" />
-    <link rel="prev" title="5.3.1. Relying Party Solution Requirements" href="relying-party-requirements.html" /> 
+    <link rel="next" title="5.3.4. Relying Party Entity Configuration" href="relying-party-entity-configuration.html" />
+    <link rel="prev" title="5.3. Relying Party Solution" href="relying-party-solution.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -138,12 +138,11 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">5.1. Wallet Solution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Credential Issuer Solution</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">5.3. Relying Party Solution</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="relying-party-requirements.html">5.3.1. Relying Party Solution Requirements</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">5.3.2. Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mobile-relying-party-instance">5.3.3. Mobile Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#web-relying-party-instance">5.3.4. Web Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.5. Relying Party Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.6. Relying Party Metadata</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.3.1. Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mobile-relying-party-instance">5.3.2. Mobile Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#web-relying-party-instance">5.3.3. Web Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.4. Relying Party Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">5.3.5. Relying Party Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Authentic Sources</a></li>
@@ -171,7 +170,7 @@
           <div class="body" role="main">
             
   <section id="relying-party-instance">
-<h1><span class="section-number">5.3.2. </span>Relying Party Instance<a class="headerlink" href="#relying-party-instance" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">5.3.1. </span>Relying Party Instance<a class="headerlink" href="#relying-party-instance" title="Link to this heading">¶</a></h1>
 <p>The Relying Party Instance (RPI) is a mobile or embedded application designed to request, receive, and process Digital Credentials from Wallet Instances in a trusted manner. Each RPI ensures the integrity, confidentiality and authenticity of Credential exchanges, enabling secure interactions between Users and Relying Parties.</p>
 <p>There are two primary types of Relying Party Instances, each serving different operational environments:</p>
 <ul class="simple">
@@ -190,10 +189,10 @@
 <p>Further technical and operational details are discussed in the following sections.</p>
 </section>
 <section id="mobile-relying-party-instance">
-<h1><span class="section-number">5.3.3. </span>Mobile Relying Party Instance<a class="headerlink" href="#mobile-relying-party-instance" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">5.3.2. </span>Mobile Relying Party Instance<a class="headerlink" href="#mobile-relying-party-instance" title="Link to this heading">¶</a></h1>
 <p>A Mobile Relying Party Instance's lifecycle includes four main states: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong>, and <strong>Uninstalled</strong>, supporting functionalities such as registration, Access Certificate reissuance, and revocation.</p>
 <section id="mobile-relying-party-instance-lifecycle">
-<h2><span class="section-number">5.3.3.1. </span>Mobile Relying Party Instance Lifecycle<a class="headerlink" href="#mobile-relying-party-instance-lifecycle" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.3.2.1. </span>Mobile Relying Party Instance Lifecycle<a class="headerlink" href="#mobile-relying-party-instance-lifecycle" title="Link to this heading">¶</a></h2>
 <p>In this section, state machines are presented to explain the Mobile Relying Party Instance states, as well as their transitions and relations.</p>
 <figure class="align-default" id="id1">
 <span id="fig-relyingparty-instance-mobile-lifecycle"></span><p class="plantuml">
@@ -207,7 +206,7 @@
 </figure>
 <p>As shown in <a class="reference internal" href="#fig-relyingparty-instance-mobile-lifecycle"><span class="std std-numref">Fig. 5.11</span></a>, the Mobile Relying Party Instance has four distinct states: <strong>Installed</strong>, <strong>Unverified</strong>, <strong>Verified</strong>, and <strong>Uninstalled</strong>. Each state represents a specific functional status and determines the actions that can be performed.</p>
 <section id="transition-to-installed">
-<h3><span class="section-number">5.3.3.1.1. </span>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2.1.1. </span>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h3>
 <p>The state machine begins with the Relying Party Instance installation (<strong>RPI INST</strong> transition), where Users download and install a Relying Party Instance using the official app store of their device's operating system, leading to the <strong>Installed</strong> state.</p>
 <p>While in this state, the Relying Party Instance MUST interact only with the Relying Party Backend to be registered (i.e., to verify the Instance integrity, register Hardware Cryptographic Keys and obtain an Access Certificate).</p>
 <p>When the revocation of the Relying Party Instance occurs (<strong>RPI REV</strong> transition), the Relying Party Instance MUST get back from <strong>Verified</strong> to <strong>Installed</strong>. This transition implies the following operations:</p>
@@ -225,7 +224,7 @@
 <p>In addition, each Relying Party SHOULD set an amount of time (grace period) during which the Relying Party Instance can request presentations of Digital Credentials by authenticating itself towards a Wallet Instance using an expired Access Certificate. After this period, the Relying Party Instance MUST be de-registered (<strong>RPI DEREG</strong> transition) and go back to the <strong>Installed</strong> state. This transition implies that the Hardware Cryptographic Keys MUST be deleted.</p>
 </section>
 <section id="transition-to-verified">
-<h3><span class="section-number">5.3.3.1.2. </span>Transition to Verified<a class="headerlink" href="#transition-to-verified" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2.1.2. </span>Transition to Verified<a class="headerlink" href="#transition-to-verified" title="Link to this heading">¶</a></h3>
 <p>The Relying Party Instance needs to obtain a proper Access Certificate, which will be used to authenticate itself towards Wallet Instances. This Certificate is obtained by interacting with the Relying Party Backend, which in turns communicates with the Relying Party Instance Access Certificate Authority. Specifically, the registration transition (<strong>RPI REG</strong>) consists of the following subphases, leading to the <strong>Verified</strong> state:</p>
 <ol class="arabic simple">
 <li><p><strong>Initialization</strong>: After verification of the Relying Party Instance integrity, it registers a pair of Hardware Cryptographic Keys.</p></li>
@@ -235,17 +234,17 @@
 <p>While in this state, the Relying Party Instance can request the presentation of Digital Credentials to Wallet Instances (<strong>PID/(Q)EAA PRE</strong>), using the Access Certificate to authenticate itself.</p>
 </section>
 <section id="transition-to-unverified">
-<h3><span class="section-number">5.3.3.1.3. </span>Transition to Unverified<a class="headerlink" href="#transition-to-unverified" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2.1.3. </span>Transition to Unverified<a class="headerlink" href="#transition-to-unverified" title="Link to this heading">¶</a></h3>
 <p>The expiration of the Access Certificate (<strong>CERT EXP</strong> transition) leads to the <strong>Unverified</strong> state.</p>
 <p>While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label <strong>PID/(Q)EAA PRE</strong>. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered.</p>
 </section>
 <section id="transition-to-uninstalled">
-<h3><span class="section-number">5.3.3.1.4. </span>Transition to Uninstalled<a class="headerlink" href="#transition-to-uninstalled" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2.1.4. </span>Transition to Uninstalled<a class="headerlink" href="#transition-to-uninstalled" title="Link to this heading">¶</a></h3>
 <p>Across the <strong>Installed</strong>, <strong>Verified</strong> and <strong>Unverified</strong> states, the Relying Party Instance can be removed entirely through the Relying Party Instance uninstall (<strong>RPI UNINST</strong>) transition, leading to the <strong>Uninstalled</strong> state. If a Relying Party Instance is <strong>Uninstalled</strong>, it ends its lifecycle.</p>
 </section>
 </section>
 <section id="mobile-relying-party-instance-functionalities">
-<h2><span class="section-number">5.3.3.2. </span>Mobile Relying Party Instance Functionalities<a class="headerlink" href="#mobile-relying-party-instance-functionalities" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.3.2.2. </span>Mobile Relying Party Instance Functionalities<a class="headerlink" href="#mobile-relying-party-instance-functionalities" title="Link to this heading">¶</a></h2>
 <p>A Mobile Relying Party Instance MUST support three fundamental functionalities: <strong>Registration</strong>, <strong>Access Certificate Reissuance</strong>, and <strong>Revocation</strong>. Each functionality is described in detail in the following sections.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -256,7 +255,7 @@
 <p>The details provided below are non-normative and are intended to clarify the functionalities of the Mobile Relying Party Instance. The actual implementation may vary based on the specific use case and requirements of the Relying Party.</p>
 </div>
 <section id="mobile-relying-party-instance-registration">
-<h3><span class="section-number">5.3.3.2.1. </span>Mobile Relying Party Instance Registration<a class="headerlink" href="#mobile-relying-party-instance-registration" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2.2.1. </span>Mobile Relying Party Instance Registration<a class="headerlink" href="#mobile-relying-party-instance-registration" title="Link to this heading">¶</a></h3>
 <p>This process allows for the registration of a Relying Party Instance with the Relying Party Backend, and the issuance of an Access Certificate that will be used for authentication purposes towards Wallet Instances during presentation flows. The process consists of two subphases:</p>
 <ol class="arabic simple">
 <li><p><strong>Initialization</strong>: The Relying Party Instance requests a security and integrity assertion from the OS manufacturer, which also binds a long-lived key pair stored in a proper secure storage within the device itself; the assertion is then validated by the Relying Party Backend. Further details are provided in Section <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance"><span class="std std-ref">Mobile Application Instance</span></a>.</p></li>
@@ -336,11 +335,11 @@
 <p><strong>Steps 20-21:</strong> The Relying Party Backend sends the Access Certificate (as part of the <a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-response"><span class="std std-ref">Relying Party Access Certificate Response</span></a>) to the Mobile Relying Party Instance, which stores it for future authentication towards Wallet Instances.</p>
 </section>
 <section id="mobile-relying-party-instance-access-certificate-reissuance">
-<h3><span class="section-number">5.3.3.2.2. </span>Mobile Relying Party Instance Access Certificate Reissuance<a class="headerlink" href="#mobile-relying-party-instance-access-certificate-reissuance" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2.2.2. </span>Mobile Relying Party Instance Access Certificate Reissuance<a class="headerlink" href="#mobile-relying-party-instance-access-certificate-reissuance" title="Link to this heading">¶</a></h3>
 <p>The issuance of a new Access Certificate follows the same flow described in the <a class="reference internal" href="#mobile-relying-party-instance-registration"><span class="std std-ref">Mobile Relying Party Instance Registration</span></a> section for <strong>Access Certificate Issuance</strong>. Those certificates MAY be issued as short-lived (typically valid within 24 hours) or long-lived.</p>
 </section>
 <section id="mobile-relying-party-instance-revocation">
-<h3><span class="section-number">5.3.3.2.3. </span>Mobile Relying Party Instance Revocation<a class="headerlink" href="#mobile-relying-party-instance-revocation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.2.2.3. </span>Mobile Relying Party Instance Revocation<a class="headerlink" href="#mobile-relying-party-instance-revocation" title="Link to this heading">¶</a></h3>
 <p>Relying Parties MUST periodically verify the Relying Party Instance's authenticity and security.
 When security issues are detected, Relying Parties MUST revoke the Relying Party Instance, revoking its X.509 Access Certificate (in case of long-lived certificates), and in any case, Relying Parties MUST NOT allow the re-issue of certificates.
 As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Access Certificates validity.</p>
@@ -349,13 +348,13 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
 </section>
 </section>
 <section id="web-relying-party-instance">
-<h1><span class="section-number">5.3.4. </span>Web Relying Party Instance<a class="headerlink" href="#web-relying-party-instance" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">5.3.3. </span>Web Relying Party Instance<a class="headerlink" href="#web-relying-party-instance" title="Link to this heading">¶</a></h1>
 <p>Web Instances operates server-side security controls that safely store secrets and cryptographic keys in a controlled environment. Web Instances MUST be registered with the Trust Anchor or Intermediary Entities, according to <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p>
 <section id="web-relying-party-instance-functionalities">
-<h2><span class="section-number">5.3.4.1. </span>Web Relying Party Instance Functionalities<a class="headerlink" href="#web-relying-party-instance-functionalities" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">5.3.3.1. </span>Web Relying Party Instance Functionalities<a class="headerlink" href="#web-relying-party-instance-functionalities" title="Link to this heading">¶</a></h2>
 <p>A Web Relying Party Instance MUST support two fundamental functionalities: <strong>Registration</strong> and <strong>Revocation</strong>. Each functionality is described in the following sections.</p>
 <section id="web-relying-party-instance-registration">
-<h3><span class="section-number">5.3.4.1.1. </span>Web Relying Party Instance Registration<a class="headerlink" href="#web-relying-party-instance-registration" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.3.1.1. </span>Web Relying Party Instance Registration<a class="headerlink" href="#web-relying-party-instance-registration" title="Link to this heading">¶</a></h3>
 <p>Web Relying Party Instances, as confidential clients, are registered directly with the Trust Anchor or an Intermediary Entity. The registration involves:</p>
 <ul class="simple">
 <li><p>The Relying Party MUST register its Web Instance with the Trust Anchor or Intermediary.</p></li>
@@ -365,7 +364,7 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
 </ul>
 </section>
 <section id="web-relying-party-instance-revocation">
-<h3><span class="section-number">5.3.4.1.2. </span>Web Relying Party Instance Revocation<a class="headerlink" href="#web-relying-party-instance-revocation" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">5.3.3.1.2. </span>Web Relying Party Instance Revocation<a class="headerlink" href="#web-relying-party-instance-revocation" title="Link to this heading">¶</a></h3>
 <p>When a Web Relying Party Instance needs to be revoked:</p>
 <ul class="simple">
 <li><p>The revocation MUST be performed according to the Trust Framework procedures.</p></li>
@@ -391,27 +390,27 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">5.3.2. Relying Party Instance</a></li>
-<li><a class="reference internal" href="#mobile-relying-party-instance">5.3.3. Mobile Relying Party Instance</a><ul>
-<li><a class="reference internal" href="#mobile-relying-party-instance-lifecycle">5.3.3.1. Mobile Relying Party Instance Lifecycle</a><ul>
-<li><a class="reference internal" href="#transition-to-installed">5.3.3.1.1. Transition to Installed</a></li>
-<li><a class="reference internal" href="#transition-to-verified">5.3.3.1.2. Transition to Verified</a></li>
-<li><a class="reference internal" href="#transition-to-unverified">5.3.3.1.3. Transition to Unverified</a></li>
-<li><a class="reference internal" href="#transition-to-uninstalled">5.3.3.1.4. Transition to Uninstalled</a></li>
+<li><a class="reference internal" href="#">5.3.1. Relying Party Instance</a></li>
+<li><a class="reference internal" href="#mobile-relying-party-instance">5.3.2. Mobile Relying Party Instance</a><ul>
+<li><a class="reference internal" href="#mobile-relying-party-instance-lifecycle">5.3.2.1. Mobile Relying Party Instance Lifecycle</a><ul>
+<li><a class="reference internal" href="#transition-to-installed">5.3.2.1.1. Transition to Installed</a></li>
+<li><a class="reference internal" href="#transition-to-verified">5.3.2.1.2. Transition to Verified</a></li>
+<li><a class="reference internal" href="#transition-to-unverified">5.3.2.1.3. Transition to Unverified</a></li>
+<li><a class="reference internal" href="#transition-to-uninstalled">5.3.2.1.4. Transition to Uninstalled</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#mobile-relying-party-instance-functionalities">5.3.3.2. Mobile Relying Party Instance Functionalities</a><ul>
-<li><a class="reference internal" href="#mobile-relying-party-instance-registration">5.3.3.2.1. Mobile Relying Party Instance Registration</a></li>
-<li><a class="reference internal" href="#mobile-relying-party-instance-access-certificate-reissuance">5.3.3.2.2. Mobile Relying Party Instance Access Certificate Reissuance</a></li>
-<li><a class="reference internal" href="#mobile-relying-party-instance-revocation">5.3.3.2.3. Mobile Relying Party Instance Revocation</a></li>
+<li><a class="reference internal" href="#mobile-relying-party-instance-functionalities">5.3.2.2. Mobile Relying Party Instance Functionalities</a><ul>
+<li><a class="reference internal" href="#mobile-relying-party-instance-registration">5.3.2.2.1. Mobile Relying Party Instance Registration</a></li>
+<li><a class="reference internal" href="#mobile-relying-party-instance-access-certificate-reissuance">5.3.2.2.2. Mobile Relying Party Instance Access Certificate Reissuance</a></li>
+<li><a class="reference internal" href="#mobile-relying-party-instance-revocation">5.3.2.2.3. Mobile Relying Party Instance Revocation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#web-relying-party-instance">5.3.4. Web Relying Party Instance</a><ul>
-<li><a class="reference internal" href="#web-relying-party-instance-functionalities">5.3.4.1. Web Relying Party Instance Functionalities</a><ul>
-<li><a class="reference internal" href="#web-relying-party-instance-registration">5.3.4.1.1. Web Relying Party Instance Registration</a></li>
-<li><a class="reference internal" href="#web-relying-party-instance-revocation">5.3.4.1.2. Web Relying Party Instance Revocation</a></li>
+<li><a class="reference internal" href="#web-relying-party-instance">5.3.3. Web Relying Party Instance</a><ul>
+<li><a class="reference internal" href="#web-relying-party-instance-functionalities">5.3.3.1. Web Relying Party Instance Functionalities</a><ul>
+<li><a class="reference internal" href="#web-relying-party-instance-registration">5.3.3.1.1. Web Relying Party Instance Registration</a></li>
+<li><a class="reference internal" href="#web-relying-party-instance-revocation">5.3.3.1.2. Web Relying Party Instance Revocation</a></li>
 </ul>
 </li>
 </ul>
@@ -428,14 +427,14 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
         <div class="button_nav">
             <div class="left">
                 
-                <a href="relying-party-requirements.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">5.3.1. </span>Relying Party Solution Requirements</span></a>
+                <a href="relying-party-solution.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">5.3. </span>Relying Party Solution</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="relying-party-entity-configuration.html"><span><span class="section-number">5.3.5. </span>Relying Party Entity Configuration</span><span class="icon">&gt;</span></a>
+                    <a href="relying-party-entity-configuration.html"><span><span class="section-number">5.3.4. </span>Relying Party Entity Configuration</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -443,7 +442,7 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 03/09/2025.
+      Last updated on 05/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

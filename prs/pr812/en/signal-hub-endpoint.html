@@ -221,7 +221,7 @@
 <li><p>notify the Credential Issuer of the availability of the attributes related to a specific Digital Credential which a User requested in its Wallet.</p></li>
 </ul>
 </div></blockquote>
-<p>The last case happens whenever the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint), but the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.</p>
+<p>The last case happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.</p>
 <p>The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application-json</span></code>, whose header MUST have the parameters described in <a class="reference internal" href="e-service-pdnd.html#e-service-usage"><span class="std std-ref">e-Service Usage</span></a> and whose body MUST contain the following parameters:</p>
 <table class="docutils align-default" id="table-signal-deposit-request-parameters">
 <colgroup>
@@ -337,7 +337,7 @@
 <li><p>check for variations in the pseudonymization algorithm used by the Authentic Source.</p></li>
 </ul>
 </div></blockquote>
-<p>The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST be a GET request and MUST have</p>
+<p>The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST be a GET request and MUST have the following parameters set:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Path Parameters:</p>
@@ -364,7 +364,7 @@
 <p>If the Signal Distribution request is correctly processed, the e-Service will then respond with status code</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>HTTP 200 OK if the request is correctly formed and there are no more Signals to request,</p></li>
+<li><p>HTTP 200 OK if the request is correctly formed and there are no more Signals to request;</p></li>
 <li><p>HTTP 206 OK if the request is correctly formed but there are more Signals to request.</p></li>
 </ul>
 </div></blockquote>
@@ -480,7 +480,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When the Credential Issuer requests the credential attributes by invoking the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source, it already possesses all information to generate the pseudonym of the Digital Credential' subject. Therefore, to be able to use the Signal Hub, it SHOULD immediately calculate and store the subject's pseudonym, using the same pseudonymization algorithm and salt given by the Authentic Source pseudonymization endpoint.</p>
+<p>When the Credential Issuer requests the Credential attributes by invoking the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source, it already possesses all information to generate the pseudonym of the Digital Credential' subject. Therefore, to be able to use the Signal Hub, it SHOULD immediately calculate and store the subject's pseudonym, using the same pseudonymization algorithm and salt given by the Authentic Source pseudonymization endpoint.</p>
 </div>
 </section>
 </section>
@@ -536,7 +536,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 03/09/2025.
+      Last updated on 05/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

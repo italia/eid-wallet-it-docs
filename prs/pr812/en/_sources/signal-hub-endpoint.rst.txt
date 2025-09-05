@@ -57,7 +57,7 @@ Authentic Sources in the IT Wallet ecosystem use the Signal Collection e-Service
   - notify the Credential Issuer of a variation in the pseudonymization algorithm;
   - notify the Credential Issuer of the availability of the attributes related to a specific Digital Credential which a User requested in its Wallet. 
   
-The last case happens whenever the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint), but the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.
+The last case happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.
 
 The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with ``Content-Type`` set to ``application-json``, whose header MUST have the parameters described in :ref:`e-Service-pdnd:e-Service Usage` and whose body MUST contain the following parameters:
 
@@ -159,7 +159,7 @@ Credential Issuers in the IT Wallet ecosystem use the Signal Distribution e-Serv
   - check for the availability of attributes related to a Digital Credential requested by a User;
   - check for variations in the pseudonymization algorithm used by the Authentic Source.
 
-The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST be a GET request and MUST have 
+The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST be a GET request and MUST have the following parameters set:
 
   - Path Parameters: 
     
@@ -184,7 +184,7 @@ Below it is provided a non normative example of a Signal Distribution request by
 
 If the Signal Distribution request is correctly processed, the e-Service will then respond with status code
 
- - HTTP 200 OK if the request is correctly formed and there are no more Signals to request,
+ - HTTP 200 OK if the request is correctly formed and there are no more Signals to request;
  - HTTP 206 OK if the request is correctly formed but there are more Signals to request.
 
 Regardless of the response code used, the response MUST have ``Content-Type`` set to ``application/jwt`` with the header and body containing the parameters described in :ref:`e-Service-pdnd:e-Service Response` with the addition of the body parameters:
@@ -262,5 +262,5 @@ After the Signals have been successfully recovered by the Credential Issuer, the
     If the ``objectId`` does not correspond to any pseudonym of a User with an on-going process with the Credential Issuer, the Signal MUST be ignored. When the Signal has been processed, the Credential Issuer will either move to the next Signal or, if there are no more Signals to process, update its ``signalId`` counter and resume the Pull cycle.
 
 .. note::
-  When the Credential Issuer requests the credential attributes by invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source, it already possesses all information to generate the pseudonym of the Digital Credential' subject. Therefore, to be able to use the Signal Hub, it SHOULD immediately calculate and store the subject's pseudonym, using the same pseudonymization algorithm and salt given by the Authentic Source pseudonymization endpoint.
+  When the Credential Issuer requests the Credential attributes by invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source, it already possesses all information to generate the pseudonym of the Digital Credential' subject. Therefore, to be able to use the Signal Hub, it SHOULD immediately calculate and store the subject's pseudonym, using the same pseudonymization algorithm and salt given by the Authentic Source pseudonymization endpoint.
 

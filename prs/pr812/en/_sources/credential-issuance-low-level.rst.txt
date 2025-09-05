@@ -39,7 +39,7 @@ In addition, the Credential Issuers MAY support:
 .. note::
     **Standard or Batch Credential Issuance:** 
       
-    The User can configure the Wallet Solution to issue Digital Credentials in either batch or standard mode and define the prefered batch size.
+    The User can configure the Wallet Solution to issue Digital Credentials in either batch or standard mode and define the preferred batch size.
 
 The entire Issuance flow can be divided into two sub-flows:
 
@@ -212,7 +212,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
     1. It MUST check the Authorization Response contains all the defined parameters according to :ref:`Table of the HTTP Response parameters <table_http_response_claim>`.
     2. It MUST check the returned value by the Credential Issuer for ``state`` parameter is equal to the value sent by Wallet Instance in the Request Object (:rfc:`6749`).
-    3. It MUST check that the URL of Credential Issuer in ``iss`` parameter is equal to the URL identifier of intended Credential Issuer that the Wallet Instance start the communication with (:rfc:`9027`).
+    3. It MUST check that the URL of Credential Issuer in ``iss`` parameter is equal to the URL identifier of intended Credential Issuer that the Wallet Instance starts the communication with (:rfc:`9027`).
 
 .. note::
     The Wallet Instance redirect URI is a universal or app link registered with the local operating system, so this latter will resolve it and pass the response to the Wallet Instance.
@@ -532,8 +532,8 @@ A non-normative example of the token request for a DPoP Access Token using a Ref
 
 **Step 3**: The Credential Issuer validates the request according to the following checks:
 
-  - It MUST validate the OAuth-Client-Attestation-PoP parameter based on Section 4 of [OAUTH-ATTESTATION-CLIENT-AUTH].
-  - It MUST validate the DPoP Proof JWT, according to (RFC 9449) Section 4.3.
+  - It MUST validate the OAuth-Client-Attestation-PoP parameter based on Section 4 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
+  - It MUST validate the DPoP Proof JWT, according to (:RFC:`9449`) Section 4.3.
   - It MUST check that the Refresh Token is not expired, not revoked and is bound to the same set of DPoP key as the ones used in the DPoP Proof JWT.
 
 If the request checks are successful, the Credential Issuer generates a new Access Token and a new Refresh Token and these MUST be both bound to the DPoP key. Both the Access Token and the Refresh Token are then sent back to the Wallet Instance.
@@ -626,7 +626,7 @@ Otherwise, the Wallet Instance MUST check the related Access Tokens. If they are
 **Step 4**: The Wallet Instance MUST use a valid DPoP Access Token to retrieve the new Digital Credential requesting it to the Credential endpoint following the steps from 12 to 22 of Figure 9 in Section :ref:`credential-issuance-low-level:Low-Level Issuance Flow`. When the new Digital Credential is successfully stored in the secure storage, the Wallet Instance MUST delete the previous one.
 
 .. note::
-  Regardless of the Digital Credental revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. 
+  Regardless of the Digital Credential revocation mechanism supported, if either the Digital Credential status is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) or ``credential_status_detail.state`` is set to ``ATTRIBUTE_UPDATE`` (using OAuth Status List revocation) the User's attribute set, in the refreshed Digital Credential, doesn't match the one in the stored Digital Credential. In this case, the Wallet Instance MUST request the User's authorization to store the new refreshed Digital Credential. 
   
   If instead, either the Digital Credential status is set to ``UPDATE``(using OAuth Status List revocation) or ``credential_status_detail.state`` set to ``UPDATE`` (using OAuth Status List revocation) the ``credential_status_detail.state`` is set to ``UPDATE``, only the Credential metadata parameters have changed. In this case, the Wallet Instance SHOULD store the new Digital Credential without requiring explicit user authorization and consent.
 
