@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>15.4.1.5. Remote Credential Presentation Test Matrix &#8212; IT-Wallet Technical Documentation - PR #819</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
+    <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="15.4.1.6. Proximity Credential Presentation Test Matrix" href="test-plans-proximity-presentation.html" />
+    <link rel="prev" title="15.4.1.4. Credential Issuer Test Matrix" href="test-plans-credential-issuer.html" /> 
+  </head><body data-dark_mode_code_blocks="true">
+
+<div id="top_nav">
+    
+
+    <nav>
+        
+            
+        
+
+        <p id="toggle_sidebar">
+            <a href="#" title="Toggle sidebar">|||</a>
+        </p>
+        <h1><a href="index.html" title="Go to homepage">IT-Wallet Technical Documentation - PR #819</a></h1>
+            <a id="source_link" href="https://github.com/italia/eudi-wallet-it-docs">
+    
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path fill="white" d="M 244.8,8 C 106.1,8 0,113.3 0,252 c 0,110.9 69.8,205.8 169.5,239.2 12.8,2.3 17.3,-5.6 17.3,-12.1 0,-6.2 -0.3,-40.4 -0.3,-61.4 0,0 -70,15 -84.7,-29.8 0,0 -11.4,-29.1 -27.8,-36.6 0,0 -22.9,-15.7 1.6,-15.4 0,0 24.9,2 38.6,25.8 21.9,38.6 58.6,27.5 72.9,20.9 2.3,-16 8.8,-27.1 16,-33.7 -55.9,-6.2 -112.3,-14.3 -112.3,-110.5 0,-27.5 7.6,-41.3 23.6,-58.9 -2.6,-6.5 -11.1,-33.3 2.6,-67.9 20.9,-6.5 69,27 69,27 20,-5.6 41.5,-8.5 62.8,-8.5 21.3,0 42.8,2.9 62.8,8.5 0,0 48.1,-33.6 69,-27 13.7,34.7 5.2,61.4 2.6,67.9 16,17.7 25.8,31.5 25.8,58.9 0,96.5 -58.9,104.2 -114.8,110.5 9.2,7.9 17,22.9 17,46.4 0,33.7 -0.3,75.4 -0.3,83.6 0,6.5 4.6,14.4 17.3,12.1 C 428.2,457.8 496,362.9 496,252 496,113.3 383.5,8 244.8,8 Z"/>
+        </svg>
+    
+</a>
+        
+
+        <a id="mode_toggle" href="#" @click.prevent="handleClick" :title="mode">
+    <template v-if="mode == 'light'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_light"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M67.48,18.073c1.913,-1.912 1.913,-5.018 0,-6.931c-1.912,-1.912 -5.018,-1.912 -6.931,0l-6.798,6.799c-1.912,1.912 -1.912,5.018 0,6.931c1.913,1.912 5.018,1.912 6.931,-0l6.798,-6.799Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.728,61.108c1.912,-1.913 1.912,-5.018 -0,-6.931c-1.913,-1.913 -5.019,-1.913 -6.931,-0l-6.799,6.798c-1.912,1.913 -1.912,5.019 0,6.931c1.913,1.913 5.019,1.913 6.931,0l6.799,-6.798Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.682,54.177c-1.913,-1.913 -5.018,-1.913 -6.931,-0c-1.912,1.913 -1.912,5.018 0,6.931l6.798,6.798c1.913,1.913 5.019,1.913 6.931,0c1.913,-1.912 1.913,-5.018 0,-6.931l-6.798,-6.798Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M4.901,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901l-0,9.614c-0,2.705 2.196,4.901 4.9,4.901c2.705,-0 4.901,-2.196 4.901,-4.901l0,-9.614Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M18.929,11.142c-1.912,-1.912 -5.018,-1.912 -6.931,0c-1.912,1.913 -1.912,5.019 0,6.931l6.799,6.799c1.912,1.912 5.018,1.912 6.931,-0c1.912,-1.913 1.912,-5.019 -0,-6.931l-6.799,-6.799Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.108,34.623c-2.705,0 -4.901,2.196 -4.901,4.901c-0,2.705 2.196,4.901 4.901,4.901l9.614,0c2.705,0 4.901,-2.196 4.901,-4.901c-0,-2.705 -2.196,-4.901 -4.901,-4.901l-9.614,0Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'dark'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_dark"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><circle cx="39.311" cy="39.524" r="15.734" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.212,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.901,2.196 -4.901,4.901c0,2.705 2.197,4.901 4.901,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.662,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.989,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.732,61.103c1.91,-1.91 1.91,-5.011 0,-6.921l-0.009,-0.01c-1.91,-1.91 -5.012,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.909,1.91 5.011,1.91 6.92,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.672,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.52,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l-0,-0.01c-0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.212,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.901,2.196 -4.901,4.901c0,2.704 2.197,4.9 4.901,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.73,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 -0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.098,34.623c-2.699,0 -4.891,2.192 -4.891,4.892l-0,0.019c-0,2.699 2.192,4.891 4.891,4.891c2.7,0 4.892,-2.192 4.892,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.892,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+
+    <template v-if="mode == 'darkest'">
+        <svg width="100%" height="100%" viewBox="0 0 79 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="mode_darkest"><rect id="Bounds" x="0" y="-0" width="78.623" height="79.049" style="fill:none;"/><path d="M39.315,23.791c8.684,-0 15.734,7.05 15.734,15.733c0,8.684 -7.05,15.734 -15.734,15.734c-8.683,0 -15.733,-7.05 -15.733,-15.734c-0,-8.683 7.05,-15.733 15.733,-15.733Zm0,4.737c6.069,0 10.997,4.927 10.997,10.996c-0,6.069 -4.928,10.996 -10.997,10.996c-6.068,0 -10.996,-4.927 -10.996,-10.996c0,-6.069 4.928,-10.996 10.996,-10.996Z" style="fill:#fff;"/><g id="beams"><g id="beam"><path id="beam1" serif:id="beam" d="M44.216,14.515c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,0 -4.9,2.196 -4.9,4.901c-0,2.705 2.196,4.901 4.9,4.901c2.705,0 4.901,-2.196 4.901,-4.901Z" style="fill:#fff;"/></g><g id="beam2" serif:id="beam"><path id="beam3" serif:id="beam" d="M60.666,24.892c1.902,-1.902 1.902,-4.99 0,-6.892l-0.04,-0.039c-1.901,-1.902 -4.989,-1.902 -6.891,-0c-1.901,1.901 -1.901,4.989 0,6.891l0.04,0.04c1.902,1.901 4.99,1.901 6.891,-0Z" style="fill:#fff;"/></g><g id="beam4" serif:id="beam"><path id="beam5" serif:id="beam" d="M25.737,61.103c1.909,-1.91 1.909,-5.011 -0,-6.921l-0.01,-0.01c-1.91,-1.91 -5.011,-1.91 -6.921,-0c-1.91,1.91 -1.91,5.011 -0,6.921l0.01,0.01c1.91,1.91 5.011,1.91 6.921,-0Z" style="fill:#fff;"/></g><g id="beam6" serif:id="beam"><path id="beam7" serif:id="beam" d="M60.676,54.167c-1.907,-1.907 -5.004,-1.907 -6.911,0l-0.02,0.02c-1.907,1.907 -1.907,5.004 0,6.911c1.907,1.907 5.004,1.907 6.911,-0l0.02,-0.02c1.907,-1.907 1.907,-5.004 0,-6.911Z" style="fill:#fff;"/></g><g id="beam8" serif:id="beam"><path id="beam9" serif:id="beam" d="M14.524,34.623c-2.702,0 -4.896,2.194 -4.896,4.896l0,0.01c0,2.702 2.194,4.896 4.896,4.896c2.702,0 4.896,-2.194 4.896,-4.896l0,-0.01c0,-2.702 -2.194,-4.896 -4.896,-4.896Z" style="fill:#fff;"/></g><g id="beam10" serif:id="beam"><path id="beam11" serif:id="beam" d="M44.216,64.534c0,-2.705 -2.196,-4.901 -4.901,-4.901c-2.704,-0 -4.9,2.196 -4.9,4.901c-0,2.704 2.196,4.9 4.9,4.9c2.705,0 4.901,-2.196 4.901,-4.9Z" style="fill:#fff;"/></g><g id="beam12" serif:id="beam"><path id="beam13" serif:id="beam" d="M25.734,17.943c-1.911,-1.911 -5.015,-1.911 -6.926,0l-0.005,0.005c-1.911,1.911 -1.911,5.015 0,6.926c1.911,1.911 5.015,1.911 6.926,0l0.005,-0.005c1.911,-1.911 1.911,-5.014 0,-6.926Z" style="fill:#fff;"/></g><g id="beam14" serif:id="beam"><path id="beam15" serif:id="beam" d="M64.103,34.623c-2.7,0 -4.892,2.192 -4.892,4.892l-0,0.019c-0,2.699 2.192,4.891 4.892,4.891c2.699,0 4.891,-2.192 4.891,-4.891l0,-0.019c0,-2.7 -2.192,-4.892 -4.891,-4.892Z" style="fill:#fff;"/></g></g></g></svg>
+    </template>
+</a>
+
+<script>
+(function() {
+    const LOCAL_STORAGE_KEY = 'piccoloThemeMode'
+
+    var initialMode = localStorage.getItem(LOCAL_STORAGE_KEY)
+
+    if (initialMode) {
+        // Make sure the value in local storage is valid
+        if (['light', 'dark', 'darkest'].indexOf(initialMode) == -1) {
+            initialMode = 'light'
+            localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+        }
+    } else {
+        // Check if the client prefers dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            initialMode = 'dark'
+        } else {
+            initialMode = 'light'
+        }
+        localStorage.setItem(LOCAL_STORAGE_KEY, initialMode)
+    }
+
+    document.documentElement.dataset.mode = initialMode
+
+    PetiteVue.createApp({
+        'mode': initialMode,
+        handleClick() {
+            let currentMode = this.mode
+
+            if (currentMode == 'light') {
+                this.mode = 'dark'
+            } else if (currentMode == 'dark') {
+                this.mode = 'darkest'
+            } else if (currentMode == 'darkest') {
+                this.mode = 'light'
+            }
+
+            document.documentElement.dataset.mode = this.mode
+            localStorage.setItem(LOCAL_STORAGE_KEY, this.mode)
+
+            console.log(this.mode)
+        }
+    }).mount('#mode_toggle')
+})()
+</script>
+            <p class="mobile_search_link">
+                <a href="search.html" title="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                        <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
+                    </svg>
+                </a>
+            </p>
+        
+
+        <div class="searchbox_wrapper">
+            
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">15. Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">15.1. Mobile Application Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">15.2. e-Service PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">15.3. Template e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">15.4. Test Plans</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">15.4.1.1. Signature Evaluation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">15.4.1.2. Trust Evaluation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet.html">15.4.1.3. Wallet Solution Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">15.4.1.4. Credential Issuer Test Matrix</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.4.1.5. Remote Credential Presentation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-proximity-presentation.html">15.4.1.6. Proximity Credential Presentation Test Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">15.5. Credential Issuer PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">15.6. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-parameters">15.7. Template Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-instantiation">15.8. Template Instantiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#authentic-source-pdnd-openapi-specification">15.9. Authentic Source PDND OpenAPI Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">15.10. Wallet Provider PDND OpenAPI Specification</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="remote-credential-presentation-test-matrix">
+<h1><span class="section-number">15.4.1.5. </span>Remote Credential Presentation Test Matrix<a class="headerlink" href="#remote-credential-presentation-test-matrix" title="Link to this heading">¶</a></h1>
+<p>This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Verifiers solutions for remote flows. It is also intended for assessment bodies inspecting and validating the implementations of Credential Verifiers solutions for remote flows.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>References about official OpenID4VP test plans will update this section in future releases.</p>
+</div>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Test Case ID</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Expected Result</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RPR-01</p></td>
+<td><p>Same Device Flow</p></td>
+<td><p>Verify HTTP redirect (302) URL.</p></td>
+<td><p>Wallet Instance receives correct URL.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-02</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Verify QR Code generation for Wallet Instance.</p></td>
+<td><p>Wallet Instance scans QR Code successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-03</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Verify QR Code contains correct URL parameters.</p></td>
+<td><p>Wallet Instance retrieves URL with parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-04</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Test QR Code scanning in low light.</p></td>
+<td><p>QR Code is scanned successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-05</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Verify QR Code error correction level.</p></td>
+<td><p>QR Code remains readable if damaged.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-06</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Test QR Code scanning with different devices.</p></td>
+<td><p>QR Code is scanned successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-07</p></td>
+<td><p>Request URI Method</p></td>
+<td><p>Test <cite>request_uri_method</cite> as <cite>post</cite>.</p></td>
+<td><p>Wallet Instance sends metadata via POST.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-08</p></td>
+<td><p>Request URI Method</p></td>
+<td><p>Test <cite>request_uri_method</cite> as <cite>get</cite>.</p></td>
+<td><p>Wallet Instance fetches Request Object via GET.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-09</p></td>
+<td><p>Request URI Method</p></td>
+<td><p>Test absence of <cite>request_uri_method</cite>.</p></td>
+<td><p>Wallet Instance defaults to GET method.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-10</p></td>
+<td><p>Metadata</p></td>
+<td><p>Verify parameters match openid credential verifier metadata.</p></td>
+<td><p>Only allowed parameters will be considered.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-11</p></td>
+<td><p>User Consent</p></td>
+<td><p>Test eligibility of a credential verifier in requesting user attributes.</p></td>
+<td><p>User can modify data selection about optional attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-12</p></td>
+<td><p>Authorization Response</p></td>
+<td><p>Test sending of Presentation Response.</p></td>
+<td><p>Relying Party receives and validates response with state and nonce.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-13</p></td>
+<td><p>Authorization Response</p></td>
+<td><p>Verify response encryption.</p></td>
+<td><p>Response is encrypted using Relying Party's public key.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-14</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Test invalid Request Object handling.</p></td>
+<td><p>Authorization Error Response is sent.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-15</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Verify error logging by Wallet Instance.</p></td>
+<td><p>Errors are logged appropriately.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-16</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Test recovery from <cite>server_error</cite>.</p></td>
+<td><p>User prompted to retry or scan new QR code.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-17</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Verify successful Response handling.</p></td>
+<td><p>User session is updated, redirect URI provided.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-18</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Test absence of <cite>redirect_uri</cite>.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-19</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Test redirection to Relying Party's endpoint.</p></td>
+<td><p>User is redirected correctly.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-20</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Verify handling of invalid <cite>redirect_uri</cite>.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-21</p></td>
+<td><p>User Consent</p></td>
+<td><p>Verify display of Relying Party's identity.</p></td>
+<td><p>Identity is displayed clearly to Holder.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-22</p></td>
+<td><p>User Consent</p></td>
+<td><p>Test user consent revocation.</p></td>
+<td><p>User can revoke consent before submission.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-23</p></td>
+<td><p>Credential Presentation</p></td>
+<td><p>Verify response format compliance.</p></td>
+<td><p>Each Credential adheres to specified format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-24</p></td>
+<td><p>Authorization Response</p></td>
+<td><p>Test handling of response timeouts.</p></td>
+<td><p>Retries must be successful unless response is acquired.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-25</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Verify handling of malformed claims in presentation payload.</p></td>
+<td><p>Authorization Error Response is sent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-26</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Verify handling of malformed claims in presented credentials.</p></td>
+<td><p>Authorization Error Response is sent.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-27</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Test handling of expired requests.</p></td>
+<td><p>Holder is notified of expiration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-28</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Verify inclusion of response code.</p></td>
+<td><p>Response code is cryptographically random.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-29</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Test handling of invalid response codes.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-30</p></td>
+<td><p>Status Endpoint</p></td>
+<td><p>Verify handling of unauthorized access.</p></td>
+<td><p>Unauthorized access is denied.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-31</p></td>
+<td><p>Status Endpoint</p></td>
+<td><p>Test handling of invalid session IDs.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-32</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Verify handling of expired sessions.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-33</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Test handling of server errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-34</p></td>
+<td><p>Same Device Flow</p></td>
+<td><p>Verify handling of slow network conditions.</p></td>
+<td><p>Wallet Instance retries or notifies user.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-35</p></td>
+<td><p>Request URI Method</p></td>
+<td><p>Test handling of large metadata payloads.</p></td>
+<td><p>Metadata is sent successfully.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-36</p></td>
+<td><p>Presentation Response</p></td>
+<td><p>Verify handling of large response payloads.</p></td>
+<td><p>Response is sent successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-37</p></td>
+<td><p>Presentation Response</p></td>
+<td><p>Test handling of response encryption failures.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-38</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Verify handling of invalid signatures.</p></td>
+<td><p>Authorization Error Response is sent.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-39</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Test handling of invalid nonce values.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-40</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Verify handling of malformed responses.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-41</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Test handling of missing response parameters.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-42</p></td>
+<td><p>Status Endpoint</p></td>
+<td><p>Verify handling of session timeouts.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-43</p></td>
+<td><p>Status Endpoint</p></td>
+<td><p>Test handling of invalid status codes.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-44</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Verify handling of invalid user sessions.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-45</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Test handling of unavailable services.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-46</p></td>
+<td><p>Same Device Flow</p></td>
+<td><p>Verify handling of user cancellations.</p></td>
+<td><p>User can cancel the process.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-47</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Test QR Code scanning with different apps.</p></td>
+<td><p>QR Code is scanned successfully.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-48</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Verify QR Code scanning with different lighting.</p></td>
+<td><p>QR Code is scanned successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-49</p></td>
+<td><p>Request URI Method</p></td>
+<td><p>Test handling of unsupported content types.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-50</p></td>
+<td><p>User Consent</p></td>
+<td><p>Verify user notification of consent changes.</p></td>
+<td><p>User is informed about consent changes.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-51</p></td>
+<td><p>User Consent</p></td>
+<td><p>Test user consent for sensitive data.</p></td>
+<td><p>User can consent to sensitive data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-52</p></td>
+<td><p>Authorization Response</p></td>
+<td><p>Verify handling of response decryption failures.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-53</p></td>
+<td><p>Authorization Response</p></td>
+<td><p>Test handling of response integrity checks.</p></td>
+<td><p>Response integrity is verified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-54</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Verify handling of response validation failures.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-55</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Test handling of response processing errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-56</p></td>
+<td><p>Protected Resource Endpoint</p></td>
+<td><p>Verify handling of unauthorized session access.</p></td>
+<td><p>Unauthorized access is denied.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-57</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Verify handling of invalid redirect parameters.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-58</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Test handling of redirect failures.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-59</p></td>
+<td><p>Same Device Flow</p></td>
+<td><p>Verify handling of user interruptions.</p></td>
+<td><p>User can resume or cancel the process.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-60</p></td>
+<td><p>Request URI Method</p></td>
+<td><p>Test handling of invalid HTTP methods.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-61</p></td>
+<td><p>User Consent</p></td>
+<td><p>Verify user notification of consent revocation.</p></td>
+<td><p>User is informed about consent revocation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-62</p></td>
+<td><p>User Consent</p></td>
+<td><p>Test user consent for optional data.</p></td>
+<td><p>User can consent to optional data.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-63</p></td>
+<td><p>Authorization Response</p></td>
+<td><p>Verify handling of response signature failures.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-64</p></td>
+<td><p>Authorization Response</p></td>
+<td><p>Test handling of response format errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-65</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Verify handling of invalid JWT signatures.</p></td>
+<td><p>Authorization Error Response is sent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-66</p></td>
+<td><p>Error Handling</p></td>
+<td><p>Test handling of invalid JWT claims.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-67</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Verify handling of response parsing errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-68</p></td>
+<td><p>Relying Party Response</p></td>
+<td><p>Test handling of response timeout errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-69</p></td>
+<td><p>Status Endpoint</p></td>
+<td><p>Verify handling of session expiration.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-70</p></td>
+<td><p>Status Endpoint</p></td>
+<td><p>Test handling of session renewal errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-71</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Verify handling of redirect loop errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-72</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Test handling of redirect security errors.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-73</p></td>
+<td><p>Same Device Flow</p></td>
+<td><p>Verify handling of user timeouts.</p></td>
+<td><p>User is notified of timeout.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-74</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Test QR Code scanning with different devices.</p></td>
+<td><p>QR Code is scanned successfully.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-75</p></td>
+<td><p>Cross Device Flow</p></td>
+<td><p>Verify QR Code scanning with different apps.</p></td>
+<td><p>QR Code is scanned successfully.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-76</p></td>
+<td><p>Request URI Method</p></td>
+<td><p>Test handling of unsupported HTTP methods.</p></td>
+<td><p>Error response is returned.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class="clearer"></div>
+    </div>
+    <div class="button_nav_wrapper">
+        <div class="button_nav">
+            <div class="left">
+                
+                <a href="test-plans-credential-issuer.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">15.4.1.4. </span>Credential Issuer Test Matrix</span></a>
+                
+            </div>
+
+            <div class="right">
+                
+                    <a href="test-plans-proximity-presentation.html"><span><span class="section-number">15.4.1.6. </span>Proximity Credential Presentation Test Matrix</span><span class="icon">&gt;</span></a>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer" role="contentinfo">
+      Last updated on 05/09/2025.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
+    </div>
+
+<p id="theme_credit"></p>
+  </body>
+</html>
