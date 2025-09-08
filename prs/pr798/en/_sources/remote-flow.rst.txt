@@ -781,6 +781,3 @@ The following table lists the HTTP Status Codes and related error codes that MUS
       - ``temporarily_unavailable``
       - The request cannot be fulfilled because the service is temporarily unavailable (e.g., due to maintenance or overload). (:rfc:`6749#section-4.1.2.1`).
 
-
-
-

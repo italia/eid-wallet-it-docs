@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.3.6. Relying Party Metadata &#8212; IT-Wallet Technical Documentation - PR #798</title>
+    <title>6.3.5. Relying Party Metadata &#8212; IT-Wallet Technical Documentation - PR #798</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="6.4. Authentic Sources" href="authentic-sources.html" />
-    <link rel="prev" title="6.3.5. Relying Party Entity Configuration" href="relying-party-entity-configuration.html" /> 
+    <link rel="prev" title="6.3.4. Relying Party Entity Configuration" href="relying-party-entity-configuration.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -139,12 +139,11 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">6.1. Wallet Solution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">6.2. Credential Issuer Solution</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">6.3. Relying Party Solution</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="relying-party-requirements.html">6.3.1. Relying Party Solution Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">6.3.2. Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">6.3.3. Mobile Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">6.3.4. Web Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">6.3.5. Relying Party Entity Configuration</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.6. Relying Party Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">6.3.1. Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">6.3.2. Mobile Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">6.3.3. Web Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">6.3.4. Relying Party Entity Configuration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.5. Relying Party Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">6.4. Authentic Sources</a></li>
@@ -172,7 +171,7 @@
           <div class="body" role="main">
             
   <section id="relying-party-metadata">
-<h1><span class="section-number">6.3.6. </span>Relying Party Metadata<a class="headerlink" href="#relying-party-metadata" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">6.3.5. </span>Relying Party Metadata<a class="headerlink" href="#relying-party-metadata" title="Link to this heading">¶</a></h1>
 <p>The <em>openid_credential_verifier</em> metadata MUST contain the following parameters.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -200,14 +199,14 @@
 <tr class="row-even"><td><p><strong>response_uris</strong></p></td>
 <td><p>JSON Array of response URI strings to which the Wallet Instance MUST send the Authorization Response using an HTTP POST request as defined by the Response Mode <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> and <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (see <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sections 6.2 and 6.3).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_signed_response_alg</strong></p></td>
-<td><p>String representing the signing [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> algorithm that MUST be used for signing authorization responses. The algorithm &quot;<em>none</em>&quot; MUST NOT be used. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-odd"><td><p><strong>authorization_signing_alg_values_supported</strong></p></td>
+<td><p>JSON array containing the list of signing [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> algorithm that MUST be used for signing authorization responses. The algorithm &quot;<em>none</em>&quot; MUST NOT be used. See <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>authorization_encrypted_response_alg</strong></p></td>
-<td><p>Algorithm used to encrypt the authorization response. It specifies to the Wallet Instance the asymmetric encryption algorithm. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-even"><td><p><strong>authorization_encryption_alg_values_supported</strong></p></td>
+<td><p>JSON array containing a list of algorithm used to encrypt the authorization response. It specifies to the Wallet Instance the asymmetric encryption algorithms. See <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_encrypted_response_enc</strong></p></td>
-<td><p>Encryption algorithm used for the authorization response. It specifies to the Wallet Instance the symmetric encryption algorithm. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-odd"><td><p><strong>authorization_encryption_enc_values_supported</strong></p></td>
+<td><p>JSON array containing a list of encryption algorithm used for the authorization response. It specifies to the Wallet Instance the symmetric encryption algorithms. See <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
 <td><p>JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least &quot;<em>dc+sd-jwt</em>&quot;. The value associated with each name/value pair MUST be a JSON object &quot;<strong>sd-jwt_alg_values</strong>&quot; that MUST contain a JSON array containing identifiers of cryptographic algorithms the RP supports for protection of a SD-JWT. The <em>alg</em> JOSE header (as defined in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) of the presented SD-JWT MUST match one of the array values. See also <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Section 9.1.</p></td>
@@ -240,7 +239,7 @@
             <div class="left">
                 
                 <a href="relying-party-entity-configuration.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">6.3.5. </span>Relying Party Entity Configuration</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">6.3.4. </span>Relying Party Entity Configuration</span></a>
                 
             </div>
 
@@ -254,7 +253,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 04/08/2025.
+      Last updated on 08/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

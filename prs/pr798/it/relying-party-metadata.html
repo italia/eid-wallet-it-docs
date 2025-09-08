@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.3.6. Metadati della Relying Party &#8212; IT-Wallet Technical Documentation - PR #798</title>
+    <title>6.3.5. Metadati della Relying Party &#8212; IT-Wallet Technical Documentation - PR #798</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -19,7 +19,7 @@
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
     <link rel="next" title="6.4. Fonti Autentiche" href="authentic-sources.html" />
-    <link rel="prev" title="6.3.5. Entity Configuration Relying Party" href="relying-party-entity-configuration.html" /> 
+    <link rel="prev" title="6.3.4. Entity Configuration Relying Party" href="relying-party-entity-configuration.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -140,12 +140,11 @@
 <li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">6.1. Soluzione Wallet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">6.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">6.3. Soluzione di Relying Party</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="relying-party-requirements.html">6.3.1. Requisiti della Soluzione di Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">6.3.2. App di Verifica</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">6.3.3. App di Verifica Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">6.3.4. App di Verifica Web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">6.3.5. Entity Configuration Relying Party</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.6. Metadati della Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">6.3.1. App di Verifica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">6.3.2. App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">6.3.3. App di Verifica Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">6.3.4. Entity Configuration Relying Party</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.5. Metadati della Relying Party</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">6.4. Fonti Autentiche</a></li>
@@ -173,7 +172,7 @@
           <div class="body" role="main">
             
   <section id="metadati-della-relying-party">
-<h1><span class="section-number">6.3.6. </span>Metadati della Relying Party<a class="headerlink" href="#metadati-della-relying-party" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">6.3.5. </span>Metadati della Relying Party<a class="headerlink" href="#metadati-della-relying-party" title="Link to this heading">¶</a></h1>
 <p>I metadata <em>openid_credential_verifier</em> DEVONO contenere i seguenti parametri.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -201,14 +200,14 @@
 <tr class="row-even"><td><p><strong>response_uris</strong></p></td>
 <td><p>JSON Array di stringhe URI di risposta a cui l'Istanza del Wallet DEVE inviare la Risposta di Autorizzazione utilizzando una richiesta HTTP POST come definito dalle Modalità di Risposta <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> e <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (vedi <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezioni 6.2 e 6.3).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_signed_response_alg</strong></p></td>
-<td><p>Stringa che rappresenta l'algoritmo di firma [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> che DEVE essere utilizzato per firmare le risposte di autorizzazione. L'algoritmo <code class="docutils literal notranslate"><span class="pre">none</span></code> NON DEVE essere utilizzato. Vedi <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-odd"><td><p><strong>authorization_signing_alg_values_supported</strong></p></td>
+<td><p>JSON Array che contiene la lista degli algoritmi di firma [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> che DEVONO essere utilizzati per firmare le authorization response. L'algoritmo <code class="docutils literal notranslate"><span class="pre">none</span></code> NON DEVE essere utilizzato. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>authorization_encrypted_response_alg</strong></p></td>
-<td><p>Algoritmo utilizzato per crittografare la risposta di autorizzazione. Specifica all'Istanza del Wallet l'algoritmo di crittografia asimmetrica. Vedi <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-even"><td><p><strong>authorization_encryption_alg_values_supported</strong></p></td>
+<td><p>JSON Array che contiene la lista degli algoritmi utilizzati per crittografare le authorization response. Questo parametro specifica alla Wallet Instance gli algoritmi di crittografia asimmetrica supportati. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_encrypted_response_enc</strong></p></td>
-<td><p>Algoritmo di crittografia utilizzato per la risposta di autorizzazione. Specifica all'Istanza del Wallet l'algoritmo di crittografia simmetrica. Vedi <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<tr class="row-odd"><td><p><strong>authorization_encryption_enc_values_supported</strong></p></td>
+<td><p>JSON Array che contiene la lista  degli algoritmi di crittografia utilizzati per le authorization response. Questo parametro pecifica alla Wallet Instance gli algoritmi di crittografia simmetrica supportati. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
 <td><p>JSON Object che definisce i formati e i tipi di prova delle Presentazioni Verificabili e delle Credenziali Verificabili supportate dalla RP. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Il valore associato a ciascuna coppia nome/valore DEVE essere un oggetto JSON <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> che DEVE contenere un array JSON contenente identificatori di algoritmi crittografici che la RP supporta per la protezione di un SD-JWT. L'intestazione JOSE <code class="docutils literal notranslate"><span class="pre">alg</span></code> (come definito in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) dell'SD-JWT presentato DEVE corrispondere a uno dei valori dell'array. Vedi anche <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezione 9.1.</p></td>
@@ -241,7 +240,7 @@
             <div class="left">
                 
                 <a href="relying-party-entity-configuration.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">6.3.5. </span>Entity Configuration Relying Party</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">6.3.4. </span>Entity Configuration Relying Party</span></a>
                 
             </div>
 
@@ -255,7 +254,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 04/08/2025.
+      Ultimo aggiornamento 08/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
