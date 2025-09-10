@@ -288,7 +288,7 @@ I Verificatori di Attestati Elettronici, in ogni caso, DEVONO abilitare il proce
 - **QR Code Page** (*solo per modalità cross-device*): ha lo scopo di invitare l'Utente a inquadrare il codice QR; 
 - **Waiting Page** (*solo per modalità cross-device*): ha lo scopo di invitare l'Utente a continuare il processo di Autenticazione sulla propria Istanza del Wallet; 
 - **Thank You Page**: ha lo scopo di comunicare all'Utente l'avvenuta Autenticazione; 
-- **error page**: ha lo scopo di comunicare all'Utente eventuali errori legati al flusso di Autenticazione. 
+- **Error Page**: ha lo scopo di comunicare all'Utente eventuali errori legati al flusso di Autenticazione. 
 
 Tali pagine DEVONO prevedere i seguenti elementi trasversali ricorrenti, in continuità con l'Identità Visiva del Touchpoint del Verificatore di Attestati Elettronici:
 
@@ -299,7 +299,7 @@ Di seguito invece gli elementi specifici caratteristici delle diverse pagine.
 
 **Discovery Page** 
 
-Per garantire l'Autenticazione tramite il Sistema IT-Wallet, il Verificatore di Attestati Elettronici PUÒ aggiornare la propria Discovery Page con quella resa disponibile nelle Risorse Ufficiali. 
+Per garantire l'Autenticazione tramite il Sistema IT-Wallet, il Verificatore di Attestati Elettronici PUÒ aggiornare la propria Discovery Page con quella resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
 
 .. only:: format_html
 
@@ -326,7 +326,7 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 - PUÒ presentare anche modalità di Autenticazione alternative, se disponibili; 
 - DOVREBBE garantire informazioni minime a supporto, per permettere all'Utente di compiere una scelta consapevole e informata. 
 
-Nel caso l'Utente stia navigando la pagina del Verificatore di Attestati Elettronici da un Touchpoint diverso da quello su cui ha attivato l'Istanza del Wallet (modalità cross-device), la scelta di Autenticazione tramite il Sistema IT-Wallet DEVE condurre l'Utente alla QR code page. 
+Nel caso l'Utente stia navigando la pagina del Verificatore di Attestati Elettronici da un Touchpoint diverso da quello su cui ha attivato l'Istanza del Wallet (modalità cross-device), la scelta di Autenticazione tramite il Sistema IT-Wallet DEVE condurre l'Utente alla QR Code Page. 
 
 Nel caso in cui invece l'Utente stia navigando la pagina del Verificatore di Attestati Elettronici dallo stesso Touchpoint su cui ha attivato l'Istanza del Wallet (modalità same-device) tale pagina DEVE condurre l'Utente all'apertura della propria Istanza del Wallet. 
 
@@ -334,7 +334,7 @@ Nel caso in cui invece l'Utente stia navigando la pagina del Verificatore di Att
 
 La Selection Page è la pagina su cui atterra l'Utente dopo che ha scelto di Autenticarsi tramite il Sistema IT-Wallet, e ha lo scopo di presentare all'Utente le Soluzioni Wallet disponibili per effettuare l’Autenticazione.  
 
-Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page resa disponibile nelle Risorse Ufficiali.
+Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`.
 
 .. only:: format_html 
 
@@ -356,13 +356,12 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo affiancandolo al proprio logo secondo le indicazioni fornite nella sezione :ref:`brand-identity:Identità Visiva`;  
 
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle Risorse Ufficiali; 
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`; 
 
 - DEVE presentare ogni Soluzione Wallet presente nel Registro attraverso un componente modulare che mostra il logo e il nome per esteso; 
 
 - DEVE presentare le Soluzioni Wallet in un layout dinamico che si adatta al numero di Soluzioni Wallet disponibili: quando inferiore a 3 DEVE distribuirle in una griglia a 2 colonne, quando inferiore a 2 DEVE utilizzare un layout ad una colonna centrale; in ogni caso DEVE essere garantito un ordinamento randomico; 
-
-- PUÒ inserire un componente testuale per promuovere la modalità di Autenticazione tramite IT-Wallet, che rimandi al sito ufficiale del Sistema, come rappresentato nelle Risorse Ufficiali; 
+ 
 
 - DEVE permettere all’Utente di cercare una Soluzione Wallet attraverso una funzionalità di filtro per nome, quando presenti più di 5 Soluzioni Wallet;  
 
@@ -370,16 +369,18 @@ Il Verificatore di Attestati Elettronici che implementa la pagina:
 
 - DEVE includere una Call to Action che permetta all'Utente di interrompere l’operazione e tornare alla Discovery Page. 
 
+Il Verificatore di Attestati Elettronici PUÒ inserire un componente testuale per promuovere la modalità di Autenticazione tramite IT-Wallet, che rimandi al sito ufficiale del Sistema, come rappresentato nelle :ref:`official-resources:Risorse Ufficiali`.
+
 **QR Code Page (*solo per modalità cross-device*)** 
 
 La QR Code Page è la pagina su cui atterra l'Utente che ha scelto l'Autenticazione tramite il Sistema IT-Wallet in un flusso cross-device, e ha lo scopo di invitare l'Utente a scannerizzare, con la propria Istanza del Wallet, il codice QR generato. 
 
-Il Verificatore di Attestati Elettronici DEVE implementare la QR code page (flusso cross-device) resa disponibile nelle Risorse Ufficiali. 
+Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flusso cross-device) resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
 
 .. only:: format_html 
 
   .. figure:: ./images/svg/QR-page.svg
-     :alt: QR code page
+     :alt: QR Code Page
      :width: 100%
 
      QR Code Page 
@@ -387,7 +388,7 @@ Il Verificatore di Attestati Elettronici DEVE implementare la QR code page (flus
 .. only:: format_latex  
 
   .. figure:: ./images/pdf/QR-page.pdf
-     :alt: QR code page
+     :alt: QR Code Page
      :width: 100%
 
      QR Code Page 
@@ -395,7 +396,7 @@ Il Verificatore di Attestati Elettronici DEVE implementare la QR code page (flus
 Il Verificatore di Attestati Elettronici che implementa la pagina:
 
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo; 
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle Risorse Ufficiali; 
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`; 
 - DEVE includere una Call to Action che, in caso di timeout, permetta all'Utente di generare un nuovo codice QR; 
 - DEVE includere una Call to Action che permetta all'Utente di annullare l'operazione e tornare alla Discovery Page. 
 
@@ -409,11 +410,11 @@ Inoltre, nei rispetto di [RIF_ACCESSIBILITÁ], relativamente al codice QR, il Ve
 - DEVE garantire il formato SVG; 
 - DEVE garantire che non venga parzialmente nascosto da testo o altri elementi.
 
-**Waiting page (*solo per modalità cross-device*)** 
+**Waiting Page (*solo per modalità cross-device*)** 
 
 La Waiting Page è la pagina che invita l'Utente a proseguire il processo di Autenticazione sulla propria Istanza del Wallet, a valle della scansione del codice QR. 
 
-Il Verificatore di Attestati Elettronici DEVE implementare la Waiting Page (cross-device) resa disponibile nelle Risorse Ufficiali. 
+Il Verificatore di Attestati Elettronici DEVE implementare la Waiting Page (cross-device) resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
 
 .. only:: format_html 
 
@@ -434,13 +435,13 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Waiting Page (cros
 Il Verificatore di Attestati Elettronici che implementa la pagina: 
 
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare il messaggio della pagina; 
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle Risorse Ufficiali.  
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`.  
 
 **Thank You Page** 
 
 La Thank You Page è la pagina sui cui l'Utente atterra una volta concluso il processo di Autenticazione attraverso la propria Istanza del Wallet e ha l'obiettivo di invitare l'Utente a proseguire nell'area riservata. 
 
-Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page resa disponibile nelle Risorse Ufficiali. 
+Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
 
 .. only:: format_html 
 
@@ -461,14 +462,14 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page res
 Il Verificatore di Attestati Elettronici che implementa la pagina: 
 
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare il messaggio della pagina; 
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle Risorse Ufficiali;  
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;  
 - DEVE prevedere una Call to Action che inviti l'Utente a proseguire nell'area riservata del Verificatore di Attestati Elettronici. 
 
 **Error Page** 
 
 La pagina di errore rappresenta quella tipologia di pagina su cui l'Utente atterra in caso di errori nel corso del flusso di Autenticazione, e ha lo scopo di comunicare all'Utente la natura di tali errori (es. errore tecnico, assenza di rete, malfunzionamento dell'Istanza del Wallet, consenso alla presentazione dei dati negato etc.) e di presentare le azioni che l'Utente può intraprendere. Per approfondimenti sulle casistiche di errore si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
  
-Il Verificatore di Attestati Elettronici DEVE implementare la Error Page resa disponibile nelle Risorse Ufficiali. 
+Il Verificatore di Attestati Elettronici DEVE implementare la Error Page resa disponibile nelle :ref:`official-resources:Risorse Ufficiali`. 
 
 .. only:: format_html 
 
@@ -490,7 +491,7 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Error Page resa di
 Il Verificatore di Attestati Elettronici che implementa la pagina: 
 
 - DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo e un'icona o altro elemento grafico che aiuti a veicolare la natura dell'errore; 
-- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle Risorse Ufficiali;  
+- DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle :ref:`official-resources:Risorse Ufficiali`;  
 - DEVE prevedere una o più Call to Action che invitino l'Utente a intraprendere le azioni previste (es. riprova, contatta l'assistenza, etc.). 
 
 Pulsante di Autenticazione 
@@ -502,7 +503,7 @@ I Verificatori di Attestati Elettronici DEVONO rendere disponibile il Pulsante d
 
 Il Pulsante di Autenticazione è caratterizzato dai seguenti requisiti: 
 
-- il Pulsante di Autenticazione DEVE essere implementato utilizzando esclusivamente quanto reso disponibile nelle Risorse Ufficiali, e NON DEVE essere ricostruito ad hoc;  
+- il Pulsante di Autenticazione DEVE essere implementato utilizzando esclusivamente quanto reso disponibile nelle :ref:`official-resources:Risorse Ufficiali`, e NON DEVE essere ricostruito ad hoc;  
 
 - il Pulsante di Autenticazione DEVE essere utilizzato esclusivamente nelle forme, colori e proporzioni stabilite e NON DEVE essere alterato, distorto o nascosto;  
 
