@@ -354,7 +354,7 @@ Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page res
 
 Il Verificatore di Attestati Elettronici che implementa la pagina: 
 
-- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo affiancandolo al proprio logo secondo le indicazioni fornite nella sezione 2.1.2 Identità Visiva;  
+- DEVE includere gli elementi propri dell'Identità Visiva del Sistema IT-Wallet, tra cui il Logo affiancandolo al proprio logo secondo le indicazioni fornite nella sezione :ref:`brand-identity:Identità Visiva`;  
 
 - DEVE assicurare che i copy presenti nella pagina rispecchino quelli riportati nelle Risorse Ufficiali; 
 
