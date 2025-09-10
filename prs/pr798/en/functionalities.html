@@ -396,7 +396,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p><strong>QR Code Page</strong> (<em>cross-device only</em>): prompts the User to scan a QR code;</p></li>
 <li><p><strong>Waiting Page</strong> (<em>cross-device only</em>): instructs the User to continue the Authentication process on their Wallet Instance;</p></li>
 <li><p><strong>Thank You Page</strong>: confirms the successful Authentication;</p></li>
-<li><p><strong>error page</strong>: displays error messages related to the Authentication process.</p></li>
+<li><p><strong>Error Page</strong>: displays error messages related to the Authentication process.</p></li>
 </ul>
 <p>Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party's Touchpoint:</p>
 <ul class="simple">
@@ -405,7 +405,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </ul>
 <p>Specific requirements for each individual page are detailed below.</p>
 <p><strong>Discovery Page</strong></p>
-<p>To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the Official Resources.</p>
+<p>To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <figure class="align-default" id="id78">
 <a class="reference internal image-reference" href="_images/discovery-page.svg"><img alt="Layout Model of Discovery Page in grid" src="_images/discovery-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -419,11 +419,11 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>MAY also present alternative Authentication methods, if available;</p></li>
 <li><p>SHOULD provide essential supporting information to help the User make an informed and conscious choice.</p></li>
 </ul>
-<p>If the User accesses the Discovery Page from a different Touchpoint than the one where the Wallet Instance is activated (cross-device), selecting IT-Wallet System Authentication MUST redirect the User to the QR code page.</p>
+<p>If the User accesses the Discovery Page from a different Touchpoint than the one where the Wallet Instance is activated (cross-device), selecting IT-Wallet System Authentication MUST redirect the User to the QR Code Page.</p>
 <p>If the User accesses the Discovery Page from the same Touchpoint where the Wallet Instance is activated (same-device), the selection MUST trigger the opening of the User's Wallet Instance.</p>
 <p><strong>Selection Page</strong></p>
 <p>The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication.</p>
-<p>The Relying Party MUST implement the Selection Page made available in Official Resources.</p>
+<p>The Relying Party MUST implement the Selection Page made available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <figure class="align-default" id="id80">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -432,20 +432,20 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 </figure>
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
-<li><p>MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the <a class="reference internal" href="brand-identity.html#visual-identity"><span class="std std-ref">Visual Identity</span></a> section Visual Identity section;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in Official Resources;</p></li>
+<li><p>MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the <a class="reference internal" href="brand-identity.html#visual-identity"><span class="std std-ref">Visual Identity</span></a> section;</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
 <li><p>MUST present each Wallet Solution in the IT-Wallet Register through a modular component that displays the logo and name in full;</p></li>
 <li><p>MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when less than 3 MUST distribute them in a 2-column grid, when less than 2 MUST use a center-column layout; in all cases random sorting MUST be guarantee;</p></li>
 <li><p>MUST allow the User to search for a Wallet Solution through a filter feature by name, when more than 5 Wallet Solutions are present;</p></li>
 <li><p>MUST allow the User to find out, when needed, which Wallet Solutions are available in the Register by preparing a cross-reference to the official site of the IT-Wallet System;</p></li>
 <li><p>MUST include a Call to Action that allows the User to abort the operation and return to the Discovery Page.</p></li>
 </ul>
-<p>The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in Official Resources.</p>
+<p>The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <p><strong>QR Code Page (cross-device only)</strong></p>
 <p>The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance.</p>
-<p>Relying Parties MUST implement the QR code page (cross-device) provided in the Official Resources.</p>
+<p>Relying Parties MUST implement the QR Code Page (cross-device) provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <figure class="align-default" id="id82">
-<a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR code page" src="_images/QR-page.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 4.7 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id82" title="Link to this image">¶</a></p>
 </figcaption>
@@ -453,7 +453,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
 <li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in Official Resources;</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
 <li><p>MUST include a Call To Action allowing the User to generate a new QR code in case of timeout;</p></li>
 <li><p>MUST include a Call To Action allowing the User to cancel the operation and return to the Discovery Page.</p></li>
 </ul>
@@ -467,9 +467,9 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <li><p>MUST ensure SVG format;</p></li>
 <li><p>MUST ensure that it is not partially hidden by text or other elements.</p></li>
 </ul>
-<p><strong>Waiting page (cross-device only)</strong></p>
+<p><strong>Waiting Page (cross-device only)</strong></p>
 <p>The Waiting Page is shown after the QR code has been scanned and prompts the User to continue the Authentication process within their Wallet Instance.</p>
-<p>Relying Parties MUST implement the Waiting Page (cross-device) provided in the Official Resources.</p>
+<p>Relying Parties MUST implement the Waiting Page (cross-device) provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <figure class="align-default" id="id84">
 <a class="reference internal image-reference" href="_images/waiting-page.svg"><img alt="Waiting Page" src="_images/waiting-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -479,11 +479,11 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
 <li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in Official Resources.</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p></li>
 </ul>
 <p><strong>Thank You Page</strong></p>
 <p>The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to prompt the User to proceed to the authenticated area of the Relying Party's Touchpoint.</p>
-<p>Relying Parties SHOULD implement the Thank You Page provided in the Official Resources.</p>
+<p>Relying Parties MUST implement the Thank You Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <figure class="align-default" id="id86">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -493,12 +493,12 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
 <li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in Official Resources;</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
 <li><p>MUST include a Call To Action prompting the User to proceed to the Touchpoint authenticated area.</p></li>
 </ul>
 <p><strong>Error Page</strong></p>
 <p>The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the <a class="reference internal" href="#error-management"><span class="std std-ref">Error Management</span></a> section.</p>
-<p>Relying Parties MUST implement the error page provided in the Official Resources.</p>
+<p>Relying Parties MUST implement the Error Page provided in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>.</p>
 <figure class="align-default" id="id88">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
@@ -508,7 +508,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>The Relying Party implementing the page:</p>
 <ul class="simple">
 <li><p>MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of error;</p></li>
-<li><p>MUST ensure that the copy on the page mirrors that reported in Official Resources;</p></li>
+<li><p>MUST ensure that the copy on the page mirrors that reported in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>;</p></li>
 <li><p>MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).</p></li>
 </ul>
 <section id="authentication-button">
@@ -517,7 +517,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 <p>Relying Parties MUST make the Authentication Button available within the Discovery Page of their Technical Solutions to allow the User to get authenticated into their services using the Wallet Instance under their control.</p>
 <p>The Authentication Button has the following requirements:</p>
 <ul class="simple">
-<li><p>The Authentication Button MUST be used exactly as outlined in the Official Resources and MUST NOT be redesigned ad hoc;</p></li>
+<li><p>The Authentication Button MUST be used exactly as outlined in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> and MUST NOT be redesigned ad hoc;</p></li>
 <li><p>The Authentication Button MUST be used only in the shapes, colors and proportions defined and MUST NOT be altered, distorted, or hidden;</p></li>
 <li><p>The Authentication Button MUST be responsive to all screen resolutions and MUST be integrated in the Discovery Page in order to meet minimum usability and accessibility requirements;</p></li>
 <li><p>Actors wishing to integrate the Authentication Button into their Technical Solution MUST ensure that it is translated into other languages, at least English;</p></li>

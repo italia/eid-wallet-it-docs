@@ -282,7 +282,7 @@ Relying Parties MUST implement and provide the following pages as part of the Au
 - **QR Code Page** (*cross-device only*): prompts the User to scan a QR code;
 - **Waiting Page** (*cross-device only*): instructs the User to continue the Authentication process on their Wallet Instance;
 - **Thank You Page**: confirms the successful Authentication;
-- **error page**: displays error messages related to the Authentication process.
+- **Error Page**: displays error messages related to the Authentication process.
 
 Each of these pages MUST include the following recurring elements, in line with the Visual Identity of the Relying Party's Touchpoint:
 
@@ -293,7 +293,7 @@ Specific requirements for each individual page are detailed below.
 
 **Discovery Page**
 
-To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the Official Resources.
+To enable Authentication via the IT-Wallet System, the Relying Party MAY replace its existing Discovery Page with the version provided in the :ref:`official-resources:Official Resources`.
 
 .. only:: format_html
 
@@ -319,7 +319,7 @@ The Relying Party implementing the page:
 - MAY also present alternative Authentication methods, if available; 
 - SHOULD provide essential supporting information to help the User make an informed and conscious choice.
 
-If the User accesses the Discovery Page from a different Touchpoint than the one where the Wallet Instance is activated (cross-device), selecting IT-Wallet System Authentication MUST redirect the User to the QR code page.
+If the User accesses the Discovery Page from a different Touchpoint than the one where the Wallet Instance is activated (cross-device), selecting IT-Wallet System Authentication MUST redirect the User to the QR Code Page.
 
 If the User accesses the Discovery Page from the same Touchpoint where the Wallet Instance is activated (same-device), the selection MUST trigger the opening of the User's Wallet Instance.
 
@@ -327,7 +327,7 @@ If the User accesses the Discovery Page from the same Touchpoint where the Walle
 
 The Selection Page is the page on which the User lands after they have chosen to Authenticate via the IT-Wallet System, and is intended to present the User with the Wallet Solutions available to perform Authentication. 
 
-The Relying Party MUST implement the Selection Page made available in Official Resources. 
+The Relying Party MUST implement the Selection Page made available in the :ref:`official-resources:Official Resources`. 
 
 .. only:: format_html 
 
@@ -347,14 +347,13 @@ The Relying Party MUST implement the Selection Page made available in Official R
 
 The Relying Party implementing the page: 
 
-- MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the :ref:`brand-identity:Visual Identity` section Visual Identity section; 
+- MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the :ref:`brand-identity:Visual Identity` section; 
 
-- MUST ensure that the copy on the page mirrors that reported in Official Resources; 
+- MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`; 
 
 - MUST present each Wallet Solution in the IT-Wallet Register through a modular component that displays the logo and name in full; 
 
 - MUST present the Wallet Solutions in a dynamic layout that adapts to the number of Wallet Solutions available: when less than 3 MUST distribute them in a 2-column grid, when less than 2 MUST use a center-column layout; in all cases random sorting MUST be guarantee; 
-
 
 - MUST allow the User to search for a Wallet Solution through a filter feature by name, when more than 5 Wallet Solutions are present; 
 
@@ -362,18 +361,18 @@ The Relying Party implementing the page:
 
 - MUST include a Call to Action that allows the User to abort the operation and return to the Discovery Page. 
 
-The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in Official Resources. 
+The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in the :ref:`official-resources:Official Resources`. 
 
 **QR Code Page (cross-device only)**
 
 The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance.
 
-Relying Parties MUST implement the QR code page (cross-device) provided in the Official Resources. 
+Relying Parties MUST implement the QR Code Page (cross-device) provided in the :ref:`official-resources:Official Resources`. 
 
 .. only:: format_html 
 
   .. figure:: ./images/svg/QR-page.svg
-     :alt: QR code page
+     :alt: QR Code Page
      :width: 100%
 
      QR Code Page 
@@ -389,7 +388,7 @@ Relying Parties MUST implement the QR code page (cross-device) provided in the O
 The Relying Party implementing the page:
 
 - MUST include the Visual Identity elements of the IT-Wallet System, including the logo;
-- MUST ensure that the copy on the page mirrors that reported in Official Resources; 
+- MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`; 
 - MUST include a Call To Action allowing the User to generate a new QR code in case of timeout;
 - MUST include a Call To Action allowing the User to cancel the operation and return to the Discovery Page.
 
@@ -403,11 +402,11 @@ Furthermore, in compliance with [REF_ACCESSIBILITY], regarding the QR code, the 
 - MUST ensure SVG format;
 - MUST ensure that it is not partially hidden by text or other elements.
 
-**Waiting page (cross-device only)**
+**Waiting Page (cross-device only)**
 
 The Waiting Page is shown after the QR code has been scanned and prompts the User to continue the Authentication process within their Wallet Instance.
 
-Relying Parties MUST implement the Waiting Page (cross-device) provided in the Official Resources. 
+Relying Parties MUST implement the Waiting Page (cross-device) provided in the :ref:`official-resources:Official Resources`. 
 
 .. only:: format_html 
 
@@ -428,13 +427,13 @@ Relying Parties MUST implement the Waiting Page (cross-device) provided in the O
 The Relying Party implementing the page:
 
 - MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message;
-- MUST ensure that the copy on the page mirrors that reported in Official Resources.
+- MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`.
 
 **Thank You Page**
 
 The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to prompt the User to proceed to the authenticated area of the Relying Party's Touchpoint.
 
-Relying Parties SHOULD implement the Thank You Page provided in the Official Resources. 
+Relying Parties MUST implement the Thank You Page provided in the :ref:`official-resources:Official Resources`. 
 
 .. only:: format_html 
 
@@ -455,14 +454,14 @@ Relying Parties SHOULD implement the Thank You Page provided in the Official Res
 The Relying Party implementing the page:
 
 - MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message;
-- MUST ensure that the copy on the page mirrors that reported in Official Resources;
+- MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`;
 - MUST include a Call To Action prompting the User to proceed to the Touchpoint authenticated area.
 
 **Error Page**
 
 The Error Page is displayed when an issue occurs during the Authentication process. Its purpose is to inform the User about the nature of the error (e.g., technical issue, network issues, Wallet Instance malfunction, denied data sharing, etc.) and to present the available next steps. For further details, refer to the :ref:`functionalities:Error Management` section.
 
-Relying Parties MUST implement the error page provided in the Official Resources. 
+Relying Parties MUST implement the Error Page provided in the :ref:`official-resources:Official Resources`. 
 
 .. only:: format_html 
 
@@ -483,7 +482,7 @@ Relying Parties MUST implement the error page provided in the Official Resources
 The Relying Party implementing the page:
 
 - MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that conveys the type of error;
-- MUST ensure that the copy on the page mirrors that reported in Official Resources;
+- MUST ensure that the copy on the page mirrors that reported in the :ref:`official-resources:Official Resources`;
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
 Authentication Button
@@ -495,7 +494,7 @@ Relying Parties MUST make the Authentication Button available within the Discove
 
 The Authentication Button has the following requirements:
 
-- The Authentication Button MUST be used exactly as outlined in the Official Resources and MUST NOT be redesigned ad hoc;
+- The Authentication Button MUST be used exactly as outlined in the :ref:`official-resources:Official Resources` and MUST NOT be redesigned ad hoc;
 
 - The Authentication Button MUST be used only in the shapes, colors and proportions defined and MUST NOT be altered, distorted, or hidden;
 
