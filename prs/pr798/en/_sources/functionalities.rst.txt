@@ -75,7 +75,7 @@ Below are the requirements for displaying and using the PID that each Wallet Pro
 - The PID MUST be an interactive element, for the User to be authenticated by a Relying Party in a digital context (see :ref:`functionalities:Authentication`), to access services in proximity contexts, and to request the issuance of additional EAAs (see :ref:`functionalities:Issuance of Electronic Attestations of Attributes`);
 - The PID MUST display a method of assistance by the PID Provider (see :ref:`functionalities:User Assistance`); 
 - The PID MUST be recognizable by the User and distinguishable from other EAAs; 
-- The PID MUST be named with the naming convention that will be defined in this document's future version, avoiding custom or technical terms such as “Person Identification Data” or its acronym “PID”; 
+- The PID MUST be named with the naming convention that will be defined in this document's future version, avoiding custom or technical terms such as "Person Identification Data" or its acronym "PID"; 
 - The PID representation MUST adhere to a defined set of specifications provided by the PID Provider to ensure recognizability, consistency and homogeneity among different Wallet Solutions. 
 
 The PID Provider MUST: 
@@ -454,7 +454,7 @@ Relying Parties SHOULD implement the Thank You Page provided in the Official Res
 
 The Relying Party implementing the page:
 
-- MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element that reinforces the page message;
+- MUST include the Visual Identity elements of the IT-Wallet System, including the logo and an icon or graphical element consolidating the message;
 - MUST ensure that the copy on the page mirrors that reported in Official Resources;
 - MUST include a Call To Action prompting the User to proceed to the Touchpoint authenticated area.
 
@@ -509,7 +509,7 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System ``www.wallet.gov.it``; 
 
-- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., “IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
+- Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., "IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
 
 
 Below are some non-mandatory examples of Authentication Button layouts: 
@@ -551,13 +551,13 @@ The integration of the Authentication Button within the Discovery Page may vary 
 
 For further details on the use of the Authentication Button, please refer to the :ref:`functionalities:Authentication` section.
 
-**“Login with IT-Wallet” button - html code**  
+**"Login with IT-Wallet" button - html code**  
 
-The button is available in 3 variants (default / M / L ) and in “get” (call to an external page) and “post” (form inside the button) formats. 
+The button is available in 3 variants (default / M / L ) and in "get" (call to an external page) and "post" (form inside the button) formats. 
 The references to the html code and the Brand Identity will be included in the next releases of the present specifications.
  
 
-**“Login with IT-Wallet” button – svg**
+**"Login with IT-Wallet" button – svg**
 Below a non-normative example of the Authentication Button. The references to the Brand Identity will be included in the next releases of the present specifications.
 
 .. literalinclude:: ../../examples/authentication_button.svg
