@@ -317,7 +317,7 @@
 <p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference internal" href="e-service-pdnd.html#e-service-response"><span class="std std-ref">e-Service Response</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <span class="raw-html"><a href="OAS3-SH-AS.html" target="_blank">here</a></span>.</p>
+<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <span class="raw-html"><a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml" target="_blank">here</a></span>.</p>
 </div>
 <p>The Authentic Source MUST implement the necessary logic to handle the requests to the Signal Collection e-Service endpoint, in doing this it has to consider the following aspects:</p>
 <blockquote>
@@ -368,7 +368,7 @@
 <li><p>HTTP 206 OK if the request is correctly formed but there are more Signals to request.</p></li>
 </ul>
 </div></blockquote>
-<p>Regardless of the response code used, the response MUST have <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> with the header and body containing the parameters described in <a class="reference internal" href="e-service-pdnd.html#e-service-response"><span class="std std-ref">e-Service Response</span></a> with the addition of the body parameters:</p>
+<p>Regardless of the response code used, the response MUST have <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/jwt</span></code> with the header and body containing the parameters described in <a class="reference internal" href="e-service-pdnd.html#e-service-response"><span class="std std-ref">e-Service Response</span></a> with the addition of the body parameters <code class="docutils literal notranslate"><span class="pre">Signal</span></code>, containing an array of Signals, and <code class="docutils literal notranslate"><span class="pre">lastSignalId</span></code>, referencing the <code class="docutils literal notranslate"><span class="pre">signalId</span></code> of the last Signal transmitted by the Signal Distribution e-Service. Below, details of the additional response parameters are given.</p>
 <table class="docutils align-default" id="table-signal-retrieve-response-parameters">
 <colgroup>
 <col style="width: 25.0%" />
@@ -425,7 +425,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <span class="w">        </span><span class="nt">&quot;signalId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;objectType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domicilio&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;objectId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fec44ba9afc68492a387199c9faaaa5d954b19b39140637712a67cb90c726575&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;signalType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPDATE&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;signalType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ATTRIBUTE_UPDATE&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;eserviceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b1817321-0486-4c75-89e5-4ee297250418&quot;</span>
 <span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="p">{</span>
@@ -443,15 +443,15 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference internal" href="e-service-pdnd.html#e-service-response"><span class="std std-ref">e-Service Response</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A complete OpenAPI Specification of the Signal Distribution e-Service is available <span class="raw-html"><a href="OAS3-SH-CI.html" target="_blank">here</a></span>.</p>
+<p>A complete OpenAPI Specification of the Signal Distribution e-Service is available <span class="raw-html"><a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml" target="_blank">Signal Hub - Pseudonymization</a></span>.</p>
 </div>
 <p>The Credential Issuer MUST implement the necessary logic to handle the Polling of the Signal Distribution e-Service endpoint, in doing this it has to consider the following aspects:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;</p></li>
-<li><p>the retention period of Signals in the Signal Hub is 30 days, meaning that Signals older than 30 days are not available for retrieval;</p></li>
+<li><p>the retention period of Signals in the Signal Hub is specified in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/la-guida-tecnica/retention-period-e-api-polling" target="_blank">Signal Hub User Guide</a></span>. Signals older than the specified retention period are not available for retrieval;</p></li>
 <li><p>the Signal Hub does not keep trak of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Thus each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each PDND e-Service ID;</p></li>
-<li><p>the Signal Distribution e-Service endpoint returns Signals in batches of at most 100 Signals at a time, specifying if more Signals are available for retrieval;</p></li>
+<li><p>the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-Signal-hub" target="_blank">Signal Hub User Guide</a></span>. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval;</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -536,7 +536,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/09/2025.
+      Last updated on 10/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
