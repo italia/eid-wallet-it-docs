@@ -1,14 +1,14 @@
 .. include:: ../common/common_definitions.rst
 
 User Experience Design
-======================
+=======================
 
 
 .. include:: design.rst 
 
 
 Functionalities Overview
-------------------------
+-------------------------
 
 The IT-Wallet System provides Users with a simpler, faster, and more secure way to access services. This service is delivered through the use of a Wallet Solution, whose User Experience is structured into three main phases: pre-use, use, and post-use.
 
@@ -43,7 +43,7 @@ To ensure a correct and consistent implementation, Primary Actors:
 - MUST keep used resources up to date, in line with the latest available version of the Official Resources. 
 
 Activation of the Wallet Instance
----------------------------------
+----------------------------------
 
 Activation enables the User to access the Wallet Solution's functionalities for securely obtaining, presenting, and managing their Electronic Attestations. The activation process involves User Authentication with the Wallet Instance using their digital identity, which enables the generation of the PID.
 
@@ -63,7 +63,7 @@ The Wallet Provider MUST allow the User to remove the PID issued during the acti
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 Focus on PID – Person Identification Data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PID (Person Identification Data) refers to verified minimum set of informations about the User identity (see :ref:`credential-data-model:Digital Credential Data Model`) issued as a result of the activation process and made available in the Wallet Instance.
 Below are the requirements for displaying and using the PID that each Wallet Provider MUST adhere to, in order to provide a consistent and accessible consultation and usage experience: 
@@ -84,7 +84,7 @@ The PID Provider MUST:
 - Define a clear set of specifications for the PID to ensure consistent identification and representation of the PID across different Wallet Solutions, in terms of format, structure and appearance standards (e.g. color, background image, etc.). 
 
 Issuance of Electronic Attestations of Attributes
--------------------------------------------------
+--------------------------------------------------
 
 Once activation is complete, the User MAY obtain one or more Electronic Attestations of Attributes within their Wallet Instance.
 
@@ -97,7 +97,7 @@ Depending on the User's specific needs, the type of Electronic Attestation of At
 Although the methods for initiating the request are different, the issuance flows share a similar structure and process. 
 
 Issuance from the Wallet Instance Catalogue
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from the Catalogue that the Wallet Solution Provider MUST guarantee through their own Wallet Solution:
 
@@ -162,7 +162,7 @@ In case of errors during the issuance of the Electronic Attestation of Attribute
 
 
 Focus on Electronic Attestations of Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The EAAs obtained within the Wallet Instance SHOULD be displayed in a list within a Preview View. In this case, each EAA MUST ensure a high level of recognizability and accessibility [REF_ACCESSIBILITY] of the information contained. Below are the requirements for displaying the EAA that each Wallet Provider MUST adhere to in order to provide a consistent and accessible consultation and usage experience:
 
@@ -183,7 +183,7 @@ The Electronic Attestation of Attributes Provider:
 - MUST define a clear set of specifications for the EAA to ensure consistent identification and representation of the EAA across different Wallet Solutions, in terms of format, structure, and appearance standards (e.g. color, background image, etc.). 
 
 Presentation of Electronic Attestations
----------------------------------------
+----------------------------------------
 
 The presentation process allows the User to access a service or demonstrate ownership of certain data or their eligibility to perform a specific action. The presentation of Electronic Attestations and their subsequent verification involves interaction between the Wallet Instance, managed by the User, and a Relying Party Instance. Depending on the circumstances and context of the interaction, the following scenarios can be outlined: 
 
@@ -192,7 +192,7 @@ The presentation process allows the User to access a service or demonstrate owne
 - **Remote Presentation**: the User presents the PID and/or EAA data through the Wallet Instance, to a Relying Party configured for online verification, for instance, to Authenticate and access the services offered.
 
 Proximity Presentation
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Proximity presentation allows the User to present the PID and/or EAA data via their Wallet Instance, using one of two methods:
 
@@ -225,7 +225,7 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the :ref:`functionalities:Error Management` section.
 
 Remote Presentation
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 Remote presentation allows the User to present the PID and/or EAA data by interacting with a Relying Party's Touchpoint through a designated Engagement Button.
 
@@ -260,7 +260,7 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For further details, please refer to the `Error Management`_ section.
 
 Authentication
-""""""""""""""
+"""""""""""""""
 
 Authentication is a specific use case of remote presentation that allows the User to securely access services provided by both public and private Relying Parties. This is achieved by presenting the PID and, if necessary, a set of Attributes contained in the obtained Electronic Attestations of Attributes. This process ensures that the User retains control over their data, including the ability to present only the information strictly necessary for verification by Relying Parties.
 
@@ -487,7 +487,7 @@ The Relying Party implementing the page:
 - MUST include one or more Call To Action guiding the User toward the appropriate next step (e.g., retry, contact support, etc.).
 
 Authentication Button
-~~~~~~~~~~~~~~~~~~~~~~ 
+~~~~~~~~~~~~~~~~~~~~~~
 
 The Authentication Button "Login with IT-Wallet" serves as an Engagement Button, providing Users with a standardized way to Authenticate themselves using their digital Wallet.
 
@@ -564,7 +564,7 @@ Below a non-normative example of the Authentication Button. The references to th
   :language: xml 
 
 Management of Electronic Attestations
--------------------------------------
+--------------------------------------
 
 The Wallet Provider, via their Wallet Solution, and the PID provider or Electronic Attestations of Attributes Provider, via dedicated Touchpoints, MUST let the User manage their Electronic Attestations at any time.
 
@@ -577,7 +577,7 @@ This section outlines three different categories of requirements for managing ea
 Below are the key aspects that impact and define the User Experience in managing Electronic Attestations though the Wallet Instance, along with the functional requirements associated with each category.
 
 Status of Electronic Attestations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To ensure reliability and promote the proper use of a Wallet Solution, the Wallet Provider MUST guarantee the User to always have visibility of the status of the Electronic Attestations stored within their Wallet Instance, based on the information received from the Electronic Attestation Provider, which manages their lifecycle.
 
@@ -588,7 +588,7 @@ Each Electronic Attestation can be either valid or invalid, with corresponding i
 - **Invalid**: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the Wallet Instance MUST inform the User of the invalid status and SHOULD give the reason why. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Solution MAY implement mechanisms to restrict access to the Detailed View of that Electronic Attestation. This is intended to encourage the User to update or delete the Electronic Attestation by providing appropriate informational text and a Call to Action.
 
 Revocation of Electronic Attestations
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 
 Revocation is the procedure that turns an Electronic Attestation from a valid state to an invalid state. Revocation can occur in either an active or passive mode:
 
@@ -606,7 +606,7 @@ Revocation is the procedure that turns an Electronic Attestation from a valid st
 	- The User's device no longer meets the minimum security requirements (rooted or jailbroken).
 
 History of Electronic Attestations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To ensure the principles of visibility and transparency, the Wallet Provider MUST guarantee the User to view the history of all Electronic Attestations presentations performed using their Wallet Instance. In particular:
 
@@ -614,7 +614,7 @@ To ensure the principles of visibility and transparency, the Wallet Provider MUS
 - The Wallet Instance MUST allow the User to easily request the Relying Party to delete their information related to previous presentations.
 
 Backup and Restore of Electronic Attestation of Attributes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 With the aim of ensuring the principle of data portability, the Wallet Solution MUST guarantee the User to have access to specific functionalities, particularly to:
 
@@ -622,7 +622,7 @@ With the aim of ensuring the principle of data portability, the Wallet Solution 
 - Request the restore of their Electronic Attestations of Attributes on another Wallet Instance.
 
 Deactivation of the Wallet Instance
------------------------------------
+------------------------------------
 
 The deactivation of the Wallet Instance is the functionality that makes the Wallet Instance inactive and therefore no longer operational. The deactivation process can be triggered by different actors depending on the circumstances, specifically:
 
@@ -657,7 +657,7 @@ Once the Wallet Instance is reactivated, Electronic Attestations of Attributes c
 In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee that the User receives consistent messages that inform them and guide them toward resolving the issue. For more details, please refer to the `Error Management`_ section.
 
 Error Management
-----------------
+-----------------
 
 The IT-Wallet System involves the interaction of multiple services provided by different actors. It is therefore important to define an effective error management model with the goal of improving the perception and reliability of the entire ecosystem and enabling the User to feel guided during interactions with the various Technical Solutions and to consciously manage any issues while using the service.
 
@@ -675,7 +675,7 @@ Each Primary Actor MUST implement a proper error management, in compliance with 
 Below is a non-exhaustive list of the main error cases, with reference to the actor responsible for their management, for each phase of the User Experience. The detailed list of errors to be managed for each interaction endpoint with the User is available in the dedicated error sections within :ref:`Endpoints`.
 
 Activation of the Wallet Instance Errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -693,7 +693,7 @@ Activation of the Wallet Instance Errors
     - National Identity Provider
 
 Issuance of Electronic Attestations of Attributes Errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -709,7 +709,7 @@ Issuance of Electronic Attestations of Attributes Errors
     - Authentic Source
 
 Presentation of Electronic Attestations Errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -723,7 +723,7 @@ Presentation of Electronic Attestations Errors
     - Wallet Provider, Relying Party
 
 Management of Electronic Attestations Errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -737,7 +737,7 @@ Management of Electronic Attestations Errors
     - PID Provider
 
 Deactivation of the Wallet Instance Errors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :widths: 80 20
@@ -751,7 +751,7 @@ Deactivation of the Wallet Instance Errors
 In addition to error management, all Primary Actors MUST also deal with negative feedback resulting from the User's decision to abandon or cancel a flow (e.g. Activation, Acquisition, Presentation, etc.). In such cases, feedback MUST be provided to confirm the User's choice, and it MAY include a Call to Action to continue.
 
 User Assistance
----------------
+----------------
 
 For effective error management and the resolution of any other issues, Primary Actors MUST ensure adequate support to the User by structuring a simple and effective assistance model based on the following principles:
 
@@ -781,7 +781,7 @@ Below are the User Experience requirements that the Wallet Solution Provider MUS
 - The User tracks the status of the request at any time through functionalities that MUST be made available by the actors dealing with the request.
 
 User Feedback
--------------
+--------------
 
 User feedback collection allows for monitoring the User Experience, identifying potential areas for optimization, and continuously measuring the effectiveness of the service. Each Wallet Provider SHOULD establish a structured feedback collection system to monitor and improve the User Experience.
 
