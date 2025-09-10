@@ -375,6 +375,9 @@ Below are the main defined terms and definitions related to User Experience aspe
     
     **Preview View**
       Compact visualization mode of the Digital Credential that allows it to be recognized and distinguished in a list of Electronic Attestations thanks to the presence of minimum data or elements.
+
+    **Selection Page**
+      It's the page of the Touchpoint of the Relying Party where the User can see all the Wallet Solutions available in the Register and is able to select which one to continue the process of Authentication with.
     
     **Service Model**
       Set of interactions between actors and touchpoints necessary for service delivery and fruition.

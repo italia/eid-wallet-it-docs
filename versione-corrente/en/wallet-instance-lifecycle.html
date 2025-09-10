@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.1.4.1. Wallet Instance Lifecycle &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
+    <title>6.1.4.1. Wallet Instance Lifecycle &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5.1.4.2. Wallet Instance Functionalities" href="wallet-instance-functionalities.html" />
-    <link rel="prev" title="5.1.4. Wallet Instance" href="wallet-instance.html" /> 
+    <link rel="next" title="6.1.4.2. Wallet Instance Functionalities" href="wallet-instance-functionalities.html" />
+    <link rel="prev" title="6.1.4. Wallet Instance" href="wallet-instance.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,35 +131,36 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">5. Entities</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">5.1. Wallet Solution</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">5.1.1. Wallet Solution Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">5.1.2. Wallet Solution Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">5.1.3. Wallet Solution Interaction Patterns</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">5.1.4. Wallet Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">5.1.5. Backup and Restore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Wallet Provider Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Wallet Provider Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">6. Entities</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">6.1. Wallet Solution</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">6.1.1. Wallet Solution Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">6.1.2. Wallet Solution Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">6.1.3. Wallet Solution Interaction Patterns</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">6.1.4. Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">6.1.5. Backup and Restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">6.1.6. Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">6.1.7. Wallet Provider Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Credential Issuer Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Relying Party Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Authentic Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">6.2. Credential Issuer Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">6.3. Relying Party Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">6.4. Authentic Sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendix</a></li>
 </ul>
 
         </div>
@@ -172,7 +173,7 @@
           <div class="body" role="main">
             
   <section id="wallet-instance-lifecycle">
-<h1><span class="section-number">5.1.4.1. </span>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">6.1.4.1. </span>Wallet Instance Lifecycle<a class="headerlink" href="#wallet-instance-lifecycle" title="Link to this heading">¶</a></h1>
 <p>The Wallet Provider is in charge of the implementation and provision of Wallet Instances also handling their entire lifecycle.</p>
 <p>In this section, state machines are presented to explain the Wallet Instance and Digital Credential states and their transitions and relations.</p>
 <div class="admonition note">
@@ -180,7 +181,7 @@
 <p>PID is a specialized Digital Credential type that has impacts on the Wallet Instance's lifecycle. The revocation of the PID MAY also have potential impacts on (Q)EAAs, if they were issued using the presentation of the PID.
 When the distinction between PID and (Q)EAA is not needed, the term Digital Credential is used.</p>
 </div>
-<p>As shown in <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 5.2</span></a>, the Wallet Instance has four distinct states: <strong>Installed</strong>, <strong>Operational</strong>, <strong>Valid</strong>, and <strong>Uninstalled</strong>.
+<p>As shown in <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 6.2</span></a>, the Wallet Instance has four distinct states: <strong>Installed</strong>, <strong>Operational</strong>, <strong>Valid</strong>, and <strong>Uninstalled</strong>.
 Each state represents a specific functional status and determines the actions that can be performed.</p>
 <figure class="align-default" id="id3">
 <span id="fig-wallet-instance-states"></span><p class="plantuml">
@@ -189,7 +190,7 @@ Each state represents a specific functional status and determines the actions th
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP9HIyCm58NVyoikx4M5qYgRo1XbnMLGa3bNjmdgGsmp5qZJqgQ8_dgJLTjhwzYUnZtVEVVSjjDIiq9NgOGjav9h29MPg9X3f9dc9TcBX0DFS_q92I_ZGkHQP8gGqierRNm93ERpOEHvF_Fxd1VCWap2O6T-ZR9XKXZQyswyPhPMeisPNGz7mn4X0F1yyGfEadqensytZM4RGhY87YtHZXlGXc5qlVWFBiJxNXiQ5JtGmMsDeld9v2uk-Kxt6g_efazsza_YJ6R5-4rMt3zxEAT1064KkSiLdRW7oJ_MhNwiVnEMuSpQiRN6mAdopkgkZpujtLyZl2WicqFS6Rqx6jix6n6TekXKYa_5Qt4hfEBGqwy7IU0Or7nOfa8fllZuyigVkFQVJwPS9LKglm40">Wallet Instance States.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/XP9HIyCm58NVyoikx4M5qYgRo1XbnMLGa3bNjmdgGsmp5qZJqgQ8_dgJLTjhwzYUnZtVEVVSjjDIiq9NgOGjav9h29MPg9X3f9dc9TcBX0DFS_q92I_ZGkHQP8gGqierRNm93ERpOEHvF_Fxd1VCWap2O6T-ZR9XKXZQyswyPhPMeisPNGz7mn4X0F1yyGfEadqensytZM4RGhY87YtHZXlGXc5qlVWFBiJxNXiQ5JtGmMsDeld9v2uk-Kxt6g_efazsza_YJ6R5-4rMt3zxEAT1064KkSiLdRW7oJ_MhNwiVnEMuSpQiRN6mAdopkgkZpujtLyZl2WicqFS6Rqx6jix6n6TekXKYa_5Qt4hfEBGqwy7IU0Or7nOfa8fllZuyigVkFQVJwPS9LKglm40">Wallet Instance States.</a></span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -197,7 +198,7 @@ Each state represents a specific functional status and determines the actions th
 <p>The Wallet Provider MUST ensure the security and reliability of the Wallet Instances. To achieve this, the Wallet Provider MUST periodically check the Wallet Instances security and compliance status.</p>
 </div>
 <section id="transition-to-installed">
-<h2><span class="section-number">5.1.4.1.1. </span>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.1.4.1.1. </span>Transition to Installed<a class="headerlink" href="#transition-to-installed" title="Link to this heading">¶</a></h2>
 <p>The state machine begins with the Wallet Instance installation (<strong>WI INST</strong>) transition, where Users download and install a Wallet Instance provided by the Wallet Provider using the
 official app store of their device's operating system (this ensures authenticity via system checks), leading to the <strong>Installed</strong> state.</p>
 <p>When the state is <strong>Installed</strong>, the Wallet Instance MUST interact only with the Wallet Provider to be activated. When the revocation of the Wallet Instance occurs, the Wallet Instance MUST go back from <strong>Operational</strong> or <strong>Valid</strong> to <strong>Installed</strong>. The revocation marks the Wallet Cryptographic Hardware Key, registered during activation
@@ -217,7 +218,7 @@ Instance and from the account associated with the User. This transition is compl
 </div>
 </section>
 <section id="id1">
-<h2><span class="section-number">5.1.4.1.2. </span>Transition to Operational<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.1.4.1.2. </span>Transition to Operational<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <p>After installation, the User opens the Wallet Instance and an activation begins (<strong>WI ACT</strong>).
 At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
 Hardware Key Tag, subject to obtaining the User's consent (see <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a> for more details).
@@ -240,7 +241,7 @@ without transitioning the Wallet Instance to another state (<strong>(Q)EEA PRE</
 <p>A <strong>Valid</strong> Wallet Instance MUST transition back to the <strong>Operational</strong> state due to <strong>PID EXP/REV/DEL</strong> transition, when the associated PID expires, is revoked by its Provider or either deleted by the User.</p>
 </section>
 <section id="transition-to-valid">
-<h2><span class="section-number">5.1.4.1.3. </span>Transition to Valid<a class="headerlink" href="#transition-to-valid" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.1.4.1.3. </span>Transition to Valid<a class="headerlink" href="#transition-to-valid" title="Link to this heading">¶</a></h2>
 <p>A transition to the Valid state occurs only when the Wallet Instance obtains a valid PID (<strong>PID ISS</strong>). In this state, Users can obtain and present
 new (Q)EAAs (<strong>(Q)EAA ISS/PRE</strong>), and present the PID (<strong>PID PRE</strong>). Please refer to <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a> and <a class="reference internal" href="credential-presentation.html#digital-credential-presentation"><span class="std std-ref">Digital Credential Presentation</span></a>.</p>
 <div class="admonition note">
@@ -251,14 +252,14 @@ Instance of the same Wallet Solution from the same Wallet Provider, the PID in t
 </div>
 </section>
 <section id="transition-to-uninstalled">
-<h2><span class="section-number">5.1.4.1.4. </span>Transition to Uninstalled<a class="headerlink" href="#transition-to-uninstalled" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">6.1.4.1.4. </span>Transition to Uninstalled<a class="headerlink" href="#transition-to-uninstalled" title="Link to this heading">¶</a></h2>
 <p>Across all states, <strong>Installed</strong>, <strong>Activated</strong>, <strong>Operational</strong>, or <strong>Valid</strong>, the Wallet Instance can be removed entirely through the Wallet Instance
 uninstall (<strong>WI UNINST</strong>) transition, leading to the <strong>Uninstalled</strong> state. If a Wallet Instance is <strong>Uninstalled</strong> it ends its lifecycle.</p>
 </section>
 <section id="wallet-instance-lifecycle-management">
-<h2><span class="section-number">5.1.4.1.5. </span>Wallet Instance Lifecycle Management<a class="headerlink" href="#wallet-instance-lifecycle-management" title="Link to this heading">¶</a></h2>
-<p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 5.2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle,
-<a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 5.3</span></a> shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
+<h2><span class="section-number">6.1.4.1.5. </span>Wallet Instance Lifecycle Management<a class="headerlink" href="#wallet-instance-lifecycle-management" title="Link to this heading">¶</a></h2>
+<p>While <a class="reference internal" href="#fig-wallet-instance-states"><span class="std std-numref">Fig. 6.2</span></a> shows the different states a Wallet Instance may acquire during its lifecycle,
+<a class="reference internal" href="#fig-wallet-instance-lifecycle"><span class="std std-numref">Fig. 6.3</span></a> shows the point of view of Wallet Instances and Wallet Providers in managing the Wallet Instance lifecycle
 and the effect on their local storage.</p>
 <figure class="align-default" id="id4">
 <span id="fig-wallet-instance-lifecycle"></span><p class="plantuml">
@@ -267,7 +268,7 @@ and the effect on their local storage.</p>
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dP9HgzCm5CVVyocEOGyj37ovZqvkRGDtC5r9gqCGHjOSQo1BPdhQESJlxhAvEMP1lQ___Fud_VNaiICLgDzQM2bhaM3kZebh41RcCpQ7nYAyLKwrk4L7x8LnZUqrmglyuMN-iCwz8sKSXjViQLw8TLKBAPRrnr8aAMFLqtArBeMibk_MvLBMCflNCS-qbcXhrIPSR_WK9eJVAFVMXndtGRaMOsYDmz6meeD5c46XkY-e5ySaILF6tlZUQHKEIR-P0h_NkPpo5BupO03LeIFS9ghvEa9d3Pb1aV4EFhbaDOSihrD-17dwkwhHZbGb3hwvhKhnuL8zTgz_hDWa-uvycFAAV50jNiUp7-p6fhcnAOCVZCPmPtFve1RTSrq23l_dSgToCe6Bofz8iklZUQ58GTc7rhZs14qdtIuOmXaFVkE9foTvYVPS-3Ms40jHYtC19gJQRXPVJXh1Q7q5SocoKJ2Ivrtl_u96yhpQ_R_S7d2utlw-BCP7FgBJ_TR-1000">Wallet Instance Lifecycle Management.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/dP9HgzCm5CVVyocEOGyj37ovZqvkRGDtC5r9gqCGHjOSQo1BPdhQESJlxhAvEMP1lQ___Fud_VNaiICLgDzQM2bhaM3kZebh41RcCpQ7nYAyLKwrk4L7x8LnZUqrmglyuMN-iCwz8sKSXjViQLw8TLKBAPRrnr8aAMFLqtArBeMibk_MvLBMCflNCS-qbcXhrIPSR_WK9eJVAFVMXndtGRaMOsYDmz6meeD5c46XkY-e5ySaILF6tlZUQHKEIR-P0h_NkPpo5BupO03LeIFS9ghvEa9d3Pb1aV4EFhbaDOSihrD-17dwkwhHZbGb3hwvhKhnuL8zTgz_hDWa-uvycFAAV50jNiUp7-p6fhcnAOCVZCPmPtFve1RTSrq23l_dSgToCe6Bofz8iklZUQ58GTc7rhZs14qdtIuOmXaFVkE9foTvYVPS-3Ms40jHYtC19gJQRXPVJXh1Q7q5SocoKJ2Ivrtl_u96yhpQ_R_S7d2utlw-BCP7FgBJ_TR-1000">Wallet Instance Lifecycle Management.</a></span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Through a Wallet Instance in an <strong>Installed</strong> state, a User is able to start the <strong>Wallet Instance Activation</strong> (<strong>WI ACT</strong>).
@@ -297,12 +298,12 @@ delete the Wallet Cryptographic Hardware Key pairs.</p>
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">5.1.4.1. Wallet Instance Lifecycle</a><ul>
-<li><a class="reference internal" href="#transition-to-installed">5.1.4.1.1. Transition to Installed</a></li>
-<li><a class="reference internal" href="#id1">5.1.4.1.2. Transition to Operational</a></li>
-<li><a class="reference internal" href="#transition-to-valid">5.1.4.1.3. Transition to Valid</a></li>
-<li><a class="reference internal" href="#transition-to-uninstalled">5.1.4.1.4. Transition to Uninstalled</a></li>
-<li><a class="reference internal" href="#wallet-instance-lifecycle-management">5.1.4.1.5. Wallet Instance Lifecycle Management</a></li>
+<li><a class="reference internal" href="#">6.1.4.1. Wallet Instance Lifecycle</a><ul>
+<li><a class="reference internal" href="#transition-to-installed">6.1.4.1.1. Transition to Installed</a></li>
+<li><a class="reference internal" href="#id1">6.1.4.1.2. Transition to Operational</a></li>
+<li><a class="reference internal" href="#transition-to-valid">6.1.4.1.3. Transition to Valid</a></li>
+<li><a class="reference internal" href="#transition-to-uninstalled">6.1.4.1.4. Transition to Uninstalled</a></li>
+<li><a class="reference internal" href="#wallet-instance-lifecycle-management">6.1.4.1.5. Wallet Instance Lifecycle Management</a></li>
 </ul>
 </li>
 </ul>
@@ -318,13 +319,13 @@ delete the Wallet Cryptographic Hardware Key pairs.</p>
             <div class="left">
                 
                 <a href="wallet-instance.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">5.1.4. </span>Wallet Instance</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">6.1.4. </span>Wallet Instance</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="wallet-instance-functionalities.html"><span><span class="section-number">5.1.4.2. </span>Wallet Instance Functionalities</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-instance-functionalities.html"><span><span class="section-number">6.1.4.2. </span>Wallet Instance Functionalities</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -332,7 +333,7 @@ delete the Wallet Cryptographic Hardware Key pairs.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 08/09/2025.
+      Last updated on 10/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

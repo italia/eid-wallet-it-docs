@@ -336,7 +336,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
 .. glossary::
     :sorted:
 
-    **Authentication Button**
+    **Pulsante di Autenticazione**
       Pulsante che consente all'Utente di avviare il processo di Autenticazione e di utilizzare i servizi forniti dai Verificatori di Attestati Elettronici.
   
     **Brand Identity**
@@ -352,9 +352,9 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
       Modalità di visualizzazione estesa degli Attestati Elettronici, che mostra tutti gli Attributi contenuti.
     
     **Discovery Page**
-      È la pagina che rappresenta il Touchpoint con la Relying Party dove l'Utente atterra per accedere alla propria area autenticata e ha lo scopo di mostrare all'Utente tutti i metodi di Autenticazione disponibili.
+      È la pagina presente nel Touchpoint della Relying Party dove l'Utente atterra per accedere alla propria area autenticata e ha lo scopo di mostrare all'Utente tutti i metodi di Autenticazione disponibili.
   
-    **Engagement Button**
+    **Pulsante di Ingaggio**
       Elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo (ad esempio per autenticarsi, per richiedere il rilascio di un Attestato Elettronico, ecc.).
   
     **Modello di Interazione**
@@ -365,6 +365,9 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
     
     **Visualizzazione in Anteprima**
       Modalità di visualizzazione compatta dell'Attestato Elettronico che consente di riconoscerla e distinguerla in un elenco di Attestati Elettronici mediante la presenza di dati o elementi minimi.
+
+    **Selection Page**
+      È la pagina presente nel Touchpoint della Relying Party dove l'Utente viene a conoscenza di tutte le Soluzioni Wallet presenti nel Registro e può scegliere con quale proseguire il processo di Autenticazione. 
 
     **Modello di Servizio**
       Insieme di interazioni tra attori e Touchpoint necessari per l'erogazione e la fruizione del servizio.
