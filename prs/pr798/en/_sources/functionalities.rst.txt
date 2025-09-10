@@ -347,7 +347,7 @@ The Relying Party MUST implement the Selection Page made available in Official R
 
 The Relying Party implementing the page: 
 
-- MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the Visual Identity section 2.1.2; 
+- MUST include the elements proper to the Visual Identity of the IT-Wallet System, including the Logo by placing it alongside its own logo according to the guidance provided in the :ref:`brand-identity:Visual Identity` section Visual Identity section; 
 
 - MUST ensure that the copy on the page mirrors that reported in Official Resources; 
 
