@@ -432,7 +432,7 @@ The Relying Party implementing the page:
 
 The Thank You Page is displayed after the User completes the Authentication process via their Wallet Instance. Its purpose is to prompt the User to proceed to the authenticated area of the Relying Party's Touchpoint.
 
-Relying Parties SHOULD implement the thank you page provided in the Official Resources. 
+Relying Parties SHOULD implement the Thank You Page provided in the Official Resources. 
 
 .. only:: format_html 
 
@@ -503,9 +503,9 @@ The Authentication Button has the following requirements:
 
 - The Authentication Button MUST maintain a minimum distance from other elements (``quiet zone``) of at least 24px; 
 
-- The Authentication Button MUST state “Login with IT-Wallet.”;
+- The Authentication Button MUST state "Login with IT-Wallet";
 
-- The Authentication Button SHOULD always be accompanied by an external link (e.g., “Learn more”) that links to the official website of the IT-Wallet System ``www.wallet.gov.it``; 
+- The Authentication Button SHOULD always be accompanied by an external link (e.g., "Learn more") that links to the official website of the IT-Wallet System ``www.wallet.gov.it``; 
 
 - Where space allows and/or the context requires it, the Authentication Button SHOULD be accompanied by a descriptive text, e.g., “IT-Wallet is the Italian Digital Wallet System that gives you full control over your information, without the issuing entity being aware of when and how it is used” or "Login through an IT-Wallet app, the Italian Digital Wallet System that simplifies interactions between citizens, public administrations and private entities, in the physical and digital world. With IT-Wallet you have full control over your information, sharing it only when necessary and securely, without the issuing entity knowing when and how it is used.". 
 
