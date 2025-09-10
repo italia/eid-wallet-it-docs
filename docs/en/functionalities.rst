@@ -362,6 +362,8 @@ The Relying Party implementing the page:
 
 - MUST include a Call to Action that allows the User to abort the operation and return to the Discovery Page. 
 
+The Relying Party MAY also include a text component on the Selection Page to promote the Authentication mode via IT-Wallet, which links back to the IT-Wallet System's official website, as represented in Official Resources. 
+
 **QR Code Page (cross-device only)**
 
 The QR Code Page is presented to the User who selects IT-Wallet System Authentication within a cross-device process. Its purpose is to prompt the User to scan the generated QR code using their Wallet Instance.
