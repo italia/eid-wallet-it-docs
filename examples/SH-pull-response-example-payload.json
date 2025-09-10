@@ -10,7 +10,7 @@
         "signalId": 1,
         "objectType": "domicilio",
         "objectId": "fec44ba9afc68492a387199c9faaaa5d954b19b39140637712a67cb90c726575",
-        "signalType": "UPDATE",
+        "signalType": "ATTRIBUTE_UPDATE",
         "eserviceId": "b1817321-0486-4c75-89e5-4ee297250418"
       },
       {

@@ -144,7 +144,7 @@ If any error occurs during the request parsing, the response MUST adhere to the 
 .. only:: html
 
   .. note::
-    A complete OpenAPI Specification of the Signal Collection e-Service is available :raw-html:`<a href="OAS3-SH-AS.html" target="_blank">here</a>`.
+    A complete OpenAPI Specification of the Signal Collection e-Service is available :raw-html:`<a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml" target="_blank">here</a>`.
 
 The Authentic Source MUST implement the necessary logic to handle the requests to the Signal Collection e-Service endpoint, in doing this it has to consider the following aspects:
 
@@ -187,7 +187,7 @@ If the Signal Distribution request is correctly processed, the e-Service will th
  - HTTP 200 OK if the request is correctly formed and there are no more Signals to request;
  - HTTP 206 OK if the request is correctly formed but there are more Signals to request.
 
-Regardless of the response code used, the response MUST have ``Content-Type`` set to ``application/jwt`` with the header and body containing the parameters described in :ref:`e-Service-pdnd:e-Service Response` with the addition of the body parameters:
+Regardless of the response code used, the response MUST have ``Content-Type`` set to ``application/jwt`` with the header and body containing the parameters described in :ref:`e-Service-pdnd:e-Service Response` with the addition of the body parameters ``Signal``, containing an array of Signals, and ``lastSignalId``, referencing the ``signalId`` of the last Signal transmitted by the Signal Distribution e-Service. Below, details of the additional response parameters are given.
 
 .. _table_Signal_retrieve_response_parameters:
 .. list-table::
@@ -234,14 +234,14 @@ If any error occurs during the request parsing, the response MUST adhere to the 
 .. only:: html
 
   .. note::
-    A complete OpenAPI Specification of the Signal Distribution e-Service is available :raw-html:`<a href="OAS3-SH-CI.html" target="_blank">here</a>`.
+    A complete OpenAPI Specification of the Signal Distribution e-Service is available :raw-html:`<a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml" target="_blank">Signal Hub - Pseudonymization</a>`.
 
 The Credential Issuer MUST implement the necessary logic to handle the Polling of the Signal Distribution e-Service endpoint, in doing this it has to consider the following aspects:
 
   - Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;
-  - the retention period of Signals in the Signal Hub is 30 days, meaning that Signals older than 30 days are not available for retrieval;
+  - the retention period of Signals in the Signal Hub is specified in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/la-guida-tecnica/retention-period-e-api-polling" target="_blank">Signal Hub User Guide</a>`. Signals older than the specified retention period are not available for retrieval;
   - the Signal Hub does not keep trak of the last ``signalId`` notified to a specific Credential Issuer. Thus each Credential Issuer MUST keep track of the last ``signalId`` it has received for each PDND e-Service ID;
-  - the Signal Distribution e-Service endpoint returns Signals in batches of at most 100 Signals at a time, specifying if more Signals are available for retrieval;  
+  - the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-Signal-hub" target="_blank">Signal Hub User Guide</a>`. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval;
 
 Signals Processing
 ^^^^^^^^^^^^^^^^^^^^
