@@ -17,7 +17,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Design Principles" href="design.html" />
+    <link rel="next" title="2. Brand Identity" href="brand-identity.html" />
     <link rel="prev" title="IT-Wallet Technical Documentation - 1.1.0" href="index.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -131,20 +131,21 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">6. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendix</a></li>
 </ul>
 
         </div>
@@ -160,7 +161,7 @@
 <h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
 <p>Over the last decade, digitalization has radically transformed the way citizens and businesses interact with public and private services, introducing new secure, accessible and user-friendly forms of service access.</p>
 <p>In Italy, Decree-Law No. 19 of 2 March 2024, converted, with amendments, by Law No. 56 of 29 April 2024, introduced Article 64-quater of Legislative Decree No. 82 of 7 March 2005, establishing the Italian Digital Wallet System - IT-Wallet System. The IT-Wallet System allows natural or legal persons to access public and private services through the secure presentation of Digital Credential, attesting to entitlements, delegations, characteristics, licenses or qualifications. Article 64-quater also provides for the adoption of one or more implementing decrees (decreti attuativi) to define the rules governing the operation of the IT-Wallet System, including the roles of the entities involved, technical and security requirements, and principles of economic sustainability, of which these Technical Specifications – drafted through an open and collaborative process – form an integral part.</p>
-<p>Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their wallet, the information required for accessing services provided by public and private
+<p>Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their Wallet, the information required for accessing services provided by public and private
 entities in the form of Digital Credentials. Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card, as well as a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or certified attribute.</p>
 <p>The main roles in the Wallet ecosystem are listed as follow:</p>
 <ul class="simple">
@@ -175,7 +176,7 @@ The development of the IT-Wallet System includes a phased experimentation proces
 <p>Other key elements that characterize this new Digital Identity Wallet paradigm include:</p>
 <ul class="simple">
 <li><p><strong>Confidentiality and control</strong>: Wallets enable individuals to maintain control over the information provided within the presented Credentials. They can choose what attributes or Credentials to present and to whom;</p></li>
-<li><p><strong>Security</strong>: Wallets leverage cryptographic mechanism for the integrity and the security of exchaged data. This avoids identity theft, fraud, and unauthorized access;</p></li>
+<li><p><strong>Security</strong>: Wallets leverage cryptographic mechanism for the integrity and the security of exchanged data. This avoids identity theft, fraud, and unauthorized access;</p></li>
 <li><p><strong>Interoperability</strong>: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities, enabling trusted interactions between individuals, organizations, and even across borders;</p></li>
 <li><p><strong>Efficiency and cost reduction</strong>: Individuals can easily manage their own Credentials, avoid handling multiple identity tokens, and reduce repetitive identity verification processes.</p></li>
 </ul>
@@ -191,7 +192,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 <li><p>maintain an adequate level of quality, promoting the principles of usability, accessibility and inclusivity.</p></li>
 </ul>
 <p>The second focus is to define the technical architecture and reference framework that will serve as a guideline for all the parties involved in the development of the IT-Wallet System.</p>
-<p>Additional documentation, tools and resources - hereinafter defined Official Resources - for the design and development of the IT-Wallet System Technical Solutions will be made available on the upcoming website <a class="reference external" href="http://www.wallet.gov.it">http://www.wallet.gov.it</a>.</p>
+<p>Additional documentation, tools and resources - hereinafter defined Official Resources - for the design and development of the IT-Wallet System Technical Solutions are available in the <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a> section and will be periodically updated.</p>
 </section>
 <section id="normative-language-and-conventions">
 <h2><span class="section-number">1.2. </span>Normative Language and Conventions<a class="headerlink" href="#normative-language-and-conventions" title="Link to this heading">¶</a></h2>
@@ -206,9 +207,11 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 <dl class="simple">
 <dt><strong>Section</strong> <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>:</dt><dd><p>Establishes scope, and normative language for the IT-Wallet ecosystem.</p>
 </dd>
-<dt><strong>Section</strong> <a class="reference internal" href="design.html#design-principles"><span class="std std-ref">Design Principles</span></a>:</dt><dd><p>Provides design principles, and brand identity requirements for the IT-Wallet ecosystem.</p>
+<dt><strong>Section</strong> <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>:</dt><dd><p>Provides the IT-Wallet Brand Identity requirements, guidance on the naming convention and on the application of the visual elements that identify the ecosystem.</p>
 </dd>
-<dt><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>:</dt><dd><p>Provides high-level system functionalities and guidance for navigating the specification based on implementation requirements.</p>
+<dt><strong>Section</strong> <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>:</dt><dd><p>Provides high-level view on the Architecture in terms of governance and operational processes enabled.</p>
+</dd>
+<dt><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>:</dt><dd><p>Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.</p>
 </dd>
 <dt><strong>Section</strong> <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>:</dt><dd><p>Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.</p>
 </dd>
@@ -222,7 +225,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 </dd>
 <dt><strong>Section</strong> <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>, <a class="reference internal" href="security-privacy-considerations.html#security-and-privacy-considerations"><span class="std std-ref">Security and Privacy Considerations</span></a>, and <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a> (<strong>Implementation Support</strong>):</dt><dd><p>Cryptographic requirements, security and privacy considerations, and log retention policies essential for compliant implementations.</p>
 </dd>
-<dt><strong>Section</strong> <a class="reference internal" href="defined-terms-and-references.html#defined-terms-and-references"><span class="std std-ref">Defined Terms and References</span></a>, <a class="reference internal" href="contribute.html#how-to-contribute"><span class="std std-ref">How to contribute</span></a>, and <a class="reference internal" href="open-source.html#open-source-releases"><span class="std std-ref">Open Source Releases</span></a> (<strong>Terminology and References</strong>):</dt><dd><p>Comprehensive terminology, normative references, contribution guidelines.</p>
+<dt><strong>Section</strong> <a class="reference internal" href="defined-terms-and-references.html#defined-terms-and-references"><span class="std std-ref">Defined Terms and References</span></a>, <a class="reference internal" href="official-resources.html#official-resources"><span class="std std-ref">Official Resources</span></a>, <a class="reference internal" href="contribute.html#how-to-contribute"><span class="std std-ref">How to contribute</span></a>, and <a class="reference internal" href="open-source.html#open-source-releases"><span class="std std-ref">Open Source Releases</span></a> (<strong>Terminology and References</strong>):</dt><dd><p>Comprehensive terminology, normative references, additional documentation, tools, resources and contribution guidelines.</p>
 </dd>
 <dt><strong>Section</strong> <a class="reference internal" href="appendix.html#appendix"><span class="std std-ref">Appendix</span></a>:</dt><dd><p>Provides supplementary technical details, implementation patterns, and testing frameworks including mobile application instance management, national platform integration specifications, and comprehensive test matrices for ecosystem validation.</p>
 </dd>
@@ -230,12 +233,13 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 </section>
 <section id="reading-paths-by-role">
 <h3><span class="section-number">1.3.2. </span>Reading Paths by Role<a class="headerlink" href="#reading-paths-by-role" title="Link to this heading">¶</a></h3>
-<p>Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>, <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>, and <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>, which establish the common vocabulary, design principles, and trust infrastructure that provide the underlying framework for the entire ecosystem.</p>
+<p>Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>, <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>, <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>, and <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>, which establish the common vocabulary, and trust infrastructure that provide the underlying framework for the entire ecosystem.</p>
 <section id="wallet-provider">
 <h4><span class="section-number">1.3.2.1. </span>Wallet Provider<a class="headerlink" href="#wallet-provider" title="Link to this heading">¶</a></h4>
 <p>Readers implementing or operating a <strong>Wallet Provider</strong> Solution should focus on understanding how to securely manage Digital Credentials and facilitate User interactions with other ecosystem participants.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
+<li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="wallet-solution.html#wallet-solution"><span class="std std-ref">Wallet Solution</span></a>: Complete wallet implementation requirements, components, and interaction processes.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>: Digital Credential data models, formats and lifecycle management.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-flows.html#digital-credential-flows"><span class="std std-ref">Digital Credential Flows</span></a>: Issuance and presentation flows for Digital Credentials.</p></li>
@@ -255,6 +259,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 <p>For readers who are interested in implementing a <strong>Credential Issuer</strong> Solution, they should focus on the Digital Credential lifecycle and issuance interaction flows.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
+<li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="credential-issuer-solution.html#credential-issuer-solution"><span class="std std-ref">Credential Issuer Solution</span></a>: Credential Issuer Solution - Complete Issuer implementation requirements and component details.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="authentic-sources.html#authentic-sources"><span class="std std-ref">Authentic Sources</span></a>: Understanding authoritative data source integration patterns.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>: Digital Credential formats and lifecycle management.</p></li>
@@ -278,6 +283,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 <p>If the reader wants to operate an <strong>Authentic Source</strong>, the focus should be on secure data provision and integration with Credential Issuers.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
+<li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="authentic-sources.html#authentic-sources"><span class="std std-ref">Authentic Sources</span></a>: Requirements and integration patterns with Credential Issuers.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="authentic-source-endpoint.html#authentic-source-endpoints"><span class="std std-ref">Authentic Source Endpoints</span></a>: API specifications and catalogue integration.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>: Data integrity, authentication, and security requirements.</p></li>
@@ -294,6 +300,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 <p>Readers interested in implementing or operating a <strong>Relying Party</strong> Solution to accept and verify Digital Credentials should focus on presentation protocols and verification mechanisms.</p>
 <p><strong>Essential sections:</strong></p>
 <ul class="simple">
+<li><p><strong>Section</strong> <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="relying-party-solution.html#relying-party-solution"><span class="std std-ref">Relying Party Solution</span></a>: Complete verifier implementation requirements and Entity Configuration.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="digital-credential-management.html#digital-credential-management"><span class="std std-ref">Digital Credential Management</span></a>: Understanding Digital Credential formats and validity verification.</p></li>
 <li><p><strong>Section</strong> <a class="reference internal" href="credential-presentation.html#digital-credential-presentation"><span class="std std-ref">Digital Credential Presentation</span></a>: Presentation flow implementation for both remote and proximity scenarios.</p></li>
@@ -324,8 +331,8 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 <p>The following phased reading approach is suggested:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p><strong>Foundation Phase</strong>: Read  Sections <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>, <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>, and <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a> to establish conceptual understanding of the IT-Wallet paradigm, design principles, and trust infrastructure.</p></li>
-<li><p><strong>Role-Specific Phase</strong>: Focus on primary role's essential sections to understand specific implementation requirements, main technical component, the general architecture and interaction flows (see Section <a class="reference internal" href="entities.html#entities"><span class="std std-ref">Entities</span></a> and Section <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a> for more details).</p></li>
+<li><p><strong>Foundation Phase</strong>: Read  Sections <a class="reference internal" href="#introduction"><span class="std std-ref">Introduction</span></a>, <span class="xref std std-ref">brand-identity:Brand-Identity</span>, <a class="reference internal" href="architecture-overview.html#architecture-overview"><span class="std std-ref">Architecture Overview</span></a>, and <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a> to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.</p></li>
+<li><p><strong>Role-Specific Phase</strong>: Focus on primary role's essential sections to understand specific User Experience, functional and implementation requirements, main technical component, the general architecture and interaction flows (see Section <a class="reference internal" href="functionalities.html#user-experience-design"><span class="std std-ref">User Experience Design</span></a>, <a class="reference internal" href="entities.html#entities"><span class="std std-ref">Entities</span></a> and Section <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a> for more details).</p></li>
 <li><p><strong>Integration Phase</strong>: Review secondary sections relevant to interactions with other ecosystem participants and platform integration requirements.</p></li>
 <li><p><strong>Validation Phase</strong>: Study security considerations, testing guidance, and compliance requirements according to Sections <a class="reference internal" href="security-privacy-considerations.html#security-and-privacy-considerations"><span class="std std-ref">Security and Privacy Considerations</span></a>, <a class="reference internal" href="log-retention-policy.html#general-log-retention-policies"><span class="std std-ref">General Log Retention Policies</span></a>, and <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a> for additional information.</p></li>
 </ol>
@@ -389,7 +396,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 
             <div class="right">
                 
-                    <a href="design.html"><span><span class="section-number">2. </span>Design Principles</span><span class="icon">&gt;</span></a>
+                    <a href="brand-identity.html"><span><span class="section-number">2. </span>Brand Identity</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -397,7 +404,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 10/09/2025.
+      Last updated on 16/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

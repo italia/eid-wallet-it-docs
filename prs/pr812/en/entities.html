@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Entities &#8212; IT-Wallet Technical Documentation - PR #812</title>
+    <title>6. Entities &#8212; IT-Wallet Technical Documentation - PR #812</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5.1. Wallet Solution" href="wallet-solution.html" />
-    <link rel="prev" title="4. The Infrastructure of Trust" href="trust.html" /> 
+    <link rel="next" title="6.1. Wallet Solution" href="wallet-solution.html" />
+    <link rel="prev" title="5. The Infrastructure of Trust" href="trust.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,26 +131,27 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Entities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">5.1. Wallet Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Credential Issuer Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Relying Party Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Entities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">6.1. Wallet Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">6.2. Credential Issuer Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">6.3. Relying Party Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">6.4. Authentic Sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendix</a></li>
 </ul>
 
         </div>
@@ -163,86 +164,86 @@
           <div class="body" role="main">
             
   <section id="entities">
-<h1><span class="section-number">5. </span>Entities<a class="headerlink" href="#entities" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">6. </span>Entities<a class="headerlink" href="#entities" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Entities Table of Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">5.1. Wallet Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution-requirements.html">5.1.1. Wallet Solution Requirements</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html#wallet-attestation-requirements">5.1.1.1. Wallet Attestation Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html#wscd-requirements">5.1.1.2. WSCD Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wallet-solution.html">6.1. Wallet Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution-requirements.html">6.1.1. Wallet Solution Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html#wallet-attestation-requirements">6.1.1.1. Wallet Attestation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html#wscd-requirements">6.1.1.2. WSCD Requirements</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution-components.html">5.1.2. Wallet Solution Components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-backend">5.1.2.1. Wallet Backend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-unit">5.1.2.2. Wallet Unit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution-components.html">6.1.2. Wallet Solution Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-backend">6.1.2.1. Wallet Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-unit">6.1.2.2. Wallet Unit</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">5.1.3. Wallet Solution Interaction Patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-instance.html">5.1.4. Wallet Instance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-lifecycle.html">5.1.4.1. Wallet Instance Lifecycle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance-functionalities.html">5.1.4.2. Wallet Instance Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">6.1.3. Wallet Solution Interaction Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-instance.html">6.1.4. Wallet Instance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-lifecycle.html">6.1.4.1. Wallet Instance Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance-functionalities.html">6.1.4.2. Wallet Instance Functionalities</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="backup-restore.html">5.1.5. Backup and Restore</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html#backup-flow">5.1.5.1. Backup Flow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html#restore-flow-for-hardware-binding-credential">5.1.5.2. Restore flow for Hardware Binding Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html">6.1.5. Backup and Restore</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html#backup-flow">6.1.5.1. Backup Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html#restore-flow-for-hardware-binding-credential">6.1.5.2. Restore flow for Hardware Binding Credential</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Wallet Provider Entity Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration-jwt-header">5.1.6.1. Wallet Provider Entity Configuration JWT Header</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration-jwt-payload">5.1.6.2. Wallet Provider Entity Configuration JWT Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-entity-configuration.html">6.1.6. Wallet Provider Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration-jwt-header">6.1.6.1. Wallet Provider Entity Configuration JWT Header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration-jwt-payload">6.1.6.2. Wallet Provider Entity Configuration JWT Payload</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Wallet Provider Metadata</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html#id2">5.1.7.1. wallet_provider metadata</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">5.2. Credential Issuer Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-requirements">5.2.1. Credential Issuer Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#component-details">5.2.2. Component Details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#frontend-component">5.2.2.1. Frontend Component</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-component">5.2.2.2. Credential Issuer Component</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#authorization-server">5.2.2.3. Authorization Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#relying-party-component">5.2.2.4. Relying Party Component</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#api-interface">5.2.2.5. API Interface</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#credential-lifecycle-management">5.2.2.6. Credential Lifecycle Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#trust-security-component">5.2.2.7. Trust &amp; Security Component</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#interaction-patterns">5.2.3. Interaction Patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-entity-configuration">5.2.4. Credential Issuer Entity Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#example-of-a-q-eaa-provider-entity-configuration">5.2.4.1. Example of a (Q)EAA Provider Entity Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-metadata">5.2.5. Credential Issuer Metadata</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadata-for-oauth-authorization-server">5.2.5.1. Metadata for oauth_authorization_server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadata-for-openid-credential-issuer">5.2.5.2. Metadata for openid_credential_issuer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-provider-metadata.html">6.1.7. Wallet Provider Metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html#id2">6.1.7.1. wallet_provider metadata</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">5.3. Relying Party Solution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html">5.3.1. Relying Party Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">5.3.2. Mobile Relying Party Instance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance-lifecycle">5.3.2.1. Mobile Relying Party Instance Lifecycle</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance-functionalities">5.3.2.2. Mobile Relying Party Instance Functionalities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="credential-issuer-solution.html">6.2. Credential Issuer Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-requirements">6.2.1. Credential Issuer Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#component-details">6.2.2. Component Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#frontend-component">6.2.2.1. Frontend Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-component">6.2.2.2. Credential Issuer Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#authorization-server">6.2.2.3. Authorization Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#relying-party-component">6.2.2.4. Relying Party Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#api-interface">6.2.2.5. API Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#credential-lifecycle-management">6.2.2.6. Credential Lifecycle Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#trust-security-component">6.2.2.7. Trust &amp; Security Component</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">5.3.3. Web Relying Party Instance</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance-functionalities">5.3.3.1. Web Relying Party Instance Functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#interaction-patterns">6.2.3. Interaction Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-entity-configuration">6.2.4. Credential Issuer Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#example-of-a-q-eaa-provider-entity-configuration">6.2.4.1. Example of a (Q)EAA Provider Entity Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html">5.3.4. Relying Party Entity Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">5.3.4.1. Example of a Relying Party Entity Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html#credential-issuer-metadata">6.2.5. Credential Issuer Metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadata-for-oauth-authorization-server">6.2.5.1. Metadata for oauth_authorization_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-solution.html#metadata-for-openid-credential-issuer">6.2.5.2. Metadata for openid_credential_issuer</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-metadata.html">5.3.5. Relying Party Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">5.4. Authentic Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-solution.html">6.3. Relying Party Solution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html">6.3.1. Relying Party Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">6.3.2. Mobile Relying Party Instance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance-lifecycle">6.3.2.1. Mobile Relying Party Instance Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance-functionalities">6.3.2.2. Mobile Relying Party Instance Functionalities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">6.3.3. Web Relying Party Instance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance-functionalities">6.3.3.1. Web Relying Party Instance Functionalities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-entity-configuration.html">6.3.4. Relying Party Entity Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html#example-of-a-relying-party-entity-configuration">6.3.4.1. Example of a Relying Party Entity Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-metadata.html">6.3.5. Relying Party Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="authentic-sources.html">6.4. Authentic Sources</a></li>
 </ul>
 </div>
 </section>
@@ -261,13 +262,13 @@
             <div class="left">
                 
                 <a href="trust.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">4. </span>The Infrastructure of Trust</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">5. </span>The Infrastructure of Trust</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="wallet-solution.html"><span><span class="section-number">5.1. </span>Wallet Solution</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-solution.html"><span><span class="section-number">6.1. </span>Wallet Solution</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -275,7 +276,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 10/09/2025.
+      Last updated on 16/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

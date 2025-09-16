@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.3. Digital Credentials Catalogue &#8212; IT-Wallet Technical Documentation - PR #812</title>
+    <title>7.3. Digital Credentials Catalogue &#8212; IT-Wallet Technical Documentation - PR #812</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Digital Credential Flows" href="digital-credential-flows.html" />
-    <link rel="prev" title="6.2. Digital Credential Lifecycle" href="credential-revocation.html" /> 
+    <link rel="next" title="8. Digital Credential Flows" href="digital-credential-flows.html" />
+    <link rel="prev" title="7.2. Digital Credential Lifecycle" href="credential-revocation.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,25 +131,26 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">5. Entities</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="credential-data-model.html">6.1. Digital Credential Data Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">6.2. Digital Credential Lifecycle</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Digital Credentials Catalogue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">6. Entities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="credential-data-model.html">7.1. Digital Credential Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-revocation.html">7.2. Digital Credential Lifecycle</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7.3. Digital Credentials Catalogue</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendix</a></li>
 </ul>
 
         </div>
@@ -162,7 +163,7 @@
           <div class="body" role="main">
             
   <section id="digital-credentials-catalogue">
-<h1><span class="section-number">6.3. </span>Digital Credentials Catalogue<a class="headerlink" href="#digital-credentials-catalogue" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">7.3. </span>Digital Credentials Catalogue<a class="headerlink" href="#digital-credentials-catalogue" title="Link to this heading">¶</a></h1>
 <p>The Digital Credentials Catalogue is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.</p>
 <p>The Digital Credential Catalogue aims to:</p>
 <blockquote>
@@ -194,12 +195,12 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080">Entity-Relationship diagram of Digital Credential Catalogue.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7.7 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/ZLJ1Rkis4BpxAxP6WQP00X-QtjeWgPEsFXGmuXGz6ZIvbeb8fCfTEbM__YrDELAUb6ST34khuSnmESjxOXKuLYKysiAoAc4PqA1ZcnwL57mH4Pwam1Pfzfrrkem6uPVbxM9vkrtwglPEy7UpsG_mY7lh43RhvzNBqwO7vbWh4tvQQ5zLtjsDVDbxnpVg3SbNUFFpGcDWkxTQCKv06p6wKpG5MdhzEW4M2GDDyUcBAJ1XEsAO07p5PgAx2J1hjbe5Cm69_-c3SWLkLSbJ-etqohwUW7nJPOaNAHVM4LkER5CuPhFtL5tfSmIlOJvCA7KHdGlW6GjB79hql1H4471eQ-3t85v07PKjrQv46A6JXTzJ7IpZh_DpfkO_Yg4r1lBkAlLTkF-MlvE6PVi_EeAtWmTZINivP53EYEg_4OalQIG-uU-soo4IFpXzy4dd9Rr1VarwwVUNSgf0EgbKoZgM7m4Vy9i3t1ULY8dcfY76wefYBT6qv4FpcpUD26ow2gJIITGxopxGkPig7HJK1qK8w2W6wmeWrFB0pScQQ1sLRlgwlP7kz2rHn42Zfmkh_34vU8WiJP1k6y3sBf9DAuP4SF4isq7eP0EMZNXUgv2OKdHo0ThAF9_ogQ_l4GJsK2Wf1R1kxqELsw1sFZBeSUN-O7NoUIhMmH-joRl_vrI1jjJkMMia6dgmZh48Yh4lcgeUCl471xdKQIlfP5gZDpu64KX2vnAqjQJ-foyD-22DTTBOD0sWc54uZ6XTx7Wtq6c0fBqVijrjg8lqTPVd7A6uAoqTiflVHQMD7JfJUm4Ahz0E4_nnXbQEPQ5c6LBBX_4rVJkVXZtuT1gPe8jjVs6-VZ2CzGQiQvSE-tyc6pSxo6fVyezFuZXc8TCDizVnTP7pO4_BzatlmjG3hdmV3XZJw12qaLuvOkKqGfq11dPDNhvzR0dw3bREs82Qo-RzHgN-bKfVsRYNECIg_080">Entity-Relationship diagram of Digital Credential Catalogue.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The following table summarizes the main information that MUST be provided by the Digital Credential Catalogue:</p>
 <table class="longtable docutils align-default" id="id2">
-<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Digital Credential Catalogue - Main information</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.1 </span><span class="caption-text">Digital Credential Catalogue - Main information</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -269,10 +270,10 @@
 </table>
 <p>The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalogue <cite>.well-known</cite> endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalogue</span></code> endpoint.</p>
 <section id="digital-credentials-categories">
-<h2><span class="section-number">6.3.1. </span>Digital Credentials Categories<a class="headerlink" href="#digital-credentials-categories" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.1. </span>Digital Credentials Categories<a class="headerlink" href="#digital-credentials-categories" title="Link to this heading">¶</a></h2>
 <p>Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.</p>
 <span id="it-wallet-dc-domains"></span><table class="longtable docutils align-default" id="id3">
-<caption><span class="caption-number">Table 6.2 </span><span class="caption-text">Digital Credential Domains and Categories</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.2 </span><span class="caption-text">Digital Credential Domains and Categories</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 30.0%" />
@@ -352,7 +353,7 @@
 </table>
 </section>
 <section id="digital-credentials-catalogue-structure">
-<h2><span class="section-number">6.3.2. </span>Digital Credentials Catalogue Structure<a class="headerlink" href="#digital-credentials-catalogue-structure" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.2. </span>Digital Credentials Catalogue Structure<a class="headerlink" href="#digital-credentials-catalogue-structure" title="Link to this heading">¶</a></h2>
 <p>Digital Credentials Catalogue contents is secured in a JWS that contains the following JOSE header parameters:</p>
 <table class="longtable docutils align-default" id="table-catalogue-parameters">
 <colgroup>
@@ -391,7 +392,7 @@
 </table>
 <p>The JWS payload contains the following parameters:</p>
 <table class="longtable docutils align-default" id="id4">
-<caption><span class="caption-number">Table 6.3 </span><span class="caption-text">First-level Fields of the Catalog</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.3 </span><span class="caption-text">First-level Fields of the Catalog</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -427,7 +428,7 @@
 </table>
 <p>Each element of the <code class="docutils literal notranslate"><span class="pre">credentials</span></code> array contains at least the following information:</p>
 <table class="longtable docutils align-default" id="id5">
-<caption><span class="caption-number">Table 6.4 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.4 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -584,7 +585,7 @@
 </table>
 <p>The <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> Object contains at least the following information:</p>
 <table class="longtable docutils align-default" id="id6">
-<caption><span class="caption-number">Table 6.5 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<caption><span class="caption-number">Table 7.5 </span><span class="caption-text">First-level Fields of Each Credential Entry</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -954,7 +955,7 @@
 </div>
 </section>
 <section id="claims-taxonomy">
-<h2><span class="section-number">6.3.3. </span>Claims Taxonomy<a class="headerlink" href="#claims-taxonomy" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.3. </span>Claims Taxonomy<a class="headerlink" href="#claims-taxonomy" title="Link to this heading">¶</a></h2>
 <p>The Digital Credential Catalogue, MUST include also a reference URI to Claim Taxonomy providing, in a single resource, the semantic information of all registered and available claims within the IT-Wallet ecosystem. It MUST be Credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet Technical Solutions.</p>
 <p>A non-normative example of the Claim Taxonomy is given below.</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -1221,10 +1222,10 @@
 </div>
 </section>
 <section id="digital-credentials-catalogue-endpoint">
-<h2><span class="section-number">6.3.4. </span>Digital Credentials Catalogue Endpoint<a class="headerlink" href="#digital-credentials-catalogue-endpoint" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">7.3.4. </span>Digital Credentials Catalogue Endpoint<a class="headerlink" href="#digital-credentials-catalogue-endpoint" title="Link to this heading">¶</a></h2>
 <p>The Digital Credentials Catalogue Endpoint MUST be a well-known HTTPS URI [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8615.html"><strong>RFC 8615</strong></a>] that provides public access to information related to the Credentials available in IT-Wallet.</p>
 <section id="digital-credentials-catalogue-request">
-<h3><span class="section-number">6.3.4.1. </span>Digital Credentials Catalogue Request<a class="headerlink" href="#digital-credentials-catalogue-request" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.4.1. </span>Digital Credentials Catalogue Request<a class="headerlink" href="#digital-credentials-catalogue-request" title="Link to this heading">¶</a></h3>
 <p>The Digital Credentials Catalogue Request MUST be an HTTP GET using the <code class="docutils literal notranslate"><span class="pre">application/jose</span></code> media type as in the following non-normative example.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/credential-catalogue</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">www.trust-registry.eid-wallet.example.it</span>
@@ -1237,7 +1238,7 @@
 </div>
 </section>
 <section id="digital-credentials-catalogue-response">
-<h3><span class="section-number">6.3.4.2. </span>Digital Credentials Catalogue Response<a class="headerlink" href="#digital-credentials-catalogue-response" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">7.3.4.2. </span>Digital Credentials Catalogue Response<a class="headerlink" href="#digital-credentials-catalogue-response" title="Link to this heading">¶</a></h3>
 <p>The Digital Credentials Catalogue Response MUST be a JWS that contains the parameters listed in the <a class="reference internal" href="#table-catalogue-parameters"><span class="std std-ref">table of Digital Credentials Catalogue parameters</span></a>.</p>
 <p>A non-normative example of the response is provided below.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>eyJ0eXAiOiJKT1NFIiwiYWxnIjoiRVMyNTYiLCJraWQiOiJlOWJjMDk3YS1jZTUxLTQwMzYtOTU2Mi1kMmFkZTg4MmRiMGQiLCJjdHkiOiJhcHBsaWNhdGlvbi9qc29uIn0.eyJjYXRhbG9nX3ZlcnNpb24iOiIxLjAiLCJpc3MiOiJodHRwczovL3RydXN0LXJlZ2lzdHJ5LmVpZC13YWxsZXQuZXhhbXBsZS5pdCIsImxhc3RfbW9kaWZpZWQiOiIyMDI1LTAzLTE1VDEyOjAwOjAwWiIsInRheG9ub215X3VyaSI6Imh0dHBzOi8vdHJ1c3QtcmVnaXN0cnkuZWlkLXdhbGxldC5leGFtcGxlLml0Ly53ZWxsLWtub3duL2NyZWRlbnRpYWwtdGF4b25vbXkiLCJ0YXhvbm9teV91cmkjaW50ZWdyaXR5Ijoic2hhMjU2LUxtWGZoLTljTGxKTlhOLVRzTWstUG1Lalo1dDBXUkw1Y2FfeEdnWDNjMVYiLCJjcmVkZW50aWFscyI6W3sidmVyc2lvbiI6IjEuMCIsImNyZWRlbnRpYWxfdHlwZSI6Im1ETCIsImxlZ2FsX3R5cGUiOiJwdWItZWFhIiwibG9jYWxpemF0aW9uIjp7ImRlZmF1bHRfbG9jYWxlIjoiaXQiLCJhdmFpbGFibGVfbG9jYWxlcyI6WyJlbiIsIml0IiwiZnIiLCJkZSJdLCJiYXNlX3VyaSI6Imh0dHBzOi8vdHJ1c3QtcmVnaXN0cnkuZWlkLXdhbGxldC5leGFtcGxlLml0Ly53ZWxsLWtub3duL2wxMG4vbWRsLyIsInZlcnNpb24iOiIxLjAuMCJ9LCJuYW1lX2wxMG5faWQiOiJjcmVkZW50aWFsLm1kbC5uYW1lIiwiZGVzY3JpcHRpb25fbDEwbl9pZCI6ImNyZWRlbnRpYWwubWRsLmRlc2NyaXB0aW9uIiwicmVzdHJpY3Rpb25fcG9saWN5Ijp7ImFsbG93ZWRfd2FsbGV0X2lkcyI6WyJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZy93YWxsZXRfc29sdXRpb24iLCJodHRwczovL3dhbGxldC1wcm92aWRlcjIuZXhhbXBsZS5vcmcvd2FsbGV0X3NvbHV0aW9uIl0sImFsbG93ZWRfaXNzdWVyX2lkcyI6WyJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyJdfSwicHJpY2luZ19wb2xpY3kiOnsibW9kZWxzIjpbeyJwcmljaW5nX3R5cGUiOiJ2ZXJpZmljYXRpb25fYmFzZWQiLCJwcmljZSI6MC4wMSwiY3VycmVuY3kiOiJFVVIifV0sInByaWNpbmdfbW9kZWxfdXJpIjoiaHR0cHM6Ly9leGFtcGxlLmNvbS9wcmljaW5nIn0sInZhbGlkaXR5X2luZm8iOnsibWF4X3ZhbGlkaXR5X2RheXMiOjM2NSwic3RhdHVzX21ldGhvZHMiOlsic3RhdHVzX2xpc3QiXSwiYWxsb3dlZF9zdGF0ZXMiOlsidmFsaWQiLCJyZXZva2VkIiwic3VzcGVuZGVkIl19LCJhdXRoZW50aWNhdGlvbiI6eyJ1c2VyX2F1dGhfcmVxdWlyZWQiOnRydWUsIm1pbl9sb2EiOiJoaWdoIiwic3VwcG9ydGVkX3NjaGVtZXMiOlsiaXQtd2FsbGV0Il19LCJwdXJwb3NlcyI6W3siaWQiOiJkcml2aW5nLWF1dGhvcml6YXRpb24iLCJkZXNjcmlwdGlvbl9sMTBuX2lkIjoicHVycG9zZS5kcml2aW5nX2F1dGhvcml6YXRpb24uZGVzY3JpcHRpb24iLCJjYXRlZ29yeSI6IkFVVEhPUklaQVRJT04iLCJzdWJjYXRlZ29yeSI6IkRSSVZJTkdfTElDRU5TRSIsImNsYWltc19yZXF1aXJlZCI6WyJmYW1pbHlfbmFtZSIsImdpdmVuX25hbWUiLCJpc3N1ZV9kYXRlIiwiZXhwaXJ5X2RhdGUiLCJpc3N1aW5nX2F1dGhvcml0eSIsImRvY3VtZW50X251bWJlciIsInBvcnRyYWl0IiwiZHJpdmluZ19wcml2aWxlZ2VzIiwidW5fZGlzdGluZ3Vpc2hpbmdfc2lnbiJdLCJjbGFpbV9yZWNvbW1lbmRlZCI6WyJiaXJ0aF9kYXRlIiwidW5fZGlzdGluZ3Vpc2hpbmdfc2lnbiIsImlzc3VpbmdfY291bnRyeSIsImlzc3VpbmdfanVyaXNkaWN0aW9uIl19LHsiaWQiOiJwZXJzb24taWRlbnRpZmljYXRpb24iLCJkZXNjcmlwdGlvbl9sMTBuX2lkIjoicHVycG9zZS5wZXJzb25faWRlbnRpZmljYXRpb24uZGVzY3JpcHRpb24iLCJjYXRlZ29yeSI6IklERU5USVRZIiwic3ViY2F0ZWdvcnkiOiJQRVJTT05fSURFTlRJRklDQVRJT04iLCJjbGFpbXNfcmVxdWlyZWQiOlsiZmFtaWx5X25hbWUiLCJnaXZlbl9uYW1lIiwiYmlydGhfZGF0ZSIsInBvcnRyYWl0IiwiZG9jdW1lbnRfbnVtYmVyIl0sImNsYWltX3JlY29tbWVuZGVkIjpbImV4cGlyeV9kYXRlIiwiaXNzdWluZ19hdXRob3JpdHkiXX1dLCJpc3N1ZXJzIjpbeyJpZCI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUub3JnIiwib3JnYW5pemF0aW9uX25hbWUiOiJEaWdpdGFsIENyZWRlbnRpYWwgSXNzdWVyIG9mIEV4YW1wbGUiLCJvcmdhbml6YXRpb25fY29kZSI6ImNpX2V4YW1wbGVfaXQiLCJvcmdhbml6YXRpb25fY291bnRyeSI6IklUIiwiY29udGFjdHMiOlsibWFpbHRvOmluZm9ybWF6aW9uaUBleGFtcGxlLml0IiwibWFpbHRvOnByb3RvY29sbG9AcGVjLmV4YW1wbGUuaXQiXSwibGVnYWxfdHlwZSI6InB1Yi1lYWEiLCJob21lcGFnZV91cmkiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZyIsImxvZ29fdXJpIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZS5vcmcvbG9nby5zdmciLCJwb2xpY3lfdXJpIjoiaHR0cHM6Ly9pc3N1ZXIuZXhhbXBsZS5vcmcvcHJpdmFjeSIsInRvc191cmkiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLm9yZy90ZXJtcyIsInNlcnZpY2VfZG9jdW1lbnRhdGlvbiI6Imh0dHBzOi8vaXNzdWVyLmV4YW1wbGUub3JnLy53ZWxsLWtub3duL3NlcnZpY2UtZG9jIiwiaXNzdWFuY2VfZmxvd3MiOnsiZGVmZXJyZWRfZmxvdyI6dHJ1ZSwibWF4X2RlZmVycmVkX2lzc3VhbmNlX3RpbWVfbWludXRlcyI6MTQ0MCwibm90aWZpY2F0aW9uX21ldGhvZHMiOlsicHVzaCIsInBvbGxpbmciXX19XSwiYXV0aGVudGljX3NvdXJjZXMiOlt7ImlkIjoiaHR0cHM6Ly9hdXRoZW50aWMtc291cmNlcy5leGFtcGxlLm9yZyIsIm9yZ2FuaXphdGlvbl9uYW1lIjoiQXV0aGVudGljIFNvdXJjZSBvZiBFeGFtcGxlIiwib3JnYW5pemF0aW9uX2NvZGUiOiJhc19leGFtcGxlX2l0Iiwib3JnYW5pemF0aW9uX2NvdW50cnkiOiJJVCIsImNvbnRhY3RzIjpbIm1haWx0bzppbmZvcm1hemlvbmlAZXhhbXBsZS5pdCIsIm1haWx0bzpwcm90b2NvbGxvQHBlYy5leGFtcGxlLml0Il0sImhvbWVwYWdlX3VyaSI6Imh0dHBzOi8vYXV0aHNvdXJjZS5leGFtcGxlLmNvbS8iLCJsb2dvX3VyaSI6Imh0dHBzOi8vYXV0aHNvdXJjZS5leGFtcGxlLmNvbS9pbWcvbG9nby5zdmciLCJzb3VyY2VfdHlwZSI6InB1YmxpYyIsInNlcnZpY2VfZG9jdW1lbnRhdGlvbiI6Imh0dHBzOi8vYXV0aGVudGljLXNvdXJjZXMuZXhhbXBsZS5vcmcvLndlbGwta25vd24vc2VydmljZS1kb2MiLCJkYXRhX3Byb3Zpc2lvbiI6eyJpbW1lZGlhdGVfZmxvdyI6ZmFsc2UsImRlZmVycmVkX2Zsb3ciOnRydWUsIm1heF9yZXNwb25zZV90aW1lX21pbnV0ZXMiOjYwLCJub3RpZmljYXRpb25fbWV0aG9kcyI6WyJwdXNoIl19fV0sImZvcm1hdHMiOlt7ImNvbmZpZ3VyYXRpb25faWQiOiJkY19zZF9qd3RfbURMIiwiZm9ybWF0IjoiZGMrc2Qtand0IiwidmN0IjoiaHR0cHM6Ly90cnVzdC1yZWdpc3RyeS5laWQtd2FsbGV0LmV4YW1wbGUuaXQvMS4wL21ETCIsInNjaGVtYV91cmkiOiJodHRwczovL3RydXN0LXJlZ2lzdHJ5LmVpZC13YWxsZXQuZXhhbXBsZS5pdC8ud2VsbC1rbm93bi9zY2hlbWFzL3NkLWp3dC9tREwiLCJzY2hlbWFfdXJpI2ludGVncml0eSI6InNoYTI1Ni1jOGI3MDg3MjhlNGM1NzU2ZTM1YzAzYWVhYzI1N2NhODc4ZDFmNzE3ZDdiNjFmNjIxYmU0ZDM2ZGJkOWI5YzE2In0seyJjb25maWd1cmF0aW9uX2lkIjoibXNvX21kb2NfbURMIiwiZm9ybWF0IjoibXNvX21kb2MiLCJkb2NUeXBlIjoib3JnLmlzby4xODAxMy41LjEiLCJzY2hlbWFfdXJpIjoiaHR0cHM6Ly90cnVzdC1yZWdpc3RyeS5laWQtd2FsbGV0LmV4YW1wbGUuaXQvLndlbGwta25vd24vc2NoZW1hcy9tZG9jL21ETCIsInNjaGVtYV91cmkjaW50ZWdyaXR5Ijoic2hhMjU2LWM4YjcwODcyOGU0YzU3NTZlMzVjMDNhZWFjMjU3Y2E4NzhkMWY3MTdkN2I2MWY2MjFiZTRkMzZkYmQ5YjljMTYifV0sImRpc3BsYXlfcHJvcGVydGllcyI6eyJ0ZW1wbGF0ZXMiOlt7ImF1dGhlbnRpY19zb3VyY2VfaWQiOiJodHRwczovL2F1dGhlbnRpYy1zb3VyY2VzLmV4YW1wbGUub3JnIiwidGVtcGxhdGVfdXJpIjoiaHR0cHM6Ly9hdXRoc291cmNlLmV4YW1wbGUuY29tLy53ZWxsLWtub3duL3RlbXBsYXRlcy9tREwuc3ZnIiwidGVtcGxhdGVfdXJpI2ludGVncml0eSI6InNoYTI1Ni04Y0xsSk5YTi1Uc01rLVBtS2paNXQwV1JMNWNhX3hHZ1gzYzFWTG1YZmgtOWMiLCJwcm9wZXJ0aWVzIjp7Im9yaWVudGF0aW9uIjoibGFuZHNjYXBlIiwiY29sb3Jfc2NoZW1lIjoibGlnaHQiLCJjb250cmFzdCI6ImhpZ2gifX1dLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzAwODU1OCIsInRleHRfY29sb3IiOiIjRkZGRkZGIiwibG9nb191cmkiOiJodHRwczovL3RydXN0LXJlZ2lzdHJ5LmVpZC13YWxsZXQuZXhhbXBsZS5pdC8ud2VsbC1rbm93bi9sb2dvcy9tREwuc3ZnIn0sImNsYWltcyI6W3sibmFtZSI6ImZhbWlseV9uYW1lIiwidGF4b25vbXlfcmVmIjoiSURFTlRJVFkuUEVSU09OQUxfREFUQS5mYW1pbHlfbmFtZSIsImRpc3BsYXlfbmFtZV9sMTBuX2lkIjoiY2xhaW1zLmZhbWlseV9uYW1lLm5hbWUiLCJuYW1lc3BhY2VzIjpbIm9yZy5pc28uMTgwMTMuNS4xIl19LHsibmFtZSI6ImdpdmVuX25hbWUiLCJ0YXhvbm9teV9yZWYiOiJJREVOVElUWS5QRVJTT05BTF9EQVRBLmdpdmVuX25hbWUiLCJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ImNsYWltcy5naXZlbl9uYW1lLm5hbWUiLCJuYW1lc3BhY2VzIjpbIm9yZy5pc28uMTgwMTMuNS4xIl19LHsibmFtZSI6ImJpcnRoX2RhdGUiLCJ0YXhvbm9teV9yZWYiOiJJREVOVElUWS5QRVJTT05BTF9EQVRBLmJpcnRoZGF0ZSIsImRpc3BsYXlfbmFtZV9sMTBuX2lkIjoiY2xhaW1zLmJpcnRoX2RhdGUubmFtZSIsIm5hbWVzcGFjZXMiOlsib3JnLmlzby4xODAxMy41LjEiXX0seyJuYW1lIjoiaXNzdWVfZGF0ZSIsInRheG9ub215X3JlZiI6IkNPTU1PTi5WQUxJRElUWS5pc3N1YW5jZV9kYXRlIiwiZGlzcGxheV9uYW1lX2wxMG5faWQiOiJjbGFpbXMuaXNzdWVfZGF0ZS5uYW1lIiwibmFtZXNwYWNlcyI6WyJvcmcuaXNvLjE4MDEzLjUuMSJdfSx7Im5hbWUiOiJleHBpcnlfZGF0ZSIsInRheG9ub215X3JlZiI6IkNPTU1PTi5WQUxJRElUWS5leHBpcnlfZGF0ZSIsImRpc3BsYXlfbmFtZV9sMTBuX2lkIjoiY2xhaW1zLmV4cGlyeV9kYXRlLm5hbWUiLCJuYW1lc3BhY2VzIjpbIm9yZy5pc28uMTgwMTMuNS4xIl19LHsibmFtZSI6Imlzc3VpbmdfYXV0aG9yaXR5IiwidGF4b25vbXlfcmVmIjoiSURFTlRJVFkuRE9DVU1FTlRTLmlzc3VpbmdfYXV0aG9yaXR5IiwiZGlzcGxheV9uYW1lX2wxMG5faWQiOiJjbGFpbXMuaXNzdWluZ19hdXRob3JpdHkubmFtZSIsIm5hbWVzcGFjZXMiOlsib3JnLmlzby4xODAxMy41LjEiXX0seyJuYW1lIjoiZG9jdW1lbnRfbnVtYmVyIiwidGF4b25vbXlfcmVmIjoiSURFTlRJVFkuRE9DVU1FTlRTLmRvY3VtZW50X251bWJlciIsImRpc3BsYXlfbmFtZV9sMTBuX2lkIjoiY2xhaW1zLmRvY3VtZW50X251bWJlci5uYW1lIiwibmFtZXNwYWNlcyI6WyJvcmcuaXNvLjE4MDEzLjUuMSJdfSx7Im5hbWUiOiJwb3J0cmFpdCIsInRheG9ub215X3JlZiI6IklERU5USVRZLkJJT01FVFJJQy5mYWNpYWxfaW1hZ2UiLCJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ImNsYWltcy5wb3J0cmFpdC5uYW1lIiwibmFtZXNwYWNlcyI6WyJvcmcuaXNvLjE4MDEzLjUuMSJdfSx7Im5hbWUiOiJkcml2aW5nX3ByaXZpbGVnZXMiLCJ0YXhvbm9teV9yZWYiOiJBVVRIT1JJWkFUSU9OLkRSSVZJTkdfTElDRU5TRS5jYXRlZ29yaWVzIiwiZGlzcGxheV9uYW1lX2wxMG5faWQiOiJjbGFpbXMuZHJpdmluZ19wcml2aWxlZ2VzLm5hbWUiLCJuYW1lc3BhY2VzIjpbIm9yZy5pc28uMTgwMTMuNS4xIl19LHsibmFtZSI6InVuX2Rpc3Rpbmd1aXNoaW5nX3NpZ24iLCJ0YXhvbm9teV9yZWYiOiJBVVRIT1JJWkFUSU9OLkRSSVZJTkdfTElDRU5TRS5jb3VudHJ5X2NvZGUiLCJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ImNsYWltcy51bl9kaXN0aW5ndWlzaGluZ19zaWduLm5hbWUiLCJuYW1lc3BhY2VzIjpbIm9yZy5pc28uMTgwMTMuNS4xIl19LHsibmFtZSI6ImFkbWluaXN0cmF0aXZlX251bWJlciIsInRheG9ub215X3JlZiI6IklERU5USVRZLkRPQ1VNRU5UUy5hZG1pbmlzdHJhdGl2ZV9udW1iZXIiLCJkaXNwbGF5X25hbWVfbDEwbl9pZCI6ImNsYWltcy5hZG1pbmlzdHJhdGl2ZV9udW1iZXIubmFtZSIsIm5hbWVzcGFjZXMiOlsib3JnLmlzby4xODAxMy41LjEiXX0seyJuYW1lIjoiaXNzdWluZ19jb3VudHJ5IiwidGF4b25vbXlfcmVmIjoiSURFTlRJVFkuRE9DVU1FTlRTLmlzc3VpbmdfY291bnRyeSIsImRpc3BsYXlfbmFtZV9sMTBuX2lkIjoiY2xhaW1zLmlzc3VpbmdfY291bnRyeS5uYW1lIiwibmFtZXNwYWNlcyI6WyJvcmcuaXNvLjE4MDEzLjUuMSJdfSx7Im5hbWUiOiJpc3N1aW5nX2p1cmlzZGljdGlvbiIsInRheG9ub215X3JlZiI6IklERU5USVRZLkRPQ1VNRU5UUy5pc3N1aW5nX2p1cmlzZGljdGlvbiIsImRpc3BsYXlfbmFtZV9sMTBuX2lkIjoiY2xhaW1zLmlzc3VpbmdfanVyaXNkaWN0aW9uLm5hbWUiLCJuYW1lc3BhY2VzIjpbIm9yZy5pc28uMTgwMTMuNS4xIl19XX1dLCJ3YWxsZXRfYXR0ZXN0YXRpb25zIjp7InZlcnNpb24iOiIxLjAiLCJjcmVkZW50aWFsX3R5cGUiOiJXYWxsZXRBdHRlc3RhdGlvbiIsIm5hbWUiOiJXYWxsZXQgQXR0ZXN0YXRpb24iLCJkZXNjcmlwdGlvbiI6IkF0dGVzdGF0aW9uIG9mIHRoZSBXYWxsZXQgY2FwYWJpbGl0aWVzIGFuZCBjb21wbGlhbmNlIHdpdGggdGhlIEVVREkgV2FsbGV0IHNwZWNpZmljYXRpb25zLiIsImFhbF92YWx1ZXNfc3VwcG9ydGVkIjpbImh0dHBzOi8vdHJ1c3QtbGlzdC5ldS9hYWwvbG93IiwiaHR0cHM6Ly90cnVzdC1saXN0LmV1L2FhbC9tZWRpdW0iLCJodHRwczovL3RydXN0LWxpc3QuZXUvYWFsL2hpZ2giXSwiZm9ybWF0cyI6W3siZm9ybWF0IjoiZGMrc2Qtand0IiwiY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF93YSIsInZjdCI6Imh0dHBzOi8vdHJ1c3QtcmVnaXN0cnkuZWlkLXdhbGxldC5leGFtcGxlLml0LzEuMC9XYWxsZXRBdHRlc3RhdGlvbiIsInNjaGVtYV91cmkiOiJodHRwczovL3RydXN0LXJlZ2lzdHJ5LmVpZC13YWxsZXQuZXhhbXBsZS5pdC8ud2VsbC1rbm93bi9zY2hlbWFzL3NkLWp3dC9XYWxsZXRBdHRlc3RhdGlvbiIsInNjaGVtYV91cmkjaW50ZWdyaXR5Ijoic2hhMjU2PThjTGxKTlhOLVRzTWstUG1Lalo1dDBXUkw1Y2FfeEdnWDNjMVZMbVhmaC05YyJ9LHsiZm9ybWF0IjoibXNvX21kb2MiLCJjb25maWd1cmF0aW9uX2lkIjoibXNvX21kb2Nfd2EiLCJkb2NUeXBlIjoiaXQuZWlkLXdhbGxldC50cnVzdC1yZWdpc3RyeS5XYWxsZXRBdHRlc3RhdGlvbi4xLjAiLCJzY2hlbWFfdXJpIjoiaHR0cHM6Ly90cnVzdC1yZWdpc3RyeS5laWQtd2FsbGV0LmV4YW1wbGUuaXQvLndlbGwta25vd24vc2NoZW1hcy9zZC1qd3QvV2FsbGV0QXR0ZXN0YXRpb24iLCJzY2hlbWFfdXJpI2ludGVncml0eSI6InNoYTI1Nj0zNGlvdXdlcmhpdWNoNHR2aDRrNWl2aHRrajU0d240MzItNDU2M2o0b2l1aCJ9LHsiZm9ybWF0Ijoib2F1dGgtY2xpZW50LWF0dGVzdGF0aW9uK2p3dCIsImNvbmZpZ3VyYXRpb25faWQiOiJqd3Rfd2EiLCJzY2hlbWFfdXJpIjoiaHR0cHM6Ly90cnVzdC1yZWdpc3RyeS5laWQtd2FsbGV0LmV4YW1wbGUuaXQvLndlbGwta25vd24vc2NoZW1hcy9zZC1qd3QvV2FsbGV0QXR0ZXN0YXRpb24iLCJzY2hlbWFfdXJpI2ludGVncml0eSI6InNoYTI1Nj1sZXd1aW9yZ2prLWg0dHZoNGs1aXZodGtqNTR3bjQzMi1xd2VpZmhqcjR3ZSJ9XSwiY2xhaW1zIjpbeyJuYW1lIjoic3ViIiwibmFtZXNwYWNlcyI6WyJpdC5laWQtd2FsbGV0LnRydXN0LXJlZ2lzdHJ5LldhbGxldEF0dGVzdGF0aW9uLjEuMCJdfSx7Im5hbWUiOiJhYWwiLCJuYW1lc3BhY2VzIjpbIml0LmVpZC13YWxsZXQudHJ1c3QtcmVnaXN0cnkuV2FsbGV0QXR0ZXN0YXRpb24uMS4wIl19LHsibmFtZSI6IndhbGxldF9saW5rIiwibmFtZXNwYWNlcyI6WyJpdC5laWQtd2FsbGV0LnRydXN0LXJlZ2lzdHJ5LldhbGxldEF0dGVzdGF0aW9uLjEuMCJdfSx7Im5hbWUiOiJ3YWxsZXRfbmFtZSIsIm5hbWVzcGFjZXMiOlsiaXQuZWlkLXdhbGxldC50cnVzdC1yZWdpc3RyeS5XYWxsZXRBdHRlc3RhdGlvbi4xLjAiXX1dfX0.aFRB3qye49_qT9qtgRlYVHlcL5exVJWMS3e_yktIYhb52C-9O7g80ErB9RHhq2g2yWxzdEO4Xx-7Jvn_jkTtiw
@@ -1261,13 +1262,13 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">6.3. Digital Credentials Catalogue</a><ul>
-<li><a class="reference internal" href="#digital-credentials-categories">6.3.1. Digital Credentials Categories</a></li>
-<li><a class="reference internal" href="#digital-credentials-catalogue-structure">6.3.2. Digital Credentials Catalogue Structure</a></li>
-<li><a class="reference internal" href="#claims-taxonomy">6.3.3. Claims Taxonomy</a></li>
-<li><a class="reference internal" href="#digital-credentials-catalogue-endpoint">6.3.4. Digital Credentials Catalogue Endpoint</a><ul>
-<li><a class="reference internal" href="#digital-credentials-catalogue-request">6.3.4.1. Digital Credentials Catalogue Request</a></li>
-<li><a class="reference internal" href="#digital-credentials-catalogue-response">6.3.4.2. Digital Credentials Catalogue Response</a></li>
+<li><a class="reference internal" href="#">7.3. Digital Credentials Catalogue</a><ul>
+<li><a class="reference internal" href="#digital-credentials-categories">7.3.1. Digital Credentials Categories</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-structure">7.3.2. Digital Credentials Catalogue Structure</a></li>
+<li><a class="reference internal" href="#claims-taxonomy">7.3.3. Claims Taxonomy</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-endpoint">7.3.4. Digital Credentials Catalogue Endpoint</a><ul>
+<li><a class="reference internal" href="#digital-credentials-catalogue-request">7.3.4.1. Digital Credentials Catalogue Request</a></li>
+<li><a class="reference internal" href="#digital-credentials-catalogue-response">7.3.4.2. Digital Credentials Catalogue Response</a></li>
 </ul>
 </li>
 </ul>
@@ -1285,13 +1286,13 @@
             <div class="left">
                 
                 <a href="credential-revocation.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">6.2. </span>Digital Credential Lifecycle</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">7.2. </span>Digital Credential Lifecycle</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="digital-credential-flows.html"><span><span class="section-number">7. </span>Digital Credential Flows</span><span class="icon">&gt;</span></a>
+                    <a href="digital-credential-flows.html"><span><span class="section-number">8. </span>Digital Credential Flows</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -1299,7 +1300,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 10/09/2025.
+      Last updated on 16/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

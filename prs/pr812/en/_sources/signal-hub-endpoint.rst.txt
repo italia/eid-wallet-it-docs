@@ -71,10 +71,15 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **signalId**
     - REQUIRED. A positive 64 bit integer number referencing the identifier of the Signal in chronological order.
   * - **objectType**
-    - REQUIRED. REQUIRED. Digital Credential Type. The value of this parameter is the same as the ``credential_type`` value present in the Catalogue. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
+    - REQUIRED. Digital Credential Type. The value of this parameter is the same as the ``credential_type`` value present in the Catalogue. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
   * - **objectId**
-    - REQUIRED. The pseudonym to which the Signal is bound. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
-  * - **SignalType**
+    - REQUIRED. The subject to which the Signal is bound. If the Signal 
+    
+      - refers to a cryptographic variation, then it MUST be set to ``-``. 
+      - has ``signalType`` ``CREATE``, then it MUST be set to the pseudonym of the Signal's subject, i.e., the User;
+      - has ``signalType`` ``UPDATE``, ``REVOKE`` or ``SUSPEND``, then it MUST be set to the Authentic Source's unique database identifier of the Digial Credential's attributes the Signal refers to.
+      
+  * - **signalType**
     - REQUIRED. Signal Type. It MUST be one of the following: 
     
       - ``ATTRIBUTE_UPDATE``, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;
@@ -82,8 +87,6 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
       - ``REVOKE``, when the Signal refers to the revocation of the attributes contained in the Digital Credential;
       - ``SUSPEND``, when the Signal refers to the temporary suspension of the attributes contained in the Digital Credential;
       - ``SALTUPDATE``, when the Signal refers to a change in the pseudonymization algorithm' salt value used by the Authentic Source.
-  * - **dataId**
-    - OPTIONAL. Authentic Source database identifier of the Digial Credential's attributes the Signal refers to. This parameter MUST be provided when the Signal refers to a set of multiple attributes in the Authentic Source system.   
   * - **eserviceId**
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
 
@@ -105,14 +108,14 @@ Non normative examples of Signal Collection requests for an UPDATE and a SEEDUPD
       "objectType": "domicilio"
       "objectId": "fec44ba9afc68492a387199c9faaaa5d954b19b39140637712a67cb90c726575"
       "eserviceId": "b1817321-0486-4c75-89e5-4ee297250418",
-      "SignalType": "UPDATE"
+      "signalType": "UPDATE"
     }
 
 .. code-block:: http
     :name: code_Signal_deposit_Request_2
 
     POST /1.0/push/Signals HTTP/1.1
-    Host: api.Signalhub.interop.pagopa.it
+    Host: api.signalhub.interop.pagopa.it
     Authorization: DPoP eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiI1NzBhNDE1ZS0wZTdmLTQxMGQtODVlZC1jNTVlYTU1Mzc5MzIiLCJpc3MiOiJ1YXQuaW50ZXJvcC5wYWdvcGEuaXQiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBmIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiMzM2YjYyY2FlZTc0YWFjMzUyOTM1MmJiM2I1ODM5NWFhYzU4MGRjNzYyMDE0Mzc3ZTRmNjdlODY5YWUzNzM4OSJ9LCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImNiZGJmNmZlZWY0ODA2MjI4ZGJmNDY0Yjc1MGE5NGMyOGQ4ZTUzMDFhNzE1ZmZjM2U2Y2QyZjk0YjZlOGUxNTQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.uL017GdfXzJ-9jhs6AUpwtkWLgyBgDWOtlrFvMltLp0C0NFwwMpOGnv-FxxwfYdJj--cteyCjGnmJZhekEKIEA
     Agid-JWT-Signature: eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6ImY3YjI1NDhjYTZjYjM4NzY2YTU5NTFiYiJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiI1NzBhNDE1ZS0wZTdmLTQxMGQtODVlZC1jNTVlYTU1Mzc5MzIiLCJpc3MiOiIzMTY3MDA5Mi1lZWMwLTRmOTUtODhkYS1lMWM3Y2U1ZTQ1MDUiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBkIiwic2lnbmVkX2hlYWRlcnMiOnsiZGlnZXN0IjoiU0hBLTI1Nj05NzYwMTg0NDlkMWJkMmJjMzY1MTdhODlkMzhhODBiMmQ4NjY3YTAwZGNjMmQzZGUyNmE2NDY5NjM0OGY5ZDAwIiwiY29udGVudC10eXBlIjoiYXBwbGljYXRpb24vanNvbiJ9fQ.P0iv1Lq2Yhw10Qu3XGikK6H8eb4flqzCfu2WwYZ-x7VbdbdnU3aWP2PsYVXu0Y2tBijQZC_6lx6uxUsG5GOLLQ
@@ -124,7 +127,7 @@ Non normative examples of Signal Collection requests for an UPDATE and a SEEDUPD
       "objectType": "-"
       "objectId": "-"
       "eserviceId": "b1817321-0486-4c75-89e5-4ee297250418",
-      "SignalType": "SALTUPDATE"
+      "signalType": "SALTUPDATE"
     }
 
 The Signal Collection e-Service response, acknowledging the correct parsing of the request, MUST have ``Content-Type`` set to ``application/jwt`` with the header and body containing the parameters described in :ref:`e-Service-pdnd:e-Service Response` with the addition of the body parameter:
@@ -178,7 +181,7 @@ Below it is provided a non normative example of a Signal Distribution request by
     :name: code_Signal_retrieve_Request
 
     GET /1.0/pull/Signals/b1817321-0486-4c75-89e5-4ee297250418?signalId=100&size=10 HTTP/1.1
-    Host: api.Signalhub.interop.pagopa.it
+    Host: api.signalhub.interop.pagopa.it
     Authorization: DPoP eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MzlmNGM3LTFlNWQtNGE4YS05ZmM2LTcyZDNiN2YwOTFlYyIsInR5cCI6ImF0K2p3dCJ9.eyJhdWQiOiJodHRwczovL2lzc3Vlci5leGFtcGxlLml0Iiwic3ViIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwibmJmIjoxNzM2ODQ2Njg4LCJwdXJwb3NlSWQiOiI1NzBhNDE1ZS0wZTdmLTQxMGQtODVlZC1jNTVlYTU1Mzc5MzIiLCJpc3MiOiJ1YXQuaW50ZXJvcC5wYWdvcGEuaXQiLCJleHAiOjE3MzY4NDY5MjgsImlhdCI6MTczNjg0NjY4OCwiY2xpZW50X2lkIjoiMzE2NzAwOTItZWVjMC00Zjk1LTg4ZGEtZTFjN2NlNWU0NTA1IiwianRpIjoiOGI5NzFiNDMtZTk5MC00NGZhLTkwMTMtMWIzNTNiZmM1YTBmIiwiZGlnZXN0Ijp7ImFsZyI6IlNIQTI1NiIsInZhbHVlIjoiMzM2YjYyY2FlZTc0YWFjMzUyOTM1MmJiM2I1ODM5NWFhYzU4MGRjNzYyMDE0Mzc3ZTRmNjdlODY5YWUzNzM4OSJ9LCJjbmYiOnsiamt0IjoiZjgyMTc2MDY2ZWIzOGZkMzM4MGQyZDNkMzRkZWI1ODkwZTY4NWVlOGU5ZTE1YTdlYjg0ODcyYTZmYWMzNDA2MyJ9fQ.y42yfMeW2H9h0b0j0BODUml8yF20stY9q3BwoVU5BB90afBj852Q0QlInncdhjXhUjLS1V76cGBxkutDNvxRNA
     DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwia2V5X29wcyI6WyJzaWduIl0sImtpZCI6ImRGVTNNRDI4REpfamZzZmloUHZpMm8tQ3RqTEVVejNwT0lWMEJkTk1mZjgiLCJjcnYiOiJQLTI1NiIsIngiOiJodXlYSVFOdjkwMm9Mc3BYNF96b25DOTRHNnlFbG42bHNkbS0xd003MzJvIiwieSI6Ikk5UERFYXdXSHFhRkRHeDFaa05rLTJQVjZXZHBjYUgzQWZPYkJTTGloZ3cifX0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImF0aCI6ImNiZGJmNmZlZWY0ODA2MjI4ZGJmNDY0Yjc1MGE5NGMyOGQ4ZTUzMDFhNzE1ZmZjM2U2Y2QyZjk0YjZlOGUxNTQiLCJodHUiOiJodHRwczovL3NlcnZlci5leGFtcGxlLmNvbS90b2tlbiIsImlhdCI6MTc2MjI2MjYxNn0.uL017GdfXzJ-9jhs6AUpwtkWLgyBgDWOtlrFvMltLp0C0NFwwMpOGnv-FxxwfYdJj--cteyCjGnmJZhekEKIEA
 
@@ -202,7 +205,7 @@ Regardless of the response code used, the response MUST have ``Content-Type`` se
       - **signalId**: REQUIRED. Integer corresponding to the identifier of the Signal in chronological order.
       - **objectType**: REQUIRED. Digital Credential Type. The value of this parameter is the same as the ``credential_type`` value present in the Catalogue. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
       - **objectId**: REQUIRED. The pseudonym to which the Signal is bound.
-      - **SignalType**: REQUIRED. Signal Type. It MUST be one of the following:
+      - **signalType**: REQUIRED. Signal Type. It MUST be one of the following:
       
         - ``ATTRIBUTE_UPDATE``, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;
         - ``CREATE``, when the Signal refers to the availability of the attributes of a specific Digital Credential;
@@ -210,7 +213,6 @@ Regardless of the response code used, the response MUST have ``Content-Type`` se
         - ``SUSPEND``, when the Signal refers to the temporary suspension of the attributes contained in the Digital Credential;
         - ``SALTUPDATE``, when the Signal refers to a change in the pseudonymization algorithm' salt value used by the Authentic Source.
       - **eserviceId**: REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the PDND is a Consumer of.
-      - **dataId**: OPTIONAL. Authentic Source database identifier of the Digial Credential's attributes the Signal refers to.  This parameter MUST be provided when the Signal refers to a set of multiple attributes in the Authentic Source system.
   * - **lastsignalId**
     - REQUIRED. Integer corresponding to the ``signalId`` of the last Signal included in the Signal Distribution response by the Signal Distribution e-Service. If no Signals are available, this value must be ``null``.
 

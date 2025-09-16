@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5.1.4.2.2. Wallet Attestation Issuance &#8212; IT-Wallet Technical Documentation - PR #812</title>
+    <title>6.1.4.2.2. Wallet Attestation Issuance &#8212; IT-Wallet Technical Documentation - PR #812</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5.1.4.2.3. Wallet Instance Revocation" href="wallet-instance-revocation.html" />
-    <link rel="prev" title="5.1.4.2.1. Wallet Instance Initialization and Registration" href="wallet-instance-registration.html" /> 
+    <link rel="next" title="6.1.4.2.3. Wallet Instance Revocation" href="wallet-instance-revocation.html" />
+    <link rel="prev" title="6.1.4.2.1. Wallet Instance Initialization and Registration" href="wallet-instance-registration.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -131,35 +131,36 @@
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design.html">2. Design Principles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">4. The Infrastructure of Trust</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">5. Entities</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">5.1. Wallet Solution</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">5.1.1. Wallet Solution Requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">5.1.2. Wallet Solution Components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">5.1.3. Wallet Solution Interaction Patterns</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">5.1.4. Wallet Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">5.1.5. Backup and Restore</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">5.1.6. Wallet Provider Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">5.1.7. Wallet Provider Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">6. Entities</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">6.1. Wallet Solution</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-requirements.html">6.1.1. Wallet Solution Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">6.1.2. Wallet Solution Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#wallet-solution-interaction-patterns">6.1.3. Wallet Solution Interaction Patterns</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="wallet-instance.html">6.1.4. Wallet Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">6.1.5. Backup and Restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">6.1.6. Wallet Provider Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">6.1.7. Wallet Provider Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">5.2. Credential Issuer Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">5.3. Relying Party Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">5.4. Authentic Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">6.2. Credential Issuer Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">6.3. Relying Party Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">6.4. Authentic Sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">6. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">7. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">8. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">9. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">10. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">11. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">12. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">13. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">14. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">15. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendix</a></li>
 </ul>
 
         </div>
@@ -172,7 +173,7 @@
           <div class="body" role="main">
             
   <section id="id1">
-<h1><span class="section-number">5.1.4.2.2. </span>Wallet Attestation Issuance<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">6.1.4.2.2. </span>Wallet Attestation Issuance<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <p>This section describes how the Wallet Provider issues a Wallet Attestation.</p>
 <figure class="align-default" id="id2">
 <p class="plantuml">
@@ -181,7 +182,7 @@
 
 </object></p>
 <figcaption>
-<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0waKBaXmg0HgLKfRWL3K5hX4YcRNazrHDlPYpsu9lnvxcsQtnUrb5TjlFjwRUJaDWbwwRQEm4sUxRK5UrMm8riv9uVweDsq4SCajMb4AIt4Uz8z0NWC6w4B4Jn2WVs7JaC2r3OAsf065RGjFKP-fvv8YIgZoB3ku9J_Sd2skmqCCIe2Zq7gsLUM9RBRCmhkU3NaeiDoGDKDeKMwKKgcrjvzYwHEueTyT1G44I_VWMl8ex2n8ZRAqFhwofm08-wnd8X4-O19Zxb4eaL0gVlOvpsigDy1hEFUxLbpbiQsvX2lqvXuzmLVQmTBUOGKphUlzxMf3kvLWfVKnS03iaHii6bBJp9TaKuEf8GlKrhIDnmPYABJ8FkKxt0u9swxGUWx_NNlkOo6bl7L2u7hoYSGyoWD7twulh-ukRouklgi79iy5vG19S71ha9hW2vb7rT0QS8KWMs09i2L1WuAAh4cL3cHYdL5whQrBww17GOSnnS-076d3sbEe9m43Pg_DU6jecYWhO4IN3PELLUflLMEezR0WjrTdxzv_c1sIpI4hwN4kwMlpNhZ5qawc7RYoA9sF9U0ZfDDibkjf3jaLcLwF4ntRGWadMOugFOsIyQFBLXW2-JH4hNFSClj_6E0zI_rIhZdaISzXb7XfSnnVK7xGYinGT6A1_8PFjksMh7c5nDFT6ssHZdbR98C_-qTBpc3BmjZmNpA37VhuswWkiAsoenozCUxxpnI3GgD6-SUiudbeRWPvP4xpkBqJyBcd_4PCxPYLEhJE1dfkqEavngfJigRRDly0">Sequence Diagram for Wallet Attestation acquisition.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/VLHDRnCn4BtxLupS0waKBaXmg0HgLKfRWL3K5hX4YcRNazrHDlPYpsu9lnvxcsQtnUrb5TjlFjwRUJaDWbwwRQEm4sUxRK5UrMm8riv9uVweDsq4SCajMb4AIt4Uz8z0NWC6w4B4Jn2WVs7JaC2r3OAsf065RGjFKP-fvv8YIgZoB3ku9J_Sd2skmqCCIe2Zq7gsLUM9RBRCmhkU3NaeiDoGDKDeKMwKKgcrjvzYwHEueTyT1G44I_VWMl8ex2n8ZRAqFhwofm08-wnd8X4-O19Zxb4eaL0gVlOvpsigDy1hEFUxLbpbiQsvX2lqvXuzmLVQmTBUOGKphUlzxMf3kvLWfVKnS03iaHii6bBJp9TaKuEf8GlKrhIDnmPYABJ8FkKxt0u9swxGUWx_NNlkOo6bl7L2u7hoYSGyoWD7twulh-ukRouklgi79iy5vG19S71ha9hW2vb7rT0QS8KWMs09i2L1WuAAh4cL3cHYdL5whQrBww17GOSnnS-076d3sbEe9m43Pg_DU6jecYWhO4IN3PELLUflLMEezR0WjrTdxzv_c1sIpI4hwN4kwMlpNhZ5qawc7RYoA9sF9U0ZfDDibkjf3jaLcLwF4ntRGWadMOugFOsIyQFBLXW2-JH4hNFSClj_6E0zI_rIhZdaISzXb7XfSnnVK7xGYinGT6A1_8PFjksMh7c5nDFT6ssHZdbR98C_-qTBpc3BmjZmNpA37VhuswWkiAsoenozCUxxpnI3GgD6-SUiudbeRWPvP4xpkBqJyBcd_4PCxPYLEhJE1dfkqEavngfJigRRDly0">Sequence Diagram for Wallet Attestation acquisition.</a></span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p><strong>Step 1</strong>: The User initiates a new operation that necessitates the acquisition of a Wallet Attestation.</p>
@@ -277,13 +278,13 @@
             <div class="left">
                 
                 <a href="wallet-instance-registration.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">5.1.4.2.1. </span>Wallet Instance Initialization and Registration</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">6.1.4.2.1. </span>Wallet Instance Initialization and Registration</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="wallet-instance-revocation.html"><span><span class="section-number">5.1.4.2.3. </span>Wallet Instance Revocation</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-instance-revocation.html"><span><span class="section-number">6.1.4.2.3. </span>Wallet Instance Revocation</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -291,7 +292,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 10/09/2025.
+      Last updated on 16/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
