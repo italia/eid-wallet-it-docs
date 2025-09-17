@@ -126,9 +126,9 @@ La Fonte Autentica PUÒ fornire all’Utente delle informazioni aggiuntive relat
 
 Segue un esempio di testo informativo: 
 
-**Titolo:** Hai già il documento fisico? 
-
-**Testo:** Per ottenere la versione digitale del [Nome documento] devi aver già ottenuto il relativo documento fisico. Se vuoi avere maggiori dettagli, [leggi più informazioni] (URL). 
+.. note::
+  **Titolo:** Hai già il documento fisico? 
+  **Testo:** Per ottenere la versione digitale del [Nome documento] devi aver già ottenuto il relativo documento fisico. Se vuoi avere maggiori dettagli, [leggi più informazioni] (URL). 
 
 Per approfondimenti si rimanda alla sezione :ref:`registry-catalogue:Catalogo degli Attestati Elettronici` (vedi claim ``user_information``). 
 
