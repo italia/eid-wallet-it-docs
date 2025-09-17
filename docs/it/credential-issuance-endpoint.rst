@@ -768,10 +768,7 @@ Il Credential Endpoint DEVE accettare e convalidare il *DPoP proof* inviato nel 
       - **jwt**: il JWT utilizzato come prova di possesso.
     - [`OpenID4VCI`_].
   * - **proofs**
-    - OBBLIGATORIO se il parametro ``proof`` è assente. Oggetto che fornisce una o più prove di possesso del materiale crittografico a cui saranno vincolate le Istanze di Credenziali emesse. L'oggetto ``proofs`` DEVE contenere i seguenti claim obbligatori:
-
-      - **proof_type**: stringa JSON che denota il tipo di prova in termini di formato. Il suo valore DEVE essere configurato con `jwt`.
-      - **jwt**: un array di JWT, in cui ogni elemento all'interno dell'array viene utilizzato come prova di possesso.
+    - OBBLIGATORIO se il parametro ``proof`` è assente, altrimenti NON DEVE essere utilizzato. Oggetto che fornisce una o più prove di possesso del materiale crittografico a cui saranno vincolate le Istanze di Credenziali emesse. L'oggetto ``proofs`` DEVE contenere un parametro denominato `jwt` contenente un array di JWT, dove ogni elemento viene utilizzato come prova di possesso.
     - [`OpenID4VCI`_].
   * - **transaction_id**
     - OBBLIGATORIO solo in caso di Deferred Flow. Stringa che identifica una transazione di emissione posticipata. NON DEVE essere presente nel flusso di emissione immediato.
