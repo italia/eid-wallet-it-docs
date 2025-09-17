@@ -167,7 +167,7 @@
   <section id="pdnd-signal-hub-endpoints">
 <h1><span class="section-number">9.5. </span>PDND Signal Hub Endpoints<a class="headerlink" href="#pdnd-signal-hub-endpoints" title="Link to this heading">¶</a></h1>
 <dl class="simple">
-<dt>Within the PDND platform, the Signal Hub acts as an intermediary between a PDND Provider and its PDND Consumers to centralize and facilitate the exchange of messages containing data variations called Signals. To achieve that the manager of the PDND platform, hereafter the PDND Manager, provides (playing the role of PDND e-Service Provider) two PDND Signal Hub e-Services:</dt><dd><ul class="simple">
+<dt>Within the PDND platform, the Signal Hub acts as an intermediary between a PDND Provider and its PDND Consumers to signal data variations. To achieve that, the manager of the PDND platform, hereafter the PDND Manager, provides (playing the role of PDND e-Service Provider) two PDND Signal Hub e-Services:</dt><dd><ul class="simple">
 <li><p>the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals (here, the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service);</p></li>
 <li><p>the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals (here, the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service).</p></li>
 </ul>
@@ -389,7 +389,13 @@
 <ul class="simple">
 <li><p><strong>signalId</strong>: REQUIRED. Integer corresponding to the identifier of the Signal in chronological order.</p></li>
 <li><p><strong>objectType</strong>: REQUIRED. Digital Credential Type. The value of this parameter is the same as the <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> value present in the Catalogue. If the Signal refers to a cryptographic variation, then it MUST be set to <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></li>
-<li><p><strong>objectId</strong>: REQUIRED. The pseudonym to which the Signal is bound.</p></li>
+<li><p><strong>objectId</strong>: REQUIRED. The subject to which the Signal is bound. If the Signal</p>
+<ul>
+<li><p>refers to a cryptographic variation, then it MUST be set to <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></li>
+<li><p>has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, then it MUST be set to the pseudonym of the Signal's subject, i.e., the User;</p></li>
+<li><p>has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>, <code class="docutils literal notranslate"><span class="pre">REVOKE</span></code> or <code class="docutils literal notranslate"><span class="pre">SUSPEND</span></code>, then it MUST be set to the Authentic Source's unique database identifier of the Digial Credential's attributes the Signal refers to.</p></li>
+</ul>
+</li>
 <li><p><strong>signalType</strong>: REQUIRED. Signal Type. It MUST be one of the following:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">ATTRIBUTE_UPDATE</span></code>, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;</p></li>
@@ -539,7 +545,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/09/2025.
+      Last updated on 17/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

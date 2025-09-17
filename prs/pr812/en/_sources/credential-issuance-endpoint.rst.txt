@@ -768,10 +768,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
       - **jwt**: the JWT used as proof of possession.
     - [`OpenID4VCI`_].
   * - **proofs**
-    - REQUIRED when the ``proof`` parameter is absent. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. The proofs object MUST contain the following mandatory claims:
-
-      - **proof_type**: JSON string denoting the proof type. It MUST be set with `jwt`.
-      - **jwt**: an array of JWT, where each element within the array is used as proof of possession.
+    - REQUIRED when the ``proof`` parameter is absent, otherwise MUST NOT be used. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named `jwt` containing an array of JWT, where each element within the array is used as proof of possession.
     - [`OpenID4VCI`_].
   * - **transaction_id**
     - REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction. It MUST NOT be present in immediate flow

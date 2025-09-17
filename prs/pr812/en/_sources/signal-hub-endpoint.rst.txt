@@ -8,7 +8,7 @@
 
 PDND Signal Hub Endpoints
 -------------------------
-Within the PDND platform, the Signal Hub acts as an intermediary between a PDND Provider and its PDND Consumers to centralize and facilitate the exchange of messages containing data variations called Signals. To achieve that the manager of the PDND platform, hereafter the PDND Manager, provides (playing the role of PDND e-Service Provider) two PDND Signal Hub e-Services:
+Within the PDND platform, the Signal Hub acts as an intermediary between a PDND Provider and its PDND Consumers to signal data variations. To achieve that, the manager of the PDND platform, hereafter the PDND Manager, provides (playing the role of PDND e-Service Provider) two PDND Signal Hub e-Services:
   - the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals (here, the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service);
   - the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals (here, the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service).
 
@@ -204,7 +204,12 @@ Regardless of the response code used, the response MUST have ``Content-Type`` se
     
       - **signalId**: REQUIRED. Integer corresponding to the identifier of the Signal in chronological order.
       - **objectType**: REQUIRED. Digital Credential Type. The value of this parameter is the same as the ``credential_type`` value present in the Catalogue. If the Signal refers to a cryptographic variation, then it MUST be set to ``-``.
-      - **objectId**: REQUIRED. The pseudonym to which the Signal is bound.
+      - **objectId**: REQUIRED. The subject to which the Signal is bound. If the Signal 
+    
+        - refers to a cryptographic variation, then it MUST be set to ``-``. 
+        - has ``signalType`` ``CREATE``, then it MUST be set to the pseudonym of the Signal's subject, i.e., the User;
+        - has ``signalType`` ``ATTRIBUTE_UPDATE``, ``REVOKE`` or ``SUSPEND``, then it MUST be set to the Authentic Source's unique database identifier of the Digial Credential's attributes the Signal refers to.
+      
       - **signalType**: REQUIRED. Signal Type. It MUST be one of the following:
       
         - ``ATTRIBUTE_UPDATE``, when the Signal refers to a change of status and/or value for a specific attribute associated with a Digital Credential;
