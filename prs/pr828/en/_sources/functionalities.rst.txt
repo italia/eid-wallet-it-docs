@@ -124,9 +124,9 @@ The Authentic Source MAY provide additional information related to an Electronic
 
 Following is an example of informative text: 
 
-**Title:** Do you already have the physical document? 
-
-**Text:** To obtain the digital version of [Document name], please make sure to already have obtained the corresponding physical document. For more details, [read more information] (URL). 
+.. note::
+  **Title:** Do you already have the physical document? 
+  **Text:** To obtain the digital version of [Document name], please make sure to already have obtained the corresponding physical document. For more details, [read more information] (URL). 
 
 For further information, please refer to the section :ref:`registry-catalogue:Digital Credentials Catalogue` (see claim ``user_information``). 
 
