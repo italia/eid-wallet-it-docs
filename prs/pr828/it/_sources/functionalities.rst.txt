@@ -122,7 +122,7 @@ La Fonte Autentica PUÒ fornire all’Utente delle informazioni aggiuntive relat
 
 - DEVE garantire l’aggiornamento costante delle informazioni; 
 
-DEVE prevedere un titolo e un testo all’interno del quale PUÒ includere il riferimento a canali esterni per indirizzare verso una procedura, approfondire un determinato argomento e/o aprire richieste di supporto. 
+- DEVE prevedere un titolo e un testo all’interno del quale PUÒ includere il riferimento a canali esterni per indirizzare verso una procedura, approfondire un determinato argomento e/o aprire richieste di supporto. 
 
 Segue un esempio di testo informativo: 
 
