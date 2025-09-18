@@ -193,6 +193,7 @@ Digital Credential Metadata Type
 
 The Metadata type document MUST be a JSON object and contains the following parameters.
 
+.. _table_metadata_type_json_obj:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -287,6 +288,7 @@ PID Claims
 
 Depending on the Digital Credential type **vct**, additional claims data MAY be added. The PID supports the following data:
 
+.. _table_sd-jwt-vc_pid_parameters:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -604,6 +606,7 @@ See :ref:`credential-data-model:Mobile Security Object` for details.
 
 An mdoc-CBOR Digital Credential MUST be compliant with the following structure:
 
+.. _table_mdoc_structure:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -626,6 +629,7 @@ Attribute Namespaces
 
 The **nameSpaces** contains one or more *nameSpace* entries, each identified by a name. Within each **nameSpace**, it includes one or more *IssuerSignedItemBytes*, each encoded as a CBOR byte string with Tag 24 (#6.24(bstr .cbor)), which appears as 24(<<... >>) in diagnostic notation. It represents the disclosure information for each digest within the `Mobile Security Object` and MUST contain the following attributes:
 
+.. _table_attribute_namespaces:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -652,6 +656,7 @@ Attributes
 
 The following **elementIdentifiers** MUST be included in a Digital Credential encoded in mdoc-CBOR within the respective *nameSpace*, unless otherwise specified:
 
+.. _table_element_identifiers_mdoc:
 .. list-table::
    :class: longtable
    :widths: 20 60 20
@@ -697,6 +702,7 @@ The **issuerAuth** represents the `Mobile Security Object` which is a `COSE Sign
 
 The **protected header** MUST contain the following parameter encoded in CBOR format:
 
+.. _table_protected_headers_mdoc:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -714,6 +720,7 @@ The **protected header** MUST contain the following parameter encoded in CBOR fo
 
 The **unprotected header** MUST contain the following parameters, unless otherwise specified:
 
+.. _table_unprotected_headers_mdoc:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -736,6 +743,7 @@ The **payload** MUST contain the *MobileSecurityObject*, without the `content-ty
 
 The `MobileSecurityObject` MUST have the following attributes, unless otherwise specified:
 
+.. _table_MobileSecurityObject_attributes:
 .. list-table::
     :class: longtable
     :widths: 20 60 20

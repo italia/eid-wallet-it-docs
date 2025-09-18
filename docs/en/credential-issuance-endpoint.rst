@@ -245,6 +245,7 @@ Below is a non-normative example of an error response.
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
+.. _table_par_error_code:
 .. list-table::
     :class: longtable
     :widths: 20 20 60
@@ -870,6 +871,7 @@ Below is a non-normative example of an error response.
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
+.. _table_credential_error_code:
 .. list-table::
     :class: longtable
     :widths: 20 20 60
@@ -1054,6 +1056,7 @@ Below is a non-normative example of an error response.
 
 In the following table are listed HTTP Status Codes and related error codes that are supported for the error response:
 
+.. _table_notification_error_code:
 .. list-table::
     :class: longtable
     :widths: 20 20 60

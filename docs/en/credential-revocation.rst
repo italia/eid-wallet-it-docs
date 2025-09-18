@@ -557,6 +557,7 @@ A non-normative example of a HTTP Status Assertion Response is given below.
 
 The Status Assertion MUST contain the parameters and claims defined below
 
+.. _table_status_assertion_claims:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -654,6 +655,7 @@ Below a non-normative example of a Status Assertion Response object in JWT forma
 
 The Status Assertion Error object MUST contain the following claims:
 
+.. _table_status_assertion_errors_obj:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -797,6 +799,8 @@ Status List Token
 
 The Status List Token is available at the Status List Endpoint and contains the following parameters.
 
+
+.. _table_status_list_endpoint_parameters:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -847,6 +851,7 @@ The Status List Token is available at the Status List Endpoint and contains the 
 
 A JSON-encoded Status List has the following structure:
 
+.. _table_status_list_structure:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -897,6 +902,7 @@ Credential Issuers, once a Digital Credential has been generated, MUST:
 
 The value of the claim ``status_list`` MUST be itself a JSON Object with the following parameters
 
+.. _table_status_list_parameters:
 .. list-table::
   :class: longtable
   :widths: 20 60 20

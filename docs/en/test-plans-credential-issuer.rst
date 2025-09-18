@@ -227,7 +227,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_045
     - Issuance, Interoperability
     - PAR Response HTTP Status Code table
-    - When PAR request processing encounters errors, the Credential Issuer responds as defined in :rfc:`9126`, according to the HTTP Status Codes
+    - When PAR request processing encounters errors, the Credential Issuer responds as defined in :rfc:`9126`, according to the :ref:`Table of HTTP Status Codes <table_par_error_code>`.
   * - CI_046
     - Issuance, Security and Privacy
     - User Identity Verification during authorization request
@@ -407,7 +407,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_085
     - Issuance, Interoperability
     - Credential Response Table of HTTP Status Codes
-    - When the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`], according to the Table of HTTP Status Codes
+    - When the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`], according to the :ref:`Table of HTTP Status Codes <table_credential_error_code>`.
   * - CI_086
     - Issuance, Interoperability
     - Unified Notification ID for Batch Operations
@@ -415,7 +415,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_087
     - Issuance, Interoperability
     - Notification Response Table of HTTP Status Codes
-    - When the Notification Request does not contain a valid Access Token, the Notification Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`], according to the Table of HTTP Status Codes
+    - When the Notification Request does not contain a valid Access Token, the Notification Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`], according to the :ref:`Table of HTTP Status Codes <table_notification_error_code>`.
   * - CI_088
     - Issuance, Security
     - Access Token Scope Restriction
@@ -439,7 +439,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_091
     - Issuance,Interoperability
     - OAuth Client Attestation PoP Validation for Refresh
-    - Credential Issuer successfully validates the OAuth-Client-Attestation-PoP parameter based on Section 4 of [OAUTH-ATTESTATION-CLIENT-AUTH]
+    - Credential Issuer successfully validates the OAuth-Client-Attestation-PoP parameter based on Section 4 of [`OAUTH-ATTESTATION-CLIENT-AUTH`_]
   * - CI_092
     - Issuance, Security
     - DPoP Proof JWT Validation for Refresh
@@ -540,4 +540,508 @@ This section provides the set of test cases designed for technical implementers 
     - Issuance, Privacy
     - User Consent for Attribute-Based Re-issuance
     - For re-issuance processes triggered by attribute changes, User consent is obtained before storing the new Digital Credential
+  * - CI_117
+    - Data Model and lifecycle, Interoperability
+    - Italian PID User attributes
+    - The Italian PID is successfully provided with the user attributes defined in the :ref:`PID parameters table <table_sd-jwt-vc_pid_parameters>`.
+  * - CI_118
+    - Data Model and lifecycle, Issuance, Interoperability
+    - (Q)EAA credential Formats
+    - (Q)EAA are Issued to a Wallet Instance in SD-JWT-VC or mdoc-CBOR data format.
+  * - CI_119
+    - Data Model and lifecycle, Interoperability
+    - PID/(Q)EAA Digital Credential Format
+    - PID/(Q)EAA is successfully issued in the form of Digital Credential with Digital Credential format as SD-JWT as specified in `SD-JWT-VC`_.
+  * - CI_120
+    - Data Model and lifecycle, Security
+    - Signature of the SD-JWT credential
+    - The Credential in SD-JWT format is signed using the Issuer's private key.
+  * - CI_121
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Type Metadata Provision
+    - SD-JWT is successfully provided with complete Type Metadata for the issued Digital Credential, conforming to Sections 6 and 6.3 of `SD-JWT-VC`_ specifications.
+  * - CI_122
+    - Data Model and lifecycle, Security
+    - SD-JWT Payload Structure Validation
+    - SD-JWT payload contains the required *_sd_alg* claim and all other mandatory claims as specified, with proper formatting and structure.
+  * - CI_123
+    - Data Model and lifecycle, Security
+    - SD-JWT Hash Algorithm Declaration
+    - The *_sd_alg* claim is present and set to a supported algorithm defined in Section Cryptographic Algorithms, indicating the hash algorithm used by the Issuer to generate digests as described in `SD-JWT`_ Section 4.1.1.
+  * - CI_124
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Selective Disclosure Organization
+    - Non-selectively disclosable claims appear directly in the SD-JWT payload as they are, while selectively disclosable claim digests (plus any decoys) are properly organized within _sd arrays as described in Section 4.2.4.1.
+  * - CI_125
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Disclosure Integrity Verification
+    - Each digest value successfully validates against its corresponding disclosure, with disclosures containing the required components: random salt, claim name (for object elements), and claim value.
+  * - CI_126
+    - Data Model and lifecycle, Interoperability
+    - Recommendation on SD-JWT Nested Object Selective Disclosure
+    - In a nested SD-JWT payload, every claim at each level of the JSON structure is explicitly marked as either selectively disclosable or not. As a consequence, the _sd claim containing digests can legitimately appear multiple times at different levels within the SD-JWT.
+  * - CI_127
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Disclosure digests positioning
+    - Array element disclosures are correctly positioned, with digests and decoy digests replacing original claim values in their exact array positions, maintaining structural integrity per Section 4.2.4.2. as specified in Section 4.2.4.2 of `SD-JWT`_.
+  * - CI_128
+    - Data Model and lifecycle, Security
+    - SD-JWT Array Element Digest Calculation
+    - Array elements digest values are calculated using a hash function over the disclosures, containing: a random salt and the array element.
+  * - CI_129
+    - Data Model and lifecycle, Privacy
+    - SD-JWT Array Disclosures
+    - Array-level selective disclosure operates correctly, allowing Holders to selectively disclose entire arrays or individual entries within arrays, as defined in Section 4.2.6 of `SD-JWT`_.
+  * - CI_130
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Combined Format Disclosure Delivery
+    - The Disclosures are successfully provided to the Holder together with the SD-JWT in the Combined Format for Issuance, formatted as an ordered series of base64url-encoded values with each value properly separated by a single tilde ('~') character.
+  * - CI_131
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT JOSE Header Parameter
+    - The JOSE header contains the parameter in the Credential :ref:`SD-JWT Parameters Table <table_pid_jose_header>`.
+  * - CI_132
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Payload Claims
+    - The JWT payload contains claims in the Credential :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`
+  * - CI_133
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Status List Parameter Structure
+    - When status parameter is set to status_list, it is a JSON Object containing the following sub-parameters: *idx* and *uri*.
+  * - CI_134
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Status Assertion Parameter Structure
+    - When the status parameter is set to "status_assertion", it successfully contains a properly structured JSON Object with the required *credential_hash_alg* claim indicating the hashing algorithm used for binding the Status Assertion to the Digital Credential, with sha-256 as the recommended algorithm.
+  * - CI_135
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Optional Credential Type Metadata Retrieval
+    - The Credential Type Metadata JSON Document is successfully retrieved either directly from the URL contained in the vct claim using HTTP GET method or via the vctm header parameter when provided.
+  * - CI_135a
+    - Data Model and lifecycle, Interoperability
+    - SD-JWT Case-Insensitive URI Matching
+    - When retrieving Credential Type Metadata via vct, URI string literal matching is performed in a case-insensitive manner, while the system operates without requiring the .well-known endpoint (as specified in Section 6.3.1 of `SD-JWT-VC`_), maintaining compatibility options for implementers who choose to use it for interoperability with other systems.
+  * - CI_136
+    - Data Model and lifecycle, Interoperability
+    - Metadata Document JSON Object Structure
+    - The Metadata type document is a JSON object containing the parameters in the :ref:`Digital Credential Metadata Type Table <table_metadata_type_json_obj>`.
+  * - CI_137
+    - Data Model and lifecycle, Interoperability
+    - Additional PID Claims
+    - Depending on the Digital Credential type specified in vct, additional claims data is successfully incorporated when required
+  * - CI_138
+    - Data Model and lifecycle, Interoperability
+    - Mdoc Credential Format
+    - The mdoc data elements are successfully encoded in CBOR format according to :rfc:`8949` specifications, ensuring proper binary serialization and compatibility with ISO/IEC 18013-5 standard.
+  * - CI_139
+    - Data Model and lifecycle, Interoperability
+    - Mdoc Component Structure Organization
+    - The mdoc Digital Credential is properly structured into distinct components including namespaces (*nameSpaces*) and cryptographic proof (*issuerAuth*)
+  * - CI_140
+    - Data Model and lifecycle, Privacy
+    - Mdoc Mobile Security Object Integrity Verification
+    - The Mobile Security Object (MSO) correctly stores cryptographic digests of attributes within nameSpaces, enabling Relying Parties to validate disclosed attributes against corresponding digestID values while maintaining privacy of undisclosed information. See :ref:`credential-data-model:Mobile Security Object` for details
+  * - CI_141
+    - Data Model and lifecycle, Interoperability
+    - Mdoc-CBOR Structure Compliance
+    - The mdoc-CBOR Digital Credential successfully conforms to the required structure as specified in the compliance :ref:`table <table_mdoc_structure>`.
+  * - CI_142
+    - Data Model and lifecycle, Interoperability
+    - Namespace Structure Organization
+    - The nameSpaces correctly contains one or more nameSpace entries, each properly identified by a unique name for organized data categorization.
+  * - CI_143
+    - Data Model and lifecycle, Interoperability
+    - Namespaces IssuerSignedItemBytes Encoding
+    - Within each nameSpace, one or more IssuerSignedItemBytes are correctly encoded as CBOR byte strings with Tag 24 (#6.24(bstr .cbor)), appearing as 24(\<\<\... \>\>) in diagnostic notation
+  * - CI_144
+    - Data Model and lifecycle, Interoperability
+    - Namespace Disclosure Information Attributes
+    - Each IssuerSignedItemBytes successfully represents the disclosure information for corresponding digests within the *Mobile Security Object* and contain all the attributes as specified in the compliance :ref:`table <table_attribute_namespaces>`.
+  * - CI_145
+    - Data Model and lifecycle, Interoperability
+    - Namespace ElementIdentifier Inclusion
+    - All elementIdentifiers in the elementIdentifiers attribute :ref:`table <table_element_identifiers_mdoc>` are properly included in the Digital Credential encoded in mdoc-CBOR within their respective nameSpaces, unless, otherwise specified
+  * - CI_146
+    - Data Model and lifecycle, Interoperability
+    - Mobile Security Object COSE Structure
+    - The issuerAuth successfully represents the Mobile Security Object as a properly formatted COSE Sign1 Document according to :rfc:`9052`, containing the complete required data structure with: protected header, unprotected header, payload and signature components.
+  * - CI_147
+    - Data Model and lifecycle, Interoperability
+    - Mobile Security Object Protected Header Parameter Encoding
+    - The protected header successfully contains the parameters properly encoded in CBOR format according to the corresponding :ref:`table <table_protected_headers_mdoc>`
+  * - CI_148
+    - Data Model and lifecycle, Interoperability
+    - Mobile Security Object Protected Header Algorithm
+    - The protected header successfully contains the required signature algorithm parameter
+  * - CI_148a
+    - Data Model and lifecycle, Interoperability
+    - Not Recommended elements in the Mobile Security Object Protected Header
+    - The protected header does not contain elements different from the signature algorithm
+  * - CI_149
+    - Data Model and lifecycle, Interoperability
+    - Mobile Security Object Unprotected Header Parameter Encoding
+    - Unless otherwise specified, the unprotected header contain the parameters according to the corresponding :ref:`table <table_unprotected_headers_mdoc>`.
+  * - CI_149a
+    - Data Model and lifecycle, Interoperability
+    - Mobile Security Object x5chain inclusion
+    - The *x5chain* is correctly included in the unprotected header
+  * - CI_150
+    - Data Model and lifecycle, Interoperability
+    - Mobile Security Object Payload Structure
+    - The payload successfully contains the MobileSecurityObject properly encoded as a byte string (bstr) using CBOR Tag 24, with the content-type COSE Sign header parameter correctly excluded from the structure.
+  * - CI_151
+    - Data Model and lifecycle, Interoperability
+    - Mobile Security Object Attributes Compliance
+    - The MobileSecurityObject successfully contains all required attributes as specified in the compliance :ref:`table <table_MobileSecurityObject_attributes>`, with proper formatting and values unless explicitly exempted by specification requirements.
+  * - CI_152
+    - Issuance, Interoperability
+    - Wallet Instance State verification
+    - Credential Issuer successfully verifies that Wallet Instance is in Operational or Valid state and proceeds with Digital Credential issuance.
+  * - CI_153
+    - Data Model and lifecycle, Interoperability
+    - Credential State Management for Activation
+    - A Digital Credential successfully transitions to Valid state when start date of validity is reached, or when unsuspension process is completed for a previously suspended (Q)EAA.
+  * - CI_154
+    - Data Model and lifecycle, Interoperability
+    - Automatic Credential Expiration Management
+    - A Digital Credential successfully transitions to the Expired state when it automatically expires upon reaching its end date of validity (PID/(Q)EAA EXP),
+  * - CI_155
+    - Data Model and lifecycle, Interoperability
+    - Credential Revocation Process Management
+    - A Digital Credential successfully changes from Issued, Valid or Suspended states to Revoked state when it is actively revoked by the Credential Issuer by a revocation process (PID/(Q)EAA REV).
+  * - CI_156
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Revocation Use Cases
+    - Digital Credential Revocation is correctly implemented for every use case
+  * - CI_156a
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Revocation - Technical Security Compromise
+    - Digital Credential is successfully revoked when cryptographic material compromise is detected, with immediate invalidation and status update in revocation registries.
+  * - CI_156b
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Revocation - User Request
+    - Digital Credential is successfully revoked upon explicit User request
+  * - CI_156c
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Revocation - Attribute Updates
+    - Digital Credential is automatically revoked when Authentic Sources notify attribute changes that invalidate the credential, triggering re-issuance process if applicable.
+  * - CI_156d
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Revocation - Source-Initiated Revocation
+    - Digital Credential is immediately revoked when Authentic Source notifies revocation of underlying attributes
+  * - CI_156e
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Revocation - Wallet Instance Revocation
+    - All Digital Credentials are revoked when the containing Wallet Instance is revoked
+  * - CI_156f
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Revocation - Judicial/Supervisory Order
+    - Digital Credential is immediately revoked when illegal activities are reported by Judicial or Supervisory Bodies
+  * - CI_156g
+    - Data Model and lifecycle, Interoperability
+    - PID Revocation - Identity Provider Breach
+    - PID is revoked when breach detection occurs in the Identity Provider used for User authentication during PID issuance
+  * - CI_157
+    - Data Model and lifecycle, Interoperability
+    - Optional (Q)EAA Revocation Following PID Revocation
+    - (Q)EAA Provider successfully evaluates PID revocation status and revoke associated (Q)EAA credentials
+  * - CI_158
+    - Data Model and lifecycle, Interoperability
+    - (Q)EAA State Change to Suspended
+    - (Q)EAA successfully transitions from Issued or Valid state to Suspended state when it is suspended by the Credential Issuer ((Q)EAA SUSP)
+  * - CI_159
+    - Data Model and lifecycle, Interoperability
+    - (Q)EAA Suspension Duration and State Recovery
+    - Suspended (Q)EAA remains in Suspended state until suspension conditions are resolved and credential is restored to previous state Issued or Valid, or transitions to Revoked, Expired, or deleted
+  * - CI_159a
+    - Data Model and lifecycle, Interoperability
+    - (Q)EAA Suspension - Attribute Validity Changes
+    - The suspension of a (Q)EAA is based on the validity status of its contained attributes
+  * - CI_159b
+    - Data Model and lifecycle, Interoperability
+    - (Q)EAA Suspension - User Request
+    - (Q)EAA successfully transitions to Suspended state upon explicit User request.
+  * - CI_160
+    - Data Model and lifecycle, Interoperability
+    - Batch-Issued Digital Credentials Individual Lifecycle Management
+    - Each Digital Credential from a batch issuance successfully enters its own independent lifecycle state machine. All state transitions (Issued → Valid → Expired/Suspended/Revoked) still occur on a per Credential basis, using Credential's individual parameters
+  * - CI_161
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Generation and Storage
+    - Credential Issuer successfully generates Digital Credential following issuance request completion and stores it in local storage immediately after successful issuance.
+  * - CI_161a
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential State Management
+    - Credential Issuer successfully updates Digital Credential state locally for revocation, suspension, or unsuspension events triggered by technical security reasons, User requests, or by external entities (e.g., Users and Authentic Sources)
+  * - CI_161b
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Data Purging
+    - Credential Issuer successfully removes Digital Credentials from local storage after reaching the Expired state or based on Credential Issuer retention policies.
+  * - CI_162
+    - Data Model and lifecycle, Interoperability
+    - Credential Issuer Direct Validity Status Management
+    - Credential Issuer directly manages the validity status of issued Digital Credentials and correctly manages the triggering of the Digital Credential revocation or suspension process by other actors.
+  * - CI_162a
+    - Data Model and lifecycle, Interoperability
+    - User-Initiated Revocation via Issuer Web Service
+    - User successfully initiates Digital Credential revocation/suspension through Credential Issuer's web service, with authentication verification and revocation request processing.
+  * - CI_162b
+    - Data Model and lifecycle, Interoperability
+    - Authentic Source-Triggered Revocation
+    - Authentic Source successfully triggers Digital Credential revocation/suspension process when Credential attributes are updated or change validity status.
+  * - CI_163
+    - Data Model and lifecycle, Security
+    - User Access to Issuer Web Portal with LoA Authentication
+    - Credential Issuer ensures that users can successfully access the secure area of its web portal. This access requires authentication with a Level of Assurance that is at least equal to the Level of Assurance used during the initial credential issuance.
+  * - CI_163a
+    - Data Model and lifecycle, Interoperability
+    - User Access to Digital Credentials Database View
+    - Credential Issuer successfully provides Users with complete view of all their Digital Credentials contained in the Issuer's database through the web portal
+  * - CI_163b
+    - Data Model and lifecycle, Interoperability
+    - User Data Authenticity Verification via Web Portal
+    - Credential Issuer successfully enables Users to verify data authenticity of their Digital Credentials through the web portal
+  * - CI_163c
+    - Data Model and lifecycle, Interoperability
+    - User Validity Status Management via Web Portal
+    - Credential Issuer successfully allows Users to view and update validity status of their Digital Credentials through the web portal (revoke their Digital Credentials and, if it is supported by the Issuer, suspend them).
+  * - CI_164
+    - Data Model and lifecycle, Interoperability
+    - PID Revocation and Wallet Instance Status Update on New PID Issuance
+    - When User activates another Wallet Instance from the same Wallet Provider using the same Wallet Solution and obtains a new PID, the previous PID is successfully revoked and the previous Wallet Instance successfully transitions to operational status, ensuring single active PID per User per Wallet Provider.
+  * - CI_165
+    - Data Model and lifecycle, Interoperability
+    - PID Revocation Following User Death and ANPR Status Change
+    - User's death successfully triggers change in validity status of User's identification attributes in the public registry (ANPR), which automatically produces PID revocation.
+  * - CI_166
+    - Data Model and lifecycle, Interoperability
+    - PID Revocation Notification Requirement
+    - Credential Issuer successfully sends notification of PID revocation event to the User within 24 hours of revocation occurrence
+  * - CI_167
+    - Data Model and lifecycle, Interoperability
+    - Recommended Non-PID Credential Revocation Notification
+    - Credential Issuer sends notification of revocation event to the User for any Digital Credential other than PID
+  * - CI_168
+    - Data Model and lifecycle, Interoperability
+    - Multi-Channel Revocation Notification Delivery
+    - Credential Issuer successfully delivers revocation notifications through verified and secure communication channels (email, telephone, or other authenticated channels), including complete information about the Credential revocation status and reason.
+  * - CI_169
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Status Update on Revocation
+    - Credential Issuer successfully updates Digital Credential status immediately when revocation occurs
+  * - CI_170
+    - Data Model and lifecycle, Interoperability
+    - Wallet Instance Revocation Endpoint via PDND
+    - Credential Issuer successfully provides web service for Wallet Instance Revocation endpoint defined using PDND specifications, with implementation compliant to e-Service PDND Credential Issuer Catalogue requirements.
+  * - CI_171
+    - Data Model and lifecycle, Interoperability
+    - Credential Update and Status Notification Service via PDND
+    - Credential Issuer successfully provides web service available via PDND for Credential update notification and validity status as defined in Section e-Service PDND Credential Issuer Catalogue specifications.
+  * - CI_172
+    - Data Model and lifecycle, Interoperability
+    - Credential Status Update Following Data Change Notification
+    - Credential Issuer successfully updates Credential Status according to the validity mechanism's defined mode upon receiving notification from Authentic Source
+  * - CI_172a
+    - Data Model and lifecycle, Interoperability
+    - User Notification of Credential Update
+    - Credential Issuer successfully notifies User of credential changes through registered out-of-band communication channel
+  * - CI_173
+    - Data Model and lifecycle, Interoperability
+    - User Notification on Credential Status INVALID
+    - Credential Issuer successfully informs User when Credential Status changes to INVALID
+  * - CI_174
+    - Data Model and lifecycle, Interoperability
+    - Batch Status Update Processing as Individual Changes
+    - Credential Issuer successfully handles single batch status update request (referencing batch notification_id) from authorized entities (e.g. Wallet Instance via Notification Endpoint with event=credential_deleted, or Wallet Provider via PDND) as N separate individual status changes, with each Credential's status updated independently (for example, flipping its status-list bit to INVALID or SUSPENDED).
+  * - CI_175
+    - Data Model and lifecycle, Interoperability
+    - Batch revocation upon credential Update Request
+    - Credential Issuer successfully processes batch update request as revoke all request, marking every Credential in the batch as revoked and emitting single notification covering the entire batch.
+  * - CI_176
+    - Data Model and lifecycle, Interoperability
+    - Batch Credential Deletion
+    - User-driven deletion successfully removes the entire batch as Wallet UI surfaces a batch as one Credential, with deletion request using the batch's notification_id applying to all Credentials in that batch, as it is not possible to delete or revoke just one Credential.
+  * - CI_177
+    - Data Model and lifecycle, Interoperability
+    - OAuth Status List Support for Long-Lived Digital Credentials
+    - OAuth Status List (`TOKEN-STATUS-LIST`_) is successfully supported for verification of validity status of long-lived Digital Credentials in both remote and proximity scenarios.
+  * - CI_178
+    - Data Model and lifecycle, Interoperability
+    - Optional OAuth Status Assertions Support in Remote Scenario
+    - Credential Issuer, Wallet Instance and Relying Party successfully support OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_) in the remote scenario.
+  * - CI_179
+    - Data Model and lifecycle, Security and Privacy
+    - OAuth Status Assertions - Digital Credential Local Storage with Lifecycle Data
+    - Credential Issuers successfully store generated and issued Digital Credential locally with minimum set of data required to manage its lifecycle, including the validity status of that Digital Credential.
+  * - CI_180
+    - Data Model and lifecycle, Security
+    - OAuth Status Assertions - Digital Credential Hash Algorithm Specification
+    - Credential Issuers successfully include specified hash algorithm in the Digital Credential using the *credential_hash_alg* claim within the status_assertion JSON member of the status claim.
+  * - CI_181
+    - Data Model and lifecycle, Interoperability
+    - OAuth Status Assertions - Credential Issuer Metadata Parameters Addition
+    - Credential Issuers successfully add status_assertion_endpoint and credential_hash_alg_supported parameters within their Metadata.
+  * - CI_182
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Request Authorization Validation
+    - Credential Issuer successfully validates that the Wallet Instance making the request is authorized to request Status Assertions, and provides Status Assertion Error Response according to Section HTTP Status Assertion Response if errors occur during this check.
+  * - CI_183
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Request Compliance Verification
+    - Credential Issuer successfully verifies the compliance of all elements in the status_assertion_requests object using the confirmation method contained within the Digital Credential where the Status Assertion Request object is referred to, and provides Status Assertion Error Response in case of errors. (see Section :ref:`credential-revocation:HTTP Status Assertion Response`)
+  * - CI_184
+    - Data Model and lifecycle, Security
+    - Status Assertion Digital Credential Legitimate Issuer Verification
+    - Credential Issuer successfully verifies that it is the legitimate Issuer of the Digital Credential to which each Status Assertion Request object refers.
+  * - CI_185
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Digital Credential Validity Status Check
+    - Credential Issuer successfully checks the validity status for the requested Credentials.
+  * - CI_186
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Creation
+    - Credential Issuer receiving the Status Assertion Request object successfully creates the corresponding Status Assertion.
+  * - CI_187
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Responses Array Structure
+    - The status_assertion_responses successfully contains an array of strings with StatusAssertionResponse and/or StatusAssertionErrors JSON Objects related to the request made by the Wallet Instance.
+  * - CI_188
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Endpoint Provision and Request Format
+    - Status Assertion endpoint is successfully provided by the Credential Issuer within its Metadata, with requests to the Status Assertion endpoint using HTTP POST method and mandatory parameters encoded in application/json format within the HTTP request message body.
+  * - CI_189
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Request JWT Structure
+    - Status Assertion Request object is successfully a JWT that contains the parameters Header and Payload in the corresponding :ref:`table <table_status_assertion_req_obj>`
+  * - CI_190
+    - Data Model and lifecycle, Interoperability
+    - Successful Status Assertion Request HTTP Response
+    - Credential Issuer successfully returns HTTP response with status code set to 200 OK in case of successful Status Assertion Request validation.
+  * - CI_191
+    - Data Model and lifecycle, Interoperability
+    - Valid Status Assertion Response
+    - Credential Issuer successfully provides valid Status Assertion for requested Credential, with response containing Status Assertion object within JSON Array.
+  * - CI_192
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Error Response
+    - Status Assertion Errors related to that Credential are successfully included in the Response JSON Array as an entry when Credential Issuer cannot provide valid Status Assertion.
+  * - CI_193
+    - Data Model and lifecycle, Interoperability
+    - HTTP Status Assertion Request Failure Response HTTP Status Assertion Request Failure Error Code
+    - When HTTP Status Assertion Request fails (e.g. invalid request, server unavailability, etc.), an HTTP Error Status Code is provided within the Status Assertion Response.
+  * - CI_194
+    - Data Model and lifecycle, Interoperability
+    - HTTP Status Assertion - HTTP Status Codes
+    - HTTP Status Assertion support HTTP Status Codes according to the corresponding HTTP :ref:`table <table_http_status_assertion_codes>`.
+  * - CI_195
+    - Data Model and lifecycle, Interoperability
+    - HTTP Response Status Assertion Structure
+    - HTTP response successfully includes a JSON object with a member named status_assertion_responses.
+  * - CI_195a
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Responses Array Structure
+    - Status_assertion_responses successfully contains an array of strings, where each represents a Status Assertion Response object.
+  * - CI_195b
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Response Element JWT Format
+    - Each element successfully contains signed JWT, encoded as base64url-encoded values separated by period characters.
+  * - CI_195c
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Response Object Content Requirements
+    - Status Assertion Response object successfully contains Status Assertion Response and Status Assertion Error in analogy with Sections 8 and 9 of `OAUTH-STATUS-ASSERTION`_.
+  * - CI_196
+    - Data Model and lifecycle, Interoperability
+    - HTTP Status Assertion Response JSON Encoding
+    - HTTP response is successfully encoded in application/json format.
+  * - CI_197
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Required Parameters and Claims
+    - Status Assertion successfully contains the required parameters and claims defined in the corresponding :ref:`table <table_status_assertion_claims>`.
+  * - CI_198
+    - Data Model and lifecycle, Interoperability
+    - Status Assertion Error Object Claims
+    - Status Assertion Error object successfully contains the claims defined in the corresponding :ref:`table <table_status_assertion_errors_obj>`.
+  * - CI_199
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Index Allocation and Status Mapping
+    - Each Digital Credential is successfully allocated an index during issuance that represents its position within the bit array, with the value of the bit(s) at this index corresponding to the Digital Credential's status.
+  * - CI_200
+    - Data Model and lifecycle, Interoperability
+    - Status List Token Cryptographic Format
+    - Status List is successfully provided within cryptographically signed Status List Token in JWT format.
+  * - CI_201
+    - Data Model and lifecycle, Interoperability
+    - Status List Bit Configuration for Digital Credentials
+    - Credential Issuer successfully defines number of bits k (either 1, 2, 4, 8) that represents the amount of bits used to describe the status of each Digital Credential within Status List, with Credential Issuer configuring the number of bits and each Credential having 2^k possible states.
+  * - CI_202
+    - Data Model and lifecycle, Interoperability
+    - Status List Byte Array Creation and Credential Position Assignment
+    - Credential Issuer successfully creates byte array of size = (amount of Digital Credentials) * k / 8 or greater, with each byte corresponding to 8/k statuses depending on k value (8 if k=1, 4 if k=2, 2 if k=4, or 1 if k=8), and assigns each issued Digital Credential to a position in the array.
+  * - CI_203
+    - Data Model and lifecycle, Interoperability
+    - Status List Digital Credential Status Values Setting in Byte Array
+    - Credential Issuer successfully sets status values for all issued Digital Credentials within the byte array, with each Digital Credential status identified using an index that maps to specific bits within the byte array, index counting from 0 to (amount of Digital Credential) - 1, bits counted from least significant bit ("0") to most significant bit ("7"), and all bits of the byte array at a particular index set to a status value
+  * - CI_204
+    - Data Model and lifecycle, Interoperability
+    - Status List Digital Credential Byte Array Compression
+    - Credential Issuer successfully compresses the byte array using DEFLATE [:rfc:`1951`] with the ZLIB [:rfc:`1950`] data format
+  * - CI_204a
+    - Data Model and lifecycle, Interoperability
+    - Status List Digital Credential Recommended Compression Level
+    - Implementations successfully use the highest compression level available for byte array compression.
+  * - CI_205
+    - Data Model and lifecycle, Interoperability
+    - Status List Endpoint Availability
+    - Credential Issuer successfully makes available to Relying Parties and Wallet Instances an endpoint to request Status Lists.
+  * - CI_206
+    - Data Model and lifecycle, Interoperability
+    - Status List Digital Credential Status Values Definition
+    - Credential Issuer successfully uses the values for possible Statuses defined in the :ref:`credential-revocation:Status Lists Creation` section.
+  * - CI_207
+    - Data Model and lifecycle, Interoperability
+    - Status List Optional Digital Credential Status States Definition
+    - Credential Issuer successfully adds other states besides those described above when choosing the number of bits for conveying statuses of issued Digital Credentials, with careful consideration for information disclosure to Relying Parties when adding many different states for Digital Credential lifecycle.
+  * - CI_208
+    - Data Model and lifecycle, Interoperability
+    - Status List Token Parameters at Endpoint
+    - Status List Token is successfully available at the Status List Endpoint and contains the parameters in the corresponding :ref:`table <table_status_list_endpoint_parameters>`
+  * - CI_209
+    - Data Model and lifecycle, Interoperability
+    - Recommended Status List Token Short-Lived Expiration Setting
+    - Credential Issuer successfully sets exp claim so that Status List Token is short-lived, typically with exp claim not exceeding iat claim by more than 24 hours.
+  * - CI_210
+    - Data Model and lifecycle, Interoperability
+    - JSON-Encoded Status List Structure
+    - The JSON-encoded Status List's structure correctly conforms to the corresponding :ref:`table <table_status_list_structure>`
+  * - CI_211
+    - Data Model and lifecycle, Interoperability
+    - Status List Digital Credential Local Storage
+    - Credential Issuers successfully store generated Digital Credential locally with minimum set of data required to manage its lifecycle, including the validity status of that Digital Credential.
+  * - CI_212
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Status List Claim Inclusion
+    - Credential Issuers successfully include status_list claim within the JSON Object value of the status claim of the Digital Credential once generated.
+  * - CI_213
+    - Data Model and lifecycle, Interoperability
+    - Status List Claim JSON Object Parameters
+    - The value of status_list claim is successfully a JSON Object with the corresponding :ref:`parameters <table_status_list_parameters>`.
+  * - CI_214
+    - Data Model and lifecycle, Interoperability
+    - Status List Endpoint Successful Response
+    - Status List Endpoint successfully responds with Status List Token using HTTP status code in the 2xx range, with Status Provider using content-type application/statuslist+jwt for Status List Token in JWT format in the successful response.
+  * - CI_215
+    - Data Model and lifecycle, Interoperability
+    - HTTP Status List Response Gzip Content-Encoding
+    - HTTP response successfully uses gzip Content-Encoding as defined in [:rfc:`9110`].
+  * - CI_216
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Issuer Authorization and Registration
+    - Credential Issuer successfully registers its own Digital Credentials in the catalogue.
+  * - CI_217
+    - Data Model and lifecycle, Interoperability
+    - Digital Credential Catalogue Required Information
+    - Credential Issuer provides its credentials in the catalogue, along with the information in the corresponding :ref:`table <table_catalogue_main_information>`.
+  * - CI_218
+    - Data Model and lifecycle, Interoperability
+    - Credentials Array Element Information
+    - Each element of the *Credentials* array correctly contains all the information defined in the First-level Fields :ref:`table <table_catalogue_credentials_parameters>`.
 

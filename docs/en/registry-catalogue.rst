@@ -42,6 +42,7 @@ The main Entities involved in the Digital Credential Catalogue are:
 
 The following table summarizes the main information that MUST be provided by the Digital Credential Catalogue:
 
+.. _table_catalogue_main_information:
 .. list-table:: Digital Credential Catalogue - Main information
    :class: longtable
    :widths: 30 70
@@ -197,6 +198,7 @@ The JWS payload contains the following parameters:
 
 Each element of the ``credentials`` array contains at least the following information:
 
+.. _table_catalogue_credentials_parameters:
 .. list-table:: First-level Fields of Each Credential Entry
   :class: longtable
   :header-rows: 1
