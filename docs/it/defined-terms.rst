@@ -98,7 +98,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Capacità del Titolare di dimostrare il possesso della chiave privata attestata da una terza parte di fiducia.
       Non presente in ARF 1.10.
 
-    **Identity and Access Management**
+    **Identity and Access Management (IAM)**
       Framework per la gestione delle identità digitali e dell'accesso alle informazioni.
       Non presente in ARF 1.10.
 
@@ -122,8 +122,8 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Artefatto digitale contenente informazioni su un'entità organizzativa (endpoint, chiavi pubbliche, ecc.).
       Conforme con ARF 1.10.
 
-    **Ente Nazionali di Accreditamento**
-      Organismo che esegue l'accreditamento sotto l'autorità di uno Stato membro.
+    **Enti Nazionali di Accreditamento**
+      Organismi che svolgono l'attività di accreditamento su delega di uno Stato membro.
       Conforme con ARF 1.10.
 
     **Gestore di Identità Digitale**
@@ -203,6 +203,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Procedura per la verifica dell'idoneità e della conformità delle Entità Organizzative.
       Conforme con ARF 1.10.
 
+    **Fornitore di Servizi**
     **Relying Party**
       Entità che si affida all'identificazione elettronica o al Servizio Fiduciario di un'Istanza del Wallet.
       Conforme con ARF 1.10.
@@ -270,10 +271,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10.
 
     **Certificato di Accesso**
+    **Access Certificate**
       Certificato di autenticazione e convalida della (Wallet-) Relying Party.
       Conforme con ARF 1.10.
 
     **Certificato di Registrazione**
+    **Registration Certificate**
       Oggetto che indica gli Attributi che la Relying Party ha registrato al fine di richiederli agli Utenti.
       Conforme con ARF 1.10.
 
@@ -283,6 +286,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Trusted List**
       Archivio di informazioni sugli enti autoritativi e sul loro stato.
+      Conforme con ARF 1.10.
+
+    **Utente**
+      Persona fisica o giuridica che utilizza servizi fiduciari o mezzi di identificazione elettronica. 
       Conforme con ARF 1.10.
 
     **Verificatore di Attestati Elettronici**
@@ -299,24 +306,28 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Conforme con ARF 1.10.
 
     **Backend del Fornitore di Wallet**
+    **Wallet Provider Backend**
       Infrastruttura tecnica e componenti server gestiti da un Fornitore di Wallet.
       Conforme con ARF 1.10.
 
-    **Applicazione Crittografica Sicura per il Wallet**
+    **Wallet Secure Cryptographic Application (WSCA)**
       Applicazione che gestisce gli Asset critici utilizzando le funzioni crittografiche fornite dal WSCD. Conforme con ARF 1.10.
 
-    **Dispositivo Crittografico Sicuro per il Wallet**
+    **Wallet Secure Cryptographic Device (WSCD)**
       Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli Asset critici.
       Conforme con ARF 1.10.
 
     **Soluzione Wallet**
       Insieme di Soluzioni Tecniche al fine di garantire il corretto funzionamento delle istanze di IT-Wallet.
       Conforme con ARF 1.10.
+  
+    **Wallet Unit**
+      Configurazione univoca di una soluzione Wallet per un singolo utente, comprensiva delle funzionalità di sicurezza.
+      Unique configuration of a Wallet Solution for an individual User, including security features.
+      Conforme con ARF 1.10.
 
-    **Attestato di Istanza del Wallet**
     **Wallet Unit Attestation**
     **Wallet Attestation**
-    **Wallet Instance Attestation**
       Oggetto emesso da un Fornitore di Wallet che descrive le caratteristiche e i componenti della Istanza del Wallet.
       Conforme con ARF 1.10.
 
@@ -336,7 +347,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
 .. glossary::
     :sorted:
 
-    **Pulsante di Autenticazione**
+    **Authentication Button**
       Pulsante che consente all'Utente di avviare il processo di Autenticazione e di utilizzare i servizi forniti dai Verificatori di Attestati Elettronici.
   
     **Brand Identity**
@@ -354,7 +365,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
     **Discovery Page**
       È la pagina presente nel Touchpoint della Relying Party dove l'Utente atterra per accedere alla propria area autenticata e ha lo scopo di mostrare all'Utente tutti i metodi di Autenticazione disponibili.
   
-    **Pulsante di Ingaggio**
+    **Engagement Button**
       Elemento interattivo dell'interfaccia che consente all'Utente di avviare un processo (ad esempio per autenticarsi, per richiedere il rilascio di un Attestato Elettronico, ecc.).
   
     **Modello di Interazione**

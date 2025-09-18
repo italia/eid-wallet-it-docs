@@ -60,10 +60,10 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Credential Issuer**
     **Issuer**
+    **Attestation Provider**
       Organizational Entity providing Digital Credentials to Users (may be PID Provider or (Q)EAA Provider).
       ARF 1.10 uses similar terms; IT-Wallet merges PID and (Q)EAA Providers under this term.
 
-    **Credential Status Assertion**
     **Status Assertion**
       Signed document proving a Digital Credential's current validity status.
       Not present in ARF 1.10; specific to IT-Wallet.
@@ -126,7 +126,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 1.10.
 
     **National Accreditation Bodies (NAB)**
-      Body performing accreditation under authority from a Member State.
+      Bodies performing accreditation under authority from a Member State.
       Aligned with ARF 1.10.
 
     **National Identity Provider**
@@ -183,11 +183,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
       Aligned with ARF 1.10.
 
-    **Qualified Electronic Attestation of Attributes Provider**
+    **Qualified Electronic Attestation of Attributes Provider (QEAA Provider)**
       Organizational Entity providing QEAAs.
       Aligned with ARF 1.10.
 
-    **Electronic Attestation of Attributes Provider**
+    **Electronic Attestation of Attributes Provider (EAA Provider)**
     **Electionic Attestation Provider**
       Organizational Entity providing EAAs.
       Aligned with ARF 1.10.
@@ -325,7 +325,6 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Wallet Unit Attestation**
     **Wallet Attestation**
-    **Wallet Instance Attestation**
       Data object issued by a Wallet Provider describing the components of the Wallet Unit.
       Aligned with ARF 1.10.
 
