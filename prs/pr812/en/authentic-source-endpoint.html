@@ -192,26 +192,13 @@
 </tr>
 </tbody>
 </table>
-</section>
-<section id="get-pseudonymization-algorithm">
-<h3><span class="section-number">9.4.1.2. </span>Get Pseudonymization Algorithm<a class="headerlink" href="#get-pseudonymization-algorithm" title="Link to this heading">¶</a></h3>
-<table class="longtable docutils align-default" id="table-pseudonymization-endpoint-description">
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 80.0%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><th class="stub"><p><strong>Description</strong></p></th>
-<td><p>This e-Service provides the Credential Issuer with the pseudonymization algorithm and salt used to compute each subject's pseudonym.</p></td>
-</tr>
-<tr class="row-even"><th class="stub"><p><strong>Provider</strong></p></th>
-<td><p>Authentic Source</p></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p><strong>Consumer</strong></p></th>
-<td><p>Credential Issuer</p></td>
-</tr>
-</tbody>
-</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,
+- both MUST log the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see <a class="reference internal" href="signal-hub-endpoint.html#signals-processing"><span class="std std-ref">Signals Processing</span></a>);
+- the Authentic Source MUST log the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> <cite>data-time</cite> value which indicates the last time the User's attributes were updated in the Authentic Source's database;
+- the Credential Issuer MUST log the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.</p>
+</div>
 </section>
 </section>
 </section>
@@ -233,7 +220,6 @@
 <li><a class="reference internal" href="#">9.4. Authentic Source Endpoints</a><ul>
 <li><a class="reference internal" href="#e-service-pdnd-authentic-source-catalogue">9.4.1. e-Service PDND Authentic Source Catalogue</a><ul>
 <li><a class="reference internal" href="#get-attribute-claims">9.4.1.1. Get Attribute Claims</a></li>
-<li><a class="reference internal" href="#get-pseudonymization-algorithm">9.4.1.2. Get Pseudonymization Algorithm</a></li>
 </ul>
 </li>
 </ul>
@@ -265,7 +251,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/09/2025.
+      Last updated on 22/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
