@@ -208,60 +208,6 @@ paths:
                 error_description: "The request cannot be fulfilled because the e-Service Endpoint is temporarily unavailable (e.g., due to maintainance or overload)"
 components:
   schemas:
-    CryptoInfoResponse:
-      properties:
-        Header:
-          type: object
-          properties:
-            alg:
-              description: A digital signature algorithm identifier.
-              type: string
-              example: RS256
-            kid:
-              description: Unique identifier of the JWK used by the Provider to sign the JWT.
-              type: string
-              example: "cdb52532-dd94-40ef-824d-9c55b10e6bc9"
-            typ:
-              description: It MUST be set to 'JWT'.
-              type: string
-              example: "JWT"
-          required: [alg, kid, typ]
-        Payload:
-          type: object
-          properties:
-            iss:
-              description: The identifier of the e-Service.
-              type: string
-              example: "https://authentic-source.example.it"
-            aud:
-              description: The identifier of the Consumer.
-              type: string
-              example: "31670092-eec0-4f95-88da-e1c7ce5e4505"
-            exp:
-              description: UNIX timestamp representing the JWT expiration time.
-              type: integer
-              example: 1736846928
-            iat:
-              description: UNIX timestamp representing the JWT issuance time.
-              type: integer
-              example: 1736846688
-            jti:
-              description: Unique identifier of the JWT to prevent replay attacks.
-              type: string
-              example: "8b971b43-e990-44fa-9013-1b353bfc5a0f"
-            nbf:
-              description: UNIX timestamp representing the JWT first validity time.
-              type: string
-              example: "1736846688"
-            cryptoHashFunction:
-              description: It MUST be the ``alg`` Identifier of the Cryptographic Hash Function.
-              type: string
-              example: "sha-256"
-            salt:
-              description: The salt value used to generate Pseudonymized Identifiers.
-              type: integer
-              example: "f3a7f54e-8e57-4a06-8bca-ac1857b6b045"
-          required: [iss, aud, exp, iat, jti, salt, cryptoHashFunction]
     CredentialClaimsResponse:
       properties:
         Header:
