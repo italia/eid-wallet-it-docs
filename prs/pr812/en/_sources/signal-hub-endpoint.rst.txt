@@ -169,4 +169,4 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
   Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` before contacting the Authentic Source using the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint. This process allows the Credential Issuer to provide evidence to the Authentic Source, via the `Agid-JWT-TrackingEvidence`, that the request includes the User's consent. 
 
-  
+ 
