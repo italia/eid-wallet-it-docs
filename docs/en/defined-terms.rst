@@ -183,11 +183,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
       Aligned with ARF 1.10.
 
-    **Qualified Electronic Attestation of Attributes Provider (QEAA Provider)**
+    **Qualified Electronic Attestation of Attributes Provider**
       Organizational Entity providing QEAAs.
       Aligned with ARF 1.10.
 
-    **Electronic Attestation of Attributes Provider (EAA Provider)**
+    **Electronic Attestation of Attributes Provider**
     **Electionic Attestation Provider**
       Organizational Entity providing EAAs.
       Aligned with ARF 1.10.
