@@ -47,11 +47,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_008
     - Trust, Interoperabilità
     - Metadata del Credential Issuer
-    - Il Credential Issuer fornisce correttamente i seguenti tipi di metadata: federation_entity, oauth_authorization_server e openVCI_credential_issuer.
+    - Il Credential Issuer fornisce correttamente i seguenti tipi di metadata: *federation_entity*, *oauth_authorization_server* e *openid_credential_issuer*.
   * - CI_009
     - Trust, Interoperabilità
-    - Inclusione dei Metadata openVCI_credential_verifier nell’Autenticazione Utente tramite Wallet
-    - Quando i Fornitori di Attestati Elettronici di Attributi (Qualificati) autenticano gli utenti tramite la loro Istanza Wallet, i metadata openVCI_credential_verifier sono inclusi oltre ai parametri metadata obbligatori.
+    - Inclusione dei Metadata *openid_credential_verifier* nell’Autenticazione Utente tramite Wallet
+    - Quando i Fornitori di Attestati Elettronici di Attributi (Qualificati) autenticano gli utenti tramite la loro Istanza Wallet, i metadata *openid_credential_verifier* sono inclusi oltre ai parametri metadata obbligatori.
   * - CI_010
     - Emissione, Interoperabilità
     - Struttura della URI della Credential Offer
@@ -67,7 +67,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_013
     - Emissione, Interoperabilità
     - Struttura del parametro Grants nella Credential Offer
-    - Il parametro grants contiene correttamente un oggetto authorization_code che include entrambi i sotto-parametri obbligatori (issuer_state e authorization_server) con valori appropriati.
+    - Il parametro grants contiene correttamente un oggetto authorization_code che include entrambi i sotto-parametri obbligatori (*issuer_state* e *authorization_server*) con valori appropriati.
   * - CI_014
     - Emissione, Interoperabilità
     - Compilazione dell’Oggetto Credential
@@ -151,7 +151,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_028
     - Emissione, Sicurezza, Interoperabilità
     - Validazione OAuth Client Attestation PoP
-    - Il Credential Issuer valida con successo il parametro OAuth-Client-Attestation-PoP secondo la Sezione 4 di [OAUTH-ATTESTATION-CLIENT-AUTH], confermando la prova di possesso e rifiutando attestazioni non valide con risposte di errore dettagliate.
+    - Il Credential Issuer valida con successo il parametro OAuth-Client-Attestation-PoP secondo la Sezione 4 di [`OAUTH-ATTESTATION-CLIENT-AUTH`_], confermando la prova di possesso e rifiutando attestazioni non valide con risposte di errore dettagliate.
   * - CI_029
     - Emissione, Fiducia
     - Verifica dell’affidabilità dell’istanza del Wallet
@@ -540,3 +540,507 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Emissione, Privacy
     - Consenso utente per la Ri-emissione basata su attributi
     - Nei processi di ri-emissione attivati da modifiche degli attributi, viene richiesto il consenso dell’Utente prima dell’archiviazione della nuova Credenziale Digitale.
+  * - CI_117
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Attributi utente PID italiani
+    - Il PID italiano è fornito con successo con gli attributi utente definiti nella rispettiva :ref:`tabella degli Attributi PID dell'Utente <table_sd-jwt-vc_parameters>`.
+  * - CI_118
+    - Modello di Dati e ciclo di vita, Emissione, Interoperabilità
+    - Formati di credenziali (Q)EAA
+    - Le (Q)EAA sono rilasciate a un'Istanza del Wallet in formato dati SD-JWT-VC o mdoc-CBOR.
+  * - CI_119
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Formato Credenziale Digitale PID/(Q)EAA
+    - Il PID/(Q)EAA è emesso con successo sotto forma di Credenziale Digitale con formato Credenziale Digitale SD-JWT come specificato in `SD-JWT-VC`_
+  * - CI_120
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Firma della credenziale SD-JWT
+    - La Credenziale in formato SD-JWT è firmata utilizzando la chiave privata del Fornitore di Attestati Elettronici
+  * - CI_121
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Fornitura Metadati Tipo SD-JWT
+    - L'SD-JWT è fornito con successo con Metadati Tipo completi per la Credenziale Digitale emessa, conforme alle Sezioni 6 e 6.3 delle specifiche `SD-JWT-VC`_.
+  * - CI_122
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Validazione Struttura Payload SD-JWT
+    - Il payload SD-JWT contiene il claim richiesto *_sd_alg* e tutti gli altri claim obbligatori come specificato nella Sezione 4.1.1 `SD-JWT`_, con formattazione e struttura corrette.
+  * - CI_123
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Dichiarazione Algoritmo Hash SD-JWT
+    - Il claim *_sd_alg* è presente e impostato su un algoritmo supportato definito nella Sezione Algoritmi Crittografici, indicando l'algoritmo hash utilizzato dal Fornitore di Attestati Elettronici per generare i digest come descritto nella Sezione 4.1.1 di `SD-JWT`_.
+  * - CI_124
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Organizzazione Divulgazione Selettiva SD-JWT
+    - I claim non selettivamente divulgabili appaiono direttamente nel payload SD-JWT così come sono, mentre i digest dei claim selettivamente divulgabili (più eventuali esche) sono organizzati correttamente all'interno degli array *_sd* come descritto nella Sezione 4.2.4.1.
+  * - CI_125
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Verifica Integrità disclosure SD-JWT
+    - Ogni valore digest viene convalidato correttamente rispetto alla corrispondente disclosure, le cui disclosure contengono i componenti richiesti: salt casuale, nome della claim (per gli elementi oggetto) e valore della claim.
+  * - CI_126
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Raccomandazione su Divulgazione Selettiva Oggetti Annidati SD-JWT
+    - In un payload SD-JWT annidato, ogni claim a ogni livello della struttura JSON è esplicitamente contrassegnato come selettivamente divulgabile o meno. Di conseguenza, il claim *_sd* contenente digest può legittimamente apparire più volte a livelli diversi all'interno dell'SD-JWT.
+  * - CI_127
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Posizionamento digest Disclosure SD-JWT
+    - Le disclosures di elementi array sono posizionate correttamente, con digest e digest esca che sostituiscono i valori claim originali nelle loro posizioni array esatte, come specificato nella Sezione 4.2.4.2 `SD-JWT`_.
+  * - CI_128
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Calcolo Digest Elementi Array SD-JWT
+    - I valori digest degli elementi array sono calcolati utilizzando una funzione hash sulle disclosures, contenenti: un salt casuale e l'elemento array.
+  * - CI_129
+    - Modello di Dati e ciclo di vita, Privacy
+    - SD-JWT Array Disclosures
+    - La divulgazione selettiva a livello array opera correttamente, consentendo ai Titolari di divulgare selettivamente interi array o singole voci all'interno degli array, come definito nella Sezione 4.2.6 di `SD-JWT`_.
+  * - CI_130
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Consegna delle Disclosure nel Formato Combinato SD-JWT
+    - Le Disclosures sono fornite con successo al Titolare insieme all'SD-JWT nel Formato Combinato per l'Emissione, formattate come una serie ordinata di valori codificati base64url con ogni valore separato correttamente da un singolo carattere tilde ('~').
+  * - CI_131
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Parametro Header JOSE SD-JWT
+    - L'header JOSE contiene i parametri definiti nella :ref:`Tabella degli header SD-JWT della Credenziale <table_sd-wt-vc_jose_header>`.
+  * - CI_132
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Claim Payload SD-JWT
+    - Il payload JWT contiene claim nella Credenziale :ref:`Tabella dei Parametri SD-JWT della Credenziale <table_sd-jwt-vc_parameters>`
+  * - CI_133
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura Parametro Lista Stato SD-JWT
+    - Quando il parametro status è impostato su status_list, è un Oggetto JSON contenente i seguenti sotto-parametri: *idx* e *uri*
+  * - CI_134
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura Parametro SD-JWT Status Assertion
+    - Quando il parametro status è impostato su "status_assertion", contiene con successo un Oggetto JSON strutturato correttamente con il claim *credential_hash_alg* richiesto che indica l'algoritmo di hashing utilizzato per legare la Status Assertion alla Credenziale Digitale, con sha-256 come algoritmo raccomandato.
+  * - CI_135
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Recupero Opzionale Metadati Tipo Credenziale SD-JWT
+    - Il Documento JSON Metadati Tipo Credenziale è recuperato con successo direttamente dall'URL contenuto nel claim vct utilizzando il metodo HTTP GET o tramite il parametro header vctm quando fornito
+  * - CI_135a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Corrispondenza URI Case-Insensitive SD-JWT
+    - Quando si recuperano i Metadati Tipo Credenziale tramite vct, la corrispondenza letterale della stringa URI è eseguita in modo case-insensitive, mentre il sistema opera senza richiedere l'endpoint .well-known (come specificato nella Sezione 6.3.1 di `SD-JWT-VC`_), mantenendo opzioni di compatibilità per implementatori che scelgono di utilizzarlo per l'interoperabilità con altri sistemi.
+  * - CI_136
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura Oggetto JSON Documento Metadati
+    - Il documento tipo Metadati è un oggetto JSON contenente i parametri nella :ref:`Tabella del Type Metadata dell'Attestato Elettronico <table_metadata_type_json_obj>`.
+  * - CI_137
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Claim PID Aggiuntivi
+    - A seconda del tipo di Credenziale Digitale specificato in vct, i dati dei claim aggiuntivi sono incorporati con successo quando richiesto
+  * - CI_138
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Formato Credenziale Mdoc
+    - Gli elementi dati mdoc sono codificati con successo in formato CBOR secondo le specifiche :rfc:`8949`, assicurando corretta serializzazione binaria e compatibilità con lo standard ISO/IEC 18013-5.
+  * - CI_139
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Organizzazione Struttura Componenti Mdoc
+    - La Credenziale Digitale mdoc è strutturata correttamente in componenti distinti inclusi namespace (nameSpaces) e prova crittografica (issuerAuth)
+  * - CI_140
+    - Modello di Dati e ciclo di vita, Privacy
+    - Verifica Integrità Oggetto Sicurezza Mobile Mdoc
+    - L'Oggetto Sicurezza Mobile (MSO) memorizza correttamente i digest crittografici degli attributi all'interno dei nameSpaces, consentendo alle Relying Party di validare gli attributi divulgati contro i valori digestID corrispondenti mantenendo la privacy delle informazioni non divulgate. Vedere :ref:`credential-data-model:Mobile Security Object` per dettagli
+  * - CI_141
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Conformità Struttura Mdoc-CBOR
+    - La Credenziale Digitale mdoc-CBOR è conforme con successo alla struttura richiesta come specificato nella :ref:`tabella del formato mdoc-CBOR <table_mdoc_structure>`.
+  * - CI_142
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Organizzazione Struttura Namespace
+    - I nameSpaces contengono correttamente uno o più nameSpace, ognuno identificato correttamente da un nome univoco per la categorizzazione organizzata dei dati.
+  * - CI_143
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Codifica IssuerSignedItemBytes Namespaces
+    - All'interno di ogni nameSpace, uno o più IssuerSignedItemBytes sono codificati correttamente come stringhe di byte CBOR con Tag 24 (#6.24(bstr .cbor)), apparendo come 24(\<\<\... \>\>) in notazione diagnostica
+  * - CI_144
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Attributi Informazioni Divulgazione Namespace
+    - Ogni IssuerSignedItemBytes rappresenta con successo le informazioni di divulgazione per i digest corrispondenti all'interno dell'Oggetto Sicurezza Mobile e contiene tutti gli attributi come specificato nella :ref:`tabella degli Attributi dei Namespaces <table_attribute_namespaces>`
+  * - CI_145
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Inclusione ElementIdentifier Namespace
+    - Tutti gli elementIdentifier nella :ref:`tabella <table_element_identifiers_mdoc>` dell'attributo elementIdentifiers sono inclusi correttamente nella Credenziale Digitale codificata in mdoc-CBOR all'interno dei rispettivi nameSpaces, salvo diversa specifica
+  * - CI_146
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura COSE Oggetto Sicurezza Mobile
+    - L'issuerAuth rappresenta con successo l'Oggetto Sicurezza Mobile come un Documento COSE Sign1 formattato correttamente secondo :rfc:`9052`, contenente la struttura dati completa richiesta con: header protetto, header non protetto, payload e componenti firma.
+  * - CI_147
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Codifica Parametro Header Protetto Oggetto Sicurezza Mobile
+    - L'header protetto contiene con successo i parametri codificati correttamente in formato CBOR secondo la :ref:`tabella <table_protected_headers_mdoc>` corrispondente.
+  * - CI_148
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Algoritmo Header Protetto Oggetto Sicurezza Mobile
+    - L'header protetto contiene con successo il parametro algoritmo firma richiesto
+  * - CI_148a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Elementi Non Raccomandati nell'Header Protetto Oggetto Sicurezza Mobile
+    - L'header protetto non contiene elementi diversi dall'algoritmo firma
+  * - CI_149
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Codifica Parametro Header Non Protetto Oggetto Sicurezza Mobile
+    - Salvo diversa specifica, l'header non protetto contiene i parametri conformemente alla :ref:`tabella <table_unprotected_headers_mdoc>` corrispondente.
+  * - CI_149a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Inclusione *x5chain* Oggetto Sicurezza Mobile
+    - La *x5chain* è inclusa correttamente nell'header non protetto
+  * - CI_150
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura Payload Oggetto Sicurezza Mobile
+    - Il payload contiene con successo il MobileSecurityObject codificato correttamente come stringa di byte (bstr) utilizzando CBOR Tag 24, con il parametro header COSE Sign content-type correttamente escluso dalla struttura.
+  * - CI_151
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Conformità Attributi Oggetto Sicurezza Mobile
+    - Il MobileSecurityObject contiene con successo tutti gli attributi richiesti come specificato nella :ref:`tabella <table_MobileSecurityObject_attributes>` di conformità, con formattazione e valori corretti salvo esenzione esplicita dai requisiti della specifica.
+  * - CI_152
+    - Emissione, Interoperabilità
+    - Verifica stato Istanza del Wallet
+    - Il Fornitore di Attestati Elettronici verifica con successo che l'Istanza del Wallet sia in stato Operativo o Valido e procede con l'emissione della Credenziale Digitale.
+  * - CI_153
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione Stato Credenziale per Attivazione
+    - Una Credenziale Digitale transita con successo allo stato Valido quando la data di inizio validità è raggiunta, o quando il processo di riattivazione è completato per una (Q)EAA precedentemente sospesa.
+  * - CI_154
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione Automatica Scadenza Credenziale
+    - Una Credenziale Digitale transita con successo allo stato Scaduto quando scade automaticamente al raggiungimento della sua data di fine validità (PID/(Q)EAA EXP),
+  * - CI_155
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione Processo Revoca Credenziale
+    - Una Credenziale Digitale cambia con successo dagli stati Emesso, Valido o Sospeso allo stato Revocato quando è attivamente revocata dal Fornitore di Attestati Elettronici tramite un processo di revoca (PID/(Q)EAA REV).
+  * - CI_156
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Casi d'Uso Revoca Credenziale Digitale
+    - La Revoca Credenziale Digitale è implementata correttamente per ogni caso d'uso
+  * - CI_156a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Credenziale Digitale - Compromissione Sicurezza Tecnica
+    - La Credenziale Digitale è revocata con successo quando viene rilevata compromissione del materiale crittografico, con invalidazione immediata e aggiornamento dello stato nei registri di revoca.
+  * - CI_156b
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Credenziale Digitale - Richiesta Utente
+    - La Credenziale Digitale è revocata con successo su richiesta esplicita dell'Utente
+  * - CI_156c
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Credenziale Digitale - Aggiornamenti Attributi
+    - La Credenziale Digitale è revocata automaticamente quando le Fonti Autentiche notificano cambiamenti di attributi che invalidano la credenziale, innescando il processo di riemissione se applicabile.
+  * - CI_156d
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Credenziale Digitale - Revoca Avviata dalla Fonte
+    - La Credenziale Digitale è revocata immediatamente quando la Fonte Autentica notifica la revoca degli attributi sottostanti
+  * - CI_156e
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Credenziale Digitale - Revoca Istanza del Wallet
+    - Tutte le Credenziali Digitali sono revocate quando l'Istanza del Wallet contenitore è revocata
+  * - CI_156f
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Credenziale Digitale - Ordine Giudiziario/Supervisorio
+    - La Credenziale Digitale è revocata immediatamente quando attività illegali sono segnalate da Organi Giudiziari o Supervisori
+  * - CI_156g
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca PID - Violazione Gestore di Identità Digitale
+    - Il PID è revocato quando si verifica rilevamento di violazione nel Gestore di Identità Digitale utilizzato per l'autenticazione Utente durante l'emissione PID
+  * - CI_157
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca (Q)EAA Opzionale Seguendo Revoca PID
+    - Il Fornitore (Q)EAA valuta con successo lo stato di revoca PID e revoca le credenziali (Q)EAA associate
+  * - CI_158
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Cambio Stato (Q)EAA a Sospeso
+    - La (Q)EAA transita con successo dallo stato Emesso o Valido allo stato Sospeso quando è sospesa dal Fornitore di Attestati Elettronici ((Q)EAA SUSP)
+  * - CI_159
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Durata Sospensione (Q)EAA e Recupero Stato
+    - La (Q)EAA sospesa rimane nello stato Sospeso finché le condizioni di sospensione non sono risolte e la credenziale è ripristinata allo stato precedente Emesso o Valido, o transita a Revocato, Scaduto, o eliminato
+  * - CI_159a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Sospensione (Q)EAA - Cambiamenti Validità Attributi
+    - La sospensione di una (Q)EAA è basata sullo stato di validità dei suoi attributi contenuti
+  * - CI_159b
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Sospensione (Q)EAA - Richiesta Utente
+    - La (Q)EAA transita con successo allo stato Sospeso su richiesta esplicita dell'Utente.
+  * - CI_160
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione Ciclo di Vita Individuale Credenziali Digitali Emesse in Batch
+    - Ogni Credenziale Digitale da un'emissione batch entra con successo nella propria macchina a stati del ciclo di vita indipendente. Tutte le transizioni di stato (Emesso → Valido → Scaduto/Sospeso/Revocato) avvengono ancora su base per Credenziale, utilizzando i parametri individuali della Credenziale
+  * - CI_161
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Generazione e Memorizzazione Credenziale Digitale
+    - Il Fornitore di Attestati Elettronici genera con successo la Credenziale Digitale seguendo il completamento della richiesta di emissione e la memorizza nell'archiviazione locale immediatamente dopo l'emissione riuscita.
+  * - CI_161a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione Stato Credenziale Digitale
+    - Il Fornitore di Attestati Elettronici aggiorna con successo lo stato della Credenziale Digitale localmente per eventi di revoca, sospensione o riattivazione innescati da ragioni di sicurezza tecnica, richieste Utente, o da entità esterne (es. Utenti e Fonti Autentiche)
+  * - CI_161b
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Eliminazione Dati Credenziale Digitale
+    - Il Fornitore di Attestati Elettronici rimuove con successo le Credenziali Digitali dall'archiviazione locale dopo aver raggiunto lo stato Scaduto o basato sulle politiche di ritenzione del Fornitore di Attestati Elettronici.
+  * - CI_162
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione Diretta Stato Validità Fornitore di Attestati Elettronici
+    - Il Fornitore di Attestati Elettronici gestisce direttamente lo stato di validità delle Credenziali Digitali emesse e gestisce correttamente l'innesco del processo di revoca o sospensione della Credenziale Digitale da parte di altri attori.
+  * - CI_162a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Avviata dall'Utente tramite Servizio Web del Fornitore di Attestati Elettronici
+    - L'Utente avvia con successo la revoca/sospensione della Credenziale Digitale tramite il servizio web del Fornitore di Attestati Elettronici, con verifica dell'autenticazione e processamento della richiesta di revoca.
+  * - CI_162b
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca Innescata da Fonte Autentica
+    - La Fonte Autentica innesca con successo il processo di revoca/sospensione della Credenziale Digitale quando gli attributi della Credenziale sono aggiornati o cambiano stato di validità.
+  * - CI_163
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Accesso Utente al Portale Web del Fornitore di Attestati Elettronici con Autenticazione LoA
+    - Il Fornitore di Attestati Elettronici assicura che gli utenti possano accedere con successo all'area sicura del suo portale web. Questo accesso richiede autenticazione con un Livello di Garanzia almeno pari al Livello di Garanzia utilizzato durante l'emissione iniziale della credenziale.
+  * - CI_163a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Accesso Utente alla Vista Database Credenziali Digitali
+    - Il Fornitore di Attestati Elettronici fornisce con successo agli Utenti una vista completa di tutte le loro Credenziali Digitali contenute nel database del Fornitore di Attestati Elettronici tramite il portale web
+  * - CI_163b
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Verifica Autenticità Dati Utente tramite Portale Web
+    - Il Fornitor di Credenziali abilita con successo gli Utenti a verificare l'autenticità dei dati delle loro Credenziali Digitali tramite il portale web
+  * - CI_163c
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione Stato Validità Utente tramite Portale Web
+    - Il Fornitor di Credenziali consente con successo agli Utenti di visualizzare e aggiornare lo stato di validità delle loro Credenziali Digitali tramite il portale web (revocare le loro Credenziali Digitali e, se supportato dal Fornitore, sospenderle).
+  * - CI_164
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca PID e Aggiornamento Stato Istanza del Wallet su Nuova Emissione PID
+    - Quando l'Utente attiva un'altra Istanza di Wallet dallo stesso Fornitore di Wallet utilizzando la stessa Soluzione Wallet e ottiene un nuovo PID, il PID precedente è revocato con successo e l'Istanza di Wallet precedente transita con successo allo stato operativo, assicurando un singolo PID attivo per Utente per Fornitore di Wallet.
+  * - CI_165
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca PID Seguendo Morte Utente e Cambio Stato ANPR
+    - La morte dell'Utente innesca con successo il cambio dello stato di validità degli attributi di identificazione dell'Utente nel registro pubblico (ANPR), che produce automaticamente la revoca PID.
+  * - CI_166
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Requisito Notifica Revoca PID
+    - Il Fornitore di Credenziali invia con successo notifica dell'evento di revoca PID all'Utente entro 24 ore dal verificarsi della revoca
+  * - CI_167
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Notifica Revoca Credenziale Non-PID Raccomandata
+    - Il Fornitore di Attestati Elettronici invia notifica dell'evento di revoca all'Utente per qualsiasi Credenziale Digitale diversa dal PID
+  * - CI_168
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Consegna Notifica Revoca Multi-Canale
+    - Il Fornitore di Attestati Elettronici consegna con successo le notifiche di revoca attraverso canali di comunicazione verificati e sicuri (email, telefono, o altri canali autenticati), includendo informazioni complete sullo stato di revoca della Credenziale e la ragione.
+  * - CI_169
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Aggiornamento Stato Credenziale Digitale su Revoca
+    - Il Fornitore di Attestati Elettronici aggiorna con successo lo stato della Credenziale Digitale immediatamente quando avviene la revoca
+  * - CI_170
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Endpoint Revoca Istanza di Wallet tramite PDND
+    - Il Fornitore di Attestati Elettronici fornisce con successo servizio web per l'endpoint di Revoca Istanza di Wallet definito utilizzando le specifiche PDND, con implementazione conforme ai requisiti del Catalogo e-Service PDND del Fornitore di Attestati Elettronici.
+  * - CI_171
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Servizio Aggiornamento Credenziale e Notifica Stato tramite PDND
+    - Il Fornitore di Attestati Elettronici fornisce con successo servizio web disponibile tramite PDND per notifica aggiornamento Credenziale e stato validità come definito nella Sezione specifiche Catalogo e-Service PDND del Fornitore di Attestati Elettronici.
+  * - CI_172
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Aggiornamento Stato Credenziale Seguendo Notifica Cambio Dati
+    - Il Fornitore di Attestati Elettronici aggiorna con successo lo Stato della Credenziale secondo la modalità definita del meccanismo di validità alla ricezione di notifica dalla Fonte Autentica
+  * - CI_172a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Notifica Utente di Aggiornamento Credenziale
+    - Il Fornitore di Attestati Elettronici notifica con successo l'Utente dei cambiamenti della credenziale attraverso canale di comunicazione out-of-band registrato
+  * - CI_173
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Notifica Utente su Stato Credenziale INVALIDA
+    - Il Fornitore di Attestati Elettronici informa con successo l'Utente quando lo Stato della Credenziale cambia a INVALIDA
+  * - CI_174
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Processamento Aggiornamento Stato Batch come Cambiamenti Individuali
+    - Il Fornitore di Attestati Elettronici gestisce con successo la richiesta di aggiornamento stato batch singola (che riferisce batch notification_id) da entità autorizzate (es. Istanza di Wallet tramite Endpoint Notifica con event=credential_deleted, o Fornitore di Wallet tramite PDND) come N cambiamenti individuali separati, con lo stato di ogni Credenziale aggiornato indipendentemente (per esempio, cambiando il suo bit status-list a INVALIDO o SOSPESO).
+  * - CI_175
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Revoca batch su Richiesta Aggiornamento credenziale
+    - Il Fornitore di Attestati Elettronici processa con successo la richiesta aggiornamento batch come richiesta revoca tutto, contrassegnando ogni Credenziale nel batch come revocata ed emettendo singola notifica coprendo l'intero batch.
+  * - CI_176
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Eliminazione Credenziale Batch
+    - L'eliminazione guidata dall'utente rimuove con successo l'intero batch poiché la Wallet UI  presenta un batch come una Credenziale, con richiesta eliminazione utilizzando il notification_id del batch applicato a tutte le Credenziali in quel batch, poiché non è possibile eliminare o revocare solo una Credenziale.
+  * - CI_177
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Supporto Lista Stato OAuth per Credenziali Digitali Longeve
+    - La Lista Stato OAuth (`TOKEN-STATUS-LIST`_) è supportata con successo per verifica dello stato validità delle Credenziali Digitali longeve in scenari sia remoti che di prossimità.
+  * - CI_178
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Supporto Opzionale OAuth Status Assertions in Scenario Remoto
+    - Il Fornitore di Attestati Elettronici, l'Istanza di Wallet e la Relying Party supportano con successo le OAuth Status Assertions (`OAUTH-STATUS-ASSERTION`_) nello scenario remoto.
+  * - CI_179
+    - Modello di Dati e ciclo di vita, Sicurezza e Privacy
+    - OAuth Status Assertions - Archiviazione Locale Credenziale Digitale con Dati Ciclo di Vita
+    - I Fornitori di Credenziali memorizzano con successo la Credenziale Digitale generata ed emessa localmente con set minimo di dati richiesto per gestire il suo ciclo di vita, includendo lo stato di validità di quella Credenziale Digitale.
+  * - CI_180
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - OAuth Status Assertions - Specifica Algoritmo Hash Credenziale Digitale
+    - I Fornitori di Credenziali includono con successo l'algoritmo hash specificato nella Credenziale Digitale utilizzando il claim *credential_hash_alg* all'interno del membro JSON status_assertion del claim status.
+  * - CI_181
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - OAuth Status Assertions - Aggiunta Parametri Metadati del Fornitore di Attestati Elettronici
+    - I Fornitori di Credenziali aggiungono con successo i parametri *status_assertion_endpoint* e *credential_hash_alg_supported* all'interno dei loro Metadati.
+  * - CI_182
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Validazione Autorizzazione Richiesta Status Assertion
+    - Il Fornitore di Attestati Elettronici valida con successo che l'Istanza di Wallet che fa la richiesta sia autorizzata a richiedere la Status Assertion, e fornisce Status Assertion Error Response secondo la Sezione HTTP Status Assertion Response se si verificano errori durante questo controllo.
+  * - CI_183
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Verifica Conformità Richiesta Status Assertion
+    - Il Fornitore di Attestati Elettronici verifica con successo la conformità di tutti gli elementi nell'oggetto status_assertion_requests utilizzando il metodo di conferma contenuto nella Credenziale Digitale dove l'oggetto Status Assertion  è riferito, e fornisce HTTP Status Assertion Response in caso di errori. (vedere Sezione :ref:`credential-revocation:HTTP Status Assertion Response`)
+  * - CI_184
+    - Modello di Dati e ciclo di vita, Sicurezza
+    - Status Assertion Verifica del Fornitore di Attestati Elettronici Legittimo
+    - Il Fornitore di Attestati Elettronici verifica con successo di essere Il Fornitore legittimo della Credenziale Digitale a cui ogni oggetto Richiesta di Status Assertion si riferisce.
+  * - CI_185
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status Assertion Controllo Stato Validità Credenziale Digitale
+    - Il Fornitore di Attestati Elettronici controlla con successo lo stato di validità per le Credenziali richieste.
+  * - CI_186
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Creazione Status Assertion
+    - Il Fornitore di Attestati Elettronici che riceve l'oggetto Richiesta Status Assertion crea con successo la Status Assertion corrispondente.
+  * - CI_187
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura Array Status Assertion Responses
+    - Le status_assertion_responses contengono con successo un array di stringhe con oggetti JSON StatusAssertionResponse e/o StatusAssertionErrors relativi alla richiesta fatta dall'Istanza di Wallet.
+  * - CI_188
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status Assertion Endpoint e Formato Richiesta
+    - Lo Status Assertion Endpoint è fornito con successo dal Fornitore di Attestati Elettronici all'interno dei suoi Metadati, con richieste all'endpoint di Status Assertion utilizzando metodo HTTP POST e parametri obbligatori codificati in formato application/json all'interno del corpo del messaggio richiesta HTTP.
+  * - CI_189
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura JWT Richiesta Status Assertion
+    - L'oggetto Richiesta Status Assertion è con successo un JWT che contiene i parametri Header e Payload nella :ref:`tabella <table_status_assertion_req_obj>` corrispondente
+  * - CI_190
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - HTTP Status Assertion Response Riuscita
+    - Il Fornitore di Attestati Elettronici restituisce con successo risposta HTTP con codice stato impostato a 200 OK in caso di validazione Richiesta Status Assertion riuscita.
+  * - CI_191
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status Assertion Response Valida
+    - Il Fornitore di Attestati Elettronici fornisce con successo la Status Assertion valida per Credenziale richiesta, con risposta contenente l'oggetto Status Assertion all'interno Array JSON.
+  * - CI_192
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status Assertion Error Response
+    - Gli Status Assertion Error Response relativi a quella Credenziale sono inclusi con successo nell'Array JSON Risposta come voce quando Il Fornitore di Attestati Elettronici non può fornire Status Assertion valida.
+  * - CI_193
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Gestione HTTP Status Assertion Error
+    - Quando la HTTP Status Assertion Request fallisce (es. richiesta non valida, indisponibilità server, ecc.), un Codice Stato di Errore HTTP è fornito all'interno della Status Assertion Response.
+  * - CI_194
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - HTTP Status Assertion- Codici Stato HTTP
+    - HTTP Status Assertion supporta Codici Stato HTTP secondo la :ref:`tabella <table_http_status_assertion_codes>` corrispondente.
+  * - CI_195
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura HTTP Status Assertion Responses
+    - La risposta HTTP include con successo un oggetto JSON con un membro chiamato status_assertion_responses.
+  * - CI_195a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura Array Status Assertion Responses
+    - Status_assertion_responses contiene con successo un array di stringhe, dove ognuna rappresenta un oggetto Status Assertion Response.
+  * - CI_195b
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Formato Elemento JWT Status Assertion Response
+    - Ogni elemento contiene con successo il JWT firmato, codificato come valori codificati base64url separati da caratteri punto.
+  * - CI_195c
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Requisiti Contenuto Oggetto Status Assertion Response
+    - L'oggetto Status Assertion Response contiene con successo Status Assertion Response e Status Assertion Error in analogia con le Sezioni 8 e 9 di `OAUTH-STATUS-ASSERTION`_.
+  * - CI_196
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Codifica JSON HTTP Status Assertion Response
+    - La risposta HTTP è codificata con successo in formato application/json.
+  * - CI_197
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Parametri e Claim Richiesti nella Status Assertion
+    - La Status Assertion contiene con successo i parametri e claim richiesti definiti nella :ref:`tabella <table_status_assertion_claims>` corrispondente.
+  * - CI_198
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Claim Oggetto Status Assertion Error
+    - L'oggetto Status Assertion Error contiene con successo i claim definiti nella :ref:`tabella <table_status_assertion_errors_obj>` corrispondente.
+  * - CI_199
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Allocazione Indice Credenziale Digitale e Mappatura Stato
+    - Ogni Credenziale Digitale viene allocata con successo con un indice durante l'emissione, che rappresenta la sua posizione all'interno dell'array di bit, con il valore del bit o dei bit a questo indice che corrisponde allo stato della Credenziale Digitale.
+  * - CI_200
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Formato Crittografico Status List Token
+    - La Status List è fornita con successo all'interno del Status List Token firmato crittograficamente in formato JWT.
+  * - CI_201
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Configurazione dei Bit della Status List per le Credenziali Digitali
+    - Il Fornitore di Attestati Elettronici definisce il numero di bit, k (che può essere 1, 2, 4 o 8), che rappresenta la quantità di bit usata per descrivere lo stato di ogni Credenziale Digitale all'interno della Status List. Il Fornitore di Attestati Elettronici configura il numero di bit e, di conseguenza, ogni credenziale può avere 2^k stati possibili.
+  * - CI_202
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Creazione di un Array di Byte per la Status List e Assegnazione della Posizione della Credenziale.
+    - Il Fornitore di Credenziali crea con successo array byte di dimensione = (quantità di Credenziali Digitali) * k / 8 o maggiore, con ogni byte corrispondente a 8/k stati a seconda del valore k (8 se k=1, 4 se k=2, 2 se k=4, o 1 se k=8), e assegna ogni Credenziale Digitale emessa a una posizione nell'array.
+  * - CI_203
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Impostazione dei valori di stato delle credenziali digitali nella Status List in un array di byte
+    - Il Fornitore di Credenziali imposta con successo valori stato per tutte le Credenziali Digitali emesse all'interno dell'array byte, con ogni stato Credenziale Digitale identificato utilizzando un indice che mappa a bit specifici all'interno dell'array byte, conteggio indice da 0 a (quantità di Credenziale Digitale) - 1, bit contati dal bit meno significativo ("0") al bit più significativo ("7"), e tutti i bit dell'array byte a un particolare indice impostati a un valore stato.
+  * - CI_204
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Livello di Compressione Raccomandato per la Status List delle Credenziali Digitali
+    - Il Fornitore di Attestati Elettronici comprime con successo l'array byte utilizzando DEFLATE [:rfc:`1951`] con il formato dati ZLIB [:rfc:`1950`]
+  * - CI_204a
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Livello di Compressione Raccomandato per la Status List delle Credenziali Digitali
+    - Le implementazioni utilizzano con successo il livello di compressione più alto disponibile per la compressione dell'array di byte.
+  * - CI_205
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Disponibilità Endpoint Status List
+    - Il Fornitore di Attestati Elettronici rende con successo disponibile alle Relying Party e Istanze di Wallet un endpoint per richiedere Liste Stato.
+  * - CI_206
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status List Definizione dei Valori di Stato per le Credenziali Digitali
+    - Il Fornitore di Attestati Elettronici utilizza con successo i valori per gli Stati possibili definiti nella :ref:`credential-revocation:Creazione delle Status List`.
+  * - CI_207
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status List Definizione degli stati opzionali di stato delle credenziali digitali
+    - Il Fornitore di Attestati Elettronici aggiunge con successo altri stati oltre a quelli descritti sopra quando sceglie il numero di bit per trasmettere gli stati delle Credenziali Digitali emesse, con attenta considerazione per la divulgazione di informazioni alle Relying Party quando aggiunge molti stati diversi per il ciclo di vita della Credenziale Digitale.
+  * - CI_208
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status List Parametri del Token all’Endpoint
+    - Il Token Status List è disponibile con successo presso lo Status List Endpoint e contiene i parametri nella :ref:`tabella <table_status_list_endpoint_parameters>` corrispondente.
+  * - CI_209
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Impostazione Consigliata di Scadenza Breve del Token Status List
+    - Il Fornitore di Attestati Elettronici imposta con successo il claim exp in modo che il Token Status List sia di breve durata, tipicamente con claim exp che non supera il claim iat di più di 24 ore.
+  * - CI_210
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Struttura Status List Codificata JSON
+    - La struttura della Status List codificata JSON è conforme alla :ref:`Tabella <table_status_list_structure>` corrispondente.
+  * - CI_211
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Status List Archiviazione Locale delle Credenziali Digitali
+    - I Fornitori di Attestati Elettronici memorizzano con successo la Credenziale Digitale generata localmente con set minimo di dati richiesto per gestire il suo ciclo di vita, includendo lo stato di validità di quella Credenziale Digitale.
+  * - CI_212
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Inclusione nella Status List dello Stato delle Credenziali Digitali
+    - I Fornitori di Attestati Elettronici includono con successo il claim *status_list* all'interno del valore Oggetto JSON del claim status della Credenziale Digitale una volta generata.
+  * - CI_213
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Parametri dell’Oggetto JSON della Status List Claim
+    - Il valore del claim *status_list* è con successo un Oggetto JSON con i :ref:`parametri corrispondenti <table_status_list_parameters>`.
+  * - CI_214
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Risposta Riuscita dello Status List Endpoint
+    - Lo Status List Endpoint risponde con successo con il Token Status List utilizzando il codice stato HTTP nell'intervallo 2xx, con Fornitore Stato che utilizza content-type application/statuslist+jwt per il Token Status List in formato JWT nella risposta riuscita.
+  * - CI_215
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Content-Encoding Gzip Risposta Status List HTTP
+    - La risposta HTTP utilizza con successo il Content-Encoding gzip come definito nel [:rfc:`9110`].
+  * - CI_216
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Autorizzazione e Registrazione del Fornitore di Attestati Elettronici
+    - Il Fornitore di Attestati Elettronici registra con successo le proprie Credenziali Digitali nel catalogo.
+  * - CI_217
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Informazioni Richieste Catalogo Credenziale Digitale
+    - Il Fornitore di Attestati Elettronici fornisce le sue credenziali nel catalogo, insieme alle informazioni nella :ref:`tabella <table_catalogue_main_information>`. corrispondente.
+  * - CI_218
+    - Modello di Dati e ciclo di vita, Interoperabilità
+    - Informazioni Elemento Array Credenziali
+    - Ogni elemento dell'array delle credenziali contiene correttamente tutte le informazioni di primo livello definite nella :ref:`Tabella  <table_catalogue_credentials_parameters>` corrispondente.

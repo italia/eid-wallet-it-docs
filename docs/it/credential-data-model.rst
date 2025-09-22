@@ -67,6 +67,7 @@ Parametri SD-JWT della Credenziale
 
 Il JOSE Header contiene i seguenti parametri obbligatori:
 
+.. _table_sd-wt-vc_jose_header:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -95,6 +96,7 @@ Il JOSE Header contiene i seguenti parametri obbligatori:
     - [`SD-JWT-VC`_] Sezione 6.3.5.
 
 Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere divulgati, questi sono elencati nelle seguenti tabelle che specificano se un claim è divulgabile selettivamente [SD] o meno [NSD].
+
 
 .. _table_sd-jwt-vc_parameters:
 .. list-table::
@@ -192,6 +194,7 @@ Type Metadata dell'Attestato Elettronico
 
 Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i seguenti parametri.
 
+.. _table_metadata_type_json_obj:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -286,6 +289,7 @@ Attributi PID dell'Utente
 
 A seconda del tipo di Attestato Elettronico **vct**, possono essere aggiunti dei claim aggiuntivi, il PID supporta i seguenti:
 
+.. _table_sd-jwt-vc_pid_parameters:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -603,6 +607,7 @@ Vedere :ref:`credential-data-model:Mobile Security Object` per i dettagli.
 
 Un Attestato Elettronico in formato mdoc-CBOR DEVE avere la seguente struttura:
 
+.. _table_mdoc_structure:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -625,6 +630,7 @@ Attributi dei Namespaces
 
 **nameSpaces** contiene una o più voci *nameSpace*, ciascuna identificata da un nome. All'interno di ogni **nameSpace**, sono inclusi uno o più *IssuerSignedItemBytes*, ciascuno codificato in una stringa di byte codificata in CBOR con Tag 24 (#6.24(bstr .cbor)), che appare come 24(<<... >>) nella notazione diagnostica. Essa rappresenta le informazioni da divulgare, una per ogni digest presente all'interno del `Mobile Security Object` e DEVE contenere i seguenti attributi:
 
+.. _table_attribute_namespaces:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -651,6 +657,7 @@ Attributi
 
 I seguenti **elementIdentifiers** DEVONO essere inclusi in un Attestato Elettronico codificato in mdoc-CBOR all'interno del rispettivo *nameSpace*, se non diversamente specificato:
 
+.. _table_element_identifiers_mdoc:
 .. list-table::
    :class: longtable
    :widths: 20 60 20
@@ -698,6 +705,7 @@ L'**issuerAuth** rappresenta il `Mobile Security Object` che è un `Documento CO
 
 Il **protected header** DEVE contenere il seguente parametro codificato in formato CBOR:
 
+.. _table_protected_headers_mdoc:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -715,6 +723,7 @@ Il **protected header** DEVE contenere il seguente parametro codificato in forma
 
 L'**unprotected header** DEVE contenere i seguenti parametri, se non diversamente specificato:
 
+.. _table_unprotected_headers_mdoc:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -737,6 +746,7 @@ Il **payload** DEVE contenere il *MobileSecurityObject*, senza il parametro di h
 
 Il `MobileSecurityObject` DEVE avere i seguenti attributi, se non diversamente specificato:
 
+.. _table_MobileSecurityObject_attributes:
 .. list-table::
     :class: longtable
     :widths: 20 60 20

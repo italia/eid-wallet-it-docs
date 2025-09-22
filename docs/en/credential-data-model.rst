@@ -67,7 +67,7 @@ Credential SD-JWT Parameters
 
 The JOSE header contains the following mandatory parameters:
 
-.. _table_pid_jose_header:
+.. _table_sd-wt-vc_jose_header:
 .. list-table::
   :class: longtable
   :widths: 20 60 20

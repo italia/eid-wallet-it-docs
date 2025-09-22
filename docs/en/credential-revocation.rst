@@ -514,6 +514,8 @@ If the HTTP Status Assertion Request fails (e.g. invalid request, server unavail
 
 In the following table are listed HTTP Status Codes that MUST be supported:
 
+
+.. _table_http_status_assertion_codes:
 .. list-table::
   :class: longtable
   :widths: 20 20 60

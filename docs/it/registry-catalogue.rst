@@ -42,6 +42,7 @@ Le principali Entità coinvolte nel Catalogo degli Attestati Elettronici sono:
 
 La seguente tabella riassume le principali informazioni che DEVONO essere fornite dal Catalogo degli Attestati Elettronici:
 
+.. _table_catalogue_main_information:
 .. list-table:: Catalogo degli Attestati Elettronici - Informazioni principali
    :class: longtable
    :widths: 30 70
@@ -197,6 +198,7 @@ Il payload JWS contiene i seguenti parametri:
 
 Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
 
+.. _table_catalogue_credentials_parameters:
 .. list-table:: Campi di primo livello di ogni voce di Attestato Elettronico
   :class: longtable
   :header-rows: 1

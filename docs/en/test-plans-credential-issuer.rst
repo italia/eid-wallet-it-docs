@@ -47,11 +47,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_008
     - Trust, Interoperability
     - Credential Issuer metadata
-    - Credential Issuer successfully provides the following metadata types: federation_entity, Oauth_authorization_server and openVCI_credential_issuer
+    - Credential Issuer successfully provides the following metadata types: *federation_entity*, *Oauth_authorization_server* and *openid_credential_issuer*
   * - CI_009
     - Trust, Interoperability
-    - Inclusion of openVCI_credential_verifier Metadata in User Authentication via Wallet
-    - When the (Q)EAA Providers authenticate users through their Wallet Instance, the openVCI_credential_verifier metadata is included in addition to the required metadata parameters.
+    - Inclusion of *openid_credential_verifier* Metadata in User Authentication via Wallet
+    - When the (Q)EAA Providers authenticate users through their Wallet Instance, the *openid_credential_verifier* metadata is included in addition to the required metadata parameters.
   * - CI_010
     - Issuance, Interoperability
     - Credential Offer URI Structure
@@ -67,7 +67,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_013
     - Issuance, Interoperability
     - Credential Offer Grants Parameter Structure
-    - The grants parameter successfully contains an authorization_code object that includes both required sub-parameters (issuer_state and authorization_server) with appropriate values
+    - The grants parameter successfully contains an authorization_code object that includes both required sub-parameters (*issuer_state* and *authorization_server*) with appropriate values
   * - CI_014
     - Issuance, Interoperability
     - Credential Object Compilation
@@ -571,7 +571,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_124
     - Data Model and lifecycle, Interoperability
     - SD-JWT Selective Disclosure Organization
-    - Non-selectively disclosable claims appear directly in the SD-JWT payload as they are, while selectively disclosable claim digests (plus any decoys) are properly organized within _sd arrays as described in Section 4.2.4.1.
+    - Non-selectively disclosable claims appear directly in the SD-JWT payload as they are, while selectively disclosable claim digests (plus any decoys) are properly organized within *_sd* arrays as described in Section 4.2.4.1.
   * - CI_125
     - Data Model and lifecycle, Interoperability
     - SD-JWT Disclosure Integrity Verification
@@ -599,7 +599,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_131
     - Data Model and lifecycle, Interoperability
     - SD-JWT JOSE Header Parameter
-    - The JOSE header contains the parameter in the Credential :ref:`SD-JWT Parameters Table <table_pid_jose_header>`.
+    - The JOSE header contains the parameter in the Credential :ref:`SD-JWT Parameters Table <table_sd-wt-vc_jose_header>`.
   * - CI_132
     - Data Model and lifecycle, Interoperability
     - SD-JWT Payload Claims
@@ -855,7 +855,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_175
     - Data Model and lifecycle, Interoperability
     - Batch revocation upon credential Update Request
-    - Credential Issuer successfully processes batch update request as revoke all request, marking every Credential in the batch as revoked and emitting single notification covering the entire batch.
+    - Credential Issuer successfully processes batch update request as revoke all requests, marking every Credential in the batch as revoked and emitting single notification covering the entire batch.
   * - CI_176
     - Data Model and lifecycle, Interoperability
     - Batch Credential Deletion
@@ -879,7 +879,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_181
     - Data Model and lifecycle, Interoperability
     - OAuth Status Assertions - Credential Issuer Metadata Parameters Addition
-    - Credential Issuers successfully add status_assertion_endpoint and credential_hash_alg_supported parameters within their Metadata.
+    - Credential Issuers successfully add *status_assertion_endpoint* and *credential_hash_alg_supported* parameters within their Metadata.
   * - CI_182
     - Data Model and lifecycle, Interoperability
     - Status Assertion Request Authorization Validation
@@ -926,7 +926,7 @@ This section provides the set of test cases designed for technical implementers 
     - Status Assertion Errors related to that Credential are successfully included in the Response JSON Array as an entry when Credential Issuer cannot provide valid Status Assertion.
   * - CI_193
     - Data Model and lifecycle, Interoperability
-    - HTTP Status Assertion Request Failure Response HTTP Status Assertion Request Failure Error Code
+    - HTTP Status Assertion Handling
     - When HTTP Status Assertion Request fails (e.g. invalid request, server unavailability, etc.), an HTTP Error Status Code is provided within the Status Assertion Response.
   * - CI_194
     - Data Model and lifecycle, Interoperability
@@ -1019,11 +1019,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_212
     - Data Model and lifecycle, Interoperability
     - Digital Credential Status List Claim Inclusion
-    - Credential Issuers successfully include status_list claim within the JSON Object value of the status claim of the Digital Credential once generated.
+    - Credential Issuers successfully include *status_list* claim within the JSON Object value of the status claim of the Digital Credential once generated.
   * - CI_213
     - Data Model and lifecycle, Interoperability
     - Status List Claim JSON Object Parameters
-    - The value of status_list claim is successfully a JSON Object with the corresponding :ref:`parameters <table_status_list_parameters>`.
+    - The value of *status_list* claim is successfully a JSON Object with the corresponding :ref:`parameters <table_status_list_parameters>`.
   * - CI_214
     - Data Model and lifecycle, Interoperability
     - Status List Endpoint Successful Response

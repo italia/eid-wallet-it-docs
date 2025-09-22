@@ -509,6 +509,7 @@ Se la HTTP Status Assertion Request fallisce (ad esempio richiesta non valida, i
 
 Nella seguente tabella sono elencati i Codici di Stato HTTP che DEVONO essere supportati:
 
+.. _table_http_status_assertion_codes:
 .. list-table::
   :class: longtable
   :widths: 20 20 60
@@ -552,6 +553,8 @@ Un esempio non normativo di una HTTP Status Assertion Response è fornito di seg
 
 La Status Assertion DEVE contenere i parametri e i claim definiti di seguito
 
+
+.. _table_status_assertion_claims:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -649,6 +652,8 @@ Di seguito un esempio non normativo di un Status Assertion Response object in fo
 
 L'oggetto Status Assertion Error DEVE contenere i seguenti claim:
 
+
+.. _table_status_assertion_errors_obj:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -792,6 +797,7 @@ Token di Status List
 
 Il Token di Status List è disponibile all'Endpoint di Status List e contiene i seguenti parametri.
 
+.. _table_status_list_endpoint_parameters:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -842,6 +848,7 @@ Il Token di Status List è disponibile all'Endpoint di Status List e contiene i 
 
 Una Status List codificata in JSON ha la seguente struttura:
 
+.. _table_status_list_structure:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
@@ -892,6 +899,7 @@ I Fornitori di Attestati Elettronici, una volta che un Attestato Elettronico è 
 
 Il valore del claim ``status_list`` DEVE essere a sua volta un Oggetto JSON con i seguenti parametri
 
+.. _table_status_list_parameters:
 .. list-table::
   :class: longtable
   :widths: 20 60 20
