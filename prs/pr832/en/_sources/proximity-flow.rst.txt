@@ -34,7 +34,7 @@ The sub-phases are described below:
 
 
 
-Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least (:ref:`test-plans-proximity-presentation:PPR-001`, :ref:`test-plans-proximity-presentation:PPR-002`, :ref:`test-plans-proximity-presentation:PPR-003`, :ref:`test-plans-proximity-presentation:PPR-004`, :ref:`test-plans-proximity-presentation:PPR-005`, :ref:`test-plans-proximity-presentation:PPR-006`):
+Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least the following flows:
 
 - *Supervised Device Retrieval flow* where a human Relying Party is overseeing the verification process in person, in contrast with *unsupervised flow* where verification might happen through automated systems without human oversight.
 - *Device Engagement* based on QR Code.

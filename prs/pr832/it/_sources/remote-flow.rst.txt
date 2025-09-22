@@ -4,7 +4,7 @@
 Flusso Remoto
 =============
 
-A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`, :ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`, :ref:`test-plans-remote-presentation:RPR-05`, :ref:`test-plans-remote-presentation:RPR-06`):
+A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (**Same Device**) oppure un altro dispositivo (**Cross Device**), la Relying Party DEVE supportare i seguenti flussi remoti:
 
 * **Same Device**: essa DEVE fornire un indirizzo HTTP all'Istanza del Wallet utilizzando un *redirect* (302) o un href HTML nella pagina web (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`);
 * **Cross Device**: essa DEVE fornire un indirizzo HTTP tramite un Codice QR che l'Utente scansiona con l'Istanza del Wallet (:ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`).
