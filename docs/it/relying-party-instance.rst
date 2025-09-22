@@ -5,7 +5,7 @@
 App di Verifica 
 ---------------
 
-L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party.
+L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party (:ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`, :ref:`test-plans-proximity-presentation:Matrice di Test per la Presentazione di Credenziali in Prossimità`).
 
 Esistono due tipi principali di App di Verifica, ciascuna destinata a diversi ambienti operativi:
 
@@ -81,7 +81,7 @@ L'App di Verifica deve ottenere un Certificato di Accesso appropriato, che sarà
 
 Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di Accesso può essere emesso per l'App di Verifica; questa operazione è rappresentata dalla transizione **CERT REISS** verso lo stato **Verified**.
 
-In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (**PID/(Q)EAA PRE**), utilizzando il Certificato di Accesso per autenticarsi.
+In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (**PID/(Q)EAA PRE**), utilizzando il Certificato di Accesso per autenticarsi (:ref:`test-plans-remote-presentation:RPR-11`, :ref:`test-plans-remote-presentation:RPR-21`, :ref:`test-plans-remote-presentation:RPR-22`, :ref:`test-plans-remote-presentation:RPR-50`, :ref:`test-plans-remote-presentation:RPR-51`, :ref:`test-plans-remote-presentation:RPR-61`, :ref:`test-plans-remote-presentation:RPR-62`).
 
 
 Transizione a Unverified
@@ -89,14 +89,14 @@ Transizione a Unverified
 
 La scadenza del Certificato di Accesso (transizione **CERT EXP**) porta allo stato **Unverified**.
 
-In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta **PID/(Q)EAA PRE**. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.
+In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta **PID/(Q)EAA PRE**. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata (:ref:`test-plans-proximity-presentation:PPR-014`, :ref:`test-plans-proximity-presentation:PPR-015`, :ref:`test-plans-proximity-presentation:PPR-017`, :ref:`test-plans-proximity-presentation:PPR-019`).
 
 
 
 Transizione a Uninstalled
 """""""""""""""""""""""""
 
-Attraverso gli stati **Installed**, **Verified** e **Unverified**, la Relying Party Instance può essere rimossa completamente attraverso la disinstallazione dell'App di Verifica (transizione **RPI UNINST**), portando allo stato **Uninstalled**. Se un'App di Verifica è **Uninstalled**, termina il suo ciclo di vita.
+Attraverso gli stati **Installed**, **Verified** e **Unverified**, la Relying Party Instance può essere rimossa completamente attraverso la disinstallazione dell'App di Verifica (transizione **RPI UNINST**), portando allo stato **Uninstalled**. Se un'App di Verifica è **Uninstalled**, termina il suo ciclo di vita (:ref:`test-plans-remote-presentation:RPR-34`, :ref:`test-plans-remote-presentation:RPR-46`, :ref:`test-plans-remote-presentation:RPR-59`, :ref:`test-plans-remote-presentation:RPR-73`, :ref:`test-plans-remote-presentation:RPR-47`, :ref:`test-plans-remote-presentation:RPR-48`, :ref:`test-plans-remote-presentation:RPR-74`, :ref:`test-plans-remote-presentation:RPR-75`).
 
 
 Funzionalità dell'App di Verifica Mobile

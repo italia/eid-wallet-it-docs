@@ -117,3 +117,53 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - Security
     - Testare la resistenza agli attacchi replay.
     - Il sistema è resistente agli attacchi replay.
+
+  * - PPR-021
+    - Device Engagement
+    - Verificare che la struttura Device Engagement sia codificata in CBOR.
+    - La struttura Device Engagement è correttamente codificata in formato CBOR.
+
+  * - PPR-022
+    - Device Engagement
+    - Testare che la chiave pubblica effimera sia del tipo consentito dalla suite di cifratura.
+    - La chiave pubblica effimera rispetta i requisiti della suite di cifratura selezionata.
+
+  * - PPR-023
+    - BLE Configuration
+    - Verificare che solo la modalità Central Client sia supportata.
+    - Solo la modalità Central Client è supportata per le connessioni BLE.
+
+  * - PPR-024
+    - Capabilities
+    - Testare che HandoverSessionEstablishmentSupport sia impostato su true quando presente.
+    - HandoverSessionEstablishmentSupport è correttamente impostato su true.
+
+  * - PPR-025
+    - Capabilities
+    - Verificare che ReaderAuthAllSupport sia impostato su true quando presente.
+    - ReaderAuthAllSupport è correttamente impostato su true.
+
+  * - PPR-026
+    - mdoc Request
+    - Testare che i messaggi mdoc Request siano codificati in CBOR.
+    - I messaggi mdoc Request sono correttamente codificati in formato CBOR.
+
+  * - PPR-027
+    - mdoc Request
+    - Verificare che la richiesta mdoc sia cifrata con la chiave di sessione.
+    - La richiesta mdoc è correttamente cifrata con la chiave di sessione.
+
+  * - PPR-028
+    - mdoc Request
+    - Testare che la richiesta mdoc sia trasmessa tramite protocollo BLE.
+    - La richiesta mdoc è trasmessa correttamente tramite protocollo BLE.
+
+  * - PPR-029
+    - mdoc Response
+    - Verificare che i messaggi mdoc Response siano codificati in CBOR.
+    - I messaggi mdoc Response sono correttamente codificati in formato CBOR.
+
+  * - PPR-030
+    - mdoc Response
+    - Testare che la risposta mdoc sia cifrata con la chiave di sessione.
+    - La risposta mdoc è correttamente cifrata con la chiave di sessione.

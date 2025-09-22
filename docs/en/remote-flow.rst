@@ -4,10 +4,10 @@
 Remote Flow
 ===========
 
-Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows:
+Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`, :ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`, :ref:`test-plans-remote-presentation:RPR-05`, :ref:`test-plans-remote-presentation:RPR-06`):
 
-* **Same Device**, the Relying Party MUST provide an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page;
-* **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance.
+* **Same Device**, the Relying Party MUST provide an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`);
+* **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance (:ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`).
 
 Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
 
@@ -32,7 +32,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
   2. *Request URI Request*: the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_method``.
 
     * If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method.
-    * If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter.
+    * If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter (:ref:`test-plans-remote-presentation:RPR-78`, :ref:`test-plans-remote-presentation:RPR-79`).
 
   3. *Request URI Response*: the Relying Party returns a signed Request Object to the Wallet Instance.
   4. *WI Checks*: the Wallet Instance:
@@ -94,7 +94,7 @@ The details of each step shown in the previous picture are described below.
   https://wallet-solution.example.org/authorization?client_id=https%3A%2F%2Frelying-party.example.org&request_uri=https%3A%2F%2Frelying-party.example.org&request_uri_method=post
 
 .. note::
-  The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured.
+  The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured (:ref:`test-plans-remote-presentation:RPR-77`).
 
 Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow. Below is a non-normative example:
 
@@ -249,7 +249,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
 
 **Steps 26-27 or 28 (Relying Party Response)**: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.
 
-  Upon receiving and validating the Authorization Response at the Response Endpoint, the Relying Party returns to the Wallet Instance a HTTP 200 OK. In particular, in the Same Device Flow, the Relying Party SHOULD also pass the ``redirect_uri`` to the Wallet Instance. Upon receiving the ``redirect_uri``, the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri``. This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow. When the response does not contain the ``redirect_uri`` parameter, the Wallet Instance is not required to perform any further step. The User should manually close the Wallet Instance and open the user-agent to continue the flow.
+  Upon receiving and validating the Authorization Response at the Response Endpoint, the Relying Party returns to the Wallet Instance a HTTP 200 OK. In particular, in the Same Device Flow, the Relying Party SHOULD also pass the ``redirect_uri`` to the Wallet Instance. Upon receiving the ``redirect_uri``, the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri``. This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow. When the response does not contain the ``redirect_uri`` parameter, the Wallet Instance is not required to perform any further step. The User should manually close the Wallet Instance and open the user-agent to continue the flow (:ref:`test-plans-remote-presentation:RPR-96`).
 
   The following is a non-normative example of the response in the Same Device Flow.
 
@@ -306,10 +306,10 @@ The URL parameters contained in the Relying Party Authorization Request, which i
   * - **state**
     - RECOMMENDED. A unique identifier for the current transaction generated by the Relying Party. The value SHOULD be opaque to the Wallet Instance.
   * - **request_uri_method**
-    - OPTIONAL. The HTTP method MUST be set with ``get`` or ``post``. The Wallet Instance should use this method to obtain the signed Request Object from the ``request_uri``. If not provided or equal to ``get``, the Wallet Instance SHOULD use the HTTP method ``get``. Otherwise, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in ``application/x-www-form-urlencoded``.
+    - OPTIONAL. The HTTP method MUST be set with ``get`` or ``post``. The Wallet Instance should use this method to obtain the signed Request Object from the ``request_uri``. If not provided or equal to ``get``, the Wallet Instance SHOULD use the HTTP method ``get``. Otherwise, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in ``application/x-www-form-urlencoded`` (:ref:`test-plans-remote-presentation:RPR-78`, :ref:`test-plans-remote-presentation:RPR-79`).
 
 .. warning::
-  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``request_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``request_uris`` parameter, obtained from the Trust Chain about the Relying Party.
+  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``request_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``request_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`test-plans-remote-presentation:RPR-90`).
 
 .. note::
   The ``state`` parameter in an OAuth request is optional, but it is highly recommended. It is primarily used to prevent Cross-Site Request Forgery (CSRF) attacks by including a unique and unpredictable value that the Relying Party can verify upon receiving the response. Additionally, it helps maintain the state between the request and response, such as session information or other data the Relying Party needs after the authorization process.
@@ -327,9 +327,9 @@ This feature can be useful when, for example, the Wallet Instance supports a res
 .. warning::
   The Wallet Instance, when providing its technical capabilities to the
   Relying Party, MUST NOT include any User information or other explicit
-  information regarding the hardware used or usage preferences of its User.
+  information regarding the hardware used or usage preferences of its User (:ref:`test-plans-remote-presentation:RPR-92`).
 
-If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the `request_uri` endpoint of the Relying Party, with the method POST and content type set to `application/x-www-form-urlencoded`.
+If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the `request_uri` endpoint of the Relying Party, with the method POST and content type set to `application/x-www-form-urlencoded` (:ref:`test-plans-remote-presentation:RPR-78`).
 The request and its parameters are defined in Section number 5 (Authorization Request) of `OpenID4VP`_. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request.
 
 .. list-table:: Request URI Endpoint Parameters
@@ -361,7 +361,7 @@ The request and its parameters are defined in Section number 5 (Authorization Re
    * - `authorization_endpoint`
      - URL of the authorization server's endpoint, see `OAUTH2`_. Using an universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.
    * - `response_types_supported`
-     - OPTIONAL. JSON array of OAuth 2.0 "response_type" values. If present it MUST be set to `vp_token`. Default is `vp_token`.
+     - OPTIONAL. JSON array of OAuth 2.0 "response_type" values. If present it MUST be set to `vp_token`. Default is `vp_token` (:ref:`test-plans-remote-presentation:RPR-95`).
    * - `response_modes_supported`
      - OPTIONAL. JSON array of OAuth 2.0 "response_mode" values. See `JARM`_.
    * - `request_object_signing_alg_values_supported`
@@ -369,7 +369,7 @@ The request and its parameters are defined in Section number 5 (Authorization Re
 
 .. note::
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
-  When present, the Relying Party MUST evaluate it.
+  When present, the Relying Party MUST evaluate it (:ref:`test-plans-remote-presentation:RPR-94`).
 
 .. note::
   For the ``authorization_endpoint`` the use of universal links are preferred over custom url-schemes because, when properly configured using Assetlinks JSON for Android and Apple App Site Association for iOS, they provide enhanced security by reducing the risk of URL hijacking.
@@ -391,9 +391,9 @@ The JWT header parameters are described below:
   * - **Name**
     - **Description**
   * - **alg**
-    - Algorithm used to sign the JWT, according to [:rfc:`7516#section-4.1.1`]. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier.
+    - Algorithm used to sign the JWT, according to [:rfc:`7516#section-4.1.1`]. It MUST be one of the supported algorithms in Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or to a symmetric algorithm (MAC) identifier (:ref:`test-plans-remote-presentation:RPR-80`).
   * - **typ**
-    - Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt``.
+    - Media Type of the JWT, as defined in [:rfc:`7519`] and [:rfc:`9101`]. It SHOULD be set to the value ``oauth-authz-req+jwt`` (:ref:`test-plans-remote-presentation:RPR-81`).
   * - **kid**
     - Key ID of the public key needed to verify the JWT signature, as defined in [:rfc:`7517`]. REQUIRED when ``trust_chain`` is used.
   * - **trust_chain**
@@ -412,17 +412,17 @@ The JWT payload parameters are described herein:
   * - **client_id**
     - Unique Identifier of the Relying Party.
   * - **response_mode**
-    - It MUST be set to ``direct_post.jwt``.
+    - It MUST be set to ``direct_post.jwt`` (:ref:`test-plans-remote-presentation:RPR-82`).
   * - **dcql_query**
     - Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **response_type**
-    - It MUST be set to ``vp_token``.
+    - It MUST be set to ``vp_token`` (:ref:`test-plans-remote-presentation:RPR-83`).
   * - **wallet_nonce**
-    - String value used to mitigate replay attacks of the response, as defined in Section 5.11 (Request URI Method) of `OpenID4VP`_. It MUST be present if previously provided by Wallet Instance.
+    - String value used to mitigate replay attacks of the response, as defined in Section 5.11 (Request URI Method) of `OpenID4VP`_. It MUST be present if previously provided by Wallet Instance (:ref:`test-plans-remote-presentation:RPR-94`).
   * - **response_uri**
-    - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST.
+    - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (:ref:`test-plans-remote-presentation:RPR-91`).
   * - **nonce**
-    - Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits.
+    - Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits (:ref:`test-plans-remote-presentation:RPR-84`).
   * - **state**
     - Unique identifier of the Authorization Request.
   * - **iss**
@@ -430,32 +430,32 @@ The JWT payload parameters are described herein:
   * - **iat**
     - Unix Timestamp, representing the time at which the JWT was issued.
   * - **exp**
-    - Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore.
+    - Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (:ref:`test-plans-remote-presentation:RPR-85`).
   * - **request_uri_method**
     - String determining the HTTP method to be used with the `request_uri` endpoint to provide the Wallet Instance metadata to the Relying Party. The value is case-insensitive and can be set to: `get` or `post`. The GET method, as defined in [@RFC9101], involves the Wallet Instance sending a GET request to retrieve a Request Object. The POST method involves the Wallet Instance requesting the creation of a new Request Object by sending an HTTP POST request, with its metadata, to the request URI of the Relying Party.
 
 .. warning::
-  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party.
+  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`test-plans-remote-presentation:RPR-91`).
 
 .. note::
   The following parameter, even if defined in [OID4VP], is not mentioned in the previous non-normative example, since its usage is conditional.
 
-  - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present, the Wallet Instance MUST ignore it and consider the client metadata obtained through the OpenID Federation Trust Chain.
+  - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present, the Wallet Instance MUST ignore it and consider the client metadata obtained through the OpenID Federation Trust Chain (:ref:`test-plans-remote-presentation:RPR-93`).
 
 .. note::
     **Requesting the Wallet Attestation**
 
-    The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the ``claims`` parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
+    The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the ``claims`` parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry-catalogue:Digital Credentials Catalogue Structure` (:ref:`test-plans-remote-presentation:RPR-86`, :ref:`test-plans-remote-presentation:RPR-87`, :ref:`test-plans-remote-presentation:RPR-88`).
 
 Request URI Endpoint Errors
 ----------------------------
 
-When the Relying Party encounters errors while issuing the Request Object from the ``request_uri`` endpoint, it MUST return an error response with ``application/json`` as the content type and MUST include the following parameters:
+When the Relying Party encounters errors while issuing the Request Object from the ``request_uri`` endpoint, it MUST return an error response with ``application/json`` as the content type and MUST include the following parameters (:ref:`test-plans-remote-presentation:RPR-89`):
 
 * ``error``: The error code.
 * ``error_description``: Text in human-readable form providing further details to clarify the nature of the error encountered.
 
-The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response:
+The following table lists the HTTP Status Codes and related error codes that MUST be supported for the error response (:ref:`test-plans-remote-presentation:RPR-89`):
 
 .. list-table::
     :class: longtable
@@ -501,7 +501,7 @@ After obtaining the User authorization and consent for the presentation of the D
 .. note::
     **Presenting the Wallet Attestation**
 
-    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User.
+    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User (:ref:`test-plans-remote-presentation:RPR-86`, :ref:`test-plans-remote-presentation:RPR-87`, :ref:`test-plans-remote-presentation:RPR-88`).
 
 Where the following parameters are used:
 
@@ -513,7 +513,7 @@ Where the following parameters are used:
   * - **Name**
     - **Description**
   * - **vp_token**
-    - There MUST be at least two signed presentations in this Array:
+    - There MUST be at least two signed presentations in this Array (:ref:`test-plans-remote-presentation:RPR-86`):
 
       - The requested Digital Credential (one or more, in format of SD-JWT VC)
       - The Wallet Attestation (in SD-JWT VC format)
@@ -524,15 +524,15 @@ Where the following parameters are used:
     - Unique identifier provided by the Relying Party within the Authorization Request.
 
 
-SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the ``KB-JWT`` in the SD-JWT by appending the ``KB-JWT`` at the end of the SD-JWT, as represented in the example below
+SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the ``KB-JWT`` in the SD-JWT by appending the ``KB-JWT`` at the end of the SD-JWT, as represented in the example below (:ref:`test-plans-remote-presentation:RPR-86`)
 
 .. code-block:: text
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~<KB-JWT>
 
-To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the ``cnf`` parameter contained in the Issuer-Signed-JWT.
+To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the ``cnf`` parameter contained in the Issuer-Signed-JWT (:ref:`test-plans-remote-presentation:RPR-86`).
 
-When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header:
+When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (:ref:`test-plans-remote-presentation:RPR-86`):
 
 .. list-table::
   :class: longtable
@@ -542,11 +542,11 @@ When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in
   * - **Claim**
     - **Description**
   * - **typ**
-    - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725].
+    - REQUIRED. MUST be ``kb+jwt``, which explicitly types the Key Binding JWT as recommended in Section 3.11 of [RFC8725] (:ref:`test-plans-remote-presentation:RPR-86`).
   * - **alg**
     - REQUIRED. Signature Algorithm using one of the specified in the Section :ref:`algorithms:Cryptographic Algorithms`. 
 
-When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the `cnf` parameter. The KB-JWT MUST contain the following parameters in the JWT payload:
+When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same public key included in the SD-JWT within the `cnf` parameter. The KB-JWT MUST contain the following parameters in the JWT payload (:ref:`test-plans-remote-presentation:RPR-86`):
 
 .. list-table::
   :class: longtable
@@ -556,11 +556,11 @@ When an SD-JWT is presented, the KB-JWT signature MUST be verified by the same p
   * - **Claim**
     - **Description**
   * - **iat**
-    - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519].
+    - REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued, using the syntax defined in [RFC7519] (:ref:`test-plans-remote-presentation:RPR-86`).
   * - **aud**
-    - REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier.
+    - REQUIRED. The intended receiver of the Key Binding JWT. The value of this parameter MUST match the Relying Party unique entity identifier (:ref:`test-plans-remote-presentation:RPR-86`).
   * - **nonce**
-    - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object.
+    - REQUIRED. Ensures the freshness of the signature. The value type of this claim MUST be a string. The value MUST match with the one provided in the request object (:ref:`test-plans-remote-presentation:RPR-86`).
   * - **sd_hash**
     - REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.
 
@@ -570,9 +570,9 @@ Authorization Response Errors
 
 There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the url provided in the parameter ``request_uri`` but fails the validation checks. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of the Relying Party.
 
-If the Wallet Instance encounters any such errors during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response.
+If the Wallet Instance encounters any such errors during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response (:ref:`test-plans-remote-presentation:RPR-89`).
 The Wallet Instance sends the Authorization Error Response to the Relying Party ``response_uri`` endpoint using an HTTP POST request.
-The Authorization Error Response MUST be encoded in the request body using the format defined by the ``application/x-www-form-urlencoded`` content type.
+The Authorization Error Response MUST be encoded in the request body using the format defined by the ``application/x-www-form-urlencoded`` content type (:ref:`test-plans-remote-presentation:RPR-89`).
 
 Below is a non-normative example of an Authorization Error Response.
 
@@ -615,9 +615,9 @@ In the following table are listed error codes and descriptions that are supporte
 Relying Party Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As defined in Section 7.2. (Response Mode "direct_post") of the `OpenID4VP`_ specification, if the Response URI has successfully processed the Authorization Response or Authorization Error Response, it MUST respond with an HTTP status code of 200 with ``Content-Type`` of ``application/json`` and a JSON object in the response body.
+As defined in Section 7.2. (Response Mode "direct_post") of the `OpenID4VP`_ specification, if the Response URI has successfully processed the Authorization Response or Authorization Error Response, it MUST respond with an HTTP status code of 200 with ``Content-Type`` of ``application/json`` and a JSON object in the response body (:ref:`test-plans-remote-presentation:RPR-89`).
 
-In the **Same Device Flow**, the Relying Party SHOULD add the ``redirect_uri`` parameter to the JSON object in the response body. Upon receiving the ``redirect_uri``, the the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri``.
+In the **Same Device Flow**, the Relying Party SHOULD add the ``redirect_uri`` parameter to the JSON object in the response body. Upon receiving the ``redirect_uri``, the the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri`` (:ref:`test-plans-remote-presentation:RPR-96`).
 This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow, after the Wallet Instance has transmitted the Authorization Response to the designated ``response_uri``.
 
 The Relying Party MUST include a response code within the ``redirect_uri``. The response code is a fresh, cryptographically random number used to ensure only the receiver of the redirect can fetch and process the Authorization Response. The number could be added as a path component, as a parameter or as a fragment to the URL. It is RECOMMENDED to use a cryptographic random value of 128 bits or more at the time of the writing of this specification.

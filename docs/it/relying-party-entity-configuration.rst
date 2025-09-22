@@ -5,14 +5,14 @@ Entity Configuration Relying Party
 ----------------------------------
 
 Secondo la Sezione :ref:`trust:Configurazione della Federazione`, come Entità di Federazione, la Relying Party è tenuta a mantenere un endpoint well-known che ospita la sua Entity Configuration.
-L'Entity Configuration delle Relying Party DEVE contenere i parametri definiti nelle Sezioni :ref:`trust:Entity Configuration Foglie e Intermediari` e :ref:`trust:Parametri Comuni delle Entity Configuration`.
+L'Entity Configuration delle Relying Party DEVE contenere i parametri definiti nelle Sezioni :ref:`trust:Entity Configuration Foglie e Intermediari` e :ref:`trust:Parametri Comuni delle Entity Configuration` (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`, :ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`, :ref:`test-plans-remote-presentation:RPR-05`, :ref:`test-plans-remote-presentation:RPR-06`).
 
-Le Relying Party DEVONO fornire i seguenti tipi di metadata:
+Le Relying Party DEVONO fornire i seguenti tipi di metadata (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`, :ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`, :ref:`test-plans-remote-presentation:RPR-05`, :ref:`test-plans-remote-presentation:RPR-06`):
 
   - ``federation_entity``
   - ``openid_credential_verifier``
 
-I metadata contenuti in ``federation_entity`` DEVONO contenere i claim come definito nella Sezione :ref:`trust:Metadati delle Foglie federation_entity`.
+I metadata contenuti in ``federation_entity`` DEVONO contenere i claim come definito nella Sezione :ref:`trust:Metadati delle Foglie federation_entity` (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`, :ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`, :ref:`test-plans-remote-presentation:RPR-05`, :ref:`test-plans-remote-presentation:RPR-06`).
 
 
 Entity Configuration di una Relying Party

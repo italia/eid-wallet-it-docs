@@ -5,7 +5,7 @@
 Relying Party Instance
 ----------------------
 
-The Relying Party Instance (RPI) is a mobile or embedded application designed to request, receive, and process Digital Credentials from Wallet Instances in a trusted manner. Each RPI ensures the integrity, confidentiality and authenticity of Credential exchanges, enabling secure interactions between Users and Relying Parties.
+The Relying Party Instance (RPI) is a mobile or embedded application designed to request, receive, and process Digital Credentials from Wallet Instances in a trusted manner. Each RPI ensures the integrity, confidentiality and authenticity of Credential exchanges, enabling secure interactions between Users and Relying Parties (:ref:`test-plans-remote-presentation:Remote Credential Presentation Test Matrix`, :ref:`test-plans-proximity-presentation:Proximity Credential Presentation Test Matrix`).
 
 There are two primary types of Relying Party Instances, each serving different operational environments:
 
@@ -81,7 +81,7 @@ The Relying Party Instance needs to obtain a proper Access Certificate, which wi
 
 In case the Access Certificate is expired, a new Certificate can be issued to the Relying Party Instance; this operation is represented by the **CERT REISS** transition towards the **Verified** state.
 
-While in this state, the Relying Party Instance can request the presentation of Digital Credentials to Wallet Instances (**PID/(Q)EAA PRE**), using the Access Certificate to authenticate itself.
+While in this state, the Relying Party Instance can request the presentation of Digital Credentials to Wallet Instances (**PID/(Q)EAA PRE**), using the Access Certificate to authenticate itself (:ref:`test-plans-remote-presentation:RPR-11`, :ref:`test-plans-remote-presentation:RPR-21`, :ref:`test-plans-remote-presentation:RPR-22`, :ref:`test-plans-remote-presentation:RPR-50`, :ref:`test-plans-remote-presentation:RPR-51`, :ref:`test-plans-remote-presentation:RPR-61`, :ref:`test-plans-remote-presentation:RPR-62`).
 
 
 Transition to Unverified
@@ -89,14 +89,14 @@ Transition to Unverified
 
 The expiration of the Access Certificate (**CERT EXP** transition) leads to the **Unverified** state.
 
-While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE**. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered.
+While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label **PID/(Q)EAA PRE**. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered (:ref:`test-plans-proximity-presentation:PPR-014`, :ref:`test-plans-proximity-presentation:PPR-015`, :ref:`test-plans-proximity-presentation:PPR-017`, :ref:`test-plans-proximity-presentation:PPR-019`).
 
 
 
 Transition to Uninstalled
 """""""""""""""""""""""""
 
-Across the **Installed**, **Verified** and **Unverified** states, the Relying Party Instance can be removed entirely through the Relying Party Instance uninstall (**RPI UNINST**) transition, leading to the **Uninstalled** state. If a Relying Party Instance is **Uninstalled**, it ends its lifecycle.
+Across the **Installed**, **Verified** and **Unverified** states, the Relying Party Instance can be removed entirely through the Relying Party Instance uninstall (**RPI UNINST**) transition, leading to the **Uninstalled** state. If a Relying Party Instance is **Uninstalled**, it ends its lifecycle (:ref:`test-plans-remote-presentation:RPR-34`, :ref:`test-plans-remote-presentation:RPR-46`, :ref:`test-plans-remote-presentation:RPR-59`, :ref:`test-plans-remote-presentation:RPR-73`, :ref:`test-plans-remote-presentation:RPR-47`, :ref:`test-plans-remote-presentation:RPR-48`, :ref:`test-plans-remote-presentation:RPR-74`, :ref:`test-plans-remote-presentation:RPR-75`).
 
 
 Mobile Relying Party Instance Functionalities

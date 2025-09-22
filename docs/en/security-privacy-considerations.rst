@@ -224,7 +224,7 @@ SR-P-41
 A prerequisite for a successful attack of this kind is that the attacker has access to some messages between the Wallet and the Verifier, for example,
 the attacker might have access to the presentation contained in the VP Token. Given that, the proper implementation of TLS guarrantes confidentiality, avoiding the leakage of the response.
 In addition to TLS, the existing implementation of **nonce** and audience checks in the presentation protocol should help to meet the P-41 security requirement.
-Regarding the **nonce** claim, the Verifier MUST check that the **nonce** value in the VP Token matches the **nonce** value that is created by the Verifier during the authorization request.
+Regarding the **nonce** claim, the Verifier MUST check that the **nonce** value in the VP Token matches the **nonce** value that is created by the Verifier during the authorization request (:ref:`test-plans-remote-presentation:RPR-84`).
 Regarding the **aud** value, the Verifier must check that the audience of the presentation matches the Verifier's identifier.
 
 SR-P-50

@@ -117,3 +117,53 @@ This section provides the set of test cases designed for technical implementers 
     - Security
     - Test resistance to replay attacks.
     - System is resistant to replay attacks.
+
+  * - PPR-021
+    - Device Engagement
+    - Verify that Device Engagement structure is CBOR encoded.
+    - Device Engagement structure is correctly encoded in CBOR format.
+
+  * - PPR-022
+    - Device Engagement
+    - Test that ephemeral public key is of type allowed by selected cipher suite.
+    - Ephemeral public key meets the requirements of the selected cipher suite.
+
+  * - PPR-023
+    - BLE Configuration
+    - Verify that only Central Client mode is supported.
+    - Only Central Client mode is supported for BLE connections.
+
+  * - PPR-024
+    - Capabilities
+    - Test that HandoverSessionEstablishmentSupport is set to true when present.
+    - HandoverSessionEstablishmentSupport is correctly set to true.
+
+  * - PPR-025
+    - Capabilities
+    - Verify that ReaderAuthAllSupport is set to true when present.
+    - ReaderAuthAllSupport is correctly set to true.
+
+  * - PPR-026
+    - mdoc Request
+    - Test that mdoc Request messages are CBOR encoded.
+    - mdoc Request messages are correctly encoded in CBOR format.
+
+  * - PPR-027
+    - mdoc Request
+    - Verify that mdoc request is encrypted with session key.
+    - mdoc request is correctly encrypted with session key.
+
+  * - PPR-028
+    - mdoc Request
+    - Test that mdoc request is transmitted via BLE protocol.
+    - mdoc request is correctly transmitted via BLE protocol.
+
+  * - PPR-029
+    - mdoc Response
+    - Verify that mdoc Response messages are CBOR encoded.
+    - mdoc Response messages are correctly encoded in CBOR format.
+
+  * - PPR-030
+    - mdoc Response
+    - Test that mdoc response is encrypted with session key.
+    - mdoc response is correctly encrypted with session key.

@@ -319,3 +319,103 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - Request URI Method
     - Testare la gestione di metodi HTTP non supportati.
     - Viene restituita una error response.
+
+  * - RPR-77
+    - QR Code Generation
+    - Verificare che il livello di correzione errori del QR Code sia Q (Quartile - fino al 25%).
+    - Il QR Code utilizza il livello di correzione errori Q come richiesto.
+
+  * - RPR-78
+    - Request URI Method
+    - Testare che il metodo HTTP sia impostato su 'get' o 'post'.
+    - Il metodo HTTP è correttamente impostato su 'get' o 'post'.
+
+  * - RPR-79
+    - Request URI Method
+    - Verificare che il metodo GET sia utilizzato come default quando non specificato.
+    - Il metodo GET è utilizzato come default quando request_uri_method non è fornito.
+
+  * - RPR-80
+    - JWT Header
+    - Testare che l'algoritmo di firma JWT sia supportato e non sia 'none'.
+    - L'algoritmo di firma JWT è valido e non è 'none'.
+
+  * - RPR-81
+    - JWT Header
+    - Verificare che il media type JWT sia 'oauth-authz-req+jwt'.
+    - Il media type JWT è correttamente impostato su 'oauth-authz-req+jwt'.
+
+  * - RPR-82
+    - JWT Payload
+    - Testare che response_mode sia impostato su 'direct_post.jwt'.
+    - response_mode è correttamente impostato su 'direct_post.jwt'.
+
+  * - RPR-83
+    - JWT Payload
+    - Verificare che response_type sia impostato su 'vp_token'.
+    - response_type è correttamente impostato su 'vp_token'.
+
+  * - RPR-84
+    - JWT Payload
+    - Testare che il nonce abbia almeno 32 cifre di lunghezza.
+    - Il nonce ha la lunghezza minima richiesta di 32 cifre.
+
+  * - RPR-85
+    - JWT Payload
+    - Verificare che il JWT non sia valido dopo la scadenza (exp).
+    - Il JWT non è più valido dopo il timestamp di scadenza.
+
+  * - RPR-86
+    - Wallet Attestation Request
+    - Testare che la richiesta di Wallet Attestation utilizzi una query DCQL standard.
+    - La richiesta di Wallet Attestation utilizza correttamente la query DCQL standard.
+
+  * - RPR-87
+    - Wallet Attestation Request
+    - Verificare che il parametro 'claims' non sia incluso nella query DCQL per Wallet Attestation.
+    - Il parametro 'claims' non è incluso nella query DCQL per Wallet Attestation.
+
+  * - RPR-88
+    - Wallet Attestation Request
+    - Testare che il parametro 'vct_values' sia richiesto nella query DCQL per Wallet Attestation.
+    - Il parametro 'vct_values' è correttamente richiesto nella query DCQL.
+
+  * - RPR-89
+    - Error Response
+    - Verificare che la Relying Party restituisca error response in formato JSON per errori request_uri.
+    - La Relying Party restituisce correttamente error response in formato JSON.
+
+  * - RPR-90
+    - Security
+    - Testare che il parametro request_uri sia attestato da terza parte fidata.
+    - Il parametro request_uri è correttamente attestato da terza parte fidata.
+
+  * - RPR-91
+    - Security
+    - Verificare che il parametro response_uri sia attestato da terza parte fidata.
+    - Il parametro response_uri è correttamente attestato da terza parte fidata.
+
+  * - RPR-92
+    - Security
+    - Testare che l'Istanza del Wallet non includa informazioni utente nei metadata tecnici.
+    - L'Istanza del Wallet non include informazioni utente nei metadata tecnici.
+
+  * - RPR-93
+    - Security
+    - Verificare che l'Istanza del Wallet ignori il parametro client_metadata se presente.
+    - L'Istanza del Wallet ignora correttamente il parametro client_metadata.
+
+  * - RPR-94
+    - Wallet Nonce
+    - Testare che la Relying Party controlli il wallet_nonce quando presente.
+    - La Relying Party controlla correttamente il wallet_nonce quando presente.
+
+  * - RPR-95
+    - Response Types
+    - Verificare che response_types_supported sia impostato su 'vp_token' quando presente.
+    - response_types_supported è correttamente impostato su 'vp_token'.
+
+  * - RPR-96
+    - Redirect URI
+    - Testare che l'Istanza del Wallet esegua il redirect al redirect_uri quando fornito.
+    - L'Istanza del Wallet esegue correttamente il redirect al redirect_uri.

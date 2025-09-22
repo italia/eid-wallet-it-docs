@@ -319,3 +319,103 @@ This section provides the set of test cases designed for technical implementers 
     - Request URI Method
     - Test handling of unsupported HTTP methods.
     - Error response is returned.
+
+  * - RPR-77
+    - QR Code Generation
+    - Verify that QR Code error correction level is Q (Quartile - up to 25%).
+    - QR Code uses the required Q error correction level.
+
+  * - RPR-78
+    - Request URI Method
+    - Test that HTTP method is set to 'get' or 'post'.
+    - HTTP method is correctly set to 'get' or 'post'.
+
+  * - RPR-79
+    - Request URI Method
+    - Verify that GET method is used as default when not specified.
+    - GET method is used as default when request_uri_method is not provided.
+
+  * - RPR-80
+    - JWT Header
+    - Test that JWT signing algorithm is supported and not 'none'.
+    - JWT signing algorithm is valid and not 'none'.
+
+  * - RPR-81
+    - JWT Header
+    - Verify that JWT media type is 'oauth-authz-req+jwt'.
+    - JWT media type is correctly set to 'oauth-authz-req+jwt'.
+
+  * - RPR-82
+    - JWT Payload
+    - Test that response_mode is set to 'direct_post.jwt'.
+    - response_mode is correctly set to 'direct_post.jwt'.
+
+  * - RPR-83
+    - JWT Payload
+    - Verify that response_type is set to 'vp_token'.
+    - response_type is correctly set to 'vp_token'.
+
+  * - RPR-84
+    - JWT Payload
+    - Test that nonce has at least 32 digits length.
+    - Nonce has the minimum required length of 32 digits.
+
+  * - RPR-85
+    - JWT Payload
+    - Verify that JWT is not valid after expiration (exp).
+    - JWT is no longer valid after expiration timestamp.
+
+  * - RPR-86
+    - Wallet Attestation Request
+    - Test that Wallet Attestation request uses standard DCQL query.
+    - Wallet Attestation request correctly uses standard DCQL query.
+
+  * - RPR-87
+    - Wallet Attestation Request
+    - Verify that 'claims' parameter is not included in DCQL query for Wallet Attestation.
+    - 'claims' parameter is not included in DCQL query for Wallet Attestation.
+
+  * - RPR-88
+    - Wallet Attestation Request
+    - Test that 'vct_values' parameter is required in DCQL query for Wallet Attestation.
+    - 'vct_values' parameter is correctly required in DCQL query.
+
+  * - RPR-89
+    - Error Response
+    - Verify that Relying Party returns error response in JSON format for request_uri errors.
+    - Relying Party correctly returns error response in JSON format.
+
+  * - RPR-90
+    - Security
+    - Test that request_uri parameter is attested by trusted third party.
+    - request_uri parameter is correctly attested by trusted third party.
+
+  * - RPR-91
+    - Security
+    - Verify that response_uri parameter is attested by trusted third party.
+    - response_uri parameter is correctly attested by trusted third party.
+
+  * - RPR-92
+    - Security
+    - Test that Wallet Instance does not include user information in technical metadata.
+    - Wallet Instance does not include user information in technical metadata.
+
+  * - RPR-93
+    - Security
+    - Verify that Wallet Instance ignores client_metadata parameter if present.
+    - Wallet Instance correctly ignores client_metadata parameter.
+
+  * - RPR-94
+    - Wallet Nonce
+    - Test that Relying Party checks wallet_nonce when present.
+    - Relying Party correctly checks wallet_nonce when present.
+
+  * - RPR-95
+    - Response Types
+    - Verify that response_types_supported is set to 'vp_token' when present.
+    - response_types_supported is correctly set to 'vp_token'.
+
+  * - RPR-96
+    - Redirect URI
+    - Test that Wallet Instance performs redirect to redirect_uri when provided.
+    - Wallet Instance correctly performs redirect to redirect_uri.
