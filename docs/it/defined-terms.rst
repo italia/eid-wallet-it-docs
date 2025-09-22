@@ -98,7 +98,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Capacità del Titolare di dimostrare il possesso della chiave privata attestata da una terza parte di fiducia.
       Non presente in ARF 1.10.
 
-    **Identity and Access Management (IAM)**
+    **Identity and Access Management**
       Framework per la gestione delle identità digitali e dell'accesso alle informazioni.
       Non presente in ARF 1.10.
 
@@ -225,7 +225,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Funzionalità che consente all'Utente di inviare un sottoinsieme di dati contenuti in Attestati Elettronici.
       Conforme con ARF 1.10.
 
-    **Self-Sovereign Identity (SSI)**
+    **Self-Sovereign Identity**
       Approccio che concede agli individui di avere il pieno controllo sulle informazioni relative alla propria identità digitale.
       Non presente in ARF 1.10.
 
@@ -280,7 +280,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Oggetto che indica gli Attributi che la Relying Party ha registrato al fine di richiederli agli Utenti.
       Conforme con ARF 1.10.
 
-    **Certificate Signing Request (CSR)**
+    **Certificate Signing Request**
       Richiesta inviata a una CA contenente la chiave pubblica e le informazioni identificative utili all'emissione un certificato digitale.
       Non presente in ARF 1.10.
 
@@ -310,10 +310,10 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Infrastruttura tecnica e componenti server gestiti da un Fornitore di Wallet.
       Conforme con ARF 1.10.
 
-    **Wallet Secure Cryptographic Application (WSCA)**
+    **Wallet Secure Cryptographic Application**
       Applicazione che gestisce gli Asset critici utilizzando le funzioni crittografiche fornite dal WSCD. Conforme con ARF 1.10.
 
-    **Wallet Secure Cryptographic Device (WSCD)**
+    **Wallet Secure Cryptographic Device**
       Dispositivo antimanomissione che fornisce un ambiente in cui la WSCA può proteggere gli Asset critici.
       Conforme con ARF 1.10.
 

@@ -54,7 +54,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Process by Conformity Assessment Bodies to certify the Wallet Solution, including periodic technical assessments.
       Not present in ARF 1.10; specific to IT-Wallet.
 
-    **Conformity Assessment Body (CAB)**
+    **Conformity Assessment Body**
       Accredited body competent to assess/certify Wallet Solutions or trust service providers.
       Aligned with ARF 1.10.
 
@@ -101,7 +101,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Ability of the Holder to prove possession of the private key attested by a Trusted Third Party.
       Not present in ARF 1.10.
 
-    **Identity and Access Management (IAM)**
+    **Identity and Access Management**
       Framework for managing digital identities and access to information.
       Not present in ARF 1.10.
 
@@ -125,7 +125,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Digital artifact with information about an Organizational Entity (endpoints, public keys, etc.).
       Not present in ARF 1.10.
 
-    **National Accreditation Bodies (NAB)**
+    **National Accreditation Bodies**
       Bodies performing accreditation under authority from a Member State.
       Aligned with ARF 1.10.
 
@@ -161,15 +161,15 @@ Below is the description of acronyms and definitions which are useful for furthe
       Alternative identifier for privacy/anonymity, allowing authentication/authorization.
       Aligned with ARF 1.10.
 
-    **Qualified Electronic Attestation of Attributes (QEAA)**
+    **Qualified Electronic Attestation of Attributes**
       Digitally verifiable attestation issued by a QTSP, substantiating possession of attributes.
       Aligned with ARF 1.10.
     
-    **Electronic Attestation of Attributes (EAA)**
+    **Electronic Attestation of Attributes**
       Digitally verifiable attestation in electronic form, substantiating possession of attributes.
       Aligned with ARF 1.10.
     
-    **Electronic Attestation of Attributes issued by or on behalf of a public sector body (Pub-EAA)**
+    **Electronic Attestation of Attributes issued by or on behalf of a public sector body**
     **Public Electronic Attestation of Attributes**
       Electronic Attestation of Attributes that contains Attributes deriving from a public Authentic Source.
       Aligned with ARF 1.10.
@@ -179,7 +179,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Electronic Attestation of Attributes that contains Attributes intended to certify the release, by the State or other public administrations, of authorizations, certifications, qualifications, identity and recognition documents, receipts of revenue, or to assume a fiduciary value and protection of public faith afterwards their issuance or the entries made on them and, in general, when they are considered security documents pursuant to Article 2, paragraph 10-bis, Law 13 July 1966, no. 559. 
       Not present in ARF 1.10; specific to IT-Wallet.
       
-    **Person Identification Data (PID)**
+    **Person Identification Data**
       Electronic Attestation that allows the subject to whom the Personal Identification Data refers to be authenticated.
       Aligned with ARF 1.10.
 
@@ -226,7 +226,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Functionality enabling the User to submit a subset of Digital Credentials Data.
       Aligned with ARF 1.10.
 
-    **Self-Sovereign Identity (SSI)**
+    **Self-Sovereign Identity**
       Approach giving individuals control over their digital identity information.
       Not present in ARF 1.10.
 
@@ -278,7 +278,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Data object indicating the attributes the Relying Party has registered to request from Users.
       Aligned with ARF 1.10.
 
-    **Certificate Signing Request (CSR)**
+    **Certificate Signing Request**
       Request sent to a CA containing the public key and identifying information for a digital certificate.
       Not present in ARF 1.10.
 
@@ -307,11 +307,11 @@ Below is the description of acronyms and definitions which are useful for furthe
       Technical infrastructure and server-side components managed by a Wallet Provider.
       Aligned with ARF 1.10.
 
-    **Wallet Secure Cryptographic Application (WSCA)**
+    **Wallet Secure Cryptographic Application**
       Application managing Critical Assets using cryptographic functions provided by the WSCD.
       Aligned with ARF 1.10.
 
-    **Wallet Secure Cryptographic Device (WSCD)**
+    **Wallet Secure Cryptographic Device**
       Tamper-resistant device providing an environment for the WSCA to protect Critical Assets.
       Aligned with ARF 1.10.
 
