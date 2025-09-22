@@ -1,22 +1,22 @@
 Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 83342007060265317781822089833192636944096072681 (0xe992f5236bdbd7928fd2276d8da7d23bf7a93e9)
+        Serial Number: 534924408252469085455429164054909685615748474782 (0x5db2d70e0b5948876ac95b4f9c08f537c290679e)
     Signature Algorithm: sha256
         Issuer: commonName=intermediate.example.org, countryName=IT, emailAddress=info@intermediate.example.org, organizationName=Example Intermediate
         Validity
-            Not Before: Sep 18 15:51:55 2025 GMT
-            Not After : Sep 19 15:51:55 2026 GMT
+            Not Before: Sep 21 12:52:15 2025 GMT
+            Not After : Sep 22 12:52:15 2026 GMT
         Subject: commonName=leaf.example.it, countryName=IT, emailAddress=info@leaf.example.it, organizationName=Example Leaf
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey (EC)
                 Public-Key: (256 bit)
                 Curve: secp256r1
-                X: 78350391367528967495965476365970385114989847901947081273143484885594984491313
-                Y: 30625389815504362826310224862617570855961180428989500407489763230057410953110
+                X: 105190133641265585448879866884249476208916104277838910297143273830242834323436
+                Y: 79389221289897913353157444102369456855702085526282189431043761858564993329187
         X509v3 extensions:
             X509v3 Basic Constraints:
-                CA:FALSE
+                CA:TRUE, pathlen:1
             X509v3 CRL Distribution Points:
                 Full Name:
                   URI:https://leaf.example.it/crl/leaf.example.it.crl
@@ -30,59 +30,59 @@ Certificate:
             X509v3 Key Usage:
                 Digital Signature, Key Encipherment, Certificate Sign, CRL Sign
             X509v3 Subject Alternative Name:
-                URI:leaf.example.it
+                URI:https://leaf.example.it/openid4vp
                 DNS:leaf.example.it
             X509v3 Subject Key Identifier:
-                5d:75:fc:ce:f6:2a:2b:75:05:47:71:ca:ca:d1:c2:26:3d:a1:9f:5c
+                b7:69:8e:17:3f:f5:12:a3:bf:59:f7:51:64:ff:d5:65:87:b7:45:7c
             X509v3 Authority Key Identifier:
-                keyid:6a:96:34:b2:fe:bf:10:ef:73:b6:cd:3e:85:33:a9:56:0b:4d:ba:c1
+                keyid:c8:6b:5d:c0:4f:ec:e7:99:6e:d8:25:9b:f0:36:32:70:2a:2d:4f:cd
 
     Signature Algorithm: sha256
-     30:44:02:20:0e:0a:d7:80:3f:4f:0d:a0:ee:22:32:83
-     bc:72:99:fe:f7:50:4c:44:94:54:e6:81:d6:37:9d:ae
-     67:07:2b:77:02:20:05:6d:d2:74:b8:e5:54:20:e4:ef
-     30:e6:47:81:5b:77:1c:ee:bd:6b:b2:0d:31:60:b8:22
-     a3:76:ad:c0:e7:39
+     30:45:02:21:00:b0:f6:88:ef:3b:f2:f0:87:34:7e:82
+     38:df:cf:37:17:b5:79:63:43:9d:9e:b2:1b:55:5c:e1
+     7e:7e:e1:c1:af:02:20:1a:95:db:40:0c:70:e3:26:f4
+     79:e6:e1:67:07:7e:24:48:e4:12:24:04:e5:14:66:2f
+     73:81:5f:48:cc:c1:59
 
 -----BEGIN CERTIFICATE-----
-MIIDCzCCArKgAwIBAgIUDpkvUja9vXko/SJ22Np9I796k+kwCgYIKoZIzj0EAwIw
+MIIDJDCCAsqgAwIBAgIUXbLXDgtZSIdqyVtPnAj1N8KQZ54wCgYIKoZIzj0EAwIw
 fTEhMB8GA1UEAwwYaW50ZXJtZWRpYXRlLmV4YW1wbGUub3JnMQswCQYDVQQGEwJJ
 VDEsMCoGCSqGSIb3DQEJARYdaW5mb0BpbnRlcm1lZGlhdGUuZXhhbXBsZS5vcmcx
-HTAbBgNVBAoMFEV4YW1wbGUgSW50ZXJtZWRpYXRlMB4XDTI1MDkxODE1NTE1NVoX
-DTI2MDkxOTE1NTE1NVowYzEYMBYGA1UEAwwPbGVhZi5leGFtcGxlLml0MQswCQYD
+HTAbBgNVBAoMFEV4YW1wbGUgSW50ZXJtZWRpYXRlMB4XDTI1MDkyMTEyNTIxNVoX
+DTI2MDkyMjEyNTIxNVowYzEYMBYGA1UEAwwPbGVhZi5leGFtcGxlLml0MQswCQYD
 VQQGEwJJVDEjMCEGCSqGSIb3DQEJARYUaW5mb0BsZWFmLmV4YW1wbGUuaXQxFTAT
-BgNVBAoMDEV4YW1wbGUgTGVhZjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABK04
-v/+xKj+f3680ZN+XD1K+OgXqHieVD5/G+RWAPSkxQ7VbOrVsgi35+PopT1aVh+SX
-jLZ7R/il9ZyHFvBFf5ajggEoMIIBJDAMBgNVHRMBAf8EAjAAMEAGA1UdHwQ5MDcw
-NaAzoDGGL2h0dHBzOi8vbGVhZi5leGFtcGxlLml0L2NybC9sZWFmLmV4YW1wbGUu
-aXQuY3JsMFUGA1UdHgEB/wRLMEmgEzARgg9sZWFmLmV4YW1wbGUuaXShMjALggls
-b2NhbGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAqHCH8AAAH/////MA4G
-A1UdDwEB/wQEAwIBpjArBgNVHREEJDAihg9sZWFmLmV4YW1wbGUuaXSCD2xlYWYu
-ZXhhbXBsZS5pdDAdBgNVHQ4EFgQUXXX8zvYqK3UFR3HKytHCJj2hn1wwHwYDVR0j
-BBgwFoAUapY0sv6/EO9zts0+hTOpVgtNusEwCgYIKoZIzj0EAwIDRwAwRAIgDgrX
-gD9PDaDuIjKDvHKZ/vdQTESUVOaB1jedrmcHK3cCIAVt0nS45VQg5O8w5keBW3cc
-7r1rsg0xYLgio3atwOc5
+BgNVBAoMDEV4YW1wbGUgTGVhZjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABOiP
+gXrwKgq2TgVH6Cl8t1fdlCqGongwhj/BI+p3Yhfsr4S09xFXfQMCUiPBmV/B04XC
+B9S/JkNvSQpeK+mwKCOjggFAMIIBPDASBgNVHRMBAf8ECDAGAQH/AgEBMEAGA1Ud
+HwQ5MDcwNaAzoDGGL2h0dHBzOi8vbGVhZi5leGFtcGxlLml0L2NybC9sZWFmLmV4
+YW1wbGUuaXQuY3JsMFUGA1UdHgEB/wRLMEmgEzARgg9sZWFmLmV4YW1wbGUuaXSh
+MjALgglsb2NhbGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAqHCH8AAAH/
+////MA4GA1UdDwEB/wQEAwIBpjA9BgNVHREENjA0hiFodHRwczovL2xlYWYuZXhh
+bXBsZS5pdC9vcGVuaWQ0dnCCD2xlYWYuZXhhbXBsZS5pdDAdBgNVHQ4EFgQUt2mO
+Fz/1EqO/WfdRZP/VZYe3RXwwHwYDVR0jBBgwFoAUyGtdwE/s55lu2CWb8DYycCot
+T80wCgYIKoZIzj0EAwIDSAAwRQIhALD2iO878vCHNH6CON/PNxe1eWNDnZ6yG1Vc
+4X5+4cGvAiAaldtADHDjJvR55uFnB34kSOQSJATlFGYvc4FfSMzBWQ==
 -----END CERTIFICATE-----
 
 Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 552514373495548362519510725727461270302654732857 (0x60c799f3faf6fddee3b2ee8ff4aaa86ce5481a39)
+        Serial Number: 321269252899087736765020072950017946429158259241 (0x38463627b07ee2b4e2c14579e5a7ba244d0efa29)
     Signature Algorithm: sha256
         Issuer: commonName=ca.example.com, countryName=IT, emailAddress=info@ca.example.com, organizationName=Example CA
         Validity
-            Not Before: Sep 18 15:51:55 2025 GMT
-            Not After : Sep 19 15:51:55 2026 GMT
+            Not Before: Sep 21 12:52:15 2025 GMT
+            Not After : Sep 22 12:52:15 2026 GMT
         Subject: commonName=intermediate.example.org, countryName=IT, emailAddress=info@intermediate.example.org, organizationName=Example Intermediate
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey (EC)
                 Public-Key: (256 bit)
                 Curve: secp256r1
-                X: 101297450102886103091599049679122559191488071413370792544883572718535790691321
-                Y: 12178261828434692751287668442989326313750924604845046149348412864502114449081
+                X: 93263925295169153981760301835302273691638129251071004674139519521331859447573
+                Y: 75794726008365867488629358265426992576421500340942222441146285145303287604048
         X509v3 extensions:
             X509v3 Basic Constraints:
-                CA:TRUE, pathlen:0
+                CA:TRUE, pathlen:2
             X509v3 CRL Distribution Points:
                 Full Name:
                   URI:https://intermediate.example.org/crl/intermediate.example.org.crl
@@ -100,54 +100,54 @@ Certificate:
                 URI:https://intermediate.example.org
                 DNS:intermediate.example.org
             X509v3 Subject Key Identifier:
-                6a:96:34:b2:fe:bf:10:ef:73:b6:cd:3e:85:33:a9:56:0b:4d:ba:c1
+                c8:6b:5d:c0:4f:ec:e7:99:6e:d8:25:9b:f0:36:32:70:2a:2d:4f:cd
             X509v3 Authority Key Identifier:
-                keyid:02:92:9e:b2:81:64:0e:2b:10:eb:3f:25:da:1d:03:de:66:6a:cc:4d
+                keyid:8d:81:0d:69:cd:05:b2:da:75:50:8d:82:a3:23:4a:ed:24:6e:e5:ef
 
     Signature Algorithm: sha256
-     30:46:02:21:00:9d:32:df:6b:fa:28:60:91:13:97:71
-     62:3c:1e:1f:03:a6:b3:a0:b7:7d:b7:4a:76:8e:3d:f1
-     d1:2f:12:69:a3:02:21:00:c7:a6:5f:76:94:60:8d:86
-     6d:d8:82:da:f9:60:66:99:05:23:ea:ee:bf:34:d0:86
-     f2:9e:a1:d3:f4:69:9b:2a
+     30:46:02:21:00:bf:ba:c9:09:07:00:96:d7:bc:02:eb
+     a0:b8:54:c5:11:d6:ef:26:25:2a:3b:dd:9f:dc:50:05
+     e2:ac:98:15:6d:02:21:00:ce:3d:d0:07:40:3c:13:80
+     8f:55:f2:e5:c5:b2:ee:54:28:3f:20:7f:b9:66:5a:d3
+     b7:53:0e:59:7f:14:96:e1
 
 -----BEGIN CERTIFICATE-----
-MIIDVzCCAvygAwIBAgIUYMeZ8/r2/d7jsu6P9KqobOVIGjkwCgYIKoZIzj0EAwIw
+MIIDVzCCAvygAwIBAgIUOEY2J7B+4rTiwUV55ae6JE0O+ikwCgYIKoZIzj0EAwIw
 XzEXMBUGA1UEAwwOY2EuZXhhbXBsZS5jb20xCzAJBgNVBAYTAklUMSIwIAYJKoZI
 hvcNAQkBFhNpbmZvQGNhLmV4YW1wbGUuY29tMRMwEQYDVQQKDApFeGFtcGxlIENB
-MB4XDTI1MDkxODE1NTE1NVoXDTI2MDkxOTE1NTE1NVowfTEhMB8GA1UEAwwYaW50
+MB4XDTI1MDkyMTEyNTIxNVoXDTI2MDkyMjEyNTIxNVowfTEhMB8GA1UEAwwYaW50
 ZXJtZWRpYXRlLmV4YW1wbGUub3JnMQswCQYDVQQGEwJJVDEsMCoGCSqGSIb3DQEJ
 ARYdaW5mb0BpbnRlcm1lZGlhdGUuZXhhbXBsZS5vcmcxHTAbBgNVBAoMFEV4YW1w
-bGUgSW50ZXJtZWRpYXRlMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE3/RTMbSt
-igtJ3G31suqfRN8lqh6XI+M6UpxsfWwCA/ka7KbkyYCRhFPixtVBpefhAnpbIvDI
-TvOLxI5ZmfZ2uaOCAXYwggFyMBIGA1UdEwEB/wQIMAYBAf8CAQAwUgYDVR0fBEsw
+bGUgSW50ZXJtZWRpYXRlMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEzjGC1WvC
+d4mBVvHUIQSRIOR4xnLE4G0Fc1YfF7dEXxWnkktu/72CSx9FEp8FUiCzRUO0iGhg
+Lj2ZUuyaxnwjUKOCAXYwggFyMBIGA1UdEwEB/wQIMAYBAf8CAQIwUgYDVR0fBEsw
 STBHoEWgQ4ZBaHR0cHM6Ly9pbnRlcm1lZGlhdGUuZXhhbXBsZS5vcmcvY3JsL2lu
 dGVybWVkaWF0ZS5leGFtcGxlLm9yZy5jcmwwcQYDVR0eAQH/BGcwZaAvMBqCGGlu
 dGVybWVkaWF0ZS5leGFtcGxlLm9yZzARgg9sZWFmLmV4YW1wbGUuaXShMjALggls
 b2NhbGhvc3QwF4IVbG9jYWxob3N0LmxvY2FsZG9tYWluMAqHCH8AAAH/////MA4G
 A1UdDwEB/wQEAwIBpjBFBgNVHREEPjA8hiBodHRwczovL2ludGVybWVkaWF0ZS5l
-eGFtcGxlLm9yZ4IYaW50ZXJtZWRpYXRlLmV4YW1wbGUub3JnMB0GA1UdDgQWBBRq
-ljSy/r8Q73O2zT6FM6lWC026wTAfBgNVHSMEGDAWgBQCkp6ygWQOKxDrPyXaHQPe
-ZmrMTTAKBggqhkjOPQQDAgNJADBGAiEAnTLfa/ooYJETl3FiPB4fA6azoLd9t0p2
-jj3x0S8SaaMCIQDHpl92lGCNhm3Ygtr5YGaZBSPq7r800IbynqHT9GmbKg==
+eGFtcGxlLm9yZ4IYaW50ZXJtZWRpYXRlLmV4YW1wbGUub3JnMB0GA1UdDgQWBBTI
+a13AT+znmW7YJZvwNjJwKi1PzTAfBgNVHSMEGDAWgBSNgQ1pzQWy2nVQjYKjI0rt
+JG7l7zAKBggqhkjOPQQDAgNJADBGAiEAv7rJCQcAlte8AuuguFTFEdbvJiUqO92f
+3FAF4qyYFW0CIQDOPdAHQDwTgI9V8uXFsu5UKD8gf7lmWtO3Uw5ZfxSW4Q==
 -----END CERTIFICATE-----
 
 Certificate:
     Data:
         Version: 3 (0x2)
-        Serial Number: 434901151502167729588341449884444487524898544949 (0x4c2da460e46b7914b42cdb8e78f7da58959b9d35)
+        Serial Number: 211066648501810964735185294806255394671180542373 (0x24f88e4c66f54e0d3d7a67a2160c439cced671a5)
     Signature Algorithm: sha256
         Issuer: commonName=ca.example.com, countryName=IT, emailAddress=info@ca.example.com, organizationName=Example CA
         Validity
-            Not Before: Sep 18 15:51:55 2025 GMT
-            Not After : Sep 19 15:51:55 2026 GMT
+            Not Before: Sep 21 12:52:15 2025 GMT
+            Not After : Sep 22 12:52:15 2026 GMT
         Subject: commonName=ca.example.com, countryName=IT, emailAddress=info@ca.example.com, organizationName=Example CA
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey (EC)
                 Public-Key: (256 bit)
                 Curve: secp256r1
-                X: 1377795895465978788632885147216452111350500106743090462250884916551270729463
-                Y: 114759522824195272540291327958401209206631265825266671216666801791763482639092
+                X: 61482310422851684023432809657586384976107712186837796865880545436785802797217
+                Y: 29374222210262320819748080940936074521343447542243311413049456938131469967807
         X509v3 extensions:
             X509v3 Basic Constraints:
                 CA:TRUE
@@ -165,29 +165,29 @@ Certificate:
                 URI:https://ca.example.com
                 DNS:ca.example.com
             X509v3 Subject Key Identifier:
-                02:92:9e:b2:81:64:0e:2b:10:eb:3f:25:da:1d:03:de:66:6a:cc:4d
+                8d:81:0d:69:cd:05:b2:da:75:50:8d:82:a3:23:4a:ed:24:6e:e5:ef
 
     Signature Algorithm: sha256
-     30:45:02:21:00:a7:31:26:4c:54:e2:fa:25:34:07:ec
-     eb:2e:b9:bf:37:24:ce:98:29:be:ce:ca:2c:57:0e:9e
-     76:2b:7b:95:c5:02:20:60:9b:0b:bc:48:81:00:39:8e
-     a4:4d:30:14:cb:02:59:d7:cc:c1:f4:07:c7:25:f2:12
-     fb:40:de:7c:16:d8:a2
+     30:45:02:21:00:b9:44:2c:af:de:b4:ef:b2:fe:a3:56
+     2c:3c:f0:74:7b:b6:6a:0c:70:22:aa:2c:4b:70:a2:f4
+     ae:3c:1f:6a:78:02:20:2f:e3:22:94:11:39:c5:c7:65
+     77:fd:a8:ce:22:33:40:e3:6f:68:22:0b:59:8c:55:d6
+     be:57:c8:ea:dc:2c:03
 
 -----BEGIN CERTIFICATE-----
-MIICuTCCAl+gAwIBAgIUTC2kYORreRS0LNuOePfaWJWbnTUwCgYIKoZIzj0EAwIw
+MIICuTCCAl+gAwIBAgIUJPiOTGb1Tg09emeiFgxDnM7WcaUwCgYIKoZIzj0EAwIw
 XzEXMBUGA1UEAwwOY2EuZXhhbXBsZS5jb20xCzAJBgNVBAYTAklUMSIwIAYJKoZI
 hvcNAQkBFhNpbmZvQGNhLmV4YW1wbGUuY29tMRMwEQYDVQQKDApFeGFtcGxlIENB
-MB4XDTI1MDkxODE1NTE1NVoXDTI2MDkxOTE1NTE1NVowXzEXMBUGA1UEAwwOY2Eu
+MB4XDTI1MDkyMTEyNTIxNVoXDTI2MDkyMjEyNTIxNVowXzEXMBUGA1UEAwwOY2Eu
 ZXhhbXBsZS5jb20xCzAJBgNVBAYTAklUMSIwIAYJKoZIhvcNAQkBFhNpbmZvQGNh
 LmV4YW1wbGUuY29tMRMwEQYDVQQKDApFeGFtcGxlIENBMFkwEwYHKoZIzj0CAQYI
-KoZIzj0DAQcDQgAEAwvOChk6G9rAGyWFH0HQk+X2VRO5k7V0wjb5qeTDBvf9t5aP
-GDbNw7gWv/pbCMrAJc9s//ci98849z6F/l969KOB+DCB9TAPBgNVHRMBAf8EBTAD
+KoZIzj0DAQcDQgAEh+3BJ8oFniJL0zWULO9El1yBKnvUxr+q6fMIuC+U4KFA8Th4
+8IxJpl93Hb3I31Ai/aWMKP2NWS/UWhtCw90hv6OB+DCB9TAPBgNVHRMBAf8EBTAD
 AQH/MD4GA1UdHwQ3MDUwM6AxoC+GLWh0dHBzOi8vY2EuZXhhbXBsZS5jb20vY3Js
 L2NhLmV4YW1wbGUuY29tLmNybDBABgNVHR4BAf8ENjA0oTIwC4IJbG9jYWxob3N0
 MBeCFWxvY2FsaG9zdC5sb2NhbGRvbWFpbjAKhwh/AAAB/////zAOBgNVHQ8BAf8E
 BAMCAaYwMQYDVR0RBCowKIYWaHR0cHM6Ly9jYS5leGFtcGxlLmNvbYIOY2EuZXhh
-bXBsZS5jb20wHQYDVR0OBBYEFAKSnrKBZA4rEOs/JdodA95masxNMAoGCCqGSM49
-BAMCA0gAMEUCIQCnMSZMVOL6JTQH7Osuub83JM6YKb7OyixXDp52K3uVxQIgYJsL
-vEiBADmOpE0wFMsCWdfMwfQHxyXyEvtA3nwW2KI=
+bXBsZS5jb20wHQYDVR0OBBYEFI2BDWnNBbLadVCNgqMjSu0kbuXvMAoGCCqGSM49
+BAMCA0gAMEUCIQC5RCyv3rTvsv6jViw88HR7tmoMcCKqLEtwovSuPB9qeAIgL+Mi
+lBE5xcdld/2oziIzQONvaCILWYxV1r5XyOrcLAM=
 -----END CERTIFICATE-----
