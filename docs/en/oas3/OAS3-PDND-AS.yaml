@@ -298,6 +298,7 @@ components:
                   status:
                     description: Status of the Digital Credential. Its value MUST be one among ``VALID``, ``INVALID`` or ``SUSPENDED``.
                     type: string
+                    enum: [server_error]
                     example: "VALID"
                   last_updated:
                     description: Last time the status or attributes of a Digital Credentials have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
