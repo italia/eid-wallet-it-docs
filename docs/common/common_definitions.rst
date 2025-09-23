@@ -60,6 +60,11 @@
 .. _SD-JWT-VC: https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/
 .. _SD-JWT: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14
 .. _Secure Enclave: https://support.apple.com/en-gb/guide/security/sec59b0b31ff/web
+.. _Signal Hub Guide: https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub
+.. _Signal Hub pull: https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali
+.. _Signal Hub pull-yaml: https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml
+.. _Signal Hub push: https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale
+.. _Signal Hub push-yaml: https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml
 .. _SIOPv2: https://openid.net/specs/openid-connect-self-issued-v2-1_0.html
 .. _SPID/CIE-OpenID-Connect-Specifications: https://italia.github.io/spid-cie-oidc-docs/en
 .. _TOKEN-STATUS-LIST: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/
