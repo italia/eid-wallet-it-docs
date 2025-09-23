@@ -250,7 +250,7 @@ Authentic Sources MUST deposit a Signal in the PDND Signal Hub :ref:`signal-hub-
   - The value of one or more Attributes contained in the Authentic Source's database has changed, using ``signalType`` set to ``UPDATE``. 
   - The validity status of the Attributes is updated (revocation or suspension), using ``signalType`` set to ``UPDATE``.
 
-Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` periodically for new Signals. For the Signal processing flow, please refer to the Section :ref:`signal-hub-endpoint:Signals Processing`. The Credential Issuer is able to identify the nature of the ``UPDATE`` Signal by quering the Authentic Source `get attribute` API and inspecting the response payload, as described in Section :ref:`authentic-source-endpoint:Get Attribute API`.
+Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` periodically for new Signals. For the Signal processing flow, please refer to the Section :ref:`signal-hub-endpoint:Signals Processing`. The Credential Issuer is able to identify the nature of the ``UPDATE`` Signal by quering the Authentic Source `get attribute` API and inspecting the response payload, as described in Section :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
 The following diagram illustrates the high-level status update process for Authentic Sources.
 

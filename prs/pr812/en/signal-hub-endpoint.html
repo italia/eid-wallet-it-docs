@@ -174,7 +174,7 @@
 </dd>
 </dl>
 <p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier inside Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to obtain the pseudonymization algorithm used to calculate the Signal subject's pseudonym. In this way, only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
-<p>For detailed technical specifications and implementation guidelines, please refer to the <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-Signal-hub" target="_blank">Signal Hub User Guide</a></span>.</p>
+<p>For detailed technical specifications and implementation guidelines, please refer to the <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
 <dl class="simple">
 <dt>In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically,</dt><dd><ul class="simple">
 <li><p>the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service;</p></li>
@@ -218,7 +218,7 @@
 </ul>
 </div></blockquote>
 <p>The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.</p>
-<p>The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application-json</span></code>, whose header MUST have the parameters described in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a></span> and whose body MUST contain the following parameters:</p>
+<p>The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application-json</span></code>, whose header MUST have the parameters described in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a> and whose body MUST contain the following parameters:</p>
 <table class="docutils align-default" id="table-signal-deposit-request-parameters">
 <colgroup>
 <col style="width: 25.0%" />
@@ -261,8 +261,8 @@
 <p class="admonition-title">Note</p>
 <p>In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's <code class="docutils literal notranslate"><span class="pre">jti</span></code> value used in the Agid-JWT-Signature of the <code class="docutils literal notranslate"><span class="pre">get</span> <span class="pre">attributes</span></code> request. This is necessary since the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> of the Signal MUST be set to that <code class="docutils literal notranslate"><span class="pre">jti</span></code> value when the Signal has <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>.</p>
 </div>
-<p>Non normative example of Signal Collection request for an can be found at <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a></span>.</p>
-<p>The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a></span>, and has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The payload contains the body parameter:</p>
+<p>Non normative example of Signal Collection request for an can be found at <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>.</p>
+<p>The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale">Signal Hub push</a>, and has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The payload contains the body parameter:</p>
 <table class="docutils align-default" id="table-signal-deposit-response-parameters">
 <colgroup>
 <col style="width: 25.0%" />
@@ -279,10 +279,10 @@
 </tr>
 </tbody>
 </table>
-<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <span class="raw-html"><a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml" target="_blank">OAS-push</a></span>.</p>
+<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <cite>Signal Hub push-yaml`_</cite>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <span class="raw-html"><a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml" target="_blank">here</a></span>.</p>
+<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
 </div>
 <p>The Authentic Source MUST implement the necessary logic to handle the requests to the Signal Collection e-Service endpoint, in doing this it has to consider the following aspects:</p>
 <blockquote>
@@ -315,7 +315,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>. OPTIONAL. Integer representing the maximum number of Signals to be returned in the Signal Distribution response. If not specified, the default value is <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p></li>
 </ul>
 </li>
-<li><p>Headers parameters: these are those described in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali" target="_blank">Signal Hub Signal Distribution</a></span>.</p></li>
+<li><p>Headers parameters: these are those described in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>.</p></li>
 </ul>
 </div></blockquote>
 <p>If the Signal Distribution request is correctly processed, the e-Service will then respond with status code</p>
@@ -325,22 +325,20 @@
 <li><p>HTTP 206 OK if the request is correctly formed but there are more Signals to request.</p></li>
 </ul>
 </div></blockquote>
-<p>Regardless of the response code used, the response has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code> an the header parameters indicated in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali" target="_blank">Signal Hub Signal Distribution</a></span>. The body parameter <code class="docutils literal notranslate"><span class="pre">lastSignalId</span></code>, referencing the <code class="docutils literal notranslate"><span class="pre">signalId</span></code> of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.</p>
-<p>In <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali" target="_blank">Signal Hub Signal Distribution</a></span> can be found non normative examples of a Signal Distribution requests and responses.</p>
-<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <span class="raw-html"><a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml" target="_blank">Signal Hub - Pull</a></span>.</p>
-<blockquote>
-<div><div class="admonition note">
+<p>Regardless of the response code used, the response has <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code> an the header parameters indicated in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a>. The body parameter <code class="docutils literal notranslate"><span class="pre">lastSignalId</span></code>, referencing the <code class="docutils literal notranslate"><span class="pre">signalId</span></code> of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.</p>
+<p>In <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali">Signal Hub pull</a> can be found non normative examples of a Signal Distribution requests and responses.</p>
+<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <span class="raw-html"><a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml" target="_blank">here</a></span>.</p>
+<p>A complete OpenAPI Specification of the Signal Collection e-Service is available <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml">Signal Hub pull-yaml</a>.</p>
 </div>
-</div></blockquote>
 <p>The Credential Issuer MUST implement the necessary logic to handle the Polling of the Signal Distribution e-Service endpoint, in doing this it has to consider the following aspects:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;</p></li>
-<li><p>the retention period of Signals in the Signal Hub is specified in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/la-guida-tecnica/retention-period-e-api-polling" target="_blank">Signal Hub User Guide</a></span>. Signals older than the specified retention period are not available for retrieval;</p></li>
+<li><p>the retention period of Signals in the Signal Hub is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. Signals older than the specified retention period are not available for retrieval;</p></li>
 <li><p>the Signal Hub does not keep trak of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Thus each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each PDND e-Service ID;</p></li>
-<li><p>the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in <span class="raw-html"><a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-Signal-hub" target="_blank">Signal Hub User Guide</a></span>. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.</p></li>
+<li><p>the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.</p></li>
 </ul>
 </div></blockquote>
 </section>

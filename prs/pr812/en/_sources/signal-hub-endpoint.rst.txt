@@ -14,14 +14,13 @@ Within the PDND platform, the Signal Hub acts as an intermediary between a PDND 
 
 In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier inside Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to obtain the pseudonymization algorithm used to calculate the Signal subject's pseudonym. In this way, only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
 
-For detailed technical specifications and implementation guidelines, please refer to the :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-Signal-hub" target="_blank">Signal Hub User Guide</a>`.
+For detailed technical specifications and implementation guidelines, please refer to the `Signal Hub Guide`_.
 
 In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically, 
   - the Authentic Source will deposit Signals in the Signal Hub, thus playing the role of PDND Consumer of the Signal Collection e-Service; 
   - the Credential Issuer will retrieve Signals from the Signal Hub, and will thus play the role of PDND e-Service Consumer of the Signal Distribution e-Service. 
 
 .. note::
-
   In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digial Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services. 
 
 The use of the Signal Hub e-Services is mandatory for all public Authentic Sources that are part of the IT Wallet ecosystem. 
@@ -54,7 +53,7 @@ Authentic Sources in the IT Wallet ecosystem use the Signal Collection e-Service
   
 The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.
 
-The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with ``Content-Type`` set to ``application-json``, whose header MUST have the parameters described in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a>` and whose body MUST contain the following parameters:
+The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with ``Content-Type`` set to ``application-json``, whose header MUST have the parameters described in `Signal Hub Guide`_ and whose body MUST contain the following parameters:
 
 .. _table_Signal_deposit_request_parameters:
 .. list-table::
@@ -85,9 +84,9 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
 .. note::
   In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` ``CREATE``.
 
-Non normative example of Signal Collection request for an can be found at :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a>`.
+Non normative example of Signal Collection request for an can be found at `Signal Hub push`_.
 
-The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a>`, and has ``Content-Type`` set to ``application/json``. The payload contains the body parameter:
+The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in `Signal Hub push`_, and has ``Content-Type`` set to ``application/json``. The payload contains the body parameter:
 
 .. _table_Signal_deposit_response_parameters:
 .. list-table::
@@ -99,12 +98,10 @@ The Signal Collection e-Service response, acknowledging the correct parsing of t
   * - **signalId**
     - REQUIRED. The identifier of the Signal that has been successfully collected by the Signal Collection e-Service.
 
-If any error occurs during the request parsing, the response MUST adhere to the error format defined in :raw-html:`<a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml" target="_blank">OAS-push</a>`.
+If any error occurs during the request parsing, the response MUST adhere to the error format defined in `Signal Hub push-yaml`_`.
 
-.. only:: html
-
-  .. note::
-    A complete OpenAPI Specification of the Signal Collection e-Service is available :raw-html:`<a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml" target="_blank">here</a>`.
+.. note::
+    A complete OpenAPI Specification of the Signal Collection e-Service is available `Signal Hub push-yaml`_.
 
 The Authentic Source MUST implement the necessary logic to handle the requests to the Signal Collection e-Service endpoint, in doing this it has to consider the following aspects:
 
@@ -129,28 +126,28 @@ The Signal Distribution e-Service endpoint is used by Credential Issuers to retr
     - ``signalId``. OPTIONAL. Integer representing the last Signal number processed by the Credential Issuer. The Signal Distribution e-Service will respond with Signals having progressively greater ``signalId`` values. If not specified, the default value is the lowest ``signalId`` value available in the Signal Distribution e-Service. 
     - ``size``. OPTIONAL. Integer representing the maximum number of Signals to be returned in the Signal Distribution response. If not specified, the default value is ``10``.
 
-  - Headers parameters: these are those described in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali" target="_blank">Signal Hub Signal Distribution</a>`.
+  - Headers parameters: these are those described in `Signal Hub pull`_.
 
 If the Signal Distribution request is correctly processed, the e-Service will then respond with status code
 
  - HTTP 200 OK if the request is correctly formed and there are no more Signals to request;
  - HTTP 206 OK if the request is correctly formed but there are more Signals to request.
 
-Regardless of the response code used, the response has ``Content-Type`` set to ``application/json`` an the header parameters indicated in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali" target="_blank">Signal Hub Signal Distribution</a>`. The body parameter ``lastSignalId``, referencing the ``signalId`` of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.
+Regardless of the response code used, the response has ``Content-Type`` set to ``application/json`` an the header parameters indicated in `Signal Hub pull`_. The body parameter ``lastSignalId``, referencing the ``signalId`` of the last Signal transmitted by the Signal Distribution e-Service is added to the response's payload.
 
-In :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-recuperare-i-segnali" target="_blank">Signal Hub Signal Distribution</a>` can be found non normative examples of a Signal Distribution requests and responses.
+In `Signal Hub pull`_ can be found non normative examples of a Signal Distribution requests and responses.
 
-If any error occurs during the request parsing, the response MUST adhere to the error format defined in :raw-html:`<a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml" target="_blank">Signal Hub - Pull</a>`.
+If any error occurs during the request parsing, the response MUST adhere to the error format defined in `Signal Hub pull-yaml`_.
 
-  .. note::
-    A complete OpenAPI Specification of the Signal Collection e-Service is available :raw-html:`<a href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/pull-signals.yaml" target="_blank">here</a>`.
+.. note::
+  A complete OpenAPI Specification of the Signal Collection e-Service is available `Signal Hub pull-yaml`_.
 
 The Credential Issuer MUST implement the necessary logic to handle the Polling of the Signal Distribution e-Service endpoint, in doing this it has to consider the following aspects:
 
   - Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;
-  - the retention period of Signals in the Signal Hub is specified in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/la-guida-tecnica/retention-period-e-api-polling" target="_blank">Signal Hub User Guide</a>`. Signals older than the specified retention period are not available for retrieval;
+  - the retention period of Signals in the Signal Hub is specified in `Signal Hub Guide`_. Signals older than the specified retention period are not available for retrieval;
   - the Signal Hub does not keep trak of the last ``signalId`` notified to a specific Credential Issuer. Thus each Credential Issuer MUST keep track of the last ``signalId`` it has received for each PDND e-Service ID;
-  - the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-Signal-hub" target="_blank">Signal Hub User Guide</a>`. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.
+  - the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in `Signal Hub Guide`_. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.
 
 Signals Processing
 ^^^^^^^^^^^^^^^^^^^^
