@@ -83,7 +83,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
 
 .. note::
-  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get_attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` ``CREATE``.
+  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` ``CREATE``.
 
 Non normative example of Signal Collection request for an can be found at :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a>`.
 
