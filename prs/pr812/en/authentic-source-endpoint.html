@@ -195,7 +195,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,
-- both MUST log the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see <a class="reference internal" href="signal-hub-endpoint.html#signals-processing"><span class="std std-ref">Signals Processing</span></a>);
+- both MUST save the <code class="docutils literal notranslate"><span class="pre">jti</span></code> value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see <a class="reference internal" href="signal-hub-endpoint.html#signals-processing"><span class="std std-ref">Signals Processing</span></a>);
 - the Authentic Source MUST log the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> <cite>data-time</cite> value which indicates the last time the User's attributes were updated in the Authentic Source's database;
 - the Credential Issuer MUST log the <code class="docutils literal notranslate"><span class="pre">last_updated</span></code> value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.</p>
 </div>
@@ -251,7 +251,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/09/2025.
+      Last updated on 23/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
