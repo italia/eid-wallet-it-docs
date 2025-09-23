@@ -161,12 +161,12 @@ After the Signals have been successfully recovered by the Credential Issuer, the
     - if the Signal ``SignalType`` is ``UPDATE``, it means that the status and/or value of the attribute associated with a Digest Credential need updates; instead,
     - if the Signal ``SignalType`` is ``CREATE``, it means that the requested attributes of a specific Digital Credential are now available; 
 
-    If the ``objectId`` does not correspond to any identifier know to the Credential Issuer, the Signal MUST be ignored. If instead it corresponds to a known identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information.
+    If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. If instead it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and in case apply the new status to the correspondent Credential.
     
     When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its ``signalId`` counter; or, if there are no more Signals to process, it will resume the Pull cycle.
 
 .. warning::
 
-  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` before contacting the Authentic Source using the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint. This process allows the Credential Issuer to provide evidence to the Authentic Source, via the `Agid-JWT-TrackingEvidence`, that the request includes the User's consent. 
+  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without the User's consent.  
 
 

@@ -296,12 +296,12 @@ components:
                     type: string
                     example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
                   status:
-                    description: Status of the Digital Credential.
+                    description: Status of the Dataset.
                     type: string
                     enum: ["VALID","INVALID", "SUSPENDED"]
                     example: "VALID"
                   last_updated:
-                    description: Last time the status or attributes of a Digital Credentials have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
+                    description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
                     type: string
                     example:
                 additionalProperties:
