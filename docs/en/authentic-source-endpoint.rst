@@ -41,7 +41,7 @@ Get Attribute Claims
 .. note::
   The Authentic Source and the Credential Issuer MUST implement the necessary logic to keep track of the requests and responses exchanged via this e-Service, in order to be able to correlate them with the related issuance of a Digital Credential. In particular,
   - both MUST save the ``jti`` value in the Agid-JWT-Signature payload of the request to manage Signals related to the deffered issuance of a Digital Credential (see :ref:`signal-hub-endpoint:Signals Processing`);
-  - the Authentic Source MUST log the ``last_updated`` `data-time` value which indicates the last time the User's attributes were updated in the Authentic Source's database;
+  - the Authentic Source MUST record the ``last_updated`` `data-time` value which indicates the last time the User's attributes were updated in the Authentic Source's database;
   - the Credential Issuer MUST log the ``last_updated`` value received in the response to be able to check if the User's attributes have changed since the last issuance of a Digital Credential.
 
 
