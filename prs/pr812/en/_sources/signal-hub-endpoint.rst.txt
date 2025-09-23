@@ -70,8 +70,8 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **objectId**
     - REQUIRED. The subject to which the Signal is bound. If the Signal 
     
-      - has ``signalType`` ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get_attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
-      - has ``signalType`` ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digial Credential's attributes the Signal refers to.
+      - has ``signalType`` ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
+      - has ``signalType`` ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.
       
   * - **signalType**
     - REQUIRED. Signal Type. It MUST be one of the following: 
@@ -83,7 +83,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
 
 .. note::
-  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get_attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` ``CREATE``.
+  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` ``CREATE``.
 
 Non normative example of Signal Collection request for an can be found at :raw-html:`<a href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub/1.0/tutorial/come-depositare-un-segnale" target="_blank">Signal Hub Signal Collection</a>`.
 
