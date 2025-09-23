@@ -70,7 +70,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **objectId**
     - REQUIRED. The subject to which the Signal is bound. If the Signal 
     
-      - has ``signalType`` ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get_attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
+      - has ``signalType`` ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
       - has ``signalType`` ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digial Credential's attributes the Signal refers to.
       
   * - **signalType**
