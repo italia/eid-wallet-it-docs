@@ -66,7 +66,7 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **signalId**
     - REQUIRED. A positive 64 bit integer number referencing the identifier of the Signal in chronological order.
   * - **objectType**
-    - REQUIRED. This filed is a free filed which the Authentic Source MAY use to further specify the Signal.
+    - REQUIRED. This filed is a free field which the Authentic Source MAY use to further specify the Signal.
   * - **objectId**
     - REQUIRED. The subject to which the Signal is bound. If the Signal 
     
