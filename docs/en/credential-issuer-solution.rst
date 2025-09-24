@@ -99,7 +99,7 @@ This component MUST establish secure connections with Authentic Sources to:
    - Provide cryptographic evidence of User authentication when required.
 
 .. note::
-   For public Authentic Sources, a Credential Issuer MUST use PDND according to rules in Sections :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Status Update by Authentic Sources`, and :ref:`authentic-source-endpoint:e-Service PDND Authentic Source Catalogue`.
+   For public Authentic Sources, a Credential Issuer MUST use PDND according to rules in Sections :ref:`e-service-pdnd:e-Service PDND`, :ref:`credential-revocation:Aggiornamento dello Stato da parte delle Fonti Autentiche`, and :ref:`authentic-source-endpoint:Catalogo delle Fonti Autentiche e-Service PDND`.
 
 Credential Lifecycle Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

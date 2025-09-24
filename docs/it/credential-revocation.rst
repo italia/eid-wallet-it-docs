@@ -235,7 +235,7 @@ Per qualsiasi altro Attestato Elettronico diverso dal PID, il Fornitore di Attes
 Aggiornamento dello Stato da parte dei Fornitori di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE fornire un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:Catalogo e-Service PDND del Credential Issuer`.
+In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE fornire un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:Catalogo del Credential Issuer e-Service PDND`.
 Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Attestati Elettronici utilizzando questo endpoint.
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
@@ -243,7 +243,7 @@ Aggiornamento dello Stato da parte delle Fonti Autentiche
 
 Le Fonti Autentiche gestiscono gli attributi separatamente dagli Attestati Elettronici, che verificano l'autenticità come i documenti fisici. Perdere un documento fisico non significa perdere i privilegi che rappresenta; significa solo che l'Utente non può provarli. Tuttavia, se un Utente perde i privilegi a causa di un'infrazione grave, la Fonte Autentica revocherà gli attributi correlati. In tali casi, quando gli attributi di un Utente vengono aggiornati, le Fonti Autentiche DEVONO notificare ai Fornitori di Attestati Elettronici di aggiornare lo stato di validità di qualsiasi Attestato Elettronico contenente tali attributi.
 
-I Fornitori di Attestati Elettronici DEVONO fornire un servizio web disponibile tramite PDND per la notifica dell'aggiornamento degli Attestati Elettronici e dello stato di validità come definito nella Sezione :ref:`credential-issuer-endpoint:Catalogo e-Service PDND del Credential Issuer`. Per il flusso del protocollo, fare riferimento alla Sezione :ref:`e-service-pdnd:e-Service PDND`.
+I Fornitori di Attestati Elettronici DEVONO fornire un servizio web disponibile tramite PDND per la notifica dell'aggiornamento degli Attestati Elettronici e dello stato di validità come definito nella Sezione :ref:`credential-issuer-endpoint:Catalogo del Credential Issuer e-Service PDND`. Per il flusso del protocollo, fare riferimento alla Sezione :ref:`e-service-pdnd:e-Service PDND`.
 Le Fonti Autentiche DEVONO utilizzare questo servizio di notifica nei seguenti casi:
 
   - Il valore di uno o più Attributi contenuti nel database della Fonte Autentica è cambiato.
@@ -267,7 +267,7 @@ Nel seguente diagramma è illustrato il processo di Alto Livello relativo all'ag
 
 Il processo inizia nel momento in cui si verifica una variazione sui dati o sulla loro validità nel database della Fonte Autentica. Le modifiche possono essere indotte anche da enti terzi diversi dalla Fonte Autentica, ad esempio in caso di attività illegali notificate dagli Organi di Polizia.
 
-Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica DEVE notificare il Fornitore di Attestati Elettronici che ha ricevuto i dati originali utilizzando il servizio ":ref:`credential-issuer-endpoint:Notify Update Credential`" esposto su PDND.
+Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica DEVE notificare il Fornitore di Attestati Elettronici che ha ricevuto i dati originali utilizzando il servizio ":ref:`credential-issuer-endpoint:Notifica Revoca Istanza del Wallet`" esposto su PDND.
 
 Il Fornitore di Attestati Elettronici, una volta ricevuta la notifica, DEVE provvedere all'aggiornamento dello stato della Credenziale secondo la modalità definite per il meccanismo di validità utilizzato. Il Fornitore di Attestati Elettronici PUÒ inviare una notifica all'Utente utilizzando un eventuale canale di comunicazione precedentemente registrato.
 
