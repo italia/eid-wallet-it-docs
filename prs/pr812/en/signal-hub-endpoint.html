@@ -168,12 +168,12 @@
 <h1><span class="section-number">9.5. </span>PDND Signal Hub Endpoints<a class="headerlink" href="#pdnd-signal-hub-endpoints" title="Link to this heading">¶</a></h1>
 <dl class="simple">
 <dt>Within the PDND platform, the Signal Hub acts as an intermediary between a PDND Provider and its PDND Consumers to signal data variations. To achieve that, the manager of the PDND platform, hereafter the PDND Manager, provides (playing the role of PDND e-Service Provider) two PDND Signal Hub e-Services:</dt><dd><ul class="simple">
-<li><p>the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals (here, the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service);</p></li>
-<li><p>the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals (here, the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service).</p></li>
+<li><p>the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals, since the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service;</p></li>
+<li><p>the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals, since the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service.</p></li>
 </ul>
 </dd>
 </dl>
-<p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier inside Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to obtain the pseudonymization algorithm used to calculate the Signal subject's pseudonym. In this way, only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
+<p>In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to obtain the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.</p>
 <p>For detailed technical specifications and implementation guidelines, please refer to the <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>.</p>
 <dl class="simple">
 <dt>In the context of the IT Wallet, Authentic Sources interact with the Signal Hub to notify Credential Issuers about changes in the status and/or value of attributes associated with Digital Credentials. Specifically,</dt><dd><ul class="simple">
@@ -218,7 +218,7 @@
 </ul>
 </div></blockquote>
 <p>The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.</p>
-<p>The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application-json</span></code>, whose header MUST have the parameters described in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a> and whose body MUST contain the following parameters:</p>
+<p>The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, whose header MUST have the parameters described in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a> and whose body MUST contain the following parameters:</p>
 <table class="docutils align-default" id="table-signal-deposit-request-parameters">
 <colgroup>
 <col style="width: 25.0%" />
@@ -279,7 +279,7 @@
 </tr>
 </tbody>
 </table>
-<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <cite>Signal Hub push-yaml`_</cite>.</p>
+<p>If any error occurs during the request parsing, the response MUST adhere to the error format defined in <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A complete OpenAPI Specification of the Signal Collection e-Service is available <a class="reference external" href="https://raw.githubusercontent.com/pagopa/interop-signalhub-core/refs/tags/1.0.1/docs/openAPI/push-signals.yaml">Signal Hub push-yaml</a>.</p>
@@ -337,7 +337,7 @@
 <div><ul class="simple">
 <li><p>Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;</p></li>
 <li><p>the retention period of Signals in the Signal Hub is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. Signals older than the specified retention period are not available for retrieval;</p></li>
-<li><p>the Signal Hub does not keep trak of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Thus each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each PDND e-Service ID;</p></li>
+<li><p>the Signal Hub does not keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last <code class="docutils literal notranslate"><span class="pre">signalId</span></code> it has received for each PDND e-Service ID;</p></li>
 <li><p>the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in <a class="reference external" href="https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-signal-hub">Signal Hub Guide</a>. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.</p></li>
 </ul>
 </div></blockquote>
@@ -350,8 +350,8 @@
 <div><ul>
 <li><p>For each Signal, the Credential Issuer MUST check the <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> value:</p>
 <ul class="simple">
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, it means that the status and/or value of the attribute associated with a Digest Credential need updates; instead,</p></li>
-<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, it means that the requested attributes of a specific Digital Credential are now available;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, the status and/or value of the attribute associated with a Digest Credential need updates;</p></li>
+<li><p>if the Signal <code class="docutils literal notranslate"><span class="pre">SignalType</span></code> is <code class="docutils literal notranslate"><span class="pre">CREATE</span></code>, the requested attributes of a specific Digital Credential are now available;</p></li>
 </ul>
 <p>If the <code class="docutils literal notranslate"><span class="pre">objectId</span></code> does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. If instead it corresponds to a known and valid identifier, the Credential Issuer MUST use the <a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims"><span class="std std-ref">Get Attribute Claims</span></a> PDND endpoint of the Authentic Source to retrieve the updated information and in case apply the new status to the correspondent Credential.</p>
 <p>When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its <code class="docutils literal notranslate"><span class="pre">signalId</span></code> counter; or, if there are no more Signals to process, it will resume the Pull cycle.</p>
@@ -360,7 +360,7 @@
 </div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Given Signal Hub's currently supported security patterns, if the Authentic Source requires the <cite>AUDIT_REST_02</cite> security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> since it cannot contact the Authentic Source to retrieve the updated information without the User's consent.</p>
+<p>Given Signal Hub's currently supported security patterns, if the Authentic Source requires the <cite>AUDIT_REST_02</cite> security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with <code class="docutils literal notranslate"><span class="pre">signalType</span></code> <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code> since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before.</p>
 </div>
 </section>
 </section>
@@ -416,7 +416,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 23/09/2025.
+      Last updated on 24/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
