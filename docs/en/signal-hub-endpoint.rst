@@ -67,10 +67,10 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
   * - **objectType**
     - REQUIRED. This filed is a free field which the Authentic Source MAY use to further specify the Signal.
   * - **objectId**
-    - REQUIRED. The subject to which the Signal is bound. If the Signal 
+    - REQUIRED. The subject to which the Signal is bound. If the Signal has ``signalType``:
     
-      - has ``signalType`` ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
-      - has ``signalType`` ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.
+      - ``CREATE``, then it MUST be set to the ``jti`` value the Credental Issuer used in the Agid-JWT-Signature token of the `get attributes` request to the Authentic Source to obtain the attributes related to a specific Digital Credential (see :ref:`authentic-source-endpoint:Get Attribute Claims`);
+      - ``UPDATE``, then it MUST be set to the Authentic Source's unique database identifier of the Digital Credential's attributes the Signal refers to.
       
   * - **signalType**
     - REQUIRED. Signal Type. It MUST be one of the following: 
@@ -105,7 +105,7 @@ If any error occurs during the request parsing, the response MUST adhere to the 
 
 The Authentic Source MUST implement the necessary logic to handle the requests to the Signal Collection e-Service endpoint, in doing this it has to consider the following aspects:
 
-  - Signals are sent per PDND e-Service, meaning that the Authentic Source SHOULD implement a Signal deposit cycle for each e-Service ID it is a PDND Provider of;
+  - Signals are sent per PDND e-Service, therefore the Authentic Source SHOULD implement a Signal deposit cycle for each e-Service ID it is a PDND Provider of;
   - Signals are labeled by a unique identifier, the ``signalId``, which is a positive 64 bit integer number. The ``signalId`` MUST be incremented by 1 for each new Signal the Authentic Source wishes to deposit in the Signal Collection e-Service endpoint. It is up to the Authentic Source to keep track of the last ``signalId`` it has sent. Signals with lower ``signalId`` values are considered older by the Signal Collection e-Service endpoint and will raise an error when received.
 
 Signal Distribution e-Service
@@ -158,7 +158,7 @@ After the Signals have been successfully recovered by the Credential Issuer, the
     - if the Signal ``SignalType`` is ``UPDATE``, the status and/or value of the attribute associated with a Digest Credential need updates;
     - if the Signal ``SignalType`` is ``CREATE``, the requested attributes of a specific Digital Credential are now available; 
 
-    If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. If instead it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and in case apply the new status to the correspondent Credential.
+    If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and in case apply the new status to the correspondent Credential.
     
     When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its ``signalId`` counter; or, if there are no more Signals to process, it will resume the Pull cycle.
 
