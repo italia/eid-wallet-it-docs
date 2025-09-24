@@ -30,9 +30,16 @@
         "data_provision": {
           "immediate_flow": true,
           "deferred_flow": false
-        }
+        },
+        "update_frequency": "real_time"
       }
-    ]
+    ],
+    "display": {
+      "background_color": "#003d82",
+      "text_color": "#ffffff",
+      "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
+      "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    }
   },
   {
     "as_id": "https://api.bank.example/auth-source",
@@ -65,7 +72,8 @@
         "data_provision": {
           "immediate_flow": true,
           "deferred_flow": false
-        }
+        },
+        "update_frequency": "daily"
       },
       {
         "domain": "FINANCIAL",
@@ -83,7 +91,8 @@
           "deferred_flow": true,
           "max_response_time_minutes": 1440,
           "notification_methods": ["push", "poll"]
-        }
+        },
+        "update_frequency": "weekly"
       }
     ]
   }

@@ -339,6 +339,30 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
      - CONDITIONAL. Array of notification methods supported by the Authentic Source for deferred data provision, such as ``"push"``, ``"poll"``. REQUIRED if ``deferred_flow`` is ``true``.
+   * - **data_capabilities[].update_frequency**
+     - string
+     - OPTIONAL. Indicates how frequently the Authentic Source updates its data. Possible values: ``"real_time"`` (near real-time updates, typically within minutes), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
+   * - **display**
+     - JSON object
+     - OPTIONAL. Visual branding suggestions that Authentic Sources can provide for credentials using their data.
+   * - **display.background_color**
+     - string
+     - OPTIONAL. Suggested background color for credentials in hexadecimal format (e.g., ``"#003d82"``).
+   * - **display.text_color**
+     - string
+     - OPTIONAL. Suggested text color for credentials in hexadecimal format (e.g., ``"#ffffff"``).
+   * - **display.logo_uri**
+     - string
+     - OPTIONAL. URI to the Authentic Source's logo for credential branding.
+   * - **display.logo_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the logo for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``)
+   * - **display.template_uri**
+     - string
+     - OPTIONAL. URI to a visual template that the Authentic Source suggests for credentials using their data.
+   * - **display.template_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the template for integrity verification. REQUIRED if ``template_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-def456..."``).
 
 AS Registry Example
 """""""""""""""""""
