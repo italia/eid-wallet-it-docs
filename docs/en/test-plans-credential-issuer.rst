@@ -543,10 +543,10 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_117
     - Data Model and lifecycle, Interoperability
     - Italian PID User attributes
-    - The Italian PID is successfully provided with the user attributes defined in the :ref:`PID parameters table <table_sd-jwt-vc_pid_parameters>`.
+    - The Italian PID is successfully provided with the User attributes defined in the :ref:`PID parameters table <table_sd-jwt-vc_pid_parameters>`.
   * - CI_118
     - Data Model and lifecycle, Issuance, Interoperability
-    - (Q)EAA credential Formats
+    - (Q)EAA Credential Formats
     - (Q)EAA are Issued to a Wallet Instance in SD-JWT-VC or mdoc-CBOR data format.
   * - CI_119
     - Data Model and lifecycle, Interoperability
@@ -579,7 +579,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_126
     - Data Model and lifecycle, Interoperability
     - Recommendation on SD-JWT Nested Object Selective Disclosure
-    - In a nested SD-JWT payload, every claim at each level of the JSON structure is explicitly marked as either selectively disclosable or not. As a consequence, the _sd claim containing digests can legitimately appear multiple times at different levels within the SD-JWT.
+    - In a nested SD-JWT payload, every claim at each level of the JSON structure is explicitly marked as either selectively disclosable or not. As a consequence, the  ``_sd`` claim containing digests can legitimately appear multiple times at different levels within the SD-JWT.
   * - CI_127
     - Data Model and lifecycle, Interoperability
     - SD-JWT Disclosure digests positioning
@@ -603,7 +603,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_132
     - Data Model and lifecycle, Interoperability
     - SD-JWT Payload Claims
-    - The JWT payload contains claims in the Credential :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`
+    - The JWT payload contains claims in the Credential :ref:`SD-JWT Parameters Table <table_sd-jwt-vc_parameters>`.
   * - CI_133
     - Data Model and lifecycle, Interoperability
     - SD-JWT Status List Parameter Structure
@@ -651,7 +651,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_143
     - Data Model and lifecycle, Interoperability
     - Namespaces IssuerSignedItemBytes Encoding
-    - Within each nameSpace, one or more IssuerSignedItemBytes are correctly encoded as CBOR byte strings with Tag 24 (#6.24(bstr .cbor)), appearing as 24(\<\<\... \>\>) in diagnostic notation
+    - Within each nameSpace, one or more IssuerSignedItemBytes are correctly encoded as CBOR byte strings with Tag 24 (#6.24(bstr .cbor)), appearing as 24(\<\<\... \>\>) in diagnostic notation.
   * - CI_144
     - Data Model and lifecycle, Interoperability
     - Namespace Disclosure Information Attributes
@@ -659,7 +659,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_145
     - Data Model and lifecycle, Interoperability
     - Namespace ElementIdentifier Inclusion
-    - All elementIdentifiers in the elementIdentifiers attribute :ref:`table <table_element_identifiers_mdoc>` are properly included in the Digital Credential encoded in mdoc-CBOR within their respective nameSpaces, unless, otherwise specified
+    - All elementIdentifiers in the elementIdentifiers attribute :ref:`table <table_element_identifiers_mdoc>` are properly included in the Digital Credential encoded in mdoc-CBOR within their respective nameSpaces, unless, otherwise specified.
   * - CI_146
     - Data Model and lifecycle, Interoperability
     - Mobile Security Object COSE Structure
@@ -667,11 +667,11 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_147
     - Data Model and lifecycle, Interoperability
     - Mobile Security Object Protected Header Parameter Encoding
-    - The protected header successfully contains the parameters properly encoded in CBOR format according to the corresponding :ref:`table <table_protected_headers_mdoc>`
+    - The protected header successfully contains the parameters properly encoded in CBOR format according to the corresponding :ref:`table <table_protected_headers_mdoc>`.
   * - CI_148
     - Data Model and lifecycle, Interoperability
     - Mobile Security Object Protected Header Algorithm
-    - The protected header successfully contains the required signature algorithm parameter
+    - The protected header successfully contains the required signature algorithm parameter.
   * - CI_148a
     - Data Model and lifecycle, Interoperability
     - Not Recommended elements in the Mobile Security Object Protected Header
@@ -723,7 +723,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_156c
     - Data Model and lifecycle, Interoperability
     - Digital Credential Revocation - Attribute Updates
-    - Digital Credential is automatically revoked when Authentic Sources notify attribute changes that invalidate the credential, triggering re-issuance process if applicable.
+    - Digital Credential is automatically revoked when Authentic Sources notify attribute changes that invalidate the Credential, triggering re-issuance process if applicable.
   * - CI_156d
     - Data Model and lifecycle, Interoperability
     - Digital Credential Revocation - Source-Initiated Revocation
