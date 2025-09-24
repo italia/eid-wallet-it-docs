@@ -293,7 +293,7 @@ Relying Party operators begin by identifying which EAA types are required for th
     - **Claims Requirements**: ``given_name``, ``family_name``, ``employee.job_title`` from Corporate Employee Badge.
     - **Use Case Justification**: Workplace security requiring employee identification and access control.
     - **Authorization Scope**: Granted access to ``MEMBERSHIP`` domain, ``ASSOCIATION`` category, ``corporate-access`` purpose.
-    - **Credential Discovery**: Badge available only via private Credential Offer (non-catalog).
+    - **Credential Discovery**: Badge available only via private Credential Offer (non-eligible for Credential Catalog).
 
 
 Technical integration focuses on developing authentication flows that can verify Digital Credentials presented by Users. This includes implementing cryptographic verification mechanisms and establishing secure communication channels with the federation infrastructure.
