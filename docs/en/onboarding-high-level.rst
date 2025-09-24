@@ -6,13 +6,13 @@ IT-Wallet Onboarding System
 
 The IT-Wallet ecosystem operates as a federated trust infrastructure where participating entities must establish cryptographic trust relationships and maintain compliance with common security standards.
 
-The onboarding system MUST enable secure digital credential operations. At the same time, it MUST accomodate the diverse operational requirements that different participants require.
+The onboarding system MUST enable secure digital credential operations. At the same time, it MUST accommodate the diverse operational requirements that different participants require.
 
 Administrative processes for organizational entities are common to all participants and independent of their technical functions within the ecosystem. However, technical registration processes MUST account for distinct operational roles.
 
-Credential Issuers, Relying Parties, and Wallet Instances (registered indirectly trough Wallet Providers) participate directly in credential issuance and verification operations. These entities require cryptographic trust establishment trough federation protocols.
+Credential Issuers, Relying Parties, and Wallet Instances (registered indirectly through Wallet Providers) participate directly in credential issuance and verification operations. These entities require cryptographic trust establishment through federation protocols.
 
-Authentic Sources provide authoritative data trough direct trust relationships with Credential Issuers. They serve a central role in data discovery and availability, requiring specialized data-focused registration procedures.
+Authentic Sources provide authoritative data through direct trust relationships with Credential Issuers. They serve a central role in data discovery and availability, requiring specialized data-focused registration procedures.
 
 Onboarding System Architecture
 ------------------------------
@@ -24,15 +24,15 @@ The onboarding framework MUST provide specialized onboarding processes that matc
     :alt: IT-Wallet onboarding system overview showing dual-path registration processes and trust infrastructure
     :caption: `IT-Wallet Onboarding System Overview. <https://www.plantuml.com/plantuml/svg/trust-infrastructure-overview>`_
 
-All Primary Actors MUST undergo administrative registration for legal and regulatory complience, followed by specialized technical registration processes that MUST reflect their operational roles in the digital credential ecosystem.
+All Primary Actors MUST undergo administrative registration for legal and regulatory compliance, followed by specialized technical registration processes that MUST reflect their operational roles in the digital credential ecosystem.
 
     1. **Administrative Registration**: All entities (Authentic Sources, Relying Parties, Wallet Providers, Credential Issuers) MUST complete initial administrative registration that validates their legal standing, regulatory compliance, and organizational eligibility to participate in the IT-Wallet ecosystem.
 
-    2. **Technical Registration**: Following administrative approval, entities complete technical registration trough specialized pathways:
+    2. **Technical Registration**: Following administrative approval, entities complete technical registration through specialized pathways:
 
         a. **Authentic Sources**: Declare their available claims from the Claims Registry using Taxonomy classifications (domains, categories) and specify intended use cases and purposes (public or private). 
 
-        b. **Credential Issuers**: Select Authentic Sources based on required claims, request integration approval (except for regulatory mandates), and register credential types with automatic catalog publication per supervisory body policy.
+        b. **Credential Issuers**: Select Authentic Sources based on required claims, request integration approval (except for regulatory mandates), and register credential types with automatic catalog publication per Supervisory Body policy.
 
         c. **Other Federation Entities** (Relying Parties, Wallet Providers): Undergo federation-based registration for cryptographic trust establishment.
 
@@ -44,20 +44,20 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
         c. **Federation Registry Integration**: Operational entities included for trust validation during credential operations.
 
-        d. **Catalog Integration**: Credential types automatically published in :ref:`registry:Digital Credentials Catalog` based on supervisory body policies for public discovery eligibility.
+        d. **Catalog Integration**: Credential types automatically published in :ref:`registry:Digital Credentials Catalog` based on Supervisory Body policies for public discovery eligibility.
 
-    4. **Wallet Instance Registration**: Wallet Instances are registered indirectly trough Wallet Providers, establishing user-level credential management capabilities. Technical details are provided in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`.
+    4. **Wallet Instance Registration**: Wallet Instances are registered indirectly through Wallet Providers, establishing user-level credential management capabilities. Technical details are provided in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`.
 
 Authentic Source Registration Process
 ---------------------------------------
 
-Authentic Source registration allows data providers to establish their authoritative role in the digital credential ecosystem trough the registration of their data capabilities and standardized access mechanisms based on the Claims Registry and Taxonomy classifications.
+Authentic Source registration allows data providers to establish their authoritative role in the digital credential ecosystem through the registration of their data capabilities and standardized access mechanisms based on the Claims Registry and Taxonomy classifications.
 
-Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases that determine catalog eligibility per supervisory body policies. Public Authentic Sources MUST leverage PDND integration to provide government data trough standardized national infrastructure, while Private Authentic Sources MAY establish custom service interfaces that accommodate specific organizational or regulatory requirements. Both pathways MUST assure data quality standards and establish audit trails for all data provisioning activities.
+Authentic Source entities MUST undergo registration procedures that validate their data authority, declare their available claims from the standardized Claims Registry, and establish technical integration mechanisms. Authentic Source entities specify intended use cases that determine catalog eligibility per Supervisory Body policies. Public Authentic Sources MUST leverage PDND integration to provide government data through standardized national infrastructure, while Private Authentic Sources MAY establish custom service interfaces that accommodate specific organizational or regulatory requirements. Both pathways MUST assure data quality standards and establish audit trails for all data provisioning activities.
 
 **AS-CI Coordination Process**: Following AS registration, Credential Issuers identify suitable AS entities through the AS Registry and request integration approval. For regulatory mandates, approval MUST be automatic. Otherwise, Authentic Sources entities evaluate and approve Credential Issuers requests based on business and technical criteria. This coordination ensures proper data access relationships before credential type catalog publication.
 
-Successfully registered Authentic Sources MUST be included in the AS Registry with their declared claims and capability. Credential types MUST become publicly discoverable in the :ref:`registry:Digital Credentials Catalog` only after succesful AS-CI integration and supervisory body policy approval for catalog eligibility.
+Successfully registered Authentic Sources MUST be included in the AS Registry with their declared claims and capability. Credential types MUST become publicly discoverable in the :ref:`registry:Digital Credentials Catalog` only after successful AS-CI integration and Supervisory Body policy approval for catalog eligibility.
 
 Technical implementation procedures for Authentic Source registration and AS-CI integration are provided in :ref:`entity-onboarding:Authentic Sources Registration Process`.
 
@@ -68,7 +68,7 @@ Federation Onboarding Process
 Federation onboarding establishes the cryptographic trust relationships and compliance frameworks that enable operational entities to participate in secure credential lifecycle activities.
 Operational entities MUST complete onboarding that includes administrative eligibility verification, technical infrastructure validation, and cryptographic trust establishment. The onboarding process creates cryptographic trust relationships through certificate issuance, trust chain configuration, and compliance attestation. These mechanisms enable secure interactions among federation participants and provide the foundation for distributed trust validation across the ecosystem.
 
-Successfully onboarded entities are included in the Federation Registry, wich maintains the authoritative list of trusted federation participants. This registry enables operational trust validation during credential lifecycle activities.
+Successfully onboarded entities are included in the Federation Registry, which maintains the authoritative list of trusted federation participants. This registry enables operational trust validation during credential lifecycle activities.
 
 Relying Parties MUST verify digital credentials with cryptographic assurance, Wallet Providers MUST provide trusted digital wallet services to citizens, and Credential Issuers MUST issue digital credentials using authoritative data sources. All operations MUST occur within established trust relationships that assure security and auditability.
 
@@ -84,7 +84,7 @@ Entities MUST maintain current administrative and technical information to ensur
 
 **Administrative Updates**
 
-Organizations MAY update administrative information throug standard registry channels, such as:
+Organizations MAY update administrative information through standard registry channels, such as:
 
     - **Legal Entity Changes**: Company name changes, organizational restructuring, legal status modifications.
     - **Contact Information**: Updates to official contact channels and responsible personnel.
@@ -95,19 +95,19 @@ Administrative updates MUST follow standard governance processes and SHOULD NOT 
 
 **Technical Configuration Management**
 
-Technical updates affecting federation protocol operations require coordinated procedures, inclusing:
+Technical updates affecting federation protocol operations require coordinated procedures, including:
 
     - **Certificate Management**: Regular certificate renewal, emergency replacement, revocation handling.
     - **Infrastructure Changes**: Endpoint updates, service migrations, capacity modifications.
     - **Compliance Updates**: Security standard updates, policy changes, audit requirements.
     - **Capability Modifications**: Adding or removing supported protocols, credential types, or service features.
 
-Technical updates MUST be validated by Supervisory Body to maintain federation trust relationships and operational integrity.
+Technical updates MUST be validated by the Supervisory Body to maintain federation trust relationships and operational integrity.
 
 Federation Exit and Removal Processes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Entities MAY exit the federation voluntarily or be removed by Supervisory Body for compliance or security reasons.
+Entities MAY exit the federation voluntarily or be removed by the Supervisory Body for compliance or security reasons.
 
 **Voluntary Federation Exit** - Organizations MAY choose to exit the federation for business or operational reasons, including:
 
@@ -126,7 +126,7 @@ Voluntary exit MUST require coordination with dependent entities and proper hand
 
 Removal processes MAY include investigations, remediations, and appeal procedures where appropriate.
 
-For critical security incidents or immediate threats to federation integrity, Supervisory Body MAY implement emergency suspension with immediate effect. 
+For critical security incidents or immediate threats to federation integrity, the Supervisory Body MAY implement emergency suspension with immediate effect. 
 
 Lifecycle Coordination Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -135,7 +135,7 @@ Lifecycle management in the IT-Wallet ecosystem needs coordination between multi
 
     - **Stakeholder communication:** When entities need to make changes that impact IT-Wallet ecosystem operations, they MUST inform the Supervisory Body and relevant federation participants in advance.
     - **Registry synchronization:** When one entity makes changes that affect other entities, all registry systems MUST be properly updated ensuring that all changes are logged securely with timestamps and reasons.
-    - **Business continuity assurance:** Entities SHOULD balance between making necesary updates and keeping their obligations to users and regulations. This includes ensuring that the service is as available as possible, handling personal data correctly during changes, and staying compliant with legal requirements even in emergency situations.
+    - **Business continuity assurance:** Entities SHOULD balance between making necessary updates and keeping their obligations to users and regulations. This includes ensuring that the service is as available as possible, handling personal data correctly during changes, and staying compliant with legal requirements even in emergency situations.
 
 Technical procedures and specific compliance requirements for lifecycle management are detailed in the Section :ref:`entity-onboarding:Entity Lifecycle Management`.
 
@@ -167,7 +167,7 @@ The IT-Wallet Registry system coordinates all registrations through five main co
 The following journey maps illustrate two distinct credential scenarios:
 
     - **Public Catalog Scenario**: Mobile Driving License (mDL) provided for a public discovery via Credential Catalog.
-    - **Private Credential Scenario**: Corporate Employee Badge from Company (Privite AS, and therefore provided for discovery via Credential Offer only).
+    - **Private Credential Scenario**: Corporate Employee Badge from Company (Private AS, and therefore provided for discovery via Credential Offer only).
 
 Authentic Source Operator Journey
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -185,15 +185,15 @@ From the Authentic Source operator perspective, the onboarding process begins wi
 
     - **Claims Declaration**: Selects standardized claims (``given_name``, ``family_name``, ``driving_privileges``, etc. ) from Claims Registry.
     - **Taxonomy Classification**: Domain ``AUTHORIZATION``, Category ``DRIVING_LICENSE``, Purpose ``driving-authorization``.
-    - **Use Case**: Public service - driving authorization verification (catalog-eligible).
-    - **Integration**: PDND e-service following government standards.
+    - **Use Case**: Public service - driving authorization verification (eligible for Credential Catalog).
+    - **Integration**: PDND e-service integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Outcome**: mDL becomes publicly discoverable after CI integration.
 
 **Example - Corporate AS (Employee Badge Scenario)**:
 
     - **Claims Declaration**: Selects claims (``given_name``, ``family_name``, ``employee.job_title``, etc.) from Claims Registry.
     - **Taxonomy Classification**: Domain ``MEMBERSHIP``, Category ``ASSOCIATION``, Purpose ``corporate-access``.
-    - **Use Case**: Private corporate access control (non-catalog).
+    - **Use Case**: Private corporate access control (non-eligible for Credential Catalog).
     - **Integration**: Custom API for Credential Issuer integration.
     - **Catalog Outcome**: Badge remains private, available only via Credential Offer.
 
@@ -201,7 +201,7 @@ Critical phases include administrative verification by the Supervisory Body (whi
 
 .. warning::
 
-    **Important dependency**: Declared claims in AS Registry remain unavailable to end users until a Credential Issuer completes registration, integration approval, and technical implementation. Catalog publication depends on supervisory body policies for public discovery eligibility.
+    **Important dependency**: Declared claims in AS Registry remain unavailable to end users until a Credential Issuer completes registration, integration approval, and technical implementation. Catalog publication depends on Supervisory Body policies for public discovery eligibility.
 
 Credential Issuer Operator Journey  
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -219,9 +219,9 @@ Credential Issuer operators start by discovering available Authentic Source enti
 
     - **AS Discovery**: Identifies the Authentic Source providing mDL attributes in AS Registry with required driving license claims.
     - **Integration Request**: Automatic approval due to regulatory mandate. 
-    - **Technical Setup**: PDND e-service integration following government standards
+    - **Technical Setup**: PDND e-service integration following government standards (see :ref:`e-service-pdnd:e-Service PDND`).
     - **Catalog Publication**: mDL automatically published in the Credential Catalog.
-    - **User Access**: Citizens discover mDL through public catalog in Wallet.
+    - **User Access**: Citizens discover mDL through a public catalog in Wallet.
 
 **Example - CI for Employee Badge (Private Scenario)**:
 
@@ -229,14 +229,14 @@ Credential Issuer operators start by discovering available Authentic Source enti
     - **Integration Request**: Requires AS approval for commercial arrangement.
     - **Technical Setup**: Custom API integration with authentication.
     - **Catalog Publication**: Badge excluded from public catalog per supervisory policy.
-    - **User Access**: Employees receive badge only via direct Credential Offer from company systems.
+    - **User Access**: Employees receive badges only via direct Credential Offer from company systems.
 
 The technical setup phase offers two distinct integration pathways depending on the Authentic Source type:
 
     - **Public AS Integration**: Uses the PDND platform for accessing government data through standardized APIs.
     - **Private AS Integration**: Establishes direct API connections with custom endpoints provided by private organizations.
 
-Following succesful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual credential issuance to end-users. 
+Following successful integration testing and Authentic Source approval, the Credential Issuer is registered in the Federation Registry as a trusted Entity, enabling actual credential issuance to end-users. 
 
 .. warning::
 
@@ -268,7 +268,7 @@ Relying Party Operator Journey
 
 ..     Relying Party service integration and authorization process
 
-Relying Party operators begin by identifying which EAA types are required for their specific services and evaluating integration complexity with existing authentication systems. The registration request provides evidence of legitimate needs for accessing specific Credential types and User attributed, outlining the intended service use cases and organizational characteristics that justify credential access.
+Relying Party operators begin by identifying which EAA types are required for their specific services and evaluating integration complexity with existing authentication systems. The registration request provides evidence of legitimate needs for accessing specific Credential types and User attributes, outlining the intended service use cases and organizational characteristics that justify credential access.
 
 **Example - Car Rental Service (Private RP)**:
 
@@ -282,7 +282,7 @@ Relying Party operators begin by identifying which EAA types are required for th
 
     - **Organization Type**: Public Administration with IPA code requirement.
     - **Authorization Request**: Citizen identity verification for municipal services access.
-    - **Claims Requirements**: ``given_name``, ``family_name``, ``tax_id_code`` from PID
+    - **Claims Requirements**: ``given_name``, ``family_name``, ``tax_id_code`` from PID.
     - **Use Case Justification**: Public service delivery requiring citizen identification.
     - **Authorization Scope**: Granted broader access reflecting public service mandate.
 
@@ -298,7 +298,7 @@ Relying Party operators begin by identifying which EAA types are required for th
 
 Technical integration focuses on developing authentication flows that can verify Digital Credentials presented by Users. This includes implementing cryptographic verification mechanisms and establishing secure communication channels with the federation infrastructure.
 
-Service authorization by the Supervisory Body MUST involves policy-based evaluation that considers organizational type (private vs public administration), business sector classification, and legitimate service requirments. The authorization process grants specific operational scopes that define which credential domains, categories, and purposes the Relying Party can request. Following approval, the Relying Party is registered in the Federation Registry with clearly defined authorization boundaries for Digital Credentials and User's attributes acceptance.
+Service authorization by the Supervisory Body MUST involve policy-based evaluation that considers organizational type (private vs public administration), business sector classification, and legitimate service requirements. The authorization process grants specific operational scopes that define which credential domains, categories, and purposes the Relying Party can request. Following approval, the Relying Party is registered in the Federation Registry with clearly defined authorization boundaries for Digital Credentials and User's attributes acceptance.
 
 
 End User Experience Journey
@@ -311,12 +311,12 @@ End User Experience Journey
 
     Complete user journey from wallet installation to service access
 
-When all entity onboarding processes are Successfully terminated, Users can discover and install certified Wallet Instances and the new available Credential. 
+When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances and the new available Credential. 
 
 Credential discovery happens through two main pathways:
 
     - **Credential Catalog browsing**: Users can explore available Credential types through a Credential Catalog.
-    - **Credential Offers**: Direct Credential Offer from Authentic Sources or Credential Issuers for specific Credentials
+    - **Credential Offers**: Direct Credential Offer from Authentic Sources or Credential Issuers for specific Credentials.
 
 The service access phase demonstrates the value of the complete ecosystem, where users can present their digital credentials to registered Relying Party services for authenticated access. This seamless integration depends on all relevant entities having completed their respective onboarding journeys.
 

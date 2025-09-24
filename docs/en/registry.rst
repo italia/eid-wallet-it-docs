@@ -4,9 +4,9 @@
 Registry Infrastructure
 ==========================
 
-The IT-Wallet ecosystem operates trough a registry infrastructure that provides standardized data definitions, entity registration, and credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital credential operations from entity onboarding to credential presentation.
+The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital credential operations from entity onboarding to credential presentation.
 
-The registry architecture addresses semantic standardization, federation trust management, and credential discovery requirements trough specialized registry components that ensure interoperability and compliance across the ecosystem.
+The registry architecture addresses semantic standardization, federation trust management, and credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.
 
 Registry Architecture Overview
 ------------------------------
@@ -24,7 +24,7 @@ These registry components are interconnected and maintained by the Supervisory B
 Registry Discovery Endpoint
 -------------------------------
 
-The Trust Anchor MUST provide a discovery mechanism for all registry components trough standardized *well-known* endpoints providing metadata and REST API discovery information to handle complex operations like pagination and filtering.
+The Trust Anchor MUST provide a discovery mechanism for all registry components through standardized *well-known* endpoints providing metadata and REST API discovery information to handle complex operations like pagination and filtering.
 
 The Trust Anchor MUST publish registry discovery metadata at the ``.well-known/it-wallet-registry`` endpoint with content negotiation support:
 
