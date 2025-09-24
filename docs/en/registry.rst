@@ -16,7 +16,7 @@ The IT-Wallet registry system comprises five main components:
   1. **Claims Registry**: Standardized semantic definitions for individual credential attributes, data types, and validation rules.
   2. **Authentic Source (AS) Registry**: Catalog of registered data providers with their declared capabilities and available claims.
   3. **Federation Registry**: Authoritative list of trusted entities participating in the federation with their technical configurations.
-  4. **Digital Credentials Catalogue**: Public discovery mechanism for available credential types with their metadata and issuance information.
+  4. **Digital Credentials Catalog**: Public discovery mechanism for available credential types with their metadata and issuance information.
   5. **Taxonomy**: Hierarchical classification system organizing claims and credentials by domain, category, and purpose.
 
 These registry components are interconnected and maintained by the Supervisory Body to ensure consistency, security, and regulatory compliance across the ecosystem.
@@ -124,7 +124,7 @@ This approach allows:
 
 
 .. note::
-   The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the credential type level within the Digital Credentials Catalogue and implemented during credential presentation flows.
+   The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the credential type level within the Digital Credentials Catalog and implemented during credential presentation flows.
 
 
 
@@ -149,7 +149,7 @@ The Claims Registry MUST support the complete ecosystem lifecycle:
 Claims Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided through the Digital Credentials Catalogue localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity.
+The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided through the Digital Credentials Catalog localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity.
 
 A non-normative example of Claims Registry structure is given below:
 
@@ -216,7 +216,7 @@ During registration, Authentic Sources declare their capabilities before credent
 AS Unique Identifier Schema
 """""""""""""""""""""""""""
 
-Each Authentic Source MUST be assigned a unique identifier that follows the HTTPS URL schema defined below. This identifier is used for referencing AS entities across the registry system and in the Digital Credentials Catalogue, ensuring consistency with OpenID Federation entity identification patterns.
+Each Authentic Source MUST be assigned a unique identifier that follows the HTTPS URL schema defined below. This identifier is used for referencing AS entities across the registry system and in the Digital Credentials Catalog, ensuring consistency with OpenID Federation entity identification patterns.
 
 **AS Identifier Schema:**
 
@@ -401,10 +401,10 @@ Federation Registry operations are accessed through the Trust Anchor's federatio
 
 For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust:The Infrastructure of Trust`.
 
-Digital Credentials Catalogue
+Digital Credentials Catalog
 -----------------------------
 
-The Digital Credentials Catalogue is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
+The Digital Credentials Catalog is the registry of all available Digital Credentials recognized within the IT-Wallet ecosystem. It is published by the Trust Anchor and publicly available by all Entities through a specialized Federation endpoint. It acts as a single reference point for all actors involved in the process of issuing, verifying and using Digital Credentials.
 
 The Digital Credential Catalogue aims to:
 
@@ -423,7 +423,7 @@ The main Entities involved in the Digital Credential Catalogue are:
   - **Digital Credential Issuers**: The entities authorized to issue Digital Credentials, registering them in the Catalogue.
   - **Relying Parties**: They use the Digital Credential Catalogue to gather all the information needed about the Digital Credentials they intend to request during the presentation phase.
   - **Wallet Providers**: They access the Digital Credential Catalogue to identify the available Digital Credentials and to retrieve all necessary information for integrating them into their Wallet Solutions.
-  - **Users**: The Users who indirectly use the Digital Credentials Catalogue through their Wallet Instances to discover and request Digital Credentials.
+  - **Users**: The Users who indirectly use the Digital Credentials Catalog through their Wallet Instances to discover and request Digital Credentials.
   - **Authentic Sources**: The Entities that hold the original data that is attested in the Digital Credentials. They provide support to Issuers in registering the Digital Credentials in the Catalogue.
 
 
@@ -539,10 +539,10 @@ Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically
      - Credentials that provide official statements, confirmations of status, or certifications issued by authorities.
 
 
-Digital Credentials Catalogue Structure
+Digital Credentials Catalog Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Digital Credentials Catalogue contents is secured in a JWS that contains the following JOSE header parameters:
+Digital Credentials Catalog contents is secured in a JWS that contains the following JOSE header parameters:
 
 .. _table_catalogue_parameters:
 .. list-table::
@@ -716,7 +716,7 @@ The ``wallet_attestation`` Object contains at least the following information:
       * **Name**: The name of the claim (e.g., ``sub``, ``aal``, ``wallet_link``, ``wallet_name``).
       * **Namespaces**: CONDITIONAL. Array of namespaces to which the claim belongs. It MUST be set to ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.WalletAttestation``).
 
-The corresponding example of Digital Credentials Catalogue as decoded in JSON for both header and payload is the following:
+The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
 
 .. literalinclude:: ../../examples/catalogue-example-header.json
   :language: JSON
@@ -725,12 +725,12 @@ The corresponding example of Digital Credentials Catalogue as decoded in JSON fo
   :language: JSON
 
 .. note::
-  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalogue, an Entity consulting it SHOULD:
+  For a better and more efficient management of the localisation of the information contained in the Digital Credentials Catalog, an Entity consulting it SHOULD:
 
-    - Download the basic version of the Digital Credentials Catalogue (compact, without localisations) using the ``.well-known/credential-catalogue`` endpoint.
+    - Download the basic version of the Digital Credentials Catalog (compact, without localisations) using the ``.well-known/credential-catalogue`` endpoint.
     - Determine the User's preferred language.
     - Download only the necessary localisation bundles.
-    - Dynamically merge localised content with the Digital Credentials Catalogue structure.
+    - Dynamically merge localised content with the Digital Credentials Catalog structure.
 
   A non-normative example of a localisation bundle output is given below:
 
@@ -745,7 +745,7 @@ The corresponding example of Digital Credentials Catalogue as decoded in JSON fo
         "...": "..."
       }
 
-  Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalogue. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+  Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
   A non-normative example of the Italian localization URI for the mDL bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**.
 
@@ -783,7 +783,7 @@ The taxonomy supports multilingual environments through the ``_l10n_id`` suffix 
 
 - **Claims Registry**: Individual claims reference taxonomy domains and categories for semantic consistency
 - **AS Registry**: Authentic Sources declare capabilities using taxonomy classifications
-- **Digital Credentials Catalogue**: Credential types specify domains, categories, and supported purposes
+- **Digital Credentials Catalog**: Credential types specify domains, categories, and supported purposes
 - **Authorization Policies**: Policy evaluation leverages taxonomy structure for access control decisions
 
 The taxonomy is accessible through the dedicated taxonomy endpoint as defined in the registry discovery mechanism and is maintained by the Supervisory Body to ensure regulatory compliance and semantic consistency.

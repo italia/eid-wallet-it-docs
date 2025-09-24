@@ -90,9 +90,9 @@ Once activation is complete, the User MAY obtain one or more Electronic Attestat
 
 Depending on the User's specific needs, the type of Electronic Attestation of Attributes, and the offerings available from the Wallet Provider, the Electronic Attestation of Attributes Provider, and the Authentic Source, the request of Electronic Attestations of Attributes can occur in two ways:
 
-- **from the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance. This pathway is available for credential types eligible for public discovery as determined by supervisory body policies during the onboarding process (see :ref:`registry:Digital Credentials Catalogue`).
+- **from the Wallet Instance Catalog**: the User explores the list of Electronic Attestations of Attributes provided by the Wallet Solution, selects the one of interest, and initiates the request process, concluding with the issuance of the Electronic Attestation of Attributes in the Wallet Instance. This pathway is available for credential types eligible for public discovery as determined by supervisory body policies during the onboarding process (see :ref:`registry:Digital Credentials Catalog`).
 
-- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button. This pathway enables access to both catalog-published credentials and private credentials not eligible for public discovery (see :ref:`registry:Digital Credentials Catalogue`).
+- **from a Touchpoint of the Authentic Source** (or the Electronic Attestation of Attributes Provider if it coincides with the Authentic Source): the User interacts with the digital service of the Authentic Source, allowing them to get a specific Electronic Attestation of Attributes in their Wallet Instance via an Engagement Button. This pathway enables access to both catalog-published credentials and private credentials not eligible for public discovery (see :ref:`registry:Digital Credentials Catalog`).
 
 Although the methods for initiating the request are different, the issuance flows share a similar structure and process. 
 
@@ -129,7 +129,7 @@ Following is an example of informative text:
 
 **Text:** To obtain the digital version of [Document name], please make sure to already have obtained the corresponding physical document. For more details, [read more information] (URL). 
 
-For further information, please refer to the section :ref:`registry:Digital Credentials Catalogue` (see claim ``user_information``). 
+For further information, please refer to the section :ref:`registry:Digital Credentials Catalog` (see claim ``user_information``). 
 
 The Wallet Provider MUST allow the User to remove an Electronic Attestation of Attributes through their Wallet Instance at any moment. In case of absence of the device where the Wallet Instance was activated, the Wallet Provider MUST allow the User to deactivate the entire Wallet Instance through a specific Touchpoint. In addition, the Electronic Attestation of Attributes Providers SHOULD allow the User to revoke the issued Digital Credentials through specific Touchpoints. For more details, please refer to the `Deactivation of the Wallet Instance`_ and `Management of Electronic Attestations`_ sections.
 

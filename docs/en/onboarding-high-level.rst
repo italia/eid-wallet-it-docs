@@ -38,13 +38,13 @@ All Primary Actors MUST undergo administrative registration for legal and regula
 
     3. **IT-Wallet Registry Integration**:
 
-        a. **Claims Registry and Taxonomy Integration**: Claims Registry provides standardized data definitions for individual credential attributes, while Taxonomy defines hierarchical classification (domains, categories, purposes) that are then referenced in the Digital Credentials Catalogue for specific credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.
+        a. **Claims Registry and Taxonomy Integration**: Claims Registry provides standardized data definitions for individual credential attributes, while Taxonomy defines hierarchical classification (domains, categories, purposes) that are then referenced in the Digital Credentials Catalog for specific credential implementations. All participants leverage these registries for capability declarations and issuance/verification requirements.
 
         b. **AS Registry Integration**: Authentic Sources registered with their declared claims and capability, enabling CI discovery and coordination.
 
         c. **Federation Registry Integration**: Operational entities included for trust validation during credential operations.
 
-        d. **Catalog Integration**: Credential types automatically published in :ref:`registry:Digital Credentials Catalogue` based on supervisory body policies for public discovery eligibility.
+        d. **Catalog Integration**: Credential types automatically published in :ref:`registry:Digital Credentials Catalog` based on supervisory body policies for public discovery eligibility.
 
     4. **Wallet Instance Registration**: Wallet Instances are registered indirectly trough Wallet Providers, establishing user-level credential management capabilities. Technical details are provided in :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`.
 
@@ -57,7 +57,7 @@ Authentic Source entities MUST undergo registration procedures that validate the
 
 **AS-CI Coordination Process**: Following AS registration, Credential Issuers identify suitable AS entities through the AS Registry and request integration approval. For regulatory mandates, approval MUST be automatic. Otherwise, Authentic Sources entities evaluate and approve Credential Issuers requests based on business and technical criteria. This coordination ensures proper data access relationships before credential type catalog publication.
 
-Successfully registered Authentic Sources MUST be included in the AS Registry with their declared claims and capability. Credential types MUST become publicly discoverable in the :ref:`registry:Digital Credentials Catalogue` only after succesful AS-CI integration and supervisory body policy approval for catalog eligibility.
+Successfully registered Authentic Sources MUST be included in the AS Registry with their declared claims and capability. Credential types MUST become publicly discoverable in the :ref:`registry:Digital Credentials Catalog` only after succesful AS-CI integration and supervisory body policy approval for catalog eligibility.
 
 Technical implementation procedures for Authentic Source registration and AS-CI integration are provided in :ref:`entity-onboarding:Authentic Sources Registration Process`.
 
@@ -161,7 +161,7 @@ The IT-Wallet Registry system coordinates all registrations through five main co
     1. **Claims Registry** for standardized semantic definitions of individual credential attributes.
     2. **AS Registry** for data sources and capabilities.
     3. **Federation Registry** for operational trust relationships.
-    4. **Digital Credentials Catalogue** (see :ref:`registry:Digital Credentials Catalogue`) for credential type discovery.
+    4. **Digital Credentials Catalog** (see :ref:`registry:Digital Credentials Catalog`) for credential type discovery.
     5. **Taxonomy** for hierarchical classification organizing claims and credentials by domain, category, and purpose.
 
 The following journey maps illustrate two distinct credential scenarios:
