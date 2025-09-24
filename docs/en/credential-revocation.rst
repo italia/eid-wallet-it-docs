@@ -245,7 +245,7 @@ Status Update by Authentic Sources
 
 Authentic Sources manage attributes separately from Digital Credentials, which verify authenticity like physical documents. Losing a physical document doesn't mean losing the privileges it represents; it just means the User can't prove them. However, if a User loses privileges due to a serious infraction, the Authentic Source will revoke the related attributes. In such cases, when a User's attributes are updated, Authentic Sources MUST notify Credential Issuers to update the validity status of any Digital Credential containing those attributes.
 
-Authentic Sources MUST deposit a Signal in the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
+Authentic Sources that use Signal Hub deposit a Signal through the :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
 
   - The value of one or more Attributes contained in the Authentic Source's database has changed, using ``signalType`` set to ``UPDATE``. 
   - The validity status of the Attributes is updated (revocation or suspension), using ``signalType`` set to ``UPDATE``.

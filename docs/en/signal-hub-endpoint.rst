@@ -9,10 +9,10 @@
 PDND Signal Hub Endpoints
 -------------------------
 Within the PDND platform, the Signal Hub acts as an intermediary between a PDND Provider and its PDND Consumers to signal data variations. To achieve that, the manager of the PDND platform, hereafter the PDND Manager, provides (playing the role of PDND e-Service Provider) two PDND Signal Hub e-Services:
-  - the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals (here, the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service);
-  - the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals (here, the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service).
+  - the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals, since the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service;
+  - the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals, since the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service.
 
-In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier inside Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to obtain the pseudonymization algorithm used to calculate the Signal subject's pseudonym. In this way, only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
+In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to obtain the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
 
 For detailed technical specifications and implementation guidelines, please refer to the `Signal Hub Guide`_.
 
@@ -53,7 +53,7 @@ Authentic Sources in the IT Wallet ecosystem use the Signal Collection e-Service
   
 The last case, referred to as deferred issuance, happens when the Credential Issuer has requested a Digital Credential's attributes from the Authentic Source (invoking the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint) and the Authentic Source cannot respond immediately with the requested attributes. Thus, the Authentic Source notifies the Credential Issuer via the Signal Hub at a later time that the requested attributes are now available.
 
-The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with ``Content-Type`` set to ``application-json``, whose header MUST have the parameters described in `Signal Hub Guide`_ and whose body MUST contain the following parameters:
+The Signal Collection e-Service endpoint is used by Authentic Sources to deposit Signals to the Signal Hub via a Signal Collection request. The latter MUST be a POST request with ``Content-Type`` set to ``application/json``, whose header MUST have the parameters described in `Signal Hub Guide`_ and whose body MUST contain the following parameters:
 
 .. _table_Signal_deposit_request_parameters:
 .. list-table::
@@ -98,7 +98,7 @@ The Signal Collection e-Service response, acknowledging the correct parsing of t
   * - **signalId**
     - REQUIRED. The identifier of the Signal that has been successfully collected by the Signal Collection e-Service.
 
-If any error occurs during the request parsing, the response MUST adhere to the error format defined in `Signal Hub push-yaml`_`.
+If any error occurs during the request parsing, the response MUST adhere to the error format defined in `Signal Hub push-yaml`_.
 
 .. note::
     A complete OpenAPI Specification of the Signal Collection e-Service is available `Signal Hub push-yaml`_.
@@ -146,7 +146,7 @@ The Credential Issuer MUST implement the necessary logic to handle the Polling o
 
   - Signals are queried and retrieved per PDND e-Service, meaning that the Credential Issuer MUST implement a poll cycle for each e-Service ID;
   - the retention period of Signals in the Signal Hub is specified in `Signal Hub Guide`_. Signals older than the specified retention period are not available for retrieval;
-  - the Signal Hub does not keep trak of the last ``signalId`` notified to a specific Credential Issuer. Thus each Credential Issuer MUST keep track of the last ``signalId`` it has received for each PDND e-Service ID;
+  - the Signal Hub does not keep track of the last ``signalId`` notified to a specific Credential Issuer. Each Credential Issuer MUST keep track of the last ``signalId`` it has received for each PDND e-Service ID;
   - the Signal Distribution e-Service endpoint returns Signals in batches. The maximal size the batch is specified in `Signal Hub Guide`_. The Signal Distribution e-Service will indicate if additional Signals are available for retrieval.
 
 Signals Processing
@@ -155,8 +155,8 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
   - For each Signal, the Credential Issuer MUST check the ``SignalType`` value:
     
-    - if the Signal ``SignalType`` is ``UPDATE``, it means that the status and/or value of the attribute associated with a Digest Credential need updates; instead,
-    - if the Signal ``SignalType`` is ``CREATE``, it means that the requested attributes of a specific Digital Credential are now available; 
+    - if the Signal ``SignalType`` is ``UPDATE``, the status and/or value of the attribute associated with a Digest Credential need updates;
+    - if the Signal ``SignalType`` is ``CREATE``, the requested attributes of a specific Digital Credential are now available; 
 
     If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. If instead it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and in case apply the new status to the correspondent Credential.
     
@@ -164,6 +164,6 @@ After the Signals have been successfully recovered by the Credential Issuer, the
 
 .. warning::
 
-  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without the User's consent.  
+  Given Signal Hub's currently supported security patterns, if the Authentic Source requires the `AUDIT_REST_02` security pattern from the Credential Issuer, the latter MUST revoke the Digital Credential referenced in Signals with ``signalType`` ``UPDATE`` since it cannot contact the Authentic Source to retrieve the updated information without having authenticated the User before.  
 
 
