@@ -81,7 +81,7 @@ L'App di Verifica deve ottenere un Certificato di Accesso appropriato, che sarà
 
 Nel caso in cui il Certificato di Accesso sia scaduto, un nuovo Certificato di Accesso può essere emesso per l'App di Verifica; questa operazione è rappresentata dalla transizione **CERT REISS** verso lo stato **Verified**.
 
-In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (**PID/(Q)EAA PRE**), utilizzando il Certificato di Accesso per autenticarsi (:ref:`test-plans-remote-presentation:RPR-11`, :ref:`test-plans-remote-presentation:RPR-21`, :ref:`test-plans-remote-presentation:RPR-22`, :ref:`test-plans-remote-presentation:RPR-50`, :ref:`test-plans-remote-presentation:RPR-51`, :ref:`test-plans-remote-presentation:RPR-61`, :ref:`test-plans-remote-presentation:RPR-62`).
+In questo stato, l'App di Verifica può richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet (**PID/(Q)EAA PRE**), utilizzando il Certificato di Accesso per autenticarsi.
 
 
 Transizione a Unverified
@@ -89,7 +89,7 @@ Transizione a Unverified
 
 La scadenza del Certificato di Accesso (transizione **CERT EXP**) porta allo stato **Unverified**.
 
-In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta **PID/(Q)EAA PRE**. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata (:ref:`test-plans-proximity-presentation:PPR-014`, :ref:`test-plans-proximity-presentation:PPR-015`, :ref:`test-plans-proximity-presentation:PPR-017`, :ref:`test-plans-proximity-presentation:PPR-019`).
+In questo stato, l'App di Verifica può ancora richiedere la presentazione di Attestati Elettronici alle Istanze del Wallet durante il periodo di grazia. Tuttavia, poiché il Certificato è scaduto, un disclaimer specifico DEVE essere mostrato all'Utente dell'Istanza del Wallet durante il flusso di presentazione; per questo motivo, questa operazione è rappresentata dall'etichetta **PID/(Q)EAA PRE**. Questo è necessario per supportare i flussi di presentazione offline. Dopo che il periodo di grazia è trascorso, la Relying Party Instance NON DEVE più richiedere presentazioni e sarà de-registrata.
 
 
 
