@@ -135,8 +135,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-024
     - Capabilities
-    - Test that HandoverSessionEstablishmentSupport is set to true when present.
-    - HandoverSessionEstablishmentSupport is correctly set to true.
+    - Test that ``HandoverSessionEstablishmentSupport`` is set to ``true`` when present.
+    - ``HandoverSessionEstablishmentSupport`` is correctly set to ``true``.
 
   * - PPR-025
     - Capabilities
@@ -185,28 +185,28 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-034
     - Session Establishment
-    - Test that SessionEstablishment message is prepared correctly.
-    - SessionEstablishment message is properly prepared with required components.
+    - Test that ``SessionEstablishment`` message is prepared correctly.
+    - ``SessionEstablishment`` message is properly prepared with required components.
 
   * - PPR-035
     - Session Establishment
-    - Test that SessionEstablishment message is signed by RP Instance.
-    - SessionEstablishment message is correctly signed by Relying Party Instance.
+    - Test that ``SessionEstablishment`` message is signed by RP Instance.
+    - ``SessionEstablishment`` message is correctly signed by Relying Party Instance.
 
   * - PPR-036
     - Session Establishment
-    - Test that SessionEstablishment message is encrypted with session keys.
-    - SessionEstablishment message is properly encrypted with session keys.
+    - Test that ``SessionEstablishment`` message is encrypted with session keys.
+    - ``SessionEstablishment`` message is properly encrypted with session keys.
 
   * - PPR-037
     - Session Establishment
-    - Test that SessionEstablishment includes EReaderKey.Pub and attribute request.
-    - SessionEstablishment message includes required EReaderKey.Pub and attribute request.
+    - Test that ``SessionEstablishment`` includes ``EReaderKey.Pub`` and attribute request.
+    - ``SessionEstablishment`` message includes required ``EReaderKey.Pub`` and attribute request.
 
   * - PPR-038
     - Message Transmission
-    - Test that SessionEstablishment is transmitted over secure BLE connection.
-    - SessionEstablishment message is transmitted over secure BLE connection.
+    - Test that ``SessionEstablishment`` is transmitted over secure BLE connection.
+    - ``SessionEstablishment`` message is transmitted over secure BLE connection.
 
   * - PPR-039
     - Session Key Computation
@@ -215,8 +215,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-040
     - Message Decryption
-    - Test that Wallet Instance decrypts SessionEstablishment message.
-    - Wallet Instance successfully decrypts SessionEstablishment message.
+    - Test that Wallet Instance decrypts ``SessionEstablishment`` message.
+    - Wallet Instance successfully decrypts ``SessionEstablishment`` message.
 
   * - PPR-041
     - Signature Verification
@@ -245,8 +245,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-046
     - SessionData Preparation
-    - Test that Wallet Instance prepares SessionData message.
-    - Wallet Instance correctly prepares SessionData message with Digital Credentials.
+    - Test that Wallet Instance prepares ``SessionData`` message.
+    - Wallet Instance correctly prepares ``SessionData`` message with Digital Credentials.
 
   * - PPR-047
     - Authentication Data Signing
@@ -255,8 +255,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-048
     - Message Encryption
-    - Test that SessionData is encrypted with session keys.
-    - SessionData message is properly encrypted with session keys.
+    - Test that ``SessionData`` is encrypted with session keys.
+    - ``SessionData`` message is properly encrypted with session keys.
 
   * - PPR-049
     - CBOR Encoding
@@ -265,8 +265,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-050
     - Data Verification
-    - Test that RP Instance decrypts SessionData.
-    - Relying Party Instance successfully decrypts SessionData.
+    - Test that RP Instance decrypts ``SessionData``.
+    - Relying Party Instance successfully decrypts ``SessionData``.
 
   * - PPR-051
     - Signature Verification
@@ -315,8 +315,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-060
     - Device Authentication
-    - Test that deviceAuth includes deviceSignature.
-    - deviceAuth structure includes required deviceSignature for authentication.
+    - Test that ``deviceAuth`` includes ``deviceSignature``.
+    - ``deviceAuth`` structure includes required ``deviceSignature`` for authentication.
 
   * - PPR-061
     - Wallet Attestation Inclusion
@@ -325,8 +325,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-062
     - AAL Claim Inclusion
-    - Test that Wallet Instance includes aal claim in Wallet Attestation.
-    - Wallet Instance includes aal claim as disclosure in Wallet Attestation.
+    - Test that Wallet Instance includes ``aal`` claim in Wallet Attestation.
+    - Wallet Instance includes ``aal`` claim as disclosure in Wallet Attestation.
 
   * - PPR-063
     - User Consent Bypass

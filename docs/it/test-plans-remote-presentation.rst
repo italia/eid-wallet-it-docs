@@ -372,13 +372,13 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - RPR-87
     - Wallet Attestation Request
-    - Verificare che il parametro 'claims' non sia incluso nella query DCQL per Wallet Attestation.
-    - Il parametro 'claims' non è incluso nella query DCQL per Wallet Attestation.
+    - Verificare che il parametro ``claims`` non sia incluso nella query DCQL per Wallet Attestation.
+    - Il parametro ``claims`` non è incluso nella query DCQL per Wallet Attestation.
 
   * - RPR-88
     - Wallet Attestation Request
-    - Testare che il parametro 'vct_values' sia richiesto nella query DCQL per Wallet Attestation.
-    - Il parametro 'vct_values' è correttamente richiesto nella query DCQL.
+    - Testare che il parametro ``vct_values`` sia richiesto nella query DCQL per Wallet Attestation.
+    - Il parametro ``vct_values`` è correttamente richiesto nella query DCQL.
 
   * - RPR-89
     - Error Response
@@ -387,13 +387,13 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - RPR-90
     - Security
-    - Testare che il parametro request_uri sia attestato da terza parte fidata.
-    - Il parametro request_uri è correttamente attestato da terza parte fidata.
+    - Testare che il parametro ``request_uri`` sia attestato da terza parte fidata.
+    - Il parametro ``request_uri`` è correttamente attestato da terza parte fidata.
 
   * - RPR-91
     - Security
-    - Verificare che il parametro response_uri sia attestato da terza parte fidata.
-    - Il parametro response_uri è correttamente attestato da terza parte fidata.
+    - Verificare che il parametro ``response_uri`` sia attestato da terza parte fidata.
+    - Il parametro ``response_uri`` è correttamente attestato da terza parte fidata.
 
   * - RPR-92
     - Security
@@ -402,8 +402,8 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - RPR-93
     - Security
-    - Verificare che l'Istanza del Wallet ignori il parametro client_metadata se presente.
-    - L'Istanza del Wallet ignora correttamente il parametro client_metadata.
+    - Verificare che l'Istanza del Wallet ignori il parametro ``client_metadata`` se presente.
+    - L'Istanza del Wallet ignora correttamente il parametro ``client_metadata``.
 
   * - RPR-94
     - Wallet Nonce
@@ -412,10 +412,185 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - RPR-95
     - Response Types
-    - Verificare che response_types_supported sia impostato su 'vp_token' quando presente.
-    - response_types_supported è correttamente impostato su 'vp_token'.
+    - Verificare che ``response_types_supported`` sia impostato su ``vp_token`` quando presente.
+    - ``response_types_supported`` è correttamente impostato su ``vp_token``.
 
   * - RPR-96
     - Redirect URI
-    - Testare che l'Istanza del Wallet esegua il redirect al redirect_uri quando fornito.
-    - L'Istanza del Wallet esegue correttamente il redirect al redirect_uri.
+    - Testare che l'Istanza del Wallet esegua il redirect a ``redirect_uri`` quando fornito.
+    - L'Istanza del Wallet esegue correttamente il redirect a ``redirect_uri``.
+
+  * - RPR-97
+    - Flow Support
+    - Testare che la Relying Party supporti i flussi remoti richiesti.
+    - La Relying Party supporta sia Same Device che Cross Device.
+
+  * - RPR-98
+    - HTTP Method Validation
+    - Testare che ``request_uri_method`` sia impostato su ``get`` o ``post``.
+    - Il parametro ``request_uri_method`` è correttamente impostato su ``get`` o ``post``.
+
+  * - RPR-99
+    - Endpoint Security
+    - Testare che ``request_uri`` sia attestato da terza parte fidata.
+    - Il parametro ``request_uri`` è correttamente attestato da terza parte fidata.
+
+  * - RPR-100
+    - Protezione della Privacy
+    - Testare che l'Istanza del Wallet non includa informazioni utente nei metadata.
+    - L'Istanza del Wallet non include informazioni utente nelle capacità tecniche.
+
+  * - RPR-101
+    - Fornitura Metadata
+    - Testare che l'Istanza del Wallet fornisca i metadata via POST quando supportato.
+    - L'Istanza del Wallet fornisce i metadata via POST quando entrambe le parti lo supportano.
+
+  * - RPR-102
+    - Validazione Response Type
+    - Testare che ``response_type`` sia impostato su ``vp_token`` quando presente.
+    - Il parametro ``response_type`` è correttamente impostato su ``vp_token`` quando presente.
+
+  * - RPR-104
+    - Validazione Algoritmo
+    - Testare che l'algoritmo JWT sia supportato e non sia ``none`` o MAC.
+    - L'algoritmo JWT è nella lista supportata e non è ``none`` o identificatore MAC.
+
+  * - RPR-105
+    - Validazione Media Type
+    - Testare che ``typ`` del JWT sia impostato su ``oauth-authz-req+jwt``.
+    - Il parametro ``typ`` del JWT è correttamente impostato su ``oauth-authz-req+jwt``.
+
+  * - RPR-106
+    - Validazione Response Mode
+    - Testare che ``response_mode`` sia impostato su ``direct_post.jwt``.
+    - Il parametro ``response_mode`` è correttamente impostato su ``direct_post.jwt``.
+
+  * - RPR-107
+    - Validazione Response Type
+    - Testare che ``response_type`` sia impostato su ``vp_token``.
+    - Il parametro ``response_type`` è correttamente impostato su ``vp_token``.
+
+  * - RPR-108
+    - Uso di Response URI
+    - Testare che l'Istanza del Wallet invii la Authorization Response a ``response_uri``.
+    - L'Istanza del Wallet invia la Authorization Response al corretto endpoint ``response_uri``.
+
+  * - RPR-110
+    - Entropia del Nonce
+    - Testare che il ``nonce`` abbia sufficiente entropia (32+ cifre).
+    - Il parametro ``nonce`` ha entropia sufficiente con almeno 32 cifre.
+
+  * - RPR-111
+    - Scadenza JWT
+    - Testare che ``exp`` del JWT sia impostato correttamente.
+    - Il parametro ``exp`` del JWT è impostato correttamente e non è scaduto.
+
+  * - RPR-112
+    - Sicurezza di Response URI
+    - Testare che ``response_uri`` sia attestato da terza parte fidata.
+    - Il parametro ``response_uri`` è correttamente attestato da terza parte fidata.
+
+  * - RPR-113
+    - Gestione Client Metadata
+    - Testare che l'Istanza del Wallet ignori ``client_metadata``.
+    - L'Istanza del Wallet ignora ``client_metadata`` e utilizza i metadata della Trust Chain.
+
+  * - RPR-114
+    - Richiesta Wallet Attestation
+    - Testare che la Relying Party richieda il Wallet Attestation via DCQL.
+    - La Relying Party richiede correttamente il Wallet Attestation usando una query DCQL.
+
+  * - RPR-115
+    - Formato Error Response
+    - Testare che l'error response usi il content type ``application/json``.
+    - L'error response usa correttamente il content type ``application/json``.
+
+  * - RPR-116
+    - Parametri Error Response
+    - Testare che l'error response includa i parametri richiesti.
+    - L'error response include i parametri ``error`` ed ``error_description``.
+
+  * - RPR-117
+    - Presentazione Wallet Attestation
+    - Testare che l'Istanza del Wallet includa il Wallet Attestation quando richiesto.
+    - L'Istanza del Wallet include il Wallet Attestation quando richiesto dalla Relying Party.
+
+  * - RPR-118
+    - Array di Presentazioni
+    - Testare che ``vp_token`` contenga almeno due presentazioni firmate.
+    - ``vp_token`` contiene almeno due presentazioni firmate come richiesto.
+
+  * - RPR-119
+    - Inclusione KB-JWT
+    - Testare che l'Holder includa il KB-JWT nel SD-JWT.
+    - L'Holder include correttamente il KB-JWT nella presentazione SD-JWT.
+
+  * - RPR-120
+    - Validazione KB-JWT
+    - Testare che la Relying Party validi la firma del KB-JWT.
+    - La Relying Party valida correttamente la firma del KB-JWT usando la chiave pubblica.
+
+  * - RPR-121
+    - Header KB-JWT
+    - Testare che il KB-JWT contenga i parametri di header richiesti.
+    - Il KB-JWT contiene i parametri di header ``typ`` e ``alg`` richiesti.
+
+  * - RPR-122
+    - Payload KB-JWT
+    - Testare che il KB-JWT contenga i parametri di payload richiesti.
+    - Il KB-JWT contiene i parametri ``iat``, ``aud``, ``nonce`` e ``sd_hash`` richiesti.
+
+  * - RPR-123
+    - Tipo KB-JWT
+    - Testare che ``typ`` di KB-JWT sia impostato su ``kb+jwt``.
+    - Il parametro ``typ`` di KB-JWT è correttamente impostato su ``kb+jwt``.
+
+  * - RPR-124
+    - Tempo di Emissione KB-JWT
+    - Testare che ``iat`` di KB-JWT sia impostato correttamente.
+    - Il parametro ``iat`` di KB-JWT è correttamente impostato al tempo di emissione.
+
+  * - RPR-125
+    - Audience KB-JWT
+    - Testare che ``aud`` di KB-JWT corrisponda all'identificatore della Relying Party.
+    - Il parametro ``aud`` di KB-JWT corrisponde all'identificatore univoco della Relying Party.
+
+  * - RPR-126
+    - Nonce KB-JWT
+    - Testare che il ``nonce`` di KB-JWT corrisponda al ``nonce`` del request object.
+    - Il parametro ``nonce`` di KB-JWT corrisponde al ``nonce`` del request object.
+
+  * - RPR-127
+    - Authorization Error Response
+    - Testare che l'Istanza del Wallet invii una Authorization Error Response in caso di fallimento della validazione.
+    - L'Istanza del Wallet invia una Authorization Error Response quando la validazione fallisce.
+
+  * - RPR-128
+    - Codifica Error Response
+    - Testare che la Authorization Error Response sia codificata correttamente.
+    - La Authorization Error Response è codificata in formato ``application/x-www-form-urlencoded``.
+
+  * - RPR-129
+    - Elaborazione Response
+    - Testare che il Response URI restituisca HTTP 200 in caso di elaborazione riuscita.
+    - Il Response URI restituisce HTTP 200 con content type ``application/json``.
+
+  * - RPR-130
+    - Gestione Redirect URI
+    - Testare che l'Istanza del Wallet esegua il redirect a ``redirect_uri``.
+    - L'Istanza del Wallet esegue il redirect all'URL specificato da ``redirect_uri``.
+
+  * - RPR-131
+    - Inclusione Response Code
+    - Testare che la Relying Party includa il response code in ``redirect_uri``.
+    - La Relying Party include un response code fresco in ``redirect_uri``.
+
+  * - RPR-132
+    - Sicurezza Redirect URI
+    - Testare che ``redirect_uri`` sia attestato da terza parte fidata.
+    - Il parametro ``redirect_uri`` è correttamente attestato da terza parte fidata.
+
+  * - RPR-133
+    - Validation Error Response
+    - Testare che il Response URI restituisca una error response in caso di fallimenti di validazione.
+    - Il Response URI restituisce una error response quando i controlli di validazione falliscono.
