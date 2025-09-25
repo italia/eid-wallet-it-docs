@@ -242,7 +242,7 @@
 </tr>
 <tr class="row-even"><td><p>RPR-09</p></td>
 <td><p>Request URI Method</p></td>
-<td><p>Testare l'assenza di <cite>request_uri_method</cite>.</p></td>
+<td><p>Testare l'assenza di <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>.</p></td>
 <td><p>Il Wallet Instance utilizza il metodo GET come default.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-10</p></td>
@@ -272,580 +272,510 @@
 </tr>
 <tr class="row-even"><td><p>RPR-15</p></td>
 <td><p>Error Handling</p></td>
-<td><p>Verificare il logging degli errori da parte delIl Wallet Instance.</p></td>
-<td><p>Gli errori vengono registrati appropriatamente.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-16</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Testare il recupero da <cite>server_error</cite>.</p></td>
+<td><p>Testare il recupero da <code class="docutils literal notranslate"><span class="pre">server_error</span></code>.</p></td>
 <td><p>L'utente viene invitato a riprovare o scansionare un nuovo QR code.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-17</p></td>
+<tr class="row-odd"><td><p>RPR-16</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Verificare la gestione corretta della Response.</p></td>
 <td><p>La sessione utente viene aggiornata, viene fornito il redirect URI.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-18</p></td>
+<tr class="row-even"><td><p>RPR-17</p></td>
 <td><p>Relying Party Response</p></td>
-<td><p>Testare l'assenza di <cite>redirect_uri</cite>.</p></td>
+<td><p>Testare l'assenza di <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-19</p></td>
+<tr class="row-odd"><td><p>RPR-18</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Testare il redirect all'endpoint della Relying Party.</p></td>
 <td><p>L'utente viene reindirizzato correttamente.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-20</p></td>
+<tr class="row-even"><td><p>RPR-19</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Verificare la gestione di <cite>redirect_uri</cite> non validi.</p></td>
+<td><p>Verificare la gestione di <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-21</p></td>
+<tr class="row-odd"><td><p>RPR-20</p></td>
 <td><p>User Consent</p></td>
 <td><p>Verificare la visualizzazione dell'identità della Relying Party.</p></td>
 <td><p>L'identità viene visualizzata chiaramente all'Holder.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-22</p></td>
+<tr class="row-even"><td><p>RPR-21</p></td>
 <td><p>User Consent</p></td>
 <td><p>Testare la revoca del consenso utente.</p></td>
 <td><p>L'utente può revocare il consenso prima dell'invio.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-23</p></td>
+<tr class="row-odd"><td><p>RPR-22</p></td>
 <td><p>Credential Presentation</p></td>
 <td><p>Verificare la conformità del formato della response.</p></td>
 <td><p>Ogni Credential aderisce al formato specificato.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-24</p></td>
+<tr class="row-even"><td><p>RPR-23</p></td>
 <td><p>Authorization Response</p></td>
 <td><p>Testare la gestione dei timeout della response.</p></td>
 <td><p>I retry devono avere successo a meno che la response non sia acquisita.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-25</p></td>
+<tr class="row-odd"><td><p>RPR-24</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Verificare la gestione di claims malformati nel payload di presentazione.</p></td>
 <td><p>Viene inviata una Authorization Error Response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-26</p></td>
+<tr class="row-even"><td><p>RPR-25</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Verificare la gestione di claims malformati nelle credenziali presentate.</p></td>
 <td><p>Viene inviata una Authorization Error Response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-27</p></td>
+<tr class="row-odd"><td><p>RPR-26</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Testare la gestione di richieste scadute.</p></td>
 <td><p>L'Holder viene notificato della scadenza.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-28</p></td>
+<tr class="row-even"><td><p>RPR-27</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Verificare l'inclusione del response code.</p></td>
 <td><p>Il response code è crittograficamente casuale.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-29</p></td>
+<tr class="row-odd"><td><p>RPR-28</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Testare la gestione di response code non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-30</p></td>
+<tr class="row-even"><td><p>RPR-29</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Verificare la gestione dell'accesso non autorizzato.</p></td>
 <td><p>L'accesso non autorizzato viene negato.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-31</p></td>
+<tr class="row-odd"><td><p>RPR-30</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Testare la gestione di session ID non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-32</p></td>
+<tr class="row-even"><td><p>RPR-31</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verificare la gestione di sessioni scadute.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-33</p></td>
+<tr class="row-odd"><td><p>RPR-32</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Testare la gestione di errori del server.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-34</p></td>
-<td><p>Same Device Flow</p></td>
-<td><p>Verificare la gestione di condizioni di rete lenta.</p></td>
-<td><p>Il Wallet Instance riprova o notifica l'utente.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-35</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare la gestione di payload metadata di grandi dimensioni.</p></td>
-<td><p>I metadata vengono inviati con successo.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-36</p></td>
+<tr class="row-even"><td><p>RPR-33</p></td>
 <td><p>Presentation Response</p></td>
 <td><p>Verificare la gestione di payload di response di grandi dimensioni.</p></td>
 <td><p>La response viene inviata con successo.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-37</p></td>
+<tr class="row-odd"><td><p>RPR-34</p></td>
 <td><p>Presentation Response</p></td>
 <td><p>Testare la gestione di fallimenti nella crittografia della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-38</p></td>
+<tr class="row-even"><td><p>RPR-35</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Verificare la gestione di firme non valide.</p></td>
 <td><p>Viene inviata una Authorization Error Response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-39</p></td>
+<tr class="row-odd"><td><p>RPR-36</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Testare la gestione di valori nonce non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-40</p></td>
+<tr class="row-even"><td><p>RPR-37</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Verificare la gestione di response malformate.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-41</p></td>
+<tr class="row-odd"><td><p>RPR-38</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Testare la gestione di parametri di response mancanti.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-42</p></td>
+<tr class="row-even"><td><p>RPR-39</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Verificare la gestione di timeout di sessione.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-43</p></td>
+<tr class="row-odd"><td><p>RPR-40</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Testare la gestione di status code non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-44</p></td>
+<tr class="row-even"><td><p>RPR-41</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verificare la gestione di sessioni utente non valide.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-45</p></td>
+<tr class="row-odd"><td><p>RPR-42</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Testare la gestione di servizi non disponibili.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-46</p></td>
+<tr class="row-even"><td><p>RPR-43</p></td>
 <td><p>Same Device Flow</p></td>
 <td><p>Verificare la gestione di cancellazioni utente.</p></td>
 <td><p>L'utente può cancellare il processo.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-47</p></td>
+<tr class="row-odd"><td><p>RPR-44</p></td>
 <td><p>Cross Device Flow</p></td>
 <td><p>Testare la scansione del QR Code con app diverse.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-48</p></td>
+<tr class="row-even"><td><p>RPR-45</p></td>
 <td><p>Cross Device Flow</p></td>
 <td><p>Verificare la scansione del QR Code con illuminazione diversa.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-49</p></td>
+<tr class="row-odd"><td><p>RPR-46</p></td>
 <td><p>Request URI Method</p></td>
 <td><p>Testare la gestione di content type non supportati.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-50</p></td>
+<tr class="row-even"><td><p>RPR-47</p></td>
 <td><p>User Consent</p></td>
 <td><p>Verificare la notifica utente sui cambiamenti di consenso.</p></td>
 <td><p>L'utente viene informato sui cambiamenti di consenso.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-51</p></td>
+<tr class="row-odd"><td><p>RPR-48</p></td>
 <td><p>User Consent</p></td>
 <td><p>Testare il consenso utente per dati sensibili.</p></td>
 <td><p>L'utente può acconsentire ai dati sensibili.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-52</p></td>
+<tr class="row-even"><td><p>RPR-49</p></td>
 <td><p>Authorization Response</p></td>
 <td><p>Verificare la gestione di fallimenti nella decrittografia della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-53</p></td>
+<tr class="row-odd"><td><p>RPR-50</p></td>
 <td><p>Authorization Response</p></td>
 <td><p>Testare la gestione dei controlli di integrità della response.</p></td>
 <td><p>L'integrità della response viene verificata.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-54</p></td>
+<tr class="row-even"><td><p>RPR-51</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Verificare la gestione di fallimenti nella validazione della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-55</p></td>
+<tr class="row-odd"><td><p>RPR-52</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Testare la gestione di errori di elaborazione della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-56</p></td>
+<tr class="row-even"><td><p>RPR-53</p></td>
 <td><p>Protected Resource Endpoint</p></td>
 <td><p>Verificare la gestione di accesso non autorizzato alla sessione.</p></td>
 <td><p>L'accesso non autorizzato viene negato.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-57</p></td>
+<tr class="row-odd"><td><p>RPR-54</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verificare la gestione di parametri di redirect non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-58</p></td>
+<tr class="row-even"><td><p>RPR-55</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Testare la gestione di fallimenti nel redirect.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-59</p></td>
+<tr class="row-odd"><td><p>RPR-56</p></td>
 <td><p>Same Device Flow</p></td>
 <td><p>Verificare la gestione di interruzioni utente.</p></td>
 <td><p>L'utente può riprendere o cancellare il processo.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-60</p></td>
+<tr class="row-even"><td><p>RPR-57</p></td>
 <td><p>Request URI Method</p></td>
 <td><p>Testare la gestione di metodi HTTP non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-61</p></td>
+<tr class="row-odd"><td><p>RPR-58</p></td>
 <td><p>User Consent</p></td>
 <td><p>Verificare la notifica utente sulla revoca del consenso.</p></td>
 <td><p>L'utente viene informato sulla revoca del consenso.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-62</p></td>
+<tr class="row-even"><td><p>RPR-59</p></td>
 <td><p>User Consent</p></td>
 <td><p>Testare il consenso utente per dati opzionali.</p></td>
 <td><p>L'utente può acconsentire ai dati opzionali.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-63</p></td>
+<tr class="row-odd"><td><p>RPR-60</p></td>
 <td><p>Authorization Response</p></td>
 <td><p>Verificare la gestione di fallimenti nella firma della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-64</p></td>
+<tr class="row-even"><td><p>RPR-61</p></td>
 <td><p>Authorization Response</p></td>
 <td><p>Testare la gestione di errori di formato della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-65</p></td>
+<tr class="row-odd"><td><p>RPR-62</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Verificare la gestione di firme JWT non valide.</p></td>
 <td><p>Viene inviata una Authorization Error Response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-66</p></td>
+<tr class="row-even"><td><p>RPR-63</p></td>
 <td><p>Error Handling</p></td>
 <td><p>Testare la gestione di claims JWT non validi.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-67</p></td>
+<tr class="row-odd"><td><p>RPR-64</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Verificare la gestione di errori di parsing della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-68</p></td>
+<tr class="row-even"><td><p>RPR-65</p></td>
 <td><p>Relying Party Response</p></td>
 <td><p>Testare la gestione di errori di timeout della response.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-69</p></td>
+<tr class="row-odd"><td><p>RPR-66</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Verificare la gestione della scadenza della sessione.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-70</p></td>
+<tr class="row-even"><td><p>RPR-67</p></td>
 <td><p>Status Endpoint</p></td>
 <td><p>Testare la gestione di errori di rinnovo della sessione.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-71</p></td>
+<tr class="row-odd"><td><p>RPR-68</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Verificare la gestione di errori di loop di redirect.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-72</p></td>
+<tr class="row-even"><td><p>RPR-69</p></td>
 <td><p>Redirect URI</p></td>
 <td><p>Testare la gestione di errori di sicurezza del redirect.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-73</p></td>
+<tr class="row-odd"><td><p>RPR-70</p></td>
 <td><p>Same Device Flow</p></td>
 <td><p>Verificare la gestione di timeout utente.</p></td>
 <td><p>L'utente viene notificato del timeout.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-74</p></td>
+<tr class="row-even"><td><p>RPR-71</p></td>
 <td><p>Cross Device Flow</p></td>
 <td><p>Testare la scansione del QR Code con dispositivi diversi.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-75</p></td>
+<tr class="row-odd"><td><p>RPR-72</p></td>
 <td><p>Cross Device Flow</p></td>
 <td><p>Verificare la scansione del QR Code con app diverse.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-76</p></td>
+<tr class="row-even"><td><p>RPR-73</p></td>
 <td><p>Request URI Method</p></td>
 <td><p>Testare la gestione di metodi HTTP non supportati.</p></td>
 <td><p>Viene restituita una error response.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-77</p></td>
+<tr class="row-odd"><td><p>RPR-74</p></td>
 <td><p>QR Code Generation</p></td>
 <td><p>Verificare che il livello di correzione errori del QR Code sia Q (Quartile - fino al 25%).</p></td>
 <td><p>Il QR Code utilizza il livello di correzione errori Q come richiesto.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-78</p></td>
+<tr class="row-even"><td><p>RPR-75</p></td>
 <td><p>Request URI Method</p></td>
-<td><p>Testare che il metodo HTTP sia impostato su 'get' o 'post'.</p></td>
-<td><p>Il metodo HTTP è correttamente impostato su 'get' o 'post'.</p></td>
+<td><p>Testare che il metodo HTTP sia impostato su <code class="docutils literal notranslate"><span class="pre">get</span></code> o <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p></td>
+<td><p>Il metodo HTTP è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">get</span></code> o <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-79</p></td>
+<tr class="row-odd"><td><p>RPR-76</p></td>
 <td><p>Request URI Method</p></td>
 <td><p>Verificare che il metodo GET sia utilizzato come default quando non specificato.</p></td>
-<td><p>Il metodo GET è utilizzato come default quando request_uri_method non è fornito.</p></td>
+<td><p>Il metodo GET è utilizzato come default quando <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> non è fornito.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-77</p></td>
+<td><p>JWT Header</p></td>
+<td><p>Testare che l'algoritmo di firma JWT sia supportato e non sia <code class="docutils literal notranslate"><span class="pre">none</span></code>.</p></td>
+<td><p>L'algoritmo di firma JWT è valido e non è <code class="docutils literal notranslate"><span class="pre">none</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-78</p></td>
+<td><p>JWT Header</p></td>
+<td><p>Verificare che il media type JWT sia <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code>.</p></td>
+<td><p>Il media type JWT è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-79</p></td>
+<td><p>JWT Payload</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">response_mode</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">response_mode</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-80</p></td>
-<td><p>JWT Header</p></td>
-<td><p>Testare che l'algoritmo di firma JWT sia supportato e non sia 'none'.</p></td>
-<td><p>L'algoritmo di firma JWT è valido e non è 'none'.</p></td>
+<td><p>JWT Payload</p></td>
+<td><p>Verificare che <code class="docutils literal notranslate"><span class="pre">response_type</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">response_type</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-81</p></td>
-<td><p>JWT Header</p></td>
-<td><p>Verificare che il media type JWT sia 'oauth-authz-req+jwt'.</p></td>
-<td><p>Il media type JWT è correttamente impostato su 'oauth-authz-req+jwt'.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-82</p></td>
-<td><p>JWT Payload</p></td>
-<td><p>Testare che response_mode sia impostato su 'direct_post.jwt'.</p></td>
-<td><p>response_mode è correttamente impostato su 'direct_post.jwt'.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-83</p></td>
-<td><p>JWT Payload</p></td>
-<td><p>Verificare che response_type sia impostato su 'vp_token'.</p></td>
-<td><p>response_type è correttamente impostato su 'vp_token'.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-84</p></td>
 <td><p>JWT Payload</p></td>
 <td><p>Testare che il nonce abbia almeno 32 cifre di lunghezza.</p></td>
 <td><p>Il nonce ha la lunghezza minima richiesta di 32 cifre.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-85</p></td>
+<tr class="row-odd"><td><p>RPR-82</p></td>
 <td><p>JWT Payload</p></td>
 <td><p>Verificare che il JWT non sia valido dopo la scadenza (exp).</p></td>
 <td><p>Il JWT non è più valido dopo il timestamp di scadenza.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-86</p></td>
+<tr class="row-even"><td><p>RPR-83</p></td>
 <td><p>Wallet Attestation Request</p></td>
 <td><p>Testare che la richiesta di Wallet Attestation utilizzi una query DCQL standard.</p></td>
 <td><p>La richiesta di Wallet Attestation utilizza correttamente la query DCQL standard.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-87</p></td>
+<tr class="row-odd"><td><p>RPR-84</p></td>
 <td><p>Wallet Attestation Request</p></td>
 <td><p>Verificare che il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non sia incluso nella query DCQL per Wallet Attestation.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non è incluso nella query DCQL per Wallet Attestation.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-88</p></td>
+<tr class="row-even"><td><p>RPR-85</p></td>
 <td><p>Wallet Attestation Request</p></td>
 <td><p>Testare che il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> sia richiesto nella query DCQL per Wallet Attestation.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> è correttamente richiesto nella query DCQL.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-89</p></td>
+<tr class="row-odd"><td><p>RPR-86</p></td>
 <td><p>Error Response</p></td>
 <td><p>Verificare che la Relying Party restituisca error response in formato JSON per errori request_uri.</p></td>
 <td><p>La Relying Party restituisce correttamente error response in formato JSON.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-90</p></td>
+<tr class="row-even"><td><p>RPR-87</p></td>
 <td><p>Security</p></td>
 <td><p>Testare che il parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> sia attestato da terza parte fidata.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> è correttamente attestato da terza parte fidata.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-91</p></td>
+<tr class="row-odd"><td><p>RPR-88</p></td>
 <td><p>Security</p></td>
 <td><p>Verificare che il parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> sia attestato da terza parte fidata.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> è correttamente attestato da terza parte fidata.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-92</p></td>
-<td><p>Security</p></td>
-<td><p>Testare che l'Istanza del Wallet non includa informazioni utente nei metadata tecnici.</p></td>
-<td><p>L'Istanza del Wallet non include informazioni utente nei metadata tecnici.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-93</p></td>
-<td><p>Security</p></td>
-<td><p>Verificare che l'Istanza del Wallet ignori il parametro <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> se presente.</p></td>
-<td><p>L'Istanza del Wallet ignora correttamente il parametro <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-94</p></td>
+<tr class="row-even"><td><p>RPR-89</p></td>
 <td><p>Wallet Nonce</p></td>
-<td><p>Testare che la Relying Party controlli il wallet_nonce quando presente.</p></td>
-<td><p>La Relying Party controlla correttamente il wallet_nonce quando presente.</p></td>
+<td><p>Testare che la Relying Party controlli il <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> quando presente.</p></td>
+<td><p>La Relying Party controlla correttamente il <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> quando presente.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-95</p></td>
+<tr class="row-odd"><td><p>RPR-90</p></td>
 <td><p>Response Types</p></td>
 <td><p>Verificare che <code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> quando presente.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-96</p></td>
-<td><p>Redirect URI</p></td>
-<td><p>Testare che l'Istanza del Wallet esegua il redirect a <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> quando fornito.</p></td>
-<td><p>L'Istanza del Wallet esegue correttamente il redirect a <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-97</p></td>
+<tr class="row-even"><td><p>RPR-91</p></td>
 <td><p>Flow Support</p></td>
 <td><p>Testare che la Relying Party supporti i flussi remoti richiesti.</p></td>
 <td><p>La Relying Party supporta sia Same Device che Cross Device.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-98</p></td>
+<tr class="row-odd"><td><p>RPR-92</p></td>
 <td><p>HTTP Method Validation</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">get</span></code> o <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">get</span></code> o <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-99</p></td>
+<tr class="row-even"><td><p>RPR-93</p></td>
 <td><p>Endpoint Security</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> sia attestato da terza parte fidata.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> è correttamente attestato da terza parte fidata.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-100</p></td>
-<td><p>Protezione della Privacy</p></td>
-<td><p>Testare che l'Istanza del Wallet non includa informazioni utente nei metadata.</p></td>
-<td><p>L'Istanza del Wallet non include informazioni utente nelle capacità tecniche.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-101</p></td>
-<td><p>Fornitura Metadata</p></td>
-<td><p>Testare che l'Istanza del Wallet fornisca i metadata via POST quando supportato.</p></td>
-<td><p>L'Istanza del Wallet fornisce i metadata via POST quando entrambe le parti lo supportano.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-102</p></td>
-<td><p>Validazione Response Type</p></td>
+<tr class="row-odd"><td><p>RPR-94</p></td>
+<td><p>Response Type Validation</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">response_type</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> quando presente.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_type</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> quando presente.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-104</p></td>
-<td><p>Validazione Algoritmo</p></td>
+<tr class="row-even"><td><p>RPR-95</p></td>
+<td><p>Algorithm Validation</p></td>
 <td><p>Testare che l'algoritmo JWT sia supportato e non sia <code class="docutils literal notranslate"><span class="pre">none</span></code> o MAC.</p></td>
 <td><p>L'algoritmo JWT è nella lista supportata e non è <code class="docutils literal notranslate"><span class="pre">none</span></code> o identificatore MAC.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-105</p></td>
-<td><p>Validazione Media Type</p></td>
+<tr class="row-odd"><td><p>RPR-96</p></td>
+<td><p>Media Type Validation</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">typ</span></code> del JWT sia impostato su <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code>.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">typ</span></code> del JWT è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-106</p></td>
-<td><p>Validazione Response Mode</p></td>
+<tr class="row-even"><td><p>RPR-97</p></td>
+<td><p>Response Mode Validation</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">response_mode</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_mode</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-107</p></td>
-<td><p>Validazione Response Type</p></td>
+<tr class="row-odd"><td><p>RPR-98</p></td>
+<td><p>Response Type Validation</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">response_type</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_type</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-108</p></td>
-<td><p>Uso di Response URI</p></td>
-<td><p>Testare che l'Istanza del Wallet invii la Authorization Response a <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>.</p></td>
-<td><p>L'Istanza del Wallet invia la Authorization Response al corretto endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-110</p></td>
-<td><p>Entropia del Nonce</p></td>
+<tr class="row-even"><td><p>RPR-99</p></td>
+<td><p>Nonce Entropy</p></td>
 <td><p>Testare che il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> abbia sufficiente entropia (32+ cifre).</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">nonce</span></code> ha entropia sufficiente con almeno 32 cifre.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-111</p></td>
-<td><p>Scadenza JWT</p></td>
+<tr class="row-odd"><td><p>RPR-100</p></td>
+<td><p>JWT Expiration</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">exp</span></code> del JWT sia impostato correttamente.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">exp</span></code> del JWT è impostato correttamente e non è scaduto.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-112</p></td>
-<td><p>Sicurezza di Response URI</p></td>
+<tr class="row-even"><td><p>RPR-101</p></td>
+<td><p>Response URI Security</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> sia attestato da terza parte fidata.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> è correttamente attestato da terza parte fidata.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-113</p></td>
-<td><p>Gestione Client Metadata</p></td>
-<td><p>Testare che l'Istanza del Wallet ignori <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code>.</p></td>
-<td><p>L'Istanza del Wallet ignora <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> e utilizza i metadata della Trust Chain.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-114</p></td>
-<td><p>Richiesta Wallet Attestation</p></td>
+<tr class="row-odd"><td><p>RPR-102</p></td>
+<td><p>Wallet Attestation Request</p></td>
 <td><p>Testare che la Relying Party richieda il Wallet Attestation via DCQL.</p></td>
 <td><p>La Relying Party richiede correttamente il Wallet Attestation usando una query DCQL.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-115</p></td>
-<td><p>Formato Error Response</p></td>
+<tr class="row-even"><td><p>RPR-103</p></td>
+<td><p>Error Response Format</p></td>
 <td><p>Testare che l'error response usi il content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 <td><p>L'error response usa correttamente il content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-116</p></td>
-<td><p>Parametri Error Response</p></td>
+<tr class="row-odd"><td><p>RPR-104</p></td>
+<td><p>Error Response Parameters</p></td>
 <td><p>Testare che l'error response includa i parametri richiesti.</p></td>
 <td><p>L'error response include i parametri <code class="docutils literal notranslate"><span class="pre">error</span></code> ed <code class="docutils literal notranslate"><span class="pre">error_description</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-117</p></td>
-<td><p>Presentazione Wallet Attestation</p></td>
-<td><p>Testare che l'Istanza del Wallet includa il Wallet Attestation quando richiesto.</p></td>
-<td><p>L'Istanza del Wallet include il Wallet Attestation quando richiesto dalla Relying Party.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-118</p></td>
-<td><p>Array di Presentazioni</p></td>
+<tr class="row-even"><td><p>RPR-105</p></td>
+<td><p>Presentation Array</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> contenga almeno due presentazioni firmate.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">vp_token</span></code> contiene almeno due presentazioni firmate come richiesto.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-119</p></td>
-<td><p>Inclusione KB-JWT</p></td>
-<td><p>Testare che l'Holder includa il KB-JWT nel SD-JWT.</p></td>
-<td><p>L'Holder include correttamente il KB-JWT nella presentazione SD-JWT.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-120</p></td>
-<td><p>Validazione KB-JWT</p></td>
+<tr class="row-odd"><td><p>RPR-106</p></td>
+<td><p>KB-JWT Validation</p></td>
 <td><p>Testare che la Relying Party validi la firma del KB-JWT.</p></td>
 <td><p>La Relying Party valida correttamente la firma del KB-JWT usando la chiave pubblica.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-121</p></td>
-<td><p>Header KB-JWT</p></td>
+<tr class="row-even"><td><p>RPR-107</p></td>
+<td><p>KB-JWT Header</p></td>
 <td><p>Testare che il KB-JWT contenga i parametri di header richiesti.</p></td>
 <td><p>Il KB-JWT contiene i parametri di header <code class="docutils literal notranslate"><span class="pre">typ</span></code> e <code class="docutils literal notranslate"><span class="pre">alg</span></code> richiesti.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-122</p></td>
-<td><p>Payload KB-JWT</p></td>
+<tr class="row-odd"><td><p>RPR-108</p></td>
+<td><p>KB-JWT Payload</p></td>
 <td><p>Testare che il KB-JWT contenga i parametri di payload richiesti.</p></td>
 <td><p>Il KB-JWT contiene i parametri <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e <code class="docutils literal notranslate"><span class="pre">sd_hash</span></code> richiesti.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-123</p></td>
-<td><p>Tipo KB-JWT</p></td>
+<tr class="row-even"><td><p>RPR-109</p></td>
+<td><p>KB-JWT Type</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">typ</span></code> di KB-JWT sia impostato su <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">typ</span></code> di KB-JWT è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-124</p></td>
-<td><p>Tempo di Emissione KB-JWT</p></td>
+<tr class="row-odd"><td><p>RPR-110</p></td>
+<td><p>KB-JWT Issuance Time</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">iat</span></code> di KB-JWT sia impostato correttamente.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">iat</span></code> di KB-JWT è correttamente impostato al tempo di emissione.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-125</p></td>
-<td><p>Audience KB-JWT</p></td>
+<tr class="row-even"><td><p>RPR-111</p></td>
+<td><p>KB-JWT Audience</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">aud</span></code> di KB-JWT corrisponda all'identificatore della Relying Party.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">aud</span></code> di KB-JWT corrisponde all'identificatore univoco della Relying Party.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-126</p></td>
-<td><p>Nonce KB-JWT</p></td>
+<tr class="row-odd"><td><p>RPR-112</p></td>
+<td><p>KB-JWT Nonce</p></td>
 <td><p>Testare che il <code class="docutils literal notranslate"><span class="pre">nonce</span></code> di KB-JWT corrisponda al <code class="docutils literal notranslate"><span class="pre">nonce</span></code> del request object.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">nonce</span></code> di KB-JWT corrisponde al <code class="docutils literal notranslate"><span class="pre">nonce</span></code> del request object.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-127</p></td>
-<td><p>Authorization Error Response</p></td>
-<td><p>Testare che l'Istanza del Wallet invii una Authorization Error Response in caso di fallimento della validazione.</p></td>
-<td><p>L'Istanza del Wallet invia una Authorization Error Response quando la validazione fallisce.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-128</p></td>
-<td><p>Codifica Error Response</p></td>
-<td><p>Testare che la Authorization Error Response sia codificata correttamente.</p></td>
-<td><p>La Authorization Error Response è codificata in formato <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-129</p></td>
-<td><p>Elaborazione Response</p></td>
+<tr class="row-even"><td><p>RPR-113</p></td>
+<td><p>Response Processing</p></td>
 <td><p>Testare che il Response URI restituisca HTTP 200 in caso di elaborazione riuscita.</p></td>
 <td><p>Il Response URI restituisce HTTP 200 con content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-131</p></td>
-<td><p>Inclusione Response Code</p></td>
+<tr class="row-odd"><td><p>RPR-114</p></td>
+<td><p>Response Code Inclusion</p></td>
 <td><p>Testare che la Relying Party includa il response code in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
 <td><p>La Relying Party include un response code fresco in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-132</p></td>
-<td><p>Sicurezza Redirect URI</p></td>
+<tr class="row-even"><td><p>RPR-115</p></td>
+<td><p>Redirect URI Security</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> sia attestato da terza parte fidata.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> è correttamente attestato da terza parte fidata.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-133</p></td>
+<tr class="row-odd"><td><p>RPR-116</p></td>
 <td><p>Validation Error Response</p></td>
 <td><p>Testare che il Response URI restituisca una error response in caso di fallimenti di validazione.</p></td>
 <td><p>Il Response URI restituisce una error response quando i controlli di validazione falliscono.</p></td>
