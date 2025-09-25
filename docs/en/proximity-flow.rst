@@ -201,7 +201,7 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
  .. literalinclude:: ../../examples/iso-device-engagement-NFC.txt
   :language: text
 
-**Step 2**: The verifier uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc. It SHALL select one of the transmission technologies from the ones provided in the ``DeviceEngagement`` structure.
+**Step 2**: The verifier uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc. It MUST select one of the transmission technologies from the ones provided in the ``DeviceEngagement`` structure.
 
 .. _sec-deviceengagement-nfc:
 
