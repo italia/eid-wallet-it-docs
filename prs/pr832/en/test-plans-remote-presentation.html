@@ -709,30 +709,40 @@
 <td><p>Test that response_type is set to vp_token when present.</p></td>
 <td><p>response_type parameter is correctly set to vp_token when present.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-104</p></td>
+<tr class="row-even"><td><p>RPR-103</p></td>
+<td><p>JWT Expiration</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">exp</span></code> of the JWT is set correctly.</p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">exp</span></code> parameter of the JWT is set correctly and not expired.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-104</p></td>
 <td><p>Algorithm Validation</p></td>
 <td><p>Test that JWT algorithm is supported and not none or MAC.</p></td>
 <td><p>JWT algorithm is from supported list and not none or MAC identifier.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-105</p></td>
+<tr class="row-even"><td><p>RPR-105</p></td>
 <td><p>Media Type Validation</p></td>
 <td><p>Test that JWT typ is set to oauth-authz-req+jwt.</p></td>
 <td><p>JWT typ parameter is correctly set to oauth-authz-req+jwt.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-106</p></td>
+<tr class="row-odd"><td><p>RPR-106</p></td>
 <td><p>Response Mode Validation</p></td>
 <td><p>Test that response_mode is set to direct_post.jwt.</p></td>
 <td><p>response_mode parameter is correctly set to direct_post.jwt.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-107</p></td>
+<tr class="row-even"><td><p>RPR-107</p></td>
 <td><p>Response Type Validation</p></td>
 <td><p>Test that response_type is set to vp_token.</p></td>
 <td><p>response_type parameter is correctly set to vp_token.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-108</p></td>
+<tr class="row-odd"><td><p>RPR-108</p></td>
 <td><p>Response URI Usage</p></td>
 <td><p>Test that Wallet Instance sends Authorization Response to response_uri.</p></td>
 <td><p>Wallet Instance sends Authorization Response to correct response_uri endpoint.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-109</p></td>
+<td><p>KB-JWT Validation</p></td>
+<td><p>Test that Relying Party validates the signature of the KB-JWT.</p></td>
+<td><p>Relying Party correctly validates the signature of the KB-JWT using the public key.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-110</p></td>
 <td><p>Nonce Entropy</p></td>
@@ -834,17 +844,22 @@
 <td><p>Test that Response URI returns HTTP 200 on successful processing.</p></td>
 <td><p>Response URI returns HTTP 200 with application/json content type.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-131</p></td>
+<tr class="row-odd"><td><p>RPR-130</p></td>
+<td><p>Error Code Consistency</p></td>
+<td><p>Test that error codes are consistent across different endpoints.</p></td>
+<td><p>Error codes are consistent across all Relying Party endpoints.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-131</p></td>
 <td><p>Response Code Inclusion</p></td>
 <td><p>Test that Relying Party includes response code in redirect_uri.</p></td>
 <td><p>Relying Party includes fresh response code in redirect_uri.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-132</p></td>
+<tr class="row-odd"><td><p>RPR-132</p></td>
 <td><p>Redirect URI Security</p></td>
 <td><p>Test that redirect_uri is attested by trusted third party.</p></td>
 <td><p>redirect_uri parameter is properly attested by trusted third party.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-133</p></td>
+<tr class="row-even"><td><p>RPR-133</p></td>
 <td><p>Validation Error Response</p></td>
 <td><p>Test that Response URI returns error response on validation failure.</p></td>
 <td><p>Response URI returns error response when validation checks fail.</p></td>

@@ -450,6 +450,11 @@ This section provides the set of test cases designed for technical implementers 
     - Test that response_type is set to vp_token when present.
     - response_type parameter is correctly set to vp_token when present.
 
+  * - RPR-103
+    - JWT Expiration
+    - Test that ``exp`` of the JWT is set correctly.
+    - The ``exp`` parameter of the JWT is set correctly and not expired.
+
   * - RPR-104
     - Algorithm Validation
     - Test that JWT algorithm is supported and not none or MAC.
@@ -474,6 +479,11 @@ This section provides the set of test cases designed for technical implementers 
     - Response URI Usage
     - Test that Wallet Instance sends Authorization Response to response_uri.
     - Wallet Instance sends Authorization Response to correct response_uri endpoint.
+
+  * - RPR-109
+    - KB-JWT Validation
+    - Test that Relying Party validates the signature of the KB-JWT.
+    - Relying Party correctly validates the signature of the KB-JWT using the public key.
 
   * - RPR-110
     - Nonce Entropy
@@ -575,6 +585,10 @@ This section provides the set of test cases designed for technical implementers 
     - Test that Response URI returns HTTP 200 on successful processing.
     - Response URI returns HTTP 200 with application/json content type.
 
+  * - RPR-130
+    - Error Code Consistency
+    - Test that error codes are consistent across different endpoints.
+    - Error codes are consistent across all Relying Party endpoints.
 
   * - RPR-131
     - Response Code Inclusion

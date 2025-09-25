@@ -169,10 +169,10 @@
 <h1><span class="section-number">8.2.1. </span>Remote Flow<a class="headerlink" href="#remote-flow" title="Link to this heading">¶</a></h1>
 <p>Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows (<span class="xref std std-ref">RPR-97</span>):</p>
 <ul class="simple">
-<li><p><strong>Same Device</strong>, the Relying Party MUST provide an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page (<span class="xref std std-ref">RPR-01</span>);</p></li>
-<li><p><strong>Cross Device</strong>, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance (<span class="xref std std-ref">RPR-03</span>).</p></li>
+<li><p><strong>Same Device</strong>, the Relying Party MUST provide an <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> location to the Wallet Instance using a redirect (<code class="docutils literal notranslate"><span class="pre">302</span></code>) or an HTML href in a web page (<span class="xref std std-ref">RPR-01</span>);</p></li>
+<li><p><strong>Cross Device</strong>, the Relying Party MUST provide a <code class="docutils literal notranslate"><span class="pre">QR</span> <span class="pre">Code</span></code> which the User frames with the Wallet Instance (<span class="xref std std-ref">RPR-03</span>).</p></li>
 </ul>
-<p>Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.</p>
+<p>Once the <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">Instance</span></code> establishes the trust with the <code class="docutils literal notranslate"><span class="pre">Relying</span> <span class="pre">Party</span></code> and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a <code class="docutils literal notranslate"><span class="pre">Verifiable</span> <span class="pre">Presentation</span></code>.</p>
 <figure class="align-default" id="id1">
 <span id="fig-high-level-flow-presentation"></span><p class="plantuml">
 <object data="_images/plantuml-b8e883cffe4439f7bf69a8f049af6e83a737f375.svg" type="image/svg+xml" style="width:99%">
@@ -186,13 +186,13 @@
 <p>A High-Level description of the remote flow, from the User's perspective, is given below and shown in <a class="reference internal" href="#fig-high-level-flow-presentation"><span class="std std-ref">High Level Remote Protocol Flow.</span></a>:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p><em>Authorization Request</em>: the Wallet Instance obtains a URL in the Same Device flow or a QR Code containing the URL in Cross Device flow where the signed presentation Request Object is available for download.</p></li>
+<li><p><em>Authorization Request</em>: the Wallet Instance obtains a <code class="docutils literal notranslate"><span class="pre">URL</span></code> in the Same Device flow or a <code class="docutils literal notranslate"><span class="pre">QR</span> <span class="pre">Code</span></code> containing the <code class="docutils literal notranslate"><span class="pre">URL</span></code> in Cross Device flow where the signed presentation Request Object is available for download.</p></li>
 <li><p><em>Request URI Request</em>: the Wallet Instance extracts from the payload the following parameters: <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>.</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>If <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> is provided and set with the value <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance SHOULD transmit its metadata to the Relying Party's <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint using the HTTP POST method.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> is set with the value <code class="docutils literal notranslate"><span class="pre">get</span></code> or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter (<span class="xref std std-ref">RPR-78</span>).</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> is provided and set with the value <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance SHOULD transmit its metadata to the Relying Party's <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint using the <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">POST</span></code> method.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> is set with the value <code class="docutils literal notranslate"><span class="pre">get</span></code> or not present, the Wallet Instance MUST fetch the signed Request Object using an <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> request with method <code class="docutils literal notranslate"><span class="pre">GET</span></code> to the endpoint provided in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter (<span class="xref std std-ref">RPR-78</span>).</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="3">
@@ -201,7 +201,7 @@
 </ol>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p>verifies the signature of the signed Request Object using the public key identified in the JWT header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification.</p></li>
+<li><p>verifies the signature of the signed Request Object using the public key identified in the <code class="docutils literal notranslate"><span class="pre">JWT</span></code> header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification.</p></li>
 <li><p>verifies that the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> parameter contained in the Relying Party's Entity Configuration within the Trust Chain.</p></li>
 <li><p>evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain.</p></li>
 </ol>
@@ -251,7 +251,7 @@
 <p><strong>Steps 11-13 (Request URI Request)</strong>: The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object.</p>
 <blockquote>
 <div><ul>
-<li><p>If it is provided and is equal to <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.</p>
+<li><p>If it is provided and is equal to post, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.</p>
 <p>The following is a non-normative example of an HTTP request made by the Wallet Instance to the Relying Party.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/request</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">client.example.org</span>
@@ -365,7 +365,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="nt">response</span><span class="o">=</span><span class="s">eyJhbGciOiJFUzI1NiIs...9t2LQ</span>
 </pre></div>
 </div>
-<p>Below is a non-normative example of the decrypted payload of the JWT contained in the <code class="docutils literal notranslate"><span class="pre">response</span></code>, before base64url encoding. The <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> parameter value corresponds to the format used when the DCQL query language is used in the presentation request.</p>
+<p>Below is a non-normative example of the decrypted payload of the JWT contained in the response, before base64url encoding. The vp_token parameter value corresponds to the format used when the DCQL query language is used in the presentation request.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -398,7 +398,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 <p>When the Wallet Instance has provided the presentation to the Relying Party's <strong>response_uri</strong> endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. A redirect URL is provided carrying the location where the user-agent is intended to navigate.
-The following is a non-normative example of the response with the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> from the Relying Party to the user-agent.</p>
+The following is a non-normative example of the response with the redirect_uri from the Relying Party to the user-agent.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
@@ -707,7 +707,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Issuer-Signed-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;~&lt;KB-JWT&gt;
 </pre></div>
 </div>
-<p>To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the <code class="docutils literal notranslate"><span class="pre">cnf</span></code> parameter contained in the Issuer-Signed-JWT (<span class="xref std std-ref">RPR-120</span>).</p>
+<p>To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the cnf parameter contained in the Issuer-Signed-JWT (<span class="xref std std-ref">RPR-120</span>).</p>
 <p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (<span class="xref std std-ref">RPR-121</span>):</p>
 <table class="longtable docutils align-default">
 <colgroup>

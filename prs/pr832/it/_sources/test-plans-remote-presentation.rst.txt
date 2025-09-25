@@ -309,216 +309,302 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - Viene restituita una error response.
 
   * - RPR-74
+    - Cross Device Flow
+    - Testare la scansione del QR Code con dispositivi diversi.
+    - Il QR Code viene scansionato con successo.
+
+  * - RPR-75
+    - Cross Device Flow
+    - Verificare la scansione del QR Code con app diverse.
+    - Il QR Code viene scansionato con successo.
+
+  * - RPR-76
+    - Request URI Method
+    - Testare la gestione di metodi HTTP non supportati.
+    - Viene restituita una error response.
+
+  * - RPR-77
     - QR Code Generation
     - Verificare che il livello di correzione errori del QR Code sia Q (Quartile - fino al 25%).
     - Il QR Code utilizza il livello di correzione errori Q come richiesto.
 
-  * - RPR-75
+  * - RPR-78
     - Request URI Method
     - Testare che il metodo HTTP sia impostato su ``get`` o ``post``.
     - Il metodo HTTP è correttamente impostato su ``get`` o ``post``.
 
-  * - RPR-76
+  * - RPR-79
     - Request URI Method
     - Verificare che il metodo GET sia utilizzato come default quando non specificato.
     - Il metodo GET è utilizzato come default quando ``request_uri_method`` non è fornito.
 
-  * - RPR-77
+  * - RPR-80
     - JWT Header
     - Testare che l'algoritmo di firma JWT sia supportato e non sia ``none``.
     - L'algoritmo di firma JWT è valido e non è ``none``.
 
-  * - RPR-78
+  * - RPR-81
     - JWT Header
     - Verificare che il media type JWT sia ``oauth-authz-req+jwt``.
     - Il media type JWT è correttamente impostato su ``oauth-authz-req+jwt``.
 
-  * - RPR-79
+  * - RPR-82
     - JWT Payload
     - Testare che ``response_mode`` sia impostato su ``direct_post.jwt``.
     - ``response_mode`` è correttamente impostato su ``direct_post.jwt``.
 
-  * - RPR-80
+  * - RPR-83
     - JWT Payload
     - Verificare che ``response_type`` sia impostato su ``vp_token``.
     - ``response_type`` è correttamente impostato su ``vp_token``.
 
-  * - RPR-81
+  * - RPR-84
     - JWT Payload
     - Testare che il nonce abbia almeno 32 cifre di lunghezza.
     - Il nonce ha la lunghezza minima richiesta di 32 cifre.
 
-  * - RPR-82
+  * - RPR-85
     - JWT Payload
     - Verificare che il JWT non sia valido dopo la scadenza (exp).
     - Il JWT non è più valido dopo il timestamp di scadenza.
 
-  * - RPR-83
+  * - RPR-86
     - Wallet Attestation Request
     - Testare che la richiesta di Wallet Attestation utilizzi una query DCQL standard.
     - La richiesta di Wallet Attestation utilizza correttamente la query DCQL standard.
 
-  * - RPR-84
+  * - RPR-87
     - Wallet Attestation Request
     - Verificare che il parametro ``claims`` non sia incluso nella query DCQL per Wallet Attestation.
     - Il parametro ``claims`` non è incluso nella query DCQL per Wallet Attestation.
 
-  * - RPR-85
+  * - RPR-88
     - Wallet Attestation Request
     - Testare che il parametro ``vct_values`` sia richiesto nella query DCQL per Wallet Attestation.
     - Il parametro ``vct_values`` è correttamente richiesto nella query DCQL.
 
-  * - RPR-86
+  * - RPR-89
     - Error Response
     - Verificare che la Relying Party restituisca error response in formato JSON per errori request_uri.
     - La Relying Party restituisce correttamente error response in formato JSON.
 
-  * - RPR-87
+  * - RPR-90
     - Security
     - Testare che il parametro ``request_uri`` sia attestato da terza parte fidata.
     - Il parametro ``request_uri`` è correttamente attestato da terza parte fidata.
 
-  * - RPR-88
+  * - RPR-91
     - Security
     - Verificare che il parametro ``response_uri`` sia attestato da terza parte fidata.
     - Il parametro ``response_uri`` è correttamente attestato da terza parte fidata.
 
-  * - RPR-89
+  * - RPR-92
     - Wallet Nonce
     - Testare che la Relying Party controlli il ``wallet_nonce`` quando presente.
     - La Relying Party controlla correttamente il ``wallet_nonce`` quando presente.
 
-  * - RPR-90
+  * - RPR-93
     - Response Types
     - Verificare che ``response_types_supported`` sia impostato su ``vp_token`` quando presente.
     - ``response_types_supported`` è correttamente impostato su ``vp_token``.
 
-  * - RPR-91
+  * - RPR-94
     - Flow Support
     - Testare che la Relying Party supporti i flussi remoti richiesti.
     - La Relying Party supporta sia Same Device che Cross Device.
 
-  * - RPR-92
+  * - RPR-95
     - HTTP Method Validation
     - Testare che ``request_uri_method`` sia impostato su ``get`` o ``post``.
     - Il parametro ``request_uri_method`` è correttamente impostato su ``get`` o ``post``.
 
-  * - RPR-93
+  * - RPR-96
     - Endpoint Security
     - Testare che ``request_uri`` sia attestato da terza parte fidata.
     - Il parametro ``request_uri`` è correttamente attestato da terza parte fidata.
 
-  * - RPR-94
+  * - RPR-97
     - Response Type Validation
     - Testare che ``response_type`` sia impostato su ``vp_token`` quando presente.
     - Il parametro ``response_type`` è correttamente impostato su ``vp_token`` quando presente.
 
-  * - RPR-95
+  * - RPR-98
     - Algorithm Validation
     - Testare che l'algoritmo JWT sia supportato e non sia ``none`` o MAC.
     - L'algoritmo JWT è nella lista supportata e non è ``none`` o identificatore MAC.
 
-  * - RPR-96
+  * - RPR-99
     - Media Type Validation
     - Testare che ``typ`` del JWT sia impostato su ``oauth-authz-req+jwt``.
     - Il parametro ``typ`` del JWT è correttamente impostato su ``oauth-authz-req+jwt``.
 
-  * - RPR-97
+  * - RPR-100
     - Response Mode Validation
     - Testare che ``response_mode`` sia impostato su ``direct_post.jwt``.
     - Il parametro ``response_mode`` è correttamente impostato su ``direct_post.jwt``.
 
-  * - RPR-98
+  * - RPR-101
     - Response Type Validation
     - Testare che ``response_type`` sia impostato su ``vp_token``.
     - Il parametro ``response_type`` è correttamente impostato su ``vp_token``.
 
-  * - RPR-99
+  * - RPR-102
     - Nonce Entropy
     - Testare che il ``nonce`` abbia sufficiente entropia (32+ cifre).
     - Il parametro ``nonce`` ha entropia sufficiente con almeno 32 cifre.
 
-  * - RPR-100
+  * - RPR-103
     - JWT Expiration
     - Testare che ``exp`` del JWT sia impostato correttamente.
     - Il parametro ``exp`` del JWT è impostato correttamente e non è scaduto.
 
-  * - RPR-101
+  * - RPR-104
     - Response URI Security
     - Testare che ``response_uri`` sia attestato da terza parte fidata.
     - Il parametro ``response_uri`` è correttamente attestato da terza parte fidata.
 
-  * - RPR-102
+  * - RPR-105
     - Wallet Attestation Request
     - Testare che la Relying Party richieda il Wallet Attestation via DCQL.
     - La Relying Party richiede correttamente il Wallet Attestation usando una query DCQL.
 
-  * - RPR-103
+  * - RPR-106
     - Error Response Format
     - Testare che l'error response usi il content type ``application/json``.
     - L'error response usa correttamente il content type ``application/json``.
 
-  * - RPR-104
+  * - RPR-107
     - Error Response Parameters
     - Testare che l'error response includa i parametri richiesti.
     - L'error response include i parametri ``error`` ed ``error_description``.
 
-  * - RPR-105
+  * - RPR-108
     - Presentation Array
     - Testare che ``vp_token`` contenga almeno due presentazioni firmate.
     - ``vp_token`` contiene almeno due presentazioni firmate come richiesto.
 
-  * - RPR-106
+  * - RPR-109
     - KB-JWT Validation
     - Testare che la Relying Party validi la firma del KB-JWT.
     - La Relying Party valida correttamente la firma del KB-JWT usando la chiave pubblica.
 
-  * - RPR-107
+  * - RPR-110
     - KB-JWT Header
     - Testare che il KB-JWT contenga i parametri di header richiesti.
     - Il KB-JWT contiene i parametri di header ``typ`` e ``alg`` richiesti.
 
-  * - RPR-108
+  * - RPR-111
     - KB-JWT Payload
     - Testare che il KB-JWT contenga i parametri di payload richiesti.
     - Il KB-JWT contiene i parametri ``iat``, ``aud``, ``nonce`` e ``sd_hash`` richiesti.
 
-  * - RPR-109
+  * - RPR-112
     - KB-JWT Type
     - Testare che ``typ`` di KB-JWT sia impostato su ``kb+jwt``.
     - Il parametro ``typ`` di KB-JWT è correttamente impostato su ``kb+jwt``.
 
-  * - RPR-110
+  * - RPR-113
     - KB-JWT Issuance Time
     - Testare che ``iat`` di KB-JWT sia impostato correttamente.
     - Il parametro ``iat`` di KB-JWT è correttamente impostato al tempo di emissione.
 
-  * - RPR-111
+  * - RPR-114
     - KB-JWT Audience
     - Testare che ``aud`` di KB-JWT corrisponda all'identificatore della Relying Party.
     - Il parametro ``aud`` di KB-JWT corrisponde all'identificatore univoco della Relying Party.
 
-  * - RPR-112
+  * - RPR-115
     - KB-JWT Nonce
     - Testare che il ``nonce`` di KB-JWT corrisponda al ``nonce`` del request object.
     - Il parametro ``nonce`` di KB-JWT corrisponde al ``nonce`` del request object.
 
-  * - RPR-113
+  * - RPR-116
     - Response Processing
     - Testare che il Response URI restituisca HTTP 200 in caso di elaborazione riuscita.
     - Il Response URI restituisce HTTP 200 con content type ``application/json``.
 
-  * - RPR-114
+  * - RPR-117
+    - Wallet Attestation Presentation
+    - Testare che l'Istanza del Wallet includa l'Attestazione del Wallet se richiesta.
+    - L'Istanza del Wallet include correttamente l'Attestazione del Wallet quando richiesta.
+
+  * - RPR-118
+    - Presentation Array
+    - Testare che vp_token contenga almeno due presentazioni firmate.
+    - vp_token contiene almeno due presentazioni firmate come richiesto.
+
+  * - RPR-119
+    - KB-JWT Validation
+    - Testare che la Relying Party validi la firma del KB-JWT.
+    - La Relying Party valida correttamente la firma del KB-JWT usando la chiave pubblica.
+
+  * - RPR-120
+    - KB-JWT Signature Validation
+    - Testare che la validazione della firma KB-JWT utilizzi la chiave pubblica corretta.
+    - La validazione della firma KB-JWT utilizza la chiave pubblica inclusa nell'SD-JWT.
+
+  * - RPR-121
+    - KB-JWT Header
+    - Testare che il KB-JWT contenga i parametri di header richiesti.
+    - Il KB-JWT contiene i parametri di header typ e alg richiesti.
+
+  * - RPR-122
+    - KB-JWT Payload
+    - Testare che il KB-JWT contenga i parametri di payload richiesti.
+    - Il KB-JWT contiene i parametri iat, aud, nonce e sd_hash richiesti.
+
+  * - RPR-123
+    - KB-JWT Type
+    - Testare che typ di KB-JWT sia impostato su kb+jwt.
+    - Il parametro typ di KB-JWT è correttamente impostato su kb+jwt.
+
+  * - RPR-124
+    - KB-JWT Issuance Time
+    - Testare che iat di KB-JWT sia impostato correttamente.
+    - Il parametro iat di KB-JWT è correttamente impostato al tempo di emissione.
+
+  * - RPR-125
+    - KB-JWT Audience
+    - Testare che aud di KB-JWT corrisponda all'identificatore della Relying Party.
+    - Il parametro aud di KB-JWT corrisponde all'identificatore univoco della Relying Party.
+
+  * - RPR-126
+    - KB-JWT Nonce
+    - Testare che il nonce di KB-JWT corrisponda al nonce del request object.
+    - Il parametro nonce di KB-JWT corrisponde al nonce del request object.
+
+  * - RPR-127
+    - Authorization Error Response
+    - Testare che l'Istanza del Wallet notifichi errori di validazione alla Relying Party.
+    - L'Istanza del Wallet invia correttamente una Authorization Error Response per errori di validazione.
+
+  * - RPR-128
+    - Error Response Format
+    - Testare che la risposta di errore contenga i parametri error e error_description.
+    - La risposta di errore contiene correttamente i parametri error e error_description.
+
+  * - RPR-129
+    - HTTP Status Code Validation
+    - Testare che la Relying Party restituisca i codici di stato HTTP corretti per gli errori.
+    - La Relying Party restituisce i codici di stato HTTP appropriati per diversi tipi di errore.
+
+  * - RPR-130
+    - Error Code Consistency
+    - Testare che i codici di errore siano consistenti tra diversi endpoint.
+    - I codici di errore sono consistenti tra tutti gli endpoint della Relying Party.
+
+  * - RPR-131
     - Response Code Inclusion
-    - Testare che la Relying Party includa il response code in ``redirect_uri``.
-    - La Relying Party include un response code fresco in ``redirect_uri``.
+    - Testare che la Relying Party includa il response code nel redirect_uri.
+    - La Relying Party include correttamente il response code fresco nel redirect_uri.
 
-  * - RPR-115
+  * - RPR-132
     - Redirect URI Security
-    - Testare che ``redirect_uri`` sia attestato da terza parte fidata.
-    - Il parametro ``redirect_uri`` è correttamente attestato da terza parte fidata.
+    - Testare che redirect_uri sia attestato da terza parte fidata.
+    - Il parametro redirect_uri è correttamente attestato da terza parte fidata.
 
-  * - RPR-116
+  * - RPR-133
     - Validation Error Response
     - Testare che il Response URI restituisca una error response in caso di fallimenti di validazione.
     - Il Response URI restituisce una error response quando i controlli di validazione falliscono.
+
