@@ -272,7 +272,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
       HOST: relying-party.example.org
 
   When the Wallet Instance has provided the presentation to the Relying Party's **response_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. A redirect URL is provided carrying the location where the user-agent is intended to navigate.
-  The following is a non-normative example of the response with the redirect_uri from the Relying Party to the user-agent.
+  The following is a non-normative example of the response with the ``redirect_uri`` from the Relying Party to the user-agent.
   
   .. code-block:: http
   
