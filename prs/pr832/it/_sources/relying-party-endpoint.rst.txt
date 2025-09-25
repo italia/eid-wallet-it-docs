@@ -20,7 +20,7 @@ La Relying Party DEVE fornire la propria Entity Configuration attraverso l'Endpo
 Endpoint Nonce della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il Nonce Endpoint della Relying Party consente all'App di Verifica di richiedere un ``nonce`` crittografico dal Backend della Relying Party. Il ``nonce``, un codice monouso e casuale, serve per garantire l'unicità e prevenire replay attacks (:ref:`test-plans-remote-presentation:RPR-30`, :ref:`test-plans-remote-presentation:RPR-31`, :ref:`test-plans-remote-presentation:RPR-42`, :ref:`test-plans-remote-presentation:RPR-43`, :ref:`test-plans-remote-presentation:RPR-56`, :ref:`test-plans-remote-presentation:RPR-69`, :ref:`test-plans-remote-presentation:RPR-70`).
+Il Nonce Endpoint della Relying Party consente all'App di Verifica di richiedere un ``nonce`` crittografico dal Backend della Relying Party. Il ``nonce``, un codice monouso e casuale, serve per garantire l'unicità e prevenire replay attacks.
 
 Ulteriori dettagli sulla Richiesta e Risposta Nonce sono forniti rispettivamente nelle Sezioni :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile` e :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile`.
 

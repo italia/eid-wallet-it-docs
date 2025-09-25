@@ -575,10 +575,6 @@ This section provides the set of test cases designed for technical implementers 
     - Test that Response URI returns HTTP 200 on successful processing.
     - Response URI returns HTTP 200 with application/json content type.
 
-  * - RPR-130
-    - Redirect URI Handling
-    - Test that Wallet Instance performs redirect to redirect_uri.
-    - Wallet Instance performs redirect to URL specified by redirect_uri.
 
   * - RPR-131
     - Response Code Inclusion

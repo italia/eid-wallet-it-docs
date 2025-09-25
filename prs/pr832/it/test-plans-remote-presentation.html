@@ -835,22 +835,17 @@
 <td><p>Testare che il Response URI restituisca HTTP 200 in caso di elaborazione riuscita.</p></td>
 <td><p>Il Response URI restituisce HTTP 200 con content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-130</p></td>
-<td><p>Gestione Redirect URI</p></td>
-<td><p>Testare che l'Istanza del Wallet esegua il redirect a <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
-<td><p>L'Istanza del Wallet esegue il redirect all'URL specificato da <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-131</p></td>
+<tr class="row-odd"><td><p>RPR-131</p></td>
 <td><p>Inclusione Response Code</p></td>
 <td><p>Testare che la Relying Party includa il response code in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
 <td><p>La Relying Party include un response code fresco in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-132</p></td>
+<tr class="row-even"><td><p>RPR-132</p></td>
 <td><p>Sicurezza Redirect URI</p></td>
 <td><p>Testare che <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> sia attestato da terza parte fidata.</p></td>
 <td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> è correttamente attestato da terza parte fidata.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-133</p></td>
+<tr class="row-odd"><td><p>RPR-133</p></td>
 <td><p>Validation Error Response</p></td>
 <td><p>Testare che il Response URI restituisca una error response in caso di fallimenti di validazione.</p></td>
 <td><p>Il Response URI restituisce una error response quando i controlli di validazione falliscono.</p></td>
