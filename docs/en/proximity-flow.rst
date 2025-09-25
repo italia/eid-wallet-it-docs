@@ -324,7 +324,7 @@ Definitions (Acronyms and Commands)
      - Proximity Integrated Circuit Card — the Wallet Unit acting as the NFC tag.
 
    * - **PCD**
-     - Proximity Coupling Device — the Relying Party instance that drives `APDU` exchanges.
+     - Proximity Coupling Device, impletented by Relying Party instances using `APDU` exchanges.
 
    * - **AID**
      - Application Identifier — unique ID used in SELECT `APDU` command to open the Wallet Instance.
