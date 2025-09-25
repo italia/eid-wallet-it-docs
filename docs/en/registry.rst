@@ -95,7 +95,7 @@ The Supervisory Body MUST maintain the Claims Registry to ensure semantic consis
 
 The Claims Registry MUST ensure:
 
-  - **Semantic Consistency**: Prevents conflicts between duplicate or overlapping claims across ecosystem.
+  - **Semantic Consistency**: Prevents conflicts between duplicate or overlapping claims across the ecosystem.
   - **Cross-border Interoperability**: Ensures EU compliance and consistent claim interpretation.
   - **Schema Validation**: Provides authoritative definitions for claim validation across all credential scenarios.
   - **Regulatory Alignment**: Coordinates with national and EU regulatory framework.
@@ -317,7 +317,7 @@ The AS Registry MUST contain the following parameters for each registered Authen
      - REQUIRED. Claims available from this data capability.
    * - **data_capabilities[].integration_method**
      - string
-     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization framework such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
+     - REQUIRED. Authorization framework used for data access. MUST be ``"pdnd"`` for Public AS. Private AS MAY use other authorization frameworks such as: ``"oauth2"``, ``"api_key"``, ``"mtls"``, etc.
    * - **data_capabilities[].integration_endpoint**
      - string
      - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
