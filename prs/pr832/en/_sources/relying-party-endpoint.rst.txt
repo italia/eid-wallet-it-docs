@@ -27,7 +27,7 @@ Further details on the Nonce Request and Response are provided in the :ref:`mobi
 Relying Party Instance Initialization Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party Instance Initialization Endpoint allows for the initialization of Relying Party Instances, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys (:ref:`test-plans-proximity-presentation:PPR-002`, :ref:`test-plans-proximity-presentation:PPR-007`).
+The Relying Party Instance Initialization Endpoint allows for the initialization of Relying Party Instances, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys.
 
 Further details on the Relying Party Instance Initialization Request and Response are provided in the :ref:`mobile-application-instance:Mobile Application Instance Initialization Request` and :ref:`mobile-application-instance:Mobile Application Instance Initialization Response` Sections, respectively.
 
