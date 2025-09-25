@@ -235,7 +235,7 @@ Per qualsiasi altro Attestato Elettronico diverso dal PID, il Fornitore di Attes
 Aggiornamento dello Stato da parte dei Fornitori di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE fornire un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:Catalogo del Credential Issuer e-Service PDND`.
+In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE fornire un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:Catalogo degli e-Service PDND del Credential Issuer`.
 Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Attestati Elettronici utilizzando questo endpoint.
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
@@ -250,7 +250,7 @@ Le Fonti Autentiche che utilizzano Signal Hub DEVONO depositare un Segnale trami
 
 In entrambi i casi, il Segnale depositato DEVE avere ``signalType`` valorizzato con ``UPDATE``.
 
-Il Fornitore di Attestati Elettronici che usa Signal Hub DEVE controllare periodicamente l':ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per recuperare i Segnali depositati dalle Fonti Autentiche. Quando un Segnale viene recuperato, il Fornitore di Attestati Elettronici compie le azioni descritte nella Sezione :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Il Fornitore di Attestati Elettronici è in grado di comprendere la natura del Segnale di ``UPDATE`` interagendo con la Fonte Autentica invocando il servizio `get attribute claims` e ispezionando il payload della risposta come descritto nella Sezione :ref:`authentic-source-endpoint:Ottenere gli Attributi dell'Utente`.
+Il Fornitore di Attestati Elettronici che usa Signal Hub DEVE controllare periodicamente l':ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per recuperare i Segnali depositati dalle Fonti Autentiche. Quando un Segnale viene recuperato, il Fornitore di Attestati Elettronici compie le azioni descritte nella Sezione :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Il Fornitore di Attestati Elettronici è in grado di comprendere la natura del Segnale di ``UPDATE`` interagendo con la Fonte Autentica invocando il servizio `get attribute claims` e ispezionando il payload della risposta come descritto nella Sezione :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
 Nel seguente diagramma è illustrato il processo di Alto Livello relativo all'aggiornamento dello stato da parte delle Fonti Autentiche.
 

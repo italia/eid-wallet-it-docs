@@ -236,7 +236,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       La piattaforma PDND gestita dal Gestore PDND che abilita la raccolta e distribuzione di Segnali. Consiste di due e-Service PDND: Raccolta Segnali e Distribuzione Segnali.
 
     **Segnale (Signal Hub)**
-      Un segnale digitale propagato attraverso il PDND Signal Hub. È utilizzato dalle Fonti Autentiche per notificare ai Credential Issuer aggiornamenti su stati e/o informazioni all'interno di un dominio gestito dalla Fonte Autentica stessa.
+      Un segnale digitale propagato attraverso Signal Hub PDND. È utilizzato dalle Fonti Autentiche per notificare ai Fornitore di Attestati Elettronici aggiornamenti su stati e/o informazioni all'interno di un dominio gestito dalla Fonte Autentica stessa.
 
     **Soluzioni Tecniche**
       Insieme dei sistemi hardware/software e dei servizi realizzati dai Fornitori di Wallet, Fornitori di Attestati Elettronici di Dati di Identificazione Personale, ecc.
