@@ -575,11 +575,6 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - Testare che il Response URI restituisca HTTP 200 in caso di elaborazione riuscita.
     - Il Response URI restituisce HTTP 200 con content type ``application/json``.
 
-  * - RPR-130
-    - Gestione Redirect URI
-    - Testare che l'Istanza del Wallet esegua il redirect a ``redirect_uri``.
-    - L'Istanza del Wallet esegue il redirect all'URL specificato da ``redirect_uri``.
-
   * - RPR-131
     - Inclusione Response Code
     - Testare che la Relying Party includa il response code in ``redirect_uri``.
