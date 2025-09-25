@@ -4,7 +4,7 @@
 Entity Onboarding
 =================
 
-This section defines the technical specifications for entity lifecycle management in the IT-Wallet ecosystem based on the **Registry Infrastructure** defined in :ref:`registry:Registry Infrastructure`. This includes initial onboarding procedurs, ongoing management operations (data updates, modifications), and federation exit processes. The lifecycle management system establishes and maintains the federated trust infrastructure and registry coordination necesary for secure Digital Credential operations.
+This section defines the technical specifications for entity lifecycle management in the IT-Wallet ecosystem based on the **Registry Infrastructure** defined in :ref:`registry:Registry Infrastructure`. This includes initial onboarding procedures, ongoing management operations (data updates, modifications), and federation exit processes. The lifecycle management system establishes and maintains the federated trust infrastructure and registry coordination necessary for secure Digital Credential operations.
 
 For a high-level overview of the onboarding process, see :ref:`onboarding-high-level:Onboarding System`. In particular, the Section :ref:`onboarding-high-level:Onboarding Journey Maps` provides an onboarding journey map from the perspective of Entity's operators.
 
@@ -14,11 +14,11 @@ Overview
 Entity Onboarding System Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The IT-Wallet ecosystem is based on a federated trust infrastructure where participating entities MUST establish cryptographic trust relationships and mantain compliance with common security standards. The onboarding system addresses the main challenge of enabling secure Digital Credential operations while accomodating the diferent operational requirments that various participant need according to their role.
+The IT-Wallet ecosystem is based on a federated trust infrastructure where participating entities MUST establish cryptographic trust relationships and maintain compliance with common security standards. The onboarding system addresses the main challenge of enabling secure Digital Credential operations while accommodating the different operational requirements that various participants need according to their role.
 
-The onboarding framework consists of dual-pathway architecture where the technical registration procedurs are tailored to the participant's role in the IT-Wallet ecosystem:
+The onboarding framework consists of dual-pathway architecture where the technical registration procedures are tailored to the participant's role in the IT-Wallet ecosystem:
 
-  1. For Authentic Sources requiring data-focused registration procedurs.
+  1. For Authentic Sources requiring data-focused registration procedures.
   2. For operational Entities (Credential Issuers, Relying Parties, Wallet Providers) requiring cryptographic trust establishment through federation protocols.
 
 
@@ -60,13 +60,13 @@ The following table summarizes entity types, their roles, and corresponding onbo
 Administrative vs Technical Registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The onboarding proces follows a structured multi-phase approach:
+The onboarding process follows a structured multi-phase approach:
 
-  1. **Administrative Registration**: All entities MUST compleat initial administrative registration that validates their legal standing, regulatory compliance, and organizational eligibily to participate in IT-Wallet ecosystem.
+  1. **Administrative Registration**: All entities MUST complete initial administrative registration that validates their legal standing, regulatory compliance, and organizational eligibility to participate in the IT-Wallet ecosystem.
 
-  2. **Technical Registration**: Following administrative approval, entities make technical registration trough specialised pathways:
+  2. **Technical Registration**: Following administrative approval, entities make technical registration through specialised pathways:
     
-    - **Authentic Source Registration**: Data-focused registration procedurs with API integration validation.
+    - **Authentic Source Registration**: Data-focused registration procedures with API integration validation.
     - **Federation Registration**: Cryptographic trust establishment as defined in Section :ref:`trust:The Infrastructure of Trust`.
 
   3. **IT-Wallet Registry Integration**:
@@ -75,7 +75,7 @@ The onboarding proces follows a structured multi-phase approach:
     - **Taxonomy Integration**: All entities use Taxonomy hierarchical classification (domains, categories, purposes) for organizational structure.
     - **AS Registry Integration**: Authentic Sources registered with their declared claims and capabilities, enabling CI discovery and coordination.
     - **Federation Registry Integration**: Operational entities included for trust validation during credential operations.
-    - **Catalog Integration**: Credential types published in :ref:`registry:Digital Credentials Catalogue` based on supervisory body policies for public discovery eligibility.
+    - **Catalog Integration**: Credential types published in :ref:`registry:Digital Credentials Catalog Structure` based on supervisory body policies for public discovery eligibility.
 
 All registry components and their interactions are detailed in :ref:`registry:Registry Infrastructure`.
 
@@ -98,7 +98,7 @@ Authentic Sources MUST comply with the following technical requirements to ensur
   - **API Integration Standards**:
 
     - **Public Entities**: MUST integrate through PDND platform with e-service implementation following government standards.
-    - **Private Entities**: MUST provide complete OpenAPI 3.0 API Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
+    - **Private Entities**: MUST provide a complete OpenAPI 3.0 API Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
 
   - **Response Format Standardization**:
 
@@ -117,7 +117,7 @@ AS Registration Information Requirements
 
 During registration, Authentic Sources MUST provide the following information:
 
-.. list-table:: AS Registration Information Requirments
+.. list-table:: AS Registration Information Requirements
    :class: longtable
    :header-rows: 1
    :widths: 30 70
@@ -162,7 +162,7 @@ The AS registration follows a technical process as described below.
 
 **Step 1: Registration Package Preparation**
 
-AS entity prepares registration information according to the requirements table above. A non-normative example of information in JSNO format is provided below. 
+AS entity prepares registration information according to the requirements table above. A non-normative example of information in JSON format is provided below. 
 
 .. code-block:: json
 
@@ -559,7 +559,7 @@ Entity onboarded through a sectoral Intermediate:
 Entity Lifecycle Management
 ----------------------------
 
-This section provide technical implementazione procedurs for entity lifecycle management. For high-level lifecycle concepts and business processes, see :ref:`onboarding-high-level:Entity Lifecycle Management`.
+This section provides technical implementation procedures for entity lifecycle management. For high-level lifecycle concepts and business processes, see :ref:`onboarding-high-level:Entity Lifecycle Management`.
 
 Lifecycle Coordination Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

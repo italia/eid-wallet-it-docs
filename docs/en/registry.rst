@@ -375,7 +375,7 @@ A non-normative example of AS Registry structure is given below:
 AS-CI Coordination
 ^^^^^^^^^^^^^^^^^^
 
-Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`entity-onboarding:AS-CI Integration Requirements`.
+Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`entity-onboarding:AS-CI Integration Process`.
 
 Federation Registry
 -------------------
