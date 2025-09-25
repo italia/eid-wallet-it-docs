@@ -397,7 +397,7 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-92
     - Security
-    - Test that Wallet Instance does not include user information in technical metadata.
+    - Test that Relying Party correctly handles Wallet Instance metadata without user information.
     - Wallet Instance does not include user information in technical metadata.
 
   * - RPR-93
@@ -417,7 +417,7 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-96
     - Redirect URI
-    - Test that Wallet Instance performs redirect to redirect_uri when provided.
+    - Test that Relying Party correctly provides redirect_uri parameter to Wallet Instance.
     - Wallet Instance correctly performs redirect to redirect_uri.
 
   * - RPR-97
@@ -437,12 +437,12 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-100
     - Privacy Protection
-    - Test that Wallet Instance does not include user information in metadata.
+    - Test that Relying Party correctly validates Wallet Instance metadata without user information.
     - Wallet Instance does not include user information in technical capabilities.
 
   * - RPR-101
     - Metadata Provision
-    - Test that Wallet Instance provides metadata via POST when supported.
+    - Test that Relying Party correctly handles Wallet Instance metadata via POST when supported.
     - Wallet Instance provides metadata via POST when both parties support it.
 
   * - RPR-102
@@ -477,7 +477,7 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-108
     - Response URI Usage
-    - Test that Wallet Instance sends Authorization Response to response_uri.
+    - Test that Relying Party correctly provides response_uri parameter to Wallet Instance.
     - Wallet Instance sends Authorization Response to correct response_uri endpoint.
 
   * - RPR-109
@@ -502,7 +502,7 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-113
     - Client Metadata Handling
-    - Test that Wallet Instance ignores client_metadata.
+    - Test that Relying Party correctly handles Wallet Instance ignoring client_metadata.
     - Wallet Instance ignores client_metadata and uses Trust Chain metadata.
 
   * - RPR-114
@@ -522,7 +522,7 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-117
     - Wallet Attestation Presentation
-    - Test that Wallet Instance includes Wallet Attestation when requested.
+    - Test that Relying Party correctly requests Wallet Attestation from Wallet Instance.
     - Wallet Instance includes Wallet Attestation when requested by Relying Party.
 
   * - RPR-118
@@ -572,7 +572,7 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-127
     - Authorization Error Response
-    - Test that Wallet Instance sends Authorization Error Response on validation failure.
+    - Test that Relying Party correctly handles Wallet Instance Authorization Error Response on validation failure.
     - Wallet Instance sends Authorization Error Response when validation fails.
 
   * - RPR-128

@@ -656,7 +656,7 @@
 </tr>
 <tr class="row-odd"><td><p>RPR-92</p></td>
 <td><p>Security</p></td>
-<td><p>Test that Wallet Instance does not include user information in technical metadata.</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance metadata without user information.</p></td>
 <td><p>Wallet Instance does not include user information in technical metadata.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-93</p></td>
@@ -676,7 +676,7 @@
 </tr>
 <tr class="row-odd"><td><p>RPR-96</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Test that Wallet Instance performs redirect to redirect_uri when provided.</p></td>
+<td><p>Test that Relying Party correctly provides redirect_uri parameter to Wallet Instance.</p></td>
 <td><p>Wallet Instance correctly performs redirect to redirect_uri.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-97</p></td>
@@ -696,12 +696,12 @@
 </tr>
 <tr class="row-odd"><td><p>RPR-100</p></td>
 <td><p>Privacy Protection</p></td>
-<td><p>Test that Wallet Instance does not include user information in metadata.</p></td>
+<td><p>Test that Relying Party correctly validates Wallet Instance metadata without user information.</p></td>
 <td><p>Wallet Instance does not include user information in technical capabilities.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-101</p></td>
 <td><p>Metadata Provision</p></td>
-<td><p>Test that Wallet Instance provides metadata via POST when supported.</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance metadata via POST when supported.</p></td>
 <td><p>Wallet Instance provides metadata via POST when both parties support it.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-102</p></td>
@@ -736,7 +736,7 @@
 </tr>
 <tr class="row-odd"><td><p>RPR-108</p></td>
 <td><p>Response URI Usage</p></td>
-<td><p>Test that Wallet Instance sends Authorization Response to response_uri.</p></td>
+<td><p>Test that Relying Party correctly provides response_uri parameter to Wallet Instance.</p></td>
 <td><p>Wallet Instance sends Authorization Response to correct response_uri endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-109</p></td>
@@ -761,7 +761,7 @@
 </tr>
 <tr class="row-even"><td><p>RPR-113</p></td>
 <td><p>Client Metadata Handling</p></td>
-<td><p>Test that Wallet Instance ignores client_metadata.</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance ignoring client_metadata.</p></td>
 <td><p>Wallet Instance ignores client_metadata and uses Trust Chain metadata.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-114</p></td>
@@ -781,7 +781,7 @@
 </tr>
 <tr class="row-even"><td><p>RPR-117</p></td>
 <td><p>Wallet Attestation Presentation</p></td>
-<td><p>Test that Wallet Instance includes Wallet Attestation when requested.</p></td>
+<td><p>Test that Relying Party correctly requests Wallet Attestation from Wallet Instance.</p></td>
 <td><p>Wallet Instance includes Wallet Attestation when requested by Relying Party.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-118</p></td>
@@ -831,7 +831,7 @@
 </tr>
 <tr class="row-even"><td><p>RPR-127</p></td>
 <td><p>Authorization Error Response</p></td>
-<td><p>Test that Wallet Instance sends Authorization Error Response on validation failure.</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance Authorization Error Response on validation failure.</p></td>
 <td><p>Wallet Instance sends Authorization Error Response when validation fails.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-128</p></td>
