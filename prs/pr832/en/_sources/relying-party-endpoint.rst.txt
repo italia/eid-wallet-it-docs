@@ -20,7 +20,7 @@ The Relying Party MUST provide its Entity Configuration through the ``/.well-kno
 Relying Party Nonce Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party Nonce Endpoint allows the Relying Party Instance to request a cryptographic ``nonce`` from the Relying Party Backend. The ``nonce`` serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks (:ref:`test-plans-remote-presentation:RPR-30`, :ref:`test-plans-remote-presentation:RPR-31`, :ref:`test-plans-remote-presentation:RPR-42`, :ref:`test-plans-remote-presentation:RPR-43`, :ref:`test-plans-remote-presentation:RPR-56`, :ref:`test-plans-remote-presentation:RPR-69`, :ref:`test-plans-remote-presentation:RPR-70`).
+The Relying Party Nonce Endpoint allows the Relying Party Instance to request a cryptographic ``nonce`` from the Relying Party Backend. The ``nonce`` serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
 
 Further details on the Nonce Request and Response are provided in the :ref:`mobile-application-instance:Mobile Application Nonce Request` and :ref:`mobile-application-instance:Mobile Application Nonce Request` Sections, respectively.
 
