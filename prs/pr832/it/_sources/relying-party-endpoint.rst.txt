@@ -166,7 +166,7 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
 Endpoint di Cancellazione della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-L'Endpoint di Cancellazione, che è descritto in :ref:`relying-party-metadata:Metadati della Relying Party`, consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party. La Relying Party DEVE richiedere l'autenticazione dell'Utente prima di procedere con la cancellazione degli attributi (:ref:`test-plans-proximity-presentation:PPR-006`, :ref:`test-plans-proximity-presentation:PPR-010`).
+L'Endpoint di Cancellazione, che è descritto in :ref:`relying-party-metadata:Metadati della Relying Party`, consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party. La Relying Party DEVE richiedere l'autenticazione dell'Utente prima di procedere con la cancellazione degli attributi.
 
 Richiesta di Cancellazione
 """"""""""""""""""""""""""

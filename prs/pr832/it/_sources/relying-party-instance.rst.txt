@@ -96,7 +96,7 @@ In questo stato, l'App di Verifica può ancora richiedere la presentazione di At
 Transizione a Uninstalled
 """""""""""""""""""""""""
 
-Attraverso gli stati **Installed**, **Verified** e **Unverified**, la Relying Party Instance può essere rimossa completamente attraverso la disinstallazione dell'App di Verifica (transizione **RPI UNINST**), portando allo stato **Uninstalled**. Se un'App di Verifica è **Uninstalled**, termina il suo ciclo di vita (:ref:`test-plans-remote-presentation:RPR-34`, :ref:`test-plans-remote-presentation:RPR-46`, :ref:`test-plans-remote-presentation:RPR-59`, :ref:`test-plans-remote-presentation:RPR-73`, :ref:`test-plans-remote-presentation:RPR-47`, :ref:`test-plans-remote-presentation:RPR-48`, :ref:`test-plans-remote-presentation:RPR-74`, :ref:`test-plans-remote-presentation:RPR-75`).
+Attraverso gli stati **Installed**, **Verified** e **Unverified**, la Relying Party Instance può essere rimossa completamente attraverso la disinstallazione dell'App di Verifica (transizione **RPI UNINST**), portando allo stato **Uninstalled**. Se un'App di Verifica è **Uninstalled**, termina il suo ciclo di vita.
 
 
 Funzionalità dell'App di Verifica Mobile
