@@ -8,11 +8,11 @@
 
 PDND Signal Hub Endpoints
 -------------------------
-Within the PDND platform, the Signal Hub acts as an intermediary between a PDND Provider and its PDND Consumers to signal data variations. To achieve that, the manager of the PDND platform, hereafter the PDND Manager, provides (playing the role of PDND e-Service Provider) two PDND Signal Hub e-Services:
+Within the PDND platform, the Signal Hub serves as an intermediary component between PDND Providers and their PDND Consumers to facilitate real-time data variation notifications. To enable this functionality, the PDND Manager, acting in the role of PDND e-Service Provider, offers the following specialized PDND Signal Hub e-Services:
   - the Signal Collection e-Service which is used by PDND e-Service Providers to deposit Signals, since the PDND e-Service Provider acts as Consumer of the Signal Collection e-Service;
   - the Signal Distribution e-Service which is used by PDND e-Service Consumers to retrieve collected Signals, since the PDND e-Service Consumer also acts as Consumer of the Signal Distribution e-Service.
 
-In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to obtain the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
+In order to protect the privacy of the Signal's subject, the PDND Manager requires each PDND e-Service Provider to pseudonymize the subject's identifier used within the Signals and set up a pseudonymization endpoint for their PDND e-Service. This pseudonymization endpoint is used by e-Service Consumers to use the pseudonymization algorithm in order to calculate the Signal subject's pseudonym. Only the PDND e-Service Provider and its PDND e-Service Consumers are able to link a Signal to the subject's personal data, while the PDND Manager only handles pseudonymized identifiers.
 
 For detailed technical specifications and implementation guidelines, please refer to the `Signal Hub Guide`_.
 
@@ -82,9 +82,9 @@ The Signal Collection e-Service endpoint is used by Authentic Sources to deposit
     - REQUIRED. e-Service to which the Signal is bound. It MUST correspond to the e-Service Id value the Authentic Source is a Provider of.
 
 .. note::
-  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` ``CREATE``.
+  In the deffered issuance flow, i.e., when the Authentic Source notifies the Credential Issuer of the availability of the Digital Credential's attributes via Signal Hub; both entities MUST keep track of the Credential Issuer's ``jti`` value used in the Agid-JWT-Signature of the ``get attributes`` request. This is necessary since the ``objectId`` of the Signal MUST be set to that ``jti`` value when the Signal has ``signalType`` with value ``CREATE``.
 
-Non normative example of Signal Collection request for an can be found at `Signal Hub push`_.
+A non normative example of the Signal Collection request can be found at `Signal Hub push`_.
 
 The Signal Collection e-Service response, acknowledging the correct parsing of the request, is specified in `Signal Hub push`_, and has ``Content-Type`` set to ``application/json``. The payload contains the body parameter:
 
@@ -115,7 +115,7 @@ Credential Issuers in the IT Wallet ecosystem use the Signal Distribution e-Serv
   - check for changes in the status and/or value of a specific attribute associated with a Digital Credential issued by the Credential Issuer itself;
   - check for the availability of attributes related to a Digital Credential requested by a User.
 
-The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST be a GET request and MUST have the following parameters:
+The Signal Distribution e-Service endpoint is used by Credential Issuers to retrieve Signals from the Signal Hub via a Signal Distribution request. The latter MUST use an HTTP request using the method GET and the following parameters:
 
   - Path Parameters: 
     
@@ -158,7 +158,7 @@ After the Signals have been successfully recovered by the Credential Issuer, the
     - if the Signal ``SignalType`` is ``UPDATE``, the status and/or value of the attribute associated with a Digest Credential need updates;
     - if the Signal ``SignalType`` is ``CREATE``, the requested attributes of a specific Digital Credential are now available; 
 
-    If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and in case apply the new status to the correspondent Credential.
+    If the ``objectId`` does not correspond to any valid identifier known to the Credential Issuer, the Signal MUST be ignored. Otherwise, if it corresponds to a known and valid identifier, the Credential Issuer MUST use the :ref:`authentic-source-endpoint:Get Attribute Claims` PDND endpoint of the Authentic Source to retrieve the updated information and, if applicable, apply the new status to the corresponding Credential.
     
     When the Signal has been processed, the Credential Issuer will either move to the next Signal and update its ``signalId`` counter; or, if there are no more Signals to process, it will resume the Pull cycle.
 

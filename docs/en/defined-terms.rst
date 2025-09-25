@@ -231,7 +231,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Not present in ARF 1.10.
 
     **Signal Hub**
-      A PDND platform managed by the PDND Manager which enable collection and distribution of Signals. It consists of two PDND e-Services: Signal Collection and Signal Distribution.
+      The PDND platform managed by the PDND Manager which enable collection and distribution of Signals. It consists of two PDND e-Services: Signal Collection and Signal Distribution.
 
     **Signal (Signal Hub)**
       A digital signal propagated through the PDND Signal Hub. It is used by Authentic Sources to notify Credential Issuers about updates to statuses and/or information within a domain managed by the Authentic Source itself. 
