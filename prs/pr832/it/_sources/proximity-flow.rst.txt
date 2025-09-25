@@ -92,7 +92,7 @@ Di seguito è riportato un esempio non normativo che utilizza la notazione diagn
 .. literalinclude:: ../../examples/iso-session-data.txt
   :language: text
 
-**Passo 17**: L'App di Verifica che riceve il ``SessionData`` DEVE decifrarlo, quindi verificare la firma dell'Istanza del Wallet per garantire sia l'integrità dei dati che la provenienza di essi dal dispositivo previsto (device binding). L'App di Verifica DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici a lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando `TOKEN-STATUS-LIST`_ (:ref:`PPR-006 <test-plans-proximity-presentation:PPR-006>`, :ref:`PPR-029 <test-plans-proximity-presentation:PPR-029>`, :ref:`PPR-030 <test-plans-proximity-presentation:PPR-030>`).
+**Passo 17**: L'App di Verifica che riceve il ``SessionData`` DEVE decifrarlo, quindi verificare la firma dell'Istanza del Wallet per garantire sia l'integrità dei dati che la provenienza di essi dal dispositivo previsto (device binding). L'App di Verifica DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici a lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando `TOKEN-STATUS-LIST`_ .
 
 **Passo 18**: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. Se viene utilizzato BLE, questo può comportare l'invio di uno Stat Code per la terminazione della sessione o il comando ``End``. In questo scenario, il Client GATT (App di Verifica) DEVE disconnettersi dal Server GATT (Istanza del Wallet) (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>`).
 
@@ -275,12 +275,12 @@ La sessione DEVE chiudersi qualora si verifichi almeno una delle seguenti condiz
 - Quando l'Istanza del Wallet non accetta più richieste;
 - Quando l'App di Verifica non invia ulteriori richieste.
 
-Se l'Istanza del Wallet e l'App di Verifica non inviano o ricevono ulteriori richieste, la terminazione della sessione DEVE essere avviata come segue (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>`):
+Se l'Istanza del Wallet e l'App di Verifica non inviano o ricevono ulteriori richieste, la terminazione della sessione DEVE essere avviata come segue:
 
 - Inviare il codice di stato per la terminazione della sessione, o
 - Inviare il comando "End" come delineato in [`ISO18013-5`_ #8.3.3.1.1.5].
 
-Quando una sessione viene terminata, l'Istanza del Wallet e l'App di Verifica DEVONO eseguire almeno le seguenti azioni (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>`):
+Quando una sessione viene terminata, l'Istanza del Wallet e l'App di Verifica DEVONO eseguire almeno le seguenti azioni:
 
 - Distruzione delle chiavi di sessione e del relativo materiale di chiave effimero;
 - Chiusura del canale di comunicazione utilizzato per il recupero dei dati.

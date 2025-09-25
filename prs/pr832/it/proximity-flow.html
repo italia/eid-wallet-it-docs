@@ -590,7 +590,7 @@ Durante la sottofase di comunicazione, l'App di Verifica ha l'opzione di richied
 }
 </pre></div>
 </div>
-<p><strong>Passo 17</strong>: L'App di Verifica che riceve il <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> DEVE decifrarlo, quindi verificare la firma dell'Istanza del Wallet per garantire sia l'integrità dei dati che la provenienza di essi dal dispositivo previsto (device binding). L'App di Verifica DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici a lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a> (<span class="xref std std-ref">PPR-006</span>, <span class="xref std std-ref">PPR-029</span>, <span class="xref std std-ref">PPR-030</span>).</p>
+<p><strong>Passo 17</strong>: L'App di Verifica che riceve il <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> DEVE decifrarlo, quindi verificare la firma dell'Istanza del Wallet per garantire sia l'integrità dei dati che la provenienza di essi dal dispositivo previsto (device binding). L'App di Verifica DEVE anche controllare la validità dell'mdoc, inclusa la firma del suo Fornitore di Attestati Elettronici. In caso di Attestati Elettronici a lunga durata, DOVREBBE anche controllare lo stato di revoca utilizzando <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a> .</p>
 <p><strong>Passo 18</strong>: Una volta completato lo scambio di dati, una delle parti può terminare la sessione. Se viene utilizzato BLE, questo può comportare l'invio di uno Stat Code per la terminazione della sessione o il comando <code class="docutils literal notranslate"><span class="pre">End</span></code>. In questo scenario, il Client GATT (App di Verifica) DEVE disconnettersi dal Server GATT (Istanza del Wallet) (<span class="xref std std-ref">PPR-007</span>).</p>
 <p><strong>Considerazione Finale</strong>: Questo flusso di presentazione descrive lo scambio di dati in prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un ulteriore livello di sicurezza riguardo l'identità dell'Utente attraverso l'ispezione visiva e il confronto degli Attributi Elettronici presentati, contribuendo agli aspetti generali di garanzia dell'autenticazione non completamente catturati in un flusso di presentazione puramente tecnico.</p>
 <div class="admonition note">
@@ -792,12 +792,12 @@ Durante la sottofase di comunicazione, l'App di Verifica ha l'opzione di richied
 <li><p>Quando l'Istanza del Wallet non accetta più richieste;</p></li>
 <li><p>Quando l'App di Verifica non invia ulteriori richieste.</p></li>
 </ul>
-<p>Se l'Istanza del Wallet e l'App di Verifica non inviano o ricevono ulteriori richieste, la terminazione della sessione DEVE essere avviata come segue (<span class="xref std std-ref">PPR-007</span>):</p>
+<p>Se l'Istanza del Wallet e l'App di Verifica non inviano o ricevono ulteriori richieste, la terminazione della sessione DEVE essere avviata come segue:</p>
 <ul class="simple">
 <li><p>Inviare il codice di stato per la terminazione della sessione, o</p></li>
 <li><p>Inviare il comando &quot;End&quot; come delineato in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.3.3.1.1.5].</p></li>
 </ul>
-<p>Quando una sessione viene terminata, l'Istanza del Wallet e l'App di Verifica DEVONO eseguire almeno le seguenti azioni (<span class="xref std std-ref">PPR-007</span>):</p>
+<p>Quando una sessione viene terminata, l'Istanza del Wallet e l'App di Verifica DEVONO eseguire almeno le seguenti azioni:</p>
 <ul class="simple">
 <li><p>Distruzione delle chiavi di sessione e del relativo materiale di chiave effimero;</p></li>
 <li><p>Chiusura del canale di comunicazione utilizzato per il recupero dei dati.</p></li>

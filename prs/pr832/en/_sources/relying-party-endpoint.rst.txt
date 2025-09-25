@@ -14,7 +14,7 @@ The Relying Party MUST expose a trust endpoint adhering to the OpenID Federation
 Relying Party Federation Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` (:ref:`test-plans-remote-presentation:RPR-01`, :ref:`test-plans-remote-presentation:RPR-02`, :ref:`test-plans-remote-presentation:RPR-03`, :ref:`test-plans-remote-presentation:RPR-04`, :ref:`test-plans-remote-presentation:RPR-05`, :ref:`test-plans-remote-presentation:RPR-06`).
+The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 
 
 Relying Party Nonce Endpoint
@@ -34,7 +34,7 @@ Further details on the Relying Party Instance Initialization Request and Respons
 Relying Party Key Binding Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party Key Binding Endpoint enables Relying Party Instances to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Relying Party Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Relying Party Backend also needs to verify the integrity of the Relying Party Instance (:ref:`test-plans-proximity-presentation:PPR-003`, :ref:`test-plans-proximity-presentation:PPR-009`, :ref:`test-plans-proximity-presentation:PPR-011`, :ref:`test-plans-proximity-presentation:PPR-016`, :ref:`test-plans-proximity-presentation:PPR-018`).
+The Relying Party Key Binding Endpoint enables Relying Party Instances to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Relying Party Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Relying Party Backend also needs to verify the integrity of the Relying Party Instance.
 
 Relying Party Key Binding Request
 """""""""""""""""""""""""""""""""
@@ -56,13 +56,13 @@ Below is a non-normative example of a Key Binding Request Response.
 
     HTTP/1.1 204 No content
 
-If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Error Response` section (:ref:`test-plans-proximity-presentation:PPR-008`, :ref:`test-plans-proximity-presentation:PPR-013`).
+If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Error Response` section.
 
 
 Relying Party Access Certificate Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Relying Party Access Certificate Endpoint enables Relying Party Instances to obtain an Access Certificate (:ref:`test-plans-proximity-presentation:PPR-004`, :ref:`test-plans-proximity-presentation:PPR-005`, :ref:`test-plans-proximity-presentation:PPR-012`).
+The Relying Party Access Certificate Endpoint enables Relying Party Instances to obtain an Access Certificate.
 
 
 Relying Party Access Certificate Request
@@ -166,7 +166,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
 Relying Party Erasure Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Erasure Endpoint, which is described in :ref:`relying-party-metadata:Relying Party Metadata`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion (:ref:`test-plans-proximity-presentation:PPR-006`, :ref:`test-plans-proximity-presentation:PPR-010`).
+The Erasure Endpoint, which is described in :ref:`relying-party-metadata:Relying Party Metadata`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.
 
 Erasure Request
 """""""""""""""
