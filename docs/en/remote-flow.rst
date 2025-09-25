@@ -6,10 +6,10 @@ Remote Flow
 
 Depending on whether the User is using a mobile device or a workstation, the Relying Party MUST support the following remote flows (:ref:`RPR-97 <test-plans-remote-presentation:RPR-97>`):
 
-* **Same Device**, the Relying Party MUST provide an HTTP location to the Wallet Instance using a redirect (302) or an HTML href in a web page (:ref:`RPR-01 <test-plans-remote-presentation:RPR-01>`);
-* **Cross Device**, the Relying Party MUST provide a QR Code which the User frames with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:RPR-03>`).
+* **Same Device**, the Relying Party MUST provide an ``HTTP`` location to the Wallet Instance using a redirect (``302``) or an HTML href in a web page (:ref:`RPR-01 <test-plans-remote-presentation:RPR-01>`);
+* **Cross Device**, the Relying Party MUST provide a ``QR Code`` which the User frames with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:RPR-03>`).
 
-Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
+Once the ``Wallet Instance`` establishes the trust with the ``Relying Party`` and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a ``Verifiable Presentation``.
 
 .. _fig_High-Level-Flow-Presentation:
 .. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
@@ -28,16 +28,16 @@ Once the Wallet Instance establishes the trust with the Relying Party and evalua
 
 A High-Level description of the remote flow, from the User's perspective, is given below and shown in :ref:`fig_High-Level-Flow-Presentation`:
 
-  1. *Authorization Request*: the Wallet Instance obtains a URL in the Same Device flow or a QR Code containing the URL in Cross Device flow where the signed presentation Request Object is available for download.
+  1. *Authorization Request*: the Wallet Instance obtains a ``URL`` in the Same Device flow or a ``QR Code`` containing the ``URL`` in Cross Device flow where the signed presentation Request Object is available for download.
   2. *Request URI Request*: the Wallet Instance extracts from the payload the following parameters: ``client_id``, ``request_uri``, ``state``, ``request_uri_method``.
 
-    * If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the HTTP POST method.
-    * If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an HTTP request with method GET to the endpoint provided in the ``request_uri`` parameter (:ref:`RPR-78 <test-plans-remote-presentation:RPR-78>`).
+    * If ``request_uri_method`` is provided and set with the value ``post``, the Wallet Instance SHOULD transmit its metadata to the Relying Party's ``request_uri`` endpoint using the ``HTTP POST`` method.
+    * If ``request_uri_method`` is set with the value ``get`` or not present, the Wallet Instance MUST fetch the signed Request Object using an ``HTTP`` request with method ``GET`` to the endpoint provided in the ``request_uri`` parameter (:ref:`RPR-78 <test-plans-remote-presentation:RPR-78>`).
 
   3. *Request URI Response*: the Relying Party returns a signed Request Object to the Wallet Instance.
   4. *WI Checks*: the Wallet Instance:
 
-    a. verifies the signature of the signed Request Object using the public key identified in the JWT header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification.
+    a. verifies the signature of the signed Request Object using the public key identified in the ``JWT`` header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification.
     b. verifies that the ``client_id`` contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the Relying Party's Entity Configuration within the Trust Chain.
     c. evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain.
 
@@ -108,7 +108,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
 
 **Steps 11-13 (Request URI Request)**: The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object.
 
-  - If it is provided and is equal to ``post``, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.
+  - If it is provided and is equal to post, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.
 
     The following is a non-normative example of an HTTP request made by the Wallet Instance to the Relying Party.
     
@@ -233,7 +233,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
   
       response=eyJhbGciOiJFUzI1NiIs...9t2LQ
   
-  Below is a non-normative example of the decrypted payload of the JWT contained in the ``response``, before base64url encoding. The ``vp_token`` parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
+  Below is a non-normative example of the decrypted payload of the JWT contained in the response, before base64url encoding. The vp_token parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
   
   .. code-block:: json
   
@@ -272,7 +272,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
       HOST: relying-party.example.org
 
   When the Wallet Instance has provided the presentation to the Relying Party's **response_uri** endpoint and the User authentication is successful. The Relying Party updates the session cookie allowing the user-agent to access to the protected resource. A redirect URL is provided carrying the location where the user-agent is intended to navigate.
-  The following is a non-normative example of the response with the ``redirect_uri`` from the Relying Party to the user-agent.
+  The following is a non-normative example of the response with the redirect_uri from the Relying Party to the user-agent.
   
   .. code-block:: http
   
@@ -530,7 +530,7 @@ SD-JWT defines how a Holder can present a Digital Credential to a Relying Party,
 
   <Issuer-Signed-JWT>~<Disclosure 1>~<Disclosure 2>~...~<Disclosure N>~<KB-JWT>
 
-To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the ``cnf`` parameter contained in the Issuer-Signed-JWT (:ref:`RPR-120 <test-plans-remote-presentation:RPR-120>`).
+To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the cnf parameter contained in the Issuer-Signed-JWT (:ref:`RPR-120 <test-plans-remote-presentation:RPR-120>`).
 
 When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (:ref:`RPR-121 <test-plans-remote-presentation:RPR-121>`):
 
