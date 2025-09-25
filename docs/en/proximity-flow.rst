@@ -252,7 +252,7 @@ If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF
 **Step 7**: Relying Party Instance closes the TNEP service.
 
 .. note::
-   Suppose an optional ``SessionEstablishment`` message is sent during Negotiated Handover (Step 5). In that case, the Wallet Instance must verify that it matches the ``SessionEstablishment`` message received during Device Retrieval (using BLE or NFC secure channel). This verification is crucial for ensuring Session Binding.
+   Suppose an optional ``SessionEstablishment`` message is sent during Negotiated Handover (Step 5). In that case, the Wallet Instance MUST verify that it matches the ``SessionEstablishment`` message received during Device Retrieval (using BLE or NFC secure channel). This verification is required to ensure a correct Session Binding.
 
 Non-Normative Example
 ^^^^^^^^^^^^^^^^^^^^^^^
