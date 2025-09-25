@@ -419,3 +419,179 @@ This section provides the set of test cases designed for technical implementers 
     - Redirect URI
     - Test that Wallet Instance performs redirect to redirect_uri when provided.
     - Wallet Instance correctly performs redirect to redirect_uri.
+
+  * - RPR-97
+    - Flow Support
+    - Test that Relying Party supports required remote flows.
+    - Relying Party supports both Same Device and Cross Device flows.
+
+  * - RPR-98
+    - HTTP Method Validation
+    - Test that request_uri_method is set to get or post.
+    - request_uri_method parameter is correctly set to get or post.
+
+  * - RPR-99
+    - Endpoint Security
+    - Test that request_uri is attested by trusted third party.
+    - request_uri parameter is properly attested by trusted third party.
+
+  * - RPR-100
+    - Privacy Protection
+    - Test that Wallet Instance does not include user information in metadata.
+    - Wallet Instance does not include user information in technical capabilities.
+
+  * - RPR-101
+    - Metadata Provision
+    - Test that Wallet Instance provides metadata via POST when supported.
+    - Wallet Instance provides metadata via POST when both parties support it.
+
+  * - RPR-102
+    - Response Type Validation
+    - Test that response_type is set to vp_token when present.
+    - response_type parameter is correctly set to vp_token when present.
+
+  * - RPR-104
+    - Algorithm Validation
+    - Test that JWT algorithm is supported and not none or MAC.
+    - JWT algorithm is from supported list and not none or MAC identifier.
+
+  * - RPR-105
+    - Media Type Validation
+    - Test that JWT typ is set to oauth-authz-req+jwt.
+    - JWT typ parameter is correctly set to oauth-authz-req+jwt.
+
+  * - RPR-106
+    - Response Mode Validation
+    - Test that response_mode is set to direct_post.jwt.
+    - response_mode parameter is correctly set to direct_post.jwt.
+
+  * - RPR-107
+    - Response Type Validation
+    - Test that response_type is set to vp_token.
+    - response_type parameter is correctly set to vp_token.
+
+  * - RPR-108
+    - Response URI Usage
+    - Test that Wallet Instance sends Authorization Response to response_uri.
+    - Wallet Instance sends Authorization Response to correct response_uri endpoint.
+
+  * - RPR-110
+    - Nonce Entropy
+    - Test that nonce has sufficient entropy (32+ digits).
+    - nonce parameter has sufficient entropy with at least 32 digits.
+
+  * - RPR-111
+    - JWT Expiration
+    - Test that JWT exp is set correctly.
+    - JWT exp parameter is correctly set and not expired.
+
+  * - RPR-112
+    - Response URI Security
+    - Test that response_uri is attested by trusted third party.
+    - response_uri parameter is properly attested by trusted third party.
+
+  * - RPR-113
+    - Client Metadata Handling
+    - Test that Wallet Instance ignores client_metadata.
+    - Wallet Instance ignores client_metadata and uses Trust Chain metadata.
+
+  * - RPR-114
+    - Wallet Attestation Request
+    - Test that Relying Party requests Wallet Attestation via DCQL.
+    - Relying Party correctly requests Wallet Attestation using DCQL query.
+
+  * - RPR-115
+    - Error Response Format
+    - Test that error response uses application/json content type.
+    - Error response correctly uses application/json content type.
+
+  * - RPR-116
+    - Error Response Parameters
+    - Test that error response includes required parameters.
+    - Error response includes error and error_description parameters.
+
+  * - RPR-117
+    - Wallet Attestation Presentation
+    - Test that Wallet Instance includes Wallet Attestation when requested.
+    - Wallet Instance includes Wallet Attestation when requested by Relying Party.
+
+  * - RPR-118
+    - Presentation Array
+    - Test that vp_token contains at least two signed presentations.
+    - vp_token contains at least two signed presentations as required.
+
+  * - RPR-119
+    - KB-JWT Inclusion
+    - Test that Holder includes KB-JWT in SD-JWT.
+    - Holder correctly includes KB-JWT in SD-JWT presentation.
+
+  * - RPR-120
+    - KB-JWT Validation
+    - Test that Relying Party validates KB-JWT signature.
+    - Relying Party correctly validates KB-JWT signature using public key.
+
+  * - RPR-121
+    - KB-JWT Header
+    - Test that KB-JWT contains required header parameters.
+    - KB-JWT contains required typ and alg header parameters.
+
+  * - RPR-122
+    - KB-JWT Payload
+    - Test that KB-JWT contains required payload parameters.
+    - KB-JWT contains required iat, aud, nonce, and sd_hash parameters.
+
+  * - RPR-123
+    - KB-JWT Type
+    - Test that KB-JWT typ is set to kb+jwt.
+    - KB-JWT typ parameter is correctly set to kb+jwt.
+
+  * - RPR-124
+    - KB-JWT Issuance Time
+    - Test that KB-JWT iat is set correctly.
+    - KB-JWT iat parameter is correctly set to issuance time.
+
+  * - RPR-125
+    - KB-JWT Audience
+    - Test that KB-JWT aud matches Relying Party identifier.
+    - KB-JWT aud parameter matches Relying Party unique entity identifier.
+
+  * - RPR-126
+    - KB-JWT Nonce
+    - Test that KB-JWT nonce matches request object nonce.
+    - KB-JWT nonce parameter matches nonce from request object.
+
+  * - RPR-127
+    - Authorization Error Response
+    - Test that Wallet Instance sends Authorization Error Response on validation failure.
+    - Wallet Instance sends Authorization Error Response when validation fails.
+
+  * - RPR-128
+    - Error Response Encoding
+    - Test that Authorization Error Response is encoded correctly.
+    - Authorization Error Response is encoded in application/x-www-form-urlencoded format.
+
+  * - RPR-129
+    - Response Processing
+    - Test that Response URI returns HTTP 200 on successful processing.
+    - Response URI returns HTTP 200 with application/json content type.
+
+  * - RPR-130
+    - Redirect URI Handling
+    - Test that Wallet Instance performs redirect to redirect_uri.
+    - Wallet Instance performs redirect to URL specified by redirect_uri.
+
+  * - RPR-131
+    - Response Code Inclusion
+    - Test that Relying Party includes response code in redirect_uri.
+    - Relying Party includes fresh response code in redirect_uri.
+
+  * - RPR-132
+    - Redirect URI Security
+    - Test that redirect_uri is attested by trusted third party.
+    - redirect_uri parameter is properly attested by trusted third party.
+
+  * - RPR-133
+    - Validation Error Response
+    - Test that Response URI returns error response on validation failure.
+    - Response URI returns error response when validation checks fail.
+

@@ -349,6 +349,191 @@
 <td><p>Test that mdoc response is encrypted with session key.</p></td>
 <td><p>mdoc response is correctly encrypted with session key.</p></td>
 </tr>
+<tr class="row-even"><td><p>PPR-031</p></td>
+<td><p>Key Management</p></td>
+<td><p>Test that private ephemeral key is kept secret.</p></td>
+<td><p>Private ephemeral key is properly secured and not exposed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-032</p></td>
+<td><p>Key Management</p></td>
+<td><p>Test that public ephemeral key is used in session establishment.</p></td>
+<td><p>Public ephemeral key is correctly used for session establishment.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-033</p></td>
+<td><p>Session Key Derivation</p></td>
+<td><p>Test that session keys are derived using key agreement protocol.</p></td>
+<td><p>Session keys are correctly derived using the key agreement protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-034</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that SessionEstablishment message is prepared correctly.</p></td>
+<td><p>SessionEstablishment message is properly prepared with required components.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-035</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that SessionEstablishment message is signed by RP Instance.</p></td>
+<td><p>SessionEstablishment message is correctly signed by Relying Party Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-036</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that SessionEstablishment message is encrypted with session keys.</p></td>
+<td><p>SessionEstablishment message is properly encrypted with session keys.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-037</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that SessionEstablishment includes EReaderKey.Pub and attribute request.</p></td>
+<td><p>SessionEstablishment message includes required EReaderKey.Pub and attribute request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-038</p></td>
+<td><p>Message Transmission</p></td>
+<td><p>Test that SessionEstablishment is transmitted over secure BLE connection.</p></td>
+<td><p>SessionEstablishment message is transmitted over secure BLE connection.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-039</p></td>
+<td><p>Session Key Computation</p></td>
+<td><p>Test that Wallet Instance computes session key correctly.</p></td>
+<td><p>Wallet Instance correctly computes session key.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-040</p></td>
+<td><p>Message Decryption</p></td>
+<td><p>Test that Wallet Instance decrypts SessionEstablishment message.</p></td>
+<td><p>Wallet Instance successfully decrypts SessionEstablishment message.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-041</p></td>
+<td><p>Signature Verification</p></td>
+<td><p>Test that Wallet Instance verifies RP Instance signature.</p></td>
+<td><p>Wallet Instance correctly verifies Relying Party Instance signature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-042</p></td>
+<td><p>Attribute Request Processing</p></td>
+<td><p>Test that Wallet Instance decrypts attribute request.</p></td>
+<td><p>Wallet Instance successfully decrypts attribute request.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-043</p></td>
+<td><p>User Consent</p></td>
+<td><p>Test that Wallet Instance prompts user for consent.</p></td>
+<td><p>Wallet Instance correctly prompts user for consent to release attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-044</p></td>
+<td><p>Certificate Display</p></td>
+<td><p>Test that Wallet Instance displays RP Registration Certificate.</p></td>
+<td><p>Wallet Instance displays Relying Party Registration Certificate for transparency.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-045</p></td>
+<td><p>Credential Retrieval</p></td>
+<td><p>Test that Wallet Instance retrieves requested mdoc Digital Credentials.</p></td>
+<td><p>Wallet Instance successfully retrieves requested mdoc Digital Credentials.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-046</p></td>
+<td><p>SessionData Preparation</p></td>
+<td><p>Test that Wallet Instance prepares SessionData message.</p></td>
+<td><p>Wallet Instance correctly prepares SessionData message with Digital Credentials.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-047</p></td>
+<td><p>Authentication Data Signing</p></td>
+<td><p>Test that Wallet Instance signs required authentication data.</p></td>
+<td><p>Wallet Instance correctly signs required authentication data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-048</p></td>
+<td><p>Message Encryption</p></td>
+<td><p>Test that SessionData is encrypted with session keys.</p></td>
+<td><p>SessionData message is properly encrypted with session keys.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-049</p></td>
+<td><p>CBOR Encoding</p></td>
+<td><p>Test that mdoc response is encoded in CBOR format.</p></td>
+<td><p>mdoc response is correctly encoded in CBOR format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-050</p></td>
+<td><p>Data Verification</p></td>
+<td><p>Test that RP Instance decrypts SessionData.</p></td>
+<td><p>Relying Party Instance successfully decrypts SessionData.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-051</p></td>
+<td><p>Signature Verification</p></td>
+<td><p>Test that RP Instance verifies Wallet Instance signature.</p></td>
+<td><p>Relying Party Instance correctly verifies Wallet Instance signature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-052</p></td>
+<td><p>Document Validation</p></td>
+<td><p>Test that RP Instance checks mdoc validity and Issuer signature.</p></td>
+<td><p>Relying Party Instance correctly validates mdoc and Issuer signature.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-053</p></td>
+<td><p>BLE Disconnection</p></td>
+<td><p>Test that GATT Client unsubscribes from characteristics.</p></td>
+<td><p>GATT Client properly unsubscribes from characteristics.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-054</p></td>
+<td><p>BLE Disconnection</p></td>
+<td><p>Test that GATT Client disconnects from GATT server.</p></td>
+<td><p>GATT Client properly disconnects from GATT server.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-055</p></td>
+<td><p>Request Structure Compliance</p></td>
+<td><p>Test that mdoc Request is compliant with required structure.</p></td>
+<td><p>mdoc Request complies with required structure and includes necessary components.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-056</p></td>
+<td><p>Response Structure Compliance</p></td>
+<td><p>Test that mdoc Response is compliant with required structure.</p></td>
+<td><p>mdoc Response complies with required structure and includes necessary components.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-057</p></td>
+<td><p>Document Structure Compliance</p></td>
+<td><p>Test that documents are compliant with required structure.</p></td>
+<td><p>Documents comply with required structure and include necessary components.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-058</p></td>
+<td><p>Document Type Validation</p></td>
+<td><p>Test that mDL document type is correctly set.</p></td>
+<td><p>mDL document type is correctly set to org.iso.18013.5.1.mDL.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-059</p></td>
+<td><p>DeviceSigned Structure</p></td>
+<td><p>Test that deviceSigned structure is compliant.</p></td>
+<td><p>deviceSigned structure complies with required format and includes necessary components.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-060</p></td>
+<td><p>Device Authentication</p></td>
+<td><p>Test that deviceAuth includes deviceSignature.</p></td>
+<td><p>deviceAuth structure includes required deviceSignature for authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-061</p></td>
+<td><p>Wallet Attestation Inclusion</p></td>
+<td><p>Test that Wallet Instance includes Wallet Attestation when requested.</p></td>
+<td><p>Wallet Instance includes Wallet Attestation when requested by Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-062</p></td>
+<td><p>AAL Claim Inclusion</p></td>
+<td><p>Test that Wallet Instance includes aal claim in Wallet Attestation.</p></td>
+<td><p>Wallet Instance includes aal claim as disclosure in Wallet Attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-063</p></td>
+<td><p>User Consent Bypass</p></td>
+<td><p>Test that Wallet Instance does not request user consent for Wallet Attestation.</p></td>
+<td><p>Wallet Instance does not request user consent for technical Wallet Attestation attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-064</p></td>
+<td><p>Session Termination Conditions</p></td>
+<td><p>Test that session is terminated under specified conditions.</p></td>
+<td><p>Session is properly terminated when specified conditions occur.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-065</p></td>
+<td><p>Session Termination Initiation</p></td>
+<td><p>Test that session termination is initiated correctly.</p></td>
+<td><p>Session termination is properly initiated when no further requests are sent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-066</p></td>
+<td><p>Key Destruction</p></td>
+<td><p>Test that session keys are destroyed on termination.</p></td>
+<td><p>Session keys and ephemeral key material are properly destroyed.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-067</p></td>
+<td><p>Channel Closure</p></td>
+<td><p>Test that communication channel is closed on termination.</p></td>
+<td><p>Communication channel used for data retrieval is properly closed.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -381,7 +566,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/09/2025.
+      Last updated on 25/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

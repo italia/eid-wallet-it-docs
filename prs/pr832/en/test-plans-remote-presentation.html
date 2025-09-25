@@ -679,6 +679,181 @@
 <td><p>Test that Wallet Instance performs redirect to redirect_uri when provided.</p></td>
 <td><p>Wallet Instance correctly performs redirect to redirect_uri.</p></td>
 </tr>
+<tr class="row-even"><td><p>RPR-97</p></td>
+<td><p>Flow Support</p></td>
+<td><p>Test that Relying Party supports required remote flows.</p></td>
+<td><p>Relying Party supports both Same Device and Cross Device flows.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-98</p></td>
+<td><p>HTTP Method Validation</p></td>
+<td><p>Test that request_uri_method is set to get or post.</p></td>
+<td><p>request_uri_method parameter is correctly set to get or post.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-99</p></td>
+<td><p>Endpoint Security</p></td>
+<td><p>Test that request_uri is attested by trusted third party.</p></td>
+<td><p>request_uri parameter is properly attested by trusted third party.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-100</p></td>
+<td><p>Privacy Protection</p></td>
+<td><p>Test that Wallet Instance does not include user information in metadata.</p></td>
+<td><p>Wallet Instance does not include user information in technical capabilities.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-101</p></td>
+<td><p>Metadata Provision</p></td>
+<td><p>Test that Wallet Instance provides metadata via POST when supported.</p></td>
+<td><p>Wallet Instance provides metadata via POST when both parties support it.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-102</p></td>
+<td><p>Response Type Validation</p></td>
+<td><p>Test that response_type is set to vp_token when present.</p></td>
+<td><p>response_type parameter is correctly set to vp_token when present.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-104</p></td>
+<td><p>Algorithm Validation</p></td>
+<td><p>Test that JWT algorithm is supported and not none or MAC.</p></td>
+<td><p>JWT algorithm is from supported list and not none or MAC identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-105</p></td>
+<td><p>Media Type Validation</p></td>
+<td><p>Test that JWT typ is set to oauth-authz-req+jwt.</p></td>
+<td><p>JWT typ parameter is correctly set to oauth-authz-req+jwt.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-106</p></td>
+<td><p>Response Mode Validation</p></td>
+<td><p>Test that response_mode is set to direct_post.jwt.</p></td>
+<td><p>response_mode parameter is correctly set to direct_post.jwt.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-107</p></td>
+<td><p>Response Type Validation</p></td>
+<td><p>Test that response_type is set to vp_token.</p></td>
+<td><p>response_type parameter is correctly set to vp_token.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-108</p></td>
+<td><p>Response URI Usage</p></td>
+<td><p>Test that Wallet Instance sends Authorization Response to response_uri.</p></td>
+<td><p>Wallet Instance sends Authorization Response to correct response_uri endpoint.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-110</p></td>
+<td><p>Nonce Entropy</p></td>
+<td><p>Test that nonce has sufficient entropy (32+ digits).</p></td>
+<td><p>nonce parameter has sufficient entropy with at least 32 digits.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-111</p></td>
+<td><p>JWT Expiration</p></td>
+<td><p>Test that JWT exp is set correctly.</p></td>
+<td><p>JWT exp parameter is correctly set and not expired.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-112</p></td>
+<td><p>Response URI Security</p></td>
+<td><p>Test that response_uri is attested by trusted third party.</p></td>
+<td><p>response_uri parameter is properly attested by trusted third party.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-113</p></td>
+<td><p>Client Metadata Handling</p></td>
+<td><p>Test that Wallet Instance ignores client_metadata.</p></td>
+<td><p>Wallet Instance ignores client_metadata and uses Trust Chain metadata.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-114</p></td>
+<td><p>Wallet Attestation Request</p></td>
+<td><p>Test that Relying Party requests Wallet Attestation via DCQL.</p></td>
+<td><p>Relying Party correctly requests Wallet Attestation using DCQL query.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-115</p></td>
+<td><p>Error Response Format</p></td>
+<td><p>Test that error response uses application/json content type.</p></td>
+<td><p>Error response correctly uses application/json content type.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-116</p></td>
+<td><p>Error Response Parameters</p></td>
+<td><p>Test that error response includes required parameters.</p></td>
+<td><p>Error response includes error and error_description parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-117</p></td>
+<td><p>Wallet Attestation Presentation</p></td>
+<td><p>Test that Wallet Instance includes Wallet Attestation when requested.</p></td>
+<td><p>Wallet Instance includes Wallet Attestation when requested by Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-118</p></td>
+<td><p>Presentation Array</p></td>
+<td><p>Test that vp_token contains at least two signed presentations.</p></td>
+<td><p>vp_token contains at least two signed presentations as required.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-119</p></td>
+<td><p>KB-JWT Inclusion</p></td>
+<td><p>Test that Holder includes KB-JWT in SD-JWT.</p></td>
+<td><p>Holder correctly includes KB-JWT in SD-JWT presentation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-120</p></td>
+<td><p>KB-JWT Validation</p></td>
+<td><p>Test that Relying Party validates KB-JWT signature.</p></td>
+<td><p>Relying Party correctly validates KB-JWT signature using public key.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-121</p></td>
+<td><p>KB-JWT Header</p></td>
+<td><p>Test that KB-JWT contains required header parameters.</p></td>
+<td><p>KB-JWT contains required typ and alg header parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-122</p></td>
+<td><p>KB-JWT Payload</p></td>
+<td><p>Test that KB-JWT contains required payload parameters.</p></td>
+<td><p>KB-JWT contains required iat, aud, nonce, and sd_hash parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-123</p></td>
+<td><p>KB-JWT Type</p></td>
+<td><p>Test that KB-JWT typ is set to kb+jwt.</p></td>
+<td><p>KB-JWT typ parameter is correctly set to kb+jwt.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-124</p></td>
+<td><p>KB-JWT Issuance Time</p></td>
+<td><p>Test that KB-JWT iat is set correctly.</p></td>
+<td><p>KB-JWT iat parameter is correctly set to issuance time.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-125</p></td>
+<td><p>KB-JWT Audience</p></td>
+<td><p>Test that KB-JWT aud matches Relying Party identifier.</p></td>
+<td><p>KB-JWT aud parameter matches Relying Party unique entity identifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-126</p></td>
+<td><p>KB-JWT Nonce</p></td>
+<td><p>Test that KB-JWT nonce matches request object nonce.</p></td>
+<td><p>KB-JWT nonce parameter matches nonce from request object.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-127</p></td>
+<td><p>Authorization Error Response</p></td>
+<td><p>Test that Wallet Instance sends Authorization Error Response on validation failure.</p></td>
+<td><p>Wallet Instance sends Authorization Error Response when validation fails.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-128</p></td>
+<td><p>Error Response Encoding</p></td>
+<td><p>Test that Authorization Error Response is encoded correctly.</p></td>
+<td><p>Authorization Error Response is encoded in application/x-www-form-urlencoded format.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-129</p></td>
+<td><p>Response Processing</p></td>
+<td><p>Test that Response URI returns HTTP 200 on successful processing.</p></td>
+<td><p>Response URI returns HTTP 200 with application/json content type.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-130</p></td>
+<td><p>Redirect URI Handling</p></td>
+<td><p>Test that Wallet Instance performs redirect to redirect_uri.</p></td>
+<td><p>Wallet Instance performs redirect to URL specified by redirect_uri.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-131</p></td>
+<td><p>Response Code Inclusion</p></td>
+<td><p>Test that Relying Party includes response code in redirect_uri.</p></td>
+<td><p>Relying Party includes fresh response code in redirect_uri.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-132</p></td>
+<td><p>Redirect URI Security</p></td>
+<td><p>Test that redirect_uri is attested by trusted third party.</p></td>
+<td><p>redirect_uri parameter is properly attested by trusted third party.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-133</p></td>
+<td><p>Validation Error Response</p></td>
+<td><p>Test that Response URI returns error response on validation failure.</p></td>
+<td><p>Response URI returns error response when validation checks fail.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -711,7 +886,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/09/2025.
+      Last updated on 25/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

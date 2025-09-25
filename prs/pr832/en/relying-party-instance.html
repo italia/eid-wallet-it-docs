@@ -172,7 +172,7 @@
             
   <section id="relying-party-instance">
 <h1><span class="section-number">6.3.1. </span>Relying Party Instance<a class="headerlink" href="#relying-party-instance" title="Link to this heading">¶</a></h1>
-<p>The Relying Party Instance (RPI) is a mobile or embedded application designed to request, receive, and process Digital Credentials from Wallet Instances in a trusted manner. Each RPI ensures the integrity, confidentiality and authenticity of Credential exchanges, enabling secure interactions between Users and Relying Parties (<a class="reference internal" href="test-plans-remote-presentation.html#remote-credential-presentation-test-matrix"><span class="std std-ref">Remote Credential Presentation Test Matrix</span></a>, <a class="reference internal" href="test-plans-proximity-presentation.html#proximity-credential-presentation-test-matrix"><span class="std std-ref">Proximity Credential Presentation Test Matrix</span></a>).</p>
+<p>The Relying Party Instance (RPI) is a mobile or embedded application designed to request, receive, and process Digital Credentials from Wallet Instances in a trusted manner. Each RPI ensures the integrity, confidentiality and authenticity of Credential exchanges, enabling secure interactions between Users and Relying Parties.</p>
 <p>There are two primary types of Relying Party Instances, each serving different operational environments:</p>
 <ul class="simple">
 <li><p><strong>Embedded Relying Party Instance</strong>: an hardware/software solution running on a specialized device (e.g., turnstiles). Each instance corresponds to a specific installation of the application on an embedded device. Since the trust with the Embedded Relying Party Instance is established through the trust established with the Mobile Relying Party Provider, the Embedded Relying Party Instance can be considered a confidential client.</p></li>
@@ -232,16 +232,16 @@
 <li><p><strong>Access Certificate Issuance</strong>: The Relying Party Instance obtains an Access Certificate.</p></li>
 </ol>
 <p>In case the Access Certificate is expired, a new Certificate can be issued to the Relying Party Instance; this operation is represented by the <strong>CERT REISS</strong> transition towards the <strong>Verified</strong> state.</p>
-<p>While in this state, the Relying Party Instance can request the presentation of Digital Credentials to Wallet Instances (<strong>PID/(Q)EAA PRE</strong>), using the Access Certificate to authenticate itself (<span class="xref std std-ref">test-plans-remote-presentation:RPR-11</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-21</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-22</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-50</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-51</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-61</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-62</span>).</p>
+<p>While in this state, the Relying Party Instance can request the presentation of Digital Credentials to Wallet Instances (<strong>PID/(Q)EAA PRE</strong>), using the Access Certificate to authenticate itself.</p>
 </section>
 <section id="transition-to-unverified">
 <h3><span class="section-number">6.3.2.1.3. </span>Transition to Unverified<a class="headerlink" href="#transition-to-unverified" title="Link to this heading">¶</a></h3>
 <p>The expiration of the Access Certificate (<strong>CERT EXP</strong> transition) leads to the <strong>Unverified</strong> state.</p>
-<p>While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label <strong>PID/(Q)EAA PRE</strong>. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-014</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-015</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-017</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-019</span>).</p>
+<p>While in this state, the Relying Party Instance can still request the presentation of Digital Credentials to Wallet Instances during the grace period. However, as the Certificate is expired, a specific disclaimer MUST be displayed to the User of the Wallet Instance during the presentation flow; for this reason, this operation is represented by the label <strong>PID/(Q)EAA PRE</strong>. This is required to support offline presentation flows. After the grace period has passed, the Relying Party Instance MUST NOT longer request presentations and will be de-registered (<span class="xref std std-ref">PPR-014</span>).</p>
 </section>
 <section id="transition-to-uninstalled">
 <h3><span class="section-number">6.3.2.1.4. </span>Transition to Uninstalled<a class="headerlink" href="#transition-to-uninstalled" title="Link to this heading">¶</a></h3>
-<p>Across the <strong>Installed</strong>, <strong>Verified</strong> and <strong>Unverified</strong> states, the Relying Party Instance can be removed entirely through the Relying Party Instance uninstall (<strong>RPI UNINST</strong>) transition, leading to the <strong>Uninstalled</strong> state. If a Relying Party Instance is <strong>Uninstalled</strong>, it ends its lifecycle (<span class="xref std std-ref">test-plans-remote-presentation:RPR-34</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-46</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-59</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-73</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-47</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-48</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-74</span>, <span class="xref std std-ref">test-plans-remote-presentation:RPR-75</span>).</p>
+<p>Across the <strong>Installed</strong>, <strong>Verified</strong> and <strong>Unverified</strong> states, the Relying Party Instance can be removed entirely through the Relying Party Instance uninstall (<strong>RPI UNINST</strong>) transition, leading to the <strong>Uninstalled</strong> state. If a Relying Party Instance is <strong>Uninstalled</strong>, it ends its lifecycle.</p>
 </section>
 </section>
 <section id="mobile-relying-party-instance-functionalities">
@@ -443,7 +443,7 @@ As a result, Mobile Relying Party Instance revocation MUST be tied to X.509 Acce
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/09/2025.
+      Last updated on 25/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

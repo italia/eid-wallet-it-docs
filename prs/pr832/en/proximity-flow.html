@@ -193,7 +193,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 <li><p><em>Supervised Device Retrieval flow</em> where a human Relying Party is overseeing the verification process in person, in contrast with <em>unsupervised flow</em> where verification might happen through automated systems without human oversight.</p></li>
 <li><p><em>Device Engagement</em> based on QR Code.</p></li>
 <li><p><em>RP Instance Authentication</em> following the mechanisms defined in the <a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> for the <em>reader authentication</em>.</p></li>
-<li><p><em>Device Retrieval</em> mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. <em>Server Retrieval</em> mechanism MUST NOT be supported (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-023</span>).</p></li>
+<li><p><em>Device Retrieval</em> mechanism based on Bluetooth Low Energy (BLE) for the communication sub-phase. <em>Server Retrieval</em> mechanism MUST NOT be supported (<span class="xref std std-ref">PPR-023</span>).</p></li>
 <li><p>Domestic <em>Document Type</em> and <em>Namespaces</em> defined in this technical specification in addition to those already defined in the <a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> for the mDL (see <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a> for more details).</p></li>
 <li><p><em>Wallet Instance validation</em> through the Wallet Attestation.</p></li>
 </ul>
@@ -252,9 +252,9 @@ During the communication subphase, the Relying Party Instance has the option to 
 </pre></div>
 </div>
 <p><strong>Step 7</strong>: The verifier uses its Relying Party Instance to scan the QR code and retrieve the <code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> data from the mdoc.</p>
-<p><strong>Step 8</strong>: The Relying Party Instance generates its ephemeral key pair (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). The private key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) MUST be kept secret, and the public key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) MUST be used in establishing the session (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-002</span>).</p>
-<p><strong>Step 9</strong>: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-002</span>).</p>
-<p><strong>Step 10</strong>: The RP Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.4]) and encrypted using the session keys derived in the previous step. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST include the <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and a request for specific attribute(s) (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-002</span>).</p>
+<p><strong>Step 8</strong>: The Relying Party Instance generates its ephemeral key pair (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). The private key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) MUST be kept secret, and the public key (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) MUST be used in establishing the session.</p>
+<p><strong>Step 9</strong>: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key.</p>
+<p><strong>Step 10</strong>: The RP Instance MUST prepare a <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.4]) and encrypted using the session keys derived in the previous step. The <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message MUST include the <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and a request for specific attribute(s) (<span class="xref std std-ref">PPR-002</span>).</p>
 <p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> that contains the mdoc request of a Wallet Attestation along with an mDL Digital Credential.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;version&quot;: &quot;1.0&quot;,  % Version
@@ -301,12 +301,12 @@ During the communication subphase, the Relying Party Instance has the option to 
 }
 </pre></div>
 </div>
-<p><strong>Step 11</strong>: The Relying Party Instance MUST transmit the encrypted and signed <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message to the Wallet Instance over a secure BLE connection that was established based on the device engagement information (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-003</span>).</p>
-<p><strong>Step 12</strong>: The Wallet Instance MUST compute the session key, as described in Step 9 (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-002</span>).</p>
-<p><strong>Step 13</strong>: Upon receiving the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.1.4]) to ensure its authenticity (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-003</span>).</p>
-<p><strong>Step 14</strong>: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested data and its registered purpose (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-004</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-005</span>).</p>
+<p><strong>Step 11</strong>: The Relying Party Instance MUST transmit the encrypted and signed <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message to the Wallet Instance over a secure BLE connection that was established based on the device engagement information.</p>
+<p><strong>Step 12</strong>: The Wallet Instance MUST compute the session key, as described in Step 9.</p>
+<p><strong>Step 13</strong>: Upon receiving the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.1.4]) to ensure its authenticity (<span class="xref std std-ref">PPR-003</span>).</p>
+<p><strong>Step 14</strong>: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested data and its registered purpose (<span class="xref std std-ref">PPR-004</span>).</p>
 <p><strong>Step 15</strong>: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.</p>
-<p><strong>Step 16</strong>: After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials. It then MUST prepare a <cite>SessionData</cite> message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.3]). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.3.2.1.2.2] (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-006</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-029</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-030</span>).</p>
+<p><strong>Step 16</strong>: After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials. It then MUST prepare a <cite>SessionData</cite> message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.3]). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.3.2.1.2.2] (<span class="xref std std-ref">PPR-006</span>).</p>
 <p>Below is a non-normative example using the diagnostic notation of a CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> that contains the mdoc response of a Wallet Attestation and an mDL.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
     &quot;version&quot;: &quot;1.0&quot;,
@@ -589,8 +589,8 @@ During the communication subphase, the Relying Party Instance has the option to 
 }
 </pre></div>
 </div>
-<p><strong>Step 17</strong>: The Relying Party Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). The Relying Party Instance MUST also check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a> (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-006</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-029</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-030</span>).</p>
-<p><strong>Step 18</strong>: Once the data exchange is complete, either party can terminate the session. If BLE is used, this can involve sending a status code for session termination or the &quot;End&quot; command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-007</span>).</p>
+<p><strong>Step 17</strong>: The Relying Party Instance receives the <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). The Relying Party Instance MUST also check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/07/">TOKEN-STATUS-LIST</a>.</p>
+<p><strong>Step 18</strong>: Once the data exchange is complete, either party can terminate the session. If BLE is used, this can involve sending a status code for session termination or the &quot;End&quot; command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (<span class="xref std std-ref">PPR-007</span>).</p>
 <p><strong>Final Consideration</strong>: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -598,7 +598,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 </div>
 <section id="device-engagement">
 <h2><span class="section-number">8.2.2.1. </span>Device Engagement<a class="headerlink" href="#device-engagement" title="Link to this heading">¶</a></h2>
-<p>The Device Engagement structure MUST be CBOR encoded and have at least the following components (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-001</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-021</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-022</span>):</p>
+<p>The Device Engagement structure MUST be CBOR encoded and have at least the following components (<span class="xref std std-ref">PPR-001</span>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 30.0%" />
@@ -617,20 +617,20 @@ During the communication subphase, the Relying Party Instance has the option to 
 <td><p><em>(array)</em>. Contains two mandatory values:</p>
 <ul class="simple">
 <li><p><em>(int)</em>. Cipher suite identifier. See Table 22 of <a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a>.</p></li>
-<li><p><em>(bstr)</em>. Public ephemeral key generated by the Wallet Instance, used by the Relying Party Instance to derive the Session Key. The key MUST be of a type allowed by the selected cipher suite (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-022</span>).</p></li>
+<li><p><em>(bstr)</em>. Public ephemeral key generated by the Wallet Instance, used by the Relying Party Instance to derive the Session Key. The key MUST be of a type allowed by the selected cipher suite (<span class="xref std std-ref">PPR-022</span>).</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>BleOptions</strong></p></td>
 <td><p><em>(map)</em>. Provides options for the BLE connection, such as Peripheral Server or Central Client mode, and the device UUID.</p>
-<p>Only <cite>Central Client Mode</cite> MUST be supported by this implementation profile (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-023</span>).</p>
+<p>Only <cite>Central Client Mode</cite> MUST be supported by this implementation profile (<span class="xref std std-ref">PPR-023</span>).</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>Capabilities</strong></p></td>
 <td><p><em>(map)</em>. Declares optional capabilities supported by the mdoc, that are:</p>
 <ul class="simple">
-<li><p><strong>HandoverSessionEstablishmentSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>SessionEstablishment</cite> message during Negotiated Handover, as defined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.2.2.4] (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-024</span>).</p></li>
-<li><p><strong>ReaderAuthAllSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>ReaderAuthAll</cite> structure in the mdoc request, as defined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.3.2.1.2.1] (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-025</span>).</p></li>
+<li><p><strong>HandoverSessionEstablishmentSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>SessionEstablishment</cite> message during Negotiated Handover, as defined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.2.2.4] (<span class="xref std std-ref">PPR-024</span>).</p></li>
+<li><p><strong>ReaderAuthAllSupport</strong> <em>(bool)</em>. If present, it MUST be set to <cite>true</cite>. Indicates support for receiving the <cite>ReaderAuthAll</cite> structure in the mdoc request, as defined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.3.2.1.2.1] (<span class="xref std std-ref">PPR-025</span>).</p></li>
 </ul>
 </td>
 </tr>
@@ -646,7 +646,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 </section>
 <section id="mdoc-request">
 <h2><span class="section-number">8.2.2.2. </span>mdoc Request<a class="headerlink" href="#mdoc-request" title="Link to this heading">¶</a></h2>
-<p>The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE protocol (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-026</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-027</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-028</span>).</p>
+<p>The messages in the mdoc Request MUST be encoded using CBOR. The resulting CBOR byte string for the mdoc Request MUST be encrypted with the Session Key obtained after the Device Engagement phase and MUST be transmitted using the BLE protocol (<span class="xref std std-ref">PPR-026</span>, <span class="xref std std-ref">PPR-027</span>, <span class="xref std std-ref">PPR-028</span>).</p>
 <p>Each mdoc Request MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -678,14 +678,14 @@ During the communication subphase, the Relying Party Instance has the option to 
 </ul>
 </li>
 <li><p><strong>readerAuth</strong> <em>(COSE_Sign1, CONDITIONAL)</em>. Used to authenticate the the Relying Party Instance for each <cite>DocRequest</cite>. The signature is computed over <cite>ReaderAuthentication</cite> data, as defined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.4].</p>
-<p>This component MUST be present only if <cite>readerAuthAll</cite> is not used (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-025</span>).</p>
+<p>This component MUST be present only if <cite>readerAuthAll</cite> is not used (<span class="xref std std-ref">PPR-025</span>).</p>
 </li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>readerAuthAll</strong></p></td>
 <td><p><em>(COSE_Sign1, CONDITIONAL)</em>. Used to authenticate the Relying Party once for all <cite>DocRequest`s. The signature is computed over `ReaderAuthenticationAll</cite> data, as defined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.4].</p>
-<p>This component MUST be present only if <cite>ReaderAuthAllSupport</cite> is set to <cite>true</cite> in the DeviceEngagement structure, and individual <cite>readerAuth</cite> fields are not used (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-025</span>).</p>
+<p>This component MUST be present only if <cite>ReaderAuthAllSupport</cite> is set to <cite>true</cite> in the DeviceEngagement structure, and individual <cite>readerAuth</cite> fields are not used (<span class="xref std std-ref">PPR-025</span>).</p>
 </td>
 </tr>
 </tbody>
@@ -693,12 +693,12 @@ During the communication subphase, the Relying Party Instance has the option to 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Requesting the Wallet Attestation</strong></p>
-<p>The Relying Party requesting a Wallet Attestation MUST add an object in the <strong>docRequest</strong> array having the <code class="docutils literal notranslate"><span class="pre">docType</span></code> set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>. The Relying Party MUST NOT include the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> parameter in the request (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-010</span>).</p>
+<p>The Relying Party requesting a Wallet Attestation MUST add an object in the <strong>docRequest</strong> array having the <code class="docutils literal notranslate"><span class="pre">docType</span></code> set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>. The Relying Party MUST NOT include the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> parameter in the request (<span class="xref std std-ref">PPR-010</span>).</p>
 </div>
 </section>
 <section id="mdoc-response">
 <h2><span class="section-number">8.2.2.3. </span>mdoc Response<a class="headerlink" href="#mdoc-response" title="Link to this heading">¶</a></h2>
-<p>The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-029</span>, <span class="xref std std-ref">test-plans-proximity-presentation:PPR-030</span>).</p>
+<p>The messages in the mdoc Response MUST be encoded using CBOR and MUST be encrypted with the Session Key obtained after the Device Engagement phase (<span class="xref std std-ref">PPR-029</span>, <span class="xref std std-ref">PPR-030</span>).</p>
 <p>Each mdoc Response MUST be compliant with the following structure, and MUST include the following components, unless otherwise specified:</p>
 <table class="longtable docutils align-default" id="table-mdoc-attributes">
 <colgroup>
@@ -725,7 +725,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 </tr>
 </tbody>
 </table>
-<p>Each document in <strong>documents</strong> MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-029</span>):</p>
+<p>Each document in <strong>documents</strong> MUST be compliant with the following structure, and it MUST include the following components, unless otherwise specified (<span class="xref std std-ref">PPR-029</span>):</p>
 <table class="longtable docutils align-default" id="table-mdoc-documents-attributes">
 <colgroup>
 <col style="width: 30.0%" />
@@ -738,7 +738,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>docType</strong></p></td>
-<td><p><em>(tstr)</em>. Document type identifier. For example, for an mDL, the value MUST be <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code> (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-010</span>).</p></td>
+<td><p><em>(tstr)</em>. Document type identifier. For example, for an mDL, the value MUST be <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuerSigned</strong></p></td>
 <td><p><em>(bstr)</em>. Contains the <cite>IssuerNameSpaces</cite> structure, which includes data elements signed by the Issuer, and the <cite>issuerAuth</cite> structure, which ensures their authenticity and integrity using the Mobile Security Object (MSO). See <a class="reference internal" href="credential-data-model.html#mdoc-cbor-credential-format"><span class="std std-ref">mdoc-CBOR Credential Format</span></a>.</p></td>
@@ -751,7 +751,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 </tr>
 </tbody>
 </table>
-<p>A <strong>deviceSigned</strong> data structure MUST be compliant with the following structure, and MUST include the following components (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-029</span>):</p>
+<p>A <strong>deviceSigned</strong> data structure MUST be compliant with the following structure, and MUST include the following components:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -773,30 +773,30 @@ During the communication subphase, the Relying Party Instance has the option to 
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>deviceAuth</strong></p></td>
-<td><p><em>(COSE_Sign1)</em>. Contains the <cite>DeviceAuth</cite> structure, which MUST include the <strong>deviceSignature</strong> for the Wallet Instance authentication. The signature is computed over the <cite>DeviceAuthentication</cite> data, which binds the returned elements to the session and the request. See [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.3] for details on the authentication structure (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-003</span>).</p></td>
+<td><p><em>(COSE_Sign1)</em>. Contains the <cite>DeviceAuth</cite> structure, which MUST include the <strong>deviceSignature</strong> for the Wallet Instance authentication. The signature is computed over the <cite>DeviceAuthentication</cite> data, which binds the returned elements to the session and the request. See [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #9.1.3] for details on the authentication structure.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Presenting the Wallet Attestation</strong></p>
-<p>The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet Attestation and MUST include the claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> as a disclosure. Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-010</span>).</p>
+<p>The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet Attestation and MUST include the claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> as a disclosure. Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user.</p>
 </div>
 </section>
 <section id="session-termination">
 <h2><span class="section-number">8.2.2.4. </span>Session Termination<a class="headerlink" href="#session-termination" title="Link to this heading">¶</a></h2>
-<p>The session MUST be terminated if at least one of the following conditions occur (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-007</span>):</p>
+<p>The session MUST be terminated if at least one of the following conditions occur:</p>
 <ul class="simple">
 <li><p>After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;</p></li>
 <li><p>When the Wallet Instance does not accept any more requests;</p></li>
 <li><p>When the Relying Party Instance does not send any further requests.</p></li>
 </ul>
-<p>If the Wallet Instance and the Relying Party Instance does not send or receive any further requests, the session termination MUST be initiated as follows (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-007</span>):</p>
+<p>If the Wallet Instance and the Relying Party Instance does not send or receive any further requests, the session termination MUST be initiated as follows (<span class="xref std std-ref">PPR-007</span>):</p>
 <ul class="simple">
 <li><p>Send the status code for session termination, or</p></li>
 <li><p>Dispatch the &quot;End&quot; command as outlined in [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> #8.3.3.1.1.5].</p></li>
 </ul>
-<p>When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions (<span class="xref std std-ref">test-plans-proximity-presentation:PPR-007</span>):</p>
+<p>When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions:</p>
 <ul class="simple">
 <li><p>Destruction of session keys and related ephemeral key material;</p></li>
 <li><p>Closure of the communication channel used for data retrieval.</p></li>
@@ -856,7 +856,7 @@ During the communication subphase, the Relying Party Instance has the option to 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/09/2025.
+      Last updated on 25/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
