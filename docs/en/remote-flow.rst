@@ -361,7 +361,7 @@ The request and its parameters are defined in Section number 5 (Authorization Re
    * - `authorization_endpoint`
      - URL of the authorization server's endpoint, see `OAUTH2`_. Using an universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.
    * - `response_types_supported`
-     - OPTIONAL. JSON array of OAuth 2.0 "response_type" values. If present it MUST be set to `vp_token` (:ref:`RPR-102 <test-plans-remote-presentation:RPR-102>`). Default is `vp_token`.
+     - OPTIONAL. JSON array of OAuth 2.0 "response_type" values. If present it MUST be set to `vp_token` (:ref:`RPR-102 <test-plans-remote-presentation:RPR-102>`).
    * - `response_modes_supported`
      - OPTIONAL. JSON array of OAuth 2.0 "response_mode" values. See `JARM`_.
    * - `request_object_signing_alg_values_supported`
