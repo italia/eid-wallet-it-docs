@@ -233,7 +233,7 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Non presente in ARF 1.10; specifico di IT-Wallet.
 
     **Signal Hub**
-      Una piattaforma PDND gestita dal Gestore PDND che abilita la raccolta e distribuzione di Segnali. Consiste di due e-Service PDND: Raccolta Segnali e Distribuzione Segnali.
+      La piattaforma PDND gestita dal Gestore PDND che abilita la raccolta e distribuzione di Segnali. Consiste di due e-Service PDND: Raccolta Segnali e Distribuzione Segnali.
 
     **Segnale (Signal Hub)**
       Un segnale digitale propagato attraverso il PDND Signal Hub. È utilizzato dalle Fonti Autentiche per notificare ai Credential Issuer aggiornamenti su stati e/o informazioni all'interno di un dominio gestito dalla Fonte Autentica stessa.
