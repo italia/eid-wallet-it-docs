@@ -210,47 +210,47 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-039
     - Session Key Computation
-    - Test that Wallet Instance computes session key correctly.
+    - Test that Relying Party correctly handles Wallet Instance session key computation.
     - Wallet Instance correctly computes session key.
 
   * - PPR-040
     - Message Decryption
-    - Test that Wallet Instance decrypts ``SessionEstablishment`` message.
+    - Test that Relying Party correctly handles Wallet Instance decrypting ``SessionEstablishment`` message.
     - Wallet Instance successfully decrypts ``SessionEstablishment`` message.
 
   * - PPR-041
     - Signature Verification
-    - Test that Wallet Instance verifies RP Instance signature.
+    - Test that Relying Party correctly handles Wallet Instance verifying RP Instance signature.
     - Wallet Instance correctly verifies Relying Party Instance signature.
 
   * - PPR-042
     - Attribute Request Processing
-    - Test that Wallet Instance decrypts attribute request.
+    - Test that Relying Party correctly handles Wallet Instance decrypting attribute request.
     - Wallet Instance successfully decrypts attribute request.
 
   * - PPR-043
     - User Consent
-    - Test that Wallet Instance prompts user for consent.
+    - Test that Relying Party correctly handles Wallet Instance prompting user for consent.
     - Wallet Instance correctly prompts user for consent to release attributes.
 
   * - PPR-044
     - Certificate Display
-    - Test that Wallet Instance displays RP Registration Certificate.
+    - Test that Relying Party correctly handles Wallet Instance displaying RP Registration Certificate.
     - Wallet Instance displays Relying Party Registration Certificate for transparency.
 
   * - PPR-045
     - Credential Retrieval
-    - Test that Wallet Instance retrieves requested mdoc Digital Credentials.
+    - Test that Relying Party correctly handles Wallet Instance retrieving requested mdoc Digital Credentials.
     - Wallet Instance successfully retrieves requested mdoc Digital Credentials.
 
   * - PPR-046
     - SessionData Preparation
-    - Test that Wallet Instance prepares ``SessionData`` message.
+    - Test that Relying Party correctly handles Wallet Instance preparing ``SessionData`` message.
     - Wallet Instance correctly prepares ``SessionData`` message with Digital Credentials.
 
   * - PPR-047
     - Authentication Data Signing
-    - Test that Wallet Instance signs required authentication data.
+    - Test that Relying Party correctly handles Wallet Instance signing required authentication data.
     - Wallet Instance correctly signs required authentication data.
 
   * - PPR-048
@@ -320,17 +320,17 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-061
     - Wallet Attestation Inclusion
-    - Test that Wallet Instance includes Wallet Attestation when requested.
+    - Test that Relying Party correctly handles Wallet Instance including Wallet Attestation when requested.
     - Wallet Instance includes Wallet Attestation when requested by Relying Party.
 
   * - PPR-062
     - AAL Claim Inclusion
-    - Test that Wallet Instance includes ``aal`` claim in Wallet Attestation.
+    - Test that Relying Party correctly handles Wallet Instance including ``aal`` claim in Wallet Attestation.
     - Wallet Instance includes ``aal`` claim as disclosure in Wallet Attestation.
 
   * - PPR-063
     - User Consent Bypass
-    - Test that Wallet Instance does not request user consent for Wallet Attestation.
+    - Test that Relying Party correctly handles Wallet Instance not requesting user consent for Wallet Attestation.
     - Wallet Instance does not request user consent for technical Wallet Attestation attributes.
 
   * - PPR-064
