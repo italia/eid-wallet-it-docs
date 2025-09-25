@@ -41,15 +41,15 @@ This section provides the set of test cases designed for technical implementers 
     - QR Code is scanned successfully.
   * - RPR-07
     - Request URI Method
-    - Test `request_uri_method` as `post`.
+    - Test ``request_uri_method`` as ``post``.
     - Wallet Instance sends metadata via POST.
   * - RPR-08
     - Request URI Method
-    - Test `request_uri_method` as `get`.
+    - Test ``request_uri_method`` as ``get``.
     - Wallet Instance fetches Request Object via GET.
   * - RPR-09
     - Request URI Method
-    - Test absence of `request_uri_method`.
+    - Test absence of ``request_uri_method``.
     - Wallet Instance defaults to GET method.
   * - RPR-10
     - Metadata
@@ -347,13 +347,13 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-82
     - JWT Payload
-    - Test that response_mode is set to 'direct_post.jwt'.
-    - response_mode is correctly set to 'direct_post.jwt'.
+    - Test that ``response_mode`` is set to ``direct_post.jwt``.
+    - ``response_mode`` is correctly set to ``direct_post.jwt``.
 
   * - RPR-83
     - JWT Payload
-    - Verify that response_type is set to 'vp_token'.
-    - response_type is correctly set to 'vp_token'.
+    - Verify that ``response_type`` is set to ``vp_token``.
+    - ``response_type`` is correctly set to ``vp_token``.
 
   * - RPR-84
     - JWT Payload
@@ -407,13 +407,13 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-94
     - Wallet Nonce
-    - Test that Relying Party checks wallet_nonce when present.
-    - Relying Party correctly checks wallet_nonce when present.
+    - Test that Relying Party checks ``wallet_nonce`` when present.
+    - Relying Party correctly checks ``wallet_nonce`` when present.
 
   * - RPR-95
     - Response Types
-    - Verify that response_types_supported is set to 'vp_token' when present.
-    - response_types_supported is correctly set to 'vp_token'.
+    - Verify that ``response_types_supported`` is set to ``vp_token`` when present.
+    - ``response_types_supported`` is correctly set to ``vp_token``.
 
   * - RPR-96
     - Redirect URI
@@ -427,8 +427,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-98
     - HTTP Method Validation
-    - Test that request_uri_method is set to get or post.
-    - request_uri_method parameter is correctly set to get or post.
+    - Test that ``request_uri_method`` is set to ``get`` or ``post``.
+    - ``request_uri_method`` parameter is correctly set to ``get`` or ``post``.
 
   * - RPR-99
     - Endpoint Security

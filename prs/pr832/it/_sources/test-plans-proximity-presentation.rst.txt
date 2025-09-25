@@ -135,13 +135,13 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - PPR-024
     - Capabilities
-    - Testare che HandoverSessionEstablishmentSupport sia impostato su true quando presente.
-    - HandoverSessionEstablishmentSupport è correttamente impostato su true.
+    - Testare che ``HandoverSessionEstablishmentSupport`` sia impostato su ``true`` quando presente.
+    - ``HandoverSessionEstablishmentSupport`` è correttamente impostato su ``true``.
 
   * - PPR-025
     - Capabilities
-    - Verificare che ReaderAuthAllSupport sia impostato su true quando presente.
-    - ReaderAuthAllSupport è correttamente impostato su true.
+    - Verificare che ``ReaderAuthAllSupport`` sia impostato su ``true`` quando presente.
+    - ``ReaderAuthAllSupport`` è correttamente impostato su ``true``.
 
   * - PPR-026
     - mdoc Request
@@ -167,3 +167,188 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
     - mdoc Response
     - Testare che la risposta mdoc sia cifrata con la chiave di sessione.
     - La risposta mdoc è correttamente cifrata con la chiave di sessione.
+
+  * - PPR-031
+    - Key Management
+    - Testare che la chiave effimera privata sia mantenuta segreta.
+    - La chiave effimera privata è adeguatamente protetta e non esposta.
+
+  * - PPR-032
+    - Key Management
+    - Testare che la chiave effimera pubblica sia usata nell'instaurazione della sessione.
+    - La chiave effimera pubblica è utilizzata correttamente per l'instaurazione della sessione.
+
+  * - PPR-033
+    - Derivazione Chiavi di Sessione
+    - Testare che le chiavi di sessione siano derivate con il protocollo di accordo chiavi.
+    - Le chiavi di sessione sono derivate correttamente usando il protocollo di accordo chiavi.
+
+  * - PPR-034
+    - Session Establishment
+    - Testare che il messaggio ``SessionEstablishment`` sia preparato correttamente.
+    - Il messaggio ``SessionEstablishment`` è preparato correttamente con i componenti richiesti.
+
+  * - PPR-035
+    - Session Establishment
+    - Testare che il messaggio ``SessionEstablishment`` sia firmato dalla RP Instance.
+    - Il messaggio ``SessionEstablishment`` è firmato correttamente dalla Relying Party Instance.
+
+  * - PPR-036
+    - Session Establishment
+    - Testare che il messaggio ``SessionEstablishment`` sia cifrato con le chiavi di sessione.
+    - Il messaggio ``SessionEstablishment`` è correttamente cifrato con le chiavi di sessione.
+
+  * - PPR-037
+    - Session Establishment
+    - Testare che ``SessionEstablishment`` includa ``EReaderKey.Pub`` e la richiesta di attributi.
+    - Il messaggio ``SessionEstablishment`` include ``EReaderKey.Pub`` e la richiesta di attributi richiesti.
+
+  * - PPR-038
+    - Trasmissione Messaggi
+    - Testare che ``SessionEstablishment`` sia trasmesso su connessione BLE sicura.
+    - Il messaggio ``SessionEstablishment`` è trasmesso su connessione BLE sicura.
+
+  * - PPR-039
+    - Calcolo Chiave di Sessione
+    - Testare che l'Istanza del Wallet calcoli correttamente la chiave di sessione.
+    - L'Istanza del Wallet calcola correttamente la chiave di sessione.
+
+  * - PPR-040
+    - Decrittazione Messaggi
+    - Testare che l'Istanza del Wallet decritti il messaggio ``SessionEstablishment``.
+    - L'Istanza del Wallet decritta con successo il messaggio ``SessionEstablishment``.
+
+  * - PPR-041
+    - Verifica Firma
+    - Testare che l'Istanza del Wallet verifichi la firma della RP Instance.
+    - L'Istanza del Wallet verifica correttamente la firma della Relying Party Instance.
+
+  * - PPR-042
+    - Elaborazione Richiesta Attributi
+    - Testare che l'Istanza del Wallet decritti la richiesta di attributi.
+    - L'Istanza del Wallet decritta con successo la richiesta di attributi.
+
+  * - PPR-043
+    - Consenso Utente
+    - Testare che l'Istanza del Wallet richieda il consenso all'utente.
+    - L'Istanza del Wallet richiede correttamente il consenso al rilascio degli attributi.
+
+  * - PPR-044
+    - Visualizzazione Certificato
+    - Testare che l'Istanza del Wallet mostri il Certificato di Registrazione della RP.
+    - L'Istanza del Wallet mostra il Certificato di Registrazione della Relying Party per trasparenza.
+
+  * - PPR-045
+    - Recupero Credenziali
+    - Testare che l'Istanza del Wallet recuperi le mdoc Digital Credentials richieste.
+    - L'Istanza del Wallet recupera con successo le mdoc Digital Credentials richieste.
+
+  * - PPR-046
+    - Preparazione ``SessionData``
+    - Testare che l'Istanza del Wallet prepari il messaggio ``SessionData``.
+    - L'Istanza del Wallet prepara correttamente il messaggio ``SessionData`` con le Digital Credentials.
+
+  * - PPR-047
+    - Firma Dati di Autenticazione
+    - Testare che l'Istanza del Wallet firmi i dati di autenticazione richiesti.
+    - L'Istanza del Wallet firma correttamente i dati di autenticazione richiesti.
+
+  * - PPR-048
+    - Cifratura Messaggi
+    - Testare che ``SessionData`` sia cifrato con le chiavi di sessione.
+    - Il messaggio ``SessionData`` è correttamente cifrato con le chiavi di sessione.
+
+  * - PPR-049
+    - Codifica CBOR
+    - Testare che la response mdoc sia codificata in formato CBOR.
+    - La response mdoc è correttamente codificata in formato CBOR.
+
+  * - PPR-050
+    - Verifica Dati
+    - Testare che la RP Instance decritti ``SessionData``.
+    - La Relying Party Instance decritta con successo ``SessionData``.
+
+  * - PPR-051
+    - Verifica Firma
+    - Testare che la RP Instance verifichi la firma dell'Istanza del Wallet.
+    - La Relying Party Instance verifica correttamente la firma dell'Istanza del Wallet.
+
+  * - PPR-052
+    - Validazione Documenti
+    - Testare che la RP Instance controlli la validità dell'mdoc e la firma dell'Issuer.
+    - La Relying Party Instance valida correttamente l'mdoc e la firma dell'Issuer.
+
+  * - PPR-053
+    - Disconnessione BLE
+    - Testare che il GATT Client si disiscriva dalle caratteristiche.
+    - Il GATT Client si disiscrive correttamente dalle caratteristiche.
+
+  * - PPR-054
+    - Disconnessione BLE
+    - Testare che il GATT Client si disconnetta dal server GATT.
+    - Il GATT Client si disconnette correttamente dal server GATT.
+
+  * - PPR-055
+    - Conformità Struttura Request
+    - Testare che la mdoc Request sia conforme alla struttura richiesta.
+    - La mdoc Request è conforme alla struttura richiesta e include i componenti necessari.
+
+  * - PPR-056
+    - Conformità Struttura Response
+    - Testare che la mdoc Response sia conforme alla struttura richiesta.
+    - La mdoc Response è conforme alla struttura richiesta e include i componenti necessari.
+
+  * - PPR-057
+    - Conformità Struttura Documenti
+    - Testare che i documenti siano conformi alla struttura richiesta.
+    - I documenti sono conformi alla struttura richiesta e includono i componenti necessari.
+
+  * - PPR-058
+    - Validazione Tipo Documento
+    - Testare che il tipo documento mDL sia impostato correttamente.
+    - Il tipo documento mDL è impostato correttamente su ``org.iso.18013.5.1.mDL``.
+
+  * - PPR-059
+    - Struttura DeviceSigned
+    - Testare che la struttura ``deviceSigned`` sia conforme.
+    - La struttura ``deviceSigned`` è conforme al formato richiesto e include i componenti necessari.
+
+  * - PPR-060
+    - Autenticazione Dispositivo
+    - Testare che ``deviceAuth`` includa ``deviceSignature``.
+    - La struttura ``deviceAuth`` include ``deviceSignature`` richiesto per l'autenticazione.
+
+  * - PPR-061
+    - Inclusione Wallet Attestation
+    - Testare che l'Istanza del Wallet includa il Wallet Attestation quando richiesto.
+    - L'Istanza del Wallet include il Wallet Attestation quando richiesto dalla Relying Party.
+
+  * - PPR-062
+    - Inclusione Claim AAL
+    - Testare che l'Istanza del Wallet includa il claim ``aal`` nel Wallet Attestation.
+    - L'Istanza del Wallet include il claim ``aal`` come disclosure nel Wallet Attestation.
+
+  * - PPR-063
+    - Bypass Consenso Utente
+    - Testare che l'Istanza del Wallet non richieda il consenso utente per il Wallet Attestation.
+    - L'Istanza del Wallet non richiede il consenso per gli attributi tecnici del Wallet Attestation.
+
+  * - PPR-064
+    - Condizioni di Terminazione Sessione
+    - Testare che la sessione venga terminata alle condizioni specificate.
+    - La sessione è terminata correttamente quando si verificano le condizioni specificate.
+
+  * - PPR-065
+    - Avvio Terminazione Sessione
+    - Testare che la terminazione della sessione sia avviata correttamente.
+    - La terminazione della sessione è avviata correttamente quando non vengono inviate ulteriori richieste.
+
+  * - PPR-066
+    - Distruzione Chiavi
+    - Testare che le chiavi di sessione siano distrutte alla terminazione.
+    - Le chiavi di sessione e il materiale effimero sono distrutti correttamente.
+
+  * - PPR-067
+    - Chiusura Canale
+    - Testare che il canale di comunicazione sia chiuso alla terminazione.
+    - Il canale di comunicazione usato per il recupero dati è chiuso correttamente.

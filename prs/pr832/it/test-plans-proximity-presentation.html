@@ -317,13 +317,13 @@
 </tr>
 <tr class="row-odd"><td><p>PPR-024</p></td>
 <td><p>Capabilities</p></td>
-<td><p>Testare che HandoverSessionEstablishmentSupport sia impostato su true quando presente.</p></td>
-<td><p>HandoverSessionEstablishmentSupport è correttamente impostato su true.</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code> quando presente.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>PPR-025</p></td>
 <td><p>Capabilities</p></td>
-<td><p>Verificare che ReaderAuthAllSupport sia impostato su true quando presente.</p></td>
-<td><p>ReaderAuthAllSupport è correttamente impostato su true.</p></td>
+<td><p>Verificare che <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code> quando presente.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>PPR-026</p></td>
 <td><p>mdoc Request</p></td>
@@ -349,6 +349,191 @@
 <td><p>mdoc Response</p></td>
 <td><p>Testare che la risposta mdoc sia cifrata con la chiave di sessione.</p></td>
 <td><p>La risposta mdoc è correttamente cifrata con la chiave di sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-031</p></td>
+<td><p>Key Management</p></td>
+<td><p>Testare che la chiave effimera privata sia mantenuta segreta.</p></td>
+<td><p>La chiave effimera privata è adeguatamente protetta e non esposta.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-032</p></td>
+<td><p>Key Management</p></td>
+<td><p>Testare che la chiave effimera pubblica sia usata nell'instaurazione della sessione.</p></td>
+<td><p>La chiave effimera pubblica è utilizzata correttamente per l'instaurazione della sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-033</p></td>
+<td><p>Derivazione Chiavi di Sessione</p></td>
+<td><p>Testare che le chiavi di sessione siano derivate con il protocollo di accordo chiavi.</p></td>
+<td><p>Le chiavi di sessione sono derivate correttamente usando il protocollo di accordo chiavi.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-034</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia preparato correttamente.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è preparato correttamente con i componenti richiesti.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-035</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia firmato dalla RP Instance.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è firmato correttamente dalla Relying Party Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-036</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia cifrato con le chiavi di sessione.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è correttamente cifrato con le chiavi di sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-037</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> includa <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> e la richiesta di attributi.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> include <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> e la richiesta di attributi richiesti.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-038</p></td>
+<td><p>Trasmissione Messaggi</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia trasmesso su connessione BLE sicura.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è trasmesso su connessione BLE sicura.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-039</p></td>
+<td><p>Calcolo Chiave di Sessione</p></td>
+<td><p>Testare che l'Istanza del Wallet calcoli correttamente la chiave di sessione.</p></td>
+<td><p>L'Istanza del Wallet calcola correttamente la chiave di sessione.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-040</p></td>
+<td><p>Decrittazione Messaggi</p></td>
+<td><p>Testare che l'Istanza del Wallet decritti il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>.</p></td>
+<td><p>L'Istanza del Wallet decritta con successo il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-041</p></td>
+<td><p>Verifica Firma</p></td>
+<td><p>Testare che l'Istanza del Wallet verifichi la firma della RP Instance.</p></td>
+<td><p>L'Istanza del Wallet verifica correttamente la firma della Relying Party Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-042</p></td>
+<td><p>Elaborazione Richiesta Attributi</p></td>
+<td><p>Testare che l'Istanza del Wallet decritti la richiesta di attributi.</p></td>
+<td><p>L'Istanza del Wallet decritta con successo la richiesta di attributi.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-043</p></td>
+<td><p>Consenso Utente</p></td>
+<td><p>Testare che l'Istanza del Wallet richieda il consenso all'utente.</p></td>
+<td><p>L'Istanza del Wallet richiede correttamente il consenso al rilascio degli attributi.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-044</p></td>
+<td><p>Visualizzazione Certificato</p></td>
+<td><p>Testare che l'Istanza del Wallet mostri il Certificato di Registrazione della RP.</p></td>
+<td><p>L'Istanza del Wallet mostra il Certificato di Registrazione della Relying Party per trasparenza.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-045</p></td>
+<td><p>Recupero Credenziali</p></td>
+<td><p>Testare che l'Istanza del Wallet recuperi le mdoc Digital Credentials richieste.</p></td>
+<td><p>L'Istanza del Wallet recupera con successo le mdoc Digital Credentials richieste.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-046</p></td>
+<td><p>Preparazione <code class="docutils literal notranslate"><span class="pre">SessionData</span></code></p></td>
+<td><p>Testare che l'Istanza del Wallet prepari il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+<td><p>L'Istanza del Wallet prepara correttamente il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> con le Digital Credentials.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-047</p></td>
+<td><p>Firma Dati di Autenticazione</p></td>
+<td><p>Testare che l'Istanza del Wallet firmi i dati di autenticazione richiesti.</p></td>
+<td><p>L'Istanza del Wallet firma correttamente i dati di autenticazione richiesti.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-048</p></td>
+<td><p>Cifratura Messaggi</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> sia cifrato con le chiavi di sessione.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> è correttamente cifrato con le chiavi di sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-049</p></td>
+<td><p>Codifica CBOR</p></td>
+<td><p>Testare che la response mdoc sia codificata in formato CBOR.</p></td>
+<td><p>La response mdoc è correttamente codificata in formato CBOR.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-050</p></td>
+<td><p>Verifica Dati</p></td>
+<td><p>Testare che la RP Instance decritti <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+<td><p>La Relying Party Instance decritta con successo <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-051</p></td>
+<td><p>Verifica Firma</p></td>
+<td><p>Testare che la RP Instance verifichi la firma dell'Istanza del Wallet.</p></td>
+<td><p>La Relying Party Instance verifica correttamente la firma dell'Istanza del Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-052</p></td>
+<td><p>Validazione Documenti</p></td>
+<td><p>Testare che la RP Instance controlli la validità dell'mdoc e la firma dell'Issuer.</p></td>
+<td><p>La Relying Party Instance valida correttamente l'mdoc e la firma dell'Issuer.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-053</p></td>
+<td><p>Disconnessione BLE</p></td>
+<td><p>Testare che il GATT Client si disiscriva dalle caratteristiche.</p></td>
+<td><p>Il GATT Client si disiscrive correttamente dalle caratteristiche.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-054</p></td>
+<td><p>Disconnessione BLE</p></td>
+<td><p>Testare che il GATT Client si disconnetta dal server GATT.</p></td>
+<td><p>Il GATT Client si disconnette correttamente dal server GATT.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-055</p></td>
+<td><p>Conformità Struttura Request</p></td>
+<td><p>Testare che la mdoc Request sia conforme alla struttura richiesta.</p></td>
+<td><p>La mdoc Request è conforme alla struttura richiesta e include i componenti necessari.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-056</p></td>
+<td><p>Conformità Struttura Response</p></td>
+<td><p>Testare che la mdoc Response sia conforme alla struttura richiesta.</p></td>
+<td><p>La mdoc Response è conforme alla struttura richiesta e include i componenti necessari.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-057</p></td>
+<td><p>Conformità Struttura Documenti</p></td>
+<td><p>Testare che i documenti siano conformi alla struttura richiesta.</p></td>
+<td><p>I documenti sono conformi alla struttura richiesta e includono i componenti necessari.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-058</p></td>
+<td><p>Validazione Tipo Documento</p></td>
+<td><p>Testare che il tipo documento mDL sia impostato correttamente.</p></td>
+<td><p>Il tipo documento mDL è impostato correttamente su <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-059</p></td>
+<td><p>Struttura DeviceSigned</p></td>
+<td><p>Testare che la struttura <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> sia conforme.</p></td>
+<td><p>La struttura <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> è conforme al formato richiesto e include i componenti necessari.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-060</p></td>
+<td><p>Autenticazione Dispositivo</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> includa <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code>.</p></td>
+<td><p>La struttura <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> include <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code> richiesto per l'autenticazione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-061</p></td>
+<td><p>Inclusione Wallet Attestation</p></td>
+<td><p>Testare che l'Istanza del Wallet includa il Wallet Attestation quando richiesto.</p></td>
+<td><p>L'Istanza del Wallet include il Wallet Attestation quando richiesto dalla Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-062</p></td>
+<td><p>Inclusione Claim AAL</p></td>
+<td><p>Testare che l'Istanza del Wallet includa il claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> nel Wallet Attestation.</p></td>
+<td><p>L'Istanza del Wallet include il claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> come disclosure nel Wallet Attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-063</p></td>
+<td><p>Bypass Consenso Utente</p></td>
+<td><p>Testare che l'Istanza del Wallet non richieda il consenso utente per il Wallet Attestation.</p></td>
+<td><p>L'Istanza del Wallet non richiede il consenso per gli attributi tecnici del Wallet Attestation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-064</p></td>
+<td><p>Condizioni di Terminazione Sessione</p></td>
+<td><p>Testare che la sessione venga terminata alle condizioni specificate.</p></td>
+<td><p>La sessione è terminata correttamente quando si verificano le condizioni specificate.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-065</p></td>
+<td><p>Avvio Terminazione Sessione</p></td>
+<td><p>Testare che la terminazione della sessione sia avviata correttamente.</p></td>
+<td><p>La terminazione della sessione è avviata correttamente quando non vengono inviate ulteriori richieste.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-066</p></td>
+<td><p>Distruzione Chiavi</p></td>
+<td><p>Testare che le chiavi di sessione siano distrutte alla terminazione.</p></td>
+<td><p>Le chiavi di sessione e il materiale effimero sono distrutti correttamente.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-067</p></td>
+<td><p>Chiusura Canale</p></td>
+<td><p>Testare che il canale di comunicazione sia chiuso alla terminazione.</p></td>
+<td><p>Il canale di comunicazione usato per il recupero dati è chiuso correttamente.</p></td>
 </tr>
 </tbody>
 </table>
