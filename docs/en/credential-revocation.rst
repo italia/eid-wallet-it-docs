@@ -101,7 +101,7 @@ A (Q)EAA changes from **Issued** or **Valid** states to **Suspended** state when
 The (Q)EAA remains **Suspended** until it is restored to the **Issued** or **Valid** state (**(Q)EAA UNSUSP**) depending on the previous state, i.e.
 the conditions leading to its suspension are resolved, or it changes in **Revoked**, **Expired** or it is deleted. The suspension of a (Q)EAA MAY be:
 
-  * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST use Signal Hub to notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA.
+  * Use case driven, based on the validity status of the attributes contained in the (Q)EAA. In this case, an Authentic Source MUST notify the Credential Issuer of any changes in the state of the attributes attested by the (Q)EAA.
   * Explicitly requested by the User.
 
 
@@ -245,10 +245,12 @@ Status Update by Authentic Sources
 
 Authentic Sources manage attributes separately from Digital Credentials, which verify authenticity like physical documents. Losing a physical document doesn't mean losing the privileges it represents; it just means the User can't prove them. However, if a User loses privileges due to a serious infraction, the Authentic Source will revoke the related attributes. In such cases, when a User's attributes are updated, Authentic Sources MUST notify Credential Issuers to update the validity status of any Digital Credential containing those attributes.
 
-Authentic Sources that use Signal Hub deposit a Signal through the :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
+Authentic Sources that use Signal Hub MUST deposit a Signal through the :ref:`signal-hub-endpoint:Signal Collection e-Service` in the following cases:
 
-  - The value of one or more Attributes contained in the Authentic Source's database has changed, using ``signalType`` set to ``UPDATE``. 
-  - The validity status of the Attributes is updated (revocation or suspension), using ``signalType`` set to ``UPDATE``.
+  - The value of one or more Attributes contained in the Authentic Source's database has changed; 
+  - The validity status of the Attributes is updated (revocation or suspension).
+
+In both cases, the Signal MUST have ``signalType`` set to ``UPDATE``.
 
 Credential Issuers MUST check the PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` periodically for new Signals. For the Signal processing flow, please refer to the Section :ref:`signal-hub-endpoint:Signals Processing`. The Credential Issuer is able to identify the nature of the ``UPDATE`` Signal by quering the Authentic Source `get attribute` API and inspecting the response payload, as described in Section :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
@@ -270,9 +272,9 @@ The following diagram illustrates the high-level status update process for Authe
 
 The process starts with data or data validity changes that occur in the Authentic Source data. Changes can also be initiated by third-party entities other than the Authentic Source, such as when law enforcement agencies report illegal activities.
 
-Once the data changes, the Authentic Source MUST notify the Credential Issuers who received the original data using the Signal Hub. The Authentic Source deposits a Signal in the Signal Collection e-Service. :ref:`signal-hub-endpoint:Signal Collection e-Service`.
+Once the data changes, the Authentic Source notifies the Credential Issuers who received the original data using the Signal Hub. The Authentic Source deposits a Signal in the Signal Collection e-Service. :ref:`signal-hub-endpoint:Signal Collection e-Service`.
 
-The Credential Issuer periodically queries the Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` for new Signals. When a new Signal is found, the Credential Issuer retrieves it and processes it. :ref:`signal-hub-endpoint:Signals Processing`. Then, the Credential Issuer MUST update the Credential Status according to the validity mechanism's defined mode. The Credential Issuer MAY notify the User through a registered out-of-band communication channel.
+The Credential Issuer periodically queries the Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` for new Signals. When a new Signal is found, the Credential Issuer retrieves it and processes it as described in :ref:`signal-hub-endpoint:Signals Processing`. Then, the Credential Issuer updates the Credential Status according to the validity mechanism's defined mode. The Credential Issuer MAY notify the User through a registered out-of-band communication channel.
 
 The Wallet instance, following periodic checks of the validity status of the stored Digital Credentials, receives the updated status. When the Credential Status is changed to INVALID, the Credential Issuer MUST inform the User about this change. In case the Credential status is modified to UPDATE (resp. 0x03) or ATTRIBUTE_UPDATE (resp. 0x04), the Wallet Instance SHOULD proceed to the re-issuance of the Digital Credential, as described in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
