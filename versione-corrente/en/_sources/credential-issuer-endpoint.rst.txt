@@ -38,40 +38,6 @@ Credential Issuers MUST provide the following e-services through PDND to:
   .. note::
     A complete OpenAPI Specification is available :ref:`appendix-oas-pdnd-issuer:Credential Issuer PDND OpenAPI Specification`.
 
-Notify Available Credential
-"""""""""""""""""""""""""""
-
-.. list-table::
-  :class: longtable
-  :widths: 20 80
-  :stub-columns: 1
-
-  * - **Description**
-    - This service informs Users when a specific Credential has become
-      available to be entered into the Wallet
-  * - **Provider**
-    - Credential Issuer
-  * - **Consumer**
-    - Authentic Source
-
-Notify Update Credential
-""""""""""""""""""""""""
-
-.. list-table::
-  :class: longtable
-  :widths: 20 80
-  :stub-columns: 1
-
-  * - **Description**
-    - The service is designed to receive from Authentic Source (AS), via PDND,
-      notification of a change of status and/or value of a specific attribute (e.g. MDL)
-      with which a digital document issued by the Credential Issuer is
-      associated.
-  * - **Provider**
-    - Credential Issuer
-  * - **Consumer**
-    - Authentic Source
-
 
 Notify Wallet Instance Revocation
 """""""""""""""""""""""""""""""""
@@ -103,4 +69,3 @@ Get Statistics
     - Credential Issuer
   * - **Consumer**
     - Authorized Third Party
-

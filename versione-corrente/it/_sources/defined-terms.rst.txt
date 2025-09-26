@@ -234,6 +234,12 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Procedimento svolto da parte di un Organismo di Vigilanza per esaminare e garantire il corretto funzionamento del Fornitore di Wallet e di altre entità.
       Non presente in ARF 2.5; specifico di IT-Wallet.
 
+    **Signal Hub**
+      La piattaforma PDND gestita dal Gestore PDND che abilita la raccolta e distribuzione di Segnali. Consiste di due e-Service PDND: Raccolta Segnali e Distribuzione Segnali.
+
+    **Segnale (Signal Hub)**
+      Un segnale digitale propagato attraverso Signal Hub PDND. È utilizzato dalle Fonti Autentiche per notificare ai Fornitore di Attestati Elettronici aggiornamenti su stati e/o informazioni all'interno di un dominio gestito dalla Fonte Autentica stessa.
+
     **Soluzioni Tecniche**
       Insieme dei sistemi hardware/software e dei servizi realizzati dai Fornitori di Wallet, Fornitori di Attestati Elettronici di Dati di Identificazione Personale, ecc.
       Non presente in ARF 2.5; specifico di IT-Wallet.
@@ -353,7 +359,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
   
     **Brand Identity**
       Insieme di elementi visivi, verbali e strategici che un servizio, un prodotto o un'entità utilizza per presentarsi all'Utente e per distinguersi dagli altri.
-
+    
     **Catalogo**
       Funzionalità dell'Istanza del Wallet in cui viene visualizzato l'elenco di tutti gli Attestati Elettronici disponibili e ottenibili tramite l'Istanza del Wallet, e dalle quali è possibile avviare il processo di emissione.
     
@@ -389,7 +395,7 @@ Di seguito sono riportati i principali termini e definizioni relativi agli aspet
     
     **Trust Mark**
       Un elemento grafico che fornisce la prova della partecipazione degli Attori Primari al Sistema IT-Wallet e garantisce quindi il rispetto dei suoi standard.
-
+    
     **Esperienza Utente**
       L'insieme delle percezioni e delle reazioni delle persone derivanti dall'uso e/o dalle aspettative d'uso di un prodotto, sistema o servizio.
       In linea con la norma ISO 9241-210:2010.
