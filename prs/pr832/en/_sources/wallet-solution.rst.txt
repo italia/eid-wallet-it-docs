@@ -9,6 +9,7 @@ The Wallet Solution is issued by the Wallet Provider in the form of a mobile app
 
 The following diagram depicts the Wallet Solution High Level Architecture.
 
+.. _fig_wallet-solution-high-level-architecture:
 .. plantuml:: plantuml/wallet-solution-architecture.puml
     :width: 99%
     :alt: The image illustrates the Wallet Solution and its relations and interactions within the ecosystem.

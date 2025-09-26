@@ -385,7 +385,7 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - RPR-89
     - Error Response
-    - Verificare che la Relying Party restituisca error response in formato JSON per errori request_uri.
+    - Verificare che la Relying Party restituisca error response in formato JSON per errori ``request_uri``.
     - La Relying Party restituisce correttamente error response in formato JSON.
 
   * - RPR-90
@@ -546,17 +546,17 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
   * - RPR-121
     - KB-JWT Header
     - Testare che il KB-JWT contenga i parametri di header richiesti.
-    - Il KB-JWT contiene i parametri di header typ e alg richiesti.
+    - Il KB-JWT contiene i parametri di header ``typ`` e ``alg`` richiesti.
 
   * - RPR-122
     - KB-JWT Payload
     - Testare che il KB-JWT contenga i parametri di payload richiesti.
-    - Il KB-JWT contiene i parametri iat, aud, nonce e sd_hash richiesti.
+    - Il KB-JWT contiene i parametri ``iat``, ``aud``, ``nonce`` e ``sd_hash`` richiesti.
 
   * - RPR-123
     - KB-JWT Type
-    - Testare che typ di KB-JWT sia impostato su kb+jwt.
-    - Il parametro typ di KB-JWT è correttamente impostato su kb+jwt.
+    - Testare che ``typ`` di KB-JWT sia impostato su ``kb+jwt``.
+    - Il parametro ``typ`` di KB-JWT è correttamente impostato su ``kb+jwt``.
 
   * - RPR-124
     - KB-JWT Issuance Time
@@ -570,8 +570,8 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - RPR-126
     - KB-JWT Nonce
-    - Testare che il nonce di KB-JWT corrisponda al nonce del request object.
-    - Il parametro nonce di KB-JWT corrisponde al nonce del request object.
+    - Testare che il ``nonce`` di KB-JWT corrisponda al ``nonce`` del request object.
+    - Il parametro ``nonce`` di KB-JWT corrisponde al ``nonce`` del request object.
 
   * - RPR-127
     - Authorization Error Response
@@ -595,13 +595,13 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
 
   * - RPR-131
     - Response Code Inclusion
-    - Testare che la Relying Party includa il response code nel redirect_uri.
-    - La Relying Party include correttamente il response code fresco nel redirect_uri.
+    - Testare che la Relying Party includa il response code nel ``redirect_uri``.
+    - La Relying Party include correttamente il response code fresco nel ``redirect_uri``.
 
   * - RPR-132
     - Redirect URI Security
-    - Testare che redirect_uri sia attestato da terza parte fidata.
-    - Il parametro redirect_uri è correttamente attestato da terza parte fidata.
+    - Testare che ``redirect_uri`` sia attestato da terza parte fidata.
+    - Il parametro ``redirect_uri`` è correttamente attestato da terza parte fidata.
 
   * - RPR-133
     - Validation Error Response

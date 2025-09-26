@@ -172,7 +172,7 @@
 <li><p><strong>Same Device</strong>, the Relying Party MUST provide an <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> location to the Wallet Instance using a redirect (<code class="docutils literal notranslate"><span class="pre">302</span></code>) or an HTML href in a web page (<span class="xref std std-ref">RPR-01</span>);</p></li>
 <li><p><strong>Cross Device</strong>, the Relying Party MUST provide a <code class="docutils literal notranslate"><span class="pre">QR</span> <span class="pre">Code</span></code> which the User frames with the Wallet Instance (<span class="xref std std-ref">RPR-03</span>).</p></li>
 </ul>
-<p>Once the <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">Instance</span></code> establishes the trust with the <code class="docutils literal notranslate"><span class="pre">Relying</span> <span class="pre">Party</span></code> and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a <code class="docutils literal notranslate"><span class="pre">Verifiable</span> <span class="pre">Presentation</span></code>.</p>
+<p>Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.</p>
 <figure class="align-default" id="id1">
 <span id="fig-high-level-flow-presentation"></span><p class="plantuml">
 <object data="_images/plantuml-b8e883cffe4439f7bf69a8f049af6e83a737f375.svg" type="image/svg+xml" style="width:99%">
@@ -229,7 +229,7 @@
 <p><strong>Steps 3-5</strong>: The Relying Party creates a state value bound to the user-agent (e.g., using an HTTP secured cookie), the Request Object available for download at the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> location. It then inspects the user-agent to determine whether the flow occurs on the same device as the user-agent.</p>
 <p><strong>Steps 6-9 (Authorization Request)</strong>: The Relying Party provides the user-agent with a JavaScript page inspecting the status endpoint and the Wallet Instance with a URL containing the Authorization Request.</p>
 <blockquote>
-<div><p>In the <strong>Cross Device Flow</strong>, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL with the parameters <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>.</p>
+<div><p>In the <strong>Cross Device Flow</strong>, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL with the parameters <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> and <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_076–077</span></a>).</p>
 <p>Below is represented a non-normative example of a QR Code issued by the Relying Party.</p>
 </div></blockquote>
 <figure class="align-center" style="width: 50%">
@@ -242,16 +242,16 @@
 <p class="admonition-title">Note</p>
 <p>The <em>error correction level</em> chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured (<span class="xref std std-ref">RPR-77</span>).</p>
 </div>
-<p>Conversely, in the <strong>Same Device Flow</strong>, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow. Below is a non-normative example:</p>
+<p>Conversely, in the <strong>Same Device Flow</strong>, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_076–077</span></a>). Below is a non-normative example:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
 <span class="na">Location</span><span class="o">:</span> <span class="l">https://wallet-solution.digital-strategy.europa.eu?client_id=https%3A%2F%2Frelying-party.example.org%2Fcb&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&amp;request_uri_method=post</span>
 </pre></div>
 </div>
-<p><strong>Step 10</strong>: The Wallet Instance evaluates the trust with the Relying Party.</p>
-<p><strong>Steps 11-13 (Request URI Request)</strong>: The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object.</p>
+<p><strong>Step 10</strong>: The Wallet Instance evaluates the trust with the Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_078–080</span></a>).</p>
+<p><strong>Steps 11-13 (Request URI Request)</strong>: The Wallet Instance checks if the Relying Party has provided the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> within its signed Request Object (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083</span></a>).</p>
 <blockquote>
 <div><ul>
-<li><p>If it is provided and is equal to post, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.</p>
+<li><p>If it is provided and is equal to <code class="docutils literal notranslate"><span class="pre">post</span></code>, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.</p>
 <p>The following is a non-normative example of an HTTP request made by the Wallet Instance to the Relying Party.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/request</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">client.example.org</span>
@@ -289,10 +289,10 @@
 </pre></div>
 </div>
 </li>
-<li><p>When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance requests the signed Request Object using the HTTP method GET.</p></li>
+<li><p>When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance requests the signed Request Object using the HTTP method GET (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_082</span></a>).</p></li>
 </ul>
 </div></blockquote>
-<p><strong>Step 14 (Request URI Response)</strong>: The Relying Party issues the Request Object signing it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (<cite>metadata.openid_credential_verifier.jwks</cite>). The Wallet Instance obtains the signed Request Object.</p>
+<p><strong>Step 14 (Request URI Response)</strong>: The Relying Party issues the Request Object signing it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (<cite>metadata.openid_credential_verifier.jwks</cite>) as extracted by Wallet Instance per <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_084</span></a>. The Wallet Instance obtains the signed Request Object.</p>
 <blockquote>
 <div><p>Below is a non-normative example of the Redirect URI Response:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -353,8 +353,8 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Steps 15-17 (WI Checks)</strong>: The Wallet Instance verifies the Request Object, which is in the form of a signed JWT. It then processes the Relying Party metadata and applies the relevant policies to determine which Digital Credentials and User data the Relying Party is authorized to request.</p>
-<p><strong>Steps 18-19 (User Consent)</strong>: The Wallet Instance requests the User's consent to disclose the requested Credentials by showing the Relying Party's identity and the requested attributes. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.</p>
+<p><strong>Steps 15-17 (WI Checks)</strong>: The Wallet Instance verifies the Request Object, which is in the form of a signed JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_085–086</span></a>). It then processes the Relying Party metadata and applies the relevant policies to determine which Digital Credentials and User data the Relying Party is authorized to request (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p>
+<p><strong>Steps 18-19 (User Consent)</strong>: The Wallet Instance requests the User's consent to disclose the requested Credentials by showing the Relying Party's identity and the requested attributes. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_088</span></a>).</p>
 <p><strong>Step 20 (Authorization Response)</strong>: The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode &quot;direct_post.jwt&quot;).</p>
 <blockquote>
 <div><p>Below is a non-normative example of the Authorization Response:</p>
@@ -365,7 +365,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="nt">response</span><span class="o">=</span><span class="s">eyJhbGciOiJFUzI1NiIs...9t2LQ</span>
 </pre></div>
 </div>
-<p>Below is a non-normative example of the decrypted payload of the JWT contained in the response, before base64url encoding. The vp_token parameter value corresponds to the format used when the DCQL query language is used in the presentation request.</p>
+<p>Below is a non-normative example of the decrypted payload of the JWT contained in the response, before base64url encoding. The <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> parameter value corresponds to the format used when the DCQL query language is used in the presentation request.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -408,7 +408,7 @@ The following is a non-normative example of the response with the <code class="d
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Steps 31-32</strong>: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User.</p>
+<p><strong>Steps 31-32</strong>: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094</span></a>).</p>
 <section id="authorization-request">
 <h2><span class="section-number">8.2.1.1. </span>Authorization Request<a class="headerlink" href="#authorization-request" title="Link to this heading">¶</a></h2>
 <p>The URL parameters contained in the Relying Party Authorization Request, which include the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> where the signed Request Object can be downloaded, are described in the table below.</p>
@@ -457,7 +457,7 @@ The following is a non-normative example of the response with the <code class="d
 Relying Party, MUST NOT include any User information or other explicit (<span class="xref std std-ref">RPR-100</span>)
 information regarding the hardware used or usage preferences of its User (<span class="xref std std-ref">RPR-92</span>).</p>
 </div>
-<p>If both the Relying Party and the Wallet Instance support the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the <cite>request_uri</cite> endpoint of the Relying Party, with the method POST and content type set to <cite>application/x-www-form-urlencoded</cite> (<span class="xref std std-ref">RPR-101</span>).
+<p>If both the Relying Party and the Wallet Instance support the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint of the Relying Party, with the method POST and content type set to <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> (<span class="xref std std-ref">RPR-101</span>).
 The request and its parameters are defined in Section number 5 (Authorization Request) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request.</p>
 <table class="longtable docutils align-default" id="id3">
 <caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Request URI Endpoint Parameters</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
@@ -504,7 +504,7 @@ The request and its parameters are defined in Section number 5 (Authorization Re
 <td><p>URL of the authorization server's endpoint, see <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. Using an universal link is preferable for enhanced security and fallback support, custom url schemes can also be used if necessary.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>response_types_supported</cite></p></td>
-<td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_type&quot; values. If present it MUST be set to <cite>vp_token</cite> (<span class="xref std std-ref">RPR-102</span>).</p></td>
+<td><p>OPTIONAL. JSON array of OAuth 2.0 <code class="docutils literal notranslate"><span class="pre">response_type</span></code> values. If present it MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<span class="xref std std-ref">RPR-102</span>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>response_modes_supported</cite></p></td>
 <td><p>OPTIONAL. JSON array of OAuth 2.0 &quot;response_mode&quot; values. See <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
@@ -661,12 +661,12 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. The Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is <code class="docutils literal notranslate"><span class="pre">server_error</span></code>, the Wallet Instance SHOULD prompt the User to re-enter or scan a new QR code, if applicable.</p>
+<p>Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_089</span></a>). The Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_089a</span></a>). For example, if the error is <code class="docutils literal notranslate"><span class="pre">server_error</span></code>, the Wallet Instance SHOULD prompt the User to re-enter or scan a new QR code, if applicable (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_089b</span></a>).</p>
 </section>
 </section>
 <section id="authorization-response">
 <h2><span class="section-number">8.2.1.4. </span>Authorization Response<a class="headerlink" href="#authorization-response" title="Link to this heading">¶</a></h2>
-<p>After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint using an HTTP request with the method POST, the content SHOULD be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Section 7.3, using the Relying Party public key.</p>
+<p>After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint using an HTTP request with the method POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091</span></a>), the content SHOULD be encrypted according <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Section 7.3, using the Relying Party public key (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_092</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Why the response is encrypted?</strong></p>
@@ -677,7 +677,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <p><strong>Presenting the Wallet Attestation</strong></p>
 <p>The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User (<span class="xref std std-ref">RPR-117</span>).</p>
 </div>
-<p>Where the following parameters are used:</p>
+<p>Where the following parameters are used (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -1064,7 +1064,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 25/09/2025.
+      Last updated on 26/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -151,7 +151,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
         "wallet_nonce": "qPmxiNFCR3QTm19POc8u"
       }
 
-  - Quando la Relying Party non supporta request_uri_method con valore post, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET.
+  - Quando la Relying Party non supporta ``request_uri_method`` con valore ``post``, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET.
 
 **Passaggio 14 (URI Request Response)**: La Relying Party emette il Request Object firmandolo utilizzando una delle sue chiavi crittografiche private, le cui corrispondenti chiavi pubbliche sono state pubblicate all'interno della sua Entity Configuration (`metadata.openid_credential_verifier.jwks`). L'Istanza del Wallet ottiene il Request Object firmato.
 
@@ -226,7 +226,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
 **Passaggi 18-19 (Consenso dell'Utente)**: L'Istanza del Wallet richiede il consenso dell'Utente per divulgare gli Attetstati Elettronici richiesti mostrando l'identità della Relying Party e gli attributi richiesti. L'Utente autorizza e acconsente alla presentazione degli Attributi Elettronici selezionando/deselezionando i dati personali da rilasciare.
 
-**Passaggio 20 (Authorization Response)**: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST (modalità di risposta direct_post.jwt).
+**Passaggio 20 (Authorization Response)**: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST (modalità di risposta ``direct_post.jwt``).
 
   Di seguito è riportato un esempio non normativo della Authorization Response:
 
@@ -238,7 +238,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
       response=eyJhbGciOiJFUzI1NiIs...9t2LQ
 
-  Di seguito è riportato un esempio non normativo del payload decifrato del JWT contenuto nel parametro response, prima della codifica base64url. Il valore del parametro vp_token corrisponde al formato utilizzato quando il linguaggio di query DCQL viene utilizzato nella richiesta di presentazione.
+  Di seguito è riportato un esempio non normativo del payload decifrato del JWT contenuto nel parametro response, prima della codifica base64url. Il valore del parametro ``vp_token`` corrisponde al formato utilizzato quando il linguaggio di query DCQL viene utilizzato nella richiesta di presentazione.
 
   .. code-block:: json
 
@@ -254,7 +254,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
 **Passaggi 26-27 o 28 (Risposta della Relying Party)**: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.
 
-  Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il redirect_uri all'Istanza del Wallet. Dopo aver ricevuto il redirect_uri, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal redirect_uri. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro redirect_uri, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (:ref:`RPR-96 <test-plans-remote-presentation:RPR-96>`).
+  Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il ``redirect_uri`` all'Istanza del Wallet. Dopo aver ricevuto il ``redirect_uri``, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal ``redirect_uri``. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro ``redirect_uri``, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (:ref:`RPR-96 <test-plans-remote-presentation:RPR-96>`).
 
   Di seguito è riportato un esempio non normativo della risposta nel Flusso Same Device.
 
@@ -269,7 +269,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
 
 **Passaggi 29-30**: La pagina JavaScript continua ad ispezionare lo Status Endpoint.
 
-  Di seguito è riportato un esempio non normativo della Richiesta HTTP allo Status Endpoint, dove il parametro id contiene un valore opaco e casuale:
+  Di seguito è riportato un esempio non normativo della Richiesta HTTP allo Status Endpoint, dove il parametro ``id`` contiene un valore opaco e casuale:
 
   .. code-block:: http
 
@@ -288,14 +288,14 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
         "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
       }
 
-**Passaggi 31-32**: Lo user-agent viene reindirizzato al redirect_uri per continuare la navigazione con la risorsa protetta resa disponibile all'Utente.
+**Passaggi 31-32**: Lo user-agent viene reindirizzato al ``redirect_uri`` per continuare la navigazione con la risorsa protetta resa disponibile all'Utente.
 
 
 
 Authorization Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I parametri URL contenuti nella Authorization Request della Relying Party, che includono il request_uri dove il Request Object firmato può essere scaricato, sono descritti nella tabella seguente.
+I parametri URL contenuti nella Authorization Request della Relying Party, che includono il ``request_uri`` dove il Request Object firmato può essere scaricato, sono descritti nella tabella seguente.
 
 .. list-table::
   :class: longtable
@@ -311,7 +311,7 @@ I parametri URL contenuti nella Authorization Request della Relying Party, che i
   * - **state**
     - RACCOMANDATO. Un identificatore univoco per la transazione corrente generato dalla Relying Party. Il valore DOVREBBE essere opaco per l'Istanza del Wallet.
   * - **request_uri_method**
-    - OPZIONALE. Il metodo HTTP DEVE essere impostato con get o post. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal request_uri. Se non fornito o uguale a get, l'Istanza del Wallet DEVE utilizzare il metodo HTTP get. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in application/x-www-form-urlencoded.
+    - OPZIONALE. Il metodo HTTP DEVE essere impostato con ``get`` o ``post``. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal ``request_uri``. Se non fornito o uguale a ``get``, l'Istanza del Wallet DEVE utilizzare il metodo HTTP ``get``. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in ``application/x-www-form-urlencoded``.
 
 .. warning::
   Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro ``request_uri`` DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata ``openid_credential_verifier`` all'interno del parametro ``request_uris``, ottenuti dalla Trust Chain relativa alla Relying Party (:ref:`RPR-99 <test-plans-remote-presentation:RPR-99>`).

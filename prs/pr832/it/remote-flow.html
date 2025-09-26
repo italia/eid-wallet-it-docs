@@ -290,7 +290,7 @@
 </pre></div>
 </div>
 </li>
-<li><p>Quando la Relying Party non supporta request_uri_method con valore post, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET.</p></li>
+<li><p>Quando la Relying Party non supporta <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> con valore <code class="docutils literal notranslate"><span class="pre">post</span></code>, l'Istanza del Wallet richiede il Request Object firmato utilizzando il metodo HTTP GET.</p></li>
 </ul>
 </div></blockquote>
 <p><strong>Passaggio 14 (URI Request Response)</strong>: La Relying Party emette il Request Object firmandolo utilizzando una delle sue chiavi crittografiche private, le cui corrispondenti chiavi pubbliche sono state pubblicate all'interno della sua Entity Configuration (<cite>metadata.openid_credential_verifier.jwks</cite>). L'Istanza del Wallet ottiene il Request Object firmato.</p>
@@ -360,7 +360,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </div></blockquote>
 <p><strong>Passaggi 15-17 (Controlli WI)</strong>: L'Istanza del Wallet verifica l'Oggetto di Richiesta, che è sotto forma di JWT firmato. Quindi elabora i metadati della Relying Party e applica le politiche pertinenti per determinare quali Credenziali Elettroniche e dati dell'Utente la Relying Party è autorizzata a richiedere.</p>
 <p><strong>Passaggi 18-19 (Consenso dell'Utente)</strong>: L'Istanza del Wallet richiede il consenso dell'Utente per divulgare gli Attetstati Elettronici richiesti mostrando l'identità della Relying Party e gli attributi richiesti. L'Utente autorizza e acconsente alla presentazione degli Attributi Elettronici selezionando/deselezionando i dati personali da rilasciare.</p>
-<p><strong>Passaggio 20 (Authorization Response)</strong>: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST (modalità di risposta direct_post.jwt).</p>
+<p><strong>Passaggio 20 (Authorization Response)</strong>: L'Istanza del Wallet fornisce la Authorization Response alla Relying Party utilizzando una richiesta HTTP con il metodo POST (modalità di risposta <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>).</p>
 <blockquote>
 <div><p>Di seguito è riportato un esempio non normativo della Authorization Response:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/response_uri</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -370,7 +370,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="nt">response</span><span class="o">=</span><span class="s">eyJhbGciOiJFUzI1NiIs...9t2LQ</span>
 </pre></div>
 </div>
-<p>Di seguito è riportato un esempio non normativo del payload decifrato del JWT contenuto nel parametro response, prima della codifica base64url. Il valore del parametro vp_token corrisponde al formato utilizzato quando il linguaggio di query DCQL viene utilizzato nella richiesta di presentazione.</p>
+<p>Di seguito è riportato un esempio non normativo del payload decifrato del JWT contenuto nel parametro response, prima della codifica base64url. Il valore del parametro <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> corrisponde al formato utilizzato quando il linguaggio di query DCQL viene utilizzato nella richiesta di presentazione.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3be39b69-6ac1-41aa-921b-3e6c07ddcb03&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;vp_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -384,7 +384,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <p><strong>Passaggi 21-25 (Controlli RP)</strong>: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae le Credenziali Elettroniche e attesta la fiducia con il Fornitore di Credenziali e la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in <a class="reference internal" href="credential-revocation.html#revoca-e-sospensione-degli-attestati-elettronici"><span class="std std-ref">Revoca e Sospensione degli Attestati Elettronici</span></a>. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.</p>
 <p><strong>Passaggi 26-27 o 28 (Risposta della Relying Party)</strong>: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.</p>
 <blockquote>
-<div><p>Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il redirect_uri all'Istanza del Wallet. Dopo aver ricevuto il redirect_uri, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal redirect_uri. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro redirect_uri, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (<span class="xref std std-ref">RPR-96</span>).</p>
+<div><p>Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> all'Istanza del Wallet. Dopo aver ricevuto il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (<span class="xref std std-ref">RPR-96</span>).</p>
 <p>Di seguito è riportato un esempio non normativo della risposta nel Flusso Same Device.</p>
 </div></blockquote>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -397,7 +397,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </div>
 <p><strong>Passaggi 29-30</strong>: La pagina JavaScript continua ad ispezionare lo Status Endpoint.</p>
 <blockquote>
-<div><p>Di seguito è riportato un esempio non normativo della Richiesta HTTP allo Status Endpoint, dove il parametro id contiene un valore opaco e casuale:</p>
+<div><p>Di seguito è riportato un esempio non normativo della Richiesta HTTP allo Status Endpoint, dove il parametro <code class="docutils literal notranslate"><span class="pre">id</span></code> contiene un valore opaco e casuale:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/session-state?id=3be39b69-6ac1-41aa-921b-3e6c07ddcb03</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
 </pre></div>
@@ -413,10 +413,10 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Passaggi 31-32</strong>: Lo user-agent viene reindirizzato al redirect_uri per continuare la navigazione con la risorsa protetta resa disponibile all'Utente.</p>
+<p><strong>Passaggi 31-32</strong>: Lo user-agent viene reindirizzato al <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> per continuare la navigazione con la risorsa protetta resa disponibile all'Utente.</p>
 <section id="authorization-request">
 <h2><span class="section-number">8.2.1.1. </span>Authorization Request<a class="headerlink" href="#authorization-request" title="Link to this heading">¶</a></h2>
-<p>I parametri URL contenuti nella Authorization Request della Relying Party, che includono il request_uri dove il Request Object firmato può essere scaricato, sono descritti nella tabella seguente.</p>
+<p>I parametri URL contenuti nella Authorization Request della Relying Party, che includono il <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> dove il Request Object firmato può essere scaricato, sono descritti nella tabella seguente.</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -438,7 +438,7 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 <td><p>RACCOMANDATO. Un identificatore univoco per la transazione corrente generato dalla Relying Party. Il valore DOVREBBE essere opaco per l'Istanza del Wallet.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
-<td><p>OPZIONALE. Il metodo HTTP DEVE essere impostato con get o post. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal request_uri. Se non fornito o uguale a get, l'Istanza del Wallet DEVE utilizzare il metodo HTTP get. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in application/x-www-form-urlencoded.</p></td>
+<td><p>OPZIONALE. Il metodo HTTP DEVE essere impostato con <code class="docutils literal notranslate"><span class="pre">get</span></code> o <code class="docutils literal notranslate"><span class="pre">post</span></code>. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. Se non fornito o uguale a <code class="docutils literal notranslate"><span class="pre">get</span></code>, l'Istanza del Wallet DEVE utilizzare il metodo HTTP <code class="docutils literal notranslate"><span class="pre">get</span></code>. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1061,7 +1061,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 25/09/2025.
+      Ultimo aggiornamento 26/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
