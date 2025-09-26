@@ -167,15 +167,23 @@
   <section id="wallet-provider-endpoints">
 <h1><span class="section-number">9.1. </span>Wallet Provider Endpoints<a class="headerlink" href="#wallet-provider-endpoints" title="Link to this heading">¶</a></h1>
 <p>The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose the endpoints to support trust establishment and essential Wallet Instance functionalities. These include the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> Federation Endpoint which MUST adhere to the OpenID Federation 1.0 specification to reliably establish trust with the Wallet Provider's as well as, endpoints for Wallet Instance registration, nonce generation (required for registration), attestation issuance, and revocation. Aside from the Federation endpoint, the implementation details of the others are left to the Wallet Provider's discretion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tests related to the use of Wallet Provider endpoints are defined in
+<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-test-matrix"><span class="std std-ref">Wallet Provider Test Matrix</span></a>, particularly
+<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">Test Cases for Wallet Provider Backend</span></a>,
+<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">Test Cases for Wallet Instance</span></a>, and
+<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">Optional Test Cases for Wallet Instance</span></a>.</p>
+</div>
 <section id="id1">
 <h2><span class="section-number">9.1.1. </span>Federation Endpoint<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint serves as the discovery mechanism for trust establishment by retrieving the Wallet Provider Entity Configuration.</p>
-<p>See Section <a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a> for technical details.</p>
+<p>See Section <a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a> for technical details (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_001–004</span></a>).</p>
 </section>
 <section id="wallet-solution-nonce-endpoint">
 <h2><span class="section-number">9.1.2. </span>Wallet Solution Nonce Endpoint<a class="headerlink" href="#wallet-solution-nonce-endpoint" title="Link to this heading">¶</a></h2>
 <p>This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.</p>
-<p>See <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request"><span class="std std-ref">Mobile Application Nonce Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-response"><span class="std std-ref">Mobile Application Nonce Response</span></a> for details on the Nonce Request and Nonce Response.</p>
+<p>See <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-request"><span class="std std-ref">Mobile Application Nonce Request</span></a> and <a class="reference internal" href="mobile-application-instance.html#mobile-application-nonce-response"><span class="std std-ref">Mobile Application Nonce Response</span></a> for details on the Nonce Request and Nonce Response (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_131</span></a>).</p>
 </section>
 <section id="wallet-instance-management-endpoint">
 <h2><span class="section-number">9.1.3. </span>Wallet Instance Management Endpoint<a class="headerlink" href="#wallet-instance-management-endpoint" title="Link to this heading">¶</a></h2>
@@ -183,15 +191,15 @@
 The following sections describe the registration, status retrieval and revocation requests, along with their corresponding responses, handled by this endpoint, which are required for core <a class="reference internal" href="wallet-instance-functionalities.html#id1"><span class="std std-ref">Wallet Instance Functionalities</span></a>.</p>
 <section id="wallet-instance-registration-request">
 <h3><span class="section-number">9.1.3.1. </span>Wallet Instance Registration Request<a class="headerlink" href="#wallet-instance-registration-request" title="Link to this heading">¶</a></h3>
-<p>To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <cite>application/json</cite>. The request body MUST contain the claims described in <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a>.</p>
+<p>To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <cite>application/json</cite>. The request body MUST contain the claims described in <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_131–134</span></a>).</p>
 </section>
 <section id="wallet-instance-registration-response">
 <h3><span class="section-number">9.1.3.2. </span>Wallet Instance Registration Response<a class="headerlink" href="#wallet-instance-registration-response" title="Link to this heading">¶</a></h3>
-<p>If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a>.</p>
+<p>If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135–137</span></a>).</p>
 </section>
 <section id="wallet-instance-retrieval-request">
 <h3><span class="section-number">9.1.3.3. </span>Wallet Instance Retrieval Request<a class="headerlink" href="#wallet-instance-retrieval-request" title="Link to this heading">¶</a></h3>
-<p>To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider.</p>
+<p>To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For retrieving a specific Wallet Instance, the request MUST include the Wallet Instance ID as a path parameter.</p>
@@ -201,7 +209,7 @@ The following sections describe the registration, status retrieval and revocatio
 <h3><span class="section-number">9.1.3.4. </span>Wallet Instance Retrieval Response<a class="headerlink" href="#wallet-instance-retrieval-response" title="Link to this heading">¶</a></h3>
 <p>If a Wallet Instance Retrieval Request is successfully processed, the Wallet Provider MUST return an HTTP Response with a 200 (OK) status code.
 The response body MUST be in JSON format and include the relevant Wallet Instance information, such as its unique ID, status, and issuance date.
-When retrieving all Wallet Instances, the response MUST return an array containing the details of all associated instances.</p>
+When retrieving all Wallet Instances, the response MUST return an array containing the details of all associated instances (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_146</span></a>).</p>
 <p>If any errors occur during the retrieval process, an error response MUST be returned. Refer to <a class="reference internal" href="#id2"><span class="std std-ref">Error Handling for Wallet Instance Management</span></a> for details on error codes and descriptions.</p>
 <p>Below is a non-normative example of an error response:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
@@ -218,7 +226,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 <section id="wallet-instance-revocation-request">
 <h3><span class="section-number">9.1.3.5. </span>Wallet Instance Revocation Request<a class="headerlink" href="#wallet-instance-revocation-request" title="Link to this heading">¶</a></h3>
-<p>To revoke an active Wallet Instance, a revocation request MUST be sent using the HTTP PATCH method with Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The request body MUST contain a <code class="docutils literal notranslate"><span class="pre">status</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code>.</p>
+<p>To revoke an active Wallet Instance, a revocation request MUST be sent using the HTTP PATCH method with Content-Type set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The request body MUST contain a <code class="docutils literal notranslate"><span class="pre">status</span></code> parameter set to <code class="docutils literal notranslate"><span class="pre">REVOKED</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_147</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.</p>
@@ -226,8 +234,8 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </section>
 <section id="wallet-instance-revocation-response">
 <h3><span class="section-number">9.1.3.6. </span>Wallet Instance Revocation Response<a class="headerlink" href="#wallet-instance-revocation-response" title="Link to this heading">¶</a></h3>
-<p>If a Wallet Instance Revocation Request is successfully processed, the Wallet Provider provides an HTTP Response with a 204 (No Content) status code.</p>
-<p>If any errors occur during the Wallet Instance Revocation, an error response MUST be returned. Refer to <a class="reference internal" href="#id2"><span class="std std-ref">Error Handling for Wallet Instance Management</span></a> for details on error codes and descriptions.</p>
+<p>If a Wallet Instance Revocation Request is successfully processed, the Wallet Provider provides an HTTP Response with a 204 (No Content) status code (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_148</span></a>).</p>
+<p>If any errors occur during the Wallet Instance Revocation, an error response MUST be returned. Refer to <a class="reference internal" href="#id2"><span class="std std-ref">Error Handling for Wallet Instance Management</span></a> for details on error codes and descriptions (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–039, WP_043–044</span></a>).</p>
 <p>Below is a non-normative example of an error response:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
@@ -249,11 +257,11 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <li><p><em>error</em>. The error code.</p></li>
 <li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
 </ul>
-<p>The following sections categorize errors into <strong>common errors</strong>, which apply to all requests, and <strong>request-specific errors</strong>, which are relevant to particular operations.</p>
+<p>The following sections categorize errors into <strong>common errors</strong>, which apply to all requests, and <strong>request-specific errors</strong>, which are relevant to particular operations (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–044</span></a>, and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_150–155</span></a>).</p>
 </section>
 <section id="common-error-responses">
 <h3><span class="section-number">9.1.3.8. </span>Common Error Responses<a class="headerlink" href="#common-error-responses" title="Link to this heading">¶</a></h3>
-<p>The following errors apply to all Wallet Instance Management operations (Registration, Retrieval, and Revocation), and MUST be supported for the error response, unless otherwise specified:</p>
+<p>The following errors apply to all Wallet Instance Management operations (Registration, Retrieval, and Revocation), and MUST be supported for the error response, unless otherwise specified (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–039</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 22.2%" />
@@ -289,7 +297,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <section id="request-specific-error-responses">
 <h3><span class="section-number">9.1.3.9. </span>Request-Specific Error Responses<a class="headerlink" href="#request-specific-error-responses" title="Link to this heading">¶</a></h3>
 <p>The errors in <a class="reference internal" href="mobile-application-instance.html#mobile-application-instance-initialization-error-response"><span class="std std-ref">Mobile Application Instance Initialization Error Response</span></a> MUST be supported for error responses related to <strong>Wallet Instance Registration</strong>.</p>
-<p>The following errors MUST be supported for error responses related to <strong>Wallet Instance Retrieval</strong>:</p>
+<p>The following errors MUST be supported for error responses related to <strong>Wallet Instance Retrieval</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_041–042</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 22.2%" />
@@ -313,7 +321,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </tbody>
 </table>
-<p>The following errors MUST be supported for error responses related to <strong>Wallet Instance Revocation</strong>:</p>
+<p>The following errors MUST be supported for error responses related to <strong>Wallet Instance Revocation</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_043–044</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 22.2%" />
@@ -344,12 +352,12 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 <p>This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain a Wallet Attestation, by sending a Wallet Attestation Issuance Request.</p>
 <section id="wallet-attestation-issuance-request">
 <h3><span class="section-number">9.1.4.1. </span>Wallet Attestation Issuance Request<a class="headerlink" href="#wallet-attestation-issuance-request" title="Link to this heading">¶</a></h3>
-<p>Further details on the Wallet Attestation Issuance Request are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-request"><span class="std std-ref">Mobile Application Key Binding Request</span></a> section.</p>
+<p>Further details on the Wallet Attestation Issuance Request are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-request"><span class="std std-ref">Mobile Application Key Binding Request</span></a> section (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_026</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_140–142</span></a>).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">typ</span></code> header of the Integrity Request JWT assumes the value <code class="docutils literal notranslate"><span class="pre">wp-war+jwt</span></code>.</p>
 </section>
 <section id="wallet-attestation-issuance-response">
 <h3><span class="section-number">9.1.4.2. </span>Wallet Attestation Issuance Response<a class="headerlink" href="#wallet-attestation-issuance-response" title="Link to this heading">¶</a></h3>
-<p>If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object MUST possess the <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> parameter whose value is an array of JSON Objects (see <a class="reference internal" href="wallet-attestation-issuance.html#id1"><span class="std std-ref">Wallet Attestation Issuance</span></a>) containing the Wallet Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider. The JWT formatted Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>. The SD-JWT and mdoc formatted Wallet Attestation will instead be used during presentation respectively in the remote (<a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>) and proximity (<a class="reference internal" href="proximity-flow.html#proximity-flow"><span class="std std-ref">Proximity Flow</span></a>) flows.</p>
+<p>If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of <code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code> and Content-Type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>. The returned JSON Object MUST possess the <code class="docutils literal notranslate"><span class="pre">wallet_attestations</span></code> parameter whose value is an array of JSON Objects (see <a class="reference internal" href="wallet-attestation-issuance.html#id1"><span class="std std-ref">Wallet Attestation Issuance</span></a>) containing the Wallet Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_027–029</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_143–144</span></a>). The JWT formatted Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in <a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a>. The SD-JWT and mdoc formatted Wallet Attestation will instead be used during presentation respectively in the remote (<a class="reference internal" href="remote-flow.html#remote-flow"><span class="std std-ref">Remote Flow</span></a>) and proximity (<a class="reference internal" href="proximity-flow.html#proximity-flow"><span class="std std-ref">Proximity Flow</span></a>) flows.</p>
 <p>The JSON Object returned in the response has the following claim:</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -400,7 +408,7 @@ When retrieving all Wallet Instances, the response MUST return an array containi
 </tr>
 </tbody>
 </table>
-<p>If any errors occur during the process, an error response is returned. Further details on the error response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-error-response"><span class="std std-ref">Mobile Application Key Binding Error Response</span></a> section.</p>
+<p>If any errors occur during the process, an error response is returned. Further details on the error response are provided in the <a class="reference internal" href="mobile-application-instance.html#mobile-application-key-binding-error-response"><span class="std std-ref">Mobile Application Key Binding Error Response</span></a> section (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035–039</span></a>).</p>
 </section>
 <section id="wallet-attestation-jwt">
 <h3><span class="section-number">9.1.4.3. </span>Wallet Attestation JWT<a class="headerlink" href="#wallet-attestation-jwt" title="Link to this heading">¶</a></h3>
@@ -906,7 +914,7 @@ A PID Provider that has been notified by the Authentic Source of the PID of the 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 24/09/2025.
+      Last updated on 26/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

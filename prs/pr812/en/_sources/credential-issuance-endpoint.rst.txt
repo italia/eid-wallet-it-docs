@@ -23,7 +23,7 @@ The Credential Offer made by Credential Issuer consists of a single URI query pa
     - It MUST be set with an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet uses this parameter value to obtain the Credential Issuer's metadata.
     - Section 4.1.1 of [`OpenID4VCI`_].
   * - **credential_configuration_ids**
-    - Array of Strings, each of them specifying a unique identifier of the Credential being described in the ``credential_configurations_supported`` map in the Credential Issuer Metadata.
+    - Array of Strings, each of them specifying a unique identifier of the Credential being described in the ``credential_configurations_supported`` map in the Credential Issuer Metadata (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
     - Section 4.1.1 of [`OpenID4VCI`_].
   * - **grants**
     - It MUST contain ``authorization_code`` object with the following parameters:
@@ -839,13 +839,13 @@ The Credential Response contains the following parameters:
           - **credential**: REQUIRED. String containing one issued Digital Credential. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO 18013-5]. This structure SHOULD contain all Namespaces and IssuerSignedItems that are included in the AuthorizedNamespaces of the MobileSecurityObject.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
   * - **lead_time**
-    - REQUIRED if ``credentials`` is not present, otherwise it MUST NOT be present. The amount of time (in seconds) required before making a Deferred Credential Request.
+    - REQUIRED if ``credentials`` is not present, otherwise it MUST NOT be present. The amount of time (in seconds) required before making a Deferred Credential Request (:ref:`WP_065 <wallet-credential-issuance-testcases>`).
     - This Specification.
   * - **notification_id**
     - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`credential-issuance-endpoint:Notification Request`. It MUST NOT be present if the ``credentials`` parameter is not present.
     - Section 8.3 of [`OpenID4VCI`_].
   * - **transaction_id**
-    - REQUIRED if ``credentials`` is not present, otherwise it MUST NOT be present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`credential-issuance-endpoint:Deferred Endpoint`. It MUST be invalidated after the User obtains the Credential.
+    - REQUIRED if ``credentials`` is not present, otherwise it MUST NOT be present. String identifying a deferred issuance transaction that the Wallet includes in the subsequent Credential Request as defined in Section :ref:`credential-issuance-endpoint:Deferred Endpoint` as per (:ref:`WP_065 <wallet-credential-issuance-testcases>`). It MUST be invalidated after the User obtains the Credential.
     - Section 8.3 of [`OpenID4VCI`_].
 
 In case of the Credential Request does not contain a valid Access Token, the Credential Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
@@ -952,12 +952,12 @@ Upon receipt of the notification (by the Wallet Instance and/or by the Credentia
 
 The Wallet Instance MUST present to the Deferred Endpoint an Access Token that is valid for the issuance of the Digital Credential previously requested at the Credential Endpoint.
 
-If the ``lead_time`` parameter value results as less than the expiration time set for the Access Token, the Wallet Instance SHOULD use the Access Token. Otherwise, the Wallet Instance MAY obtain a new Access Token following the Refresh Token flow (see Section :ref:`credential-issuance-low-level:Refresh Token Flow` for more details). If the Refresh Token flow fails, the Wallet Instance needs to submit a new authentication request.
+If the ``lead_time`` parameter value results as less than the expiration time set for the Access Token, the Wallet Instance SHOULD use the Access Token  (:ref:`WP_066b <wallet-credential-issuance-testcases>`). Otherwise, the Wallet Instance MAY obtain a new Access Token following the Refresh Token flow (see Section :ref:`credential-issuance-low-level:Refresh Token Flow` for more details as per :ref:`WP_066c <wallet-credential-issuance-testcases>`). If the Refresh Token flow fails, the Wallet Instance needs to submit a new authentication request  (:ref:`WP_067 <wallet-credential-issuance-testcases>`).
 
 The Deferred Credential Request MUST be an HTTP POST request. It MUST be sent using the ``application/json`` media type.
 The following parameter is used in the Deferred Credential Request:
 
-  - ``transaction_id``: REQUIRED. String identifying a Deferred Issuance transaction.
+  - ``transaction_id``: REQUIRED. String identifying a Deferred Issuance transaction (:ref:`WP_066a <wallet-credential-issuance-testcases>`).
 
 The Credential Issuer MUST invalidate the ``transaction_id`` after the Credential for which it was meant has been obtained by the Wallet Instance.
 The following is a non-normative example of a Deferred Credential Request:
