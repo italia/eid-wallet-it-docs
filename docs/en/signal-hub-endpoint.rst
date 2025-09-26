@@ -23,7 +23,7 @@ In the context of the IT Wallet, Authentic Sources interact with the Signal Hub 
 .. note::
   In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digial Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services. 
 
-Authentic Sources that leverage PDND must use the Signal Hub e-Services.
+Authentic Sources that leverage PDND SHOULD use the Signal Hub e-Services.
 
 Below it is provided the description of how the Authentic Sources and Credential Issuers interact with the Signal Hub e-Services together with the detailed formats of the requests and responses.
 
@@ -106,7 +106,7 @@ If any error occurs during the request parsing, the response MUST adhere to the 
 The Authentic Source MUST implement the necessary logic to handle the requests to the Signal Collection e-Service endpoint, in doing this it has to consider the following aspects:
 
   - Signals are sent per PDND e-Service, therefore the Authentic Source SHOULD implement a Signal deposit cycle for each e-Service ID it is a PDND Provider of;
-  - Signals are labeled by a unique identifier, the ``signalId``, which is a positive 64 bit integer number. The ``signalId`` MUST be incremented by 1 for each new Signal the Authentic Source wishes to deposit in the Signal Collection e-Service endpoint. It is up to the Authentic Source to keep track of the last ``signalId`` it has sent. Signals with lower ``signalId`` values are considered older by the Signal Collection e-Service endpoint and will raise an error when received.
+  - Signals are labeled by a unique identifier, the ``signalId``, which is a positive 64 bit integer number. The ``signalId`` MUST be incremented by 1 for each new Signal the Authentic Source wishes to deposit in the Signal Collection e-Service endpoint. It is up to the Authentic Source to keep track of the last ``signalId`` it has sent. Signals with lower ``signalId`` values are considered older by the Signal Collection e-Service endpoint and raise an error when received.
 
 Signal Distribution e-Service
 """"""""""""""""""""""""""""""

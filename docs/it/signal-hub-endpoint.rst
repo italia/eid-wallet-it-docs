@@ -23,7 +23,7 @@ Nel contesto dell'IT Wallet, le Fonti Autentiche interagiscono con Signal Hub pe
 .. note::
   Nel contesto dell'IT Wallet, a causa della particolare natura dei dati scambiati, la pseudonimizzazione del soggetto del Segnale non è necessaria poiché l'identificativo è già opaco e non correlato al soggetto dell'Attestato Elettronico. Pertanto, la Fonte Autentica non ha bisogno di configurare un endpoint di pseudonimizzazione per i suoi e-Service.
 
-Le Fonti Autentiche che utilizzano PDND DEVONO utilizzare gli e-Service di Signal Hub.
+Le Fonti Autentiche che utilizzano PDND DOVREBBERO utilizzare gli e-Service di Signal Hub.
 
 Di seguito viene fornita la descrizione di come le Fonti Autentiche e i Fornitori di Attestati Elettronici interagiscono con gli e-Service di Signal Hub insieme ai formati dettagliati delle request e delle response.
 
