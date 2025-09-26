@@ -85,7 +85,7 @@ Di seguito è riportato un esempio non normativo che utilizza la notazione diagn
 
 **Passo 15**: L'Utente esamina la richiesta e le informazioni di registrazione della Relying Party e poi approva la presentazione degli attributi richiesti.
 
-**Passo 16**: Dopo aver ricevuto l'approvazione dell'Utente, l'Istanza del Wallet DEVE recuperare le Credenziali Digitali mdoc richieste. Quindi DEVE preparare un messaggio `SessionData` contenente queste Credenziali Digitali, e DEVE firmare i dati di autenticazione richiesti (come parte del processo di autenticazione mdoc, come specificato in [`ISO18013-5`_ #9.1.3]). DEVE criptarlo utilizzando le chiavi di sessione stabilite prima di trasmetterlo all'App di Verifica sul canale BLE sicuro. La firma garantisce il binding del dispositivo e l'integrità dei dati. La risposta mdoc DEVE essere codificata in CBOR, con la sua struttura delineata in [`ISO18013-5`_ #8.3.2.1.2.2] (:ref:`PPR-006 <test-plans-proximity-presentation:PPR-006>`, :ref:`PPR-029 <test-plans-proximity-presentation:PPR-029>`, :ref:`PPR-030 <test-plans-proximity-presentation:PPR-030>`).
+**Passo 16**: Dopo aver ricevuto l'approvazione dell'Utente, l'Istanza del Wallet DEVE recuperare le Credenziali Digitali mdoc richieste. Quindi DEVE preparare un messaggio `SessionData` contenente queste Credenziali Digitali, e DEVE firmare i dati di autenticazione richiesti (come parte del processo di autenticazione mdoc, come specificato in [`ISO18013-5`_ #9.1.3]). L'Istanza del Wallet DEVE criptarlo utilizzando le chiavi di sessione stabilite prima di trasmetterlo all'App di Verifica sul canale BLE sicuro. La firma garantisce il binding del dispositivo e l'integrità dei dati. La risposta mdoc DEVE essere codificata in CBOR, con la sua struttura delineata in [`ISO18013-5`_ #8.3.2.1.2.2] (:ref:`PPR-006 <test-plans-proximity-presentation:PPR-006>`, :ref:`PPR-029 <test-plans-proximity-presentation:PPR-029>`, :ref:`PPR-030 <test-plans-proximity-presentation:PPR-030>`).
 
 Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionData`` codificato in CBOR che contiene la risposta mdoc di una Wallet Attestation e un mDL.
 
@@ -176,12 +176,12 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 
        - **readerAuth** *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare l'App di Verifica per ogni `DocRequest`. La firma è calcolata sui dati `ReaderAuthentication`, come definito in [`ISO18013-5`_ #9.1.4].
 
-         Questo componente DEVE essere presente solo se `readerAuthAll` non viene utilizzato (:ref:`PPR-025 <test-plans-proximity-presentation:PPR-025>`).
+         Questo componente DEVE essere presente solo se ``readerAuthAll`` non viene utilizzato (:ref:`PPR-025 <test-plans-proximity-presentation:PPR-025>`).
 
    * - **readerAuthAll**
      - *(COSE_Sign1, CONDIZIONALE)*. Utilizzato per autenticare l'App di Verifica una volta per tutte le richieste in `DocRequest`. La firma è calcolata sui dati `ReaderAuthenticationAll`, come definito in [`ISO18013-5`_ #9.1.4].
 
-       Questo componente DEVE essere presente solo se `ReaderAuthAllSupport` è impostato su `true` nel messaggio di DeviceEngagement, in questo caso, i campi individuali `readerAuth` non vengono utilizzati (:ref:`PPR-025 <test-plans-proximity-presentation:PPR-025>`).
+       Questo componente DEVE essere presente solo se ``ReaderAuthAllSupport`` è impostato su ``true`` nel messaggio di DeviceEngagement, in questo caso, i campi individuali ``readerAuth`` non vengono utilizzati (:ref:`PPR-025 <test-plans-proximity-presentation:PPR-025>`).
 
 .. note:: **Richiesta dell'Attestazione del Wallet**
     
@@ -260,7 +260,7 @@ Una struttura di dati **deviceSigned** DEVE essere conforme alla seguente strutt
        - **DataItemValue** *(any)*. Il valore dell'elemento di dati.
 
    * - **deviceAuth**
-     - *(COSE_Sign1)*. Contiene la struttura `DeviceAuth`, che DEVE includere la **deviceSignature** per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati `DeviceAuthentication`, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [`ISO18013-5`_ #9.1.3] per i dettagli sulla struttura di autenticazione (:ref:`PPR-003 <test-plans-proximity-presentation:PPR-003>`).
+     - *(COSE_Sign1)*. Contiene la struttura ``DeviceAuth``, che DEVE includere la **deviceSignature** per l'autenticazione dell'Istanza del Wallet. La firma è calcolata sui dati ``DeviceAuthentication``, che lega gli elementi restituiti alla sessione e alla richiesta. Vedi [`ISO18013-5`_ #9.1.3] per i dettagli sulla struttura di autenticazione (:ref:`PPR-003 <test-plans-proximity-presentation:PPR-003>`).
 
 .. note:: **Presentazione dell'Attestazione del Wallet**
   
