@@ -9,7 +9,7 @@ Depending on whether the User is using a mobile device or a workstation, the Rel
 * **Same Device**, the Relying Party MUST provide an ``HTTP`` location to the Wallet Instance using a redirect (``302``) or an HTML href in a web page (:ref:`RPR-01 <test-plans-remote-presentation:RPR-01>`);
 * **Cross Device**, the Relying Party MUST provide a ``QR Code`` which the User frames with the Wallet Instance (:ref:`RPR-03 <test-plans-remote-presentation:RPR-03>`).
 
-Once the ``Wallet Instance`` establishes the trust with the ``Relying Party`` and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a ``Verifiable Presentation``.
+Once the Wallet Instance establishes the trust with the Relying Party and evaluates the request, the User gives the consent for the disclosure of the Digital Credentials, in the form of a Verifiable Presentation.
 
 .. _fig_High-Level-Flow-Presentation:
 .. plantuml:: plantuml/credential-presentation-remote-high-level-flow.puml
@@ -108,7 +108,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
 
 **Steps 11-13 (Request URI Request)**: The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object.
 
-  - If it is provided and is equal to post, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.
+  - If it is provided and is equal to ``post``, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.
 
     The following is a non-normative example of an HTTP request made by the Wallet Instance to the Relying Party.
     
@@ -233,7 +233,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
   
       response=eyJhbGciOiJFUzI1NiIs...9t2LQ
   
-  Below is a non-normative example of the decrypted payload of the JWT contained in the response, before base64url encoding. The vp_token parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
+  Below is a non-normative example of the decrypted payload of the JWT contained in the response, before base64url encoding. The ``vp_token`` parameter value corresponds to the format used when the DCQL query language is used in the presentation request.
   
   .. code-block:: json
   
@@ -329,7 +329,7 @@ This feature can be useful when, for example, the Wallet Instance supports a res
   Relying Party, MUST NOT include any User information or other explicit (:ref:`RPR-100 <test-plans-remote-presentation:RPR-100>`)
   information regarding the hardware used or usage preferences of its User (:ref:`RPR-92 <test-plans-remote-presentation:RPR-92>`).
 
-If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the `request_uri` endpoint of the Relying Party, with the method POST and content type set to `application/x-www-form-urlencoded` (:ref:`RPR-101 <test-plans-remote-presentation:RPR-101>`).
+If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the ``request_uri`` endpoint of the Relying Party, with the method POST and content type set to ``application/x-www-form-urlencoded`` (:ref:`RPR-101 <test-plans-remote-presentation:RPR-101>`).
 The request and its parameters are defined in Section number 5 (Authorization Request) of `OpenID4VP`_. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request.
 
 .. list-table:: Request URI Endpoint Parameters

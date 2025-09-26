@@ -327,23 +327,23 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-78
     - Request URI Method
-    - Test that HTTP method is set to 'get' or 'post'.
-    - HTTP method is correctly set to 'get' or 'post'.
+    - Test that HTTP method is set to ``get`` or ``post``.
+    - HTTP method is correctly set to ``get`` or ``post``.
 
   * - RPR-79
     - Request URI Method
     - Verify that GET method is used as default when not specified.
-    - GET method is used as default when request_uri_method is not provided.
+    - GET method is used as default when ``request_uri_method`` is not provided.
 
   * - RPR-80
     - JWT Header
-    - Test that JWT signing algorithm is supported and not 'none'.
-    - JWT signing algorithm is valid and not 'none'.
+    - Test that JWT signing algorithm is supported and not ``none``.
+    - JWT signing algorithm is valid and not ``none``.
 
   * - RPR-81
     - JWT Header
-    - Verify that JWT media type is 'oauth-authz-req+jwt'.
-    - JWT media type is correctly set to 'oauth-authz-req+jwt'.
+    - Verify that JWT media type is ``oauth-authz-req+jwt``.
+    - JWT media type is correctly set to ``oauth-authz-req+jwt``.
 
   * - RPR-82
     - JWT Payload
@@ -372,28 +372,28 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-87
     - Wallet Attestation Request
-    - Verify that 'claims' parameter is not included in DCQL query for Wallet Attestation.
-    - 'claims' parameter is not included in DCQL query for Wallet Attestation.
+    - Verify that ``claims`` parameter is not included in DCQL query for Wallet Attestation.
+    - ``claims`` parameter is not included in DCQL query for Wallet Attestation.
 
   * - RPR-88
     - Wallet Attestation Request
-    - Test that 'vct_values' parameter is required in DCQL query for Wallet Attestation.
-    - 'vct_values' parameter is correctly required in DCQL query.
+    - Test that ``vct_values`` parameter is required in DCQL query for Wallet Attestation.
+    - ``vct_values`` parameter is correctly required in DCQL query.
 
   * - RPR-89
     - Error Response
-    - Verify that Relying Party returns error response in JSON format for request_uri errors.
+    - Verify that Relying Party returns error response in JSON format for ``request_uri`` errors.
     - Relying Party correctly returns error response in JSON format.
 
   * - RPR-90
     - Security
-    - Test that request_uri parameter is attested by trusted third party.
-    - request_uri parameter is correctly attested by trusted third party.
+    - Test that ``request_uri`` parameter is attested by trusted third party.
+    - ``request_uri`` parameter is correctly attested by trusted third party.
 
   * - RPR-91
     - Security
-    - Verify that response_uri parameter is attested by trusted third party.
-    - response_uri parameter is correctly attested by trusted third party.
+    - Verify that ``response_uri`` parameter is attested by trusted third party.
+    - ``response_uri`` parameter is correctly attested by trusted third party.
 
   * - RPR-92
     - Security
@@ -402,8 +402,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-93
     - Security
-    - Verify that Wallet Instance ignores client_metadata parameter if present.
-    - Wallet Instance correctly ignores client_metadata parameter.
+    - Verify that Wallet Instance ignores ``client_metadata`` parameter if present.
+    - Wallet Instance correctly ignores ``client_metadata`` parameter.
 
   * - RPR-94
     - Wallet Nonce
@@ -417,8 +417,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-96
     - Redirect URI
-    - Test that Relying Party correctly provides redirect_uri parameter to Wallet Instance.
-    - Wallet Instance correctly performs redirect to redirect_uri.
+    - Test that Relying Party correctly provides ``redirect_uri`` parameter to Wallet Instance.
+    - Wallet Instance correctly performs redirect to ``redirect_uri``.
 
   * - RPR-97
     - Flow Support
@@ -432,13 +432,13 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-99
     - Endpoint Security
-    - Test that request_uri is attested by trusted third party.
-    - request_uri parameter is properly attested by trusted third party.
+    - Test that ``request_uri`` is attested by trusted third party.
+    - ``request_uri`` parameter is properly attested by trusted third party.
 
   * - RPR-100
     - Privacy Protection
-    - Test that Relying Party correctly validates Wallet Instance metadata without user information.
-    - Wallet Instance does not include user information in technical capabilities.
+    - Test that Relying Party correctly validates Wallet Instance metadata without User information.
+    - Wallet Instance does not include User information in technical capabilities.
 
   * - RPR-101
     - Metadata Provision
@@ -447,8 +447,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-102
     - Response Type Validation
-    - Test that response_type is set to vp_token when present.
-    - response_type parameter is correctly set to vp_token when present.
+    - Test that ``response_type`` is set to ``vp_token`` when present.
+    - ``response_type`` parameter is correctly set to ``vp_token`` when present.
 
   * - RPR-103
     - JWT Expiration
@@ -462,23 +462,23 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-105
     - Media Type Validation
-    - Test that JWT typ is set to oauth-authz-req+jwt.
-    - JWT typ parameter is correctly set to oauth-authz-req+jwt.
+    - Test that JWT typ is set to ``oauth-authz-req+jwt``.
+    - JWT typ parameter is correctly set to ``oauth-authz-req+jwt``.
 
   * - RPR-106
     - Response Mode Validation
-    - Test that response_mode is set to direct_post.jwt.
-    - response_mode parameter is correctly set to direct_post.jwt.
+    - Test that ``response_mode`` is set to ``direct_post.jwt``.
+    - ``response_mode`` parameter is correctly set to ``direct_post.jwt``.
 
   * - RPR-107
     - Response Type Validation
-    - Test that response_type is set to vp_token.
-    - response_type parameter is correctly set to vp_token.
+    - Test that ``response_type`` is set to ``vp_token``.
+    - ``response_type`` parameter is correctly set to ``vp_token``.
 
   * - RPR-108
     - Response URI Usage
-    - Test that Relying Party correctly provides response_uri parameter to Wallet Instance.
-    - Wallet Instance sends Authorization Response to correct response_uri endpoint.
+    - Test that Relying Party correctly provides ``response_uri`` parameter to Wallet Instance.
+    - Wallet Instance sends Authorization Response to correct ``response_uri`` endpoint.
 
   * - RPR-109
     - KB-JWT Validation
@@ -492,18 +492,18 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-111
     - JWT Expiration
-    - Test that JWT exp is set correctly.
-    - JWT exp parameter is correctly set and not expired.
+    - Test that JWT ``exp`` is set correctly.
+    - JWT ``exp`` parameter is correctly set and not expired.
 
   * - RPR-112
     - Response URI Security
-    - Test that response_uri is attested by trusted third party.
-    - response_uri parameter is properly attested by trusted third party.
+    - Test that ``response_uri`` is attested by trusted third party.
+    - ``response_uri`` parameter is properly attested by trusted third party.
 
   * - RPR-113
     - Client Metadata Handling
-    - Test that Relying Party correctly handles Wallet Instance ignoring client_metadata.
-    - Wallet Instance ignores client_metadata and uses Trust Chain metadata.
+    - Test that Relying Party correctly handles Wallet Instance ignoring ``client_metadata``.
+    - Wallet Instance ignores ``client_metadata`` and uses Trust Chain metadata.
 
   * - RPR-114
     - Wallet Attestation Request
@@ -512,13 +512,13 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-115
     - Error Response Format
-    - Test that error response uses application/json content type.
-    - Error response correctly uses application/json content type.
+    - Test that error response uses ``application/json`` content type.
+    - Error response correctly uses ``application/json`` content type.
 
   * - RPR-116
     - Error Response Parameters
     - Test that error response includes required parameters.
-    - Error response includes error and error_description parameters.
+    - Error response includes error and ``error_description`` parameters.
 
   * - RPR-117
     - Wallet Attestation Presentation
@@ -527,8 +527,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-118
     - Presentation Array
-    - Test that vp_token contains at least two signed presentations.
-    - vp_token contains at least two signed presentations as required.
+    - Test that ``vp_token`` contains at least two signed presentations.
+    - ``vp_token`` contains at least two signed presentations as required.
 
   * - RPR-119
     - KB-JWT Inclusion
@@ -543,32 +543,32 @@ This section provides the set of test cases designed for technical implementers 
   * - RPR-121
     - KB-JWT Header
     - Test that KB-JWT contains required header parameters.
-    - KB-JWT contains required typ and alg header parameters.
+    - KB-JWT contains required ``typ`` and ``alg`` header parameters.
 
   * - RPR-122
     - KB-JWT Payload
     - Test that KB-JWT contains required payload parameters.
-    - KB-JWT contains required iat, aud, nonce, and sd_hash parameters.
+    - KB-JWT contains required ``iat``, ``aud``, ``nonce``, and ``sd_hash`` parameters.
 
   * - RPR-123
     - KB-JWT Type
-    - Test that KB-JWT typ is set to kb+jwt.
-    - KB-JWT typ parameter is correctly set to kb+jwt.
+    - Test that KB-JWT typ is set to ``kb+jwt``.
+    - KB-JWT typ parameter is correctly set to ``kb+jwt``.
 
   * - RPR-124
     - KB-JWT Issuance Time
-    - Test that KB-JWT iat is set correctly.
-    - KB-JWT iat parameter is correctly set to issuance time.
+    - Test that KB-JWT ``iat`` is set correctly.
+    - KB-JWT ``iat`` parameter is correctly set to issuance time.
 
   * - RPR-125
     - KB-JWT Audience
-    - Test that KB-JWT aud matches Relying Party identifier.
-    - KB-JWT aud parameter matches Relying Party unique entity identifier.
+    - Test that KB-JWT ``aud`` matches Relying Party identifier.
+    - KB-JWT ``aud`` parameter matches Relying Party unique entity identifier.
 
   * - RPR-126
     - KB-JWT Nonce
-    - Test that KB-JWT nonce matches request object nonce.
-    - KB-JWT nonce parameter matches nonce from request object.
+    - Test that KB-JWT ``nonce`` matches request object ``nonce``.
+    - KB-JWT ``nonce`` parameter matches ``nonce`` from request object.
 
   * - RPR-127
     - Authorization Error Response
@@ -578,12 +578,12 @@ This section provides the set of test cases designed for technical implementers 
   * - RPR-128
     - Error Response Encoding
     - Test that Authorization Error Response is encoded correctly.
-    - Authorization Error Response is encoded in application/x-www-form-urlencoded format.
+    - Authorization Error Response is encoded in ``application/x-www-form-urlencoded`` format.
 
   * - RPR-129
     - Response Processing
     - Test that Response URI returns HTTP 200 on successful processing.
-    - Response URI returns HTTP 200 with application/json content type.
+    - Response URI returns HTTP 200 with ``application/json`` content type.
 
   * - RPR-130
     - Error Code Consistency
@@ -592,8 +592,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-131
     - Response Code Inclusion
-    - Test that Relying Party includes response code in redirect_uri.
-    - Relying Party includes fresh response code in redirect_uri.
+    - Test that Relying Party includes response code in ``redirect_uri``.
+    - Relying Party includes fresh response code in ``redirect_uri``.
 
   * - RPR-132
     - Redirect URI Security
