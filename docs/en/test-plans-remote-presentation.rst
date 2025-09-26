@@ -397,8 +397,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-92
     - Security
-    - Test that Relying Party correctly handles Wallet Instance metadata without user information.
-    - Wallet Instance does not include user information in technical metadata.
+    - Test that Relying Party correctly handles Wallet Instance metadata without User information.
+    - Wallet Instance does not include User information in technical metadata.
 
   * - RPR-93
     - Security
@@ -457,8 +457,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-104
     - Algorithm Validation
-    - Test that JWT algorithm is supported and not none or MAC.
-    - JWT algorithm is from supported list and not none or MAC identifier.
+    - Test that JWT algorithm is supported and not ``none`` or MAC.
+    - JWT algorithm is from supported list and not ``none`` or MAC identifier.
 
   * - RPR-105
     - Media Type Validation
@@ -597,8 +597,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - RPR-132
     - Redirect URI Security
-    - Test that redirect_uri is attested by trusted third party.
-    - redirect_uri parameter is properly attested by trusted third party.
+    - Test that ``redirect_uri`` is attested by trusted third party.
+    - ``redirect_uri`` parameter is properly attested by trusted third party.
 
   * - RPR-133
     - Validation Error Response
