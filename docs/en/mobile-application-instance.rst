@@ -33,17 +33,17 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 
 **Step 2**: The Mobile Application Instance:
 
-  * Checks whether the device meets the minimum security requirements.
-  * Checks if the Key Attestation APIs is available.
+  * Checks whether the device meets the minimum security requirements (:ref:`WP_021 <wallet-instance-testcases>`).
+  * Checks if the Key Attestation APIs is available (:ref:`WP_022 <wallet-instance-testcases>`).
 
 .. note::
-  **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
+  **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata (:ref:`WP_023 <wallet-instance-testcases>`). Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
 
-**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks. 
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
 
 Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`mobile-application-instance:Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
 
-**Step 6**: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:
+**Step 6**: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met (:ref:`WP_132 <wallet-instance-optional-testcases>`):
 
   1. It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Application Instance is in the initialization phase, they MUST be deleted.
   2. It MUST generate a pair of asymmetric Elliptic Curve keys (``hardware_key_pub``, ``hardware_key_priv``) via a local WSCD.
@@ -55,7 +55,7 @@ Upon a successful request, the Application Provider generates and returns the ``
 
   If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.
 
-**Step 7**: The Mobile Application Instance uses the Key Attestation APIs, providing the ``client_data_hash`` to acquire the Key Attestation.
+**Step 7**: The Mobile Application Instance uses the Key Attestation APIs, providing the ``client_data_hash`` to acquire the Key Attestation (:ref:`WP_133b <wallet-instance-optional-testcases>`).
 
 .. note::
   **Key Attestation APIs**: In this section, the Key Attestation APIs is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.
@@ -74,23 +74,23 @@ If any errors occur in the Key Attestation APIs process, such as device integrit
 * Incorporates information pertaining to the device's security.
 * Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.
 
-**Step 9 (Mobile Application Instance Initialization Request)**: The Mobile Application Instance sends a :ref:`mobile-application-instance:Mobile Application Instance Initialization Request` to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the ``nonce``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``).
+**Step 9 (Mobile Application Instance Initialization Request)**: The Mobile Application Instance sends a :ref:`mobile-application-instance:Mobile Application Instance Initialization Request` to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the ``nonce``, Key Attestation (``key_attestation``), and Cryptographic Hardware Key Tag (``hardware_key_tag``) as :ref:`WP_133 <wallet-instance-optional-testcases>`.
 
 .. note::
   It is not necessary to send the Application Instance Hardware public key because it is already included in the ``key_attestation``.
-  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
+  As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided ``client_data_hash`` which is the digest of the Application Provider's ``nonce``, the public key of the Application Instance Hardware and its Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`). This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.
 
-**Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature, therefore:
+**Steps 10-12 (Mobile Application Instance Initialization Response)**: The Application Provider validates the ``nonce`` and ``key_attestation`` signature (:ref:`WP_135–137 <wallet-instance-optional-testcases>`), therefore:
 
-  1. It MUST verify that the ``nonce`` was generated by Application Provider and has not already been used.
-  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines. The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``nonce`` with the ``client_data_hash`` provided in the Key Attestation.
-  3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider.
-  4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device.
+  1. It MUST verify that the ``nonce`` was generated by Application Provider and has not already been used (:ref:`WP_135a <wallet-instance-optional-testcases>`).
+  2. It MUST validate the ``key_attestation`` as defined by the device manufacturers' guidelines (:ref:`WP_135b <wallet-instance-optional-testcases>`). The Application Provider MUST also verify the binding between the received ``hardware_key_tag``, ``hardware_key_pub`` and ``nonce`` with the ``client_data_hash`` provided in the Key Attestation (:ref:`WP_136 <wallet-instance-optional-testcases>`).
+  3. It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider (:ref:`WP_135b <wallet-instance-optional-testcases>`).
+  4. If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (``hardware_key_tag``), the Public Hardware Key (``hardware_key_pub``) and possibly other useful information related to the device (:ref:`WP_137 <wallet-instance-optional-testcases>`).
 
-Upon successful initialization of the Mobile Application Instance, the Application Provider responds with a confirmation of success (:ref:`mobile-application-instance:Mobile Application Instance Initialization Response`).
+Upon successful initialization of the Mobile Application Instance, the Application Provider responds with a confirmation of success (:ref:`mobile-application-instance:Mobile Application Instance Initialization Response` and :ref:`WP_135 <wallet-instance-optional-testcases>`).
 
 .. note::
-  The Application Provider might associate the Mobile Application Instance (through the ``hardware_key_tag`` identifier) with a specific User or Device. This uniquely identifies the User/Device within the Application Provider's systems and can be used for future revocations in the lifecycle of the Mobile Application Instance.
+  The Application Provider might associate the Mobile Application Instance (through the ``hardware_key_tag`` identifier) with a specific User or Device  (:ref:`WP_138 <wallet-instance-optional-testcases>`). This uniquely identifies the User/Device within the Application Provider's systems and can be used for future revocations in the lifecycle of the Mobile Application Instance.
 
 **Steps 13-14**: The Mobile Application Instance has been initialized.
 
@@ -223,7 +223,7 @@ Mobile Application Instance Initialization Error Response
 If any errors occur, the Application Provider returns an error response. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
   - *error*. The error code.
-  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered (:ref:`WP_035 <wallet-instance-testcases>`).
 
 Below is a non-normative example of an Instance Initialization Error Response.
 
@@ -238,7 +238,7 @@ Below is a non-normative example of an Instance Initialization Error Response.
         "error_description": "The provided nonce is invalid, expired, or already used."
     }
 
-The following table lists HTTP Status Codes and related error codes that are supported for the error response:
+The following table lists HTTP Status Codes and related error codes that are supported for the error response (:ref:`WP_036–040 <wallet-instance-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -284,7 +284,7 @@ Mobile Application Key Binding Request
 
 The Key Binding Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
 
-The Key Binding Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
+The Key Binding Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below (:ref:`WP_134 <wallet-instance-optional-testcases>`).
 
 Below is a non-normative example of a Key Binding Request.
 
@@ -399,7 +399,7 @@ Mobile Application Key Binding Error Response
 If any errors occur, the Application Provider returns an error response. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
   - *error*. The error code.
-  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered (:ref:`WP_035 <wallet-instance-testcases>`).
 
 Below is a non-normative example of a Key Binding Error Response.
 
@@ -413,7 +413,7 @@ Below is a non-normative example of a Key Binding Error Response.
       "error_description": "The provided challenge is invalid, expired, or already used."
     }
 
-The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified:
+The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
 
 .. list-table::
     :class: longtable
