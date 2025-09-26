@@ -15,4 +15,4 @@ Le Fonti Autentiche DEVONO:
     - la richiesta degli Attributi dell'Utente sia relativa a dati che li riguardano;
     - la richiesta degli Attributi dell'Utente provenga da un'Istanza del Wallet valida;
 
-  - cooperare con i Fornitori di Attestati Elettronici in modo che gli Attributi attestati in un Attestato Elettronico siano sempre mantenuti aggiornati. Le Fonti Autentiche Pubbliche DOVREBBERO utilizzare PDND Signal Hub per notificare ai loro Fornitori di Attestati Elettronici qualsiasi aggiornamento riguardante attributi che sono cambiati o non sono più validi.
+  - cooperare con i Fornitori di Attestati Elettronici in modo che gli Attributi attestati in un Attestato Elettronico siano sempre mantenuti aggiornati. Le Fonti Autentiche Pubbliche DEVONO utilizzare PDND Signal Hub per notificare ai loro Fornitori di Attestati Elettronici qualsiasi aggiornamento riguardante attributi che sono cambiati o non sono più validi.

@@ -23,7 +23,7 @@ In the context of the IT Wallet, Authentic Sources interact with the Signal Hub 
 .. note::
   In the context of IT Wallet, due to the particular nature of the data exchanged, the pseudonymization of the Signal's subject is not needed since it is already an opaque identifier unrelated to the Digial Credential's subject. Thus, the Authentic Source does not need to set up a pseudonymization endpoint for its e-Services. 
 
-Authentic Sources that leverage PDND SHOULD use the Signal Hub e-Services.
+Authentic Sources that leverage PDND MUST use the Signal Hub e-Services.
 
 Below it is provided the description of how the Authentic Sources and Credential Issuers interact with the Signal Hub e-Services together with the detailed formats of the requests and responses.
 
