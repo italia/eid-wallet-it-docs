@@ -79,7 +79,8 @@ Digital Credential Presentation
       - Lodderstedt, T., K. Yasuda, "OpenID4VC High Assurance Interoperability Profile", January 2025, Draft 1.
     * - `ISO18013-5`_
       - ISO/IEC 18013-5 2020. Information technology — Personal identification — ISO-compliant driving license — Part 5: Mobile driving license (mDL) application.
-
+    * - `OIDC-RP-Metadata`_
+      - Jones, M.B., Hedberg, R., Bradley, J., Skokan, F., "OpenID Connect Relying Party Metadata Choices 1.0", April 2025, Draft 2.
 
 Digital Credential Revocation Check Mechanisms
 ----------------------------------------------

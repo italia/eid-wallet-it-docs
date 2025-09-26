@@ -3,11 +3,12 @@
 Wallet Provider Entity Configuration
 --------------------------------------
 
-An HTTP GET request to the Federation endpoint allows the retrieval of the Wallet Provider Entity Configuration.
+An HTTP GET request to the Federation endpoint allows the retrieval of the Wallet Provider Entity Configuration (:ref:`WP_001 <wallet-provider-backend-testcases>`).
 
 The returned Entity Configuration of the Wallet Provider MUST contain the attributes described in the sections below.
 
-The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Provider. It is structured in accordance with the `OID-FED`_ and the :ref:`trust:The Infrastructure of Trust` outlined in this specification.
+The Wallet Provider Entity Configuration is a signed JWT containing the public keys and supported algorithms of the Wallet Provider. It is structured in accordance with the `OID-FED`_ and the :ref:`trust:The Infrastructure of Trust` outlined in this specification (:ref:`WP_002 <wallet-provider-backend-testcases>`).
+
 
 Wallet Provider Entity Configuration JWT Header
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -62,3 +63,7 @@ Wallet Provider Entity Configuration JWT Payload
     * - ``metadata``
       - REQUIRED.JSON object that represents the Entity's Types and the metadata for those Entity Types. Each member name of the JSON object is an Entity Type Identifier, and each value MUST be a JSON object containing metadata parameters according to the metadata schema of the Entity Type. It MUST contains the ``wallet_provider`` and OPTIONALLY the ``federation_entity`` metadata.
       - `OID-FED`_.
+
+
+.. note::
+    Tests covering the Entity Configuration structure (header and payload) are provided in :ref:`WP_002a–002h <wallet-provider-backend-testcases>`.

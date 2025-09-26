@@ -8,7 +8,7 @@ Over the last decade, digitalization has radically transformed the way citizens 
 
 In Italy, Decree-Law No. 19 of 2 March 2024, converted, with amendments, by Law No. 56 of 29 April 2024, introduced Article 64-quater of Legislative Decree No. 82 of 7 March 2005, establishing the Italian Digital Wallet System - IT-Wallet System. The IT-Wallet System allows natural or legal persons to access public and private services through the secure presentation of Digital Credential, attesting to entitlements, delegations, characteristics, licenses or qualifications. Article 64-quater also provides for the adoption of one or more implementing decrees (decreti attuativi) to define the rules governing the operation of the IT-Wallet System, including the roles of the entities involved, technical and security requirements, and principles of economic sustainability, of which these Technical Specifications – drafted through an open and collaborative process – form an integral part.
 
-Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their wallet, the information required for accessing services provided by public and private 
+Thanks to the IT-Wallet System, natural and legal persons can directly provide, via their Wallet, the information required for accessing services provided by public and private 
 entities in the form of Digital Credentials. Similarly to a physical wallet, the IT-Wallet can contain identity or document-related data, such as a driver's license or health card, as well as a wide range of verifiable digital information, such as a professional qualification, educational diploma, licence or certified attribute.
 
 The main roles in the Wallet ecosystem are listed as follow:
@@ -26,7 +26,7 @@ The development of the IT-Wallet System includes a phased experimentation proces
 Other key elements that characterize this new Digital Identity Wallet paradigm include:
 
 - **Confidentiality and control**: Wallets enable individuals to maintain control over the information provided within the presented Credentials. They can choose what attributes or Credentials to present and to whom;
-- **Security**: Wallets leverage cryptographic mechanism for the integrity and the security of exchaged data. This avoids identity theft, fraud, and unauthorized access;
+- **Security**: Wallets leverage cryptographic mechanism for the integrity and the security of exchanged data. This avoids identity theft, fraud, and unauthorized access;
 - **Interoperability**: Wallets promote interoperability by enabling different systems and organizations to recognize and verify identities, enabling trusted interactions between individuals, organizations, and even across borders;
 - **Efficiency and cost reduction**: Individuals can easily manage their own Credentials, avoid handling multiple identity tokens, and reduce repetitive identity verification processes.
 
@@ -46,7 +46,7 @@ The document, by distinguishing between mandatory regulatory aspects and good de
 
 The second focus is to define the technical architecture and reference framework that will serve as a guideline for all the parties involved in the development of the IT-Wallet System.
 
-Additional documentation, tools and resources - hereinafter defined Official Resources - for the design and development of the IT-Wallet System Technical Solutions will be made available on the upcoming website http://www.wallet.gov.it.
+Additional documentation, tools and resources - hereinafter defined Official Resources - for the design and development of the IT-Wallet System Technical Solutions are available in the :ref:`official-resources:Official Resources` section and will be periodically updated.
 
 Normative Language and Conventions
 ----------------------------------

@@ -12,8 +12,9 @@ Questo documento fornisce l'architettura tecnica, il quadro implementativo e i r
   :numbered:
 
   introduction.rst
-  design.rst
+  brand-identity.rst
   architecture-overview.rst
+  functionalities.rst
   trust.rst
   entities.rst
   digital-credential-management.rst

@@ -17,6 +17,7 @@
 - Kristina Yasuda
 - Leif Johansson
 - Lorenzo Cerini
+- Manuel Rafeli
 - Marco Basili
 - Marco Pernpruner
 - Mart Aarma
@@ -37,6 +38,7 @@
 - Salvatore Manfredi
 - Stefania Guerra
 - Stefano Alifuoco
+- Tahir Ahmad
 - Takahiko Kawasaki
 - Thomas Chiozzi
 - Torsten Lodderstedt

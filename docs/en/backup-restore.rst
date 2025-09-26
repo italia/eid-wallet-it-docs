@@ -35,31 +35,31 @@ Backup Flow
 
 Below, the description of the steps of :numref:`fig_Backup_flow`:
 
-**Step 1**: The :term:`User` selects the option to back up Credentials stored within the :term:`Wallet Instance`.
+**Step 1**: The :term:`User` selects the option to back up Credentials stored within the :term:`Wallet Instance` (:ref:`WP_120 <credential-backup-testcases>`).
 
-**Steps 2-3**: The :term:`Wallet Instance` using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User.
-The :term:`User` MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup.
+**Steps 2-3**: The :term:`Wallet Instance` using the backup APIs randomly selects 10 key phrases from a pre-generated list of words and displays it to the User (:ref:`WP_120a <credential-backup-testcases>`).
+The :term:`User` MUST securely store the key phrase chosen from those proposed by the system (e.g., in a password manager or a physical safe) as they are critical for restoring the backup (:ref:`WP_120b <credential-backup-testcases>`).
 
 .. note::
   As highlighted in the ARF, encryption is necessary because the backup file is considered sensitive. Even if an attacker only knows the :term:`Issuer` identifiers, they can infer the different types of Digital Credentials, which constitutes a violation of :term:`User` privacy.
 
 .. note::
-  To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on `RFC 2898`_ and it is recommended by the `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found `here <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_.
+  To extract the key from the list of selected words a key derivation function MUST be applied. Password-Based-Key-Derivation Function 2 (PBKDF2) is among the mostly used ones based on `RFC 2898`_ and it is recommended by the `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. There are other relevant techniques that are available and used widely, such as Bcrypt, Scrypt, and Argon2. More details on this approach can be found `here <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithim is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_.
+  The work factor for PBKDF2 is implemented through an iteration count, which should set differently based on the internal hashing algorithm used. The recommended value for ``SHA-256`` hashing algorithim is 600000 iterations as stated in the `OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
-**Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file.
+**Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
-- For each of the HW bound key Credentials, add the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` as an entry in the backup JWT.
-- Sign the backup JWT using the private key that its public key is attested within the :term:`Wallet Attestation`. The related public key that is attested by the :term:`Wallet Provider` is provided within the :term:`Wallet Attestation` (``cnf`` claim). The :term:`Wallet Instance` MUST verify the validity of the :term:`Wallet Attestation` before signing the backup JWT.
-- Add the signed backup JWT as an entry to the backup file.
-- Encrypt the backup file using the provided key phrase.
+- For each of the HW bound key Credentials, add the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` as an entry in the backup JWT (:ref:`WP_122d <credential-backup-testcases>`).
+- Sign the backup JWT using the private key that its public key is attested within the :term:`Wallet Attestation`. The related public key that is attested by the :term:`Wallet Provider` is provided within the :term:`Wallet Attestation` (``cnf`` claim). The :term:`Wallet Instance` MUST verify the validity of the :term:`Wallet Attestation` before signing the backup JWT (:ref:`WP_123 <credential-backup-testcases>`).
+- Add the signed backup JWT as an entry to the backup file (:ref:`WP_122 <credential-backup-testcases>`).
+- Encrypt the backup file using the provided key phrase (:ref:`WP_124 <credential-backup-testcases>`).
 
 .. note::
-  The Backup JWT MAY contain transaction history for each Credential entry within the ``credentials_backup`` claim.
+  The Backup JWT MAY contain transaction history for each Credential entry within the ``credentials_backup`` claim (:ref:`WP_122c <credential-backup-testcases>`).
 
-**Step 5**: The :term:`User` will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other.
+**Step 5**: The :term:`User` will be prompted to choose a storage option for securely storing the backup file. Options may include native storage or external storage solutions, such as cloud storage, USB devices, e-mail delivery or any other (:ref:`WP_125 <credential-backup-testcases>`).
 
 **Step 6**: In the case where the :term:`User` prefers the native storage, the backup file is stored on the :term:`User` device.
 
@@ -85,7 +85,7 @@ A non-normative example of the backup JWT header and payload is as the following
      }
   }
 
-The JOSE header of the backup JWT MUST contain the following REQUIRED parameters:
+The JOSE header of the backup JWT MUST contain the following REQUIRED parameters (:ref:`WP_122a <credential-backup-testcases>`):
 
 .. list-table::
   :class: longtable
@@ -102,7 +102,7 @@ The JOSE header of the backup JWT MUST contain the following REQUIRED parameters
     - It MUST be set to ``wallet-unit-credentials-backup+jwt``
     - N/A
 
-The body of backup JWT contains the following REQUIRED claims:
+The body of backup JWT contains the following REQUIRED claims (:ref:`WP_122b <credential-backup-testcases>`):
 
 .. list-table::
   :class: longtable
@@ -146,13 +146,13 @@ Considering that the :term:`User` has initialized the new :term:`Wallet Instance
 Below, the description of the steps of :numref:`fig_Restore_flow`:
 
 **Steps 1-6**: The :term:`User` wants to restore the Digital Credentials using the backup previously created with their :term:`Wallet Instance`.
-The :term:`User` selects `restore Digital Credentials backup` in the :term:`Wallet Instance` app and a prompt with the import function is provided to the User. The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases.
-To check the authenticity of the file, the :term:`Wallet Instance` MUST verify the backup JWT's signature to ensure its authenticity. To do this, it first extracts the :term:`Wallet Attestation` JWT from ``wallet_attestation`` claim and obtains the related public key using the :term:`Wallet Attestation` (``cnf`` claim).
+The :term:`User` selects `restore Digital Credentials backup` in the :term:`Wallet Instance` app and a prompt with the import function is provided to the User (:ref:`WP_126 <credential-backup-testcases>`). The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases (:ref:`WP_127 <credential-backup-testcases>`).
+To check the authenticity of the file, the :term:`Wallet Instance` MUST verify the backup JWT's signature to ensure its authenticity (:ref:`WP_129 <credential-backup-testcases>`). To do this, it first extracts the :term:`Wallet Attestation` JWT from ``wallet_attestation`` claim and obtains the related public key using the :term:`Wallet Attestation` (``cnf`` claim) as per :ref:`WP_128 <credential-backup-testcases>`.
 
-**Steps 7-8**: The :term:`Wallet Instance` for each HW binding credentials entry in the payload of the backup JWT performs the following steps:
+**Steps 7-8**: The :term:`Wallet Instance` for each HW binding credentials entry in the payload of the backup JWT performs the following steps (:ref:`WP_130 <credential-backup-testcases>`):
 
-- It extracts the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the :term:`Credential Issuer`.
-- Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes a re-issuance request to the :term:`Credential Issuer` by providing the new :term:`Holder Key Binding` with the:term:`Credential`.
+- It extracts the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` from the entry. The former is used to identify the Issuer and obtains its metadata, while the latter will be used to signal the Credential type to the :term:`Credential Issuer` (:ref:`WP_130a <credential-backup-testcases>`).
+- Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes a re-issuance request to the :term:`Credential Issuer` by providing the new :term:`Holder Key Binding` with the:term:`Credential` (:ref:`WP_130b <credential-backup-testcases>`).
 
 .. note::
-  The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider`.
+  The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).
