@@ -174,33 +174,37 @@
             
   <section id="wallet-solution-requirements">
 <h1><span class="section-number">6.1.1. </span>Wallet Solution Requirements<a class="headerlink" href="#wallet-solution-requirements" title="Link to this heading">¶</a></h1>
-<p>This section lists the requirements about Wallet Providers and Wallet Solutions with their Wallet Instances.</p>
+<p>This section lists the requirements about Wallet Providers and Wallet Solutions with their Wallet Instances, , as well as the corresponding Wallet Attestation and the secure storage component (WSCD).</p>
 <ul class="simple">
 <li><p>The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.</p></li>
 <li><p>The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.</p></li>
-<li><p>The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet Attestation.</p></li>
+<li><p>The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_018</span></a>).</p></li>
 <li><p>The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers and Relying Parties, presenting a Wallet Attestation.</p></li>
-<li><p>The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively.</p></li>
+<li><p>The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_015</span></a>).</p></li>
 <li><p>The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.</p></li>
 <li><p>The Wallet Instance MUST provide Users with an up-to-date list of Relying Parties with which the User has established a connection and, where applicable, all data exchanged;</p></li>
 <li><p>The Wallet Instance MUST provide Users with a mechanism to request the erasure of personal attributes by a Relying Party pursuant to Article 17 of Regulation (EU) 2016/679, and to log each Erasure Request made.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no strict one-to-one mapping between the requirements in this section and the test cases in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-test-matrix"><span class="std std-ref">Wallet Provider Test Matrix</span></a>. Some requirements are expressed at too high a level to be represented as atomic test cases, while others are already addressed in greater detail within related flows (e.g., <a class="reference internal" href="wallet-attestation-issuance.html#id1"><span class="std std-ref">Wallet Attestation Issuance</span></a>).</p>
+</div>
 <section id="wallet-attestation-requirements">
 <h2><span class="section-number">6.1.1.1. </span>Wallet Attestation Requirements<a class="headerlink" href="#wallet-attestation-requirements" title="Link to this heading">¶</a></h2>
 <p>Wallet Attestation contains information regarding the security level of the device hosting the Wallet Instance.
 It primarily proves the <strong>authenticity</strong>, <strong>integrity</strong>, <strong>security</strong>, and in general the <strong>trustworthiness</strong> of a particular Wallet Instance.</p>
 <p>The requirements for the Wallet Attestation are defined below:</p>
 <ul class="simple">
-<li><p>The Wallet Attestation MUST provide all the relevant information to attest to the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed.</p></li>
-<li><p>The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance.</p></li>
-<li><p>The Wallet Provider MUST periodically evaluate and guarrantee the integrity, the authenticity, and the genuineness of the Wallet Instance. The Wallet Provider verifies the Wallet Instance using the most secure flow made available by OS Provider's API, such as the <em>Play Integrity API</em> for Android and <em>App Attest</em> for iOS.</p></li>
-<li><p>The Wallet Provider MUST possess a revocation mechanism for the Wallet Instance, allowing the Wallet Provider to terminate service for a specific Instance at any time.</p></li>
-<li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance's ephemeral public key.</p></li>
+<li><p>The Wallet Attestation MUST provide all the relevant information to attest to the <strong>integrity</strong> and <strong>security</strong> of the device where the Wallet Instance is installed  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019</span></a>).</p></li>
+<li><p>The Wallet Attestation MUST be signed by the Wallet Provider that has authority over and is the owner of the Wallet Solution, as specified by the overseeing Registration Authority. This ensures that the Wallet Attestation uniquely links the Wallet Provider to this particular Wallet Instance (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_020</span></a>).</p></li>
+<li><p>The Wallet Provider MUST periodically evaluate and guarrantee the integrity, the authenticity, and the genuineness of the Wallet Instance. The Wallet Provider verifies the Wallet Instance using the most secure flow made available by OS Provider's API, such as the <em>Play Integrity API</em> for Android and <em>App Attest</em> for iOS (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_011</span></a>).</p></li>
+<li><p>The Wallet Provider MUST possess a revocation mechanism for the Wallet Instance, allowing the Wallet Provider to terminate service for a specific Instance at any time (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_011</span></a>).</p></li>
+<li><p>The Wallet Attestation MUST be securely bound to the Wallet Instance's ephemeral public key (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019b</span></a>).</p></li>
 <li><p>The Wallet Attestation MAY be used multiple times during its validity period, allowing for repeated authentication and authorization without the need to request new attestations with each interaction. However, it is RECOMMENDED that Wallet Instances avoid using the same attestation repeatedly, due to privacy concerns such as linkability between different interactions.</p></li>
 <li><p>The Wallet Attestation not implementing revocation check methods, MUST be short-lived and MUST have an expiration time, after which it MUST no longer be considered valid.</p></li>
-<li><p>The Wallet Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness of the Wallet Instance requesting it cannot be guaranteed.</p></li>
+<li><p>The Wallet Attestation MUST NOT be issued by the Wallet Provider if the authenticity, integrity, and genuineness of the Wallet Instance requesting it cannot be guaranteed (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019a</span></a>).</p></li>
 <li><p>Each Wallet Instance SHOULD be able to request multiple Wallet Attestations using different cryptographic public keys associated with them.</p></li>
-<li><p>The Wallet Attestation MUST NOT contain information about the User in control of the Wallet Instance.</p></li>
+<li><p>The Wallet Attestation MUST NOT contain information about the User in control of the Wallet Instance (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_029a</span></a>).</p></li>
 <li><p>The Wallet Instance MUST secure a Wallet Attestation as a prerequisite for transitioning to the Operational state, as defined by <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
 </ul>
 <div class="admonition note">
@@ -221,7 +225,7 @@ Only the legitimate User can access the private cryptographic keys, preventing u
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>At the current stage, the implementation profile defined in this document supports only the <strong>Local Internal WSCD</strong>. Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (<cite>AAL</cite>).</p>
+<p>At the current stage, the implementation profile defined in this document supports only the <strong>Local Internal WSCD</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>). Future versions of this specification MAY include other approaches depending on the required Authenticator Assurance Level (<cite>AAL</cite>).</p>
 </div>
 <p>For more detailed information, please refer to <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a> and <a class="reference internal" href="wallet-attestation-issuance.html#id1"><span class="std std-ref">Wallet Attestation Issuance</span></a> of this document.</p>
 </section>
@@ -273,7 +277,7 @@ Only the legitimate User can access the private cryptographic keys, preventing u
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/09/2025.
+      Last updated on 26/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

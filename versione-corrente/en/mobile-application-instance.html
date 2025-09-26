@@ -190,17 +190,17 @@
 <p><strong>Step 2</strong>: The Mobile Application Instance:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Checks whether the device meets the minimum security requirements.</p></li>
-<li><p>Checks if the Key Attestation APIs is available.</p></li>
+<li><p>Checks whether the device meets the minimum security requirements (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_021</span></a>).</p></li>
+<li><p>Checks if the Key Attestation APIs is available (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_022</span></a>).</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Federation Check</strong>: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata. Non-normative examples of a response from the <a class="reference internal" href="wallet-provider-endpoint.html#id1"><span class="std std-ref">Federation Endpoint</span></a> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the Application Provider are presented within the <a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a> and <a class="reference internal" href="relying-party-entity-configuration.html#relying-party-entity-configuration"><span class="std std-ref">Relying Party Entity Configuration</span></a> sections.</p>
+<p><strong>Federation Check</strong>: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_023</span></a>). Non-normative examples of a response from the <a class="reference internal" href="wallet-provider-endpoint.html#id1"><span class="std std-ref">Federation Endpoint</span></a> with the <strong>Entity Configuration</strong> and the <strong>Metadata</strong> of the Application Provider are presented within the <a class="reference internal" href="wallet-provider-entity-configuration.html#wallet-provider-entity-configuration"><span class="std std-ref">Wallet Provider Entity Configuration</span></a> and <a class="reference internal" href="relying-party-entity-configuration.html#relying-party-entity-configuration"><span class="std std-ref">Relying Party Entity Configuration</span></a> sections.</p>
 </div>
-<p><strong>Steps 3-5 (Nonce Retrieval)</strong>: The Mobile Application Instance requests a one-time <code class="docutils literal notranslate"><span class="pre">nonce</span></code> from the <strong>Nonce Endpoint</strong> of the Application Provider Backend (see <a class="reference internal" href="wallet-provider-endpoint.html#wallet-solution-nonce-endpoint"><span class="std std-ref">Wallet Solution Nonce Endpoint</span></a> or <a class="reference internal" href="relying-party-endpoint.html#relying-party-nonce-endpoint"><span class="std std-ref">Relying Party Nonce Endpoint</span></a> ). This <code class="docutils literal notranslate"><span class="pre">nonce</span></code> MUST be unpredictable to serve as the main defense against replay attacks.</p>
+<p><strong>Steps 3-5 (Nonce Retrieval)</strong>: The Mobile Application Instance requests a one-time <code class="docutils literal notranslate"><span class="pre">nonce</span></code> from the <strong>Nonce Endpoint</strong> of the Application Provider Backend (see <a class="reference internal" href="wallet-provider-endpoint.html#wallet-solution-nonce-endpoint"><span class="std std-ref">Wallet Solution Nonce Endpoint</span></a> or <a class="reference internal" href="relying-party-endpoint.html#relying-party-nonce-endpoint"><span class="std std-ref">Relying Party Nonce Endpoint</span></a> ). This <code class="docutils literal notranslate"><span class="pre">nonce</span></code> MUST be unpredictable to serve as the main defense against replay attacks (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_131</span></a>).</p>
 <p>Upon a successful request, the Application Provider generates and returns the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> value to the Mobile Application Instance, as part of the <a class="reference internal" href="#mobile-application-nonce-response"><span class="std std-ref">Mobile Application Nonce Response</span></a>. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.</p>
-<p><strong>Step 6</strong>: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met:</p>
+<p><strong>Step 6</strong>: The Mobile Application Instance, through the operating system, creates a pair of Cryptographic Hardware Keys and stores the corresponding Cryptographic Hardware Key Tag in local storage once the following requirements are met (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_132</span></a>):</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>It MUST ensure that Cryptographic Hardware Keys do not already exist. If they do exist and the Application Instance is in the initialization phase, they MUST be deleted.</p></li>
@@ -214,7 +214,7 @@
 <p><strong>WSCD</strong>: The Mobile Application Instance MAY use a local WSCD for cryptographic operations, including key generation, secure storage, and cryptographic processing, on devices that support this feature. On Android devices, Strongbox is RECOMMENDED; Trusted Execution Environment (TEE) MAY be used only when Strongbox is unavailable. For iOS devices, Secure Elements (SE) MUST be used. Given that each OEM offers a distinct SDK for accessing the local WSCD, the discussion hereafter will address this topic in a general context.</p>
 <p>If the WSCD fails during any of these operations, for example due to hardware limitations, it will raise an error response to the Mobile Application Instance. The Mobile Application Instance MUST handle these errors accordingly to ensure secure operation. Details on error handling are left to the Mobile Application Instance implementation.</p>
 </div>
-<p><strong>Step 7</strong>: The Mobile Application Instance uses the Key Attestation APIs, providing the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> to acquire the Key Attestation.</p>
+<p><strong>Step 7</strong>: The Mobile Application Instance uses the Key Attestation APIs, providing the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> to acquire the Key Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133b</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Key Attestation APIs</strong>: In this section, the Key Attestation APIs is assumed to be provided by device manufacturers. This service allows the verification of a key being securely stored within the device's hardware through a signed object. Additionally, it offers verifiable proof that a specific Mobile Application Instance is authentic, unaltered, and in its original state using a specialized signed document made for this purpose.</p>
@@ -230,25 +230,25 @@ For Android devices, the inclusion of <strong>Strongbox Keymaster</strong> may v
 <li><p>Incorporates information pertaining to the device's security.</p></li>
 <li><p>Uses an OEM private key to sign the Key Attestation, therefore verifiable with the related OEM certificate, confirming that the Cryptographic Hardware Keys are securely managed by the operating system.</p></li>
 </ul>
-<p><strong>Step 9 (Mobile Application Instance Initialization Request)</strong>: The Mobile Application Instance sends a <a class="reference internal" href="#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a> to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, Key Attestation (<code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>), and Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>).</p>
+<p><strong>Step 9 (Mobile Application Instance Initialization Request)</strong>: The Mobile Application Instance sends a <a class="reference internal" href="#mobile-application-instance-initialization-request"><span class="std std-ref">Mobile Application Instance Initialization Request</span></a> to the Application Provider, to initialize the Mobile Application Instance, identified by the Cryptographic Hardware Key public key. The request body includes the following claims: the <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, Key Attestation (<code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>), and Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>) as <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It is not necessary to send the Application Instance Hardware public key because it is already included in the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code>.
-As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> which is the digest of the Application Provider's <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, the public key of the Application Instance Hardware and its Hardware Key Tag. This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.</p>
+As seen in the previous steps, the Key Attestation APIs creates a Key Attestation linked to the provided <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> which is the digest of the Application Provider's <code class="docutils literal notranslate"><span class="pre">nonce</span></code>, the public key of the Application Instance Hardware and its Hardware Key Tag (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_133a</span></a>). This process eliminates the need to send the Application Instance Hardware public key directly, as it is already included in the Key Attestation.</p>
 </div>
-<p><strong>Steps 10-12 (Mobile Application Instance Initialization Response)</strong>: The Application Provider validates the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> and <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> signature, therefore:</p>
+<p><strong>Steps 10-12 (Mobile Application Instance Initialization Response)</strong>: The Application Provider validates the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> and <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> signature (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135–137</span></a>), therefore:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>It MUST verify that the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> was generated by Application Provider and has not already been used.</p></li>
-<li><p>It MUST validate the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> as defined by the device manufacturers' guidelines. The Application Provider MUST also verify the binding between the received <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code> and <code class="docutils literal notranslate"><span class="pre">nonce</span></code> with the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> provided in the Key Attestation.</p></li>
-<li><p>It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider.</p></li>
-<li><p>If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>), the Public Hardware Key (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>) and possibly other useful information related to the device.</p></li>
+<li><p>It MUST verify that the <code class="docutils literal notranslate"><span class="pre">nonce</span></code> was generated by Application Provider and has not already been used (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135a</span></a>).</p></li>
+<li><p>It MUST validate the <code class="docutils literal notranslate"><span class="pre">key_attestation</span></code> as defined by the device manufacturers' guidelines (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135b</span></a>). The Application Provider MUST also verify the binding between the received <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>, <code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code> and <code class="docutils literal notranslate"><span class="pre">nonce</span></code> with the <code class="docutils literal notranslate"><span class="pre">client_data_hash</span></code> provided in the Key Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_136</span></a>).</p></li>
+<li><p>It MUST verify that the device in use has no security flaws and reflects the minimum security requirements defined by the Application Provider (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135b</span></a>).</p></li>
+<li><p>If these checks are passed, it MUST register the Mobile Application Instance, keeping the Cryptographic Hardware Key Tag (<code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code>), the Public Hardware Key (<code class="docutils literal notranslate"><span class="pre">hardware_key_pub</span></code>) and possibly other useful information related to the device (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_137</span></a>).</p></li>
 </ol>
 </div></blockquote>
-<p>Upon successful initialization of the Mobile Application Instance, the Application Provider responds with a confirmation of success (<a class="reference internal" href="#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a>).</p>
+<p>Upon successful initialization of the Mobile Application Instance, the Application Provider responds with a confirmation of success (<a class="reference internal" href="#mobile-application-instance-initialization-response"><span class="std std-ref">Mobile Application Instance Initialization Response</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_135</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Application Provider might associate the Mobile Application Instance (through the <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> identifier) with a specific User or Device. This uniquely identifies the User/Device within the Application Provider's systems and can be used for future revocations in the lifecycle of the Mobile Application Instance.</p>
+<p>The Application Provider might associate the Mobile Application Instance (through the <code class="docutils literal notranslate"><span class="pre">hardware_key_tag</span></code> identifier) with a specific User or Device  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_138</span></a>). This uniquely identifies the User/Device within the Application Provider's systems and can be used for future revocations in the lifecycle of the Mobile Application Instance.</p>
 </div>
 <p><strong>Steps 13-14</strong>: The Mobile Application Instance has been initialized.</p>
 <div class="admonition note">
@@ -379,7 +379,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
-<li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
+<li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035</span></a>).</p></li>
 </ul>
 </div></blockquote>
 <p>Below is a non-normative example of an Instance Initialization Error Response.</p>
@@ -393,7 +393,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The following table lists HTTP Status Codes and related error codes that are supported for the error response:</p>
+<p>The following table lists HTTP Status Codes and related error codes that are supported for the error response (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_036–040</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 22.2%" />
@@ -447,7 +447,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 <section id="mobile-application-key-binding-request">
 <h3><span class="section-number">16.1.2.1. </span>Mobile Application Key Binding Request<a class="headerlink" href="#mobile-application-key-binding-request" title="Link to this heading">¶</a></h3>
 <p>The Key Binding Request uses the HTTP POST method with <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> set to <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p>
-<p>The Key Binding Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below.</p>
+<p>The Key Binding Request body contains an <code class="docutils literal notranslate"><span class="pre">assertion</span></code> parameter whose value is a signed JWT including all header parameters and body claims described below (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_134</span></a>).</p>
 <p>Below is a non-normative example of a Key Binding Request.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/key-binding</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">application-provider.example.org</span>
@@ -574,7 +574,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 <blockquote>
 <div><ul class="simple">
 <li><p><em>error</em>. The error code.</p></li>
-<li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered.</p></li>
+<li><p><em>error_description</em>. Text in human-readable form providing further details to clarify the nature of the error encountered (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_035</span></a>).</p></li>
 </ul>
 </div></blockquote>
 <p>Below is a non-normative example of a Key Binding Error Response.</p>
@@ -587,7 +587,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified:</p>
+<p>The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_036–0339</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_150–155</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 30.0%" />
@@ -721,7 +721,7 @@ As seen in the previous steps, the Key Attestation APIs creates a Key Attestatio
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 17/09/2025.
+      Last updated on 26/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
