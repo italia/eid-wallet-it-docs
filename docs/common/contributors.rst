@@ -38,6 +38,7 @@
 - Salvatore Manfredi
 - Stefania Guerra
 - Stefano Alifuoco
+- Tahir Ahmad
 - Takahiko Kawasaki
 - Thomas Chiozzi
 - Torsten Lodderstedt
