@@ -13,4 +13,5 @@ Endpoints
   credential-issuer-endpoint.rst
   relying-party-endpoint.rst
   authentic-source-endpoint.rst
+  signal-hub-endpoint.rst
 

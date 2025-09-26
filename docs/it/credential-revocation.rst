@@ -101,13 +101,13 @@ Un Attestato Elettronico di Attributi (Q)EAA passa dagli stati **Issued** o **Va
 L'Attestato Elettronico di Attributi (Q)EAA rimane **Suspended** fino a quando non viene ripristinato allo stato **Issued** o **Valid** (**(Q)EAA UNSUSP**) a seconda dello stato precedente, cioè
 le condizioni che hanno portato alla sua sospensione vengono risolte, o passa a **Revoked**, **Expired** o viene eliminato. La sospensione di un Attestato Elettronico di Attributi (Q)EAA PUÒ essere:
 
-  * Guidata dal caso d'uso, basata sullo stato di validità degli attributi contenuti nell'Attestato Elettronico di Attributi (Q)EAA. In questo caso, una Fonte Autentica DEVE notificare al Fornitore di Attestati Elettronici qualsiasi cambiamento nello stato degli attributi attestati dall'Attestato Elettronico di Attributi (Q)EAA.
+  * Guidata dal caso d'uso, basata sullo stato di validità degli attributi contenuti nell'Attestato Elettronico di Attributi (Q)EAA. In questo caso, una Fonte Autentica aderente a PDND DEVONO notificare al Fornitore di Attestati Elettronici qualsiasi cambiamento nello stato degli attributi attestati dall'Attestato Elettronico di Attributi (Q)EAA.
   * Esplicitamente richiesta dall'Utente.
 
 Ciclo di vita delle credenziali digitali ottenute in batch
 ----------------------------------------------------------
 
-Ciascuna delle Credenziali Digitali emesse in batch, entra immediatamente nel proprio stato relativo al ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di singola Credenziale, utilizzando i parametri individuali della Credenziale (ad esempio, date di validità, status assertion).
+Ciascuna degli Attestati Elettronici emessi in batch, entra immediatamente nel proprio stato relativo al ciclo di vita. Tutte le transizioni di stato (Emessa → Valida → Scaduta/Sospesa/Revocata) avvengono a livello di singolo Attestato Elettronico, utilizzando i parametri individuali dell'Attestato Elettronico (ad esempio, date di validità, status assertion).
 
 Gestione del Ciclo di Vita degli Attestati Elettronici
 ------------------------------------------------------
@@ -235,7 +235,7 @@ Per qualsiasi altro Attestato Elettronico diverso dal PID, il Fornitore di Attes
 Aggiornamento dello Stato da parte dei Fornitori di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE fornire un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:Catalogo e-Service PDND del Credential Issuer`.
+In aggiunta a quanto già definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE fornire un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:Catalogo degli e-Service PDND del Credential Issuer`.
 Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Attestati Elettronici utilizzando questo endpoint.
 
 Aggiornamento dello Stato da parte delle Fonti Autentiche
@@ -243,11 +243,14 @@ Aggiornamento dello Stato da parte delle Fonti Autentiche
 
 Le Fonti Autentiche gestiscono gli attributi separatamente dagli Attestati Elettronici, che verificano l'autenticità come i documenti fisici. Perdere un documento fisico non significa perdere i privilegi che rappresenta; significa solo che l'Utente non può provarli. Tuttavia, se un Utente perde i privilegi a causa di un'infrazione grave, la Fonte Autentica revocherà gli attributi correlati. In tali casi, quando gli attributi di un Utente vengono aggiornati, le Fonti Autentiche DEVONO notificare ai Fornitori di Attestati Elettronici di aggiornare lo stato di validità di qualsiasi Attestato Elettronico contenente tali attributi.
 
-I Fornitori di Attestati Elettronici DEVONO fornire un servizio web disponibile tramite PDND per la notifica dell'aggiornamento degli Attestati Elettronici e dello stato di validità come definito nella Sezione :ref:`credential-issuer-endpoint:Catalogo e-Service PDND del Credential Issuer`. Per il flusso del protocollo, fare riferimento alla Sezione :ref:`e-service-pdnd:e-Service PDND`.
-Le Fonti Autentiche DEVONO utilizzare questo servizio di notifica nei seguenti casi:
+Le Fonti Autentiche che utilizzano Signal Hub DEVONO depositare un Segnale tramite il servizio :ref:`signal-hub-endpoint:e-Service di Raccolta Segnali` nei seguenti casi:
 
   - Il valore di uno o più Attributi contenuti nel database della Fonte Autentica è cambiato.
   - Lo stato di validità degli Attributi è aggiornato (revoca o sospensione).
+
+In entrambi i casi, il Segnale depositato DEVE avere ``signalType`` valorizzato con ``UPDATE``.
+
+Il Fornitore di Attestati Elettronici che usa Signal Hub DEVE controllare periodicamente l':ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per recuperare i Segnali depositati dalle Fonti Autentiche. Quando un Segnale viene recuperato, il Fornitore di Attestati Elettronici compie le azioni descritte nella Sezione :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. Il Fornitore di Attestati Elettronici è in grado di comprendere la natura del Segnale di ``UPDATE`` interagendo con la Fonte Autentica invocando il servizio `get attribute claims` e ispezionando il payload della risposta come descritto nella Sezione :ref:`authentic-source-endpoint:Get Attribute Claims`.
 
 Nel seguente diagramma è illustrato il processo di Alto Livello relativo all'aggiornamento dello stato da parte delle Fonti Autentiche.
 
@@ -267,22 +270,22 @@ Nel seguente diagramma è illustrato il processo di Alto Livello relativo all'ag
 
 Il processo inizia nel momento in cui si verifica una variazione sui dati o sulla loro validità nel database della Fonte Autentica. Le modifiche possono essere indotte anche da enti terzi diversi dalla Fonte Autentica, ad esempio in caso di attività illegali notificate dagli Organi di Polizia.
 
-Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica DEVE notificare il Fornitore di Attestati Elettronici che ha ricevuto i dati originali utilizzando il servizio ":ref:`credential-issuer-endpoint:Notify Update Credential`" esposto su PDND.
+Una volta che avviene un cambiamento nei dati o nella loro validità, la Fonte Autentica notifica il Fornitore di Attestati Elettronici tramite Signal Hub depositando un Segnale nell':ref:`signal-hub-endpoint:e-Service di Raccolta Segnali`. 
 
-Il Fornitore di Attestati Elettronici, una volta ricevuta la notifica, DEVE provvedere all'aggiornamento dello stato della Credenziale secondo la modalità definite per il meccanismo di validità utilizzato. Il Fornitore di Attestati Elettronici PUÒ inviare una notifica all'Utente utilizzando un eventuale canale di comunicazione precedentemente registrato.
+Il Fornitore di Attestati Elettronici controlla periodicamente l':ref:`signal-hub-endpoint:e-Service di Distribuzione Segnali` per recuperare i segnali depositati dalle Fonti Autentiche. Quando un Segnale viene recuperato, il Fornitore di Attestati Elettronici compie le azioni descritte nella Sezione :ref:`signal-hub-endpoint:Elaborazione dei Segnali`. In seguito esso provvede all'aggiornamento dello stato dell'Attestato Elettronico secondo la modalità definite per il meccanismo di validità utilizzato. Il Fornitore di Attestati Elettronici PUÒ inviare una notifica all'Utente utilizzando un eventuale canale di comunicazione precedentemente registrato.
 
-L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità delle Credenziali Digitali in essa memorizzate, riceve lo stato aggiornato. Nel caso in cui lo Stato della Credenziale Digitale venga modificato in INVALID il Fornitore di Attestati Elettronici DEVE informarne l'Utente. Nel caso in cui lo stato della Credenziale Digitale venga modificato in UPDATE (equivalentemente 0x03) o ATTRIBUTE_UPDATE (equivalentemente 0x04), il Wallet PUO' procedere alla riemissione della Credenziale Digitale come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+L'istanza del Wallet, a seguito dei controlli periodici che effettua sullo stato di validità degli Attestati Elettronici in essa memorizzati, riceve lo stato aggiornato. Nel caso in cui lo Stato dell'Attestato Elettronico venga modificato in INVALID il Fornitore di Attestati Elettronici DEVE informarne l'Utente. Nel caso in cui lo stato dell'Attestato Elettronico venga modificato in UPDATE (equivalentemente 0x03) o ATTRIBUTE_UPDATE (equivalentemente 0x04), il Wallet PUO' procedere alla riemissione dell'Attestato Elettronico Digitale come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
 
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quando più Credenziali Digitali vengono emesse insieme in un singolo batch, il loro ciclo di vita rimane completamente granulare:
+Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il loro ciclo di vita rimane completamente granulare:
 
-* **Trigger raggruppati, aggiornamenti indipendenti**: una singola richiesta di aggiornamento dello stato del batch che fa riferimento al ``notification_id`` del batch e inviata da qualsiasi entità autorizzata (ad esempio, l'Istanza del Wallet tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite PDND) viene gestita come N modifiche di stato separate. Il Credential Issuer aggiorna lo stato di ciascuna Credenziale singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``).
-* **Revoca a livello di batch**: la stessa richiesta di aggiornamento del batch funge anche da richiesta di revoca totale. Il Credential Issuer contrassegna ogni credenziale nel batch come revocata ed emette una singola notifica per l'intero batch.
+* **Trigger raggruppati, aggiornamenti indipendenti**: una singola richiesta di aggiornamento dello stato del batch che fa riferimento al ``notification_id`` del batch e inviata da qualsiasi entità autorizzata (ad esempio, l'Istanza del Wallet tramite il Notification Endpoint con ``event=credential_deleted``, un Wallet Provider tramite PDND) viene gestita come N modifiche di stato separate. Il Credential Issuer aggiorna lo stato di ciascun Attestato Elettronico singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``).
+* **Revoca a livello di batch**: la stessa richiesta di aggiornamento del batch funge anche da richiesta di revoca totale. Il Credential Issuer contrassegna ogni Attestato Elettronico nel batch come revocata ed emette una singola notifica per l'intero batch.
 
 .. note::
-  Poiché l'interfaccia utente del Wallet in genere visualizza un batch come una singola Credenziale (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove anche l'intero batch. Non è possibile eliminare o revocare una sola credenziale; qualsiasi richiesta di eliminazione che utilizzi il ``notification_id`` del batch si applica a tutte le credenziali presenti in quel batch.
+  Poiché l'interfaccia utente del Wallet in genere visualizza un batch come un singolo Attestato Elettronico (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove anche l'intero batch. Non è possibile eliminare o revocare un solo Attestato Elettronico; qualsiasi richiesta di eliminazione che utilizzi il ``notification_id`` del batch si applica a tutti gli Attestati Elettronici presenti in quel batch.
 
 
 Meccanismi di Verifica della Validità

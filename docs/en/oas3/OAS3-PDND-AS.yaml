@@ -291,23 +291,32 @@ components:
               items: 
                 type: object
                 properties:
-                  object_type:
+                  object_id:
                     description: Unique identifier of the Dataset.
                     type: string
                     example: "6F9619FF-8B86-D011-B42D-00C04FC964FF"
-                  additionalProperties:
+                  status:
+                    description: Status of the Dataset.
                     type: string
-                required: [object_type]
-                example: '[{"object_type": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
+                    enum: ["VALID","INVALID", "SUSPENDED"]
+                    example: "VALID"
+                  last_updated:
+                    description: Last time the status or attributes of the Dataset have been updated. Its format is `YYYY-MM-DDTHH:MM:SSZ`.
+                    type: string
+                    example:
+                additionalProperties:
+                  type: string
+                required: [object_id, status, last_updated]
+                example: '[{"object_id": "6F9619FF-8B86-D011-B42D-00C04FC964FF", "nationality": "IT"}, {...}]'
           required: [iss, aud, exp, iat, jti]
     CredentialClaimsRequest:
       required:
-        - object_id
+        - unique_id
       type: object
       properties:
-        object_id:
+        unique_id:
           type: string
           description: ID ANPR or Tax identification number
-        object_type:
+        object_id:
           type: string
-          description: Unique identifier of the Credential dataset, if this parameter is present only the indicated dataset is returned
+          description: Unique identifier of the Credential dataset or `jti` of the Agid-JWT-Signature Credential Issuer deferred flow's request. If this parameter is present only the indicated dataset is returned
