@@ -70,7 +70,7 @@ The details of each step shown in the previous picture are described below.
 
 **Steps 6-9 (Authorization Request)**: The Relying Party provides the user-agent with a JavaScript page inspecting the status endpoint and the Wallet Instance with a URL containing the Authorization Request.
 
-  In the **Cross Device Flow**, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL with the parameters ``client_id``, ``request_uri``, ``state`` and ``request_uri_method``.
+  In the **Cross Device Flow**, the Request URI is presented as a QR Code displayed to the User. The User scans the QR Code using the Wallet Instance and retrieves a URL with the parameters ``client_id``, ``request_uri``, ``state`` and ``request_uri_method`` (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`).
 
   Below is represented a non-normative example of a QR Code issued by the Relying Party.
 
@@ -96,7 +96,7 @@ The details of each step shown in the previous picture are described below.
 .. note::
   The *error correction level* chosen for the QR Code MUST be Q (Quartily - up to 25%), since it offers a good balance between error correction capability and data density/space. This level of quality and error correction allows the QR Code to remain readable even if it is damaged or partially obscured (:ref:`RPR-77 <test-plans-remote-presentation:RPR-77>`).
 
-Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow. Below is a non-normative example:
+Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response redirect (with status code set to 302) or an html page with an href button, containing the URL providing the same information as in the Cross-Device Flow (:ref:`WP_076–077 <wallet-credential-presentation-testcases>`). Below is a non-normative example:
 
 .. code-block:: http
 
@@ -104,9 +104,9 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
   Location: https://wallet-solution.digital-strategy.europa.eu?client_id=https%3A%2F%2Frelying-party.example.org%2Fcb&request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&request_uri_method=post
 
 
-**Step 10**: The Wallet Instance evaluates the trust with the Relying Party.
+**Step 10**: The Wallet Instance evaluates the trust with the Relying Party (:ref:`WP_078–080 <wallet-credential-presentation-testcases>`).
 
-**Steps 11-13 (Request URI Request)**: The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object.
+**Steps 11-13 (Request URI Request)**: The Wallet Instance checks if the Relying Party has provided the ``request_uri_method`` within its signed Request Object (:ref:`WP_083 <wallet-credential-presentation-testcases>`).
 
   - If it is provided and is equal to ``post``, the Wallet Instance SHOULD provide its metadata to the Relying Party. The Relying Party updates the Request Object according with the Wallet technical capabilities.
 
@@ -150,9 +150,9 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
         "wallet_nonce": "qPmxiNFCR3QTm19POc8u"
       }
 
-  - When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance requests the signed Request Object using the HTTP method GET.
+  - When the Wallet Instance capabilities discovery is not supported by Relying Party, the Wallet Instance requests the signed Request Object using the HTTP method GET (:ref:`WP_082 <wallet-credential-presentation-testcases>`).
 
-**Step 14 (Request URI Response)**: The Relying Party issues the Request Object signing it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.openid_credential_verifier.jwks`). The Wallet Instance obtains the signed Request Object.
+**Step 14 (Request URI Response)**: The Relying Party issues the Request Object signing it using one of its cryptographic private keys, where their public parts have been published within its Entity Configuration (`metadata.openid_credential_verifier.jwks`) as extracted by Wallet Instance per :ref:`WP_084 <wallet-credential-presentation-testcases>`. The Wallet Instance obtains the signed Request Object.
 
   Below is a non-normative example of the Redirect URI Response:
   
@@ -217,9 +217,9 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
       "request_uri_method": "post"
     }
   
-**Steps 15-17 (WI Checks)**: The Wallet Instance verifies the Request Object, which is in the form of a signed JWT. It then processes the Relying Party metadata and applies the relevant policies to determine which Digital Credentials and User data the Relying Party is authorized to request.
+**Steps 15-17 (WI Checks)**: The Wallet Instance verifies the Request Object, which is in the form of a signed JWT (:ref:`WP_085–086 <wallet-credential-presentation-testcases>`). It then processes the Relying Party metadata and applies the relevant policies to determine which Digital Credentials and User data the Relying Party is authorized to request (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
-**Steps 18-19 (User Consent)**: The Wallet Instance requests the User's consent to disclose the requested Credentials by showing the Relying Party's identity and the requested attributes. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release.
+**Steps 18-19 (User Consent)**: The Wallet Instance requests the User's consent to disclose the requested Credentials by showing the Relying Party's identity and the requested attributes. The User authorizes and consents the presentation of the Credentials by selecting/deselecting the personal data to release (:ref:`WP_088 <wallet-credential-presentation-testcases>`).
 
 **Step 20 (Authorization Response)**: The Wallet Instance provides the Authorization Response to the Relying Party using an HTTP request with the method POST (response mode "direct_post.jwt").
 
@@ -283,7 +283,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
         "redirect_uri": "https://relying-party.example.org/cb?response_code=091535f699ea575c7937fa5f0f454aee"
       }
 
-**Steps 31-32**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User.
+**Steps 31-32**: The user-agent is redirected to the redirect URI to continue the navigation with the protected resource made available to the User (:ref:`WP_094 <wallet-credential-presentation-testcases>`).
 
 
 
@@ -309,7 +309,9 @@ The URL parameters contained in the Relying Party Authorization Request, which i
     - OPTIONAL. The HTTP method MUST be set with ``get`` or ``post`` (:ref:`RPR-98 <test-plans-remote-presentation:RPR-98>`). The Wallet Instance should use this method to obtain the signed Request Object from the ``request_uri``. If not provided or equal to ``get``, the Wallet Instance SHOULD use the HTTP method ``get``. Otherwise, the Wallet Instance SHOULD provide its metadata within the HTTP POST body encoded in ``application/x-www-form-urlencoded``.
 
 .. warning::
+
   For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``request_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``request_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`RPR-99 <test-plans-remote-presentation:RPR-99>`).
+
 
 .. note::
   The ``state`` parameter in an OAuth request is optional, but it is highly recommended. It is primarily used to prevent Cross-Site Request Forgery (CSRF) attacks by including a unique and unpredictable value that the Relying Party can verify upon receiving the response. Additionally, it helps maintain the state between the request and response, such as session information or other data the Relying Party needs after the authorization process.
@@ -435,6 +437,7 @@ The JWT payload parameters are described herein:
     - String determining the HTTP method to be used with the `request_uri` endpoint to provide the Wallet Instance metadata to the Relying Party. The value is case-insensitive and can be set to: `get` or `post`. The GET method, as defined in [@RFC9101], involves the Wallet Instance sending a GET request to retrieve a Request Object. The POST method involves the Wallet Instance requesting the creation of a new Request Object by sending an HTTP POST request, with its metadata, to the request URI of the Relying Party.
 
 .. warning::
+
   For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`RPR-112 <test-plans-remote-presentation:RPR-112>`).
 
 .. note::
@@ -485,13 +488,13 @@ The following is an example of an error response from ``request_uri`` endpoint:
     "error_description": "The Request Object cannot be retrieved due to an internal server error."
   }
 
-Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner. The Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible. For example, if the error is ``server_error``, the Wallet Instance SHOULD prompt the User to re-enter or scan a new QR code, if applicable.
+Upon receiving an error response, the Wallet Instance SHOULD inform the User of the error condition in an appropriate manner (:ref:`WP_089 <wallet-credential-presentation-testcases>`). The Wallet Instance SHOULD log the error and MAY attempt to recover from certain errors if feasible (:ref:`WP_089a <wallet-credential-presentation-testcases>`). For example, if the error is ``server_error``, the Wallet Instance SHOULD prompt the User to re-enter or scan a new QR code, if applicable (:ref:`WP_089b <wallet-credential-presentation-testcases>`).
 
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST, the content SHOULD be encrypted according `OpenID4VP`_ Section 7.3, using the Relying Party public key.
+After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`), the content SHOULD be encrypted according `OpenID4VP`_ Section 7.3, using the Relying Party public key (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
 
 .. note::
     **Why the response is encrypted?**
@@ -503,7 +506,7 @@ After obtaining the User authorization and consent for the presentation of the D
 
     The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User (:ref:`RPR-117 <test-plans-remote-presentation:RPR-117>`).
 
-Where the following parameters are used:
+Where the following parameters are used (:ref:`WP_093 <wallet-credential-presentation-testcases>`):
 
 .. list-table::
   :class: longtable
@@ -513,6 +516,7 @@ Where the following parameters are used:
   * - **Name**
     - **Description**
   * - **vp_token**
+
     - There MUST be at least two signed presentations in this Array (:ref:`RPR-118 <test-plans-remote-presentation:RPR-118>`):
 
       - The requested Digital Credential (one or more, in format of SD-JWT VC)
@@ -522,7 +526,6 @@ Where the following parameters are used:
 
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
-
 
 SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the ``KB-JWT`` in the SD-JWT by appending the ``KB-JWT`` at the end of the SD-JWT, as represented in the example below (:ref:`RPR-119 <test-plans-remote-presentation:RPR-119>`)
 
@@ -624,6 +627,7 @@ The Relying Party MUST include a response code within the ``redirect_uri`` (:ref
 Even if an adversary manages to steal the random value used in the request to the status endpoint, their user-agent would be rejected due to the missing cookie in the request.
 
 .. warning::
+
   For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``redirect_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``redirect_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`RPR-132 <test-plans-remote-presentation:RPR-132>`).
 
 Relying Party Response Errors
