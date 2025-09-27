@@ -249,7 +249,7 @@ The IT-Wallet federation implements a **hierarchical onboarding model** where Fe
   1. **Trust Anchor**: The root authority that can directly onboard any Federation Entity.
   2. **Intermediates**: Delegated authorities that onboard Leaf Entities on behalf of Trust Anchor.
 
-This hierarchical approach enables **distributed onboarding management** while maintaining unified trust establishment. Both Trust Anchors and Intermediates act as **Federation Authorities** with the following onboarding capabilities:
+This hierarchical approach enables **distributed onboarding management** while maintaining a unified trust establishment. Both Trust Anchors and Intermediates act as **Federation Authorities** with the following onboarding capabilities:
 
   - **Certificate Issuance**: Issue X.509 certificates to their immediate subordinates with appropriate naming constraints as defined in :ref:`trust:X.509 PKI`.
   - **Metadata Policy Application**: Apply federation-specific metadata policies with **cascading effect** (Trust Anchor policies override Intermediate policies).
@@ -367,7 +367,7 @@ The following shows the decoded content of the CSR example above for reference:
    The Federation Entity Public Key in the ``jwks`` field and the public key contained in the ``certificate_signing_request`` MUST be the same key. The key is provided in two formats: JWK format for OpenID Federation operations and PKCS #10 CSR format for X.509 certificate issuance by the Federation Authority. Protocol Keys are included only in the Entity Configuration metadata, and they MUST NOT be included in the onboarding request.
 
 .. note::
-   The Entty Configuration Endpoint MUST be constructed automatically by appending ``/.well-known/openid-federation`` to the Federation Entity Identifier (``entity_id``). Federation Entities do not need to specify this endpoint separately in the registration request.
+   The Entity Configuration Endpoint is constructed automatically by appending ``/.well-known/openid-federation`` to the Federation Entity Identifier (``entity_id``). Federation Entities do not need to specify this endpoint separately in the registration request.
 
 **Step 2 - Federation Authority Validation and Certificate Issuance**: Following the onboarding request submission, the **Federation Authority** MUST perform:
 
@@ -451,7 +451,7 @@ Example certificate chain response:
 
   2. **Publish Updated Entity Configuration**: Publish the updated EC at the ``/.well-known/openid-federation`` endpoint as specified in :ref:`trust:The Infrastructure of Trust`.
 
-  3. **Submit Resolve Request**: Call the **Trust Anchor's** ``/resolve`` endpoint (as defined in :ref:`trust:Trust Infrastructure Requirements`) with URL-encoded parameters:
+  3. **Submit Resolve Request**: Call the **Trust Anchor**'s ``/resolve`` endpoint (as defined in :ref:`trust:Trust Infrastructure Requirements`) with URL-encoded parameters:
 
     - ``sub``: Federation Entity Identifier.
     - ``trust_anchor``: **Trust Anchor** Federation Entity Identifier (always the root Trust Anchor, even for Intermediate-mediated onboarding).
