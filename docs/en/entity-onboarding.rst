@@ -251,9 +251,9 @@ Federation Entities (Credential Issuers, Relying Parties, and Wallet Providers) 
 Hierarchical Federation Authority Model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The IT-Wallet federation implements a **hierarchical onboarding model** where Federation Entities can be onboarded by either:
+The IT-Wallet federation implements a **hierarchical onboarding model** where Federation Entities MAY be onboarded by either:
 
-  1. **Trust Anchor**: The root authority that can directly onboard any Federation Entity.
+  1. **Trust Anchor**: The root authority that has the capability to directly onboard any Federation Entity.
   2. **Intermediates**: Delegated authorities that onboard Leaf Entities on behalf of Trust Anchor.
 
 This hierarchical approach enables **distributed onboarding management** while maintaining a unified trust establishment. Both Trust Anchors and Intermediates act as **Federation Authorities** with the following onboarding capabilities:
@@ -654,6 +654,273 @@ Federation participants validate Trust Mark status through two mechanisms:
 
 1. **Static Validation**: Cryptographic verification using the issuing Federation Authority's public key from the trust chain.
 2. **Dynamic Validation**: Real-time status verification via the issuing Federation Authority's ``/trust_mark_status`` endpoint as defined in :ref:`trust:Federation API endpoints`.
+
+
+Certificate Management Operations
+----------------------------------
+
+This section defines the operational procedures for X.509 certificate management within the IT-Wallet federation, covering certificate chain analysis, validation procedures, and revocation verification. These procedures complement the federation onboarding processes and support ongoing certificate lifecycle management for all federation participants.
+
+Federation PKI Architecture
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The IT-Wallet federation operates a hierarchical Public Key Infrastructure where:
+
+	- **Trust Anchor**: Acts as Root Certificate Authority where root certificates MUST NOT exceed **5-year validity period**.
+	- **Federation Entity Certificate**: Each federation participant receives a certificate that operates as a limited sub-CA where certificates MUST NOT exceed **2-year validity period**.
+	- **Protocol Certificates**: Self-issued certificates for internal services where certificates SHOULD NOT exceed **1-year validity period**.
+
+Each federation entity MUST expose its Federation Entity certificate on a publicly accessible endpoint. The Federation Entity private key serves dual purposes:
+
+	1. Self-issuing Protocol certificates for internal cryptographic operations (limited sub-CA capability).
+	2. Acting as the Federation Entity Key for signing Entity Statements.
+
+.. note:: 
+  Federation entities (Leafs) can ONLY issue certificates for themselves (Protocol certificates), NOT for other federation entities. Only Federation Authorities (Trust Anchor and Intermediates) can issue certificates for other entities.
+
+For Protocol certificates with validity periods exceeding 24 hours, the issuing entity MUST publish and regularly update a Certificate Revocation List (CRL) on a publicly accessible endpoint.
+
+Certificate Chain Structure and Analysis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Federation entities receive certificate chains during the onboarding process. Understanding and validating these chains is essential for proper federation operations and trust verification.
+
+Certificate Chain Visualization
+""""""""""""""""""""""""""""""""
+
+Federation entities SHOULD analyze received certificate chains using standard cryptographic tools to verify proper structure and validate trust relationships.
+
+The following script enables federation entities to:
+
+	- Extract certificate details for verification.
+	- Analyze certificate extensions and constraints.
+	- Verify certificate hierarchy and relationships
+
+.. code-block:: bash
+
+   #!/bin/bash
+   # Certificate chain analysis for federation entities
+   # Array containing certificates in DER format encoded in Base64
+   certificate_chain=(
+       "MIIDyzCCA3GgAwIBAgI..." # Federation Entity Certificate
+       "MIIDQzCCAuigAwIBAgI..." # Trust Anchor Certificate
+   )
+
+   # Display first certificate (Federation Entity)
+   echo "===================================="
+   echo " Federation Entity Certificate Analysis"
+   echo "===================================="
+   echo
+   echo "${certificate_chain[0]}" | base64 -d > federation_entity.der
+   openssl x509 -in federation_entity.der -inform DER -text -noout
+
+   # Display second certificate (Trust Anchor)
+   echo "====================================="
+   echo " Trust Anchor Certificate Analysis"
+   echo "====================================="
+   echo
+   echo "${certificate_chain[1]}" | base64 -d > trust_anchor.der
+   openssl x509 -in trust_anchor.der -inform DER -text -noout
+
+   # Cleanup temporary files
+   rm federation_entity.der trust_anchor.der
+
+
+Certificate Chain Validation
+"""""""""""""""""""""""""""""
+
+Federation entities MUST validate certificate chains to ensure proper trust establishment and verify compliance with federation PKI requirements.
+
+A non-normative exampe of certificate chain validation procedure is given below:
+
+.. code-block:: bash
+
+   #!/bin/bash
+   # Certificate chain validation for federation entities
+
+   # Convert DER certificates to PEM format for validation
+   openssl x509 -inform der -in federation_entity.der -out federation_entity.pem
+   openssl x509 -inform der -in trust_anchor.der -out trust_anchor.pem
+
+   # Validate Trust Anchor certificate (self-signed)
+   echo "Validating Trust Anchor certificate..."
+   openssl verify -CAfile trust_anchor.pem trust_anchor.pem
+
+   # Validate Federation Entity certificate against Trust Anchor
+   echo "Validating Federation Entity certificate..."
+   openssl verify -CAfile trust_anchor.pem federation_entity.pem
+
+   # Cleanup
+   rm federation_entity.pem trust_anchor.pem
+
+Federation entities SHOULD verify:
+
+	1. **Certificate Signatures**: Each certificate MUST be properly signed by its issuer.
+	2. **Certificate Chain Integrity**: Issuer-Subject relationships MUST be valid throughout the chain.
+	3. **Certificate Validity Periods**: All certificates MUST be within their validity periods and MUST comply with federation limits.
+	4. **Certificate Extensions**: Basic Constraints and Key Usage MUST comply with federation requirements:
+
+		- Federation Entity certificates: ``CA:TRUE, pathlen:0`` (can only self-issue certificates).
+		- Protocol certificates: ``CA:FALSE`` (cannot issue certificates).
+
+Certificate Revocation Management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Federation entities MUST implement certificate revocation verification to ensure ongoing trust validation and compliance with federation security requirements.
+
+CRL Distribution and Access
+""""""""""""""""""""""""""""
+
+Federation authorities publish Certificate Revocation Lists (CRL) at publicly accessible endpoints. Federation entities MUST be able to access and process these CRL distributions for revocation verification.
+
+The following procedure enables federation entities to:
+
+	- Locate CRL distribution endpoints from certificates.
+	- Download current revocation lists.
+	- Analyze CRL content and validity periods.
+
+.. code-block:: bash
+
+   #!/bin/bash
+   # CRL extraction and analysis for federation entities
+
+   # Extract CRL URL from certificate CRL Distribution Points extension
+   crl_url=$(openssl x509 -in certificate.der -inform DER -text -noout | \
+             grep "URI:" | sed 's/.*URI://')
+
+   echo "CRL Distribution Point: $crl_url"
+
+   # Download CRL from distribution point
+   curl -s -O "$crl_url"
+   crl_file=$(basename "$crl_url")
+
+   # Display CRL information
+   echo "CRL Content Analysis:"
+   openssl crl -in "$crl_file" -inform DER -text -noout
+
+
+Certificate Revocation Verification
+""""""""""""""""""""""""""""""""""""
+
+Federation entities MUST verify certificate revocation status by checking certificate serial numbers against current Certificate Revocation Lists.
+
+Federation entities SHOULD implement automated revocation checking for:
+
+	- **Federation Entity Certificates**: Verify own certificate status periodically.
+	- **Peer Entity Certificates**: Validate certificates of other federation participants.
+	- **Trust Chain Validation**: Ensure entire certificate chains remain valid.
+
+Below a bash script for certificate revocation status verification is given as a non-normative example:
+
+.. code-block:: bash
+
+   #!/bin/bash
+   # Certificate revocation verification for federation entities
+
+   # Extract certificate serial number
+   certificate_serial=$(openssl x509 -in certificate.der -inform DER -noout -serial | \
+                       cut -d= -f2)
+
+   # Normalize serial number (remove leading zeros, convert to lowercase)
+   normalized_serial=$(echo "$certificate_serial" | sed 's/^0*//' | tr '[:upper:]' '[:lower:]')
+
+   echo "Certificate Serial Number: $normalized_serial"
+
+   # Extract CRL URL and download
+   crl_url=$(openssl x509 -in certificate.der -inform DER -text -noout | \
+             grep "URI:" | sed 's/.*URI://')
+   curl -s -O "$crl_url"
+   crl_file=$(basename "$crl_url")
+
+   # Validate CRL signature against Trust Anchor
+   echo "Validating CRL signature..."
+   openssl crl -in "$crl_file" -inform DER -noout -text -CAfile trust_anchor.pem
+
+   # Extract revoked serial numbers from CRL
+   revoked_serials=$(openssl crl -in "$crl_file" -inform DER -text -noout | \
+                    grep 'Serial Number' | \
+                    sed 's/.*Serial Number: //' | \
+                    sed 's/^0*//' | \
+                    tr '[:upper:]' '[:lower:]')
+
+   # Check if certificate is revoked
+   if echo "$revoked_serials" | grep -q "$normalized_serial"; then
+       echo "Certificate Status: REVOKED"
+       exit 1
+   else
+       echo "Certificate Status: VALID"
+       exit 0
+   fi
+
+
+
+Certificate Management Best Practices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Certificate Validation Integration
+"""""""""""""""""""""""""""""""""""
+
+Federation entities SHOULD integrate certificate validation procedures into their standard federation operations:
+
+	1. **Entity Configuration Updates**: Verify certificate chains when processing authority hints and certificate updates.
+	2. **Trust Chain Construction**: Validate all certificates during trust chain building procedures.
+	3. **Federation API Operations**: Perform certificate revocation checks during ``/resolve`` and ``/fetch`` operations.
+	4. **Protocol Certificate Management**: Validate self-issued Protocol certificates for internal services.
+	5. **Periodic Validation**: Implement regular certificate and CRL validation schedules.
+
+Diagnostic and Troubleshooting
+"""""""""""""""""""""""""""""""
+
+Federation entities MAY implement diagnostic procedures to identify and resolve certificate-related issues:
+
+  - **Certificate Validation**, including:
+
+    - **Authority Key Identifier Mismatches**: CRL Authority Key Identifier does not match Trust Anchor Subject Key Identifier.
+    - **Trust Anchor Certificate Rotation**: Outdated Trust Anchor certificates causing validation failures.
+    - **Serial Number Format Issues**: Serial number normalization problems in revocation checking.
+
+  - **CRL Validation Failure**: When CRL validation fails, federation entities SHOULD:
+
+    1. **Verify Trust Anchor Certificate**: Ensure current Trust Anchor certificate is being used.
+    2. **Check Authority Key Identifier**: Compare CRL Authority Key Identifier with Trust Anchor Subject Key Identifier.
+    3. **Validate CRL Signature**: Verify CRL is properly signed by expected issuing authority.
+    4. **Update Trust Anchor Certificate**: Download updated Trust Anchor certificate if rotation has occurred.
+
+  - **Endpoint Accessibility Verification**: Federation entities SHOULD implement connectivity testing for certificate infrastructure endpoints.
+
+
+The following non-normative example provides a script for Federation certificate infrastructure connectivity test:
+
+.. code-block:: bash
+
+   #!/bin/bash
+   # Federation certificate infrastructure connectivity test
+
+   # Test Trust Anchor certificate endpoint
+   ta_cert_url="https://trust-anchor.eid-wallet.example.it/pki/ta.cer"
+   if curl -f -s "$ta_cert_url" > /dev/null; then
+       echo "Trust Anchor certificate endpoint: ACCESSIBLE"
+   else
+       echo "Trust Anchor certificate endpoint: FAILED"
+   fi
+
+   # Test CRL distribution endpoints
+   ta_crl_url="https://trust-anchor.eid-wallet.example.it/pki/ta.crl"
+   if curl -f -s "$ta_crl_url" > /dev/null; then
+       echo "Trust Anchor CRL endpoint: ACCESSIBLE"
+   else
+       echo "Trust Anchor CRL endpoint: FAILED"
+   fi
+
+Certificate Lifecycle Coordination
+"""""""""""""""""""""""""""""""""""
+
+Federation entities MUST coordinate certificate management with federation lifecycle procedures following the established validity periods:
+
+- **Certificate Renewal**: Align certificate renewals with Entity Configuration updates and Trust Mark refresh cycles, according to the federation limits defined in :ref:`entity-onboarding:Federation PKI Architecture`.
+- **Key Rotation**: Coordinate Federation Entity Key rotation with certificate renewal procedures.
+- **CRL Management**: For Protocol certificates with validity > 24 hours, maintain current CRL publication.
+- **Federation Exit**: Ensure proper certificate revocation during voluntary or supervisory body-initiated federation exit.
 
 
 Entity Lifecycle Management
