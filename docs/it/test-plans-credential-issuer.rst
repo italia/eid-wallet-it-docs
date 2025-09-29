@@ -1027,7 +1027,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_214
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Risposta Riuscita dello Status List Endpoint
-    - Lo Status List Endpoint risponde con successo con il Token Status List utilizzando il codice stato HTTP nell'intervallo 2xx, con Fornitore Stato che utilizza content-type application/statuslist+jwt per il Token Status List in formato JWT nella risposta riuscita.
+    - Lo Status List Endpoint risponde con successo con il Token Status List utilizzando il codice stato HTTP nell'intervallo 2xx, con Fornitore Stato che utilizza content-type ``application/statuslist+jwt`` per il Token Status List in formato JWT nella risposta riuscita.
   * - CI_215
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Content-Encoding Gzip Risposta Status List HTTP
@@ -1039,7 +1039,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_217
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Richieste Catalogo Credenziale Digitale
-    - Il Fornitore di Attestati Elettronici fornisce le sue credenziali nel catalogo, insieme alle informazioni nella :ref:`tabella <table_catalogue_main_information>`. corrispondente.
+    - Il Fornitore di Attestati Elettronici fornisce le sue credenziali nel catalogo, insieme alle informazioni nella :ref:`tabella <table_catalogue_main_information>` corrispondente.
   * - CI_218
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Informazioni Elemento Array Credenziali
