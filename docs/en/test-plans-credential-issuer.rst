@@ -67,7 +67,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_013
     - Issuance, Interoperability
     - Credential Offer Grants Parameter Structure
-    - The grants parameter successfully contains an authorization_code object that includes both required sub-parameters (*issuer_state* and *authorization_server*) with appropriate values
+    - The grants parameter successfully contains an ``authorization_code`` object that includes both required sub-parameters (``issuer_state`` and ``authorization_server``) with appropriate values.
   * - CI_014
     - Issuance, Interoperability
     - Credential Object Compilation

@@ -67,7 +67,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_013
     - Emissione, Interoperabilità
     - Struttura del parametro Grants nella Credential Offer
-    - Il parametro grants contiene correttamente un oggetto authorization_code che include entrambi i sotto-parametri obbligatori (*issuer_state* e *authorization_server*) con valori appropriati.
+    - Il parametro grants contiene correttamente un oggetto ``authorization_code`` che include entrambi i sotto-parametri obbligatori (``issuer_state`` e ``authorization_server``) con valori appropriati.
   * - CI_014
     - Emissione, Interoperabilità
     - Compilazione dell’Oggetto Credential
@@ -542,11 +542,11 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
     - Nei processi di ri-emissione attivati da modifiche degli attributi, viene richiesto il consenso dell’Utente prima dell’archiviazione della nuova Credenziale Digitale.
   * - CI_117
     - Modello di Dati e ciclo di vita, Interoperabilità
-    - Attributi utente PID italiani
-    - Il PID italiano è fornito con successo con gli attributi utente definiti nella rispettiva :ref:`tabella degli Attributi PID dell'Utente <table_sd-jwt-vc_parameters>`.
+    - Attributi Utente PID domestico
+    - Il PID è fornito con successo con gli attributi utente definiti nella rispettiva :ref:`tabella degli Attributi PID dell'Utente <table_sd-jwt-vc_parameters>`.
   * - CI_118
     - Modello di Dati e ciclo di vita, Emissione, Interoperabilità
-    - Formati di credenziali (Q)EAA
+    - Formati di Credenziali (Q)EAA
     - Le (Q)EAA sono rilasciate a un'Istanza del Wallet in formato dati SD-JWT-VC o mdoc-CBOR.
   * - CI_119
     - Modello di Dati e ciclo di vita, Interoperabilità
