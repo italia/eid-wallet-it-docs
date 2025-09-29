@@ -175,7 +175,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>&quot;Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>);</p></li>
-<li><p>&quot;Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>).</p></li>
+<li><p>&quot;Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati&quot; (<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>).</p></li>
 </ul>
 </div></blockquote>
 <p>To leverage the PDND, entities MUST formally be subscribed becoming <strong>Participants</strong> (<em>Aderenti</em>). Within the PDND infrastructure, Participants MUST assume at least one of the the following roles:</p>
@@ -224,7 +224,7 @@
 </tr>
 </tbody>
 </table>
-<p><a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> define several security patterns designed to enhance specific security properties in interactions between Participants. This specification adopts the following applicable security patterns for the interaction between Participants:</p>
+<p><a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> define several security patterns designed to enhance specific security properties in interactions between Participants. This specification adopts the following applicable security patterns for the interaction between Participants:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 80.0%" />
@@ -236,7 +236,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>[REST_JWS_2021_POP]</strong> JWS POP Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]): REQUIRED. It adds a proof of possession on the Voucher. The Consumer using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.</p></td>
+<tr class="row-even"><td><p><strong>[REST_JWS_2021_POP]</strong> JWS POP Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]): REQUIRED. It adds a proof of possession on the Voucher. The Consumer using the Voucher to access an e-service MUST demonstrate the proof of possession of the private key whose public is attested on the Voucher.</p></td>
 <td><p>R2, R4, R5</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>[ID_AUTH_CHANNEL_01]</strong> Direct Trust Transport-Level Security (<em>Annex 2 - Security Patterns</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>]): REQUIRED. It protects the communication between the Consumer and the Provider by ensuring confidentiality, integrity, identification of the Provider, and mitigation against replay attack and spoofing.</p></td>
@@ -271,7 +271,7 @@
 </tr>
 </tbody>
 </table>
-<p>The following security patterns defined in <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> MUST NOT be used as they do not comply with the requirements defined above:</p>
+<p>The following security patterns defined in <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a> and <a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a> MUST NOT be used as they do not comply with the requirements defined above:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>The following patterns can only be used when the Consumer cannot subscribe to the PDND infrastructure (i.e., the trust between the Participants needs to be established in a direct form), thus not complying with <strong>R1</strong>:</p>
@@ -296,7 +296,7 @@
 </li>
 <li><p>The following pattern does not guarantee proof of possession of the Voucher, thus not complying with <strong>R5</strong>:</p>
 <ul>
-<li><p><strong>[REST_JWS_2021_Bearer]</strong> JWS Bearer Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]).</p></li>
+<li><p><strong>[REST_JWS_2021_Bearer]</strong> JWS Bearer Voucher Issuing Profile (<em>Annex 3 - Standards and technical details used for Voucher Authorization</em> [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]).</p></li>
 </ul>
 </li>
 </ul>
@@ -688,7 +688,7 @@
 <tbody>
 <tr class="row-even"><td><p><strong>DPoP</strong></p></td>
 <td><p>DPoP proof JWT, to comply with the <code class="docutils literal notranslate"><span class="pre">REST_JWS_2021_POP</span></code> security pattern. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API) and follows the <code class="docutils literal notranslate"><span class="pre">POP_DPoP</span></code> implementation.</p></td>
-<td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 </tbody>
 </table>
@@ -708,11 +708,11 @@
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
 <td><p>The unique identifier of the Participant Client, assigned by the PDND.</p></td>
-<td><p>[<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>], [<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>], [<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>client_assertion</strong></p></td>
 <td><p>A JWT representing the client assertion.</p></td>
-<td><p>[<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>], [<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7521.html"><strong>RFC 7521</strong></a>], [<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7523.html"><strong>RFC 7523</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>client_assertion_type</strong></p></td>
 <td><p>MUST be set to <code class="docutils literal notranslate"><span class="pre">urn:ietf:params:oauth:client-assertion-type:jwt-bearer</span></code>.</p></td>
@@ -796,7 +796,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>purposeId</strong></p></td>
 <td><p>The identifier of the purpose registered in the PDND Platform, associated with the intended e-Service. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API).</p></td>
-<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>digest</strong></p></td>
 <td><p>JSON object containing the digest of the <code class="docutils literal notranslate"><span class="pre">TrackingEvidence</span></code> JWT. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API), and when complying with <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> or the <code class="docutils literal notranslate"><span class="pre">POP_TPoP</span></code> implementation. If present, it MUST contain the following claims:</p>
@@ -828,7 +828,7 @@
 <tbody>
 <tr class="row-even"><td><p><strong>access_token</strong></p></td>
 <td><p>A JWT representing the access token issued by the PDND Authorization Server Endpoint.</p></td>
-<td><p>[<span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-26"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], [<span class="target" id="index-27"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>token_type</strong></p></td>
 <td><p>It MUST be set to:</p>
@@ -917,11 +917,11 @@
 </tr>
 <tr class="row-odd"><td><p><strong>client_id</strong></p></td>
 <td><p>MUST correspond to the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contained in the Voucher Request.</p></td>
-<td><p>[<span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8963.html"><strong>RFC 8963</strong></a>], [<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-48"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>], [<span class="target" id="index-49"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8963.html"><strong>RFC 8963</strong></a>], [<span class="target" id="index-50"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9068.html"><strong>RFC 9068</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>purposeId</strong></p></td>
 <td><p>MUST correspond to the value of the <code class="docutils literal notranslate"><span class="pre">purposeId</span></code> claim contained in the Voucher Request. It is mandatory only if the requested Voucher is for e-Service (i.e., not for Interoperability API).</p></td>
-<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>digest</strong></p></td>
 <td><p>MUST correspond to the value of the <code class="docutils literal notranslate"><span class="pre">digest</span></code> object contained in the Voucher Request. It is mandatory only when complying with <code class="docutils literal notranslate"><span class="pre">AUDIT_REST_02</span></code> or the <code class="docutils literal notranslate"><span class="pre">POP_TPoP</span></code> implementation.</p></td>
@@ -1523,11 +1523,11 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 <tbody>
 <tr class="row-even"><td><p><strong>Authorization</strong></p></td>
 <td><p>Voucher released by the PDND Authorization Server.</p></td>
-<td><p>[<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-72"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-05/linee_guida_interoperabilit_tecnica_pa.pdf">MODI</a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>DPoP</strong></p></td>
 <td><p>DPoP proof JWT, to comply with the <code class="docutils literal notranslate"><span class="pre">REST_JWS_2021_POP</span></code> security pattern. Is is mandatory only when following the <code class="docutils literal notranslate"><span class="pre">POP_DPoP</span></code> implementation.</p></td>
-<td><p>[<span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2024-06/Linee_guida_infrastruttura_interoperabilita_pdnd.pdf">PDND</a>]</p></td>
+<td><p>[<span class="target" id="index-73"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9449.html"><strong>RFC 9449</strong></a>], [<a class="reference external" href="https://www.agid.gov.it/sites/agid/files/2025-06/Linee_guida_Infrastruttura_Interoperabilit%C3%A0_PDND_v2_maggio_2025.pdf">PDND</a>]</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Agid-JWT-Signature</strong></p></td>
 <td><p>JWT containing the signature of the message headers whose integrity needs to be guaranteed, to comply with the <code class="docutils literal notranslate"><span class="pre">INTEGRITY_REST_02</span></code> security pattern.</p></td>
@@ -1935,7 +1935,7 @@ eyJhbGciOiJFUzI1NiIsImtpZCI6IjI4MDJhNjktMTYwNC00MjYxLTkyNDYtMjE0NTNlMjA2NThlIiwi
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 26/09/2025.
+      Last updated on 29/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

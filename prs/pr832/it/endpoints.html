@@ -144,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">9.2. Endpoint del Credential Issuer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">9.3. Endpoint della Relying Party</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">9.4. Endpoint delle Fonti Autentiche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">9.5. Endpoint di PDND Signal Hub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Algoritmi Crittografici</a></li>
@@ -200,7 +201,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="credential-issuer-endpoint.html">9.2. Endpoint del Credential Issuer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#endpoint-di-federazione">9.2.1. Endpoint di Federazione</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#endpoint-relativi-all-emissione-delgli-attestati-elettronici">9.2.2. Endpoint relativi all'Emissione delgli Attestati Elettronici</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#endpoint-di-rilascio-degli-attestati-elettronici">9.2.2. Endpoint di Rilascio degli Attestati Elettronici</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#credential-offer-endpoint">9.2.2.1. Credential Offer Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#pushed-authorization-request-endpoint">9.2.2.2. Pushed Authorization Request Endpoint</a></li>
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#authorization-endpoint">9.2.2.3. Authorization endpoint</a></li>
@@ -211,11 +212,9 @@
 <li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notification-endpoint">9.2.2.8. Notification Endpoint</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#catalogo-e-service-pdnd-del-credential-issuer">9.2.3. Catalogo e-Service PDND del Credential Issuer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notify-available-credential">9.2.3.1. Notify Available Credential</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notify-update-credential">9.2.3.2. Notify Update Credential</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notify-wallet-instance-revocation">9.2.3.3. Notify Wallet Instance Revocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#get-statistics">9.2.3.4. Get Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html#catalogo-degli-e-service-pdnd-del-credential-issuer">9.2.3. Catalogo degli e-Service PDND del Credential Issuer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#notify-wallet-instance-revocation">9.2.3.1. Notify Wallet Instance Revocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="credential-issuer-endpoint.html#get-statistics">9.2.3.2. Get Statistics</a></li>
 </ul>
 </li>
 </ul>
@@ -246,6 +245,16 @@
 <li class="toctree-l3"><a class="reference internal" href="authentic-source-endpoint.html#get-attribute-claims">9.4.1.1. Get Attribute Claims</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signal-hub-endpoint.html">9.5. Endpoint di PDND Signal Hub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#prerequisiti">9.5.1. Prerequisiti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#e-service-di-signal-hub">9.5.2. e-Service di Signal Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#e-service-di-raccolta-segnali">9.5.2.1. e-Service di Raccolta Segnali</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal-hub-endpoint.html#e-service-di-distribuzione-segnali">9.5.2.2. e-Service di Distribuzione Segnali</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html#elaborazione-dei-segnali">9.5.3. Elaborazione dei Segnali</a></li>
 </ul>
 </li>
 </ul>
@@ -280,7 +289,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 26/09/2025.
+      Ultimo aggiornamento 29/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
