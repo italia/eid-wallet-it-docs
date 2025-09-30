@@ -4,7 +4,7 @@
 Infrastruttura del Registro
 ============================
 
-L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni standardizzate dei dati, registrazione delle entità e capacità di discovery delle credenziali. Il sistema di registro è composto da più componenti interconnessi che supportano l'intero ciclo di vita delle operazioni delle credenziali digitali, dall'onboarding delle entità alla presentazione delle credenziali.
+L'ecosistema IT-Wallet opera attraverso un'infrastruttura di registro che fornisce definizioni standardizzate dei dati, registrazione delle entità e capacità di discovery delle credenziali. Il sistema di registro è composto da più componenti interconnessi che supportano l'intero ciclo di vita delle operazioni degli Attestati Elettronici, dall'onboarding delle entità alla presentazione delle credenziali.
 
 L'architettura del registro è necessaria a definire i requisiti di standardizzazione semantica, gestione del trust della federazione e discovery delle credenziali attraverso componenti di registro specializzati che garantiscono interoperabilità e conformità in tutto l'ecosistema.
 
@@ -275,7 +275,7 @@ Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica regi
      - OPZIONALE. URL che punta alla documentazione del servizio della Fonte Autentica.
    * - **organization_info.user_information**
      - string
-     - OPZIONALE. Una stringa contenente informazioni "human-readable" sulla Credenziale Digitale rilevante per l'Utente. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding e DEVE essere formattata utilizzando il formato Markdown come definito in :rfc:`7763`. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo i dati richiesti per gli attributi della Credenziale Digitale registrati *dopo* una data specifica, questa informazione DEVE essere comunicata al Trust Anchor in questa stringa Markdown.
+     - OPZIONALE. Una stringa contenente informazioni "human-readable" sulla Attestato Elettronico rilevante per l'Utente. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding e DEVE essere formattata utilizzando il formato Markdown come definito in :rfc:`7763`. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo i dati richiesti per gli attributi dell'Attestato Elettronico registrati *dopo* una data specifica, questa informazione DEVE essere comunicata al Trust Anchor in questa stringa Markdown.
    * - **data_capabilities**
      - JSON Objects Array
      - RICHIESTO. Array contenente le specifiche delle capacità dei dati.

@@ -523,7 +523,7 @@ Nella Authorization Response vengono utilizzati i seguenti parametri:
     - Identificatore univoco fornito dalla Relying Party all'interno della Authorization Request.
 
 
-SD-JWT definisce come un *Holder* può presentare una Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'*Holder* DEVE includere il ``KB-JWT`` nell'SD-JWT aggiungendo il ``KB-JWT`` alla termine della stringa contenente l'SD-JWT, come rappresentato nell'esempio seguente
+SD-JWT definisce come un *Holder* può presentare un Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'*Holder* DEVE includere il ``KB-JWT`` nell'SD-JWT aggiungendo il ``KB-JWT`` alla termine della stringa contenente l'SD-JWT, come rappresentato nell'esempio seguente
 
 .. code-block:: text
 

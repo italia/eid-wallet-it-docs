@@ -33,12 +33,12 @@ In aggiunta, i Credential Issuer POSSONO supportare:
   * **Refresh Token Flow**: L'Istanza del Wallet richiede un nuovo Access Token al Token Endpoint del PID/(Q)EEA Provider.
   * **Re-issuance Flow**: A seguito di aggiornamenti ad un Attestato Elettronico già memorizzato, l'Istanza del Wallet richiede un aggiornamento dell'Attestato Elettronico al Credential Endpoint del Credential Issuer.
   * **Deferred Issuance Flow**: Il Credential Issuer potrebbe impiegare del tempo per emettere l'Attestato Elettronico richiesto, a causa delle regole di provisioning dei dati delle Fonti Autentiche, e consente al Wallet di recuperare l'Attestato Elettronico richiesto in futuro.
-  * **Batch Credential Issuance Flow**: Permette l'emissione di un batch di una o più Credenziali Digitali. Le Credenziali Digitali emesse in batch DEVONO condividere lo stesso formato e contenere lo stesso set di attributi relativi al Titolare. Ogni Credenziale DEVE contenere dati crittografici diversi per impedire la correlabilità tra le Credenziali Digitali.
+  * **Batch Credential Issuance Flow**: Permette l'emissione di un batch di uno o più Attestati Elettronici. Gli Attestati Elettronici emessi in batch DEVONO condividere lo stesso formato e contenere lo stesso set di attributi relativi al Titolare. Ogni Attestato DEVE contenere dati crittografici diversi per impedire la correlabilità tra gli Attestati Elettronici.
 
 .. note::
     **Standard or Batch Credential Issuance:** 
 
-    L'Utente può configurare la Wallet Solution per emettere Credenziali digitali in modalità batch o standard e definire la dimensione preferita del batch.
+    L'Utente può configurare la Wallet Solution per emettere Attestati Elettronici in modalità batch o standard e definire la dimensione preferita del batch.
 
 L'intero Issuance Flow può essere suddiviso in due sotto-flussi:
 
@@ -286,9 +286,9 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
 **Passo 14 (DPoP Proof per il Credential Endpoint)**: L'Istanza del Wallet crea un JWT DPoP Proof utilizzando la stessa chiave del **Passo 8** e secondo la Sezione 4 di (:rfc:`9449`).
 
 .. note::
-   Se l'Istanza del Wallet richiede l'emissione in batch di Credenziali Digitali, il flusso prosegue con il **Passo 17**. In caso contrario, vengono eseguiti i passi **15-16**.
+   Se l'Istanza del Wallet richiede l'emissione in batch di Attestati Elettronici, il flusso prosegue con il **Passo 17**. In caso contrario, vengono eseguiti i passi **15-16**.
 
-**Passo 15 (Prova di Possesso della Credenziale)**: L'Istanza del Wallet per la richiesta delle Credenziali Digitali crea una prova di possesso con il ``c_nonce`` ottenuto nel **Passo 13** utilizzando la chiave privata utilizzata per il DPoP. Il valore del ``jwk`` nel parametro proof DEVE essere uguale alla chiave pubblica referenziata nel DPoP.
+**Passo 15 (Prova di Possesso dell'Attestato)**: L'Istanza del Wallet per la richiesta degli Attestati Elettronici crea una prova di possesso con il ``c_nonce`` ottenuto nel **Passo 13** utilizzando la chiave privata utilizzata per il DPoP. Il valore del ``jwk`` nel parametro proof DEVE essere uguale alla chiave pubblica referenziata nel DPoP.
 
 **Passo 16 (`Credential Request`)**: L'Istanza del Wallet invia una richiesta per l'Attestato Elettronico al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT di `DPoP proof`, il tipo di Attestato Elettronico, la prova (che dimostra il possesso del materiale crittografico). Il parametro ``proof`` DEVE essere un oggetto che contiene la prova di possesso del materiale crittografico a cui sarà associato l'Attestato Elettronico emesso. Per verificare la prova, il Credential Issuer conduce i seguenti controlli al Credential Endpoint:
 
@@ -339,14 +339,14 @@ Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` �
 
 **Passi 17-21 (`Credential Response`)**: Il Credential Issuer DEVE validare il JWT di *DPoP proof* in base ai passaggi definiti nella Sezione 4.3 di (:rfc:`9449`) e se l'Access Token è valido e adatto per l'Attestato Elettronico richiesto. Il Credential Issuer DEVE validare la prova di possesso per il materiale crittografico a cui il nuovo Attestato Elettronico DEVE essere vincolato, secondo la Sezione 8.2.2 di `OpenID4VCI`_. Se tutti i controlli hanno successo, il Credential Issuer crea un nuovo Attestato Elettronico vincolato al materiale crittografico e lo fornisce all'Istanza del Wallet. L'Istanza del Wallet DEVE eseguire i seguenti controlli prima di procedere con l'archiviazione sicura dell'Attestato Elettronico:
 
-**Passo 17 (Generazione di nuove chiavi per le Credenziali Digitali)**: L'Istanza del Wallet genera N nuove coppie di chiavi per le Credenziali, dove il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size``.
+**Passo 17 (Generazione di nuove chiavi per gli Attestati Elettronici)**: L'Istanza del Wallet genera N nuove coppie di chiavi per gli Attestati, dove il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size``.
 
 **Passo 18 (Prove di possesso delle credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size``.
 
 .. note::
   Il valore ``c_nonce`` in tutte le proof jwt è identico e non è necessario ottenere valori del nonce diversi.
 
-**Passo 19 (Batch Credential Request)**: L'Istanza del Wallet invia una richiesta per il batch di Credenziali Digitali al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT DPoP Proof, il tipo di Credenziale e le proofs (che dimostrano il possesso delle chiavi). Il parametro ``proofs`` DEVE essere impostato utilizzando un oggetto JSON contenente due o più prove di possesso dei materiali crittografici a cui sarà associato il batch di Credenziali Digitali emesso. Per verificare le proofs, il Credential Issuer, oltre ai controlli definiti al **Passo 16**, deve assicurarsi che l'attributo ``jwk`` in ogni proof sia univoco.
+**Passo 19 (Batch Credential Request)**: L'Istanza del Wallet invia una richiesta per il batch di Attestati Elettronici al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT DPoP Proof, il tipo di Attestato e le proofs (che dimostrano il possesso delle chiavi). Il parametro ``proofs`` DEVE essere impostato utilizzando un oggetto JSON contenente due o più prove di possesso dei materiali crittografici a cui sarà associato il batch di Attestati Elettronici emesso. Per verificare le proofs, il Credential Issuer, oltre ai controlli definiti al **Passo 16**, deve assicurarsi che l'attributo ``jwk`` in ogni proof sia univoco.
 
 .. code-block:: http
 
@@ -452,7 +452,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
    Nel sistema della Fonte Autentica talvolta sono disponibili molteplici set di dati pertanto l'Utente potrebbe essere interessato a ottenere più di una Credenziale. In questi casi, L'Issuance flow rimane lo stesso descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. Nella Token Response (**Passo 11**), il Fornitore di Credenziali genera un identificativo univoco (``credential_identifier``) per ciascun set di dati fornito nel parametro ``AttributeClaims`` del servizio PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Pertanto, l'array ``credential_identifiers`` fornito nel parametro ``authorization_details`` contiene gli identificativi di ciascun set di dati. Successivamente, il Wallet invia una Credential Request (**Passo 16**) per ciascun identificativo, ottenendo più Credenziali distinte che vengono mostrate individualmente all'Utente per la loro accettazione. Infine, il Fornitore di Credenziali viene informato dal Wallet dell'esito tramite il :ref:`credential-issuance-endpoint:Notification Endpoint`.
 
 .. note::
-  Per le Credenziali Digitali emesse in batch, il ``notification_id`` si riferisce a tutte le credenziali emesse in batch. La Notification Response (ad esempio ``credential_accepted`` o ``credential_stored``) si applica pertanto a tutte le credenziali contenute nel batch; qualsiasi errore parziale viene trattato come errore dell'intero batch.
+  Per gli Attestati Elettronici emessi in batch, il ``notification_id`` si riferisce a tutti gli attestati emessi in batch. La Notification Response (ad esempio ``credential_accepted`` o ``credential_stored``) si applica pertanto a tutti gli attestati contenuti nel batch; qualsiasi errore parziale viene trattato come errore dell'intero batch.
 
 Refresh Token Flow
 -------------------
