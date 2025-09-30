@@ -70,7 +70,7 @@ Di seguito è riportato un esempio non normativo che utilizza ``DeviceEngagement
 
 **Passo 10**: L'App di Verifica DEVE preparare un messaggio ``SessionEstablishment``. Questo messaggio DEVE essere firmato dall'App di Verifica (come specificato in [`ISO18013-5`_ #9.1.4 *mdoc reader authentication*]) e cifrato utilizzando le chiavi di sessione derivate nel passo precedente. Il messaggio di ``SessionEstablishment`` DEVE includere sia ``EReaderKey.Pub`` che una richiesta per specifici attributi.
 
-Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionEstablishment`` codificato in CBOR che contiene la richiesta mdoc di una Wallet Attestation insieme a una Credenziale Digitale mDL.
+Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionEstablishment`` codificato in CBOR che contiene la richiesta mdoc di una Wallet Attestation insieme a un Attestato Elettronico mDL.
 
 .. literalinclude:: ../../examples/iso-session-establishment.txt
   :language: text
@@ -85,7 +85,7 @@ Di seguito è riportato un esempio non normativo che utilizza la notazione diagn
 
 **Passo 15**: L'Utente esamina la richiesta e le informazioni di registrazione della Relying Party e poi approva la presentazione degli attributi richiesti.
 
-**Passo 16**: Dopo aver ricevuto l'approvazione dell'Utente, l'Istanza del Wallet DEVE recuperare le Credenziali Digitali mdoc richieste. Quindi DEVE preparare un messaggio `SessionData` contenente queste Credenziali Digitali, e DEVE firmare i dati di autenticazione richiesti (come parte del processo di autenticazione mdoc, come specificato in [`ISO18013-5`_ #9.1.3]). DEVE criptarlo utilizzando le chiavi di sessione stabilite prima di trasmetterlo all'App di Verifica sul canale BLE sicuro. La firma garantisce il binding del dispositivo e l'integrità dei dati. La risposta mdoc DEVE essere codificata in CBOR, con la sua struttura delineata in [`ISO18013-5`_ #8.3.2.1.2.2].
+**Passo 16**: Dopo aver ricevuto l'approvazione dell'Utente, l'Istanza del Wallet DEVE recuperare le Attestati Elettronici mdoc richieste. Quindi DEVE preparare un messaggio `SessionData` contenente queste Attestati Elettronici, e DEVE firmare i dati di autenticazione richiesti (come parte del processo di autenticazione mdoc, come specificato in [`ISO18013-5`_ #9.1.3]). DEVE criptarlo utilizzando le chiavi di sessione stabilite prima di trasmetterlo all'App di Verifica sul canale BLE sicuro. La firma garantisce il binding del dispositivo e l'integrità dei dati. La risposta mdoc DEVE essere codificata in CBOR, con la sua struttura delineata in [`ISO18013-5`_ #8.3.2.1.2.2].
 
 Di seguito è riportato un esempio non normativo che utilizza la notazione diagnostica di un ``SessionData`` codificato in CBOR che contiene la risposta mdoc di una Wallet Attestation e un mDL.
 
