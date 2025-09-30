@@ -28,12 +28,12 @@ The sub-phases are described below:
 Relying Party and Wallet Instances registered in the IT-Wallet ecosystem MUST support at least the following flows:
 
 
-- *Supervised Device Retrieval flow* where a human Relying Party is overseeing the verification process in person, or *unsupervised flow* where verification might happen through automated systems without human oversight.
-- *Relying Party Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication*.
-- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`credential-data-model:mdoc-CBOR Credential Format` for more details).
+- *Supervised Device Retrieval flow* where a human Relying Party is overseeing the verification process in person, or *unsupervised flow* where verification might happen through automated systems without human oversight (:ref:`WP_095 <wallet-credential-presentation-testcases>`).
+- *Relying Party Instance Authentication* following the mechanisms defined in the `ISO18013-5`_ for the *reader authentication* (:ref:`WP_098 <wallet-credential-presentation-testcases>`).
+- Domestic *Document Type* and *Namespaces* defined in this technical specification in addition to those already defined in the `ISO18013-5`_ for the mDL (see :ref:`credential-data-model:mdoc-CBOR Credential Format` for more details) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
 - *Wallet Instance validation* through the Wallet Attestation.
 
-The following table shows the supported Device Engagement technologies, specifying which are mandatory.
+The following table shows the supported Device Engagement technologies (:ref:`WP_097 <wallet-credential-presentation-testcases>`), specifying which are mandatory.
 
 .. list-table::
    :class: longtable
@@ -61,7 +61,7 @@ The following table shows the supported Device Engagement technologies, specifyi
      - RECOMMENDED
      - C – MUST if the device is equipped with an NFC reader.
 
-Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory
+Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory (:ref:`WP_097a <wallet-credential-presentation-testcases>`)
 
 The following table shows the supported Device Retrieval technologies, specifying which are mandatory.
 
@@ -91,10 +91,10 @@ The following table shows the supported Device Retrieval technologies, specifyin
      - RECOMMENDED
      - C – MUST if the device is equipped with an NFC reader.
  
-Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory
+Key: C = Conditional | M = Mandatory | :sup:`a`\ Support for at least one of these methods is mandatory (:ref:`WP_096b <wallet-credential-presentation-testcases>`)
 
 .. note::
-   From the second edition, version 3, `ISO18013-5`_ does not define or support Server Retrieval as a transport option. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified. Therefore, Server Retrieval is not considered in this flow.
+   From the second edition, version 3, `ISO18013-5`_ does not define or support Server Retrieval as a transport option. Only proximity retrieval methods (NFC, BLE, and optionally Wi-Fi Aware) are specified (:ref:`WP_096 <wallet-credential-presentation-testcases>`). Therefore, Server Retrieval is not considered in this flow (:ref:`WP_096a <wallet-credential-presentation-testcases>` and :ref:`PPR-023 <test-plans-proximity-presentation:PPR-023>`).
 
 
 The following figure illustrates the low-level flow compliant with ISO 18013-5 for proximity flow.
@@ -108,17 +108,17 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 **Step 1**: The User opens the Wallet Instance initiating the process.
 
-**Step 2**: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Application (WSCA). It is a prerequisite for accessing sensitive data and presenting attributes.
+**Step 2**: The User authenticates itself to the Wallet Instance. This can be done by the Wallet Instance or a Wallet Secure Cryptographic Application (WSCA). It is a prerequisite for accessing sensitive data and presenting attributes  (:ref:`WP_100 <wallet-credential-presentation-testcases>`).
 
 **Step 3**: The User selects the proximity presentation functionality.
 
-**Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required.
+**Step 4**: [Optional] If the initial authentication in Step 2 was not done through WSCA, a separate authentication via WSCA MAY be required  (:ref:`WP_100 <wallet-credential-presentation-testcases>`).
 
-**Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication. The public key (``EDeviceKey.Pub``) will be exchanged with the Relying Party Instance to derive a shared session key, which is then used for session encryption. This is part of the device engagement process.
+**Step 5**: The Wallet Instance generates a new ephemeral Elliptic Curve key pair for secure communication (:ref:`WP_101 <wallet-credential-presentation-testcases>`). The public key (``EDeviceKey.Pub``) will be exchanged with the Relying Party Instance to derive a shared session key, which is then used for session encryption. This is part of the device engagement process.
 
 .. admonition:: Box A
 
-   The Wallet Instance and Relying Party Instance exchange *Device Engagement* data via QR code or via NFC Connection Handover.  
+   The Wallet Instance and Relying Party Instance exchange *Device Engagement* data via QR code or via NFC Connection Handover (:ref:`WP_097 <wallet-credential-presentation-testcases>`).  
 
    Refer to:
 
@@ -127,7 +127,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
 
 **Step 6**: The Relying Party Instance generates its ephemeral key pair (``EReaderKey.Priv``, ``EReaderKey.Pub``). The private key (``EReaderKey.Priv``) MUST be kept secret, and the public key (``EReaderKey.Pub``) MUST be used in establishing the session.
 
-**Step 7**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key.
+**Step 7**: The Wallet Instance and Relying Party Instance independently MUST derive the session keys using their private ephemeral key and the other party's public ephemeral key through a key agreement protocol. This ensures session encryption. In this particular step, the Relying Party Instance MUST compute its session key  (:ref:`PPR-002 <test-plans-proximity-presentation:PPR-002>` and :ref:`WP_104 <wallet-credential-presentation-testcases>`).
 
 **Step 8**: The Relying Party Instance MUST prepare a ``SessionEstablishment`` message. This message MUST be signed by the Relying Party Instance (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) and encrypted using the session keys derived in the previous step. The ``SessionEstablishment`` message MUST include the ``EReaderKey.Pub`` and a request for specific attribute(s) (:ref:`PPR-002 <test-plans-proximity-presentation:PPR-002>`).
 
@@ -148,17 +148,17 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 9**: The Wallet Instance MUST compute the session key, as described in Step 7.
 
-**Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) to ensure its authenticity.
+**Step 10**: Upon receiving the ``SessionEstablishment`` message, the Wallet Instance MUST decrypt it using the shared session key and MUST verify the Relying Party Instance's signature (mdoc reader authentication as specified in [`ISO18013-5`_ #12.5]) to ensure its authenticity (:ref:`PPR-002 <test-plans-proximity-presentation:PPR-003>` and :ref:`WP_105–106 <wallet-credential-presentation-testcases>`).
 
-**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes. It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (:ref:`PPR-003 <test-plans-proximity-presentation:PPR-003>`).
+**Step 11**: The Wallet Instance MUST decrypt the attribute request and MUST prompt the User for their consent to release the requested attributes (:ref:`WP_107 <wallet-credential-presentation-testcases>`). It MUST also display the contents of the Relying Party's Registration Certificate to ensure transparency about the requested attributes and its registered purpose (:ref:`WP_107b <wallet-credential-presentation-testcases>`).
 
-**Step 12**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes (:ref:`PPR-004 <test-plans-proximity-presentation:PPR-004>`).
+**Step 12**: The User reviews the request and the Relying Party's registration information and then approves the presentation of the requested attributes.
 
 
 .. admonition:: Box C
 
-   After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials. It then MUST prepare a ``SessionData`` message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [`ISO18013-5`_ #12.4]). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure BLE channel. The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #10.3] (:ref:`PPR-006 <test-plans-proximity-presentation:PPR-006>`).
-   Refer to:
+   After receiving User approval, the Wallet Instance MUST retrieve the requested mdoc Digital Credentials (:ref:`PPR-006 <test-plans-proximity-presentation:PPR-006>` and :ref:`WP_108 <wallet-credential-presentation-testcases>`). It then MUST prepare a ``SessionData`` message containing these Digital Credentials, and it MUST sign the required authentication data (as part of the mdoc authentication process, as specified in [`ISO18013-5`_ #12.4]) as per (:ref:`WP_109–110 <wallet-credential-presentation-testcases>`). It MUST encrypt it using the established session keys before transmitting it to the Relying Party Instance over the secure channel (:ref:`WP_111 <wallet-credential-presentation-testcases>`). The signing ensures device binding and data integrity. The mdoc response MUST be encoded in CBOR, with its structure outlined in [`ISO18013-5`_ #10.3] (:ref:`PPR-029 <test-plans-proximity-presentation:PPR-029>`, :ref:`PPR-030 <test-plans-proximity-presentation:PPR-030>`, and :ref:`WP_112 <wallet-credential-presentation-testcases>`).
+   Refer to (:ref:`WP_112a–112b <wallet-credential-presentation-testcases>`):
 
    - Sec 8.2.2.4 for ``SessionData`` over BLE, and
    - Sec 8.2.2.5 for ``SessionData`` over NFC
@@ -170,12 +170,12 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
 
 **Step 13**: The Relying Party Instance receives the ``SessionData``, then it MUST decrypt it, and it MUST verify the Wallet Instance's signature to ensure the data's integrity and that it originates from the expected device (device binding). It also MUST check the validity of the mdoc, including its Issuer's signature. In case of long-lived Digital Credentials, it SHOULD also check the revocation status using the `TOKEN-STATUS-LIST`_.
 
-**Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message; this can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4].If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>`).
+**Step 14**: Once the data exchange is complete, either party can terminate the session. The session can be terminated by sending the status code for session termination in a ``SessionData`` message; this can be sent together with an mdoc request or response [`ISO18013-5`_ #12.2.4] (:ref:`WP_113c <wallet-credential-presentation-testcases>`). If BLE is used, this can involve sending a status code for session termination or the “End” command. In this scenario, the GATT Client (Relying Party Instance) MUST unsubscribe from characteristics and disconnect from the GATT server (Wallet Instance) (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>`, :ref:`WP_113b <wallet-credential-presentation-testcases>`, and :ref:`WP_114 <wallet-credential-presentation-testcases>`).
 
 **Final Consideration**: The presentation flow focused on the technical data exchange in proximity settings. It is crucial to recognise that supervised proximity flows involving a human verifier play a vital role in many use cases (e.g., age verification at a store, identity check by law enforcement). The human element adds a layer of identity verification through visual inspection and comparison, contributing to User Binding and overall authentication assurance aspects not fully captured in a purely technical presentation flow.
 
 .. note::
-   During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.
+   During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation (:ref:`WP_108a <wallet-credential-presentation-testcases>`). It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.
 
 .. _sec-deviceengagement-qr:
 
@@ -189,7 +189,7 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
     :alt: The figure illustrates the Device Engagement over QR Code Presentation Flow in proximity.
     :caption: `Device Engagement over QR Code. <https://www.plantuml.com/plantuml/svg/PP0n3i8m34NtdCBAtWimL4Z0m0P5YDaaLcifTQlMIQvFbAK5F5Zoz__Fae-hug9n30QZJXB7Doq6IjKsbnqxdb4Kx0j388Mdi5h05VA_fRl1LGfH75LBCXiBdN92fPghIcxQT837C6NGWU3UmMdo12mkHC_IWxLdIkpe8ZtsD9AejT-iLCVKD6qk98Uo9sstFVqaTa8sHn9VFl01>`_
 
-**Step 1**: The Wallet Instance presents a QR Code to the Relying Party Instance. The QR code SHALL contain a URI with “mdoc:” as scheme and the ``DeviceEngagement`` structure specified in Section 9.1 encoded using base64url-without-padding, according to `RFC 4648`_, as path.
+**Step 1**: The Wallet Instance presents a QR Code to the Relying Party Instance. The QR code SHALL contain a URI with “mdoc:” as scheme and the ``DeviceEngagement`` structure specified in Section 9.1 encoded using base64url-without-padding, according to `RFC 4648`_, as path  (:ref:`WP_102a <wallet-credential-presentation-testcases>`).
 
 Non-Normative Example with BLE as Data Retrieval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -205,13 +205,13 @@ Below is a non-normative example using the diagnostic notation of a CBOR-encoded
  .. literalinclude:: ../../examples/iso-device-engagement-NFC.txt
   :language: text
 
-**Step 2**: The verifier uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc. It MUST select one of the transmission technologies from the ones provided in the ``DeviceEngagement`` structure.
+**Step 2**: The Relying Party uses its Relying Party Instance to scan the QR code and retrieve the ``DeviceEngagement`` data from the mdoc. It MUST select one of the transmission technologies from the ones provided in the ``DeviceEngagement`` structure.
 
 .. _sec-deviceengagement-nfc:
 
 ``DeviceEngagement`` over NFC
 ------------------------------
-The following figure illustrates the low-level flow compliant with ISO 18013-5 for ``DeviceEngagement`` over NFC corresponding to Box A in Figure :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated`. 
+The following figure illustrates the low-level flow compliant with ISO 18013-5 for ``DeviceEngagement`` over NFC corresponding to Box A in Figure :ref:`fig_High-Level-Flow-ITWallet-Presentation-ISO-updated` (:ref:`WP_103 <wallet-credential-presentation-testcases>`). 
 
 .. _fig_DeviceEngagement-NFC:
 .. plantuml:: plantuml/device-engagement-over-nfc.puml
@@ -220,12 +220,12 @@ The following figure illustrates the low-level flow compliant with ISO 18013-5 f
     :caption: `Device Engagement over NFC. <https://www.plantuml.com/plantuml/img/dLDDJ-Cm4BtFhtZoXUOGJfooAaA28hWKr7QrPpSUWYNNpjfEilpxdPIIRRLKIEGG9NdpFkObkKbPnzpj7Eak1z_jjXo9g9M7jhQjzXdgbtQECtvwcnLqmd0Ahvxnw4N6rxo7Uo9TPzlhp38wNVPqWR8iiRo_XU7UrWpsZMvunw8o4m6HH8Zmt8HiXMAAaK3Ry0VgKvOYGBkCzJltLNiJUiaFEVgol1ugh5WRF1m0hDbnBMQRjvPnXOrk2XbcbnZBoVLKPn2Tlf8DhQ0Eoxl5FRGHDDl4QPf5uhXFDrDTz9L_gQlagmzK5OTCOwGfpOf_Tvp6tRks3N6qhdMCbcCg3jwZzN_fbRhRDx7uLuI2qLaND6xZ3O7a32bENkN5V0wbrfoI3NuXDM-TJQyVh2vQtnmlFxdDGfk5eLs1-Pn8xhuZ8_vuykuDzWN3-tSqjMTmM1pMuxEbVc2pN3nFrTg4JbYNrAEyXZJvrB8_7JcNSAAinsA-dBfr8PqNEx6aiMeYmqSV-j7DG3U2o__r5m00>`_
 
 ``DeviceEngagement`` over NFC is based on the NFC Forum Connection Handover Technical Specification, Version 1.5. Only Reader/ Writer mode using a Type 4 Tag is supported. The Connection Handover protocol is always initiated by the Relying Party Instance, which makes the role of Handover Requester. The Wallet Instance acts as the NFC Tag Device and the Relying Party Instance as the NFC Reader Device. The Wallet Instance SHALL use either Static Handover or Negotiated Handover:
-- **Static Handover**: The Relying Party Instance retrieves a Handover Select message directly from the Wallet Instance's Type 4 Tag. This message contains at least one Alternative Carrier Record, each indicating a retrieval method supported by the Wallet Instance. The Relying Party Instance MUST select one of these transmission technologies. (see Step 1)
-- **Negotiated Handover**: The Wallet Instance includes the service ``urn:nfc:sn:handover`` in a Service Parameter Record of the initial NDEF (NFC Data Exchange Format) message. Upon selecting this service, the Relying Party Instance sends a Handover Request with an Alternative Carrier Record for each carrier it supports. The Wallet Instance replies with a Handover Select message containing exactly one selected carrier. (See Step 2-4)
+- **Static Handover**: The Relying Party Instance retrieves a Handover Select message directly from the Wallet Instance's Type 4 Tag. This message contains at least one Alternative Carrier Record, each indicating a retrieval method supported by the Wallet Instance (:ref:`WP_103a <wallet-credential-presentation-testcases>`). The Relying Party Instance MUST select one of these transmission technologies. (see Step 1)
+- **Negotiated Handover**: The Wallet Instance includes the service ``urn:nfc:sn:handover`` in a Service Parameter Record of the initial NDEF (NFC Data Exchange Format) message  (:ref:`WP_103b <wallet-credential-presentation-testcases>`). Upon selecting this service, the Relying Party Instance sends a Handover Request with an Alternative Carrier Record for each carrier it supports. The Wallet Instance replies with a Handover Select message containing exactly one selected carrier. (See Step 2-4)
 
 **Step 1**: The Relying Party Instance reads the Wallet’s NFC Type 4 Tag to obtain a Handover Select message, which includes: 
 - Alternative Carrier Record is an NDEF record inside a Handover Select or Handover Request message. It points to one possible communication technology (called a “carrier”), such as NFC or BLE. It tells the reader about the supported carrier and a pointer (Auxiliary Data Reference) to more detailed information. The Alternative Carrier Record for the NFC device retrieval transmission technology shall reference the Carrier Configuration Record with the ID reference “nfc”.
-- Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it SHALL have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record SHALL be encoded according to Table 1 of [`ISO18013-5`_ #9.2.2].
+- Carrier Configuration Record provides the technical parameters needed actually to use that carrier. For NFC device retrieval transmission technology, it SHALL have the type “iso.org:18013:nfc” and the ID reference “nfc”. The binary content of the Carrier Configuration Record SHALL be encoded according to Table 1 of [`ISO18013-5`_ #9.2.2] (:ref:`WP_103d <wallet-credential-presentation-testcases>`).
 
 For example:
 For NFC, this defines maximum APDU (Application Protocol Data Unit) command/response lengths; 
@@ -235,19 +235,19 @@ If early ``SessionEstablishment`` is supported, it also lists the TNEP (Tag NDEF
 .. note::
    For the NFC device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) SHALL comply with [`ISO18013-5`_ #9.2.2]. For the BLE device retrieval transmission technology, the contents of the Alternative Carrier Record and Carrier Configuration Record(s) shall comply with [`ISO18013-5`_ #11.1.2].
 
-- Auxiliary Data Record MUST carry the DeviceEngagement structure from the Wallet Instance to the Relying Party Instance as part of the auxiliary NDEF record in the Handover Select message. This record has the type ``iso.org:18013:deviceengagement``, the ID reference “mdoc”, and uses the NFC forum external type format (``0x04``). For each Alternative Carrier record, the Auxiliary Data Reference MUST point to the NDEF record containing the ``DeviceEngagement`` Structure. 
+- Auxiliary Data Record MUST carry the DeviceEngagement structure from the Wallet Instance to the Relying Party Instance as part of the auxiliary NDEF record in the Handover Select message. This record has the type ``iso.org:18013:deviceengagement``, the ID reference “mdoc”, and uses the NFC forum external type format (``0x04``). For each Alternative Carrier record, the Auxiliary Data Reference MUST point to the NDEF record containing the ``DeviceEngagement`` Structure (:ref:`WP_103e <wallet-credential-presentation-testcases>`). 
 
 **Step 2**: The Relying Party Instance reads the Wallet Instance's Initial NDEF (NFC Data Exchange Format) message, which contains a service parameter record for ``urn:nfc:sn:handover``, indicating the Wallet supports Negotiated Handover. 
 
 **Step 3**: The Relying Party Instance sends a Handover Request to the Wallet Instance listing the supported carriers. 
 
-**Step 4**: The Wallet Instance returns Handover Select constructed in response to the received Handover Request message. The contents of the Handover Select message is the same as Step 1.
+**Step 4**: The Wallet Instance returns Handover Select constructed in response to the received Handover Request message. The contents of the Handover Select message is the same as Step 1 (:ref:`WP_103f <wallet-credential-presentation-testcases>`).
 
 .. note::
    Use of Negotiated Handover for Device Engagement allows negotiation of transfer methods. For BLE, it additionally allows negotiation of keys used by the transmission layer. This provides improved user experience and enhances the security of data transmission [`ISO18013-5`_ #9.2.1].
 
 .. note::
-   Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true``. Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service; the same ``SessionEstablishment`` SHALL also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates. If the early ``SessionEstablishment`` fails to send, proceed as normal.
+   Proceed only if the ``DeviceEngagement`` Capabilities include ``HandoverSessionEstablishmentSupport`` set to ``true`` (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Otherwise, skip the early ``SessionEstablishment``. The early ``SessionEstablishment`` is sent via a dedicated TNEP service; the same ``SessionEstablishment`` SHALL also be sent again during data retrieval and MUST match. If it does not match, the Wallet Instance terminates (:ref:`WP_103g <wallet-credential-presentation-testcases>`). If the early ``SessionEstablishment`` fails to send, proceed as normal (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
 
 **Step 5**: [Optional] Relying Party Instance opens the TNEP service named [urn:placeholder] with the Wallet Instance during the negotiated handover to deliver the early ``SessionEstablishment`` message.
 
@@ -274,12 +274,12 @@ The following figure illustrates the low-level flow compliant with `ISO18013-5`_
     :alt: The figure illustrates the Session Establishment over BLE Presentation Flow in proximity.
     :caption: `Session Establishment over BLE. <https://www.plantuml.com/plantuml/svg/ZLHDRzim3BthLn2-r3aaG3PWXs8RYYu15c0PXcRfBhimCki8ioLDakNq5-r_x9UDabitmVeL184Zak_nFLA-y05TwDf6O1UCxjeTEI4idocfBEe0nGzi6WgmrIeKW1xwq_3LDrXfHj6ISZWAWJAeY84uTNpaupFuyDI7OvTVbY2DriGLHWCnvAvHVjyIivGtphImtQuMu4YIYbI1qh2Wg2J1KjTOKqgSF4iYTkO0HIBo53eBfJCDJR7MnhEUII40ullfn_uSblViC6JBpX78FN9xZI1T0IEz9EYQdBgvPKsEMmvWYHn4XR2gaY86SsmEvoHkAF_-cSzdyzdRsPldDMG9zn0aVq7PLaP2J6IAF8GzZPIEi2ANTV7Ns01N-MHeJKbCJdEapve_cTPsF2awM2vcWpFB48xdkVJntYCs7Pt08BirpccewLNOZz0ZCamFmDZbaBDMliKWznFuJgvLEktDwLfm3RlFl_0mXPXfYs93tdFAydXnYW8CM_FO54Nouwu6BfMkbAx5866TcdWQiULZthS7XLNdk1X-QlXAjGaAatkVKLUPEojFO_clZZTu4yZ2Ep4QiRxBUOKLoGXnDWndazn0yAhMZClCR9DqjpOruiXRepr1EIfQOC2Yc737kJb7lpk-Rwao1ATsl0L-z4s8YevkyT6VNbmmBRyx_W40>`_
     
-**Step 1**: The Wallet Instance and Relying Party Instance establish a secure BLE connection [`ISO18013-5`_ #11.1]. The Relying Party Instance (central) connects to the Wallet Instance (peripheral) using the Wallet Instance service UUID provided by DeviceEngagement, then discovers services/characteristics, and enables notifications as needed.
+**Step 1**: The Wallet Instance and Relying Party Instance establish a secure BLE connection [`ISO18013-5`_ #11.1]. The Relying Party Instance (central) connects to the Wallet Instance (peripheral) using the Wallet Instance service UUID provided by DeviceEngagement, then discovers services/characteristics, and enables notifications as needed (:ref:`WP_112c <wallet-credential-presentation-testcases>`).
 
-**Step 2-5**: [Optional] Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic, that is a BLE GATT characteristic that carries an identifier value as described in [`ISO18013-5`_ #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur.
+**Step 2-5**: [Optional] Wallet Instance initiates verification by preparing to check the Relying Party’s identity via the Ident characteristic, that is a BLE GATT characteristic that carries an identifier value as described in [`ISO18013-5`_ #11.1.3.2]. The Wallet Instance derives the expected Ident value and reads the Relying Party's Ident characteristic, comparing it to the expected Ident, and terminating the BLE connection if a mismatch may occur .
 
 .. note::
-   The purpose of the Ident characteristic is only to verify whether the Wallet Instance is connected to the correct Relying Party Instance before starting data retrieval. If the Wallet Instance is connected to the wrong Relying Party Instance, session establishment will fail. Connecting and disconnecting to a Relying Party Instance takes a relatively large amount of time; therefore, it is faster to implement methods to identify the correct Relying Party Instance [`ISO18013-5`_ #11.1.3.1].
+   The purpose of the Ident characteristic is only to verify whether the Wallet Instance is connected to the correct Relying Party Instance before starting data retrieval. If the Wallet Instance is connected to the wrong Relying Party Instance, session establishment will fail. Connecting and disconnecting to a Relying Party Instance takes a relatively large amount of time; therefore, it is faster to implement methods to identify the correct Relying Party Instance [`ISO18013-5`_ #11.1.3.1] (:ref:`WP_112d <wallet-credential-presentation-testcases>`).
 
 **Step 6**: Relying Party Instance sends the encrypted ``SessionEstablishment`` message (includes ``EReaderKey`` and encrypted ``DeviceRequest``) over the established BLE connection.
 
@@ -352,13 +352,13 @@ Definitions (Acronyms and Commands)
 **Step 1**: The Relying Party Instance (PCD) sends a SELECT `APDU` command with the Application Identifier (`AID: A0 00 00 02 48 04 00`) to engage the Wallet Instance.
 
 
-**Step 2**: The Wallet Instance (PICC) responds with File Control Information (FCI) and status words (SW1/SW2), either confirming success (`90 00`) or indicating that more data (`61 XX`).
+**Step 2**: The Wallet Instance (PICC) responds with File Control Information (FCI) and status words (SW1/SW2), either confirming success (`90 00`) or indicating that more data (`61 XX`) (:ref:`WP_112e <wallet-credential-presentation-testcases>`).
 
 
 **Step 3**: The Relying Party Instance sends an ENVELOPE `APDU` carrying the ``SessionEstablishment`` message, which contains the encrypted ``DeviceRequest`` and its ephemeral public key for session setup.
 
 
-**Step 4**: The Wallet Instance processes ``SessionEstablishment`` and returns an `APDU` response with `SW1/SW2` (`OK` or `more data` to fetch), confirming the start of secure session context.
+**Step 4**: The Wallet Instance processes ``SessionEstablishment`` and returns an `APDU` response with `SW1/SW2` (`OK` or `more data` to fetch), confirming the start of secure session context (:ref:`WP_112f <wallet-credential-presentation-testcases>`).
 
 
 **Step 5-6**: [Optional] The Wallet Instance receives the ``SessionEstablishment`` message during Negotiated Handover, the Wallet Instance SHALL verify that this ``SessionEstablishment`` message matches the same message received during the data retrieval phase (i.e., Step 3-4). In the event of a mismatch, the Wallet Instance SHALL terminate the NFC connection [`ISO18013-5`_ #9.2.3].
@@ -382,7 +382,7 @@ The following figure illustrates the low-level flow compliant with `ISO18013-5`_
 Device Engagement
 ------------------
 
-The Device Engagement structure MUST be CBOR encoded and have at least the following components (:ref:`PPR-001 <test-plans-proximity-presentation:PPR-001>`):
+The Device Engagement structure MUST be CBOR encoded and have at least the following components (:ref:`PPR-001 <test-plans-proximity-presentation:PPR-001>`, :ref:`PPR-021 <test-plans-proximity-presentation:PPR-021>`, :ref:`PPR-022 <test-plans-proximity-presentation:PPR-022>`, and :ref:`WP_102 <wallet-credential-presentation-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -531,7 +531,7 @@ Each document in **documents** MUST be compliant with the following structure, a
 
 
 
-A **deviceSigned** data structure MUST be compliant with the following structure, and MUST include the following components:
+A **deviceSigned** data structure MUST be compliant with the following structure (:ref:`WP_111a <wallet-credential-presentation-testcases>`), and MUST include the following components:
 
 .. list-table::
    :class: longtable
@@ -555,23 +555,23 @@ A **deviceSigned** data structure MUST be compliant with the following structure
 .. note::
     **Presenting the Wallet Attestation**
 
-    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet Attestation and MUST include the claim ``aal`` as a disclosure. Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user.
+    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party in the mdoc request. The Wallet Instance SHOULD include all available disclosures for the Wallet Attestation and MUST include the claim ``aal`` as a disclosure (:ref:`WP_108b <wallet-credential-presentation-testcases>`). Moreover, during presentaion, the Wallet Instance MUST NOT request user's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the user (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The session MUST be terminated if at least one of the following conditions occur:
+The session MUST be terminated if at least one of the following conditions occur (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>` and :ref:`WP_113–113a <wallet-credential-presentation-testcases>`):
 
 - After a time-out of no activity of receiving or sending session establishment or session data messages occurs. The time-out for no activity implemented by the Wallet Instance and the Relying Party Instance SHOULD be no less than 300 seconds;
 - When the Wallet Instance does not accept any more requests;
 - When the Relying Party Instance does not send any further requests.
 
-If the Wallet Instance and the Relying Party Instance do not send or receive any further requests, the session termination MUST be initiated as follows (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>`):
+If the Wallet Instance and the Relying Party Instance do not send or receive any further requests, the session termination MUST be initiated as follows (:ref:`PPR-007 <test-plans-proximity-presentation:PPR-007>` and :ref:`WP_113 <wallet-credential-presentation-testcases>`):
 
 - Send the status code for session termination, or
 - Dispatch the "End" command as outlined in [`ISO18013-5`_ #11.1.3.3].
 
-When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions:
+When a session is terminated, the Wallet Instance and the Relying Party Instance MUST perform at least the following actions (:ref:`WP_114 <wallet-credential-presentation-testcases>`):
 
 - Destruction of session keys and related ephemeral key material;
 - Closure of the communication channel used for data retrieval.

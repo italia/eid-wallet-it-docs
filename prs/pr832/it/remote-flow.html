@@ -202,9 +202,9 @@
 </ol>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p>verifica la firma del Request Object firmato utilizzando la chiave pubblica identificata nell'intestazione JWT del Request Object. Utilizzando tale riferimento, l'Istanza del Wallet è in grado di selezionare la corretta chiave pubblica della Relying Party per la verifica della firma.</p></li>
-<li><p>verifica che il <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contenuto nell'emittente del Request Object (Relying Party) corrisponda a quello ottenuto al passaggio numero 2 e al parametro <code class="docutils literal notranslate"><span class="pre">sub</span></code> contenuto nella Entity Configuration della Relying Party all'interno della Trust Chain.</p></li>
-<li><p>valuta gli Attetstati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi applicando le politiche relative a quella specifica Relying Party, ottenute con la Trust Chain.</p></li>
+<li><p>verifica la firma del Request Object firmato utilizzando la chiave pubblica identificata nell'intestazione JWT del Request Object. Utilizzando tale riferimento, l'Istanza del Wallet è in grado di selezionare la corretta chiave pubblica della Relying Party per la verifica della firma (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_085</span></a>).</p></li>
+<li><p>verifica che il <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contenuto nell'emittente del Request Object (Relying Party) corrisponda a quello ottenuto al passaggio numero 2 e al parametro <code class="docutils literal notranslate"><span class="pre">sub</span></code> contenuto nella Entity Configuration della Relying Party all'interno della Trust Chain (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_086</span></a>).</p></li>
+<li><p>valuta gli Attetstati Elettronici richiesti e verifica l'idoneità della Relying Party nel richiedere questi ultimi applicando le politiche relative a quella specifica Relying Party, ottenute con la Trust Chain (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p></li>
 </ol>
 </div></blockquote>
 <ol class="arabic simple" start="5">
@@ -444,7 +444,7 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">request_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<span class="xref std std-ref">RPR-99</span>).</p>
+<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">request_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_081</span></a> and <span class="xref std std-ref">RPR-99</span>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -460,8 +460,8 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 <p class="admonition-title">Avvertimento</p>
 <p>L'Istanza del Wallet, quando fornisce le sue capacità tecniche alla Relying Party, NON DEVE includere alcuna informazione dell'Utente o altre informazioni esplicite riguardanti l'hardware utilizzato o le preferenze di utilizzo del suo Utente.</p>
 </div>
-<p>Se sia la Relying Party che l'Istanza del Wallet supportano il <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> della Relying Party, con il metodo POST e il tipo di contenuto impostato su <cite>application/x-www-form-urlencoded</cite>.
-La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorization Request) di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request.</p>
+<p>Se sia la Relying Party che l'Istanza del Wallet supportano il <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> con HTTP POST, le capacità (metadata) dell'Istanza del Wallet DEVONO essere fornite utilizzando una richiesta HTTP all'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> della Relying Party, con il metodo POST e il tipo di contenuto impostato su <cite>application/x-www-form-urlencoded</cite> (<span class="xref std std-ref">RPR-101</span> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083</span></a>).
+La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorization Request) di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. Di seguito sono riportati i dettagli normativi e i riferimenti sui parametri da utilizzare dall'Istanza del Wallet nella Richiesta URI Request (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083a–083c</span></a>).</p>
 <table class="longtable docutils align-default" id="id3">
 <caption><span class="caption-number">Tabella 8.1 </span><span class="caption-text">Parametri dell'Endpoint URI Request</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
@@ -608,7 +608,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">response_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<span class="xref std std-ref">RPR-112</span>).</p>
+<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">response_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091a</span></a> and <span class="xref std std-ref">RPR-112</span>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -692,7 +692,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
-<td><p>Ci DEVONO essere almeno due presentazioni firmate in questo Array (<span class="xref std std-ref">RPR-118</span>):</p>
+<td><p>Ci DEVONO essere almeno due presentazioni firmate in questo Array (<span class="xref std std-ref">WP_093a</span>):</p>
 <ul class="simple">
 <li><p>L'Attestato Elettronico richiesto (uno o più, in formato SD-JWT VC)</p></li>
 <li><p>la Wallet Attestation (in formato SD-JWT VC)</p></li>
@@ -705,12 +705,12 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </tr>
 </tbody>
 </table>
-<p>SD-JWT definisce come un <em>Holder</em> può presentare una Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'<em>Holder</em> DEVE includere il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> nell'SD-JWT aggiungendo il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> alla termine della stringa contenente l'SD-JWT, come rappresentato nell'esempio seguente (<span class="xref std std-ref">RPR-119</span>)</p>
+<p>SD-JWT definisce come un <em>Holder</em> può presentare una Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'<em>Holder</em> DEVE includere il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> nell'SD-JWT aggiungendo il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> alla termine della stringa contenente l'SD-JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093b</span></a>), come rappresentato nell'esempio seguente (<span class="xref std std-ref">RPR-119</span>)</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Issuer-Signed-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;~&lt;KB-JWT&gt;
 </pre></div>
 </div>
 <p>Per convalidare la firma sul Key Binding JWT, la Relying Party DEVE utilizzare il materiale crittografico incluso nell'<em>Issuer-Signed-JWT</em>. La convalida della firma del Key Binding JWT (KB-JWT) DEVE utilizzare la chiave pubblica inclusa nell'SD-JWT contenuta nel parametro <code class="docutils literal notranslate"><span class="pre">cnf</span></code> contenuto nell'<em>Issuer-Signed-JWT</em> (<span class="xref std std-ref">RPR-120</span>).</p>
-<p>Quando viene presentato un SD-JWT, il suo KB-JWT DEVE contenere i seguenti parametri nell'intestazione JWT (<span class="xref std std-ref">RPR-121</span>):</p>
+<p>Quando viene presentato un SD-JWT, il suo KB-JWT DEVE contenere i seguenti parametri nell'intestazione JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093c</span></a> and <span class="xref std std-ref">RPR-121</span>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -759,7 +759,8 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <section id="errori-della-authorization-response">
 <h3><span class="section-number">8.2.1.4.1. </span>Errori della Authorization Response<a class="headerlink" href="#errori-della-authorization-response" title="Link to this heading">¶</a></h3>
 <p>Ci sono casi in cui l'Istanza del Wallet non può convalidare il Request Object o il Request Object risulta non valido. Questo errore si verifica se il Request Object viene recuperato con successo dall'url fornito nel parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> ma non supera i controlli di convalida. Ciò potrebbe essere dovuto a firme errate, claim non conformim o altri errori di convalida, come la revoca della trust per la specifica Relying Party che lo ha emesso.</p>
-<p>Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una <em>Error Response</em> nella <em>Autorization Response</em>. L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Autorization Response</em> all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP POST. Questa <em>Error Response</em> DEVE essere codificata nel corpo della richiesta utilizzando il formato definito dal tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p>
+<p>Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una <em>Error Response</em> nella <em>Autorization Response</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a> and <span class="xref std std-ref">RPR-127</span>).
+L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Autorization Response</em> all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>). Questa <em>Error Response</em> DEVE essere codificata nel corpo della richiesta utilizzando il formato definito dal tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p>
 <p>Di seguito è riportato un esempio non normativo di una <em>Error Response</em> nella <em>Autorization Response</em>.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/response_uri</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
@@ -817,7 +818,7 @@ Questo reindirizzamento consente alla Relying Party di riprendere senza problemi
 Anche se un avversario riesce a rubare il valore casuale utilizzato nella richiesta allo Status Endpoint, il suo user-agent verrebbe rifiutato a causa del cookie mancante nella richiesta.</p>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party.</p>
+<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094a</span></a> and <span class="xref std std-ref">RPR-132</span>).</p>
 </div>
 <section id="errori-della-risposta-della-relying-party">
 <h3><span class="section-number">8.2.1.5.1. </span>Errori della Risposta della Relying Party<a class="headerlink" href="#errori-della-risposta-della-relying-party" title="Link to this heading">¶</a></h3>
@@ -1061,7 +1062,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 29/09/2025.
+      Ultimo aggiornamento 30/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

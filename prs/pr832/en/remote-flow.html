@@ -201,9 +201,9 @@
 </ol>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p>verifies the signature of the signed Request Object using the public key identified in the <code class="docutils literal notranslate"><span class="pre">JWT</span></code> header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification.</p></li>
-<li><p>verifies that the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> parameter contained in the Relying Party's Entity Configuration within the Trust Chain.</p></li>
-<li><p>evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain.</p></li>
+<li><p>verifies the signature of the signed Request Object using the public key identified in the <code class="docutils literal notranslate"><span class="pre">JWT</span></code> header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_085</span></a>).</p></li>
+<li><p>verifies that the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the <code class="docutils literal notranslate"><span class="pre">sub</span></code> parameter contained in the Relying Party's Entity Configuration within the Trust Chain (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_086</span></a>).</p></li>
+<li><p>evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_087</span></a>).</p></li>
 </ol>
 </div></blockquote>
 <ol class="arabic simple" start="5">
@@ -439,7 +439,7 @@ The following is a non-normative example of the response with the <code class="d
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>For security reasons and to prevent endpoint mix-up attacks, the value contained in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter MUST be one of those attested by a trusted third party, such as those provided in the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata within the <code class="docutils literal notranslate"><span class="pre">request_uris</span></code> parameter, obtained from the Trust Chain about the Relying Party (<span class="xref std std-ref">RPR-99</span>).</p>
+<p>For security reasons and to prevent endpoint mix-up attacks, the value contained in the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> parameter MUST be one of those attested by a trusted third party, such as those provided in the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata within the <code class="docutils literal notranslate"><span class="pre">request_uris</span></code> parameter, obtained from the Trust Chain about the Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_081</span></a> and <span class="xref std std-ref">RPR-99</span>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -457,8 +457,8 @@ The following is a non-normative example of the response with the <code class="d
 Relying Party, MUST NOT include any User information or other explicit (<span class="xref std std-ref">RPR-100</span>)
 information regarding the hardware used or usage preferences of its User (<span class="xref std std-ref">RPR-92</span>).</p>
 </div>
-<p>If both the Relying Party and the Wallet Instance support the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint of the Relying Party, with the method POST and content type set to <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> (<span class="xref std std-ref">RPR-101</span>).
-The request and its parameters are defined in Section number 5 (Authorization Request) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request.</p>
+<p>If both the Relying Party and the Wallet Instance support the <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint of the Relying Party, with the method POST and content type set to <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> (<span class="xref std std-ref">RPR-101</span> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083</span></a>).
+The request and its parameters are defined in Section number 5 (Authorization Request) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_083a–083c</span></a>).</p>
 <table class="longtable docutils align-default" id="id3">
 <caption><span class="caption-number">Table 8.1 </span><span class="caption-text">Request URI Endpoint Parameters</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
 <colgroup>
@@ -606,7 +606,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>For security reasons and to prevent endpoint mix-up attacks, the value contained in the <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> parameter MUST be one of those attested by a trusted third party, such as those provided in the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata within the <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> parameter, obtained from the Trust Chain about the Relying Party (<span class="xref std std-ref">RPR-112</span>).</p>
+<p>For security reasons and to prevent endpoint mix-up attacks, the value contained in the <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> parameter MUST be one of those attested by a trusted third party, such as those provided in the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata within the <code class="docutils literal notranslate"><span class="pre">response_uris</span></code> parameter, obtained from the Trust Chain about the Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091a</span></a> and <span class="xref std std-ref">RPR-112</span>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -690,7 +690,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
-<td><p>There MUST be at least two signed presentations in this Array (<span class="xref std std-ref">RPR-118</span>):</p>
+<td><p>There MUST be at least two signed presentations in this Array (<span class="xref std std-ref">WP_093a</span>):</p>
 <ul class="simple">
 <li><p>The requested Digital Credential (one or more, in format of SD-JWT VC)</p></li>
 <li><p>The Wallet Attestation (in SD-JWT VC format)</p></li>
@@ -703,12 +703,12 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </tr>
 </tbody>
 </table>
-<p>SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> in the SD-JWT by appending the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> at the end of the SD-JWT, as represented in the example below (<span class="xref std std-ref">RPR-119</span>)</p>
+<p>SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> in the SD-JWT by appending the <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> at the end of the SD-JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093b</span></a>), as represented in the example below (<span class="xref std std-ref">RPR-119</span>)</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Issuer-Signed-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;~&lt;KB-JWT&gt;
 </pre></div>
 </div>
 <p>To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the cnf parameter contained in the Issuer-Signed-JWT (<span class="xref std std-ref">RPR-120</span>).</p>
-<p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (<span class="xref std std-ref">RPR-121</span>):</p>
+<p>When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093c</span></a> and <span class="xref std std-ref">RPR-121</span>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -757,8 +757,8 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <section id="authorization-response-errors">
 <h3><span class="section-number">8.2.1.4.1. </span>Authorization Response Errors<a class="headerlink" href="#authorization-response-errors" title="Link to this heading">¶</a></h3>
 <p>There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the url provided in the parameter <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> but fails the validation checks. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of the Relying Party.</p>
-<p>If the Wallet Instance encounters any such errors during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response (<span class="xref std std-ref">RPR-127</span>).
-The Wallet Instance sends the Authorization Error Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint using an HTTP POST request.
+<p>If the Wallet Instance encounters any such errors during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a> and <span class="xref std std-ref">RPR-127</span>).
+The Wallet Instance sends the Authorization Error Response to the Relying Party <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> endpoint using an HTTP POST request (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>).
 The Authorization Error Response MUST be encoded in the request body using the format defined by the <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> content type (<span class="xref std std-ref">RPR-128</span>).</p>
 <p>Below is a non-normative example of an Authorization Error Response.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/response_uri</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -817,7 +817,7 @@ This redirect allows the Relying Party to seamlessly resume interaction with the
 Even if an adversary manages to steal the random value used in the request to the status endpoint, their user-agent would be rejected due to the missing cookie in the request.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>For security reasons and to prevent endpoint mix-up attacks, the value contained in the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter MUST be one of those attested by a trusted third party, such as those provided in the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata within the <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> parameter, obtained from the Trust Chain about the Relying Party (<span class="xref std std-ref">RPR-132</span>).</p>
+<p>For security reasons and to prevent endpoint mix-up attacks, the value contained in the <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> parameter MUST be one of those attested by a trusted third party, such as those provided in the <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> metadata within the <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code> parameter, obtained from the Trust Chain about the Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094a</span></a> and <span class="xref std std-ref">RPR-132</span>).</p>
 </div>
 <section id="relying-party-response-errors">
 <h3><span class="section-number">8.2.1.5.1. </span>Relying Party Response Errors<a class="headerlink" href="#relying-party-response-errors" title="Link to this heading">¶</a></h3>
@@ -1064,7 +1064,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 29/09/2025.
+      Last updated on 30/09/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

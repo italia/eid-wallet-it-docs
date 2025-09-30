@@ -37,9 +37,9 @@ A High-Level description of the remote flow, from the User's perspective, is giv
   3. *Request URI Response*: the Relying Party returns a signed Request Object to the Wallet Instance.
   4. *WI Checks*: the Wallet Instance:
 
-    a. verifies the signature of the signed Request Object using the public key identified in the ``JWT`` header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification.
-    b. verifies that the ``client_id`` contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the Relying Party's Entity Configuration within the Trust Chain.
-    c. evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain.
+    a. verifies the signature of the signed Request Object using the public key identified in the ``JWT`` header of the Request Object. Using that reference, the Wallet Instance is able to select the correct Relying Party's public key for signature verification (:ref:`WP_085 <wallet-credential-presentation-testcases>`).
+    b. verifies that the ``client_id`` contained in the Request Object issuer (Relying Party) matches with the one obtained at the step number 2 and with the ``sub`` parameter contained in the Relying Party's Entity Configuration within the Trust Chain (:ref:`WP_086 <wallet-credential-presentation-testcases>`).
+    c. evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain  (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
   5. *User Consent*: the Wallet Instance asks User disclosure and consent by showing the Relying Party's identity and the requested attributes.
   6. *POST Authorization Response*: the Wallet Instance presents the requested information to the Relying Party, along with the Wallet Attestation if requested.
@@ -310,7 +310,7 @@ The URL parameters contained in the Relying Party Authorization Request, which i
 
 .. warning::
 
-  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``request_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``request_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`RPR-99 <test-plans-remote-presentation:RPR-99>`).
+  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``request_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``request_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`WP_081 <wallet-credential-presentation-testcases>` and :ref:`RPR-99 <test-plans-remote-presentation:RPR-99>`).
 
 
 .. note::
@@ -331,8 +331,8 @@ This feature can be useful when, for example, the Wallet Instance supports a res
   Relying Party, MUST NOT include any User information or other explicit (:ref:`RPR-100 <test-plans-remote-presentation:RPR-100>`)
   information regarding the hardware used or usage preferences of its User (:ref:`RPR-92 <test-plans-remote-presentation:RPR-92>`).
 
-If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the ``request_uri`` endpoint of the Relying Party, with the method POST and content type set to ``application/x-www-form-urlencoded`` (:ref:`RPR-101 <test-plans-remote-presentation:RPR-101>`).
-The request and its parameters are defined in Section number 5 (Authorization Request) of `OpenID4VP`_. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request.
+If both the Relying Party and the Wallet Instance support the ``request_uri_method`` with HTTP POST, the Wallet Instance capabilities (metadata) MUST be provided using an HTTP request to the ``request_uri`` endpoint of the Relying Party, with the method POST and content type set to ``application/x-www-form-urlencoded`` (:ref:`RPR-101 <test-plans-remote-presentation:RPR-101>` and :ref:`WP_083 <wallet-credential-presentation-testcases>`).
+The request and its parameters are defined in Section number 5 (Authorization Request) of `OpenID4VP`_. Below are the normative details and references about the parameters to be used by the Wallet Instance in the request (:ref:`WP_083a–083c <wallet-credential-presentation-testcases>`).
 
 .. list-table:: Request URI Endpoint Parameters
    :class: longtable
@@ -438,7 +438,7 @@ The JWT payload parameters are described herein:
 
 .. warning::
 
-  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`RPR-112 <test-plans-remote-presentation:RPR-112>`).
+  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``response_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``response_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`WP_091a <wallet-credential-presentation-testcases>` and :ref:`RPR-112 <test-plans-remote-presentation:RPR-112>`).
 
 .. note::
   The following parameter, even if defined in [OID4VP], is not mentioned in the previous non-normative example, since its usage is conditional.
@@ -517,7 +517,7 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
     - **Description**
   * - **vp_token**
 
-    - There MUST be at least two signed presentations in this Array (:ref:`RPR-118 <test-plans-remote-presentation:RPR-118>`):
+    - There MUST be at least two signed presentations in this Array (:ref:`WP_093a <wallet-credential-presentation-testcases>`and :ref:`RPR-118 <test-plans-remote-presentation:RPR-118>`):
 
       - The requested Digital Credential (one or more, in format of SD-JWT VC)
       - The Wallet Attestation (in SD-JWT VC format)
@@ -527,7 +527,7 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
   * - **state**
     - Unique identifier provided by the Relying Party within the Authorization Request.
 
-SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the ``KB-JWT`` in the SD-JWT by appending the ``KB-JWT`` at the end of the SD-JWT, as represented in the example below (:ref:`RPR-119 <test-plans-remote-presentation:RPR-119>`)
+SD-JWT defines how a Holder can present a Digital Credential to a Relying Party, proving the legitimate possession of the Digital Credential. To do this, the Holder MUST include the ``KB-JWT`` in the SD-JWT by appending the ``KB-JWT`` at the end of the SD-JWT (:ref:`WP_093b <wallet-credential-presentation-testcases>`), as represented in the example below (:ref:`RPR-119 <test-plans-remote-presentation:RPR-119>`)
 
 .. code-block:: text
 
@@ -535,7 +535,7 @@ SD-JWT defines how a Holder can present a Digital Credential to a Relying Party,
 
 To validate the signature on the Key Binding JWT, the Relying Party MUST use the key material included in the Issuer-Signed-JWT. The Key Binding JWT (KB-JWT) signature validation MUST use the public key included in the SD-JWT, using the cnf parameter contained in the Issuer-Signed-JWT (:ref:`RPR-120 <test-plans-remote-presentation:RPR-120>`).
 
-When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (:ref:`RPR-121 <test-plans-remote-presentation:RPR-121>`):
+When an SD-JWT is presented, its KB-JWT MUST contain the following parameters in the JWT header (:ref:`WP_093c <wallet-credential-presentation-testcases>` and :ref:`RPR-121 <test-plans-remote-presentation:RPR-121>`):
 
 .. list-table::
   :class: longtable
@@ -573,8 +573,8 @@ Authorization Response Errors
 
 There are cases where the Wallet Instance cannot validate the Request Object or the Request Object results invalid. This error occurs if the Request Object is successfully fetched from the url provided in the parameter ``request_uri`` but fails the validation checks. This could be due to incorrect signatures, malformed claims, or other validation failures, such as the revocation of the Relying Party.
 
-If the Wallet Instance encounters any such errors during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response (:ref:`RPR-127 <test-plans-remote-presentation:RPR-127>`).
-The Wallet Instance sends the Authorization Error Response to the Relying Party ``response_uri`` endpoint using an HTTP POST request.
+If the Wallet Instance encounters any such errors during the evaluation of the Authorization Request, it MUST notify the Relying Party by sending an Authorization Error Response (:ref:`WP_090 <wallet-credential-presentation-testcases>` and :ref:`RPR-127 <test-plans-remote-presentation:RPR-127>`).
+The Wallet Instance sends the Authorization Error Response to the Relying Party ``response_uri`` endpoint using an HTTP POST request (:ref:`WP_090 <wallet-credential-presentation-testcases>`).
 The Authorization Error Response MUST be encoded in the request body using the format defined by the ``application/x-www-form-urlencoded`` content type (:ref:`RPR-128 <test-plans-remote-presentation:RPR-128>`).
 
 Below is a non-normative example of an Authorization Error Response.
@@ -628,7 +628,7 @@ Even if an adversary manages to steal the random value used in the request to th
 
 .. warning::
 
-  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``redirect_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``redirect_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`RPR-132 <test-plans-remote-presentation:RPR-132>`).
+  For security reasons and to prevent endpoint mix-up attacks, the value contained in the ``redirect_uri`` parameter MUST be one of those attested by a trusted third party, such as those provided in the ``openid_credential_verifier`` metadata within the ``redirect_uris`` parameter, obtained from the Trust Chain about the Relying Party (:ref:`WP_094a <wallet-credential-presentation-testcases>` and :ref:`RPR-132 <test-plans-remote-presentation:RPR-132>`).
 
 Relying Party Response Errors
 --------------------------------
