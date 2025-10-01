@@ -711,11 +711,11 @@ Errori di ottenimento degli Attestati Elettronici di Attributi
      - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica
    * - L'Utente non riesce ad ottenere nella propria Istanza del Wallet un certo Attestato Elettronico di Attributi (e.g. assenza di titolarità, versione fisica non valida o scaduta, etc.) 
      - Fonte Autentica 
-  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito entro l’intervallo di tempo definito 
+   * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito entro l’intervallo di tempo definito 
      - Fornitore di Attestati Elettronici di Attributi
-  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere completato in modalità sincrona per cui si invita l’Utente ad attendere finché l’Attestato non sarà disponibile (es. flusso di ottenimento in modalità differita)
+   * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere completato in modalità sincrona per cui si invita l’Utente ad attendere finché l’Attestato non sarà disponibile (es. flusso di ottenimento in modalità differita)
      - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica 
-  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito perché la richiesta è superiore al limite consentito (es. ottenimento di più attestati contemporaneamente) 
+   * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito perché la richiesta è superiore al limite consentito (es. ottenimento di più attestati contemporaneamente) 
      - Fornitore di Attestati Elettronici di Attributi 
 
 

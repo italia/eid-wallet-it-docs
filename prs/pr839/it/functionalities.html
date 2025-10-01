@@ -709,6 +709,37 @@ Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti
 </section>
 <section id="errori-di-ottenimento-degli-attestati-elettronici-di-attributi">
 <h3><span class="section-number">4.8.2. </span>Errori di ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 80.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tipologia di errore</p></th>
+<th class="head"><p>Attore responsabile</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>L'Istanza del Wallet e/o il PID non risultano attivi</p></td>
+<td><p>Istanza del Wallet</p></td>
+</tr>
+<tr class="row-odd"><td><p>Il servizio di ottenimento di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici)</p></td>
+<td><p>Fornitore di Attestati Elettronici di Attributi, Fonte Autentica</p></td>
+</tr>
+<tr class="row-even"><td><p>L'Utente non riesce ad ottenere nella propria Istanza del Wallet un certo Attestato Elettronico di Attributi (e.g. assenza di titolarità, versione fisica non valida o scaduta, etc.)</p></td>
+<td><p>Fonte Autentica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito entro l’intervallo di tempo definito</p></td>
+<td><p>Fornitore di Attestati Elettronici di Attributi</p></td>
+</tr>
+<tr class="row-even"><td><p>Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere completato in modalità sincrona per cui si invita l’Utente ad attendere finché l’Attestato non sarà disponibile (es. flusso di ottenimento in modalità differita)</p></td>
+<td><p>Fornitore di Attestati Elettronici di Attributi, Fonte Autentica</p></td>
+</tr>
+<tr class="row-odd"><td><p>Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito perché la richiesta è superiore al limite consentito (es. ottenimento di più attestati contemporaneamente)</p></td>
+<td><p>Fornitore di Attestati Elettronici di Attributi</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="errori-di-presentazione-degli-attestati-elettronici">
 <h3><span class="section-number">4.8.3. </span>Errori di presentazione degli Attestati Elettronici<a class="headerlink" href="#errori-di-presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
