@@ -743,7 +743,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_096
      - Proximity-flow, Presentation, Security
      - Device retrieval support
-     - Wallet Instance supports Device Retrieval mechanisms via the Bluetooth Low Energy (BLE) or NFC, and optionally via Wi-Fi Aware.
+     - Wallet Instance supports Device Retrieval mechanisms via the Bluetooth Low Energy (BLE) or NFC.
    * - WP_096a
      - Proximity-flow, Presentation, Security
      - Enforce device retrieval only
@@ -779,7 +779,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_102
      - Proximity-flow, Presentation, Interoperability
      - CBOR encoding of DeviceEngagement data
-     - DeviceEngagement is CBOR encoded and contains Version, Security, Capabilities, and OriginInfos (may be empty). For QR engagement it also includes DeviceRetrievalMode-BLEOptions and/or DeviceRetrievalMode-NFCOptions. For NFC engagement,  it omits DeviceRetrievalMode-BLEOptions and DeviceRetrievalMode-NFCOptions; for NFC engagement these options are omitted.
+     - DeviceEngagement is CBOR encoded and contains Version, Security, Capabilities, and OriginInfos (may be empty). For QR engagement it also includes DeviceRetrievalMode-BLEOptions and/or DeviceRetrievalMode-NFCOptions. For NFC engagement, these options are omitted.
    * - WP_102a
      - Proximity-flow, Presentation, Interoperability 
      - DeviceEngagement over QR
@@ -817,7 +817,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - NFC Connection Handover (Negotiated)
      - Wallet Instance exposes the service ``urn:nfc:sn:handover``; upon Handover Request, it returns Handover Select with exactly one selected carrier and the auxiliary DeviceEngagement.
    * - WP_103c
-     - Proximity-flow, Presentation, Interoperability
+     - Proximity-flow, Presentation, Security, Interoperability
      - Early SessionEstablishment via TNEP
      - If ``HandoverSessionEstablishmentSupport`` set to ``true`` in DeviceEngagement, Wallet Instance accepts early ``SessionEstablishment`` over the announced TNEP service during negotiated handover and later verifies it matches the ``SessionEstablishment`` received during data retrieval.
    * - WP_103d
@@ -881,7 +881,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
      - Prepare mdoc Response
      - Wallet Instance successfully builds the CBOR-encoded ``SessionData`` message (the mdoc Response) including a ``documents`` array populated with the requested Credentials.
    * - WP_110
-     - Proximity-flow, Presentation, Interoperability
+     - Proximity-flow, Presentation, Security, Interoperability
      - mdoc authentication
      - Wallet Instance correctly signs the ``deviceSigned`` authentication data for each presented Credential, following the mdoc authentication process as specified in Section 12.4 of [`ISO18013-5`_].
    * - WP_111

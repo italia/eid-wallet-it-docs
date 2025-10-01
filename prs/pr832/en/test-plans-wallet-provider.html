@@ -1091,7 +1091,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_096</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Device retrieval support</p></td>
-<td><p>Wallet Instance supports Device Retrieval mechanisms via the Bluetooth Low Energy (BLE) or NFC, and optionally via Wi-Fi Aware.</p></td>
+<td><p>Wallet Instance supports Device Retrieval mechanisms via the Bluetooth Low Energy (BLE) or NFC.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_096a</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
@@ -1136,7 +1136,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_102</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>CBOR encoding of DeviceEngagement data</p></td>
-<td><p>DeviceEngagement is CBOR encoded and contains Version, Security, Capabilities, and OriginInfos (may be empty). For QR engagement it also includes DeviceRetrievalMode-BLEOptions and/or DeviceRetrievalMode-NFCOptions. For NFC engagement,  it omits DeviceRetrievalMode-BLEOptions and DeviceRetrievalMode-NFCOptions; for NFC engagement these options are omitted.</p></td>
+<td><p>DeviceEngagement is CBOR encoded and contains Version, Security, Capabilities, and OriginInfos (may be empty). For QR engagement it also includes DeviceRetrievalMode-BLEOptions and/or DeviceRetrievalMode-NFCOptions. For NFC engagement, these options are omitted.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_102a</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
@@ -1184,7 +1184,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <td><p>Wallet Instance exposes the service <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code>; upon Handover Request, it returns Handover Select with exactly one selected carrier and the auxiliary DeviceEngagement.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_103c</p></td>
-<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>Proximity-flow, Presentation, Security, Interoperability</p></td>
 <td><p>Early SessionEstablishment via TNEP</p></td>
 <td><p>If <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> in DeviceEngagement, Wallet Instance accepts early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over the announced TNEP service during negotiated handover and later verifies it matches the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> received during data retrieval.</p></td>
 </tr>
@@ -1264,7 +1264,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <td><p>Wallet Instance successfully builds the CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message (the mdoc Response) including a <code class="docutils literal notranslate"><span class="pre">documents</span></code> array populated with the requested Credentials.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_110</p></td>
-<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>Proximity-flow, Presentation, Security, Interoperability</p></td>
 <td><p>mdoc authentication</p></td>
 <td><p>Wallet Instance correctly signs the <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> authentication data for each presented Credential, following the mdoc authentication process as specified in Section 12.4 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
 </tr>

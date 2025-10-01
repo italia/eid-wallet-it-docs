@@ -1092,7 +1092,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <tr class="row-even"><td><p>WP_096</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
 <td><p>Supporto meccanismi Device Retrieval</p></td>
-<td><p>Istanza del Wallet supporta i meccanismi Device Retrieval tramite Bluetooth Low Energy (BLE) o NFC, e opzionalmente tramite Wi-Fi Aware.</p></td>
+<td><p>Istanza del Wallet supporta i meccanismi Device Retrieval tramite Bluetooth Low Energy (BLE) o NFC.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_096a</p></td>
 <td><p>Flusso-prossimità, Presentazione, Sicurezza</p></td>
@@ -1185,7 +1185,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <td><p>Istanza del Wallet espone il servizio <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code>; su Handover Request restituisce un Handover Select con esattamente un carrier selezionato e il DeviceEngagement ausiliario.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_103c</p></td>
-<td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
+<td><p>Flusso-prossimità, Presentazione, Sicurezza, Interoperabilità</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> anticipato via TNEP</p></td>
 <td><p>Se <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code> nel DeviceEngagement, Istanza del Wallet accetta il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> anticipato sul servizio TNEP annunciato e successivamente verifica che corrisponda a quello ricevuto durante il recupero dati.</p></td>
 </tr>
@@ -1265,7 +1265,7 @@ coprendo sia le fasi di presentazione <strong>Flusso Remoto</strong> che <strong
 <td><p>Istanza del Wallet costruisce il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> (risposta mdoc) in CBOR includendo un array <code class="docutils literal notranslate"><span class="pre">documents</span></code> con gli Attestati Elettronici richiesti.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_110</p></td>
-<td><p>Flusso-prossimità, Presentazione, Interoperabilità</p></td>
+<td><p>Flusso-prossimità, Presentazione, Sicurezza, Interoperabilità</p></td>
 <td><p>Autenticazione mdoc</p></td>
 <td><p>Istanza del Wallet firma correttamente i dati di autenticazione <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> per ogni Attestato Elettronico presentato come spiegato nella Sezione 12.4 di [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
 </tr>
