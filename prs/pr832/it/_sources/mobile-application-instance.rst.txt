@@ -33,17 +33,17 @@ Il flusso è mostrato in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 
 **Passo 2**: L'Istanza dell'Applicazione Mobile:
 
-  * Verifica se il dispositivo soddisfa i requisiti minimi di sicurezza.
-  * Verifica se le API di Key Attestation sono disponibili.
+  * Verifica se il dispositivo soddisfa i requisiti minimi di sicurezza (:ref:`WP_021 <wallet-instance-testcases>`).
+  * Verifica se le API di Key Attestation sono disponibili (:ref:`WP_022 <wallet-instance-testcases>`).
 
 .. note::
-  **Controllo della Federazione**: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo. Esempi non normativi di una risposta dall'endpoint :ref:`wallet-provider-endpoint:Endpoint di Federazione` con la **Entity Configuration** e i **Metadati** del Fornitore dell'Applicazione sono presentati nelle sezioni :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` e :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
+  **Controllo della Federazione**: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo (:ref:`WP_023 <wallet-instance-testcases>`). Esempi non normativi di una risposta dall'endpoint :ref:`wallet-provider-endpoint:Endpoint di Federazione` con la **Entity Configuration** e i **Metadati** del Fornitore dell'Applicazione sono presentati nelle sezioni :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` e :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
-**Passi 3-5 (Recupero del Nonce)**: L'Istanza dell'Applicazione Mobile richiede un ``nonce`` monouso dall'**Endpoint Nonce** del Backend del Fornitore dell'Applicazione (vedi :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` o :ref:`relying-party-endpoint:Endpoint Nonce della Relying Party`). Questo ``nonce`` DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay.
+**Passi 3-5 (Recupero del Nonce)**: L'Istanza dell'Applicazione Mobile richiede un ``nonce`` monouso dall'**Endpoint Nonce** del Backend del Fornitore dell'Applicazione (vedi :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` o :ref:`relying-party-endpoint:Endpoint Nonce della Relying Party`). Questo ``nonce`` DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay (:ref:`WP_131 <wallet-instance-optional-testcases>`).
 
 In caso di richiesta riuscita, il Fornitore dell'Applicazione genera e restituisce il valore ``nonce`` all'Istanza dell'Applicazione Mobile, come parte della :ref:`mobile-application-instance:Risposta di Nonce dell'Applicazione Mobile`. Il Fornitore dell'Applicazione DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.
 
-**Passo 6**: L'Istanza dell'Applicazione Mobile, attraverso il sistema operativo, crea una coppia di Cryptographic Hardware Keys e memorizza il corrispondente Cryptographic Hardware Key Tag nell'archivio locale una volta soddisfatti i seguenti requisiti:
+**Passo 6**: L'Istanza dell'Applicazione Mobile, attraverso il sistema operativo, crea una coppia di Cryptographic Hardware Keys e memorizza il corrispondente Cryptographic Hardware Key Tag nell'archivio locale una volta soddisfatti i seguenti requisiti (:ref:`WP_132 <wallet-instance-optional-testcases>`):
 
   1. DEVE assicurarsi che le Cryptographic Hardware Keys non esistano già. Se esistono e l'Istanza dell'Applicazione è nella fase di inizializzazione, DEVONO essere eliminate.
   2. DEVE generare una coppia di chiavi asimmetriche a Curva Ellittica (``hardware_key_pub``, ``hardware_key_priv``) tramite un WSCD locale.
@@ -55,7 +55,7 @@ In caso di richiesta riuscita, il Fornitore dell'Applicazione genera e restituis
 
   Se il WSCD fallisce durante una qualsiasi di queste operazioni, ad esempio a causa di limitazioni hardware, solleverà una risposta di errore all'Istanza dell'Applicazione Mobile. L'Istanza dell'Applicazione Mobile DEVE gestire questi errori di conseguenza per garantire un funzionamento sicuro. I dettagli sulla gestione degli errori sono lasciati all'implementazione dell'Istanza dell'Applicazione Mobile.
 
-**Passo 7**: L'Istanza dell'Applicazione Mobile utilizza le API di Key Attestation, fornendo il ``client_data_hash`` per acquisire la Key Attestation.
+**Passo 7**: L'Istanza dell'Applicazione Mobile utilizza le API di Key Attestation, fornendo il ``client_data_hash`` per acquisire la Key Attestation (:ref:`WP_133b <wallet-instance-optional-testcases>`).
 
 .. note::
   **API di Key Attestation**: In questa sezione, si presume che le API di Key Attestation siano fornite dai produttori di dispositivi. Questo servizio consente la verifica di una chiave memorizzata in modo sicuro all'interno dell'hardware del dispositivo attraverso un oggetto firmato. Inoltre, offre una prova verificabile che una specifica Istanza dell'Applicazione Mobile sia autentica, inalterata e nel suo stato originale utilizzando un documento firmato specializzato creato per questo scopo.
@@ -74,23 +74,22 @@ Se si verificano errori nel processo delle API di Key Attestation, come la verif
 * Incorporano informazioni relative alla sicurezza del dispositivo.
 * Utilizzano una chiave privata OEM per firmare la Key Attestation, quindi verificabile con il relativo certificato OEM, confermando che le Cryptographic Hardware Keys sono gestite in modo sicuro dal sistema operativo.
 
-**Passo 9 (Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile)**: L'Istanza dell'Applicazione Mobile invia una :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` al Fornitore dell'Applicazione, per inizializzare l'Istanza dell'Applicazione Mobile, identificata dalla chiave pubblica Cryptographic Hardware. Il corpo della richiesta include i seguenti attributi: il ``nonce``, la Key Attestation (``key_attestation``) e il Cryptographic Hardware Key Tag (``hardware_key_tag``).
+**Passo 9 (Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile)**: L'Istanza dell'Applicazione Mobile invia una :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` al Fornitore dell'Applicazione, per inizializzare l'Istanza dell'Applicazione Mobile, identificata dalla chiave pubblica Cryptographic Hardware. Il corpo della richiesta include i seguenti attributi: il ``nonce``, la Key Attestation (``key_attestation``) e il Cryptographic Hardware Key Tag (``hardware_key_tag``) (:ref:`WP_133 <wallet-instance-optional-testcases>`).
 
 .. note::
-  Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella ``key_attestation``.
-  Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al ``client_data_hash`` fornito, che è il digest del ``nonce`` del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag. Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.
+  Non è necessario inviare la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione perché è già inclusa nella ``key_attestation``. Come visto nei passaggi precedenti, le API di Key Attestation creano una Key Attestation collegata al ``client_data_hash`` fornito, che è il digest del ``nonce`` del Fornitore dell'Applicazione, la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione e il suo Hardware Key Tag (:ref:`WP_133a <wallet-instance-optional-testcases>`). Questo processo elimina la necessità di inviare direttamente la chiave pubblica dell'Hardware dell'Istanza dell'Applicazione, poiché è già inclusa nella Key Attestation.
 
-**Passi 10-12 (Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile)**: Il Fornitore dell'Applicazione convalida il ``nonce`` e la firma ``key_attestation``, quindi:
+**Passi 10-12 (Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile)**: Il Fornitore dell'Applicazione convalida il ``nonce`` e la firma ``key_attestation``, quindi (:ref:`WP_135–137 <wallet-instance-optional-testcases>`):
 
-  1. DEVE verificare che il ``nonce`` sia stato generato dal Fornitore dell'Applicazione e non sia già stato utilizzato.
-  2. DEVE convalidare la ``key_attestation`` come definito dalle linee guida dei produttori di dispositivi. Il Fornitore dell'Applicazione DEVE anche verificare il legame tra l'``hardware_key_tag`` ricevuto, l'``hardware_key_pub`` e il ``nonce`` con il ``client_data_hash`` fornito nella Key Attestation.
-  3. DEVE verificare che il dispositivo in uso non abbia difetti di sicurezza e rifletta i requisiti minimi di sicurezza definiti dal Fornitore dell'Applicazione.
-  4. Se questi controlli sono superati, DEVE registrare l'Istanza dell'Applicazione Mobile, conservando il Cryptographic Hardware Key Tag (``hardware_key_tag``), la Public Hardware Key (``hardware_key_pub``) e possibilmente altre informazioni utili relative al dispositivo.
+  1. DEVE verificare che il ``nonce`` sia stato generato dal Fornitore dell'Applicazione e non sia già stato utilizzato (:ref:`WP_135a <wallet-instance-optional-testcases>`).
+  2. DEVE convalidare la ``key_attestation`` come definito dalle linee guida dei produttori di dispositivi (:ref:`WP_135b <wallet-instance-optional-testcases>`). Il Fornitore dell'Applicazione DEVE anche verificare il legame tra l'``hardware_key_tag`` ricevuto, l'``hardware_key_pub`` e il ``nonce`` con il ``client_data_hash`` fornito nella Key Attestation (:ref:`WP_136 <wallet-instance-optional-testcases>`).
+  3. DEVE verificare che il dispositivo in uso non abbia difetti di sicurezza e rifletta i requisiti minimi di sicurezza definiti dal Fornitore dell'Applicazione (:ref:`WP_135b <wallet-instance-optional-testcases>`).
+  4. Se questi controlli sono superati, DEVE registrare l'Istanza dell'Applicazione Mobile, conservando il Cryptographic Hardware Key Tag (``hardware_key_tag``), la Public Hardware Key (``hardware_key_pub``) e possibilmente altre informazioni utili relative al dispositivo (:ref:`WP_137 <wallet-instance-optional-testcases>`).
 
-In caso di inizializzazione riuscita dell'Istanza dell'Applicazione Mobile, il Fornitore dell'Applicazione risponde con una conferma di successo (:ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile`).
+In caso di inizializzazione riuscita dell'Istanza dell'Applicazione Mobile, il Fornitore dell'Applicazione risponde con una conferma di successo (:ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile`, :ref:`WP_135 <wallet-instance-optional-testcases>`).
 
 .. note::
-  Il Fornitore dell'Applicazione potrebbe associare l'Istanza dell'Applicazione Mobile (attraverso l'identificatore ``hardware_key_tag``) a un Utente o Dispositivo specifico. Questo identifica in modo univoco l'Utente/Dispositivo all'interno dei sistemi del Fornitore dell'Applicazione e può essere utilizzato per future revoche nel ciclo di vita dell'Istanza dell'Applicazione Mobile.
+  Il Fornitore dell'Applicazione potrebbe associare l'Istanza dell'Applicazione Mobile (attraverso l'identificatore ``hardware_key_tag``) a un Utente o Dispositivo specifico (:ref:`WP_138 <wallet-instance-optional-testcases>`). Questo identifica in modo univoco l'Utente/Dispositivo all'interno dei sistemi del Fornitore dell'Applicazione e può essere utilizzato per future revoche nel ciclo di vita dell'Istanza dell'Applicazione Mobile.
 
 **Passi 13-14**: L'Istanza dell'Applicazione Mobile è stata inizializzata.
 
@@ -223,7 +222,7 @@ Risposta di Errore di Inizializzazione dell'Istanza dell'Applicazione Mobile
 Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
 
   - *error*. Il codice di errore.
-  - *error_description*. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
+  - *error_description*. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
 
 Di seguito è riportato un esempio non normativo di una Risposta di Errore di Inizializzazione dell'Istanza.
 
@@ -235,10 +234,10 @@ Di seguito è riportato un esempio non normativo di una Risposta di Errore di In
 
     {
         "error": "forbidden",
-        "error_description": "The provided nonce is invalid, expired, or already used."
+        "error_description": "The provided nonce is invalid, expired, or already used. "
     }
 
-La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore:
+La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore (:ref:`WP_036–040 <wallet-instance-testcases>`)::
 
 .. list-table::
    :class: longtable
@@ -284,7 +283,7 @@ Richiesta di Associazione Chiave dell'Applicazione Mobile
 
 La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con ``Content-Type`` impostato su ``application/json``.
 
-Il corpo della Richiesta di Associazione Chiave contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e gli attributi del corpo descritti di seguito.
+Il corpo della Richiesta di Associazione Chiave contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e gli attributi del corpo descritti di seguito (:ref:`WP_134 <wallet-instance-optional-testcases>`).
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Associazione Chiave.
 
@@ -399,7 +398,8 @@ Risposta di Errore di Associazione Chiave dell'Applicazione Mobile
 Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
 
   - *error*. Il codice di errore.
-  - *error_description*. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
+  - *error_description*. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
+
 
 Di seguito è riportato un esempio non normativo di una Risposta di Errore di Associazione Chiave.
 
@@ -413,7 +413,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Errore di As
       "error_description": "The provided challenge is invalid, expired, or already used."
     }
 
-La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore, se non diversamente specificato:
+La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore, se non diversamente specificato (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
 
 .. list-table::
     :class: longtable

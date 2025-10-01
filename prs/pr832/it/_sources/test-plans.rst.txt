@@ -41,7 +41,7 @@ Per ogni caso di test, la tabella specifica:
 
   test-plans-signature.rst
   test-plans-trust.rst
-  test-plans-wallet.rst
+  test-plans-wallet-provider.rst
   test-plans-credential-issuer.rst
   test-plans-remote-presentation.rst
   test-plans-proximity-presentation.rst

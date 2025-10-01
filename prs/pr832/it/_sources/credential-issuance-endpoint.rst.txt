@@ -23,7 +23,7 @@ La Credential Offer effettuata dal Credential Issuer consiste in un singolo para
     - DEVE essere valorizzato con una URL HTTPS che identifica in modo univoco il Credential Issuer. Il Wallet utilizza il valore di questo parametro per ottenere i Metadata del Credential Issuer.
     - Sezione 4.1.1 di [`OpenID4VCI`_].
   * - **credential_configuration_ids**
-    - Array di Stringhe, ciascuna delle quali specifica un identificativo univoco dell'Attestato Elettronico descritta nel claim ``credential_configurations_supported`` presente nei Metadata del Credential Issuer.
+    - Array di Stringhe, ciascuna delle quali specifica un identificativo univoco dell'Attestato Elettronico descritta nel claim ``credential_configurations_supported`` presente nei Metadata del Credential Issuer (:ref:`WP_050b <wallet-credential-issuance-testcases>`).
     - Sezione 4.1.1 di [`OpenID4VCI`_].
   * - **grants**
     - DEVE contenere un oggetto ``authorization_code`` con i seguenti parametri:
@@ -840,13 +840,13 @@ La Credential Response contiene i seguenti parametri:
           - **credential**: OBBLIGATORIO. Stringa contenente un Attestato Elettronico emesso. Se l'identificativo del formato richiesto è ``dc+sd-jwt`` allora il parametro ``credential`` NON DEVE essere ricodificato. Se l'identificativo di formato richiesto è ``mso_mdoc`` allora il parametro ``credential`` DEVE essere una rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO 18013-5]. Questa struttura DOVREBBE contenere tutti i Namespaces e IssuerSignedItems inclusi negli AuthorizedNamespaces del MobileSecurityObject.
     - Sezione 8.3, Allegato A2.4 e Allegato A3.4 di [`OpenID4VCI`_].
   * - **lead_time**
-    - OBBLIGATORIO se ``credentials`` non è presente, altrimenti NON DEVE essere presente. La quantità di tempo (espressa in secondi) richiesta prima di effettuare una Deferred Credential Request.
+    - OBBLIGATORIO se ``credentials`` non è presente, altrimenti NON DEVE essere presente. La quantità di tempo (espressa in secondi) richiesta prima di effettuare una Deferred Credential Request  (:ref:`WP_065 <wallet-credential-issuance-testcases>`).
     - Questa Specifica.
   * - **notification_id**
     - OPZIONALE. Stringa che identifica un'Attestato Elettronico emesso che il Wallet include nella Notification Request come definito nella Sezione :ref:`credential-issuance-endpoint:Notification Request`. NON DEVE essere presente se il parametro ``credentials`` non è presente.
     - Sezione 8.3 di [`OpenID4VCI`_].
   * - **transaction_id**
-    - OBBLIGATORIO se ``credentials`` non è presente, altrimenti NON DEVE essere presente. Stringa che identifica una transazione di emissione posticipata che il Wallet include nella successiva Credential Request come definito nella Sezione :ref:`credential-issuance-endpoint:Deferred Endpoint`. DEVE essere invalidato dopo che l'Utente ottiene l'Attestato Elettronico.
+    - OBBLIGATORIO se ``credentials`` non è presente, altrimenti NON DEVE essere presente. Stringa che identifica una transazione di emissione posticipata che il Wallet include nella successiva Credential Request come definito nella Sezione :ref:`credential-issuance-endpoint:Deferred Endpoint` come specificato in (:ref:`WP_065 <wallet-credential-issuance-testcases>`). DEVE essere invalidato dopo che l'Utente ottiene l'Attestato Elettronico.
     - Sezione 8.3 di [`OpenID4VCI`_].
 
 Nel caso in cui la Credential Request non contenga un Access Token valido, il Credential Endpoint restituisce una response di errore come definito nella Sezione 3 del [:rfc:`6750`].
@@ -953,12 +953,12 @@ Una volta ricevuta la notifica (dall'Istanza del Wallet e/o dal Credential Issue
 
 L'Istanza del Wallet DEVE presentare al Deferred Endpoint un Access Token valido per l'emissione dell'Attestato Elettronico precedentemente richiesto al Credential Endpoint.
 
-Se il valore del parametro ``lead_time`` risulta inferiore rispetto alla scadenza dell'Access Token, l'Istanza del Wallet DOVREBBE utilizzare l'Access Token. Altrimenti, l'Istanza del Wallet PUÒ ottenere un nuovo Access Token seguendo il flusso relativo al Refresh Token (vedi Sezione :ref:`credential-issuance-low-level:Refresh Token Flow` per maggiori dettagli). Se il flusso del Refresh Token fallisce, l'Istanza del Wallet deve inviare una nuova authentication request.
+Se il valore del parametro ``lead_time`` risulta inferiore rispetto alla scadenza dell'Access Token, l'Istanza del Wallet DOVREBBE utilizzare l'Access Token (:ref:`WP_066b <wallet-credential-issuance-testcases>`). Altrimenti, l'Istanza del Wallet PUÒ ottenere un nuovo Access Token seguendo il flusso relativo al Refresh Token (vedi Sezione :ref:`credential-issuance-low-level:Refresh Token Flow` per maggiori dettagli come specificato in :ref:`WP_066c <wallet-credential-issuance-testcases>`). Se il flusso del Refresh Token fallisce, l'Istanza del Wallet deve inviare una nuova authentication request (:ref:`WP_067 <wallet-credential-issuance-testcases>`).
 
 La Deferred Credential Request DEVE essere una HTTP POST request. DEVE essere inviata utilizzando il media type ``application/json``.
 Il seguente parametro viene utilizzato nella Deferred Credential Request:
 
-  - ``transaction_id``: OBBLIGATORIO. Stringa che identifica una transazione di Emissione posticipata.
+  - ``transaction_id``: OBBLIGATORIO. Stringa che identifica una transazione di Emissione posticipata (:ref:`WP_066a <wallet-credential-issuance-testcases>`).
 
 Il Credential Issuer DEVE invalidare il ``transaction_id`` dopo che l'Attestato Elettronico per cui era destinato è stata ottenuto dall'Istanza del Wallet.
 Di seguito è riportato un esempio non normativo di una Deferred Credential Request:

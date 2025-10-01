@@ -751,7 +751,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_096b
      - Proximity-flow, Presentation, Security
      - Support BLE/NFC retrieval (conditional)
-     - Wallet Instance completes the BLE or NFC retrieval flow successfully. BLE support is mandatory, while NFC support is RECOMMENDED. Both become a conditional MUST when the corresponding hardware is available, failure constitutes non-compliance.
+     - Wallet Instance completes the BLE or NFC retrieval flow successfully. BLE support is mandatory, while NFC support is RECOMMENDED. Support for at least one device retrieval method (BLE or NFC) is mandatory; failure constitutes non-compliance. 
    * - WP_097
      - Proximity-flow, Presentation, UX
      - Supported DeviceEngagement mechanisms
@@ -759,7 +759,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_097a
      - Proximity-flow, Presentation, Security
      - Support QR/NFC engagement (conditional)
-     - Wallet Instance completes a full data-retrieval transaction over BLE and over NFC (where hardware is available). QR code support is mandatory, while NFC support is RECOMMENDED. Both become a conditional MUST when the corresponding hardware is available. Support for at least one engagement method (QR or NFC) is mandatory; failure constitutes non-compliance. 
+     - Wallet Instance completes a full data-retrieval transaction over BLE and over NFC (where hardware is available). QR code support is mandatory, while NFC support is RECOMMENDED. Support for at least one engagement method (QR or NFC) is mandatory; failure constitutes non-compliance. 
    * - WP_098
      - Proximity-flow, Presentation, Security
      - Relying Party authentication

@@ -175,9 +175,9 @@
             
   <section id="entity-configuration-del-fornitore-di-wallet">
 <h1><span class="section-number">6.1.6. </span>Entity Configuration del Fornitore di Wallet<a class="headerlink" href="#entity-configuration-del-fornitore-di-wallet" title="Link to this heading">¶</a></h1>
-<p>Una richiesta HTTP GET all'endpoint della Federazione consente di recuperare la Entity Configuration del Fornitore di Wallet.</p>
+<p>Una richiesta HTTP GET all'endpoint della Federazione consente di recuperare la Entity Configuration del Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_001</span></a>).</p>
 <p>La Entity Configuration del Fornitore di Wallet restituita DEVE contenere gli attributi descritti nelle sezioni seguenti.</p>
-<p>La Entity Configuration del Fornitore di Wallet è un JWT firmato contenente le chiavi pubbliche e gli algoritmi supportati dal Fornitore di Wallet. È strutturata in conformità con <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> e con <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a> delineata in questa specifica.</p>
+<p>La Entity Configuration del Fornitore di Wallet è un JWT firmato contenente le chiavi pubbliche e gli algoritmi supportati dal Fornitore di Wallet. È strutturata in conformità con <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> e con <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a> delineata in questa specifica (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_002</span></a>).</p>
 <section id="header-jwt-della-entity-configuration-del-fornitore-di-wallet">
 <h2><span class="section-number">6.1.6.1. </span>Header JWT della Entity Configuration del Fornitore di Wallet<a class="headerlink" href="#header-jwt-della-entity-configuration-del-fornitore-di-wallet" title="Link to this heading">¶</a></h2>
 <table class="longtable docutils align-default">
@@ -253,6 +253,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>I test che coprono la struttura di Entity Configuration (header e payload) sono forniti in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_002a–002h</span></a>.</p>
+</div>
 </section>
 </section>
 
@@ -302,7 +306,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 01/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

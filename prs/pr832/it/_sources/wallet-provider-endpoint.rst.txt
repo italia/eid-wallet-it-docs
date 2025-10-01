@@ -11,12 +11,21 @@ Endpoint del Fornitore di Wallet
 
 Il Fornitore di Wallet, responsabile della fornitura di una Soluzione Wallet, DEVE esporre gli endpoint per supportare l'instaurazione della fiducia e le funzionalità essenziali dell'Istanza di Wallet. Questi includono l'endpoint di Federazione ``/.well-known/openid-federation`` che DEVE aderire alla specifica OpenID Federation 1.0 per stabilire in modo affidabile la fiducia con il Fornitore di Wallet, nonché endpoint per la registrazione dell'Istanza di Wallet, la generazione di nonce (richiesta per la registrazione), l'emissione di attestati e la revoca. A parte l'endpoint di Federazione, i dettagli di implementazione degli altri sono lasciati alla discrezione del Fornitore di Wallet.
 
+.. note::
+   I test relativi all'uso degli endpoint del Wallet Provider sono definiti in 
+   :ref:`wallet-provider-test-matrix`, in particolare in 
+   :ref:`wallet-provider-backend-testcases`, 
+   :ref:`wallet-instance-testcases` e 
+   :ref:`wallet-instance-optional-testcases`.
+
+
 Endpoint di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 L'endpoint ``/.well-known/openid-federation`` serve come meccanismo di discovery per l'instaurazione della fiducia recuperando la Entity Configuration del Fornitore di Wallet.
 
-Vedere la Sezione :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` per i dettagli tecnici.
+Vedere la Sezione :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` per i dettagli tecnici (:ref:`WP_001–004 <wallet-provider-backend-testcases>`).
+
 
 
 Endpoint Nonce della Soluzione Wallet
@@ -24,7 +33,7 @@ Endpoint Nonce della Soluzione Wallet
 
 Questo è un endpoint API RESTful che consente all'Istanza di Wallet di richiedere un nonce crittografico dal Fornitore di Wallet. Il nonce serve come sfida imprevedibile, monouso per garantire la freschezza e prevenire attacchi di replay.
 
-Vedere :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile` e :ref:`mobile-application-instance:Risposta di Nonce dell'Applicazione Mobile` per i dettagli sulla Richiesta di Nonce e sulla Risposta di Nonce.
+Vedere :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile` e :ref:`mobile-application-instance:Risposta di Nonce dell'Applicazione Mobile` per i dettagli sulla Richiesta di Nonce e sulla Risposta di Nonce (:ref:`WP_131 <wallet-instance-optional-testcases>`).
 
 Endpoint di Gestione dell'Istanza di Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,17 +44,17 @@ Le seguenti sezioni descrivono le richieste di registrazione, recupero dello sta
 Richiesta di Registrazione dell'Istanza di Wallet
 """""""""""""""""""""""""""""""""""""""""""""""""
 
-Per registrare un'Istanza di Wallet, la richiesta al Fornitore di Wallet DEVE utilizzare il metodo HTTP POST con ``Content-Type`` impostato su `application/json`. Il corpo della richiesta DEVE contenere i claim descritti in :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile`.
+Per registrare un'Istanza di Wallet, la richiesta al Fornitore di Wallet DEVE utilizzare il metodo HTTP POST con ``Content-Type`` impostato su `application/json`. Il corpo della richiesta DEVE contenere i claim descritti in :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` (:ref:`WP_131–134 <wallet-instance-optional-testcases>`).
 
 Risposta alla Registrazione dell'Istanza di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-Se una Richiesta di Registrazione dell'Istanza di Wallet viene convalidata con successo, il Fornitore di Wallet fornisce una Risposta HTTP con codice di stato 204 (No Content). Per i dettagli vedere :ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile`.
+Se una Richiesta di Registrazione dell'Istanza di Wallet viene convalidata con successo, il Fornitore di Wallet fornisce una Risposta HTTP con codice di stato 204 (No Content). Per i dettagli vedere :ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile` (:ref:`WP_135–137 <wallet-instance-optional-testcases>`).
 
 Richiesta di Recupero dell'Istanza di Wallet
 """"""""""""""""""""""""""""""""""""""""""""
 
-Per recuperare tutte le Istanze di Wallet associate a un Utente, una richiesta DEVE essere inviata utilizzando il metodo HTTP GET al Fornitore di Wallet.
+Per recuperare tutte le Istanze di Wallet associate a un Utente, una richiesta DEVE essere inviata utilizzando il metodo HTTP GET al Fornitore di Wallet (:ref:`WP_145 <wallet-instance-optional-testcases>`).
 
 .. note::
   Per recuperare una specifica Istanza di Wallet, la richiesta DEVE includere l'ID dell'Istanza di Wallet come parametro di percorso.
@@ -56,7 +65,7 @@ Risposta al Recupero dell'Istanza di Wallet
 
 Se una Richiesta di Recupero dell'Istanza di Wallet viene elaborata con successo, il Fornitore di Wallet DEVE restituire una Risposta HTTP con un codice di stato 200 (OK).
 Il corpo della risposta DEVE essere in formato JSON e includere le informazioni rilevanti dell'Istanza di Wallet, come il suo ID univoco, lo stato e la data di emissione.
-Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un array contenente i dettagli di tutte le istanze associate.
+Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un array contenente i dettagli di tutte le istanze associate (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 
 Se si verificano errori durante il processo di recupero, DEVE essere restituita una risposta di errore. Fare riferimento a :ref:`wallet-provider-endpoint:Gestione degli Errori per la Gestione dell'Istanza di Wallet` per i dettagli sui codici di errore e le descrizioni.
 
@@ -79,7 +88,7 @@ Di seguito è riportato un esempio non normativo di una risposta di errore:
 Richiesta di Revoca dell'Istanza di Wallet
 """"""""""""""""""""""""""""""""""""""""""
 
-Per revocare un'Istanza di Wallet attiva, una richiesta di revoca DEVE essere inviata utilizzando il metodo HTTP PATCH con Content-Type impostato su ``application/json``. Il corpo della richiesta DEVE contenere un parametro ``status`` impostato su ``REVOKED``.
+Per revocare un'Istanza di Wallet attiva, una richiesta di revoca DEVE essere inviata utilizzando il metodo HTTP PATCH con Content-Type impostato su ``application/json``. Il corpo della richiesta DEVE contenere un parametro ``status`` impostato su ``REVOKED`` (:ref:`WP_147 <wallet-instance-optional-testcases>`).
 
 .. note::
   Mentre PATCH è il metodo consigliato, la richiesta di revoca PUÒ anche essere inviata utilizzando il metodo POST, a seconda delle preferenze di implementazione.
@@ -87,9 +96,9 @@ Per revocare un'Istanza di Wallet attiva, una richiesta di revoca DEVE essere in
 Risposta alla Revoca dell'Istanza di Wallet
 """""""""""""""""""""""""""""""""""""""""""
 
-Se una Richiesta di Revoca dell'Istanza di Wallet viene elaborata con successo, il Fornitore di Wallet fornisce una Risposta HTTP con un codice di stato 204 (No Content).
+Se una Richiesta di Revoca dell'Istanza di Wallet viene elaborata con successo, il Fornitore di Wallet fornisce una Risposta HTTP con un codice di stato 204 (No Content) come specificato in :ref:`WP_148 <wallet-instance-optional-testcases>`.
 
-Se si verificano errori durante la Revoca dell'Istanza di Wallet, DEVE essere restituita una risposta di errore. Fare riferimento a :ref:`wallet-provider-endpoint:Gestione degli Errori per la Gestione dell'Istanza di Wallet` per i dettagli sui codici di errore e le descrizioni.
+Se si verificano errori durante la Revoca dell'Istanza di Wallet, DEVE essere restituita una risposta di errore. Fare riferimento a :ref:`wallet-provider-endpoint:Gestione degli Errori per la Gestione dell'Istanza di Wallet` per i dettagli sui codici di errore e le descrizioni (:ref:`WP_035–039, WP_043–044 <wallet-instance-testcases>`).
 
 Di seguito è riportato un esempio non normativo di una risposta di errore:
 
@@ -109,7 +118,7 @@ Di seguito è riportato un esempio non normativo di una risposta di errore:
 Gestione degli Errori per la Gestione dell'Istanza di Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Per garantire robustezza e sicurezza, il Fornitore di Wallet DEVE gestire gli errori in modo coerente in tutte le richieste di Gestione dell'Istanza di Wallet, incluse Registrazione, Recupero e Revoca.
+Per garantire robustezza e sicurezza, il Fornitore di Wallet DEVE gestire gli errori in modo coerente in tutte le richieste di Gestione dell'Istanza di Wallet, incluse Registrazione, Recupero e Revoca (:ref:`WP_035–044 <wallet-instance-testcases>`, e :ref:`WP_150–155 <wallet-instance-optional-testcases>`).
 
 In caso di errore, il Fornitore di Wallet DEVE restituire una risposta di errore come definito in :rfc:`7231`, con ulteriori dettagli disponibili in :rfc:`7807`. La risposta DEVE utilizzare il Content-Type impostato su ``application/json`` e DEVE includere i seguenti parametri:
 
@@ -121,7 +130,7 @@ Le seguenti sezioni classificano gli errori in **errori comuni**, che si applica
 Risposte di Errore Comuni
 """""""""""""""""""""""""
 
-I seguenti errori si applicano a tutte le operazioni di Gestione dell'Istanza di Wallet (Registrazione, Recupero e Revoca) e DEVONO essere supportati per la risposta di errore, se non diversamente specificato:
+I seguenti errori si applicano a tutte le operazioni di Gestione dell'Istanza di Wallet (Registrazione, Recupero e Revoca) e DEVONO essere supportati per la risposta di errore, se non diversamente specificato (:ref:`WP_035–039 <wallet-instance-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -149,7 +158,7 @@ Risposte di Errore Specifiche della Richiesta
 
 Gli errori in :ref:`mobile-application-instance:Risposta di Errore di Inizializzazione dell'Istanza dell'Applicazione Mobile` DEVONO essere supportati per le risposte di errore relative alla **Registrazione dell'Istanza di Wallet**.
 
-I seguenti errori DEVONO essere supportati per le risposte di errore relative al **Recupero dell'Istanza di Wallet**:
+I seguenti errori DEVONO essere supportati per le risposte di errore relative al **Recupero dell'Istanza di Wallet** (:ref:`WP_041–042 <wallet-instance-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -166,7 +175,7 @@ I seguenti errori DEVONO essere supportati per le risposte di errore relative al
      - ``unauthorized``
      - La richiesta manca di Credenziali di autenticazione valide.
 
-I seguenti errori DEVONO essere supportati per le risposte di errore relative alla **Revoca dell'Istanza di Wallet**:
+I seguenti errori DEVONO essere supportati per le risposte di errore relative alla **Revoca dell'Istanza di Wallet** (:ref:`WP_043–044 <wallet-instance-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -191,14 +200,14 @@ Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente a
 Richiesta di Emissione della Wallet Attestation
 """""""""""""""""""""""""""""""""""""""""""""""
 
-Ulteriori dettagli sulla Richiesta di Emissione della Wallet Attestation sono forniti nella sezione :ref:`mobile-application-instance:Richiesta di Associazione Chiave dell'Applicazione Mobile`.
+Ulteriori dettagli sulla Richiesta di Emissione della Wallet Attestation sono forniti nella sezione :ref:`mobile-application-instance:Richiesta di Associazione Chiave dell'Applicazione Mobile` (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
 L'header ``typ`` del JWT della Richiesta di Integrità assume il valore ``wp-war+jwt``.
 
 Risposta all'Emissione della Wallet Attestation
 """""""""""""""""""""""""""""""""""""""""""""""
 
-Se la Richiesta di Emissione della Wallet Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` il cui valore è un array di Oggetti JSON (vedi :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet. la Wallet Attestation in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`. la Wallet Attestation in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`).
+Se la Richiesta di Emissione della Wallet Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` il cui valore è un array di Oggetti JSON (vedi :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`) contenente gli Attestati di Wallet in formato JWT, SD-JWT e mdoc firmati dal Fornitore di Wallet (:ref:`WP_027–029 <wallet-instance-testcases>` e :ref:`WP_143–144 <wallet-instance-optional-testcases>`). la Wallet Attestation in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`. la Wallet Attestation in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`).
 
 
 L'Oggetto JSON restituito nella risposta ha il seguente claim:
@@ -237,7 +246,7 @@ Ogni Oggetto JSON contenuto nell'array ``wallet_attestations`` DEVE avere la seg
 
       - Questa specifica.
 
-Se si verificano errori durante il processo, viene restituita una risposta di errore. Ulteriori dettagli sulla risposta di errore sono forniti nella sezione :ref:`mobile-application-instance:Risposta di Errore di Associazione Chiave dell'Applicazione Mobile`.
+Se si verificano errori durante il processo, viene restituita una risposta di errore. Ulteriori dettagli sulla risposta di errore sono forniti nella sezione :ref:`mobile-application-instance:Risposta di Errore di Associazione Chiave dell'Applicazione Mobile` (:ref:`WP_035–039 <wallet-instance-testcases>`).
 
 
 JWT della Wallet Attestation

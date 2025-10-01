@@ -751,7 +751,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_096b
      - Flusso-prossimità, Presentazione, Sicurezza
      - Supportare device retrieval BLE/NFC (condizionale)
-     - Istanza del Wallet completa con successo il flusso di recupero BLE o NFC. Il supporto BLE è obbligatorio, mentre NFC è RACCOMANDATO. Entrambi diventano CODIZIONALI a seconda dell’hardware disponibile. Il mancato supporto di entrambi costituisce non conformità.
+     - Istanza del Wallet completa con successo il flusso di recupero BLE o NFC. Il supporto BLE è obbligatorio, mentre NFC è RACCOMANDATO. Almeno un metodo di device retrieval (BLE o NFC) deve essere supportato; il fallimento costituisce non conformità.
    * - WP_097
      - Flusso-prossimità, Presentazione, UX
      - Meccanismi DeviceEngagement supportati
@@ -759,7 +759,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_097a
      - Flusso-prossimità, Presentazione, Sicurezza
      - Supporto QR/NFC engagement (condizionale)
-     - Istanza del Wallet completa una transazione di recupero dati sia via BLE che via NFC (quando l’hardware è disponibile). Il supporto QR è obbligatorio, mentre NFC è RACCOMANDATO. Entrambi diventano CODIZIONALI a seconda dell’hardware disponibile. Almeno un metodo di engagement (QR o NFC) deve essere supportato; il fallimento costituisce non conformità.
+     - Istanza del Wallet completa una transazione di recupero dati sia via BLE che via NFC (quando l’hardware è disponibile). Il supporto QR è obbligatorio, mentre NFC è RACCOMANDATO. Almeno un metodo di engagement (QR o NFC) deve essere supportato; il fallimento costituisce non conformità.
    * - WP_098
      - Flusso-prossimità, Presentazione, Sicurezza
      - Autenticazione Relying Party

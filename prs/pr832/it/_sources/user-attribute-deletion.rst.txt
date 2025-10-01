@@ -4,7 +4,7 @@
 Eliminazione degli Attributi dell'Utente
 ========================================
 
-Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un elenco di tutte le Relying Party a cui sono stati presentati attributi che possono identificare univocamente gli Utenti (ad esempio, l'attributo tax_id_code dell'Attestato Elettronico di Dati di Identificazione Personale). Successivamente, gli Utenti possono richiedere l'eliminazione di tutti gli attributi presentati a una Relying Party di loro scelta. Di seguito viene presentato il flusso di alto livello relativo a questa interazione.
+Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un elenco di tutte le Relying Party a cui sono stati presentati attributi che possono identificare univocamente gli Utenti (ad esempio, l'attributo tax_id_code dell'Attestato Elettronico di Dati di Identificazione Personale). Successivamente, gli Utenti possono richiedere l'eliminazione di tutti gli attributi presentati a una Relying Party di loro scelta. Di seguito viene presentato il flusso di alto livello relativo a questa interazione (:ref:`WP_115 <user-attribute-deletion-testcases>`).
 
 .. plantuml:: plantuml/user-deletion-attribute-flow.puml
     :width: 99%
@@ -21,18 +21,18 @@ Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un
 
 **Passo 1:** L'Utente richiede l'eliminazione degli attributi invocando la funzione di eliminazione degli attributi dell'Istanza del Wallet.
 
-**Passo 2:** L'Istanza del Wallet raccoglie tutti i dati delle transazioni e mostra all'Utente l'elenco delle Relying Party con cui ha avuto interazioni durante il ciclo di vita dell'Istanza del Wallet e che sono in possesso degli attributi dell'Utente. L'Istanza del Wallet DOVREBBE filtrare i log delle transazioni in modo che vengano mostrate solo le Relying Party che hanno avuto accesso ad attributi che identificano univocamente l'Utente.
+**Passo 2:** L'Istanza del Wallet raccoglie tutti i dati delle transazioni e mostra all'Utente l'elenco delle Relying Party con cui ha avuto interazioni durante il ciclo di vita dell'Istanza del Wallet e che sono in possesso degli attributi dell'Utente. L'Istanza del Wallet DOVREBBE filtrare i log delle transazioni in modo che vengano mostrate solo le Relying Party che hanno avuto accesso ad attributi che identificano univocamente l'Utente (:ref:`WP_115a <user-attribute-deletion-testcases>`).
 
 **Passo 3:** L'Utente seleziona la Relying Party di destinazione per l'eliminazione degli attributi.
 
-**Passi 4 - 5:** L'Istanza del Wallet ottiene la Entity Configuration della Relying Party all'endpoint ./well-known/ della Federazione. L'URL o l'Endpoint di Cancellazione (``erasure_endpoint``) può essere trovato all'interno del parametro dei metadati.
+**Passi 4 - 5:** L'Istanza del Wallet ottiene la Entity Configuration della Relying Party all'endpoint ./well-known/ della Federazione. L'URL o l'Endpoint di Cancellazione (``erasure_endpoint``) può essere trovato all'interno del parametro dei metadati (:ref:`WP_116 <user-attribute-deletion-testcases>`).
 
-**Passo 6:** L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione. Questi log DEVONO includere almeno:
+**Passo 6:** L'Istanza del Wallet registra le informazioni rilevanti della Richiesta di Cancellazione. Questi log DEVONO includere almeno (:ref:`WP_117a <user-attribute-deletion-testcases>`):
   * la data della richiesta,
   * la Relying Party a cui è stata fatta la richiesta,
   * gli attributi di cui è stata richiesta la rimozione.
 
-**Passi 7 - 8:** L'Istanza del Wallet reindirizza l'Utente all'Endpoint di Cancellazione. DEVE inoltre garantire che sia presente un meccanismo di callback per consentire all'User-Agent di notificare all'Istanza del Wallet (e quindi all'Utente) dopo la Risposta di Cancellazione. I dettagli sulla Richiesta di Cancellazione si trovano in :ref:`relying-party-endpoint:Richiesta di Cancellazione`.
+**Passi 7 - 8:** L'Istanza del Wallet reindirizza l'Utente all'Endpoint di Cancellazione. DEVE inoltre garantire che sia presente un meccanismo di callback per consentire all'User-Agent di notificare all'Istanza del Wallet (e quindi all'Utente) dopo la Risposta di Cancellazione (:ref:`WP_118 <user-attribute-deletion-testcases>`). I dettagli sulla Richiesta di Cancellazione si trovano in :ref:`relying-party-endpoint:Richiesta di Cancellazione` (:ref:`WP_117 <user-attribute-deletion-testcases>`).
 
 .. note::
   La pagina web della Relying Party autenticherà l'Utente con un Livello di Garanzia appropriato utilizzando qualsiasi metodo come CIE o la presentazione dell'Attestato Elettronico di Dati di Identificazione Personale. Il meccanismo specifico utilizzato per l'autenticazione è lasciato alla Relying Party. Dopo aver autenticato l'Utente, la Relying Party PUÒ richiedere all'Utente di eseguire ulteriori passaggi necessari per l'eliminazione degli attributi, ad esempio, potrebbe richiedere all'Utente di confermare l'operazione di eliminazione.
@@ -41,4 +41,4 @@ Questa funzionalità dell'Istanza del Wallet consente agli Utenti di ottenere un
 
 **Passo 10:** La Relying Party restituisce la Risposta di Cancellazione sotto forma di Risposta HTTP all'User-Agent e include l'URL di callback se fornito nella Richiesta di Cancellazione. I dettagli sulla Risposta di Cancellazione si trovano in :ref:`relying-party-endpoint:Risposta di Cancellazione`.
 
-**Passi 11 - 12:** L'User-Agent utilizza il metodo implementato per restituire la Risposta di Cancellazione all'Istanza del Wallet. Infine, l'Utente viene notificato tramite l'Istanza del Wallet riguardo all'esito della Risposta di Cancellazione.
+**Passi 11 - 12:** L'User-Agent utilizza il metodo implementato per restituire la Risposta di Cancellazione all'Istanza del Wallet. Infine, l'Utente viene notificato tramite l'Istanza del Wallet riguardo all'esito della Risposta di Cancellazione (:ref:`WP_119 <user-attribute-deletion-testcases>`).

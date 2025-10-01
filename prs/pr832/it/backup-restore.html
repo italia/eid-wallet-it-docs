@@ -199,33 +199,33 @@
 </figcaption>
 </figure>
 <p>Di seguito, la descrizione dei passaggi di <a class="reference internal" href="#fig-backup-flow"><span class="std std-numref">Fig. 6.7</span></a>:</p>
-<p><strong>Passaggio 1</strong>: L'Utente seleziona l'opzione per eseguire il backup delle Credenziali memorizzate nell'Istanza del Wallet.</p>
-<p><strong>Passaggi 2-3</strong>: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente.
-L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup.</p>
+<p><strong>Passaggio 1</strong>: L'Utente seleziona l'opzione per eseguire il backup delle Credenziali memorizzate nell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_120</span></a>).</p>
+<p><strong>Passaggi 2-3</strong>: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_120a</span></a>).
+L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_120b</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziali, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su <a class="reference external" href="http://tools.ietf.org/html/rfc2898.html">RFC 2898</a> ed è raccomandata dal <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST 800-132</a>. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">qui</a>.</p>
+<p>Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su <a class="reference external" href="http://tools.ietf.org/html/rfc2898.html">RFC 2898</a> ed è raccomandata dal <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf">NIST 800-132</a>. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati <a class="reference external" href="https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password">qui</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121</span></a>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> è di 600000 iterazioni come indicato nell’<a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a>.</p>
+<p>Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing <code class="docutils literal notranslate"><span class="pre">SHA-256</span></code> è di 600000 iterazioni come indicato nell’<a class="reference external" href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2">OWASP Password Storage Cheatsheet</a> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_121a</span></a>).</p>
 </div>
-<p><strong>Passaggio 4</strong>: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup.</p>
+<p><strong>Passaggio 4</strong>: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>):</p>
 <ul class="simple">
-<li><p>Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> come voce nel JWT di backup.</p></li>
-<li><p>Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Unit Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>). L'Istanza del Wallet DEVE verificare la validità della Wallet Unit Attestation prima di firmare il JWT di backup.</p></li>
-<li><p>Aggiunge il JWT di backup firmato come voce al file di backup.</p></li>
-<li><p>Cripta il file di backup utilizzando la frase chiave fornita.</p></li>
+<li><p>Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> come voce nel JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122d</span></a>).</p></li>
+<li><p>Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Unit Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>). L'Istanza del Wallet DEVE verificare la validità della Wallet Unit Attestation prima di firmare il JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_123</span></a>).</p></li>
+<li><p>Aggiunge il JWT di backup firmato come voce al file di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>).</p></li>
+<li><p>Cripta il file di backup utilizzando la frase chiave fornita (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_124</span></a>).</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Il JWT di Backup PUÒ contenere la cronologia delle transazioni per ogni voce di Credenziale all'interno del claim <code class="docutils literal notranslate"><span class="pre">credentials_backup</span></code>.</p>
+<p>Il JWT di Backup PUÒ contenere la cronologia delle transazioni per ogni voce di Credenziale all'interno del claim <code class="docutils literal notranslate"><span class="pre">credentials_backup</span></code> (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122c</span></a>).</p>
 </div>
-<p><strong>Passaggio 5</strong>: All'Utente verrà richiesto di scegliere un'opzione di archiviazione per conservare in modo sicuro il file di backup. Le opzioni possono includere l'archiviazione nativa o soluzioni di archiviazione esterne, come l'archiviazione cloud, dispositivi USB, consegna via e-mail o altro.</p>
+<p><strong>Passaggio 5</strong>: All'Utente verrà richiesto di scegliere un'opzione di archiviazione per conservare in modo sicuro il file di backup. Le opzioni possono includere l'archiviazione nativa o soluzioni di archiviazione esterne, come l'archiviazione cloud, dispositivi USB, consegna via e-mail o altro (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_125</span></a>).</p>
 <p><strong>Passaggio 6</strong>: Nel caso in cui l'Utente preferisca l'archiviazione nativa, il file di backup viene memorizzato sul dispositivo dell'Utente.</p>
 <p>Un esempio non normativo dell'intestazione e del payload del JWT di backup è il seguente:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -246,7 +246,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>L'intestazione JOSE del JWT di backup DEVE contenere i seguenti parametri OBBLIGATORI:</p>
+<p>L'intestazione JOSE del JWT di backup DEVE contenere i seguenti parametri OBBLIGATORI (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122a</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -270,7 +270,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 </tr>
 </tbody>
 </table>
-<p>Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI:</p>
+<p>Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122b</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -315,16 +315,16 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 <p>Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.
 Di seguito, la descrizione dei passaggi di <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 6.8</span></a>:</p>
 <p><strong>Passaggi 1-6</strong>: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
-L'Utente seleziona <cite>ripristina backup delle Credenziali Elettroniche</cite> nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero.
-Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità. Per fare ciò, estrae prima il JWT della Wallet Unit Attestation dal claim <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> e ottiene la relativa chiave pubblica utilizzando la Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>).</p>
-<p><strong>Passaggi 7-8</strong>: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:</p>
+L'Utente seleziona <cite>ripristina backup delle Credenziali Elettroniche</cite> nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_126</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_127</span></a>).
+Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_129</span></a>). Per fare ciò, estrae prima il JWT della Wallet Unit Attestation dal claim <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> e ottiene la relativa chiave pubblica utilizzando la Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>) come specificato in <a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128</span></a>.</p>
+<p><strong>Passaggi 7-8</strong>: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130</span></a>):</p>
 <ul class="simple">
-<li><p>Estrae l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali.</p></li>
-<li><p>Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente.</p></li>
+<li><p>Estrae l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130a</span></a>).</p></li>
+<li><p>Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130b</span></a>).</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Unit Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet.</p>
+<p>L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Unit Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128a</span></a>).</p>
 </div>
 </section>
 </section>
@@ -375,7 +375,7 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 01/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
