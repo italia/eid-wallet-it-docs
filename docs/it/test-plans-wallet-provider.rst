@@ -743,7 +743,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_096
      - Flusso-prossimità, Presentazione, Sicurezza
      - Supporto meccanismi Device Retrieval
-     - Istanza del Wallet supporta i meccanismi Device Retrieval tramite Bluetooth Low Energy (BLE) o NFC, e opzionalmente tramite Wi-Fi Aware.
+     - Istanza del Wallet supporta i meccanismi Device Retrieval tramite Bluetooth Low Energy (BLE) o NFC.
    * - WP_096a
      - Flusso-prossimità, Presentazione, Sicurezza
      - Applicare solo device retrieval
@@ -817,7 +817,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
      - NFC Connection Handover (Negoziato)
      - Istanza del Wallet espone il servizio ``urn:nfc:sn:handover``; su Handover Request restituisce un Handover Select con esattamente un carrier selezionato e il DeviceEngagement ausiliario.
    * - WP_103c
-     - Flusso-prossimità, Presentazione, Interoperabilità
+     - Flusso-prossimità, Presentazione, Sicurezza, Interoperabilità
      - ``SessionEstablishment`` anticipato via TNEP
      - Se ``HandoverSessionEstablishmentSupport`` è ``true`` nel DeviceEngagement, Istanza del Wallet accetta il ``SessionEstablishment`` anticipato sul servizio TNEP annunciato e successivamente verifica che corrisponda a quello ricevuto durante il recupero dati.
    * - WP_103d
@@ -881,7 +881,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
      - Preparare la risposta mdoc
      - Istanza del Wallet costruisce il messaggio ``SessionData`` (risposta mdoc) in CBOR includendo un array ``documents`` con gli Attestati Elettronici richiesti.
    * - WP_110
-     - Flusso-prossimità, Presentazione, Interoperabilità
+     - Flusso-prossimità, Presentazione, Sicurezza, Interoperabilità
      - Autenticazione mdoc
      - Istanza del Wallet firma correttamente i dati di autenticazione ``deviceSigned`` per ogni Attestato Elettronico presentato come spiegato nella Sezione 12.4 di [`ISO18013-5`_].
    * - WP_111
