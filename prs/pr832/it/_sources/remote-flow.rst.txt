@@ -486,7 +486,7 @@ Di seguito è riportato un esempio di *Error Response* dall'endpoint ``request_u
     "error_description": "The Request Object cannot be retrieved due to an internal server error."
   }
 
-Dopo aver ricevuto una *Error Response*, l'Istanza del Wallet DOVREBBE informare l'Utente della condizione di errore in modo appropriato (:re:`WP_089 <wallet-credential-presentation-testcases>`).. L'Istanza del Wallet DOVREBBE registrare l'errore e PUÒ tentare di recuperare da determinati errori se fattibile (:ref:`WP_089a <wallet-credential-presentation-testcases>`). Ad esempio, se l'errore è ``server_error``, l'Istanza del Wallet DOVREBBE chiedere all'Utente di reinserire o scansionare un nuovo codice QR, se possibile (:ref:`WP_089b <wallet-credential-presentation-testcases>`).
+Dopo aver ricevuto una *Error Response*, l'Istanza del Wallet DOVREBBE informare l'Utente della condizione di errore in modo appropriato (:ref:`WP_089 <wallet-credential-presentation-testcases>`).. L'Istanza del Wallet DOVREBBE registrare l'errore e PUÒ tentare di recuperare da determinati errori se fattibile (:ref:`WP_089a <wallet-credential-presentation-testcases>`). Ad esempio, se l'errore è ``server_error``, l'Istanza del Wallet DOVREBBE chiedere all'Utente di reinserire o scansionare un nuovo codice QR, se possibile (:ref:`WP_089b <wallet-credential-presentation-testcases>`).
 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^
