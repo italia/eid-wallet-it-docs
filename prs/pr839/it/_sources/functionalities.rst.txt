@@ -667,7 +667,7 @@ Il Sistema IT-Wallet prevede l'interazione di una molteplicità di servizi eroga
 
 Una comunicazione efficace in caso di errore determina un vantaggio anche per gli attori coinvolti, in quanto concorre alla riduzione delle richieste di assistenza e, quindi, alla minimizzazione dell'impatto sui sistemi.
 
-Di seguito vengono presentati i requisiti e le principali buone pratiche di gestione dell'errore, riferite alle modalità di interazione tra l'Utente e la propria Istanza del Wallet. Ciascun Attore Primario DEVE implementare una corretta gestione degli errori, in conformità alle attuali Specifiche Tecniche, al fine di comunicarli, direttamente o indirettamente, all'Utente e tramite l'Istanza del Wallet. Gli errori possono essere declinati, sulla base della loro natura, come segue: 
+Ciascun Attore Primario DEVE implementare una corretta gestione degli errori, in conformità alle attuali Specifiche Tecniche, al fine di comunicarli, direttamente o indirettamente, all'Utente e tramite l'Istanza del Wallet. Gli errori possono essere declinati, sulla base della loro natura, come segue: 
 
 - **la fase dell'Esperienza Utente** in cui l'errore può verificarsi: attivazione o disattivazione dell'Istanza del Wallet, ottenimento, presentazione o gestione degli Attestati Elettronici; 
 - **la tipologia di errore**: di sistema, di comunicazione tra attori, etc.; 
@@ -706,11 +706,18 @@ Errori di ottenimento degli Attestati Elettronici di Attributi
    * - Tipologia di errore
      - Attore responsabile 
    * - L'Istanza del Wallet e/o il PID non risultano attivi 
-     - Fornitore di Wallet
+     - Istanza del Wallet
    * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici) 
      - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica
    * - L'Utente non riesce ad ottenere nella propria Istanza del Wallet un certo Attestato Elettronico di Attributi (e.g. assenza di titolarità, versione fisica non valida o scaduta, etc.) 
-     - Fonte Autentica  
+     - Fonte Autentica 
+  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito entro l’intervallo di tempo definito 
+     - Fornitore di Attestati Elettronici di Attributi
+  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere completato in modalità sincrona per cui si invita l’Utente ad attendere finché l’Attestato non sarà disponibile (es. flusso di ottenimento in modalità differita)
+     - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica 
+  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non può essere gestito perché la richiesta è superiore al limite consentito (es. ottenimento di più attestati contemporaneamente) 
+     - Fornitore di Attestati Elettronici di Attributi 
+
 
 Errori di presentazione degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -722,7 +729,7 @@ Errori di presentazione degli Attestati Elettronici
    * - Tipologia di errore
      - Attore responsabile 
    * - L'Utente non possiede all'interno della propria Istanza del Wallet gli Attributi contenuti in uno o più Attestati Elettronici richiesti per la fruizione di un determinato servizio 
-     - Fornitore di Wallet 
+     - Istanza del Wallet 
    * - I servizi del Fornitore di Wallet e/o del Verificatore di Attestati Elettronici non rispondono (e.g. errori tecnici o assenza connessione) 
      - Fornitore di Wallet, Verificatore di Attestati Elettronici 
 
@@ -738,7 +745,9 @@ Errori di gestione degli Attestati Elettronici
    * - Il servizio di revoca / archiviazione/ ripristino di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici) 
      - Fornitore di Attestati Elettronici di Attributi 
    * - Il servizio di revoca del PID non è disponibile (e.g. errori tecnici) 
-     - PID Provider 
+     - PID Provider, 
+   * - Il servizio di cancellazione delle informazioni inviate al Verificatore di Attestati Elettronici non è disponibile (e.g. errori tecnici) 
+     - Verificatore di Attestati Elettronici 
 
 Errori di disattivazione dell'Istanza del Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

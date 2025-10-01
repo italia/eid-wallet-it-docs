@@ -700,11 +700,17 @@ Issuance of Electronic Attestations of Attributes Errors
   * - Error type
     - Actor in charge
   * - The Wallet Instance and/or the PID are not active
-    - Wallet Provider
+    - Wallet Instance
   * - The service for obtaining an Electronic Attestation of Attributes is unavailable (e.g. technical errors)
     - Electronic Attestations of Attributes Provider, Authentic Source
   * - The User is unable to obtain a specific Electronic Attestation of Attributes in their Wallet Instance (e.g. no eligibility, invalid or expired physical version, etc.)
     - Authentic Source
+  * - The service for obtaining an Electronic Attestation of Attributes cannot be processed within the defined time interval 
+    - Electronic Attestations of Attributes Provider 
+  * - The service for obtaining an Electronic Attestation of Attributes cannot be completed synchronously. The User is requested to wait until the Attestation becomes available (deferred flow) 
+    - Electronic Attestations of Attributes Provider, Authentic Source 
+  * - The service for obtaining an Electronic Attestation of Attributes cannot be processed as the request exceeds the permitted limit (e.g. multiple Attestations requested at once) 
+    - Electronic Attestations of Attributes Provider 
 
 Presentation of Electronic Attestations Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -716,7 +722,7 @@ Presentation of Electronic Attestations Errors
   * - Error type
     - Actor in charge
   * - The User does not hold the required Attributes contained in one or more Electronic Attestations within their Wallet Instance to access a specific service
-    - Wallet Provider
+    - Wallet Instance
   * - The Wallet Provider's services or the Relying Party's services are unresponsive (e.g. technical errors or lack of connection)
     - Wallet Provider, Relying Party
 
@@ -733,6 +739,8 @@ Management of Electronic Attestations Errors
     - Electronic Attestations of Attributes Provider
   * - The service for revocation of PID is unavailable (e.g. technical errors)
     - PID Provider
+  * - The service for erasing information sent to a Relying Party is unavailable (e.g. technical errors) 
+    - Relying Party 
 
 Deactivation of the Wallet Instance Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

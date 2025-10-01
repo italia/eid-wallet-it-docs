@@ -721,13 +721,22 @@ Below a non-normative example of the Authentication Button. The references to th
 </thead>
 <tbody>
 <tr class="row-even"><td><p>The Wallet Instance and/or the PID are not active</p></td>
-<td><p>Wallet Provider</p></td>
+<td><p>Wallet Instance</p></td>
 </tr>
 <tr class="row-odd"><td><p>The service for obtaining an Electronic Attestation of Attributes is unavailable (e.g. technical errors)</p></td>
 <td><p>Electronic Attestations of Attributes Provider, Authentic Source</p></td>
 </tr>
 <tr class="row-even"><td><p>The User is unable to obtain a specific Electronic Attestation of Attributes in their Wallet Instance (e.g. no eligibility, invalid or expired physical version, etc.)</p></td>
 <td><p>Authentic Source</p></td>
+</tr>
+<tr class="row-odd"><td><p>The service for obtaining an Electronic Attestation of Attributes cannot be processed within the defined time interval</p></td>
+<td><p>Electronic Attestations of Attributes Provider</p></td>
+</tr>
+<tr class="row-even"><td><p>The service for obtaining an Electronic Attestation of Attributes cannot be completed synchronously. The User is requested to wait until the Attestation becomes available (deferred flow)</p></td>
+<td><p>Electronic Attestations of Attributes Provider, Authentic Source</p></td>
+</tr>
+<tr class="row-odd"><td><p>The service for obtaining an Electronic Attestation of Attributes cannot be processed as the request exceeds the permitted limit (e.g. multiple Attestations requested at once)</p></td>
+<td><p>Electronic Attestations of Attributes Provider</p></td>
 </tr>
 </tbody>
 </table>
@@ -746,7 +755,7 @@ Below a non-normative example of the Authentication Button. The references to th
 </thead>
 <tbody>
 <tr class="row-even"><td><p>The User does not hold the required Attributes contained in one or more Electronic Attestations within their Wallet Instance to access a specific service</p></td>
-<td><p>Wallet Provider</p></td>
+<td><p>Wallet Instance</p></td>
 </tr>
 <tr class="row-odd"><td><p>The Wallet Provider's services or the Relying Party's services are unresponsive (e.g. technical errors or lack of connection)</p></td>
 <td><p>Wallet Provider, Relying Party</p></td>
@@ -772,6 +781,9 @@ Below a non-normative example of the Authentication Button. The references to th
 </tr>
 <tr class="row-odd"><td><p>The service for revocation of PID is unavailable (e.g. technical errors)</p></td>
 <td><p>PID Provider</p></td>
+</tr>
+<tr class="row-even"><td><p>The service for erasing information sent to a Relying Party is unavailable (e.g. technical errors)</p></td>
+<td><p>Relying Party</p></td>
 </tr>
 </tbody>
 </table>
@@ -941,7 +953,7 @@ Below a non-normative example of the Authentication Button. The references to th
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/09/2025.
+      Last updated on 01/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

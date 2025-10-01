@@ -669,7 +669,7 @@ Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti
 <h2><span class="section-number">4.8. </span>Gestione degli errori<a class="headerlink" href="#gestione-degli-errori" title="Link to this heading">¶</a></h2>
 <p>Il Sistema IT-Wallet prevede l'interazione di una molteplicità di servizi erogati da diversi attori. È quindi importante che venga definito un modello di gestione degli errori efficace, con l'obiettivo di migliorare la percezione e il senso di affidabilità dell'interno ecosistema e permettere all'Utente di sentirsi guidato nell'interazione con le diverse Soluzioni Tecniche e nella gestione consapevole di eventuali criticità durante la fruizione del servizio.</p>
 <p>Una comunicazione efficace in caso di errore determina un vantaggio anche per gli attori coinvolti, in quanto concorre alla riduzione delle richieste di assistenza e, quindi, alla minimizzazione dell'impatto sui sistemi.</p>
-<p>Di seguito vengono presentati i requisiti e le principali buone pratiche di gestione dell'errore, riferite alle modalità di interazione tra l'Utente e la propria Istanza del Wallet. Ciascun Attore Primario DEVE implementare una corretta gestione degli errori, in conformità alle attuali Specifiche Tecniche, al fine di comunicarli, direttamente o indirettamente, all'Utente e tramite l'Istanza del Wallet. Gli errori possono essere declinati, sulla base della loro natura, come segue:</p>
+<p>Ciascun Attore Primario DEVE implementare una corretta gestione degli errori, in conformità alle attuali Specifiche Tecniche, al fine di comunicarli, direttamente o indirettamente, all'Utente e tramite l'Istanza del Wallet. Gli errori possono essere declinati, sulla base della loro natura, come segue:</p>
 <ul class="simple">
 <li><p><strong>la fase dell'Esperienza Utente</strong> in cui l'errore può verificarsi: attivazione o disattivazione dell'Istanza del Wallet, ottenimento, presentazione o gestione degli Attestati Elettronici;</p></li>
 <li><p><strong>la tipologia di errore</strong>: di sistema, di comunicazione tra attori, etc.;</p></li>
@@ -709,28 +709,6 @@ Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti
 </section>
 <section id="errori-di-ottenimento-degli-attestati-elettronici-di-attributi">
 <h3><span class="section-number">4.8.2. </span>Errori di ottenimento degli Attestati Elettronici di Attributi<a class="headerlink" href="#errori-di-ottenimento-degli-attestati-elettronici-di-attributi" title="Link to this heading">¶</a></h3>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 80.0%" />
-<col style="width: 20.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Tipologia di errore</p></th>
-<th class="head"><p>Attore responsabile</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>L'Istanza del Wallet e/o il PID non risultano attivi</p></td>
-<td><p>Fornitore di Wallet</p></td>
-</tr>
-<tr class="row-odd"><td><p>Il servizio di ottenimento di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici)</p></td>
-<td><p>Fornitore di Attestati Elettronici di Attributi, Fonte Autentica</p></td>
-</tr>
-<tr class="row-even"><td><p>L'Utente non riesce ad ottenere nella propria Istanza del Wallet un certo Attestato Elettronico di Attributi (e.g. assenza di titolarità, versione fisica non valida o scaduta, etc.)</p></td>
-<td><p>Fonte Autentica</p></td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="errori-di-presentazione-degli-attestati-elettronici">
 <h3><span class="section-number">4.8.3. </span>Errori di presentazione degli Attestati Elettronici<a class="headerlink" href="#errori-di-presentazione-degli-attestati-elettronici" title="Link to this heading">¶</a></h3>
@@ -746,7 +724,7 @@ Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti
 </thead>
 <tbody>
 <tr class="row-even"><td><p>L'Utente non possiede all'interno della propria Istanza del Wallet gli Attributi contenuti in uno o più Attestati Elettronici richiesti per la fruizione di un determinato servizio</p></td>
-<td><p>Fornitore di Wallet</p></td>
+<td><p>Istanza del Wallet</p></td>
 </tr>
 <tr class="row-odd"><td><p>I servizi del Fornitore di Wallet e/o del Verificatore di Attestati Elettronici non rispondono (e.g. errori tecnici o assenza connessione)</p></td>
 <td><p>Fornitore di Wallet, Verificatore di Attestati Elettronici</p></td>
@@ -771,7 +749,10 @@ Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti
 <td><p>Fornitore di Attestati Elettronici di Attributi</p></td>
 </tr>
 <tr class="row-odd"><td><p>Il servizio di revoca del PID non è disponibile (e.g. errori tecnici)</p></td>
-<td><p>PID Provider</p></td>
+<td><p>PID Provider,</p></td>
+</tr>
+<tr class="row-even"><td><p>Il servizio di cancellazione delle informazioni inviate al Verificatore di Attestati Elettronici non è disponibile (e.g. errori tecnici)</p></td>
+<td><p>Verificatore di Attestati Elettronici</p></td>
 </tr>
 </tbody>
 </table>
@@ -941,7 +922,7 @@ Di seguito un esempio non normativo di Pulsante di Autenticazione. I riferimenti
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 01/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
