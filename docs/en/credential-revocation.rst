@@ -983,8 +983,8 @@ Upon receiving a Digital Credential, a Relying Party MUST first perform the vali
   - If the Relying Party is using a system for caching the Status List Token, it SHOULD check the `ttl` claim of the Status List Token and retrieve a fresh copy if (time status was resolved + `ttl` < current time).
 
 - Decompress the Status List with a decompressor that is compatible with DEFLATE [:rfc:`1951`] and ZLIB [:rfc:`1950`].
-- Retrieve the status value of the index specified in the Digital Credential as described in :ref:`credential-revocation:Status Lists Creation`. Fail if the provided index is out of bounds of the Status List.
-- Check the status value as described in :ref:`credential-revocation:Status Lists Creation`.
+- Retrieve the status value of the index specified in the Digital Credential as described in :ref:`credential-revocation:Checking Credentials Statuses`. Fail if the provided index is out of bounds of the Status List.
+- Check the status value as described in :ref:`credential-revocation:Checking Credentials Statuses`.
 
 If any of these checks fails, no statement about the status of the Digital Credential can be made and the Digital Credential SHOULD be rejected.
 

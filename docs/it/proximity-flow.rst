@@ -241,10 +241,10 @@ Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome de
 **Passo 4**: L'Istanza del Wallet restituisce *Handover Select* costruito in risposta al messaggio *Handover Request* ricevuto. I contenuti del messaggio *Handover Select* sono gli stessi del Passo 1 (:ref:`WP_103f <wallet-credential-presentation-testcases>`).
 
 .. note::
-   L'uso di *Negotiated Handover* per il *Device Engagement* consente la negoziazione dei metodi di trasferimento. Per BLE, consente inoltre la negoziazione delle chiavi utilizzate dal livello di trasmissione. Questo fornisce un'esperienza utente migliorata e migliora la sicurezza della trasmissione dei dati [`ISO18013-5`_ #9.2.1].
+    L'uso di *Negotiated Handover* per il *Device Engagement* consente la negoziazione dei metodi di trasferimento. Per BLE, consente inoltre la negoziazione delle chiavi utilizzate dal livello di trasmissione. Questo fornisce un'esperienza utente migliorata e migliora la sicurezza della trasmissione dei dati [`ISO18013-5`_ #9.2.1].
 
 .. note::
-   Procedere solo se le Capabilities di ``DeviceEngagement`` includono ``HandoverSessionEstablishmentSupport`` impostato su ``true``  (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Altrimenti, saltare il ``SessionEstablishment`` anticipato. Il ``SessionEstablishment`` anticipato viene inviato tramite un servizio TNEP dedicato; lo stesso ``SessionEstablishment`` DEVE anche essere inviato nuovamente durante il *Device Retrieval* e DEVE corrispondere. Se non corrisponde, l'Istanza del Wallet termina (:ref:`WP_103g <wallet-credential-presentation-testcases>`). Se il ``SessionEstablishment`` anticipato non riesce a essere inviato, procedere normalmente (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
+    Procedere solo se le Capabilities di ``DeviceEngagement`` includono ``HandoverSessionEstablishmentSupport`` impostato su ``true``  (:ref:`WP_103c <wallet-credential-presentation-testcases>`). Altrimenti, saltare il ``SessionEstablishment`` anticipato. Il ``SessionEstablishment`` anticipato viene inviato tramite un servizio TNEP dedicato; lo stesso ``SessionEstablishment`` DEVE anche essere inviato nuovamente durante il *Device Retrieval* e DEVE corrispondere. Se non corrisponde, l'Istanza del Wallet termina (:ref:`WP_103g <wallet-credential-presentation-testcases>`). Se il ``SessionEstablishment`` anticipato non riesce a essere inviato, procedere normalmente (:ref:`WP_103h <wallet-credential-presentation-testcases>`).
 
 **Passo 5**: [Opzionale] L'Istanza di Relying Party apre il servizio TNEP denominato [urn:placeholder] con l'Istanza del Wallet durante l'handover negoziato per consegnare il messaggio ``SessionEstablishment`` anticipato.
 
@@ -253,7 +253,7 @@ Se è supportato il ``SessionEstablishment`` anticipato, elenca anche il nome de
 **Passo 7**: L'Istanza di Relying Party chiude il servizio TNEP.
 
 .. note::
-   Se un messaggio ``SessionEstablishment`` opzionale viene inviato durante *Negotiated Handover* (Passo 5), l'Istanza del Wallet DEVE verificare che corrisponda al messaggio ``SessionEstablishment`` ricevuto durante *Device Retrieval* (utilizzando BLE o canale sicuro NFC). Questa verifica è richiesta per garantire un corretto Session Binding.
+    Se un messaggio ``SessionEstablishment`` opzionale viene inviato durante *Negotiated Handover* (Passo 5), l'Istanza del Wallet DEVE verificare che corrisponda al messaggio ``SessionEstablishment`` ricevuto durante *Device Retrieval* (utilizzando BLE o canale sicuro NFC). Questa verifica è richiesta per garantire un corretto Session Binding.
 
 Esempio Non Normativo
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -276,7 +276,7 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
 **Passi 2-5**: [Opzionale] L'Istanza del Wallet avvia la verifica preparandosi a controllare l'identità della Relying Party tramite la caratteristica Ident, che è una caratteristica BLE GATT che trasporta un valore identificatore come descritto in [`ISO18013-5`_ #11.1.3.2]. L'Istanza del Wallet deriva il valore Ident atteso e legge la caratteristica Ident della Relying Party, confrontandola con l'Ident atteso, e terminando la connessione BLE qualora non vi sia corrispondenza (:ref:`WP_112d <wallet-credential-presentation-testcases>`).
 
 .. note::
-   Lo scopo della caratteristica Ident è unicamente di verificare se l'Istanza del Wallet è connessa all'Istanza di Relying Party corretta prima di iniziare il *Device Retrieval*. Se l'Istanza del Wallet è connessa all'Istanza di Relying Party sbagliata, il *Session Establishment* fallirà. Connettersi e disconnettersi a un'Istanza di Relying Party richiede una quantità relativamente grande di tempo; pertanto, è più veloce implementare metodi per identificare l'Istanza di Relying Party corretta [`ISO18013-5`_ #11.1.3.1].
+    Lo scopo della caratteristica Ident è unicamente di verificare se l'Istanza del Wallet è connessa all'Istanza di Relying Party corretta prima di iniziare il *Device Retrieval*. Se l'Istanza del Wallet è connessa all'Istanza di Relying Party sbagliata, il *Session Establishment* fallirà. Connettersi e disconnettersi a un'Istanza di Relying Party richiede una quantità relativamente grande di tempo; pertanto, è più veloce implementare metodi per identificare l'Istanza di Relying Party corretta [`ISO18013-5`_ #11.1.3.1].
 
 **Passo 6**: L'Istanza di Relying Party invia il messaggio ``SessionEstablishment`` cifrato (includendo ``EReaderKey`` e ``DeviceRequest`` cifrato) tramite la connessione BLE stabilita.
 
@@ -298,12 +298,12 @@ La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ 
 ``SessionEstablishment`` tramite NFC
 -------------------------------------
 .. note::
-   Se il *Device Engagement* viene avviato tramite un QR code, l'Istanza di Relying Party non ha un modo standardizzato per segnalare la sua intenzione di utilizzare NFC per il successivo trasferimento di dati. Questo potrebbe portare a una peggiore esperienza utente, poiché l'Utente potrebbe non essere consapevole di dover utilizzare NFC. Questo problema viene evitato quando NFC viene utilizzato per il *Device Engagement*, poiché stabilisce implicitamente il metodo di trasferimento dati [`ISO18013-5`_ #8.2.5].
+    Se il *Device Engagement* viene avviato tramite un QR code, l'Istanza di Relying Party non ha un modo standardizzato per segnalare la sua intenzione di utilizzare NFC per il successivo trasferimento di dati. Questo potrebbe portare a una peggiore esperienza utente, poiché l'Utente potrebbe non essere consapevole di dover utilizzare NFC. Questo problema viene evitato quando NFC viene utilizzato per il *Device Engagement*, poiché stabilisce implicitamente il metodo di trasferimento dati [`ISO18013-5`_ #8.2.5].
 
 .. note::
-   A causa della velocità di trasferimento dati limitata di NFC, se è richiesta una grande quantità di dati per una transazione, potrebbe non essere né pratico né ragionevole per un Utente mantenere il dispositivo all'interno del campo RF dell'Istanza di Relying Party per la durata della transazione. Inoltre, quando un dispositivo lascia il campo RF il segnale viene perso necessitando l'avvio di una nuova transazione. Questo può essere evitato facendo sì che tutte le interazioni dell'Utente con l'Istanza del Wallet vengano effettuate mentre l'Istanza del Wallet rimane nel campo RF oppure, se non sono richieste interazioni dell'Utente durante la fase di trasmissione [`ISO18013-5`_ #8.2.5].
+    A causa della velocità di trasferimento dati limitata di NFC, se è richiesta una grande quantità di dati per una transazione, potrebbe non essere né pratico né ragionevole per un Utente mantenere il dispositivo all'interno del campo RF dell'Istanza di Relying Party per la durata della transazione. Inoltre, quando un dispositivo lascia il campo RF il segnale viene perso necessitando l'avvio di una nuova transazione. Questo può essere evitato facendo sì che tutte le interazioni dell'Utente con l'Istanza del Wallet vengano effettuate mentre l'Istanza del Wallet rimane nel campo RF oppure, se non sono richieste interazioni dell'Utente durante la fase di trasmissione [`ISO18013-5`_ #8.2.5].
 
-   La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ per ``SessionEstablishment`` tramite NFC corrispondente al Box B nella Figura 8.10.
+    La figura seguente illustra il flusso di basso livello conforme a `ISO18013-5`_ per ``SessionEstablishment`` tramite NFC corrispondente al Box B nella Figura 8.10.
 
 .. _fig_SessionEstablishment-NFC:
 .. plantuml:: plantuml/session-establishment-over-nfc.puml

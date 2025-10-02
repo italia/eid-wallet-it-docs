@@ -240,35 +240,35 @@ Di seguito è riportato un esempio non normativo di una Risposta di Errore di In
 La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore (:ref:`WP_036–040 <wallet-instance-testcases>`)::
 
 .. list-table::
-   :class: longtable
-   :widths: 20 20 50
-   :header-rows: 1
-
-   * - **Codice di Stato HTTP**
-     - **Codice di Errore**
-     - **Descrizione**
-   * - ``400 Bad Request``
-     - ``bad_request``
-     - La richiesta è malformata, mancano parametri richiesti o include parametri non validi e sconosciuti.
-   * - ``403 Forbidden``
-     - ``integrity_check_error``
-     - Il dispositivo non soddisfa i requisiti minimi di sicurezza del Fornitore dell'Applicazione.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - Il nonce fornito non è valido, è scaduto o è già stato utilizzato.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - La firma della Key Attestation non è valida.
-   * - ``422 Unprocessable Content`` [OPZIONALE]
-     - ``validation_error``
-     - La richiesta non aderisce al formato richiesto.
-   * - ``500 Internal Server Error``
-     - ``server_error``
-     - Si è verificato un errore interno durante l'elaborazione della richiesta.
-   * - ``503 Service Unavailable``
-     - ``temporarily_unavailable``
-     - Il servizio non è disponibile. Si prega di riprovare più tardi.
-
+    :class: longtable
+    :widths: 20 20 50
+    :header-rows: 1
+ 
+    * - **Codice di Stato HTTP**
+      - **Codice di Errore**
+      - **Descrizione**
+    * - ``400 Bad Request``
+      - ``bad_request``
+      - La richiesta è malformata, mancano parametri richiesti o include parametri non validi e sconosciuti.
+    * - ``403 Forbidden``
+      - ``integrity_check_error``
+      - Il dispositivo non soddisfa i requisiti minimi di sicurezza del Fornitore dell'Applicazione.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - Il nonce fornito non è valido, è scaduto o è già stato utilizzato.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - La firma della Key Attestation non è valida.
+    * - ``422 Unprocessable Content`` [OPZIONALE]
+      - ``validation_error``
+      - La richiesta non aderisce al formato richiesto.
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - Si è verificato un errore interno durante l'elaborazione della richiesta.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - Il servizio non è disponibile. Si prega di riprovare più tardi.
+ 
 
 Associazione Chiave dell'Applicazione Mobile
 --------------------------------------------
