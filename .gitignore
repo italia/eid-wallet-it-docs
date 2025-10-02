@@ -32,3 +32,6 @@ v_env/bin/python
 v_env/bin/pip3
 v_env/bin/pip
 v_env/bin/activate
+
+.*
+!.github

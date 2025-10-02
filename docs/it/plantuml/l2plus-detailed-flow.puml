@@ -1,0 +1,77 @@
+@startuml Autenticazione eID LoA3 + identity proofing remoto nel Flusso Emissione PID IT-Wallet
+'!theme cerulean-outline
+autonumber
+participant "Utente" as U
+participant "Istanza Wallet" as A
+participant "CIE" as C
+box  "Provider PID" #LightBlue
+participant "Server Autorizzazione PID" as AS
+participant "Servizio MRTD PoP" as DPOPS
+end box
+participant "Registro Nazionale CIE" as MIN
+participant "Provider\nIdentita Nazionale" as IDP
+
+
+title Autenticazione eID LoA3 + identity proofing remoto nel Flusso Emissione PID IT-Wallet
+
+U -> A: Vuole attivare il Wallet \nusando eID Substantial con Verifica MRTD
+
+=== Fase 1: Richiesta Autorizzazione OAuth ==
+A -> AS : Richiesta PAR (  client_id, requestObject) \n  con OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header e\n  **con authorization_detail type "it_l2+document_proof"**
+
+AS --> A : Risposta PAR (request_uri, expires_in)
+A -> AS: Richiesta Autorizzazione PID \n  GET /authorize?client_id=...&request_uri=...\n  Host: pid-provider.example.org
+
+=== Fase 2: Autenticazione Primaria - Autenticazione Utente eID con LoA Substantial ==
+AS -> IDP: Richiesta Autenticazione eID
+IDP <--> U: Autenticazione utente + consenso
+IDP -> AS: Risposta Autenticazione eID
+
+=== Fase 3: Validazione MRTD PoP ==
+AS -> A: HTTP/1.1 302 Found\n Location: https://start.wallet.example.org/challenge?**mrtd_proof=<mrtd_proof_JWT>**
+
+A -> DPOPS: **Richiesta MRTD PoP**\nPOST /edoc-proof/init HTTP/1.1\n Host: pid-provider.example.org\ncon OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header
+
+opt
+    DPOPS -> MIN:  Recupera informazioni MRZ
+    MIN --> DPOPS: Informazioni MRZ
+end
+
+DPOPS --> A: **Risposta MRTD PoP**\nHTTP/1.1 202 Accepted\ncon mrtd_pop_nonce, challenge e (opzionalmente) dati MRZ
+
+alt Se MRZ non è disponibile all'Istanza Wallet
+    A -> U: Richiesta di inserire CAN
+    U -> A: Inserisce CAN
+else if MRZ è ottenuto al Step 11
+    A -> A: Estrae dati da MRZ
+end
+
+group #LightYellow Interazione NFC con l'Utente per Flusso Protocollo Proof of Possession Documento
+    A -[#green]> C : **Applicazione MRTD - PACE**\nLeggi DG1, DG11, SOD_MRTD
+    C --[#green]> A : DG1, DG11, SOD_MRTD
+
+    A -[#green]> C : **Applicazione IAS**\nLeggi NIS, Chiave pubblica Anticloning, SOD_IAS
+    C --[#green]> A : NIS, Chiave pubblica Anticloning, SOD_IAS
+    A -[#green]> C: Autenticazione Interna Anticloning\nchallenge server
+    C --[#green]> A : Firma RSA-2048 del challenge
+end
+
+A -> DPOPS: **Richiesta Validazione MRTD PoP**\nPOST /edoc-proof/verify HTTP/1.1\n Host: pid-provider.example.org\ncon OAuth-Client-Attestation e OAuth-Client-Attestation-PoP nell'Header
+
+DPOPS -> MIN: Richiesta HTTP per verifica \ncorrelazione NIS-CF e\nstato validita del \ndocumento (verifica revoca)
+
+MIN --> DPOPS: HTTP/1.1 200 Ok
+
+DPOPS --> A: **Risposta Validazione MRTD PoP**\nHTTP/1.1 202 Accepted\ncon redirect_uri e mrtd_val_pop_nonce
+
+A -> A: firma mrtd_val_pop_nonce
+
+A -> AS: **Conferma Finale Basata su Browser**\nGET https://pid-provider.example.org/cb?mrtd_val_pop_nonce_signed&oauth_session=...\n(tramite browser)
+
+=== Fase 4: Risposta Autorizzazione OAuth ==
+AS -> A: **Risposta Autorizzazione PID con Codice Auth**\nHTTP/1.1 302 Found\n Location: https://start.wallet.example.org?\n code=...\n &state=...\n &iss=https%3A%2F%2Fpid-provider.example.org
+
+rnote over A,AS #LIGHTGREEN
+Il flusso continua secondo il flusso Emissione PID come definito nella specifica IT-Wallet
+endrnote
+@enduml

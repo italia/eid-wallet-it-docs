@@ -152,7 +152,14 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
 
             - **type**: DEVE essere valorizzato con ``openid_credential``,
             - **credential_configuration_id**: Stringa JSON. Stringa che indica un identificativo univoco dell'Attestato Elettronico in uno specifico formato che DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Ad esempio, ``dc_sd_jwt_PersonIdentificationData`` può essere utilizzato per il PID in formato SD-JWT VC, ``dc_sd_jwt_mDL`` per la patente di guida in formato SD-JWT VC e ``mso_mdoc_mDL`` per la patente di guida in formato mdoc.
-      - Vedi [RAR :rfc:`9396`] e [`OpenID4VCI`_].
+
+        Inoltre, nel caso in cui l'Autenticazione eID Substantial con Verifica MRTD viene richiesta, DEVE essere incluso un Oggetto JSON opzionale con i seguenti claim:
+
+            - **type**: OBBLIGATORIO. DEVE essere ``it_l2+document_proof``,
+            - **idphinting**: OBBLIGATORIO. URL del Provider di Identità da utilizzare come suggerimento,
+            - **challenge_method**: OBBLIGATORIO. Specifica il metodo di verifica MRTD. Il valore DEVE essere ``mrtd+ias``. Metodi di verifica aggiuntivi POSSONO essere definiti in future release di questa Specifica,
+            - **challenge_redirect_uri**: OBBLIGATORIO. Redirect URI per il processo di challenge. Il valore DEVE essere l'Universal Link registrato dall'Istanza del Wallet.
+      - Vedi [RAR :rfc:`9396`], [`OpenID4VCI`_] e :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
     * - **redirect_uri**
       - *Redirection URI* a cui è indirizzata la response. DEVE essere un *universal link* oppure un *app link* registrato nel sistema operativo locale, in modo tale che quest'ultimo potrà fornirà la response all'Istanza del Wallet.
       - Vedi [`OIDC`_] Sezione 3.1.2.1.

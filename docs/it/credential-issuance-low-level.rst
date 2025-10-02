@@ -100,6 +100,9 @@ Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione de
   * DEVE utilizzare i parametri ``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP`` secondo OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], poiché in questo flusso il Pushed Authorization Endpoint è un endpoint protetto (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
   * Specifica i tipi di Credenziali richieste utilizzando il parametro ``authorization_details`` [RAR :rfc:`9396`] e/o il parametro ``scope`` (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
+.. note::
+   Per l'Autenticazione eID Substantial con Verifica MRTD, l'oggetto ``authorization_details`` DEVE contenere il valore ``"it_l2+document_proof"``. Per le specifiche complete del protocollo, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
+
 Il Credential Issuer esegue i seguenti controlli alla ricezione della `PAR Request`:
 
     1. DEVE validare la firma del `Request Object` utilizzando l'algoritmo specificato nel parametro ``alg`` dell'header (:rfc:`9126`, :rfc:`9101`) e la chiave pubblica recuperata dall'Attestato di Unità di Wallet (``cnf.jwk``) referenziato nel `Request Object`, utilizzando il parametro ``kid`` dell'header JWT.

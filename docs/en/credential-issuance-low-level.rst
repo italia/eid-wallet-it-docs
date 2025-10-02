@@ -117,6 +117,9 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   * MUST use the ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint  (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
   * Specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and or ``scope`` parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
+.. note::
+   For eID Substantial Authentication with MRTD Verification, the ``authorization_details`` object MUST contain the type ``"it_l2+document_proof"``. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
+
 The Credential Issuer performs the following checks upon the receipt of the PAR request:
 
     1. It MUST validate the signature of the Request Object using the algorithm specified in the ``alg`` header parameter (:rfc:`9126`, :rfc:`9101`) and the public key retrieved from the Wallet Attestation (``cnf.jwk``) referenced in the Request Object, using the ``kid`` JWT header parameter.
@@ -203,7 +206,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
 
 .. note::
-   **User Authentication and Consent**: The PID Provider performs the User authentication based on CieID scheme with LoA High (CIE L3) and requires the User consent for the PID issuance.
+   **User Authentication and Consent**: The PID Provider performs the User authentication based on CieID scheme with LoA High (CIE L3), or according to eID Substantial Authentication with MRTD Verification as defined in :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`, and requires the User consent for the PID issuance.
    The (Q)EAA Provider performs the User authentication requesting a valid PID to the Wallet Instance. The (Q)EAA Provider MUST use [`OpenID4VP`_] to request the presentation of the PID. In this circumstance, the (Q)EAA Provider acts as a Relying Party, providing the presentation request to the Wallet Instance. The Wallet Instance MUST have a valid PID, obtained beforehand, to initiate the transaction with the (Q)EAA Provider. During this step, Credential Issuers MAY ask the User's contact details (e.g., their email address) to send notifications about the issued Digital Credential(s).
 
 

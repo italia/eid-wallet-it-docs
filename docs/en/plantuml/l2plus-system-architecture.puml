@@ -1,0 +1,39 @@
+@startuml L2+ Multi-Step Authorization Architecture
+'!theme cerulean-outline
+!include <C4/C4_Component>
+HIDE_STEREOTYPE()
+'LAYOUT_WITH_LEGEND()
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+title L2+ eID Substantial Authentication with MRTD Verification Architecture
+
+Component_Ext(wallet, "Wallet Instance", "Mobile App", "Handles PID request based on the IT-Wallet technology standard stack. IT provides **cryptographic capabilities for MRT/IAS Electronic Document reading** (ICAO 9303, BSI-03110)",$sprite="wallet")
+
+Boundary(issuer, "PID Provider") {
+    Boundary(multi_step_authz, "eID Substantial Authentication with MRTD Verification System", "Orchestrates multi-step authentication flow and remote identity proofing") {
+        Component(pid_authz_server, "Authorization Server", "OAuth2 Authorization Framework and OID4VCI", "Handles PID request and authorization flow coordination",$sprite="server")
+        Component(doc_pop_service, "MRTD PoP Service", "Validation Service", "Handles electronic document proof of possession with cryptographic document validation",$sprite="id_card")
+    }
+}
+
+Component_Ext(loa3_idp, "LoA3 Identity Provider", "eIDAS LoA3 eID Scheme", "Provides Electronic Identification Schemes (CIEid and SPID)",$sprite="institution")
+
+Component_Ext(cie_registry, "CIE National Registry", "CIE Database", "Provides privacy-preserved evidence of NIS - Tax payer's identification number binding and optionally MRZ data. It provides the validity status of the document (revocation)",$sprite="database")
+
+Rel(wallet, pid_authz_server, "OAuth2 flow \nfor PID Issuance", "Browser-based")
+
+Rel(wallet, doc_pop_service, "Document proof submission", "API")
+
+pid_authz_server <-> doc_pop_service : "**Identity Matching**"
+
+Rel_Back(pid_authz_server, loa3_idp, "SAML/OIDC authentication", "Browser-based")
+
+Rel_Back(doc_pop_service, cie_registry, "Additional Document related data", "API")
+@enduml
