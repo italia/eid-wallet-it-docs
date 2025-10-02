@@ -1,6 +1,6 @@
 .. _test-plans-proximity-presentation:
 
-Proximity Credential Presentation Test Matrix
+Proximity Credential Verifier Test Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Verifiers solutions for proximity flows. It is also intended for assessment bodies inspecting and validating the implementations of Credential Verifiers solutions for proximity flows.
