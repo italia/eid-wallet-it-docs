@@ -1,7 +1,7 @@
 .. _test-plans-proximity-presentation:
 
 Proximity Credential Presentation Test Matrix
-----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Verifiers solutions for proximity flows. It is also intended for assessment bodies inspecting and validating the implementations of Credential Verifiers solutions for proximity flows.
 
@@ -141,8 +141,8 @@ This section provides the set of test cases designed for technical implementers 
 
   * - PPR-025
     - Capabilities
-    - Verify that ReaderAuthAllSupport is set to true when present.
-    - ReaderAuthAllSupport is correctly set to true.
+    - Verify that ``ReaderAuthAllSupport`` is set to ``true`` when present.
+    - ``ReaderAuthAllSupport`` is correctly set to ``true``.
 
   * - PPR-026
     - mdoc Request
@@ -307,7 +307,7 @@ This section provides the set of test cases designed for technical implementers 
   * - PPR-058
     - Document Type Validation
     - Test that mDL document type is correctly set.
-    - mDL document type is correctly set to org.iso.18013.5.1.mDL.
+    - mDL document type is correctly set to ``org.iso.18013.5.1.mDL``.
 
   * - PPR-059
     - DeviceSigned Structure
