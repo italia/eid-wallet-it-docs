@@ -168,7 +168,7 @@
             
   <section id="flusso-remoto">
 <h1><span class="section-number">8.2.1. </span>Flusso Remoto<a class="headerlink" href="#flusso-remoto" title="Link to this heading">¶</a></h1>
-<p>A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (<strong>Same Device</strong>) oppure un altro dispositivo (<strong>Cross Device</strong>), la <code class="docutils literal notranslate"><span class="pre">Relying</span> <span class="pre">Party</span></code> DEVE supportare i seguenti flussi remoti:</p>
+<p>A seconda di come l'Utente stia interagendo con il frontend dell'App di Verifica Web, usando cioè il dispositivo in cui risiede l'Unità Wallet (<strong>Same Device</strong>) oppure un altro dispositivo (<strong>Cross Device</strong>), la <code class="docutils literal notranslate"><span class="pre">Relying</span> <span class="pre">Party</span></code> DEVE supportare i seguenti flussi remoti (<span class="xref std std-ref">RPR-84</span>):</p>
 <ul class="simple">
 <li><p><strong>Same Device</strong>: essa DEVE fornire un indirizzo <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> all'Istanza del Wallet utilizzando un <em>redirect</em> (<code class="docutils literal notranslate"><span class="pre">302</span></code>) o un href HTML nella pagina web (<span class="xref std std-ref">RPR-01</span>);</p></li>
 <li><p><strong>Cross Device</strong>: essa DEVE fornire un indirizzo <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> tramite un Codice QR che l'Utente scansiona con l'Istanza del Wallet (<span class="xref std std-ref">RPR-03</span>).</p></li>
@@ -384,7 +384,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <p><strong>Passaggi 21-25 (Controlli RP)</strong>: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae le Credenziali Elettroniche e attesta la fiducia con il Fornitore di Credenziali e la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in <a class="reference internal" href="credential-revocation.html#revoca-e-sospensione-degli-attestati-elettronici"><span class="std std-ref">Revoca e Sospensione degli Attestati Elettronici</span></a>. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.</p>
 <p><strong>Passaggi 26-27 o 28 (Risposta della Relying Party)</strong>: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.</p>
 <blockquote>
-<div><p>Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> all'Istanza del Wallet. Dopo aver ricevuto il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (<span class="xref std std-ref">RPR-96</span>).</p>
+<div><p>Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> all'Istanza del Wallet. Dopo aver ricevuto il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (<span class="xref std std-ref">RPR-83</span>).</p>
 <p>Di seguito è riportato un esempio non normativo della risposta nel Flusso Same Device.</p>
 </div></blockquote>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
@@ -620,16 +620,16 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Richiesta dell'Attestazione del Wallet</strong></p>
-<p>La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> nella query DCQL, il quale DEVE essere impostato al valore definito nella <a class="reference internal" href="registry-catalogue.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> (<span class="xref std std-ref">RPR-114</span>, <span class="xref std std-ref">RPR-115</span>, <span class="xref std std-ref">RPR-116</span>).</p>
+<p>La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> nella query DCQL, il quale DEVE essere impostato al valore definito nella <a class="reference internal" href="registry-catalogue.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> (<span class="xref std std-ref">RPR-114</span>).</p>
 </div>
 <section id="errori-dell-endpoint-uri-request">
 <h3><span class="section-number">8.2.1.3.1. </span>Errori dell'Endpoint URI Request<a class="headerlink" href="#errori-dell-endpoint-uri-request" title="Link to this heading">¶</a></h3>
-<p>Quando la Relying Party incontra errori durante l'emissione del Request Object dall'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, DEVE restituire una <em>Error Response</em> con <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come tipo di contenuto e DEVE includere i seguenti parametri (<span class="xref std std-ref">RPR-115</span>):</p>
+<p>Quando la Relying Party incontra errori durante l'emissione del Request Object dall'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>, DEVE restituire una <em>Error Response</em> con <code class="docutils literal notranslate"><span class="pre">application/json</span></code> come tipo di contenuto e DEVE includere i seguenti parametri:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">error</span></code>: Il codice di errore.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">error_description</span></code>: Testo in forma leggibile che fornisce ulteriori dettagli per chiarire la natura dell'errore incontrato.</p></li>
 </ul>
-<p>La seguente tabella elenca gli <em>HTTP Status Code</em> e i relativi <em>Error codes</em> che DEVONO essere supportati per la <em>Error Response</em> (<span class="xref std std-ref">RPR-116</span>):</p>
+<p>La seguente tabella elenca gli <em>HTTP Status Code</em> e i relativi <em>Error codes</em> che DEVONO essere supportati per la <em>Error Response</em>:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 20.0%" />
@@ -677,7 +677,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Presentazione dell'Attestazione del Wallet</strong></p>
-<p>L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti per l'utente (<span class="xref std std-ref">RPR-117</span>, <span class="xref std std-ref">RPR-118</span>, <span class="xref std std-ref">RPR-119</span>).</p>
+<p>L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti per l'utente.</p>
 </div>
 <p>Nella Authorization Response vengono utilizzati i seguenti parametri (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093</span></a>):</p>
 <table class="longtable docutils align-default">
@@ -692,7 +692,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>vp_token</strong></p></td>
-<td><p>Ci DEVONO essere almeno due presentazioni firmate in questo Array (<span class="xref std std-ref">WP_093a</span>):</p>
+<td><p>Ci DEVONO essere almeno due presentazioni firmate in questo Array (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093a</span></a>):</p>
 <ul class="simple">
 <li><p>L'Attestato Elettronico richiesto (uno o più, in formato SD-JWT VC)</p></li>
 <li><p>la Wallet Attestation (in formato SD-JWT VC)</p></li>
@@ -705,12 +705,12 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </tr>
 </tbody>
 </table>
-<p>SD-JWT definisce come un <em>Holder</em> può presentare una Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'<em>Holder</em> DEVE includere il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> nell'SD-JWT aggiungendo il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> alla termine della stringa contenente l'SD-JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093b</span></a>), come rappresentato nell'esempio seguente (<span class="xref std std-ref">RPR-119</span>)</p>
+<p>SD-JWT definisce come un <em>Holder</em> può presentare una Attestato Elettronico a una Relying Party, dimostrando il legittimo possesso dell'Attestato Elettronico. Per fare ciò, l'<em>Holder</em> DEVE includere il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> nell'SD-JWT aggiungendo il <code class="docutils literal notranslate"><span class="pre">KB-JWT</span></code> alla termine della stringa contenente l'SD-JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093b</span></a>), come rappresentato nell'esempio seguente</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Issuer-Signed-JWT&gt;~&lt;Disclosure 1&gt;~&lt;Disclosure 2&gt;~...~&lt;Disclosure N&gt;~&lt;KB-JWT&gt;
 </pre></div>
 </div>
-<p>Per convalidare la firma sul Key Binding JWT, la Relying Party DEVE utilizzare il materiale crittografico incluso nell'<em>Issuer-Signed-JWT</em>. La convalida della firma del Key Binding JWT (KB-JWT) DEVE utilizzare la chiave pubblica inclusa nell'SD-JWT contenuta nel parametro <code class="docutils literal notranslate"><span class="pre">cnf</span></code> contenuto nell'<em>Issuer-Signed-JWT</em> (<span class="xref std std-ref">RPR-120</span>).</p>
-<p>Quando viene presentato un SD-JWT, il suo KB-JWT DEVE contenere i seguenti parametri nell'intestazione JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093c</span></a> and <span class="xref std std-ref">RPR-121</span>):</p>
+<p>Per convalidare la firma sul Key Binding JWT, la Relying Party DEVE utilizzare il materiale crittografico incluso nell'<em>Issuer-Signed-JWT</em>. La convalida della firma del Key Binding JWT (KB-JWT) DEVE utilizzare la chiave pubblica inclusa nell'SD-JWT contenuta nel parametro <code class="docutils literal notranslate"><span class="pre">cnf</span></code> contenuto nell'<em>Issuer-Signed-JWT</em>.</p>
+<p>Quando viene presentato un SD-JWT, il suo KB-JWT DEVE contenere i seguenti parametri nell'intestazione JWT (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_093c</span></a>):</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -723,14 +723,14 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>OBBLIGATORIO. DEVE essere <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>, che caratterizza esplicitamente il Key Binding JWT come raccomandato nella Sezione 3.11 di <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a> (<span class="xref std std-ref">RPR-123</span>).</p></td>
+<td><p>OBBLIGATORIO. DEVE essere <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>, che caratterizza esplicitamente il Key Binding JWT come raccomandato nella Sezione 3.11 di <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>OBBLIGATORIO. Algoritmo di Firma utilizzando uno di quelli specificati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Quando viene presentato un SD-JWT, la firma KB-JWT DEVE essere verificata dalla stessa chiave pubblica inclusa nell'SD-JWT all'interno del parametro <code class="docutils literal notranslate"><span class="pre">cnf</span></code>. Il KB-JWT DEVE contenere i seguenti parametri nel payload JWT (<span class="xref std std-ref">RPR-122</span>):</p>
+<p>Quando viene presentato un SD-JWT, la firma KB-JWT DEVE essere verificata dalla stessa chiave pubblica inclusa nell'SD-JWT all'interno del parametro <code class="docutils literal notranslate"><span class="pre">cnf</span></code>. Il KB-JWT DEVE contenere i seguenti parametri nel payload JWT:</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 33.3%" />
@@ -743,13 +743,13 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>OBBLIGATORIO. Il valore di questa <em>claim</em> DEVE essere l'ora in cui è stato emesso il Key Binding JWT, utilizzando la sintassi definita in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a> (<span class="xref std std-ref">RPR-124</span>).</p></td>
+<td><p>OBBLIGATORIO. Il valore di questa <em>claim</em> DEVE essere l'ora in cui è stato emesso il Key Binding JWT, utilizzando la sintassi definita in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
-<td><p>OBBLIGATORIO. Il ricevitore previsto del Key Binding JWT. Il valore di questo parametro DEVE corrispondere all'identificatore di entità (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) univoco della Relying Party (<span class="xref std std-ref">RPR-125</span>).</p></td>
+<td><p>OBBLIGATORIO. Il ricevitore previsto del Key Binding JWT. Il valore di questo parametro DEVE corrispondere all'identificatore di entità (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) univoco della Relying Party.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>nonce</strong></p></td>
-<td><p>OBBLIGATORIO. Garantisce l'unicità della firma. Il valore di questa <em>claim</em> DEVE essere una stringa e deve corrispondere a quello fornito nel Request Object (<span class="xref std std-ref">RPR-126</span>).</p></td>
+<td><p>OBBLIGATORIO. Garantisce l'unicità della firma. Il valore di questa <em>claim</em> DEVE essere una stringa e deve corrispondere a quello fornito nel Request Object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sd_hash</strong></p></td>
 <td><p>OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le <em>selective disclosures</em> selezionate dall'Utente.</p></td>
@@ -759,7 +759,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <section id="errori-della-authorization-response">
 <h3><span class="section-number">8.2.1.4.1. </span>Errori della Authorization Response<a class="headerlink" href="#errori-della-authorization-response" title="Link to this heading">¶</a></h3>
 <p>Ci sono casi in cui l'Istanza del Wallet non può convalidare il Request Object o il Request Object risulta non valido. Questo errore si verifica se il Request Object viene recuperato con successo dall'url fornito nel parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> ma non supera i controlli di convalida. Ciò potrebbe essere dovuto a firme errate, claim non conformim o altri errori di convalida, come la revoca della trust per la specifica Relying Party che lo ha emesso.</p>
-<p>Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una <em>Error Response</em> nella <em>Autorization Response</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a> and <span class="xref std std-ref">RPR-127</span>).
+<p>Se l'Istanza del Wallet incontra tali errori durante la valutazione della Authorization Request, DEVE notificare alla Relying Party inviando una <em>Error Response</em> nella <em>Autorization Response</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>).
 L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Autorization Response</em> all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_090</span></a>). Questa <em>Error Response</em> DEVE essere codificata nel corpo della richiesta utilizzando il formato definito dal tipo di contenuto <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p>
 <p>Di seguito è riportato un esempio non normativo di una <em>Error Response</em> nella <em>Autorization Response</em>.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">POST</span> <span class="nn">/response_uri</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -818,7 +818,7 @@ Questo reindirizzamento consente alla Relying Party di riprendere senza problemi
 Anche se un avversario riesce a rubare il valore casuale utilizzato nella richiesta allo Status Endpoint, il suo user-agent verrebbe rifiutato a causa del cookie mancante nella richiesta.</p>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094a</span></a> and <span class="xref std std-ref">RPR-132</span>).</p>
+<p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">redirect_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_094a</span></a>).</p>
 </div>
 <section id="errori-della-risposta-della-relying-party">
 <h3><span class="section-number">8.2.1.5.1. </span>Errori della Risposta della Relying Party<a class="headerlink" href="#errori-della-risposta-della-relying-party" title="Link to this heading">¶</a></h3>

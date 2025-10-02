@@ -1,3 +1,4 @@
+.. _test-plans-proximity-presentation:
 
 Proximity Credential Presentation Test Matrix
 ----------------------------------------------

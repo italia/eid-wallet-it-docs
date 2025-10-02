@@ -131,7 +131,7 @@ Questa sezione fornisce l'insieme dei casi di test progettati per implementatori
   * - PPR-023
     - BLE Configuration
     - Verificare che solo la modalità Central Client sia supportata.
-    - Solo la modalità Central Client è supportata per le connessioni BLE.
+    - La modalità Central Client è supportata per le connessioni BLE.
 
   * - PPR-024
     - Capabilities

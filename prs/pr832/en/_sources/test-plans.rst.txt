@@ -43,5 +43,4 @@ For each test case, the table specifies:
   test-plans-trust.rst
   test-plans-wallet-provider.rst
   test-plans-credential-issuer.rst
-  test-plans-remote-presentation.rst
-  test-plans-proximity-presentation.rst
+  test-plans-presentation.rst

@@ -237,7 +237,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Errore di In
         "error_description": "The provided nonce is invalid, expired, or already used. "
     }
 
-La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore (:ref:`WP_036–040 <wallet-instance-testcases>`)::
+La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore (:ref:`WP_036–040 <wallet-instance-testcases>`):
 
 .. list-table::
     :class: longtable
