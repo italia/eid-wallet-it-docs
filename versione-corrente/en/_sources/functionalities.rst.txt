@@ -690,6 +690,9 @@ Activation of the Wallet Instance Errors
   * - The Authentication process on the National Identity Provider's service was unsuccessful (e.g. technical errors, unrecognized identity, etc.)
     - National Identity Provider
 
+.. note::
+   When electronic document verification is performed in addition to National Identity Provider authentication, additional error scenarios may occur. For detailed error codes and handling procedures, see :ref:`credential-issuance-l2plus:Error Management`.
+
 Issuance of Electronic Attestations of Attributes Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -20,10 +20,16 @@ Il flusso ad alto livello inizia con l'Utente che desidera ottenere un PID e avv
     1. **Individuazione e Trust del PID Provider**: l'Istanza del Wallet individua il PID Provider fidato utilizzando il Catalogo degli Attestati Elettronici e i Servizi di Federazione, stabilendo la trust verso il PID Provider secondo il Trust Model e ottenendo i suoi Metadata, che indicano i formati del PID, gli algoritmi supportati e qualsiasi altro parametro necessario per esigenze di interoperabilità (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **Richiesta del PID**: utilizzando l'Authorization Code Flow definito in [`OpenID4VCI`_], l'Istanza del Wallet richiede il PID al PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Individuazione e Trust del Fornitore di Wallet**: il PID Provider verifica l'autenticità e la validità dell'Istanza del Wallet, stabilendo la trust verso il Fornitore di Wallet e ottenendo i Metadata del Wallet con i parametri necessari per le esigenze di interoperabilità, secondo il Trust Model.
-    4. **Autenticazione dell'Utente**: il PID Provider autentica l'Utente con CieID Livello di Garanzia Alto (L3), agendo come un Identity and Access Management Proxy verso il sistema nazionale di eID.
+    4. **Autenticazione dell'Utente**: Il Fornitore PID autentica l'Utente utilizzando il sistema eID Nazionale. Se il Fornitore PID non svolge il ruolo di un Identity Provider eID Nazionale, questo DOVREBBE implementare una soluzione in grado di autenticare gli Utenti utilizzando gli schemi nazionali di identità digitale.
     5. **Recupero dei dati PID dal Registro Pubblico Nazionale**: il PID Provider ottiene i dati PID richiesti dal Registro Pubblico Nazionale (ANPR), che agisce come Fonte Autentica.
     6. **Emissione del PID**: il PID Provider rilascia un PID vincolato al materiale crittografico posseduto dall'Istanza del Wallet richiedente.
 
+.. note::
+    Riguardo al punto 4, il metodo di autenticazione primario è basato su CieID LoA High (L3). Per scenari in cui il PIN CIE non è immediatamente disponibile, è disponibile un meccanismo di autenticazione multi-step alternativo che combina Autenticazione eID Substantial con Verifica MRTD.
+
+    Questo protocollo assicura livelli di sicurezza standard attraverso autenticazione multi-fattore fornendo accessibilità migliorata.
+
+    Per specifiche tecniche complete, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
 
 Flusso ad Alto Livello per (Q)EAA
 ----------------------------------

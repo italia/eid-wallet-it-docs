@@ -117,6 +117,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - *it_cie*: CIE id trust framework supported.
         - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
+        - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
   * - **evidence_supported**
     - JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.
   * - **credential_hash_alg_supported**
