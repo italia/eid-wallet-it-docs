@@ -59,7 +59,7 @@ Transizione a Operativo
 
 Dopo l'installazione, l'Utente apre l'Istanza del Wallet e inizia un'attivazione (**WI ACT**).
 In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet e associato all'Istanza del Wallet tramite il Cryptographic Hardware
-Key Tag, previa acquisizione del consenso dell'Utente (vedi :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` per maggiori dettagli).
+Key Tag, previa acquisizione del consenso dell'Utente (vedi :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` per maggiori dettagli, con i test in :ref:`WP_024 <wallet-instance-testcases>` e :ref:`WP_138 <wallet-instance-optional-testcases>`).
 Questa associazione consente all'Utente di richiedere direttamente la revoca dell'Istanza del Wallet dal Fornitore di Wallet, e consente anche al Fornitore di Wallet di
 revocare l'Istanza del Wallet associata a quell'Utente.
 
@@ -73,7 +73,7 @@ Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una W
 
 Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un
 PIN o utilizzando l'autenticazione biometrica, come l'impronta digitale o il riconoscimento facciale, secondo le preferenze
-personali e le capacità del dispositivo. Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`.
+personali e le capacità del dispositivo (:ref:`WP_025 <wallet-instance-testcases>`). Si prega di fare riferimento a :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`.
 
 Nello stato **Operativo**, gli Utenti possono richiedere l'emissione dell'Attestato Elettronico di Dati di Identificazione Personale (**PID ISS**) o di Attestati Elettronici di Attributi (Qualificati) se l'Attestato Elettronico di Dati di Identificazione Personale non è richiesto nell'emissione
 (**(Q)EEA ISS**). Inoltre, se le Credenziali Elettroniche sono Attestati Elettronici di Attributi (Qualificati) e per la presentazione non richiedono l'Attestato Elettronico di Dati di Identificazione Personale, possono essere presentate
@@ -96,7 +96,7 @@ Transizione a Disinstallato
 ...........................
 
 In tutti gli stati, **Installato**, **Attivato**, **Operativo** o **Valido**, l'Istanza del Wallet può essere rimossa completamente attraverso la transizione di disinstallazione dell'Istanza del Wallet
-(**WI UNINST**), portando allo stato **Disinstallato**. Se un'Istanza del Wallet è **Disinstallata** termina il suo ciclo di vita.
+(**WI UNINST**), portando allo stato **Disinstallato**. Se un'Istanza del Wallet è **Disinstallata** termina il suo ciclo di vita (:ref:`WP_139 <wallet-instance-optional-testcases>`).
 
 Gestione del Ciclo di Vita dell'Istanza del Wallet
 ..................................................
@@ -122,7 +122,7 @@ e l'effetto sul loro storage locale.
 Attraverso un'Istanza del Wallet in stato **Installato**, un Utente è in grado di avviare l'**Attivazione dell'Istanza del Wallet** (**WI ACT**).
 Come risultato, l'Istanza del Wallet DEVE creare una coppia di Cryptographic Hardware Key. Inoltre, se non è già stato fatto,
 gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet. Come risultato della **Revoca dell'Istanza del Wallet** (**WI REV**), l'Istanza del Wallet DEVE
-eliminare le coppie di Cryptographic Hardware Key.
+eliminare le coppie di Cryptographic Hardware Key (:ref:`WP_149 <wallet-instance-optional-testcases>`).
 
 Un Fornitore di Wallet invece è responsabile per:
 

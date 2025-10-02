@@ -12,7 +12,7 @@ Le Relying Party DEVONO fornire i seguenti tipi di metadata:
   - ``federation_entity``
   - ``openid_credential_verifier``
 
-I metadata contenuti in ``federation_entity`` DEVONO contenere i claim come definito nella Sezione :ref:`trust:Metadati delle Foglie federation_entity`.
+I metadata contenuti in ``federation_entity`` DEVONO contenere i parametri come definito nella Sezione :ref:`trust:Metadati delle Foglie federation_entity`.
 
 
 Entity Configuration di una Relying Party

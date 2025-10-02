@@ -62,7 +62,7 @@ Il seguente diagramma mostra il *flusso di richiesta dell'Utente*.
 
 **Passi 2.1-2.3 (Flusso Avviato dall'Issuer):** L'Utente, mentre naviga sul sito web del Credential Issuer, trova un link per ottenere un Attestato Elettronico.
 
-**Passi 2.4-2.7 (Cross-Device):** La Credential Offer viene presentata come un codice QR mostrato all'Utente. L'Utente scansiona il codice QR utilizzando l'Istanza del Wallet, che recupera i parametri definiti nella :ref:`Tabella dei parametri della Credential Offer <table_credential_offer_claim>`.
+**Passi 2.4-2.7 (Cross-Device):** La Credential Offer viene presentata come un codice QR mostrato all'Utente. L'Utente scansiona il codice QR utilizzando l'Istanza del Wallet, che recupera i parametri definiti nella :ref:`Tabella dei parametri della Credential Offer <table_credential_offer_claim>` (:ref:`WP_047–048 <wallet-credential-issuance-testcases>`).
 
 **Passi 2.8-2.10 (Same-Device):** La Credential Offer viene presentata come un pulsante href contenente l'URL che consente all'Utente di invocare l'Istanza del Wallet utilizzando il Credential Offer Endpoint.
 
@@ -84,22 +84,21 @@ Il seguente diagramma mostra il *flusso di emissione*.
 Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust:Meccanismo di Valutazione della Fiducia`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
 
 .. note::
-  **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo. Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
+  **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
 
 Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione definito sopra, l'Istanza del Wallet DEVE eseguire i seguenti controlli sui parametri della Credential Offer:
 
-  * Per ogni identificativo di Attestato Elettronico contenuto nell'array ``credential_configuration_ids``, verificare se è supportato dal Credential Issuer.
-  * L'identificativo dell'Authorization Server (se presente) è contenuto nel parametro ``authorization_servers`` dei Metadata del Credential Issuer.
-
+  * Per ogni identificativo di Attestato Elettronico contenuto nell'array ``credential_configuration_ids``, verificare se è supportato dal Credential Issuer (:ref:`WP_050 <wallet-credential-issuance-testcases>`).
+  * L'identificativo dell'Authorization Server (se presente) è contenuto nel parametro ``authorization_servers`` dei Metadata del Credential Issuer (:ref:`WP_049 <wallet-credential-issuance-testcases>`).
 
 **Passi 1-2 (`PAR Request`)**: L'Istanza del Wallet:
 
-  * Crea un nuovo `PKCE code verifier`, una prova di possesso dell'Attestato di Unità di Wallet e un parametro ``state`` per la *Pushed Authorization Request*.
-  * Fornisce al PAR Endpoint del Credential Issuer i parametri precedentemente elencati, utilizzando il parametro ``request`` (di seguito `Request Object`) secondo la Sezione 3 di :rfc:`9126` per prevenire l'attacco di scambio del `Request URI`. La Pushed Authorization Request consente l'autenticazione del client prima di qualsiasi interazione dell'Utente. Questo passaggio permette il rifiuto anticipato di richieste illegittime, prevenendo efficacemente attacchi di spoofing, manomissione e uso improprio delle richieste di autorizzazione.
-  * DEVE creare il ``code_verifier`` con una stringa casuale con sufficiente entropia utilizzando i caratteri non riservati con una lunghezza minima di 43 caratteri e una lunghezza massima di 128 caratteri, rendendo impraticabile per un attaccante indovinarne il valore. Il valore DEVE essere generato seguendo la raccomandazione nella Sezione 4.1 di :rfc:`7636`.
-  * Firma questa richiesta utilizzando la chiave privata creata durante la fase di configurazione per ottenere l'Attestato di Unità di Wallet. La relativa chiave pubblica attestata dal Fornitore di Wallet viene fornita all'interno del claim ``cnf.jwk`` dell'Attestato di Unità di Wallet.
-  * DEVE utilizzare i parametri ``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP`` secondo OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], poiché in questo flusso il Pushed Authorization Endpoint è un endpoint protetto.
-  * Specifica i tipi di Credenziali richieste utilizzando il parametro ``authorization_details`` [RAR :rfc:`9396`] e/o il parametro ``scope``.
+  * Crea un nuovo `PKCE code verifier`, una prova di possesso dell'Attestato di Unità di Wallet e un parametro ``state`` per la *Pushed Authorization Request* (:ref:`WP_052 <wallet-credential-issuance-testcases>`).
+  * Fornisce al PAR Endpoint del Credential Issuer i parametri precedentemente elencati, utilizzando il parametro ``request`` (di seguito `Request Object`) secondo la Sezione 3 di :rfc:`9126` per prevenire l'attacco di scambio del `Request URI` (:ref:`WP_052 <wallet-credential-issuance-testcases>`). La Pushed Authorization Request consente l'autenticazione del client prima di qualsiasi interazione dell'Utente. Questo passaggio permette il rifiuto anticipato di richieste illegittime, prevenendo efficacemente attacchi di spoofing, manomissione e uso improprio delle richieste di autorizzazione.
+  * DEVE creare il ``code_verifier`` con una stringa casuale con sufficiente entropia utilizzando i caratteri non riservati con una lunghezza minima di 43 caratteri e una lunghezza massima di 128 caratteri, rendendo impraticabile per un attaccante indovinarne il valore. Il valore DEVE essere generato seguendo la raccomandazione nella Sezione 4.1 di :rfc:`7636` (:ref:`WP_052a <wallet-credential-issuance-testcases>`).
+  * Firma questa richiesta utilizzando la chiave privata creata durante la fase di configurazione per ottenere l'Attestato di Unità di Wallet. La relativa chiave pubblica attestata dal Fornitore di Wallet viene fornita all'interno del claim ``cnf.jwk`` dell'Attestato di Unità di Wallet (:ref:`WP_052c <wallet-credential-issuance-testcases>`).
+  * DEVE utilizzare i parametri ``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP`` secondo OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], poiché in questo flusso il Pushed Authorization Endpoint è un endpoint protetto (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
+  * Specifica i tipi di Credenziali richieste utilizzando il parametro ``authorization_details`` [RAR :rfc:`9396`] e/o il parametro ``scope`` (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
 Il Credential Issuer esegue i seguenti controlli alla ricezione della `PAR Request`:
 
@@ -173,7 +172,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 .. literalinclude:: ../../examples/par-response.json
   :language: JSON
 
-**Passi 4-5 (`Authorization Request`)**: L'Istanza del Wallet invia una richiesta di autorizzazione all'Authorization Endpoint del Credential Issuer. Poiché parti del contenuto di questa `Authorization Request`, ad esempio il valore del parametro ``code_challenge``, sono unici per una particolare `Authorization Request`, l'Istanza del Wallet DEVE utilizzare un valore ``request_uri`` una sola volta (:rfc:`9126`). Il Credential Issuer esegue i seguenti controlli alla ricezione della `Authorization Request`:
+**Passi 4-5 (`Authorization Request`)**: L'Istanza del Wallet invia una richiesta di autorizzazione all'Authorization Endpoint del Credential Issuer (:ref:`WP_053 <wallet-credential-issuance-testcases>`). Poiché parti del contenuto di questa `Authorization Request`, ad esempio il valore del parametro ``code_challenge``, sono unici per una particolare `Authorization Request`, l'Istanza del Wallet DEVE utilizzare un valore ``request_uri`` una sola volta (:rfc:`9126`) come da (:ref:`WP_053a <wallet-credential-issuance-testcases>`). Il Credential Issuer esegue i seguenti controlli alla ricezione della `Authorization Request`:
 
     1. DEVE trattare i valori ``request_uri`` come monouso e DEVE rifiutare una richiesta scaduta. Tuttavia, PUÒ consentire richieste duplicate causate da un Utente che ricarica/aggiorna il proprio user-agent (derivato da :rfc:`9126`).
     2. DEVE identificare la richiesta come risultato del PAR inviato (derivato da :rfc:`9126`).
@@ -194,9 +193,9 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
 **Passi 6-7 (`Authorization Response`)**: Il Credential Issuer invia un ``code`` di autorizzazione insieme ai parametri ``state`` e ``iss`` all'Istanza del Wallet. L'Istanza del Wallet esegue i seguenti controlli sulla `Authorization Response`:
 
-    1. DEVE verificare che la `Authorization Response` contenga tutti i parametri definiti secondo la :ref:`Tabella dei parametri della Risposta HTTP <table_http_response_claim>`.
-    2. DEVE verificare che il valore restituito dal Credential Issuer per il parametro ``state`` sia uguale al valore inviato dall'Istanza del Wallet nel `Request Object` (:rfc:`6749`).
-    3. DEVE verificare che l'URL del Credential Issuer nel parametro ``iss`` sia uguale all'identificativo URL previsto del Credential Issuer con cui l'Istanza del Wallet ha iniziato la comunicazione (:rfc:`9027`).
+    1. DEVE verificare che la `Authorization Response` contenga tutti i parametri definiti secondo la :ref:`Tabella dei parametri della Risposta HTTP <table_http_response_claim>` (:ref:`WP_054 <wallet-credential-issuance-testcases>`).
+    2. DEVE verificare che il valore restituito dal Credential Issuer per il parametro ``state`` sia uguale al valore inviato dall'Istanza del Wallet nel `Request Object` (:rfc:`6749`) come specificato in :ref:`WP_054a <wallet-credential-issuance-testcases>`.
+    3. DEVE verificare che l'URL del Credential Issuer nel parametro ``iss`` sia uguale all'identificativo URL previsto del Credential Issuer con cui l'Istanza del Wallet ha iniziato la comunicazione (:rfc:`9027`) come specificato in :ref:`WP_054b <wallet-credential-issuance-testcases>`.
 
 .. note::
     L'URI di reindirizzamento dell'Istanza del Wallet è un `universal link` o `app link`` registrato con il sistema operativo locale, quindi quest'ultimo lo risolverà e passerà la risposta all'Istanza del Wallet.
@@ -206,11 +205,11 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
     HTTP/1.1 302 Found
     Location: https://start.wallet.example.org?code=SplxlOBeZQQYbYS6WxSbIA&state=fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd&iss=https%3A%2F%2Feaa-provider.example.org
 
-**Passi 8-9 (`DPoP Proof` per il Token Endpoint)**: L'Istanza del Wallet DEVE creare una nuova coppia di chiavi e un nuovo JWT di `DPoP proof` seguendo le istruzioni fornite nella Sezione 4 di (:rfc:`9449`) per la richiesta di token al Credential Issuer. Il JWT di `DPoP proof` è firmato utilizzando la chiave privata per DPoP creata dall'Istanza del Wallet per questo scopo. DPoP associa l'Access Token, e opzionalmente il Refresh Token, a una determinata Istanza del Wallet (:rfc:`9449`) e mitiga l'uso improprio di token persi o rubati al Credential Endpoint.
+**Passi 8-9 (`DPoP Proof` per il Token Endpoint)**: L'Istanza del Wallet DEVE creare una nuova coppia di chiavi e un nuovo JWT di `DPoP proof` seguendo le istruzioni fornite nella Sezione 4 di (:rfc:`9449`) per la richiesta di token al Credential Issuer. Il JWT di `DPoP proof` è firmato utilizzando la chiave privata per DPoP creata dall'Istanza del Wallet per questo scopo. DPoP associa l'Access Token, e opzionalmente il Refresh Token, a una determinata Istanza del Wallet (:rfc:`9449`) e mitiga l'uso improprio di token persi o rubati al Credential Endpoint (:ref:`WP_055 <wallet-credential-issuance-testcases>`).
 
-**Passo 10 (`Token Request`):** L'Istanza del Wallet invia una richiesta di token al Token Endpoint del Credential Issuer con un JWT di *DPoP proof* e i parametri: ``code``, ``code_verifier`` e OAuth 2.0 Attestation based Client Authentication (``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP``).
+**Passo 10 (`Token Request`):** L'Istanza del Wallet invia una richiesta di token al Token Endpoint del Credential Issuer con un JWT di *DPoP proof* e i parametri: ``code``, ``code_verifier`` e OAuth 2.0 Attestation based Client Authentication (``OAuth-Client-Attestation`` e ``OAuth-Client-Attestation-PoP``) come specificato in :ref:`WP_055 <wallet-credential-issuance-testcases>`.
 
-L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associata all'Istanza del Wallet. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita all'interno dell'Attestato di Unità di Wallet (claim ``cnf.jwk``). Il Credential Issuer esegue i seguenti controlli sulla `Token Request`:
+L'``OAuth-Client-Attestation`` è firmato utilizzando la chiave privata associata all'Istanza del Wallet (:ref:`WP_055a <wallet-credential-issuance-testcases>`). La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita all'interno dell'Attestato di Unità di Wallet (claim ``cnf.jwk``) come specificato in :ref:`WP_055d <wallet-credential-issuance-testcases>`. Il Credential Issuer esegue i seguenti controlli sulla `Token Request`:
 
    1. DEVE assicurarsi che il ``code`` di autorizzazione sia emesso per l'Istanza del Wallet autenticata (:rfc:`6749`) e non sia stato replicato.
    2. DEVE assicurarsi che il ``code`` di autorizzazione sia valido e non sia stato utilizzato in precedenza (:rfc:`6749`).
@@ -258,7 +257,7 @@ Un esempio non normativo del Refresh Token DPoP è fornito di seguito.
 .. literalinclude:: ../../examples/rt-dpop-payload.json
   :language: JSON
 
-**Passo 12 (`Nonce Request`)**: Secondo la Sezione 7.1 di [`OpenID4VCI`_], l'Istanza del Wallet invia una richiesta HTTP POST al Nonce Endpoint per ottenere un nuovo ``c_nonce`` che può essere utilizzato per creare la prova di possesso del materiale crittografico per la successiva richiesta al Credential Endpoint.
+**Passo 12 (`Nonce Request`)**: Secondo la Sezione 7.1 di [`OpenID4VCI`_], l'Istanza del Wallet invia una richiesta HTTP POST al Nonce Endpoint per ottenere un nuovo ``c_nonce`` che può essere utilizzato per creare la prova di possesso del materiale crittografico per la successiva richiesta al Credential Endpoint (:ref:`WP_056a <wallet-credential-issuance-testcases>`).
 
 Di seguito è riportato un esempio non normativo di una `Nonce Request`:
 
@@ -283,14 +282,14 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
 .. literalinclude:: ../../examples/nonce-response.json
   :language: JSON
 
-**Passo 14 (DPoP Proof per il Credential Endpoint)**: L'Istanza del Wallet crea un JWT DPoP Proof utilizzando la stessa chiave del **Passo 8** e secondo la Sezione 4 di (:rfc:`9449`).
+**Passo 14 (DPoP Proof per il Credential Endpoint)**: L'Istanza del Wallet crea un JWT DPoP Proof utilizzando la stessa chiave del **Passo 8** e secondo la Sezione 4 di (:rfc:`9449`) (:ref:`WP_056b <wallet-credential-issuance-testcases>`).
 
 .. note::
    Se l'Istanza del Wallet richiede l'emissione in batch di Credenziali Digitali, il flusso prosegue con il **Passo 17**. In caso contrario, vengono eseguiti i passi **15-16**.
 
-**Passo 15 (Prova di Possesso della Credenziale)**: L'Istanza del Wallet per la richiesta delle Credenziali Digitali crea una prova di possesso con il ``c_nonce`` ottenuto nel **Passo 13** utilizzando la chiave privata utilizzata per il DPoP. Il valore del ``jwk`` nel parametro proof DEVE essere uguale alla chiave pubblica referenziata nel DPoP.
+**Passo 15 (Prova di Possesso della Credenziale)**: L'Istanza del Wallet per la richiesta delle Credenziali Digitali crea una prova di possesso con il ``c_nonce`` ottenuto nel **Passo 13** utilizzando la chiave privata utilizzata per il DPoP. Il valore del ``jwk`` nel parametro proof DEVE essere uguale alla chiave pubblica referenziata nel DPoP (:ref:`WP_056c <wallet-credential-issuance-testcases>`).
 
-**Passo 16 (`Credential Request`)**: L'Istanza del Wallet invia una richiesta per l'Attestato Elettronico al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT di `DPoP proof`, il tipo di Attestato Elettronico, la prova (che dimostra il possesso del materiale crittografico). Il parametro ``proof`` DEVE essere un oggetto che contiene la prova di possesso del materiale crittografico a cui sarà associato l'Attestato Elettronico emesso. Per verificare la prova, il Credential Issuer conduce i seguenti controlli al Credential Endpoint:
+**Passo 16 (`Credential Request`)**: L'Istanza del Wallet invia una richiesta per l'Attestato Elettronico al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT di `DPoP proof`, il tipo di Attestato Elettronico, la prova (che dimostra il possesso del materiale crittografico) come specificato in :ref:`WP_056 <wallet-credential-issuance-testcases>`. Il parametro ``proof`` DEVE essere un oggetto che contiene la prova di possesso del materiale crittografico a cui sarà associato l'Attestato Elettronico emesso. Per verificare la prova, il Credential Issuer conduce i seguenti controlli al Credential Endpoint:
 
  1. La prova JWT DEVE includere tutti i claim richiesti come specificato nella tabella della Sezione :ref:`credential-issuance-endpoint:Token Request`.
  2. La prova della chiave DEVE essere esplicitamente tipizzata utilizzando i parametri dell'header come definito per il rispettivo tipo di prova.
@@ -337,16 +336,14 @@ Dove un esempio non normativo del contenuto decodificato del parametro ``jwt`` �
 .. literalinclude:: ../../examples/credential-jwt-proof-payload.json
   :language: JSON
 
-**Passi 17-21 (`Credential Response`)**: Il Credential Issuer DEVE validare il JWT di *DPoP proof* in base ai passaggi definiti nella Sezione 4.3 di (:rfc:`9449`) e se l'Access Token è valido e adatto per l'Attestato Elettronico richiesto. Il Credential Issuer DEVE validare la prova di possesso per il materiale crittografico a cui il nuovo Attestato Elettronico DEVE essere vincolato, secondo la Sezione 8.2.2 di `OpenID4VCI`_. Se tutti i controlli hanno successo, il Credential Issuer crea un nuovo Attestato Elettronico vincolato al materiale crittografico e lo fornisce all'Istanza del Wallet. L'Istanza del Wallet DEVE eseguire i seguenti controlli prima di procedere con l'archiviazione sicura dell'Attestato Elettronico:
+**Passo 17 (Generazione di nuove chiavi per le Credenziali Digitali)**: L'Istanza del Wallet genera N nuove coppie di chiavi per le Credenziali, dove il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size`` (:ref:`WP_058a <wallet-credential-issuance-testcases>`).
 
-**Passo 17 (Generazione di nuove chiavi per le Credenziali Digitali)**: L'Istanza del Wallet genera N nuove coppie di chiavi per le Credenziali, dove il numero di coppie di chiavi (N) è determinato dal valore definito in ``batch_size``.
-
-**Passo 18 (Prove di possesso delle credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size``.
+**Passo 18 (Prove di possesso delle credenziali)**: L'istanza del Wallet DEVE generare N *key proofs* utilizzando il ``c_nonce`` fornito nel **Passo 13** e una per ogni Credenziale presente nel batch. Il numero di *key proofs* (N) è definito dal valore ``batch_size`` (:ref:`WP_058b <wallet-credential-issuance-testcases>`).
 
 .. note::
   Il valore ``c_nonce`` in tutte le proof jwt è identico e non è necessario ottenere valori del nonce diversi.
 
-**Passo 19 (Batch Credential Request)**: L'Istanza del Wallet invia una richiesta per il batch di Credenziali Digitali al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT DPoP Proof, il tipo di Credenziale e le proofs (che dimostrano il possesso delle chiavi). Il parametro ``proofs`` DEVE essere impostato utilizzando un oggetto JSON contenente due o più prove di possesso dei materiali crittografici a cui sarà associato il batch di Credenziali Digitali emesso. Per verificare le proofs, il Credential Issuer, oltre ai controlli definiti al **Passo 16**, deve assicurarsi che l'attributo ``jwk`` in ogni proof sia univoco.
+**Passo 19 (Batch Credential Request)**: L'Istanza del Wallet invia una richiesta per il batch di Credenziali Digitali al Credential Endpoint. Questa richiesta DEVE includere l'Access Token, il JWT DPoP Proof, il tipo di Credenziale e le proofs (che dimostrano il possesso delle chiavi). Il parametro ``proofs`` DEVE essere impostato utilizzando un oggetto JSON contenente due o più prove di possesso dei materiali crittografici a cui sarà associato il batch di Credenziali Digitali emesso. Per verificare le proofs, il Credential Issuer, oltre ai controlli definiti al **Passo 16**, deve assicurarsi che l'attributo ``jwk`` in ogni proof sia univoco (:ref:`WP_058 <wallet-credential-issuance-testcases>`).
 
 .. code-block:: http
 
@@ -371,13 +368,13 @@ Il contenuto decodificato degli elementi ``jwt`` nell'array ``jwt`` è simile a 
 
 **Passi 20-24 (Credential Response)**: Il Credential Issuer DEVE convalidare il *JWT DPoP Proof* in base alle istruzioni definite all'interno della Sezione 4.3 di (:rfc:`9449`) e verificare se l'*Access Token* è valido e idoneo per la Credenziale richiesta. Il Credential Issuer DEVE convalidare tutte le prove fornite nel parametro ``proof`` (**Passo 15**) o ``proofs`` (**Passo 18**) a cui le nuove Credenziali DEVONO essere vincolate, secondo quanto riportato nell'Appendice F1 di `OpenID4VCI`_. Se tutti i controlli hanno esito positivo, il Credential Issuer restituisce la Credenziale emessa all'interno del parametro ``credentials``. Il numero di elementi nell'array ``credentials`` corrisponde al numero di chiavi fornite dall'Istanza del Wallet tramite il parametro ``proof`` (**Passo 16**) o il parametro ``proofs`` (**Passo 19**). L'Istanza del Wallet DEVE eseguire i seguenti controlli prima di procedere con l'archiviazione sicura delle Credenziali:
 
-    1. DEVE verificare che il PID/(Q)EAA contenuto nella `Credential Response` contenga tutti i parametri obbligatori e i valori siano validati secondo la :ref:`Tabella dei parametri della Credential Response <table_credential_response_claim>`.
-    2. DEVE verificare l'integrità dell'Attestato Elettronico verificando la firma utilizzando l'algoritmo specificato nel parametro dell'header ``alg`` di SD-JWT (:ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`) e la chiave pubblica che è identificata utilizzando l'header ``kid`` dell'SD-JWT.
-    3. DEVE verificare che l'Attestato o gli Attestati Elettronici ricevuti (nel claim ``credential``) corrispondano al tipo di Attestato Elettronico richiesto e sia conforme allo schema specifico di quell'Attestato Elettronico definito in :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`.
-    4. DEVE elaborare e verificare l'Attestato Elettronico nel formato SD-JWT VC (secondo la Sezione 5 di `SD-JWT`_) o nel formato mdoc-CBOR.
-    5. DEVE verificare la Trust Chain nell'header dell'SD-JWT VC per verificare che il Credential Issuer sia affidabile.
+    1. DEVE verificare che il PID/(Q)EAA contenuto nella `Credential Response` contenga tutti i parametri obbligatori e i valori siano validati secondo la :ref:`Tabella dei parametri della Credential Response <table_credential_response_claim>` (:ref:`WP_059 <wallet-credential-issuance-testcases>`).
+    2. DEVE verificare l'integrità dell'Attestato Elettronico verificando la firma utilizzando l'algoritmo specificato nel parametro dell'header ``alg`` di SD-JWT (:ref:`credential-data-model:Modello di Dati degli Attestati Elettronici`) e la chiave pubblica che è identificata utilizzando l'header ``kid`` dell'SD-JWT (:ref:`WP_062a <wallet-credential-issuance-testcases>`).
+    3. DEVE verificare che l'Attestato o gli Attestati Elettronici ricevuti (nel claim ``credential``) corrispondano al tipo di Attestato Elettronico richiesto e sia conforme allo schema specifico di quell'Attestato Elettronico definito in :ref:`credential-data-model:Modello di Dati degli Attestati Elettronici` (:ref:`WP_060 <wallet-credential-issuance-testcases>`).
+    4. DEVE elaborare e verificare l'Attestato Elettronico nel formato SD-JWT VC (secondo la Sezione 5 di `SD-JWT`_) o nel formato mdoc-CBOR (:ref:`WP_062 <wallet-credential-issuance-testcases>`).
+    5. DEVE verificare la Trust Chain nell'header dell'SD-JWT VC per verificare che il Credential Issuer sia affidabile (:ref:`WP_061 <wallet-credential-issuance-testcases>`).
 
-Se i controlli sopra hanno successo, l'Istanza del Wallet richiede il consenso dell'Utente per memorizzare l'Attestato o gli Attestati Elettronici. Dopo aver ricevuto il consenso, l'Istanza del Wallet memorizza in modo sicuro l'Attestato Elettronico.
+Se i controlli sopra hanno successo, l'Istanza del Wallet richiede il consenso dell'Utente per memorizzare l'Attestato o gli Attestati Elettronici. Dopo aver ricevuto il consenso, l'Istanza del Wallet memorizza in modo sicuro l'Attestato Elettronico (:ref:`WP_063 <wallet-credential-issuance-testcases>`).
 
 Di seguito è riportato un esempio non normativo di una risposta di successo contenente un Attestato Elettronico nel formato SD-JWT VC.
 
@@ -417,12 +414,12 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
 
 
 .. note::
-  Quando l'Istanza del Wallet riceve un nuovo batch contentente le stesse credenziali con gli stessi claim, il Wallet DEVE eliminare le Credenziali precedenti.
+  Quando l'Istanza del Wallet riceve un nuovo batch contentente le stesse credenziali con gli stessi claim, il Wallet DEVE eliminare le Credenziali precedenti (:ref:`WP_073a <wallet-credential-issuance-testcases>`).
 
 .. note::
-  Se l'Attestato Elettronico richiesto non può essere emesso immediatamente e richiede più tempo, il Credential Issuer DOVREBBE supportare il Deferred Flow (**passo 27**) come specificato nella Sezione :ref:`credential-issuance-endpoint:Deferred Endpoint`. Inoltre, in caso di emissione in batch, lo stesso ``transaction_id`` si riferisce a tutte le Credenziali richieste nel batch.
+  Se l'Attestato Elettronico richiesto non può essere emesso immediatamente e richiede più tempo, il Credential Issuer DOVREBBE supportare il Deferred Flow (**passo 27**) come specificato nella Sezione :ref:`credential-issuance-endpoint:Deferred Endpoint` (:ref:`WP_065–067 <wallet-credential-issuance-testcases>`). Inoltre, in caso di emissione in batch, lo stesso ``transaction_id`` si riferisce a tutte le Credenziali richieste nel batch.
 
-**Passo 25 (Notification Request)**: Secondo la Sezione 10.1 di [`OpenID4VCI`_], il Wallet invia una richiesta HTTP POST all'Endpoint di notifica utilizzando il tipo di supporto *application/json* come nel seguente esempio non normativo.
+**Passo 25 (Notification Request)**: Secondo la Sezione 10.1 di [`OpenID4VCI`_], il Wallet invia una richiesta HTTP POST all'Endpoint di notifica utilizzando il tipo di supporto *application/json* come nel seguente esempio non normativo (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
 
 .. code-block:: http
 
@@ -449,7 +446,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
   HTTP/1.1 204 No Content
 
 .. note::
-   Nel sistema della Fonte Autentica talvolta sono disponibili molteplici set di dati pertanto l'Utente potrebbe essere interessato a ottenere più di una Credenziale. In questi casi, L'Issuance flow rimane lo stesso descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. Nella Token Response (**Passo 11**), il Fornitore di Credenziali genera un identificativo univoco (``credential_identifier``) per ciascun set di dati fornito nel parametro ``AttributeClaims`` del servizio PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Pertanto, l'array ``credential_identifiers`` fornito nel parametro ``authorization_details`` contiene gli identificativi di ciascun set di dati. Successivamente, il Wallet invia una Credential Request (**Passo 16**) per ciascun identificativo, ottenendo più Credenziali distinte che vengono mostrate individualmente all'Utente per la loro accettazione. Infine, il Fornitore di Credenziali viene informato dal Wallet dell'esito tramite il :ref:`credential-issuance-endpoint:Notification Endpoint`.
+   Nel sistema della Fonte Autentica talvolta sono disponibili molteplici set di dati pertanto l'Utente potrebbe essere interessato a ottenere più di una Credenziale. In questi casi, L'Issuance flow rimane lo stesso descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. Nella Token Response (**Passo 11**), il Fornitore di Credenziali genera un identificativo univoco (``credential_identifier``) per ciascun set di dati fornito nel parametro ``AttributeClaims`` del servizio PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Pertanto, l'array ``credential_identifiers`` fornito nel parametro ``authorization_details`` contiene gli identificativi di ciascun set di dati. Successivamente, il Wallet invia una Credential Request (**Passo 16**) per ciascun identificativo, ottenendo più Credenziali distinte che vengono mostrate individualmente all'Utente per la loro accettazione. Infine, il Fornitore di Credenziali viene informato dal Wallet dell'esito tramite il :ref:`credential-issuance-endpoint:Notification Endpoint` (:ref:`WP_057 <wallet-credential-issuance-testcases>`).
 
 .. note::
   Per le Credenziali Digitali emesse in batch, il ``notification_id`` si riferisce a tutte le credenziali emesse in batch. La Notification Response (ad esempio ``credential_accepted`` o ``credential_stored``) si applica pertanto a tutte le credenziali contenute nel batch; qualsiasi errore parziale viene trattato come errore dell'intero batch.
@@ -457,11 +454,11 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
 Refresh Token Flow
 -------------------
 
-Per utilizzare gli Endpoint Deferred, Credential Request e Notification, l'Istanza del Wallet DEVE presentare un Access Token DPoP valido al Credential Issuer. Tuttavia, quando questi endpoint sono utilizzati nel Deferred Flow, per la riemissione o la notifica dell'eliminazione di un Attestato Elettronico, l'Access Token potrebbe scadere, poiché è progettato per avere una breve durata e queste azioni POSSONO verificarsi giorni dopo. Per affrontare questo problema, la specifica RACCOMANDA l'uso dei Refresh Token.
+Per utilizzare gli Endpoint Deferred, Credential Request e Notification, l'Istanza del Wallet DEVE presentare un Access Token DPoP valido al Credential Issuer. Tuttavia, quando questi endpoint sono utilizzati nel Deferred Flow, per la riemissione o la notifica dell'eliminazione di un Attestato Elettronico, l'Access Token potrebbe scadere, poiché è progettato per avere una breve durata e queste azioni POSSONO verificarsi giorni dopo (:ref:`WP_066b <wallet-credential-issuance-testcases>`). Per affrontare questo problema, la specifica RACCOMANDA l'uso dei Refresh Token.
 
 Un Access Token ottenuto come risultato di un Refresh Token Flow DEVE essere limitato al:
 
-  - Deferred Endpoint, per ottenere un nuovo Attestato Elettronico dopo il tempo impostato nel parametro ``lead_time`` o quando viene notificato come pronto per essere emesso;
+  - Deferred Endpoint, per ottenere un nuovo Attestato Elettronico dopo il tempo impostato nel parametro ``lead_time`` o quando viene notificato come pronto per essere emesso (:ref:`WP_066 <wallet-credential-issuance-testcases>`);
   - Notification Endpoint, per notificare l'eliminazione di un Attestato Elettronico al Credential Issuer;
   - Credential Endpoint, per aggiornare un Attestato Elettronico che è già presente nell'Istanza del Wallet (chiamato anche riemissione dell'Attestato Elettronico, vedi sezione :ref:`credential-issuance-low-level:Re-issuance Flow`).
 
@@ -478,9 +475,9 @@ La figura seguente mostra come ottenere un nuovo Access Token DPoP e un nuovo Re
 .. note::
   L'aggiornamento di un Token può essere attivato da diverse azioni (ad esempio, l'eliminazione di un Attestato Elettronico da parte dell'Utente). In ogni caso, si suppone che le Istanze del Wallet siano in esecuzione e che il relativo materiale crittografico sia sbloccato.
 
-**Passo 1**: L'Istanza del Wallet DEVE creare un nuovo JWT di `DPoP proof` e una nuova prova di possesso dell'Attestato di Unità di Wallet per la richiesta di token del Credential Issuer.
+**Passo 1**: L'Istanza del Wallet DEVE creare un nuovo JWT di `DPoP proof` e una nuova prova di possesso dell'Attestato di Unità di Wallet per la richiesta di token del Credential Issuer (:ref:`WP_068a <wallet-credential-issuance-testcases>`).
 
-**Passo 2**: Per aggiornare un Access Token vincolato a DPoP, l'Istanza del Wallet invia una richiesta di token utilizzando il parametro ``grant_type`` impostato su ``refresh_token``, includendo l'header DPoP e gli header di OAuth Client Attestation.
+**Passo 2**: Per aggiornare un Access Token vincolato a DPoP, l'Istanza del Wallet invia una richiesta di token utilizzando il parametro ``grant_type`` impostato su ``refresh_token``, includendo l'header DPoP e gli header di OAuth Client Attestation (:ref:`WP_068 <wallet-credential-issuance-testcases>`).
 Un esempio non normativo della richiesta di token per un Access Token DPoP utilizzando un Refresh Token è mostrato di seguito.
 
 .. code::
@@ -534,13 +531,13 @@ Per mitigare i rischi di compromissione del Refresh Token, sono richieste le seg
   - **Limitazione dell'uso del Refresh Token**: Come specificato in `OPENID4VC-HAIP`_: "Credential Issuers should be mindful of how long the usage of the refresh token is allowed to refresh a Credential, as opposed to starting the issuance flow from the beginning. For example, if the User is trying to refresh a Credential more than a year after its original issuance, the usage of the refresh tokens is NOT RECOMMENDED." In questa specifica, un nuovo Attestato Elettronico ottenuto eseguendo il Re-issuance Flow DOVREBBE avere la stessa scadenza di quello aggiornato. Pertanto, questa specifica non consente l'aggiornamento infinito dell'Attestato Elettronico con un Refresh Token. Una volta che un Attestato Elettronico scade, l'Utente DEVE completare nuovamente l'intero processo di emissione per ottenere un nuovo Attestato Elettronico. Questa specifica raccomanda di impostare una durata di scadenza del Refresh Token, in base alla sensibilità del grant associato.
 
 .. note::
-  *Attestati di Unità di Wallet e DPoP di breve durata*: Seguendo la bozza di specifica *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), l'Authorization Server DEVE associare il Refresh Token alla Client Instance. Per dimostrare questa associazione, la Client Instance DEVE utilizzare il meccanismo di Client Attestation quando aggiorna l'Access Token e la Client Instance DEVE utilizzare la stessa chiave che è stata presentata nel claim ``cnf.jwk`` della Client Attestation che è stata utilizzata quando il Refresh Token è stato emesso. Tuttavia, ciò richiede che tutti le Client Attestation emesse DEVONO essere associati alla stessa chiave, aprendo così a problemi di non collegabilità. In questa specifica, sia `OAUTH-ATTESTATION-CLIENT-AUTH`_ che *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) DEVONO essere utilizzati. L'uso di DPoP garantisce l'associazione del Refresh Token con la Client Instance come indicato nella sezione 5 di :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"*. DPoP garantisce che il Refresh Token sia associato all'Istanza del Wallet.
+  *Attestati di Unità di Wallet e DPoP di breve durata*: Seguendo la bozza di specifica *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), l'Authorization Server DEVE associare il Refresh Token alla Client Instance. Per dimostrare questa associazione, la Client Instance DEVE utilizzare il meccanismo di Client Attestation quando aggiorna l'Access Token e la Client Instance DEVE utilizzare la stessa chiave che è stata presentata nel claim ``cnf.jwk`` della Client Attestation che è stata utilizzata quando il Refresh Token è stato emesso. Tuttavia, ciò richiede che tutti le Client Attestation emesse DEVONO essere associati alla stessa chiave, aprendo così a problemi di non collegabilità. In questa specifica, sia `OAUTH-ATTESTATION-CLIENT-AUTH`_ che *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) DEVONO essere utilizzati. L'uso di DPoP garantisce l'associazione del Refresh Token con la Client Instance come indicato nella sezione 5 di :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"*. DPoP garantisce che il Refresh Token sia associato all'Istanza del Wallet (:ref:`WP_068b <wallet-credential-issuance-testcases>`). DPoP ensures that the Refresh Token is bound to the Wallet Instance.
 
 
 Re-issuance Flow
 -----------------
 
-La riemissione comporta la sostituzione degli Attestato Elettronici già memorizzati in un'Istanza del Wallet con nuovi dello stesso tipo di documento. I nuovi Attestati Elettronici DEVONO essere emessi dagli stessi Credential Issuer che hanno originariamente fornito quelli esistenti alla stessa Istanza del Wallet.
+La riemissione comporta la sostituzione degli Attestati Elettronici già memorizzati in un'Istanza del Wallet con nuovi dello stesso tipo di documento. I nuovi Attestati Elettronici DEVONO essere emessi dagli stessi Credential Issuer che hanno originariamente fornito quelli esistenti alla stessa Istanza del Wallet.
 
 Per facilitare questo, in particolare in scenari in cui l'autenticazione dell'Utente non è strettamente richiesta, PUÒ essere utilizzato un Refresh Token Flow (RT) (vedi Sezione :ref:`credential-issuance-low-level:Refresh Token Flow` per maggiori dettagli). Un Access Token ottenuto come risultato di un Refresh Token Flow NON DEVE essere utilizzato per emettere un Attestato Elettronico che non è presente nell'Istanza del Wallet (prima emissione). Il meccanismo del Refresh Token consente la sostituzione automatica degli Attestati Elettronici, semplificando il processo sia per il Credential Issuer che per l'Utente.
 
@@ -567,21 +564,25 @@ Il seguente diagramma descrive il Re-issuance Flow dell'Attestato Elettronico.
 
 **Passo 1**: Il flusso inizia quando l'Utente apre l'Istanza del Wallet: questo passaggio PUÒ essere attivato da una notifica inviata dal Credential Issuer (utilizzando ad esempio uno dei contatti di comunicazione out-of-band registrati durante il flusso di emissione).
 
-**Passo 2**: Indipendentemente dal meccanismo di revoca dell'Attestato Elettronico supportato, se l'Istanza del Wallet.
+**Passo 2**: L'Istanza del Wallet DEVE controllare lo stato di ogni Attestato Elettronico memorizzato, recuperando — se non disponibile — un Token di Stato valido (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Lists`) o una Status Assertion (seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Assertions`) come da (:ref:`WP_069 <wallet-credential-issuance-testcases>`).  
+L'Istanza del Wallet DEVE poi verificare (:ref:`WP_070 <wallet-credential-issuance-testcases>`):
 
-   - supporta solo Status List e non ha un Token di Stato valido per un Attestato Elettronico memorizzata, l'Istanza del Wallet DEVE recuperarne uno nuovo seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Lists`. Se qualsiasi Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x04`` - ``ATTRIBUTE_UPDATE``; oppure
-   - insieme al Credential Issuer supporta anche Status Assertion e l'Istanza del Wallet non ha una Status Assertion valida per un Attestato Elettronico memorizzato, l'Istanza del Wallet PUÒ recuperarne una nuova seguendo il flusso descritto nella Sezione :ref:`credential-revocation:OAuth Status Assertions`. Se qualsiasi Attestato Elettronico ha il ``credential_status_type`` impostato su ``INVALID``, l'Istanza del Wallet DEVE verificare il claim ``credential_status_detail.state``. Se questo claim è impostato su ``UPDATE`` o ``ATTRIBUTE_UPDATE``, allora
+  - in caso di Status List: se un Attestato Elettronico ha lo stato impostato su ``0x03`` - ``UPDATE`` o ``0x04`` - ``ATTRIBUTE_UPDATE``;
+  - in caso di Status Assertion: se il ``credential_status_type`` è impostato su ``INVALID`` e ``credential_status_detail.state`` è impostato su ``UPDATE`` o ``ATTRIBUTE_UPDATE``.
 
-     l'Istanza del Wallet DEVE verificare se i relativi Access Token sono ancora validi. Se l'Access Token è valido, allora il passaggio 3 PUÒ essere saltato.
+Se le condizioni non sono soddisfatte, il flusso DEVE essere interrotto.  
+Altrimenti, l'Istanza del Wallet DEVE verificare i relativi Access Token. Se sono ancora validi, il Passo 3 PUÒ essere saltato (:ref:`WP_071 <wallet-credential-issuance-testcases>`).
 
-**Passo 3**: Se l'Access Token è scaduto e l'Istanza del Wallet ha ancora un Refresh Token valido, l'Istanza del Wallet DEVE ottenere un nuovo Access Token avviando un Refresh Token Flow, secondo la Sezione :ref:`credential-issuance-low-level:Refresh Token Flow`. Il Refresh Token Flow consente all'Istanza del Wallet di ottenere un nuovo Refresh Token e un nuovo Access Token DPoP per aggiornare l'Attestato Elettronico. Se il Refresh Token è scaduto, è necessario un nuovo flusso di emissione che autentichi l'Utente.
+**Passo 3**: Se l'Access Token è scaduto e l'Istanza del Wallet ha ancora un Refresh Token valido, l'Istanza del Wallet DEVE ottenere un nuovo Access Token avviando un Refresh Token Flow, secondo la Sezione :ref:`credential-issuance-low-level:Refresh Token Flow` (:ref:`WP_071a <wallet-credential-issuance-testcases>`).  
+Il Refresh Token Flow consente all'Istanza del Wallet di ottenere un nuovo Refresh Token e un nuovo Access Token DPoP per aggiornare l'Attestato Elettronico. Se il Refresh Token è scaduto, è necessario un nuovo flusso di emissione che autentichi l'Utente (:ref:`WP_067 <wallet-credential-issuance-testcases>` e :ref:`WP_071b <wallet-credential-issuance-testcases>`).
 
-**Passo 4**: L'Istanza del Wallet DEVE utilizzare un Access Token DPoP valido per recuperare il nuovo Attestato Elettronico, richiedendolo al Credential Endpoint seguendo i passi da 12 a 22 della Figura 9 nella Sezione :ref:`credential-issuance-low-level:Issuance Flow`. Quando il nuovo Attestato Elettronico è memorizzato con successo nel secure storage, l'Istanza del Wallet DEVE eliminare quella precedente.
+**Passo 4**: L'Istanza del Wallet DEVE utilizzare un Access Token DPoP valido per recuperare il nuovo Attestato Elettronico, richiedendolo al Credential Endpoint seguendo i passi da 12 a 22 della Figura 9 nella Sezione :ref:`credential-issuance-low-level:Issuance Flow` (:ref:`WP_072 <wallet-credential-issuance-testcases>`).  
+Quando il nuovo Attestato Elettronico è memorizzato con successo nel secure storage, l'Istanza del Wallet DEVE eliminare quello precedente (:ref:`WP_073 <wallet-credential-issuance-testcases>`).
 
 .. note::
-  Indipendentemente dal meccanismo di revoca dell'Attestato Elettronico supportato, se lo stato dell'Attestato Elettronico è impostato su ``ATTRIBUTE_UPDATE`` (utilizzando la revoca OAuth Status List) o ``credential_status_detail.state`` è impostato su ``ATTRIBUTE_UPDATE`` (utilizzando la revoca OAuth Status List), l'insieme di attributi dell'Utente, nell'Attestato Elettronico aggiornato, non corrisponde a quello nell'Attestato Elettronico memorizzato. In questo caso, l'Istanza del Wallet DEVE richiedere l'autorizzazione dell'Utente per memorizzare il nuovo Attestato Elettronico aggiornato.
-  
-  Se invece, lo stato dell'Attestato Elettronico è impostato su ``UPDATE`` (utilizzando la revoca OAuth Status List) o ``credential_status_detail.state`` è impostato su ``UPDATE`` (utilizzando la revoca OAuth Status List), solo i parametri dei Metadata dell'Attestato Elettronico sono cambiati. In questo caso, l'Istanza del Wallet DOVREBBE memorizzare il nuovo Attestato Elettronico senza richiedere l'autorizzazione e il consenso espliciti dell'utente.
+  Indipendentemente dal meccanismo di revoca supportato, se lo stato dell'Attestato Elettronico è impostato su ``ATTRIBUTE_UPDATE`` (usando OAuth Status List) o ``credential_status_detail.state`` è impostato su ``ATTRIBUTE_UPDATE`` (usando Status Assertions), l'insieme di attributi dell'Utente nell'Attestato aggiornato non corrisponde a quello memorizzato. In questo caso, l'Istanza del Wallet DEVE richiedere l'autorizzazione dell'Utente per memorizzare il nuovo Attestato aggiornato (:ref:`WP_074 <wallet-credential-issuance-testcases>`).  
+
+  Se invece lo stato è impostato su ``UPDATE`` (usando OAuth Status List) o ``credential_status_detail.state`` è impostato su ``UPDATE`` (usando Status Assertions), solo i parametri dei Metadata sono cambiati. In questo caso, l'Istanza del Wallet DOVREBBE memorizzare il nuovo Attestato senza richiedere autorizzazione o consenso esplicito dell'Utente (:ref:`WP_075 <wallet-credential-issuance-testcases>`).
 
 
 Re-issuance Flow: Considerazioni di Sicurezza
@@ -591,5 +592,5 @@ Per garantire l'integrità e la sicurezza del Re-issuance Flow, si applicano le 
 
   - Limitazioni dell'Access Token: Un Access Token ottenuto come risultato di un Refresh Token Flow NON DEVE essere utilizzato per l'emissione per la prima volta di un Attestato Elettronico. Ciò garantisce che vengano aggiornati solo gli Attestati Elettronici esistenti nell'Istanza del Wallet.
   - Scadenza dell'Attestato Elettronico: Il Credential Issuer DEVE impostare per l'Attestato Elettronico riemesso la stessa data di scadenza del precedente. Ciò impedisce rinnovi indefiniti dell'Attestato Elettronico senza una corretta autenticazione dell'Utente.
-  - Consenso dell'Utente: Per i Re-issuance Flow attivati da modifiche agli attributi, il consenso dell'Utente DEVE essere ottenuto prima di memorizzare il nuovo Attestato Elettronico. Ciò garantisce che l'Utente sia consapevole e accetti le informazioni aggiornate.
-  - Refresh Token vincolato al mittente: I Refresh Token DEVONO essere crittograficamente vincolati all'Istanza del Wallet utilizzando il protocollo DPoP. Ciò mitiga il rischio di uso improprio del token, garantendo che solo l'Istanza del Wallet prevista (la stessa che ha originariamente ottenuto l'Attestato Elettronico) possa utilizzare quel Refresh Token.
+  - Consenso dell'Utente: Per i Re-issuance Flow attivati da modifiche agli attributi, il consenso dell'Utente DEVE essere ottenuto prima di memorizzare il nuovo Attestato Elettronico.
+  - Refresh Token vincolato al mittente: I Refresh Token DEVONO essere crittograficamente vincolati all'Istanza del Wallet utilizzando il protocollo DPoP. Ciò mitiga il rischio di uso improprio del token, garantendo che solo l'Istanza del Wallet prevista possa utilizzarlo.

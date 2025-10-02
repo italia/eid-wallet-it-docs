@@ -241,34 +241,34 @@ Below is a non-normative example of an Instance Initialization Error Response.
 The following table lists HTTP Status Codes and related error codes that are supported for the error response (:ref:`WP_036–040 <wallet-instance-testcases>`):
 
 .. list-table::
-   :class: longtable
-   :widths: 20 20 50
-   :header-rows: 1
-
-   * - **HTTP Status Code**
-     - **Error Code**
-     - **Description**
-   * - ``400 Bad Request``
-     - ``bad_request``
-     - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
-   * - ``403 Forbidden``
-     - ``integrity_check_error``
-     - The device does not meet the Application Provider's minimum security requirements.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The provided nonce is invalid, expired, or already used.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The signature of the Key Attestation is invalid.
-   * - ``422 Unprocessable Content`` [OPTIONAL]
-     - ``validation_error``
-     - The request does not adhere to the required format.
-   * - ``500 Internal Server Error``
-     - ``server_error``
-     - An internal error occurred while processing the request.
-   * - ``503 Service Unavailable``
-     - ``temporarily_unavailable``
-     - The service is unavailable. Please try again later.
+    :class: longtable
+    :widths: 20 20 50
+    :header-rows: 1
+ 
+    * - **HTTP Status Code**
+      - **Error Code**
+      - **Description**
+    * - ``400 Bad Request``
+      - ``bad_request``
+      - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
+    * - ``403 Forbidden``
+      - ``integrity_check_error``
+      - The device does not meet the Application Provider's minimum security requirements.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The provided nonce is invalid, expired, or already used.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The signature of the Key Attestation is invalid.
+    * - ``422 Unprocessable Content`` [OPTIONAL]
+      - ``validation_error``
+      - The request does not adhere to the required format.
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - An internal error occurred while processing the request.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - The service is unavailable. Please try again later.
 
 
 Mobile Application Key Binding

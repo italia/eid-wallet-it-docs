@@ -21,7 +21,7 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 
 **Step 1:** The User requests the deletion of attributes invoking the Wallet Instance's attribute deletion function.
 
-**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes. The Wallet Instance SHOULD filter the transaction logs so that only the Relying Parties which have had access to attributes uniquely identifying the User are show (:ref:`WP_115a <user-attribute-deletion-testcases>`).
+**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes. The Wallet Instance SHOULD filter the transaction logs so that only the Relying Parties which have had access to attributes uniquely identifying the User are shown (:ref:`WP_115a <user-attribute-deletion-testcases>`).
 
 **Step 3:** The User selects the target Relying Party for attributes deletion.
 

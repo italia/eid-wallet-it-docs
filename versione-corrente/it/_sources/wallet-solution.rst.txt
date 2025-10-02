@@ -9,6 +9,7 @@ La Soluzione Wallet è rilasciata dal Fornitore di Wallet sotto forma di app mob
 
 Il seguente diagramma illustra l'Architettura di Alto Livello della Soluzione Wallet.
 
+.. _fig_wallet-solution-high-level-architecture:
 .. plantuml:: plantuml/wallet-solution-architecture.puml
     :width: 99%
     :alt: L'immagine illustra la Soluzione Wallet e le sue relazioni e interazioni all'interno dell'ecosistema.

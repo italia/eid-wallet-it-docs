@@ -7,6 +7,9 @@ Relying Party Endpoints
 
 The Relying Party MUST expose a trust endpoint adhering to the OpenID Federation 1.0 Wallet Architecture specification, facilitating the Relying Party's identity and metadata distribution. In addition, in case the Relying Party supports proximity presentation, it MUST expose a set of endpoints for handling the lifecycle of Relying Party Instances (e.g., by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance); their specific implementation details are left to the Relying Party's discretion.
 
+.. note::
+  Tests related to Relying Party endpoints are defined in the remote presentation test matrix (:ref:`test-plans-remote-presentation:Remote Credential Presentation Test Matrix`) and proximity presentation test matrix (:ref:`test-plans-proximity-presentation:Proximity Credential Presentation Test Matrix`).
+
 
 Relying Party Federation Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
