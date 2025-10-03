@@ -84,7 +84,7 @@ JWT payload structure (when decoded):
 Claims Registry
 ---------------
 
-The **Claims Registry** provides standardized semantic definitions for individual credential attributes, data types, and validation rules. This registry serves as the semantic foundation for credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.
+The **Claims Registry** provides standardized semantic definitions for individual Credential attributes, data types, and validation rules. This registry serves as the semantic foundation for credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.
 
 The Supervisory Body MUST maintain the Claims Registry to ensure semantic consistency and regulatory compliance across the ecosystem. The registry MUST contain:
 

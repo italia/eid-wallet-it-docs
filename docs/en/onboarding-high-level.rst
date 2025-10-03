@@ -4,7 +4,7 @@
 Onboarding System
 ============================
 
-The IT-Wallet ecosystem operates as a federated trust infrastructure where participating entities must establish cryptographic trust relationships and maintain compliance with common security standards.
+The IT-Wallet ecosystem operates as a federated trust infrastructure where participants establish trust relationships and maintain compliance with common security standards.
 
 The onboarding system MUST enable secure Digital Credential operations. At the same time, it MUST accommodate the diverse operational requirements that different participants require.
 
@@ -71,8 +71,8 @@ Technical implementation procedures for Authentic Source registration are provid
 Federation Onboarding Process
 -------------------------------
 
-Federation onboarding establishes the cryptographic trust relationships and compliance frameworks that enable operational entities to participate in secure credential lifecycle activities.
-Operational entities MUST complete onboarding that includes administrative eligibility verification, technical infrastructure validation, and cryptographic trust establishment. The onboarding process creates cryptographic trust relationships through certificate issuance, trust chain configuration, and compliance attestation. These mechanisms enable secure interactions among federation participants and provide the foundation for distributed trust validation across the ecosystem.
+Federation onboarding establishes the trust relationships and compliance frameworks that enable operational entities to participate in secure Credential lifecycle activities.
+Operational entities MUST complete onboarding that includes administrative eligibility verification, technical infrastructure validation, and trust establishment. The onboarding process creates cryptographic trust relationships through certificate issuance, trust chain evaluation, and compliance attestation. These mechanisms enable secure interactions among federation participants and provide the foundation for distributed trust validation across the ecosystem.
 
 Successfully onboarded entities are included in the Federation Registry, which maintains the authoritative list of trusted federation participants. This registry enables operational trust validation during credential lifecycle activities.
 
