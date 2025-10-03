@@ -1,6 +1,6 @@
 [
   {
-    "as_id": "https://motorizzazione.gov.example",
+    "entity_id": "https://motorizzazione.gov.example",
     "organization_info": {
       "organization_name": "MIT -- Direzione Generale per la Motorizzazione",
       "organization_type": "public",
@@ -41,7 +41,7 @@
     }
   },
   {
-    "as_id": "https://api.bank.example/auth-source",
+    "entity_id": "https://api.bank.example/auth-source",
     "organization_info": {
       "organization_name": "Example Bank S.p.A.",
       "organization_type": "private",

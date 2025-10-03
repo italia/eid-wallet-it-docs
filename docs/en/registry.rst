@@ -235,7 +235,7 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **Parameter**
      - **Type**
      - **Description**
-   * - **as_id**
+   * - **entity_id**
      - string
      - REQUIRED. Unique identifier following the normative schema: ``https://{organization_domain}[/{optional_path}]``.
    * - **organization_info**
@@ -645,7 +645,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **issuers**
     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
   * - **authentic_sources**
-    - REQUIRED. Array of string identifiers referencing authorized Authentic Sources as registered in the :ref:`registry:Authentic Source Registry`. Each identifier corresponds to an ``as_id`` value from the AS Registry, which provides complete organizational and technical metadata including data provision capabilities, integration methods, and contact information.
+    - REQUIRED. Array of string identifiers referencing authorized Authentic Sources as registered in the :ref:`registry:Authentic Source Registry`. Each identifier corresponds to an ``entity_id`` value from the AS Registry, which provides complete organizational and technical metadata including data provision capabilities, integration methods, and contact information.
   * - **formats**
     - REQUIRED. Array of supported technical formats of Digital Credentials, including:
 

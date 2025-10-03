@@ -167,7 +167,7 @@ La registrazione della Fonte Autentica segue un processo tecnico come descritto 
 .. code-block:: json
 
    {
-     "as_id": "https://transport-authority.gov.example",
+     "entity_id": "https://transport-authority.gov.example",
      "organization_info": {
        "organization_name": "Autorità Nazionale dei Trasporti",
        "organization_type": "public",

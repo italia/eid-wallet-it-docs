@@ -169,7 +169,7 @@ The Authentic Source registration follows a technical process as described below
 .. code-block:: json
 
    {
-     "as_id": "https://transport-authority.gov.example",
+     "entity_id": "https://transport-authority.gov.example",
      "organization_info": {
        "organization_name": "National Transport Authority",
        "organization_type": "public",

@@ -234,7 +234,7 @@ Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica regi
    * - **Parametro**
      - **Tipo**
      - **Descrizione**
-   * - **as_id**
+   * - **entity_id**
      - string
      - RICHIESTO. Identificatore univoco che segue lo schema normativo: ``https://{organization_domain}[/{optional_path}]``.
    * - **organization_info**
@@ -646,7 +646,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - **issuers**
     - RICHIESTO. Array di informazioni rilevanti sui Credential Issuer autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, riferimento al documento di specifica API e meccanismi di rilascio supportati (ad esempio il supporto del flusso differito).
   * - **authentic_sources**
-    - RICHIESTO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel :ref:`registry:Registro delle Fonti Autentiche`. Ogni identificatore corrisponde a un valore ``as_id`` dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.
+    - RICHIESTO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel :ref:`registry:Registro delle Fonti Autentiche`. Ogni identificatore corrisponde a un valore ``entity_id`` dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.
   * - **formats**
     - RICHIESTO. Array di formati tecnici supportati degli Attestati Elettronici, inclusi:
 
