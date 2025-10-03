@@ -1,6 +1,6 @@
 .. _test-plans-remote-presentation:
 
-Remote Credential Presentation Test Matrix
+Remote Credential Verifier Test Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Verifiers solutions for remote flows. It is also intended for assessment bodies inspecting and validating the implementations of Credential Verifiers solutions for remote flows.

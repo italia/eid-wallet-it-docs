@@ -1,6 +1,7 @@
+.. _test-plans-proximity-presentation:
 
-Matrice di Test per la Presentazione di Credenziali in Prossimità
------------------------------------------------------------------
+Matrice di Test per il Verificatore di Credenziali in Prossimità
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questa sezione fornisce l'insieme dei casi di test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Verifier per i flussi di prossimità. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Verifier per i flussi di prossimità.
 

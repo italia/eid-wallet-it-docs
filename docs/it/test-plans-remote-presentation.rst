@@ -1,4 +1,6 @@
-Matrice di Test per la Presentazione Remota delle Credenziali
+.. _test-plans-remote-presentation:
+
+Matrice di Test per il Verificatore di Credenziali in Remoto
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Questa sezione fornisce l’insieme dei casi di test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e distribuzione di soluzioni Credential Verifier per flussi remoti. È inoltre destinata agli enti di valutazione che ispezionano e validano le implementazioni delle soluzioni Credential Verifier per flussi remoti.
