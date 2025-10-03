@@ -999,22 +999,22 @@ All technical updates MUST be validated through:
 Technical Federation Exit Procedures
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For business context on federation exit processes, see :ref:`onboarding-high-level:Federation Exit and Removal Processes`. This section covers technical implementazione procedurs.
+For business context on federation exit processes, see :ref:`onboarding-high-level:Federation Exit and Removal Processes`. This section covers technical implementation procedures.
 
 Voluntary Exit - Technical Deactivation
 """"""""""""""""""""""""""""""""""""""""""
 
-  1. **Certificate Revocation Request**: The Entity MUST submit a certificate revocation request to Federation Authority with revocation reason. The request MUST be signed with the Federation Entity Private Key corresponding to the certificate being revoked to prove the legitimacy of the revocation request.
-  2. **CRL Update Verification**: The Federation Authority MUST revoke the Entity's certificates and the Entity MUST verify they appear in updated Certificate Revocation List.
-  3. **Subordinate Statement Removal**: The Federation Authority MUST completely remove the Entity's Subordinate Statement from the Federation Registry to prevent any trust relationship validation.
+  1. **Certificate Revocation Request**: The Entity MUST submit a X.509 Certificate revocation request to Federation Authority with revocation reason. The request MUST be signed with the Federation Entity Private Key corresponding to the X.509 Certificate being revoked to prove the legitimacy of the revocation request.
+  2. **CRL Update Verification**: The Federation Authority MUST revoke the Entity's X.509 Certificate and the Entity MUST verify they appear in updated Certificate Revocation List.
+  3. **Subordinate Statement Removal**: The Federation Authority MUST completely remove the Entity's Subordinate Statement from the Federation Registry to prevent any trust relationship validation, and therefore remove any reference to that Entity in the listing endpoint, resolve endpoint or trust marked listing endpoint.
   4. **Entity Configuration Deactivation**: The Entity MUST deactivate its Entity Configuration. The Entity MAY either:
 
      a. Remove the Entity Configuration completely from the ``/.well-known/openid-federation`` endpoint (returning HTTP 404), OR
-     b. Keep the Entity Configuration available but MUST ensure it remains expired (with ``exp`` claim in the past) and MUST NOT update it with fresh timestamps.
+     b. Keep the Entity Configuration as expired (with ``exp`` claim in the past). It therefore MUST NOT update it with fresh timestamps.
 
-  5. **Registry Status Update**: The Entity SHOULD verify removal from Federation Registry, also verifying the Trust Mark status returns ``{"active": false}`` from ``/trust_mark_status`` endpoint. 
+  5. **Registry Status Update**: The Entity SHOULD verify removal from Federation Registry, also verifying the Trust Mark status using the Trust Mark Status endpoint. 
 
-Non-normative example of certificate revocation request following RFC 3280 format:
+Non-normative example of X.509 Certificate revocation request following :rfc:`3280` format:
 
 .. code-block:: text
 
@@ -1050,9 +1050,9 @@ Example CRR in DER format (Base64 encoded):
 Supervisory Body Removal - Technical Implementation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-  1. **Emergency Certificate Revocation**: The Federation Authority MUST immediately revoke certificates with appropriate reason code (e.g., "Key Compromise", "Cessation of Operation").
+  1. **Emergency Certificate Revocation**: The Federation Authority MUST immediately revoke X.509 Certificate with appropriate reason code (e.g., "Key Compromise", "Cessation of Operation").
   2. **CRL Emergency Update**: The Trust Anchor MUST publish updated CRL within emergency timeframe.
-  3. **Subordinate Statement Removal**: The Federation Authority MUST immediately and completely remove the Entity's Subordinate Statement from all federation endpoints.
+  3. **Subordinate Statement Removal**: The Federation Authority MUST immediately stop issuing the Entity's Subordinate Statements using the fetch endpoint, and or any reference to that Entity using the listing endpoint, or the trust marked listing endpoint, or the resolve endpoint.
   4. **Entity Configuration Invalidation**: The Entity's Configuration at ``/.well-known/openid-federation`` becomes invalid due to X.509 Certificate revocation (signature verification fails).
   5. **Trust Chain Invalidation**: Trust Chain resolution MUST return error status for affected entity.
   6. **Service Endpoint Isolation**: Federation infrastructure MUST block access to federation service endpoints.
@@ -1101,7 +1101,7 @@ The Entity MUST follow these steps for component modifications:
 
 Entities that exit the federation MUST maintain the following for regulatory compliance:
 
-1. **Historical Entity Configuration**: The Entity MUST maintain ``/.well-known/openid-federation`` endpoint accessibility for audit purposes (minimum 7 years).
+1. **Historical Entity Configuration**: The Entity MUST maintain ``/.well-known/openid-federation`` endpoint accessibility for audit purposes.
 2. **Certificate Chain Archive**: The Entity MUST keep X.509 Certificate chains accessible for existing Credential verification (minimum 7 years).
 3. **Audit Log Preservation**: The Entity MUST archive federation protocol logs per regulatory requirements.
 
