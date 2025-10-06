@@ -37,7 +37,7 @@ The following table summarizes entity types, their roles, and corresponding onbo
      - **Onboarding Pathway**
      - **Key Requiring**
    * - Authentic Sources
-     - Authoritative data providers for Credential attributes
+     - Authoritative data providers for Digital Credential attributes
      - :ref:`entity-onboarding:Authentic Sources Registration Process`
      - Data authority validation, API integration (PDND/Custom).
    * - Credential Issuers
@@ -53,7 +53,7 @@ The following table summarizes entity types, their roles, and corresponding onbo
      - :ref:`entity-onboarding:Federation Entities Onboarding Process`
      - IT-Wallet Trust Infrastructure compliance :ref:`trust:The Infrastructure of Trust`, Wallet Attestation capabilities :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`.
    * - Wallet Instances
-     - User-level digital wallet applications
+     - User-level digital Wallet applications
      - Indirect registration via Wallet Provider, see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`.
      - Wallet Attestation from certified Wallet Provider.
 
@@ -88,7 +88,7 @@ Authentic Sources undergo systematic registration to establish their role as aut
 AS Registration Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Authentic Sources MUST comply with the following technical requirements to ensure ecosystem interoperability:
+Authentic Sources MUST comply with the following technical requirements:
 
   - **Claims Compliance**:
 
@@ -111,8 +111,8 @@ Authentic Sources MUST comply with the following technical requirements to ensur
     - **Data Quality**: The Entities MUST specify update frequency and provide data freshness guarantees.
     - **Audit Trail**: The Entities MUST implement logging capabilities for all data access and provisioning activities.
 
-AS Registration Information Requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Authentic Sources Registration Information Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 During registration, Authentic Sources MUST provide the following information:
 
@@ -128,12 +128,12 @@ During registration, Authentic Sources MUST provide the following information:
 
        - Organization name, type ("public" or "private") and country (ISO 3166-1 alpha-2).
        - Administrative identifier codes such as IPA registration code (REQUIRED only for public Authentic Sources) and legal identifier (Fiscal Code/VAT Number).
-       - Contact Information including technical and administrative contact email addresses, homepage URI, privacy policy URI, etc.
+       - Contact Information including technical and administrative contacts, such as email addresses, homepage URI, privacy policy URI.
    * - **Data Capabilities Declaration**
      - **REQUIRED**. Available claims:
 
        - Array of claim identifiers from Claims Registry that the Authentic Source provides (e.g., ``["given_name", "family_name", "driving_privileges"]``).
-       - Taxonomy classification for Authentic Source scope (e.g., ``[AUTHORIZATION]`` domains and ``["DRIVING_LICENSE"]`` purposes).
+       - Taxonomy classification for Authentic Source scope (e.g., ``["AUTHORIZATION"]`` domains and ``["DRIVING_LICENSE"]`` purposes).
       
    * - **API Implementation Details**
      - **REQUIRED**. Integration information details:
@@ -147,15 +147,15 @@ During registration, Authentic Sources MUST provide the following information:
 
        **Example**: "Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.".
    * - **Display Properties**
-     - **OPTIONAL**. Visual branding suggestions for Credentials using AS data:
+     - **OPTIONAL**. Visual branding suggestions for Digital Credentials using AS data:
 
-       - Background color for Credentials in hexadecimal format (e.g., ``"#003d82"``).
-       - Text color for Credentials in hexadecimal format (e.g., ``"#ffffff"``).
-       - Logo URI with cryptographic integrity verification for Credential branding.
-       - Visual template URI with integrity verification for Credential presentation.
+       - Background color for Digital Credentials in hexadecimal format (e.g., ``"#003d82"``).
+       - Text color for Digital Credentials in hexadecimal format (e.g., ``"#ffffff"``).
+       - Logo URI with cryptographic integrity verification for Digital Credential branding.
+       - Visual template URI with integrity verification for Digital Credential presentation.
 
-AS Registration Procedure
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Authentic Source Registration Procedure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Authentic Source registration follows a technical process as described below.
 
@@ -244,7 +244,7 @@ Technical integration encompasses:
 Federation Entities Onboarding Process
 ---------------------------------------
 
-Federation Entities (Credential Issuers, Relying Parties, and Wallet Providers) MUST undergo onboarding procedures to establish trust relationships within the IT-Wallet ecosystem. The federation onboarding process establishes the distributed trust infrastructure through certificate issuance, trust chain validations, and compliance attestation as detailed in :ref:`trust:The Infrastructure of Trust`.
+Federation Entities (Credential Issuers, Relying Parties, and Wallet Providers) MUST undergo onboarding procedures to establish trust relationships within the IT-Wallet ecosystem. The federation onboarding process establishes the distributed trust infrastructure through X.509 Certificate issuance, Trust Chain validations, and compliance attestation as detailed in :ref:`trust:The Infrastructure of Trust`.
 
 Hierarchical Federation Authority Model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -258,14 +258,12 @@ This hierarchical approach enables **distributed onboarding management** while m
 
   - **Certificate Issuance**: Issue X.509 Certificates to their Immediate Subordinates with appropriate naming constraints as defined in :ref:`trust:X.509 PKI`.
   - **Metadata Policy Application**: Apply federation-specific metadata policies with **cascading effect** (Trust Anchor policies override Intermediate policies).
-  - **Trust Mark Issuance**: Issue Federation Trust Marks attesting Subordinate compliance with federation requirements.
+  - **Trust Mark Issuance**: Issue Federation Trust Marks attesting Subordinate capabilities and grants, according to the trust framework.
 
 Therefore, Federation Entities MAY be onboarded through different paths:
 
   - **Direct Trust Anchor Onboarding**: Entity directly registers with the Trust Anchor.
   - **Intermediate-mediated Onboarding**: Entity registers with an appropriate Intermediate.
-
-
 
 
 Federation Onboarding Prerequisites
@@ -276,9 +274,9 @@ Federation Entities MUST comply with the following technical requirements before
   - **Key Generation**: The entities MUST generate at least two key pairs using elliptic curve cryptography as specified in :ref:`algorithms:Cryptographic Algorithms`:
 
     - **Federation Key Pair**: Used for signing Entity Configurations and attesting Protocol Keys.
-    - **Protocol Key Pair(s)**: Used for entity-specific protocol operations, such as Credential issuance, presentation verification, others.
+    - **Protocol Key Pair(s)**: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.
 
-  - **Protocol Key Attestation**: The entities MUST create self-signed X.509 Certificates for their Protocol Keys using the Federation Private Key. These Certificates establish the authority relationship between Federation and Protocol keys.
+  - **Protocol Key Attestation**: The entities MUST create self-signed X.509 Certificates for their Protocol Keys using the Federation Private Key. These Certificates establish the authority relationship between Federation and application specific keys.
 
   - **Entity Configuration Preparation**: The entities MUST publish an Entity Configuration (EC) signed with their Federation Private Key at the ``/.well-known/openid-federation`` endpoint as defined in :ref:`trust:The Infrastructure of Trust`. The EC MUST include:
 
