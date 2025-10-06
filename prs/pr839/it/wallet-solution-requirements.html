@@ -175,33 +175,37 @@
             
   <section id="requisiti-della-soluzione-wallet">
 <h1><span class="section-number">6.1.1. </span>Requisiti della Soluzione Wallet<a class="headerlink" href="#requisiti-della-soluzione-wallet" title="Link to this heading">¶</a></h1>
-<p>Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzioni Wallet con le loro Istanze del Wallet.</p>
+<p>Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzioni Wallet con le loro Istanze del Wallet, nonché i corrispondenti Wallet Attestation e il componente di secure storage (WSCD).</p>
 <ul class="simple">
 <li><p>La Soluzione Wallet DEVE aderire alle specifiche stabilite da questo documento per ottenere Attestati Elettronici di Dati di Identificazione Personale (PID) e Attestati Elettronici di Attributi (Q)EAA.</p></li>
 <li><p>Il Fornitore di Wallet DEVE esporre un insieme di endpoint, disponibili esclusivamente per le istanze della sua Soluzione Wallet, che supportano le funzionalità principali delle Istanze del Wallet.</p></li>
-<li><p>L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet Attestation.</p></li>
+<li><p>L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_018</span></a>).</p></li>
 <li><p>L'Istanza del Wallet DEVE stabilire la trust con altri partecipanti dell'ecosistema Wallet, come i Fornitori di Credenziale e le Relying Party, presentando una Wallet Attestation.</p></li>
-<li><p>L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store.</p></li>
+<li><p>L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_015</span></a>).</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire un meccanismo per verificare l'effettivo possesso e il pieno controllo da parte dell'Utente del proprio dispositivo personale.</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire agli Utenti un elenco aggiornato delle Relying Party con cui l'Utente ha stabilito una connessione e, ove applicabile, tutti i dati scambiati;</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire agli Utenti un meccanismo per richiedere la cancellazione degli attributi personali da parte di una Relying Party ai sensi dell'articolo 17 del Regolamento (UE) 2016/679, e per registrare ogni Richiesta di Cancellazione effettuata.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-test-matrix"><span class="std std-ref">Matrice di Test per Wallet Provider</span></a>. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. <span class="xref std std-ref">wallet-attestation-issuance:Wallet Attestation Issuance</span>).</p>
+</div>
 <section id="requisiti-della-wallet-attestation">
 <h2><span class="section-number">6.1.1.1. </span>Requisiti della Wallet Attestation<a class="headerlink" href="#requisiti-della-wallet-attestation" title="Link to this heading">¶</a></h2>
 <p>la Wallet Attestation contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
 Esso dimostra principalmente l'<strong>autenticità</strong>, l'<strong>integrità</strong>, la <strong>sicurezza</strong> e in generale l'<strong>affidabilità</strong> di una particolare Istanza del Wallet.</p>
 <p>I requisiti per la Wallet Attestation sono definiti di seguito:</p>
 <ul class="simple">
-<li><p>la Wallet Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'<strong>integrità</strong> e la <strong>sicurezza</strong> del dispositivo in cui è installata l'Istanza del Wallet.</p></li>
-<li><p>la Wallet Attestation DEVE essere firmato dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet.</p></li>
-<li><p>Il Fornitore di Wallet DEVE periodicamente valutare e garantire l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet. Il Fornitore di Wallet verifica l'Istanza del Wallet utilizzando il flusso più sicuro reso disponibile dalle API del Fornitore del Sistema Operativo, come la <em>Play Integrity API</em> per Android e <em>App Attest</em> per iOS.</p></li>
-<li><p>Il Fornitore di Wallet DEVE possedere un meccanismo di revoca per l'Istanza del Wallet, che consenta al Fornitore di Wallet di terminare il servizio per una specifica Istanza in qualsiasi momento.</p></li>
-<li><p>la Wallet Attestation DEVE essere vincolato in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet.</p></li>
+<li><p>la Wallet Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'<strong>integrità</strong> e la <strong>sicurezza</strong> del dispositivo in cui è installata l'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019</span></a>).</p></li>
+<li><p>la Wallet Attestation DEVE essere firmato dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_020</span></a>).</p></li>
+<li><p>Il Fornitore di Wallet DEVE periodicamente valutare e garantire l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet. Il Fornitore di Wallet verifica l'Istanza del Wallet utilizzando il flusso più sicuro reso disponibile dalle API del Fornitore del Sistema Operativo, come la <em>Play Integrity API</em> per Android e <em>App Attest</em> per iOS (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_011</span></a>).</p></li>
+<li><p>Il Fornitore di Wallet DEVE possedere un meccanismo di revoca per l'Istanza del Wallet, che consenta al Fornitore di Wallet di terminare il servizio per una specifica Istanza in qualsiasi momento (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_011</span></a>).</p></li>
+<li><p>la Wallet Attestation DEVE essere vincolato in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019b</span></a>).</p></li>
 <li><p>la Wallet Attestation PUÒ essere utilizzato più volte durante il suo periodo di validità, consentendo autenticazioni e autorizzazioni ripetute senza la necessità di richiedere nuovi attestati ad ogni interazione. Tuttavia, è RACCOMANDATO che le Istanze del Wallet evitino di utilizzare ripetutamente lo stesso attestato, a causa di preoccupazioni sulla privacy come la possibilità di collegamento tra diverse interazioni.</p></li>
 <li><p>la Wallet Attestation che non implementa metodi di controllo della revoca, DEVE avere una durata breve e DEVE avere un tempo di scadenza, dopo il quale NON DEVE più essere considerato valido.</p></li>
-<li><p>la Wallet Attestation NON DEVE essere rilasciato dal Fornitore di Wallet se l'autenticità, l'integrità e la genuinità dell'Istanza del Wallet che lo richiede non possono essere garantite.</p></li>
+<li><p>la Wallet Attestation NON DEVE essere rilasciato dal Fornitore di Wallet se l'autenticità, l'integrità e la genuinità dell'Istanza del Wallet che lo richiede non possono essere garantite (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019a</span></a>).</p></li>
 <li><p>Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Attestati di Wallet utilizzando diverse chiavi pubbliche crittografiche associate ad essi.</p></li>
-<li><p>la Wallet Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet.</p></li>
+<li><p>la Wallet Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_029a</span></a>).</p></li>
 <li><p>L'Istanza del Wallet DEVE ottenere una Wallet Attestation come prerequisito per passare allo stato Operativo, come definito da <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
 </ul>
 <div class="admonition note">
@@ -222,7 +226,7 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Nella fase attuale, il profilo di implementazione definito in questo documento supporta solo il <strong>WSCD Interno Locale</strong>. Le versioni future di questa specifica POTREBBERO includere altri approcci a seconda del Livello di Garanzia dell'Autenticatore richiesto (<cite>AAL</cite>).</p>
+<p>Nella fase attuale, il profilo di implementazione definito in questo documento supporta solo il <strong>WSCD Interno Locale</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>). Le versioni future di questa specifica POTREBBERO includere altri approcci a seconda del Livello di Garanzia dell'Autenticatore richiesto (<cite>AAL</cite>).</p>
 </div>
 <p>Per informazioni più dettagliate, fare riferimento a <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a> di questo documento.</p>
 </section>
@@ -274,7 +278,7 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 01/10/2025.
+      Ultimo aggiornamento 06/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

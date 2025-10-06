@@ -694,7 +694,10 @@ Errori di Attivazione dell'Istanza del Wallet
    * - I servizi del PID Provider non rispondono (e.g. errori tecnici) 
      - PID Provider
    * - Il processo di Autenticazione sul servizio del National Identity Provider non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)
-     - National Identity Provider 
+     - National Identity Provider
+
+.. note::
+   Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del National Identity Provider, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere :ref:`credential-issuance-l2plus:Gestione Errori`.
 
 Errori di ottenimento degli Attestati Elettronici di Attributi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

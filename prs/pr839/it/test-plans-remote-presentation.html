@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>16.4.1.5. Matrice di Test per la Presentazione di Credenziali Remota &#8212; IT-Wallet Technical Documentation - PR #839</title>
+    <title>16.4.1.5. Matrice di Test per il Verificatore di Credenziali in Remoto &#8212; IT-Wallet Technical Documentation - PR #839</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,7 +18,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="16.4.1.6. Matrice di Test per la Presentazione di Credenziali in Prossimità" href="test-plans-proximity-presentation.html" />
+    <link rel="next" title="16.4.1.6. Matrice di Test per il Verificatore di Credenziali in Prossimità" href="test-plans-proximity-presentation.html" />
     <link rel="prev" title="16.4.1.4. Matrice dei Test per il Credential Issuer" href="test-plans-credential-issuer.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -153,10 +153,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">16.4. Test Plans</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">16.4.1.1. Matrice di Test per la Valutazione delle Firme</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">16.4.1.2. Matrice di Test per la Valutazione della Fiducia</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet.html">16.4.1.3. Matrice di Test per la Soluzione Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet-provider.html">16.4.1.3. Matrice di Test per Wallet Provider</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">16.4.1.4. Matrice dei Test per il Credential Issuer</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">16.4.1.5. Matrice di Test per la Presentazione di Credenziali Remota</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-proximity-presentation.html">16.4.1.6. Matrice di Test per la Presentazione di Credenziali in Prossimità</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">16.4.1.5. Matrice di Test per il Verificatore di Credenziali in Remoto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-proximity-presentation.html">16.4.1.6. Matrice di Test per il Verificatore di Credenziali in Prossimità</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">16.5. Specifica OpenAPI del Credential Issuer PDND</a></li>
@@ -178,12 +178,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="matrice-di-test-per-la-presentazione-di-credenziali-remota">
-<h1><span class="section-number">16.4.1.5. </span>Matrice di Test per la Presentazione di Credenziali Remota<a class="headerlink" href="#matrice-di-test-per-la-presentazione-di-credenziali-remota" title="Link to this heading">¶</a></h1>
-<p>Questa sezione fornisce l'insieme dei casi di test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Verifier per i flussi remoti. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Verifier per i flussi remoti.</p>
+  <section id="matrice-di-test-per-il-verificatore-di-credenziali-in-remoto">
+<span id="test-plans-remote-presentation"></span><h1><span class="section-number">16.4.1.5. </span>Matrice di Test per il Verificatore di Credenziali in Remoto<a class="headerlink" href="#matrice-di-test-per-il-verificatore-di-credenziali-in-remoto" title="Link to this heading">¶</a></h1>
+<p>Questa sezione fornisce l’insieme dei casi di test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e distribuzione di soluzioni Credential Verifier per flussi remoti. È inoltre destinata agli enti di valutazione che ispezionano e validano le implementazioni delle soluzioni Credential Verifier per flussi remoti.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Riferimenti sui piani di test ufficiali OpenID4VP aggiorneranno questa sezione nelle versioni future.</p>
+<p>I riferimenti ai piani di test ufficiali OpenID4VP aggiorneranno questa sezione nelle prossime versioni.</p>
 </div>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -193,392 +193,562 @@
 <col style="width: 35.0%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Test Case ID</p></th>
-<th class="head"><p>Purpose</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Expected Result</p></th>
+<tr class="row-odd"><th class="head"><p>ID Caso di Test</p></th>
+<th class="head"><p>Scopo</p></th>
+<th class="head"><p>Descrizione</p></th>
+<th class="head"><p>Risultato Atteso</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>RPR-01</p></td>
-<td><p>Same Device Flow</p></td>
-<td><p>Verificare l'URL di redirect HTTP (302).</p></td>
-<td><p>Il Wallet Instance riceve l'URL corretto.</p></td>
+<td><p>Flusso stesso dispositivo</p></td>
+<td><p>Verifica URL di redirect HTTP (302).</p></td>
+<td><p>Il Relying Party emette un URL corretto utilizzando la base url fornita nei suoi metadati.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-02</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Verificare la generazione del QR Code per Il Wallet Instance.</p></td>
-<td><p>Il Wallet Instance scansiona il QR Code con successo.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Verifica la generazione del QR Code per l’istanza Wallet.</p></td>
+<td><p>Il Relying Party emette correttamente il QR Code.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-03</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Verificare che il QR Code contenga i parametri URL corretti.</p></td>
-<td><p>Il Wallet Instance recupera l'URL con i parametri.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Verifica che il QR Code contenga i parametri URL corretti.</p></td>
+<td><p>Il Relying Party emette il QR-Code contenente un URL che utilizza la base url fornita nei suoi metadati.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-04</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Testare la scansione del QR Code in condizioni di scarsa illuminazione.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Test della scansione del QR Code in condizioni di scarsa illuminazione.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-05</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Verificare il livello di correzione errori del QR Code.</p></td>
-<td><p>Il QR Code rimane leggibile se danneggiato.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Verifica il livello di correzione degli errori del QR Code.</p></td>
+<td><p>Il QR Code rimane leggibile anche se danneggiato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-06</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Testare la scansione del QR Code con dispositivi diversi.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Test della scansione del QR Code con dispositivi diversi.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-07</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare <cite>request_uri_method</cite> come <cite>post</cite>.</p></td>
-<td><p>Il Wallet Instance invia i metadata tramite POST.</p></td>
+<td><p>Metodo request_uri</p></td>
+<td><p>Test di <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> come <code class="docutils literal notranslate"><span class="pre">post</span></code>.</p></td>
+<td><p>Il Relying Party accetta i metadati dell’istanza Wallet via POST e risponde con un oggetto Request aggiornato.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-08</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare <cite>request_uri_method</cite> come <cite>get</cite>.</p></td>
-<td><p>Il Wallet Instance recupera il Request Object tramite GET.</p></td>
+<td><p>Metodo request_uri</p></td>
+<td><p>Test di <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> come <code class="docutils literal notranslate"><span class="pre">get</span></code>.</p></td>
+<td><p>Il Relying Party emette l’oggetto Request tramite risposta HTTP GET.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-09</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare l'assenza di <cite>request_uri_method</cite>.</p></td>
-<td><p>Il Wallet Instance utilizza il metodo GET come default.</p></td>
+<td><p>Metodo request_uri</p></td>
+<td><p>Test dell’assenza di <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code>.</p></td>
+<td><p>Il Relying Party accetta e predefinisce il metodo GET.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-10</p></td>
-<td><p>Metadata</p></td>
-<td><p>Verificare che i parametri corrispondano ai metadata del credential verifier openid.</p></td>
+<td><p>Metadati</p></td>
+<td><p>Verifica che i parametri corrispondano ai metadati OpenID Credential Verifier.</p></td>
 <td><p>Solo i parametri consentiti saranno considerati.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-11</p></td>
-<td><p>User Consent</p></td>
-<td><p>Testare l'idoneità di un credential verifier nel richiedere attributi utente.</p></td>
-<td><p>L'utente può modificare la selezione dei dati sugli attributi opzionali.</p></td>
+<td><p>Consenso Utente</p></td>
+<td><p>Test dell’idoneità di un Credential Verifier nel richiedere attributi utente.</p></td>
+<td><p>L’utente può modificare la selezione dei dati sugli attributi opzionali.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-12</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Testare l'invio della Presentation Response.</p></td>
-<td><p>La Relying Party riceve e valida la response con state e nonce.</p></td>
+<td><p>Risposta di Autorizzazione</p></td>
+<td><p>Test dell’invio della Presentation Response.</p></td>
+<td><p>Il Relying Party riceve e valida la risposta con i valori <code class="docutils literal notranslate"><span class="pre">state</span></code> e <code class="docutils literal notranslate"><span class="pre">nonce</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-13</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Verificare la crittografia della response.</p></td>
-<td><p>La response viene crittografata utilizzando la chiave pubblica della Relying Party.</p></td>
+<td><p>Risposta di Autorizzazione</p></td>
+<td><p>Verifica la cifratura della risposta.</p></td>
+<td><p>Il Relying Party valuta la risposta cifrata usando la propria chiave pubblica (una delle sue chiavi).</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-14</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Testare la gestione di Request Object non validi.</p></td>
-<td><p>Viene inviata una Authorization Error Response.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Test della gestione di un oggetto Request non valido.</p></td>
+<td><p>Viene inviata una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-15</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Verificare il logging degli errori da parte delIl Wallet Instance.</p></td>
-<td><p>Gli errori vengono registrati appropriatamente.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Verifica la registrazione degli errori.</p></td>
+<td><p>Gli errori vengono registrati correttamente.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-16</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Testare il recupero da <cite>server_error</cite>.</p></td>
-<td><p>L'utente viene invitato a riprovare o scansionare un nuovo QR code.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Test del recupero da errore nella richiesta di autorizzazione.</p></td>
+<td><p>Il Relying Party invita l’utente a riprovare o a scansionare un nuovo QR code.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-17</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Verificare la gestione corretta della Response.</p></td>
-<td><p>La sessione utente viene aggiornata, viene fornito il redirect URI.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Test di un cookie HTTP falso.</p></td>
+<td><p>Il Relying Party verifica la coerenza della sessione utente accoppiando il cookie http di sessione con state e nonce forniti.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-18</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Testare l'assenza di <cite>redirect_uri</cite>.</p></td>
-<td><p>Viene restituita una error response.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-19</p></td>
+<tr class="row-odd"><td><p>RPR-19</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Testare il redirect all'endpoint della Relying Party.</p></td>
-<td><p>L'utente viene reindirizzato correttamente.</p></td>
+<td><p>Test del reindirizzamento all’endpoint del Relying Party.</p></td>
+<td><p>L’utente viene reindirizzato correttamente, l’endpoint funziona.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-20</p></td>
+<tr class="row-even"><td><p>RPR-20</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Verificare la gestione di <cite>redirect_uri</cite> non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Verifica la gestione di un <cite>redirect_uri</cite> non valido.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-21</p></td>
-<td><p>User Consent</p></td>
-<td><p>Verificare la visualizzazione dell'identità della Relying Party.</p></td>
-<td><p>L'identità viene visualizzata chiaramente all'Holder.</p></td>
+<tr class="row-odd"><td><p>RPR-23</p></td>
+<td><p>Presentazione Credenziali</p></td>
+<td><p>Verifica la conformità del formato della risposta.</p></td>
+<td><p>Il Relying Party supporta tutti i formati di credenziali inclusi nel parametro <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code> dei suoi metadati.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-22</p></td>
-<td><p>User Consent</p></td>
-<td><p>Testare la revoca del consenso utente.</p></td>
-<td><p>L'utente può revocare il consenso prima dell'invio.</p></td>
+<tr class="row-even"><td><p>RPR-24</p></td>
+<td><p>Risposta di Autorizzazione</p></td>
+<td><p>Test della gestione dei timeout di risposta.</p></td>
+<td><p>I tentativi devono avere successo a meno che non venga acquisita la risposta.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-23</p></td>
-<td><p>Credential Presentation</p></td>
-<td><p>Verificare la conformità del formato della response.</p></td>
-<td><p>Ogni Credential aderisce al formato specificato.</p></td>
+<tr class="row-odd"><td><p>RPR-25</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Verifica la gestione di claim malformati nel payload della presentazione.</p></td>
+<td><p>Viene inviata una risposta di errore di autorizzazione.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-24</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Testare la gestione dei timeout della response.</p></td>
-<td><p>I retry devono avere successo a meno che la response non sia acquisita.</p></td>
+<tr class="row-even"><td><p>RPR-26</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Verifica la gestione di claim malformati nelle credenziali presentate.</p></td>
+<td><p>Viene inviata una risposta di errore di autorizzazione.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-25</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Verificare la gestione di claims malformati nel payload di presentazione.</p></td>
-<td><p>Viene inviata una Authorization Error Response.</p></td>
+<tr class="row-odd"><td><p>RPR-27</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Test della gestione di richieste scadute.</p></td>
+<td><p>Il titolare viene informato della scadenza.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-26</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Verificare la gestione di claims malformati nelle credenziali presentate.</p></td>
-<td><p>Viene inviata una Authorization Error Response.</p></td>
+<tr class="row-even"><td><p>RPR-28</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Verifica l’inclusione del codice di risposta.</p></td>
+<td><p>Il codice di risposta è crittograficamente casuale.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-27</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Testare la gestione di richieste scadute.</p></td>
-<td><p>L'Holder viene notificato della scadenza.</p></td>
+<tr class="row-odd"><td><p>RPR-29</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Test della gestione di codici di risposta non validi.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-28</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Verificare l'inclusione del response code.</p></td>
-<td><p>Il response code è crittograficamente casuale.</p></td>
+<tr class="row-even"><td><p>RPR-30</p></td>
+<td><p>Endpoint di Stato</p></td>
+<td><p>Verifica la gestione di accessi non autorizzati.</p></td>
+<td><p>L’accesso non autorizzato viene negato.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-29</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Testare la gestione di response code non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<tr class="row-odd"><td><p>RPR-31</p></td>
+<td><p>Endpoint di Stato</p></td>
+<td><p>Test della gestione di ID di sessione non validi.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-30</p></td>
-<td><p>Status Endpoint</p></td>
-<td><p>Verificare la gestione dell'accesso non autorizzato.</p></td>
-<td><p>L'accesso non autorizzato viene negato.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-31</p></td>
-<td><p>Status Endpoint</p></td>
-<td><p>Testare la gestione di session ID non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
-</tr>
-<tr class="row-odd"><td><p>RPR-32</p></td>
+<tr class="row-even"><td><p>RPR-32</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Verificare la gestione di sessioni scadute.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Verifica la gestione di sessioni scadute.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-even"><td><p>RPR-33</p></td>
+<tr class="row-odd"><td><p>RPR-33</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Testare la gestione di errori del server.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Test della gestione di errori del server.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
-<tr class="row-odd"><td><p>RPR-34</p></td>
-<td><p>Same Device Flow</p></td>
-<td><p>Verificare la gestione di condizioni di rete lenta.</p></td>
-<td><p>Il Wallet Instance riprova o notifica l'utente.</p></td>
-</tr>
-<tr class="row-even"><td><p>RPR-35</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare la gestione di payload metadata di grandi dimensioni.</p></td>
-<td><p>I metadata vengono inviati con successo.</p></td>
+<tr class="row-even"><td><p>RPR-34</p></td>
+<td><p>Flusso stesso e tra dispositivi</p></td>
+<td><p>Verifica la gestione di condizioni di rete lente.</p></td>
+<td><p>Il Relying Party fornisce la risposta http entro il limite massimo di 2 secondi.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-36</p></td>
-<td><p>Presentation Response</p></td>
-<td><p>Verificare la gestione di payload di response di grandi dimensioni.</p></td>
-<td><p>La response viene inviata con successo.</p></td>
+<td><p>Risposta di Presentazione</p></td>
+<td><p>Verifica la gestione di payload di risposta di grandi dimensioni.</p></td>
+<td><p>La risposta viene valutata entro soglie di sicurezza appropriate.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-37</p></td>
-<td><p>Presentation Response</p></td>
-<td><p>Testare la gestione di fallimenti nella crittografia della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta di Presentazione</p></td>
+<td><p>Test della gestione di errori di cifratura della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-38</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Verificare la gestione di firme non valide.</p></td>
-<td><p>Viene inviata una Authorization Error Response.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Verifica la gestione di firme non valide.</p></td>
+<td><p>Viene inviata una risposta di errore di autorizzazione.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-39</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Testare la gestione di valori nonce non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Test della gestione di valori nonce non validi.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-40</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Verificare la gestione di response malformate.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Verifica la gestione di risposte malformate.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-41</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Testare la gestione di parametri di response mancanti.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Test della gestione di parametri di risposta mancanti.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-42</p></td>
-<td><p>Status Endpoint</p></td>
-<td><p>Verificare la gestione di timeout di sessione.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Endpoint di Stato</p></td>
+<td><p>Verifica la gestione dei timeout di sessione.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-43</p></td>
-<td><p>Status Endpoint</p></td>
-<td><p>Testare la gestione di status code non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Endpoint di Stato</p></td>
+<td><p>Test della gestione di codici di stato non validi.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-44</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Verificare la gestione di sessioni utente non valide.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Verifica la gestione di sessioni utente non valide.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-45</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Testare la gestione di servizi non disponibili.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Test della gestione di servizi non disponibili.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-46</p></td>
-<td><p>Same Device Flow</p></td>
-<td><p>Verificare la gestione di cancellazioni utente.</p></td>
-<td><p>L'utente può cancellare il processo.</p></td>
+<td><p>Flusso stesso dispositivo</p></td>
+<td><p>Verifica la gestione delle cancellazioni da parte dell’utente.</p></td>
+<td><p>L’utente può annullare il processo.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-47</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Testare la scansione del QR Code con app diverse.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Test della scansione del QR Code con app diverse.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-48</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Verificare la scansione del QR Code con illuminazione diversa.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Verifica la scansione del QR Code con illuminazione diversa.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-49</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare la gestione di content type non supportati.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Metodo request_uri</p></td>
+<td><p>Test della gestione di content type non supportati.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-50</p></td>
-<td><p>User Consent</p></td>
-<td><p>Verificare la notifica utente sui cambiamenti di consenso.</p></td>
-<td><p>L'utente viene informato sui cambiamenti di consenso.</p></td>
+<td><p>Consenso Utente</p></td>
+<td><p>Verifica la notifica all’utente delle modifiche al consenso.</p></td>
+<td><p>L’utente viene informato delle modifiche al consenso.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-51</p></td>
-<td><p>User Consent</p></td>
-<td><p>Testare il consenso utente per dati sensibili.</p></td>
-<td><p>L'utente può acconsentire ai dati sensibili.</p></td>
+<td><p>Consenso Utente</p></td>
+<td><p>Test del consenso dell’utente per dati sensibili.</p></td>
+<td><p>L’utente può acconsentire ai dati sensibili.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-52</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Verificare la gestione di fallimenti nella decrittografia della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta di Autorizzazione</p></td>
+<td><p>Verifica la gestione di errori di decifratura della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-53</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Testare la gestione dei controlli di integrità della response.</p></td>
-<td><p>L'integrità della response viene verificata.</p></td>
+<td><p>Risposta di Autorizzazione</p></td>
+<td><p>Test della verifica dell’integrità della risposta.</p></td>
+<td><p>L’integrità della risposta è verificata.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-54</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Verificare la gestione di fallimenti nella validazione della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Verifica la gestione di errori di validazione della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-55</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Testare la gestione di errori di elaborazione della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Test della gestione di errori di elaborazione della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-56</p></td>
-<td><p>Protected Resource Endpoint</p></td>
-<td><p>Verificare la gestione di accesso non autorizzato alla sessione.</p></td>
-<td><p>L'accesso non autorizzato viene negato.</p></td>
+<td><p>Endpoint Risorsa Protetta</p></td>
+<td><p>Verifica la gestione di accessi di sessione non autorizzati.</p></td>
+<td><p>L’accesso non autorizzato viene negato.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-57</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Verificare la gestione di parametri di redirect non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Verifica la gestione di parametri di redirect non validi.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-58</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Testare la gestione di fallimenti nel redirect.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Test della gestione di errori di redirect.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-59</p></td>
-<td><p>Same Device Flow</p></td>
-<td><p>Verificare la gestione di interruzioni utente.</p></td>
-<td><p>L'utente può riprendere o cancellare il processo.</p></td>
+<td><p>Flusso stesso dispositivo</p></td>
+<td><p>Verifica la gestione di interruzioni da parte dell’utente.</p></td>
+<td><p>L’utente può riprendere o annullare il processo.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-60</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare la gestione di metodi HTTP non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Metodo request_uri</p></td>
+<td><p>Test della gestione di metodi HTTP non validi.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-61</p></td>
-<td><p>User Consent</p></td>
-<td><p>Verificare la notifica utente sulla revoca del consenso.</p></td>
-<td><p>L'utente viene informato sulla revoca del consenso.</p></td>
+<td><p>Consenso Utente</p></td>
+<td><p>Verifica la notifica all’utente della revoca del consenso.</p></td>
+<td><p>L’utente viene informato della revoca del consenso.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-62</p></td>
-<td><p>User Consent</p></td>
-<td><p>Testare il consenso utente per dati opzionali.</p></td>
-<td><p>L'utente può acconsentire ai dati opzionali.</p></td>
+<td><p>Consenso Utente</p></td>
+<td><p>Test del consenso dell’utente per dati opzionali.</p></td>
+<td><p>L’utente può acconsentire ai dati opzionali.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-63</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Verificare la gestione di fallimenti nella firma della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta di Autorizzazione</p></td>
+<td><p>Verifica la gestione di errori di firma della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-64</p></td>
-<td><p>Authorization Response</p></td>
-<td><p>Testare la gestione di errori di formato della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta di Autorizzazione</p></td>
+<td><p>Test della gestione di errori di formato della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-65</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Verificare la gestione di firme JWT non valide.</p></td>
-<td><p>Viene inviata una Authorization Error Response.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Verifica la gestione di firme JWT non valide.</p></td>
+<td><p>Viene inviata una risposta di errore di autorizzazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-66</p></td>
-<td><p>Error Handling</p></td>
-<td><p>Testare la gestione di claims JWT non validi.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Gestione Errori</p></td>
+<td><p>Test della gestione di claim JWT non validi.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-67</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Verificare la gestione di errori di parsing della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Verifica la gestione di errori di parsing della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-68</p></td>
-<td><p>Relying Party Response</p></td>
-<td><p>Testare la gestione di errori di timeout della response.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Risposta del Relying Party</p></td>
+<td><p>Test della gestione di errori di timeout della risposta.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-69</p></td>
-<td><p>Status Endpoint</p></td>
-<td><p>Verificare la gestione della scadenza della sessione.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Endpoint di Stato</p></td>
+<td><p>Verifica la gestione della scadenza della sessione.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-70</p></td>
-<td><p>Status Endpoint</p></td>
-<td><p>Testare la gestione di errori di rinnovo della sessione.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Endpoint di Stato</p></td>
+<td><p>Test della gestione di errori di rinnovo della sessione.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-71</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Verificare la gestione di errori di loop di redirect.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Verifica la gestione di errori di loop di redirect.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-72</p></td>
 <td><p>Redirect URI</p></td>
-<td><p>Testare la gestione di errori di sicurezza del redirect.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Test della gestione di errori di sicurezza nel redirect.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-73</p></td>
-<td><p>Same Device Flow</p></td>
-<td><p>Verificare la gestione di timeout utente.</p></td>
-<td><p>L'utente viene notificato del timeout.</p></td>
+<td><p>Flusso stesso dispositivo</p></td>
+<td><p>Verifica la gestione dei timeout utente.</p></td>
+<td><p>L’utente viene informato del timeout.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-74</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Testare la scansione del QR Code con dispositivi diversi.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Test della scansione del QR Code con dispositivi diversi.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
 <tr class="row-even"><td><p>RPR-75</p></td>
-<td><p>Cross Device Flow</p></td>
-<td><p>Verificare la scansione del QR Code con app diverse.</p></td>
+<td><p>Flusso tra dispositivi</p></td>
+<td><p>Verifica la scansione del QR Code con app diverse.</p></td>
 <td><p>Il QR Code viene scansionato con successo.</p></td>
 </tr>
 <tr class="row-odd"><td><p>RPR-76</p></td>
-<td><p>Request URI Method</p></td>
-<td><p>Testare la gestione di metodi HTTP non supportati.</p></td>
-<td><p>Viene restituita una error response.</p></td>
+<td><p>Metodo request_uri</p></td>
+<td><p>Test della gestione di metodi HTTP non supportati.</p></td>
+<td><p>Viene restituita una risposta di errore.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-77</p></td>
+<td><p>Generazione QR Code</p></td>
+<td><p>Verifica che il livello di correzione degli errori del QR Code sia Q (Quartile - fino al 25%).</p></td>
+<td><p>Il QR Code utilizza il livello di correzione Q richiesto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-78</p></td>
+<td><p>Richiesta Attestazione Wallet</p></td>
+<td><p>Test che la richiesta di Attestazione Wallet utilizzi la query DCQL standard.</p></td>
+<td><p>La richiesta di Attestazione Wallet utilizza correttamente la query DCQL standard.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-79</p></td>
+<td><p>Richiesta Attestazione Wallet</p></td>
+<td><p>Verifica che il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non sia incluso nella query DCQL per l’Attestazione Wallet.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> non è incluso nella query DCQL per l’Attestazione Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-80</p></td>
+<td><p>Richiesta Attestazione Wallet</p></td>
+<td><p>Test che il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> sia richiesto nella query DCQL per l’Attestazione Wallet.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> è correttamente richiesto nella query DCQL.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-81</p></td>
+<td><p>Wallet Nonce</p></td>
+<td><p>Test che il Relying Party controlli <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> quando presente.</p></td>
+<td><p>Il Relying Party controlla correttamente <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> quando presente.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-82</p></td>
+<td><p>Tipi di Risposta</p></td>
+<td><p>Verifica che <code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code> sia impostato a <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> quando presente.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">response_types_supported</span></code> è correttamente impostato a <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-83</p></td>
+<td><p>Redirect URI</p></td>
+<td><p>Test che il Relying Party fornisca correttamente il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> all’istanza Wallet.</p></td>
+<td><p>Il Relying Party fornisce e gestisce correttamente <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-84</p></td>
+<td><p>Supporto Flussi</p></td>
+<td><p>Test che il Relying Party supporti i flussi remoti richiesti.</p></td>
+<td><p>Il Relying Party supporta sia il flusso stesso dispositivo che tra dispositivi.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-85</p></td>
+<td><p>Sicurezza Endpoint</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> sia attestato da una terza parte fidata.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> è correttamente attestato da una terza parte fidata.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-86</p></td>
+<td><p>Protezione della Privacy</p></td>
+<td><p>Test che il Relying Party validi correttamente i metadati dell’istanza Wallet senza informazioni utente.</p></td>
+<td><p>Il Relying Party valuta correttamente le capacità tecniche dell’istanza Wallet.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-87</p></td>
+<td><p>Metodo POST request_uri</p></td>
+<td><p>Test che il Relying Party supporti la ricezione dei metadati dell’istanza Wallet via POST all’endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> con content type <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p></td>
+<td><p>Il Relying Party accetta e processa correttamente i metadati dell’istanza Wallet inviati via POST con il content type richiesto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-88</p></td>
+<td><p>Validazione Algoritmo</p></td>
+<td><p>Test che l’algoritmo JWT sia supportato e non sia <code class="docutils literal notranslate"><span class="pre">none</span></code> o MAC.</p></td>
+<td><p>L’algoritmo JWT è tra quelli supportati e non è <code class="docutils literal notranslate"><span class="pre">none</span></code> o un identificatore MAC.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-89</p></td>
+<td><p>Validazione Media Type</p></td>
+<td><p>Test che JWT typ sia impostato a <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code>.</p></td>
+<td><p>Il parametro typ di JWT è correttamente impostato a <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-90</p></td>
+<td><p>Validazione Response Mode</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">response_mode</span></code> sia impostato a <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_mode</span></code> è correttamente impostato a <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-91</p></td>
+<td><p>Validazione Response Type</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">response_type</span></code> sia impostato a <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_type</span></code> è correttamente impostato a <code class="docutils literal notranslate"><span class="pre">vp_token</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-92</p></td>
+<td><p>Uso di Response URI</p></td>
+<td><p>Test che il Relying Party fornisca correttamente il parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> all’istanza Wallet.</p></td>
+<td><p>Il Relying Party invia la risposta di autorizzazione al corretto endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-93</p></td>
+<td><p>Entropia del Nonce</p></td>
+<td><p>Test che il nonce abbia sufficiente entropia (32+ cifre).</p></td>
+<td><p>Il parametro nonce ha sufficiente entropia con almeno 32 cifre.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-94</p></td>
+<td><p>Scadenza JWT</p></td>
+<td><p>Test che il parametro <code class="docutils literal notranslate"><span class="pre">exp</span></code> di JWT sia impostato correttamente.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">exp</span></code> di JWT è correttamente impostato e non scaduto.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-95</p></td>
+<td><p>Sicurezza Response URI</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> sia attestato da una terza parte fidata.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> è correttamente attestato da una terza parte fidata.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-96</p></td>
+<td><p>Gestione Client Metadata</p></td>
+<td><p>Test che il Relying Party gestisca correttamente il <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> dell’istanza Wallet.</p></td>
+<td><p>Il <code class="docutils literal notranslate"><span class="pre">client_metadata</span></code> è correttamente allineato con i metadati della Trust Chain.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-97</p></td>
+<td><p>Richiesta Attestazione Wallet</p></td>
+<td><p>Test che il Relying Party richieda l’Attestazione Wallet tramite DCQL.</p></td>
+<td><p>Il Relying Party richiede correttamente l’Attestazione Wallet usando la query DCQL.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-98</p></td>
+<td><p>Formato Risposta di Errore</p></td>
+<td><p>Test che la risposta di errore utilizzi il content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+<td><p>La risposta di errore utilizza correttamente il content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-99</p></td>
+<td><p>Parametri Risposta di Errore</p></td>
+<td><p>Test che la risposta di errore includa i parametri richiesti.</p></td>
+<td><p>La risposta di errore include i parametri error ed <code class="docutils literal notranslate"><span class="pre">error_description</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-100</p></td>
+<td><p>Presentazione Attestazione Wallet</p></td>
+<td><p>Test che il Relying Party richieda correttamente l’Attestazione Wallet all’istanza Wallet.</p></td>
+<td><p>Il Relying Party valuta correttamente l’Attestazione Wallet quando richiesta.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-101</p></td>
+<td><p>Array Presentazione</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> contenga le presentazioni firmate richieste.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vp_token</span></code> contiene le presentazioni firmate richieste come previsto.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-102</p></td>
+<td><p>Inclusione KB-JWT</p></td>
+<td><p>Test che il Titolare includa KB-JWT in SD-JWT.</p></td>
+<td><p>Il Titolare include correttamente KB-JWT nella presentazione SD-JWT.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-103</p></td>
+<td><p>Validazione KB-JWT</p></td>
+<td><p>Test che il Relying Party validi la firma KB-JWT.</p></td>
+<td><p>Il Relying Party valida correttamente la firma KB-JWT usando la chiave pubblica.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-104</p></td>
+<td><p>Header KB-JWT</p></td>
+<td><p>Test che KB-JWT contenga i parametri header richiesti.</p></td>
+<td><p>KB-JWT contiene i parametri header <code class="docutils literal notranslate"><span class="pre">typ</span></code> e <code class="docutils literal notranslate"><span class="pre">alg</span></code> richiesti.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-105</p></td>
+<td><p>Payload KB-JWT</p></td>
+<td><p>Test che KB-JWT contenga i parametri payload richiesti.</p></td>
+<td><p>KB-JWT contiene i parametri <code class="docutils literal notranslate"><span class="pre">iat</span></code>, <code class="docutils literal notranslate"><span class="pre">aud</span></code>, <code class="docutils literal notranslate"><span class="pre">nonce</span></code> e <code class="docutils literal notranslate"><span class="pre">sd_hash</span></code> richiesti.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-106</p></td>
+<td><p>Audience KB-JWT</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">aud</span></code> di KB-JWT corrisponda all’identificativo del Relying Party.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">aud</span></code> di KB-JWT corrisponde all’identificativo univoco del Relying Party.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-107</p></td>
+<td><p>Nonce KB-JWT</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">nonce</span></code> di KB-JWT corrisponda al <code class="docutils literal notranslate"><span class="pre">nonce</span></code> dell’oggetto request.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">nonce</span></code> di KB-JWT corrisponde al <code class="docutils literal notranslate"><span class="pre">nonce</span></code> dell’oggetto request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-108</p></td>
+<td><p>Risposta di Errore di Autorizzazione</p></td>
+<td><p>Test che il Relying Party gestisca correttamente la risposta di errore di autorizzazione dell’istanza Wallet in caso di fallimento della validazione.</p></td>
+<td><p>Il Relying Party valuta correttamente la risposta di errore di autorizzazione quando la validazione fallisce.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-109</p></td>
+<td><p>Codifica Risposta di Errore</p></td>
+<td><p>Test che la risposta di errore di autorizzazione sia codificata correttamente.</p></td>
+<td><p>La risposta di errore di autorizzazione è codificata in formato <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-110</p></td>
+<td><p>Elaborazione Risposta</p></td>
+<td><p>Test che la Response URI restituisca HTTP 200 in caso di elaborazione corretta.</p></td>
+<td><p>La Response URI restituisce HTTP 200 con content type <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-111</p></td>
+<td><p>Coerenza Codici di Errore</p></td>
+<td><p>Test che i codici di errore siano coerenti tra i diversi endpoint.</p></td>
+<td><p>I codici di errore sono coerenti su tutti gli endpoint del Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-112</p></td>
+<td><p>Inclusione Codice di Risposta</p></td>
+<td><p>Test che il Relying Party includa il codice di risposta in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
+<td><p>Il Relying Party include un nuovo codice di risposta in <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>RPR-113</p></td>
+<td><p>Sicurezza Redirect URI</p></td>
+<td><p>Test che <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> sia attestato da una terza parte fidata.</p></td>
+<td><p>Il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> è correttamente attestato da una terza parte fidata.</p></td>
+</tr>
+<tr class="row-odd"><td><p>RPR-114</p></td>
+<td><p>Risposta di Errore di Validazione</p></td>
+<td><p>Test che la Response URI restituisca una risposta di errore in caso di fallimento della validazione.</p></td>
+<td><p>La Response URI restituisce una risposta di errore quando i controlli di validazione falliscono.</p></td>
 </tr>
 </tbody>
 </table>
@@ -604,7 +774,7 @@
 
             <div class="right">
                 
-                    <a href="test-plans-proximity-presentation.html"><span><span class="section-number">16.4.1.6. </span>Matrice di Test per la Presentazione di Credenziali in Prossimità</span><span class="icon">&gt;</span></a>
+                    <a href="test-plans-proximity-presentation.html"><span><span class="section-number">16.4.1.6. </span>Matrice di Test per il Verificatore di Credenziali in Prossimità</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -612,7 +782,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 01/10/2025.
+      Ultimo aggiornamento 06/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

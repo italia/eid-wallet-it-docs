@@ -27,10 +27,15 @@ The high-level flow begins with the User who wants to obtain a PID and starts hi
     1. **PID Provider Discovery and Trust**: the Wallet Instance discovers the trusted PID Provider using the Digital Credential Catalogue and Federation Services, establishing the trust to the PID Provider according to the Trust Model and obtaining its metadata that discloses the formats of the PID, the algorithms supported, and any other parameter required for interoperability needs (:ref:`WP_045–046 <wallet-credential-issuance-testcases>`).
     2. **PID Request**: using the Authorization Code Flow defined in [`OpenID4VCI`_] the Wallet Instance requests the PID to the PID Provider (:ref:`WP_051 <wallet-credential-issuance-testcases>`).
     3. **Wallet Provider Discovery and Trust**: the PID Provider checks the authenticity and validity of the Wallet Instance, establishing the trust to the Wallet Provider and obtaining Wallet metadata with the parameters required for interoperability needs, according to the Trust Model.
-    4. **User Authentication**: the PID Provider authenticates the User with CieID LoA High (L3), acting as an Identity and Access Management Proxy to the National eID system.
+    4. **User Authentication**: the PID Provider authenticates the User using National eID system. If the PID Provider doesn't play the role of a National eID Identity Provider, it SHOULD implement a solution able to authenticate Users using the national digital identity schemes.
     5. **Fetch of PID data from National Public Registry**: the PID Provider obtains the required PID data from National Public Registry (ANPR) which acts as Authentic Source.
     6. **PID Issuance**: the PID Provider releases a PID bound to the key material held by the requesting Wallet Instance.
 
+.. note::
+    Regarding point 4, the primary authentication method is based on CieID LoA High (L3). For scenarios where CIE PIN is not immediately available, an alternative multi-step authentication mechanism is available combining eID Substantial Authentication along with MRTD Verification.
+
+
+    For complete technical specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
 
 High-Level (Q)EAA flow
 ----------------------

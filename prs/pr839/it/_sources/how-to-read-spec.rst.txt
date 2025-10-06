@@ -148,7 +148,7 @@ Indipendentemente dal ruolo principale, alcune sezioni contengono informazioni r
     La Sezione :ref:`defined-terms-and-references:Termini Definiti e Riferimenti` fornisce riferimenti normativi, termini definiti e standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti.
 
 **Test e Validazione:**
-    La Sezione :ref:`test-plans:Piani di Test` fornisce una matrice di test completa per la validazione delle implementazioni tra diversi ruoli e flussi di interazione.
+    La Sezione :ref:`test-plans:Test Plans` fornisce una matrice di test completa per la validazione delle implementazioni tra diversi ruoli e flussi di interazione.
 
 Approccio all'Implementazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,7 +158,7 @@ Si suggerisce il seguente approccio di lettura in fasi:
     1. **Fase di Fondazione**: Leggere le Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust:L'Infrastruttura di Trust` per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.
     2. **Fase Specifica per Ruolo**: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione :ref:`functionalities:Design dell'Esperienza Utente`, :ref:`entities:Entità` e la Sezione :ref:`endpoints:Endpoints` per maggiori dettagli).
     3. **Fase di Integrazione**: Rivedere le sezioni secondarie rilevanti per le interazioni con altri partecipanti all'ecosistema e i requisiti di integrazione della piattaforma.
-    4. **Fase di Validazione**: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` e :ref:`test-plans:Piani di Test` per ulteriori informazioni.
+    4. **Fase di Validazione**: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` e :ref:`test-plans:Test Plans` per ulteriori informazioni.
 
 .. note::
 

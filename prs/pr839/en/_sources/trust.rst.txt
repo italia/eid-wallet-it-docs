@@ -209,7 +209,7 @@ Configuration of the Federation
 The configuration of the federation is published by the Trust Anchor within its Entity Configuration, it is available at the well-known web path corresponding to **.well-known/openid-federation**.
 
 All the participants in the federation MUST obtain the federation configuration before entering the operational phase, and they
-MUST keep it up-to-date (:ref:`WP_016 <wallet-instance-testcases>`). The federation configuration is the Trust Anchor's Entity Configuration, it contains the
+MUST keep it up-to-date. The federation configuration is the Trust Anchor's Entity Configuration, it contains the
 public keys for signature operations.
 
 Below is a non-normative example of a Trust Anchor Entity Configuration, where each parameter is documented in the `OpenID Federation <OID-FED>`_ specification:

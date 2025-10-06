@@ -177,7 +177,7 @@
 <h1><span class="section-number">6.1.4.2.3. </span>Revoca dell'Istanza del Wallet<a class="headerlink" href="#revoca-dell-istanza-del-wallet" title="Link to this heading">¶</a></h1>
 <p>Questa sezione descrive le entità coinvolte e le modalità per richiedere la revoca di un'Istanza del Wallet.</p>
 <p>Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza. Quando, per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico) la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.</p>
-<p>Come mostrato in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 6.5</span></a>, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet:</p>
+<p>Come mostrato in <a class="reference internal" href="#fig-wallet-instance-revoc-entities"><span class="std std-numref">Fig. 6.5</span></a>, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_007–009</span></a>):</p>
 <ul class="simple">
 <li><p><strong>Utenti</strong>, collegandosi al portale web del Fornitore di Wallet dalla propria Istanza del Wallet o utilizzando un browser esterno.</p></li>
 <li><p><strong>Fornitori di Attestati Elettronici di Dati di Identificazione Personale</strong> quando notificati dalla Fonte Autentica del PID (ANPR) del decesso dell'Utente.</p></li>
@@ -193,7 +193,7 @@
 <p><span class="caption-number">Fig. 6.5 </span><span class="caption-text"><a class="reference external" href="https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1">Entità coinvolte nel processo di revoca dell'Istanza del Wallet.</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata:</p>
+<p>Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_034</span></a>):</p>
 <ul class="simple">
 <li><p>Inviando un avviso presso un recapito verificato (ad esempio recapito e-mail o telefonico) e se possibile anche presso l'Istanza del Wallet revocata.</p></li>
 <li><p>Inviando la notifica entro massimo 24 ore.</p></li>
@@ -209,7 +209,7 @@
 </div>
 <section id="richiesta-di-revoca-dell-istanza-del-wallet">
 <h2><span class="section-number">6.1.4.2.3.1. </span>Richiesta di Revoca dell'Istanza del Wallet<a class="headerlink" href="#richiesta-di-revoca-dell-istanza-del-wallet" title="Link to this heading">¶</a></h2>
-<p>Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet:</p>
+<p>Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_032</span></a>):</p>
 <ul class="simple">
 <li><p><em>Selezionando la funzionalità di revoca all'interno dalla propria Istanza del Wallet</em>: questa funzionalità può essere utilizzata dagli Utenti prima di cambiare il proprio telefono.</p></li>
 <li><p><em>Utilizzando un user agent esterno</em>: questo copre i casi in cui gli Utenti perdono il loro dispositivo e quindi l'accesso alla loro Istanza del Wallet.</p></li>
@@ -217,14 +217,14 @@
 <p>In entrambi i casi, utilizzando il portale del Fornitore di Wallet:</p>
 <ul class="simple">
 <li><p>Gli Utenti DEVONO autenticarsi con almeno un meccanismo di autenticazione a due fattori, o avere una sessione attiva che soddisfi questo requisito.</p></li>
-<li><p>Il Fornitore di Wallet DEVE consentire agli Utenti di visualizzare lo stato delle loro Istanze del Wallet associate alla loro sessione autenticata e chiedere la revoca, inviando una Richiesta di Recupero o Revoca dell'Istanza del Wallet, a seconda dei casi, all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-gestione-dell-istanza-di-wallet"><span class="std std-ref">Endpoint di Gestione dell'Istanza di Wallet</span></a> del Backend del Fornitore del Portafoglio.</p></li>
+<li><p>Il Fornitore di Wallet DEVE consentire agli Utenti di visualizzare lo stato delle loro Istanze del Wallet associate alla loro sessione autenticata e chiedere la revoca, inviando una Richiesta di Recupero o Revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_033</span></a>, e <a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_145</span></a>), a seconda dei casi, all'endpoint <a class="reference internal" href="wallet-provider-endpoint.html#endpoint-di-gestione-dell-istanza-di-wallet"><span class="std std-ref">Endpoint di Gestione dell'Istanza di Wallet</span></a> del Backend del Fornitore del Portafoglio.</p></li>
 </ul>
 <p>Di seguito è riportato un esempio non normativo di una Richiesta di Recupero delle Istanze del Wallet.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/wallet-instances</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">walletprovider.example.com</span>
 </pre></div>
 </div>
-<p>In caso di recupero riuscito, il Fornitore di Wallet DEVE restituire una risposta di conferma, con lo stato di tutte le Istanze del Wallet associate all'Utente.
+<p>In caso di recupero riuscito, il Fornitore di Wallet DEVE restituire una risposta di conferma, con lo stato di tutte le Istanze del Wallet associate all'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_146</span></a>).
 Di seguito è riportato un esempio non normativo di una Risposta di Recupero delle Istanze del Wallet.</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
@@ -244,8 +244,8 @@ Di seguito è riportato un esempio non normativo di una Risposta di Recupero del
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>Una volta che l'Utente identifica l'Istanza del Wallet da revocare, può essere inviata una Richiesta di Revoca dell'Istanza del Wallet all'endpoint, includendo l'ID dell'Istanza del Wallet come parametro di percorso.
-Di seguito è riportato un esempio non normativo di una Richiesta di Revoca dell'Istanza del Wallet.</p>
+<p>Una volta che l'Utente identifica l'Istanza del Wallet da revocare, può essere inviata una Richiesta di Revoca dell'Istanza del Wallet all'endpoint, includendo l'ID dell'Istanza del Wallet come parametro di percorso (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_147</span></a>).
+Di seguito è riportato un esempio non normativo di una Richiesta di Revoca dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-optional-testcases"><span class="std std-ref">WP_148</span></a>).</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">PATCH</span> <span class="nn">/wallet-instances/{f7b2a8d9}</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">wallet-provider.example.org</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
@@ -325,7 +325,7 @@ Di seguito è riportato un esempio non normativo di una Risposta di Revoca dell'
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 01/10/2025.
+      Ultimo aggiornamento 06/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

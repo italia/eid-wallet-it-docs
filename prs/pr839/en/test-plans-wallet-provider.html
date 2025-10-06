@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>16.4.1.1. Wallet Provider Test Matrix &#8212; IT-Wallet Technical Documentation - PR #839</title>
+    <title>16.4.1.3. Wallet Provider Test Matrix &#8212; IT-Wallet Technical Documentation - PR #839</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16.4.1.2. Signature Evaluation Test Matrix" href="test-plans-signature.html" />
-    <link rel="prev" title="16.4. Test Plans" href="test-plans.html" /> 
+    <link rel="next" title="16.4.1.4. Credential Issuer Test Matrix" href="test-plans-credential-issuer.html" />
+    <link rel="prev" title="16.4.1.2. Trust Evaluation Test Matrix" href="test-plans-trust.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -150,12 +150,11 @@
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">16.2. e-Service PDND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">16.3. Template e-Service PDND</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">16.4. Test Plans</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">16.4.1.1. Wallet Provider Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">16.4.1.2. Signature Evaluation Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">16.4.1.3. Trust Evaluation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">16.4.1.1. Signature Evaluation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">16.4.1.2. Trust Evaluation Test Matrix</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">16.4.1.3. Wallet Provider Test Matrix</a></li>
 <li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">16.4.1.4. Credential Issuer Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-remote-presentation.html">16.4.1.5. Remote Credential Presentation Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-proximity-presentation.html">16.4.1.6. Proximity Credential Presentation Test Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-presentation.html">16.4.1.5. Credential Verifier Test Matrix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">16.5. Credential Issuer PDND OpenAPI Specification</a></li>
@@ -178,7 +177,7 @@
           <div class="body" role="main">
             
   <section id="wallet-provider-test-matrix">
-<span id="id1"></span><h1><span class="section-number">16.4.1.1. </span>Wallet Provider Test Matrix<a class="headerlink" href="#wallet-provider-test-matrix" title="Link to this heading">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">16.4.1.3. </span>Wallet Provider Test Matrix<a class="headerlink" href="#wallet-provider-test-matrix" title="Link to this heading">¶</a></h1>
 <p>This section provides the set of test cases for verifying conformance of a Wallet Solution and Wallet Instance implementation to the technical rules defined in the IT-Wallet ecosystem.
 The test plan is based on the requirements extracted from the following Sections:</p>
 <ul class="simple">
@@ -194,7 +193,7 @@ The test plan is based on the requirements extracted from the following Sections
 <p>The test cases in this list vary in scope. Some are intentionally written at a high level to confirm the success of complete user flows and the conformance of core architectural and interoperability principles, while others are atomic, targeting single, detailed requirements and verifying specific functional behavior.</p>
 </div>
 <section id="test-cases-for-wallet-provider-backend">
-<span id="wallet-provider-backend-testcases"></span><h2><span class="section-number">16.4.1.1.1. </span>Test Cases for Wallet Provider Backend<a class="headerlink" href="#test-cases-for-wallet-provider-backend" title="Link to this heading">¶</a></h2>
+<span id="wallet-provider-backend-testcases"></span><h2><span class="section-number">16.4.1.3.1. </span>Test Cases for Wallet Provider Backend<a class="headerlink" href="#test-cases-for-wallet-provider-backend" title="Link to this heading">¶</a></h2>
 <p>This section lists the test cases from Sections:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="wallet-solution-requirements.html#wallet-solution-requirements"><span class="std std-ref">Wallet Solution Requirements</span></a></p></li>
@@ -344,7 +343,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </table>
 </section>
 <section id="test-cases-for-wallet-instance">
-<span id="wallet-instance-testcases"></span><h2><span class="section-number">16.4.1.1.2. </span>Test Cases for Wallet Instance<a class="headerlink" href="#test-cases-for-wallet-instance" title="Link to this heading">¶</a></h2>
+<span id="wallet-instance-testcases"></span><h2><span class="section-number">16.4.1.3.2. </span>Test Cases for Wallet Instance<a class="headerlink" href="#test-cases-for-wallet-instance" title="Link to this heading">¶</a></h2>
 <p>This section lists the test cases from Sections:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="trust.html#configuration-of-the-federation">Configuration of the Federation</a></p></li>
@@ -458,7 +457,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_028</p></td>
 <td><p>Wallet Attestation Issuance, Lifecycle, Security</p></td>
 <td><p>Time-limited Wallet Attestation</p></td>
-<td><p>Wallet Provider issues a Wallet Attestation with a short validity period and a defined expiration time when no revocation check methods are supported.</p></td>
+<td><p>When no revocation check methods are supported, the Wallet Provider issues a Wallet Attestation with a defined expiration time and a short validity period.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_029</p></td>
 <td><p>Wallet Attestation Issuance, Data Model and Lifecycle, Interoperability</p></td>
@@ -579,7 +578,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </table>
 </section>
 <section id="test-cases-for-issuance-phase">
-<span id="wallet-credential-issuance-testcases"></span><h2><span class="section-number">16.4.1.1.3. </span>Test Cases for Issuance Phase<a class="headerlink" href="#test-cases-for-issuance-phase" title="Link to this heading">¶</a></h2>
+<span id="wallet-credential-issuance-testcases"></span><h2><span class="section-number">16.4.1.3.3. </span>Test Cases for Issuance Phase<a class="headerlink" href="#test-cases-for-issuance-phase" title="Link to this heading">¶</a></h2>
 <p>This section lists the test cases from Sections:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="credential-issuance.html#digital-credential-issuance"><span class="std std-ref">Digital Credential Issuance</span></a></p></li>
@@ -920,7 +919,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </table>
 </section>
 <section id="test-cases-for-presentation-phase">
-<span id="wallet-credential-presentation-testcases"></span><h2><span class="section-number">16.4.1.1.4. </span>Test Cases for Presentation Phase<a class="headerlink" href="#test-cases-for-presentation-phase" title="Link to this heading">¶</a></h2>
+<span id="wallet-credential-presentation-testcases"></span><h2><span class="section-number">16.4.1.3.4. </span>Test Cases for Presentation Phase<a class="headerlink" href="#test-cases-for-presentation-phase" title="Link to this heading">¶</a></h2>
 <p>This section lists the test cases from Section <a class="reference internal" href="credential-presentation.html#digital-credential-presentation"><span class="std std-ref">Digital Credential Presentation</span></a>,
 covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</strong> presentation phases.</p>
 <table class="longtable docutils align-default">
@@ -1036,7 +1035,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_090</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
 <td><p>Notify Relying Party on invalid request</p></td>
-<td><p>If the Request Object is invalid or fails verification, Wallet Instance sends an Authorization Error Response via HTTP POST to the Relying Party’s <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> Endpoint as per <code class="docutils literal notranslate"><span class="pre">response_mode=direct_post.jwt</span></code>.</p></td>
+<td><p>If the Request Object is invalid or fails verification, Wallet Instance sends an Authorization Error Response via HTTP POST to the Relying Party’s <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> Endpoint.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_091</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
@@ -1090,8 +1089,8 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-even"><td><p>WP_096</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
-<td><p>Enforce BLE retrieval only</p></td>
-<td><p>Wallet Instance supports the Bluetooth Low Energy (BLE) Device Retrieval mechanism.</p></td>
+<td><p>Device retrieval support</p></td>
+<td><p>Wallet Instance supports Device Retrieval mechanisms via the Bluetooth Low Energy (BLE) or NFC.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_096a</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
@@ -1100,214 +1099,254 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </tr>
 <tr class="row-even"><td><p>WP_096b</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
-<td><p>Support NFC device retrieval (conditional)</p></td>
-<td><p>Wallet Instance completes the NFC retrieval flow successfully. If the profile states a conditional MUST on NFC hardware, failure constitutes non-compliance.</p></td>
+<td><p>Support BLE/NFC retrieval (conditional)</p></td>
+<td><p>Wallet Instance completes the BLE or NFC retrieval flow successfully. BLE support is mandatory, while NFC support is RECOMMENDED. Support for at least one device retrieval method (BLE or NFC) is mandatory; failure constitutes non-compliance.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_097</p></td>
 <td><p>Proximity-flow, Presentation, UX</p></td>
-<td><p>QR-based engagement</p></td>
-<td><p>Wallet Instance supports DeviceEngagement based on QR code.</p></td>
+<td><p>Supported DeviceEngagement mechanisms</p></td>
+<td><p>Wallet Instance supports DeviceEngagement based on QR code or NFC Connection Handover.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_097a</p></td>
-<td><p>Proximity-flow, Presentation, Interoperability</p></td>
-<td><p>QR engagement URI &amp; encoding</p></td>
-<td><p>The QR mdoc: URI encodes DeviceEngagement (per Section 9.1 of [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a>]) using base64url-without-padding (<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4648.html"><strong>RFC 4648</strong></a>).</p></td>
+<td><p>Proximity-flow, Presentation, Security</p></td>
+<td><p>Support QR/NFC engagement (conditional)</p></td>
+<td><p>Wallet Instance completes a full data-retrieval transaction over BLE and over NFC (where hardware is available). QR code support is mandatory, while NFC support is RECOMMENDED. Support for at least one engagement method (QR or NFC) is mandatory; failure constitutes non-compliance.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_097b</p></td>
-<td><p>Proximity-flow, Presentation, Interoperability</p></td>
-<td><p>NFC Connection Handover (Static)</p></td>
-<td><p>Wallet Instance acts as NFC Tag (Type 4) and provides a Handover Select with at least one Alternative Carrier Record and associated Carrier Configuration Record; an Auxiliary Data Record carries the DeviceEngagement (type iso.org:18013:deviceengagement, id “mdoc”).</p></td>
-</tr>
-<tr class="row-even"><td><p>WP_097c</p></td>
-<td><p>Proximity-flow, Presentation, Interoperability</p></td>
-<td><p>NFC Connection Handover (Negotiated)</p></td>
-<td><p>Wallet Instance exposes the service <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code>; upon Handover Request, it returns Handover Select with exactly one selected carrier and the auxiliary DeviceEngagement.</p></td>
-</tr>
-<tr class="row-odd"><td><p>WP_097d</p></td>
-<td><p>Proximity-flow, Presentation, Interoperability</p></td>
-<td><p>Early SessionEstablishment via TNEP</p></td>
-<td><p>If <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> in DeviceEngagement, Wallet Instance accepts early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over the announced TNEP service during negotiated handover and later verifies it matches the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> received during data retrieval.</p></td>
-</tr>
-<tr class="row-even"><td><p>WP_098</p></td>
+<tr class="row-odd"><td><p>WP_098</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Relying Party authentication</p></td>
-<td><p>Wallet Instance supports and performs Relying Party Instance Authentication in accordance with <a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> reader-authentication.</p></td>
+<td><p>Wallet Instance supports and performs Relying Party Instance Authentication in accordance with <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> reader-authentication.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_099</p></td>
+<tr class="row-even"><td><p>WP_099</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Domestic mDL support</p></td>
-<td><p>Wallet Instance supports and processes mDL Credentials using both the IT Wallet domestic document type and namespaces and the standard <a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> definitions without error (see <a class="reference external" href="credential-data-model.html#mdoc-cbor-credential-format">mdoc-CBOR Credential Format</a> for more details).</p></td>
+<td><p>Wallet Instance supports and processes mDL Credentials using both the IT Wallet domestic document type and namespaces and the standard <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> definitions without error (see <a class="reference external" href="credential-data-model.html#mdoc-cbor-credential-format">mdoc-CBOR Credential Format</a> for more details).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_100</p></td>
+<tr class="row-odd"><td><p>WP_100</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>WSCA authentication</p></td>
 <td><p>Wallet Instance prompts the User to perform a WSCA-based authentication, directly or by unlocking the application, and does not proceed with the proximity flow until it succeeds.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_101</p></td>
+<tr class="row-even"><td><p>WP_101</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Generate ephemeral EC key pair</p></td>
-<td><p>Wallet Instance successfully derives a fresh ephemeral elliptic-curve key pair (per the chosen <a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> cipher suite).</p></td>
+<td><p>Wallet Instance successfully generates a fresh ephemeral elliptic-curve key pair (per the chosen <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> cipher suite).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_102</p></td>
-<td><p>Proximity-flow, Presentation, UX</p></td>
-<td><p>Present DeviceEngagement QR</p></td>
-<td><p>Wallet Instance successfully displays a QR code to the Relying Party, containing the DeviceEngagement data, which includes its ephemeral public key (<code class="docutils literal notranslate"><span class="pre">EDeviceKey.Pub</span></code>) and supported cryptographic information.</p></td>
-</tr>
-<tr class="row-odd"><td><p>WP_102a</p></td>
-<td><p>Proximity-flow, Presentation, UX</p></td>
-<td><p>DeviceEngagement via NFC (Connection Handover)</p></td>
-<td><p>Wallet Instance exposes DeviceEngagement via NFC Connection Handover (Static or Negotiated).</p></td>
-</tr>
-<tr class="row-even"><td><p>WP_103</p></td>
+<tr class="row-odd"><td><p>WP_102</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>CBOR encoding of DeviceEngagement data</p></td>
-<td><p>The DeviceEngagement structure is CBOR encoded and contains at least: Version, Security, BLEOptions, NFCOptions, Capabilities and OriginInfos.</p></td>
+<td><p>DeviceEngagement is CBOR encoded and contains Version, Security, Capabilities, and OriginInfos (may be empty). For QR engagement it also includes DeviceRetrievalMode-BLEOptions and/or DeviceRetrievalMode-NFCOptions. For NFC engagement, these options are omitted.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103a</p></td>
+<tr class="row-even"><td><p>WP_102a</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>DeviceEngagement over QR</p></td>
+<td><p>The QR mdoc: URI encodes the valid CBOR DeviceEngagement encoded (per Section 9.1 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>]) using base64url-without-padding (<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4648.html"><strong>RFC 4648</strong></a>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_102b</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Verify Security component</p></td>
-<td><p>The Security component within the DeviceEngagement data contains a supported cipher suite identifier and the Wallet Instance’s ephemeral public key per <a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a> Table 22.</p></td>
+<td><p>The Security component within the DeviceEngagement data contains a supported cipher suite identifier and the Wallet Instance’s ephemeral public key per <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> Table 22.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_103b</p></td>
+<tr class="row-even"><td><p>WP_102c</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
-<td><p>Verify BLEOptions component</p></td>
-<td><p>The BLEOptions component within the DeviceEngagement data indicates Central Client Mode and carries the correct device UUID.</p></td>
+<td><p>Verify DeviceRetrievalMode-BLEOptions component</p></td>
+<td><p>The DeviceRetrievalMode-BLEOptions component within the DeviceEngagement data indicates Central Client Mode and carries the correct device UUID.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103c</p></td>
+<tr class="row-odd"><td><p>WP_102d</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Verify DeviceRetrievalMode-NFCOptions component</p></td>
 <td><p>The DeviceRetrievalMode-NFCOptions component declares supported role (PICC for Wallet Instance) and maximum APDU command/response sizes per ISO mapping.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_103d</p></td>
+<tr class="row-even"><td><p>WP_102e</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Verify Capabilities component</p></td>
 <td><p>The Capabilities component within the DeviceEngagement data correctly sets both the <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> and <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> flags to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_103e</p></td>
+<tr class="row-odd"><td><p>WP_102f</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Verify OriginInfos component</p></td>
-<td><p>The OriginInfos component is present within the DeviceEngagement data and is correctly encoded as an empty array for the specified flow in Section 6.3.2.1 of [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a>].</p></td>
+<td><p>If the OriginInfos component, is present within the DeviceEngagement data, is correctly encoded as an array (which may be empty).</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_104</p></td>
+<tr class="row-even"><td><p>WP_103</p></td>
+<td><p>Proximity-flow, Presentation, UX</p></td>
+<td><p>DeviceEngagement over NFC (Connection Handover)</p></td>
+<td><p>Wallet Instance exposes DeviceEngagement via NFC Connection Handover either Static or Negotiated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_103a</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>NFC Connection Handover (Static)</p></td>
+<td><p>Wallet Instance acts as NFC Tag (Type 4) and provides a Handover Select with at least one Alternative Carrier Record and associated Carrier Configuration Record; an Auxiliary Data Record carries the DeviceEngagement (type iso.org:18013:deviceengagement, id “mdoc”).</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_103b</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>NFC Connection Handover (Negotiated)</p></td>
+<td><p>Wallet Instance exposes the service <code class="docutils literal notranslate"><span class="pre">urn:nfc:sn:handover</span></code>; upon Handover Request, it returns Handover Select with exactly one selected carrier and the auxiliary DeviceEngagement.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_103c</p></td>
+<td><p>Proximity-flow, Presentation, Security, Interoperability</p></td>
+<td><p>Early SessionEstablishment via TNEP</p></td>
+<td><p>If <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> set to <code class="docutils literal notranslate"><span class="pre">true</span></code> in DeviceEngagement, Wallet Instance accepts early <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> over the announced TNEP service during negotiated handover and later verifies it matches the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> received during data retrieval.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_103d</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>Carrier Configuration Record encoding</p></td>
+<td><p>Wallet Instance successfully includes a Carrier Configuration Record for each supported carrier. For NFC, type <code class="docutils literal notranslate"><span class="pre">iso.org:18013:nfc</span></code>, ID <code class="docutils literal notranslate"><span class="pre">nfc</span></code>, content per  Section 9.2.2 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>]. For BLE, content per Section 11.1.2 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_103e</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>Auxiliary Data Record for DeviceEngagement</p></td>
+<td><p>Wallet Instance successfully provides an Auxiliary Data Record carrying DeviceEngagement with type <code class="docutils literal notranslate"><span class="pre">iso.org:18013:deviceengagement</span></code>, ID <code class="docutils literal notranslate"><span class="pre">mdoc</span></code>, using NFC Forum external type (0x04). Each Alternative Carrier Record MUST reference this record.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_103f</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>Alternative Carrier Records</p></td>
+<td><p>In Static Handover, Handover Select includes one oe more Alternative Carrier Records; in Negotiated Handover, Handover Select contains exactly one selected carrier. The NFC Alternative Carrier references the <code class="docutils literal notranslate"><span class="pre">nfc</span></code> Carrier Configuration Record.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_103g</p></td>
+<td><p>Proximity-flow, Presentation, Security</p></td>
+<td><p>Early SessionEstablishment mismatch</p></td>
+<td><p>If early SessionEstablishment is received during Negotiated Handover, Wallet Instance successfully verifies that it matches the SessionEstablishment received during Device Retrieval; on mismatch Wallet Instance terminates the flow</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_103h</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>No early SessionEstablishment</p></td>
+<td><p>If no early SessionEstablishment is received during Negotiated Handover, the Wallet Instance proceeds with Device Retrieval as normal (no failure), per the NFC DeviceEngagement note.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_104</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Derive session keys</p></td>
 <td><p>Wallet Instance successfully derives session keys by performing the negotiated key-agreement protocol with its ephemeral private key and the Relying Party's ephemeral public key.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_105</p></td>
+<tr class="row-even"><td><p>WP_105</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Decrypt &amp; verify <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code></p></td>
 <td><p>Wallet Instance successfully decrypts the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message using the derived session key and validates the Relying Party's signature.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_106</p></td>
+<tr class="row-odd"><td><p>WP_106</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Validate <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> contents</p></td>
-<td><p>Wallet Instance verifies the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message includes the Relying Party’s Pub Key and a request for specific attribute(s), and an optional request for the Wallet Attestation) from the Relying Party.</p></td>
+<td><p>Wallet Instance verifies the <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message includes the Relying Party’s Pub Key and a request for specific attribute(s), and an optional request for the Wallet Attestation from the Relying Party.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_107</p></td>
+<tr class="row-even"><td><p>WP_107</p></td>
 <td><p>Proximity-flow, Presentation, Privacy</p></td>
 <td><p>Prompt attribute consent</p></td>
 <td><p>Wallet Instance decrypts and displays the requested attributes to the User in a consent screen and proceeds only after receiving explicit User approval.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_107a</p></td>
+<tr class="row-odd"><td><p>WP_107a</p></td>
 <td><p>Proximity-flow, Presentation, Privacy</p></td>
 <td><p>No consent for Wallet Attestation disclosure</p></td>
 <td><p>Wallet Instance does not request the User's consent for the Wallet Attestation, ensuring that its technical attributes are excluded from the list of data shown on the User consent screen.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_107b</p></td>
+<tr class="row-even"><td><p>WP_107b</p></td>
 <td><p>Proximity-flow, Presentation, Privacy</p></td>
 <td><p>Display Relying Party certificate</p></td>
 <td><p>Wallet Instance displays the full, parsed Relying Party Registration Certificate to the User for transparency before User consent and data disclosure.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_108</p></td>
+<tr class="row-odd"><td><p>WP_108</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Retrieve mdoc Credentials and Wallet Attestation</p></td>
 <td><p>Wallet Instance successfully retrieves each requested mdoc Credential from storage and obtains a fresh Wallet Attestation (if requested), preparing them for the mdoc Response.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_108a</p></td>
+<tr class="row-even"><td><p>WP_108a</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Use cached Wallet Attestation</p></td>
 <td><p>When a fresh Wallet Attestation cannot be fetched, Wallet Instance successfully includes its most recently cached version of the Wallet Attestation in the response.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_108b</p></td>
+<tr class="row-odd"><td><p>WP_108b</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Wallet Attestation attributes</p></td>
 <td><p>When providing the Wallet Attestation, Wallet Instance includes all of its available disclosures, and the mandatory <code class="docutils literal notranslate"><span class="pre">aal</span></code> claim.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_109</p></td>
+<tr class="row-even"><td><p>WP_109</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Prepare mdoc Response</p></td>
 <td><p>Wallet Instance successfully builds the CBOR-encoded <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message (the mdoc Response) including a <code class="docutils literal notranslate"><span class="pre">documents</span></code> array populated with the requested Credentials.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_110</p></td>
-<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<tr class="row-odd"><td><p>WP_110</p></td>
+<td><p>Proximity-flow, Presentation, Security, Interoperability</p></td>
 <td><p>mdoc authentication</p></td>
-<td><p>Wallet Instance correctly signs the <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> authentication data for each presented Credential, following the mdoc authentication process as specified in Section 12.4 of [<a class="reference external" href="https://www.iso.org/standard/69084.html">ISO18013-5</a>].</p></td>
+<td><p>Wallet Instance correctly signs the <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> authentication data for each presented Credential, following the mdoc authentication process as specified in Section 12.4 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_111</p></td>
+<tr class="row-even"><td><p>WP_111</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
 <td><p>Validate mdoc Response structure</p></td>
 <td><p>Wallet Instance constructs the mdoc Response as a CBOR-encoded object that includes a <code class="docutils literal notranslate"><span class="pre">version</span></code> component at its root and ensures each document within the <code class="docutils literal notranslate"><span class="pre">documents</span></code> array contains the mandatory <code class="docutils literal notranslate"><span class="pre">docType</span></code> component.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_111a</p></td>
+<tr class="row-odd"><td><p>WP_111a</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Validate <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> component</p></td>
 <td><p>Within each document, the <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> component includes a <code class="docutils literal notranslate"><span class="pre">deviceNameSpaces</span></code> structure (possibly empty) plus a <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> <code class="docutils literal notranslate"><span class="pre">COSE_Sign1</span></code> containing the required <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code> over the device-authentication data.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_112</p></td>
+<tr class="row-even"><td><p>WP_112</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Encrypt <code class="docutils literal notranslate"><span class="pre">SessionData</span></code></p></td>
 <td><p>Wallet Instance encrypts the <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message with the derived session keys.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_112a</p></td>
+<tr class="row-odd"><td><p>WP_112a</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
-<td><p>Transmit over BLE</p></td>
-<td><p>Wallet Instance transmits encrypted <code class="docutils literal notranslate"><span class="pre">SessionEstablishment/SessionData</span></code> over BLE per ISO GATT characteristics.</p></td>
+<td><p>BLE transport of messages</p></td>
+<td><p>Over BLE (using the ISO GATT characteristics), Wallet Instance correctly receives the Relying Party’s encrypted <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> and transmits its encrypted <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> (and any status/termination codes).</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_112b</p></td>
+<tr class="row-even"><td><p>WP_112b</p></td>
 <td><p>Proximity-flow, Presentation, Interoperability</p></td>
-<td><p>Transmit over NFC</p></td>
-<td><p>Wallet Instance transmits encrypted <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> and <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> over NFC using the ISO 18013-5 APDU flow, without errors (including correct handling of APDU status and fragmentation).</p></td>
+<td><p>NFC transport of messages</p></td>
+<td><p>Over NFC (using the APDU flow), the Wallet Instance correctly receives the Relying Party’s encrypted <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> and transmits its encrypted <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>, handling status words and fragmentation without errors.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_113</p></td>
+<tr class="row-odd"><td><p>WP_112c</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>BLE UUID/MTU consistency</p></td>
+<td><p>The Wallet’s BLE service/characteristic <cite>UUIDs</cite> and effective MTU used on the link are consistent with the values advertised in DeviceEngagement (and/or Carrier Configuration), and the Wallet segments messages accordingly.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_112d</p></td>
+<td><p>Proximity-flow, Presentation, Security</p></td>
+<td><p>BLE Ident characteristic (optional)</p></td>
+<td><p>If the Ident characteristic is implemented, Wallet Instance verifies the Relying Party’s Ident value before data retrieval and terminates the BLE connection on mismatch, per Section 11.1.3 of [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a>].</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_112e</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>NFC SELECT AID handling</p></td>
+<td><p>Wallet Instance successfully exposes <cite>AID</cite> and, upon SELECT <cite>APDU</cite>, returns valid <cite>FCI</cite> with correct <cite>SW1/SW2</cite>; subsequent ENVELOPE/GET RESPONSE exchanges.</p></td>
+</tr>
+<tr class="row-even"><td><p>WP_112f</p></td>
+<td><p>Proximity-flow, Presentation, Interoperability</p></td>
+<td><p>NFC APDU size consistency</p></td>
+<td><p>The Wallet’s <cite>APDU</cite> command/response sizing (including fragmentation and SW1=61 handling) is consistent with the max <cite>PDU</cite> sizes it advertised (Carrier Configuration / NFCOptions) during Device Engagement.</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP_113</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Terminate session/ inactivity timeout</p></td>
 <td><p>Wallet Instance automatically terminates the session if no session-related messages are sent or received for the duration of its configured inactivity timeout.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_113a</p></td>
+<tr class="row-even"><td><p>WP_113a</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Terminate session/ no further request</p></td>
 <td><p>Wallet Instance terminates the session once either it or the Relying Party has concluded the data exchange.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_113b</p></td>
+<tr class="row-odd"><td><p>WP_113b</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Send termination signal</p></td>
 <td><p>Wallet Instance transmits End command (or termination code) over BLE to signal session closure.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_113c</p></td>
+<tr class="row-even"><td><p>WP_113c</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Send termination over NFC</p></td>
 <td><p>Wallet Instance signals end via a status code in <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> and/or completes the APDU exchange per ISO; no further APDUs are accepted for the session.</p></td>
 </tr>
-<tr class="row-even"><td><p>WP_114</p></td>
+<tr class="row-odd"><td><p>WP_114</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
 <td><p>Destroy session keys</p></td>
 <td><p>When a session is terminated, Wallet Instance wipes all session keys and related ephemeral material from memory and storage.</p></td>
 </tr>
-<tr class="row-odd"><td><p>WP_114a</p></td>
+<tr class="row-even"><td><p>WP_114a</p></td>
 <td><p>Proximity-flow, Presentation, Security</p></td>
-<td><p>Close BLE channel</p></td>
-<td><p>When a session is terminated, Wallet Instance disconnects BLE; no open channels remain.</p></td>
-</tr>
-<tr class="row-even"><td><p>WP_114b</p></td>
-<td><p>Proximity-flow, Presentation, Security</p></td>
-<td><p>Close NFC channel</p></td>
-<td><p>When a session is terminated, Wallet Instance cleanly ends the NFC transaction; no further APDU exchange is possible without a new SELECT.</p></td>
+<td><p>Close communication channel</p></td>
+<td><p>Wallet Instance closes the active communication channel by disconnecting the BLE link or ending the NFC APDU exchange.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="test-cases-for-user-attribute-deletion-on-relying-party-side">
-<span id="user-attribute-deletion-testcases"></span><h2><span class="section-number">16.4.1.1.5. </span>Test Cases for User Attribute Deletion on Relying Party Side<a class="headerlink" href="#test-cases-for-user-attribute-deletion-on-relying-party-side" title="Link to this heading">¶</a></h2>
+<span id="user-attribute-deletion-testcases"></span><h2><span class="section-number">16.4.1.3.5. </span>Test Cases for User Attribute Deletion on Relying Party Side<a class="headerlink" href="#test-cases-for-user-attribute-deletion-on-relying-party-side" title="Link to this heading">¶</a></h2>
 <p>This section lists the test cases from Sections:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="user-attribute-deletion.html#user-s-attributes-deletion"><span class="std std-ref">User's Attributes Deletion</span></a></p></li>
@@ -1372,7 +1411,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </table>
 </section>
 <section id="test-cases-for-digital-credentials-backup-and-restore">
-<span id="credential-backup-testcases"></span><h2><span class="section-number">16.4.1.1.6. </span>Test Cases for Digital Credential’s Backup and Restore<a class="headerlink" href="#test-cases-for-digital-credentials-backup-and-restore" title="Link to this heading">¶</a></h2>
+<span id="credential-backup-testcases"></span><h2><span class="section-number">16.4.1.3.6. </span>Test Cases for Digital Credential’s Backup and Restore<a class="headerlink" href="#test-cases-for-digital-credentials-backup-and-restore" title="Link to this heading">¶</a></h2>
 <p>This section lists the test cases from Section <a class="reference internal" href="backup-restore.html#backup-and-restore"><span class="std std-ref">Backup and Restore</span></a>.</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -1407,7 +1446,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-odd"><td><p>WP_121</p></td>
 <td><p>Backup and Restore, Security</p></td>
 <td><p>Key derivation from key phrases</p></td>
-<td><p>Wallet Instance derives an encryption key from the User’s key phrases using a key derivation function (e.g., <code class="docutils literal notranslate"><span class="pre">PBKDF2</span></code>, <code class="docutils literal notranslate"><span class="pre">Bcrypt</span></code>, <code class="docutils literal notranslate"><span class="pre">Scrypt</span></code>, <code class="docutils literal notranslate"><span class="pre">Argon2</span></code>). <code class="docutils literal notranslate"><span class="pre">PBKDF2</span></code> is most used, and RECOMMENDED per <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2898.html"><strong>RFC 2898</strong></a>.</p></td>
+<td><p>Wallet Instance derives an encryption key from the User’s key phrases using a key derivation function (e.g., <code class="docutils literal notranslate"><span class="pre">PBKDF2</span></code>, <code class="docutils literal notranslate"><span class="pre">Bcrypt</span></code>, <code class="docutils literal notranslate"><span class="pre">Scrypt</span></code>, <code class="docutils literal notranslate"><span class="pre">Argon2</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_121a</p></td>
 <td><p>Backup and Restore, Security</p></td>
@@ -1503,7 +1542,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 </table>
 </section>
 <section id="optional-test-cases-for-wallet-instance">
-<span id="wallet-instance-optional-testcases"></span><h2><span class="section-number">16.4.1.1.7. </span>Optional Test Cases for Wallet Instance<a class="headerlink" href="#optional-test-cases-for-wallet-instance" title="Link to this heading">¶</a></h2>
+<span id="wallet-instance-optional-testcases"></span><h2><span class="section-number">16.4.1.3.7. </span>Optional Test Cases for Wallet Instance<a class="headerlink" href="#optional-test-cases-for-wallet-instance" title="Link to this heading">¶</a></h2>
 <p>This section lists the test cases from Sections:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="wallet-instance.html#wallet-instance"><span class="std std-ref">Wallet Instance</span></a></p></li>
@@ -1765,14 +1804,14 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">16.4.1.1. Wallet Provider Test Matrix</a><ul>
-<li><a class="reference internal" href="#test-cases-for-wallet-provider-backend">16.4.1.1.1. Test Cases for Wallet Provider Backend</a></li>
-<li><a class="reference internal" href="#test-cases-for-wallet-instance">16.4.1.1.2. Test Cases for Wallet Instance</a></li>
-<li><a class="reference internal" href="#test-cases-for-issuance-phase">16.4.1.1.3. Test Cases for Issuance Phase</a></li>
-<li><a class="reference internal" href="#test-cases-for-presentation-phase">16.4.1.1.4. Test Cases for Presentation Phase</a></li>
-<li><a class="reference internal" href="#test-cases-for-user-attribute-deletion-on-relying-party-side">16.4.1.1.5. Test Cases for User Attribute Deletion on Relying Party Side</a></li>
-<li><a class="reference internal" href="#test-cases-for-digital-credentials-backup-and-restore">16.4.1.1.6. Test Cases for Digital Credential’s Backup and Restore</a></li>
-<li><a class="reference internal" href="#optional-test-cases-for-wallet-instance">16.4.1.1.7. Optional Test Cases for Wallet Instance</a></li>
+<li><a class="reference internal" href="#">16.4.1.3. Wallet Provider Test Matrix</a><ul>
+<li><a class="reference internal" href="#test-cases-for-wallet-provider-backend">16.4.1.3.1. Test Cases for Wallet Provider Backend</a></li>
+<li><a class="reference internal" href="#test-cases-for-wallet-instance">16.4.1.3.2. Test Cases for Wallet Instance</a></li>
+<li><a class="reference internal" href="#test-cases-for-issuance-phase">16.4.1.3.3. Test Cases for Issuance Phase</a></li>
+<li><a class="reference internal" href="#test-cases-for-presentation-phase">16.4.1.3.4. Test Cases for Presentation Phase</a></li>
+<li><a class="reference internal" href="#test-cases-for-user-attribute-deletion-on-relying-party-side">16.4.1.3.5. Test Cases for User Attribute Deletion on Relying Party Side</a></li>
+<li><a class="reference internal" href="#test-cases-for-digital-credentials-backup-and-restore">16.4.1.3.6. Test Cases for Digital Credential’s Backup and Restore</a></li>
+<li><a class="reference internal" href="#optional-test-cases-for-wallet-instance">16.4.1.3.7. Optional Test Cases for Wallet Instance</a></li>
 </ul>
 </li>
 </ul>
@@ -1787,14 +1826,14 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
         <div class="button_nav">
             <div class="left">
                 
-                <a href="test-plans.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">16.4. </span>Test Plans</span></a>
+                <a href="test-plans-trust.html">
+                    <span class="icon">&lt;</span><span><span class="section-number">16.4.1.2. </span>Trust Evaluation Test Matrix</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="test-plans-signature.html"><span><span class="section-number">16.4.1.2. </span>Signature Evaluation Test Matrix</span><span class="icon">&gt;</span></a>
+                    <a href="test-plans-credential-issuer.html"><span><span class="section-number">16.4.1.4. </span>Credential Issuer Test Matrix</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -1802,7 +1841,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 01/10/2025.
+      Last updated on 06/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

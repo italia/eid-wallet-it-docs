@@ -173,7 +173,7 @@
             
   <section id="metadati-della-relying-party">
 <h1><span class="section-number">6.3.5. </span>Metadati della Relying Party<a class="headerlink" href="#metadati-della-relying-party" title="Link to this heading">¶</a></h1>
-<p>I metadata <em>openid_credential_verifier</em> DEVONO contenere i seguenti parametri.</p>
+<p>I metadata <em>openid_credential_verifier</em> DEVONO contenere i seguenti parametri (<span class="xref std std-ref">test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota</span>).</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -210,7 +210,7 @@
 <td><p>JSON Array che contiene la lista  degli algoritmi di crittografia utilizzati per le authorization response. Questo parametro pecifica alla Wallet Instance gli algoritmi di crittografia simmetrica supportati. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
-<td><p>JSON Object che definisce i formati e i tipi di prova delle Presentazioni Verificabili e delle Credenziali Verificabili supportate dalla RP. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Il valore associato a ciascuna coppia nome/valore DEVE essere un oggetto JSON <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> che DEVE contenere un array JSON contenente identificatori di algoritmi crittografici che la RP supporta per la protezione di un SD-JWT. L'intestazione JOSE <code class="docutils literal notranslate"><span class="pre">alg</span></code> (come definito in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) dell'SD-JWT presentato DEVE corrispondere a uno dei valori dell'array. Vedi anche <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezione 9.1.</p></td>
+<td><p>JSON Object che definisce i formati e i tipi di prova delle Presentazioni Verificabili e delle Credenziali Verificabili supportate dalla RP. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Il valore associato a ciascuna coppia nome/valore DEVE essere un oggetto JSON <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> che DEVE contenere un array JSON contenente identificatori di algoritmi crittografici che la RP supporta per la protezione di un SD-JWT. L'intestazione JOSE <code class="docutils literal notranslate"><span class="pre">alg</span></code> (come definito in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) dell'SD-JWT presentato DEVE corrispondere a uno dei valori dell'array. Vedi anche <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezione 9.1 (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>jwks</strong></p></td>
 <td><p>Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> Sezione 3, <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.2.1 e <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
@@ -254,7 +254,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 01/10/2025.
+      Ultimo aggiornamento 06/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

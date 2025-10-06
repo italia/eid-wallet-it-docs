@@ -152,7 +152,14 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
 
             - **type**: it MUST be set to ``openid_credential``,
             - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_PersonIdentificationData`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
-      - See [RAR :rfc:`9396`] and [`OpenID4VCI`_].
+
+        When eID Substantial Authentication with MRTD Verification is requested, an additional JSON Object MUST be included with the following claims:
+
+            - **type**: REQUIRED. MUST be ``it_l2+document_proof``,
+            - **idphinting**: REQUIRED. URL of the Identity Provider to be used as a hint,
+            - **challenge_method**: REQUIRED. Specifies the MRTD verification method. The value MUST be ``mrtd+ias``. Additional verification methods MAY be defined in future releases of this Specification,
+            - **challenge_redirect_uri**: REQUIRED. Redirect URI, recognized by Wallet Instance, for handling the challenge response.
+      - See [RAR :rfc:`9396`], [`OpenID4VCI`_] and :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
     * - **redirect_uri**
       - Redirection URI to which the response is intended to be sent. It MUST be an universal or app link registered with the local operating system, so this latter will provide the response to the Wallet Instance.
       - See [`OIDC`_] Section 3.1.2.1.
