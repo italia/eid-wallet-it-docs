@@ -1,4 +1,4 @@
-@startuml Autenticazione eID LoA3 + identity proofing remoto nel Flusso Emissione PID IT-Wallet
+@startuml
 '!theme cerulean-outline
 autonumber
 participant "Utente" as U
@@ -37,7 +37,7 @@ opt
     MIN --> DPOPS: Informazioni MRZ
 end
 
-DPOPS --> A: **Risposta MRTD PoP**\nHTTP/1.1 202 Accepted\ncon mrtd_pop_nonce, challenge e (opzionalmente) dati MRZ
+DPOPS --> A: **Risposta MRTD PoP**\nHTTP/1.1 202 Accepted\ncon mrtd_pop_nonce, challenge, htu, htm e (opzionalmente) dati MRZ
 
 alt Se MRZ non è disponibile all'Istanza Wallet
     A -> U: Richiesta di inserire CAN
