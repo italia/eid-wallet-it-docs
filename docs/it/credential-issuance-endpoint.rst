@@ -145,7 +145,7 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - Metodo utilizzato per derivare il **code challenge**. DEVE essere valorizzato con ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry-catalogue:Catalogo degli Attestati Elettronici`. Ad esempio, nel caso del PID, può essere valorizzato con ``PersonIdentificationData`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio.
+      - Stringa JSON. Stringa contenente un identificativo univoco dell'Attestato Elettronico indipendentemente dal suo formato. DEVE essere mappato nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Il valore dell'identificativo univoco DEVE corrispondere al parametro `credential_type` del :ref:`registry:Catalogo degli Attestati Elettronici`. Ad esempio, nel caso del PID, può essere valorizzato con ``PersonIdentificationData`` mentre nel caso della patente di guida ``mDL``. Poiché PUÒ essere multivalore, quando ciò si verifica ogni valore DEVE essere separato da uno spazio.
       - :rfc:`6749`
     * - **authorization_details**
       - Array di Oggetti JSON. Ogni Oggetto JSON DEVE includere i seguenti claim:

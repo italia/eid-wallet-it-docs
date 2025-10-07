@@ -1,0 +1,72 @@
+@startuml trust-infrastructure-overview
+!include <C4/C4_Component>
+HIDE_STEREOTYPE()
+'LAYOUT_LEFT_RIGHT()
+
+' Define SPRITES
+!include <tupadr3/font-awesome-5/certificate>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+' Custom styles
+AddElementTag("external", $bgColor="#999999", $fontColor="white", $borderColor="grey")
+AddElementTag("primary", $bgColor="#1168bd", $fontColor="white", $borderColor="#0b4884")
+AddElementTag("tech", $bgColor="#6cb33f", $fontColor="white", $borderColor="#4a8329")
+AddElementTag("governance", $bgColor="#8A398F", $fontColor="white", $borderColor="#55235A")
+
+title IT-Wallet Onboarding System Overview
+
+' Primary Actors
+Boundary(primary, "Primary Actors", ""){
+    Container(as, "Authentic Sources", "Data Providers", "Government registries, professional organizations, educational institutions", $tags="tech", $sprite="database")
+    Container(rp, "Relying Parties", "Credential Verifiers", "Organizations verifying digital credentials for service access", $tags="primary", $sprite="cogs")
+    Container(wp, "Wallet Providers", "Wallet Solutions", "Organizations providing IT-Wallet applications to citizens", $tags="primary", $sprite="wallet")
+    Container(ci, "Credential Issuers", "Credential Services", "Organizations issuing digital credentials based on authoritative data", $tags="primary", $sprite="id_card")
+
+
+}
+    ' Wallet Instance (indirect trust)
+    Container(wi, "Wallet Instance", "Mobile/Web App", "Citizen digital wallets with indirect trust through WP", $tags="external", $sprite="wallet")
+
+' Trust Infrastructure
+Boundary(trust_infra, "Trust Infrastructure", ""){
+    Container(onboarding_sys, "Onboarding System", "Registration Services", "Manages entity registration and trust establishment through dual-path processes", $tags="governance", $sprite="institution")
+    
+    Container(federation_registry, "Federation Registry", "Trust Registry", "Registry of federated entities (RP, WP, CI) enabling operational trust validation", $tags="primary", $sprite="certificate")
+    
+    Container(as_registry, "AS Registry & Credential Catalog", "", "Registry of Authentic Sources and available credential types for discovery", $tags="tech", $sprite="database")
+}
+
+
+
+' 1. Administrative Registration (all entities)
+Rel(primary, onboarding_sys, "1. Administrative\nRegistration", "Legal/regulatory approval")
+Rel(primary, onboarding_sys, "2. Technical\nRegistration", "Technical/compliance approval")
+'Rel(rp, onboarding_sys, "1. Administrative\nRegistration", "Legal/regulatory approval")
+'Rel(wp, onboarding_sys, "1. Administrative\nRegistration", "Legal/regulatory approval") 
+'Rel(ci, onboarding_sys, "1. Administrative\nRegistration", "Legal/regulatory approval")
+
+
+    ' AS Path
+    Rel(onboarding_sys, as_registry, "3a. AS Path:\nData Registration", "Credential types & schemas")
+    
+    ' Federation Path  
+    Rel(onboarding_sys, federation_registry, "3b. Federation Path:\nTrust Establishment", "RP, WP, CI certificates")
+
+' 3. Wallet Instance (WP managed)
+Rel(wp, wi, "4. WI Registration\n(WP managed)", "Indirect trust")
+
+ Lay_R(rp,ci)
+ Lay_U(ci,wp)
+ Lay_U(wp,as_registry)
+ Lay_U(wp,wi)
+
+' Lay_R(trust_infra,primary)
+' Operational Usage
+'note over as_registry: "Discovery:\nCredential types"
+'note over federation_registry: "Trust Validation:\nFederation entities"
+
+@enduml

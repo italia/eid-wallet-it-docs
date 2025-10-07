@@ -20,14 +20,14 @@ The specification is organized into the following major sections:
 **Section** :ref:`functionalities:User Experience Design`: 
   Provides design principles and high-level functional requirements to ensure a high-quality User Experience across all stages of interaction between the User and the service.
 
-**Section** :ref:`trust:The Infrastructure of Trust`:
+**Section** :ref:`trust-infrastructure:The Infrastructure of Trust`:
   Defines the federation-based trust model, entity relationships, and trust evaluation mechanisms that secure the entire ecosystem.
 
 **Section** :ref:`entities:Entities`: 
   Comprehensive implementation requirements for each ecosystem participant: Wallet Solutions, Credential Issuers, Relying Parties, and Authentic Sources, including their components, interaction patterns, and configuration requirements.
 
 **Section** :ref:`digital-credential-management:Digital Credential Management`: 
-  Covers Digital Credential data models and formats, lifecycle management, validity verification, and the Credentials catalogue structure.
+  Covers Digital Credential data models and formats, lifecycle management, validity verification, and the Credentials Catalog structure.
 
 **Section** :ref:`digital-credential-flows:Digital Credential Flows`:
   Detailed implementation guidance for Digital Credential issuance and presentation workflows, including both remote and proximity interaction flows.
@@ -48,7 +48,7 @@ The specification is organized into the following major sections:
 Reading Paths by Role
 ^^^^^^^^^^^^^^^^^^^^^
 
-Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust`, which establish the common vocabulary, and trust infrastructure that provide the underlying framework for the entire ecosystem.
+Before diving into role-specific sections, all readers should be familiar with the foundational concepts outlined in Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust-infrastructure:The Infrastructure of Trust`, which establish the common vocabulary, and trust infrastructure that provide the underlying framework for the entire ecosystem.
 
 Wallet Provider
 """""""""""""""
@@ -106,7 +106,7 @@ If the reader wants to operate an **Authentic Source**, the focus should be on s
 
 * **Section** :ref:`functionalities:User Experience Design`: High-level functional requirements supporting the User Experience across all stages of interaction between the User and the service. 
 * **Section** :ref:`authentic-sources:Authentic Sources`: Requirements and integration patterns with Credential Issuers.
-* **Section** :ref:`authentic-source-endpoint:Authentic Source Endpoints`: API specifications and catalogue integration.
+* **Section** :ref:`authentic-source-endpoint:Authentic Source Endpoints`: API specifications and catalog integration.
 * **Section** :ref:`algorithms:Cryptographic Algorithms`: Data integrity, authentication, and security requirements.
 * **Section** :ref:`e-service-pdnd:e-Service PDND`: PDND integration and interoperability requirements.
 
@@ -153,7 +153,7 @@ Implementation Approach
 
 The following phased reading approach is suggested:
 
-    1. **Foundation Phase**: Read  Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.
+    1. **Foundation Phase**: Read  Sections :ref:`introduction:Introduction`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Architecture Overview`, and :ref:`trust-infrastructure:The Infrastructure of Trust` to establish conceptual understanding of the IT-Wallet paradigm, Brand Identity elements and trust infrastructure.
     2. **Role-Specific Phase**: Focus on primary role's essential sections to understand specific User Experience, functional and implementation requirements, main technical component, the general architecture and interaction flows (see Section :ref:`functionalities:User Experience Design`, :ref:`entities:Entities` and Section :ref:`endpoints:Endpoints` for more details).
     3. **Integration Phase**: Review secondary sections relevant to interactions with other ecosystem participants and platform integration requirements.
     4. **Validation Phase**: Study security considerations, testing guidance, and compliance requirements according to Sections :ref:`security-privacy-considerations:Security and Privacy Considerations`, :ref:`log-retention-policy:General Log Retention Policies`, and :ref:`test-plans:Test Plans` for additional information.

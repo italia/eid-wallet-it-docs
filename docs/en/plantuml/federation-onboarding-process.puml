@@ -1,0 +1,48 @@
+@startuml Federation Entity Onboarding Process
+autonumber
+
+participant "Federation Entity" as fe
+participant "Federation Authority" as ta
+
+== Step 1: Onboarding Request Submission ==
+
+fe -> ta: Submit onboarding request\n(Entity ID, Public Key JWK, CSR)
+
+== Step 2: Federation Authority Validation and Certificate Issuance ==
+
+ta -> ta: Verify registration information
+ta -> ta: Validate Entity Configuration at\n/.well-known/openid-federation endpoint
+ta -> ta: Apply metadata policies with cascading effect
+ta -> ta: Issue X.509 certificate for\nFederation Entity Public Key
+
+alt Validation successful
+    ta -> fe: Certificate chain response\n(Entity certificate + authority certificates)
+else Validation failed
+    ta -> fe: Rejection with identified issues
+end
+
+== Step 3: Entity Configuration Update and Resolve Request ==
+
+fe -> fe: Update Entity Configuration:\n- Add authority_hints claim\n- Add x5c claim with certificate chain
+fe -> fe: Publish updated EC at\n/.well-known/openid-federation
+fe -> ta: Resolve request\n(/resolve?sub=entity_id&trust_anchor=ta_id)
+
+== Step 4: Resolve Response and Onboarding Completion ==
+
+ta -> ta: Reconstruct valid trust chain
+ta -> ta: Generate Federation Trust Mark for entity
+ta -> ta: Include Trust Mark in Subordinate Statement
+ta -> ta: Generate signed JWT with trust chain,\nvalidated metadata and applying metadata policies
+
+alt Resolve successful (200 OK)
+    ta -> fe: Resolve response with JWT\n(trust chain + validated metadata)
+    fe -> ta: Fetch Subordinate Statement\n(/fetch?sub=entity_id)
+    ta -> fe: Subordinate Statement with Trust Mark
+    fe -> fe: Extract Trust Mark from Subordinate Statement
+    fe -> fe: Integrate Trust Mark in Entity Configuration\n(trust_marks claim)
+    fe -> fe: Publish final Entity Configuration at\n/.well-known/openid-federation
+else Resolve failed (400/404)
+    ta -> fe: Error response with issues to resolve
+end
+
+@enduml

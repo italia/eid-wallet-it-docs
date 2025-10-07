@@ -1,0 +1,37 @@
+@startuml Authentic Source Registration Process
+autonumber
+
+participant "Authentic Source" as as
+participant "Supervisory Body" as sb
+participant "AS Registry" as reg
+
+== Step 1: Registration Package Preparation ==
+
+as -> as: Prepare organization information\n(IPA code, legal identifier, contacts)
+as -> as: Declare data capabilities\n(Claims Registry identifiers, Taxonomy classification)
+as -> as: Define API implementation details\n(PDND/OpenAPI 3.0 specification)
+as -> as: Specify data provision capabilities\n(immediate/deferred flow support)
+as -> sb: Submit registration request
+
+== Step 2: Technical Validation ==
+
+sb -> sb: Validate Claims Registry compliance\n(format, identifiers, existence)
+sb -> sb: Verify Taxonomy classification\n(domains, purposes)
+sb -> sb: Check API integration verification\n(PDND compliance or OpenAPI 3.0)
+sb -> sb: Validate response format standards\n(Claims Registry usage, state mapping)
+
+alt Validation successful
+    sb -> as: Registration approval\n(validation complete)
+else Validation failed
+    sb -> as: Rejection with validation issues\n(requirements to address)
+end
+
+== Step 3: AS Registry Publication ==
+
+sb -> reg: Publish AS Entity in registry\n(complete declared capabilities)
+reg -> reg: Make AS discoverable by\nCredential Issuers
+as -> as: Registration complete:\nready for operational data provision
+
+note over as,reg: AS entities become discoverable immediately\nupon AS Registry publication
+
+@enduml

@@ -36,7 +36,7 @@ Boundary(IdentityProvider, "CIEid Digital Identity\n Federation") {
     System_Ext(idp, "Identity Provider", "Digital Identity scheme based on CIEid LoA High (L3)", $sprite="institution")
 }
 Container_Ext(as, "Authentic Source", "ANPR", "",$sprite="database")
-Container_Ext(ta, "Federation Services and Digital Credentials Catalogue", "OID-FED registry", "",$sprite="lock")
+Container_Ext(ta, "Federation Services and Digital Credentials Catalog", "OID-FED registry", "",$sprite="lock")
 
 Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a PID","")
 Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\nPID Provider Discovery\nand Trust","")

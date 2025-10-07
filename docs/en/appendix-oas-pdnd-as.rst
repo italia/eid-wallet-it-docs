@@ -5,7 +5,7 @@ Overview
 --------
 
 The template e-service functionality is employed to standardize data transmission from Authentic Sources to Credential Issuers.
-The template e-service SHOULD be published within PDND by the Credential Issuer and is accessible through the PDND Template Catalogue.
+The template e-service SHOULD be published within PDND by the Credential Issuer and is accessible through the PDND Template Catalog.
 
 Template Parameters
 -------------------

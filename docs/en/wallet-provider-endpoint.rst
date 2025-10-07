@@ -373,7 +373,7 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **vct**
-      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be of the type ``{url_trust_anchor}/WalletAttestation`` as described in :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
+      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be of the type ``{url_trust_anchor}/WalletAttestation`` as described in :ref:`registry:Digital Credentials Catalog`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - REQUIRED. JSON array containing a list of all disclusure's digests.
@@ -433,7 +433,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
 Wallet Attestation mdoc
 """""""""""""""""""""""
 
-This description extends the MDOC-CBOR Credential Format guidelines, given in :ref:`credential-data-model:mdoc-CBOR Credential Format`, to support Wallet Attestation data representation. The Wallet Attestation MUST use ``docType`` of the form ``{Trust Anchor reverse domain}.{WalletAttestation}`` as described in :ref:`registry-catalogue:Digital Credentials Catalogue Structure`.
+This description extends the MDOC-CBOR Credential Format guidelines, given in :ref:`credential-data-model:mdoc-CBOR Credential Format`, to support Wallet Attestation data representation. The Wallet Attestation MUST use ``docType`` of the form ``{Trust Anchor reverse domain}.{WalletAttestation}`` as described in :ref:`registry:Digital Credentials Catalog`.
 
 The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follows:
 
@@ -467,7 +467,7 @@ Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnost
 .. note:: 
   Regardless of the fact that ``sub``, ``aal``, ``wallet_link`` and ``wallet_name`` are disclosable in the domestic namespace, these values MUST NOT be shown to the User, as they are not a User attribute.
 
-e-Service PDND Wallet Provider Catalogue
+e-Service PDND Wallet Provider Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 User's death leads to the revocation of the Wallet Instances of the User and the deletion of the User account at the Wallet Provider. For this reason, the Wallet Provider provides the following e-service through PDND.
