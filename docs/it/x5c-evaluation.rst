@@ -249,7 +249,7 @@ Esempio CRR in formato DER (codificato Base64):
    -----END CERTIFICATE REVOCATION REQUEST-----
 
 Rimozione da Parte dell'Organo di Supervisione - Implementazione Tecnica
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   1. **Revoca di Emergenza del Certificato X.509**: L'Autorità Federata DEVE revocare immediatamente il Certificato X.509 con il codice di motivo appropriato (ad es., "Key Compromise", "Cessation of Operation").
   2. **Aggiornamento di Emergenza CRL**: Il Trust Anchor DEVE pubblicare la CRL aggiornata entro il tempo di emergenza.

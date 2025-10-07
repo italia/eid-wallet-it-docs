@@ -146,11 +146,12 @@ During registration, Authentic Sources MUST provide the following information:
    * - **Data Provision Capabilities**
      - **REQUIRED**. Indicates if Authentic Source supports immediate/deferred data provision (boolean).    
    * - **User Information**
-    - **OPTIONAL**. Markdown-formatted text containing human-readable information about data availability constraints or limitations. For example, if the Authentic Source database only contains data registered after a specific date, this information MUST be conveyed to Users.
+     - **OPTIONAL**. Markdown-formatted text containing human-readable information about data availability constraints or limitations. For example, if the Authentic Source database only contains data registered after a specific date, this information MUST be conveyed to Users.
 
        **Example**: "Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.".
+
    * - **Display Properties**
-    - **OPTIONAL**. Visual branding suggestions for Digital Credentials using Authentic Source data:
+     - **OPTIONAL**. Visual branding suggestions for Digital Credentials using Authentic Source data:
 
        - Background color for Digital Credentials in hexadecimal format (e.g., ``"#003d82"``).
        - Text color for Digital Credentials in hexadecimal format (e.g., ``"#ffffff"``).

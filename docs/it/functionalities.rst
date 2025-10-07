@@ -685,16 +685,16 @@ Errori di Attivazione dell'Istanza del Wallet
   :widths: 80 20
   :header-rows: 1
 
-   * - Tipologia di errore
+  * - Tipologia di errore
     - Attore responsabile
-   * - Il dispositivo non supporta la Soluzione Wallet (e.g. assenza dei requisiti minimi di sicurezza o tecnologici)
+  * - Il dispositivo non supporta la Soluzione Wallet (e.g. assenza dei requisiti minimi di sicurezza o tecnologici)
     - Fornitore di Wallet
-   * - I servizi del Fornitore di Wallet non rispondono (e.g. errori tecnici o assenza connessione) 
+  * - I servizi del Fornitore di Wallet non rispondono (e.g. errori tecnici o assenza connessione)
     - Fornitore di Wallet
-   * - I servizi del PID Provider non rispondono (e.g. errori tecnici) 
-     - PID Provider
-   * - Il processo di Autenticazione sul servizio del National Identity Provider non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)
-     - National Identity Provider
+  * - I servizi del PID Provider non rispondono (e.g. errori tecnici)
+    - PID Provider
+  * - Il processo di Autenticazione sul servizio del National Identity Provider non è andato a buon fine (e.g. errori tecnici, identità non riconosciuta, etc.)
+    - National Identity Provider
 
 .. note::
    Quando la verifica del documento elettronico viene eseguita in aggiunta all'autenticazione del National Identity Provider, possono verificarsi scenari di errore aggiuntivi. Per codici di errore dettagliati e procedure di gestione, vedere :ref:`credential-issuance-l2plus:Gestione Errori`.
@@ -706,13 +706,13 @@ Errori di ottenimento degli Attestati Elettronici di Attributi
   :widths: 80 20
   :header-rows: 1
 
-   * - Tipologia di errore
+  * - Tipologia di errore
     - Attore responsabile
-   * - L'Istanza del Wallet e/o il PID non risultano attivi 
+  * - L'Istanza del Wallet e/o il PID non risultano attivi
     - Fornitore di Wallet
-   * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici) 
+  * - Il servizio di ottenimento di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici)
     - Fornitore di Attestati Elettronici di Attributi, Fonte Autentica
-   * - L'Utente non riesce ad ottenere nella propria Istanza del Wallet un certo Attestato Elettronico di Attributi (e.g. assenza di titolarità, versione fisica non valida o scaduta, etc.) 
+  * - L'Utente non riesce ad ottenere nella propria Istanza del Wallet un certo Attestato Elettronico di Attributi (e.g. assenza di titolarità, versione fisica non valida o scaduta, etc.)
     - Fonte Autentica
 
 Errori di presentazione degli Attestati Elettronici
@@ -722,12 +722,12 @@ Errori di presentazione degli Attestati Elettronici
   :widths: 80 20
   :header-rows: 1
 
-   * - Tipologia di errore
+  * - Tipologia di errore
     - Attore responsabile
-   * - L'Utente non possiede all'interno della propria Istanza del Wallet gli Attributi contenuti in uno o più Attestati Elettronici richiesti per la fruizione di un determinato servizio 
+  * - L'Utente non possiede all'interno della propria Istanza del Wallet gli Attributi contenuti in uno o più Attestati Elettronici richiesti per la fruizione di un determinato servizio
     - Fornitore di Wallet
-   * - I servizi del Fornitore di Wallet e/o del Verificatore di Attestati Elettronici non rispondono (e.g. errori tecnici o assenza connessione) 
-     - Fornitore di Wallet, Verificatore di Attestati Elettronici 
+  * - I servizi del Fornitore di Wallet e/o del Verificatore di Attestati Elettronici non rispondono (e.g. errori tecnici o assenza connessione)
+    - Fornitore di Wallet, Verificatore di Attestati Elettronici 
 
 Errori di gestione degli Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -736,12 +736,12 @@ Errori di gestione degli Attestati Elettronici
   :widths: 80 20
   :header-rows: 1
 
-   * - Tipologia di errore
+  * - Tipologia di errore
     - Attore responsabile
-   * - Il servizio di revoca / archiviazione/ ripristino di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici) 
+  * - Il servizio di revoca / archiviazione/ ripristino di un Attestato Elettronico di Attributi non è disponibile (e.g. errori tecnici)
     - Fornitore di Attestati Elettronici di Attributi
-   * - Il servizio di revoca del PID non è disponibile (e.g. errori tecnici) 
-     - PID Provider 
+  * - Il servizio di revoca del PID non è disponibile (e.g. errori tecnici)
+    - PID Provider 
 
 Errori di disattivazione dell'Istanza del Wallet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -750,9 +750,9 @@ Errori di disattivazione dell'Istanza del Wallet
   :widths: 80 20
   :header-rows: 1
 
-   * - Tipologia di errore
+  * - Tipologia di errore
     - Attore responsabile
-   * - Il servizio di disattivazione dell'Istanza del Wallet non è disponibile (e.g. errori tecnici) 
+  * - Il servizio di disattivazione dell'Istanza del Wallet non è disponibile (e.g. errori tecnici)
     - Fornitore di Wallet
 
 Oltre alla gestione degli errori, DEVE essere garantita da parte di tutti gli Attori Primari anche la gestione di esiti negativi dovuti alla volontà dell'Utente di abbandonare o annullare un flusso (es. attivazione, ottenimento, presentazione, etc.). In questi casi DEVE essere previsto un feedback che dia conferma all'Utente della scelta intrapresa e che PUÒ includere una Call to Action per proseguire.
