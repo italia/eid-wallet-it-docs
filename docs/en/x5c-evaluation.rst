@@ -10,9 +10,9 @@ Federation PKI Architecture
 
 The IT-Wallet federation operates a hierarchical Public Key Infrastructure where:
 
-	- **Trust Anchor**: Acts as Root X.509 Certificate Authority where CA X.509 certificates MUST NOT exceed **5-year validity period**.
-	- **Federation Entity X.509 Certificate**: Each federation participant receives an X.509 certificate that operates as a limited sub-CA where X.509 certificates MUST NOT exceed **2-year validity period**.
-	- **Protocol X.509 Certificates**: Self-issued X.509 certificates for internal services where X.509 certificates SHOULD NOT exceed **1-year validity period**.
+	- **Trust Anchor**: Acts as Root X.509 Certificate Authority where CA X.509 Certificates MUST NOT exceed **5-year validity period**.
+	- **Federation Entity X.509 Certificate**: Each federation participant receives an X.509 certificate that operates as a limited sub-CA where X.509 Certificates MUST NOT exceed **2-year validity period**.
+	- **Protocol X.509 Certificates**: Self-issued X.509 Certificates for internal services where X.509 Certificates SHOULD NOT exceed **1-year validity period**.
 
 Each federation entity MUST expose its Federation Entity X.509 Certificate on a publicly accessible endpoint. The Federation Entity private key serves dual purposes:
 
@@ -78,7 +78,7 @@ Federation authorities publish X.509 Certificate Revocation Lists (CRL) at publi
 
 The following procedure enables federation entities to:
 
-	- Locate CRL distribution endpoints from X.509 certificates.
+	- Locate CRL distribution endpoints from X.509 Certificates.
 	- Download current revocation lists.
 	- Analyze CRL content and validity periods.
 
@@ -94,7 +94,7 @@ Federation entities MUST verify X.509 certificate revocation status by checking 
 Federation entities SHOULD implement automated revocation checking for:
 
 	- **Federation Entity X.509 Certificates**: Verify own X.509 certificate status periodically.
-	- **Peer Entity X.509 Certificates**: Validate X.509 certificates of other federation participants.
+	- **Peer Entity X.509 Certificates**: Validate X.509 Certificates of other federation participants.
 	- **Trust Chain Validation**: Ensure entire X.509 certificate chains remain valid.
 
 Below a bash script for X.509 certificate revocation status verification is given as a non-normative example:
@@ -151,7 +151,7 @@ Federation entities MUST coordinate X.509 Certificate management with federation
 
 - **X.509 Certificate Renewal**: Align X.509 certificate renewals with Entity Configuration updates and Trust Mark refresh cycles, according to the federation limits defined in :ref:`x5c-evaluation:Federation PKI Architecture`.
 - **Key Rotation**: Coordinate Federation Entity Key rotation with X.509 certificate renewal procedures.
-- **CRL Management**: For Protocol X.509 certificates with validity > 24 hours, maintain current CRL publication.
+- **CRL Management**: For Protocol X.509 Certificates with validity > 24 hours, maintain current CRL publication.
 - **Federation Exit**: Ensure proper X.509 Certificate revocation during voluntary or supervisory body-initiated federation exit.
 
 

@@ -8,7 +8,7 @@ The Infrastructure of Trust
 
 The IT-Wallet ecosystem operates within a federated trust infrastructure where participating entities establish cryptographic trust relationships and maintain compliance with common security standards. This infrastructure provides the foundation for secure Digital Credential operations across the ecosystem participants.
 
-This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 certificates, and the revocation status of the participants, also called Federation Entities.
+This section outlines the implementation of the Trust Model in an infrastructure that complies with OpenID Federation 1.0 `OID-FED`_. This infrastructure involves a RESTful API for distributing metadata, metadata policies, trust marks, cryptographic public keys and X.509 Certificates, and the revocation status of the participants, also called Federation Entities.
 
 The Infrastructure of trust facilitates the application of a trust assessment mechanism among the parties defined in the `EIDAS-ARF`_.
 This trust infrastructure works in coordination with the Registry Infrastructure (see :ref:`registry:Registry Infrastructure`) to enable the entity onboarding processes detailed in :ref:`entity-onboarding:Entity Onboarding`. In particular, it enables the technical   implementation of the onboarding processes described in :ref:`entity-onboarding:Entity Onboarding` and supports the operational scenarios 
@@ -219,10 +219,108 @@ All the endpoints listed below are defined in the `OID-FED`_ specs.
      - **GET** /historical-jwks
      - Lists the expired and revoked keys, with the motivation of the revocation.
      - Trust Anchor, Intermediate
+   * - subordinate events
+     - **GET** /federation_subordinate_events_endpoint?sub=https://rp.example.org
+     - Returns a historical track of registration events about Immediate Subordinates, such as registration, revocation, and updates of their Federation Entity Keys.
+     - Trust Anchor, Intermediate
 
 
-All the responses of the federation endpoints are in the form of signed JWT, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default.
+All the responses of the federation endpoints are in the form of signed JWT, with the exception of the **Subordinate Listing endpoint** and the **Trust Mark Status endpoint** that are served as plain JSON by default. The **Federation Subordinate Events Endpoint** also returns signed JWTs with the content type ``application/entity-events-statement+jwt``.
 
+Federation Subordinate Events Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Federation Subordinate Events Endpoint provides a mechanism for Trust Anchors and Intermediates to publish historical events related to their Immediate Subordinates. This endpoint enhances transparency and accountability within the federation by providing a comprehensive historical record of significant events affecting federation participants.
+
+**Purpose and Benefits**:
+
+- **Transparency**: Provides visibility into the lifecycle events of federation participants
+- **Accountability**: Maintains an auditable trail of registration, updates, and revocation events
+- **Compliance Monitoring**: Enables tracking of entity status changes and policy updates
+- **Historical Analysis**: Supports forensic analysis and compliance auditing
+
+**Endpoint Location**:
+
+The Federation Subordinate Events Endpoint is published in the ``federation_entity`` metadata using the ``federation_subordinate_events_endpoint`` parameter. The endpoint MUST use the ``https`` scheme and MAY include port, path, and query parameter components.
+
+**Request Format**:
+
+The request to the ``federation_subordinate_events_endpoint`` MUST be an HTTP GET request with the following query parameters:
+
+- **sub**: (REQUIRED) The Entity Identifier of the subject for which the historical track is being requested
+
+**Response Format**:
+
+A successful response MUST use the HTTP status code 200 and the content type ``application/entity-events-statement+jwt``. The response is a signed JWT that is explicitly typed by setting the ``typ`` header parameter to ``entity-events-statement+jwt`` to prevent cross-JWT confusion.
+
+**JWT Claims**:
+
+The claims in the Subordinate events statement response are:
+
+- **iss**: (REQUIRED) Entity Identifier of the issuer of the response
+- **sub**: (REQUIRED) Entity Identifier of the subject of the response  
+- **iat**: (REQUIRED) Time when this response was issued, expressed as Seconds Since the Epoch
+- **exp**: (OPTIONAL) Time when this resolution is no longer valid, expressed as Seconds Since the Epoch
+- **federation_registration_events**: (REQUIRED) Array of JSON objects, each representing an event of particular interest from the federation's perspective
+
+**Event Object Parameters**:
+
+- **iat**: (REQUIRED) Time when the event occurred, using the time format defined for the ``iat`` claim
+- **event**: (REQUIRED) String that identifies the event type
+- **event_description**: (OPTIONAL) String that may offer additional information about the event
+
+**Supported Event Types**:
+
+- **registration**: Indicates when an Entity was registered in the federation
+- **revocation**: Indicates when an Entity's registration was revoked
+- **suspension**: Indicates when an Entity's registration was suspended
+- **jwks_update**: Indicates when an Entity's Federation Entity Keys were updated
+- **metadata_update**: Indicates when an Entity's metadata was updated in the Subordinate Statement
+- **metadata_policy_update**: Indicates when an Entity's metadata policy was updated in the Subordinate Statement
+
+**Example Request**:
+
+.. code-block:: text
+
+   GET /federation_subordinate_events_endpoint?sub=https%3A%2F%2Frp%2Eexample%2Eorg HTTP/1.1
+   Host: immediate-superior.example.org
+
+**Example Response**:
+
+.. code-block:: json
+
+   {
+     "iss": "https://immediate-superior.example.org",
+     "sub": "https://rp.example.org",
+     "iat": 1590000000,
+     "federation_registration_events": [
+       {
+         "iat": 1590000000,
+         "event": "registration"
+       },
+       {
+         "iat": 1590000000,
+         "event": "jwks_updates"
+       },
+       {
+         "iat": 1600000000,
+         "event": "revocation",
+         "event_description": "compromised node"
+       },
+       {
+         "iat": 1610000000,
+         "event": "registration"
+       }
+     ]
+   }
+
+**Security Considerations**:
+
+The Federation Subordinate Events Endpoint inherits all security considerations from OpenID Federation 1.0. The endpoint responses are signed JWTs that can be verified using the issuer's Federation Entity Keys, ensuring the integrity and authenticity of the historical event data.
+
+**Integration with Entity Lifecycle Management**:
+
+This endpoint complements the entity lifecycle management procedures defined in :ref:`entity-onboarding:Entity Lifecycle Management` by providing detailed historical tracking of all significant events affecting federation participants. It supports both automated compliance monitoring and manual auditing processes.
 
 Configuration of the Federation
 -------------------------------
@@ -271,7 +369,8 @@ Below is a non-normative example of a Trust Anchor Entity Configuration, where e
                 "federation_fetch_endpoint": "https://trust-anchor.eid-wallet.example.it/fetch",
                 "federation_resolve_endpoint": "https://trust-anchor.eid-wallet.example.it/resolve",
                 "federation_list_endpoint": "https://trust-anchor.eid-wallet.example.it/list",
-                "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status"
+                "federation_trust_mark_status_endpoint": "https://trust-anchor.eid-wallet.example.it/trust_mark_status",
+                "federation_subordinate_events_endpoint": "https://trust-anchor.eid-wallet.example.it/events"
             }
         },
         "trust_mark_issuers": {
@@ -333,7 +432,7 @@ The Entity Configurations of all the participants in the federation MUST have in
    * - **jwks**
      - A JSON Web Key Set (JWKS) :rfc:`7517` that represents the public part of the signing keys of the Entity at issue. Each JWK in the JWK set MUST have a key ID (claim kid) and MAY have a `x5c` parameter, as defined in :rfc:`7517`. It contains the Federation Entity Keys required for the operations of Trust Evaluation.
 
-       **x5c Parameter**: The `x5c` parameter, when present, contains an array of X.509 certificates that form a certificate chain. The first certificate in the array MUST be the X.509 certificate corresponding to the public key represented by the JWK. Subsequent certificates in the array MUST form a valid certificate chain leading to a trusted root certificate. This parameter enables X.509 certificate-based verification alongside JWK-based verification, providing interoperability with legacy systems and enhanced trust validation. The `x5c` parameter included in Entity Configuration's `jwks` parameter MUST only contain the self-issued X.509 Certificate about the corresponding `jwk`.
+       **x5c Parameter**: The `x5c` parameter, when present, contains an array of X.509 Certificates that form a certificate chain. The first certificate in the array MUST be the X.509 certificate corresponding to the public key represented by the JWK. Subsequent certificates in the array MUST form a valid certificate chain leading to a trusted root certificate. This parameter enables X.509 certificate-based verification alongside JWK-based verification, providing interoperability with legacy systems and enhanced trust validation. The `x5c` parameter included in Entity Configuration's `jwks` parameter MUST only contain the self-issued X.509 Certificate about the corresponding `jwk`.
    * - **metadata**
      - JSON Object. Each key of the JSON Object represents a metadata type identifier
        containing JSON Object representing the metadata, according to the metadata
@@ -488,7 +587,7 @@ The metadata policy, when applied, makes one or more changes to the final metada
 Trust Anchors and Intermediates MUST expose the Federation Fetch endpoint, where the Subordinate Statements are requested to validate the Leaf's Entity Configuration signature.
 
 .. note::
-  The Federation Fetch endpoint MAY also publish X.509 certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 certificates via a RESTful service.
+  The Federation Fetch endpoint MAY also publish X.509 Certificates for each of the public keys of the Subordinate. Making the distribution of the issued X.509 Certificates via a RESTful service.
 
 **Role in Onboarding**: During entity registration, Trust Anchors and Intermediates issue Subordinate Statements to formally attest the registration and capabilities of new entities. These statements establish the hierarchical trust relationship and apply any required metadata policies that constrain or enhance the entity's declared capabilities based on federation policies.
 
@@ -691,7 +790,7 @@ Trust Evaluation Mechanism
 
 Trust Anchors MUST distribute their Federation Public Keys through secure out-of-band mechanisms, such as publishing them on a verified web page or storing them in a remote repository as part of a trust list. The rationale behind this requirement is that relying solely on the data provided within the Trust Anchor's Entity Configuration does not adequately mitigate risks associated with DNS and TLS manipulation attacks. To ensure security, all participants MUST obtain the Trust Anchor's public keys using these out-of-band methods. They should then compare these keys with those obtained from the Trust Anchor's Entity Configuration, discarding any keys that do not match. This process helps to ensure the integrity and authenticity of the Trust Anchor's public keys and the overall security of the federation.
 
-The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint) and the attestations of their metadata and public keys (Subordinate Statements).
+The Trust Anchor publishes the list of its Subordinates (Federation Subordinate Listing endpoint), the attestations of their metadata and public keys (Subordinate Statements), and historical events related to their lifecycle (Federation Subordinate Events endpoint).
 
 Each participant, including Trust Anchor, Intermediate, Credential Issuer, Wallet Provider, and Relying Party, publishes its own metadata and public keys (Entity Configuration endpoint) in the well-known web resource **.well-known/openid-federation**.
 
@@ -723,9 +822,9 @@ In the issuance process, Trust Evaluation ensures the integrity and authenticity
 
 Trust Evaluations implement different ways, as defined below:
 
-* **Federation Entity Discovery**: Wallet Instances and Relying Parties MUST verify the identity of the Issuer using the Federation Entity Discovery process defined in :ref:`trust:Federation Discovery`. This involves querying federation endpoints to confirm the Issuer's validity status and compliance with the Trust Framework.
+* **Federation Entity Discovery**: Wallet Instances and Relying Parties MUST verify the identity of the Issuer using the Federation Entity Discovery process defined in :ref:`trust-infrastructure:Federation Discovery`. This involves querying federation endpoints to confirm the Issuer's validity status and compliance with the Trust Framework. Historical event data from the Federation Subordinate Events Endpoint can provide additional context about the entity's lifecycle and compliance history.
 
-* **Trust Chains**: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains using the mechanisms defined in :ref:`trust:Trust Chain`. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation.
+* **Trust Chains**: Wallet Instances and Relying Parties evaluate Issuer's Trust Chains using the mechanisms defined in :ref:`trust-infrastructure:Trust Chain`. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the entity requesting the Credential is part of a recognized and trusted federation.
 
 * **Trust Marks Evaluation**: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation.
 
@@ -755,9 +854,9 @@ The Trust Evaluation mechanisms are distinct from protocol flows and are impleme
 
 Trust Evaluations are conducted as follows:
 
-* **Federation Entity Discovery**: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party using the Federation Entity Discovery process defined in :ref:`trust:Federation Discovery`. This involves querying federation endpoints to confirm the Relying Party's validity status and compliance with the Trust Framework and evaluating the request signature using the cryptographic material obtained from the Trust Chain.
+* **Federation Entity Discovery**: When the Wallet Instance receives a signed request issued by a Relying Party, the Wallet Instance MUST verify the identity of the Relying Party using the Federation Entity Discovery process defined in :ref:`trust-infrastructure:Federation Discovery`. This involves querying federation endpoints to confirm the Relying Party's validity status and compliance with the Trust Framework and evaluating the request signature using the cryptographic material obtained from the Trust Chain. Historical event data from the Federation Subordinate Events Endpoint can provide additional context about the Relying Party's lifecycle and compliance history.
 
-* **Trust Chains**: The Wallet Instance evaluates the Relying Party's Trust Chains using the mechanisms defined in :ref:`trust:Trust Chain`. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the Relying Party is part of a recognized and trusted federation.
+* **Trust Chains**: The Wallet Instance evaluates the Relying Party's Trust Chains using the mechanisms defined in :ref:`trust-infrastructure:Trust Chain`. Trust Chains may be provided statically or built through a Federation Entity Discovery process, to ensure that the Relying Party is part of a recognized and trusted federation.
 
 * **Trust Marks Evaluation**: Trust Marks are assessed to ensure ongoing compliance with federation policies. These marks indicate adherence to specific standards and practices required by the federation. Relying Parties MAY include Trust Marks in their Entity Configuration to signal administrative properties and compliance to specific profiles, such as the grants in interacting with under-age users.
 
@@ -839,8 +938,8 @@ Federation participants that need to issue X.509 Certificates about themselves a
 
 This is feasible because the X.509 Certificate can be verified using a X.509 Certificate Chain, similar to the approach used for Entity Configurations in OpenID Federation.
 
-Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 certificates are correctly scoped.
-Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 certificates about itself, thereby maintaining the integrity of the Trust Chain.
+Federation Leaves are not Certificate Authorities (CAs) or CA intermediaries authorized to issue X.509 Certificates for their subordinates. Instead, Federation Leaves act as intermediaries for issuing certificates solely about themselves. This is accomplished by applying appropriate naming constraints to ensure that X.509 Certificates are correctly scoped.
+Naming constraints are applied by Immediate Superiors within the certificates issued to the Leaf entity, specifically concerning the Leaf's Federation Entity Keys. As a result, the Leaf can only issue X.509 Certificates about itself, thereby maintaining the integrity of the Trust Chain.
 
 When a participant self-issues an X.509 Certificate, it adheres to the following requirements:
 
@@ -895,7 +994,7 @@ Below is a non-normative example, in plain text (OpenSSL format), of an X.509 ce
 .. literalinclude:: ../../examples/x5c.json
   :language: text
 
-Using the underlying layer established with OpenID Federation 1.0, all X.509 certificates are issued in a properly decentralized manner using the delegation pattern.
+Using the underlying layer established with OpenID Federation 1.0, all X.509 Certificates are issued in a properly decentralized manner using the delegation pattern.
 
 
 X.509 Certificate Revocation
