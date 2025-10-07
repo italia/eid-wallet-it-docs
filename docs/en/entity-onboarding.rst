@@ -4,9 +4,9 @@
 Entity Onboarding
 =================
 
-This section defines the technical specifications for entity lifecycle management in the IT-Wallet ecosystem based on the **Registry Infrastructure** defined in :ref:`registry:Registry Infrastructure`. This includes initial onboarding procedures, ongoing management operations, such as data updates and modifications, and federation exit processes. The lifecycle management system establishes and maintains the federated trust infrastructure and registry coordination necessary for secure Digital Credential operations.
+This section defines the technical specifications for entity lifecycle management in the IT-Wallet ecosystem based on the **Registry Infrastructure** defined in :ref:`registry:Registry Infrastructure`. This includes initial onboarding procedures, ongoing management operations, such as data updates and modifications, and federation exit processes.
 
-For a high-level overview of the onboarding process, see :ref:`onboarding-high-level:Onboarding System`. In particular, the Section :ref:`onboarding-high-level:Onboarding Journey Maps` provides an onboarding journey map from the perspective of Entity's operators.
+For a high-level overview of the onboarding process, see :ref:`onboarding-high-level:Onboarding System`. The Section :ref:`onboarding-high-level:Onboarding Journey Maps` provides an onboarding journey map from the perspective of Entity's operators.
 
 Overview
 --------
@@ -14,12 +14,12 @@ Overview
 Entity Onboarding System Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The IT-Wallet ecosystem is based on a federated trust infrastructure where participating entities MUST establish trust with each other. 
+The IT-Wallet ecosystem operates on a federated trust infrastructure, requiring participating entities to establish mutual trust before engaging in any interactions involving User attributes.
 
-The onboarding framework MUST allow technical registration procedures that are tailored to the participant's role in the IT-Wallet ecosystem:
+The onboarding framework defines technical registration procedures based on the type of participant:
 
-  1. For Authentic Sources requiring data-focused registration procedures.
-  2. For operational Entities (Credential Issuers, Relying Parties, Wallet Providers) requiring trust establishment.
+  1. Authentic Sources follow data-focused registration processes.
+  2. Operational Entities (Credential Issuers, Relying Parties, Wallet Providers) follow trust establishment procedures.
 
 
 Entity Types and Onboarding Pathways
@@ -35,30 +35,30 @@ The following table summarizes entity types, their roles, and corresponding onbo
    * - **Entity Type**
      - **Primary Role**
      - **Onboarding Pathway**
-     - **Key Requiring**
+     - **Key Requirements**
    * - Authentic Sources
      - Authoritative data providers for Digital Credential attributes
      - :ref:`entity-onboarding:Authentic Sources Registration Process`
-     - Data authority validation, API integration, such as PDND.
+     - Data authority validation; API integration (e.g., PDND)
    * - Credential Issuers
-     - Generate and issue Digital Credentials using Authentic Source's data
+     - Generate and issue Digital Credentials using Authentic Source data
      - :ref:`entity-onboarding:Federation Entities Onboarding Process`
-     - IT-Wallet Trust Infrastructure compliance, :ref:`trust:The Infrastructure of Trust`.
+     - IT-Wallet Trust Infrastructure compliance; see :ref:`trust:The Infrastructure of Trust`
    * - Relying Parties
      - Verify Digital Credentials for service access
      - :ref:`entity-onboarding:Federation Entities Onboarding Process`
-     - IT-Wallet Trust Infrastructure compliance, :ref:`trust:The Infrastructure of Trust`.
+     - IT-Wallet Trust Infrastructure compliance; see :ref:`trust:The Infrastructure of Trust`
    * - Wallet Providers
-     - Provide Wallet Solutions to citizens
+     - Provide wallet solutions to citizens
      - :ref:`entity-onboarding:Federation Entities Onboarding Process`
-     - IT-Wallet Trust Infrastructure compliance :ref:`trust:The Infrastructure of Trust`, Wallet Attestation capabilities :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`.
+     - IT-Wallet Trust Infrastructure compliance (see :ref:`trust:The Infrastructure of Trust`); Wallet Attestation capabilities (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`)
    * - Wallet Instances
-     - User-level digital Wallet applications
-     - Indirect registration via Wallet Provider, see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`.
-     - Wallet Attestation from certified Wallet Provider.
+     - User-level digital wallet applications
+     - Indirect registration via Wallet Provider, see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`
+     - Wallet Attestation from certified Wallet Provider
 
-Administrative vs Technical Registration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Administrative and Technical Registration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The onboarding process follows a structured multi-phase approach:
 
@@ -73,7 +73,7 @@ The onboarding process follows a structured multi-phase approach:
 
     - **Claims Registry Integration**: Authentic Sources select standardized claim definitions from Claims Registry during capability declaration.
     - **Taxonomy Integration**: All entities use Taxonomy hierarchical classification (domains, purposes) for organizational structure to categorize Credentials.
-    - **AS Registry Integration**: Authentic Sources registered with their declared claims and capabilities, enabling Credential Issuers discovery and coordination.
+    - **Authentic Source Registry Integration**: Authentic Sources registered with their declared claims and capabilities, enabling Credential Issuers discovery and coordination.
     - **Federation Registry Integration**: Operational entities included for trust validation during Credential operations.
     - **Catalog Integration**: Credential types published in :ref:`registry:Digital Credentials Catalog Structure` based on supervisory body policies for public discovery eligibility.
 
@@ -83,20 +83,20 @@ All registry components and their interactions are detailed in :ref:`registry:Re
 Authentic Sources Registration Process
 --------------------------------------
 
-Authentic Sources undergo systematic registration to establish their role as authoritative data providers within the IT-Wallet ecosystem. The registration process consists of requirements specification and procedural validation as described in :ref:`onboarding-high-level:Authentic Source Operator Journey`.
+Authentic Sources MUST complete a structured registration process to confirm their status as authoritative data providers in the IT-Wallet ecosystem. This process includes specifying requirements and undergoing procedural validation, as detailed in :ref:`onboarding-high-level:Authentic Source Operator Journey`.
 
-AS Registration Requirements
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Authentic Source Registration Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Authentic Sources MUST comply with the following technical requirements:
 
   - **Claims Compliance**:
 
-    - **Claims Registry Adoption**: The Entities MUST use standardized Claims Registry identifiers in data responses without custom claim mapping.
+    - **Claims Registry Adoption**: The Entities MUST use standardized Claims Registry identifiers in data responses. Custom claim mapping is not allowed.
 
   - **API Integration Standards**:
 
-    - **Public Entities**: MUST integrate through PDND platform with e-service implementation following government standards.
+    - **Public Entities**: MUST integrate through PDND platform with e-service implementation following national specifications.
     - **Private Entities**: MUST provide a complete OpenAPI 3.0 API Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
 
   - **Response Format Standardization**:
@@ -114,9 +114,12 @@ Authentic Sources MUST comply with the following technical requirements:
 Authentic Sources Registration Information Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note::
+  Only Italian Authentic Sources can be onboarded at the current stage of IT-Wallet.
+
 During registration, Authentic Sources MUST provide the following information:
 
-.. list-table:: AS Registration Information Requirements
+.. list-table:: Authentic Source Registration Information Requirements
    :class: longtable
    :header-rows: 1
    :widths: 30 70
@@ -127,7 +130,7 @@ During registration, Authentic Sources MUST provide the following information:
      - **REQUIRED**. Organization Details including:
 
        - Organization name, type ("public" or "private") and country (ISO 3166-1 alpha-2).
-       - Administrative identifier codes such as IPA registration code (REQUIRED only for public Authentic Sources) and legal identifier (Fiscal Code/VAT Number).
+       - Administrative identifier codes such as IPA registration code (REQUIRED only for public Authentic Sources) and legal identifier (tax payer's number or VAT number).
        - Contact Information including technical and administrative contacts, such as email addresses, homepage URI, privacy policy URI.
    * - **Data Capabilities Declaration**
      - **REQUIRED**. Available claims:
@@ -143,19 +146,17 @@ During registration, Authentic Sources MUST provide the following information:
    * - **Data Provision Capabilities**
      - **REQUIRED**. Indicates if Authentic Source supports immediate/deferred data provision (boolean).    
    * - **User Information**
-     - **OPTIONAL**. Markdown-formatted text containing human-readable information about data availability constraints or limitations. For example, if the AS database only contains data registered after a specific date, this information MUST be conveyed to users.
+    - **OPTIONAL**. Markdown-formatted text containing human-readable information about data availability constraints or limitations. For example, if the Authentic Source database only contains data registered after a specific date, this information MUST be conveyed to Users.
 
        **Example**: "Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office.".
    * - **Display Properties**
-     - **OPTIONAL**. Visual branding suggestions for Digital Credentials using AS data:
+    - **OPTIONAL**. Visual branding suggestions for Digital Credentials using Authentic Source data:
 
        - Background color for Digital Credentials in hexadecimal format (e.g., ``"#003d82"``).
        - Text color for Digital Credentials in hexadecimal format (e.g., ``"#ffffff"``).
        - Logo URI with cryptographic integrity verification for Digital Credential branding.
        - Visual template URI with integrity verification for Digital Credential presentation.
 
-.. note::
-  Only Italian Authentic Sources can be onboarded at the current stage of IT-Wallet.
 
 Authentic Source Registration Procedure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -169,46 +170,9 @@ The Authentic Source registration follows a technical process as described below
 
 **Step 1 - Registration Package Preparation**: The Entity prepares registration information according to the requirements table above. A non-normative example of information in JSON format is provided below. 
 
-.. code-block:: json
-
-   {
-     "entity_id": "https://transport-authority.gov.example",
-     "organization_info": {
-       "organization_name": "National Transport Authority",
-       "organization_type": "public",
-       "ipa_code": "nta_001",
-       "legal_identifier": "12345678901",
-       "organization_country": "XX",
-       "homepage_uri": "https://www.gov.example/transport",
-       "contacts": ["registry@transport-authority.gov.example", "technical-support@transport-authority.gov.example"],
-       "policy_uri": "https://www.gov.example/transport/privacy-policy",
-       "user_information": "Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local transport authority office.",
-       "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
-       "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
-     },
-     "data_capabilities": [
-       {
-         "domains": ["IDENTITY", "AUTHORIZATION"],
-         "intended_purposes": ["DRIVING_LICENSE"],
-         "available_claims": [
-           "given_name", "family_name", "birth_date", "birth_place",
-           "issue_date", "expiry_date", "document_number", "driving_privileges"
-         ],
-         "integration_method": "pdnd",
-         "integration_endpoint": "https://api.gov.example/transport/driving-license",
-         "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
-         "data_provision": {
-           "immediate_flow": true,
-           "deferred_flow": false
-         },
-         "update_frequency": "real_time",
-         "display": {
-          "background_color": "#003d82",
-          "text_color": "#ffffff",
-         }
-       }
-     ],
-   }
+.. literalinclude:: ../../examples/as-registration-example.json
+   :language: json
+   :caption: Authentic Source Registration example
 
 **Step 2 - Technical Validation**: Supervisory Body validates submitted registration focusing on:
 
@@ -221,33 +185,33 @@ The Authentic Source registration follows a technical process as described below
 
   - **Response Format Standards**: Verification of Claims Registry format usage and state mapping specification.
 
-**Step 3 - AS Registry Publication**: Upon successful validation:
+**Step 3 - Authentic Source Registry Publication**: Upon successful validation:
 
-  - Authentic Source Entity is published in the AS Registry with complete declared capabilities.
+  - Authentic Source Entity is published in the Authentic Source Registry with complete declared capabilities.
   - Authentic Source becomes discoverable by Credential Issuers for integration requests.
   - Authentic Source is ready for operational data provision.
 
 .. note::
-   AS registration is complete and independent of CI integration. AS entities become discoverable immediately upon AS Registry publication, while Credential availability to end-users depends on administrative AS-CI authorization followed by successful technical integration and Supervisory Body policy approval for catalog eligibility.
+   Authentic Source registration is complete and independent of Credential Issuer integration. Authentic Sources become discoverable immediately upon Authentic Source Registry publication, while Credential availability to end Users depends on administrative Authentic Source to Credential Issuer authorization followed by successful technical integration and Supervisory Body policy approval for catalog eligibility.
 
 
-Authentic Source - Credential Issuer Integration Process
----------------------------------------------------------
+Authentic Source to Credential Issuer Authorization Process
+-----------------------------------------------------------
 
-Following administrative AS-CI authorization obtained during the administrative registration phase, technical integration procedures establish the operational API connections and data access mechanisms between Credential Issuers and Authentic Sources.
+Following administrative Authentic Source to Credential Issuer authorization obtained during the administrative registration phase, technical integration procedures establish the operational API connections and data access mechanisms between Credential Issuers and Authentic Sources.
 
 Technical integration encompasses:
 
-- **API Endpoint Configuration**: Establishment of secure API connections as specified in AS technical specifications (PDND e-services for public AS, OpenAPI 3.0 implementations for private AS).
-- **Claims Mapping Validation**: Verification that CI implementation correctly maps AS data responses to standardized Claims Registry identifiers.
-- **Data Flow Testing**: Validation of immediate/deferred data provision capabilities and error handling mechanisms.
-- **Security Implementation**: Configuration of authentication, authorization, and audit logging as required by AS security standards.
+- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, OpenAPI 3.0 implementations for private Authentic Sources).
+- **Claims Mapping Validation**: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.
+- **Data Flow Testing**: Validation of immediate or deferred data provision capabilities and error handling mechanisms.
+- **Security Implementation**: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.
 
 
 Federation Entities Onboarding Process
 ---------------------------------------
 
-Federation Entities (Credential Issuers, Relying Parties, and Wallet Providers) MUST undergo onboarding procedures to establish trust relationships within the IT-Wallet ecosystem. The federation onboarding process establishes the distributed trust infrastructure through X.509 Certificate issuance, Trust Chain validations, and compliance attestation as detailed in :ref:`trust:The Infrastructure of Trust`.
+Federation Entities, including Credential Issuers, Relying Parties, and Wallet Providers, must complete onboarding procedures to become eligible participants in the IT-Wallet ecosystem. This process establishes distributed trust by issuing X.509 Certificates, validating Trust Chains, and confirming compliance, as described in :ref:`trust:The Infrastructure of Trust`.
 
 Hierarchical Federation Authority Model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -277,9 +241,9 @@ Federation Entities MUST comply with the following technical requirements before
   - **Key Generation**: The entities MUST generate at least two key pairs using elliptic curve cryptography as specified in :ref:`algorithms:Cryptographic Algorithms`:
 
     - **Federation Key Pair**: Used for signing Entity Configurations and attesting application specific keys.
-    - **application specific key Pair(s)**: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.
+    - *Application Specific Key Pair(s)**: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.
 
-  - **application specific key Attestation**: The entities MUST create self-signed X.509 Certificates for their application specific keys using the Federation Private Key. These Certificates establish the authority relationship between Federation and application specific keys.
+  - **Application Specific Key Attestation**: The entities MUST create self-signed X.509 Certificates for their application specific keys using the Federation Private Key.
 
   - **Entity Configuration Preparation**: The entities MUST publish an Entity Configuration (EC) signed with their Federation Private Key at the ``/.well-known/openid-federation`` endpoint as defined in :ref:`trust:The Infrastructure of Trust`. The EC MUST include:
 
@@ -287,19 +251,19 @@ Federation Entities MUST comply with the following technical requirements before
     - An ``iss`` claim with the Federation Entity Identifier as defined in :ref:`trust:Federation Roles`.
     - A ``sub`` claim equal to the ``iss`` claim.
     - ``iat`` and ``exp`` claims defining a valid time interval.
-    - A ``metadata`` claim containing entity-specific metadata organized by Metadata Types (see :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`, :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`, or :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`) with application specific keys included in the metadata ``jwks`` fields and self-signed certificates in the corresponding ``x5c`` claims.
+    - A ``metadata`` claim containing entity-specific metadata organized by Metadata Types (see :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`, :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`, or :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`) with application specific keys included in the metadata ``jwks`` fields and self-signed X.509 Certificates in the corresponding ``x5c`` claims.
 
-  - **Certificate Signing Request (CSR)**: The entities MUST prepare a CSR in PKCS #10 format containing **only the Federation Entity Public Key** for X.509 Certificate issuance by the Federation Authority as defined in :ref:`trust:Trust Infrastructure Requirements`.
+  - **Certificate Signing Request (CSR)**: The entities MUST prepare a Certificate Signing Request (CSR) in PKCS #10 format containing **the Federation Entity Public Key** for X.509 Certificate issuance by the Federation Authority, as defined in :ref:`trust:Trust Infrastructure Requirements`.
 
 Federation Onboarding Procedure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The federation onboarding follows a structured 4-step procedure, it can be performed by the Trust Anchor or an Intermediate**.
+The federation onboarding follows a structured 4-step procedure, it can be performed by the Trust Anchor or an Intermediate.
 
 .. note::
    The following procedure applies to Wallet Providers, Credential Issuers and Relying Parties that wish to perform onboarding in the IT-Wallet federation. The **Federation Authority** is referred to Trust Anchor or Intermediate according to organizational characteristics and federation governance policies.
 
 .. note::
-   This section covers only the technical registration requirements. All administrative information (legal entity validation, regulatory compliance, organizational eligibility, etc.) is assumed to have been collected and validated by the Supervisory Body during the administrative registration phase, which is out of scope for this technical specification. Examples of administrative information include: legal entity name, business registration numbers, contact persons, legal compliance documentation, and operational authorizations.
+   This section covers the technical registration requirements. All administrative information, such as legal entity validation, regulatory compliance, organizational eligibility, is assumed to have been collected and validated by the Supervisory Body during the administrative registration phase, which is out of scope for this technical specification. Examples of administrative information include: legal entity name, business registration numbers, contact persons, legal compliance documentation, and operational authorizations.
 
 .. plantuml:: plantuml/federation-onboarding-process.puml
     :width: 99%
@@ -326,33 +290,29 @@ The federation onboarding follows a structured 4-step procedure, it can be perfo
 
        - Contain **only the Federation Entity Public Keys**.
        - Be signed with the corresponding Federation Private Key.
-       - Define the certificate Subject with required attributes as specified in :ref:`trust:X.509 Certificates Issuance` for Federation Entities.
+       - Define the X.509 Certificate Subject with required attributes as specified in :ref:`trust:X.509 Certificates Issuance` for Federation Entities.
 
 .. warning::
-   Before submitting the technical onboarding request, Federation Entities MUST ensure that their ``/.well-known/openid-federation`` endpoint publishes a valid Entity Configuration (as defined in :ref:`trust:Entity Configuration`) signed with their Federation Private Key corresponding to the Federation Entity Public Key provided in the request. The Entity Configuration MUST already include application specific keys in the metadata with self-signed X.509 certificates in the ``x5c`` claims.
+   Before submitting the technical onboarding request, Federation Entities MUST ensure that their ``/.well-known/openid-federation`` endpoint publishes a valid Entity Configuration (as defined in :ref:`trust:Entity Configuration`) signed with their Federation Private Key corresponding to the Federation Entity Public Key provided in the request. The Entity Configuration MUST already include application specific keys in the metadata with self-signed X.509 Certificates in the ``x5c`` claims.
 
 
 A non-normative example of the technical information structure that Federation Entities submit during Step 1 onboarding request:
 
-.. code-block:: json
+.. literalinclude:: ../../examples/federation-onboarding-request-example.json
+   :language: json
+   :caption: Federation onboarding request example
 
-  {
-    "entity_id": "https://credential-issuer.example.gov",
-    "entity_type": "credential_issuer",
-    "jwks": {
-      "keys": [
-        {
-          "kid": "NsXymfIILEPR5Y0t",
-          "kty": "EC",
-          "x": "gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g",
-          "y": "l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4",
-          "crv": "P-256"
-        }
-      ]
-    },
-    "certificate_signing_request": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBTTCB9QIBADCBkjELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1QYWdvUEEgUy5wLkEuMSQwIgYDVQQDDBtmb28x\nMS5ibG9iLmNvcmUud2luZG93cy5uZXQxJjAkBgkqhkiG9w0BCQEWF3BhZ29wYXNw\nYUBwZWMucGFnb3BhLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgXY4FApF\nJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g\n-----END CERTIFICATE REQUEST-----",
-    "submission_timestamp": "2025-09-25T14:30:00Z"
-  }
+    .. rst-class:: rst-comment
+
+       Private JWK for kid "k1d2e3f4g5h6i7j8":
+       {
+         "kid": "k1d2e3f4g5h6i7j8",
+         "kty": "EC",
+         "crv": "P-256",
+         "x": "8w1QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
+         "y": "QwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw",
+         "d": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+       }
 
 The following shows the decoded content of the CSR example above for reference:
 

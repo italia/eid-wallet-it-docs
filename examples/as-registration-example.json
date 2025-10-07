@@ -1,0 +1,46 @@
+{
+  "entity_id": "https://transport-authority.gov.example",
+  "organization_name": "National Transport Authority",
+  "organization_type": "public",
+  "ipa_code": "nta_001",
+  "legal_identifier": "12345678901",
+  "organization_country": "XX",
+  "homepage_uri": "https://www.gov.example/transport",
+  "email_contacts": [
+    "registry@transport-authority.gov.example",
+    "technical-support@transport-authority.gov.example"
+  ],
+  "policy_uri": "https://www.gov.example/transport/privacy-policy",
+  "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
+  "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+  "data_capabilities": [
+    {
+      "description": "Driving license data is available for licenses issued after January 1, 2020. For older licenses, contact the local transport authority office.",
+      "domains": ["IDENTITY", "AUTHORIZATION"],
+      "intended_purposes": ["DRIVING_LICENSE"],
+      "available_claims": [
+        "given_name",
+        "family_name",
+        "birth_date",
+        "birth_place",
+        "issue_date",
+        "expiry_date",
+        "document_number",
+        "driving_privileges"
+      ],
+      "integration_method": "pdnd",
+      "integration_endpoint": "https://api.gov.example/transport/driving-license",
+      "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
+      "data_provision": {
+        "immediate_flow": true,
+        "deferred_flow": false
+      },
+      "update_frequency": "real_time",
+      "display": {
+        "background_color": "#003d82",
+        "text_color": "#ffffff"
+      }
+    }
+  ]
+}
+
