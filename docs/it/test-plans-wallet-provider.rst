@@ -77,7 +77,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_002g
      - Trust, Interoperabilità
      - Chiavi di firma Entity Configuration
-     - Il payload del JWT Entity Configuration contiene il parametro ``jwks`` avente uno o più JWK (:rfc:`7517`) validi, cioascuno contenente chiavi pubbliche di firma del Fornitore del Wallet nel ruolo di Entità della Federazione .
+     - Il payload del JWT Entity Configuration contiene il parametro ``jwks`` avente uno o più JWK (:rfc:`7517`) validi, ciascuno contenente chiavi pubbliche di firma del Fornitore del Wallet nel ruolo di Entità della Federazione .
    * - WP_002h
      - Trust, Interoperabilità
      - Metadata Entity Configuration
