@@ -15,4 +15,4 @@ Authentic Sources MUST:
     - the request for Users attributes is related to data about themselves;
     - the request for User attributes comes from a valid Wallet Instance;
 
-  - cooperate with their Credential Issuers so that the attributes attested in a Digital Credential are always kept up to date. Public Authentic Sources MUST use PDND to notify their Credential Issuers of any update regarding attributes that have changed or are no longer valid.
+  - cooperate with their Credential Issuers so that the attributes attested in a Digital Credential are always kept up to date. Public Authentic Sources MUST use PDND Signal Hub to notify their Credential Issuers of any update regarding attributes that have changed or are no longer valid.

@@ -4,6 +4,9 @@
 Componenti della Soluzione Wallet
 =================================
 
+.. note::
+   I test relativi ai componenti della Wallet Solution (Backend del Wallet e Unità di Wallet) sono riassunti in :ref:`WP_012 <wallet-provider-backend-testcases>` e in :ref:`WP_013 <wallet-instance-testcases>`, rispettivamente.
+
 Backend del Wallet
 ------------------
 

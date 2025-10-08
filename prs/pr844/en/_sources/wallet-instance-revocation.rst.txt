@@ -8,7 +8,7 @@ This section describes the involved entities and modalities to request a Wallet 
 
 The Wallet Provider MUST ensure the security and reliability of Wallet Instances, keeping them updated and compliant with security requirements. When, for technical security reasons (e.g., relating to the compromise of cryptographic material) the security of the Wallet Instance is compromised, the Wallet Provider MUST revoke the Wallet Instance.
 
-As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigger the Wallet Instance revocation process:
+As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigger the Wallet Instance revocation process (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 
 - **Users**, connecting to the Wallet Provider's web portal from their Wallet Instance or using an external browser.
 - **PID Providers** when notified by the Authentic Source of the PID (ANPR) of the User's death.
@@ -21,7 +21,7 @@ As shown in :numref:`fig_Wallet_Instance_Revoc_Entities`, other actors MAY trigg
     :caption: `Entities involved in the Wallet Instance revocation process. <https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1>`_
 
 
-Regardless of who triggered the revocation, the Wallet Provider has to inform Users when their Wallet Unit is revoked, according to the following requirements:
+Regardless of who triggered the revocation, the Wallet Provider has to inform Users when their Wallet Unit is revoked, according to the following requirements (:ref:`WP_034 <wallet-instance-testcases>`):
 
 - Out-of-band alerts (e.g., email or SMS) MUST be sent as the primary notification mechanism alongside the Wallet Unit itself.
 - The alert MUST occur within 24 hours from the effective Wallet Unit revocation.
@@ -44,15 +44,15 @@ Regardless of who triggered the revocation, the Wallet Provider has to inform Us
 Wallet Instance Revocation Request
 """"""""""""""""""""""""""""""""""
 
-Users MAY request the Wallet Instance revocation by:
+Users MAY request the Wallet Instance revocation (:ref:`WP_032 <wallet-instance-testcases>`) by:
 
 - *Selecting the revocation functionality from their Wallet Instance*: this functionality may be used by Users before changing their phone.
 - *Using an external user agent*: this covers cases where Users lose their device, and so their access to their Wallet Instance.
 
-In both cases, by using the Wallet Provider portal:
+In both cases, by using the Wallet Provider portal (:ref:`WP_005–006 <wallet-provider-backend-testcases>`):
 
 - Users MUST authenticate with at least a second-factor authentication mechanism, or have an active session that meets this requirement.
-- The Wallet Provider MUST allow Users to view the state of their Wallet Instances associated with their authenticated session and ask for revocation, sending a Wallet Instance Retrieval or Revocation Request, as applicable, to the :ref:`wallet-provider-endpoint:Wallet Instance Management endpoint` of the Wallet Provider Backend.
+- The Wallet Provider MUST allow Users to view the state of their Wallet Instances associated with their authenticated session and ask for revocation, sending a Wallet Instance Retrieval or Revocation Request (:ref:`WP_033 <wallet-instance-testcases>`, and :ref:`WP_145 <wallet-instance-optional-testcases>`), as applicable, to the :ref:`wallet-provider-endpoint:Wallet Instance Management endpoint` of the Wallet Provider Backend.
 
 Below is a non-normative example of a Wallet Instances Retrieval Request.
 
@@ -61,7 +61,7 @@ Below is a non-normative example of a Wallet Instances Retrieval Request.
    GET /wallet-instances HTTP/1.1
    Host: walletprovider.example.com
 
-Upon a successful retrieval, the Wallet Provider MUST return a confirmation response, with the status of all Wallet Instances associated with the User.
+Upon a successful retrieval, the Wallet Provider MUST return a confirmation response, with the status of all Wallet Instances associated with the User (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 Below is a non-normative example of a Wallet Instances Retrieval Response.
 
 .. code:: http
@@ -83,7 +83,7 @@ Below is a non-normative example of a Wallet Instances Retrieval Response.
      }
    ]
 
-Once the User identifies the Wallet Instance to be revoked, a Wallet Instance Revocation Request can be sent to the endpoint, including the Wallet Instance ID as a path parameter.
+Once the User identifies the Wallet Instance to be revoked, a Wallet Instance Revocation Request can be sent to the endpoint, including the Wallet Instance ID as a path parameter (:ref:`WP_147 <wallet-instance-optional-testcases>`).
 Below is a non-normative example of a Wallet Instance Revocation Request.
 
 .. code-block:: http
@@ -102,7 +102,7 @@ Below is a non-normative example of a Wallet Instance Revocation Request.
 Wallet Instance Revocation Response
 """""""""""""""""""""""""""""""""""
 
-Upon a successful revocation, the Wallet Provider MUST return a confirmation response.
+Upon a successful revocation, the Wallet Provider MUST return a confirmation response  (:ref:`WP_148 <wallet-instance-optional-testcases>`).
 Below is a non-normative example of a Wallet Instance Revocation Response.
 
 

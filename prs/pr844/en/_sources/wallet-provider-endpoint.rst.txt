@@ -11,12 +11,19 @@ Wallet Provider Endpoints
 
 The Wallet Provider, responsible for delivering a Wallet Solution, MUST expose the endpoints to support trust establishment and essential Wallet Instance functionalities. These include the ``/.well-known/openid-federation`` Federation Endpoint which MUST adhere to the OpenID Federation 1.0 specification to reliably establish trust with the Wallet Provider's as well as, endpoints for Wallet Instance registration, nonce generation (required for registration), attestation issuance, and revocation. Aside from the Federation endpoint, the implementation details of the others are left to the Wallet Provider's discretion.
 
+.. note::
+  Tests related to the use of Wallet Provider endpoints are defined in 
+  :ref:`wallet-provider-test-matrix`, particularly 
+  :ref:`wallet-provider-backend-testcases`, 
+  :ref:`wallet-instance-testcases`, and 
+  :ref:`wallet-instance-optional-testcases`.
+
 Federation Endpoint
 ^^^^^^^^^^^^^^^^^^^
 
 The ``/.well-known/openid-federation`` endpoint serves as the discovery mechanism for trust establishment by retrieving the Wallet Provider Entity Configuration.
 
-See Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` for technical details.
+See Section :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` for technical details (:ref:`WP_001–004 <wallet-provider-backend-testcases>`).
 
 
 Wallet Solution Nonce Endpoint
@@ -24,7 +31,7 @@ Wallet Solution Nonce Endpoint
 
 This is a RESTful API endpoint that allows the Wallet Instance to request a cryptographic nonce from the Wallet Provider. The nonce serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
 
-See :ref:`mobile-application-instance:Mobile Application Nonce Request` and :ref:`mobile-application-instance:Mobile Application Nonce Response` for details on the Nonce Request and Nonce Response.
+See :ref:`mobile-application-instance:Mobile Application Nonce Request` and :ref:`mobile-application-instance:Mobile Application Nonce Response` for details on the Nonce Request and Nonce Response (:ref:`WP_131 <wallet-instance-optional-testcases>`).
 
 Wallet Instance Management Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,17 +42,17 @@ The following sections describe the registration, status retrieval and revocatio
 Wallet Instance Registration Request
 """""""""""""""""""""""""""""""""""""
 
-To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`mobile-application-instance:Mobile Application Instance Initialization Request`.
+To register a Wallet Instance, the request to the Wallet Provider MUST use the HTTP POST method with ``Content-Type`` set to `application/json`. The request body MUST contain the claims described in :ref:`mobile-application-instance:Mobile Application Instance Initialization Request` (:ref:`WP_131–134 <wallet-instance-optional-testcases>`).
 
 Wallet Instance Registration Response
 """""""""""""""""""""""""""""""""""""""""
 
-If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`mobile-application-instance:Mobile Application Instance Initialization Response`.
+If a Wallet Instance Registration Request is successfully validated, the Wallet Provider provides an HTTP Response with status code 204 (No Content). For detatails see :ref:`mobile-application-instance:Mobile Application Instance Initialization Response` (:ref:`WP_135–137 <wallet-instance-optional-testcases>`).
 
 Wallet Instance Retrieval Request
 """""""""""""""""""""""""""""""""""
 
-To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider.
+To retrieve all Wallet Instances associated with a User, a request MUST be sent using the HTTP GET method to the Wallet Provider (:ref:`WP_145 <wallet-instance-optional-testcases>`).
 
 .. note::
   For retrieving a specific Wallet Instance, the request MUST include the Wallet Instance ID as a path parameter.
@@ -56,7 +63,7 @@ Wallet Instance Retrieval Response
 
 If a Wallet Instance Retrieval Request is successfully processed, the Wallet Provider MUST return an HTTP Response with a 200 (OK) status code.
 The response body MUST be in JSON format and include the relevant Wallet Instance information, such as its unique ID, status, and issuance date.
-When retrieving all Wallet Instances, the response MUST return an array containing the details of all associated instances.
+When retrieving all Wallet Instances, the response MUST return an array containing the details of all associated instances (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 
 If any errors occur during the retrieval process, an error response MUST be returned. Refer to :ref:`wallet-provider-endpoint:Error Handling for Wallet Instance Management` for details on error codes and descriptions.
 
@@ -79,7 +86,7 @@ Below is a non-normative example of an error response:
 Wallet Instance Revocation Request
 """"""""""""""""""""""""""""""""""
 
-To revoke an active Wallet Instance, a revocation request MUST be sent using the HTTP PATCH method with Content-Type set to ``application/json``. The request body MUST contain a ``status`` parameter set to ``REVOKED``.
+To revoke an active Wallet Instance, a revocation request MUST be sent using the HTTP PATCH method with Content-Type set to ``application/json``. The request body MUST contain a ``status`` parameter set to ``REVOKED`` (:ref:`WP_147 <wallet-instance-optional-testcases>`).
 
 .. note::
   While PATCH is the recommended method, the revocation request MAY also be sent using the POST method, depending on implementation preferences.
@@ -87,9 +94,9 @@ To revoke an active Wallet Instance, a revocation request MUST be sent using the
 Wallet Instance Revocation Response
 """""""""""""""""""""""""""""""""""
 
-If a Wallet Instance Revocation Request is successfully processed, the Wallet Provider provides an HTTP Response with a 204 (No Content) status code.
+If a Wallet Instance Revocation Request is successfully processed, the Wallet Provider provides an HTTP Response with a 204 (No Content) status code (:ref:`WP_148 <wallet-instance-optional-testcases>`).
 
-If any errors occur during the Wallet Instance Revocation, an error response MUST be returned. Refer to :ref:`wallet-provider-endpoint:Error Handling for Wallet Instance Management` for details on error codes and descriptions.
+If any errors occur during the Wallet Instance Revocation, an error response MUST be returned. Refer to :ref:`wallet-provider-endpoint:Error Handling for Wallet Instance Management` for details on error codes and descriptions (:ref:`WP_035–039, WP_043–044 <wallet-instance-testcases>`).
 
 Below is a non-normative example of an error response:
 
@@ -115,13 +122,13 @@ In case of an error, the Wallet Provider MUST return an error response as define
 
 - *error*. The error code.
 - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
-
-The following sections categorize errors into **common errors**, which apply to all requests, and **request-specific errors**, which are relevant to particular operations.
+ 
+The following sections categorize errors into **common errors**, which apply to all requests, and **request-specific errors**, which are relevant to particular operations (:ref:`WP_035–044 <wallet-instance-testcases>`, and :ref:`WP_150–155 <wallet-instance-optional-testcases>`).
 
 Common Error Responses
 """""""""""""""""""""""
 
-The following errors apply to all Wallet Instance Management operations (Registration, Retrieval, and Revocation), and MUST be supported for the error response, unless otherwise specified:
+The following errors apply to all Wallet Instance Management operations (Registration, Retrieval, and Revocation), and MUST be supported for the error response, unless otherwise specified (:ref:`WP_035–039 <wallet-instance-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -149,7 +156,7 @@ Request-Specific Error Responses
 
 The errors in :ref:`mobile-application-instance:Mobile Application Instance Initialization Error Response` MUST be supported for error responses related to **Wallet Instance Registration**.
 
-The following errors MUST be supported for error responses related to **Wallet Instance Retrieval**:
+The following errors MUST be supported for error responses related to **Wallet Instance Retrieval** (:ref:`WP_041–042 <wallet-instance-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -166,7 +173,7 @@ The following errors MUST be supported for error responses related to **Wallet I
      - ``unauthorized``
      - The request lacks valid authentication credentials.
 
-The following errors MUST be supported for error responses related to **Wallet Instance Revocation**:
+The following errors MUST be supported for error responses related to **Wallet Instance Revocation** (:ref:`WP_043–044 <wallet-instance-testcases>`):
 
 .. list-table::
    :class: longtable
@@ -191,14 +198,14 @@ This is a RESTful API endpoint provided by the Wallet Provider that enables the 
 Wallet Attestation Issuance Request
 """""""""""""""""""""""""""""""""""""
 
-Further details on the Wallet Attestation Issuance Request are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Request` section.
+Further details on the Wallet Attestation Issuance Request are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Request` section (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
 The ``typ`` header of the Integrity Request JWT assumes the value ``wp-war+jwt``.
 
 Wallet Attestation Issuance Response
 """""""""""""""""""""""""""""""""""""
 
-If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter whose value is an array of JSON Objects (see :ref:`wallet-attestation-issuance:Wallet Attestation Issuance`) containing the Wallet Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider. The JWT formatted Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`. The SD-JWT and mdoc formatted Wallet Attestation will instead be used during presentation respectively in the remote (:ref:`remote-flow:Remote Flow`) and proximity (:ref:`proximity-flow:Proximity Flow`) flows.
+If the Wallet Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_attestations`` parameter whose value is an array of JSON Objects (see :ref:`wallet-attestation-issuance:Wallet Attestation Issuance`) containing the Wallet Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider (:ref:`WP_027–029 <wallet-instance-testcases>` and :ref:`WP_143–144 <wallet-instance-optional-testcases>`). The JWT formatted Wallet Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`. The SD-JWT and mdoc formatted Wallet Attestation will instead be used during presentation respectively in the remote (:ref:`remote-flow:Remote Flow`) and proximity (:ref:`proximity-flow:Proximity Flow`) flows.
 
 
 The JSON Object returned in the response has the following claim:
@@ -237,7 +244,7 @@ Each JSON Object contained in the ``wallet_attestations`` array MUST have the fo
 
       - This specification.
 
-If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Error Response` section.
+If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Error Response` section (:ref:`WP_035–039 <wallet-instance-testcases>`).
 
 
 Wallet Attestation JWT

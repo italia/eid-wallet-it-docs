@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="8. Entity Onboarding" href="entity-onboarding.html" />
-    <link rel="prev" title="6. The Infrastructure of Trust" href="trust.html" /> 
+    <link rel="prev" title="6. The Infrastructure of Trust" href="trust-infrastructure.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -135,20 +135,21 @@
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. Registry Infrastructure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
 </ul>
 
         </div>
@@ -192,7 +193,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Data Registry APIs</strong>: MUST support pagination and filtering capabilities.</p></li>
-<li><p><strong>Federation Trust Infrastructure</strong>: as defined in <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p></li>
+<li><p><strong>Federation Trust Infrastructure</strong>: as defined in <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p></li>
 </ul>
 </div></blockquote>
 <p>Below a non-normative example is given.</p>
@@ -236,7 +237,7 @@ Content-Type: application/json
 </section>
 <section id="claims-registry">
 <h2><span class="section-number">7.3. </span>Claims Registry<a class="headerlink" href="#claims-registry" title="Link to this heading">¶</a></h2>
-<p>The <strong>Claims Registry</strong> provides standardized semantic definitions for individual credential attributes, data types, and validation rules. This registry serves as the semantic foundation for credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.</p>
+<p>The <strong>Claims Registry</strong> provides standardized semantic definitions for individual Credential attributes, data types, and validation rules. This registry serves as the semantic foundation for credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.</p>
 <p>The Supervisory Body MUST maintain the Claims Registry to ensure semantic consistency and regulatory compliance across the ecosystem. The registry MUST contain:</p>
 <blockquote>
 <div><ul class="simple">
@@ -524,7 +525,7 @@ Content-Type: application/json
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>as_id</strong></p></td>
+<tr class="row-even"><td><p><strong>entity_id</strong></p></td>
 <td><p>string</p></td>
 <td><p>REQUIRED. Unique identifier following the normative schema: <code class="docutils literal notranslate"><span class="pre">https://{organization_domain}[/{optional_path}]</span></code>.</p></td>
 </tr>
@@ -668,7 +669,7 @@ Content-Type: application/json
 <p>A non-normative example of AS Registry structure is given below:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;as_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
@@ -709,7 +710,7 @@ Content-Type: application/json
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;as_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
@@ -768,12 +769,12 @@ Content-Type: application/json
 </section>
 <section id="as-ci-coordination">
 <h3><span class="section-number">7.4.4. </span>AS-CI Coordination<a class="headerlink" href="#as-ci-coordination" title="Link to this heading">¶</a></h3>
-<p>Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in <a class="reference internal" href="entity-onboarding.html#as-ci-integration-process"><span class="std std-ref">AS-CI Integration Process</span></a>.</p>
+<p>Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in <span class="xref std std-ref">entity-onboarding:AS-CI Integration Process</span>.</p>
 </section>
 </section>
 <section id="federation-registry">
 <h2><span class="section-number">7.5. </span>Federation Registry<a class="headerlink" href="#federation-registry" title="Link to this heading">¶</a></h2>
-<p>The <strong>Federation Registry</strong> provides the cryptographic trust infrastructure for all IT-Wallet ecosystem participants. The Federation Registry maintains the authoritative list of trusted entities and their operational status using federation-specific endpoints as defined in <a class="reference internal" href="trust.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p>
+<p>The <strong>Federation Registry</strong> provides the cryptographic trust infrastructure for all IT-Wallet ecosystem participants. The Federation Registry maintains the authoritative list of trusted entities and their operational status using federation-specific endpoints as defined in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>.</p>
 <section id="registry-integration-role">
 <h3><span class="section-number">7.5.1. </span>Registry Integration Role<a class="headerlink" href="#registry-integration-role" title="Link to this heading">¶</a></h3>
 <p>Within the IT-Wallet registry architecture, the Federation Registry serves as the <strong>trust validation layer</strong> for:</p>
@@ -785,12 +786,12 @@ Content-Type: application/json
 </section>
 <section id="federation-registry-access">
 <h3><span class="section-number">7.5.2. </span>Federation Registry Access<a class="headerlink" href="#federation-registry-access" title="Link to this heading">¶</a></h3>
-<p>Federation Registry operations are accessed through the Trust Anchor's federation endpoints as detailed in <a class="reference internal" href="trust.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>. The registry discovery architecture provides federation endpoint information via the registry discovery endpoint described in <a class="reference internal" href="#registry-discovery-endpoint">Registry Discovery Endpoint</a>.</p>
+<p>Federation Registry operations are accessed through the Trust Anchor's federation endpoints as detailed in <a class="reference internal" href="trust-infrastructure.html#federation-api-endpoints"><span class="std std-ref">Federation API endpoints</span></a>. The registry discovery architecture provides federation endpoint information via the registry discovery endpoint described in <a class="reference internal" href="#registry-discovery-endpoint">Registry Discovery Endpoint</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Federation endpoints are available through both the registry discovery mechanism (for unified registry access) and the Trust Anchor's Entity Configuration at <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> (for federation-specific operations). Both sources provide the same endpoint URLs but serve different discovery patterns: registry discovery for initial ecosystem orientation, Entity Configuration for standard OpenID Federation 1.0 compliance.</p>
 </div>
-<p>For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see <a class="reference internal" href="trust.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p>
+<p>For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>.</p>
 </section>
 </section>
 <section id="digital-credentials-catalog">
@@ -1170,7 +1171,7 @@ Content-Type: application/json
 <td><p>REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>REQUIRED. Array of string identifiers referencing authorized Authentic Sources as registered in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>. Each identifier corresponds to an <code class="docutils literal notranslate"><span class="pre">as_id</span></code> value from the AS Registry, which provides complete organizational and technical metadata including data provision capabilities, integration methods, and contact information.</p></td>
+<td><p>REQUIRED. Array of string identifiers referencing authorized Authentic Sources as registered in the <a class="reference internal" href="#authentic-source-registry"><span class="std std-ref">Authentic Source Registry</span></a>. Each identifier corresponds to an <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> value from the AS Registry, which provides complete organizational and technical metadata including data provision capabilities, integration methods, and contact information.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>formats</strong></p></td>
 <td><p>REQUIRED. Array of supported technical formats of Digital Credentials, including:</p>
@@ -1820,7 +1821,7 @@ Content-Type: application/json
         <div class="button_nav">
             <div class="left">
                 
-                <a href="trust.html">
+                <a href="trust-infrastructure.html">
                     <span class="icon">&lt;</span><span><span class="section-number">6. </span>The Infrastructure of Trust</span></a>
                 
             </div>
@@ -1835,7 +1836,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/09/2025.
+      Last updated on 08/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

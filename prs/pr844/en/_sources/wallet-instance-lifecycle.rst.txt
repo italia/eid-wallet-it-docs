@@ -59,7 +59,7 @@ Transition to Operational
 
 After installation, the User opens the Wallet Instance and an activation begins (**WI ACT**).
 At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
-Hardware Key Tag, subject to obtaining the User's consent (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` for more details).
+Hardware Key Tag, subject to obtaining the User's consent (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` for more details, with tests in :ref:`WP_024 <wallet-instance-testcases>` and :ref:`WP_138 <wallet-instance-optional-testcases>`).
 This association allows the User to directly request Wallet Instance revocation from the Wallet Provider, and it also allows the Wallet Provider to
 revoke the Wallet Instance associated with that User.
 
@@ -73,7 +73,7 @@ Upon successful verification, the Wallet Provider MUST issue at least one valid 
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
-preferences and device's capabilities. Please refer to :ref:`wallet-attestation-issuance:Wallet Attestation Issuance`.
+preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-attestation-issuance:Wallet Attestation Issuance`.
 
 In the **Operational** state, Users can request the issuance of PID (**PID ISS**) or (Q)EAAs if the PID is not required in the issuance
 (**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
@@ -96,7 +96,7 @@ Transition to Uninstalled
 .........................
 
 Across all states, **Installed**, **Activated**, **Operational**, or **Valid**, the Wallet Instance can be removed entirely through the Wallet Instance
-uninstall (**WI UNINST**) transition, leading to the **Uninstalled** state. If a Wallet Instance is **Uninstalled** it ends its lifecycle.
+uninstall (**WI UNINST**) transition, leading to the **Uninstalled** state. If a Wallet Instance is **Uninstalled** it ends its lifecycle (:ref:`WP_139 <wallet-instance-optional-testcases>`).
 
 Wallet Instance Lifecycle Management
 ....................................
@@ -122,7 +122,7 @@ and the effect on their local storage.
 Through a Wallet Instance in an **Installed** state, a User is able to start the **Wallet Instance Activation** (**WI ACT**).
 As a result, the Wallet Instance MUST create a Wallet Cryptographic Hardware Key pair. In addition, if not already done,
 Users MUST set their preferred method of unlocking their Wallet Instance. As a result of the **Wallet Instance Revocation** (**WI REV**), the Wallet Instance MUST
-delete the Wallet Cryptographic Hardware Key pairs.
+delete the Wallet Cryptographic Hardware Key pairs (:ref:`WP_149 <wallet-instance-optional-testcases>`).
 
 A Wallet Provider instead is responsible for:
 

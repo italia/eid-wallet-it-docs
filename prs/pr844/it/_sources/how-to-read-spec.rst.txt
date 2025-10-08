@@ -19,7 +19,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
 **Sezione** :ref:`architecture-overview:Panoramica dell'Architettura`:
   Fornisce una visione di alto livello dell’Architettura, in termini di governance e processi operativi abilitati.
 
-**Sezione** :ref:`functionalities:Progettazione dell'Esperienza dell'Utente`: 
+**Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: 
   Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio. 
 
 **Sezione** :ref:`trust:L'Infrastruttura di Trust`:
@@ -59,7 +59,7 @@ I lettori che implementano o gestiscono una Soluzione di **Fornitore di Wallet**
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`functionalities:Progettazione dell'Esperienza dell'Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
+* **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio. 
 * **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.
 * **Sezione** :ref:`digital-credential-flows:Flussi relativi agli Attestati Elettronici`: Flussi di emissione e presentazione per le Credenziali Elettroniche.
@@ -81,7 +81,7 @@ Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`functionalities:Progettazione dell'Esperienza dell'Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
+* **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
 * **Sezione** :ref:`credential-issuer-solution:Soluzione del Fornitore di Attestati Elettronici`: Soluzione di Fornitore di Credenziali - Requisiti completi di implementazione e dettagli dei componenti.
 * **Sezione** :ref:`authentic-sources:Fonti Autentiche`: Comprensione dei modelli di integrazione con fonti di dati autorevoli.
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Formati delle Credenziali Elettroniche e gestione del ciclo di vita.
@@ -106,7 +106,7 @@ Se il lettore vuole gestire una **Fonte Autentica**, l'attenzione dovrebbe esser
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`functionalities:Progettazione dell'Esperienza dell'Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
+* **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
 * **Sezione** :ref:`authentic-sources:Fonti Autentiche`: Requisiti e modelli di integrazione con i Fornitori di Credenziali.
 * **Sezione** :ref:`authentic-source-endpoint:Endpoint delle Fonti Autentiche`: Specifiche API e integrazione del catalogo.
 * **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Requisiti di integrità dei dati, autenticazione e sicurezza.
@@ -124,7 +124,7 @@ I lettori interessati all'implementazione o alla gestione di una Soluzione di **
 
 **Sezioni essenziali:**
 
-* **Sezione** :ref:`functionalities:Progettazione dell'Esperienza dell'Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
+* **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
 * **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti completi di implementazione del Verificatore di Credenziali.
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.
 * **Sezione** :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.
@@ -156,7 +156,7 @@ Approccio all'Implementazione
 Si suggerisce il seguente approccio di lettura in fasi:
 
     1. **Fase di Fondazione**: Leggere le Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust:L'Infrastruttura di Trust` per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.
-    2. **Fase Specifica per Ruolo**: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione :ref:`functionalities:Progettazione dell'Esperienza dell'Utente`, :ref:`entities:Entità` e la Sezione :ref:`endpoints:Endpoints` per maggiori dettagli).
+    2. **Fase Specifica per Ruolo**: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione :ref:`functionalities:Design dell'Esperienza Utente`, :ref:`entities:Entità` e la Sezione :ref:`endpoints:Endpoints` per maggiori dettagli).
     3. **Fase di Integrazione**: Rivedere le sezioni secondarie rilevanti per le interazioni con altri partecipanti all'ecosistema e i requisiti di integrazione della piattaforma.
     4. **Fase di Validazione**: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` e :ref:`test-plans:Test Plans` per ulteriori informazioni.
 

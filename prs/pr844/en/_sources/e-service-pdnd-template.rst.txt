@@ -62,7 +62,7 @@ Templates, like e-services, can be Suspended. When suspended:
 
 Template E-Service Instantiation
 """"""""""""""""""""""""""""""""
-Participants may instantiate a Template E-Service by browsing the Template Catalog and selecting a template. This process generates a new e-service.
+Participants MAY instantiate a Template E-Service by browsing the Template Catalog and selecting a template. This process generates a new e-service.
 
 Instantiation constraints include:
 

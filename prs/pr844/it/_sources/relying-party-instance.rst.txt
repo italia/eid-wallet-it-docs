@@ -7,6 +7,9 @@ App di Verifica
 
 L'App di Verifica è un'applicazione mobile o embedded progettata per richiedere, ricevere ed elaborare Attestati Elettronici dalle Istanze del Wallet in modo affidabile. Ogni App di Verifica garantisce l'integrità, la riservatezza e l'autenticità degli scambi di Attestati Elettronici, consentendo interazioni sicure tra Utenti e Relying Party.
 
+.. note::
+  Per dettagli sui test di conformità, si veda: :ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`, :ref:`test-plans-proximity-presentation:Matrice di Test per la Presentazione di Credenziali in Prossimità`.
+
 Esistono due tipi principali di App di Verifica, ciascuna destinata a diversi ambienti operativi:
 
 - **App di Verifica Embedded**: una soluzione hardware/software che opera su un dispositivo specializzato (ad es., varchi di accesso). Ogni App di Verifica corrisponde a un'installazione specifica dell'applicazione su un dispositivo embedded. Poiché la trust con l'App di Verifica Embedded è stabilita attraverso la trust instaurata con il Mobile Relying Party Provider, l'App di Verifica Embedded può essere considerata un Confidential Client di OAuth.

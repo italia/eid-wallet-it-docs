@@ -19,7 +19,7 @@
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
     <link rel="next" title="8. Onboarding delle Entità" href="entity-onboarding.html" />
-    <link rel="prev" title="6. L&#39;Infrastruttura di Trust" href="trust.html" /> 
+    <link rel="prev" title="6. L&#39;Infrastruttura di Trust" href="trust-infrastructure.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -135,21 +135,22 @@
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Progettazione dell'Esperienza dell'Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">7. Infrastruttura del Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
 </ul>
 
         </div>
@@ -525,7 +526,7 @@ Content-Type: application/json
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>as_id</strong></p></td>
+<tr class="row-even"><td><p><strong>entity_id</strong></p></td>
 <td><p>string</p></td>
 <td><p>RICHIESTO. Identificatore univoco che segue lo schema normativo: <code class="docutils literal notranslate"><span class="pre">https://{organization_domain}[/{optional_path}]</span></code>.</p></td>
 </tr>
@@ -669,7 +670,7 @@ Content-Type: application/json
 <p>Un esempio non normativo della struttura del Registro AS è fornito di seguito:</p>
 <div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;as_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://motorizzazione.gov.example&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT -- Direzione Generale per la Motorizzazione&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
@@ -710,7 +711,7 @@ Content-Type: application/json
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;as_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://api.bank.example/auth-source&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Bank S.p.A.&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;private&quot;</span><span class="p">,</span>
@@ -774,7 +775,7 @@ Content-Type: application/json
 </section>
 <section id="registro-della-federazione">
 <h2><span class="section-number">7.5. </span>Registro della Federazione<a class="headerlink" href="#registro-della-federazione" title="Link to this heading">¶</a></h2>
-<p>Il <strong>Registro della Federazione</strong> fornisce l'infrastruttura di trust crittografico per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in <a class="reference internal" href="trust.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p>
+<p>Il <strong>Registro della Federazione</strong> fornisce l'infrastruttura di trust crittografico per tutti i partecipanti dell'ecosistema IT-Wallet. Il Registro della Federazione mantiene l'elenco autorevole delle entità fidate e il loro stato operativo utilizzando endpoint specifici della federazione come definito in <span class="xref std std-ref">trust:Endpoint API di Federazione</span>.</p>
 <section id="ruolo-di-integrazione-del-registro">
 <h3><span class="section-number">7.5.1. </span>Ruolo di Integrazione del Registro<a class="headerlink" href="#ruolo-di-integrazione-del-registro" title="Link to this heading">¶</a></h3>
 <p>All'interno dell'architettura del registro IT-Wallet, il Registro della Federazione serve come <strong>livello di validazione del trust</strong> per:</p>
@@ -786,7 +787,7 @@ Content-Type: application/json
 </section>
 <section id="accesso-al-registro-della-federazione">
 <h3><span class="section-number">7.5.2. </span>Accesso al Registro della Federazione<a class="headerlink" href="#accesso-al-registro-della-federazione" title="Link to this heading">¶</a></h3>
-<p>Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint della federazione del Trust Anchor come dettagliato in <a class="reference internal" href="trust.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>. L'architettura di discovery del registro fornisce informazioni sugli endpoint della federazione tramite l'Endpoint di Discovery del Registro descritto in <a class="reference internal" href="#endpoint-di-discovery-del-registro">Endpoint di Discovery del Registro</a>.</p>
+<p>Le operazioni del Registro della Federazione sono accessibili attraverso gli endpoint della federazione del Trust Anchor come dettagliato in <span class="xref std std-ref">trust:Endpoint API di Federazione</span>. L'architettura di discovery del registro fornisce informazioni sugli endpoint della federazione tramite l'Endpoint di Discovery del Registro descritto in <a class="reference internal" href="#endpoint-di-discovery-del-registro">Endpoint di Discovery del Registro</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Gli endpoint della federazione sono disponibili sia attraverso il meccanismo di discovery del registro (per l'accesso unificato al registro) che attraverso l'Entity Configuration del Trust Anchor a <code class="docutils literal notranslate"><span class="pre">.well-known/openid-federation</span></code> (per operazioni specifiche della federazione). Entrambe le fonti forniscono gli stessi URL degli endpoint ma servono pattern di discovery diversi: discovery del registro per l'orientamento iniziale dell'ecosistema, Entity Configuration per la conformità standard OpenID Federation 1.0.</p>
@@ -1171,7 +1172,7 @@ Content-Type: application/json
 <td><p>RICHIESTO. Array di informazioni rilevanti sui Credential Issuer autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, riferimento al documento di specifica API e meccanismi di rilascio supportati (ad esempio il supporto del flusso differito).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>RICHIESTO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>. Ogni identificatore corrisponde a un valore <code class="docutils literal notranslate"><span class="pre">as_id</span></code> dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.</p></td>
+<td><p>RICHIESTO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>. Ogni identificatore corrisponde a un valore <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>formats</strong></p></td>
 <td><p>RICHIESTO. Array di formati tecnici supportati degli Attestati Elettronici, inclusi:</p>
@@ -1821,7 +1822,7 @@ Content-Type: application/json
         <div class="button_nav">
             <div class="left">
                 
-                <a href="trust.html">
+                <a href="trust-infrastructure.html">
                     <span class="icon">&lt;</span><span><span class="section-number">6. </span>L'Infrastruttura di Trust</span></a>
                 
             </div>
@@ -1836,7 +1837,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 08/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

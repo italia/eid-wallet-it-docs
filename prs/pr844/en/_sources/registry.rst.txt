@@ -34,7 +34,7 @@ The Trust Anchor MUST publish registry discovery metadata at the ``.well-known/i
 Moreover, the IT-Wallet registry system MUST use two distinct access patterns:
 
   - **Data Registry APIs**: MUST support pagination and filtering capabilities.
-  - **Federation Trust Infrastructure**: as defined in :ref:`trust:The Infrastructure of Trust`.
+  - **Federation Trust Infrastructure**: as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Below a non-normative example is given.
 
@@ -84,7 +84,7 @@ JWT payload structure (when decoded):
 Claims Registry
 ---------------
 
-The **Claims Registry** provides standardized semantic definitions for individual credential attributes, data types, and validation rules. This registry serves as the semantic foundation for credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.
+The **Claims Registry** provides standardized semantic definitions for individual Credential attributes, data types, and validation rules. This registry serves as the semantic foundation for credential attribute standardization across the IT-Wallet ecosystem, working in coordination with the Taxonomy component for hierarchical classification.
 
 The Supervisory Body MUST maintain the Claims Registry to ensure semantic consistency and regulatory compliance across the ecosystem. The registry MUST contain:
 
@@ -235,7 +235,7 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **Parameter**
      - **Type**
      - **Description**
-   * - **as_id**
+   * - **entity_id**
      - string
      - REQUIRED. Unique identifier following the normative schema: ``https://{organization_domain}[/{optional_path}]``.
    * - **organization_info**
@@ -354,7 +354,7 @@ Following AS registration, the AS Registry enables Credential Issuers to discove
 Federation Registry
 -------------------
 
-The **Federation Registry** provides the cryptographic trust infrastructure for all IT-Wallet ecosystem participants. The Federation Registry maintains the authoritative list of trusted entities and their operational status using federation-specific endpoints as defined in :ref:`trust:Federation API endpoints`.
+The **Federation Registry** provides the cryptographic trust infrastructure for all IT-Wallet ecosystem participants. The Federation Registry maintains the authoritative list of trusted entities and their operational status using federation-specific endpoints as defined in :ref:`trust-infrastructure:Federation API endpoints`.
 
 Registry Integration Role
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -368,12 +368,12 @@ Within the IT-Wallet registry architecture, the Federation Registry serves as th
 Federation Registry Access
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Federation Registry operations are accessed through the Trust Anchor's federation endpoints as detailed in :ref:`trust:Federation API endpoints`. The registry discovery architecture provides federation endpoint information via the registry discovery endpoint described in `Registry Discovery Endpoint`_.
+Federation Registry operations are accessed through the Trust Anchor's federation endpoints as detailed in :ref:`trust-infrastructure:Federation API endpoints`. The registry discovery architecture provides federation endpoint information via the registry discovery endpoint described in `Registry Discovery Endpoint`_.
 
 .. note::
    Federation endpoints are available through both the registry discovery mechanism (for unified registry access) and the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` (for federation-specific operations). Both sources provide the same endpoint URLs but serve different discovery patterns: registry discovery for initial ecosystem orientation, Entity Configuration for standard OpenID Federation 1.0 compliance.
 
-For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust:The Infrastructure of Trust`.
+For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Digital Credentials Catalog
 -----------------------------
@@ -645,7 +645,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **issuers**
     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
   * - **authentic_sources**
-    - REQUIRED. Array of string identifiers referencing authorized Authentic Sources as registered in the :ref:`registry:Authentic Source Registry`. Each identifier corresponds to an ``as_id`` value from the AS Registry, which provides complete organizational and technical metadata including data provision capabilities, integration methods, and contact information.
+    - REQUIRED. Array of string identifiers referencing authorized Authentic Sources as registered in the :ref:`registry:Authentic Source Registry`. Each identifier corresponds to an ``entity_id`` value from the AS Registry, which provides complete organizational and technical metadata including data provision capabilities, integration methods, and contact information.
   * - **formats**
     - REQUIRED. Array of supported technical formats of Digital Credentials, including:
 

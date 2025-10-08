@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9.3.5. Metadati della Relying Party &#8212; IT-Wallet Technical Documentation - PR #844</title>
+    <title>10.3.5. Metadati della Relying Party &#8212; IT-Wallet Technical Documentation - PR #844</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="9.4. Fonti Autentiche" href="authentic-sources.html" />
-    <link rel="prev" title="9.3.4. Entity Configuration Relying Party" href="relying-party-entity-configuration.html" /> 
+    <link rel="next" title="10.4. Fonti Autentiche" href="authentic-sources.html" />
+    <link rel="prev" title="10.3.4. Entity Configuration Relying Party" href="relying-party-entity-configuration.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -135,34 +135,35 @@
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Progettazione dell'Esperienza dell'Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">9. Entità</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">9.1. Soluzione Wallet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">9.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">9.3. Soluzione di Relying Party</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">9.3.1. App di Verifica</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">9.3.2. App di Verifica Mobile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">9.3.3. App di Verifica Web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">9.3.4. Entity Configuration Relying Party</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">9.3.5. Metadati della Relying Party</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">10. Entità</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">10.1. Soluzione Wallet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">10.3. Soluzione di Relying Party</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">10.3.1. App di Verifica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-mobile">10.3.2. App di Verifica Mobile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#app-di-verifica-web">10.3.3. App di Verifica Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-entity-configuration.html">10.3.4. Entity Configuration Relying Party</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.3.5. Metadati della Relying Party</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">9.4. Fonti Autentiche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">10.4. Fonti Autentiche</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
 </ul>
 
         </div>
@@ -175,8 +176,8 @@
           <div class="body" role="main">
             
   <section id="metadati-della-relying-party">
-<h1><span class="section-number">9.3.5. </span>Metadati della Relying Party<a class="headerlink" href="#metadati-della-relying-party" title="Link to this heading">¶</a></h1>
-<p>I metadata <em>openid_credential_verifier</em> DEVONO contenere i seguenti parametri.</p>
+<h1><span class="section-number">10.3.5. </span>Metadati della Relying Party<a class="headerlink" href="#metadati-della-relying-party" title="Link to this heading">¶</a></h1>
+<p>I metadata <em>openid_credential_verifier</em> DEVONO contenere i seguenti parametri (<span class="xref std std-ref">test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota</span>).</p>
 <table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 25.0%" />
@@ -213,7 +214,7 @@
 <td><p>JSON Array che contiene la lista  degli algoritmi di crittografia utilizzati per le authorization response. Questo parametro pecifica alla Wallet Instance gli algoritmi di crittografia simmetrica supportati. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
-<td><p>JSON Object che definisce i formati e i tipi di prova delle Presentazioni Verificabili e delle Credenziali Verificabili supportate dalla RP. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Il valore associato a ciascuna coppia nome/valore DEVE essere un oggetto JSON <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> che DEVE contenere un array JSON contenente identificatori di algoritmi crittografici che la RP supporta per la protezione di un SD-JWT. L'intestazione JOSE <code class="docutils literal notranslate"><span class="pre">alg</span></code> (come definito in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) dell'SD-JWT presentato DEVE corrispondere a uno dei valori dell'array. Vedi anche <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezione 9.1.</p></td>
+<td><p>JSON Object che definisce i formati e i tipi di prova delle Presentazioni Verificabili e delle Credenziali Verificabili supportate dalla RP. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Il valore associato a ciascuna coppia nome/valore DEVE essere un oggetto JSON <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> che DEVE contenere un array JSON contenente identificatori di algoritmi crittografici che la RP supporta per la protezione di un SD-JWT. L'intestazione JOSE <code class="docutils literal notranslate"><span class="pre">alg</span></code> (come definito in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) dell'SD-JWT presentato DEVE corrispondere a uno dei valori dell'array. Vedi anche <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezione 9.1 (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>jwks</strong></p></td>
 <td><p>Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> Sezione 3, <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.2.1 e <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
@@ -243,13 +244,13 @@
             <div class="left">
                 
                 <a href="relying-party-entity-configuration.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">9.3.4. </span>Entity Configuration Relying Party</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.3.4. </span>Entity Configuration Relying Party</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="authentic-sources.html"><span><span class="section-number">9.4. </span>Fonti Autentiche</span><span class="icon">&gt;</span></a>
+                    <a href="authentic-sources.html"><span><span class="section-number">10.4. </span>Fonti Autentiche</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -257,7 +258,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 08/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

@@ -133,21 +133,22 @@
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Progettazione dell'Esperienza dell'Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
 </ul>
 
         </div>
@@ -172,7 +173,7 @@
 </dd>
 <dt><strong>Sezione</strong> <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a>:</dt><dd><p>Fornisce una visione di alto livello dell’Architettura, in termini di governance e processi operativi abilitati.</p>
 </dd>
-<dt><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#progettazione-dell-esperienza-dell-utente"><span class="std std-ref">Progettazione dell'Esperienza dell'Utente</span></a>:</dt><dd><p>Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio.</p>
+<dt><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>:</dt><dd><p>Fornisce i principi di design e i requisiti funzionali di alto livello per garantire un’Esperienza Utente di qualità in tutte le fasi di interazione tra l’Utente e il servizio.</p>
 </dd>
 <dt><strong>Sezione</strong> <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>:</dt><dd><p>Definisce il modello di trust basato sulla federazione, le relazioni tra entità e i meccanismi di valutazione della fiducia che proteggono l'intero ecosistema.</p>
 </dd>
@@ -200,7 +201,7 @@
 <p>I lettori che implementano o gestiscono una Soluzione di <strong>Fornitore di Wallet</strong> dovrebbero concentrarsi sulla comprensione di come gestire in modo sicuro le Credenziali Elettroniche e facilitare le interazioni dell'Utente con altri partecipanti all'ecosistema.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#progettazione-dell-esperienza-dell-utente"><span class="std std-ref">Progettazione dell'Esperienza dell'Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Requisiti completi di implementazione del Wallet, componenti e processi di interazione.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Modelli di dati, formati e gestione del ciclo di vita delle Credenziali Elettroniche.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-flows.html#flussi-relativi-agli-attestati-elettronici"><span class="std std-ref">Flussi relativi agli Attestati Elettronici</span></a>: Flussi di emissione e presentazione per le Credenziali Elettroniche.</p></li>
@@ -220,7 +221,7 @@
 <p>Per i lettori interessati all'implementazione di una Soluzione di <strong>Fornitore di Credenziali</strong>, dovrebbero concentrarsi sul ciclo di vita delle Credenziali Elettroniche e sui flussi di interazione per l'emissione.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#progettazione-dell-esperienza-dell-utente"><span class="std std-ref">Progettazione dell'Esperienza dell'Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="credential-issuer-solution.html#soluzione-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Soluzione del Fornitore di Attestati Elettronici</span></a>: Soluzione di Fornitore di Credenziali - Requisiti completi di implementazione e dettagli dei componenti.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="authentic-sources.html#fonti-autentiche"><span class="std std-ref">Fonti Autentiche</span></a>: Comprensione dei modelli di integrazione con fonti di dati autorevoli.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Formati delle Credenziali Elettroniche e gestione del ciclo di vita.</p></li>
@@ -244,7 +245,7 @@
 <p>Se il lettore vuole gestire una <strong>Fonte Autentica</strong>, l'attenzione dovrebbe essere sulla fornitura sicura dei dati e sull'integrazione con i Fornitori di Credenziali.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#progettazione-dell-esperienza-dell-utente"><span class="std std-ref">Progettazione dell'Esperienza dell'Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="authentic-sources.html#fonti-autentiche"><span class="std std-ref">Fonti Autentiche</span></a>: Requisiti e modelli di integrazione con i Fornitori di Credenziali.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="authentic-source-endpoint.html#endpoint-delle-fonti-autentiche"><span class="std std-ref">Endpoint delle Fonti Autentiche</span></a>: Specifiche API e integrazione del catalogo.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>: Requisiti di integrità dei dati, autenticazione e sicurezza.</p></li>
@@ -261,7 +262,7 @@
 <p>I lettori interessati all'implementazione o alla gestione di una Soluzione di <strong>Relying Party</strong> per accettare e verificare le Credenziali Elettroniche dovrebbero concentrarsi sui protocolli di presentazione e sui meccanismi di verifica.</p>
 <p><strong>Sezioni essenziali:</strong></p>
 <ul class="simple">
-<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#progettazione-dell-esperienza-dell-utente"><span class="std std-ref">Progettazione dell'Esperienza dell'Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Requisiti completi di implementazione del Verificatore di Credenziali.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.</p></li>
@@ -293,7 +294,7 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p><strong>Fase di Fondazione</strong>: Leggere le Sezioni <a class="reference internal" href="introduction.html#introduzione"><span class="std std-ref">Introduzione</span></a>, <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>, <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a> e <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a> per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.</p></li>
-<li><p><strong>Fase Specifica per Ruolo</strong>: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione <a class="reference internal" href="functionalities.html#progettazione-dell-esperienza-dell-utente"><span class="std std-ref">Progettazione dell'Esperienza dell'Utente</span></a>, <a class="reference internal" href="entities.html#entita"><span class="std std-ref">Entità</span></a> e la Sezione <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a> per maggiori dettagli).</p></li>
+<li><p><strong>Fase Specifica per Ruolo</strong>: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>, <a class="reference internal" href="entities.html#entita"><span class="std std-ref">Entità</span></a> e la Sezione <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a> per maggiori dettagli).</p></li>
 <li><p><strong>Fase di Integrazione</strong>: Rivedere le sezioni secondarie rilevanti per le interazioni con altri partecipanti all'ecosistema e i requisiti di integrazione della piattaforma.</p></li>
 <li><p><strong>Fase di Validazione</strong>: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni <a class="reference internal" href="security-privacy-considerations.html#considerazioni-di-sicurezza-e-privacy"><span class="std std-ref">Considerazioni di Sicurezza e Privacy</span></a>, <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a> e <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a> per ulteriori informazioni.</p></li>
 </ol>
@@ -354,7 +355,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 08/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

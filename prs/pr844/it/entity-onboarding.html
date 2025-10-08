@@ -18,7 +18,7 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="9. Entità" href="entities.html" />
+    <link rel="next" title="9. Operazioni di Gestione dei Certificati X.509" href="x5c-evaluation.html" />
     <link rel="prev" title="7. Infrastruttura del Registro" href="registry.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
@@ -135,21 +135,22 @@
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
 <li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Progettazione dell'Esperienza dell'Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
 <li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8. Onboarding delle Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">9. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">10. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">11. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">12. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">13. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">14. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">15. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">16. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">17. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">18. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">19. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
 </ul>
 
         </div>
@@ -205,17 +206,17 @@
 <tr class="row-odd"><td><p>Credential Issuer</p></td>
 <td><p>Generano ed emettono Attestati Elettronici utilizzando i dati delle Fonti Autentiche</p></td>
 <td><p><a class="reference internal" href="#processo-di-onboarding-delle-entita-di-federazione"><span class="std std-ref">Processo di Onboarding delle Entità di Federazione</span></a></p></td>
-<td><p>Conformità all'Infrastruttura di Trust IT-Wallet, <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></td>
+<td><p>Conformità all'Infrastruttura di Trust IT-Wallet, <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>Relying Party</p></td>
 <td><p>Verificano gli Attestati Elettronici per l'accesso ai servizi</p></td>
 <td><p><a class="reference internal" href="#processo-di-onboarding-delle-entita-di-federazione"><span class="std std-ref">Processo di Onboarding delle Entità di Federazione</span></a></p></td>
-<td><p>Conformità all'Infrastruttura di Trust IT-Wallet, <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></td>
+<td><p>Conformità all'Infrastruttura di Trust IT-Wallet, <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Fornitori di Wallet</p></td>
 <td><p>Forniscono Soluzioni Wallet ai cittadini</p></td>
 <td><p><a class="reference internal" href="#processo-di-onboarding-delle-entita-di-federazione"><span class="std std-ref">Processo di Onboarding delle Entità di Federazione</span></a></p></td>
-<td><p>Conformità all'Infrastruttura di Trust IT-Wallet <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>, capacità di emissione della Wallet Attestation <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>.</p></td>
+<td><p>Conformità all'Infrastruttura di Trust IT-Wallet <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>, capacità di emissione della Wallet Attestation <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>Istanze del Wallet</p></td>
 <td><p>Applicazioni di portafoglio digitale reso disponibile all'Utente</p></td>
@@ -236,7 +237,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Registrazione Fonte Autentica</strong>: Procedure di registrazione focalizzate sui dati con validazione dell'integrazione API.</p></li>
-<li><p><strong>Registrazione di Federazione</strong>: Istituzione di trust crittografico come definito nella Sezione <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
+<li><p><strong>Registrazione di Federazione</strong>: Istituzione di trust crittografico come definito nella Sezione <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="3">
@@ -351,6 +352,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Solo Fonti Autentiche italiane possono essere onboardate nella fase attuale di IT-Wallet.</p>
+</div>
 </section>
 <section id="procedura-di-registrazione-as">
 <h3><span class="section-number">8.2.3. </span>Procedura di Registrazione AS<a class="headerlink" href="#procedura-di-registrazione-as" title="Link to this heading">¶</a></h3>
@@ -367,7 +372,7 @@
 </figure>
 <p><strong>Fase 1 - Preparazione del Pacchetto di Registrazione</strong>: L'Entità prepara le informazioni di registrazione secondo la tabella dei requisiti sopra. Un esempio non normativo di informazioni in formato JSON è fornito di seguito.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;as_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://transport-authority.gov.example&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://transport-authority.gov.example&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;organization_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;organization_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Autorità Nazionale dei Trasporti&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;organization_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span><span class="p">,</span>
@@ -377,7 +382,9 @@
 <span class="w">    </span><span class="nt">&quot;homepage_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;contacts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;registry@transport-authority.gov.example&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;technical-support@transport-authority.gov.example&quot;</span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;policy_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/transport/privacy-policy&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I dati della patente di guida sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per patenti più vecchie, contattare l&#39;ufficio dell&#39;autorità dei trasporti locale.&quot;</span>
+<span class="w">    </span><span class="nt">&quot;user_information&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I dati della patente di guida sono disponibili per le patenti rilasciate dopo il 1° gennaio 2020. Per patenti più vecchie, contattare l&#39;ufficio dell&#39;autorità dei trasporti locale.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;data_capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -394,15 +401,13 @@
 <span class="w">        </span><span class="nt">&quot;immediate_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;deferred_flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span>
+<span class="w">      </span><span class="nt">&quot;update_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;real_time&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span><span class="p">,</span>
+<span class="w">       </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;display&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#003d82&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.gov.example/assets/transport-logo.svg&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;logo_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3&quot;</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -447,7 +452,7 @@
 </section>
 <section id="processo-di-onboarding-delle-entita-di-federazione">
 <h2><span class="section-number">8.4. </span>Processo di Onboarding delle Entità di Federazione<a class="headerlink" href="#processo-di-onboarding-delle-entita-di-federazione" title="Link to this heading">¶</a></h2>
-<p>Le Entità di Federazione (Credential Issuer, Relying Party e Fornitori di Wallet) DEVONO sottoporsi a procedure di onboarding per stabilire relazioni di trust crittografiche all'interno dell'ecosistema IT-Wallet. Il processo di onboarding della federazione stabilisce l'infrastruttura di trust distribuita attraverso l'emissione di certificati, la configurazione della catena di trust e l'attestazione di conformità come dettagliato in <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
+<p>Le Entità di Federazione (Credential Issuer, Relying Party e Fornitori di Wallet) DEVONO sottoporsi a procedure di onboarding per stabilire relazioni di trust crittografiche all'interno dell'ecosistema IT-Wallet. Il processo di onboarding della federazione stabilisce l'infrastruttura di trust distribuita attraverso l'emissione di certificati, la configurazione della catena di trust e l'attestazione di conformità come dettagliato in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p>
 <section id="modello-gerarchico-dell-autorita-di-federazione">
 <h3><span class="section-number">8.4.1. </span>Modello Gerarchico dell'Autorità di Federazione<a class="headerlink" href="#modello-gerarchico-dell-autorita-di-federazione" title="Link to this heading">¶</a></h3>
 <p>La federazione IT-Wallet implementa un <strong>modello di onboarding gerarchico</strong> dove le Entità di Federazione POSSONO essere onboardate da:</p>
@@ -460,7 +465,7 @@
 <p>Questo approccio gerarchico abilita la <strong>gestione distribuita dell'onboarding</strong> mantenendo un'istituzione di trust unificata. Sia i Trust Anchor che gli Intermediari agiscono come <strong>Autorità di Federazione</strong> con le seguenti capacità di onboarding:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Emissione dei Certificati</strong>: Emettono certificati X.509 ai loro subordinati immediati con vincoli di denominazione appropriati come definito in <a class="reference internal" href="trust.html#x-509-pki"><span class="std std-ref">X.509 PKI</span></a>.</p></li>
+<li><p><strong>Emissione dei Certificati</strong>: Emettono certificati X.509 ai loro subordinati immediati con vincoli di denominazione appropriati come definito in <a class="reference internal" href="trust-infrastructure.html#id9"><span class="std std-ref">X.509 PKI</span></a>.</p></li>
 <li><p><strong>Applicazione delle Metadata Policy</strong>: Applicano le metadata policy specifiche della federazione con <strong>effetto a cascata</strong> (le policy del Trust Anchor prevalgono sulle policy degli Intermediari).</p></li>
 <li><p><strong>Emissione del Trust Mark</strong>: Emettono Trust Mark di Federazione attestando la conformità dei subordinati ai requisiti della federazione.</p></li>
 </ul>
@@ -485,16 +490,16 @@
 </ul>
 </li>
 <li><p><strong>Attestazione delle Chiavi di Protocollo</strong>: Le entità DEVONO creare certificati X.509 auto-firmati per le loro Chiavi di Protocollo utilizzando la Chiave Privata di Federazione. Questi certificati stabiliscono la relazione di autorità tra le chiavi di Federazione e di Protocollo.</p></li>
-<li><p><strong>Preparazione Entity Configuration</strong>: Le entità DEVONO pubblicare una Entity Configuration (EC) firmata con la loro Chiave Privata di Federazione all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> come definito in <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>. L'EC DEVE includere:</p>
+<li><p><strong>Preparazione Entity Configuration</strong>: Le entità DEVONO pubblicare una Entity Configuration (EC) firmata con la loro Chiave Privata di Federazione all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>. L'EC DEVE includere:</p>
 <ul>
 <li><p>Un claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> contenente la Chiave Pubblica dell'Entità di Federazione in formato JSON Web Key (JWK).</p></li>
-<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> con l'Identificativo dell'Entità di Federazione come definito in <a class="reference internal" href="trust.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></li>
+<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> con l'Identificativo dell'Entità di Federazione come definito in <a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></li>
 <li><p>Un claim <code class="docutils literal notranslate"><span class="pre">sub</span></code> uguale al claim <code class="docutils literal notranslate"><span class="pre">iss</span></code>.</p></li>
 <li><p>Claim <code class="docutils literal notranslate"><span class="pre">iat</span></code> ed <code class="docutils literal notranslate"><span class="pre">exp</span></code> che definiscono un intervallo di tempo valido.</p></li>
 <li><p>Un claim <code class="docutils literal notranslate"><span class="pre">metadata</span></code> contenente metadati specifici dell'entità organizzati per Tipi di Metadati (vedere <a class="reference internal" href="credential-issuer-entity-configuration.html#entity-configuration-del-fornitore-di-attestati-elettronici"><span class="std std-ref">Entity Configuration del Fornitore di Attestati Elettronici</span></a>, <a class="reference internal" href="relying-party-entity-configuration.html#entity-configuration-di-una-relying-party"><span class="std std-ref">Entity Configuration di una Relying Party</span></a>, o <a class="reference internal" href="wallet-provider-entity-configuration.html#entity-configuration-del-fornitore-di-wallet"><span class="std std-ref">Entity Configuration del Fornitore di Wallet</span></a>) con Chiavi di Protocollo incluse nei campi <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dei metadati e certificati auto-firmati nei corrispondenti claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p></li>
 </ul>
 </li>
-<li><p><strong>Certificate Signing Request (CSR)</strong>: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente <strong>solo la Chiave Pubblica dell'Entità di Federazione</strong> per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in <a class="reference internal" href="trust.html#requisiti-dell-infrastruttura-di-trust"><span class="std std-ref">Requisiti dell'Infrastruttura di Trust</span></a>.</p></li>
+<li><p><strong>Certificate Signing Request (CSR)</strong>: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente <strong>solo la Chiave Pubblica dell'Entità di Federazione</strong> per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in <a class="reference internal" href="trust-infrastructure.html#requisiti-dell-infrastruttura-di-trust"><span class="std std-ref">Requisiti dell'Infrastruttura di Trust</span></a>.</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -533,7 +538,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Identificativo Entità di Federazione</strong></p></td>
-<td><p><strong>OBBLIGATORIO</strong>. Un URL unico che identifica l'Entità di Federazione come definito in <a class="reference internal" href="trust.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></td>
+<td><p><strong>OBBLIGATORIO</strong>. Un URL unico che identifica l'Entità di Federazione come definito in <a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Chiave Pubblica Entità di Federazione (JWK)</strong></p></td>
 <td><p><strong>OBBLIGATORIO</strong>. Chiave pubblica ellittica in formato JSON Web Key utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo, utilizzando algoritmi crittografici specificati in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>.</p></td>
@@ -543,7 +548,7 @@
 <ul class="simple">
 <li><p>Contenere <strong>solo la Chiave Pubblica dell'Entità di Federazione</strong> da certificare.</p></li>
 <li><p>Essere firmato con la corrispondente Chiave Privata di Federazione.</p></li>
-<li><p>Definire il Subject del certificato con gli attributi richiesti come specificato in <a class="reference internal" href="trust.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p></li>
+<li><p>Definire il Subject del certificato con gli attributi richiesti come specificato in <a class="reference internal" href="trust-infrastructure.html#id11"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p></li>
 </ul>
 </td>
 </tr>
@@ -551,18 +556,22 @@
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Prima di inviare la richiesta di onboarding tecnico, le Entità di Federazione DEVONO assicurarsi che il loro endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> pubblichi una Entity Configuration valida (come definita in <a class="reference internal" href="trust.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>) firmata con la loro Chiave Privata di Federazione corrispondente alla Chiave Pubblica dell'Entità di Federazione fornita nella richiesta. L'Entity Configuration DEVE già includere le Chiavi di Protocollo nei metadati con certificati X.509 auto-firmati nei claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
+<p>Prima di inviare la richiesta di onboarding tecnico, le Entità di Federazione DEVONO assicurarsi che il loro endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> pubblichi una Entity Configuration valida (come definita in <a class="reference internal" href="trust-infrastructure.html#entity-configuration"><span class="std std-ref">Entity Configuration</span></a>) firmata con la loro Chiave Privata di Federazione corrispondente alla Chiave Pubblica dell'Entità di Federazione fornita nella richiesta. L'Entity Configuration DEVE già includere le Chiavi di Protocollo nei metadati con certificati X.509 auto-firmati nei claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p>
 </div>
 <p>Un esempio non normativo della struttura delle informazioni tecniche che le Entità di Federazione inviano durante la richiesta di onboarding della Fase 1:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;entity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;entity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential_issuer&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NsXymfIILEPR5Y0t&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span>
+<span class="w">    </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NsXymfIILEPR5Y0t&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;kty&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l-6dcrIrFVdrzoY9cRJv9zNuFOR3MsDz6TSDhB0xEo4&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;crv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P-256&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;certificate_signing_request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-----BEGIN CERTIFICATE REQUEST-----\nMIIBTTCB9QIBADCBkjELMAkGA1UEBhMCSVQxDjAMBgNVBAgMBUxhemlvMQ0wCwYD\nVQQHDARSb21hMRYwFAYDVQQKDA1QYWdvUEEgUy5wLkEuMSQwIgYDVQQDDBtmb28x\nMS5ibG9iLmNvcmUud2luZG93cy5uZXQxJjAkBgkqhkiG9w0BCQEWF3BhZ29wYXNw\nYUBwZWMucGFnb3BhLml0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgXY4FApF\nJCj91Gpb1K9GEIouTq2X3L0K64Iq0ob4l_g\n-----END CERTIFICATE REQUEST-----&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;submission_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-09-25T14:30:00Z&quot;</span>
@@ -584,7 +593,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Gli attributi Subject del CSR DEVONO rispettare i requisiti specificati in <a class="reference internal" href="trust.html#emissione-di-certificati-x-509"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p>
+<p>Gli attributi Subject del CSR DEVONO rispettare i requisiti specificati in <a class="reference internal" href="trust-infrastructure.html#id11"><span class="std std-ref">Emissione di Certificati X.509</span></a> per le Entità di Federazione.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -598,9 +607,9 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>Verifica delle informazioni fornite nella richiesta di registrazione.</p></li>
-<li><p>Validazione dell'Entity Configuration pubblicata all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> dell'entità e dei suoi metadati contenuti (come definito in <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>).</p></li>
-<li><p><strong>Applicazione delle Metadata Policy</strong>: Applicazione di metadata policy specifiche della federazione ai metadati dell'entità basate su caratteristiche organizzative e ambito di autorizzazione come definito in <a class="reference internal" href="trust.html#subordinate-statement"><span class="std std-ref">Subordinate Statement</span></a>. Quando onboardata attraverso un Intermediario, si applicano sia le policy dell'Intermediario che del Trust Anchor, con le policy del Trust Anchor che hanno precedenza in caso di conflitti.</p></li>
-<li><p><strong>Emissione Certificato</strong>: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in <a class="reference internal" href="trust.html#requisiti-dell-infrastruttura-di-trust"><span class="std std-ref">Requisiti dell'Infrastruttura di Trust</span></a>. Gli Intermediari emettono certificati con <strong>naming constraints</strong> appropriati per limitare l'uso del certificato solo ai loro subordinati.</p></li>
+<li><p>Validazione dell'Entity Configuration pubblicata all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> dell'entità e dei suoi metadati contenuti (come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>).</p></li>
+<li><p><strong>Applicazione delle Metadata Policy</strong>: Applicazione di metadata policy specifiche della federazione ai metadati dell'entità basate su caratteristiche organizzative e ambito di autorizzazione come definito in <a class="reference internal" href="trust-infrastructure.html#subordinate-statement"><span class="std std-ref">Subordinate Statement</span></a>. Quando onboardata attraverso un Intermediario, si applicano sia le policy dell'Intermediario che del Trust Anchor, con le policy del Trust Anchor che hanno precedenza in caso di conflitti.</p></li>
+<li><p><strong>Emissione Certificato</strong>: Certificazione della Chiave Pubblica dell'Entità di Federazione con emissione del certificato X.509 utilizzando l'infrastruttura di trust dettagliata in <a class="reference internal" href="trust-infrastructure.html#requisiti-dell-infrastruttura-di-trust"><span class="std std-ref">Requisiti dell'Infrastruttura di Trust</span></a>. Gli Intermediari emettono certificati con <strong>naming constraints</strong> appropriati per limitare l'uso del certificato solo ai loro subordinati.</p></li>
 </ul>
 </div></blockquote>
 <p>Dopo la validazione con successo, l'entità riceve una risposta contenente una catena di certificati dove:</p>
@@ -630,7 +639,7 @@
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>Aggiungere un claim <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> con un Array JSON contenente l'Identificativo dell'Entità di Federazione dell'<strong>immediate Federation Authority</strong> (Trust Anchor per onboarding diretto, o Intermediario per onboarding mediato) come definito in <a class="reference internal" href="trust.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></li>
+<li><p>Aggiungere un claim <code class="docutils literal notranslate"><span class="pre">authority_hints</span></code> con un Array JSON contenente l'Identificativo dell'Entità di Federazione dell'<strong>immediate Federation Authority</strong> (Trust Anchor per onboarding diretto, o Intermediario per onboarding mediato) come definito in <a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></li>
 <li><p>Aggiornare la Chiave Pubblica dell'Entità di Federazione nel claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> aggiungendo un claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code> con la catena di certificati completa ricevuta dall'Autorità di Federazione.</p></li>
 <li><p>Aggiornare le Chiavi di Protocollo nei claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dei metadati estendendo i loro claim <code class="docutils literal notranslate"><span class="pre">x5c</span></code> esistenti per includere la catena di certificati di Federazione, creando catene di trust complete dalle Chiavi di Protocollo all'Autorità Radice.</p></li>
 </ul>
@@ -676,8 +685,8 @@
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li><p><strong>Pubblicare Entity Configuration Aggiornata</strong>: Pubblicare l'EC aggiornata all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> come specificato in <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
-<li><p><strong>Inviare Richiesta Resolve</strong>: Chiamare l'endpoint <code class="docutils literal notranslate"><span class="pre">/resolve</span></code> del <strong>Trust Anchor</strong> (come definito in <a class="reference internal" href="trust.html#requisiti-dell-infrastruttura-di-trust"><span class="std std-ref">Requisiti dell'Infrastruttura di Trust</span></a>) con parametri URL-encoded:</p></li>
+<li><p><strong>Pubblicare Entity Configuration Aggiornata</strong>: Pubblicare l'EC aggiornata all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> come specificato in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
+<li><p><strong>Inviare Richiesta Resolve</strong>: Chiamare l'endpoint <code class="docutils literal notranslate"><span class="pre">/resolve</span></code> del <strong>Trust Anchor</strong> (come definito in <a class="reference internal" href="trust-infrastructure.html#requisiti-dell-infrastruttura-di-trust"><span class="std std-ref">Requisiti dell'Infrastruttura di Trust</span></a>) con parametri URL-encoded:</p></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
@@ -695,9 +704,9 @@
 <p>Dopo la resolve request, l'<strong>Autorità di Federazione</strong> esegue:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>La <strong>Ricostruzione della Catena di Trust</strong>: Ricostruzione di una catena di trust valida per l'entità come definito in <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
+<li><p>La <strong>Ricostruzione della Catena di Trust</strong>: Ricostruzione di una catena di trust valida per l'entità come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>.</p></li>
 <li><p>La <strong>Generazione delTrust Mark di Federazione</strong>: Generazione di un Trust Mark di Federazione IT-Wallet come attestazione JWT firmata dell'appartenenza alla federazione dell'entità e conformità ai requisiti tecnici IT-Wallet.</p></li>
-<li><p>L'<strong>Integrazione del Trust Mark nel Subordinate Statement</strong>: Il Trust Mark generato è incluso nel Subordinate Statement dell'entità come definito in <a class="reference internal" href="trust.html#subordinate-statement"><span class="std std-ref">Subordinate Statement</span></a>.</p></li>
+<li><p>L'<strong>Integrazione del Trust Mark nel Subordinate Statement</strong>: Il Trust Mark generato è incluso nel Subordinate Statement dell'entità come definito in <a class="reference internal" href="trust-infrastructure.html#subordinate-statement"><span class="std std-ref">Subordinate Statement</span></a>.</p></li>
 <li><p>L'<strong>Applicazione di Metadata Policy</strong>: Applicazione di metadata policy a cascata durante la costruzione della catena di trust, assicurando che le policy del Trust Anchor abbiano precedenza sulle policy degli Intermediari.</p></li>
 <li><p>Generazione di un JSON Web Token (JWT) firmato utilizzando algoritmi specificati in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> contenente la catena di trust ricostruita e i metadati dell'entità validati.</p></li>
 <li><p>Trasmissione di una HTTP response contenente il JWT creato (Resolve Response).</p></li>
@@ -707,9 +716,9 @@
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Validare la Resolve Response</strong>: Validare il JWT contenuto nella Resolve Response ed estrarre la catena di trust e i metadati validati dal payload JWT.</p></li>
-<li><p><strong>Recuperare i Subordinate Statement</strong>: Recuperare il proprio Subordinate Statement dall'Autorità di Federazione immediata utilizzando l'endpoint <code class="docutils literal notranslate"><span class="pre">/fetch</span></code> come definito in <a class="reference internal" href="trust.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p></li>
+<li><p><strong>Recuperare i Subordinate Statement</strong>: Recuperare il proprio Subordinate Statement dall'Autorità di Federazione immediata utilizzando l'endpoint <code class="docutils literal notranslate"><span class="pre">/fetch</span></code> come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p></li>
 <li><p><strong>Estrarre il Trust Mark</strong>: Estrarre il Trust Mark di Federazione dal claim <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> del Subordinate Statement.</p></li>
-<li><p><strong>Integrazione del Trust Mark</strong>: Includere il Trust Mark estratto nella sua Entity Configuration utilizzando il claim <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> come specificato in <a class="reference internal" href="trust.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a>.</p></li>
+<li><p><strong>Integrazione del Trust Mark</strong>: Includere il Trust Mark estratto nella sua Entity Configuration utilizzando il claim <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> come specificato in <a class="reference internal" href="trust-infrastructure.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a>.</p></li>
 <li><p><strong>Aggiornamento Finale Entity Configuration</strong>: Pubblicare l'Entity Configuration aggiornata con il Trust Mark integrato all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code>.</p></li>
 </ul>
 </div></blockquote>
@@ -720,7 +729,7 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Integrazione del Registro di Federazione</strong>: Dopo il completamento con successo dell'onboarding, l'Identificativo dell'Entità di Federazione diventa scopribile attraverso i meccanismi di elenco delle entità del Trust Anchor (come definito in <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
+<p><strong>Integrazione del Registro di Federazione</strong>: Dopo il completamento con successo dell'onboarding, l'Identificativo dell'Entità di Federazione diventa scopribile attraverso i meccanismi di elenco delle entità del Trust Anchor (come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>), indicando la partecipazione attiva alla federazione. L'entità diventa parte dell'infrastruttura di federazione dettagliata in <a class="reference internal" href="registry.html#infrastruttura-del-registro"><span class="std std-ref">Infrastruttura del Registro</span></a>.</p>
 </div>
 </section>
 <section id="trust-mark-di-federazione-it-wallet">
@@ -871,11 +880,13 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Le Entità di Federazione DEVONO integrare i Trust Mark nella loro Entity Configuration utilizzando il claim <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> come specificato in <a class="reference internal" href="trust.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a>. Le entità POSSONO ricevere più Trust Mark per diversi ambiti autorizzativi.</p>
+<p>Le Entità di Federazione DEVONO integrare i Trust Mark nella loro Entity Configuration utilizzando il claim <code class="docutils literal notranslate"><span class="pre">trust_marks</span></code> come specificato in <a class="reference internal" href="trust-infrastructure.html#entity-configuration-foglie-e-intermediari"><span class="std std-ref">Entity Configuration Foglie e Intermediari</span></a>. Le entità POSSONO ricevere più Trust Mark per diversi ambiti autorizzativi.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://credentials.example.gov&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// jwks content</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;authority_hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;trust_marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -883,14 +894,18 @@
 <span class="w">      </span><span class="nt">&quot;trust_mark&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IlRydXN0QW5jaG9yS2V5SWQiLCJ0eXAiOiJKV1QifQ...&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// Metadata content</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://healthcare-ci.example.gov&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://healthcare-ci.example.gov&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// jwks content</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;authority_hints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://healthcare.intermediate.eid-wallet.example.it&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;trust_marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -898,7 +913,9 @@
 <span class="w">      </span><span class="nt">&quot;trust_mark&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImtpZCI6IkhlYWx0aGNhcmVJbnRlcm1lZGlhdGVLZXlJZCIsInR5cCI6IkpXVCJ9...&quot;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="c1">// Metadata content</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -908,425 +925,9 @@
 <p>I partecipanti alla federazione validano lo stato del Trust Mark attraverso due meccanismi:</p>
 <ol class="arabic simple">
 <li><p><strong>Validazione Statica</strong>: Verifica crittografica utilizzando la chiave pubblica dell'Autorità di Federazione emittente dalla catena di trust.</p></li>
-<li><p><strong>Validazione Dinamica</strong>: Verifica dello stato in tempo reale tramite l'endpoint <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code> dell'Autorità di Federazione emittente come definito in <a class="reference internal" href="trust.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p></li>
+<li><p><strong>Validazione Dinamica</strong>: Verifica dello stato in tempo reale tramite l'endpoint <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code> dell'Autorità di Federazione emittente come definito in <a class="reference internal" href="trust-infrastructure.html#endpoint-api-di-federazione"><span class="std std-ref">Endpoint API di Federazione</span></a>.</p></li>
 </ol>
-</section>
-</section>
-</section>
-<section id="operazioni-di-gestione-dei-certificati">
-<h2><span class="section-number">8.5. </span>Operazioni di Gestione dei Certificati<a class="headerlink" href="#operazioni-di-gestione-dei-certificati" title="Link to this heading">¶</a></h2>
-<p>Questa sezione definisce le procedure operative per la gestione dei certificati X.509 all'interno della federazione IT-Wallet, coprendo l'analisi della catena di certificati, le procedure di validazione e la verifica della revoca. Queste procedure completano i processi di onboarding della federazione e supportano la gestione continua del ciclo di vita dei certificati per tutti i partecipanti alla federazione.</p>
-<section id="architettura-pki-della-federazione">
-<h3><span class="section-number">8.5.1. </span>Architettura PKI della Federazione<a class="headerlink" href="#architettura-pki-della-federazione" title="Link to this heading">¶</a></h3>
-<p>La federazione IT-Wallet opera un'Infrastruttura a Chiave Pubblica gerarchica dove:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Trust Anchor</strong>: Agisce come Autorità di Certificazione Root dove i certificati root NON DEVONO superare un <strong>periodo di validità di 5 anni</strong>.</p></li>
-<li><p><strong>Certificato Entità di Federazione</strong>: Ogni partecipante alla federazione riceve un certificato che opera come sub-CA limitata dove i certificati NON DEVONO superare un <strong>periodo di validità di 2 anni</strong>.</p></li>
-<li><p><strong>Certificati di Protocollo</strong>: Certificati auto-emessi per servizi interni dove i certificati NON DOVREBBERO superare un <strong>periodo di validità di 1 anno</strong>.</p></li>
-</ul>
-</div></blockquote>
-<p>Ogni entità di federazione DEVE esporre il suo certificato di Entità di Federazione su un endpoint pubblicamente accessibile. La chiave privata dell'Entità di Federazione serve a doppio scopo:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>Auto-emissione di certificati di Protocollo per operazioni crittografiche interne (capacità sub-CA limitata).</p></li>
-<li><p>Agire come Chiave dell'Entità di Federazione per firmare Entity Statement.</p></li>
-</ol>
-</div></blockquote>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Le entità di federazione (Foglie) possono SOLO emettere certificati per se stesse (certificati di Protocollo), NON per altre entità di federazione. Solo le Autorità di Federazione (Trust Anchor e Intermediari) possono emettere certificati per altre entità.</p>
-</div>
-<p>Per i certificati di Protocollo con periodi di validità superiori a 24 ore, l'entità emittente DEVE pubblicare e aggiornare regolarmente una Lista di Revoca Certificati (CRL) su un endpoint pubblicamente accessibile.</p>
-</section>
-<section id="struttura-e-analisi-della-catena-di-certificati">
-<h3><span class="section-number">8.5.2. </span>Struttura e Analisi della Catena di Certificati<a class="headerlink" href="#struttura-e-analisi-della-catena-di-certificati" title="Link to this heading">¶</a></h3>
-<p>Le entità di federazione ricevono catene di certificati durante il processo di onboarding. Comprendere e validare queste catene è essenziale per le operazioni di federazione appropriate e la verifica del trust.</p>
-<section id="visualizzazione-catena-di-certificati">
-<h4><span class="section-number">8.5.2.1. </span>Visualizzazione Catena di Certificati<a class="headerlink" href="#visualizzazione-catena-di-certificati" title="Link to this heading">¶</a></h4>
-<p>Le entità di federazione DOVREBBERO analizzare le catene di certificati ricevute utilizzando strumenti crittografici standard per verificare la struttura appropriata e validare le relazioni di trust.</p>
-<p>Il seguente script abilita le entità di federazione a:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Estrarre dettagli dei certificati per la verifica.</p></li>
-<li><p>Analizzare estensioni e vincoli dei certificati.</p></li>
-<li><p>Verificare gerarchia e relazioni dei certificati</p></li>
-</ul>
-</div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># Analisi catena di certificati per entità di federazione</span>
-<span class="c1"># Array contenente certificati in formato DER codificato in Base64</span>
-<span class="nv">certificate_chain</span><span class="o">=(</span>
-<span class="w">    </span><span class="s2">&quot;MIIDyzCCA3GgAwIBAgI...&quot;</span><span class="w"> </span><span class="c1"># Certificato Entità di Federazione</span>
-<span class="w">    </span><span class="s2">&quot;MIIDQzCCAuigAwIBAgI...&quot;</span><span class="w"> </span><span class="c1"># Certificato Trust Anchor</span>
-<span class="o">)</span>
-
-<span class="c1"># Visualizza primo certificato (Entità di Federazione)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;====================================&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Analisi Certificato Entità di Federazione&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;====================================&quot;</span>
-<span class="nb">echo</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">certificate_chain</span><span class="p">[0]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>federation_entity.der
-openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>federation_entity.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout
-
-<span class="c1"># Visualizza secondo certificato (Trust Anchor)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=====================================&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Analisi Certificato Trust Anchor&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=====================================&quot;</span>
-<span class="nb">echo</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">certificate_chain</span><span class="p">[1]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span>&gt;<span class="w"> </span>trust_anchor.der
-openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>trust_anchor.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout
-
-<span class="c1"># Pulizia file temporanei</span>
-rm<span class="w"> </span>federation_entity.der<span class="w"> </span>trust_anchor.der
-</pre></div>
-</div>
-</section>
-<section id="validazione-catena-di-certificati">
-<h4><span class="section-number">8.5.2.2. </span>Validazione Catena di Certificati<a class="headerlink" href="#validazione-catena-di-certificati" title="Link to this heading">¶</a></h4>
-<p>Le entità di federazione DEVONO validare le catene di certificati per assicurare l'istituzione appropriata del trust e verificare la conformità ai requisiti PKI della federazione.</p>
-<p>Un esempio non normativo della procedura di validazione della catena di certificati è dato di seguito:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># Validazione catena di certificati per entità di federazione</span>
-
-<span class="c1"># Converti certificati DER in formato PEM per la validazione</span>
-openssl<span class="w"> </span>x509<span class="w"> </span>-inform<span class="w"> </span>der<span class="w"> </span>-in<span class="w"> </span>federation_entity.der<span class="w"> </span>-out<span class="w"> </span>federation_entity.pem
-openssl<span class="w"> </span>x509<span class="w"> </span>-inform<span class="w"> </span>der<span class="w"> </span>-in<span class="w"> </span>trust_anchor.der<span class="w"> </span>-out<span class="w"> </span>trust_anchor.pem
-
-<span class="c1"># Valida certificato Trust Anchor (auto-firmato)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Validazione certificato Trust Anchor...&quot;</span>
-openssl<span class="w"> </span>verify<span class="w"> </span>-CAfile<span class="w"> </span>trust_anchor.pem<span class="w"> </span>trust_anchor.pem
-
-<span class="c1"># Valida certificato Entità di Federazione contro Trust Anchor</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Validazione certificato Entità di Federazione...&quot;</span>
-openssl<span class="w"> </span>verify<span class="w"> </span>-CAfile<span class="w"> </span>trust_anchor.pem<span class="w"> </span>federation_entity.pem
-
-<span class="c1"># Pulizia</span>
-rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anchor.pem
-</pre></div>
-</div>
-<p>Le entità di federazione DOVREBBERO verificare:</p>
-<blockquote>
-<div><ol class="arabic">
-<li><p>Le <strong>Firme dei Certificati</strong>: Ogni certificato DEVE essere appropriatamente firmato dal suo emittente.</p></li>
-<li><p>L'<strong>Integrità della Catena di Certificati</strong>: Le relazioni Emittente-Soggetto DEVONO essere valide in tutta la catena.</p></li>
-<li><p>I <strong>Periodi di Validità dei Certificati</strong>: Tutti i certificati DEVONO essere entro i loro periodi di validità e DEVONO rispettare i limiti della federazione.</p></li>
-<li><p>Le <strong>Estensioni dei Certificati</strong>: Basic Constraints e Key Usage DEVONO rispettare i requisiti della federazione:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Certificati di Entità di Federazione: <code class="docutils literal notranslate"><span class="pre">CA:TRUE,</span> <span class="pre">pathlen:0</span></code> (possono solo auto-emettere certificati).</p></li>
-<li><p>Certificati di protocollo: <code class="docutils literal notranslate"><span class="pre">CA:FALSE</span></code> (non possono emettere certificati).</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ol>
-</div></blockquote>
-</section>
-</section>
-<section id="gestione-revoca-certificati">
-<h3><span class="section-number">8.5.3. </span>Gestione Revoca Certificati<a class="headerlink" href="#gestione-revoca-certificati" title="Link to this heading">¶</a></h3>
-<p>Le entità di federazione DEVONO implementare la verifica della revoca dei certificati per assicurare la validazione continua del trust e la conformità ai requisiti di sicurezza della federazione.</p>
-<section id="distribuzione-e-accesso-crl">
-<h4><span class="section-number">8.5.3.1. </span>Distribuzione e Accesso CRL<a class="headerlink" href="#distribuzione-e-accesso-crl" title="Link to this heading">¶</a></h4>
-<p>Le autorità di federazione pubblicano le Liste di Revoca Certificati (CRL) su endpoint pubblicamente accessibili. Le entità di federazione DEVONO essere in grado di accedere ed elaborare queste distribuzioni CRL per la verifica della revoca.</p>
-<p>La seguente procedura abilita le entità di federazione a:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Localizzare gli endpoint di distribuzione CRL dai certificati.</p></li>
-<li><p>Scaricare liste di revoca correnti.</p></li>
-<li><p>Analizzare contenuto CRL e periodi di validità.</p></li>
-</ul>
-</div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># Estrazione e analisi CRL per entità di federazione</span>
-
-<span class="c1"># Estrai URL CRL dall&#39;estensione CRL Distribution Points del certificato</span>
-<span class="nv">crl_url</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">          </span>grep<span class="w"> </span><span class="s2">&quot;URI:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*URI://&#39;</span><span class="k">)</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CRL Distribution Point: </span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
-
-<span class="c1"># Scarica CRL dal punto di distribuzione</span>
-curl<span class="w"> </span>-s<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
-<span class="nv">crl_file</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span><span class="k">)</span>
-
-<span class="c1"># Visualizza informazioni CRL</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Analisi Contenuto CRL:&quot;</span>
-openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout
-</pre></div>
-</div>
-</section>
-<section id="verifica-revoca-certificati">
-<h4><span class="section-number">8.5.3.2. </span>Verifica Revoca Certificati<a class="headerlink" href="#verifica-revoca-certificati" title="Link to this heading">¶</a></h4>
-<p>Le entità di federazione DEVONO verificare lo stato di revoca dei certificati controllando i numeri seriali dei certificati rispetto alle Liste di Revoca Certificati correnti.</p>
-<p>Le entità di federazione DOVREBBERO implementare controlli automatici di revoca per:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>I <strong>Certificati Entità di Federazione</strong>: Verificare periodicamente lo stato del proprio certificato.</p></li>
-<li><p>I <strong>Certificati Entità Peer</strong>: Validare certificati di altri partecipanti alla federazione.</p></li>
-<li><p>La <strong>Validazione della Catena di Trust</strong>: Assicurare che intere catene di certificati rimangano valide.</p></li>
-</ul>
-</div></blockquote>
-<p>Di seguito uno script bash per la verifica dello stato di revoca dei certificati è dato come esempio non normativo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># Verifica revoca certificati per entità di federazione</span>
-
-<span class="c1"># Estrai numero seriale certificato</span>
-<span class="nv">certificate_serial</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-noout<span class="w"> </span>-serial<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                    </span>cut<span class="w"> </span>-d<span class="o">=</span><span class="w"> </span>-f2<span class="k">)</span>
-
-<span class="c1"># Normalizza numero seriale (rimuovi zeri iniziali, converti in minuscolo)</span>
-<span class="nv">normalized_serial</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$certificate_serial</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/^0*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span><span class="k">)</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Numero Seriale Certificato: </span><span class="nv">$normalized_serial</span><span class="s2">&quot;</span>
-
-<span class="c1"># Estrai URL CRL e scarica</span>
-<span class="nv">crl_url</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>certificate.der<span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">          </span>grep<span class="w"> </span><span class="s2">&quot;URI:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/.*URI://&#39;</span><span class="k">)</span>
-curl<span class="w"> </span>-s<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span>
-<span class="nv">crl_file</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_url</span><span class="s2">&quot;</span><span class="k">)</span>
-
-<span class="c1"># Valida firma CRL contro Trust Anchor</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Validazione firma CRL...&quot;</span>
-openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-noout<span class="w"> </span>-text<span class="w"> </span>-CAfile<span class="w"> </span>trust_anchor.pem
-
-<span class="c1"># Estrai numeri seriali revocati da CRL</span>
-<span class="nv">revoked_serials</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$crl_file</span><span class="s2">&quot;</span><span class="w"> </span>-inform<span class="w"> </span>DER<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                 </span>grep<span class="w"> </span><span class="s1">&#39;Serial Number&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                 </span>sed<span class="w"> </span><span class="s1">&#39;s/.*Serial Number: //&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                 </span>sed<span class="w"> </span><span class="s1">&#39;s/^0*//&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                 </span>tr<span class="w"> </span><span class="s1">&#39;[:upper:]&#39;</span><span class="w"> </span><span class="s1">&#39;[:lower:]&#39;</span><span class="k">)</span>
-
-<span class="c1"># Controlla se il certificato è revocato</span>
-<span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$revoked_serials</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$normalized_serial</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Stato Certificato: REVOCATO&quot;</span>
-<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<span class="k">else</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Stato Certificato: VALIDO&quot;</span>
-<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
-<span class="k">fi</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="best-practices-di-gestione-certificati">
-<h3><span class="section-number">8.5.4. </span>Best Practices di Gestione Certificati<a class="headerlink" href="#best-practices-di-gestione-certificati" title="Link to this heading">¶</a></h3>
-<section id="integrazione-validazione-certificati">
-<h4><span class="section-number">8.5.4.1. </span>Integrazione Validazione Certificati<a class="headerlink" href="#integrazione-validazione-certificati" title="Link to this heading">¶</a></h4>
-<p>Le entità di federazione DOVREBBERO integrare le procedure di validazione dei certificati nelle loro operazioni standard di federazione:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p><strong>Aggiornamenti Entity Configuration</strong>: Verificare le catene di certificati durante l'elaborazione di authority hints e aggiornamenti certificati.</p></li>
-<li><p><strong>Costruzione della Catena di Trust</strong>: Validare tutti i certificati durante le procedure di costruzione della catena di trust.</p></li>
-<li><p><strong>Operazioni API di Federazione</strong>: Eseguire controlli di revoca certificati durante le operazioni <code class="docutils literal notranslate"><span class="pre">/resolve</span></code> e <code class="docutils literal notranslate"><span class="pre">/fetch</span></code>.</p></li>
-<li><p><strong>Gestione Certificati di Protocollo</strong>: Validare certificati di Protocollo auto-emessi per servizi interni.</p></li>
-<li><p><strong>Validazione Periodica</strong>: Implementare programmi regolari di validazione certificati e CRL.</p></li>
-</ol>
-</div></blockquote>
-</section>
-<section id="diagnostica-e-risoluzione-problemi">
-<h4><span class="section-number">8.5.4.2. </span>Diagnostica e Risoluzione Problemi<a class="headerlink" href="#diagnostica-e-risoluzione-problemi" title="Link to this heading">¶</a></h4>
-<p>Le entità di federazione POSSONO implementare procedure diagnostiche per identificare e risolvere problemi relativi ai certificati:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Validazione Certificati</strong>, inclusi:</p>
-<ul>
-<li><p><strong>Mismatch Authority Key Identifier</strong>: CRL Authority Key Identifier non corrisponde al Trust Anchor Subject Key Identifier.</p></li>
-<li><p><strong>Rotazione Certificato del Trust Anchor</strong>: Certificati Trust Anchor obsoleti che causano fallimenti di validazione.</p></li>
-<li><p><strong>Problemi sul Formato del Numero Seriale</strong>: Problemi di normalizzazione numero seriale nel controllo revoca.</p></li>
-</ul>
-</li>
-<li><p><strong>Fallimento Validazione CRL</strong>: Quando la validazione CRL fallisce, le entità di federazione DOVREBBERO:</p>
-<ol class="arabic simple">
-<li><p><strong>Verificare Certificato Trust Anchor</strong>: Assicurarsi che sia utilizzato il certificato Trust Anchor corrente.</p></li>
-<li><p><strong>Controllare Authority Key Identifier</strong>: Confrontare CRL Authority Key Identifier con Trust Anchor Subject Key Identifier.</p></li>
-<li><p><strong>Validare Firma CRL</strong>: Verificare che CRL sia appropriatamente firmata dall'autorità emittente attesa.</p></li>
-<li><p><strong>Aggiornare Certificato Trust Anchor</strong>: Scaricare certificato Trust Anchor aggiornato se è avvenuta rotazione.</p></li>
-</ol>
-</li>
-<li><p><strong>Verifica Accessibilità Endpoint</strong>: Le entità di federazione DOVREBBERO implementare test di connettività per gli endpoint dell'infrastruttura certificati.</p></li>
-</ul>
-</div></blockquote>
-<p>Il seguente esempio non normativo fornisce uno script per il test di connettività dell'infrastruttura certificati di Federazione:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1"># Test connettività infrastruttura certificati federazione</span>
-
-<span class="c1"># Test endpoint certificato Trust Anchor</span>
-<span class="nv">ta_cert_url</span><span class="o">=</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/pki/ta.cer&quot;</span>
-<span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ta_cert_url</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Endpoint certificato Trust Anchor: ACCESSIBILE&quot;</span>
-<span class="k">else</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Endpoint certificato Trust Anchor: FALLITO&quot;</span>
-<span class="k">fi</span>
-
-<span class="c1"># Test endpoint distribuzione CRL</span>
-<span class="nv">ta_crl_url</span><span class="o">=</span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/pki/ta.crl&quot;</span>
-<span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ta_crl_url</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Endpoint CRL Trust Anchor: ACCESSIBILE&quot;</span>
-<span class="k">else</span>
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Endpoint CRL Trust Anchor: FALLITO&quot;</span>
-<span class="k">fi</span>
-</pre></div>
-</div>
-</section>
-<section id="coordinamento-del-ciclo-di-vita-dei-certificati">
-<h4><span class="section-number">8.5.4.3. </span>Coordinamento del Ciclo di Vita dei Certificati<a class="headerlink" href="#coordinamento-del-ciclo-di-vita-dei-certificati" title="Link to this heading">¶</a></h4>
-<p>Le entità di federazione DEVONO coordinare la gestione dei certificati con le procedure del ciclo di vita della federazione seguendo i periodi di validità stabiliti:</p>
-<ul class="simple">
-<li><p><strong>Rinnovo dei Certificati</strong>: Allineare i rinnovi dei certificati con gli aggiornamenti dell'Entity Configuration e i cicli di aggiornamento dei Trust Mark, secondo i limiti della federazione definiti in <a class="reference internal" href="#architettura-pki-della-federazione"><span class="std std-ref">Architettura PKI della Federazione</span></a>.</p></li>
-<li><p><strong>Rotazione delle Chiavi</strong>: Coordinare la rotazione delle Chiavi dell'Entità di Federazione con le procedure di rinnovo dei certificati.</p></li>
-<li><p><strong>Gestione della CRL</strong>: Per certificati di Protocollo con validità &gt; 24 ore, mantenere la pubblicazione CRL corrente.</p></li>
-<li><p><strong>Uscita dalla Federazione</strong>: Assicurare la revoca appropriata dei certificati durante l'uscita volontaria o iniziata dall'organismo di supervisione dalla federazione.</p></li>
-</ul>
-</section>
-</section>
-</section>
-<section id="gestione-del-ciclo-di-vita-delle-entita">
-<h2><span class="section-number">8.6. </span>Gestione del Ciclo di Vita delle Entità<a class="headerlink" href="#gestione-del-ciclo-di-vita-delle-entita" title="Link to this heading">¶</a></h2>
-<p>Questa sezione fornisce procedure di implementazione tecnica per la gestione del ciclo di vita delle entità. Per concetti di ciclo di vita di alto livello e processi aziendali, vedere <a class="reference internal" href="onboarding-high-level.html#gestione-del-ciclo-di-vita-delle-entita"><span class="std std-ref">Gestione del Ciclo di Vita delle Entità</span></a>.</p>
-<p>Mentre l'aggiornamento dei dati amministrativi DEVE seguire processi di governance che sono fuori dall'ambito di questa specifica tecnica, gli aggiornamenti della configurazione tecnica sono descritti nelle seguenti sezioni.</p>
-<section id="aggiornamenti-configurazione-tecnica">
-<h3><span class="section-number">8.6.1. </span>Aggiornamenti Configurazione Tecnica<a class="headerlink" href="#aggiornamenti-configurazione-tecnica" title="Link to this heading">¶</a></h3>
-<p>Gli aggiornamenti tecnici che influenzano le operazioni del protocollo di federazione DEVONO seguire procedure specifiche per:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><strong>Rinnovo dei Certificati</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Preparazione Pre-rinnovo</strong>: L'Entità DEVE generare una nuova CSR con informazioni del certificato aggiornate.</p></li>
-<li><p><strong>Richiesta Rinnovo</strong>: L'Entità DEVE inviare richiesta di rinnovo con nuova CSR seguendo la stessa procedura tecnica dell'onboarding iniziale.</p></li>
-<li><p><strong>Integrazione del Certificato</strong>: L'Entità DEVE aggiornare la sua Entity Configuration con la nuova catena di certificati nel parametro <code class="docutils literal notranslate"><span class="pre">x5c</span></code>.</p></li>
-<li><p><strong>Validazione della Catena di Trust</strong>: L'Entità DEVE verificare la Catena di Trust aggiornata attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">/resolve</span></code>.</p></li>
-<li><p><strong>Aggiornamento del Registro</strong>: L'Entità DOVREBBE confermare le informazioni dell'entità aggiornate nell'endpoint <code class="docutils literal notranslate"><span class="pre">/list</span></code> del Trust Anchor.</p></li>
-</ol>
-</li>
-<li><p><strong>Rotazione delle Chiavi</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Generazione Nuove Chiavi</strong>: L'Entità DEVE generare una nuova coppia di Chiavi Pubbliche dell'Entità di Federazione.</p></li>
-<li><p><strong>Pubblicazione Chiavi Parallele</strong>: L'Entità DEVE pubblicare sia le chiavi vecchie che nuove nel claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> dell'Entity Configuration durante il periodo di transizione.</p></li>
-<li><p><strong>Richiesta del Certificato</strong>: L'Entità DEVE richiedere un nuovo certificato per la nuova chiave pubblica seguendo la procedura standard.</p></li>
-<li><p><strong>Migrazione Graduale</strong>: L'Entità DEVE aggiornare l'Entity Configuration per utilizzare la nuova chiave per la firma mantenendo la vecchia chiave per la verifica.</p></li>
-<li><p><strong>Deprecazione Chiave Vecchia</strong>: L'Entità DEVE rimuovere la vecchia chiave dall'Entity Configuration dopo il periodo di validazione.</p></li>
-</ol>
-</li>
-<li><p><strong>Aggiornamenti Metadati</strong></p>
-<ul>
-<li><p><strong>Cambi Endpoint</strong>: L'Entità PUÒ aggiornare gli endpoint di servizio nei metadati specifici dell'entità.</p></li>
-<li><p><strong>Aggiornamenti Capacità</strong>: L'Entità PUÒ modificare protocolli supportati, algoritmi o capacità di servizio entro i vincoli definiti da questo profilo di implementazione IT-Wallet.</p></li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-<p>Tutti gli aggiornamenti tecnici DEVONO essere validati attraverso:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p><strong>Validazione Entity Configuration</strong>: L'Entità DEVE verificare la struttura e il contenuto dell'EC aggiornata.</p></li>
-<li><p><strong>Risoluzione della Catena di Trust</strong>: L'Entità DEVE confermare che l'endpoint <code class="docutils literal notranslate"><span class="pre">/resolve</span></code> restituisca una Catena di Trust valida.</p></li>
-<li><p><strong>Stato della Federazione</strong>: L'Entità DEVE verificare lo stato operativo dell'entità nel registro di federazione.</p></li>
-<li><p><strong>Test di Integrazione</strong>: L'Entità DOVREBBE testare le operazioni del protocollo di federazione con la configurazione aggiornata.</p></li>
-</ol>
-</div></blockquote>
-</section>
-<section id="procedure-tecniche-di-uscita-dalla-federazione">
-<h3><span class="section-number">8.6.2. </span>Procedure Tecniche di Uscita dalla Federazione<a class="headerlink" href="#procedure-tecniche-di-uscita-dalla-federazione" title="Link to this heading">¶</a></h3>
-<p>Per dettagli sui processi di uscita dalla federazione, vedere <a class="reference internal" href="onboarding-high-level.html#processi-di-uscita-e-rimozione-dalla-federazione"><span class="std std-ref">Processi di Uscita e Rimozione dalla Federazione</span></a>. Questa sezione descrive le procedure di implementazione tecnica.</p>
-<section id="uscita-volontaria-disattivazione-tecnica">
-<h4><span class="section-number">8.6.2.1. </span>Uscita Volontaria - Disattivazione Tecnica<a class="headerlink" href="#uscita-volontaria-disattivazione-tecnica" title="Link to this heading">¶</a></h4>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p><strong>Richiesta di Revoca del Certificato</strong>: L'Entità DEVE inviare una richiesta di revoca del certificato all'Autorità di Federazione con motivo di revoca. La richiesta DEVE essere firmata con la Chiave Privata dell'Entità di Federazione corrispondente al certificato da revocare per provare la legittimità della richiesta di revoca.</p></li>
-<li><p><strong>Verifica Aggiornamento CRL</strong>: L'Autorità di Federazione DEVE revocare i certificati dell'Entità e l'Entità DEVE verificare che appaiano nella Lista di Revoca Certificati aggiornata.</p></li>
-<li><p><strong>Rimozione Subordinate Statement</strong>: L'Autorità di Federazione DEVE rimuovere completamente il Subordinate Statement dell'Entità dal Registro di Federazione per prevenire qualsiasi validazione di relazione di trust.</p></li>
-<li><p><strong>Disattivazione Entity Configuration</strong>: L'Entità DEVE disattivare la sua Entity Configuration. L'Entità PUÒ:</p>
-<ol class="loweralpha simple">
-<li><p>Rimuovere completamente l'Entity Configuration dall'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> (restituendo HTTP 404), OPPURE</p></li>
-<li><p>Mantenere l'Entity Configuration disponibile ma DEVE assicurarsi che rimanga scaduta (con claim <code class="docutils literal notranslate"><span class="pre">exp</span></code> nel passato) e NON DEVE aggiornarla con timestamp freschi.</p></li>
-</ol>
-</li>
-<li><p><strong>Aggiornamento dello Stato di Registro</strong>: L'Entità DOVREBBE verificare la rimozione dal Registro di Federazione, verificando anche che lo stato del Trust Mark restituisca <code class="docutils literal notranslate"><span class="pre">{&quot;active&quot;:</span> <span class="pre">false}</span></code> dall'endpoint <code class="docutils literal notranslate"><span class="pre">/trust_mark_status</span></code>.</p></li>
-</ol>
-</div></blockquote>
-<p>Esempio non normativo di richiesta di revoca certificato seguendo il formato RFC 3280:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Richiesta Revoca Certificato:
-Subject: CN=credentials.example.gov, OU=Digital Credentials, O=Example Organization, L=Roma, ST=Lazio, C=IT, emailAddress=technical@credentials.example.gov
-Numero Seriale Certificato: 987654321
-Motivo Revoca: cessation_of_operation (5)
-Data Revoca: 2025-12-31T23:59:59Z
-
-Richiesta firmata con Chiave Privata Entità di Federazione corrispondente a:
-Algoritmo Chiave Pubblica: id-ecPublicKey
-ASN1 OID: prime256v1
-NIST CURVE: P-256
-Key ID: NsXymfIILEPR5Y0t
-
-Nota: Il CRR DEVE essere firmato con la stessa chiave privata che corrisponde al
-certificato da revocare per autenticare la richiesta di revoca.
-</pre></div>
-</div>
-<p>Esempio CRR in formato DER (codificato Base64):</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-----BEGIN CERTIFICATE REVOCATION REQUEST-----
-MIIBVjCB/wIBADBpMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFTGF6aW8xDTALBgNV
-BAcMBFJvbWExGjAYBgNVBAoMEUV4YW1wbGUgT3JnYW5pemF0aW9uMR8wHQYDVQQD
-DBZjcmVkZW50aWFscy5leGFtcGxlLmdvdjBZMBMGByqGSM49AgEGCCqGSM49AwEH
-A0IABIBgZ4HBgUCNXwY5LJSlKzm7gXY4FApFJCj91Gpb1K9GEIouTq2X3L0K64Iq
-0ob4l_gslT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrYwDQYJKoZIhvcNAQ
-kEAwIJrRLl1VR987654321gBgJKwYBBQUHAgEWHGh0dHBzOi8vZXhhbXBsZS5vcmcv
-cG9saWN5MAoGCCqGSM49BAMCA0gAMEUCIQC9h3Y6hFgd7zUzZyBrQ3jJ8HmVF2Qa
------END CERTIFICATE REVOCATION REQUEST-----
-</pre></div>
-</div>
-</section>
-<section id="rimozione-da-parte-dell-organismo-di-supervisione-implementazione-tecnica">
-<h4><span class="section-number">8.6.2.2. </span>Rimozione da parte dell'Organismo di Supervisione - Implementazione Tecnica<a class="headerlink" href="#rimozione-da-parte-dell-organismo-di-supervisione-implementazione-tecnica" title="Link to this heading">¶</a></h4>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p><strong>Revoca Certificato in Emergenza</strong>: L'Autorità di Federazione DEVE immediatamente revocare i certificati con codice motivo appropriato (es., &quot;Key Compromise&quot;, &quot;Cessation of Operation&quot;).</p></li>
-<li><p><strong>Aggiornamento CRL in Emergenza</strong>: Il Trust Anchor DEVE pubblicare CRL aggiornata entro il timeframe di emergenza.</p></li>
-<li><p><strong>Rimozione Subordinate Statement</strong>: L'Autorità di Federazione DEVE immediatamente e completamente rimuovere il Subordinate Statement dell'Entità da tutti gli endpoint di federazione.</p></li>
-<li><p><strong>Invalidazione dell'Entity Configuration</strong>: La Configuration dell'Entità a <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> diventa invalida a causa della revoca del certificato (la verifica della firma fallisce).</p></li>
-<li><p><strong>Invalidazione della Catena di Trust</strong>: La risoluzione della Catena di Trust DEVE restituire stato di errore per l'entità interessata.</p></li>
-<li><p><strong>Isolamento Endpoint di Servizio</strong>: L'infrastruttura di federazione DEVE bloccare l'accesso agli endpoint di servizio della federazione.</p></li>
-</ol>
-</div></blockquote>
-<p>Esempio di verifica della revoca in emergenza:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Controlla aggiornamento CRL di emergenza</span>
-curl<span class="w"> </span>-o<span class="w"> </span>emergency.crl<span class="w"> </span>https://trust-anchor.eid-wallet.example.it/pki/ta-sub.crl
-openssl<span class="w"> </span>crl<span class="w"> </span>-in<span class="w"> </span>emergency.crl<span class="w"> </span>-text<span class="w"> </span>-noout<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Last Update&quot;</span>
-
-<span class="c1"># Verifica che la risoluzione Catena di Trust fallisca</span>
-curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wallet.example.it/resolve?sub=https%3A//suspended-entity.example.it&amp;trust_anchor=https%3A//trust-registry.eid-wallet.example.it&quot;</span>
-<span class="c1"># Atteso: HTTP 404 o risposta di errore specifica</span>
-</pre></div>
-</div>
-<p><strong>Modifiche Tecniche a Livello di Componente</strong></p>
-<p>Componenti tecnici specifici POSSONO essere modificati mantenendo l'appartenenza alla federazione:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://ci.example.it&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://ci.example.it&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;openid_credential_issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;credential_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://ci.example.it/credential&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;credentials_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span>
-<span class="w">      </span><span class="c1">// rimosso: &quot;batch_credential_endpoint&quot; per manutenzione</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>L'Entità DEVE seguire questi passaggi per le modifiche dei componenti:</p>
-<ol class="arabic simple">
-<li><p><strong>Aggiornamento Entity Configuration</strong>: L'Entità DEVE modificare i metadati per riflettere i cambi dei componenti.</p></li>
-<li><p><strong>Rivalidazione della Catena di Trust</strong>: L'Entità DEVE verificare la configurazione aggiornata attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">/resolve</span></code>.</p></li>
-<li><p><strong>Test Servizio</strong>: L'Entità DOVREBBE testare le operazioni del protocollo di federazione rimanenti.</p></li>
-<li><p><strong>Verifica del Registro</strong>: L'Entità DOVREBBE confermare le capacità aggiornate nel registro di federazione.</p></li>
-</ol>
-<p><strong>Obblighi Tecnici Post-Uscita</strong></p>
-<p>Le entità che escono dalla federazione DEVONO mantenere quanto segue per la conformità normativa:</p>
-<ol class="arabic simple">
-<li><p><strong>Entity Configuration Storica</strong>: L'Entità DEVE mantenere l'accessibilità dell'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> per scopi di audit (minimo 7 anni).</p></li>
-<li><p><strong>Archivio Catena di Certificati</strong>: L'Entità DEVE mantenere le catene di certificati accessibili per la verifica degli attestati elettronici esistenti (minimo 7 anni).</p></li>
-<li><p><strong>Conservazione Log di Audit</strong>: L'Entità DEVE archiviare i log del protocollo di federazione secondo i requisiti normativi.</p></li>
-</ol>
+<p>Per le procedure complete di gestione dei certificati X.509, inclusa la validazione delle catene, la verifica della revoca e la gestione del ciclo di vita, vedere <a class="reference internal" href="x5c-evaluation.html#operazioni-di-gestione-dei-certificati-x-509"><span class="std std-ref">Operazioni di Gestione dei Certificati X.509</span></a>.</p>
 </section>
 </section>
 </section>
@@ -1372,35 +973,6 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#operazioni-di-gestione-dei-certificati">8.5. Operazioni di Gestione dei Certificati</a><ul>
-<li><a class="reference internal" href="#architettura-pki-della-federazione">8.5.1. Architettura PKI della Federazione</a></li>
-<li><a class="reference internal" href="#struttura-e-analisi-della-catena-di-certificati">8.5.2. Struttura e Analisi della Catena di Certificati</a><ul>
-<li><a class="reference internal" href="#visualizzazione-catena-di-certificati">8.5.2.1. Visualizzazione Catena di Certificati</a></li>
-<li><a class="reference internal" href="#validazione-catena-di-certificati">8.5.2.2. Validazione Catena di Certificati</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#gestione-revoca-certificati">8.5.3. Gestione Revoca Certificati</a><ul>
-<li><a class="reference internal" href="#distribuzione-e-accesso-crl">8.5.3.1. Distribuzione e Accesso CRL</a></li>
-<li><a class="reference internal" href="#verifica-revoca-certificati">8.5.3.2. Verifica Revoca Certificati</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#best-practices-di-gestione-certificati">8.5.4. Best Practices di Gestione Certificati</a><ul>
-<li><a class="reference internal" href="#integrazione-validazione-certificati">8.5.4.1. Integrazione Validazione Certificati</a></li>
-<li><a class="reference internal" href="#diagnostica-e-risoluzione-problemi">8.5.4.2. Diagnostica e Risoluzione Problemi</a></li>
-<li><a class="reference internal" href="#coordinamento-del-ciclo-di-vita-dei-certificati">8.5.4.3. Coordinamento del Ciclo di Vita dei Certificati</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#gestione-del-ciclo-di-vita-delle-entita">8.6. Gestione del Ciclo di Vita delle Entità</a><ul>
-<li><a class="reference internal" href="#aggiornamenti-configurazione-tecnica">8.6.1. Aggiornamenti Configurazione Tecnica</a></li>
-<li><a class="reference internal" href="#procedure-tecniche-di-uscita-dalla-federazione">8.6.2. Procedure Tecniche di Uscita dalla Federazione</a><ul>
-<li><a class="reference internal" href="#uscita-volontaria-disattivazione-tecnica">8.6.2.1. Uscita Volontaria - Disattivazione Tecnica</a></li>
-<li><a class="reference internal" href="#rimozione-da-parte-dell-organismo-di-supervisione-implementazione-tecnica">8.6.2.2. Rimozione da parte dell'Organismo di Supervisione - Implementazione Tecnica</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1422,7 +994,7 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 
             <div class="right">
                 
-                    <a href="entities.html"><span><span class="section-number">9. </span>Entità</span><span class="icon">&gt;</span></a>
+                    <a href="x5c-evaluation.html"><span><span class="section-number">9. </span>Operazioni di Gestione dei Certificati X.509</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -1430,7 +1002,7 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 08/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
