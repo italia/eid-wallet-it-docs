@@ -215,7 +215,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_023
      - Inizializzazione / Registrazione Wallet, Rilascio Wallet Attestation, Ciclo di vita, Trust
      - Scoperta federazione Fornitore del Wallet
-     - Istanza del Wallet utilizza con successo gli Endpoint di Federation (``.well-known/openid-federation``, ``/fetch``)??? per recuperare metadata e configurazioni correnti del Fornitore del Wallet.
+     - Istanza del Wallet utilizza con successo gli Endpoint di Federation (``.well-known/openid-federation``, ``/fetch``) per recuperare metadata e configurazioni correnti del Fornitore del Wallet.
    * - WP_024
      - Inizializzazione / Attivazione Wallet, Ciclo di vita, Sicurezza
      - Consenso utente
