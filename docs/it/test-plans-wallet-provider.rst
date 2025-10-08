@@ -211,7 +211,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_022
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - Disponibilità API Key Attestation
-     - Istanza del Wallet verifica e conferma la disponibilità delle Key Attestation API nel duspositivo (StrongBox/TEE o Secure Enclave/DeviceCheck).
+     - Istanza del Wallet verifica e conferma la disponibilità delle Key Attestation API nel dispositivo (StrongBox/TEE o Secure Enclave/DeviceCheck).
    * - WP_023
      - Inizializzazione / Registrazione Wallet, Rilascio Wallet Attestation, Ciclo di vita, Trust
      - Scoperta federazione Fornitore del Wallet
