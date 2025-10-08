@@ -90,7 +90,7 @@ This section provides technical details about the PID Issuance using Level of As
 .. plantuml:: plantuml/l2plus-detailed-flow.puml
     :width: 99%
     :alt: The figure illustrates the eID Substantial Authentication with MRTD Verification Detailed Flow.
-    :caption: `eID Substantial Authentication with MRTD Verification Detailed Flow. <https://www.plantuml.com/plantuml/svg/nLRhRXit4_tFfvZFGVBPYbUAxVmeX2ZEHhvOHM8l93b1MnS2jJkIs53abkJALf--7EvgTKaL16YB0ePXS-ToPixm3DzPnuqhvXAmTm4VT7m6SU5cg9n8kHDQmKimEDSEGMHqwfQG6wqdGar1AEWDeyzSIdIGUF-UjGLNASALr8_i___pWUO8APf28bUHBfmK2Xald5R5V8o6vTpuJ2Bdoi71lKLp0Dp2_VPvbQ6dhAFemIJUDkdsBiDnbutr4y01eKcCNeYCGZxx8AOpzruMkEr5LbIkDkAFije1caK58Xvi6t_i3trCdGGRKS6uIEwI0KELWS_x5IIu3L6vX3vEXNLc6Pm-zcwtJLTc3wfNDRa67nnw5mbZp9zB_1TuOlSGlOMu3Py9ZDF0KoSMt27u152vFQZ2KYnAFoZ6n8GJNCAZS3C8hVc4HamgD8nrEXr8PjmYdBJXZh3kTBgFlnTe7NGwB0xv1z269ExN7mu1KYbGkP78Zi6KftVZtp1rHnuEXDHbwAWR3AFOEMzJnkSgs_in8Xg52lNT8C_Ga3d5R3H2LBu9TPIXuqA2M-O81yADvEdBJAV5dB259Xyq6epv0YAgeox3vbfPXCCA-gWmuXZmAHS6xKYeerNTRU9aJtS8q_Nb45ehH7XUDwNJR3PVR0Id_yd-HblNXbnaKLuDKHEV-3oNsDHckadDgKzjn9oRvUuqHO5ekf2xNwW_D81RKq0a3gWQFwbjSjtsgkjX_ZkyeJRTjyleV7UAKsgQAYr3U_R4AxkxMSrP6-ex-ebBaGNJ6XjD-CrmcBHEcYTmzkeKhdGHIF-Wow1jc3cNstQh5KIn-HWcVxDthNH6PsgAvut6tBYifB_pPlttwCVFmxTX72Xba8UsdweQMDM8HkD19NS3JoncEes2QqieuMg87jYtYNnG_-G5O4pdZW50m4pz8fbgWmViZC05-jx-x5qcsin32B8b4uZMTUwQeCeOg-8H0TkTg2YaLjIyd7fUuZJ5t65M5LZsLkSZfLMAnr1p42eyr7cfdN9v5F9xrZbZN3heJKf05fHsm1TSI3wM24w7kdUsIgWdXd8qAvR8L7Y8na4tlWqMAwtihOzHMWHH9zDZnuN23BY3WSCSJaxgsEHv-UGCJrq02XEZv-HOjcfgT95Ns-edb5wSuVQgwtCv99Vw-X7yS7jyg-6YaY98Q8Z0_oJQMhJMczEPqwcMGUa9nGhABy-c1b7z-XQwKDCIvxbSAq0ITo-9d3xo32wkJuxfb_yzkBiOaNa8rOMeZXN4xwyiWUrBsui7crdhTBUzmJ74TD-bLhHtacBiZU0BBikmvBW7mFVxRWDgRpc5fYikTvJdGTdmH5YFuHuK_K4SdRvw_GDOCLNS5GQ96XzgxKcaxnMAjO9zKpCMj7MN_vbg0B1jlI0WAy0qdiH6rBs21vLgOr2MMT8Pfb_AdRkWEkcvGaaAMpN9swzMB2tGXKut78yOsn6U3Vru1NTVzelEkglVhJy6Cs4m3IkM89U2v66lHOb83Aa2sTym21I_D_hHeed6t686LuA6hAlLH9XvVGdypg-tqJugM-du_EjK8uA0sGjDctLKwK3vD3XqCwEBwGp69OAZpUtvUjyphUpIrXfjDEZ5iiSmD2r4wkeiTFTlRjrpRvtwK6KHy886fVv7MDi90PwVnSzFh_pF_eUFKTeXQBgzyN4yy4BRkxuPNlSlBs_PS8Om8OrCjN925MY1fwas6Mc1qzlFvc38BMGu2KfVtOdr8zlccAuVmwYoa9gzytyLS_ad>`_
+    :caption: `eID Substantial Authentication with MRTD Verification Detailed Flow. <https://www.plantuml.com/plantuml/svg/nLPjRnf74Fw-lsBgAAbDV13R-L2X4EU2NqoLs2V0YTgwGilT0DiikzVTFMpwwxkpTnmlAL6aLgg44DmzC_FCCxCp-yuwRbmnb-p77zmCvmWfca8YLv4kd1GA6I-SLiLyZ8Rb7YjIaNFbuE3UeZa0Rk5--_bdBYKww2dlMgKO8F4sfDkx38-xRAoV00wItWKaHYz4HYwVVH3JcNil2zos8bHSk9asuY_kX5OmGBEeICI3RV37_j3xr4d0Y8h6HNAN31Yg37pShoZ1RV3A9VHnAgmpos3qiNUx3Lt17bGlG-M4MzRaWq7l8c6C-USI0Jtd3pe-2yG9d9RCNuB1kNO8OkKYDrfFX9g2KD0RHfMAb7FFseAKX2kf7ncxX-Wjn6tuJ6IS1fuwiU0EmGU0okn15PPyKVX1CQPAEC4bF0etWo3D9pHYKh5XhDFfG3BZ5k6a3NV4TKVfFlvPe7NGwR0un1z06vAuNxyu14YbGEL68Zi6Kpwz6_-1gJloTA0C7Ln7tG2COkSyflJFLRRtPKHb52haTuFSoqnmyjbe1Azya-eeGyU51BVC4Gw46ydJbvbEYpbn2o8VD1gC-GGYogDEm-PQMOJ3YlgeCE8Oy2aN1kr8gADLtcsgoHvrYDFrvH1QAqPuNelIQJQRBpQSqt_2tsZhsf2BBCgh9chY4v_d4flQJ3TBS-f36p7dPhdRJL4eD1t8tJUa3pNWLXTG4GUKZU_KDfbkMzNvCFyUtf1Cz-tIEz_jufH4Km5PohF7NwdkPZPdRQZFw2SkHHQWDJVgy9lXC6cTD4_WxDKfNEaY5Fs3BfssOUPSRjkjLXXXpSVG-PlQjT8PFLDJF6yqviPbPVaxRzQ_Hpz_7huDxK0XmtXe-wwgYLL2D1eFAhaR-C9YfjCecBQ44gwcw8bzkv0Fwhyy08pft34029n9BnfJRV24dH6uGA_jhzvaeiqyk20iGI1QvxaBGPKnLlcZ0cmhKPMGfAZhSkhh4gSfvWwpAi5IMvsFb5Of7aDTWsDVhuA-vY7NGvsNKrGkZm8JNt_E69SEUfEIcWMb7V055vAF9OBJGO6T_H8oYo4qwQfU11MUh77GZMy3OZKrU-l7A2s2g8FfiUD2OGRSmS1X3YSdjM-ol7noXgSk48M9qNCoB4MR6btarTxw1QKVqt1xrVMn7999VH29VZX7NdIug8OI9DHEu3-9jXQjzN1wvdIgPPZvn695vRTdKuEeVdyBNQWB5EUvNC-29EvUKfdwo3Euk3uvfY__FRYx614ykEf2LFiAO_2VaC3sXUt5WyseTRZRtk0OOZhvKYlQG4anzY3uWilIBHdk8V3zjjk4sbj6GNJ5vSuCUb0sN1RM3Rc7HNyGHwUlNly4LamLTuL1AertjRQaekyT6UjPzitfiQ3zk_pVvWS0svuSH6H5cDgJgX5rh-11fTeOb6MKT8RfbtBxBYXFkhXGaC9M8ddyQjdIAbteTCFmYB6T4RGnILx1tPVzusUjwdTF8eEPC9Y6PKkKoz7aQQ_7KoXY24N5_WOWbFYzqOyMJJJc5ZEu4jHaNQqcmiphG-2tVxsNzfMobOxFlmur8WgOlT2qOqVL72Wl2OTkPdGndS6uP72qkKTVxxkmbIfjBTH6W-ukUu11jE2fgxEWxh_Sl-SUdNfNPHBmWXgb_YEixGG7py_YvwTN_hF_2cIKTWYQJczy70_yeErTtmol-vUNjsmuGvZGZ4orSa8LQ86dgJOPpGAdjo_G0SWjP3W9axuw4-lhjiqnNL-BKMKXD7ldVnLp-JS0>`_
 
 Phase 1: OAuth Authorization Request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -254,9 +254,9 @@ The MRTD PoP Service MAY request the MRZ information (document number, date of b
 MRTD PoP Response
 """""""""""""""""
 
-If the HTTP Request is successfully processed, the MRTD PoP Service MUST send a HTTP Response with code *202 Accepted* and ``application/json`` as content type. The payload of the JSON response contains the parameters included in the following table:
+If the HTTP Request is successfully processed, the MRTD PoP Service MUST send a HTTP Response with code *202 Accepted* and ``application/jwt`` as content type. The JWT structure is defined as follows:
 
-.. _table_eID_MRTD_PoP_Response:
+.. _table_eID_MRTD_PoP_Response_Header:
 .. list-table:: MRTD PoP Response Parameters
    :widths: 20 15 65
    :header-rows: 1
@@ -264,6 +264,36 @@ If the HTTP Request is successfully processed, the MRTD PoP Service MUST send a 
    * - **Parameter**
      - **Type**
      - **Description**
+   * - **alg**
+     - string
+     - REQUIRED. Signature algorithm.
+   * - **typ**
+     - string
+     - REQUIRED. It MUST be ``mrtd-ias-pop+jwt``.
+   * - **kid**
+     - string
+     - REQUIRED. Identifier of the PID Provider's key that MUST be used to verify the signature of this JWT.
+
+.. _table_eID_MRTD_PoP_Response_Payload:
+.. list-table:: MRTD PoP Response Parameters
+   :widths: 20 15 65
+   :header-rows: 1
+
+   * - **Parameter**
+     - **Type**
+     - **Description**
+   * - **iss**
+     - string
+     - REQUIRED. PID Provider identifier.
+   * - **aud**
+     - string
+     - REQUIRED. Wallet Instance identifier.
+   * - **iat**
+     - integer
+     - REQUIRED. Issuance time (Unix timestamp).
+   * - **exp**
+     - integer
+     - REQUIRED. Expiration time (Unix timestamp).
    * - **challenge**
      - string
      - REQUIRED. Challenge data for cryptographic document validation. It SHOULD be the SHA-256 hash value of a random value with the ``mrtd_auth_session`` and timestamp for cryptographic binding.
@@ -273,18 +303,35 @@ If the HTTP Request is successfully processed, the MRTD PoP Service MUST send a 
    * - **mrz**
      - string
      - OPTIONAL. Machine Readable Zone information including document number, date of birth, expiry date, citizenship and gender.
+   * - **htu**
+     - string
+     - REQUIRED. HTTP URI of the MRTD PoP validation endpoint.
+   * - **htm**
+     - string
+     - REQUIRED. HTTP method for the MRTD PoP validation request. MUST be ``POST``.
 
 Below a non-normative example of an MRTD PoP Response:
 
 .. code-block:: http
 
     HTTP/1.1 202 Accepted
-    Content-Type: application/json; charset=utf-8
-
+    Content-Type: application/jwt; charset=utf-8
     {
+      "alg":"ES256",
+      "typ":"mrtd-ias-pop+jwt",
+      "kid":"b3f1a6c2e9d54a8f9c3e7d1a2f4b6c78"
+    }
+    .
+    {
+      "iss":"https://pid-provider.example.org",
+      "aud":"https://wallet.example.org/instance/12345",
+      "iat": 1753555800,
+      "exp": 1753556000,
       "mrtd_pop_nonce":"9f2c4a7e3b1d8c9a6e5f4b2a1c3d7e8f",
       "mrz":"...",
-      "challenge":"..."
+      "challenge":"...",
+      "htu":"...",
+      "htm":"..."
     }
 
 **The MRTD PoP Service MUST:**
@@ -522,7 +569,7 @@ Upon successful MRTD PoP validation, the Wallet Instance MUST redirect the User 
 
 .. code-block:: text
 
-    https://pid-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&auth_session=wxroVrBY2MCq4dDNGXACS
+    https://pid-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
 
 The Wallet Instance MUST validate that the ``mrtd_val_pop_nonce`` matches the value received from the MRTD PoP Validation Response.
 

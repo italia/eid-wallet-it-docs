@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.3.4. Relying Party Entity Configuration &#8212; IT-Wallet Technical Documentation - PR #839</title>
+    <title>10.3.4. Relying Party Entity Configuration &#8212; IT-Wallet Technical Documentation - PR #839</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -17,8 +17,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6.3.5. Relying Party Metadata" href="relying-party-metadata.html" />
-    <link rel="prev" title="6.3.1. Relying Party Instance" href="relying-party-instance.html" /> 
+    <link rel="next" title="10.3.5. Relying Party Metadata" href="relying-party-metadata.html" />
+    <link rel="prev" title="10.3.1. Relying Party Instance" href="relying-party-instance.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -133,32 +133,36 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">6. Entities</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">6.1. Wallet Solution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">6.2. Credential Issuer Solution</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">6.3. Relying Party Solution</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">6.3.1. Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">6.3.2. Mobile Relying Party Instance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">6.3.3. Web Relying Party Instance</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.3.4. Relying Party Entity Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">6.3.5. Relying Party Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">10. Entities</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="wallet-solution.html">10.1. Wallet Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.2. Credential Issuer Solution</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="relying-party-solution.html">10.3. Relying Party Solution</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html">10.3.1. Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#mobile-relying-party-instance">10.3.2. Mobile Relying Party Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-instance.html#web-relying-party-instance">10.3.3. Web Relying Party Instance</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.3.4. Relying Party Entity Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-metadata.html">10.3.5. Relying Party Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">6.4. Authentic Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">10.4. Authentic Sources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
 </ul>
 
         </div>
@@ -171,9 +175,9 @@
           <div class="body" role="main">
             
   <section id="relying-party-entity-configuration">
-<h1><span class="section-number">6.3.4. </span>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Link to this heading">¶</a></h1>
-<p>According to Section <a class="reference internal" href="trust.html#configuration-of-the-federation"><span class="std std-ref">Configuration of the Federation</span></a>, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
-The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections <a class="reference internal" href="trust.html#entity-configuration-leaves-and-intermediates"><span class="std std-ref">Entity Configuration Leaves and Intermediates</span></a> and <a class="reference internal" href="trust.html#entity-configurations-common-parameters"><span class="std std-ref">Entity Configurations Common Parameters</span></a>.</p>
+<h1><span class="section-number">10.3.4. </span>Relying Party Entity Configuration<a class="headerlink" href="#relying-party-entity-configuration" title="Link to this heading">¶</a></h1>
+<p>According to Section <span class="xref std std-ref">trust:Configuration of the Federation</span>, as a Federation Entity, the Relying Party is required to maintain a well-known endpoint that hosts its Entity Configuration.
+The Entity Configuration of Relying Parties MUST contain the parameters defined in the Sections <span class="xref std std-ref">trust:Entity Configuration Leaves and Intermediates</span> and <span class="xref std std-ref">trust:Entity Configurations Common Parameters</span>.</p>
 <p>The Relying Parties MUST provide the following metadata types:</p>
 <blockquote>
 <div><ul class="simple">
@@ -181,9 +185,9 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <li><p><cite>openid_credential_verifier</cite></p></li>
 </ul>
 </div></blockquote>
-<p>The <em>federation_entity</em> metadata MUST contain the claims as defined in Section <a class="reference internal" href="trust.html#metadata-of-federation-entity-leaves"><span class="std std-ref">Metadata of federation_entity Leaves</span></a>.</p>
+<p>The <em>federation_entity</em> metadata MUST contain the claims as defined in Section <span class="xref std std-ref">trust:Metadata of federation_entity Leaves</span>.</p>
 <section id="example-of-a-relying-party-entity-configuration">
-<h2><span class="section-number">6.3.4.1. </span>Example of a Relying Party Entity Configuration<a class="headerlink" href="#example-of-a-relying-party-entity-configuration" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">10.3.4.1. </span>Example of a Relying Party Entity Configuration<a class="headerlink" href="#example-of-a-relying-party-entity-configuration" title="Link to this heading">¶</a></h2>
 <p>Below a non-normative example of the request made by the Wallet Instance to the <em>openid-federation</em> well-known endpoint to obtain the Relying Party Entity Configuration:</p>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="nf">GET</span> <span class="nn">/.well-known/openid-federation</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">HOST</span><span class="o">:</span> <span class="l">relying-party.example.org</span>
@@ -293,8 +297,8 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">6.3.4. Relying Party Entity Configuration</a><ul>
-<li><a class="reference internal" href="#example-of-a-relying-party-entity-configuration">6.3.4.1. Example of a Relying Party Entity Configuration</a></li>
+<li><a class="reference internal" href="#">10.3.4. Relying Party Entity Configuration</a><ul>
+<li><a class="reference internal" href="#example-of-a-relying-party-entity-configuration">10.3.4.1. Example of a Relying Party Entity Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -310,13 +314,13 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
             <div class="left">
                 
                 <a href="relying-party-instance.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">6.3.1. </span>Relying Party Instance</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.3.1. </span>Relying Party Instance</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="relying-party-metadata.html"><span><span class="section-number">6.3.5. </span>Relying Party Metadata</span><span class="icon">&gt;</span></a>
+                    <a href="relying-party-metadata.html"><span><span class="section-number">10.3.5. </span>Relying Party Metadata</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -324,7 +328,7 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 06/10/2025.
+      Last updated on 08/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

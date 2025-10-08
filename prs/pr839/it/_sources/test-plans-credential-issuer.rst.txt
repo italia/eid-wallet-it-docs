@@ -275,7 +275,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_057
     - Emissione, Privacy
     - Raccolta opzionale dei dati di contatto per le credenziali
-    - I Credential Issuer richiedono i dati di contatto dell’utente (email, numero di telefono) per l’invio di notifiche relative alle credenziali digitali emesse.
+    - I Credential Issuer richiedono i dati di contatto dell’utente (email, numero di telefono) per l’invio di notifiche relative agli Attestati Elettronici emessi.
   * - CI_058
     - Emissione, Interoperabilità
     - Validazione dei parametri della risposta di autorizzazione
@@ -411,7 +411,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_086
     - Emissione, Interoperabilità
     - Notification ID unificato per operazioni batch
-    - Per le Credenziali Digitali emesse in batch, un unico notification_id copre l’intero set emesso. La risposta di notifica si applica a tutte le Credenziali: qualsiasi fallimento parziale è trattato come fallimento dell’intero batch.
+    - Per gli Attestati Elettronici emessi in batch, un unico notification_id copre l'intero set emesso. La risposta di notifica si applica a tutti gli Attestati: qualsiasi fallimento parziale è trattato come fallimento dell'intero batch.
   * - CI_087
     - Emissione, Interoperabilità
     - Tabella dei Codici di Stato HTTP per la Risposta di Notifica
@@ -423,15 +423,15 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_088a
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Deferred Endpoint
-    - L’Access Token consente l’accesso al Deferred endpoint per ottenere nuove Credenziali Digitali dopo il lead_time o la notifica di readiness.
+    - L'Access Token consente l'accesso al Deferred endpoint per ottenere nuovi Attestati Elettronici dopo il lead_time o la notifica di readiness.
   * - CI_088b
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Notification Endpoint
-    - L’Access Token consente l’accesso al Notification endpoint per notificare l’eliminazione di una Credenziale Digitale al Credential Issuer.
+    - L'Access Token consente l'accesso al Notification endpoint per notificare l'eliminazione di un Attestato Elettronico al Credential Issuer.
   * - CI_089c
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Credential Endpoint
-    - L’Access Token consente l’accesso al Credential endpoint per il rinnovo/re-emissione di Credenziali Digitali esistenti.
+    - L'Access Token consente l'accesso al Credential endpoint per il rinnovo/re-emissione di Attestati Elettronici esistenti.
   * - CI_090
     - Emissione, Sicurezza
     - Sicurezza del Refresh Token vincolato a DPoP
@@ -495,19 +495,19 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_105
     - Emissione, Sicurezza
     - Allineamento raccomandato delle date di scadenza nelle Credenziali riemesse
-    - Le nuove Credenziali Digitali ottenute tramite il flusso di ri-emissione mantengono la stessa scadenza della Credenziale aggiornata.
+    - I nuovi Attestati Elettronici ottenuti tramite il flusso di ri-emissione mantengono la stessa scadenza dell'Attestato aggiornato.
   * - CI_106
     - Emissione, Sicurezza
     - Obbligo di nuova emissione dopo la scadenza
-    - Una volta che una Credenziale Digitale è scaduta, l’Utente deve completare l’intero processo di emissione per ottenere nuove Credenziali Digitali.
+    - Una volta che un Attestato Elettronico è scaduto, l'Utente deve completare l'intero processo di emissione per ottenere nuovi Attestati Elettronici.
   * - CI_107
     - Emissione, Sicurezza
     - Obbligo di coerenza dell’Issuer nella Ri-emissione
-    - Le nuove Credenziali Digitali sono emesse esclusivamente dallo stesso Credential Issuer che ha originariamente fornito le credenziali al Wallet Instance.
+    - I nuovi Attestati Elettronici sono emessi esclusivamente dallo stesso Credential Issuer che ha originariamente fornito le credenziali al Wallet Instance.
   * - CI_108
     - Emissione, Sicurezza
     - Limitazione dello scope del Refresh Token per la Ri-emissione
-    - Gli Access Token ottenuti tramite Refresh Token non possono essere utilizzati per l’emissione di nuove Credenziali Digitali non già presenti nel Wallet Instance (prima emissione).
+    - Gli Access Token ottenuti tramite Refresh Token non possono essere utilizzati per l'emissione di nuovi Attestati Elettronici non già presenti nel Wallet Instance (prima emissione).
   * - CI_109
     - Emissione, Sicurezza
     - Limitazione dello scope del processo di Ri-emissione
@@ -515,27 +515,27 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_110
     - Emissione, Sicurezza
     - Aggiornamenti tecnici senza interazione utente
-    - Per aggiornamenti tecnici del modello/formato dei dati, la sostituzione e l’archiviazione delle Credenziali Digitali non richiedono il coinvolgimento diretto dell’Utente.
+    - Per aggiornamenti tecnici del modello/formato dei dati, la sostituzione e l'archiviazione degli Attestati Elettronici non richiedono il coinvolgimento diretto dell'Utente.
   * - CI_111
     - Emissione, Sicurezza e Privacy
     - Autorizzazione utente per aggiornamento attributi
-    - Per aggiornamenti dell’insieme di attributi dell’Utente, il Wallet Instance informa l’Utente delle modifiche e richiede esplicita autorizzazione prima di archiviare la nuova Credenziale Digitale.
+    - Per aggiornamenti dell'insieme di attributi dell'Utente, il Wallet Instance informa l'Utente delle modifiche e richiede esplicita autorizzazione prima di archiviare il nuovo Attestato Elettronico.
   * - CI_112
     - Emissione, Sicurezza
     - Coerenza della data di scadenza nella Ri-emissione
-    - Le nuove Credenziali Digitali mantengono la stessa data di scadenza della versione precedente.
+    - I nuovi Attestati Elettronici mantengono la stessa data di scadenza della versione precedente.
   * - CI_113
     - Emissione, Privacy
     - Notifica opzionale out-of-band per aggiornamenti di Ri-emissione
-    - Quando una Credenziale Digitale necessita di aggiornamento, i Credential Issuer inviano notifiche agli Utenti tramite canali di comunicazione out-of-band registrati (email, SMS, notifiche push).
+    - Quando un Attestato Elettronico necessita di aggiornamento, i Credential Issuer inviano notifiche agli Utenti tramite canali di comunicazione out-of-band registrati (email, SMS, notifiche push).
   * - CI_114
     - Emissione, Sicurezza
     - Restrizione di prima emissione per i Refresh Token
-    - Gli Access Token ottenuti tramite Refresh Token non possono essere utilizzati per la prima emissione di Credenziali Digitali.
+    - Gli Access Token ottenuti tramite Refresh Token non possono essere utilizzati per la prima emissione di Attestati Elettronici.
   * - CI_115
     - Emissione, Sicurezza
     - Obbligo di coerenza della data di scadenza dopo la Ri-emissione
-    - Il Credential Issuer imposta la stessa data di scadenza per le Credenziali Digitali riemesse come per la versione precedente.
+    - Il Credential Issuer imposta la stessa data di scadenza per gli Attestati Elettronici riemessi come per la versione precedente.
   * - CI_116
     - Emissione, Privacy
     - Consenso utente per la Ri-emissione basata su attributi

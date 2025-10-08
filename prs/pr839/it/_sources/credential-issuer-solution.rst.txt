@@ -86,7 +86,7 @@ Componente Relying Party
 Questo componente DEVE autenticare gli Utenti, se richiesto:
 
    - Per l'emissione di PID, tramite l'infrastruttura nazionale di Identità Digitale.
-   - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione della Credenziale Digitale`.
+   - Per l'emissione di (Q)EAA, richiedendo, ottenendo e validando i PID dalle Istanze del Wallet dell'Utente utilizzando `OpenID4VP`_ in conformità con la Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`.
 
 Interfaccia API
 ^^^^^^^^^^^^^^^

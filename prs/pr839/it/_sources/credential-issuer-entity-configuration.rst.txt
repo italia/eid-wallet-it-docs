@@ -16,7 +16,7 @@ I Fornitori di Attestati Elettronici DEVONO fornire i seguenti Metadata:
 Nei casi in cui i Fornitori di Attestati Elettronici di Attributi autenticano gli Utenti utilizzando la loro Istanza del Wallet, allora i Metadata per *openid_credential_verifier* DEVONO essere forniti in aggiunta ai Metadata sopra indicati. Nel caso in cui uno schema nazionale di Identità Digitale sia utilizzato dal Fornitore di Attestati Elettronici di Dati di Identificazione Personale per l'autenticazione dell'Utente, essi POSSONO includere i Metadata per *openid_relying_party* all'interno della loro Entity Configuration. I Metadata *openid_relying_party* DEVONO essere conformi alle Regole Tecniche `SPID/CIE-OpenID-Connect-Specifications`_.
 
 
-I Metadata *federation_entity* DEVONO contenere i parametri come definiti nella Sezione :ref:`trust:Metadati delle Foglie federation_entity`.
+I Metadata *federation_entity* DEVONO contenere i parametri come definiti nella Sezione :ref:`trust:Metadati di federation_entity Foglie`.
 
 I Metadata *openid_credential_verifier* DEVONO contenere i parametri come definiti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 

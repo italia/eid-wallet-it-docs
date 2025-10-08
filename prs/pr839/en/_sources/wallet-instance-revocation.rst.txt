@@ -36,7 +36,7 @@ Regardless of who triggered the revocation, the Wallet Provider has to inform Us
 
 .. note::
   - The flow for the Wallet Instance Revocation triggered by the User is detailed below.
-  - The endpoint used by the PID Provider is detailed in the Wallet Provider Catalogue of e-Service PDND Catalogue (see Section :ref:`wallet-provider-endpoint:e-Service PDND Wallet Provider Catalogue` for technical details).
+  - The endpoint used by the PID Provider is detailed in the Wallet Provider Catalog of e-Service PDND Catalog (see Section :ref:`wallet-provider-endpoint:e-Service PDND Wallet Provider Catalog` for technical details).
   - The flow for Authorized Entities (e.g., Supervisory Bodies) is out of scope of this specification, it will be managed by each Wallet Provider.
 
 

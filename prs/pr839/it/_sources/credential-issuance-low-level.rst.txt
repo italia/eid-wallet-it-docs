@@ -33,12 +33,12 @@ In aggiunta, i Credential Issuer POSSONO supportare:
   * **Refresh Token Flow**: L'Istanza del Wallet richiede un nuovo Access Token al Token Endpoint del PID/(Q)EEA Provider.
   * **Re-issuance Flow**: A seguito di aggiornamenti ad un Attestato Elettronico già memorizzato, l'Istanza del Wallet richiede un aggiornamento dell'Attestato Elettronico al Credential Endpoint del Credential Issuer.
   * **Deferred Issuance Flow**: Il Credential Issuer potrebbe impiegare del tempo per emettere l'Attestato Elettronico richiesto, a causa delle regole di provisioning dei dati delle Fonti Autentiche, e consente al Wallet di recuperare l'Attestato Elettronico richiesto in futuro.
-  * **Batch Credential Issuance Flow**: Permette l'emissione di un batch di una o più Credenziali Digitali. Le Credenziali Digitali emesse in batch DEVONO condividere lo stesso formato e contenere lo stesso set di attributi relativi al Titolare. Ogni Credenziale DEVE contenere dati crittografici diversi per impedire la correlabilità tra le Credenziali Digitali.
+  * **Batch Credential Issuance Flow**: Permette l'emissione di un batch di uno o più Attestati Elettronici. Gli Attestati Elettronici emessi in batch DEVONO condividere lo stesso formato e contenere lo stesso set di attributi relativi al Titolare. Ogni Attestato DEVE contenere dati crittografici diversi per impedire la correlabilità tra gli Attestati Elettronici.
 
 .. note::
     **Standard or Batch Credential Issuance:** 
 
-    L'Utente può configurare la Wallet Solution per emettere Credenziali digitali in modalità batch o standard e definire la dimensione preferita del batch.
+    L'Utente può configurare la Wallet Solution per emettere Attestati Elettronici in modalità batch o standard e definire la dimensione preferita del batch.
 
 L'intero Issuance Flow può essere suddiviso in due sotto-flussi:
 
@@ -81,7 +81,7 @@ Il seguente diagramma mostra il *flusso di emissione*.
     :alt: La figura illustra il flusso dettagliato per l'emissione degli Attestati Elettronici.
     :caption: `Emissione degli Attestati Elettronici - Flusso dettagliato. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry2gEHlsgi0BYBBQYpKa5L7WMyA22jo92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEORxvvh3yO9qmpk-hJ7YdbT-lqMHPJMUoaBLG3bvzjcXUWR3WisojlpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87CqKGL86iSynGbK1HUXWc1ajKJeeAPjRwrgFCw9zHsY7e0neuvfAGp3vUBp_UJQVpRBB3uW6-iGLf8NW7lG6tG_Y5v4OugHK8YgxNJaW5qbdOenEbS2AWuZWKxmYZd-48xw4mA1p2ujV950fT8X04kP5esClzUBJGYrPTalfYV0Tt-8T7ws3mkm8eAacmLhBCmvjfH4C8BqVfTd0xzcutch3MQEmSIIF8vuGXA4Z5ULsZeCHIWixHqvPXOVH1bdz9JcjWvLO9vmssAfs77aGcy20gMKht22c34aPCOSU9hRMo28EMWfKtCWVyKak3TYNLa4aF9bwyXv2tDl8hnuc4HZ8XSJFCl61B-MB3J5GkRPsB2rZChfwGcNjuVNyzMqupRqFLAK1GBZX2KyE9nDaLtEWnNDE0mE3cno5pKuIC5ONNTL0c0X_fZ6Wid5HRy3nXGSk9mjbXP0yhYprOWz-6q_5u-59ebCq_XABAhfPUG9_WMDOm6pc4pg0VQUsfACSN6SN1sw92GmAu2it-W8_FocgZzIOPHzXeSsOVEFs02YYVMalbicHeboI9pSAy9OvvZBT6KF-unnfvZWbuV5XrAw4TyL8QBBZ1UCx_rJ7F97Dm0Xsv54M1rguuoz3b6uDsrxtoJmC_dRc4WxbM1Puuk5uk5x2u_RI4joe8OjnECTPmnHhD_FQsPiBY-PeKyIGM9ipa9-hA2liMWg40zBTp4uB-rzfQj9QuYy30Mt9692Qj171AF8Ouqm4fgLogj2yY-9Na1xuMT9hLgj1g8xU-sQsyVzXuc3KpVYbSiVjUbh7Tvy1LJMcZR2mCvXSNw-1gPULN79wt_PiinIZiEgMAqVutX56E_Fj3-_ukV_FcJSwFy-4GicPFzTUvj20EGbPYNI5apz-HIygw-IeYUX87DdYW7CcLq-2YLaPgH4-7hMwkrHBMZwpL--Y9spIEKGoIpbACd8FIWQ2Y8oBTZT4uNhxCDiLpta8Hhl1MtvE-i0yyWE6RhhiACjzvQmz2YjPfWv30Y47FokBsY5ZFBf5KFkXbbWCUKF57KT99O-waPisTBTtbpUTfTeTRQHsT4kDCVSGtCbW9XoLaKb7oUmx7D92NK_ot1W-w1GRd2fMc5al5kRtx_qyaXebMZa8s8zrhl_djChRWTwfVeIXNJkun1sU4igBeIf-cxtEPBR_jiHp4XdbG8FRQA_wq2yx0rbXG1artdc9mknntg2YMt6xHnEuDNSAtid6M3pQLFeBO2gcUVXTye3z-N_q9>`_
 
-Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust:Meccanismo di Valutazione della Fiducia`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
+Una volta completato il *flusso di richiesta dell'Utente*, l'Istanza del Wallet elabora i Metadata del Credential Issuer come definito nella Sezione :ref:`trust:Meccanismo di Trust Evaluation`. Inoltre, in caso di emissione di Credenziali in batch, l'Istanza del Wallet DEVE verificare che venga supportata l'emissione in batch tramite l'oggetto ``batch_credential_issuance`` presente nei metadati del Credential Issuer, da cui l'Istanza del Wallet può ottenere il valore ``batch_size``.
 
 .. note::
   **Controllo della Federazione:** L'Istanza del Wallet deve verificare se il Credential Issuer è membro della Federazione, ottenendo i suoi Metadata specifici per il protocollo (:ref:`WP_046 <wallet-credential-issuance-testcases>`). Un esempio non normativo di una risposta dall'Endpoint **.well-known/openid-federation** con la **Entity Configuration** e i **Metadata** del Credential Issuer è rappresentato nella sezione :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`.
@@ -288,7 +288,7 @@ Di seguito è riportato un esempio non normativo di una `Nonce Response`:
 **Passo 14 (DPoP Proof per il Credential Endpoint)**: L'Istanza del Wallet crea un JWT DPoP Proof utilizzando la stessa chiave del **Passo 8** e secondo la Sezione 4 di (:rfc:`9449`) (:ref:`WP_056b <wallet-credential-issuance-testcases>`).
 
 .. note::
-   Se l'Istanza del Wallet richiede l'emissione in batch di Credenziali Digitali, il flusso prosegue con il **Passo 17**. In caso contrario, vengono eseguiti i passi **15-16**.
+   Se l'Istanza del Wallet richiede l'emissione in batch di Attestati Elettronici, il flusso prosegue con il **Passo 17**. In caso contrario, vengono eseguiti i passi **15-16**.
 
 **Passo 15 (Prova di Possesso della Credenziale)**: L'Istanza del Wallet per la richiesta delle Credenziali Digitali crea una prova di possesso con il ``c_nonce`` ottenuto nel **Passo 13** utilizzando la chiave privata utilizzata per il DPoP. Il valore del ``jwk`` nel parametro proof DEVE essere uguale alla chiave pubblica referenziata nel DPoP (:ref:`WP_056c <wallet-credential-issuance-testcases>`).
 
@@ -452,7 +452,7 @@ Di seguito è riportato un esempio non normativo di una risposta di successo con
    Nel sistema della Fonte Autentica talvolta sono disponibili molteplici set di dati pertanto l'Utente potrebbe essere interessato a ottenere più di una Credenziale. In questi casi, L'Issuance flow rimane lo stesso descritto in :ref:`credential-issuance-low-level:Flussi Dettagliati per l'Emissione di Attestati Elettronici`. Nella Token Response (**Passo 11**), il Fornitore di Credenziali genera un identificativo univoco (``credential_identifier``) per ciascun set di dati fornito nel parametro ``AttributeClaims`` del servizio PDND :ref:`authentic-source-endpoint:Get Attribute Claims`. Pertanto, l'array ``credential_identifiers`` fornito nel parametro ``authorization_details`` contiene gli identificativi di ciascun set di dati. Successivamente, il Wallet invia una Credential Request (**Passo 16**) per ciascun identificativo, ottenendo più Credenziali distinte che vengono mostrate individualmente all'Utente per la loro accettazione. Infine, il Fornitore di Credenziali viene informato dal Wallet dell'esito tramite il :ref:`credential-issuance-endpoint:Notification Endpoint` (:ref:`WP_057 <wallet-credential-issuance-testcases>`).
 
 .. note::
-  Per le Credenziali Digitali emesse in batch, il ``notification_id`` si riferisce a tutte le credenziali emesse in batch. La Notification Response (ad esempio ``credential_accepted`` o ``credential_stored``) si applica pertanto a tutte le credenziali contenute nel batch; qualsiasi errore parziale viene trattato come errore dell'intero batch.
+  Per gli Attestati Elettronici emessi in batch, il ``notification_id`` si riferisce a tutti gli attestati emessi in batch. La Notification Response (ad esempio ``credential_accepted`` o ``credential_stored``) si applica pertanto a tutti gli attestati contenuti nel batch; qualsiasi errore parziale viene trattato come errore dell'intero batch.
 
 Refresh Token Flow
 -------------------

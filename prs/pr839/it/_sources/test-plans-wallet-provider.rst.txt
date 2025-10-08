@@ -77,7 +77,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_002g
      - Trust, Interoperabilità
      - Chiavi di firma Entity Configuration
-     - Il payload del JWT Entity Configuration contiene il parametro ``jwks`` avente uno o più JWK (:rfc:`7517`) validi, cioascuno contenente chiavi pubbliche di firma del Fornitore del Wallet nel ruolo di Entità della Federazione .
+     - Il payload del JWT Entity Configuration contiene il parametro ``jwks`` avente uno o più JWK (:rfc:`7517`) validi, ciascuno contenente chiavi pubbliche di firma del Fornitore del Wallet nel ruolo di Entità della Federazione .
    * - WP_002h
      - Trust, Interoperabilità
      - Metadata Entity Configuration
@@ -211,11 +211,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_022
      - Inizializzazione / Registrazione Wallet, Ciclo di vita, Sicurezza
      - Disponibilità API Key Attestation
-     - Istanza del Wallet verifica e conferma la disponibilità delle Key Attestation API nel duspositivo (StrongBox/TEE o Secure Enclave/DeviceCheck).
+     - Istanza del Wallet verifica e conferma la disponibilità delle Key Attestation API nel dispositivo (StrongBox/TEE o Secure Enclave/DeviceCheck).
    * - WP_023
      - Inizializzazione / Registrazione Wallet, Rilascio Wallet Attestation, Ciclo di vita, Trust
      - Scoperta federazione Fornitore del Wallet
-     - Istanza del Wallet utilizza con successo gli Endpoint di Federation (``.well-known/openid-federation``, ``/fetch``)??? per recuperare metadata e configurazioni correnti del Fornitore del Wallet.
+     - Istanza del Wallet utilizza con successo gli Endpoint di Federation (``.well-known/openid-federation``, ``/fetch``) per recuperare metadata e configurazioni correnti del Fornitore del Wallet.
    * - WP_024
      - Inizializzazione / Attivazione Wallet, Ciclo di vita, Sicurezza
      - Consenso utente

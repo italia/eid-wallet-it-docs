@@ -691,7 +691,7 @@ I seguenti **elementIdentifiers** DEVONO essere inclusi in un Attestato Elettron
 
 .. note:: 
   
-  Indipendentemente dal tipo di Credenziale Digitale, il valore di ``sub`` NON DEVE essere mostrato all'Utente, in quanto non è un attributo dello stesso. È utilizzato per scopi di identificazione dagli Emittenti di Credenziali.
+  Indipendentemente dal tipo di Attestato Elettronico, il valore di ``sub`` NON DEVE essere mostrato all'Utente, in quanto non è un attributo dello stesso. È utilizzato per scopi di identificazione dagli Emittenti di Credenziali.
 
 Mobile Security Object
 ^^^^^^^^^^^^^^^^^^^^^^

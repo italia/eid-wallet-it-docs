@@ -47,7 +47,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
   Fornisce dettagli tecnici supplementari, modelli di implementazione e framework di test, inclusa la gestione delle istanze di applicazioni mobili, specifiche di integrazione della piattaforma nazionale e matrici di test complete per la validazione dell'ecosistema.
 
 
-Percorsi di Lettura per Ruolo
+Journey di Lettura per Ruolo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
@@ -92,12 +92,12 @@ Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di
 **Sezioni secondarie:**
 
 * **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Comprensione delle interazioni e dei requisiti dell'Istanza del Wallet.
-* **Sezione** :ref:`credential-presentation:Presentazione della Credenziale Digitale`: Comprensione di come le Credenziali Elettroniche vengono presentate sia in scenari remoti che di prossimità.
+* **Sezione** :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`: Comprensione di come le Credenziali Elettroniche vengono presentate sia in scenari remoti che di prossimità.
 * **Sezione** :ref:`e-service-pdnd:e-Service PDND`: Integrazione con la Piattaforma Nazionale di Interoperabilità dei Dati.
 
 .. note::
 
-    Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione della Credenziale Digitale`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.  
+    Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.  
 
 Fonte Autentica
 """""""""""""""
@@ -127,7 +127,7 @@ I lettori interessati all'implementazione o alla gestione di una Soluzione di **
 * **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
 * **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti completi di implementazione del Verificatore di Credenziali.
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.
-* **Sezione** :ref:`credential-presentation:Presentazione della Credenziale Digitale`: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.
+* **Sezione** :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.
 * **Sezione** :ref:`relying-party-endpoint:Endpoint della Relying Party`: Specifiche API relative alla federazione e alla verifica.
 * **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Requisiti della suite crittografica.
 

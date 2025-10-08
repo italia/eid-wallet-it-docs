@@ -287,7 +287,7 @@ SR-W-20
 L'Istanza del Wallet scopre i Fornitori di Credenziali affidabili utilizzando risorse di terze parti affidabili, come l'API di Federazione (ad esempio, utilizzando l'Endpoint di Elenco Subordinato del Trust Anchor e dei suoi Intermediari), ispezionando i metadati del Fornitore di Credenziali e i Trust Mark per filtrare il Fornitore di PID.
 
 Le informazioni del Fornitore di Credenziali vengono visualizzate all'Utente durante il processo di emissione e possono essere successivamente lette dall'Utente in quanto sono all'interno della Credenziale emessa.
-Oltre alle informazioni del Fornitore di Credenziali, il Tipo di Metadati della Credenziale Digitale contiene anche informazioni sulla Fonte Autentica.
+Oltre alle informazioni del Fornitore di Credenziali, il Tipo di Metadati dell'Attestato Elettronico contiene anche informazioni sulla Fonte Autentica.
 
 SR-W-30
 ^^^^^^^
