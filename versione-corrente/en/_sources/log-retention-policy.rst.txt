@@ -57,7 +57,7 @@ Relying Parties MAY retain logs related to the processing of data received from 
 Wallet Instances Logging Features
 ---------------------------------
 
-In addition to the requirements included in the Consolidated Regulation (EU) No 910/2014, Art 5a 4(d) and the additional information provided within the Recitals (11) and (13), the Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Consolidated Regulation (EU) No 910/2014, inclusing logging in the core functionalities of European Digital Identity Wallets.
+In addition to the requirements included in the Consolidated Regulation (EU) No 910/2014, Art 5a 4(d) and the additional information provided within the Recitals (11) and (13), the Commission Implementing Regulation (EU) 2024/2979 establishes detailed rules for the application of Consolidated Regulation (EU) No 910/2014, including logging in the core functionalities of European Digital Identity Wallets.
 
 Regulation (EU) 2024/2979, Article 9, which define logging obligations about Wallet Solutions and data portability mechanisms.
 

@@ -10,4 +10,4 @@ Digital Credential Management
 
   credential-data-model.rst
   credential-revocation.rst
-  registry-catalogue.rst
+ 

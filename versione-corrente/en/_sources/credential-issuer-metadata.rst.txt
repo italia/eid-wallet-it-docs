@@ -30,9 +30,9 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **acr_values_supported**
     - See `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. The supported values are:
 
-      - `https://trust-registry.eid-wallet.example.it/loa/low`
-      - `https://trust-registry.eid-wallet.example.it/loa/substantial`
-      - `https://trust-registry.eid-wallet.example.it/loa/high`
+      - `https://trust-anchor.eid-wallet.example.it/loa/low`
+      - `https://trust-anchor.eid-wallet.example.it/loa/substantial`
+      - `https://trust-anchor.eid-wallet.example.it/loa/high`
   * - **scopes_supported**
     - JSON array containing a list of the supported *scope* values. See :rfc:`8414#section-2`.
   * - **response_modes_supported**
