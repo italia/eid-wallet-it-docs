@@ -90,7 +90,7 @@ Questa sezione fornisce dettagli tecnici su come richiedere l'Emissione PID attr
 .. plantuml:: plantuml/l2plus-detailed-flow.puml
     :width: 99%
     :alt: La figura illustra il Flusso Dettagliato di Autenticazione eID Substantial con Verifica MRTD.
-    :caption: `Flusso Dettagliato di Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/svg/nLRhRXit4_tFfvZFGVBPYbUAxVmeX2ZEHhvOHM8l93b1MnS2jJkIs53abkJALf--7EvgTKaL16YB0ePXS-ToPixm3DzPnuqhvXAmTm4VT7m6SU5cg9n8kHDQmKimEDSEGMHqwfQG6wqdGar1AEWDeyzSIdIGUF-UjGLNASALr8_i___pWUO8APf28bUHBfmK2Xald5R5V8o6vTpuJ2Bdoi71lKLp0Dp2_VPvbQ6dhAFemIJUDkdsBiDnbutr4y01eKcCNeYCGZxx8AOpzruMkEr5LbIkDkAFije1caK58Xvi6t_i3trCdGGRKS6uIEwI0KELWS_x5IIu3L6vX3vEXNLc6Pm-zcwtJLTc3wfNDRa67nnw5mbZp9zB_1TuOlSGlOMu3Py9ZDF0KoSMt27u152vFQZ2KYnAFoZ6n8GJNCAZS3C8hVc4HamgD8nrEXr8PjmYdBJXZh3kTBgFlnTe7NGwB0xv1z269ExN7mu1KYbGkP78Zi6KftVZtp1rHnuEXDHbwAWR3AFOEMzJnkSgs_in8Xg52lNT8C_Ga3d5R3H2LBu9TPIXuqA2M-O81yADvEdBJAV5dB259Xyq6epv0YAgeox3vbfPXCCA-gWmuXZmAHS6xKYeerNTRU9aJtS8q_Nb45ehH7XUDwNJR3PVR0Id_yd-HblNXbnaKLuDKHEV-3oNsDHckadDgKzjn9oRvUuqHO5ekf2xNwW_D81RKq0a3gWQFwbjSjtsgkjX_ZkyeJRTjyleV7UAKsgQAYr3U_R4AxkxMSrP6-ex-ebBaGNJ6XjD-CrmcBHEcYTmzkeKhdGHIF-Wow1jc3cNstQh5KIn-HWcVxDthNH6PsgAvut6tBYifB_pPlttwCVFmxTX72Xba8UsdweQMDM8HkD19NS3JoncEes2QqieuMg87jYtYNnG_-G5O4pdZW50m4pz8fbgWmViZC05-jx-x5qcsin32B8b4uZMTUwQeCeOg-8H0TkTg2YaLjIyd7fUuZJ5t65M5LZsLkSZfLMAnr1p42eyr7cfdN9v5F9xrZbZN3heJKf05fHsm1TSI3wM24w7kdUsIgWdXd8qAvR8L7Y8na4tlWqMAwtihOzHMWHH9zDZnuN23BY3WSCSJaxgsEHv-UGCJrq02XEZv-HOjcfgT95Ns-edb5wSuVQgwtCv99Vw-X7yS7jyg-6YaY98Q8Z0_oJQMhJMczEPqwcMGUa9nGhABy-c1b7z-XQwKDCIvxbSAq0ITo-9d3xo32wkJuxfb_yzkBiOaNa8rOMeZXN4xwyiWUrBsui7crdhTBUzmJ74TD-bLhHtacBiZU0BBikmvBW7mFVxRWDgRpc5fYikTvJdGTdmH5YFuHuK_K4SdRvw_GDOCLNS5GQ96XzgxKcaxnMAjO9zKpCMj7MN_vbg0B1jlI0WAy0qdiH6rBs21vLgOr2MMT8Pfb_AdRkWEkcvGaaAMpN9swzMB2tGXKut78yOsn6U3Vru1NTVzelEkglVhJy6Cs4m3IkM89U2v66lHOb83Aa2sTym21I_D_hHeed6t686LuA6hAlLH9XvVGdypg-tqJugM-du_EjK8uA0sGjDctLKwK3vD3XqCwEBwGp69OAZpUtvUjyphUpIrXfjDEZ5iiSmD2r4wkeiTFTlRjrpRvtwK6KHy886fVv7MDi90PwVnSzFh_pF_eUFKTeXQBgzyN4yy4BRkxuPNlSlBs_PS8Om8OrCjN925MY1fwas6Mc1qzlFvc38BMGu2KfVtOdr8zlccAuVmwYoa9gzytyLS_ad>`_
+    :caption: `Flusso Dettagliato di Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/svg/nLV_Rjis4FvVJt5BqJPnewH9-iTWr4rLEquqj8aH9IssUJ1ewUpSHf4QHQLjdcZliHSRURBymvcm3Him810ayxkxxxux7fctfHN6LhaCddzZxp17ID5K4eKATMKbAGn4PRMgyYcQe71OIgaGoiBEhKLbSGT42RURAx5pgXu4V19IecL4j8densVySp-OwYy0EoEZxob30wDui0DFtjFyphwJ5MvQ9MZk7IPoX0mzF8W7qWhPX4CaZz7a8F3X-cO08prYr61qDKe2L1cuo9i6rpYdqXeDb-nPI8I6vuVuSXFR41whE4DboOgL5Ll4Wr4G16v1eYViCUc2CCO3UA-Z4tW1L1j_XS9eFICr1uEvjXeKIXZAgYmrdELKbasc4D-4jQn1S0lX6uYwyB7I4a5OI_V2891S20zZLPL2PPeZ9jNKbyMIa91g1H_HqCnnOdc2eDVhmL2K24TTkARqZj2XjwM-SjztqEi54OTEO1qxYgvX5o2LXCfEADi7WxzMRkbg-ZEcTi_H0OxCNi8-uyB8MczjoIrWwrBeokSraSylKFW-GU-iq_7kX3Fn91auoT0Aac2_5WWxP2Vo-4Mcqohtd5ZadKud21prq6V02PI5Nl9VK9vKXlO1lnHai9oGscioRXU7g-DPdP_Tm6532a-NUlGE3WwUhVdttnv_uQ9teQ0iB1PDTO1VH5v8FD1clbQPu-vs9uqCvSAGW71xXJSdjnfBxjfjlG6uX8dFoBNfPahRdHeu1BpsOjq-2izV22zyY19LgHcyq8brRV6vokd4jQ-Gb2qMcwtQ4EJ-lhYv6HqU7Hp1oSjZ6EfAPMEVKSe5xyATjKNPFJpaINRmcLj_NS73zCx_fkPuskdancPr7_HUhzudttswUSDzuKFoYEYwxbhfql3gTCPgT9Mu0cEcqv2D3qcHNP8Sgxyew5ZzHtiW27HX0m1WmYoM6rDTW6jCgmAD058pRNAMbbmAFp3OOI1SPHblOr1bGR3moFgp45pBJHsMPJbsPOdI50kBMPrThQmk9agh5FTXMO5zLwtAFt90sDL5FJ7zviGzo8IjAGH2MaZGluFp0B__1fbde6XAVj8v2JQF64wCQtUxtiqP0QaI3Hc4VdJ9g6PenhnGflKAoXA1PXpHHTFMeggiTg4WiLZ0qL4JWetFIci4Cc7tMCasDxeg5iVNzoYb_kpYM3IBxhuSzdatokUBxLcWQQRyo6YhKoqbl-ePkB-HBalasG-3nGpJ3OyVdymDelhf3VJ1boWg2adf-ZOAOHJrptobtkDyJZ0uFzht3_TChWOJZs5dVGXNtdWa_XdoRyMDesGLxp9Ezg5_H-8UeQYcKm-3o4y2gHMfUUtScRIm-6VsczGUZIekWzgm7wjbMqB9DuiM8aCokO3h90gFNxxw5ZAKguRckhUEZUtHrZf2N72QVVrVXiZcy5XoPoxSeCpDQ--36eEowUOu2Vj3Vn9xtnhkVR9a1GiqLbdJiR2xz63mNgTYBmYsXj3QA7a9Lx-qpvysGTjd4HZCo63AHovWFPeSrTLuul9ne1aNkXt1rUrhDKEF6n9V4T-9KbW1PGNlZFvSel5y_1sWEPVQQdYOJayVnvgKD5UOFTF-1Z5PRF_wgh1hZSZ98aphG7jhv-YhrO7RVcbBO4FGbZkC5wslCqeHl2NB--zEu5E7JdM6THhmpFVByeFAiiSEdfv4Ju-7xg_zAcIKjWYQ_mdOZn8tQUFpYvlpwxEpoo2MCEDHwXEmf2e19RhNJ0FnqkExTAfpX0ndfAY-SajdKs3ApRfsqqQLSUJWhNkhSla7>`_
 
 Fase 1: Richiesta di Autorizzazione OAuth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -254,9 +254,28 @@ Il Servizio MRTD PoP PUÒ richiedere le informazioni MRZ (numero documento, data
 Risposta MRTD PoP
 """"""""""""""""""
 
-Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviare una Risposta HTTP con codice *202 Accepted* e ``application/json`` come content type. Il payload della risposta JSON contiene i parametri inclusi nella seguente tabella:
+Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviare una Risposta HTTP con codice *202 Accepted* e ``application/jwt`` come content type. La struttura JWT è definita come segue:
 
-.. _table_eID_MRTD_PoP_Response:
+
+.. _table_eID_MRTD_PoP_Response_Header:
+.. list-table:: MRTD PoP Response Parameters
+   :widths: 20 15 65
+   :header-rows: 1
+
+   * - **Parameter**
+     - **Type**
+     - **Description**
+   * - **alg**
+     - string
+     - OBBLIGATORIO. Algoritmo di firma.
+   * - **typ**
+     - string
+     - OBBLIGATORIO. DEVE essere ``mrtd-ias-pop+jwt``.
+   * - **kid**
+     - string
+     - OBBLIGATORIO. Identificatore della chiave del Provider PID che DEVE essere utilizzata per verificare la firma di questo JWT.
+
+.. _table_eID_MRTD_PoP_Response_Payload:
 .. list-table:: Parametri Risposta MRTD PoP
    :widths: 20 15 65
    :header-rows: 1
@@ -264,6 +283,18 @@ Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviar
    * - **Parametro**
      - **Tipo**
      - **Descrizione**
+   * - **iss**
+     - string
+     - OBBLIGATORIO. Identificatore Provider PID.
+   * - **aud**
+     - string
+     - OBBLIGATORIO. Identificatore Istanza del Wallet.
+   * - **iat**
+     - integer
+     - OBBLIGATORIO. Tempo di emissione (Unix timestamp).
+   * - **exp**
+     - integer
+     - OBBLIGATORIO. Tempo di scadenza (Unix timestamp).
    * - **challenge**
      - string
      - OBBLIGATORIO. Dati di challenge per validazione crittografica del documento. DOVREBBE essere il valore hash SHA-256 di un valore casuale con ``mrtd_auth_session`` e timestamp per binding crittografico.
@@ -273,18 +304,35 @@ Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviar
    * - **mrz**
      - string
      - OPZIONALE. Informazioni Machine Readable Zone inclusi numero documento, data di nascita, data di scadenza, cittadinanza e genere.
+   * - **htu**
+     - string
+     - OBBLIGATORIO. URI HTTP dell'endpoint di validazione MRTD PoP.
+   * - **htm**
+     - string
+     - OBBLIGATORIO. Metodo HTTP per la richiesta di validazione MRTD PoP. DEVE essere ``POST``.
 
 Di seguito un esempio non normativo di una Risposta MRTD PoP:
 
 .. code-block:: http
 
     HTTP/1.1 202 Accepted
-    Content-Type: application/json; charset=utf-8
-
+    Content-Type: application/jwt; charset=utf-8
     {
+      "alg":"ES256",
+      "typ":"mrtd-ias-pop+jwt",
+      "kid":"b3f1a6c2e9d54a8f9c3e7d1a2f4b6c78"
+    }
+    .
+    {
+      "iss":"https://pid-provider.example.org",
+      "aud":"https://wallet.example.org/instance/12345",
+      "iat": 1753555800,
+      "exp": 1753556000,
       "mrtd_pop_nonce":"9f2c4a7e3b1d8c9a6e5f4b2a1c3d7e8f",
       "mrz":"...",
-      "challenge":"..."
+      "challenge":"...",
+      "htu":"...",
+      "htm":"..."
     }
 
 **Il Servizio MRTD PoP DEVE:**
