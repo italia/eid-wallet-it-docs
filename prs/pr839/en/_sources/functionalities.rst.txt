@@ -238,6 +238,7 @@ Below are the User Experience requirements related to both methods that the Wall
 **Same-Device Mode**
 
 - The User clicks the Engagement Button provided on the Relying Party's Touchpoint;
+- The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
 - The User accesses their Wallet Instance using the unlock method previously set;
 - The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA data (Selective Disclosure). The User provides consent to proceed or cancels the operation;
 - The User authorizes the operation using the unlock method previously set;
@@ -249,8 +250,8 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 **Cross-Device Mode**
 
 - The User clicks the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
-- The User accesses the desired Wallet Instance from the device where it is installed, using the unlock method previously set;
-- The User scans the QR Code provided by the Relying Party using their Wallet Instance;
+- The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
+- The User scans the QR Code provided by the Relying Party using their Wallet Instance or the camera on their device; the QR code interface MUST follow the instructions and functionalities provided for the QR Code Page described in the :ref:`functionalities:Authentication` section;
 - The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory personal data (Selective Disclosure). The User provides consent to proceed or cancels the operation.
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation within the Wallet Instance;

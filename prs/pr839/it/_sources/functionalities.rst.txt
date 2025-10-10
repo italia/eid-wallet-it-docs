@@ -244,7 +244,8 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 **Same-device** 
 
 - L'Utente clicca l'Engagement Button reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici; 
-- L'Utente accede alla propria Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata; 
+- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
+- L'Utente accede all'Istanza del Wallet utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente prende visione dei dati del PID e/o gli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID e/o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione; 
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta; 
@@ -255,8 +256,8 @@ In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet 
 **Cross-device** 
 
 - L'Utente clicca l'Engagement Button reso disponibile nel Touchpoint del Verificatore di Attestati Elettronici che l'Utente sta navigando da un dispositivo diverso da quello su cui è installata l'Istanza del Wallet; 
-- L'Utente accede all'Istanza del Wallet che desidera utilizzare dal dispositivo su cui è installata utilizzando la modalità di sblocco precedentemente impostata; 
-- L'Utente inquadra il QR Code reso disponibile dal Verificatore di Attestati Elettronici, utilizzando la sua Istanza del Wallet; 
+- L’Utente seleziona la Soluzione Wallet con la quale procedere, attraverso un’interfaccia che DEVE seguire le indicazioni e le funzionalità previste per la Selection Page descritta nella sezione :ref:`functionalities:Autenticazione`;
+- L'Utente inquadra il QR Code reso disponibile dal Verificatore di Attestati Elettronici, utilizzando la sua Istanza del Wallet o la fotocamera del proprio dispositivo; l’interfaccia del QR Code DEVE seguire le indicazioni e le funzionalità previste per la QR Code Page descritta nella sezione :ref:`functionalities:Autenticazione`;
 - L'Utente prende visione dei dati del PID e/o degli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID e/o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione; 
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta; 
