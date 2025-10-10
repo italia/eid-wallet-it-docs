@@ -147,8 +147,8 @@ Below are illustrated the User Experience requirements for the issuance of an El
 
 - The User interacts with the Engagement Button clearly displayed in the Touchpoint interface; 
 - The User selects the Wallet Solution with which to proceed, through an interface that SHOULD follow the directions and functionalities described for the *Selection Page* in the :ref:`functionalities:Authentication` section; 
-- (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that SHOULD follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; 
-- (*cross-device only*) the User displays a message inviting them to continue on their chosen Wallet Instance, through an interface that SHOULD follow the directions and functionalities described for the *Waiting Page* in the :ref:`functionalities:Authentication` section; 
+- (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; 
+- (*cross-device only*) the User displays a message inviting them to continue on their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *Waiting Page* in the :ref:`functionalities:Authentication` section; 
 - The User accesses their Wallet Instance using the unlock method previously set; 
 - The User views the PID data, if required for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting their PID data to the Electronic Attestation of Attributes Provider, or cancels the operation; 
 - The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes; 
