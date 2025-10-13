@@ -220,7 +220,7 @@
 <tr class="row-even"><td><p>Wallet Instances</p></td>
 <td><p>User-level digital wallet applications</p></td>
 <td><p>Indirect registration via Wallet Provider, see <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a></p></td>
-<td><p>Wallet Attestation from certified Wallet Provider</p></td>
+<td><p>Wallet Attestation from trustworthy Wallet Provider</p></td>
 </tr>
 </tbody>
 </table>
@@ -495,7 +495,7 @@
 <li><p><strong>Key Generation</strong>: The entities MUST generate at least two key pairs using elliptic curve cryptography as specified in <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>:</p>
 <ul>
 <li><p><strong>Federation Key Pair</strong>: Used for signing Entity Configurations and attesting application specific keys. For security best practices and operational continuity, entities SHOULD maintain multiple Federation Entity Keys (at least two) to enable secure key rotation and incident response without impacting entities that have cached Entity Configurations.</p></li>
-<li><p><em>Application Specific Key Pair(s)*</em>: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.</p></li>
+<li><p><strong>Application Specific Key Pair(s)</strong>: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.</p></li>
 </ul>
 </li>
 <li><p><strong>Application Specific Key Attestation</strong>: The entities MUST create self-signed X.509 Certificates for their application specific keys using the Federation Entity Private Key.</p></li>
@@ -514,7 +514,7 @@
 </section>
 <section id="key-management-security-requirements">
 <h3><span class="section-number">8.4.3. </span>Key Management Security Requirements<a class="headerlink" href="#key-management-security-requirements" title="Link to this heading">¶</a></h3>
-<p>All federation entities MUST maintain at least two signing keys certified by the Trust Anchor:</p>
+<p>All federation entities MUST maintain at least two signing keys attested by the Trust Anchor:</p>
 <ul class="simple">
 <li><p><strong>Active Key</strong>: Used for current signing operations</p></li>
 <li><p><strong>Backup Key</strong>: Available for immediate activation during incidents or planned key rotation</p></li>
@@ -522,10 +522,10 @@
 <p>This dual-key approach enables:
 - Secure key rotation without service interruption
 - Rapid incident response when primary keys are compromised
-- Continuity for clients with cached entity configurations
+- Continuity for entities with cached Entity Configurations
 - Prevention of validation issues during key transitions</p>
 <p>The backup key MUST be:
-- Pre-certified by the Trust Anchor before deployment
+- Registered by the Trust Anchor before deployment
 - Published in the entity's JWKS alongside the active key
 - Ready for immediate activation without additional certification steps
 - Maintained with the same security standards as the active key</p>

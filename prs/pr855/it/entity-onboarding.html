@@ -221,7 +221,7 @@
 <tr class="row-even"><td><p>Istanze del Wallet</p></td>
 <td><p>Applicazioni di portafoglio digitale reso disponibile all'Utente</p></td>
 <td><p>Registrazione indiretta tramite Fornitore di Wallet, vedere <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>.</p></td>
-<td><p>Wallet Attestation emessa da Fornitore di Wallet certificato.</p></td>
+<td><p>Wallet Attestation emessa da Fornitore di Wallet affidabile.</p></td>
 </tr>
 </tbody>
 </table>
@@ -513,10 +513,10 @@
 <p>Questo approccio a doppia chiave abilita:
 - Rotazione sicura delle chiavi senza interruzione del servizio
 - Risposta rapida agli incidenti quando le chiavi primarie sono compromesse
-- Continuità per i client con configurazioni di entità memorizzate nella cache
+- Continuità per le entità con Entity Configuration memorizzate nella cache
 - Prevenzione di problemi di validazione durante le transizioni delle chiavi</p>
 <p>La chiave di backup DEVE essere:
-- Pre-certificata dal Trust Anchor prima del deployment
+- Registrata dal Trust Anchor prima del deployment
 - Pubblicata nel JWKS dell'entità insieme alla chiave attiva
 - Pronta per l'attivazione immediata senza passaggi di certificazione aggiuntivi
 - Mantenuta con gli stessi standard di sicurezza della chiave attiva</p>

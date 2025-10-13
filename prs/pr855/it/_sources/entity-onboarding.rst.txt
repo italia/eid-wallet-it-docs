@@ -54,7 +54,7 @@ La seguente tabella riassume i tipi di entità, i loro ruoli e i corrispondenti 
    * - Istanze del Wallet
      - Applicazioni di portafoglio digitale reso disponibile all'Utente
      - Registrazione indiretta tramite Fornitore di Wallet, vedere :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`.
-     - Wallet Attestation emessa da Fornitore di Wallet certificato.
+     - Wallet Attestation emessa da Fornitore di Wallet affidabile.
 
 Registrazione Amministrativa vs Tecnica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -297,11 +297,11 @@ Tutte le entità di federazione DEVONO mantenere almeno due chiavi di firma cert
 Questo approccio a doppia chiave abilita:
 - Rotazione sicura delle chiavi senza interruzione del servizio
 - Risposta rapida agli incidenti quando le chiavi primarie sono compromesse
-- Continuità per i client con configurazioni di entità memorizzate nella cache
+- Continuità per le entità con Entity Configuration memorizzate nella cache
 - Prevenzione di problemi di validazione durante le transizioni delle chiavi
 
 La chiave di backup DEVE essere:
-- Pre-certificata dal Trust Anchor prima del deployment
+- Registrata dal Trust Anchor prima del deployment
 - Pubblicata nel JWKS dell'entità insieme alla chiave attiva
 - Pronta per l'attivazione immediata senza passaggi di certificazione aggiuntivi
 - Mantenuta con gli stessi standard di sicurezza della chiave attiva
