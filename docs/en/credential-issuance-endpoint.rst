@@ -1090,7 +1090,7 @@ In the following table are listed HTTP Status Codes and related error codes that
 .. _notification-data-correction:
 
 Data Correction using credential_failure
-.......................................
+........................................
 
 According to `OpenID4VCI Section 11 <https://openid.github.io/OpenID4VCI/openid-4-verifiable-credential-issuance-wg-draft.html#section-11>`_, in all other unsuccessful cases ``event`` MUST use ``credential_failure`` and additional Notification Request parameters MAY be defined and used. The Credential Issuer MUST ignore any unrecognized parameters.
 
