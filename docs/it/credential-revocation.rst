@@ -215,7 +215,7 @@ Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettroni
       - Visualizzare e aggiornare lo stato di validità (revocare i loro Attestati Elettronici e, se supportato dal Fornitore di Attestati Elettronici, sospenderle).
 
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
-""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Quando l'Utente elimina un Attestato Elettronico dall'Istanza del Wallet, l'Istanza del Wallet NON DEVE notificare questo evento al Fornitore di Attestati Elettronici. L'eliminazione dall'Istanza del Wallet rimuove solo la copia locale e non modifica lo stato di validità presso il Fornitore di Attestati Elettronici. Se l'Utente desidera che il Fornitore di Attestati Elettronici revochi un Attestato Elettronico, DEVE utilizzare il portale web del Fornitore di Attestati Elettronici o altri canali messi a disposizione dal Fornitore di Attestati Elettronici.
 
