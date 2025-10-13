@@ -10,7 +10,7 @@
       "credential_hash_alg": "sha-256"
     }
   },
-  "vct": "https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata",
+  "vct": "urn:eudi:pid:it:1",
   "vct#integrity": "c5f73e250fe869f24d15118acce286c9bb56b63a443dc85af653cd73f6078b1f",
   "verification": {
     "trust_framework": "it_cie",
@@ -32,8 +32,8 @@
   },
   "given_name": "Mario",
   "family_name": "Rossi",
-  "birth_date": "1980-01-10",
-  "birth_place": "Roma",
+  "birthdate": "1980-01-10",
+  "place_of_birth": { "locality": "Roma" },
   "nationalities": ["IT"],
   "personal_administrative_number": "XX00000XX",
   "tax_id_code": "TINIT-XXXXXXXXXXXXXXXX"

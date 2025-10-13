@@ -19,7 +19,12 @@ The User attributes provided within the Italian PID are the ones listed below:
     - Current Family Name
     - Current First Name
     - Date of Birth
+    - Place of Birth
+    - Nationality
     - Taxpayer identification number
+
+.. note::
+  Member States MAY include further optional attributes (e.g., taxpayer identification number) in domestic types.
 
 The (Q)EAAs are issued by (Q)EAA Issuers to a Wallet Instance and MUST be provided in SD-JWT-VC or mdoc-CBOR data format.
 
@@ -113,7 +118,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. OPTIONAL. The identifier of the subject of the Digital Credential, the User, MUST be opaque and MUST NOT correspond to any anagraphic data or be derived from the User's anagraphic data via pseudonymization. Additionally, it is required that two different Credentials issued MUST NOT use the same ``sub`` value.
       - `[RFC7519, Section 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
-      - [SD]. REQUIRED. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
+      - [NSD]. OPTIONAL. UNIX Timestamp with the time of JWT issuance, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
       - [NSD]. REQUIRED. UNIX Timestamp with the expiry time of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
@@ -121,6 +126,8 @@ The JWT payload contains the following claims. Some of these claims can be discl
     * - **nbf**
       - [NSD]. OPTIONAL. UNIX Timestamp with the start time of validity of the JWT, coded as NumericDate as indicated in :rfc:`7519`.
       - `[RFC7519, Section 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+.. note::
+  The standard JWT claims ``nbf`` and ``exp`` are used to express the technical validity period of a SD-JWT VC-compliant PID.
     * - **issuing_authority**
       - [NSD]. REQUIRED. Name of the administrative authority that has issued the Credential.
       - Commission Implementing Regulation `EU_2024/2977`_.
@@ -134,8 +141,8 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-anchor.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
-      - Section 3.2.2.2 `SD-JWT-VC`_.
+      - [NSD]. REQUIRED. SD-JWT VC type identifier. For PIDs, the value MUST be a URN in the namespace ``urn:eudi:pid:``; the base EU type is ``urn:eudi:pid:1`` and domestic types MAY extend it (e.g., ``urn:eudi:pid:it:1``). For non‑PID Credentials, the value MAY be an HTTPS URL String obtained from the Credential Issuer metadata. Matching of literals MUST be case-insensitive.
+      - Section 3.2.2.2 `SD-JWT-VC`_; PID Rulebook VCT guidance.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
@@ -303,11 +310,11 @@ Depending on the Digital Credential type **vct**, additional claims data MAY be 
     * - **family_name**
       - [SD]. REQUIRED. Current Family Name. (*String*)
       - Section 5.1 of `OIDC`_ and Commission Implementing Regulation `EU_2024/2977`_
-    * - **birth_date**
+    * - **birthdate**
       - [SD]. REQUIRED. Date of Birth. (*String, [ISO8601‑1] YYYY-MM-DD format*)
       - Commission Implementing Regulation `EU_2024/2977`_
-    * - **birth_place**
-      - [SD]. REQUIRED. Place of Birth. (*String*)
+    * - **place_of_birth**
+      - [SD]. REQUIRED. Place of Birth. (*JSON structure; at least one of country, region, locality MUST be present*)
       - Commission Implementing Regulation `EU_2024/2977`_
     * - **nationalities**
       - [SD]. REQUIRED. One or more alpha-2 country codes as specified in ISO 3166-1. (*Array of strings*)
@@ -381,21 +388,21 @@ The disclosure list is presented below.
    ``c3NpIl0``
 - Contents: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
 
-**Claim** ``birth_date``:
+**Claim** ``birthdate``:
 
 - SHA-256 Hash: ``s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk``
 - Disclosure:
    ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4``
    ``MC0wMS0xMCJd``
-- Contents: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
+- Contents: ``["Qg_O64zqAxe412a108iroA", "birthdate", "1980-01-10"]``
 
-**Claim** ``birth_place``:
+**Claim** ``place_of_birth``:
 
 - SHA-256 Hash: ``tSL-e1nLdWOU9sFMTCUu5P1tCzxA-TW-VWbHGzYtU7E``
 - Disclosure:
   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoX3BsYWNlIiwgIlJv``
   ``bWEiXQ``
-- Contents: ``["AJx-095VPrpTtN4QMOqROA", "birth_place", "Roma"]``
+- Contents: ``["AJx-095VPrpTtN4QMOqROA", "place_of_birth", {"locality": "Roma"}]``
 
 **Claim** ``personal_administrative_number``:
 

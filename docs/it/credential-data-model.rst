@@ -18,7 +18,12 @@ Gli attributi dell'Utente forniti all'interno del PID italiano sono quelli elenc
     - Cognome
     - Nome
     - Data di Nascita
+    - Luogo di Nascita
+    - Nazionalità
     - Codice fiscale
+
+.. note::
+  Gli Stati Membri POSSONO includere ulteriori attributi opzionali (ad es., codice fiscale) nei tipi domestici.
 
 Gli Attestati Elettronici di Attributi (Qualificati) ((Q)EAA) sono rilasciati dai Fornitori di Attestati Elettronici di Attributi (Qualificati) ((Q)EAA) a un'Istanza del Wallet e DEVONO essere forniti in formato SD-JWT-VC o mdoc-CBOR.
 
@@ -114,7 +119,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OPZIONALE. L'identificativo del soggetto dell'Attestato Elettronico, l'Utente, DEVE essere un valore opaco e NON DEVE corrispondere a nessun dato anagrafico o essere derivato dai dati anagrafici dell'Utente tramite pseudonimizzazione. Inoltre, due diversi Attestati Elettronici emessi NON DEVONO utilizzare lo stesso valore di ``sub``.
       - `[RFC7519, Sezione 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
-      - [SD]. OBBLIGATORIO. Timestamp UNIX con l'orario di emissione del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
+      - [NSD]. OPZIONALE. Timestamp UNIX con l'orario di emissione del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
       - `[RFC7519, Sezione 4.1.6] <https://www.iana.org/go/rfc7519>`_.
     * - **exp**
       - [NSD]. OBBLIGATORIO. Timestamp UNIX con l'orario di scadenza del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
@@ -122,6 +127,8 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
     * - **nbf**
       - [NSD]. OPZIONALE. Timestamp UNIX con l'orario di inizio validità del JWT, codificato come NumericDate come indicato in :rfc:`7519`.
       - `[RFC7519, Sezione 4.1.4] <https://www.iana.org/go/rfc7519>`_.
+.. note::
+  I claim JWT standard ``nbf`` ed ``exp`` sono utilizzati per esprimere il periodo di validità tecnica di un PID conforme a SD-JWT VC.
     * - **issuing_authority**
       - [NSD]. OBBLIGATORIO. Nome dell'autorità amministrativa che ha emesso l'Attestato Elettronico.
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_.
@@ -135,8 +142,8 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Oggetto JSON contenente il materiale crittografico da utilizzare come prova di possesso. L'inclusione del claim **cnf** (confirmation) in un JWT, permette al soggetto che emette il JWT di dichiarare che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
       - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. OBBLIGATORIO. Il valore del tipo di Attestato Elettronico DEVE essere una stringa URL HTTPS e DEVE essere valorizzata utilizzando uno dei valori ottenuti dai Metadata del Fornitore di Attestati Elettronici. Il confronto con i caratteri di questa stringa DEVE essere eseguito in modo `case-insensitive`. È l'identificativo del tipo di SD-JWT VC e DEVE essere resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione dell'Attestato Elettronico (ad esempio: ``https://trust-registry.it-wallet.example.it/v1/personidentificationdata``).
-      - Sezione 3.2.2.2 `SD-JWT-VC`_.
+      - [NSD]. OBBLIGATORIO. Identificativo del tipo SD-JWT VC. Per i PID, il valore DEVE essere una URN nello spazio dei nomi ``urn:eudi:pid:``; il tipo UE di base è ``urn:eudi:pid:1`` e i tipi domestici POSSONO estenderlo (ad es., ``urn:eudi:pid:it:1``). Per le Credenziali non‑PID, il valore PUÒ essere una stringa URL HTTPS ottenuta dai Metadata del Fornitore di Attestati Elettronici. I confronti DEVONO essere `case-insensitive`.
+      - Sezione 3.2.2.2 `SD-JWT-VC`_; indicazioni VCT del PID Rulebook.
     * - **vct#integrity**
       - [NSD]. OBBLIGATORIO. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella la Sezione 3.3.5 di [`W3C-SRI`_].
       - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
@@ -304,11 +311,11 @@ A seconda del tipo di Attestato Elettronico **vct**, possono essere aggiunti dei
     * - **family_name**
       - [SD]. OBBLIGATORIO. Cognome. (*Stringa*)
       - Sezione 5.1 di `OIDC`_ e Regolamento di esecuzione della Commissione `EU_2024/2977`_
-    * - **birth_date**
+    * - **birthdate**
       - [SD]. OBBLIGATORIO. Data di Nascita. (*Stringa, formato [ISO8601‑1] YYYY-MM-DD*)
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
-    * - **birth_place**
-      - [SD]. OBBLIGATORIO. Luogo di Nascita. (*Stringa*)
+    * - **place_of_birth**
+      - [SD]. OBBLIGATORIO. Luogo di Nascita. (*Oggetto JSON; deve contenere almeno uno tra country, region, locality*)
       - Regolamento di esecuzione della Commissione `EU_2024/2977`_
     * - **nationalities**
       - [SD]. OBBLIGATORIO. Uno o più codici paese alpha-2 come specificato in ISO 3166-1. (*Array di stringhe*)
@@ -382,21 +389,21 @@ L'elenco delle disclosure è presentato di seguito.
    ``c3NpIl0``
 - Contenuto: ``["eI8ZWm9QnKPpNPeNenHdhQ", "family_name", "Rossi"]``
 
-**Claim** ``birth_date``:
+**Claim** ``birthdate``:
 
 - Hash SHA-256: ``s1XK5f2pM3-aFTauXhmvd9pyQTJ6FMUhc-JXfHrxhLk``
 - Disclosure:
    ``WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImJpcnRoX2RhdGUiLCAiMTk4``
    ``MC0wMS0xMCJd``
-- Contenuto: ``["Qg_O64zqAxe412a108iroA", "birth_date", "1980-01-10"]``
+- Contenuto: ``["Qg_O64zqAxe412a108iroA", "birthdate", "1980-01-10"]``
 
-**Claim** ``birth_place``:
+**Claim** ``place_of_birth``:
 
 - Hash SHA-256: ``tSL-e1nLdWOU9sFMTCUu5P1tCzxA-TW-VWbHGzYtU7E``
 - Disclosure:
   ``WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoX3BsYWNlIiwgIlJv``
   ``bWEiXQ``
-- Contenuto: ``["AJx-095VPrpTtN4QMOqROA", "birth_place", "Roma"]``
+- Contenuto: ``["AJx-095VPrpTtN4QMOqROA", "place_of_birth", {"locality": "Roma"}]``
 
 **Claim** ``personal_administrative_number``:
 
