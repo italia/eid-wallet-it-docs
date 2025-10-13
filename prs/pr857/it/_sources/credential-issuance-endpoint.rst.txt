@@ -1088,7 +1088,7 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
 .. _it-notification-data-correction:
 
 Correzione dati usando credential_failure
-........................................
+.........................................
 
 Secondo `OpenID4VCI Sezione 11 <https://openid.github.io/OpenID4VCI/openid-4-verifiable-credential-issuance-wg-draft.html#section-11>`_, in tutti gli altri casi di insuccesso ``event`` DEVE usare ``credential_failure`` e parametri addizionali della Notification Request POSSONO essere definiti e usati. Il Credential Issuer DEVE ignorare i parametri non riconosciuti.
 
