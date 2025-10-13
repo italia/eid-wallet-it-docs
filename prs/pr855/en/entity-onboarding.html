@@ -494,7 +494,7 @@
 <div><ul class="simple">
 <li><p><strong>Key Generation</strong>: The entities MUST generate at least two key pairs using elliptic curve cryptography as specified in <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>:</p>
 <ul>
-<li><p><strong>Federation Key Pair</strong>: Used for signing Entity Configurations and attesting application specific keys. For security best practices and operational continuity, entities SHOULD maintain multiple Federation Entity Keys (at least two) to enable secure key rotation and incident response without impacting clients that have cached Entity Configurations.</p></li>
+<li><p><strong>Federation Key Pair</strong>: Used for signing Entity Configurations and attesting application specific keys. For security best practices and operational continuity, entities SHOULD maintain multiple Federation Entity Keys (at least two) to enable secure key rotation and incident response without impacting entities that have cached Entity Configurations.</p></li>
 <li><p><em>Application Specific Key Pair(s)*</em>: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.</p></li>
 </ul>
 </li>
