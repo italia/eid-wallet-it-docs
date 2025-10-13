@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13.4. Endpoint di PDND Signal Hub &#8212; IT-Wallet Technical Documentation - PR #863</title>
+    <title>13.5. Endpoint di PDND Signal Hub &#8212; IT-Wallet Technical Documentation - PR #863</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -19,7 +19,7 @@
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
     <link rel="next" title="14. Algoritmi Crittografici" href="algorithms.html" />
-    <link rel="prev" title="13.3. Endpoint delle Fonti Autentiche" href="authentic-source-endpoint.html" /> 
+    <link rel="prev" title="13.4. Endpoint delle Fonti Autentiche" href="authentic-source-endpoint.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -146,8 +146,9 @@
 <li class="toctree-l1 current"><a class="reference internal" href="endpoints.html">13. Endpoints</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">13.1. Endpoint del Fornitore di Wallet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Endpoint del Credential Issuer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.3. Endpoint delle Fonti Autentiche</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">13.4. Endpoint di PDND Signal Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Endpoint della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Endpoint delle Fonti Autentiche</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13.5. Endpoint di PDND Signal Hub</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
@@ -169,7 +170,7 @@
           <div class="body" role="main">
             
   <section id="endpoint-di-pdnd-signal-hub">
-<h1><span class="section-number">13.4. </span>Endpoint di PDND Signal Hub<a class="headerlink" href="#endpoint-di-pdnd-signal-hub" title="Link to this heading">¶</a></h1>
+<h1><span class="section-number">13.5. </span>Endpoint di PDND Signal Hub<a class="headerlink" href="#endpoint-di-pdnd-signal-hub" title="Link to this heading">¶</a></h1>
 <dl class="simple">
 <dt>All'interno della piattaforma PDND, Signal Hub funge da intermediario tra un Provider PDND e i suoi Consumer PDND per facilitare le segnalazioni di variazioni dei dati. Per abilitare tale funzionalità, il gestore della piattaforma PDND, di seguito denominato PDND Manager, agendo come PDND e-Service Provider, fornisce due e-Service PDND di Signal Hub:</dt><dd><ul class="simple">
 <li><p>l'e-Service di Raccolta Segnali che viene utilizzato dai PDND e-Service Provider per depositare i Segnali; in questo caso, il PDND e-Service Provider agisce come Consumer dell'e-Service di Raccolta Segnali;</p></li>
@@ -193,7 +194,7 @@
 <p>Le Fonti Autentiche che utilizzano PDND DEVONO utilizzare gli e-Service di Signal Hub.</p>
 <p>Di seguito viene fornita la descrizione di come le Fonti Autentiche e i Fornitori di Attestati Elettronici interagiscono con gli e-Service di Signal Hub insieme ai formati dettagliati delle request e delle response.</p>
 <section id="prerequisiti">
-<h2><span class="section-number">13.4.1. </span>Prerequisiti<a class="headerlink" href="#prerequisiti" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">13.5.1. </span>Prerequisiti<a class="headerlink" href="#prerequisiti" title="Link to this heading">¶</a></h2>
 <p>Prima di utilizzare Signal Hub, tutte le Fonti Autentiche DEVONO:</p>
 <blockquote>
 <div><ul class="simple">
@@ -210,10 +211,10 @@
 </div></blockquote>
 </section>
 <section id="e-service-di-signal-hub">
-<h2><span class="section-number">13.4.2. </span>e-Service di Signal Hub<a class="headerlink" href="#e-service-di-signal-hub" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">13.5.2. </span>e-Service di Signal Hub<a class="headerlink" href="#e-service-di-signal-hub" title="Link to this heading">¶</a></h2>
 <p>Questa sezione descrive gli endpoint disponibili per gli e-Service di Raccolta e Distribuzione di Signal Hub, incluse le loro funzionalità e i formati di richiesta e risposta previsti.</p>
 <section id="e-service-di-raccolta-segnali">
-<h3><span class="section-number">13.4.2.1. </span>e-Service di Raccolta Segnali<a class="headerlink" href="#e-service-di-raccolta-segnali" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">13.5.2.1. </span>e-Service di Raccolta Segnali<a class="headerlink" href="#e-service-di-raccolta-segnali" title="Link to this heading">¶</a></h3>
 <p>Le Fonti Autentiche nell'ecosistema IT Wallet utilizzano l'e-Service di Raccolta Segnali per:</p>
 <blockquote>
 <div><ul class="simple">
@@ -297,7 +298,7 @@
 </div></blockquote>
 </section>
 <section id="e-service-di-distribuzione-segnali">
-<h3><span class="section-number">13.4.2.2. </span>e-Service di Distribuzione Segnali<a class="headerlink" href="#e-service-di-distribuzione-segnali" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">13.5.2.2. </span>e-Service di Distribuzione Segnali<a class="headerlink" href="#e-service-di-distribuzione-segnali" title="Link to this heading">¶</a></h3>
 <p>I Fornitori di Attestati Elettronici nell'ecosistema IT Wallet utilizzano l'e-Service di Distribuzione Segnali per:</p>
 <blockquote>
 <div><ul class="simple">
@@ -348,7 +349,7 @@
 </section>
 </section>
 <section id="elaborazione-dei-segnali">
-<h2><span class="section-number">13.4.3. </span>Elaborazione dei Segnali<a class="headerlink" href="#elaborazione-dei-segnali" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">13.5.3. </span>Elaborazione dei Segnali<a class="headerlink" href="#elaborazione-dei-segnali" title="Link to this heading">¶</a></h2>
 <p>Dopo che i Segnali sono stati recuperati con successo dal Fornitore di Attestati Elettronici, quest'ultimo DEVE elaborarli come segue:</p>
 <blockquote>
 <div><ul>
@@ -383,14 +384,14 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">13.4. Endpoint di PDND Signal Hub</a><ul>
-<li><a class="reference internal" href="#prerequisiti">13.4.1. Prerequisiti</a></li>
-<li><a class="reference internal" href="#e-service-di-signal-hub">13.4.2. e-Service di Signal Hub</a><ul>
-<li><a class="reference internal" href="#e-service-di-raccolta-segnali">13.4.2.1. e-Service di Raccolta Segnali</a></li>
-<li><a class="reference internal" href="#e-service-di-distribuzione-segnali">13.4.2.2. e-Service di Distribuzione Segnali</a></li>
+<li><a class="reference internal" href="#">13.5. Endpoint di PDND Signal Hub</a><ul>
+<li><a class="reference internal" href="#prerequisiti">13.5.1. Prerequisiti</a></li>
+<li><a class="reference internal" href="#e-service-di-signal-hub">13.5.2. e-Service di Signal Hub</a><ul>
+<li><a class="reference internal" href="#e-service-di-raccolta-segnali">13.5.2.1. e-Service di Raccolta Segnali</a></li>
+<li><a class="reference internal" href="#e-service-di-distribuzione-segnali">13.5.2.2. e-Service di Distribuzione Segnali</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#elaborazione-dei-segnali">13.4.3. Elaborazione dei Segnali</a></li>
+<li><a class="reference internal" href="#elaborazione-dei-segnali">13.5.3. Elaborazione dei Segnali</a></li>
 </ul>
 </li>
 </ul>
@@ -406,7 +407,7 @@
             <div class="left">
                 
                 <a href="authentic-source-endpoint.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">13.3. </span>Endpoint delle Fonti Autentiche</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">13.4. </span>Endpoint delle Fonti Autentiche</span></a>
                 
             </div>
 
