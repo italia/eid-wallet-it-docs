@@ -238,7 +238,7 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
 
       - Questa specifica
     * - **display**
-      - OBBLIGATORIO. Array di oggetti, uno per ogni lingua supportata, contenente informazioni di visualizzazione per il tipo di Attestato Elettronico. Contiene per ogni oggetto le seguenti proprietà:
+      - OBBLIGATORIO. Array di oggetti, uno per ogni lingua supportata, contenente informazioni di visualizzazione per il tipo di Attestato Elettronico. Quando il corrispondente Attestato Elettronico è incluso nel Catalogo degli Attestati Elettronici, il Catalogo è la fonte canonica per la visualizzazione all'Utente finale e DEVE avere precedenza su questo campo. Questo campo è destinato all'interoperabilità con ecosistemi esterni e come fallback quando l'Attestato Elettronico non è presente nel Catalogo. Contiene per ogni oggetto le seguenti proprietà:
 
           * ``lang``: tag di lingua come definito in :rfc:`5646` Sezione 2. [OBBLIGATORIO].
           * ``name``: nome *human-readable* del tipo di Attestato Elettronico. [OBBLIGATORIO].
@@ -263,7 +263,7 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
                 * ``text_color``: valore del colore in RGB come definito in `W3C.CSS-COLOR`_ per il testo dell'Attestato Elettronico. [OPZIONALE].
 
           .. note::
-            L'uso del template SVG è RACCOMANDATO per tutte le applicazioni che lo supportano.
+            L'uso del template SVG è RACCOMANDATO per tutte le applicazioni che lo supportano. Quando sono disponibili sia i template di visualizzazione del Catalogo che quelli del *Type Metadata* per il medesimo Attestato Elettronico, le implementazioni DEVONO utilizzare i template del Catalogo.
 
       - [`SD-JWT-VC`_] Sezione 8.
     * - **claims**

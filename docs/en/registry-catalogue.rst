@@ -91,6 +91,20 @@ The following table summarizes the main information that MUST be provided by the
 
 The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalogue `.well-known` endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the ``.well-known/credential-catalogue`` endpoint.
 
+Catalogue as Canonical Source for Display Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To minimize duplication while having consistent presentation across the ecosystem, the Digital Credential Catalogue is the canonical source of truth for all end-user display information related to Digital Credentials (e.g., credential name/description, claim labels, visual templates, colors, logo URIs).
+
+- Wallet Solutions and Relying Parties MUST use the display-related fields contained in the Catalogue (for example the fields under ``display_properties`` and the localized content referenced via ``localization``) when rendering Digital Credentials and their claims.
+- Credential Issuer metadata and Digital Credential Metadata Type MAY still contain display information for interoperability with external ecosystems and for Credentials not registered in the Catalogue; however, when a Credential is present in the Catalogue, Catalogue values MUST take precedence over any display information provided by the Credential Issuer metadata and/or the Digital Credential Metadata Type.
+- For Credentials that are not included in the Catalogue (for example, Credentials not deemed of public interest), Wallet Solutions MAY use the display information from the Credential Issuer metadata and/or the Digital Credential Metadata Type. When both are available, the following precedence applies:
+
+  1. Use the Digital Credential Metadata Type if available.
+  2. Otherwise, use the Credential Issuer metadata.
+
+- Implementations SHOULD cache Catalogue display data and apply language selection using the ``localization`` parameters. If the selected locale is unavailable, fall back to the Catalogue default locale.
+
 Digital Credentials Categories
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

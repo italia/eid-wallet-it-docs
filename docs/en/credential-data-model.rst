@@ -237,7 +237,7 @@ The Metadata type document MUST be a JSON object and contains the following para
 
       - This specification
     * - **display**
-      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:
+      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. When the corresponding Digital Credential is included in the Digital Credential Catalogue, the Catalogue is the canonical source for end-user display information and MUST take precedence over this field. This field is intended for interoperability with external ecosystems and as a fallback when the Credential is not present in the Catalogue. It contains for each object the following properties:
 
           * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
           * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
@@ -262,7 +262,7 @@ The Metadata type document MUST be a JSON object and contains the following para
                 * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential. [OPTIONAL].
 
           .. note::
-            The use of the SVG template is RECOMMENDED for all applications that support it.
+            The use of the SVG template is RECOMMENDED for all applications that support it. When both Catalogue display templates and Metadata Type templates are available for the same Credential, implementations MUST use the Catalogue templates.
 
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**

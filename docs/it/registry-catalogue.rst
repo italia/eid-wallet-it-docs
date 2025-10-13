@@ -91,6 +91,20 @@ La seguente tabella riassume le principali informazioni che DEVONO essere fornit
 
 Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo l'affidabilità, l'autenticità e l'integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, gli attributi e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalogue``.
 
+Il Catalogo come Fonte Canonica per le Informazioni di Visualizzazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Per ridurre la duplicazione garantendo coerenza di presentazione nell'ecosistema, il Catalogo degli Attestati Elettronici è la fonte canonica delle informazioni di visualizzazione rivolte all'Utente finale relative agli Attestati Elettronici (ad es. nome/descrizione dell'attestato, etichette degli attributi, template visivi, colori, URI del logo).
+
+- Le Soluzioni Wallet e le Relying Party DEVONO utilizzare i campi relativi alla visualizzazione contenuti nel Catalogo (ad esempio i campi sotto ``display_properties`` e i contenuti localizzati referenziati tramite ``localization``) per il rendering degli Attestati Elettronici e dei loro attributi.
+- I Metadata del Fornitore di Attestati Elettronici e il Type Metadata dell'Attestato Elettronico POSSONO contenere informazioni di visualizzazione per interoperabilità con ecosistemi esterni e per Attestati Elettronici non registrati nel Catalogo; tuttavia, quando un Attestato Elettronico è presente nel Catalogo, i valori del Catalogo DEVONO avere precedenza su qualsiasi informazione di visualizzazione fornita altrove.
+- Per gli Attestati Elettronici non inclusi nel Catalogo (ad esempio Attestati Elettronici non di interesse pubblico), le Soluzioni Wallet POSSONO utilizzare le informazioni di visualizzazione dai Metadata del Fornitore di Attestati Elettronici e/o dal Type Metadata dell'Attestato Elettronico. Quando entrambi sono disponibili, si applica la seguente precedenza:
+
+  1. Utilizzare il Type Metadata dell'Attestato Elettronico, se disponibile.
+  2. In caso contrario, utilizzare i Metadata del Fornitore di Attestati Elettronici.
+
+- Le implementazioni DOVREBBERO mettere in cache i dati di visualizzazione del Catalogo e applicare la selezione della lingua utilizzando i parametri di ``localization``. Se la localizzazione selezionata non è disponibile, effettuare il fallback alla localizzazione predefinita del Catalogo.
+
 Categorie di Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
