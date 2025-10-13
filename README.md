@@ -49,12 +49,14 @@ Released versions can be navigated by adding the tag in the webpath (e.g. `1.1.0
 
 Italian:
 
+ - [https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/it/](https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/it/)
  - [https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/it/](https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/it/)
  - [https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/it/](https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/it/)
  - [https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/it/](https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/it/)
 
 English:
 
+ - [https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/en/](https://italia.github.io/eid-wallet-it-docs/releases/1.2.0/en/)
  - [https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/en/](https://italia.github.io/eid-wallet-it-docs/releases/1.1.0/en/)
  - [https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/en/](https://italia.github.io/eid-wallet-it-docs/releases/1.0.2/en/)
  - [https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/en/](https://italia.github.io/eid-wallet-it-docs/releases/1.0.1/en/)
