@@ -1027,6 +1027,7 @@ La Notification Request DEVE essere una HTTP POST utilizzando il media type *app
       - *credential_accepted*: quando l'Attestato ELettronico è stato memorizzato con successo nell'Istanza del Wallet.
       - *credential_deleted*: quando l'emissione non riuscita dell'Attestato Elettronico è stata causata da un'azione dell'utente.
       - *credential_failure*: in tutti gli altri casi di insuccesso.
+      
 
     - Sezione 10.1 di [`OpenID4VCI`_].
   * - **event_description**
@@ -1082,3 +1083,19 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
     * - *504 Gateway Timeout* [OPZIONALE]
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
+
+
+.. _it-notification-data-correction:
+
+Correzione dati usando credential_failure
+........................................
+
+Secondo `OpenID4VCI Sezione 11 <https://openid.github.io/OpenID4VCI/openid-4-verifiable-credential-issuance-wg-draft.html#section-11>`_, in tutti gli altri casi di insuccesso ``event`` DEVE usare ``credential_failure`` e parametri addizionali della Notification Request POSSONO essere definiti e usati. Il Credential Issuer DEVE ignorare i parametri non riconosciuti.
+
+Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE inviare una Notification Request con ``event=credential_failure`` includendo parametri aggiuntivi per segnalare il contesto della correzione dati. Al minimo:
+
+- ``event_description``: descrizione concisa e leggibile della discrepanza.
+- ``failure_reason`` (OPZIONALE): breve codice machine-readable, ad es. ``data_correction_requested``.
+- ``correction_details`` (OPZIONALE): oggetto con campi minimi per indicare gli attributi impattati senza valori sensibili (es. soli identificativi degli attributi).
+
+A seguito della ricezione, il Credential Issuer PUÒ verificare presso le Fonti Autentiche e, se confermato, DOVREBBE procedere con il :ref:`credential-issuance-low-level:Re-Issuance Flow`.

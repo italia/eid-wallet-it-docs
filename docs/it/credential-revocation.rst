@@ -215,6 +215,8 @@ Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettroni
       - Verificare l'autenticità dei dati.
       - Visualizzare e aggiornare lo stato di validità (revocare i loro Attestati Elettronici e, se supportato dal Fornitore di Attestati Elettronici, sospenderle).
 
+Inoltre, quando gli Utenti rilevano dati non corretti in un Attestato Elettronico rilasciato, l'Istanza del Wallet DOVREBBE avviare una richiesta di correzione dati tramite il Notification Endpoint come specificato in :ref:`it-notification-data-correction`. A seguito della conferma della discrepanza, il Fornitore di Attestati Elettronici DOVREBBE seguire il :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+
 .. note::
   Se l'Utente attiva un'altra Istanza del Wallet dallo stesso Fornitore di Wallet utilizzando la stessa Soluzione Wallet e ottiene un nuovo PID, il PID precedente DEVE essere revocato e l'Istanza del Wallet precedente DEVE passare allo stato operativo.
 

@@ -1028,6 +1028,7 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
       - *credential_accepted*: when the Credential was successfully stored in the Wallet Instance.
       - *credential_deleted*: when the unsuccessful Credential issuance was caused by a user action.
       - *credential_failure*: in all other unsuccessful cases.
+      
 
     - Section 10.1 of [`OpenID4VCI`_].
   * - **event_description**
@@ -1084,3 +1085,19 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *504 Gateway Timeout* [OPTIONAL]
       - `-`
       - The Credential Issuer cannot fulfill the request within the defined time interval.
+
+
+.. _notification-data-correction:
+
+Data Correction using credential_failure
+.......................................
+
+According to `OpenID4VCI Section 11 <https://openid.github.io/OpenID4VCI/openid-4-verifiable-credential-issuance-wg-draft.html#section-11>`_, in all other unsuccessful cases ``event`` MUST use ``credential_failure`` and additional Notification Request parameters MAY be defined and used. The Credential Issuer MUST ignore any unrecognized parameters.
+
+For holder-initiated data correction, the Wallet Instance SHOULD send a Notification Request with ``event=credential_failure`` and include additional parameters to signal the data correction context. At minimum:
+
+- ``event_description``: concise human-readable description of the discrepancy.
+- ``failure_reason`` (OPTIONAL): a short machine-readable code, e.g., ``data_correction_requested``.
+- ``correction_details`` (OPTIONAL): object with minimal fields indicating impacted attributes without sensitive values (e.g., attribute identifiers only).
+
+Upon receipt, the Credential Issuer MAY verify against Authentic Sources and, if confirmed, SHOULD proceed with the :ref:`credential-issuance-low-level:Re-Issuance Flow`.
