@@ -271,20 +271,40 @@ Le Entità di Federazione DEVONO rispettare i seguenti requisiti tecnici prima d
 
   - **Generazione delle Chiavi**: Le entità DEVONO generare almeno due coppie di chiavi utilizzando la crittografia a curva ellittica come specificato in :ref:`algorithms:Algoritmi Crittografici`:
 
-    - **Coppia di Chiavi di Federazione**: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo.
+    - **Coppia di Chiavi di Federazione**: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo. Per le migliori pratiche di sicurezza e continuità operativa, le entità DOVREBBERO mantenere multiple Chiavi dell'Entità di Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impattare i client che hanno memorizzato nella cache le Entity Configuration.
     - **Coppia/e di Chiavi di Protocollo**: Utilizzate per operazioni di protocollo specifiche dell'entità (emissione attestati elettronici, verifica presentazione, ecc.).
 
   - **Attestazione delle Chiavi di Protocollo**: Le entità DEVONO creare certificati X.509 auto-firmati per le loro Chiavi di Protocollo utilizzando la Chiave Privata di Federazione. Questi certificati stabiliscono la relazione di autorità tra le chiavi di Federazione e di Protocollo.
 
   - **Preparazione Entity Configuration**: Le entità DEVONO pubblicare una Entity Configuration (EC) firmata con la loro Chiave Privata di Federazione all'endpoint ``/.well-known/openid-federation`` come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`. L'EC DEVE includere:
 
-    - Un claim ``jwks`` contenente la Chiave Pubblica dell'Entità di Federazione in formato JSON Web Key (JWK).
+    - Un claim ``jwks`` contenente le Chiavi dell'Entità di Federazione in formato JSON Web Key (JWK).
     - Un claim ``iss`` con l'Identificativo dell'Entità di Federazione come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
     - Un claim ``sub`` uguale al claim ``iss``.
     - Claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
     - Un claim ``metadata`` contenente metadati specifici dell'entità organizzati per Tipi di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration di una Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con Chiavi di Protocollo incluse nei campi ``jwks`` dei metadati e certificati auto-firmati nei corrispondenti claim ``x5c``.
 
   - **Certificate Signing Request (CSR)**: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente **solo la Chiave Pubblica dell'Entità di Federazione** per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`.
+
+Requisiti di Sicurezza per la Gestione delle Chiavi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tutte le entità di federazione DEVONO mantenere almeno due chiavi di firma certificate dal Trust Anchor:
+
+- **Chiave Attiva**: Utilizzata per le operazioni di firma correnti
+- **Chiave di Backup**: Disponibile per l'attivazione immediata durante incidenti o rotazione pianificata delle chiavi
+
+Questo approccio a doppia chiave abilita:
+- Rotazione sicura delle chiavi senza interruzione del servizio
+- Risposta rapida agli incidenti quando le chiavi primarie sono compromesse
+- Continuità per i client con configurazioni di entità memorizzate nella cache
+- Prevenzione di problemi di validazione durante le transizioni delle chiavi
+
+La chiave di backup DEVE essere:
+- Pre-certificata dal Trust Anchor prima del deployment
+- Pubblicata nel JWKS dell'entità insieme alla chiave attiva
+- Pronta per l'attivazione immediata senza passaggi di certificazione aggiuntivi
+- Mantenuta con gli stessi standard di sicurezza della chiave attiva
 
 Procedura di Onboarding della Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
