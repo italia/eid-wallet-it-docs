@@ -271,7 +271,7 @@ Le Entità di Federazione DEVONO rispettare i seguenti requisiti tecnici prima d
 
   - **Generazione delle Chiavi**: Le entità DEVONO generare almeno due coppie di chiavi utilizzando la crittografia a curva ellittica come specificato in :ref:`algorithms:Algoritmi Crittografici`:
 
-    - **Coppia di Chiavi di Federazione**: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo. Per le migliori pratiche di sicurezza e continuità operativa, le entità DOVREBBERO mantenere multiple Chiavi dell'Entità di Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impattare i client che hanno memorizzato nella cache le Entity Configuration.
+    - **Coppia di Chiavi di Federazione**: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo. Per le migliori pratiche di sicurezza e continuità operativa, le entità DOVREBBERO mantenere multiple Chiavi dell'Entità di Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impattare le entità che hanno memorizzato nella cache le Entity Configuration.
     - **Coppia/e di Chiavi di Protocollo**: Utilizzate per operazioni di protocollo specifiche dell'entità (emissione attestati elettronici, verifica presentazione, ecc.).
 
   - **Attestazione delle Chiavi di Protocollo**: Le entità DEVONO creare certificati X.509 auto-firmati per le loro Chiavi di Protocollo utilizzando la Chiave Privata di Federazione. Questi certificati stabiliscono la relazione di autorità tra le chiavi di Federazione e di Protocollo.
