@@ -79,6 +79,7 @@
 .. _Wallet Instance Initialization and Registration: wallet-solution.html#wallet-instance-initialization-and-registration
 .. _Wallet Provider metadata: wallet-solution.html#wallet-provider-metadata
 .. _OIDC-RP-Metadata: https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html
+.. _OAS3: https://spec.openapis.org/oas/v3.0.3
 .. _ICAO 9303: https://www.icao.int/publications/doc-series/doc-9303
 .. _BSI-03110: https://www.bundesanzeiger.de/download/BAnzAT1142010B1/03_BSI_TR-03110.pdf
 
