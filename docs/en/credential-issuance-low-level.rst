@@ -86,7 +86,7 @@ The following diagram shows the *Issuance flow*.
 .. plantuml:: plantuml/credential-issuance-flow.puml
     :width: 99%
     :alt: The figure illustrates the Credential Issuance Low-Level Flow.
-    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry2gEHlsgi0BYBBQYpKa5L7WMyA22jo92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEORxvvh3yO9qmpk-hJ7YdbT-lqMHPJMUoaBLG3bvzjcXUWR3WisojlpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87CqKGL86iSynGbK1HUXWc1ajKJeeAPjRwrgFCw9zHsY7e0neuvfAGp3vUBp_UJQVpRBB3uW6-iGLf8NW7lG6tG_Y5v4OugHK8YgxNJaW5qbdOenEbS2AWuZWKxmYZd-48xw4mA1p2ujV950fT8X04kP5esClzUBJGYrPTalfYV0Tt-8T7ws3mkm8eAacmLhBCmvjfH4C8BqVfTd0xzcutch3MQEmSIIF8vuGXA4Z5ULsZeCHIWixHqvPXOVH1bdz9JcjWvLO9vmssAfs77aGcy20gMKht22c34aPCOSU9hRMo28EMWfKtCWVyKak3TYNLa4aF9bwyXv2tDl8hnuc4HZ8XSJFCl61B-MB3J5GkRPsB2rZChfwGcNjuVNyzMqupRqFLAK1GBZX2KyE9nDaLtEWnNDE0mE3cno5pKuIC5ONNTL0c0X_fZ6Wid5HRy3nXGSk9mjbXP0yhYprOWz-6q_5u-59ebCq_XABAhfPUG9_WMDOm6pc4pg0VQUsfACSN6SN1sw92GmAu2it-W8_FocgZzIOPHzXeSsOVEFs02YYVMalbicHeboI9pSAy9OvvZBT6KF-unnfvZWbuV5XrAw4TyL8QBBZ1UCx_rJ7F97Dm0Xsv54M1rguuoz3b6uDsrxtoJmC_dRc4WxbM1Puuk5uk5x2u_RI4joe8OjnECTPmnHhD_FQsPiBY-PeKyIGM9ipa9-hA2liMWg40zBTp4uB-rzfQj9QuYy30Mt9692Qj171AF8Ouqm4fgLogj2yY-9Na1xuMT9hLgj1g8xU-sQsyVzXuc3KpVYbSiVjUbh7Tvy1LJMcZR2mCvXSNw-1gPULN79wt_PiinIZiEgMAqVutX56E_Fj3-_ukV_FcJSwFy-4GicPFzTUvj20EGbPYNI5apz-HIygw-IeYUX87DdYW7CcLq-2YLaPgH4-7hMwkrHBMZwpL--Y9spIEKGoIpbACd8FIWQ2Y8oBTZT4uNhxCDiLpta8Hhl1MtvE-i0yyWE6RhhiACjzvQmz2YjPfWv30Y47FokBsY5ZFBf5KFkXbbWCUKF57KT99O-waPisTBTtbpUTfTeTRQHsT4kDCVSGtCbW9XoLaKb7oUmx7D92NK_ot1W-w1GRd2fMc5al5kRtx_qyaXebMZa8s8zrhl_djChRWTwfVeIXNJkun1sU4igBeIf-cxtEPBR_jiHp4XdbG8FRQA_wq2yx0rbXG1artdc9mknntg2YMt6xHnEuDNSAtid6M3pQLFeBO2gcUVXTye3z-N_q9>`_
+    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry2gEHlsgi0BYBBQYpKa5L7WMyA22jo92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEORxvvh3yO9qmpk-hJ7YdbT-lqMHPJMUoaBLG3bvzjcXUWR3WisojlpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87CqKGL86iSynGbK1HUXWc1ajKJeeAPjRwrgFCw9zHsY7e0neuvfAGp3vUBp_UJQVpRBB3uW6-iGLf8NW7lG6tG_Y5v4OugHK8YgxNJaW5qbdOenEbS2AWuZWKxmYZd-48xw4mA1p2ujV950fT8X04kP5esClzUBJGYrPTalfYV0Tt-8T7ws3mkm8eAacmLhBCmvjfH4C8BqVfTd0xzcutch3MQEmSIIF8vuGXA4Z5ULsZeCHIWixHqvPXOVH1bdz9JcjWvLO9vmssAfs7SLr33oQJU12LBALxX9H52IEciUF5rbfPX45BmyeRcGD-gQL1kv9goCG74o_UGyXT6_cLuqHI8w6Gk1bcNh2bVB5X9YgNji_51IncLqy8pJsylh-UBQUPjw7o520e5qq4hkD4ukmARlGOhcb8O73puv2vAKB6YiBhEYWJYOzqHbGMJgejU9woeEL4uUmmieULnHwimM_3wNWyV2aqokOVGb5bLqile4zmB6kOZnn2Pz2FjFPKbEEBZEBmRL6X8G5SXOP_mCTdPRNHUfEC96oqERCJd7v01PHFhQLoMJAuIvB4Pc7U4iSyobiZg7_SOuqyomGyFgowjT2EUIaD5jnWFEl_wgXdaZauWOvSYg90QrUSPUZoZK6xwrxvfu6Vpbp2mLoh0aySN2-N2rZSVbh2MnK4CMwd66kuOercVdkRCs7nV4sAU18B4sRo4tLbXNqBmL00-Xkw2K7_QsqjMalSHM3WBJaZ4fDM0ZWb7aESwO2KL2vLsXSH_4ho0ryDb6SYABJQoArlzYll7pOUPisCNmfNxBwNPMptEN1LKzee6mk3-SN5EhXQMVaLX-Tj_oPBCGgxJgbYjFyDOPGZ__xGlh_Btxnva_FZV3Y4hDbJ_NKkBOY3a9LOLmZPy_Vaah9kleo8diI13HueHtBbDBYebP4QqTDXgvkhjOJr8slrFdpYDerZ58EainGZvw1q8AZeY4XtOpIEbo-pJV6Sjr24QxpLzwGlx0CFOFYkwww2p7VUseEGedNQ82GmOj2pihWz8jRpIoIH3tgPvO07LFnXb7JIc3kfMNDdItTvytcQtU5MMaUdn3XJ7_6D35R2OGcPL9JydiCn3UJb5F-jmODkWS6vGgMfnL9nRk_-_nE9OQALev3DIFVQRtwxZ2tudUfNACgLatlCmHcXh2YwqgVf-rncoszxB0UnOHuKYBtsYZ_lWZEmDHQKGTETfnZSBiSTAeebjriqiNj3b_2jR9pbWqsbZo2sGggdtmKVw8_VLty2>`_
 
 
 .. .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
@@ -110,10 +110,10 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
 
 **Steps 1-2 (PAR Request)**: The Wallet Instance:
 
-  * Creates a fresh PKCE code verifier, Wallet Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request* (:ref:`WP_052 <wallet-credential-issuance-testcases>`).
+  * Creates a fresh PKCE code verifier, Wallet App Attestation Proof of Possession, and ``state`` parameter for the *Pushed Authorization Request* (:ref:`WP_052 <wallet-credential-issuance-testcases>`).
   * Provides to the Credential Issuer PAR endpoint the parameters previously listed above, using the ``request`` parameter (hereafter Request Object) according to :rfc:`9126` Section 3 to prevent Request URI swapping attack (:ref:`WP_052 <wallet-credential-issuance-testcases>`). The Pushed Authorization Request enables client authentication prior to any User interaction. This step allows for the early rejection of illegitimate requests, effectively preventing spoofing attacks, tampering, and improper use of authorization requests.
   * MUST create the ``code_verifier`` with enough entropy random string using the unreserved characters with a minimum length of 43 characters and a maximum length of 128 characters, making it impractical for an attacker to guess its value. The value MUST be generated following the recommendation in Section 4.1 of :rfc:`7636`  (:ref:`WP_052a <wallet-credential-issuance-testcases>`).
-  * Signs this request using the private key that is created during the setup phase to obtain the Wallet Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation ``cnf.jwk`` claim  (:ref:`WP_052c <wallet-credential-issuance-testcases>`).
+  * Signs this request using the private key that is created during the setup phase to obtain the Wallet App Attestation. The related public key that is attested by the Wallet Provider is provided within the Wallet App Attestation ``cnf.jwk`` claim  (:ref:`WP_052c <wallet-credential-issuance-testcases>`).
   * MUST use the ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint  (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
   * Specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and or ``scope`` parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
@@ -122,7 +122,7 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
 
 The Credential Issuer performs the following checks upon the receipt of the PAR request:
 
-    1. It MUST validate the signature of the Request Object using the algorithm specified in the ``alg`` header parameter (:rfc:`9126`, :rfc:`9101`) and the public key retrieved from the Wallet Attestation (``cnf.jwk``) referenced in the Request Object, using the ``kid`` JWT header parameter.
+    1. It MUST validate the signature of the Request Object using the algorithm specified in the ``alg`` header parameter (:rfc:`9126`, :rfc:`9101`) and the public key retrieved from the Wallet App Attestation (``cnf.jwk``) referenced in the Request Object, using the ``kid`` JWT header parameter.
     2. It MUST check that the used algorithm for signing the request in the ``alg`` header is one of the listed within the Section :ref:`algorithms:Cryptographic Algorithms`.
     3. It MUST check that the ``client_id`` in the request body of the PAR request matches the ``client_id`` claim included in the Request Object.
     4. It MUST check that the ``iss`` claim in the Request Object matches the ``client_id`` claim in the Request Object (:rfc:`9126`, :rfc:`9101`).
@@ -144,10 +144,10 @@ Below a non-normative example of the PAR Request.
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtpZCI6IjBiNDk4ZGRlMDkxNzJhZGE3MDFkMDdlYjZmOTg2N2FkIiwidHlwIjoid2FsbGV0LWF0dGVzdGF0aW9uK2p3dCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlci5leGFtcGxlLm9yZyIsInN1YiI6InZiZVhKa3NNNDV4cGh0QU5uQ2lHNm1DeXVVNGpmR056b3BHdUt2b2dnOWMiLCJhYWwiOiJodHRwczovL3RydXN0LWxpc3QuZXUvYWFsL2hpZ2giLCJjbmYiOnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiLCJ4IjoiNEhOcHRJLXhyMnBqeVJKS0dNbno0V21kblFEX3VKU3E0Ujk1Tmo5OGI0NCIsInkiOiJMSVpuU0IzOXZGSmhZZ1MzazdqWEU0cjMtQ29HRlF3WnRQQklScXBObHJnIn19LCJhdXRob3JpemF0aW9uX2VuZHBvaW50IjoiaHR0cHM6Ly93YWxsZXQtc29sdXRpb24uZGlnaXRhbC1zdHJhdGVneS5ldXJvcGEuZXUvYXV0aG9yaXphdGlvbiIsInJlc3BvbnNlX3R5cGVzX3N1cHBvcnRlZCI6WyJ2cF90b2tlbiJdLCJyZXNwb25zZV9tb2Rlc19zdXBwb3J0ZWQiOlsiZm9ybV9wb3N0Lmp3dCJdLCJ2cF9mb3JtYXRzX3N1cHBvcnRlZCI6eyJkYytzZC1qd3QiOnsic2Qtand0X2FsZ192YWx1ZXMiOlsiRVMyNTYiLCJFUzM4NCJdfX0sInJlcXVlc3Rfb2JqZWN0X3NpZ25pbmdfYWxnX3ZhbHVlc19zdXBwb3J0ZWQiOlsiRVMyNTYiXSwicHJlc2VudGF0aW9uX2RlZmluaXRpb25fdXJpX3N1cHBvcnRlZCI6ZmFsc2UsImNsaWVudF9pZF9zY2hlbWVzX3N1cHBvcnRlZCI6WyJlbnRpdHlfaWQiXSwiaWF0IjoxNzQwMTU4MDQ3LCJleHAiOjE3NDAxNTgxNjd9.paU3FOET8nraQxuesBXD9gw57DL5HfDzkeboKAOinyh5L2MmLwqvRtrSWK8S7qMRWYmdzR-gHMpmebIH7gGE5w
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUzI1NiIsInR5cCI6Im9hdXRoLWNsaWVudC1hdHRlc3RhdGlvbi1wb3Arand0In0.eyJpc3MiOiIgaHR0cHM6Ly9jbGllbnQuZXhhbXBsZS5jb20iLCJhdWQiOiJodHRwczovL2FzLmV4YW1wbGUuY29tIiwianRpIjoiZDI1ZDAwYWItNTUyYi00NmZjLWFlMTktOThmNDQwZjI1MDY0IiwiaWF0IjoxNzQwMTU4NjE3LCJleHAiOjE3NDAxNTg3Mzd9.B0KOkGi9vMxf3H2Y8rrF-mdLNsuluTvAUbjFfL1Hi-gdaPW7-8ziS9uVh7aTnSAHKWzMfkZLv5q-bxhkglR4PA
 
-    client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&
+    client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-app-attestation$&
     request=$SIGNED-JWT
 
-Below an non-normative example of the Wallet Attestation Proof of Possession (WIA-PoP) header and body:
+Below an non-normative example of the Wallet App Attestation Proof of Possession (WAA-PoP) header and body:
 
 .. literalinclude:: ../../examples/wa-pop-header.json
   :language: JSON
@@ -170,7 +170,7 @@ Below an non-normative example of the signed Request Object without encoding and
 
 
 .. note::
-  The Credential Issuer MUST validate the signature of the Wallet Attestation and that it is not expired.
+  The Credential Issuer MUST validate the signature of the Wallet App Attestation and that it is not expired.
 
 **Step 3 (PAR Response)**: The Credential Issuer provides a one-time use ``request_uri`` value. The issued ``request_uri`` value MUST be bound to the client identifier (``client_id``) that was provided in the Request Object.
 
@@ -201,7 +201,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
 .. code-block:: http
 
-    GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
+    GET /authorize?client_id=$thumprint-of-the-jwk-in-the-cnf-wallet-app-attestation$&request_uri=urn%3Aietf%3Aparams%3Aoauth%3Arequest_uri%3Abwc4JK-ESC0w8acc191e-Y1LTC2 HTTP/1.1
     Host: eaa-provider.example.org
 
 
@@ -229,7 +229,7 @@ The Credential Issuer returns the issued ``request_uri`` to the Wallet Instance.
 
 **Step 10 (Token Request):** The Wallet Instance sends a token request to the Credential Issuer Token Endpoint with a *DPoP Proof JWT* and the parameters: ``code``, ``code_verifier``, and OAuth 2.0 Attestation based Client Authentication (``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP``) as per :ref:`WP_055 <wallet-credential-issuance-testcases>`.
 
-The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wallet Instance (:ref:`WP_055a <wallet-credential-issuance-testcases>`). The related public key that is attested by the Wallet Provider is provided within the Wallet Attestation (``cnf.jwk`` claim) as per :ref:`WP_055d <wallet-credential-issuance-testcases>`. The Credential Issuer performs the following checks on the Token Request:
+The ``OAuth-Client-Attestation`` is signed using the private key bound to the Wallet Instance (:ref:`WP_055a <wallet-credential-issuance-testcases>`). The related public key that is attested by the Wallet Provider is provided within the Wallet App Attestation (``cnf.jwk`` claim) as per :ref:`WP_055d <wallet-credential-issuance-testcases>`. The Credential Issuer performs the following checks on the Token Request:
 
    1. It MUST ensure that the Authorization ``code`` is issued to the authenticated Wallet Instance (:rfc:`6749`) and was not replied.
    2. It MUST ensure the Authorization ``code`` is valid and has not been previously used (:rfc:`6749`).
@@ -516,7 +516,7 @@ Figure below shows how to obtain a new DPoP Access Token and a new DPoP Refresh 
 .. note::
   The refresh of a Token may be triggered by different actions (e.g., User deletion of a Digital Credential). In each case, Wallet Instances are supposed to be running and the corresponding cryptographic material unlocked.
 
-**Step 1**: The Wallet Instance MUST create a fresh DPoP Proof JWT and a fresh Wallet Attestation proof of possession for the token request of the Credential Issuer (:ref:`WP_068a <wallet-credential-issuance-testcases>`).
+**Step 1**: The Wallet Instance MUST create a fresh DPoP Proof JWT and a fresh Wallet App Attestation proof of possession for the token request of the Credential Issuer (:ref:`WP_068a <wallet-credential-issuance-testcases>`).
 
 **Step 2**: To refresh a DPoP-bound Access Token, the Wallet Instance sends a token request using the parameter ``grant_type`` set to ``refresh_token``, including the DPoP header and the OAuth Client Attestation headers (:ref:`WP_068 <wallet-credential-issuance-testcases>`).
 A non-normative example of the token request for a DPoP Access Token using a Refresh Token is shown below.
@@ -572,7 +572,7 @@ To mitigate the risks of Refresh Token compromise, the following protections are
   - **Limiting the use of Refresh Token**: As specified in `OPENID4VC-HAIP`_: “Credential Issuers should be mindful of how long the usage of the refresh token is allowed to refresh a Credential, as opposed to starting the issuance flow from the beginning. For example, if the User is trying to refresh a Credential more than a year after its original issuance, the usage of the refresh tokens is NOT RECOMMENDED.” In this specification a new Digital Credential obtained performing the re-issuance flow SHOULD have the same expiration of the refreshed one. Thus, this specification does not allow for infinite refresh of Digital Credential with a Refresh Token. Once a Digital Credential expires, the User MUST complete the entire issuance process again, to obtain a new Digital Credential. This specification recommends to set a Refresh Token expiration duration, based on the sensitivity of the associated grant.
 
 .. note::
-  *Short-lived Wallet Attestations and DPoP*: Following the specification draft *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), the Authorization Server MUST bind the Refresh Token to the Client Instance. To prove this binding the Client Instance MUST use the Client Attestation mechanism when refreshing the Access Token and the Client Instance MUST use the same key that was presented in the ``cnf.jwk`` claim of the Client Attestation that was used when the Refresh Token was issued. However this requires that all issued Client Attestations MUST be bound to the same key, thus opening to unlinkability issues. In this specification, both `OAUTH-ATTESTATION-CLIENT-AUTH`_ and *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) MUST be used. Using DPoP guarantees the binding of the Refresh Token with the Client Instance as stated in section 5 of :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"* (:ref:`WP_068b <wallet-credential-issuance-testcases>`). DPoP ensures that the Refresh Token is bound to the Wallet Instance.
+  *Short-lived Wallet App Attestations and DPoP*: Following the specification draft *OAuth 2.0 Attestation Based Client Authentication* (`OAUTH-ATTESTATION-CLIENT-AUTH`_), the Authorization Server MUST bind the Refresh Token to the Client Instance. To prove this binding the Client Instance MUST use the Client Attestation mechanism when refreshing the Access Token and the Client Instance MUST use the same key that was presented in the ``cnf.jwk`` claim of the Client Attestation that was used when the Refresh Token was issued. However this requires that all issued Client Attestations MUST be bound to the same key, thus opening to unlinkability issues. In this specification, both `OAUTH-ATTESTATION-CLIENT-AUTH`_ and *OAuth 2.0 Demonstrating Proof of Possession (DPoP)* (:rfc:`9449`) MUST be used. Using DPoP guarantees the binding of the Refresh Token with the Client Instance as stated in section 5 of :rfc:`9449` *"the Refresh Token MUST be bound to the respective public key [...] a Client MUST present a DPoP proof for the same key that was used to obtain the Refresh Token each time that Refresh Token is used to obtain a new Access Token"* (:ref:`WP_068b <wallet-credential-issuance-testcases>`). DPoP ensures that the Refresh Token is bound to the Wallet Instance.
 
 
 Re-Issuance Flow
