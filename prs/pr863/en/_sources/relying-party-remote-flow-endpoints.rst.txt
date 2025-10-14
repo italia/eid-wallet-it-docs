@@ -41,7 +41,7 @@ For detailed implementation requirements, see :ref:`remote-flow:Authorization Re
 
 
 Status Endpoint (Optional)
-"""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 
 The Status Endpoint is an optional endpoint that allows the user-agent to monitor the progress of the presentation flow. This endpoint is particularly useful for Same Device flows where the user-agent needs to know when the Wallet Instance has completed the presentation.
 
@@ -54,12 +54,12 @@ User Data Management Endpoints
 The following endpoint supports user data management and privacy compliance requirements for remote flows:
 
 Relying Party Erasure Endpoint
-"""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 The Erasure Endpoint, which is described in :ref:`relying-party-metadata:Relying Party Metadata`, allows Wallet Instances to request deletion of attributes presented to the Relying Party. The Relying Party MUST request User authentication before proceeding with the attribute deletion.
 
 Erasure Request
-"""""""""""""""
+""""""""""""""""""""
 
 The Erasure Request MUST be a GET request to the Erasure Endpoint. The Wallet Instance MUST also support a call back mechanism which enables the User-Agent to notify the Wallet Instance (and thus the User) once the Erasure Response is returned.
 
@@ -71,7 +71,7 @@ Below is a non-normative example of an Erasure Request where the call back URL i
   Host: relying-party.example.org
 
 Erasure Response
-""""""""""""""""
+""""""""""""""""""""""
 If the deletion of all attributes bound to the User have been successful, the Erasure Response MUST return a 204 HTTP status code.
 
 If instead the attributes deletion procedure fails due any circumstances, the Relying Party MUST return an error response with ``application/json`` as the content type and MUST include the following parameters:
