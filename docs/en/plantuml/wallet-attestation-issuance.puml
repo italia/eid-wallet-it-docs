@@ -1,4 +1,4 @@
-@startuml Wallet Attestation Issuance
+@startuml Wallet App Attestation Issuance
 autonumber
 hide footbox
 'participant
@@ -9,7 +9,7 @@ participant "Device Integrity Service APIs" as aats #springgreen
 participant "Wallet Provider backend" as bck
 
 
-user->app: Request a new operation that\nrequires a Wallet Attestation
+user->app: Request a new operation that\nrequires a Wallet App Attestation
 activate app
 
 app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag"") is available
@@ -38,8 +38,8 @@ app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign
 app->aats: ""client_data_hash""
 aats-->app: ""integrity_assertion""
 
-app->app: Generate Wallet Attestation Request with ""integrity_assertion"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""ephemeral_key_pub"" signed with ephemeral ""ephemeral_key_priv""
-app->bck: Send Wallet Attestation Request
+app->app: Generate Wallet App Attestation Request with ""integrity_assertion"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""ephemeral_key_pub"" signed with ephemeral ""ephemeral_key_priv""
+app->bck: Send Wallet App Attestation Request
 activate bck
 rnote over bck,bck #LIGHTGREEN
 Check if Wallet Instance is initialized and valid
@@ -49,8 +49,8 @@ bck->bck: Validate ""nonce""
 bck->bck: Validate ""integrity_assertion""
 bck->bck: Validate ""hardware_signature""
 bck->bck: Validate ""ephemeral_key_pub"" PoP
-bck->bck: Create Wallet Attestation
-bck-->app: Wallet Attestation Response
+bck->bck: Create Wallet App Attestation
+bck-->app: Wallet App Attestation Response
 deactivate bck
 
 deactivate app
