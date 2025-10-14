@@ -112,7 +112,8 @@ Below a non-normative example of PAR:
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
 
-    request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5leGFtcGxlLm9yZy9pbnN0YW5jZS8xMjM0NSIsImF1ZCI6Imh0dHBzOi8vcGlkLXByb3ZpZGVyLmV4YW1wbGUub3JnIiwibmJmIjoxNzUzNTU1NDAwLCJleHAiOjE3NTM1NTU3MDAsImlhdCI6MTc1MzU1NTQwMCwianRpIjoiYWFjNDVkZGMtY2ZiOC00OTNlLWI2NmItZTQ5ZDY4ZDVhNzVhIiwiY2xpZW50X2lkIjoiaHR0cHM6Ly93YWxsZXQuZXhhbXBsZS5vcmcvaW5zdGFuY2UvMTIzNDUiLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJxdWVyeSIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vd2FsbGV0LmV4YW1wbGUub3JnL2NhbGxiYWNrIiwic3RhdGUiOiJhMWIyYzNkNGU1ZjY3ODkwIiwiY29kZV9jaGFsbGVuZ2UiOiJxampqUDdmaC1FdEFWcjJMWGU2ZzZwZi1LYVRGeDl6WmhIVGFHN3VIYnBvIiwiY29kZV9jaGFsbGVuZ2VfbWV0aG9kIjoiUzI1NiIsImF1dGhvcml6YXRpb25fZGV0YWlscyI6W3sidHlwZSI6Im9wZW5pZF9jcmVkZW50aWFsIiwiY3JlZGVudGlhbF9jb25maWd1cmF0aW9uX2lkIjoiZGNfc2Rfand0X1BJRF9hbHQyIiwiY3JlZGVudGlhbF9kZWZpbml0aW9uIjp7InR5cGUiOlsiVmVyaWZpYWJsZUNyZWRlbnRpYWwiLCJQZXJzb25JZGVudGlmaWNhdGlvbkRhdGEiXSwiY3JlZGVudGlhbFN1YmplY3QiOnt9fX0seyJ0eXBlIjoiaXRfbDIrZG9jdW1lbnRfcHJvb2YiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJjaGFsbGVuZ2VfbWV0aG9kIjoibXJ0ZCtpYXMiLCJjaGFsbGVuZ2VfcmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly93YWxsZXQuZXhhbXBsZS5vcmcvbDJwbHVzLWNhbGxiYWNrIn1dfQ.signature
+    client_id=47b982369791d08003a7283f059cb0d1&
+    request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
 
 Phase 2: Primary Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -191,13 +192,32 @@ The Authorization Server MUST provide a signed JWT containing the challenge requ
      - string
      - REQUIRED. HTTP method for the MRTD PoP initialization request. MUST be ``POST``.
 
+A non-normative example is provided below:
+
+.. code-block:: http
+
+    HTTP/1.1 302 Found\n Location: https://start.wallet.example.org/challenge? challenge_info=eyJhbGciOiJSUzI1NiIsInR5cCI6Im1ydGQraWFzK2p3dCIsImtpZCI6ImI0YTFhNmMyZTlkNTZuOGY5YzNlN2EyYTJmNGI2Yzk3In0.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiaWF0IjoxNzUzNTU1MzU4LCJleHAiOjE3NTM1NTU2NTgsInN0YXR1cyI6InJlcXVpcmVfaW50ZXJhY3Rpb24iLCJ0eXBlIjoibXJ0ZCtpYXMiLCJtcnRkX2F1dGhfc2Vzc2lvbiI6Ind4cm9WckJZMk1DcTRkRE5HWEFDUyIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJtcnRkX3BvcF9qd3Rfbm9uY2UiOiJub25jZTEiLCJodHUiOiJodHRwczovL2Vkb2MtcHJvb2YvaW5pdCIsImh0bSI6IlBPU1QifQ.i6p_FN7qNNawyL4KnOV1r8FrNVjzd-7Ve1wEGASHNnlXwuJ1f216v0Ml_KpVrq9yXkmOo_M2xZwih2SlHVfrzkuG3Pn7LWRL7dsyCtqEY2e58rFHjCa2miBnnKr0NU4wcBMMYe2_qKCOkA7SOa7usNTBluBLMQ28GfiMbr3tcpfpM4rD0POKQcfijvNkNbh-VdOxM8GdHb6IQO_xfpsaSzd8cc0k5yIYCWjDTeINVKebIz4m9Rm2JStvRrWUq8OCqkv-8dTJH9q-JXx0PzJC998RMwe6tqSL-kkE3dZLWwCJdP8Z7bITtowU49rEe-AkrGxVma4ANPq317umEfUwmw
+
+The Authorization Server MUST:
+
+- Generate a unique challenge identifier with sufficient entropy (minimum 128 bits) for cryptographic security.
+- Create MRTD Proof JWT with proper header (``alg``, ``typ``, ``kid``) and payload parameters (as defined in the table above).
+- Sign the MRTD Proof JWT using its private key with the cryptographic algorithm chosen. See Section :ref:`algorithms:Cryptographic Algorithms`.
+- Construct a secure redirect URL with proper encoding to the Wallet Instance universal link.
+- Set the redirect timeout to prevent indefinite waiting and handle timeout scenarios
+- Optionally request MRZ information directly from the CIE National Registry using the authenticated User's Tax payer's identification number.
+- Maintain session correlation between the LoA3 result and the document proof challenge
+
 The Wallet Instance MUST:
 
-	- Validate the JWT signature using the PID Provider's public key obtained through trust evaluation.
-	- Verify that the ``status`` field is set to "require_interaction".
-	- Verify the authentication type matches the expected value ``mrtd+ias``.
-	- Extract HTTP target URI (``htu``) and method (``htm``) for the next step.
-	- Handle JWT validation and network errors, and provide user feedback with appropriate retry mechanisms.
+- Validate the JWT signature using the PID Provider's public key obtained through trust evaluation.
+- Verify ``aud`` claim matches its ``client_id``.
+- Verify ``iat`` and ``exp`` claims indicate the token has a correct issuance date and has not expired.
+- Verify that the ``status`` field is set to "require_interaction".
+- Verify the authentication type matches the expected value ``mrtd+ias``.
+- Extract HTTP target URI (``htu``) and method (``htm``) for the next step.
+- Handle JWT validation and network errors, and provide user feedback with appropriate retry mechanisms.
+- Extract correlation parameters (``mrtd_auth_session``, ``state``, ``mrtd_pop_jwt_nonce``) for subsequent requests.
 
 MRTD PoP Request
 """"""""""""""""
@@ -236,18 +256,18 @@ Below a non-normative example of an MRTD PoP Request:
 
 **The Wallet Instance MUST:**
 
-	- Validate the MRTD Proof JWT signature using the PID Provider's public key.
-	- Verify the JWT ``aud`` claim matches its ``client_id``.
-	- Ensure the JWT ``exp`` claim indicates the token has not expired.
-	- Extract the ``mrtd_auth_session`` and ``mrtd_pop_jwt_nonce`` values for correlation.
-	- Include valid Wallet Attestation according to `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-	- Handle network errors and implement appropriate retry mechanisms.
+- Validate the MRTD Proof JWT signature using the PID Provider's public key.
+- Verify the JWT ``aud`` claim matches its ``client_id``.
+- Ensure the JWT ``exp`` claim indicates the token has not expired.
+- Extract the ``mrtd_auth_session`` and ``mrtd_pop_jwt_nonce`` values for correlation.
+- Include valid Wallet Attestation according to `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+- Handle network errors and implement appropriate retry mechanisms.
 
 **The MRTD PoP Service MUST:**
 
-	- Validate the Wallet Attestation according to `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-	- Verify the ``mrtd_auth_session`` parameter matches an active session.
-	- Validate the ``mrtd_pop_jwt_nonce`` parameter corresponds to the one issued at the previous step.
+- Validate the Wallet Attestation according to `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+- Verify the ``mrtd_auth_session`` parameter matches an active session.
+- Validate the ``mrtd_pop_jwt_nonce`` parameter corresponds to the one issued at the previous step.
 
 The MRTD PoP Service MAY request the MRZ information (document number, date of birth, expiry date, citizenship and gender) directly to the CIE National Registry using the Tax payer's identification number of the authenticated User. In this case, the MRTD PoP Service is able to check if the authenticated User owns a valid CIE and If this is not the case, it MUST send an HTTP Error Response with HTTP Error code ``access_denied``.
 
@@ -336,24 +356,25 @@ Below a non-normative example of an MRTD PoP Response:
 
 **The MRTD PoP Service MUST:**
 
-	- Generate cryptographically secure challenge data for ``MRTD+IAS`` validation with sufficient entropy (to be used in Anti-Cloning Internal Authentication protocol by the Wallet Instance), storing it with an appropriate expiration time. Moreover, the MRTD PoP Service MUST ensure challenge uniqueness to prevent reuse attacks.
-	- Create a new unique ``mrtd_pop_nonce`` for the next step to prevent replay attacks.
-	- Validate session continuity by ensuring the ``mrtd_auth_session`` parameter corresponds to an active session.
-	- Return HTTP *202 Accepted* status to indicate asynchronous processing initiation.
-	- Include proper Content-Type header (``application/json; charset=utf-8``).
-	- Handle service errors and return appropriate error responses.
-	- Extract and validate MRZ information if provided from external registry services.
+- Generate cryptographically secure challenge data for ``MRTD+IAS`` validation with sufficient entropy (to be used in Anti-Cloning Internal Authentication protocol by the Wallet Instance), storing it with an appropriate expiration time. Moreover, the MRTD PoP Service MUST ensure challenge uniqueness to prevent reuse attacks.
+- Create a new unique ``mrtd_pop_nonce`` for the next step to prevent replay attacks.
+- Validate session continuity by ensuring the ``mrtd_auth_session`` parameter corresponds to an active session.
+- Return HTTP *202 Accepted* status to indicate asynchronous processing initiation.
+- Include proper Content-Type header (``application/json; charset=utf-8``).
+- Handle service errors and return appropriate error responses.
+- Extract and validate MRZ information if provided from external registry services.
 
 **The Wallet Instance MUST:**
 
-	- Validate HTTP response status (*202 Accepted*) and content type.
-	- Parse JSON response and validate required parameters (``challenge``, ``mrtd_pop_nonce``).
-	- Extract challenge data for cryptographic document validation.
-	- Store new ``mrtd_pop_nonce`` value securely for subsequent validation requests.
-	- Validate optional MRZ information if present in the response.
-	- Handle errors, providing relative user feedback.
-	- Store challenge data temporarily.
-	- Prepare NFC reading session.
+- Validate HTTP response status (*202 Accepted*) and content type.
+- Parse JSON response and validate required parameters (``challenge``, ``mrtd_pop_nonce``).
+- Extract challenge data for cryptographic document validation.
+- Store new ``mrtd_pop_nonce`` value securely for subsequent validation requests.
+- Validate optional MRZ information if present in the response.
+- Extract HTTP target URI (htu) and method (htm) for the next step.
+- Handle errors, providing relative user feedback.
+- Store challenge data temporarily.
+- Prepare NFC reading session.
 
 The Wallet Instance performs NFC-based electronic document reading and validation, then submits the evidence to the PID Provider for final verification and identity correlation with the LoA3 authentication result.
 
@@ -512,15 +533,18 @@ Below a non-normative example of an MRTD PoP Validation Request:
 
 **The MRTD PoP Service MUST:**
 
-	- Validate Wallet Instance Attestation according to IT-Wallet specifications.
-	- Verify OAuth-Client-Attestation-PoP signature.
-	- Validate the ``mrtd_auth_session`` parameter matches an active session.
-	- Verify the ``mrtd_pop_nonce`` matches the value sent in the previous response.
-	- Parse and validate the ``mrtd_validation_jwt`` signature and structure.
-	- Validate document authenticity using `ICAO 9303`_ standards.
-	- Verify Anti-Cloning challenge response.
-	- Check document validity (non revocation status).
-	- Check the binding between NIS obtained from IAS Application and Tax payer's identification number of the User read from the MRTD Application in order to ensure that both values are coming from the same chip.
+- Validate Wallet Instance Attestation according to IT-Wallet specifications.
+- Verify OAuth-Client-Attestation-PoP signature.
+- Validate the ``mrtd_auth_session`` parameter matches an active session.
+- Verify the ``mrtd_pop_nonce`` matches the value sent in the previous response.
+- Parse and validate the ``mrtd_validation_jwt`` signature (using Wallet Instance's public key) and structure.
+- Extract and verify document evidence from the ``mrtd_validation_jwt``.
+- Validate document authenticity using `ICAO 9303`_ standards.
+- Verify Anti-Cloning challenge response.
+- Validate document cryptographic proofs and certificate chains.
+- Perform identity correlation between document data and LoA3 result.
+- Check document validity (non revocation status).
+- Check the binding between NIS obtained from IAS Application and Tax payer's identification number of the User read from the MRTD Application in order to ensure that both values are coming from the same chip.
 
 MRTD PoP Validation Response
 """"""""""""""""""""""""""""
@@ -562,16 +586,33 @@ Below a non-normative example of an MRTD PoP Validation Response:
       "redirect_uri":"https://pid-provider.example.org/cb"
     }
 
+**The MRTD PoP Service MUST:**
+
+- Generate a new nonce  ``mrtd_val_pop_nonce `` for browser-based final confirmation.
+- Return HTTP 202 status to indicate async processing completion.
+
+**The Wallet Instance MUST:**
+
+- Validate the response.
+- Extracts the parameters nonce  ``mrtd_val_pop_nonce`` and  ``redirect_uri `` to prepare the next browser-based GET Request.
+
 Browser-based Final Confirmation
 """""""""""""""""""""""""""""""""
 
-Upon successful MRTD PoP validation, the Wallet Instance MUST redirect the User Agent to the ``challenge_redirect_uri`` specified in the initial Authorization Details Object, including the ``mrtd_val_pop_nonce`` as a query parameter:
+Upon successful MRTD PoP validation, the Wallet Instance MUST redirect the User Agent to the ``challenge_redirect_uri`` specified in the initial Authorization Details Object, including the ``mrtd_val_pop_nonce`` and ``mrtd_auth_session`` as a query parameter:
 
 .. code-block:: text
 
     https://pid-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
 
 The Wallet Instance MUST validate that the ``mrtd_val_pop_nonce`` matches the value received from the MRTD PoP Validation Response.
+
+**The Authorization Server MUST:**
+
+- Validate the ``mrtd_val_pop_nonce`` matches the value sent in the verification response, and that it is signed using the Wallet Instance’s private key.
+- Verify the ``mrtd_auth_session`` parameter matches an active session.
+- Verify all authentication steps (LoA3 + MRTD PoP) have been completed successfully (including the identity correlation between LoA3 and document evidence). 
+- Generate the final authorization code.
 
 Phase 4: OAuth Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -597,6 +638,12 @@ MRTD PoP Response Errors
 
    * - **Error Code**
      - **Description**
+   * - **invalid_client**
+     - Wallet Instance authentication failed.
+   * - **invalid_request**
+     - HTTP Request is invalid or malformed (malformed structure, missing data, etc.) or required session parameters are missing or invalid.
+   * - **access_denied**
+     - User is not eligible for eID Substantial Authentication with MRTD Verification mechanism (e.g. CIE not found in the CIE Registry)
    * - **temporarily_unavailable**
      - Document validation service or CIE Registry service is temporarily unavailable.
 
@@ -616,6 +663,12 @@ MRTD PoP Validation Response Errors
      - HTTP Validation Request or Validation JWT is invalid or malformed (due to a malformed structure, missing data, signature failure, request timeout, etc.).
    * - **access_denied**
      - User authentication or document validation failed.
+   * - **invalid_document**
+     - Document cryptographic validation failed (SOD validation, NIS/CF binding, revocation status, etc.).
+   * - **id_matching_failed**
+     - The matching between the identity obtained during primary authentication (eID LoA3) and the one obtained from the PoP of the Electronic Document failed.
+   * - **temporarily_unavailable**
+     - Document validation service or CIE Registry service is temporarily unavailable.
 
 HTTP Status Code Mapping
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -625,6 +678,7 @@ Error responses MUST use appropriate HTTP status codes:
 	- **400 Bad Request**: For ``invalid_request`` errors.
 	- **401 Unauthorized**: For ``invalid_client`` errors.
 	- **403 Forbidden**: For ``access_denied`` errors.
+  - **422 Unprocessable Entity**: For ``invalid_document`` or ``id_matching_failed errors``.
 	- **503 Service Unavailable**: For ``temporarily_unavailable`` errors.
 
 Security Considerations
@@ -634,6 +688,21 @@ Secure Session Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ``mrtd_auth_session`` parameter serves as the primary correlation mechanism between authentication steps. Implementations MUST ensure this identifier has sufficient entropy (minimum 128 bits) and is cryptographically secure. The session identifier MUST be validated at each step to prevent session fixation attacks.
+
+Each authentication step MUST be cryptographically bound to the OAuth session through signed JWT validation to prevent session fixation, session confusion, and identity substitution attacks. The Authorization Server MUST maintain the correlation between the LoA3 identity and the document proof within a single session context.
+
+In particular, each authentication step MUST validate the correlation between:
+
+- Session identifier consistency across all protocol phases.
+- LoA3 identity attributes binding to the session context.
+- Document evidence correlation with authenticated identity.
+- Temporal sequence validation to prevent out-of-order attacks.
+
+When components operate outside the PID Provider boundary, the following additional security measures MUST be implemented:
+
+- Secure Inter-Service Communication (for example, through Certificate pinning, mutual TLS, etc.).
+- Encryption and integrity of sensitive session data and/or personal identity information (for example, using JWE/JWS tokens).
+- Distributed locks for session state updates. 
 
 
 .. _fig_eID_MRTD_Security_Controls:
@@ -645,12 +714,23 @@ The ``mrtd_auth_session`` parameter serves as the primary correlation mechanism 
 Cryptographic Challenge Generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The MRTD PoP Service MUST generate cryptographically secure challenges with sufficient entropy for document validation. Challenge values MUST be unique and MUST NOT be reused across different sessions or authentication attempts. The challenge generation algorithm SHOULD incorporate the ``mrtd_auth_session`` identifier and timestamp to ensure proper cryptographic binding.
+The MRTD PoP Service MUST generate cryptographically secure challenges with sufficient entropy (minimum 256 bits) for document validation. Challenge values MUST be unique and MUST NOT be reused across different sessions (cryptographically bound to the specific OAuth session context) or authentication attempts. The challenge generation algorithm SHOULD incorporate the ``mrtd_auth_session`` identifier and timestamp to ensure proper cryptographic binding.
 
 Nonce Lifecycle Management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each step in the eID Substantial Authentication with MRTD Verification flow MUST use unique nonce values to prevent replay attacks. Nonce values MUST have appropriate expiration times and MUST be invalidated after successful use. The PID Authorization Server and MRTD PoP Service MUST maintain synchronized nonce validation to ensure session integrity.
+Each step in the eID Substantial Authentication with MRTD Verification flow MUST use unique nonce values (minimum 128 bits) to prevent replay attacks. Nonce values MUST have appropriate expiration times and MUST be invalidated after successful use. The PID Authorization Server and MRTD PoP Service MUST maintain synchronized nonce validation to ensure session integrity.
+
+Moreover, each nonce serves a specific security purpose:
+- ``mrtd_pop_jwt_nonce`` MUST be correlated with the MRTD Proof JWT.
+- ``mrtd_pop_nonce `` MUST:
+  - Be cryptographically independent from ``mrtd_pop_jwt_nonce``.
+  - Incorporate the ``mrtd_pop_jwt_nonce`` as input to maintain the chain of trust.
+  - Use a different entropy source to prevent correlation attacks.
+- ``mrtd_val_pop_nonce`` MUST:
+  - Be signed by the Wallet Instance private key.
+  - Include anti-replay timestamp validation.
+  - Be verified against the entire nonce chain for integrity.
 
 Security Controls
 ^^^^^^^^^^^^^^^^^
@@ -706,6 +786,18 @@ The following security controls MUST be implemented in the protocol:
      - Phase 3
    * - **SC14**
      - The MRTD PoP Service verifies the integrity of the data extracted from the CIE by checking the SOD elements (both IAS and MRTD) and the related hashes.
+     - Phase 3
+   * - **SC15**
+     - The PID Authorization Server verifies the existence and consistency of the User’s Tax payer's identification number extracted from the eID LoA3 assertion, by interacting with the Authoritative Source (AS_NIS).
+     - Phase 3
+   * - **SC16**
+     - The MRTD PoP Service verifies that the identity proven during the IAS interaction is correlated with the identity proven during the MRTD interaction, by interacting with the Authoritative Source (AS_NIS).
+     - Phase 3
+   * - **SC17**
+     - The MRTD PoP Service verifies that the identity proven during the eID LoA3 phase is correlated with the identity proven during the MRTD PoP phase.
+     - Phase 3
+   * - **SC18**
+     - The MRTD PoP Service verifies that the CIE used during the MRTD PoP phase has not expired and not revoked by interacting with the CIE National Registry.
      - Phase 3
 
 Additional implementation requirements:
