@@ -49,10 +49,9 @@ When the state is **Installed**, the Wallet Instance MUST interact only with the
 * illegal activities reported by Judicial or Supervisory Bodies.
 
 .. note::
-  While for the ARF the revocation of the Wallet Instance is accomplished by revoking the Wallet Attestation (see Topic 9 and Topic 38 in Annex 2),
-  in this specification the revocation is managed differently. Being the Wallet Attestation short-lived, it does not have a status management mechanism.
-  For this reason, the Wallet Instance revocation transition is accomplished by deleting the Wallet Cryptographic Hardware Key from the WSCD of the Wallet
-  Instance and from the account associated with the User. This transition is completed when the Wallet Instance is online.
+  As it is stated in the ARF (see Topic 9 and Topic 38 in Annex 2), the revocation of the Wallet Instance is accomplished by revoking the Wallet Unit Attestation by
+  using the status management mechanism. The Wallet Provider can simply change the status of the Wallet Unit in the Status List to mark the Wallet Unit as revoked and
+  inform the users concerning the reason to revoke the Wallet Unit.  
 
 Transition to Operational
 .........................
@@ -60,20 +59,20 @@ Transition to Operational
 After installation, the User opens the Wallet Instance and an activation begins (**WI ACT**).
 At this stage, a User account MUST be created with the Wallet Provider and associated with the Wallet Instance through the Wallet Cryptographic
 Hardware Key Tag, subject to obtaining the User's consent (see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration` for more details, with tests in :ref:`WP_024 <wallet-instance-testcases>` and :ref:`WP_138 <wallet-instance-optional-testcases>`).
-This association allows the User to directly request Wallet Instance revocation from the Wallet Provider, and it also allows the Wallet Provider to
-revoke the Wallet Instance associated with that User.
+This association allows the User to directly request Wallet Instance revocation from the Wallet Provider. 
 
 .. note::
   As a result of the User account creation, an authentication mechanism MUST be set for the User to interact with the Wallet Provider portal.
   This specification mandates the use of at least a second-factor for User authentication.
 
-As part of the activation, the Wallet Provider MUST evaluate the operating system and general technical capabilities of the device to check compliance
-with the technical and security requirements, and the authenticity and integrity of the installed Wallet Instance.
+As part of the activation, the Wallet Provider MUST evaluate the operating system, general technical capabilities of the device, and trustworthiness of the WSCD 
+to check compliance with the technical and security requirements, the authenticity and integrity of the installed Wallet Instance, and ensure the keys used for 
+key binding resides in a secure WSCD.
 Upon successful verification, the Wallet Provider MUST issue at least one valid Wallet Attestation to the Wallet Instance, therefore the Wallet Instance enters the **Operational** state.
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
-preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-attestation-issuance:Wallet Attestation Issuance`.
+preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-attestation-issuance:Wallet APP Attestation Issuance`, and :ref:`wallet-unit-attestation-issuance:Wallet Unit Attestation Issuance`.
 
 In the **Operational** state, Users can request the issuance of PID (**PID ISS**) or (Q)EAAs if the PID is not required in the issuance
 (**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
