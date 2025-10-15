@@ -1278,14 +1278,7 @@ Content-Type: application/json
 <span class="w">         </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential.mdl.name&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential.mdl.description&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/1.0/mDL&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">               </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
@@ -1357,7 +1350,6 @@ Content-Type: application/json
 <span class="w">            </span><span class="p">{</span>
 <span class="w">               </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_mDL&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/1.0/mDL&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
 <span class="w">            </span><span class="p">},</span>
@@ -1367,90 +1359,6 @@ Content-Type: application/json
 <span class="w">               </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">         </span><span class="p">],</span>
-<span class="w">         </span><span class="nt">&quot;display_properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;authentic_source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authentic-sources.example.org&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;template_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/.well-known/templates/mDL.svg&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;template_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                     </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;landscape&quot;</span><span class="p">,</span>
-<span class="w">                     </span><span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;light&quot;</span><span class="p">,</span>
-<span class="w">                     </span><span class="nt">&quot;contrast&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
-<span class="w">                  </span><span class="p">}</span>
-<span class="w">               </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#008558&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/logos/mDL.svg&quot;</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.family_name.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.given_name.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.birth_date.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issue_date.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.expiry_date.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_authority.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.document_number.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.portrait.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.driving_privileges.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.un_distinguishing_sign.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;administrative_number&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.administrative_number.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_country&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_country.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_jurisdiction&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_jurisdiction.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">         </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>

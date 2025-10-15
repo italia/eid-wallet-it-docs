@@ -256,21 +256,6 @@
 </tbody>
 </table>
 <p>The Trust Anchor MUST publish and keep up to date all the information at the Digital Credential Catalogue <cite>.well-known</cite> endpoint ensuring data reliability, authenticity and integrity. In particular, the Digital Credential Catalogue, claims and taxonomy MUST be available through the <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalogue</span></code> endpoint.</p>
-<section id="catalogue-as-canonical-source-for-display-information">
-<h2>Catalogue as Canonical Source for Display Information<a class="headerlink" href="#catalogue-as-canonical-source-for-display-information" title="Link to this heading">¶</a></h2>
-<p>To minimize duplication while having consistent presentation across the ecosystem, the Digital Credential Catalogue is the canonical source of truth for all end-user display information related to Digital Credentials (e.g., credential name/description, claim labels, visual templates, colors, logo URIs).</p>
-<ul class="simple">
-<li><p>Wallet Solutions and Relying Parties MUST use the display-related fields contained in the Catalogue (for example the fields under <code class="docutils literal notranslate"><span class="pre">display_properties</span></code> and the localized content referenced via <code class="docutils literal notranslate"><span class="pre">localization</span></code>) when rendering Digital Credentials and their claims.</p></li>
-<li><p>Credential Issuer metadata and Digital Credential Metadata Type MAY still contain display information for interoperability with external ecosystems and for Credentials not registered in the Catalogue; however, when a Credential is present in the Catalogue, Catalogue values MUST take precedence over any display information provided by the Credential Issuer metadata and/or the Digital Credential Metadata Type.</p></li>
-<li><p>For Credentials that are not included in the Catalogue (for example, Credentials not deemed of public interest), Wallet Solutions MAY use the display information from the Credential Issuer metadata and/or the Digital Credential Metadata Type. When both are available, the following precedence applies:</p>
-<ol class="arabic simple">
-<li><p>Use the Digital Credential Metadata Type if available.</p></li>
-<li><p>Otherwise, use the Credential Issuer metadata.</p></li>
-</ol>
-</li>
-<li><p>Implementations SHOULD cache Catalogue display data and apply language selection using the <code class="docutils literal notranslate"><span class="pre">localization</span></code> parameters. If the selected locale is unavailable, fall back to the Catalogue default locale.</p></li>
-</ul>
-</section>
 <section id="digital-credentials-categories">
 <h2>Digital Credentials Categories<a class="headerlink" href="#digital-credentials-categories" title="Link to this heading">¶</a></h2>
 <p>Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and categories. Additional categories MAY be added as the IT-Wallet ecosystem grows.</p>
@@ -706,7 +691,6 @@
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">Digital Credentials Catalogue</a><ul>
-<li><a class="reference internal" href="#catalogue-as-canonical-source-for-display-information">Catalogue as Canonical Source for Display Information</a></li>
 <li><a class="reference internal" href="#digital-credentials-categories">Digital Credentials Categories</a></li>
 <li><a class="reference internal" href="#digital-credentials-catalogue-structure">Digital Credentials Catalogue Structure</a></li>
 <li><a class="reference internal" href="#claims-taxonomy">Claims Taxonomy</a></li>
