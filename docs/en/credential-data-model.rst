@@ -134,7 +134,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-anchor.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
+      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. If the Credential is published within the Digital Credential catalog, ``vct`` value MUST correspond with the value indicated in the catalog, see :ref:`registry:Digital Credentials Catalog Structure`. In case of the Credential is not published in the Catalog, ``vct`` MUST be set as a URI String of the form ``https://{Credential Issuer domain}/{version}/{credential_type}`` (e.g. ``https://issuer.example.it/credentials/v1.0/employeeBadge``).
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -214,15 +214,6 @@ The Metadata type document MUST be a JSON object and contains the following para
     * - **extends#integrity**
       - CONDITIONAL. REQUIRED if **extends** is present.
       - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema**
-      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema_uri**
-      - CONDITIONAL. REQUIRED if **schema** is not present.
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema_uri#integrity**
-      - CONDITIONAL. REQUIRED if **schema_uri** is present.
-      - [`SD-JWT-VC`_] Section 6.2.
     * - **data_source**
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with the following sub-value:
 
@@ -237,7 +228,7 @@ The Metadata type document MUST be a JSON object and contains the following para
 
       - This specification
     * - **display**
-      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. When the corresponding Digital Credential is included in the Digital Credential Catalogue, the Catalogue is the canonical source for end-user display information and MUST take precedence over this field. This field is intended for interoperability with external ecosystems and as a fallback when the Credential is not present in the Catalogue. It contains for each object the following properties:
+      - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:
 
           * ``lang``: language tag as defined in :rfc:`5646` Section 2. [REQUIRED].
           * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
@@ -262,8 +253,7 @@ The Metadata type document MUST be a JSON object and contains the following para
                 * ``text_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the text of the Digital Credential. [OPTIONAL].
 
           .. note::
-            The use of the SVG template is RECOMMENDED for all applications that support it. When both Catalogue display templates and Metadata Type templates are available for the same Credential, implementations MUST use the Catalogue templates.
-
+            The use of the SVG template is RECOMMENDED for all applications that support it.
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**
       - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:

@@ -95,6 +95,7 @@
         },
         "openid_credential_issuer": {
             "credential_issuer": "https://eaa-provider.example.org",
+            "logo_uri": "https://eaa-provider.example.org/public/compact-logo.svg",
             "credential_endpoint": "https://eaa-provider.example.org/credential",
             "nonce_endpoint": "https://eaa-provider.example.org/nonce-endpoint",
             "deferred_credential_endpoint": "https://eaa-provider.example.org/deferred-credential",
@@ -144,6 +145,8 @@
                         }
                     ],
                     "vct": "https://trust-registry.eid-wallet.example.it/v1.0/EuropeanDisabilityCard",
+                    "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/EuropeanDisabilityCard",
+                    "schema_uri#integrity": "sha256-c0d841be52cfc75b8da3295593eced2b9fca8197ee7e340199cd881a7bf61029",
                     "claims": [
                         {
                             "path": ["document_number"],
@@ -295,6 +298,8 @@
                         }
                     ],
                     "vct": "https://trust-registry.eid-wallet.example.it/v1.0/mDL",
+                    "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
+                    "schema_uri#integrity": "sha256-0a03d9ffe11e39fd748585e433a962f223d7d14b0a49068ad52452bd0b021f63",
                     "claims": [
                         {
                             "path": ["given_name"],
@@ -471,6 +476,8 @@
                     "format": "mso_mdoc",
                     "scope": "mDL",
                     "doctype": "org.iso.18013.5.1.mDL",
+                    "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/EuropeanDisabilityCard",
+                    "schema_uri#integrity": "sha256-a3ab8478290565ccb9418c5a53d8a5fbcfb44545c3fa595425da594bf8391511",
                     "cryptographic_binding_methods_supported": [
                         "cose_key"
                     ],
