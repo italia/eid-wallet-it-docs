@@ -659,8 +659,9 @@ Di seguito i requisiti funzionali a supporto dell'Esperienza Utente relativi all
 - l'Utente viene informato che la disattivazione dell'Istanza del Wallet renderà non più utilizzabili gli Attestati Elettronici precedentemente ottenuti; 
 - l'Utente conferma l'azione per procedere con la disattivazione oppure annulla l'operazione; 
 - l'Utente visualizza l'esito positivo della disattivazione avvenuta; 
-- l'Utente, in caso di nuovo accesso, prende visione del fatto che l'Istanza del Wallet è disattiva; 
-- l'Utente ha la possibilità di riattivare l'Istanza del Wallet riscaricando l'app dall'app store, in caso di cancellazione, e/o ripercorrendo il processo di attivazione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Attivazione dell'Istanza del Wallet`. 
+- l'Utente, in caso di nuovo accesso, prende visione del fatto che l'Istanza del Wallet è disattiva.
+
+L'Utente ha la possibilità di riattivare l'Istanza del Wallet riscaricando l'app dall'app store, in caso di cancellazione, e/o ripercorrendo il processo di attivazione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Attivazione dell'Istanza del Wallet`. 
 
 Una volta riattivata l'Istanza del Wallet, gli Attestati Elettronici di Attributi potranno essere ri-ottenuti avviando nuovamente il processo di ottenimento o di ripristino. Per approfondimenti si rimanda rispettivamente alle sezioni :ref:`functionalities:Ottenimento degli Attestati Elettronici di Attributi` e :ref:`functionalities:Archiviazione e ripristino degli Attestati Elettronici di Attributi`. 
 

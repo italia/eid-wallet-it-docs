@@ -654,8 +654,9 @@ Below are the functional and User Experience requirements that the Wallet Provid
 - The User is informed that deactivating the Wallet Instance will invalidate previously obtained Electronic Attestations;
 - The User confirms the action to proceed with deactivation, or cancels the operation;
 - The User receives confirmation of successful deactivation;
-- The User is notified that the Wallet Instance is inactive when logging in again;
-- The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the `Activation of the Wallet Instance`_ section.
+- The User is notified that the Wallet Instance is inactive when logging in again.
+
+The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the `Activation of the Wallet Instance`_ section.
 
 Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections `Issuance of Electronic Attestations of Attributes`_ and `Backup and Restore of Electronic Attestation of Attributes`_.
 
