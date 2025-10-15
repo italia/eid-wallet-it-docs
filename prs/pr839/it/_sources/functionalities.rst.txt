@@ -248,7 +248,7 @@ Di seguito i requisiti dell'Esperienza Utente relativi a entrambe le modalità c
 - L'Utente prende visione dei dati del PID e/o gli Attributi richiesti per la presentazione, del nome del Verificatore di Attestati Elettronici che li richiede e delle relative eventuali informative. L'Utente sceglie se presentare o meno eventuali dati del PID e/o Attributi non obbligatori ai fini della presentazione (Divulgazione Selettiva). L'Utente dà il proprio consenso per poter proseguire oppure annulla l'operazione; 
 - L'Utente autorizza l'operazione utilizzando la modalità di sblocco precedentemente impostata; 
 - L'Utente visualizza nell'Istanza del Wallet l'esito positivo della presentazione avvenuta; 
-- L'Utente torna al flusso nel Touchpoint del Verificatore di Attestati Elettronici su cui DEVE visualizzare l'esito della presentazione completata. 
+- L'Utente torna al flusso nel Touchpoint del Verificatore di Attestati Elettronici su cui visualizza l'esito della presentazione completata. 
 
 In caso di errori nell'utilizzo dell'Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
 
