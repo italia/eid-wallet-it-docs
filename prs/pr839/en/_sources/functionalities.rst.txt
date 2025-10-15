@@ -604,6 +604,12 @@ Revocation is the procedure that turns an Electronic Attestation from a valid st
 	- The minimum security and/ or reliability requirements for one or more involved parties are no longer met.
 	- The User's device no longer meets the minimum security requirements (rooted or jailbroken).
 
+Below are the User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:
+- The User opens the Detailed view of the Electronic Attestation that they want to revoke;
+- The User selects the Call to Action to revoke the Electronic Attestation;
+- The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation;
+- The User sees the successful outcome of the revocation.
+
 History of Electronic Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

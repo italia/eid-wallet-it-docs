@@ -609,6 +609,12 @@ La revoca si configura come quel meccanismo che determina il passaggio di un Att
    - non sussistono più i requisiti minimi di sicurezza e/o affidabilità di una o più delle parti coinvolte; 
    - il dispositivo dell'Utente non soddisfa più i requisiti minimi di sicurezza (dispositivo rootato o jailbroken). 
 
+Di seguito i requisiti di Esperienza Utente che il Wallet Provider DEVE garantire attraverso la propria Soluzione Wallet:
+- l'Utente apre la Vista di Dettaglio dell’Attestato Elettronico che vuole revocare;
+- l'Utente seleziona la Call to Action per la revoca dell’Attestato Elettronico;
+- l'Utente prende visione di tutte le informazioni rilevanti l’azione in corso e dà il proprio consenso per proseguire oppure lo nega per annullare l'operazione;
+- l’Utente visualizza l'esito positivo della revoca avvenuta.
+
 Storico degli Attestati Elettronici 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
