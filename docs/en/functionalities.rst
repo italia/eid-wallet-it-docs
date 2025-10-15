@@ -584,7 +584,13 @@ Each Electronic Attestation can be either valid or invalid, with corresponding i
 
 - **Valid**: Valid Electronic Attestations MUST be usable and therefore presentable. This category also includes Electronic Attestations that are nearing expiration. If an Electronic Attestation is about to expire, the Wallet Instance SHOULD inform the User with adequate advance notice to allow sufficient time to request its reissuance or, if necessary, revoke it.
 
-- **Invalid**: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the Wallet Instance MUST inform the User of the invalid status and SHOULD give the reason why. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Solution MAY implement mechanisms to restrict access to the Detailed View of that Electronic Attestation. This is intended to encourage the User to update or delete the Electronic Attestation by providing appropriate informational text and a Call to Action.
+- **Invalid**: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the Wallet Instance MUST inform the User of the invalid status and SHOULD give the reason why. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Instance MUST implement mechanisms to update or delete the Electronic Attestation by providing appropriate Call to Action.
+
+Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:
+- The User sees in the Electronic Attestation Preview View that its status is not valid;
+- The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;
+- The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;
+- The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.
 
 Revocation of Electronic Attestations
 """"""""""""""""""""""""""""""""""""""
