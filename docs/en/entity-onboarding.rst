@@ -97,7 +97,7 @@ Authentic Sources MUST comply with the following technical requirements:
   - **API Integration Standards**:
 
     - **Public Entities**: MUST integrate through PDND platform with e-service implementation following national specifications.
-    - **Private Entities**: MUST provide a complete `OAS3`_ API Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
+    - **Private Entities**: MUST provide a complete `OAS3`_ Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
 
   - **Response Format Standardization**:
 
