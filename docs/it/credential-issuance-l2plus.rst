@@ -679,7 +679,7 @@ Le risposte di errore DEVONO utilizzare codici di stato HTTP appropriati:
 - **400 Bad Request**: Per errori ``invalid_request``.
 - **401 Unauthorized**: Per errori ``invalid_client``.
 - **403 Forbidden**: Per errori ``access_denied``.
-- **422 Unprocessable Entity**: Per errori ``invalid_document`` o ``id_matching_failed errors``.
+- **422 Unprocessable Entity**: Per errori ``invalid_document`` o ``id_matching_failed``.
 - **503 Service Unavailable**: Per errori ``temporarily_unavailable``.
 
 Considerazioni di Sicurezza

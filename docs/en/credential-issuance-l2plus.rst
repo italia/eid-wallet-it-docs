@@ -205,8 +205,8 @@ The Authorization Server MUST:
 - Sign the MRTD Proof JWT using its private key with the cryptographic algorithm chosen. See Section :ref:`algorithms:Cryptographic Algorithms`.
 - Construct a secure redirect URL with proper encoding to the Wallet Instance universal link.
 - Set the redirect timeout to prevent indefinite waiting and handle timeout scenarios
-- Optionally request MRZ information directly from the CIE National Registry using the authenticated User's Tax payer's identification number.
-- Maintain session correlation between the LoA3 result and the document proof challenge
+- Optionally request MRZ information directly from the CIE National Registry using the authenticated User's taxpayer identification number.
+- Maintain session correlation between the LoA High result and the document proof challenge
 
 The Wallet Instance MUST:
 
@@ -678,7 +678,7 @@ Error responses MUST use appropriate HTTP status codes:
 - **400 Bad Request**: For ``invalid_request`` errors.
 - **401 Unauthorized**: For ``invalid_client`` errors.
 - **403 Forbidden**: For ``access_denied`` errors.
-- **422 Unprocessable Entity**: For ``invalid_document`` or ``id_matching_failed errors``.
+- **422 Unprocessable Entity**: For ``invalid_document`` or ``id_matching_failed`` errors.
 - **503 Service Unavailable**: For ``temporarily_unavailable`` errors.
 
 Security Considerations
