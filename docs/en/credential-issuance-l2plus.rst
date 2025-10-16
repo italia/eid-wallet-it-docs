@@ -356,13 +356,13 @@ Below a non-normative example of an MRTD PoP Response:
 
 **The MRTD PoP Service MUST:**
 
-- Generate cryptographically secure challenge data for ``MRTD+IAS`` validation with sufficient entropy (to be used in Anti-Cloning Internal Authentication protocol by the Wallet Instance), storing it with an appropriate expiration time. Moreover, the MRTD PoP Service MUST ensure challenge uniqueness to prevent reuse attacks.
-- Create a new unique ``mrtd_pop_nonce`` for the next step to prevent replay attacks.
-- Validate session continuity by ensuring the ``mrtd_auth_session`` parameter corresponds to an active session.
-- Return HTTP *202 Accepted* status to indicate asynchronous processing initiation.
-- Include proper Content-Type header (``application/json; charset=utf-8``).
-- Handle service errors and return appropriate error responses.
-- Extract and validate MRZ information if provided from external registry services.
+	- Generate cryptographically secure challenge data with sufficient entropy (to be used in Anti-Cloning Internal Authentication protocol by the Wallet Instance), storing it with an appropriate expiration time. Moreover, the MRTD PoP Service MUST ensure challenge uniqueness to prevent reuse attacks.
+	- Create a new unique ``mrtd_pop_nonce`` for the next step to prevent replay attacks.
+	- Validate session continuity by ensuring the ``mrtd_auth_session`` parameter corresponds to an active session.
+	- Return HTTP *202 Accepted* status to indicate asynchronous processing initiation.
+	- Include proper Content-Type header (``application/json; charset=utf-8``).
+	- Handle service errors and return appropriate error responses.
+	- Extract and validate MRZ information if provided from external registry services.
 
 **The Wallet Instance MUST:**
 
