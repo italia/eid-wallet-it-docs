@@ -134,13 +134,13 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. If the Credential is published within the Digital Credential catalog, ``vct`` value MUST correspond with the value indicated in the catalog, see :ref:`registry:Digital Credentials Catalog Structure`. In case of the Credential is not published in the Catalog, ``vct`` MUST be set as a URI String of the form ``https://{Credential Issuer domain}/{version}/{credential_type}`` (e.g. ``https://issuer.example.it/credentials/v1.0/employeeBadge``).
+      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Digital Credential type. If the Digital Credential is published within the Digital Credential Catalog, ``vct`` value MUST correspond with the value indicated in the Catalog, see :ref:`registry:Digital Credentials Catalog Structure`. In case of the Digital Credential is not published in the Catalog, ``vct`` MUST be set as a URI String of the form ``https://{Credential Issuer domain}/{version}/{credential_type}`` (e.g. ``https://issuer.example.it/credentials/v1.0/employeeBadge``).
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - [SD]. CONDITIONAL. REQUIRED if Credential type is set to `PersonIdentificationData`, otherwise is OPTIONAL. Object containing User authentication and User data verification information. If present MUST include the following sub-value:
+      - [SD]. CONDITIONAL. REQUIRED if Digital Credential type is set to `PersonIdentificationData`, otherwise is OPTIONAL. Object containing User authentication and User data verification information. If present MUST include the following sub-value:
 
           * ``trust_framework``: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
           * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
@@ -256,7 +256,7 @@ The Metadata type document MUST be a JSON object and contains the following para
             The use of the SVG template is RECOMMENDED for all applications that support it.
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**
-      - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:
+      - REQUIRED. An Array of objects that contains information for displaying and validating Digital Credential claims. Each object contains the following parameters:
 
           * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
           * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following members:
