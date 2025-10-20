@@ -94,7 +94,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
       - The request is malformed, missing required parameters (e.g., header parameters or integrity assertion), or includes invalid and unknown parameters.
     * - ``401 Unauthorized``
       - ``unauthorized``
-      - The request could not be carried fulfilled due to invalid authentication by the User.
+      - The request could not be fulfilled due to invalid authentication by the User.
     * - ``500 Internal Server Error``
       - ``server_error``
       - The request cannot be fulfilled because the Erasure Endpoint encountered an internal problem. (:rfc:`6749#section-4.1.2.1`).
