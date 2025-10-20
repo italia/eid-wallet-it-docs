@@ -451,14 +451,14 @@ The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follow
       - OPTIONAL. JSON String, it MUST be the Identifier of the Wallet Provider.
       - `OpenID4VCI`_.
 
-Below is a non-normative example of the mdoc Wallet Attestation in CBOR diagnostic notation:
+Below is a non-normative example of the mdoc Wallet App Attestation in CBOR diagnostic notation:
 
 .. literalinclude:: ../../examples/wa_mso_mdoc_example.txt
   :language: text
 
 
 .. note:: 
-  Regardless of the fact that ``sub``, ``aal``, ``wallet_link`` and ``wallet_name`` are disclosable in the domestic namespace, these values MUST NOT be shown to the User, as they are not a User attribute.
+  Regardless of the fact that ``sub``, ``wallet_link`` and ``wallet_name`` are disclosable in the domestic namespace, these values MUST NOT be shown to the User, as they are not a User attribute.
 
 e-Service PDND Wallet Provider Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
