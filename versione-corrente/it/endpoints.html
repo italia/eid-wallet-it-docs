@@ -146,7 +146,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">13. Endpoints</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">13.1. Endpoint del Fornitore di Wallet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Endpoint del Credential Issuer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">13.3. Endpoint della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Endpoint della Relying Party</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Endpoint delle Fonti Autentiche</a></li>
 <li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">13.5. Endpoint di PDND Signal Hub</a></li>
 </ul>
@@ -223,25 +223,40 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-endpoint.html">13.3. Endpoint della Relying Party</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#endpoint-di-federazione-della-relying-party">13.3.1. Endpoint di Federazione della Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#endpoint-nonce-della-relying-party">13.3.2. Endpoint Nonce della Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#endpoint-di-inizializzazione-dell-istanza-di-relying-party">13.3.3. Endpoint di Inizializzazione dell'Istanza di Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#endpoint-di-associazione-chiavi-della-relying-party">13.3.4. Endpoint di Associazione Chiavi della Relying Party</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#richiesta-di-associazione-chiavi-della-relying-party">13.3.4.1. Richiesta di Associazione Chiavi della Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#risposta-di-associazione-chiavi-della-relying-party">13.3.4.2. Risposta di Associazione Chiavi della Relying Party</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-endpoints.html">13.3. Endpoint della Relying Party</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-per-flussi-remoti">13.3.1. Endpoint per Flussi Remoti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-per-flussi-remoti-della-relying-party">13.3.2. Endpoint per Flussi Remoti della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-di-federazione">13.3.3. Endpoint di Federazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-per-flussi-remoti-openid4vp">13.3.4. Endpoint per Flussi Remoti OpenID4VP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#endpoint-request-uri">13.3.4.1. Endpoint Request URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#endpoint-response-uri">13.3.4.2. Endpoint Response URI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#endpoint-status-opzionale">13.3.4.3. Endpoint Status (Opzionale)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#endpoint-del-certificato-di-accesso-della-relying-party">13.3.5. Endpoint del Certificato di Accesso della Relying Party</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#richiesta-del-certificato-di-accesso-della-relying-party">13.3.5.1. Richiesta del Certificato di Accesso della Relying Party</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#risposta-del-certificato-di-accesso-della-relying-party">13.3.5.2. Risposta del Certificato di Accesso della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-di-gestione-dati-utente">13.3.5. Endpoint di Gestione Dati Utente</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#endpoint-di-cancellazione-della-relying-party">13.3.5.1. Endpoint di Cancellazione della Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#richiesta-di-cancellazione">13.3.5.2. Richiesta di Cancellazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#risposta-di-cancellazione">13.3.5.3. Risposta di Cancellazione</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#endpoint-di-cancellazione-della-relying-party">13.3.6. Endpoint di Cancellazione della Relying Party</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#richiesta-di-cancellazione">13.3.6.1. Richiesta di Cancellazione</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#risposta-di-cancellazione">13.3.6.2. Risposta di Cancellazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#considerazioni-di-sicurezza">13.3.6. Considerazioni di Sicurezza</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#note-di-implementazione">13.3.7. Note di Implementazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-del-backend-del-provider-di-relying-party">13.3.8. Endpoint del Backend del Provider di Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#id169">13.3.9. Endpoint del Backend del Provider di Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-di-federazione-della-relying-party">13.3.10. Endpoint di Federazione della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-nonce-della-relying-party">13.3.11. Endpoint Nonce della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-di-inizializzazione-dell-app-di-verifica-della-relying-party">13.3.12. Endpoint di Inizializzazione dell'App di Verifica della Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-di-associazione-chiavi-della-relying-party">13.3.13. Endpoint di Associazione Chiavi della Relying Party</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#richiesta-di-associazione-chiavi-della-relying-party">13.3.13.1. Richiesta di Associazione Chiavi della Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#risposta-di-associazione-chiavi-della-relying-party">13.3.13.2. Risposta di Associazione Chiavi della Relying Party</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#endpoint-del-certificato-di-accesso-della-relying-party">13.3.14. Endpoint del Certificato di Accesso della Relying Party</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#richiesta-del-certificato-di-accesso-della-relying-party">13.3.14.1. Richiesta del Certificato di Accesso della Relying Party</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#risposta-del-certificato-di-accesso-della-relying-party">13.3.14.2. Risposta del Certificato di Accesso della Relying Party</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#id170">13.3.15. Endpoint di Cancellazione della Relying Party</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Endpoint delle Fonti Autentiche</a><ul>

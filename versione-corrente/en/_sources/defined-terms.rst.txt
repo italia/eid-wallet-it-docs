@@ -213,7 +213,7 @@ Below is the description of acronyms and definitions which are useful for furthe
       Product (software/hardware/cloud) enabling Credential presentations in various contexts.
       Not present in ARF 2.5; specific to IT-Wallet.
 
-    **Relying Party Backend**
+    **Relying Party Provider Backend**
       Remote infrastructure with server-side components managed by a Relying Party Solution provider.
       Not present in ARF 2.5; specific to IT-Wallet.
 

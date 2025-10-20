@@ -126,12 +126,12 @@ Readers interested in implementing or operating a **Relying Party** Solution to 
 * **Section** :ref:`relying-party-solution:Relying Party Solution`: Complete verifier implementation requirements and Entity Configuration.
 * **Section** :ref:`digital-credential-management:Digital Credential Management`: Understanding Digital Credential formats and validity verification.
 * **Section** :ref:`credential-presentation:Digital Credential Presentation`: Presentation flow implementation for both remote and proximity scenarios.
-* **Section** :ref:`relying-party-endpoint:Relying Party Endpoints`: Federation and verification related API specifications.
+* **Section** :ref:`relying-party-endpoints:Relying Party Endpoints`: Complete overview of all Relying Party endpoints and their scopes.
 * **Section** :ref:`algorithms:Cryptographic Algorithms`: Cryptographic suite requirements.
 
 **Secondary sections:**
 
-* **Section** :ref:`wallet-solution:Wallet Solution`: Understanding Wallet Instance interactions and presentation protocols
+* **Section** :ref:`wallet-solution:Wallet Solution`: Understanding Wallet Instance interactions and presentation protocols.
 * **Section** :ref:`mobile-application-instance:Mobile Application Instance`: Mobile-specific implementation patterns.
 
 Cross-Cutting Topics
