@@ -98,13 +98,15 @@ National Data Interoperability Platform Specifications
 ------------------------------------------------------
 
 .. list-table::
-    :widths: 25 75
-    :header-rows: 0
+   :widths: 25 75
+   :header-rows: 0
 
-    * - `MODI`_
-      - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni", November 2023, Version 1.2.
-    * - `PDND`_
-      - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati", June 2025, Version 2.0.
+   * - `MODI`_
+     - "Linee Guida sull'interoperabilità tecnica delle Pubbliche Amministrazioni", November 2023, Version 1.2.
+   * - `PDND`_
+     - "Linee Guida sull'infrastruttura tecnologica della Piattaforma Digitale Nazionale Dati per l'interoperabilità dei sistemi informativi e delle basi di dati", June 2025, Version 2.0.
+   * - `OAS3`_
+     - OpenAPI 3.0 API Specification.
 
 National Digital Identity Platform Specifications
 -------------------------------------------------

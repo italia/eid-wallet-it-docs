@@ -95,7 +95,7 @@ Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici per garantire
   - **Standard di Integrazione API**:
 
     - **Entità Pubbliche**: DEVONO integrarsi attraverso la piattaforma PDND con implementazione di e-service seguendo gli standard governativi.
-    - **Entità Private**: DEVONO fornire un documento completo di Specifica API OpenAPI 3.0 che include framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox per i test.
+    - **Entità Private**: DEVONO fornire un documento completo di Specifica `OAS3`_ che include framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox per i test.
 
   - **Standardizzazione del Formato di Response**:
 
@@ -215,7 +215,7 @@ La registrazione della Fonte Autentica segue un processo tecnico come descritto 
   - **Verifica Integrazione API**:
 
     - **Entità Pubbliche**: Verifica della conformità della specifica e-service PDND
-    - **Entità Private**: Completezza della specifica OpenAPI 3.0 inclusi framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox.
+    - **Entità Private**: Completezza della specifica `OAS3`_ inclusi framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox.
 
   - **Formato Standard della Response**: Verifica dell'utilizzo del formato del Registro dei Claims e specifica della mappatura degli stati.
 
@@ -235,7 +235,7 @@ Dopo l'autorizzazione amministrativa AS-CI ottenuta durante la fase di registraz
 
 L'integrazione tecnica comprende:
 
-- **Configurazione degli Endpoint API**: Istituzione di connessioni API sicure come specificato nelle Specifiche Tecniche AS (e-service PDND per AS pubbliche, implementazioni OpenAPI 3.0 per AS private).
+- **Configurazione degli Endpoint API**: Istituzione di connessioni API sicure come specificato nelle Specifiche Tecniche AS (e-service PDND per AS pubbliche, implementazioni `OAS3`_ per AS private).
 - **Validazione Mappatura Claims**: Verifica che l'implementazione CI mappi correttamente le response dei dati AS agli identificativi standardizzati del Registro dei Claims.
 - **Test Flusso Dati**: Validazione delle specifiche di fornitura dati immediate/deferred e meccanismi di gestione degli errori.
 - **Implementazione Sicurezza**: Configurazione di autenticazione, autorizzazione e logging di audit come richiesto dagli standard di sicurezza AS.

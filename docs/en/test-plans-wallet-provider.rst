@@ -953,7 +953,7 @@ Test Cases for User Attribute Deletion on Relying Party Side
 This section lists the test cases from Sections: 
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Erasure Endpoint <relying-party-endpoint.html#relying-party-erasure-endpoint>`_
+- `Relying Party Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-erasure-endpoint>`_
 
 
 .. list-table::

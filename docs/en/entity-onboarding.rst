@@ -97,7 +97,7 @@ Authentic Sources MUST comply with the following technical requirements:
   - **API Integration Standards**:
 
     - **Public Entities**: MUST integrate through PDND platform with e-service implementation following national specifications.
-    - **Private Entities**: MUST provide a complete OpenAPI 3.0 API Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
+    - **Private Entities**: MUST provide a complete `OAS3`_ Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
 
   - **Response Format Standardization**:
 
@@ -182,7 +182,7 @@ The Authentic Source registration follows a technical process as described below
   - **API Integration Verification**:
 
     - **Public Entities**: PDND e-service specification compliance verification
-    - **Private Entities**: OpenAPI 3.0 specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.
+    - **Private Entities**: `OAS3`_ specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.
 
   - **Response Format Standards**: Verification of Claims Registry format usage and state mapping specification.
 
@@ -203,7 +203,7 @@ Following administrative Authentic Source to Credential Issuer authorization obt
 
 Technical integration encompasses:
 
-- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, OpenAPI 3.0 implementations for private Authentic Sources).
+- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, `OAS3`_ implementations for private Authentic Sources).
 - **Claims Mapping Validation**: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.
 - **Data Flow Testing**: Validation of immediate or deferred data provision capabilities and error handling mechanisms.
 - **Security Implementation**: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.

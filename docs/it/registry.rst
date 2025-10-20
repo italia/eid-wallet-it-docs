@@ -296,7 +296,7 @@ Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica regi
      - RICHIESTO. Punto di accesso al servizio (endpoint PDND per AS Pubbliche, endpoint API per AS Private).
    * - **data_capabilities[].api_specification**
      - string
-     - RICHIESTO. URL al documento di specifica OpenAPI 3.0 per questa capacità di fornitura dati.
+     - RICHIESTO. URL al documento di specifica `OAS3`_ per questa capacità di fornitura dati.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPZIONALE. Capacità di fornitura dati e specifiche di tempistica.
