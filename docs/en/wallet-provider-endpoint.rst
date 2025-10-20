@@ -191,19 +191,19 @@ The following errors MUST be supported for error responses related to **Wallet I
      - The request cannot be authenticated or authorized.
 
 Wallet App Attestation Issuance Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a RESTful API endpoint provided by the Wallet Provider that enables the Wallet Instance to obtain a Wallet App Attestation, by sending a Wallet App Attestation Issuance Request.
 
 Wallet App Attestation Issuance Request
-"""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 
 Further details on the Wallet App Attestation Issuance Request are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Request` section (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
 The ``typ`` header of the Integrity Request JWT assumes the value ``wp-war+jwt``.
 
 Wallet App Attestation Issuance Response
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""
 
 If the Wallet App Attestation Issuance Request is successfully validated, the Wallet Provider returns an HTTP response with a status code of ``200 OK`` and Content-Type ``application/json``. The returned JSON Object MUST possess the ``wallet_app_attestations`` parameter whose value is an array of JSON Objects (see :ref:`wallet-attestation-issuance:Wallet App Attestation Issuance`) containing the Wallet App Attestations in JWT, SD-JWT and mdoc format signed by the Wallet Provider (:ref:`WP_027–029 <wallet-instance-testcases>` and :ref:`WP_143–144 <wallet-instance-optional-testcases>`). The JWT formatted Wallet App Attestation is to be used for the Issuance phase, as an OAuth Client Attestation, and will be sent to the Credential Issuer as discussed in :ref:`credential-issuance:Digital Credential Issuance`. The SD-JWT and mdoc formatted Wallet App Attestation will instead be used during presentation respectively in the remote (:ref:`remote-flow:Remote Flow`) and proximity (:ref:`proximity-flow:Proximity Flow`) flows.
 
@@ -248,7 +248,7 @@ If any errors occur during the process, an error response is returned. Further d
 
 
 Wallet App Attestation JWT
-"""""""""""""""""""""""
+""""""""""""""""""""""""""
 
 The JOSE header of the Wallet App Attestation JWT contains the following parameters:
 
@@ -320,7 +320,7 @@ Below is a non-normative example of the Wallet App Attestation JWT header and pa
 
 
 Wallet App Attestation SD-JWT
-"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 
 The JOSE header of the Wallet App Attestation SD-JWT MUST contain the following parameters:
 
@@ -427,7 +427,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
   :language: JSON
 
 Wallet App Attestation mdoc
-"""""""""""""""""""""""
+"""""""""""""""""""""""""""
 
 This description extends the MDOC-CBOR Credential Format guidelines, given in :ref:`credential-data-model:mdoc-CBOR Credential Format`, to support Wallet App Attestation data representation. The Wallet App Attestation MUST use ``docType`` of the form ``{Trust Anchor reverse domain}.{WalletAppAttestation}`` as described in :ref:`registry:Digital Credentials Catalog`.
 
