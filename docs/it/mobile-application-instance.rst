@@ -39,7 +39,7 @@ Il flusso è mostrato in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 .. note::
   **Controllo della Federazione**: L'Istanza dell'Applicazione Mobile deve verificare se il Fornitore dell'Applicazione fa parte della Federazione, ottenendo i suoi Metadati specifici del protocollo (:ref:`WP_023 <wallet-instance-testcases>`). Esempi non normativi di una risposta dall'endpoint :ref:`wallet-provider-endpoint:Endpoint di Federazione` con la **Entity Configuration** e i **Metadati** del Fornitore dell'Applicazione sono presentati nelle sezioni :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet` e :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
-**Passi 3-5 (Recupero del Nonce)**: L'Istanza dell'Applicazione Mobile richiede un ``nonce`` monouso dall'**Endpoint Nonce** del Backend del Fornitore dell'Applicazione (vedi :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` o :ref:`relying-party-endpoint:Endpoint Nonce della Relying Party`). Questo ``nonce`` DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay (:ref:`WP_131 <wallet-instance-optional-testcases>`).
+**Passi 3-5 (Recupero del Nonce)**: L'Istanza dell'Applicazione Mobile richiede un ``nonce`` monouso dall'**Endpoint Nonce** del Backend del Fornitore dell'Applicazione (vedi :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` o :ref:`relying-party-provider-backend-endpoint:Endpoint Nonce della Relying Party`). Questo ``nonce`` DEVE essere imprevedibile per servire come principale difesa contro gli attacchi di replay (:ref:`WP_131 <wallet-instance-optional-testcases>`).
 
 In caso di richiesta riuscita, il Fornitore dell'Applicazione genera e restituisce il valore ``nonce`` all'Istanza dell'Applicazione Mobile, come parte della :ref:`mobile-application-instance:Risposta di Nonce dell'Applicazione Mobile`. Il Fornitore dell'Applicazione DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.
 
@@ -389,7 +389,7 @@ Di seguito è riportato un esempio non normativo di un'intestazione e un payload
 Risposta di Associazione Chiave dell'Applicazione Mobile
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni :ref:`relying-party-endpoint:Risposta di Associazione Chiavi della Relying Party` e :ref:`wallet-provider-endpoint:Risposta all'Emissione della Wallet Attestation`.
+La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni :ref:`relying-party-provider-backend-endpoint:Risposta di Associazione Chiavi della Relying Party` e :ref:`wallet-provider-endpoint:Risposta all'Emissione della Wallet Attestation`.
 
 
 Risposta di Errore di Associazione Chiave dell'Applicazione Mobile
