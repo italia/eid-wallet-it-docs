@@ -331,6 +331,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Wallet Unit Attestation**
     **Wallet App Attestation**
+    **Wallet Attestation**
       Data object issued by a Wallet Provider describing the components of the Wallet Unit.
       Aligned with ARF 2.5.
 
