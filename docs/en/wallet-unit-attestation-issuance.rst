@@ -33,10 +33,11 @@ The ``nonce`` MUST be produced in a manner that ensures its single-use within a 
 
 Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance.
 
-**Step 7**: The Wallet Instance performs the following actions:
+**Steps 7-8**: The Wallet Instance performs the following actions:
 
 * Creates ``client_data``, a JSON object that includes the ``nonce`` and the thumbprint of ``key_pub`` JWK.
 * Computes ``client_data_hash`` by applying the ``SHA256`` algorithm to the ``client_data``.
+* Produces an ``hardware_signature`` value by signing the ``client_data_hash`` with the Wallet Hardware's private key, serving as a proof of possession for the Cryptographic Hardware Keys.
 
 Below is a non-normative example of the ``client_data`` JSON object.
 
@@ -50,7 +51,7 @@ Below is a non-normative example of the ``client_data`` JSON object.
 .. note::
    In the case of Android OS, the flow continues based on **Steps 9-12**, otherwise for the case of iOS, the flow continues based on **Steps 13-16**.
 
-**Step 8**: The Wallet Instance produces an ``hardware_signature`` value by signing the ``client_data_hash`` with the Wallet Hardware's private key, serving as a proof of possession for the Cryptographic Hardware Keys.
+
 
 **Steps 9-12**: The Wallet Instance:
 
