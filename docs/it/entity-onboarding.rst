@@ -289,7 +289,7 @@ Le Entità di Federazione DEVONO rispettare i seguenti requisiti tecnici prima d
 Requisiti di Sicurezza per la Gestione delle Chiavi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Tutte le entità di federazione DEVONO mantenere almeno due chiavi di firma certificate dal Trust Anchor:
+Tutte le entità di federazione DOVREBBERO mantenere almeno due chiavi di firma certificate dal Trust Anchor:
 
 - **Chiave Attiva**: Utilizzata per le operazioni di firma correnti
 - **Chiave di Backup**: Disponibile per l'attivazione immediata durante incidenti o rotazione pianificata delle chiavi

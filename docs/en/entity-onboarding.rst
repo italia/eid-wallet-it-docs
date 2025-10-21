@@ -259,7 +259,7 @@ Federation Entities MUST comply with the following technical requirements before
 Key Management Security Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All federation entities MUST maintain at least two signing keys attested by the Trust Anchor:
+All federation entities SHOULD maintain at least two signing keys attested by the Trust Anchor:
 
 - **Active Key**: Used for current signing operations
 - **Backup Key**: Available for immediate activation during incidents or planned key rotation
