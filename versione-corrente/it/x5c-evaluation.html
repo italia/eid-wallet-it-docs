@@ -379,11 +379,12 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 </li>
 <li><p><strong>Rotazione delle Chiavi</strong></p>
 <ol class="arabic simple">
-<li><p><strong>Generazione di Nuove Chiavi</strong>: L'Entità DEVE generare una nuova coppia di Chiave Pubblica dell'Entità Federata.</p></li>
-<li><p><strong>Pubblicazione Parallela delle Chiavi</strong>: L'Entità DEVE pubblicare sia le chiavi vecchie che quelle nuove nella claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della Configurazione dell'Entità durante il periodo di transizione.</p></li>
-<li><p><strong>Richiesta di Certificato X.509</strong>: L'Entità DEVE richiedere un nuovo certificato X.509 per la nuova chiave pubblica seguendo la procedura standard.</p></li>
-<li><p><strong>Migrazione Graduale</strong>: L'Entità DEVE aggiornare la Configurazione dell'Entità per utilizzare la nuova chiave per la firma mantenendo la vecchia chiave per la verifica.</p></li>
-<li><p><strong>Deprecazione della Chiave Vecchia</strong>: L'Entità DEVE rimuovere la vecchia chiave dalla Configurazione dell'Entità dopo il periodo di validazione.</p></li>
+<li><p><strong>Attivazione della Chiave</strong>: In caso di incidente o rotazione pianificata, l'Entità DEVE attivare una Chiave dell'Entità di Federazione alternativa per le operazioni di firma.</p></li>
+<li><p><strong>Generazione di Nuova Chiave</strong>: L'Entità DEVE generare una nuova coppia di Chiave Pubblica dell'Entità di Federazione per servire come chiave aggiuntiva.</p></li>
+<li><p><strong>Pubblicazione Parallela delle Chiavi</strong>: L'Entità DEVE pubblicare tutte le chiavi disponibili nella claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> della Configurazione dell'Entità durante il periodo di transizione.</p></li>
+<li><p><strong>Richiesta di Certificato X.509</strong>: L'Entità DEVE richiedere un nuovo certificato X.509 per la nuova chiave seguendo la procedura standard.</p></li>
+<li><p><strong>Migrazione Graduale</strong>: L'Entità DEVE aggiornare la Configurazione dell'Entità per utilizzare la chiave attivata per la firma mantenendo tutte le chiavi per la verifica.</p></li>
+<li><p><strong>Deprecazione della Chiave Vecchia</strong>: L'Entità DEVE rimuovere la vecchia chiave dalla Configurazione dell'Entità dopo il periodo di validazione, mantenendo la chiave alternativa e la nuova chiave.</p></li>
 </ol>
 </li>
 <li><p><strong>Aggiornamenti dei Metadati</strong></p>
