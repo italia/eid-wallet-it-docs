@@ -83,7 +83,7 @@ The Wallet Instance MUST send the signed Wallet Unit Attestation Request JWT as 
 
 Upon successful completion of all checks, the Wallet Provider issues a Wallet Unit Attestation valid for at least one month.
 
-**Step 18 (Wallet Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Unit Attestations signed by the Wallet Provider. The Wallet Instance will then perform security and integrity verification of the Wallet Unit Attestations received in addition to trust verification of its Issuer.
+**Step 18 (Wallet Unit Attestation Issuance Response)**: Upon successful completion, the Wallet Provider MUST return a confirmation response using status code 200 and Content-Type ``application/json``, containing the Wallet Unit Attestation signed by the Wallet Provider. The Wallet Instance will then perform security and integrity verification of the Wallet Unit Attestation received in addition to trust verification of its Issuer.
 
 
 Below is a non-normative example of the response.
