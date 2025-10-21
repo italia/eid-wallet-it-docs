@@ -955,7 +955,7 @@ Casi di Test per Eliminazione Attributi dell'Utente Lato Relying Party
 Questa sezione elenca i casi di test dalle Sezioni:
 
 - :ref:`user-attribute-deletion:User's Attributes Deletion`
-- `Relying Party Erasure Endpoint <relying-party-endpoint.html#relying-party-erasure-endpoint>`_
+- `Relying Party Erasure Endpoint <relying-party-provider-backend-endpoint.html#relying-party-erasure-endpoint>`_
 
 
 .. list-table::

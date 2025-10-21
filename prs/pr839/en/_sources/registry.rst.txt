@@ -297,7 +297,7 @@ The AS Registry MUST contain the following parameters for each registered Authen
      - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to OpenAPI 3.0 specification document for this data capability.
+     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.

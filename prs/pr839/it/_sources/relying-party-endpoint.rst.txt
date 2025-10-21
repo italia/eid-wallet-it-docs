@@ -2,30 +2,24 @@
 
 .. "included" file, so we start with '-' title level
 
-Endpoint della Relying Party
-----------------------------
+Endpoint del Backend del Provider di Relying Party
+---------------------------------------------------
 
-La Relying Party DEVE esporre un Endpoint per verificare il trust conforme alla specifica OpenID Federation 1.0 Wallet Architecture, facilitando la distribuzione dell'identità e dei metadata della Relying Party. Inoltre, nel caso in cui il Relying Party supporti la presentazione di prossimità, DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica (ad esempio, fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso); i dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
+La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
 
 .. note::
   I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`) e prossimità (:ref:`test-plans-proximity-presentation:Matrice di Test per la Presentazione di Credenziali in Prossimità`).
 
 
-Endpoint di Federazione della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-La Relying Party DEVE fornire la propria Entity Configuration attraverso l'Endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
-
-
 Endpoint Nonce della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il Nonce Endpoint della Relying Party consente all'App di Verifica di richiedere un ``nonce`` crittografico dal Backend della Relying Party. Il ``nonce``, un codice monouso e casuale, serve per garantire l'unicità e prevenire replay attacks.
+Il Nonce Endpoint della Relying Party consente all'App di Verifica di richiedere un ``nonce`` crittografico dal Backend del Provider di Relying Party. Il ``nonce``, un codice monouso e casuale, serve per garantire l'unicità e prevenire replay attacks.
 
 Ulteriori dettagli sulla Richiesta e Risposta Nonce sono forniti rispettivamente nelle Sezioni :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile` e :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile`.
 
-Endpoint di Inizializzazione dell'Istanza di Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Endpoint di Inizializzazione dell'App di Verifica
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (:ref:`test-plans-proximity-presentation`).
 
@@ -34,7 +28,7 @@ Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Ve
 Endpoint di Associazione Chiavi della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il Key Binding Endpoint della Relying Party consente alle App di Verifica di associare la coppia di chiavi appena creata, che sarà associata a un Certificato di Accesso, all'App di Verifica, basandosi su una dimostrazione di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Backend della Relying Party deve anche verificare l'integrità dell'App di Verifica.
+Il Key Binding Endpoint della Relying Party consente alle App di Verifica di associare la coppia di chiavi appena creata, che sarà associata a un Certificato di Accesso, all'App di Verifica, basandosi su una dimostrazione di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Backend del Provider di Relying Party deve anche verificare l'integrità dell'App di Verifica.
 
 Richiesta di Associazione Chiavi della Relying Party
 """"""""""""""""""""""""""""""""""""""""""""""""""""
@@ -48,7 +42,7 @@ L'header ``typ`` del JWT di Richiesta di Integrità assume il valore ``rp-kb+jwt
 Risposta di Associazione Chiavi della Relying Party
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-In caso di richiesta riuscita, il Backend della Relying Party fornisce una HTTP Response con Status Code ``204 No Content``.
+In caso di richiesta riuscita, il Backend del Provider di Relying Party fornisce una HTTP Response con Status Code ``204 No Content``.
 
 Di seguito è riportato un esempio non normativo di una Risposta alla Richiesta di Associazione Chiavi.
 
@@ -80,7 +74,7 @@ La richiesta include il seguente parametro nel body:
       - **Descrizione**
       - **Riferimento**
     * - **csr**
-      - Il CSR generato dall'Istanza di Relying Party, codificato nel formato ``base64url`` come definito in :rfc:`2511`.
+      - Il CSR generato dall'App di Verifica, codificato nel formato ``base64url`` come definito in :rfc:`2511`.
       -
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Certificato di Accesso.
