@@ -297,7 +297,7 @@ The AS Registry MUST contain the following parameters for each registered Authen
      - REQUIRED. Service access point (PDND endpoint for Public AS, API endpoint for Private AS).
    * - **data_capabilities[].api_specification**
      - string
-     - REQUIRED. URL to OpenAPI 3.0 specification document for this data capability.
+     - REQUIRED. URL to `OAS3`_ specification document for this data capability.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPTIONAL. Data provision capabilities and timing specifications.
@@ -386,7 +386,7 @@ The Digital Credential Catalog aims to:
   2. Standardize the technical and functional description of Digital Credentials.
   3. Enable interoperability between different Issuers and Relying Parties.
   4. Simplify the integration process for Wallet Providers and Relying Parties.
-  5. Ensure trust in the ecosystem through certified information.
+  5. Ensure trust in the ecosystem through verifiable and trustworthy information.
   6. Provide transparency on the ecosystem of available Digital Credentials.
 
 

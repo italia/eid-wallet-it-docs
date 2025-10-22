@@ -145,7 +145,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">13. Endpoints</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-provider-endpoint.html">13.1. Wallet Provider Endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="credential-issuer-endpoint.html">13.2. Credential Issuer Endpoints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html">13.3. Relying Party Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html">13.3. Relying Party Endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Authentic Source Endpoints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="signal-hub-endpoint.html">13.5. PDND Signal Hub Endpoints</a></li>
 </ul>
@@ -222,25 +222,40 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="relying-party-endpoint.html">13.3. Relying Party Endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-federation-endpoint">13.3.1. Relying Party Federation Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-nonce-endpoint">13.3.2. Relying Party Nonce Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-instance-initialization-endpoint">13.3.3. Relying Party Instance Initialization Endpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-key-binding-endpoint">13.3.4. Relying Party Key Binding Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-key-binding-request">13.3.4.1. Relying Party Key Binding Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-key-binding-response">13.3.4.2. Relying Party Key Binding Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relying-party-endpoints.html">13.3. Relying Party Endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#remote-flow-endpoints">13.3.1. Remote Flow Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-remote-flow-endpoints">13.3.2. Relying Party Remote Flow Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#id85">13.3.3. Federation Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#openid4vp-remote-flow-endpoints">13.3.4. OpenID4VP Remote Flow Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#request-uri-endpoint">13.3.4.1. Request URI Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#response-uri-endpoint">13.3.4.2. Response URI Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#status-endpoint-optional">13.3.4.3. Status Endpoint (Optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-endpoint">13.3.5. Relying Party Access Certificate Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-request">13.3.5.1. Relying Party Access Certificate Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#relying-party-access-certificate-response">13.3.5.2. Relying Party Access Certificate Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#user-data-management-endpoints">13.3.5. User Data Management Endpoints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-erasure-endpoint">13.3.5.1. Relying Party Erasure Endpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#erasure-request">13.3.5.2. Erasure Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#erasure-response">13.3.5.3. Erasure Response</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoint.html#relying-party-erasure-endpoint">13.3.6. Relying Party Erasure Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#erasure-request">13.3.6.1. Erasure Request</a></li>
-<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoint.html#erasure-response">13.3.6.2. Erasure Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#security-considerations">13.3.6. Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#implementation-notes">13.3.7. Implementation Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-endpoints">13.3.8. Relying Party Provider Backend Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#id170">13.3.9. Relying Party Provider Backend Endpoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-federation-endpoint">13.3.10. Relying Party Provider Backend Federation Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-nonce-endpoint">13.3.11. Relying Party Provider Backend Nonce Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-verifier-app-initialization-endpoint">13.3.12. Relying Party Verifier App Initialization Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-key-binding-endpoint">13.3.13. Relying Party Provider Backend Key Binding Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-key-binding-request">13.3.13.1. Relying Party Provider Backend Key Binding Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-key-binding-response">13.3.13.2. Relying Party Provider Backend Key Binding Response</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-access-certificate-endpoint">13.3.14. Relying Party Provider Backend Access Certificate Endpoint</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-access-certificate-request">13.3.14.1. Relying Party Provider Backend Access Certificate Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relying-party-endpoints.html#relying-party-provider-backend-access-certificate-response">13.3.14.2. Relying Party Provider Backend Access Certificate Response</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-endpoints.html#id171">13.3.15. Relying Party Erasure Endpoint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="authentic-source-endpoint.html">13.4. Authentic Source Endpoints</a><ul>
@@ -292,7 +307,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 16/10/2025.
+      Last updated on 22/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
