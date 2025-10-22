@@ -802,6 +802,9 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
   * - **jwk**
     - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the Digital Credential shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`].
     - [`OpenID4VCI`_], [:rfc:`7515`], [:rfc:`7517`].
+  * - **key_attestation**
+    - Representing the Wallet Unit Attestation.
+    - [`OpenID4VCI`_].
 
 .. list-table::
   :class: longtable
