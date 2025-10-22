@@ -80,7 +80,7 @@
                "configuration_id": "dc_sd_jwt_mDL",
                "format": "dc+sd-jwt",
                "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
-               "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+               "schema_uri#integrity": "sha256-981bb56f693a4f40b917a896620a59cc984bed81bd57051d8ab5c6c194f67ee8"
             },
             {
                "configuration_id": "mso_mdoc_mDL",
