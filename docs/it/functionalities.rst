@@ -186,6 +186,25 @@ Il Fornitore di Attestati Elettronici di Attributi:
 - DEVE definire un nome/convenzione di denominazione per riferirsi agli EAA emessi, per garantire coerenza tra tutte le Soluzioni Wallet; il nome dell'EAA DEVE essere comprensibile e user-friendly evitando termini tecnici o acronimi quando possibile;
 - DEVE definire un insieme chiaro di specifiche per l'EAA per garantire un'identificazione e rappresentazione coerente dell'EAA tra diverse Soluzioni Wallet, in termini di formato, struttura e standard di aspetto (ad es. colore, immagine di sfondo, ecc.).
 
+Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'interno della Vista in Anteprima e Vista di Dettaglio
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/A4-Focus-EAA.svg
+    :alt: Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio
+    :width: 100%
+
+    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio 
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Focus-EAA.pdf
+    :alt: Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio  
+    :width: 100%
+
+    Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio
+
+
 Presentazione degli Attestati Elettronici 
 ------------------------------------------
 
