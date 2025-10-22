@@ -177,11 +177,12 @@ Gli aggiornamenti tecnici che influenzano le operazioni del protocollo della fed
 
   - **Rotazione delle Chiavi**
 
-    1. **Generazione di Nuove Chiavi**: L'Entità DEVE generare una nuova coppia di Chiave Pubblica dell'Entità Federata.
-    2. **Pubblicazione Parallela delle Chiavi**: L'Entità DEVE pubblicare sia le chiavi vecchie che quelle nuove nella claim ``jwks`` della Configurazione dell'Entità durante il periodo di transizione.
-    3. **Richiesta di Certificato X.509**: L'Entità DEVE richiedere un nuovo certificato X.509 per la nuova chiave pubblica seguendo la procedura standard.
-    4. **Migrazione Graduale**: L'Entità DEVE aggiornare la Configurazione dell'Entità per utilizzare la nuova chiave per la firma mantenendo la vecchia chiave per la verifica.
-    5. **Deprecazione della Chiave Vecchia**: L'Entità DEVE rimuovere la vecchia chiave dalla Configurazione dell'Entità dopo il periodo di validazione.
+    1. **Attivazione della Chiave**: In caso di incidente o rotazione pianificata, l'Entità DEVE attivare una Chiave dell'Entità di Federazione alternativa per le operazioni di firma.
+    2. **Generazione di Nuova Chiave**: L'Entità DEVE generare una nuova coppia di Chiave Pubblica dell'Entità di Federazione per servire come chiave aggiuntiva.
+    3. **Pubblicazione Parallela delle Chiavi**: L'Entità DEVE pubblicare tutte le chiavi disponibili nella claim ``jwks`` della Configurazione dell'Entità durante il periodo di transizione.
+    4. **Richiesta di Certificato X.509**: L'Entità DEVE richiedere un nuovo certificato X.509 per la nuova chiave seguendo la procedura standard.
+    5. **Migrazione Graduale**: L'Entità DEVE aggiornare la Configurazione dell'Entità per utilizzare la chiave attivata per la firma mantenendo tutte le chiavi per la verifica.
+    6. **Deprecazione della Chiave Vecchia**: L'Entità DEVE rimuovere la vecchia chiave dalla Configurazione dell'Entità dopo il periodo di validazione, mantenendo la chiave alternativa e la nuova chiave.
 
   - **Aggiornamenti dei Metadati**
 

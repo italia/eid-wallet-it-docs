@@ -26,7 +26,7 @@ title IT-Wallet System Architecture - External Actors
 
 ' External Actors
 Boundary(external, "External actors to IT-Wallet system", ""){
-    Person(cie,"National Identity Provider", "National digital identity provider based on CIE (Electronic Identity Card).Provides strong authentication services and certified identity attributes for obtaining a PID and activating IT-Wallet Instance." ,$tags="external", $sprite="id_card")
+    Person(cie,"National Identity Provider", "National digital identity provider based on CIE (Electronic Identity Card).Provides strong authentication services and verifiable identity attributes for obtaining a PID and activating IT-Wallet Instance." ,$tags="external", $sprite="id_card")
     
     Component(pdnd,"","National Digital Data Platform (PDND)","National infrastructure for public data interoperability. Provides standardized APIs for accessing PA services, manages authentication and authorization between entities, implements security patterns and shared data governance.", $tags="external",$sprite="exchange_alt")
 

@@ -19,9 +19,11 @@ Gli Attori Primari DEVONO utilizzare esclusivamente queste Risorse Ufficiali e D
 Naming 
 ------
 
-"Sistema IT-Wallet" (IT-Wallet System in inglese) o "IT-Wallet" in forma contratta è il nome ufficiale che DEVE essere utilizzato in contesti scritti o verbali, fisici o digitali. Di seguito i relativi requisiti per la corretta scrittura e pronuncia: 
+Il termine "Sistema IT-Wallet", così come definito dalla norma istitutiva, rappresenta la denominazione ufficiale che DOVREBBE essere utilizzata in contesti a carattere istituzionale, formale o giuridico per riferirsi al sistema.  
 
-- si DEVE rispettare l'uso delle maiuscole nel termine “IT” e nelle iniziali di “Wallet” e “Sistema”; 
+La declinazione contratta "IT-Wallet" rappresenta, invece, il Brand naming ufficiale che DEVE essere utilizzato in ogni contesto comunicativo e divulgativo, scritto o verbale, fisico o digitale, per riferirsi al "Sistema IT-Wallet".  Di seguito i relativi requisiti per la corretta scrittura e pronuncia: 
+
+- si DEVE rispettare l'uso delle maiuscole nel termine "IT" e nelle iniziali di "Wallet" e "Sistema"; 
 
 - si DEVE rispettare l'uso del trattino tra i termini “IT” e “Wallet”, senza l'uso di spaziature; 
 
@@ -31,7 +33,7 @@ Naming
 Identità Visiva
 ---------------
 
-Il Sistema IT-Wallet ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla in modo che si distingua e allo stesso tempo dialoghi e coesista con l'Identità Visiva propria e delle proprie Soluzioni Tecniche. In particolare, tutti gli Attori Primari DEVONO utilizzare le Risorse Ufficiali relative all'Identità Visiva del Sistema IT-Wallet. Il loro utilizzo ha lo scopo di rappresentare la partecipazione al Sistema IT-Wallet senza sostituire l'Identità Visiva della propria Soluzione Tecnica. 
+Il Brand "IT-Wallet" ha una propria Identità Visiva. I partecipanti dell'ecosistema DEVONO applicarla in modo che si distingua e allo stesso tempo dialoghi e coesista con l'Identità Visiva propria e delle proprie Soluzioni Tecniche. In particolare, tutti gli Attori Primari DEVONO utilizzare le Risorse Ufficiali relative all'Identità Visiva del Sistema IT-Wallet. Il loro utilizzo ha lo scopo di rappresentare la partecipazione al Sistema IT-Wallet senza sostituire l'Identità Visiva della propria Soluzione Tecnica. 
 
 Logo 
 ^^^^
@@ -69,7 +71,7 @@ Di seguito i requisiti generali per il suo utilizzo, validi sia in riferimento a
 
 - il Trust Mark DEVE essere esposto esclusivamente dalle Soluzioni Tecniche che hanno concluso con successo il processo di certificazione; 
 
-- il Trust Mark DEVE essere quello presente all'interno delle Risorse Ufficiali e DEVE rispettare le tutte le relative specifiche di utilizzo fornite, per garantirne un'adeguata visibilità in tutte le fasi dell'Esperienza Utente; 
+- il Trust Mark DEVE essere quello presente all'interno delle Risorse Ufficiali e DEVE rispettare tutte le relative specifiche di utilizzo fornite, per garantirne un'adeguata visibilità in tutte le fasi dell'Esperienza Utente; 
 
 - il Trust Mark NON DEVE essere alterato, distorto, modificato o sostituito da loghi non ufficiali. 
 
