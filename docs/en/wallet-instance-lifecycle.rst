@@ -126,5 +126,5 @@ delete the Wallet Cryptographic Hardware Key pairs (:ref:`WP_149 <wallet-instanc
 A Wallet Provider instead is responsible for:
 
 * **Wallet Instance Activation** (**WI ACT**): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.
-* **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
+* **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Unit Attestation is revoked, and accordingly the status is reflected on the Wallet Unit Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
 * **Data Purging**: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.
