@@ -9,7 +9,7 @@ This section describes how the Wallet Provider issues a Wallet Unit Attestation.
 .. plantuml:: plantuml/wallet-unit-attestation-issuance.puml
     :width: 99%
     :alt: The figure illustrates the Sequence Diagram for Wallet Unit Attestation acquisition.
-    :caption: `Sequence Diagram for Wallet Unit App Attestation acquisition. <https://www.plantuml.com/plantuml/svg/jPH1Rziy38Rl-XM4UlXImDzbm7OeiA51rxN5XYreskqI8A1jrXRYI9v4fyk_d-IwjHmetM5O3e4jltf9FgHqxXWjTzj6OCT6TzkShAXLIV1W3EVcbn3_BRn25Qf5pKvWmSQ2l7Ta9Q23pZ-8TbI0_85DGmmtsblhWdeLjYrCLPzf3tDcyY9MHiDySUDwwGRPmObhhT9LPOdqTDz7sgc2l3jJPHNlOKash8m6c3OuI6zXpSwNQI77OaEwxBVcnKQ8KD7_7tp6Pt1BFpjo30YQ7i6qP9-IvHfvfQt_gYmvG1XCxxNYkAf0I-sGAG0GmlyDnXSr5HjG3t1XzosRoc9RgmAkqPQFQ0a2dPM-mmfcKjR3wdf3-pLZ9ULf1Yb-6Q0kuP1G_mc2A-vGDPWt5AToHJgKrPVX0q2BoeQe8LZRvL9cCBnOjVEXXR3QC87PaGrbPHuQd7ovkRg-kxgzlFmgdcexnAmSX3Q0UV3q23vHES3iSpOvezAWsC6M64ja5AJBFjAGh0ypDaHARS9ioP5mtpl_rol7iY9f_tMeUbmjQMAHGkFLHQD8ypeajgxHrRAVb-Nr_CtRTxCNimmYRgSfgzSQlZ2BbOxQxLIbaJlhZU4zXBVPB9L91iaPcIx73SI6m-pDFM2ZIZ4o36Tlo3eydYKB5o9y6nGnen03nv6KSgLpq-aIs40FQDWv84biWBWRGPj2UEomlGp7e-8wvPv16cu6OmDNEi5osjU-4rH6OGQoGb3ZA91LtvRFcH_7Y3r5FAIedi_j6fqZUuGanY3JU_u2NTBld-CZNOhui2_zmfyodfx_-0BuZeqgfnV0uU0dn8cnYRkQtfB6JpeP8GqnhHoXBSmYabnOUgMROdBJ7GVeMgCTYOCRC7xr1YBypdqjtRRv3G00>`_
+    :caption: `Sequence Diagram for Wallet Unit Attestation acquisition. <https://www.plantuml.com/plantuml/svg/jPH1Rziy38Rl-XM4UlXImDzbm7OeiA51rxN5XYreskqI8A1jrXRYI9v4fyk_d-IwjHmetM5O3e4jltf9FgHqxXWjTzj6OCT6TzkShAXLIV1W3EVcbn3_BRn25Qf5pKvWmSQ2l7Ta9Q23pZ-8TbI0_85DGmmtsblhWdeLjYrCLPzf3tDcyY9MHiDySUDwwGRPmObhhT9LPOdqTDz7sgc2l3jJPHNlOKash8m6c3OuI6zXpSwNQI77OaEwxBVcnKQ8KD7_7tp6Pt1BFpjo30YQ7i6qP9-IvHfvfQt_gYmvG1XCxxNYkAf0I-sGAG0GmlyDnXSr5HjG3t1XzosRoc9RgmAkqPQFQ0a2dPM-mmfcKjR3wdf3-pLZ9ULf1Yb-6Q0kuP1G_mc2A-vGDPWt5AToHJgKrPVX0q2BoeQe8LZRvL9cCBnOjVEXXR3QC87PaGrbPHuQd7ovkRg-kxgzlFmgdcexnAmSX3Q0UV3q23vHES3iSpOvezAWsC6M64ja5AJBFjAGh0ypDaHARS9ioP5mtpl_rol7iY9f_tMeUbmjQMAHGkFLHQD8ypeajgxHrRAVb-Nr_CtRTxCNimmYRgSfgzSQlZ2BbOxQxLIbaJlhZU4zXBVPB9L91iaPcIx73SI6m-pDFM2ZIZ4o36Tlo3eydYKB5o9y6nGnen03nv6KSgLpq-aIs40FQDWv84biWBWRGPj2UEomlGp7e-8wvPv16cu6OmDNEi5osjU-4rH6OGQoGb3ZA91LtvRFcH_7Y3r5FAIedi_j6fqZUuGanY3JU_u2NTBld-CZNOhui2_zmfyodfx_-0BuZeqgfnV0uU0dn8cnYRkQtfB6JpeP8GqnhHoXBSmYabnOUgMROdBJ7GVeMgCTYOCRC7xr1YBypdqjtRRv3G00>`_
 
 
 .. .. figure:: ../../images/wallet_instance_acquisition.svg
@@ -57,13 +57,13 @@ Below is a non-normative example of the ``client_data`` JSON object.
 
 *  requests the Key Attestation API to create an ``key_attestation`` value linked to the ``client_data_hash``.
 *  receives a signed ``key_attestation`` value from the Key Attestation API, authenticated by the OEM.
-*  Constructs the Wallet Unit Attestation Request in the form of a JWT. This JWT includes the ``key_attestation``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet App Attestation Request Body <table_key_binding_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
+*  Constructs the Wallet Unit Attestation Request in the form of a JWT. This JWT includes the ``key_attestation``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Unit Attestation Request Body <table_wua_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
 
 **Steps 13-16**: The Wallet Instance:
 
 *  requests the Device Integrity Service to create an ``integrity_assertion`` value linked to the ``client_data_hash``.
 *  receives a signed ``integrity_assertion`` value from the Device Integrity Service, authenticated by the OEM.
-*  Constructs the Wallet Unit Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet App Attestation Request Body <table_key_binding_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
+*  Constructs the Wallet Unit Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet Unit Attestation Request Body <table_wua_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair.
 
 **Step 17 (Wallet Unit Attestation Issuance Request)**: The Wallet Instance submits the Wallet Unit Attestation Request to the :ref:`wallet-provider-endpoint:Wallet Attestation Issuance endpoint` of the Wallet Provider Backend.
 

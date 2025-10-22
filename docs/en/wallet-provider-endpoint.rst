@@ -474,7 +474,7 @@ The ``typ`` header of the Wallet Unit Attestation Issuance Request JWT assumes t
 
 The Wallet Unit Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
 
-Below is a non-normative example of a Key Binding Request.
+Below is a non-normative example of a Wallet Unit Attestation Issuance Request.
 
 .. code-block:: http
 
@@ -488,7 +488,7 @@ Below is a non-normative example of a Key Binding Request.
 
 In particular, the Wallet Unit Attestation Request JWT includes the following HTTP header parameters:
 
-.. _table_key_binding_request_claim:
+.. _table_wua_request_claim:
 .. list-table::
     :class: longtable
     :widths: 20 60 20
@@ -548,7 +548,7 @@ The Wallet Unit Attestation Request JWT includes the following body claims:
       - JSON object containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
 
-Below is a non-normative example of a Key Binding Request JWT header and payload.
+Below is a non-normative example of a Wallet Unit Attestation Request JWT header and payload.
 
 .. note::
   The Wallet Unit Attestation Request JWT body claims based on the OS of the user's device contain either **integrity_assertion** (in case of iOS) or **key_attestation** (in case of Android).
@@ -607,7 +607,7 @@ If any errors occur during the process, an error response is returned. The respo
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
 
-Below is a non-normative example of a Key Binding Error Response.
+Below is a non-normative example of a Wallet Unit Attestation Issuance Error Response.
 
 .. code-block:: http
 
