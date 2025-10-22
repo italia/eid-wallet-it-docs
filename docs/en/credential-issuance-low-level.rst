@@ -312,7 +312,7 @@ Below is a non-normative example of a Nonce Response:
 
 **Step 16 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proof (which demonstrates possession of the key) as per :ref:`WP_056 <wallet-credential-issuance-testcases>`. The ``proof`` parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued Digital Credential will be bound. To verify the proof, the Credential Issuer conducts the following checks at the Credential endpoint:
 
- 1. The JWT proof MUST include all required claims as specified in the table of Section :ref:`credential-issuance-endpoint:Token Request`.
+ 1. The JWT proof MUST include all required claims as specified in the table of Section :ref:`credential-issuance-endpoint:Credential Request`.
  2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type.
  3. The header parameter ``alg`` MUST indicate a registered asymmetric digital signature algorithm, and MUST NOT be set to `none`.
  4. The signature on the key proof MUST be verified using the public key specified in the header parameter.
