@@ -39,7 +39,7 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 .. note::
   **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata (:ref:`WP_023 <wallet-instance-testcases>`). Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
 
-**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
 
 Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`mobile-application-instance:Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
 
@@ -276,7 +276,7 @@ Mobile Application Key Binding
 
 The Key Binding flow enables the Mobile Application Instance to bind a newly created pair of keys to the Mobile Application Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Application Provider also needs to verify the integrity of the Mobile Application Instance.
 
-Although the exact flow differs depending on the context (see the :ref:`relying-party-instance:Mobile Relying Party Instance Registration` and :ref:`wallet-attestation-issuance:Wallet Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
+Although the exact flow differs depending on the context (see the :ref:`relying-party-instance:Mobile Relying Party Instance Registration` and :ref:`wallet-attestation-issuance:Wallet App Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
 
 
 Mobile Application Key Binding Request
@@ -390,7 +390,7 @@ Below is a non-normative example of a Key Binding Request JWT header and payload
 Mobile Application Key Binding Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-provider-backend-endpoint:Relying Party Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet Attestation Issuance Response` sections.
+The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet App Attestation Issuance Response` sections.
 
 
 Mobile Application Key Binding Error Response

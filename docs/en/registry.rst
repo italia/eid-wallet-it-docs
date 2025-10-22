@@ -465,7 +465,7 @@ Digital Credentials Hierarchy
 
 Digital Credentials recognized within the IT-Wallet ecosystem are hierarchically classified and standardized according to the following main domains and purposes. Additional purposes MAY be added as the IT-Wallet ecosystem grows.
 
-.. _it-wallet-dc-domains:
+.. _it-wallet-dc-domains_purpose:
 .. list-table:: Digital Credential Domains and Purposes
    :class: longtable
    :header-rows: 1

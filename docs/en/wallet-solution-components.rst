@@ -100,7 +100,7 @@ Wallet Solution Interaction Patterns
 The Wallet Solution supports these interaction patterns:
 
 1. **User to Wallet Backend Frontend**: Web-based interactions for Wallet Instance management.
-2. **Wallet Instance to Wallet Backend API**: for Wallet Instance registration and Wallet App Attestation issuance.
+2. **Wallet Instance to Wallet Backend API**: for Wallet Instance registration, Wallet App Attestation issuance and Wallet Unit Attestation issuance.
 3. **PID Provider to Wallet Backend API**: Secure API calls to request Wallet Instance revocation.
 4. **User to Wallet Instance User Interface**: for Digital Credential management (issuance, presentation, backup, restore, deletion).
 5. **Wallet Intance to Relying Party**: for Digital Credential presentation.
