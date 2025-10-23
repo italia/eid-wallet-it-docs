@@ -4,6 +4,9 @@
 Componenti della Soluzione Wallet
 =================================
 
+.. note::
+   I test relativi ai componenti della Wallet Solution (Backend del Wallet e Unità di Wallet) sono riassunti in :ref:`WP_012 <wallet-provider-backend-testcases>` e in :ref:`WP_013 <wallet-instance-testcases>`, rispettivamente.
+
 Backend del Wallet
 ------------------
 
@@ -74,7 +77,7 @@ Seguendo la specifica `OpenID4VCI`_ e il profilo di implementazione nella Sezion
 Componente di Presentazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Seguendo il profilo di implementazione nella Sezione :ref:`credential-presentation:Presentazione della Credenziale Digitale`, questo componente DEVE essere conforme ai flussi remoti basati su `OpenID4VP`_ e ai flussi di prossimità basati su `ISO18013-5`_.
+Seguendo il profilo di implementazione nella Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`, questo componente DEVE essere conforme ai flussi remoti basati su `OpenID4VP`_ e ai flussi di prossimità basati su `ISO18013-5`_.
 
 Componente di Backup e Ripristino
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

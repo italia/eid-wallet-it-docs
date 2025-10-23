@@ -132,7 +132,7 @@ The **Consumer** MUST comply with the following prerequisites:
 The **Provider** MUST comply with the following prerequisites:
 
     - Has successfully subscribed to the PDND Infrastructure (as per R1).
-    - Has created a new e-Service and published it within the PDND API Catalogue.
+    - Has created a new e-Service and published it within the PDND API Catalog.
     - Has approved the Consumer's request to enroll in the e-Service.
 
 

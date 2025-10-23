@@ -21,7 +21,7 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
 
 **Step 1:** The User requests the deletion of attributes invoking the Wallet Instance's attribute deletion function.
 
-**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes. The Wallet Instance SHOULD filter the transaction logs so that only the Relying Parties which have had access to attributes uniquely identifying the User are show (:ref:`WP_115a <user-attribute-deletion-testcases>`).
+**Step 2:** The Wallet Instance collects all transaction data and shows the User the list of Relying Parties with which it has had interactions throughout the Wallet Instance lifecycle and are in possession of User's attributes. The Wallet Instance SHOULD filter the transaction logs so that only the Relying Parties which have had access to attributes uniquely identifying the User are shown (:ref:`WP_115a <user-attribute-deletion-testcases>`).
 
 **Step 3:** The User selects the target Relying Party for attributes deletion.
 
@@ -32,13 +32,13 @@ This Wallet Instance functionality allows Users to obtain a list of all Relying 
   * the Relying Party to which the request was made,
   * the attributes requested to be removed.
 
-**Steps 7 - 8:** The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present (:ref:`WP_118 <user-attribute-deletion-testcases>`). Details on the Erasure Request can be found in :ref:`relying-party-endpoint:Erasure Request` (:ref:`WP_117 <user-attribute-deletion-testcases>`).
+**Steps 7 - 8:** The Wallet Instance redirects the User to the Erasure Endpoint. It MUST also ensure that a callback mechanism to allow the User-Agent to notify the Wallet Instance (and thus the User) after the Erasure Response is present (:ref:`WP_118 <user-attribute-deletion-testcases>`). Details on the Erasure Request can be found in :ref:`relying-party-provider-backend-endpoint:Erasure Request` (:ref:`WP_117 <user-attribute-deletion-testcases>`).
 
 .. note::
   The Relying Party web page will authenticate the User with an appropriate Level of Assurance using any method such as CIE or the PID presentation. The specific mechanism used for authentication is left to the Relying Party. Upon authenticating the User, the Relying Party MAY prompt the User to perform additional steps needed for the deletion of attributes, e.g., it might require the User to confirm the deletion operation.
 
 **Step 9:** Upon successful authentication of the User the Relying Party MUST delete all attributes bound to the User in its possession.
 
-**Step 10:** The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in :ref:`relying-party-endpoint:Erasure Response`.
+**Step 10:** The Relying Party returns the Erasure Response in the form of an HTTP Response to the User-Agent and includes the callback URL if provided in the Erasure Request. Details on the Erasure Response can be found in :ref:`relying-party-provider-backend-endpoint:Erasure Response`.
 
 **Steps 11 - 12:** The User-Agent uses the implemented method to return the Erasure Response to the Wallet Instance. Finally, the User is notified via the Wallet Instance regarding the Erasure Response outcome (:ref:`WP_119 <user-attribute-deletion-testcases>`).

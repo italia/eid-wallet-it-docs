@@ -3,7 +3,7 @@
 Relying Party Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *openid_credential_verifier* metadata MUST contain the following parameters.
+The *openid_credential_verifier* metadata MUST contain the following parameters (:ref:`test-plans-remote-presentation`).
 
 .. list-table::
   :class: longtable
@@ -25,7 +25,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters.
   * - **encrypted_response_enc_values_supported**
     - JSON array of content encryption algorithms ("enc") the Verifier supports for encrypting the authorization response when using response mode ``direct_post.jwt``. See `OpenID4VP`_ §5.1 and §8.3.1.
   * - **vp_formats_supported**
-    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least ``dc+sd-jwt``. For SD-JWT VC, the value associated with each name/value pair MUST include "**sd-jwt_alg_values_supported**" listing acceptable signing algorithms; for mdoc, include ``alg_values_supported``. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See `OpenID4VP`_ §11 and Appendix B.
+    - JSON object defining the formats and proof types of Verifiable Presentations and Verifiable Credentials the RP supports. It consists of a list of name/value pairs, where each name uniquely identifies a supported type. The RP MUST support at least ``dc+sd-jwt``. For SD-JWT VC, the value associated with each name/value pair MUST include ``sd-jwt_alg_values_supported`` listing acceptable signing algorithms; for mdoc, include ``alg_values_supported``. The JOSE/COSE headers of presented artifacts MUST match one of the advertised values. See `OpenID4VP`_ §11 and Appendix B.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Relying Party. See `JARM`_ Section 3, `OID-FED`_ Draft 41 Section 5.2.1 and `JWK`_.
   * - **erasure_endpoint**

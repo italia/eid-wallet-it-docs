@@ -3,7 +3,7 @@
 Metadati della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I metadata *openid_credential_verifier* DEVONO contenere i seguenti parametri.
+I metadata *openid_credential_verifier* DEVONO contenere i seguenti parametri (:ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`).
 
 .. list-table::
   :class: longtable

@@ -29,7 +29,7 @@ Participants are enabled to create Templates E-Service via a guided wizard acces
     - The "Audience" field is omitted.
     - Thresholds are optional and serve as recommendations for Participants implementing the template.
 
-Participants are prohibited from creating multiple templates with the same name: template names MUST be unique per participant. Upon creation, a template is initially set to the Draft state. Templates can then be published to the Template Catalogue, thereby making them accessible to all Participants.
+Participants are prohibited from creating multiple templates with the same name: template names MUST be unique per participant. Upon creation, a template is initially set to the Draft state. Templates can then be published to the Template Catalog, thereby making them accessible to all Participants.
 
 Template E-Service Modification
 """""""""""""""""""""""""""""""
@@ -54,7 +54,7 @@ Template E-Service Suspension
 """""""""""""""""""""""""""""
 Templates, like e-services, can be Suspended. When suspended:
 
-    - The template is removed from the templates public catalogue.
+    - The template is removed from the templates public catalog.
     - Instantiation of new instances from the suspended template is disabled.
     - Previously instantiated instances remain unaffected.
     - Templates may be reactivated at any time.
@@ -62,7 +62,7 @@ Templates, like e-services, can be Suspended. When suspended:
 
 Template E-Service Instantiation
 """"""""""""""""""""""""""""""""
-Participants may instantiate a Template E-Service by browsing the Template Catalogue and selecting a template. This process generates a new e-service.
+Participants MAY instantiate a Template E-Service by browsing the Template Catalog and selecting a template. This process generates a new e-service.
 
 Instantiation constraints include:
 

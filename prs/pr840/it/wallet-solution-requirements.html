@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.1.1. Requisiti della Soluzione Wallet &#8212; IT-Wallet Technical Documentation - PR #840</title>
+    <title>10.1.1. Requisiti della Soluzione Wallet &#8212; IT-Wallet Technical Documentation - PR #840</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="6.1.2. Componenti della Soluzione Wallet" href="wallet-solution-components.html" />
-    <link rel="prev" title="6.1. Soluzione Wallet" href="wallet-solution.html" /> 
+    <link rel="next" title="10.1.2. Componenti della Soluzione Wallet" href="wallet-solution-components.html" />
+    <link rel="prev" title="10.1. Soluzione Wallet" href="wallet-solution.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -134,34 +134,38 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">5. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="entities.html">6. Entità</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">6.1. Soluzione Wallet</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">6.1.1. Requisiti della Soluzione Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">6.1.2. Componenti della Soluzione Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#modelli-di-interazione-della-soluzione-wallet">6.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">6.1.4. Istanza del Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">6.1.5. Backup e Ripristino</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">6.1.6. Entity Configuration del Fornitore di Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">6.1.7. Metadati del Fornitore di Wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="entities.html">10. Entità</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wallet-solution.html">10.1. Soluzione Wallet</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.1.1. Requisiti della Soluzione Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html">10.1.2. Componenti della Soluzione Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-solution-components.html#modelli-di-interazione-della-soluzione-wallet">10.1.3. Modelli di Interazione della Soluzione Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-instance.html">10.1.4. Istanza del Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backup-restore.html">10.1.5. Backup e Ripristino</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-entity-configuration.html">10.1.6. Entity Configuration del Fornitore di Wallet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wallet-provider-metadata.html">10.1.7. Metadati del Fornitore di Wallet</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">6.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
-<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">6.3. Soluzione di Relying Party</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">6.4. Fonti Autentiche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="credential-issuer-solution.html">10.2. Soluzione del Fornitore di Attestati Elettronici</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relying-party-solution.html">10.3. Soluzione di Relying Party</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentic-sources.html">10.4. Fonti Autentiche</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
 </ul>
 
         </div>
@@ -174,34 +178,38 @@
           <div class="body" role="main">
             
   <section id="requisiti-della-soluzione-wallet">
-<h1><span class="section-number">6.1.1. </span>Requisiti della Soluzione Wallet<a class="headerlink" href="#requisiti-della-soluzione-wallet" title="Link to this heading">¶</a></h1>
-<p>Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzioni Wallet con le loro Istanze del Wallet.</p>
+<h1><span class="section-number">10.1.1. </span>Requisiti della Soluzione Wallet<a class="headerlink" href="#requisiti-della-soluzione-wallet" title="Link to this heading">¶</a></h1>
+<p>Questa sezione elenca i requisiti relativi ai Fornitori di Wallet e alle Soluzioni Wallet con le loro Istanze del Wallet, nonché i corrispondenti Wallet Attestation e il componente di secure storage (WSCD).</p>
 <ul class="simple">
 <li><p>La Soluzione Wallet DEVE aderire alle specifiche stabilite da questo documento per ottenere Attestati Elettronici di Dati di Identificazione Personale (PID) e Attestati Elettronici di Attributi (Q)EAA.</p></li>
 <li><p>Il Fornitore di Wallet DEVE esporre un insieme di endpoint, disponibili esclusivamente per le istanze della sua Soluzione Wallet, che supportano le funzionalità principali delle Istanze del Wallet.</p></li>
-<li><p>L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet Attestation.</p></li>
+<li><p>L'Istanza del Wallet DEVE periodicamente ristabilire la trust con il suo Fornitore di Wallet, ottenendo una nuova Wallet Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_018</span></a>).</p></li>
 <li><p>L'Istanza del Wallet DEVE stabilire la trust con altri partecipanti dell'ecosistema Wallet, come i Fornitori di Credenziale e le Relying Party, presentando una Wallet Attestation.</p></li>
-<li><p>L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store.</p></li>
+<li><p>L'Istanza del Wallet DEVE essere compatibile e funzionale sia sui sistemi operativi Android che iOS e disponibile rispettivamente sul Play Store e sull'App Store (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_015</span></a>).</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire un meccanismo per verificare l'effettivo possesso e il pieno controllo da parte dell'Utente del proprio dispositivo personale.</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire agli Utenti un elenco aggiornato delle Relying Party con cui l'Utente ha stabilito una connessione e, ove applicabile, tutti i dati scambiati;</p></li>
 <li><p>L'Istanza del Wallet DEVE fornire agli Utenti un meccanismo per richiedere la cancellazione degli attributi personali da parte di una Relying Party ai sensi dell'articolo 17 del Regolamento (UE) 2016/679, e per registrare ogni Richiesta di Cancellazione effettuata.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Non esiste una corrispondenza stretta uno-a-uno tra i requisiti in questa sezione e i casi di test in <a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-test-matrix"><span class="std std-ref">Matrice di Test per Wallet Provider</span></a>. Alcuni requisiti sono espressi a un livello troppo alto per poter essere rappresentati come casi di test atomici, mentre altri sono già affrontati in modo più dettagliato all'interno dei flussi correlati (ad es. <span class="xref std std-ref">wallet-attestation-issuance:Wallet Attestation Issuance</span>).</p>
+</div>
 <section id="requisiti-della-wallet-attestation">
-<h2><span class="section-number">6.1.1.1. </span>Requisiti della Wallet Attestation<a class="headerlink" href="#requisiti-della-wallet-attestation" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">10.1.1.1. </span>Requisiti della Wallet Attestation<a class="headerlink" href="#requisiti-della-wallet-attestation" title="Link to this heading">¶</a></h2>
 <p>la Wallet Attestation contiene informazioni riguardanti il livello di sicurezza del dispositivo che ospita l'Istanza del Wallet.
 Esso dimostra principalmente l'<strong>autenticità</strong>, l'<strong>integrità</strong>, la <strong>sicurezza</strong> e in generale l'<strong>affidabilità</strong> di una particolare Istanza del Wallet.</p>
 <p>I requisiti per la Wallet Attestation sono definiti di seguito:</p>
 <ul class="simple">
-<li><p>la Wallet Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'<strong>integrità</strong> e la <strong>sicurezza</strong> del dispositivo in cui è installata l'Istanza del Wallet.</p></li>
-<li><p>la Wallet Attestation DEVE essere firmato dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet.</p></li>
-<li><p>Il Fornitore di Wallet DEVE periodicamente valutare e garantire l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet. Il Fornitore di Wallet verifica l'Istanza del Wallet utilizzando il flusso più sicuro reso disponibile dalle API del Fornitore del Sistema Operativo, come la <em>Play Integrity API</em> per Android e <em>App Attest</em> per iOS.</p></li>
-<li><p>Il Fornitore di Wallet DEVE possedere un meccanismo di revoca per l'Istanza del Wallet, che consenta al Fornitore di Wallet di terminare il servizio per una specifica Istanza in qualsiasi momento.</p></li>
-<li><p>la Wallet Attestation DEVE essere vincolato in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet.</p></li>
+<li><p>la Wallet Attestation DEVE fornire tutte le informazioni rilevanti per attestare l'<strong>integrità</strong> e la <strong>sicurezza</strong> del dispositivo in cui è installata l'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019</span></a>).</p></li>
+<li><p>la Wallet Attestation DEVE essere firmato dal Fornitore di Wallet che ha autorità e proprietà sulla Soluzione Wallet, come specificato dalla Registration Authority di supervisione. Questo garantisce che la Wallet Attestation colleghi in modo univoco il Fornitore di Wallet a questa particolare Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_020</span></a>).</p></li>
+<li><p>Il Fornitore di Wallet DEVE periodicamente valutare e garantire l'integrità, l'autenticità e la genuinità dell'Istanza del Wallet. Il Fornitore di Wallet verifica l'Istanza del Wallet utilizzando il flusso più sicuro reso disponibile dalle API del Fornitore del Sistema Operativo, come la <em>Play Integrity API</em> per Android e <em>App Attest</em> per iOS (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_011</span></a>).</p></li>
+<li><p>Il Fornitore di Wallet DEVE possedere un meccanismo di revoca per l'Istanza del Wallet, che consenta al Fornitore di Wallet di terminare il servizio per una specifica Istanza in qualsiasi momento (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-provider-backend-testcases"><span class="std std-ref">WP_011</span></a>).</p></li>
+<li><p>la Wallet Attestation DEVE essere vincolato in modo sicuro alla chiave pubblica effimera dell'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019b</span></a>).</p></li>
 <li><p>la Wallet Attestation PUÒ essere utilizzato più volte durante il suo periodo di validità, consentendo autenticazioni e autorizzazioni ripetute senza la necessità di richiedere nuovi attestati ad ogni interazione. Tuttavia, è RACCOMANDATO che le Istanze del Wallet evitino di utilizzare ripetutamente lo stesso attestato, a causa di preoccupazioni sulla privacy come la possibilità di collegamento tra diverse interazioni.</p></li>
 <li><p>la Wallet Attestation che non implementa metodi di controllo della revoca, DEVE avere una durata breve e DEVE avere un tempo di scadenza, dopo il quale NON DEVE più essere considerato valido.</p></li>
-<li><p>la Wallet Attestation NON DEVE essere rilasciato dal Fornitore di Wallet se l'autenticità, l'integrità e la genuinità dell'Istanza del Wallet che lo richiede non possono essere garantite.</p></li>
+<li><p>la Wallet Attestation NON DEVE essere rilasciato dal Fornitore di Wallet se l'autenticità, l'integrità e la genuinità dell'Istanza del Wallet che lo richiede non possono essere garantite (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_019a</span></a>).</p></li>
 <li><p>Ogni Istanza del Wallet DOVREBBE essere in grado di richiedere più Attestati di Wallet utilizzando diverse chiavi pubbliche crittografiche associate ad essi.</p></li>
-<li><p>la Wallet Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet.</p></li>
+<li><p>la Wallet Attestation NON DEVE contenere informazioni sull'Utente che controlla l'Istanza del Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_029a</span></a>).</p></li>
 <li><p>L'Istanza del Wallet DEVE ottenere una Wallet Attestation come prerequisito per passare allo stato Operativo, come definito da <a class="reference external" href="https://github.com/eu-digital-identity-wallet/architecture-and-reference-framework">EIDAS-ARF</a>.</p></li>
 </ul>
 <div class="admonition note">
@@ -210,7 +218,7 @@ Esso dimostra principalmente l'<strong>autenticità</strong>, l'<strong>integrit
 </div>
 </section>
 <section id="requisiti-wscd">
-<h2><span class="section-number">6.1.1.2. </span>Requisiti WSCD<a class="headerlink" href="#requisiti-wscd" title="Link to this heading">¶</a></h2>
+<h2><span class="section-number">10.1.1.2. </span>Requisiti WSCD<a class="headerlink" href="#requisiti-wscd" title="Link to this heading">¶</a></h2>
 <p>Per garantire la massima sicurezza, le chiavi crittografiche associate a un'Istanza del Wallet (ad esempio, utilizzate per generare la Wallet Attestation) DEVONO essere generate e memorizzate in modo sicuro all'interno del Dispositivo Crittografico Sicuro per il Portafoglio (WSCD).
 Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impedendo l'uso non autorizzato o la manomissione. Il WSCD PUÒ essere implementato utilizzando almeno uno degli approcci elencati di seguito:</p>
 <ul class="simple">
@@ -222,7 +230,7 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
-<p>Nella fase attuale, il profilo di implementazione definito in questo documento supporta solo il <strong>WSCD Interno Locale</strong>. Le versioni future di questa specifica POTREBBERO includere altri approcci a seconda del Livello di Garanzia dell'Autenticatore richiesto (<cite>AAL</cite>).</p>
+<p>Nella fase attuale, il profilo di implementazione definito in questo documento supporta solo il <strong>WSCD Interno Locale</strong> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-instance-testcases"><span class="std std-ref">WP_014</span></a>). Le versioni future di questa specifica POTREBBERO includere altri approcci a seconda del Livello di Garanzia dell'Autenticatore richiesto (<cite>AAL</cite>).</p>
 </div>
 <p>Per informazioni più dettagliate, fare riferimento a <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a> e <a class="reference internal" href="wallet-attestation-issuance.html#emissione-della-wallet-attestation"><span class="std std-ref">Emissione della Wallet Attestation</span></a> di questo documento.</p>
 </section>
@@ -242,9 +250,9 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">6.1.1. Requisiti della Soluzione Wallet</a><ul>
-<li><a class="reference internal" href="#requisiti-della-wallet-attestation">6.1.1.1. Requisiti della Wallet Attestation</a></li>
-<li><a class="reference internal" href="#requisiti-wscd">6.1.1.2. Requisiti WSCD</a></li>
+<li><a class="reference internal" href="#">10.1.1. Requisiti della Soluzione Wallet</a><ul>
+<li><a class="reference internal" href="#requisiti-della-wallet-attestation">10.1.1.1. Requisiti della Wallet Attestation</a></li>
+<li><a class="reference internal" href="#requisiti-wscd">10.1.1.2. Requisiti WSCD</a></li>
 </ul>
 </li>
 </ul>
@@ -260,13 +268,13 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
             <div class="left">
                 
                 <a href="wallet-solution.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">6.1. </span>Soluzione Wallet</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.1. </span>Soluzione Wallet</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="wallet-solution-components.html"><span><span class="section-number">6.1.2. </span>Componenti della Soluzione Wallet</span><span class="icon">&gt;</span></a>
+                    <a href="wallet-solution-components.html"><span><span class="section-number">10.1.2. </span>Componenti della Soluzione Wallet</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -274,7 +282,7 @@ Solo l'Utente legittimo può accedere alle chiavi crittografiche private, impede
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 23/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

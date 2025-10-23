@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>16.4.1.6. Matrice di Test per la Presentazione di Credenziali in Prossimità &#8212; IT-Wallet Technical Documentation - PR #840</title>
+    <title>20.4.1.7. Matrice di Test per il Verificatore di Credenziali in Prossimità &#8212; IT-Wallet Technical Documentation - PR #840</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -18,8 +18,8 @@
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
-    <link rel="next" title="16.5. Specifica OpenAPI del Credential Issuer PDND" href="appendix-oas-pdnd-issuer.html" />
-    <link rel="prev" title="16.4.1.5. Matrice di Test per la Presentazione di Credenziali Remota" href="test-plans-remote-presentation.html" /> 
+    <link rel="next" title="20.5. Specifica OpenAPI del Credential Issuer PDND" href="appendix-oas-pdnd-issuer.html" />
+    <link rel="prev" title="20.4.1.6. Matrice di Test per il Verificatore di Credenziali in Remoto" href="test-plans-remote-presentation.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -134,37 +134,42 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">5. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">6. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Rilasci Open Source</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">16. Appendice</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">16.1. Istanza dell'Applicazione Mobile</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">16.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">16.3. Template e-Service PDND</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">16.4. Test Plans</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">16.4.1.1. Matrice di Test per la Valutazione delle Firme</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">16.4.1.2. Matrice di Test per la Valutazione della Fiducia</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet.html">16.4.1.3. Matrice di Test per la Soluzione Wallet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">16.4.1.4. Matrice dei Test per il Credential Issuer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-remote-presentation.html">16.4.1.5. Matrice di Test per la Presentazione di Credenziali Remota</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">16.4.1.6. Matrice di Test per la Presentazione di Credenziali in Prossimità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">20. Appendice</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">20.1. Istanza dell'Applicazione Mobile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">20.2. e-Service PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">20.3. Template e-Service PDND</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">20.4. Test Plans</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">20.4.1.1. Matrice di Test per la Valutazione delle Firme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">20.4.1.2. Matrice di Test per la Valutazione della Fiducia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-federation-authority.html">20.4.1.3. Matrice di Test per le Autorità di Federazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet-provider.html">20.4.1.4. Matrice di Test per Wallet Provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">20.4.1.5. Matrice dei Test per il Credential Issuer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test-plans-remote-presentation.html">20.4.1.6. Matrice di Test per il Verificatore di Credenziali in Remoto</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">20.4.1.7. Matrice di Test per il Verificatore di Credenziali in Prossimità</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">16.5. Specifica OpenAPI del Credential Issuer PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">16.6. Panoramica</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#parametri-del-template">16.7. Parametri del Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#istanziazione-del-template">16.8. Istanziazione del Template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#specifica-openapi-della-fonte-autentica-pdnd">16.9. Specifica OpenAPI della Fonte Autentica PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">16.10. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">20.5. Specifica OpenAPI del Credential Issuer PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">20.6. Panoramica</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#parametri-del-template">20.7. Parametri del Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#istanziazione-del-template">20.8. Istanziazione del Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#specifica-openapi-della-fonte-autentica-pdnd">20.9. Specifica OpenAPI della Fonte Autentica PDND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">20.10. Specifica OpenAPI del Fornitore di Wallet PDND</a></li>
 </ul>
 </li>
 </ul>
@@ -178,8 +183,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="matrice-di-test-per-la-presentazione-di-credenziali-in-prossimita">
-<h1><span class="section-number">16.4.1.6. </span>Matrice di Test per la Presentazione di Credenziali in Prossimità<a class="headerlink" href="#matrice-di-test-per-la-presentazione-di-credenziali-in-prossimita" title="Link to this heading">¶</a></h1>
+  <section id="matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita">
+<span id="test-plans-proximity-presentation"></span><h1><span class="section-number">20.4.1.7. </span>Matrice di Test per il Verificatore di Credenziali in Prossimità<a class="headerlink" href="#matrice-di-test-per-il-verificatore-di-credenziali-in-prossimita" title="Link to this heading">¶</a></h1>
 <p>Questa sezione fornisce l'insieme dei casi di test progettati per implementatori tecnici e team di sviluppo responsabili della creazione e del deployment di soluzioni Credential Verifier per i flussi di prossimità. È anche destinata agli organismi di valutazione che ispezionano e validano le implementazioni di soluzioni Credential Verifier per i flussi di prossimità.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -300,6 +305,241 @@
 <td><p>Testare la resistenza agli attacchi replay.</p></td>
 <td><p>Il sistema è resistente agli attacchi replay.</p></td>
 </tr>
+<tr class="row-even"><td><p>PPR-021</p></td>
+<td><p>Device Engagement</p></td>
+<td><p>Verificare che la struttura Device Engagement sia codificata in CBOR.</p></td>
+<td><p>La struttura Device Engagement è correttamente codificata in formato CBOR.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-022</p></td>
+<td><p>Device Engagement</p></td>
+<td><p>Testare che la chiave pubblica effimera sia del tipo consentito dalla suite di cifratura.</p></td>
+<td><p>La chiave pubblica effimera rispetta i requisiti della suite di cifratura selezionata.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-023</p></td>
+<td><p>BLE Configuration</p></td>
+<td><p>Verificare che solo la modalità Central Client sia supportata.</p></td>
+<td><p>La modalità Central Client è supportata per le connessioni BLE.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-024</p></td>
+<td><p>Capabilities</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code> quando presente.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-025</p></td>
+<td><p>Capabilities</p></td>
+<td><p>Verificare che <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> sia impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code> quando presente.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> è correttamente impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-026</p></td>
+<td><p>mdoc Request</p></td>
+<td><p>Testare che i messaggi mdoc Request siano codificati in CBOR.</p></td>
+<td><p>I messaggi mdoc Request sono correttamente codificati in formato CBOR.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-027</p></td>
+<td><p>mdoc Request</p></td>
+<td><p>Verificare che la richiesta mdoc sia cifrata con la chiave di sessione.</p></td>
+<td><p>La richiesta mdoc è correttamente cifrata con la chiave di sessione.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-028</p></td>
+<td><p>mdoc Request</p></td>
+<td><p>Testare che la richiesta mdoc sia trasmessa tramite protocollo BLE.</p></td>
+<td><p>La richiesta mdoc è trasmessa correttamente tramite protocollo BLE.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-029</p></td>
+<td><p>mdoc Response</p></td>
+<td><p>Verificare che i messaggi mdoc Response siano codificati in CBOR.</p></td>
+<td><p>I messaggi mdoc Response sono correttamente codificati in formato CBOR.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-030</p></td>
+<td><p>mdoc Response</p></td>
+<td><p>Testare che la risposta mdoc sia cifrata con la chiave di sessione.</p></td>
+<td><p>La risposta mdoc è correttamente cifrata con la chiave di sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-031</p></td>
+<td><p>Key Management</p></td>
+<td><p>Testare che la chiave effimera privata sia mantenuta segreta.</p></td>
+<td><p>La chiave effimera privata è adeguatamente protetta e non esposta.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-032</p></td>
+<td><p>Key Management</p></td>
+<td><p>Testare che la chiave effimera pubblica sia usata nell'instaurazione della sessione.</p></td>
+<td><p>La chiave effimera pubblica è utilizzata correttamente per l'instaurazione della sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-033</p></td>
+<td><p>Derivazione Chiavi di Sessione</p></td>
+<td><p>Testare che le chiavi di sessione siano derivate con il protocollo di accordo chiavi.</p></td>
+<td><p>Le chiavi di sessione sono derivate correttamente usando il protocollo di accordo chiavi.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-034</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia preparato correttamente.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è preparato correttamente con i componenti richiesti.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-035</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia firmato dalla RP Instance.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è firmato correttamente dalla Relying Party Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-036</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia cifrato con le chiavi di sessione.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è correttamente cifrato con le chiavi di sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-037</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> includa <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> e la richiesta di attributi.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> include <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> e la richiesta di attributi richiesti.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-038</p></td>
+<td><p>Trasmissione Messaggi</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> sia trasmesso su connessione BLE sicura.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> è trasmesso su connessione BLE sicura.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-039</p></td>
+<td><p>Calcolo Chiave di Sessione</p></td>
+<td><p>Testare che l'Istanza del Wallet calcoli correttamente la chiave di sessione.</p></td>
+<td><p>L'Istanza del Wallet calcola correttamente la chiave di sessione.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-040</p></td>
+<td><p>Decrittazione Messaggi</p></td>
+<td><p>Testare che l'Istanza del Wallet decritti il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>.</p></td>
+<td><p>L'Istanza del Wallet decritta con successo il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-041</p></td>
+<td><p>Verifica Firma</p></td>
+<td><p>Testare che l'Istanza del Wallet verifichi la firma della RP Instance.</p></td>
+<td><p>L'Istanza del Wallet verifica correttamente la firma della Relying Party Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-042</p></td>
+<td><p>Elaborazione Richiesta Attributi</p></td>
+<td><p>Testare che l'Istanza del Wallet decritti la richiesta di attributi.</p></td>
+<td><p>L'Istanza del Wallet decritta con successo la richiesta di attributi.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-043</p></td>
+<td><p>Consenso Utente</p></td>
+<td><p>Testare che l'Istanza del Wallet richieda il consenso all'utente.</p></td>
+<td><p>L'Istanza del Wallet richiede correttamente il consenso al rilascio degli attributi.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-044</p></td>
+<td><p>Visualizzazione Certificato</p></td>
+<td><p>Testare che l'Istanza del Wallet mostri il Certificato di Registrazione della RP.</p></td>
+<td><p>L'Istanza del Wallet mostra il Certificato di Registrazione della Relying Party per trasparenza.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-045</p></td>
+<td><p>Recupero Credenziali</p></td>
+<td><p>Testare che l'Istanza del Wallet recuperi le mdoc Digital Credentials richieste.</p></td>
+<td><p>L'Istanza del Wallet recupera con successo le mdoc Digital Credentials richieste.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-046</p></td>
+<td><p>Preparazione <code class="docutils literal notranslate"><span class="pre">SessionData</span></code></p></td>
+<td><p>Testare che l'Istanza del Wallet prepari il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+<td><p>L'Istanza del Wallet prepara correttamente il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> con le Digital Credentials.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-047</p></td>
+<td><p>Firma Dati di Autenticazione</p></td>
+<td><p>Testare che l'Istanza del Wallet firmi i dati di autenticazione richiesti.</p></td>
+<td><p>L'Istanza del Wallet firma correttamente i dati di autenticazione richiesti.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-048</p></td>
+<td><p>Cifratura Messaggi</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> sia cifrato con le chiavi di sessione.</p></td>
+<td><p>Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> è correttamente cifrato con le chiavi di sessione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-049</p></td>
+<td><p>Codifica CBOR</p></td>
+<td><p>Testare che la response mdoc sia codificata in formato CBOR.</p></td>
+<td><p>La response mdoc è correttamente codificata in formato CBOR.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-050</p></td>
+<td><p>Verifica Dati</p></td>
+<td><p>Testare che la RP Instance decritti <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+<td><p>La Relying Party Instance decritta con successo <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-051</p></td>
+<td><p>Verifica Firma</p></td>
+<td><p>Testare che la RP Instance verifichi la firma dell'Istanza del Wallet.</p></td>
+<td><p>La Relying Party Instance verifica correttamente la firma dell'Istanza del Wallet.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-052</p></td>
+<td><p>Validazione Documenti</p></td>
+<td><p>Testare che la RP Instance controlli la validità dell'mdoc e la firma dell'Issuer.</p></td>
+<td><p>La Relying Party Instance valida correttamente l'mdoc e la firma dell'Issuer.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-053</p></td>
+<td><p>Disconnessione BLE</p></td>
+<td><p>Testare che il GATT Client si disiscriva dalle caratteristiche.</p></td>
+<td><p>Il GATT Client si disiscrive correttamente dalle caratteristiche.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-054</p></td>
+<td><p>Disconnessione BLE</p></td>
+<td><p>Testare che il GATT Client si disconnetta dal server GATT.</p></td>
+<td><p>Il GATT Client si disconnette correttamente dal server GATT.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-055</p></td>
+<td><p>Conformità Struttura Request</p></td>
+<td><p>Testare che la mdoc Request sia conforme alla struttura richiesta.</p></td>
+<td><p>La mdoc Request è conforme alla struttura richiesta e include i componenti necessari.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-056</p></td>
+<td><p>Conformità Struttura Response</p></td>
+<td><p>Testare che la mdoc Response sia conforme alla struttura richiesta.</p></td>
+<td><p>La mdoc Response è conforme alla struttura richiesta e include i componenti necessari.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-057</p></td>
+<td><p>Conformità Struttura Documenti</p></td>
+<td><p>Testare che i documenti siano conformi alla struttura richiesta.</p></td>
+<td><p>I documenti sono conformi alla struttura richiesta e includono i componenti necessari.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-058</p></td>
+<td><p>Validazione Tipo Documento</p></td>
+<td><p>Testare che il tipo documento mDL sia impostato correttamente.</p></td>
+<td><p>Il tipo documento mDL è impostato correttamente su <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-059</p></td>
+<td><p>Struttura DeviceSigned</p></td>
+<td><p>Testare che la struttura <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> sia conforme.</p></td>
+<td><p>La struttura <code class="docutils literal notranslate"><span class="pre">deviceSigned</span></code> è conforme al formato richiesto e include i componenti necessari.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-060</p></td>
+<td><p>Autenticazione Dispositivo</p></td>
+<td><p>Testare che <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> includa <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code>.</p></td>
+<td><p>La struttura <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> include <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code> richiesto per l'autenticazione.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-061</p></td>
+<td><p>Inclusione Wallet Attestation</p></td>
+<td><p>Testare che l'Istanza del Wallet includa il Wallet Attestation quando richiesto.</p></td>
+<td><p>L'Istanza del Wallet include il Wallet Attestation quando richiesto dalla Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-062</p></td>
+<td><p>Inclusione Claim AAL</p></td>
+<td><p>Testare che l'Istanza del Wallet includa il claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> nel Wallet Attestation.</p></td>
+<td><p>L'Istanza del Wallet include il claim <code class="docutils literal notranslate"><span class="pre">aal</span></code> come disclosure nel Wallet Attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-063</p></td>
+<td><p>Bypass Consenso Utente</p></td>
+<td><p>Testare che l'Istanza del Wallet non richieda il consenso utente per il Wallet Attestation.</p></td>
+<td><p>L'Istanza del Wallet non richiede il consenso per gli attributi tecnici del Wallet Attestation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-064</p></td>
+<td><p>Condizioni di Terminazione Sessione</p></td>
+<td><p>Testare che la sessione venga terminata alle condizioni specificate.</p></td>
+<td><p>La sessione è terminata correttamente quando si verificano le condizioni specificate.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-065</p></td>
+<td><p>Avvio Terminazione Sessione</p></td>
+<td><p>Testare che la terminazione della sessione sia avviata correttamente.</p></td>
+<td><p>La terminazione della sessione è avviata correttamente quando non vengono inviate ulteriori richieste.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-066</p></td>
+<td><p>Distruzione Chiavi</p></td>
+<td><p>Testare che le chiavi di sessione siano distrutte alla terminazione.</p></td>
+<td><p>Le chiavi di sessione e il materiale effimero sono distrutti correttamente.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-067</p></td>
+<td><p>Chiusura Canale</p></td>
+<td><p>Testare che il canale di comunicazione sia chiuso alla terminazione.</p></td>
+<td><p>Il canale di comunicazione usato per il recupero dati è chiuso correttamente.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -318,13 +558,13 @@
             <div class="left">
                 
                 <a href="test-plans-remote-presentation.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">16.4.1.5. </span>Matrice di Test per la Presentazione di Credenziali Remota</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">20.4.1.6. </span>Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="appendix-oas-pdnd-issuer.html"><span><span class="section-number">16.5. </span>Specifica OpenAPI del Credential Issuer PDND</span><span class="icon">&gt;</span></a>
+                    <a href="appendix-oas-pdnd-issuer.html"><span><span class="section-number">20.5. </span>Specifica OpenAPI del Credential Issuer PDND</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -332,7 +572,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 23/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

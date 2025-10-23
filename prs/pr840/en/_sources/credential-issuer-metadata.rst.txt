@@ -30,9 +30,9 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **acr_values_supported**
     - See `OpenID Connect Discovery 1.0 Section 3 <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_. The supported values are:
 
-      - `https://trust-registry.eid-wallet.example.it/loa/low`
-      - `https://trust-registry.eid-wallet.example.it/loa/substantial`
-      - `https://trust-registry.eid-wallet.example.it/loa/high`
+      - `https://trust-anchor.eid-wallet.example.it/loa/low`
+      - `https://trust-anchor.eid-wallet.example.it/loa/substantial`
+      - `https://trust-anchor.eid-wallet.example.it/loa/high`
   * - **scopes_supported**
     - JSON array containing a list of the supported *scope* values. See :rfc:`8414#section-2`.
   * - **response_modes_supported**
@@ -117,6 +117,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
         - *it_cie*: CIE id trust framework supported.
         - *it_wallet*: IT-Wallet trust framework supported.
         - *eudi_wallet*: Member State EUDI Wallet trust framework supported.
+        - *it_l2+document_proof*: eID Substantial Authentication with MRTD Verification protocol supported.
   * - **evidence_supported**
     - JSON array containing all types of identity evidence supported by the Credential Issuer. See `OIDC-IDA`_ Section 8. The supported value is ``vouch``.
   * - **credential_hash_alg_supported**

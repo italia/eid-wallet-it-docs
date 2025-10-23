@@ -18,7 +18,9 @@ Primary Actors MUST use these Official Resources and MUST comply with all relate
 Naming
 -------
 
-"IT-Wallet System" is the official name that MUST be used in all written and verbal contexts, both physical and digital. Below are the requirements for the correct spelling and pronunciation:
+The term "IT-Wallet System", as defined by the establishing regulation, is the official name that SHOULD be used in institutional, formal, or legal contexts to refer to the system.  
+
+The contracted form "IT-Wallet" is the official Brand name that MUST be used in all communications and disclosures, whether written or verbal, physical or digital, to refer to the "IT-Wallet System". Below are the requirements for the correct spelling and pronunciation:
 
 - The use of uppercase letters for "IT" and the initials of "Wallet" and "System" MUST be followed;
 
@@ -30,7 +32,7 @@ Naming
 Visual Identity
 ----------------
 
-The IT-Wallet System has its own Visual Identity. All actors within the ecosystem MUST ensure that their Visual Identity and that of their Technical Solutions are distinct yet compatible and cohesive with the Visual Identity of IT-Wallet System. Specifically, all Primary Actors MAY use the Official Resources related to the Visual Identity of the IT-Wallet System. Their use MUST be exclusively aimed at representing the participation in the IT-Wallet System and not at replacing the Visual Identity of their own Technical Solutions.
+The IT-Wallet Brand has its own Visual Identity. All actors within the ecosystem MUST ensure that their Visual Identity and that of their Technical Solutions are distinct yet compatible and cohesive with the Visual Identity of IT-Wallet System. Specifically, all Primary Actors MAY use the Official Resources related to the Visual Identity of the IT-Wallet System. Their use MUST be exclusively aimed at representing the participation in the IT-Wallet System and not at replacing the Visual Identity of their own Technical Solutions.
 
 Logo
 ^^^^^

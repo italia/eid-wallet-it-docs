@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>16.4.1.6. Proximity Credential Presentation Test Matrix &#8212; IT-Wallet Technical Documentation - PR #840</title>
+    <title>Proximity Credential Verifier Test Matrix &#8212; IT-Wallet Technical Documentation - PR #840</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -16,9 +16,7 @@
     <script src="_static/js/petite-vue.js"></script>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/15377824?s=48&amp;v=4"/>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16.5. Credential Issuer PDND OpenAPI Specification" href="appendix-oas-pdnd-issuer.html" />
-    <link rel="prev" title="16.4.1.5. Remote Credential Presentation Test Matrix" href="test-plans-remote-presentation.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -129,43 +127,27 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper"><p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Architecture Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. User Experience Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">5. The Infrastructure of Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">6. Entities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Digital Credential Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Digital Credential Flows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Cryptographic Algorithms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Security and Privacy Considerations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. General Log Retention Policies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Defined Terms and References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. How to contribute</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Open Source Releases</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">16. Appendix</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="mobile-application-instance.html">16.1. Mobile Application Instance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd.html">16.2. e-Service PDND</a></li>
-<li class="toctree-l2"><a class="reference internal" href="e-service-pdnd-template.html">16.3. Template e-Service PDND</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="test-plans.html">16.4. Test Plans</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="test-plans-wallet-provider.html">16.4.1.1. Wallet Provider Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-signature.html">16.4.1.2. Signature Evaluation Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-trust.html">16.4.1.3. Trust Evaluation Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-credential-issuer.html">16.4.1.4. Credential Issuer Test Matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="test-plans-remote-presentation.html">16.4.1.5. Remote Credential Presentation Test Matrix</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">16.4.1.6. Proximity Credential Presentation Test Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-issuer.html">16.5. Credential Issuer PDND OpenAPI Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html">16.6. Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-parameters">16.7. Template Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#template-instantiation">16.8. Template Instantiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-as.html#authentic-source-pdnd-openapi-specification">16.9. Authentic Source PDND OpenAPI Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="appendix-oas-pdnd-wp.html">16.10. Wallet Provider PDND OpenAPI Specification</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Onboarding System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. User Experience Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. The Infrastructure of Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Registry Infrastructure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Entity Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. X.509 Certificate Management Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Digital Credential Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Digital Credential Flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Cryptographic Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Security and Privacy Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. General Log Retention Policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Defined Terms and References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Open Source Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendix</a></li>
 </ul>
 
         </div>
@@ -177,8 +159,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="proximity-credential-presentation-test-matrix">
-<h1><span class="section-number">16.4.1.6. </span>Proximity Credential Presentation Test Matrix<a class="headerlink" href="#proximity-credential-presentation-test-matrix" title="Link to this heading">¶</a></h1>
+  <section id="proximity-credential-verifier-test-matrix">
+<span id="test-plans-proximity-presentation"></span><h1>Proximity Credential Verifier Test Matrix<a class="headerlink" href="#proximity-credential-verifier-test-matrix" title="Link to this heading">¶</a></h1>
 <p>This section provides the set of test cases designed for technical implementers and development teams responsible for creating and deploying Credential Verifiers solutions for proximity flows. It is also intended for assessment bodies inspecting and validating the implementations of Credential Verifiers solutions for proximity flows.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -299,6 +281,241 @@
 <td><p>Test resistance to replay attacks.</p></td>
 <td><p>System is resistant to replay attacks.</p></td>
 </tr>
+<tr class="row-even"><td><p>PPR-021</p></td>
+<td><p>Device Engagement</p></td>
+<td><p>Verify that Device Engagement structure is CBOR encoded.</p></td>
+<td><p>Device Engagement structure is correctly encoded in CBOR format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-022</p></td>
+<td><p>Device Engagement</p></td>
+<td><p>Test that ephemeral public key is of type allowed by selected cipher suite.</p></td>
+<td><p>Ephemeral public key meets the requirements of the selected cipher suite.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-023</p></td>
+<td><p>BLE Configuration</p></td>
+<td><p>Verify that only Central Client mode is supported.</p></td>
+<td><p>Only Central Client mode is supported for BLE connections.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-024</p></td>
+<td><p>Capabilities</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> when present.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HandoverSessionEstablishmentSupport</span></code> is correctly set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-025</p></td>
+<td><p>Capabilities</p></td>
+<td><p>Verify that <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> when present.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> is correctly set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-026</p></td>
+<td><p>mdoc Request</p></td>
+<td><p>Test that mdoc Request messages are CBOR encoded.</p></td>
+<td><p>mdoc Request messages are correctly encoded in CBOR format.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-027</p></td>
+<td><p>mdoc Request</p></td>
+<td><p>Verify that mdoc request is encrypted with session key.</p></td>
+<td><p>mdoc request is correctly encrypted with session key.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-028</p></td>
+<td><p>mdoc Request</p></td>
+<td><p>Test that mdoc request is transmitted via BLE protocol.</p></td>
+<td><p>mdoc request is correctly transmitted via BLE protocol.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-029</p></td>
+<td><p>mdoc Response</p></td>
+<td><p>Verify that mdoc Response messages are CBOR encoded.</p></td>
+<td><p>mdoc Response messages are correctly encoded in CBOR format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-030</p></td>
+<td><p>mdoc Response</p></td>
+<td><p>Test that mdoc response is encrypted with session key.</p></td>
+<td><p>mdoc response is correctly encrypted with session key.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-031</p></td>
+<td><p>Key Management</p></td>
+<td><p>Test that private ephemeral key is kept secret.</p></td>
+<td><p>Private ephemeral key is properly secured and not exposed.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-032</p></td>
+<td><p>Key Management</p></td>
+<td><p>Test that public ephemeral key is used in session establishment.</p></td>
+<td><p>Public ephemeral key is correctly used for session establishment.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-033</p></td>
+<td><p>Session Key Derivation</p></td>
+<td><p>Test that session keys are derived using key agreement protocol.</p></td>
+<td><p>Session keys are correctly derived using the key agreement protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-034</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is prepared correctly.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is properly prepared with required components.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-035</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is signed by RP Instance.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is correctly signed by Relying Party Instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-036</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is encrypted with session keys.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is properly encrypted with session keys.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-037</p></td>
+<td><p>Session Establishment</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> includes <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and attribute request.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message includes required <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> and attribute request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-038</p></td>
+<td><p>Message Transmission</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> is transmitted over secure BLE connection.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message is transmitted over secure BLE connection.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-039</p></td>
+<td><p>Session Key Computation</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance session key computation.</p></td>
+<td><p>Wallet Instance correctly computes session key.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-040</p></td>
+<td><p>Message Decryption</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance decrypting <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message.</p></td>
+<td><p>Wallet Instance successfully decrypts <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> message.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-041</p></td>
+<td><p>Signature Verification</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance verifying RP Instance signature.</p></td>
+<td><p>Wallet Instance correctly verifies Relying Party Instance signature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-042</p></td>
+<td><p>Attribute Request Processing</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance decrypting attribute request.</p></td>
+<td><p>Wallet Instance successfully decrypts attribute request.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-043</p></td>
+<td><p>User Consent</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance prompting user for consent.</p></td>
+<td><p>Wallet Instance correctly prompts user for consent to release attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-044</p></td>
+<td><p>Certificate Display</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance displaying RP Registration Certificate.</p></td>
+<td><p>Wallet Instance displays Relying Party Registration Certificate for transparency.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-045</p></td>
+<td><p>Credential Retrieval</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance retrieving requested mdoc Digital Credentials.</p></td>
+<td><p>Wallet Instance successfully retrieves requested mdoc Digital Credentials.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-046</p></td>
+<td><p>SessionData Preparation</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance preparing <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message.</p></td>
+<td><p>Wallet Instance correctly prepares <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message with Digital Credentials.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-047</p></td>
+<td><p>Authentication Data Signing</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance signing required authentication data.</p></td>
+<td><p>Wallet Instance correctly signs required authentication data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-048</p></td>
+<td><p>Message Encryption</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> is encrypted with session keys.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SessionData</span></code> message is properly encrypted with session keys.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-049</p></td>
+<td><p>CBOR Encoding</p></td>
+<td><p>Test that mdoc response is encoded in CBOR format.</p></td>
+<td><p>mdoc response is correctly encoded in CBOR format.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-050</p></td>
+<td><p>Data Verification</p></td>
+<td><p>Test that RP Instance decrypts <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+<td><p>Relying Party Instance successfully decrypts <code class="docutils literal notranslate"><span class="pre">SessionData</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-051</p></td>
+<td><p>Signature Verification</p></td>
+<td><p>Test that RP Instance verifies Wallet Instance signature.</p></td>
+<td><p>Relying Party Instance correctly verifies Wallet Instance signature.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-052</p></td>
+<td><p>Document Validation</p></td>
+<td><p>Test that RP Instance checks mdoc validity and Issuer signature.</p></td>
+<td><p>Relying Party Instance correctly validates mdoc and Issuer signature.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-053</p></td>
+<td><p>BLE Disconnection</p></td>
+<td><p>Test that GATT Client unsubscribes from characteristics.</p></td>
+<td><p>GATT Client properly unsubscribes from characteristics.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-054</p></td>
+<td><p>BLE Disconnection</p></td>
+<td><p>Test that GATT Client disconnects from GATT server.</p></td>
+<td><p>GATT Client properly disconnects from GATT server.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-055</p></td>
+<td><p>Request Structure Compliance</p></td>
+<td><p>Test that mdoc Request is compliant with required structure.</p></td>
+<td><p>mdoc Request complies with required structure and includes necessary components.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-056</p></td>
+<td><p>Response Structure Compliance</p></td>
+<td><p>Test that mdoc Response is compliant with required structure.</p></td>
+<td><p>mdoc Response complies with required structure and includes necessary components.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-057</p></td>
+<td><p>Document Structure Compliance</p></td>
+<td><p>Test that documents are compliant with required structure.</p></td>
+<td><p>Documents comply with required structure and include necessary components.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-058</p></td>
+<td><p>Document Type Validation</p></td>
+<td><p>Test that mDL document type is correctly set.</p></td>
+<td><p>mDL document type is correctly set to <code class="docutils literal notranslate"><span class="pre">org.iso.18013.5.1.mDL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-059</p></td>
+<td><p>DeviceSigned Structure</p></td>
+<td><p>Test that deviceSigned structure is compliant.</p></td>
+<td><p>deviceSigned structure complies with required format and includes necessary components.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-060</p></td>
+<td><p>Device Authentication</p></td>
+<td><p>Test that <code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> includes <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code>.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">deviceAuth</span></code> structure includes required <code class="docutils literal notranslate"><span class="pre">deviceSignature</span></code> for authentication.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-061</p></td>
+<td><p>Wallet Attestation Inclusion</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance including Wallet Attestation when requested.</p></td>
+<td><p>Wallet Instance includes Wallet Attestation when requested by Relying Party.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-062</p></td>
+<td><p>AAL Claim Inclusion</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance including <code class="docutils literal notranslate"><span class="pre">aal</span></code> claim in Wallet Attestation.</p></td>
+<td><p>Wallet Instance includes <code class="docutils literal notranslate"><span class="pre">aal</span></code> claim as disclosure in Wallet Attestation.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-063</p></td>
+<td><p>User Consent Bypass</p></td>
+<td><p>Test that Relying Party correctly handles Wallet Instance not requesting user consent for Wallet Attestation.</p></td>
+<td><p>Wallet Instance does not request user consent for technical Wallet Attestation attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-064</p></td>
+<td><p>Session Termination Conditions</p></td>
+<td><p>Test that session is terminated under specified conditions.</p></td>
+<td><p>Session is properly terminated when specified conditions occur.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-065</p></td>
+<td><p>Session Termination Initiation</p></td>
+<td><p>Test that session termination is initiated correctly.</p></td>
+<td><p>Session termination is properly initiated when no further requests are sent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPR-066</p></td>
+<td><p>Key Destruction</p></td>
+<td><p>Test that session keys are destroyed on termination.</p></td>
+<td><p>Session keys and ephemeral key material are properly destroyed.</p></td>
+</tr>
+<tr class="row-even"><td><p>PPR-067</p></td>
+<td><p>Channel Closure</p></td>
+<td><p>Test that communication channel is closed on termination.</p></td>
+<td><p>Communication channel used for data retrieval is properly closed.</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -316,14 +533,9 @@
         <div class="button_nav">
             <div class="left">
                 
-                <a href="test-plans-remote-presentation.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">16.4.1.5. </span>Remote Credential Presentation Test Matrix</span></a>
-                
             </div>
 
             <div class="right">
-                
-                    <a href="appendix-oas-pdnd-issuer.html"><span><span class="section-number">16.5. </span>Credential Issuer PDND OpenAPI Specification</span><span class="icon">&gt;</span></a>
                 
             </div>
         </div>
@@ -331,7 +543,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 30/09/2025.
+      Last updated on 23/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

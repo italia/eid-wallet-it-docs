@@ -19,7 +19,7 @@ Credential Issuance Endpoints
 
 .. include:: credential-issuance-endpoint.rst
 
-e-Service PDND Credential Issuer Catalogue
+e-Service PDND Credential Issuer Catalog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Credential Issuers MUST provide the following e-services through PDND to:

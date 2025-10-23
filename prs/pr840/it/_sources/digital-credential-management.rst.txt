@@ -10,4 +10,4 @@ Gestione degli Attestati Elettronici
 
   credential-data-model.rst
   credential-revocation.rst
-  registry-catalogue.rst
+

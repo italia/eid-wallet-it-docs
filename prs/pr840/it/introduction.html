@@ -19,7 +19,7 @@
     <link rel="index" title="Indice" href="genindex.html" />
     <link rel="search" title="Cerca" href="search.html" />
     <link rel="next" title="2. Brand Identity" href="brand-identity.html" />
-    <link rel="prev" title="Documentazione Tecnica IT-Wallet - 1.1.0" href="index.html" /> 
+    <link rel="prev" title="Documentazione Tecnica IT-Wallet - 1.2.1" href="index.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -134,19 +134,23 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="brand-identity.html">2. Brand Identity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture-overview.html">3. Panoramica dell'Architettura</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functionalities.html">4. Design dell'Esperienza Utente</a></li>
-<li class="toctree-l1"><a class="reference internal" href="trust.html">5. L'Infrastruttura di Trust</a></li>
-<li class="toctree-l1"><a class="reference internal" href="entities.html">6. Entità</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">7. Gestione degli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">8. Flussi relativi agli Attestati Elettronici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="endpoints.html">9. Endpoints</a></li>
-<li class="toctree-l1"><a class="reference internal" href="algorithms.html">10. Algoritmi Crittografici</a></li>
-<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">11. Considerazioni di Sicurezza e Privacy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">12. Politiche Generali di Conservazione dei Log</a></li>
-<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">13. Termini Definiti e Riferimenti</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">14. Come contribuire</a></li>
-<li class="toctree-l1"><a class="reference internal" href="open-source.html">15. Rilasci Open Source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">16. Appendice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onboarding-high-level.html">4. Sistema di Onboarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionalities.html">5. Design dell'Esperienza Utente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trust-infrastructure.html">6. L'Infrastruttura di Trust</a></li>
+<li class="toctree-l1"><a class="reference internal" href="registry.html">7. Infrastruttura del Registro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entity-onboarding.html">8. Onboarding delle Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="x5c-evaluation.html">9. Operazioni di Gestione dei Certificati X.509</a></li>
+<li class="toctree-l1"><a class="reference internal" href="entities.html">10. Entità</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-management.html">11. Gestione degli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digital-credential-flows.html">12. Flussi relativi agli Attestati Elettronici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endpoints.html">13. Endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">14. Algoritmi Crittografici</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-privacy-considerations.html">15. Considerazioni di Sicurezza e Privacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="log-retention-policy.html">16. Politiche Generali di Conservazione dei Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="defined-terms-and-references.html">17. Termini Definiti e Riferimenti</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">18. Come contribuire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open-source.html">19. Rilasci Open Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">20. Appendice</a></li>
 </ul>
 
         </div>
@@ -231,8 +235,8 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 </dd>
 </dl>
 </section>
-<section id="percorsi-di-lettura-per-ruolo">
-<h3><span class="section-number">1.3.2. </span>Percorsi di Lettura per Ruolo<a class="headerlink" href="#percorsi-di-lettura-per-ruolo" title="Link to this heading">¶</a></h3>
+<section id="journey-di-lettura-per-ruolo">
+<h3><span class="section-number">1.3.2. </span>Journey di Lettura per Ruolo<a class="headerlink" href="#journey-di-lettura-per-ruolo" title="Link to this heading">¶</a></h3>
 <p>Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>, <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>, <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a> e <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.</p>
 <section id="fornitore-di-wallet">
 <h4><span class="section-number">1.3.2.1. </span>Fornitore di Wallet<a class="headerlink" href="#fornitore-di-wallet" title="Link to this heading">¶</a></h4>
@@ -270,12 +274,12 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 <p><strong>Sezioni secondarie:</strong></p>
 <ul class="simple">
 <li><p><strong>Sezione</strong> <a class="reference internal" href="wallet-solution.html#soluzione-wallet"><span class="std std-ref">Soluzione Wallet</span></a>: Comprensione delle interazioni e dei requisiti dell'Istanza del Wallet.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>: Comprensione di come le Credenziali Elettroniche vengono presentate sia in scenari remoti che di prossimità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>: Comprensione di come le Credenziali Elettroniche vengono presentate sia in scenari remoti che di prossimità.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>: Integrazione con la Piattaforma Nazionale di Interoperabilità dei Dati.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>.</p>
+<p>Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione <a class="reference internal" href="e-service-pdnd.html#e-service-pdnd"><span class="std std-ref">e-Service PDND</span></a>.</p>
 </div>
 </section>
 <section id="fonte-autentica">
@@ -303,8 +307,10 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 <li><p><strong>Sezione</strong> <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-solution.html#soluzione-di-relying-party"><span class="std std-ref">Soluzione di Relying Party</span></a>: Requisiti completi di implementazione del Verificatore di Credenziali.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="digital-credential-management.html#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-presentation.html#presentazione-della-credenziale-digitale"><span class="std std-ref">Presentazione della Credenziale Digitale</span></a>: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.</p></li>
-<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-endpoint.html#endpoint-della-relying-party"><span class="std std-ref">Endpoint della Relying Party</span></a>: Specifiche API relative alla federazione e alla verifica.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="credential-presentation.html#presentazione-dell-attestato-elettronico"><span class="std std-ref">Presentazione dell'Attestato Elettronico</span></a>: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-endpoints.html#endpoint-della-relying-party"><span class="std std-ref">Endpoint della Relying Party</span></a>: Panoramica completa di tutti gli endpoint della Relying Party e i loro ambiti.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-remote-flow-endpoints.html#endpoint-per-flussi-remoti-della-relying-party"><span class="std std-ref">Endpoint per Flussi Remoti della Relying Party</span></a>: Specifiche API complete della Relying Party per flussi remoti e di prossimità.</p></li>
+<li><p><strong>Sezione</strong> <a class="reference internal" href="relying-party-provider-backend-endpoint.html#endpoint-del-backend-del-provider-di-relying-party"><span class="std std-ref">Endpoint del Backend del Provider di Relying Party</span></a>: Specifiche API del Backend del Provider di Relying Party per la gestione del ciclo di vita delle App di Verifica.</p></li>
 <li><p><strong>Sezione</strong> <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>: Requisiti della suite crittografica.</p></li>
 </ul>
 <p><strong>Sezioni secondarie:</strong></p>
@@ -322,7 +328,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 </dd>
 <dt><strong>Standard e Riferimenti:</strong></dt><dd><p>La Sezione <a class="reference internal" href="defined-terms-and-references.html#termini-definiti-e-riferimenti"><span class="std std-ref">Termini Definiti e Riferimenti</span></a> fornisce riferimenti normativi, termini definiti e standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti.</p>
 </dd>
-<dt><strong>Test e Validazione:</strong></dt><dd><p>La Sezione <span class="xref std std-ref">test-plans:Piani di Test</span> fornisce una matrice di test completa per la validazione delle implementazioni tra diversi ruoli e flussi di interazione.</p>
+<dt><strong>Test e Validazione:</strong></dt><dd><p>La Sezione <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a> fornisce una matrice di test completa per la validazione delle implementazioni tra diversi ruoli e flussi di interazione.</p>
 </dd>
 </dl>
 </section>
@@ -334,7 +340,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 <li><p><strong>Fase di Fondazione</strong>: Leggere le Sezioni <a class="reference internal" href="#introduzione"><span class="std std-ref">Introduzione</span></a>, <a class="reference internal" href="brand-identity.html#brand-identity"><span class="std std-ref">Brand Identity</span></a>, <a class="reference internal" href="architecture-overview.html#panoramica-dell-architettura"><span class="std std-ref">Panoramica dell'Architettura</span></a> e <a class="reference internal" href="trust.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a> per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.</p></li>
 <li><p><strong>Fase Specifica per Ruolo</strong>: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione <a class="reference internal" href="functionalities.html#design-dell-esperienza-utente"><span class="std std-ref">Design dell'Esperienza Utente</span></a>, <a class="reference internal" href="entities.html#entita"><span class="std std-ref">Entità</span></a> e la Sezione <a class="reference internal" href="endpoints.html#endpoints"><span class="std std-ref">Endpoints</span></a> per maggiori dettagli).</p></li>
 <li><p><strong>Fase di Integrazione</strong>: Rivedere le sezioni secondarie rilevanti per le interazioni con altri partecipanti all'ecosistema e i requisiti di integrazione della piattaforma.</p></li>
-<li><p><strong>Fase di Validazione</strong>: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni <a class="reference internal" href="security-privacy-considerations.html#considerazioni-di-sicurezza-e-privacy"><span class="std std-ref">Considerazioni di Sicurezza e Privacy</span></a>, <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a> e <span class="xref std std-ref">test-plans:Piani di Test</span> per ulteriori informazioni.</p></li>
+<li><p><strong>Fase di Validazione</strong>: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni <a class="reference internal" href="security-privacy-considerations.html#considerazioni-di-sicurezza-e-privacy"><span class="std std-ref">Considerazioni di Sicurezza e Privacy</span></a>, <a class="reference internal" href="log-retention-policy.html#politiche-generali-di-conservazione-dei-log"><span class="std std-ref">Politiche Generali di Conservazione dei Log</span></a> e <a class="reference internal" href="test-plans.html#test-plans"><span class="std std-ref">Test Plans</span></a> per ulteriori informazioni.</p></li>
 </ol>
 </div></blockquote>
 <div class="admonition note">
@@ -364,7 +370,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 <li><a class="reference internal" href="#linguaggio-normativo-e-convenzioni">1.2. Linguaggio Normativo e Convenzioni</a></li>
 <li><a class="reference internal" href="#come-leggere-le-specifiche">1.3. Come leggere le Specifiche</a><ul>
 <li><a class="reference internal" href="#panoramica-della-struttura-delle-specifiche">1.3.1. Panoramica della Struttura delle Specifiche</a></li>
-<li><a class="reference internal" href="#percorsi-di-lettura-per-ruolo">1.3.2. Percorsi di Lettura per Ruolo</a><ul>
+<li><a class="reference internal" href="#journey-di-lettura-per-ruolo">1.3.2. Journey di Lettura per Ruolo</a><ul>
 <li><a class="reference internal" href="#fornitore-di-wallet">1.3.2.1. Fornitore di Wallet</a></li>
 <li><a class="reference internal" href="#fornitore-di-credenziali">1.3.2.2. Fornitore di Credenziali</a></li>
 <li><a class="reference internal" href="#fonte-autentica">1.3.2.3. Fonte Autentica</a></li>
@@ -390,7 +396,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
             <div class="left">
                 
                 <a href="index.html">
-                    <span class="icon">&lt;</span><span>Documentazione Tecnica IT-Wallet - 1.1.0</span></a>
+                    <span class="icon">&lt;</span><span>Documentazione Tecnica IT-Wallet - 1.2.1</span></a>
                 
             </div>
 
@@ -404,7 +410,7 @@ Il documento, distinguendo tra aspetti normativi obbligatori e buone pratiche pr
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/09/2025.
+      Ultimo aggiornamento 23/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

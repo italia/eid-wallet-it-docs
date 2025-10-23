@@ -39,7 +39,7 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 .. note::
   **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata (:ref:`WP_023 <wallet-instance-testcases>`). Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
 
-**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
 
 Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`mobile-application-instance:Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
 
@@ -241,34 +241,34 @@ Below is a non-normative example of an Instance Initialization Error Response.
 The following table lists HTTP Status Codes and related error codes that are supported for the error response (:ref:`WP_036–040 <wallet-instance-testcases>`):
 
 .. list-table::
-   :class: longtable
-   :widths: 20 20 50
-   :header-rows: 1
-
-   * - **HTTP Status Code**
-     - **Error Code**
-     - **Description**
-   * - ``400 Bad Request``
-     - ``bad_request``
-     - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
-   * - ``403 Forbidden``
-     - ``integrity_check_error``
-     - The device does not meet the Application Provider's minimum security requirements.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The provided nonce is invalid, expired, or already used.
-   * - ``403 Forbidden``
-     - ``invalid_request``
-     - The signature of the Key Attestation is invalid.
-   * - ``422 Unprocessable Content`` [OPTIONAL]
-     - ``validation_error``
-     - The request does not adhere to the required format.
-   * - ``500 Internal Server Error``
-     - ``server_error``
-     - An internal error occurred while processing the request.
-   * - ``503 Service Unavailable``
-     - ``temporarily_unavailable``
-     - The service is unavailable. Please try again later.
+    :class: longtable
+    :widths: 20 20 50
+    :header-rows: 1
+ 
+    * - **HTTP Status Code**
+      - **Error Code**
+      - **Description**
+    * - ``400 Bad Request``
+      - ``bad_request``
+      - The request is malformed, missing required parameters, or includes invalid and unknown parameters.
+    * - ``403 Forbidden``
+      - ``integrity_check_error``
+      - The device does not meet the Application Provider's minimum security requirements.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The provided nonce is invalid, expired, or already used.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The signature of the Key Attestation is invalid.
+    * - ``422 Unprocessable Content`` [OPTIONAL]
+      - ``validation_error``
+      - The request does not adhere to the required format.
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - An internal error occurred while processing the request.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - The service is unavailable. Please try again later.
 
 
 Mobile Application Key Binding
@@ -390,7 +390,7 @@ Below is a non-normative example of a Key Binding Request JWT header and payload
 Mobile Application Key Binding Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-endpoint:Relying Party Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet Attestation Issuance Response` sections.
+The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-provider-backend-endpoint:Relying Party Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet Attestation Issuance Response` sections.
 
 
 Mobile Application Key Binding Error Response
