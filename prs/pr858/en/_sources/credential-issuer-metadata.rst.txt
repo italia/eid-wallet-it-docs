@@ -110,7 +110,11 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 
                 - **description**: REQUIRED. String value containing a description of the Digital Credential.
                 - **background_color**: OPTIONAL. String value of a background color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
-                - **background_image**: OPTIONAL. Object containing ``uri`` parameter indicating where the Wallet can obtain the background image of the Digital Credential from the Credential Issuer.
+                - **background_image**:Object containing information about the background image to be displayed for the type. This property is OPTIONAL. The object contains the following sub-values:
+                  
+                  - **uri**: A URI pointing to the background image. [REQUIRED]
+                  - **uri#integrity**: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+                
                 - **text_color**: String value of a text color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
 
         - **vct**: REQUIRED only if ``format`` is set to "*dc+sd-jwt*". As defined in [:ref:`credential-data-model:SD-JWT-VC Credential Format`].
