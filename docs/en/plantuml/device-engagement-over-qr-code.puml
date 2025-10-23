@@ -1,0 +1,16 @@
+@startuml
+autonumber
+    
+    participant "Wallet Unit" as w
+    participant "RP Instance" as v
+
+    
+    activate w
+  
+    w->v: Show the QR Code including ""DeviceEngagement""
+    activate v
+    v-->w: Scan the QR Code
+    
+    deactivate v
+    deactivate w
+@enduml

@@ -47,7 +47,7 @@ La specifica è organizzata nelle seguenti sezioni principali:
   Fornisce dettagli tecnici supplementari, modelli di implementazione e framework di test, inclusa la gestione delle istanze di applicazioni mobili, specifiche di integrazione della piattaforma nazionale e matrici di test complete per la validazione dell'ecosistema.
 
 
-Percorsi di Lettura per Ruolo
+Journey di Lettura per Ruolo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Prima di immergersi nelle sezioni specifiche per ruolo, tutti i lettori dovrebbero familiarizzare con i concetti fondamentali delineati nelle Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust:L'Infrastruttura di Trust`, che stabiliscono il vocabolario comune e l'infrastruttura di fiducia che forniscono il quadro sottostante per l'intero ecosistema.
@@ -92,12 +92,12 @@ Per i lettori interessati all'implementazione di una Soluzione di **Fornitore di
 **Sezioni secondarie:**
 
 * **Sezione** :ref:`wallet-solution:Soluzione Wallet`: Comprensione delle interazioni e dei requisiti dell'Istanza del Wallet.
-* **Sezione** :ref:`credential-presentation:Presentazione della Credenziale Digitale`: Comprensione di come le Credenziali Elettroniche vengono presentate sia in scenari remoti che di prossimità.
+* **Sezione** :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`: Comprensione di come le Credenziali Elettroniche vengono presentate sia in scenari remoti che di prossimità.
 * **Sezione** :ref:`e-service-pdnd:e-Service PDND`: Integrazione con la Piattaforma Nazionale di Interoperabilità dei Dati.
 
 .. note::
 
-    Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione della Credenziale Digitale`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.  
+    Se il Fornitore di Credenziali autentica l'Utente deve conformarsi alla Sezione :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`. Se la Fonte Autentica che fornisce gli attributi dell'Utente appartiene al settore pubblico deve conformarsi alla Sezione :ref:`e-service-pdnd:e-Service PDND`.  
 
 Fonte Autentica
 """""""""""""""
@@ -127,8 +127,10 @@ I lettori interessati all'implementazione o alla gestione di una Soluzione di **
 * **Sezione** :ref:`functionalities:Design dell'Esperienza Utente`: Requisiti funzionali di alto livello a supporto dell’Esperienza Utente in tutte le fasi di interazione tra l’Utente e il servizio.
 * **Sezione** :ref:`relying-party-solution:Soluzione di Relying Party`: Requisiti completi di implementazione del Verificatore di Credenziali.
 * **Sezione** :ref:`digital-credential-management:Gestione degli Attestati Elettronici`: Comprensione dei formati delle Credenziali Elettroniche e verifica della validità.
-* **Sezione** :ref:`credential-presentation:Presentazione della Credenziale Digitale`: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.
-* **Sezione** :ref:`relying-party-endpoint:Endpoint della Relying Party`: Specifiche API relative alla federazione e alla verifica.
+* **Sezione** :ref:`credential-presentation:Presentazione dell'Attestato Elettronico`: Implementazione del flusso di presentazione sia per scenari remoti che di prossimità.
+* **Sezione** :ref:`relying-party-endpoints:Endpoint della Relying Party`: Panoramica completa di tutti gli endpoint della Relying Party e i loro ambiti.
+* **Sezione** :ref:`relying-party-remote-flow-endpoints:Endpoint per Flussi Remoti della Relying Party`: Specifiche API complete della Relying Party per flussi remoti e di prossimità.
+* **Sezione** :ref:`relying-party-provider-backend-endpoint:Endpoint del Backend del Provider di Relying Party`: Specifiche API del Backend del Provider di Relying Party per la gestione del ciclo di vita delle App di Verifica.
 * **Sezione** :ref:`algorithms:Algoritmi Crittografici`: Requisiti della suite crittografica.
 
 **Sezioni secondarie:**
@@ -148,7 +150,7 @@ Indipendentemente dal ruolo principale, alcune sezioni contengono informazioni r
     La Sezione :ref:`defined-terms-and-references:Termini Definiti e Riferimenti` fornisce riferimenti normativi, termini definiti e standard tecnici per consentire un'interoperabilità sicura e corretta tra tutti i partecipanti.
 
 **Test e Validazione:**
-    La Sezione :ref:`test-plans:Piani di Test` fornisce una matrice di test completa per la validazione delle implementazioni tra diversi ruoli e flussi di interazione.
+    La Sezione :ref:`test-plans:Test Plans` fornisce una matrice di test completa per la validazione delle implementazioni tra diversi ruoli e flussi di interazione.
 
 Approccio all'Implementazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,7 +160,7 @@ Si suggerisce il seguente approccio di lettura in fasi:
     1. **Fase di Fondazione**: Leggere le Sezioni :ref:`introduction:Introduzione`, :ref:`brand-identity:Brand Identity`, :ref:`architecture-overview:Panoramica dell'Architettura` e :ref:`trust:L'Infrastruttura di Trust` per stabilire una comprensione concettuale del paradigma IT-Wallet, degli elementi di Brand Identity e dell'infrastruttura di fiducia.
     2. **Fase Specifica per Ruolo**: Concentrarsi sulle sezioni essenziali del ruolo primario per comprendere i requisiti specifici di Esperienza Utente, funzionali e di implementazione, i componenti tecnici principali, l'architettura generale e i flussi di interazione (vedere la Sezione :ref:`functionalities:Design dell'Esperienza Utente`, :ref:`entities:Entità` e la Sezione :ref:`endpoints:Endpoints` per maggiori dettagli).
     3. **Fase di Integrazione**: Rivedere le sezioni secondarie rilevanti per le interazioni con altri partecipanti all'ecosistema e i requisiti di integrazione della piattaforma.
-    4. **Fase di Validazione**: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` e :ref:`test-plans:Piani di Test` per ulteriori informazioni.
+    4. **Fase di Validazione**: Studiare le considerazioni sulla sicurezza, le linee guida per i test e i requisiti di conformità secondo le Sezioni :ref:`security-privacy-considerations:Considerazioni di Sicurezza e Privacy`, :ref:`log-retention-policy:Politiche Generali di Conservazione dei Log` e :ref:`test-plans:Test Plans` per ulteriori informazioni.
 
 .. note::
 

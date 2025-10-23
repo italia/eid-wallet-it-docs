@@ -26,31 +26,31 @@ Flusso di Backup
 
 Di seguito, la descrizione dei passaggi di :numref:`fig_Backup_flow`:
 
-**Passaggio 1**: L'Utente seleziona l'opzione per eseguire il backup delle Credenziali memorizzate nell'Istanza del Wallet.
+**Passaggio 1**: L'Utente seleziona l'opzione per eseguire il backup delle Credenziali memorizzate nell'Istanza del Wallet (:ref:`WP_120 <credential-backup-testcases>`).
 
-**Passaggi 2-3**: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente.
-L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup.
+**Passaggi 2-3**: L'Istanza del Wallet, utilizzando le API di backup, seleziona casualmente 10 frasi chiave da un elenco di parole pre-generato e le mostra all'Utente (:ref:`WP_120a <credential-backup-testcases>`).  
+L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle proposte dal sistema (ad esempio, in un'app di gestione password) poiché sono fondamentali per il ripristino del backup (:ref:`WP_120b <credential-backup-testcases>`).
 
 .. note::
   Come evidenziato nell'ARF, la crittografia è necessaria perché il file di backup è considerato sensibile. Anche se un attaccante conosce solo gli identificatori del Fornitore di Credenziali, può dedurre i diversi tipi di Credenziali Elettroniche, il che costituisce una violazione della privacy dell'Utente.
 
 .. note::
-  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su `RFC 2898`_ ed è raccomandata dal `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati `qui <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_.
+  Per estrarre la chiave dall'elenco delle parole selezionate DEVE essere applicata una funzione di derivazione della chiave. Password-Based-Key-Derivation Function 2 (PBKDF2) è tra le più utilizzate basate su `RFC 2898`_ ed è raccomandata dal `NIST 800-132 <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf>`_. Esistono anche altre tecniche rilevanti disponibili e ampiamente utilizzate, come Bcrypt, Scrypt e Argon2. Maggiori dettagli su questo approccio possono essere trovati `qui <https://cryptobook.nakov.com/mac-and-key-derivation/kdf-deriving-key-from-password>`_ (:ref:`WP_121 <credential-backup-testcases>`).
 
 .. note::
-  Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nell’`OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_.
+  Il livello di complessità per PBKDF2 è implementato attraverso un conteggio di iterazioni, che dovrebbe essere impostato diversamente in base all'algoritmo di hashing interno utilizzato. Il valore consigliato per l'algoritmo di hashing ``SHA-256`` è di 600000 iterazioni come indicato nell’`OWASP Password Storage Cheatsheet <https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#pbkdf2>`_ (:ref:`WP_121a <credential-backup-testcases>`).
 
-**Passaggio 4**: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup.
+**Passaggio 4**: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup (:ref:`WP_122 <credential-backup-testcases>`):
 
-- Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` come voce nel JWT di backup.
-- Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Unit Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Unit Attestation (claim ``cnf``). L'Istanza del Wallet DEVE verificare la validità della Wallet Unit Attestation prima di firmare il JWT di backup.
-- Aggiunge il JWT di backup firmato come voce al file di backup.
-- Cripta il file di backup utilizzando la frase chiave fornita.
+- Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` come voce nel JWT di backup (:ref:`WP_122d <credential-backup-testcases>`).
+- Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Unit Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Unit Attestation (claim ``cnf``). L'Istanza del Wallet DEVE verificare la validità della Wallet Unit Attestation prima di firmare il JWT di backup (:ref:`WP_123 <credential-backup-testcases>`).
+- Aggiunge il JWT di backup firmato come voce al file di backup (:ref:`WP_122 <credential-backup-testcases>`).
+- Cripta il file di backup utilizzando la frase chiave fornita (:ref:`WP_124 <credential-backup-testcases>`).
 
 .. note::
-  Il JWT di Backup PUÒ contenere la cronologia delle transazioni per ogni voce di Credenziale all'interno del claim ``credentials_backup``.
+  Il JWT di Backup PUÒ contenere la cronologia delle transazioni per ogni voce di Credenziale all'interno del claim ``credentials_backup`` (:ref:`WP_122c <credential-backup-testcases>`).
 
-**Passaggio 5**: All'Utente verrà richiesto di scegliere un'opzione di archiviazione per conservare in modo sicuro il file di backup. Le opzioni possono includere l'archiviazione nativa o soluzioni di archiviazione esterne, come l'archiviazione cloud, dispositivi USB, consegna via e-mail o altro.
+**Passaggio 5**: All'Utente verrà richiesto di scegliere un'opzione di archiviazione per conservare in modo sicuro il file di backup. Le opzioni possono includere l'archiviazione nativa o soluzioni di archiviazione esterne, come l'archiviazione cloud, dispositivi USB, consegna via e-mail o altro (:ref:`WP_125 <credential-backup-testcases>`).
 
 **Passaggio 6**: Nel caso in cui l'Utente preferisca l'archiviazione nativa, il file di backup viene memorizzato sul dispositivo dell'Utente.
 
@@ -76,7 +76,7 @@ Un esempio non normativo dell'intestazione e del payload del JWT di backup è il
      }
   }
 
-L'intestazione JOSE del JWT di backup DEVE contenere i seguenti parametri OBBLIGATORI:
+L'intestazione JOSE del JWT di backup DEVE contenere i seguenti parametri OBBLIGATORI (:ref:`WP_122a <credential-backup-testcases>`):
 
 .. list-table::
   :class: longtable
@@ -93,7 +93,7 @@ L'intestazione JOSE del JWT di backup DEVE contenere i seguenti parametri OBBLIG
     - DEVE essere impostato su ``wallet-unit-credentials-backup+jwt``
     - N/A
 
-Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI:
+Il corpo del JWT di backup contiene i seguenti claim OBBLIGATORI (:ref:`WP_122b <credential-backup-testcases>`):
 
 .. list-table::
   :class: longtable
@@ -124,18 +124,17 @@ Flusso di ripristino per Credenziale con associazione hardware
    :alt: La figura illustra il diagramma di sequenza per il flusso di ripristino, con i passaggi spiegati di seguito.
    :caption: `Flusso di Ripristino <https://www.plantuml.com/plantuml/png/TP5DRnCn48Rl-ok6N9fAP5T0-L0LHVrea2fQ4OWg3e2gsVKqCNZjbJrk6w7-T-or5TYssPCpVfzd9kCZnsZPjwfu8NMZl21OCtVkiAeitfKhoMjVUqUsCPf9SzcOjkeKwiXC70ibw-hqOBA8fQlBYwf5nsH3wVeq42WrsRAB_W8RDXQkWWlGmIWUHaMnt8HyUtrYl1PeD-CxL8fuQPHdQVJBbDjpS4Qtig7HFlmf87pFO-VQCUg60lQjBq2kP31_syd6NkOE8SXaRp0cdydLsFpstN4dbsJZ784wwKjml3Y7NCpaGr4CuTRKKj6IZSLL92_xt_aVmOLfK46wJMCcoSDsD_Dx7fyxvya6E1r2gs8FvlUTaeraKBWndW75B--u9SrmOonqnicuHAbNnM06c7nVIo58_vpCOBYvgFrA2YFdrh9pHR-TaFCI3c4qhMUlof1mmKIGbZojwjaevQQJVxdN9IoiQJi6Dd3LAOC2yj8-IaK3QWR30PFXJGbBKjJm_npS12dau5QIHqpSGT_vLWg2kMxifcCI0mLg4MuuK9ze0ukrHKSkkRoCfiVldRnlozs-fwR7ZjtUToMSKVP65dxeKCqDaYmzEpnvhoHuNyBdcb5gk2H6WOn3RBg3-r12du3nb_tv_BXde3WYBNoh_W80>`_
 
-
-Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.
+Considerando che l'Utente ha inizializzato la nuova Istanza del Wallet e questa è in stato attivo avendo ottenuto un nuovo Attestato Elettronico di Dati di Identificazione Personale, questa specifica allenta il requisito dell'ARF riguardante l'aggiunta dell'Attestato Elettronico di Dati di Identificazione Personale nel file di backup.  
 Di seguito, la descrizione dei passaggi di :numref:`fig_Restore_flow`:
 
-**Passaggi 1-6**: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
-L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero.
-Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità. Per fare ciò, estrae prima il JWT della Wallet Unit Attestation dal claim ``wallet_attestation`` e ottiene la relativa chiave pubblica utilizzando la Wallet Unit Attestation (claim ``cnf``).
+**Passaggi 1-6**: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.  
+L'Utente seleziona `ripristina backup delle Credenziali Elettroniche` nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero (:ref:`WP_126 <credential-backup-testcases>`, :ref:`WP_127 <credential-backup-testcases>`).  
+Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità (:ref:`WP_129 <credential-backup-testcases>`). Per fare ciò, estrae prima il JWT della Wallet Unit Attestation dal claim ``wallet_attestation`` e ottiene la relativa chiave pubblica utilizzando la Wallet Unit Attestation (claim ``cnf``) come specificato in :ref:`WP_128 <credential-backup-testcases>`.
 
-**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi:
+**Passaggi 7-8**: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (:ref:`WP_130 <credential-backup-testcases>`):
 
-- Estrae l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali.
-- Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente.
+- Estrae l'identificatore del Fornitore di Credenziali e il ``credential_configuration_id`` dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali (:ref:`WP_130a <credential-backup-testcases>`).
+- Utilizzando l'identificatore del Fornitore di Credenziali, l'Istanza del Wallet ottiene i metadati del Fornitore di Credenziali e effettua una richiesta di riemissione al Fornitore di Credenziali fornendo la nuova Associazione Crittografica con l'Utente (:ref:`WP_130b <credential-backup-testcases>`).
 
 .. note::
-  L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Unit Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet.
+  L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Unit Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet (:ref:`WP_128a <credential-backup-testcases>`).

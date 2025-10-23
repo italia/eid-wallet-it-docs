@@ -1,0 +1,39 @@
+@startuml Architettura Autorizzazione Multi-Step L2+
+'!theme cerulean-outline
+!include <C4/C4_Component>
+HIDE_STEREOTYPE()
+'LAYOUT_WITH_LEGEND()
+
+' Define SPRITES
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/id_card>
+!include <tupadr3/font-awesome-5/wallet>
+!include <tupadr3/font-awesome/institution>
+
+title Architettura L2+ Autenticazione eID Substantial con Verifica MRTD
+
+Component_Ext(wallet, "Istanza del Wallet", "App Mobile", "Gestisce richiesta PID basata sullo stack standard tecnologico IT-Wallet. Fornisce **capacità crittografiche per lettura Documento Elettronico MRT/IAS** (ICAO 9303, BSI-03110)",$sprite="wallet")
+
+Boundary(issuer, "Provider PID") {
+    Boundary(multi_step_authz, "Sistema Autenticazione eID Substantial con Verifica MRTD", "Orchestra flusso autenticazione multi-step e identity proofing remoto") {
+        Component(pid_authz_server, "Server di Autorizzazione", "Framework OAuth2 Authorization e OID4VCI", "Gestisce richiesta PID e coordinamento flusso di autorizzazione",$sprite="server")
+        Component(doc_pop_service, "Servizio MRTD PoP", "Servizio di Validazione", "Gestisce proof of possession documento elettronico con validazione crittografica documento",$sprite="id_card")
+    }
+}
+
+Component_Ext(loa3_idp, "Provider Identità LoA3", "Schema eID eIDAS LoA3", "Fornisce Schemi di Identificazione Elettronica (CIEid e SPID)",$sprite="institution")
+
+Component_Ext(cie_registry, "Registro Nazionale CIE", "Database CIE", "Fornisce evidenza privacy-preserving del binding NIS - codice fiscale e opzionalmente dati MRZ. Fornisce stato di validità del documento (revoca)",$sprite="database")
+
+Rel(wallet, pid_authz_server, "Flusso OAuth2 \nper Emissione PID", "Basato su Browser")
+
+Rel(wallet, doc_pop_service, "Invio proof documento", "API")
+
+pid_authz_server <-> doc_pop_service : "**Identity Matching**"
+
+Rel_Back(pid_authz_server, loa3_idp, "Autenticazione SAML/OIDC", "Basato su Browser")
+
+Rel_Back(doc_pop_service, cie_registry, "Dati aggiuntivi relativi al Documento", "API")
+@enduml

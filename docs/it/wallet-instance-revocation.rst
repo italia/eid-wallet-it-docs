@@ -8,7 +8,7 @@ Questa sezione descrive le entità coinvolte e le modalità per richiedere la re
 
 Il Fornitore di Wallet DEVE garantire la sicurezza e l'affidabilità delle Istanze del Wallet, mantenendole aggiornate e conformi ai requisiti di sicurezza. Quando, per motivi tecnici di sicurezza (ad esempio, relativi alla compromissione del materiale crittografico) la sicurezza dell'Istanza del Wallet è compromessa, il Fornitore di Wallet DEVE revocare l'Istanza del Wallet.
 
-Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet:
+Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSSONO attivare il processo di revoca dell'Istanza del Wallet (:ref:`WP_007–009 <wallet-provider-backend-testcases>`):
 
 - **Utenti**, collegandosi al portale web del Fornitore di Wallet dalla propria Istanza del Wallet o utilizzando un browser esterno.
 - **Fornitori di Attestati Elettronici di Dati di Identificazione Personale** quando notificati dalla Fonte Autentica del PID (ANPR) del decesso dell'Utente.
@@ -21,7 +21,7 @@ Come mostrato in :numref:`fig_Wallet_Instance_Revoc_Entities`, altri attori POSS
     :alt: La figura illustra le Entità coinvolte nel processo di revoca dell'Istanza del Wallet.
     :caption: `Entità coinvolte nel processo di revoca dell'Istanza del Wallet. <https://www.plantuml.com/plantuml/svg/fPFVYnCn4CVVzwyO-s8F15_kKUIyTi6AFqfx8iB1acx6DhXDQZBPkeh_kpCnsyN6DmibP9gPxsU-CxqBf3p5OmUr9KC60nZRkwv73SO27H0-gQv3WfNbfxP5yDYxLf5n5axUjHX2zSJOjeiQuSNYzldYjbcuuybPjFIogbwlbdMpVQWtzOU7p-jwVbDLQ_J1sNaCw9_1x2CVCpuJm03kR8tT9-L7UwKzu-Hx5wrMVfYVqszD60BXaVFpssswpsxWPmNykQ2CxqsknHdNrJaattVAgZq64Bwd0PPcRqXriF2eaHbL5vZZdxNPZzvexceilSw1iNI-Xy9KPJMSSGSisPiMHU5NLKq2Aj91nDickEWJ_Qin1DiKAZJ4M514tkmYyPrSSdKLGaIV58-vKmdtgZDQ1i1451bWKc_gxty8d3S_K3SxfmS1k4GkopCoRED96WdE3t3FhvFQcwXDo_P1JgH1vZdrQ1AOTB1Q5iubwl0NjJoJUtOzN1jOLHliyfPT3wWOFcocjTxWDzOYAI4LYjnoaoJvQ_5N4GWf88tzBqIv01UxtZioNmOPjwphezMew92bYwcL33bznV6z3ASbqwTXPkdcRUb033YbikJ4pKbtQ7KyThy1>`_
 
-Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata:
+Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider DEVE implementare un meccanismo per informare gli Utenti quando la loro Wallet Unit viene revocata (:ref:`WP_034 <wallet-instance-testcases>`):
 
 - Inviando un avviso presso un recapito verificato (ad esempio recapito e-mail o telefonico) e se possibile anche presso l'Istanza del Wallet revocata.
 - Inviando la notifica entro massimo 24 ore.
@@ -44,7 +44,7 @@ Indipendentemente da chi ha attivato il processo di revoca, il Wallet Provider D
 Richiesta di Revoca dell'Istanza del Wallet
 """""""""""""""""""""""""""""""""""""""""""
 
-Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet:
+Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet (:ref:`WP_032 <wallet-instance-testcases>`):
 
 - *Selezionando la funzionalità di revoca all'interno dalla propria Istanza del Wallet*: questa funzionalità può essere utilizzata dagli Utenti prima di cambiare il proprio telefono.
 - *Utilizzando un user agent esterno*: questo copre i casi in cui gli Utenti perdono il loro dispositivo e quindi l'accesso alla loro Istanza del Wallet.
@@ -52,7 +52,7 @@ Gli Utenti POSSONO richiedere la revoca dell'Istanza del Wallet:
 In entrambi i casi, utilizzando il portale del Fornitore di Wallet:
 
 - Gli Utenti DEVONO autenticarsi con almeno un meccanismo di autenticazione a due fattori, o avere una sessione attiva che soddisfi questo requisito.
-- Il Fornitore di Wallet DEVE consentire agli Utenti di visualizzare lo stato delle loro Istanze del Wallet associate alla loro sessione autenticata e chiedere la revoca, inviando una Richiesta di Recupero o Revoca dell'Istanza del Wallet, a seconda dei casi, all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Gestione dell'Istanza di Wallet` del Backend del Fornitore del Portafoglio.
+- Il Fornitore di Wallet DEVE consentire agli Utenti di visualizzare lo stato delle loro Istanze del Wallet associate alla loro sessione autenticata e chiedere la revoca, inviando una Richiesta di Recupero o Revoca dell'Istanza del Wallet (:ref:`WP_033 <wallet-instance-testcases>`, e :ref:`WP_145 <wallet-instance-optional-testcases>`), a seconda dei casi, all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Gestione dell'Istanza di Wallet` del Backend del Fornitore del Portafoglio.
 
 Di seguito è riportato un esempio non normativo di una Richiesta di Recupero delle Istanze del Wallet.
 
@@ -61,7 +61,7 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Recupero de
    GET /wallet-instances HTTP/1.1
    Host: walletprovider.example.com
 
-In caso di recupero riuscito, il Fornitore di Wallet DEVE restituire una risposta di conferma, con lo stato di tutte le Istanze del Wallet associate all'Utente.
+In caso di recupero riuscito, il Fornitore di Wallet DEVE restituire una risposta di conferma, con lo stato di tutte le Istanze del Wallet associate all'Utente (:ref:`WP_146 <wallet-instance-optional-testcases>`).
 Di seguito è riportato un esempio non normativo di una Risposta di Recupero delle Istanze del Wallet.
 
 .. code:: http
@@ -83,8 +83,8 @@ Di seguito è riportato un esempio non normativo di una Risposta di Recupero del
      }
    ]
 
-Una volta che l'Utente identifica l'Istanza del Wallet da revocare, può essere inviata una Richiesta di Revoca dell'Istanza del Wallet all'endpoint, includendo l'ID dell'Istanza del Wallet come parametro di percorso.
-Di seguito è riportato un esempio non normativo di una Richiesta di Revoca dell'Istanza del Wallet.
+Una volta che l'Utente identifica l'Istanza del Wallet da revocare, può essere inviata una Richiesta di Revoca dell'Istanza del Wallet all'endpoint, includendo l'ID dell'Istanza del Wallet come parametro di percorso (:ref:`WP_147 <wallet-instance-optional-testcases>`).
+Di seguito è riportato un esempio non normativo di una Richiesta di Revoca dell'Istanza del Wallet (:ref:`WP_148 <wallet-instance-optional-testcases>`).
 
 .. code-block:: http
 

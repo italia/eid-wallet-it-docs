@@ -33,7 +33,7 @@ Boundary(qeaaProvider, "(Q)EAA Provider") {
     Component(rp, "Relying Party Component", "OID4VP", "",$sprite="cogs")
 }
 Component_Ext(as, "Authentic Source", "", "",$sprite="database")
-Component_Ext(ta, "Federation Services and Digital Credentials Catalogue", "OID-FED registry", "",$sprite="lock")
+Component_Ext(ta, "Federation Services and Digital Credentials Catalog", "OID-FED registry", "",$sprite="lock")
 
 Rel(user,wi,"<size:16><color red><b>0</b></color></size>\nWants a (Q)EAA","")
 Rel(wi,ta,"<size:16><color red><b>1</b></color></size>\n(Q)EAA Provider Discovery\nand Trust","")

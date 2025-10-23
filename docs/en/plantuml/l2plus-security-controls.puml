@@ -1,0 +1,104 @@
+@startuml eID LoA3 Authentication + remote identity proofing + security controls
+'!theme cerulean-outline
+autonumber
+participant "User" as U
+participant "Wallet Instance" as A
+participant "CIE" as C
+box  "PID Provider" #LightBlue
+participant "PID Authorization Server" as AS
+participant "MRTD PoP Service" as DPOPS
+end box
+participant "CIE National Registry" as MIN
+participant "National\nIdentity Provider" as IDP
+
+
+title eID LoA3 Authentication + remote identity proofing + security controls
+
+U -> A: Want to activate the Wallet \nusing eID Substantial Authentication with MRTD Verification
+
+=== Phase 1: OAuth Authorization Request ==
+A -> AS : PAR Request (  client_id, requestObject) \n  with OAuth-Client-Attestation and OAuth-Client-Attestation-PoP in the Header and\n  **with authorization_detail type "it_l2+document_proof"**
+
+AS --> A : PAR Response (request_uri, expires_in)
+A -> AS: PID Authorization Request \n  GET /authorize?client_id=...&request_uri=...\n  Host: pid-provider.example.org
+
+=== Phase 2: Primary Authentication - eID User Authentication with LoA Substantial ==
+rnote over AS #LavenderBlush
+SC3
+endrnote
+AS -> IDP: eID Authentication Request
+IDP <--> U: User authentication + consent
+IDP -> AS: eID Authentication Response
+rnote over AS #LavenderBlush
+SC3
+endrnote
+
+=== Phase 3: MRTD PoP Validation ==
+AS -> A: HTTP/1.1 302 Found\n Location: https://start.wallet.example.org/challenge?**mrtd_proof=<mrtd_proof_JWT>**
+
+rnote over A #LavenderBlush
+SC7
+endrnote
+
+A -> DPOPS: **MRTD PoP Request**\nPOST /edoc-proof/init HTTP/1.1\n Host: pid-provider.example.org\nwith OAuth-Client-Attestation and OAuth-Client-Attestation-PoP in the Header
+
+rnote over DPOPS #LavenderBlush
+SC6, SC8, SC9
+endrnote
+
+opt
+    DPOPS -> MIN:  Retrieve MRZ information
+    MIN --> DPOPS: MRZ information
+end
+
+DPOPS --> A: **MRTD PoP Response**\nHTTP/1.1 202 Accepted\nwith mrtd_pop_nonce, challenge and (optionally) MRZ data
+
+alt If MRZ is not available to the Wallet Instance
+    A -> U: Request to insert CAN
+    U -> A: Insert CAN
+else if MRZ is obtained at Step 11
+    A -> A: Extract data from MRZ
+end
+
+group #LightYellow NFC Interaction with the User for Document Proof of Possession Protocol Flow    
+    A -[#green]> C : **MRTD Application - PACE**\nRead DG1, DG11, SOD_MRTD
+    C --[#green]> A : DG1, DG11, SOD_MRTD 
+
+    A -[#green]> C : **IAS Application**\nRead NIS, Anticloning Public key, SOD_IAS 
+    C --[#green]> A : NIS, Anticloning Public key, SOD_IAS 
+    A -[#green]> C: Anticloning Internal Authentication\nserver challenge
+    C --[#green]> A : RSA-2048 signature of the challenge
+end
+
+A -> DPOPS: **MRTD PoP Validation Request**\nPOST /edoc-proof/verify HTTP/1.1\n Host: pid-provider.example.org\nwith OAuth-Client-Attestation and OAuth-Client-Attestation-PoP in the Header
+  
+rnote over DPOPS #LavenderBlush
+SC6, SC8, SC9, SC11,
+SC12, SC13, SC14
+endrnote
+
+DPOPS -> MIN: HTTP Request for NIS-CF \ncorrelation check and\nvalidity status of the \ndocument (revocation check)
+
+MIN --> DPOPS: HTTP/1.1 200 Ok
+
+rnote over DPOPS #LavenderBlush
+SC15, SC16, SC17, SC18
+endrnote
+
+DPOPS --> A: **MRTD PoP Validation Response**\nHTTP/1.1 202 Accepted\nwith redirect_uri and mrtd_val_pop_nonce
+
+A -> A: sign mrtd_val_pop_nonce
+
+A -> AS: **Browser-based Final Confirmation**\nGET https://pid-provider.example.org/cb?nonce=mrtd_val_pop_nonce_signed&oauth_session=...&state=...\n(through browser)
+
+rnote over AS #LavenderBlush
+SC6, SC8, SC9
+endrnote
+
+=== Phase 4: OAuth Authorization Response ==
+AS -> A: **PID Authorization Response with Auth Code**\nHTTP/1.1 302 Found\n Location: https://start.wallet.example.org?\n code=...\n &state=...\n &iss=https%3A%2F%2Fpid-provider.example.org
+
+rnote over A,AS #LIGHTGREEN
+The flow continues according to PID Issuance flow as defined in the IT-Wallet specification
+endrnote
+@enduml

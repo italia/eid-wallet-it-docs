@@ -1,0 +1,96 @@
+[
+  {
+    "entity_id": "https://motorizzazione.gov.example",
+    "organization_info": {
+      "organization_name": "MIT -- Direzione Generale per la Motorizzazione",
+      "organization_type": "public",
+      "ipa_code": "m_inf",
+      "legal_identifier": "80192770587",
+      "organization_country": "IT",
+      "homepage_uri": "https://www.gov.example/transport",
+      "contacts": ["registry@gov.example", "technical-support@gov.example"],
+      "policy_uri": "https://www.gov.example/transport/privacy-policy",
+      "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
+      "service_documentation": "https://docs.gov.example/transport/api-docs",
+      "user_information": "Vehicle registration data is available for licenses issued after January 1, 2020. For older licenses, contact the local motorization office."
+    },
+    "data_capabilities": [
+      {
+        "domains": ["IDENTITY", "AUTHORIZATION"],
+        "intended_purposes": ["DRIVING_LICENSE", "PERSON_IDENTIFICATION"],
+        "available_claims": [
+          "given_name", "family_name", "birth_date", "birth_place",
+          "issue_date", "expiry_date", "document_number", "driving_privileges",
+          "portrait", "un_distinguishing_sign", "document_iss_country", "document_iss_authority"
+        ],
+        "integration_method": "pdnd",
+        "integration_endpoint": "https://api.gov.example/transport/driving-license",
+        "api_specification": "https://docs.gov.example/transport/api-oas3.yaml",
+        "data_provision": {
+          "immediate_flow": true,
+          "deferred_flow": false
+        },
+        "update_frequency": "real_time"
+      }
+    ],
+    "display": {
+      "background_color": "#003d82",
+      "text_color": "#ffffff",
+      "logo_uri": "https://www.gov.example/assets/transport-logo.svg",
+      "logo_uri#integrity": "sha-256-a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+    }
+  },
+  {
+    "entity_id": "https://api.bank.example/auth-source",
+    "organization_info": {
+      "organization_name": "Example Bank S.p.A.",
+      "organization_type": "private",
+      "legal_identifier": "12345678901",
+      "homepage_uri": "https://www.bank.example",
+      "contacts": ["digital-credentials@bank.example", "api-support@bank.example"],
+      "policy_uri": "https://www.bank.example/privacy-policy",
+      "tos_uri": "https://www.bank.example/terms-of-service",
+      "organization_country": "IT",
+      "logo_uri": "https://www.bank.example/assets/logo.svg",
+      "service_documentation": "https://docs.bank.example/psd2-api",
+      "user_information": "Financial data access requires customer consent and is subject to PSD2 regulations. Account information is available for active accounts only."
+    },
+    "data_capabilities": [
+      {
+        "domains": ["FINANCIAL"],
+        "intended_purposes": ["BANK_ACCOUNT", "INCOME_CERTIFICATE"],
+        "available_claims": [
+          "given_name", "family_name", "birth_date", "tax_code",
+          "account_holder_name", "iban", "account_status", "account_opening_date",
+          "bank_name", "bank_code"
+        ],
+        "integration_method": "oauth2",
+        "integration_endpoint": "https://api.bank.example/psd2/v1/accounts",
+        "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
+        "data_provision": {
+          "immediate_flow": true,
+          "deferred_flow": false
+        },
+        "update_frequency": "daily"
+      },
+      {
+        "domains": ["FINANCIAL"],
+        "intended_purposes": ["PAYMENT_HISTORY"],
+        "available_claims": [
+          "given_name", "family_name", "tax_code",
+          "transaction_history", "average_balance", "credit_score_indicator"
+        ],
+        "integration_method": "oauth2",
+        "integration_endpoint": "https://api.bank.example/psd2/v1/transactions",
+        "api_specification": "https://api.bank.example/docs/psd2-openapi.yaml",
+        "data_provision": {
+          "immediate_flow": false,
+          "deferred_flow": true,
+          "max_response_time_minutes": 1440,
+          "notification_methods": ["push", "poll"]
+        },
+        "update_frequency": "weekly"
+      }
+    ]
+  }
+]

@@ -3,7 +3,7 @@
 Relying Party Metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The *openid_credential_verifier* metadata MUST contain the following parameters.
+The *openid_credential_verifier* metadata MUST contain the following parameters (:ref:`test-plans-remote-presentation`).
 
 .. list-table::
   :class: longtable

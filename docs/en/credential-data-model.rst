@@ -134,7 +134,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-registry.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
+      - [NSD]. REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URI string MUST be performed in a case-insensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type (for instance: ``https://trust-anchor.eid-wallet.example.it/credentials/v1.0/personidentificationdata``).
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -684,7 +684,7 @@ The following **elementIdentifiers** MUST be included in a Digital Credential en
      -
 
 .. note::
-  Digital Credential User-specific attributes are defined in the Catalogue of Digital Credentials.
+  Digital Credential User-specific attributes are defined in the Catalog of Digital Credentials.
   User-specific attributes for mdoc Digital Credentials such as those used in mDL or PID are also included by referencing the appropriate `elementIdentifiers` defined in ISO/IEC 18013-5 or the `EIDAS-ARF`_ specification.
 
 .. note:: 

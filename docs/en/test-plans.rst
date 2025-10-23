@@ -39,9 +39,9 @@ For each test case, the table specifies:
   :caption: Test Plans by Context
   :maxdepth: 3
   
-  test-plans-wallet-provider.rst
   test-plans-signature.rst
   test-plans-trust.rst
+  test-plans-federation-authority.rst
+  test-plans-wallet-provider.rst
   test-plans-credential-issuer.rst
-  test-plans-remote-presentation.rst
-  test-plans-proximity-presentation.rst
+  test-plans-presentation.rst

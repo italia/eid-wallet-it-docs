@@ -1,0 +1,6 @@
+{
+   "typ":"JOSE",
+   "alg":"ES256",
+   "kid":"e9bc097a-ce51-4036-9562-d2ade882db0d",
+   "cty":"application/json"
+}

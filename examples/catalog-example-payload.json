@@ -1,0 +1,238 @@
+{
+   "catalog_version": "1.0",
+   "iss": "https://trust-registry.eid-wallet.example.it",
+   "last_modified": "2025-03-15T12:00:00Z",
+   "credentials": [
+      {
+         "version": "1.0",
+         "credential_type": "mDL",
+         "legal_type": "pub-eaa",
+         "localization": {
+            "default_locale": "it",
+            "available_locales": ["en", "it", "fr", "de"],
+            "base_uri": "https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/",
+            "version": "1.0.0"
+         },
+         "name_l10n_id": "credential.mdl.name",
+         "description_l10n_id": "credential.mdl.description",
+         "restriction_policy": {
+            "allowed_wallet_ids": [
+               "https://wallet-provider.example.org/wallet_solution",
+               "https://wallet-provider2.example.org/wallet_solution"
+            ],
+            "allowed_issuer_ids": [
+               "https://issuer.example.org"
+            ]
+         },
+         "pricing_policy": {
+             "models": [
+               {
+                 "pricing_type": "verification_based",
+                 "price": 0.01,
+                 "currency": "EUR"
+               }
+             ],
+             "pricing_model_uri": "https://example.com/pricing"
+           },
+         "validity_info": {
+            "max_validity_days": 365,
+            "status_methods": ["status_list"],
+            "allowed_states": [
+               "valid",
+               "revoked",
+               "suspended"
+            ]
+         },       
+         "authentication": {
+            "user_auth_required": true,
+            "min_loa": "high",
+            "supported_schemes": ["it-wallet"]
+         },
+         "purposes": [
+            {
+               "id": "DRIVING_LICENSE"            
+            },
+            {
+               "id": "PERSON_IDENTIFICATION"
+            }
+         ],
+         "issuers": [
+            {
+               "id": "https://issuer.example.org",
+               "organization_name": "Digital Credential Issuer of Example",
+               "organization_code": "ci_example_it",
+               "organization_country": "IT",
+               "contacts": [
+                  "mailto:informazioni@example.it",
+                  "mailto:protocollo@pec.example.it"
+               ],
+               "legal_type": "pub-eaa",
+               "homepage_uri": "https://issuer.example.org",
+               "logo_uri": "https://issuer.example.org/logo.svg",
+               "policy_uri": "https://issuer.example.org/privacy",
+               "tos_uri": "https://issuer.example.org/terms",
+               "service_documentation": "https://issuer.example.org/.well-known/service-doc",
+               "issuance_flows": {
+                  "deferred_flow": true,
+                  "max_deferred_issuance_time_minutes": 1440,
+                  "notification_methods": ["push", "polling"]
+               }
+            }
+         ],
+         "authentic_sources": [
+            "https://motorizzazione.gov.example"
+         ],
+         "formats": [
+            {
+               "configuration_id": "dc_sd_jwt_mDL",
+               "format": "dc+sd-jwt",
+               "vct": "https://trust-registry.eid-wallet.example.it/1.0/mDL",
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
+               "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+            },
+            {
+               "configuration_id": "mso_mdoc_mDL",
+               "format": "mso_mdoc",
+               "docType": "org.iso.18013.5.1",
+               "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL",
+               "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
+            }
+         ],
+         "display_properties": {
+            "templates": [
+               {
+                  "authentic_source_id": "https://authentic-sources.example.org",
+                  "template_uri": "https://authsource.example.com/.well-known/templates/mDL.svg",
+                  "template_uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+                  "properties": {
+                     "orientation": "landscape",
+                     "color_scheme": "light",
+                     "contrast": "high"
+                  }
+               }
+            ],
+            "background_color": "#008558",
+            "text_color": "#FFFFFF",
+            "logo_uri": "https://trust-registry.eid-wallet.example.it/.well-known/logos/mDL.svg"
+         },
+         "claims": [
+            {
+               "name": "family_name",
+               "display_name_l10n_id": "claims.family_name.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "given_name",
+               "display_name_l10n_id": "claims.given_name.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "birth_date",
+               "display_name_l10n_id": "claims.birth_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issue_date",
+               "display_name_l10n_id": "claims.issue_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "expiry_date",
+               "display_name_l10n_id": "claims.expiry_date.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_authority",
+               "display_name_l10n_id": "claims.issuing_authority.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "document_number",
+               "display_name_l10n_id": "claims.document_number.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "portrait",
+               "display_name_l10n_id": "claims.portrait.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "driving_privileges",
+               "display_name_l10n_id": "claims.driving_privileges.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "un_distinguishing_sign",
+               "display_name_l10n_id": "claims.un_distinguishing_sign.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "administrative_number",
+               "display_name_l10n_id": "claims.administrative_number.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_country",
+               "display_name_l10n_id": "claims.issuing_country.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            },
+            {
+               "name": "issuing_jurisdiction",
+               "display_name_l10n_id": "claims.issuing_jurisdiction.name",
+               "namespaces": ["org.iso.18013.5.1"]
+            }
+         ]
+      }
+   ],
+   "wallet_attestation": {
+      "version": "1.0",
+      "credential_type": "WalletAttestation",
+      "name": "Wallet Attestation",
+      "description": "Attestation of the Wallet capabilities and compliance with the EUDI Wallet specifications.",
+      "aal_values_supported": [
+            "https://trust-list.eu/aal/low",
+            "https://trust-list.eu/aal/medium",
+            "https://trust-list.eu/aal/high"
+         ],
+      "formats": [
+         {
+            "format": "dc+sd-jwt",
+            "configuration_id": "dc_sd_jwt_wa",
+            "vct": "https://trust-registry.it-wallet.example.it/WalletAttestation",
+            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/WalletAttestation",
+            "schema_uri#integrity": "sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc="
+         },
+         {
+            "format": "mso_mdoc",
+            "configuration_id": "mso_mdoc_wa",
+            "docType": "it.wallet.trust-registry.WalletAttestation",
+            "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/WalletAttestation",
+            "schema_uri#integrity": "sha256-GcqnMfzyCw+0UTz9EI6JO0oUTD0WS3p+hQ2E7VfjTLA="
+         },
+         {
+            "format": "oauth-client-attestation+jwt",
+            "configuration_id": "jwt_wa",
+            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/WalletAttestation",
+            "schema_uri#integrity": "sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg="
+         }
+      ],
+      "claims": [
+         {
+            "name": "sub",
+            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
+         },
+         {
+            "name": "aal",
+            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
+         },
+         {
+            "name": "wallet_link",
+            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
+         },
+         {
+            "name": "wallet_name",
+            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
+         }
+      ]
+   }
+}

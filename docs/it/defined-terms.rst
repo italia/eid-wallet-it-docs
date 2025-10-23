@@ -90,7 +90,6 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
 
     **Titolare**
     **Holder**
-    **Utente**
       Persona fisica o giuridica che riceve, gestisce e presenta Attestati Elettronici tramite l'Istanza del Wallet.
       Simile ad ARF 2.5. ARF utilizza questo termine solo nei casi di interazione tra Wallet, mentre negli altri casi utilizza il termine *Holder Wallet Unit*.
 

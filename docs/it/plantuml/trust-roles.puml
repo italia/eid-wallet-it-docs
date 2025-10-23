@@ -1,4 +1,4 @@
-@startuml Trust Roles
+@startuml
 !include <C4/C4_Container>
 
 skinparam backgroundColor transparent
@@ -9,10 +9,10 @@ rectangle "Trust Anchor" as ta #D6E8F2
 rectangle "Intermediate" as int1 #D6E8F2
 rectangle "Intermediate" as int2 #D6E8F2
 
-rectangle "Leafs" as leafs1 #E8F2D6
-rectangle "Leafs" as leafs2 #E8F2D6
+rectangle "Leaves" as leafs1 #E8F2D6
+rectangle "Leaves" as leafs2 #E8F2D6
 
-rectangle "Leafs" as leafsContainer #E8F2D6 {
+rectangle "Leaves" as leafsContainer #E8F2D6 {
   rectangle "Credential Issuer" as ci #D6E8F2
   rectangle "Wallet Provider" as wp #D6E8F2
   rectangle "Relying Party" as rp #D6E8F2
@@ -25,5 +25,4 @@ leafs1 -up-> int1
 leafs2 -up-> int2
 int1 -up-> ta
 int2 -up-> ta
-
 @enduml
