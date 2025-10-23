@@ -105,6 +105,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 - **logo**: OPTIONAL. Object with information about the logo of the Digital Credential. The following parameters are included:
 
                   - **uri**: REQUIRED. String value that contains a URI where the Wallet can obtain the logo of the Digital Credential from the Credential Issuer.
+                  - **uri#integrity: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED]
                   - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
                 
                 - **description**: REQUIRED. String value containing a description of the Digital Credential.
