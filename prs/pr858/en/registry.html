@@ -1094,7 +1094,7 @@ Content-Type: application/json
 <td><p>REQUIRED. Legal classification of the Credential (e.g., <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code>, <code class="docutils literal notranslate"><span class="pre">qeaa</span></code>, <code class="docutils literal notranslate"><span class="pre">eaa</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vct</strong></p></td>
-<td><p>It MUST be set as a URI String of the form <code class="docutils literal notranslate"><span class="pre">https://{Trust</span> <span class="pre">Anchor</span> <span class="pre">domain}/{version}/{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/v1.0/mDL</span></code>). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.</p></td>
+<td><p>REQUIRED. It MUST be set as a URI String of the form <code class="docutils literal notranslate"><span class="pre">https://{Trust</span> <span class="pre">Anchor</span> <span class="pre">domain}/{version}/{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/v1.0/mDL</span></code>). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>restriction_policy</strong></p></td>
 <td><p>OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.</p>
@@ -1718,7 +1718,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 22/10/2025.
+      Last updated on 23/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
