@@ -516,7 +516,7 @@ Each Credential MUST specify domains and purposes to enable both **Credential-Sp
 
   1. **Credential-Specific Scenarios** (Primary for Government/Regulated Sectors): RPs request specific credential types for compliance and audit requirements, including for example:
 
-    - **Government Services**: ``"vct_values": ["person_identification_data"]`` for PID-specific identity verification.
+    - **Government Services**: ``"vct_values": ["urn:eudi:pid:it:1"]`` for PID-specific identity verification.
     - **Police Controls**: ``"docType": "org.iso.18013.5.1.mDL"`` for driving license verification.
     - **Banking KYC**: Specific credential types mandated by financial regulations.
     - **Healthcare Services**: ``"vct_values": ["european_disability_card"]`` for EU-compliant disability benefit access.
@@ -594,7 +594,7 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **version**
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
-    - REQUIRED. Unique identifier of the Digital Credential type.
+    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``.
   * - **legal_type**
     - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
   * - **localization**
@@ -608,6 +608,8 @@ Each element of the ``credentials`` array contains at least the following inform
     - REQUIRED. Human-readable name of the Digital Credential. A suffix ``_l10n_id`` MAY be added for content localisation management.
   * - **description**
     - REQUIRED. Human-readable Digital Credential description. A suffix ``_l10n_id`` MAY be added for content localisation management.
+  * - **vct**: 
+    - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
   * - **restriction_policy**
     - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
 
@@ -651,7 +653,6 @@ Each element of the ``credentials`` array contains at least the following inform
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc``)
       * **configuration_id**: Configuration identifier of the :term:Credential format. This is formed by concatenating the ``credential_type`` value to the ``format`` (e.g., ``dc_sd_jwt_mDL`` or ``mso_mdoc_mDL``), and is used to uniquely reference the configuration for this :term:Credential format.
-      * **vct**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{version}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/v1.0/mDL``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
       * **docType**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``mso_mdoc``. If the :term:Credential is:
 
         * defined by an ISO standard, it MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g., ``iso.org.18013.5.1.mDL``).
