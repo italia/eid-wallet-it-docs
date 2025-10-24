@@ -150,3 +150,4 @@ Digest crittografico del documento di specifica del formato per la verifica dell
 
 
             - **batch_size**: Valore intero che specifica la dimensione massima dell'array per il parametro ``proofs`` nella Credential Request.
+
