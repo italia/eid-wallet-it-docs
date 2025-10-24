@@ -133,6 +133,7 @@ Digest crittografico del documento di specifica del formato per la verifica dell
                 - **name**: Nome dell'attributo in formato stringa.
                 - **description**: Descrizione "human-readable" dell'Attributo.
                 - **locale**: Stringa che identifica la localizzazione con un tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
+                
   * - **jwks**
     - JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo usato dal Fornitore di Attestato Elettronico. Vedi `OID-FED`_ Sezione 5.2.1 e `JWK`_.
   * - **trust_frameworks_supported**

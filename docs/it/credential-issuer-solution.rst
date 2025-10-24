@@ -133,6 +133,7 @@ La Soluzione del Fornitore degli Attestati Elettronici supporta questi modelli d
 
 Tutte le interazioni devono seguire le considerazioni di sicurezza nella Sezione :ref:`credential-issuance:Emissione di Attestati Elettronici`, inclusa la corretta gestione di token e materiali crittografici.
 
+
 .. include:: credential-issuer-entity-configuration.rst
 .. include:: credential-issuer-metadata.rst
 
