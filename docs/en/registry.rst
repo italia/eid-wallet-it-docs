@@ -657,7 +657,8 @@ The ``wallet_attestation`` Object contains at least the following information:
     - Description
   * - **credential_type**
     - REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to ``WalletAttestation``.
-  * - **vct**: REQUIRED. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/WalletAttestation``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
+  * - **vct**
+    - REQUIRED. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/WalletAttestation``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
   * - **aal_values_supported**
     - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels ``low``, ``medium`` and ``high``.
   * - **formats**
