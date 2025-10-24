@@ -135,7 +135,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Oggetto JSON contenente il materiale crittografico da utilizzare come prova di possesso. L'inclusione del claim **cnf** (confirmation) in un JWT, permette al soggetto che emette il JWT di dichiarare che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
       - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. OBBLIGATORIO. Il valore del tipo di Attestato Elettronico DEVE essere una stringa URL HTTPS e DEVE essere valorizzata utilizzando uno dei valori ottenuti dai Metadata del Fornitore di Attestati Elettronici. Il confronto con i caratteri di questa stringa DEVE essere eseguito in modo `case-insensitive`. È l'identificativo del tipo di SD-JWT VC e DEVE essere resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione dell'Attestato Elettronico (ad esempio: ``https://trust-registry.it-wallet.example.it/v1/personidentificationdata``).
+      - [NSD]. OBBLIGATORIO. Il valore del tipo di Attestato Elettronico DEVE essere una stringa URL HTTPS e DEVE essere valorizzata utilizzando uno dei valori ottenuti dai Metadata del Fornitore di Attestati Elettronici. Il confronto con i caratteri di questa stringa DEVE essere eseguito in modo `case-sensitive`. È l'identificativo del tipo di SD-JWT VC e DEVE essere resistente alle collisioni come definito nella Sezione 2 di :rfc: `7515`. DEVE contenere anche il numero di versione dell'Attestato Elettronico. Se l’Attestato Elettronico è pubblicato all'interno del Catalogo degli Attestati Elettronici, il valore del ``vct`` DEVE corrispondere al valore indicato nel Catalogo, vedi :ref:`registry:Digital Credentials Catalog Structure`. Nel caso in cui l’Attestato Elettronico non sia pubblicato nel Catalogo, il ``vct`` DEVE essere impostato come una stringa URI nel formato https://{dominio del Credendial Issuer}/{versione}/{credential_type} (ad esempio: ``https://issuer.example.it/credentials/v1.0/employeeBadge``).
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. OBBLIGATORIO. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella la Sezione 3.3.5 di [`W3C-SRI`_].
@@ -215,15 +215,6 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
     * - **extends#integrity**
       - CONDIZIONALE. OBBLIGATORIO se **extends** è presente.
       - [`SD-JWT-VC`_] Sezione 6.2.
-    * - **schema**
-      - CONDIZIONALE. OBBLIGATORIO se **schema_uri** non è presente.
-      - [`SD-JWT-VC`_] Sezione 6.2.
-    * - **schema_uri**
-      - CONDIZIONALE. OBBLIGATORIO se **schema** non è presente.
-      - [`SD-JWT-VC`_] Sezione 6.2.
-    * - **schema_uri#integrity**
-      - CONDIZIONALE. OBBLIGATORIO se **schema_uri** è presente.
-      - [`SD-JWT-VC`_] Sezione 6.2.
     * - **data_source**
       - OBBLIGATORIO. Oggetto contenente informazioni sull'origine dei dati. DEVE contenere l'oggetto ``verification`` con il seguente sub parametro:
 
@@ -238,7 +229,7 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
 
       - Questa specifica
     * - **display**
-      - OBBLIGATORIO. Array di oggetti, uno per ogni lingua supportata, contenente informazioni di visualizzazione per il tipo di Attestato Elettronico. Quando il corrispondente Attestato Elettronico è incluso nel Catalogo degli Attestati Elettronici, il Catalogo è la fonte canonica per la visualizzazione all'Utente finale e DEVE avere precedenza su questo campo. Questo campo è destinato all'interoperabilità con ecosistemi esterni e come fallback quando l'Attestato Elettronico non è presente nel Catalogo. Contiene per ogni oggetto le seguenti proprietà:
+      - OBBLIGATORIO. Array di oggetti, uno per ogni lingua supportata, contenente informazioni di visualizzazione per il tipo di Attestato Elettronico. Contiene per ogni oggetto le seguenti proprietà:
 
           * ``lang``: tag di lingua come definito in :rfc:`5646` Sezione 2. [OBBLIGATORIO].
           * ``name``: nome *human-readable* del tipo di Attestato Elettronico. [OBBLIGATORIO].
@@ -263,11 +254,11 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
                 * ``text_color``: valore del colore in RGB come definito in `W3C.CSS-COLOR`_ per il testo dell'Attestato Elettronico. [OPZIONALE].
 
           .. note::
-            L'uso del template SVG è RACCOMANDATO per tutte le applicazioni che lo supportano. Quando sono disponibili sia i template di visualizzazione del Catalogo che quelli del *Type Metadata* per il medesimo Attestato Elettronico, le implementazioni DEVONO utilizzare i template del Catalogo.
+            L'uso del template SVG è RACCOMANDATO per tutte le applicazioni che lo supportano.
 
       - [`SD-JWT-VC`_] Sezione 8.
     * - **claims**
-      - OBBLIGATORIO. Array di oggetti contenenti informazioni per la visualizzazione e la convalida dei claim dell'Attestato Elettronico. Contiene per ogni claim dell'Attestato Elettronico le seguenti proprietà:
+      - OBBLIGATORIO. Array di oggetti contenenti informazioni per la visualizzazione e la validazione dei claim dell'Attestato Elettronico. Ogni oggetto contiene le seguenti proprietà:
 
           * ``path``: array che indica i/il claim a cui ci si riferisce. [OBBLIGATORIO].
           * ``display``: array contenente informazioni di visualizzazione sul claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata dal tipo di Attestato Elettronico. Questa proprietà è OBBLIGATORIA. Contiene i seguenti parametri:

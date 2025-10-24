@@ -724,7 +724,7 @@ To minimize duplication while having consistent presentation across the ecosyste
   1. Use the Digital Credential Metadata Type if available.
   2. Otherwise, use the Credential Issuer metadata.
 
-- Implementations SHOULD cache Metadata Type display data and apply language selection using the ``lang`` parameters.
+- Implementations SHOULD cache Metadata Type display data and apply language selection using the ``locale`` parameters.
 
 Taxonomy
 --------

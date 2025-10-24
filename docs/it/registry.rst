@@ -236,37 +236,37 @@ Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica regi
      - **Descrizione**
    * - **entity_id**
      - string
-     - RICHIESTO. Identificatore univoco che segue lo schema normativo: ``https://{organization_domain}[/{optional_path}]``.
+     - OBBLIGATORIO. Identificatore univoco che segue lo schema normativo: ``https://{organization_domain}[/{optional_path}]``.
    * - **organization_info**
      - JSON object
-     - RICHIESTO. Dettagli dell'entità legale e metadati organizzativi.
+     - OBBLIGATORIO. Dettagli dell'entità legale e metadati organizzativi.
    * - **organization_info.organization_name**
      - string
-     - RICHIESTO. Nome legale dell'organizzazione.
+     - OBBLIGATORIO. Nome legale dell'organizzazione.
    * - **organization_info.organization_type**
      - string
-     - RICHIESTO. Classificazione dell'entità: ``"public"`` o ``"private"``.
+     - OBBLIGATORIO. Classificazione dell'entità: ``"public"`` o ``"private"``.
    * - **organization_info.ipa_code**
      - string
-     - RICHIESTO solo per AS Pubbliche. Codice di registrazione IPA per entità governative.
+     - OBBLIGATORIO solo per AS Pubbliche. Codice di registrazione IPA per entità governative.
    * - **organization_info.legal_identifier**
      - string
-     - RICHIESTO. Identificatore di registrazione legale (Codice Fiscale/Partita IVA, o identificatore nazionale equivalente per entità straniere).
+     - OBBLIGATORIO. Identificatore di registrazione legale (Codice Fiscale/Partita IVA, o identificatore nazionale equivalente per entità straniere).
    * - **organization_info.homepage_uri**
      - string
-     - RICHIESTO. URL che punta alla homepage dell'organizzazione.
+     - OBBLIGATORIO. URL che punta alla homepage dell'organizzazione.
    * - **organization_info.contacts**
      - String Array
-     - RICHIESTO. Array di indirizzi email di contatto tecnico/amministrativo.
+     - OBBLIGATORIO. Array di indirizzi email di contatto tecnico/amministrativo.
    * - **organization_info.policy_uri**
      - string
-     - RICHIESTO. URL al documento della privacy policy.
+     - OBBLIGATORIO. URL al documento della privacy policy.
    * - **organization_info.tos_uri**
      - string
-     - RICHIESTO solo per AS Private. URL al documento dei termini di servizio.
+     - OBBLIGATORIO solo per AS Private. URL al documento dei termini di servizio.
    * - **organization_info.organization_country**
      - string
-     - RICHIESTO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
+     - OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.
    * - **organization_info.logo_uri**
      - string
      - OPZIONALE. URL al logo dell'organizzazione.
@@ -278,40 +278,40 @@ Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica regi
      - OPZIONALE. Una stringa contenente informazioni "human-readable" sulla Attestato Elettronico rilevante per l'Utente. Questa stringa DEVE essere fornita dalla Fonte Autentica al Trust Anchor durante l'onboarding e DEVE essere formattata utilizzando il formato Markdown come definito in :rfc:`7763`. La formattazione Markdown può essere testo semplice o una combinazione di testo e link. Ad esempio, se il database della Fonte Autentica contiene solo i dati richiesti per gli attributi dell'Attestato Elettronico registrati *dopo* una data specifica, questa informazione DEVE essere comunicata al Trust Anchor in questa stringa Markdown.
    * - **data_capabilities**
      - JSON Objects Array
-     - RICHIESTO. Array contenente le specifiche delle capacità dei dati.
+     - OBBLIGATORIO. Array contenente le specifiche delle capacità dei dati.
    * - **data_capabilities[].domains**
      - String Array
-     - RICHIESTO. Dominio della tassonomia (ad esempio, ``["AUTHORIZATION"]``, ``["FINANCIAL"]``).
+     - OBBLIGATORIO. Dominio della tassonomia (ad esempio, ``["AUTHORIZATION"]``, ``["FINANCIAL"]``).
    * - **data_capabilities[].intended_purposes**
      - String Array
-     - RICHIESTO. Scopi aziendali serviti (ad esempio, ``["driving-authorization", "identity-verification"]``).
+     - OBBLIGATORIO. Scopi aziendali serviti (ad esempio, ``["driving-authorization", "identity-verification"]``).
    * - **data_capabilities[].available_claims**
      - String Array
-     - RICHIESTO. I claim disponibili da questa capacità di fornitura dati.
+     - OBBLIGATORIO. I claim disponibili da questa capacità di fornitura dati.
    * - **data_capabilities[].integration_method**
      - string
-     - RICHIESTO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"`` per AS Pubbliche. Le AS Private POSSONO utilizzare altri framework di autorizzazione come: ``"oauth2"``, ``"api_key"``, ``"mtls"``, ecc.
+     - OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere ``"pdnd"`` per AS Pubbliche. Le AS Private POSSONO utilizzare altri framework di autorizzazione come: ``"oauth2"``, ``"api_key"``, ``"mtls"``, ecc.
    * - **data_capabilities[].integration_endpoint**
      - string
-     - RICHIESTO. Punto di accesso al servizio (endpoint PDND per AS Pubbliche, endpoint API per AS Private).
+     - OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per AS Pubbliche, endpoint API per AS Private).
    * - **data_capabilities[].api_specification**
      - string
-     - RICHIESTO. URL al documento di specifica OpenAPI 3.0 per questa capacità di fornitura dati.
+     - OBBLIGATORIO. URL al documento di specifica OpenAPI 3.0 per questa capacità di fornitura dati.
    * - **data_capabilities[].data_provision**
      - JSON object
      - OPZIONALE. Capacità di fornitura dati e specifiche di tempistica.
    * - **data_capabilities[].data_provision.immediate_flow**
      - boolean
-     - RICHIESTO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.
+     - OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.
    * - **data_capabilities[].data_provision.deferred_flow**
      - boolean
-     - RICHIESTO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.
+     - OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.
    * - **data_capabilities[].data_provision.max_response_time_minutes**
      - integer
-     - CONDIZIONALE. Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. RICHIESTO se ``deferred_flow`` è ``true``.
+     - CONDIZIONALE. Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. OBBLIGATORIO se ``deferred_flow`` è ``true``.
    * - **data_capabilities[].data_provision.notification_methods**
      - String Array
-     - CONDIZIONALE. Array di metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come ``"push"``, ``"poll"``. RICHIESTO se ``deferred_flow`` è ``true``.
+     - CONDIZIONALE. Array di metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come ``"push"``, ``"poll"``. OBBLIGATORIO se ``deferred_flow`` è ``true``.
    * - **data_capabilities[].update_frequency**
      - string
      - OPZIONALE. Indica quanto frequentemente la Fonte Autentica aggiorna i suoi dati. Valori possibili: ``"real_time"`` (aggiornamenti quasi in tempo reale, tipicamente entro minuti), ``"daily"``, ``"weekly"``, ``"monthly"``, ``"on_demand"``.
@@ -329,13 +329,13 @@ Il Registro AS DEVE contenere i seguenti parametri per ogni Fonte Autentica regi
      - OPZIONALE. URI al logo della Fonte Autentica per il branding delle credenziali.
    * - **display.logo_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico del logo per la verifica dell'integrità. RICHIESTO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad esempio, ``"sha-256-abc123..."``)
+     - CONDIZIONALE. Digest crittografico del logo per la verifica dell'integrità. OBBLIGATORIO se ``logo_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad esempio, ``"sha-256-abc123..."``)
    * - **display.template_uri**
      - string
      - OPZIONALE. URI a un template visivo che la Fonte Autentica suggerisce per le credenziali che utilizzano i loro dati.
    * - **display.template_uri#integrity**
      - string
-     - CONDIZIONALE. Digest crittografico del template per la verifica dell'integrità. RICHIESTO se ``template_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad esempio, ``"sha-256-def456..."``).
+     - CONDIZIONALE. Digest crittografico del template per la verifica dell'integrità. OBBLIGATORIO se ``template_uri`` è presente. Formato: ``{digest_method}-{digest_value}`` (ad esempio, ``"sha-256-def456..."``).
 
 Esempio del Registro AS
 """""""""""""""""""""""
@@ -450,11 +450,6 @@ La seguente tabella riassume le principali informazioni che DEVONO essere fornit
        - **Policy di restrizione**: Se applicabile, regole che governano l'uso e le limitazioni dell'Attestato Elettronico secondo le normative nazionali. È utilizzata, ad esempio, per specificare se solo specifici tipi legali di Entità, ad esempio Fornitore Pub-EAA e Soluzioni Wallet pubbliche, sono autorizzate a rilasciare e ottenere l'Attestato Elettronico.
        - **Policy di costo**: Informazioni relative ai modelli di costo dell'Attestato Elettronico, come `free`, `issuance_based`, `verification_based`.
        - **Scopi degli Attestati Elettronici**: Informazioni relative agli scopi consentiti per i quali l'Attestato Elettronico può essere utilizzato. Ogni tipo di Attestato Elettronico può essere utilizzato per scopi multipli.
-   * - Attributi e Riferimenti alla Tassonomia
-     - Informazioni di contenuto e classificazione:
-
-       - **Elenco degli attributi visualizzate**: Contenuto specifico dell'Attestato Elettronico visualizzato all'Utente.
-       - **Riferimenti strutturati alla tassonomia**: Sistemi di classificazione e vocabolari controllati utilizzati.
 
 
 Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claim e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalog``.
@@ -548,19 +543,19 @@ Il contenuto del Catalogo degli Attestati Elettronici è protetto in un JWS che 
      - Descrizione
      - Riferimento
    * - **typ**
-     - RICHIESTO. DEVE essere impostato a ``JOSE``.
+     - OBBLIGATORIO. DEVE essere impostato a ``JOSE``.
      - [:rfc:`7515` Sezione 4.1.9].
    * - **alg**
-     - RICHIESTO. Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Algoritmi Crittografici <algorithms:Algoritmi Crittografici>` e NON DEVE essere impostato a ``none`` o con un identificatore di algoritmo simmetrico (MAC).
+     - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come per il registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati nella Sezione :ref:`Algoritmi Crittografici <algorithms:Algoritmi Crittografici>` e NON DEVE essere impostato a ``none`` o con un identificatore di algoritmo simmetrico (MAC).
      - [:rfc:`7515` Sezione 4.1.1].
    * - **kid**
-     - RICHIESTO. Identificatore univoco della chiave pubblica.
+     - OBBLIGATORIO. Identificatore univoco della chiave pubblica.
      - [:rfc:`7515` Sezione 4.1.4].
    * - **x5c**
      - OPZIONALE. Contiene il Certificato X.509 della chiave pubblica o la catena di Certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWS. Quando il valore del parametro header `kid` è presente, DEVE riferirsi alla stessa chiave pubblica crittografica del leaf utilizzata con il Certificato X.509.
      - [:rfc:`7515` Sezione 4.1.6.].
    * - **cty**
-     - RICHIESTO. DEVE essere impostato a ``application/json``.
+     - OBBLIGATORIO. DEVE essere impostato a ``application/json``.
      - [:rfc:`7515` Sezione 4.1.6.].
 
 Il payload JWS contiene i seguenti parametri:
@@ -573,15 +568,15 @@ Il payload JWS contiene i seguenti parametri:
    * - Nome Campo
      - Descrizione
    * - **catalog_version**
-     - RICHIESTO. Versione del formato del Catalogo degli Attestati Elettronici.
+     - OBBLIGATORIO. Versione del formato del Catalogo degli Attestati Elettronici.
    * - **iss**
-     - RICHIESTO. Identificatore dell'issuer del Catalogo degli Attestati Elettronici.
+     - OBBLIGATORIO. Identificatore dell'issuer del Catalogo degli Attestati Elettronici.
    * - **last_modified**
-     - RICHIESTO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.
+     - OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.
    * - **credentials**
-     - RICHIESTO. Array contenente le definizioni degli Attestati Elettronici.
+     - OBBLIGATORIO. Array contenente le definizioni degli Attestati Elettronici.
    * - **wallet_attestation**
-     - RICHIESTO. Un Oggetto JSON contenente definizioni per le Attestazioni del Wallet, inclusi i loro formati supportati, attributi associati e Livelli di Garanzia (LoA). Questo Oggetto è utilizzato da altre entità, come Issuer e Relying Party, per recuperare informazioni sui formati di Attestazione del Wallet supportati all'interno dell'ecosistema.
+     - OBBLIGATORIO. Un Oggetto JSON contenente definizioni per le Attestazioni del Wallet, inclusi i loro formati supportati, attributi associati e Livelli di Garanzia (LoA). Questo Oggetto è utilizzato da altre entità, come Issuer e Relying Party, per recuperare informazioni sui formati di Attestazione del Wallet supportati all'interno dell'ecosistema.
 
 Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
 
@@ -593,22 +588,13 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - Nome Campo
     - Descrizione
   * - **version**
-    - RICHIESTO. Versione della definizione dell'Attestato Elettronico.
+    - OBBLIGATORIO. Versione della definizione dell'Attestato Elettronico.
   * - **credential_type**
-    - RICHIESTO. Identificatore univoco del tipo di Attestato Elettronico.
+    - OBBLIGATORIO. Identificatore univoco del tipo di Attestato Elettronico.
   * - **legal_type**
-    - RICHIESTO. Classificazione legale della Credenziale (ad esempio, ``pub-eaa``, ``qeaa``, ``eaa``).
-  * - **localization**
-    - OPZIONALE. Impostazioni di localizzazione, inclusi:
-
-      * **default_locale**: Lingua predefinita per il testo.
-      * **available_locales**: Elenco delle lingue supportate.
-      * **base_uri**: URI base per le risorse di localizzazione.
-      * **version**: Versione dei file di localizzazione.
-  * - **name**
-    - RICHIESTO. Nome "human-readable" dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
-  * - **description**
-    - RICHIESTO. Descrizione "human-readable" dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
+    - OBBLIGATORIO. Classificazione legale della Credenziale (ad esempio, ``pub-eaa``, ``qeaa``, ``eaa``).
+  * - **vct**
+    - OBBLIGATORIO. DEVE essere valorizzato come una Stringa URI della forma ``https://{dominio Trust Anchor}/{versione}/{credential_type}`` (ad esempio, ``https://trust-registry.it-wallet.example.it/v1.0/mDL``). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.
   * - **restriction_policy**
     - OPZIONALE. Restrizioni legali su Soluzioni Wallet e/o Credential Issuer autorizzati a richiedere/rilasciare l'Attestato Elettronico.
 
@@ -617,7 +603,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - **pricing_policy**
     - OPZIONALE. Informazioni sui prezzi degli Attestati Elettronici, inclusi:
 
-      * **models**: RICHIESTO. Array di modelli di costo applicabili all'Attestato Elettronico, ognuno contenente
+      * **models**: OBBLIGATORIO. Array di modelli di costo applicabili all'Attestato Elettronico, ognuno contenente
 
         - **pricing_type**: Tipo di modello di costo, come ``issuance_based``, ``verification_based``, ``subscription_based``, ``other``.
         - **price**: Costo associato al modello.
@@ -631,48 +617,34 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **status_methods**: Metodi di verifica dello stato supportati (ad esempio ``status_list``).
       * **allowed_states**: Stati degli Attestati Elettronici consentiti (ad esempio ``valid``, ``revoked``, ``suspended``).
   * - **authentication**
-    - RICHIESTO. Requisiti di autenticazione degli Attestati Elettronici.
+    - OBBLIGATORIO. Requisiti di autenticazione degli Attestati Elettronici.
 
-      * **user_auth_required**: RICHIESTO. Flag che indica se l'autenticazione dell'Utente è richiesta durante il rilascio dell'Attestato Elettronico.
-      * **min_loa**: RICHIESTO. Livello di Garanzia minimo richiesto per l'autenticazione dell'Attestato Elettronico. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza del Wallet che richiede l'Attestato Elettronico.
-      * **supported_eid_schemes**: RICHIESTO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati.
+      * **user_auth_required**: OBBLIGATORIO. Flag che indica se l'autenticazione dell'Utente è richiesta durante il rilascio dell'Attestato Elettronico.
+      * **min_loa**: OBBLIGATORIO. Livello di Garanzia minimo OBBLIGATORIO per l'autenticazione dell'Attestato Elettronico. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza del Wallet che richiede l'Attestato Elettronico.
+      * **supported_eid_schemes**: OBBLIGATORIO se ``user_auth_required`` è ``true``. Schemi di autenticazione dell'identità digitale supportati.
   * - **purposes**
-    - RICHIESTO. Array di scopi di utilizzo per i quali l'Attestato Elettronico può essere utilizzato, definendo contesti di utilizzo specifici e attributi richiesti per ogni scopo, come:
+    - OBBLIGATORIO. Array di scopi di utilizzo per i quali l'Attestato Elettronico può essere utilizzato, definendo contesti di utilizzo specifici e attributi richiesti per ogni scopo, come:
 
       * **id**: Identificatore univoco per lo scopo (ad esempio, "driving-authorization", "person-identification").
       * **description**: Descrizione "human-readable" dello scopo con un suffisso ``_l10n_id`` per la localizzazione del contenuto.
       * **claims_required**: Array di identificatori di attributi che sono richiesti quando si utilizza la Credenziale per questo scopo.
       * **claims_recommended**: Array di identificatori di attributi che sono raccomandati ma non obbligatori per questo scopo.
   * - **issuers**
-    - RICHIESTO. Array di informazioni rilevanti sui Credential Issuer autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, riferimento al documento di specifica API e meccanismi di rilascio supportati (ad esempio il supporto del flusso differito).
+    - OBBLIGATORIO. Array di informazioni rilevanti sui Credential Issuer autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, riferimento al documento di specifica API e meccanismi di rilascio supportati (ad esempio il supporto del flusso differito).
   * - **authentic_sources**
-    - RICHIESTO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel :ref:`registry:Registro delle Fonti Autentiche`. Ogni identificatore corrisponde a un valore ``entity_id`` dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.
+    - OBBLIGATORIO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel :ref:`registry:Registro delle Fonti Autentiche`. Ogni identificatore corrisponde a un valore ``entity_id`` dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.
   * - **formats**
-    - RICHIESTO. Array di formati tecnici supportati degli Attestati Elettronici, inclusi:
+    - OBBLIGATORIO. Array di formati tecnici supportati degli Attestati Elettronici, inclusi:
 
       * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc``)
       * **configuration_id**: Identificatore di configurazione del :term:formato Credenziale. Questo è formato concatenando il valore ``credential_type`` al ``format`` (ad esempio, ``dc_sd_jwt_mDL`` o ``mso_mdoc_mDL``), ed è utilizzato per fare riferimento univocamente alla configurazione per questo :term:formato Credenziale.
-      * **vct**: CONDIZIONALE. È RICHIESTO solo se il ``format`` è ``dc+sd-jwt``. DEVE essere impostato come una Stringa URI della forma ``https://{dominio Trust Anchor}/{versione}/{credential_type}`` (ad esempio, ``https://trust-registry.it-wallet.example.it/v1.0/mDL``). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.
-      * **docType**: CONDIZIONALE. È RICHIESTO solo se il ``format`` è ``mso_mdoc``. Se la :term:Credenziale è:
+      * **docType**: CONDIZIONALE. È OBBLIGATORIO solo se il ``format`` è ``mso_mdoc``. Se la :term:Credenziale è:
 
         * definita da uno standard ISO, DEVE essere una stringa della forma ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (ad esempio, ``iso.org.18013.5.1.mDL``).
         * definita a livello europeo, DEVE essere una stringa della forma ``eu.europa.ec.{credential_type}.{version}`` (ad esempio, ``eu.europa.ec.loyaltycard.1.0``).
         * definita da uno standard nazionale, DEVE essere una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}.{version}`` (ad esempio, ``it.wallet.trust-registry.personidentificationdata.1``).
       * **schema_uri**: URI che punta al documento di specifica del formato.
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
-  * - **display_properties**
-    - RICHIESTO. Proprietà di presentazione visiva degli Attestati Elettronici, ad esempio:
-
-      * **templates**: Template visivi per la Credenziale, ad esempio template `svg`.
-      * **background_color**: Colore di sfondo in formato esadecimale.
-      * **text_color**: Colore del testo in formato esadecimale.
-      * **logo_uri**: URI al logo dell'Attestato Elettronico.
-  * - **claims**
-    - RICHIESTO. Array di attributi contenuti nell'Attestato Elettronico. DEVE includere almeno i seguenti attributi:
-
-      * **name**: Il nome nell'Attestato Elettronico.
-      * **namespaces**: CONDIZIONALE. Namespace a cui appartiene il claim.
-      * **display_name_l10n_id**: OPZIONALE. Identificativo "human readable" con un suffisso ``_l10n_id`` per la gestione della localizzazione del contenuto.
 
 
 L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
@@ -685,15 +657,15 @@ L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
   * - Nome Campo
     - Descrizione
   * - **credential_type**
-    - RICHIESTO. Identificatore univoco dell'Attestazione del Wallet. DEVE essere impostato a ``WalletAttestation``.
+    - OBBLIGATORIO. Identificatore univoco dell'Attestazione del Wallet. DEVE essere impostato a ``WalletAttestation``.
   * - **name**
-    - RICHIESTO. Nome "human-readable" dell'Attestazione del Wallet. DEVE essere impostato a ``Wallet Attestation``.
+    - OBBLIGATORIO. Nome "human-readable" dell'Attestazione del Wallet. DEVE essere impostato a ``Wallet Attestation``.
   * - **description**
-    - RICHIESTO. Descrizione "human-readable" dell'Attestato Elettronico.
+    - OBBLIGATORIO. Descrizione "human-readable" dell'Attestato Elettronico.
   * - **aal_values_supported**
-    - RICHIESTO. Array di Stringhe ognuna delle quali è un Livello di Garanzia (LoA) supportato dall'Attestazione del Wallet. DEVE includere almeno i livelli ``low``, ``medium`` e ``high``.
+    - OBBLIGATORIO. Array di Stringhe ognuna delle quali è un Livello di Garanzia (LoA) supportato dall'Attestazione del Wallet. DEVE includere almeno i livelli ``low``, ``medium`` e ``high``.
   * - **formats**
-    - RICHIESTO. Array di formati supportati per l'Attestazione del Wallet, inclusi:
+    - OBBLIGATORIO. Array di formati supportati per l'Attestazione del Wallet, inclusi:
 
       * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc`` o ``oauth-client-attestation+jwt``)
       * **configuration_id**: Identificatore di configurazione dell'Attestazione del Wallet. Questo è formato concatenando la stringa ``wa`` al ``format`` (ad esempio, ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, o ``jwt_wa``), ed è utilizzato per fare riferimento univocamente alla configurazione del formato dell'Attestazione del Wallet.
@@ -702,7 +674,7 @@ L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
       * **schema_uri**: URI che punta al documento di specifica del formato.
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
   * - **claims**
-    - RICHIESTO. Array di claim contenute nell'Attestazione del Wallet. DEVE includere almeno i seguenti attributi:
+    - OBBLIGATORIO. Array di claim contenute nell'Attestazione del Wallet. DEVE includere almeno i seguenti attributi:
 
       * **Name**: Il nome dell' attributo (ad esempio, ``sub``, ``aal``, ``wallet_link``, ``wallet_name``).
       * **Namespaces**: CONDIZIONALE. Array di namespace a cui appartiene l'attibuto. DEVE essere impostato a ``{dominio inverso Trust Anchor}.{credential_type}`` (ad esempio, ``it.wallet.trust-registry.WalletAttestation``).
@@ -741,6 +713,20 @@ L'esempio corrispondente del Catalogo degli Attestati Elettronici come decodific
   Un esempio non normativo dell'URI di localizzazione italiana per il bundle mDL sarebbe **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**.
 
   Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim **localization_info.integrity**. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.
+
+Il Catalogo come Fonte Canonica per le Informazioni di Visualizzazione
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  Per ridurre la duplicazione garantendo coerenza di presentazione nell'ecosistema, il Catalogo degli Attestati Elettronici è la fonte canonica delle informazioni di visualizzazione rivolte all'Utente finale relative agli Attestati Elettronici (ad es. nome/descrizione dell'Attestato Elettronico, etichette degli attributi, template visivi, colori, URI del logo).
+
+  - Per gli Attestati inclusi nel Catalogo degli Attestati Elettronici, le Soluzioni Wallet e le Relying Party DEVONO utilizzare i campi relativi alla visualizzazione recuperati tramite il ``vct`` contenuto nel Catalogo per la rappresentazione degli Attestati Elettronici e dei relativi Attributi.
+
+  - Per gli Attestati che non sono inclusi nel Catalogo degli Attestati Elettronici (ad esempio, Attestati non considerati di interesse pubblico), le Soluzioni Wallet POSSONO utilizzare le informazioni di visualizzazione provenienti dai metadati del Fornitore di Attestati Elettronici e/o dal Type Metadata dell’Attestato Elettronico. Quando entrambe le fonti sono disponibili, si applica la seguente regola di precedenza:
+
+    1. Utilizzare il Type Metadata dell'Attestato Elettronico, se disponibile.
+    2. In caso contrario, utilizzare i Metadata del Fornitore di Attestati Elettronici.
+
+- Le implementazioni DOVREBBERO memorizzare nella cache i dati di visualizzazione del Type Metadata e applicare la selezione della lingua utilizzando il parametri ``locale``.
 
 
 Tassonomia
