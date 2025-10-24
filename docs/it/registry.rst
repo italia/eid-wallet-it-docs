@@ -649,6 +649,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
 
 L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
 
+
 .. list-table:: Campi di Primo Livello di Ogni Voce di Credenziale
   :class: longtable
   :header-rows: 1
