@@ -658,10 +658,8 @@ L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
     - Descrizione
   * - **credential_type**
     - OBBLIGATORIO. Identificatore univoco dell'Attestazione del Wallet. DEVE essere impostato a ``WalletAttestation``.
-  * - **name**
-    - OBBLIGATORIO. Nome "human-readable" dell'Attestazione del Wallet. DEVE essere impostato a ``Wallet Attestation``.
-  * - **description**
-    - OBBLIGATORIO. Descrizione "human-readable" dell'Attestato Elettronico.
+  * - **vct**
+    - OBBLIGATORIO. DEVE essere impostato come una Stringa URI della forma ``https://{dominio Trust Anchor}/{credential_type}`` (ad esempio, ``https://trust-registry.it-wallet.example.it/WalletAttestation``). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.
   * - **aal_values_supported**
     - OBBLIGATORIO. Array di Stringhe ognuna delle quali è un Livello di Garanzia (LoA) supportato dall'Attestazione del Wallet. DEVE includere almeno i livelli ``low``, ``medium`` e ``high``.
   * - **formats**
@@ -669,15 +667,9 @@ L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
 
       * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc`` o ``oauth-client-attestation+jwt``)
       * **configuration_id**: Identificatore di configurazione dell'Attestazione del Wallet. Questo è formato concatenando la stringa ``wa`` al ``format`` (ad esempio, ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, o ``jwt_wa``), ed è utilizzato per fare riferimento univocamente alla configurazione del formato dell'Attestazione del Wallet.
-      * **vct**: CONDIZIONALE. È presente solo se il ``format`` è ``dc+sd-jwt``. DEVE essere impostato come una Stringa URI della forma ``https://{dominio Trust Anchor}/{credential_type}`` (ad esempio, ``https://trust-registry.it-wallet.example.it/WalletAttestation``). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.
       * **docType**: CONDIZIONALE. È presente solo se il ``format`` è ``mso_mdoc``. È una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}`` (ad esempio, ``it.wallet.trust-registry.WalletAttestation``).
       * **schema_uri**: URI che punta al documento di specifica del formato.
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
-  * - **claims**
-    - OBBLIGATORIO. Array di claim contenute nell'Attestazione del Wallet. DEVE includere almeno i seguenti attributi:
-
-      * **Name**: Il nome dell' attributo (ad esempio, ``sub``, ``aal``, ``wallet_link``, ``wallet_name``).
-      * **Namespaces**: CONDIZIONALE. Array di namespace a cui appartiene l'attibuto. DEVE essere impostato a ``{dominio inverso Trust Anchor}.{credential_type}`` (ad esempio, ``it.wallet.trust-registry.WalletAttestation``).
 
 L'esempio corrispondente del Catalogo degli Attestati Elettronici come decodificato in JSON sia per header che payload è il seguente:
 

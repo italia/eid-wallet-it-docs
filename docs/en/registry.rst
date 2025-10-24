@@ -657,10 +657,7 @@ The ``wallet_attestation`` Object contains at least the following information:
     - Description
   * - **credential_type**
     - REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to ``WalletAttestation``.
-  * - **name**
-    - REQUIRED. Human-readable name of the Wallet Attestation. It MUST be set to ``Wallet Attestation``.
-  * - **description**
-    - REQUIRED. Human-readable Digital Credential description.
+  * - **vct**: REQUIRED. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/WalletAttestation``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
   * - **aal_values_supported**
     - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels ``low``, ``medium`` and ``high``.
   * - **formats**
@@ -668,15 +665,9 @@ The ``wallet_attestation`` Object contains at least the following information:
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
       * **configuration_id**: Configuration identifier of the Wallet Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet Attestation format.
-      * **vct**: CONDITIONAL. It is only present if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/WalletAttestation``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
       * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.WalletAttestation``).
       * **schema_uri**: URI pointing to the format specification document.
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
-  * - **claims**
-    - REQUIRED. Array of claims contained in the Wallet Attestation. It MUST include at least the following claims:
-
-      * **Name**: The name of the claim (e.g., ``sub``, ``aal``, ``wallet_link``, ``wallet_name``).
-      * **Namespaces**: CONDITIONAL. Array of namespaces to which the claim belongs. It MUST be set to ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.WalletAttestation``).
 
 The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
 

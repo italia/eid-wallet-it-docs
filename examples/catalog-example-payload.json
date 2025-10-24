@@ -95,8 +95,7 @@
    "wallet_attestation": {
       "version": "1.0",
       "credential_type": "WalletAttestation",
-      "name": "Wallet Attestation",
-      "description": "Attestation of the Wallet capabilities and compliance with the EUDI Wallet specifications.",
+      "vct": "https://trust-registry.it-wallet.example.it/WalletAttestation",
       "aal_values_supported": [
             "https://trust-list.eu/aal/low",
             "https://trust-list.eu/aal/medium",
@@ -106,7 +105,6 @@
          {
             "format": "dc+sd-jwt",
             "configuration_id": "dc_sd_jwt_wa",
-            "vct": "https://trust-registry.it-wallet.example.it/WalletAttestation",
             "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/WalletAttestation",
             "schema_uri#integrity": "sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc="
          },
@@ -122,24 +120,6 @@
             "configuration_id": "jwt_wa",
             "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/WalletAttestation",
             "schema_uri#integrity": "sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg="
-         }
-      ],
-      "claims": [
-         {
-            "name": "sub",
-            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
-         },
-         {
-            "name": "aal",
-            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
-         },
-         {
-            "name": "wallet_link",
-            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
-         },
-         {
-            "name": "wallet_name",
-            "namespaces": ["it.wallet.trust-registry.WalletAttestation"]
          }
       ]
    }
