@@ -1,0 +1,10 @@
+Criterio	Domanda test	Evidenza tipica	Esito se Y
+Fonte autorevole pubblica	L'attributo è in un registro pubblico o certificato da PA/soggetto con poteri pubblici?	ANPR; INI-PEC; REA/Registro Imprese; Albi; PRA; Albi professionali; Agenzia Entrate	Attributi pubblici
+Potere normativo	L'issuer ha un potere legale di natura normativa/regolatoria?	PA; ordini; notai; camere; organismi di diritto pubblico; soggetti delegati/accreditati	Attributi pubblici
+Natura giuridica dell'attributo	Si tratta di status, qualifica, abilitazione, carica, potere di rappresentanza, iscrizione, titolo?	Stato civile; abilitazioni; P.IVA; cariche; titoli di studio	Attributi pubblici
+Mandato normativo d'uso	La legge/regolazione impone o incentiva l'uso dell'attestazione per erogare/ottenere servizi/diritti?	Accesso a servizi sanitari; scolastici; fiscali; welfare; mobilità	Interesse pubblico
+Universalità/servizio pubblico	L'attestazione abilita servizi di interesse generale o obblighi di servizio universale?	Sanità; istruzione; identità; tributi; sicurezza; giustizia	Interesse pubblico
+Esternalità e tutela terzi	Riduce rischi/asimmetrie con impatti su terzi/mercato?	Requisiti professionali in appalti; sicurezza lavoro	Interesse pubblico
+Necessità per conformità	È necessaria per compliance/regimi autorizzativi/licenze?	AUA; DURC; white list; SOA	Interesse pubblico (spesso anche Attributi)
+Origine non pubblica ma accreditata	Attributo rilasciato da privato accreditato con schema pubblico?	Organismi di valutazione conformità per regimi regolati	Interesse pubblico (se usata per finalità pubbliche)
+Dato puramente privato	Attributo non pubblico, senza uso pubblico/mandato?	Badge aziendale; membership privata	Nessuna delle due
