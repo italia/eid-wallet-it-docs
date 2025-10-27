@@ -82,7 +82,7 @@ DPOPS -> MIN: Richiesta HTTP per verifica stato validita del \ndocumento (verifi
 MIN --> DPOPS: HTTP/1.1 200 Ok
 
 rnote over DPOPS #LavenderBlush
-SC15, SC16, SC17, SC18
+SC15, SC16, SC17
 endrnote
 
 DPOPS --> A: **Risposta Validazione MRTD PoP**\nHTTP/1.1 202 Accepted\ncon redirect_uri e mrtd_val_pop_nonce
