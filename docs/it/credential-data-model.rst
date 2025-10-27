@@ -253,7 +253,7 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
                     * ``alt_text``: stringa contenente del testo alternativo da visualizzare al posto dell'immagine del logo. [OPZIONALE].
 
                 * ``background_color``: valore del colore in RGB come definito in `W3C.CSS-COLOR`_ per lo sfondo dell'Attestato Elettronico. [OPZIONALE].
-                * ``background_image``: Oggetto contenente informazioni sull'immagine di sfondo da visualizzare per l'Attestato Elettronico. Questa proprietà è OPZIONALE. L'oggetto contiene i seguenti sottovalori:
+                * ``background_image``: Oggetto contenente informazioni sull'immagine di sfondo da visualizzare per l'Attestato Elettronico. Questa proprietà è OPZIONALE [Allineato con SD-JWT-VC Draft 12]. L'oggetto contiene i seguenti sottovalori:
 
                     * ``uri``: URI che punta all'immagine di sfondo. [OBBLIGATORIO]
                     * ``uri#integrity``: "integrity metadata" come definito nella Sezione 3 di `W3C-SRI`_. [OBBLIGATORIO].
