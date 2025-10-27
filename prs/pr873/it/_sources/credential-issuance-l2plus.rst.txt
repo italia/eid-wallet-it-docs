@@ -37,7 +37,7 @@ L'architettura di sistema comprende i seguenti componenti principali:
 		- **Servizio MRTD PoP:** Gestisce il proof of possession di documento elettronico con validazione crittografica del documento.
 
 	- **Provider di Identità LoA3:** Fornisce Schemi di Identificazione Elettronica con conformità eIDAS LoA3 (CIEid e SPID).
-	- **Registro Nazionale CIE:** Fornisce evidenza privacy-preserving del binding tra NIS e codice fiscale dell'Utente richiesto per la verifica MRTD e, opzionalmente, i dati MRZ (numero documento, data di nascita, data di scadenza, cittadinanza e genere) per migliorare l'esperienza utente. Fornisce anche informazioni relative allo stato di validità del documento. Agisce come fonte autentica per la CIE.
+	- **Registro Nazionale CIE:** Agisce come fonte autentica per la CIE. Fornisce informazioni relative allo stato di validità del documento. Fornisce anche opzionalmente i dati MRZ (numero documento, data di nascita, data di scadenza, cittadinanza e genere) per migliorare l'esperienza utente.
 
 .. _fig_eID_MRTD_System_Architecture:
 .. plantuml:: plantuml/l2plus-system-architecture.puml
@@ -70,7 +70,7 @@ Il Server di Autorizzazione DEVE mantenere una sessione unificata attraverso tut
 	- **Correlazione di Stato**: I risultati di autenticazione da ogni step sono correlati.
 	- **Binding di Sicurezza**: Binding tra gli step di autenticazione.
 
-Questa specifica assume che il Server di Autorizzazione PID e il Servizio MRTD PoP operino all'interno dell'architettura dei confini del Provider PID. Questa assunzione architetturale è RACCOMANDATA per assicurare che la sessione OAuth e i nonce rilevanti utilizzati nel flusso del protocollo siano gestiti appropriatamente da entrambi i componenti senza introdurre complessità aggiuntiva nella sincronizzazione dello stato di sessione.
+Poiché il Server di Autorizzazione PID e il Servizio MRTD PoP operano all'interno dell'implementazione dei confini del Provider PID, è RACCOMANDATO che la sessione OAuth 2.0 e i nonce utilizzati nel flusso del protocollo siano gestiti correttamente da entrambi i componenti.
 
 Quando entrambi i servizi operano all'interno dello stesso confine di fiducia, i seguenti meccanismi sono disponibili per la correlazione di sessione:
 
@@ -79,12 +79,12 @@ Quando entrambi i servizi operano all'interno dello stesso confine di fiducia, i
 	- Validazione nonce sincronizzata senza overhead di comunicazione esterna.
 	- Logging di audit unificato e correlazione di eventi di sicurezza.
 
-Quando il Server di Autorizzazione PID o il Servizio MRTD PoP sono dispiegati al di fuori dell'architettura dei confini del Provider PID, gli implementatori DEVONO fare riferimento alle :ref:`credential-issuance-l2plus:Considerazioni di Sicurezza` per misure di sicurezza aggiuntive che DEVONO essere prese per assicurare la gestione appropriata delle sessioni di autenticazione Utente. Queste misure includono ma non sono limitate a scambio sicuro di token di sessione, validazione di sessione distribuita, e meccanismi di audit trail migliorati.
+Quando il Server di Autorizzazione PID o il Servizio MRTD PoP sono erogati al di fuori dell'implementazione dei confini del Provider PID, le :ref:`credential-issuance-l2plus:Considerazioni di Sicurezza` DEVONO essere prese in considerazione per rafforzare la gestione delle sessioni di autenticazione Utente. Queste misure includono ma non sono limitate alla gestione sicura dei token di sessione, validazione di sessione distribuita, e meccanismi di audit trail migliorati.
 
 Flusso Low-Level
 ----------------
 
-Questa sezione fornisce dettagli tecnici su come richiedere l'Emissione PID attraverso la combinazione di identificazione elettronica con Livello di Garanzia Substantial e identity proofing remoto attraverso verifica del documento elettronico. Il servizio di Verifica MRTD gestisce lettura sicura del documento e validazione come parte di un processo di Autenticazione eID Substantial con Verifica MRTD iniziato dal Server di Autorizzazione PID.
+Questa sezione fornisce dettagli tecnici sull'Emissione PID utilizzando Livello di Garanzia Substantial e identity proofing remoto attraverso verifica del documento elettronico utilizzando un servizio di Verifica MRTD.
 
 .. _fig_eID_MRTD_Detailed_Flow:
 .. plantuml:: plantuml/l2plus-detailed-flow.puml
@@ -114,6 +114,9 @@ Di seguito un esempio non normativo di PAR:
 
     client_id=47b982369791d08003a7283f059cb0d1&
     request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
+
+Quando l'oggetto ``it_l2+document_proof`` non è presente nell'array authorization_details, il Provider PID DEVE autenticare l'Utente con CIEid LoA High.
+La Risposta PAR e la Richiesta di Autorizzazione sono le stesse delle Specifiche IT-Wallet.
 
 Fase 2: Autenticazione Primaria
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -197,7 +200,7 @@ Un esempio non normativo è riportato di seguito:
 .. code-block:: http
 
     HTTP/1.1 302 Found
-    Location: https://start.wallet.example.org/challenge? challenge_info=eyJhbGciOiJSUzI1NiIsInR5cCI6Im1ydGQraWFzK2p3dCIsImtpZCI6ImI0YTFhNmMyZTlkNTZuOGY5YzNlN2EyYTJmNGI2Yzk3In0.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiaWF0IjoxNzUzNTU1MzU4LCJleHAiOjE3NTM1NTU2NTgsInN0YXR1cyI6InJlcXVpcmVfaW50ZXJhY3Rpb24iLCJ0eXBlIjoibXJ0ZCtpYXMiLCJtcnRkX2F1dGhfc2Vzc2lvbiI6Ind4cm9WckJZMk1DcTRkRE5HWEFDUyIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJtcnRkX3BvcF9qd3Rfbm9uY2UiOiJub25jZTEiLCJodHUiOiJodHRwczovL2Vkb2MtcHJvb2YvaW5pdCIsImh0bSI6IlBPU1QifQ.i6p_FN7qNNawyL4KnOV1r8FrNVjzd-7Ve1wEGASHNnlXwuJ1f216v0Ml_KpVrq9yXkmOo_M2xZwih2SlHVfrzkuG3Pn7LWRL7dsyCtqEY2e58rFHjCa2miBnnKr0NU4wcBMMYe2_qKCOkA7SOa7usNTBluBLMQ28GfiMbr3tcpfpM4rD0POKQcfijvNkNbh-VdOxM8GdHb6IQO_xfpsaSzd8cc0k5yIYCWjDTeINVKebIz4m9Rm2JStvRrWUq8OCqkv-8dTJH9q-JXx0PzJC998RMwe6tqSL-kkE3dZLWwCJdP8Z7bITtowU49rEe-AkrGxVma4ANPq317umEfUwmw
+    Location: https://start.wallet.example.org/challenge?challenge_info=eyJhbGciOiJSUzI1NiIsInR5cCI6Im1ydGQraWFzK2p3dCIsImtpZCI6ImI0YTFhNmMyZTlkNTZuOGY5YzNlN2EyYTJmNGI2Yzk3In0.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiaWF0IjoxNzUzNTU1MzU4LCJleHAiOjE3NTM1NTU2NTgsInN0YXR1cyI6InJlcXVpcmVfaW50ZXJhY3Rpb24iLCJ0eXBlIjoibXJ0ZCtpYXMiLCJtcnRkX2F1dGhfc2Vzc2lvbiI6Ind4cm9WckJZMk1DcTRkRE5HWEFDUyIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJtcnRkX3BvcF9qd3Rfbm9uY2UiOiJub25jZTEiLCJodHUiOiJodHRwczovL2Vkb2MtcHJvb2YvaW5pdCIsImh0bSI6IlBPU1QifQ.i6p_FN7qNNawyL4KnOV1r8FrNVjzd-7Ve1wEGASHNnlXwuJ1f216v0Ml_KpVrq9yXkmOo_M2xZwih2SlHVfrzkuG3Pn7LWRL7dsyCtqEY2e58rFHjCa2miBnnKr0NU4wcBMMYe2_qKCOkA7SOa7usNTBluBLMQ28GfiMbr3tcpfpM4rD0POKQcfijvNkNbh-VdOxM8GdHb6IQO_xfpsaSzd8cc0k5yIYCWjDTeINVKebIz4m9Rm2JStvRrWUq8OCqkv-8dTJH9q-JXx0PzJC998RMwe6tqSL-kkE3dZLWwCJdP8Z7bITtowU49rEe-AkrGxVma4ANPq317umEfUwmw
 
 Il server di autorizzazione DEVE:
 
@@ -276,7 +279,6 @@ Risposta MRTD PoP
 """"""""""""""""""
 
 Se la Richiesta HTTP è elaborata con successo, il Servizio MRTD PoP DEVE inviare una Risposta HTTP con codice *202 Accepted* e ``application/jwt`` come content type. La struttura JWT è definita come segue:
-
 
 .. _table_eID_MRTD_PoP_Response_Header:
 .. list-table:: MRTD PoP Response Parameters
@@ -454,7 +456,7 @@ La struttura del JWT di Validazione (``mrtd_validation_jwt``) è data nella segu
      - OBBLIGATORIO. Dati di validazione MRTD contenenti Data Groups e SOD.
    * - **ias**
      - JSON Object
-     - OBBLIGATORIO. Dati di validazione IAS contenenti NIS, Anti-Cloning Public Key, e SOD.
+     - OBBLIGATORIO. Dati di validazione IAS contenenti Anti-Cloning Public Key, e SOD.
 
 Struttura Oggetto MRTD
 """"""""""""""""""""""
@@ -492,9 +494,6 @@ L'oggetto ``ias`` contiene i seguenti campi:
    * - **Campo**
      - **Tipo**
      - **Descrizione**
-   * - **nis**
-     - string
-     - OBBLIGATORIO. Valore NIS (Service Identification Number).
    * - **ias_pk**
      - string
      - OBBLIGATORIO. Chiave pubblica IAS codificata Base64 in formato DER.
@@ -525,7 +524,7 @@ Di seguito un esempio non normativo di una Richiesta di Validazione MRTD PoP:
 
 	- Eseguire lettura documento NFC conforme `ICAO 9303`_ (PACE, ecc.).
 	- Validare firme crittografiche del documento e catene di certificati.
-	- Estrarre attributi di identità (DG1 e DG11), NIS, Anti-Cloning Public Key dai data groups del documento, e SODs (dalle Applicazioni MRTD e IAS).
+	- Estrarre attributi di identità (DG1 e DG11), Anti-Cloning Public Key dai data groups del documento, e SODs (dalle Applicazioni MRTD e IAS).
 	- Eseguire l'Anti-Cloning Internal Authentication.
 	- Generare evidenza di validazione nel JWT.
 	- Autenticare utilizzando una Wallet Instance Attestation valida.
@@ -546,7 +545,7 @@ Di seguito un esempio non normativo di una Richiesta di Validazione MRTD PoP:
 - Convalida delle prove crittografiche e delle catene di certificati del documento.
 - Eseguire la correlazione dell'identità tra i dati del documento e il risultato dell'autenticazione LoA3.
 - Controllare validità del documento (stato non di revoca).
-- Controllare il binding tra NIS ottenuto dall'Applicazione IAS e codice fiscale dell'Utente letto dall'Applicazione MRTD per assicurare che entrambi i valori provengano dallo stesso chip.
+- Verificare il binding tra le applicazioni IAS e MRTD controllando che il NUN estratto da DG1 sia presente (come valore hash) nell'IAS SOD, e che il DG1 stesso sia presente (come valore hash) nell'MRTD SOD. Questa doppia verifica assicura che entrambe le applicazioni risiedano sullo stesso chip fisico.
 
 Risposta di Validazione MRTD PoP
 """""""""""""""""""""""""""""""""
@@ -666,7 +665,7 @@ Errori Risposta di Validazione MRTD PoP
    * - **access_denied**
      - Autenticazione utente o validazione documento fallita.
    * - **invalid_document**
-     - La convalida crittografica del documento non è riuscita (convalida SOD, binding NIS/CF, stato di revoca, ecc.).
+     - La convalida crittografica del documento non è riuscita (convalida SOD, verifica binding IAS/MRTD, stato di revoca, ecc.).
    * - **id_matching_failed**
      - La corrispondenza tra l'identità ottenuta durante l'autenticazione primaria (eID LoA3) e quella ottenuta dalla PoP del Documento Elettronico non è riuscita.
    * - **temporarily_unavailable**
@@ -704,6 +703,7 @@ Quando i componenti operano al di fuori dei confini del provider PID, DEVONO ess
 
 - Comunicazione sicura tra servizi (ad esempio, tramite pinning del certificato, TLS reciproco, ecc.).
 - Crittografia e integrità dei dati sensibili della sessione e/o delle informazioni di identità personale (ad esempio, utilizzando token JWE/JWS).
+- Lock distribuiti per gli aggiornamenti dello stato di sessione
 
 .. _fig_eID_MRTD_Security_Controls:
 .. plantuml:: plantuml/l2plus-security-controls.puml
@@ -734,6 +734,11 @@ Inoltre, ogni nonce ha uno scopo di sicurezza specifico:
  - Essere firmato dalla chiave privata dell'istanza del wallet.
  - Includere la convalida del timestamp anti-replay.
  - Essere verificato rispetto all'intera catena di nonce per verificarne l'integrità.
+
+Metadati del Provider PID
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In aggiunta ai valori ``trust_frameworks_supported`` definiti nella sezione :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer`, i Metadati del Provider PID per ``openid_credential_issuer`` DEVONO anche supportare il valore ``it_l2+document_proof`` indicante il protocollo di Autenticazione multi-step descritto in questa Specifica.
 
 Controlli di Sicurezza
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -790,17 +795,14 @@ I seguenti controlli di sicurezza DEVONO essere implementati nel protocollo:
    * - **SC14**
      - Il Servizio MRTD PoP verifica l'integrità dei dati estratti dalla CIE controllando gli elementi SOD (sia IAS che MRTD) e gli hash correlati.
      - Fase 3
-   * - **SC15**
-     - Il server di autorizzazione PID verifica l'esistenza e la coerenza del codice identificativo del contribuente dell'utente estratto dall'asserzione eID LoA3, interagendo con la Fonte Autentica (AS_NIS).
+  * - **SC15**
+     - Il Servizio MRTD PoP verifica il binding tra le applicazioni IAS e MRTD controllando che il NUN estratto da DG1 sia presente (come valore hash) nell'IAS SOD, e che il DG1 stesso sia presente (come valore hash) nell'MRTD SOD. Questa doppia verifica assicura che entrambe le applicazioni risiedano sullo stesso chip fisico.
      - Fase 3
    * - **SC16**
-     - Il servizio PoP MRTD verifica che l'identità dimostrata durante l'interazione IAS sia correlata all'identità dimostrata durante l'interazione MRTD, interagendo con la Fonte Autentica (AS_NIS).
+     - Il Servizio MRTD PoP verifica che l'identità dimostrata durante la fase eID LoA3 sia correlata con l'identità dimostrata durante la fase MRTD PoP.
      - Fase 3
    * - **SC17**
-     - Il servizio MRTD PoP verifica che l'identità provata durante la fase eID LoA3 sia correlata all'identità provata durante la fase MRTD PoP.
-     - Fase 3
-   * - **SC18**
-     - Il servizio MRTD PoP verifica che il CIE utilizzato durante la fase MRTD PoP non sia scaduto né revocato interagendo con il Registro nazionale CIE.
+     - Il Servizio MRTD PoP verifica che la CIE utilizzata durante la fase MRTD PoP non sia scaduta e non sia revocata interagendo con il Registro Nazionale CIE.
      - Fase 3
 
 Requisiti implementativi aggiuntivi:
