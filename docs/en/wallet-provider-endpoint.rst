@@ -373,7 +373,7 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **vct**
-      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be of the type ``{url_trust_anchor}/WalletAttestation`` as described in :ref:`registry:Digital Credentials Catalog`.
+      - REQUIRED. Credential type value MUST be an URN and it MUST be of the type ``urn:eudi:WalletAttestation:{version}`` as described in :ref:`registry:Digital Credentials Catalog`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - REQUIRED. JSON array containing a list of all disclusure's digests.

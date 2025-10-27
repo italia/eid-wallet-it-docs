@@ -13,7 +13,7 @@
     "_sd_alg": "sha-256",
     "iat": 1687281195,
     "exp": 1687288395,
-    "vct": "https://trust-registry.it-wallet.example.it/WalletAttestation",
+    "vct": "urn:eudi:WalletAttestation:it:1",
     "sub": "vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c",
     "aal": "https://trust-list.eu/aal/high"
   }

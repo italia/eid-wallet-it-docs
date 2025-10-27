@@ -516,10 +516,10 @@ Ogni Credenziale DEVE specificare domini e scopi per abilitare sia **Scenari Cre
 
   1. **Scenari Credential-Specific** (Primari per Settori Governativi/Regolamentati): Le RP richiedono tipi specifici di credenziali per requisiti di conformità e audit, inclusi ad esempio:
 
-    - **Servizi Governativi**: ``"vct_values": ["person_identification_data"]`` per la verifica dell'identità specifica del PID.
+    - **Servizi Governativi**: ``"vct_values": ["urn:eudi:pid:it:1"]`` per la verifica dell'identità specifica del PID.
     - **Controlli di Polizia**: ``"docType": "org.iso.18013.5.1.mDL"`` per la verifica della patente di guida.
     - **KYC Bancario**: Tipi di credenziali specifici richiesti dalle normative finanziarie.
-    - **Servizi Sanitari**: ``"vct_values": ["european_disability_card"]`` per l'accesso ai benefici per disabilità conforme all'UE.
+    - **Servizi Sanitari**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` per l'accesso ai benefici per disabilità conforme all'UE.
 
   2. **Scenari Credential-Agnostic** (Tipici per Aziende Private): Le RP richiedono gli attributi specifichi indipendentemente dalla fonte delle credenziali per efficienza operativa, come:
 
@@ -595,7 +595,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
   * - **version**
     - RICHIESTO. Versione della definizione dell'Attestato Elettronico.
   * - **credential_type**
-    - RICHIESTO. Identificatore univoco del tipo di Attestato Elettronico.
+    - RICHIESTO. Identificatore univoco del tipo di Attestato Elettronico. Per il PID DEVE essere ``pid``.
   * - **legal_type**
     - RICHIESTO. Classificazione legale della Credenziale (ad esempio, ``pub-eaa``, ``qeaa``, ``eaa``).
   * - **localization**
@@ -609,6 +609,8 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
     - RICHIESTO. Nome "human-readable" dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
   * - **description**
     - RICHIESTO. Descrizione "human-readable" dell'Attestato Elettronico. Un suffisso ``_l10n_id`` PUÒ essere aggiunto per la gestione della localizzazione del contenuto.
+  * - **vct**: 
+    - RICHIESTO. DEVE essere impostato come un URN del formato definito in :ref:`credential-data-model:Credential SD-JWT Parameters`. La corrispondenza dei letterali inclusi in questa stringa URN DEVE essere eseguita tenendo conto della distinzione tra maiuscole e minuscole.
   * - **restriction_policy**
     - OPZIONALE. Restrizioni legali su Soluzioni Wallet e/o Credential Issuer autorizzati a richiedere/rilasciare l'Attestato Elettronico.
 
@@ -652,12 +654,11 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
 
       * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc``)
       * **configuration_id**: Identificatore di configurazione del :term:formato Credenziale. Questo è formato concatenando il valore ``credential_type`` al ``format`` (ad esempio, ``dc_sd_jwt_mDL`` o ``mso_mdoc_mDL``), ed è utilizzato per fare riferimento univocamente alla configurazione per questo :term:formato Credenziale.
-      * **vct**: CONDIZIONALE. È RICHIESTO solo se il ``format`` è ``dc+sd-jwt``. DEVE essere impostato come una Stringa URI della forma ``https://{dominio Trust Anchor}/{versione}/{credential_type}`` (ad esempio, ``https://trust-registry.it-wallet.example.it/v1.0/mDL``). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.
       * **docType**: CONDIZIONALE. È RICHIESTO solo se il ``format`` è ``mso_mdoc``. Se la :term:Credenziale è:
 
         * definita da uno standard ISO, DEVE essere una stringa della forma ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (ad esempio, ``iso.org.18013.5.1.mDL``).
         * definita a livello europeo, DEVE essere una stringa della forma ``eu.europa.ec.{credential_type}.{version}`` (ad esempio, ``eu.europa.ec.loyaltycard.1.0``).
-        * definita da uno standard nazionale, DEVE essere una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}.{version}`` (ad esempio, ``it.wallet.trust-registry.personidentificationdata.1``).
+        * definita da uno standard nazionale, DEVE essere una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}.{version}`` (ad esempio, ``it.wallet.trust-registry.pid.1``).
       * **schema_uri**: URI che punta al documento di specifica del formato.
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
   * - **display_properties**

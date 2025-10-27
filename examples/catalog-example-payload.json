@@ -86,7 +86,7 @@
             {
                "configuration_id": "dc_sd_jwt_mDL",
                "format": "dc+sd-jwt",
-               "vct": "https://trust-registry.eid-wallet.example.it/1.0/mDL",
+               "vct": "urn:eudi:mDL:it:1",
                "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
                "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16"
             },
@@ -198,7 +198,7 @@
          {
             "format": "dc+sd-jwt",
             "configuration_id": "dc_sd_jwt_wa",
-            "vct": "https://trust-registry.it-wallet.example.it/WalletAttestation",
+            "vct": "urn:eudi:WalletAttestation:it:1",
             "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/WalletAttestation",
             "schema_uri#integrity": "sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc="
          },

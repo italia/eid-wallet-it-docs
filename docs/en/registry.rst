@@ -519,7 +519,7 @@ Each Credential MUST specify domains and purposes to enable both **Credential-Sp
     - **Government Services**: ``"vct_values": ["urn:eudi:pid:it:1"]`` for PID-specific identity verification.
     - **Police Controls**: ``"docType": "org.iso.18013.5.1.mDL"`` for driving license verification.
     - **Banking KYC**: Specific credential types mandated by financial regulations.
-    - **Healthcare Services**: ``"vct_values": ["european_disability_card"]`` for EU-compliant disability benefit access.
+    - **Healthcare Services**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` for EU-compliant disability benefit access.
 
   2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of credential source for operational efficiency, such as:
 
@@ -657,7 +657,7 @@ Each element of the ``credentials`` array contains at least the following inform
 
         * defined by an ISO standard, it MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g., ``iso.org.18013.5.1.mDL``).
         * defined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.loyaltycard.1.0``).
-        * defined by a national standard, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.personidentificationdata.1``).
+        * defined by a national standard, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.pid.1``).
       * **schema_uri**: URI pointing to the format specification document.
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
   * - **display_properties**
@@ -690,6 +690,8 @@ The ``wallet_attestation`` Object contains at least the following information:
     - REQUIRED. Human-readable name of the Wallet Attestation. It MUST be set to ``Wallet Attestation``.
   * - **description**
     - REQUIRED. Human-readable Digital Credential description.
+  * - **vct**
+    - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
   * - **aal_values_supported**
     - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels ``low``, ``medium`` and ``high``.
   * - **formats**
@@ -697,7 +699,6 @@ The ``wallet_attestation`` Object contains at least the following information:
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
       * **configuration_id**: Configuration identifier of the Wallet Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet Attestation format.
-      * **vct**: CONDITIONAL. It is only present if the ``format`` is ``dc+sd-jwt``. It MUST be set as a URI String of the form ``https://{Trust Anchor domain}/{credential_type}`` (e.g., ``https://trust-registry.it-wallet.example.it/WalletAttestation``). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.
       * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.WalletAttestation``).
       * **schema_uri**: URI pointing to the format specification document.
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
