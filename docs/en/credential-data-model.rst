@@ -232,7 +232,7 @@ The Type Metadata document MUST be a JSON object and contains the following para
     * - **display**
       - REQUIRED. Array of objects, one for each language supported, containing display information for the Digital Credential type. It contains for each object the following properties:
 
-          * ``locale``: language tag as defined in Section 2 of :rfc:`5646` Section 2. [REQUIRED].
+          * ``locale``: language tag as defined in Section 2 of :rfc:`5646`, the name of this parameter is aligned with SD-JWT-VC Draft 12. [REQUIRED].
           * ``name``: human-readable label for the Digital Credential type. [REQUIRED].
           * ``description``: human-readable description for the Digital Credential type. [REQUIRED].
           * ``rendering``: object containing rendering methods supported by the Digital Credential type. [REQUIRED]. The rendering method `svg_template` MUST be supported.
@@ -252,7 +252,7 @@ The Type Metadata document MUST be a JSON object and contains the following para
                     * ``alt_text``: A string containing alternative text to display instead of the logo image. [OPTIONAL].
 
                 * ``background_color``: RGB color value as defined in `W3C.CSS-COLOR`_ for the background of the Digital Credential. [OPTIONAL]. 
-                * ``background_image``: Object containing information about the background image to be displayed for the type. This property is OPTIONAL. The object contains the following sub-values:
+                * ``background_image``: Object containing information about the background image to be displayed for the type. This property is OPTIONAL [Aligned with SD-JWT-VC Draft 12]. The object contains the following sub-values:
 
                     * ``uri``: A URI pointing to the background image. [REQUIRED]
                     * ``uri#integrity``: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
@@ -268,7 +268,7 @@ The Type Metadata document MUST be a JSON object and contains the following para
 
           * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
           * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following members:
-             * ``locale``: language tag as defined in Section 2 of :rfc:`5646`. [REQUIRED].
+             * ``locale``: language tag as defined in Section 2 of :rfc:`5646`, the name of this parameter is aligned with SD-JWT-VC Draft 12. [REQUIRED].
              * ``label``: human-readable label for the claim. [REQUIRED].
              * ``description``: human-readable description for the claim. [REQUIRED].
           * ``sd``: string indicating whether the claim is selectively disclosable. It MUST be set to `always` if the claim is selectively disclosure or `never` if not. [REQUIRED].
