@@ -98,7 +98,7 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
         - **cryptographic_binding_methods_supported**: Array JSON di stringhe *case sensitive* che identificano la rappresentazione della chiave crittografica di *binding* dell'Attestato Elettronico emesso. Il Fornitore di Attestato Elettronico DEVE supportare il valore "*jwk*" per il formato "dc+sd-jwt" e "*cose_key*" per "mso_mdoc".
         - **credential_signing_alg_values_supported**: Array JSON di stringhe *case sensitive* che identificano gli algoritmi che il Fornitore di Attestato Elettronico DEVE supportare per firmare l'Attestato Elettronico emesso. Vedi Sezione :ref:`algorithms:Algoritmi Crittografici` per maggiori dettagli.
         - **proof_types_supported**: Oggetto JSON che fornisce informazioni dettagliate sulle *key proof* supportate dal Fornitore di Attestato Elettronico. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco il *proof type* supportato. Il Fornitore di Attestato Elettronico DEVE supportare almeno "*jwt*" come definito in `OpenID4VCI`_ Sezione 8.2. Il valore associato a ciascuna coppia nome/valore è un oggetto JSON contenente informazioni relative alla *key proof*. Il Fornitore di Attestato Elettronico DEVE supportare almeno il parametro **proof_signing_alg_values_supported** che DEVE essere un Array JSON di stringhe *case sensitive* che identificano gli algoritmi supportati (vedi Sezione :ref:`algorithms:Algoritmi Crittografici` per maggiori dettagli sugli algoritmi supportati).
-        - **display**: OBBLIGATORIO solo se l’Attestato Elettronico non è incluso nel Catalogo degli Attestati Elettronici. Si tratta di un array di oggetti contenente le proprietà legate alla visualizzazione. In caso contrario, NON DEVE essere presente. I seguenti parametri sono inclusi:
+        - **display**: OBBLIGATORIO solo se l’Attestato Elettronico non è incluso nel Catalogo degli Attestati Elettronici. Array di oggetti contenente le proprietà legate alla visualizzazione. In caso contrario, NON DEVE essere presente. I seguenti parametri sono inclusi:
 
                 - **name**: OBBLIGATORIO. Stringa contenente il nome da visualizzare per l'Attestato Elettronico.
                 - **locale**: OBBLIGATORIO. Stringa che identifica la localizzazione identificata dal corrispettivo tag linguistico come definito in *BCP47* :rfc:`5646`. DEVE esserci un solo oggetto per ogni identificativo di localizzazione.
@@ -109,15 +109,12 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
                   - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.
                   - **alt_text**: OPZIONALE. Stringa contenente il testo da mostrare in alternativa all’immagine del logo.
                 - **background_color**: OBBLIGATORIO. Stringa che rappresenta il colore di sfondo dell’Attestato Elettronico, espresso come valore numerico secondo la definizione del documento `W3C.CSS-COLOR`_
-                - **background_image**: OPZIONALE. Oggetto contiene informazioni sull’immagine di sfondo da visualizzare per l'Attestato Elettronico . L’oggetto include i seguenti sotto-valori:
+                - **background_image**: OPZIONALE. Oggetto contiene informazioni sull’immagine di sfondo da visualizzare per l'Attestato Elettronico. L’oggetto include i seguenti sotto-valori:
 
                   - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici.
                   - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.
   
                 - **text_color**: OPZIONALE. Valore di tipo stringa che rappresenta il colore del testo dell’Attestato Elettronico, espresso come valore numerico secondo la definizione del documento W3C.CSS-COLOR_.
-
-                  
-Digest crittografico del documento di specifica del formato per la verifica dell'integrità.
 
         - **vct**: RICHIESTO solo se ``format`` è valorizzato con "*dc+sd-jwt*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato SD-JWT-VC`].
         - **doctype**: RICHIESTO solo se ``format`` è valorizzato con "*mso_mdoc*". Come definito in [:ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR`].
