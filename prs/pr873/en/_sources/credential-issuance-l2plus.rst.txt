@@ -522,15 +522,15 @@ Below a non-normative example of an MRTD PoP Validation Request:
 
 **The Wallet Instance MUST:**
 
-	- Perform `ICAO 9303`_ compliant NFC document reading (PACE,etc.).
-	- Validate document cryptographic signatures and certificate chains.
-  - Extract identity attributes (DG1 and DG11), Anti-Cloning Public Key from document data groups, and SODs (form MRTD and IAS Applications).
-	- Perform the Anti-Cloning Internal Authentication.
-	- Generate validation evidence in the JWT.
-	- Authenticate using a valid Wallet Instance Attestation.
-	- Include the exact ``mrtd_auth_session`` and ``mrtd_pop_nonce`` from the init response.
-	- Sign the ``mrtd_validation_jwt`` with its private key.
-	- Handle document reading errors and provide appropriate feedback.
+- Perform `ICAO 9303`_ compliant NFC document reading (PACE,etc.).
+- Validate document cryptographic signatures and certificate chains.
+- Extract identity attributes (DG1 and DG11), Anti-Cloning Public Key from document data groups, and SODs (form MRTD and IAS Applications).
+- Perform the Anti-Cloning Internal Authentication.
+- Generate validation evidence in the JWT.
+- Authenticate using a valid Wallet Instance Attestation.
+- Include the exact ``mrtd_auth_session`` and ``mrtd_pop_nonce`` from the init response.
+- Sign the ``mrtd_validation_jwt`` with its private key.
+- Handle document reading errors and provide appropriate feedback.
 
 **The MRTD PoP Service MUST:**
 

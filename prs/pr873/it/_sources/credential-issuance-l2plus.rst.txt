@@ -522,15 +522,15 @@ Di seguito un esempio non normativo di una Richiesta di Validazione MRTD PoP:
 
 **L'Istanza del Wallet DEVE:**
 
-	- Eseguire lettura documento NFC conforme `ICAO 9303`_ (PACE, ecc.).
-	- Validare firme crittografiche del documento e catene di certificati.
-	- Estrarre attributi di identità (DG1 e DG11), Anti-Cloning Public Key dai data groups del documento, e SODs (dalle Applicazioni MRTD e IAS).
-	- Eseguire l'Anti-Cloning Internal Authentication.
-	- Generare evidenza di validazione nel JWT.
-	- Autenticare utilizzando una Wallet Instance Attestation valida.
-	- Includere esatti ``mrtd_auth_session`` e ``mrtd_pop_nonce`` dalla risposta init.
-	- Firmare il ``mrtd_validation_jwt`` con la sua chiave privata.
-	- Gestire errori di lettura documento e fornire feedback appropriato.
+- Eseguire lettura documento NFC conforme `ICAO 9303`_ (PACE, ecc.).
+- Validare firme crittografiche del documento e catene di certificati.
+- Estrarre attributi di identità (DG1 e DG11), Anti-Cloning Public Key dai data groups del documento, e SODs (dalle Applicazioni MRTD e IAS).
+- Eseguire l'Anti-Cloning Internal Authentication.
+- Generare evidenza di validazione nel JWT.
+- Autenticare utilizzando una Wallet Instance Attestation valida.
+- Includere esatti ``mrtd_auth_session`` e ``mrtd_pop_nonce`` dalla risposta init.
+- Firmare il ``mrtd_validation_jwt`` con la sua chiave privata.
+- Gestire errori di lettura documento e fornire feedback appropriato.
 
 **Il Servizio MRTD PoP DEVE:**
 
@@ -709,7 +709,7 @@ Quando i componenti operano al di fuori dei confini del provider PID, DEVONO ess
 .. plantuml:: plantuml/l2plus-security-controls.puml
     :width: 99%
     :alt: La figura illustra i Controlli di Sicurezza per Autenticazione eID Substantial con Verifica MRTD.
-    :caption: `Controlli di Sicurezza per Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/png/pLRTRXit4xtVfvZFGH9RiUpOpfUaGcH7aVoZ8h45hvsWhGg1sXr9R2boItALn4_Kz-YBTJWhQRLMX1feBWe8nAuud9ypPyxohVF2-doge9Lxr5ucuauQZO3T3hmthIDu1Z8D6_uhPDQOaTHZi3Wrtj1MOhItHYa9JYQvnRix4Jtzdv_W5251coiKkcvohwJ6IEJUw7mwH1jb55GcCXFQmzPj28nR81pSLdUwb9s-4_19A8MUBLfLYtRtbFzkHqFp1M2hPysCyhNGwtQsuD5xEPxuToh7wgaOxGnjADbOIJbpoNo4GyJhrf9CuCFrJGTwfiTMdTvLBuvGfq2HgmUkSImTuGANx5aeX4MU7xgN5TjbmdtTBM0MvIa-qUtqeYYY3ONVhqVHBTIFeTM0ZxbH2C9xEHCMGQevrj3NkHCwDT-A6UV3q1WlXGhUuIDQEI8B1YYAciqcd0c7SD20QvbC99BrVR2lw7q2pMRKuanYMBNjjQvX6o1Haa8FPBeB5l_8QUjg-1icVeUo0uxCNkfjjgktl0-dlQGDtBXLfmQ2HgMUNg08JC7Wh5OBxWGT2KcouI15BwG2_pL3s99-e0wVfIR9fo4dXdchLeiYIhqUAk02N6QM-SzJ7kHMxW9-oQH5Dv1wPr7nHd2OYLpY-UaDx2-ImfCb7iszlRqdA_x3Ux2_eEWDo6HQp-QqsiClOfeft3DslDAPmyRzllQid0eh1TJlx_1uSkCPSY9SXG3KGgiD6HWUgPY6JinGKsoQEpU9ulPHc1AsOR2E0wKhnQynB28BU1DWlLrBbD-muBL3xGmRpn7b3cpm-V0iIvoEQ4A4acdXPYa0pDjuFa8NDpUz_OEz0pXwVWXd9jTfFw2KC8aQCF4-SutzVHRQlSyyNQjTsKycuJyznfDQRMfzMd2h-QPy7lpuwUQOk5OfORs2LoiLCCTOeXh4xHBhHGMrMb_thcAY5nAdwnncNshfb-NqzJ_GgQ-_qmHMwkASrsjxkGjn-tLOVbYfqcG-0W0-nEqWUMq0N6EIPsW5I3qoTihDarJwpsnCDb0lqUdUjo7tKJJto1rc09bNLVoMZJ-anhUI13EFQO5AqJkJ3RJH2Ux2iiU0i6soGj-3aE0EfC8NWIEXFCGOde7EmLz_GXhYQZcKGQG9iEe7aSlXJj-kpbCgGMg7Lbg4TkkIhHPwt-KDbnGxg1o27754YcQyHvrxGw4WzfZ1mK4PWWwVEcy5SiAqb62DhScp-SVs9-gh-KnnFDhvr5oUjLavrDEvb51lu8mQwmpqhF4cCKhnena1_Nh6ENGkaAWprrkpoEENHsEBg7yzXZQ4nhIoJCbaTJphfBxjqz2VzpWUI-YS7-o6XTRugZC8Dkoi3VNI6yltjomV5BVRYijuxOaaxaAM3uV10bf1XfJHKeyBlsIz8O477wqcj2QH3BwkdE_haeAERpyRSZYJD0nm7RVgXyzVl8OKLKbUxlOcQLaJoeqoGy7bwEj_NsZ2GcI8Q3tavoDUNwm8K5LubbXmRKppsU9g558oC0iOIIyOrxvE5_I6xQMXnPb9n4uKtTEf5RLv3bU_FwIMW_zpmYzvVSNhwpBv3HfNQUH3zSvYAYqcV1a1BEIFQYqba6d3WKPCiCqMpAgsqICCTcUIhy_lX1EKcSlXdJMV7TgG3zsEbb_NJTpPJuOdxBwv7d7Wv5XZ-iI46zPWBZbyjGhDmk9IjUsjc4gFC2m2xrI_mW_zL9LNYXVbBMNpdJY6IbSsN143ycsJoWGXdEGU_RlBo0bP9oQTrmvB8FX5EjTa1u-FMeyFp-Yt2VKgHhkCKlVyukRy-lJqCkeg6B7wXmAyrBa0X_IO6f3BhTCfXLkfT8gGuaXgwGsFD9t9C2b6fdjJBpw89TvlwIcVghy1>`_
+    :caption: `Controlli di Sicurezza per Autenticazione eID Substantial con Verifica MRTD. <https://www.plantuml.com/plantuml/png/pLR_Rjl84VwVJp5raCHMB3koqpOL8ZkAv1yg4bimxGHjNGWhSYHDkzhbBPTEuYUwzxWNkzcXB8fMT31mzyS11a5vl_dzpSTzdtlbV37NqSk_-1dE4H9qXKPbchRmcWn6gl3M5FCnkYXZB2MKAUDXwyQZyRW5AeUR-ic0dPfx1L-KrkW5qQqZUeCJ-NSl6jjl05j3P-yeHGV3GNyBddsawSn_q0NMhM9qTupfSaAExk_LFLc3OY8XudKqCGG-NLttOMY7WkeFBuTnX2O5ZbmtkC8fvTvPk13FIYCyvFbfSB6AhHA-DOCKZIUlAYkn6FI7KHJnWSQGSC0aYuHnq8UFjdi8hu1Au--GEMidPARWS6wzvQF46iv5QuASai8Xrnj5Dz0yWcuRFXTM8oZlwKuv1DABNiEjAN9bKlkZc74n3eFnf7Jm3f_HqOGHqg0ewdGwSAfoX5ORhYYP4JBwSRCl-VSCEfseAvd4i8eTTgzW6o3HnA57bEw2mvyAFheS_myJlyFPWKGMBysUu9fTxuEr9px0ZKTD7Y0OrFhbEQh050pE6etWJh59I5A0enIz8Wt-UuQmHNwa3rwbDYdc8ITfyrQZ4KMSUZDK80NacLtclqXvL3ZQ1VoMaSDyH6RdeUADpH4cIebd9zUm_v0K7Y_xqTdRstknuZ_y3lXpZjw6ZD9cjg3L7dvJyqpZddNJbSaSj1_FTUXehXmfQ3u-aVMKmKlBcN0r0l08dR4CiB9ICI-TkaF3iNdlybaKzmx3bWX6cdKKA5qhVerX4IFWNMZhpLgYyWjBNkTeSXl0LKTv0XjyFZtBga-7l25AKrgwMGg0y3PUhD3vzVLmlxNNWiFN1t1g2vFUXYubGg8spBpFylR-lkZZtbVPhjMfx2Upy3ypnUD6O-vyMdAhywvw7_tpo_KHSwrMmde5Vr-fG3Wc4jLcRbUzVgYWqRWrmykOwONCwQQ4sIT3VbaE5_7RTBerVz06rkgIdDTh-ziknBstuV6FbIfjvYC042CP1yjh6-0Aao93fu3CnBgv38-uz7yBc37GhBepU8nXzr6qy2WJbWOAh-hzMmx-W0VVJHBCFAPbLyhPsMnah4bm5vOp1eHjcvNw7eG4To1LlWmSAUqXnl0ER0U__0nfY6jeJ46akM7r3wAK8vE-MTsdb81CZeuSGgzx8QW7lH_8GPwK9wXp19f8H8vclKTJUCkX8FQOGQjLXM3ZazmxXP8mFwfcJPqjiiN7zb-ejVtASJownTPSdFP4EVJBXPJmRE2K1vjR63hhRMArbbSx0VuRsZp7F0yawY_qrZxayPzdKuTe_di4FGY3wMQPfcHrFPkilhsJC9-FE9qIzCzQk-71p_YoFmeOSTQ3PkLDvFj7o2V57NJZAbvlHinTo8hnE22W6sH8MqDcMlfbz8O4dcnQJsXD8gNvfcP_QoeAvdBxsP33AV4om5NSRHwyVlCMKjGLUMNQcwHbJIWtoWm7fydtFx_GX0UJ8UBdWRmVolFDYW3LXQVgHQXDQ2wrXbc6b2pSXHwHLzBNMvC-q1ksbq27TpPHEr7qIATMrEOrNFx_ARMq_Ye9IqcjwkkmMTtg8toIqZbCoM4Yrn30KlYuoahyX30IQ2BKsemGFlMicM30dP9Sd3-eN7a5UG4VdFsQemlvyBre-LtTn9hzP7mixZlh4KSvJGscBsouMuqMOYENgZ0cBAzJszwfENc4SHbuf_xzVUf7ghfClAdk9vjlmp7KfhBXSXWwtxCf9GZ1KcRq-wuXnunERBge7Qf6X1-KvnrnyFom-_pWbFysTRtUertfqk3i_FhiwkJa8Xfec8ZkXm8ycK91ZloQMg3bqScSmwrKEaT8SKA6l9LbPfiCat9P1jVDybDOzVizlnLp_Ii0>`_
 
 Generazione Challenge Crittografico
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
