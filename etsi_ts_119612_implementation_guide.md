@@ -1,4 +1,4 @@
-# ETSI TS 119 612 v2.3.1 Implementation Guide for IT-Wallet
+# ETSI TS 119 612 v2.3.1 Implementation Guide
 
 ## Document Information
 - **Standard**: ETSI TS 119 612 v2.3.1 (2024-11)
@@ -21,9 +21,9 @@
 
 ## Overview
 
-ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in electronic signature and trust infrastructures. This implementation guide provides specific requirements and examples for implementing this standard in the IT-Wallet ecosystem.
+ETSI TS 119 612 v2.3.1 defines the format and content for eIDAS trusted lists in electronic signature and trust infrastructures. This implementation guide provides specific requirements and examples for implementing this standard in the Wallet ecosystem.
 
-### Key Features
+### Trust List WeBuild Implementation Key Features
 - XML-based trusted list format
 - Comprehensive service type definitions
 - Status management and history tracking
@@ -34,7 +34,7 @@ ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in elect
 
 ## Implementation Tasks
 
-### Phase 1: Core Infrastructure (Months 1-3)
+### Phase 1: Core Infrastructure
 
 #### Task 1.1: XML Schema Integration
 - [ ] Integrate official ETSI XSD schema [v2.3.1](https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd)
@@ -45,10 +45,10 @@ ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in elect
 - [ ] Add service history tracking validation
 
 #### Task 1.2: Service Type Mapping
-- [ ] Map IT-Wallet entities to ETSI service types
-- [ ] Define qualified trust service types for wallet providers
-- [ ] Create non-qualified trust service types for relying parties
-- [ ] Implement nationally defined service types for credential issuers
+- [ ] Map Wallet entities to ETSI service types
+- [ ] Define (qualified) trust service types for wallet providers
+- [ ] Define (qualified) trust service types for relying parties
+- [ ] Define (qualified) trust service types for credential issuers
 - [ ] Add service type validation rules
 
 #### Task 1.3: Status Management System
@@ -65,21 +65,17 @@ ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in elect
 - [ ] Add cross-border trusted list support
 - [ ] Implement centralized registry functionality
 
-### Phase 2: Digital Signature and Security (Months 2-4)
+### Phase 2: Digital Signature and Security
 
 #### Task 2.1: Digital Signature Implementation
 - [ ] Implement digital signature algorithms
-- [ ] Create signature validation mechanisms
-- [ ] Add signature algorithm identifiers
-- [ ] Implement signature value storage
-- [ ] Create signature verification processes
+- [ ] Implement signature validation mechanisms
+- [ ] Implement signature verification processes
 
 #### Task 2.2: Authentication and Trust
-- [ ] Implement trusted list authentication
-- [ ] Create trust chain validation
-- [ ] Add continuity mechanisms
-- [ ] Implement trust anchor management
-- [ ] Create cross-border trust validation
+- [ ] Implement trusted list authentication (out of band distribution of public key material for signature validation)
+- [ ] Create trust chain validation example using an entity included in the Trusted List, for cross-border trust validation 
+- [ ] Document trust anchor management best practice
 
 ### Phase 3: Distribution and Transport (Months 3-5)
 
@@ -104,16 +100,16 @@ ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in elect
 #### 1.1 XML Structure
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#"
-                       xmlns:tsl="http://uri.etsi.org/02231/v2#"
+<TrustServiceStatusList xmlns="http://uri.etsi.org/19612/v2.3.1#"
+                       xmlns:tsl="http://uri.etsi.org/19612/v2.3.1#"
                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xsi:schemaLocation="http://uri.etsi.org/02231/v2# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd">
+                       xsi:schemaLocation="http://uri.etsi.org/19612/v2.3.1# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd">
   <!-- TSL content -->
 </TrustServiceStatusList>
 ```
 
 #### 1.2 Required Namespaces
-- `http://uri.etsi.org/02231/v2#` - Main trusted list namespace
+- `http://uri.etsi.org/19612/v2.3.1#` - Main trusted list namespace
 - `http://www.w3.org/2001/XMLSchema-instance` - XML Schema instance
 - `http://www.w3.org/2000/09/xmldsig#` - XML Digital Signature
 
@@ -143,8 +139,8 @@ ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in elect
 #### 3.1 Scheme Operator Information
 ```xml
 <SchemeOperatorName>
-  <Name xml:lang="en">IT-Wallet Trust Authority</Name>
-  <Name xml:lang="it">Autorità di Fiducia IT-Wallet</Name>
+  <Name xml:lang="en">Wallet Trust Authority</Name>
+  <Name xml:lang="it">Autorità di Fiducia Wallet</Name>
 </SchemeOperatorName>
 ```
 
@@ -155,7 +151,7 @@ ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in elect
 
 #### 3.3 Scheme Information URI
 ```xml
-<SchemeInformationURI>https://trust.it-wallet.gov.it/scheme-info</SchemeInformationURI>
+<SchemeInformationURI>https://trust.wallet.gov.it/scheme-info</SchemeInformationURI>
 ```
 
 ### 4. Service Type Requirements
@@ -171,7 +167,7 @@ ETSI TS 119 612 v2.3.1 defines the format and content for trusted lists in elect
 - Time Stamping: `http://uri.etsi.org/TrstSvc/Svctype/TSA`
 - Electronic Registered Delivery: `http://uri.etsi.org/TrstSvc/Svctype/EDS`
 
-#### 4.3 IT-Wallet Specific Service Types
+#### 4.3 Wallet Specific Service Types
 - Wallet Provider Services: `http://uri.etsi.org/TrstSvc/Svctype/WalletProvider`
 - Credential Issuer Services: `http://uri.etsi.org/TrstSvc/Svctype/CredentialIssuer`
 - Relying Party Services: `http://uri.etsi.org/TrstSvc/Svctype/RelyingParty`
@@ -187,7 +183,7 @@ The official ETSI TS 119 612 v2.3.1 XML Schema is available at:
 
 #### 2.1 Schema Location Declaration
 ```xml
-xsi:schemaLocation="http://uri.etsi.org/02231/v2# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd"
+xsi:schemaLocation="http://uri.etsi.org/19612/v2.3.1# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd"
 ```
 
 #### 2.2 Local Schema Caching
@@ -241,9 +237,9 @@ Clause D.5 of ETSI TS 119 612 v2.3.1 defines the ListOfTrustedLists structure, w
 #### 5.2 ListOfTrustedLists Structure
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<ListOfTrustedLists xmlns="http://uri.etsi.org/02231/v2#"
+<ListOfTrustedLists xmlns="http://uri.etsi.org/19612/v2.3.1#"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://uri.etsi.org/02231/v2# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_sie_xsd.xsd"
+                   xsi:schemaLocation="http://uri.etsi.org/19612/v2.3.1# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_sie_xsd.xsd"
                    Id="list-of-trusted-lists-1">
   
   <ListInformation>
@@ -283,14 +279,14 @@ Clause D.5 of ETSI TS 119 612 v2.3.1 defines the ListOfTrustedLists structure, w
   
   <TrustedLists>
     <TrustedListPointer>
-      <TSLLocation>https://trust.it-wallet.gov.it/tsl/tsl.xml</TSLLocation>
+      <TSLLocation>https://trust.wallet.gov.it/tsl/tsl.xml</TSLLocation>
       <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
       <SchemeTerritory>IT</SchemeTerritory>
       <SchemeOperatorName>
-        <Name xml:lang="en">IT-Wallet Trust Authority</Name>
+        <Name xml:lang="en">Wallet Trust Authority</Name>
       </SchemeOperatorName>
       <SchemeName>
-        <Name xml:lang="en">IT-Wallet Trusted List</Name>
+        <Name xml:lang="en">Wallet Trusted List</Name>
       </SchemeName>
       <ListIssueDateTime>2024-01-01T00:00:00Z</ListIssueDateTime>
       <NextUpdate>2024-01-02T00:00:00Z</NextUpdate>
@@ -378,19 +374,19 @@ Clause D.5 of ETSI TS 119 612 v2.3.1 defines the ListOfTrustedLists structure, w
 - **Integrity Checking**: Ensure list integrity and authenticity
 - **Access Control**: Control access to the list and its updates
 
-#### 5.5 IT-Wallet Integration
+#### 5.5 Wallet Integration
 
 ##### 5.5.1 Wallet Provider Integration
 ```xml
 <TrustedListPointer>
-  <TSLLocation>https://trust.it-wallet.gov.it/wallet-providers/tsl.xml</TSLLocation>
+  <TSLLocation>https://trust.wallet.gov.it/wallet-providers/tsl.xml</TSLLocation>
   <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
   <SchemeTerritory>IT</SchemeTerritory>
   <SchemeOperatorName>
-    <Name xml:lang="en">IT-Wallet Authority</Name>
+    <Name xml:lang="en">Wallet Authority</Name>
   </SchemeOperatorName>
   <SchemeName>
-    <Name xml:lang="en">IT-Wallet Provider Registry</Name>
+    <Name xml:lang="en">Wallet Provider Registry</Name>
   </SchemeName>
   <ListIssueDateTime>2024-01-01T00:00:00Z</ListIssueDateTime>
   <NextUpdate>2024-01-02T00:00:00Z</NextUpdate>
@@ -401,14 +397,14 @@ Clause D.5 of ETSI TS 119 612 v2.3.1 defines the ListOfTrustedLists structure, w
 ##### 5.5.2 Credential Issuer Integration
 ```xml
 <TrustedListPointer>
-  <TSLLocation>https://trust.it-wallet.gov.it/credential-issuers/tsl.xml</TSLLocation>
+  <TSLLocation>https://trust.wallet.gov.it/credential-issuers/tsl.xml</TSLLocation>
   <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
   <SchemeTerritory>IT</SchemeTerritory>
   <SchemeOperatorName>
-    <Name xml:lang="en">IT-Wallet Authority</Name>
+    <Name xml:lang="en">Wallet Authority</Name>
   </SchemeOperatorName>
   <SchemeName>
-    <Name xml:lang="en">IT-Wallet Credential Issuer Registry</Name>
+    <Name xml:lang="en">Wallet Credential Issuer Registry</Name>
   </SchemeName>
   <ListIssueDateTime>2024-01-01T00:00:00Z</ListIssueDateTime>
   <NextUpdate>2024-01-02T00:00:00Z</NextUpdate>
@@ -419,14 +415,14 @@ Clause D.5 of ETSI TS 119 612 v2.3.1 defines the ListOfTrustedLists structure, w
 ##### 5.5.3 Relying Party Integration
 ```xml
 <TrustedListPointer>
-  <TSLLocation>https://trust.it-wallet.gov.it/relying-parties/tsl.xml</TSLLocation>
+  <TSLLocation>https://trust.wallet.gov.it/relying-parties/tsl.xml</TSLLocation>
   <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
   <SchemeTerritory>IT</SchemeTerritory>
   <SchemeOperatorName>
-    <Name xml:lang="en">IT-Wallet Authority</Name>
+    <Name xml:lang="en">Wallet Authority</Name>
   </SchemeOperatorName>
   <SchemeName>
-    <Name xml:lang="en">IT-Wallet Relying Party Registry</Name>
+    <Name xml:lang="en">Wallet Relying Party Registry</Name>
   </SchemeName>
   <ListIssueDateTime>2024-01-01T00:00:00Z</ListIssueDateTime>
   <NextUpdate>2024-01-02T00:00:00Z</NextUpdate>
@@ -457,10 +453,10 @@ xmllint --schema https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3
 ```xml
 <DistributionPoints>
   <DistributionPoint>
-    <URI>https://trust.it-wallet.gov.it/lists/list-of-trusted-lists.xml</URI>
+    <URI>https://trust.wallet.gov.it/lists/list-of-trusted-lists.xml</URI>
   </DistributionPoint>
   <DistributionPoint>
-    <URI>https://backup.it-wallet.gov.it/lists/list-of-trusted-lists.xml</URI>
+    <URI>https://backup.Wallet.gov.it/lists/list-of-trusted-lists.xml</URI>
   </DistributionPoint>
 </DistributionPoints>
 ```
@@ -556,10 +552,10 @@ class ListOfTrustedListsSigner:
         
         # Create root element
         root = ET.Element("ListOfTrustedLists")
-        root.set("xmlns", "http://uri.etsi.org/02231/v2#")
+        root.set("xmlns", "http://uri.etsi.org/19612/v2.3.1#")
         root.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
         root.set("xsi:schemaLocation", 
-                "http://uri.etsi.org/02231/v2# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_sie_xsd.xsd")
+                "http://uri.etsi.org/19612/v2.3.1# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_sie_xsd.xsd")
         root.set("Id", list_id)
         
         # ListInformation
@@ -890,7 +886,7 @@ if __name__ == "__main__":
 
 ## Service Type Mappings
 
-### 1. IT-Wallet Entity to ETSI Service Type Mapping
+### 1. Wallet Entity to ETSI Service Type Mapping
 
 #### 1.1 Wallet Providers
 ```xml
@@ -946,7 +942,7 @@ if __name__ == "__main__":
       <Name xml:lang="en">Wallet Provider Services</Name>
     </ServiceName>
     <ServiceDigitalIdentity>
-      <X509SubjectName>CN=WalletProvider-IT, O=IT-Wallet Authority, C=IT</X509SubjectName>
+      <X509SubjectName>CN=WalletProvider-IT, O=Wallet Authority, C=IT</X509SubjectName>
     </ServiceDigitalIdentity>
     <ServicePreviousStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServicePreviousStatus>
     <PreviousStatusStartingDate>2024-01-01T00:00:00Z</PreviousStatusStartingDate>
@@ -979,13 +975,13 @@ if __name__ == "__main__":
 ### 2. Status Migration Procedures
 
 #### 2.1 eIDAS Regulation Migration
-- Services under supervision → Withdrawn
-- Services with supervision ceased → Withdrawn
-- Accredited services → Withdrawn
+- Services under supervision -> Withdrawn
+- Services with supervision ceased -> Withdrawn
+- Accredited services -> Withdrawn
 
 #### 2.2 National Level Recognition
-- Services under supervision → Recognized at national level
-- Services with supervision ceased → Deprecated at national level
+- Services under supervision -> Recognized at national level
+- Services with supervision ceased -> Deprecated at national level
 
 ## Digital Signature Implementation
 
@@ -1057,10 +1053,10 @@ Cache-Control: max-age=3600
 ```xml
 <DistributionPoints>
   <DistributionPoint>
-    <URI>https://trust.it-wallet.gov.it/tsl/tsl.xml</URI>
+    <URI>https://trust.wallet.gov.it/tsl/tsl.xml</URI>
   </DistributionPoint>
   <DistributionPoint>
-    <URI>https://backup.it-wallet.gov.it/tsl/tsl.xml</URI>
+    <URI>https://backup.Wallet.gov.it/tsl/tsl.xml</URI>
   </DistributionPoint>
 </DistributionPoints>
 ```
@@ -1087,10 +1083,10 @@ Cache-Control: max-age=3600
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#"
-                       xmlns:tsl="http://uri.etsi.org/02231/v2#"
+<TrustServiceStatusList xmlns="http://uri.etsi.org/19612/v2.3.1#"
+                       xmlns:tsl="http://uri.etsi.org/19612/v2.3.1#"
                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xsi:schemaLocation="http://uri.etsi.org/02231/v2# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd"
+                       xsi:schemaLocation="http://uri.etsi.org/19612/v2.3.1# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd"
                        Id="tsl-1">
   
   <SchemeInformation>
@@ -1099,8 +1095,8 @@ Cache-Control: max-age=3600
     <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
     
     <SchemeOperatorName>
-      <Name xml:lang="en">IT-Wallet Trust Authority</Name>
-      <Name xml:lang="it">Autorità di Fiducia IT-Wallet</Name>
+      <Name xml:lang="en">Wallet Trust Authority</Name>
+      <Name xml:lang="it">Autorità di Fiducia Wallet</Name>
     </SchemeOperatorName>
     
     <SchemeOperatorAddress>
@@ -1114,27 +1110,27 @@ Cache-Control: max-age=3600
         </PostalAddress>
       </PostalAddresses>
       <ElectronicAddress>
-        <URI>mailto:trust@it-wallet.gov.it</URI>
+        <URI>mailto:trust@Wallet.gov.it</URI>
       </ElectronicAddress>
     </SchemeOperatorAddress>
     
     <SchemeName>
-      <Name xml:lang="en">IT-Wallet Trusted List</Name>
-      <Name xml:lang="it">Lista di Fiducia IT-Wallet</Name>
+      <Name xml:lang="en">Wallet Trusted List</Name>
+      <Name xml:lang="it">Lista di Fiducia Wallet</Name>
     </SchemeName>
     
-    <SchemeInformationURI>https://trust.it-wallet.gov.it/scheme-info</SchemeInformationURI>
+    <SchemeInformationURI>https://trust.wallet.gov.it/scheme-info</SchemeInformationURI>
     <StatusDeterminationApproach>http://uri.etsi.org/TrstSvc/TrustedList/StatusDeterminationApproach/BySupervision</StatusDeterminationApproach>
     <SchemeTypeCommunityRules>http://uri.etsi.org/TrstSvc/TrustedList/SchemeTypeCommunityRules/EU</SchemeTypeCommunityRules>
     <SchemeTerritory>IT</SchemeTerritory>
-    <TSLPolicyLegalNotice>https://trust.it-wallet.gov.it/policy</TSLPolicyLegalNotice>
+    <TSLPolicyLegalNotice>https://trust.wallet.gov.it/policy</TSLPolicyLegalNotice>
     <HistoricalInformationPeriod>P5Y</HistoricalInformationPeriod>
     <ListIssueDateTime>2024-01-01T00:00:00Z</ListIssueDateTime>
     <NextUpdate>2024-01-02T00:00:00Z</NextUpdate>
     
     <DistributionPoints>
       <DistributionPoint>
-        <URI>https://trust.it-wallet.gov.it/tsl/tsl.xml</URI>
+        <URI>https://trust.wallet.gov.it/tsl/tsl.xml</URI>
       </DistributionPoint>
     </DistributionPoints>
   </SchemeInformation>
@@ -1147,8 +1143,8 @@ Cache-Control: max-age=3600
           <Name xml:lang="it">Wallet Provider IT S.p.A.</Name>
         </TSPName>
         <TSPTradeName>
-          <Name xml:lang="en">WalletIT</Name>
-          <Name xml:lang="it">WalletIT</Name>
+          <Name xml:lang="en">IT-Wallet</Name>
+          <Name xml:lang="it">IT-Wallet</Name>
         </TSPTradeName>
         <TSPAddress>
           <PostalAddresses>
@@ -1161,10 +1157,10 @@ Cache-Control: max-age=3600
             </PostalAddress>
           </PostalAddresses>
           <ElectronicAddress>
-            <URI>mailto:info@walletit.it</URI>
+            <URI>mailto:info@wallet.example.it</URI>
           </ElectronicAddress>
         </TSPAddress>
-        <TSPInformationURI>https://walletit.it/info</TSPInformationURI>
+        <TSPInformationURI>https://wallet.example.it/info</TSPInformationURI>
         <TSPServices>
           <ServiceInformation>
             <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</ServiceTypeIdentifier>
@@ -1179,13 +1175,13 @@ Cache-Control: max-age=3600
             </ServiceDigitalIdentity>
             <ServiceCurrentStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceCurrentStatus>
             <CurrentStatusStartingDate>2024-01-01T00:00:00Z</CurrentStatusStartingDate>
-            <SchemeServiceDefinitionURI>https://trust.it-wallet.gov.it/scheme/wallet-provider</SchemeServiceDefinitionURI>
+            <SchemeServiceDefinitionURI>https://trust.wallet.gov.it/scheme/wallet-provider</SchemeServiceDefinitionURI>
             <ServiceSupplyPoints>
               <ServiceSupplyPoint>
-                <URI>https://walletit.it/api</URI>
+                <URI>https://wallet.example.it/api</URI>
               </ServiceSupplyPoint>
             </ServiceSupplyPoints>
-            <TSPServiceDefinitionURI>https://walletit.it/service-definition</TSPServiceDefinitionURI>
+            <TSPServiceDefinitionURI>https://wallet.example.it/service-definition</TSPServiceDefinitionURI>
           </ServiceInformation>
         </TSPServices>
       </TSPInformation>
@@ -1249,7 +1245,7 @@ Cache-Control: max-age=3600
     </QualificationElement>
   </Qualifications>
   <AdditionalServiceInformation>
-    <URI>https://trust.it-wallet.gov.it/additional-info/wallet-provider</URI>
+    <URI>https://trust.wallet.gov.it/additional-info/wallet-provider</URI>
   </AdditionalServiceInformation>
 </ServiceInformationExtensions>
 ```
@@ -1260,9 +1256,9 @@ Here's a corrected example that should validate against the official ETSI schema
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<TrustServiceStatusList xmlns="http://uri.etsi.org/02231/v2#"
+<TrustServiceStatusList xmlns="http://uri.etsi.org/19612/v2.3.1#"
                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                       xsi:schemaLocation="http://uri.etsi.org/02231/v2# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd"
+                       xsi:schemaLocation="http://uri.etsi.org/19612/v2.3.1# https://forge.etsi.org/rep/esi/x19_612_trusted_lists/-/raw/v2.3.1/19612_xsd.xsd"
                        Id="tsl-1">
   
   <SchemeInformation>
@@ -1271,7 +1267,7 @@ Here's a corrected example that should validate against the official ETSI schema
     <TSLType>http://uri.etsi.org/TrstSvc/TrustedList/TSLType/EUgeneric</TSLType>
     
     <SchemeOperatorName>
-      <Name xml:lang="en">IT-Wallet Trust Authority</Name>
+      <Name xml:lang="en">Wallet Trust Authority</Name>
     </SchemeOperatorName>
     
     <SchemeOperatorAddress>
@@ -1285,26 +1281,26 @@ Here's a corrected example that should validate against the official ETSI schema
         </PostalAddress>
       </PostalAddresses>
       <ElectronicAddress>
-        <URI>mailto:trust@it-wallet.gov.it</URI>
+        <URI>mailto:trust@Wallet.gov.it</URI>
       </ElectronicAddress>
     </SchemeOperatorAddress>
     
     <SchemeName>
-      <Name xml:lang="en">IT-Wallet Trusted List</Name>
+      <Name xml:lang="en">Wallet Trusted List</Name>
     </SchemeName>
     
-    <SchemeInformationURI>https://trust.it-wallet.gov.it/scheme-info</SchemeInformationURI>
+    <SchemeInformationURI>https://trust.wallet.gov.it/scheme-info</SchemeInformationURI>
     <StatusDeterminationApproach>http://uri.etsi.org/TrstSvc/TrustedList/StatusDeterminationApproach/BySupervision</StatusDeterminationApproach>
     <SchemeTypeCommunityRules>http://uri.etsi.org/TrstSvc/TrustedList/SchemeTypeCommunityRules/EU</SchemeTypeCommunityRules>
     <SchemeTerritory>IT</SchemeTerritory>
-    <TSLPolicyLegalNotice>https://trust.it-wallet.gov.it/policy</TSLPolicyLegalNotice>
+    <TSLPolicyLegalNotice>https://trust.wallet.gov.it/policy</TSLPolicyLegalNotice>
     <HistoricalInformationPeriod>P5Y</HistoricalInformationPeriod>
     <ListIssueDateTime>2024-01-01T00:00:00Z</ListIssueDateTime>
     <NextUpdate>2024-01-02T00:00:00Z</NextUpdate>
     
     <DistributionPoints>
       <DistributionPoint>
-        <URI>https://trust.it-wallet.gov.it/tsl/tsl.xml</URI>
+        <URI>https://trust.wallet.gov.it/tsl/tsl.xml</URI>
       </DistributionPoint>
     </DistributionPoints>
   </SchemeInformation>
@@ -1326,10 +1322,10 @@ Here's a corrected example that should validate against the official ETSI schema
             </PostalAddress>
           </PostalAddresses>
           <ElectronicAddress>
-            <URI>mailto:info@walletit.it</URI>
+            <URI>mailto:info@wallet.example.it</URI>
           </ElectronicAddress>
         </TSPAddress>
-        <TSPInformationURI>https://walletit.it/info</TSPInformationURI>
+        <TSPInformationURI>https://wallet.example.it/info</TSPInformationURI>
         <TSPServices>
           <ServiceInformation>
             <ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</ServiceTypeIdentifier>
@@ -1343,13 +1339,13 @@ Here's a corrected example that should validate against the official ETSI schema
             </ServiceDigitalIdentity>
             <ServiceCurrentStatus>http://uri.etsi.org/TrstSvc/TrustedList/Svcstatus/granted</ServiceCurrentStatus>
             <CurrentStatusStartingDate>2024-01-01T00:00:00Z</CurrentStatusStartingDate>
-            <SchemeServiceDefinitionURI>https://trust.it-wallet.gov.it/scheme/ca-services</SchemeServiceDefinitionURI>
+            <SchemeServiceDefinitionURI>https://trust.wallet.gov.it/scheme/ca-services</SchemeServiceDefinitionURI>
             <ServiceSupplyPoints>
               <ServiceSupplyPoint>
-                <URI>https://walletit.it/api</URI>
+                <URI>https://wallet.example.it/api</URI>
               </ServiceSupplyPoint>
             </ServiceSupplyPoints>
-            <TSPServiceDefinitionURI>https://walletit.it/service-definition</TSPServiceDefinitionURI>
+            <TSPServiceDefinitionURI>https://wallet.example.it/service-definition</TSPServiceDefinitionURI>
           </ServiceInformation>
         </TSPServices>
       </TSPInformation>
@@ -1383,7 +1379,7 @@ Here's a corrected example that should validate against the official ETSI schema
 #### 5.1 Potential Validation Issues
 The examples provided may require adjustments for full schema compliance:
 
-1. **Service Type Identifiers**: The custom IT-Wallet service types (e.g., `http://uri.etsi.org/TrstSvc/Svctype/WalletProvider`) may not be defined in the official schema. Consider using standard ETSI service types or extending the schema.
+1. **Service Type Identifiers**: The custom Wallet service types (e.g., `http://uri.etsi.org/TrstSvc/Svctype/WalletProvider`) may not be defined in the official schema. Consider using standard ETSI service types or extending the schema.
 
 2. **Element Ordering**: The official schema may require specific element ordering that differs from the examples.
 
@@ -1543,12 +1539,9 @@ xmlsec1 --verify --pubkey-cert-pem cert.pem tsl.xml
 ## Contact Information
 
 For questions about this implementation guide:
-- **Email**: trust@it-wallet.gov.it
-- **Website**: https://trust.it-wallet.gov.it
-- **Documentation**: https://docs.it-wallet.gov.it/trusted-lists
-
+- open an issue
+- reach the WeBuild WG groups
 ---
 
-**Document Version**: 1.0  
-**Last Updated**: 2024-12-19  
-**Next Review**: 2025-03-19
+**Document Version**: 0.8  
+**Last Updated**: 2025-10-24  
