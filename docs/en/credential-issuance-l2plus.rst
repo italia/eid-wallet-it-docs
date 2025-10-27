@@ -200,7 +200,8 @@ A non-normative example is provided below:
 
 .. code-block:: http
 
-    HTTP/1.1 302 Found\n Location: https://start.wallet.example.org/challenge? challenge_info=eyJhbGciOiJSUzI1NiIsInR5cCI6Im1ydGQraWFzK2p3dCIsImtpZCI6ImI0YTFhNmMyZTlkNTZuOGY5YzNlN2EyYTJmNGI2Yzk3In0.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiaWF0IjoxNzUzNTU1MzU4LCJleHAiOjE3NTM1NTU2NTgsInN0YXR1cyI6InJlcXVpcmVfaW50ZXJhY3Rpb24iLCJ0eXBlIjoibXJ0ZCtpYXMiLCJtcnRkX2F1dGhfc2Vzc2lvbiI6Ind4cm9WckJZMk1DcTRkRE5HWEFDUyIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJtcnRkX3BvcF9qd3Rfbm9uY2UiOiJub25jZTEiLCJodHUiOiJodHRwczovL2Vkb2MtcHJvb2YvaW5pdCIsImh0bSI6IlBPU1QifQ.i6p_FN7qNNawyL4KnOV1r8FrNVjzd-7Ve1wEGASHNnlXwuJ1f216v0Ml_KpVrq9yXkmOo_M2xZwih2SlHVfrzkuG3Pn7LWRL7dsyCtqEY2e58rFHjCa2miBnnKr0NU4wcBMMYe2_qKCOkA7SOa7usNTBluBLMQ28GfiMbr3tcpfpM4rD0POKQcfijvNkNbh-VdOxM8GdHb6IQO_xfpsaSzd8cc0k5yIYCWjDTeINVKebIz4m9Rm2JStvRrWUq8OCqkv-8dTJH9q-JXx0PzJC998RMwe6tqSL-kkE3dZLWwCJdP8Z7bITtowU49rEe-AkrGxVma4ANPq317umEfUwmw
+    HTTP/1.1 302 Found
+    Location: https://start.wallet.example.org/challenge?challenge_info=eyJhbGciOiJSUzI1NiIsInR5cCI6Im1ydGQraWFzK2p3dCIsImtpZCI6ImI0YTFhNmMyZTlkNTZuOGY5YzNlN2EyYTJmNGI2Yzk3In0.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiaWF0IjoxNzUzNTU1MzU4LCJleHAiOjE3NTM1NTU2NTgsInN0YXR1cyI6InJlcXVpcmVfaW50ZXJhY3Rpb24iLCJ0eXBlIjoibXJ0ZCtpYXMiLCJtcnRkX2F1dGhfc2Vzc2lvbiI6Ind4cm9WckJZMk1DcTRkRE5HWEFDUyIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJtcnRkX3BvcF9qd3Rfbm9uY2UiOiJub25jZTEiLCJodHUiOiJodHRwczovL2Vkb2MtcHJvb2YvaW5pdCIsImh0bSI6IlBPU1QifQ.i6p_FN7qNNawyL4KnOV1r8FrNVjzd-7Ve1wEGASHNnlXwuJ1f216v0Ml_KpVrq9yXkmOo_M2xZwih2SlHVfrzkuG3Pn7LWRL7dsyCtqEY2e58rFHjCa2miBnnKr0NU4wcBMMYe2_qKCOkA7SOa7usNTBluBLMQ28GfiMbr3tcpfpM4rD0POKQcfijvNkNbh-VdOxM8GdHb6IQO_xfpsaSzd8cc0k5yIYCWjDTeINVKebIz4m9Rm2JStvRrWUq8OCqkv-8dTJH9q-JXx0PzJC998RMwe6tqSL-kkE3dZLWwCJdP8Z7bITtowU49rEe-AkrGxVma4ANPq317umEfUwmw
 
 The Authorization Server MUST:
 
@@ -360,13 +361,13 @@ Below a non-normative example of an MRTD PoP Response:
 
 **The MRTD PoP Service MUST:**
 
-	- Generate cryptographically secure challenge data with sufficient entropy (to be used in Anti-Cloning Internal Authentication protocol by the Wallet Instance), storing it with an appropriate expiration time. Moreover, the MRTD PoP Service MUST ensure challenge uniqueness to prevent reuse attacks.
-	- Create a new unique ``mrtd_pop_nonce`` for the next step to prevent replay attacks.
-	- Validate session continuity by ensuring the ``mrtd_auth_session`` parameter corresponds to an active session.
-	- Return HTTP *202 Accepted* status to indicate asynchronous processing initiation.
-	- Include proper Content-Type header (``application/json; charset=utf-8``).
-	- Handle service errors and return appropriate error responses.
-	- Extract and validate MRZ information if provided from external registry services.
+- Generate cryptographically secure challenge data with sufficient entropy (to be used in Anti-Cloning Internal Authentication protocol by the Wallet Instance), storing it with an appropriate expiration time. Moreover, the MRTD PoP Service MUST ensure challenge uniqueness to prevent reuse attacks.
+- Create a new unique ``mrtd_pop_nonce`` for the next step to prevent replay attacks.
+- Validate session continuity by ensuring the ``mrtd_auth_session`` parameter corresponds to an active session.
+- Return HTTP *202 Accepted* status to indicate asynchronous processing initiation.
+- Include proper Content-Type header (``application/json; charset=utf-8``).
+- Handle service errors and return appropriate error responses.
+- Extract and validate MRZ information if provided from external registry services.
 
 **The Wallet Instance MUST:**
 
