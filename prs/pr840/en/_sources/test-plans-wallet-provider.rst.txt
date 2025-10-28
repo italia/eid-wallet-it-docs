@@ -655,7 +655,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_083a
      - Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
-     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, ``client_id_schemes_supported``, and ``authorization_endpoint`` per Section 9.1 of [`OpenID4VP`_].
+     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, ``client_id_schemes_supported``, and ``authorization_endpoint`` per Section 10.1 of [`OpenID4VP`_].
    * - WP_083b
      - Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
@@ -711,7 +711,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_092
      - Remote-flow, Presentation, Security
      - Encrypt Authorization Response
-     - Wallet Instance encrypts the Authorization Response JWT per Section 7.3 of [`OpenID4VP`_] using the Relying Party’s public key.
+     - Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [`OpenID4VP`_] using the Relying Party’s public key.
    * - WP_093
      - Remote-flow, Presentation, Security
      - Construct ``vp_token`` with ``state``

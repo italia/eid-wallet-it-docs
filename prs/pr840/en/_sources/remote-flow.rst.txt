@@ -300,7 +300,7 @@ The URL parameters contained in the Relying Party Authorization Request, which i
   * - **Name**
     - **Description**
   * - **client_id**
-    - REQUIRED. Unique identifier of the Relying Party. The value MUST use one of the following Client Identifier Prefixes (as defined in `OpenID4VP`_, Section 5.9): ``openid_federation`` (Entity Identifier in a Trust Chain) or ``x509_hash`` (base64url-encoded SHA-256 hash of the Relying Party’s X.509 certificate).
+    - REQUIRED. Unique identifier of the Relying Party. The value MUST use one of the following Client Identifier Prefixes (as defined in `OpenID4VP`_, Section 5.9): ``openid_federation`` (Relying Party’s Entity Identifier in a Trust Chain) or ``x509_hash`` (base64url-encoded SHA-256 hash of the Relying Party’s X.509 certificate).
   * - **request_uri**
     - REQUIRED. The HTTP URL where the Relying Party provides the signed Request Object to the Wallet Instance.
   * - **request_uri_method**
@@ -337,9 +337,9 @@ The request and its parameters are defined in Section number 5 (Authorization Re
    * - Parameter
      - Description
    * - `wallet_metadata`
-     - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 9.1 and the table below, "Wallet Metadata Parameters".
+     - OPTIONAL. JSON object with metadata parameters. See `OpenID4VP`_, Section 10.1 and the table below, "Wallet Metadata Parameters".
    * - `wallet_nonce`
-     - RECOMMENDED. String used by Wallet Instance to prevent replay of the Relying Party's responses. See `OpenID4VP`_, Section 9.
+     - RECOMMENDED. String used by Wallet Instance to prevent replay of the Relying Party's responses. 
 
 
 .. list-table:: Wallet Metadata Parameters
@@ -366,7 +366,7 @@ The request and its parameters are defined in Section number 5 (Authorization Re
 
 
 .. note::
-  Although the ``response_modes_supported`` field references `JARM`_ to ensure JARM-level interoperability for Authorization Responses relying on front-channel redirects such as ``form_post.jwt``, the Relying Party adopts ``direct_post.jwt`` for the Remote Flow, which uses back-channel delivery. The actual use of ``direct_post.jwt`` is introduced below, in :ref:`request-uri-response`, where the Relying Party sets the ``response_mode`` for the transaction.
+  Although the ``response_modes_supported`` field references `JARM`_ to ensure JARM-level interoperability for the Authorization Response by keeping a JWT based format for front-channel redirects such as ``form_post.jwt`` in the Same Device Flow, the Relying Party adopts ``direct_post.jwt`` for the Cross Device Flow, which relies on back-channel delivery using an HTTP POST request to the Relying Party. The actual use of ``direct_post.jwt`` is introduced below, in :ref:`request-uri-response`, where the Relying Party sets the ``response_mode`` for the transaction.
 
 .. note::
   The ``wallet_nonce`` parameter is RECOMMENDED for Wallet Instances that want to prevent reply of their http requests to the Relying Parties.
@@ -418,11 +418,11 @@ The JWT payload parameters are described herein:
   * - **dcql_query**
     - Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of `OpenID4VP`_.
   * - **transaction_data**
-    - An optional non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each object includes a ``type`` field identifying the transaction data type and a ``*credential_ids`` array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.  
+    - An optional non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each object includes a ``type`` field identifying the transaction data type and a ``credential_ids`` array referencing one or more Credentials from the ``dcql_query`` that can authorize the transaction.  
   * - **response_type**
     - It MUST be set to ``vp_token`` (:ref:`RPR-107 <test-plans-remote-presentation>`).
   * - **wallet_nonce**
-    - String value used to mitigate replay attacks of the response, as defined in Section 5.11 (Request URI Method) of `OpenID4VP`_. It MUST be present if previously provided by Wallet Instance (:ref:`RPR-94 <test-plans-remote-presentation>`).
+    - String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of `OpenID4VP`_. It MUST be present if previously provided by Wallet Instance (:ref:`RPR-94 <test-plans-remote-presentation>`).
   * - **response_uri**
     - The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (:ref:`RPR-109 <test-plans-remote-presentation>`).
   * - **nonce**
@@ -505,7 +505,7 @@ Upon receiving an error response, the Wallet Instance SHOULD inform the User of 
 Authorization Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`), the content SHOULD be encrypted according `OpenID4VP`_ Section 7.3, using the Relying Party public key (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
+After obtaining the User authorization and consent for the presentation of the Digital Credentials, the Wallet Instance sends the Authorization Response to the Relying Party ``response_uri`` endpoint using an HTTP request with the method POST (:ref:`WP_091 <wallet-credential-presentation-testcases>`), the content SHOULD be encrypted according `OpenID4VP`_ Section 8.3, using the Relying Party public key (:ref:`WP_092 <wallet-credential-presentation-testcases>`).
 
 .. note::
     **Why the response is encrypted?**
@@ -631,7 +631,7 @@ In the following table are listed error codes and descriptions that are supporte
 Relying Party Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As defined in Section 7.2. (Response Mode "direct_post") of the `OpenID4VP`_ specification, if the Response URI has successfully processed the Authorization Response or Authorization Error Response, it MUST respond with an HTTP status code of 200 with ``Content-Type`` of ``application/json`` and a JSON object in the response body.
+As defined in Section 8.2. (Response Mode "direct_post") of the `OpenID4VP`_ specification, if the Response URI has successfully processed the Authorization Response or Authorization Error Response, it MUST respond with an HTTP status code of 200 with ``Content-Type`` of ``application/json`` and a JSON object in the response body.
 
 In the **Same Device Flow**, the Relying Party SHOULD add the ``redirect_uri`` parameter to the JSON object in the response body. Upon receiving the ``redirect_uri``, the the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri``.
 This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow, after the Wallet Instance has transmitted the Authorization Response to the designated ``response_uri``.
