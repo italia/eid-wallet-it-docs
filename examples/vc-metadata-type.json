@@ -1,8 +1,6 @@
 {	
     "name": "Person Identification Data",
     "description": "Digital version of Person Identification Data",	
-    "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/v1.0/sd-jwt/personidentificationdata",
-    "schema_uri#integrity": "c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
     "data_source": {
         "verification": {
         "trust_framework": "pdnd",

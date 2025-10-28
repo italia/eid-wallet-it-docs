@@ -33,6 +33,7 @@
             "application_type": "web",
             "client_id": "https://relying-party.example.org",
             "client_name": "Organization Name",
+            "logo_uri": "https://relying-party.example.org/public/compact-logo.svg",
             "contacts": [
                 "informazioni@example.it",
                 "protocollo@pec.example.it"
