@@ -577,33 +577,43 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <td><p>Object representing a request for a presentation of Credentials, according to the DCQL query language defined in Section 6 of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>transaction_data</strong></p></td>
-<td><p>An optional non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each object includes a <code class="docutils literal notranslate"><span class="pre">type</span></code> field identifying the transaction data type and a <code class="docutils literal notranslate"><span class="pre">credential_ids</span></code> array referencing one or more Credentials from the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> that can authorize the transaction.</p></td>
+<td><dl class="simple">
+<dt>An optional non-empty array of JSON objects, each describing a transaction that the Relying Party requests the User to authorize. Each transaction object includes:</dt><dd><ul class="simple">
+<li><p><strong>type</strong>.  String that identifies the transaction data type.</p></li>
+<li><p><strong>credential_ids</strong>. Array referencing one or more Credentials from the <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> that can authorize the transaction.</p></li>
+</ul>
+</dd>
+</dl>
+</td>
 </tr>
-<tr class="row-even"><td><p><strong>response_type</strong></p></td>
+<tr class="row-even"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
+<td><p>An optional array of of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the <a class="reference external" href="https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg">IANA</a>.  One of these algorithms MUST be used to calculate the hashes in the <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> response parameter.  If omitted, the default hash algorithm is sha-256.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>response_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-107</span></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>wallet_nonce</strong></p></td>
+<tr class="row-even"><td><p><strong>wallet_nonce</strong></p></td>
 <td><p>String value used to mitigate replay attacks of the response, as defined in Section 5.10 (Request URI Method) of <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. It MUST be present if previously provided by Wallet Instance (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-94</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_uri</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_uri</strong></p></td>
 <td><p>The Response URI to which the Wallet Instance MUST send the Authorization Response using an HTTP request using the method POST (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-109</span></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>nonce</strong></p></td>
+<tr class="row-even"><td><p><strong>nonce</strong></p></td>
 <td><p>Fresh cryptographically random number with sufficient entropy, which length MUST be at least 32 digits (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-110</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>state</strong></p></td>
+<tr class="row-odd"><td><p><strong>state</strong></p></td>
 <td><p>Unique identifier of the Authorization Request. It is RECOMMENDED to include this parameter, and the value SHOULD be opaque to the Wallet Instance.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>iss</strong></p></td>
+<tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>The entity that has issued the JWT. It will be populated with the Relying Party client id.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>iat</strong></p></td>
+<tr class="row-odd"><td><p><strong>iat</strong></p></td>
 <td><p>Unix Timestamp, representing the time at which the JWT was issued.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>exp</strong></p></td>
+<tr class="row-even"><td><p><strong>exp</strong></p></td>
 <td><p>Unix Timestamp, representing the expiration time on or after which the JWT MUST NOT be valid anymore (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-111</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>request_uri_method</strong></p></td>
+<tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
 <td><p>String determining the HTTP method to be used with the <cite>request_uri</cite> endpoint to provide the Wallet Instance metadata to the Relying Party. The value is case-insensitive and can be set to: <cite>get</cite> or <cite>post</cite>. The GET method, as defined in [&#64;RFC9101], involves the Wallet Instance sending a GET request to retrieve a Request Object. The POST method involves the Wallet Instance requesting the creation of a new Request Object by sending an HTTP POST request, with its metadata, to the request URI of the Relying Party.</p></td>
 </tr>
 </tbody>
@@ -767,6 +777,12 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </tr>
 <tr class="row-odd"><td><p><strong>sd_hash</strong></p></td>
 <td><p>REQUIRED. The base64url-encoded hash digest over the Issuer-signed JWT and the selected disclosures.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>transaction_data_hashes</strong></p></td>
+<td><p>CONDITIONAL. REQUIRED when the request includes <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>. Non-empty array of base64url-encoded hashes. Each hash is computed over the exact string value of the corresponding <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> item.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
+<td><p>CONDITIONAL. REQUIRED only if the request included <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. String naming the hash algorithm actually used to compute <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>; if that parameter was not provided, the hash function MUST be <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
