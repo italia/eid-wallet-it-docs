@@ -145,7 +145,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
           "request_object_signing_alg_values_supported": [
             "ES256"
           ],
-          "client_id_prefixes_supported": ["openid_federation"],
+          "client_id_prefixes_supported": ["openid_federation", "x509_hash"],
         },
         "wallet_nonce": "qPmxiNFCR3QTm19POc8u"
       }
