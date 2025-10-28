@@ -189,7 +189,7 @@ Il Credential Issuer restituisce il ``request_uri`` emesso all'Istanza del Walle
 
 
 .. note::
-   **Autenticazione dell'Utente e Consenso**: Il PID Provider esegue l'autenticazione dell'Utente basata sullo schema CieID con Livello di Garanzia Alto (CIE L3) e richiede il consenso dell'Utente per l'emissione del PID.
+   **Autenticazione dell'Utente e Consenso**: Il PID Provider esegue l'autenticazione dell'Utente basata sullo schema CieID con Livello di Garanzia Alto (CIE L3), o secondo l'Autenticazione eID Substantial con Verifica MRTD come definita in :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`, e richiede il consenso dell'Utente per l'emissione del PID.
    Il (Q)EAA Provider esegue l'autenticazione dell'Utente richiedendo un PID valido all'Istanza del Wallet. Il (Q)EAA Provider DEVE utilizzare [`OpenID4VP`_] per richiedere la presentazione del PID. In questa circostanza, il (Q)EAA Provider agisce come una Relying Party, fornendo la richiesta di presentazione all'Istanza del Wallet. L'Istanza del Wallet DEVE avere un PID valido, ottenuto in precedenza, per avviare la transazione con il (Q)EAA Provider. Durante questo passaggio, i Credential Issuer POSSONO chiedere i dettagli di contatto dell'Utente (ad esempio, il loro indirizzo email) per inviare notifiche sugli Attestati Elettronici emessi.
 
 

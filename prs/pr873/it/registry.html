@@ -528,47 +528,47 @@ Content-Type: application/json
 <tbody>
 <tr class="row-even"><td><p><strong>entity_id</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. Identificatore univoco che segue lo schema normativo: <code class="docutils literal notranslate"><span class="pre">https://{organization_domain}[/{optional_path}]</span></code>.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco che segue lo schema normativo: <code class="docutils literal notranslate"><span class="pre">https://{organization_domain}[/{optional_path}]</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info</strong></p></td>
 <td><p>JSON object</p></td>
-<td><p>RICHIESTO. Dettagli dell'entità legale e metadati organizzativi.</p></td>
+<td><p>OBBLIGATORIO. Dettagli dell'entità legale e metadati organizzativi.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.organization_name</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. Nome legale dell'organizzazione.</p></td>
+<td><p>OBBLIGATORIO. Nome legale dell'organizzazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.organization_type</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. Classificazione dell'entità: <code class="docutils literal notranslate"><span class="pre">&quot;public&quot;</span></code> o <code class="docutils literal notranslate"><span class="pre">&quot;private&quot;</span></code>.</p></td>
+<td><p>OBBLIGATORIO. Classificazione dell'entità: <code class="docutils literal notranslate"><span class="pre">&quot;public&quot;</span></code> o <code class="docutils literal notranslate"><span class="pre">&quot;private&quot;</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.ipa_code</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO solo per AS Pubbliche. Codice di registrazione IPA per entità governative.</p></td>
+<td><p>OBBLIGATORIO solo per AS Pubbliche. Codice di registrazione IPA per entità governative.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.legal_identifier</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. Identificatore di registrazione legale (Codice Fiscale/Partita IVA, o identificatore nazionale equivalente per entità straniere).</p></td>
+<td><p>OBBLIGATORIO. Identificatore di registrazione legale (Codice Fiscale/Partita IVA, o identificatore nazionale equivalente per entità straniere).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.homepage_uri</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. URL che punta alla homepage dell'organizzazione.</p></td>
+<td><p>OBBLIGATORIO. URL che punta alla homepage dell'organizzazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.contacts</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>RICHIESTO. Array di indirizzi email di contatto tecnico/amministrativo.</p></td>
+<td><p>OBBLIGATORIO. Array di indirizzi email di contatto tecnico/amministrativo.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.policy_uri</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. URL al documento della privacy policy.</p></td>
+<td><p>OBBLIGATORIO. URL al documento della privacy policy.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.tos_uri</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO solo per AS Private. URL al documento dei termini di servizio.</p></td>
+<td><p>OBBLIGATORIO solo per AS Private. URL al documento dei termini di servizio.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>organization_info.organization_country</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.</p></td>
+<td><p>OBBLIGATORIO. Codice paese ISO 3166-1 alpha-2 a due lettere dell'organizzazione.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>organization_info.logo_uri</strong></p></td>
 <td><p>string</p></td>
@@ -584,31 +584,31 @@ Content-Type: application/json
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities</strong></p></td>
 <td><p>JSON Objects Array</p></td>
-<td><p>RICHIESTO. Array contenente le specifiche delle capacità dei dati.</p></td>
+<td><p>OBBLIGATORIO. Array contenente le specifiche delle capacità dei dati.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].domains</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>RICHIESTO. Dominio della tassonomia (ad esempio, <code class="docutils literal notranslate"><span class="pre">[&quot;AUTHORIZATION&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">[&quot;FINANCIAL&quot;]</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Dominio della tassonomia (ad esempio, <code class="docutils literal notranslate"><span class="pre">[&quot;AUTHORIZATION&quot;]</span></code>, <code class="docutils literal notranslate"><span class="pre">[&quot;FINANCIAL&quot;]</span></code>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].intended_purposes</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>RICHIESTO. Scopi aziendali serviti (ad esempio, <code class="docutils literal notranslate"><span class="pre">[&quot;driving-authorization&quot;,</span> <span class="pre">&quot;identity-verification&quot;]</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Scopi aziendali serviti (ad esempio, <code class="docutils literal notranslate"><span class="pre">[&quot;driving-authorization&quot;,</span> <span class="pre">&quot;identity-verification&quot;]</span></code>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].available_claims</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>RICHIESTO. I claim disponibili da questa capacità di fornitura dati.</p></td>
+<td><p>OBBLIGATORIO. I claim disponibili da questa capacità di fornitura dati.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].integration_method</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> per AS Pubbliche. Le AS Private POSSONO utilizzare altri framework di autorizzazione come: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, ecc.</p></td>
+<td><p>OBBLIGATORIO. Framework di autorizzazione utilizzato per l'accesso ai dati. DEVE essere <code class="docutils literal notranslate"><span class="pre">&quot;pdnd&quot;</span></code> per AS Pubbliche. Le AS Private POSSONO utilizzare altri framework di autorizzazione come: <code class="docutils literal notranslate"><span class="pre">&quot;oauth2&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;api_key&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mtls&quot;</span></code>, ecc.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].integration_endpoint</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. Punto di accesso al servizio (endpoint PDND per AS Pubbliche, endpoint API per AS Private).</p></td>
+<td><p>OBBLIGATORIO. Punto di accesso al servizio (endpoint PDND per AS Pubbliche, endpoint API per AS Private).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].api_specification</strong></p></td>
 <td><p>string</p></td>
-<td><p>RICHIESTO. URL al documento di specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per questa capacità di fornitura dati.</p></td>
+<td><p>OBBLIGATORIO. URL al documento di specifica OpenAPI 3.0 per questa capacità di fornitura dati.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].data_provision</strong></p></td>
 <td><p>JSON object</p></td>
@@ -616,19 +616,19 @@ Content-Type: application/json
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].data_provision.immediate_flow</strong></p></td>
 <td><p>boolean</p></td>
-<td><p>RICHIESTO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.</p></td>
+<td><p>OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura immediata dei dati.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.deferred_flow</strong></p></td>
 <td><p>boolean</p></td>
-<td><p>RICHIESTO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.</p></td>
+<td><p>OBBLIGATORIO. Indica se la Fonte Autentica supporta la fornitura differita dei dati.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].data_provision.max_response_time_minutes</strong></p></td>
 <td><p>integer</p></td>
-<td><p>CONDIZIONALE. Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+<td><p>CONDIZIONALE. Tempo massimo in minuti per la Fonte Autentica per rispondere a una richiesta di fornitura dati differita. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>data_capabilities[].data_provision.notification_methods</strong></p></td>
 <td><p>String Array</p></td>
-<td><p>CONDIZIONALE. Array di metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+<td><p>CONDIZIONALE. Array di metodi di notifica supportati dalla Fonte Autentica per la fornitura dati differita, come <code class="docutils literal notranslate"><span class="pre">&quot;push&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;poll&quot;</span></code>. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">deferred_flow</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>data_capabilities[].update_frequency</strong></p></td>
 <td><p>string</p></td>
@@ -652,7 +652,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-odd"><td><p><strong>display.logo_uri#integrity</strong></p></td>
 <td><p>string</p></td>
-<td><p>CONDIZIONALE. Digest crittografico del logo per la verifica dell'integrità. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>)</p></td>
+<td><p>CONDIZIONALE. Digest crittografico del logo per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">logo_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-abc123...&quot;</span></code>)</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>display.template_uri</strong></p></td>
 <td><p>string</p></td>
@@ -660,7 +660,7 @@ Content-Type: application/json
 </tr>
 <tr class="row-odd"><td><p><strong>display.template_uri#integrity</strong></p></td>
 <td><p>string</p></td>
-<td><p>CONDIZIONALE. Digest crittografico del template per la verifica dell'integrità. RICHIESTO se <code class="docutils literal notranslate"><span class="pre">template_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-def456...&quot;</span></code>).</p></td>
+<td><p>CONDIZIONALE. Digest crittografico del template per la verifica dell'integrità. OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">template_uri</span></code> è presente. Formato: <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">&quot;sha-256-def456...&quot;</span></code>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -885,14 +885,6 @@ Content-Type: application/json
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>Attributi e Riferimenti alla Tassonomia</p></td>
-<td><p>Informazioni di contenuto e classificazione:</p>
-<ul class="simple">
-<li><p><strong>Elenco degli attributi visualizzate</strong>: Contenuto specifico dell'Attestato Elettronico visualizzato all'Utente.</p></li>
-<li><p><strong>Riferimenti strutturati alla tassonomia</strong>: Sistemi di classificazione e vocabolari controllati utilizzati.</p></li>
-</ul>
-</td>
-</tr>
 </tbody>
 </table>
 <p>Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint <cite>.well-known</cite> del Catalogo degli Attestati Elettronici garantendo affidabilità, autenticità e integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, i claim e la tassonomia DEVONO essere disponibili attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalog</span></code>.</p>
@@ -1029,15 +1021,15 @@ Content-Type: application/json
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>RICHIESTO. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">JOSE</span></code>.</p></td>
+<td><p>OBBLIGATORIO. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">JOSE</span></code>.</p></td>
 <td><p>[<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.9].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
-<td><p>RICHIESTO. Un identificatore di algoritmo di firma digitale come per il registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">none</span></code> o con un identificatore di algoritmo simmetrico (MAC).</p></td>
+<td><p>OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come per il registro IANA &quot;JSON Web Signature and Encryption Algorithms&quot;. DEVE essere uno degli algoritmi supportati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">none</span></code> o con un identificatore di algoritmo simmetrico (MAC).</p></td>
 <td><p>[<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.1].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
-<td><p>RICHIESTO. Identificatore univoco della chiave pubblica.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco della chiave pubblica.</p></td>
 <td><p>[<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.4].</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>x5c</strong></p></td>
@@ -1045,7 +1037,7 @@ Content-Type: application/json
 <td><p>[<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.6.].</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>cty</strong></p></td>
-<td><p>RICHIESTO. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
+<td><p>OBBLIGATORIO. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">application/json</span></code>.</p></td>
 <td><p>[<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.6.].</p></td>
 </tr>
 </tbody>
@@ -1064,19 +1056,19 @@ Content-Type: application/json
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>catalog_version</strong></p></td>
-<td><p>RICHIESTO. Versione del formato del Catalogo degli Attestati Elettronici.</p></td>
+<td><p>OBBLIGATORIO. Versione del formato del Catalogo degli Attestati Elettronici.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>iss</strong></p></td>
-<td><p>RICHIESTO. Identificatore dell'issuer del Catalogo degli Attestati Elettronici.</p></td>
+<td><p>OBBLIGATORIO. Identificatore dell'issuer del Catalogo degli Attestati Elettronici.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>last_modified</strong></p></td>
-<td><p>RICHIESTO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.</p></td>
+<td><p>OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credentials</strong></p></td>
-<td><p>RICHIESTO. Array contenente le definizioni degli Attestati Elettronici.</p></td>
+<td><p>OBBLIGATORIO. Array contenente le definizioni degli Attestati Elettronici.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>wallet_attestation</strong></p></td>
-<td><p>RICHIESTO. Un Oggetto JSON contenente definizioni per le Attestazioni del Wallet, inclusi i loro formati supportati, attributi associati e Livelli di Garanzia (LoA). Questo Oggetto è utilizzato da altre entità, come Issuer e Relying Party, per recuperare informazioni sui formati di Attestazione del Wallet supportati all'interno dell'ecosistema.</p></td>
+<td><p>OBBLIGATORIO. Un Oggetto JSON contenente definizioni per le Attestazioni del Wallet, inclusi i loro formati supportati, attributi associati e Livelli di Garanzia (LoA). Questo Oggetto è utilizzato da altre entità, come Issuer e Relying Party, per recuperare informazioni sui formati di Attestazione del Wallet supportati all'interno dell'ecosistema.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1094,29 +1086,16 @@ Content-Type: application/json
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>version</strong></p></td>
-<td><p>RICHIESTO. Versione della definizione dell'Attestato Elettronico.</p></td>
+<td><p>OBBLIGATORIO. Versione della definizione dell'Attestato Elettronico.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>RICHIESTO. Identificatore univoco del tipo di Attestato Elettronico.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco del tipo di Attestato Elettronico.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>legal_type</strong></p></td>
-<td><p>RICHIESTO. Classificazione legale della Credenziale (ad esempio, <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code>, <code class="docutils literal notranslate"><span class="pre">qeaa</span></code>, <code class="docutils literal notranslate"><span class="pre">eaa</span></code>).</p></td>
+<td><p>OBBLIGATORIO. Classificazione legale della Credenziale (ad esempio, <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code>, <code class="docutils literal notranslate"><span class="pre">qeaa</span></code>, <code class="docutils literal notranslate"><span class="pre">eaa</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>localization</strong></p></td>
-<td><p>OPZIONALE. Impostazioni di localizzazione, inclusi:</p>
-<ul class="simple">
-<li><p><strong>default_locale</strong>: Lingua predefinita per il testo.</p></li>
-<li><p><strong>available_locales</strong>: Elenco delle lingue supportate.</p></li>
-<li><p><strong>base_uri</strong>: URI base per le risorse di localizzazione.</p></li>
-<li><p><strong>version</strong>: Versione dei file di localizzazione.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><strong>name</strong></p></td>
-<td><p>RICHIESTO. Nome &quot;human-readable&quot; dell'Attestato Elettronico. Un suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> PUÒ essere aggiunto per la gestione della localizzazione del contenuto.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>description</strong></p></td>
-<td><p>RICHIESTO. Descrizione &quot;human-readable&quot; dell'Attestato Elettronico. Un suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> PUÒ essere aggiunto per la gestione della localizzazione del contenuto.</p></td>
+<tr class="row-odd"><td><p><strong>vct</strong></p></td>
+<td><p>OBBLIGATORIO. DEVE essere valorizzato come una Stringa URI della forma <code class="docutils literal notranslate"><span class="pre">https://{dominio</span> <span class="pre">Trust</span> <span class="pre">Anchor}/{versione}/{credential_type}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/v1.0/mDL</span></code>). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>restriction_policy</strong></p></td>
 <td><p>OPZIONALE. Restrizioni legali su Soluzioni Wallet e/o Credential Issuer autorizzati a richiedere/rilasciare l'Attestato Elettronico.</p>
@@ -1129,7 +1108,7 @@ Content-Type: application/json
 <tr class="row-odd"><td><p><strong>pricing_policy</strong></p></td>
 <td><p>OPZIONALE. Informazioni sui prezzi degli Attestati Elettronici, inclusi:</p>
 <ul class="simple">
-<li><p><strong>models</strong>: RICHIESTO. Array di modelli di costo applicabili all'Attestato Elettronico, ognuno contenente</p>
+<li><p><strong>models</strong>: OBBLIGATORIO. Array di modelli di costo applicabili all'Attestato Elettronico, ognuno contenente</p>
 <ul>
 <li><p><strong>pricing_type</strong>: Tipo di modello di costo, come <code class="docutils literal notranslate"><span class="pre">issuance_based</span></code>, <code class="docutils literal notranslate"><span class="pre">verification_based</span></code>, <code class="docutils literal notranslate"><span class="pre">subscription_based</span></code>, <code class="docutils literal notranslate"><span class="pre">other</span></code>.</p></li>
 <li><p><strong>price</strong>: Costo associato al modello.</p></li>
@@ -1150,16 +1129,16 @@ Content-Type: application/json
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>authentication</strong></p></td>
-<td><p>RICHIESTO. Requisiti di autenticazione degli Attestati Elettronici.</p>
+<td><p>OBBLIGATORIO. Requisiti di autenticazione degli Attestati Elettronici.</p>
 <ul class="simple">
-<li><p><strong>user_auth_required</strong>: RICHIESTO. Flag che indica se l'autenticazione dell'Utente è richiesta durante il rilascio dell'Attestato Elettronico.</p></li>
-<li><p><strong>min_loa</strong>: RICHIESTO. Livello di Garanzia minimo richiesto per l'autenticazione dell'Attestato Elettronico. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza del Wallet che richiede l'Attestato Elettronico.</p></li>
-<li><p><strong>supported_eid_schemes</strong>: RICHIESTO se <code class="docutils literal notranslate"><span class="pre">user_auth_required</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>. Schemi di autenticazione dell'identità digitale supportati.</p></li>
+<li><p><strong>user_auth_required</strong>: OBBLIGATORIO. Flag che indica se l'autenticazione dell'Utente è richiesta durante il rilascio dell'Attestato Elettronico.</p></li>
+<li><p><strong>min_loa</strong>: OBBLIGATORIO. Livello di Garanzia minimo OBBLIGATORIO per l'autenticazione dell'Attestato Elettronico. DEVE includere il Livello di Garanzia dell'autenticazione dell'Utente e dell'Istanza del Wallet che richiede l'Attestato Elettronico.</p></li>
+<li><p><strong>supported_eid_schemes</strong>: OBBLIGATORIO se <code class="docutils literal notranslate"><span class="pre">user_auth_required</span></code> è <code class="docutils literal notranslate"><span class="pre">true</span></code>. Schemi di autenticazione dell'identità digitale supportati.</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>purposes</strong></p></td>
-<td><p>RICHIESTO. Array di scopi di utilizzo per i quali l'Attestato Elettronico può essere utilizzato, definendo contesti di utilizzo specifici e attributi richiesti per ogni scopo, come:</p>
+<td><p>OBBLIGATORIO. Array di scopi di utilizzo per i quali l'Attestato Elettronico può essere utilizzato, definendo contesti di utilizzo specifici e attributi richiesti per ogni scopo, come:</p>
 <ul class="simple">
 <li><p><strong>id</strong>: Identificatore univoco per lo scopo (ad esempio, &quot;driving-authorization&quot;, &quot;person-identification&quot;).</p></li>
 <li><p><strong>description</strong>: Descrizione &quot;human-readable&quot; dello scopo con un suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> per la localizzazione del contenuto.</p></li>
@@ -1169,18 +1148,17 @@ Content-Type: application/json
 </td>
 </tr>
 <tr class="row-odd"><td><p><strong>issuers</strong></p></td>
-<td><p>RICHIESTO. Array di informazioni rilevanti sui Credential Issuer autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, riferimento al documento di specifica API e meccanismi di rilascio supportati (ad esempio il supporto del flusso differito).</p></td>
+<td><p>OBBLIGATORIO. Array di informazioni rilevanti sui Credential Issuer autorizzati, inclusi dati amministrativi e tecnici come nome dell'Organizzazione, riferimento al documento di specifica API e meccanismi di rilascio supportati (ad esempio il supporto del flusso differito).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>authentic_sources</strong></p></td>
-<td><p>RICHIESTO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>. Ogni identificatore corrisponde a un valore <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.</p></td>
+<td><p>OBBLIGATORIO. Array di identificatori stringa che fanno riferimento alle Fonti Autentiche autorizzate come registrate nel <a class="reference internal" href="#registro-delle-fonti-autentiche"><span class="std std-ref">Registro delle Fonti Autentiche</span></a>. Ogni identificatore corrisponde a un valore <code class="docutils literal notranslate"><span class="pre">entity_id</span></code> dal Registro AS, che fornisce metadati organizzativi e tecnici completi incluse capacità di fornitura dati, metodi di integrazione e informazioni di contatto.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>formats</strong></p></td>
-<td><p>RICHIESTO. Array di formati tecnici supportati degli Attestati Elettronici, inclusi:</p>
+<td><p>OBBLIGATORIO. Array di formati tecnici supportati degli Attestati Elettronici, inclusi:</p>
 <ul class="simple">
 <li><p><strong>format</strong>: Tipo di formato (ad esempio, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>)</p></li>
 <li><p><strong>configuration_id</strong>: Identificatore di configurazione del :term:formato Credenziale. Questo è formato concatenando il valore <code class="docutils literal notranslate"><span class="pre">credential_type</span></code> al <code class="docutils literal notranslate"><span class="pre">format</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_mDL</span></code> o <code class="docutils literal notranslate"><span class="pre">mso_mdoc_mDL</span></code>), ed è utilizzato per fare riferimento univocamente alla configurazione per questo :term:formato Credenziale.</p></li>
-<li><p><strong>vct</strong>: CONDIZIONALE. È RICHIESTO solo se il <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. DEVE essere impostato come una Stringa URI della forma <code class="docutils literal notranslate"><span class="pre">https://{dominio</span> <span class="pre">Trust</span> <span class="pre">Anchor}/{versione}/{credential_type}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/v1.0/mDL</span></code>). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.</p></li>
-<li><p><strong>docType</strong>: CONDIZIONALE. È RICHIESTO solo se il <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. Se la :term:Credenziale è:</p>
+<li><p><strong>docType</strong>: CONDIZIONALE. È OBBLIGATORIO solo se il <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. Se la :term:Credenziale è:</p>
 <ul>
 <li><p>definita da uno standard ISO, DEVE essere una stringa della forma <code class="docutils literal notranslate"><span class="pre">iso.org.{iso-number}.{part}.{version}.{credential_type}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">iso.org.18013.5.1.mDL</span></code>).</p></li>
 <li><p>definita a livello europeo, DEVE essere una stringa della forma <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.{credential_type}.{version}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.loyaltycard.1.0</span></code>).</p></li>
@@ -1189,25 +1167,6 @@ Content-Type: application/json
 </li>
 <li><p><strong>schema_uri</strong>: URI che punta al documento di specifica del formato.</p></li>
 <li><p><strong>schema_uri#integrity</strong>: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, dove <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> è l'algoritmo di digest utilizzato (ad esempio, <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) e <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> è il valore del digest codificato in base64url.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-even"><td><p><strong>display_properties</strong></p></td>
-<td><p>RICHIESTO. Proprietà di presentazione visiva degli Attestati Elettronici, ad esempio:</p>
-<ul class="simple">
-<li><p><strong>templates</strong>: Template visivi per la Credenziale, ad esempio template <cite>svg</cite>.</p></li>
-<li><p><strong>background_color</strong>: Colore di sfondo in formato esadecimale.</p></li>
-<li><p><strong>text_color</strong>: Colore del testo in formato esadecimale.</p></li>
-<li><p><strong>logo_uri</strong>: URI al logo dell'Attestato Elettronico.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>claims</strong></p></td>
-<td><p>RICHIESTO. Array di attributi contenuti nell'Attestato Elettronico. DEVE includere almeno i seguenti attributi:</p>
-<ul class="simple">
-<li><p><strong>name</strong>: Il nome nell'Attestato Elettronico.</p></li>
-<li><p><strong>namespaces</strong>: CONDIZIONALE. Namespace a cui appartiene il claim.</p></li>
-<li><p><strong>display_name_l10n_id</strong>: OPZIONALE. Identificativo &quot;human readable&quot; con un suffisso <code class="docutils literal notranslate"><span class="pre">_l10n_id</span></code> per la gestione della localizzazione del contenuto.</p></li>
 </ul>
 </td>
 </tr>
@@ -1227,34 +1186,22 @@ Content-Type: application/json
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>credential_type</strong></p></td>
-<td><p>RICHIESTO. Identificatore univoco dell'Attestazione del Wallet. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">WalletAttestation</span></code>.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco dell'Attestazione del Wallet. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">WalletAttestation</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>name</strong></p></td>
-<td><p>RICHIESTO. Nome &quot;human-readable&quot; dell'Attestazione del Wallet. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">Wallet</span> <span class="pre">Attestation</span></code>.</p></td>
+<tr class="row-odd"><td><p><strong>vct</strong></p></td>
+<td><p>OBBLIGATORIO. DEVE essere impostato come una Stringa URI della forma <code class="docutils literal notranslate"><span class="pre">https://{dominio</span> <span class="pre">Trust</span> <span class="pre">Anchor}/{credential_type}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/WalletAttestation</span></code>). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>description</strong></p></td>
-<td><p>RICHIESTO. Descrizione &quot;human-readable&quot; dell'Attestato Elettronico.</p></td>
+<tr class="row-even"><td><p><strong>aal_values_supported</strong></p></td>
+<td><p>OBBLIGATORIO. Array di Stringhe ognuna delle quali è un Livello di Garanzia (LoA) supportato dall'Attestazione del Wallet. DEVE includere almeno i livelli <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code> e <code class="docutils literal notranslate"><span class="pre">high</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>aal_values_supported</strong></p></td>
-<td><p>RICHIESTO. Array di Stringhe ognuna delle quali è un Livello di Garanzia (LoA) supportato dall'Attestazione del Wallet. DEVE includere almeno i livelli <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code> e <code class="docutils literal notranslate"><span class="pre">high</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>formats</strong></p></td>
-<td><p>RICHIESTO. Array di formati supportati per l'Attestazione del Wallet, inclusi:</p>
+<tr class="row-odd"><td><p><strong>formats</strong></p></td>
+<td><p>OBBLIGATORIO. Array di formati supportati per l'Attestazione del Wallet, inclusi:</p>
 <ul class="simple">
 <li><p><strong>format</strong>: Tipo di formato (ad esempio, <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> o <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code>)</p></li>
 <li><p><strong>configuration_id</strong>: Identificatore di configurazione dell'Attestazione del Wallet. Questo è formato concatenando la stringa <code class="docutils literal notranslate"><span class="pre">wa</span></code> al <code class="docutils literal notranslate"><span class="pre">format</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_wa</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc_wa</span></code>, o <code class="docutils literal notranslate"><span class="pre">jwt_wa</span></code>), ed è utilizzato per fare riferimento univocamente alla configurazione del formato dell'Attestazione del Wallet.</p></li>
-<li><p><strong>vct</strong>: CONDIZIONALE. È presente solo se il <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. DEVE essere impostato come una Stringa URI della forma <code class="docutils literal notranslate"><span class="pre">https://{dominio</span> <span class="pre">Trust</span> <span class="pre">Anchor}/{credential_type}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/WalletAttestation</span></code>). La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-insensitive.</p></li>
 <li><p><strong>docType</strong>: CONDIZIONALE. È presente solo se il <code class="docutils literal notranslate"><span class="pre">format</span></code> è <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. È una stringa della forma <code class="docutils literal notranslate"><span class="pre">{dominio</span> <span class="pre">inverso</span> <span class="pre">Trust</span> <span class="pre">Anchor}.{credential_type}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.WalletAttestation</span></code>).</p></li>
 <li><p><strong>schema_uri</strong>: URI che punta al documento di specifica del formato.</p></li>
 <li><p><strong>schema_uri#integrity</strong>: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, dove <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> è l'algoritmo di digest utilizzato (ad esempio, <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) e <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> è il valore del digest codificato in base64url.</p></li>
-</ul>
-</td>
-</tr>
-<tr class="row-odd"><td><p><strong>claims</strong></p></td>
-<td><p>RICHIESTO. Array di claim contenute nell'Attestazione del Wallet. DEVE includere almeno i seguenti attributi:</p>
-<ul class="simple">
-<li><p><strong>Name</strong>: Il nome dell' attributo (ad esempio, <code class="docutils literal notranslate"><span class="pre">sub</span></code>, <code class="docutils literal notranslate"><span class="pre">aal</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_link</span></code>, <code class="docutils literal notranslate"><span class="pre">wallet_name</span></code>).</p></li>
-<li><p><strong>Namespaces</strong>: CONDIZIONALE. Array di namespace a cui appartiene l'attibuto. DEVE essere impostato a <code class="docutils literal notranslate"><span class="pre">{dominio</span> <span class="pre">inverso</span> <span class="pre">Trust</span> <span class="pre">Anchor}.{credential_type}</span></code> (ad esempio, <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.WalletAttestation</span></code>).</p></li>
 </ul>
 </td>
 </tr>
@@ -1278,14 +1225,7 @@ Content-Type: application/json
 <span class="w">         </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;default_locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;available_locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;it&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;base_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential.mdl.name&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;description_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;credential.mdl.description&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/1.0/mDL&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">               </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
@@ -1357,9 +1297,8 @@ Content-Type: application/json
 <span class="w">            </span><span class="p">{</span>
 <span class="w">               </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_mDL&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/1.0/mDL&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
+<span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-981bb56f693a4f40b917a896620a59cc984bed81bd57051d8ab5c6c194f67ee8&quot;</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
 <span class="w">               </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_mDL&quot;</span><span class="p">,</span>
@@ -1368,98 +1307,13 @@ Content-Type: application/json
 <span class="w">               </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL&quot;</span><span class="p">,</span>
 <span class="w">               </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16&quot;</span>
 <span class="w">            </span><span class="p">}</span>
-<span class="w">         </span><span class="p">],</span>
-<span class="w">         </span><span class="nt">&quot;display_properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;templates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">&quot;authentic_source_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authentic-sources.example.org&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;template_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://authsource.example.com/.well-known/templates/mDL.svg&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;template_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c&quot;</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                     </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;landscape&quot;</span><span class="p">,</span>
-<span class="w">                     </span><span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;light&quot;</span><span class="p">,</span>
-<span class="w">                     </span><span class="nt">&quot;contrast&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
-<span class="w">                  </span><span class="p">}</span>
-<span class="w">               </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#008558&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;text_color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;logo_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/logos/mDL.svg&quot;</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;family_name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.family_name.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;given_name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.given_name.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;birth_date&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.birth_date.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issue_date&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issue_date.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expiry_date&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.expiry_date.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_authority&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_authority.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document_number&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.document_number.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.portrait.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;driving_privileges&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.driving_privileges.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;un_distinguishing_sign&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.un_distinguishing_sign.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;administrative_number&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.administrative_number.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_country&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_country.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;issuing_jurisdiction&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;display_name_l10n_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claims.issuing_jurisdiction.name&quot;</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013.5.1&quot;</span><span class="p">]</span>
-<span class="w">            </span><span class="p">}</span>
 <span class="w">         </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">   </span><span class="p">],</span>
 <span class="w">   </span><span class="nt">&quot;wallet_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WalletAttestation&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Wallet Attestation&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Attestation of the Wallet capabilities and compliance with the EUDI Wallet specifications.&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/WalletAttestation&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;aal_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="s2">&quot;https://trust-list.eu/aal/low&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;https://trust-list.eu/aal/medium&quot;</span><span class="p">,</span>
@@ -1469,7 +1323,6 @@ Content-Type: application/json
 <span class="w">         </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_wa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/WalletAttestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/WalletAttestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc=&quot;</span>
 <span class="w">         </span><span class="p">},</span>
@@ -1485,24 +1338,6 @@ Content-Type: application/json
 <span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt_wa&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/WalletAttestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg=&quot;</span>
-<span class="w">         </span><span class="p">}</span>
-<span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">         </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sub&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;it.wallet.trust-registry.WalletAttestation&quot;</span><span class="p">]</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aal&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;it.wallet.trust-registry.WalletAttestation&quot;</span><span class="p">]</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet_link&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;it.wallet.trust-registry.WalletAttestation&quot;</span><span class="p">]</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet_name&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;namespaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;it.wallet.trust-registry.WalletAttestation&quot;</span><span class="p">]</span>
 <span class="w">         </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">   </span><span class="p">}</span>
@@ -1537,6 +1372,24 @@ Content-Type: application/json
 <p>Un esempio non normativo dell'URI di localizzazione italiana per il bundle mDL sarebbe <strong>https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json</strong>.</p>
 <p>Le Entità DOVREBBERO verificare l'integrità dei bundle di localizzazione scaricati utilizzando il metodo di digest e i valori specificati nel claim <strong>localization_info.integrity</strong>. Questo garantisce che i dati di localizzazione non siano stati manomessi durante la trasmissione.</p>
 </div>
+</section>
+<section id="il-catalogo-come-fonte-canonica-per-le-informazioni-di-visualizzazione">
+<h3><span class="section-number">7.6.3. </span>Il Catalogo come Fonte Canonica per le Informazioni di Visualizzazione<a class="headerlink" href="#il-catalogo-come-fonte-canonica-per-le-informazioni-di-visualizzazione" title="Link to this heading">¶</a></h3>
+<blockquote>
+<div><p>Per ridurre la duplicazione garantendo coerenza di presentazione nell'ecosistema, il Catalogo degli Attestati Elettronici è la fonte canonica delle informazioni di visualizzazione rivolte all'Utente finale relative agli Attestati Elettronici (ad es. nome/descrizione dell'Attestato Elettronico, etichette degli attributi, template visivi, colori, URI del logo).</p>
+<ul class="simple">
+<li><p>Per gli Attestati inclusi nel Catalogo degli Attestati Elettronici, le Soluzioni Wallet e le Relying Party DEVONO utilizzare i campi relativi alla visualizzazione recuperati tramite il <code class="docutils literal notranslate"><span class="pre">vct</span></code> contenuto nel Catalogo per la rappresentazione degli Attestati Elettronici e dei relativi Attributi.</p></li>
+<li><p>Per gli Attestati che non sono inclusi nel Catalogo degli Attestati Elettronici (ad esempio, Attestati non considerati di interesse pubblico), le Soluzioni Wallet POSSONO utilizzare le informazioni di visualizzazione provenienti dai metadati del Fornitore di Attestati Elettronici e/o dal Type Metadata dell’Attestato Elettronico. Quando entrambe le fonti sono disponibili, si applica la seguente regola di precedenza:</p>
+<ol class="arabic simple">
+<li><p>Utilizzare il Type Metadata dell'Attestato Elettronico, se disponibile.</p></li>
+<li><p>In caso contrario, utilizzare i Metadata del Fornitore di Attestati Elettronici.</p></li>
+</ol>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Le implementazioni DOVREBBERO memorizzare nella cache i dati di visualizzazione del Type Metadata e applicare la selezione della lingua utilizzando il parametri <code class="docutils literal notranslate"><span class="pre">locale</span></code>.</p></li>
+</ul>
 </section>
 </section>
 <section id="tassonomia">
@@ -1804,6 +1657,7 @@ Content-Type: application/json
 <li><a class="reference internal" href="#catalogo-degli-attestati-elettronici">7.6. Catalogo degli Attestati Elettronici</a><ul>
 <li><a class="reference internal" href="#gerarchia-degli-attestati-elettronici">7.6.1. Gerarchia degli Attestati Elettronici</a></li>
 <li><a class="reference internal" href="#struttura-del-catalogo-degli-attestati-elettronici">7.6.2. Struttura del Catalogo degli Attestati Elettronici</a></li>
+<li><a class="reference internal" href="#il-catalogo-come-fonte-canonica-per-le-informazioni-di-visualizzazione">7.6.3. Il Catalogo come Fonte Canonica per le Informazioni di Visualizzazione</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#tassonomia">7.7. Tassonomia</a></li>
@@ -1837,7 +1691,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 27/10/2025.
+      Ultimo aggiornamento 28/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
