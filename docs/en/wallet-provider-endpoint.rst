@@ -371,7 +371,7 @@ The body of the Wallet App Attestation SD-JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **vct**
-      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be of the type ``{url_trust_anchor}/WalletAttestation`` as described in :ref:`registry:Digital Credentials Catalog`.
+      - REQUIRED. Credential type value MUST be an HTTPS URL String and it MUST be of the type ``{url_trust_anchor}/WalletAppAttestation`` as described in :ref:`registry:Digital Credentials Catalog`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - REQUIRED. JSON array containing a list of all disclusure's digests.
@@ -418,7 +418,7 @@ Below are described examples of values for the disclosures:
 - Disclosure:n``WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgIndhbGxldF9uYW1lIiwgIldhbGxldF9Ib2JiaXRvbl92MSJd``
 - Contents: ``["2GLC42sKQveCfGfryNRN9w", "wallet_name", "Wallet_v1"]``
 
-Below is a non-normative example of the SD-JWT Wallet Attestation header and payload without encoding and signature applied:
+Below is a non-normative example of the SD-JWT Wallet App Attestation header and payload without encoding and signature applied:
 
 .. literalinclude:: ../../examples/wa_sd_jwt_example_header.json
   :language: JSON
@@ -719,10 +719,20 @@ The body of the Wallet Unit Attestation JWT contains the following claims:
       - REQUIRED. A non-empty array of attested keys from the same key storage component using the syntax of JWK, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7517`.
     * - **key_storage**
-      - REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the key storage component and its keys attested in the ``attested_keys`` parameter.
+      - REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the key storage component and its keys attested in the ``attested_keys`` parameter. The following values are defined as a value for this claim:
+
+        - ``iso_18045_high``: It MUST be used when key storage is resistant to attack with attack potential "High".
+        - ``iso_18045_moderate``: It MUST be used when key storage is resistant to attack with attack potential "Moderate".
+        - ``iso_18045_basic``: It MUST be used when key storage is resistant to attack with attack potential "Basic".
+        
       - `OpenID4VCI`_.
     * - **user_authentication**
-      - REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the user authentication methods allowed to access the private keys from the ``attested_keys`` parameter.
+      - REQUIRED. A non-empty array of case sensitive strings that assert the attack potential resistance of the user authentication methods allowed to access the private keys from the ``attested_keys`` parameter. The following values are defined as a value for this claim:
+
+        - ``iso_18045_high``: It MUST be used when user authentication is resistant to attack with attack potential "High".
+        - ``iso_18045_moderate``: It MUST be used when user authentication is resistant to attack with attack potential "Moderate".
+        - ``iso_18045_basic``: It MUST be used when user authentication is resistant to attack with attack potential "Basic".
+
       - `OpenID4VCI`_.
     * - **status**
       - REQUIRED. JSON Object representing the supported revocation check mechanisms, such as OAuth Status List.
