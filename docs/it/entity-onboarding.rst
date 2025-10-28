@@ -54,7 +54,7 @@ La seguente tabella riassume i tipi di entità, i loro ruoli e i corrispondenti 
    * - Istanze del Wallet
      - Applicazioni di portafoglio digitale reso disponibile all'Utente
      - Registrazione indiretta tramite Fornitore di Wallet, vedere :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`.
-     - Wallet Attestation emessa da Fornitore di Wallet certificato.
+     - Wallet Attestation emessa da Fornitore di Wallet affidabile.
 
 Registrazione Amministrativa vs Tecnica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -95,7 +95,7 @@ Le Fonti Autentiche DEVONO rispettare i seguenti requisiti tecnici per garantire
   - **Standard di Integrazione API**:
 
     - **Entità Pubbliche**: DEVONO integrarsi attraverso la piattaforma PDND con implementazione di e-service seguendo gli standard governativi.
-    - **Entità Private**: DEVONO fornire un documento completo di Specifica API OpenAPI 3.0 che include framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox per i test.
+    - **Entità Private**: DEVONO fornire un documento completo di Specifica `OAS3`_ che include framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox per i test.
 
   - **Standardizzazione del Formato di Response**:
 
@@ -215,7 +215,7 @@ La registrazione della Fonte Autentica segue un processo tecnico come descritto 
   - **Verifica Integrazione API**:
 
     - **Entità Pubbliche**: Verifica della conformità della specifica e-service PDND
-    - **Entità Private**: Completezza della specifica OpenAPI 3.0 inclusi framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox.
+    - **Entità Private**: Completezza della specifica `OAS3`_ inclusi framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox.
 
   - **Formato Standard della Response**: Verifica dell'utilizzo del formato del Registro dei Claims e specifica della mappatura degli stati.
 
@@ -235,7 +235,7 @@ Dopo l'autorizzazione amministrativa AS-CI ottenuta durante la fase di registraz
 
 L'integrazione tecnica comprende:
 
-- **Configurazione degli Endpoint API**: Istituzione di connessioni API sicure come specificato nelle Specifiche Tecniche AS (e-service PDND per AS pubbliche, implementazioni OpenAPI 3.0 per AS private).
+- **Configurazione degli Endpoint API**: Istituzione di connessioni API sicure come specificato nelle Specifiche Tecniche AS (e-service PDND per AS pubbliche, implementazioni `OAS3`_ per AS private).
 - **Validazione Mappatura Claims**: Verifica che l'implementazione CI mappi correttamente le response dei dati AS agli identificativi standardizzati del Registro dei Claims.
 - **Test Flusso Dati**: Validazione delle specifiche di fornitura dati immediate/deferred e meccanismi di gestione degli errori.
 - **Implementazione Sicurezza**: Configurazione di autenticazione, autorizzazione e logging di audit come richiesto dagli standard di sicurezza AS.
@@ -271,20 +271,40 @@ Le Entità di Federazione DEVONO rispettare i seguenti requisiti tecnici prima d
 
   - **Generazione delle Chiavi**: Le entità DEVONO generare almeno due coppie di chiavi utilizzando la crittografia a curva ellittica come specificato in :ref:`algorithms:Algoritmi Crittografici`:
 
-    - **Coppia di Chiavi di Federazione**: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo.
+    - **Coppia di Chiavi di Federazione**: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo. Per le migliori pratiche di sicurezza e continuità operativa, le entità DOVREBBERO mantenere multiple Chiavi dell'Entità di Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impattare le entità che hanno memorizzato nella cache le Entity Configuration.
     - **Coppia/e di Chiavi di Protocollo**: Utilizzate per operazioni di protocollo specifiche dell'entità (emissione attestati elettronici, verifica presentazione, ecc.).
 
   - **Attestazione delle Chiavi di Protocollo**: Le entità DEVONO creare certificati X.509 auto-firmati per le loro Chiavi di Protocollo utilizzando la Chiave Privata di Federazione. Questi certificati stabiliscono la relazione di autorità tra le chiavi di Federazione e di Protocollo.
 
   - **Preparazione Entity Configuration**: Le entità DEVONO pubblicare una Entity Configuration (EC) firmata con la loro Chiave Privata di Federazione all'endpoint ``/.well-known/openid-federation`` come definito in :ref:`trust-infrastructure:L'Infrastruttura di Trust`. L'EC DEVE includere:
 
-    - Un claim ``jwks`` contenente la Chiave Pubblica dell'Entità di Federazione in formato JSON Web Key (JWK).
+    - Un claim ``jwks`` contenente le Chiavi dell'Entità di Federazione in formato JSON Web Key (JWK).
     - Un claim ``iss`` con l'Identificativo dell'Entità di Federazione come definito in :ref:`trust-infrastructure:Ruoli di Federazione`.
     - Un claim ``sub`` uguale al claim ``iss``.
     - Claim ``iat`` ed ``exp`` che definiscono un intervallo di tempo valido.
     - Un claim ``metadata`` contenente metadati specifici dell'entità organizzati per Tipi di Metadati (vedere :ref:`credential-issuer-entity-configuration:Entity Configuration del Fornitore di Attestati Elettronici`, :ref:`relying-party-entity-configuration:Entity Configuration di una Relying Party`, o :ref:`wallet-provider-entity-configuration:Entity Configuration del Fornitore di Wallet`) con Chiavi di Protocollo incluse nei campi ``jwks`` dei metadati e certificati auto-firmati nei corrispondenti claim ``x5c``.
 
   - **Certificate Signing Request (CSR)**: Le entità DEVONO preparare un CSR in formato PKCS #10 contenente **solo la Chiave Pubblica dell'Entità di Federazione** per l'emissione del certificato X.509 da parte dell'Autorità di Federazione come definito in :ref:`trust-infrastructure:Requisiti dell'Infrastruttura di Trust`.
+
+Requisiti di Sicurezza per la Gestione delle Chiavi
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tutte le entità di federazione DOVREBBERO mantenere almeno due chiavi di firma certificate dal Trust Anchor:
+
+- **Chiave Attiva**: Utilizzata per le operazioni di firma correnti
+- **Chiave di Backup**: Disponibile per l'attivazione immediata durante incidenti o rotazione pianificata delle chiavi
+
+Questo approccio a doppia chiave abilita:
+- Rotazione sicura delle chiavi senza interruzione del servizio
+- Risposta rapida agli incidenti quando le chiavi primarie sono compromesse
+- Continuità per le entità con Entity Configuration memorizzate nella cache
+- Prevenzione di problemi di validazione durante le transizioni delle chiavi
+
+La chiave di backup DEVE essere:
+- Registrata dal Trust Anchor prima del deployment
+- Pubblicata nel JWKS dell'entità insieme alla chiave attiva
+- Pronta per l'attivazione immediata senza passaggi di certificazione aggiuntivi
+- Mantenuta con gli stessi standard di sicurezza della chiave attiva
 
 Procedura di Onboarding della Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
