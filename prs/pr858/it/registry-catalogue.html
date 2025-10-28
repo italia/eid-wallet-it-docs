@@ -267,21 +267,6 @@
 </tbody>
 </table>
 <p>Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint <cite>.well-known</cite> del Catalogo degli Attestati Elettronici garantendo l'affidabilità, l'autenticità e l'integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, gli attributi e la tassonomia DEVONO essere disponibili attraverso l'endpoint <code class="docutils literal notranslate"><span class="pre">.well-known/credential-catalogue</span></code>.</p>
-<section id="il-catalogo-come-fonte-canonica-per-le-informazioni-di-visualizzazione">
-<h2>Il Catalogo come Fonte Canonica per le Informazioni di Visualizzazione<a class="headerlink" href="#il-catalogo-come-fonte-canonica-per-le-informazioni-di-visualizzazione" title="Link to this heading">¶</a></h2>
-<p>Per ridurre la duplicazione garantendo coerenza di presentazione nell'ecosistema, il Catalogo degli Attestati Elettronici è la fonte canonica delle informazioni di visualizzazione rivolte all'Utente finale relative agli Attestati Elettronici (ad es. nome/descrizione dell'attestato, etichette degli attributi, template visivi, colori, URI del logo).</p>
-<ul class="simple">
-<li><p>Le Soluzioni Wallet e le Relying Party DEVONO utilizzare i campi relativi alla visualizzazione contenuti nel Catalogo (ad esempio i campi sotto <code class="docutils literal notranslate"><span class="pre">display_properties</span></code> e i contenuti localizzati referenziati tramite <code class="docutils literal notranslate"><span class="pre">localization</span></code>) per il rendering degli Attestati Elettronici e dei loro attributi.</p></li>
-<li><p>I Metadata del Fornitore di Attestati Elettronici e il Type Metadata dell'Attestato Elettronico POSSONO contenere informazioni di visualizzazione per interoperabilità con ecosistemi esterni e per Attestati Elettronici non registrati nel Catalogo; tuttavia, quando un Attestato Elettronico è presente nel Catalogo, i valori del Catalogo DEVONO avere precedenza su qualsiasi informazione di visualizzazione fornita altrove.</p></li>
-<li><p>Per gli Attestati Elettronici non inclusi nel Catalogo (ad esempio Attestati Elettronici non di interesse pubblico), le Soluzioni Wallet POSSONO utilizzare le informazioni di visualizzazione dai Metadata del Fornitore di Attestati Elettronici e/o dal Type Metadata dell'Attestato Elettronico. Quando entrambi sono disponibili, si applica la seguente precedenza:</p>
-<ol class="arabic simple">
-<li><p>Utilizzare il Type Metadata dell'Attestato Elettronico, se disponibile.</p></li>
-<li><p>In caso contrario, utilizzare i Metadata del Fornitore di Attestati Elettronici.</p></li>
-</ol>
-</li>
-<li><p>Le implementazioni DOVREBBERO mettere in cache i dati di visualizzazione del Catalogo e applicare la selezione della lingua utilizzando i parametri di <code class="docutils literal notranslate"><span class="pre">localization</span></code>. Se la localizzazione selezionata non è disponibile, effettuare il fallback alla localizzazione predefinita del Catalogo.</p></li>
-</ul>
-</section>
 <section id="categorie-di-attestati-elettronici">
 <h2>Categorie di Attestati Elettronici<a class="headerlink" href="#categorie-di-attestati-elettronici" title="Link to this heading">¶</a></h2>
 <p>Gli Attestati Elettronici riconosciuti all'interno dell'ecosistema IT-Wallet sono classificati gerarchicamente e standardizzati secondo i seguenti domini e categorie principali. Categorie aggiuntive POSSONO essere aggiunte man mano che l'ecosistema IT-Wallet cresce.</p>
@@ -716,7 +701,6 @@
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">Catalogo degli Attestati Elettronici</a><ul>
-<li><a class="reference internal" href="#il-catalogo-come-fonte-canonica-per-le-informazioni-di-visualizzazione">Il Catalogo come Fonte Canonica per le Informazioni di Visualizzazione</a></li>
 <li><a class="reference internal" href="#categorie-di-attestati-elettronici">Categorie di Attestati Elettronici</a></li>
 <li><a class="reference internal" href="#struttura-del-catalogo-degli-attestati-elettronici">Struttura del Catalogo degli Attestati Elettronici</a></li>
 <li><a class="reference internal" href="#tassonomia-degli-attributi">Tassonomia degli Attributi</a></li>
@@ -749,7 +733,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 24/10/2025.
+      Ultimo aggiornamento 28/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

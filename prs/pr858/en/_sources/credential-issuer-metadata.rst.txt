@@ -102,25 +102,25 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
 
                 - **name**: REQUIRED. String value of a display name for the Digital Credential.
                 - **locale**: REQUIRED. String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
+                - **description**: REQUIRED. String value containing a description of the Digital Credential.
                 - **logo**: OPTIONAL. Object with information about the logo of the Digital Credential. The following parameters are included:
 
                   - **uri**: REQUIRED. String value that contains a URI where the Wallet can obtain the logo of the Digital Credential from the Credential Issuer.
                   - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
                   - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
                 
-                - **description**: REQUIRED. String value containing a description of the Digital Credential.
                 - **background_color**: OPTIONAL. String value of a background color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
-                - **background_image**: Object containing information about the background image to be displayed for the type. This property is OPTIONAL. The object contains the following sub-values:
+                - **background_image**: OPTIONAL. Object containing information about the background image to be displayed for the type. The object contains the following sub-values:
                   
-                  - **uri**: A URI pointing to the background image. [REQUIRED]
-                  - **uri#integrity**: integrity metadata as defined in Section 3 of `W3C-SRI`_. [REQUIRED].
+                  - **uri**: REQUIRED. A URI pointing to the background image.
+                  - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
                 
-                - **text_color**: String value of a text color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
+                - **text_color**: OPTIONAL. String value of a text color of the Digital Credential represented as numerical color values defined in `W3C.CSS-COLOR`_.
 
         - **vct**: REQUIRED only if ``format`` is set to "*dc+sd-jwt*". As defined in [:ref:`credential-data-model:SD-JWT-VC Credential Format`].
         - **doctype**: REQUIRED only if ``format`` is set to "*mso_mdoc*". As defined in [:ref:`credential-data-model:mDoc-CBOR Credential Format`].
         - **schema_uri**: REQUIRED only if the Digital Credential is not included in the Digital Credentials Catalog. URI pointing to the schema related to the format.
-        - **schema_uri#integrity**: REQUIRED only if **schema_uri** is present. Cryptographic digest of the schema specification for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
+        - **schema_uri#integrity**: REQUIRED. Cryptographic digest of the schema specification for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
         - **authentic_source**: REQUIRED only if the Digital Credential is not included in the Digital Credentials Catalog. Object containing ``entity_id`` parameter valued with the identifier referencing authorized Authentic Sources as registered in the :ref:`registry:Authentic Source Registry`.
         - **claims**: REQUIRED only if the Digital Credential is not included in the Digital Credentials Catalog. Array of JSON object each describing how a certain claim related to the Digital Credential MUST be displayed to the User. This Array lists the claims in the order they MUST be displayed by the Wallet. To provide detailed information about the claim, the innermost value MUST contain at least the following parameters. See `OpenID4VCI`_ Section A.3.2.
 

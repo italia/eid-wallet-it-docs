@@ -195,31 +195,34 @@
 <tr class="row-odd"><td><p><strong>client_name</strong></p></td>
 <td><p>Stringa leggibile che rappresenta il nome della RP. Vedi <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7591.html#section-2"><strong>RFC 7591#section-2</strong></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>application_type</strong></p></td>
+<tr class="row-even"><td><p><strong>logo_uri</strong></p></td>
+<td><p>URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Vedi <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 5.2.2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>application_type</strong></p></td>
 <td><p>Stringa che indica il tipo di applicazione. DEVE essere impostata al valore &quot;<em>web</em>&quot;. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration 1.0</a> Sezione 2.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>request_uris</strong></p></td>
+<tr class="row-even"><td><p><strong>request_uris</strong></p></td>
 <td><p>JSON Array di valori <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> che sono pre-registrati dalla RP. Questi URL DEVONO utilizzare lo schema <em>https</em>. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-registration-1_0.html">OpenID Connect Dynamic Client Registration 1.0</a> Sezione 2.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>response_uris</strong></p></td>
+<tr class="row-odd"><td><p><strong>response_uris</strong></p></td>
 <td><p>JSON Array di stringhe URI di risposta a cui l'Istanza del Wallet DEVE inviare la Risposta di Autorizzazione utilizzando una richiesta HTTP POST come definito dalle Modalità di Risposta <code class="docutils literal notranslate"><span class="pre">direct_post</span></code> e <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> (vedi <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezioni 6.2 e 6.3).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_signing_alg_values_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>authorization_signing_alg_values_supported</strong></p></td>
 <td><p>JSON Array che contiene la lista degli algoritmi di firma [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>] <em>alg</em> che DEVONO essere utilizzati per firmare le authorization response. L'algoritmo <code class="docutils literal notranslate"><span class="pre">none</span></code> NON DEVE essere utilizzato. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>authorization_encryption_alg_values_supported</strong></p></td>
+<tr class="row-odd"><td><p><strong>authorization_encryption_alg_values_supported</strong></p></td>
 <td><p>JSON Array che contiene la lista degli algoritmi utilizzati per crittografare le authorization response. Questo parametro specifica alla Wallet Instance gli algoritmi di crittografia asimmetrica supportati. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>authorization_encryption_enc_values_supported</strong></p></td>
+<tr class="row-even"><td><p><strong>authorization_encryption_enc_values_supported</strong></p></td>
 <td><p>JSON Array che contiene la lista  degli algoritmi di crittografia utilizzati per le authorization response. Questo parametro pecifica alla Wallet Instance gli algoritmi di crittografia simmetrica supportati. Vedi <a class="reference external" href="https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html">OIDC-RP-Metadata</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>vp_formats</strong></p></td>
+<tr class="row-odd"><td><p><strong>vp_formats</strong></p></td>
 <td><p>JSON Object che definisce i formati e i tipi di prova delle Presentazioni Verificabili e delle Credenziali Verificabili supportate dalla RP. Consiste in un elenco di coppie nome/valore, dove ogni nome identifica in modo univoco un tipo supportato. La RP DEVE supportare almeno <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>. Il valore associato a ciascuna coppia nome/valore DEVE essere un oggetto JSON <code class="docutils literal notranslate"><span class="pre">sd-jwt_alg_values</span></code> che DEVE contenere un array JSON contenente identificatori di algoritmi crittografici che la RP supporta per la protezione di un SD-JWT. L'intestazione JOSE <code class="docutils literal notranslate"><span class="pre">alg</span></code> (come definito in <span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a>) dell'SD-JWT presentato DEVE corrispondere a uno dei valori dell'array. Vedi anche <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Draft 20 Sezione 9.1 (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Matrice di Test per il Verificatore di Credenziali in Remoto</span></a>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>jwks</strong></p></td>
+<tr class="row-even"><td><p><strong>jwks</strong></p></td>
 <td><p>Documento JSON Web Key Set, passato per valore, contenente le chiavi specifiche del protocollo per la Relying Party. Vedi <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> Sezione 3, <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Draft 41 Sezione 5.2.1 e <a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key">JWK</a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>erasure_endpoint</strong></p></td>
+<tr class="row-odd"><td><p><strong>erasure_endpoint</strong></p></td>
 <td><p>[CONDIZIONALE] Stringa JSON che rappresenta l'URI a cui l'Istanza del Wallet può richiedere la cancellazione degli attributi degli Utenti. Questo URL DEVE utilizzare lo schema <code class="docutils literal notranslate"><span class="pre">https</span></code>. Questo endpoint DEVE essere presente ogni volta che le Relying Party richiedono attributi che possono identificare in modo univoco gli Utenti, come il claim tax_id_code del PID.</p></td>
 </tr>
 </tbody>
@@ -258,7 +261,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 24/10/2025.
+      Ultimo aggiornamento 28/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
