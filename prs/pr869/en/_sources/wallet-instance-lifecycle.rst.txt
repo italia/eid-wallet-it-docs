@@ -72,7 +72,7 @@ Upon successful verification, the Wallet Provider MUST issue at least one valid 
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
-preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-attestation-issuance:Wallet APP Attestation Issuance`, and :ref:`wallet-unit-attestation-issuance:Wallet Unit Attestation Issuance`.
+preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-attestation-issuance:Wallet App Attestation Issuance`, and :ref:`wallet-unit-attestation-issuance:Wallet Unit Attestation Issuance`.
 
 In the **Operational** state, Users can request the issuance of PID (**PID ISS**) or (Q)EAAs if the PID is not required in the issuance
 (**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
@@ -126,5 +126,5 @@ delete the Wallet Cryptographic Hardware Key pairs (:ref:`WP_149 <wallet-instanc
 A Wallet Provider instead is responsible for:
 
 * **Wallet Instance Activation** (**WI ACT**): a User account MUST be created and associated with the Wallet Instance through the Wallet Cryptographic Hardware Key Tag. As a result of the User account creation, an authentication mechanism of at least two factors MUST be set for the User to interact with the Wallet Provider portal.
-* **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Unit Attestation is revoked, and accordingly the status is reflected on the Wallet Unit Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
+* **Wallet Instance Revocation** (**WI REV**): for technical security reasons or triggered by external entities (e.g., Users and Supervisory Bodies) the Wallet Instance is revoked and this result in the revocation of the Wallet Unit Attestation, which is reflected on the Wallet Unit Attestation Status List. Additionally, the Wallet Cryptographic Hardware Key Tag MUST be deleted from the User account.
 * **Data Purging**: through an explicit request of Users, the User account at the Wallet Provider MUST be removed from the local storage.
