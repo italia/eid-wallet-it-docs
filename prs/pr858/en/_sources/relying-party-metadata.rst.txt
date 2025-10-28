@@ -17,7 +17,7 @@ The *openid_credential_verifier* metadata MUST contain the following parameters 
   * - **client_name**
     - Human-readable string name of the RP. See :rfc:`7591#section-2`.
   * - **logo_uri**
-    - URL of the entity's logo that will be shown to the User during interactions with the Wallet Instance. See `OID-FED`_ Section 5.2.2.
+    - URL of the entity's logo that will be shown to the User during interactions with the Wallet Instance. See `OID-FED`_ Section 5.2.2. The logo mime type MUST be ``application/svg``.
   * - **application_type**
     - String indicating the type of application. It MUST be set to "*web*" value. See `OpenID Connect Dynamic Client Registration 1.0 <https://openid.net/specs/openid-connect-registration-1_0.html>`_ Section 2.
   * - **request_uris**

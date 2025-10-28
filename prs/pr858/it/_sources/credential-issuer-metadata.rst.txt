@@ -69,7 +69,7 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
   * - **credential_issuer**
     - L'identificativo del Fornitore di Attestati Elettronici. DEVE essere un HTTPS URL *case sensitive* come definito in `OpenID4VCI`_ Sezioni 11.2.1 e 11.2.3.
   * - **logo_uri**
-    - URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Vedi `OID-FED`_ Sezione 5.2.2.
+    - URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Vedi `OID-FED`_ Sezione 5.2.2. Il MIME type del logo DEVE essere ``application/svg``.
   * - **credential_endpoint**
     - URL del *Credential endpoint*. Vedi `OpenID4VCI`_ Sezione 11.2.3.
   * - **nonce_endpoint**
@@ -105,7 +105,7 @@ I Metadata *openid_credential_issuer* DEVONO contenere i seguenti *claims*.
                 - **description**: OBBLIGATORIO. Stringa contenente la descrizione dell'Attestato Elettronico.
                 - **logo**: OPZIONALE. Oggetto contenente informazioni relative al logo dell’Attestato Elettronico. Include i seguenti parametri:
 
-                  - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici.
+                  - **uri**: OBBLIGATORIO. Stringa che contiene la URI da cui il Wallet può ottenere il logo dell’Attestato Elettronico dal Fornitore di Attestati Elettronici. Il MIME type del logo DEVE essere ``application/svg``.
                   - **uri#integrity**: OBBLIGATORIO. "integrity metadata" come definito nella Sezione 3 del documento `W3C-SRI`_.
                   - **alt_text**: OPZIONALE. Stringa contenente il testo da mostrare in alternativa all’immagine del logo.
                 - **background_color**: OBBLIGATORIO. Stringa che rappresenta il colore di sfondo dell’Attestato Elettronico, espresso come valore numerico secondo la definizione del documento `W3C.CSS-COLOR`_

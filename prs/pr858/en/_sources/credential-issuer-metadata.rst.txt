@@ -69,7 +69,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **credential_issuer**
     - The Credential Issuer identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 11.2.1 and 11.2.3.
   * - **logo_uri**
-    - URL of the entity's logo that will be shown to the User during Wallet Instance interactions. See `OID-FED`_ Section 5.2.2.
+    - URL of the entity's logo that will be shown to the User during Wallet Instance interactions. See `OID-FED`_ Section 5.2.2. The logo mime type MUST be ``application/svg``.
   * - **credential_endpoint**
     - URL of the Credential endpoint. See `OpenID4VCI`_ Section 11.2.3.
   * - **nonce_endpoint**
@@ -105,7 +105,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 - **description**: REQUIRED. String value containing a description of the Digital Credential.
                 - **logo**: OPTIONAL. Object with information about the logo of the Digital Credential. The following parameters are included:
 
-                  - **uri**: REQUIRED. String value that contains a URI where the Wallet can obtain the logo of the Digital Credential from the Credential Issuer.
+                  - **uri**: REQUIRED. String value that contains a URI where the Wallet can obtain the logo of the Digital Credential from the Credential Issuer. The logo mime type MUST be ``application/svg``.
                   - **uri#integrity**: REQUIRED. integrity metadata as defined in Section 3 of `W3C-SRI`_.
                   - **alt_text**: OPTIONAL. String value of the alternative text for the logo image.
                 
