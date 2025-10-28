@@ -314,7 +314,7 @@ Di seguito è riportato un esempio non normativo.
 
     {	
       "name": "...",
-      "description": "...";
+      "description": "...",
       ...
     }
 

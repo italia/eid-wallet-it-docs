@@ -312,7 +312,7 @@ Below a non-normative example is given.
 
     {	
       "name": "...",
-      "description": "...";
+      "description": "...",
       ...
     }
 
