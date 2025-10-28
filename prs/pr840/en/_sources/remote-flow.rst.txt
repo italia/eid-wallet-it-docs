@@ -625,7 +625,7 @@ In the following table are listed error codes and descriptions that are supporte
    * - ``invalid_client``
      - The Relying Party cannot be authorized due to trust validation failures or is not a valid participant of the federation. `OID-FED`_
    * - ``invalid_transaction_data``
-     - One or more objects in the ``transaction_data`` structure are invalid — for example, containing unknown or unsupported types, malformed or missing fields, invalid values, or references to unavailable Credentials. `OpenID4VP`_
+     - One or more objects in the ``transaction_data`` structure are invalid. For instance, those objects contain unknown or unsupported types, malformed or missing fields, invalid values, or references to unavailable Credentials. `OpenID4VP`_
 
 
 Relying Party Response
