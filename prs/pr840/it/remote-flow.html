@@ -438,10 +438,7 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
 <td><p>OBBLIGATORIO. L'URL HTTP dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>RACCOMANDATO. Un identificatore univoco per la transazione corrente generato dalla Relying Party. Il valore DOVREBBE essere opaco per l'Istanza del Wallet.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
+<tr class="row-even"><td><p><strong>request_uri_method</strong></p></td>
 <td><p>OPZIONALE. Il metodo HTTP DEVE essere impostato con <code class="docutils literal notranslate"><span class="pre">get</span></code> o <code class="docutils literal notranslate"><span class="pre">post</span></code>. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. Se non fornito o uguale a <code class="docutils literal notranslate"><span class="pre">get</span></code>, l'Istanza del Wallet DEVE utilizzare il metodo HTTP <code class="docutils literal notranslate"><span class="pre">get</span></code>. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p></td>
 </tr>
 </tbody>
