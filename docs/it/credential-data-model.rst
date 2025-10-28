@@ -132,7 +132,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Oggetto JSON contenente il materiale crittografico da utilizzare come prova di possesso. L'inclusione del claim **cnf** (confirmation) in un JWT, permette al soggetto che emette il JWT di dichiarare che il Titolare ha il controllo della chiave privata relativa a quella pubblica definita nel parametro **cnf**. Il destinatario DEVE verificare crittograficamente che il Titolare abbia effettivamente il controllo di quella chiave.
       - `[RFC7800, Sezione 3.1] <https://www.iana.org/go/rfc7800>`_ e Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. OBBLIGATORIO. Il valore del tipo di Attestato Elettronico DEVE essere una URN e DEVE essere valorizzata utilizzando uno dei valori ottenuti dai Metadata del Fornitore di Attestati Elettronici. Il confronto con i caratteri di questa stringa DEVE essere eseguito in modo `case-sensitive`. È l'identificativo del tipo di SD-JWT VC e DEVE essere resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione dell'Attestato Elettronico. DEVE essere utilizzata la seguente struttura: ``urn:eudi:{credential_type}:it:{version}``.
+      - [NSD]. OBBLIGATORIO. Il valore del tipo di Attestato Elettronico DEVE essere una URN e DEVE essere valorizzata utilizzando uno dei valori ottenuti dai Metadata del Fornitore di Attestati Elettronici. Il confronto con i caratteri di questa stringa DEVE essere eseguito in modo `case-sensitive`. È l'identificativo del tipo di SD-JWT VC e DEVE essere resistente alle collisioni come definito nella Sezione 2 di :rfc:`7515`. DEVE contenere anche il numero di versione dell'Attestato Elettronico. DEVE essere utilizzata la seguente struttura: ``urn:eudi:{credential_type}:it:{version}``. Se l’Attestato Elettronico è pubblicato all'interno del Catalogo degli Attestati Elettronici, il valore del ``vct`` DEVE corrispondere al valore indicato nel Catalogo, vedi :ref:`registry:Digital Credentials Catalog Structure`.
       - Sezione 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. OBBLIGATORIO. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella la Sezione 3.3.5 di [`W3C-SRI`_].
@@ -208,15 +208,6 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
     * - **extends#integrity**
       - CONDIZIONALE. OBBLIGATORIO se **extends** è presente.
       - [`SD-JWT-VC`_] Sezione 6.2.
-    * - **schema**
-      - CONDIZIONALE. OBBLIGATORIO se **schema_uri** non è presente.
-      - [`SD-JWT-VC`_] Sezione 6.2.
-    * - **schema_uri**
-      - CONDIZIONALE. OBBLIGATORIO se **schema** non è presente.
-      - [`SD-JWT-VC`_] Sezione 6.2.
-    * - **schema_uri#integrity**
-      - CONDIZIONALE. OBBLIGATORIO se **schema_uri** è presente.
-      - [`SD-JWT-VC`_] Sezione 6.2.
     * - **data_source**
       - OBBLIGATORIO. Oggetto contenente informazioni sull'origine dei dati. DEVE contenere l'oggetto ``verification`` con il seguente sub parametro:
 
@@ -265,7 +256,7 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
 
       - [`SD-JWT-VC`_] Sezione 8.
     * - **claims**
-      - OBBLIGATORIO. Array di oggetti contenenti informazioni per la visualizzazione e la convalida dei claim dell'Attestato Elettronico. Contiene per ogni claim dell'Attestato Elettronico le seguenti proprietà:
+      - OBBLIGATORIO. Array di oggetti contenenti informazioni per la visualizzazione e la validazione dei claim dell'Attestato Elettronico. Ogni oggetto contiene le seguenti proprietà:
 
           * ``path``: array che indica i/il claim a cui ci si riferisce. [OBBLIGATORIO].
           * ``display``: array contenente informazioni di visualizzazione sul claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata dal tipo di Attestato Elettronico. Questa proprietà è OBBLIGATORIA. Contiene i seguenti parametri:

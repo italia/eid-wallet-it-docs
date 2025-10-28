@@ -91,6 +91,7 @@ La seguente tabella riassume le principali informazioni che DEVONO essere fornit
 
 Il Trust Anchor DEVE pubblicare e mantenere aggiornate tutte le informazioni all'endpoint `.well-known` del Catalogo degli Attestati Elettronici garantendo l'affidabilità, l'autenticità e l'integrità dei dati. In particolare, il Catalogo degli Attestati Elettronici, gli attributi e la tassonomia DEVONO essere disponibili attraverso l'endpoint ``.well-known/credential-catalogue``.
 
+
 Categorie di Attestati Elettronici
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

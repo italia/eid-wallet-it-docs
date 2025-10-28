@@ -131,7 +131,7 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. JSON object containing the proof-of-possession key materials. By including a **cnf** (confirmation) claim in a JWT, the Issuer of the JWT declares that the Holder is in control of the private key related to the public one defined in the **cnf** parameter. The recipient MUST cryptographically verify that the Holder is in control of that key.
       - `[RFC7800, Section 3.1] <https://www.iana.org/go/rfc7800>`_ and Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct**
-      - [NSD]. REQUIRED. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. The following structure MUST be used: ``urn:eudi:{credential_type}:it:{version}``.
+      - [NSD]. REQUIRED. Credential type value MUST be a URN and it MUST be set using one of the values obtained from the Credential Issuer metadata, matching of the literals included in this URN MUST be performed in a case-sensitive manner. It is the identifier of the SD-JWT VC type and it MUST be set with a collision-resistant value as defined in Section 2 of :rfc:`7515`. It MUST contain also the number of version of the Credential type. The following structure MUST be used: ``urn:eudi:{credential_type}:it:{version}``. If the Digital Credential is published within the Digital Credential Catalog, ``vct`` value MUST correspond with the value indicated in the Catalog, see :ref:`registry:Digital Credentials Catalog Structure`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **vct#integrity**
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
@@ -207,15 +207,6 @@ The Type Metadata document MUST be a JSON object and contains the following para
     * - **extends#integrity**
       - CONDITIONAL. REQUIRED if **extends** is present.
       - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema**
-      - CONDITIONAL. REQUIRED if **schema_uri** is not present.
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema_uri**
-      - CONDITIONAL. REQUIRED if **schema** is not present.
-      - [`SD-JWT-VC`_] Section 6.2.
-    * - **schema_uri#integrity**
-      - CONDITIONAL. REQUIRED if **schema_uri** is present.
-      - [`SD-JWT-VC`_] Section 6.2.
     * - **data_source**
       - REQUIRED. Object containing information about the data origin. It MUST contain the object ``verification`` with the following sub-value:
 
@@ -261,10 +252,9 @@ The Type Metadata document MUST be a JSON object and contains the following para
 
           .. note::
             The use of the SVG template is RECOMMENDED for all applications that support it.
-
       - [`SD-JWT-VC`_] Section 8.
     * - **claims**
-      - REQUIRED. Array of objects containing information for displaying and validating Digital Credential claims. It contains for each Credential claim the following properties:
+      - REQUIRED. An Array of objects that contains information for displaying and validating Digital Credential claims. Each object contains the following parameters:
 
           * ``path``: array indicating the claim or claims that are being addressed. [REQUIRED].
           * ``display``: array containing display information about the claim indicated in the ``path``. The array contains an object for each language supported by the Digital Credential type. This property is REQUIRED. It contains the following members:
