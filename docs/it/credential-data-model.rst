@@ -269,7 +269,7 @@ Il documento di *Type Metadata* DEVE essere un oggetto JSON che contiene i segue
 
           * ``path``: array che indica i/il claim a cui ci si riferisce. [OBBLIGATORIO].
           * ``display``: array contenente informazioni di visualizzazione sul claim indicato nel ``path``. L'array contiene un oggetto per ogni lingua supportata dal tipo di Attestato Elettronico. Questa proprietà è OBBLIGATORIA. Contiene i seguenti parametri:
-             * ``locale``: tag di lingua come definito in :rfc:`5646` Sezione 2,il nome di questo parametro è allineato con quanto definito in SD-JWT-VC Draft 12. [OBBLIGATORIO].
+             * ``locale``: tag di lingua come definito in :rfc:`5646` Sezione 2, il nome di questo parametro è allineato con quanto definito in SD-JWT-VC Draft 12. [OBBLIGATORIO].
              * ``label``: etichetta *human-readable* per il claim. [OBBLIGATORIO].
              * ``description``: descrizione *human-readable* per il claim. [OBBLIGATORIO].
           * ``sd``: stringa che indica se il claim è divulgabile selettivamente. DEVE essere impostato su `always` se il claim è divulgabile selettivamente o `never` se non lo è. [OBBLIGATORIO].
