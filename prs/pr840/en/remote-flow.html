@@ -587,7 +587,7 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </td>
 </tr>
 <tr class="row-even"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
-<td><p>An optional array of of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the <a class="reference external" href="https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg">IANA</a>.  One of these algorithms MUST be used to calculate the hashes in the <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> response parameter.  If omitted, the default hash algorithm is sha-256.</p></td>
+<td><p>An optional array of of strings, each representing a hash algorithm identifier, corresponding to a hash algorithm name listed in the <a class="reference external" href="https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg">IANA</a>.  One of these algorithms MUST be used to calculate the hashes in the <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> response parameter.  If omitted, the default hash algorithm is <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_type</strong></p></td>
 <td><p>It MUST be set to <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-107</span></a>).</p></td>
@@ -1099,7 +1099,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 28/10/2025.
+      Last updated on 29/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
