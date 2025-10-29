@@ -639,7 +639,7 @@ In the following table are listed error codes and descriptions that are supporte
 Relying Party Response
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As defined in Section 8.2. (Response Mode "direct_post") of the `OpenID4VP`_ specification, if the Response URI has successfully processed the Authorization Response or Authorization Error Response, it MUST respond with an HTTP status code of 200 with ``Content-Type`` of ``application/json`` and a JSON object in the response body.
+As defined in Section 8.2. (Response Mode ``direct_post``) of the `OpenID4VP`_ specification, if the Response URI has successfully processed the Authorization Response or Authorization Error Response, it MUST respond with an HTTP status code of 200 with ``Content-Type`` of ``application/json`` and a JSON object in the response body.
 
 In the **Same Device Flow**, the Relying Party SHOULD add the ``redirect_uri`` parameter to the JSON object in the response body. Upon receiving the ``redirect_uri``, the the Wallet Instance MUST perform a redirect to the URL specified by the ``redirect_uri``.
 This redirect allows the Relying Party to seamlessly resume interaction with the User on the device which initiated the flow, after the Wallet Instance has transmitted the Authorization Response to the designated ``response_uri``.
