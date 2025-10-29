@@ -1092,9 +1092,9 @@ In the following table are listed HTTP Status Codes and related error codes that
 Data Correction using credential_failure
 ........................................
 
-According to `OpenID4VCI Section 11 <https://openid.github.io/OpenID4VCI/openid-4-verifiable-credential-issuance-wg-draft.html#section-11>`_, in all other unsuccessful cases ``event`` MUST use ``credential_failure`` and additional Notification Request parameters MAY be defined and used. The Credential Issuer MUST ignore any unrecognized parameters.
+According to `OpenID4VCI Section 11 <https://openid.github.io/OpenID4VCI/openid-4-verifiable-credential-issuance-wg-draft.html#section-11>`_, in all other unsuccessful cases ``event`` MUST use ``credential_deleted`` and additional Notification Request parameters MAY be defined and used. The Credential Issuer MUST ignore any unrecognized parameters.
 
-For holder-initiated data correction, the Wallet Instance SHOULD send a Notification Request with ``event=credential_failure`` and include additional parameters to signal the data correction context. At minimum:
+For holder-initiated data correction, the Wallet Instance SHOULD send a Notification Request with ``event=credential_deleted`` and include additional parameters to signal the data correction context. At minimum:
 
 - ``event_description``: concise human-readable description of the discrepancy.
 - ``failure_reason`` (OPTIONAL): a short machine-readable code, e.g., ``data_correction_requested``.
