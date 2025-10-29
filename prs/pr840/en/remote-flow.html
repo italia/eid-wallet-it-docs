@@ -513,6 +513,10 @@ The request and its parameters are defined in Section number 5 (Authorization Re
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>In the IT Wallet, legacy Relying Parties using an <code class="docutils literal notranslate"><span class="pre">https</span></code> URI as <code class="docutils literal notranslate"><span class="pre">client_id</span></code> implicitly follow the OpenID Federation client identifier prefix (<code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>). Their trust is established and validated through trust chain resolution, which is treated as equivalent to that of statically trusted (pre-registered) clients as defined in [<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], for backward compatibility.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Although the <code class="docutils literal notranslate"><span class="pre">response_modes_supported</span></code> field references <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> to ensure JARM-level interoperability for the Authorization Response by keeping a JWT based format for front-channel redirects such as <code class="docutils literal notranslate"><span class="pre">form_post.jwt</span></code> in the Same Device Flow, the Relying Party adopts <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> for the Cross Device Flow, which relies on back-channel delivery using an HTTP POST request to the Relying Party. The actual use of <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> is introduced below, in <a class="reference internal" href="#request-uri-response"><span class="std std-ref">Request URI Response</span></a>, where the Relying Party sets the <code class="docutils literal notranslate"><span class="pre">response_mode</span></code> for the transaction.</p>
 </div>
 <div class="admonition note">
@@ -542,13 +546,13 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>Algorithm used to sign the JWT, according to [<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or to a symmetric algorithm (MAC) identifier (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-104</span></a>).</p></td>
+<td><p>Algorithm used to sign the JWT, according to [<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. It MUST be one of the supported algorithms in Section <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a> and MUST NOT be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> or to a symmetric algorithm (MAC) identifier (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-104</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
-<td><p>Media Type of the JWT, as defined in [<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. It SHOULD be set to the value <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-105</span></a>).</p></td>
+<td><p>Media Type of the JWT, as defined in [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] and [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. It SHOULD be set to the value <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-105</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
-<td><p>Key ID of the public key needed to verify the JWT signature, as defined in [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. REQUIRED when <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
+<td><p>Key ID of the public key needed to verify the JWT signature, as defined in [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. REQUIRED when <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code> is used.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Section 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
@@ -665,15 +669,15 @@ Furthermore, universal links offer fallback mechanisms, allowing the flow to con
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The Request Object could not be retrieved due to an invalid or malformed request at the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint. (<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>The Request Object could not be retrieved due to an invalid or malformed request at the <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> endpoint. (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Request URI Endpoint encountered an internal problem. (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>The request cannot be fulfilled because the Request URI Endpoint encountered an internal problem. (<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>The request cannot be fulfilled because the Request URI Endpoint is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>The request cannot be fulfilled because the Request URI Endpoint is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -819,7 +823,7 @@ The Authorization Error Response MUST be encoded in the request body using the f
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_uri</span></code></p></td>
-<td><p>The <cite>request_uri</cite> in the authorization request returns an error, contains invalid data, or is otherwise malformed. <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
+<td><p>The <cite>request_uri</cite> in the authorization request returns an error, contains invalid data, or is otherwise malformed. <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_not_supported</span></code></p></td>
 <td><p>The Wallet Instance does not support any of the vp formats required by the Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
@@ -1013,7 +1017,7 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>The Redirect URI provided by the Relying Party does not match any of the URIs linked with the User session. (<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
+<td><p>The Redirect URI provided by the Relying Party does not match any of the URIs linked with the User session. (<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -1021,11 +1025,11 @@ The request url SHOULD include a parameter with a random value. The HTTP respons
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>The request cannot be fulfilled due to an intenal server error. (<span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>The request cannot be fulfilled due to an intenal server error. (<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>The request cannot be fulfilled because the service is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>The request cannot be fulfilled because the service is temporarily unavailable (e.g., due to maintenance or overload). (<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 </tbody>
 </table>

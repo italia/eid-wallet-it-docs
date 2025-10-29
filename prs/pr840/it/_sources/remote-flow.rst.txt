@@ -366,6 +366,9 @@ La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorizat
      - OPZIONALE. Vedi OpenID Connect Discovery.
 
 .. note::
+   Nell’IT Wallet, le Relying Party legacy che utilizzano un URI ``https`` come ``client_id`` seguono implicitamente il prefisso dell’identificatore del client previsto da OpenID Federation (``openid_federation``).  La loro fiducia è stabilita e validata tramite la risoluzione della catena di fiducia, che è considerata equivalente a quella dei client fidati staticamente (``pre-registered``), come definito in [:rfc:`6749`], per garantire la compatibilità con le versioni precedenti.
+
+.. note::
    Anche se il campo ``response_modes_supported`` fa riferimento a `JARM`_ per garantire l’interoperabilità a livello JARM della Authorization Response, mantenendo un formato basato su JWT per i reindirizzamenti front-channel come ``form_post.jwt`` nel Flusso Same Device, la Relying Party adotta invece ``direct_post.jwt`` nel Flusso Cross Device, che si basa su una consegna back-channel tramite una richiesta HTTP POST alla Relying Party. L’effettivo utilizzo di ``direct_post.jwt`` è descritto di seguito in :ref:`request-uri-response`, dove la Relying Party imposta il ``response_mode`` per la transazione.
 
 .. note::

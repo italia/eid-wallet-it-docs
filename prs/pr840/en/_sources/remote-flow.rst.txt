@@ -366,6 +366,9 @@ The request and its parameters are defined in Section number 5 (Authorization Re
 
 
 .. note::
+  In the IT Wallet, legacy Relying Parties using an ``https`` URI as ``client_id`` implicitly follow the OpenID Federation client identifier prefix (``openid_federation``). Their trust is established and validated through trust chain resolution, which is treated as equivalent to that of statically trusted (pre-registered) clients as defined in [:rfc:`6749`], for backward compatibility.
+
+.. note::
   Although the ``response_modes_supported`` field references `JARM`_ to ensure JARM-level interoperability for the Authorization Response by keeping a JWT based format for front-channel redirects such as ``form_post.jwt`` in the Same Device Flow, the Relying Party adopts ``direct_post.jwt`` for the Cross Device Flow, which relies on back-channel delivery using an HTTP POST request to the Relying Party. The actual use of ``direct_post.jwt`` is introduced below, in :ref:`request-uri-response`, where the Relying Party sets the ``response_mode`` for the transaction.
 
 .. note::
