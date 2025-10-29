@@ -112,7 +112,8 @@ Di seguito un esempio non normativo di PAR:
     OAuth-Client-Attestation: eyJhbGciOiJFUzI1NiIsImtp…
     OAuth-Client-Attestation-PoP: eyJhbGciOiJFUz…
 
-    request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3dhbGxldC5leGFtcGxlLm9yZy9pbnN0YW5jZS8xMjM0NSIsImF1ZCI6Imh0dHBzOi8vcGlkLXByb3ZpZGVyLmV4YW1wbGUub3JnIiwibmJmIjoxNzUzNTU1NDAwLCJleHAiOjE3NTM1NTU3MDAsImlhdCI6MTc1MzU1NTQwMCwianRpIjoiYWFjNDVkZGMtY2ZiOC00OTNlLWI2NmItZTQ5ZDY4ZDVhNzVhIiwiY2xpZW50X2lkIjoiaHR0cHM6Ly93YWxsZXQuZXhhbXBsZS5vcmcvaW5zdGFuY2UvMTIzNDUiLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJxdWVyeSIsInJlZGlyZWN0X3VyaSI6Imh0dHBzOi8vd2FsbGV0LmV4YW1wbGUub3JnL2NhbGxiYWNrIiwic3RhdGUiOiJhMWIyYzNkNGU1ZjY3ODkwIiwiY29kZV9jaGFsbGVuZ2UiOiJxampqUDdmaC1FdEFWcjJMWGU2ZzZwZi1LYVRGeDl6WmhIVGFHN3VIYnBvIiwiY29kZV9jaGFsbGVuZ2VfbWV0aG9kIjoiUzI1NiIsImF1dGhvcml6YXRpb25fZGV0YWlscyI6W3sidHlwZSI6Im9wZW5pZF9jcmVkZW50aWFsIiwiY3JlZGVudGlhbF9jb25maWd1cmF0aW9uX2lkIjoiZGNfc2Rfand0X1BJRF9hbHQyIiwiY3JlZGVudGlhbF9kZWZpbml0aW9uIjp7InR5cGUiOlsiVmVyaWZpYWJsZUNyZWRlbnRpYWwiLCJQZXJzb25JZGVudGlmaWNhdGlvbkRhdGEiXSwiY3JlZGVudGlhbFN1YmplY3QiOnt9fX0seyJ0eXBlIjoiaXRfbDIrZG9jdW1lbnRfcHJvb2YiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJjaGFsbGVuZ2VfbWV0aG9kIjoibXJ0ZCtpYXMiLCJjaGFsbGVuZ2VfcmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly93YWxsZXQuZXhhbXBsZS5vcmcvbDJwbHVzLWNhbGxiYWNrIn1dfQ.signature
+    client_id=47b982369791d08003a7283f059cb0d1&
+    request=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmODU1NWNlYi1jNjVjLTQwMjUtOTM3OC1iNjY3MmI2MTQ5YWYiLCJhdWQiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImlhdCI6MTcxNTg0MjU2MCwiZXhwIjoxNzE1ODQyODYwLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlc3BvbnNlX21vZGUiOiJmb3JtX3Bvc3Quand0IiwiY2xpZW50X2lkIjoiNDdiOTgyMzY5NzkxZDA4MDAzYTcyODNmMDU5Y2IwZDEiLCJpc3MiOiI0N2I5ODIzNjk3OTFkMDgwMDNhNzI4M2YwNTljYjBkMSIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJjb2RlX2NoYWxsZW5nZSI6IkU5TWVsaG9hMk93dkZyRU1USmd1Q0hhb2VLMXQ4VVJXYnVHSlNzdHctY00iLCJjb2RlX2NoYWxsZW5nZV9tZXRob2QiOiJTMjU2Iiwic2NvcGUiOiJwaWQiLCJhdXRob3JpemF0aW9uX2RldGFpbHMiOlt7InR5cGUiOiJvcGVuaWRfY3JlZGVudGlhbCIsImNyZWRlbnRpYWxfY29uZmlndXJhdGlvbl9pZCI6ImRjX3NkX2p3dF9waWQifSx7InR5cGUiOiJpdF9sMitkb2N1bWVudF9wcm9vZiIsIm11bHRpX3N0ZXBfbWV0aG9kIjoibXJ0ZCtpYXMiLCJpZHBoaW50aW5nIjoiaHR0cHM6Ly9pZHAuZXhhbXBsZS5vcmciLCJtdWx0aV9zdGVwX3JlZGlyZWN0X3VyaSI6Imh0dHBzOi8vc3RhcnQud2FsbGV0LmV4YW1wbGUub3JnL2NoYWxsZW5nZSJ9XSwicmVkaXJlY3RfdXJpIjoiaHR0cHM6Ly9zdGFydC53YWxsZXQuZXhhbXBsZS5vcmcifQ.AuthRequestSign456_NoKidJWTSignature-abc123def456ghi789jkl012mno345pqr678stu901vwx234yz567
 
 Fase 2: Autenticazione Primaria
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -191,13 +192,33 @@ Il Server di Autorizzazione DEVE fornire un JWT firmato contenente i requisiti d
      - string
      - OBBLIGATORIO. Metodo HTTP per la richiesta di inizializzazione MRTD PoP. DEVE essere ``POST``.
 
+Un esempio non normativo è riportato di seguito:
+
+.. code-block:: http
+
+    HTTP/1.1 302 Found
+    Location: https://start.wallet.example.org/challenge? challenge_info=eyJhbGciOiJSUzI1NiIsInR5cCI6Im1ydGQraWFzK2p3dCIsImtpZCI6ImI0YTFhNmMyZTlkNTZuOGY5YzNlN2EyYTJmNGI2Yzk3In0.eyJpc3MiOiJodHRwczovL3BpZC1wcm92aWRlci5leGFtcGxlLm9yZyIsImF1ZCI6IjQ3Yjk4MjM2OTc5MWQwODAwM2E3MjgzZjA1OWNiMGQxIiwiaWF0IjoxNzUzNTU1MzU4LCJleHAiOjE3NTM1NTU2NTgsInN0YXR1cyI6InJlcXVpcmVfaW50ZXJhY3Rpb24iLCJ0eXBlIjoibXJ0ZCtpYXMiLCJtcnRkX2F1dGhfc2Vzc2lvbiI6Ind4cm9WckJZMk1DcTRkRE5HWEFDUyIsInN0YXRlIjoiZnlaaU9MOUxmMkNlS3VOVDJKenhpTFJEaW5rMHVQY2QiLCJtcnRkX3BvcF9qd3Rfbm9uY2UiOiJub25jZTEiLCJodHUiOiJodHRwczovL2Vkb2MtcHJvb2YvaW5pdCIsImh0bSI6IlBPU1QifQ.i6p_FN7qNNawyL4KnOV1r8FrNVjzd-7Ve1wEGASHNnlXwuJ1f216v0Ml_KpVrq9yXkmOo_M2xZwih2SlHVfrzkuG3Pn7LWRL7dsyCtqEY2e58rFHjCa2miBnnKr0NU4wcBMMYe2_qKCOkA7SOa7usNTBluBLMQ28GfiMbr3tcpfpM4rD0POKQcfijvNkNbh-VdOxM8GdHb6IQO_xfpsaSzd8cc0k5yIYCWjDTeINVKebIz4m9Rm2JStvRrWUq8OCqkv-8dTJH9q-JXx0PzJC998RMwe6tqSL-kkE3dZLWwCJdP8Z7bITtowU49rEe-AkrGxVma4ANPq317umEfUwmw
+
+Il server di autorizzazione DEVE:
+
+- Generare un identificativo univoco della challenge con entropia sufficiente (minimo 128 bit) per la sicurezza crittografica.
+- Creare un MRTD Proof JWT con header (``alg``, ``typ``, ``kid``) e parametri di payload appropriati (come definiti nella tabella sopra).
+- Firmare MRTD proof JWT utilizzando la sua chiave privata con l'algoritmo crittografico scelto. Vedere la sezione :ref:`algorithms:Algoritmi Crittografici`.
+- Generare una URL di reindirizzamento, che punta ad una universal link dell'istanza del wallet.
+- Impostare il timeout di reindirizzamento per evitare attese indefinite e gestire gli scenari di timeout.
+- Richiedere opzionalmente le informazioni MRZ direttamente al Registro Nazionale CIE utilizzando il codice identificativo fiscale dell'utente autenticato.
+- Mantenere la correlazione di sessione tra il risultato LoA3 e la verifica di verifica del documento.
+
 L'Istanza del Wallet DEVE:
 
-	- Validare la firma JWT utilizzando la chiave pubblica del Provider PID ottenuta tramite valutazione di fiducia.
-	- Verificare che il campo ``status`` sia impostato a "require_interaction".
-	- Verificare che il tipo di autenticazione corrisponda al valore atteso ``mrtd+ias``.
-	- Estrarre HTTP target URI (``htu``) e metodo (``htm``) per lo step successivo.
-	- Gestire errori di validazione JWT e di rete, e fornire feedback utente con meccanismi di retry appropriati.
+- Validare la firma JWT utilizzando la chiave pubblica del Provider PID ottenuta tramite valutazione di fiducia.
+- Verificare che il claim ``aud`` corrisponda al suo ``client_id``.
+- Verificare che i claim ``iat`` ed ``exp`` indichino che il token abbia una data di emissione corretta e non sia scaduto.
+- Verificare che il campo ``status`` sia impostato a "require_interaction".
+- Verificare che il tipo di autenticazione corrisponda al valore atteso ``mrtd+ias``.
+- Estrarre HTTP target URI (``htu``) e metodo (``htm``) per lo step successivo.
+- Gestire errori di validazione JWT e di rete, e fornire feedback utente con meccanismi di retry appropriati.
+- Estrarre i parametri di correlazione (``mrtd_auth_session``, ``state``, ``mrtd_pop_jwt_nonce``) per le richieste successive.
 
 Richiesta MRTD PoP
 """""""""""""""""""
@@ -236,18 +257,18 @@ Di seguito un esempio non normativo di una Richiesta MRTD PoP:
 
 **L'Istanza del Wallet DEVE:**
 
-	- Validare la firma JWT di Prova MRTD utilizzando la chiave pubblica del Provider PID.
-	- Verificare che il claim JWT ``aud`` corrisponda al suo ``client_id``.
-	- Assicurare che il claim JWT ``exp`` indichi che il token non è scaduto.
-	- Estrarre i valori ``mrtd_auth_session`` e ``mrtd_pop_jwt_nonce`` per correlazione.
-	- Includere Wallet Attestation valida secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-	- Gestire errori di rete e implementare meccanismi di retry appropriati.
+- Validare la firma JWT di Prova MRTD utilizzando la chiave pubblica del Provider PID.
+- Verificare che il claim JWT ``aud`` corrisponda al suo ``client_id``.
+- Assicurare che il claim JWT ``exp`` indichi che il token non è scaduto.
+- Estrarre i valori ``mrtd_auth_session`` e ``mrtd_pop_jwt_nonce`` per correlazione.
+- Includere Wallet Attestation valida secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+- Gestire errori di rete e implementare meccanismi di retry appropriati.
 
 **Il Servizio MRTD PoP DEVE:**
 
-	- Validare la Wallet Attestation secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
-	- Verificare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
-	- Validare che il parametro ``mrtd_pop_jwt_nonce`` corrisponda a quello emesso nello step precedente.
+- Validare la Wallet Attestation secondo `OAUTH-ATTESTATION-CLIENT-AUTH`_.
+- Verificare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+- Validare che il parametro ``mrtd_pop_jwt_nonce`` corrisponda a quello emesso nello step precedente.
 
 Il Servizio MRTD PoP PUÒ richiedere le informazioni MRZ (numero documento, data di nascita, data di scadenza, cittadinanza e genere) direttamente al Registro Nazionale CIE utilizzando il codice fiscale dell'Utente autenticato. In questo caso, il Servizio MRTD PoP è in grado di verificare se l'Utente autenticato possiede una CIE valida e se non è il caso, DEVE inviare una Risposta di Errore HTTP con codice di errore HTTP ``access_denied``.
 
@@ -337,24 +358,25 @@ Di seguito un esempio non normativo di una Risposta MRTD PoP:
 
 **Il Servizio MRTD PoP DEVE:**
 
-	- Generare dati di challenge crittograficamente sicuri per validazione ``MRTD+IAS`` con entropia sufficiente (da utilizzare nel protocollo Anti-Cloning Internal Authentication dall'Istanza del Wallet), memorizzandoli con tempo di scadenza appropriato. Inoltre, il Servizio MRTD PoP DEVE assicurare unicità del challenge per prevenire attacchi di riutilizzo.
-	- Creare un nuovo ``mrtd_pop_nonce`` unico per lo step successivo per prevenire attacchi replay.
-	- Validare continuità di sessione assicurando che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
-	- Restituire stato HTTP *202 Accepted* per indicare iniziazione di elaborazione asincrona.
-	- Includere header Content-Type appropriato (``application/json; charset=utf-8``).
-	- Gestire errori di servizio e restituire risposte di errore appropriate.
-	- Estrarre e validare informazioni MRZ se fornite da servizi di registro esterni.
+- Generare dati di challenge crittograficamente sicuri per validazione ``MRTD+IAS`` con entropia sufficiente (da utilizzare nel protocollo Anti-Cloning Internal Authentication dall'Istanza del Wallet), memorizzandoli con tempo di scadenza appropriato. Inoltre, il Servizio MRTD PoP DEVE assicurare unicità del challenge per prevenire attacchi di riutilizzo.
+- Creare un nuovo ``mrtd_pop_nonce`` unico per lo step successivo per prevenire attacchi replay.
+- Validare continuità di sessione assicurando che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+- Restituire stato HTTP *202 Accepted* per indicare iniziazione di elaborazione asincrona.
+- Includere header Content-Type appropriato (``application/json; charset=utf-8``).
+- Gestire errori di servizio e restituire risposte di errore appropriate.
+- Estrarre e validare informazioni MRZ se fornite da servizi di registro esterni.
 
 **L'Istanza del Wallet DEVE:**
 
-	- Validare stato risposta HTTP (*202 Accepted*) e content type.
-	- Analizzare risposta JSON e validare parametri richiesti (``challenge``, ``mrtd_pop_nonce``).
-	- Estrarre dati di challenge per validazione crittografica del documento.
-	- Memorizzare nuovo valore ``mrtd_pop_nonce`` in modo sicuro per richieste di validazione successive.
-	- Validare informazioni MRZ opzionali se presenti nella risposta.
-	- Gestire errori, fornendo feedback utente relativo.
-	- Memorizzare dati di challenge temporaneamente in memoria sicura (non storage persistente).
-	- Preparare sessione di lettura NFC.
+- Validare stato risposta HTTP (*202 Accepted*) e content type.
+- Analizzare risposta JSON e validare parametri richiesti (``challenge``, ``mrtd_pop_nonce``).
+- Estrarre dati di challenge per validazione crittografica del documento.
+- Memorizzare nuovo valore ``mrtd_pop_nonce`` in modo sicuro per richieste di validazione successive.
+- Validare informazioni MRZ opzionali se presenti nella risposta.
+- Estrarre HTTP target URI (``htu``) e metodo (``htm``) per lo step successivo.
+- Gestire errori, fornendo feedback utente relativo. 
+- Memorizzare dati di challenge temporaneamente in memoria sicura (non storage persistente).
+- Preparare sessione di lettura NFC.
 
 L'Istanza del Wallet esegue lettura e validazione di documento elettronico basata su NFC, poi invia l'evidenza al Provider PID per verifica finale e correlazione di identità con il risultato di autenticazione LoA3.
 
@@ -513,15 +535,18 @@ Di seguito un esempio non normativo di una Richiesta di Validazione MRTD PoP:
 
 **Il Servizio MRTD PoP DEVE:**
 
-	- Validare Wallet Instance Attestation secondo le specifiche IT-Wallet.
-	- Verificare firma OAuth-Client-Attestation-PoP.
-	- Validare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
-	- Verificare che il ``mrtd_pop_nonce`` corrisponda al valore inviato nella risposta precedente.
-	- Analizzare e validare la firma e struttura ``mrtd_validation_jwt``.
-	- Validare autenticità del documento utilizzando standard `ICAO 9303`_.
-	- Verificare risposta challenge Anti-Cloning.
-	- Controllare validità del documento (stato non di revoca).
-	- Controllare il binding tra NIS ottenuto dall'Applicazione IAS e codice fiscale dell'Utente letto dall'Applicazione MRTD per assicurare che entrambi i valori provengano dallo stesso chip.
+- Validare Wallet Instance Attestation secondo le specifiche IT-Wallet.
+- Verificare firma OAuth-Client-Attestation-PoP.
+- Validare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+- Verificare che il ``mrtd_pop_nonce`` corrisponda al valore inviato nella risposta precedente.
+- Analizzare e validare la firma (utilizzando la chiave pubblica dell'istanza del Wallet) e la struttura del ``mrtd_validation_jwt``.
+- Estrarre e verificare le evidence del documento dal ``mrtd_validation_jwt``.
+- Validare autenticità del documento utilizzando standard `ICAO 9303`_.
+- Verificare risposta challenge Anti-Cloning.
+- Convalida delle prove crittografiche e delle catene di certificati del documento.
+- Eseguire la correlazione dell'identità tra i dati del documento e il risultato dell'autenticazione LoA3.
+- Controllare validità del documento (stato non di revoca).
+- Controllare il binding tra NIS ottenuto dall'Applicazione IAS e codice fiscale dell'Utente letto dall'Applicazione MRTD per assicurare che entrambi i valori provengano dallo stesso chip.
 
 Risposta di Validazione MRTD PoP
 """""""""""""""""""""""""""""""""
@@ -563,16 +588,33 @@ Di seguito un esempio non normativo di una Risposta di Validazione MRTD PoP:
       "redirect_uri":"https://pid-provider.example.org/cb"
     }
 
+**Il servizio MRTD PoP DEVE:**
+
+- Generare un nuovo nonce ``mrtd_val_pop_nonce`` per la conferma finale basata su browser.
+- Restituire lo stato HTTP 202 per indicare il completamento dell'elaborazione asincrona.
+
+**L'istanza Wallet DEVE:**
+
+- Validare la response.
+- Estrarre i parametri ``mrtd_val_pop_nonce`` e ``redirect_uri`` per preparare la successiva richiesta GET basata su browser.
+
 Conferma Finale Basata su Browser
 """"""""""""""""""""""""""""""""""
 
-Dopo validazione MRTD PoP con successo, l'Istanza del Wallet DEVE reindirizzare l'User Agent al ``challenge_redirect_uri`` specificato nell'Authorization Details Object iniziale, includendo il ``mrtd_val_pop_nonce`` come parametro query:
+Dopo validazione MRTD PoP con successo, l'Istanza del Wallet DEVE reindirizzare l'User Agent al ``challenge_redirect_uri`` specificato nell'Authorization Details Object iniziale, includendo il ``mrtd_val_pop_nonce`` e ``mrtd_auth_session`` come parametri query:
 
 .. code-block:: text
 
     https://pid-provider.example.org/l2plus-callback?mrtd_val_pop_nonce=0f2bff024317345b6927ce17e776361d_signed&mrtd_auth_session=wxroVrBY2MCq4dDNGXACS
 
 L'Istanza del Wallet DEVE validare che il ``mrtd_val_pop_nonce`` corrisponda al valore ricevuto dalla Risposta di Validazione MRTD PoP.
+
+**Il server di autorizzazione DEVE:**
+
+- Verificare che ``mrtd_val_pop_nonce`` corrisponda al valore inviato nella verification response e che sia firmato utilizzando la chiave privata dell'istanza Wallet.
+- Verificare che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
+- Verificare che tutti gli step di autenticazione (LoA3 + MRTD PoP) siano stati completati correttamente (inclusa la correlazione di identità recuparata tramite autenticazione LoA3 e quella presente nel documento).
+- Generare l'authorization code finale.
 
 Fase 4: Risposta di Autorizzazione OAuth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -598,6 +640,12 @@ Errori Risposta MRTD PoP
 
    * - **Codice Errore**
      - **Descrizione**
+   * - **invalid_client**
+     - Autenticazione Istanza del Wallet fallita.
+   * - **invalid_request**
+     - L'HTTP request non è valida o è malformata (struttura non corretta, dati mancanti, ecc.) oppure i parametri di sessione richiesti sono mancanti o non validi.
+   * - **access_denied**
+     - L'utente non è idoneo per l'autenticazione eID Substantial con il meccanismo di verifica MRTD (ad esempio, CIE non trovata nel registro CIE)
    * - **temporarily_unavailable**
      - Servizio di validazione documento o servizio Registro CIE è temporaneamente non disponibile.
 
@@ -617,16 +665,23 @@ Errori Risposta di Validazione MRTD PoP
      - Richiesta di Validazione HTTP o JWT di Validazione è invalida o malformata (dovuto a struttura malformata, dati mancanti, fallimento firma, timeout richiesta, ecc.).
    * - **access_denied**
      - Autenticazione utente o validazione documento fallita.
+   * - **invalid_document**
+     - La convalida crittografica del documento non è riuscita (convalida SOD, binding NIS/CF, stato di revoca, ecc.).
+   * - **id_matching_failed**
+     - La corrispondenza tra l'identità ottenuta durante l'autenticazione primaria (eID LoA3) e quella ottenuta dalla PoP del Documento Elettronico non è riuscita.
+   * - **temporarily_unavailable**
+     - Il servizio di validazione dei documenti o il servizio di registro CIE sono temporaneamente non disponibili.
 
 Mappatura Codici di Stato HTTP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Le risposte di errore DEVONO utilizzare codici di stato HTTP appropriati:
 
-	- **400 Bad Request**: Per errori ``invalid_request``.
-	- **401 Unauthorized**: Per errori ``invalid_client``.
-	- **403 Forbidden**: Per errori ``access_denied``.
-	- **503 Service Unavailable**: Per errori ``temporarily_unavailable``.
+- **400 Bad Request**: Per errori ``invalid_request``.
+- **401 Unauthorized**: Per errori ``invalid_client``.
+- **403 Forbidden**: Per errori ``access_denied``.
+- **422 Unprocessable Entity**: Per errori ``invalid_document`` o ``id_matching_failed``.
+- **503 Service Unavailable**: Per errori ``temporarily_unavailable``.
 
 Considerazioni di Sicurezza
 ---------------------------
@@ -638,6 +693,18 @@ Il parametro ``mrtd_auth_session`` serve come meccanismo di correlazione primari
 
 Ogni step di autenticazione DEVE essere crittograficamente legato alla sessione OAuth tramite validazione JWT firmata per prevenire attacchi di session fixation, session confusion, e sostituzione di identità. Il Server di Autorizzazione DEVE mantenere la correlazione tra l'identità LoA3 e il proof del documento all'interno di un singolo contesto di sessione.
 
+In particolare, ogni fase di autenticazione DEVE convalidare la correlazione tra:
+
+- Coerenza dell'identificativo di sessione in tutte le fasi del protocollo.
+- Attributi di identità LoA3 associati al contesto della sessione.
+- Correlazione delle prove documentali con l'identità autenticata.
+- Validazione della sequenza temporale per prevenire attacchi fuori ordine.
+
+Quando i componenti operano al di fuori dei confini del provider PID, DEVONO essere implementate le seguenti misure di sicurezza aggiuntive:
+
+- Comunicazione sicura tra servizi (ad esempio, tramite pinning del certificato, TLS reciproco, ecc.).
+- Crittografia e integrità dei dati sensibili della sessione e/o delle informazioni di identità personale (ad esempio, utilizzando token JWE/JWS).
+
 .. _fig_eID_MRTD_Security_Controls:
 .. plantuml:: plantuml/l2plus-security-controls.puml
     :width: 99%
@@ -647,12 +714,26 @@ Ogni step di autenticazione DEVE essere crittograficamente legato alla sessione 
 Generazione Challenge Crittografico
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Il Servizio MRTD PoP DEVE generare challenge crittograficamente sicuri con entropia sufficiente per la validazione del documento. I valori di challenge DEVONO essere unici e NON DEVONO essere riutilizzati attraverso sessioni diverse o tentativi di autenticazione. L'algoritmo di generazione challenge DOVREBBE incorporare l'identificatore ``mrtd_auth_session`` e timestamp per assicurare binding crittografico appropriato.
+Il Servizio MRTD PoP DEVE generare challenge crittograficamente sicuri con entropia sufficiente (minimo 256 bits) per la validazione del documento. I valori di challenge DEVONO essere unici e NON DEVONO essere riutilizzati attraverso sessioni diverse (vincolata crittograficamente al contesto specifico della sessione OAuth) o tentativi di autenticazione. L'algoritmo di generazione challenge DOVREBBE incorporare l'identificatore ``mrtd_auth_session`` e timestamp per assicurare binding crittografico appropriato.
 
 Gestione Ciclo di Vita Nonce
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ogni step nel flusso di Autenticazione eID Substantial con Verifica MRTD DEVE utilizzare valori nonce unici per prevenire attacchi replay. I valori nonce DEVONO avere tempi di scadenza appropriati e DEVONO essere invalidati dopo uso con successo. Il Server di Autorizzazione PID e il Servizio MRTD PoP DEVONO mantenere validazione nonce sincronizzata per assicurare integrità di sessione.
+
+Inoltre, ogni nonce ha uno scopo di sicurezza specifico:
+- ``mrtd_pop_jwt_nonce`` DEVE essere correlato con il JWT di prova MRTD.
+- ``mrtd_pop_nonce`` DEVE:
+
+ - Essere crittograficamente indipendente da ``mrtd_pop_jwt_nonce``.
+ - Incorporare ``mrtd_pop_jwt_nonce`` come input per mantenere la catena di fiducia.
+ - Utilizzare una diversa sorgente di entropia per prevenire attacchi di correlazione.
+
+- ``mrtd_val_pop_nonce`` DEVE:
+
+ - Essere firmato dalla chiave privata dell'istanza del wallet.
+ - Includere la convalida del timestamp anti-replay.
+ - Essere verificato rispetto all'intera catena di nonce per verificarne l'integrità.
 
 Controlli di Sicurezza
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -708,6 +789,18 @@ I seguenti controlli di sicurezza DEVONO essere implementati nel protocollo:
      - Fase 3
    * - **SC14**
      - Il Servizio MRTD PoP verifica l'integrità dei dati estratti dalla CIE controllando gli elementi SOD (sia IAS che MRTD) e gli hash correlati.
+     - Fase 3
+   * - **SC15**
+     - Il server di autorizzazione PID verifica l'esistenza e la coerenza del codice identificativo del contribuente dell'utente estratto dall'asserzione eID LoA3, interagendo con la Fonte Autentica (AS_NIS).
+     - Fase 3
+   * - **SC16**
+     - Il servizio PoP MRTD verifica che l'identità dimostrata durante l'interazione IAS sia correlata all'identità dimostrata durante l'interazione MRTD, interagendo con la Fonte Autentica (AS_NIS).
+     - Fase 3
+   * - **SC17**
+     - Il servizio MRTD PoP verifica che l'identità provata durante la fase eID LoA3 sia correlata all'identità provata durante la fase MRTD PoP.
+     - Fase 3
+   * - **SC18**
+     - Il servizio MRTD PoP verifica che il CIE utilizzato durante la fase MRTD PoP non sia scaduto né revocato interagendo con il Registro nazionale CIE.
      - Fase 3
 
 Requisiti implementativi aggiuntivi:

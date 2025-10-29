@@ -12,7 +12,7 @@ The Digital Credential Catalogue aims to:
   2. Standardize the technical and functional description of Digital Credentials.
   3. Enable interoperability between different Issuers and Relying Parties.
   4. Simplify the integration process for Wallet Providers and Relying Parties.
-  5. Ensure trust in the ecosystem through certified information.
+  5. Ensure trust in the ecosystem through verifiable and trustworthy information.
   6. Provide transparency on the ecosystem of available Digital Credentials.
 
 

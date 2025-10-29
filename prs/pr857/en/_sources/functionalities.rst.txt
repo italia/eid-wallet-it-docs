@@ -146,9 +146,9 @@ Issuance from a Touchpoint of the Authentic Source
 Below are illustrated the User Experience requirements for the issuance of an Electronic Attribute Attestation from the Catalog that the Wallet Solution Provider MUST guarantee through their own Wallet Solution: 
 
 - The User interacts with the Engagement Button clearly displayed in the Touchpoint interface; 
-- The User selects the Wallet Solution with which to proceed, through an interface that SHOULD follow the directions and functionalities described for the *Selection Page* in the :ref:`functionalities:Authentication` section; 
-- (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that SHOULD follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; 
-- (*cross-device only*) the User displays a message inviting them to continue on their chosen Wallet Instance, through an interface that SHOULD follow the directions and functionalities described for the *Waiting Page* in the :ref:`functionalities:Authentication` section; 
+- The User selects the Wallet Solution with which to proceed, through an interface that MUST follow the directions and functionalities described for the *Selection Page* in the :ref:`functionalities:Authentication` section; 
+- (*cross-device only*) the User scans the QR code that invokes the opening of their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *QR Code Page* in the :ref:`functionalities:Authentication` section; 
+- (*cross-device only*) the User displays a message inviting them to continue on their chosen Wallet Instance, through an interface that MUST follow the directions and functionalities described for the *Waiting Page* in the :ref:`functionalities:Authentication` section; 
 - The User accesses their Wallet Instance using the unlock method previously set; 
 - The User views the PID data, if required for the request of the Electronic Attestation of Attributes, the name of the related Electronic Attestation of Attributes Provider, and any related information policy. The User gives their consent to proceed, presenting their PID data to the Electronic Attestation of Attributes Provider, or cancels the operation; 
 - The User views any additional information on requirements and/or limitations related to obtaining the Electronic Attestation of Attributes; 
@@ -167,10 +167,10 @@ The EAAs obtained within the Wallet Instance SHOULD be displayed in a list withi
 
 - The EAA MUST be displayed correctly across all devices, ensuring a consistent experience on screens of varying sizes;
 - The name of the EAA MUST be clearly visible and always displayed in both the Detail View and the Preview View;
-- The EAA, both in the Preview View and the Detailed View, MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. The Preview View MAY also include additional Attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider. The Detailed View MAY provide specific details about the state if invalid (e.g., the reason why the EAA is revoked);
+- The EAA, both in the Preview View and the Detailed View, MUST display its status if different from valid to provide transparency on its lifecycle and MAY display it if valid. The Preview View MAY also include additional Attributes to enhance the User Experience and management; for example, it MAY display the name or logo of the Electronic Attestation of Attributes Provider or the PID Provider. The Detailed View MUST include the same information of the Preview View and give a complete representation of all the other Attributes, such as the name of the Electronic Attestation of Attributes Provider or the name of the Authentic Source; the Detailed View MAY provide specific details for example about use case scenario or the reason of invalid state of the EAA;
 - The EAA MUST include Action Buttons in the Detail View to enable lifecycle management and allow the User to revoke or to update a EAA at any time (see :ref:`functionalities:Management of Electronic Attestations`); 
 - The EAA MUST be an interactive element, for the User to access services provided by Relying Parties in digital and proximity contexts (see :ref:`functionalities:Presentation of Electronic Attestations`); 
-- The EAA MAY be displayed in a card format in their Preview View, in line with approaches already used by other digital wallets in the market, to mirror the appearance of a corresponding physical document. When applicable, the digital nature of the document MAY be indicated, such as by labeling it as a "digital version" in the layout; 
+- The EAA MAY be displayed in a card format in their Preview View, in line with approaches already used by other digital wallets in the market, to mirror the appearance of a corresponding physical document;
 - The EAA MUST display the same information in the Detail View as shown in the Preview View and MAY include additional details; 
 - The EAA MUST display a method of assistance (see :ref:`functionalities:User Assistance`); 
 - The EAA layout in the Preview View MUST be optimized for scalability and usability, especially when multiple EAAs are displayed on the same screen; 
@@ -238,6 +238,7 @@ Below are the User Experience requirements related to both methods that the Wall
 **Same-Device Mode**
 
 - The User clicks the Engagement Button provided on the Relying Party's Touchpoint;
+- The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
 - The User accesses their Wallet Instance using the unlock method previously set;
 - The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory PID and/or EAA data (Selective Disclosure). The User provides consent to proceed or cancels the operation;
 - The User authorizes the operation using the unlock method previously set;
@@ -249,8 +250,8 @@ In case of errors using the Wallet Instance, the Wallet Provider MUST guarantee 
 **Cross-Device Mode**
 
 - The User clicks the Engagement Button provided on the Touchpoint of the Relying Party while accessing the service from a different device than the one where the Wallet Instance is installed;
-- The User accesses the desired Wallet Instance from the device where it is installed, using the unlock method previously set;
-- The User scans the QR Code provided by the Relying Party using their Wallet Instance;
+- The User selects the Wallet Solution to proceed with, through an interface that MUST follow the instructions and functionalities provided for the Selection Page described in the :ref:`functionalities:Authentication` section;
+- The User scans the QR Code provided by the Relying Party using their Wallet Instance or the camera on their device; the QR code interface MUST follow the instructions and functionalities provided for the QR Code Page described in the :ref:`functionalities:Authentication` section;
 - The User reviews the requested PID and/or EAA data, the name of the requesting Relying Party, and any related policy. The User decides whether to present any non-mandatory personal data (Selective Disclosure). The User provides consent to proceed or cancels the operation.
 - The User authorizes the operation using the unlock method previously set;
 - The User receives confirmation of the successful presentation within the Wallet Instance;
@@ -583,7 +584,13 @@ Each Electronic Attestation can be either valid or invalid, with corresponding i
 
 - **Valid**: Valid Electronic Attestations MUST be usable and therefore presentable. This category also includes Electronic Attestations that are nearing expiration. If an Electronic Attestation is about to expire, the Wallet Instance SHOULD inform the User with adequate advance notice to allow sufficient time to request its reissuance or, if necessary, revoke it.
 
-- **Invalid**: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the Wallet Instance MUST inform the User of the invalid status and SHOULD give the reason why. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Solution MAY implement mechanisms to restrict access to the Detailed View of that Electronic Attestation. This is intended to encourage the User to update or delete the Electronic Attestation by providing appropriate informational text and a Call to Action.
+- **Invalid**: Invalid Electronic Attestations MUST NOT be usable or presentable. This category includes expired or revoked Electronic Attestations. In such cases, the Wallet Instance MUST inform the User of the invalid status and SHOULD give the reason why. If an Electronic Attestation is no longer valid and cannot be used in any scenario, the Wallet Instance MUST implement mechanisms to update or delete the Electronic Attestation by providing appropriate Call to Action.
+
+Below are the functional requirements supporting the User Experience regarding the update of the Electronic Attestation that the Electronic Attestation Provider MUST guarantee through the Wallet Solution:
+- The User sees in the Electronic Attestation Preview View that its status is not valid;
+- The User sees a message in the Detail View informing them of the new status of the Electronic Attestation and CAN find out more information;
+- The User sees any additional information on the requirements and/or limitations relating to the status of the Electronic Attestation of Attributes and CAN close the message or proceed with any action requested by the Electronic Attestation Provider;
+- The User sees specific Call To Action buttons in the Detail View to delete the Electronic Attestation or update it if no longer valid.
 
 Revocation of Electronic Attestations
 """"""""""""""""""""""""""""""""""""""
@@ -602,6 +609,12 @@ Revocation is the procedure that turns an Electronic Attestation from a valid st
 	- The physical document corresponding to the Electronic Attestation has been revoked by the competent authorities;
 	- The minimum security and/ or reliability requirements for one or more involved parties are no longer met.
 	- The User's device no longer meets the minimum security requirements (rooted or jailbroken).
+
+Below are the User Experience requirements that the Wallet Provider MUST guarantee via their Wallet Solution:
+- The User opens the Detailed view of the Electronic Attestation that they want to revoke;
+- The User selects the Call to Action to revoke the Electronic Attestation;
+- The User reviews all information relevant to the action being performed and either gives their consent to proceed or denies consent to cancel the operation;
+- The User sees the successful outcome of the revocation.
 
 History of Electronic Attestations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -647,8 +660,9 @@ Below are the functional and User Experience requirements that the Wallet Provid
 - The User is informed that deactivating the Wallet Instance will invalidate previously obtained Electronic Attestations;
 - The User confirms the action to proceed with deactivation, or cancels the operation;
 - The User receives confirmation of successful deactivation;
-- The User is notified that the Wallet Instance is inactive when logging in again;
-- The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the `Activation of the Wallet Instance`_ section.
+- The User is notified that the Wallet Instance is inactive when logging in again.
+
+The User has the ability to reactivate the Wallet Instance by re-downloading the app from the app store (if uninstalled) and/or by following the activation process again. For further details, please refer to the `Activation of the Wallet Instance`_ section.
 
 Once the Wallet Instance is reactivated, Electronic Attestations of Attributes can be re-obtained by starting the issuance or restore process again. For more details, please refer to sections `Issuance of Electronic Attestations of Attributes`_ and `Backup and Restore of Electronic Attestation of Attributes`_.
 
@@ -703,11 +717,17 @@ Issuance of Electronic Attestations of Attributes Errors
   * - Error type
     - Actor in charge
   * - The Wallet Instance and/or the PID are not active
-    - Wallet Provider
+    - Wallet Instance
   * - The service for obtaining an Electronic Attestation of Attributes is unavailable (e.g. technical errors)
     - Electronic Attestations of Attributes Provider, Authentic Source
   * - The User is unable to obtain a specific Electronic Attestation of Attributes in their Wallet Instance (e.g. no eligibility, invalid or expired physical version, etc.)
     - Authentic Source
+  * - The service for obtaining an Electronic Attestation of Attributes cannot be processed within the defined time interval 
+    - Electronic Attestations of Attributes Provider 
+  * - The service for obtaining an Electronic Attestation of Attributes cannot be completed synchronously. The User is requested to wait until the Attestation becomes available (deferred flow) 
+    - Electronic Attestations of Attributes Provider, Authentic Source 
+  * - The service for obtaining an Electronic Attestation of Attributes cannot be processed as the request exceeds the permitted limit (e.g. multiple Attestations requested at once) 
+    - Electronic Attestations of Attributes Provider 
 
 Presentation of Electronic Attestations Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -719,7 +739,7 @@ Presentation of Electronic Attestations Errors
   * - Error type
     - Actor in charge
   * - The User does not hold the required Attributes contained in one or more Electronic Attestations within their Wallet Instance to access a specific service
-    - Wallet Provider
+    - Wallet Instance
   * - The Wallet Provider's services or the Relying Party's services are unresponsive (e.g. technical errors or lack of connection)
     - Wallet Provider, Relying Party
 
@@ -736,6 +756,8 @@ Management of Electronic Attestations Errors
     - Electronic Attestations of Attributes Provider
   * - The service for revocation of PID is unavailable (e.g. technical errors)
     - PID Provider
+  * - The service for erasing information sent to a Relying Party is unavailable (e.g. technical errors) 
+    - Relying Party 
 
 Deactivation of the Wallet Instance Errors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
