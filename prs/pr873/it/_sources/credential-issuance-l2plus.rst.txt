@@ -364,7 +364,7 @@ Di seguito un esempio non normativo di una Risposta MRTD PoP:
 - Creare un nuovo ``mrtd_pop_nonce`` unico per lo step successivo per prevenire attacchi replay.
 - Validare continuità di sessione assicurando che il parametro ``mrtd_auth_session`` corrisponda a una sessione attiva.
 - Restituire stato HTTP *202 Accepted* per indicare iniziazione di elaborazione asincrona.
-- Includere header Content-Type appropriato (``application/json; charset=utf-8``).
+- Includere header Content-Type appropriato (``application/jwt; charset=utf-8``).
 - Gestire errori di servizio e restituire risposte di errore appropriate.
 - Estrarre e validare informazioni MRZ se fornite da servizi di registro esterni.
 
