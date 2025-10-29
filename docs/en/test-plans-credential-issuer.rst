@@ -615,7 +615,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_135
     - Data Model and lifecycle, Interoperability
     - SD-JWT Optional Credential Type Metadata Retrieval
-    - The Credential Type Metadata JSON Document is successfully retrieved either directly from the *well-known* endpoint.
+    - The Credential Type Metadata JSON Document is successfully retrieved directly from the *well-known* endpoint.
   * - CI_135a
     - Data Model and lifecycle, Interoperability
     - SD-JWT Case-Insensitive URI Matching
