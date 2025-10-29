@@ -373,7 +373,7 @@ The body of the Wallet Attestation SD-JWT contains the following claims:
       - REQUIRED. JSON object, containing the public part of an asymmetric key pair owned by the Wallet Instance.
       - :rfc:`7800`.
     * - **vct**
-      - REQUIRED. Credential type value MUST be an URN and it MUST be of the type ``urn:eudi:WalletAttestation:it:{version}`` as described in :ref:`registry:Digital Credentials Catalog`.
+      - REQUIRED. Credential type value MUST be an URN and it MUST be of the type ``urn:eudi:wallet_attestation:it:{version}`` as described in :ref:`registry:Digital Credentials Catalog`.
       - Section 3.2.2.2 `SD-JWT-VC`_.
     * - **_sd**
       - REQUIRED. JSON array containing a list of all disclusure's digests.
@@ -433,7 +433,7 @@ Below is a non-normative example of the SD-JWT Wallet Attestation header and pay
 Wallet Attestation mdoc
 """""""""""""""""""""""
 
-This description extends the MDOC-CBOR Credential Format guidelines, given in :ref:`credential-data-model:mdoc-CBOR Credential Format`, to support Wallet Attestation data representation. The Wallet Attestation MUST use ``docType`` of the form ``{Trust Anchor reverse domain}.{WalletAttestation}`` as described in :ref:`registry:Digital Credentials Catalog`.
+This description extends the MDOC-CBOR Credential Format guidelines, given in :ref:`credential-data-model:mdoc-CBOR Credential Format`, to support Wallet Attestation data representation. The Wallet Attestation MUST use ``docType`` of the form ``{Trust Anchor reverse domain}.{wallet_attestation}`` as described in :ref:`registry:Digital Credentials Catalog`.
 
 The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follows:
 
