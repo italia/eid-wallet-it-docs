@@ -274,7 +274,7 @@ A non-normative Digital Credential type metadata is provided below.
 Digital Credential Type Metadata retrieval
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In accordance with Section 6.3.3 of `SD-JWT-VC`_ the Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. 
+The Credential Type Metadata JSON Document MAY be retrieved through a *well-known* endpoint. See Section 6.3.3 of `SD-JWT-VC`_
 This endpoint, provided by the Credential Issuer, MUST have the following format: ``https://{Credential Issuer Domain}/.well-known/vct/{vct}``.
 The Endpoint returns a ``200 OK`` status code and supports ``application/json`` and ``application/jwt`` as content type.
 
