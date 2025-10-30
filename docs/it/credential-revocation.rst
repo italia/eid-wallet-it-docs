@@ -242,6 +242,44 @@ Aggiornamento dello Stato da parte dei Fornitori di Wallet
 In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE mettere a disposizione un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:e-Service PDND Credential Issuer Catalog`.
 Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Attestati Elettronici utilizzando questo endpoint.
 
+Aggiornamento dello Stato da parte delle Fonti Autentiche
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Le Fonti Autentiche gestiscono gli attributi separatamente dagli Attestati Elettronici, i quali verificano l’autenticità in modo analogo ai documenti fisici. La perdita di un documento fisico non implica la perdita dei diritti che rappresenta; significa solo che l’Utente non può dimostrarli. Tuttavia, se un Utente perde determinati diritti a causa di una grave infrazione, la Fonte Autentica revocherà gli attributi correlati. In tali casi, quando gli attributi di un Utente vengono aggiornati, le Fonti Autentiche DEVONO notificare ai Fornitori di Attestati Elettronici di aggiornare lo stato di validità di qualsiasi Attestato Elettronico che contenga tali attributi.
+
+Le Fonti Autentiche che utilizzano il Signal Hub DEVONO depositare un Signal tramite il :ref:`signal-hub-endpoint:Signal Collection e-Service` nei seguenti casi:
+
+  - Il valore di uno o più Attributi contenuti nel database della Fonte Autentica è cambiato;
+  - Lo stato di validità degli Attributi è aggiornato (revoca o sospensione).
+
+In entrambi i casi, il Signal DEVE avere ``signalType`` impostato a ``UPDATE``.
+
+I Fornitori di Attestati Elettronici DEVONO controllare periodicamente il PDND Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` per nuovi Signal. Per il flusso di processamento dei Signal, fare riferimento alla Sezione :ref:`signal-hub-endpoint:Signals Processing`. Il Fornitore di Attestati Elettronici è in grado di identificare la natura del ``UPDATE`` Signal interrogando la API `get attribute` della Fonte Autentica e ispezionando il payload della risposta, come descritto nella Sezione :ref:`authentic-source-endpoint:Get Attribute Claims`.
+
+La seguente figura illustra ad alto livello il processo di aggiornamento dello stato da parte delle Fonti Autentiche.
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/status-update-as.svg
+    :alt: Processo di aggiornamento dello stato per le Fonti Autentiche
+    :width: 100%
+
+    Processo di aggiornamento dello stato delle Fonti Autentiche
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/status-update-as.pdf
+    :alt: Processo di aggiornamento dello stato per le Fonti Autentiche
+    :width: 100%
+
+Il processo inizia con modifiche ai dati o alla validità dei dati che avvengono presso la Fonte Autentica. Le modifiche possono anche essere avviate da entità terze diverse dalla Fonte Autentica, ad esempio quando le autorità giudiziarie segnalano attività illecite.
+
+Una volta che i dati cambiano, la Fonte Autentica notifica i Fornitori di Attestati Elettronici che hanno ricevuto i dati originali utilizzando il Signal Hub. La Fonte Autentica deposita un Signal nel Signal Collection e-Service. :ref:`signal-hub-endpoint:Signal Collection e-Service`.
+
+Il Fornitore di Attestati Elettronici interroga periodicamente il Signal Hub :ref:`signal-hub-endpoint:Signal Distribution e-Service` per nuovi Signal. Quando viene trovato un nuovo Signal, il Fornitore di Attestati Elettronici lo recupera e lo processa come descritto in :ref:`signal-hub-endpoint:Signals Processing`. Quindi, il Fornitore di Attestati Elettronici aggiorna lo Stato dell’Attestato secondo la modalità definita dal meccanismo di validità. Il Fornitore di Attestati Elettronici PUÒ notificare l’Utente tramite un canale di comunicazione registrato e out-of-band.
+
+L’Istanza del Wallet, a seguito di controlli periodici dello stato di validità degli Attestati Elettronici memorizzati, riceve lo stato aggiornato. Quando lo Stato dell’Attestato viene modificato in INVALID, il Fornitore di Attestati Elettronici DEVE informare l’Utente di tale cambiamento. Nel caso in cui lo stato dell’Attestato venga modificato in UPDATE (risp. 0x03) o ATTRIBUTE_UPDATE (risp. 0x04), l’Istanza del Wallet DOVREBBE procedere alla riemissione dell’Attestato Elettronico, come descritto in :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
