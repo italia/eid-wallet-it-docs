@@ -215,6 +215,15 @@ Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettroni
       - Verificare l'autenticità dei dati.
       - Visualizzare e aggiornare lo stato di validità (revocare i loro Attestati Elettronici e, se supportato dal Fornitore di Attestati Elettronici, sospenderle).
 
+.. note::
+  Se l'Utente attiva un'altra Istanza del Wallet dello stesso Fornitore di Wallet e utilizzando la stessa Soluzione di Wallet e ottiene un nuovo PID, il PID precedente DEVE essere revocato e la precedente Istanza del Wallet DEVE passare allo stato operativo.
+
+In caso di morte dell'Utente, i Fornitori di Attestati Elettronici e il Fornitore di Wallet DEVONO garantire che gli Attestati Elettronici e le Istanze del Wallet di proprietà dell'Utente siano revocati.
+La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation:Status Update by Authentic Sources`.
+
+.. note::
+  Le versioni future della presente specifica tecnica definiranno come le informazioni verso i Fornitori di (Q)EAA e i Fornitori di Wallet vengono propagate, in accordo alla normativa nazionale. Inoltre, saranno definite procedure automatizzate per la revoca degli Attestati dovuta ad attività illecite.
+
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -226,6 +235,12 @@ Se l'Utente desidera che il Fornitore di Attestati Elettronici revochi un Attest
 
 Quando l'Attestato Elettronico revocato è il PID, il Fornitore di Attestati Elettronici DEVE inviare una notifica di questo evento all'Utente entro 24 ore.
 Per qualsiasi altro Attestato Elettronico diverso dal PID, il Fornitore di Attestati Elettronici DOVREBBE inviare una notifica di questo evento all'Utente. La notifica all'Utente PUÒ essere implementata in diversi modi, ad esempio utilizzando l'indirizzo email dell'Utente, il numero di telefono o qualsiasi altro canale di comunicazione verificato e sicuro. La notifica all'Utente DEVE includere anche tutte le informazioni sullo stato di revoca dell'Attestato Elettronico. Il metodo utilizzato per la notifica all'Utente è fuori dallo scopo del presente profilo tecnico di implementazione. Quando la revoca avviene, il Fornitore di Attestati Elettronici DEVE aggiornare di conseguenza lo stato dell'Attestato Elettronico. Quando la Notification Response inviata dal Fornitore di Attestati Elettronici viene ricevuta con successo dall'Istanza del Wallet, l'Istanza del Wallet DEVE eliminare l'Attestato Elettronico.
+
+Aggiornamento dello Stato da parte dei Fornitori di Wallet
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+In aggiunta a quanto definito in :ref:`credential-revocation:Ciclo di Vita degli Attestati Elettronici`, il Fornitore di Attestati Elettronici DEVE mettere a disposizione un servizio web (endpoint di Revoca dell'Istanza del Wallet) definito utilizzando PDND, come specificato nella Sezione :ref:`credential-issuer-endpoint:e-Service PDND Credential Issuer Catalog`.
+Il Fornitore di Wallet che per qualsiasi motivo revoca un'Istanza del Wallet DEVE inviare una notifica ai Fornitori di Attestati Elettronici utilizzando questo endpoint.
 
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
