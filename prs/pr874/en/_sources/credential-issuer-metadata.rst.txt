@@ -36,11 +36,9 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
   * - **scopes_supported**
     - JSON array containing a list of the supported *scope* values. See :rfc:`8414#section-2`.
   * - **response_modes_supported**
-    - JSON array containing a list of the supported "response_mode" values, as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. The supported values MAY be *query* and *form_post.jwt* (see `JARM`_).
+    - JSON array containing a list of the supported "response_mode" values, as specified in `OAuth 2.0 Multiple Response Type Encoding Practices <https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html>`_. The supported value MUST be *query*.
   * - **response_types_supported**
     - JSON array containing a list of the supported "response_type" values, as specified in :rfc:`8414`. The supported value MUST be *code*.
-  * - **authorization_signing_alg_values_supported**
-    - JSON array containing a list of the :rfc:`7515` supported signing algorithms (*alg* values). The values MUST be set according to Section :ref:`algorithms:cryptographic algorithms`. See Section 4 of `JARM`_.
   * - **grant_types_supported**
     - JSON array containing a list of the supported grant type values. The authorization server MUST support *authorization_code*.
   * - **token_endpoint_auth_methods_supported**
@@ -150,3 +148,32 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
 
             - **batch_size**: Integer value specifying the maximum array size for the ``proofs`` parameter in a Credential request.
 
+Credential Issuer Metadata retrieval
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Credential Issuer's Metadata can be retrieved using the Credential Issuer Identifier. The JSON document MUST be available through the */.well-known/openid-credential-issuer* endpoint as defined in Section 12.2 of `OpenID4VCI`_.
+
+The ``Accept-Language`` header in the HTTP GET request can be used to indicate the language(s) preferred. In this case the Credential Issuer can send a subset of the metadata containing internationalized display data for one or all of the requested languages and indicate returned languages using the HTTP ``Content-Language`` Header.
+
+Below is a non-normative example.
+
+.. code-block:: http
+
+    GET /.well-known/openid-credential-issuer HTTP/1.1
+    Host: issuer.example.com
+    Accept: application/json
+    Accept-Language: it-IT, it;q=0.9
+
+
+The Credential Issuer MUST respond with HTTP Status Code 200 and return the Credential Issuer Metadata containing the parameters defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer` within in an unsigned JSON document using the media type *application/json*.
+
+The ``authorization_servers`` entries of the Credential Issuer Metadata can be used to obtain the Authorization Server metadata from the Oauth Authorization Server */.well-known/oauth-authorization-server* as defined in Section 3 of :rfc:`8414`. In case of ``authorization_servers`` parameter is omitted, the Credential Issuer's identifier can be used to retrieve the Authorization Server metadata.
+
+Below is a non-normative example.
+
+.. code-block:: http
+
+    GET .well-known/oauth-authorization-server HTTP/1.1
+    Host: oauth-authorization-server.example.com
+
+The Oauth Authorization Server MUST respond with HTTP Status Code 200 and return the Oauth Authorization Server Metadata containing the parameters defined in :ref:`credential-issuer-metadata:Metadata for openid_credential_issuer` within in a JSON document using the media type *application/json*.

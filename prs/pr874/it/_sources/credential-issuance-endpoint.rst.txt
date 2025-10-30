@@ -621,7 +621,7 @@ Il **JWT DPoP** contiene i seguenti parametri di header JOSE e claim.
     - OBBLIGATORIO. DEVE essere un URL HTTPS che identifica in modo univoco il Credential Issuer. L'Istanza del Wallet DEVE verificare che questo valore corrisponda al Credential Issuer a cui ha richiesto l'Attestato Elettronico.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
-    - OBBLIGATORIO. Identifica il soggetto del JWT. DEVE essere settato con il valore del campo ``sub`` presente nell'Attestato ELettronico in formato SD-JWT-VC.
+    - OBBLIGATORIO. Identifica il soggetto del JWT.
     - [:rfc:`9068`], [:rfc:`7519`] e Sezione 8 di [`OIDC`_].
   * - **client_id**
     - OBBLIGATORIO. L'identificativo dell'Istanza del Wallet che ha richiesto l'Access Token; DEVE essere uguale al kid della chiave pubblica dell'Istanza del Wallet specificata nell'Attestato di Unità di Wallet (``cnf.jwk``).

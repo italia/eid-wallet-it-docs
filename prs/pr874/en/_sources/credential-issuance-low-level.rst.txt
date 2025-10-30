@@ -12,7 +12,6 @@ The Credential Issuance flow is based on [`OpenID4VCI`_] and the following main 
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], as recommended in Section 5 of [`OpenID4VCI`_].
   * **Proof Key for Code Exchange** (PKCE) [:rfc:`7636`], as recommended in Section 5 of [`OpenID4VCI`_].
   * **JWT Authorization Requests** (JAR) [:rfc:`9101`].
-  * **JWT Authorization Response Modes** (JARM) [`JARM`_].
   * **Rich Authorization Requests** (RAR) [:rfc:`9396`].
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * **OpenID Federation 1.0** [`OID-FED`_].

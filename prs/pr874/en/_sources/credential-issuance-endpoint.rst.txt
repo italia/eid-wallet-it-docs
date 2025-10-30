@@ -130,8 +130,8 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - MUST be set to ``code``.
       - :rfc:`6749`
     * - **response_mode**
-      - It MUST be a string indicating the "*response_mode*", as specified in [`OAUTH-MULT-RESP-TYPE`_]. It MUST be one of the supported values (*response_modes_supported*) provided in the metadata of the Credential Issuer. It informs the Credential Issuer of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to [`JARM`_]. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
-      - See [`OAUTH-MULT-RESP-TYPE`_] and [`JARM`_].
+      - It MUST be a string indicating the "*response_mode*", as specified in [`OAUTH-MULT-RESP-TYPE`_]. The supported value MUST be *query* and it MUST be also the supported value (*response_modes_supported*) provided in the metadata of the Credential Issuer. It informs the Credential Issuer of the mechanism to be used for returning parameters from the Authorization Endpoint. The Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance.
+      - See [`OAUTH-MULT-RESP-TYPE`_].
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
@@ -622,7 +622,7 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
     - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the credential.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
-    - REQUIRED. It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the SD-JWT-VC Credential.
+    - REQUIRED. It identifies the subject of the JWT.
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **client_id**
     - REQUIRED. The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet App Attestation (``cnf.jwk``).
