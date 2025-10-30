@@ -49,7 +49,6 @@
                 "mDL"
             ],
             "response_modes_supported": [
-                "form_post.jwt",
                 "query"
             ],
             "response_types_supported": [

@@ -11,7 +11,6 @@
 .. _EU_2024/2977: https://eur-lex.europa.eu/eli/reg_impl/2024/2977/
 .. _Federation endpoint: wallet-solution.html#federation-endpoint
 .. _ISO18013-5: https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf
-.. _JARM: https://openid.net/specs/oauth-v2-jarm-final.html
 .. _JWA: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-algorithms
 .. _JWE: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-encryption
 .. _JWK: https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-key

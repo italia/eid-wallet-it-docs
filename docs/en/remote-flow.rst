@@ -119,7 +119,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
     
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22form_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C&wallet_nonce=%22qPmxiNFCR3QTm19POc8u%22
+      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C&wallet_nonce=%22qPmxiNFCR3QTm19POc8u%22
     
     Where the body of the request prior to being encoded in `application/x-www-form-urlencoded` by the Wallet corresponds to:
     
@@ -132,7 +132,7 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
             "vp_token"
           ],
           "response_modes_supported": [
-            "form_post.jwt"
+            "query"
           ],
           "vp_formats_supported": {
             "dc+sd-jwt": {
@@ -365,7 +365,7 @@ The request and its parameters are defined in Section number 5 (Authorization Re
    * - `response_types_supported`
      - OPTIONAL. JSON array of OAuth 2.0 ``response_type`` values. If present it MUST be set to ``vp_token`` (:ref:`RPR-82 <test-plans-remote-presentation>`).
    * - `response_modes_supported`
-     - OPTIONAL. JSON array of OAuth 2.0 "response_mode" values. See `JARM`_.
+     - OPTIONAL. JSON array of OAuth 2.0 "response_mode" values as specified in `OAUTH-MULT-RESP-TYPE`_. The supported value MUST be *query*.
    * - `request_object_signing_alg_values_supported`
      - OPTIONAL. See OpenID Connect Discovery.
 

@@ -4,7 +4,7 @@
     "iat": 1715842560,
     "exp": 1715842860,
     "response_type": "code",
-    "response_mode": "form_post.jwt",
+    "response_mode": "query",
     "client_id": "47b982369791d08003a7283f059cb0d1",
     "iss": "47b982369791d08003a7283f059cb0d1",
     "state": "fyZiOL9Lf2CeKuNT2JzxiLRDink0uPcd",
