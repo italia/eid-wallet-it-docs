@@ -145,9 +145,9 @@ Questo processo consente la registrazione di un'App di Verifica con il Backend d
   1. Verifica l'esistenza delle Cryptographic Hardware Keys. Se non esistono, è necessaria la re-inizializzazione dell'App di Verifica.
   2. Genera una coppia di chiavi asimmetriche per il Certificato di Accesso (``key_pub``, ``key_priv``).
 
-**Passi 3-5:** L'App di Verifica Mobile richiede un ``nonce`` dall':ref:`relying-party-endpoint:Endpoint Nonce della Relying Party` del Backend della Relying Party. Questo ``nonce`` DEVE essere imprevedibile per servire come principale difesa contro i replay attack.
+**Passi 3-5:** L'App di Verifica Mobile richiede un ``nonce`` dall':ref:`relying-party-provider-backend-endpoint:Endpoint Nonce della Relying Party` del Backend della Relying Party. Questo ``nonce`` DEVE essere imprevedibile per servire come principale difesa contro i replay attack.
 
-In caso di richiesta riuscita, l':ref:`relying-party-endpoint:Endpoint Nonce della Relying Party` genera e restituisce il ``nonce`` all'App di Verifica Mobile. L':ref:`relying-party-endpoint:Endpoint Nonce della Relying Party` DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.
+In caso di richiesta riuscita, l':ref:`relying-party-provider-backend-endpoint:Endpoint Nonce della Relying Party` genera e restituisce il ``nonce`` all'App di Verifica Mobile. L':ref:`relying-party-provider-backend-endpoint:Endpoint Nonce della Relying Party` DEVE garantire che sia monouso e valido solo entro un periodo di tempo specifico.
 
 Esempi non normativi della Richiesta e Risposta del Nonce possono essere trovati rispettivamente nelle sezioni :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile` e :ref:`mobile-application-instance:Risposta di Nonce dell'Applicazione Mobile`.
 
@@ -173,12 +173,12 @@ Di seguito è riportato un esempio non normativo di ``client_data``.
 **Passi 9-11:** L'App di Verifica Mobile:
 
   1. Genera un valore ``hardware_signature`` firmando il ``client_data_hash`` con la chiave privata Cryptographic Hardware, che servirà come prova di possesso per le Cryptographic Hardware Keys.
-  2. Genera la :ref:`relying-party-endpoint:Richiesta di Associazione Chiavi della Relying Party` sotto forma di JWT. Questo JWT include ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag`` e ``cnf`` (che rappresenta ``key_pub``); è firmato utilizzando ``key_priv``.
-  3. Invia il JWT firmato :ref:`relying-party-endpoint:Richiesta di Associazione Chiavi della Relying Party` come parametro ``assertion`` nel corpo di HTTP request all':ref:`relying-party-endpoint:Endpoint di Associazione Chiavi della Relying Party`.
+  2. Genera la :ref:`relying-party-provider-backend-endpoint:Richiesta di Associazione Chiavi della Relying Party` sotto forma di JWT. Questo JWT include ``integrity_assertion``, ``hardware_signature``, ``nonce``, ``hardware_key_tag`` e ``cnf`` (che rappresenta ``key_pub``); è firmato utilizzando ``key_priv``.
+  3. Invia il JWT firmato :ref:`relying-party-provider-backend-endpoint:Richiesta di Associazione Chiavi della Relying Party` come parametro ``assertion`` nel corpo di HTTP request all':ref:`relying-party-provider-backend-endpoint:Endpoint di Associazione Chiavi della Relying Party`.
 
 **Passo 12:** Il Backend della Relying Party valuta la Richiesta di Key Binding ed esegue i seguenti controlli:
 
-  1. La richiesta include tutti i parametri di intestazione HTTP richiesti come definito in :ref:`relying-party-endpoint:Richiesta di Associazione Chiavi della Relying Party`.
+  1. La richiesta include tutti i parametri di intestazione HTTP richiesti come definito in :ref:`relying-party-provider-backend-endpoint:Richiesta di Associazione Chiavi della Relying Party`.
   2. La firma della Richiesta di Key Binding è valida e verificabile utilizzando il ``jwk`` fornito.
   3. Il valore ``nonce`` è stato generato dal Backend della Relying Party e non è stato utilizzato in precedenza.
   4. L'App di Verifica possiede valide Cryptographic Hardware Keys registrate.
@@ -187,17 +187,17 @@ Di seguito è riportato un esempio non normativo di ``client_data``.
   7. Il dispositivo in uso è privo di difetti di sicurezza noti e soddisfa i requisiti minimi di sicurezza definiti dalla Relying Party.
   8. L'URL nel parametro ``iss`` corrisponde all'identificatore URL della Relying Party.
 
-**Passo 13:** Se i controlli hanno successo, il Backend della Relying Party risponde con una conferma di successo (:ref:`relying-party-endpoint:Risposta di Associazione Chiavi della Relying Party`).
+**Passo 13:** Se i controlli hanno successo, il Backend della Relying Party risponde con una conferma di successo (:ref:`relying-party-provider-backend-endpoint:Risposta di Associazione Chiavi della Relying Party`).
 
 **Passo 14:** L'App di Verifica Mobile genera una Certificate Signing Request (CSR, ``csr``) utilizzando ``key_pub`` e ``key_priv``.
 
-**Passo 15:** L'App di Verifica Mobile invia la CSR al :ref:`relying-party-endpoint:Endpoint del Certificato di Accesso della Relying Party` del Backend della Relying Party, come parte della :ref:`relying-party-endpoint:Richiesta del Certificato di Accesso della Relying Party`.
+**Passo 15:** L'App di Verifica Mobile invia la CSR al :ref:`relying-party-provider-backend-endpoint:Endpoint del Certificato di Accesso della Relying Party` del Backend della Relying Party, come parte della :ref:`relying-party-provider-backend-endpoint:Richiesta del Certificato di Accesso della Relying Party`.
 
 **Passi 16-17:** Il Backend della Relying Party verifica che la chiave pubblica nella CSR corrisponda a un'App di Verifica che è stata precedentemente convalidata, cioè che corrisponda a quella legata alle Cryptographic Hardware Keys attraverso ``hardware_signature``. Se questo controllo ha successo, il Backend della Relying Party invia la CSR all'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica.
 
 **Passi 18-19:** L'Autorità di Certificazione per i Certificati di Accesso dell'App di Verifica firma la CSR, ottenendo un Certificato di Accesso valido (``access_certificate``) che invia al Backend della Relying Party.
 
-**Passi 20-21:** Il Backend della Relying Party invia il Certificato di Accesso (come parte della :ref:`relying-party-endpoint:Risposta del Certificato di Accesso della Relying Party`) all'App di Verifica Mobile, che lo memorizza per future autenticazioni verso le Istanze del Wallet.
+**Passi 20-21:** Il Backend della Relying Party invia il Certificato di Accesso (come parte della :ref:`relying-party-provider-backend-endpoint:Risposta del Certificato di Accesso della Relying Party`) all'App di Verifica Mobile, che lo memorizza per future autenticazioni verso le Istanze del Wallet.
 
 
 Riemissione de Certificato di Accesso App di Verifica Mobile

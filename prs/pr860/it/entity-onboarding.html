@@ -221,7 +221,7 @@
 <tr class="row-even"><td><p>Istanze del Wallet</p></td>
 <td><p>Applicazioni di portafoglio digitale reso disponibile all'Utente</p></td>
 <td><p>Registrazione indiretta tramite Fornitore di Wallet, vedere <a class="reference internal" href="wallet-instance-registration.html#inizializzazione-e-registrazione-dell-istanza-del-wallet"><span class="std std-ref">Inizializzazione e Registrazione dell'Istanza del Wallet</span></a>.</p></td>
-<td><p>Wallet Attestation emessa da Fornitore di Wallet certificato.</p></td>
+<td><p>Wallet Attestation emessa da Fornitore di Wallet affidabile.</p></td>
 </tr>
 </tbody>
 </table>
@@ -272,7 +272,7 @@
 <li><p><strong>Standard di Integrazione API</strong>:</p>
 <ul>
 <li><p><strong>Entità Pubbliche</strong>: DEVONO integrarsi attraverso la piattaforma PDND con implementazione di e-service seguendo gli standard governativi.</p></li>
-<li><p><strong>Entità Private</strong>: DEVONO fornire un documento completo di Specifica API OpenAPI 3.0 che include framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox per i test.</p></li>
+<li><p><strong>Entità Private</strong>: DEVONO fornire un documento completo di Specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> che include framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox per i test.</p></li>
 </ul>
 </li>
 <li><p><strong>Standardizzazione del Formato di Response</strong>:</p>
@@ -419,7 +419,7 @@
 <li><p><strong>Verifica Integrazione API</strong>:</p>
 <ul>
 <li><p><strong>Entità Pubbliche</strong>: Verifica della conformità della specifica e-service PDND</p></li>
-<li><p><strong>Entità Private</strong>: Completezza della specifica OpenAPI 3.0 inclusi framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox.</p></li>
+<li><p><strong>Entità Private</strong>: Completezza della specifica <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> inclusi framework di autorizzazione, schemi di request/response, meccanismi di gestione degli errori e ambiente sandbox.</p></li>
 </ul>
 </li>
 <li><p><strong>Formato Standard della Response</strong>: Verifica dell'utilizzo del formato del Registro dei Claims e specifica della mappatura degli stati.</p></li>
@@ -444,7 +444,7 @@
 <p>Dopo l'autorizzazione amministrativa AS-CI ottenuta durante la fase di registrazione amministrativa, le procedure di integrazione tecnica stabiliscono le connessioni API operative e i meccanismi di accesso ai dati tra Credential Issuer e Fonti Autentiche.</p>
 <p>L'integrazione tecnica comprende:</p>
 <ul class="simple">
-<li><p><strong>Configurazione degli Endpoint API</strong>: Istituzione di connessioni API sicure come specificato nelle Specifiche Tecniche AS (e-service PDND per AS pubbliche, implementazioni OpenAPI 3.0 per AS private).</p></li>
+<li><p><strong>Configurazione degli Endpoint API</strong>: Istituzione di connessioni API sicure come specificato nelle Specifiche Tecniche AS (e-service PDND per AS pubbliche, implementazioni <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> per AS private).</p></li>
 <li><p><strong>Validazione Mappatura Claims</strong>: Verifica che l'implementazione CI mappi correttamente le response dei dati AS agli identificativi standardizzati del Registro dei Claims.</p></li>
 <li><p><strong>Test Flusso Dati</strong>: Validazione delle specifiche di fornitura dati immediate/deferred e meccanismi di gestione degli errori.</p></li>
 <li><p><strong>Implementazione Sicurezza</strong>: Configurazione di autenticazione, autorizzazione e logging di audit come richiesto dagli standard di sicurezza AS.</p></li>
@@ -485,14 +485,14 @@
 <div><ul class="simple">
 <li><p><strong>Generazione delle Chiavi</strong>: Le entità DEVONO generare almeno due coppie di chiavi utilizzando la crittografia a curva ellittica come specificato in <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>:</p>
 <ul>
-<li><p><strong>Coppia di Chiavi di Federazione</strong>: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo.</p></li>
+<li><p><strong>Coppia di Chiavi di Federazione</strong>: Utilizzata per firmare Entity Configuration e attestare Chiavi di Protocollo. Per le migliori pratiche di sicurezza e continuità operativa, le entità DOVREBBERO mantenere multiple Chiavi dell'Entità di Federazione (almeno due) per abilitare la rotazione sicura delle chiavi e la risposta agli incidenti senza impattare le entità che hanno memorizzato nella cache le Entity Configuration.</p></li>
 <li><p><strong>Coppia/e di Chiavi di Protocollo</strong>: Utilizzate per operazioni di protocollo specifiche dell'entità (emissione attestati elettronici, verifica presentazione, ecc.).</p></li>
 </ul>
 </li>
 <li><p><strong>Attestazione delle Chiavi di Protocollo</strong>: Le entità DEVONO creare certificati X.509 auto-firmati per le loro Chiavi di Protocollo utilizzando la Chiave Privata di Federazione. Questi certificati stabiliscono la relazione di autorità tra le chiavi di Federazione e di Protocollo.</p></li>
 <li><p><strong>Preparazione Entity Configuration</strong>: Le entità DEVONO pubblicare una Entity Configuration (EC) firmata con la loro Chiave Privata di Federazione all'endpoint <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> come definito in <a class="reference internal" href="trust-infrastructure.html#l-infrastruttura-di-trust"><span class="std std-ref">L'Infrastruttura di Trust</span></a>. L'EC DEVE includere:</p>
 <ul>
-<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> contenente la Chiave Pubblica dell'Entità di Federazione in formato JSON Web Key (JWK).</p></li>
+<li><p>Un claim <code class="docutils literal notranslate"><span class="pre">jwks</span></code> contenente le Chiavi dell'Entità di Federazione in formato JSON Web Key (JWK).</p></li>
 <li><p>Un claim <code class="docutils literal notranslate"><span class="pre">iss</span></code> con l'Identificativo dell'Entità di Federazione come definito in <a class="reference internal" href="trust-infrastructure.html#ruoli-di-federazione"><span class="std std-ref">Ruoli di Federazione</span></a>.</p></li>
 <li><p>Un claim <code class="docutils literal notranslate"><span class="pre">sub</span></code> uguale al claim <code class="docutils literal notranslate"><span class="pre">iss</span></code>.</p></li>
 <li><p>Claim <code class="docutils literal notranslate"><span class="pre">iat</span></code> ed <code class="docutils literal notranslate"><span class="pre">exp</span></code> che definiscono un intervallo di tempo valido.</p></li>
@@ -503,8 +503,26 @@
 </ul>
 </div></blockquote>
 </section>
+<section id="requisiti-di-sicurezza-per-la-gestione-delle-chiavi">
+<h3><span class="section-number">8.4.3. </span>Requisiti di Sicurezza per la Gestione delle Chiavi<a class="headerlink" href="#requisiti-di-sicurezza-per-la-gestione-delle-chiavi" title="Link to this heading">¶</a></h3>
+<p>Tutte le entità di federazione DOVREBBERO mantenere almeno due chiavi di firma certificate dal Trust Anchor:</p>
+<ul class="simple">
+<li><p><strong>Chiave Attiva</strong>: Utilizzata per le operazioni di firma correnti</p></li>
+<li><p><strong>Chiave di Backup</strong>: Disponibile per l'attivazione immediata durante incidenti o rotazione pianificata delle chiavi</p></li>
+</ul>
+<p>Questo approccio a doppia chiave abilita:
+- Rotazione sicura delle chiavi senza interruzione del servizio
+- Risposta rapida agli incidenti quando le chiavi primarie sono compromesse
+- Continuità per le entità con Entity Configuration memorizzate nella cache
+- Prevenzione di problemi di validazione durante le transizioni delle chiavi</p>
+<p>La chiave di backup DEVE essere:
+- Registrata dal Trust Anchor prima del deployment
+- Pubblicata nel JWKS dell'entità insieme alla chiave attiva
+- Pronta per l'attivazione immediata senza passaggi di certificazione aggiuntivi
+- Mantenuta con gli stessi standard di sicurezza della chiave attiva</p>
+</section>
 <section id="procedura-di-onboarding-della-federazione">
-<h3><span class="section-number">8.4.3. </span>Procedura di Onboarding della Federazione<a class="headerlink" href="#procedura-di-onboarding-della-federazione" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.4.4. </span>Procedura di Onboarding della Federazione<a class="headerlink" href="#procedura-di-onboarding-della-federazione" title="Link to this heading">¶</a></h3>
 <p>L'onboarding della federazione segue una procedura strutturata in 4 fasi che abilita interazioni sicure tra i partecipanti della federazione, <strong>indipendentemente dal fatto che l'onboarding sia eseguito dal Trust Anchor o da un Intermediario</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -516,8 +534,8 @@
 </div>
 <figure class="align-default" id="id4">
 <p class="plantuml">
-<object data="_images/plantuml-8161516dba7dabe6d8d2b4d70b11e5e075b5e810.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-8161516dba7dabe6d8d2b4d70b11e5e075b5e810.png"><img src="_images/plantuml-8161516dba7dabe6d8d2b4d70b11e5e075b5e810.png" alt="Processo di onboarding dell'entità di federazione che mostra la procedura in 4 fasi" style="width: 99.0%"/></a>
+<object data="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.png"><img src="_images/plantuml-1bcf87d7d6deb4e2d1e5e5caf18348f7e29fc537.png" alt="Processo di onboarding dell'entità di federazione che mostra la procedura in 4 fasi" style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -733,10 +751,10 @@
 </div>
 </section>
 <section id="trust-mark-di-federazione-it-wallet">
-<h3><span class="section-number">8.4.4. </span>Trust Mark di Federazione IT-Wallet<a class="headerlink" href="#trust-mark-di-federazione-it-wallet" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.4.5. </span>Trust Mark di Federazione IT-Wallet<a class="headerlink" href="#trust-mark-di-federazione-it-wallet" title="Link to this heading">¶</a></h3>
 <p>Le Entità di Federazione ricevono il Trust Mark di Federazione IT-Wallet durante il completamento con successo dell'onboarding. <strong>I Trust Mark sono emessi dall'Autorità di Federazione</strong> (Trust Anchor per onboarding diretto, Intermediario per onboarding mediato) e servono come attestazioni verificabili dell'appartenenza alla federazione, conformità ai requisiti tecnici IT-Wallet e politiche di autorizzazione per ambiti operativi specifici.</p>
 <section id="tipi-di-trust-mark-e-schema">
-<h4><span class="section-number">8.4.4.1. </span>Tipi di Trust Mark e Schema<a class="headerlink" href="#tipi-di-trust-mark-e-schema" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.4.5.1. </span>Tipi di Trust Mark e Schema<a class="headerlink" href="#tipi-di-trust-mark-e-schema" title="Link to this heading">¶</a></h4>
 <p>Le entità POSSONO ricevere più Trust Mark per scopi diversi e tipi di entità, abilitando l'applicazione granulare delle politiche di autorizzazione. Gli identificativi dei Trust Mark DEVONO seguire uno schema gerarchico che riflette l'ambito di autorizzazione:</p>
 <p><code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/&lt;purpose&gt;/&lt;entity_type&gt;</span></code></p>
 <p>Dove:</p>
@@ -749,7 +767,7 @@
 </div></blockquote>
 </section>
 <section id="struttura-trust-mark">
-<h4><span class="section-number">8.4.4.2. </span>Struttura Trust Mark<a class="headerlink" href="#struttura-trust-mark" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.4.5.2. </span>Struttura Trust Mark<a class="headerlink" href="#struttura-trust-mark" title="Link to this heading">¶</a></h4>
 <p>I Trust Mark nell'Entity Configuration DEVONO essere rappresentati come oggetti JSON contenenti i seguenti claim:</p>
 <table class="longtable docutils align-default" id="id6">
 <caption><span class="caption-number">Tabella 8.4 </span><span class="caption-text">Trust Mark Object Claims (nell'Entity Configuration)</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
@@ -921,7 +939,7 @@
 </div>
 </section>
 <section id="validazione-trust-mark">
-<h4><span class="section-number">8.4.4.3. </span>Validazione Trust Mark<a class="headerlink" href="#validazione-trust-mark" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.4.5.3. </span>Validazione Trust Mark<a class="headerlink" href="#validazione-trust-mark" title="Link to this heading">¶</a></h4>
 <p>I partecipanti alla federazione validano lo stato del Trust Mark attraverso due meccanismi:</p>
 <ol class="arabic simple">
 <li><p><strong>Validazione Statica</strong>: Verifica crittografica utilizzando la chiave pubblica dell'Autorità di Federazione emittente dalla catena di trust.</p></li>
@@ -964,11 +982,12 @@
 <li><a class="reference internal" href="#processo-di-onboarding-delle-entita-di-federazione">8.4. Processo di Onboarding delle Entità di Federazione</a><ul>
 <li><a class="reference internal" href="#modello-gerarchico-dell-autorita-di-federazione">8.4.1. Modello Gerarchico dell'Autorità di Federazione</a></li>
 <li><a class="reference internal" href="#prerequisiti-di-onboarding-della-federazione">8.4.2. Prerequisiti di Onboarding della Federazione</a></li>
-<li><a class="reference internal" href="#procedura-di-onboarding-della-federazione">8.4.3. Procedura di Onboarding della Federazione</a></li>
-<li><a class="reference internal" href="#trust-mark-di-federazione-it-wallet">8.4.4. Trust Mark di Federazione IT-Wallet</a><ul>
-<li><a class="reference internal" href="#tipi-di-trust-mark-e-schema">8.4.4.1. Tipi di Trust Mark e Schema</a></li>
-<li><a class="reference internal" href="#struttura-trust-mark">8.4.4.2. Struttura Trust Mark</a></li>
-<li><a class="reference internal" href="#validazione-trust-mark">8.4.4.3. Validazione Trust Mark</a></li>
+<li><a class="reference internal" href="#requisiti-di-sicurezza-per-la-gestione-delle-chiavi">8.4.3. Requisiti di Sicurezza per la Gestione delle Chiavi</a></li>
+<li><a class="reference internal" href="#procedura-di-onboarding-della-federazione">8.4.4. Procedura di Onboarding della Federazione</a></li>
+<li><a class="reference internal" href="#trust-mark-di-federazione-it-wallet">8.4.5. Trust Mark di Federazione IT-Wallet</a><ul>
+<li><a class="reference internal" href="#tipi-di-trust-mark-e-schema">8.4.5.1. Tipi di Trust Mark e Schema</a></li>
+<li><a class="reference internal" href="#struttura-trust-mark">8.4.5.2. Struttura Trust Mark</a></li>
+<li><a class="reference internal" href="#validazione-trust-mark">8.4.5.3. Validazione Trust Mark</a></li>
 </ul>
 </li>
 </ul>
@@ -1002,7 +1021,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 13/10/2025.
+      Ultimo aggiornamento 30/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

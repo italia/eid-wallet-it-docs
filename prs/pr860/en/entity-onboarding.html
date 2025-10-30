@@ -220,7 +220,7 @@
 <tr class="row-even"><td><p>Wallet Instances</p></td>
 <td><p>User-level digital wallet applications</p></td>
 <td><p>Indirect registration via Wallet Provider, see <a class="reference internal" href="wallet-instance-registration.html#id1"><span class="std std-ref">Wallet Instance Initialization and Registration</span></a></p></td>
-<td><p>Wallet Attestation from certified Wallet Provider</p></td>
+<td><p>Wallet Attestation from trustworthy Wallet Provider</p></td>
 </tr>
 </tbody>
 </table>
@@ -271,7 +271,7 @@
 <li><p><strong>API Integration Standards</strong>:</p>
 <ul>
 <li><p><strong>Public Entities</strong>: MUST integrate through PDND platform with e-service implementation following national specifications.</p></li>
-<li><p><strong>Private Entities</strong>: MUST provide a complete OpenAPI 3.0 API Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.</p></li>
+<li><p><strong>Private Entities</strong>: MUST provide a complete <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.</p></li>
 </ul>
 </li>
 <li><p><strong>Response Format Standardization</strong>:</p>
@@ -428,7 +428,7 @@
 <li><p><strong>API Integration Verification</strong>:</p>
 <ul>
 <li><p><strong>Public Entities</strong>: PDND e-service specification compliance verification</p></li>
-<li><p><strong>Private Entities</strong>: OpenAPI 3.0 specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.</p></li>
+<li><p><strong>Private Entities</strong>: <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.</p></li>
 </ul>
 </li>
 <li><p><strong>Response Format Standards</strong>: Verification of Claims Registry format usage and state mapping specification.</p></li>
@@ -453,7 +453,7 @@
 <p>Following administrative Authentic Source to Credential Issuer authorization obtained during the administrative registration phase, technical integration procedures establish the operational API connections and data access mechanisms between Credential Issuers and Authentic Sources.</p>
 <p>Technical integration encompasses:</p>
 <ul class="simple">
-<li><p><strong>API Endpoint Configuration</strong>: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, OpenAPI 3.0 implementations for private Authentic Sources).</p></li>
+<li><p><strong>API Endpoint Configuration</strong>: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, <a class="reference external" href="https://spec.openapis.org/oas/v3.0.3">OAS3</a> implementations for private Authentic Sources).</p></li>
 <li><p><strong>Claims Mapping Validation</strong>: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.</p></li>
 <li><p><strong>Data Flow Testing</strong>: Validation of immediate or deferred data provision capabilities and error handling mechanisms.</p></li>
 <li><p><strong>Security Implementation</strong>: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.</p></li>
@@ -494,14 +494,14 @@
 <div><ul class="simple">
 <li><p><strong>Key Generation</strong>: The entities MUST generate at least two key pairs using elliptic curve cryptography as specified in <a class="reference internal" href="algorithms.html#cryptographic-algorithms"><span class="std std-ref">Cryptographic Algorithms</span></a>:</p>
 <ul>
-<li><p><strong>Federation Key Pair</strong>: Used for signing Entity Configurations and attesting application specific keys.</p></li>
-<li><p><em>Application Specific Key Pair(s)*</em>: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.</p></li>
+<li><p><strong>Federation Key Pair</strong>: Used for signing Entity Configurations and attesting application specific keys. For security best practices and operational continuity, entities SHOULD maintain multiple Federation Entity Keys (at least two) to enable secure key rotation and incident response without impacting entities that have cached Entity Configurations.</p></li>
+<li><p><strong>Application Specific Key Pair(s)</strong>: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.</p></li>
 </ul>
 </li>
 <li><p><strong>Application Specific Key Attestation</strong>: The entities MUST create self-signed X.509 Certificates for their application specific keys using the Federation Entity Private Key.</p></li>
 <li><p><strong>Entity Configuration Preparation</strong>: The entities MUST publish an Entity Configuration (EC) signed with their Federation Entity Private Key at the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint as defined in <a class="reference internal" href="trust-infrastructure.html#the-infrastructure-of-trust"><span class="std std-ref">The Infrastructure of Trust</span></a>. The EC MUST include:</p>
 <ul>
-<li><p>A <code class="docutils literal notranslate"><span class="pre">jwks</span></code> claim containing the Federation Entity Key in JSON Web Key (JWK) format.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">jwks</span></code> claim containing the Federation Entity Keys in JSON Web Key (JWK) format.</p></li>
 <li><p>An <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim with the Federation Entity Identifier as defined in <a class="reference internal" href="trust-infrastructure.html#federation-roles"><span class="std std-ref">Federation Roles</span></a>.</p></li>
 <li><p>A <code class="docutils literal notranslate"><span class="pre">sub</span></code> claim equal to the <code class="docutils literal notranslate"><span class="pre">iss</span></code> claim.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">iat</span></code> and <code class="docutils literal notranslate"><span class="pre">exp</span></code> claims defining a valid time interval.</p></li>
@@ -512,8 +512,26 @@
 </ul>
 </div></blockquote>
 </section>
+<section id="key-management-security-requirements">
+<h3><span class="section-number">8.4.3. </span>Key Management Security Requirements<a class="headerlink" href="#key-management-security-requirements" title="Link to this heading">¶</a></h3>
+<p>All federation entities SHOULD maintain at least two signing keys attested by the Trust Anchor:</p>
+<ul class="simple">
+<li><p><strong>Active Key</strong>: Used for current signing operations</p></li>
+<li><p><strong>Backup Key</strong>: Available for immediate activation during incidents or planned key rotation</p></li>
+</ul>
+<p>This dual-key approach enables:
+- Secure key rotation without service interruption
+- Rapid incident response when primary keys are compromised
+- Continuity for entities with cached Entity Configurations
+- Prevention of validation issues during key transitions</p>
+<p>The backup key MUST be:
+- Registered by the Trust Anchor before deployment
+- Published in the entity's JWKS alongside the active key
+- Ready for immediate activation without additional certification steps
+- Maintained with the same security standards as the active key</p>
+</section>
 <section id="federation-onboarding-procedure">
-<h3><span class="section-number">8.4.3. </span>Federation Onboarding Procedure<a class="headerlink" href="#federation-onboarding-procedure" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.4.4. </span>Federation Onboarding Procedure<a class="headerlink" href="#federation-onboarding-procedure" title="Link to this heading">¶</a></h3>
 <p>The federation onboarding follows a structured 4-step procedure, it can be performed by the Trust Anchor or an Intermediate.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -525,8 +543,8 @@
 </div>
 <figure class="align-default" id="id5">
 <p class="plantuml">
-<object data="_images/plantuml-8161516dba7dabe6d8d2b4d70b11e5e075b5e810.svg" type="image/svg+xml" style="width:99%">
-<a href="_images/plantuml-8161516dba7dabe6d8d2b4d70b11e5e075b5e810.png"><img src="_images/plantuml-8161516dba7dabe6d8d2b4d70b11e5e075b5e810.png" alt="Federation entity onboarding process showing the 4-step procedure" style="width: 99.0%"/></a>
+<object data="_images/plantuml-61362abb85a85c942a9539e35adc3082e029e6c8.svg" type="image/svg+xml" style="width:99%">
+<a href="_images/plantuml-61362abb85a85c942a9539e35adc3082e029e6c8.png"><img src="_images/plantuml-61362abb85a85c942a9539e35adc3082e029e6c8.png" alt="Federation entity onboarding process showing the 4-step procedure" style="width: 99.0%"/></a>
 
 </object></p>
 <figcaption>
@@ -710,10 +728,10 @@
 </div>
 </section>
 <section id="it-wallet-federation-trust-marks">
-<h3><span class="section-number">8.4.4. </span>IT-Wallet Federation Trust Marks<a class="headerlink" href="#it-wallet-federation-trust-marks" title="Link to this heading">¶</a></h3>
+<h3><span class="section-number">8.4.5. </span>IT-Wallet Federation Trust Marks<a class="headerlink" href="#it-wallet-federation-trust-marks" title="Link to this heading">¶</a></h3>
 <p>Federation Entities receive IT-Wallet Federation Trust Marks during successful onboarding completion. <strong>Trust Marks are issued by the Federation Authority</strong> (Trust Anchor for direct onboarding, Intermediate for mediated onboarding) and serve as verifiable attestations about compliance with IT-Wallet technical profiles and or authorization policies.</p>
 <section id="trust-mark-types-and-schema">
-<h4><span class="section-number">8.4.4.1. </span>Trust Mark Types and Schema<a class="headerlink" href="#trust-mark-types-and-schema" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.4.5.1. </span>Trust Mark Types and Schema<a class="headerlink" href="#trust-mark-types-and-schema" title="Link to this heading">¶</a></h4>
 <p>Entities MAY receive multiple Trust Marks for different purposes. Trust Mark identifiers MUST follow a hierarchical schema that reflects the authorization scope:</p>
 <p><code class="docutils literal notranslate"><span class="pre">https://&lt;federation_authority_domain&gt;/trust_marks/&lt;purpose&gt;/&lt;entity_type&gt;</span></code></p>
 <p>Where:</p>
@@ -726,7 +744,7 @@
 </div></blockquote>
 </section>
 <section id="trust-mark-structure">
-<h4><span class="section-number">8.4.4.2. </span>Trust Mark Structure<a class="headerlink" href="#trust-mark-structure" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.4.5.2. </span>Trust Mark Structure<a class="headerlink" href="#trust-mark-structure" title="Link to this heading">¶</a></h4>
 <p>Trust Marks in Entity Configuration MUST be represented as JSON objects containing the following claims:</p>
 <table class="longtable docutils align-default" id="id8">
 <caption><span class="caption-number">Table 8.4 </span><span class="caption-text">Trust Mark Object Claims (in Entity Configuration)</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
@@ -898,7 +916,7 @@
 </div>
 </section>
 <section id="trust-mark-validation">
-<h4><span class="section-number">8.4.4.3. </span>Trust Mark Validation<a class="headerlink" href="#trust-mark-validation" title="Link to this heading">¶</a></h4>
+<h4><span class="section-number">8.4.5.3. </span>Trust Mark Validation<a class="headerlink" href="#trust-mark-validation" title="Link to this heading">¶</a></h4>
 <p>Federation participants validate Trust Mark status through two mechanisms:</p>
 <ol class="arabic simple">
 <li><p><strong>Static Validation</strong>: Cryptographic verification using the issuing Federation Authority's public key from the Trust Chain.</p></li>
@@ -941,11 +959,12 @@
 <li><a class="reference internal" href="#federation-entities-onboarding-process">8.4. Federation Entities Onboarding Process</a><ul>
 <li><a class="reference internal" href="#hierarchical-federation-authority-model">8.4.1. Hierarchical Federation Authority Model</a></li>
 <li><a class="reference internal" href="#federation-onboarding-prerequisites">8.4.2. Federation Onboarding Prerequisites</a></li>
-<li><a class="reference internal" href="#federation-onboarding-procedure">8.4.3. Federation Onboarding Procedure</a></li>
-<li><a class="reference internal" href="#it-wallet-federation-trust-marks">8.4.4. IT-Wallet Federation Trust Marks</a><ul>
-<li><a class="reference internal" href="#trust-mark-types-and-schema">8.4.4.1. Trust Mark Types and Schema</a></li>
-<li><a class="reference internal" href="#trust-mark-structure">8.4.4.2. Trust Mark Structure</a></li>
-<li><a class="reference internal" href="#trust-mark-validation">8.4.4.3. Trust Mark Validation</a></li>
+<li><a class="reference internal" href="#key-management-security-requirements">8.4.3. Key Management Security Requirements</a></li>
+<li><a class="reference internal" href="#federation-onboarding-procedure">8.4.4. Federation Onboarding Procedure</a></li>
+<li><a class="reference internal" href="#it-wallet-federation-trust-marks">8.4.5. IT-Wallet Federation Trust Marks</a><ul>
+<li><a class="reference internal" href="#trust-mark-types-and-schema">8.4.5.1. Trust Mark Types and Schema</a></li>
+<li><a class="reference internal" href="#trust-mark-structure">8.4.5.2. Trust Mark Structure</a></li>
+<li><a class="reference internal" href="#trust-mark-validation">8.4.5.3. Trust Mark Validation</a></li>
 </ul>
 </li>
 </ul>
@@ -979,7 +998,7 @@
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/10/2025.
+      Last updated on 30/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

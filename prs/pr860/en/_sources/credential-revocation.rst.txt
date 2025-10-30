@@ -228,9 +228,11 @@ The User's death triggers a change in the validity status of the User's identifi
 Status Update by Wallet Instance
 """"""""""""""""""""""""""""""""
 
-When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance SHALL NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer. If the User wants the Issuer to revoke a Digital Credential, the User MUST use the Issuer's web portal or other Issuer-provided channels.
+When the User deletes a Digital Credential from the Wallet Instance, the Wallet Instance by default SHALL NOT notify the Credential Issuer of this deletion event. Deleting a Digital Credential from the Wallet Instance only removes the local copy and does not change the validity status at the Issuer.
 
-The Wallet Instance MAY inform the User, prior to deletion, that deletion is a local action and does not imply revocation at the Issuer.
+The Wallet Instance MAY inform the User, prior to deletion, that deletion is a local action and does not imply revocation at the Issuer, and MAY implement, under the User’s explicit consent at deletion time, a notification feature to inform the Credential Issuer of the User’s intention to revoke the Digital Credential.
+
+If the User wants the Issuer to revoke a Digital Credential, the User SHOULD explicitly confirm this intention via the Wallet Instance’s deletion prompt (when available), which SHALL then notify the Credential Issuer; alternatively, the User MAY use the Issuer's web portal or other Issuer-provided channels.
 
 Status Update by Wallet Providers
 """""""""""""""""""""""""""""""""
@@ -282,11 +284,11 @@ Batch Credential Lifecycle Management
 
 When multiple Digital Credentials are issued together in a single batch, their lifecycle remains fully granular:
 
-  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by an authorized entity (e.g. a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). A Wallet Instance SHALL NOT trigger batch status updates when the User deletes local Credentials.
+  * **Grouped triggers, independent updates**: A single batch status update request referencing the batch's ``notification_id`` and sent by an authorized entity (e.g. a Wallet Provider via PDND) is handled as N separate status changes. The Issuer updates each Credential's own status individually (for example, flipping its status-list bit to ``INVALID`` or ``SUSPENDED``). By default, a Wallet Instance SHALL NOT trigger batch status updates when the User deletes local Credentials. Upon deletion, the Wallet Instance MAY, under the User’s explicit consent, notify the Credential Issuer of the User’s intention to revoke the affected Credential(s); such a notification does not constitute a batch status update request.
   * **Batch-wide revoke**: That same batch update request also serves as a revoke all request. The Issuer marks every Credential in the batch as revoked and MAY emit a single notification for the entire batch according to Issuer policy.
 
 .. note::
-  As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. It does not request revocation at the Issuer.
+  As the Wallet UI typically surfaces a batch as one Credential (e.g., 3 uses remaining), a User-driven deletion in the Wallet removes the entire batch locally. By default it does not request revocation at the Issuer. The Wallet MAY offer the User an optional prompt to request revocation at the Issuer as part of the deletion flow.
 
 
 

@@ -378,11 +378,12 @@ rm<span class="w"> </span>federation_entity.pem<span class="w"> </span>trust_anc
 </li>
 <li><p><strong>Key Rotation</strong></p>
 <ol class="arabic simple">
-<li><p><strong>New Key Generation</strong>: The Entity MUST generate a new Federation Entity Public Key pair.</p></li>
-<li><p><strong>Parallel Key Publication</strong>: The Entity MUST publish both old and new keys in Entity Configuration <code class="docutils literal notranslate"><span class="pre">jwks</span></code> claim during transition period.</p></li>
-<li><p><strong>X.509 Certificate Request</strong>: The Entity MUST request new X.509 certificate for new public key following standard procedure.</p></li>
-<li><p><strong>Gradual Migration</strong>: The Entity MUST update Entity Configuration to use new key for signing while maintaining old key for verification.</p></li>
-<li><p><strong>Old Key Deprecation</strong>: The Entity MUST remove old key from Entity Configuration after validation period.</p></li>
+<li><p><strong>Key Activation</strong>: In case of incident or planned rotation, the Entity MUST activate an alternative Federation Entity Key for signing operations.</p></li>
+<li><p><strong>New Key Generation</strong>: The Entity MUST generate a new Federation Entity Public Key pair to serve as an additional key.</p></li>
+<li><p><strong>Parallel Key Publication</strong>: The Entity MUST publish all available keys in Entity Configuration <code class="docutils literal notranslate"><span class="pre">jwks</span></code> claim during transition period.</p></li>
+<li><p><strong>X.509 Certificate Request</strong>: The Entity MUST request new X.509 certificate for new key following standard procedure.</p></li>
+<li><p><strong>Gradual Migration</strong>: The Entity MUST update Entity Configuration to use the activated key for signing while maintaining all keys for verification.</p></li>
+<li><p><strong>Old Key Deprecation</strong>: The Entity MUST remove the old key from Entity Configuration after validation period, maintaining the alternative key and new key.</p></li>
 </ol>
 </li>
 <li><p><strong>Metadata Updates</strong></p>
@@ -580,7 +581,7 @@ curl<span class="w"> </span><span class="s2">&quot;https://trust-anchor.eid-wall
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 13/10/2025.
+      Last updated on 30/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

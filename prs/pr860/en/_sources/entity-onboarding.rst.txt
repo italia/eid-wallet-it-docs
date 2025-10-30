@@ -55,7 +55,7 @@ The following table summarizes entity types, their roles, and corresponding onbo
    * - Wallet Instances
      - User-level digital wallet applications
      - Indirect registration via Wallet Provider, see :ref:`wallet-instance-registration:Wallet Instance Initialization and Registration`
-     - Wallet Attestation from certified Wallet Provider
+     - Wallet Attestation from trustworthy Wallet Provider
 
 Administrative and Technical Registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,7 +97,7 @@ Authentic Sources MUST comply with the following technical requirements:
   - **API Integration Standards**:
 
     - **Public Entities**: MUST integrate through PDND platform with e-service implementation following national specifications.
-    - **Private Entities**: MUST provide a complete OpenAPI 3.0 API Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
+    - **Private Entities**: MUST provide a complete `OAS3`_ Specification document that includes authorization framework, request/response schemas, error handling mechanisms, and sandbox environment for testing.
 
   - **Response Format Standardization**:
 
@@ -182,7 +182,7 @@ The Authentic Source registration follows a technical process as described below
   - **API Integration Verification**:
 
     - **Public Entities**: PDND e-service specification compliance verification
-    - **Private Entities**: OpenAPI 3.0 specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.
+    - **Private Entities**: `OAS3`_ specification completeness including authorization framework, request/response schemas, error handling mechanisms, and sandbox environment.
 
   - **Response Format Standards**: Verification of Claims Registry format usage and state mapping specification.
 
@@ -203,7 +203,7 @@ Following administrative Authentic Source to Credential Issuer authorization obt
 
 Technical integration encompasses:
 
-- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, OpenAPI 3.0 implementations for private Authentic Sources).
+- **API Endpoint Configuration**: Establishment of secure API connections as specified in Authentic Source technical specifications (PDND e-services for public Authentic Sources, `OAS3`_ implementations for private Authentic Sources).
 - **Claims Mapping Validation**: Verification that Credential Issuer implementation correctly maps Authentic Source data responses to standardized Claims Registry identifiers.
 - **Data Flow Testing**: Validation of immediate or deferred data provision capabilities and error handling mechanisms.
 - **Security Implementation**: Configuration of authentication, authorization, and audit logging as required by Authentic Source security standards.
@@ -241,20 +241,40 @@ Federation Entities MUST comply with the following technical requirements before
 
   - **Key Generation**: The entities MUST generate at least two key pairs using elliptic curve cryptography as specified in :ref:`algorithms:Cryptographic Algorithms`:
 
-    - **Federation Key Pair**: Used for signing Entity Configurations and attesting application specific keys.
-    - *Application Specific Key Pair(s)**: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.
+    - **Federation Key Pair**: Used for signing Entity Configurations and attesting application specific keys. For security best practices and operational continuity, entities SHOULD maintain multiple Federation Entity Keys (at least two) to enable secure key rotation and incident response without impacting entities that have cached Entity Configurations.
+    - **Application Specific Key Pair(s)**: Used for entity-specific protocol operations, such as Credential issuance and Credential presentation.
 
   - **Application Specific Key Attestation**: The entities MUST create self-signed X.509 Certificates for their application specific keys using the Federation Entity Private Key.
 
   - **Entity Configuration Preparation**: The entities MUST publish an Entity Configuration (EC) signed with their Federation Entity Private Key at the ``/.well-known/openid-federation`` endpoint as defined in :ref:`trust-infrastructure:The Infrastructure of Trust`. The EC MUST include:
 
-    - A ``jwks`` claim containing the Federation Entity Key in JSON Web Key (JWK) format.
+    - A ``jwks`` claim containing the Federation Entity Keys in JSON Web Key (JWK) format.
     - An ``iss`` claim with the Federation Entity Identifier as defined in :ref:`trust-infrastructure:Federation Roles`.
     - A ``sub`` claim equal to the ``iss`` claim.
     - ``iat`` and ``exp`` claims defining a valid time interval.
     - A ``metadata`` claim containing entity-specific metadata organized by Metadata Types (see :ref:`credential-issuer-entity-configuration:Credential Issuer Entity Configuration`, :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`, or :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration`) with application specific keys included in the metadata ``jwks`` fields and self-signed X.509 Certificates in the corresponding ``x5c`` claims.
 
   - **X.509 Certificate Signing Request (CSR)**: The entities MUST prepare a X.509 Certificate Signing Request (CSR) in PKCS #10 format containing **the Federation Entity Key** for X.509 Certificate issuance by the Federation Authority, as defined in :ref:`trust-infrastructure:Trust Infrastructure Requirements`.
+
+Key Management Security Requirements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All federation entities SHOULD maintain at least two signing keys attested by the Trust Anchor:
+
+- **Active Key**: Used for current signing operations
+- **Backup Key**: Available for immediate activation during incidents or planned key rotation
+
+This dual-key approach enables:
+- Secure key rotation without service interruption
+- Rapid incident response when primary keys are compromised
+- Continuity for entities with cached Entity Configurations
+- Prevention of validation issues during key transitions
+
+The backup key MUST be:
+- Registered by the Trust Anchor before deployment
+- Published in the entity's JWKS alongside the active key
+- Ready for immediate activation without additional certification steps
+- Maintained with the same security standards as the active key
 
 Federation Onboarding Procedure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

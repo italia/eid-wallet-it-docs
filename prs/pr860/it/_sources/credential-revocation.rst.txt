@@ -217,20 +217,22 @@ Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettroni
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Quando l'Utente elimina un Attestato Elettronico dall'Istanza del Wallet, l'Istanza del Wallet NON DEVE notificare questo evento al Fornitore di Attestati Elettronici. L'eliminazione dall'Istanza del Wallet rimuove solo la copia locale e non modifica lo stato di validità presso il Fornitore di Attestati Elettronici. Se l'Utente desidera che il Fornitore di Attestati Elettronici revochi un Attestato Elettronico, DEVE utilizzare il portale web del Fornitore di Attestati Elettronici o altri canali messi a disposizione dal Fornitore di Attestati Elettronici.
+Quando l'Utente elimina un Attestato Elettronico dall'Istanza del Wallet, per impostazione predefinita l'Istanza del Wallet NON DEVE notificare questo evento al Fornitore di Attestati Elettronici. L'eliminazione dall'Istanza del Wallet rimuove solo la copia locale e non modifica lo stato di validità presso il Fornitore di Attestati Elettronici.
 
-L'Istanza del Wallet PUÒ informare l'Utente, prima dell'eliminazione, che l'eliminazione è un'azione locale e non implica la revoca presso il Fornitore di Attestati Elettronici.
+L'Istanza del Wallet PUÒ informare l'Utente, prima dell'eliminazione, che l'eliminazione è un'azione locale e non implica la revoca presso il Fornitore di Attestati Elettronici, e PUÒ implementare, con il consenso esplicito dell’Utente al momento dell’eliminazione, una funzionalità di notifica per informare il Fornitore di Attestati Elettronici dell’intenzione dell’Utente di revocare l’Attestato Elettronico.
+
+Se l'Utente desidera che il Fornitore di Attestati Elettronici revochi un Attestato Elettronico, DOVREBBE confermare esplicitamente tale intenzione tramite il prompt di eliminazione dell’Istanza del Wallet (quando disponibile), che a sua volta DOVRÀ notificare il Fornitore di Attestati Elettronici; in alternativa, l'Utente PUÒ utilizzare il portale web del Fornitore di Attestati Elettronici o altri canali messi a disposizione.
 
 Gestione del ciclo di vita delle Credenziali in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Quando più Attestati Elettronici vengono emessi insieme in un singolo batch, il loro ciclo di vita rimane completamente granulare:
 
-* **Trigger raggruppati, aggiornamenti indipendenti**: una singola richiesta di aggiornamento dello stato del batch che fa riferimento al ``notification_id`` del batch e inviata da un'entità autorizzata (ad esempio, un Wallet Provider tramite PDND) viene gestita come N modifiche di stato separate. Il Credential Issuer aggiorna lo stato di ciascun Attestato Elettronico singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``). Un'Istanza del Wallet NON DEVE attivare aggiornamenti di stato del batch quando l'Utente elimina Attestati Elettronici localmente.
+* **Trigger raggruppati, aggiornamenti indipendenti**: una singola richiesta di aggiornamento dello stato del batch che fa riferimento al ``notification_id`` del batch e inviata da un'entità autorizzata (ad esempio, un Wallet Provider tramite PDND) viene gestita come N modifiche di stato separate. Il Fornitore di Attestati Elettronici aggiorna lo stato di ciascun Attestato Elettronico singolarmente (ad esempio, impostando il bit della status-list su ``INVALID`` o ``SUSPENDED``). Per impostazione predefinita, un'Istanza del Wallet NON DEVE attivare aggiornamenti di stato del batch quando l'Utente elimina Attestati Elettronici localmente. In fase di eliminazione, l’Istanza del Wallet PUÒ, con il consenso esplicito dell’Utente, notificare al Fornitore di Attestati Elettronici l’intenzione dell’Utente di revocare gli Attestati Elettronici interessati; tale notifica non costituisce una richiesta di aggiornamento di stato a livello di batch.
 * **Revoca a livello di batch**: la stessa richiesta di aggiornamento del batch funge anche da richiesta di revoca totale. Il Credential Issuer contrassegna ogni Attestato Elettronico nel batch come revocato e PUÒ emettere una singola notifica per l'intero batch secondo la propria policy.
 
 .. note::
-  Poiché l'interfaccia utente del Wallet in genere visualizza un batch come un singolo Attestato Elettronico (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove l'intero batch localmente. Non richiede la revoca presso il Fornitore di Attestati Elettronici.
+  Poiché l'interfaccia utente del Wallet in genere visualizza un batch come un singolo Attestato Elettronico (ad esempio, con 3 utilizzi rimanenti), un'eliminazione da parte dell'utente rimuove l'intero batch localmente. Per impostazione predefinita non richiede la revoca presso il Fornitore di Attestati Elettronici. L’Istanza del Wallet PUÒ offrire all’Utente un prompt opzionale per richiedere la revoca presso il Fornitore di Attestati Elettronici nell’ambito del flusso di eliminazione.
 
 
 Meccanismi di Verifica della Validità
