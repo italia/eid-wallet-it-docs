@@ -64,6 +64,26 @@ Il Fornitore di Wallet DEVE permettere all'Utente in ogni momento di rimuovere i
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
+Di seguito un esempio di flusso di Attivazione
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/A4-Flusso-Attivazione-01.svg
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    :width: 100%
+
+    Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Attivazione-01.pdf
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+    :width: 100%
+
+    Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+
+
+
 Focus sul PID – Dati di Identificazione della Persona
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

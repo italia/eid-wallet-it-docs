@@ -210,6 +210,13 @@
 </ul>
 <p>Il Fornitore di Wallet DEVE permettere all'Utente in ogni momento di rimuovere il PID ottenuto durante la fase di Attivazione. Inoltre, il PID Provider DOVREBBE permettere all'Utente di revocare il PID ottenuto, tramite uno specifico Touchpoint. Il Fornitore di Wallet DEVE permettere all'Utente di richiedere la disattivazione della propria Istanza del Wallet, anche in assenza del dispositivo su cui è stata installata. Per approfondimenti si rimanda alle sezioni <a class="reference internal" href="#disattivazione-dell-istanza-del-wallet"><span class="std std-ref">Disattivazione dell'Istanza del Wallet</span></a> e <a class="reference internal" href="#gestione-degli-attestati-elettronici"><span class="std std-ref">Gestione degli Attestati Elettronici</span></a>.</p>
 <p>In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
+<p>Di seguito un esempio di flusso di Attivazione</p>
+<figure class="align-default" id="id87">
+<a class="reference internal image-reference" href="_images/A4-Flusso-Attivazione-01.svg"><img alt="Esperienza Utente nell'Attivazione di un'Istanza del Wallet" src="_images/A4-Flusso-Attivazione-01.svg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Esperienza Utente nell'Attivazione di un'Istanza del Wallet</span><a class="headerlink" href="#id87" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <section id="focus-sul-pid-dati-di-identificazione-della-persona">
 <h3><span class="section-number">5.3.1. </span>Focus sul PID – Dati di Identificazione della Persona<a class="headerlink" href="#focus-sul-pid-dati-di-identificazione-della-persona" title="Link to this heading">¶</a></h3>
 <p>Il PID (Person Identification Data) si riferisce a un set minimo verificato di informazioni sull'identità dell'Utente (vedere <a class="reference internal" href="credential-data-model.html#modello-di-dati-degli-attestati-elettronici"><span class="std std-ref">Modello di Dati degli Attestati Elettronici</span></a>) emesso come risultato del processo di attivazione e reso disponibile nell'Istanza del Wallet.
@@ -317,10 +324,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <li><p>DEVE definire un insieme chiaro di specifiche per l'EAA per garantire un'identificazione e rappresentazione coerente dell'EAA tra diverse Soluzioni Wallet, in termini di formato, struttura e standard di aspetto (ad es. colore, immagine di sfondo, ecc.).</p></li>
 </ul>
 <p>Di seguito un esempio di layout di Attestato Elettronico di Attributi, all'interno della Vista in Anteprima e Vista di Dettaglio</p>
-<figure class="align-default" id="id87">
+<figure class="align-default" id="id89">
 <a class="reference internal image-reference" href="_images/A4-Focus-EAA.svg"><img alt="Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio" src="_images/A4-Focus-EAA.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio</span><a class="headerlink" href="#id87" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Esempio di layout di Attestato Elettronico di Attributi, Vista in Anteprima e Vista di Dettaglio</span><a class="headerlink" href="#id89" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -420,10 +427,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p>Di seguito invece gli elementi specifici caratteristici delle diverse pagine.</p>
 <p><strong>Discovery Page</strong></p>
 <p>Per garantire l'Autenticazione tramite il Sistema IT-Wallet, il Verificatore di Attestati Elettronici PUÒ aggiornare la propria Discovery Page con quella resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
-<figure class="align-default" id="id89">
+<figure class="align-default" id="id91">
 <a class="reference internal image-reference" href="_images/discovery-page.svg"><img alt="Modello di layout di Discovery Page a griglia" src="_images/discovery-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Modello di layout di Discovery Page a griglia</span><a class="headerlink" href="#id89" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Modello di layout di Discovery Page a griglia</span><a class="headerlink" href="#id91" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>In alternativa, il Verificatore di Attestati Elettronici PUÒ mantenere la propria Discovery Page, ma DEVE in ogni caso integrare l'Authentication Button, come da indicazioni presenti nella sezione <a class="reference internal" href="#authentication-button">Authentication Button</a>.</p>
@@ -438,10 +445,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p><strong>Selection Page</strong></p>
 <p>La Selection Page è la pagina su cui atterra l'Utente dopo che ha scelto di Autenticarsi tramite il Sistema IT-Wallet, e ha lo scopo di presentare all'Utente le Soluzioni Wallet disponibili per effettuare l’Autenticazione.</p>
 <p>Il Verificatore di Attestati Elettronici DEVE implementare la Selection Page resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
-<figure class="align-default" id="id91">
+<figure class="align-default" id="id93">
 <a class="reference internal image-reference" href="_images/selection-page.svg"><img alt="Selection Page" src="_images/selection-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id91" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">Selection Page</span><a class="headerlink" href="#id93" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Il Verificatore di Attestati Elettronici che implementa la pagina:</p>
@@ -458,10 +465,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p><strong>QR Code Page (*solo per modalità cross-device*)</strong></p>
 <p>La QR Code Page è la pagina su cui atterra l'Utente che ha scelto l'Autenticazione tramite il Sistema IT-Wallet in un flusso cross-device, e ha lo scopo di invitare l'Utente a scannerizzare, con la propria Istanza del Wallet, il codice QR generato.</p>
 <p>Il Verificatore di Attestati Elettronici DEVE implementare la QR Code Page (flusso cross-device) resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
-<figure class="align-default" id="id93">
+<figure class="align-default" id="id95">
 <a class="reference internal image-reference" href="_images/QR-page.svg"><img alt="QR Code Page" src="_images/QR-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id93" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">QR Code Page</span><a class="headerlink" href="#id95" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Il Verificatore di Attestati Elettronici che implementa la pagina:</p>
@@ -484,10 +491,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p><strong>Waiting Page (*solo per modalità cross-device*)</strong></p>
 <p>La Waiting Page è la pagina che invita l'Utente a proseguire il processo di Autenticazione sulla propria Istanza del Wallet, a valle della scansione del codice QR.</p>
 <p>Il Verificatore di Attestati Elettronici DEVE implementare la Waiting Page (cross-device) resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
-<figure class="align-default" id="id95">
+<figure class="align-default" id="id97">
 <a class="reference internal image-reference" href="_images/waiting-page.svg"><img alt="Waiting Page" src="_images/waiting-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">Waiting Page</span><a class="headerlink" href="#id95" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.13 </span><span class="caption-text">Waiting Page</span><a class="headerlink" href="#id97" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Il Verificatore di Attestati Elettronici che implementa la pagina:</p>
@@ -498,10 +505,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p><strong>Thank You Page</strong></p>
 <p>La Thank You Page è la pagina sui cui l'Utente atterra una volta concluso il processo di Autenticazione attraverso la propria Istanza del Wallet e ha l'obiettivo di invitare l'Utente a proseguire nell'area riservata.</p>
 <p>Il Verificatore di Attestati Elettronici DEVE implementare la Thank You Page resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
-<figure class="align-default" id="id97">
+<figure class="align-default" id="id99">
 <a class="reference internal image-reference" href="_images/thank-you-page.svg"><img alt="Thank You Page" src="_images/thank-you-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.13 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id97" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.15 </span><span class="caption-text">Thank You Page</span><a class="headerlink" href="#id99" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Il Verificatore di Attestati Elettronici che implementa la pagina:</p>
@@ -513,10 +520,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 <p><strong>Error Page</strong></p>
 <p>La pagina di errore rappresenta quella tipologia di pagina su cui l'Utente atterra in caso di errori nel corso del flusso di Autenticazione, e ha lo scopo di comunicare all'Utente la natura di tali errori (es. errore tecnico, assenza di rete, malfunzionamento dell'Istanza del Wallet, consenso alla presentazione dei dati negato etc.) e di presentare le azioni che l'Utente può intraprendere. Per approfondimenti sulle casistiche di errore si rimanda alla sezione <a class="reference internal" href="#gestione-degli-errori"><span class="std std-ref">Gestione degli errori</span></a>.</p>
 <p>Il Verificatore di Attestati Elettronici DEVE implementare la Error Page resa disponibile nelle <a class="reference internal" href="official-resources.html#risorse-ufficiali"><span class="std std-ref">Risorse Ufficiali</span></a>.</p>
-<figure class="align-default" id="id99">
+<figure class="align-default" id="id101">
 <a class="reference internal image-reference" href="_images/error-page.svg"><img alt="Error Page" src="_images/error-page.svg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5.15 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id99" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.17 </span><span class="caption-text">Error Page</span><a class="headerlink" href="#id101" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Il Verificatore di Attestati Elettronici che implementa la pagina:</p>
@@ -548,10 +555,10 @@ Di seguito sono riportati i requisiti per la visualizzazione e l'utilizzo del PI
 </div></blockquote>
 <p>Varianti di Authentication Button</p>
 <p>Le modalità di integrazione dell'Authentication Button nella Discovery Page possono essere molteplici a seconda del layout della pagina stessa. Di seguito alcuni esempi illustrativi e non esaustivi di Discovery Page, rispettivamente con struttura a griglia, a tab e in lista.</p>
-<figure class="align-default" id="id101">
+<figure class="align-default" id="id103">
 <img alt="Esempi di layout di Discovery Page a griglia, a tab e in lista :width: 100%" src="_images/discovery-page-layouts.svg" />
 <figcaption>
-<p><span class="caption-number">Fig. 5.17 </span><span class="caption-text">Esempi di layout di Discovery Page a griglia, a tab e in lista</span><a class="headerlink" href="#id101" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.19 </span><span class="caption-text">Esempi di layout di Discovery Page a griglia, a tab e in lista</span><a class="headerlink" href="#id103" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Per maggiori dettagli sull'utilizzo dell'Authentication Button vedi la sezione <a class="reference internal" href="#autenticazione"><span class="std std-ref">Autenticazione</span></a>.</p>
