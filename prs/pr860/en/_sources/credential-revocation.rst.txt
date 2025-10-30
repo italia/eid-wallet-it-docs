@@ -220,11 +220,11 @@ Users MAY change their Digital Credential validity status by:
 .. note::
   If the User activates another Wallet Instance from the same Wallet Provider and using the same Wallet Solution and obtains a new PID, the previous PID MUST be revoked, and the previous Wallet Instance MUST transition to operational status.
 
-In case of the death of the User, Issuers and Wallet Provider MUST ensure that Digital Credentials and Wallet Instances owned by the User are revoked.
+In case of the death of the User, Issuers MUST ensure that Digital Credentials and Wallet Instances owned by the User are revoked.
 The User's death triggers a change in the validity status of the User's identification attributes contained in the public registry (ANPR). The User's death MUST produce the PID revocation. Therefore, the Authentic Source of the PID (ANPR) MUST notify the PID Provider that the User's attributes are no longer valid due to the death of the User. The Authentic Source and the PID Provider MUST use the mechanisms provided in the Section :ref:`credential-revocation:Status Update by Authentic Sources`.
 
 .. note::
-  Future versions of this technical specification will define how the information to (Q)EAA Issuers and Wallet Providers are propagated, according to national regulation. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
+  Future versions of this technical specification will define how the information to (Q)EAA Issuers are propagated, according to national regulation. Moreover, automated procedures for Credential revocation due to illegal activities will be defined in future specifications.
 
 Status Update by Wallet Instance
 """"""""""""""""""""""""""""""""

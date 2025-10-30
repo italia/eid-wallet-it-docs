@@ -218,11 +218,11 @@ Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettroni
 .. note::
   Se l'Utente attiva un'altra Istanza del Wallet dello stesso Fornitore di Wallet e utilizzando la stessa Soluzione di Wallet e ottiene un nuovo PID, il PID precedente DEVE essere revocato e la precedente Istanza del Wallet DEVE passare allo stato operativo.
 
-In caso di morte dell'Utente, i Fornitori di Attestati Elettronici e il Fornitore di Wallet DEVONO garantire che gli Attestati Elettronici e le Istanze del Wallet di proprietà dell'Utente siano revocati.
+In caso di morte dell'Utente, i Fornitori di Attestati Elettronici DEVONO garantire che gli Attestati Elettronici e le Istanze del Wallet di proprietà dell'Utente siano revocati.
 La morte dell'Utente comporta una modifica dello stato di validità degli attributi identificativi dell'Utente contenuti nel registro pubblico (ANPR). La morte dell'Utente DEVE produrre la revoca del PID. Pertanto, la Fonte Autentica del PID (ANPR) DEVE notificare al PID Provider che gli attributi dell'Utente non sono più validi a causa della morte dell'Utente. La Fonte Autentica e il PID Provider DEVONO utilizzare i meccanismi previsti nella Sezione :ref:`credential-revocation:Status Update by Authentic Sources`.
 
 .. note::
-  Le versioni future della presente specifica tecnica definiranno come le informazioni verso i Fornitori di (Q)EAA e i Fornitori di Wallet vengono propagate, in accordo alla normativa nazionale. Inoltre, saranno definite procedure automatizzate per la revoca degli Attestati dovuta ad attività illecite.
+  Le versioni future della presente specifica tecnica definiranno come le informazioni verso i Fornitori di (Q)EAA vengono propagate, in accordo alla normativa nazionale. Inoltre, saranno definite procedure automatizzate per la revoca degli Attestati dovuta ad attività illecite.
 
 Aggiornamento dello Stato da parte dell'Istanza del Wallet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
