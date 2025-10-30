@@ -25,6 +25,9 @@ L'oggetto JSON dei metadati la cui chiave è ``wallet_provider`` contiene i segu
     * - ``signed_jwks_uri``
       - CONDIZIONALE. URL che fa riferimento a un JWT firmato avente come payload il documento JWK Set dell'Entità per quel Tipo di Entità. Questo URL DEVE utilizzare lo schema https. Il JWT DEVE essere firmato utilizzando una Chiave di Entità di Federazione. Una risposta positiva dall'URL DEVE utilizzare il codice di stato HTTP 200 con il Content Type ``application/jwk-set+jwt``. DEVE essere presente se ``jwks`` e ``jwks_uri`` sono assenti.
       - `OID-FED`_.
+    * - **logo_uri**
+      - URL del logo dell’entità che verrà mostrato all’Utente durante le interazioni con l’istanza del Wallet. Il MIME type del logo DEVE essere ``application/svg``.
+      - `OID-FED`_ Sezione 5.2.2.
 
 Di seguito è riportato un esempio non normativo della Entity Configuration per un Fornitore di Wallet.
 
