@@ -338,7 +338,7 @@ During the communication subphase, the Relying Party Instance has the option to 
     &quot;itemsRequest&quot;: 
     24(&lt;&lt;  % Embedded CBOR data item
       {
-        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_attestation&quot;,
       }
     &gt;&gt;)
     }
@@ -561,10 +561,10 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
         }
       },
       {
-        &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_attestation&quot;,
         &quot;issuerSigned&quot;: {
           &quot;nameSpaces&quot;: {
-            &quot;it.wallet.trust-registry.WalletAttestation&quot;: [
+            &quot;it.wallet.trust-registry.wallet_attestation&quot;: [
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 0,
@@ -626,7 +626,7 @@ Refer to (<a class="reference internal" href="test-plans-wallet-provider.html#wa
                       -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
                     }
                   },
-                  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.WalletAttestation&quot;,
+                  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.wallet_attestation&quot;,
                   &quot;validityInfo&quot;: {
                     &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
                     &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
@@ -1067,7 +1067,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>Requesting the Wallet Attestation</strong></p>
-<p>The Relying Party requesting a Wallet Attestation MUST add an object in the <strong>docRequest</strong> array having the <code class="docutils literal notranslate"><span class="pre">docType</span></code> set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>. The Relying Party MUST NOT include the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> parameter in the request (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
+<p>The Relying Party requesting a Wallet Attestation MUST add an object in the <strong>docRequest</strong> array having the <code class="docutils literal notranslate"><span class="pre">docType</span></code> set to <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{wallet_attestation}</span></code> as described in <a class="reference internal" href="registry-catalogue.html#digital-credentials-catalogue-structure"><span class="std std-ref">Digital Credentials Catalogue Structure</span></a>. The Relying Party MUST NOT include the <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> parameter in the request (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
 </div>
 </section>
 <section id="mdoc-response">
@@ -1249,7 +1249,7 @@ If early <code class="docutils literal notranslate"><span class="pre">SessionEst
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 28/10/2025.
+      Last updated on 31/10/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

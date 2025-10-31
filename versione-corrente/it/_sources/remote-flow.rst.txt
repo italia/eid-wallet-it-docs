@@ -191,7 +191,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "id": "personal id data",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": [ "https://trust-registry.it-wallet.example.it/v1/personidentificationdata" ]
+              "vct_values": [ "urn:eudi:pid:it:1" ]
             },
             "claims": [
               {"path": ["given_name"]},
@@ -203,7 +203,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "id": "wallet attestation",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": ["https://trust-registry.it-wallet.example.it/v1/WalletAttestation"]
+              "vct_values": ["urn:eudi:WalletAttestation:it:1"]
             },
             "claims": [
               {"path": ["wallet_link"]},
