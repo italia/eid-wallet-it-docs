@@ -83,6 +83,23 @@ Di seguito un esempio di flusso di Attivazione
     Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
 
 
+.. only:: format_html
+
+  .. figure:: ./images/svg/A4-Flusso-Attivazione-02.svg
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    :width: 100%
+
+    Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Attivazione-02.pdf
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+    :width: 100%
+
+    Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+
+
 
 Focus sul PID – Dati di Identificazione della Persona
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
