@@ -33,7 +33,7 @@
             },
             "svg_templates": [
               {
-                "uri": "https://authsource.example.com/.well-known/templates/it/personidentificationdata.svg",
+                "uri": "https://authsource.example.com/.well-known/templates/it/pid.svg",
                 "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
                 "properties": {
                   "orientation": "landscape",
@@ -60,7 +60,7 @@
             },
             "svg_templates": [
               {
-                "uri": "https://authsource.example.com/.well-known/templates/en/personidentificationdata.svg",
+                "uri": "https://authsource.example.com/.well-known/templates/en/pid.svg",
                 "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
                 "properties": {
                   "orientation": "landscape",
