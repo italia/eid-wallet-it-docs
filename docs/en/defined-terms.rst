@@ -335,7 +335,7 @@ Below is the description of acronyms and definitions which are useful for furthe
 
     **Wallet App Attestation**
     **Wallet Attestation**
-      Data object issued by a Wallet Provider proving the integrity of the Wallet Unit.
+      Data object issued by a Wallet Provider proving the integrity of the Wallet Application.
       Specific to IT-Wallet. 
 
     **Digital Credential Catalog**
