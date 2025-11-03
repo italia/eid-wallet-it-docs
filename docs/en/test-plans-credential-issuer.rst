@@ -395,7 +395,7 @@ This section provides the set of test cases designed for technical implementers 
   * - CI_083
     - Issuance, Security
     - Key Material Proof of Possession Validation in the Credential Response
-    - Credential Issuer validates the proof of possession for the key material to which the new Credential will be bound, according to `OpenID4VCI`_ Section 8.2.2.
+    - Credential Issuer validates the proof of possession for the key material to which the new Credential will be bound, according to `OpenID4VCI`_ Appendix F.4.
   * - CI_084
     - Issuance, Security
     - Credential Creation and Binding in the Credential Response

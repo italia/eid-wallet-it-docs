@@ -900,9 +900,6 @@ In the following table are listed HTTP Status Codes and related error codes that
       - ``credential_request_denied``
       - The Credential Request has not been accepted by the Credential Issuer. The Wallet SHOULD treat this error as unrecoverable, meaning if received from a Credential Issuer the Credential(s) cannot be issued. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
-      - ``issuance_pending``
-      - Only in case of deferred flow. The Credential Issuer cannot fulfill the request because the Credential is not yet available for the issuance. Section 9.3 of [`OpenID4VCI`_].
-    * - *400 Bad Request* [REQUIRED]
       - ``invalid_transaction_id``
       - Only in case of deferred flow. The Credential Issuer cannot fulfill the request because the Credential Request contains an invalid ``transaction_id``. Section 9.3 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
@@ -1003,7 +1000,7 @@ The Notification Endpoint is used by the Wallet to notify the Credential Issuer 
 
 To uphold privacy, the ``event_description`` in the notification SHOULD NOT contain any information that could disclose User behavior or reveal the status of the personal device (e.g., storage space full).
 
-This endpoint MUST be protected using a DPoP Access Token. TLS for the confidentiality of the HTTP transport is REQUIRED according to Section 10 of [`OpenID4VCI`_].
+This endpoint MUST be protected using a DPoP Access Token. TLS for the confidentiality of the HTTP transport is REQUIRED according to Section 11 of [`OpenID4VCI`_].
 
 
 Notification Request
@@ -1021,7 +1018,7 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
     - **Reference**
   * - **notification_id**
     - REQUIRED. It MUST be equal to the ``notification_id`` value returned in the Credential Response by the Credential Issuer.
-    - Section 10.1 of [`OpenID4VCI`_].
+    - Section 11.1 of [`OpenID4VCI`_].
   * - **event**
     - REQUIRED. Type of the notification event. It MUST be a case sensitive string and it MUST support the following values:
 
@@ -1029,20 +1026,20 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
       - *credential_deleted*: when the unsuccessful Credential issuance was caused by a user action.
       - *credential_failure*: in all other unsuccessful cases.
 
-    - Section 10.1 of [`OpenID4VCI`_].
+    - Section 11.1 of [`OpenID4VCI`_].
   * - **event_description**
     - OPTIONAL. Human-readable ASCII [USASCII] text providing additional information, used to inform about the event that occurred. Values for the event_description parameter MUST NOT include characters outside the set *%x20-21 / %x23-5B / %x5D-7E*.
-    - Section 10.1 of [`OpenID4VCI`_].
+    - Section 11.1 of [`OpenID4VCI`_].
 
 Notification Response
 .....................
 
-The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 10.2 of [`OpenID4VCI`_].
+The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 11.2 of [`OpenID4VCI`_].
 
-In case of errors, what is described in Section 10.3 of [`OpenID4VCI`_] MUST apply.
+In case of errors, what is described in Section 11.3 of [`OpenID4VCI`_] MUST apply.
 
 In case of the Notification Request does not contain a valid Access Token, the Notification Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
-If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 10.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 11.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
@@ -1071,10 +1068,10 @@ In the following table are listed HTTP Status Codes and related error codes that
       - **Description**
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_notification_id``
-      - The Credential Issuer cannot fulfill the request because of invalid ``notification_id`` parameter. Section 10.3 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because of invalid ``notification_id`` parameter. Section 11.3 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_notification_request``
-      - The Credential Issuer cannot fulfill the request because of missing parameters, invalid parameter or request malformed. Section 10.3 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because of missing parameters, invalid parameter or request malformed. Section 11.3 of [`OpenID4VCI`_].
     * - *500 Internal Server Error* [REQUIRED]
       - ``server_error``
       - The Credential Issuer encountered an internal problem.

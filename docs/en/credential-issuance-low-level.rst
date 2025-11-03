@@ -448,7 +448,7 @@ Below is a non-normative example of a successful response containing a batch of 
 
 
 
-**Step 25 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
+**Step 25 (Notification Request)**: According to Section 11.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
 
 .. code-block:: http
 
@@ -469,7 +469,7 @@ Below is a non-normative example of a successful response containing a batch of 
 
 
 
-**Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
+**Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 11.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
 
 
 .. code-block:: http

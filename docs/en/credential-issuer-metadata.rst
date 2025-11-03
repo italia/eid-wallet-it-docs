@@ -67,37 +67,37 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
   * - **Claim**
     - **Description**
   * - **credential_issuer**
-    - The Credential Issuer identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 11.2.1 and 11.2.3.
+    - The Credential Issuer identifier. It MUST be a case sensitive URL using HTTPS scheme as defined in `OpenID4VCI`_ Sections 12.2.1 and 12.2.4.
   * - **logo_uri**
     - URL of the entity's logo that will be shown to the User during Wallet Instance interactions. See `OID-FED`_ Section 5.2.2. The logo mime type MUST be ``application/svg``.
   * - **credential_endpoint**
-    - URL of the Credential endpoint. See `OpenID4VCI`_ Section 11.2.3.
+    - URL of the Credential endpoint. See `OpenID4VCI`_ Section 12.2.4.
   * - **nonce_endpoint**
     - URL of the Nonce Endpoint, as defined in Section 7 of `OpenID4VCI`_.
   * - **revocation_endpoint**
     - URL of the revocation endpoint. See :rfc:`8414#section-2`.
   * - **deferred_credential_endpoint**
-    - URL of the deferred Credential endpoint, as defined in Section 11.2.3 of `OpenID4VCI`_.
+    - URL of the deferred Credential endpoint, as defined in Section 12.2.4 of `OpenID4VCI`_.
   * - **status_assertion_endpoint**
     - It MUST be an HTTPs URL indicating the endpoint where the Wallet Instances can request Status Assertions. See Section :ref:`credential-revocation:Digital Credential Lifecycle` for more details. (`OAUTH-STATUS-ASSERTION`_ Section 11.1.).
   * - **notification_endpoint**
-    - It MUST be an HTTPs URL indicating the notification endpoint. See Section 11.2.3 of [`OpenID4VCI`_].
+    - It MUST be an HTTPs URL indicating the notification endpoint. See Section 12.2.4 of [`OpenID4VCI`_].
   * - **authorization_servers**
     - OPTIONAL. Array of strings, where each string is an identifier of the OAuth 2.0 Authorization Server (as defined in [:rfc:`8414`]) the Credential Issuer relies on for authorization. If this parameter is omitted, the entity providing the Credential Issuer is also acting as the Authorization Server.
   * - **display**
-    - See `OpenID4VCI`_ Section 11.2.3. Array of objects containing display language properties. The parameters that MUST be included are:
+    - See `OpenID4VCI`_ Section 12.2.4. Array of objects containing display language properties. The parameters that MUST be included are:
 
         - **name**: String value of a display name for the Credential Issuer.
         - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
 
   * - **credential_configurations_supported**
-    - JSON object that outlines the details of the Digital Credentials supported by the Credential Issuer. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Digital Credential. This identifier is utilized to inform the Wallet Instance which Digital Credential can be provided by the Credential Issuer. The associated value within the object MUST contain metadata specific to that Digital Credential, as defined following. See `OpenID4VCI`_ Sections 11.2.3 and A.3.2.
+    - JSON object that outlines the details of the Digital Credentials supported by the Credential Issuer. It includes a list of name/value pairs, where each name uniquely identifies a specific supported Digital Credential. This identifier is utilized to inform the Wallet Instance which Digital Credential can be provided by the Credential Issuer. The associated value within the object MUST contain metadata specific to that Digital Credential, as defined following. See `OpenID4VCI`_ Sections 12.2.4 and A.3.2.
 
         - **format**: String identifying the format of this Credential. The Digital Credential MUST support the value string "*dc+sd-jwt*" in case of SD-JWT VC (See `OpenID4VCI`_ Section A.3.1.) and "*mso_mdoc*" in case of mdoc (see `OpenID4VCI`_ Section A.2.1.).
-        - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. If the Credential is included in the Digital Credentials Catalog the *scope* value MUST match with the ``credential_type`` parameter defined in :ref:`registry:Digital Credentials Catalog Structure`. [See `OpenID4VCI`_ Section 11.2.3].
+        - **scope**: JSON String identifying the supported *scope* value. The Wallet Instance MUST use this value in the Pushed Authorization Request. Scope values MUST be the entire set or a subset of the *scope* values in the *scopes_supported* parameter of the Authorization Server. If the Credential is included in the Digital Credentials Catalog the *scope* value MUST match with the ``credential_type`` parameter defined in :ref:`registry:Digital Credentials Catalog Structure`. [See `OpenID4VCI`_ Section 12.2.4].
         - **cryptographic_binding_methods_supported**: JSON Array of case sensitive strings that identify the representation of the cryptographic key material that the issued Credential is bound to. The Credential Issuer MUST support the value "*jwk*" for "dc+sd-jwt" format and "*cose_key*" for "mso_mdoc".
         - **credential_signing_alg_values_supported**: JSON Array of case sensitive strings that identify the algorithms that the Credential Issuer MUST support to sign the issued Credential. See Section :ref:`algorithms:cryptographic algorithms` for more details.
-        - **proof_types_supported**: JSON object which provides detailed information about the key proof(s) supported by the Credential Issuer. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The Credential Issuer MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Section 8.2. The value associated with each name/value pair is a JSON object containing metadata related to the key proof(s). The Credential Issuer MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`algorithms:cryptographic algorithms` for more details about the supported algorithms).
+        - **proof_types_supported**: JSON object which provides detailed information about the key proof(s) supported by the Credential Issuer. It consists of a list of name/value pairs, where each name uniquely identifies a supported proof type. The Credential Issuer MUST support at least "*jwt*" as defined in `OpenID4VCI`_ Appendix F.1. The value associated with each name/value pair is a JSON object containing metadata related to the key proof(s). The Credential Issuer MUST support at least the parameter **proof_signing_alg_values_supported** which MUST be a JSON Array of case sensitive strings that identify the supported algorithms (see Section :ref:`algorithms:cryptographic algorithms` for more details about the supported algorithms).
         - **vct**: REQUIRED only if ``format`` is set to "*dc+sd-jwt*". As defined in [:ref:`credential-data-model:SD-JWT-VC Credential Format`].
         - **doctype**: REQUIRED only if ``format`` is set to "*mso_mdoc*". As defined in [:ref:`credential-data-model:mDoc-CBOR Credential Format`].
         - **credential_metadata**: REQUIRED only if the Digital Credential is not included in the Digital Credentials Catalog. Object containing information relevant to the usage and display of issued Credentials. The parameters that MUST be included are
