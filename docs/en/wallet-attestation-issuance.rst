@@ -9,7 +9,7 @@ This section describes how the Wallet Provider issues a Wallet App and a Wallet 
 .. plantuml:: plantuml/wallet-attestation-issuance.puml
     :width: 99%
     :alt: The figure illustrates the Sequence Diagram for Wallet App and Wallet Unit Attestations acquisition.
-    :caption: `Sequence Diagram for Wallet App and Wallet Unit Attestations acquisition. <https://www.plantuml.com/plantuml/svg/fLPDR-Cs4BtpLmouXoQ0SYdG7WAqM2DDaw35rjXicei1OoIEBS8ogPAKq_JNbwD84QtGwHPx2KBgpSUyUJFqHn_GXMxV2Eo2DTs-92TghGWsreRI_Yt4Tyk8q9LkqGGli0hMWNpmv2IWXyv7WtP2W7p4fg40ToQwDXNrA6nRE4RzHi-m284YA6XhOB6yyprqXy731zywRRPRHsIExNwXWwueUW-qTJeympqvlfaSODR1FBsbimUjo469rOwCwatBQYS4LtJnSypu4ZxJNntv00Y6di2sv5wI3JM6bN7ngtRauN6n03GA7XyMm0Jf0mRYceM8VmPVLpLLEz0Rk7BFRR1RXssjAxX5fvxG4J0XA_C5jt0cPJtShdVql0wubVAyW1nbHH_u3Idy2TWh7b0tM3QKfd93XYkX287AaI8JD3OGOq6Bsa6mK19W7ueKQ0C3QGz6XpG5JfKpRBjIoWA6WzE7c6y-dW5gQzgJI-DjhEiFfUsC6cCjsdOUwjLqdGPDhvFmmXaR2Eo17BUYYBs53x_VtTn-kVbyVVr9lFHZhWRjWTK2TWEX9lYLrDXpvjcM0RK17JpiAQ32W8ACuaWZmJ7Cf1ifZUKHa9CgUed5FproeYQ1zby7vgPRHSSkClH6TDLeCc7DYQrhzFNwgKFPI_l-Tl7z3p-UlJei86dTELUNDSUJvjbsd6VpUaVnIxjScKJlNcyDXix54F0JyEdix5HPnScC2yYEK7ezQMLA6eE_pFYKaXNAKouOCW8JslKuU6lqdXphHSgLUT5piD2J1htrrDcSqHH9O1DuMooCSbOhk7Wp_fl6FZ5yDi9YqXglqg6stN_KzX0ZCeQHi-AOA1pZvWfZowcmZ06yYWAEF8yRXdiXvT3kZ7rnl5Y4ebc9r7XYilGVzmDH-5L4lT_raPXlQZexcHnzLVyP-xyeo_ZAq4P6PTS6o-s2GmvRwrBAnCaqXE_gjNYJMm7viIvWMY8havdJaxkbEBNgfyLxJqP1clziytuQdmG-5P1z4rX8izyme3reerav-XzI_ROynF-LwBmsMtXRXBYE47uMqcN_9viSB_lSnncH72rTrhmpitRv3kMW-SxaaIdb-Gok734q-HKaqaSiqPTlhV4avezPSem6uYCPrUsRVm40>`_
+    :caption: `Sequence Diagram for Wallet App and Wallet Unit Attestations acquisition. <https://www.plantuml.com/plantuml/svg/fLPDR-Cs4BtpLmouXoQ0SYdG7WAqM2DDaw35rjYicui1OoIEBS8ogPAKq_JNbwF84ItJsnHx2KBgpSUyUJFqHn_GXMxN2Eo2DTsk92TghGZMreRI_Yt4T_E8q9LkqGGli0hMWLnuSXBGG-UZGJiYG3vXqr201nDTcufw5BOj7AD-enUOXK0H5BGrC9i_-1wwnU3XWs-TDfkD8pB7Th_GNbSKlGVQE1rUu94StumESEeWczxSsRrMvA34Qaj6zQPbjHM2AxhwEMPy3P_fhuvy00H3ps1RSg_9XXh3qhZuLJloy3IR0He5JuiPC45wZu6uPY7Ydy7NJKtL5lGQRjnB6-p6OLlh2kxHgMTq14p8qdp13Ln8MG-tgoszh09kfBmi84TPqGS-8OK_0Nl5FUe6ouRILEx8S2KK8L0vKcI2nWPYB6XHEmWMIWBiGv42RM0WRM5qI5FWL3d3jYkbB60uEBsF-URZ6Q2sfXsvDDxQklvGsiweGwnPsqv3lPckqg39THfUE6C3WTsJurOKiRVmuVU7k_ilTvzlRp-9rtvCrQ0zi5h0hY7K1B-IElISURPbG6r01myx2gWme22ZEDA1u1Xcr8sKnl88o54LlSJYdnuvKfD0-wy3S-EjecCN6NeZkceqcR3Yn5Or-dhrtA7ifVruF_l-XnyltXmMaBJkaglBckDvyrmxBhDvVKNnSpjVcaJlNcyCXix54F0JyEdYubnPnTcC2yYFK78zQcLC6eE_plYKaXNAKouOSW0cjEl3uAtGUtAi5ocNvbNFmK9F6lJMOsTpHcCaWKtWRJ4pobcjuEfa_DUDVMRuP8J5g3LUfKDjs_-eRH4ZCeQHa-AOA3p4pHN6bcDX6GDu4mKSUJvi6Ew5b4ExC_R5yM8HYYObKkE9oT9_F0v4uRk8Ua_N5z_OTNOoEdgN01ZxlpZB-ChmHaPbzmRhxOf33clhMih4oJY5NnLiSP9R0VcvBc3S8akJ6zHpowKuj-l7pVj8Ha6I_tJrVZgy2Nmg8Fiei98cFs90Uz16itJqFwJwTRcF_olHUMqsS5g4k8qGVXVIRVydcnnj--p72P4SBTtMl3JpTjaEvQ6vpkIHAUNv36uSCJJv6IJILopHbs-jyIIchrboZ0RY8ndLxPf_0G00>`_
 
 
 .. .. figure:: ../../images/wallet_instance_acquisition.svg
@@ -28,9 +28,9 @@ This section describes how the Wallet Provider issues a Wallet App and a Wallet 
   3. Generate an ephemeral asymmetric key pair for Wallet App Attestation (``ephemeral_key_pub``, ``ephemeral_key_priv``), linking the public key to the attestation  (:ref:`WP_026 <wallet-instance-testcases>`).
   4. Verify the Wallet Provider's federation membership and retrieve its metadata (:ref:`WP_023 <wallet-instance-testcases>`).
 
-**Steps 5-7 (Nonce Retrieval)**: The Wallet Instance solicits a ``nonce`` from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). This ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
+**Steps 5-7 (Nonce Retrieval)**: The Wallet Instance requests a ``nonce`` value from the :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` of the Wallet Provider Backend (:ref:`WP_140b <wallet-instance-optional-testcases>`). The ``nonce`` is required to be unpredictable and serves as the main defense against replay attacks. 
 
-The ``nonce`` MUST be produced in a manner that ensures its single-use within a predetermined time frame.
+The ``nonce`` MUST ensures single-use within a predetermined time frame.
 
 Upon a successful request, the Wallet Provider generates and returns the nonce value to the Wallet Instance.
 
@@ -75,7 +75,7 @@ Below is a non-normative example of the ``client_data_waa`` JSON object.
 
 **Steps 21-22 (Wallet App and Wallet Unit Attestation Issuance Request)**: The Wallet Instance:
 
-* Constructs the Wallet App and Wallet Unit Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion`` for Wallet App Attestation, ``attested_key``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet App Attestation Request Body <table_key_binding_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
+* Constructs the Wallet App and Wallet Unit Attestation Request in the form of a JWT. This JWT includes the ``integrity_assertion`` for Wallet App Attestation, ``attested_key``, ``hardware_signature``, ``nonce``, ``hardware_key_tag``, ``cnf`` and other configuration related parameters (see :ref:`Table of the Wallet App and Wallet Unit Attestation Request Body <table_waa_wua_request_claim>`) and is signed using the private key of the initially generated ephemeral key pair (:ref:`WP_140–141 <wallet-instance-optional-testcases>`).
 * Submits the Wallet App Attestation Request to the :ref:`wallet-provider-endpoint:Wallet Attestation Issuance endpoint` of the Wallet Provider Backend.
 
 .. note:: 

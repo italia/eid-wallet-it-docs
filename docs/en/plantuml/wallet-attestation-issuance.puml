@@ -53,7 +53,7 @@ deactivate kats
 
 else if iOS - Key attestation flow for credential key
 
-app->aats: ""client_data_hash""for WUA
+app->aats: ""client_data_hash"" for WUA
 aats->aats: Generate ""integrity_assertion""\nbound to nonce for for WUA
 aats-->app: ""integrity_assertion"" for WUA 
 app->app : Generate ""attested_key""= sign(""integrity_assertion"",""key_priv"")
