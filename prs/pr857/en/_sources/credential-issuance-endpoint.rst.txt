@@ -145,13 +145,13 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - A method that was used to derive **code challenge**. It MUST be set to ``S256``.
       - :rfc:`7636#section-4.3`.
     * - **scope**
-      - JSON String. String specifying a unique identifier of the Credential regardless of its format. It MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. Unique identifier value MUST match the `credential_type` parameter of the :ref:`registry:Digital Credentials Catalog`. For instance, in the case of the PID, it may be set to ``PersonIdentificationData`` while in case of mobile driving licence ``mDL``. Since it may be multivalued, when this occurs each value MUST be separated by a space.
+      - JSON String. String specifying a unique identifier of the Credential regardless of its format. It MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. Unique identifier value MUST match the `credential_type` parameter of the :ref:`registry:Digital Credentials Catalog`. For instance, in the case of the PID, it may be set to ``pid`` while in case of mobile driving licence ``mDL``. Since it may be multivalued, when this occurs each value MUST be separated by a space.
       - :rfc:`6749`
     * - **authorization_details**
       - Array of JSON Objects. Each JSON Object MUST include the following claims:
 
             - **type**: it MUST be set to ``openid_credential``,
-            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_PersonIdentificationData`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
+            - **credential_configuration_id**: JSON String. String specifying a unique identifier of the Credential in a specific format that MUST be mapped in the `credential_configurations_supported` metadata claim of the Credential Issuer. For instance,``dc_sd_jwt_pid`` can be used for PID in SD-JWT VC format, ``dc_sd_jwt_mDL`` for mobile driving licence in SD-JWT VC format and ``mso_mdoc_mDL`` for mobile driving license in mdoc format.
 
         When eID Substantial Authentication with MRTD Verification is requested, an additional JSON Object MUST be included with the following claims:
 
@@ -767,7 +767,7 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
     - REQUIRED when an Authorization Details of type *openid_credential* was returned from the Token Response. It MUST NOT be used otherwise. This MUST be set with one of the value obtained in the ``credential_identifiers`` claim of the Token Response. It MUST NOT be used if ``credential_configuration_id`` is present.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **credential_configuration_id**
-    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID, it can be set to ``PersonIdentificationData``.
+    - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID in SD-JWT VC format, it can be set to ``dc_sd_jwt_pid``.
     - Section 8.2 of [`OpenID4VCI`_].
   * - **proof**
     - REQUIRED. JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:

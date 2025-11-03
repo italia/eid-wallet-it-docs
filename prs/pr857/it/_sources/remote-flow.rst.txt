@@ -191,7 +191,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "id": "personal id data",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": [ "https://trust-registry.it-wallet.example.it/v1/personidentificationdata" ]
+              "vct_values": [ "urn:eudi:pid:it:1" ]
             },
             "claims": [
               {"path": ["given_name"]},
@@ -203,7 +203,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "id": "wallet attestation",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": ["https://trust-registry.it-wallet.example.it/v1/WalletAttestation"]
+              "vct_values": ["urn:eudi:WalletAttestation:it:1"]
             },
             "claims": [
               {"path": ["wallet_link"]},
@@ -446,7 +446,7 @@ I parametri del payload JWT sono descritti qui:
 
 .. note:: **Richiesta dell'Attestazione del Wallet**
   
-  La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro ``claims`` nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro ``vct_values`` nella query DCQL, il quale DEVE essere impostato al valore definito nella :ref:`registry-catalogue:Struttura del Catalogo degli Attestati Elettronici` (:ref:`RPR-114 <test-plans-remote-presentation>`).
+  La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro ``claims`` nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro ``vct_values`` nella query DCQL, il quale DEVE essere impostato al valore definito nella :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` (:ref:`RPR-114 <test-plans-remote-presentation>`).
 
 Errori dell'Endpoint URI Request
 --------------------------------
