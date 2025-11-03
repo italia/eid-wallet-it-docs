@@ -392,7 +392,7 @@ This section lists the test cases from Sections:
      - Wallet Instance verifies that every requested ``credential_configuration_id`` appears in the Credential Issuer’s ``credential_configurations_supported`` metadata; missing IDs cause the offer to fail.
    * - WP_051
      - Issuance, Interoperability
-     - Credential Request using OAuth2 code flow
+     - Credential Request using OAuth 2.0 code flow
      - Wallet Instance successfully requests PID/(Q)EAA from the PID/(Q)EAA Provider using the Authorization Code Flow per `OpenID4VCI`_.
    * - WP_052
      - Issuance, Interoperability
@@ -655,7 +655,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_083a
      - Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
-     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, ``client_id_schemes_supported``, and ``authorization_endpoint`` per Section 9.1 of [`OpenID4VP`_].
+     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, ``client_id_schemes_supported``, and ``authorization_endpoint`` per Section 10.1 of [`OpenID4VP`_].
    * - WP_083b
      - Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
@@ -711,7 +711,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_092
      - Remote-flow, Presentation, Security
      - Encrypt Authorization Response
-     - Wallet Instance encrypts the Authorization Response JWT per Section 7.3 of [`OpenID4VP`_] using the Relying Party’s public key.
+     - Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [`OpenID4VP`_] using the Relying Party’s public key.
    * - WP_093
      - Remote-flow, Presentation, Security
      - Construct ``vp_token`` with ``state``

@@ -288,7 +288,7 @@ SR-W-20
 The Wallet Instance discovers the trusted Issuers using trusted third party resources, such as the Federation API (e.g., using the Subordinate Listing Endpoint of the Trust Anchor and its Intermediates), inspecting the Issuer metadata and Trust Marks for filtering the PID Provider.
 
 The Issuer's information is displayed to the User during the issuance process and can be subsequently read by the User as it is inside the issued Credential.
-In addition to the Issuer's information, the Digital Credential Metadata Type also contains information on the Authentic Source.
+In addition to the Issuer's information, the Digital Credential Type Metadata also contains information on the Authentic Source.
 
 SR-W-30
 ^^^^^^^

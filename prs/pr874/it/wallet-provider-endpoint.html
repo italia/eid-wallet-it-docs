@@ -449,7 +449,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.</p></td>
-<td><p><span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.8 e <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> Sezione 3.5.</p></td>
+<td><p><span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.8 e <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a> Sezione 3.5.</p></td>
 </tr>
 </tbody>
 </table>
@@ -485,11 +485,11 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 <tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
 <td><p>OPZIONALE. Stringa contenente un URL per ottenere ulteriori informazioni sul Wallet e sul Fornitore di Wallet.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
 <td><p>OPZIONALE. Stringa contenente un nome leggibile dall'uomo del Wallet.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>sub</strong></p></td>
 <td><p>OBBLIGATORIO. Identificatore dell'Istanza di Wallet che è l'impronta digitale della JWK della Wallet Attestation.</p></td>
@@ -570,7 +570,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 <tr class="row-even"><td><p><strong>x5c</strong></p></td>
 <td><p>OPZIONALE. Contiene il certificato di chiave pubblica X.509 o la catena di certificati (<span class="target" id="index-17"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc5280.html"><strong>RFC 5280</strong></a>) corrispondente alla chiave utilizzata per firmare digitalmente il JWT.</p></td>
-<td><p><span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.8 e <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a> Sezione 3.5.</p></td>
+<td><p><span class="target" id="index-18"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7515.html"><strong>RFC 7515</strong></a> Sezione 4.1.8 e <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a> Sezione 3.5.</p></td>
 </tr>
 </tbody>
 </table>
@@ -605,16 +605,16 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <td><p><span class="target" id="index-25"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7800.html"><strong>RFC 7800</strong></a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>vct</strong></p></td>
-<td><p>OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato come <code class="docutils literal notranslate"><span class="pre">{url_trust_anchor}/{versione}/WalletAttestation</span></code>; si veda <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli.</p></td>
-<td><p>Sezione 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/06/">SD-JWT-VC</a>.</p></td>
+<td><p>OBBLIGATORIO. Il valore del tipo di Credenziale DEVE essere una Stringa URL HTTPS e DEVE essere impostato come <code class="docutils literal notranslate"><span class="pre">{url_trust_anchor}/{versione}/wallet_attestation</span></code>; si veda <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli.</p></td>
+<td><p>Sezione 3.2.2.2 <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/">SD-JWT-VC</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>_sd</strong></p></td>
 <td><p>OBBLIGATORIO. Array JSON contenente un elenco di tutti i digest delle divulgazioni.</p></td>
-<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22">SD-JWT</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>sd_alg</strong></p></td>
 <td><p>OBBLIGATORIO. Stringa contenente l'algoritmo di hash utilizzato dal Fornitore di Wallet per generare i digest delle divulgazioni.</p></td>
-<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-14">SD-JWT</a>.</p></td>
+<td><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22">SD-JWT</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>sub</strong></p></td>
 <td><p>OPZIONALE. Identificatore dell'Istanza di Wallet che puo' essere l'impronta del JWK della Wallet Attestation.</p></td>
@@ -642,11 +642,11 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <tbody>
 <tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
 <td><p>OPZIONALE. Stringa contenente un URL per ottenere ulteriori informazioni sul Wallet e sul Fornitore di Wallet.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
 <td><p>OPZIONALE. Stringa contenente un nome leggibile dall'uomo del Wallet.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -690,7 +690,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 <span class="w">    </span><span class="nt">&quot;_sd_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha-256&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687281195</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1687288395</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:wallet_attestation:it:1&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vbeXJksM45xphtANnCiG6mCyuU4jfGNzopGuKvogg9c&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;aal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-list.eu/aal/high&quot;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -699,7 +699,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </section>
 <section id="wallet-attestation-mdoc">
 <h3><span class="section-number">13.1.4.5. </span>Wallet Attestation mdoc<a class="headerlink" href="#wallet-attestation-mdoc" title="Link to this heading">¶</a></h3>
-<p>Questa descrizione specializza ulteriormente le linee guida fornite in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> per rappresentare la Wallet Attestation in formato mdoc. Quest'ultimo DEVE avere il <code class="docutils literal notranslate"><span class="pre">docType</span></code> alorizzato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}.{versione}</span></code>; si veda <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli.</p>
+<p>Questa descrizione specializza ulteriormente le linee guida fornite in ref:<cite>pid-eaa-data-model:MDOC-CBOR Credential Format</cite> per rappresentare la Wallet Attestation in formato mdoc. Quest'ultimo DEVE avere il <code class="docutils literal notranslate"><span class="pre">docType</span></code> alorizzato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{wallet_attestation}.{versione}</span></code>; si veda <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli.</p>
 <p>I <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> per gli Oggetti Json del nameSpace domestico sono definiti come segue:</p>
 <table class="longtable docutils align-default" id="id1">
 <caption><span class="caption-number">Tabella 13.1 </span><span class="caption-text">it.wallet.trust-registry.WalletAttestation.1</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
@@ -725,18 +725,18 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
 </tr>
 <tr class="row-even"><td><p><strong>wallet_link</strong></p></td>
 <td><p>OPZIONALE. Stringa JSON contenente un URL per ottenere ulteriori informazioni sul Wallet e sul Fornitore di Wallet.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>wallet_name</strong></p></td>
 <td><p>OPZIONALE. Stringa JSON, DEVE essere l'Identificatore del Fornitore di Wallet.</p></td>
-<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+<td><p><a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 </tbody>
 </table>
 <p>Di seguito è riportato un esempio non normativo della Wallet Attestation mdoc in notazione diagnostica CBOR:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  {
     &quot;nameSpaces&quot;: {
-      &quot;it.wallet.trust-registry.WalletAttestation&quot;: [
+      &quot;it.wallet.trust-registry.wallet_attestation&quot;: [
         24(&lt;&lt;
           {
             &quot;digestID&quot;: 0,
@@ -782,7 +782,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
             &quot;version&quot;: &quot;1.0&quot;,
             &quot;digestAlgorithm&quot;: &quot;SHA-256&quot;,
             &quot;valueDigests&quot;: {
-              &quot;it.wallet.trust-registry.WalletAttestation&quot;: {
+              &quot;it.wallet.trust-registry.wallet_attestation&quot;: {
                 0: h&#39;2f89a12f690fe570b9b18d96acd231a70b5cb97cef5edad81973b99eeb145c2f&#39;,
                 1: h&#39;7541a38f61d686f72ca8fb9da87a3db9fc65d28caa4e0973b0a3d66181ff7997&#39;,
                 2: h&#39;7049c3bfcd96d62833f2fdb892b12cb6fd983b4c3bf40b0c39cb233bfeb5b75f&#39;,
@@ -798,7 +798,7 @@ Quando si recuperano tutte le Istanze di Wallet, la risposta DEVE restituire un 
                 -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
               }
             },
-            &quot;docType&quot;: &quot;it.wallet.trust-registry.WalletAttestation&quot;,
+            &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_attestation&quot;,
             &quot;validityInfo&quot;: {
               &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
               &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
@@ -919,7 +919,7 @@ Un Fornitore di Attestati Elettronici di Dati di Identificazione Personale che �
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 30/10/2025.
+      Ultimo aggiornamento 03/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
