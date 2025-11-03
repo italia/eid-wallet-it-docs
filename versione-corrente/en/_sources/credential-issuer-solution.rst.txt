@@ -74,7 +74,7 @@ Following the `OpenID4VCI`_ specification and the implementation profile in Sect
 Authorization Server
 ^^^^^^^^^^^^^^^^^^^^
 
-This OAuth2-based component MUST:
+This OAuth 2.0 based component MUST:
 
    - Handle authentication and authorization flows.
    - Manage access/refresh tokens and authorization codes.

@@ -392,7 +392,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
      - Istanza del Wallet verifica che ogni ``credential_configuration_id`` richiesto appaia nei metadata ``credential_configurations_supported`` del Credential Issuer; ID mancanti causano il fallimento dell'offerta.
    * - WP_051
      - Issuance, Interoperabilità
-     - Richiesta Attestato Elettronico utilizzando Flusso Authorization Code
+     - Richiesta Attestato Elettronico utilizzando Flusso OAuth 2.0 Code 
      - Istanza del Wallet richiede con successo PID/(Q)EAA dal Fornitore PID/(Q)EAA utilizzando il Flusso Authorization Code come in `OpenID4VCI`_.
    * - WP_052
      - Issuance, Interoperabilità
@@ -655,7 +655,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_083a
      - Flusso-remoto, Presentazione, Interoperabilità
      - Costruire ``wallet_metadata``
-     - Istanza del Wallet formatta il ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported``, ``client_id_schemes_supported``, e ``authorization_endpoint`` per Sezione 9.1 di [`OpenID4VP`_].
+     - Istanza del Wallet formatta il ``wallet_metadata`` come oggetto JSON che include ``vp_formats_supported``, ``client_id_schemes_supported``, e ``authorization_endpoint`` per Sezione 10.1 di [`OpenID4VP`_].
    * - WP_083b
      - Flusso-remoto, Presentazione, Privacy
      - Escludere PII in ``wallet_metadata``
@@ -711,7 +711,7 @@ coprendo sia le fasi di presentazione **Flusso Remoto** che **Flusso di Prossimi
    * - WP_092
      - Flusso-remoto, Presentazione, Sicurezza
      - Cifrare l'Authorization Response
-     - Istanza del Wallet cifra il JWT dell'Authorization Response per Sezione 7.3 di [`OpenID4VP`_] utilizzando la chiave pubblica della Relying Party.
+     - Istanza del Wallet cifra il JWT dell'Authorization Response per Sezione 8.3 di [`OpenID4VP`_] utilizzando la chiave pubblica della Relying Party.
    * - WP_093
      - Flusso-remoto, Presentazione, Sicurezza
      - Costruire ``vp_token`` con ``state``

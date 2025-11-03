@@ -493,27 +493,7 @@ Di seguito c'è un esempio non normativo di un Subordinate Statement emesso da u
         },
         "metadata_policy": {
             "openid_credential_verifier": {
-                "scope": {
-                    "subset_of": [
-                         "eu.europa.ec.eudiw.pid.1",
-                         "given_name",
-                         "family_name",
-                         "email"
-                      ]
-                },
-                "vp_formats": {
-                    "dc+sd-jwt": {
-                        "sd-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ],
-                        "kb-jwt_alg_values": [
-                            "ES256",
-                            "ES384"
-                        ]
-                    }
-                }
-            }
+                ## see relying party metadata section and endpoints
          }
     }
 
