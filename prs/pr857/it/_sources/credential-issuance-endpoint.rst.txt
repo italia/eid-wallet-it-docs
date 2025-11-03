@@ -1024,7 +1024,7 @@ La Notification Request DEVE essere una HTTP POST utilizzando il media type *app
   * - **event**
     - OBBLIGATORIO. Tipo dell'evento da notificare. DEVE essere una stringa case-sensitive e DEVE supportare i seguenti valori:
 
-      - *credential_accepted*: quando l'Attestato ELettronico è stato memorizzato con successo nell'Istanza del Wallet.
+      - *credential_accepted*: quando l'Attestato Elettronico è stato memorizzato con successo nell'Istanza del Wallet.
       - *credential_deleted*: quando l'emissione non riuscita dell'Attestato Elettronico è stata causata da un'azione dell'utente.
       - *credential_failure*: in tutti gli altri casi di insuccesso.
       

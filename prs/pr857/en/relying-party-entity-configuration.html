@@ -242,28 +242,31 @@ The Entity Configuration of Relying Parties MUST contain the parameters defined 
 <span class="w">            </span><span class="p">],</span>
 <span class="w">            </span><span class="nt">&quot;redirect_uris&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="s2">&quot;https://relying-party.example.org/cb&quot;</span>
+<span class="w">            </span><span class="p">],</span><span class="w">     </span>
+<span class="w">            </span><span class="nt">&quot;encrypted_response_enc_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;A256GCM&quot;</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">&quot;authorization_signed_response_alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;vp_formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;vp_formats_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="nt">&quot;sd-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
 <span class="w">                        </span><span class="s2">&quot;ES512&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;kb-jwt_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span>
 <span class="w">                    </span><span class="p">]</span>
 <span class="w">                </span><span class="p">},</span>
 <span class="w">                </span><span class="nt">&quot;mso_mdoc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                        </span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;ES384&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;ES512&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;EdDSA&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;ESB256&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;ESB320&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;ESB384&quot;</span><span class="p">,</span>
-<span class="w">                        </span><span class="s2">&quot;ESB512&quot;</span>
+<span class="w">                    </span><span class="nt">&quot;issuerauth_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="mi">-9</span><span class="p">,</span>
+<span class="w">                        </span><span class="mi">-50</span>
+<span class="w">                    </span><span class="p">],</span>
+<span class="w">                    </span><span class="nt">&quot;deviceauth_alg_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="mi">-9</span><span class="p">,</span>
+<span class="w">                        </span><span class="mi">-50</span>
 <span class="w">                    </span><span class="p">]</span>
-<span class="w">                </span><span class="p">}</span><span class="w">                </span>
+<span class="w">                </span><span class="p">}</span><span class="w">             </span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">&quot;jwks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nt">&quot;keys&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
