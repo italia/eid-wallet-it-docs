@@ -330,8 +330,8 @@ The JSON Object returned in the response has the following claim:
       - REQUIRED. A JSON array containing  one or more Wallet App Attestation and one Wallet Unit Attestation in ``wallet_app_attestations`` and ``wallet_unit_attestation`` elements, respectively. It MUST contain the following mandatory claims:
 
 
-      - **wallet_app_attestation**: A JSON array containing of one or more issued Wallet App Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
-      - **wallet_unit_attestation**: A JSON object containing of the issued Wallet Unit Attestation.
+        - **wallet_app_attestation**: A JSON array containing of one or more issued Wallet App Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
+        - **wallet_unit_attestation**: A JSON object containing of the issued Wallet Unit Attestation.
       - This specification.
 
 Each JSON Object contained in the ``wallet_app_attestations`` array MUST have the following form:
