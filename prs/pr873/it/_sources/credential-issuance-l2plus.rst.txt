@@ -795,7 +795,7 @@ I seguenti controlli di sicurezza DEVONO essere implementati nel protocollo:
    * - **SC14**
      - Il Servizio MRTD PoP verifica l'integrità dei dati estratti dalla CIE controllando gli elementi SOD (sia IAS che MRTD) e gli hash correlati.
      - Fase 3
-  * - **SC15**
+   * - **SC15**
      - Il Servizio MRTD PoP verifica il binding tra le applicazioni IAS e MRTD controllando che il NUN estratto da DG1 sia presente (come valore hash) nell'IAS SOD, e che il DG1 stesso sia presente (come valore hash) nell'MRTD SOD. Questa doppia verifica assicura che entrambe le applicazioni risiedano sullo stesso chip fisico.
      - Fase 3
    * - **SC16**
