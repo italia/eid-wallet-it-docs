@@ -50,15 +50,15 @@ group #LightYellow NFC Interaction with the User for Document Proof of Possessio
     A -[#green]> C : **MRTD Application - PACE**\nRead DG1, DG11, SOD_MRTD
     C --[#green]> A : DG1, DG11, SOD_MRTD 
 
-    A -[#green]> C : **IAS Application**\nRead NIS, Anticloning Public key, SOD_IAS 
-    C --[#green]> A : NIS, Anticloning Public key, SOD_IAS 
+    A -[#green]> C : **IAS Application**\nRead Anticloning Public key, SOD_IAS 
+    C --[#green]> A : Anticloning Public key, SOD_IAS 
     A -[#green]> C: Anticloning Internal Authentication\nserver challenge
     C --[#green]> A : RSA-2048 signature of the challenge
 end
 
 A -> DPOPS: **MRTD PoP Validation Request**\nPOST /edoc-proof/verify HTTP/1.1\n Host: pid-provider.example.org\nwith OAuth-Client-Attestation and OAuth-Client-Attestation-PoP in the Header
   
-DPOPS -> MIN: HTTP Request for NIS-CF \ncorrelation check and\nvalidity status of the \ndocument (revocation check)
+DPOPS -> MIN: HTTP Request for validity status of the \ndocument (revocation check)
 
 MIN --> DPOPS: HTTP/1.1 200 Ok
 

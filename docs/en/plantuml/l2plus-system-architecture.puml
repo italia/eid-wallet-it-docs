@@ -25,7 +25,7 @@ Boundary(issuer, "PID Provider") {
 
 Component_Ext(loa3_idp, "LoA3 Identity Provider", "eIDAS LoA3 eID Scheme", "Provides Electronic Identification Schemes (CIEid and SPID)",$sprite="institution")
 
-Component_Ext(cie_registry, "CIE National Registry", "CIE Database", "Provides privacy-preserved evidence of NIS - Tax payer's identification number binding and optionally MRZ data. It provides the validity status of the document (revocation)",$sprite="database")
+Component_Ext(cie_registry, "CIE National Registry", "CIE Database", "Acts as the authoritative source for the CIE. Provides information related to the validity status of the document. It also optionally provides the MRZ data (document number, date of birth, expiry date, citizenship and gender) to improve the user experience.",$sprite="database")
 
 Rel(wallet, pid_authz_server, "OAuth2 flow \nfor PID Issuance", "Browser-based")
 
