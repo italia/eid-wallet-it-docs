@@ -1092,7 +1092,7 @@ Correzione dati usando credential_failure
 
 Secondo `OpenID4VCI`_ Sezione 11, in tutti gli altri casi di insuccesso ``event`` DEVE usare ``credential_failure`` e parametri addizionali della Notification Request POSSONO essere definiti e usati. Il Credential Issuer DEVE ignorare i parametri non riconosciuti.
 
-Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE inviare una Notification Request con ``event=credential_failure`` includendo parametri aggiuntivi per segnalare il contesto della correzione dati. Al minimo:
+Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE inviare una Notification Request con ``event=credential_deleted`` includendo parametri aggiuntivi per segnalare il contesto della correzione dati. Al minimo:
 
 - ``event_description``: descrizione concisa e leggibile della discrepanza.
 - ``failure_reason`` (OPZIONALE): breve codice machine-readable, ad es. ``data_correction_requested``.
