@@ -677,52 +677,7 @@
             ]
         },
         "openid_credential_verifier": {
-            "application_type": "web",
-            "client_id": "https://eaa-provider.example.org",
-            "client_name": "Organization Name",
-            "contacts": [
-                "informazioni@example.it",
-                "protocollo@pec.example.it"
-            ],
-            "request_uris": [
-                "https://eaa-provider.example.org/request_uri"
-            ],
-            "response_uris": [
-                "https://eaa-provider.example.org/response_uri"
-            ],
-            "default_acr_values": [
-                "https://trust-registry.eid-wallet.example.it/loa/substantial",
-                "https://trust-registry.eid-wallet.example.it/loa/high"
-            ],
-            "request_object_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ],
-            "authorization_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ],
-            "authorization_encryption_alg_values_supported": [
-                "RSA-OAEP-256"
-            ],
-            "authorization_encryption_enc_values_supported": [
-                "A128CBC-HS256",
-                "A192CBC-HS384",
-                "A256CBC-HS512",
-                "A128GCM",
-                "A192GCM",
-                "A256GCM"
-            ],
-            "vp_formats": {
-                "dc+sd-jwt": {
-                    "sd-jwt_alg_values": [
-                        "ES256",
-                        "ES384",
-                        "ES512"
-                    ]
-                }
+            ## see relying party metadata section and endpoints
             },
             "jwks": {
                 "keys": [
