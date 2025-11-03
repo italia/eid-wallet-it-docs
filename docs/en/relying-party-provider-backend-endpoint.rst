@@ -39,10 +39,14 @@ The Relying Party Key Binding Endpoint enables Verifier Apps to bind the newly c
 Relying Party Provider Backend Key Binding Request
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-Further details on the Relying Party Key Binding Request are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Request` section.
+Further details on the Relying Party Key Binding Request are provided in the :ref:`wallet-provider-endpoint:Wallet App and Wallet Unit Attestation Issuance Request` section.
 
 
-The ``typ`` header of the Integrity Request JWT assumes the value ``rp-kb+jwt``.
+The only difference are the following:
+
+- The ``typ`` header of the Integrity Request JWT assumes the value ``rp-kb+jwt``. 
+- The Integrity Request JWT Body does not include the ``attested_key`` claim, and
+- The ``hardware_signature`` claim value is obtained based on only ``client_data_hash_waa`` value.
 
 
 Relying Party Provider Backend Key Binding Response
@@ -56,7 +60,70 @@ Below is a non-normative example of a Key Binding Request Response.
 
     HTTP/1.1 204 No content
 
-If any errors occur during the process, an error response is returned. Further details on the error response are provided in the :ref:`mobile-application-instance:Mobile Application Key Binding Error Response` section.
+If any errors occur during the process, an error response is returned. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
+
+  - *error*. The error code.
+  - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered (:ref:`WP_035 <wallet-instance-testcases>`).
+
+Below is a non-normative example of a Key Binding Error Response.
+
+.. code-block:: http
+
+    HTTP/1.1 403 Forbidden
+    Content-Type: application/json
+
+    {
+      "error": "invalid_request",
+      "error_description": "The provided challenge is invalid, expired, or already used."
+    }
+
+The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
+
+.. list-table::
+    :class: longtable
+    :widths: 30 20 50
+    :header-rows: 1
+
+    * - **HTTP Status Code**
+      - **Error Code**
+      - **Description**
+    * - ``400 Bad Request``
+      - ``bad_request``
+      - The request is malformed, missing required parameters (e.g., header parameters or Integrity Assertion), or includes invalid and unknown parameters.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The Verifier App has been revoked.
+    * - ``403 Forbidden``
+      - ``integrity_check_error``
+      - The device does not meet the Relying Party Provider's minimum security requirements.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The signature of the Integrity Request is invalid or does not match the associated public key (JWK).
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The Integrity Assertion validation failed; the Integrity Assertion is tampered with or improperly signed.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The provided ``nonce`` is invalid, expired, or already used.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The Proof of Possession (``hardware_signature``) is invalid.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The ``iss`` parameter does not match the Relying Party Provider's expected URL identifier.
+    * - ``404 Not Found``
+      - ``not_found``
+      - The Verifier App Instance was not found.
+    * - ``422 Unprocessable Content`` [OPTIONAL]
+      - ``validation_error``
+      - The request does not adhere to the required format.
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - An internal server error occurred while processing the request.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - The service is unavailable. Please try again later.
+
 
 
 Relying Party Provider Backend Access Certificate Endpoint
