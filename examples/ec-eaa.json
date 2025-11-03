@@ -144,7 +144,7 @@
                             "locale": "en-US"
                         }
                     ],
-                    "vct": "https://trust-registry.eid-wallet.example.it/v1.0/EuropeanDisabilityCard",
+                    "vct": "urn:eudi:EuropeanDisabilityCard:it:1",
                     "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/EuropeanDisabilityCard",
                     "schema_uri#integrity": "sha256-c0d841be52cfc75b8da3295593eced2b9fca8197ee7e340199cd881a7bf61029",
                     "claims": [
@@ -297,7 +297,7 @@
                             "locale": "en-US"
                         }
                     ],
-                    "vct": "https://trust-registry.eid-wallet.example.it/v1.0/mDL",
+                    "vct": "urn:eudi:mDL:it:1",
                     "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
                     "schema_uri#integrity": "sha256-0a03d9ffe11e39fd748585e433a962f223d7d14b0a49068ad52452bd0b021f63",
                     "claims": [

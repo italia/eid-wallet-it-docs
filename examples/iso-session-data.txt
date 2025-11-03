@@ -181,10 +181,10 @@
         }
       },
       {
-        "docType": "it.wallet.trust-registry.WalletAttestation",
+        "docType": "it.wallet.trust-registry.wallet_attestation",
         "issuerSigned": {
           "nameSpaces": {
-            "it.wallet.trust-registry.WalletAttestation": [
+            "it.wallet.trust-registry.wallet_attestation": [
               24(<<
                 {
                   "digestID": 0,
@@ -246,7 +246,7 @@
                       -3: h'6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3'
                     }
                   },
-                  "docType": "org.iso.18013.5.1.IT.WalletAttestation",
+                  "docType": "org.iso.18013.5.1.IT.wallet_attestation",
                   "validityInfo": {
                     "signed": 0("2025-06-27T07:40:21Z"),
                     "validFrom": 0("2025-06-27T07:40:21Z"),

@@ -615,15 +615,15 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_135
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Recupero Opzionale Metadati Tipo Credenziale SD-JWT
-    - Il Documento JSON Metadati Tipo Credenziale è recuperato con successo direttamente dall'URL contenuto nel claim vct utilizzando il metodo HTTP GET o tramite il parametro header vctm quando fornito
+    - Il Documento JSON Metadati Tipo Credenziale è recuperato con successo direttamente dal *well-known* endpoint.
   * - CI_135a
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Corrispondenza URI Case-Insensitive SD-JWT
-    - Quando si recuperano i Metadati Tipo Credenziale tramite vct, la corrispondenza letterale della stringa URI è eseguita in modo case-insensitive, mentre il sistema opera senza richiedere l'endpoint .well-known (come specificato nella Sezione 6.3.1 di `SD-JWT-VC`_), mantenendo opzioni di compatibilità per implementatori che scelgono di utilizzarlo per l'interoperabilità con altri sistemi.
+    - Quando si recuperano i Metadati Tipo Credenziale tramite vct, la corrispondenza letterale della stringa URI è eseguita in modo case-sensitive, mentre il sistema opera senza richiedere l'endpoint .well-known (come specificato nella Sezione 6.3.1 di `SD-JWT-VC`_), mantenendo opzioni di compatibilità per implementatori che scelgono di utilizzarlo per l'interoperabilità con altri sistemi.
   * - CI_136
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Struttura Oggetto JSON Documento Metadati
-    - Il documento tipo Metadati è un oggetto JSON contenente i parametri nella :ref:`Tabella del Type Metadata dell'Attestato Elettronico <table_metadata_type_json_obj>`.
+    - Il documento *Type Metadata* è un oggetto JSON contenente i parametri nella :ref:`Tabella del Type Metadata dell'Attestato Elettronico <table_metadata_type_json_obj>`.
   * - CI_137
     - Modello di Dati e ciclo di vita, Interoperabilità
     - Claim PID Aggiuntivi

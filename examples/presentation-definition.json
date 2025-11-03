@@ -60,7 +60,7 @@
             }
         },
         {
-            "id": "WalletAttestation",
+            "id": "wallet_attestation",
             "name": "Wallet Attestation",
             "purpose": "Wallet Authentication",
 			"format": "jwt",
