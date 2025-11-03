@@ -468,7 +468,7 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 .. note::
     **Richiesta della Wallet Attestation**
 
-    La Relying Party che richiede una Wallet Attestation DEVE aggiungere un oggetto nell'array **docRequest** che abbia solo il campo ``docType`` impostato come ``{Trust Anchor reverse domain}.{wallet_attestation}`` (si rimanda a :ref:`registry-catalogue:Struttura del Catalogo degli Attestati Elettronici` per dettagli ulteriori). La Relying Party NON DEVE includere il parametro ``nameSpaces`` nella richiesta (:ref:`PPR-010 <test-plans-proximity-presentation>`).
+    La Relying Party che richiede una Wallet Attestation DEVE aggiungere un oggetto nell'array **docRequest** che abbia solo il campo ``docType`` impostato come ``{Trust Anchor reverse domain}.{WalletAttestation}`` (si rimanda a :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` per dettagli ulteriori). La Relying Party NON DEVE includere il parametro ``nameSpaces`` nella richiesta (:ref:`PPR-010 <test-plans-proximity-presentation>`).
 
     Questo componente DEVE essere presente solo se ``ReaderAuthAllSupport`` è impostato su ``true`` nel messaggio di DeviceEngagement, e i campi individuali ``readerAuth`` non vengono utilizzati (:ref:`PPR-025 <test-plans-proximity-presentation>`).
 
