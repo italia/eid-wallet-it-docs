@@ -1,8 +1,8 @@
 .. include:: ../common/common_definitions.rst
 
 
-Emissione della Wallet Attestation
-==================================
+Emissione della Wallet App e Wallet Unit Attestation
+=====================================================
 
 Questa sezione descrive come il Fornitore di Wallet emette una Wallet Attestation.
 
