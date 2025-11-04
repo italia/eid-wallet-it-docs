@@ -1098,4 +1098,4 @@ Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE invia
 - ``failure_reason`` (OPZIONALE): breve codice machine-readable, ad es. ``data_correction_requested``.
 - ``correction_details`` (OPZIONALE): oggetto con campi minimi per indicare gli attributi impattati senza valori sensibili (es. soli identificativi degli attributi).
 
-A seguito della ricezione, il Credential Issuer PUÒ verificare presso le Fonti Autentiche e, se confermato, DOVREBBE procedere con il :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+Nell'eventualità di aver ricevuto un rigetto motivato da parte dell'Utente, il Credential DOVREBBE inoltrare il messaggio dell'utente contenente quel motivo alla Fonte Autentica. È RACCOMANDATO di utilizzare endpoint specifici PDND, forniti da Authentic Source, per facilitare questo scambio di dati.
