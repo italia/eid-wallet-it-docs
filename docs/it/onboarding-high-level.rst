@@ -74,7 +74,7 @@ Processo di Onboarding della Federazione
 L'onboarding della federazione stabilisce le relazioni di trust crittografiche e i framework di conformità che consentono alle entità operative di partecipare ad attività sicure del ciclo di vita delle Credenziali.
 Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa, la validazione dell'infrastruttura tecnica e l'istituzione del trust crittografico. Il processo di onboarding crea relazioni di trust crittografiche attraverso l'emissione di certificati, la configurazione della catena di trust e l'attestazione di conformità. Questi meccanismi abilitano interazioni sicure tra i partecipanti della federazione e forniscono la base per la validazione del trust distribuito attraverso l'ecosistema.
 
-Le entità onboardate con successo sono incluse nel Registro di Federazione, che mantiene l'elenco autorevole dei partecipanti della federazione fidati. Questo registro abilita la validazione del trust operativo durante le attività del ciclo di vita delle Credenziali.
+Le entità registrate con successo sono incluse nel Registro di Federazione, che mantiene l'elenco autorevole dei partecipanti della federazione fidati. Questo registro abilita la validazione del trust operativo durante le attività del ciclo di vita delle Credenziali.
 
 Le Relying Party DEVONO verificare gli Attestati Elettronici con garanzia crittografica, i Fornitori di Wallet DEVONO fornire servizi di portafoglio digitale fidati ai cittadini, e i Credential Issuer DEVONO emettere Attestati Elettronici utilizzando fonti di dati autorevoli. Tutte le operazioni DEVONO avvenire all'interno di relazioni di trust stabilite che assicurano sicurezza e auditabilità.
 
