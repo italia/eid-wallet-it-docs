@@ -126,4 +126,4 @@ La verifica della validità dell'Istanza del Wallet DEVE essere eseguita:
   Se gli Emittenti di Credenziali rilasciano credenziali con un periodo di validità inferiore a 24 ore, è sufficiente che verifichino il periodo di validità della WUA al momento dell'emissione.
 
 .. note::
-  Con l'introduzione del **Wallet Trust Evidence (WTE)**, questa sezione sarà aggiornata di conseguenza.
+  Nell'attuale versione della specifica, gli Emittenti di Credenziali vengono notificati direttamente della revoca di un'istanza del Wallet dal Fornitore di Portafoglio tramite un servizio e-service PDND.

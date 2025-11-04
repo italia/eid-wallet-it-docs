@@ -203,7 +203,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "id": "wallet app attestation",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": ["urn:eudi:WalletAppAttestation:it:1"]
+              "vct_values": ["urn:eudi:wallet_app_attestation:it:1"]
             },
             "claims": [
               {"path": ["wallet_link"]},
@@ -458,9 +458,9 @@ I parametri del payload JWT sono descritti qui:
   
   - ``client_metadata``: Un JSON Object contenente i valori dei metadata della Relying Party. Se il parametro ``client_metadata`` è presente, l'Istanza del Wallet DEVE ignorarlo e considerare i metadata del client ottenuti attraverso la Trust Chain OpenID Federation.
 
-.. note:: **Richiesta dell'Attestazione del Wallet**
+.. note:: **Richiesta della Wallet App Attestation**
   
-  La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro ``claims`` nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro ``vct_values`` nella query DCQL, il quale DEVE essere impostato al valore definito nella :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` (:ref:`RPR-114 <test-plans-remote-presentation>`).
+  La Relying Party che richiede una Wallet App Attestation DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro ``claims`` nella query. A seconda del formato della Wallet App Attestation, la Relying Party DEVE richiedere il parametro ``vct_values`` nella query DCQL, il quale DEVE essere impostato al valore definito nella :ref:`registry:Struttura del Catalogo degli Attestati Elettronici` (:ref:`RPR-114 <test-plans-remote-presentation>`).
 
 Errori dell'Endpoint URI Request
 --------------------------------
@@ -515,9 +515,9 @@ Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazio
 
     La risposta inviata dall'Istanza del Wallet alla Relying Party è cifrata per impedire a un avversario di sfruttare possibili vulnerabilità per accedere alle informazioni trasmesse in chiaro all'interno della rete della Relying Party. Per esempio, ciò è possibile se l'ambiente di rete della Relying Party impiega un proxy per le operazioni di `TLS Termination <https://www.f5.com/glossary/ssl-termination>`_, il quale agisce come intermediario tra il client e il backend web server della Relying Party e gestisce tutte le operazioni relative a TLS. In questo caso specifico, il proxy decifra il contenuto della trasmissione, in seguito lo inoltra al backend web server della Relying Party. Questa operazione può avvenire in chiaro oppure negoziando una ulteriore sessione TLS con il web server della Relying Party (sempre raccomandato). Nel primo caso, trasmissione dei dati TLS in chiaro, qualsiasi avversario all'interno del segmento di rete fra proxy e web server backend che intercettasse i dati trasmessi, potrebbe ottenere informazioni sensibili; se però la risposta è cifrata, la fattispece descritta viene mitigata anche mandando i dati in chiaro.
 
-.. note:: **Presentazione dell'Attestazione del Wallet**
+.. note:: **Presentazione della Wallet App Attestation**
   
-    L'Istanza del Wallet DEVE includere l'Attestazione del Wallet se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi dell'Attestazione del Wallet, i quali sono dati tecnici non trasparenti per l'utente.
+    L'Istanza del Wallet DEVE includere la Wallet App Attestation se richiesta dalla Relying Party usando la query DCQL. Durante la presentazione, l'Istanza del Wallet NON DOVREBBE richiedere il consenso dell'utente alla divulgazione degli attributi della Wallet App Attestation, i quali sono dati tecnici non trasparenti per l'utente.
 
 Nella Authorization Response vengono utilizzati i seguenti parametri (:ref:`WP_093 <wallet-credential-presentation-testcases>`):
 

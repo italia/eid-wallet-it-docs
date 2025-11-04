@@ -72,7 +72,7 @@ Upon successful verification, the Wallet Provider MUST issue at least one valid 
 
 In addition, if not already done, Users MUST set their preferred method of unlocking their Wallet Instance; this MAY be accomplished by entering a
 personal identification number (PIN) or by utilizing biometric authentication, such as fingerprint or facial recognition, according to personal
-preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-attestation-issuance:Wallet App Attestation Issuance`, and :ref:`wallet-unit-attestation-issuance:Wallet Unit Attestation Issuance`.
+preferences and device's capabilities (:ref:`WP_025 <wallet-instance-testcases>`). Please refer to :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`.
 
 In the **Operational** state, Users can request the issuance of PID (**PID ISS**) or (Q)EAAs if the PID is not required in the issuance
 (**(Q)EEA ISS**). In addition, if the Digital Credentials are (Q)EEAs and for the presentation they do not require the PID, they can be presented
