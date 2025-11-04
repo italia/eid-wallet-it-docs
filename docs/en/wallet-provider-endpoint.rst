@@ -345,14 +345,14 @@ Each JSON Object contained in the ``wallet_app_attestations`` array MUST have th
       - **Description**
       - **Reference**
     * - **format**
-      - A string identifying the Data Model used to create and represent the Wallet Attestation. It MUST be either ``jwt``, ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
+      - A string identifying the Data Model used to create and represent the Wallet App Attestation. It MUST be either ``jwt``, ``dc+sd-jwt`` or ``mso_mdoc`` depending on the credential format.
       - This specification.
     * - **wallet_app_attestation**
-      - A string representing the Wallet Attestation. If
+      - A string representing the Wallet App Attestation. If
 
-        - the Wallet Attestation is in JWT format, then the claim's value MUST be a string that is a JWT.
-        - the Wallet Attestation is in SD-JWT format, then the claim's value MUST be a string that is an SD-JWT VC.
-        - the Wallet Attestation is in mdoc format, then the claim's value is the base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO.18013-5]. This structure MUST contain all Namespaces and IssuerSignedItems that are included in the MobileSecurityObject.
+        - the Wallet App Attestation is in JWT format, then the claim's value MUST be a string that is a JWT.
+        - the Wallet App Attestation is in SD-JWT format, then the claim's value MUST be a string that is an SD-JWT VC.
+        - the Wallet App Attestation is in mdoc format, then the claim's value is the base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO.18013-5]. This structure MUST contain all Namespaces and IssuerSignedItems that are included in the MobileSecurityObject.
 
       - This specification.
 
@@ -430,7 +430,7 @@ In the following, we provide details about Wallet App Attestation in ``jwt``, ``
 Wallet App Attestation JWT
 """""""""""""""""""""""""""
 
-The JOSE header of the Wallet Attestation JWT contains the following parameters:
+The JOSE header of the Wallet App Attestation JWT contains the following parameters:
 
 .. list-table::
     :class: longtable
@@ -453,7 +453,7 @@ The JOSE header of the Wallet Attestation JWT contains the following parameters:
       - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
-      - OPTIONAL. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
+      - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
       - :rfc:`7515` Section 4.1.8 and `SD-JWT-VC`_ Section 3.5.
 
 The body of the Wallet App Attestation JWT contains the following claims:
@@ -485,11 +485,11 @@ The body of the Wallet App Attestation JWT contains the following claims:
       - OPTIONAL. String containing a human-readable name of the Wallet.
       - `OpenID4VCI`_.
     * - **sub**
-      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet Attestation JWK.
+      - REQUIRED. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation JWK.
       - :rfc:`9126` and :rfc:`7519`.
 
 
-Below is a non-normative example of the Wallet Attestation JWT header and payload, without encoding and signature applied:
+Below is a non-normative example of the Wallet App Attestation JWT header and payload, without encoding and signature applied:
 
 .. literalinclude:: ../../examples/wa-jwt_example_header.json
   :language: JSON
@@ -525,7 +525,7 @@ The JOSE header of the Wallet App Attestation SD-JWT MUST contain the following 
       - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
-      - OPTIONAL. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
+      - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
       - :rfc:`7515` Section 4.1.8 and `SD-JWT-VC`_ Section 3.5.
 
 The body of the Wallet App Attestation SD-JWT contains the following claims:
@@ -623,9 +623,6 @@ The ``nameSpaces`` for the domestic nameSpace Json Objects are defined as follow
     * - **sub**
       - OPTIONAL. Identifier of the Wallet Instance which is the thumbprint of the Wallet App Attestation COSE Key.
       - :rfc:`9126` and :rfc:`7519`.
-    * - **aal**
-      - REQUIRED. JSON String asserting the authentication level of the Wallet Instance in relation to the COSE Key contained in the ``IssuerAuth.deviceKeyInfo.deviceKey`` claim of the **issuerAuth** Object.
-      - :rfc:`9679`.
     * - **wallet_link**
       - OPTIONAL. JSON String containing a URL to get further information about the Wallet and the Wallet Provider.
       - `OpenID4VCI`_.

@@ -332,10 +332,14 @@ Di seguito le descrizioni di acronimi e definizioni, correlati al presente docum
       Unique configuration of a Wallet Solution for an individual User, including security features.
       Conforme con ARF 2.5.
 
-    **Wallet Unit Attestation**
+     **Wallet Unit Attestation**
+     Oggetto di dati emesso da un Fornitore di Portafoglio che dimostra che le chiavi utilizzate per il collegamento crittografico delle Credenziali risiedono in un WSCD affidabile
+     e verifica che l'Unità del Portafoglio non sia stata revocata. Specifico per l'IT-Wallet.  
+
+    **Wallet App Attestation**
     **Wallet Attestation**
-      Oggetto emesso da un Fornitore di Wallet che descrive le caratteristiche e i componenti della Istanza del Wallet.
-      Conforme con ARF 2.5.
+      Oggetto di dati emesso da un Fornitore di Portafoglio che attesta l'integrità dell'Applicazione del Portafoglio.
+      Specifico per l'IT-Wallet.
 
     **Catalogo degli Attestati Elettronici**
       Catalogo elettronico contenente informazioni relative ai formati e agli schemi degli Attestati Elettronici, ai dati in essi contenuti e alle Fonti Autentiche. Il Catalogo contiene informazioni aggiuntive che consentono di stabilire l'autenticità e l'affidabilità delle informazioni in esso contenute.
