@@ -120,7 +120,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
       Content-Type: application/x-www-form-urlencoded
       Accept: application/oauth-authz-req+jwt
 
-      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22form_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C&wallet_nonce=%22qPmxiNFCR3QTm19POc8u%22
+      wallet_metadata=%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C&wallet_nonce=%22qPmxiNFCR3QTm19POc8u%22
 
     Dove il corpo della richiesta prima di essere codificato in ``application/x-www-form-urlencoded`` dal Wallet corrisponde a:
 
@@ -133,7 +133,7 @@ I dettagli di ogni passaggio mostrato nell'immagine precedente sono descritti di
             "vp_token"
           ],
           "response_modes_supported": [
-            "form_post.jwt"
+            "query"
           ],
           "vp_formats_supported": {
             "dc+sd-jwt": {
@@ -361,7 +361,7 @@ La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorizat
    * - `response_types_supported`
      - OPZIONALE. Array JSON di valori "response_type" di OAuth 2.0. Se presente DEVE essere impostato su `vp_token`. Il valore predefinito è `vp_token`.
    * - `response_modes_supported`
-     - OPZIONALE. Array JSON di valori "response_mode" di OAuth 2.0. Vedi `JARM`_.
+     - OPZIONALE. Array JSON di valori "response_mode" di OAuth 2.0 come specificato in `OAUTH-MULT-RESP-TYPE`_. Il valore supportato DEVE essere *query*.
    * - `request_object_signing_alg_values_supported`
      - OPZIONALE. Vedi OpenID Connect Discovery.
 

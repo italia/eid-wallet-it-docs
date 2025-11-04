@@ -335,7 +335,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_069
     - Emissione, Sicurezza
     - Formato e Sicurezza del c_nonce
-    - Il parametro c_nonce è fornito come stringa con sufficiente imprevedibilità per prevenire attacchi di guessing e funge da sfida crittografica che il Wallet Instance utilizza per creare la prova di possesso della chiave (proof claim).
+    - Il parametro c_nonce è fornito come stringa con sufficiente imprevedibilità per prevenire attacchi di guessing e funge da sfida crittografica che il Wallet Instance utilizza per creare la prova di possesso della chiave (proofs claim).
   * - CI_070
     - Emissione, Sicurezza
     - Riutilizzo e rinnovo del c_nonce
@@ -395,7 +395,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_083
     - Emissione, Sicurezza
     - Validazione della prova di possesso del materiale crittografico nella Risposta di Credenziale
-    - Il Credential Issuer valida la prova di possesso della chiave alla quale sarà vincolata la nuova Credenziale, secondo la Sezione 8.2.2 di `OpenID4VCI`_.
+    - Il Credential Issuer valida la prova di possesso della chiave alla quale sarà vincolata la nuova Credenziale, secondo l'Appendice F.4 di `OpenID4VCI`_.
   * - CI_084
     - Emissione, Sicurezza
     - Creazione e Binding della Credenziale nella Risposta
@@ -423,7 +423,7 @@ Questa sezione fornisce l'insieme dei test progettati per implementatori tecnici
   * - CI_088a
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Deferred Endpoint
-    - L'Access Token consente l'accesso al Deferred endpoint per ottenere nuovi Attestati Elettronici dopo il lead_time o la notifica di readiness.
+    - L'Access Token consente l'accesso al Deferred endpoint per ottenere nuovi Attestati Elettronici dopo il interval o la notifica di readiness.
   * - CI_088b
     - Emissione, Sicurezza
     - Autorizzazione di accesso al Notification Endpoint
