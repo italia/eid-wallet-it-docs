@@ -37,7 +37,7 @@ Upon a successful request, the Wallet Provider generates and returns the nonce v
 **Step 8**: The Wallet Instance performs the following actions (:ref:`WP_140c <wallet-instance-optional-testcases>`):
 
 * Creates two JSON objects ``client_data_waa``, and ``client_data_wua`` each containing the ``nonce`` and the thumbprint of their respective JWKs (``ephemeral_key_pub``, ``key_pub``).
-* Computes the coreesponding hashes, ``client_data_hash_waa``, and ``client_data_hash_wua``  by applying the ``SHA256`` algorithm to the ``client_data_waa``, and ``client_data_wua``.
+* Computes the corresponding hashes, ``client_data_hash_waa``, and ``client_data_hash_wua``  by applying the ``SHA256`` algorithm to the ``client_data_waa``, and ``client_data_wua``.
 
 Below is a non-normative example of the ``client_data_waa`` JSON object.
 

@@ -42,7 +42,7 @@ A High-Level description of the remote flow, from the User's perspective, is giv
     c. evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain  (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
   5. *User Consent*: the Wallet Instance asks User disclosure and consent by showing the Relying Party's identity and the requested attributes.
-  6. *POST Authorization Response*: the Wallet Instance presents the requested information to the Relying Party, along with the Wallet AApp Attestation if requested.
+  6. *POST Authorization Response*: the Wallet Instance presents the requested information to the Relying Party, along with the Wallet App Attestation if requested.
   7. *RP Checks*: The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the Wallet App Attestation to ensure the Wallet Provider is trusted.
   8. *Relying Party Response*: the Wallet Instance informs the User about the successful authentication with the Relying Party, and the User continues the navigation.
 

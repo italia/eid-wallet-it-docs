@@ -286,7 +286,7 @@ Below is a non-normative example of a Wallet App and Wallet Unit Attestation Req
     {
       "alg": "ES256",
       "kid": "OnsiandrIjp7ImNydiI6IlAtMjU2Iiwia3R5IjoiRUMiL",
-      "typ": "wp-wia-wua+jwt"
+      "typ": "wp-war-wua+jwt"
     }
 
 .. code-block:: json
@@ -376,7 +376,7 @@ Below is a non-normative example of a Key Binding Error Response.
       "error_description": "The provided challenge is invalid, expired, or already used."
     }
 
-The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
+The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (:ref:`WP_036–039 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
 
 .. list-table::
     :class: longtable
