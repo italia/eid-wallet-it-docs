@@ -5,6 +5,9 @@ Relying Party Metadata
 
 The *openid_credential_verifier* metadata MUST contain the following parameters (:ref:`test-plans-remote-presentation`).
 
+.. note::
+  The metadata below applies only when the ``client_id`` uses the ``openid_federation`` prefix. For ``x509_hash``, the metadata is instead conveyed in the ``client_metadata`` parameter. 
+
 .. list-table::
   :class: longtable
   :widths: 20 60
