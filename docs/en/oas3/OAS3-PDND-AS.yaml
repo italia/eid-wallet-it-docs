@@ -253,7 +253,7 @@ components:
               description: UNIX timestamp representing the JWT first validity time.
               type: string
               example: "1736846688"
-            lead_time:
+            interval:
               description: Required if claims parameter is not present. This represents the estimated amount of time (in seconds) required before making the request of the attribute claims again.
               type: integer
               example: "864000"

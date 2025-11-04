@@ -469,7 +469,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_056c
      - Issuance, Sicurezza
      - Abbinare la prova chiave Attestato Elettronico alla chiave DPoP
-     - Istanza del Wallet include un oggetto JSON come valore del parametro ``proof`` nella Credential Request. Al suo interno sono presenti i parametri ``proof_type``, valorizzato come ``jwt``, e ``jwt``. Quest'ultimo è valorizzato con un JWT il cui parametro dell'header ``jwk`` prova il possesso della chiave pubblica referenziata nel DPoP-JWT della Token Request.
+     - Istanza del Wallet include un oggetto JSON come valore del parametro ``proofs`` nella Credential Request. Al suo interno sono è presente l'array ``jwt``. Quest'ultimo è valorizzato con uno o più JWT i cui parametro dell'header ``jwk`` rappresenta la prova il possesso della chiave pubblica referenziata nel DPoP-JWT della Token Request.
    * - WP_057
      - Issuance, Interoperabilità
      - Richiesta di Attestati Elettronici multipli
@@ -529,11 +529,11 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_065
      - Issuance, Sicurezza
      - Gestire defererd Issuance
-     - Istanza del Wallet valuta la Credential Response; se contiene sia ``transaction_id`` che ``lead_time``, Istanza del Wallet riconosce il flusso come defererd Issuance.
+     - Istanza del Wallet valuta la Credential Response; se contiene sia ``transaction_id`` che ``interval``, Istanza del Wallet riconosce il flusso come defererd Issuance.
    * - WP_066
      - Issuance, Interoperabilità
-     - Richiesta defererd Issuance dopo lead_time
-     - Istanza del Wallet invia una Deferred Credential Response solo dopo che il ``lead_time`` richiesto è passato.
+     - Richiesta defererd Issuance dopo interval
+     - Istanza del Wallet invia una Deferred Credential Response solo dopo che il ``interval`` richiesto è passato.
    * - WP_066a
      - Issuance, Interoperabilità
      - Richiesta defererd Issuance con transaction_id
@@ -541,7 +541,7 @@ Questa sezione elenca i casi di test dalle Sezioni:
    * - WP_066b
      - Issuance, Interoperabilità
      - Richiesta defererd con Access Token ancora valido
-     - Istanza del Wallet include l'Access Token esistente nella richiesta differita se il valore parametro ``lead_time`` è inferiore al tempo di scadenza impostato per l'Access Token.
+     - Istanza del Wallet include l'Access Token esistente nella richiesta differita se il valore parametro ``interval`` è inferiore al tempo di scadenza impostato per l'Access Token.
    * - WP_066c
      - Issuance, Interoperabilità
      - Nuovo Access Token DPoP-bound tramite Refresh
