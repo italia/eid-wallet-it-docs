@@ -42,8 +42,8 @@ A High-Level description of the remote flow, from the User's perspective, is giv
     c. evaluates the requested Digital Credentials and checks the eligibility of the Relying Party in asking for these by applying the policies related to that specific Relying Party, obtained with the Trust Chain  (:ref:`WP_087 <wallet-credential-presentation-testcases>`).
 
   5. *User Consent*: the Wallet Instance asks User disclosure and consent by showing the Relying Party's identity and the requested attributes.
-  6. *POST Authorization Response*: the Wallet Instance presents the requested information to the Relying Party, along with the Wallet Attestation if requested.
-  7. *RP Checks*: The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the Wallet Attestation to ensure the Wallet Provider is trusted.
+  6. *POST Authorization Response*: the Wallet Instance presents the requested information to the Relying Party, along with the Wallet AApp Attestation if requested.
+  7. *RP Checks*: The Relying Party validates the presented Credentials by verifying the trust with their Issuers and checks the Wallet App Attestation to ensure the Wallet Provider is trusted.
   8. *Relying Party Response*: the Wallet Instance informs the User about the successful authentication with the Relying Party, and the User continues the navigation.
 
 Below is a sequence diagram that details the interactions between all the involved parties.
@@ -199,10 +199,10 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
             ]
           },
           {
-            "id": "wallet attestation",
+            "id": "wallet app attestation",
             "format": "dc+sd-jwt",
             "meta": {
-              "vct_values": ["urn:eudi:wallet_attestation:it:1"]
+              "vct_values": ["urn:eudi:wallet_app_attestation:it:1"]
             }
           }
         ]
@@ -241,11 +241,11 @@ Conversely, in the **Same Device Flow**, the Relying Party uses an HTTP response
         "state": "3be39b69-6ac1-41aa-921b-3e6c07ddcb03",
         "vp_token": {
           "personal id data": "eyJhbGciOiJFUzI1NiIs...PT0iXX0",
-          "wallet attestation": "eyJhbGciOiJFUzI1NiIs...NTi0XG"
+          "wallet app attestation": "eyJhbGciOiJFUzI1NiIs...NTi0XG"
         }
       }
 
-**Steps 21-25 (RP Checks)**: The Relying Party verifies the Authorization Response, extracts the Wallet Attestation to establish trust with the Wallet Solution. It then extracts the ``vp_token``, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each Presentation, the Relying Party verifies its integrity and authenticity, ensures that it satisfies the DCQL query criteria defined in the Authorization Request, attests trust with the corresponding Credentials Issuer, and validates the Wallet Instance's proof of possession of the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials as described in :ref:`credential-revocation:Digital Credential Revocation and Suspension`. If all previous verifications yelded positive result, the Relying Party updates the User session.
+**Steps 21-25 (RP Checks)**: The Relying Party verifies the Authorization Response, extracts the Wallet App Attestation to establish trust with the Wallet Solution. It then extracts the ``vp_token``, which contains one or more Digital Credentials presentations, and validates the overall format of the VP Token. For each Presentation, the Relying Party verifies its integrity and authenticity, ensures that it satisfies the DCQL query criteria defined in the Authorization Request, attests trust with the corresponding Credentials Issuer, and validates the Wallet Instance's proof of possession of the presented Digital Credentials. Finally, the Relying Party verifies the revocation status of the presented Digital Credentials as described in :ref:`credential-revocation:Digital Credential Revocation and Suspension`. If all previous verifications yelded positive result, the Relying Party updates the User session.
 
 **Steps 26-27 or 28 (Relying Party Response)**: The Relying Party provides to the Wallet Instance the response about the presentation, which informs the User.
 
@@ -461,9 +461,9 @@ The JWT payload parameters are described herein:
   - ``client_metadata``: A JSON object containing the Relying Party metadata values. If the ``client_metadata`` parameter is present, the Wallet Instance MUST ignore it and consider the client metadata obtained through the OpenID Federation Trust Chain (:ref:`RPR-113 <test-plans-remote-presentation>`).
 
 .. note::
-    **Requesting the Wallet Attestation**
+    **Requesting the Wallet App Attestation**
 
-    The Relying Party which requests a Wallet Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the ``claims`` parameter in the query as the Wallet Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry:Digital Credentials Catalog Structure` (:ref:`RPR-114 <test-plans-remote-presentation>`).
+    The Relying Party which requests a Wallet App Attestation MUST do so by using a standard DCQL query, however it SHOULD NOT include the ``claims`` parameter in the query as the Wallet App Attestation is not a Digital Credential but a proof of the Wallet Instance's trustworthiness and capabilities. Depending on the format of the Wallet App Attestation, the Relying Party MUST request the ``vct_values`` parameter in the DCQL query, which MUST be set to the value set in the :ref:`registry:Digital Credentials Catalog Structure` (:ref:`RPR-114 <test-plans-remote-presentation>`).
 
 Request URI Endpoint Errors
 ----------------------------
@@ -520,9 +520,9 @@ After obtaining the User authorization and consent for the presentation of the D
     The response sent from the Wallet Instance to the Relying Party is encrypted to prevent a malicious agent from gaining access to the plaintext information transmitted within the Relying Party's network. This is only possible if the network environment of the Relying Party employs `TLS termination <https://www.f5.com/glossary/ssl-termination>`_. Such technique employs a termination proxy that acts as an intermediary between the client and the webserver and handles all TLS-related operations. In this manner, the proxy deciphers the transmission's content and either forwards it in plaintext or by negotiates an internal TLS session with the actual webserver's intended target. In the first scenario, any malicious actor within the network segment could intercept the transmitted data and obtain sensitive information, such as an unencrypted response, by sniffing the transmitted data.
 
 .. note::
-    **Presenting the Wallet Attestation**
+    **Presenting the Wallet App Attestation**
 
-    The Wallet Instance MUST include the Wallet Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet Attestation attributes which are technical data not transparent to the User.
+    The Wallet Instance MUST include the Wallet App Attestation if requested by the Relying Party using the DCQL query. During presentaion, the Wallet Instance SHOULD NOT request User's consent to the disclosure of the Wallet App Attestation attributes which are technical data not transparent to the User.
 
 Where the following parameters are used (:ref:`WP_093 <wallet-credential-presentation-testcases>`):
 
@@ -538,7 +538,7 @@ Where the following parameters are used (:ref:`WP_093 <wallet-credential-present
     - There MUST be at least two signed presentations in this Array (:ref:`WP_093a <wallet-credential-presentation-testcases>`):
 
       - The requested Digital Credential (one or more, in format of SD-JWT VC)
-      - The Wallet Attestation (in SD-JWT VC format)
+      - The Wallet App Attestation (in SD-JWT VC format)
 
       The ``vp_token`` format is a JSON Object which keys corresponds to the requested credential ids in the ``dcql_query`` used in the request, and the values to each presented Digital Credential.
 
@@ -692,7 +692,7 @@ The following table lists the HTTP Status Codes and related error codes that MUS
       - The nonce value provided is incorrect or otherwise malformed.
     * - ``403 Forbidden``
       - ``invalid_request``
-      - The signature of the Wallet Attestation is not valid or trust cannot be established with its Issuer.
+      - The signature of the Wallet App Attestation is not valid or trust cannot be established with its Issuer.
     * - ``403 Forbidden``
       - ``invalid_request``
       - Trust could not be established with the Credential Issuer.

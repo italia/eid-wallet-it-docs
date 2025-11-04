@@ -120,8 +120,11 @@ The verification of the Wallet Instance validity MUST be performed:
 
 - **During Digital Credential presentation phase** by the Relying Parties. The verification of the validity of a Wallet Instance is performed by Relying Parties through the checking of the presence of a valid Wallet App Attestation (i.e. not expired and signed by a trusted Wallet Provider). During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.
 
-- **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the Wallet Unit Attestation Status List. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
+- **During the validity period of the Digital Credential** by the Credential Issuers every 24 hours by checking the PID's Wallet Unit Attestation Status List. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. 
 
+
+.. note::
+  If Credential Issuers issue credentials with a validity period of less than 24 hours, they only need to verify the validity period of the WUA upon issuance.
 
 .. note::
   In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.
