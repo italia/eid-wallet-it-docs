@@ -66,11 +66,6 @@ Di seguito è riportato un esempio non normativo della Entity Configuration per 
           }
         ]
       },
-      "aal_values_supported": [
-        "https://wallet-provider.example.org/LoA/basic",
-        "https://wallet-provider.example.org/LoA/medium",
-        "https://wallet-provider.example.org/LoA/high"
-      ]
     },
     "federation_entity": {
       "organization_name": "IT-Wallet Provider",

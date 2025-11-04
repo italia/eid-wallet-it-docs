@@ -9,7 +9,7 @@ This section lists the requirements about Wallet Providers and Wallet Solutions 
 
 - The Wallet Solution MUST adhere to the specifications set by this document for obtaining Personal Identification (PID) and (Q)EAAs.
 - The Wallet Provider MUST expose a set of endpoints, exclusively available to its Wallet Solution instances, supporting the core functionalities of the Wallet Instances.
-- The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet Unit Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
+- The Wallet Instance MUST periodically reestablish trust with its Wallet Provider, obtaining a fresh Wallet App Attestation (:ref:`WP_018 <wallet-instance-testcases>`).
 - The Wallet Instance MUST establish trust with other participants of the Wallet ecosystem, such as Credential Issers and Relying Parties. In case of Credential Issuers, Wallet Instance presents both Wallet App and Wallet Unit Attestations, while for Relying Parties, it only presents Wallet App Attestation. 
 - The Wallet Instance MUST be compatible and functional on both Android and iOS operating systems and available on the Play Store and App Store, respectively (:ref:`WP_015 <wallet-instance-testcases>`).
 - The Wallet Instance MUST provide a mechanism to verify the User's actual possession and full control of their personal device.
@@ -17,7 +17,7 @@ This section lists the requirements about Wallet Providers and Wallet Solutions 
 - The Wallet Instance MUST provide Users with a mechanism to request the erasure of personal attributes by a Relying Party pursuant to Article 17 of Regulation (EU) 2016/679, and to log each Erasure Request made.
 
 .. note::
-   There is no strict one-to-one mapping between the requirements in this section and the test cases in :ref:`wallet-provider-test-matrix`. Some requirements are expressed at too high a level to be represented as atomic test cases, while others are already addressed in greater detail within related flows (e.g., :ref:`wallet-attestation-issuance:Wallet App Attestation Issuance`).
+   There is no strict one-to-one mapping between the requirements in this section and the test cases in :ref:`wallet-provider-test-matrix`. Some requirements are expressed at too high a level to be represented as atomic test cases, while others are already addressed in greater detail within related flows (e.g., :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`).
 
 Wallet App Attestation Requirements
 """""""""""""""""""""""""""""""""""

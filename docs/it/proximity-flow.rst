@@ -30,7 +30,7 @@ Le Istanze di Relying Party e Wallet registrate nell'ecosistema IT-Wallet DEVONO
 - *Flusso di Recupero del Dispositivo Supervisionato* dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il *flusso non supervisionato* dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (:ref:`WP_095 <wallet-credential-presentation-testcases>`).
 - *Autenticazione dell'Istanza di Relying Party* seguendo i meccanismi definiti nella `ISO18013-5`_ per il *reader authentication* (:ref:`WP_098 <wallet-credential-presentation-testcases>`).
 - *Tipo di Documento* domestico e *Namespace* definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'`ISO18013-5`_ per l'mDL (vedi :ref:`credential-data-model:Attestato Elettronico in formato mdoc-CBOR` per maggiori dettagli) (:ref:`WP_099 <wallet-credential-presentation-testcases>`).
-- *Validazione dell'Istanza del Wallet* attraverso l'Attestato del Wallet.
+- *Validazione dell'Istanza del Wallet* attraverso la Wallet App Attestation.
 
 La tabella seguente mostra le tecnologie di *Device Engagement* supportate  (:ref:`WP_097 <wallet-credential-presentation-testcases>`), specificando quali sono obbligatorie.
 
@@ -553,7 +553,7 @@ Una struttura di dati **deviceSigned** DEVE essere conforme alla seguente strutt
 
 .. note:: **Presentazione della Wallet App Attestation**
   
-    L'Istanza del Wallet DEVE includere la Wallet App Attestation se richiesta dalla Relying Party nella richiesta mdoc. L'Istanza del Wallet DOVREBBE includere tutte le divulgazioni selettive disponibili per la Wallet App Attestation, DEVE tuttavia includere il campo ``aal`` nella risposta (:ref:`WP_108b <wallet-credential-presentation-testcases>`). Inoltre, durante la presentazione, l'Istanza del Wallet NON DEVE richiedere il consenso dell'Utente alla divulgazione degli attributi della Wallet App Attestation, i quali sono dati tecnici non trasparenti verso l'Utente (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
+    L'Istanza del Wallet DEVE includere la Wallet App Attestation se richiesta dalla Relying Party nella richiesta mdoc. L'Istanza del Wallet DOVREBBE includere tutte le divulgazioni selettive disponibili per la Wallet App Attestation (:ref:`WP_108b <wallet-credential-presentation-testcases>`). Inoltre, durante la presentazione, l'Istanza del Wallet NON DEVE richiedere il consenso dell'Utente alla divulgazione degli attributi della Wallet App Attestation, i quali sono dati tecnici non trasparenti verso l'Utente (:ref:`WP_107a <wallet-credential-presentation-testcases>`).
 
 Session Termination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
