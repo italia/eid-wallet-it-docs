@@ -1022,9 +1022,10 @@ La Notification Request DEVE essere una HTTP POST utilizzando il media type *app
   * - **event**
     - OBBLIGATORIO. Tipo dell'evento da notificare. DEVE essere una stringa case-sensitive e DEVE supportare i seguenti valori:
 
-      - *credential_accepted*: quando l'Attestato ELettronico è stato memorizzato con successo nell'Istanza del Wallet.
+      - *credential_accepted*: quando l'Attestato Elettronico è stato memorizzato con successo nell'Istanza del Wallet.
       - *credential_deleted*: quando l'emissione non riuscita dell'Attestato Elettronico è stata causata da un'azione dell'utente.
       - *credential_failure*: in tutti gli altri casi di insuccesso.
+      
 
     - Sezione 11.1 di [`OpenID4VCI`_].
   * - **event_description**
@@ -1080,3 +1081,19 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
     * - *504 Gateway Timeout* [OPZIONALE]
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
+
+
+.. _it-notification-data-correction:
+
+Correzione dati usando credential_failure
+.........................................
+
+Secondo `OpenID4VCI`_ Sezione 11, in tutti gli altri casi di insuccesso ``event`` DEVE usare ``credential_failure`` e parametri addizionali della Notification Request POSSONO essere definiti e usati. Il Credential Issuer DEVE ignorare i parametri non riconosciuti.
+
+Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE inviare una Notification Request con ``event=credential_deleted`` includendo parametri aggiuntivi per segnalare il contesto della correzione dati. Al minimo:
+
+- ``event_description``: descrizione concisa e leggibile della discrepanza.
+- ``failure_reason`` (OPZIONALE): breve codice machine-readable, ad es. ``data_correction_requested``.
+- ``correction_details`` (OPZIONALE): oggetto con campi minimi per indicare gli attributi impattati senza valori sensibili (es. soli identificativi degli attributi).
+
+Nell'eventualità di aver ricevuto un rigetto motivato da parte dell'Utente, il Credential DOVREBBE inoltrare il messaggio dell'utente contenente quel motivo alla Fonte Autentica. È RACCOMANDATO di utilizzare endpoint specifici PDND, forniti da Authentic Source, per facilitare questo scambio di dati.
