@@ -575,7 +575,7 @@ Il JWT del Trust Mark (contenuto nel claim ``trust_mark`` sopra) include i segue
    * - **email**
      - **RACCOMANDATO**. Email istituzionale o PEC dell'organizzazione.
    * - **logo_uri**
-     - **OPZIONALE**. URL che punta al logo del Trust Mark per scopi UI/UX.
+     - **OBBLIGATORIO**. URL che punta al logo del :ref:`brand-identity:Trust Mark` per scopi UI/UX.
    * - **ref**
      - **OPZIONALE**. URL con informazioni web aggiuntive sul Trust Mark.
 
