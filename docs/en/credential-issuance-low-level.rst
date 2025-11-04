@@ -12,7 +12,6 @@ The Credential Issuance flow is based on [`OpenID4VCI`_] and the following main 
   * **Pushed Authorization Requests** (PAR) [:rfc:`9126`], as recommended in Section 5 of [`OpenID4VCI`_].
   * **Proof Key for Code Exchange** (PKCE) [:rfc:`7636`], as recommended in Section 5 of [`OpenID4VCI`_].
   * **JWT Authorization Requests** (JAR) [:rfc:`9101`].
-  * **JWT Authorization Response Modes** (JARM) [`JARM`_].
   * **Rich Authorization Requests** (RAR) [:rfc:`9396`].
   * **OAuth 2.0 Attestation-Based Client Authentication** [`OAUTH-ATTESTATION-CLIENT-AUTH`_].
   * **OpenID Federation 1.0** [`OID-FED`_].
@@ -86,7 +85,7 @@ The following diagram shows the *Issuance flow*.
 .. plantuml:: plantuml/credential-issuance-flow.puml
     :width: 99%
     :alt: The figure illustrates the Credential Issuance Low-Level Flow.
-    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry2gEHlsgi0BYBBQYpKa5L7WMyA22jo92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEORxvvh3yO9qmpk-hJ7YdbT-lqMHPJMUoaBLG3bvzjcXUWR3WisojlpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87CqKGL86iSynGbK1HUXWc1ajKJeeAPjRwrgFCw9zHsY7e0neuvfAGp3vUBp_UJQVpRBB3uW6-iGLf8NW7lG6tG_Y5v4OugHK8YgxNJaW5qbdOenEbS2AWuZWKxmYZd-48xw4mA1p2ujV950fT8X04kP5esClzUBJGYrPTalfYV0Tt-8T7ws3mkm8eAacmLhBCmvjfH4C8BqVfTd0xzcutch3MQEmSIIF8vuGXA4Z5ULsZeCHIWixHqvPXOVH1bdz9JcjWvLO9vmssAfs7SLr33oQJU12LBALxX9H52IEciUF5rbfPX45BmyeRcGD-gQL1kv9goCG74o_UGyXT6_cLuqHI8w6Gk1bcNh2bVB5X9YgNji_51IncLqy8pJsylh-UBQUPjw7o520e5qq4hkD4ukmARlGOhcb8O73puv2vAKB6YiBhEYWJYOzqHbGMJgejU9woeEL4uUmmieULnHwimM_3wNWyV2aqokOVGb5bLqile4zmB6kOZnn2Pz2FjFPKbEEBZEBmRL6X8G5SXOP_mCTdPRNHUfEC96oqERCJd7v01PHFhQLoMJAuIvB4Pc7U4iSyobiZg7_SOuqyomGyFgowjT2EUIaD5jnWFEl_wgXdaZauWOvSYg90QrUSPUZoZK6xwrxvfu6Vpbp2mLoh0aySN2-N2rZSVbh2MnK4CMwd66kuOercVdkRCs7nV4sAU18B4sRo4tLbXNqBmL00-Xkw2K7_QsqjMalSHM3WBJaZ4fDM0ZWb7aESwO2KL2vLsXSH_4ho0ryDb6SYABJQoArlzYll7pOUPisCNmfNxBwNPMptEN1LKzee6mk3-SN5EhXQMVaLX-Tj_oPBCGgxJgbYjFyDOPGZ__xGlh_Btxnva_FZV3Y4hDbJ_NKkBOY3a9LOLmZPy_Vaah9kleo8diI13HueHtBbDBYebP4QqTDXgvkhjOJr8slrFdpYDerZ58EainGZvw1q8AZeY4XtOpIEbo-pJV6Sjr24QxpLzwGlx0CFOFYkwww2p7VUseEGedNQ82GmOj2pihWz8jRpIoIH3tgPvO07LFnXb7JIc3kfMNDdItTvytcQtU5MMaUdn3XJ7_6D35R2OGcPL9JydiCn3UJb5F-jmODkWS6vGgMfnL9nRk_-_nE9OQALev3DIFVQRtwxZ2tudUfNACgLatlCmHcXh2YwqgVf-rncoszxB0UnOHuKYBtsYZ_lWZEmDHQKGTETfnZSBiSTAeebjriqiNj3b_2jR9pbWqsbZo2sGggdtmKVw8_VLty2>`_
+    :caption: `Credential Issuance - Detailed flow. <https://www.plantuml.com/plantuml/svg/nLRRRjj64xxdKmoIYry4gEHlsgi0BYBBQYpKa5L7WMyA22jg92rCxR9xaE8yVMU7f7RDo4sD5cWGMEJEuPlvvh3yO9qmpk-hJ7YdbT-lq6HPJMUobBLG3bvzjcXUWR3WisoblpG7_xDWzwHLxxJ2L_3wHcvtxhBo-DJsqkZZoLmybTsBga87KqKXg19PvvYXMWEXz68O6roZSb9KCBNMjnvbHl-CqWv17z30iP0KoVJZzUBZtMGooyOxB1_W6rkG5e9tq1jmEuHVI6w4arg187IzSa8gaCx27frO2oT2L8n3U4SO_Wn7U0-bGK78yr_74oZr6e52a1k9XhtSZuPpFM_L9QdFHtTmXtzuj0u6lok0if8KrbAkY_1c6b4EuUKetGvkHzxjXcFM6ewS8saCyZbX00MfEAzh59HOIj0vUjeop8q-oFLVajCQMBbLmdc3dKhhOLJNq0kJIJo8IgwbUuIKHGb3fh7ZnTPQMOH1IyFI6ra0VgcbGRkKAW_4iuaNxo7ahetyoZYHr4We96xop0ksb2ysp4JbqlQvk83vzEe9eOM7r_VNqyKaypPKdW22Sia8JHt74gTNSAD7S4r30eER7tFcfWmPAuBNTL0c4X_fZAWidLHRy3nbGSk9qjayieULnLvOWz_ooMYKlpGqokOVXgBMNIs9vJx1iQnXFWe8dK4_qjfJKOulCeh3jqM5XWHm5Hh-0H-VbTL6wqqoah3HvinESFe15L0-jPRAPSdWBaWIcuLvInppA6-DeFvnZpNoB5FWyM7PhOLspDVIOCaDnhF-huvw9fc3Kz2HIr6MQEsIimnTlZ5eTzqh_pJXfpENS33JgiGJ1zUBnHpcjvyMy5O5GOBBYcaDbwpHp6zlSqOMpzSaFPbqXU6P_4HTMM7VGd0e0FqDtK3G_rfRIomGTp4my9QS4Ob9Am6S4eyGPpeW9PLBbVP5UR9SIdxWgq4RI0IbLXkvzSr-vVt3nXO6_Fj3dcVDj5yAL-w-bszi_1bmVLC3oelSpYukLi7Lqiglc9-t_PjyHHHsdPB6qVx7rBNlxuetRzuK_3ZBSyXuO_NtkhGW3a9MObKXPCzVc0jAklb48dOI1pPue1J9bTFWebP6QiHE5rhTtB5hM3soLkyBAAxLE4yH91sgY5o0qe6VikEXcTg-SRo5cMp2Szv26UxpLj-Jlh0FF8dX0w-x4pBVUMiFGehMQOEf-mXwLXRNI8prx3P9vODUPWNW0HL_8IMDDE96QlRTsT9TtdoUP7UubTRHAJ7Er4SAXmOhuN0DcLIK_9xXc0RoSi9_Q_2Wsy3WNA7Ir6AfEBTt__-9n33MoX5aCz6zzflTBc8BVgVwajmOAcS1pWXbHTbLFitU5p9RVDjY1OWDqw10xBLNpMUUt2FO6ajAe6dE3eARvRX3HL1okqKJUpVq25_Enba-s5Jw268hf7hwUV21_lXzzIS0>`_
 
 
 .. .. figure:: ../../images/Low-Level-Flow-ITWallet-PID-QEAA-Issuance.svg
@@ -287,8 +286,8 @@ Below is a non-normative example of a Nonce Request:
     Host: eaa-provider.example.org
     Content-Length: 0
 
-**Step 13 (Nonce Response)**: The Credential Issuer provides the ``c_nonce`` to the Wallet Instance. The parameter ``c_nonce`` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 16 to create the proof of possession of the key (``proof`` claim) and it is the primary countermeasure against key proof replay attack.
-Note that, the received ``c_nonce`` value can be used to create the proof as long as the Issuer
+**Step 13 (Nonce Response)**: The Credential Issuer provides the ``c_nonce`` to the Wallet Instance. The parameter ``c_nonce`` is a string value, which MUST be unpredictable and is used later by the Wallet Instance in Step 16 to create the proof(s) of possession of the key (``proofs`` claim) and it is the primary countermeasure against key proof replay attack.
+Note that, the received ``c_nonce`` value can be used to create the proof(s) as long as the Issuer
 provides the Wallet Instance with a new ``c_nonce`` value.
 
 Below is a non-normative example of a Nonce Response:
@@ -310,14 +309,14 @@ Below is a non-normative example of a Nonce Response:
 
 **Step 15 (Proof of Possession of Credential)**: The Wallet Instance for requesting the Digital Credential creates a proof of possession with ``c_nonce`` obtained in **Step 13** using the private key used for the DPoP. The ``jwk`` value in the proof parameter MUST be equal to the public key referenced in the DPoP (:ref:`WP_056c <wallet-credential-issuance-testcases>`).
 
-**Step 16 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proof (which demonstrates possession of the key) as per :ref:`WP_056 <wallet-credential-issuance-testcases>`. The ``proof`` parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued Digital Credential will be bound. To verify the proof, the Credential Issuer conducts the following checks at the Credential endpoint:
+**Step 16 (Credential Request)**: The Wallet Instance sends a request for the Digital Credential to the Credential endpoint. This request MUST include the Access Token, DPoP Proof JWT, Credential type, proof (which demonstrates possession of the key) as per :ref:`WP_056 <wallet-credential-issuance-testcases>`. The ``proofs`` parameter MUST be an object that contains evidence of possession of the cryptographic key material to which the issued Digital Credential will be bound. To verify the proof, the Credential Issuer conducts the following checks at the Credential endpoint:
 
- 1. The JWT proof MUST include all required claims as specified in the table of Section :ref:`credential-issuance-endpoint:Credential Request`.
+ 1. The JWT proof MUST include all required claims as specified in the table of Section :ref:`credential-issuance-endpoint:Token Request`.
  2. The key proof MUST be explicitly typed using header parameters as defined for the respective proof type.
  3. The header parameter ``alg`` MUST indicate a registered asymmetric digital signature algorithm, and MUST NOT be set to `none`.
  4. The signature on the key proof MUST be verified using the public key specified in the header parameter.
  5. The header parameter MUST NOT contain a private key.
- 6. The signature on the Wallet Unit Attestation JWT as the value of the ``key_attestation`` header parameter MUST be verified using the Wallet Provider's public key which is identified by the ``kid`` header parameter inside the Wallet Unit Attestation JWT.
+ 6. The signature on the Wallet Unit Attestion JWT as the value of the ``key_attestation`` header parameter MUST be verified using the Wallet Provider's public key which is identified by the ``kid`` header parameter inside the Wallet Unit Attestation JWT.
  7. If a ``c_nonce`` value was previously provided by the server, the ``nonce`` claim in the JWT MUST match this ``c_nonce`` value. Furthermore, the creation time of the JWT, as indicated by the ``iat`` claim or a server-managed timestamp via the ``nonce`` claim, MUST be within an acceptable window of time as determined by the server.
 
 
@@ -391,7 +390,7 @@ Where a non-normative example of the decoded content of the ``jwt`` parameter is
 The decoded content of ``jwt`` elements in the ``jwt`` array is similar to what is explained in **Step 16**.
 
 
-**Steps 20-24 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate all the key proofs that are provided within ``proof`` (**Step 15**) or ``proofs`` (**Step 18**) parameter that the new Credentials SHALL be bound to, according to `OpenID4VCI`_ Appendix F1. If all checks succeed, the Credential Issuer returns the issued Credential inside the ``credentials`` parameter. The number of elements in the Credentials array matches the number of the keys that the Wallet Instance has provided either via the ``proof`` parameter (**Step 16**) or ``proofs`` parameter (**Step 19**). The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential(s):
+**Steps 20-24 (Credential Response)**: The Credential Issuer MUST validate the *DPoP JWT Proof* based on the steps defined in Section 4.3 of (:rfc:`9449`) and whether the *Access Token* is valid and suitable for the requested Credential. The Credential Issuer MUST validate all the key proofs that are provided within ``proofs`` (**Step 15** and **Step 18**) parameter that the new Credentials SHALL be bound to, according to `OpenID4VCI`_ Appendix F1. If all checks succeed, the Credential Issuer returns the issued Credential inside the ``credentials`` parameter. The number of elements in the Credentials array matches the number of the keys that the Wallet Instance has provided either via the ``proofs`` parameter (**Step 16** and **Step 19**). The Wallet Instance MUST perform the following checks before proceeding with the secure storage of the Credential(s):
 
     1. It MUST check that the PID/(Q)EAA contained in the Credential Response contains all the mandatory parameters and values are validated according to :ref:`Table of the Credential response parameters <table_credential_response_claim>` (:ref:`WP_059 <wallet-credential-issuance-testcases>`).
     2. It MUST check the Credential integrity by verifying the signature using the algorithm specified in the ``alg`` header parameter of SD-JWT (:ref:`credential-data-model:Digital Credential Data Model`) and the public key that is identified using the ``kid`` header of the SD-JWT (:ref:`WP_062a <wallet-credential-issuance-testcases>`).
@@ -449,7 +448,7 @@ Below is a non-normative example of a successful response containing a batch of 
 
 
 
-**Step 25 (Notification Request)**: According to Section 10.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
+**Step 25 (Notification Request)**: According to Section 11.1 of [`OpenID4VCI`_], the Wallet sends an HTTP POST request to the Notification Endpoint using the *application/json* media type as in the following non-normative example (:ref:`WP_064 <wallet-credential-issuance-testcases>`).
 
 .. code-block:: http
 
@@ -470,7 +469,7 @@ Below is a non-normative example of a successful response containing a batch of 
 
 
 
-**Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 10.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
+**Step 26 (Notification Response)**: When the Credential Issuer has successfully received the Notification Request from the Wallet, it MUST respond with an HTTP status code *204* as recommended in Section 11.2 of [`OpenID4VCI`_]. Below is a non-normative example of response to a successful Notification Request:
 
 
 .. code-block:: http
@@ -493,7 +492,7 @@ To use the Deferred, Credential Request, and Notification endpoints, the Wallet 
 
 An Access Token obtained as a result of a Refresh Token flow MUST be limited to:
 
-  - the Deferred endpoint to obtain a new Digital Credential after time set in the parameter ``lead_time`` or when it is notified as ready to be issued  (:ref:`WP_066 <wallet-credential-issuance-testcases>`);
+  - the Deferred endpoint to obtain a new Digital Credential after time set in the parameter ``interval`` or when it is notified as ready to be issued  (:ref:`WP_066 <wallet-credential-issuance-testcases>`);
   - the Notification endpoint, to notify the deletion of a Digital Credential to the Credential Issuer;
   - the Credential endpoint, to refresh a Digital Credential that is already present in the Wallet Instance (also called Digital Credential re-issuance, see section :ref:`credential-issuance-low-level:Re-Issuance Flow`).
 
