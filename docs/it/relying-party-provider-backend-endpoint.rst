@@ -39,10 +39,13 @@ Il Key Binding Endpoint della Relying Party consente alle App di Verifica di ass
 Richiesta di Associazione Chiavi della Relying Party
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-Ulteriori dettagli sulla Richiesta di Key Binding della Relying Party sono forniti nella sezione :ref:`mobile-application-instance:Richiesta di Associazione Chiave dell'Applicazione Mobile`.
+Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Wallet App and Wallet Unit Attestation Issuance Request`. 
 
+Le uniche differenze sono le seguenti:
 
-L'header ``typ`` del JWT di Richiesta di Integrità assume il valore ``rp-kb+jwt``.
+- L'intestazione ``typ`` del JWT della Integrity Request assume il valore ``rp-kb+jwt``.
+- Il corpo del JWT della Integrity Request non include la dichiarazione ``attested_key``.
+- Il valore della dichiarazione ``hardware_signature`` viene ottenuto basandosi esclusivamente sul valore di ``client_data_hash_waa``.
 
 
 Risposta di Associazione Chiavi della Relying Party
@@ -56,7 +59,70 @@ Di seguito è riportato un esempio non normativo di una Risposta alla Richiesta 
 
     HTTP/1.1 204 No content
 
-Se si verificano errori durante il processo, viene restituita una Error Response. Ulteriori dettagli sulla Error Response sono forniti nella sezione :ref:`mobile-application-instance:Risposta di Errore di Associazione Chiave dell'Applicazione Mobile`.
+Se si verifica un errore durante il processo, viene restituita una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
+
+  - *error*. Il codice di errore.
+  - *error_description*. Testo in formato leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
+
+
+Di seguito è riportato un esempio non normativo di una Key Binding Error Response.
+
+.. code-block:: http
+
+    HTTP/1.1 403 Forbidden
+    Content-Type: application/json
+
+    {
+      "error": "invalid_request",
+      "error_description": "The provided challenge is invalid, expired, or already used."
+    }
+
+La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore supportati per la risposta di errore, salvo diversa indicazione (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
+
+.. list-table::
+    :class: longtable
+    :widths: 30 20 50
+    :header-rows: 1
+
+    * - **HTTP Status Code**
+      - **Error Code**
+      - **Descrizione**
+    * - ``400 Bad Request``
+      - ``bad_request``
+      - La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di intestazione o Integrity Assertion), oppure include parametri non validi o sconosciuti.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The Verifier App è stata revocata.
+    * - ``403 Forbidden``
+      - ``integrity_check_error``
+      - Il dispositivo non soddisfa i requisiti minimi di sicurezza del Fornitore della Relying Party.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - La firma della Integrity Request non è valida oppure non corrisponde alla chiave pubblica (JWK) associata.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - La validazione della Integrity Assertion non è riuscita; la Integrity Assertion è stata manomessa o firmata in modo non corretto.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - Il ``nonce`` fornito non è valido, è scaduto oppure è già stato utilizzato.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - La Proof of Possession (``hardware_signature``) non è valida.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - Il parametro ``iss`` non corrisponde all'identificatore URL previsto dal Fornitore della Relying Party.
+    * - ``404 Not Found``
+      - ``not_found``
+      - L'istanza dell'applicazione di verifica (Verifier App) non è stata trovata.
+    * - ``422 Unprocessable Content`` [OPTIONAL]
+      - ``validation_error``
+      - La richiesta non rispetta il formato richiesto.
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - Si è verificato un errore interno del server durante l'elaborazione della richiesta.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - Il servizio non è disponibile. Si prega di riprovare più tardi.
 
 
 Endpoint del Certificato di Accesso della Relying Party
