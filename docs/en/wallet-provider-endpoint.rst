@@ -198,13 +198,13 @@ This is a RESTful API endpoint provided by the Wallet Provider that enables the 
 Wallet App and Wallet Unit Attestation Issuance Request
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The Wallet App and Wallet Unit Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_140–142 <wallet-instance-optional-testcases>`).
+The Wallet App and Wallet Unit Attestation Issuance Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``. (:ref:`WP_026 <wallet-instance-testcases>` and :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
 The ``typ`` header of the Wallet App and Wallet Unit Attestation Issuance Request JWT assumes the value ``wp-war-wua+jwt``.
 
 The Wallet App and Wallet Unit Attestation Issuance Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below.
 
-Below is a non-normative example of a Key Binding Request.
+Below is a non-normative example of a Wallet App and Wallet Unit Attestation Request.
 
 .. code-block:: http
 
@@ -327,7 +327,7 @@ The JSON Object returned in the response has the following claim:
       - **Description**
       - **Reference**
     * - **wallet_attestations**
-      - REQUIRED. A JSON array containing  one or more Wallet App Attestation and one Wallet Unit Attestation in ``wallet_app_attestations`` and ``wallet_unit_attestation`` elements, respectively. It MUST contain the following mandatory claims:
+      - REQUIRED. A JSON array containing one or more Wallet App Attestation and one Wallet Unit Attestation in ``wallet_app_attestations`` and ``wallet_unit_attestation`` elements, respectively. It MUST contain the following mandatory claims:
 
 
         - **wallet_app_attestation**: A JSON array containing of one or more issued Wallet App Attestation. The elements of the array MUST be JSON Objects. At least two JSON Objects MUST be present.
@@ -364,7 +364,7 @@ If any errors occur during the process, an error response is returned. The respo
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered (:ref:`WP_035 <wallet-instance-testcases>`).
 
-Below is a non-normative example of a Key Binding Error Response.
+Below is a non-normative example of a Wallet App and Wallet Unit Attestation Issuance Response.
 
 .. code-block:: http
 
@@ -388,7 +388,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - **Description**
     * - ``400 Bad Request``
       - ``bad_request``
-      - The request is malformed, missing required parameters (e.g., header parameters, Integrity Assertion, or attested_key), or includes invalid and unknown parameters.
+      - The request is malformed, missing required parameters (e.g., header parameters, Integrity Assertion, or ``attested_key``), or includes invalid and unknown parameters.
     * - ``403 Forbidden``
       - ``invalid_request``
       - The Wallet Instance has been revoked.
@@ -424,8 +424,7 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The service is unavailable. Please try again later.
 
 
-In the following, we provide details about Wallet App Attestation in ``jwt``, ``dc+sd-jwt`` or ``mso_mdoc`` formats and Wallet Unit Attestation in ``jwt`` format.
-
+Di seguito forniamo i dettagli relativi alla Wallet App Attestation nei formati ``jwt``, ``dc+sd-jwt`` o ``mso_mdoc`` e alla Wallet Unit Attestation nel formato jwt.
 
 Wallet App Attestation JWT
 """""""""""""""""""""""""""
@@ -522,7 +521,7 @@ The JOSE header of the Wallet App Attestation SD-JWT MUST contain the following 
       - REQUIRED. It MUST be set to ``dc+sd-jwt``
       - `OPENID4VC-HAIP`_.
     * - **trust_chain**
-      - OPTIONAL. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
+      - REQUIRED. Sequence of Entity Statements that composes the Trust Chain related to the Wallet Provider.
       - `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
     * - **x5c**
       - REQUIRED. Contains the X.509 public key certificate or certificate chain (:rfc:`5280`) corresponding to the key used to digitally sign the JWT.
