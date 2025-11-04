@@ -1100,4 +1100,4 @@ For holder-initiated data correction, the Wallet Instance SHOULD send a Notifica
 - ``failure_reason`` (OPTIONAL): a short machine-readable code, e.g., ``data_correction_requested``.
 - ``correction_details`` (OPTIONAL): object with minimal fields indicating impacted attributes without sensitive values (e.g., attribute identifiers only).
 
-Upon receipt, the Credential Issuer MAY verify against Authentic Sources and, if confirmed, SHOULD proceed with the :ref:`credential-issuance-low-level:Re-Issuance Flow`.
+In the case of receiving a Credential failure that includes a stated reason, the Credential Issuer SHOULD forward the User's message containing that reason to the Authentic Source. It is RECOMMENDED to use PDND specific endpoints, provided by Authentic Source, to facilitate this data exchange.
