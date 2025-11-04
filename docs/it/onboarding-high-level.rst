@@ -312,4 +312,4 @@ Journey dell'Esperienza Utente
 
 Quando tutti i processi di onboarding delle entità sono completati con successo, gli Utenti possono scoprire e installare Istanze del Wallet certificate, ottenere gli Attestati Elettronici disponibili e presentare i loro Attestati elettronici a Fornitori di Servizi registrati (vedi :ref:`functionalities:Panoramica delle Funzionalità`).
 
-Questa integrazione fluida dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.
+Questa modalità di integrazione dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.
