@@ -205,7 +205,7 @@ Aggiornamento dello Stato relativo all'Utente
 
 Gli Utenti POSSONO modificare lo stato di validità del loro Attestato Elettronico:
 
-  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per indicare la motivazione dell'eliminazione, da notificare opzionalmente al Fornitore di Attestati Elettronici. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation:Status Update by Wallet Instance`.
+  1. Eliminando l'Attestato Elettronico dalla propria Istanza del Wallet: l'Istanza del Wallet DOVREBBE proporre all'Utente un prompt per notificare opzionalmente al Fornitore di Attestati Elettronici il desiderio da parte dell'Utente di richiedere la revoca della Credenziale. Quando l'Utente utilizza questa funzionalità, la notifica da inviare al Fornitore di Attestati Elettronici DEVE utilizzare il Notification Endpoint messo a disposizione dal Fornitore di Attestati Elettronici, come descritto nella Sezione :ref:`credential-revocation:Status Update by Wallet Instance`.
   2. Utilizzando il portale web del Fornitore di Attestati Elettronici:
 
     a. Gli Utenti POSSONO accedere ad un'area sicura con almeno lo stesso Livello di Garanzia utilizzato durante la fase di emissione.

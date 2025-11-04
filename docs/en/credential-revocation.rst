@@ -207,7 +207,7 @@ Status Update related to the User
 
 Users MAY change their Digital Credential validity status by:
 
-  1. Deleting the Digital Credential from their Wallet Instance: the Wallet Instance SHOULD prompt the User about the deletion motivation to be optionally notified to the Credential Issuer. When the User uses this functionality, the notification to be sent to the Credential Issuer MUST use the Notification Endpoint provided by the Issuer, as described in Section :ref:`credential-revocation:Status Update by Wallet Instance`.
+  1. Deleting the Digital Credential from their Wallet Instance: the Wallet Instance SHOULD prompt the User to be optionally notify the Credential Issuer about the User's intention to revoke the Digital Credential. When the User uses this functionality, the notification to be sent to the Credential Issuer MUST use the Notification Endpoint provided by the Issuer, as described in Section :ref:`credential-revocation:Status Update by Wallet Instance`.
   2. Using the Issuer's web portal:
 
     a. Users MAY access a secure area with at least the same Level of Assurance used during the issuance phase.
