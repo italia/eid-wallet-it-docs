@@ -237,6 +237,7 @@ In particolare, il JWT della Wallet App e Wallet Unit Attestation Issuance inclu
       - [:rfc:`7638#section_3`]
     * - **typ**
       - Il tipo del JWT, che DEVE essere impostato su ``wp-war-wua+jwt``.
+      - 
 
 Il JWT della Wallet App e Wallet Unit Attestation Request include le seguenti dichiarazioni (claims) nel corpo:
 
