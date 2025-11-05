@@ -116,6 +116,11 @@ In case of Issuer Initiated flow, in addition to the Federation Check defined ab
   * MUST use the ``OAuth-Client-Attestation`` and ``OAuth-Client-Attestation-PoP`` parameters according to OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], since in this flow the Pushed Authorization Endpoint is a protected endpoint  (:ref:`WP_052b <wallet-credential-issuance-testcases>`).
   * Specifies the types of the requested credentials using the ``authorization_details`` [RAR :rfc:`9396`] parameter and or ``scope`` parameter (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
+.. note:: 
+  JAR [:rfc:`9101`] is mandatory in this technical specification to ensure the end-to-end integrity of the authorization request and all parameters included in the Request Object.
+  However, the Wallet Instance may interact with cross-border Credential Issuers whose Authorization Servers do not follow this specification and may not support JAR implementation. To handle this scenario, the Wallet Instance SHOULD check the `require_signed_request_object` parameter in the Authorization Server metadata and decide based on it whether to send the parameters in the signed Request Object or not. For interoperability, the Wallet Instance MAY duplicate the same paramters in the request body.
+  Section 10.7 of :rfc:`9101` provides the security requirements on how to manage this duplication properly.
+
 .. note::
    For eID Substantial Authentication with MRTD Verification, the ``authorization_details`` object MUST contain the type ``"it_l2+document_proof"``. For complete protocol specifications, see :ref:`credential-issuance-l2plus:eID Substantial Authentication with MRTD Verification for PID Issuance`.
 
