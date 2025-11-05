@@ -406,11 +406,10 @@ The JWT header parameters are described below:
   * - **trust_chain**
     - Sequence of Entity Statements that composes the Trust Chain related to the Relying Party, as defined in `OID-FED`_ Section 4.3 *Trust Chain Header Parameter*.
   * - **x5c**
-    - CONDITIONAL. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix; otherwise ``kid`` with ``jwks`` is used.  Contains the Relying Party’s X.509 certificate (and optionally intermediate certificates), used to verify the JWT signature with the public key in the Relying Party’s certificate as defined in :rfc:`7515`.  
+    - CONDITIONAL. REQUIRED when ``client_id`` uses the ``x509_hash`` prefix; otherwise ``kid`` with ``jwks`` is used. Contains the Relying Party’s leaf X.509 certificate (and optionally intermediate certificates), used to verify the JWT signature with the public key in the Relying Party’s certificate as defined in :rfc:`7515`. The Relying Party’s certificate in ``x5c`` MUST assert identity information that corresponds to the endpoint identities conveyed in the Authorization request and response (e.g., the host of each ``response_uri`` and ``redirect_uri``). See Section 5 of `OPENID4VC-HAIP`_.
 
 .. note::
-
-   The ``x5c`` header MUST NOT contain the trust anchor certificate, as required by `OPENID4VC-HAIP`_, and the trust anchor MUST be available to the Wallet Instance for certificate chain validation, for example from a publicly accessible endpoint.
+   The ``x5c`` header MUST NOT include the root certificate, as required by `OPENID4VC-HAIP`_. The ``x5c`` certificate chain MUST validate to a preconfigured root certificate; see Section :ref:`trust-infrastructure:X.509 PKI` for background on X.509 certificate chain validation.
 
 The JWT payload parameters are described herein:
 
