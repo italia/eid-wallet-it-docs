@@ -2,9 +2,6 @@
 
 .. "included" file, so we start with '-' title level
 
-Relying Party Provider Backend Endpoints
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 The Relying Party MUST expose a set of endpoints for handling the lifecycle of Verifier Apps that use a remote backend service provided by their Relying Party Provider Backend. These endpoints support proximity presentation flows by providing nonce generation, hardware key registration, integrity validation, and Access Certificate issuance. The specific implementation details are left to the Relying Party's discretion.
 
 .. note::
@@ -12,32 +9,32 @@ The Relying Party MUST expose a set of endpoints for handling the lifecycle of V
 
 
 Relying Party Provider Backend Federation Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Relying Party MUST provide its Entity Configuration through the ``/.well-known/openid-federation`` endpoint, according to Section :ref:`trust:Entity Configuration`. Technical details are provided in Section :ref:`relying-party-entity-configuration:Relying Party Entity Configuration`.
 
 
 Relying Party Provider Backend Nonce Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 
 The Relying Party Nonce Endpoint allows the Verifier App to request a cryptographic ``nonce`` from the Relying Party Provider Backend. The ``nonce`` serves as an unpredictable, single-use challenge to ensure freshness and prevent replay attacks.
 
 Further details on the Nonce Request and Response are provided in the :ref:`mobile-application-instance:Mobile Application Nonce Request` and :ref:`mobile-application-instance:Mobile Application Nonce Request` Sections, respectively.
 
 Relying Party Verifier App Initialization Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Verifier App Initialization Endpoint allows for the initialization of Verifier Apps, consisting in the registration of a pair of long-lived, securely stored Cryptographic Hardware Keys.
 
 Further details on the Verifier App Initialization Request and Response are provided in the :ref:`mobile-application-instance:Mobile Application Instance Initialization Request` and :ref:`mobile-application-instance:Mobile Application Instance Initialization Response` Sections, respectively.
 
 Relying Party Provider Backend Key Binding Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Relying Party Key Binding Endpoint enables Verifier Apps to bind the newly created pair of keys, which will be associated with an Access Certificate, to the Verifier App, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Relying Party Provider Backend also needs to verify the integrity of the Verifier App.
 
 Relying Party Provider Backend Key Binding Request
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+..................................................
 
 Further details on the Relying Party Key Binding Request are provided in the :ref:`wallet-provider-endpoint:Wallet App and Wallet Unit Attestation Issuance Request` section.
 
@@ -50,7 +47,7 @@ The only difference are the following:
 
 
 Relying Party Provider Backend Key Binding Response
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+....................................................
 
 Upon a successful request, the Relying Party Provider Backend provides an HTTP Response with a ``204 No Content`` status code.
 
@@ -127,13 +124,13 @@ The following table lists HTTP Status Codes and related error codes that are sup
 
 
 Relying Party Provider Backend Access Certificate Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The Relying Party Access Certificate Endpoint enables Verifier Apps to obtain an Access Certificate.
 
 
 Relying Party Provider Backend Access Certificate Request
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.........................................................
 
 The Access Certificate Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
 
@@ -164,7 +161,7 @@ Below is a non-normative example of an Access Certificate Request.
 
 
 Relying Party Provider Backend Access Certificate Response
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+..........................................................
 
 Upon a successful request, the Relying Party Access Certificate Endpoint provides an HTTP Response with a ``200 OK`` status code and the Access Certificate. The Access Certificate Response, which uses ``application/json`` as the ``Content-Type``, includes the following body parameters:
 
@@ -231,7 +228,7 @@ The following table lists HTTP Status Codes and related error codes that MUST be
       - The request cannot be fulfilled because the Endpoint is temporarily unavailable (e.g., due to maintenance or overload).
 
 Relying Party Erasure Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 
 The Erasure Endpoint allows Wallet Instances to request deletion of attributes presented to the Relying Party, supporting user privacy rights and regulatory compliance.
 
