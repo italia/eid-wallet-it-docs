@@ -657,8 +657,8 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 </tr>
 <tr class="row-even"><td><p>WP_051</p></td>
 <td><p>Issuance, Interoperability</p></td>
-<td><p>Credential Request using OAuth2 code flow</p></td>
-<td><p>Wallet Instance successfully requests PID/(Q)EAA from the PID/(Q)EAA Provider using the Authorization Code Flow per <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-15.html">OpenID4VCI</a>.</p></td>
+<td><p>Credential Request using OAuth 2.0 code flow</p></td>
+<td><p>Wallet Instance successfully requests PID/(Q)EAA from the PID/(Q)EAA Provider using the Authorization Code Flow per <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">OpenID4VCI</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_052</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -753,7 +753,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_056c</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Match the Credential key proof to the DPoP key</p></td>
-<td><p>Wallet Instance includes a proof object of type <code class="docutils literal notranslate"><span class="pre">jwt</span></code> in the Credential Request that demonstrates possession of the cryptographic key material; the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in this object matches the public key referenced in the DPoP proof.</p></td>
+<td><p>Wallet Instance includes a <code class="docutils literal notranslate"><span class="pre">proofs</span></code> object of type <code class="docutils literal notranslate"><span class="pre">jwt</span></code> in the Credential Request that demonstrates possession of the cryptographic key material; the <code class="docutils literal notranslate"><span class="pre">jwk</span></code> value in this object matches the public key referenced in the DPoP proof.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_057</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -828,12 +828,12 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-even"><td><p>WP_065</p></td>
 <td><p>Issuance, Security</p></td>
 <td><p>Handle deferred issuance</p></td>
-<td><p>Wallet Instance evaluates the Credential Response; if it contains both <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code> and <code class="docutils literal notranslate"><span class="pre">lead_time</span></code>, Wallet Instance recognizes the flow as deferred issuance.</p></td>
+<td><p>Wallet Instance evaluates the Credential Response; if it contains both <code class="docutils literal notranslate"><span class="pre">transaction_id</span></code> and <code class="docutils literal notranslate"><span class="pre">interval</span></code>, Wallet Instance recognizes the flow as deferred issuance.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_066</p></td>
 <td><p>Issuance, Interoperability</p></td>
-<td><p>Deferred issuance request after lead_time</p></td>
-<td><p>Wallet Instance submits a Deferred Credential Request only after the required <code class="docutils literal notranslate"><span class="pre">lead_time</span></code> has passed.</p></td>
+<td><p>Deferred issuance request after interval</p></td>
+<td><p>Wallet Instance submits a Deferred Credential Request only after the required <code class="docutils literal notranslate"><span class="pre">interval</span></code> has passed.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_066a</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -843,7 +843,7 @@ The <code class="docutils literal notranslate"><span class="pre">signed_jwks_uri
 <tr class="row-odd"><td><p>WP_066b</p></td>
 <td><p>Issuance, Interoperability</p></td>
 <td><p>Deferred request with still-valid Access Token</p></td>
-<td><p>Wallet Instance includes the existing Access Token in the deferred request if the <code class="docutils literal notranslate"><span class="pre">lead_time</span></code> parameter value is less than the expiration time set for the Access Token.</p></td>
+<td><p>Wallet Instance includes the existing Access Token in the deferred request if the <code class="docutils literal notranslate"><span class="pre">interval</span></code> parameter value is less than the expiration time set for the Access Token.</p></td>
 </tr>
 <tr class="row-even"><td><p>WP_066c</p></td>
 <td><p>Issuance, Interoperability</p></td>
@@ -985,7 +985,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_083a</p></td>
 <td><p>Remote-flow, Presentation, Interoperability</p></td>
 <td><p>Construct <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code></p></td>
-<td><p>Wallet Instance formats the <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> as a JSON object that includes the <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_schemes_supported</span></code>, and <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> per Section 9.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>].</p></td>
+<td><p>Wallet Instance formats the <code class="docutils literal notranslate"><span class="pre">wallet_metadata</span></code> as a JSON object that includes the <code class="docutils literal notranslate"><span class="pre">vp_formats_supported</span></code>, <code class="docutils literal notranslate"><span class="pre">client_id_schemes_supported</span></code>, and <code class="docutils literal notranslate"><span class="pre">authorization_endpoint</span></code> per Section 10.1 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>].</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_083b</p></td>
 <td><p>Remote-flow, Presentation, Privacy</p></td>
@@ -1055,7 +1055,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 <tr class="row-even"><td><p>WP_092</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
 <td><p>Encrypt Authorization Response</p></td>
-<td><p>Wallet Instance encrypts the Authorization Response JWT per Section 7.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>] using the Relying Party’s public key.</p></td>
+<td><p>Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [<a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>] using the Relying Party’s public key.</p></td>
 </tr>
 <tr class="row-odd"><td><p>WP_093</p></td>
 <td><p>Remote-flow, Presentation, Security</p></td>
@@ -1846,7 +1846,7 @@ covering both the <strong>Remote Flow</strong> and the <strong>Proximity Flow</s
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 31/10/2025.
+      Last updated on 05/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

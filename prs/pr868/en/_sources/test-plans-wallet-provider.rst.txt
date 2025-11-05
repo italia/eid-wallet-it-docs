@@ -392,7 +392,7 @@ This section lists the test cases from Sections:
      - Wallet Instance verifies that every requested ``credential_configuration_id`` appears in the Credential Issuer’s ``credential_configurations_supported`` metadata; missing IDs cause the offer to fail.
    * - WP_051
      - Issuance, Interoperability
-     - Credential Request using OAuth2 code flow
+     - Credential Request using OAuth 2.0 code flow
      - Wallet Instance successfully requests PID/(Q)EAA from the PID/(Q)EAA Provider using the Authorization Code Flow per `OpenID4VCI`_.
    * - WP_052
      - Issuance, Interoperability
@@ -469,7 +469,7 @@ This section lists the test cases from Sections:
    * - WP_056c
      - Issuance, Security
      - Match the Credential key proof to the DPoP key
-     - Wallet Instance includes a proof object of type ``jwt`` in the Credential Request that demonstrates possession of the cryptographic key material; the ``jwk`` value in this object matches the public key referenced in the DPoP proof.
+     - Wallet Instance includes a ``proofs`` object of type ``jwt`` in the Credential Request that demonstrates possession of the cryptographic key material; the ``jwk`` value in this object matches the public key referenced in the DPoP proof.
    * - WP_057
      - Issuance, Interoperability
      - Multiple Digital Credential request
@@ -529,11 +529,11 @@ This section lists the test cases from Sections:
    * - WP_065
      - Issuance, Security
      - Handle deferred issuance
-     - Wallet Instance evaluates the Credential Response; if it contains both ``transaction_id`` and ``lead_time``, Wallet Instance recognizes the flow as deferred issuance.
+     - Wallet Instance evaluates the Credential Response; if it contains both ``transaction_id`` and ``interval``, Wallet Instance recognizes the flow as deferred issuance.
    * - WP_066
      - Issuance, Interoperability
-     - Deferred issuance request after lead_time
-     - Wallet Instance submits a Deferred Credential Request only after the required ``lead_time`` has passed.
+     - Deferred issuance request after interval
+     - Wallet Instance submits a Deferred Credential Request only after the required ``interval`` has passed.
    * - WP_066a
      - Issuance, Interoperability
      - Deferred issuance request with transaction_id
@@ -541,7 +541,7 @@ This section lists the test cases from Sections:
    * - WP_066b
      - Issuance, Interoperability
      - Deferred request with still-valid Access Token
-     - Wallet Instance includes the existing Access Token in the deferred request if the ``lead_time`` parameter value is less than the expiration time set for the Access Token.
+     - Wallet Instance includes the existing Access Token in the deferred request if the ``interval`` parameter value is less than the expiration time set for the Access Token.
    * - WP_066c
      - Issuance, Interoperability
      - Fresh DPoP-bound Access Token via the Refresh
@@ -655,7 +655,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_083a
      - Remote-flow, Presentation, Interoperability
      - Construct ``wallet_metadata``
-     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, ``client_id_schemes_supported``, and ``authorization_endpoint`` per Section 9.1 of [`OpenID4VP`_].
+     - Wallet Instance formats the ``wallet_metadata`` as a JSON object that includes the ``vp_formats_supported``, ``client_id_schemes_supported``, and ``authorization_endpoint`` per Section 10.1 of [`OpenID4VP`_].
    * - WP_083b
      - Remote-flow, Presentation, Privacy
      - Exclude PII in ``wallet_metadata``
@@ -711,7 +711,7 @@ covering both the **Remote Flow** and the **Proximity Flow** presentation phases
    * - WP_092
      - Remote-flow, Presentation, Security
      - Encrypt Authorization Response
-     - Wallet Instance encrypts the Authorization Response JWT per Section 7.3 of [`OpenID4VP`_] using the Relying Party’s public key.
+     - Wallet Instance encrypts the Authorization Response JWT per Section 8.3 of [`OpenID4VP`_] using the Relying Party’s public key.
    * - WP_093
      - Remote-flow, Presentation, Security
      - Construct ``vp_token`` with ``state``

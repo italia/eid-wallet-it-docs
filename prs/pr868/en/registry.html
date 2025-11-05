@@ -978,10 +978,10 @@ Content-Type: application/json
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;person_identification_data&quot;]</span></code> for PID-specific identity verification.</p></li>
+<li><p><strong>Government Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:pid:it:1&quot;]</span></code> for PID-specific identity verification.</p></li>
 <li><p><strong>Police Controls</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;docType&quot;:</span> <span class="pre">&quot;org.iso.18013.5.1.mDL&quot;</span></code> for driving license verification.</p></li>
 <li><p><strong>Banking KYC</strong>: Specific credential types mandated by financial regulations.</p></li>
-<li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;european_disability_card&quot;]</span></code> for EU-compliant disability benefit access.</p></li>
+<li><p><strong>Healthcare Services</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;vct_values&quot;:</span> <span class="pre">[&quot;urn:eudi:european_disability_card:it:1&quot;]</span></code> for EU-compliant disability benefit access.</p></li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
@@ -1088,13 +1088,13 @@ Content-Type: application/json
 <td><p>REQUIRED. Version of the Digital Credential definition.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. Unique identifier of the Digital Credential type.</p></td>
+<td><p>REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be <code class="docutils literal notranslate"><span class="pre">pid</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>legal_type</strong></p></td>
 <td><p>REQUIRED. Legal classification of the Credential (e.g., <code class="docutils literal notranslate"><span class="pre">pub-eaa</span></code>, <code class="docutils literal notranslate"><span class="pre">qeaa</span></code>, <code class="docutils literal notranslate"><span class="pre">eaa</span></code>).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>vct</strong></p></td>
-<td><p>REQUIRED. It MUST be set as a URI String of the form <code class="docutils literal notranslate"><span class="pre">https://{Trust</span> <span class="pre">Anchor</span> <span class="pre">domain}/{version}/{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/v1.0/mDL</span></code>). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.</p></td>
+<tr class="row-odd"><td><p><strong>vct</strong>:</p></td>
+<td><p>REQUIRED. It MUST be set as a URN of the form defined in <a class="reference internal" href="credential-data-model.html#credential-sd-jwt-parameters"><span class="std std-ref">Credential SD-JWT Parameters</span></a>. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>restriction_policy</strong></p></td>
 <td><p>OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.</p>
@@ -1161,7 +1161,7 @@ Content-Type: application/json
 <ul>
 <li><p>defined by an ISO standard, it MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">iso.org.{iso-number}.{part}.{version}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">iso.org.18013.5.1.mDL</span></code>).</p></li>
 <li><p>defined at the european level, it MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.{credential_type}.{version}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">eu.europa.ec.loyaltycard.1.0</span></code>).</p></li>
-<li><p>defined by a national standard, it MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}.{version}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.personidentificationdata.1</span></code>).</p></li>
+<li><p>defined by a national standard, it MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}.{version}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.pid.1</span></code>).</p></li>
 </ul>
 </li>
 <li><p><strong>schema_uri</strong>: URI pointing to the format specification document.</p></li>
@@ -1185,10 +1185,10 @@ Content-Type: application/json
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>credential_type</strong></p></td>
-<td><p>REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to <code class="docutils literal notranslate"><span class="pre">WalletAttestation</span></code>.</p></td>
+<td><p>REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>vct</strong></p></td>
-<td><p>REQUIRED. It MUST be set as a URI String of the form <code class="docutils literal notranslate"><span class="pre">https://{Trust</span> <span class="pre">Anchor</span> <span class="pre">domain}/{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">https://trust-registry.it-wallet.example.it/WalletAttestation</span></code>). Matching of the literals included in this URI string MUST be performed in a case-insensitive manner.</p></td>
+<td><p>REQUIRED. It MUST be set as a URN of the form defined in <a class="reference internal" href="credential-data-model.html#credential-sd-jwt-parameters"><span class="std std-ref">Credential SD-JWT Parameters</span></a>. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>aal_values_supported</strong></p></td>
 <td><p>REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code> and <code class="docutils literal notranslate"><span class="pre">high</span></code>.</p></td>
@@ -1198,7 +1198,7 @@ Content-Type: application/json
 <ul class="simple">
 <li><p><strong>format</strong>: Type of format (e.g., <code class="docutils literal notranslate"><span class="pre">dc+sd-jwt</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code> or <code class="docutils literal notranslate"><span class="pre">oauth-client-attestation+jwt</span></code>)</p></li>
 <li><p><strong>configuration_id</strong>: Configuration identifier of the Wallet Attestation. This is formed by concatenating the string <code class="docutils literal notranslate"><span class="pre">wa</span></code> to the <code class="docutils literal notranslate"><span class="pre">format</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">dc_sd_jwt_wa</span></code>, <code class="docutils literal notranslate"><span class="pre">mso_mdoc_wa</span></code>, or <code class="docutils literal notranslate"><span class="pre">jwt_wa</span></code>), and is used to uniquely reference the configuration of the Wallet Attestation format.</p></li>
-<li><p><strong>docType</strong>: CONDITIONAL. It is only present if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. It is a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.WalletAttestation</span></code>).</p></li>
+<li><p><strong>docType</strong>: CONDITIONAL. It is only present if the <code class="docutils literal notranslate"><span class="pre">format</span></code> is <code class="docutils literal notranslate"><span class="pre">mso_mdoc</span></code>. It is a string of the form <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{credential_type}</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">it.wallet.trust-registry.wallet_attestation</span></code>).</p></li>
 <li><p><strong>schema_uri</strong>: URI pointing to the format specification document.</p></li>
 <li><p><strong>schema_uri#integrity</strong>: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form <code class="docutils literal notranslate"><span class="pre">{digest_method}-{digest_value}</span></code>, where <code class="docutils literal notranslate"><span class="pre">{digest_method}</span></code> is the digest algorithm used (e.g., <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>) and <code class="docutils literal notranslate"><span class="pre">{digest_value}</span></code> is the base64url-encoded digest value.</p></li>
 </ul>
@@ -1224,7 +1224,7 @@ Content-Type: application/json
 <span class="w">         </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mDL&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;legal_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pub-eaa&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/1.0/mDL&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:mDL:it:1&quot;</span><span class="p">,</span>
 <span class="w">         </span><span class="nt">&quot;restriction_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;allowed_wallet_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">               </span><span class="s2">&quot;https://wallet-provider.example.org/wallet_solution&quot;</span><span class="p">,</span>
@@ -1311,8 +1311,8 @@ Content-Type: application/json
 <span class="w">   </span><span class="p">],</span>
 <span class="w">   </span><span class="nt">&quot;wallet_attestation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WalletAttestation&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;credential_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet_attestation&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;vct&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:eudi:wallet_attestation:it:1&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;aal_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="s2">&quot;https://trust-list.eu/aal/low&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="s2">&quot;https://trust-list.eu/aal/medium&quot;</span><span class="p">,</span>
@@ -1322,20 +1322,20 @@ Content-Type: application/json
 <span class="w">         </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc_sd_jwt_wa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_attestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc=&quot;</span>
 <span class="w">         </span><span class="p">},</span>
 <span class="w">         </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mso_mdoc_wa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it.wallet.trust-registry.WalletAttestation&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;docType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it.wallet.trust-registry.wallet_attestation&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/wallet_attestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-GcqnMfzyCw+0UTz9EI6JO0oUTD0WS3p+hQ2E7VfjTLA=&quot;</span>
 <span class="w">         </span><span class="p">},</span>
 <span class="w">         </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth-client-attestation+jwt&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;configuration_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jwt_wa&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/WalletAttestation&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;schema_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/wallet_attestation&quot;</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">&quot;schema_uri#integrity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg=&quot;</span>
 <span class="w">         </span><span class="p">}</span>
 <span class="w">      </span><span class="p">]</span>
@@ -1686,7 +1686,7 @@ Content-Type: application/json
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 31/10/2025.
+      Last updated on 05/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

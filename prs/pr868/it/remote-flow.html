@@ -240,7 +240,7 @@
 <figure class="align-center" style="width: 50%">
 <img alt="_images/verifier_qr_code.svg" src="_images/verifier_qr_code.svg" />
 </figure>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.example.org/authorization?client_id=https%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org&amp;request_uri_method=post
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>https://wallet-solution.example.org/authorization?client_id=openid_federation%3A%2F%2Frelying-party.example.org&amp;request_uri=https%3A%2F%2Frelying-party.example.org&amp;request_uri_method=post
 </pre></div>
 </div>
 <div class="admonition note">
@@ -249,7 +249,7 @@
 <p>Al contrario, nel <strong>Flusso Same Device</strong>, la Relying Party risponde tramite HTTP Response Redirect (con codice di stato impostato a <code class="docutils literal notranslate"><span class="pre">302</span></code>) o mostra all'utente una pagina html con un pulsante href, aventi l'URL che fornisce le stesse informazioni del Flusso Cross Device (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_076–077</span></a>). Di seguito è riportato un esempio non normativo:</p>
 </div>
 <div class="highlight-http notranslate"><div class="highlight"><pre><span></span><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
-<span class="na">Location</span><span class="o">:</span> <span class="l">https://wallet-solution.digital-strategy.europa.eu?client_id=https%3A%2F%2Frelying-party.example.org%2Fcb&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&amp;request_uri_method=post</span>
+<span class="na">Location</span><span class="o">:</span> <span class="l">https://wallet-solution.digital-strategy.europa.eu?client_id=openid_federation%3A%2F%2Frelying-party.example.org%2Fcb&amp;request_uri=https%3A%2F%2Frelying-party.example.org%2Frequest_uri&amp;request_uri_method=post</span>
 </pre></div>
 </div>
 <p><strong>Passaggio 10</strong>: L'Istanza del Wallet valuta la trust con la Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_078–080</span></a>).</p>
@@ -263,7 +263,7 @@
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
 <span class="na">Accept</span><span class="o">:</span> <span class="l">application/oauth-authz-req+jwt</span>
 
-<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22form_post.jwt%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C</span><span class="p">&amp;</span><span class="nt">wallet_nonce</span><span class="o">=</span><span class="s">%22qPmxiNFCR3QTm19POc8u%22</span>
+<span class="nt">wallet_metadata</span><span class="o">=</span><span class="s">%7B%22authorization_endpoint%22%3A%20%22eudiw%3A%22%2C%20%22response_types_supported%22%3A%20%5B%22vp_token%22%5D%2C%20%22response_modes_supported%22%3A%20%5B%22query%22%5D%2C%20%22vp_formats_supported%22%3A%20%7B%22dc%2Bsd-jwt%22%3A%20%7B%22sd-jwt_alg_values%22%3A%20%5B%22ES256%22%2C%20%22ES384%22%5D%7D%7D%2C%20%22request_object_signing_alg_values_supported%22%3A%20%5B%22ES256%22%5D%7D%2C</span><span class="p">&amp;</span><span class="nt">wallet_nonce</span><span class="o">=</span><span class="s">%22qPmxiNFCR3QTm19POc8u%22</span>
 </pre></div>
 </div>
 <p>Dove il corpo della richiesta prima di essere codificato in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> dal Wallet corrisponde a:</p>
@@ -274,7 +274,7 @@
 <span class="w">      </span><span class="s2">&quot;vp_token&quot;</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;response_modes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;form_post.jwt&quot;</span>
+<span class="w">      </span><span class="s2">&quot;query&quot;</span>
 <span class="w">    </span><span class="p">],</span>
 <span class="w">    </span><span class="nt">&quot;vp_formats_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;dc+sd-jwt&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -287,7 +287,7 @@
 <span class="w">    </span><span class="nt">&quot;request_object_signing_alg_values_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;ES256&quot;</span>
 <span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;client_id_schemes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;client_id_prefixes_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;openid_federation&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;x509_hash&quot;</span><span class="p">],</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;wallet_nonce&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qPmxiNFCR3QTm19POc8u&quot;</span>
 <span class="p">}</span>
@@ -320,7 +320,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://relying-party.example.org&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openid_federation:https://relying-party.example.org&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;response_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;direct_post.jwt&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;response_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vp_token&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;dcql_query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -329,7 +329,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;personal id data&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/v1/personidentificationdata&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;urn:eudi:pid:it:1&quot;</span><span class="w"> </span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;given_name&quot;</span><span class="p">]},</span>
@@ -341,7 +341,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 <span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wallet attestation&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dc+sd-jwt&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;https://trust-registry.it-wallet.example.it/v1/WalletAttestation&quot;</span><span class="p">]</span>
+<span class="w">          </span><span class="nt">&quot;vct_values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;urn:eudi:WalletAttestation:it:1&quot;</span><span class="p">]</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;wallet_link&quot;</span><span class="p">]},</span>
@@ -385,7 +385,7 @@ eyJhbGciOiJFUzI1NiIs...9t2LQ
 </pre></div>
 </div>
 </div></blockquote>
-<p><strong>Passaggi 21-25 (Controlli RP)</strong>: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae le Credenziali Elettroniche e attesta la fiducia con il Fornitore di Credenziali e la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in <a class="reference internal" href="credential-revocation.html#revoca-e-sospensione-degli-attestati-elettronici"><span class="std std-ref">Revoca e Sospensione degli Attestati Elettronici</span></a>. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.</p>
+<p><strong>Passaggi 21-25 (Controlli RP)</strong>: La Relying Party verifica la Risposta di Autorizzazione, estrae la Wallet Attestation per stabilire la fiducia con la Soluzione Wallet. Quindi estrae il <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> che contiene una o più presentazioni di Credenziali Elettroniche, e ne valida il formato complessivo.  Per ogni presentazione, la Relying Party ne verifica l’integrità e l’autenticità, controlla che soddisfi i criteri della query DCQL definiti nella Richiesta di Autorizzazione, attesta la fiducia con il relativo Fornitore di Credenziali e verifica la prova di possesso dell'Istanza del Wallet delle Credenziali Elettroniche presentate. Infine, la Relying Party verifica lo stato di revoca delle Credenziali Elettroniche presentate come descritto in <a class="reference internal" href="credential-revocation.html#revoca-e-sospensione-degli-attestati-elettronici"><span class="std std-ref">Revoca e Sospensione degli Attestati Elettronici</span></a>. Se tutte le verifiche precedenti hanno dato esito positivo, la Relying Party aggiorna la sessione dell'Utente.</p>
 <p><strong>Passaggi 26-27 o 28 (Risposta della Relying Party)</strong>: La Relying Party fornisce all'Istanza del Wallet la risposta sulla presentazione, che a sua volta informa l'Utente.</p>
 <blockquote>
 <div><p>Dopo aver ricevuto e convalidato la Authorization Response al Response Endpoint, la Relying Party restituisce all'Istanza del Wallet un codice HTTP 200 OK. In particolare, nel Flusso Same Device, la Relying Party DOVREBBE anche passare il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> all'Istanza del Wallet. Dopo aver ricevuto il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>. Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso. Quando la risposta non contiene il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet non è tenuta a eseguire ulteriori passaggi. L'Utente dovrebbe chiudere manualmente l'Istanza del Wallet e aprire lo user-agent per continuare il flusso (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-83</span></a>).</p>
@@ -433,15 +433,12 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>client_id</strong></p></td>
-<td><p>OBBLIGATORIO. Identificatore univoco della Relying Party.</p></td>
+<td><p>OBBLIGATORIO. Identificatore univoco della Relying Party. Il valore DEVE utilizzare uno dei seguenti prefissi di identificatore del Client (come definito in <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>, Sezione 5.9): <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> (identificatore dell’entità della Relying Party in una catena di fiducia) oppure <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code> (hash SHA-256 codificato in base64url del certificato X.509 della Relying Party).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri</strong></p></td>
 <td><p>OBBLIGATORIO. L'URL HTTP dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet.</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>state</strong></p></td>
-<td><p>RACCOMANDATO. Un identificatore univoco per la transazione corrente generato dalla Relying Party. Il valore DOVREBBE essere opaco per l'Istanza del Wallet.</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
+<tr class="row-even"><td><p><strong>request_uri_method</strong></p></td>
 <td><p>OPZIONALE. Il metodo HTTP DEVE essere impostato con <code class="docutils literal notranslate"><span class="pre">get</span></code> o <code class="docutils literal notranslate"><span class="pre">post</span></code>. L'Istanza del Wallet dovrebbe utilizzare questo metodo per ottenere il Request Object firmato all'indirizzo fornito dal <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. Se non fornito o uguale a <code class="docutils literal notranslate"><span class="pre">get</span></code>, l'Istanza del Wallet DEVE utilizzare il metodo HTTP <code class="docutils literal notranslate"><span class="pre">get</span></code>. Altrimenti, l'Istanza del Wallet DOVREBBE fornire i suoi metadata all'interno del body della richiesta HTTP POST codificati in <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code>.</p></td>
 </tr>
 </tbody>
@@ -449,10 +446,6 @@ Di seguito è riportato un esempio non normativo della risposta con il redirect_
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
 <p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">request_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_081</span></a> and <a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-99</span></a>).</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Il parametro <code class="docutils literal notranslate"><span class="pre">state</span></code> in una richiesta OAuth è opzionale, ma è altamente RACCOMANDATO. Viene utilizzato principalmente per prevenire attacchi Cross-Site Request Forgery (CSRF) includendo un valore unico e imprevedibile che la Relying Party può verificare al momento della ricezione della risposta. Inoltre, aiuta a mantenere lo stato tra Request e Response, come le informazioni di sessione o altri dati di cui la Relying Party ha bisogno dopo il processo di autorizzazione.</p>
 </div>
 <p>Il valore corrispondente all'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> DOVREBBE essere casuale, secondo quanto prescritto da <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9101.html#section-5.2.1">RFC 9101, The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)</a> Sezione 5.2.1.</p>
 </section>
@@ -479,10 +472,10 @@ La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorizat
 </thead>
 <tbody>
 <tr class="row-even"><td><p><cite>wallet_metadata</cite></p></td>
-<td><p>OPZIONALE. JSON Object con parametri di metadata. Vedi <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>, Sezione 9.1 e la tabella seguente, &quot;Parametri dei metadata del Wallet&quot;.</p></td>
+<td><p>OPZIONALE. JSON Object con parametri di metadata. Vedi <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>, Sezione 10.1 e la tabella seguente, &quot;Parametri dei metadata del Wallet&quot;.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>wallet_nonce</cite></p></td>
-<td><p>RACCOMANDATO. Stringa utilizzata dall'Istanza del Wallet per prevenire il replay delle risposte della Relying Party. Vedi <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>, Sezione 9.</p></td>
+<td><p>RACCOMANDATO. Stringa utilizzata dall'Istanza del Wallet per prevenire il replay delle risposte della Relying Party.</p></td>
 </tr>
 </tbody>
 </table>
@@ -504,8 +497,8 @@ La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorizat
 <tr class="row-odd"><td><p><cite>alg_values_supported</cite></p></td>
 <td><p>OPZIONALE. Array di suite crittografiche supportate. Vedi <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Appendice B.</p></td>
 </tr>
-<tr class="row-even"><td><p><cite>client_id_schemes_supported</cite></p></td>
-<td><p>RACCOMANDATO. Array di schemi di identificazione del Client. Il valore predefinito è <cite>entity_id</cite>.</p></td>
+<tr class="row-even"><td><p><cite>client_id_prefixes_supported</cite></p></td>
+<td><p>RACCOMANDATO. Un array non vuoto dei prefissi dell’identificatore del Client supportati dall’Istanza del Wallet. I valori validi includono <code class="docutils literal notranslate"><span class="pre">openid_federation</span></code> e <code class="docutils literal notranslate"><span class="pre">x509_hash</span></code>; se omesso, il valore predefinito è pre-registrato.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>authorization_endpoint</cite></p></td>
 <td><p>URL dell'endpoint del server di autorizzazione, vedi <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc6749">OAUTH2</a>. L'utilizzo di un link universale è preferibile per una sicurezza migliorata e supporto di fallback, <em>URL schems</em> personalizzati possono anche essere utilizzati se necessario.</p></td>
@@ -514,13 +507,21 @@ La richiesta e i suoi parametri sono definiti nella Sezione numero 5 (Authorizat
 <td><p>OPZIONALE. Array JSON di valori &quot;response_type&quot; di OAuth 2.0. Se presente DEVE essere impostato su <cite>vp_token</cite>. Il valore predefinito è <cite>vp_token</cite>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><cite>response_modes_supported</cite></p></td>
-<td><p>OPZIONALE. Array JSON di valori &quot;response_mode&quot; di OAuth 2.0. Vedi <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a>.</p></td>
+<td><p>OPZIONALE. Array JSON di valori &quot;response_mode&quot; di OAuth 2.0 come specificato in <a class="reference external" href="https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html">OAUTH-MULT-RESP-TYPE</a>. Il valore supportato DEVE essere <em>query</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><cite>request_object_signing_alg_values_supported</cite></p></td>
 <td><p>OPZIONALE. Vedi OpenID Connect Discovery.</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Nell’IT Wallet, le Relying Party legacy che utilizzano un URI <code class="docutils literal notranslate"><span class="pre">https</span></code> come <code class="docutils literal notranslate"><span class="pre">client_id</span></code> seguono implicitamente il prefisso dell’identificatore del client previsto da OpenID Federation (<code class="docutils literal notranslate"><span class="pre">openid_federation</span></code>).  La loro fiducia è stabilita e validata tramite la risoluzione della catena di fiducia, che è considerata equivalente a quella dei client fidati staticamente (<code class="docutils literal notranslate"><span class="pre">pre-registered</span></code>), come definito in [<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html"><strong>RFC 6749</strong></a>], per garantire la compatibilità con le versioni precedenti.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Anche se il campo <code class="docutils literal notranslate"><span class="pre">response_modes_supported</span></code> fa riferimento a <a class="reference external" href="https://openid.net/specs/oauth-v2-jarm-final.html">JARM</a> per garantire l’interoperabilità a livello JARM della Authorization Response, mantenendo un formato basato su JWT per i reindirizzamenti front-channel come <code class="docutils literal notranslate"><span class="pre">form_post.jwt</span></code> nel Flusso Same Device, la Relying Party adotta invece <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> nel Flusso Cross Device, che si basa su una consegna back-channel tramite una richiesta HTTP POST alla Relying Party. L’effettivo utilizzo di <code class="docutils literal notranslate"><span class="pre">direct_post.jwt</span></code> è descritto di seguito in <a class="reference internal" href="#request-uri-response"><span class="std std-ref">Risposta dell'Endpoint URI Request</span></a>, dove la Relying Party imposta il <code class="docutils literal notranslate"><span class="pre">response_mode</span></code> per la transazione.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>Il parametro <code class="docutils literal notranslate"><span class="pre">wallet_nonce</span></code> è RACCOMANDATO per le Istanze del Wallet che vogliono prevenire il <em>replay</em> delle loro richieste HTTP alle Relying Party da parte di avversari. Quando presente, la Relying Party DEVE Controllarlo.</p>
@@ -532,7 +533,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </div>
 </section>
 <section id="risposta-dell-endpoint-uri-request">
-<h2><span class="section-number">12.2.1.3. </span>Risposta dell'Endpoint URI Request<a class="headerlink" href="#risposta-dell-endpoint-uri-request" title="Link to this heading">¶</a></h2>
+<span id="request-uri-response"></span><h2><span class="section-number">12.2.1.3. </span>Risposta dell'Endpoint URI Request<a class="headerlink" href="#risposta-dell-endpoint-uri-request" title="Link to this heading">¶</a></h2>
 <p>La Relying Party emette il Request Object firmato utilizzando il tipo di contenuto impostato su <code class="docutils literal notranslate"><span class="pre">application/oauth-authz-req+jwt</span></code>.</p>
 <p>I parametri dell'header JWT sono descritti di seguito:</p>
 <table class="longtable docutils align-default">
@@ -547,13 +548,13 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>alg</strong></p></td>
-<td><p>Algoritmo utilizzato per firmare il JWT, secondo [<span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. DEVE essere uno degli algoritmi supportati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> o su un identificatore di algoritmo simmetrico (MAC) (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-104</span></a>).</p></td>
+<td><p>Algoritmo utilizzato per firmare il JWT, secondo [<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7516.html#section-4.1.1"><strong>RFC 7516#section-4.1.1</strong></a>]. DEVE essere uno degli algoritmi supportati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a> e NON DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">none</span></code> o su un identificatore di algoritmo simmetrico (MAC) (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-104</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>typ</strong></p></td>
-<td><p>Media Type del JWT, come definito in [<span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] e [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. DOVREBBE essere impostato sul valore <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-105</span></a>).</p></td>
+<td><p>Media Type del JWT, come definito in [<span class="target" id="index-2"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>] e [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>]. DOVREBBE essere impostato sul valore <code class="docutils literal notranslate"><span class="pre">oauth-authz-req+jwt</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-105</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>kid</strong></p></td>
-<td><p>ID della chiave della chiave pubblica necessaria per verificare la firma JWT, come definito in [<span class="target" id="index-3"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. OBBLIGATORIO quando viene utilizzato <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
+<td><p>ID della chiave della chiave pubblica necessaria per verificare la firma JWT, come definito in [<span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7517.html"><strong>RFC 7517</strong></a>]. OBBLIGATORIO quando viene utilizzato <code class="docutils literal notranslate"><span class="pre">trust_chain</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>trust_chain</strong></p></td>
 <td><p>Sequenza di Entity Statement che compongono la Trust Chain relativa alla Relying Party, come definito in <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a> Sezione 4.3 <em>Trust Chain Header Parameter</em>.</p></td>
@@ -581,11 +582,24 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <tr class="row-even"><td><p><strong>dcql_query</strong></p></td>
 <td><p>Oggetto che rappresenta una richiesta di presentazione di Credenziali, secondo il linguaggio di query DCQL definito nella Sezione 6 di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>.</p></td>
 </tr>
+<tr class="row-odd"><td><p><strong>transaction_data</strong></p></td>
+<td><dl class="simple">
+<dt>Un array opzionale non vuoto di oggetti JSON, ognuno dei quali descrive una transazione che la Relying Party richiede all’Utente di autorizzare.  Ogni oggetto di transazione include:</dt><dd><ul class="simple">
+<li><p><strong>type</strong>. Stringa che identifica il tipo di dati della transazione.</p></li>
+<li><p><strong>credential_ids</strong>. Array che fa riferimento a una o più Credenziali provenienti dalla <code class="docutils literal notranslate"><span class="pre">dcql_query</span></code> che possono autorizzare la transazione.</p></li>
+</ul>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
+<td><p>Un array opzionale di stringhe, ciascuna delle quali rappresenta un identificatore di algoritmo di hash, corrispondente a un nome di algoritmo di hash elencato nel registro <a class="reference external" href="https://www.iana.org/assignments/named-information/named-information.xhtml#hash-alg">IANA</a>. Uno di questi algoritmi DEVE essere utilizzato per calcolare gli hash nel parametro di risposta <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>. Se omesso, l’algoritmo di hash predefinito è sha-256.</p></td>
+</tr>
 <tr class="row-odd"><td><p><strong>response_type</strong></p></td>
 <td><p>DEVE essere impostato su <code class="docutils literal notranslate"><span class="pre">vp_token</span></code> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-107</span></a>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>wallet_nonce</strong></p></td>
-<td><p>Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.11 (Request URI Method) di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. DEVE essere presente se precedentemente fornito dall'Istanza del Wallet (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-94</span></a>).</p></td>
+<td><p>Valore stringa utilizzato per mitigare gli attacchi di replay della Request URI Response, come definito nella Sezione 5.10 (Request URI Method) di <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>. DEVE essere presente se precedentemente fornito dall'Istanza del Wallet (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-94</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>response_uri</strong></p></td>
 <td><p>L'URI di Risposta a cui l'Istanza del Wallet DEVE inviare la Authorization Response utilizzando una HTTP Request con il metodo POST (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-112</span></a>).</p></td>
@@ -594,7 +608,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <td><p>Numero unico e casuale con sufficiente entropia, la cui lunghezza DEVE essere di almeno 32 cifre (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-110</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>state</strong></p></td>
-<td><p>Identificatore univoco della Authorization Request.</p></td>
+<td><p>Identificatore univoco della Authorization Request. È RACCOMANDATO di includere questo parametro e il valore DOVREBBE essere opaco per l’Istanza del Wallet.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>iss</strong></p></td>
 <td><p>L'entità che ha emesso il JWT. Sarà popolato con il <code class="docutils literal notranslate"><span class="pre">client_id</span></code> della Relying Party.</p></td>
@@ -606,13 +620,21 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <td><p>Timestamp Unix, che rappresenta l'ora di scadenza in cui o dopo la quale il JWT NON DEVE più essere valido (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-111</span></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>request_uri_method</strong></p></td>
-<td><p>Stringa che determina il metodo HTTP da utilizzare con l'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> per fornire i metadata dell'Istanza del Wallet alla Relying Party. Il valore non fa distinzione tra maiuscole e minuscole e può essere impostato su: <cite>get</cite> o <cite>post</cite>. Il metodo GET, come definito in <span class="target" id="index-4"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>, prevede che l'Istanza del Wallet invii una richiesta GET per recuperare un Request Object. Il metodo POST prevede che l'Istanza del Wallet richieda la creazione di un nuovo Request Object inviando una richiesta HTTP POST, con i suoi metadata, al <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> della Relying Party.</p></td>
+<td><p>Stringa che determina il metodo HTTP da utilizzare con l'endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> per fornire i metadata dell'Istanza del Wallet alla Relying Party. Il valore non fa distinzione tra maiuscole e minuscole e può essere impostato su: <cite>get</cite> o <cite>post</cite>. Il metodo GET, come definito in <span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a>, prevede che l'Istanza del Wallet invii una richiesta GET per recuperare un Request Object. Il metodo POST prevede che l'Istanza del Wallet richieda la creazione di un nuovo Request Object inviando una richiesta HTTP POST, con i suoi metadata, al <code class="docutils literal notranslate"><span class="pre">request_uri</span></code> della Relying Party.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
 <p class="admonition-title">Avvertimento</p>
 <p>Per motivi di sicurezza e per prevenire attacchi di tipo endpoint mix-up, il valore contenuto nel parametro <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> DEVE essere uno di quelli attestati da una terza parte fidata, come quelli forniti nei metadata <code class="docutils literal notranslate"><span class="pre">openid_credential_verifier</span></code> all'interno del parametro <code class="docutils literal notranslate"><span class="pre">response_uris</span></code>, ottenuti dalla Trust Chain relativa alla Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091a</span></a> and <a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-112</span></a>).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Il parametro <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> è destinato ai casi d’uso in cui l’Istanza del Wallet DEVE autorizzare una transazione specifica, come l’inizio di un pagamento o la firma digitale.  In questi scenari ad alta sensibilità, i dati della transazione possono essere collegati crittograficamente alla Risposta di Autorizzazione tramite <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code> all’interno del Key Binding JWT, garantendo integrità e non ripudio.  Per ulteriori dettagli, consultare <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>, Sezione 8.4.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Il parametro <code class="docutils literal notranslate"><span class="pre">state</span></code> in una richiesta OAuth è opzionale, ma è altamente RACCOMANDATO. Viene utilizzato principalmente per prevenire attacchi Cross-Site Request Forgery (CSRF) includendo un valore unico e imprevedibile che la Relying Party può verificare al momento della ricezione della risposta. Inoltre, aiuta a mantenere lo stato tra Request e Response, come le informazioni di sessione o altri dati di cui la Relying Party ha bisogno dopo il processo di autorizzazione.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -624,7 +646,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Richiesta dell'Attestazione del Wallet</strong></p>
-<p>La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> nella query DCQL, il quale DEVE essere impostato al valore definito nella <a class="reference internal" href="registry-catalogue.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-114</span></a>).</p>
+<p>La Relying Party che richiede un'Attestazione del Wallet DEVE farlo utilizzando una query DCQL standard, tuttavia NON DOVREBBE includere il parametro <code class="docutils literal notranslate"><span class="pre">claims</span></code> nella query. A seconda del formato dell'Attestazione del Wallet, la Relying Party DEVE richiedere il parametro <code class="docutils literal notranslate"><span class="pre">vct_values</span></code> nella query DCQL, il quale DEVE essere impostato al valore definito nella <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">RPR-114</span></a>).</p>
 </div>
 <section id="errori-dell-endpoint-uri-request">
 <h3><span class="section-number">12.2.1.3.1. </span>Errori dell'Endpoint URI Request<a class="headerlink" href="#errori-dell-endpoint-uri-request" title="Link to this heading">¶</a></h3>
@@ -647,13 +669,17 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request ha incontrato un problema interno. (<span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
+<td><p>L'Oggetto di Richiesta non può essere recuperato a causa di una richiesta non valida o malformata all’endpoint <code class="docutils literal notranslate"><span class="pre">request_uri</span></code>. (<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
+<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request ha incontrato un problema interno. (<span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>La richiesta non può essere soddisfatta perché l'Endpoint URI Request è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -672,7 +698,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </section>
 <section id="authorization-response">
 <h2><span class="section-number">12.2.1.4. </span>Authorization Response<a class="headerlink" href="#authorization-response" title="Link to this heading">¶</a></h2>
-<p>Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP con il metodo POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091</span></a>), il contenuto DOVREBBE essere cifrato secondo <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Sezione 7.3, utilizzando la chiave pubblica della Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_092</span></a>).</p>
+<p>Dopo aver ottenuto l'autorizzazione e il consenso dell'Utente per la presentazione degli Attestati Elettronici, l'Istanza del Wallet invia la Authorization Response all'endpoint <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> della Relying Party utilizzando una richiesta HTTP con il metodo POST (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_091</span></a>), il contenuto DOVREBBE essere cifrato secondo <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a> Sezione 8.3, utilizzando la chiave pubblica della Relying Party (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_092</span></a>).</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p><strong>Perché la risposta è cifrata?</strong></p>
@@ -727,7 +753,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>typ</strong></p></td>
-<td><p>OBBLIGATORIO. DEVE essere <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>, che caratterizza esplicitamente il Key Binding JWT come raccomandato nella Sezione 3.11 di <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>.</p></td>
+<td><p>OBBLIGATORIO. DEVE essere <code class="docutils literal notranslate"><span class="pre">kb+jwt</span></code>, che caratterizza esplicitamente il Key Binding JWT come raccomandato nella Sezione 3.11 di <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc8725.html"><strong>RFC 8725</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>alg</strong></p></td>
 <td><p>OBBLIGATORIO. Algoritmo di Firma utilizzando uno di quelli specificati nella Sezione <a class="reference internal" href="algorithms.html#algoritmi-crittografici"><span class="std std-ref">Algoritmi Crittografici</span></a>.</p></td>
@@ -747,7 +773,7 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>iat</strong></p></td>
-<td><p>OBBLIGATORIO. Il valore di questa <em>claim</em> DEVE essere l'ora in cui è stato emesso il Key Binding JWT, utilizzando la sintassi definita in <span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
+<td><p>OBBLIGATORIO. Il valore di questa <em>claim</em> DEVE essere l'ora in cui è stato emesso il Key Binding JWT, utilizzando la sintassi definita in <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc7519.html"><strong>RFC 7519</strong></a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>aud</strong></p></td>
 <td><p>OBBLIGATORIO. Il ricevitore previsto del Key Binding JWT. Il valore di questo parametro DEVE corrispondere all'identificatore di entità (<code class="docutils literal notranslate"><span class="pre">client_id</span></code>) univoco della Relying Party.</p></td>
@@ -757,6 +783,12 @@ Inoltre, gli <em>univarsal link</em> offrono meccanismi di fallback, consentendo
 </tr>
 <tr class="row-odd"><td><p><strong>sd_hash</strong></p></td>
 <td><p>OBBLIGATORIO. Il digest codificato in base64url del JWT firmato dal Fornitore di Attestati Elettronici (SD-JWT) e le <em>selective disclosures</em> selezionate dall'Utente.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>transaction_data_hashes</strong></p></td>
+<td><p>CONDIZIONALE. OBBLIGATORIO quando la richiesta include <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>. Array non vuoto di hash codificati in base64url. Ogni hash è calcolato sul valore esatto della stringa corrispondente all’elemento <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>transaction_data_hashes_alg</strong></p></td>
+<td><p>CONDIZIONALE. OBBLIGATORIO solo se la richiesta includeva <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes_alg</span></code>. Stringa che indica l’algoritmo di hash effettivamente utilizzato per calcolare <code class="docutils literal notranslate"><span class="pre">transaction_data_hashes</span></code>; se tale parametro non è stato fornito, la funzione di hash DEVE essere <code class="docutils literal notranslate"><span class="pre">sha-256</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -791,17 +823,17 @@ L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Autorization Res
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_object</span></code></p></td>
-<td><p>il Request Object contiene parametri non validi o è altrimenti malformato. <span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_uri</span></code></p></td>
+<td><p>Il <cite>request_uri</cite> nella Authorization Request restituisce un errore, contiene dati non validi o è altrimenti malformato. <span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_uri</span></code></p></td>
-<td><p>Il <cite>request_uri</cite> nella Authorization Request restituisce un errore, contiene dati non validi o è altrimenti malformato. <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9101.html"><strong>RFC 9101</strong></a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_not_supported</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vp_formats_not_supported</span></code></p></td>
 <td><p>L'Istanza del Wallet non supporta nessuno dei formati vp richiesti dalla Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request_uri_method</span></code></p></td>
+<td><p>Il valore del parametro <code class="docutils literal notranslate"><span class="pre">request_uri_method</span></code> non è né <code class="docutils literal notranslate"><span class="pre">get</span></code> né <code class="docutils literal notranslate"><span class="pre">post</span></code>.  <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
+</tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>L'Istanza del Wallet non supporta nessuno degli algoritmi di firma richiesti dalla Relying Party. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
+<td><p>La richiesta è malformata o incoerente, il prefisso dell’identificatore del Client non è supportato oppure i requisiti del prefisso non sono rispettati. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">access_denied</span></code></p></td>
 <td><p>Il Wallet non aveva l'Attestato Elettronico richiesto, l'Utente non ha dato il consenso o il Wallet non è riuscito ad autenticare l'Utente. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
@@ -809,13 +841,16 @@ L'Istanza del Wallet invia la <em>Error Response</em> nella <em>Autorization Res
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_client</span></code></p></td>
 <td><p>La Relying Party non può essere autenticata a causa di errori di convalida della trust oppure non è un stata riconosciuta come partecipante valido della federazione. <a class="reference external" href="https://openid.net/specs/openid-federation-1_0-41.html">OID-FED</a></p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">invalid_transaction_data</span></code></p></td>
+<td><p>Uno o più oggetti nella struttura <code class="docutils literal notranslate"><span class="pre">transaction_data</span></code> non sono validi. Ad esempio, tali oggetti contengono tipi sconosciuti o non supportati, campi malformati o mancanti, valori non validi oppure riferimenti a Credenziali non disponibili. <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a></p></td>
+</tr>
 </tbody>
 </table>
 </section>
 </section>
 <section id="risposta-della-relying-party">
 <h2><span class="section-number">12.2.1.5. </span>Risposta della Relying Party<a class="headerlink" href="#risposta-della-relying-party" title="Link to this heading">¶</a></h2>
-<p>Come definito nella Sezione 7.2. (<em>Response mode</em> &quot;direct_post&quot;) della specifica <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>, se l'Endpoint di Risposta della Relaying Party ha elaborato con successo la <em>Authorization Response</em> o la <em>Error Response</em> fornita dall'Istanza del Wallet, DEVE rispondere con un codice di stato HTTP 200 con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> di <code class="docutils literal notranslate"><span class="pre">application/json</span></code> e un JSON Object nel corpo della risposta.</p>
+<p>Come definito nella Sezione 8.2. (<em>Response mode</em> &quot;direct_post&quot;) della specifica <a class="reference external" href="https://openid.net/specs/openid-4-verifiable-presentations-1_0-23.html">OpenID4VP</a>, se l'Endpoint di Risposta della Relaying Party ha elaborato con successo la <em>Authorization Response</em> o la <em>Error Response</em> fornita dall'Istanza del Wallet, DEVE rispondere con un codice di stato HTTP 200 con <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> di <code class="docutils literal notranslate"><span class="pre">application/json</span></code> e un JSON Object nel corpo della risposta.</p>
 <p>Nel <strong>Flusso Same Device</strong>, la Relying Party DOVREBBE aggiungere il parametro <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> all'JSON Object nel corpo della risposta. Dopo aver ricevuto il <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>, l'Istanza del Wallet DEVE eseguire un reindirizzamento all'URL specificato dal <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>.
 Questo reindirizzamento consente alla Relying Party di riprendere senza problemi l'interazione con l'Utente sul dispositivo che ha avviato il flusso, dopo che l'Istanza del Wallet ha trasmesso la Authorization Response al <code class="docutils literal notranslate"><span class="pre">response_uri</span></code> designato.</p>
 <p>La Relying Party DEVE includere un codice di risposta all'interno del <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code>. Il codice di risposta è un numero fresco, crittograficamente casuale utilizzato per garantire che solo il ricevitore del reindirizzamento possa recuperare ed elaborare la Authorization Response. Il numero potrebbe essere aggiunto come componente del path, come parametro o come frammento all'URL. È RACCOMANDATO utilizzare un valore casuale crittografico di 128 bit o più al momento della scrittura di questa specifica.
@@ -980,7 +1015,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
-<td><p>L'URI di Reindirizzamento fornito dalla Relying Party non corrisponde a nessuno degli URI collegati alla sessione dell'Utente. (<span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
+<td><p>L'URI di Reindirizzamento fornito dalla Relying Party non corrisponde a nessuno degli URI collegati alla sessione dell'Utente. (<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">invalid_request</span></code></p></td>
@@ -988,11 +1023,11 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">server_error</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta a causa di un errore interno del server. (<span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>La richiesta non può essere soddisfatta a causa di un errore interno del server. (<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">temporarily_unavailable</span></code></p></td>
-<td><p>La richiesta non può essere soddisfatta perché il servizio è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
+<td><p>La richiesta non può essere soddisfatta perché il servizio è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico). (<span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc6749.html#section-4.1.2.1"><strong>RFC 6749#section-4.1.2.1</strong></a>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1066,7 +1101,7 @@ Anche se un avversario riesce a rubare il valore casuale utilizzato nella richie
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 31/10/2025.
+      Ultimo aggiornamento 05/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 
