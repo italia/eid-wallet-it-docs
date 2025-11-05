@@ -642,11 +642,11 @@ In the following table are listed error codes and descriptions that are supporte
    * - ``invalid_request_uri_method``
      - The value of the ``request_uri_method`` parameter is neither ``get`` nor ``post``. `OpenID4VP`_
    * - ``invalid_request``
-     - The request is malformed or inconsistent, the Client Identifier Prefix is unsupported, or requirements of a prefix are violated. `OpenID4VP`_
+     - The request is malformed or inconsistent, the Client Identifier Prefix is unsupported, or requirements of a prefix are violated (e.g., ``client_id`` with the ``x509_hash`` prefix without the required ``client_metadata``). `OpenID4VP`_
    * - ``access_denied``
      - The Wallet did not have the requested credential, the User did not consent, or the Wallet failed to authenticate the User. `OpenID4VP`_
    * - ``invalid_client``
-     - The Relying Party cannot be authorized due to trust validation failures or is not a valid participant of the federation. `OID-FED`_
+     - The Relying Party’s federation metadata has been resolved based on the Client Identifier (using the ``openid_federation`` prefix), but cannot be authorized due to trust validation failures or is not a valid participant of the federation. `OID-FED`_
    * - ``invalid_transaction_data``
      - One or more objects in the ``transaction_data`` structure are invalid. For instance, those objects contain unknown or unsupported types, malformed or missing fields, invalid values, or references to unavailable Credentials. `OpenID4VP`_
 
