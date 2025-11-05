@@ -153,7 +153,7 @@ Durante la registrazione, le Fonti Autentiche DEVONO fornire le seguenti informa
        - URI del template visivo con verifica dell'integrità per la presentazione degli Attestati Elettronici.
 
 .. note::
-  Solo Fonti Autentiche italiane possono essere onboardate nella fase attuale di IT-Wallet.
+  Solo le Fonti Autentiche italiane possono essere registrate nella fase attuale di IT-Wallet.
 
 Procedura di Registrazione AS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -248,7 +248,7 @@ Le Entità di Federazione (Credential Issuer, Relying Party e Fornitori di Walle
 Modello Gerarchico dell'Autorità di Federazione
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La federazione IT-Wallet implementa un **modello di onboarding gerarchico** dove le Entità di Federazione POSSONO essere onboardate da:
+La federazione IT-Wallet implementa un **modello di onboarding gerarchico** dove le Entità di Federazione POSSONO essere registrate da:
 
   1. **Trust Anchor**: L'autorità radice che ha la capacità di onboardare direttamente qualsiasi Entità di Federazione.
   2. **Intermediari**: Autorità delegate che onboardano Entità Foglia per conto del Trust Anchor.
@@ -259,7 +259,7 @@ Questo approccio gerarchico abilita la **gestione distribuita dell'onboarding** 
   - **Applicazione delle Metadata Policy**: Applicano le metadata policy specifiche della federazione con **effetto a cascata** (le policy del Trust Anchor prevalgono sulle policy degli Intermediari).
   - **Emissione del Trust Mark**: Emettono Trust Mark di Federazione attestando la conformità dei subordinati ai requisiti della federazione.
 
-Pertanto, le Entità di Federazione POSSONO essere onboardate attraverso percorsi diversi:
+Pertanto, le Entità di Federazione POSSONO essere registrate attraverso percorsi diversi:
 
   - **Onboarding Diretto dal Trust Anchor**: L'entità si registra direttamente con il Trust Anchor.
   - **Onboarding Mediato da Intermediario**: L'entità si registra con un Intermediario appropriato.
