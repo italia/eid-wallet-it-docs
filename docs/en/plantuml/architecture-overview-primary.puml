@@ -1,4 +1,4 @@
-@startuml IT-Wallet_System_Architecture_Primary
+@startuml
 !include <C4/C4_Component>
 HIDE_STEREOTYPE()
 skinparam linetype ortho
@@ -79,16 +79,15 @@ Boundary(primary, "Primary System Actors") {
 }
 
 ' Key relationships for architecture understanding
-Rel_U(dc_solution, as_api, "Requests attributes")
-Rel_U(wp, wi, "Issues\n+ Additional services\n(remote signature, etc.)")
-Rel(wi, dc_solution, "Receives credentials")
-Rel(wi, rp_solution, "Presents credentials")
+Rel_U(dc_solution, as_api, "")
+Rel_U(wp, wi, "")
+Rel(wi, dc_solution, "")
+Rel(wi, rp_solution, "")
 Rel_U(rp_solution, trust_registry, "Queries Credential Issuers status")
-Rel_U(wi, trust_registry, "Queries Credential Issuers\n and Relying Parties\nstatus")
+Rel_U(wi, trust_registry, "")
 Rel_U(dc_solution, trust_registry, "Queries Wallet Providers status")
 
 ' Layout commands for horizontal inner elements
 Lay_R(ta_services, trust_registry)
 Lay_R(as_api, as_db)
-
 @enduml
