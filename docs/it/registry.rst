@@ -576,7 +576,7 @@ Il payload JWS contiene i seguenti parametri:
    * - **credentials**
      - OBBLIGATORIO. Array contenente le definizioni degli Attestati Elettronici.
    * - **wallet_app_attestation**
-     - OBBLIGATORIO. Un Oggetto JSON contenente definizioni per le Attestazioni del Wallet, inclusi i loro formati supportati, attributi associati. Questo Oggetto è utilizzato da altre entità, come Issuer e Relying Party, per recuperare informazioni sui formati di Wallet App Attestation supportati all'interno dell'ecosistema.
+     - OBBLIGATORIO. Un Oggetto JSON contenente  informazioni relative alle Wallet App Attestation, inclusi i loro formati supportati e attributi associati. Questo Oggetto è utilizzato da altre entità, come il Fornitore di Attestati Elettronici e il Fornitore di Servizi, per recuperare informazioni sui formati di Wallet App Attestation supportati all'interno dell'ecosistema.
 
 Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
 

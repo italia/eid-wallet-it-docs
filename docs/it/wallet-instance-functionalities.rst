@@ -6,7 +6,7 @@ Funzionalità dell'Istanza del Wallet
 Un'Istanza del Wallet DEVE supportare le seguenti funzionalità:
 
   - Registrazione del Wallet (dettagliata in :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet`),
-  - Emissione della Wallet App e della Wallet Unit Attestation (descritta in dettaglio in :ref:`wallet-attestation-issuance:Wallet App and Wallet Unit Attestation Issuance`),
+  - Emissione della Wallet App Attestation e della Wallet Unit Attestation (descritta in dettaglio in :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`),
   - Revoca del Wallet (dettagliata in :ref:`wallet-instance-revocation:Revoca dell'Istanza del Wallet`) e
   - Cancellazione degli attributi presentati (dettagliata in :ref:`user-attribute-deletion:Eliminazione degli Attributi dell'Utente`).
 

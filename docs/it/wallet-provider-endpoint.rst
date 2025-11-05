@@ -195,18 +195,18 @@ I seguenti errori DEVONO essere supportati per le risposte di errore relative al
 Endpoint di Emissione della Wallet App e Wallet Unit Attestation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere una Wallet App Attestation, inviando una Richiesta di Emissione della Wallet App e Wallet Unit Attestation.
+Questo è un endpoint API RESTful fornito dal Fornitore di Wallet che consente all'Istanza di Wallet di ottenere una Wallet App Attestation e Wallet Unit Attestation, inviando una Richiesta di Emissione della Wallet App e Wallet Unit Attestation.
 
 Richiesta di Emissione della Wallet App e Wallet Unit Attestation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-La Wallet App e la Wallet Unit Attestation Issuance Request utilizza il metodo HTTP POST con il ``Content-Type`` impostato su ``application/json`` (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
+La richiesta di emissione della Wallet App e la Wallet Unit Attestation utilizza il metodo HTTP POST con il ``Content-Type`` impostato su ``application/json`` (:ref:`WP_026 <wallet-instance-testcases>` e :ref:`WP_140–142 <wallet-instance-optional-testcases>`).
 
-L'intestazione ``typ`` del JWT della Wallet App e Wallet Unit Attestation Issuance Request assume il valore ``wp-war-wua+jwt``.
+L'intestazione ``typ`` del JWT della richiesta di emissione della Wallet App e Wallet Unit Attestation assume il valore ``wp-war-wua+jwt``.
 
-Il corpo della Wallet App e Wallet Unit Attestation Issuance Request contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e le dichiarazioni claims del corpo descritti di seguito.
+Il body della richiesta di emissione della Wallet App e Wallet Unit Attestation contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e le claim descritti di seguito.
 
-Di seguito è riportato un esempio non normativo di una Wallet App e Wallet Unit Attestation Request.
+Di seguito è riportato un esempio non normativo di una richiesta di emissione della Wallet App e Wallet Unit Attestation.
 
 .. code-block:: http
 
@@ -218,7 +218,7 @@ Di seguito è riportato un esempio non normativo di una Wallet App e Wallet Unit
       "assertion": "eyJpc3MiOiJodHRwczovL3dhbGxldC1wcm92aWRlc..."
     }
 
-In particolare, il JWT della Wallet App e Wallet Unit Attestation Issuance include i seguenti parametri di intestazione HTTP:
+In particolare, il JWT della richiesta di emissione della Wallet App e Wallet Unit Attestation include i seguenti parametri di intestazione HTTP:
 
 .. _table_waa_wua_request_claim:
 .. list-table::
@@ -233,13 +233,13 @@ In particolare, il JWT della Wallet App e Wallet Unit Attestation Issuance inclu
       - Identificatore dell'algoritmo di firma digitale, come definito nel registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:cryptographic algorithms` e non DEVE essere impostato su ``none`` né su alcun identificatore di algoritmo simmetrico (MAC).
       - [:rfc:`7516#section-4.1.1`]
     * - **kid**
-      - digitale (thumbprint) della JWK dell'istanza del Wallet contenuta nella dichiarazione ``cnf``.
+      - thumbprint della JWK dell'Istanza del Wallet contenuta nella dichiarazione ``cnf``.
       - [:rfc:`7638#section_3`]
     * - **typ**
       - Il tipo del JWT, che DEVE essere impostato su ``wp-war-wua+jwt``.
       - 
 
-Il JWT della Wallet App e Wallet Unit Attestation Request include le seguenti dichiarazioni (claims) nel corpo:
+Il JWT della richiesta include le seguenti claim nel body:
 
 .. list-table::
     :class: longtable
@@ -250,7 +250,7 @@ Il JWT della Wallet App e Wallet Unit Attestation Request include le seguenti di
       - **Descrizione**
       - **Riferimento**
     * - **iss**
-      - L'identificatore del Fornitore di Portafoglio concatenato con l'impronta digitale (thumbprint) della JWK nella dichiarazione ``cnf``.
+      - L'identificatore del Fornitore di Wallet concatenato con l'impronta digitale (thumbprint) della JWK nella dichiarazione ``cnf``.
       - [:rfc:`9126`], [:rfc:`7519`].
     * - **aud**
       - L'identificatore del Fornitore di Wallet.
@@ -314,7 +314,7 @@ Di seguito è riportato un esempio non normativo dell'intestazione e del payload
 Risposta all'Emissione della Wallet App e Wallet Unit Attestation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Se la Richiesta di Emissione della Wallet App e Wallet Unit Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` che include gli elementi ``wallet_app_attestations`` e ``wallet_unit_attestation`` (vedi :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`). ``wallet_app_attestations`` è un array che contiene le Wallet App Attestations nei formati ``JWT``, ``SD-JWT`` e ``mdoc``, mentre ``wallet_unit_attestation`` è un singolo oggetto che contiene la Wallet Unit Attestation. Entrambe le attestazioni sono firmate dal Fornitore di Wallet (:ref:`WP_027–029 <wallet-instance-testcases>` e :ref:`WP_143–144 <wallet-instance-optional-testcases>`). la Wallet App Attestation in formato JWT deve essere utilizzato per la fase di Emissione, come Attestato Client OAuth, e sarà inviato al Credential Issuer come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`. la Wallet App Attestation in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`). La Wallet Unit Attestation in formato JWT deve essere utilizzata nella fase di Emissione, come intestazione JOSE ``key_attestation`` nel JWT di tipo ``proof``, e verrà inviata all'Emittente della Credenziale come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`.
+Se la Richiesta di Emissione della Wallet App e Wallet Unit Attestation viene convalidata con successo, il Fornitore di Wallet restituisce una risposta HTTP con un codice di stato ``200 OK`` e Content-Type ``application/json``. L'Oggetto JSON restituito DEVE possedere il parametro ``wallet_attestations`` che include gli elementi ``wallet_app_attestations`` e ``wallet_unit_attestation`` (vedi :ref:`wallet-attestation-issuance:Emissione della Wallet App e Wallet Unit Attestation`). ``wallet_app_attestations`` è un array che contiene le Wallet App Attestation nei formati ``JWT``, ``SD-JWT`` e ``mdoc``, mentre ``wallet_unit_attestation`` è un singolo oggetto che contiene la Wallet Unit Attestation. Entrambe le attestazioni sono firmate dal Fornitore di Wallet (:ref:`WP_027–029 <wallet-instance-testcases>` e :ref:`WP_143–144 <wallet-instance-optional-testcases>`). La Wallet App Attestation in formato JWT deve essere utilizzato per la fase di Emissione di un Attestato Elettronico, come OAuth Client Attestation, e sarà inviato al Fornitore di Attestati Elettronici come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`. La Wallet App Attestation in formato SD-JWT e mdoc sarà invece utilizzato durante la presentazione rispettivamente nei flussi remoto (:ref:`remote-flow:Flusso Remoto`) e di prossimità (:ref:`proximity-flow:Flusso di Prossimità`). La Wallet Unit Attestation in formato JWT deve essere utilizzata nella fase di Emissione di un Attestato Elettronico, come intestazione JOSE ``key_attestation`` nel JWT di tipo ``proof``, e verrà inviata al Fornitore di Attestati Elettronici come discusso in :ref:`credential-issuance:Emissione di Attestati Elettronici`.
 
 
 L'Oggetto JSON restituito nella risposta ha il seguente claim:
@@ -554,7 +554,7 @@ Il corpo dell'SD-JWT della Wallet App Attestation contiene i seguenti claim:
       - OBBLIGATORIO. Stringa contenente l'algoritmo di hash utilizzato dal Fornitore di Wallet per generare i digest delle divulgazioni.
       - `SD-JWT`_.
     * - **sub**
-      - OPZIONALE. Identificatore dell'Istanza di Wallet che puo' essere l'impronta del JWK della Wallet App Attestation.
+      - OPZIONALE. Identificatore dell'Istanza di Wallet che può essere l'impronta del JWK della Wallet App Attestation.
       - :rfc:`9126` e :rfc:`7519`.
     
 
@@ -654,7 +654,7 @@ L'intestazione JOSE del Wallet Unit Attestation JWT contiene i seguenti parametr
       - OBBLIGATORIO. Un identificatore di algoritmo di firma digitale come da registro IANA "JSON Web Signature and Encryption Algorithms". DEVE essere uno degli algoritmi supportati elencati in :ref:`algorithms:Algoritmi Crittografici` e NON DEVE essere impostato su ``none`` o qualsiasi identificatore di algoritmo simmetrico (MAC).
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet App Attestation.
+      - OBBLIGATORIO. Identificatore univoco della chiave pubblica associata alla chiave privata che il Fornitore di Wallet ha utilizzato per firmare la Wallet Unit Attestation.
       - :rfc:`7638#section_3`.
     * - **typ**
       - OBBLIGATORIO. Deve essere impostato su ``key-attestation+jwt``

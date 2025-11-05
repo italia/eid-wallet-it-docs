@@ -49,8 +49,8 @@ Quando lo stato è **Installato**, l'Istanza del Wallet DEVE interagire solo con
 * attività illegali segnalate da Organi Giudiziari o di Vigilanza.
 
 .. note::
-  Come indicato nell'ARF (vedi Topic 9 e Topic 38 nell'Allegato 2), la revoca dell'istanza del Wallet viene effettuata revocando la Wallet Unit Attestation tramite il meccanismo di gestione dello stato.
-  Il Fornitore di Wallet può semplicemente modificare lo stato dell'unità del Wallet nella Status List per contrassegnarla come revocata e informare gli utenti riguardo al motivo della revoca dell'unità del Wallet.
+  Come indicato nell'ARF (vedi Topic 9 e Topic 38 nell'Allegato 2), la revoca dell'Istanza del Wallet viene effettuata revocando la Wallet Unit Attestation tramite il meccanismo di gestione dello stato.
+  Il Fornitore di Wallet può semplicemente modificare lo stato della Wallet Unit nella Status List per contrassegnarla come revocata e informare gli utenti riguardo al motivo della revoca della Wallet Unit.
 
 Transizione a Operativo
 .......................
@@ -58,13 +58,13 @@ Transizione a Operativo
 Dopo l'installazione, l'Utente apre l'Istanza del Wallet e inizia un'attivazione (**WI ACT**).
 In questa fase, un account Utente DEVE essere creato con il Fornitore di Wallet e associato all'Istanza del Wallet tramite il Cryptographic Hardware
 Key Tag, previa acquisizione del consenso dell'Utente (vedi :ref:`wallet-instance-registration:Inizializzazione e Registrazione dell'Istanza del Wallet` per maggiori dettagli, con i test in :ref:`WP_024 <wallet-instance-testcases>` e :ref:`WP_138 <wallet-instance-optional-testcases>`).
-Questa associazione consente all'utente di richiedere direttamente al Fornitore di Portafoglio la revoca dell'istanza del Wallet.
+Questa associazione consente all'utente di richiedere direttamente al Fornitore di Wallet la revoca dell'Istanza del Wallet.
 
 .. note::
   Come risultato della creazione dell'account Utente, DEVE essere impostato un meccanismo di autenticazione per l'Utente per interagire con il portale del Fornitore di Wallet.
   Questa specifica impone l'uso di almeno un secondo fattore per l'autenticazione dell'Utente.
 
-Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il collegamento crittografico risiedano in un WSCD sicuro.
+Come parte del processo di attivazione, il Fornitore di Wallet DEVE valutare il sistema operativo, le capacità tecniche generali del dispositivo e l'affidabilità del WSCD, al fine di verificare la conformità ai requisiti tecnici e di sicurezza, l'autenticità e l'integrità dell'Istanza del Wallet installata, e assicurarsi che le chiavi utilizzate per il binding crittografico risiedano in un WSCD sicuro.
 Dopo la verifica con successo, il Fornitore di Wallet DEVE emettere almeno una Wallet Attestation valido all'Istanza del Wallet, quindi l'Istanza del Wallet entra nello stato **Operativo**.
 
 Inoltre, se non è già stato fatto, gli Utenti DEVONO impostare il loro metodo preferito per sbloccare la loro Istanza del Wallet; questo PUÒ essere realizzato inserendo un

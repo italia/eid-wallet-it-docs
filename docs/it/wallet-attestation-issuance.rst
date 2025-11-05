@@ -28,7 +28,7 @@ Questa sezione descrive come il Fornitore di Wallet emette una Wallet App Attest
   3. Generare una coppia di chiavi asimmetriche effimere per la Wallet App Attestation (``ephemeral_key_pub``, ``ephemeral_key_priv``), collegando la chiave pubblica all'attestato (:ref:`WP_026 <wallet-instance-testcases>`).
   4. Verificare l'appartenenza del Fornitore di Wallet alla federazione e recuperare i suoi metadati (:ref:`WP_023 <wallet-instance-testcases>`).
 
-**Passi 5-7 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` all'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Walletn (:ref:`WP_140b <wallet-instance-optional-testcases>`). Il ``nonce`` deve essere imprevedibile e funge da principale difesa contro gli attacchi di replay.
+**Passi 5-7 (Recupero del Nonce)**: L'Istanza del Wallet richiede un ``nonce`` all'endpoint :ref:`wallet-provider-endpoint:Endpoint Nonce della Soluzione Wallet` del Backend del Fornitore del Wallet (:ref:`WP_140b <wallet-instance-optional-testcases>`). Il ``nonce`` deve essere imprevedibile e funge da principale difesa contro gli attacchi di replay.
 
 Il ``nonce`` DEVE garantire un utilizzo singolo entro un intervallo di tempo predeterminato.
 
@@ -58,15 +58,15 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
   ``integrity_assertion`` è un payload personalizzato generato dal Servizio di Integrità del Dispositivo, firmato dall'OEM del dispositivo e codificato in base64 per avere uniformità tra diversi dispositivi.
 
 .. note::
-   Nel caso del sistema operativo Android, il flusso prosegue in base ai **Passaggi 13-16**, mentre per il caso di iOS, il flusso prosegue in base ai **Passaggi 17-20**.
+   Nel caso del sistema operativo Android, il flusso prosegue in base con i **Passi 13-16**, mentre per il caso di iOS, il flusso prosegue con i **Passi 17-20**.
 
-**Passaggi 13-16**: L'istanza del Wallet:
+**Passi 13-16**: L'Istanza del Wallet:
 
 * richiede all'API di Key Attestation di creare un valore ``key_attestation`` collegato a ``client_data_hash_wua``.
 * riceve un valore ``key_attestation`` firmato dall'API di Key Attestation, autenticato dall'OEM.
 * genera un valore ``attested_key`` firmando il ``key_attestation`` utilizzando la chiave privata della coppia di chiavi di credenziale generata inizialmente (``priv_key``).
 
-**Passaggi 17-20**: L'istanza del Wallet:
+**Passi 17-20**: L'Istanza del Wallet:
 
 * richiede al Servizio di Integrità del Dispositivo di creare un valore ``integrity_assertion`` collegato a ``client_data_hash_wua``.
 * riceve un valore ``integrity_assertion`` firmato per la Wallet Unit Attestation dal Servizio di Integrità del Dispositivo, autenticato dall'OEM.
@@ -80,7 +80,7 @@ Di seguito è riportato un esempio non normativo dell'oggetto JSON ``client_data
 .. note:: 
   ``attested_key`` contiene un oggetto ``key_attestation`` nel caso di Android e un oggetto ``integrity_assertion`` nel caso di iOS.
 
-L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet APP e Wallet Unit Attestation come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet App e Wallet Unit Attestation` del Fornitore di Wallet (:ref:`WP_142 <wallet-instance-optional-testcases>`).
+L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet App e Wallet Unit Attestation come parametro ``assertion`` nel corpo di una richiesta HTTP all'endpoint :ref:`wallet-provider-endpoint:Endpoint di Emissione della Wallet App e Wallet Unit Attestation` del Fornitore di Wallet (:ref:`WP_142 <wallet-instance-optional-testcases>`).
 
 **Passi 23-28**: Il Backend del Fornitore del Wallet valuta la Richiesta di Wallet App e Wallet Unit Attestation e DEVE eseguire i seguenti controlli (:ref:`WP_143 <wallet-instance-optional-testcases>`):
 
@@ -94,9 +94,9 @@ L'Istanza del Wallet DEVE inviare il JWT firmato della Richiesta di Wallet APP e
   8. Il dispositivo in uso DEVE essere privo di difetti di sicurezza noti e soddisfare i requisiti minimi di sicurezza definiti dal Fornitore di Wallet.
   9. L'URL nel parametro ``iss`` DEVE corrispondere all'identificatore URL del Fornitore di Wallet  (:ref:`WP_143g <wallet-instance-optional-testcases>`).
 
-Al completamento con successo di tutte le verifiche, il Fornitore di Portafoglio emette una Wallet App Attestation valida per meno di 24 ore (:ref:`WP_144 <wallet-instance-optional-testcases>`) e una Wallet Unit Attestation valida per almeno un mese.
+Al completamento con successo di tutte le verifiche, il Fornitore di Wallet emette una Wallet App Attestation valida per meno di 24 ore (:ref:`WP_144 <wallet-instance-optional-testcases>`) e una Wallet Unit Attestation valida per almeno un mese.
 
-**Passo 29 (Risposta di Emissione della Wallet App e Wallet Unit Attestation)**: Al completamento con successo, il Fornitore di Portafoglio DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il tipo di contenuto ``application/json``, contenente le Wallet App e Wallet Unit Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet App Attestation in almeno tre formati: ``JWT``, ``SD-JWT`` e ``mdoc``. L'istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità delle Wallet App e Wallet Unit Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
+**Passo 29 (Risposta di Emissione della Wallet App e Wallet Unit Attestation)**: Al completamento con successo, il Fornitore di Wallet DEVE restituire una risposta di conferma utilizzando il codice di stato 200 e il Content-Type ``application/json``, contenente le Wallet App e Wallet Unit Attestations firmate dal Fornitore di Wallet. Il Fornitore di Wallet DEVE restituire la Wallet App Attestation in almeno tre formati: ``JWT``, ``SD-JWT`` e ``mdoc``. L'Istanza del Wallet eseguirà quindi la verifica di sicurezza e integrità delle Wallet App e Wallet Unit Attestations ricevute, oltre alla verifica di fiducia del relativo emittente (:ref:`WP_030–031 <wallet-instance-testcases>`).
 
 
 Di seguito è riportato un esempio non normativo della risposta.

@@ -39,7 +39,7 @@ Il Key Binding Endpoint della Relying Party consente alle App di Verifica di ass
 Richiesta di Associazione Chiavi della Relying Party
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
-Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Wallet App and Wallet Unit Attestation Issuance Request`. 
+Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet App e Wallet Unit Attestation`. 
 
 Le uniche differenze sono le seguenti:
 
