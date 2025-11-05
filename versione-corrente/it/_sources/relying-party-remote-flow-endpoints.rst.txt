@@ -2,9 +2,6 @@
 
 .. "included" file, so we start with '-' title level
 
-Endpoint per Flussi Remoti della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di presentazione remoti come definiti in OpenID4VP 1.0. Questi endpoint abilitano la verifica sicura delle credenziali, l'instaurazione della fiducia e l'autenticazione dell'utente per modelli di interazione cross-device e same-device.
 
 .. note::
@@ -12,7 +9,7 @@ La Relying Party DEVE esporre una serie di endpoint per supportare i flussi di p
 
 
 Endpoint di Federazione
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 
 La Relying Party DEVE fornire la propria Entity Configuration attraverso l'endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. Questo endpoint abilita l'instaurazione della fiducia e la scoperta delle capacità della Relying Party.
 
@@ -20,12 +17,12 @@ I dettagli tecnici sono forniti nella Sezione :ref:`relying-party-entity-configu
 
 
 Endpoint per Flussi Remoti OpenID4VP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 
 I seguenti endpoint sono richiesti per i flussi di presentazione remota OpenID4VP 1.0 come descritto in :ref:`remote-flow:Flusso Remoto`. Questi endpoint supportano sia i flussi Same Device che Cross Device:
 
 Endpoint Request URI
-"""""""""""""""""""""
+....................
 
 L'Endpoint Request URI è dove la Relying Party fornisce il Request Object firmato all'Istanza del Wallet. Questo endpoint supporta sia i metodi GET che POST come definito nella specifica OpenID4VP 1.0.
 
@@ -33,7 +30,7 @@ Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Endpoin
 
 
 Endpoint Response URI
-"""""""""""""""""""""
+.....................
 
 L'Endpoint Response URI riceve l'Authorization Response dall'Istanza del Wallet contenente la Verifiable Presentation. Questo endpoint elabora la presentazione e convalida le credenziali.
 
@@ -41,7 +38,7 @@ Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Authori
 
 
 Endpoint Status (Opzionale)
-"""""""""""""""""""""""""""
+...........................
 
 L'Endpoint Status è un endpoint opzionale che consente all'user-agent di monitorare il progresso del flusso di presentazione. Questo endpoint è particolarmente utile per i flussi Same Device dove l'user-agent deve sapere quando l'Istanza del Wallet ha completato la presentazione.
 
@@ -49,17 +46,17 @@ Per i requisiti di implementazione dettagliati, vedere :ref:`remote-flow:Status 
 
 
 Endpoint di Gestione Dati Utente
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 Il seguente endpoint supporta la gestione dei dati utente e i requisiti di conformità alla privacy per i flussi remoti:
 
 Endpoint di Cancellazione della Relying Party
-"""""""""""""""""""""""""""""""""""""""""""""
+.............................................
 
 L'Endpoint di Cancellazione, che è descritto in :ref:`relying-party-metadata:Metadati della Relying Party`, consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party. La Relying Party DEVE richiedere l'autenticazione dell'Utente prima di procedere con la cancellazione degli attributi.
 
 Richiesta di Cancellazione
-""""""""""""""""""""""""""
+..........................
 
 La Richiesta di Cancellazione DEVE essere una richiesta GET all'Endpoint di Cancellazione. L'Istanza di Wallet DEVE anche supportare un meccanismo di callback che consenta allo User-Agent di notificare lo stato della richiesta all'Istanza di Wallet (e quindi all'Utente) una volta che viene restituita la Risposta di Cancellazione.
 
@@ -71,7 +68,7 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Cancellazio
   Host: relying-party.example.org
 
 Risposta di Cancellazione
-"""""""""""""""""""""""""
+.........................
 
 Se la cancellazione di tutti gli attributi associati all'Utente è avvenuta con successo, la Risposta di Cancellazione DEVE restituire un Status Code HTTP 204.
 
@@ -120,7 +117,7 @@ Alla ricezione di una Error Response, l'Istanza di Wallet che ha effettuato la R
 
 
 Considerazioni di Sicurezza
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 
 Tutti gli endpoint della Relying Party DEVONO implementare appropriate misure di sicurezza:
 
@@ -134,7 +131,7 @@ Per i requisiti di sicurezza dettagliati, vedere :ref:`remote-flow:Considerazion
 
 
 Note di Implementazione
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 
 - I dettagli di implementazione specifici per la maggior parte degli endpoint sono lasciati alla discrezione della Relying Party
 - Gli endpoint DEVONO essere conformi alla specifica OpenID4VP 1.0 per i flussi remoti

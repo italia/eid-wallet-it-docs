@@ -11,8 +11,8 @@ La Relying Party DEVE esporre una serie completa di endpoint per supportare l'ec
   I test relativi agli endpoint della Relying Party sono definiti nella matrice di test per presentazione remota (:ref:`test-plans-remote-presentation:Matrice di Test per la Presentazione di Credenziali Remota`) e prossimità (:ref:`test-plans-proximity-presentation:Matrice di Test per la Presentazione di Credenziali in Prossimità`).
 
 
-Endpoint per Flussi Remoti
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Endpoint per Flussi Remoti della Relying Party
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: relying-party-remote-flow-endpoints.rst
 

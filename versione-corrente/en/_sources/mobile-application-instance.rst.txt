@@ -39,7 +39,7 @@ The flow is displayed in :ref:`fig_MobileApplication_Instance_Initialization_Flo
 .. note::
   **Federation Check**: The Mobile Application Instance needs to check if the Application Provider is part of the Federation, obtaining its protocol-specific Metadata (:ref:`WP_023 <wallet-instance-testcases>`). Non-normative examples of a response from the :ref:`wallet-provider-endpoint:Federation endpoint` with the **Entity Configuration** and the **Metadata** of the Application Provider are presented within the :ref:`wallet-provider-entity-configuration:Wallet Provider Entity Configuration` and :ref:`relying-party-entity-configuration:Relying Party Entity Configuration` sections.
 
-**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
+**Steps 3-5 (Nonce Retrieval)**: The Mobile Application Instance requests a one-time ``nonce`` from the **Nonce Endpoint** of the Application Provider Backend (see :ref:`wallet-provider-endpoint:Wallet Solution Nonce Endpoint` or :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Nonce Endpoint` ). This ``nonce`` MUST be unpredictable to serve as the main defense against replay attacks (:ref:`WP_131 <wallet-instance-optional-testcases>`). 
 
 Upon a successful request, the Application Provider generates and returns the ``nonce`` value to the Mobile Application Instance, as part of the :ref:`mobile-application-instance:Mobile Application Nonce Response`. The Application Provider MUST ensure that it is single-use and valid only within a specific time frame.
 
@@ -271,26 +271,26 @@ The following table lists HTTP Status Codes and related error codes that are sup
       - The service is unavailable. Please try again later.
 
 
-Mobile Application Key Binding
-------------------------------
+.. Mobile Application Key Binding
+.. ------------------------------
 
-The Key Binding flow enables the Mobile Application Instance to bind a newly created pair of keys to the Mobile Application Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Application Provider also needs to verify the integrity of the Mobile Application Instance.
+.. The Key Binding flow enables the Mobile Application Instance to bind a newly created pair of keys to the Mobile Application Instance, by relying on a proof of possession of the Cryptographic Hardware Keys generated during the :ref:`mobile-application-instance:Mobile Application Instance Initialization` phase. Before completing the process, the Application Provider also needs to verify the integrity of the Mobile Application Instance.
 
-Although the exact flow differs depending on the context (see the :ref:`relying-party-instance:Mobile Relying Party Instance Registration` and :ref:`wallet-attestation-issuance:Wallet Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
+.. Although the exact flow differs depending on the context (see the :ref:`relying-party-instance:Mobile Relying Party Instance Registration` and :ref:`wallet-attestation-issuance:Wallet App Attestation Issuance` sections), the Mobile Application Integrity Request and Error Response are consistent.
 
 
-Mobile Application Key Binding Request
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. Mobile Application Key Binding Request
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Key Binding Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
+.. The Key Binding Request uses the HTTP POST method with ``Content-Type`` set to ``application/json``.
 
-The Key Binding Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below (:ref:`WP_134 <wallet-instance-optional-testcases>`).
+.. The Key Binding Request body contains an ``assertion`` parameter whose value is a signed JWT including all header parameters and body claims described below (:ref:`WP_134 <wallet-instance-optional-testcases>`).
 
-Below is a non-normative example of a Key Binding Request.
+.. Below is a non-normative example of a Key Binding Request.
 
-.. code-block:: http
+.. .. code-block:: http
 
-    POST /key-binding HTTP/1.1
+ ..   POST /key-binding HTTP/1.1
     Host: application-provider.example.org
     Content-Type: application/json
 
@@ -298,15 +298,15 @@ Below is a non-normative example of a Key Binding Request.
       "assertion": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG..."
     }
 
-In particular, the Key Binding Request JWT includes the following HTTP header parameters:
+.. In particular, the Key Binding Request JWT includes the following HTTP header parameters:
 
-.. _table_key_binding_request_claim:
-.. list-table::
+.. .. _table_key_binding_request_claim:
+ .. list-table::
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
 
-    * - **Parameter**
+..    * - **Parameter**
       - **Description**
       - **Reference**
     * - **alg**
@@ -319,9 +319,10 @@ In particular, the Key Binding Request JWT includes the following HTTP header pa
       - The type of the JWT, which can assume different values depending on the context.
       -
 
-The Key Binding Request JWT includes the following body claims:
+.. The Key Binding Request JWT includes the following body claims:
 
-.. list-table::
+.. 
+  .. list-table::
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
@@ -357,19 +358,21 @@ The Key Binding Request JWT includes the following body claims:
       - JSON object containing the public part of an asymmetric key pair owned by the Mobile Application Instance.
       - :rfc:`7800`.
 
-Below is a non-normative example of a Key Binding Request JWT header and payload.
+.. Below is a non-normative example of a Key Binding Request JWT header and payload.
 
-.. code-block:: json
 
-    {
+.. 
+ .. code-block:: json
+
+ ..   {
       "alg": "ES256",
       "kid": "hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "typ": "..."
     }
 
-.. code-block:: json
+.. .. code-block:: json
   
-    {
+ ..   {
       "iss": "https://application-provider.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "sub": "https://application-provider.example.org/",
       "nonce": "f3b29a81-45c7-4d12-b8b5-e1f6c9327aef",
@@ -387,24 +390,24 @@ Below is a non-normative example of a Key Binding Request JWT header and payload
     }
 
 
-Mobile Application Key Binding Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. Mobile Application Key Binding Response
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-provider-backend-endpoint:Relying Party Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet Attestation Issuance Response` sections.
+.. The Key Binding Response strictly depends on the context of the request; further details are provided in the :ref:`relying-party-provider-backend-endpoint:Relying Party Provider Backend Key Binding Response` and :ref:`wallet-provider-endpoint:Wallet App Attestation Issuance Response` sections.
 
 
-Mobile Application Key Binding Error Response
-"""""""""""""""""""""""""""""""""""""""""""""
+.. Mobile Application Key Binding Error Response
+.. """""""""""""""""""""""""""""""""""""""""""""
 
-If any errors occur, the Application Provider returns an error response. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
+.. If any errors occur, the Application Provider returns an error response. The response uses ``application/json`` as the ``Content-Type`` and includes the following parameters:
 
-  - *error*. The error code.
+  .. - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered (:ref:`WP_035 <wallet-instance-testcases>`).
 
-Below is a non-normative example of a Key Binding Error Response.
+.. Below is a non-normative example of a Key Binding Error Response.
 
-.. code-block:: http
-
+.. .. code-block:: http
+..
     HTTP/1.1 403 Forbidden
     Content-Type: application/json
 
@@ -413,9 +416,9 @@ Below is a non-normative example of a Key Binding Error Response.
       "error_description": "The provided challenge is invalid, expired, or already used."
     }
 
-The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
-
-.. list-table::
+.. The following table lists HTTP Status Codes and related error codes that are supported for the error response, unless otherwise specified  (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
+..
+ .. list-table::
     :class: longtable
     :widths: 30 20 50
     :header-rows: 1

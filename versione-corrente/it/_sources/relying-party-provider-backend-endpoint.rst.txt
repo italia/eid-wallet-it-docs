@@ -2,9 +2,6 @@
 
 .. "included" file, so we start with '-' title level
 
-Endpoint del Backend del Provider di Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita delle App di Verifica che utilizzano un servizio di backend remoto fornito dal loro Backend del Provider di Relying Party. Questi endpoint supportano i flussi di presentazione in prossimità fornendo generazione di nonce, registrazione delle chiavi hardware, convalida dell'integrità e rilascio del Certificato di Accesso. I dettagli specifici della loro implementazione sono lasciati alla discrezione della Relying Party.
 
 .. note::
@@ -12,41 +9,44 @@ La Relying Party DEVE esporre una serie di endpoint per gestire il ciclo di vita
 
 
 Endpoint di Federazione della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 
 La Relying Party DEVE fornire la propria Entity Configuration attraverso l'Endpoint ``/.well-known/openid-federation``, secondo la Sezione :ref:`trust:Entity Configuration`. I dettagli tecnici sono forniti nella Sezione :ref:`relying-party-entity-configuration:Entity Configuration Relying Party`.
 
 
 Endpoint Nonce della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 
 Il Nonce Endpoint della Relying Party consente all'App di Verifica di richiedere un ``nonce`` crittografico dal Backend del Provider di Relying Party. Il ``nonce``, un codice monouso e casuale, serve per garantire l'unicità e prevenire replay attacks.
 
 Ulteriori dettagli sulla Richiesta e Risposta Nonce sono forniti rispettivamente nelle Sezioni :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile` e :ref:`mobile-application-instance:Richiesta di Nonce dell'Applicazione Mobile`.
 
 Endpoint di Inizializzazione dell'App di Verifica della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'Endpoint di Inizializzazione dell'App di Verifica consente l'inizializzazione delle App di Verifica, consistente nella registrazione di una coppia di Cryptographic Hardware Keys a lunga durata, memorizzate in modo sicuro (:ref:`test-plans-proximity-presentation`).
 
 Ulteriori dettagli sulla Richiesta e Risposta di Inizializzazione dell'App di Verifica sono forniti rispettivamente nelle Sezioni :ref:`mobile-application-instance:Richiesta di Inizializzazione dell'Istanza dell'Applicazione Mobile` e :ref:`mobile-application-instance:Risposta di Inizializzazione dell'Istanza dell'Applicazione Mobile`.
 
 Endpoint di Associazione Chiavi della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Il Key Binding Endpoint della Relying Party consente alle App di Verifica di associare la coppia di chiavi appena creata, che sarà associata a un Certificato di Accesso, all'App di Verifica, basandosi su una dimostrazione di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Backend del Provider di Relying Party deve anche verificare l'integrità dell'App di Verifica.
 
 Richiesta di Associazione Chiavi della Relying Party
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+....................................................
 
-Ulteriori dettagli sulla Richiesta di Key Binding della Relying Party sono forniti nella sezione :ref:`mobile-application-instance:Richiesta di Associazione Chiave dell'Applicazione Mobile`.
+Ulteriori dettagli sulla Relying Party Key Binding Request sono forniti nella sezione :ref:`wallet-provider-endpoint:Richiesta di Emissione della Wallet App e Wallet Unit Attestation`. 
 
+Le uniche differenze sono le seguenti:
 
-L'header ``typ`` del JWT di Richiesta di Integrità assume il valore ``rp-kb+jwt``.
+- L'intestazione ``typ`` del JWT della Integrity Request assume il valore ``rp-kb+jwt``.
+- Il corpo del JWT della Integrity Request non include la dichiarazione ``attested_key``.
+- Il valore della dichiarazione ``hardware_signature`` viene ottenuto basandosi esclusivamente sul valore di ``client_data_hash_waa``.
 
 
 Risposta di Associazione Chiavi della Relying Party
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+...................................................
 
 In caso di richiesta riuscita, il Backend del Provider di Relying Party fornisce una HTTP Response con Status Code ``204 No Content``.
 
@@ -56,17 +56,80 @@ Di seguito è riportato un esempio non normativo di una Risposta alla Richiesta 
 
     HTTP/1.1 204 No content
 
-Se si verificano errori durante il processo, viene restituita una Error Response. Ulteriori dettagli sulla Error Response sono forniti nella sezione :ref:`mobile-application-instance:Risposta di Errore di Associazione Chiave dell'Applicazione Mobile`.
+Se si verifica un errore durante il processo, viene restituita una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
+
+  - *error*. Il codice di errore.
+  - *error_description*. Testo in formato leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
+
+
+Di seguito è riportato un esempio non normativo di una Key Binding Error Response.
+
+.. code-block:: http
+
+    HTTP/1.1 403 Forbidden
+    Content-Type: application/json
+
+    {
+      "error": "invalid_request",
+      "error_description": "The provided challenge is invalid, expired, or already used."
+    }
+
+La seguente tabella elenca i codici di stato HTTP e i relativi codici di errore supportati per la risposta di errore, salvo diversa indicazione (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
+
+.. list-table::
+    :class: longtable
+    :widths: 30 20 50
+    :header-rows: 1
+
+    * - **HTTP Status Code**
+      - **Error Code**
+      - **Descrizione**
+    * - ``400 Bad Request``
+      - ``bad_request``
+      - La richiesta è malformata, mancano parametri obbligatori (ad esempio parametri di intestazione o Integrity Assertion), oppure include parametri non validi o sconosciuti.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - The Verifier App è stata revocata.
+    * - ``403 Forbidden``
+      - ``integrity_check_error``
+      - Il dispositivo non soddisfa i requisiti minimi di sicurezza del Fornitore della Relying Party.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - La firma della Integrity Request non è valida oppure non corrisponde alla chiave pubblica (JWK) associata.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - La validazione della Integrity Assertion non è riuscita; la Integrity Assertion è stata manomessa o firmata in modo non corretto.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - Il ``nonce`` fornito non è valido, è scaduto oppure è già stato utilizzato.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - La Proof of Possession (``hardware_signature``) non è valida.
+    * - ``403 Forbidden``
+      - ``invalid_request``
+      - Il parametro ``iss`` non corrisponde all'identificatore URL previsto dal Fornitore della Relying Party.
+    * - ``404 Not Found``
+      - ``not_found``
+      - L'istanza dell'applicazione di verifica (Verifier App) non è stata trovata.
+    * - ``422 Unprocessable Content`` [OPTIONAL]
+      - ``validation_error``
+      - La richiesta non rispetta il formato richiesto.
+    * - ``500 Internal Server Error``
+      - ``server_error``
+      - Si è verificato un errore interno del server durante l'elaborazione della richiesta.
+    * - ``503 Service Unavailable``
+      - ``temporarily_unavailable``
+      - Il servizio non è disponibile. Si prega di riprovare più tardi.
 
 
 Endpoint del Certificato di Accesso della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 L'Endpoint del Certificato di Accesso della Relying Party consente alle App di Verifica di ottenere un Certificato di Accesso.
 
 
 Richiesta del Certificato di Accesso della Relying Party
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+........................................................
 
 La Richiesta del Certificato di Accesso utilizza il metodo HTTP POST con ``Content-Type`` impostato su ``application/json``.
 
@@ -97,7 +160,7 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Certificato
 
 
 Risposta del Certificato di Accesso della Relying Party
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.......................................................
 
 In caso di richiesta riuscita, l'Access Certificate Endpoint della Relying Party fornisce un HTTP Response con Status Code ``200 OK`` e il Certificato di Accesso. La Risposta dell'Access Certificate Endpoint, che utilizza ``application/json`` come ``Content-Type``, include i seguenti parametri nel body:
 
@@ -164,7 +227,7 @@ La seguente tabella elenca gli HTTP Status Code e i relativi codici di errore ch
       - La richiesta non può essere soddisfatta perché l'Endpoint è temporaneamente non disponibile (ad esempio, a causa di manutenzione o sovraccarico).
 
 Endpoint di Cancellazione della Relying Party
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 
 L'Endpoint di Cancellazione consente alle Istanze di Wallet di richiedere la cancellazione degli attributi presentati alla Relying Party, supportando i diritti di privacy dell'utente e la conformità normativa.
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Relying Party Remote Flow Endpoints &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
+    <title>Federation Endpoint &#8212; IT-Wallet Technical Documentation - Editor&#39;s Copy</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=9b2032db" />
     <link rel="stylesheet" type="text/css" href="_static/itwallet-override.css?v=63798874" />
@@ -159,14 +159,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="relying-party-remote-flow-endpoints">
-<h1>Relying Party Remote Flow Endpoints<a class="headerlink" href="#relying-party-remote-flow-endpoints" title="Link to this heading">¶</a></h1>
-<p>The Relying Party MUST expose a set of endpoints to support remote presentation flows as defined in OpenID4VP 1.0. These endpoints enable secure credential verification, trust establishment, and user authentication for cross-device and same-device interaction patterns.</p>
+  <p>The Relying Party MUST expose a set of endpoints to support remote presentation flows as defined in OpenID4VP 1.0. These endpoints enable secure credential verification, trust establishment, and user authentication for cross-device and same-device interaction patterns.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Tests related to Relying Party remote flow endpoints are defined in the remote presentation test matrix (<a class="reference internal" href="test-plans-remote-presentation.html#test-plans-remote-presentation"><span class="std std-ref">Remote Credential Verifier Test Matrix</span></a>).</p>
 </div>
-</section>
 <section id="id1">
 <h1>Federation Endpoint<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <p>The Relying Party MUST provide its Entity Configuration through the <code class="docutils literal notranslate"><span class="pre">/.well-known/openid-federation</span></code> endpoint, according to Section <span class="xref std std-ref">trust:Entity Configuration</span>. This endpoint enables trust establishment and discovery of the Relying Party's capabilities.</p>
@@ -300,8 +297,7 @@
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">&gt;</span><span>Page contents:</span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">Relying Party Remote Flow Endpoints</a></li>
-<li><a class="reference internal" href="#id1">Federation Endpoint</a></li>
+<li><a class="reference internal" href="#">Federation Endpoint</a></li>
 <li><a class="reference internal" href="#openid4vp-remote-flow-endpoints">OpenID4VP Remote Flow Endpoints</a><ul>
 <li><a class="reference internal" href="#request-uri-endpoint">Request URI Endpoint</a></li>
 <li><a class="reference internal" href="#response-uri-endpoint">Response URI Endpoint</a></li>

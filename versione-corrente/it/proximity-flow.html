@@ -198,7 +198,7 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
 <li><p><em>Flusso di Recupero del Dispositivo Supervisionato</em> dove un supervisore umano supervisiona il processo di verifica in persona, in contrasto con il <em>flusso non supervisionato</em> dove la verifica potrebbe avvenire attraverso sistemi automatizzati senza supervisione umana (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_095</span></a>).</p></li>
 <li><p><em>Autenticazione dell'Istanza di Relying Party</em> seguendo i meccanismi definiti nella <a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per il <em>reader authentication</em> (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_098</span></a>).</p></li>
 <li><p><em>Tipo di Documento</em> domestico e <em>Namespace</em> definiti in questa specifica tecnica in aggiunta a quelli già definiti nell'<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> per l'mDL (vedi <a class="reference internal" href="credential-data-model.html#attestato-elettronico-in-formato-mdoc-cbor"><span class="std std-ref">Attestato Elettronico in formato mdoc-CBOR</span></a> per maggiori dettagli) (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_099</span></a>).</p></li>
-<li><p><em>Validazione dell'Istanza del Wallet</em> attraverso l'Attestato del Wallet.</p></li>
+<li><p><em>Validazione dell'Istanza del Wallet</em> attraverso la Wallet App Attestation.</p></li>
 </ul>
 <p>La tabella seguente mostra le tecnologie di <em>Device Engagement</em> supportate  (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>), specificando quali sono obbligatorie.</p>
 <table class="longtable docutils align-default">
@@ -310,7 +310,7 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
 <p><strong>Passo 6</strong>: L'Istanza di Relying Party genera la sua coppia di chiavi effimera (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>, <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>). La chiave privata (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Priv</span></code>) DEVE essere mantenuta segreta, e la chiave pubblica (<code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code>) DEVE essere utilizzata nel <em>Session Establishment</em> (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-002</span></a>).</p>
 <p><strong>Passo 7</strong>: L'Istanza del Wallet e l'Istanza di Relying Party DEVONO derivare indipendentemente le chiavi di sessione utilizzando la loro chiave effimera privata e la chiave effimera pubblica dell'altra parte attraverso un Key Agreement Protocol opportuno. Questo garantisce lo scambio di messaggi cifrati nella sessione. In questo particolare passo, l'Istanza di Relying Party DEVE calcolare la sua chiave di sessione (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-002</span></a> and <a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_097</span></a>).</p>
 <p><strong>Passo 8</strong>: L'Istanza di Relying Party DEVE preparare il <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code>. Questo messaggio DEVE essere firmato dall'Istanza di Relying Party (autenticazione dell'<em>mdoc reader</em> come specificato in [<a class="reference external" href="https://github.com/ISOWG10/ISO-18013/blob/main/Working%20Documents/Working%20Draft%20ISO_IEC_18013-5_second-edition_CD_ballot_resolution_v3.pdf">ISO18013-5</a> #12.5]) e cifrato utilizzando la chiave di sessione derivata nel passo precedente. Il messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> DEVE includere la <code class="docutils literal notranslate"><span class="pre">EReaderKey.Pub</span></code> e una richiesta per specifici attributi (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-002</span></a>).</p>
-<p>Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> CBOR che contiene una Richiesta mdoc per una Wallet Attestation insieme a un Attestato Elettronico mDL.</p>
+<p>Di seguito è riportato un esempio non normativo nella notazione diagnostica di un messaggio <code class="docutils literal notranslate"><span class="pre">SessionEstablishment</span></code> CBOR che contiene una Richiesta mdoc per una Wallet App Attestation insieme a un Attestato Elettronico mDL.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
   &quot;version&quot;: &quot;1.0&quot;,  % Version
   &quot;docRequests&quot;: 
@@ -339,7 +339,7 @@ Durante la sottofase di comunicazione, l'Istanza di Relying Party ha l'opzione d
     &quot;itemsRequest&quot;: 
     24(&lt;&lt;  % Embedded CBOR data item
       {
-        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_attestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_app_attestation&quot;,
       }
     &gt;&gt;)
     }
@@ -378,7 +378,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
 <li><p>Sez 8.2.2.5 per <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> tramite NFC</p></li>
 </ul>
 </div>
-<p>Di seguito è riportato un esempio non normativo di <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> nella notazione diagnostica che contiene la Risposta mdoc di una Wallet Attestation e un Attestato Elettronico mDL.</p>
+<p>Di seguito è riportato un esempio non normativo di <code class="docutils literal notranslate"><span class="pre">SessionData</span></code> nella notazione diagnostica che contiene la Risposta mdoc di una Wallet App Attestation e un Attestato Elettronico mDL.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
     &quot;version&quot;: &quot;1.0&quot;,
     &quot;documents&quot;:
@@ -562,21 +562,13 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
         }
       },
       {
-        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_attestation&quot;,
+        &quot;docType&quot;: &quot;it.wallet.trust-registry.wallet_app_attestation&quot;,
         &quot;issuerSigned&quot;: {
           &quot;nameSpaces&quot;: {
-            &quot;it.wallet.trust-registry.wallet_attestation&quot;: [
+            &quot;it.wallet.trust-registry.wallet_app_attestation&quot;: [
               24(&lt;&lt;
                 {
                   &quot;digestID&quot;: 0,
-                  &quot;elementIdentifier&quot;: &quot;aal&quot;,
-                  &quot;elementValue&quot;: &quot;https://wallet-provider.example.org/LoA/basic&quot;,
-                  &quot;random&quot;: h&#39;bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114&#39;
-                }
-              &gt;&gt;),
-              24(&lt;&lt;
-                {
-                  &quot;digestID&quot;: 1,
                   &quot;elementIdentifier&quot;: &quot;sub&quot;,
                   &quot;elementValue&quot;: &quot;ec#1&quot;,
                   &quot;random&quot;: h&#39;0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d&#39;
@@ -584,7 +576,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
               &gt;&gt;),
               24(&lt;&lt;
                 {
-                  &quot;digestID&quot;: 2,
+                  &quot;digestID&quot;: 1,
                   &quot;elementIdentifier&quot;: &quot;wallet_link&quot;,
                   &quot;elementValue&quot;: &quot;https://wallet-provider.example.org&quot;,
                   &quot;random&quot;: h&#39;dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec&#39;
@@ -592,7 +584,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
               &gt;&gt;),
               24(&lt;&lt;
                 {
-                  &quot;digestID&quot;: 3,
+                  &quot;digestID&quot;: 2,
                   &quot;elementIdentifier&quot;: &quot;wallet_name&quot;,
                   &quot;elementValue&quot;: &quot;Wallet name&quot;,
                   &quot;random&quot;: h&#39;d665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae&#39;
@@ -627,7 +619,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
                       -3: h&#39;6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3&#39;
                     }
                   },
-                  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.wallet_attestation&quot;,
+                  &quot;docType&quot;: &quot;org.iso.18013.5.1.IT.wallet_app_attestation&quot;,
                   &quot;validityInfo&quot;: {
                     &quot;signed&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
                     &quot;validFrom&quot;: 0(&quot;2025-06-27T07:40:21Z&quot;),
@@ -665,7 +657,7 @@ Fare riferimento a (<a class="reference internal" href="test-plans-wallet-provid
 <p><strong>Considerazione Finale</strong>: Il flusso di presentazione si è concentrato sullo scambio tecnico di dati in contesti di prossimità. È cruciale riconoscere che i flussi di prossimità supervisionati che coinvolgono un verificatore umano svolgono un ruolo vitale in molti casi d'uso (ad esempio, verifica dell'età in un negozio, controllo dell'identità da parte delle forze dell'ordine). L'elemento umano aggiunge un livello di verifica dell'identità attraverso l'ispezione visiva e il confronto, contribuendo agli aspetti di User Binding e garanzia di autenticazione complessiva non completamente catturati in un flusso di presentazione puramente tecnico.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>Durante la presentazione di prossimità l'Istanza del Wallet potrebbe non essere in grado di recuperare una Wallet Attestation aggiornata, in questo caso, l'Istanza del Wallet DOVREBBE inviare l'ultima versione della Wallet Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108a</span></a>). È demandato alla Relying Party di determinare se una presentazione con una Wallet Attestation valida ma scaduto è valida o meno.</p>
+<p>Durante la presentazione di prossimità l'Istanza del Wallet potrebbe non essere in grado di recuperare una Wallet App Attestation aggiornata, in questo caso, l'Istanza del Wallet DOVREBBE inviare l'ultima versione della Wallet App Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108a</span></a>). È demandato alla Relying Party di determinare se una presentazione con una Wallet App Attestation valida ma scaduto è valida o meno.</p>
 </div>
 <section id="deviceengagement-tramite-qr-code">
 <span id="sec-deviceengagement-qr"></span><h2><span class="section-number">12.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">DeviceEngagement</span></code> tramite QR Code<a class="headerlink" href="#deviceengagement-tramite-qr-code" title="Link to this heading">¶</a></h2>
@@ -1067,8 +1059,8 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Richiesta della Wallet Attestation</strong></p>
-<p>La Relying Party che richiede una Wallet Attestation DEVE aggiungere un oggetto nell'array <strong>docRequest</strong> che abbia solo il campo <code class="docutils literal notranslate"><span class="pre">docType</span></code> impostato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAttestation}</span></code> (si rimanda a <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli ulteriori). La Relying Party NON DEVE includere il parametro <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> nella richiesta (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
+<p><strong>Richiesta della Wallet App Attestation</strong></p>
+<p>La Relying Party che richiede una Wallet App Attestation DEVE aggiungere un oggetto nell'array <strong>docRequest</strong> che abbia solo il campo <code class="docutils literal notranslate"><span class="pre">docType</span></code> impostato come <code class="docutils literal notranslate"><span class="pre">{Trust</span> <span class="pre">Anchor</span> <span class="pre">reverse</span> <span class="pre">domain}.{WalletAppAttestation}</span></code> (si rimanda a <a class="reference internal" href="registry.html#struttura-del-catalogo-degli-attestati-elettronici"><span class="std std-ref">Struttura del Catalogo degli Attestati Elettronici</span></a> per dettagli ulteriori). La Relying Party NON DEVE includere il parametro <code class="docutils literal notranslate"><span class="pre">nameSpaces</span></code> nella richiesta (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-010</span></a>).</p>
 <p>Questo componente DEVE essere presente solo se <code class="docutils literal notranslate"><span class="pre">ReaderAuthAllSupport</span></code> è impostato su <code class="docutils literal notranslate"><span class="pre">true</span></code> nel messaggio di DeviceEngagement, e i campi individuali <code class="docutils literal notranslate"><span class="pre">readerAuth</span></code> non vengono utilizzati (<a class="reference internal" href="test-plans-proximity-presentation.html#test-plans-proximity-presentation"><span class="std std-ref">PPR-025</span></a>).</p>
 </div>
 </section>
@@ -1155,8 +1147,8 @@ Ogni Richiesta mdoc DEVE essere conforme alla seguente struttura e DEVE includer
 </table>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p><strong>Presentazione della Wallet Attestation</strong></p>
-<p>L'Istanza del Wallet DEVE includere la Wallet Attestation se richiesta dalla Relying Party nella richiesta mdoc. L'Istanza del Wallet DOVREBBE includere tutte le divulgazioni selettive disponibili per la Wallet Attestation, DEVE tuttavia includere il campo <code class="docutils literal notranslate"><span class="pre">aal</span></code> nella risposta (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108b</span></a>). Inoltre, durante la presentazione, l'Istanza del Wallet NON DEVE richiedere il consenso dell'Utente alla divulgazione degli attributi della Wallet Attestation, i quali sono dati tecnici non trasparenti verso l'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107a</span></a>).</p>
+<p><strong>Presentazione della Wallet App Attestation</strong></p>
+<p>L'Istanza del Wallet DEVE includere la Wallet App Attestation se richiesta dalla Relying Party nella richiesta mdoc. L'Istanza del Wallet DOVREBBE includere tutte le divulgazioni selettive disponibili per la Wallet App Attestation (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_108b</span></a>). Inoltre, durante la presentazione, l'Istanza del Wallet NON DEVE richiedere il consenso dell'Utente alla divulgazione degli attributi della Wallet App Attestation, i quali sono dati tecnici non trasparenti verso l'Utente (<a class="reference internal" href="test-plans-wallet-provider.html#wallet-credential-presentation-testcases"><span class="std std-ref">WP_107a</span></a>).</p>
 </div>
 </section>
 <section id="session-termination">
