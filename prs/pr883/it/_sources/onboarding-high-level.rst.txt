@@ -307,21 +307,9 @@ L'integrazione tecnica si concentra sullo sviluppo di flussi di autenticazione c
 
 L'autorizzazione del servizio da parte dell'Organismo di Supervisione DEVE coinvolgere una valutazione basata su politiche che considera il tipo di organizzazione (privata vs pubblica amministrazione), la classificazione del settore aziendale e i requisiti di servizio legittimi. Il processo di autorizzazione concede ambiti operativi specifici che definiscono quali domini di Credenziali e scopi la Relying Party può richiedere. Dopo l'approvazione, la Relying Party è registrata nel Registro di Federazione con profili di autorizzazione chiaramente definiti per l'accettazione degli Attestati Elettronici e degli Attributi dell'Utente.
 
-Journey dell'Esperienza dell'Utente Finale
---------------------------------------------
+Journey dell'Esperienza Utente
+-------------------------------
 
-.. figure:: ./images/svg/onboarding-journey-maps/ux-onboarding-journey.svg
-    :width: 100%
-    :alt: Journey dell'esperienza dell'utente finale
-    :name: user-experience-journey
+Quando tutti i processi di onboarding delle entità sono completati con successo, gli Utenti possono scoprire e installare Istanze del Wallet certificate, ottenere gli Attestati Elettronici disponibili e presentare i loro Attestati elettronici a Fornitori di Servizi registrati (vedi :ref:`functionalities:Panoramica delle Funzionalità`).
 
-    Journey completo dell'utente dall'installazione del wallet all'accesso al servizio
-
-Quando tutti i processi di onboarding delle entità sono completati con successo, gli Utenti possono scoprire e installare Istanze del Wallet certificate e la nuova Credenziale disponibile.
-
-La discovery delle Credenziali avviene attraverso due flussi principali:
-
-    - **Navigazione del Catalogo delle Credenziali**: Gli utenti possono esplorare i tipi di Credenziale disponibili attraverso un Catalogo delle Credenziali.
-    - **Offerte di Credenziale**: Offerta di Credenziale diretta dalle Fonti Autentiche o dai Credential Issuer per Credenziali specifiche.
-
-La fase di accesso al servizio dimostra il valore dell'ecosistema completo, dove gli utenti possono presentare i loro Attestati Elettronici ai servizi delle Relying Party registrate per l'accesso autenticato. Questa integrazione senza soluzione di continuità dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.
+Questa modalità di integrazione dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.
