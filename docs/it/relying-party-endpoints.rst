@@ -12,7 +12,7 @@ La Relying Party DEVE esporre una serie completa di endpoint per supportare l'ec
 
 
 Endpoint per Flussi Remoti della Relying Party
-""""""""""""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: relying-party-remote-flow-endpoints.rst
 
