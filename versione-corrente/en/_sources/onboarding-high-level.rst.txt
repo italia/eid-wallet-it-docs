@@ -309,24 +309,9 @@ Technical integration focuses on developing authentication flows that can verify
 Service authorization by the Supervisory Body MUST involve policy-based evaluation that considers organizational type (private vs public administration), business sector classification, and legitimate service requirements. The authorization process grants specific operational scopes that define which Credential domains and purposes the Relying Party can request. Following approval, the Relying Party is registered in the Federation Registry with clearly defined authorization boundaries for Digital Credentials and User's attributes acceptance.
 
 
-End User Experience Journey
+User Experience Journey
 -------------------------------
 
-.. figure:: ./images/svg/onboarding-journey-maps/ux-onboarding-journey.svg
-    :width: 100%
-    :alt: End user experience journey
-    :name: user-experience-journey
+When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances, obtain available Digital Credentials and present their Digital Credentials to registered Relying Parties (see :ref:`functionalities:Functionalities Overview`). 
 
-    Complete user journey from wallet installation to service access
-
-When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances and the new available Credential. 
-
-Credential discovery happens through two main pathways:
-
-    - **Credential Catalog browsing**: Users can explore available Credential types through a Credential Catalog.
-    - **Credential Offers**: Direct Credential Offer from Authentic Sources or Credential Issuers for specific Credentials.
-
-The service access phase demonstrates the value of the complete ecosystem, where users can present their Digital Credentials to registered Relying Party services for authenticated access. This seamless integration depends on all relevant entities having completed their respective onboarding journeys.
-
-
-
+This seamless integration depends on all relevant entities having completed their respective onboarding journeys.
