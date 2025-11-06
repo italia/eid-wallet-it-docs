@@ -64,40 +64,39 @@ Il Fornitore di Wallet DEVE permettere all'Utente in ogni momento di rimuovere i
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`.
 
-Di seguito un esempio di flusso di Attivazione
 
 .. only:: format_html
 
   .. figure:: ./images/svg/A4-Flusso-Attivazione-01.svg
-    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
     :width: 100%
 
-    Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
 
 .. only:: format_latex
 
   .. figure:: ./images/pdf/A4-Flusso-Attivazione-01.pdf
-    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
     :width: 100%
 
-    Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 01
 
 
 .. only:: format_html
 
   .. figure:: ./images/svg/A4-Flusso-Attivazione-02.svg
-    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
     :width: 100%
 
-    Esperienza Utente nell'Attivazione di un'Istanza del Wallet 
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
 
 .. only:: format_latex
 
   .. figure:: ./images/pdf/A4-Flusso-Attivazione-02.pdf
-    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+    :alt: Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
     :width: 100%
 
-    Esperienza Utente nell'Attivazione di un'Istanza del Wallet  
+    Esempio di Esperienza Utente nell'Attivazione di un'Istanza del Wallet 02
 
 
 
@@ -171,6 +170,41 @@ Per approfondimenti si rimanda alla sezione :ref:`registry:Catalogo degli Attest
 
 Il Fornitore di Wallet DEVE permettere all'Utente di rimuovere un Attestato Elettronico di Attributi dalla sua Istanza del Wallet in ogni momento. In caso di assenza del dispositivo su cui è stata attivata l'Istanza del Wallet, il Fornitore di Wallet DEVE permettere all'Utente di disattivare l'intera Istanza del Wallet tramite un Touchpoint dedicato. Inoltre, i Fornitori di Attestati Elettronici di Attributi DOVREBBERO permettere all'Utente la revoca degli Attestati Elettronici ottenuti, tramite specifici Touchpoint. Per approfondimenti si rimanda alle sezioni :ref:`functionalities:Disattivazione dell'Istanza del Wallet` e :ref:`functionalities:Gestione degli Attestati Elettronici`. 
 
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/A4-Flusso-Ottenimento-01.svg
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi 01
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi 01
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-01.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 01
+
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/A4-Flusso-Ottenimento-02.svg
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-02.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento di un Attestato Elettronico di Attributi da Catalogo - 02
+
+
 In caso di problemi di comunicazione tra i sistemi del Fornitore di Attestati Elettronici di Attributi e della Fonte Autentica o in presenza di processi amministrativi o tecnici che non consentono di fornire immediatamente l'Attestato Elettronico di Attributi, gli attori coinvolti POSSONO gestire il flusso di ottenimento in modalità differita. In questo caso, il Fornitore di Wallet DEVE garantire che: 
 
 - l'Utente, giunto all'ultimo step del processo, visualizzi un messaggio che lo invita ad attendere il momento in cui l'Attestato Elettronico di Attributi potrà essere rilasciato; 
@@ -179,6 +213,24 @@ In caso di problemi di comunicazione tra i sistemi del Fornitore di Attestati El
 In caso di dati errati all'interno di un Attestato Elettronico di Attributi già ottenuto o in fase di ottenimento, il Fornitore di Wallet DOVREBBE garantire all'Utente un'adeguata assistenza attraverso la propria Istanza del Wallet. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Assistenza Utente`. 
 
 In caso di errori nell'utilizzo della Istanza del Wallet, il Fornitore di Wallet DEVE garantire all'Utente la visualizzazione di messaggi coerenti che lo informino e guidino alla loro risoluzione. Per approfondimenti si rimanda alla sezione :ref:`functionalities:Gestione degli errori`. 
+
+
+.. only:: format_html
+
+  .. figure:: ./images/svg/A4-Flusso-Ottenimento-03.svg
+    :alt: Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributti da Catalogo 
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo 
+
+.. only:: format_latex
+
+  .. figure:: ./images/pdf/A4-Flusso-Ottenimento-03.pdf
+    :alt: Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo 
+    :width: 100%
+
+    Esempio di Esperienza Utente nell'Ottenimento differito di un Attestato Elettronico di Attributi da Catalogo 
+
 
 Ottenimento dal Touchpoint della Fonte Autentica
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
