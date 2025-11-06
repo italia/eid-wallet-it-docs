@@ -138,11 +138,11 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Il valore DEVE essere una stringa "integrity metadata" come definito nella Sezione 3 di [`W3C-SRI`_]. *SHA-256*, *SHA-384* e *SHA-512* DEVONO essere supportati come funzioni crittografiche di hash. *MD5* e *SHA-1* NON DEVONO essere utilizzati. Questo claim DEVE essere verificato in base a quanto indicato nella la Sezione 3.3.5 di [`W3C-SRI`_].
       - Sezione 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - [SD]. CONDIZIONALE. OBBLIGATORIO se il tipo di Attestato Elettronico è `pid`, altrimenti è OPZIONALE. Oggetto contenente informazioni sull'autenticazione dell'Utente e sulla verifica dei dati dell'Utente. Se presente DEVE includere il seguente parametri:
+      - [SD]. CONDIZIONALE. OBBLIGATORIO se il tipo di Attestato Elettronico è `pid`, altrimenti è OPZIONALE. Oggetto contenente informazioni sull'autenticazione dell'Utente e sulla verifica dei dati dell'Utente. Se presente contiene i seguenti parametri:
 
-          * ``trust_framework``: Stringa che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere valorizzato con uno dei valori descritti nel `trust_frameworks_supported` fornito nei Metadata del Fornitore di Attestati Elettronici.
-          * ``assurance_level``: Stringa che identifica il Livello di Garanzia dell'identità garantito durante il processo di autenticazione dell'Utente.
-          * ``evidence``: Ogni voce dell'array DEVE contenere i seguenti parametri:
+          * ``trust_framework``: OBBLIGATORIO se il tipo di Attestato Elettronico è `pid`, altrimenti è OPZIONALE. Stringa che identifica il trust framework utilizzato per l'autenticazione dell'Utente. DEVE essere valorizzato con uno dei valori descritti nel `trust_frameworks_supported` fornito nei Metadata del Fornitore di Attestati Elettronici.
+          * ``assurance_level``: OBBLIGATORIO se il tipo di Attestato Elettronico è `pid`, altrimenti è OPZIONALE. Stringa che identifica il Livello di Garanzia dell'identità garantito durante il processo di autenticazione dell'Utente.
+          * ``evidence``: OBBLIGATORIO. Ogni voce dell'array DEVE contenere i seguenti parametri:
 
             - ``type``: Rappresenta il tipo di evidenza. DEVE essere valorizzato con ``vouch``.
             - ``time``: Timestamp UNIX con l'orario dell'autenticazione o della verifica.

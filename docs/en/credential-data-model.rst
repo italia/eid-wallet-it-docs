@@ -137,11 +137,11 @@ The JWT payload contains the following claims. Some of these claims can be discl
       - [NSD]. REQUIRED. The value MUST be an "integrity metadata" string as defined in Section 3 of [`W3C-SRI`_]. *SHA-256*, *SHA-384* and *SHA-512* MUST be supported as cryptographic hash functions. *MD5* and *SHA-1* MUST NOT be used. This claim MUST be verified according to Section 3.3.5 of [`W3C-SRI`_].
       - Section 6.1 `SD-JWT-VC`_, [`W3C-SRI`_]
     * - **verification**
-      - [SD]. CONDITIONAL. REQUIRED if Credential type is set to `pid`, otherwise is OPTIONAL. Object containing User authentication and User data verification information. If present MUST include the following sub-value:
+      - [SD]. CONDITIONAL. REQUIRED if Credential type is set to `pid`, otherwise is OPTIONAL. Object containing User authentication and User data verification information. If present the following sub-values are included:
 
-          * ``trust_framework``: String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
-          * ``assurance_level``: String identifying the level of identity assurance guaranteed during the User authentication process.
-          * ``evidence``: Each entry of the array MUST contain the following members:
+          * ``trust_framework``: REQUIRED if Credential type is set to `pid`, otherwise is OPTIONAL. String identifying the trust framework used for User authentication. It MUST be set using one of the values described in the `trust_frameworks_supported` map provided within the Credential Issuer Metadata.
+          * ``assurance_level``: REQUIRED if Credential type is set to `pid`, otherwise is OPTIONAL. String identifying the level of identity assurance guaranteed during the User authentication process.
+          * ``evidence``: REQUIRED. Each entry of the array MUST contain the following members:
 
             - ``type``: It represents evidence type. It MUST be set to ``vouch``.
             - ``time``: UNIX Timestamps with the time of the authentication or verification.
