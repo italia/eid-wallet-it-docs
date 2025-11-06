@@ -92,33 +92,28 @@
          ]
       }
    ],
-   "wallet_attestation": {
+   "wallet_app_attestation": {
       "version": "1.0",
-      "credential_type": "wallet_attestation",
-      "vct": "urn:eudi:wallet_attestation:it:1",
-      "aal_values_supported": [
-            "https://trust-list.eu/aal/low",
-            "https://trust-list.eu/aal/medium",
-            "https://trust-list.eu/aal/high"
-         ],
+      "credential_type": "wallet_app_attestation",
+      "vct": "urn:eudi:wallet_app_attestation:it:1",
       "formats": [
          {
             "format": "dc+sd-jwt",
             "configuration_id": "dc_sd_jwt_wa",
-            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_attestation",
+            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/sd-jwt/wallet_app_attestation",
             "schema_uri#integrity": "sha256-Lxn6dNpkPdoeoRgO5+n0jNhJZ8MbKfXfP195+dNR0dc="
          },
          {
             "format": "mso_mdoc",
             "configuration_id": "mso_mdoc_wa",
-            "docType": "it.wallet.trust-registry.wallet_attestation",
-            "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/wallet_attestation",
+            "docType": "it.wallet.trust-registry.wallet_app_attestation",
+            "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/wallet_app_attestation",
             "schema_uri#integrity": "sha256-GcqnMfzyCw+0UTz9EI6JO0oUTD0WS3p+hQ2E7VfjTLA="
          },
          {
             "format": "oauth-client-attestation+jwt",
             "configuration_id": "jwt_wa",
-            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/wallet_attestation",
+            "schema_uri": "https://trust-registry.it-wallet.example.it/.well-known/schemas/jwt/wallet_app_attestation",
             "schema_uri#integrity": "sha256-2s9AJsZwjuAZ4D4EAl3qDJGvy92sThQkX6W9zDF2Sgg="
          }
       ]

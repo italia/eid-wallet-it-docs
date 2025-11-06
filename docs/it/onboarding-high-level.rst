@@ -74,7 +74,7 @@ Processo di Onboarding della Federazione
 L'onboarding della federazione stabilisce le relazioni di trust crittografiche e i framework di conformità che consentono alle entità operative di partecipare ad attività sicure del ciclo di vita delle Credenziali.
 Le entità operative DEVONO completare l'onboarding che include la verifica dell'eleggibilità amministrativa, la validazione dell'infrastruttura tecnica e l'istituzione del trust crittografico. Il processo di onboarding crea relazioni di trust crittografiche attraverso l'emissione di certificati, la configurazione della catena di trust e l'attestazione di conformità. Questi meccanismi abilitano interazioni sicure tra i partecipanti della federazione e forniscono la base per la validazione del trust distribuito attraverso l'ecosistema.
 
-Le entità onboardate con successo sono incluse nel Registro di Federazione, che mantiene l'elenco autorevole dei partecipanti della federazione fidati. Questo registro abilita la validazione del trust operativo durante le attività del ciclo di vita delle Credenziali.
+Le entità registrate con successo sono incluse nel Registro di Federazione, che mantiene l'elenco autorevole dei partecipanti della federazione fidati. Questo registro abilita la validazione del trust operativo durante le attività del ciclo di vita delle Credenziali.
 
 Le Relying Party DEVONO verificare gli Attestati Elettronici con garanzia crittografica, i Fornitori di Wallet DEVONO fornire servizi di portafoglio digitale fidati ai cittadini, e i Credential Issuer DEVONO emettere Attestati Elettronici utilizzando fonti di dati autorevoli. Tutte le operazioni DEVONO avvenire all'interno di relazioni di trust stabilite che assicurano sicurezza e auditabilità.
 
@@ -260,11 +260,11 @@ Journey dell'Operatore del Fornitore di Wallet
 
 ..     Processo di certificazione del Fornitore di Wallet e validazione della sicurezza
 
-Gli operatori del Fornitore di Wallet seguono un Journey di onboarding indipendente che si concentra sulla certificazione dell'applicazione e sulla validazione della sicurezza. Il processo evidenzia lo sviluppo e la certificazione di applicazioni wallet che possono memorizzare e gestire in modo sicuro gli Attestati Elettronici per i cittadini.
+Gli operatori del Fornitore di Wallet seguono un Journey di onboarding indipendente che si concentra sulla certificazione dell'applicazione e sulla validazione della sicurezza. Il processo evidenzia lo sviluppo e la certificazione di applicazioni Wallet che possono memorizzare e gestire in modo sicuro gli Attestati Elettronici per i cittadini.
 
-Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del wallet. Questi controlli consentono al wallet di ottenere un Attestato del Wallet, che serve come prova dello stato di sicurezza e conformità del wallet durante le operazioni delle Credenziali.
+Un requisito tecnico chiave coinvolge l'implementazione di meccanismi di controllo dell'integrità e autenticità del Wallet. Questi controlli consentono al Wallet di ottenere un Wallet App Attestation, che serve come prova dello stato di sicurezza e conformità del Wallet durante le operazioni delle Credenziali.
 
-Il processo di certificazione include la valutazione della sicurezza, coprendo l'architettura del wallet, i meccanismi di protezione dei dati e le caratteristiche di privacy dell'utente. I fornitori di wallet certificati con successo sono registrati nel Registro di Federazione e possono distribuire le loro applicazioni attraverso gli app store.
+Il processo di certificazione include la valutazione della sicurezza, coprendo l'architettura del Wallet, i meccanismi di protezione dei dati e le caratteristiche di privacy dell'utente. I fornitori di Wallet certificati con successo sono registrati nel Registro di Federazione e possono distribuire le loro applicazioni attraverso gli app store.
 
 Journey dell'Operatore della Relying Party
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -307,21 +307,9 @@ L'integrazione tecnica si concentra sullo sviluppo di flussi di autenticazione c
 
 L'autorizzazione del servizio da parte dell'Organismo di Supervisione DEVE coinvolgere una valutazione basata su politiche che considera il tipo di organizzazione (privata vs pubblica amministrazione), la classificazione del settore aziendale e i requisiti di servizio legittimi. Il processo di autorizzazione concede ambiti operativi specifici che definiscono quali domini di Credenziali e scopi la Relying Party può richiedere. Dopo l'approvazione, la Relying Party è registrata nel Registro di Federazione con profili di autorizzazione chiaramente definiti per l'accettazione degli Attestati Elettronici e degli Attributi dell'Utente.
 
-Journey dell'Esperienza dell'Utente Finale
---------------------------------------------
+Journey dell'Esperienza Utente
+-------------------------------
 
-.. figure:: ./images/svg/onboarding-journey-maps/ux-onboarding-journey.svg
-    :width: 100%
-    :alt: Journey dell'esperienza dell'utente finale
-    :name: user-experience-journey
+Quando tutti i processi di onboarding delle entità sono completati con successo, gli Utenti possono scoprire e installare Istanze del Wallet certificate, ottenere gli Attestati Elettronici disponibili e presentare i loro Attestati elettronici a Fornitori di Servizi registrati (vedi :ref:`functionalities:Panoramica delle Funzionalità`).
 
-    Journey completo dell'utente dall'installazione del wallet all'accesso al servizio
-
-Quando tutti i processi di onboarding delle entità sono completati con successo, gli Utenti possono scoprire e installare Istanze del Wallet certificate e la nuova Credenziale disponibile.
-
-La discovery delle Credenziali avviene attraverso due flussi principali:
-
-    - **Navigazione del Catalogo delle Credenziali**: Gli utenti possono esplorare i tipi di Credenziale disponibili attraverso un Catalogo delle Credenziali.
-    - **Offerte di Credenziale**: Offerta di Credenziale diretta dalle Fonti Autentiche o dai Credential Issuer per Credenziali specifiche.
-
-La fase di accesso al servizio dimostra il valore dell'ecosistema completo, dove gli utenti possono presentare i loro Attestati Elettronici ai servizi delle Relying Party registrate per l'accesso autenticato. Questa integrazione senza soluzione di continuità dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.
+Questa modalità di integrazione dipende dal fatto che tutte le entità rilevanti abbiano completato i rispettivi Journey di onboarding.

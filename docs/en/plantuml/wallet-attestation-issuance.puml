@@ -1,57 +1,83 @@
-@startuml Wallet Attestation Issuance
+@startuml Wallet App and Wallet Unit Attestations Issuance
 autonumber
 hide footbox
-'participant
 
+'Participants
 actor "User" as user
 participant "Wallet Instance" as app 
+participant "Key Attestation APIs" as kats #springgreen
 participant "Device Integrity Service APIs" as aats #springgreen
 participant "Wallet Provider backend" as bck
 
-
-user->app: Request a new operation that\nrequires a Wallet Attestation
+user->app: Request a new operation that\nrequires WAA and WUA 
 activate app
 
-app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag"") is available
+app->app: Check if Cryptographic Hardware Key \nTag (""hardware_key_tag""), Key Attestation APIs, and Device Integrity APIs are available
 
-
-app->app: Generates an ephemeral key pair (""ephemeral_key_pub"", ""ephemeral_key_priv"")
+app->app: Generates a credential key pair to be attested in Wallet Unit Attestation (""key_pub"", ""key_priv"")
+app->app: Generates an ephemeral key pair for key bound Wallet App Attestation (""ephemeral_key_pub"", ""ephemeral_key_priv"")
 
 rnote over app,bck #LIGHTGREEN
 Check Wallet Provider is part of the Federation and obtain its metadata
 endrnote
 
-
 app->bck: Request ""nonce""
 activate bck
 
-bck->bck: Generate fresh ""nonce""
+bck->bck: Generate ""nonce""
 
 bck-->app: ""nonce""
 deactivate bck
 
 
-app->app: Generate ""client_data_hash"" as SHA256(""nonce"", ""ephemeral_key_pub"")
+app->app: Generate ""client_data_hash_wua"" as SHA256(""nonce"", ""key_pub"") and ""client_data_hash_waa"" as SHA256(""nonce"", ""ephemeral_key_pub"")
 
-app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign((""client_data_hash"", ""hardware_key_tag""), ""hardware_key_priv"")
+app->app: Generate Cryptographic Hardware Key PoP\n""hardware_signature"" = sign((""client_data_hash_wua"", ""client_data_hash_waa"", ""hardware_key_tag""), ""hardware_key_priv"")
 
-app->aats: ""client_data_hash""
-aats-->app: ""integrity_assertion""
+app->aats: ""client_data_hash"" for WAA
+aats->aats: Generate ""integrity_assertion""\nbound to nonce 
+aats-->app: ""integrity_assertion"" for WAA
 
-app->app: Generate Wallet Attestation Request with ""integrity_assertion"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""ephemeral_key_pub"" signed with ephemeral ""ephemeral_key_priv""
-app->bck: Send Wallet Attestation Request
+alt if Android - Key Attestation flow for credential key
+
+activate kats
+
+app->kats: ""client_data_hash"" for WUA
+
+kats->kats: Generate ""key_attestation""\nbound to nonce
+
+kats-->app: ""key_attestation"" 
+app->app : Generate ""attested_key""= sign(""key_attestation"",""key_priv"")
+
+deactivate kats
+
+else if iOS - Key attestation flow for credential key
+
+app->aats: ""client_data_hash"" for WUA
+aats->aats: Generate ""integrity_assertion""\nbound to nonce for for WUA
+aats-->app: ""integrity_assertion"" for WUA 
+app->app : Generate ""attested_key""= sign(""integrity_assertion"",""key_priv"")
+end
+
+
+app->app: Generate WAA-WUA Request:""assertion""= sign((""integrity_assertion"" for WAA, ""attested_key"", ""hardware_signature"", ""nonce"",\n""hardware_key_tag"", ""ephemeral_key_pub""),""ephemeral_key_priv"")
+app->bck: Send ""assertion""
 activate bck
-rnote over bck,bck #LIGHTGREEN
+Note over bck, bck #LIGHTGREEN
 Check if Wallet Instance is initialized and valid
-using ""hardware_key_tag""
-endrnote
+using "hardware_key_tag"
+End note
+
 bck->bck: Validate ""nonce""
+bck->bck: Validate ""attested_key"" and ""key_pub"" PoP
 bck->bck: Validate ""integrity_assertion""
 bck->bck: Validate ""hardware_signature""
 bck->bck: Validate ""ephemeral_key_pub"" PoP
-bck->bck: Create Wallet Attestation
-bck-->app: Wallet Attestation Response
-deactivate bck
+bck->bck: Create WAA and WUA
 
+
+bck-->app: WAA-WUA Response
+
+deactivate bck
 deactivate app
 @enduml

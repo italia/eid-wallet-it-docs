@@ -574,8 +574,8 @@ The JWS payload contains the following parameters:
      - REQUIRED. Timestamp of the last modification to the Digital Credential Catalog.
    * - **credentials**
      - REQUIRED. Array containing Digital Credential definitions.
-   * - **wallet_attestation**
-     - REQUIRED. A JSON Object containing definitions for Wallet Attestations, including their supported formats, associated claims, and Levels of Assurance (LoA). This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet Attestation formats supported within the ecosystem.
+   * - **wallet_app_attestation**
+     - REQUIRED. A JSON Object containing definitions for Wallet App Attestations, including their supported formats, and associated claims. This Object is used by other entities, such as Issuers and Relying Parties, to retrieve information about the Wallet App Attestation formats supported within the ecosystem.
 
 Each element of the ``credentials`` array contains at least the following information:
 
@@ -646,7 +646,7 @@ Each element of the ``credentials`` array contains at least the following inform
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
 
 
-The ``wallet_attestation`` Object contains at least the following information:
+The ``wallet_app_attestation`` Object contains at least the following information:
 
 .. list-table:: First-level Fields of Each Credential Entry
   :class: longtable
@@ -656,17 +656,15 @@ The ``wallet_attestation`` Object contains at least the following information:
   * - Field Name
     - Description
   * - **credential_type**
-    - REQUIRED. Unique identifier of the Wallet Attestation. It MUST be set to ``wallet_attestation``.
+    - REQUIRED. Unique identifier of the Wallet App Attestation. It MUST be set to ``wallet_app_attestation``.
   * - **vct**
     - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
-  * - **aal_values_supported**
-    - REQUIRED. Array of Strings each of which is a Level of Assurance (LoA) supported by the Wallet Attestation. It MUST include at least the levels ``low``, ``medium`` and ``high``.
   * - **formats**
-    - REQUIRED. Array of supported formats for the Wallet Attestation, including:
+    - REQUIRED. Array of supported formats for the Wallet App Attestation, including:
 
       * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
-      * **configuration_id**: Configuration identifier of the Wallet Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet Attestation format.
-      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_attestation``).
+      * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
+      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
       * **schema_uri**: URI pointing to the format specification document.
       * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
 

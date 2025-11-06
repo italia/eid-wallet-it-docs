@@ -181,21 +181,13 @@
         }
       },
       {
-        "docType": "it.wallet.trust-registry.wallet_attestation",
+        "docType": "it.wallet.trust-registry.wallet_app_attestation",
         "issuerSigned": {
           "nameSpaces": {
-            "it.wallet.trust-registry.wallet_attestation": [
+            "it.wallet.trust-registry.wallet_app_attestation": [
               24(<<
                 {
                   "digestID": 0,
-                  "elementIdentifier": "aal",
-                  "elementValue": "https://wallet-provider.example.org/LoA/basic",
-                  "random": h'bbc6b4df4282424ed5753b4218863923ab3256cb831822601d95a5806e2bd114'
-                }
-              >>),
-              24(<<
-                {
-                  "digestID": 1,
                   "elementIdentifier": "sub",
                   "elementValue": "ec#1",
                   "random": h'0117942b3ecdad65f226a668466fa175b72563a392598ad18fa6d359ea9b1b2d'
@@ -203,7 +195,7 @@
               >>),
               24(<<
                 {
-                  "digestID": 2,
+                  "digestID": 1,
                   "elementIdentifier": "wallet_link",
                   "elementValue": "https://wallet-provider.example.org",
                   "random": h'dc9d032a64866e33d06f48a882989b5747da3638f0d216a2275191ed3395fdec'
@@ -211,7 +203,7 @@
               >>),
               24(<<
                 {
-                  "digestID": 3,
+                  "digestID": 2,
                   "elementIdentifier": "wallet_name",
                   "elementValue": "Wallet name",
                   "random": h'd665c50c4364c7cbf4ab9461b9bbb228f37ad278b9fb61283550951624d4d9ae'
@@ -246,7 +238,7 @@
                       -3: h'6b972cd32c19cd5e8c19e051f1e207cabb3c2a802abf40ee5baaaa4a464508c3'
                     }
                   },
-                  "docType": "org.iso.18013.5.1.IT.wallet_attestation",
+                  "docType": "org.iso.18013.5.1.IT.wallet_app_attestation",
                   "validityInfo": {
                     "signed": 0("2025-06-27T07:40:21Z"),
                     "validFrom": 0("2025-06-27T07:40:21Z"),

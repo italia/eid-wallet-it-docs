@@ -58,10 +58,10 @@ The HTTP POST method MUST use the parameters in the message body encoded in ``ap
       - **Description**
       - **Reference**
     * - **client_id**
-      - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet Attestation.
+      - MUST be set to the thumbprint of the ``jwk`` value in the ``cnf`` parameter inside the Wallet App Attestation.
       - :rfc:`6749`
     * - **request**
-      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet Attestation MUST be used for signing the Request Object.
+      - It MUST be a signed JWT. The private key corresponding to the public one in the ``cnf`` parameter inside the Wallet App Attestation MUST be used for signing the Request Object.
       - `OpenID Connect Core. Section 6 <https://openid.net/specs/openid-connect-core-1_0.html#JWTRequests>`_
 
 The Pushed Authorization Endpoint is protected with OAuth 2.0 Attestation-based Client Authentication [`OAUTH-ATTESTATION-CLIENT-AUTH`_], therefore
@@ -74,10 +74,10 @@ the request to the Credential Issuer authorization endpoint MUST use the followi
     :header-rows: 1
 
     * - **OAuth-Client-Attestation**
-      - It MUST be set to a value containing the Wallet Attestation JWT.
+      - It MUST be set to a value containing the Wallet App Attestation JWT.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
     * - **OAuth-Client-Attestation-PoP**
-      - It MUST be set to a value containing the Wallet Attestation JWT Proof of Possession.
+      - It MUST be set to a value containing the Wallet App Attestation JWT Proof of Possession.
       - `OAUTH-ATTESTATION-CLIENT-AUTH`_.
 
 
@@ -96,7 +96,7 @@ The JWT *Request Object* has the following JOSE header parameters:
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
     * - **kid**
-      - Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet Attestation as base64url-encoded JWK Thumbprint value.
+      - Unique identifier of the ``jwk`` inside the ``cnf`` claim of Wallet App Attestation as base64url-encoded JWK Thumbprint value.
       - :rfc:`7638#section_3`.
 
 .. note::
@@ -130,8 +130,8 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
       - MUST be set to ``code``.
       - :rfc:`6749`
     * - **response_mode**
-      - It MUST be a string indicating the "*response_mode*", as specified in [`OAUTH-MULT-RESP-TYPE`_]. It MUST be one of the supported values (*response_modes_supported*) provided in the metadata of the Credential Issuer. It informs the Credential Issuer of the mechanism to be used for returning parameters from the Authorization Endpoint. In case of *HTTP 302 Redirect Response* the value MUST be *query*. In this mode, Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance. In case of *HTTP POST Response* the value MUST be *form_post.jwt* according to [`JARM`_]. In this mode, Authorization Response parameters are specified into a JWT encoded as HTML form value that is auto-submitted in the user-agent, and thus is transmitted via the HTTP POST method to the Wallet Instance, with the result parameters being encoded in the body using the *application/x-www-form-urlencoded* format. The action attribute of the form MUST be the Redirection URI of the Wallet Instance. The method of the form attribute MUST be POST.
-      - See [`OAUTH-MULT-RESP-TYPE`_] and [`JARM`_].
+      - It MUST be a string indicating the "*response_mode*", as specified in [`OAUTH-MULT-RESP-TYPE`_]. The supported value MUST be *query* and it MUST be also the supported value (*response_modes_supported*) provided in the metadata of the Credential Issuer. It informs the Credential Issuer of the mechanism to be used for returning parameters from the Authorization Endpoint. The Authorization Response parameters are encoded in the query string added to the ``redirect_uri`` when redirecting back to the Wallet Instance.
+      - See [`OAUTH-MULT-RESP-TYPE`_].
     * - **client_id**
       - It MUST be set as in the :ref:`Table of the HTTP parameters <table_http_request_claim>`.
       - See :ref:`Table of the HTTP parameters <table_http_request_claim>`.
@@ -173,7 +173,7 @@ The ``request`` JWT payload contained in the HTTP POST message is given with the
 .. note::
   If the request cointains scope value and the *authorization_details* parameter the Credential Issuer MUST interpret these individually. However, if both request the same Credential type, then the Credential Issuer MUST follow the request as given by the authorization details object.
 
-The JOSE header of the Wallet Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
+The JOSE header of the Wallet App Attestation proof of possession, contained in the HTTP Request headers, MUST contain:
 
 .. _table_jwt_pop:
 .. list-table::
@@ -188,7 +188,7 @@ The JOSE header of the Wallet Attestation proof of possession, contained in the 
       - A digital signature algorithm identifier such as per IANA "JSON Web Signature and Encryption Algorithms" registry. It MUST be one of the supported algorithms listed in the Section :ref:`algorithms:Cryptographic Algorithms` and MUST NOT be set to ``none`` or any symmetric algorithm (MAC) identifier.
       - :rfc:`7516#section-4.1.1`.
 
-The body of the Wallet Attestation proof of possession JWT, contained in the HTTP Request headers, MUST contain:
+The body of the Wallet App Attestation proof of possession JWT, contained in the HTTP Request headers, MUST contain:
 
 .. list-table::
     :class: longtable
@@ -622,10 +622,10 @@ The **DPoP JWT** contains the following JOSE header parameters and claims.
     - REQUIRED. It MUST be an HTTPS URL that uniquely identifies the Credential Issuer. The Wallet Instance MUST verify that this value matches the Credential Issuer where it has requested the credential.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
-    - REQUIRED. It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the SD-JWT-VC Credential.
+    - REQUIRED. It identifies the subject of the JWT.
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **client_id**
-    - REQUIRED. The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet Attestation (``cnf.jwk``).
+    - REQUIRED. The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to kid of the public key of the Wallet Instance specified into the Wallet App Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **aud**
     - REQUIRED. It MUST be set to the identifier of the Credential Issuer.
@@ -684,7 +684,7 @@ The **DPoP JWT** MUST contain the following JOSE header parameters and claims.
     - It identifies the subject of the JWT. It MUST be set to the value of the ``sub`` field in the SD-JWT-VC Credential.
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **client_id**
-    - The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to `kid` value identifying the public key used in the Wallet Instance, used in the Wallet Attestation (``cnf.jwk``).
+    - The identifier for the Wallet Instance that requested the Access Token; it MUST be equal to the to `kid` value identifying the public key used in the Wallet Instance, used in the Wallet App Attestation (``cnf.jwk``).
     - [:rfc:`9068`], [:rfc:`7519`] and Section 8 of [`OIDC`_].
   * - **aud**
     - It MUST be set to the identifier of the Credential Issuer.
@@ -769,18 +769,9 @@ The Credential endpoint MUST accept and validate the *DPoP proof* sent in the DP
   * - **credential_configuration_id**
     - REQUIRED if ``credential_identifiers`` parameter is absent in the Token Response. It MUST NOT be used otherwise. String specifying a unique identifier of the Credential being described in the `credential_configurations_supported` map in the Credential Issuer Metadata. For example, in the case of the PID in SD-JWT VC format, it can be set to ``dc_sd_jwt_pid``.
     - Section 8.2 of [`OpenID4VCI`_].
-  * - **proof**
-    - REQUIRED. JSON object containing proof of possession of the key material the issued Credential shall be bound to. The proof object MUST contain the following mandatory claims:
-
-      - **proof_type**: JSON string denoting the proof type. It MUST be `jwt`.
-      - **jwt**: the JWT used as proof of possession.
-    - [`OpenID4VCI`_].
   * - **proofs**
-    - REQUIRED when the ``proof`` parameter is absent, otherwise MUST NOT be used. Object providing one or more proof of possessions of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named `jwt` containing an array of JWT, where each element within the array is used as proof of possession.
+    - REQUIRED. Object providing one or more proofs of possession of the cryptographic key material to which the issued Credential instances will be bound to. The ``proofs`` object MUST contain an array parameter named `jwt` containing an array of JWT, where each element within the array is used as proof of possession.
     - [`OpenID4VCI`_].
-  * - **transaction_id**
-    - REQUIRED only in case of deferred flow. String identifying a deferred issuance transaction. It MUST NOT be present in immediate flow
-    - Section 9.1 of [`OpenID4VCI`_].
 
 
 The JWT proof type MUST contain the following parameters for the JOSE header and the JWT body:
@@ -802,6 +793,9 @@ The JWT proof type MUST contain the following parameters for the JOSE header and
   * - **jwk**
     - Representing the public key chosen by the Wallet Instance, in JSON Web Key (JWK) [:rfc:`7517`] format that the Digital Credential shall be bound to, as defined in Section 4.1.3 of [:rfc:`7515`].
     - [`OpenID4VCI`_], [:rfc:`7515`], [:rfc:`7517`].
+  * - **key_attestation**
+    - Representing the Wallet Unit Attestation.
+    - [`OpenID4VCI`_].
 
 .. list-table::
   :class: longtable
@@ -842,13 +836,13 @@ The Credential Response contains the following parameters:
     - **Description**
     - **Reference**
   * - **credentials**
-    - REQUIRED if ``lead_time`` and ``transaction_id`` are not present, otherwise it MUST NOT be present. It is an array of one or more issued Credentials. The number of elements in the Credentials array matches the number of keys that the Wallet Instance has provided either via the ``proof`` or ``proofs`` parameter of the Credential Request. The array MUST contain JSON objects, where each object MUST have exactly one member with the key ``credential``. The value of the ``credential`` member MUST be a string containing the encoded Credential, as further described below:
+    - REQUIRED if ``interval`` and ``transaction_id`` are not present, otherwise it MUST NOT be present. It is an array of one or more issued Credentials. The number of elements in the Credentials array matches the number of keys that the Wallet Instance has provided either via the ``proofs`` parameter of the Credential Request. The array MUST contain JSON objects, where each object MUST have exactly one member with the key ``credential``. The value of the ``credential`` member MUST be a string containing the encoded Credential, as further described below:
 
           - **credential**: REQUIRED. String containing one issued Digital Credential. If the requested format identifier is ``dc+sd-jwt`` then the ``credential`` parameter MUST NOT be re-encoded. If the requested format identifier is ``mso_mdoc`` then the ``credential`` parameter MUST be a base64url-encoded representation of the CBOR-encoded IssuerSigned structure, as defined in [ISO 18013-5]. This structure SHOULD contain all Namespaces and IssuerSignedItems that are included in the AuthorizedNamespaces of the MobileSecurityObject.
     - Section 8.3, Annex A2.4 and Annex A3.4 of [`OpenID4VCI`_].
-  * - **lead_time**
-    - REQUIRED if ``credentials`` is not present, otherwise it MUST NOT be present. The amount of time (in seconds) required before making a Deferred Credential Request (:ref:`WP_065 <wallet-credential-issuance-testcases>`).
-    - This Specification.
+  * - **interval**
+    - REQUIRED if ``transaction_id`` is present, otherwise it MUST NOT be present. The amount of time (in seconds) required before making a Deferred Credential Request (:ref:`WP_065 <wallet-credential-issuance-testcases>`).
+    - Section 8.3 of [`OpenID4VCI`_].
   * - **notification_id**
     - OPTIONAL. String identifying an issued Credential that the Wallet includes in the Notification Request as defined in Section :ref:`credential-issuance-endpoint:Notification Request`. It MUST NOT be present if the ``credentials`` parameter is not present.
     - Section 8.3 of [`OpenID4VCI`_].
@@ -888,26 +882,23 @@ In the following table are listed HTTP Status Codes and related error codes that
       - ``invalid_credential_request``
       - The Credential Issuer cannot fulfill the request because of missing parameters, invalid parameters or request malformed. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
-      - ``unsupported_credential_type``
-      - The Credential Issuer cannot fulfill the request because the requested Credential type is not supported. Section 8.3.1 of [`OpenID4VCI`_].
+      - ``unknown_credential_configuration``
+      - The Credential Issuer cannot fulfill the request because the requested Credential Configuration is unknown. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
-      - ``unsupported_credential_format``
-      - The Credential Issuer cannot fulfill the request because the requested Credential Format is not supported. Section 8.3.1 of [`OpenID4VCI`_].
+      - ``unknown_credential_identifier``
+      - The Credential Issuer cannot fulfill the request because the requested Credential identifier is unknown. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_proof``
-      - The Credential Issuer cannot fulfill the request because the ``proof`` or ``proofs`` parameter in the Credential Request is invalid or absent or or the key proof(s) does not contain the ``c_nonce`` value. Section 8.3.1 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because the ``proofs`` parameter in the Credential Request is invalid or absent or the key proof(s) does not contain the ``c_nonce`` value. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_nonce``
-      - The Credential Issuer cannot fulfill the request because the ``proof`` or ``proofs`` parameter in the Credential Request uses an invalid nonce. Section 8.3.1 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because the ``proofs`` parameter in the Credential Request uses an invalid nonce. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_encryption_parameters``
       - The Credential Issuer cannot fulfill the request because the encryption parameters in the Credential Request are invalid or missing. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``credential_request_denied``
-      - The Credential Request has not been accepted by the Credential Issuer. Section 8.3.1 of [`OpenID4VCI`_].
-    * - *400 Bad Request* [REQUIRED]
-      - ``issuance_pending``
-      - Only in case of deferred flow. The Credential Issuer cannot fulfill the request because the Credential is not yet available for the issuance. Section 9.3 of [`OpenID4VCI`_].
+      - The Credential Request has not been accepted by the Credential Issuer. The Wallet SHOULD treat this error as unrecoverable, meaning if received from a Credential Issuer the Credential(s) cannot be issued. Section 8.3.1 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_transaction_id``
       - Only in case of deferred flow. The Credential Issuer cannot fulfill the request because the Credential Request contains an invalid ``transaction_id``. Section 9.3 of [`OpenID4VCI`_].
@@ -952,7 +943,7 @@ If Credential Issuers, supporting this flow, are not able to immediately issue a
 .. literalinclude:: ../../examples/credential-response-deferred.json
   :language: JSON
 
-The Wallet Instance MUST use the value given in the *lead_time* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *lead_time* time value). Credential Issuers MAY send a notification to the User through a communication channel (e.g. email address), if previously provided by the User to the Credential Issuer.
+The Wallet Instance MUST use the value given in the *interval* parameter to inform the User when the Credential becomes available (e.g. using a local notification triggered by the *interval* time value). Credential Issuers MAY send a notification to the User through a communication channel (e.g. email address), if previously provided by the User to the Credential Issuer.
 
 Deferred Request
 ................
@@ -961,7 +952,7 @@ Upon receipt of the notification (by the Wallet Instance and/or by the Credentia
 
 The Wallet Instance MUST present to the Deferred Endpoint an Access Token that is valid for the issuance of the Digital Credential previously requested at the Credential Endpoint.
 
-If the ``lead_time`` parameter value results as less than the expiration time set for the Access Token, the Wallet Instance SHOULD use the Access Token  (:ref:`WP_066b <wallet-credential-issuance-testcases>`). Otherwise, the Wallet Instance MAY obtain a new Access Token following the Refresh Token flow (see Section :ref:`credential-issuance-low-level:Refresh Token Flow` for more details as per :ref:`WP_066c <wallet-credential-issuance-testcases>`). If the Refresh Token flow fails, the Wallet Instance needs to submit a new authentication request  (:ref:`WP_067 <wallet-credential-issuance-testcases>`).
+If the ``interval`` parameter value results as less than the expiration time set for the Access Token, the Wallet Instance SHOULD use the Access Token  (:ref:`WP_066b <wallet-credential-issuance-testcases>`). Otherwise, the Wallet Instance MAY obtain a new Access Token following the Refresh Token flow (see Section :ref:`credential-issuance-low-level:Refresh Token Flow` for more details as per :ref:`WP_066c <wallet-credential-issuance-testcases>`). If the Refresh Token flow fails, the Wallet Instance needs to submit a new authentication request  (:ref:`WP_067 <wallet-credential-issuance-testcases>`).
 
 The Deferred Credential Request MUST be an HTTP POST request. It MUST be sent using the ``application/json`` media type.
 The following parameter is used in the Deferred Credential Request:
@@ -994,7 +985,13 @@ The following is a non-normative example of a Deferred Credential Request:
 Deferred Response
 .................
 
-The Deferred Credential Response MUST be sent using the `application/json`` media type. If the Digital Credential is available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response`. If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to Section 9.3 of `OpenID4VCI`_.
+The Deferred Credential Response MUST be sent using the `application/json`` media type. 
+
+If the Digital Credential(s) is(are) available, the Deferred Credential Response MUST use the ``credentials`` and ``notification_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and MUST respond with the HTTP status code 200 (see Section 15.3.3 of :rfc:`9110`]). 
+
+If the Credential Issuer still requires more time, the Deferred Credential Response MUST use the ``interval`` and ``transaction_id`` parameters as defined in Section :ref:`credential-issuance-endpoint:Credential Response` and it MUST respond with the HTTP status code 202 (see Section 15.3.3 of :rfc:`9110`]). The value of ``transaction_id`` MUST be same as the value of ``transaction_id`` in the Deferred Credential Request.
+
+If the Deferred Credential Request is invalid or the Digital Credential is not available, the Deferred Credential Error Response MUST be sent to the Wallet Instance according to :ref:`credential-issuance-endpoint:Credential Response`.
 
 Notification endpoint
 """""""""""""""""""""
@@ -1003,7 +1000,7 @@ The Notification Endpoint is used by the Wallet to notify the Credential Issuer 
 
 To uphold privacy, the ``event_description`` in the notification SHOULD NOT contain any information that could disclose User behavior or reveal the status of the personal device (e.g., storage space full).
 
-This endpoint MUST be protected using a DPoP Access Token. TLS for the confidentiality of the HTTP transport is REQUIRED according to Section 10 of [`OpenID4VCI`_].
+This endpoint MUST be protected using a DPoP Access Token. TLS for the confidentiality of the HTTP transport is REQUIRED according to Section 11 of [`OpenID4VCI`_].
 
 
 Notification Request
@@ -1021,28 +1018,29 @@ The Notification Request MUST be an HTTP POST using the *application/json* media
     - **Reference**
   * - **notification_id**
     - REQUIRED. It MUST be equal to the ``notification_id`` value returned in the Credential Response by the Credential Issuer.
-    - Section 10.1 of [`OpenID4VCI`_].
+    - Section 11.1 of [`OpenID4VCI`_].
   * - **event**
     - REQUIRED. Type of the notification event. It MUST be a case sensitive string and it MUST support the following values:
 
       - *credential_accepted*: when the Credential was successfully stored in the Wallet Instance.
       - *credential_deleted*: when the unsuccessful Credential issuance was caused by a user action.
       - *credential_failure*: in all other unsuccessful cases.
+      
 
-    - Section 10.1 of [`OpenID4VCI`_].
+    - Section 11.1 of [`OpenID4VCI`_].
   * - **event_description**
     - OPTIONAL. Human-readable ASCII [USASCII] text providing additional information, used to inform about the event that occurred. Values for the event_description parameter MUST NOT include characters outside the set *%x20-21 / %x23-5B / %x5D-7E*.
-    - Section 10.1 of [`OpenID4VCI`_].
+    - Section 11.1 of [`OpenID4VCI`_].
 
 Notification Response
 .....................
 
-The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 10.2 of [`OpenID4VCI`_].
+The Notification Response MUST be use an HTTP status code *204 (No Content)*, as recommended in Section 11.2 of [`OpenID4VCI`_].
 
-In case of errors, what is described in Section 10.3 of [`OpenID4VCI`_] MUST apply.
+In case of errors, what is described in Section 11.3 of [`OpenID4VCI`_] MUST apply.
 
 In case of the Notification Request does not contain a valid Access Token, the Notification Endpoint returns an error response such as defined in Section 3 of [:rfc:`6750`].
-If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 10.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
+If any other error occurs, the Credential Issuer MUST return an error response as defined in Section 11.3 of [`OpenID4VCI`_]. The response MUST use the content type *application/json* and MUST include the following parameters:
 
   - *error*. The error code.
   - *error_description*. Text in human-readable form providing further details to clarify the nature of the error encountered.
@@ -1071,10 +1069,10 @@ In the following table are listed HTTP Status Codes and related error codes that
       - **Description**
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_notification_id``
-      - The Credential Issuer cannot fulfill the request because of invalid ``notification_id`` parameter. Section 10.3 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because of invalid ``notification_id`` parameter. Section 11.3 of [`OpenID4VCI`_].
     * - *400 Bad Request* [REQUIRED]
       - ``invalid_notification_request``
-      - The Credential Issuer cannot fulfill the request because of missing parameters, invalid parameter or request malformed. Section 10.3 of [`OpenID4VCI`_].
+      - The Credential Issuer cannot fulfill the request because of missing parameters, invalid parameter or request malformed. Section 11.3 of [`OpenID4VCI`_].
     * - *500 Internal Server Error* [REQUIRED]
       - ``server_error``
       - The Credential Issuer encountered an internal problem.
@@ -1084,3 +1082,19 @@ In the following table are listed HTTP Status Codes and related error codes that
     * - *504 Gateway Timeout* [OPTIONAL]
       - `-`
       - The Credential Issuer cannot fulfill the request within the defined time interval.
+
+
+.. _notification-data-correction:
+
+Data Correction using credential_failure
+........................................
+
+According to `OpenID4VCI`_ Section 11, in all other unsuccessful cases ``event`` MUST use ``credential_failure`` and additional Notification Request parameters MAY be defined and used. The Credential Issuer MUST ignore any unrecognized parameters.
+
+For holder-initiated data correction, the Wallet Instance SHOULD send a Notification Request with ``event=credential_deleted`` and include additional parameters to signal the data correction context. At minimum:
+
+- ``event_description``: concise human-readable description of the discrepancy.
+- ``failure_reason`` (OPTIONAL): a short machine-readable code, e.g., ``data_correction_requested``.
+- ``correction_details`` (OPTIONAL): object with minimal fields indicating impacted attributes without sensitive values (e.g., attribute identifiers only).
+
+In the case of receiving a Credential failure that includes a stated reason, the Credential Issuer SHOULD forward the User's message containing that reason to the Authentic Source. It is RECOMMENDED to use PDND specific endpoints, provided by Authentic Source, to facilitate this data exchange.

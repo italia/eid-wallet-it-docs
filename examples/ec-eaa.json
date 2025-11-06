@@ -49,7 +49,6 @@
                 "mDL"
             ],
             "response_modes_supported": [
-                "form_post.jwt",
                 "query"
             ],
             "response_types_supported": [
@@ -134,138 +133,140 @@
                             ]
                         }
                     },
-                    "display": [
-                        {
-                            "name": "Carta della disabilità europea",
-                            "locale": "it-IT"
-                        },
-                        {
-                            "name": "European Disability Card",
-                            "locale": "en-US"
-                        }
-                    ],
                     "vct": "urn:eudi:EuropeanDisabilityCard:it:1",
                     "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/EuropeanDisabilityCard",
                     "schema_uri#integrity": "sha256-c0d841be52cfc75b8da3295593eced2b9fca8197ee7e340199cd881a7bf61029",
-                    "claims": [
-                        {
-                            "path": ["document_number"],
-                            "display": [
-                                {
-                                    "name": "Numero Documento",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Document Number",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["given_name"],
-                            "display": [
-                                {
-                                    "name": "Nome",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Name",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["family_name"],
-                            "display": [
-                                {
-                                    "name": "Cognome",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Family Name",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["birth_date"],
-                            "display": [
-                                {
-                                    "name": "Data di Nascita (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Date of Birth (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["personal_administrative_number"],
-                            "display": [
-                                {
-                                    "name": "Codice Fiscale",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Tax Identification Number",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["expiry_date"],
-                            "display": [
-                                {
-                                    "name": "Data di Scadenza (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Expiration Date (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["constant_attendance_allowance"],
-                            "display": [
-                                {
-                                    "name": "Diritto accompagnatore",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Constant attendance allowance",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["portrait"],
-                            "display": [
-                                {
-                                    "name": "Foto codificata in base64",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Portrait base64 encoded",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["link_qr_code"],
-                            "display": [
-                                {
-                                    "name": "Link QR Code",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Link QR Code",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        }
-                    ]
+                    "credential_metadata": {
+                        "display": [
+                            {
+                                "name": "Carta della disabilità europea",
+                                "locale": "it-IT"
+                            },
+                            {
+                                "name": "European Disability Card",
+                                "locale": "en-US"
+                            }
+                        ],
+                        "claims": [
+                            {
+                                "path": ["document_number"],
+                                "display": [
+                                    {
+                                        "name": "Numero Documento",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Document Number",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["given_name"],
+                                "display": [
+                                    {
+                                        "name": "Nome",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Name",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["family_name"],
+                                "display": [
+                                    {
+                                        "name": "Cognome",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Family Name",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["birth_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di Nascita (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Date of Birth (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["personal_administrative_number"],
+                                "display": [
+                                    {
+                                        "name": "Codice Fiscale",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Tax Identification Number",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["expiry_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di Scadenza (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Expiration Date (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["constant_attendance_allowance"],
+                                "display": [
+                                    {
+                                        "name": "Diritto accompagnatore",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Constant attendance allowance",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["portrait"],
+                                "display": [
+                                    {
+                                        "name": "Foto codificata in base64",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Portrait base64 encoded",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["link_qr_code"],
+                                "display": [
+                                    {
+                                        "name": "Link QR Code",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Link QR Code",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 },
                 "dc_sd_jwt_mDL": {
                     "format": "dc+sd-jwt",
@@ -287,190 +288,192 @@
                             ]
                         }
                     },
-                    "display": [
-                        {
-                            "name": "Patente di guida",
-                            "locale": "it-IT"
-                        },
-                        {
-                            "name": "Mobile Driver's License",
-                            "locale": "en-US"
-                        }
-                    ],
                     "vct": "urn:eudi:mDL:it:1",
                     "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/mDL",
-                    "schema_uri#integrity": "sha256-0a03d9ffe11e39fd748585e433a962f223d7d14b0a49068ad52452bd0b021f63",
-                    "claims": [
-                        {
-                            "path": ["given_name"],
-                            "display": [
-                                {
-                                    "name": "Nome",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "First Name",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["family_name"],
-                            "display": [
-                                {
-                                    "name": "Cognome",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Family Name",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["birth_date"],
-                            "display": [
-                                {
-                                    "name": "Data di nascita (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Date of Birth (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["place_of_birth"],
-                            "display": [
-                                {
-                                    "name": "Luogo di Nascita",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Place of Birth",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["issue_date"],
-                            "display": [
-                                {
-                                    "name": "Data di rilascio (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Issue Date (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {   
-                            "path": ["expiry_date"],
-                            "display": [
-                                {
-                                    "name": "Data di scadenza (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Expiry Date (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["issuing_country"], 
-                            "display": [
-                                {
-                                    "name": "Paese di rilascio",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Issuing Country",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["issuing_authority"],
-                            "display": [
-                                {
-                                    "name": "Autorità di rilascio",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Issuing Authority",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["document_number"],
-                            "display": [
-                                {
-                                    "name": "Numero di documento",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Document Number",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["portrait"],
-                            "display": [
-                                {
-                                    "name": "Foto codificata in base64",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Portrait base64 encoded",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["driving_privileges"],
-                            "display": [
-                                {
-                                    "name": "Elenco delle categorie di abilitazione separate da spazio",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Driving Privileges separated by space",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["restrictions_conditions"],
-                            "display": [
-                                {
-                                    "name": "Annotazioni/Restrizioni valide per tutte le categorie separate da spazio",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Restriction/Condition for all driving privileges separated by space ",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["driving_privileges_details"],
-                            "display": [
-                                {
-                                    "name": "Dettagli delle categorie di abilitazione",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Driving privilege details",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        }
-                    ]
+                    "schema_uri#integrity": "sha256-0a03d9ffe11e39fd748585e433a962f223d7d14b0a49068ad52452bd0b021f63",                   
+                    "credential_metadata": {
+                        "display": [
+                            {
+                                "name": "Patente di guida",
+                                "locale": "it-IT"
+                            },
+                            {
+                                "name": "Mobile Driver's License",
+                                "locale": "en-US"
+                            }
+                        ],
+                        "claims": [
+                            {
+                                "path": ["given_name"],
+                                "display": [
+                                    {
+                                        "name": "Nome",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "First Name",
+                                        "locale": "en-US"
+                                    }
+                                ]   
+                            },
+                            {
+                                "path": ["family_name"],
+                                "display": [
+                                    {
+                                        "name": "Cognome",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Family Name",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["birth_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di nascita (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Date of Birth (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["place_of_birth"],
+                                "display": [
+                                    {
+                                        "name": "Luogo di Nascita",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Place of Birth",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["issue_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di rilascio (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Issue Date (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {   
+                                "path": ["expiry_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di scadenza (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Expiry Date (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["issuing_country"], 
+                                "display": [
+                                    {
+                                        "name": "Paese di rilascio",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Issuing Country",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["issuing_authority"],
+                                "display": [
+                                    {
+                                        "name": "Autorità di rilascio",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Issuing Authority",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["document_number"],
+                                "display": [
+                                    {
+                                        "name": "Numero di documento",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Document Number",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["portrait"],
+                                "display": [
+                                    {
+                                        "name": "Foto codificata in base64",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Portrait base64 encoded",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["driving_privileges"],
+                                "display": [
+                                    {
+                                        "name": "Elenco delle categorie di abilitazione separate da spazio",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Driving Privileges separated by space",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["restrictions_conditions"],
+                                "display": [
+                                    {
+                                        "name": "Annotazioni/Restrizioni valide per tutte le categorie separate da spazio",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Restriction/Condition for all driving privileges separated by space ",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["driving_privileges_details"],
+                                "display": [
+                                    {
+                                        "name": "Dettagli delle categorie di abilitazione",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Driving privilege details",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            }
+                        ]
+                    }  
                 },
                 "mso_mdoc_mDL": {
                     "format": "mso_mdoc",
@@ -486,174 +489,176 @@
                         "ES384",
                         "ES512"
                     ],
-                    "display": [
-                        {
-                            "name": "Patente di guida",
-                            "locale": "it-IT"
-                        },
-                        {
-                            "name": "Mobile Driver's License",
-                            "locale": "en-US"
-                        }
-                    ],
-                    "claims": [
-                        {
-                            "path": ["org.iso.18013.5.1", "given_name"],
-                            "display": [
-                                {
-                                    "name": "Nome",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "First Name",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "family_name"],
-                            "display": [
-                                {
-                                    "name": "Cognome",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Family Name",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "birth_date"],
-                            "display": [
-                                {
-                                    "name": "Data di nascita (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Date of Birth (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "birth_place"],
-                            "display": [
-                                {
-                                    "name": "Luogo di Nascita",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Place of Birth",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "issue_date"],
-                            "display": [
-                                {
-                                    "name": "Data di rilascio (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Issue Date (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {   
-                            "path": ["org.iso.18013.5.1", "expiry_date"],
-                            "display": [
-                                {
-                                    "name": "Data di scadenza (YYYY-MM-GG)",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Expiry Date (YYYY-MM-GG)",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "issuing_country"], 
-                            "display": [
-                                {
-                                    "name": "Paese di rilascio",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Issuing Country",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "issuing_authority"],
-                            "display": [
-                                {
-                                    "name": "Autorità di rilascio",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Issuing Authority",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "document_number"],
-                            "display": [
-                                {
-                                    "name": "Numero di documento",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Document Number",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "portrait"],
-                            "display": [
-                                {
-                                    "name": "Foto codificata in base64",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Portrait base64 encoded",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "driving_privileges"],
-                            "display": [
-                                {
-                                    "name": "Elenco delle categorie di abilitazione e relativi dettagli su restrizioni/condizioni",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Driving Privileges and related restrictions/conditions details",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        },
-                        {
-                            "path": ["org.iso.18013.5.1", "un_distinguishing_sign"],
-                            "display": [
-                                {
-                                    "name": "Codice identificativo della Nazione",
-                                    "locale": "it-IT"
-                                },
-                                {
-                                    "name": "Distinguishing sign of the issuing country",
-                                    "locale": "en-US"
-                                }
-                            ]
-                        }
-                    ]
+                    "credential_metadata": {
+                        "display": [
+                            {
+                                "name": "Patente di guida",
+                                "locale": "it-IT"
+                            },
+                            {
+                                "name": "Mobile Driver's License",
+                                "locale": "en-US"
+                            }
+                        ],
+                        "claims": [
+                            {
+                                "path": ["org.iso.18013.5.1", "given_name"],
+                                "display": [
+                                    {
+                                        "name": "Nome",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "First Name",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "family_name"],
+                                "display": [
+                                    {
+                                        "name": "Cognome",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Family Name",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "birth_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di nascita (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Date of Birth (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "birth_place"],
+                                "display": [
+                                    {
+                                        "name": "Luogo di Nascita",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Place of Birth",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "issue_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di rilascio (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Issue Date (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {    
+                                "path": ["org.iso.18013.5.1", "expiry_date"],
+                                "display": [
+                                    {
+                                        "name": "Data di scadenza (YYYY-MM-GG)",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Expiry Date (YYYY-MM-GG)",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "issuing_country"], 
+                                "display": [
+                                    {
+                                        "name": "Paese di rilascio",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Issuing Country",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "issuing_authority"],
+                                "display": [
+                                    {
+                                        "name": "Autorità di rilascio",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Issuing Authority",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "document_number"],
+                                "display": [
+                                    {
+                                        "name": "Numero di documento",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Document Number",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "portrait"],
+                                "display": [
+                                    {
+                                        "name": "Foto codificata in base64",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Portrait base64 encoded",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "driving_privileges"],
+                                "display": [
+                                    {
+                                        "name": "Elenco delle categorie di abilitazione e relativi dettagli su restrizioni/condizioni",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Driving Privileges and related restrictions/conditions details",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": ["org.iso.18013.5.1", "un_distinguishing_sign"],
+                                "display": [
+                                    {
+                                        "name": "Codice identificativo della Nazione",
+                                        "locale": "it-IT"
+                                    },
+                                    {
+                                        "name": "Distinguishing sign of the issuing country",
+                                        "locale": "en-US"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
             },
             "jwks": {
@@ -677,52 +682,7 @@
             ]
         },
         "openid_credential_verifier": {
-            "application_type": "web",
-            "client_id": "https://eaa-provider.example.org",
-            "client_name": "Organization Name",
-            "contacts": [
-                "informazioni@example.it",
-                "protocollo@pec.example.it"
-            ],
-            "request_uris": [
-                "https://eaa-provider.example.org/request_uri"
-            ],
-            "response_uris": [
-                "https://eaa-provider.example.org/response_uri"
-            ],
-            "default_acr_values": [
-                "https://trust-registry.eid-wallet.example.it/loa/substantial",
-                "https://trust-registry.eid-wallet.example.it/loa/high"
-            ],
-            "request_object_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ],
-            "authorization_signing_alg_values_supported": [
-                "ES256",
-                "ES384",
-                "ES512"
-            ],
-            "authorization_encryption_alg_values_supported": [
-                "RSA-OAEP-256"
-            ],
-            "authorization_encryption_enc_values_supported": [
-                "A128CBC-HS256",
-                "A192CBC-HS384",
-                "A256CBC-HS512",
-                "A128GCM",
-                "A192GCM",
-                "A256GCM"
-            ],
-            "vp_formats": {
-                "dc+sd-jwt": {
-                    "sd-jwt_alg_values": [
-                        "ES256",
-                        "ES384",
-                        "ES512"
-                    ]
-                }
+            ## see relying party metadata section and endpoints
             },
             "jwks": {
                 "keys": [

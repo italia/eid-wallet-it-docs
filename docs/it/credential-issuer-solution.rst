@@ -74,7 +74,7 @@ Sulla base della specifica `OpenID4VCI`_ e del profilo implementativo fornito ne
 Authorization Server
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Questo componente basato su OAuth2 DEVE:
+Questo componente basato su OAuth 2.0 DEVE:
 
    - Gestire i flussi di autenticazione e autorizzazione.
    - Gestire gli Access Token, Refresh e Authorization Code.

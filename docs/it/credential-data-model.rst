@@ -108,7 +108,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
       - [NSD]. OBBLIGATORIO. Stringa URL che rappresenta l'identificativo univoco del Fornitore di Attestati Elettronici.
       - `[RFC7519, Sezione 4.1.1] <https://www.iana.org/go/rfc7519>`_.
     * - **sub**
-      - [NSD]. OPZIONALE. L'identificativo del soggetto dell'Attestato Elettronico, l'Utente, DEVE essere un valore opaco e NON DEVE corrispondere a nessun dato anagrafico o essere derivato dai dati anagrafici dell'Utente tramite pseudonimizzazione. Inoltre, due diversi Attestati Elettronici emessi NON DEVONO utilizzare lo stesso valore di ``sub``.
+      - [NSD]. OPZIONALE. L'identificativo del soggetto dell'Attestato Elettronico, l'Utente, DEVE essere un valore opaco e NON DEVE corrispondere a nessun dato anagrafico o essere derivato dai dati anagrafici dell'Utente tramite pseudonimizzazione. Inoltre, due diverse istanze di Attestati Elettronici emessi NON DEVONO utilizzare lo stesso valore di ``sub``.
       - `[RFC7519, Sezione 4.1.2] <https://www.iana.org/go/rfc7519>`_.
     * - **iat**
       - [SD]. OBBLIGATORIO. Timestamp UNIX con l'orario di emissione del JWT, codificato come NumericDate come indicato in :rfc:`7519`.

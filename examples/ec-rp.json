@@ -46,28 +46,31 @@
             ],
             "redirect_uris": [
                 "https://relying-party.example.org/cb"
+            ],     
+            "encrypted_response_enc_values_supported": [
+                "A256GCM"
             ],
-            "authorization_signed_response_alg": "ES256",
-            "vp_formats": {
+            "vp_formats_supported": {
                 "dc+sd-jwt": {
                     "sd-jwt_alg_values": [
                         "ES256",
                         "ES384",
                         "ES512"
+                    ],
+                    "kb-jwt_alg_values": [
+                        "ES256"
                     ]
                 },
                 "mso_mdoc": {
-                    "alg": [
-                        "ES256",
-                        "ES384",
-                        "ES512",
-                        "EdDSA",
-                        "ESB256",
-                        "ESB320",
-                        "ESB384",
-                        "ESB512"
+                    "issuerauth_alg_values": [
+                        -9,
+                        -50
+                    ],
+                    "deviceauth_alg_values": [
+                        -9,
+                        -50
                     ]
-                }                
+                }             
             },
             "jwks": {
                 "keys": [

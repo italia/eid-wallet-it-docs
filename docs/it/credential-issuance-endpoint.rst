@@ -130,8 +130,8 @@ Il payload del JWT ``request`` contenuto nel messaggio HTTP POST contiene i segu
       - DEVE essere valorizzato con ``code``.
       - :rfc:`6749`
     * - **response_mode**
-      - DEVE essere una stringa che indica il "*response_mode*", come specificato in [`OAUTH-MULT-RESP-TYPE`_]. DEVE essere valorizzato con uno dei valori supportati (*response_modes_supported*) forniti nei Metadata del Credential Issuer. Tale claim informa il Credential Issuer sul meccanismo da utilizzare per la restituizione dei parametri da parte dell' Authorization Endpoint. In caso di *HTTP 302 Redirect Response* il valore DEVE essere *query*. In questa modalità, i parametri dell'Authorization Response sono codificati nella stringa di query aggiunta al ``redirect_uri`` durante il redirect all'Istanza del Wallet. In caso di *HTTP POST Response* il valore DEVE essere *form_post.jwt* secondo [`JARM`_]. In questa modalità, i parametri dell'Authorization Response sono riportati in un JWT codificato in un form HTML che viene inviato automaticamente nell'user-agent, e quindi viene trasmesso tramite il metodo HTTP POST all'Istanza del Wallet, con i parametri risultanti codificati nel body utilizzando il formato *application/x-www-form-urlencoded*. L'attributo *action* del form DEVE contenere il *Redirection URI* dell'Istanza del Wallet. L'attributo *method* del form DEVE essere POST.
-      - Vedi [`OAUTH-MULT-RESP-TYPE`_] e [`JARM`_].
+      - DEVE essere una stringa che indica il "*response_mode*", come specificato in [`OAUTH-MULT-RESP-TYPE`_]. DEVE essere valorizzato con uno dei valori supportati (*response_modes_supported*) forniti nei Metadata del Credential Issuer. Tale claim informa il Credential Issuer sul meccanismo da utilizzare per la restituizione dei parametri da parte dell' Authorization Endpoint. In caso di *HTTP 302 Redirect Response* il valore DEVE essere *query*. In questa modalità, i parametri dell'Authorization Response sono codificati nella stringa di query aggiunta al ``redirect_uri`` durante il redirect all'Istanza del Wallet.
+      - Vedi [`OAUTH-MULT-RESP-TYPE`_].
     * - **client_id**
       - DEVE essere valorizzato come indicato nella :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
       - Vedi :ref:`Tabella dei parametri HTTP <table_http_request_claim>`.
@@ -621,7 +621,7 @@ Il **JWT DPoP** contiene i seguenti parametri di header JOSE e claim.
     - OBBLIGATORIO. DEVE essere un URL HTTPS che identifica in modo univoco il Credential Issuer. L'Istanza del Wallet DEVE verificare che questo valore corrisponda al Credential Issuer a cui ha richiesto l'Attestato Elettronico.
     - [:rfc:`9068`], [:rfc:`7519`].
   * - **sub**
-    - OBBLIGATORIO. Identifica il soggetto del JWT. DEVE essere settato con il valore del campo ``sub`` presente nell'Attestato ELettronico in formato SD-JWT-VC.
+    - OBBLIGATORIO. Identifica il soggetto del JWT.
     - [:rfc:`9068`], [:rfc:`7519`] e Sezione 8 di [`OIDC`_].
   * - **client_id**
     - OBBLIGATORIO. L'identificativo dell'Istanza del Wallet che ha richiesto l'Access Token; DEVE essere uguale al kid della chiave pubblica dell'Istanza del Wallet specificata nell'Attestato di Unità di Wallet (``cnf.jwk``).
@@ -768,18 +768,9 @@ Il Credential Endpoint DEVE accettare e convalidare il *DPoP proof* inviato nel 
   * - **credential_configuration_id**
     - OBBLIGATORIO se il parametro ``credential_identifiers`` è assente nella Token Response.  In tutti gli altri casi NON DEVE essere utilizzato. Stringa che specifica un identificativo univoco dell'Attestato ELetronico descritto nel claim `credential_configurations_supported` presente nei Metadata del Credential Issuer. Ad esempio, nel caso del PID, può essere valorizzato con ``pid``.
     - Sezione 8.2 di [`OpenID4VCI`_].
-  * - **proof**
-    - OBBLIGATORIO. Oggetto JSON contenente la prova di possesso del materiale crittografico a cui sarà vincolato l'Attestato Elettronico emesso. L'oggetto proof DEVE contenere i seguenti claim obbligatori:
-
-      - **proof_type**: stringa JSON che denota il tipo di prova in termini di formato. DEVE essere `jwt`.
-      - **jwt**: il JWT utilizzato come prova di possesso.
-    - [`OpenID4VCI`_].
   * - **proofs**
-    - OBBLIGATORIO se il parametro ``proof`` è assente, altrimenti NON DEVE essere utilizzato. Oggetto che fornisce una o più prove di possesso del materiale crittografico a cui saranno vincolate le Istanze di Credenziali emesse. L'oggetto ``proofs`` DEVE contenere un parametro denominato `jwt` contenente un array di JWT, dove ogni elemento viene utilizzato come prova di possesso.
+    - OBBLIGATORIO. Oggetto che fornisce una o più prove di possesso del materiale crittografico a cui saranno vincolate le Istanze di Credenziali emesse. L'oggetto ``proofs`` DEVE contenere un parametro denominato `jwt` contenente un array di JWT, dove ogni elemento viene utilizzato come prova di possesso.
     - [`OpenID4VCI`_].
-  * - **transaction_id**
-    - OBBLIGATORIO solo in caso di Deferred Flow. Stringa che identifica una transazione di emissione posticipata. NON DEVE essere presente nel flusso di emissione immediato.
-    - Sezione 9.1 di [`OpenID4VCI`_].
 
 
 Il *proof type* del JWT DEVE contenere i seguenti parametri per l'header JOSE e il body in JWT:
@@ -801,6 +792,9 @@ Il *proof type* del JWT DEVE contenere i seguenti parametri per l'header JOSE e 
   * - **jwk**
     - Rappresenta la chiave pubblica scelta dall'Istanza del Wallet, in formato JSON Web Key (JWK) [:rfc:`7517`] a cui l'Attestato Elettronico sarà vincolato, come definito nella Sezione 4.1.3 del [:rfc:`7515`].
     - [`OpenID4VCI`_], [:rfc:`7515`], [:rfc:`7517`].
+  * - **key_attestation**
+    - Representa la Wallet Unit Attestation.
+    - [`OpenID4VCI`_].
 
 .. list-table::
   :class: longtable
@@ -841,14 +835,14 @@ La Credential Response contiene i seguenti parametri:
     - **Descrizione**
     - **Riferimento**
   * - **credentials**
-    - OBBLIGATORIO se ``lead_time`` e ``transaction_id`` non sono presenti, altrimenti NON DEVE essere presente. Array di una o più Credenziali emesse. Il numero di elementi nell'array delle Credenziali corrisponde al numero di chiavi che l'Istanza del Wallet ha fornito tramite il parametro ``proof`` o ``proofs`` nella Credential Request. L'array DEVE contenere oggetti JSON, dove ogni oggetto DEVE avere il claim ``credential``. Il valore del claim ``credential`` DEVE essere configurato con una stringa contenente la Credenziale codificata, come descritto di seguito:
+    - OBBLIGATORIO se ``interval`` e ``transaction_id`` non sono presenti, altrimenti NON DEVE essere presente. Array di una o più Credenziali emesse. Il numero di elementi nell'array delle Credenziali corrisponde al numero di chiavi che l'Istanza del Wallet ha fornito tramite il parametro ``proofs`` nella Credential Request. L'array DEVE contenere oggetti JSON, dove ogni oggetto DEVE avere il claim ``credential``. Il valore del claim ``credential`` DEVE essere configurato con una stringa contenente la Credenziale codificata, come descritto di seguito:
 
 
           - **credential**: OBBLIGATORIO. Stringa contenente un Attestato Elettronico emesso. Se l'identificativo del formato richiesto è ``dc+sd-jwt`` allora il parametro ``credential`` NON DEVE essere ricodificato. Se l'identificativo di formato richiesto è ``mso_mdoc`` allora il parametro ``credential`` DEVE essere una rappresentazione codificata in base64url della struttura IssuerSigned codificata in CBOR, come definito in [ISO 18013-5]. Questa struttura DOVREBBE contenere tutti i Namespaces e IssuerSignedItems inclusi negli AuthorizedNamespaces del MobileSecurityObject.
     - Sezione 8.3, Allegato A2.4 e Allegato A3.4 di [`OpenID4VCI`_].
-  * - **lead_time**
-    - OBBLIGATORIO se ``credentials`` non è presente, altrimenti NON DEVE essere presente. La quantità di tempo (espressa in secondi) richiesta prima di effettuare una Deferred Credential Request  (:ref:`WP_065 <wallet-credential-issuance-testcases>`).
-    - Questa Specifica.
+  * - **interval**
+    - OBBLIGATORIO se ``transaction_id`` è presente, altrimenti NON DEVE essere presente. La quantità di tempo (espressa in secondi) richiesta prima di effettuare una Deferred Credential Request  (:ref:`WP_065 <wallet-credential-issuance-testcases>`).
+    - Sezione 8.3 di [`OpenID4VCI`_].
   * - **notification_id**
     - OPZIONALE. Stringa che identifica un'Attestato Elettronico emesso che il Wallet include nella Notification Request come definito nella Sezione :ref:`credential-issuance-endpoint:Notification Request`. NON DEVE essere presente se il parametro ``credentials`` non è presente.
     - Sezione 8.3 di [`OpenID4VCI`_].
@@ -887,26 +881,23 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
       - ``invalid_credential_request``
       - Il Credential Issuer non può soddisfare la richiesta a causa di parametri mancanti, parametri non validi o richiesta malformata. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
-      - ``unsupported_credential_type``
-      - Il Credential Issuer non può soddisfare la richiesta perché il tipo di Attestato Elettronico richiesto non è supportato. Sezione 8.3.1 di [`OpenID4VCI`_].
+      - ``unknown_credential_configuration``
+      - Il Credential Issuer non può soddisfare la richiesta perché il ``credential_configuration_id`` relativo all' Attestato Elettronico richiesto è sconosciuto. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
-      - ``unsupported_credential_format``
-      - Il Credential Issuer non può soddisfare la richiesta perché il Formato dell'Attestato Elettronico richiesto non è supportato. Sezione 8.3.1 di [`OpenID4VCI`_].
+      - ``unknown_credential_identifier``
+      - Il Credential Issuer non può soddisfare la richiesta perché il ``credential_identifier`` dell'Attestato Elettronico richiesto non è supportato. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_proof``
-      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proof``o ``proofs`` nella Credential Request non è valido o è assente oppure non contiene il valore del ``c_nonce``. Sezione 8.3.1 di [`OpenID4VCI`_].
+      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proofs`` nella Credential Request non è valido o è assente oppure non contiene il valore del ``c_nonce``. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_nonce``
-      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proof`` o ``proofs`` nella Credential Request utilizza un nonce non valido. Sezione 8.3.1 di [`OpenID4VCI`_].
+      - Il Credential Issuer non può soddisfare la richiesta perché il parametro ``proofs`` nella Credential Request utilizza un nonce non valido. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_encryption_parameters``
       - Il Credential Issuer non può soddisfare la richiesta perché i parametri di crittografia nella Credential Request non sono validi o mancanti. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``credential_request_denied``
-      - La Credential Request non è stata accettata dal Credential Issuer. Sezione 8.3.1 di [`OpenID4VCI`_].
-    * - *400 Bad Request* [OBBLIGATORIO]
-      - ``issuance_pending``
-      - Solo in caso di Deferred Flow. Il Credential Issuer non può soddisfare la richiesta perché l'Attestato Elettronico non è ancora disponibile per l'emissione. Sezione 9.3 di [`OpenID4VCI`_].
+      - La Credential Request non è stata accettata dal Credential Issuer. Il Wallet DOVREBBE trattare questo errore come definitivo, il che significa che, se ricevuto da un Credential Issuer, le Credenziali non potranno essere emesse. Sezione 8.3.1 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_transaction_id``
       - Solo in caso di Deferred Flow. Il Credential Issuer non può soddisfare la richiesta perché la Credential Request contiene un ``transaction_id`` non valido. Sezione 9.3 di [`OpenID4VCI`_].
@@ -951,7 +942,7 @@ Se i Credential Issuer, che supportano questo flusso, non sono in grado di emett
 .. literalinclude:: ../../examples/credential-response-deferred.json
   :language: JSON
 
-L'Istanza del Wallet DEVE utilizzare il valore fornito nel parametro *lead_time* per informare l'Utente quando l'Attestato Elettronico diventa disponibile (ad esempio utilizzando una notifica locale innescata dal valore di tempo *lead_time*). I Credential Issuer POSSONO inviare una notifica all'Utente tramite un canale di comunicazione (ad esempio indirizzo email), se precedentemente fornito dall'Utente al Credential Issuer.
+L'Istanza del Wallet DEVE utilizzare il valore fornito nel parametro *interval* per informare l'Utente quando l'Attestato Elettronico diventa disponibile (ad esempio utilizzando una notifica locale innescata dal valore di tempo *interval*). I Credential Issuer POSSONO inviare una notifica all'Utente tramite un canale di comunicazione (ad esempio indirizzo email), se precedentemente fornito dall'Utente al Credential Issuer.
 
 Deferred Request
 ...................
@@ -960,7 +951,7 @@ Una volta ricevuta la notifica (dall'Istanza del Wallet e/o dal Credential Issue
 
 L'Istanza del Wallet DEVE presentare al Deferred Endpoint un Access Token valido per l'emissione dell'Attestato Elettronico precedentemente richiesto al Credential Endpoint.
 
-Se il valore del parametro ``lead_time`` risulta inferiore rispetto alla scadenza dell'Access Token, l'Istanza del Wallet DOVREBBE utilizzare l'Access Token (:ref:`WP_066b <wallet-credential-issuance-testcases>`). Altrimenti, l'Istanza del Wallet PUÒ ottenere un nuovo Access Token seguendo il flusso relativo al Refresh Token (vedi Sezione :ref:`credential-issuance-low-level:Refresh Token Flow` per maggiori dettagli come specificato in :ref:`WP_066c <wallet-credential-issuance-testcases>`). Se il flusso del Refresh Token fallisce, l'Istanza del Wallet deve inviare una nuova authentication request (:ref:`WP_067 <wallet-credential-issuance-testcases>`).
+Se il valore del parametro ``interval`` risulta inferiore rispetto alla scadenza dell'Access Token, l'Istanza del Wallet DOVREBBE utilizzare l'Access Token (:ref:`WP_066b <wallet-credential-issuance-testcases>`). Altrimenti, l'Istanza del Wallet PUÒ ottenere un nuovo Access Token seguendo il flusso relativo al Refresh Token (vedi Sezione :ref:`credential-issuance-low-level:Refresh Token Flow` per maggiori dettagli come specificato in :ref:`WP_066c <wallet-credential-issuance-testcases>`). Se il flusso del Refresh Token fallisce, l'Istanza del Wallet deve inviare una nuova authentication request (:ref:`WP_067 <wallet-credential-issuance-testcases>`).
 
 La Deferred Credential Request DEVE essere una HTTP POST request. DEVE essere inviata utilizzando il media type ``application/json``.
 Il seguente parametro viene utilizzato nella Deferred Credential Request:
@@ -993,7 +984,14 @@ Di seguito è riportato un esempio non normativo di una Deferred Credential Requ
 Deferred Response
 ..................
 
-La Deferred Credential Response DEVE essere inviata utilizzando il media type `application/json``. Se l'Attestato Elettronico è disponibile, la Deferred Credential Response DEVE utilizzare i parametri ``credentials`` e ``notification_id`` come definito nella Sezione :ref:`credential-issuance-endpoint:Credential Response`. Se la Deferred Credential Request non è valida o l'Attestato Elettronico non è disponibile, la Deferred Credential Error Response DEVE essere inviata all'Istanza del Wallet secondo quanto indicato nella Sezione 9.3 di `OpenID4VCI`_.
+La Deferred Credential Response DEVE essere inviata utilizzando il media type `application/json``. 
+
+Se l'Attestato Elettronico è disponibile, la Deferred Credential Response DEVE utilizzare i parametri ``credentials`` e ``notification_id`` come definito nella Sezione :ref:`credential-issuance-endpoint:Credential Response` e DEVE rispondere con un HTTP Status 200 (vedi sezione 15.3.3 del :rfc:`9110`).
+
+Se il Credential Issuer ha bisogno di più tempo, la Deferred Credential Response DEVE utilizzare i parametri ``interval`` e ``transaction_id`` come definiti nella sezione :ref:`credential-issuance-endpoint:Credential Response` e DEVE rispondere con HTTP Status 202 (vedi Sezione 15.3.3 del :rfc:`9110`).
+Il valore di ``transaction_id`` DEVE essere identico a quello presente nella Deferred Credential Request.
+
+Se la Deferred Credential Request non è valida o l'Attestato Elettronico non è disponibile, la Deferred Credential Error Response DEVE essere inviata all'Istanza del Wallet secondo quanto indicato nella Sezione :ref:`credential-issuance-endpoint:Credential Response`.
 
 Notification Endpoint
 """""""""""""""""""""
@@ -1002,7 +1000,7 @@ Il Notification Endpoint viene utilizzato dal Wallet per notificare al Credentia
 
 Per salvaguardare la privacy, l'``event_description`` nella notifica NON DOVREBBE contenere alcuna informazione che potrebbe rivelare il comportamento dell'Utente o rivelare lo stato del dispositivo personale (ad esempio, se lo spazio di archiviazione è pieno).
 
-Questo endpoint DEVE essere protetto utilizzando un Access Token di tipo DPoP. Il protocollo TLS per la riservatezza del trasporto su HTTP è OBBLIGATORIO secondo la Sezione 10 di [`OpenID4VCI`_].
+Questo endpoint DEVE essere protetto utilizzando un Access Token di tipo DPoP. Il protocollo TLS per la riservatezza del trasporto su HTTP è OBBLIGATORIO secondo la Sezione 11 di [`OpenID4VCI`_].
 
 
 Notification Request
@@ -1020,28 +1018,29 @@ La Notification Request DEVE essere una HTTP POST utilizzando il media type *app
     - **Riferimento**
   * - **notification_id**
     - OBBLIGATORIO. DEVE essere uguale al valore ``notification_id`` restituito nella Credential Response dal Credential Issuer.
-    - Sezione 10.1 di [`OpenID4VCI`_].
+    - Sezione 11.1 di [`OpenID4VCI`_].
   * - **event**
     - OBBLIGATORIO. Tipo dell'evento da notificare. DEVE essere una stringa case-sensitive e DEVE supportare i seguenti valori:
 
-      - *credential_accepted*: quando l'Attestato ELettronico è stato memorizzato con successo nell'Istanza del Wallet.
+      - *credential_accepted*: quando l'Attestato Elettronico è stato memorizzato con successo nell'Istanza del Wallet.
       - *credential_deleted*: quando l'emissione non riuscita dell'Attestato Elettronico è stata causata da un'azione dell'utente.
       - *credential_failure*: in tutti gli altri casi di insuccesso.
+      
 
-    - Sezione 10.1 di [`OpenID4VCI`_].
+    - Sezione 11.1 di [`OpenID4VCI`_].
   * - **event_description**
     - OPZIONALE. Testo ASCII *human-readable* [USASCII] che fornisce informazioni aggiuntive, da utilizzare per informare in merito all'evento verificatosi. I valori per il parametro event_description NON DEVONO includere caratteri al di fuori dell'insieme *%x20-21 / %x23-5B / %x5D-7E*.
-    - Sezione 10.1 di [`OpenID4VCI`_].
+    - Sezione 11.1 di [`OpenID4VCI`_].
 
 Notification Response
 .....................
 
-La Notification Response DEVE utilizzare un *status code HTTP 204 (No Content)*, come raccomandato nella Sezione 10.2 di [`OpenID4VCI`_].
+La Notification Response DEVE utilizzare un *status code HTTP 204 (No Content)*, come raccomandato nella Sezione 11.2 di [`OpenID4VCI`_].
 
-In caso di errori, si DEVE seguire quanto descritto nella Sezione 10.3 di [`OpenID4VCI`_].
+In caso di errori, si DEVE seguire quanto descritto nella Sezione 11.3 di [`OpenID4VCI`_].
 
 Nel caso in cui la Notification Request non contenga un Access Token valido, il Notification Endpoint restituisce una response di errore come definito nella Sezione 3 del [:rfc:`6750`].
-Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una response di errore come definito nella Sezione 10.3 di [`OpenID4VCI`_]. La response DEVE utilizzare il content type *application/json* e DEVE includere i seguenti parametri:
+Se si verifica qualsiasi altro errore, il Credential Issuer DEVE restituire una response di errore come definito nella Sezione 11.3 di [`OpenID4VCI`_]. La response DEVE utilizzare il content type *application/json* e DEVE includere i seguenti parametri:
 
   - *error*. Il codice di errore.
   - *error_description*. Testo in forma *human-readable* che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato.
@@ -1069,10 +1068,10 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
       - **Descrizione**
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_notification_id``
-      - Il Credential Issuer non può soddisfare la richiesta a causa del parametro ``notification_id`` non valido. Sezione 10.3 di [`OpenID4VCI`_].
+      - Il Credential Issuer non può soddisfare la richiesta a causa del parametro ``notification_id`` non valido. Sezione 11.3 di [`OpenID4VCI`_].
     * - *400 Bad Request* [OBBLIGATORIO]
       - ``invalid_notification_request``
-      - Il Credential Issuer non può soddisfare la richiesta a causa di parametri mancanti, parametro non valido o richiesta malformata. Sezione 10.3 di [`OpenID4VCI`_].
+      - Il Credential Issuer non può soddisfare la richiesta a causa di parametri mancanti, parametro non valido o richiesta malformata. Sezione 11.3 di [`OpenID4VCI`_].
     * - *500 Internal Server Error* [OBBLIGATORIO]
       - ``server_error``
       - Il Credential Issuer ha riscontrato un problema interno.
@@ -1082,3 +1081,19 @@ Nella seguente tabella sono elencati i *Status Code HTTP* e i relativi codici di
     * - *504 Gateway Timeout* [OPZIONALE]
       - `-`
       - Il Credential Issuer non può soddisfare la richiesta entro l'intervallo di tempo definito.
+
+
+.. _it-notification-data-correction:
+
+Correzione dati usando credential_failure
+.........................................
+
+Secondo `OpenID4VCI`_ Sezione 11, in tutti gli altri casi di insuccesso ``event`` DEVE usare ``credential_failure`` e parametri addizionali della Notification Request POSSONO essere definiti e usati. Il Credential Issuer DEVE ignorare i parametri non riconosciuti.
+
+Per la correzione dati iniziata dall'Utente, l'Istanza del Wallet DOVREBBE inviare una Notification Request con ``event=credential_deleted`` includendo parametri aggiuntivi per segnalare il contesto della correzione dati. Al minimo:
+
+- ``event_description``: descrizione concisa e leggibile della discrepanza.
+- ``failure_reason`` (OPZIONALE): breve codice machine-readable, ad es. ``data_correction_requested``.
+- ``correction_details`` (OPZIONALE): oggetto con campi minimi per indicare gli attributi impattati senza valori sensibili (es. soli identificativi degli attributi).
+
+Nell'eventualità di aver ricevuto un rigetto motivato da parte dell'Utente, il Credential DOVREBBE inoltrare il messaggio dell'utente contenente quel motivo alla Fonte Autentica. È RACCOMANDATO di utilizzare endpoint specifici PDND, forniti da Authentic Source, per facilitare questo scambio di dati.

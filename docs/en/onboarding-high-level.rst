@@ -262,7 +262,7 @@ Wallet Provider Operator Journey
 
 Wallet Provider operators follow an independent onboarding path that focuses on application certification and security validation. The process highlights the development and certification of wallet applications that can securely store and manage Digital Credentials for citizens.
 
-A key technical requirement involves implementing wallet integrity and authenticity check mechanisms. These checks enable the wallet to obtain a Wallet Attestation, which serves as proof of the wallet's security and compliance status during Credential operations.
+A key technical requirement involves implementing Wallet integrity and authenticity check mechanisms. These checks enable the Wallet to obtain a Wallet App Attestation, which serves as proof of the Wallet's security and compliance status during Credential operations.
 
 The certification process includes security evaluation, covering wallet architecture, data protection mechanisms, and user privacy features. Successfully certified wallet providers are registered in the Federation Registry and can distribute their applications through app stores.
 
@@ -309,24 +309,9 @@ Technical integration focuses on developing authentication flows that can verify
 Service authorization by the Supervisory Body MUST involve policy-based evaluation that considers organizational type (private vs public administration), business sector classification, and legitimate service requirements. The authorization process grants specific operational scopes that define which Credential domains and purposes the Relying Party can request. Following approval, the Relying Party is registered in the Federation Registry with clearly defined authorization boundaries for Digital Credentials and User's attributes acceptance.
 
 
-End User Experience Journey
+User Experience Journey
 -------------------------------
 
-.. figure:: ./images/svg/onboarding-journey-maps/ux-onboarding-journey.svg
-    :width: 100%
-    :alt: End user experience journey
-    :name: user-experience-journey
+When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances, obtain available Digital Credentials and present their Digital Credentials to registered Relying Parties (see :ref:`functionalities:Functionalities Overview`). 
 
-    Complete user journey from wallet installation to service access
-
-When all entity onboarding processes are successfully completed, Users can discover and install certified Wallet Instances and the new available Credential. 
-
-Credential discovery happens through two main pathways:
-
-    - **Credential Catalog browsing**: Users can explore available Credential types through a Credential Catalog.
-    - **Credential Offers**: Direct Credential Offer from Authentic Sources or Credential Issuers for specific Credentials.
-
-The service access phase demonstrates the value of the complete ecosystem, where users can present their Digital Credentials to registered Relying Party services for authenticated access. This seamless integration depends on all relevant entities having completed their respective onboarding journeys.
-
-
-
+This seamless integration depends on all relevant entities having completed their respective onboarding journeys.

@@ -7,10 +7,5 @@
       "eyJhbGciOiJFUz...jJLA",
       "eyJhbGciOiJFUz...H9gw"
     ],
-    "x5c": [
-      "MIIDqjCCApKgAwIBAgIESLNEvDA ...",
-      "MIICwzCCAasCCQCKVy9eKjvi+jA ...",
-      "MIIDTDCCAjSgAwIBAgIJAPlnQYH..."
-    ],
-    "typ": "oauth-client-attestation+jwt"
+    "typ": "key-attestation+jwt"
   }
