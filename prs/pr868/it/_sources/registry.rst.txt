@@ -575,8 +575,8 @@ Il payload JWS contiene i seguenti parametri:
      - OBBLIGATORIO. Timestamp dell'ultima modifica al Catalogo degli Attestati Elettronici.
    * - **credentials**
      - OBBLIGATORIO. Array contenente le definizioni degli Attestati Elettronici.
-   * - **wallet_attestation**
-     - OBBLIGATORIO. Un Oggetto JSON contenente definizioni per le Attestazioni del Wallet, inclusi i loro formati supportati, attributi associati e Livelli di Garanzia (LoA). Questo Oggetto è utilizzato da altre entità, come Issuer e Relying Party, per recuperare informazioni sui formati di Attestazione del Wallet supportati all'interno dell'ecosistema.
+   * - **wallet_app_attestation**
+     - OBBLIGATORIO. Un Oggetto JSON contenente  informazioni relative alle Wallet App Attestation, inclusi i loro formati supportati e attributi associati. Questo Oggetto è utilizzato da altre entità, come il Fornitore di Attestati Elettronici e il Fornitore di Servizi, per recuperare informazioni sui formati di Wallet App Attestation supportati all'interno dell'ecosistema.
 
 Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazioni:
 
@@ -647,7 +647,7 @@ Ogni elemento dell'array ``credentials`` contiene almeno le seguenti informazion
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
 
 
-L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
+L'Oggetto ``wallet_app_attestation`` contiene almeno le seguenti informazioni:
 
 
 .. list-table:: Campi di Primo Livello di Ogni Voce di Credenziale
@@ -658,17 +658,15 @@ L'Oggetto ``wallet_attestation`` contiene almeno le seguenti informazioni:
   * - Nome Campo
     - Descrizione
   * - **credential_type**
-    - OBBLIGATORIO. Identificatore univoco dell'Attestazione del Wallet. DEVE essere impostato a ``wallet_attestation``.
+    - OBBLIGATORIO. Identificatore univoco della Wallet App Attestation. DEVE essere impostato a ``wallet_app_attestation``.
   * - **vct**
     - OBBLIGATORIO. DEVE essere impostato come un URN nel formato definito in :ref:`credential-data-model:Credential SD-JWT Parameters`. La corrispondenza dei letterali inclusi in questa stringa URI DEVE essere eseguita in modo case-sensitive.
-  * - **aal_values_supported**
-    - OBBLIGATORIO. Array di Stringhe ognuna delle quali è un Livello di Garanzia (LoA) supportato dall'Attestazione del Wallet. DEVE includere almeno i livelli ``low``, ``medium`` e ``high``.
   * - **formats**
-    - OBBLIGATORIO. Array di formati supportati per l'Attestazione del Wallet, inclusi:
+    - OBBLIGATORIO. Array di formati supportati per la Wallet App Attestation, inclusi:
 
       * **format**: Tipo di formato (ad esempio, ``dc+sd-jwt``, ``mso_mdoc`` o ``oauth-client-attestation+jwt``)
-      * **configuration_id**: Identificatore di configurazione dell'Attestazione del Wallet. Questo è formato concatenando la stringa ``wa`` al ``format`` (ad esempio, ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, o ``jwt_wa``), ed è utilizzato per fare riferimento univocamente alla configurazione del formato dell'Attestazione del Wallet.
-      * **docType**: CONDIZIONALE. È presente solo se il ``format`` è ``mso_mdoc``. È una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}`` (ad esempio, ``it.wallet.trust-registry.wallet_attestation``).
+      * **configuration_id**: Identificatore di configurazione della Wallet App Attestation. Questo è formato concatenando la stringa ``wa`` al ``format`` (ad esempio, ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, o ``jwt_wa``), ed è utilizzato per fare riferimento univocamente alla configurazione del formato della Wallet App Attestation.
+      * **docType**: CONDIZIONALE. È presente solo se il ``format`` è ``mso_mdoc``. È una stringa della forma ``{dominio inverso Trust Anchor}.{credential_type}`` (ad esempio, ``it.wallet.trust-registry.wallet_app_attestation``).
       * **schema_uri**: URI che punta al documento di specifica del formato.
       * **schema_uri#integrity**: Digest crittografico del documento di specifica del formato per la verifica dell'integrità. DEVE essere una stringa della forma ``{digest_method}-{digest_value}``, dove ``{digest_method}`` è l'algoritmo di digest utilizzato (ad esempio, ``sha-256``) e ``{digest_value}`` è il valore del digest codificato in base64url.
 

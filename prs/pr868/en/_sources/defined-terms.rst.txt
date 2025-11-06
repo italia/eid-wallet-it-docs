@@ -330,9 +330,13 @@ Below is the description of acronyms and definitions which are useful for furthe
       Aligned with ARF 2.5.
 
     **Wallet Unit Attestation**
+     Data object issued by a Wallet Provider that proves the keys used for key binding of Credentials reside in a trustworthy WSCD, 
+     and checks the Wallet Unit has not been revoked. Specific to IT-Wallet. 
+
+    **Wallet App Attestation**
     **Wallet Attestation**
-      Data object issued by a Wallet Provider describing the components of the Wallet Unit.
-      Aligned with ARF 2.5.
+      Data object issued by a Wallet Provider proving the integrity of the Wallet Application.
+      Specific to IT-Wallet. 
 
     **Digital Credential Catalog**
       Electronic catalog containing information about the formats and schemes of Digital Credentials, the data contained and the Authentic Sources. The Catalog contains additional information that allows for the establishment of the authenticity and reliability of the information contained therein.

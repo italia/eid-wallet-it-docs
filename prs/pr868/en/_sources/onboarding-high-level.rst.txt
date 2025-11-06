@@ -262,7 +262,7 @@ Wallet Provider Operator Journey
 
 Wallet Provider operators follow an independent onboarding path that focuses on application certification and security validation. The process highlights the development and certification of wallet applications that can securely store and manage Digital Credentials for citizens.
 
-A key technical requirement involves implementing wallet integrity and authenticity check mechanisms. These checks enable the wallet to obtain a Wallet Attestation, which serves as proof of the wallet's security and compliance status during Credential operations.
+A key technical requirement involves implementing Wallet integrity and authenticity check mechanisms. These checks enable the Wallet to obtain a Wallet App Attestation, which serves as proof of the Wallet's security and compliance status during Credential operations.
 
 The certification process includes security evaluation, covering wallet architecture, data protection mechanisms, and user privacy features. Successfully certified wallet providers are registered in the Federation Registry and can distribute their applications through app stores.
 

@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="10.1.4.2.4. User&#39;s Attributes Deletion" href="user-attribute-deletion.html" />
-    <link rel="prev" title="10.1.4.2.2. Wallet Attestation Issuance" href="wallet-attestation-issuance.html" /> 
+    <link rel="prev" title="10.1.4.2.2. Wallet App and Wallet Unit Attestation Issuance" href="wallet-attestation-issuance.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -271,12 +271,17 @@ Below is a non-normative example of a Wallet Instance Revocation Response.</p>
 <h2><span class="section-number">10.1.4.2.3.3. </span>Revocation Check Mechanisms<a class="headerlink" href="#revocation-check-mechanisms" title="Link to this heading">¶</a></h2>
 <p>The verification of the Wallet Instance validity MUST be performed:</p>
 <ul class="simple">
-<li><p><strong>During Digital Credential issuance or presentation phase</strong> by the Credential Issuers and Relying Parties, respectively. Only Wallet Instances in Operational or Valid state have valid Wallet Attestations. Thus, the verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers and Relying Parties by checking the presence of a valid Wallet Attestation (i.e. not expired and signed by a trusted Wallet Provider). During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet Attestation is valid or not.</p></li>
-<li><p><strong>During the validity period of the Digital Credential</strong> by the Credential Issuers. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too. In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.</p></li>
+<li><p><strong>During Digital Credential issuance</strong> by the Credential Issuers. Only Wallet Instances in Operational or Valid state have valid Wallet App Attestation and Wallet Unit Attestation. The verification of the validity of a Wallet Instance is indirectly performed by Credential Issuers by checking the presence of a valid Wallet Unit Attestation (i.e., not expired, not revoked checking the Wallet Unit Attestation Status List, and signed by a trusted Wallet Provider).</p></li>
+<li><p><strong>During Digital Credential presentation phase</strong> by the Relying Parties. The verification of the validity of a Wallet Instance is performed by Relying Parties through the checking of the presence of a valid Wallet App Attestation (i.e. not expired and signed by a trusted Wallet Provider). During proximity presentation the Wallet Instance might not be able to fetch a fresh Wallet App Attestation, in this case, the Wallet Instance SHOULD send the latest version of the Wallet App Attestation. It is left up to the Relying Party to determine whether a presentation with a valid but expired Wallet App Attestation is valid or not.</p></li>
+<li><p><strong>During the validity period of the Digital Credential</strong> by the Credential Issuers every 24 hours by checking the PID's Wallet Unit Attestation Status List. Indeed, if the Wallet Instance is revoked, the PID hosted within it MUST be revoked. Any other Digital Credential obtained through the presentation of the PID MUST therefore be revoked too.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>With the introduction of the <strong>Wallet Trust Evidence (WTE)</strong>, this section will be updated accordingly.</p>
+<p>If Credential Issuers issue credentials with a validity period of less than 24 hours, they only need to verify the validity period of the WUA upon issuance.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the current version of the specification, Credential Issuers are directly notified of a Wallet Instance revocation by the Wallet Provider using a PDND e-service.</p>
 </div>
 </section>
 </section>
@@ -314,7 +319,7 @@ Below is a non-normative example of a Wallet Instance Revocation Response.</p>
             <div class="left">
                 
                 <a href="wallet-attestation-issuance.html">
-                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.2. </span>Wallet Attestation Issuance</span></a>
+                    <span class="icon">&lt;</span><span><span class="section-number">10.1.4.2.2. </span>Wallet App and Wallet Unit Attestation Issuance</span></a>
                 
             </div>
 
@@ -328,7 +333,7 @@ Below is a non-normative example of a Wallet Instance Revocation Response.</p>
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/11/2025.
+      Last updated on 06/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

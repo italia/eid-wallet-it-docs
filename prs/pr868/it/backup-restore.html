@@ -221,7 +221,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 <p><strong>Passaggio 4</strong>: L'Istanza del Wallet esegue le seguenti operazioni per creare il file JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>):</p>
 <ul class="simple">
 <li><p>Per ciascuna delle Credenziali con chiave vincolata all'hardware, aggiunge l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> come voce nel JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122d</span></a>).</p></li>
-<li><p>Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet Unit Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>). L'Istanza del Wallet DEVE verificare la validità della Wallet Unit Attestation prima di firmare il JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_123</span></a>).</p></li>
+<li><p>Firma il JWT di backup utilizzando la chiave privata la cui chiave pubblica è attestata nella Wallet App Attestation. La relativa chiave pubblica attestata dal Fornitore di Wallet è fornita nella Wallet App Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>). L'Istanza del Wallet DEVE verificare la validità della Wallet App Attestation prima di firmare il JWT di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_123</span></a>).</p></li>
 <li><p>Aggiunge il JWT di backup firmato come voce al file di backup (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_122</span></a>).</p></li>
 <li><p>Cripta il file di backup utilizzando la frase chiave fornita (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_124</span></a>).</p></li>
 </ul>
@@ -242,7 +242,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 <span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2024-12-13T16:35:06+01:00&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;wallet_provider_id&quot;</span><span class="p">:</span><span class="s2">&quot;https://wallet-provider.example.org/&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;wallet_instance_version&quot;</span><span class="p">:</span><span class="s2">&quot;v1.0&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;wallet_attestation&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;wallet_app_attestation&quot;</span><span class="p">:</span><span class="s2">&quot;eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;credentials_backup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;https://issuer.example.org/v1.0/mdl&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;org.iso.18013-5.1.mDL&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;https://eaa-provider.example.org/&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dc_sd_jwt_EuropeanDisabilityCard&quot;</span><span class="p">]</span>
@@ -295,8 +295,8 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 <tr class="row-even"><td><p><strong>wallet_instance_version</strong></p></td>
 <td><p>DEVE essere impostato sulla versione della Soluzione Wallet di cui è stato eseguito il backup.</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>wallet_attestation</strong></p></td>
-<td><p>DEVE essere impostato su un valore contenente il JWT della Wallet Unit Attestation.</p></td>
+<tr class="row-odd"><td><p><strong>wallet_app_attestation</strong></p></td>
+<td><p>DEVE essere impostato su un valore contenente il JWT della Wallet App Attestation.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>credentials_backup</strong></p></td>
 <td><p>Oggetto che descrive le specifiche delle Credenziali di cui è stato eseguito il backup. Questo oggetto contiene un elenco di coppie nome/valore, dove ogni nome è un identificatore univoco del Fornitore di Credenziali. Questo identificatore viene utilizzato per avviare la fase di emissione. Il valore è un array di stringhe univoche. Ogni stringa corrisponde al <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> che identifica la specifica Credenziale Elettronica che è stata emessa.</p></td>
@@ -320,7 +320,7 @@ L'Utente DEVE conservare in modo sicuro la frase chiave scelta tra quelle propos
 Di seguito, la descrizione dei passaggi di <a class="reference internal" href="#fig-restore-flow"><span class="std std-numref">Fig. 10.8</span></a>:</p>
 <p><strong>Passaggi 1-6</strong>: L'Utente desidera ripristinare le Credenziali Elettroniche utilizzando il backup precedentemente creato con la propria Istanza del Wallet.
 L'Utente seleziona <cite>ripristina backup delle Credenziali Elettroniche</cite> nell'app dell'Istanza del Wallet e viene fornito all'Utente un prompt con la funzione di importazione. Il file di backup da importare può essere fornito utilizzando un archivio locale o una posizione remota utilizzando anche un archivio cloud, e quindi inviare le frasi chiave di recupero (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_126</span></a>, <a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_127</span></a>).
-Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_129</span></a>). Per fare ciò, estrae prima il JWT della Wallet Unit Attestation dal claim <code class="docutils literal notranslate"><span class="pre">wallet_attestation</span></code> e ottiene la relativa chiave pubblica utilizzando la Wallet Unit Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>) come specificato in <a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128</span></a>.</p>
+Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la firma del JWT di backup per garantirne l'autenticità (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_129</span></a>). Per fare ciò, estrae prima il JWT della Wallet App Attestation dal claim <code class="docutils literal notranslate"><span class="pre">wallet_app_attestation</span></code> e ottiene la relativa chiave pubblica utilizzando la Wallet App Attestation (claim <code class="docutils literal notranslate"><span class="pre">cnf</span></code>) come specificato in <a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128</span></a>.</p>
 <p><strong>Passaggi 7-8</strong>: L'Istanza del Wallet per ogni voce di Credenziale con associazione hardware nel payload del JWT di backup esegue i seguenti passaggi (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130</span></a>):</p>
 <ul class="simple">
 <li><p>Estrae l'identificatore del Fornitore di Credenziali e il <code class="docutils literal notranslate"><span class="pre">credential_configuration_id</span></code> dalla voce. Il primo viene utilizzato per identificare il Fornitore di Credenziali e ottenere i suoi metadati, mentre il secondo verrà utilizzato per segnalare il tipo di Credenziale al Fornitore di Credenziali (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_130a</span></a>).</p></li>
@@ -328,7 +328,7 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet Unit Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128a</span></a>).</p>
+<p>L'Istanza del Wallet NON DEVE verificare la scadenza della Wallet App Attestation poiché il suo scopo principale è consentire all'Istanza del Wallet di verificare l'autenticità del file di backup assicurandosi che sia stato creato e firmato da un'Istanza del Wallet di uno specifico Fornitore di Wallet (<a class="reference internal" href="test-plans-wallet-provider.html#credential-backup-testcases"><span class="std std-ref">WP_128a</span></a>).</p>
 </div>
 </section>
 </section>
@@ -379,7 +379,7 @@ Per verificare l'autenticità del file, l'Istanza del Wallet DEVE verificare la 
 
 
     <div class="footer" role="contentinfo">
-      Ultimo aggiornamento 05/11/2025.
+      Ultimo aggiornamento 06/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

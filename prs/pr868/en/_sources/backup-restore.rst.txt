@@ -52,7 +52,7 @@ The :term:`User` MUST securely store the key phrase chosen from those proposed b
 **Step 4**: The :term:`Wallet Instance` performs the operations below to create the backup JWT entry for the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 
 - For each of the HW bound key Credentials, add the :term:`Credential Issuer` identifier and the ``credential_configuration_id`` as an entry in the backup JWT (:ref:`WP_122d <credential-backup-testcases>`).
-- Sign the backup JWT using the private key that its public key is attested within the :term:`Wallet Attestation`. The related public key that is attested by the :term:`Wallet Provider` is provided within the :term:`Wallet Attestation` (``cnf`` claim). The :term:`Wallet Instance` MUST verify the validity of the :term:`Wallet Attestation` before signing the backup JWT (:ref:`WP_123 <credential-backup-testcases>`).
+- Sign the backup JWT using the private key that its public key is attested within the :term:`Wallet App Attestation`. The related public key that is attested by the :term:`Wallet Provider` is provided within the :term:`Wallet App Attestation` (``cnf`` claim). The :term:`Wallet Instance` MUST verify the validity of the :term:`Wallet App Attestation` before signing the backup JWT (:ref:`WP_123 <credential-backup-testcases>`).
 - Add the signed backup JWT as an entry to the backup file (:ref:`WP_122 <credential-backup-testcases>`).
 - Encrypt the backup file using the provided key phrase (:ref:`WP_124 <credential-backup-testcases>`).
 
@@ -78,7 +78,7 @@ A non-normative example of the backup JWT header and payload is as the following
     "timestamp":"2024-12-13T16:35:06+01:00",
     "wallet_provider_id":"https://wallet-provider.example.org/",
     "wallet_instance_version":"v1.0",
-    "wallet_attestation":"eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ",
+    "wallet_app_attestation":"eyJhbGciOiJFUzI1NiIsImVVfQz.eyJpc3MiOiAiaH...LCAibmJ",
     "credentials_backup": {
         "https://issuer.example.org/v1.0/mdl": ["org.iso.18013-5.1.mDL"],
         "https://eaa-provider.example.org/": ["dc_sd_jwt_EuropeanDisabilityCard"]
@@ -117,8 +117,8 @@ The body of backup JWT contains the following REQUIRED claims (:ref:`WP_122b <cr
     - It MUST be set to the unique identifier of the :term:`Wallet Provider`.
   * - **wallet_instance_version**
     - It MUST be set to the version of the :term:`Wallet Solution` that has been backed up.
-  * - **wallet_attestation**
-    - It MUST be set to a value containing the :term:`Wallet Attestation` JWT.
+  * - **wallet_app_attestation**
+    - It MUST be set to a value containing the :term:`Wallet App Attestation` JWT.
   * - **credentials_backup**
     - Object that describes specifics of the:term:`Credential` that are backupped. This object contains a list of name/value pairs, where each name is a unique identifier of the :term:`Credential Issuer`. This identifier is used to initiate the issuance phase. The value is an array of unique strings. Each string corresponds to the ``credential_configuration_id`` that identifies the specific:term:`Digital Credential` that was issued.
 
@@ -147,7 +147,7 @@ Below, the description of the steps of :numref:`fig_Restore_flow`:
 
 **Steps 1-6**: The :term:`User` wants to restore the Digital Credentials using the backup previously created with their :term:`Wallet Instance`.
 The :term:`User` selects `restore Digital Credentials backup` in the :term:`Wallet Instance` app and a prompt with the import function is provided to the User (:ref:`WP_126 <credential-backup-testcases>`). The backup file to be imported can be provided using a local storage or a remote location using a cloud storage as well, and therefore submit the recovery key phrases (:ref:`WP_127 <credential-backup-testcases>`).
-To check the authenticity of the file, the :term:`Wallet Instance` MUST verify the backup JWT's signature to ensure its authenticity (:ref:`WP_129 <credential-backup-testcases>`). To do this, it first extracts the :term:`Wallet Attestation` JWT from ``wallet_attestation`` claim and obtains the related public key using the :term:`Wallet Attestation` (``cnf`` claim) as per :ref:`WP_128 <credential-backup-testcases>`.
+To check the authenticity of the file, the :term:`Wallet Instance` MUST verify the backup JWT's signature to ensure its authenticity (:ref:`WP_129 <credential-backup-testcases>`). To do this, it first extracts the :term:`Wallet App Attestation` JWT from ``wallet_app_attestation`` claim and obtains the related public key using the :term:`Wallet App Attestation` (``cnf`` claim) as per :ref:`WP_128 <credential-backup-testcases>`.
 
 **Steps 7-8**: The :term:`Wallet Instance` for each HW binding credentials entry in the payload of the backup JWT performs the following steps (:ref:`WP_130 <credential-backup-testcases>`):
 
@@ -155,4 +155,4 @@ To check the authenticity of the file, the :term:`Wallet Instance` MUST verify t
 - Using the :term:`Issuer` identifier the :term:`Wallet Instance` obtains the metadata of the :term:`Credential Issuer` and makes a re-issuance request to the :term:`Credential Issuer` by providing the new :term:`Holder Key Binding` with the:term:`Credential` (:ref:`WP_130b <credential-backup-testcases>`).
 
 .. note::
-  The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).
+  The :term:`Wallet Instance` MUST not check the expiration of the :term:`Wallet App Attestation` as its main purpose is to enable the :term:`Wallet Instance` to verify the authenticity of the backup file by ensuring it has been created and signed by a :term:`Wallet Instance` of a specific :term:`Wallet Provider` (:ref:`WP_128a <credential-backup-testcases>`).

@@ -8,8 +8,8 @@ Relying Party Endpoints
 The Relying Party MUST expose a comprehensive set of endpoints to support the complete IT-Wallet ecosystem, including both remote and proximity presentation flows.
 
 
-Remote Flow Endpoints
-^^^^^^^^^^^^^^^^^^^^^^
+Relying Party Remote Flow Endpoints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. include:: relying-party-remote-flow-endpoints.rst
 

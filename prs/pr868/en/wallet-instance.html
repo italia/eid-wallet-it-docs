@@ -179,10 +179,9 @@
   <section id="wallet-instance">
 <h1><span class="section-number">10.1.4. </span>Wallet Instance<a class="headerlink" href="#wallet-instance" title="Link to this heading">¶</a></h1>
 <p>The Wallet Instance establishes a strong and reliable mechanism for the User to engage in various digital transactions in a secure and privacy-preserving manner.</p>
-<p>The Wallet Instance allows other entities within the ecosystem to establish trust with it, by consistently
-presenting a Wallet Attestation during interactions with PID Providers,
-(Q)EAA Providers, and Relying Parties. These verifiable attestations, provided by the Wallet Provider,
-serve to authenticate the Wallet Instance itself, ensuring its reliability when engaging with other ecosystem actors.</p>
+<p>The Wallet Instance establishes trust with PID and (Q)EAA Providers by consistently presenting Wallet App and Wallet Unit Attestations during interactions, while relying solely on Wallet App Attestations for Relying Parties. These verifiable attestations, provided by the Wallet Provider,
+serve to authenticate the Wallet Instance itself, ensuring the trustworthiness of the WSCD, checking the Wallet Instance has not been revoked
+and ensuring its reliability when engaging with other ecosystem actors.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Wallet Instance Table of Contents</span></p>
 <ul>
@@ -196,7 +195,7 @@ serve to authenticate the Wallet Instance itself, ensuring its reliability when 
 </li>
 <li class="toctree-l1"><a class="reference internal" href="wallet-instance-functionalities.html">10.1.4.2. Wallet Instance Functionalities</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-registration.html">10.1.4.2.1. Wallet Instance Initialization and Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wallet-attestation-issuance.html">10.1.4.2.2. Wallet Attestation Issuance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wallet-attestation-issuance.html">10.1.4.2.2. Wallet App and Wallet Unit Attestation Issuance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wallet-instance-revocation.html">10.1.4.2.3. Wallet Instance Revocation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#wallet-instance-revocation-request">10.1.4.2.3.1. Wallet Instance Revocation Request</a></li>
 <li class="toctree-l3"><a class="reference internal" href="wallet-instance-revocation.html#wallet-instance-revocation-response">10.1.4.2.3.2. Wallet Instance Revocation Response</a></li>
@@ -238,7 +237,7 @@ serve to authenticate the Wallet Instance itself, ensuring its reliability when 
 
 
     <div class="footer" role="contentinfo">
-      Last updated on 05/11/2025.
+      Last updated on 06/11/2025.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.5.
     </div>
 

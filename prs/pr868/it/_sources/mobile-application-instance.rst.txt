@@ -270,26 +270,27 @@ La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore 
       - Il servizio non è disponibile. Si prega di riprovare più tardi.
  
 
-Associazione Chiave dell'Applicazione Mobile
---------------------------------------------
 
-Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.
+.. Associazione Chiave dell'Applicazione Mobile
+.. --------------------------------------------
+.. 
+ Il flusso di Associazione Chiave consente all'Istanza dell'Applicazione Mobile di associare una coppia di chiavi appena creata all'Istanza dell'Applicazione Mobile, basandosi su una prova di possesso delle Cryptographic Hardware Keys generate durante la fase di :ref:`mobile-application-instance:Inizializzazione dell'Istanza dell'Applicazione Mobile`. Prima di completare il processo, il Fornitore dell'Applicazione deve anche verificare l'integrità dell'Istanza dell'Applicazione Mobile.
 
-Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni :ref:`relying-party-instance:App di Verifica Mobile` e :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.
+ .. Sebbene il flusso esatto differisca a seconda del contesto (vedi le sezioni :ref:`relying-party-instance:App di Verifica Mobile` e :ref:`wallet-attestation-issuance:Emissione della Wallet Attestation`), la Richiesta di Integrità dell'Applicazione Mobile e la Risposta di Errore sono coerenti.
 
 
-Richiesta di Associazione Chiave dell'Applicazione Mobile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. Richiesta di Associazione Chiave dell'Applicazione Mobile
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..
+ La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con ``Content-Type`` impostato su ``application/json``.
+..
+ Il corpo della Richiesta di Associazione Chiave contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e gli attributi del corpo descritti di seguito (:ref:`WP_134 <wallet-instance-optional-testcases>`).
+..
+ Di seguito è riportato un esempio non normativo di una Richiesta di Associazione Chiave.
+..
+ .. code-block:: http
 
-La Richiesta di Associazione Chiave utilizza il metodo HTTP POST con ``Content-Type`` impostato su ``application/json``.
-
-Il corpo della Richiesta di Associazione Chiave contiene un parametro ``assertion`` il cui valore è un JWT firmato che include tutti i parametri di intestazione e gli attributi del corpo descritti di seguito (:ref:`WP_134 <wallet-instance-optional-testcases>`).
-
-Di seguito è riportato un esempio non normativo di una Richiesta di Associazione Chiave.
-
-.. code-block:: http
-
-    POST /key-binding HTTP/1.1
+..   POST /key-binding HTTP/1.1
     Host: application-provider.example.org
     Content-Type: application/json
 
@@ -297,10 +298,10 @@ Di seguito è riportato un esempio non normativo di una Richiesta di Associazion
       "assertion": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImtoakZWTE9nRjNHeG..."
     }
 
-In particolare, il JWT della Richiesta di Associazione Chiave include i seguenti parametri di intestazione HTTP:
-
-.. _table_key_binding_request_claim:
-.. list-table::
+.. In particolare, il JWT della Richiesta di Associazione Chiave include i seguenti parametri di intestazione HTTP:
+..
+ .. _table_key_binding_request_claim:
+ .. list-table::
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
@@ -318,9 +319,9 @@ In particolare, il JWT della Richiesta di Associazione Chiave include i seguenti
       - Il tipo del JWT, che può assumere valori diversi a seconda del contesto.
       -
 
-Il JWT della Richiesta di Associazione Chiave include i seguenti attributi del corpo:
-
-.. list-table::
+.. Il JWT della Richiesta di Associazione Chiave include i seguenti attributi del corpo:
+..
+ .. list-table::
     :class: longtable
     :widths: 20 60 20
     :header-rows: 1
@@ -356,18 +357,18 @@ Il JWT della Richiesta di Associazione Chiave include i seguenti attributi del c
       - Oggetto JSON contenente la parte pubblica di una coppia di chiavi asimmetriche posseduta dall'Istanza dell'Applicazione Mobile.
       - :rfc:`7800`.
 
-Di seguito è riportato un esempio non normativo di un'intestazione e un payload JWT di una Richiesta di Associazione Chiave.
+.. Di seguito è riportato un esempio non normativo di un'intestazione e un payload JWT di una Richiesta di Associazione Chiave.
+..
+ .. code-block:: json
 
-.. code-block:: json
-
-    {
+ ..   {
       "alg": "ES256",
       "kid": "hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "typ": "..."
     }
-
-.. code-block:: json
-
+..
+ .. code-block:: json
+..
     {
       "iss": "https://application-provider.example.org/instance/hT3v7KQjFZy6GvDkYgOZ1u2F6T4Nz5bPjX8o1MZ3dJY",
       "sub": "https://application-provider.example.org/",
@@ -386,25 +387,25 @@ Di seguito è riportato un esempio non normativo di un'intestazione e un payload
     }
 
 
-Risposta di Associazione Chiave dell'Applicazione Mobile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. Risposta di Associazione Chiave dell'Applicazione Mobile
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni :ref:`relying-party-provider-backend-endpoint:Risposta di Associazione Chiavi della Relying Party` e :ref:`wallet-provider-endpoint:Risposta all'Emissione della Wallet Attestation`.
+.. La Risposta di Associazione Chiave dipende strettamente dal contesto della richiesta; ulteriori dettagli sono forniti nelle sezioni :ref:`relying-party-provider-backend-endpoint:Risposta di Associazione Chiavi della Relying Party` e :ref:`wallet-provider-endpoint:Risposta all'Emissione della Wallet Attestation`.
 
 
-Risposta di Errore di Associazione Chiave dell'Applicazione Mobile
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
-
+.. Risposta di Errore di Associazione Chiave dell'Applicazione Mobile
+.. """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+..
+ Se si verificano errori, il Fornitore dell'Applicazione restituisce una risposta di errore. La risposta utilizza ``application/json`` come ``Content-Type`` e include i seguenti parametri:
+..
   - *error*. Il codice di errore.
   - *error_description*. Testo in forma leggibile dall'uomo che fornisce ulteriori dettagli per chiarire la natura dell'errore riscontrato (:ref:`WP_035 <wallet-instance-testcases>`).
 
-
-Di seguito è riportato un esempio non normativo di una Risposta di Errore di Associazione Chiave.
-
-.. code-block:: http
-
+..
+ Di seguito è riportato un esempio non normativo di una Risposta di Errore di Associazione Chiave.
+..
+ .. code-block:: http
+..
     HTTP/1.1 403 Forbidden
     Content-Type: application/json
 
@@ -413,9 +414,9 @@ Di seguito è riportato un esempio non normativo di una Risposta di Errore di As
       "error_description": "The provided challenge is invalid, expired, or already used."
     }
 
-La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore, se non diversamente specificato (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
-
-.. list-table::
+.. La seguente tabella elenca i Codici di Stato HTTP e i relativi codici di errore supportati per la risposta di errore, se non diversamente specificato (:ref:`WP_036–0339 <wallet-instance-testcases>` and :ref:`WP_150–155 <wallet-instance-optional-testcases>`):
+..
+ .. list-table::
     :class: longtable
     :widths: 30 20 50
     :header-rows: 1
