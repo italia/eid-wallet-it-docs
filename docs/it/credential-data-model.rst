@@ -153,7 +153,7 @@ Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere 
                 - ``date_of_issuance``: data di emissione dell'attestazione.
                 - ``voucher``: DEVE contenere il claim ``organization``.
 
-      - `OIDC-IDA`.
+      - `IANA`.
     * - **_sd**
       - [NSD]. OBBLIGATORIO. Array di stringhe, dove ogni stringa rappresenta un digest di una disclosure.
       - 4.2.4.1 `SD-JWT`_
