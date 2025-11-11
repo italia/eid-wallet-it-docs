@@ -100,6 +100,11 @@ Nel caso del flusso avviato dall'Issuer, oltre al controllo della federazione de
   * Specifica i tipi di Credenziali richieste utilizzando il parametro ``authorization_details`` [RAR :rfc:`9396`] e/o il parametro ``scope`` (:ref:`WP_052d <wallet-credential-issuance-testcases>`).
 
 .. note::
+  JAR [:rfc:`9101`] è obbligatorio in questa specifica tecnica per garantire l'integrità end-to-end della richiesta di autorizzazione e di tutti i parametri inclusi nel Request Object.
+  Tuttavia, la Wallet Instance può interagire con Credential Issuer cross-border i cui Authorization Server non seguono questa specifica e potrebbero non supportare l'implementazione di JAR. Per gestire questo scenario, la Wallet Instance DOVREBBE verificare il parametro `require_signed_request_object` nei metadata dell'Authorization Server e decidere in base ad esso se inviare i parametri nel signed Request Object o meno. Per interoperabilità, la Wallet Instance PUÒ duplicare gli stessi parametri nel corpo della richiesta.
+  La Sezione 10.7 di :rfc:`9101` fornisce i requisiti di sicurezza su come gestire correttamente questa duplicazione.
+
+.. note::
    Per l'Autenticazione eID Substantial con Verifica MRTD, l'oggetto ``authorization_details`` DEVE contenere il valore ``"it_l2+document_proof"``. Per le specifiche complete del protocollo, vedere :ref:`credential-issuance-l2plus:Autenticazione eID Substantial con Verifica MRTD per Emissione PID`.
 
 Il Credential Issuer esegue i seguenti controlli alla ricezione della `PAR Request`:

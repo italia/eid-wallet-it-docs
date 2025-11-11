@@ -47,6 +47,8 @@ The *oauth_authorization_server* metadata MUST contain the following parameters.
     - JSON array containing a list of supported client authentication methods. The Token Endpoint MUST support *attest_jwt_client_auth* as defined in `OAUTH-ATTESTATION-CLIENT-AUTH`_.
   * - **token_endpoint_auth_signing_alg_values_supported**
     - JSON array containing a list of the signing algorithms ("*alg*" values) supported by the token endpoint for the signature on the JWT used to authenticate the client at the Token Endpoint. See :rfc:`8414#section-2`.
+  * - **require_signed_request_object**
+    - Boolean value. It MUST be set to `true` to indicate that the authorization request is protected using a signed Request Object [:rfc:`9101`].
   * - **request_object_signing_alg_values_supported**
     - JSON array containing a list of the signing algorithms ("*alg*" values) supported for Request Objects. See `[openid-connect-discovery-1_0] <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata>`_.
   * - **dpop_signing_alg_values_supported**
