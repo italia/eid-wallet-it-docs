@@ -89,7 +89,7 @@ Il JOSE Header contiene i seguenti parametri obbligatori:
     - OPZIONALE. Array JSON contenente la catena di fiducia che dimostra l'affidabilità di chi emette il JWT.
     - [`OID-FED`_] Sezione 4.3.
   * - **x5c**
-    - REQUIRED. Contiene il certificato della chiave pubblica X.509 o la catena di certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
+    - OBBLIGATORIO. Contiene il certificato della chiave pubblica X.509 o la catena di certificati [:rfc:`5280`] corrispondente alla chiave utilizzata per firmare digitalmente il JWT.
     - :rfc:`7515` Sezione 4.1.8 e [`SD-JWT-VC`_] Sezione 3.5.
 
 Il payload JWT contiene i seguenti claim. Alcuni di questi claim possono essere divulgati, questi sono elencati nelle seguenti tabelle che specificano se un claim è divulgabile selettivamente [SD] o meno [NSD].
