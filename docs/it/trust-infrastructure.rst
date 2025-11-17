@@ -340,7 +340,9 @@ Di seguito è riportato un esempio non normativo di un'Entity Configuration del 
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ <self-issued X.509 certificate about the Trust Anchor> ]
+                    "x5c": [
+                      // <self-issued X.509 certificate about the Trust Anchor>
+                      ]
                 }
             ]
         },
@@ -582,14 +584,16 @@ Di seguito è riportato un esempio non normativo di un Subordinate Statement eme
         "iss": "https://intermediate.example.org",
         "sub": "https://rp.example.it",
         "jwks": {
-            "keys": [
+            "keys": [ // keys about the Subordinate
                 {
                     "kty": "EC",
                     "kid": "2HnoFS3YnC9tjiCaivhWLVUJ3AxwGGz_98uRFaqMEEs",
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ <X.509 certificate> ]
+                    "x5c": [ 
+                      // <X.509 certificate about the Subordinate>
+                      ]
                 }
             ]
         },

@@ -524,7 +524,9 @@ Below there is a non-normative example of an Subordinate Statement issued by an 
                     "crv": "P-256",
                     "x": "1kNR9Ar3MzMokYTY8BRvRIue85NIXrYX4XD3K4JW7vI",
                     "y": "slT14644zbYXYF-xmw7aPdlbMuw3T1URwI4nafMtKrY",
-                    "x5c": [ <X.509 certificate about the Subordinate> ]
+                    "x5c": [ 
+                      // <X.509 certificate about the Subordinate>
+                      ]
                 }
             ]
         },

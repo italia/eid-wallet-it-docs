@@ -644,7 +644,7 @@ Di seguito un esempio non normativo di un Status Assertion Response object in fo
   {
     "iss": "https://issuer.example.org",
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
+    "credential_hash": "$CREDENTIAL-HASH",
     "credential_hash_alg": "sha-256",
     "credential_status_type": 0x01,
     "credential_status_detail": {
@@ -741,7 +741,7 @@ Di seguito un esempio non normativo di un oggetto Status Assertion Error in form
   {
     "iss": "https://issuer.example.org",
     "jti": "6f204f7e-e453-4dfd-814e-9d155319408c"
-    "credential_hash": $CREDENTIAL-HASH,
+    "credential_hash": "$CREDENTIAL-HASH",
     "credential_hash_alg": "sha-256",
     "error": "unsupported_hash_alg",
     "error_description": "The hash algorithm is not supported"
