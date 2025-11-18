@@ -72,7 +72,7 @@
 .. _Transition to Operational: wallet-solution.html#transition-to-operational
 .. _Trusty: https://source.android.com/docs/security/features/trusty
 .. _W3C-SRI: https://www.w3.org/TR/SRI/
-.. _W3C.CSS-COLOR: https://www.w3.org/TR/css-color/
+.. _W3C.CSS-COLOR: https://www.w3.org/TR/2022/REC-css-color-3-20220118/
 .. _Wallet Attestation Issuance endpoint: wallet-solution.html#wallet-attestation-issuance-endpoint
 .. _Wallet Attestation Issuance: wallet-solution.html#wallet-attestation-issuance
 .. _Wallet Instance Functionalities: wallet-solution.html#wallet-instance-functionalities
