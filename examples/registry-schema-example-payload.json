@@ -1,0 +1,21 @@
+{
+    "schema_registry_version": "1.0",
+    "last_updated": "2025-03-15T12:00:00Z",
+    "schemas": [
+        {
+            "credential_type": "mso_mdoc_mDL",
+            "format": "mso_mdoc",
+            "docType": "org.iso.18013.5.1",
+            "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/mdoc/mDL",
+            "schema_uri#integrity": "sha256-c8b708728e4c5756e35c03aeac257ca878d1f717d7b61f621be4d36dbd9b9c16",
+            "description": "Schema tecnico per la mobile Driving License in formato mdoc."
+        },
+        {
+            "credential_type": "dc_sd_jwt_pid",
+            "format": "dc+sd-jwt",
+            "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/pid",
+            "schema_uri#integrity": "sha256-a1b2c3d4e5f67890...",
+            "description": "Schema tecnico per la Person Identification Data (PID) in formato SD-JWT."
+        }
+    ]
+}

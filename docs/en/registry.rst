@@ -4,7 +4,7 @@
 Registry Infrastructure
 ==========================
 
-The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital credential operations from entity onboarding to credential presentation.
+The IT-Wallet ecosystem operates through a registry infrastructure that provides standardized data definitions, entity registration, and credential discovery capabilities. The registry system consists of multiple interconnected components that support the complete lifecycle of digital credential operations from entity onboarding to credential presentation. 
 
 The registry architecture addresses semantic standardization, federation trust management, and credential discovery requirements through specialized registry components that ensure interoperability and compliance across the ecosystem.
 
@@ -70,6 +70,7 @@ JWT payload structure (when decoded):
         "authentic_sources": "https://trust-anchor.eid-wallet.example.it/api/v1/authentic-sources",
         "credential_catalog": "https://trust-anchor.eid-wallet.example.it/api/v1/credential-catalog",
         "taxonomy": "https://trust-anchor.eid-wallet.example.it/api/v1/taxonomy",
+        "schema_registry": "https://trust-anchor.eid-wallet.example.it/api/v1/schemas",
         "federation_list": "https://trust-anchor.eid-wallet.example.it/list",
         "federation_fetch": "https://trust-anchor.eid-wallet.example.it/fetch",
         "federation_resolve": "https://trust-anchor.eid-wallet.example.it/resolve",
@@ -105,7 +106,7 @@ The Claims Registry MUST ensure:
    The Claims Registry defines semantic properties of individual attributes, but MUST NOT specify selective disclosure capabilities. Selective disclosure depends on credential format implementations (SD-JWT, mDocs), issuer technical configurations, and presentation context. These capabilities are specified at the credential type level within the Digital Credentials Catalog and implemented during credential presentation flows.
 
 
-Claims Registry Usage 
+Claims Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Claims Registry MUST support the complete ecosystem lifecycle:
@@ -126,7 +127,7 @@ The Claims Registry MUST support the complete ecosystem lifecycle:
 Claims Registry Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided through the Digital Credentials Catalog localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity.
+The Claims Registry maintains language-neutral, technical definitions for semantic consistency across the ecosystem. User-facing localizations for claim names and descriptions are provided through the Digital Credentials Catalog localization bundles, enabling efficient multilingual support without compromising the registry's structural integrity. 
 
 A non-normative example of Claims Registry structure is given below:
 
@@ -143,6 +144,7 @@ The Supervisory Body MUST maintain the Authentic Source Registry to enable coord
   - **Integration Methods**: Technical access mechanisms (PDND for public AS, custom APIs for private AS).
   - **Intended Purposes**: Supported credential types and business contexts for AS-CI coordination.
   - **Data Quality Assurance**: Authoritative status, update frequency, and audit trail capabilities.
+  - **Display Characteristics (Optional)**: General, non-mandatory UI characteristics related to the credential (colors, logos, backgrounds) to guide the Issuer in credential provisioning.
 
 The AS Registry MUST ensure:
 
@@ -151,7 +153,10 @@ The AS Registry MUST ensure:
   - **Quality Assurance**: Maintains authoritative status and data reliability across different domains.
   - **Regulatory Compliance**: Supports public administration transparency and private sector coordination requirements.
 
-AS Registry Usage 
+.. note::
+   AS Registry is a technical and non-public registry that provides guidance for the Credential Issuer for credential provisioning.
+
+AS Registry Usage
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The AS Registry supports ecosystem coordination throughout the operational lifecycle:
@@ -220,7 +225,7 @@ The AS identifier MUST follow these normative rules:
   - ``https://motorizzazione.gov.example``: Public - Ministry of Transport, Motorization Dept
   - ``https://registry.anpr.example``: Public - National Registry of Resident Population
   - ``https://api.bank.example/auth-source``: Private - Example Bank Financial Services
-  
+
 
 AS Registry Parameters
 """"""""""""""""""""""
@@ -271,6 +276,9 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **organization_info.logo_uri**
      - string
      - OPTIONAL. URL to the organization's logo image.
+   * - **organization_info.logo_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the logo image resource for integrity verification. REQUIRED if ``image_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
    * - **organization_info.service_documentation**
      - string
      - OPTIONAL. URL pointing to the Authentic Source service documentation.
@@ -280,6 +288,12 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **data_capabilities**
      - JSON Objects Array
      - REQUIRED. Array containing data capability specifications.
+   * - **data_capabilities[].dataset_id**
+     - string
+     - REQUIRED. The unique identifier of the dataset within the scope of the Authentic Source, which MAY be used as a query parameter for the ``GetAttributeClaims`` service.
+   * - **data_capabilities[].data_origin**
+     - string
+     - OPTIONAL. Human-readable name of the specific data origin or department providing the data.
    * - **data_capabilities[].domains**
      - String Array
      - REQUIRED. Taxonomy domain (e.g., ``["AUTHORIZATION"]``, ``["FINANCIAL"]``).
@@ -319,24 +333,42 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **display**
      - JSON object
      - OPTIONAL. Visual branding suggestions that Authentic Sources can provide for credentials using their data.
-   * - **display.background_color**
+   * - **display.branding_uri**
+     - string
+     - OPTIONAL. URI to the organization's official brand identity guidelines.
+   * - **display.preferred_logo**
+     - string
+     - OPTIONAL. Identifier (``id``) of the preferred logo from the `images` array for UI display.
+   * - **display.preferred_credential_background**
+     - string
+     - OPTIONAL. Identifier (``id``) of the preferred background image from the `images` array for UI display.
+   * - **display.preferred_background_color**
      - string
      - OPTIONAL. Suggested background color for credentials in hexadecimal format (e.g., ``"#003d82"``).
-   * - **display.text_color**
+   * - **display.preferred_text_color**
      - string
      - OPTIONAL. Suggested text color for credentials in hexadecimal format (e.g., ``"#ffffff"``).
-   * - **display.logo_uri**
+* - **display.colors**
+     - JSON Objects Array
+     - OPTIONAL. Array of predefined colors for UI rendering.
+   * - **display.colors[].id**
      - string
-     - OPTIONAL. URI to the Authentic Source's logo for credential branding.
-   * - **display.logo_uri#integrity**
+     - REQUIRED. Unique identifier for the color definition.
+   * - **display.colors[].hex**
      - string
-     - CONDITIONAL. Cryptographic digest of the logo for integrity verification. REQUIRED if ``logo_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``)
-   * - **display.template_uri**
+     - REQUIRED. Color value in hexadecimal format (e.g., ``"#003d82"``).
+   * - **display.images**
+     - JSON Objects Array
+     - OPTIONAL. Array of image resources (logos, backgrounds) suggested for display purposes.
+   * - **display.images[].id**
      - string
-     - OPTIONAL. URI to a visual template that the Authentic Source suggests for credentials using their data.
-   * - **display.template_uri#integrity**
+     - REQUIRED. Unique identifier for the image resource.
+   * - **display.images[].image_uri**
      - string
-     - CONDITIONAL. Cryptographic digest of the template for integrity verification. REQUIRED if ``template_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-def456..."``).
+     - REQUIRED. URI where the image resource can be retrieved. (Note: May also be named `logo_uri` in examples).
+   * - **display.images[].image_uri#integrity**
+     - string
+     - CONDITIONAL. Cryptographic digest of the image resource for integrity verification. REQUIRED if ``image_uri`` is present. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
 
 AS Registry Example
 """""""""""""""""""
@@ -372,8 +404,8 @@ Federation Registry operations are accessed through the Trust Anchor's federatio
 
 .. note::
    Federation endpoints are available through both the registry discovery mechanism (for unified registry access) and the Trust Anchor's Entity Configuration at ``.well-known/openid-federation`` (for federation-specific operations). Both sources provide the same endpoint URLs but serve different discovery patterns: registry discovery for initial ecosystem orientation, Entity Configuration for standard OpenID Federation 1.0 compliance.
-
-For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust-infrastructure:The Infrastructure of Trust`.
+   
+   For complete technical specifications of federation protocols, entity configurations, trust evaluation mechanisms, and trust chain validation, see :ref:`trust-infrastructure:The Infrastructure of Trust`.
 
 Digital Credentials Catalog
 -----------------------------
@@ -429,7 +461,6 @@ The following table summarizes the main information that MUST be provided by the
        - **Credential Unique identifier**: A unique identifier string of each Digital Credential.
        - **User authentication methods**: User authentication mechanisms used to request the Digital Credential, if required by Issuers or Authentic Sources.
        - **Minimum Level of Assurance**: The minimum Level of Assurance required for the Digital Credential's reliability. It MUST take into account the Level of Assurance of User authentication, when applicable, and Wallet Instance.
-       - **Additional display characteristics**: Visual and formatting specifications, such as a background reference image, logo, etc.
    * - Digital Credential Issuers
      - Details about the organization authorized to issue the Digital Credential, such as:
 
@@ -515,7 +546,7 @@ Each Credential MUST specify domains and purposes to enable both **Credential-Sp
     - **Police Controls**: ``"docType": "org.iso.18013.5.1.mDL"`` for driving license verification.
     - **Banking KYC**: Specific credential types mandated by financial regulations.
     - **Healthcare Services**: ``"vct_values": ["urn:eudi:european_disability_card:it:1"]`` for EU-compliant disability benefit access.
-
+  
   2. **Credential-Agnostic Scenarios** (Typical for Private Business): RPs request specific claims regardless of credential source for operational efficiency, such as:
 
     - **E-commerce Delivery**: Any credential, among those to which he is authorized to access, containing ``given_name``, ``family_name``, ``address`` for shipping.
@@ -589,11 +620,9 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **version**
     - REQUIRED. Version of the Digital Credential definition.
   * - **credential_type**
-    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``.
+    - REQUIRED. Unique identifier of the Digital Credential type. For PID it MUST be ``pid``. This field serves as the unique key in the catalog.
   * - **legal_type**
     - REQUIRED. Legal classification of the Credential (e.g., ``pub-eaa``, ``qeaa``, ``eaa``).
-  * - **vct**: 
-    - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
   * - **restriction_policy**
     - OPTIONAL. Legal restrictions on Wallet Solutions and/or Credential Issuers allowed to request/issue the Digital Credential.
 
@@ -631,42 +660,27 @@ Each element of the ``credentials`` array contains at least the following inform
   * - **issuers**
     - REQUIRED. Array of relevant information about authorized Credential Issuers, including administrative and technical data such as Organization name, a reference to the API specification document and supported issuance mechanisms (for example the deferred flow support).
   * - **authentic_sources**
-    - REQUIRED. Array of string identifiers referencing authorized Authentic Sources as registered in the :ref:`registry:Authentic Source Registry`. Each identifier corresponds to an ``entity_id`` value from the AS Registry, which provides complete organizational and technical metadata including data provision capabilities, integration methods, and contact information.
-  * - **formats**
-    - REQUIRED. Array of supported technical formats of Digital Credentials, including:
+    - REQUIRED. Array of JSON objects referencing authorized Authentic Sources. Each object MUST contain the AS entity identifier and the specific data capability identifier:
 
-      * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc``)
-      * **configuration_id**: Configuration identifier of the :term:Credential format. This is formed by concatenating the ``credential_type`` value to the ``format`` (e.g., ``dc_sd_jwt_mDL`` or ``mso_mdoc_mDL``), and is used to uniquely reference the configuration for this :term:Credential format.
-      * **docType**: CONDITIONAL. It is only REQUIRED if the ``format`` is ``mso_mdoc``. If the :term:Credential is:
-
-        * defined by an ISO standard, it MUST be a string of the form ``iso.org.{iso-number}.{part}.{version}.{credential_type}`` (e.g., ``iso.org.18013.5.1.mDL``).
-        * defined at the european level, it MUST be a string of the form ``eu.europa.ec.{credential_type}.{version}`` (e.g., ``eu.europa.ec.loyaltycard.1.0``).
-        * defined by a national standard, it MUST be a string of the form ``{Trust Anchor reverse domain}.{credential_type}.{version}`` (e.g., ``it.wallet.trust-registry.pid.1``).
-      * **schema_uri**: URI pointing to the format specification document.
-      * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
-
+      * **id**: String identifier referencing the Authentic Source entity_id as registered in the :ref:`registry:Authentic Source Registry`.
+      * **dataset_id**: String identifier of the specific data capability/dataset used by the Issuer from the AS.
 
 The ``wallet_app_attestation`` Object contains at least the following information:
 
-.. list-table:: First-level Fields of Each Credential Entry
+.. list-table:: Wallet App Attestation Fields
   :class: longtable
   :header-rows: 1
   :widths: 30 70
 
   * - Field Name
     - Description
+  * - **version**
+    - REQUIRED. Version of the credential definition.
   * - **credential_type**
     - REQUIRED. Unique identifier of the Wallet App Attestation. It MUST be set to ``wallet_app_attestation``.
   * - **vct**
     - REQUIRED. It MUST be set as a URN of the form defined in :ref:`credential-data-model:Credential SD-JWT Parameters`. Matching of the literals included in this URN string MUST be performed in a case-sensitive manner.
-  * - **formats**
-    - REQUIRED. Array of supported formats for the Wallet App Attestation, including:
 
-      * **format**: Type of format (e.g., ``dc+sd-jwt``, ``mso_mdoc`` or ``oauth-client-attestation+jwt``)
-      * **configuration_id**: Configuration identifier of the Wallet App Attestation. This is formed by concatenating the string ``wa`` to the ``format`` (e.g., ``dc_sd_jwt_wa``, ``mso_mdoc_wa``, or ``jwt_wa``), and is used to uniquely reference the configuration of the Wallet App Attestation format.
-      * **docType**: CONDITIONAL. It is only present if the ``format`` is ``mso_mdoc``. It is a string of the form ``{Trust Anchor reverse domain}.{credential_type}`` (e.g., ``it.wallet.trust-registry.wallet_app_attestation``).
-      * **schema_uri**: URI pointing to the format specification document.
-      * **schema_uri#integrity**: Cryptographic digest of the format specification document for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
 
 The corresponding example of Digital Credentials Catalog as decoded in JSON for both header and payload is the following:
 
@@ -684,7 +698,7 @@ The corresponding example of Digital Credentials Catalog as decoded in JSON for 
     - Download only the necessary localisation bundles.
     - Dynamically merge localised content with the Digital Credentials Catalog structure.
 
-  A non-normative example of a localisation bundle output is given below:
+A non-normative example of a localisation bundle output is given below:
 
     .. code-block:: json
 
@@ -697,29 +711,30 @@ The corresponding example of Digital Credentials Catalog as decoded in JSON for 
         "...": "..."
       }
 
-  Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
+Localization bundles MUST be available at the URI specified in the **localization_info.bundles_base_uri** claim of the Digital Credentials Catalog. Each locale bundle MUST be accessible following the naming pattern **{locale_code}.json**, where **{locale_code}** is replaced with the corresponding locale code from the **available_locales** array.
 
-  A non-normative example of the Italian localization URI for the mDL bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**.
+A non-normative example of the Italian localization URI for the mDL bundle would be **https://trust-registry.eid-wallet.example.it/.well-known/l10n/mdl/it.json**. 
 
-  Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
+Entities SHOULD verify the integrity of downloaded localization bundles using the digest method and values specified in the **localization_info.integrity** claim. This ensures that the localization data has not been tampered with during transmission.
 
-Catalog as Canonical Source for Display Information
+Decentralization of Display and Claim Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To minimize duplication while having consistent presentation across the ecosystem, the Digital Credential Catalogue is the canonical source of truth for all end-user display information related to Digital Credentials (e.g., credential name/description, claim labels, visual templates, colors, logo URIs).
+Following the streamlining of the Digital Credentials Catalog, the canonical source for display characteristics and claim structure is determined by the **Credential Issuer's Metadata (Entity Configuration)**.
 
-- For Credentials that are included in the Credential Catalog Wallet Solutions and Relying Parties MUST use the display-related fields retrieved through the ``vct`` URL contained in the Catalogue when rendering Digital Credentials and their claims.
-- For Credentials that are not included in the Credential Catalog (for example, Credentials not deemed of public interest), Wallet Solutions MAY use the display information from the Credential Issuer metadata and/or the Digital Credential Metadata Type. When both are available, the following precedence applies:
+The overall logic for presenting a credential is:
 
-  1. Use the Digital Credential Metadata Type if available.
-  2. Otherwise, use the Credential Issuer metadata.
+1. The Wallet/Relying Party retrieves the lightweight **Digital Credentials Catalog** to discover the available `credential_type` and the `entity_id` of its Issuers.
+2. It retrieves the full **Credential Issuer Metadata** (Entity Configuration) from the discovered `entity_id`.
+3. The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).
 
-- Implementations SHOULD cache Metadata Type display data and apply language selection using the ``locale`` parameters.
+
+
 
 Taxonomy
 --------
 
-The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing credentials within the IT-Wallet ecosystem. The taxonomy is credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet Technical Solutions.
+The **Taxonomy** provides the semantic foundation for Digital Credential interoperability by maintaining the authoritative vocabulary for organizing credentials within the IT-Wallet ecosystem. The taxonomy is credential format neutral and has the aim of facilitating Digital Credentials integrations in the IT-Wallet Technical Solutions. 
 
 The taxonomy provides, in a single resource, the hierarchical classification system organizing domains and purposes that can be applied to credential types, supporting authorization policy evaluation and ecosystem-wide standardization.
 
@@ -756,6 +771,50 @@ A non-normative example of Taxonomy structure is given below:
 .. literalinclude:: ../../examples/taxonomy-example.json
   :language: JSON
 
+
+Schema Registry
+-----------------
+
+The **Schema Registry** is the authoritative inventory of all known and accepted **Credential Schemas** (JSON Schema for SD-JWT, CBOR Schema for mDOC) within the IT-Wallet ecosystem. It is managed by the Trust Anchor and provides a single, verifiable source for retrieving the technical specifications required for parsing, validating, and displaying Digital Credentials.
+
+**Schema Registry Objectives:**
+
+1. **Schema Centralization**: Provide a centralized access point for all technical schemata used by Digital Credentials.
+2. **Integrity and Authenticity**: Ensure the integrity and authenticity of the schema documents through cryptographic digests.
+3. **Interoperability**: Facilitate the seamless integration of Wallet Providers and Relying Parties by providing consistent schema versions.
+4. **Credential Lifecycle Support**: Act as a verifiable reference point for schema validation during issuance and presentation.
+
+**Schema Registry Structure and Access:**
+
+The Schema Registry is accessible via the ``.well-known/it-wallet-registry`` discovery endpoint under the `schema_registry` field. It allows for the discovery of schema URIs and their cryptographic integrity checks.
+
+.. list-table:: Schema Registry Parameters
+   :class: longtable
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Field Name
+     - Description
+   * - **credential_type**
+     - REQUIRED. The unique identifier of the Digital Credential type (e.g., ``mDL``).
+   * - **format**
+     - REQUIRED. The technical format of the schema (e.g., ``dc+sd-jwt``, ``mso_mdoc``).
+   * - **docType**
+     - CONDITIONAL. It is REQUIRED if the ``format`` is ``mso_mdoc``, indicating the document type used (e.g., ``org.iso.18013.5.1``).
+   * - **schema_uri**
+     - REQUIRED. The URI where the schema document can be retrieved.
+   * - **schema_uri#integrity**
+     - REQUIRED. Cryptographic digest of the schema document for integrity verification. Format: ``{digest_method}-{digest_value}`` (e.g., ``"sha-256-abc123..."``).
+   * - **description**
+     - OPTIONAL. A human-readable description of the schema, which may be localized.
+
+**Schema Registry Example:**
+
+A non-normative example of the Schema Registry payload:
+
+.. literalinclude:: ../../examples/registry-schema-example-payload.json
+  :language: JSON
+
 Registry Integration and Cross-References
 ------------------------------------------
 
@@ -765,4 +824,4 @@ The registry components are interconnected and work together to support the comp
 2. **AS Registry** ↔ **Catalog**: Credential types reference AS capabilities for data source validation.
 3. **Catalog** ↔ **Taxonomy**: Credential entries specify domains and purposes from the taxonomy for discovery and authorization.
 4. **Federation Registry** ↔ **All Components**: Provides cryptographic trust validation for all registry operations and entity authentication.
-
+5. **Schema Registry** ↔ **Issuer/RPs**: Provides the verifiable link to all known credential format specifications used in the ecosystem.
