@@ -136,8 +136,7 @@ The *openid_credential_issuer* metadata MUST contain the following claims.
                 - **description**: human-readable description for the claim.
                 - **locale**: String value that identifies the language of this object represented as a language tag taken from values defined in *BCP47* :rfc:`5646`. There MUST be only one object for each language identifier.
                 
-        - **schema_uri**: REQUIRED. URI pointing to the schema related to the format.
-        - **schema_uri#integrity**: REQUIRED only if ``schema_uri`` is present. Cryptographic digest of the schema specification for integrity verification. It MUST be a string of the form ``{digest_method}-{digest_value}``, where ``{digest_method}`` is the digest algorithm used (e.g., ``sha-256``) and ``{digest_value}`` is the base64url-encoded digest value.
+        - **schema_id**: REQUIRED. Identifier of the credential schema as defined in the `<<XXX-Schema Registry-XXX>>`.
         - **authentic_sources**: REQUIRED. Object containing ``entity_id`` and ``dataset_id`` parameters valued with the respective identifiers as registered in the :ref:`registry:Authentic Source Registry`.
   * - **jwks**
     - JSON Web Key Set document, passed by value, containing the protocol specific keys for the Credential Issuer. See `OID-FED`_ Section 5.2.1 and `JWK`_.

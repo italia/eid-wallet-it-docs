@@ -820,17 +820,7 @@ For SD-JWT-VC, parameters are marked with `(hdr)` if they are located in the JOS
      - | Type_Metadata.name (hdr)
        | Type_Metadata.description (hdr)
        | Type_Metadata.extends (hdr)
-       | Type_Metadata.schema (hdr)
-       | Type_Metadata.schema_uri (hdr)
-       | Type_Metadata.data_source (hdr)
-       | Type_Metadata.display (hdr)
-       | Type_Metadata.claims (hdr)
      - | -
-       | -
-       | -
-       | -
-       | -
-       | -
        | -
        | nameSpaces
    * - Issuer
