@@ -339,13 +339,13 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **display.preferred_logo**
      - string
      - OPTIONAL. Identifier (``id``) of the preferred logo from the `images` array for UI display.
-   * - **display.preferred_credential_background**
+   * - **display.preferred_credential_background_image**
      - string
      - OPTIONAL. Identifier (``id``) of the preferred background image from the `images` array for UI display.
-   * - **display.preferred_background_color**
+   * - **display.preferred_credential_background_color**
      - string
      - OPTIONAL. Suggested background color for credentials in hexadecimal format (e.g., ``"#003d82"``).
-   * - **display.preferred_text_color**
+   * - **display.preferred_credential_text_color**
      - string
      - OPTIONAL. Suggested text color for credentials in hexadecimal format (e.g., ``"#ffffff"``).
    * - **display.colors**
