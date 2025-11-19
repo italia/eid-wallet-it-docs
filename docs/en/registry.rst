@@ -735,9 +735,6 @@ The overall logic for presenting a credential is:
 2. It retrieves the full **Credential Issuer Metadata** (Entity Configuration) from the discovered `entity_id`.
 3. The Credential Issuer Metadata MUST contain the full display characteristics (logos, colors) and the detailed schema information (via links to the appropriate Type Metadata or directly in the configuration). The Issuer builds this metadata based on the suggestions provided by the Authentic Source (via the AS Registry) and the standard schema specifications (via the Schema Registry).
 
-
-
-
 Taxonomy
 --------
 
