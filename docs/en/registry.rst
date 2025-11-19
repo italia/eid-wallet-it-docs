@@ -348,7 +348,7 @@ The AS Registry MUST contain the following parameters for each registered Authen
    * - **display.preferred_text_color**
      - string
      - OPTIONAL. Suggested text color for credentials in hexadecimal format (e.g., ``"#ffffff"``).
-* - **display.colors**
+   * - **display.colors**
      - JSON Objects Array
      - OPTIONAL. Array of predefined colors for UI rendering.
    * - **display.colors[].id**
@@ -381,7 +381,7 @@ A non-normative example of AS Registry structure is given below:
 AS-CI Coordination
 ^^^^^^^^^^^^^^^^^^
 
-Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`entity-onboarding:AS-CI Integration Process`.
+Following AS registration, the AS Registry enables Credential Issuers to discover suitable AS entities and request integration approval. This coordination process is detailed in :ref:`entity-onboarding:Authentic Source to Credential Issuer Authorization Process`.
 
 Federation Registry
 -------------------
