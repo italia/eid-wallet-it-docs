@@ -3,6 +3,7 @@
     "last_updated": "2025-03-15T12:00:00Z",
     "schemas": [
         {
+            "id": "mso_mdoc_mDL+mso_mdoc+org.iso.18013.5.1",
             "credential_type": "mso_mdoc_mDL",
             "format": "mso_mdoc",
             "docType": "org.iso.18013.5.1",
@@ -11,6 +12,7 @@
             "description": "Schema tecnico per la mobile Driving License in formato mdoc."
         },
         {
+            "id": "dc_sd_jwt_pid+dc+sd-jwt",
             "credential_type": "dc_sd_jwt_pid",
             "format": "dc+sd-jwt",
             "schema_uri": "https://trust-registry.eid-wallet.example.it/.well-known/schemas/sd-jwt/pid",
